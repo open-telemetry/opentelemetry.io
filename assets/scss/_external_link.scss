@@ -23,6 +23,10 @@ a.external-link:after {
   @include external-link-icon();
 }
 
+.td-footer a.external-link:after {
+  display: none !important;
+}
+
 // Can't quite use this yet since (1) breadcrumbs currently use external links,
 // (2) we can't currently easily turn this off for footer icons.
 //

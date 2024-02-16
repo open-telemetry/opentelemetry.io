@@ -1,8 +1,6 @@
 ---
 title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
-# prettier-ignore
-cSpell:ignore: aarch autoconfigure autoreconfigure darwin helloworld Nanos rolldice springframework webmvc
 weight: 10
 ---
 
@@ -146,11 +144,18 @@ number of ways, the steps below use environment variables.
    export JAVA_TOOL_OPTIONS="-javaagent:PATH/TO/opentelemetry-javaagent.jar" \
      OTEL_TRACES_EXPORTER=logging \
      OTEL_METRICS_EXPORTER=logging \
-     OTEL_LOGS_EXPORTER=logging
+     OTEL_LOGS_EXPORTER=logging \
+     OTEL_METRIC_EXPORT_INTERVAL=15000
    ```
 
-   {{% alert title="Important" color="warning" %}}Replace `PATH/TO` above, with
-   your path to the JAR.{{% /alert %}}
+   {{% alert title="Important" color="warning" %}}
+
+   - Replace `PATH/TO` above, with your path to the JAR.
+   - Set `OTEL_METRIC_EXPORT_INTERVAL` to a value well below the default, as we
+     illustrate above, **only during testing** to help you more quickly ensure
+     that metrics are properly generated.
+
+   {{% /alert %}}
 
 3. Run your **application** once again:
 

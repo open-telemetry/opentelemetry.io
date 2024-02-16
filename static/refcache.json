@@ -199,10 +199,6 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:06:13.672811-05:00"
   },
-  "https://cdn.jsdelivr.net/npm/mermaid@9.3.0/dist/mermaid.min.js": {
-    "StatusCode": 206,
-    "LastSeen": "2024-01-18T19:55:45.920342-05:00"
-  },
   "https://cdn.jsdelivr.net/npm/minisearch@6.3.0/dist/umd/index.min.js": {
     "StatusCode": 206,
     "LastSeen": "2024-01-08T12:17:27.412252+01:00"
@@ -427,6 +423,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:05:33.40334-05:00"
   },
+  "https://cn.dubbo.apache.org/en/blog/2024/01/31/tracing-dubbo-with-opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-01T16:16:02.233119703Z"
+  },
   "https://cncf.io": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:04:52.746171-05:00"
@@ -501,7 +501,11 @@
   },
   "https://crates.io/": {
     "StatusCode": 206,
-    "LastSeen": "2024-01-19T16:56:12.042658+01:00"
+    "LastSeen": "2024-01-22T11:00:04.617082+01:00"
+  },
+  "https://creativecommons.org/licenses/by/4.0": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-08T18:57:44.500266-05:00"
   },
   "https://cri-o.io/": {
     "StatusCode": 206,
@@ -1215,6 +1219,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:54:12.741496-05:00"
   },
+  "https://docs.middleware.io/open-telemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-05T20:30:08.23208333Z"
+  },
   "https://docs.mongodb.com/manual/reference/command/#database-operations": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:53:24.275059-05:00"
@@ -1234,6 +1242,10 @@
   "https://docs.openfeature.dev/docs/specification/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:52:59.602661-05:00"
+  },
+  "https://docs.openshift.com/container-platform/4.14/otel/otel-release-notes.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-02T12:42:05.756504535Z"
   },
   "https://docs.oracle.com/cd/E12058_01/doc/doc.1014/e12030/cron_expressions.htm": {
     "StatusCode": 200,
@@ -1399,6 +1411,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:11.609878-05:00"
   },
+  "https://docs.oracle.com/javase/tutorial/sound/SPI-intro.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-15T23:57:17.652434515Z"
+  },
   "https://docs.otterize.com/reference/configuration/network-mapper/helm-chart#opentelemetry-exporter-parameters": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:15:20.577253-05:00"
@@ -1502,6 +1518,14 @@
   "https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:53.797365-05:00"
+  },
+  "https://docs.spring.io/spring-security/reference/servlet/authorization/architecture.html#authz-authorities": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-12T22:02:33.483262-05:00"
+  },
+  "https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#aop": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-30T20:32:51.933581-05:00"
   },
   "https://docs.thousandeyes.com/product-documentation/api/opentelemetry": {
     "StatusCode": 206,
@@ -2067,6 +2091,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:24.881361-05:00"
   },
+  "https://github.com/apache/dubbo": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-01T16:16:01.139497253Z"
+  },
   "https://github.com/asaaki/opentelemetry-tide": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:12:51.497556-05:00"
@@ -2102,6 +2130,14 @@
   "https://github.com/aws-observability/aws-otel-collector": {
     "StatusCode": 200,
     "LastSeen": "2024-01-24T14:54:51.229664+01:00"
+  },
+  "https://github.com/baronfel": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-01T19:02:28.92421992Z"
+  },
+  "https://github.com/baronfel/otel-startup-hook": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-01T19:02:28.4090231Z"
   },
   "https://github.com/bhs": {
     "StatusCode": 200,
@@ -2214,6 +2250,14 @@
   "https://github.com/debajitdas": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:04.809604-05:00"
+  },
+  "https://github.com/dmathieu": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-14T08:44:43.625674121Z"
+  },
+  "https://github.com/dmathieu/rspec-otel": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-14T08:44:42.583247623Z"
   },
   "https://github.com/dmsolr": {
     "StatusCode": 200,
@@ -2558,6 +2602,14 @@
   "https://github.com/nhatthm/otelsql": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:11:34.796425-05:00"
+  },
+  "https://github.com/oatpp": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-09T11:48:44.797303+01:00"
+  },
+  "https://github.com/oatpp/oatpp": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-09T11:48:45.252429+01:00"
   },
   "https://github.com/observIQ/observiq-otel-collector": {
     "StatusCode": 200,
@@ -3451,6 +3503,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:01.211191-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-proto-java": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-12T10:07:03.426176991Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-proto/#maturity-level": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:06.679199-05:00"
@@ -3726,6 +3782,10 @@
   "https://github.com/open-telemetry/semantic-conventions": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:01:12.185293-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions-java": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-12T10:07:03.116391658Z"
   },
   "https://github.com/open-telemetry/semantic-conventions-java/releases": {
     "StatusCode": 200,
@@ -5079,6 +5139,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T05:18:29.229033-05:00"
   },
+  "https://oatpp.io/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-09T11:48:44.205582+01:00"
+  },
   "https://observiq.com/blog/what-are-connectors-in-opentelemetry/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:06:02.410999-05:00"
@@ -5166,6 +5230,10 @@
   "https://opensearch.org/docs/latest/data-prepper/index/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:14:58.880711-05:00"
+  },
+  "https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/classopentelemetry_1_1sdk_1_1trace_1_1SpanExporter.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-14T16:43:04.418679+01:00"
   },
   "https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__metrics.html": {
     "StatusCode": 200,
@@ -5315,6 +5383,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-19T13:15:36.494434+01:00"
   },
+  "https://packagist.org/packages/open-telemetry/opentelemetry-auto-openai-php": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-05T17:24:31.062504+01:00"
+  },
   "https://packagist.org/packages/open-telemetry/opentelemetry-auto-pdo": {
     "StatusCode": 200,
     "LastSeen": "2024-01-19T13:15:36.643467+01:00"
@@ -5362,6 +5434,10 @@
   "https://packagist.org/packages/open-telemetry/sdk": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:06:02.615456-05:00"
+  },
+  "https://packagist.org/packages/openai-php/client": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-05T17:24:30.23375+01:00"
   },
   "https://packagist.org/providers/php-http/async-client-implementation": {
     "StatusCode": 200,
@@ -5543,6 +5619,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:15:46.902637+01:00"
   },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/exporter/otelarrowexporter": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-05T17:24:23.49557+01:00"
+  },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/exporter/prometheusexporter": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:15:47.271108+01:00"
@@ -5651,6 +5731,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:15:58.781435+01:00"
   },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/extension/solarwindsapmsettingsextension": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-05T17:24:24.214319+01:00"
+  },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:15:59.158+01:00"
@@ -5662,6 +5746,10 @@
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/datadogprocessor": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:16:00.083615+01:00"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/deltatocumulativeprocessor": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-05T17:24:25.808954+01:00"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/deltatorateprocessor": {
     "StatusCode": 200,
@@ -5678,6 +5766,10 @@
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/groupbytraceprocessor": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:16:01.685466+01:00"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/intervalprocessor": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-05T17:24:26.847627+01:00"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor": {
     "StatusCode": 200,
@@ -6355,6 +6447,14 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:01:19.327156-05:00"
   },
+  "https://pypi.org/project/opentelemetry-exporter-otlp-proto-grpc/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-09T09:38:04.090207581Z"
+  },
+  "https://pypi.org/project/opentelemetry-exporter-otlp-proto-http/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-09T09:38:03.842968558Z"
+  },
   "https://pypi.org/project/opentelemetry-exporter-prometheus/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:14:35.878589-05:00"
@@ -6626,6 +6726,10 @@
   "https://rubygems.org/gems/opentelemetry-instrumentation-trilogy": {
     "StatusCode": 200,
     "LastSeen": "2024-01-22T15:38:54.618612+01:00"
+  },
+  "https://rubygems.org/gems/rspec-otel": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-14T08:44:44.34346372Z"
   },
   "https://rubygems.org/gems/sentry-opentelemetry": {
     "StatusCode": 200,
@@ -7346,6 +7450,10 @@
   "https://www.influxdata.com/time-series-platform/telegraf/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:05:10.329813-05:00"
+  },
+  "https://www.infoq.com/presentations/opentelemetry-observability/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-09T09:36:03.77411329Z"
   },
   "https://www.investopedia.com/terms/p/personally-identifiable-information-pii.asp": {
     "StatusCode": 200,

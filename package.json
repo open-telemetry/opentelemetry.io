@@ -43,6 +43,9 @@
     "check:text": "npm run _check:text -- ",
     "check": "npm run seq -- $(npm run -s _list:check:*)",
     "clean": "make clean",
+    "code-excerpts": "rm -Rf tmp/excerpts/* && npm run seq -- code-excerpts:get code-excerpts:update-docs",
+    "code-excerpts:get": "cd tools && dart run build_runner build --delete-conflicting-outputs --output ../tmp/excerpts",
+    "code-excerpts:update-docs": "cd tools && dart run code_excerpt_updater --fragment-dir-path ../tmp/excerpts --src-dir-path examples --yaml --write-in-place content",
     "cp:spec": "./scripts/content-modules/cp-pages.sh",
     "diff:check": "npm run _diff:check || (echo; echo 'WARNING: the files above have not been committed'; echo)",
     "diff:fail": "npm run _diff:check || (echo; echo 'ERROR: the files above have changed. Locally rerun `npm run test-and-fix` and commit changes'; echo; exit 1)",
@@ -72,6 +75,7 @@
     "serve:hugo": "npm run _serve:hugo",
     "serve:netlify": "npm run _serve:netlify",
     "serve": "npm run serve:hugo",
+    "sync": "./scripts/sync-submodules.pl",
     "test-and-fix": "npm run seq -- check fix:dict fix:filenames",
     "test": "npm run check",
     "update:pkg:docsy-dep": "npm install --save-dev autoprefixer@latest postcss-cli@latest",
@@ -83,16 +87,16 @@
     "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 1}"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.16",
+    "autoprefixer": "^10.4.17",
     "cspell": "^8.0.0",
     "gulp": "^4.0.2",
-    "hugo-extended": "0.121.2",
+    "hugo-extended": "0.122.0",
     "markdown-link-check": "^3.11.2",
     "markdownlint": "^0.33.0",
     "postcss-cli": "^11.0.0",
     "prettier": "^3.0.3",
     "require-dir": "^1.2.0",
-    "textlint": "^13.3.3",
+    "textlint": "^14.0.1",
     "textlint-filter-rule-allowlist": "^4.0.0",
     "textlint-filter-rule-comments": "^1.2.2",
     "textlint-rule-terminology": "^4.0.1",
@@ -113,7 +117,7 @@
     "path": "^0.12.7"
   },
   "optionalDependencies": {
-    "netlify-cli": "^17.0.1"
+    "netlify-cli": "^17.16.1"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "engines": {

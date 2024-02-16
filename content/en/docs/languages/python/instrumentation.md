@@ -8,7 +8,7 @@ cSpell:ignore: millis ottrace textmap
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% docs/languages/manual-intro %}}
+{{% docs/languages/instrumentation-intro %}}
 
 ## Setup
 

@@ -7,7 +7,7 @@ description: A measurement captured at runtime
 A **metric** is a **measurement** of a service captured at runtime. The moment
 of capturing a measurements is known as a **metric event**, which consists not
 only of the measurement itself, but also the time at which it was captured and
-associated metadata.d
+associated metadata.
 
 Application and request metrics are important indicators of availability and
 performance. Custom metrics can provide insights into how availability
@@ -72,6 +72,10 @@ The instrument kind is one of the following:
 - **Histogram**: A client-side aggregation of values, such as request latencies.
   A histogram is a good choice if you are interested in value statistics. For
   example: How many requests take fewer than 1s?
+
+For more on synchronous and asynchronous instruments, and which kind is best
+suited for your use case, see
+[Supplementary Guidelines](/docs/specs/otel/metrics/supplementary-guidelines/).
 
 ## Aggregation
 
