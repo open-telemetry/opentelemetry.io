@@ -50,6 +50,8 @@ address. For more information, refer to the
 [CWE-1327: Binding to an Unrestricted IP Address](https://cwe.mitre.org/data/definitions/1327.html)
 definition.
 
+To change the default endpoint to be `localhost`-bound in all components, enable the `component.UseLocalHostAsDefaultHost` feature gate. This feature gate will be enabled by default in the Collector in a future release.
+
 ### Encryption and authentication
 
 Your OTel Collector configuration should include encryption and authentication.
@@ -111,7 +113,7 @@ extensions typical serve different needs.
 
 <!--- TODO: Extensions SHOULD NOT expose sensitive health or telemetry data. How? What can you do? -->
 
-### Health and Telemetry
+### Health and telemetry
 
 The initial extensions provided health check information, Collector metrics and
 traces, and the ability to generate and collect profiling data. When enabled
