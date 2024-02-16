@@ -219,7 +219,8 @@ with the OpenTelemetry
 2. `service.name` in `otel.resource.attributes` system/spring property or
    `OTEL_RESOURCE_ATTRIBUTES` environment variable
 3. `spring.application.name` spring property
-4. The default value is `unknown_service:java` (lowest precedence)
+4. JAR file name
+5. The default value is `unknown_service:java` (lowest precedence)
 
 ### Automatic instrumentation
 
