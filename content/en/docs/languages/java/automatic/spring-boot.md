@@ -417,8 +417,8 @@ span by annotating the method parameters with `@SpanAttribute`.
   </dependency>
   <dependency>
     <groupId>io.opentelemetry</groupId>
-    <artifactId>opentelemetry-extension-annotations</artifactId> replace with new 
-    <version>{{% param vers.otel %}}</version>
+    <artifactId>opentelemetry-instrumentation-annotations</artifactId>
+    <version>{{% param vers.instrumentation %}}</version>
   </dependency>
 </dependencies>
 ```
