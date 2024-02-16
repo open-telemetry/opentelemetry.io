@@ -9,19 +9,18 @@ weight: 20
 When setting up configuration for OpenTelemetry (OTel) Collector, consider the
 following practices to better secure your OTel Collector instance.
 
-<!--
-TODO: SHOULD only enable the minimum required components. What are those?
---->
+## Receivers and exporters
 
-## Receivers and Exporters
+We recommend enabling only the minimum required OTel Collector components of one
+receiver and one exporter.
 
-- Receivers and Exporters can be either push or pull-based. In either case, the
+- Receivers and exporters can be either push or pull-based. In either case, the
   connection established SHOULD be over a secure and authenticated channel.
 - Unused receivers and exporters SHOULD be disabled to minimize the attack
   vector of the Collector.
-- Receivers and Exporters MAY expose buffer, queue, payload, and/or worker
-  settings via configuration parameters. If these settings are available, users
-  should proceed with caution before modifying the default configuration values.
+- Receivers and exporters may expose buffer, queue, payload, and worker settings
+  using configuration parameters. If these settings are available, you should
+  proceed with caution before modifying the default configuration values.
   Improperly setting these values may expose the OpenTelemetry Collector to
   additional attack vectors including resource exhaustion.
 
@@ -32,7 +31,8 @@ today this is not the case.
 ### Safeguards against denial of service attacks
 
 Users should bind receivers' servers to addresses that limit connections to
-authorized users, so that their Collectors aren't exposed to the public internet or to wider networks than necessary.
+authorized users, so that their Collectors aren't exposed to the public internet
+or to wider networks than necessary.
 
 For example, if the OTLP receiver OTLP/gRPC server only has local clients, the
 `endpoint` setting SHOULD be bound to `localhost`:
@@ -50,7 +50,7 @@ address. For more information, refer to the
 [CWE-1327: Binding to an Unrestricted IP Address](https://cwe.mitre.org/data/definitions/1327.html)
 definition.
 
-### Encryption and Authentication
+### Encryption and authentication
 
 Your OTel Collector configuration should include encryption and authentication.
 
@@ -72,16 +72,15 @@ Processors sit between receivers and exporters. They are responsible for
 processing the data in some way. From a security perspective, they are useful in
 a few ways.
 
-### Recommended Processors
+### Recommended processors
 
 <!--- TODO: SHOULD configure recommended processors. If so, what are they? -->
 
 ### Scrubbing sensitive data
 
-It is common for an OpenTelemetry Collector to be used to scrub sensitive data
-before exporting it to a backend. This is especially important when sending the
-data to a third-party backend. The OpenTelemetry Collector **SHOULD** be
-configured to obfuscate or scrub sensitive data before exporting.
+You can use the OpenTelemetry Collector to scrub sensitive data before exporting
+it to a back end. Configure the Collector to obfuscate or scrub sensitive data
+before exporting.
 
 <!--- TODO: SHOULD configure obfuscation/scrubbing of sensitive metadata. How? Give more details and/or link to an existing document -->
 
@@ -96,8 +95,8 @@ ensure your OpenTelemetry Collector configuration uses these safeguards.
 <!-- start same page content in otel-collector-hosting-best-practices -->
 
 The `batch` processor helps to ensure that the OpenTelemetry Collector is
-resource efficient and does not out of memory when overloaded. At least these
-two processors SHOULD be enabled on every defined pipeline.
+resource efficient and does not run out of memory when overloaded. At least
+these two processors SHOULD be enabled on every defined pipeline.
 
 For more information on recommended processors and order, refer to the
 [OpenTelemetry Collector Processor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor)
@@ -121,7 +120,7 @@ extension are only accessibly locally to the OpenTelemetry Collector. Care
 should be taken when configuring these extensions for remote access as sensitive
 information may be exposed as a result.
 
-### Collector's Internal Telemetry
+### Collector's internal telemetry
 
 <!--- INSERT RECOMMENDATIONS HERE. For example:
 

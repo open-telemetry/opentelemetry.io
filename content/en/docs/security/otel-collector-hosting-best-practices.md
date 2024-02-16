@@ -8,7 +8,7 @@ weight: 10
 When setting up hosting for OpenTelemetry (OTel) Collector, consider the
 following practices to better secure your hosting instance.
 
-## Storing Configuration Information Securely
+## Storing configuration information securely
 
 <!--- TODO: SHOULD ensure sensitive configuration information is stored securely. How? -->
 
@@ -17,7 +17,7 @@ following practices to better secure your hosting instance.
 <!--- TODO: SHOULD not run the OpenTelemetry Collector as root/admin user. Why? (Give the reader motivation.) How do you do that?
 - NOTE: MAY require privileged access for some components -->
 
-## Receivers and Exporters
+## Receivers and exporters
 
 To limit the exposure of servers to authorized users:
 
@@ -38,9 +38,8 @@ In addition, processors offer safeguards around resource utilization.
 <!-- start same page content in otel-collector-configuration-best-practices -->
 
 The `batch` and especially `memory_limiter` processor help ensure that the
-OpenTelemetry Collector is resource efficient and does not out of memory when
-overloaded. At least these two processors SHOULD be enabled on every defined
-pipeline.
+OpenTelemetry Collector is resource efficient and does not run when overloaded.
+At least these two processors SHOULD be enabled on every defined pipeline.
 
 For more information on recommended processors and order, refer to the
 [OpenTelemetry Collector Processor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor)

@@ -1,6 +1,6 @@
 ---
-title: Security
-description: How to use OpenTelemetry Collector securely.
+title: Security in OpenTelemetry
+description: Security in OpenTelemetry.
 weight: 10.1
 ---
 
