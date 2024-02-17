@@ -1,0 +1,16 @@
+title: Go Automatic Instrumentation by Code Modification
+registryType: instrumentation
+language: go
+tags:
+  - go
+  - instrumentation
+license: MIT
+description:
+  This tool uses standard Go library to modify AST with instrumentation. It
+  supports errors in spans, functions filtering, and more customizations.
+authors:
+  - name: nikolaydubina
+    url: https://github.com/nikolaydubina
+urls:
+  repo: https://github.com/nikolaydubina/go-instrument
+createdAt: 2024-02-13
