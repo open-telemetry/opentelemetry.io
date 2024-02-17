@@ -70,10 +70,10 @@ jobs:
       - run: |
           case $PR_ACTION in
             format)
-              npm run format
+              npm run fix:format
               ;;
             submodules)
-              npm run sync
+              npm run fix:submodules
               ;;
             refcache)
               npm install --omit=optional
@@ -81,9 +81,7 @@ jobs:
               ;;
             all)
               npm install --omit=optional
-              npm run sync
-              npm run format
-              npm run check:links
+              npm run fix
               ;;
           esac
           git status
