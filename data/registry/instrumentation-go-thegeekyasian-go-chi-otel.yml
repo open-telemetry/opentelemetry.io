@@ -1,0 +1,18 @@
+# cSpell:ignore go-chi-otel thegeekyasian
+title: go-chi-otel --- Instrumentation for go-chi/chi
+registryType: instrumentation
+language: go
+tags:
+  - go
+  - instrumentation
+  - go-chi
+  - go-chi-otel
+  - chi
+license: Apache 2.0
+description: Instrumentation for the Golang `go-chi/chi` package, enabling users to have custom scope names.
+authors:
+  - name: The Geeky Asian
+    email: msafeeransari@gmail.com
+urls:
+  repo: https://github.com/thegeekyasian/go-chi-otel
+createdAt: 2024-02-19
