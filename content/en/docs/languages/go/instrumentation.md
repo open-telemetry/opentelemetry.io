@@ -164,16 +164,16 @@ Once a span has completed, it is immutable and can no longer be modified.
 
 ### Span Attributes
 
-[Attributes] are keys and values that are applied as metadata to your spans and
+[Attributes] are key-value pairs that are applied as metadata to your spans and
 are useful for aggregating, filtering, and grouping traces. Attributes can be
 added at span creation, or at any other time during the lifecycle of a span
 before it has completed.
 
-Generally speaking, you should try to set attributes during span creation. This
-will incur less overhead compared to setting attributes after span creation, and
-also allow these attributes to factor into SDK sampling decisions.
+As a best practice, set attributes during span creation. This causes
+less overhead compared to setting attributes after span creation and
+allow attributes to contribute to SDK sampling decisions.
 
-The following example adds attributes at creation:
+The following example adds attributes at span creation:
 
 ```go
 // setting attributes at creation...
@@ -710,7 +710,7 @@ func init() {
 
 ### Adding attributes
 
-Attributes are keys and values that are applied as metadata to your metrics and
+Attributes are key-value pairs that are applied as metadata to your metrics and
 are useful for aggregating, filtering, and grouping metrics.
 
 You can add Attributes by using the
