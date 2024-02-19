@@ -159,8 +159,10 @@ dependencies {
 
 ### Configuration
 
-This spring starter supports [configuration metadata](https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html),
-which means that you can see and autocomplete all available properties in your IDE.
+This spring starter supports
+[configuration metadata](https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html),
+which means that you can see and autocomplete all available properties in your
+IDE.
 
 #### Disable the OpenTelemetry Starter
 
@@ -173,14 +175,16 @@ Set the value to `true` to disable the starter, e.g. for testing purposes.
 #### OpenTelemetry Data Exporters
 
 This package provides autoconfiguration the following exporters:
+
 - OTLP
 - Logging
 - Zipkin
 
-All available properties are listed in the [Configuration](configuration.md) page.
+All available properties are listed in the [Configuration](configuration.md)
+page.
 
-The only difference is that the OpenTelemetry Spring Boot starter uses `http/protobuf` as the default protocol 
-for the OTLP exporter (as of 2.0.0+).
+The only difference is that the OpenTelemetry Spring Boot starter uses
+`http/protobuf` as the default protocol for the OTLP exporter (as of 2.0.0+).
 
 #### Tracer Properties
 
@@ -191,7 +195,7 @@ for the OTLP exporter (as of 2.0.0+).
 #### Resource Properties
 
 | Feature  | Property                           | Default Value |
-|----------|------------------------------------|---------------|
+| -------- | ---------------------------------- | ------------- |
 | Resource | `otel.springboot.resource.enabled` | true          |
 |          | `otel.resource.attributes`         | empty map     |
 
@@ -236,20 +240,21 @@ with the OpenTelemetry
 
 Automatic instrumentation is available for several frameworks:
 
-| Feature        | Property                                       | Default Value |
-| -------------- | ---------------------------------------------- | --------------|
-| Logback        | `otel.instrumentation.logback-appender.enabled`| true          |
-| Spring Web     | `otel.instrumentation.spring-web.enabled`      | true          |
-| Spring Web MVC | `otel.instrumentation.spring-webmvc.enabled`   | true          |
-| Spring WebFlux | `otel.instrumentation.spring-webflux.enabled`  | true          |
+| Feature        | Property                                        | Default Value |
+| -------------- | ----------------------------------------------- | ------------- |
+| Logback        | `otel.instrumentation.logback-appender.enabled` | true          |
+| Spring Web     | `otel.instrumentation.spring-web.enabled`       | true          |
+| Spring Web MVC | `otel.instrumentation.spring-webmvc.enabled`    | true          |
+| Spring WebFlux | `otel.instrumentation.spring-webflux.enabled`   | true          |
 
 #### Logback
 
-You can enable experimental features with system properties to capture attributes :
+You can enable experimental features with system properties to capture
+attributes :
 
 | System property                                                                        | Type    | Default | Description                                                                                                                                   |
-|----------------------------------------------------------------------------------------|---------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| `otel.instrumentation.logback-appender.experimental-log-attributes`                    | Boolean | false   | Enable the capture of experimental log attributes `thread.name` and `thread.id`.                                                              |                                                |
+| -------------------------------------------------------------------------------------- | ------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --- |
+| `otel.instrumentation.logback-appender.experimental-log-attributes`                    | Boolean | false   | Enable the capture of experimental log attributes `thread.name` and `thread.id`.                                                              |     |
 | `otel.instrumentation.logback-appender.experimental.capture-code-attributes`           | Boolean | false   | Enable the capture of [source code attributes]. Note that capturing source code attributes at logging sites might add a performance overhead. |
 | `otel.instrumentation.logback-appender.experimental.capture-marker-attribute`          | Boolean | false   | Enable the capture of Logback markers as attributes.                                                                                          |
 | `otel.instrumentation.logback-appender.experimental.capture-key-value-pair-attributes` | Boolean | false   | Enable the capture of Logback key value pairs as attributes.                                                                                  |
@@ -259,7 +264,8 @@ You can enable experimental features with system properties to capture attribute
 [source code attributes]:
   https://github.com/open-telemetry/semantic-conventions/blob/main/docs/general/attributes.md#source-code-attributes
 
-Alternatively, you can enable these features by adding the OpenTelemetry Logback appender in your `logback.xml` or `logback-spring.xml` file:
+Alternatively, you can enable these features by adding the OpenTelemetry Logback
+appender in your `logback.xml` or `logback-spring.xml` file:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -381,8 +387,7 @@ dependencies {
 
 #### Log4j2 Instrumentation
 
-You have to add the OpenTelemetry appender to your `log4j2.xml`
-file:
+You have to add the OpenTelemetry appender to your `log4j2.xml` file:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -398,7 +403,9 @@ file:
 </Configuration>
 ```
 
-You can find more configuration options for the OpenTelemetry appender in the [Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md) instrumentation librarie.
+You can find more configuration options for the OpenTelemetry appender in the
+[Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md)
+instrumentation librarie.
 
 #### Instrumentation Annotations
 
