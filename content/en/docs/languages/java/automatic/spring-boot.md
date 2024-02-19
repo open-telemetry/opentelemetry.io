@@ -179,8 +179,8 @@ This package provides autoconfiguration the following exporters:
 - OTLP
 - Logging
 
-All available properties are listed in the [Configuration](/docs/languages/java/automatic/configuration/)
-page.
+All available properties are listed in the
+[Configuration](/docs/languages/java/automatic/configuration/) page.
 
 The only difference is that the OpenTelemetry Spring Boot starter uses
 `http/protobuf` as the default protocol for the OTLP exporter (as of 2.0.0+).
