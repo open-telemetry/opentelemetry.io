@@ -178,7 +178,6 @@ This package provides autoconfiguration the following exporters:
 
 - OTLP
 - Logging
-- Zipkin
 
 All available properties are listed in the [Configuration](configuration.md)
 page.
