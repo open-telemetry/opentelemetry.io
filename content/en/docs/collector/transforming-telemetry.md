@@ -177,15 +177,18 @@ processors:
 Use the transform processor to set a span's status. The following example sets
 the span status to `Ok` when the `http.status_code` attribute is 400:
 
+<!-- prettier-ignore-start -->
+
 ```yaml
 transform:
   error_mode: ignore
   trace_statements:
     - context: span
       statements:
-        - set(status.code, STATUS_CODE_OK) where
-          attributes["http.request.status_code"] == 400
+        - set(status.code, STATUS_CODE_OK) where attributes["http.request.status_code"] == 400
 ```
+
+<!-- prettier-ignore-end -->
 
 You can also use the transform processor to modify the span name based on its
 attributes or extract span attributes from the span name. For examples, see
