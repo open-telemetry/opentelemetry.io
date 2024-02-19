@@ -52,7 +52,7 @@ std::string span_name = "CurrencyService/Convert";
 auto span =
     get_tracer("currencyservice")->StartSpan(span_name,
                                   {{SemanticConventions::kRpcSystem, "grpc"},
-                                   {SemanticConventions::kRpcService, "CurrencyService"},
+                                   {SemanticConventions::kRpcService, "oteldemo.CurrencyService"},
                                    {SemanticConventions::kRpcMethod, "Convert"},
                                    {SemanticConventions::kRpcGrpcStatusCode, 0}},
                                   options);
@@ -148,16 +148,10 @@ void initMeter()
 {
   // Build MetricExporter
   otlp_exporter::OtlpGrpcMetricExporterOptions otlpOptions;
-
-  // Configuration via environment variable not supported yet
-  otlpOptions.endpoint = "otelcol:4317";
-  otlpOptions.aggregation_temporality = metric_sdk::AggregationTemporality::kDelta;
   auto exporter = otlp_exporter::OtlpGrpcMetricExporterFactory::Create(otlpOptions);
 
   // Build MeterProvider and Reader
   metric_sdk::PeriodicExportingMetricReaderOptions options;
-  options.export_interval_millis = std::chrono::milliseconds(1000);
-  options.export_timeout_millis = std::chrono::milliseconds(500);
   std::unique_ptr<metric_sdk::MetricReader> reader{
       new metric_sdk::PeriodicExportingMetricReader(std::move(exporter), options) };
   auto provider = std::shared_ptr<metrics_api::MeterProvider>(new metric_sdk::MeterProvider());
@@ -205,4 +199,38 @@ CurrencyCounter(to_code);
 
 ## Logs
 
-TBD
+The OpenTelemetry `LoggerProvider` is initialized from `main()` using the
+`initLogger()` function defined in `logger_common.h`.
+
+```cpp
+void initLogger() {
+  otlp::OtlpGrpcLogRecordExporterOptions loggerOptions;
+  auto exporter  = otlp::OtlpGrpcLogRecordExporterFactory::Create(loggerOptions);
+  auto processor = logs_sdk::SimpleLogRecordProcessorFactory::Create(std::move(exporter));
+  std::vector<std::unique_ptr<logs_sdk::LogRecordProcessor>> processors;
+  processors.push_back(std::move(processor));
+  auto context = logs_sdk::LoggerContextFactory::Create(std::move(processors));
+  std::shared_ptr<logs::LoggerProvider> provider = logs_sdk::LoggerProviderFactory::Create(std::move(context));
+  opentelemetry::logs::Provider::SetLoggerProvider(provider);
+}
+```
+
+### Using the LoggerProvider
+
+The initialized Logger Provider is called from `main` in `server.cpp`:
+
+```cpp
+logger = getLogger(name);
+```
+
+It assigns the logger to a local variable called `logger`:
+
+```cpp
+nostd::shared_ptr<opentelemetry::logs::Logger> logger;
+```
+
+Which is then used throughout the code whenever we need to log a line:
+
+```cpp
+logger->Info(std::string(__func__) + " conversion successful");
+```
