@@ -405,7 +405,7 @@ You have to add the OpenTelemetry appender to your `log4j2.xml` file:
 
 You can find more configuration options for the OpenTelemetry appender in the
 [Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md)
-instrumentation librarie.
+instrumentation library.
 
 #### Instrumentation Annotations
 
