@@ -35,7 +35,7 @@ You can use
 [OpenTelemetry instrumentations libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks)
 to complete the automatic instrumentation of the Spring Boot starter.
 
-## OpenTelemetry starter Spring Boot starter
+## OpenTelemetry Spring Boot starter
 
 ### Compatibility
 
@@ -157,32 +157,43 @@ dependencies {
 
 {{% /tab %}} {{< /tabpane>}}
 
-### OpenTelemetry Data Exporters
+### Configuration
 
-This package provides autoconfiguration for the
-[OTLP](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/otlp)
-and
-[Logging](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/logging)
-Span Exporters.
+This spring starter supports [configuration metadata](https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html),
+which means that you can see and autocomplete all available properties in your IDE.
 
-As of 2.0.0+ the default protocol is `http/protobuf`. For more details on
-exporter configuration, see
-[OTLP Exporter Configuration](/docs/languages/sdk-configuration/otlp-exporter/).
+#### Disable the OpenTelemetry Starter
 
-you can use the default options, including `otel.sdk.disabled`
+{{% config_option name="otel.sdk.disabled" %}}
 
-### Tracer Properties
+Set the value to `true` to disable the starter, e.g. for testing purposes.
+
+{{% /config_option %}}
+
+#### OpenTelemetry Data Exporters
+
+This package provides autoconfiguration the following exporters:
+- OTLP
+- Logging
+- Zipkin
+
+All available properties are listed in the [Configuration](configuration.md) page.
+
+The only difference is that the OpenTelemetry Spring Boot starter uses `http/protobuf` as the default protocol 
+for the OTLP exporter (as of 2.0.0+).
+
+#### Tracer Properties
 
 | Feature | Property                          | Default Value |
 | ------- | --------------------------------- | ------------- |
 | Tracer  | `otel.traces.sampler.probability` | 1.0           |
 
-### Resource Properties
+#### Resource Properties
 
-| Feature  | Property                                                                | Default Value |
-| -------- | ----------------------------------------------------------------------- | ------------- |
-| Resource | `otel.springboot.resource.enabled`                                      | true          |
-|          | `otel.resource.attributes` | empty map     |
+| Feature  | Property                           | Default Value |
+|----------|------------------------------------|---------------|
+| Resource | `otel.springboot.resource.enabled` | true          |
+|          | `otel.resource.attributes`         | empty map     |
 
 `otel.resource.attributes` supports a pattern-based resource configuration in
 the application.properties like this:
@@ -219,8 +230,7 @@ with the OpenTelemetry
 2. `service.name` in `otel.resource.attributes` system/spring property or
    `OTEL_RESOURCE_ATTRIBUTES` environment variable
 3. `spring.application.name` spring property
-4. JAR file name
-5. The default value is `unknown_service:java` (lowest precedence)
+4. The default value is `unknown_service:java` (lowest precedence)
 
 ### Automatic instrumentation
 
@@ -235,21 +245,21 @@ Automatic instrumentation is available for several frameworks:
 
 #### Logback
 
-You can enable experimental features with system properties to capure attributes :
+You can enable experimental features with system properties to capture attributes :
 
-| System property                                                                        | Type    | Default | Description                                                                                   |
-|----------------------------------------------------------------------------------------|---------|---------|-----------------------------------------------------------------------------------------------|
-| `otel.instrumentation.logback-appender.experimental-log-attributes`                    | Boolean | false   | Enable the capture of experimental log attributes `thread.name` and `thread.id`.              |                                                |
+| System property                                                                        | Type    | Default | Description                                                                                                                                   |
+|----------------------------------------------------------------------------------------|---------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| `otel.instrumentation.logback-appender.experimental-log-attributes`                    | Boolean | false   | Enable the capture of experimental log attributes `thread.name` and `thread.id`.                                                              |                                                |
 | `otel.instrumentation.logback-appender.experimental.capture-code-attributes`           | Boolean | false   | Enable the capture of [source code attributes]. Note that capturing source code attributes at logging sites might add a performance overhead. |
-| `otel.instrumentation.logback-appender.experimental.capture-marker-attribute`          | Boolean | false   | Enable the capture of Logback markers as attributes.                                          |
-| `otel.instrumentation.logback-appender.experimental.capture-key-value-pair-attributes` | Boolean | false   | Enable the capture of Logback key value pairs as attributes.                                  |
-| `otel.instrumentation.logback-appender.experimental.capture-logger-context-attributes` | Boolean | false   | Enable the capture of Logback logger context properties as attributes.                        |
-| `otel.instrumentation.logback-appender.experimental.capture-mdc-attributes`            | String  |         | Comma separated list of MDC attributes to capture. Use the wildcard character `*` to capture all attributes.|
+| `otel.instrumentation.logback-appender.experimental.capture-marker-attribute`          | Boolean | false   | Enable the capture of Logback markers as attributes.                                                                                          |
+| `otel.instrumentation.logback-appender.experimental.capture-key-value-pair-attributes` | Boolean | false   | Enable the capture of Logback key value pairs as attributes.                                                                                  |
+| `otel.instrumentation.logback-appender.experimental.capture-logger-context-attributes` | Boolean | false   | Enable the capture of Logback logger context properties as attributes.                                                                        |
+| `otel.instrumentation.logback-appender.experimental.capture-mdc-attributes`            | String  |         | Comma separated list of MDC attributes to capture. Use the wildcard character `*` to capture all attributes.                                  |
 
 [source code attributes]:
   https://github.com/open-telemetry/semantic-conventions/blob/main/docs/general/attributes.md#source-code-attributes
 
-Alternatively, you can enable these features by adding the OpenTelemetry Logbackappender in your `logback.xml` or `logback-spring.xml` file:
+Alternatively, you can enable these features by adding the OpenTelemetry Logback appender in your `logback.xml` or `logback-spring.xml` file:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
