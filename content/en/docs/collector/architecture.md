@@ -2,52 +2,50 @@
 title: Architecture
 weight: 28
 # prettier-ignore
-cSpell:ignore: 
+cSpell:ignore:
 ---
 
-OpenTelemetry Collector is an executable that can receive telemetry data, 
+OpenTelemetry Collector is an executable that can receive telemetry data,
 optionally process it, and export it further.
 
-The Collector supports several popular open-source protocols for receiving 
-and sending telemetry data as well as offering a pluggable architecture for 
-adding more protocols.
+The Collector supports several popular open source protocols for receiving and
+sending telemetry data as well as offering a pluggable architecture for adding
+more protocols.
 
-Data receiving, processing, and exporting is done using 
-[Pipelines](#pipelines). The Collector can be configured to have one or more 
-pipelines. Each pipeline includes:
+Data receiving, processing, and exporting are done using
+[Pipelines](#pipelines). The Collector can be configured to have one or more
+pipelines. Each pipeline includes the following:
 
-- a set of [Receivers](#receivers) that receive the data
-- a series of optional [Processors](#processors) that get the data from 
-receivers and process it
-- a set of [Exporters](#exporters) which get the data from processors and 
-send it further outside the Collector.
+- A set of [Receivers](#receivers) that receive the data.
+- A series of optional [Processors](#processors) that get the data from
+  receivers and process it.
+- A set of [Exporters](#exporters) which get the data from processors and send
+  it outside the Collector.
 
-The same receiver can be included in multiple pipelines and multiple pipelines 
-can include the same Exporter.
+The same receiver can be included in multiple pipelines and multiple pipelines
+can include the same exporter.
 
 ## Pipelines
 
-A pipeline defines a path the data follows in the Collector starting from 
-reception, then further processing or modification and finally exiting the 
-Collector via exporters.
+A pipeline defines a path that data follows in the Collector: from reception, to
+processing (or modification), and finally to export.
 
-Pipelines can operate on 3 telemetry data types: traces, metrics, and logs. 
-The data type is a property of the pipeline defined by its configuration. 
-Receivers, processors, and exporters used in a pipeline must support the 
-particular data type otherwise `ErrDataTypeIsNotSupported` will be reported 
-when the configuration is loaded. A pipeline can be depicted the following way:
+Pipelines can operate on three telemetry data types: traces, metrics, and logs.
+The data type is a property of the pipeline defined by its configuration.
+Receivers, processors, and exporters used in a pipeline must support the
+particular data type otherwise `ErrDataTypeIsNotSupported` will be reported when
+the configuration is loaded. A pipeline can be depicted the following way:
 
 <!--Add Pipelines image via Mermaid.-->
 
-There can be one or more receivers in a pipeline. Data from all receivers is 
-pushed to the first processor, which performs a processing on it and then 
-pushes it to the next processor (or it may drop the data, e.g. if it is a 
-“sampling” processor) and so on until the last processor in the pipeline 
-pushes the data to the exporters. Each exporter gets a copy of each data 
-element. The last processor uses a `fanoutconsumer` to fan out the data to 
-multiple exporters.
+Pipelines can have one or more receivers. Data from all receivers is pushed to
+the first processor, which processes the data and then pushes it to the next
+processor (or a processor may drop the data if it is a “sampling” processor, for
+example), and so on until the last processor in the pipeline pushes the data to
+the exporters. Each exporter gets a copy of each data element. The last
+processor uses a `fanoutconsumer` to fan out the data to multiple exporters.
 
-The pipeline is constructed during Collector startup based on pipeline 
+The pipeline is constructed during Collector startup based on pipeline
 definition in the configuration.
 
 A pipeline configuration typically looks like this:
@@ -55,25 +53,25 @@ A pipeline configuration typically looks like this:
 ```yaml
 service:
   pipelines: # section that can contain multiple subsections, one per pipeline
-    traces:  # type of the pipeline
+    traces: # type of the pipeline
       receivers: [otlp, jaeger, zipkin]
       processors: [memory_limiter, batch]
       exporters: [otlp, jaeger, zipkin]
 ```
 
-The above example defines a pipeline for “traces” type of telemetry data, with 
-3 receivers, 2 processors and 3 exporters.
+The above example defines a pipeline for the “traces” type of telemetry data,
+with three receivers, two processors, and three exporters.
 
-For details of config file format see 
+For details of config file format see
 [this document](https://docs.google.com/document/d/1NeheFG7DmcUYo_h2vLtNRlia9x5wOJMlV4QKEK05FhQ/edit#).
 
 ### Receivers
 
-Receivers typically listen on a network port and receive telemetry data. 
-Usually one receiver is configured to send received data to one pipeline, 
-however it is also possible to configure the same receiver to send the same 
-received data to multiple pipelines. This can be done by simply listing the 
-same receiver in the “receivers” key of several pipelines:
+Receivers typically listen on a network port and receive telemetry data. Usually
+one receiver is configured to send received data to one pipeline. However, it is
+also possible to configure the same receiver to send the same received data to
+multiple pipelines. This can be done by listing the same receiver in the
+“receivers” key of several pipelines:
 
 ```yaml
 receivers:
@@ -84,44 +82,44 @@ receivers:
 
 service:
   pipelines:
-    traces:  # a pipeline of “traces” type
+    traces: # a pipeline of “traces” type
       receivers: [otlp]
       processors: [memory_limiter, batch]
       exporters: [jaeger]
-    traces/2:  # another pipeline of “traces” type
+    traces/2: # another pipeline of “traces” type
       receivers: [otlp]
       processors: [batch]
       exporters: [opencensus]
 ```
 
-In the above example `otlp` receiver will send the same data to pipeline 
-`traces` and to pipeline `traces/2`. (Note: the configuration uses composite 
-key names in the form of `type[/name]` as defined in 
+In the above example, `otlp` receiver will send the same data to pipeline
+`traces` and to pipeline `traces/2`. (Note: the configuration uses composite key
+names in the form of `type[/name]` as defined in
 [this document](https://docs.google.com/document/d/1NeheFG7DmcUYo_h2vLtNRlia9x5wOJMlV4QKEK05FhQ/edit#)).
 
-When the Collector loads this config the result will look like this (part of 
-processors and exporters are omitted from the diagram for brevity):
+When the Collector loads this config, the result will look like this diagram
+(part of processors and exporters are omitted for brevity):
 
 <!--Add Receivers image via Mermaid.-->
 
-Important: when the same receiver is referenced in more than one pipeline the 
-Collector will create only one receiver instance at runtime that will send the 
-data to a fan out consumer, which in turn will send the data to the first 
-processor of each pipeline. The data propagation from receiver to the fan out 
-consumer and then to processors is done via a synchronous function call. This 
-means that if one processor blocks the call the other pipelines that are 
-attached to this receiver will be blocked from receiving the same data and the 
-receiver itself will stop processing and forwarding newly received data.
+> Important: When the same receiver is referenced in more than one pipeline, the
+> Collector creates only one receiver instance at runtime that sends the data to
+> a fan out consumer. The fan out consumer in turn sends the data to the first
+> processor of each pipeline. The data propagation from receiver to the fan out
+> consumer and then to processors is completed using a synchronous function
+> call. This means that if one processor blocks the call, the other pipelines
+> attached to this receiver are blocked from receiving the same data, and the
+> receiver itself stops processing and forwarding newly received data.
 
 ### Exporters
 
-Exporters typically forward the data they get to a destination on a network 
-(but they can also send it elsewhere, e.g `logging` exporter writes the 
-telemetry data to the logging destination).
+Exporters typically forward the data they get to a destination on a network, but
+they can also send the data elsewhere. For example, `logging` exporter writes
+the telemetry data to the logging destination.
 
-The configuration allows to have multiple exporters of the same type, even in 
-the same pipeline. For example one can have 2 `otlp` exporters defined each one 
-sending to a different OTLP endpoint, e.g.:
+The configuration allows for multiple exporters of the same type, even in the
+same pipeline. For example, you can have two `otlp` exporters defined, each one
+sending to a different OTLP endpoint:
 
 ```yaml
 exporters:
@@ -131,8 +129,8 @@ exporters:
     endpoint: localhost:14317
 ```
 
-Usually an exporter gets the data from one pipeline, however it is possible to 
-configure multiple pipelines to send data to the same exporter, e.g.:
+An exporter usually gets the data from one pipeline. However, you can configure
+multiple pipelines to send data to the same exporter:
 
 ```yaml
 exporters:
@@ -143,47 +141,45 @@ exporters:
 
 service:
   pipelines:
-    traces:  # a pipeline of “traces” type
+    traces: # a pipeline of “traces” type
       receivers: [zipkin]
       processors: [memory_limiter]
       exporters: [jaeger]
-    traces/2:  # another pipeline of “traces” type
+    traces/2: # another pipeline of “traces” type
       receivers: [otlp]
       processors: [batch]
       exporters: [jaeger]
 ```
 
-In the above example `jaeger` exporter will get data from pipeline `traces` and 
-from pipeline `traces/2`. When the Collector loads this config the result will 
-look like this (part of processors and receivers are omitted from the diagram 
-for brevity):
+In the above example, `jaeger` exporter gets data from pipeline `traces` and
+from pipeline `traces/2`. When the Collector loads this config, the result looks
+like this diagram (part of processors and receivers are omitted for brevity):
 
 <!--Add Exporters image via Mermaid.-->
 
 ### Processors
 
-A pipeline can contain sequentially connected processors. The first processor 
-gets the data from one or more receivers that are configured for the pipeline, 
-the last processor sends the data to one or more exporters that are configured 
-for the pipeline. All processors between the first and last receive the data 
-strictly only from one preceding processor and send data strictly only to the 
-succeeding processor.
+A pipeline can contain sequentially connected processors. The first processor
+gets the data from one or more receivers that are configured for the pipeline,
+and the last processor sends the data to one or more exporters that are
+configured for the pipeline. All processors between the first and last receive
+the data from only one preceding processor and send data to only one succeeding
+processor.
 
-Processors can transform the data before forwarding it (i.e. add or remove 
-attributes from spans), they can drop the data simply by deciding not to 
-forward it (this is for example how the `probabilisticsampler` processor 
-works), they can also generate new data. This is how a `spanmetrics` 
-processor can produce metrics for spans processed by the pipeline.
+Processors can transform the data before forwarding it, such as adding or
+removing attributes from spans. They can also drop the data by deciding not to
+forward it (for example, the `probabilisticsampler` processor). Or they can
+generate new data, as the `spanmetrics` processor does by producing metrics for
+spans processed by the pipeline.
 
-The same name of the processor can be referenced in the `processors` key of 
-multiple pipelines. In this case the same configuration will be used for each 
-of these processors however each pipeline will always get its own instance of 
-the processor. Each of these processors will have its own state, the processors 
-are never shared between pipelines. For example if `batch` processor is used in 
-several pipelines each pipeline will have its own batch processor (although 
-each batch processor will be configured exactly the same way if they reference 
-the same key in the configuration). As an example, given the following 
-configuration:
+The same name of the processor can be referenced in the `processors` key of
+multiple pipelines. In this case, the same configuration is used for each of
+these processors, but each pipeline always gets its own instance of the
+processor. Each of these processors has its own state, and the processors are
+never shared between pipelines. For example, if `batch` processor is used in
+several pipelines, each pipeline has its own batch processor, but each batch
+processor is configured exactly the same way if they reference the same key in
+the configuration. See the following configuration:
 
 ```yaml
 processors:
@@ -193,70 +189,70 @@ processors:
 
 service:
   pipelines:
-    traces:  # a pipeline of “traces” type
+    traces: # a pipeline of “traces” type
       receivers: [zipkin]
       processors: [batch]
       exporters: [jaeger]
-    traces/2:  # another pipeline of “traces” type
+    traces/2: # another pipeline of “traces” type
       receivers: [otlp]
       processors: [batch]
       exporters: [otlp]
 ```
 
-When the Collector loads this config the result will look like this:
+When the Collector loads this config, the result looks like this diagram:
 
 <!--Add Processors image via Mermaid.-->
 
-Note that each `batch` processor is an independent instance, although both are 
-configured the same way, i.e. each have a `send_batch_size` of 10000.
+Note that each `batch` processor is an independent instance, although they are
+configured the same way with a `send_batch_size` of 10000.
 
-The same name of the processor MUST NOT be referenced multiple times in the 
-`processors` key of a single pipeline.
+> Note: The same name of the processor must not be referenced multiple times in
+> the `processors` key of a single pipeline.
 
 ## <a name="opentelemetry-agent"></a>Running as an Agent
 
-On a typical VM/container, there are user applications running in some
-processes/pods with OpenTelemetry Library (Library). Previously, Library did
-all the recording, collecting, sampling and aggregation on traces/metrics/logs,
-and exported them to other persistent storage backends via the Library
-exporters, or displayed them on local zpages. This pattern has several
-drawbacks, for example:
+On a typical VM/container, user applications are running in some processes/pods
+with OpenTelemetry Library (Library). Previously, Library did all the recording,
+collecting, sampling, and aggregation of traces, metrics, and logs, and then
+either exported the data to other persistent storage backends via the Library
+exporters, or displayed it on local zpages. This pattern has several drawbacks,
+for example:
 
-1. For each OpenTelemetry Library, exporters/zpages need to be re-implemented
+1. For each OpenTelemetry Library, exporters and zpages must be re-implemented
    in native languages.
-2. In some programming languages (e.g Ruby, PHP), it is difficult to do the
-   stats aggregation in process.
-3. To enable exporting OpenTelemetry spans/stats/metrics, application users
-   need to manually add library exporters and redeploy their binaries. This is
-   especially difficult when there’s already an incident and users want to use
-   OpenTelemetry to investigate what’s going on right away.
-4. Application users need to take the responsibility in configuring and
-   initializing exporters. This is error-prone (e.g they may not set up the
-   correct credentials\monitored resources), and users may be reluctant to
+2. In some programming languages (for example, Ruby or PHP), it is difficult to
+   do the stats aggregation in process.
+3. To enable exporting of OpenTelemetry spans, stats, or metrics, application
+   users need to manually add library exporters and redeploy their binaries.
+   This is especially difficult when an incident has occurred, and users want to
+   use OpenTelemetry to investigate the issue right away.
+4. Application users need to take the responsibility for configuring and
+   initializing exporters. These tasks are error-prone (for example, setting up
+   incorrect credentials or monitored resources), and users may be reluctant to
    “pollute” their code with OpenTelemetry.
 
 To resolve the issues above, you can run OpenTelemetry Collector as an Agent.
 The Agent runs as a daemon in the VM/container and can be deployed independent
 of Library. Once Agent is deployed and running, it should be able to retrieve
-traces/metrics/logs from Library, export them to other backends. We MAY also
-give Agent the ability to push configurations (e.g sampling probability) to
-Library. For those languages that cannot do stats aggregation in process, they
-should also be able to send raw measurements and have Agent do the aggregation.
+traces, metrics, and logs from Library, and export them to other backends. We
+may also give Agent the ability to push configurations (such as sampling
+probability) to Library. For those languages that cannot do stats aggregation in
+process, they can send raw measurements and have Agent do the aggregation.
 
 <!--Add Agent image via Mermaid.-->
 
-For developers/maintainers of other libraries: Agent can also
-accept traces/metrics/logs from other tracing/monitoring libraries, such as
-Zipkin, Prometheus, etc. This is done by adding specific receivers. See
-[Receivers](#receivers) for details.
+> For developers and maintainers of other libraries: By adding specific
+> receivers, you can configure Agent to accept traces, metrics, and logs from
+> other tracing/monitoring libraries, such as Zipkin, Prometheus, etc. See
+> [Receivers](#receivers) for details.
 
 ## <a name="opentelemetry-collector"></a>Running as a Gateway
 
-The OpenTelemetry Collector can run as a Gateway instance and receives spans
-and metrics exported by one or more Agents or Libraries, or by
-tasks/agents that emit in one of the supported protocols. The Collector is
-configured to send data to the configured exporter(s). The following figure
-summarizes the deployment architecture:
+The OpenTelemetry Collector can run as a Gateway instance and receive spans and
+metrics exported by one or more Agents or Libraries or by tasks/agents that
+emit in one of the supported protocols. The Collector is configured to send data
+to the configured exporter(s). The following figure summarizes the deployment
+architecture:
 
 <!--Add Service image via Mermaid.-->
 
