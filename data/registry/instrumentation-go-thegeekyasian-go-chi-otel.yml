@@ -9,7 +9,9 @@ tags:
   - go-chi-otel
   - chi
 license: Apache 2.0
-description: Instrumentation for the Golang `go-chi/chi` package, enabling users to have custom scope names.
+description:
+  Instrumentation for the Golang `go-chi/chi` package, enabling users to have
+  custom scope names.
 authors:
   - name: The Geeky Asian
     email: msafeeransari@gmail.com

@@ -4019,6 +4019,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:05:38.529172-05:00"
   },
+  "https://github.com/thegeekyasian/go-chi-otel": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-20T05:41:18.324089503Z"
+  },
   "https://github.com/theletterf/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:01.244997-05:00"
