@@ -194,7 +194,7 @@ metadata:
   name: demo-instrumentation
 spec:
   exporter:
-    endpoint: http://demo-collector:4317
+    endpoint: http://demo-collector:4318
   propagators:
     - tracecontext
     - baggage
@@ -205,9 +205,9 @@ EOF
 ```
 
 By default, the Instrumentation resource that auto-instruments Java services
-uses `otlp` with the `grpc` protocol. This means that the configured endpoint
-must be able to receive OTLP over `grpc`. Therefore, the example uses
-`http://demo-collector:4317`, which connects to the `grpc` port of the
+uses `otlp` with the `http+protobuf` protocol. This means that the configured endpoint
+must be able to receive OTLP over `http` via `protobuf` payloads. Therefore, the example uses
+`http://demo-collector:4318`, which connects to the `http` port of the
 otlpreceiver of the Collector created in the previous step.
 
 #### Excluding auto-instrumentation {#java-excluding-auto-instrumentation}
@@ -231,7 +231,7 @@ metadata:
   name: demo-instrumentation
 spec:
   exporter:
-    endpoint: http://demo-collector:4317
+    endpoint: http://demo-collector:4318
   propagators:
     - tracecontext
     - baggage
