@@ -12,26 +12,7 @@ this differs from server to server.
 
 ## JBoss EAP / WildFly
 
-You can define the path to the Java agent by adding the `javaagent` argument to
-the `JAVA_TOOL_OPTIONS` environment variable. For example:
-
-{{< tabpane text=true persist=lang >}}
-
-{{% tab header="Linux" lang=Linux %}}
-
-```sh
-export JAVA_TOOL_OPTIONS="-javaagent:/path/to/opentelemetry-javaagent.jar"
-```
-
-{{% /tab %}} {{% tab header="Windows" lang=Windows %}}
-
-```bat
-set JAVA_TOOL_OPTIONS="-javaagent:<Drive>:\path\to\opentelemetry-javaagent.jar"
-```
-
-{{% /tab %}} {{< /tabpane >}}
-
-Alternatively, you can add the `javaagent` argument at the end of the standalone
+You can add the `javaagent` argument at the end of the standalone
 configuration file:
 
 {{< tabpane text=true persist=lang >}}
