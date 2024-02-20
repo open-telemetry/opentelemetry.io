@@ -3,8 +3,6 @@ title: Demo Architecture
 linkTitle: Architecture
 aliases: [current_architecture]
 body_class: otel-mermaid-max-width
-# prettier-ignore
-cSpell:ignore: cppsvc dotnetsvc erlangsvc featureflagstore golangsvc javascriptsvc javasvc kotlinsvc loadgenerator phpsvc pythonsvc rubysvc rustsvc tsdb typescriptsvc
 ---
 
 **OpenTelemetry Demo** is composed of microservices written in different
@@ -119,8 +117,9 @@ classDef typescript fill:#e98516,color:black;
 ```
 
 Follow these links for the current state of
-[metric](/docs/demo/metric-features/) and [trace](/docs/demo/trace-features/)
-instrumentation of the demo applications.
+[metric](/docs/demo/telemetry-features/metric-coverage/) and
+[trace](/docs/demo/telemetry-features/trace-coverage/) instrumentation of the
+demo applications.
 
 The collector is configured in
 [otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otelcollector/otelcol-config.yml),

@@ -68,7 +68,9 @@ spec:
       otlp:
         protocols:
           grpc:
+            endpoint: 0.0.0.0:4317
           http:
+            endpoint: 0.0.0.0:4318
     processors:
       memory_limiter:
         check_interval: 1s
@@ -142,7 +144,7 @@ endpoint must be able to receive OTLP over `http/protobuf`. Therefore, the
 example uses `http://demo-collector:4318`, which will connect to the `http` port
 of the `otlpreceiver` of the Collector created in the previous step.
 
-**Excluding auto-instrumentation**
+#### Excluding auto-instrumentation {#dotnet-excluding-auto-instrumentation}
 
 By default, the .NET auto-instrumentation ships with
 [many instrumentation libraries](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#instrumentations).
@@ -174,10 +176,10 @@ spec:
         value: false
 ```
 
-**Learn more**
+#### Learn more {#dotnet-learn-more}
 
 For more details, see
-[.NET Auto Instrumentation docs](/docs/instrumentation/net/automatic/).
+[.NET Auto Instrumentation docs](/docs/languages/net/automatic/).
 
 ### Java
 
@@ -208,10 +210,10 @@ must be able to receive OTLP over `grpc`. Therefore, the example uses
 `http://demo-collector:4317`, which connects to the `grpc` port of the
 otlpreceiver of the Collector created in the previous step.
 
-**Excluding auto-instrumentation**
+#### Excluding auto-instrumentation {#java-excluding-auto-instrumentation}
 
 By default, the Java auto-instrumentation ships with
-[many instrumentation libraries](/docs/instrumentation/java/automatic/#supported-libraries-frameworks-application-services-and-jvms).
+[many instrumentation libraries](/docs/languages/java/automatic/#supported-libraries-frameworks-application-services-and-jvms).
 This makes instrumentation easy, but could result in too much or unwanted data.
 If there are any libraries you do not want to use you can set the
 `OTEL_INSTRUMENTATION_[NAME]_ENABLED=false` where `[NAME]` is the name of the
@@ -220,7 +222,7 @@ the default libraries by setting
 `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false` and then use
 `OTEL_INSTRUMENTATION_[NAME]_ENABLED=true` where `[NAME]` is the name of the
 library. For more details, see
-[Suppressing specific auto-instrumentation](/docs/instrumentation/java/automatic/agent-config/#suppressing-specific-auto-instrumentation).
+[Suppressing specific auto-instrumentation](/docs/languages/java/automatic/configuration/#suppressing-specific-auto-instrumentation).
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
@@ -244,10 +246,10 @@ spec:
         value: false
 ```
 
-**Learn more**
+#### Learn more {#java-learn-more}
 
 For more details, see
-[Java agent Configuration](/docs/instrumentation/java/automatic/agent-config/).
+[Java agent Configuration](/docs/languages/java/automatic/configuration/).
 
 ### Node.js
 
@@ -278,7 +280,7 @@ must be able to receive OTLP over `grpc`. Therefore, the example uses
 `http://demo-collector:4317`, which connects to the `grpc` port of the
 `otlpreceiver` of the Collector created in the previous step.
 
-**Excluding auto-instrumentation**
+#### Excluding auto-instrumentation {#js-excluding-auto-instrumentation}
 
 By default, the Node.js auto-instrumentation ships with
 [many instrumentation libraries](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#supported-instrumentations).
@@ -287,10 +289,10 @@ specific packages. If you don't want to use a package included by the default
 image you must either supply your own image that includes only the packages you
 want or use manual instrumentation.
 
-**Learn more**
+#### Learn more {#js-learn-more}
 
 For more details, see
-[Node.js auto-instrumentation](/docs/instrumentation/js/libraries/#registration).
+[Node.js auto-instrumentation](/docs/languages/js/libraries/#registration).
 
 ### Python
 
@@ -328,7 +330,7 @@ in the previous step.
 > Operator you **MUST** set these env variables to `http/protobuf`, or Python
 > auto-instrumentation will not work.
 
-**Auto-instrumenting Python logs**
+#### Auto-instrumenting Python logs
 
 By default, Python logs auto-instrumentation is disabled. If you would like to
 enable this feature, you must to set the `OTEL_LOGS_EXPORTER` and
@@ -359,13 +361,13 @@ spec:
 > Note that `OTEL_LOGS_EXPORTER` must be explicitly set to `otlp_proto_http`,
 > otherwise it defaults to gRPC.
 
-**Excluding auto-instrumentation**
+#### Excluding auto-instrumentation {#python-excluding-auto-instrumentation}
 
-By default the Python auto-instrumentation will detect the packages in your
-Python service and instrument anything it can. This makes instrumentation easy,
-but can result in too much or unwanted data. If there are any packages you do
-not want to instrument, you can set the `OTEL_PYTHON_DISABLED_INSTRUMENTATIONS`
-environment variable
+By default, the Python auto-instrumentation ships with
+[many instrumentation libraries](https://github.com/open-telemetry/opentelemetry-operator/blob/main/autoinstrumentation/python/requirements.txt).
+This makes instrumentation easy, but can result in too much or unwanted data. If
+there are any packages you do not want to instrument, you can set the
+`OTEL_PYTHON_DISABLED_INSTRUMENTATIONS` environment variable.
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
@@ -389,9 +391,9 @@ spec:
           instrumentation>
 ```
 
-**Learn more**
+#### Learn more {#python-learn-more}
 
-[See the Python agent Configuration docs for more details.](/docs/instrumentation/python/automatic/agent-config/#disabling-specific-instrumentations)
+[See the Python agent Configuration docs for more details.](/docs/languages/python/automatic/configuration/#disabling-specific-instrumentations)
 
 ### Go
 
@@ -406,7 +408,7 @@ metadata:
   name: demo-instrumentation
 spec:
   exporter:
-    endpoint: http://demo-collector:4317
+    endpoint: http://demo-collector:4318
   propagators:
     - tracecontext
     - baggage
@@ -417,14 +419,10 @@ EOF
 ```
 
 By default, the Instrumentation resource that auto-instruments Go services uses
-`otlp` with the `grpc` protocol. This means that the configured endpoint must be
-able to receive OTLP over `grpc`. Therefore, the example uses
-`http://demo-collector:4317`, which connects to the `grpc` port of the
-`otlpreceiver` of the Collector created in the previous step.
-
-> Go auto-instrumentation only supports exporting via gRPC. Setting the protocol
-> or exporter to any other value via environment variables will result in silent
-> failure.
+`otlp` with the `http/protobuf` protocol. This means that the configured
+endpoint must be able to receive OTLP over `http/protobuf`. Therefore, the
+example uses `http://demo-collector:4318`, which connects to the `http/protobuf`
+port of the `otlpreceiver` of the Collector created in the previous step.
 
 The Go auto-instrumentation does not support disabling any instrumentation.
 [See the Go Auto-Instrumentation repository for me details.](https://github.com/open-telemetry/opentelemetry-go-instrumentation)
@@ -542,7 +540,7 @@ Metadata:
 Spec:
 ...
  Exporter:
-   Endpoint:  http://otel-collector-collector.opentelemetry.svc.cluster.local:4318
+   Endpoint:  http://demo-collector.opentelemetry.svc.cluster.local:4318
 ...
  Propagators:
    tracecontext
@@ -660,12 +658,12 @@ For example:
 ```yaml
 spec:
   exporter:
-    endpoint: http://otel-collector-collector.opentelemetry.svc.cluster.local:4317
+    endpoint: http://demo-collector.opentelemetry.svc.cluster.local:4317
 ```
 
 Here, the Collector endpoint is set to
-`http://otel-collector.opentelemetry.svc.cluster.local:4317`, where
-`otel-collector` is the name of the OTel Collector Kubernetes `Service`. In the
+`http://demo-collector.opentelemetry.svc.cluster.local:4317`, where
+`demo-collector` is the name of the OTel Collector Kubernetes `Service`. In the
 above example, the Collector is running in a different namespace from the
 application, which means that `opentelemetry.svc.cluster.local` must be appended
 to the Collector’s service name, where `opentelemetry` is the namespace in which

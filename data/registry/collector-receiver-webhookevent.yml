@@ -1,16 +1,21 @@
-# cSpell:ignore webhookevent
+# cSpell:ignore webhookevent webhookeventreceiver
 title: Webhook Event Receiver
 registryType: receiver
-isThirdParty: false
 language: collector
 tags:
   - webhookevent
   - receiver
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/webhookeventreceiver
 license: Apache 2.0
 description:
   The Webhook Event receiver is meant to act as a generally available push based
   receiver for any webhook style data source.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/webhookeventreceiver
+createdAt: 2022-10-25
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/webhookeventreceiver
+  version: v0.94.0

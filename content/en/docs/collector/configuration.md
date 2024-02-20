@@ -1,48 +1,96 @@
 ---
 title: Configuration
 weight: 20
+description: Learn how to configure the Collector to suit your needs
 # prettier-ignore
-cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca loglevel OIDC oidc otlphttp pprof prodevent prometheusremotewrite servicegraph spanevents spanmetrics upsert zpages
+cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca loglevel OIDC oidc otlphttp pprof prodevent prometheusremotewrite servicegraph spanevents spanmetrics struct upsert zpages
 ---
 
 <!-- markdownlint-disable link-fragments -->
 
-Familiarity with the following pages is assumed:
+You can configure the OpenTelemetry Collector to suit your observability needs.
+Before you learn how Collector configuration works, familiarize yourself with
+the following content:
 
-- [Data collection concepts][dcc] in order to understand the repositories
-  applicable to the OpenTelemetry Collector.
+- [Data collection concepts][dcc], to understand the repositories applicable to
+  the OpenTelemetry Collector.
 - [Security guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md)
 
-## Basics
+## Location {#location}
 
-The Collector consists of four components that access telemetry data:
+By default, the Collector configuration is located in
+`/etc/<otel-directory>/config.yaml`, where `<otel-directory>` can be `otelcol`,
+`otelcol-contrib`, or another value, depending on the Collector version or the
+Collector distribution you're using.
+
+You can provide one or more configurations using the `--config` option. For
+example:
+
+```shell
+otelcol --config=customconfig.yaml
+```
+
+You can also provide configurations using environment variables, YAML paths, or
+HTTP URIs. For example:
+
+```shell
+otelcol --config=env:MY_CONFIG_IN_AN_ENVVAR` --config=https://server/config.yaml
+otelcol --config="yaml:exporters::debug::verbosity: normal"`
+```
+
+To validate a configuration file, use the `validate` command. For example:
+
+```shell
+otelcol validate --config=customconfig.yaml
+```
+
+## Configuration structure {#basics}
+
+The structure of any Collector configuration file consists of four classes of
+pipeline components that access telemetry data:
 
 - [Receivers](#receivers)
-  <img width="32" class="img-initial" src="/img/logos/32x32/Receivers.svg">
+  <img width="32" alt="" class="img-initial" src="/img/logos/32x32/Receivers.svg">
 - [Processors](#processors)
-  <img width="32" class="img-initial" src="/img/logos/32x32/Processors.svg">
+  <img width="32" alt="" class="img-initial" src="/img/logos/32x32/Processors.svg">
 - [Exporters](#exporters)
-  <img width="32" class="img-initial" src="/img/logos/32x32/Exporters.svg">
+  <img width="32" alt="" class="img-initial" src="/img/logos/32x32/Exporters.svg">
 - [Connectors](#connectors)
-  <img width="32" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg">
+  <img width="32" alt="" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg">
 
-These components once configured must be enabled via pipelines within the
-[service](#service) section.
+After each pipeline component is configured you must enable it using the
+pipelines within the [service](#service) section of the configuration file.
 
-Secondarily, there are [extensions](#extensions), which provide capabilities
-that can be added to the Collector, but which do not require direct access to
-telemetry data and are not part of pipelines. They are also enabled within the
-[service](#service) section.
+Besides pipeline components you can also configure [extensions](#extensions),
+which provide capabilities that can be added to the Collector, such as
+diagnostic tools. Extensions don't require direct access to telemetry data and
+are enabled through the [service](#service) section.
 
-An example configuration would look like:
+<a id="endpoint-0.0.0.0-warning"></a> The following is an example of Collector
+configuration with a receiver, a processor, an exporter, and three extensions.
+
+{{% alert title="Important" color="warning" %}}
+
+While it is generally preferable to bind endpoints to `localhost` when all
+clients are local, our example configurations use the "unspecified" address
+`0.0.0.0` as a convenience. The Collector currently defaults to `0.0.0.0`, but
+the default will be changed to `localhost` in the near future. For details
+concerning either of these choices as endpoint configuration value, see
+[Safeguards against denial of service attacks].
+
+[Safeguards against denial of service attacks]:
+  https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md#safeguards-against-denial-of-service-attacks
+
+{{% /alert %}}
 
 ```yaml
 receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
       http:
-
+        endpoint: 0.0.0.0:4318
 processors:
   batch:
 
@@ -72,17 +120,19 @@ service:
       exporters: [otlp]
 ```
 
-Note that receivers, processors, exporters and/or pipelines are defined via
-component identifiers in `type[/name]` format (e.g. `otlp` or `otlp/2`).
-Components of a given type can be defined more than once as long as the
-identifiers are unique. For example:
+Note that receivers, processors, exporters and pipelines are defined through
+component identifiers following the `type[/name]` format, for example `otlp` or
+`otlp/2`. You can define components of a given type more than once as long as
+the identifiers are unique. For example:
 
 ```yaml
 receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
       http:
+        endpoint: 0.0.0.0:4318
   otlp/2:
     protocols:
       grpc:
@@ -125,13 +175,14 @@ service:
 ```
 
 The configuration can also include other files, causing the Collector to merge
-the two files in a single in-memory representation of the YAML configuration:
+them in a single in-memory representation of the YAML configuration:
 
 ```yaml
 receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
 
 exporters: ${file:exporters.yaml}
 
@@ -158,6 +209,7 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
 
 exporters:
   otlp:
@@ -172,27 +224,22 @@ service:
       exporters: [otlp]
 ```
 
-## Receivers <img width="35" class="img-initial" src="/img/logos/32x32/Receivers.svg"> {#receivers}
+## Receivers <img width="35" class="img-initial" alt="" src="/img/logos/32x32/Receivers.svg"> {#receivers}
 
-A receiver, which can be push or pull based, is how data gets into the
-Collector. Receivers may support one or more
-[data sources](/docs/concepts/signals/).
+Receivers collect telemetry from one or more sources. They can be pull or push
+based, and may support one or more [data sources](/docs/concepts/signals/).
 
-The `receivers:` section is how receivers are configured. Many receivers come
-with default settings so simply specifying the name of the receiver is enough to
-configure it (for example, `zipkin:`). If configuration is required or a user
-wants to change the default configuration then such configuration must be
-defined in this section. Configuration parameters specified for which the
-receiver provides a default configuration are overridden.
+Receivers are configured in the `receivers` section. Many receivers come with
+default settings, so that specifying the name of the receiver is enough to
+configure it. If you need to configure a receiver or want to change the default
+configuration, you can do so in this section. Any setting you specify overrides
+the default values, if present.
 
-> Configuring a receiver does not enable it. Receivers are enabled via pipelines
-> within the [service](#service) section.
+> Configuring a receiver does not enable it. Receivers are enabled by adding
+> them to the appropriate pipelines within the [service](#service) section.
 
-One or more receivers must be configured. By default, no receivers are
-configured. A basic example of receivers is provided below.
-
-> For detailed receiver configuration, see the
-> [receiver README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md).
+The Collector requires one or more receivers. The following example shows
+various receivers in the same configuration file:
 
 ```yaml
 receivers:
@@ -217,6 +264,7 @@ receivers:
   jaeger:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
       thrift_binary:
       thrift_compact:
       thrift_http:
@@ -232,7 +280,9 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
       http:
+        endpoint: 0.0.0.0:4318
 
   # Data sources: metrics
   prometheus:
@@ -247,28 +297,33 @@ receivers:
   zipkin:
 ```
 
-## Processors <img width="35" class="img-initial" src="/img/logos/32x32/Processors.svg"> {#processors}
+> For detailed receiver configuration, see the
+> [receiver README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md).
 
-Processors are run on data between being received and being exported. Processors
-are optional though
-[some are recommended](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor#recommended-processors).
+## Processors <img width="35" class="img-initial" alt="" src="/img/logos/32x32/Processors.svg"> {#processors}
 
-The `processors:` section is how processors are configured. Processors may come
-with default settings, but many require configuration. Any configuration for a
-processor must be done in this section. Configuration parameters specified for
-which the processor provides a default configuration are overridden.
+Processors take the data collected by receivers and modify or transform it
+before sending it to the exporters. Data processing happens according to rules
+or settings defined for each processor, which might include filtering, dropping,
+renaming, or recalculating telemetry, among other operations. The order of the
+processors in a pipeline determines the order of the processing operations that
+the Collector applies to the signal.
 
-> Configuring a processor does not enable it. Processors are enabled via
-> pipelines within the [service](#service) section.
+Processors are optional, although some
+[are recommended](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor#recommended-processors).
 
-A basic example of the default processors is provided below. The full list of
-processors can be found by combining the list found
-[here](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor)
-and
-[here](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor).
+You can configure processors using the `processors` section of the Collector
+configuration file. Any setting you specify overrides the default values, if
+present.
 
-> For detailed processor configuration, see the
-> [processor README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md).
+> Configuring a processor does not enable it. Processors are enabled by adding
+> them to the appropriate pipelines within the [service](#service) section.
+
+The following example shows several default processors in the same configuration
+file. You can find the full list of processors by combining the list from
+[opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor)
+and the list from
+[opentelemetry-collector](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor).
 
 ```yaml
 processors:
@@ -328,28 +383,25 @@ processors:
       separator: '::'
 ```
 
-## Exporters <img width="35" class="img-initial" src="/img/logos/32x32/Exporters.svg"> {#exporters}
+> For detailed processor configuration, see the
+> [processor README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md).
 
-An exporter, which can be push or pull based, is how you send data to one or
-more backends/destinations. Exporters may support one or more
+## Exporters <img width="35" class="img-initial" alt="" src="/img/logos/32x32/Exporters.svg"> {#exporters}
+
+Exporters send data to one or more backends or destinations. Exporters can be
+pull or push based, and may support one or more
 [data sources](/docs/concepts/signals/).
 
-The `exporters:` section is how exporters are configured. Exporters may come
-with default settings, but many require configuration to specify at least the
-destination and security settings. Any configuration for an exporter must be
-done in this section. Configuration parameters specified for which the exporter
-provides a default configuration are overridden.
+The `exporters` section contains exporters configuration. Most exporters require
+configuration to specify at least the destination, as well as security settings,
+like authentication tokens or TLS certificates. Any setting you specify
+overrides the default values, if present.
 
-> Configuring an exporter does not enable it. Exporters are enabled via
-> pipelines within the [service](#service) section.
+> Configuring an exporter does not enable it. Exporters are enabled by adding
+> them to the appropriate pipelines within the [service](#service) section.
 
-One or more exporters must be configured. By default, no exporters are
-configured. A basic example of exporters is provided below. Certain exporter
-configurations require x.509 certificates to be created in order to be secure,
-as described in [setting up certificates](#setting-up-certificates).
-
-> For detailed exporter configuration, see the
-> [exporter README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md).
+The Collector requires one or more exporters. The following example shows
+various exporters in the same configuration file:
 
 ```yaml
 exporters:
@@ -359,7 +411,7 @@ exporters:
 
   # Data sources: traces
   otlp/jaeger:
-    endpoint: jaeger-all-in-one:4317
+    endpoint: jaeger-server:4317
     tls:
       cert_file: cert.pem
       key_file: cert-key.pem
@@ -386,50 +438,61 @@ exporters:
 
   # Data sources: traces, metrics
   otlphttp:
-    endpoint: https://example.com:4318
+    endpoint: https://otlp.example.com:4318
 
   # Data sources: metrics
   prometheus:
-    endpoint: prometheus:8889
+    endpoint: 0.0.0.0:8889
     namespace: default
 
   # Data sources: metrics
   prometheusremotewrite:
-    endpoint: http://some.url:9411/api/prom/push
-    # For official Prometheus (e.g. running via Docker)
-    # endpoint: 'http://prometheus:9090/api/v1/write'
+    endpoint: http://prometheus.example.com:9411/api/prom/push
+    # When using the official Prometheus (running via Docker)
+    # endpoint: 'http://prometheus:9090/api/v1/write', add:
     # tls:
     #   insecure: true
 
   # Data sources: traces
   zipkin:
-    endpoint: http://localhost:9411/api/v2/spans
+    endpoint: http://zipkin.example.com:9411/api/v2/spans
 ```
 
-## Connectors <img width="32" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg"> {#connectors}
+Notice that some exporters require x.509 certificates in order to establish
+secure connections, as described in
+[setting up certificates](#setting-up-certificates).
 
-A connector is both an exporter and receiver. As the name suggests a Connector
-connects two pipelines: It consumes data as an exporter at the end of one
-pipeline and emits data as a receiver at the start of another pipeline. It may
-consume and emit data of the same data type, or of different data types. A
-connector may generate and emit data to summarize the consumed data, or it may
-simply replicate or route data.
+> For more information on exporter configuration, see the
+> [exporter README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md).
 
-The `connectors:` section is how connectors are configured.
+## Connectors <img width="32" class="img-initial" alt="" src="/img/logos/32x32/Load_Balancer.svg"> {#connectors}
 
-> Configuring a connectors does not enable it. Connectors are enabled via
+Connectors join two pipelines, acting as both exporter and receiver. A connector
+consumes data as an exporter at the end of one pipeline and emits data as a
+receiver at the beginning of another pipeline. The data consumed and emitted may
+be of the same type or of different data types. You can use connectors to
+summarize consumed data, replicate it, or route it.
+
+You can configure one or more connectors using the `connectors` section of the
+Collector configuration file. By default, no connectors are configured. Each
+type of connector is designed to work with one or more pairs of data types and
+may only be used to connect pipelines accordingly.
+
+> Configuring a connector doesn't enable it. Connectors are enabled through
 > pipelines within the [service](#service) section.
 
-One or more connectors may be configured. By default, no connectors are
-configured. A basic example of connectors is provided below.
-
-> For detailed connector configuration, see the
-> [connector README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md).
+The following example shows the `count` connector and how it's configured in the
+`pipelines` section. Notice that the connector acts as an exporter for traces
+and as a receiver for metrics, connecting both pipelines:
 
 ```yaml
-connectors:
-  forward:
+receivers:
+  foo:
 
+exporters:
+  bar:
+
+connectors:
   count:
     spanevents:
       my.prod.event.count:
@@ -438,48 +501,36 @@ connectors:
           - 'attributes["env"] == "prod"'
           - 'name == "prodevent"'
 
-  spanmetrics:
-    histogram:
-      explicit:
-        buckets: [100us, 1ms, 2ms, 6ms, 10ms, 100ms, 250ms]
-    dimensions:
-      - name: http.method
-        default: GET
-      - name: http.status_code
-    dimensions_cache_size: 1000
-    aggregation_temporality: 'AGGREGATION_TEMPORALITY_CUMULATIVE'
-
-  servicegraph:
-    latency_histogram_buckets: [1, 2, 3, 4, 5]
-    dimensions:
-      - dimension-1
-      - dimension-2
-    store:
-      ttl: 1s
-      max_items: 10
+service:
+  pipelines:
+    traces:
+      receivers: [foo]
+      exporters: [count]
+    metrics:
+      receivers: [count]
+      exporters: [bar]
 ```
+
+> For detailed connector configuration, see the
+> [connector README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md).
 
 ## Extensions
 
-Extensions are available primarily for tasks that do not involve processing
-telemetry data. Examples of extensions include health monitoring, service
-discovery, and data forwarding. Extensions are optional.
+Extensions are optional components that expand the capabilities of the Collector
+to accomplish tasks not directly involved with processing telemetry data. For
+example, you can add extensions for Collector health monitoring, service
+discovery, or data forwarding, among others.
 
-The `extensions:` section is how extensions are configured. Many extensions come
-with default settings so simply specifying the name of the extension is enough
-to configure it (for example, `health_check:`). If configuration is required or
-a user wants to change the default configuration then such configuration must be
-defined in this section. Configuration parameters specified for which the
-extension provides a default configuration are overridden.
+You can configure extensions through the `extensions` section of the Collector
+configuration file. Most extensions come with default settings, so you can
+configure them just by specifying the name of the extension. Any setting you
+specify overrides the default values, if present.
 
-> Configuring an extension does not enable it. Extensions are enabled within the
+> Configuring an extension doesn't enable it. Extensions are enabled within the
 > [service](#service) section.
 
-By default, no extensions are configured. A basic example of extensions is
-provided below.
-
-> For detailed extension configuration, see the
-> [extension README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/README.md).
+By default, no extensions are configured. The following example shows several
+extensions configured in the same file:
 
 ```yaml
 extensions:
@@ -490,21 +541,26 @@ extensions:
     size_mib: 512
 ```
 
-## Service
+> For detailed extension configuration, see the
+> [extension README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/README.md).
 
-The service section is used to configure what components are enabled in the
+## Service section {#service}
+
+The `service` section is used to configure what components are enabled in the
 Collector based on the configuration found in the receivers, processors,
 exporters, and extensions sections. If a component is configured, but not
-defined within the service section then it is not enabled. The service section
-consists of three sub-sections:
+defined within the `service` section, then it's not enabled.
 
-- extensions
-- pipelines
-- telemetry
+The service section consists of three subsections:
+
+- Extensions
+- Pipelines
+- Telemetry
 
 ### Extensions {#service-extensions}
 
-Extensions consist of a list of all extensions to enable. For example:
+The `extensions` subsection consists of a list of desired extensions to be
+enabled. For example:
 
 ```yaml
 service:
@@ -513,60 +569,93 @@ service:
 
 ### Pipelines
 
-Pipelines can be of the following types:
+The `pipelines` subsection is where the pipelines are configured, which can be
+of the following types:
 
-- traces: collects and processes trace data.
-- metrics: collects and processes metric data.
-- logs: collects and processes log data.
+- `traces` collect and processes trace data.
+- `metrics` collect and processes metric data.
+- `logs` collect and processes log data.
 
-A pipeline consists of a set of receivers, processors and exporters. Each
-receiver/processor/exporter must be defined in the configuration outside of the
-service section to be included in a pipeline.
+A pipeline consists of a set of receivers, processors and exporters. Before
+including a receiver, processor, or exporter in a pipeline, make sure to define
+its configuration in the appropriate section.
 
-_Note:_ Each receiver/processor/exporter can be used in more than one pipeline.
-For processor(s) referenced in multiple pipelines, each pipeline will get a
-separate instance of that processor(s). This is in contrast to
-receiver(s)/exporter(s) referenced in multiple pipelines, where only one
-instance of a receiver/exporter is used for all pipelines. Also note that the
-order of processors dictates the order in which data is processed.
+You can use the same receiver, processor, or exporter in more than one pipeline.
+When a processor is referenced in multiple pipelines, each pipeline gets a
+separate instance of the processor.
 
-The following is an example pipeline configuration:
+The following is an example of pipeline configuration. Note that the order of
+processors dictates the order in which data is processed:
 
 ```yaml
 service:
   pipelines:
     metrics:
       receivers: [opencensus, prometheus]
+      processors: [batch]
       exporters: [opencensus, prometheus]
     traces:
       receivers: [opencensus, jaeger]
-      processors: [batch]
+      processors: [batch, memory_limiter]
       exporters: [opencensus, zipkin]
 ```
 
 ### Telemetry
 
-Telemetry is where the telemetry for the collector itself can be configured. It
-has two subsections: `logs` and `metrics`.
+The `telemetry` is where the telemetry for the Collector itself can be
+configured. Collector's own telemetry can be useful when troubleshooting
+Collector issues. It consists of two subsections: `logs` and `metrics`.
 
-The `logs` subsection allows configuration of the logs generated by the
-collector. By default the collector will write its logs to stderr with a log
-level of `INFO`. You can also add static key-value pairs to all logs using the
-`initial_fields` section.
-[View the full list of `logs` options here.](https://github.com/open-telemetry/opentelemetry-collector/blob/7666eb04c30e5cfd750db9969fe507562598f0ae/config/service.go#L41-L97)
+The `logs` subsection lets you configure how the logs can be generated by the
+Collector. By default, the Collector writes its logs to `stderr` with a log
+level of `INFO`. You can also add static key-value pairs to all log entries with
+the `initial_fields` to enrich the logging context. As per the `LogsConfig`
+defined in v{{%
+param vers %}} [here](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
+param vers %}}/service/telemetry/config.go), the `logs` configuration options are:
 
-The `metrics` subsection allows configuration of the metrics generated by the
-collector. By default the collector will generate basic metrics about itself and
-expose them for scraping at `localhost:8888/metrics`
-[View the full list of `metrics` options here.](https://github.com/open-telemetry/opentelemetry-collector/blob/7666eb04c30e5cfd750db9969fe507562598f0ae/config/service.go#L99-L111)
+- `level`: sets the minimum enabled logging level, default `INFO`.
+- `development`: puts the logger in development mode, default `false`.
+- `encoding`: sets the logger's encoding, default `console`. Example values are
+  `json`, `console`.
+- `disable_caller`: stops annotating logs with the calling function's file name
+  and line number. By default `false`, all logs are annotated.
+- `disable_stacktrace`: disables automatic stacktrace capturing, default
+  `false`. By default, stacktraces are captured for `WARN` level and above logs
+  in development and `ERROR` level and above in production.
+- `sampling`: sets a sampling policy.
+- `output_paths`: a list of URLs or file paths to write logging output to,
+  default `["stderr"]`.
+- `error_output_paths`: a list of URLs or file paths to write logger errors to,
+  default `["stderr"]`.
+- `initial_fields`: a collection of fields to add to the root logger. By
+  default, there is no initial field.
 
-The following is an example telemetry configuration:
+The `metrics` subsection lets you configure how the metrics can be generated and
+exposed by the Collector. By default, the Collector generates basic metrics
+about itself and expose them for scraping at <http://127.0.0.1:8888/metrics>.
+You can expose the endpoint to a specific or even all network interfaces when
+needed. As per the `MetricsConfig` defined in v{{%
+param vers %}} [here](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
+param vers %}}/service/telemetry/config.go), the `metrics` configuration options
+are:
+
+- `level`: the level of telemetry metrics, default `basic`. The possible values
+  are:
+  - "none" indicates that no telemetry data should be collected.
+  - "basic" is the recommended and covers the basics of the service telemetry.
+  - "normal" adds some other indicators on top of basic.
+  - "detailed" adds dimensions and views to the previous levels.
+- `address`: the `[address]:port` formatted URL that metrics exposition should
+  be bound to. Default `127.0.0.1:8888`.
+
+The following example shows the Collector telemetry configuration:
 
 ```yaml
 service:
   telemetry:
     logs:
-      level: debug
+      level: DEBUG
       initial_fields:
         service: my-instance
     metrics:
@@ -574,9 +663,40 @@ service:
       address: 0.0.0.0:8888
 ```
 
+Note that it's possible to scrape the metrics by using a
+[Prometheus receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver)
+within the Collector configuration so that we can consume the Collector's
+metrics at the backend. For example:
+
+```yaml
+receivers:
+  prometheus:
+    trim_metric_suffixes: true
+    use_start_time_metric: true
+    start_time_metric_regex: .*
+    config:
+      scrape_configs:
+        - job_name: 'otel-collector'
+          scrape_interval: 5s
+          static_configs:
+            - targets: ['127.0.0.1:8888']
+
+exporters:
+  otlp:
+    endpoint: my.company.com:4317
+    tls:
+      insecure: true
+
+service:
+  pipelines:
+    metrics:
+      receivers: [prometheus]
+      exporters: [otlp]
+```
+
 ## Other Information
 
-### Configuration Environment Variables
+### Environment variables
 
 The use and expansion of environment variables is supported in the Collector
 configuration. For example to use the values stored on the `DB_KEY` and
@@ -600,48 +720,47 @@ exporters:
     namespace: $$DataVisualization
 ```
 
-### Proxy Support
+### Proxy support
 
-Exporters that leverage the `net/http` package (all do today) respect the
-following proxy environment variables:
+Exporters that use the [`net/http`](https://pkg.go.dev/net/http) package respect
+the following proxy environment variables:
 
-- HTTP_PROXY
-- HTTPS_PROXY
-- NO_PROXY
+- `HTTP_PROXY`: Address of the HTTP proxy
+- `HTTPS_PROXY`: Address of the HTTPS proxy
+- `NO_PROXY`: Addresses that must not use the proxy
 
-If set at Collector start time then exporters, regardless of protocol, will or
-will not proxy traffic as defined by these environment variables.
+If set at Collector start time, exporters, regardless of the protocol, proxy
+traffic or bypass proxy traffic as defined by these environment variables.
 
 ### Authentication
 
-Most receivers exposing an HTTP or gRPC port are able to be protected using the
-collector's authentication mechanism, and most exporters using HTTP or gRPC
-clients are able to add authentication data to the outgoing requests.
+Most receivers exposing an HTTP or gRPC port can be protected using the
+Collector's authentication mechanism. Similarly, most exporters using HTTP or
+gRPC clients can add authentication to outgoing requests.
 
-The authentication mechanism in the collector uses the extensions mechanism,
-allowing for custom authenticators to be plugged into collector distributions.
-If you are interested in developing a custom authenticator, check out the
-["Building a custom authenticator"](../custom-auth) document.
+The authentication mechanism in the Collector uses the extensions mechanism,
+allowing for custom authenticators to be plugged into Collector distributions.
+Each authentication extension has two possible usages:
 
-Each authentication extension has two possible usages: as client authenticator
-for exporters, adding auth data to outgoing requests, and as server
-authenticator for receivers, authenticating incoming connections. Refer to the
-authentication extension for a list of its capabilities, but in general, an
-authentication extension would only implement one of those traits. For a list of
-known authenticators, use the
-[Registry](/ecosystem/registry/?s=authenticator&component=extension) available
-in this website.
+- As client authenticator for exporters, adding auth data to outgoing requests
+- As server authenticator for receivers, authenticating incoming connections.
 
-To add a server authenticator to a receiver in your collector, make sure to:
+For a list of known authenticators, see the
+[Registry](/ecosystem/registry/?s=authenticator&component=extension). If you're
+interested in developing a custom authenticator, see
+[Building an authenticator extension](../building/authenticator-extension).
 
-1. add the authenticator extension and its configuration under `.extensions`
-1. add a reference to the authenticator to `.services.extensions`, so that it's
-   loaded by the collector
-1. add a reference to the authenticator under
-   `.receivers.<your-receiver>.<http-or-grpc-config>.auth`
+To add a server authenticator to a receiver in the Collector, follow these
+steps:
 
-Here's an example that uses the OIDC authenticator on the receiver side, making
-this suitable for a remote collector that receives data from an OpenTelemetry
+1. Add the authenticator extension and its configuration under `.extensions`.
+2. Add a reference to the authenticator to `.services.extensions`, so that it's
+   loaded by the Collector.
+3. Add a reference to the authenticator under
+   `.receivers.<your-receiver>.<http-or-grpc-config>.auth`.
+
+The following example uses the OIDC authenticator on the receiver side, making
+this suitable for a remote Collector that receives data from an OpenTelemetry
 Collector acting as agent:
 
 ```yaml
@@ -654,6 +773,7 @@ receivers:
   otlp/auth:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
         auth:
           authenticator: oidc
 
@@ -676,7 +796,7 @@ service:
 ```
 
 On the agent side, this is an example that makes the OTLP exporter obtain OIDC
-tokens, adding them to every RPC made to a remote collector:
+tokens, adding them to every RPC made to a remote Collector:
 
 ```yaml
 extensions:
@@ -689,7 +809,7 @@ receivers:
   otlp:
     protocols:
       grpc:
-        endpoint: localhost:4317
+        endpoint: 0.0.0.0:4317
 
 processors:
 
@@ -711,15 +831,14 @@ service:
         - otlp/auth
 ```
 
-### Setting up certificates
+### Configuring certificates {#setting-up-certificates}
 
-For a production setup, we strongly recommend using TLS certificates, either for
-secure communication or mTLS for mutual authentication. See the below steps to
-generate self-signed certificates used in this example. You might want to use
-your current cert provisioning procedures to procure a certificate for
-production usage.
+In a production environment, use TLS certificates for secure communication or
+mTLS for mutual authentication. Follow these steps to generate self-signed
+certificates as in this example. You might want to use your current cert
+provisioning procedures to procure a certificate for production usage.
 
-Install [cfssl](https://github.com/cloudflare/cfssl), and create the following
+Install [`cfssl`](https://github.com/cloudflare/cfssl) and create the following
 `csr.json` file:
 
 ```json
@@ -737,16 +856,38 @@ Install [cfssl](https://github.com/cloudflare/cfssl), and create the following
 }
 ```
 
-Now, run the following commands:
+Then run the following commands:
 
 ```bash
 cfssl genkey -initca csr.json | cfssljson -bare ca
 cfssl gencert -ca ca.pem -ca-key ca-key.pem csr.json | cfssljson -bare cert
 ```
 
-This will create two certificates; first, an "OpenTelemetry Example" Certificate
-Authority (CA) in `ca.pem` and the associated key in `ca-key.pem`, and second a
-client certificate in `cert.pem` (signed by the OpenTelemetry Example CA) and
-the associated key in `cert-key.pem`.
+This creates two certificates:
+
+- An "OpenTelemetry Example" Certificate Authority (CA) in `ca.pem`, with the
+  associated key in `ca-key.pem`
+- A client certificate in `cert.pem`, signed by the OpenTelemetry Example CA,
+  with the associated key in `cert-key.pem`.
 
 [dcc]: /docs/concepts/components/#collector
+
+## Override settings
+
+You can override Collector settings using the `--set` option. The settings you
+define with this method are merged into the final configuration after all
+`--config` sources are resolved and merged.
+
+The following examples show how to override settings inside nested sections:
+
+```shell
+# The following example sets the verbosity
+# level of the debug exporter to 'detailed'
+otelcol --set "exporters::debug::verbosity=detailed"
+# The following example overrides gRPC
+# settings for the OTLP receiver
+otelcol --set "receivers::otlp::protocols::grpc={endpoint:localhost:4317, compression: gzip}"
+```
+
+Note tha the `--set` option doesn't support setting a key that contains a dot or
+an equal sign.

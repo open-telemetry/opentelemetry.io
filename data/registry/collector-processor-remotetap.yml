@@ -1,0 +1,23 @@
+# cSpell:ignore remotetapprocessor
+title: Websocket Processor
+registryType: processor
+language: collector
+tags:
+  - websocket
+  - remote
+  - tap
+  - processor
+  - collector
+license: Apache 2.0
+description:
+  The WebSocket processor, which can be positioned anywhere in a pipeline,
+  allows
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/remotetapprocessor
+createdAt: 2020-11-05
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/processor/remotetapprocessor
+  version: v0.94.0

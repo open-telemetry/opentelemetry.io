@@ -2,6 +2,7 @@
 title: Traces
 weight: 1
 cSpell:ignore: Guten
+description: Understand the full path through your distributed application.
 ---
 
 **Traces** give us the big picture of what happens when a request is made to an
@@ -150,35 +151,9 @@ source or vendor backend of your choice.
 
 Context Propagation is the core concept that enables Distributed Tracing. With
 Context Propagation, Spans can be correlated with each other and assembled into
-a trace, regardless of where Spans are generated. We define Context Propagation
-by two sub-concepts: Context and Propagation.
-
-A **Context** is an object that contains the information for the sending and
-receiving service to correlate one span with another and associate it with the
-trace overall. For example, if Service A calls Service B, then a span from
-Service A whose ID is in context will be used as the parent span for the next
-span created in Service B. The trace ID that is in context will be used for the
-next span created in Service B as well, which signifies that the span is part of
-the same trace as the span from Service A.
-
-**Propagation** is the mechanism that moves context between services and
-processes. It serializes or deserializes the context object and provides the
-relevant Trace information to be propagated from one service to another.
-Propagation is usually handled by instrumentation libraries and is transparent
-to the user, but in the event that you need to manually propagate context, you
-can use Propagation APIs.
-
-OpenTelemetry supports several different context formats. The default format
-used in OpenTelemetry tracing is called
-[W3C TraceContext](https://www.w3.org/TR/trace-context/). Each context object is
-stored in a span. See [Span Context](#span-context) for details on the context
-object and what other information is available..
-
-By combining Context and Propagation, you now can assemble a Trace.
-
-> For more information, see the [traces specification][]
-
-[traces specification]: /docs/specs/otel/overview/#tracing-signal
+a trace, regardless of where Spans are generated. To learn more about this
+topic, see the concept page on
+[Context Propagation](/docs/concepts/context-propagation).
 
 ## Spans
 
@@ -198,10 +173,12 @@ Sample span:
 
 ```json
 {
-  "trace_id": "7bba9f33312b3dbb8b2c2c62bb7abe2d",
-  "parent_id": "",
-  "span_id": "086e83747d0e381e",
   "name": "/v1/sys/health",
+  "context": {
+    "trace_id": "7bba9f33312b3dbb8b2c2c62bb7abe2d",
+    "span_id": "086e83747d0e381e"
+  },
+  "parent_id": "",
   "start_time": "2021-10-22 16:04:01.209458162 +0000 UTC",
   "end_time": "2021-10-22 16:04:01.209514132 +0000 UTC",
   "status_code": "STATUS_CODE_OK",
@@ -312,17 +289,31 @@ another.
 
 ### Span Status
 
-A status will be attached to a span. Typically, you will set a span status when
-there is a known error in the application code, such as an exception. A Span
-Status will be tagged as one of the following values:
+Each span has a status. The three possible values are:
 
 - `Unset`
-- `Ok`
 - `Error`
+- `Ok`
 
-When an exception is handled, a Span status can be set to Error. Otherwise, a
-Span status is in the Unset state. By setting a Span status to Unset, the
-back-end that processes spans can now assign a final status.
+The default value is `Unset`. A span status that is `Unset` means that the
+operation it tracked successfully completed without an error.
+
+When a span status is `Error`, then that means some error occurred in the
+operation it tracks. For example, this could be due to an HTTP 500 error on a
+server handling a request.
+
+When a span status is `Ok`, then that means the span was explicitly marked as
+error-free by the developer of an application. Although this is unintuitive,
+it's not required to set a span status as `Ok` when a span is known to have
+completed without error, as this is covered by `Unset`. What `Ok` does is
+represent an unambiguous "final call" on the status of a span that has been
+explicitly set by a user. This is helpful in any situation where a developer
+wishes for there to be no other interpretation of a span other than
+"successful".
+
+To reiterate: `Unset` represents a span that completed without an error. `Ok`
+represents when a developer explicitly marks a span as successful. In most
+cases, it is not necessary to explicitly mark a span as `Ok`.
 
 ### Span Kind
 
@@ -365,3 +356,8 @@ a local job handled by an event listener.
 
 Consumer spans represent the processing of a job created by a producer and may
 start long after the producer span has already ended.
+
+## Specification
+
+For more information, see the
+[traces specification](/docs/specs/otel/overview/#tracing-signal).

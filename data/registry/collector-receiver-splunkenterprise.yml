@@ -1,14 +1,19 @@
-# cSpell:ignore splunkenterprise
+# cSpell:ignore splunkenterprise splunkenterprisereceiver
 title: splunkenterprise
 registryType: receiver
-isThirdParty: false
 language: collector
 tags:
   - splunkenterprise
   - receiver
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/splunkenterprisereceiver
 license: Apache 2.0
 description:
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/splunkenterprisereceiver
+createdAt: 2020-11-05
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/splunkenterprisereceiver
+  version: v0.94.0

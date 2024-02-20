@@ -1,15 +1,21 @@
+# cSpell:ignore opensearchexporter
 title: OpenSearch Exporter
 registryType: exporter
-isThirdParty: false
 language: collector
 tags:
   - opensearch
   - exporter
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/opensearchexporter
 license: Apache 2.0
 description:
   OpenSearch exporter supports sending OpenTelemetry signals as documents to
   OpenSearch.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/opensearchexporter
+createdAt: 2020-11-05
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/opensearchexporter
+  version: v0.94.0

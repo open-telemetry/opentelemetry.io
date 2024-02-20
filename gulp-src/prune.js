@@ -71,13 +71,13 @@ async function pruneTask() {
         ([url, date, statusCode]) => 400 <= statusCode && statusCode <= 499,
       );
 
+    var msg = `INFO: ${entriesWith4xxStatus.length} entries with 4XX status.`;
     if (prune4xx && entriesWith4xxStatus.length > 0) {
-      console.log(
-        `INFO: pruning ${entriesWith4xxStatus.length} entries with 4XX status.`,
-      );
+      msg += ' Pruning them.';
       const keysToPrune = entriesWith4xxStatus.map((item) => item[0]);
       keysToPrune.forEach((key) => delete entries[key]);
     }
+    console.log(msg);
     return entriesWith4xxStatus.length;
   }
 
@@ -103,7 +103,11 @@ async function pruneTask() {
       return;
     } else {
       console.log(
-        `INFO: ${pruneCandidatesByDate__sorted.length} entries as prune candidates for given date.`,
+        `INFO: ${
+          pruneCandidatesByDate__sorted.length
+        } entries as prune candidates for before-date ${formattedDate(
+          beforeDate,
+        )}.`,
       );
     }
 
@@ -139,22 +143,28 @@ function listOldest(entries, numberOfEntries) {
 
   oldestEntries.forEach((e) => {
     const date = new Date(e[1]);
-    const formattedDate = date
-      .toLocaleDateString('en-CA', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-      })
-      .replace(/\//g, '-');
-    const formattedTime = date.toLocaleTimeString('en-CA', {
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false,
-    });
-    console.log(`  ${formattedDate} ${formattedTime} for ${e[0]}`);
+    console.log(`  ${formattedDate(date)} ${formattedTime(date)} for ${e[0]}`);
   });
 }
 
 pruneTask.description = `Prune --num <n> entries from ${refcacheFile} file. For details, use --info.`;
 
 gulp.task('prune', pruneTask);
+
+function formattedDate(date) {
+  return date
+    .toLocaleDateString('en-CA', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    })
+    .replace(/\//g, '-');
+}
+
+function formattedTime(date) {
+  return date.toLocaleTimeString('en-CA', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  });
+}

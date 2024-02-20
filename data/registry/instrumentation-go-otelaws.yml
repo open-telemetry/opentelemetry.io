@@ -1,0 +1,14 @@
+title: AWS SDK for Go
+registryType: instrumentation
+language: go
+tags:
+  - aws
+  - instrumentation
+  - go
+license: Apache 2.0
+description: AWS SDK V2 for Go instrumentation
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-sdk-go-v2/otelaws
+createdAt: 2020-06-08

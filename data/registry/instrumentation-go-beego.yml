@@ -1,0 +1,17 @@
+# cSpell:ignore beego astaxie
+title: Beego Instrumentation
+registryType: instrumentation
+language: go
+tags:
+  - beego
+  - instrumentation
+  - go
+license: Apache 2.0
+description:
+  Package beego provides functions to instrument the github.com/astaxie/beego
+  package.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/astaxie/beego
+createdAt: 2022-12-07

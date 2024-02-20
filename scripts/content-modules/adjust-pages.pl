@@ -17,11 +17,10 @@ my $opAmpSpecRepoUrl = 'https://github.com/open-telemetry/opamp-spec';
 my $semconvSpecRepoUrl = 'https://github.com/open-telemetry/semantic-conventions';
 my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
 my $specBasePath = '/docs/specs';
-my $path_base_for_github_subdir = "content/en$specBasePath";
 my %versions = qw(
-  spec: 1.26.0
-  otlp: 1.0.0
-  semconv: 1.23.0
+  spec: 1.30.0
+  otlp: 1.1.0
+  semconv: 1.24.0
 );
 my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
@@ -52,14 +51,15 @@ sub printTitleAndFrontMatter() {
   # TODO: add to front matter of OTel spec file and drop next line:
   $linkTitle = 'Design Goals' if $title eq 'Design Goals for OpenTelemetry Wire Protocol';
 
+  # TODO: remove once all submodules have been updated in the context of https://github.com/open-telemetry/opentelemetry.io/issues/3922
+  $frontMatterFromFile =~ s|: content/en/docs/specs/opamp/|: tmp/opamp/|g;
+  $frontMatterFromFile =~ s|: content/en/docs/specs/semconv/|: tmp/semconv/docs/|g;
+  $frontMatterFromFile =~ s|path_base_for_github_subdir:\n  from: content/en/docs/specs/otlp/_index.md\n  to: specification.md\n||;
+  $frontMatterFromFile =~ s|github_subdir: docs\n  path_base_for_github_subdir: content/en/docs/specs/otlp/|path_base_for_github_subdir: tmp/otlp/|g;
+
   # printf STDOUT "> $title -> $linkTitle\n";
   print "linkTitle: $linkTitle\n" if $linkTitle and $frontMatterFromFile !~ /linkTitle: /;
   print "$frontMatterFromFile" if $frontMatterFromFile;
-  if ($ARGV =~ /otel\/specification\/(.*?)_index.md$/) {
-    print "path_base_for_github_subdir:\n";
-    print "  from: $path_base_for_github_subdir/otel/$1_index.md\n";
-    print "  to: $1README.md\n";
-  }
   print "---\n";
 }
 
@@ -113,14 +113,6 @@ while(<>) {
   s|\.\./semantic_conventions/README.md|$semConvRef| if $ARGV =~ /overview/;
   s|\.\./specification/(.*?\))|../otel/$1)|g if $ARGV =~ /otel\/specification/;
 
-  # TODO: drop the following warning once the checks are enabled in the spec repos
-  if (
-    /\((https:\/\/github.com\/open-telemetry\/opentelemetry-specification\/\w+\/.*?\/specification([^\)]*))\)/ &&
-    $ARGV !~ /tmp\/(opamp|otlp\/docs|semconv)|semantic_conventions/
-    ) {
-    printf STDOUT "WARNING: link to spec page encoded as an external URL, but should be a local path, fix this upstream;\n  File: $ARGV \n  Link: $1\n";
-  }
-
   # Match markdown inline links or link definitions to OTel spec pages: "[...](URL)" or "[...]: URL"
   s|(\]:\s+\|\()https://github.com/open-telemetry/opentelemetry-specification/\w+/(main\|v$otelSpecVers)/specification(.*?\)?)|$1$specBasePath/otel$3|;
 
@@ -135,6 +127,7 @@ while(<>) {
   s|(\.\./)?internal(/img/[-\w]+\.png)|$2|g;
   s|(\]\()(img/.*?\))|$1../$2|g if $ARGV !~ /(logs|schemas)._index/ && $ARGV !~ /otlp\/docs/;
   s|(\]\()([^)]+\.png\))|$1../$2|g if $ARGV =~ /\/tmp\/semconv\/docs\/general\/attributes/;
+  s|(\]\()([^)]+\.png\))|$1../$2|g if $ARGV =~ /\/tmp\/semconv\/docs\/http\/http-spans/;
 
   # Fix links that are to the title of the .md page
   # TODO: fix these in the spec

@@ -1,14 +1,18 @@
+{{/* cSpell:ignore contribfest */ -}}
 {{ if .Params.show_banner -}}
 
 <div class="o-banner">
 
-<i class="fas fa-bullhorn"></i> Join us at
-[**KubeCon + CloudNativeCon NA**, Nov 6 - 9](/blog/2023/kubecon-na/)!
+[Thanks to all the wonderful humans who have contributed to OpenTelemetry to date. We look forward to your contributions in 2024!](/blog/2023/humans-of-otel/)
+
+{{/*
 
 <!-- prettier-ignore -->
-<i class="fas fa-bullhorn"></i> OTel Governance Committee
-[election results](/blog/2023/gc-election-results/) are in!
+<i class="fas fa-bullhorn"></i>
+Template for a second post.
 {.pt-0}
+
+*/ -}}
 
 </div>
 {{ end -}}

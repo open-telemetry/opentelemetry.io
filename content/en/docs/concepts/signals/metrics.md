@@ -1,6 +1,7 @@
 ---
 title: Metrics
 weight: 2
+description: A measurement captured at runtime
 ---
 
 A **metric** is a **measurement** of a service captured at runtime. The moment
@@ -35,7 +36,7 @@ Providers.
 ## Metric Exporter
 
 Metric Exporters send metric data to a consumer. This consumer can be standard
-output for debugging and development-time, the OpenTelemetry Collector, or any
+output for debugging during development, the OpenTelemetry Collector, or any
 open source or vendor backend of your choice.
 
 ## Metric Instruments
@@ -69,8 +70,12 @@ The instrument kind is one of the following:
 - **Gauge**: Measures a current value at the time it is read. An example would
   be the fuel gauge in a vehicle. Gauges are asynchronous.
 - **Histogram**: A client-side aggregation of values, such as request latencies.
-  A histogram is a good choice if you are interested value statistics. For
+  A histogram is a good choice if you are interested in value statistics. For
   example: How many requests take fewer than 1s?
+
+For more on synchronous and asynchronous instruments, and which kind is best
+suited for your use case, see
+[Supplementary Guidelines](/docs/specs/otel/metrics/supplementary-guidelines/).
 
 ## Aggregation
 

@@ -1,13 +1,23 @@
 title: Datadog Exporter Ruby
 registryType: exporter
-isThirdParty: true
 language: ruby
 tags:
   - ruby
   - exporter
   - datadog
-repo: https://github.com/DataDog/dd-opentelemetry-exporter-ruby
 license: Apache 2.0
 description: The OpenTelemetry Datadog Exporter for Ruby.
-authors: Datadog, Inc.
-otVersion: latest
+authors:
+  - name: Datadog, Inc.
+urls:
+  repo: https://github.com/DataDog/dd-opentelemetry-exporter-ruby
+createdAt: 2020-09-02
+deprecated:
+  reason:
+    This exporter has been deprecated. To export your OTLP traces from
+    OpenTelemetry SDK directly to Datadog Agent, please refer to OTLP Ingest in
+    Datadog Agent.
+package:
+  registry: gems
+  name: opentelemetry-exporters-datadog
+  version: 0.2.2

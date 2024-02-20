@@ -1,0 +1,16 @@
+# cSpell:ignore sarama
+title: Shopify/sarama Instrumentation
+registryType: instrumentation
+language: go
+tags:
+  - sarama
+  - instrumentation
+  - go
+license: Apache 2.0
+description:
+  Package sarama provides functions to trace the Shopify/sarama package.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/Shopify/sarama
+createdAt: 2022-12-07

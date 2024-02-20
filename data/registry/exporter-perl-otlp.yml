@@ -1,0 +1,14 @@
+# cSpell:ignore jjatria
+title: OTLP Exporter for Perl
+registryType: instrumentation
+language: perl
+tags:
+  - perl
+  - exporter
+license: Artistic-1.0-Perl
+description: An unofficial implementation of the OTLP Exporter in Perl.
+authors:
+  - name: jjatria
+urls:
+  repo: https://github.com/jjatria/perl-opentelemetry-exporter-otlp
+createdAt: 2023-12-05

@@ -11,82 +11,48 @@ env:
   USER_NAME: opentelemetrybot
 
 jobs:
-  fix-format:
-    name: /fix:format
+  pr-action:
+    name: Run PR action
     runs-on: ubuntu-latest
 
     if: |
       github.event.issue.pull_request &&
-      contains(github.event.comment.body, '/fix:format')
+      startsWith(github.event.comment.body, '/fix:')
     permissions:
       contents: write
-
-    steps:
-      - name: Context info
-        run: |
-          echo $PR_NUM
-          echo $COMMENT
-
-      - uses: actions/checkout@v3
-
-      - run: gh pr checkout $PR_NUM
-        env:
-          GH_TOKEN: ${{ github.token }}
-
-      - name: Create NPM cache-hash input file
-        run: |
-          mkdir -p tmp
-          jq '{devDependencies, dependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version-file: .nvmrc
-          cache: npm
-          cache-dependency-path: tmp/package-ci.json
-
-      - run: |
-          npm run format
-          git status
-          git branch -v
-
-      - name: Commit and push changes, if any
-        run: |
-          git config --local user.email "$USER_EMAIL"
-          git config --local user.name "$USER_NAME"
-          if [[ $(git status --porcelain) ]]; then
-            git add -A
-            current_branch=$(git rev-parse --abbrev-ref HEAD)
-            echo current_branch=$current_branch
-            git commit -m 'Results from /fix:format'
-            git push origin $current_branch
-          else
-            echo "No changes to commit"
-          fi
-        env:
-          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
-
-  fix-refcache:
-    name: /fix:refcache
-    runs-on: ubuntu-latest
-
-    if: |
-      github.event.issue.pull_request &&
-      contains(github.event.comment.body, '/fix:refcache')
-    permissions:
-      contents: write
+      pull-requests: write
 
     env:
       DEPTH: --depth 100 # submodule clone depth
 
     steps:
+      - name: Extract action name
+        id: extract_action_name
+        run: |
+          PR_ACTION=$(echo $COMMENT | grep -oP '/fix:\K\w+')
+          echo "Action is $PR_ACTION"
+          ACTION_NAMES="format|submodules|refcache|all"
+          if [[ ! "$PR_ACTION" =~ ^($ACTION_NAMES)$ ]]; then
+            echo "Invalid action name: $PR_ACTION"
+            echo "Action name should be one of: $ACTION_NAMES"
+            exit 1
+          fi
+          echo "PR_ACTION=$PR_ACTION" >> "$GITHUB_ENV"
+
       - name: Context info
         run: |
           echo $PR_NUM
           echo $COMMENT
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - run: gh pr checkout $PR_NUM
+      - name: Write start comment
+        run: |
+          gh pr comment $PR_NUM -b "You triggered fix:${PR_ACTION} action run at $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - run: gh pr checkout $PR_NUM -b "pr-action-${RANDOM}"
         env:
           GH_TOKEN: ${{ github.token }}
 
@@ -95,15 +61,21 @@ jobs:
           mkdir -p tmp
           jq '{devDependencies, dependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
           cache: npm
           cache-dependency-path: tmp/package-ci.json
 
-      - run: npm install --omit=optional
       - run: |
-          npm run check:links
+          case $PR_ACTION in
+            all|refcache)
+              npm install --omit=optional
+              ;&
+            format|submodules)
+              npm run fix:$PR_ACTION
+              ;;
+          esac
           git status
           git branch -v
 
@@ -115,10 +87,23 @@ jobs:
             git add -A
             current_branch=$(git rev-parse --abbrev-ref HEAD)
             echo current_branch=$current_branch
-            git commit -m 'Results from /fix:recache'
-            git push origin $current_branch
+            # gh pr checkout sets some git configs that we can use to make sure
+            # we push to the right repo & to the right branch
+            remote_repo=$(git config --get branch.${current_branch}.remote)
+            echo remote_repo=$remote_repo
+            remote_branch=$(git config --get branch.${current_branch}.merge)
+            echo remote_branch=$remote_branch
+            git commit -m "Results from /fix:${PR_ACTION}"
+            git push ${remote_repo} HEAD:${remote_branch}
           else
             echo "No changes to commit"
           fi
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+
+      - name: Report an error in the case of failure
+        if: ${{ failure() || cancelled() }}
+        run: |
+          gh pr comment $PR_NUM -b "fix:${PR_ACTION} run failed, please check $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID for details"
+        env:
+          GH_TOKEN: ${{ github.token }}

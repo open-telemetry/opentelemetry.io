@@ -1,0 +1,12 @@
+# Community
+[community_introduce]
+other = "{{ .Site.Title }} is an open source project that anyone in the community can use, improve, and enjoy. We'd love you to join us!"
+[community_contribute]
+other = """
+To learn how to contribute to {{ .Site.Title }} documentation,
+see [Contributing](/docs/contributing/). Other useful links:
+"""
+[community_how_to]
+other = "For our documentation style guide and more, see"
+[community_guideline]
+other = "Contributing"

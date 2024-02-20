@@ -1,14 +1,85 @@
 # Contributing to OpenTelemetry.io
 
-## Quick fixes
+**Thanks for your interest in contributing to
+[OpenTelemetry.io](https://opentelemetry.io/)!**
 
-For small changes to a single file, you can edit directly in GitHub by clicking
-**Edit this file** button and then following the instructions in [Editing
-files][].
+Follow these guidelines helps to communicate that you respect the time of the
+contributors managing and developing this open source project. In return,
+maintainers and approvers should reciprocate that respect in addressing your
+issue, assessing changes, and helping you finalize your pull requests. In that
+spirit of mutual respect, we endeavor to review incoming issues and pull
+requests, and will close any lingering issues or pull requests after long times
+of inactivity.
 
-## Dev setup
+## Before you get started
 
-### Cloud-IDE setup
+### Code of Conduct
+
+All of your interactions in this project are subject to our
+[Code of Conduct](https://github.com/open-telemetry/community/blob/main/code-of-conduct.md).
+This includes the creation of issues or pull requests, commenting on issues or
+pull requests, and extends to all interactions in any real-time space, for
+example Slack, Discord, and so on.
+
+### Contributor License Agreement
+
+Review the general
+[OpenTelemetry Contributor Guide](https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md),
+as it provides additional details, especially that you need to sign a
+Contributor License Agreement (CLA) before you can contribute.
+
+### Found a security issue?
+
+If you discover a security issue, read the
+[Security Policy](https://github.com/open-telemetry/opentelemetry.io/security/policy)
+before opening an issue.
+
+### Found a problem?
+
+If you find a bug or a problem with the content of this repository, or you would
+like to request an enhancement, [create an issue][new-issue].
+
+Before reporting a new issue, make sure that the issue was not already reported
+or fixed by searching through our
+[issues list](https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc).
+
+When creating a new issue, include a short, meaningful title and a clear
+description. Add as much relevant information as you can, and, if possible, a
+test case.
+
+### Want to work on an existing issue?
+
+This is the best way how you can help us to make our documentation better! Take
+a look at issues tagged with
+[help wanted](https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22help+wanted%22)
+and
+[good first issue](https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22good+first+issue%22)
+to find an opportunity to contribute and help us. The good first issue label
+indicates that members have committed to providing extra assistance for new
+contributors.
+
+After picking an issue, read through the existing discussion, ask the
+maintainers if this issue is still relevant and ask all questions you need for
+clarification. Afterwards you can state in a comment that you intend to work on
+this issue and it will be assumed to be yours. We will **not** assign issues to
+non-community members who have already made contributions to the [OpenTelemetry
+organization][org]. After confirmation through a maintainer, plan to provide a
+PR shortly or let maintainers now if you run into any blockers.
+
+## Contributor's guide
+
+To learn how to contribute fixes and new content to this project, read the
+[Contributor's guide](/content/en/docs/contributing), which includes a style
+guide and useful information on the review process.
+
+## Development
+
+The following instructions will help you to setup a development environment of
+the <https://opentelemetry.io/> website.
+
+### Setup
+
+#### Cloud-IDE setup
 
 These instructions are for [Gitpod.io][], adjust as needed for your favorite
 cloud IDE:
@@ -27,7 +98,7 @@ Gitpod will automatically install the repo-specific packages for you. You're now
 ready to [build](#build), [serve](#serve) and/or make updates to the website
 files.
 
-### Local setup
+#### Local setup
 
 1.  [Fork][] and then [clone][] this repository.
 2.  **Change** to the repository directory.
@@ -55,7 +126,7 @@ files.
 You're now ready to [build](#build), [serve](#serve) and/or make updates to the
 website files.
 
-## Build
+### Build
 
 To **build** the site run:
 
@@ -65,7 +136,7 @@ npm run build
 
 You'll find the generated site files under `public`.
 
-## Serve
+### Serve
 
 To **serve** the site run:
 
@@ -88,7 +159,7 @@ npm run serve:netlify
 > macOS? You may need to increase the file descriptor limit. See
 > [Hugo issue #6109](https://github.com/gohugoio/hugo/issues/6109).
 
-## Content and submodules
+### Content and submodules
 
 The website is built from the following content:
 
@@ -101,33 +172,6 @@ The website is built from the following content:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/hugo.yaml
 [content-modules]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
-
-## Found a problem?
-
-If you find a problem with the content of this repository, or you would like to
-request an enhancement, [create an issue][new-issue].
-
-> **NOTE**: As a general policy, we only _assign_ issues to community members
-> who have already made contributions to the [OpenTelemetry organization][org].
-
-## Submitting a change
-
-Enhancements and fixes to the website are most welcome! Before submitting a
-[pull request][pr] (PR) to the repository, run the following command and address
-any reported issues. Also commit any files changed by the `fix` script:
-
-```sh
-npm run test-and-fix
-```
-
-To separately test and fix issues with your files, run:
-
-```sh
-npm run test # checks but does not update any files
-npm run fix  # may update files
-```
-
-To list available NPM scripts, run `npm run`.
 
 ### Submodule changes
 
@@ -147,25 +191,42 @@ submodule itself.
 > You'll also need to `git fetch --unshallow` the submodule before you can
 > submit a PR. Alternatively, set `DEPTH=100` and re-fetch submodules.
 
-## Site deploys and PR previews
+## Approver and Maintainer practices
 
-If you submit a PR, Netlify will create a [deploy preview][] so that you can
-review your changes. Once your PR is merged, Netlify deploys the updated site to
-the production server.
+This last section includes guidelines and some common practices used by
+approvers and maintainers while doing code reviews:
 
-> **Note**: PR previews include _draft pages_, but production builds do not.
-
-To see deploy logs and more, visit project's [dashboard][] -- Netlify login
-required.
+- PRs with changes to documentation co-owned by a SIG (collector, demo,
+  language-specific...) should aim for two approvals: one by a docs approver and
+  one by a SIG approver:
+  - Doc approver label such PRs with `sig:<name>` and tag the SIG `-approvers`
+    group on that PR
+  - If no SIG approval is given within a certain grace period (two weeks in
+    general, but may be less in urgent cases), docs maintainer may use their own
+    judgement to merge that PR
+- If the PR branch is `out-of-date with the base branch`, they do not need to be
+  updated continuously: every update triggers all the PR CI checks to be run!
+  It's often enough to update them before merging.
+- A PR by non-maintainers should **never** update git sub modules. This happens
+  by accident from time to time. Let the PR author know that they should not
+  worry about it, we will fix this before merging, but in the future they should
+  make sure that they work from an up-to-date fork.
+- If the contributor is having trouble signing the CLA or used the wrong email
+  by mistake in one of their commits, ask them to fix the issue or rebase the
+  pull request. Worst case scenario, close and re-open the PR to trigger a new
+  CLA check.
+- Words unknown to cspell should be added to the cspell ignore list per page by
+  PR authors. Only approvers and maintainers will add commonly used terms to the
+  global list.
+- When an approver or maintainer won't be available to contribute for an
+  extended period of time (more than a few days or a week) or won't be available
+  in that period of time, they should communicate this using the
+  [#otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6) channel and
+  updating the GitHub status.
 
 [.nvmrc]: .nvmrc
 [clone]:
   https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
-[dashboard]: https://app.netlify.com/sites/opentelemetry/overview
-[deploy preview]:
-  https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/
-[editing files]:
-  https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files
 [fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [gitpod.io]: https://gitpod.io
 [gitpod.io/workspaces]: https://gitpod.io/workspaces
@@ -182,5 +243,3 @@ required.
   https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
 [nvm-windows]: https://github.com/coreybutler/nvm-windows
 [org]: https://github.com/open-telemetry
-[pr]:
-  https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests

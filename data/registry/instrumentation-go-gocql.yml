@@ -1,0 +1,16 @@
+# cSpell:ignore gocql
+title: gocql Instrumentation
+registryType: instrumentation
+language: go
+tags:
+  - gocql
+  - instrumentation
+  - go
+license: Apache 2.0
+description:
+  Package gocql provides functions to instrument the gocql/gocql package.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/gocql/gocql
+createdAt: 2022-12-07

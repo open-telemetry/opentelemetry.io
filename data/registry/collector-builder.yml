@@ -1,13 +1,16 @@
+# cSpell:ignore builder
 title: OpenTelemetry Collector Builder
 registryType: core
-isThirdParty: true
 language: collector
 tags:
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
 license: Apache 2.0
 description:
   A CLI tool that generates OpenTelemetry Collector binaries based on a
   manifest.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
+  docs: /docs/collector/custom-collector/
+createdAt: 2023-12-18

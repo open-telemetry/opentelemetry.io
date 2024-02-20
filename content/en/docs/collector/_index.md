@@ -3,7 +3,7 @@ title: Collector
 description: Vendor-agnostic way to receive, process and export telemetry data.
 aliases: [collector/about]
 cascade:
-  collectorVersion: 0.88.0
+  vers: 0.94.0
 weight: 10
 ---
 
@@ -15,9 +15,9 @@ The OpenTelemetry Collector offers a vendor-agnostic implementation of how to
 receive, process and export telemetry data. It removes the need to run, operate,
 and maintain multiple agents/collectors. This works with improved scalability
 and supports open source observability data formats (e.g. Jaeger, Prometheus,
-Fluent Bit, etc.) sending to one or more open source or commercial back-ends.
-The local Collector agent is the default location to which instrumentation
-libraries export their telemetry data.
+Fluent Bit, etc.) sending to one or more open source or commercial backends. The
+local Collector agent is the default location to which instrumentation libraries
+export their telemetry data.
 
 ## Objectives
 
@@ -48,10 +48,9 @@ it allows your service to offload data quickly and the collector can take care
 of additional handling like retries, batching, encryption or even sensitive data
 filtering.
 
-It is also easier to [setup a collector](./getting-started) than you might
-think: the default OTLP exporters in each language assume a local collector
-endpoint, so if you launch a collector it will automatically start receiving
-telemetry.
+It is also easier to [setup a collector](quick-start) than you might think: the
+default OTLP exporters in each language assume a local collector endpoint, so if
+you launch a collector it will automatically start receiving telemetry.
 
 ## Status and releases
 

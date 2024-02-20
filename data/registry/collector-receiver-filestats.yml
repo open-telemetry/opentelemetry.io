@@ -1,16 +1,21 @@
-# cSpell:ignore filestats
+# cSpell:ignore filestats filestatsreceiver
 title: File Stats Receiver
 registryType: receiver
-isThirdParty: false
 language: collector
 tags:
   - filestats
   - receiver
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filestatsreceiver
 license: Apache 2.0
 description:
   The File Stats receiver collects metrics from files specified with a glob
   pattern.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filestatsreceiver
+createdAt: 2020-11-05
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/filestatsreceiver
+  version: v0.94.0

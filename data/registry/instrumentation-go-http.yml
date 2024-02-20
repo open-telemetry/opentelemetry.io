@@ -1,0 +1,17 @@
+title: Go package `net/http` instrumentation
+registryType: instrumentation
+language: go
+tags:
+  - http
+  - instrumentation
+  - go
+license: Apache 2.0
+description:
+  Package `http` provides a `http.Handler` and functions that are intended to be
+  used to add tracing by wrapping existing handlers (with Handler) and routes
+  WithRouteTag.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://go.opentelemetry.io/contrib/instrumentation/net/http
+createdAt: 2023-12-05

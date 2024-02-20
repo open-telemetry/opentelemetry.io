@@ -1,14 +1,20 @@
+# cSpell:ignore syslogexporter
 title: Syslog Exporter
 registryType: exporter
-isThirdParty: false
 language: collector
 tags:
   - syslog
   - exporter
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/syslogexporter
 license: Apache 2.0
 description:
   The syslog exporter supports sending messages to a remote syslog server.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/syslogexporter
+createdAt: 2020-11-05
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/syslogexporter
+  version: v0.94.0

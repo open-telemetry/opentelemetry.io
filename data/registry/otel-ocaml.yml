@@ -1,15 +1,17 @@
 # cSpell:ignore Imandra
 title: OpenTelemetry exporters and instrumentation for OCaml
 registryType: instrumentation
-isThirdParty: true
 language: ocaml
 tags:
   - OCaml
   - instrumentation
-repo: https://github.com/imandra-ai/ocaml-opentelemetry/
 license: MIT
 description:
   OCaml instrumentation primitives (scopes, metrics, logs, etc.), along with
   several exporters to talk to signal collectors
-authors: Imandra (https://imandra.ai)
-otVersion: 0.19
+authors:
+  - name: Imandra
+    url: https://imandra.ai
+urls:
+  repo: https://github.com/imandra-ai/ocaml-opentelemetry/
+createdAt: 2022-10-26

@@ -94,7 +94,8 @@ to
 | `net.sock.peer.port` &rarr; `network.peer.port` | Now captured even if same as `server.port` |
 | `net.sock.peer.name` | Removed |
 | New: `http.request.method_original` | Only captured when `http.request.method` is `_OTHER` |
-| New: `error.type` |  |
+| New: `error.type` | New |
+
 {.td-initial .table .table-responsive}
 <!-- prettier-ignore-end -->
 
@@ -118,6 +119,7 @@ References:
 | `http.resend_count` &rarr; `http.request.resend_count` | |
 | `net.peer.name` &rarr; `server.address` | |
 | `net.peer.port` &rarr; `server.port` | Now captured even when same as default port for scheme |
+
 {.td-initial .table .table-responsive .ot-table-first-row-60}
 <!-- prettier-ignore-end -->
 
@@ -137,6 +139,7 @@ References:
 | `http.client_ip` &rarr; `client.address` | If `http.client_ip` was unknown (i.e., no [X-Forwarded-For][], [Forwarded#for][] headers), then `net.sock.peer.addr` &rarr; `client.address`; now must be provided to sampler |
 | `net.host.name` &rarr; `server.address` | Now based only on [Host][Host header], [:authority][HTTP/2 authority], [X-Forwarded-Host][], [Forwarded#host][] headers |
 | `net.host.port` &rarr; `server.port` | Now based only on [Host][Host header], [:authority][HTTP/2 authority], [X-Forwarded-Host][X-Forwarded-Host], [Forwarded#host][] headers |
+
 {.td-initial .table .table-responsive .ot-table-first-row-50}
 <!-- prettier-ignore-end -->
 
@@ -179,7 +182,8 @@ Metric changes:
 | `net.sock.peer.addr` | Removed |
 | `net.protocol.name` &rarr; `network.protocol.name` | Recommended &rarr; Conditionally required if not `http` and `network.protocol.version` is set |
 | `net.protocol.version` &rarr; `network.protocol.version` | Examples fixed: `2.0` &rarr; `2` and `3.0` &rarr; `3`; see note if [migrating from `<= v1.19.0`](#migrating-from--v1190) |
-| New: `error.type` |  |
+| New: `error.type` | New |
+
 {.td-initial .table .table-responsive}
 <!-- prettier-ignore-end -->
 
@@ -211,7 +215,8 @@ Metric changes:
 | `net.protocol.version` → `network.protocol.version` | Examples fixed: `2.0` → `2` and `3.0` → `3`; see note if [migrating from `<= v1.19.0`](#migrating-from--v1190) |
 | `net.host.name` → `server.address` | &bullet; Recommended → Opt-In (due to high-cardinality vulnerability since based on HTTP headers)<br>&bullet; Now based only on [`Host` span][Host header], [`:authority` span][HTTP/2 authority], [`X-Forwarded-Host` span][X-Forwarded-Host], [`Forwarded#host` span][Forwarded#host] headers |
 | `net.host.port` → `server.port` | &bullet; Recommended → Opt-In (due to high-cardinality vulnerability since based on HTTP headers)<br>&bullet; Now based only on [`Host` span][Host header], [`:authority` span][HTTP/2 authority], [`X-Forwarded-Host` span][X-Forwarded-Host], [`Forwarded#host` span][Forwarded#host] headers |
-| New: `error.type` |  |
+| New: `error.type` | New |
+
 {.td-initial .table .table-responsive .ot-table-first-row-50}
 <!-- prettier-ignore-end -->
 

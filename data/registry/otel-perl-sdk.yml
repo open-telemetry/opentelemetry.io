@@ -1,0 +1,14 @@
+# cSpell:ignore jjatria
+title: OpenTelemetry SDK for Perl
+registryType: instrumentation
+language: perl
+tags:
+  - perl
+  - instrumentation
+license: Artistic-1.0-Perl
+description: An unofficial implementation of the OpenTelemetry SDK in Perl.
+authors:
+  - name: jjatria
+urls:
+  repo: https://github.com/jjatria/perl-opentelemetry-sdk
+createdAt: 2023-12-05

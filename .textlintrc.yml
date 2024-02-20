@@ -9,18 +9,23 @@ filters:
   allowlist:
     allow:
       # Don't check registry .yml file fields for language, repo and tags:
-      - '/^(?:language|repo): .*$/m'
-      - /^tags:(\s*-.+$)*/m
+      - '/^\s*(?:language|repo|name|docs): .*$/m'
+      - /^(?:tags):(\s*-.+$)*/m
       # Hugo template syntax:
       - /{{.*?}}/
       - /{{%.*?%}}/
-      # Other
+      # Custom header anchors in markdown headings:
+      - /{#.*?}/
+      # src attribute in figure Hugo template:
+      - /src=".*?"/
+      # Other:
       - /<https?://.*?>/ # Raw URLs
 rules:
   terminology:
     defaultTerms: false
     skip: []
     terms:
+      - Actix
       - Ajax
       - Apache
       - API
@@ -36,6 +41,7 @@ rules:
       - Erlang
       - GCP
       - GitHub
+      - Gitpod
       - GraphQL
       - gRPC
       - Haskell
@@ -60,6 +66,7 @@ rules:
       - MongoDB
       - MySQL
       - NDJSON
+      - Netlify
       - NGINX
       - OCaml
       - OK
@@ -106,6 +113,9 @@ rules:
       # https://github.com/sapegin/textlint-rule-terminology/blob/ca36a645c56d21f27cb9d902b5fb9584030c59e3/index.js#L137-L142.
       #
       - ['3rd[- ]party', third-party]
+      - ['auto[- ]c(onfigur)(es?|ations?)', 'autoc$1$2'] # cspell:ignore autoc ations onfigur
+      - ['back[- ]end(s)?', 'backend$1']
+      - ['bugfix', 'bug fix']
       - [cpp, C++]
       - # dotnet|.net -> .NET, but NOT for strings like:
         # - File extension: file.net

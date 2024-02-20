@@ -1,0 +1,15 @@
+# cSpell:ignore otelmacaron macaron gopkg
+title: Macaron Instrumentation
+registryType: instrumentation
+language: go
+tags:
+  - macaron
+  - instrumentation
+  - go
+license: Apache 2.0
+description: Package otelmacaron instruments gopkg.in/macaron.v1.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://go.opentelemetry.io/contrib/instrumentation/gopkg.in/macaron.v1/otelmacaron
+createdAt: 2023-12-05

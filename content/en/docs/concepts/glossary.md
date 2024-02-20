@@ -36,9 +36,9 @@ alerting and tooling for finding the root cause.
 
 ### **Attribute**
 
-A key-value pair. Used across telemetry signals - e.g. in [`Traces`](#trace) to
-attach data to a [`Span`](#span), or in [`Metrics`](#metric). See [attribute
-spec][attribute].
+OpenTelemetry's word for [`Metadata`](#metadata). Adds key-value information to
+the entity producing telemetry. Used across [`Signals`](#signal) and
+[`Resources`](#resource). See [attribute spec][attribute].
 
 ### **Automatic Instrumentation**
 
@@ -48,7 +48,7 @@ examples include bytecode injection or monkey patching.
 
 ### **Baggage**
 
-A mechanism for propagating name/value pairs to help establish a causal
+A mechanism for propagating [`Metadata`](#metadata) to help establish a causal
 relationship between events and services. See [baggage spec][baggage].
 
 ### **Client Library**
@@ -93,7 +93,7 @@ See [`Signal`](#signal)
 
 ### **Dimension**
 
-See [`Label`](#label).
+A term used specifically by [`Metrics`](#metric). See [`Attribute`](#attribute).
 
 ### **Distributed Tracing**
 
@@ -104,6 +104,11 @@ transverses process, network and security boundaries.
 
 More on Distributed Tracing [here][distributed tracing].
 
+### **Distribution**
+
+A distribution is a wrapper around an upstream OpenTelemetry repository with
+some customizations. See [more][distribution].
+
 ### **Event**
 
 Something that happened where representation depends on the
@@ -111,16 +116,16 @@ Something that happened where representation depends on the
 
 ### **Exporter**
 
-Provides functionality to emit telemetry to consumers. Used by
-[`Instrumentation Libraries`][spec-exporter-lib] and the
-[`Collector`](/docs/collector/configuration#basics). Exporters can be push- or
+Provides functionality to emit telemetry to consumers. Exporters can be push- or
 pull-based.
 
 ### **Field**
 
-Name/value pairs added to [`Log Records`](#log-record) (similar to
-[`Attributes`](#attribute) for [`Spans`](#span) and [`Labels`](#label) for
-[`Metrics`](#metric)). See [field spec][field].
+A term used specifically by [`Log Records`](#log-record).
+[`Metadata`](#metadata) can be added through defined fields, including
+[`Attributes`](#attribute) and [`Resource`](#resource). Other fields may also be
+considered `Metadata`, including severity and trace information. See the [field
+spec][field].
 
 ### **gRPC**
 
@@ -152,7 +157,7 @@ Short for [JavaScript Object Notation][json].
 
 ### **Label**
 
-See [Attribute](#attribute).
+A term used specifically by [`Metrics`](#metric). See [`Metadata`](#metadata).
 
 ### **Language**
 
@@ -165,7 +170,7 @@ A language-specific collection of behavior invoked by an interface.
 ### **Log**
 
 Sometimes used to refer to a collection of [`Log Records`](#log-record). May be
-ambiguous, since people also sometimes use [`Log`](#log) to refer to a single
+ambiguous since people also sometimes use [`Log`](#log) to refer to a single
 [`Log Record`](#log-record), thus this term should be used carefully and in the
 context where ambiguity is possible additional qualifiers should be used (e.g.
 `Log Record`). See [more][log].
@@ -178,9 +183,10 @@ describes what happened, where it happened, etc. See [more][log record].
 
 ### **Metadata**
 
-A name/value pair added to telemetry data. OpenTelemetry calls this
-[`Attributes`](#attribute) on [`Spans`](#span), [`Labels`](#label) on
-[`Metrics`](#metric) and [`Fields`](#field) on [`Logs`](#log).
+A key-value pair, for example `foo="bar"`, added to an entity producing
+telemetry. OpenTelemetry calls these pairs [`Attributes`](#attribute). In
+addition, [`Metrics`](#metric) have [`Dimensions`](#dimension) an
+[`Labels`](#label), while [`Logs`](#log) have [`Fields`](#field).
 
 ### **Metric**
 
@@ -223,9 +229,8 @@ Short for [OpenTelemetry Protocol](/docs/specs/otlp/).
 
 ### **Processor**
 
-Operation performed on data between being received and being exported. For
-example, batching. Used by
-['Instrumentation Libraries'](#instrumentation-library) and the
+The operation performed on data between being received and being exported. For
+example, batching. Used by the
 [Collector](/docs/collector/configuration/#processors).
 
 ### **Propagators**
@@ -239,7 +244,7 @@ Language independent interface types. See [more][proto].
 
 ### **Receiver**
 
-Term used by the [`Collector`](/docs/collector/configuration/#receivers) to
+The term used by the [`Collector`](/docs/collector/configuration/#receivers) to
 define how telemetry data is received. Receivers can be push- or pull-based. See
 [more][receiver].
 
@@ -249,11 +254,11 @@ See [`Distributed Tracing`](#distributed-tracing).
 
 ### **Resource**
 
-Captures information about the entity for which telemetry is recorded. For
-example, a process producing telemetry that is running in a container on
-Kubernetes has a pod name, it is in a namespace and possibly is part of a
-deployment which also has a name. All three of these attributes can be included
-in the `Resource` and applied to any data source.
+Captures information about the entity producing telemetry as
+[`Attributes`](#attribute). For example, a process producing telemetry that is
+running in a container on Kubernetes has a process name, a pod name, a
+namespace, and possibly a deployment name. All four of these attributes can be
+included in the `Resource`.
 
 ### **REST**
 
@@ -338,6 +343,7 @@ on web pages when requested. See [more][zpages].
 [context propagation]: /docs/specs/otel/overview#context-propagation
 [dag]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
 [distributed tracing]: /docs/concepts/signals/traces/
+[distribution]: /docs/concepts/distributions/
 [field]: /docs/specs/otel/logs/data-model#field-kinds
 [http]: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
 [json]: https://en.wikipedia.org/wiki/JSON
@@ -346,7 +352,7 @@ on web pages when requested. See [more][zpages].
 [metric]: /docs/concepts/signals/metrics/
 [opencensus]: https://opencensus.io
 [opentracing]: https://opentracing.io
-[propagators]: /docs/instrumentation/go/manual/#propagators-and-context
+[propagators]: /docs/languages/go/instrumentation/#propagators-and-context
 [proto]: https://github.com/open-telemetry/opentelemetry-proto
 [receiver]: /docs/collector/configuration/#receivers
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
@@ -354,7 +360,6 @@ on web pages when requested. See [more][zpages].
 [sampling]: /docs/specs/otel/trace/sdk#sampling
 [signals]: /docs/concepts/signals/
 [span]: /docs/specs/otel/trace/api#span
-[spec-exporter-lib]: /docs/specs/otel/glossary/#exporter-library
 [spec-instrumentation-lib]: /docs/specs/otel/glossary/#instrumentation-library
 [spec-instrumented-lib]: /docs/specs/otel/glossary/#instrumented-library
 [specification]: /docs/concepts/components/#specification

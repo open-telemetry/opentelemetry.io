@@ -1,15 +1,21 @@
+# cSpell:ignore apachereceiver
 title: Apache Web Server Receiver
 registryType: receiver
-isThirdParty: false
 language: collector
 tags:
   - go
   - receiver
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/apachereceiver
 license: Apache 2.0
 description:
   This receiver fetches stats from a Apache Web Server instance using the
   server-status?auto endpoint.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/apachereceiver
+createdAt: 2022-10-25
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/apachereceiver
+  version: v0.94.0
