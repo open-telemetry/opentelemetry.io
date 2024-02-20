@@ -205,10 +205,10 @@ EOF
 ```
 
 By default, the Instrumentation resource that auto-instruments Java services
-uses `otlp` with the `http+protobuf` protocol. This means that the configured endpoint
-must be able to receive OTLP over `http` via `protobuf` payloads. Therefore, the example uses
-`http://demo-collector:4318`, which connects to the `http` port of the
-otlpreceiver of the Collector created in the previous step.
+uses `otlp` with the `http+protobuf` protocol. This means that the configured
+endpoint must be able to receive OTLP over `http` via `protobuf` payloads.
+Therefore, the example uses `http://demo-collector:4318`, which connects to the
+`http` port of the otlpreceiver of the Collector created in the previous step.
 
 #### Excluding auto-instrumentation {#java-excluding-auto-instrumentation}
 
