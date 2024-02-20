@@ -3,7 +3,7 @@
 
 <div class="o-banner">
 
-[Thanks to all the wonderful humans who have contributed to OpenTelemetry to date. We look forward to your contributions in 2024!](/blog/2023/humans-of-otel/)
+[We have updated our roadmap for 2024!](/blog/2024/roadmap/)
 
 {{/*
 
