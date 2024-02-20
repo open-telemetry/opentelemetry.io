@@ -36,7 +36,23 @@ Receivers, processors, and exporters used in a pipeline must support the
 particular data type otherwise `ErrDataTypeIsNotSupported` will be reported when
 the configuration is loaded. A pipeline can be depicted the following way:
 
-<!--TODO: Add Pipelines image via Mermaid.-->
+```mermaid
+---
+title: Pipeline
+---
+flowchart LR
+    A(Receiver 1) --> D[Processor 1]
+    B(Receiver 2) --> D
+    C(Receiver N) --> D
+    D --> E[Processor 2]
+    E --> F[Processor N]
+    F --> G((fan out))
+    G --> H[[Exporter 1]]
+    G --> I[[Exporter 2]]
+    G --> J[[Exporter N]]
+
+    classDef default fill:#e3e8fc,stroke:#4f62ad 
+```
 
 Pipelines can have one or more receivers. Data from all receivers is pushed to
 the first processor, which processes the data and then pushes it to the next
@@ -93,7 +109,7 @@ service:
 ```
 
 In the above example, `otlp` receiver will send the same data to pipeline
-`traces` and to pipeline `traces/2`. (Note: the configuration uses composite key
+`traces` and to pipeline `traces/2`. (Note: The configuration uses composite key
 names in the form of `type[/name]` as defined in
 [this document](https://docs.google.com/document/d/1NeheFG7DmcUYo_h2vLtNRlia9x5wOJMlV4QKEK05FhQ/edit#)).
 
