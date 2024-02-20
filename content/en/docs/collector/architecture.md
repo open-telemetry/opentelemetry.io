@@ -2,7 +2,7 @@
 title: Architecture
 weight: 28
 # prettier-ignore
-cSpell:ignore:
+cSpell:ignore: # TODO: Add keywords to ignore.
 ---
 
 OpenTelemetry Collector is an executable that can receive telemetry data,
@@ -36,7 +36,7 @@ Receivers, processors, and exporters used in a pipeline must support the
 particular data type otherwise `ErrDataTypeIsNotSupported` will be reported when
 the configuration is loaded. A pipeline can be depicted the following way:
 
-<!--Add Pipelines image via Mermaid.-->
+<!--TODO: Add Pipelines image via Mermaid.-->
 
 Pipelines can have one or more receivers. Data from all receivers is pushed to
 the first processor, which processes the data and then pushes it to the next
@@ -100,7 +100,7 @@ names in the form of `type[/name]` as defined in
 When the Collector loads this config, the result will look like this diagram
 (part of processors and exporters are omitted for brevity):
 
-<!--Add Receivers image via Mermaid.-->
+<!--TODO: Add Receivers image via Mermaid.-->
 
 > Important: When the same receiver is referenced in more than one pipeline, the
 > Collector creates only one receiver instance at runtime that sends the data to
@@ -155,7 +155,7 @@ In the above example, `jaeger` exporter gets data from pipeline `traces` and
 from pipeline `traces/2`. When the Collector loads this config, the result looks
 like this diagram (part of processors and receivers are omitted for brevity):
 
-<!--Add Exporters image via Mermaid.-->
+<!--TODO: Add Exporters image via Mermaid.-->
 
 ### Processors
 
@@ -201,7 +201,7 @@ service:
 
 When the Collector loads this config, the result looks like this diagram:
 
-<!--Add Processors image via Mermaid.-->
+<!--TODO: Add Processors image via Mermaid.-->
 
 Note that each `batch` processor is an independent instance, although they are
 configured the same way with a `send_batch_size` of 10000.
@@ -239,7 +239,7 @@ may also give Agent the ability to push configurations (such as sampling
 probability) to Library. For those languages that cannot do stats aggregation in
 process, they can send raw measurements and have Agent do the aggregation.
 
-<!--Add Agent image via Mermaid.-->
+<!--TODO: Add Agent image via Mermaid.-->
 
 > For developers and maintainers of other libraries: By adding specific
 > receivers, you can configure Agent to accept traces, metrics, and logs from
@@ -254,7 +254,7 @@ emit in one of the supported protocols. The Collector is configured to send data
 to the configured exporter(s). The following figure summarizes the deployment
 architecture:
 
-<!--Add Service image via Mermaid.-->
+<!--TODO: Add Service image via Mermaid.-->
 
 The OpenTelemetry Collector can also be deployed in other configurations, such
 as receiving data from other agents or clients in one of the formats supported
