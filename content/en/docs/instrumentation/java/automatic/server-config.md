@@ -12,8 +12,8 @@ this differs from server to server.
 
 ## JBoss EAP / WildFly
 
-You can add the `javaagent` argument at the end of the standalone
-configuration file:
+You can add the `javaagent` argument at the end of the standalone configuration
+file:
 
 {{< tabpane text=true persist=lang >}}
 
