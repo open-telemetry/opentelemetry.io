@@ -261,7 +261,7 @@ attributes :
 | `otel.instrumentation.logback-appender.experimental.capture-mdc-attributes`            | String  |         | Comma separated list of MDC attributes to capture. Use the wildcard character `*` to capture all attributes.                                  |
 
 [source code attributes]:
-  https://github.com/open-telemetry/semantic-conventions/blob/main/docs/general/attributes.md#source-code-attributes
+  /docs/specs/semconv/general/attributes/#source-code-attributes
 
 Alternatively, you can enable these features by adding the OpenTelemetry Logback
 appender in your `logback.xml` or `logback-spring.xml` file:
