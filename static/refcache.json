@@ -1515,6 +1515,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:15:09.437464-05:00"
   },
+  "https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-19T17:27:38.673604461+01:00"
+  },
   "https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:15:14.908906-05:00"
@@ -4022,6 +4026,10 @@
   "https://github.com/thanos-io/thanos": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:05:38.529172-05:00"
+  },
+  "https://github.com/thegeekyasian/go-chi-otel": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-20T05:41:18.324089503Z"
   },
   "https://github.com/theletterf/": {
     "StatusCode": 200,
