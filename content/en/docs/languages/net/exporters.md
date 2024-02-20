@@ -37,8 +37,8 @@ builder.Services.AddOpenTelemetry()
     b.AddOtlpExporter()
     // The rest of your setup code goes here too
   })
-  .WithMetrics(b => {
-    b.AddOtlpExporter
+  .WithMetrics(metrics => {
+    metrics.AddOtlpExporter
     // The rest of your setup code goes here
   });
 
@@ -65,22 +65,21 @@ builder.Services.AddOpenTelemetry()
     })
     // The rest of your setup code goes here too
   })
-  .WithMetrics(b => {
-    b
-    .AddOtlpExporter(opt =>
+  .WithMetrics(metrics => metrics
+    .AddOtlpExporter(options =>
     {
-        opt.Endpoint = new Uri("your-endpoint-here/v1/metrics");
-        opt.Protocol = OtlpExportProtocol.HttpProtobuf;
+        options.Endpoint = new Uri("your-endpoint-here/v1/metrics");
+        options.Protocol = OtlpExportProtocol.HttpProtobuf;
     })
     // The rest of your setup code goes here too
   });
 
 builder.Logging
-  .AddOpenTelemetry(options => {
-        options.AddOtlpExporter(opt =>
+  .AddOpenTelemetry(logging => {
+        logging.AddOtlpExporter(options =>
         {
-            opt.Endpoint = new Uri("your-endpoint-here/v1/logs");
-            opt.Protocol = OtlpExportProtocol.HttpProtobuf;
+            options.Endpoint = new Uri("your-endpoint-here/v1/logs");
+            options.Protocol = OtlpExportProtocol.HttpProtobuf;
         })
   });
 ```
@@ -100,10 +99,10 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .Build();
 
 using var meterProvider = Sdk.CreateMeterProviderBuilder()
-    .AddOtlpExporter(opt =>
+    .AddOtlpExporter(options =>
     {
-        opt.Endpoint = new Uri("your-endpoint-here/v1/metrics");
-        opt.Protocol = OtlpExportProtocol.HttpProtobuf;
+        options.Endpoint = new Uri("your-endpoint-here/v1/metrics");
+        options.Protocol = OtlpExportProtocol.HttpProtobuf;
     })
 
     // Other setup code, like setting a resource goes here too
@@ -112,12 +111,12 @@ using var meterProvider = Sdk.CreateMeterProviderBuilder()
 
 using var loggerFactory = LoggerFactory.Create(builder =>
 {
-    builder.AddOpenTelemetry(options =>
+    builder.AddOpenTelemetry(logging =>
     {
-        options.AddOtlpExporter(opt =>
+        logging.AddOtlpExporter(options =>
         {
-            opt.Endpoint = new Uri("your-endpoint-here/v1/logs");
-            opt.Protocol = OtlpExportProtocol.HttpProtobuf;
+            options.Endpoint = new Uri("your-endpoint-here/v1/logs");
+            options.Protocol = OtlpExportProtocol.HttpProtobuf;
         })
     });
 });
@@ -158,19 +157,19 @@ services:
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenTelemetry()
-    .WithTracing(b =>
+    .WithTracing(tracing =>
     {
-        b.AddConsoleExporter()
+        tracing.AddConsoleExporter()
         // The rest of your setup code goes here too
     })
-    .WithMetrics(b =>
-        b.AddConsoleExporter()
+    .WithMetrics(metrics =>
+        metrics.AddConsoleExporter()
         // The rest of your setup code goes here too
     });
 
 builder.Logging
-  .AddOpenTelemetry(options => {
-        options.AddConsoleExporter()
+  .AddOpenTelemetry(logging => {
+        logging.AddConsoleExporter()
   });
 ```
 
@@ -193,9 +192,9 @@ using var meterProvider = Sdk.CreateMeterProviderBuilder()
 
 using var loggerFactory = LoggerFactory.Create(builder =>
 {
-    builder.AddOpenTelemetry(options =>
+    builder.AddOpenTelemetry(logging =>
     {
-        options.AddConsoleExporter()
+        logging.AddConsoleExporter()
     });
 });
 ```
@@ -293,11 +292,11 @@ services:
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenTelemetry()
-    .WithTracing(b =>
+    .WithTracing(tracing =>
     {
-        b.AddZipkinExporter(o =>
+        tracing.AddZipkinExporter(options =>
         {
-            o.Endpoint = new Uri("your-zipkin-uri-here");
+            options.Endpoint = new Uri("your-zipkin-uri-here");
         })
         // The rest of your setup code goes here too
     });
@@ -307,9 +306,9 @@ Otherwise, configure the exporter when creating a tracer provider:
 
 ```csharp
 using var tracerProvider = Sdk.CreateTracerProviderBuilder()
-    .AddZipkinExporter(o =>
+    .AddZipkinExporter(options =>
     {
-        o.Endpoint = new Uri("your-zipkin-uri-here");
+        options.Endpoint = new Uri("your-zipkin-uri-here");
     })
 
     // Other setup code, like setting a resource goes here too
