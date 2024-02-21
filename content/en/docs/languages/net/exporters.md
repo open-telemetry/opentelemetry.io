@@ -15,7 +15,7 @@ transport your data:
 - HTTP/protobuf
 - gRPC
 
-Start by installing the respective exporter package as a dependency for your
+Start by installing the [`OpenTelemetry.Exporter.OpenTelemetryProtocol`](https://www.nuget.org/packages/OpenTelemetry.Exporter.OpenTelemetryProtocol/) package as a dependency for your
 project:
 
 ```sh
@@ -43,8 +43,8 @@ builder.Services.AddOpenTelemetry()
   });
 
 builder.Logging
-  .AddOpenTelemetry(options => {
-        options.AddOtlpExporter()
+  .AddOpenTelemetry(logging => {
+        logging.AddOtlpExporter()
   });
 ```
 
@@ -167,8 +167,7 @@ builder.Services.AddOpenTelemetry()
         // The rest of your setup code goes here too
     });
 
-builder.Logging
-  .AddOpenTelemetry(logging => {
+builder.Logging.AddOpenTelemetry(logging => {
         logging.AddConsoleExporter()
   });
 ```
