@@ -1115,6 +1115,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:51:59.704962-05:00"
   },
+  "https://docs.microfocus.com/doc/OBS/SaaS/ConfigureOTELCollector": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-17T16:19:07.140338072Z"
+  },
   "https://docs.microsoft.com/aspnet/core": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:53:25.01054-05:00"

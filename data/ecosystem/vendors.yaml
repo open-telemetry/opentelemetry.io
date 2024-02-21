@@ -237,6 +237,13 @@
   contact: 'hello@openobserve.ai'
   oss: true
   commercial: true
+- name: OpenText
+  distribution: true
+  nativeOTLP: true
+  url: 'https://docs.microfocus.com/doc/OBS/SaaS/ConfigureOTELCollector'
+  contact: 'skotagiri@opentext.com'
+  oss: false
+  commercial: true
 - name: Oracle
   distribution: false
   nativeOTLP: true
