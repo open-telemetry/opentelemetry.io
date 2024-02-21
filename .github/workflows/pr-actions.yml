@@ -69,21 +69,11 @@ jobs:
 
       - run: |
           case $PR_ACTION in
-            format)
-              npm run format
-              ;;
-            submodules)
-              npm run sync
-              ;;
-            refcache)
+            all|refcache)
               npm install --omit=optional
-              npm run check:links
-              ;;
-            all)
-              npm install --omit=optional
-              npm run sync
-              npm run format
-              npm run check:links
+              ;&
+            format|submodules)
+              npm run fix:$PR_ACTION
               ;;
           esac
           git status

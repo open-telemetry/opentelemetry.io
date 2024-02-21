@@ -380,18 +380,18 @@ GitHub also automatically assigns labels to a PR to help reviewers.
 
 #### Fix content issues automatically
 
-Before submitting a change to the repository, run the following command and
-address any reported issues. Also commit any files changed by the `fix` script:
+Before submitting a change to the repository, run the following command and (i)
+address any reported issues, (ii) commit any files changed by the script:
 
 ```sh
 npm run test-and-fix
 ```
 
-To separately test and fix issues with your files, run:
+To separately test and fix all issues with your files, run:
 
 ```sh
-npm run test # checks but does not update any files
-npm run fix  # may update files
+npm run test    # Checks but does not update any files
+npm run fix:all # May update files
 ```
 
 To list available NPM scripts, run `npm run`.

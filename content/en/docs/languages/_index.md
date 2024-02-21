@@ -25,6 +25,18 @@ Java, Node.js, Python, Go into your application.
 The current status of the major functional components for OpenTelemetry is as
 follows:
 
+{{% alert title="Important" color="warning" %}}
+
+Regardless of an API/SDK's status, if your instrumentation relies on [semantic
+conventions] that are marked as [Experimental] in the [semantic conventions
+specification], your data flow might be subject to **breaking changes**.
+
+[semantic conventions]: /docs/concepts/semantic-conventions/
+[Experimental]: /docs/specs/otel/document-status/
+[semantic conventions specification]: /docs/specs/semconv/
+
+{{% /alert %}}
+
 {{% telemetry-support-table " " %}}
 
 [auto]: /docs/kubernetes/operator/automatic/
