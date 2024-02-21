@@ -2,7 +2,7 @@
 title: Architecture
 weight: 28
 # prettier-ignore
-cSpell:ignore: # TODO: Add keywords to ignore.
+cSpell:ignore: fanoutconsumer probabilisticsampler spanmetrics zpages
 ---
 
 OpenTelemetry Collector is an executable that can receive telemetry data,
@@ -70,12 +70,12 @@ A pipeline configuration typically looks like this:
 service:
   pipelines: # section that can contain multiple subsections, one per pipeline
     traces: # type of the pipeline
-      receivers: [otlp, jaeger, zipkin]
+      receivers: [otlp, zipkin]
       processors: [memory_limiter, batch]
-      exporters: [otlp, jaeger, zipkin]
+      exporters: [otlp, zipkin]
 ```
 
-The above example defines a pipeline for the “traces” type of telemetry data,
+The above example defines a pipeline for the traces type of telemetry data,
 with three receivers, two processors, and three exporters.
 
 For details of config file format see
@@ -105,7 +105,7 @@ service:
     traces/2: # another pipeline of “traces” type
       receivers: [otlp]
       processors: [batch]
-      exporters: [opencensus]
+      exporters: [otlp]
 ```
 
 In the above example, `otlp` receiver will send the same data to pipeline
@@ -118,19 +118,25 @@ When the Collector loads this config, the result will look like this diagram
 
 <!--TODO: Add Receivers image via Mermaid.-->
 
-> Important: When the same receiver is referenced in more than one pipeline, the
-> Collector creates only one receiver instance at runtime that sends the data to
-> a fan out consumer. The fan out consumer in turn sends the data to the first
-> processor of each pipeline. The data propagation from receiver to the fan out
-> consumer and then to processors is completed using a synchronous function
-> call. This means that if one processor blocks the call, the other pipelines
-> attached to this receiver are blocked from receiving the same data, and the
-> receiver itself stops processing and forwarding newly received data.
+
+{{% alert title="Important" color="warning" %}}
+ 
+When the same receiver is referenced in more than one pipeline, the
+Collector creates only one receiver instance at runtime that sends the data to
+a fan out consumer. The fan out consumer in turn sends the data to the first
+processor of each pipeline. The data propagation from receiver to the fan out
+consumer and then to processors is completed using a synchronous function
+call. This means that if one processor blocks the call, the other pipelines
+attached to this receiver are blocked from receiving the same data, and the
+receiver itself stops processing and forwarding newly received data.
+
+{{% /alert %}}
+
 
 ### Exporters
 
 Exporters typically forward the data they get to a destination on a network, but
-they can also send the data elsewhere. For example, `logging` exporter writes
+they can also send the data elsewhere. For example, `debug` exporter writes
 the telemetry data to the logging destination.
 
 The configuration allows for multiple exporters of the same type, even in the
