@@ -2,7 +2,8 @@
 title: Automatic Instrumentation
 linkTitle: Automatic
 weight: 30
-cSpell:ignore: devel distro mkdir myapp uninstrumented virtualenv Werkzeug pyproject
+# prettier-ignore
+cSpell:ignore: devel distro mkdir myapp pyproject uninstrumented virtualenv Werkzeug
 ---
 
 Automatic instrumentation with Python uses a Python agent that can be attached
