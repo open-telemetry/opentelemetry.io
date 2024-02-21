@@ -1,7 +1,7 @@
 ---
 title: Instrumentation
 description: >-
-  How OpenTelemetry facilitates the instrumentation of libraries and
+  How OpenTelemetry instrumentations libraries and
   applications.
 aliases: [instrumenting]
 weight: 15
