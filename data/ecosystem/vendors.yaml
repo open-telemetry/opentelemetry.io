@@ -41,6 +41,13 @@
   contact: 'hello@betterstack.com'
   oss: false
   commercial: true
+- name: Control Plane
+  distribution: false
+  nativeOTLP: true
+  url: 'https://docs.controlplane.com/reference/org#tracing'
+  contact: 'support@controlplane.com'
+  oss: false
+  commercial: true
 - name: Coralogix
   distribution: true
   nativeOTLP: true
