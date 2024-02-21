@@ -41,17 +41,21 @@ the configuration is loaded. A pipeline can be depicted the following way:
 title: Pipeline
 ---
 flowchart LR
-    A(Receiver 1) --> D[Processor 1]
-    B(Receiver 2) --> D
-    C(Receiver N) --> D
-    D --> E[Processor 2]
-    E --> F[Processor N]
-    F --> G((fan out))
-    G --> H[[Exporter 1]]
-    G --> I[[Exporter 2]]
-    G --> J[[Exporter N]]
+    R1(Receiver 1) --> P1[Processor 1]
+    R2(Receiver 2) --> P1
+    RM(...) ~~~ P1
+    RN(Receiver N) --> P1
+    P1 --> P2[Processor 2]
+    P2 --> PM[...]
+    PM --> PN[Processor N]
+    PN --> FO((fan out))
+    FO --> E1[[Exporter 1]]
+    FO --> E2[[Exporter 2]]
+    FO ~~~ EM[[...]]
+    FO --> EN[[Exporter N]]
 
-    classDef default fill:#e3e8fc,stroke:#4f62ad 
+    %% The stroke color matches the website header.
+    classDef default fill:#e3e8fc,stroke:#4f62ad
 ```
 
 Pipelines can have one or more receivers. Data from all receivers is pushed to
@@ -177,7 +181,15 @@ In the above example, `jaeger` exporter gets data from pipeline `traces` and
 from pipeline `traces/2`. When the Collector loads this config, the result looks
 like this diagram (part of processors and receivers are omitted for brevity):
 
-<!--TODO: Add Exporters image via Mermaid.-->
+```mermaid
+flowchart LR
+    M1[...] ~~~ P1["`#quot;memory_limiter#quot; Processor`"]
+    M2[...] ~~~ P2["`#quot;tags#quot; Processor`"]
+    P1 -->|Pipeline 'traces'|E1("`#quot;jaeger#quot; Exporter`")
+    P2 -->|Pipeline 'traces/2'|E1("`#quot;jaeger#quot; Exporter`")
+
+    classDef default fill:#e3e8fc,stroke:#4f62ad;
+```
 
 ### Processors
 
@@ -223,13 +235,33 @@ service:
 
 When the Collector loads this config, the result looks like this diagram:
 
-<!--TODO: Add Processors image via Mermaid.-->
+```mermaid
+---
+title: Pipeline "traces"
+---
+flowchart LR
+    R1("`zipkin Receiver`") --> P1["`#quot;batch#quot; Processor`"]
+    P1 --> E1[["`#quot;jaeger#quot; Exporter`"]]
+
+    classDef default fill:#e3e8fc,stroke:#4f62ad;
+```
+
+```mermaid
+---
+title: Pipeline "traces/2"
+---
+flowchart LR
+    R1("`otlp Receiver`") --> P1["`#quot;batch#quot; Processor`"]
+    P1 --> E1[["`#quot;otlp#quot; Exporter`"]]
+
+    classDef default fill:#e3e8fc,stroke:#4f62ad;
+```
 
 Note that each `batch` processor is an independent instance, although they are
 configured the same way with a `send_batch_size` of 10000.
 
-> Note: The same name of the processor must not be referenced multiple times in
-> the `processors` key of a single pipeline.
+> The same name of the processor must not be referenced multiple times in the
+> `processors` key of a single pipeline.
 
 ## <a name="opentelemetry-agent"></a>Running as an Agent
 
