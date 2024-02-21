@@ -5,7 +5,7 @@ weight: 11
 description:
   An implementation of auto-instrumentation using the OpenTelemetry Operator.
 # prettier-ignore
-cSpell:ignore: autoinstrumentation GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver PTRACE REDISCALA
+cSpell:ignore: autoinstrumentation GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver PTRACE REDISCALA Werkzeug
 ---
 
 The OpenTelemetry Operator supports injecting and configuring
