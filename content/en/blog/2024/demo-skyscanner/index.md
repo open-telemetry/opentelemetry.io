@@ -2,13 +2,13 @@
 title:
   'Making observability fun: How we increased engineers confidence in incident
   management using a game'
-linkTitle: Skyscanner using OtelDemo
+linkTitle: Skyscanner using OTel Demo
 date: 2024-02-22
 author: >-
   [Jordi Bisbal Ansaldo](https://github.com/jordibisbal8) (Skyscanner)
 ---
 
-At Skyscanner, as in many organisations, teams tend to follow specific runbooks
+At [Skyscanner](https://www.skyscanner.net), as in many organisations, teams tend to follow specific runbooks
 for individual failure modes. With modern and complex distributed systems, this
 has the downside of most of the errors being unknowns, which makes runbooks
 practically useless.
@@ -33,9 +33,9 @@ time users stop suffering from the incident.
 To begin with, we need to set up an environment that demonstrates the best
 practices for monitoring and debugging using OpenTelemetry instrumentation and
 observability. For this, we propose the use of the official
-[OpenTelemetry Demo project](https://github.com/open-telemetry/opentelemetry-demo),
+[OpenTelemetry Demo](/docs/demo/),
 which is a realistic example of a distributed system called Astronomy Shop.
-Thanks to its OpenTelemetry Protocol (OTLP), it allows us to simply point the
+Thanks to the [OpenTelemetry Protocol](/docs/specs/otlp/) (OTLP), it allows us to simply point the
 standard OTLP exporter in the Collector to [New Relic](https://newrelic.com/),
 our chosen observability platform at Skyscanner which, like other platforms, is
 fully embracing open standards to ingest telemetry data.
@@ -44,7 +44,7 @@ This system contains regressions that can be injected into the platform and
 helps us demonstrate the importance of Service Levels Objectives (SLOs),
 tracing, logs, metrics, etc. For instance, we can observe traffic flow through
 various components, as shown in the image below. Since part of the OpenTelemetry
-ecosystem is open-source, we can easily introduce any new features that will be
+ecosystem is open source, we can easily introduce any new features that will be
 reviewed by OpenTelemetry contributors.
 
 ![Distributed tracing example in Astronomy shop](tracing_example.png)
@@ -80,7 +80,7 @@ systems and would love to have further sessions.
   (Senior Software Engineer)
 - It is a really great (company-wide) initiative to get people upskilled in
   observability and OpenTelemetry/New Relic and I personally found it very
-  useful, as well as a lot of fun! :D” - Polly Yankova (Software Engineer)
+  useful, as well as a lot of fun! :D - Polly Yankova (Software Engineer)
 
 ## Next steps
 
@@ -91,6 +91,6 @@ for those who have been in the company longer. In addition, after observing
 common feedback, we identified that it would be beneficial to extend the current
 incidents to include more front-end-specific ones, such as incidents triggered
 by browser traffic. To achieve this, we have contributed to the OpenTelemetry
-Demo project and enabled these features for other interested parties. For more
-information, please have a look at the raised
-[PR](https://github.com/open-telemetry/opentelemetry-demo/pull/1345).
+Demo and enabled these features for other interested parties. For more
+information, please have a look at the
+[raised PR](https://github.com/open-telemetry/opentelemetry-demo/pull/1345).
