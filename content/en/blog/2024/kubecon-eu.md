@@ -3,7 +3,7 @@ title: Join us for OpenTelemetry Talks and Activities at KubeCon EU 2024
 linkTitle: KubeCon NA '24
 date: 2024-02-19
 # prettier-ignore
-cSpell:ignore: Aiven Anusha Beemer Benedikt Blanco Bongartz Coralogix Kanal Kowall Matej Mirabella Narapureddy Purvi Reddy Skyscanner Jiekun Quwan
+cSpell:ignore: Aiven Alexandre Anusha Arbiv Beemer Benedikt Blanco Bongartz Chekuri Coralogix Cosmonic Dyrmishi Jiekun Joonas Kanal Kolachala Kowall Machado Magno Marcin Matej Mirabella Narapureddy Nenashev Oleg Oluwalolope Outshift Pismo Purvi Quwan Reddy Ridwan Rollouts Ryanair Skyscanner Sodkiewicz Soluções Srikanth Tecnológicas Yosef
 author: '[Severin Neumann](https://github.com/svrnm) (Cisco)'
 ---
 
