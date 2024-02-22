@@ -5,7 +5,7 @@ weight: 11
 description:
   An implementation of auto-instrumentation using the OpenTelemetry Operator.
 # prettier-ignore
-cSpell:ignore: autoinstrumentation GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver PTRACE REDISCALA
+cSpell:ignore: autoinstrumentation GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver PTRACE REDISCALA Werkzeug
 ---
 
 The OpenTelemetry Operator supports injecting and configuring
@@ -194,7 +194,7 @@ metadata:
   name: demo-instrumentation
 spec:
   exporter:
-    endpoint: http://demo-collector:4317
+    endpoint: http://demo-collector:4318
   propagators:
     - tracecontext
     - baggage
@@ -205,10 +205,10 @@ EOF
 ```
 
 By default, the Instrumentation resource that auto-instruments Java services
-uses `otlp` with the `grpc` protocol. This means that the configured endpoint
-must be able to receive OTLP over `grpc`. Therefore, the example uses
-`http://demo-collector:4317`, which connects to the `grpc` port of the
-otlpreceiver of the Collector created in the previous step.
+uses `otlp` with the `http+protobuf` protocol. This means that the configured
+endpoint must be able to receive OTLP over `http` via `protobuf` payloads.
+Therefore, the example uses `http://demo-collector:4318`, which connects to the
+`http` port of the otlpreceiver of the Collector created in the previous step.
 
 #### Excluding auto-instrumentation {#java-excluding-auto-instrumentation}
 
@@ -231,7 +231,7 @@ metadata:
   name: demo-instrumentation
 spec:
   exporter:
-    endpoint: http://demo-collector:4317
+    endpoint: http://demo-collector:4318
   propagators:
     - tracecontext
     - baggage
@@ -316,6 +316,10 @@ spec:
     argument: "1"
 EOF
 ```
+
+> **Note**: OpenTelemetry Python automatic instrumentation does not support
+> Flask or Werkzeug 3.0+ at this time. See the troubleshooting section
+> [No Data When Using Flask](/docs/languages/python/automatic#no-data-when-using-flask)
 
 By default, the `Instrumentation` resource that auto-instruments Python services
 uses `otlp` with the `http/protobuf` protocol (gRPC is not supported at this
