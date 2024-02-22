@@ -3243,6 +3243,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:55:35.674322-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/7413": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-22T15:50:20.20139382Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:11.140445-05:00"
