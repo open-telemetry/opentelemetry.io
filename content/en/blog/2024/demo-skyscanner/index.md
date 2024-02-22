@@ -2,7 +2,7 @@
 title:
   'Making observability fun: How we increased engineers confidence in incident
   management using a game'
-linkTitle: Observability game day
+linkTitle: Skyscanner using OtelDemo
 date: 2024-02-22
 author: >-
   [Jordi Bisbal Ansaldo](https://github.com/jordibisbal8) (Skyscanner)
