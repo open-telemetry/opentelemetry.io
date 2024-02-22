@@ -7,9 +7,7 @@ tags:
   - processor
   - collector
 license: Apache 2.0
-description:
-  The Schema Processor is used to convert existing telemetry data or signals to
-  a version of the semantic convention defined as part of the configuration.
+description: The Schema Processor is used to convert existing telemetry data or signals to a version of the semantic convention defined as part of the configuration.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,4 +16,4 @@ createdAt: 2022-10-26
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/processor/schemaprocessor
-  version: v0.94.0
+  version: v0.95.0

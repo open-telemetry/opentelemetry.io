@@ -7,8 +7,7 @@ tags:
   - exporter
   - collector
 license: Apache 2.0
-description:
-  The Alibaba Cloud Log Service Exporter for the OpenTelemetry Collector.
+description: The Alibaba Cloud Log Service Exporter for the OpenTelemetry Collector.
 authors:
   - name: Alibaba Cloud
 urls:
@@ -17,4 +16,4 @@ createdAt: 2021-02-24
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/alibabacloudlogserviceexporter
-  version: v0.94.0
+  version: v0.95.0
