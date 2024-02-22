@@ -5,7 +5,7 @@ weight: 11
 description:
   An implementation of auto-instrumentation using the OpenTelemetry Operator.
 # prettier-ignore
-cSpell:ignore: autoinstrumentation GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver PTRACE REDISCALA
+cSpell:ignore: autoinstrumentation GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver PTRACE REDISCALA Werkzeug
 ---
 
 The OpenTelemetry Operator supports injecting and configuring
@@ -316,6 +316,10 @@ spec:
     argument: "1"
 EOF
 ```
+
+> **Note**: OpenTelemetry Python automatic instrumentation does not support
+> Flask or Werkzeug 3.0+ at this time. See the troubleshooting section
+> [No Data When Using Flask](/docs/languages/python/automatic#no-data-when-using-flask)
 
 By default, the `Instrumentation` resource that auto-instruments Python services
 uses `otlp` with the `http/protobuf` protocol (gRPC is not supported at this
