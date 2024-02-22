@@ -875,6 +875,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:53:34.715996-05:00"
   },
+  "https://docs.controlplane.com/reference/org#tracing": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-21T13:37:33.456267+02:00"
+  },
   "https://docs.couchdb.org/en/stable/api/document/common.html#get--db-docid": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:34:02.790002-05:00"
@@ -1114,6 +1118,10 @@
   "https://docs.lumigo.io/docs/opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:51:59.704962-05:00"
+  },
+  "https://docs.microfocus.com/doc/OBS/SaaS/ConfigureOTELCollector": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-17T16:19:07.140338072Z"
   },
   "https://docs.microsoft.com/aspnet/core": {
     "StatusCode": 200,
@@ -1411,6 +1419,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:11.609878-05:00"
   },
+  "https://docs.oracle.com/javase/tutorial/sound/SPI-intro.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-15T23:57:17.652434515Z"
+  },
   "https://docs.otterize.com/reference/configuration/network-mapper/helm-chart#opentelemetry-exporter-parameters": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:15:20.577253-05:00"
@@ -1507,6 +1519,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:15:09.437464-05:00"
   },
+  "https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-19T17:27:38.673604461+01:00"
+  },
   "https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:15:14.908906-05:00"
@@ -1514,6 +1530,10 @@
   "https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:53.797365-05:00"
+  },
+  "https://docs.spring.io/spring-security/reference/servlet/authorization/architecture.html#authz-authorities": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-12T22:02:33.483262-05:00"
   },
   "https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#aop": {
     "StatusCode": 206,
@@ -2243,6 +2263,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:04.809604-05:00"
   },
+  "https://github.com/dmathieu": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-14T08:44:43.625674121Z"
+  },
+  "https://github.com/dmathieu/rspec-otel": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-14T08:44:42.583247623Z"
+  },
   "https://github.com/dmsolr": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:04:59.339712-05:00"
@@ -2586,6 +2614,14 @@
   "https://github.com/nhatthm/otelsql": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:11:34.796425-05:00"
+  },
+  "https://github.com/oatpp": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-09T11:48:44.797303+01:00"
+  },
+  "https://github.com/oatpp/oatpp": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-09T11:48:45.252429+01:00"
   },
   "https://github.com/observIQ/observiq-otel-collector": {
     "StatusCode": 200,
@@ -3479,6 +3515,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:01.211191-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-proto-java": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-12T10:07:03.426176991Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-proto/#maturity-level": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:06.679199-05:00"
@@ -3755,6 +3795,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:01:12.185293-05:00"
   },
+  "https://github.com/open-telemetry/semantic-conventions-java": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-12T10:07:03.116391658Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions-java/releases": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:06.008653-05:00"
@@ -3986,6 +4030,10 @@
   "https://github.com/thanos-io/thanos": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:05:38.529172-05:00"
+  },
+  "https://github.com/thegeekyasian/go-chi-otel": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-20T05:41:18.324089503Z"
   },
   "https://github.com/theletterf/": {
     "StatusCode": 200,
@@ -5107,6 +5155,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T05:18:29.229033-05:00"
   },
+  "https://oatpp.io/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-09T11:48:44.205582+01:00"
+  },
   "https://observiq.com/blog/what-are-connectors-in-opentelemetry/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:06:02.410999-05:00"
@@ -5194,6 +5246,10 @@
   "https://opensearch.org/docs/latest/data-prepper/index/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:14:58.880711-05:00"
+  },
+  "https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/classopentelemetry_1_1sdk_1_1trace_1_1SpanExporter.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-14T16:43:04.418679+01:00"
   },
   "https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__metrics.html": {
     "StatusCode": 200,
@@ -6686,6 +6742,10 @@
   "https://rubygems.org/gems/opentelemetry-instrumentation-trilogy": {
     "StatusCode": 200,
     "LastSeen": "2024-01-22T15:38:54.618612+01:00"
+  },
+  "https://rubygems.org/gems/rspec-otel": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-14T08:44:44.34346372Z"
   },
   "https://rubygems.org/gems/sentry-opentelemetry": {
     "StatusCode": 200,
