@@ -76,7 +76,7 @@ systems and would love to have further sessions.
 - Hugely valuable to run against real services and to compare and contrast
   different debugging methods. I'm certain everyone, regardless of skill level,
   will have got something out of the session - I know I did! Thank you for
-  taking the time to set this up and promoting it for us - Dominic Fraser
+  taking the time to set this up and promoting it for us - [Dominic Fraser](https://github.com/dominicfraser)
   (Senior Software Engineer)
 - It is a really great (company-wide) initiative to get people upskilled in
   observability and OpenTelemetry/New Relic and I personally found it very
