@@ -451,6 +451,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:15:04.197679-05:00"
   },
+  "https://community.cncf.io/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-22T16:34:09.566865309Z"
+  },
   "https://community.cncf.io/end-user-community/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:05:22.999299-05:00"

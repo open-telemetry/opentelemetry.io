@@ -26,8 +26,8 @@ The entry must include the following[^grace-period-2024-01-01]:
   in case we have questions
 
 Note that this list is for
-[_end-user_ organizations](https://community.cncf.io/) that
-do not provide any OpenTelemetry-related services.
+[_end-user_ organizations](https://community.cncf.io/) that do not provide any
+OpenTelemetry-related services.
 
 If your organization provides a **library** or **service** made observable
 through OpenTelemetry, see [Integrations](/ecosystem/integrations/).
