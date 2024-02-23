@@ -8,14 +8,14 @@ author: >-
   [Jordi Bisbal Ansaldo](https://github.com/jordibisbal8) (Skyscanner)
 ---
 
-At [Skyscanner](https://www.skyscanner.net), as in many organisations, teams tend to follow specific runbooks
-for individual failure modes. With modern and complex distributed systems, this
-has the downside of most of the errors being unknowns, which makes runbooks
-practically useless.
+At [Skyscanner](https://www.skyscanner.net), as in many organisations, teams
+tend to follow specific runbooks for individual failure modes. With modern and
+complex distributed systems, this has the downside of most of the errors being
+unknowns, which makes runbooks practically useless.
 
-After migrating our telemetry data to the OpenTelemetry standards at
-Skyscanner, we now have richer instrumentation and can rely on observability
-directly. As a result, we are ready to adopt a new
+After migrating our telemetry data to the OpenTelemetry standards at Skyscanner,
+we now have richer instrumentation and can rely on observability directly. As a
+result, we are ready to adopt a new
 [observability mindset](https://charity.wtf/2019/09/20/love-and-alerting-in-the-time-of-cholera-and-observability/),
 which requires training our engineers to work effectively with the new
 ecosystem. This allows them to react efficiently to any known or unknown issues,
@@ -33,12 +33,13 @@ users stop suffering from the incident.
 To begin with, we need to set up an environment that demonstrates the best
 practices for monitoring and debugging using OpenTelemetry instrumentation and
 observability. For this, we propose the use of the official
-[OpenTelemetry Demo](/docs/demo/),
-which is a realistic example of a distributed system called Astronomy Shop.
-Thanks to the [OpenTelemetry Protocol](/docs/specs/otlp/) (OTLP), it allows us to simply point the
-standard OTLP exporter in the Collector to [New Relic](https://newrelic.com/),
-our chosen observability platform at Skyscanner which, like other platforms, is
-fully embracing open standards to ingest telemetry data.
+[OpenTelemetry Demo](/docs/demo/), which is a realistic example of a distributed
+system called Astronomy Shop. Thanks to the
+[OpenTelemetry Protocol](/docs/specs/otlp/) (OTLP), it allows us to simply point
+the standard OTLP exporter in the Collector to
+[New Relic](https://newrelic.com/), our chosen observability platform at
+Skyscanner which, like other platforms, is fully embracing open standards to
+ingest telemetry data.
 
 This system contains regressions that can be injected into the platform and
 helps us demonstrate the importance of Service Levels Objectives (SLOs),
@@ -76,11 +77,22 @@ systems and would love to have further sessions.
 - Hugely valuable to run against real services and to compare and contrast
   different debugging methods. I'm certain everyone, regardless of skill level,
   will have got something out of the session - I know I did! Thank you for
-  taking the time to set this up and promoting it for us - [Dominic Fraser](https://github.com/dominicfraser)
-  (Senior Software Engineer)
+  taking the time to set this up and promoting it for us -
+  [Dominic Fraser](https://github.com/dominicfraser) (Senior Software Engineer)
 - It is a really great (company-wide) initiative to get people upskilled in
   observability and OpenTelemetry/New Relic and I personally found it very
   useful, as well as a lot of fun! :D - Polly Yankova (Software Engineer)
+
+In addition, we learned that:
+
+1. OTLP makes it incredibly simple to integrate a standard application with an
+   observability vendor. Just point it to the right endpoint and job done.
+2. Our teams relied primarily on tracing data to analyse regressions that helped
+   them understand the root cause faster. Tracing FTW!
+3. Our front-end engineers found the Game Day lacked focus on client-side
+   observability, so we decided to contribute upstream (see next steps below).
+   This was my first contribution to the project, and it was a great experience!
+   Maintainers were very welcoming and helped me to test and release. Thanks!
 
 ## Next steps
 
