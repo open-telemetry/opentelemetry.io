@@ -412,7 +412,7 @@
   contact: 'opensource@alibaba-inc.com'
   oss: false
   commercial: true
-  - name: Seq
+- name: Seq
   distribution: false
   nativeOTLP: true
   url: 'https://docs.datalust.co/docs/opentelemetry-net-sdk-1'
