@@ -175,7 +175,7 @@ processors:
 [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor)
 
 Use the transform processor to set a span's status. The following example sets
-the span status to `Ok` when the `http.status_code` attribute is 400:
+the span status to `Ok` when the `http.request.status_code` attribute is 400:
 
 <!-- prettier-ignore-start -->
 
@@ -191,10 +191,10 @@ transform:
 <!-- prettier-ignore-end -->
 
 You can also use the transform processor to modify the span name based on its
-attributes or extract span attributes from the span name. For examples, see
-`transform processor` test data
-[config.yaml](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/testdata/config.yaml)
-file.
+attributes or extract span attributes from the span name. For examples, see an
+example
+[config file](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9b28f76c02c18f7479d10e4b6a95a21467fd85d6/processor/transformprocessor/testdata/config.yaml)
+file for the transform processor.
 
 ## Advanced Transformations
 
