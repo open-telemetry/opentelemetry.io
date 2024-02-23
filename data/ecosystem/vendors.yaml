@@ -41,6 +41,13 @@
   contact: 'hello@betterstack.com'
   oss: false
   commercial: true
+- name: Control Plane
+  distribution: false
+  nativeOTLP: true
+  url: 'https://docs.controlplane.com/reference/org#tracing'
+  contact: 'support@controlplane.com'
+  oss: false
+  commercial: true
 - name: Coralogix
   distribution: true
   nativeOTLP: true
@@ -237,6 +244,13 @@
   contact: 'hello@openobserve.ai'
   oss: true
   commercial: true
+- name: OpenText
+  distribution: true
+  nativeOTLP: true
+  url: 'https://docs.microfocus.com/doc/OBS/SaaS/ConfigureOTELCollector'
+  contact: 'skotagiri@opentext.com'
+  oss: false
+  commercial: true
 - name: Oracle
   distribution: false
   nativeOTLP: true
@@ -396,5 +410,12 @@
   nativeOTLP: true
   url: 'https://www.alibabacloud.com/help/en/arms/tracing-analysis/get-started-with-tracing-analysis'
   contact: 'opensource@alibaba-inc.com'
+  oss: false
+  commercial: true
+- name: Seq
+  distribution: false
+  nativeOTLP: true
+  url: 'https://docs.datalust.co/docs/opentelemetry-net-sdk-1'
+  contact: 'support@datalust.co'
   oss: false
   commercial: true
