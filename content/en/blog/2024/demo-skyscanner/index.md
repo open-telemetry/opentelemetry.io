@@ -87,9 +87,9 @@ In addition, we learned that:
 
 1. OTLP makes it incredibly simple to integrate a standard application with an
    observability vendor. Just point it to the right endpoint and job done.
-2. Our teams relied primarily on tracing data to analyse regressions that helped
-   them understand the root cause faster. Tracing FTW!
-3. Our front-end engineers found the Game Day lacked focus on client-side
+2. Our winning teams relied primarily on tracing data to analyse regressions
+   that helped them understand the root cause faster. Tracing FTW!
+3. Front-end engineers found the Game Day lacked focus on client-side
    observability, so we decided to contribute upstream (see next steps below).
    This was my first contribution to the project, and it was a great experience!
    Maintainers were very welcoming and helped me to test and release. Thanks!
