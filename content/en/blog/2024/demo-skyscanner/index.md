@@ -1,7 +1,7 @@
 ---
 title:
-  'Making observability fun: How we increased engineers confidence in incident
-  management using a game'
+  "Making observability fun: How we increased engineers' confidence in incident
+  management using a game"
 linkTitle: Skyscanner using OTel Demo
 date: 2024-02-22
 author: >-
@@ -13,7 +13,7 @@ for individual failure modes. With modern and complex distributed systems, this
 has the downside of most of the errors being unknowns, which makes runbooks
 practically useless.
 
-After migrating our telemetry data to the OpenTelemetry standards, at
+After migrating our telemetry data to the OpenTelemetry standards at
 Skyscanner, we now have richer instrumentation and can rely on observability
 directly. As a result, we are ready to adopt a new
 [observability mindset](https://charity.wtf/2019/09/20/love-and-alerting-in-the-time-of-cholera-and-observability/),
@@ -25,8 +25,8 @@ To achieve this, we believe that the best way to gain knowledge isn’t through
 one-time viewings of documents or videos. Instead, it’s through practical
 exercises that include situations with never-before-seen (or at least rarely
 seen) problems. This helps the company reduce the time to mitigate an issue
-(TTM), which goes from when a first responder acknowledges the incident to the
-time users stop suffering from the incident.
+(TTM), which starts when a first responder acknowledges the incident, until
+users stop suffering from the incident.
 
 ## Environment
 
