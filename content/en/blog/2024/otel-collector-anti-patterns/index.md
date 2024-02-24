@@ -5,7 +5,7 @@ date: 2024-02-23
 author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep),
 
-canonical_url: https://adri-v.medium.com/43dca4a857a0?source=friends_link&sk=cf3af34aa87d65c039912a4c3721d972
+canonical_url: https://adri-v.medium.com/43dca4a857a0
 ---
 
 ![House on stilts against ocean and mountain backdrop](house-on-stilts.jpg)
@@ -27,7 +27,7 @@ how to avoid them. Let’s get started!
 ### 1- Not using the OpenTelemetry Collector
 
 OpenTelemetry allows you to send telemetry signals from your application to an
-observability back-end in one of two ways:
+observability backend in one of two ways:
 
 - [Directly from the application](/docs/collector/deployment/no-collector/)
 - [Via the OpenTelemetry Collector](/docs/collector/)
@@ -51,7 +51,7 @@ Check out some additional Collector benefits:
   reduce costs, enriching telemetry with extra metadata, and generating new
   telemetry, such as metrics derived from spans.
 - **Using a Collector to ingest telemetry data makes it easy to change to a new
-  back-end or export the data in a different format.** If we want to change how
+  backend or export the data in a different format.** If we want to change how
   telemetry is being processed or exported, that change happens in one place
   (the Collector!), as opposed to making the same change for multiple
   applications in your organization.
@@ -100,10 +100,10 @@ collection is unaffected.
 The telemetry from your Collector agents can then be sent to a Collector
 gateway. Because the gateway sits behind a load balancer, you don’t have a
 single point of failure for exporting telemetry data, typically to your
-observability back-end.
+observability backend.
 
 _Bottom line:_ Having the right Collector deployment configuration to send data
-to your observability back end ensures higher availability of your telemetry
+to your observability backend ensures higher availability of your telemetry
 collection infrastructure.
 
 ### 3- Not monitoring your Collectors
@@ -116,7 +116,7 @@ very useful.
 
 But how does one monitor a Collector? The OTel Collector already emits
 [metrics for the purposes of its own monitoring](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/monitoring.md).
-These can then be sent to your Observability back-end for monitoring.
+These can then be sent to your Observability backend for monitoring.
 
 ### 4- Not using the right Collector Distribution (or not building your own distribution)
 
