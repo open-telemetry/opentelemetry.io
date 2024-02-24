@@ -43,11 +43,11 @@ through some of the most important lines of code.
 git clone https://github.com/XSAM/otelsql.git
 ```
 
-In the otelsql folder, you can also check out the git tag to `v0.28.0` (the latest
-tag while writing this post) to ensure the example is runnable, as the steps to
-run the example might be changed in the future. (TBD, need to make a new tag, so
-the tag is not v0.28.0, we can use the latest version for now and skip this
-step)
+In the otelsql folder, you can also check out the git tag to `v0.28.0` (the
+latest tag while writing this post) to ensure the example is runnable, as the
+steps to run the example might be changed in the future. (TBD, need to make a
+new tag, so the tag is not v0.28.0, we can use the latest version for now and
+skip this step)
 
 ```sh
 git checkout tags/v0.28.0
@@ -139,7 +139,8 @@ MySQL client built from Dockerfile and the source code is main.go in the example
 folder. The `client` service will run after the `mysql` service is up and run,
 Then, it will initialize the OpenTelemetry client and otelsql instrumentation,
 make SQL queries to the `mysql` service, and send metrics and trace data to
-`otel-collector` service via [OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otel/protocol).
+`otel-collector` service via
+[OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otel/protocol).
 
 After receiving the data, the `otel-collector` service will transfer the data
 format and send metrics data to the `prometheus` service, and send trace data to
