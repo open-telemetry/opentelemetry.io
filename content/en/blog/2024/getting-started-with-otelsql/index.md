@@ -140,7 +140,7 @@ folder. The `client` service will run after the `mysql` service is up and run,
 Then, it will initialize the OpenTelemetry client and otelsql instrumentation,
 make SQL queries to the `mysql` service, and send metrics and trace data to
 `otel-collector` service via
-[OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/specs/otel/protocol).
+[OpenTelemetry Protocol (OTLP)](/docs/specs/otel/protocol/).
 
 After receiving the data, the `otel-collector` service will transfer the data
 format and send metrics data to the `prometheus` service, and send trace data to
