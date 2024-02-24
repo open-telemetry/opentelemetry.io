@@ -74,7 +74,7 @@ results.
 Here we are viewing a trace graph on Jaeger. We can see the duration and
 parameters of each operation with the database.
 
-![example of Jager UI](jaeger-example.png)
+![example of Jaeger UI](jaeger-example.png)
 
 Here we are viewing the metric `db_sql_latency_milliseconds_sum` on Prometheus.
 
@@ -230,7 +230,7 @@ users send SQL queries with this wrapper, the `otelsql` can know the queries and
 use the OpenTelemetry client to instrument telemetry data.
 
 Besides using `otelsql.Open`, `otelsql` provides another three ways to
-initialize instrumentation: `otelsql.OpenDB`, `otesql.Register`, and
+initialize instrumentation: `otelsql.OpenDB`, `otelsql.Register`, and
 `otelsql.WrapDriver`. These additional methods cover different use cases, as
 some database drivers or frameworks didn't provide a direct way to create
 `sql.DB`. So, sometimes, you might need these additional methods to manually
@@ -281,7 +281,7 @@ func query(ctx context.Context, db *sql.DB) error {
 ```
 
 This `runSQLQuery` method creates a parent span first (it is an optional step,
-it makes the query spanes have a parent, and it looks good on the trace graph),
+it makes the query spans have a parent, and it looks good on the trace graph),
 then queries the current timestamp from the MySQL database.
 
 After this method, the `client` application finished and exited. And, these are
