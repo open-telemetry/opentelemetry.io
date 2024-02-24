@@ -14,7 +14,7 @@ The [OpenTelemetry Collector](/docs/collector) is one of my favorite
 OpenTelemetry (OTel) components. It’s a flexible and powerful data pipeline
 which allows you to ingest OTel data from one or more sources, transform it
 (including batching, filtering, and masking), and export it to one or more
-observability back-ends for analysis. It’s vendor-neutral. It’s extensible,
+observability backends for analysis. It’s vendor-neutral. It’s extensible,
 meaning that you can create your own custom components for it. What’s there not
 to like?
 
