@@ -5335,6 +5335,54 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:07:12.98586-05:00"
   },
+  "https://opentelemetry.io/docs/collector": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:03.656226-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:04.244864-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/#when-to-use-a-collector": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:04.48411-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/configuration/#connectors": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:05.306982-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/configuration/#exporters": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:06.037446-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/configuration/#processors": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:05.754871-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/configuration/#receivers": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:05.518086-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/configuration/#service-extensions": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:05.132379-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/custom-collector/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:06.360327-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/deployment/agent/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:04.712097-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/deployment/gateway/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:04.939057-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/deployment/no-collector/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:04.014798-05:00"
+  },
   "https://opentracing.io": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:07:33.813401-05:00"
