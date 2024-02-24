@@ -351,6 +351,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:05:48.904048-05:00"
   },
+  "https://cloud.google.com/blog/products/databases/sqlcommenter-merges-with-opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-24T14:33:07.232417-08:00"
+  },
   "https://cloud.google.com/blog/products/serverless/cloud-functions-2nd-generation-now-generally-available": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:05:49.382943-05:00"
@@ -2071,6 +2075,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:11:51.03094-05:00"
   },
+  "https://github.com/XSAM/otelsql/issues": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-24T14:33:07.539727-08:00"
+  },
   "https://github.com/aabmass": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:19.065836-05:00"
@@ -2318,6 +2326,10 @@
   "https://github.com/elastic/beats/pull/18883": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:36.185289-05:00"
+  },
+  "https://github.com/ent/ent/issues/1232#issuecomment-1200405070": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-24T14:33:06.756997-08:00"
   },
   "https://github.com/equinix-labs/otel-cli": {
     "StatusCode": 200,
@@ -4219,6 +4231,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:17.04578-05:00"
   },
+  "https://google.github.io/sqlcommenter": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-24T14:33:07.021511-08:00"
+  },
   "https://gorm.io/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:14:47.910122-05:00"
@@ -5335,6 +5351,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:07:12.98586-05:00"
   },
+  "https://opentelemetry.io/docs/specs/otel/protocol": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-24T14:33:05.630341-08:00"
+  },
   "https://opentracing.io": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:07:33.813401-05:00"
@@ -5503,9 +5523,29 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-16T09:38:27.962889-05:00"
   },
+  "https://pkg.go.dev/database/sql": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-24T14:33:03.76582-08:00"
+  },
+  "https://pkg.go.dev/database/sql#DB": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-24T14:33:06.1255-08:00"
+  },
+  "https://pkg.go.dev/database/sql#Open": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-24T14:33:05.81433-08:00"
+  },
   "https://pkg.go.dev/github.com/XSAM/otelsql": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:17:16.696764+01:00"
+  },
+  "https://pkg.go.dev/github.com/XSAM/otelsql#Open": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-24T14:33:05.95303-08:00"
+  },
+  "https://pkg.go.dev/github.com/XSAM/otelsql#pkg-examples": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-24T14:33:06.29193-08:00"
   },
   "https://pkg.go.dev/github.com/dnwe/otelsarama": {
     "StatusCode": 200,
