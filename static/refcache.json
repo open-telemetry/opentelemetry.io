@@ -5227,6 +5227,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:37:21.465525-05:00"
   },
+  "https://open.substack.com/pub/geekingoutpodcast/p/opentelemetry-collector-anti-patterns": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-26T15:05:23.506868-05:00"
+  },
   "https://opencensus.io": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:07:33.722102-05:00"

@@ -5,7 +5,7 @@ date: 2024-02-23
 author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep),
 
-canonical_url: https://adri-v.medium.com/43dca4a857a0
+canonical_url: https://open.substack.com/pub/geekingoutpodcast/p/opentelemetry-collector-anti-patterns
 cSpell:ignore: antipattern antipatterns
 ---
 
