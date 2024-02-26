@@ -4,7 +4,7 @@ linkTitle: Configuration
 weight: 10
 aliases: [agent-config]
 # prettier-ignore
-cSpell:ignore: akka armeria classloaders couchbase Customizer datasource dbcp Dotel dropwizard dubbo finatra hikari hikaricp HSET httpasyncclient httpclient hystrix jaxrs jaxws jedis jodd kotlinx logback logmanager mojarra myfaces okhttp oshi pekko rabbitmq ratpack rediscala redisson restlet rocketmq serverlessapis spymemcached twilio vaadin vertx vibur webflux webmvc
+cSpell:ignore: akka armeria classloaders couchbase Customizer datasource dbcp Dotel dropwizard dubbo enduser finatra hikari hikaricp HSET httpasyncclient httpclient hystrix jaxrs jaxws jedis jodd kotlinx logback logmanager mojarra myfaces okhttp oshi pekko rabbitmq ratpack rediscala redisson restlet rocketmq serverlessapis spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
 
 ## SDK Autoconfiguration
@@ -149,7 +149,7 @@ The agent sanitizes all database queries/statements before setting the
 string are replaced with a question mark (`?`).
 
 Note: JDBC bind parameters are not captured in `db.statement`. See
-[the corresponding issue](https://github.com/open-telemetry/opentelemetry-java-instrumentation#7413)
+[the corresponding issue](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/7413)
 if you are looking to capture bind parameters.
 
 Examples:
@@ -227,6 +227,61 @@ span link connecting it to the producer trace.
 
 > **Note**: The property/environment variable names listed in the table are
 > still experimental, and thus are subject to change.
+
+### Capturing enduser attributes
+
+You can configure the agent to capture
+[general identity attributes](/docs/specs/semconv/general/attributes/#general-identity-attributes)
+(`enduser.id`, `enduser.role`, `enduser.scope`) from instrumentation libraries
+like
+[JavaEE/JakartaEE Servlet](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/servlet)
+and
+[Spring Security](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-security-config-6.0).
+
+> **Note**: Given the sensitive nature of the data involved, this feature is
+> turned off by default while allowing selective activation for particular
+> attributes. You must carefully evaluate each attribute's privacy implications
+> before enabling the collection of the data.
+
+{{% config_option
+name="otel.instrumentation.common.enduser.enabled"
+default=false
+%}} Common flag for enabling/disabling enduser attributes. {{% /config_option %}}
+
+{{% config_option
+name="otel.instrumentation.common.enduser.id.enabled"
+default=false
+%}} Determines whether to capture `enduser.id` semantic attribute. {{% /config_option %}}
+
+{{% config_option
+name="otel.instrumentation.common.enduser.role.enabled"
+default=false
+%}} Determines whether to capture `enduser.role` semantic attribute. {{% /config_option %}}
+
+{{% config_option
+name="otel.instrumentation.common.enduser.scope.enabled"
+default=false
+%}} Determines whether to capture `enduser.scope` semantic attribute. {{% /config_option %}}
+
+#### Spring Security
+
+For users of Spring Security who use custom
+[granted authority prefixes](https://docs.spring.io/spring-security/reference/servlet/authorization/architecture.html#authz-authorities),
+you can use the following properties to strip those prefixes from the
+`enduser.*` attribute values to better represent the actual role and scope
+names:
+
+{{% config_option
+name="otel.instrumentation.spring-security.enduser.role.granted-authority-prefix"
+default=ROLE_
+%}} Prefix of granted authorities identifying roles to capture in the `enduser.role`
+semantic attribute. {{% /config_option %}}
+
+{{% config_option
+name="otel.instrumentation.spring-security.enduser.scope.granted-authority-prefix"
+default=SCOPE_
+%}} Prefix of granted authorities identifying scopes to capture in the `enduser.scopes`
+semantic attribute. {{% /config_option %}}
 
 ## Suppressing specific auto-instrumentation
 

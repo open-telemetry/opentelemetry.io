@@ -451,6 +451,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:15:04.197679-05:00"
   },
+  "https://community.cncf.io/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-22T16:34:09.566865309Z"
+  },
   "https://community.cncf.io/end-user-community/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:05:22.999299-05:00"
@@ -875,6 +879,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:53:34.715996-05:00"
   },
+  "https://docs.controlplane.com/reference/org#tracing": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-21T13:37:33.456267+02:00"
+  },
   "https://docs.couchdb.org/en/stable/api/document/common.html#get--db-docid": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:34:02.790002-05:00"
@@ -898,6 +906,10 @@
   "https://docs.datadoghq.com/tracing/setup_overview/open_standards": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:51:43.401-05:00"
+  },
+  "https://docs.datalust.co/docs/opentelemetry-net-sdk-1": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-23T02:40:23.765546988Z"
   },
   "https://docs.datastax.com/en/cassandra-oss/3.0/cassandra/dml/dmlConfigConsistency.html": {
     "StatusCode": 206,
@@ -1118,6 +1130,10 @@
   "https://docs.lumigo.io/docs/opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:51:59.704962-05:00"
+  },
+  "https://docs.microfocus.com/doc/OBS/SaaS/ConfigureOTELCollector": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-17T16:19:07.140338072Z"
   },
   "https://docs.microsoft.com/aspnet/core": {
     "StatusCode": 200,
@@ -1415,6 +1431,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:11.609878-05:00"
   },
+  "https://docs.oracle.com/javase/tutorial/sound/SPI-intro.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-15T23:57:17.652434515Z"
+  },
   "https://docs.otterize.com/reference/configuration/network-mapper/helm-chart#opentelemetry-exporter-parameters": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:15:20.577253-05:00"
@@ -1511,6 +1531,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:15:09.437464-05:00"
   },
+  "https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-19T17:27:38.673604461+01:00"
+  },
   "https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:15:14.908906-05:00"
@@ -1518,6 +1542,10 @@
   "https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:53.797365-05:00"
+  },
+  "https://docs.spring.io/spring-security/reference/servlet/authorization/architecture.html#authz-authorities": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-12T22:02:33.483262-05:00"
   },
   "https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#aop": {
     "StatusCode": 206,
@@ -3235,6 +3263,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:55:35.674322-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/7413": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-22T15:50:20.20139382Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:11.140445-05:00"
@@ -4026,6 +4058,10 @@
   "https://github.com/thanos-io/thanos": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:05:38.529172-05:00"
+  },
+  "https://github.com/thegeekyasian/go-chi-otel": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-20T05:41:18.324089503Z"
   },
   "https://github.com/theletterf/": {
     "StatusCode": 200,
@@ -5155,6 +5191,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:06:02.410999-05:00"
   },
+  "https://oneuptime.com/product/apm": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-24T22:10:38.147777993Z"
+  },
   "https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:06:08.329927-05:00"
@@ -5238,6 +5278,10 @@
   "https://opensearch.org/docs/latest/data-prepper/index/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:14:58.880711-05:00"
+  },
+  "https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/classopentelemetry_1_1sdk_1_1trace_1_1SpanExporter.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-14T16:43:04.418679+01:00"
   },
   "https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__metrics.html": {
     "StatusCode": 200,
