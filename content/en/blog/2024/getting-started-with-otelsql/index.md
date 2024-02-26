@@ -43,14 +43,12 @@ through some of the most important lines of code.
 git clone https://github.com/XSAM/otelsql.git
 ```
 
-In the otelsql folder, you can also check out the git tag to `v0.28.0` (the
+In the otelsql folder, you can also check out the git tag to `v0.29.0` (the
 latest tag while writing this post) to ensure the example is runnable, as the
-steps to run the example might be changed in the future. (TBD, need to make a
-new tag, so the tag is not v0.28.0, we can use the latest version for now and
-skip this step)
+steps to run the example might be changed in the future.
 
 ```sh
-git checkout tags/v0.28.0
+git checkout tags/v0.29.0
 ```
 
 Let's go to the folder of the otel-collector example and bring up all services.
