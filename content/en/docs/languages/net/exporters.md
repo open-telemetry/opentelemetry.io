@@ -15,18 +15,27 @@ transport your data:
 - HTTP/protobuf
 - gRPC
 
-Start by installing the [`OpenTelemetry.Exporter.OpenTelemetryProtocol`](https://www.nuget.org/packages/OpenTelemetry.Exporter.OpenTelemetryProtocol/) package as a dependency for your
-project:
+Start by installing the
+[`OpenTelemetry.Exporter.OpenTelemetryProtocol`](https://www.nuget.org/packages/OpenTelemetry.Exporter.OpenTelemetryProtocol/)
+package as a dependency for your project:
 
 ```sh
 dotnet add package OpenTelemetry.Exporter.OpenTelemetryProtocol
+```
+
+If you're using ASP.NET Core install the
+[`OpenTelemetry.Extensions.Hosting`](https://www.nuget.org/packages/OpenTelemetry.Extensions.Hosting)
+package as well:
+
+```sh
 dotnet add package OpenTelemetry.Extensions.Hosting
 ```
 
 ### Usage
 
-If you're using ASP.NET Core, configure the exporters in your ASP.NET Core
-services:
+#### ASP.NET Core
+
+Configure the exporters in your ASP.NET Core services:
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
@@ -84,7 +93,9 @@ builder.Logging
   });
 ```
 
-Otherwise, configure the exporter when creating a tracer provider:
+#### Non-ASP.NET Core
+
+Configure the exporter when creating a tracer provider:
 
 ```csharp
 using var tracerProvider = Sdk.CreateTracerProviderBuilder()
@@ -125,7 +136,7 @@ using var loggerFactory = LoggerFactory.Create(builder =>
 Use environment variables to set values like headers and an endpoint URL for
 production.
 
-### Note for .NET Core 3.1 and below and gRPC
+#### Note for .NET Core 3.1 and below and gRPC
 
 Note: Versions below .NET 6 are not officially supported by
 opentelemetry-dotnet, therefore this section is here to help, but may not work
@@ -142,16 +153,30 @@ If you are using .NET 5 or higher, the previous code sample is not required.
 
 ## Console
 
+### Dependencies
+
 The console exporter is useful for development and debugging tasks, and is the
-simplest to set up.
+simplest to set up. Start by installing the
+[`OpenTelemetry.Exporter.Console`](https://www.nuget.org/packages/OpenTelemetry.Exporter.Console/)
+package as a dependency for your project:
 
 ```sh
 dotnet add package OpenTelemetry.Exporter.Console
+```
+
+If you're using ASP.NET Core install the
+[`OpenTelemetry.Extensions.Hosting`](https://www.nuget.org/packages/OpenTelemetry.Extensions.Hosting)
+package as well:
+
+```sh
 dotnet add package OpenTelemetry.Extensions.Hosting
 ```
 
-If you're using ASP.NET Core, configure the exporter in your ASP.NET Core
-services:
+### Usage {#console-usage}
+
+#### ASP.NET Core {#console-usage-asp-net-core}
+
+Configure the exporter in your ASP.NET Core services:
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
@@ -172,7 +197,9 @@ builder.Logging.AddOpenTelemetry(logging => {
   });
 ```
 
-Otherwise, configure the exporter when creating a tracer provider:
+#### Non-ASP.NET Core {#console-usage-non-asp-net-core}
+
+Configure the exporter when creating a tracer provider:
 
 ```csharp
 using var tracerProvider = Sdk.CreateTracerProviderBuilder()
@@ -210,11 +237,21 @@ as a dependency for your application:
 
 ```shell
 dotnet add package OpenTelemetry.Exporter.Prometheus.AspNetCore --version {{% version-from-registry exporter-dotnet-prometheus-aspnetcore %}}
+```
+
+If you're using ASP.NET Core install the
+[`OpenTelemetry.Extensions.Hosting`](https://www.nuget.org/packages/OpenTelemetry.Extensions.Hosting)
+package as well:
+
+```sh
 dotnet add package OpenTelemetry.Extensions.Hosting
 ```
 
-If you're using ASP.NET Core, configure the exporter in your ASP.NET Core
-services:
+### Usage {prometheus-usage}
+
+#### ASP.NET Core {#prometheus-asp-net-core-usage}
+
+Configure the exporter in your ASP.NET Core services:
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
@@ -238,7 +275,7 @@ app.UseOpenTelemetryPrometheusScrapingEndpoint();
 await app.RunAsync();
 ```
 
-### Non-ASP.NET Core
+#### Non-ASP.NET Core {#prometheus-non-asp-net-core-usage}
 
 For applications not using ASP.NET Core, you can use the `HttpListener` version
 which is available in a
@@ -281,11 +318,21 @@ as a dependency for your application:
 
 ```shell
 dotnet add package OpenTelemetry.Exporter.Zipkin
+```
+
+If you're using ASP.NET Core install the
+[`OpenTelemetry.Extensions.Hosting`](https://www.nuget.org/packages/OpenTelemetry.Extensions.Hosting)
+package as well:
+
+```sh
 dotnet add package OpenTelemetry.Extensions.Hosting
 ```
 
-If you're using ASP.NET Core, configure the exporter in your ASP.NET Core
-services:
+### Usage {#zipkin-usage}
+
+#### ASP.NET Core {#zipkin-asp-net-core-usage}
+
+Configure the exporter in your ASP.NET Core services:
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
@@ -301,7 +348,9 @@ builder.Services.AddOpenTelemetry()
     });
 ```
 
-Otherwise, configure the exporter when creating a tracer provider:
+#### Non-ASP.NET Core {#zipkin-non-asp-net-core-usage}
+
+Configure the exporter when creating a tracer provider:
 
 ```csharp
 using var tracerProvider = Sdk.CreateTracerProviderBuilder()
