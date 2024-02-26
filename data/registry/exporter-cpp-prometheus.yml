@@ -1,0 +1,15 @@
+title: Prometheus Exporter
+registryType: exporter
+language: cpp
+tags:
+  - c++
+  - exporter
+  - prometheus
+license: Apache 2.0
+description: The OpenTelemetry Prometheus Exporter for C++.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-cpp/tree/main/exporters/prometheus
+  docs: /docs/languages/cpp/exporters/#prometheus
+createdAt: 2024-02-14

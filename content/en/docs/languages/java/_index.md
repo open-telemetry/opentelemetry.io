@@ -6,8 +6,8 @@ description: >-
 aliases: [/java, /java/metrics, /java/tracing]
 cascade:
   vers:
-    instrumentation: 2.0.0
-    otel: 1.34.1
+    instrumentation: 2.1.0
+    otel: 1.35.0
     semconv: 1.23.1
 weight: 18
 ---
@@ -30,6 +30,12 @@ OpenTelemetry Java consists of the following repositories:
   Provides helpful libraries and standalone OpenTelemetry-based utilities that
   don't fit the express scope of the OpenTelemetry Java or Java Instrumentation
   projects. For example, JMX metric gathering.
+- [semantic-conventions-java](https://github.com/open-telemetry/semantic-conventions-java):
+  Java implementation of
+  [OpenTelemetry Semantic Conventions](/docs/specs/semconv/). For example,
+  `ResourceAttributes.SERVICE_NAME`.
+- [opentelemetry-proto-java](https://github.com/open-telemetry/opentelemetry-proto-java):
+  Java bindings for the [OpenTelemetry Protocol (OTLP)](/docs/specs/otlp/).
 
 ### Components
 

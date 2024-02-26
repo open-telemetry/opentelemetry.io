@@ -1,4 +1,4 @@
-# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Uptrace Greptime KloudMate qryn ClickHouse Tracetest opensource
+# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Uptrace Greptime KloudMate qryn ClickHouse Tracetest opensource OneUptime
 - name: AppDynamics (Cisco)
   distribution: true
   nativeOTLP: true
@@ -39,6 +39,13 @@
   nativeOTLP: true
   url: https://betterstack.com/docs/logs/open-telemetry/#2-setup
   contact: 'hello@betterstack.com'
+  oss: false
+  commercial: true
+- name: Control Plane
+  distribution: false
+  nativeOTLP: true
+  url: 'https://docs.controlplane.com/reference/org#tracing'
+  contact: 'support@controlplane.com'
   oss: false
   commercial: true
 - name: Coralogix
@@ -230,12 +237,26 @@
   contact: ''
   oss: true
   commercial: true
+- name: OneUptime
+  distribution: true
+  nativeOTLP: true
+  url: 'https://oneuptime.com/product/apm'
+  contact: 'hello@oneuptime.com'
+  oss: true
+  commercial: true
 - name: OpenObserve
   distribution: false
   nativeOTLP: true
   url: 'https://openobserve.ai/docs/ingestion/logs/otlp/'
   contact: 'hello@openobserve.ai'
   oss: true
+  commercial: true
+- name: OpenText
+  distribution: true
+  nativeOTLP: true
+  url: 'https://docs.microfocus.com/doc/OBS/SaaS/ConfigureOTELCollector'
+  contact: 'skotagiri@opentext.com'
+  oss: false
   commercial: true
 - name: Oracle
   distribution: false
@@ -396,5 +417,12 @@
   nativeOTLP: true
   url: 'https://www.alibabacloud.com/help/en/arms/tracing-analysis/get-started-with-tracing-analysis'
   contact: 'opensource@alibaba-inc.com'
+  oss: false
+  commercial: true
+- name: Seq
+  distribution: false
+  nativeOTLP: true
+  url: 'https://docs.datalust.co/docs/opentelemetry-net-sdk-1'
+  contact: 'support@datalust.co'
   oss: false
   commercial: true
