@@ -2,7 +2,8 @@
 title: Automatic Instrumentation
 linkTitle: Automatic
 weight: 30
-cSpell:ignore: devel distro mkdir myapp uninstrumented virtualenv
+# prettier-ignore
+cSpell:ignore: devel distro mkdir myapp pyproject uninstrumented virtualenv Werkzeug
 ---
 
 Automatic instrumentation with Python uses a Python agent that can be attached
@@ -73,6 +74,19 @@ You can find the full list
 [here](/ecosystem/registry/?language=python&component=instrumentation).
 
 ## Troubleshooting
+
+### No data when using Flask
+
+Using OpenTelemetry with Flask requires both Flask and Werkzeug versions as <
+3.0. Because Flask 2.x does not specify Werkzeug as < 3.0, conflicts can arise.
+
+Ensure your Flask version is < 3.x, and specify the Werkzeug version explicitly
+as < 3.0. For example, in a `pyproject.toml` file:
+
+```console
+flask = "2.2.2"
+Werkzeug = "2.2.2"
+```
 
 ### Python package installation failure
 
