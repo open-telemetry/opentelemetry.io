@@ -1,7 +1,7 @@
 ---
 title: Join us for OpenTelemetry Talks and Activities at KubeCon EU 2024
 linkTitle: KubeCon NA '24
-date: 2024-02-19
+date: 2024-02-28
 # prettier-ignore
 cSpell:ignore: Aiven Alexandre Anusha Arbiv Beemer Benedikt Blanco Bongartz Chekuri Coralogix Cosmonic Dyrmishi Jiekun Joonas Kanal Kolachala Kowall Machado Magno Marcin Matej Mirabella Narapureddy Nenashev Oleg Oluwalolope Outshift Pismo Purvi Quwan Reddy Ridwan Rollouts Ryanair Skyscanner Sodkiewicz Soluções Srikanth Tecnológicas Yosef
 author: '[Severin Neumann](https://github.com/svrnm) (Cisco)'
@@ -12,6 +12,9 @@ technical committee are thrilled to be at [KubeCon EU][] in Paris from March
 19 - 22, 2024.
 
 Read on to learn about all the things related OpenTelemetry during KubeCon.
+
+This post may be updated as we receive notice of other activities, please check
+it again right before KubeCon!
 
 ## KubeCon Talks and Maintainer Sessions
 
@@ -88,35 +91,18 @@ you will be able to follow **Observability Day** through a live stream.
 
 {{% /alert %}}
 
-## OpenTelemetry Project Booth
+## OpenTelemetry Observatory
 
-Drop by and say _"Hi!"_ at the OpenTelemetry project booth in the KubeCon NA
-Project Pavilion. If you’re lucky, you may even pick up some OpenTelemetry swag.
-
-[Pavilion hours](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/program/project-opportunities/)
-for all projects during KubeCon are as follows:
-
-- Wednesday, March 20th • 10:45 - 20:00 (includes KubeCrawl + Cloud NativeFest
-  from 18:00 - 20:00)
-- Thursday, March 21th • 10:30 - 17:00
-- Friday, March 22th • 10:30 - 14:30
-
-_Please note, that we will use the flexibility to choose our own hosting hours.
-This is only a general guidance._
+Drop by and say _"Hi!"_ at OpenTelemetry Observatory presented by Splunk in the
+Expo Hall. This will be a place for informal chats, meetups, and other
+discussions led by OpenTelemetry community members and maintainers. If you’d
+like to participate and lead a discussion or short presentation, please reach
+out to the OpenTelemetry End User Working Group to indicate your interest.
 
 You can help us improve the project by sharing your thoughts and feedback about
 your OpenTelemetry adoption, implementation, and usage. We will create action
 items from your comments as appropriate. Check [#otel-user-research][] in CNCF's
 Slack instance for results and action item updates to come after KubeCon EU.
-
-## OpenTelemetry Observatory
-
-In addition to our booth at the Project Pavilion, please visit the OpenTelemetry
-Observatory presented by Splunk in the Expo Hall! This will be a place for
-informal chats, meetups, and other discussions led by OpenTelemetry community
-members and maintainers. If you’d like to participate and lead a discussion or
-short presentation, please reach out to the OpenTelemetry End User Working Group
-to indicate your interest.
 
 Come join us to listen, learn, and get involved in OpenTelemetry.
 
