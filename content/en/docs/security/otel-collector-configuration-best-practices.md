@@ -50,7 +50,9 @@ address. For more information, refer to the
 [CWE-1327: Binding to an Unrestricted IP Address](https://cwe.mitre.org/data/definitions/1327.html)
 definition.
 
-To change the default endpoint to be `localhost`-bound in all components, enable the `component.UseLocalHostAsDefaultHost` feature gate. This feature gate will be enabled by default in the Collector in a future release.
+To change the default endpoint to be `localhost`-bound in all components, enable
+the `component.UseLocalHostAsDefaultHost` feature gate. This feature gate will
+be enabled by default in the Collector in a future release.
 
 ### Encryption and authentication
 
