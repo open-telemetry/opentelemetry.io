@@ -9,12 +9,12 @@ The OpenTelemetry Collector is an executable file that can receive telemetry,
 process it, and export it to multiple targets, such as observability backends.
 
 The Collector supports several popular open source protocols for receiving and
-sending telemetry data, and it offers an extensible architecture for adding
-more protocols.
+sending telemetry data, and it offers an extensible architecture for adding more
+protocols.
 
 Data receiving, processing, and exporting are done using
-[pipelines](#pipelines). You can configure the Collector to
-have one or more pipelines.
+[pipelines](#pipelines). You can configure the Collector to have one or more
+pipelines.
 
 Each pipeline includes the following:
 
@@ -35,8 +35,8 @@ processing (or modification), and finally to export.
 Pipelines can operate on three telemetry data types: traces, metrics, and logs.
 The data type is a property of the pipeline defined by its configuration.
 Receivers, processors, and exporters used in a pipeline must support the
-particular data type, otherwise the `ErrDataTypeIsNotSupported` exception
-is reported when the configuration loads.
+particular data type, otherwise the `ErrDataTypeIsNotSupported` exception is
+reported when the configuration loads.
 
 The following diagram represents a typical pipeline:
 
@@ -52,7 +52,7 @@ flowchart LR
     P1 --> P2[Processor 2]
     P2 --> PM[...]
     PM --> PN[Processor N]
-    PN --> FO((fan out))
+    PN --> FO((fan-out))
     FO --> E1[[Exporter 1]]
     FO --> E2[[Exporter 2]]
     FO ~~~ EM[[...]]
@@ -65,9 +65,9 @@ flowchart LR
 Pipelines can have one or more receivers. Data from all receivers is pushed to
 the first processor, which processes the data and then pushes it to the next
 processor. A processor might also drop the data if it's sampling or filtering.
-This continues until the last processor in the pipeline pushes the data to
-the exporters. Each exporter gets a copy of each data element. The last
-processor uses a `fanoutconsumer` to send the data to multiple exporters.
+This continues until the last processor in the pipeline pushes the data to the
+exporters. Each exporter gets a copy of each data element. The last processor
+uses a `fanoutconsumer` to send the data to multiple exporters.
 
 The pipeline is constructed during Collector startup based on pipeline
 definition in the configuration.
@@ -117,35 +117,35 @@ service:
 ```
 
 In the above example, `otlp` receiver will send the same data to pipeline
-`traces` and to pipeline `traces/2`. (Note: The configuration uses composite key
-names in the form of `type[/name]` as defined in
-[this document](https://docs.google.com/document/d/1NeheFG7DmcUYo_h2vLtNRlia9x5wOJMlV4QKEK05FhQ/edit#)).
+`traces` and to pipeline `traces/2`.
+
+> The configuration uses composite key names in the form of `type[/name]` as
+> defined in
+> [this document](https://docs.google.com/document/d/1NeheFG7DmcUYo_h2vLtNRlia9x5wOJMlV4QKEK05FhQ/edit#)).
 
 When the Collector loads this config, the result will look like this diagram
 (part of processors and exporters are omitted for brevity):
 
 <!--TODO: Add Receivers image via Mermaid.-->
 
-
 {{% alert title="Important" color="warning" %}}
- 
-When the same receiver is referenced in more than one pipeline, the
-Collector creates only one receiver instance at runtime that sends the data to
-a fan out consumer. The fan out consumer in turn sends the data to the first
-processor of each pipeline. The data propagation from receiver to the fan out
-consumer and then to processors is completed using a synchronous function
-call. This means that if one processor blocks the call, the other pipelines
-attached to this receiver are blocked from receiving the same data, and the
-receiver itself stops processing and forwarding newly received data.
+
+When the same receiver is referenced in more than one pipeline, the Collector
+creates only one receiver instance at runtime that sends the data to a fan-out
+consumer. The fan-out consumer in turn sends the data to the first processor of
+each pipeline. The data propagation from receiver to the fan-out consumer and
+then to processors is completed using a synchronous function call. This means
+that if one processor blocks the call, the other pipelines attached to this
+receiver are blocked from receiving the same data, and the receiver itself stops
+processing and forwarding newly received data.
 
 {{% /alert %}}
-
 
 ### Exporters
 
 Exporters typically forward the data they get to a destination on a network, but
-they can also send the data elsewhere. For example, `debug` exporter writes
-the telemetry data to the logging destination.
+they can also send the data elsewhere. For example, `debug` exporter writes the
+telemetry data to the logging destination.
 
 The configuration allows for multiple exporters of the same type, even in the
 same pipeline. For example, you can have two `otlp` exporters defined, each one
@@ -267,16 +267,16 @@ configured the same way with a `send_batch_size` of `10000`.
 > The same name of the processor must not be referenced multiple times in the
 > `processors` key of a single pipeline.
 
-## <a name="opentelemetry-agent"></a>Running as an Agent
+## <a name="opentelemetry-agent"></a>Running as an agent
 
 On a typical VM/container, user applications are running in some processes/pods
-with OpenTelemetry Library (Library). Previously, Library did all the recording,
+with an OpenTelemetry library. Previously, the library did all the recording,
 collecting, sampling, and aggregation of traces, metrics, and logs, and then
-either exported the data to other persistent storage backends through the Library
-exporters, or displayed it on local zpages. This pattern has several drawbacks,
-for example:
+either exported the data to other persistent storage backends through the
+library exporters, or displayed it on local zpages. This pattern has several
+drawbacks, for example:
 
-1. For each OpenTelemetry Library, exporters and zpages must be re-implemented
+1. For each OpenTelemetry library, exporters and zpages must be re-implemented
    in native languages.
 2. In some programming languages (for example, Ruby or PHP), it is difficult to
    do the stats aggregation in process.
@@ -289,27 +289,28 @@ for example:
    incorrect credentials or monitored resources), and users may be reluctant to
    “pollute” their code with OpenTelemetry.
 
-To resolve the issues above, you can run OpenTelemetry Collector as an Agent.
-The Agent runs as a daemon in the VM/container and can be deployed independent
-of Library. Once Agent is deployed and running, it should be able to retrieve
-traces, metrics, and logs from Library, and export them to other backends. We
-may also give Agent the ability to push configurations (such as sampling
-probability) to Library. For those languages that cannot do stats aggregation in
-process, they can send raw measurements and have Agent do the aggregation.
+To resolve the issues above, you can run OpenTelemetry Collector as an agent.
+The agent runs as a daemon in the VM/container and can be deployed independent
+of the library. Once the agent is deployed and running, it should be able to
+retrieve traces, metrics, and logs from the library, and export them to other
+backends. We may also give the agent the ability to push configurations (such as
+sampling probability) to the library. For those languages that cannot do stats
+aggregation in process, they can send raw measurements and have the agent do the
+aggregation.
 
 <!--TODO: Add Agent image via Mermaid.-->
 
 > For developers and maintainers of other libraries: By adding specific
-> receivers, you can configure Agent to accept traces, metrics, and logs from
+> receivers, you can configure an agent to accept traces, metrics, and logs from
 > other tracing/monitoring libraries, such as Zipkin, Prometheus, etc. See
 > [Receivers](#receivers) for details.
 
-## <a name="opentelemetry-collector"></a>Running as a Gateway
+## <a name="opentelemetry-collector"></a>Running as a gateway
 
-The OpenTelemetry Collector can run as a Gateway instance and receive spans and
-metrics exported by one or more Agents or Libraries or by tasks/agents that
-emit in one of the supported protocols. The Collector is configured to send data
-to the configured exporter(s). The following figure summarizes the deployment
+The OpenTelemetry Collector can run as a gateway instance and receive spans and
+metrics exported by one or more agents or libraries or by tasks/agents that emit
+in one of the supported protocols. The Collector is configured to send data to
+the configured exporter(s). The following figure summarizes the deployment
 architecture:
 
 <!--TODO: Add Service image via Mermaid.-->
