@@ -12,7 +12,7 @@ cSpell:ignore: Ansaldo Bisbal Jordi runbooks Skyscanner upskilled Yankova
 At [Skyscanner](https://www.skyscanner.net), as in many organizations, teams
 tend to follow specific runbooks for individual failure modes. With modern and
 complex distributed systems, this has the downside of most of the errors being
-unknowns, which makes runbooks practically useless.
+unknowns, which makes runbooks only partially applicable.
 
 After migrating our telemetry data to the OpenTelemetry standards at Skyscanner,
 we now have richer instrumentation and can rely on observability directly. As a
@@ -97,13 +97,13 @@ In addition, we learned that:
 
 ## Next steps
 
-The next action is to run sessions for the entire company and convert them into
-a Skyscanner learning course. This way, the content can be used during the
-onboarding process for new joiners or even reviewed at any time as a refresher
-for those who have been in the company longer. In addition, after observing
-common feedback, we identified that it would be beneficial to extend the current
-incidents to include more front-end-specific ones, such as incidents triggered
-by browser traffic. To achieve this, we have contributed to the OpenTelemetry
-Demo and enabled these features for other interested parties. For more
-information, please have a look at the
+The next action is to run sessions for all the engineering teams in the company
+and convert them into a Skyscanner learning course. This way, the content can be
+used during the onboarding process for new joiners or even reviewed at any time
+as a refresher for those who have been in the company longer. In addition, after
+observing common feedback, we identified that it would be beneficial to extend
+the current incidents to include more front-end-specific ones, such as incidents
+triggered by browser traffic. To achieve this, we have contributed to the
+OpenTelemetry Demo and enabled these features for other interested parties. For
+more information, please have a look at the
 [raised PR](https://github.com/open-telemetry/opentelemetry-demo/pull/1345).
