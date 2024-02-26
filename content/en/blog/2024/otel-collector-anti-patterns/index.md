@@ -18,7 +18,8 @@ observability backends for analysis. It’s vendor-neutral. It’s extensible,
 meaning that you can create your own custom components for it. What’s there not
 to like?
 
-And like many tools out there, it is also very easy to fall into some bad
+Unfortunately, as it happens with many tools out there, it is also very easy to fall into
+some bad
 habits. Today, I will dig into five OpenTelemetry Collector anti-patterns, and
 how to avoid them. Let’s get started!
 
