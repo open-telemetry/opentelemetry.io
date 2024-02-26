@@ -14,6 +14,18 @@ documentation style is inspired by the following style guides:
 The following sections contain guidance that is specific to the OpenTelemetry
 project.
 
+{{% alert title="Note" color="primary" %}}
+
+Many requirements of our style guide can be enforced by running automation:
+before providing a
+[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)
+(PR) run `npm run test-and-fix` on your local machine and commit the changes.
+
+If you run into errors or [failed PR checks](/docs/contributing/pr-checks), read
+about our style guide below and what you can do to fix certain common issues.
+
+{{% /alert %}}
+
 ## OpenTelemetry.io word list
 
 A list of OpenTelemetry-specific terms and words to be used consistently across
