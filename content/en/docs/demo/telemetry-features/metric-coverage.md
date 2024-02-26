@@ -4,7 +4,7 @@ linkTitle: Metric Coverage
 aliases: [metric_service_features, metric-features, ../metric-features]
 ---
 
-| Service         | Language        | Auto-instrumentation | Manual Instrumentation | Multiple Instruments | Views | Custom Attributes | Resource Detection | Trace Exemplars |
+| Service         | Language        | Auto-instrumentation | Manual Instrumentation | Multiple Instruments | Views | Custom Attributes | Resource Detection | Exemplars |
 | --------------- | --------------- | -------------------- | ---------------------- | -------------------- | ----- | ----------------- | ------------------ | --------------- |
 | Accounting      | Go              | 🚧                   | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧              |
 | Ad              | Java            | ✅                   | ✅                     | 🚧                   | 🚧    | ✅                | ✅                 | ✅              |
