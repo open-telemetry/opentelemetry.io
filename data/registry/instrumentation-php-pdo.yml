@@ -1,13 +1,18 @@
 title: OpenTelemetry PDO (PHP DataObjects) auto-instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: php
 tags:
   - pdo
   - instrumentation
   - php
-repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/PDO
 license: Apache 2.0
 description: Instrumentation Library for PDO
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/PDO
+createdAt: 2023-05-22
+package:
+  registry: packagist
+  name: open-telemetry/opentelemetry-auto-pdo
+  version: 0.0.12

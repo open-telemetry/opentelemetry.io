@@ -1,13 +1,19 @@
+# cSpell:ignore dynatraceexporter
 title: Dynatrace Collector Exporter
 registryType: exporter
-isThirdParty: true
 language: collector
 tags:
   - go
   - exporter
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/dynatraceexporter
 license: Apache 2.0
 description: The Dynatrace Exporter for the OpenTelemetry Collector.
-authors: Dynatrace
-otVersion: latest
+authors:
+  - name: Dynatrace
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/dynatraceexporter
+createdAt: 2020-06-06
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/dynatraceexporter
+  version: v0.95.0

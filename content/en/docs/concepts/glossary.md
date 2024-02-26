@@ -116,9 +116,7 @@ Something that happened where representation depends on the
 
 ### **Exporter**
 
-Provides functionality to emit telemetry to consumers. Used by
-[`Instrumentation Libraries`][spec-exporter-lib] and the
-[`Collector`](/docs/collector/configuration#basics). Exporters can be push- or
+Provides functionality to emit telemetry to consumers. Exporters can be push- or
 pull-based.
 
 ### **Field**
@@ -232,8 +230,7 @@ Short for [OpenTelemetry Protocol](/docs/specs/otlp/).
 ### **Processor**
 
 The operation performed on data between being received and being exported. For
-example, batching. Used by
-['Instrumentation Libraries'](#instrumentation-library) and the
+example, batching. Used by the
 [Collector](/docs/collector/configuration/#processors).
 
 ### **Propagators**
@@ -355,7 +352,7 @@ on web pages when requested. See [more][zpages].
 [metric]: /docs/concepts/signals/metrics/
 [opencensus]: https://opencensus.io
 [opentracing]: https://opentracing.io
-[propagators]: /docs/instrumentation/go/manual/#propagators-and-context
+[propagators]: /docs/languages/go/instrumentation/#propagators-and-context
 [proto]: https://github.com/open-telemetry/opentelemetry-proto
 [receiver]: /docs/collector/configuration/#receivers
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
@@ -363,7 +360,6 @@ on web pages when requested. See [more][zpages].
 [sampling]: /docs/specs/otel/trace/sdk#sampling
 [signals]: /docs/concepts/signals/
 [span]: /docs/specs/otel/trace/api#span
-[spec-exporter-lib]: /docs/specs/otel/glossary/#exporter-library
 [spec-instrumentation-lib]: /docs/specs/otel/glossary/#instrumentation-library
 [spec-instrumented-lib]: /docs/specs/otel/glossary/#instrumented-library
 [specification]: /docs/concepts/components/#specification

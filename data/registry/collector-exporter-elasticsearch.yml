@@ -1,13 +1,19 @@
+# cSpell:ignore elasticsearchexporter
 title: Elasticsearch Exporter
 registryType: exporter
-isThirdParty: false
 language: collector
 tags:
   - go
   - exporter
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/elasticsearchexporter
 license: Apache 2.0
 description: This exporter supports sending OpenTelemetry logs to Elasticsearch
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/elasticsearchexporter
+createdAt: 2020-11-05
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/elasticsearchexporter
+  version: v0.95.0

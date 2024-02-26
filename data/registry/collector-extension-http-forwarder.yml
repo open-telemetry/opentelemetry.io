@@ -1,15 +1,21 @@
+# cSpell:ignore httpforwarder
 title: HTTP Forwarder Collector Extension
 registryType: extension
-isThirdParty: false
 language: collector
 tags:
   - go
   - extension
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/httpforwarder
 license: Apache 2.0
 description:
   The HTTP Forwarder Extension for the OpenTelemetry Collector accepts HTTP
   requests, optionally adds headers to them and forwards them.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/httpforwarder
+createdAt: 2021-02-24
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/httpforwarder
+  version: v0.95.0

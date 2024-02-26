@@ -1,16 +1,22 @@
+# cSpell:ignore apachesparkreceiver
 title: Apache Spark Receiver
 registryType: receiver
-isThirdParty: false
 language: collector
 tags:
   - apache
   - spark
   - receiver
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/apachesparkreceiver
 license: Apache 2.0
 description:
   This receiver fetches metrics for an Apache Spark cluster through the Apache
   Spark REST API
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/apachesparkreceiver
+createdAt: 2020-11-05
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/apachesparkreceiver
+  version: v0.95.0

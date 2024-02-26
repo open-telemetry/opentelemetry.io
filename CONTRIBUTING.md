@@ -1,46 +1,53 @@
 # Contributing to OpenTelemetry.io
 
-Thanks for your interest in contributing to
-[OpenTelemetry.io](https://opentelemetry.io/)! Here are a few general guidelines
-on contributing and reporting bugs that we ask you to review. Following these
-guidelines helps to communicate that you respect the time of the contributors
-managing and developing this open source project. In return, they should
-reciprocate that respect in addressing your issue, assessing changes, and
-helping you finalize your pull requests. In that spirit of mutual respect, we
-endeavor to review incoming issues and pull requests, and will close any
-lingering issues or pull requests after long times of inactivity.
+**Thanks for your interest in contributing to
+[OpenTelemetry.io](https://opentelemetry.io/)!**
 
-Note that all of your interactions in the project are subject to our
+Follow these guidelines helps to communicate that you respect the time of the
+contributors managing and developing this open source project. In return,
+maintainers and approvers should reciprocate that respect in addressing your
+issue, assessing changes, and helping you finalize your pull requests. In that
+spirit of mutual respect, we endeavor to review incoming issues and pull
+requests, and will close any lingering issues or pull requests after long times
+of inactivity.
+
+## Before you get started
+
+### Code of Conduct
+
+All of your interactions in this project are subject to our
 [Code of Conduct](https://github.com/open-telemetry/community/blob/main/code-of-conduct.md).
-This includes creation of issues or pull requests, commenting on issues or pull
-requests, and extends to all interactions in any real-time space e.g., Slack,
-Discord, etc.
+This includes the creation of issues or pull requests, commenting on issues or
+pull requests, and extends to all interactions in any real-time space, for
+example Slack, Discord, and so on.
 
-Also review the general
+### Contributor License Agreement
+
+Review the general
 [OpenTelemetry Contributor Guide](https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md),
-that will provide additional details, especially that you need to sign a
+as it provides additional details, especially that you need to sign a
 Contributor License Agreement (CLA) before you can contribute.
 
-## Found a security issue?
+### Found a security issue?
 
-If you discover a security issue, **do not** report it through GitHub. Instead,
-follow the steps in our
-[Security Policy](https://github.com/open-telemetry/opentelemetry.io/security/policy).
+If you discover a security issue, read the
+[Security Policy](https://github.com/open-telemetry/opentelemetry.io/security/policy)
+before opening an issue.
 
-## Found a problem?
+### Found a problem?
 
-If you find a problem with the content of this repository, or you would like to
-request an enhancement, [create an issue][new-issue].
+If you find a bug or a problem with the content of this repository, or you would
+like to request an enhancement, [create an issue][new-issue].
 
-Before reporting a new issue, please ensure that the issue was not already
-reported or fixed by searching through our
+Before reporting a new issue, make sure that the issue was not already reported
+or fixed by searching through our
 [issues list](https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc).
 
-When creating a new issue, include a short meaningful title and clear a
-description, as much relevant information as possible, and, if possible, a test
-case.
+When creating a new issue, include a short, meaningful title and a clear
+description. Add as much relevant information as you can, and, if possible, a
+test case.
 
-## Want to work on an existing issue?
+### Want to work on an existing issue?
 
 This is the best way how you can help us to make our documentation better! Take
 a look at issues tagged with
@@ -59,64 +66,11 @@ non-community members who have already made contributions to the [OpenTelemetry
 organization][org]. After confirmation through a maintainer, plan to provide a
 PR shortly or let maintainers now if you run into any blockers.
 
-## Sending Pull Requests
+## Contributor's guide
 
-Enhancements and fixes to the website are most welcome!
-
-Before sending a new [pull request][pr] (PR), take a look at existing
-[pull requests](https://github.com/open-telemetry/opentelemetry.io/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc)
-and
-[issues](https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)
-to see if the proposed change or fix has been discussed in the past, or if the
-change was already implemented but not yet released.
-
-### Quick fixes
-
-For small changes to a single file, you can edit directly in GitHub by clicking
-**Edit this file** button. After forking the repository, follow the instructions
-in [Editing files][].
-
-However, formatting may still be needed, like reducing line lengths in the
-edited file. The options for fixing formatting are:
-
-- Checking out the project and running the CLI scripts mentioned in
-  [Submitting a change](#submitting-a-change).
-- Commenting `/fix:format` on your pull request to trigger an automated script.
-  This requires a unique branch name, which can be edited under _View all
-  branches_ in your fork.
-
-For larger fixes, follow the
-[instructions to setup a development environment](#development) below.
-
-### PR Guidelines
-
-Before a PR gets merged, it will sometimes require a few iterations of
-review-and-edit. To help us and yourself make this process as easy as possible,
-we ask that adhere to the following:
-
-- If your PR isn't a [quick fix](#quick-fixes), then **work from a fork**: Click
-  the [Fork](https://github.com/open-telemetry/opentelemetry.io/fork) button at
-  the top of the repository and clone the fork locally. When you are ready,
-  raise a PR with the upstream repository.
-- **Do not work from the `main`** branch of your fork, but create a PR-specific
-  branch.
-- Ensure that maintainers are
-  [allowed to apply changes to your pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork).
-
-### Merge requirements
-
-- No “changes requested” reviews by approvers, maintainers, technical committee
-  members, or subject matter experts
-- No unresolved conversations
-- Approved by at least one approver
-- No failing PR checks
-- PR branch is up-to-date with the base branch
-
-> **Important**
->
-> Do not worry too much about failing PR checks! Community members will help you
-> to get them fixed, by either providing you with instructions how to fix them
-> or by fixing them on your behave.
+To learn how to contribute fixes and new content to this project, read the
+[Contributor's guide](/content/en/docs/contributing), which includes a style
+guide and useful information on the review process.
 
 ## Development
 
@@ -219,24 +173,6 @@ The website is built from the following content:
 [content-modules]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
 
-### Submitting a change
-
-Before submitting a change to the repository, run the following command and
-address any reported issues. Also commit any files changed by the `fix` script:
-
-```sh
-npm run test-and-fix
-```
-
-To separately test and fix issues with your files, run:
-
-```sh
-npm run test # checks but does not update any files
-npm run fix  # may update files
-```
-
-To list available NPM scripts, run `npm run`.
-
 ### Submodule changes
 
 If you change any content inside of a [content-modules][] submodule, then you'll
@@ -254,17 +190,6 @@ submodule itself.
 > while you work within a submodule, set the environment variable `GET=no`.
 > You'll also need to `git fetch --unshallow` the submodule before you can
 > submit a PR. Alternatively, set `DEPTH=100` and re-fetch submodules.
-
-### Site deploys and PR previews
-
-If you submit a PR, Netlify will create a [deploy preview][] so that you can
-review your changes. Once your PR is merged, Netlify deploys the updated site to
-the production server.
-
-> **Note**: PR previews include _draft pages_, but production builds do not.
-
-To see deploy logs and more, visit project's [dashboard][] -- Netlify login
-required.
 
 ## Approver and Maintainer practices
 
@@ -302,11 +227,6 @@ approvers and maintainers while doing code reviews:
 [.nvmrc]: .nvmrc
 [clone]:
   https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
-[dashboard]: https://app.netlify.com/sites/opentelemetry/overview
-[deploy preview]:
-  https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/
-[editing files]:
-  https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files
 [fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [gitpod.io]: https://gitpod.io
 [gitpod.io/workspaces]: https://gitpod.io/workspaces
@@ -323,5 +243,3 @@ approvers and maintainers while doing code reviews:
   https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
 [nvm-windows]: https://github.com/coreybutler/nvm-windows
 [org]: https://github.com/open-telemetry
-[pr]:
-  https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests

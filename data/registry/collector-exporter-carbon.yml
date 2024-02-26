@@ -1,13 +1,19 @@
+# cSpell:ignore carbonexporter
 title: Carbon Collector Exporter
 registryType: exporter
-isThirdParty: true
 language: collector
 tags:
   - go
   - exporter
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/carbonexporter
 license: Apache 2.0
 description: The Carbon Exporter for the OpenTelemetry Collector.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/carbonexporter
+createdAt: 2020-06-06
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/carbonexporter
+  version: v0.95.0

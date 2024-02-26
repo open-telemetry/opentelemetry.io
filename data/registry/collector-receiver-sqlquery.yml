@@ -1,15 +1,21 @@
+# cSpell:ignore sqlqueryreceiver
 title: SQL Query Receiver (Alpha)
 registryType: receiver
-isThirdParty: false
 language: collector
 tags:
   - go
   - receiver
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/sqlqueryreceiver
 license: Apache 2.0
 description:
   The SQL Query Receiver uses custom SQL queries to generate metrics from a
   database connection.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/sqlqueryreceiver
+createdAt: 2022-10-25
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/sqlqueryreceiver
+  version: v0.95.0

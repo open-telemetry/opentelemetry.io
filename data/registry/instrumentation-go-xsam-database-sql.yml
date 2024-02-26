@@ -1,15 +1,21 @@
 # cSpell:ignore otelsql xsam
 title: otelsql -- Instrumentation for `database/sql`
 registryType: instrumentation
-isThirdParty: true
 language: go
 tags:
   - go
   - instrumentation
   - database
   - sql
-repo: https://github.com/XSAM/otelsql
 license: Apache 2.0
 description: Instrumentation for the Golang `database/sql` package.
-authors: Sam Xie (XSAM)
-otVersion: v1.0.0
+authors:
+  - name: Sam Xie
+    url: https://github.com/XSAM
+package:
+  name: github.com/XSAM/otelsql
+  registry: go
+  version: v0.28.0
+urls:
+  repo: https://github.com/XSAM/otelsql
+createdAt: 2021-10-12

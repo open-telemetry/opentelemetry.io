@@ -1,0 +1,369 @@
+---
+title: Auto-Instrumentation Example
+linkTitle: Example
+weight: 20
+# prettier-ignore
+cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette uninstrumented venv werkzeug
+---
+
+This page demonstrates how to use Python auto-instrumentation in OpenTelemetry.
+The example is based on an [OpenTracing example][]. You can download or view the
+[source files][] used in this page from the `opentelemetry-python` repository.
+
+This example uses three different scripts. The main difference between them is
+how they are instrumented:
+
+1. `server_manual.py` is instrumented _manually_.
+2. `server_automatic.py` is instrumented _automatically_.
+3. `server_programmatic.py` is instrumented _programmatically_.
+
+[_Programmatic_ instrumentation](#execute-the-programmatically-instrumented-server)
+is a kind of instrumentation that requires minimal instrumentation code to be
+added to the application. Only some instrumentation libraries offer additional
+capabilities that give you greater control over the instrumentation process when
+used programmatically.
+
+Run the first script without the automatic instrumentation agent and second with
+the agent. They should both produce the same results, demonstrating that the
+automatic instrumentation agent does exactly the same thing as manual
+instrumentation.
+
+Automatic instrumentation utilizes [monkey-patching][] to dynamically rewrite
+methods and classes at runtime through [instrumentation
+libraries][instrumentation]. This reduces the amount of work required to
+integrate OpenTelemetry into your application code. Below, you will see the
+difference between a Flask route instrumented manually, automatically and
+programmatically.
+
+### Manually instrumented server
+
+`server_manual.py`
+
+```python
+@app.route("/server_request")
+def server_request():
+    with tracer.start_as_current_span(
+        "server_request",
+        context=extract(request.headers),
+        kind=trace.SpanKind.SERVER,
+        attributes=collect_request_attributes(request.environ),
+    ):
+        print(request.args.get("param"))
+        return "served"
+```
+
+### Automatically-instrumented server
+
+`server_automatic.py`
+
+```python
+@app.route("/server_request")
+def server_request():
+    print(request.args.get("param"))
+    return "served"
+```
+
+### Programmatically-instrumented server
+
+`server_programmatic.py`
+
+```python
+instrumentor = FlaskInstrumentor()
+
+app = Flask(__name__)
+
+instrumentor.instrument_app(app)
+# instrumentor.instrument_app(app, excluded_urls="/server_request")
+@app.route("/server_request")
+def server_request():
+    print(request.args.get("param"))
+    return "served"
+```
+
+## Prepare
+
+Execute the following example in a separate virtual environment. Run the
+following commands to prepare for auto-instrumentation:
+
+```sh
+mkdir auto_instrumentation
+cd auto_instrumentation
+python -m venv venv
+source ./venv/bin/activate
+```
+
+## Install
+
+Run the following commands to install the appropriate packages. The
+`opentelemetry-distro` package depends on a few others, like `opentelemetry-sdk`
+for custom instrumentation of your own code and `opentelemetry-instrumentation`
+which provides several commands that help automatically instrument a program.
+
+```sh
+pip install opentelemetry-distro
+pip install 'flask<3' 'werkzeug<3' requests
+```
+
+> **Note**: OpenTelemetry Python automatic instrumentation does not support
+> Flask or Werkzeug 3.0+ at this time. See the troubleshooting section
+> [No Data When Using Flask](/docs/languages/python/automatic#no-data-when-using-flask)
+
+Run the `opentelemetry-bootstrap` command:
+
+```shell
+opentelemetry-bootstrap -a install
+```
+
+The examples that follow send instrumentation results to the console. Learn more
+about installing and configuring the
+[OpenTelemetry Distro](/docs/languages/python/distro) to send telemetry to other
+destinations, like an OpenTelemetry Collector.
+
+> **Note**: To use automatic instrumentation through `opentelemetry-instrument`,
+> you must configure it via environment variables or the command line. The agent
+> creates a telemetry pipeline that cannot be modified other than through these
+> means. If you need more customization for your telemetry pipelines, then you
+> need to forego the agent and import the OpenTelemetry SDK and instrumentation
+> libraries into your code and configure them there. You may also extend
+> automatic instrumentation by importing the OpenTelemetry API. For more
+> details, see the [API reference][].
+
+## Execute
+
+This section guides you through the manual process of instrumenting a server as
+well as the process of executing an automatically instrumented server.
+
+### Execute the manually instrumented server
+
+Execute the server in two separate consoles, one to run each of the scripts that
+make up this example:
+
+```sh
+source ./venv/bin/activate
+python server_manual.py
+```
+
+```sh
+source ./venv/bin/activate
+python client.py testing
+```
+
+The console running `server_manual.py` will display the spans generated by
+instrumentation as JSON. The spans should appear similar to the following
+example:
+
+```json
+{
+  "name": "server_request",
+  "context": {
+    "trace_id": "0xfa002aad260b5f7110db674a9ddfcd23",
+    "span_id": "0x8b8bbaf3ca9c5131",
+    "trace_state": "{}"
+  },
+  "kind": "SpanKind.SERVER",
+  "parent_id": null,
+  "start_time": "2020-04-30T17:28:57.886397Z",
+  "end_time": "2020-04-30T17:28:57.886490Z",
+  "status": {
+    "status_code": "OK"
+  },
+  "attributes": {
+    "http.method": "GET",
+    "http.server_name": "127.0.0.1",
+    "http.scheme": "http",
+    "host.port": 8082,
+    "http.host": "localhost:8082",
+    "http.target": "/server_request?param=testing",
+    "net.peer.ip": "127.0.0.1",
+    "net.peer.port": 52872,
+    "http.flavor": "1.1"
+  },
+  "events": [],
+  "links": [],
+  "resource": {
+    "telemetry.sdk.language": "python",
+    "telemetry.sdk.name": "opentelemetry",
+    "telemetry.sdk.version": "0.16b1"
+  }
+}
+```
+
+### Execute the automatically-instrumented server
+
+Stop the execution of `server_manual.py` by pressing <kbd>Control+C</kbd> and
+run the following command instead:
+
+```sh
+opentelemetry-instrument --traces_exporter console --metrics_exporter none python server_automatic.py
+```
+
+In the console where you previously executed `client.py`, run the following
+command again:
+
+```sh
+python client.py testing
+```
+
+The console running `server_automatic.py` will display the spans generated by
+instrumentation as JSON. The spans should appear similar to the following
+example:
+
+```json
+{
+  "name": "server_request",
+  "context": {
+    "trace_id": "0x9f528e0b76189f539d9c21b1a7a2fc24",
+    "span_id": "0xd79760685cd4c269",
+    "trace_state": "{}"
+  },
+  "kind": "SpanKind.SERVER",
+  "parent_id": "0xb4fb7eee22ef78e4",
+  "start_time": "2020-04-30T17:10:02.400604Z",
+  "end_time": "2020-04-30T17:10:02.401858Z",
+  "status": {
+    "status_code": "OK"
+  },
+  "attributes": {
+    "http.method": "GET",
+    "http.server_name": "127.0.0.1",
+    "http.scheme": "http",
+    "host.port": 8082,
+    "http.host": "localhost:8082",
+    "http.target": "/server_request?param=testing",
+    "net.peer.ip": "127.0.0.1",
+    "net.peer.port": 48240,
+    "http.flavor": "1.1",
+    "http.route": "/server_request",
+    "http.status_text": "OK",
+    "http.status_code": 200
+  },
+  "events": [],
+  "links": [],
+  "resource": {
+    "telemetry.sdk.language": "python",
+    "telemetry.sdk.name": "opentelemetry",
+    "telemetry.sdk.version": "0.16b1",
+    "service.name": ""
+  }
+}
+```
+
+You can see that both outputs are the same because automatic instrumentation
+does exactly what manual instrumentation does.
+
+### Execute the programmatically-instrumented server
+
+It is also possible to use the instrumentation libraries (such as
+`opentelemetry-instrumentation-flask`) by themselves which may have an advantage
+of customizing options. However, by choosing to do this it means you forego
+using auto-instrumentation by starting your application with
+`opentelemetry-instrument` as this is mutually exclusive.
+
+Execute the server just like you would do for manual instrumentation, in two
+separate consoles, one to run each of the scripts that make up this example:
+
+```sh
+source ./venv/bin/activate
+python server_programmatic.py
+```
+
+```sh
+source ./venv/bin/activate
+python client.py testing
+```
+
+The results should be the same as running with manual instrumentation.
+
+#### Using programmatic-instrumentation features
+
+Some instrumentation libraries include features that allow for more precise
+control while instrumenting programmatically, the instrumentation library for
+Flask is one of them.
+
+This example has a line commented out, change it like this:
+
+```python
+# instrumentor.instrument_app(app)
+instrumentor.instrument_app(app, excluded_urls="/server_request")
+```
+
+After running the example again, no instrumentation should appear on the server
+side. This is because or the `excluded_urls` option passed to `instrument_app`
+that effectively stops the `server_request` function from being instrumented as
+its URL matches the regular expression passed to `excluded_urls`.
+
+### Instrumentation while debugging
+
+The debug mode can be enabled in the Flask app like this:
+
+```python
+if __name__ == "__main__":
+    app.run(port=8082, debug=True)
+```
+
+The debug mode can break instrumentation from happening because it enables a
+reloader. To run instrumentation while the debug mode is enabled, set the
+`use_reloader` option to `False`:
+
+```python
+if __name__ == "__main__":
+    app.run(port=8082, debug=True, use_reloader=False)
+```
+
+## Configure
+
+The auto instrumentation can consume configuration from environment variables.
+
+### Capture HTTP request and response headers
+
+You can capture predefined HTTP headers as span attributes, according to the
+[semantic convention][].
+
+To define which HTTP headers you want to capture, provide a comma-separated list
+of HTTP header names via the environment variables
+`OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_REQUEST` and
+`OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_RESPONSE`, e.g.:
+
+```sh
+export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_REQUEST="Accept-Encoding,User-Agent,Referer"
+export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_RESPONSE="Last-Modified,Content-Type"
+opentelemetry-instrument --traces_exporter console --metrics_exporter none python app.py
+```
+
+These configuration options are supported by the following HTTP
+instrumentations:
+
+- Django
+- Falcon
+- FastAPI
+- Pyramid
+- Starlette
+- Tornado
+- WSGI
+
+If those headers are available, they will be included in your span:
+
+```json
+{
+  "attributes": {
+    "http.request.header.user-agent": [
+      "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)"
+    ],
+    "http.request.header.accept_encoding": ["gzip, deflate, br"],
+    "http.response.header.last_modified": ["2022-04-20 17:07:13.075765"],
+    "http.response.header.content_type": ["text/html; charset=utf-8"]
+  }
+}
+```
+
+[semantic convention]: /docs/specs/semconv/http/http-spans/
+[api reference]:
+  https://opentelemetry-python.readthedocs.io/en/latest/index.html
+[instrumentation]:
+  https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation
+[monkey-patching]:
+  https://stackoverflow.com/questions/5626193/what-is-monkey-patching
+[opentracing example]:
+  https://github.com/yurishkuro/opentracing-tutorial/tree/master/python
+[source files]:
+  https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/auto-instrumentation

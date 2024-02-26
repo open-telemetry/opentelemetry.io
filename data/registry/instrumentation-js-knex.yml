@@ -1,15 +1,20 @@
 # cSpell:ignore knex
 title: OpenTelemetry Instrumentation for knex
 registryType: instrumentation
-isThirdParty: false
 language: js
 tags:
   - Node.js
   - knex
   - orm
   - database
-repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-knex
 license: Apache 2.0
 description: Instrumentation library for Knex.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-knex
+createdAt: 2021-07-08
+package:
+  registry: npm
+  name: '@opentelemetry/instrumentation-knex'
+  version: 0.33.0

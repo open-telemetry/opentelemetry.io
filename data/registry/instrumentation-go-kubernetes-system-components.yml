@@ -1,0 +1,20 @@
+# cSpell:ignore beego astaxie
+title: Traces For Kubernetes System Components
+registryType: instrumentation
+language: go
+tags:
+  - k8s
+  - kubernetes
+  - instrumentation
+  - go
+license: Apache 2.0
+description:
+  System component traces record the latency of and relationships between
+  operations in the Kubernetes cluster.
+authors:
+  - name: Kubernetes Authors
+urls:
+  docs: https://kubernetes.io/docs/concepts/cluster-administration/system-traces/
+  repo: https://github.com/kubernetes/kubernetes
+createdAt: 2024-01-01
+isNative: true

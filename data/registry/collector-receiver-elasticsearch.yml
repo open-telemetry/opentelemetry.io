@@ -1,16 +1,21 @@
-# cSpell:ignore statsendpoints
+# cSpell:ignore statsendpoints elasticsearchreceiver
 title: Elasticsearch Receiver
 registryType: receiver
-isThirdParty: false
 language: collector
 tags:
   - go
   - receiver
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/elasticsearchreceiver
 license: Apache 2.0
 description:
   This receiver queries the Elasticsearch node stats and index statsendpoints in
   order to scrape metrics from a running elasticsearch cluster.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/elasticsearchreceiver
+createdAt: 2022-10-25
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/elasticsearchreceiver
+  version: v0.95.0

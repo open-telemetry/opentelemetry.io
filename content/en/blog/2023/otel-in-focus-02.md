@@ -44,7 +44,7 @@ have been released with several major changes to be aware of:
   for more information.
 - Many bugfixes and enhancements.
 
-##### [Go](/docs/instrumentation/go/)
+##### [Go](/docs/languages/go/)
 
 [v1.14](https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.14.0)
 has been released. This is the last release to support Go 1.18; 1.19 will be
@@ -52,7 +52,7 @@ required in the future. Semantic conventions have been updated, resulting in
 changes to constant and function names. Finally, there’s a variety of bug fixes
 and other small changes.
 
-##### [Java](/docs/instrumentation/java/)
+##### [Java](/docs/languages/java/)
 
 [v1.23](https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.23.0)
 has been released, bringing with it stable base2 exponential histogram
@@ -63,20 +63,20 @@ also in this release.
 has been updated as well, most notably changing HTTP span names to reflect
 updated semantic conventions.
 
-##### [PHP](/docs/instrumentation/php/)
+##### [PHP](/docs/languages/php/)
 
 [v1 beta](https://github.com/open-telemetry/opentelemetry-php/releases/tag/1.0.0beta1)
 was [announced](/blog/2023/php-beta-release/) at the end of January. The PHP SIG
 is looking forward to your feedback. In addition, the Communications SIG is
 planning a release of new documentation for PHP soon.
 
-##### [Python](/docs/instrumentation/python/)
+##### [Python](/docs/languages/python/)
 
 [v1.16](https://github.com/open-telemetry/opentelemetry-python/releases/tag/v1.16.0)
 has been released with deprecations to Jaeger exporters, several performance
 improvements and bugfixes, and changes to Prometheus export.
 
-##### [.NET](/docs/instrumentation/net/)
+##### [.NET](/docs/languages/net/)
 
 [v1.4](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.4.0)
 removes several deprecated extension methods.

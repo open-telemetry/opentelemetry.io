@@ -1,13 +1,16 @@
 # cSpell:ignore typeorm
 title: OpenTelemetry TypeORM Instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: js
 tags:
   - Node.js
   - instrumentation
   - typeorm
-repo: https://github.com/aspecto-io/opentelemetry-ext-js/tree/master/packages/instrumentation-typeorm
 license: Apache 2.0
 description: TypeORM instrumentation for Node.js.
-authors: Aspecto Authors (nir@aspecto.io)
+authors:
+  - name: Aspecto Authors
+    email: nir@aspecto.io
+urls:
+  repo: https://github.com/aspecto-io/opentelemetry-ext-js/tree/master/packages/instrumentation-typeorm
+createdAt: 2020-06-15

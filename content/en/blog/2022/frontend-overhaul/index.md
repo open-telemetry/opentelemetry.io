@@ -54,15 +54,15 @@ context.
 The demo’s stack includes multiple microservices in different languages,
 covering each of the following OTel-supported languages:
 
-- [C++](/docs/instrumentation/cpp/)
-- [.NET](/docs/instrumentation/net/)
-- [Erlang/Elixir](/docs/instrumentation/erlang/)
-- [Go](/docs/instrumentation/go/)
-- [Node.js](/docs/instrumentation/js/)
-- [PHP](/docs/instrumentation/php/)
-- [Python](/docs/instrumentation/python/)
-- [Ruby](/docs/instrumentation/ruby/)
-- [Rust](/docs/instrumentation/rust/)
+- [C++](/docs/languages/cpp/)
+- [.NET](/docs/languages/net/)
+- [Erlang/Elixir](/docs/languages/erlang/)
+- [Go](/docs/languages/go/)
+- [Node.js](/docs/languages/js/)
+- [PHP](/docs/languages/php/)
+- [Python](/docs/languages/python/)
+- [Ruby](/docs/languages/ruby/)
+- [Rust](/docs/languages/rust/)
 
 Every microservice has a specific goal and can communicate with others by using
 a global gRPC definition. Persistent information is saved into a PostgreSQL
@@ -114,13 +114,13 @@ This proposal was presented to the OpenTelemetry demo SIG during one of the
 weekly Monday meetings and we were given the green light to move ahead. As part
 of the changes, we decided to use [Next.js](https://nextjs.org/) to not only
 work as the primary front-end application but also to work as an aggregation
-layer between the front-end and the gRPC back-end services.
+layer between the front-end and the gRPC backend services.
 
 ![New Front-end Data Flow](data-flow.png)
 
 As you can see in the diagram, the application has two major connectivity
 points, one coming from the browser side (REST) to connect to the Next.js
-aggregation layer and the other from the aggregation layer to the back-end
+aggregation layer and the other from the aggregation layer to the backend
 services (gRPC).
 
 ## OpenTelemetry Instrumentation
@@ -129,7 +129,7 @@ The next big thing we worked was a way to instrument both sides of the Next.js
 app. To do this we had to connect the app twice to the same collector used by
 all the microservices.
 
-A simple back-end solution was designed using the
+A simple backend solution was designed using the
 [official gRPC exporter](https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-grpc)
 in combination with the
 [Node.js SDK](https://www.npmjs.com/package/@opentelemetry/sdk-node).
@@ -145,7 +145,7 @@ and create a span based on it, including the context propagation. The
 [implementation can be found here](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/frontend/utils/telemetry/InstrumentationMiddleware.ts).
 
 The front-end was a little trickier, as the
-[initial rendering is server-side](https://nextjs.org/learn/foundations/how-nextjs-works/rendering).
+[initial rendering is server-side](https://nextjs.org/docs/app/building-your-application/rendering#fundamentals).
 We had to make sure to load the tracer from the browser side when the JavaScript
 code is executed.
 
@@ -160,7 +160,7 @@ CORS requests from the web app.
 
 Once the setup is complete, by loading the application from Docker and
 interacting with the different features, we can start looking at the full traces
-that begin from the front-end user events all the way to the back-end gRPC
+that begin from the front-end user events all the way to the backend gRPC
 services.
 
 ![Front-end Trace Jaeger Visualization](jaeger.png)

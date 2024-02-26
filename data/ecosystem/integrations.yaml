@@ -1,4 +1,4 @@
-# cSpell:ignore containerd buildx Quarkus Cerbos flagd flipt KEDA Kyverno Dapr rustup GORM Otterize
+# cSpell:ignore containerd buildx Quarkus Cerbos flagd flipt KEDA Kyverno Dapr rustup GORM Otterize Dubbo
 - name: containerd
   url: https://containerd.io/
   docsUrl: https://github.com/containerd/containerd/blob/main/docs/tracing.md
@@ -40,10 +40,10 @@
   components: [Go, PHP]
   oss: true
 - name: Kong API Gateway
-  url: http://www.konghq.com/
+  url: https://www.konghq.com/
   docsUrl: https://docs.konghq.com/hub/kong-inc/opentelemetry/
-  components: []
-  oss: false
+  components: [Lua]
+  oss: true
 - name: NGINX Web Server
   url: https://nginx.org/
   docsUrl: https://github.com/nginxinc/nginx-otel
@@ -58,6 +58,7 @@
   url: https://nextjs.org/
   docsUrl: https://nextjs.org/docs/app/building-your-application/optimizing/open-telemetry
   components: [JavaScript]
+  native: true # Next.js provides a native integration of the OpenTelemetry API
   oss: true
 - name: ThousandEyes (Cisco)
   url: https://www.thousandeyes.com/
@@ -68,6 +69,7 @@
   url: https://cerbos.dev/
   docsUrl: https://github.com/cerbos/cerbos-sdk-javascript/tree/main/packages/opentelemetry
   components: [JavaScript]
+  native: false # Cerbos provides a first party instrumentation library
   oss: true
 - name: Tyk API Gateway
   url: https://tyk.io
@@ -178,4 +180,9 @@
   url: https://github.com/Farfetch/kafkaflow
   docsUrl: https://farfetch.github.io/kafkaflow/docs/guides/open-telemetry
   components: [.NET]
+  oss: true
+- name: Apache Dubbo # Provide the latest docs instead of blog url in 2~3 months later. refer to https://github.com/open-telemetry/opentelemetry.io/pull/3908#discussion_r1473133919.
+  url: https://github.com/apache/dubbo
+  docsUrl: https://cn.dubbo.apache.org/en/blog/2024/01/31/tracing-dubbo-with-opentelemetry/
+  components: [Java]
   oss: true

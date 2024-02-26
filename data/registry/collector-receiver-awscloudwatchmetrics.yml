@@ -1,16 +1,23 @@
+# cSpell:ignore awscloudwatchmetricsreceiver
 title: CloudWatch Metrics Receiver
 registryType: receiver
-isThirdParty: false
 language: collector
 tags:
   - awscloudwatchmetrics
   - receiver
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/awscloudwatchmetricsreceiver
 license: Apache 2.0
 description:
   Receives Cloudwatch metrics from AWS Cloudwatch via the AWS SDK for Cloudwatch
   Logs
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
 # cSpell:ignore awscloudwatchmetrics
+
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/awscloudwatchmetricsreceiver
+createdAt: 2022-10-25
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awscloudwatchmetricsreceiver
+  version: v0.95.0

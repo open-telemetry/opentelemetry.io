@@ -15,7 +15,7 @@ Helm's [documentation](https://helm.sh/docs/) to get started.
 
 - Kubernetes 1.24+
 - 6 GB of free RAM for the application
-- Helm 3.9+ (for Helm installation method only
+- Helm 3.9+ (for Helm installation method only)
 
 ## Install using Helm (recommended)
 

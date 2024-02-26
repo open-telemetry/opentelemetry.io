@@ -2,9 +2,7 @@
 title: Thinking about contributing to OpenTelemetry? Here's how I did it.
 linkTitle: Contributing to OTel
 date: 2023-09-18
-author:
-  >- # If you have only one author, then add the single name on this line in quotes.
-  [Adriana Villela](https://github.com/avillela) (Lightstep),
+author: '[Adriana Villela](https://github.com/avillela) (Lightstep)'
 canonical_url: https://medium.com/cloud-native-daily/how-to-contribute-to-opentelemetry-5962e8b2447e
 cSpell:ignore: EUWG sayin
 ---
@@ -27,10 +25,9 @@ projects? I don't know about you, but for me, up until last year, the prospect
 of contributing to open source was just plain _scary_!! I mean, when you open up
 a
 [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-(PR),
-_[you are putting yourself out there](https://oncallmemaybe.com/episodes/adventures-in-open-source-software-with-riaan-nolan-of-servian)_,
-to be judged by those little GitHub avatars that make up the approvers list for
-the repository you're contributing to. YIKES!
+(PR), _[you are putting yourself out there]_, to be judged by those little
+GitHub avatars that make up the approvers list for the repository you're
+contributing to. YIKES!
 
 But as scary as the thought of opening a PR might be, it's also SO VERY
 SATISFYING to see your contributions merged into a codebase. And most
@@ -194,3 +191,6 @@ findings and discoveries. Obviously, I do that too. But please also share these
 findings by contributing directly to the OTel docs and blog, to ensure that we
 have a single source of truth, and so that everyone, whether they're new to OTel
 or advanced practitioners, can benefit.
+
+[you are putting yourself out there]:
+  https://open.spotify.com/episode/5YrBEsXoJV3UjrHRrLRqBP?si=BpWISRD0SLytJF-vJ02sSA

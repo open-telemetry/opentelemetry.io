@@ -1,4 +1,4 @@
-# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Teletrace Uptrace Greptime KloudMate qryn ClickHouse Tracetest
+# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Uptrace Greptime KloudMate qryn ClickHouse Tracetest opensource OneUptime
 - name: AppDynamics (Cisco)
   distribution: true
   nativeOTLP: true
@@ -39,6 +39,13 @@
   nativeOTLP: true
   url: https://betterstack.com/docs/logs/open-telemetry/#2-setup
   contact: 'hello@betterstack.com'
+  oss: false
+  commercial: true
+- name: Control Plane
+  distribution: false
+  nativeOTLP: true
+  url: 'https://docs.controlplane.com/reference/org#tracing'
+  contact: 'support@controlplane.com'
   oss: false
   commercial: true
 - name: Coralogix
@@ -132,6 +139,13 @@
   contact: 'support@hyperdx.io'
   oss: true
   commercial: true
+- name: Immersive Fusion
+  distribution: false
+  nativeOTLP: true
+  url: 'https://docs.immersivefusion.com/instrument'
+  contact: 'support@immersivefusion.com'
+  oss: false
+  commercial: true
 - name: Instana
   distribution: false
   nativeOTLP: true
@@ -195,6 +209,13 @@
   contact: ''
   oss: false
   commercial: true
+- name: Middleware
+  distribution: true
+  nativeOTLP: true
+  url: 'https://docs.middleware.io/open-telemetry'
+  contact: 'hello@middleware.io'
+  oss: false
+  commercial: true
 - name: New Relic
   distribution: false
   nativeOTLP: true
@@ -216,12 +237,26 @@
   contact: ''
   oss: true
   commercial: true
+- name: OneUptime
+  distribution: true
+  nativeOTLP: true
+  url: 'https://oneuptime.com/product/apm'
+  contact: 'hello@oneuptime.com'
+  oss: true
+  commercial: true
 - name: OpenObserve
   distribution: false
   nativeOTLP: true
   url: 'https://openobserve.ai/docs/ingestion/logs/otlp/'
   contact: 'hello@openobserve.ai'
   oss: true
+  commercial: true
+- name: OpenText
+  distribution: true
+  nativeOTLP: true
+  url: 'https://docs.microfocus.com/doc/OBS/SaaS/ConfigureOTELCollector'
+  contact: 'skotagiri@opentext.com'
+  oss: false
   commercial: true
 - name: Oracle
   distribution: false
@@ -243,6 +278,13 @@
   url: 'https://sentry.io/for/opentelemetry/'
   contact: ''
   oss: false
+  commercial: true
+- name: Red Hat
+  distribution: true
+  nativeOTLP: true
+  url: 'https://docs.openshift.com/container-platform/4.14/otel/otel-release-notes.html'
+  contact: 'ploffay@redhat.com'
+  oss: true
   commercial: true
 - name: Sentry Software
   distribution: true
@@ -293,13 +335,6 @@
   contact: ''
   oss: false
   commercial: true
-- name: Teletrace
-  distribution: true
-  nativeOTLP: true
-  url: 'https://docs.teletrace.io/'
-  contact: ''
-  oss: true
-  commercial: false
 - name: Traceloop
   distribution: false
   nativeOTLP: true
@@ -376,4 +411,18 @@
   url: 'https://docs.tracetest.io/configuration/connecting-to-data-stores/opentelemetry-collector'
   contact: 'https://github.com/adnanrahic'
   oss: true
+  commercial: true
+- name: Alibaba Cloud
+  distribution: false
+  nativeOTLP: true
+  url: 'https://www.alibabacloud.com/help/en/arms/tracing-analysis/get-started-with-tracing-analysis'
+  contact: 'opensource@alibaba-inc.com'
+  oss: false
+  commercial: true
+- name: Seq
+  distribution: false
+  nativeOTLP: true
+  url: 'https://docs.datalust.co/docs/opentelemetry-net-sdk-1'
+  contact: 'support@datalust.co'
+  oss: false
   commercial: true

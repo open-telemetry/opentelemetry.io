@@ -52,7 +52,7 @@ now use opaque strings for configuration. This may require changes to your
 collector configuration. New connectors and exporters have been added as well,
 such as the `exceptionsconnector` and `opensearchexporter`.
 
-##### [Java](/docs/instrumentation/java/)
+##### [Java](/docs/languages/java/)
 
 [Version 1.28](https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.28.0)
 includes a variety of updates and bug fixes.
@@ -61,18 +61,18 @@ includes a variety of updates and bug fixes.
 has also been released, with some required migrations due to semantic convention
 updates.
 
-#### [Python](/docs/instrumentation/python/)
+#### [Python](/docs/languages/python/)
 
 [Version 1.19](https://github.com/open-telemetry/opentelemetry-python/releases/tag/v1.19.0)
 includes updates to OTLP and log support.
 
-#### [JavaScript](/docs/instrumentation/js/)
+#### [JavaScript](/docs/languages/js/)
 
 [Version 1.15.1](https://github.com/open-telemetry/opentelemetry-js/releases/tag/v1.15.1)
 includes metric bug fixes for histograms and exponential histograms. In
 addition, OTLP support has been updated.
 
-#### [.NET](/docs/instrumentation/net/)
+#### [.NET](/docs/languages/net/)
 
 [Version 1.6.0-alpha.1](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.6.0-alpha.1)
 has been released. 1.6 re-introduces support for exemplars, as well as

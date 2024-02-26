@@ -1,16 +1,21 @@
-# cSpell:ignore kinetica
+# cSpell:ignore kinetica kineticaexporter
 title: Kinetica OpenTelemetry Collector Exporter Plug-In
 registryType: exporter
-isThirdParty: false
 language: collector
 tags:
   - kinetica
   - exporter
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/kineticaexporter
 license: Apache 2.0
 description:
   The schema name `otel` is an example. The user may change this to another name
   but the same name has to be used
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/kineticaexporter
+createdAt: 2023-09-19
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/kineticaexporter
+  version: v0.95.0

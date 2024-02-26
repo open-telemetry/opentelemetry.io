@@ -4,7 +4,7 @@ linkTitle: OTel in Focus 2023/09
 date: 2023-10-01
 author: '[Austin Parker](https://github.com/austinlparker)'
 # prettier-ignore
-cSpell:ignore: attributesprocessor Autoconfigure autoinstrumentation Autoscaler checkapi Contribfest coreinternal gopkg jaegerthrifthttp obsreport ottl resourcedetection resourceprocessor structs tailsampling ucum unmanaged
+cSpell:ignore: attributesprocessor autoinstrumentation Autoscaler checkapi Contribfest coreinternal gopkg jaegerthrifthttp obsreport ottl resourcedetection resourceprocessor structs tailsampling ucum unmanaged
 ---
 
 Welcome back to **OpenTelemetry in Focus** for September, 2023! The autumn winds
@@ -115,7 +115,7 @@ This release includes breaking changes from v0.84.0 as well:
   collector defaults.
 - ServiceMonitors are created when Prometheus exporters are used.
 
-##### [Java](/docs/instrumentation/java/)
+##### [Java](/docs/languages/java/)
 
 [Version 1.30](https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.30.1)
 includes many updates to incubating APIs and SDKs. In the API incubator, an
@@ -150,7 +150,7 @@ with `getDefinedPackage` lookup for OpenJ9, serializing key with Lettuce
 instrumentation, and auto-instrumentation with JMX not working without a
 trigger.
 
-#### [Go](/docs/instrumentation/go/)
+#### [Go](/docs/languages/go/)
 
 [Version 1.19.0](https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.19.0)
 is the first stable release of Metrics and the standard project stability
@@ -180,7 +180,7 @@ Please note that v1.18.0 included several deprecations and removals:
   now.
 - Go compatibility before version 1.20 is no longer guaranteed.
 
-#### [JavaScript](/docs/instrumentation/js/)
+#### [JavaScript](/docs/languages/js/)
 
 [Version 1.17.0](https://github.com/open-telemetry/opentelemetry-js/releases/tag/v1.17.0)
 fixes an unintentional breaking change in previous releases.
@@ -188,7 +188,7 @@ fixes an unintentional breaking change in previous releases.
 There have been several important changes in the experimental packages,
 including deprecation of legacy configuration APIs.
 
-#### [.NET](/docs/instrumentation/net/)
+#### [.NET](/docs/languages/net/)
 
 [Version 1.6.0](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.6.0)
 includes minor updates to metrics.

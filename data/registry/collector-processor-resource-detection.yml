@@ -1,17 +1,23 @@
+# cSpell:ignore resourcedetectionprocessor
 title: Resource Detection Processor
 registryType: processor
-isThirdParty: false
 language: collector
 tags:
   - go
   - processor
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor
 license: Apache 2.0
 description:
   The Resource Detection Processor for the OpenTelemetry Collector can be used
   to detect resource information from the host, in a format that conforms to the
   OpenTelemetry resource semantic conventions, and append or override the
   resource value in telemetry data with this information.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor
+createdAt: 2021-02-24
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor
+  version: v0.95.0

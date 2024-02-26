@@ -36,7 +36,7 @@ Providers.
 ## Metric Exporter
 
 Metric Exporters send metric data to a consumer. This consumer can be standard
-output for debugging and development-time, the OpenTelemetry Collector, or any
+output for debugging during development, the OpenTelemetry Collector, or any
 open source or vendor backend of your choice.
 
 ## Metric Instruments
@@ -72,6 +72,10 @@ The instrument kind is one of the following:
 - **Histogram**: A client-side aggregation of values, such as request latencies.
   A histogram is a good choice if you are interested in value statistics. For
   example: How many requests take fewer than 1s?
+
+For more on synchronous and asynchronous instruments, and which kind is best
+suited for your use case, see
+[Supplementary Guidelines](/docs/specs/otel/metrics/supplementary-guidelines/).
 
 ## Aggregation
 
