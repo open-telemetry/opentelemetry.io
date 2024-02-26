@@ -6,9 +6,10 @@ linkTitle: Skyscanner using OTel Demo
 date: 2024-02-26
 author: >-
   [Jordi Bisbal Ansaldo](https://github.com/jordibisbal8) (Skyscanner)
+cSpell:ignore: Ansaldo Bisbal Jordi runbooks Skyscanner upskilled Yankova
 ---
 
-At [Skyscanner](https://www.skyscanner.net), as in many organisations, teams
+At [Skyscanner](https://www.skyscanner.net), as in many organizations, teams
 tend to follow specific runbooks for individual failure modes. With modern and
 complex distributed systems, this has the downside of most of the errors being
 unknowns, which makes runbooks practically useless.
@@ -48,7 +49,7 @@ various components, as shown in the image below. Since part of the OpenTelemetry
 ecosystem is open source, we can easily introduce any new features that will be
 reviewed by OpenTelemetry contributors.
 
-![Distributed tracing example in Astronomy shop](tracing_example.png)
+![Distributed tracing example in Astronomy shop](tracing-example.png)
 
 ## Observability game day
 
@@ -87,7 +88,7 @@ In addition, we learned that:
 
 1. OTLP makes it incredibly simple to integrate a standard application with an
    observability vendor. Just point it to the right endpoint and job done.
-2. Our winning teams relied primarily on tracing data to analyse regressions
+2. Our winning teams relied primarily on tracing data to analyze regressions
    that helped them understand the root cause faster. Tracing FTW!
 3. Front-end engineers found the Game Day lacked focus on client-side
    observability, so we decided to contribute upstream (see next steps below).
