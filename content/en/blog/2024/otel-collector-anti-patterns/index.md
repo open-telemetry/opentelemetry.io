@@ -6,6 +6,7 @@ author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep),
 
 canonical_url: https://adri-v.medium.com/43dca4a857a0
+cSpell:ignore: antipattern antipatterns
 ---
 
 ![House on stilts against ocean and mountain backdrop](house-on-stilts.jpg)
