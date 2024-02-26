@@ -5,21 +5,23 @@ weight: 28
 cSpell:ignore: fanoutconsumer probabilisticsampler spanmetrics zpages
 ---
 
-OpenTelemetry Collector is an executable that can receive telemetry data,
-optionally process it, and export it further.
+The OpenTelemetry Collector is an executable file that can receive telemetry,
+process it, and export it to multiple targets, such as observability backends.
 
 The Collector supports several popular open source protocols for receiving and
-sending telemetry data as well as offering a pluggable architecture for adding
+sending telemetry data, and it offers an extensible architecture for adding
 more protocols.
 
 Data receiving, processing, and exporting are done using
-[Pipelines](#pipelines). The Collector can be configured to have one or more
-pipelines. Each pipeline includes the following:
+[pipelines](#pipelines). You can configure the Collector to
+have one or more pipelines.
 
-- A set of [Receivers](#receivers) that receive the data.
-- A series of optional [Processors](#processors) that get the data from
+Each pipeline includes the following:
+
+- A set of [receivers](#receivers) that collect the data.
+- A series of optional [processors](#processors) that get the data from
   receivers and process it.
-- A set of [Exporters](#exporters) which get the data from processors and send
+- A set of [exporters](#exporters) which get the data from processors and send
   it outside the Collector.
 
 The same receiver can be included in multiple pipelines and multiple pipelines
@@ -33,8 +35,10 @@ processing (or modification), and finally to export.
 Pipelines can operate on three telemetry data types: traces, metrics, and logs.
 The data type is a property of the pipeline defined by its configuration.
 Receivers, processors, and exporters used in a pipeline must support the
-particular data type otherwise `ErrDataTypeIsNotSupported` will be reported when
-the configuration is loaded. A pipeline can be depicted the following way:
+particular data type, otherwise the `ErrDataTypeIsNotSupported` exception
+is reported when the configuration loads.
+
+The following diagram represents a typical pipeline:
 
 ```mermaid
 ---
@@ -60,10 +64,10 @@ flowchart LR
 
 Pipelines can have one or more receivers. Data from all receivers is pushed to
 the first processor, which processes the data and then pushes it to the next
-processor (or a processor may drop the data if it is a “sampling” processor, for
-example), and so on until the last processor in the pipeline pushes the data to
+processor. A processor might also drop the data if it's sampling or filtering.
+This continues until the last processor in the pipeline pushes the data to
 the exporters. Each exporter gets a copy of each data element. The last
-processor uses a `fanoutconsumer` to fan out the data to multiple exporters.
+processor uses a `fanoutconsumer` to send the data to multiple exporters.
 
 The pipeline is constructed during Collector startup based on pipeline
 definition in the configuration.
@@ -79,7 +83,7 @@ service:
       exporters: [otlp, zipkin]
 ```
 
-The above example defines a pipeline for the traces type of telemetry data,
+The previous example defines a pipeline for the traces type of telemetry data,
 with three receivers, two processors, and three exporters.
 
 For details of config file format see
@@ -91,7 +95,7 @@ Receivers typically listen on a network port and receive telemetry data. Usually
 one receiver is configured to send received data to one pipeline. However, it is
 also possible to configure the same receiver to send the same received data to
 multiple pipelines. This can be done by listing the same receiver in the
-“receivers” key of several pipelines:
+`receivers` key of several pipelines:
 
 ```yaml
 receivers:
@@ -258,7 +262,7 @@ flowchart LR
 ```
 
 Note that each `batch` processor is an independent instance, although they are
-configured the same way with a `send_batch_size` of 10000.
+configured the same way with a `send_batch_size` of `10000`.
 
 > The same name of the processor must not be referenced multiple times in the
 > `processors` key of a single pipeline.
@@ -268,7 +272,7 @@ configured the same way with a `send_batch_size` of 10000.
 On a typical VM/container, user applications are running in some processes/pods
 with OpenTelemetry Library (Library). Previously, Library did all the recording,
 collecting, sampling, and aggregation of traces, metrics, and logs, and then
-either exported the data to other persistent storage backends via the Library
+either exported the data to other persistent storage backends through the Library
 exporters, or displayed it on local zpages. This pattern has several drawbacks,
 for example:
 
