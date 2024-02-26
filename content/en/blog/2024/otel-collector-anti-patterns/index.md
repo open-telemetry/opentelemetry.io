@@ -162,7 +162,7 @@ the Collector components that you need, again reducing overall bloat.
 _Bottom line:_ Using the right distribution reduces bloat and allows you to
 include only the Collector components that you need.
 
-### 5- Out-of-date Collectors
+### 5- Not updating your Collectors
 
 This one’s short and sweet. Keeping software up-to-date is important, and the
 Collector is no different! By regularly updating the Collector, it allows you to
