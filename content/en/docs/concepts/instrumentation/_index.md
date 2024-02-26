@@ -37,10 +37,9 @@ benefits:
   platforms.
 
 As a [developer](/docs/getting-started/dev/) you can code against the
-OpenTelemetry API to enrich your application or library manually for
-more granular observability. For that, you only need to instrument your
-code, as your dependencies can either integrate OpenTelemetry directly,
-or you can leverage
+OpenTelemetry API to enrich your application or library manually for more
+granular observability. For that, you only need to instrument your code, as your
+dependencies can either integrate OpenTelemetry directly, or you can leverage
 [Instrumentation Libraries](/docs/specs/otel/overview/#instrumentation-libraries)
 for those without such an integration.
 
