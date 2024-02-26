@@ -68,7 +68,7 @@ flexibility for managing your telemetry data.
 
 ### 2- Improper use of Collector deployment modes
 
-It’s not just enough to use a Collector. It’s also about HOW your Collectors are
+It’s not just enough to use a Collector. It’s also about _how_ your Collectors are
 deployed within your organization. That’s right - Collector*s*, plural. Because
 one is often not enough.
 
