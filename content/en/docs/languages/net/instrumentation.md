@@ -281,6 +281,13 @@ var activity = Activity.Current;
 Note that `using` is not used in the prior example. Doing so will end current
 `Activity`, which is not likely to be desired.
 
+Alternatively you can use the `Tracer` class to obtain the current `TelemetrySpan` to stay within the OpenTelemetry namespace.
+
+```csharp
+var span = Tracer.CurrentSpan;
+// may be null if there is none
+```
+
 ### Add tags to an Activity
 
 Tags (the equivalent of
