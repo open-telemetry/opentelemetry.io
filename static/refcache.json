@@ -451,6 +451,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:15:04.197679-05:00"
   },
+  "https://community.cncf.io/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-22T16:34:09.566865309Z"
+  },
   "https://community.cncf.io/end-user-community/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:05:22.999299-05:00"
@@ -902,6 +906,10 @@
   "https://docs.datadoghq.com/tracing/setup_overview/open_standards": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:51:43.401-05:00"
+  },
+  "https://docs.datalust.co/docs/opentelemetry-net-sdk-1": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-23T02:40:23.765546988Z"
   },
   "https://docs.datastax.com/en/cassandra-oss/3.0/cassandra/dml/dmlConfigConsistency.html": {
     "StatusCode": 206,
@@ -3247,6 +3255,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:55:35.674322-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/7413": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-22T15:50:20.20139382Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:11.140445-05:00"
@@ -5166,6 +5178,10 @@
   "https://observiq.com/blog/what-are-connectors-in-opentelemetry/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:06:02.410999-05:00"
+  },
+  "https://oneuptime.com/product/apm": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-24T22:10:38.147777993Z"
   },
   "https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/": {
     "StatusCode": 206,
