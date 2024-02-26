@@ -18,13 +18,16 @@ a set of checks are executed. The PR checks verify that...
 
 {{% alert title="Note" color="primary" %}}
 
-If any of the PR checks fails, try to
+If any of the PR checks fails, please try to
 [fix content issues automatically](/docs/contributing/#fix-content-issues-automatically)
-by running `npm run test-and-fix` on your machine.
+first by running `npm run test-and-fix` on your machine.
 
 Additionally, you can comment `/fix:all` on your Pull Request. This will make
 the OpenTelemetry Bot run those commands on your behalf and update the PR. Make
 sure that you pull those changes locally.
+
+Only if your issues persist, read below what the different checks do and how you
+can recover from a failed state.
 
 {{% /alert %}}
 
