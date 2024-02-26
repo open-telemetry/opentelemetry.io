@@ -143,7 +143,7 @@ is too bare-bones and wouldn’t suit an organization’s needs. Many OpenTeleme
 practitioners, however, deploy Contrib in their respective organizations. But
 Contrib has many components, and you likely won’t need every single exporter,
 receiver, processor, connector, and extension. That would be overkill, and your
-Collector instance ends up needlessly bloated.
+Collector instance ends up needlessly bloated, potentially increasing the attack surface.
 
 But how do you pick and choose the components that you need? The answer is to
 build your own distribution, and you can do that using a tool called the
