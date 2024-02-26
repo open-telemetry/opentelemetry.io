@@ -66,7 +66,7 @@ Check out some additional Collector benefits:
 _Bottom line:_ Using the OpenTelemetry Collector gives you additional
 flexibility for managing your telemetry data.
 
-### 2- Improper use of Collector Deployment Modes
+### 2- Improper use of Collector deployment modes
 
 It’s not just enough to use a Collector. It’s also about HOW your Collectors are
 deployed within your organization. That’s right - Collector*s*, plural. Because
