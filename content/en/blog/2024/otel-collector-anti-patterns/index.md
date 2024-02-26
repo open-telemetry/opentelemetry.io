@@ -1,6 +1,6 @@
 ---
-title: OpenTelemetry Collector Anti-Patterns
-linkTitle: OTel Collector Anti-Patterns
+title: OpenTelemetry Collector Antipatterns
+linkTitle: OTel Collector Antipatterns
 date: 2024-02-23
 author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep),
@@ -20,9 +20,9 @@ to like?
 
 Unfortunately, as it happens with many tools out there, it is also very easy to
 fall into some bad habits. Today, I will dig into five OpenTelemetry Collector
-anti-patterns, and how to avoid them. Let’s get started!
+antipatterns, and how to avoid them. Let’s get started!
 
-## Anti-Patterns
+## Antipatterns
 
 ### 1- Improper use of Collector deployment modes
 
