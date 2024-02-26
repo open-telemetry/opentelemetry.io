@@ -1,0 +1,26 @@
+title: .NET Integration for Sentry (C#, F#)
+registryType: utilities
+language: dotnet
+tags:
+  - c#
+  - f#
+  - .net
+  - processor
+  - propagator
+  - utilities
+  - sentry
+  - error monitoring
+license: MIT
+description:
+  The Sentry OpenTelemetry .NET integration provides a processor and propagator to send data 
+  to Sentry and associate traces spans with Sentry errors. It also includes experimental 
+  support to forward OpenTelemetry metrics to Sentry.   
+  
+  For configuration details, see [OpenTelemetry
+  Support](https://docs.sentry.io/platforms/dotnet/performance/instrumentation/opentelemetry/).
+authors:
+  - name: Sentry authors
+    email: otel@sentry.io
+urls:
+  repo: https://github.com/getsentry/sentry-dotnet/tree/main/src/Sentry.OpenTelemetry
+createdAt: 2023-02-26
