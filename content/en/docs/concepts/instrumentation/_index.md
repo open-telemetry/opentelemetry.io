@@ -15,8 +15,8 @@ OpenTelemetry has two primary ways to instrument.
 
 1. [Code-based solutions](/docs/concepts/instrumentation/code-based) via
    official APIs and SDKs for eleven languages.
-2. [Zero-code solutions](/docs/concepts/instrumentation/zero-code/) that,
-   when installed, instrument libraries you use.
+2. [Zero-code solutions](/docs/concepts/instrumentation/zero-code/) that, when
+   installed, instrument libraries you use.
 
 Code-based solutions allow you to get rich telemetry from your application
 itself. They let you use the OpenTelemetry API to generate telemetry from your
