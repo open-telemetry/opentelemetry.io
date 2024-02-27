@@ -2,6 +2,7 @@
 title: Telemetry Features
 linkTitle: Telemetry Features
 aliases: [demo_features, features]
+cSpell:ignore: flagd
 ---
 
 ## OpenTelemetry

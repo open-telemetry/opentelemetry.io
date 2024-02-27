@@ -1,7 +1,7 @@
 ---
 title: Feature Flags
 aliases: [feature_flags]
-cSpell:ignore: OLJCESPC7Z
+cSpell:ignore: flagd OLJCESPC7Z
 ---
 
 The demo provides several feature flags that you can use to simulate different
