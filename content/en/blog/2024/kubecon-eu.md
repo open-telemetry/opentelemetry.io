@@ -97,7 +97,7 @@ Drop by and say _"Hi!"_ at OpenTelemetry Observatory presented by Splunk in the
 Expo Hall. This will be a place for informal chats, meetups, and other
 discussions led by OpenTelemetry community members and maintainers. If you’d
 like to participate and lead a discussion or short presentation, please reach
-out to the OpenTelemetry End User Working Group to indicate your interest.
+out to the [OpenTelemetry End User Working Group](https://cloud-native.slack.com/archives/C01RT3MSWGZ) to indicate your interest.
 
 You can help us improve the project by sharing your thoughts and feedback about
 your OpenTelemetry adoption, implementation, and usage. We will create action
