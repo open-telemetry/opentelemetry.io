@@ -13,9 +13,9 @@ from the system's components must emit [traces](/docs/concepts/signals/traces/),
 
 OpenTelemetry has two primary ways to instrument.
 
-1. [Code-based solutions](<(/docs/concepts/instrumentation/code-based)>) via
+1. [Code-based solutions](/docs/concepts/instrumentation/code-based) via
    official APIs and SDKs for eleven languages.
-2. [Zero-code solutions](<(/docs/concepts/instrumentation/zero-code/)>) that,
+2. [Zero-code solutions](/docs/concepts/instrumentation/zero-code/) that,
    when installed, instrument libraries you use.
 
 Code-based solutions allow you to get rich telemetry from your application
@@ -47,7 +47,7 @@ solutions. The following things are also a part of OpenTelemetry:
 - [Resources](/docs/concepts/resources) and
   [Instrumentation Scopes](/docs/concepts/instrumentation-scope) allow grouping
   of signals, by different entities, like, the
-  [host](docs/specs/semconv/resource/host/),
+  [host](/docs/specs/semconv/resource/host/),
   [operating system](/docs/specs/semconv/resource/os/) or
   [K8s cluster](/docs/specs/semconv/resource/k8s/#cluster)
 - Each language-specific implementation of the API and SDK follows the
