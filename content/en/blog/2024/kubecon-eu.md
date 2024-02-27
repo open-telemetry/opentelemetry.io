@@ -95,14 +95,30 @@ you will be able to follow **Observability Day** through a live stream.
 
 Drop by and say _"Hi!"_ at OpenTelemetry Observatory presented by Splunk in the
 Expo Hall. This will be a place for informal chats, meetups, and other
-discussions led by OpenTelemetry community members and maintainers. If you’d
-like to participate and lead a discussion or short presentation, please reach
+discussions led by OpenTelemetry community members and maintainers. Check out the schedule of activities [here](https://shorturl.at/qEUX1). 
+
+If you’d
+like to participate and lead a discussion or short presentation, 
 out to the [OpenTelemetry End User Working Group](https://cloud-native.slack.com/archives/C01RT3MSWGZ) to indicate your interest.
 
 You can help us improve the project by sharing your thoughts and feedback about
-your OpenTelemetry adoption, implementation, and usage. We will create action
+your OpenTelemetry adoption, implementation, and usage. 
+
+To join a feedback session, book online below:
+
+* [End User Feedback Sessions 1](https://calendly.com/otel-euwg/end-user-feedback-sessions-1?month=2024-03)
+* [End User Feedback Sessions 2](https://calendly.com/otel-euwg/end-user-feedback-sessions-2?month=2024-03)
+* [End User Feedback Sessions 3](https://calendly.com/otel-euwg/end-user-feedback-sessions-3?month=2024-03)
+* [End User Feedback Sessions 4](https://calendly.com/otel-euwg/end-user-feedback-sessions-4?month=2024-03)
+* [End User Feedback Sessions 5](https://calendly.com/otel-euwg/end-user-feedback-sessions-5?month=2024-03)
+
+A maximum of 5 participants will join one SIG maintainer to provide feedback for that SIG. Sessions will be recorded and posted on the [OTel YouTube channel](https://youtube.com/@otel-official). The final SIG list is still TBD, so check back here often!
+
+We will create action
 items from your comments as appropriate. Check [#otel-user-research][] in CNCF's
 Slack instance for results and action item updates to come after KubeCon EU.
+
+Back by popular demand! We'll be recording [Humans of OTel interviews](/blog/2023/humans-of-otel/) at the OTel Observatory. If you'd like to share your experiences as an OpenTelemetry practitioner or maintainer, sign up for an interview session [here](https://calendly.com/otel-euwg/humans-of-otel).
 
 Come join us to listen, learn, and get involved in OpenTelemetry.
 
