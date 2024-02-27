@@ -39,15 +39,11 @@ python3 -m venv venv
 source ./venv/bin/activate
 ```
 
-Now install Flask and Werkzeug:
+Now install Flask:
 
 ```shell
-pip install 'flask<3' 'werkzeug<3'
+pip install flask
 ```
-
-> **Note**: OpenTelemetry Python automatic instrumentation does not support
-> Flask or Werkzeug 3.0+ at this time. See the troubleshooting section
-> [No Data When Using Flask](/docs/languages/python/automatic#no-data-when-using-flask)
 
 ### Create and launch an HTTP Server
 
