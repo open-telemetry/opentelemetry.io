@@ -313,15 +313,15 @@ flowchart LR
         subgraph Next ["#nbsp;"]
         end
         subgraph Middle ["#nbsp;"]
-        subgraph VM 
+        subgraph VM [VM]
             PR["Process [Library]"] -->|Push sample spans, metrics| AB[Agent Binary]
             AB -->|Push configs| PR
         end
-        subgraph K8s Pod
+        subgraph K8s-pod [K8s Pod]
             AC["`App Container [Library]`"] --> AS[Agent Sidecar]
             AS --> AC
         end
-        subgraph K8s Node
+        subgraph K8s-node [K8s Node]
             subgraph Pod1 [Pod]
                 APP1[App] ~~~ APP2[App]
             end
@@ -346,6 +346,11 @@ flowchart LR
             AD --> JA
         end
     end
+
+class TOP,Next,Middle noLines;
+class VM,K8s-pod,K8s-node,Pod1,Pod2,Pod3,Backends withLines;
+classDef noLines fill:#fff,stroke:#fff,stroke-width:4px;
+classDef withLines fill:#fff,stroke:#4f62ad
 ```
 
 > For developers and maintainers of other libraries: By adding specific
