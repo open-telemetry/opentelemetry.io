@@ -318,8 +318,7 @@ EOF
 ```
 
 > **Note**: OpenTelemetry Python automatic instrumentation does not support
-> Flask or Werkzeug 3.0+ at this time. See the troubleshooting section
-> [No Data When Using Flask](/docs/languages/python/automatic#no-data-when-using-flask)
+> Flask or Werkzeug 3.0+ at this time.
 
 By default, the `Instrumentation` resource that auto-instruments Python services
 uses `otlp` with the `http/protobuf` protocol (gRPC is not supported at this
