@@ -223,6 +223,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:06:13.062554-05:00"
   },
+  "https://charity.wtf/2019/09/20/love-and-alerting-in-the-time-of-cholera-and-observability/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-26T10:53:38.116124+01:00"
+  },
   "https://circleci.com": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T05:18:29.78394-05:00"
@@ -2295,6 +2299,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-25T10:54:57.162378745Z"
   },
+  "https://github.com/dominicfraser": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-26T10:53:39.237712+01:00"
+  },
   "https://github.com/dotansimha/graphql-yoga": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:34.524624-05:00"
@@ -2478,6 +2486,10 @@
   "https://github.com/jmacd": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:54.527183-05:00"
+  },
+  "https://github.com/jordibisbal8": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-26T10:53:37.290066+01:00"
   },
   "https://github.com/joshleecreates/": {
     "StatusCode": 200,
@@ -3014,6 +3026,10 @@
   "https://github.com/open-telemetry/opentelemetry-demo/issues/873": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:05:58.807859-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/pull/1345": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-26T10:53:40.03196+01:00"
   },
   "https://github.com/open-telemetry/opentelemetry-demo/pull/432": {
     "StatusCode": 200,
@@ -4854,6 +4870,10 @@
   "https://mypy.readthedocs.io/en/stable/command_line.html#cmdoption-mypy-namespace-packages": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:19.249572-05:00"
+  },
+  "https://newrelic.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-26T10:53:38.368111+01:00"
   },
   "https://newrelic.com/blog/authors/daniel-kim": {
     "StatusCode": 206,
@@ -7055,6 +7075,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T15:25:13.019086-05:00"
   },
+  "https://sre.google/books/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-26T10:53:38.643051+01:00"
+  },
   "https://stackoverflow.com/questions/5626193/what-is-monkey-patching": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:07:28.672979-05:00"
@@ -8206,6 +8230,10 @@
   "https://www.shopify.com/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:01:24.01921-05:00"
+  },
+  "https://www.skyscanner.net": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-26T10:53:37.476242+01:00"
   },
   "https://www.slideshare.net/Altinity/osa-con-2022-signal-correlation-the-ho11y-grail-michael-hausenblas-awspdf": {
     "StatusCode": 206,

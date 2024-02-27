@@ -101,12 +101,8 @@ which provides several commands that help automatically instrument a program.
 
 ```sh
 pip install opentelemetry-distro
-pip install 'flask<3' 'werkzeug<3' requests
+pip install flask requests
 ```
-
-> **Note**: OpenTelemetry Python automatic instrumentation does not support
-> Flask or Werkzeug 3.0+ at this time. See the troubleshooting section
-> [No Data When Using Flask](/docs/languages/python/automatic#no-data-when-using-flask)
 
 Run the `opentelemetry-bootstrap` command:
 
