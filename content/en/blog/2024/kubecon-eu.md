@@ -42,7 +42,7 @@ it again right before KubeCon!
 
 ## Co-located Events
 
-[Observability Day][] _fosters collaboration, discussion, and knowledge sharing
+_[Observability Day][] fosters collaboration, discussion, and knowledge sharing
 of cloud-native observability projects_. This event will be held on March 19,
 2024 from 9:00 - 17:35. There will be several sessions on OpenTelemetry as well:
 
