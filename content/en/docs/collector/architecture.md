@@ -123,10 +123,19 @@ In the above example, `otlp` receiver will send the same data to pipeline
 > defined in
 > [this document](https://docs.google.com/document/d/1NeheFG7DmcUYo_h2vLtNRlia9x5wOJMlV4QKEK05FhQ/edit#)).
 
-When the Collector loads this config, the result will look like this diagram
+When the Collector loads this config, the result looks like this diagram
 (part of processors and exporters are omitted for brevity):
 
-<!--TODO: Add Receivers image via Mermaid.-->
+```mermaid
+flowchart LR
+    R1("`#quot;opentelemetry-collector#quot; Receiver`") --> FO((fan-out))
+    FO -->|Pipeline 'traces'| P1["`#quot;memory_limiter#quot; Processor`"]
+    FO -->|Pipeline 'traces/2'| P2["`#quot;tags#quot; Processor`"]
+    P1 ~~~ M1[...]
+    P2 ~~~ M2[...]
+
+    classDef default fill:#e3e8fc,stroke:#4f62ad;
+```
 
 {{% alert title="Important" color="warning" %}}
 
