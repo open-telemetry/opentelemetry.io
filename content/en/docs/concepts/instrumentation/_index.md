@@ -31,7 +31,7 @@ the edges_ of your application.
 
 It's generally recommended that you use both solutions when you can.
 
-## Additional OpenTelemetry Benenfits
+## Additional OpenTelemetry Benefits
 
 OpenTelemetry provides more than just zero-code and code-based telemetry
 solutions. The following things are also a part of OpenTelemetry:
