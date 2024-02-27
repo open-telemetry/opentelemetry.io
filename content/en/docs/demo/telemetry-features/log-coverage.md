@@ -12,7 +12,6 @@ aliases: [log_service_features, logging-features, ../logging-features]
 | Checkout        | Go              | 🚧        |
 | Currency        | C++             | 🚧        |
 | Email           | Ruby            | 🚧        |
-| Feature Flag    | Erlang / Elixir | 🚧        |
 | Fraud Detection | Kotlin          | ✅        |
 | Frontend        | TypeScript      | 🚧        |
 | Payment         | JavaScript      | 🚧        |

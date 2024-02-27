@@ -12,7 +12,6 @@ aliases: [trace_service_features, trace-features, ../trace-features]
 | Checkout           | Go              | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | ✅                 |
 | Currency           | C++             | 🔕                        | ✅                   | ✅                   | ✅                      | 🔕         | 🔕      | 🚧                 |
 | Email              | Ruby            | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
-| Feature Flag       | Erlang / Elixir | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
 | Fraud Detection    | Kotlin          | ✅                        | 🚧                   | 🚧                   | 🚧                      | 🚧         | 🚧      | 🚧                 |
 | Frontend           | JavaScript      | ✅                        | ✅                   | ✅                   | 🔕                      | ✅         | ✅      | ✅                 |
 | Payment            | JavaScript      | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | ✅      | ✅                 |

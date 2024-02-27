@@ -12,7 +12,6 @@ aliases: [metric_service_features, metric-features, ../metric-features]
 | Checkout        | Go              | ✅                   | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
 | Currency        | C++             | 🔕                   | ✅                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
 | Email           | Ruby            | 🚧                   | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
-| Feature Flag    | Erlang / Elixir | 🚧                   | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
 | Fraud Detection | Kotlin          | ✅                   | 🚧                     | 🚧                   | 🚧    | 🚧                | ✅                 | 🚧        |
 | Frontend        | TypeScript      | 🚧                   | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
 | Payment         | JavaScript      | 🚧                   | ✅                     | 🚧                   | 🚧    | 🚧                | ✅                 | 🚧        |

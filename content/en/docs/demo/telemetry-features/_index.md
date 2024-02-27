@@ -51,3 +51,7 @@ aliases: [demo_features, features]
   flag service.
 - **[Locust](https://locust.io)**: a background job that creates realistic usage
   patterns on the website using a synthetic load generator.
+- **[OpenFeature](https://openfeature.io)**: a feature flagging API and SDK that
+  allows for the enabling and disabling of features in the application.
+- **[flagd](https://github.com/open-feature/flagd)**: a feature flagging daemon
+  that is used to manage feature flags in the demo application.

@@ -27,7 +27,6 @@ here.
 | ------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | .NET          |                                                    | [Cart Service](services/cart/)                                                                                                           | [Cart Service](services/cart/)                                                               |
 | C++           |                                                    |                                                                                                                                          | [Currency Service](services/currency/)                                                       |
-| Erlang/Elixir |                                                    | [Feature Flag Service](services/feature-flag/)                                                                                           | [Feature Flag Service](services/feature-flag/)                                               |
 | Go            |                                                    | [Accounting Service](services/accounting/), [Checkout Service](services/checkout/), [Product Catalog Service](services/product-catalog/) | [Checkout Service](services/checkout/), [Product Catalog Service](services/product-catalog/) |
 | Java          | [Ad Service](services/ad/)                         |                                                                                                                                          | [Ad Service](services/ad/)                                                                   |
 | JavaScript    |                                                    | [Frontend](services/frontend/)                                                                                                           | [Frontend](services/frontend/), [Payment Service](services/payment/)                         |
@@ -46,7 +45,6 @@ found here:
 - [Cart Service](services/cart/)
 - [Checkout Service](services/checkout/)
 - [Email Service](services/email/)
-- [Feature Flag Service](services/feature-flag/)
 - [Frontend](services/frontend/)
 - [Load Generator](services/load-generator/)
 - [Payment Service](services/payment/)
