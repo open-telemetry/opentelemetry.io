@@ -123,8 +123,8 @@ In the above example, `otlp` receiver will send the same data to pipeline
 > defined in
 > [this document](https://docs.google.com/document/d/1NeheFG7DmcUYo_h2vLtNRlia9x5wOJMlV4QKEK05FhQ/edit#)).
 
-When the Collector loads this config, the result looks like this diagram
-(part of processors and exporters are omitted for brevity):
+When the Collector loads this config, the result looks like this diagram (part
+of processors and exporters are omitted for brevity):
 
 ```mermaid
 flowchart LR
@@ -307,7 +307,46 @@ sampling probability) to the library. For those languages that cannot do stats
 aggregation in process, they can send raw measurements and have the agent do the
 aggregation.
 
-<!--TODO: Add Agent image via Mermaid.-->
+```mermaid
+flowchart LR
+    subgraph TOP ["#nbsp;"]
+        subgraph Next ["#nbsp;"]
+        end
+        subgraph Middle ["#nbsp;"]
+        subgraph VM 
+            PR["Process [Library]"] -->|Push sample spans, metrics| AB[Agent Binary]
+            AB -->|Push configs| PR
+        end
+        subgraph K8s Pod
+            AC["`App Container [Library]`"] --> AS[Agent Sidecar]
+            AS --> AC
+        end
+        subgraph K8s Node
+            subgraph Pod1 [Pod]
+                APP1[App] ~~~ APP2[App]
+            end
+            subgraph Pod2 [Pod]
+                APP3[App] ~~~ APP4[App]
+            end
+            subgraph Pod3 [Pod]
+                APP5[App] ~~~ APP6[App]
+            end
+            subgraph AD [Agent Daemonset]
+            end
+            APP1 --> AD
+            APP2 --> AD
+            APP4 --> AD
+            APP6 --> AD
+        end
+        end
+        subgraph Backends ["#nbsp;"]
+            AB --> BE[Backend]
+            AS --> PRO[Prometheus Backend]
+            AS --> JA[Jaeger Backend]
+            AD --> JA
+        end
+    end
+```
 
 > For developers and maintainers of other libraries: By adding specific
 > receivers, you can configure an agent to accept traces, metrics, and logs from
