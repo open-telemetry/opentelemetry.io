@@ -93,6 +93,9 @@ You need an _in-person all-access_ pass for on-site access to **Observability
 Day**. For details, see [KubeCon registration][]. If you have a virtual ticket,
 you will be able to follow **Observability Day** through a live stream.
 
+[kubecon registration]:
+  https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/
+
 {{% /alert %}}
 
 ## OpenTelemetry Observatory
@@ -142,5 +145,3 @@ See you in Paris!
   https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/
 [Observability Day]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/observability-day/
-[kubecon registration]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/
