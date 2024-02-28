@@ -368,7 +368,64 @@ in one of the supported protocols. The Collector is configured to send data to
 the configured exporter(s). The following figure summarizes the deployment
 architecture:
 
-<!--TODO: Add Service image via Mermaid.-->
+```mermaid
+flowchart LR
+    subgraph S1 ["#nbsp;"]
+        subgraph S2 ["#nbsp;"]
+        subgraph S3 ["#nbsp;"]
+        subgraph VM [VM]
+            PR["Process [Library]"]
+        end
+        subgraph K8s-pod [K8s Pod]
+            AC["`App Container [Library]`"]
+        end
+        subgraph K8s-node [K8s Node]
+            subgraph Pod1 [Pod]
+                APP1[App] ~~~ APP2[App]
+            end
+            subgraph Pod2 [Pod]
+                APP3[App] ~~~ APP4[App]
+            end
+            subgraph Pod3 [Pod]
+                APP5[App] ~~~ APP6[App]
+            end
+            subgraph AD [Agent Daemonset]
+            end
+            APP1 --> AD
+            APP2 --> AD
+            APP4 --> AD
+            APP6 --> AD
+        end
+        end
+        subgraph S4 ["#nbsp;"]
+            PR --> OTEL["`OpenTelemetry Collector Service`"]
+            AC --> OTEL
+            AD --> OTEL
+            OTEL ---> BE[Backend X]
+        end
+        end
+        subgraph S5 ["#nbsp;"]
+        subgraph S6 ["#nbsp;"]
+            JA[Jaeger Backend]
+        end
+        subgraph S7 ["#nbsp;"]
+            PRM[Prometheus Backend]
+        end
+        end
+        JA ~~~ PRM
+        OTEL --> JA
+        OTEL --> PRM
+    end
+
+class S1,S3,S4,S5,S6,S7,S8 noLines;
+class VM,K8s-pod,K8s-node,Pod1,Pod2,Pod3 withLines;
+class S2 lightLines
+class PR,AC,APP1,APP2,APP3,APP4,APP5,APP6,AD,OTEL,BE,JA,PRM nodeStyle
+classDef noLines fill:#fff,stroke:#fff,stroke-width:4px;
+classDef withLines fill:#fff,stroke:#4f62ad
+classDef lightLines fill:#fff,stroke:#acaeb0
+classDef nodeStyle fill:#e3e8fc,stroke:#4f62ad;
+```
 
 The OpenTelemetry Collector can also be deployed in other configurations, such
 as receiving data from other agents or clients in one of the formats supported
