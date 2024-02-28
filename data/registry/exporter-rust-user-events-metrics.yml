@@ -1,4 +1,4 @@
-title: User Events Metrics Exporter
+title: user_events Metrics Exporter
 registryType: exporter
 language: rust
 tags:
@@ -8,8 +8,8 @@ tags:
   - user_events
 license: Apache 2.0 OR MIT
 description:
-  A Rust OpenTelemetry Metric exporter for
-  https://docs.kernel.org/trace/user_events.html
+  A Rust OpenTelemetry Metric exporter for [Linux Kernel
+  user_events](https://docs.kernel.org/trace/user_events.html)
 authors:
   - name: OpenTelemetry Authors
 urls:

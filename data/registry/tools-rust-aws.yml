@@ -1,6 +1,6 @@
 title: AWS Utilities
 registryType: utilities
-description: Utilities related to AWS including XRay Propagators.
+description: Utilities related to AWS including XRay Propagator and IDGenerator.
 language: rust
 tags:
   - rust
