@@ -190,9 +190,9 @@ service:
       exporters: [otlp]
 ```
 
-In the above example, `otlp` exporter gets data from pipeline `traces` and
-from pipeline `traces/2`. When the Collector loads this config, the result looks
-like this diagram (part of processors and receivers are omitted for brevity):
+In the above example, `otlp` exporter gets data from pipeline `traces` and from
+pipeline `traces/2`. When the Collector loads this config, the result looks like
+this diagram (part of processors and receivers are omitted for brevity):
 
 ```mermaid
 flowchart LR
