@@ -109,7 +109,7 @@ service:
     traces: # a pipeline of “traces” type
       receivers: [otlp]
       processors: [memory_limiter, batch]
-      exporters: [jaeger]
+      exporters: [otlp]
     traces/2: # another pipeline of “traces” type
       receivers: [otlp]
       processors: [batch]
@@ -173,7 +173,7 @@ multiple pipelines to send data to the same exporter:
 
 ```yaml
 exporters:
-  jaeger:
+  otlp:
     protocols:
       grpc:
         endpoint: localhost:14250
@@ -183,14 +183,14 @@ service:
     traces: # a pipeline of “traces” type
       receivers: [zipkin]
       processors: [memory_limiter]
-      exporters: [jaeger]
+      exporters: [otlp]
     traces/2: # another pipeline of “traces” type
       receivers: [otlp]
       processors: [batch]
-      exporters: [jaeger]
+      exporters: [otlp]
 ```
 
-In the above example, `jaeger` exporter gets data from pipeline `traces` and
+In the above example, `otlp` exporter gets data from pipeline `traces` and
 from pipeline `traces/2`. When the Collector loads this config, the result looks
 like this diagram (part of processors and receivers are omitted for brevity):
 
@@ -198,8 +198,8 @@ like this diagram (part of processors and receivers are omitted for brevity):
 flowchart LR
     M1[...] ~~~ P1["`#quot;memory_limiter#quot; Processor`"]
     M2[...] ~~~ P2["`#quot;tags#quot; Processor`"]
-    P1 -->|Pipeline 'traces'|E1("`#quot;jaeger#quot; Exporter`")
-    P2 -->|Pipeline 'traces/2'|E1("`#quot;jaeger#quot; Exporter`")
+    P1 -->|Pipeline 'traces'|E1("`#quot;otlp#quot; Exporter`")
+    P2 -->|Pipeline 'traces/2'|E1("`#quot;otlp#quot; Exporter`")
 
     classDef default fill:#e3e8fc,stroke:#4f62ad;
 ```
@@ -239,7 +239,7 @@ service:
     traces: # a pipeline of “traces” type
       receivers: [zipkin]
       processors: [batch]
-      exporters: [jaeger]
+      exporters: [otlp]
     traces/2: # another pipeline of “traces” type
       receivers: [otlp]
       processors: [batch]
@@ -254,7 +254,7 @@ title: Pipeline "traces"
 ---
 flowchart LR
     R1("`zipkin Receiver`") --> P1["`#quot;batch#quot; Processor`"]
-    P1 --> E1[["`#quot;jaeger#quot; Exporter`"]]
+    P1 --> E1[["`#quot;otlp#quot; Exporter`"]]
 
     classDef default fill:#e3e8fc,stroke:#4f62ad;
 ```
