@@ -1131,6 +1131,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:56:07.640917-05:00"
   },
+  "https://docs.kernel.org/trace/user_events.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-28T10:02:41.822426963+01:00"
+  },
   "https://docs.kloudmate.com/using-opentelemetry-collector": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:17.098548-05:00"
@@ -4122,6 +4126,10 @@
   "https://github.com/trask": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:14.368028-05:00"
+  },
+  "https://github.com/trillium-rs/trillium-opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-28T10:02:42.715380297+01:00"
   },
   "https://github.com/tsloughter/grpcbox": {
     "StatusCode": 200,
@@ -7650,6 +7658,10 @@
   "https://www.jaegertracing.io/docs/1.18/client-libraries/#baggage": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:37:16.745648-05:00"
+  },
+  "https://www.jaegertracing.io/docs/1.20/client-libraries/#propagation-format": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-28T10:02:43.157547031+01:00"
   },
   "https://www.jaegertracing.io/docs/1.21/client-libraries/#propagation-format": {
     "StatusCode": 200,
