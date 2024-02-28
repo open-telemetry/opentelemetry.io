@@ -309,10 +309,10 @@ aggregation.
 
 ```mermaid
 flowchart LR
-    subgraph TOP ["#nbsp;"]
-        subgraph Next ["#nbsp;"]
+    subgraph S1 ["#nbsp;"]
+        subgraph S2 ["#nbsp;"]
         end
-        subgraph Middle ["#nbsp;"]
+        subgraph S3 ["#nbsp;"]
         subgraph VM [VM]
             PR["Process [Library]"] -->|Push sample spans, metrics| AB[Agent Binary]
             AB -->|Push configs| PR
@@ -341,16 +341,18 @@ flowchart LR
         end
         subgraph Backends ["#nbsp;"]
             AB --> BE[Backend]
-            AS --> PRO[Prometheus Backend]
+            AS --> PRM[Prometheus Backend]
             AS --> JA[Jaeger Backend]
             AD --> JA
         end
     end
 
-class TOP,Next,Middle noLines;
+class S1,S2,S3 noLines;
 class VM,K8s-pod,K8s-node,Pod1,Pod2,Pod3,Backends withLines;
+class PR,AB,AC,AS,APP1,APP2,APP3,APP4,APP5,APP6,AD,BE,PRM,JA nodeStyle
 classDef noLines fill:#fff,stroke:#fff,stroke-width:4px;
 classDef withLines fill:#fff,stroke:#4f62ad
+classDef nodeStyle fill:#e3e8fc,stroke:#4f62ad;
 ```
 
 > For developers and maintainers of other libraries: By adding specific
