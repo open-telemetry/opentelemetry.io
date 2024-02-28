@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry Collector Antipatterns
 linkTitle: OTel Collector Antipatterns
-date: 2024-02-23
+date: 2024-03-01
 author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep),
 
