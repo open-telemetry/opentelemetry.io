@@ -1,8 +1,9 @@
 ---
-title: Manual
+title: Code-based
 description: >-
-  Learn about the essential steps to manually instrument your application.
+  Learn about the essential steps to instrument your code base.
 weight: 20
+aliases: [manual]
 cSpell:ignore: legitimatebusiness proxying
 ---
 

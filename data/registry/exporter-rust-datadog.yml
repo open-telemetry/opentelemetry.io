@@ -1,0 +1,19 @@
+# cSpell:ignore Datadog
+title: Datadog Exporter
+registryType: exporter
+language: rust
+tags:
+  - rust
+  - exporter
+  - propagators
+license: Apache 2.0
+description: A Rust OpenTelemetry exporter and propagators for Datadog
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-rust-contrib/tree/main/opentelemetry-datadog
+createdAt: 2021-03-24
+package:
+  registry: crates
+  name: opentelemetry-datadog
+  version: 0.10.0

@@ -1,0 +1,23 @@
+title: OpenTelemetry Jaeger context propagation
+registryType: utilities
+language: rust
+tags:
+  - rust
+  - jaeger
+  - utilities
+  - propagator
+license: Apache 2.0
+description: >
+  This library provides support for propagating trace context in the Jaeger
+  https://www.jaegertracing.io/docs/1.20/client-libraries/#propagation-format
+  format.
+
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-rust/tree/main/opentelemetry-jaeger-propagator
+createdAt: 2024-02-25
+package:
+  registry: crates
+  name: opentelemetry-jaeger-propagator
+  version: 0.1.0

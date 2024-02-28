@@ -1,0 +1,18 @@
+# cSpell:ignore Rothstein
+title: Trillium Instrumentation
+registryType: instrumentation
+language: rust
+tags:
+  - rust
+  - instrumentation
+license: Apache 2.0 OR MIT
+description: OpenTelemetry integration for the Trillium web framework.
+authors:
+  - name: Jacob Rothstein
+urls:
+  repo: https://github.com/trillium-rs/trillium-opentelemetry
+createdAt: 2021-04-25
+package:
+  registry: crates
+  name: opentelemetry-trillium-opentelemetry
+  version: 0.2.16
