@@ -93,15 +93,15 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.17",
-    "cspell": "^8.0.0",
+    "cspell": "^8.4.1",
     "gulp": "^4.0.2",
-    "hugo-extended": "0.122.0",
+    "hugo-extended": "0.123.6",
     "markdown-link-check": "^3.11.2",
     "markdownlint": "^0.33.0",
     "postcss-cli": "^11.0.0",
-    "prettier": "^3.0.3",
+    "prettier": "^3.2.5",
     "require-dir": "^1.2.0",
-    "textlint": "^14.0.1",
+    "textlint": "^14.0.3",
     "textlint-filter-rule-allowlist": "^4.0.0",
     "textlint-filter-rule-comments": "^1.2.2",
     "textlint-rule-terminology": "^4.0.1",
@@ -109,20 +109,20 @@
     "yargs": "^17.7.2"
   },
   "dependencies": {
-    "@opentelemetry/api": "^1.3.0",
+    "@opentelemetry/api": "^1.7.0",
     "@opentelemetry/auto-instrumentations-web": "^0.36.0",
-    "@opentelemetry/context-zone": "^1.8.0",
-    "@opentelemetry/core": "^1.8.0",
+    "@opentelemetry/context-zone": "^1.21.0",
+    "@opentelemetry/core": "^1.21.0",
     "@opentelemetry/exporter-trace-otlp-http": "^0.48.0",
     "@opentelemetry/instrumentation": "^0.48.0",
-    "@opentelemetry/resources": "^1.8.0",
-    "@opentelemetry/sdk-trace-base": "^1.8.0",
-    "@opentelemetry/sdk-trace-web": "^1.8.0",
-    "@opentelemetry/semantic-conventions": "^1.8.0",
+    "@opentelemetry/resources": "^1.21.0",
+    "@opentelemetry/sdk-trace-base": "^1.21.0",
+    "@opentelemetry/sdk-trace-web": "^1.21.0",
+    "@opentelemetry/semantic-conventions": "^1.21.0",
     "path": "^0.12.7"
   },
   "optionalDependencies": {
-    "netlify-cli": "^17.16.1"
+    "netlify-cli": "^17.17.1"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "engines": {
