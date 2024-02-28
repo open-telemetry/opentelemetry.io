@@ -1,5 +1,5 @@
 ---
-title: Join us for OpenTelemetry Talks and Activities at KubeCon EU 2024
+title: Join us for OpenTelemetry Talks and Activities at KubeCon + CloudNativeCon Europe 2024
 linkTitle: KubeCon EU '24
 date: 2024-02-28
 # prettier-ignore
@@ -8,7 +8,7 @@ author: '[Severin Neumann](https://github.com/svrnm) (Cisco)'
 ---
 
 The OpenTelemetry project maintainers, members of the governance committee, and
-technical committee are thrilled to be at [KubeCon EU][] in Paris from March
+technical committee are thrilled to be at [KubeCon + CloudNativeCon Europe][] and at the co-located [Observability Day](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/observability-day/) in Paris from March
 19 - 22, 2024.
 
 Read on to learn about all the things related OpenTelemetry during KubeCon.
