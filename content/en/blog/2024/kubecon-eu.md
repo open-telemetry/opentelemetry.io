@@ -22,7 +22,7 @@ it again right before KubeCon!
 
 ## KubeCon Talks and Maintainer Sessions
 
-- **[OpenTelemetry: Project Updates, Next Steps, and AMA](https://sched.co/1R2mK)**<br>
+- **[OpenTelemetry: Project Updates, Next Steps, and AMA](https://sched.co/1Yhf8)**<br>
   by Severin Neumann, Cisco; Austin Parker, Honeycomb; Trask Stalnaker,
   Microsoft; Daniel Gomez Blanco, Skyscanner; Alolita Sharma, Apple<br>
   Wednesday, March 20 • 11:15 - 11:50
