@@ -3,13 +3,12 @@ title: 'Getting Started with otelsql: OpenTelemetry instrumentation for Go SQL'
 linkTitle: Getting Started with otelsql
 date: 2024-02-24
 author: '[Sam Xie](https://github.com/XSAM) (Cisco)'
-draft: true # TODO: remove this line once your post is ready to be published
 ---
 
 [otelsql](https://github.com/XSAM/otelsql) is an instrumentation library for the
 [`database/sql`](https://pkg.go.dev/database/sql) library of Go programming
-language. It generates traces and metrics data while the application interacts
-with the database via `database/sql` library. By that, it allows you to identify
+language. It generates traces and metrics from the application interacting
+with the database via `database/sql`. By that, it allows you to identify
 errors or slowdowns in your SQL queries that potentially impact the performance
 of your application.
 
@@ -17,14 +16,14 @@ This post provides a quick-start guide for using this library.
 
 ## Getting Started
 
-otelsql is basically a wrapper layer for interfaces from `database/sql`. When
+otelsql is a wrapper layer for interfaces from `database/sql`. When
 users use the wrapped database interfaces, the otelsql generates the telemetry
 data and passes operations to the underlying database.
 
 In the following, you are going to use the docker compose to run an
 otel-collector example from the otelsql repository. This example uses a MySQL
 client with the otelsql instrumentation. The telemetry data it generates will
-push to OpenTelemetry Collector, then it shows the trace data on Jaeger and the
+be pushed to the OpenTelemetry Collector, then it shows the trace data on Jaeger and the
 metrics data on the Prometheus server.
 
 Here is the data flow:
@@ -36,8 +35,7 @@ flowchart LR;
     B-->D["Prometheus (metrics)"];
 ```
 
-Let's clone the otelsql repository here and run the example. I will walk you
-through some of the most important lines of code.
+Let's clone the otelsql repository here and run the example and take a look at the most important lines of code.
 
 ```sh
 git clone https://github.com/XSAM/otelsql.git
