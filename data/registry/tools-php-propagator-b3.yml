@@ -9,7 +9,6 @@ tags:
 license: Apache 2.0
 description: >
   This library provides support for propagating trace context in the B3 format.
-
 authors:
   - name: OpenTelemetry Authors
 urls:
