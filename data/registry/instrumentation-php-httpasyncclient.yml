@@ -16,4 +16,4 @@ createdAt: 2023-05-22
 package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-http-async
-  version: 1.0.0beta4
+  version: 1.0.0beta5

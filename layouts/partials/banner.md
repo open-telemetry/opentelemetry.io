@@ -3,7 +3,8 @@
 
 <div class="o-banner">
 
-[Thanks to all the wonderful humans who have contributed to OpenTelemetry to date. We look forward to your contributions in 2024!](/blog/2023/humans-of-otel/)
+<i class="fas fa-bullhorn"></i> Join us at
+[**KubeCon + CloudNativeCon EU**, March 19 - 22, 2024](/blog/2024/kubecon-eu/)!
 
 {{/*
 
