@@ -187,7 +187,7 @@ dotnet add package OpenTelemetry.Instrumentation.AspNetCore
 
 ### Initialize the SDK
 
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library,  you dont need to initialize the SDK. {{% /alert %}}
+{{% alert title="Note" color="info" %}} If you’re instrumenting a library, you dont need to initialize the SDK. {{% /alert %}}
 
 It is important to configure an instance of the OpenTelemetry SDK as early as possible in your application.
 
