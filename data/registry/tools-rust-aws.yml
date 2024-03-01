@@ -1,0 +1,21 @@
+title: AWS Utilities
+registryType: utilities
+description: Utilities related to AWS including XRay Propagator and IDGenerator.
+language: rust
+tags:
+  - rust
+  - utilities
+  - propagator
+  - aws
+  - xray
+license: Apache 2.0
+authors:
+  - name: OpenTelemetry Authors
+
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-rust-contrib/tree/main/opentelemetry-aws
+createdAt: 2021-02-08
+package:
+  registry: crates
+  name: opentelemetry-aws
+  version: 0.10.0

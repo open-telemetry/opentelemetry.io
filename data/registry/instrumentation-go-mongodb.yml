@@ -9,7 +9,7 @@ tags:
 license: Apache 2.0
 description:
   Package mongo-driver provides functions to trace the
-  go.mongodb.org/mongo-driver/mongo(https://github.com/mongodb/mongo-go-driver)
+  [go.mongodb.org/mongo-driver/mongo](https://github.com/mongodb/mongo-go-driver)
   package.
 authors:
   - name: OpenTelemetry Authors

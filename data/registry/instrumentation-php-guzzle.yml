@@ -15,4 +15,4 @@ createdAt: 2024-01-19
 package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-guzzle
-  version: 0.0.1
+  version: 0.0.2
