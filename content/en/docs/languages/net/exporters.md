@@ -95,7 +95,8 @@ builder.Logging
 
 #### Non-ASP.NET Core
 
-Configure the exporter when creating a `TracerProvider`, `MeterProvider` or `LoggerFactory`:
+Configure the exporter when creating a `TracerProvider`, `MeterProvider` or
+`LoggerFactory`:
 
 ```csharp
 using var tracerProvider = Sdk.CreateTracerProviderBuilder()
@@ -135,21 +136,6 @@ using var loggerFactory = LoggerFactory.Create(builder =>
 
 Use environment variables to set values like headers and an endpoint URL for
 production.
-
-#### Note for .NET Core 3.1 and below and gRPC
-
-Note: Versions below .NET 6 are not officially supported by
-opentelemetry-dotnet, therefore this section is here to help, but may not work
-as the library progresses.
-
-If you're not using ASP.NET Core gRPC and you are running on .NET Core 3.x,
-you'll need to add the following at application startup
-
-```csharp
-AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
-```
-
-If you are using .NET 5 or higher, the previous code sample is not required.
 
 ## Console
 
@@ -199,7 +185,8 @@ builder.Logging.AddOpenTelemetry(logging => {
 
 #### Non-ASP.NET Core {#console-usage-non-asp-net-core}
 
-Configure the exporter when creating a `TracerProvider`, `MeterProvider` or `LoggerFactory`:
+Configure the exporter when creating a `TracerProvider`, `MeterProvider` or
+`LoggerFactory`:
 
 ```csharp
 using var tracerProvider = Sdk.CreateTracerProviderBuilder()
@@ -247,7 +234,7 @@ package as well:
 dotnet add package OpenTelemetry.Extensions.Hosting
 ```
 
-### Usage {prometheus-usage}
+### Usage {#prometheus-usage}
 
 #### ASP.NET Core {#prometheus-asp-net-core-usage}
 
@@ -276,6 +263,17 @@ await app.RunAsync();
 ```
 
 #### Non-ASP.NET Core {#prometheus-non-asp-net-core-usage}
+
+{{% alert color="warning" title="Warning" %}}
+
+This component is intended for dev inner-loop, there is no plan to make it
+production ready. Production environments should use
+[`OpenTelemetry.Exporter.Prometheus.AspNetCore`](#prometheus-asp-net-core-usage),
+or a combination of
+[`OpenTelemetry.Exporter.OpenTelemetryProtocol`](#aspnet-core) and
+[OpenTelemetry Collector](/docs/collector).
+
+{{% /alert %}}
 
 For applications not using ASP.NET Core, you can use the `HttpListener` version
 which is available in a
