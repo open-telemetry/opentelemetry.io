@@ -191,6 +191,30 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:01:19.540115-05:00"
   },
+  "https://calendly.com/otel-euwg/end-user-feedback-sessions-1": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-28T09:18:31.915956+01:00"
+  },
+  "https://calendly.com/otel-euwg/end-user-feedback-sessions-2": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-28T09:18:32.268473+01:00"
+  },
+  "https://calendly.com/otel-euwg/end-user-feedback-sessions-3": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-28T09:18:32.716301+01:00"
+  },
+  "https://calendly.com/otel-euwg/end-user-feedback-sessions-4": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-28T09:18:33.226128+01:00"
+  },
+  "https://calendly.com/otel-euwg/end-user-feedback-sessions-5": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-28T09:18:33.630323+01:00"
+  },
+  "https://calendly.com/otel-euwg/humans-of-otel": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-28T09:18:34.021758+01:00"
+  },
   "https://cassandra.apache.org/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:06:04.662731-05:00"
@@ -1107,6 +1131,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:56:07.640917-05:00"
   },
+  "https://docs.kernel.org/trace/user_events.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-28T10:02:41.822426963+01:00"
+  },
   "https://docs.kloudmate.com/using-opentelemetry-collector": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:17.098548-05:00"
@@ -1798,6 +1826,10 @@
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/program/project-engagement/#project-pavilion": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T05:18:17.243575-05:00"
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/program/project-opportunities/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-22T11:59:59.086276+01:00"
   },
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/program/schedule/": {
     "StatusCode": 206,
@@ -4094,6 +4126,10 @@
   "https://github.com/trask": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:14.368028-05:00"
+  },
+  "https://github.com/trillium-rs/trillium-opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-28T10:02:42.715380297+01:00"
   },
   "https://github.com/tsloughter/grpcbox": {
     "StatusCode": 200,
@@ -6915,6 +6951,94 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:54.102881-05:00"
   },
+  "https://sched.co/1YFeM": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-22T11:59:47.30305+01:00"
+  },
+  "https://sched.co/1YFf5": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-22T11:59:56.247347+01:00"
+  },
+  "https://sched.co/1YFfb": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-22T11:59:48.135727+01:00"
+  },
+  "https://sched.co/1YFfe": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-22T11:59:48.869621+01:00"
+  },
+  "https://sched.co/1YFgW": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-22T11:59:49.791379+01:00"
+  },
+  "https://sched.co/1YFhI": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-22T11:59:50.713614+01:00"
+  },
+  "https://sched.co/1YFhh": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-22T11:59:51.51307+01:00"
+  },
+  "https://sched.co/1YFii": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-22T11:59:53.142854+01:00"
+  },
+  "https://sched.co/1YFik": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-22T11:59:52.396065+01:00"
+  },
+  "https://sched.co/1YFin": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-22T11:59:53.865358+01:00"
+  },
+  "https://sched.co/1YFjB": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-22T11:59:54.712596+01:00"
+  },
+  "https://sched.co/1YFjC": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-22T11:59:55.484964+01:00"
+  },
+  "https://sched.co/1YFk3": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-22T11:59:57.130397+01:00"
+  },
+  "https://sched.co/1YFk6": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-22T11:59:57.871734+01:00"
+  },
+  "https://sched.co/1YGT9": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-22T11:59:46.547452+01:00"
+  },
+  "https://sched.co/1YeNV": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-12T15:04:34.101672+01:00"
+  },
+  "https://sched.co/1YeOH": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-12T15:04:34.932711+01:00"
+  },
+  "https://sched.co/1YePA": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-12T15:04:35.781211+01:00"
+  },
+  "https://sched.co/1YePz": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-12T15:04:36.498584+01:00"
+  },
+  "https://sched.co/1YeSC": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-22T11:59:45.670934+01:00"
+  },
+  "https://sched.co/1Yhf8": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-29T19:19:23.057737678Z"
+  },
+  "https://sched.co/1YhfT": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-12T15:04:33.334624+01:00"
+  },
   "https://seecfp.com/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:10:40.056794-05:00"
@@ -6954,6 +7078,10 @@
   "https://shorturl.at/kAEQX": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:19.756188-05:00"
+  },
+  "https://shorturl.at/qEUX1": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-28T09:18:31.267986+01:00"
   },
   "https://signoz.io": {
     "StatusCode": 206,
@@ -7534,6 +7662,10 @@
   "https://www.jaegertracing.io/docs/1.18/client-libraries/#baggage": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:37:16.745648-05:00"
+  },
+  "https://www.jaegertracing.io/docs/1.20/client-libraries/#propagation-format": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-28T10:02:43.157547031+01:00"
   },
   "https://www.jaegertracing.io/docs/1.21/client-libraries/#propagation-format": {
     "StatusCode": 200,
