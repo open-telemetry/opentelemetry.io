@@ -95,7 +95,7 @@ builder.Logging
 
 #### Non-ASP.NET Core
 
-Configure the exporter when creating a tracer provider:
+Configure the exporter when creating a `TracerProvider`, `MeterProvider` or `LoggerFactory`:
 
 ```csharp
 using var tracerProvider = Sdk.CreateTracerProviderBuilder()
@@ -199,7 +199,7 @@ builder.Logging.AddOpenTelemetry(logging => {
 
 #### Non-ASP.NET Core {#console-usage-non-asp-net-core}
 
-Configure the exporter when creating a tracer provider:
+Configure the exporter when creating a `TracerProvider`, `MeterProvider` or `LoggerFactory`:
 
 ```csharp
 using var tracerProvider = Sdk.CreateTracerProviderBuilder()
