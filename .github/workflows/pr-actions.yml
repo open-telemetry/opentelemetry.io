@@ -31,7 +31,7 @@ jobs:
         run: |
           PR_ACTION=$(echo $COMMENT | grep -oP '/fix:\K\w+')
           echo "Action is $PR_ACTION"
-          ACTION_NAMES="format|submodules|refcache|all"
+          ACTION_NAMES=$(grep '"fix:' package.json | gawk -F":" '{ print $2; }' | tr -d '\n' | tr '"' '|')
           if [[ ! "$PR_ACTION" =~ ^($ACTION_NAMES)$ ]]; then
             echo "Invalid action name: $PR_ACTION"
             echo "Action name should be one of: $ACTION_NAMES"
@@ -72,7 +72,7 @@ jobs:
             all|refcache)
               npm install --omit=optional
               ;&
-            format|submodules)
+            *)
               npm run fix:$PR_ACTION
               ;;
           esac
