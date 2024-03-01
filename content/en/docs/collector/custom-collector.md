@@ -223,9 +223,9 @@ Further reading:
 
 [ocb]:
   https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
-
 [releases]:
-https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2F{{%
+  https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2F{{%
+
 version-from-registry collector-builder %}}
 
 [^1]: Prior to v0.86.0 use the `loggingexporter` instead of `debugexporter`.
