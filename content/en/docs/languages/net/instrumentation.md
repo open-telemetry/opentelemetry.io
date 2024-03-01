@@ -50,6 +50,10 @@ library, follow the instructions here to adapt the process to your own code.
 
 ### Create and launch an HTTP Server
 
+To begin, set up an environment in a new directory called `dotnet-otel-example`. Within that directory, execute following command:
+
+```shell
+dotnet new web
 To highlight the difference between instrumenting a library and a standalone
 app, split out the dice rolling into a library file, which then will be
 imported as a dependency by the app file.
@@ -147,6 +151,25 @@ app.MapControllers();
 app.Run();
 ```
 
+In the `Properties` subdirectory, replace the content of `launchSettings.json` with the following:
+
+```json
+{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "http": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "http://localhost:8080",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
+```
+
 To ensure that it is working, run the application with the following command and
 open <http://localhost:8080/rolldice?rolls=12> in your web browser:
 
@@ -187,12 +210,12 @@ dotnet add package OpenTelemetry.Instrumentation.AspNetCore
 
 ### Initialize the SDK
 
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library, you dont need to initialize the SDK. {{% /alert %}}
+{{% alert title="Note" color="info" %}} If you’re instrumenting a library, you don't need to initialize the SDK. {{% /alert %}}
 
 It is important to configure an instance of the OpenTelemetry SDK as early as possible in your application.
 
 To initialize the OpenTelemetry SDK for an ASP.NET Core app like in the case of the example app, 
-replace the content of the program.cs file with the following code: 
+update the content of the `Program.cs` file with the following code: 
 
 ```csharp
 using OpenTelemetry.Logs;
@@ -298,7 +321,7 @@ dotnet run
 
 ### Initialize Tracing
 
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library, you dont need to initialize a TraceProvider. {{% /alert %}}
+{{% alert title="Note" color="info" %}} If you’re instrumenting a library, you don't need to initialize a TraceProvider. {{% /alert %}}
 
 To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need to
 have an initialized
@@ -415,7 +438,7 @@ If you followed the instructions using the [example app](#example-app) up to
 this point, you can copy the code above in your library file `Dice.cs`. You
 should now be able to see activities/spans emitted from your app.
 
-Start your app as follows, and then send it requests by visiting http://localhost:8080/rolldice?rolls=12 with your browser or curl.
+Start your app as follows, and then send it requests by visiting <http://localhost:8080/rolldice?rolls=12> with your browser or curl.
 
 ```sh
 dotnet run
