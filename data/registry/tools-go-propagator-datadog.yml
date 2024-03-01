@@ -9,8 +9,7 @@ tags:
 license: Apache 2.0
 description: >
   This library provides support for propagating trace context in the Datadog
-  X-Datadog-* format.
-
+  `X-Datadog-*` format.
 authors:
   - name: Tony Li
     url: https://github.com/tonglil
