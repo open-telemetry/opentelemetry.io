@@ -5419,10 +5419,6 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:07:12.98586-05:00"
   },
-  "https://opentelemetry.io/docs/specs/otel/protocol": {
-    "StatusCode": 206,
-    "LastSeen": "2024-02-24T14:33:05.630341-08:00"
-  },
   "https://opentelemetry.io/docs/collector": {
     "StatusCode": 206,
     "LastSeen": "2024-02-23T22:55:03.656226-05:00"
@@ -5470,6 +5466,10 @@
   "https://opentelemetry.io/docs/collector/deployment/no-collector/": {
     "StatusCode": 206,
     "LastSeen": "2024-02-23T22:55:04.014798-05:00"
+  },
+  "https://opentelemetry.io/docs/specs/otel/protocol": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-24T14:33:05.630341-08:00"
   },
   "https://opentracing.io": {
     "StatusCode": 206,
