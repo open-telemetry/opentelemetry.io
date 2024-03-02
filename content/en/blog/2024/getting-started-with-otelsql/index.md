@@ -1,18 +1,19 @@
 ---
-title: Getting Started with otelsql, the OpenTelemetry instrumentation for Go SQL
+title:
+  Getting Started with otelsql, the OpenTelemetry instrumentation for Go SQL
 linkTitle: Getting Started with otelsql
 date: 2024-02-24
 author: '[Sam Xie](https://github.com/XSAM) (Cisco)'
 ---
 
 [otelsql](https://github.com/XSAM/otelsql) is an instrumentation library for the
-[`database/sql`](https://pkg.go.dev/database/sql) library for the Go
-programming language. It generates traces and metrics from the application
-when interacting with databases. By doing that, the library allows you to
-identify errors or slowdowns in your SQL queries that potentially impact
-the performance of your application.
+[`database/sql`](https://pkg.go.dev/database/sql) library for the Go programming
+language. It generates traces and metrics from the application when interacting
+with databases. By doing that, the library allows you to identify errors or
+slowdowns in your SQL queries that potentially impact the performance of your
+application.
 
-This post provides a quick-start guide for using this library.
+Let's go dive into how to use this library!
 
 ## Getting Started
 
@@ -134,15 +135,15 @@ services:
 
 This Docker compose file contains five services. The `client` service is the
 MySQL client built from Dockerfile and the source code is main.go in the example
-folder. The `client` service runs after the `mysql` service is up.
-Then, it initializes the OpenTelemetry client and otelsql instrumentation,
-make SQL queries to the `mysql` service, and send metrics and trace data to
+folder. The `client` service runs after the `mysql` service is up. Then, it
+initializes the OpenTelemetry client and otelsql instrumentation, make SQL
+queries to the `mysql` service, and send metrics and trace data to
 `otel-collector` service through the
 [OpenTelemetry Protocol (OTLP)](/docs/specs/otel/protocol/).
 
-After receiving the data, the `otel-collector` service transfers the data
-format and send metrics data to the `prometheus` service, and send trace data to
-the `jaeger` service.
+After receiving the data, the `otel-collector` service transfers the data format
+and send metrics data to the `prometheus` service, and send trace data to the
+`jaeger` service.
 
 Let's check `main.go` to see what happens in the `client` service. Here is the
 main function.
@@ -190,9 +191,9 @@ func main() {
 ```
 
 This `main` function is pretty straightforward. It initializes a connection with
-the `otel-collector` service, which is used by the tracer provider and the
-meter provider. Then, it configures the tracer provider and meter provider with
-the `connection` and a shutdown method, which ensures the telemetry data can be
+the `otel-collector` service, which is used by the tracer provider and the meter
+provider. Then, it configures the tracer provider and meter provider with the
+`connection` and a shutdown method, which ensures the telemetry data can be
 pushed to the `otel-collector` service correctly before exiting the application.
 After finishing setting up the OpenTelemetry client, it invokes the `connectDB`
 method to use the otelsql library to interact with the MySQL database. Let's
@@ -225,22 +226,22 @@ that Go provides, we use
 [`sql.DB`](https://pkg.go.dev/database/sql#DB) instance. The `sql.DB` instance
 returned by `otelsql.Open` is a wrapper that transfers and instruments all DB
 operations to the underlying `sql.DB` instance (created by `sql.Open`). When
-users send SQL queries with this wrapper, `otelsql` can see the queries and
-use the OpenTelemetry client to generate telemetry.
+users send SQL queries with this wrapper, `otelsql` can see the queries and use
+the OpenTelemetry client to generate telemetry.
 
 Besides using `otelsql.Open`, `otelsql` provides three additional ways to
 initialize instrumentation: `otelsql.OpenDB`, `otelsql.Register`, and
 `otelsql.WrapDriver`. These additional methods cover different use cases, as
 some database drivers or frameworks don't provide a direct way to create
-`sql.DB`. Sometimes, you might need these additional methods to manually
-create a `sql.DB` and push it to those database drivers. You can check
+`sql.DB`. Sometimes, you might need these additional methods to manually create
+a `sql.DB` and push it to those database drivers. You can check
 [examples on the otelsql document](https://pkg.go.dev/github.com/XSAM/otelsql#pkg-examples)
 to learn how to use these methods.
 
 Moving on, we use `otelsql.RegisterDBStatsMetrics` to register metrics data from
-`sql.DBStats`. The metrics recording process runs in the background and
-updates the value of the metric when needed after the registration, so we don't
-need to worry about creating an individual thread for this.
+`sql.DBStats`. The metrics recording process runs in the background and updates
+the value of the metric when needed after the registration, so we don't need to
+worry about creating an individual thread for this.
 
 After having an `sql.DB` wrapped by `otelsql`, we can use it to make queries.
 
@@ -283,8 +284,8 @@ This `runSQLQuery` method creates a parent span first (it is an optional step,
 it makes the query spans have a parent, and it looks good on the trace graph),
 then queries the current timestamp from the MySQL database.
 
-After this method, the `client` application finishes and exits. They are
-the most important lines of code for understanding the example.
+After this method, the `client` application finishes and exits. They are the
+most important lines of code for understanding the example.
 
 ## Use the example as a playground
 
@@ -346,16 +347,18 @@ You might worry about the compatibility issue with other databases and other
 third-party database frameworks (like ORMs) and wonder how widely this
 instrumentation can be used.
 
-From an implementation perspective, as long as the database drivers or
-the database frameworks interact with the database (any database, not
-just an SQL database) through `database/sql` with context, `otelsql`
-should work just fine.
+From an implementation perspective, as long as the database drivers or the
+database frameworks interact with the database (any database, not just an SQL
+database) through `database/sql` with context, `otelsql` should work just fine.
 
 This is an
 [example](https://github.com/ent/ent/issues/1232#issuecomment-1200405070) that
 shows how otelsql works with Facebook's entity framework for Go.
 
 ## Other cool features
+
+Now that you've experienced the main feature, let's take some time to explore
+the other cool features `otelsql` provides.
 
 ### Sqlcommenter support
 
