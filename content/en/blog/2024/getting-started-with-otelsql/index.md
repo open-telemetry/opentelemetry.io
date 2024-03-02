@@ -1,16 +1,16 @@
 ---
-title: 'Getting Started with otelsql: OpenTelemetry instrumentation for Go SQL'
+title: 'Getting Started with otelsql, the OpenTelemetry instrumentation for Go SQL'
 linkTitle: Getting Started with otelsql
 date: 2024-02-24
 author: '[Sam Xie](https://github.com/XSAM) (Cisco)'
 ---
 
 [otelsql](https://github.com/XSAM/otelsql) is an instrumentation library for the
-[`database/sql`](https://pkg.go.dev/database/sql) library of Go programming
-language. It generates traces and metrics from the application interacting with
-the database via `database/sql`. By that, it allows you to identify errors or
-slowdowns in your SQL queries that potentially impact the performance of your
-application.
+[`database/sql`](https://pkg.go.dev/database/sql) library for the Go
+programming language. It generates traces and metrics from the application
+when interacting with databases. By doing that, the library allows you to
+identify errors or slowdowns in your SQL queries that potentially impact
+the performance of your application.
 
 This post provides a quick-start guide for using this library.
 
@@ -20,12 +20,12 @@ otelsql is a wrapper layer for interfaces from `database/sql`. When users use
 the wrapped database interfaces, the otelsql generates the telemetry data and
 passes operations to the underlying database.
 
-In the following, you are going to use
+In the following example, you are going to use
 [Docker Compose](https://docs.docker.com/compose/) to run the otel-collector
 example from the otelsql repository. This example uses a MySQL client with the
-otelsql instrumentation. The telemetry data it generates will be pushed to the
-OpenTelemetry Collector, then it shows the trace data on Jaeger and the metrics
-data on the Prometheus server.
+otelsql instrumentation. The telemetry it generates will be pushed to the
+OpenTelemetry Collector. Then, it shows the trace data on Jaeger and the metrics
+data on a Prometheus server.
 
 Here is the data flow:
 
@@ -132,15 +132,15 @@ services:
         condition: service_healthy
 ```
 
-This docker compose file contains five services. The `client` service is the
+This Docker compose file contains five services. The `client` service is the
 MySQL client built from Dockerfile and the source code is main.go in the example
-folder. The `client` service will run after the `mysql` service is up and run,
-Then, it will initialize the OpenTelemetry client and otelsql instrumentation,
+folder. The `client` service runs after the `mysql` service is up.
+Then, it initializes the OpenTelemetry client and otelsql instrumentation,
 make SQL queries to the `mysql` service, and send metrics and trace data to
-`otel-collector` service via
+`otel-collector` service through the
 [OpenTelemetry Protocol (OTLP)](/docs/specs/otel/protocol/).
 
-After receiving the data, the `otel-collector` service will transfer the data
+After receiving the data, the `otel-collector` service transfers the data
 format and send metrics data to the `prometheus` service, and send trace data to
 the `jaeger` service.
 
@@ -190,7 +190,7 @@ func main() {
 ```
 
 This `main` function is pretty straightforward. It initializes a connection with
-the `otel-collector` service, which will be used by the tracer provider and the
+the `otel-collector` service, which is used by the tracer provider and the
 meter provider. Then, it configures the tracer provider and meter provider with
 the `connection` and a shutdown method, which ensures the telemetry data can be
 pushed to the `otel-collector` service correctly before exiting the application.
@@ -219,27 +219,27 @@ func connectDB() *sql.DB {
 }
 ```
 
-Instead of using [`sql.Open`](https://pkg.go.dev/database/sql#Open) method that
-Go offers, we use
-[`otelsql.Open`](https://pkg.go.dev/github.com/XSAM/otelsql#Open) to making an
+Instead of using the [`sql.Open`](https://pkg.go.dev/database/sql#Open) method
+that Go provides, we use
+[`otelsql.Open`](https://pkg.go.dev/github.com/XSAM/otelsql#Open) to create an
 [`sql.DB`](https://pkg.go.dev/database/sql#DB) instance. The `sql.DB` instance
 returned by `otelsql.Open` is a wrapper that transfers and instruments all DB
 operations to the underlying `sql.DB` instance (created by `sql.Open`). When
-users send SQL queries with this wrapper, the `otelsql` can know the queries and
-use the OpenTelemetry client to instrument telemetry data.
+users send SQL queries with this wrapper, `otelsql` can see the queries and
+use the OpenTelemetry client to generate telemetry.
 
-Besides using `otelsql.Open`, `otelsql` provides another three ways to
+Besides using `otelsql.Open`, `otelsql` provides three additional ways to
 initialize instrumentation: `otelsql.OpenDB`, `otelsql.Register`, and
 `otelsql.WrapDriver`. These additional methods cover different use cases, as
-some database drivers or frameworks didn't provide a direct way to create
-`sql.DB`. So, sometimes, you might need these additional methods to manually
-create a `sql.DB`, and push it to those database drivers. You can check
+some database drivers or frameworks don't provide a direct way to create
+`sql.DB`. Sometimes, you might need these additional methods to manually
+create a `sql.DB` and push it to those database drivers. You can check
 [examples on the otelsql document](https://pkg.go.dev/github.com/XSAM/otelsql#pkg-examples)
 to learn how to use these methods.
 
 Moving on, we use `otelsql.RegisterDBStatsMetrics` to register metrics data from
-`sql.DBStats`. The metrics recording process will run in the background and
-update the value of the metric when needed after the registration, so we don't
+`sql.DBStats`. The metrics recording process runs in the background and
+updates the value of the metric when needed after the registration, so we don't
 need to worry about creating an individual thread for this.
 
 After having an `sql.DB` wrapped by `otelsql`, we can use it to make queries.
@@ -283,13 +283,13 @@ This `runSQLQuery` method creates a parent span first (it is an optional step,
 it makes the query spans have a parent, and it looks good on the trace graph),
 then queries the current timestamp from the MySQL database.
 
-After this method, the `client` application finished and exited. And, these are
-all the most important lines of code for understanding the example.
+After this method, the `client` application finishes and exits. They are
+the most important lines of code for understanding the example.
 
 ## Use the example as a playground
 
 After understanding the example, we can use it as a playground, making it a bit
-complicated to see how it will be used in a real-world-like case.
+complicated to see how it will be used in a real-world scenario.
 
 Use the following codes to replace the `runSQLQuery` method in the example.
 
@@ -336,9 +336,9 @@ cause of this slowness is not related to the network latency with the database
 and the timestamp query. It is the `SELECT SLEEP(1)` query that leads to the
 slowness.
 
-You can also learn the slowness from the aggregated statistics of the database
-by metrics. And that is the observability the otelsql can provide to know what
-your application is doing with the database.
+You can also learn about the slowness from the aggregated statistics of the
+database by metrics. Such is the observability otelsql can provide so you can
+learn what your application is doing with the database.
 
 ## Compatibility
 
@@ -346,10 +346,10 @@ You might worry about the compatibility issue with other databases and other
 third-party database frameworks (like ORMs) and wonder how widely this
 instrumentation can be used.
 
-The answer is, from the implementation perspective, as long as the database
-drivers or the database frameworks interact with the database (even not a SQL
-database) through the `database/sql` with context, the `otelsql` should work
-with them.
+From an implementation perspective, as long as the database drivers or
+the database frameworks interact with the database (any database, not
+just an SQL database) through `database/sql` with context, `otelsql`
+should work just fine.
 
 This is an
 [example](https://github.com/ent/ent/issues/1232#issuecomment-1200405070) that
@@ -360,27 +360,27 @@ shows how otelsql works with Facebook's entity framework for Go.
 ### Sqlcommenter support
 
 otelsql integrates [Sqlcommenter](https://google.github.io/sqlcommenter), an
-open source ORM auto-instrumentation library that merges with OpenTelemetry, by
+open source ORM auto-instrumentation library that merges with OpenTelemetry by
 injecting a comment into SQL statements to enable context propagation for the
 database.
 
-Using the option `WithSQLCommenter`, otelsql will inject a comment for every SQL
-statement it instrumented.
+Using the option `WithSQLCommenter`, otelsql injects a comment for every SQL
+statement it instruments.
 
-For instance, a SQL query sent to the database
+For instance, an SQL query sent to the database
 
 ```sql
 SELECT * from FOO
 ```
 
-will become
+becomes
 
 ```sql
 SELECT * from FOO /*traceparent='00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01',tracestate='congo%3Dt61rcWkgMzE%2Crojo%3D00f067aa0ba902b7'*/
 ```
 
 Then the database that supports `Sqlcommenter` can record its operation for this
-query with a specified trace and publish its trace spans to a trace store. So
+query with a specified trace and publish its trace spans to a trace store, so
 you can see your application trace spans correlated with query trace spans from
 the database in one place.
 
@@ -412,8 +412,7 @@ sql.conn.query: select current_timestamp
 ### Filter spans
 
 You can use `otelsql.SpanFilter` from `otelsql.SpanOptions` to filter out spans
-you don't want to generate. It is useful when some spans are annoying to you,
-and you want to ignore them.
+you don't want to generate. It is useful when you want to discard some spans.
 
 ## What's next?
 
@@ -421,6 +420,6 @@ You should now be able to apply what you have learned from this blog post to
 your own installation of otelsql.
 
 I would love to hear about your experience! Star `otelsql` if you find it
-helpful! If you run into any problems, please don't hesitate to
+helpful! If you run into any problems, don't hesitate to
 [reach out](https://github.com/XSAM/otelsql?tab=readme-ov-file#communication) or
 [create an issue](https://github.com/XSAM/otelsql/issues).
