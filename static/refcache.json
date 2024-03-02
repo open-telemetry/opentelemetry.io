@@ -39,6 +39,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:05:55.59597-05:00"
   },
+  "https://adri-v.medium.com/43dca4a857a0": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-23T23:30:53.006527-05:00"
+  },
   "https://agilecoffee.com/leancoffee/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:05:43.542109-05:00"
@@ -5299,6 +5303,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:37:21.465525-05:00"
   },
+  "https://open.substack.com/pub/geekingoutpodcast/p/opentelemetry-collector-anti-patterns": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-26T15:05:23.506868-05:00"
+  },
   "https://opencensus.io": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:07:33.722102-05:00"
@@ -5414,6 +5422,54 @@
   "https://opentelemetry.io/docs/specs/otel/protocol": {
     "StatusCode": 206,
     "LastSeen": "2024-02-24T14:33:05.630341-08:00"
+  },
+  "https://opentelemetry.io/docs/collector": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:03.656226-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:04.244864-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/#when-to-use-a-collector": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:04.48411-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/configuration/#connectors": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:05.306982-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/configuration/#exporters": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:06.037446-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/configuration/#processors": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:05.754871-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/configuration/#receivers": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:05.518086-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/configuration/#service-extensions": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:05.132379-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/custom-collector/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:06.360327-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/deployment/agent/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:04.712097-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/deployment/gateway/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:04.939057-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/deployment/no-collector/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-23T22:55:04.014798-05:00"
   },
   "https://opentracing.io": {
     "StatusCode": 206,
@@ -7070,6 +7126,10 @@
   "https://sched.co/1YeSC": {
     "StatusCode": 200,
     "LastSeen": "2024-02-22T11:59:45.670934+01:00"
+  },
+  "https://sched.co/1Yhf8": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-29T19:19:23.057737678Z"
   },
   "https://sched.co/1YhfT": {
     "StatusCode": 200,
