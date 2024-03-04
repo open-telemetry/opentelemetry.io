@@ -1,13 +1,13 @@
 ---
 title:
-  Getting Started with otelsql, the OpenTelemetry instrumentation for Go SQL
+  Getting started with otelsql, the OpenTelemetry instrumentation for Go SQL
 linkTitle: Getting Started with otelsql
-date: 2024-02-24
+date: 2024-03-04
 author: '[Sam Xie](https://github.com/XSAM) (Cisco)'
 ---
 
 [otelsql](https://github.com/XSAM/otelsql) is an instrumentation library for the
-[`database/sql`](https://pkg.go.dev/database/sql) library for the Go programming
+[`database/sql`](https://pkg.go.dev/database/sql) library of the Go programming
 language. It generates traces and metrics from the application when interacting
 with databases. By doing that, the library allows you to identify errors or
 slowdowns in your SQL queries that potentially impact the performance of your
