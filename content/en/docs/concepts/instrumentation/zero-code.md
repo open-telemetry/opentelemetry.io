@@ -2,7 +2,7 @@
 title: Zero-code
 description: >-
   Learn how to add observability to an application without the need to write
-  more code
+  code
 weight: 10
 aliases: [automatic]
 ---
