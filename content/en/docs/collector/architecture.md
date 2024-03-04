@@ -91,7 +91,7 @@ For details of config file format see
 
 ### Receivers
 
-Receivers typically listen on a network port and receive telemetry data. Usually
+Receivers typically listen on a network port and receive telemetry data, or actively obtain data, such as scrapers. Usually
 one receiver is configured to send received data to one pipeline. However, it is
 also possible to configure the same receiver to send the same received data to
 multiple pipelines. This can be done by listing the same receiver in the
