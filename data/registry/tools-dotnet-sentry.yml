@@ -16,8 +16,6 @@ description:
   to Sentry and associate traces spans with Sentry errors. It also includes experimental 
   support to forward OpenTelemetry metrics to Sentry.   
   
-  For configuration details, see [OpenTelemetry
-  Support](https://docs.sentry.io/platforms/dotnet/performance/instrumentation/opentelemetry/).
 authors:
   - name: Sentry authors
     email: otel@sentry.io
