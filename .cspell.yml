@@ -170,5 +170,3 @@ words:
   - WSGI
   - zend
   - zipkin
-  - otelsql
-  - sqlcommenter

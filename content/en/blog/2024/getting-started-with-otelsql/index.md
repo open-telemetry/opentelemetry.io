@@ -4,6 +4,7 @@ title:
 linkTitle: Getting Started with otelsql
 date: 2024-03-04
 author: '[Sam Xie](https://github.com/XSAM) (Cisco)'
+cSpell:ignore: otelsql sqlcommenter
 ---
 
 [otelsql](https://github.com/XSAM/otelsql) is an instrumentation library for the
