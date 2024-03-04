@@ -1,10 +1,9 @@
 ---
 title: Code-based
-description: >-
-  Learn about the essential steps to instrument your code base.
+description: Learn the essential steps in setting up code-based instrumentation
 weight: 20
 aliases: [manual]
-cSpell:ignore: legitimatebusiness proxying
+cSpell:ignore: proxying
 ---
 
 ## Import the OpenTelemetry API and SDK
@@ -24,10 +23,10 @@ single default provider for these objects. You'll then get a tracer or meter
 instance from that provider, and give it a name and version. The name you choose
 here should identify what exactly is being instrumented -- if you're writing a
 library, for example, then you should name it after your library (for example
-`com.legitimatebusiness.myLibrary`) as this name will namespace all spans or
-metric events produced. It is also recommended that you supply a version string
-(i.e., `semver:1.0.0`) that corresponds to the current version of your library
-or service.
+`com.example.myLibrary`) as this name will namespace all spans or metric events
+produced. It is also recommended that you supply a version string (i.e.,
+`semver:1.0.0`) that corresponds to the current version of your library or
+service.
 
 ## Configure the OpenTelemetry SDK
 
