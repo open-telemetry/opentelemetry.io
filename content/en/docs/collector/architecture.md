@@ -1,7 +1,6 @@
 ---
 title: Architecture
 weight: 28
-# prettier-ignore
 cSpell:ignore: fanoutconsumer probabilisticsampler spanmetrics zpages
 ---
 
@@ -86,16 +85,14 @@ service:
 The previous example defines a pipeline for the traces type of telemetry data,
 with three receivers, two processors, and three exporters.
 
-For details of config file format see
-[this document](https://docs.google.com/document/d/1NeheFG7DmcUYo_h2vLtNRlia9x5wOJMlV4QKEK05FhQ/edit#).
-
 ### Receivers
 
-Receivers typically listen on a network port and receive telemetry data, or actively obtain data, such as scrapers. Usually
-one receiver is configured to send received data to one pipeline. However, it is
-also possible to configure the same receiver to send the same received data to
-multiple pipelines. This can be done by listing the same receiver in the
-`receivers` key of several pipelines:
+Receivers typically listen on a network port and receive telemetry data. They
+can also actively obtain data, like scrapers. Usually one receiver is configured
+to send received data to one pipeline. However, it is also possible to configure
+the same receiver to send the same received data to multiple pipelines. This can
+be done by listing the same receiver in the `receivers` key of several
+pipelines:
 
 ```yaml
 receivers:
@@ -119,9 +116,7 @@ service:
 In the above example, `otlp` receiver will send the same data to pipeline
 `traces` and to pipeline `traces/2`.
 
-> The configuration uses composite key names in the form of `type[/name]` as
-> defined in
-> [this document](https://docs.google.com/document/d/1NeheFG7DmcUYo_h2vLtNRlia9x5wOJMlV4QKEK05FhQ/edit#)).
+> The configuration uses composite key names in the form of `type[/name]`.
 
 When the Collector loads this config, the result looks like this diagram (part
 of processors and exporters are omitted for brevity):
