@@ -22,6 +22,8 @@ imaging:
 
 markup:
   goldmark:
+    extensions:
+      linkify: false
     parser:
       attribute:
         block: true

@@ -10,7 +10,7 @@ urls:
 license: Apache 2.0
 description:
   This is a read-only subtree split of
-  https://github.com/open-telemetry/opentelemetry-php-contrib.
+  <https://github.com/open-telemetry/opentelemetry-php-contrib>.
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2024-01-19

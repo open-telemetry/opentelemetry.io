@@ -8,10 +8,8 @@ tags:
   - propagator
 license: Apache 2.0
 description: >
-  This library provides support for propagating trace context in the Jaeger
-  https://www.jaegertracing.io/docs/1.20/client-libraries/#propagation-format
-  format.
-
+  This library provides support for propagating trace context in the [Jaeger
+  format](https://www.jaegertracing.io/docs/1.20/client-libraries/#propagation-format).
 authors:
   - name: OpenTelemetry Authors
 urls:
