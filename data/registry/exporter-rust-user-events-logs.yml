@@ -1,0 +1,21 @@
+title: user_events Logs Exporter
+registryType: exporter
+language: rust
+tags:
+  - rust
+  - exporter
+  - linux
+  - user_events
+license: Apache 2.0 OR MIT
+description:
+  A Rust OpenTelemetry Log exporter for [Linux Kernel
+  user_events](https://docs.kernel.org/trace/user_events.html)
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-rust-contrib/tree/main/opentelemetry-user-events-logs
+createdAt: 2023-07-29
+package:
+  registry: crates
+  name: opentelemetry-user-events-logs
+  version: 0.3.0

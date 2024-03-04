@@ -1261,9 +1261,8 @@ const metricReader = new PeriodicExportingMetricReader({
 
 const myServiceMeterProvider = new MeterProvider({
   resource: resource,
+  readers: [metricReader],
 });
-
-myServiceMeterProvider.addMetricReader(metricReader);
 
 // Set this MeterProvider to be global to the app being instrumented.
 opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider);
@@ -1299,9 +1298,8 @@ const metricReader = new PeriodicExportingMetricReader({
 
 const myServiceMeterProvider = new MeterProvider({
   resource: resource,
+  readers: [metricReader],
 });
-
-myServiceMeterProvider.addMetricReader(metricReader);
 
 // Set this MeterProvider to be global to the app being instrumented.
 opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider);
