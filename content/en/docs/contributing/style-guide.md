@@ -17,7 +17,7 @@ project.
 {{% alert title="Note" color="primary" %}}
 
 Many requirements of our style guide can be enforced by running automation:
-before providing a
+before submitting a
 [pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)
 (PR) run `npm run fix:all` on your local machine and commit the changes.
 
