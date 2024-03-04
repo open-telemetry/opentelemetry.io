@@ -12,7 +12,7 @@ tags:
   - error monitoring
 license: MIT
 description:
-  The Sentry OpenTelemetry .NET integration provides a processor and propagator to send data 
+  The Sentry .NET integration for OpenTelemetry provides a processor and propagator to send data 
   to Sentry and associate traces spans with Sentry errors. It also includes experimental 
   support to forward OpenTelemetry metrics to Sentry.   
   
