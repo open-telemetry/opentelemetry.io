@@ -1,7 +1,7 @@
 ---
 title:
   Getting started with otelsql, the OpenTelemetry instrumentation for Go SQL
-linkTitle: Getting Started with otelsql
+linkTitle: Getting started with otelsql
 date: 2024-03-04
 author: '[Sam Xie](https://github.com/XSAM) (Cisco)'
 cSpell:ignore: otelsql sqlcommenter
