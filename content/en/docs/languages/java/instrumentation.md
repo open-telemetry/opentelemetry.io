@@ -990,7 +990,7 @@ Thread thread = new Thread(new Runnable() {
 thread.start();
 ```
 
-### Context propgation between HTTP requests
+### Context propagation between HTTP requests
 
 The following presents an example of an outgoing HTTP request using
 `HttpURLConnection`.
