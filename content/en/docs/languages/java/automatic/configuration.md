@@ -467,13 +467,13 @@ associated span name on the parent
 
 {{% config_option
   name="otel.instrumentation.common.experimental.controller-telemetry.enabled"
-  default=true
-%}} Enables the controller telemetry. {{% /config_option %}}
+  default=false
+%}} Set to `true` to enable controller telemetry. {{% /config_option %}}
 
 {{% config_option
   name="otel.instrumentation.common.experimental.view-telemetry.enabled"
-  default=true
-%}} Enables the view telemetry. {{% /config_option %}}
+  default=false
+%}} Set to `true` to enable view telemetry. {{% /config_option %}}
 
 ### Instrumentation span suppression behavior
 
