@@ -973,7 +973,7 @@ OpenTelemetry provides a text-based approach to propagate context to remote
 services using the [W3C Trace Context](https://www.w3.org/TR/trace-context/)
 HTTP headers.
 
-### Context propgation between threads
+### Context propagation between threads
 
 THe following example demonstrates how to propagate the context between threads:
 
