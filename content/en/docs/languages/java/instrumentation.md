@@ -973,6 +973,26 @@ OpenTelemetry provides a text-based approach to propagate context to remote
 services using the [W3C Trace Context](https://www.w3.org/TR/trace-context/)
 HTTP headers.
 
+### Context propgation between threads
+
+THe following example demonstrates how to propagate the context between threads:
+```java
+
+```java
+io.opentelemetry.context.Context context = io.opentelemetry.context.Context.current();
+Thread thread = new Thread(new Runnable() {
+  @Override
+  public void run() {
+  try (Scope scope = context.makeCurrent()) {
+    // Code for which you want to propagate the context
+  }
+}
+});
+thread.start();
+```
+
+### Context propgation between HTTP requests
+
 The following presents an example of an outgoing HTTP request using
 `HttpURLConnection`.
 
