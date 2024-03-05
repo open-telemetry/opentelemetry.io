@@ -976,17 +976,16 @@ HTTP headers.
 ### Context propgation between threads
 
 THe following example demonstrates how to propagate the context between threads:
-```java
 
 ```java
 io.opentelemetry.context.Context context = io.opentelemetry.context.Context.current();
 Thread thread = new Thread(new Runnable() {
   @Override
   public void run() {
-  try (Scope scope = context.makeCurrent()) {
-    // Code for which you want to propagate the context
+    try (Scope scope = context.makeCurrent()) {
+      // Code for which you want to propagate the context
+    }
   }
-}
 });
 thread.start();
 ```
