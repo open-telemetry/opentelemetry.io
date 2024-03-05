@@ -222,12 +222,15 @@ import {
   ConsoleMetricExporter,
 } from '@opentelemetry/sdk-metrics';
 import { Resource } from '@opentelemetry/resources';
-import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
+import {
+  SEMRESATTRS_SERVICE_NAME,
+  SEMRESATTRS_SERVICE_VERSION,
+} from '@opentelemetry/semantic-conventions';
 
 const sdk = new NodeSDK({
   resource: new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: 'yourServiceName',
-    [SemanticResourceAttributes.SERVICE_VERSION]: '1.0',
+    [SEMRESATTRS_SERVICE_NAME]: 'yourServiceName',
+    [SEMRESATTRS_SERVICE_VERSION]: '1.0',
   }),
   traceExporter: new ConsoleSpanExporter(),
   metricReader: new PeriodicExportingMetricReader({
@@ -250,13 +253,14 @@ const {
 } = require('@opentelemetry/sdk-metrics');
 const { Resource } = require('@opentelemetry/resources');
 const {
-  SemanticResourceAttributes,
+  SEMRESATTRS_SERVICE_NAME,
+  SEMRESATTRS_SERVICE_VERSION
 } = require('@opentelemetry/semantic-conventions');
 
 const sdk = new NodeSDK({
   resource: new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: 'dice-server',
-    [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
+    [SEMRESATTRS_SERVICE_NAME]: 'dice-server',
+    [SEMRESATTRS_SERVICE_VERSION]: '0.1.0',
   }),
   traceExporter: new ConsoleSpanExporter(),
   metricReader: new PeriodicExportingMetricReader({
