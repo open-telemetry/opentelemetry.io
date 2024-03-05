@@ -7,7 +7,9 @@ tags:
   - exporter
   - collector
 license: Apache 2.0
-description: This exporter allows creating markers, via the Honeycomb Markers API, based on the look of incoming telemetry.
+description:
+  This exporter allows creating markers, via the Honeycomb Markers API, based on
+  the look of incoming telemetry.
 authors:
   - name: OpenTelemetry Authors
 urls:
