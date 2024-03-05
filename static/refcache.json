@@ -1007,6 +1007,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:05:58.662694-05:00"
   },
+  "https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-15T11:30:46.466434+01:00"
+  },
   "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T15:25:17.633498-05:00"
@@ -1731,6 +1735,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:27.095072-05:00"
   },
+  "https://en.wikipedia.org/wiki/Letter_case#Kebab_case": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-15T11:30:50.951761+01:00"
+  },
   "https://en.wikipedia.org/wiki/Log_file": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:01:58.409935-05:00"
@@ -2002,6 +2010,10 @@
   "https://github.com/DataDog/dd-opentelemetry-exporter-ruby": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:10:56.414699-05:00"
+  },
+  "https://github.com/DavidAnson/markdownlint": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-15T11:30:50.043802+01:00"
   },
   "https://github.com/DebajitDas": {
     "StatusCode": 200,
@@ -4086,6 +4098,10 @@
   "https://github.com/steffan-westcott/clj-otel": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:12:56.889858-05:00"
+  },
+  "https://github.com/streetsidesoftware/cspell": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-15T11:30:50.628118+01:00"
   },
   "https://github.com/strimzi": {
     "StatusCode": 200,
@@ -6554,6 +6570,10 @@
   "https://plugins.jenkins.io/opentelemetry/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:05:44.189442-05:00"
+  },
+  "https://prettier.io": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-15T11:32:15.231585+01:00"
   },
   "https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html": {
     "StatusCode": 200,
