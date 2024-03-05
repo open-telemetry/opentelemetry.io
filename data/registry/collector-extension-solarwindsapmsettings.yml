@@ -11,14 +11,11 @@ tags:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/solarwindsapmsettingsextension
 license: Apache 2.0
-description:
-  The Solarwinds APM Settings extension gets Solarwinds APM specific settings
-  from Solarwinds APM collector and `/tmp/solarwinds-apm-settings.json` &
-  `/tmp/solarwinds-apm-settings-raw` periodically.
+description: The Solarwinds APM Settings extension gets Solarwinds APM specific settings from Solarwinds APM collector and `/tmp/solarwinds-apm-settings.json` & `/tmp/solarwinds-apm-settings-raw` periodically.
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2024-02-05
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/solarwindsapmsettingsextension
-  version: v0.95.0
+  version: v0.96.0

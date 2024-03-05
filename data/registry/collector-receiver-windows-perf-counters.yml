@@ -7,10 +7,7 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description:
-  The Windows Performance Counters Receiver for the OpenTelemetry Collector
-  captures the configured system, application, or custom performance counter
-  data from the Windows registry using the PDH interface.
+description: The Windows Performance Counters Receiver for the OpenTelemetry Collector captures the configured system, application, or custom performance counter data from the Windows registry using the PDH interface.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -19,4 +16,4 @@ createdAt: 2021-02-26
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/windowsperfcountersreceiver
-  version: v0.95.0
+  version: v0.96.0

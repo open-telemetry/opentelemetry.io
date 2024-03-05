@@ -7,10 +7,7 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description:
-  This receiver fetches stats from an SNMP-enabled host using the [Go SNMP
-  client](https://github.com/gosnmp/gosnmp). Metrics are collected based on
-  configuration settings.
+description: This receiver fetches stats from an SNMP-enabled host using the [Go SNMP client](https://github.com/gosnmp/gosnmp). Metrics are collected based on configuration settings.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -19,4 +16,4 @@ createdAt: 2020-11-05
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver
-  version: v0.95.0
+  version: v0.96.0

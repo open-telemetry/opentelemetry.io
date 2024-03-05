@@ -7,8 +7,7 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description:
-  The StatsD Receiver for the OpenTelemetry Collector ingests StatsD messages.
+description: The StatsD Receiver for the OpenTelemetry Collector ingests StatsD messages.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -17,4 +16,4 @@ createdAt: 2020-06-06
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/statsdreceiver
-  version: v0.95.0
+  version: v0.96.0
