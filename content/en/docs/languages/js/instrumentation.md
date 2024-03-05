@@ -351,7 +351,7 @@ SDK initialization code in it:
 
 ```ts
 import { Resource } from '@opentelemetry/resources';
-import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
+import { SEMRESATTRS_SERVICE_NAME, SEMRESATTRS_SERVICE_VERSION } from '@opentelemetry/semantic-conventions';
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import {
   BatchSpanProcessor,
@@ -360,8 +360,8 @@ import {
 
 const resource = Resource.default().merge(
   new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: 'service-name-here',
-    [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
+    [SEMRESATTRS_SERVICE_NAME]: 'service-name-here',
+    [SEMRESATTRS_SERVICE_VERSION]: '0.1.0',
   }),
 );
 
@@ -381,7 +381,7 @@ provider.register();
 const opentelemetry = require('@opentelemetry/api');
 const { Resource } = require('@opentelemetry/resources');
 const {
-  SemanticResourceAttributes,
+  SEMRESATTRS_SERVICE_NAME, SEMRESATTRS_SERVICE_VERSION
 } = require('@opentelemetry/semantic-conventions');
 const { WebTracerProvider } = require('@opentelemetry/sdk-trace-web');
 const {
@@ -391,8 +391,8 @@ const {
 
 const resource = Resource.default().merge(
   new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: 'service-name-here',
-    [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
+    [SEMRESATTRS_SERVICE_NAME]: 'service-name-here',
+    [SEMRESATTRS_SERVICE_VERSION]: '0.1.0',
   }),
 );
 
@@ -937,13 +937,13 @@ Add the following to the top of your application file:
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
-import { SemanticAttributes } from '@opentelemetry/semantic-conventions';
+import { SEMATTRS_CODE_FUNCTION, SEMATTRS_CODE_FILEPATH } from '@opentelemetry/semantic-conventions';
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-const { SemanticAttributes } = require('@opentelemetry/semantic-conventions');
+const { SEMATTRS_CODE_FUNCTION, SEMATTRS_CODE_FILEPATH } = require('@opentelemetry/semantic-conventions');
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -953,8 +953,8 @@ Finally, you can update your file to include semantic attributes:
 ```javascript
 const doWork = () => {
   tracer.startActiveSpan('app.doWork', (span) => {
-    span.setAttribute(SemanticAttributes.CODE_FUNCTION, 'doWork');
-    span.setAttribute(SemanticAttributes.CODE_FILEPATH, __filename);
+    span.setAttribute(SEMATTRS_CODE_FUNCTION, 'doWork');
+    span.setAttribute(SSEMATTRS_CODE_FILEPATH, __filename);
 
     // Do some work...
 
@@ -1248,12 +1248,12 @@ import {
   PeriodicExportingMetricReader,
 } from '@opentelemetry/sdk-metrics';
 import { Resource } from '@opentelemetry/resources';
-import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
+import { SEMRESATTRS_SERVICE_NAME, SEMRESATTRS_SERVICE_VERSION } from '@opentelemetry/semantic-conventions';
 
 const resource = Resource.default().merge(
   new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: 'dice-server',
-    [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
+    [SEMRESATTRS_SERVICE_NAME]: 'dice-server',
+    [SEMRESATTRS_SERVICE_VERSION]: '0.1.0',
   }),
 );
 
@@ -1283,13 +1283,13 @@ const {
 } = require('@opentelemetry/sdk-metrics');
 const { Resource } = require('@opentelemetry/resources');
 const {
-  SemanticResourceAttributes,
+  SEMRESATTRS_SERVICE_NAME, SEMRESATTRS_SERVICE_VERSION,
 } = require('@opentelemetry/semantic-conventions');
 
 const resource = Resource.default().merge(
   new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: 'service-name-here',
-    [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
+    [SEMRESATTRS_SERVICE_NAME]: 'service-name-here',
+    [SEMRESATTRS_SERVICE_VERSION]: '0.1.0',
   }),
 );
 

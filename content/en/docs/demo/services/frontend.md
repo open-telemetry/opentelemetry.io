@@ -124,12 +124,12 @@ span = tracer.startSpan(`HTTP ${method}`, {
   links: [{ context: syntheticSpan.spanContext() }],
   attributes: {
     'app.synthetic_request': true,
-    [SemanticAttributes.HTTP_TARGET]: target,
-    [SemanticAttributes.HTTP_STATUS_CODE]: response.statusCode,
-    [SemanticAttributes.HTTP_METHOD]: method,
-    [SemanticAttributes.HTTP_USER_AGENT]: headers['user-agent'] || '',
-    [SemanticAttributes.HTTP_URL]: `${headers.host}${url}`,
-    [SemanticAttributes.HTTP_FLAVOR]: httpVersion,
+    [SEMATTRS_HTTP_TARGET]: target,
+    [SEMATTRS_HTTP_STATUS_CODE]: response.statusCode,
+    [SEMATTRS_HTTP_METHOD]: method,
+    [SEMATTRS_HTTP_USER_AGENT]: headers['user-agent'] || '',
+    [SEMATTRS_HTTP_URL]: `${headers.host}${url}`,
+    [SEMATTRS_HTTP_FLAVOR]: httpVersion,
   },
 });
 ```
@@ -168,7 +168,7 @@ import { SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
 import { getWebAutoInstrumentations } from '@opentelemetry/auto-instrumentations-web';
 import { Resource } from '@opentelemetry/resources';
-import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
+import { SEMRESATTRS_SERVICE_NAME } from '@opentelemetry/semantic-conventions';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
 
 const FrontendTracer = async () => {
@@ -176,7 +176,7 @@ const FrontendTracer = async () => {
 
   const provider = new WebTracerProvider({
     resource: new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]:
+      [SEMRESATTRS_SERVICE_NAME]:
         process.env.NEXT_PUBLIC_OTEL_SERVICE_NAME,
     }),
   });
