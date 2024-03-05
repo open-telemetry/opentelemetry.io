@@ -220,7 +220,10 @@ with a request hook:
 
 ```typescript
 import { Span } from '@opentelemetry/api';
-import { SEMATTRS_HTTP_METHOD, SEMATTRS_HTTP_URL } from '@opentelemetry/semantic-conventions';
+import {
+  SEMATTRS_HTTP_METHOD,
+  SEMATTRS_HTTP_URL,
+} from '@opentelemetry/semantic-conventions';
 import {
   ExpressInstrumentation,
   ExpressLayerType,
@@ -243,7 +246,10 @@ const expressInstrumentation = new ExpressInstrumentation({
 
 ```javascript
 /*instrumentation.js*/
-const { SEMATTRS_HTTP_METHOD, SEMATTRS_HTTP_URL } = require('@opentelemetry/semantic-conventions');
+const {
+  SEMATTRS_HTTP_METHOD,
+  SEMATTRS_HTTP_URL,
+} = require('@opentelemetry/semantic-conventions');
 const {
   ExpressInstrumentation,
   ExpressLayerType,

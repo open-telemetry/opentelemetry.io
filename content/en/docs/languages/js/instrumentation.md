@@ -254,7 +254,7 @@ const {
 const { Resource } = require('@opentelemetry/resources');
 const {
   SEMRESATTRS_SERVICE_NAME,
-  SEMRESATTRS_SERVICE_VERSION
+  SEMRESATTRS_SERVICE_VERSION,
 } = require('@opentelemetry/semantic-conventions');
 
 const sdk = new NodeSDK({
@@ -351,7 +351,10 @@ SDK initialization code in it:
 
 ```ts
 import { Resource } from '@opentelemetry/resources';
-import { SEMRESATTRS_SERVICE_NAME, SEMRESATTRS_SERVICE_VERSION } from '@opentelemetry/semantic-conventions';
+import {
+  SEMRESATTRS_SERVICE_NAME,
+  SEMRESATTRS_SERVICE_VERSION,
+} from '@opentelemetry/semantic-conventions';
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import {
   BatchSpanProcessor,
@@ -381,7 +384,8 @@ provider.register();
 const opentelemetry = require('@opentelemetry/api');
 const { Resource } = require('@opentelemetry/resources');
 const {
-  SEMRESATTRS_SERVICE_NAME, SEMRESATTRS_SERVICE_VERSION
+  SEMRESATTRS_SERVICE_NAME,
+  SEMRESATTRS_SERVICE_VERSION,
 } = require('@opentelemetry/semantic-conventions');
 const { WebTracerProvider } = require('@opentelemetry/sdk-trace-web');
 const {
@@ -937,13 +941,19 @@ Add the following to the top of your application file:
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
-import { SEMATTRS_CODE_FUNCTION, SEMATTRS_CODE_FILEPATH } from '@opentelemetry/semantic-conventions';
+import {
+  SEMATTRS_CODE_FUNCTION,
+  SEMATTRS_CODE_FILEPATH,
+} from '@opentelemetry/semantic-conventions';
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-const { SEMATTRS_CODE_FUNCTION, SEMATTRS_CODE_FILEPATH } = require('@opentelemetry/semantic-conventions');
+const {
+  SEMATTRS_CODE_FUNCTION,
+  SEMATTRS_CODE_FILEPATH,
+} = require('@opentelemetry/semantic-conventions');
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -1248,7 +1258,10 @@ import {
   PeriodicExportingMetricReader,
 } from '@opentelemetry/sdk-metrics';
 import { Resource } from '@opentelemetry/resources';
-import { SEMRESATTRS_SERVICE_NAME, SEMRESATTRS_SERVICE_VERSION } from '@opentelemetry/semantic-conventions';
+import {
+  SEMRESATTRS_SERVICE_NAME,
+  SEMRESATTRS_SERVICE_VERSION,
+} from '@opentelemetry/semantic-conventions';
 
 const resource = Resource.default().merge(
   new Resource({
@@ -1283,7 +1296,8 @@ const {
 } = require('@opentelemetry/sdk-metrics');
 const { Resource } = require('@opentelemetry/resources');
 const {
-  SEMRESATTRS_SERVICE_NAME, SEMRESATTRS_SERVICE_VERSION,
+  SEMRESATTRS_SERVICE_NAME,
+  SEMRESATTRS_SERVICE_VERSION,
 } = require('@opentelemetry/semantic-conventions');
 
 const resource = Resource.default().merge(

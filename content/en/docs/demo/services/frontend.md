@@ -176,8 +176,7 @@ const FrontendTracer = async () => {
 
   const provider = new WebTracerProvider({
     resource: new Resource({
-      [SEMRESATTRS_SERVICE_NAME]:
-        process.env.NEXT_PUBLIC_OTEL_SERVICE_NAME,
+      [SEMRESATTRS_SERVICE_NAME]: process.env.NEXT_PUBLIC_OTEL_SERVICE_NAME,
     }),
   });
 
