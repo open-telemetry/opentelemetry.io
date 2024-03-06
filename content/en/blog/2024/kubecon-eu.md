@@ -121,7 +121,7 @@ Time (CET).
 - **March 20th, 11:45-12:45:**
   [End User Feedback Session - .NET & .NET Auto-Instrumentation](https://calendly.com/otel-euwg/end-user-feedback-sessions-2?month=2024-03)
 - **March 20th, 15:00-16:00:**
-  [End User Feedback Session - Javascript](https://calendly.com/otel-euwg/end-user-feedback-sessions-3?month=2024-03)
+  [End User Feedback Session - JavaScript](https://calendly.com/otel-euwg/end-user-feedback-sessions-3?month=2024-03)
 - **March 21st, 11:00-12:00:**
   [End User Feedback Session - Semantic Conventions](https://calendly.com/otel-euwg/end-user-feedback-sessions-4?month=2024-03)
 - **March 21st, 14:30-15:30:**
