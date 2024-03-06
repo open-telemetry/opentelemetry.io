@@ -19,7 +19,7 @@ in the config file for a given flag to "on".
 
 ## Feature Flag Architecture
 
-Please see the [flagd documentation](https://github.com/open-feature/flagd) for
+Please see the [flagd documentation](https://flagd.dev) for
 more information on how flagd works, and the
 [OpenFeature](https://openfeature.dev) website for more information on how
 OpenFeature works, along with documentation for the OpenFeature API.
