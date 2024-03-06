@@ -763,7 +763,7 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-22T08:13:47.191476+01:00"
   },
-  "https://doc.traefik.io/traefik-hub/operations/telemetry/overview/": {
+  "https://doc.traefik.io/traefik-hub/operations/metrics": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:07:39.690877-05:00"
   },
