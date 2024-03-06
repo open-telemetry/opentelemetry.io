@@ -10,8 +10,7 @@ tags:
 license: Apache 2.0
 description: >
   This library provides support for propagating trace context in the Google
-  Cloud X-Cloud-Trace-Context format.
-
+  Cloud `X-Cloud-Trace-Context` format.
 authors:
   - name: Google
 urls:

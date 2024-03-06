@@ -6,8 +6,7 @@ tags:
   - instrumentation
   - erlang
 license: Apache 2.0
-description:
-  See https://hex.pm/packages/opentelemetry_req for usage instructions.
+description: For details, see <https://hex.pm/packages/opentelemetry_req>.
 authors:
   - name: OpenTelemetry Authors
 urls:

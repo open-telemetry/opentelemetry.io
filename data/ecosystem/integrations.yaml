@@ -148,7 +148,7 @@
   oss: false
 - name: Traefik Hub API Management
   url: https://traefik.io/traefik-hub/
-  docsUrl: https://doc.traefik.io/traefik-hub/operations/telemetry/overview/
+  docsUrl: https://doc.traefik.io/traefik-hub/operations/metrics
   components: [Go]
   oss: false
 - name: Strimzi
