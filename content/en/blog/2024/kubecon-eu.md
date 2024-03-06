@@ -105,26 +105,31 @@ Expo Hall. This will be a place for informal chats, meetups, and other
 discussions led by OpenTelemetry community members and maintainers. Check out
 the schedule of activities [here](https://shorturl.at/qEUX1).
 
-If you’d like to participate and lead a discussion or short presentation, out to
-the
+If you’d like to participate and lead a discussion or short presentation, reach
+out to the
 [OpenTelemetry End User Working Group](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
 to indicate your interest.
 
 You can help us improve the project by sharing your thoughts and feedback about
 your OpenTelemetry adoption, implementation, and usage.
 
-To join a feedback session, book online below:
+To join a feedback session, book online below. All times in Central European
+Time (CET).
 
-- [End User Feedback Sessions 1](https://calendly.com/otel-euwg/end-user-feedback-sessions-1?month=2024-03)
-- [End User Feedback Sessions 2](https://calendly.com/otel-euwg/end-user-feedback-sessions-2?month=2024-03)
-- [End User Feedback Sessions 3](https://calendly.com/otel-euwg/end-user-feedback-sessions-3?month=2024-03)
-- [End User Feedback Sessions 4](https://calendly.com/otel-euwg/end-user-feedback-sessions-4?month=2024-03)
-- [End User Feedback Sessions 5](https://calendly.com/otel-euwg/end-user-feedback-sessions-5?month=2024-03)
+- **March 20th, 10:45-11:45:**
+  [End User Feedback Session - Profiling](https://calendly.com/otel-euwg/end-user-feedback-sessions-1?month=2024-03)
+- **March 20th, 11:45-12:45:**
+  [End User Feedback Session - .NET & .NET Auto-Instrumentation](https://calendly.com/otel-euwg/end-user-feedback-sessions-2?month=2024-03)
+- **March 20th, 15:00-16:00:**
+  [End User Feedback Session - Javascript](https://calendly.com/otel-euwg/end-user-feedback-sessions-3?month=2024-03)
+- **March 21st, 11:00-12:00:**
+  [End User Feedback Session - Semantic Conventions](https://calendly.com/otel-euwg/end-user-feedback-sessions-4?month=2024-03)
+- **March 21st, 14:30-15:30:**
+  [End User Feedback Session - Comms (website, docs)](https://calendly.com/otel-euwg/end-user-feedback-sessions-5?month=2024-03)
 
 A maximum of 5 participants will join one SIG maintainer to provide feedback for
 that SIG. Sessions will be recorded and posted on the
-[OTel YouTube channel](https://youtube.com/@otel-official). The final SIG list
-is still TBD, so check back here often!
+[OTel YouTube channel](https://youtube.com/@otel-official).
 
 We will create action items from your comments as appropriate. Check
 [#otel-user-research][] in CNCF's Slack instance for results and action item
