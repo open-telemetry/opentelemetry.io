@@ -54,5 +54,5 @@ cSpell:ignore: flagd
   patterns on the website using a synthetic load generator.
 - **[OpenFeature](https://openfeature.dev)**: a feature flagging API and SDK
   that allows for the enabling and disabling of features in the application.
-- **[flagd](https://github.com/open-feature/flagd)**: a feature flagging daemon
+- **[flagd](https://flagd.dev)**: a feature flagging daemon
   that is used to manage feature flags in the demo application.
