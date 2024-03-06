@@ -383,6 +383,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:05:48.904048-05:00"
   },
+  "https://cloud.google.com/blog/products/databases/sqlcommenter-merges-with-opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-24T14:33:07.232417-08:00"
+  },
   "https://cloud.google.com/blog/products/serverless/cloud-functions-2nd-generation-now-generally-available": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:05:49.382943-05:00"
@@ -759,7 +763,7 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-22T08:13:47.191476+01:00"
   },
-  "https://doc.traefik.io/traefik-hub/operations/telemetry/overview/": {
+  "https://doc.traefik.io/traefik-hub/operations/metrics": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:07:39.690877-05:00"
   },
@@ -1002,6 +1006,10 @@
   "https://docs.fluentbit.io/manual/pipeline/inputs/opentelemetry/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:05:58.662694-05:00"
+  },
+  "https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-15T11:30:46.466434+01:00"
   },
   "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests": {
     "StatusCode": 206,
@@ -1731,6 +1739,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:27.095072-05:00"
   },
+  "https://en.wikipedia.org/wiki/Letter_case#Kebab_case": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-15T11:30:50.951761+01:00"
+  },
   "https://en.wikipedia.org/wiki/Log_file": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:01:58.409935-05:00"
@@ -2003,6 +2015,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:10:56.414699-05:00"
   },
+  "https://github.com/DavidAnson/markdownlint": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-15T11:30:50.043802+01:00"
+  },
   "https://github.com/DebajitDas": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:04:53.923765-05:00"
@@ -2114,6 +2130,10 @@
   "https://github.com/XSAM/otelsql": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:11:51.03094-05:00"
+  },
+  "https://github.com/XSAM/otelsql/issues": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-24T14:33:07.539727-08:00"
   },
   "https://github.com/aabmass": {
     "StatusCode": 200,
@@ -2366,6 +2386,10 @@
   "https://github.com/elastic/beats/pull/18883": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:36.185289-05:00"
+  },
+  "https://github.com/ent/ent/issues/1232#issuecomment-1200405070": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-24T14:33:06.756997-08:00"
   },
   "https://github.com/equinix-labs/otel-cli": {
     "StatusCode": 200,
@@ -4079,6 +4103,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:12:56.889858-05:00"
   },
+  "https://github.com/streetsidesoftware/cspell": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-15T11:30:50.628118+01:00"
+  },
   "https://github.com/strimzi": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:40.859417-05:00"
@@ -4278,6 +4306,10 @@
   "https://golang.org/ref/spec#Slice_types": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:17.04578-05:00"
+  },
+  "https://google.github.io/sqlcommenter": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-24T14:33:07.021511-08:00"
   },
   "https://gorm.io/": {
     "StatusCode": 206,
@@ -5455,6 +5487,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-02-23T22:55:04.014798-05:00"
   },
+  "https://opentelemetry.io/docs/specs/otel/protocol": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-24T14:33:05.630341-08:00"
+  },
   "https://opentracing.io": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:07:33.813401-05:00"
@@ -5623,9 +5659,29 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-16T09:38:27.962889-05:00"
   },
+  "https://pkg.go.dev/database/sql": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-24T14:33:03.76582-08:00"
+  },
+  "https://pkg.go.dev/database/sql#DB": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-24T14:33:06.1255-08:00"
+  },
+  "https://pkg.go.dev/database/sql#Open": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-24T14:33:05.81433-08:00"
+  },
   "https://pkg.go.dev/github.com/XSAM/otelsql": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:17:16.696764+01:00"
+  },
+  "https://pkg.go.dev/github.com/XSAM/otelsql#Open": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-24T14:33:05.95303-08:00"
+  },
+  "https://pkg.go.dev/github.com/XSAM/otelsql#pkg-examples": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-24T14:33:06.29193-08:00"
   },
   "https://pkg.go.dev/github.com/dnwe/otelsarama": {
     "StatusCode": 200,
@@ -6518,6 +6574,10 @@
   "https://plugins.jenkins.io/opentelemetry/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:05:44.189442-05:00"
+  },
+  "https://prettier.io": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-15T11:32:15.231585+01:00"
   },
   "https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html": {
     "StatusCode": 200,
