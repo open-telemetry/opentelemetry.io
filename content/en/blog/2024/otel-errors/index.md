@@ -26,7 +26,8 @@ or how you expect it to look.
 * How span kind affects error reporting. 
 * Errors reported by spans vs logs.
 
-## Errors vs Exceptions
+## Errors vs exceptions
+
 Before we get into how OTel deals with errors and exceptions, let’s establish 
 what they are, and how they’re different from each other. While there are 
 variations on the definitions of these terms, we’ve landed on the ones below, 
