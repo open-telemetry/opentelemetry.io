@@ -153,7 +153,7 @@ representing the type of message being emitted such as `DEBUG`, `INFO`, `WARNING
 
 OTel allows for the correlation of logs to traces, in which a log message can be 
 associated to a span within a trace, via trace context correlation. Hence, looking 
-for a log message with a log level of ERROR or CRITICAL can yield further 
+for a log message with a log level of `ERROR` or `CRITICAL` can yield further 
 information of what led to that error, by pulling up the correlated trace.
 
 To record an error on a log, either `exception.type` or `exception.message` is 
