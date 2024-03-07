@@ -4,7 +4,7 @@ linkTitle: OTel Errors
 date: 2024-03-06
 author: >- # If you have only one author, then add the single name on this line in quotes.
   [Reese Lee](https://github.com/reese-lee) (New Relic),
-  [Adriana Villela](https://github.com/authorX_GH_ID) (ServiceNow)
+  [Adriana Villela](https://github.com/avillela) (ServiceNow)
 draft: true # TODO: remove this line once your post is ready to be published
 # canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the canonical URL here.
 ---
