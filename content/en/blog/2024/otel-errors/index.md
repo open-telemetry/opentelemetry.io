@@ -181,7 +181,8 @@ Another consideration is your observability backend. Does your backend render
 both logs and traces? How easily queryable or discoverable are your logs, spans, 
 and span events? Is logs and trace correlation supported?
 
-## Visualizing Errors in Different Backends:
+## Visualizing errors in different backends
+
 While OTel provides us with the raw telemetry data emitted by our systems, it 
 doesn’t provide data visualization or interpretation. This is done by an 
 observability backend. Because OTel is vendor-neutral, it means that the same 
