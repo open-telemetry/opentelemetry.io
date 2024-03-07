@@ -139,7 +139,7 @@ Since Go doesn’t support the “conventional” concept of exceptions, it inst
 supports [`RecordError`](https://github.com/open-telemetry/opentelemetry-go/blob/main/sdk/trace/span.go#L445-L467), which essentially does the same thing idiomatically. You have to 
 make an additional call to set its status to `Error` if that’s what it should be, 
 as it won’t automatically be set to that. Similarly, `RecordException` can be used 
-to record span events without setting the span’s status to ERROR, which means you 
+to record span events without setting the span’s status to `Error`, which means you 
 can use it to record any additional data about a span. 
 
 By decoupling the span status from being automatically set to `Error` when a span 
