@@ -3,7 +3,7 @@ title: OpenTelemetry Collector Antipatterns
 linkTitle: OTel Collector Antipatterns
 date: 2024-03-01
 author: >-
-  [Adriana Villela](https://github.com/avillela) (Lightstep),
+  [Adriana Villela](https://github.com/avillela) (ServiceNow),
 
 canonical_url: https://open.substack.com/pub/geekingoutpodcast/p/opentelemetry-collector-anti-patterns
 cSpell:ignore: antipattern antipatterns
