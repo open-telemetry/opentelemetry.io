@@ -7,7 +7,9 @@ cSpell:ignore: ottrace
 
 {{% alert title="Note" color="info" %}}
 
-Support for environment variables is optional. For detailed information on which environment variables each language implementation supports, please consult the [Implementation Compliance Matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#environment-variables).
+Support for environment variables is optional. For detailed information on which
+environment variables each language implementation supports, please consult the
+[Implementation Compliance Matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#environment-variables).
 
 {{% /alert %}}
 
