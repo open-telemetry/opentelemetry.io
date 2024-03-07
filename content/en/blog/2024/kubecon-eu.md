@@ -102,8 +102,9 @@ you will be able to follow **Observability Day** through a live stream.
 
 Drop by and say _"Hi!"_ at OpenTelemetry Observatory presented by Splunk in the
 Expo Hall. This will be a place for informal chats, meetups, and other
-discussions led by OpenTelemetry community members and maintainers. Check out
-the schedule of activities [here](https://shorturl.at/qEUX1).
+discussions led by OpenTelemetry community members and maintainers. For the
+activity schedule, see the
+[OTel Observatory Calendar](https://shorturl.at/qEUX1).
 
 If you’d like to participate and lead a discussion or short presentation, reach
 out to the
@@ -138,8 +139,8 @@ updates to come after KubeCon EU.
 Back by popular demand! We'll be recording
 [Humans of OTel interviews](/blog/2023/humans-of-otel/) at the OTel Observatory.
 If you'd like to share your experiences as an OpenTelemetry practitioner or
-maintainer, sign up for an interview session
-[here](https://calendly.com/otel-euwg/humans-of-otel).
+maintainer,
+[sign up for an interview session](https://calendly.com/otel-euwg/humans-of-otel).
 
 Come join us to listen, learn, and get involved in OpenTelemetry.
 

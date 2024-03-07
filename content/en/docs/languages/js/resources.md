@@ -92,15 +92,15 @@ configuration option, where you can set them. For example you can update the
 ```javascript
 ...
 const { Resource } = require('@opentelemetry/resources');
-const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventions');
+const { SEMRESATTRS_SERVICE_NAME, SEMRESATTRS_SERVICE_NAMESPACE, SEMRESATTRS_SERVICE_VERSION, SEMRESATTRS_SERVICE_INSTANCE_ID } = require('@opentelemetry/semantic-conventions');
 ...
 const sdk = new opentelemetry.NodeSDK({
   ...
   resource: new Resource({
-    [ SemanticResourceAttributes.SERVICE_NAME ]: "yourServiceName",
-    [ SemanticResourceAttributes.SERVICE_NAMESPACE ]: "yourNameSpace",
-    [ SemanticResourceAttributes.SERVICE_VERSION ]: "1.0",
-    [ SemanticResourceAttributes.SERVICE_INSTANCE_ID ]: "my-instance-id-1",
+    [ SEMRESATTRS_SERVICE_NAME ]: "yourServiceName",
+    [ SEMRESATTRS_SERVICE_NAMESPACE ]: "yourNameSpace",
+    [ SEMRESATTRS_SERVICE_VERSION ]: "1.0",
+    [ SEMRESATTRS_SERVICE_INSTANCE_ID ]: "my-instance-id-1",
   })
   ...
 });
