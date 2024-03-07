@@ -160,7 +160,8 @@ To record an error on a log, either `exception.type` or `exception.message` is
 required, while `exception.stacktrace` is recommended. You can view more 
 information about the semantic conventions for log exceptions [here](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/exceptions/exceptions-logs.md).
 
-## Logs or Spans to Capture Errors?
+## Logs or spans to capture errors?
+
 After all this, you might be wondering which signal to use to capture errors: 
 spans or logs? The answer is: "It depends!" Perhaps your team primarily uses 
 traces; perhaps they primarily use logs.
