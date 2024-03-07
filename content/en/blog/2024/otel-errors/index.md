@@ -1,5 +1,5 @@
 ---
-title: Dude, Where's My Error? How OpenTelemetry Records Errors
+title: Dude, where's my error? How OpenTelemetry records errors
 linkTitle: OTel Errors
 date: 2024-03-06
 author: >- # If you have only one author, then add the single name on this line in quotes.
