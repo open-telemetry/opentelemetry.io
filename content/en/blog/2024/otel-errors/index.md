@@ -158,7 +158,7 @@ information of what led to that error, by pulling up the correlated trace.
 
 To record an error on a log, either `exception.type` or `exception.message` is 
 required, while `exception.stacktrace` is recommended. You can view more 
-information about the semantic conventions for log exceptions [here](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/exceptions/exceptions-logs.md).
+information about the semantic conventions for log exceptions [here](/docs/specs/semconv/exceptions/exceptions-logs/).
 
 ## Logs or spans to capture errors?
 
