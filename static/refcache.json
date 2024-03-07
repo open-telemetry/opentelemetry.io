@@ -1915,6 +1915,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:24.637098-05:00"
   },
+  "https://flagd.dev": {
+    "StatusCode": 206,
+    "LastSeen": "2024-03-07T10:30:35.468496-05:00"
+  },
   "https://flagd.dev/reference/monitoring/#opentelemetry": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:06:38.046811-05:00"
