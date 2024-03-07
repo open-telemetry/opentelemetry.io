@@ -67,7 +67,7 @@ For example, most languages have implemented `RecordException`, while Go has
 implemented `RecordError`, which does the same thing. 
 
 You can view this [compliance matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md) of the spec across all languages, but you’ll 
-get the most updated info by checking the individual language repo. Now we have 
+get the most updated info by checking the individual language repository. Now we have 
 a place from which to begin figuring out how to handle errors in OTel, starting 
 with how to report them:
 * In spans
