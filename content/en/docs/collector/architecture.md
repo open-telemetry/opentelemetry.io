@@ -109,7 +109,7 @@ service:
       exporters: [otlp]
     traces/2: # another pipeline of “traces” type
       receivers: [otlp]
-      processors: [batch]
+      processors: [transform]
       exporters: [otlp]
 ```
 
@@ -125,7 +125,7 @@ of processors and exporters are omitted for brevity):
 flowchart LR
     R1("`#quot;opentelemetry-collector#quot; Receiver`") --> FO((fan-out))
     FO -->|Pipeline 'traces'| P1["`#quot;memory_limiter#quot; Processor`"]
-    FO -->|Pipeline 'traces/2'| P2["`#quot;tags#quot; Processor`"]
+    FO -->|Pipeline 'traces/2'| P2["`#quot;transform#quot; Processor`"]
     P1 ~~~ M1[...]
     P2 ~~~ M2[...]
 
@@ -181,7 +181,7 @@ service:
       exporters: [otlp]
     traces/2: # another pipeline of “traces” type
       receivers: [otlp]
-      processors: [batch]
+      processors: [transform]
       exporters: [otlp]
 ```
 
@@ -192,7 +192,7 @@ this diagram (part of processors and receivers are omitted for brevity):
 ```mermaid
 flowchart LR
     M1[...] ~~~ P1["`#quot;memory_limiter#quot; Processor`"]
-    M2[...] ~~~ P2["`#quot;tags#quot; Processor`"]
+    M2[...] ~~~ P2["`#quot;transform#quot; Processor`"]
     P1 -->|Pipeline 'traces'|E1("`#quot;otlp#quot; Exporter`")
     P2 -->|Pipeline 'traces/2'|E1("`#quot;otlp#quot; Exporter`")
 
