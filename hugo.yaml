@@ -201,6 +201,10 @@ security:
     getenv: # cspell:disable-line
       # Netlify build env var
       - ^(BRANCH|BUILD_ID|COMMIT_REF|CONTEXT|DEPLOY_ID|NETLIFY|PULL_REQUEST|REVIEW_ID)$
+      # Allow to set OTLP endpoint for local development.
+      - ^OTEL_EXPORTER_OTLP_ENDPOINT$
+      - ^OTEL_TRACES_EXPORTER$
+
 
 module:
   mounts:
