@@ -205,7 +205,6 @@ security:
       - ^OTEL_EXPORTER_OTLP_ENDPOINT$
       - ^OTEL_TRACES_EXPORTER$
 
-
 module:
   mounts:
     - source: content/en

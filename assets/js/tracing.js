@@ -10,10 +10,13 @@ import { Resource } from '@opentelemetry/resources';
 import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
 import { ZoneContextManager } from '@opentelemetry/context-zone-peer-dep';
 
-if(tracingEnabled) {
-  const exporter = collectorType === 'console' ? new ConsoleSpanExporter : new OTLPTraceExporter({
-    url: 'https://otelwebtelemetry.com/v1/traces',
-  });
+if (tracingEnabled) {
+  const exporter =
+    collectorType === 'console'
+      ? new ConsoleSpanExporter()
+      : new OTLPTraceExporter({
+          url: 'https://otelwebtelemetry.com/v1/traces',
+        });
 
   const resources = new Resource({
     [SemanticResourceAttributes.SERVICE_NAME]: 'opentelemetry.io',
