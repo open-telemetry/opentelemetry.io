@@ -964,7 +964,7 @@ Finally, you can update your file to include semantic attributes:
 const doWork = () => {
   tracer.startActiveSpan('app.doWork', (span) => {
     span.setAttribute(SEMATTRS_CODE_FUNCTION, 'doWork');
-    span.setAttribute(SSEMATTRS_CODE_FILEPATH, __filename);
+    span.setAttribute(SEMATTRS_CODE_FILEPATH, __filename);
 
     // Do some work...
 
