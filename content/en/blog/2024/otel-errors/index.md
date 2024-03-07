@@ -85,7 +85,8 @@ events.
 
 ![Graphic that shows the spans within a trace](OTel-spans.png)
 
-### Enhancing Spans with Metadata
+### Enhancing spans with metadata
+
 OTel enables you to enhance spans with metadata ([attributes](https://opentelemetry.io/docs/concepts/signals/traces/#attributes)) in the form of key/value pairs. By attaching relevant 
 information to spans, such as user IDs, request parameters, or environment 
 variables, you can gain deeper insights into the circumstances surrounding an 
