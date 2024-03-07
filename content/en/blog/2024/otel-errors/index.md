@@ -187,16 +187,23 @@ observability backend. Because OTel is vendor-neutral, it means that the same
 information emitted can be visualized and interpreted by different backends 
 without re-instrumenting your application. 
 
-If you notice an error or exception isn’t being visualized the way you expect in 
-your backend or being counted toward your application error rate, chances are it’s 
-because of the span kind. For instance, if you have a trace that has one exception 
-and it’s on an internal span with its status set to `Error`, you should see the 
-trace marked with an error, but it may not be counted toward your app error rate. 
-This is because the backend may have an opinion that only errors on entry point 
-spans (server spans) and consumer spans should be counted. 
+If you have been using a proprietary agent to monitor your applications and have 
+recently migrated to OTel, you might notice that an OTel error may not be 
+expressed the way you expect in your observability backend, as compared to the 
+same error captured by the proprietary agent. This is  most likely due to the fact 
+that OTel simply models errors differently than how vendors have been modeling 
+them. 
 
-As you'll see shortly, while Jaeger visualizes span events as logs, some backends 
-may synthesize span events as its own data type instead of as a log data type.
+As one example, OTel’s notion of span kinds may affect how your OTel error is 
+visualized. For instance, if you have a trace that has one exception and it’s on 
+an internal span with its status set to `Error`, you should see the trace marked 
+with an error, but it may not be counted toward your app error rate. This is 
+because the backend may have an opinion that only errors on entry point spans 
+(server spans) and consumer spans should be counted toward your error rate. 
+
+Furthermore, while [Jaeger](https://www.jaegertracing.io/) visualizes span events 
+as logs, some backends may synthesize span events as its own data type instead of 
+as a log data type, which would impact the way you query that data. 
 
 What might some of these errors look like in an observability backend? We’ll take 
 a look at Jaeger and a couple proprietary examples. The following screen captures 
