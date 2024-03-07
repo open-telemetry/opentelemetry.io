@@ -193,8 +193,8 @@ this diagram (part of processors and receivers are omitted for brevity):
 flowchart LR
     M1[...] ~~~ P1["`#quot;memory_limiter#quot; Processor`"]
     M2[...] ~~~ P2["`#quot;transform#quot; Processor`"]
-    P1 -->|Pipeline 'traces'|E1("`#quot;otlp#quot; Exporter`")
-    P2 -->|Pipeline 'traces/2'|E1("`#quot;otlp#quot; Exporter`")
+    P1 -->|Pipeline 'traces'|E1[["`#quot;otlp#quot; Exporter`"]]
+    P2 -->|Pipeline 'traces/2'|E1
 
     classDef default fill:#e3e8fc,stroke:#4f62ad;
 ```
