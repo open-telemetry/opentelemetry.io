@@ -3623,6 +3623,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:26.943394-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-python/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-10T11:27:53.222542-08:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-python/releases": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:21.997322-05:00"
@@ -5310,6 +5314,10 @@
   "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk_trace_base.SpanExporter.html": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:05:22.694888-05:00"
+  },
+  "https://open-telemetry.github.io/opentelemetry-python/benchmarks/data.js": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-10T11:27:53.867156-08:00"
   },
   "https://open.spotify.com/episode/5YrBEsXoJV3UjrHRrLRqBP": {
     "StatusCode": 200,
