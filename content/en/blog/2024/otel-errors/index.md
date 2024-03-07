@@ -119,7 +119,8 @@ Spans can be further enhanced with [span status](https://opentelemetry.io/docs/c
 specified. You can mark a span status as `Error` if the resulting span depicts an 
 error, and `Ok` if the resulting span is error-free. 
 
-### Enhancing Spans with Span Events
+### Enhancing spans with span events
+
 A [span event](https://opentelemetry.io/docs/concepts/signals/traces/#span-events) 
 is a structured log message embedded within a span. Span events help enhance spans 
 by providing descriptive information about a span. [Span events can also have 
