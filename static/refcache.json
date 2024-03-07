@@ -763,7 +763,7 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-22T08:13:47.191476+01:00"
   },
-  "https://doc.traefik.io/traefik-hub/operations/telemetry/overview/": {
+  "https://doc.traefik.io/traefik-hub/operations/metrics": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:07:39.690877-05:00"
   },
@@ -4814,6 +4814,10 @@
   "https://locust.io/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:53:04.208962-05:00"
+  },
+  "https://lookerstudio.google.com/s/tSTKxK1ECeU": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-06T14:56:05.033361-05:00"
   },
   "https://loom.com": {
     "StatusCode": 206,

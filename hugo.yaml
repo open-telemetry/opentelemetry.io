@@ -110,6 +110,10 @@ params:
         url: https://docs.google.com/spreadsheets/d/1SYKfjYhZdm2Wh2Cl6KVQalKg_m4NhTPZqq-8SzEVO6s
         icon: fas fa-video
         desc: Watch our meeting recordings on Zoom Cloud
+      - name: Site analytics
+        url: https://lookerstudio.google.com/s/tSTKxK1ECeU
+        icon: fa-solid fa-chart-line
+        desc: Google analytics for opentelemetry.io
     developer:
       - name: GitHub
         url: https://github.com/open-telemetry
