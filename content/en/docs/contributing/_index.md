@@ -590,7 +590,7 @@ Keep the following in mind when filing an issue:
 
 ## Contribute to other repositories
 
-OpenTelemetry is an open-source project, and we gladly accept new contributions
+OpenTelemetry is an open source project, and we gladly accept new contributions
 and contributors. See the CONTRIBUTING.md file in each SIG repository for
 information on getting started.
 
