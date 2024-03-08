@@ -164,23 +164,43 @@ Once a span has completed, it is immutable and can no longer be modified.
 
 ### Span Attributes
 
-Attributes are keys and values that are applied as metadata to your spans and
+[Attributes] are key-value pairs that are applied as metadata to your spans and
 are useful for aggregating, filtering, and grouping traces. Attributes can be
 added at span creation, or at any other time during the lifecycle of a span
 before it has completed.
 
+As a best practice, set attributes during span creation. This causes
+less overhead compared to setting attributes after span creation and
+allow attributes to contribute to SDK sampling decisions.
+
+The following example adds attributes at span creation:
+
 ```go
 // setting attributes at creation...
-ctx, span = tracer.Start(ctx, "attributesAtCreation", trace.WithAttributes(attribute.String("hello", "world")))
-// ... and after creation
-span.SetAttributes(attribute.Bool("isTrue", true), attribute.String("stringAttr", "hi!"))
+ctx, span = tracer.Start(ctx, "attributesAtCreation",
+	trace.WithAttributes(attribute.String("hello", "world"))
+)
 ```
 
-Attribute keys can be precomputed, as well:
+If you need to set an attribute after creation, such as adding a value that
+isn't known until after the span is started, the following example shows how:
+
+```go
+span.SetAttributes(
+	attribute.Bool("isTrue", true),
+	attribute.String("stringAttr", "hi!"))
+```
+
+Additionally, attribute keys can be precomputed:
 
 ```go
 var myKey = attribute.Key("myCoolAttribute")
-span.SetAttributes(myKey.String("a value"))
+
+// ... somewhere later in code
+
+ctx, span = tracer.Start(ctx, "app.myspan",
+	trace.WithAttributes(myKey.String("a value"))
+)
 ```
 
 #### Semantic Attributes
@@ -690,11 +710,16 @@ func init() {
 
 ### Adding attributes
 
+Attributes are key-value pairs that are applied as metadata to your metrics and
+are useful for aggregating, filtering, and grouping metrics.
+
 You can add Attributes by using the
 [`WithAttributeSet`](https://pkg.go.dev/go.opentelemetry.io/otel/metric#WithAttributeSet)
 or
 [`WithAttributes`](https://pkg.go.dev/go.opentelemetry.io/otel/metric#WithAttributes)
 options.
+
+Here's an example of adding attributes to a measurement:
 
 ```go
 import (
@@ -896,3 +921,4 @@ telemetry backends.
   https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric
 [`go.opentelemetry.io/otel/sdk/resource`]:
   https://pkg.go.dev/go.opentelemetry.io/otel/sdk/resource
+[Attributes]: /docs/concepts/signals/traces/#attributes
