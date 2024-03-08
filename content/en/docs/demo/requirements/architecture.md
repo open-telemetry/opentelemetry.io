@@ -69,7 +69,7 @@ application written in Swift.
 ## Feature Flag Component
 
 Feature flagging is a crucial part of cloud-native application development. The
-demo should use OpenFeature, a CNCF incubating project, to manage feature flags.
+demo uses OpenFeature, a CNCF incubating project, to manage feature flags.
 
 ## Orchestration and Deployment
 
