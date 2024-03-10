@@ -1,0 +1,31 @@
+name: "Lint the docs for style issues"
+
+on:
+  pull_request:
+  workflow_dispatch:
+        
+jobs:
+  lint:
+    runs-on: macos-latest
+    name: Lint changed files
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Get all changed docs
+        id: changed-files
+        uses: tj-actions/changed-files@v42.1.0
+        with:
+          files: |
+            **/*.md
+      - name: Install Vale
+        run: |
+          brew update
+          brew install vale
+          vale sync
+      - name: Lint all changed docs
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_and_modified_files }}; do
+            echo "Linting $file..."
+            vale $file --config linter.ini
+          done
