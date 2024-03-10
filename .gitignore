@@ -21,6 +21,10 @@ assets/jsconfig.json
 # IntelliJ
 *.iml
 
+# Vale linter
+
+/vale
+
 # VS Code
 /.vscode/**
 
