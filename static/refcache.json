@@ -763,7 +763,7 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-22T08:13:47.191476+01:00"
   },
-  "https://doc.traefik.io/traefik-hub/operations/telemetry/overview/": {
+  "https://doc.traefik.io/traefik-hub/operations/metrics": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:07:39.690877-05:00"
   },
@@ -1007,6 +1007,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:05:58.662694-05:00"
   },
+  "https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-15T11:30:46.466434+01:00"
+  },
   "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T15:25:17.633498-05:00"
@@ -1050,6 +1054,10 @@
   "https://docs.google.com/document/d/1M8VLNe_sv1MIfu5bUR5OV_vrMBnAI7IJN-7-IAr37JY/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:05:16.715217-05:00"
+  },
+  "https://docs.google.com/document/d/1NeheFG7DmcUYo_h2vLtNRlia9x5wOJMlV4QKEK05FhQ/edit": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-27T14:54:30.958263-08:00"
   },
   "https://docs.google.com/document/d/1Unbs2qp_j5kp8FfL_lRH-ld7i5EOQpsq0I4djkOOSL4/": {
     "StatusCode": 200,
@@ -1731,6 +1739,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:27.095072-05:00"
   },
+  "https://en.wikipedia.org/wiki/Letter_case#Kebab_case": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-15T11:30:50.951761+01:00"
+  },
   "https://en.wikipedia.org/wiki/Log_file": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:01:58.409935-05:00"
@@ -2002,6 +2014,10 @@
   "https://github.com/DataDog/dd-opentelemetry-exporter-ruby": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:10:56.414699-05:00"
+  },
+  "https://github.com/DavidAnson/markdownlint": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-15T11:30:50.043802+01:00"
   },
   "https://github.com/DebajitDas": {
     "StatusCode": 200,
@@ -3611,6 +3627,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:26.943394-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-python/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-10T11:27:53.222542-08:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-python/releases": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:21.997322-05:00"
@@ -4086,6 +4106,10 @@
   "https://github.com/steffan-westcott/clj-otel": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:12:56.889858-05:00"
+  },
+  "https://github.com/streetsidesoftware/cspell": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-15T11:30:50.628118+01:00"
   },
   "https://github.com/strimzi": {
     "StatusCode": 200,
@@ -4795,6 +4819,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:53:04.208962-05:00"
   },
+  "https://lookerstudio.google.com/s/tSTKxK1ECeU": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-06T14:56:05.033361-05:00"
+  },
   "https://loom.com": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T05:18:46.161548-05:00"
@@ -5290,6 +5318,10 @@
   "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk_trace_base.SpanExporter.html": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:05:22.694888-05:00"
+  },
+  "https://open-telemetry.github.io/opentelemetry-python/benchmarks/data.js": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-10T11:27:53.867156-08:00"
   },
   "https://open.spotify.com/episode/5YrBEsXoJV3UjrHRrLRqBP": {
     "StatusCode": 200,
@@ -6554,6 +6586,10 @@
   "https://plugins.jenkins.io/opentelemetry/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:05:44.189442-05:00"
+  },
+  "https://prettier.io": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-15T11:32:15.231585+01:00"
   },
   "https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html": {
     "StatusCode": 200,
