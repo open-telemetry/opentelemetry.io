@@ -5,7 +5,7 @@ cSpell:ignore: flagd OLJCESPC7Z
 ---
 
 The demo provides several feature flags that you can use to simulate different
-scenarios. These flags are managed by `flagd`, a simple feature flag service
+scenarios. These flags are managed by [`flagd`](flagd.dev), a simple feature flag service
 that supports [OpenFeature](https://openfeature.dev). Flag values are stored in
 the `demo.flagd.json` file. To enable a flag, change the `defaultVariant` value
 in the config file for a given flag to "on".
