@@ -1,6 +1,6 @@
 # cSpell:ignore Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Skyscanner
 - name: AppDirect
-  url: https://www.appdirect.com/
+  url: https://www.appdirect.com/agoago
   components: [Collector]
   reference: ''
   contact: ''
@@ -77,7 +77,7 @@
   url: https://www.sicredi.com.br/
   components: [Collector, Go, Java, Python]
   reference: ''
-  contact: ''
+  contact: https://github.com/igorestevanjasinski
 - name: Skyscanner
   url: https://www.skyscanner.net/
   components: [Collector, Go, Java, Javascript, Python]
