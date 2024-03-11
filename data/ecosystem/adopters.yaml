@@ -27,7 +27,7 @@
 - name: Dyte
   url: https://dyte.io
   components: [Golang, Javascript]
-  reference: https://dyte.io/blog/opentelemetry-at-dyte-part-i/
+  reference: 'https://dyte.io/blog/opentelemetry-at-dyte-part-i/'
   contact: ''
 - name: eBay
   url: https://www.ebay.com
