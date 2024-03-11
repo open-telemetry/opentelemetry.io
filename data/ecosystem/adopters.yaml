@@ -1,6 +1,6 @@
 # cSpell:ignore Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Skyscanner
 - name: AppDirect
-  url: https://www.appdirect.com/agoago
+  url: https://www.appdirect.com/
   components: [Collector]
   reference: ''
   contact: ''
