@@ -130,10 +130,10 @@ When a span status is set to `Error`, a span event is created automatically,
 capturing the span’s resulting error message and stack trace as an event on that 
 span. You can further enhance this span error by adding attributes to it.
 
-Earlier, we mentioned a method called `RecordException`. Per the spec (emphasis 
-our own), “To facilitate recording an exception languages SHOULD provide a 
-RecordException method **if the language uses exceptions**… The signature of the 
-method is to be determined by each language and can be overloaded as appropriate.” 
+Earlier, we mentioned a method called `RecordException`. Per [the spec](docs/specs/otel/trace/api/#record-exception) (emphasis our own), “To facilitate recording an exception 
+languages SHOULD provide a RecordException method **if the language uses exceptions**… 
+The signature of the method is to be determined by each language and can be 
+overloaded as appropriate.” 
 
 Since Go doesn’t support the “conventional” concept of exceptions, it instead 
 supports [`RecordError`](https://github.com/open-telemetry/opentelemetry-go/blob/main/sdk/trace/span.go#L445-L467), which essentially does the same thing idiomatically. You have to 
