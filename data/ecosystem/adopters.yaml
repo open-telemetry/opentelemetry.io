@@ -26,7 +26,7 @@
   contact: ''
 - name: Dyte
   url: https://dyte.io
-  components: [Golang, Javascript]
+  components: [Go, Javascript]
   reference: 'https://dyte.io/blog/opentelemetry-at-dyte-part-i/'
   contact: https://github.com/ethicalmohit
 - name: eBay
