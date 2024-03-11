@@ -1655,6 +1655,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:01:18.598115-05:00"
   },
+  "https://dyte.io/blog/opentelemetry-at-dyte-part-i/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-11T16:15:19.930537498Z"
+  },
   "https://ebpf.io/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T05:18:23.588545-05:00"
@@ -7326,6 +7330,10 @@
   "https://sysdig.com/blog/kubernetes-1-25-whats-new/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:06:30.661915-05:00"
+  },
+  "https://tech.bureau.id/connecting-the-dots-with-opentelemetry-part-ii-5ea5f6b06c29": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-11T16:15:18.683685828Z"
   },
   "https://tech.ebayinc.com/engineering/beats-ebay-collectbeat-a-journey-where-company-and-community-come-together/": {
     "StatusCode": 200,
