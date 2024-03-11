@@ -167,7 +167,7 @@ information about the semantic conventions for log exceptions [here](/docs/specs
 
 After all this, you might be wondering which signal to use to capture errors: 
 spans or logs? The answer is: "It depends!" Perhaps your team primarily uses 
-traces; perhaps they primarily use logs.
+traces; perhaps it primarily uses logs.
 
 Spans can be great for capturing errors, because if the operation errors out, 
 marking a span as an error makes it stand out and therefore easier to spot. On 
