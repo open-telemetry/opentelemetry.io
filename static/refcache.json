@@ -1915,6 +1915,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:24.637098-05:00"
   },
+  "https://flagd.dev": {
+    "StatusCode": 206,
+    "LastSeen": "2024-03-07T10:30:35.468496-05:00"
+  },
   "https://flagd.dev/reference/monitoring/#opentelemetry": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:06:38.046811-05:00"
@@ -2727,6 +2731,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:06:18.89171-05:00"
   },
+  "https://github.com/open-feature/flagd": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-27T10:05:21.050757-05:00"
+  },
   "https://github.com/open-telemetry": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:10:19.568632-05:00"
@@ -2962,6 +2970,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector/releases": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:01.457649-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2Fv0.95.0": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-01T16:49:42.006164+01:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.63.0": {
     "StatusCode": 200,
@@ -5351,6 +5363,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:03:38.301664-05:00"
   },
+  "https://openfeature.dev": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-27T10:05:20.149319-05:00"
+  },
   "https://openfeature.dev/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:06:32.46557-05:00"
@@ -6431,6 +6447,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:16:51.070771+01:00"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/collector/cmd/builder": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-01T16:49:30.684687+01:00"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/collector/component#Component": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:08:05.029244-05:00"
@@ -6454,6 +6474,22 @@
   "https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#ServerAuthenticator": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:07:49.734386-05:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/collector/exporter/debugexporter": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-01T16:49:31.744795+01:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/collector/exporter/otlpexporter": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-01T16:49:32.206669+01:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/collector/processor/batchprocessor": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-01T16:49:33.428723+01:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/collector/receiver/otlpreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-01T16:49:37.76693+01:00"
   },
   "https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp": {
     "StatusCode": 200,
