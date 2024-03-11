@@ -65,7 +65,7 @@ Although it is generally not advised, sometimes there are strong language-specif
 reasons to do something different. In this way, the spec allows for some 
 flexibility for each language to implement features as idiomatically as possible. 
 For example, most languages have implemented `RecordException`, while Go has 
-implemented `RecordError`, which does the same thing. 
+implemented [`RecordError`](https://github.com/open-telemetry/opentelemetry-go/blob/main/sdk/trace/span.go), which does the same thing. 
 
 You can view this [compliance matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md) of the spec across all languages, but you’ll 
 get the most updated info by checking the individual language repository. Now we have 
