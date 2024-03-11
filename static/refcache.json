@@ -479,6 +479,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:55:35.480849-05:00"
   },
+  "https://colocatedeventseu2023.sched.com/event/1Jo8E/ingesting-65-tb-of-telemetry-data-daily-through-open-telemetry-protocol-and-collectors-gustavo-pantuza-vtex": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-11T15:46:36.452505974Z"
+  },
   "https://colocatedeventsna2023.sched.com/overview/type/Observability+Day": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:04:58.233769-05:00"

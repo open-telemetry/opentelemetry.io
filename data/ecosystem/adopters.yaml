@@ -99,7 +99,7 @@
   url: https://www.vtex.com/
   components: [Collector, Go, JavaScript, .NET]
   reference: 'https://colocatedeventseu2023.sched.com/event/1Jo8E/ingesting-65-tb-of-telemetry-data-daily-through-open-telemetry-protocol-and-collectors-gustavo-pantuza-vtex'
-  contact: 'sre-observability@vtex.com'  
+  contact: 'sre-observability@vtex.com'
 - name: Wandera
   url: https://www.wandera.com/
   components: [Collector]
