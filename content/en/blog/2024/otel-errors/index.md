@@ -64,7 +64,7 @@ Another exception is when a language might decide to diverge from the spec.
 Although it is generally not advised, sometimes there are strong language-specific 
 reasons to do something different. In this way, the spec allows for some 
 flexibility for each language to implement features as idiomatically as possible. 
-For example, most languages have implemented `RecordException`, while Go has 
+For example, most languages have implemented `RecordException` (e.g. [Python](https://opentelemetry-python.readthedocs.io/en/latest/_modules/opentelemetry/sdk/trace.html#Span.record_exception)), while Go has 
 implemented [`RecordError`](https://github.com/open-telemetry/opentelemetry-go/blob/main/sdk/trace/span.go), which does the same thing. 
 
 You can view this [compliance matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md) of the spec across all languages, but you’ll 
