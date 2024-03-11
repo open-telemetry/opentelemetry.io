@@ -68,6 +68,11 @@
   components: [Ruby]
   reference: ''
   contact: ''
+- name: Smart Reporting GmbH
+  url: https://www.smart-reporting.com/
+  components: [Collector, Java, NodeJS]
+  reference: ''
+  contact: ''
 - name: Shopify
   url: https://www.shopify.com/
   components: [Collector, Go, Ruby]
