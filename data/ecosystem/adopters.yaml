@@ -1,4 +1,4 @@
-# cSpell:ignore Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Skyscanner Dyte
+# cSpell:ignore Dyte Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Skyscanner VTEX
 - name: AppDirect
   url: https://www.appdirect.com/
   components: [Collector]
@@ -105,6 +105,11 @@
   reference: /blog/2023/end-user-q-and-a-02/
   referenceTitle: blog post
   contact: ''
+- name: VTEX
+  url: https://www.vtex.com/
+  components: [Collector, Go, JavaScript, .NET]
+  reference: 'https://colocatedeventseu2023.sched.com/event/1Jo8E/ingesting-65-tb-of-telemetry-data-daily-through-open-telemetry-protocol-and-collectors-gustavo-pantuza-vtex'
+  contact: 'sre-observability@vtex.com'
 - name: Wandera
   url: https://www.wandera.com/
   components: [Collector]
