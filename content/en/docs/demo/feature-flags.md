@@ -1,13 +1,14 @@
 ---
 title: Feature Flags
 aliases: [feature_flags]
-cSpell:ignore: OLJCESPC7Z
+cSpell:ignore: flagd OLJCESPC7Z
 ---
 
-This demo comes with several feature flags which can control failure conditions
-in specific services. By default the flags are disabled. Using the Feature Flags
-UI <http://localhost:8080/feature> you will be able to control the status of
-these feature flags.
+The demo provides several feature flags that you can use to simulate different
+scenarios. These flags are managed by [`flagd`](https://flagd.dev), a simple
+feature flag service that supports [OpenFeature](https://openfeature.dev). Flag
+values are stored in the `demo.flagd.json` file. To enable a flag, change the
+`defaultVariant` value in the config file for a given flag to "on".
 
 | Feature Flag            | Service(s)      | Description                                                                                              |
 | ----------------------- | --------------- | -------------------------------------------------------------------------------------------------------- |
@@ -15,3 +16,10 @@ these feature flags.
 | `cartServiceFailure`    | Cart Service    | Generate an error for `EmptyCart` 1/10th of the time                                                     |
 | `productCatalogFailure` | Product Catalog | Generate an error for `GetProduct` requests with product id: `OLJCESPC7Z`                                |
 | `recommendationCache`   | Recommendation  | Create a memory leak due to an exponentially growing cache. 1.4x growth, 50% of requests trigger growth. |
+
+## Feature Flag Architecture
+
+Please see the [flagd documentation](https://flagd.dev) for more information on
+how flagd works, and the [OpenFeature](https://openfeature.dev) website for more
+information on how OpenFeature works, along with documentation for the
+OpenFeature API.
