@@ -1,9 +1,15 @@
-# cSpell:ignore Dyte Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Skyscanner VTEX
+# cSpell:ignore Causely Dyte Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Skyscanner VTEX
 - name: AppDirect
   url: https://www.appdirect.com/
   components: [Collector]
   reference: ''
   contact: ''
+- name: Causely
+  url: https://www.causely.io
+  components: [Collector, Go]
+  reference: https://www.causely.io/blog/eating-our-own-dog-food-causelys-journey-with-opentelemetry-causal-ai/
+  referenceTitle: blog post
+  contact: https://github.com/esara
 - name: Bureau.id
   url: https://bureau.id/
   components: [Collector, Python, Go, Lambda]
