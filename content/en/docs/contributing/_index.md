@@ -70,7 +70,7 @@ class S,T spacewhite
 class first,second white
 ```
 
-**_Figure - Contributing new content_**
+_Figure 1. Contributing new content._
 
 The previous figure presents the basic steps for new docs contributions.
 
@@ -85,7 +85,7 @@ request (PR):
 ### Changes using GitHub {#changes-using-github}
 
 If you're less experienced with Git workflows, here's an easier method of
-opening a pull request. Figure 1 outlines the steps and the details follow.
+opening a pull request. Figure 2 outlines the steps and the details follow.
 
 ```mermaid
 flowchart LR
@@ -115,7 +115,7 @@ class tasks,tasks2 white
 class id1 k8s
 ```
 
-Figure 1. Steps for opening a PR using GitHub.
+_Figure 2. Steps for opening a PR using GitHub._
 
 1. On the page where you see the issue, select the **Edit this page** option in
    the right-hand side navigation panel.
@@ -165,7 +165,7 @@ Make sure you have
 [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed
 on your computer. You can also use a user interface for Git.
 
-Figure 2 shows the steps to follow when you work from a local fork. The details
+Figure 3 shows the steps to follow when you work from a local fork. The details
 for each step follow.
 
 ```mermaid
@@ -193,7 +193,7 @@ class S,T spacewhite
 class changes,changes2 white
 ```
 
-Figure 2. Working from a local fork to make your changes.
+_Figure 3. Working from a local fork to make your changes._
 
 #### Fork the opentelemetry.io repository
 
@@ -243,7 +243,7 @@ Figure 2. Working from a local fork to make your changes.
    ```
 
    This makes sure your local repository is up to date before you start making
-   changes. Push changes from upstream to origin regularly to keep you fork in
+   changes. Push changes from upstream to origin regularly to keep your fork in
    sync with upstream.
 
 #### Create a branch
@@ -307,8 +307,8 @@ When you are ready to submit a pull request, commit your changes.
 
 #### Open a pull request from your fork {#open-a-pr}
 
-Figure 3 shows the steps to open a PR from your fork to the
-[opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io) .
+Figure 4 shows the steps to open a PR from your fork to
+[opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io).
 
 ```mermaid
 flowchart LR
@@ -333,7 +333,7 @@ class 1,2,3,4,5,6,7,8 grey
 class first,second white
 ```
 
-Figure 3. Steps to open a PR from your fork to the
+_Figure 4. Steps to open a PR from your fork to_
 [opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io).
 
 1. In a web browser, go to the
@@ -350,9 +350,9 @@ Figure 3. Steps to open a PR from your fork to the
    - **Description**: Describe the change in more detail.
 
      - If there is a related GitHub issue, include `Fixes #12345` or
-       `Closes #12345` in the description. GitHub's automation closes the
-       mentioned issue after merging the PR if used. If there are other related
-       PRs, link those as well.
+       `Closes #12345` in the description so that GitHub's automation closes the
+       mentioned issue after merging the PR. If there are other related PRs,
+       link those as well.
      - If you want advice on something specific, include any questions you'd
        like reviewers to think about in your description.
 
@@ -365,11 +365,11 @@ After opening a PR, GitHub runs automated tests and tries to deploy a preview
 using [Netlify](https://www.netlify.com/).
 
 - If the Netlify build fails, select **Details** for more information.
-- If the Netlify build succeeds, select **Details** opens a staged version of
+- If the Netlify build succeeds, select **Details** to open a staged version of
   the OpenTelemetry website with your changes applied. This is how reviewers
   check your changes.
 
-Other checks might also fail, see the
+Other checks might also fail. See the
 [list of all PR checks](/docs/contributing/pr-checks).
 
 #### Fix content issues automatically
@@ -401,28 +401,28 @@ To build and serve the site locally with Hugo, run the following command:
 npm run serve
 ```
 
-Navigate to `https://localhost:1313` in your web browser to see the local
-preview. Hugo watches the changes and rebuilds the site as needed.
+Navigate to `http://localhost:1313` in your web browser to see the local
+preview. Hugo watches for changes and rebuilds the site as needed.
 
 To stop the local Hugo instance, go back to the terminal and type `Ctrl+C`, or
 close the terminal window.
 
 #### Site deploys and PR previews
 
-If you submit a PR, Netlify will create a [deploy preview][] so that you can
-review your changes. Once your PR is merged, Netlify deploys the updated site to
-the production server.
+If you submit a PR, Netlify creates a [deploy preview][] so that you can review
+your changes. Once your PR is merged, Netlify deploys the updated site to the
+production server.
 
 > **Note**: PR previews include _draft pages_, but production builds do not.
 
-To see deploy logs and more, visit project's [dashboard][] -- Netlify login
+To see deploy logs and more, visit the project's [dashboard][] -- Netlify login
 required.
 
 #### PR guidelines
 
-Before a PR gets merged, it will sometimes require a few iterations of
+Before a PR gets merged, it sometimes requires a few iterations of
 review-and-edit. To help us and yourself make this process as easy as possible,
-we ask that adhere to the following:
+we ask that you adhere to the following:
 
 - If your PR isn't a quick fix, then **work from a fork**: Click the
   [Fork](https://github.com/open-telemetry/opentelemetry.io/fork) button at the
@@ -523,21 +523,21 @@ create a merge conflict. You must resolve all merge conflicts in your PR.
 Pull requests are merged when they comply with the following criteria:
 
 - All reviews by approvers, maintainers, technical committee members, or subject
-  matter experts have the status "Approved"
-- No unresolved conversations
-- Approved by at least one approver
-- No failing PR checks
-- PR branch is up-to-date with the base branch
+  matter experts have the status "Approved".
+- No unresolved conversations.
+- Approved by at least one approver.
+- No failing PR checks.
+- PR branch is up-to-date with the base branch.
 
 > **Important**
 >
 > Do not worry too much about failing PR checks. Community members will help you
 > to get them fixed, by either providing you with instructions how to fix them
-> or by fixing them on your behave.
+> or by fixing them on your behalf.
 
 ## Open an issue
 
-If you want to suggest improvements to existing content or notice an error, open
+If you notice an error or want to suggest improvements to existing content, open
 an issue.
 
 1. Click the **Create documentation issue** link on any document. This redirects
