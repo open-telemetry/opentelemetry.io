@@ -111,10 +111,7 @@ later (e.g. job inserted into a job queue)
 * **consumer**: For the processing of a job created by a producer, which may start 
 long after the producer span has ended 
 
-Span kind is determined automatically by the instrumentation libraries used. In 
-the event that a span kind has been incorrectly set, you may be able to 
-[override](https://developer.newrelic.com/collect-data/opentelemetry-manual/custom-span-event/) 
-it while you await a possible bug fix. 
+Span kind is determined automatically by the instrumentation libraries used.
 
 Spans can be further enhanced with [span status](https://opentelemetry.io/docs/concepts/signals/traces/#span-status). By default, span status is marked as `Unset` unless otherwise 
 specified. You can mark a span status as `Error` if the resulting span depicts an 
