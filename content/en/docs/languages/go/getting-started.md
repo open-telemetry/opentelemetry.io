@@ -1035,7 +1035,7 @@ telemetry backends.
 
 If you'd like to explore a more complex example, take a look at the
 [OpenTelemetry Demo](/docs/demo/), which includes the Go based
-[Checkout Service](/docs/demo/services/feature-flag/),
+[Checkout Service](/docs/demo/services/checkout/),
 [Product Catalog Service](/docs/demo/services/product-catalog/), and
 [Accounting Service](/docs/demo/services/accounting/)
 
