@@ -1,6 +1,9 @@
 ---
 title: Feature Flags
-aliases: [feature_flags, services/featureflagservice]
+aliases:
+  - feature_flags
+  - services/feature-flag
+  - services/featureflagservice
 cSpell:ignore: flagd OLJCESPC7Z
 ---
 
