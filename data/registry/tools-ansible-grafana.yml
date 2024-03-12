@@ -13,4 +13,5 @@ authors:
   - name: Grafana Labs
 urls:
   repo: https://github.com/grafana/grafana-ansible-collection/tree/main/roles/opentelemetry_collector
+  docs: https://galaxy.ansible.com/ui/repo/published/grafana/grafana/content/role/opentelemetry_collector
 createdAt: 2024-03-12
