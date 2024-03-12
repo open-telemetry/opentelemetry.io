@@ -32,17 +32,20 @@ specific portions of the SDK & agent:
 
 ### Enable Resource Providers that are disabled by default
 
-In addition to the resource configuration from the SDK autoconfiguration, you can enable additional resource providers that are disabled by default:
+In addition to the resource configuration from the SDK autoconfiguration, you
+can enable additional resource providers that are disabled by default:
 
 {{% config_option
   name="otel.resource.providers.aws.enabled"
   default=false
-%}} Enables the [AWS resource provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources). {{% /config_option %}}
+%}} Enables the [AWS resource provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources).
+{{% /config_option %}}
 
 {{% config_option
   name="otel.resource.providers.gcp.enabled"
   default=false
-%}} Enables the [GCP resource provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources). {{% /config_option %}}
+%}} Enables the [GCP resource provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources).
+{{% /config_option %}}
 
 ## Configuring the agent
 
