@@ -2,6 +2,7 @@
 title: Configuration and settings
 linkTitle: Configuration
 weight: 20
+aliases: [config]
 # prettier-ignore
 cSpell:ignore: AZUREAPPSERVICE Bitness CLSID CORECLR dylib NETFX PROCESSRUNTIME UNHANDLEDEXCEPTION
 ---

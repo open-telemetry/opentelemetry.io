@@ -297,7 +297,7 @@ Value: Sum: 1330.4766000000002 Count: 5 Min: 50.0333 Max: 465.7936
 For more:
 
 - To configure exporters, samplers, resources and more, see
-  [Configuration and settings](../config)
+  [Configuration and settings](../configuration)
 - See the list of [available instrumentations](../instrumentations)
 - If you want to combine automatic and manual instrumentation, learn how you
   [can create custom traces and metrics](../custom)
@@ -306,7 +306,7 @@ For more:
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/
 [logs]: /docs/concepts/signals/logs/
-[configure .NET Automatic Instrumentation]: ../config
+[configure .NET Automatic Instrumentation]: ../configuration
 [console exporter]:
   https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#internal-logs
 [releases]:
