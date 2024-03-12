@@ -23,7 +23,9 @@ a significant impact on collector performance.
 **Processor**:
 [filter processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor)
 
-The filter processor allows users to filter telemetry using [OTTL](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/README.md). Telemetry that matches any condition is dropped.
+The filter processor allows users to filter telemetry using
+[OTTL](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/README.md).
+Telemetry that matches any condition is dropped.
 
 For example, to _only_ allow span data from services app1, app2, and app3 and
 drop data from all other services:
@@ -35,8 +37,8 @@ processors:
     traces:
       span:
         - |
-        resource.attributes["service.name"] != "app1" and 
-        resource.attributes["service.name"] != "app2" and 
+        resource.attributes["service.name"] != "app1" and
+        resource.attributes["service.name"] != "app2" and
         resource.attributes["service.name"] != "app2"
 ```
 
