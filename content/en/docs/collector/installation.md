@@ -147,7 +147,7 @@ Deploy the OpenTelemetry Collector on your instances using Ansible with the foll
               exporters: [otlp]
 ```
 
-This playbook sets up the OpenTelemetry Collector with basic configurations for receiving, processing, and exporting telemetry data. Customize the configuration as needed to fit your environment and requirements.
+The previous Ansible playbook sets up the OpenTelemetry Collector with a basic set of receivers, processors, and exporters. Customize the configuration as needed to fit your environment and requirements.
 
 ## Linux
 
