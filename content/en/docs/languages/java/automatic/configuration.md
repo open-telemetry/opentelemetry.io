@@ -30,6 +30,20 @@ specific portions of the SDK & agent:
 - [Span limits](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#span-limits)
 - [Using SPI to further configure the SDK](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#customizing-the-opentelemetry-sdk)
 
+### Enable Resource Providers that are disabled by default
+
+In addition to the resource configuration from the SDK autoconfiguration, you can enable additional resource providers that are disabled by default:
+
+{{% config_option
+  name="otel.resource.providers.aws.enabled"
+  default=false
+%}} Enables the [AWS resource provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources). {{% /config_option %}}
+
+{{% config_option
+  name="otel.resource.providers.gcp.enabled"
+  default=false
+%}} Enables the [GCP resource provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources). {{% /config_option %}}
+
 ## Configuring the agent
 
 The agent can consume configuration from one or more of the following sources
