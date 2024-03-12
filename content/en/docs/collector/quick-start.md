@@ -26,6 +26,7 @@ Make sure that your developer environment has the following. This page assumes
 that you're using `bash`. Adapt configuration and commands as necessary for your
 preferred shell.
 
+- [Docker](https://www.docker.com/)
 - [Go](https://go.dev/) 1.20 or higher
 - [`GOBIN` environment variable][gobin] is set; if unset, initialize it
   appropriately, for example[^1]:
