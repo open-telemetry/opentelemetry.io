@@ -99,7 +99,10 @@ and as full demo in [Getting Started with OpenTelemetry on HashiCorp Nomad][].
 
 ## Ansible
 
-Deploy the OpenTelemetry Collector on your instances using Ansible with the following playbook. This playbook utilizes the [Grafana Ansible role](https://galaxy.ansible.com/ui/repo/published/grafana/grafana/content/role/opentelemetry_collector/), aiding in provisioning and managing multiple OpenTelemetry Collectors.
+Deploy the OpenTelemetry Collector on your instances using the
+following Ansible playbook. This playbook uses the
+[Grafana Ansible role](https://galaxy.ansible.com/ui/repo/published/grafana/grafana/content/role/opentelemetry_collector/),
+aiding in provisioning and managing multiple OpenTelemetry Collectors.
 
 ```yaml
 - name: Install OpenTelemetry Collector
