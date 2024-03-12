@@ -97,6 +97,58 @@ For guidance on how to use the Collector with Kubernetes, see
 You can find reference job files to deploy the Collector as an agent, gateway,
 and as full demo in [Getting Started with OpenTelemetry on HashiCorp Nomad][].
 
+## Ansible
+
+Deploy the OpenTelemetry Collector on your instances using Ansible with the following playbook. This playbook utilizes the [Grafana Ansible role](https://galaxy.ansible.com/ui/repo/published/grafana/grafana/content/role/opentelemetry_collector/), aiding in provisioning and managing multiple OpenTelemetry Collectors.
+
+```yaml
+- name: Install OpenTelemetry Collector
+  hosts: all
+  become: true
+
+  tasks: 
+    - name: Install OpenTelemetry Collector
+      ansible.builtin.include_role:
+        name: grafana.grafana.opentelemetry_collector
+      vars:
+        otel_collector_receivers:
+          otlp:
+            protocols:
+              grpc:
+                endpoint: 0.0.0.0:4317
+              http:
+                endpoint: 0.0.0.0:4318
+        otel_collector_processors:
+          batch:
+
+        otel_collector_exporters:
+          otlp:
+            endpoint: otelcol:4317
+
+        otel_collector_extensions:
+          health_check:
+          pprof:
+          zpages:
+
+        otel_collector_service:
+          extensions: [health_check, pprof, zpages]
+          pipelines:
+            traces:
+              receivers: [otlp]
+              processors: [batch]
+              exporters: [otlp]
+            metrics:
+              receivers: [otlp]
+              processors: [batch]
+              exporters: [otlp]
+            logs:
+              receivers: [otlp]
+              processors: [batch]
+              exporters: [otlp]
+```
+
+This playbook sets up the OpenTelemetry Collector with basic configurations for receiving, processing, and exporting telemetry data. Customize the configuration as needed to fit your environment and requirements.
+
 ## Linux
 
 Every Collector release includes APK, DEB and RPM packaging for Linux
