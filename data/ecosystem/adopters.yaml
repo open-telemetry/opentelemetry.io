@@ -121,7 +121,7 @@
   reference: ''
   contact: ''
 - name: Timescale
-  url: https://www.timescale.com/blog/a-deep-dive-into-open-telemetry-metrics/
+  url: https://www.timescale.com/
   components: [Collector, Go]
   reference: blog/a-deep-dive-into-open-telemetry-metrics/
   referenceTitle: blog post
