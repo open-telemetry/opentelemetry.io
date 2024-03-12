@@ -234,22 +234,13 @@ with the OpenTelemetry
    `OTEL_RESOURCE_ATTRIBUTES` environment variable
 3. `spring.application.name` spring property
 4. `build-info.properties`
+5. `Implementation-Title` from META-INF/MANIFEST.MF
 6. The default value is `unknown_service:java` (lowest precedence)
 
 Use the following snippet in your pom.xml file to generate the `build-info.properties` file:
-(the gradle plugin generates this file by default):
 
-`build.gradle` / `build.gradle.kts`:
-
-```groovy
-springBoot {
-  buildInfo {
-  }
-}
-```
-
-`pom.xml`:
-
+{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
+ 
 ```xml
 <build>
     <finalName>${project.artifactId}</finalName>
@@ -269,6 +260,18 @@ springBoot {
     </plugins>
 </build>
 ```
+ 
+{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
+ 
+```kotlin
+springBoot {
+  buildInfo {
+  }
+}
+```
+ 
+{{% /tab %}} {{< /tabpane>}}
+
 
 ### Automatic instrumentation
 
