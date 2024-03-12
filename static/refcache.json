@@ -195,6 +195,26 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:01:19.540115-05:00"
   },
+  "https://calendly.com/euwg-user-feedback-session/end-user-feedback-session": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-12T07:55:41.183146657Z"
+  },
+  "https://calendly.com/euwg-user-feedback-session/end-user-feedback-session-comms": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-12T07:55:43.02820199Z"
+  },
+  "https://calendly.com/euwg-user-feedback-session/end-user-feedback-session-javascript": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-12T07:55:41.8903846Z"
+  },
+  "https://calendly.com/euwg-user-feedback-session/end-user-feedback-session-profiling": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-12T07:55:43.489076907Z"
+  },
+  "https://calendly.com/euwg-user-feedback-session/end-user-feedback-session-semantic-conventions": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-12T07:55:42.553897693Z"
+  },
   "https://calendly.com/otel-euwg/end-user-feedback-sessions-1": {
     "StatusCode": 200,
     "LastSeen": "2024-02-28T09:18:31.915956+01:00"
@@ -2983,6 +3003,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-03-01T16:49:42.006164+01:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2Fv0.96.0": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-12T08:09:00.086946856Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.63.0": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:04:58.261649-05:00"
@@ -4962,6 +4986,14 @@
   "https://medium.com/velotio-perspectives/a-comprehensive-tutorial-to-implementing-opentracing-with-jaeger-a01752e1a8ce": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:06:14.054263-05:00"
+  },
+  "https://microcks.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-03-12T09:44:49.348708+01:00"
+  },
+  "https://microcks.io/documentation/using/monitoring/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-03-12T09:44:49.906991+01:00"
   },
   "https://micrometer.io/": {
     "StatusCode": 206,
