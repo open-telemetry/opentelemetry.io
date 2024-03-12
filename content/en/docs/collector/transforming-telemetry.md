@@ -23,38 +23,33 @@ a significant impact on collector performance.
 **Processor**:
 [filter processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor)
 
-The filter processor allows users to filter telemetry based on `include` or
-`exclude` rules. Include rules are used for defining "allow lists" where
-anything that does _not_ match include rules is dropped from the collector.
-Exclude rules are used for defining "deny lists" where telemetry that matches
-rules is dropped from the collector.
+The filter processor allows users to filter telemetry using [OTTL](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/README.md). Telemetry that matches any condition is dropped.
 
 For example, to _only_ allow span data from services app1, app2, and app3 and
 drop data from all other services:
 
 ```yaml
 processors:
-  filter/allowlist:
-    spans:
-      include:
-        match_type: strict
-        services:
-          - app1
-          - app2
-          - app3
+  filter/ottl:
+    error_mode: ignore
+    traces:
+      span:
+        - |
+        resource.attributes["service.name"] != "app1" and 
+        resource.attributes["service.name"] != "app2" and 
+        resource.attributes["service.name"] != "app2"
 ```
 
-To only block spans from a service called development while allowing all other
-spans, an exclude rule is used:
+To only drop spans from a service called development while keeping all other
+spans:
 
 ```yaml
 processors:
-  filter/denylist:
-    spans:
-      exclude:
-        match_type: strict
-        services:
-          - development
+  filter/ottl:
+    error_mode: ignore
+    traces:
+      span:
+        - resource.attributes["service.name"] == "development"
 ```
 
 The
