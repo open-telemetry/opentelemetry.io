@@ -193,7 +193,7 @@ Deploy the OpenTelemetry Collector across your hosts by executing:
 ansible-playbook deploy-opentelemetry.yml
 ```
 
-## Verifying Data Ingestion into Grafana Cloud
+## Verifying data ingestion into Grafana Cloud
 
 Once you've deployed the OpenTelemetry Collector and configured it to forward data to Grafana Cloud, you can verify the ingestion:
 
