@@ -8,9 +8,9 @@ author: >- # If you have only one author, then add the single name on this line 
 draft: true # TODO: remove this line once your post is ready to be published
 # canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the canonical URL here.
 ---
-Depending on the language(s) you’re used to developing in, you may have certain 
+Depending on the language you’re used to developing in, you may have certain 
 ideas about what an error is, as well as what constitutes an exception and how 
-it should be handled. For example, Go does not have exceptions, partly to 
+it should be handled. For example, Go doesn't have exceptions, partly to 
 discourage programmers from labeling too many ordinary errors as exceptional. 
 On the other hand, languages such as Java and Python provide built-in support 
 for throwing and catching exceptions. 
