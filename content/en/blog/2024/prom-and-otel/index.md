@@ -79,7 +79,8 @@ then forward them to your chosen backend.
 
 ![Diagram showing the different components of the OTel Collector](OTel-collector-refresher.png)
 
-The [Prometheus receiver](/docs/kubernetes/collector/components/#prometheus-receiver) allows you to collect metrics from any software that 
+The [Prometheus receiver](/docs/kubernetes/collector/components/#prometheus-receiver) 
+allows you to collect metrics from any software that 
 exposes Prometheus metrics. It serves as a drop-in replacement for Prometheus to 
 scrape your services, and supports the [full set](https://github.com/prometheus/prometheus/blob/v2.28.1/docs/configuration/configuration.md#scrape_config) of configurations in 
 `scrape_config`. 
@@ -99,15 +100,20 @@ multiple times
 * You will need to configure each replica with a different scraping config if 
 you want to manually shard the scraping
 
-The [Prometheus exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusexporter#prometheus-exporter) allows you to ship data in the 
-Prometheus format, which can then be scraped by a Prometheus server. It is used 
-to report metrics via the Prometheus scrape HTTP endpoint. You can learn more by 
-trying out this [example](https://github.com/open-telemetry/opentelemetry-go/tree/main/example/prometheus). 
+For exporting metrics from the OTel Collector to Prometheus, you have two options: 
+the [Prometheus exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusexporter#prometheus-exporter), and the [Prometheus Remote Write exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/prometheusremotewriteexporter/README.md).
 
-On the flip side, if you are generating OTel metrics and you want to ship them 
-to a backend that is compatible with Prometheus remote write (such as 
-[Thanos](https://thanos.io/)), you can use the [Prometheus remote write exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/prometheusremotewriteexporter/README.md). Prometheus remote write allows you to write data to external storage – in 
-this case, backends that are compatible with Prometheus. 
+The Prometheus exporter allows you to ship data in the Prometheus format, which is 
+then scraped by a Prometheus server. It's used to report metrics via the Prometheus 
+scrape HTTP endpoint. You can learn more by trying out this [example](https://github.com/open-telemetry/opentelemetry-go/tree/main/example/prometheus). However, the scraping won't really scale, as all the
+metrics are sent in a single scrape. 
+
+To get around the scaling concern, you can alternatively use the Prometheus Remote Write 
+exporter, which allows you to push data to Prometheus from multiple Collector 
+instances with no issues. Since Prometheus also accepts remote write ingestion, you 
+can also use this exporter if you are generating OTel metrics and want to 
+ship them to a backend that is compatible with Prometheus remote write. Learn more about 
+the architecture of both exporters [here](https://grafana.com/blog/2023/07/20/a-practical-guide-to-data-collection-with-opentelemetry-and-prometheus/#6-use-prometheus-remote-write-exporter). 
 
 ## Using the Target Allocator 
 A common challenge with Prometheus is that of scalability, which is the ability 
