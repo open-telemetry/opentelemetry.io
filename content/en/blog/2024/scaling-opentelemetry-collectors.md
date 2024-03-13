@@ -4,7 +4,7 @@ title:
 linkTitle: OTel Collector with Ansible
 date: 2024-03-12
 author: '[Ishan Jain](https://github.com/ishanjainn) (Grafana)'
-cSpell:ignore: Ansible Ishan Jain
+cSpell:ignore: ansible Ishan Jain
 # canonical_url: http://somewhere.else/ # This will be added in future
 ---
 
