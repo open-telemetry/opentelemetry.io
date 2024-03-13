@@ -125,8 +125,10 @@ Time (CET).
   [End User Feedback Session - Semantic Conventions](https://calendly.com/euwg-user-feedback-session/end-user-feedback-session-semantic-conventions?month=2024-03)
 - **March 21st, 14:30-15:30:**
   [End User Feedback Session - Comms (website, docs)](https://calendly.com/euwg-user-feedback-session/end-user-feedback-session-comms?month=2024-03)
-- **March 21th, 15:00-16:00:**
+- **March 21st, 15:00-16:00:**
   [End User Feedback Session - Profiling](https://calendly.com/euwg-user-feedback-session/end-user-feedback-session-profiling?month=2024-03)
+- **March 21st, 15:30-16:30:**
+  [End User Feedback Session - Client-side](https://calendly.com/euwg-user-feedback-session/end-user-feedback-session-client-side)
 
 A maximum of 5 participants will join one SIG maintainer to provide feedback for
 that SIG. Sessions will be recorded and posted on the
