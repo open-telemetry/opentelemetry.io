@@ -1,7 +1,7 @@
 ---
 title: 
   Manage OpenTelemetry Collectors at Scale with Ansible
-linkTitle: Ansible role for OpenTelemetry Collector
+linkTitle: OTel Collector with Ansible
 date: 2024-03-12
 author: '[Ishan Jain](https://github.com/ishanjainn) (Grafana)'
 draft: true # TODO: remove this line once your post is ready to be published
