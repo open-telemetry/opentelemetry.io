@@ -11,7 +11,8 @@ draft: true # TODO: remove this line once your post is ready to be published
 
 ![Image of a Greek god holding a torch with the Prometheus logo, and OTel logo](Prom-and-otel-logos.png)
 
-Tools such as [Prometheus](https://prometheus.io/) and [OpenTelemetry](https://opentelemetry.io/docs/what-is-opentelemetry/) help us maintain the health, performance, and 
+Tools such as [Prometheus](https://prometheus.io/) and [OpenTelemetry](/docs/what-is-opentelemetry/) 
+help us monitor the health, performance, and 
 availability of our complex distributed systems. Both are open source projects 
 under the [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/) 
 umbrella – but what role does each play in observability? 
@@ -65,10 +66,10 @@ This is the aspect of Prometheus monitoring that we will focus on in this
 article.
 
 ## Prometheus metrics with OpenTelemetry
-In this section, you will learn about a couple of OTel collector components that 
+In this section, you will learn about a couple of OTel Collector components that 
 demonstrate the interoperability between OTel and Prometheus.  
 
-First, let’s do a quick refresher on the [Collector](https://opentelemetry.io/docs/collector/) 
+First, let’s do a quick refresher on the [Collector](/docs/collector/) 
 – it’s an OTel component that can be used to collect and export data from and to 
 multiple sources and destinations, respectively. It also handles additional telemetry 
 processing, such as modifying data attributes and scrubbing personally 
@@ -76,23 +77,23 @@ identifiable information. For example, you can use Prometheus SDKs to generate
 metrics, ingest them with the Collector, do some processing (if desired) and 
 then forward them to your chosen backend. 
 
-![Diagram showing the different components of the OTel collector](OTel-collector-refresher.png)
+![Diagram showing the different components of the OTel Collector](OTel-collector-refresher.png)
 
-The [Prometheus receiver](https://opentelemetry.io/docs/kubernetes/collector/components/#prometheus-receiver) allows you to collect metrics from any software that 
+The [Prometheus receiver](/docs/kubernetes/collector/components/#prometheus-receiver) allows you to collect metrics from any software that 
 exposes Prometheus metrics. It serves as a drop-in replacement for Prometheus to 
 scrape your services, and supports the [full set](https://github.com/prometheus/prometheus/blob/v2.28.1/docs/configuration/configuration.md#scrape_config) of configurations in 
 `scrape_config`. 
 
-If you are interested in [exemplars](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#exemplars), which is a recorded value that associates OTel context with a metric 
+If you are interested in [exemplars](/docs/specs/otel/metrics/data-model/#exemplars), which is a recorded value that associates OTel context with a metric 
 event, you can also use the Prometheus receiver to ingest them in the Prometheus 
 format and convert it to OTLP format. This enables you to correlate traces with 
 metrics. 
 
 Something to consider with this component is that it is under active 
 development; as such, it has several [limitations](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md#%EF%B8%8F-warning), including that it’s a stateful component. Additionally, it is recommended to not 
-use this component when multiple replicas of the collector are run, because in 
+use this component when multiple replicas of the Collector are run, because in 
 this state: 
-* The collector is unable to auto-scale the scraping 
+* The Collector is unable to auto-scale the scraping 
 * If the replicas are running with the same config, it will scrape the targets 
 multiple times
 * You will need to configure each replica with a different scraping config if 
@@ -128,33 +129,33 @@ be scraped. Plus, if you’re already collecting Prometheus metrics about your
 Kubernetes infrastructure, using the TA is a great option.
 
 The Target Allocator is part of the OTel Operator. The OTel Operator is a [Kubernetes Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) that:
-* Manages the [OpenTelemetry collector](https://opentelemetry.io/docs/collector/)
+* Manages the [OpenTelemetry Collector](/docs/collector/)
 * Injects and configures [auto-instrumentation](https://www.honeycomb.io/blog/what-is-auto-instrumentation) into your pods
 
 In fact, the Operator creates two new [custom resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) (CR) types in Kubernetes to 
 support this functionality: the [OpenTelemetry Collector CR](https://github.com/open-telemetry/opentelemetry-operator#getting-started), and the [Auto-Instrumentation CR](https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection).
 
 Today, we will be focusing on the Target Allocator. The TA is an optional 
-component of the Operator’s OTel collector management capabilities.
+component of the Operator’s OTel Collector management capabilities.
 
 In a nutshell, the Target Allocator is a mechanism for decoupling the service 
 discovery and metric collection functions of Prometheus in a way that allows 
 them to be scaled independently. The OTel Collector manages Prometheus Metrics 
 without needing to install Prometheus. The TA manages the configuration of the 
-collector’s Prometheus Receiver.
+Collector’s Prometheus Receiver.
 
 The Target Allocator serves two functions:
-* Even distribution of Prometheus targets among a pool of OTel collectors
+* Even distribution of Prometheus targets among a pool of OTel Collectors
 * Discovery of Prometheus custom resources
 
 Let’s dig into each of these.
 
-#### Even Distribution of Prometheus Targets
+#### Even distribution of Prometheus targets
 The Target Allocator’s first job is to discover targets to scrape and OTel 
-collectors to allocate targets to. Then it can distribute the targets it 
-discovers among the collectors. The collectors in turn query the TA for metrics 
-endpoints to scrape, and then the collectors’ Prometheus receivers scrape the 
-metrics targets. This means that the OTel collectors -- not a Prometheus scraper 
+Collectors to allocate targets to. Then it can distribute the targets it 
+discovers among the Collectors. The Collectors in turn query the TA for metrics 
+endpoints to scrape, and then the Collectors’ Prometheus receivers scrape the 
+metrics targets. This means that the OTel Collectors -- not a Prometheus scraper 
 -- collect the metrics.
 
 A **target** is an endpoint that supplies metrics for Prometheus to store.
@@ -163,7 +164,7 @@ A **scrape** is the action of collecting metrics through an HTTP request from a
 targeted instance, parsing the response, and ingesting the collected samples to 
 storage.
 
-![Data flow from Target Allocator to the OTel collector.](target-allocator-sharding.png)
+![Data flow from Target Allocator to the OTel Collector.](target-allocator-sharding.png)
 
 #### Discovery of Prometheus custom resources
 The Target Allocator’s second job is to provide the discovery of Prometheus 
@@ -198,8 +199,8 @@ case, you still have to rely on Prometheus scrape configs in the Collector’s
 [Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md).
 
 #### Configuration
-The following is the YAML config for the OTel collector CR. Note that this 
-collector is running in a namespace called `opentelemetry`, but it can run 
+The following is the YAML config for the OTel Collector CR. Note that this 
+Collector is running in a namespace called `opentelemetry`, but it can run 
 in whatever namespace you like. 
 
 The main components are:
@@ -207,7 +208,7 @@ The main components are:
 Sidecar, Deployment, StatefulSet and DaemonSet. 
 * **targetallocator:** This is where you configure the Target Allocator. Note 
 that the [Target Allocator only works for the Deployment, DaemonSet, and StatefulSet modes](https://www.youtube.com/watch?v=Uwq4EPaMJFM). 
-* **config:** This is where the OTel collector config resides.
+* **config:** This is where the OTel Collector config resides.
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
@@ -251,7 +252,7 @@ First, you need to enable it by setting `spec.targetallocator.prometheusCR.enabl
 to `true`.
 
 Next, you need to make sure that the [Prometheus receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md) 
-of the deployed collector is made aware of the Target Allocator in the collector 
+of the deployed Collector is made aware of the Target Allocator in the Collector 
 config section of the spec by setting the `target_allocator.endpoint`:
 
 ```yaml
@@ -334,13 +335,13 @@ corresponding cluster roles so that the Target Allocator has access to all of
 the necessary resources to pull metrics from.
 
 You can create your own `ServiceAccount`, and reference it as 
-`spec.targetAllocator.serviceAccount` in the OTel collector CR. You’ll then need 
+`spec.targetAllocator.serviceAccount` in the OTel Collector CR. You’ll then need 
 to configure the [`ClusterRole`](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole) and [`ClusterRoleBinding`](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) for this service 
 account.
 
 If you omit the `ServiceAccount` configuration, the Target Allocator creates a 
 `ServiceAccount` automagically for you. The `ServiceAccount`’s default name is a 
-concatenation of the collector name and the `-collector` suffix. By default, 
+concatenation of the Collector name and the `-collector` suffix. By default, 
 this `ServiceAccount` has no defined policy, so you’ll need to create your own 
 [`ClusterRole`](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole) 
 and [`ClusterRoleBinding`](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding).
@@ -462,9 +463,9 @@ following roles. These give the Target Allocator access to the `PodMonitor` and
   verbs: ["get", "list", "watch"]
 ```
 
-## Additional OTel Components for Kubernetes
+## Additional OTel components for Kubernetes
 
-This section covers additional OTel collector components you can use to capture 
+This section covers additional OTel Collector components you can use to capture 
 Kubernetes metrics. 
 
 Receiving data:
@@ -474,7 +475,7 @@ entity events from the [Kubernetes API server](https://kubernetes.io/docs/refere
 Kubernetes API server
 * [Kubelet Stats Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kubeletstatsreceiver): pulls node, pod, container, and volume metrics 
 from the API server on a [Kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) and sends it down the metric pipeline for further processing
-* [Host Metrics Receiver](https://opentelemetry.io/docs/kubernetes/collector/components/#host-metrics-receiver): scrapes system metrics from hosts that make up the 
+* [Host Metrics Receiver](/docs/kubernetes/collector/components/#host-metrics-receiver): scrapes system metrics from hosts that make up the 
 cluster
 
 Processing data:
@@ -487,16 +488,16 @@ You can also use the Kubernetes attributes processor to set custom resource
 attributes for traces, metrics, and logs using the Kubernetes labels and 
 annotations you’ve added to your pods and namespaces.
 
-There are a few more collector components you can implement to monitor 
+There are a few more Collector components you can implement to monitor 
 Kubernetes, including Kubernetes-specific ones as well as general-use 
 processors, such as the batch, memory limiter, and resource processors. You can 
 read more about them [here](docs/kubernetes/collector/components/). 
 
-After you’ve configured the components in your collector config file, you need 
-to enable them within the [pipelines](https://opentelemetry.io/docs/collector/configuration/#pipelines) section. A data pipeline enables you to [collect](https://opentelemetry.io/docs/collector/configuration/#receivers), [process](https://opentelemetry.io/docs/collector/configuration/#processors), 
-and route data from any source [to one destination or more](https://opentelemetry.io/docs/collector/configuration/#exporters). 
+After you’ve configured the components in your Collector config file, you need 
+to enable them within the [pipelines](/docs/collector/configuration/#pipelines) section. A data pipeline enables you to [collect](/docs/collector/configuration/#receivers), [process](/docs/collector/configuration/#processors), 
+and route data from any source [to one destination or more](/docs/collector/configuration/#exporters). 
 
-## Pros & Cons
+## Pros and cons
 However you decide to use OTel to gather Prometheus metrics, ultimately what is 
 right for your organization depends on your business needs. Using the OTel 
 components discussed previously, you could convert all your metrics into the 
@@ -521,7 +522,7 @@ Prometheus metrics
 * OTel can provide traces and logs in addition to metrics, as well as 
 correlation of these signals,thus enhancing the observability of Kubernetes 
 environments
-* OTel provides handy tools, such as the Target Allocator and OTel collector
+* OTel provides handy tools, such as the Target Allocator and OTel Collector
 components, to provide flexibility for configuration and deployment options 
 
 Cons:
@@ -538,15 +539,16 @@ components
 operational complexity in your monitoring infrastructure
 
 ## Conclusion
+
 As you have just seen, you can leverage OTel capabilities to further support and 
 enhance your Prometheus metrics, and using OTel provides different approaches 
 for monitoring your Kubernetes cluster. 
 
-The OTel collector serves as a versatile component for gathering and exporting 
+The OTel Collector serves as a versatile component for gathering and exporting 
 data across various sources and destinations, while also handling telemetry 
 processing tasks such as data attribute modification and PII scrubbing. 
 Utilizing Prometheus or OTel SDKs, metrics can be generated, processed, and 
-forwarded to chosen backends through the collector. 
+forwarded to chosen backends through the Collector. 
 
 The Prometheus receiver facilitates metric collection from any software exposing 
 Prometheus metrics, serving as a drop-in replacement for Prometheus itself. 
@@ -564,7 +566,7 @@ and failover resilience. However, that must be balanced against the introduction
 of operational  complexity and overhead that come with it, along with potential 
 resource consumption overhead. 
 
-The OTel collector also offers a range of components for gathering 
+The OTel Collector also offers a range of components for gathering 
 infrastructure metrics from specific Kubernetes elements. Additionally, it 
 enables the correlation of application telemetry with Kubernetes data by 
 incorporating Kubernetes metadata onto that telemetry.
