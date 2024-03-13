@@ -15,10 +15,11 @@ discourage programmers from labeling too many ordinary errors as exceptional.
 On the other hand, languages such as Java and Python provide built-in support 
 for throwing and catching exceptions. 
 
-When you begin at a place where different languages disagree about what an error 
-or exception is and how to handle them, what do you use when you need standardized 
-telemetry and error reporting across microservices written in those languages? 
-OpenTelemetry is the tool with which we'll address the following, and more:
+When you begin at a place where different languages disagree about what errors
+or exceptions are and how to handle them, what do you use when you need
+standardized telemetry and error reporting across microservices written in
+those languages? OpenTelemetry is the tool with which we'll address the
+following, and more:
 
 * How an error is visualized in a backend may not be where you think it’ll be, 
 or how you expect it to look. 
