@@ -12,7 +12,7 @@ This guide is focused on scaling the OpenTelemetry Collector deployment across v
 
 Here, we outline a strategy for deploying and managing the OpenTelemetry Collector's scalable instances throughout your infrastructure with Ansible, enhancing your overall monitoring strategy and data visualization capabilities in Grafana Cloud.
 
-## Before You Begin
+## Before you begin
 
 To follow this guide, ensure you have:
 
