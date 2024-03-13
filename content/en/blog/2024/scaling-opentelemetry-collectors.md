@@ -18,7 +18,7 @@ To follow this guide, ensure you have:
 
 - Ansible Installed in your system
 - Linux hosts along with SSH access to each of these Linux hosts.
-- Prometheus for gathering metrics 
+- Prometheus for gathering metrics
 
 ## Install the Grafana Ansible collection
 
@@ -26,7 +26,7 @@ The [OpenTelemetry Collector role](https://github.com/grafana/grafana-ansible-co
 
 To install the Grafana Ansible collection, run this command:
 
-```
+```shell
 ansible-galaxy collection install grafana.grafana
 ```
 
@@ -42,7 +42,7 @@ Next, you will set up your hosts and create an inventory file.
 
     The Ansible inventory, which resides in a file named `inventory`, looks similar to this:
 
-    ```
+    ```ini
     10.0.0.1    # hostname = ubuntu-01
     10.0.0.2    # hostname = ubuntu-02
     10.0.0.3    # hostname = centos-01
@@ -57,7 +57,7 @@ Next, you will set up your hosts and create an inventory file.
 
 3. Create an `ansible.cfg` file within the same directory as `inventory`, with the following values:
 
-    ```
+    ```cfg
     [defaults]
     inventory = inventory  # Path to the inventory file
     private_key_file = ~/.ssh/id_rsa   # Path to my private SSH Key
@@ -68,7 +68,7 @@ Next, you will set up your hosts and create an inventory file.
 
 Next, you'll define an Ansible playbook to apply your chosen or created OpenTelemetry Collector role across your hosts.
 
-Create a file named `deploy-opentelemetry.yml` in the same directory as your `ansible.cfg` and `inventory`. 
+Create a file named `deploy-opentelemetry.yml` in the same directory as your `ansible.cfg` and `inventory`.
 
 ```yaml
 - name: Install OpenTelemetry Collector
@@ -128,7 +128,7 @@ Create a file named `deploy-opentelemetry.yml` in the same directory as your `an
 
 {{% alert title="Note" %}}
 
-You'll need to adjust the configuration to match the specific telemetry you intend to collect and where you plan to forward it. This configuration snippet is a basic example designed for collecting host metrics and forwarded to Prometheus. 
+You'll need to adjust the configuration to match the specific telemetry you intend to collect and where you plan to forward it. This configuration snippet is a basic example designed for collecting host metrics and forwarded to Prometheus.
 
 {{% /alert %}}
 
@@ -162,7 +162,6 @@ Once your OpenTelemetry Collector's start sending metrics to Prometheus, follow 
 
 For other installation methods and more detailed instructions, refer to the [official Grafana documentation](https://grafana.com/docs/grafana/latest/installation/).
 
-
 ### Add Prometheus as a Data Source
 
 1. **Login to Grafana** and navigate to **Connections** > **Data Sources**.
@@ -174,7 +173,7 @@ For other installation methods and more detailed instructions, refer to the [off
 1. Go to the **Explore** page
 2. In the Query editor, select your Prometheus data source and enter the below query
 
-    ```
+    ```PromQL
     100 - (avg by (cpu) (irate(system_cpu_time{state="idle"}[5m])) * 100)
     ```
 
