@@ -36,32 +36,33 @@ Next, you will set up your hosts and create an inventory file.
 
 1. Create your hosts and add public SSH keys to them.
 
-  This example uses eight Linux hosts: two Ubuntu hosts, two CentOS hosts, two Fedora hosts, and two Debian hosts.
+    This example uses eight Linux hosts: two Ubuntu hosts, two CentOS hosts, two Fedora hosts, and two Debian hosts.
 
 2. Create an Ansible inventory file.
 
-  The Ansible inventory, which resides in a file named `inventory`, looks similar to this:
+    The Ansible inventory, which resides in a file named `inventory`, looks similar to this:
 
-  ```
-  146.190.208.216    # hostname = ubuntu-01
-  146.190.208.190    # hostname = ubuntu-02
-  137.184.155.128    # hostname = centos-01
-  146.190.216.129    # hostname = centos-02
-  198.199.82.174     # hostname = debian-01
-  198.199.77.93      # hostname = debian-02
-  143.198.182.156    # hostname = fedora-01
-  143.244.174.246    # hostname = fedora-02
-  ```
+    ```
+    146.190.208.216    # hostname = ubuntu-01
+    146.190.208.190    # hostname = ubuntu-02
+    137.184.155.128    # hostname = centos-01
+    146.190.216.129    # hostname = centos-02
+    198.199.82.174     # hostname = debian-01
+    198.199.77.93      # hostname = debian-02
+    143.198.182.156    # hostname = fedora-01
+    143.244.174.246    # hostname = fedora-02
+    ```
 
-  > **Note**: If you are copying the above file, remove the comments (#).
+    > **Note**: If you are copying the above file, remove the comments (#).
 
 3. Create an `ansible.cfg` file within the same directory as `inventory`, with the following values:
-  ```
-  [defaults]
-  inventory = inventory  # Path to the inventory file
-  private_key_file = ~/.ssh/id_rsa   # Path to my private SSH Key
-  remote_user=root
-  ```
+
+    ```
+    [defaults]
+    inventory = inventory  # Path to the inventory file
+    private_key_file = ~/.ssh/id_rsa   # Path to my private SSH Key
+    remote_user=root
+    ```
 
 ## Use the OpenTelemetry Collector Ansible role
 
