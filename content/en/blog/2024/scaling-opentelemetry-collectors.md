@@ -81,8 +81,6 @@ Create a file named `deploy-opentelemetry.yml` in the same directory as your `an
       ansible.builtin.include_role:
         name: grafana.grafana.opentelemetry_collector
       vars:
-
-
         otel_collector_receivers:
           otlp:
             # https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver
@@ -123,40 +121,20 @@ Create a file named `deploy-opentelemetry.yml` in the same directory as your `an
                   - set(attributes["service.version"], resource.attributes["service.version"])
 
         otel_collector_exporters:
-          otlp/grafana_cloud_traces:
-            # https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter
-            endpoint: "{{ tempo_url }}"
-            auth:
-              authenticator: basicauth/grafana_cloud_tempo
-
-          loki/grafana_cloud_logs:
-            # https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/lokiexporter
-            endpoint: "{{ loki_url }}"
-            auth:
-              authenticator: basicauth/grafana_cloud_loki
-
           prometheusremotewrite/grafana_cloud_metrics:
             # https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusremotewriteexporter
             endpoint: "{{ prometheus_url }}"
             add_metric_suffixes: false
             auth:
-              authenticator: basicauth/grafana_cloud_prometheus
+              authenticator: basicauth/prometheus
 
 
         otel_collector_service:
           pipelines:
-            traces:
-              receivers: [otlp]
-              processors: [resourcedetection, batch]
-              exporters: [otlp/grafana_cloud_traces]
             metrics:
               receivers: [otlp, hostmetrics]
               processors: [resourcedetection, transform/add_resource_attributes_as_metric_attributes, batch]
               exporters: [prometheusremotewrite/grafana_cloud_metrics]
-            logs:
-              receivers: [otlp]
-              processors: [resourcedetection, batch]
-              exporters: [loki/grafana_cloud_logs]
 ```
 
 {{% alert title="Note" %}}
@@ -175,12 +153,11 @@ Deploy the OpenTelemetry Collector across your hosts by executing:
 ansible-playbook deploy-opentelemetry.yml
 ```
 
+## Visualizing metrics in Grafana
 
-## Visualizing metrics and logs in Grafana
-
-With data successfully ingested into Grafana Cloud, you can create custom dashboards to visualize the metrics, logs, and traces received from your OpenTelemetry Collector. Utilize Grafana's powerful query builder and visualization tools to derive insights from your data effectively.
+With data successfully ingested into Prometheus, you can use Grafana to create custom dashboards to visualize the metrics received from your OpenTelemetry Collector's. Utilize Grafana's powerful query builder and visualization tools to derive insights from your data effectively.
 
 - Consider creating dashboards that offer a comprehensive overview of your infrastructure's health and performance.
 - Utilize Grafana's alerting features to proactively manage and respond to issues identified through the OpenTelemetry data.
 
-This guide simplifies the deployment of the OpenTelemetry Collector across multiple Linux hosts using Ansible and illustrates how to visualize collected telemetry in Grafana Cloud. Tailor the Ansible roles, OpenTelemetry Collector configurations, and Grafana dashboards to suit your specific monitoring and observability requirements.
+This guide simplifies the deployment of the OpenTelemetry Collector across multiple Linux hosts using Ansible and illustrates how to visualize collected telemetry in Grafana. Tailor the OpenTelemetry Collector Ansible roles configurations, and Grafana dashboards to suit your specific monitoring and observability requirements.
