@@ -426,3 +426,10 @@
   contact: 'support@datalust.co'
   oss: false
   commercial: true
+- name: VuNet Systems
+  distribution: true
+  nativeOTLP: true
+  url: 'https://vunetsystems.com/vuapp360/'
+  contact: 'info@vunetsystems.com'
+  oss: false
+  commercial: true
