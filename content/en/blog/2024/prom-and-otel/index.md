@@ -74,7 +74,7 @@ exposes Prometheus metrics. It serves as a drop-in replacement for Prometheus to
 scrape your services, and supports the [full set](https://github.com/prometheus/prometheus/blob/v2.28.1/docs/configuration/configuration.md#scrape_config) of configurations in 
 `scrape_config`. 
 
-If you are interested in [exemplars](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#exemplars), which is a recorded value that associates OTel context to a metric 
+If you are interested in [exemplars](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#exemplars), which is a recorded value that associates OTel context with a metric 
 event, you can also use the Prometheus receiver to ingest them in the Prometheus 
 format and convert it to OTLP format. This enables you to correlate traces with 
 metrics. 
