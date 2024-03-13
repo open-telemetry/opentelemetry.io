@@ -5567,6 +5567,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-02-24T14:33:05.630341-08:00"
   },
+  "https://opentelemetry.io/docs/specs/semconv/resource/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-03-13T16:42:10.491338+01:00"
+  },
   "https://opentracing.io": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:07:33.813401-05:00"
@@ -7030,6 +7034,10 @@
   "https://rubygems.org/gems/opentelemetry-instrumentation-trilogy": {
     "StatusCode": 200,
     "LastSeen": "2024-01-22T15:38:54.618612+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-resource_detectors": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-13T16:42:10.119465+01:00"
   },
   "https://rubygems.org/gems/rspec-otel": {
     "StatusCode": 200,
