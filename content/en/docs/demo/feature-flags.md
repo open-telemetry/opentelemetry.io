@@ -16,7 +16,7 @@ values are stored in the `demo.flagd.json` file. To enable a flag, change the
 | `cartServiceFailure`          | Cart Service    | Generate an error for `EmptyCart` 1/10th of the time                                                     |
 | `productCatalogFailure`       | Product Catalog | Generate an error for `GetProduct` requests with product id: `OLJCESPC7Z`                                |
 | `recommendationCache`         | Recommendation  | Create a memory leak due to an exponentially growing cache. 1.4x growth, 50% of requests trigger growth. |
-| `paymentServiceFailure`       | Paymentservice  | Generate an error when calling the charge method of the paymentservice.                                  |
+| `paymentServiceFailure`       | Payment Service  | Generate an error when calling the `charge` method                                  |
 | `paymentServiceUnreachable`   | Checkoutservice | Use a bad address when calling the paymentservice to make it seem like the paymentservice is unavailable.|
 
 ## Feature Flag Architecture
