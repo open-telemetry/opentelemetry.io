@@ -55,7 +55,7 @@ Next, you will set up your hosts and create an inventory file.
 
   > **Note**: If you are copying the above file, remove the comments (#).
 
-1. Create an `ansible.cfg` file within the same directory as `inventory`, with the following values:
+3. Create an `ansible.cfg` file within the same directory as `inventory`, with the following values:
   ```
   [defaults]
   inventory = inventory  # Path to the inventory file
