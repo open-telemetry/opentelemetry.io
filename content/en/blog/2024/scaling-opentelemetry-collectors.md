@@ -202,7 +202,7 @@ Once you've deployed the OpenTelemetry Collector and configured it to forward da
 - Select your Grafana Cloud Prometheus data source from the dropdown menu.
 - Execute a query to confirm the reception of metrics, for example, `{instance="ubuntu-01"}` for a specific host's metrics.
 
-## Visualizing Metrics and Logs in Grafana
+## Visualizing metrics and logs in Grafana
 
 With data successfully ingested into Grafana Cloud, you can create custom dashboards to visualize the metrics, logs and traces received from your OpenTelemetry Collector. Utilize Grafana's powerful query builder and visualization tools to derive insights from your data effectively.
 
