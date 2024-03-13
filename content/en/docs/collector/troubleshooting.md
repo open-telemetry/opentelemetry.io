@@ -17,7 +17,8 @@ configured to output to local logs. For details, see
 
 ## Check available components in the collector
 
-Use below subcommand to Outputs available components in the collector distribution including their stability levels.
+Use below subcommand to Outputs available components in the collector
+distribution including their stability levels.
 
 ```sh
 otelcol components
@@ -27,157 +28,157 @@ Output
 
 ```yaml
 buildinfo:
-    command: otelcol
-    description: OpenTelemetry Collector
-    version: 0.96.0
+  command: otelcol
+  description: OpenTelemetry Collector
+  version: 0.96.0
 receivers:
-    - name: kafka
-      stability:
-        logs: Beta
-        metrics: Beta
-        traces: Beta
-    - name: opencensus
-      stability:
-        logs: Undefined
-        metrics: Beta
-        traces: Beta
-    - name: prometheus
-      stability:
-        logs: Undefined
-        metrics: Beta
-        traces: Undefined
-    - name: zipkin
-      stability:
-        logs: Undefined
-        metrics: Undefined
-        traces: Beta
-    - name: otlp
-      stability:
-        logs: Beta
-        metrics: Stable
-        traces: Stable
-    - name: hostmetrics
-      stability:
-        logs: Undefined
-        metrics: Beta
-        traces: Undefined
-    - name: jaeger
-      stability:
-        logs: Undefined
-        metrics: Undefined
-        traces: Beta
+  - name: kafka
+    stability:
+      logs: Beta
+      metrics: Beta
+      traces: Beta
+  - name: opencensus
+    stability:
+      logs: Undefined
+      metrics: Beta
+      traces: Beta
+  - name: prometheus
+    stability:
+      logs: Undefined
+      metrics: Beta
+      traces: Undefined
+  - name: zipkin
+    stability:
+      logs: Undefined
+      metrics: Undefined
+      traces: Beta
+  - name: otlp
+    stability:
+      logs: Beta
+      metrics: Stable
+      traces: Stable
+  - name: hostmetrics
+    stability:
+      logs: Undefined
+      metrics: Beta
+      traces: Undefined
+  - name: jaeger
+    stability:
+      logs: Undefined
+      metrics: Undefined
+      traces: Beta
 processors:
-    - name: resource
-      stability:
-        logs: Beta
-        metrics: Beta
-        traces: Beta
-    - name: span
-      stability:
-        logs: Undefined
-        metrics: Undefined
-        traces: Alpha
-    - name: probabilistic_sampler
-      stability:
-        logs: Alpha
-        metrics: Undefined
-        traces: Beta
-    - name: filter
-      stability:
-        logs: Alpha
-        metrics: Alpha
-        traces: Alpha
-    - name: batch
-      stability:
-        logs: Beta
-        metrics: Beta
-        traces: Beta
-    - name: memory_limiter
-      stability:
-        logs: Beta
-        metrics: Beta
-        traces: Beta
-    - name: attributes
-      stability:
-        logs: Beta
-        metrics: Beta
-        traces: Beta
+  - name: resource
+    stability:
+      logs: Beta
+      metrics: Beta
+      traces: Beta
+  - name: span
+    stability:
+      logs: Undefined
+      metrics: Undefined
+      traces: Alpha
+  - name: probabilistic_sampler
+    stability:
+      logs: Alpha
+      metrics: Undefined
+      traces: Beta
+  - name: filter
+    stability:
+      logs: Alpha
+      metrics: Alpha
+      traces: Alpha
+  - name: batch
+    stability:
+      logs: Beta
+      metrics: Beta
+      traces: Beta
+  - name: memory_limiter
+    stability:
+      logs: Beta
+      metrics: Beta
+      traces: Beta
+  - name: attributes
+    stability:
+      logs: Beta
+      metrics: Beta
+      traces: Beta
 exporters:
-    - name: file
-      stability:
-        logs: Alpha
-        metrics: Alpha
-        traces: Alpha
-    - name: kafka
-      stability:
-        logs: Beta
-        metrics: Beta
-        traces: Beta
-    - name: opencensus
-      stability:
-        logs: Undefined
-        metrics: Beta
-        traces: Beta
-    - name: prometheusremotewrite
-      stability:
-        logs: Undefined
-        metrics: Beta
-        traces: Undefined
-    - name: zipkin
-      stability:
-        logs: Undefined
-        metrics: Undefined
-        traces: Beta
-    - name: logging
-      stability:
-        logs: Deprecated
-        metrics: Deprecated
-        traces: Deprecated
-    - name: otlp
-      stability:
-        logs: Beta
-        metrics: Stable
-        traces: Stable
-    - name: otlphttp
-      stability:
-        logs: Beta
-        metrics: Stable
-        traces: Stable
-    - name: debug
-      stability:
-        logs: Development
-        metrics: Development
-        traces: Development
-    - name: prometheus
-      stability:
-        logs: Undefined
-        metrics: Beta
-        traces: Undefined
+  - name: file
+    stability:
+      logs: Alpha
+      metrics: Alpha
+      traces: Alpha
+  - name: kafka
+    stability:
+      logs: Beta
+      metrics: Beta
+      traces: Beta
+  - name: opencensus
+    stability:
+      logs: Undefined
+      metrics: Beta
+      traces: Beta
+  - name: prometheusremotewrite
+    stability:
+      logs: Undefined
+      metrics: Beta
+      traces: Undefined
+  - name: zipkin
+    stability:
+      logs: Undefined
+      metrics: Undefined
+      traces: Beta
+  - name: logging
+    stability:
+      logs: Deprecated
+      metrics: Deprecated
+      traces: Deprecated
+  - name: otlp
+    stability:
+      logs: Beta
+      metrics: Stable
+      traces: Stable
+  - name: otlphttp
+    stability:
+      logs: Beta
+      metrics: Stable
+      traces: Stable
+  - name: debug
+    stability:
+      logs: Development
+      metrics: Development
+      traces: Development
+  - name: prometheus
+    stability:
+      logs: Undefined
+      metrics: Beta
+      traces: Undefined
 connectors:
-    - name: forward
-      stability:
-        logs-to-logs: Beta
-        logs-to-metrics: Undefined
-        logs-to-traces: Undefined
-        metrics-to-logs: Undefined
-        metrics-to-metrics: Beta
-        metrics-to-traces: Undefined
-        traces-to-logs: Undefined
-        traces-to-metrics: Undefined
-        traces-to-traces: Beta
+  - name: forward
+    stability:
+      logs-to-logs: Beta
+      logs-to-metrics: Undefined
+      logs-to-traces: Undefined
+      metrics-to-logs: Undefined
+      metrics-to-metrics: Beta
+      metrics-to-traces: Undefined
+      traces-to-logs: Undefined
+      traces-to-metrics: Undefined
+      traces-to-traces: Beta
 extensions:
-    - name: zpages
-      stability:
-        extension: Beta
-    - name: memory_ballast
-      stability:
-        extension: Deprecated
-    - name: health_check
-      stability:
-        extension: Beta
-    - name: pprof
-      stability:
-        extension: Beta
+  - name: zpages
+    stability:
+      extension: Beta
+  - name: memory_ballast
+    stability:
+      extension: Deprecated
+  - name: health_check
+    stability:
+      extension: Beta
+  - name: pprof
+    stability:
+      extension: Beta
 ```
 
 ## Checklist for debugging complex pipelines
