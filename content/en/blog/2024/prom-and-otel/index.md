@@ -26,7 +26,7 @@ While both Prometheus and OTel emit metrics, there is a lot to cover on the
 differences and similarities, and is out of scope for this article. Rather, we 
 want to show you how OTel supports Prometheus, specifically in a Kubernetes 
 environment. You'll learn:
-* How the OTel Collector's Prometheus Receiver can be used to ingest Prometheus 
+* How the OTel Collector's [Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver) can be used to ingest Prometheus 
 metrics. 
 * Alternative methods for Prometheus metric collection through OTel-native 
 options such as the K8s cluster receiver and Kubelet stats receiver.
@@ -36,7 +36,7 @@ and learn:
 * How it can be used for Prometheus service discovery.
 * How it ensures even distribution of Prometheus targets. 
 
-## OTel vs Prometheus
+## OTel and Prometheus
 
 Since OTel is primarily focused on the instrumentation part of observability,
 it doesn't provide a backend for storing telemetry; you have to forward the 
