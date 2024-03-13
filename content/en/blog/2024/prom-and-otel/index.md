@@ -64,7 +64,7 @@ First, let’s do a quick refresher on the [Collector](https://opentelemetry.io/
 multiple sources and destinations. It also handles additional telemetry 
 processing, such as modifying data attributes and scrubbing personally 
 identifiable information. For example, you can use Prometheus SDKs to generate 
-metrics, ingest them with the collector, do some processing (if desired) and 
+metrics, ingest them with the Collector, do some processing (if desired) and 
 then forward them to your chosen backend. 
 
 ![Diagram showing the different components of the OTel collector](OTel-collector-refresher.png)
