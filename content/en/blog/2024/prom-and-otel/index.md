@@ -183,7 +183,7 @@ these are widely-used in Kubernetes infrastructure monitoring. As a result, the
 OTel Operator developers wanted to make it easy to add them to the OTel 
 ecosystem.
 
-Please note that the `PodMonitor` and `ServiceMonitor` are not useful for 
+Note that the `PodMonitor` and `ServiceMonitor` are not useful for 
 cluster-wide metrics collection, such as for Kubelet metrics collection. In that 
 case, you still have to rely on Prometheus scrape configs in the Collector’s 
 [Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md).
