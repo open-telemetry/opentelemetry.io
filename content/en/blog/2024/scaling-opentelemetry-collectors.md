@@ -9,7 +9,7 @@ author: '[Ishan Jain](https://github.com/ishanjainn) (Grafana)'
 
 This guide is focused on scaling the [OpenTelemetry Collector deployment](/docs/collector/deployment/) across various Linux hosts by leveraging [Ansible](https://www.ansible.com/), to function both as [gateways](/docs/collector/deployment/gateway/) and [agents](/docs/collector/deployment/agent/) within your observability architecture. Utilizing the OpenTelemetry Collector in this dual capacity enables a robust collection and forwarding of metrics, traces, and logs to analysis and visualization platforms.
 
-Here, we outline a strategy for deploying and managing the OpenTelemetry Collector's scalable instances throughout your infrastructure with Ansible, enhancing your overall monitoring strategy and data visualization capabilities in Grafana Cloud.
+Here, we outline a strategy for deploying and managing the OpenTelemetry Collector's scalable instances throughout your infrastructure with Ansible, enhancing your overall monitoring strategy and data visualization capabilities in Grafana.
 
 ## Before you begin
 
@@ -75,18 +75,12 @@ Create a file named `deploy-opentelemetry.yml` in the same directory as your `an
   hosts: all
   become: true
 
-
   tasks:
     - name: Install OpenTelemetry Collector
       ansible.builtin.include_role:
         name: grafana.grafana.opentelemetry_collector
       vars:
         otel_collector_receivers:
-          otlp:
-            # https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver
-            protocols:
-              grpc:
-              http:
           hostmetrics:
             collection_interval: 60s
             scrapers:
@@ -104,15 +98,12 @@ Create a file named `deploy-opentelemetry.yml` in the same directory as your `an
                 processes: {}
         otel_collector_processors:
           batch:
-            # https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/batchprocessor
           resourcedetection:
-            detectors: [env, system] # Before system detector, include ec2 for AWS, gcp for GCP and azure for Azure.
-            # Using OTEL_RESOURCE_ATTRIBUTES envvar, env detector adds custom labels.
+            detectors: [env, system] 
             timeout: 2s
             system:
-                hostname_sources: [os] # alternatively, use [dns,os] for setting FQDN as host.name and os as fallback
+                hostname_sources: [os] 
           transform/add_resource_attributes_as_metric_attributes:
-            # https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor
             error_mode: ignore
             metric_statements:
               - context: datapoint
@@ -121,25 +112,20 @@ Create a file named `deploy-opentelemetry.yml` in the same directory as your `an
                   - set(attributes["service.version"], resource.attributes["service.version"])
 
         otel_collector_exporters:
-          prometheusremotewrite/grafana_cloud_metrics:
-            # https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusremotewriteexporter
-            endpoint: "{{ prometheus_url }}"
-            add_metric_suffixes: false
-            auth:
-              authenticator: basicauth/prometheus
-
+          prometheusremotewrite:
+            endpoint: <your-prometheus-push-endpoint>
 
         otel_collector_service:
           pipelines:
             metrics:
-              receivers: [otlp, hostmetrics]
+              receivers: [hostmetrics]
               processors: [resourcedetection, transform/add_resource_attributes_as_metric_attributes, batch]
-              exporters: [prometheusremotewrite/grafana_cloud_metrics]
+              exporters: [prometheusremotewrite]
 ```
 
 {{% alert title="Note" %}}
 
-You'll need to adjust the configuration to match the specific telemetry you intend to collect and where you plan to forward it. This configuration snippet is a basic example designed for traces, logs, and metrics collected using OTLP and forwarded to Jaeger and Prometheus. 
+You'll need to adjust the configuration to match the specific telemetry you intend to collect and where you plan to forward it. This configuration snippet is a basic example designed for collecting host metrics and forwarded to Prometheus. 
 
 {{% /alert %}}
 
