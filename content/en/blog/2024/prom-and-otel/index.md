@@ -52,7 +52,7 @@ Prometheus _data_ is stored as a dimensional time-series, meaning that the data
 has attributes (for example, labels or dimensions) and a timestamp. 
 
 The Prometheus _server_ collects Prometheus metrics data from targets defined in a 
-configuration file. A target is an endpoint that supplies metrics for the 
+configuration file. A target is an endpoint that exposes metrics for the 
 Prometheus server to store.
 
 Prometheus is so ubiquitous in the monitoring space that many tools natively 
