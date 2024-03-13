@@ -68,16 +68,8 @@ application written in Swift.
 
 ## Feature Flag Component
 
-This component should consist of one (or more) services that provides a simple
-feature flag configuration utility for the main application. It is made up of a
-browser-based client/admin interface and a backend service or services. The role
-of the client is to allow an operator to visualize the available feature flags
-and toggle their state. The server should provide a catalog of feature flags
-that main application services can register with and interrogate for their
-current status and targeting rules.
-
-The feature flag component should be implemented as an Erlang+Elixir/Phoenix
-service. The catalog of feature flags should be stored in a Database.
+Feature flagging is a crucial part of cloud native application development. The
+demo uses OpenFeature, a CNCF incubating project, to manage feature flags.
 
 ## Orchestration and Deployment
 

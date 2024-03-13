@@ -1,4 +1,4 @@
-# cSpell:ignore containerd buildx Quarkus Cerbos flagd flipt KEDA Kyverno Dapr rustup GORM Otterize Dubbo
+# cSpell:ignore containerd buildx Quarkus Cerbos flagd flipt KEDA Kyverno Dapr rustup GORM Otterize Dubbo Microcks
 - name: containerd
   url: https://containerd.io/
   docsUrl: https://github.com/containerd/containerd/blob/main/docs/tracing.md
@@ -184,5 +184,10 @@
 - name: Apache Dubbo # Provide the latest docs instead of blog url in 2~3 months later. refer to https://github.com/open-telemetry/opentelemetry.io/pull/3908#discussion_r1473133919.
   url: https://github.com/apache/dubbo
   docsUrl: https://cn.dubbo.apache.org/en/blog/2024/01/31/tracing-dubbo-with-opentelemetry/
+  components: [Java]
+  oss: true
+- name: Microcks
+  url: https://microcks.io/
+  docsUrl: https://microcks.io/documentation/using/monitoring/
   components: [Java]
   oss: true
