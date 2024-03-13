@@ -113,7 +113,7 @@ where the +1’s memory is equal to N, thereby doubling your memory requests.
 Secondly, Prometheus sharding requires that each instance scrape the target, 
 even if it’s going to be dropped. 
 
-Luckily for us, the OTel Operator’s Target Allocator (TA) is able to help with 
+Luckily, the OTel Operator’s Target Allocator (TA) is able to help with 
 some of this. For instance, it can automatically drop any targets it knows won’t 
 be scraped. Plus, if you’re already collecting Prometheus metrics about your 
 Kubernetes infrastructure, using the TA is a great option.
