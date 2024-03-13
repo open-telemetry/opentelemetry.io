@@ -204,7 +204,7 @@ Once you've deployed the OpenTelemetry Collector and configured it to forward da
 
 ## Visualizing metrics and logs in Grafana
 
-With data successfully ingested into Grafana Cloud, you can create custom dashboards to visualize the metrics, logs and traces received from your OpenTelemetry Collector. Utilize Grafana's powerful query builder and visualization tools to derive insights from your data effectively.
+With data successfully ingested into Grafana Cloud, you can create custom dashboards to visualize the metrics, logs, and traces received from your OpenTelemetry Collector. Utilize Grafana's powerful query builder and visualization tools to derive insights from your data effectively.
 
 - Consider creating dashboards that offer a comprehensive overview of your infrastructure's health and performance.
 - Utilize Grafana's alerting features to proactively manage and respond to issues identified through the OpenTelemetry data.
