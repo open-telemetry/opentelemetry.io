@@ -38,7 +38,7 @@ Next, you will set up your hosts and create an inventory file.
 
   This example uses eight Linux hosts: two Ubuntu hosts, two CentOS hosts, two Fedora hosts, and two Debian hosts.
 
-1. Create an Ansible inventory file.
+2. Create an Ansible inventory file.
 
   The Ansible inventory, which resides in a file named `inventory`, looks similar to this:
 
