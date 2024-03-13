@@ -11,7 +11,7 @@ The
 [opentelemetry-resource-detectors](https://rubygems.org/gems/opentelemetry-resource_detectors)
 gem provides a means of retrieving a resource for supported environments
 following the
-[resource semantic conventions](https://opentelemetry.io/docs/specs/semconv/resource/).
+[resource semantic conventions](/docs/specs/semconv/resource/).
 
 ## Usage
 
