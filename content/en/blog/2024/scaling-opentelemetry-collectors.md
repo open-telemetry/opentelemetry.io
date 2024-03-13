@@ -81,7 +81,7 @@ Create a file named `deploy-opentelemetry.yml` in the same directory as your `an
     prometheus_url: <prometheus-push-url>                    # Example - https://prometheus-us-central1.grafana.net/api/prom/push
     loki_url: <loki-push-url>                                # Example - https://logs-prod-017.grafana.net/loki/api/v1/push
     tempo_url: <tempo-push-url>                              # Example - tempo-prod-04-prod-us-east-0.grafana.net:443
-    traces_username: <tempo-username>                         # Example - 411478
+    traces_username: <tempo-username>                        # Example - 411478
 
   tasks:
     - name: Install OpenTelemetry Collector
