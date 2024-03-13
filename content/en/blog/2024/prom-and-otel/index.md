@@ -55,7 +55,7 @@ application metrics, one of its most popular use cases is to monitor Kubernetes.
 This is the aspect of Prometheus monitoring that we will focus on in this 
 article.
 
-## Prometheus Metrics with OpenTelemetry
+## Prometheus metrics with OpenTelemetry
 In this section, you will learn about a couple of OTel collector components that 
 demonstrate the interoperability between OTel and Prometheus.  
 
