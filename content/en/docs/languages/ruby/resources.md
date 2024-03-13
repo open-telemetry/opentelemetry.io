@@ -10,8 +10,7 @@ weight: 70
 The
 [opentelemetry-resource-detectors](https://rubygems.org/gems/opentelemetry-resource_detectors)
 gem provides a means of retrieving a resource for supported environments
-following the
-[resource semantic conventions](/docs/specs/semconv/resource/).
+following the [resource semantic conventions](/docs/specs/semconv/resource/).
 
 ## Usage
 
