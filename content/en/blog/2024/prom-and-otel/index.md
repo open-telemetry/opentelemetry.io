@@ -460,7 +460,7 @@ Kubernetes metrics.
 Receiving data:
 * [Kubernetes Cluster Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sclusterreceiver): collects cluster-level metrics and 
 entity events from the [Kubernetes API server](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/)
-* [Kubernetes Objects Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sobjectsreceiver):  collects (pull/watch) objects from the 
+* [Kubernetes Objects Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sobjectsreceiver): collects (pull/watch) objects from the 
 Kubernetes API server
 * [Kubelet Stats Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kubeletstatsreceiver): pulls node, pod, container, and volume metrics 
 from the API server on a [Kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) and sends it down the metric pipeline for further processing
