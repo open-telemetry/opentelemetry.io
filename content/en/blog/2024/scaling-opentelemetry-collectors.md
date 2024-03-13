@@ -165,7 +165,6 @@ Create a file named `deploy-opentelemetry.yml` in the same directory as your `an
 
 
         otel_collector_service:
-          extensions: [basicauth/grafana_cloud_tempo, basicauth/grafana_cloud_prometheus, basicauth/grafana_cloud_loki]
           pipelines:
             traces:
               receivers: [otlp]
