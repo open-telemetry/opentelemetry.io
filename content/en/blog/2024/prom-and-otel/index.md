@@ -458,7 +458,7 @@ This section covers additional OTel collector components you can use to capture
 Kubernetes metrics. 
 
 Receiving data:
-* [Kubernetes Cluster Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sclusterreceiver#example): collects cluster-level metrics and 
+* [Kubernetes Cluster Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sclusterreceiver): collects cluster-level metrics and 
 entity events from the [Kubernetes API server](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/)
 * [Kubernetes Objects Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sobjectsreceiver):  collects (pull/watch) objects from the 
 Kubernetes API server
