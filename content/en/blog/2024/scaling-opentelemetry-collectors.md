@@ -80,20 +80,6 @@ Create a file named `deploy-opentelemetry.yml` in the same directory as your `an
       ansible.builtin.include_role:
         name: grafana.grafana.opentelemetry_collector
       vars:
-        otel_collector_extensions:
-          basicauth/grafana_cloud_tempo:
-            # https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/basicauthextension
-            client_auth:
-              username: "{{ traces_username }}"
-              password: "{{ grafana_cloud_api_key }}"
-          basicauth/grafana_cloud_prometheus:
-            client_auth:
-              username: "{{ prometheus_url }}"
-              password: "{{ grafana_cloud_api_key }}"
-          basicauth/grafana_cloud_loki:
-            client_auth:
-              username: "{{ logs_username }}"
-              password: "{{ grafana_cloud_api_key }}"
 
 
         otel_collector_receivers:
