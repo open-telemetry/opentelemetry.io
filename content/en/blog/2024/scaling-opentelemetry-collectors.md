@@ -43,14 +43,14 @@ Next, you will set up your hosts and create an inventory file.
     The Ansible inventory, which resides in a file named `inventory`, looks similar to this:
 
     ```
-    146.190.208.216    # hostname = ubuntu-01
-    146.190.208.190    # hostname = ubuntu-02
-    137.184.155.128    # hostname = centos-01
-    146.190.216.129    # hostname = centos-02
-    198.199.82.174     # hostname = debian-01
-    198.199.77.93      # hostname = debian-02
-    143.198.182.156    # hostname = fedora-01
-    143.244.174.246    # hostname = fedora-02
+    10.0.0.1    # hostname = ubuntu-01
+    10.0.0.2    # hostname = ubuntu-02
+    10.0.0.3    # hostname = centos-01
+    10.0.0.4    # hostname = centos-02
+    10.0.0.5    # hostname = debian-01
+    10.0.0.6    # hostname = debian-02
+    10.0.0.7    # hostname = fedora-01
+    10.0.0.8    # hostname = fedora-02
     ```
 
     > **Note**: If you are copying the above file, remove the comments (#).
