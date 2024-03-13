@@ -7,7 +7,7 @@ author: '[Ishan Jain](https://github.com/ishanjainn) (Grafana)'
 # canonical_url: http://somewhere.else/ # This will be added in future
 ---
 
-This guide is focused on scaling the OpenTelemetry Collector deployment across various Linux hosts by leveraging Ansible, to function both as gateways and agents within your observability architecture. Utilizing the OpenTelemetry Collector in this dual capacity enables a robust collection and forwarding of metrics, traces, and logs to analysis and visualization platforms, such as Grafana Cloud. 
+This guide is focused on scaling the [OpenTelemetry Collector deployment](/docs/collector/deployment/) across various Linux hosts by leveraging [Ansible](https://www.ansible.com/), to function both as [gateways](/docs/collector/deployment/gateway/) and [agents](/docs/collector/deployment/agent/) within your observability architecture. Utilizing the OpenTelemetry Collector in this dual capacity enables a robust collection and forwarding of metrics, traces, and logs to analysis and visualization platforms.
 
 Here, we outline a strategy for deploying and managing the OpenTelemetry Collector's scalable instances throughout your infrastructure with Ansible, enhancing your overall monitoring strategy and data visualization capabilities in Grafana Cloud.
 
