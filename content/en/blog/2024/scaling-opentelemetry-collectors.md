@@ -4,25 +4,25 @@ title:
 linkTitle: OTel Collector with Ansible
 date: 2024-03-12
 author: '[Ishan Jain](https://github.com/ishanjainn) (Grafana)'
+cSpell:ignore: Ansible Ishan Jain
 # canonical_url: http://somewhere.else/ # This will be added in future
 ---
 
 This guide is focused on scaling the [OpenTelemetry Collector deployment](/docs/collector/deployment/) across various Linux hosts by leveraging [Ansible](https://www.ansible.com/), to function both as [gateways](/docs/collector/deployment/gateway/) and [agents](/docs/collector/deployment/agent/) within your observability architecture. Utilizing the OpenTelemetry Collector in this dual capacity enables a robust collection and forwarding of metrics, traces, and logs to analysis and visualization platforms.
 
-Here, we outline a strategy for deploying and managing the OpenTelemetry Collector's scalable instances throughout your infrastructure with Ansible, enhancing your overall monitoring strategy and data visualization capabilities in Grafana.
+Here, we outline a strategy for deploying and managing the OpenTelemetry Collector's scalable instances throughout your infrastructure with Ansible, enhancing your overall monitoring strategy and data visualization capabilities in [Grafana](https://grafana.com/).
 
 ## Before you begin
 
 To follow this guide, ensure you have:
 
 - Ansible Installed in your system
-- Linux hosts.
-- SSH access to each of these Linux hosts.
-- Account permissions to install and configure the OpenTelemetry Collector on these hosts.
+- Linux hosts along with SSH access to each of these Linux hosts.
+- Prometheus for gathering metrics 
 
 ## Install the Grafana Ansible collection
 
-A [OpenTelemetry Collector role](https://github.com/grafana/grafana-ansible-collection/tree/main/roles/opentelemetry_collector) is provided through the [Grafana Ansible collection](https://docs.ansible.com/ansible/latest/collections/grafana/grafana/) as of the 1.1.0 release.
+The [OpenTelemetry Collector role](https://github.com/grafana/grafana-ansible-collection/tree/main/roles/opentelemetry_collector) is provided through the [Grafana Ansible collection](https://docs.ansible.com/ansible/latest/collections/grafana/grafana/) as of the 3.0.0 release.
 
 To install the Grafana Ansible collection, run this command:
 
@@ -111,7 +111,7 @@ Create a file named `deploy-opentelemetry.yml` in the same directory as your `an
               statements:
                 - set(attributes["deployment.environment"], resource.attributes["deployment.environment"])
                 - set(attributes["service.version"], resource.attributes["service.version"])
-
+      
       otel_collector_exporters:
         prometheusremotewrite:
           endpoint: https://<prometheus-url>/api/prom/push
@@ -142,11 +142,44 @@ Deploy the OpenTelemetry Collector across your hosts by executing:
 ansible-playbook deploy-opentelemetry.yml
 ```
 
-## Visualizing metrics in Grafana
+## Visualizing Metrics in Grafana
 
-With data successfully ingested into Prometheus, you can use Grafana to create custom dashboards to visualize the metrics received from your OpenTelemetry Collector's. Utilize Grafana's powerful query builder and visualization tools to derive insights from your data effectively.
+Once your OpenTelemetry Collector's start sending metrics to Prometheus, follow these quick steps to visualize them in [Grafana](https://grafana.com/):
 
-- Consider creating dashboards that offer a comprehensive overview of your infrastructure's health and performance.
-- Utilize Grafana's alerting features to proactively manage and respond to issues identified through the OpenTelemetry data.
+### Setup Grafana
 
-This guide simplifies the deployment of the OpenTelemetry Collector across multiple Linux hosts using Ansible and illustrates how to visualize collected telemetry in Grafana. Tailor the OpenTelemetry Collector Ansible roles configurations, and Grafana dashboards to suit your specific monitoring and observability requirements.
+1. **Install Docker**: Make sure Docker is installed on your system. If it's not, you can find the installation guide at the [official Docker website](https://docs.docker.com/get-docker/).
+
+2. **Run Grafana Docker Container**: Start a Grafana server with this Docker command, which fetches the latest Grafana image:
+
+    ```sh
+    docker run -d -p 3000:3000 --name=grafana grafana/grafana
+    ```
+
+3. **Access Grafana**: Navigate to `http://localhost:3000` in your web browser. The default login details are `admin` for both the username and password.
+
+4. **Change Password**: Upon your first login, you will be prompted to set a new password. Make sure to pick a secure one.
+
+For other installation methods and more detailed instructions, refer to the [official Grafana documentation](https://grafana.com/docs/grafana/latest/installation/).
+
+
+### Add Prometheus as a Data Source
+
+1. **Login to Grafana** and navigate to **Connections** > **Data Sources**.
+2. Click **Add data source**, and choose **Prometheus**.
+3. In the settings, enter your Prometheus URL, for example, `http://<your_prometheus_host>`, along with any other necessary details, and then click **Save & Test**.
+
+### Explore metrics
+
+1. Go to the **Explore** page
+2. In the Query editor, select your Prometheus data source and enter the below query
+
+    ```
+    100 - (avg by (cpu) (irate(system_cpu_time{state="idle"}[5m])) * 100)
+    ```
+
+    This query calculates the average percentage of CPU time not spent in the "idle" state, across each CPU core, over the last 5 minutes.
+
+3. Play around with different metrics and start putting together your dashboards to gain insights into your system's performance.
+
+This guide makes it easier for you to set up the OpenTelemetry Collector on several Linux machines with the help of Ansible and shows you how to see the data it collects in Grafana. You can adjust the settings for the OpenTelemetry Collector and design your Grafana dashboards to meet your own monitoring and tracking needs. This way, you get exactly the insights you want from your systems, making your job as a developer a bit easier.
