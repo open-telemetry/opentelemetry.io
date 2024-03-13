@@ -15,6 +15,7 @@ Here, we outline a strategy for deploying and managing the OpenTelemetry Collect
 
 To follow this guide, ensure you have:
 
+- Ansible Installed in your system
 - Linux hosts.
 - SSH access to each of these Linux hosts.
 - Account permissions to install and configure the OpenTelemetry Collector on these hosts.
