@@ -76,51 +76,54 @@ Create a file named `deploy-opentelemetry.yml` in the same directory as your `an
   become: true
 
   tasks:
-    - name: Install OpenTelemetry Collector
-      ansible.builtin.include_role:
-        name: grafana.grafana.opentelemetry_collector
-      vars:
-        otel_collector_receivers:
-          hostmetrics:
-            collection_interval: 60s
-            scrapers:
-                cpu: {}
-                disk: {}
-                load: {}
-                filesystem: {}
-                memory: {}
-                network: {}
-                paging: {}
-                process:
-                    mute_process_name_error: true
-                    mute_process_exe_error: true
-                    mute_process_io_error: true
-                processes: {}
-        otel_collector_processors:
-          batch:
-          resourcedetection:
-            detectors: [env, system] 
-            timeout: 2s
-            system:
-                hostname_sources: [os] 
-          transform/add_resource_attributes_as_metric_attributes:
-            error_mode: ignore
-            metric_statements:
-              - context: datapoint
-                statements:
-                  - set(attributes["deployment.environment"], resource.attributes["deployment.environment"])
-                  - set(attributes["service.version"], resource.attributes["service.version"])
+  - name: Install OpenTelemetry Collector
+    ansible.builtin.include_role:
+      name: opentelemetry_collectorr
+    vars:
+      otel_collector_receivers:
+        hostmetrics:
+          collection_interval: 60s
+          scrapers:
+              cpu: {}
+              disk: {}
+              load: {}
+              filesystem: {}
+              memory: {}
+              network: {}
+              paging: {}
+              process:
+                  mute_process_name_error: true
+                  mute_process_exe_error: true
+                  mute_process_io_error: true
+              processes: {}
+      
+      otel_collector_processors:
+        batch:
+        resourcedetection:
+          detectors: [env, system] 
+          timeout: 2s
+          system:
+              hostname_sources: [os] 
+        transform/add_resource_attributes_as_metric_attributes:
+          error_mode: ignore
+          metric_statements:
+            - context: datapoint
+              statements:
+                - set(attributes["deployment.environment"], resource.attributes["deployment.environment"])
+                - set(attributes["service.version"], resource.attributes["service.version"])
 
-        otel_collector_exporters:
-          prometheusremotewrite:
-            endpoint: <your-prometheus-push-endpoint>
+      otel_collector_exporters:
+        prometheusremotewrite:
+          endpoint: https://<prometheus-url>/api/prom/push
+          headers:
+            Authorization: "Basic <base64-encoded-username:password>"
 
-        otel_collector_service:
-          pipelines:
-            metrics:
-              receivers: [hostmetrics]
-              processors: [resourcedetection, transform/add_resource_attributes_as_metric_attributes, batch]
-              exporters: [prometheusremotewrite]
+      otel_collector_service:
+        pipelines:
+          metrics:
+            receivers: [hostmetrics]
+            processors: [resourcedetection, transform/add_resource_attributes_as_metric_attributes, batch]
+            exporters: [prometheusremotewrite]
 ```
 
 {{% alert title="Note" %}}
