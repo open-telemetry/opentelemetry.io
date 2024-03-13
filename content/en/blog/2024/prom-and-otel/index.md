@@ -198,9 +198,9 @@ case, you still have to rely on Prometheus scrape configs in the Collector’s
 [Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md).
 
 #### Configuration
-Below is the YAML config for the OTel collector CR. Note that this collector is 
-running in a namespace called `opentelemetry`, but it can run in whatever 
-namespace you like. 
+The following is the YAML config for the OTel collector CR. Note that this 
+collector is running in a namespace called `opentelemetry`, but it can run 
+in whatever namespace you like. 
 
 The main components are:
 * **mode:** This is one of four [OTel Collector deployment modes supported by the Operator](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#deployment-modes): 
@@ -243,7 +243,7 @@ spec:
 ```
 
 To use the Target Allocator, you need to set `spec.targetallocator.enabled` to 
-`true`. (See note above about supported modes.)
+`true`. (See previous note about supported modes.)
 
 To use the Prometheus service discovery functionality, you’ll need to do two things:
 
@@ -275,7 +275,7 @@ is a concatenation of the OTel Collector’s name (`otelcol`, in our case) and t
 
 Finally, if you want to enable the Prometheus CR functionality of the Target 
 Allocator, you’ll need to define your own `ServiceMonitor` and `PodMonitor` 
-instances. Below is a sample `ServiceMonitor` definition that says, find me a 
+instances. The following is a sample `ServiceMonitor` definition that says, find me a 
 service with the label `app: my-app`, with an endpoint that’s a port named 
 `prom`, and scrape it every 15 seconds.
 
@@ -300,7 +300,8 @@ spec:
       interval: 15s
 ```
 
-The corresponding `Service` definition, which is just a standard [Kubernetes Service](https://kubernetes.io/docs/concepts/services-networking/service/) definition, is below. 
+The corresponding `Service` definition, which is just a standard [Kubernetes Service](https://kubernetes.io/docs/concepts/services-networking/service/) definition, is as 
+follows:  
 
 ```yaml
 apiVersion: v1
@@ -344,7 +345,7 @@ this `ServiceAccount` has no defined policy, so you’ll need to create your own
 [`ClusterRole`](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole) 
 and [`ClusterRoleBinding`](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding).
 
-Below is an example RBAC configuration taken from the [OTel Target Allocator readme](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator#rbac). It 
+The following is an example RBAC configuration taken from the [OTel Target Allocator readme](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator#rbac). It 
 includes the `ServiceAccount`, `ClusterRole`, and `ClusterRoleBinding` 
 configurations.
 
@@ -410,7 +411,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-Zooming in a bit on the [`ClusterRole`](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole) above, the rules below will provide the minimum access 
+Zooming in a bit on the [`ClusterRole`](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole), the following rules will provide the minimum access 
 required for the Target Allocator to query all the targets it needs based on any 
 Prometheus configurations:
 
@@ -498,7 +499,7 @@ and route data from any source [to one destination or more](https://opentelemetr
 ## Pros & Cons
 However you decide to use OTel to gather Prometheus metrics, ultimately what is 
 right for your organization depends on your business needs. Using the OTel 
-components discussed above, you could convert all your metrics into the 
+components discussed previously, you could convert all your metrics into the 
 Prometheus format, or you could convert your Prometheus metrics into OTLP. 
 Although Prometheus itself was not built for long-term data storage and presents 
 scaling challenges, there are products such as [Grafana Mimir](https://grafana.com/oss/mimir/), 
@@ -506,7 +507,7 @@ scaling challenges, there are products such as [Grafana Mimir](https://grafana.c
 [Cortex](https://cortexmetrics.io/docs/guides/running-cortex-on-kubernetes/) 
 that can help with these concerns. 
 
-We’ve listed some pros and cons of the setup we covered in this article below. 
+We’ve listed some pros and cons of the setup we covered in this article. 
 
 Pros:
 * Not having to maintain Prometheus as your data store, which means less 
