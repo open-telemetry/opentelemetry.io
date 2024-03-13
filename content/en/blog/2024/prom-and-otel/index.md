@@ -335,8 +335,8 @@ You can either create separate `ServiceMonitors` for each service you wish to
 monitor, or create a single `ServiceMonitor` to encompass all of your services. 
 The same applies for the `PodMonitor`.
 
-Before the Target Allocator can start scraping, you need to set up a Kubernetes, 
-or role-based access controls. This means that you need to have a [`ServiceAccount`](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) and 
+Before the Target Allocator can start scraping, you need to set up Kubernetes 
+role-based access controls. This means that you need to have a [`ServiceAccount`](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) and 
 corresponding cluster roles so that the Target Allocator has access to all of 
 the necessary resources to pull metrics from.
 
