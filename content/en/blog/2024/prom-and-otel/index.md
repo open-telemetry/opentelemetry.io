@@ -57,7 +57,7 @@ Prometheus server to store.
 
 Prometheus is so ubiquitous in the monitoring space that many tools natively 
 emit metrics in Prometheus format, including [Kubernetes](https://kubernetes.io/docs/concepts/cluster-administration/system-metrics/) and [HashiCorp's Nomad](https://developer.hashicorp.com/nomad/docs/operations/monitoring-nomad). And for those that don’t, there are a number 
-of vendor- and community-built Prometheus clients to aggregate and import data 
+of vendor- and community-built [Prometheus exporters](https://prometheus.io/docs/instrumenting/exporters/) to aggregate and import data 
 into Prometheus.
 
 While you can use Prometheus to monitor a variety of infrastructure and 
