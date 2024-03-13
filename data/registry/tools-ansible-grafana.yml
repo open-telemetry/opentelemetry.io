@@ -7,7 +7,7 @@ tags:
   - ansible
   - ansible-role
 license: GPL-3.0
-description: Ansible role by Grafana to deploy and manage OpenTelemetry Collector across mutiple machines
+description: Ansible role by Grafana to deploy and manage OpenTelemetry Collector across multiple machines
 authors:
   - name: Ishan Jain
     url: www.github.com/ishanjainn
