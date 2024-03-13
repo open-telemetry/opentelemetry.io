@@ -105,7 +105,7 @@ to effectively maintain performance and resource allocation while managing an
 increasing number of monitored targets and metrics. One option to help with this 
 is **sharding** the workload based on labels or dimensions, [which means using multiple Prometheus instances to handle your metrics according to specific parameters](https://www.atatus.com/blog/prometheus-architecture-scalability/#:~:text=Key%20Limitations%20of%20Prometheus,-Long%2DTerm%20Storage&text=Scalability%3A%20Extremely%20big%20environments%20with,availability%2C%20which%20influences%20system%20resilience.). This could help 
 decrease the burden on individual instances. However, there are two things to 
-onsider with this approach.  
+consider with this approach.  
 
 The first is that to get around querying sharded instances, you need a 
 management instance; this means that you need to have N+1 Prometheus instances, 
