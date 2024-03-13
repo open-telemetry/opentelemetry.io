@@ -17,9 +17,9 @@ under the [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/)
 umbrella – but what role does each play in observability? 
 
 OpenTelemetry (OTel for short), is a vendor-neutral open standard for 
-instrumenting, generating, collecting, and exporting telemetry data. Prometheus 
-is a fixture of the observability landscape, widely relied upon for monitoring 
-and alerting within organizations. 
+instrumenting, generating, collecting, and exporting telemetry data.
+Prometheus is a fixture of the observability landscape, widely relied upon 
+for monitoring and alerting within organizations. 
 
 While both Prometheus and OTel emit metrics, there is a lot to cover on the 
 differences and similarities, and is out of scope for this article. Rather, we 
@@ -30,14 +30,21 @@ metrics.
 * Alternative methods for Prometheus metric collection through OTel-native 
 options such as the K8s cluster receiver and Kubelet stats receiver.
 
-We will also do a technical dive into the OTel Operator's Target Allocator (TA) 
+We'll also do a technical dive into the OTel Operator's Target Allocator (TA) 
 and learn:
 * How it can be used for Prometheus service discovery.
 * How it ensures even distribution of Prometheus targets. 
 
-## Prometheus and OpenTelemetry 
-Prometheus encompasses many things, including [a time-series data store, 
-monitoring and alerting tool](https://prometheus.io/), and data format, known as [Prometheus 
+## OTel vs Prometheus
+
+Since OTel is primarily focused on the instrumentation part of observability,
+it doesn't provide a backend for storing telemetry; you have to forward the 
+data to a backend vendor for storage, alerting, and querying. 
+
+Prometheus, on the other hand, provides a time-series data store you can use 
+for your metrics, in addition to instrumentation clients. You can view 
+graphs and charts, set up alerts, and query your data via their web user 
+interface. It also encompasses a data format, known as [Prometheus 
 text-based exposition format](https://prometheus.io/docs/instrumenting/exposition_formats/#exposition-formats).
 
 Prometheus _data_ is stored as a dimensional time-series, meaning that the data 
@@ -45,11 +52,11 @@ has attributes (for example, labels or dimensions) and a timestamp.
 
 The Prometheus _server_ collects Prometheus metrics data from targets defined in a 
 configuration file. A target is an endpoint that supplies metrics for the 
-Prometheus tool to store.
+Prometheus server to store.
 
 Prometheus is so ubiquitous in the monitoring space that many tools natively 
 emit metrics in Prometheus format, including [Kubernetes](https://kubernetes.io/docs/concepts/cluster-administration/system-metrics/) and [HashiCorp's Nomad](https://developer.hashicorp.com/nomad/docs/operations/monitoring-nomad). And for those that don’t, there are a number 
-of vendor- and community-built Prometheus exporters to aggregate and import data 
+of vendor- and community-built Prometheus clients to aggregate and import data 
 into Prometheus.
 
 While you can use Prometheus to monitor a variety of infrastructure and 
