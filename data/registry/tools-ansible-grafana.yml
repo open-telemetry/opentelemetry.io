@@ -12,7 +12,7 @@ description:
   multiple machines
 authors:
   - name: Ishan Jain
-    url: www.github.com/ishanjainn
+    url: https://www.github.com/ishanjainn
   - name: Grafana Labs
 urls:
   repo: https://github.com/grafana/grafana-ansible-collection/tree/main/roles/opentelemetry_collector
