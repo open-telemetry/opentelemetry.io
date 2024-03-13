@@ -130,7 +130,7 @@ component of the Operator’s OTel collector management capabilities.
 
 In a nutshell, the Target Allocator is a mechanism for decoupling the service 
 discovery and metric collection functions of Prometheus in a way that allows 
-them to be scaled independently. The OTel collector manages Prometheus Metrics 
+them to be scaled independently. The OTel Collector manages Prometheus Metrics 
 without needing to install Prometheus. The TA manages the configuration of the 
 collector’s Prometheus Receiver.
 
