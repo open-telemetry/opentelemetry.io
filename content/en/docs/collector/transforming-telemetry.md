@@ -42,7 +42,7 @@ processors:
         resource.attributes["service.name"] != "app2"
 ```
 
-To only drop spans from a service called development while keeping all other
+To only drop spans from a service called `service1` while keeping all other
 spans:
 
 ```yaml
@@ -51,7 +51,7 @@ processors:
     error_mode: ignore
     traces:
       span:
-        - resource.attributes["service.name"] == "development"
+        - resource.attributes["service.name"] == "service1"
 ```
 
 The
