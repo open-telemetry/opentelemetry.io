@@ -116,7 +116,7 @@ ship them to a backend that is compatible with Prometheus remote write. Learn mo
 the architecture of both exporters [here](https://grafana.com/blog/2023/07/20/a-practical-guide-to-data-collection-with-opentelemetry-and-prometheus/#6-use-prometheus-remote-write-exporter). 
 
 ## Using the Target Allocator 
-A common challenge with Prometheus is that of scalability, which is the ability 
+Scalability is a common challenge with Prometheus; that is the ability
 to effectively maintain performance and resource allocation while managing an 
 increasing number of monitored targets and metrics. One option to help with this 
 is **sharding** the workload based on labels or dimensions, [which means using multiple Prometheus instances to handle your metrics according to specific parameters](https://www.atatus.com/blog/prometheus-architecture-scalability/#:~:text=Key%20Limitations%20of%20Prometheus,-Long%2DTerm%20Storage&text=Scalability%3A%20Extremely%20big%20environments%20with,availability%2C%20which%20influences%20system%20resilience). This could help 
