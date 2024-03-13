@@ -241,7 +241,7 @@ To use the Prometheus service discovery functionality, you’ll need to do two t
 First, you need to enable it by setting `spec.targetallocator.prometheusCR.enabled` 
 to `true`.
 
-Next, you need to make sure that the[ Prometheus receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md) 
+Next, you need to make sure that the [Prometheus receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md) 
 of the deployed collector is made aware of the Target Allocator in the collector 
 config section of the spec by setting the `target_allocator.endpoint`:
 
