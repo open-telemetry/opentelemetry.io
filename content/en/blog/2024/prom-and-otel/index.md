@@ -492,7 +492,7 @@ right for your organization depends on your business needs. Using the OTel
 components discussed above, you could convert all your metrics into the 
 Prometheus format, or you could convert your Prometheus metrics into OTLP. 
 Although Prometheus itself was not built for long-term data storage and presents 
-scaling challenges, there are tools such as [Grafana](https://grafana.com/), 
+scaling challenges, there are products such as [Grafana Mimir](https://grafana.com/oss/mimir/), 
 [Thanos](https://thanos.io/v0.10/thanos/getting-started.md/), and 
 [Cortex](https://cortexmetrics.io/docs/guides/running-cortex-on-kubernetes/) 
 that can help with these concerns. 
