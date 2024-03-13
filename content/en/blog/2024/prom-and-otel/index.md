@@ -24,16 +24,18 @@ and alerting within organizations.
 While both Prometheus and OTel emit metrics, there is a lot to cover on the 
 differences and similarities, and is out of scope for this article. Rather, we 
 want to show you how OTel supports Prometheus, specifically in a Kubernetes 
-environment. You will learn:
+environment. You'll learn:
 * How the OTel Collector's Prometheus Receiver can be used to ingest Prometheus 
-metrics.
-* How the OTel Operator's Target Allocator (TA) can be used for Prometheus 
-service discovery. 
-* How the TA ensures even distribution of Prometheus targets. 
+metrics. 
 * Alternative methods for Prometheus metric collection through OTel-native 
-options such as the K8s cluster receiver and Kubelet stats receiver.  
+options such as the K8s cluster receiver and Kubelet stats receiver.
 
-## Prometheus
+We will also do a technical dive into the OTel Operator's Target Allocator (TA) 
+and learn:
+* How it can be used for Prometheus service discovery.
+* How it ensures even distribution of Prometheus targets. 
+
+## Prometheus and OpenTelemetry 
 Prometheus encompasses many things, including [a time-series data store, 
 monitoring and alerting tool](https://prometheus.io/), and data format, known as [Prometheus 
 text-based exposition format](https://prometheus.io/docs/instrumenting/exposition_formats/#exposition-formats).
@@ -41,7 +43,7 @@ text-based exposition format](https://prometheus.io/docs/instrumenting/expositio
 Prometheus _data_ is stored as a dimensional time-series, meaning that the data 
 has attributes (for example, labels or dimensions) and a timestamp. 
 
-The Prometheus _tool_ collects Prometheus metrics data from targets defined in a 
+The Prometheus _server_ collects Prometheus metrics data from targets defined in a 
 configuration file. A target is an endpoint that supplies metrics for the 
 Prometheus tool to store.
 
