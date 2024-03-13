@@ -185,7 +185,7 @@ Create a file named `deploy-opentelemetry.yml` in the same directory as your `an
 
 The previous configuration would provision the OpenTelemetry Collector to collect host metrics from the Linux host.
 
-## Running the Ansible Playbook
+## Running the Ansible playbook
 
 Deploy the OpenTelemetry Collector across your hosts by executing:
 
