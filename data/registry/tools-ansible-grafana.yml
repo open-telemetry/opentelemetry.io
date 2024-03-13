@@ -1,3 +1,4 @@
+# cSpell:ignore ansible Ishan ishanjainn
 title: Ansible role for OpenTelemetry Collector
 registryType: utilities
 language: yaml
