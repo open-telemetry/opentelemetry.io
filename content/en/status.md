@@ -36,6 +36,13 @@ core collector components currently have mixed
 stability documented in its `README.md`. You can find a list of all available
 collector components in the [registry](/ecosystem/registry/?language=collector).
 
+## Kubernetes Operator
+
+The OpenTelemetry Operator status is [mixed](/docs/specs/otel/document-status/#mixed),
+since it can deploy components of differing statuses.
+
+The Operator itself is considered TODO LOL.
+
 ## Specifications
 
 For the development status, or maturity level, of the
