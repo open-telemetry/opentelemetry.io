@@ -60,8 +60,8 @@ In this section, you will learn about a couple of OTel collector components that
 demonstrate the interoperability between OTel and Prometheus.  
 
 First, let’s do a quick refresher on the [Collector](https://opentelemetry.io/docs/collector/) 
-– it’s an OTel component that can be used to collect and export data to and from 
-multiple sources and destinations. It also handles additional telemetry 
+– it’s an OTel component that can be used to collect and export data from and to 
+multiple sources and destinations, respectively. It also handles additional telemetry 
 processing, such as modifying data attributes and scrubbing personally 
 identifiable information. For example, you can use Prometheus SDKs to generate 
 metrics, ingest them with the Collector, do some processing (if desired) and 
