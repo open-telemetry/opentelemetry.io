@@ -123,7 +123,7 @@
 - name: Timescale
   url: https://www.timescale.com/
   components: [Collector, Go]
-  reference: https://www.timescale.com/blog/a-deep-dive-into-open-telemetry-metrics/
+  reference: ''
   referenceTitle: blog post
   contact: ''
   
