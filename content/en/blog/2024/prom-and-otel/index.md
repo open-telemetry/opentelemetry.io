@@ -35,7 +35,7 @@ options such as the K8s cluster receiver and Kubelet stats receiver.
 
 ## Prometheus
 Prometheus encompasses many things, including [a time-series data store, 
-monitoring and alerting tool](https://prometheus.io/), and [data format](https://grafana.com/docs/grafana/latest/fundamentals/intro-to-prometheus/), known as [Prometheus 
+monitoring and alerting tool](https://prometheus.io/), and data format, known as [Prometheus 
 text-based exposition format](https://prometheus.io/docs/instrumenting/exposition_formats/#exposition-formats).
 
 Prometheus _data_ is stored as a dimensional time-series, meaning that the data 
