@@ -39,7 +39,7 @@ monitoring and alerting tool](https://prometheus.io/), and [data format](https:/
 text-based exposition format](https://prometheus.io/docs/instrumenting/exposition_formats/#exposition-formats).
 
 Prometheus _data_ is stored as a dimensional time-series, meaning that the data 
-has attributes (i.e. labels/dimensions) and a timestamp. 
+has attributes (for example, labels or dimensions) and a timestamp. 
 
 The Prometheus _tool_ collects Prometheus metrics data from targets defined in a 
 configuration file. A target is an endpoint that supplies metrics for the 
