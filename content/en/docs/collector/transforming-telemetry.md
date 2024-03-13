@@ -2,7 +2,7 @@
 title: Transforming telemetry
 weight: 26
 # prettier-ignore
-cSpell:ignore: accountid clustername k8sattributes metricstransform resourcedetection
+cSpell:ignore: accountid clustername k8sattributes metricstransform OTTL resourcedetection
 ---
 
 The OpenTelemetry Collector is a convenient place to transform data before
@@ -39,7 +39,7 @@ processors:
         - |
         resource.attributes["service.name"] != "app1" and
         resource.attributes["service.name"] != "app2" and
-        resource.attributes["service.name"] != "app2"
+        resource.attributes["service.name"] != "app3"
 ```
 
 To only drop spans from a service called `service1` while keeping all other
