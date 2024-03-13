@@ -209,4 +209,4 @@ With data successfully ingested into Grafana Cloud, you can create custom dashbo
 - Consider creating dashboards that offer a comprehensive overview of your infrastructure's health and performance.
 - Utilize Grafana's alerting features to proactively manage and respond to issues identified through the OpenTelemetry data.
 
-This guide simplifies the deployment of the OpenTelemetry Collector across multiple Linux hosts using Ansible and illustrates how to visualize collected telemetry data in Grafana Cloud. Tailor the Ansible roles, OpenTelemetry Collector configurations, and Grafana dashboards to suit your specific monitoring and observability requirements.
+This guide simplifies the deployment of the OpenTelemetry Collector across multiple Linux hosts using Ansible and illustrates how to visualize collected telemetry in Grafana Cloud. Tailor the Ansible roles, OpenTelemetry Collector configurations, and Grafana dashboards to suit your specific monitoring and observability requirements.
