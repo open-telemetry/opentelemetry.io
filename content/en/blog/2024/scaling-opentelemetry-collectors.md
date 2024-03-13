@@ -21,7 +21,7 @@ To follow this guide, ensure you have:
 
 ## Install the Grafana Ansible collection
 
-The [Grafana Agent role](https://github.com/grafana/grafana-ansible-collection/tree/main/roles/grafana_agent) is available in the Grafana Ansible collection as of the 1.1.0 release.
+A [OpenTelemetry Collector role](https://github.com/grafana/grafana-ansible-collection/tree/main/roles/opentelemetry_collector) is provided through the [Grafana Ansible collection](https://docs.ansible.com/ansible/latest/collections/grafana/grafana/) as of the 1.1.0 release.
 
 To install the Grafana Ansible collection, run this command:
 
