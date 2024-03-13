@@ -38,8 +38,9 @@ collector components in the [registry](/ecosystem/registry/?language=collector).
 
 ## Kubernetes Operator
 
-The OpenTelemetry Operator status is [mixed](/docs/specs/otel/document-status/#mixed),
-since it can deploy components of differing statuses.
+The OpenTelemetry Operator status is
+[mixed](/docs/specs/otel/document-status/#mixed), since it can deploy components
+of differing statuses.
 
 The Operator itself is considered TODO LOL.
 
