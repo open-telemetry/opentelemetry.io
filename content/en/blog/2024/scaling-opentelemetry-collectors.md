@@ -181,7 +181,11 @@ Create a file named `deploy-opentelemetry.yml` in the same directory as your `an
               exporters: [loki/grafana_cloud_logs]
 ```
 
-> **Note:** You'll need to adjust the configuration to match the specific telemetry you intend to collect and where you plan to forward it. This configuration snippet is a basic example designed for traces, logs, and metrics collected using OTLP and forwarded to Grafana Cloud. 
+{{% alert title="Note" %}}
+
+You'll need to adjust the configuration to match the specific telemetry you intend to collect and where you plan to forward it. This configuration snippet is a basic example designed for traces, logs, and metrics collected using OTLP and forwarded to Jaeger and Prometheus. 
+
+{{% /alert %}}
 
 The previous configuration would provision the OpenTelemetry Collector to collect host metrics from the Linux host.
 
