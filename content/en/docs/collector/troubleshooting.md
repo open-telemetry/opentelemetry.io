@@ -15,16 +15,16 @@ network issues, it can be helpful to send a small amount of data to a collector
 configured to output to local logs. For details, see
 [Local exporters](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md#local-exporters).
 
-## Check available components in the collector
+## Check available components in the Collector
 
-Use below subcommand to Outputs available components in the collector
-distribution including their stability levels.
+Use the following sub-command to list the available components in a Collector
+distribution, including their stability levels.
 
 ```sh
 otelcol components
 ```
 
-Output
+Sample Output
 
 ```yaml
 buildinfo:
