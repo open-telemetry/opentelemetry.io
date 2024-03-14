@@ -513,19 +513,9 @@ to enable them within the [pipelines](/docs/collector/configuration/#pipelines) 
 and route data from any source [to one destination or more](/docs/collector/configuration/#exporters). 
 
 ## Pros and cons
-However you decide to use OTel to gather Prometheus metrics, ultimately what is 
-right for your organization depends on your business needs. Using the OTel 
-components discussed previously, you could convert all your metrics into the 
-Prometheus format, or you could convert your Prometheus metrics into OTLP. 
-Although Prometheus itself was not built for long-term data storage and presents 
-scaling challenges, there are products such as [Grafana Mimir](https://grafana.com/oss/mimir/), 
-[Thanos](https://thanos.io/v0.10/thanos/getting-started.md/), and 
-[Cortex](https://cortexmetrics.io/docs/guides/running-cortex-on-kubernetes/) 
-that can help with these concerns. 
-
 We’ve listed some pros and cons of the setup we covered in this article. 
 
-Pros:
+**Pros:**
 * Not having to maintain Prometheus as your data store, which means less 
 infrastructure overall to maintain -- especially if you go with an all-in-one
 observability backend to ingest OTel data (traces, metrics, logs)
@@ -540,7 +530,7 @@ environments
 * OTel provides handy tools, such as the Target Allocator and OTel Collector
 components, to provide flexibility for configuration and deployment options 
 
-Cons:
+**Cons:**
 * Adopting and managing a new observability tool involves a steep learning curve 
 for users unfamiliar with OTel concepts, components, and workflows
 * If you are used to using PromQL, Prometheus’ powerful query language, you may 
@@ -555,37 +545,25 @@ operational complexity in your monitoring infrastructure
 
 ## Conclusion
 
-As you have just seen, you can leverage OTel capabilities to further support and 
-enhance your Prometheus metrics, and using OTel provides different approaches 
-for monitoring your Kubernetes cluster. 
+However you decide to use OTel to gather Prometheus metrics, ultimately what is 
+right for your organization depends on your business needs. Using the OTel 
+components discussed previously, you could convert all your metrics into the 
+Prometheus format, or you could convert your Prometheus metrics into OTLP. 
+Although Prometheus itself was not built for long-term data storage and presents 
+scaling challenges, there are products such as [Mimir](https://grafana.com/oss/mimir/), 
+[Thanos](https://thanos.io/v0.10/thanos/getting-started.md/), and 
+[Cortex](https://cortexmetrics.io/docs/guides/running-cortex-on-kubernetes/) 
+that can help with these concerns. 
 
-The OTel Collector serves as a versatile component for gathering and exporting 
-data across various sources and destinations, while also handling telemetry 
-processing tasks such as data attribute modification and PII scrubbing. 
-Utilizing Prometheus or OTel SDKs, metrics can be generated, processed, and 
-forwarded to chosen backends through the Collector. 
-
-The Prometheus receiver facilitates metric collection from any software exposing 
-Prometheus metrics, serving as a drop-in replacement for Prometheus itself. 
-However, it's important to note that the Prometheus receiver is still being 
-developed and has limitations, particularly when dealing with statefulness and 
-replica scaling. Additionally, exporters like the Prometheus exporter and 
-Prometheus remote write exporter offer flexibility in shipping data in 
-Prometheus format to compatible backends or storage systems, enabling seamless 
-integration with Prometheus ecosystems and beyond.
-
-Incorporating the OTel Target Allocator into your Kubernetes monitoring with 
-Prometheus and OpenTelemetry offers benefits in terms of target allocation and 
-load balancing not natively provided by Prometheus, along with service discovery 
-and failover resilience. However, that must be balanced against the introduction 
-of operational  complexity and overhead that come with it, along with potential 
-resource consumption overhead. 
-
-The OTel Collector also offers a range of components for gathering 
-infrastructure metrics from specific Kubernetes elements. Additionally, it 
-enables the correlation of application telemetry with Kubernetes data by 
-incorporating Kubernetes metadata onto that telemetry.
+Prometheus maintainers have also been further developing the interoperability
+between the two projects from the Prometheus side to make it easier for it to be 
+the backend for OTLP metrics. For instance, Prometheus can now accept OTLP, and
+soon, you’ll be able to use Prometheus exporters to export OTLP. So if you have a 
+service instrumented with a Prometheus SDK, you’ll be able to *push* OTLP to
+Prometheus. The maintainers are also working on adding support for delta temporality. 
+This [component](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/30479) will aggregate delta samples to their 
+respective cumulative counterparts.
 
 Whether or not you choose to implement these solutions in your organization, 
-it’s still nice to know that there are additional options out there to lead you 
-to OTel and Prometheus greatness. 
+it’s nice to know that there are additional options out there to lead you 
+to observability greatness with OTel and Prometheus. 
