@@ -116,10 +116,10 @@ ship them to a backend that is compatible with Prometheus remote write. Learn mo
 the architecture of both exporters [here](https://grafana.com/blog/2023/07/20/a-practical-guide-to-data-collection-with-opentelemetry-and-prometheus/#6-use-prometheus-remote-write-exporter). 
 
 ## Using the Target Allocator 
-Scalability is a common challenge with Prometheus; that is the ability
-to effectively maintain performance and resource allocation while managing an 
+Scalability is a common challenge with Prometheus; that's the ability to
+effectively maintain performance and resource allocation while managing an 
 increasing number of monitored targets and metrics. One option to help with this 
-is **sharding** the workload based on labels or dimensions, [which means using multiple Prometheus instances to handle your metrics according to specific parameters](https://www.atatus.com/blog/prometheus-architecture-scalability/#:~:text=Key%20Limitations%20of%20Prometheus,-Long%2DTerm%20Storage&text=Scalability%3A%20Extremely%20big%20environments%20with,availability%2C%20which%20influences%20system%20resilience). This could help 
+is sharding the workload based on labels or dimensions, [which means using multiple Prometheus instances to handle your metrics according to specific parameters](https://medium.com/wish-engineering/horizontally-scaling-prometheus-at-wish-ea4b694318dd). This could help 
 decrease the burden on individual instances. However, there are two things to 
 consider with this approach.  
 
@@ -129,9 +129,18 @@ where the +1’s memory is equal to N, thereby doubling your memory requests.
 Secondly, Prometheus sharding requires that each instance scrape the target, 
 even if it’s going to be dropped. 
 
+Something to note is that if you can have a Prometheus instance with the 
+combined amount of memory of individual instances, there is not much benefit
+to sharding, since you can scrape everything directly using the larger 
+instance. A reason that people shard is usually for some amount of fault 
+tolerance. For example, if one Prometheus instance is out of memory (OOM), 
+then your entire alerting pipeline won't be offline. 
+
 Luckily, the OTel Operator’s Target Allocator (TA) is able to help with 
 some of this. For instance, it can automatically drop any targets it knows won’t 
-be scraped. Plus, if you’re already collecting Prometheus metrics about your 
+be scraped. Whereas if you shard with `hashmod`, you'll need to update your
+config based on the number of replicas you have](https://www.robustperception.io/scaling-and-federating-prometheus/).
+Plus, if you’re already collecting Prometheus metrics about your 
 Kubernetes infrastructure, using the TA is a great option.
 
 The Target Allocator is part of the OTel Operator. The OTel Operator is a [Kubernetes Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) that:
