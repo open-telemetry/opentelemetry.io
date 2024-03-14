@@ -570,7 +570,7 @@ kubectl logs -l app.kubernetes.io/name=opentelemetry-operator --container manage
 
 ### Were the resources deployed in the right order?
 
-Order matters! The `Instrumentation` resource needs to be deployed before before
+Order matters! The `Instrumentation` resource needs to be deployed before
 deploying the application, otherwise the auto-instrumentation won’t work.
 
 Recall the auto-instrumentation annotation:

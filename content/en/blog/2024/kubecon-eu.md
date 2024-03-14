@@ -117,16 +117,18 @@ your OpenTelemetry adoption, implementation, and usage.
 To join a feedback session, book online below. All times in Central European
 Time (CET).
 
-- **March 20th, 10:45-11:45:**
-  [End User Feedback Session - Profiling](https://calendly.com/otel-euwg/end-user-feedback-sessions-1?month=2024-03)
 - **March 20th, 11:45-12:45:**
-  [End User Feedback Session - .NET & .NET Auto-Instrumentation](https://calendly.com/otel-euwg/end-user-feedback-sessions-2?month=2024-03)
+  [End User Feedback Session - .NET & .NET Auto-Instrumentation](https://calendly.com/euwg-user-feedback-session/end-user-feedback-session?month=2024-03)
 - **March 20th, 15:00-16:00:**
-  [End User Feedback Session - JavaScript](https://calendly.com/otel-euwg/end-user-feedback-sessions-3?month=2024-03)
+  [End User Feedback Session - JavaScript](https://calendly.com/euwg-user-feedback-session/end-user-feedback-session-javascript?month=2024-03)
 - **March 21st, 11:00-12:00:**
-  [End User Feedback Session - Semantic Conventions](https://calendly.com/otel-euwg/end-user-feedback-sessions-4?month=2024-03)
+  [End User Feedback Session - Semantic Conventions](https://calendly.com/euwg-user-feedback-session/end-user-feedback-session-semantic-conventions?month=2024-03)
 - **March 21st, 14:30-15:30:**
-  [End User Feedback Session - Comms (website, docs)](https://calendly.com/otel-euwg/end-user-feedback-sessions-5?month=2024-03)
+  [End User Feedback Session - Comms (website, docs)](https://calendly.com/euwg-user-feedback-session/end-user-feedback-session-comms?month=2024-03)
+- **March 21st, 15:00-16:00:**
+  [End User Feedback Session - Profiling](https://calendly.com/euwg-user-feedback-session/end-user-feedback-session-profiling?month=2024-03)
+- **March 21st, 15:30-16:30:**
+  [End User Feedback Session - Client-side](https://calendly.com/euwg-user-feedback-session/end-user-feedback-session-client-side)
 
 A maximum of 5 participants will join one SIG maintainer to provide feedback for
 that SIG. Sessions will be recorded and posted on the
