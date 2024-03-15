@@ -554,8 +554,8 @@ service instrumented with a Prometheus SDK, you’ll be able to *push* OTLP and
 take advantage of the rich Prometheus exporter ecosystem for OTel users. The 
 maintainers are also working on adding support for delta temporality. This 
 [component](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/30479) will aggregate delta samples to their 
-respective cumulative counterparts. Read more about Prometheus' support for OTel 
-[here](https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/)!
+respective cumulative counterparts. Read more about Prometheus' commitment to 
+OTel [here](https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/)!
 
 However you decide to use OTel to gather Prometheus metrics, ultimately what is 
 right for your organization depends on your business needs. Using the OTel 
