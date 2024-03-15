@@ -162,7 +162,7 @@ which means that you can see and autocomplete all available properties in your
 IDE.
 
 
-#### General configurations
+#### General configuration
 
 The OpenTelemetry Starter supports all the [SDK Autoconfiguration](/docs/languages/java/automatic/configuration/#sdk-autoconfiguration) (since
 2.2.0). You can use properties set in the `application.properties` or the `application.yaml` file, or environment variables.
