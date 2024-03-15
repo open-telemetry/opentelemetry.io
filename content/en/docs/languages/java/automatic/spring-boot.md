@@ -164,6 +164,13 @@ This spring starter supports
 which means that you can see and autocomplete all available properties in your
 IDE.
 
+The OpenTelemetry Starter supports all properties from the
+[Configuration](/docs/languages/java/automatic/configuration/) page (since
+2.2.0).
+
+The only difference is that the OpenTelemetry Spring Boot starter uses
+`http/protobuf` as the default protocol for the OTLP exporter (since 2.0.0).
+
 #### Disable the OpenTelemetry Starter
 
 {{% config_option name="otel.sdk.disabled" %}}
@@ -172,57 +179,59 @@ Set the value to `true` to disable the starter, e.g. for testing purposes.
 
 {{% /config_option %}}
 
-#### OpenTelemetry Data Exporters
+#### Spring Boot properties integration
 
-This package provides autoconfiguration the following exporters:
+All OpenTelemetry properties can be set in the `application.properties` or the
+`application.yaml` file.
 
-- OTLP
-- Logging
+Lists and maps can use both the OpenTelemetry and Spring Boot flavors.
 
-All available properties are listed in the
-[Configuration](/docs/languages/java/automatic/configuration/) page.
+##### OpenTelemetry properties style
 
-The only difference is that the OpenTelemetry Spring Boot starter uses
-`http/protobuf` as the default protocol for the OTLP exporter (as of 2.0.0+).
+The OpenTelemetry Starter supports the OpenTelemetry properties as described in
+the
+[specification](/docs/languages/sdk-configuration/general/#otel_resource_attributes):
 
-#### Tracer Properties
-
-| Feature | Property                          | Default Value |
-| ------- | --------------------------------- | ------------- |
-| Tracer  | `otel.traces.sampler.probability` | 1.0           |
-
-#### Resource Properties
-
-| Feature  | Property                           | Default Value |
-| -------- | ---------------------------------- | ------------- |
-| Resource | `otel.springboot.resource.enabled` | true          |
-|          | `otel.resource.attributes`         | empty map     |
-
-`otel.resource.attributes` supports a pattern-based resource configuration in
-the application.properties like this:
+`application.properties`:
 
 ```properties
+otel.propagators=tracecontext,b3
+otel.resource.attributes=environment=dev,xyz=foo
+```
+
+This style is convenient to use in environment variables:
+
+```shell
+export OTEL_PROPAGATORS="tracecontext,b3"
+export OTEL_RESOURCE_ATTRIBUTES="environment=dev,xyz=foo"
+```
+
+##### Native Spring Boot properties style
+
+You can also use the native Spring Boot style:
+
+`application.properties`:
+
+```properties
+otel.propagators=tracecontext,b3
 otel.resource.attributes.environment=dev
 otel.resource.attributes.xyz=foo
 ```
 
-It's also possible to specify the resource attributes in `application.yaml`:
+`application.yaml`:
 
 ```yaml
 otel:
+  propagators:
+    - tracecontext
+    - b3
   resource:
     attributes:
       environment: dev
       xyz: foo
 ```
 
-Finally, the resource attributes can be specified as a comma-separated list, as
-described in the
-[specification](/docs/languages/sdk-configuration/general/#otel_resource_attributes):
-
-```shell
-export OTEL_RESOURCE_ATTRIBUTES="key1=value1,key2=value2"
-```
+#### Service name
 
 The service name is determined by the following precedence rules, in accordance
 with the OpenTelemetry
