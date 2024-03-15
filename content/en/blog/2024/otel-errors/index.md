@@ -5,7 +5,6 @@ date: 2024-03-06
 author: >- # If you have only one author, then add the single name on this line in quotes.
   [Reese Lee](https://github.com/reese-lee) (New Relic),
   [Adriana Villela](https://github.com/avillela) (ServiceNow)
-draft: true # TODO: remove this line once your post is ready to be published
 canonical_url: https://newrelic.com/blog/how-to-relic/dude-wheres-my-error
 ---
 Depending on the language you’re used to developing in, you may have certain 
@@ -15,7 +14,7 @@ discourage programmers from labeling too many ordinary errors as exceptional.
 On the other hand, languages such as Java and Python provide built-in support 
 for throwing and catching exceptions. 
 
-When you begin at a place where different languages disagree about what errors
+When different languages disagree about what errors
 or exceptions are and how to handle them, what do you use when you need
 standardized telemetry and error reporting across microservices written in
 those languages? OpenTelemetry is the tool with which we'll address the
@@ -240,10 +239,28 @@ events as its own data type instead of as a log data type, which would impact
 the way you query that data.
 
 ## Conclusion
-Error handling is a challenging yet essential aspect of software development, and 
-OTel offers a comprehensive solution for navigating its complexities. By 
-leveraging OTel's capabilities to record errors through logs and spans and to 
-enhance spans with metadata, you can gain deeper insights into your applications' 
+We’ve just explored the challenges of handling errors and exceptions across 
+different programming languages within a microservices architecture, and 
+introduced OTel as a solution for standardized telemetry and error reporting. 
+The OTel specification serves as a blueprint for standardizing error handling 
+across various languages, providing guidelines for implementation, but allowing 
+for a degree of flexibility. 
+
+You can record errors on spans by making use of your language SDK’s 
+`RecordException` or its equivalent, and enrich the span events further by adding 
+custom attributes. You can also record errors on logs by adding `exception.type` 
+or `exception.message`, and capture the stack trace by adding `exception.stacktrace` 
+to yield further information about what happened. 
+
+Once that data is in your observability backend, if you have previously used 
+their proprietary monitoring agent, you might notice that there is a difference 
+in how OTel-instrumented errors are visualized versus how the agent-instrumented 
+errors were visualized. This is mainly because OTel models errors differently 
+than vendors might have previously done. 
+
+By leveraging OTel's capabilities to record errors through logs and spans and 
+to enhance them with metadata, you can gain deeper insights into your applications' 
 behavior and more effectively troubleshoot issues. You'll be better equipped to 
 build and maintain resilient, reliable, and high-performing software applications 
-in today's dynamic and demanding environments. 
+in today's dynamic and demanding environments. Learn more about error handling in 
+OTel [here](/docs/specs/otel/error-handling/). 
