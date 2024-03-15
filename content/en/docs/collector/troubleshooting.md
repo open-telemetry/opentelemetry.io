@@ -18,13 +18,14 @@ configured to output to local logs. For details, see
 ## Check available components in the Collector
 
 Use the following sub-command to list the available components in a Collector
-distribution, including their stability levels.
+distribution, including their stability levels. Please note that the output
+format may change across versions.
 
 ```sh
 otelcol components
 ```
 
-Sample Output
+Sample output
 
 ```yaml
 buildinfo:
@@ -32,11 +33,6 @@ buildinfo:
   description: OpenTelemetry Collector
   version: 0.96.0
 receivers:
-  - name: kafka
-    stability:
-      logs: Beta
-      metrics: Beta
-      traces: Beta
   - name: opencensus
     stability:
       logs: Undefined
@@ -57,16 +53,6 @@ receivers:
       logs: Beta
       metrics: Stable
       traces: Stable
-  - name: hostmetrics
-    stability:
-      logs: Undefined
-      metrics: Beta
-      traces: Undefined
-  - name: jaeger
-    stability:
-      logs: Undefined
-      metrics: Undefined
-      traces: Beta
 processors:
   - name: resource
     stability:
@@ -83,57 +69,7 @@ processors:
       logs: Alpha
       metrics: Undefined
       traces: Beta
-  - name: filter
-    stability:
-      logs: Alpha
-      metrics: Alpha
-      traces: Alpha
-  - name: batch
-    stability:
-      logs: Beta
-      metrics: Beta
-      traces: Beta
-  - name: memory_limiter
-    stability:
-      logs: Beta
-      metrics: Beta
-      traces: Beta
-  - name: attributes
-    stability:
-      logs: Beta
-      metrics: Beta
-      traces: Beta
 exporters:
-  - name: file
-    stability:
-      logs: Alpha
-      metrics: Alpha
-      traces: Alpha
-  - name: kafka
-    stability:
-      logs: Beta
-      metrics: Beta
-      traces: Beta
-  - name: opencensus
-    stability:
-      logs: Undefined
-      metrics: Beta
-      traces: Beta
-  - name: prometheusremotewrite
-    stability:
-      logs: Undefined
-      metrics: Beta
-      traces: Undefined
-  - name: zipkin
-    stability:
-      logs: Undefined
-      metrics: Undefined
-      traces: Beta
-  - name: logging
-    stability:
-      logs: Deprecated
-      metrics: Deprecated
-      traces: Deprecated
   - name: otlp
     stability:
       logs: Beta
@@ -162,9 +98,6 @@ connectors:
       logs-to-traces: Undefined
       metrics-to-logs: Undefined
       metrics-to-metrics: Beta
-      metrics-to-traces: Undefined
-      traces-to-logs: Undefined
-      traces-to-metrics: Undefined
       traces-to-traces: Beta
 extensions:
   - name: zpages
