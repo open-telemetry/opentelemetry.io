@@ -192,26 +192,26 @@ In the past, all Prometheus scrape configurations had to be done via the
 Prometheus Receiver. When the Target Allocator’s service 
 discovery feature is enabled, the TA simplifies the configuration of the 
 Prometheus receiver, by creating scrape configurations in the Prometheus 
-receiver from the `PodMonitor` and `ServiceMonitor` instances deployed in your 
+receiver from the PodMonitor and ServiceMonitor instances deployed in your 
 cluster.
 
 ![How the Target Allocator's service discovery feature works](target-allocator-promcr.png)
 
 Even though Prometheus is not required to be installed in your Kubernetes 
 cluster to use the Target Allocator for Prometheus CR discovery, the TA does 
-require that the `ServiceMonitor` and `PodMonitor` be installed. These CRs are 
+require that the ServiceMonitor and PodMonitor be installed. These CRs are 
 bundled with Prometheus Operator; however, they can be installed standalone as 
 well. The easiest way to do this is to grab a copy of the individual 
 [PodMonitor YAML](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/charts/crds/crds/crd-podmonitors.yaml) and 
 [ServiceMonitor YAML](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/charts/crds/crds/crd-servicemonitors.yaml) custom resource 
 definitions (CRDs).
 
-OTel supports the `PodMonitor` and `ServiceMonitor` Prometheus resources because 
+OTel supports the PodMonitor and ServiceMonitor Prometheus resources because 
 these are widely-used in Kubernetes infrastructure monitoring. As a result, the 
 OTel Operator developers wanted to make it easy to add them to the OTel 
 ecosystem.
 
-Note that the `PodMonitor` and `ServiceMonitor` are not useful for 
+Note that the PodMonitor and ServiceMonitor are not useful for 
 cluster-wide metrics collection, such as for Kubelet metrics collection. In that 
 case, you still have to rely on Prometheus scrape configs in the Collector’s 
 [Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md).
@@ -291,8 +291,8 @@ To use the Prometheus service discovery functionality, you’ll need to enable i
 by setting `spec.targetallocator.prometheusCR.enabled` to `true`.
 
 Finally, if you want to enable the Prometheus CR functionality of the Target 
-Allocator, you’ll need to define your own `ServiceMonitor` and `PodMonitor` 
-instances. The following is a sample `ServiceMonitor` definition that says, find me a 
+Allocator, you’ll need to define your own ServiceMonitor and PodMonitor 
+instances. The following is a sample ServiceMonitor definition that says, find me a 
 service with the label `app: my-app`, with an endpoint that’s a port named 
 `prom`, and scrape it every 15 seconds.
 
@@ -339,31 +339,31 @@ spec:
 ```
 
 Because the `Service` has a label called `app: my-app` and a port named `prom`, 
-it will get picked up by the `ServiceMonitor`.
+it will get picked up by the ServiceMonitor.
 
-You can either create separate `ServiceMonitors` for each service you wish to 
-monitor, or create a single `ServiceMonitor` to encompass all of your services. 
-The same applies for the `PodMonitor`.
+You can either create separate ServiceMonitors for each service you wish to 
+monitor, or create a single ServiceMonitor to encompass all of your services. 
+The same applies for the PodMonitor.
 
 Before the Target Allocator can start scraping, you need to set up Kubernetes 
-role-based access controls (RBAC). This means that you need to have a [`ServiceAccount`](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) and 
+role-based access controls (RBAC). This means that you need to have a [ServiceAccount](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) and 
 corresponding cluster roles so that the Target Allocator has access to all of 
 the necessary resources to pull metrics from.
 
-You can create your own `ServiceAccount`, and reference it as 
+You can create your own ServiceAccount, and reference it as 
 `spec.targetAllocator.serviceAccount` in the OTel Collector CR. You’ll then need 
-to configure the [`ClusterRole`](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole) and [`ClusterRoleBinding`](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) for this service 
+to configure the [ClusterRole](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole) and [ClusterRoleBinding](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) for this service 
 account.
 
-If you omit the `ServiceAccount` configuration, the Target Allocator creates a 
-`ServiceAccount` automatically for you. The `ServiceAccount`’s default name is a 
+If you omit the ServiceAccount configuration, the Target Allocator creates a 
+ServiceAccount automatically for you. The ServiceAccount’s default name is a 
 concatenation of the Collector name and the `-collector` suffix. By default, 
-this `ServiceAccount` has no defined policy, so you’ll need to create your own 
-[`ClusterRole`](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole) 
-and [`ClusterRoleBinding`](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding).
+this ServiceAccount has no defined policy, so you’ll need to create your own 
+[ClusterRole](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole) 
+and [ClusterRoleBinding](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding).
 
 The following is an example RBAC configuration taken from the [OTel Target Allocator readme](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator#rbac). It 
-includes the `ServiceAccount`, `ClusterRole`, and `ClusterRoleBinding` 
+includes the ServiceAccount, ClusterRole, and ClusterRoleBinding 
 configurations:
 
 ```yaml
@@ -428,7 +428,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-Zooming in a bit on the [`ClusterRole`](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole), the following rules will provide the minimum access 
+Zooming in a bit on the previous [ClusterRole](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole), the following rules will provide the minimum access 
 required for the Target Allocator to query all the targets it needs based on any 
 Prometheus configurations:
 
@@ -460,10 +460,10 @@ Prometheus configurations:
 ```
 
 If you enable the `prometheusCR` (set `spec.targetAllocator.prometheusCR.enabled` 
-to `true`) in the `OpenTelemetryCollector` CR, you will also need to define the 
-following roles. These give the Target Allocator access to the `PodMonitor` and 
-`ServiceMonitor` CRs. It also gives namespace access to the `PodMonitor` and 
-`ServiceMonitor`.
+to `true`) in the OpenTelemetryCollector CR, you will also need to define the 
+following roles. These give the Target Allocator access to the PodMonitor and 
+ServiceMonitor CRs. It also gives namespace access to the PodMonitor and 
+ServiceMonitor.
 
 ```yaml
 - apiGroups:
@@ -521,7 +521,7 @@ The following are pros and cons of the setup we covered in this article.
 infrastructure overall to maintain -- especially if you go with an all-in-one
 observability backend to ingest OTel data (traces, metrics, logs).
 * Not having to maintain the Prometheus Operator; while you would still have to 
-maintain the `ServiceMonitor` and `PodMonitor`, it’s a lot less work than keeping 
+maintain the ServiceMonitor and PodMonitor, it’s a lot less work than keeping 
 the Operator up-to-date.
 * Allows you to end up with a full OTel solution while still obtaining your 
 Prometheus metrics
