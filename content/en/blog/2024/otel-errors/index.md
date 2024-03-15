@@ -49,7 +49,7 @@ between errors and exceptions is crucial for effective error handling, because
 it empowers you to adopt more nuanced strategies for handling and recovering 
 from failures in your applications.
 
-## The OTel specification
+## Handling errors in OTel
 
 So how does OTel deal with all these conceptual differences across languages? 
 This is where the [specification](/docs/specs/otel/) (or 
