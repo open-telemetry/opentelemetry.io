@@ -1,12 +1,12 @@
 ---
 title: Dude, where's my error? How OpenTelemetry records errors
-linkTitle: OTel Errors
+linkTitle: Understanding OTel Errors
 date: 2024-03-06
 author: >- # If you have only one author, then add the single name on this line in quotes.
   [Reese Lee](https://github.com/reese-lee) (New Relic),
   [Adriana Villela](https://github.com/avillela) (ServiceNow)
 draft: true # TODO: remove this line once your post is ready to be published
-# canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the canonical URL here.
+canonical_url: https://newrelic.com/blog/how-to-relic/dude-wheres-my-error
 ---
 Depending on the language you’re used to developing in, you may have certain 
 ideas about what an error is, as well as what constitutes an exception and how 
@@ -21,17 +21,18 @@ standardized telemetry and error reporting across microservices written in
 those languages? OpenTelemetry is the tool with which we'll address the
 following, and more:
 
-* How an error is visualized in a backend may not be where you think it’ll be, 
+* How an error is visualized in a backend might not be where you think it’ll be, 
 or how you expect it to look. 
 * How span kind affects error reporting. 
-* Errors reported by spans vs logs.
+* Errors reported by spans versus logs.
 
-## Errors vs exceptions
+## Errors versus exceptions
 
 Before we get into how OTel deals with errors and exceptions, let’s establish 
-what they are, and how they’re different from each other. While there are 
-variations on the definitions of these terms, we’ve landed on the ones below, 
-which we’ll be using in this article:
+what they are, and how they differ from each other. While there are 
+variations on the definitions of these terms, we’ve landed on the following ones, 
+which we’ll be using in this article. Note that this is **not** official OTel
+language; they are general industry definitions: 
 
 An **error** is an unexpected issue in a program that hinders its execution. 
 Examples include syntax errors, such as a missing semicolon or incorrect 
@@ -42,14 +43,14 @@ program. Examples include dividing by zero or accessing an invalid memory addres
 
 Some languages, such as Python and JavaScript, treat errors and exceptions as 
 synonyms; others, such as PHP and Java, do not. Understanding the distinction 
-between the two is crucial for effective error handling. By recognizing the 
-differences between errors and exceptions, you can adopt more nuanced strategies 
-for handling and recovering from failures in your applications.
+between errors and exceptions is crucial for effective error handling, because 
+it empowers you to adopt more nuanced strategies for handling and recovering 
+from failures in your applications.
 
-## Errors in OpenTelemetry
+## The OTel specification
 
 So how does OTel deal with all these conceptual differences across languages? 
-This is where the [specification](https://opentelemetry.io/docs/specs/otel/) (or 
+This is where the [specification](/docs/specs/otel/) (or 
 “spec” for short) comes in. The spec provides a blueprint for developers working 
 on various parts of the project, and standardizes implementation across all 
 languages. 
@@ -65,15 +66,15 @@ Another exception is when a language might decide to diverge from the spec.
 Although it is generally not advised, sometimes there are strong language-specific 
 reasons to do something different. In this way, the spec allows for some 
 flexibility for each language to implement features as idiomatically as possible. 
-For example, most languages have implemented `RecordException` (e.g. [Python](https://opentelemetry-python.readthedocs.io/en/latest/_modules/opentelemetry/sdk/trace.html#Span.record_exception)), while Go has 
+For example, most languages have implemented `RecordException` (for example, [Python](https://opentelemetry-python.readthedocs.io/en/latest/_modules/opentelemetry/sdk/trace.html#Span.record_exception)), while Go has 
 implemented [`RecordError`](https://github.com/open-telemetry/opentelemetry-go/blob/main/sdk/trace/span.go), which does the same thing. 
 
 You can view this [compliance matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md) of the spec across all languages, but you’ll 
-get the most updated info by checking the individual language repository. Now we have 
-a place from which to begin figuring out how to handle errors in OTel, starting 
+get the most updated info by checking the individual language repository. Now we 
+can begin figuring out how to handle errors in OTel, starting 
 with how to report them:
-* In spans
-* In logs
+* Spans
+* Logs
   
 ### Errors in spans
 
@@ -89,7 +90,7 @@ events.
 
 ### Enhancing spans with metadata
 
-OTel enables you to enhance spans with metadata ([attributes](https://opentelemetry.io/docs/concepts/signals/traces/#attributes)) in the form of key-value pairs. By attaching relevant 
+OTel enables you to enhance spans with metadata ([attributes](/docs/concepts/signals/traces/#attributes)) in the form of key-value pairs. By attaching relevant 
 information to spans, such as user IDs, request parameters, or environment 
 variables, you can gain deeper insights into the circumstances surrounding an 
 error and quickly identify its root cause. This metadata-rich approach to error 
@@ -97,39 +98,39 @@ handling can significantly reduce the time and effort required to diagnose and
 resolve issues, ultimately improving the reliability and maintainability of your 
 applications.
 
-Spans also have a [span kind](https://opentelemetry.io/docs/concepts/signals/traces/#span-kind) 
+Spans also have a [span kind](/docs/concepts/signals/traces/#span-kind) 
 field, which gives us some additional metadata that can help developers 
 troubleshoot errors. OTel defines several span kinds, each of which has unique 
 implications for error reporting: 
-* **client**: For outgoing synchronous remote calls (e.g. outgoing HTTP request 
+* **client**: For outgoing synchronous remote calls (for example, outgoing HTTP request 
 or DB call)
-* **server**: For incoming synchronous remote calls (e.g. incoming HTTP request 
+* **server**: For incoming synchronous remote calls (for example, incoming HTTP request 
 or remote procedure call)
-* **internal**: For operations that do not cross process boundaries (e.g. 
+* **internal**: For operations that do not cross process boundaries (for example, 
 instrumenting a function call)
 * **producer**: For the creation of a job which may be asynchronously processed 
-later (e.g. job inserted into a job queue)
+later (for example, job inserted into a job queue)
 * **consumer**: For the processing of a job created by a producer, which may start 
 long after the producer span has ended 
 
 Span kind is determined automatically by the instrumentation libraries used.
 
-Spans can be further enhanced with [span status](https://opentelemetry.io/docs/concepts/signals/traces/#span-status). By default, span status is marked as `Unset` unless otherwise 
+Spans can be further enhanced with [span status](/docs/concepts/signals/traces/#span-status). By default, span status is marked as `Unset` unless otherwise 
 specified. You can mark a span status as `Error` if the resulting span depicts an 
 error, and `Ok` if the resulting span is error-free. 
 
 ### Enhancing spans with span events
 
-A [span event](https://opentelemetry.io/docs/concepts/signals/traces/#span-events) 
+A [span event](/docs/concepts/signals/traces/#span-events) 
 is a structured log message embedded within a span. Span events help enhance spans 
 by providing descriptive information about a span. [Span events can also have 
-attributes of their own](https://opentelemetry-python.readthedocs.io/en/latest/_modules/opentelemetry/trace/span.html#NonRecordingSpan.add_event). 
+attributes of their own](/docs/languages/ruby/instrumentation/#add-span-events). 
 
 When a span status is set to `Error`, a span event is created automatically, 
 capturing the span’s resulting error message and stack trace as an event on that 
 span. You can further enhance this span error by adding attributes to it.
 
-Earlier, we mentioned a method called `RecordException`. Per [the spec](docs/specs/otel/trace/api/#record-exception) (emphasis our own), “To facilitate recording an exception 
+Earlier, we mentioned a method called `RecordException`. Per [the spec](/docs/specs/otel/trace/api/#record-exception) (emphasis our own), “To facilitate recording an exception 
 languages SHOULD provide a RecordException method **if the language uses exceptions**… 
 The signature of the method is to be determined by each language and can be 
 overloaded as appropriate.” 
@@ -220,7 +221,7 @@ modeling them.
 As a broad example, vendors might have their own notion of what constitutes a 
 logical unit of work in an application. You may be familiar with the term 
 `transaction`, which means something slightly different from vendor to vendor. 
-In OTel, this is represented by a span. You’ve likely noticed differences in 
+In OTel, this is represented by a trace. You’ve likely noticed differences in 
 your data visualization experiences as vendors make their own adjustments to 
 their platforms to accommodate OTLP as a first-class citizen data type. 
 
