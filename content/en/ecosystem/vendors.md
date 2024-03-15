@@ -18,7 +18,7 @@ for improved ease of use.
 
 To have your organization listed, submit a PR with an entry added to the
 [vendors list](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/vendors.yaml).
-The entry must include the following[^grace-period-2024-01-01]:
+The entry should include the following:
 
 - Link to the documentation that details how your offering consumes
   OpenTelemetry natively via [OTLP](/docs/specs/otlp/).
@@ -37,7 +37,3 @@ you do not provide any kind of services around OpenTelemetry, see
 
 If you provide a library, service, or app that is made observable through
 OpenTelemetry, see [Integrations](/ecosystem/integrations).
-
-[^grace-period-2024-01-01]:
-    Organizations listed before July 2023 are exempt from these requirements
-    until January 1, 2024, after which they will be removed unless updated.
