@@ -4,7 +4,7 @@ linkTitle: Spring Boot
 weight: 30
 description: Spring Boot instrumentation for OpenTelemetry Java
 # prettier-ignore
-cSpell:ignore: autoconfigurations autoconfigures datasource logback springboot webflux webmvc
+cSpell:ignore: autoconfigurations autoconfigures customizer datasource distro logback springboot webflux webmvc
 ---
 
 ## How to instrument Spring Boot with OpenTelemetry
@@ -231,7 +231,7 @@ otel:
       xyz: foo
 ```
 
-#### Configuration customizer
+#### Programmatic configuration
 
 You can use the `AutoConfigurationCustomizerProvider` for programmatic
 configuration. Programmatic configuration is recommended for advanced use cases,
@@ -287,10 +287,109 @@ public class Application {
 }
 ```
 
+#### Resource Providers
+
+The OpenTelemetry Starter includes
+[common Resource Providers](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/resources/library)
+and the following Spring Boot specific Resource Providers:
+
+##### Distribution Resource Provider
+
+FQN:
+`io.opentelemetry.instrumentation.spring.autoconfigure.resources.DistroVersionResourceProvider`
+
+| Attribute                  | Value                               |
+| -------------------------- | ----------------------------------- |
+| `telemetry.distro.name`    | `opentelemetry-spring-boot-starter` |
+| `telemetry.distro.version` | version of the starter              |
+
+##### Spring Resource Provider
+
+FQN:
+`io.opentelemetry.instrumentation.spring.autoconfigure.resources.SpringResourceProvider`
+
+| Attribute         | Value                                                                                                         |
+| ----------------- | ------------------------------------------------------------------------------------------------------------- |
+| `service.name`    | `spring.application.name` or `build.version` from `build-info.properties` (see [Service name](#service-name)) |
+| `service.version` | `build.name` from `build-info.properties`                                                                     |
+
+##### AWS Resource Provider
+
+The
+[AWS Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources)
+can be added as a dependency:
+
+{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
+
+```xml
+<dependencies>
+	<dependency>
+		<groupId>io.opentelemetry.contrib</groupId>
+		<artifactId>opentelemetry-aws-resources</artifactId>
+    <version>1.33.0-alpha</version>
+    <exclusions>
+      <exclusion>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
+      </exclusion>
+      <exclusion>
+        <groupId>com.squareup.okhttp3</groupId>
+        <artifactId>okhttp</artifactId>
+      </exclusion>
+    </exclusions>
+	</dependency>
+</dependencies>
+```
+
+{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
+
+```kotlin
+implementation("io.opentelemetry.contrib:opentelemetry-aws-resources:1.33.0-alpha") {
+    exclude("com.fasterxml.jackson.core", "jackson-core")
+    exclude("com.squareup.okhttp3", "okhttp")
+}
+```
+
+{{% /tab %}} {{< /tabpane>}}
+
+##### GCP Resource Provider
+
+The
+[GCP Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources)
+can be added as a dependency:
+
+{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
+
+```xml
+<dependencies>
+	<dependency>
+		<groupId>io.opentelemetry.contrib</groupId>
+		<artifactId>opentelemetry-gcp-resources</artifactId>
+    <version>1.33.0-alpha</version>
+    <exclusions>
+      <exclusion>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
+      </exclusion>
+    </exclusions>
+	</dependency>
+</dependencies>
+```
+
+{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
+
+```kotlin
+implementation("io.opentelemetry.contrib:opentelemetry-gcp-resources:1.33.0-alpha") {
+    exclude("com.fasterxml.jackson.core", "jackson-core")
+}
+```
+
+{{% /tab %}} {{< /tabpane>}}
+
 #### Service name
 
-The service name is determined by the following precedence rules, in accordance
-with the OpenTelemetry
+Using these resource providers, the service name is determined by the following
+precedence rules, in accordance with the OpenTelemetry
 [specification](/docs/languages/sdk-configuration/general/#otel_service_name):
 
 1. `otel.service.name` spring property or `OTEL_SERVICE_NAME` environment
