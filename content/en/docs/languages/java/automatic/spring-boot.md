@@ -132,9 +132,6 @@ Add the dependency given below to enable the OpenTelemetry starter.
 
 The OpenTelemetry starter uses OpenTelemetry Spring Boot
 [autoconfiguration](https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration).
-For details concerning supported libraries and features of the OpenTelemetry
-autoconfiguration, see the configuration
-[README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features).
 
 {{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
@@ -164,61 +161,20 @@ This spring starter supports
 which means that you can see and autocomplete all available properties in your
 IDE.
 
-The OpenTelemetry Starter supports all properties from the
-[Configuration](/docs/languages/java/automatic/configuration/) page (since
-2.2.0).
 
-The only difference is that the OpenTelemetry Spring Boot starter uses
-`http/protobuf` as the default protocol for the OTLP exporter (since 2.0.0).
+#### General configurations
 
-#### Disable the OpenTelemetry Starter
+The OpenTelemetry Starter supports all the [SDK Autoconfiguration](/docs/languages/java/automatic/configuration/#sdk-autoconfiguration) (since
+2.2.0). You can use properties set in the `application.properties` or the `application.yaml` file, or environment variables.
 
-{{% config_option name="otel.sdk.disabled" %}}
-
-Set the value to `true` to disable the starter, e.g. for testing purposes.
-
-{{% /config_option %}}
-
-#### Spring Boot properties integration
-
-All OpenTelemetry properties can be set in the `application.properties` or the
-`application.yaml` file.
-
-Lists and maps can use both the OpenTelemetry and Spring Boot flavors.
-
-##### OpenTelemetry properties style
-
-The OpenTelemetry Starter supports the OpenTelemetry properties as described in
-the
-[specification](/docs/languages/sdk-configuration/general/#otel_resource_attributes):
-
-`application.properties`:
+`application.properties` example:
 
 ```properties
 otel.propagators=tracecontext,b3
 otel.resource.attributes=environment=dev,xyz=foo
 ```
 
-This style is convenient to use in environment variables:
-
-```shell
-export OTEL_PROPAGATORS="tracecontext,b3"
-export OTEL_RESOURCE_ATTRIBUTES="environment=dev,xyz=foo"
-```
-
-##### Native Spring Boot properties style
-
-You can also use the native Spring Boot style:
-
-`application.properties`:
-
-```properties
-otel.propagators=tracecontext,b3
-otel.resource.attributes.environment=dev
-otel.resource.attributes.xyz=foo
-```
-
-`application.yaml`:
+`application.yaml` example:
 
 ```yaml
 otel:
@@ -230,6 +186,22 @@ otel:
       environment: dev
       xyz: foo
 ```
+
+
+ environment variables example:
+
+```shell
+export OTEL_PROPAGATORS="tracecontext,b3"
+export OTEL_RESOURCE_ATTRIBUTES="environment=dev,xyz=foo"
+```
+
+Disable the OpenTelemetry Starter:
+
+{{% config_option name="otel.sdk.disabled" %}}
+
+Set the value to `true` to disable the starter, e.g. for testing purposes.
+
+{{% /config_option %}}
 
 #### Programmatic configuration
 
