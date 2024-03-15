@@ -546,6 +546,17 @@ operational complexity in your monitoring infrastructure.
 
 ## Conclusion
 
+Prometheus maintainers have also been further developing the interoperability
+between the two projects from the Prometheus side to make it easier for it to be 
+the backend for OTLP metrics. For instance, Prometheus can now accept OTLP, and
+soon, you’ll be able to use Prometheus exporters to export OTLP. So if you have a 
+service instrumented with a Prometheus SDK, you’ll be able to *push* OTLP and 
+take advantage of the rich Prometheus exporter ecosystem for OTel users. The 
+maintainers are also working on adding support for delta temporality. This 
+[component](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/30479) will aggregate delta samples to their 
+respective cumulative counterparts. Read more about Prometheus' support for OTel 
+[here](https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/)!
+
 However you decide to use OTel to gather Prometheus metrics, ultimately what is 
 right for your organization depends on your business needs. Using the OTel 
 components discussed previously, you could convert all your metrics into the 
@@ -555,15 +566,6 @@ scaling challenges, there are products such as [Mimir](https://grafana.com/oss/m
 [Thanos](https://thanos.io/v0.10/thanos/getting-started.md/), and 
 [Cortex](https://cortexmetrics.io/docs/guides/running-cortex-on-kubernetes/) 
 that can help with these concerns. 
-
-Prometheus maintainers have also been further developing the interoperability
-between the two projects from the Prometheus side to make it easier for it to be 
-the backend for OTLP metrics. For instance, Prometheus can now accept OTLP, and
-soon, you’ll be able to use Prometheus exporters to export OTLP. So if you have a 
-service instrumented with a Prometheus SDK, you’ll be able to *push* OTLP to
-Prometheus. The maintainers are also working on adding support for delta temporality. 
-This [component](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/30479) will aggregate delta samples to their 
-respective cumulative counterparts.
 
 Whether or not you choose to implement these solutions in your organization, 
 it’s nice to know that there are additional options out there to lead you 
