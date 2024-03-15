@@ -429,36 +429,6 @@ span by annotating the method parameters with `@SpanAttribute`.
 | ----------- | ------------------------------------------ | ------------- | ------------------ |
 | `@WithSpan` | `otel.instrumentation.annotations.enabled` | true          | WithSpan, Aspect   |
 
-##### Dependency
-
-{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
-
-```xml
-<dependencies>
-  <dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-aop</artifactId>
-    <version>SPRING_VERSION</version>
-  </dependency>
-  <dependency>
-    <groupId>io.opentelemetry</groupId>
-    <artifactId>opentelemetry-instrumentation-annotations</artifactId>
-    <version>{{% param vers.instrumentation %}}</version>
-  </dependency>
-</dependencies>
-```
-
-{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
-
-```kotlin
-dependencies {
-  implementation("org.springframework:spring-aop:SPRING_VERSION")
-  implementation("io.opentelemetry:opentelemetry-extension-annotations:{{% param vers.otel %}}")
-}
-```
-
-{{% /tab %}} {{< /tabpane>}}
-
 ##### Usage
 
 ```java
