@@ -188,7 +188,7 @@ otel:
       xyz: foo
 ```
 
-environment variables example:
+Environment variables example:
 
 ```shell
 export OTEL_PROPAGATORS="tracecontext,b3"
