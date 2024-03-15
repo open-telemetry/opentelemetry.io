@@ -181,7 +181,7 @@ aren’t occurring frequently, but that still need to be handled.
 What about using span events versus logs? Again, this depends. It may be 
 convenient to use span events, because when a span status is set to `Error`, a 
 span event with the exception message (and other metadata you may wish to capture) 
-is automagically created. 
+is automatically created. 
 
 Another consideration is your observability backend. Does your backend render 
 both logs and traces? How easily queryable or discoverable are your logs, spans, 
@@ -203,7 +203,9 @@ Here is a trace view for the service [py-otel-server](https://github.com/avillel
 
 ![List of traces in the Jaeger UI](jaeger-high-level-view.png)
 
-And if we drill down and zero in on the error span, we see this:
+And if we drill down and zero in on the error span, we can click into `Logs`, 
+which is how span events are expressed in Jaeger, and view the information 
+that was captured on it:
 
 ![Attributes and other metadata for an error span in Jaeger](jaeger-error.png)
 
