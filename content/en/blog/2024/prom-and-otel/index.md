@@ -138,7 +138,7 @@ then your entire alerting pipeline won't be offline.
 
 Luckily, the OTel Operator’s Target Allocator (TA) is able to help with 
 some of this. For instance, it can automatically drop any targets it knows won’t 
-be scraped. Whereas if you shard with `hashmod`, you'll need to update your
+be scraped. Whereas if you shard with `hashmod`, you'll need to [update your
 config based on the number of replicas you have](https://www.robustperception.io/scaling-and-federating-prometheus/).
 Plus, if you’re already collecting Prometheus metrics about your 
 Kubernetes infrastructure, using the TA is a great option.
@@ -167,17 +167,21 @@ Let’s dig into each of these.
 
 #### Even distribution of Prometheus targets
 The Target Allocator’s first job is to discover targets to scrape and OTel 
-Collectors to allocate targets to. Then it can distribute the targets it 
-discovers among the Collectors. The Collectors in turn query the TA for metrics 
-endpoints to scrape, and then the Collectors’ Prometheus receivers scrape the 
-metrics targets. This means that the OTel Collectors -- not a Prometheus scraper 
--- collect the metrics.
+Collectors to allocate targets to. It does so as follows:
 
-A **target** is an endpoint that supplies metrics for Prometheus to store.
+1. The Target Allocator finds all of the the metrics targets to scrape
+2. The Target Allocator finds all of the available Collectors
+3. The Target Allocator determines which Collectors scrape which metrics
+4. The Collectors query the Target Allocator to find out what metrics to scrape
+5. The Collectors scrape their assigned targets
 
-A **scrape** is the action of collecting metrics through an HTTP request from a 
-targeted instance, parsing the response, and ingesting the collected samples to 
-storage.
+This means that the OTel collectors -- not a Prometheus scraper -- collect 
+the metrics.
+
+A **Target** is an endpoint that supplies Metrics for Prometheus to store. A 
+**Scrape** is the action of collecting Metrics through an HTTP request from a 
+targeted instance, parsing the response, and ingesting the collected samples 
+to storage.
 
 ![Data flow from Target Allocator to the OTel Collector.](target-allocator-sharding.png)
 
@@ -186,7 +190,7 @@ The Target Allocator’s second job is to provide the discovery of Prometheus
 Operator CRs, namely the [ServiceMonitor and PodMonitor](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator#target-allocator). 
 
 In the past, all Prometheus scrape configurations had to be done via the 
-[Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md). When the Target Allocator’s service 
+Prometheus Receiver. When the Target Allocator’s service 
 discovery feature is enabled, the TA simplifies the configuration of the 
 Prometheus receiver, by creating scrape configurations in the Prometheus 
 receiver from the `PodMonitor` and `ServiceMonitor` instances deployed in your 
@@ -223,7 +227,7 @@ The main components are:
 Sidecar, Deployment, StatefulSet and DaemonSet. 
 * **targetallocator:** This is where you configure the Target Allocator. Note 
 that the [Target Allocator only works for the Deployment, DaemonSet, and StatefulSet modes](https://www.youtube.com/watch?v=Uwq4EPaMJFM). 
-* **config:** This is where the OTel Collector config resides.
+* **config:** This is where you configure the OTel Collector’s config YAML.
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
@@ -261,12 +265,7 @@ spec:
 To use the Target Allocator, you need to set `spec.targetallocator.enabled` to 
 `true`. (See previous note about supported modes.)
 
-To use the Prometheus service discovery functionality, you’ll need to do two things:
-
-First, you need to enable it by setting `spec.targetallocator.prometheusCR.enabled` 
-to `true`.
-
-Next, you need to make sure that the [Prometheus receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md) 
+Next, you need to make sure that the Prometheus receiver
 of the deployed Collector is made aware of the Target Allocator in the Collector 
 config section of the spec by setting the `target_allocator.endpoint`:
 
@@ -288,6 +287,9 @@ config section of the spec by setting the `target_allocator.endpoint`:
 The Target Allocator endpoint that the Prometheus receiver config is pointing to 
 is a concatenation of the OTel Collector’s name (`otelcol`, in our case) and the 
 `-targetallocator` suffix. [(This is now done automatically for users!)](https://github.com/open-telemetry/opentelemetry-operator/blob/main/pkg/featuregate/featuregate.go#L58-L65)
+
+To use the Prometheus service discovery functionality, you’ll need to enable it 
+by setting `spec.targetallocator.prometheusCR.enabled` to `true`.
 
 Finally, if you want to enable the Prometheus CR functionality of the Target 
 Allocator, you’ll need to define your own `ServiceMonitor` and `PodMonitor` 
@@ -345,7 +347,7 @@ monitor, or create a single `ServiceMonitor` to encompass all of your services.
 The same applies for the `PodMonitor`.
 
 Before the Target Allocator can start scraping, you need to set up Kubernetes 
-role-based access controls. This means that you need to have a [`ServiceAccount`](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) and 
+role-based access controls (RBAC). This means that you need to have a [`ServiceAccount`](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) and 
 corresponding cluster roles so that the Target Allocator has access to all of 
 the necessary resources to pull metrics from.
 
@@ -355,7 +357,7 @@ to configure the [`ClusterRole`](https://kubernetes.io/docs/reference/access-aut
 account.
 
 If you omit the `ServiceAccount` configuration, the Target Allocator creates a 
-`ServiceAccount` automagically for you. The `ServiceAccount`’s default name is a 
+`ServiceAccount` automatically for you. The `ServiceAccount`’s default name is a 
 concatenation of the Collector name and the `-collector` suffix. By default, 
 this `ServiceAccount` has no defined policy, so you’ll need to create your own 
 [`ClusterRole`](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole) 
@@ -363,7 +365,7 @@ and [`ClusterRoleBinding`](https://kubernetes.io/docs/reference/access-authn-aut
 
 The following is an example RBAC configuration taken from the [OTel Target Allocator readme](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator#rbac). It 
 includes the `ServiceAccount`, `ClusterRole`, and `ClusterRoleBinding` 
-configurations.
+configurations:
 
 ```yaml
 apiVersion: v1
@@ -513,35 +515,35 @@ to enable them within the [pipelines](/docs/collector/configuration/#pipelines) 
 and route data from any source [to one destination or more](/docs/collector/configuration/#exporters). 
 
 ## Pros and cons
-We’ve listed some pros and cons of the setup we covered in this article. 
+The following are pros and cons of the setup we covered in this article. 
 
 **Pros:**
 * Not having to maintain Prometheus as your data store, which means less 
 infrastructure overall to maintain -- especially if you go with an all-in-one
-observability backend to ingest OTel data (traces, metrics, logs)
+observability backend to ingest OTel data (traces, metrics, logs).
 * Not having to maintain the Prometheus Operator; while you would still have to 
 maintain the `ServiceMonitor` and `PodMonitor`, it’s a lot less work than keeping 
-the Operator up-to-date
+the Operator up-to-date.
 * Allows you to end up with a full OTel solution while still obtaining your 
 Prometheus metrics
 * OTel can provide traces and logs in addition to metrics, as well as 
-correlation of these signals,thus enhancing the observability of Kubernetes 
-environments
+correlation of these signals, thus enhancing the observability of Kubernetes 
+environments.
 * OTel provides handy tools, such as the Target Allocator and OTel Collector
-components, to provide flexibility for configuration and deployment options 
+components, to provide flexibility for configuration and deployment options. 
 
 **Cons:**
 * Adopting and managing a new observability tool involves a steep learning curve 
-for users unfamiliar with OTel concepts, components, and workflows
+for users unfamiliar with OTel concepts, components, and workflows.
 * If you are used to using PromQL, Prometheus’ powerful query language, you may 
-have to learn how to use your backend’s query language
+have to learn how to use your backend’s query language.
 * OTel itself contains many moving parts, and presents its own challenges with 
-scalability and adoption 
-* Maturity and stability within OTel varies; Prometheus has a mature ecosystem 
+scalability and adoption.
+* Maturity and stability within OTel varies; Prometheus has a mature ecosystem.
 * Additional computational and human resources needed to maintain OTel 
-components 
+components.
 * Managing and maintaining both Prometheus and OTel components introduces 
-operational complexity in your monitoring infrastructure
+operational complexity in your monitoring infrastructure.
 
 ## Conclusion
 
