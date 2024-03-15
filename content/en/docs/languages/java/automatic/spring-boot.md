@@ -231,6 +231,62 @@ otel:
       xyz: foo
 ```
 
+#### Configuration customizer
+
+You can use the `AutoConfigurationCustomizerProvider` for programmatic
+configuration. Programmatic configuration is recommended for advanced use cases,
+which are not configurable via properties.
+
+##### Exclude actuator endpoints from tracing
+
+As an example, you can customize the sampler to exclude health check endpoints
+from tracing:
+
+{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
+
+```xml
+<dependencies>
+	<dependency>
+		<groupId>io.opentelemetry.contrib</groupId>
+		<artifactId>opentelemetry-samplers</artifactId>
+    <version>1.33.0-alpha</version>
+	</dependency>
+</dependencies>
+```
+
+{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
+
+```kotlin
+dependencies {
+  implementation("io.opentelemetry.contrib:opentelemetry-samplers:1.33.0-alpha")
+}
+```
+
+{{% /tab %}} {{< /tabpane>}}
+
+```java
+import io.opentelemetry.api.trace.SpanKind;
+import io.opentelemetry.contrib.sampler.RuleBasedRoutingSampler;
+import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider;
+import io.opentelemetry.semconv.SemanticAttributes;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class Application {
+
+  @Bean
+  public AutoConfigurationCustomizerProvider otelCustomizer() {
+    return p ->
+        p.addSamplerCustomizer(
+            (fallback, config) ->
+                RuleBasedRoutingSampler.builder(SpanKind.SERVER, fallback)
+                    .drop(SemanticAttributes.URL_PATH, "^/actuator")
+                    .build());
+  }
+}
+```
+
 #### Service name
 
 The service name is determined by the following precedence rules, in accordance
@@ -428,8 +484,6 @@ span by annotating the method parameters with `@SpanAttribute`.
 | Feature     | Property                                   | Default Value | ConditionalOnClass |
 | ----------- | ------------------------------------------ | ------------- | ------------------ |
 | `@WithSpan` | `otel.instrumentation.annotations.enabled` | true          | WithSpan, Aspect   |
-
-##### Usage
 
 ```java
 import org.springframework.stereotype.Component;
