@@ -207,7 +207,7 @@ Set the value to `true` to disable the starter, e.g. for testing purposes.
 
 You can use the `AutoConfigurationCustomizerProvider` for programmatic
 configuration. Programmatic configuration is recommended for advanced use cases,
-which are not configurable via properties.
+which are not configurable using properties.
 
 ##### Exclude actuator endpoints from tracing
 
