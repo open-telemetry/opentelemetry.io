@@ -205,7 +205,7 @@ EOF
 ```
 
 By default, the Instrumentation resource that auto-instruments Java services
-uses `otlp` with the `http+protobuf` protocol. This means that the configured
+uses `otlp` with the `http/protobuf` protocol. This means that the configured
 endpoint must be able to receive OTLP over `http` via `protobuf` payloads.
 Therefore, the example uses `http://demo-collector:4318`, which connects to the
 `http` port of the otlpreceiver of the Collector created in the previous step.
@@ -570,7 +570,7 @@ kubectl logs -l app.kubernetes.io/name=opentelemetry-operator --container manage
 
 ### Were the resources deployed in the right order?
 
-Order matters! The `Instrumentation` resource needs to be deployed before before
+Order matters! The `Instrumentation` resource needs to be deployed before
 deploying the application, otherwise the auto-instrumentation won’t work.
 
 Recall the auto-instrumentation annotation:
