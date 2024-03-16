@@ -18,10 +18,10 @@ have adopted OpenTelemetry for
 
 To have your organization listed, submit a PR with an entry added to the
 [adopters list](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/adopters.yaml).
-The entry must include the following[^grace-period-2024-01-01]:
+The entry should include the following:
 
-- Link to a blog post that describes how your organization makes use of
-  OpenTelemetry
+- Link to a blog post or other resource that describes how your organization
+  makes use of OpenTelemetry
 - GitHub handle or email address as a point of contact so that we can reach out
   in case we have questions
 
@@ -34,7 +34,3 @@ through OpenTelemetry, see [Integrations](/ecosystem/integrations/).
 
 If your organization provides a solution that consumes OpenTelemetry to offer
 **Observability to end users**, see [Vendors](/ecosystem/vendors).
-
-[^grace-period-2024-01-01]:
-    Organizations listed before July 2023 are exempt from these requirements
-    until January 1, 2024, after which they will be removed unless updated.

@@ -1,428 +1,380 @@
-# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Uptrace Greptime KloudMate qryn ClickHouse Tracetest opensource OneUptime
+# cSpell:ignore Causely Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Uptrace Greptime KloudMate qryn ClickHouse Tracetest opensource OneUptime
 - name: AppDynamics (Cisco)
-  distribution: true
   nativeOTLP: true
   url: 'https://docs.appdynamics.com/latest/en/application-monitoring/appdynamics-for-opentelemetry'
   contact: ''
   oss: false
   commercial: true
 - name: Aria by VMware (Wavefront)
-  distribution: false
   nativeOTLP: true
   url: 'https://docs.wavefront.com/opentelemetry_tracing.html'
   contact: ''
   oss: false
   commercial: true
 - name: Aspecto
-  distribution: true
   nativeOTLP: true
   url: 'https://www.aspecto.io'
   contact: ''
   oss: false
   commercial: true
 - name: AWS
-  distribution: true
   nativeOTLP: false
   url: 'https://aws-otel.github.io'
   contact: ''
   oss: false
   commercial: true
 - name: Azure
-  distribution: true
   nativeOTLP: false
   url: 'https://docs.microsoft.com/azure/azure-monitor/app/opentelemetry-overview'
   contact: ''
   oss: false
   commercial: true
 - name: Better Stack
-  distribution: false
   nativeOTLP: true
   url: https://betterstack.com/docs/logs/open-telemetry/#2-setup
   contact: 'hello@betterstack.com'
   oss: false
   commercial: true
-- name: Control Plane
+- name: Causely
   distribution: false
+  nativeOTLP: true
+  url: 'https://github.com/Causely/documentation'
+  contact: 'support@causely.io'
+  oss: false
+  commercial: true
+- name: Control Plane
   nativeOTLP: true
   url: 'https://docs.controlplane.com/reference/org#tracing'
   contact: 'support@controlplane.com'
   oss: false
   commercial: true
 - name: Coralogix
-  distribution: true
   nativeOTLP: true
   url: 'https://coralogix.com/docs/opentelemetry/'
   contact: ''
   oss: false
   commercial: true
 - name: Cribl
-  distribution: false
   nativeOTLP: true
   url: 'https://docs.cribl.io/stream/sources-otel'
   contact: 'hello@cribl.io'
   oss: false
   commercial: true
 - name: DaoCloud
-  distribution: true
   nativeOTLP: true
   url: 'https://docs.daocloud.io/en/insight/06UserGuide/01quickstart/otel/otel/'
   contact: ''
   oss: false
   commercial: true
 - name: Datadog
-  distribution: true
   nativeOTLP: true
   url: 'https://docs.datadoghq.com/tracing/setup_overview/open_standards'
   contact: ''
   oss: false
   commercial: true
 - name: Dynatrace
-  distribution: true
   nativeOTLP: true
   url: 'https://www.dynatrace.com/support/help/how-to-use-dynatrace/transactions-and-services/service-monitoring-settings/opentelemetry/'
   contact: ''
   oss: false
   commercial: true
 - name: Elastic
-  distribution: true
   nativeOTLP: true
   url: 'https://www.elastic.co/guide/en/apm/get-started/current/open-telemetry-elastic.html'
   contact: ''
   oss: false
   commercial: true
 - name: F5
-  distribution: false
   nativeOTLP: true
   url: 'https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/f5cloudexporter'
   contact: ''
   oss: false
   commercial: true
 - name: Google Cloud Platform
-  distribution: false
   nativeOTLP: true
   url: 'https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/googlecloudexporter'
   contact: ''
   oss: false
   commercial: true
 - name: Grafana Labs
-  distribution: true
   nativeOTLP: true
   url: 'https://grafana.com/oss/opentelemetry/'
   contact: 'https://github.com/jpkrohling/'
   oss: true
   commercial: true
 - name: Helios
-  distribution: true
   nativeOTLP: true
   url: 'https://gethelios.dev/'
   contact: ''
   oss: false
   commercial: true
 - name: Highlight
-  distribution: true
   nativeOTLP: true
   url: 'https://www.highlight.io/docs/general/company/open-source/contributing/adding-an-sdk/'
   contact: 'support@highlight.io'
   oss: true
   commercial: true
 - name: Honeycomb
-  distribution: true
   nativeOTLP: true
   url: 'https://docs.honeycomb.io/getting-data-in/'
   contact: ''
   oss: false
   commercial: true
 - name: HyperDX
-  distribution: true
   nativeOTLP: true
   url: 'https://www.hyperdx.io/docs/install/opentelemetry'
   contact: 'support@hyperdx.io'
   oss: true
   commercial: true
 - name: Immersive Fusion
-  distribution: false
   nativeOTLP: true
   url: 'https://docs.immersivefusion.com/instrument'
   contact: 'support@immersivefusion.com'
   oss: false
   commercial: true
 - name: Instana
-  distribution: false
   nativeOTLP: true
   url: 'https://www.ibm.com/docs/en/obi/current?topic=apis-opentelemetry'
   contact: ''
   oss: false
   commercial: true
 - name: ITRS
-  distribution: true
   nativeOTLP: true
   url: 'https://docs.itrsgroup.com/docs/geneos/data-collection/opentelemetry/current/opentelemetry.html'
   contact: ''
   oss: false
   commercial: true
 - name: KloudFuse
-  distribution: false
   nativeOTLP: true
   url: 'https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/753860609/APM#Sending-traces-to-Kloudfuse-data-plane%3A'
   contact: ''
   oss: false
   commercial: true
 - name: KloudMate
-  distribution: false
   nativeOTLP: true
   url: 'https://docs.kloudmate.com/using-opentelemetry-collector'
   contact: 'hello@kloudmate.com'
   oss: false
   commercial: true
 - name: ServiceNow Cloud Observability (Lightstep)
-  distribution: true
   nativeOTLP: true
   url: 'https://github.com/lightstep?q=launcher'
   contact: ''
   oss: false
   commercial: true
 - name: LogicMonitor
-  distribution: true
   nativeOTLP: true
   url: 'https://www.logicmonitor.com/support/tracing/getting-started-with-tracing'
   contact: ''
   oss: false
   commercial: true
 - name: Logz.io
-  distribution: true
   nativeOTLP: false
   url: 'https://docs.logz.io/shipping/tracing-sources/opentelemetry.html#overview'
   contact: ''
   oss: false
   commercial: true
 - name: LogScale by Crowdstrike (Humio)
-  distribution: false
   nativeOTLP: true
   url: 'https://library.humio.com/falcon-logscale/log-shippers-opentelemetry.html'
   contact: ''
   oss: false
   commercial: true
 - name: Lumigo
-  distribution: true
   nativeOTLP: true
   url: 'https://docs.lumigo.io/docs/opentelemetry'
   contact: ''
   oss: false
   commercial: true
 - name: Middleware
-  distribution: true
   nativeOTLP: true
   url: 'https://docs.middleware.io/open-telemetry'
   contact: 'hello@middleware.io'
   oss: false
   commercial: true
 - name: New Relic
-  distribution: false
   nativeOTLP: true
   url: 'https://newrelic.com/solutions/opentelemetry'
   contact: ''
   oss: false
   commercial: true
 - name: Observe, Inc.
-  distribution: true
   nativeOTLP: true
   url: 'https://docs.observeinc.com/en/latest/content/integrations/otel/opentelemetry.html'
   contact: ''
   oss: false
   commercial: true
 - name: observIQ
-  distribution: true
   nativeOTLP: true
   url: 'https://docs.bindplane.observiq.com'
   contact: ''
   oss: true
   commercial: true
 - name: OneUptime
-  distribution: true
   nativeOTLP: true
   url: 'https://oneuptime.com/product/apm'
   contact: 'hello@oneuptime.com'
   oss: true
   commercial: true
 - name: OpenObserve
-  distribution: false
   nativeOTLP: true
   url: 'https://openobserve.ai/docs/ingestion/logs/otlp/'
   contact: 'hello@openobserve.ai'
   oss: true
   commercial: true
 - name: OpenText
-  distribution: true
   nativeOTLP: true
   url: 'https://docs.microfocus.com/doc/OBS/SaaS/ConfigureOTELCollector'
   contact: 'skotagiri@opentext.com'
   oss: false
   commercial: true
 - name: Oracle
-  distribution: false
   nativeOTLP: true
   url: 'https://docs.oracle.com/en-us/iaas/application-performance-monitoring/doc/configure-open-source-tracing-systems.html#GUID-4D941163-F357-4839-8B06-688876D4C61F'
   contact: ''
   oss: false
   commercial: true
 - name: qryn
-  distribution: true
   nativeOTLP: true
   url: 'https://qryn.metrico.in/#/support?id=tempo-api'
   contact: 'https://github.com/lmangani'
   oss: true
   commercial: true
 - name: Sentry
-  distribution: true
   nativeOTLP: false
   url: 'https://sentry.io/for/opentelemetry/'
   contact: ''
   oss: false
   commercial: true
 - name: Red Hat
-  distribution: true
   nativeOTLP: true
   url: 'https://docs.openshift.com/container-platform/4.14/otel/otel-release-notes.html'
   contact: 'ploffay@redhat.com'
   oss: true
   commercial: true
 - name: Sentry Software
-  distribution: true
   nativeOTLP: true
   url: 'https://www.sentrysoftware.com/products/hardware-sentry-opentelemetry-collector.html'
   contact: ''
   oss: false
   commercial: true
 - name: ServicePilot
-  distribution: false
   nativeOTLP: true
   url: 'https://www.servicepilot.com/en/doc/apm#opentelemetry'
   contact: ''
   oss: false
   commercial: true
 - name: SigNoz
-  distribution: true
   nativeOTLP: true
   url: 'https://signoz.io'
   contact: ''
   oss: true
   commercial: true
 - name: SolarWinds
-  distribution: true
   nativeOTLP: true
   url: 'https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=third-otel-integration'
   contact: ''
   oss: false
   commercial: true
 - name: Splunk
-  distribution: true
   nativeOTLP: true
   url: 'https://docs.splunk.com/Observability/gdi/opentelemetry/opentelemetry.html'
   contact: ''
   oss: false
   commercial: true
 - name: Sumo Logic
-  distribution: true
   nativeOTLP: true
   url: 'https://help.sumologic.com/docs/send-data/opentelemetry-collector/'
   contact: 'https://github.com/astencel-sumo'
   oss: false
   commercial: true
 - name: TelemetryHub
-  distribution: false
   nativeOTLP: true
   url: 'https://app.telemetryhub.com/docs'
   contact: ''
   oss: false
   commercial: true
 - name: Traceloop
-  distribution: false
   nativeOTLP: true
   url: 'https://www.traceloop.com'
   contact: ''
   oss: false
   commercial: true
 - name: Uptrace
-  distribution: true
   nativeOTLP: true
   url: 'https://uptrace.dev'
   contact: ''
   oss: false
   commercial: true
 - name: Apache SkyWalking
-  distribution: false
   nativeOTLP: true
   url: 'https://skywalking.apache.org/docs/main/v9.0.0/en/setup/backend/opentelemetry-receiver/'
   contact: ''
   oss: true
   commercial: false
 - name: Fluent Bit
-  distribution: false
   nativeOTLP: true
   url: https://docs.fluentbit.io/manual/pipeline/inputs/opentelemetry/
   contact: ''
   oss: true
   commercial: false
 - name: Jaeger
-  distribution: false
   nativeOTLP: true
   url: https://www.jaegertracing.io/docs/1.47/getting-started/
   contact: ''
   oss: true
   commercial: false
 - name: ObserveAny
-  distribution: false
   nativeOTLP: true
   url: https://www.observeany.com/learn/opentelemetry-receiver
   contact: 'contact@observeany.com'
   oss: false
   commercial: true
 - name: GreptimeDB
-  distribution: true
   nativeOTLP: true
   url: https://docs.greptime.com/user-guide/clients/otlp
   contact: 'info@greptime.com'
   oss: true
   commercial: true
 - name: ClickHouse
-  distribution: false
   nativeOTLP: false
   url: 'https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/clickhouseexporter'
   contact: 'https://github.com/tbragin'
   oss: true
   commercial: true
 - name: TingYun
-  distribution: false
   nativeOTLP: true
   url: 'https://wukongdoc.tingyun.com/apm/userguide/deploy_manage/opentelemetry.html'
   contact: 'otel@tingyun.com'
   oss: false
   commercial: true
 - name: VictoriaMetrics
-  distribution: false
   nativeOTLP: true
   url: 'https://github.com/VictoriaMetrics/VictoriaMetrics/tree/master/docs#sending-data-via-opentelemetry'
   contact: 'https://github.com/hagen1778'
   oss: true
   commercial: true
 - name: Tracetest
-  distribution: false
   nativeOTLP: true
   url: 'https://docs.tracetest.io/configuration/connecting-to-data-stores/opentelemetry-collector'
   contact: 'https://github.com/adnanrahic'
   oss: true
   commercial: true
 - name: Alibaba Cloud
-  distribution: false
   nativeOTLP: true
   url: 'https://www.alibabacloud.com/help/en/arms/tracing-analysis/get-started-with-tracing-analysis'
   contact: 'opensource@alibaba-inc.com'
   oss: false
   commercial: true
 - name: Seq
-  distribution: false
   nativeOTLP: true
   url: 'https://docs.datalust.co/docs/opentelemetry-net-sdk-1'
   contact: 'support@datalust.co'
+  oss: false
+  commercial: true
+- name: VuNet Systems
+  nativeOTLP: true
+  url: 'https://vunetsystems.com/vuapp360/'
+  contact: 'info@vunetsystems.com'
   oss: false
   commercial: true

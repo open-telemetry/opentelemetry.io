@@ -18,7 +18,6 @@ cSpell:ignore: bution cial cond distri
   {{ .name }} |
   {{- cond .oss "Yes" "No" }} |
   {{- cond .commercial "Yes" "No" }} |
-  {{- cond .distribution "Yes" "No" }} |
   {{- cond .nativeOTLP "Yes" "No" }} |
   {{- /* */}} [{{ $shortUrl }}]({{ .url }}) |
 {{- end }}

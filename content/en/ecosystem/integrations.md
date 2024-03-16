@@ -20,7 +20,7 @@ provide a first-party plugin that fits into their own extensibility ecosystem.
 To have your library, service, or app listed, submit a PR with an entry added to
 the
 [integrations list](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/integrations.yaml).
-The entry must include the following:
+The entry should include the following:
 
 - Link to the main page of your library, service, or app
 - Link to the documentation that explains how enable observability using
