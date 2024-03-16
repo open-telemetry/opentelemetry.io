@@ -4,7 +4,7 @@ linkTitle: Spring Boot
 weight: 30
 description: Spring Boot instrumentation for OpenTelemetry Java
 # prettier-ignore
-cSpell:ignore: autoconfigurations autoconfigures datasource logback springboot webflux webmvc
+cSpell:ignore: autoconfigurations autoconfigures customizer datasource distro logback springboot webflux webmvc
 ---
 
 ## How to instrument Spring Boot with OpenTelemetry
@@ -132,9 +132,6 @@ Add the dependency given below to enable the OpenTelemetry starter.
 
 The OpenTelemetry starter uses OpenTelemetry Spring Boot
 [autoconfiguration](https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration).
-For details concerning supported libraries and features of the OpenTelemetry
-autoconfiguration, see the configuration
-[README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features).
 
 {{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
@@ -164,7 +161,41 @@ This spring starter supports
 which means that you can see and autocomplete all available properties in your
 IDE.
 
-#### Disable the OpenTelemetry Starter
+#### General configuration
+
+The OpenTelemetry Starter supports all the
+[SDK Autoconfiguration](/docs/languages/java/automatic/configuration/#sdk-autoconfiguration)
+(since 2.2.0). You can set properties in the `application.properties` or the
+`application.yaml` file, or use environment variables.
+
+`application.properties` example:
+
+```properties
+otel.propagators=tracecontext,b3
+otel.resource.attributes=environment=dev,xyz=foo
+```
+
+`application.yaml` example:
+
+```yaml
+otel:
+  propagators:
+    - tracecontext
+    - b3
+  resource:
+    attributes:
+      environment: dev
+      xyz: foo
+```
+
+Environment variables example:
+
+```shell
+export OTEL_PROPAGATORS="tracecontext,b3"
+export OTEL_RESOURCE_ATTRIBUTES="environment=dev,xyz=foo"
+```
+
+Disable the OpenTelemetry Starter:
 
 {{% config_option name="otel.sdk.disabled" %}}
 
@@ -172,60 +203,165 @@ Set the value to `true` to disable the starter, e.g. for testing purposes.
 
 {{% /config_option %}}
 
-#### OpenTelemetry Data Exporters
+#### Programmatic configuration
 
-This package provides autoconfiguration the following exporters:
+You can use the `AutoConfigurationCustomizerProvider` for programmatic
+configuration. Programmatic configuration is recommended for advanced use cases,
+which are not configurable using properties.
 
-- OTLP
-- Logging
+##### Exclude actuator endpoints from tracing
 
-All available properties are listed in the
-[Configuration](/docs/languages/java/automatic/configuration/) page.
+As an example, you can customize the sampler to exclude health check endpoints
+from tracing:
 
-The only difference is that the OpenTelemetry Spring Boot starter uses
-`http/protobuf` as the default protocol for the OTLP exporter (as of 2.0.0+).
+{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
-#### Tracer Properties
-
-| Feature | Property                          | Default Value |
-| ------- | --------------------------------- | ------------- |
-| Tracer  | `otel.traces.sampler.probability` | 1.0           |
-
-#### Resource Properties
-
-| Feature  | Property                           | Default Value |
-| -------- | ---------------------------------- | ------------- |
-| Resource | `otel.springboot.resource.enabled` | true          |
-|          | `otel.resource.attributes`         | empty map     |
-
-`otel.resource.attributes` supports a pattern-based resource configuration in
-the application.properties like this:
-
-```properties
-otel.resource.attributes.environment=dev
-otel.resource.attributes.xyz=foo
+```xml
+<dependencies>
+	<dependency>
+		<groupId>io.opentelemetry.contrib</groupId>
+		<artifactId>opentelemetry-samplers</artifactId>
+    <version>1.33.0-alpha</version>
+	</dependency>
+</dependencies>
 ```
 
-It's also possible to specify the resource attributes in `application.yaml`:
+{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
 
-```yaml
-otel:
-  resource:
-    attributes:
-      environment: dev
-      xyz: foo
+```kotlin
+dependencies {
+  implementation("io.opentelemetry.contrib:opentelemetry-samplers:1.33.0-alpha")
+}
 ```
 
-Finally, the resource attributes can be specified as a comma-separated list, as
-described in the
-[specification](/docs/languages/sdk-configuration/general/#otel_resource_attributes):
+{{% /tab %}} {{< /tabpane>}}
 
-```shell
-export OTEL_RESOURCE_ATTRIBUTES="key1=value1,key2=value2"
+```java
+import io.opentelemetry.api.trace.SpanKind;
+import io.opentelemetry.contrib.sampler.RuleBasedRoutingSampler;
+import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider;
+import io.opentelemetry.semconv.SemanticAttributes;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class Application {
+
+  @Bean
+  public AutoConfigurationCustomizerProvider otelCustomizer() {
+    return p ->
+        p.addSamplerCustomizer(
+            (fallback, config) ->
+                RuleBasedRoutingSampler.builder(SpanKind.SERVER, fallback)
+                    .drop(SemanticAttributes.URL_PATH, "^/actuator")
+                    .build());
+  }
+}
 ```
 
-The service name is determined by the following precedence rules, in accordance
-with the OpenTelemetry
+#### Resource Providers
+
+The OpenTelemetry Starter includes
+[common Resource Providers](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/resources/library)
+and the following Spring Boot specific Resource Providers:
+
+##### Distribution Resource Provider
+
+FQN:
+`io.opentelemetry.instrumentation.spring.autoconfigure.resources.DistroVersionResourceProvider`
+
+| Attribute                  | Value                               |
+| -------------------------- | ----------------------------------- |
+| `telemetry.distro.name`    | `opentelemetry-spring-boot-starter` |
+| `telemetry.distro.version` | version of the starter              |
+
+##### Spring Resource Provider
+
+FQN:
+`io.opentelemetry.instrumentation.spring.autoconfigure.resources.SpringResourceProvider`
+
+| Attribute         | Value                                                                                                         |
+| ----------------- | ------------------------------------------------------------------------------------------------------------- |
+| `service.name`    | `spring.application.name` or `build.version` from `build-info.properties` (see [Service name](#service-name)) |
+| `service.version` | `build.name` from `build-info.properties`                                                                     |
+
+##### AWS Resource Provider
+
+The
+[AWS Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources)
+can be added as a dependency:
+
+{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
+
+```xml
+<dependencies>
+	<dependency>
+		<groupId>io.opentelemetry.contrib</groupId>
+		<artifactId>opentelemetry-aws-resources</artifactId>
+    <version>1.33.0-alpha</version>
+    <exclusions>
+      <exclusion>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
+      </exclusion>
+      <exclusion>
+        <groupId>com.squareup.okhttp3</groupId>
+        <artifactId>okhttp</artifactId>
+      </exclusion>
+    </exclusions>
+	</dependency>
+</dependencies>
+```
+
+{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
+
+```kotlin
+implementation("io.opentelemetry.contrib:opentelemetry-aws-resources:1.33.0-alpha") {
+    exclude("com.fasterxml.jackson.core", "jackson-core")
+    exclude("com.squareup.okhttp3", "okhttp")
+}
+```
+
+{{% /tab %}} {{< /tabpane>}}
+
+##### GCP Resource Provider
+
+The
+[GCP Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources)
+can be added as a dependency:
+
+{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
+
+```xml
+<dependencies>
+	<dependency>
+		<groupId>io.opentelemetry.contrib</groupId>
+		<artifactId>opentelemetry-gcp-resources</artifactId>
+    <version>1.33.0-alpha</version>
+    <exclusions>
+      <exclusion>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
+      </exclusion>
+    </exclusions>
+	</dependency>
+</dependencies>
+```
+
+{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
+
+```kotlin
+implementation("io.opentelemetry.contrib:opentelemetry-gcp-resources:1.33.0-alpha") {
+    exclude("com.fasterxml.jackson.core", "jackson-core")
+}
+```
+
+{{% /tab %}} {{< /tabpane>}}
+
+#### Service name
+
+Using these resource providers, the service name is determined by the following
+precedence rules, in accordance with the OpenTelemetry
 [specification](/docs/languages/sdk-configuration/general/#otel_service_name):
 
 1. `otel.service.name` spring property or `OTEL_SERVICE_NAME` environment
@@ -419,38 +555,6 @@ span by annotating the method parameters with `@SpanAttribute`.
 | Feature     | Property                                   | Default Value | ConditionalOnClass |
 | ----------- | ------------------------------------------ | ------------- | ------------------ |
 | `@WithSpan` | `otel.instrumentation.annotations.enabled` | true          | WithSpan, Aspect   |
-
-##### Dependency
-
-{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
-
-```xml
-<dependencies>
-  <dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-aop</artifactId>
-    <version>SPRING_VERSION</version>
-  </dependency>
-  <dependency>
-    <groupId>io.opentelemetry</groupId>
-    <artifactId>opentelemetry-instrumentation-annotations</artifactId>
-    <version>{{% param vers.instrumentation %}}</version>
-  </dependency>
-</dependencies>
-```
-
-{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
-
-```kotlin
-dependencies {
-  implementation("org.springframework:spring-aop:SPRING_VERSION")
-  implementation("io.opentelemetry:opentelemetry-extension-annotations:{{% param vers.otel %}}")
-}
-```
-
-{{% /tab %}} {{< /tabpane>}}
-
-##### Usage
 
 ```java
 import org.springframework.stereotype.Component;
