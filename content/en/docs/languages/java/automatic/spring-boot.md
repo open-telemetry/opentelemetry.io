@@ -369,7 +369,45 @@ precedence rules, in accordance with the OpenTelemetry
 2. `service.name` in `otel.resource.attributes` system/spring property or
    `OTEL_RESOURCE_ATTRIBUTES` environment variable
 3. `spring.application.name` spring property
-4. The default value is `unknown_service:java` (lowest precedence)
+4. `build-info.properties`
+5. `Implementation-Title` from META-INF/MANIFEST.MF
+6. The default value is `unknown_service:java` (lowest precedence)
+
+Use the following snippet in your pom.xml file to generate the
+`build-info.properties` file:
+
+{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
+
+```xml
+<build>
+    <finalName>${project.artifactId}</finalName>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>build-info</goal>
+                        <goal>repackage</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
+```
+
+{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
+
+```kotlin
+springBoot {
+  buildInfo {
+  }
+}
+```
+
+{{% /tab %}} {{< /tabpane>}}
 
 ### Automatic instrumentation
 
