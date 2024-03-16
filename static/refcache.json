@@ -7447,6 +7447,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:07:23.30351-05:00"
   },
+  "https://tools.ietf.org/html/rfc7230#section-3.2.6": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-15T20:34:57.525355021Z"
+  },
   "https://tools.ietf.org/html/rfc7230#section-5.4": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:07:34.10242-05:00"
@@ -8586,6 +8590,10 @@
   "https://www.w3.org/TR/baggage/#header-content": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:14:34.212872-05:00"
+  },
+  "https://www.w3.org/TR/baggage/#key": {
+    "StatusCode": 206,
+    "LastSeen": "2024-03-15T20:34:48.124860351Z"
   },
   "https://www.w3.org/TR/trace-context": {
     "StatusCode": 206,
