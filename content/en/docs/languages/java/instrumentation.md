@@ -1152,18 +1152,18 @@ records measurements at that point in time.
 {{% alert color="info" %}} If you’re instrumenting a library, skip this step.
 {{% /alert %}}
 
-To enable [metrics](/docs/concepts/signals/metrics/) in your app, you'll need to
+To enable [metrics](/docs/concepts/signals/metrics/) in your app, you need to
 have an initialized
-[`MeterProvider`](/docs/concepts/signals/metrics/#meter-provider) that will let
-you create a [`Meter`](/docs/concepts/signals/metrics/#meter). If a
-MeterProvider is not created, the OpenTelemetry APIs for metrics will use a
-no-op implementation and fail to generate data.
+[`MeterProvider`](/docs/concepts/signals/metrics/#meter-provider) that lets you
+create a [`Meter`](/docs/concepts/signals/metrics/#meter). If a `MeterProvider`
+is not created, the OpenTelemetry APIs for metrics use a no-op implementation
+and fail to generate data.
 
 If you followed the instructions to [initialize the SDK](#initialize-the-sdk)
 above, you have a `MeterProvider` setup for you already. You can continue with
 [acquiring a meter](#acquiring-a-meter).
 
-When creating a MeterProvider you can specify a [MetricReader](#metric-reader)
+When creating a `MeterProvider` you can specify a [MetricReader](#metric-reader)
 and [MetricExporter](/docs/languages/java/exporters/). The
 `LoggingMetricExporter` is included in the `opentelemetry-exporter-logging`
 artifact that was added in the [Initialize the SDK](#initialize-the-sdk) step.
@@ -1283,7 +1283,7 @@ ObservableDoubleGauge gauge = meter.gaugeBuilder("jvm.system.cpu.utilization")
 
 ### Adding Attributes
 
-You can add Attributes to metrics when they are generated.
+You can add attributes to metrics when they are generated.
 
 ```java
 Attributes attrs = Attributes.of(
