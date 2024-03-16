@@ -2,6 +2,7 @@
 title: Telemetry Features
 linkTitle: Telemetry Features
 aliases: [demo_features, features]
+cSpell:ignore: flagd
 ---
 
 ## OpenTelemetry
@@ -51,3 +52,7 @@ aliases: [demo_features, features]
   flag service.
 - **[Locust](https://locust.io)**: a background job that creates realistic usage
   patterns on the website using a synthetic load generator.
+- **[OpenFeature](https://openfeature.dev)**: a feature flagging API and SDK
+  that allows for the enabling and disabling of features in the application.
+- **[flagd](https://flagd.dev)**: a feature flagging daemon that is used to
+  manage feature flags in the demo application.

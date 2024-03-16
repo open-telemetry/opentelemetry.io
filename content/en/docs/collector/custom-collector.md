@@ -20,28 +20,66 @@ builder][ocb] (or `ocb` for short) to assist people in assembling their own
 distribution, making it easy to build a distribution that includes their custom
 components along with components that are publicly available.
 
-As part of the process the `builder` will generate the Collector's source code,
+As part of the process the `ocb` will generate the Collector's source code,
 which you can use to help build and debug your own custom components, so let's
 get started.
 
 ## Step 1 - Install the builder
 
 The `ocb` binary is available as a downloadable asset from [OpenTelemetry
-Collector releases][releases]. You will find the list of assets at the bottom of
-the page. Assets are named based on OS and chipset, so download the one that
-fits your configuration.
+Collector releases][releases]. You will find a list of assets named based on OS
+and chipset, so download the one that fits your configuration:
 
-The binary has a pretty long name, so you can simply rename it to `ocb`; and if
-you are running Linux or macOS, you will also need to provide execution
-permissions for the binary.
+{{< tabpane text=true >}}
 
-Open your terminal and type the following commands to accomplish both
-operations:
+{{% tab "Linux (AMD 64)" %}}
 
-```cmd
-mv ocb_{{% param vers %}}_darwin_amd64 ocb
-chmod 777 ocb
+```sh
+curl --proto '=https' --tlsv1.2 -fL -o ocb \
+https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd%2Fbuilder%2F{{% version-from-registry collector-builder %}}/ocb_{{% version-from-registry collector-builder noPrefix %}}_linux_amd64
+chmod +x ocb
 ```
+
+{{% /tab %}} {{% tab "Linux (ARM 64)" %}}
+
+```sh
+curl --proto '=https' --tlsv1.2 -fL -o ocb \
+https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd%2Fbuilder%2F{{% version-from-registry collector-builder %}}/ocb_{{% version-from-registry collector-builder noPrefix %}}_linux_arm64
+chmod +x ocb
+```
+
+{{% /tab %}} {{% tab "Linux (ppc64le) "%}}
+
+```sh
+curl --proto '=https' --tlsv1.2 -fL -o ocb \
+https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd%2Fbuilder%2F{{% version-from-registry collector-builder %}}/ocb_{{% version-from-registry collector-builder noPrefix %}}_linux_ppc64le
+chmod +x ocb
+```
+
+{{% /tab %}} {{% tab "MacOS (AMD 64)" %}}
+
+```sh
+curl --proto '=https' --tlsv1.2 -fL -o ocb \
+https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd%2Fbuilder%2F{{% version-from-registry collector-builder %}}/ocb_{{% version-from-registry collector-builder noPrefix %}}_darwin_amd64
+chmod +x ocb
+```
+
+{{% /tab %}} {{% tab "MacOS (ARM 64)" %}}
+
+```sh
+curl --proto '=https' --tlsv1.2 -fL -o ocb \
+https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd%2Fbuilder%2F{{% version-from-registry collector-builder %}}/ocb_{{% version-from-registry collector-builder noPrefix %}}_darwin_arm64
+chmod +x ocb
+```
+
+{{% /tab %}} {{% tab "Windows (AMD 64)" %}}
+
+```sh
+Invoke-WebRequest -Uri "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd%2Fbuilder%2F{{% version-from-registry collector-builder %}}/ocb_{{% version-from-registry collector-builder noPrefix %}}_windows_amd64.exe" -OutFile "ocb.exe"
+Unblock-File -Path "ocb.exe"
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 To make sure the `ocb` is ready to be used, go to your terminal and type
 `./ocb help`, and once you hit enter you should have the output of the `help`
@@ -64,7 +102,7 @@ Here are the tags for the `dist` map:
 | module:          | The module name for the new distribution, following Go mod conventions. Optional, but recommended. | Yes      | `go.opentelemetry.io/collector/cmd/builder`                                       |
 | name:            | The binary name for your distribution                                                              | Yes      | `otelcol-custom`                                                                  |
 | description:     | A long name for the application.                                                                   | Yes      | `Custom OpenTelemetry Collector distribution`                                     |
-| otelcol_version: | The OpenTelemetry Collector version to use as base for the distribution.                           | Yes      | `{{% param vers %}}`                                                              |
+| otelcol_version: | The OpenTelemetry Collector version to use as base for the distribution.                           | Yes      | `{{% version-from-registry collector-builder noPrefix %}}`                        |
 | output_path:     | The path to write the output (sources and binary).                                                 | Yes      | `/var/folders/86/s7l1czb16g124tng0d7wyrtw0000gn/T/otelcol-distribution3618633831` |
 | version:         | The version for your custom OpenTelemetry Collector.                                               | Yes      | `1.0.0`                                                                           |
 | go:              | Which Go binary to use to compile the generated sources.                                           | Yes      | go from the PATH                                                                  |
@@ -113,22 +151,22 @@ dist:
   name: otelcol-dev
   description: Basic OTel Collector distribution for Developers
   output_path: ./otelcol-dev
-  otelcol_version: {{% param vers %}}
+  otelcol_version: {{% version-from-registry collector-builder noPrefix %}}
 
 exporters:
   - gomod:
       # NOTE: Prior to v0.86.0 use the `loggingexporter` instead of `debugexporter`.
-      go.opentelemetry.io/collector/exporter/debugexporter v{{% param vers %}}
+      go.opentelemetry.io/collector/exporter/debugexporter {{% version-from-registry collector-exporter-debug %}}
   - gomod:
-      go.opentelemetry.io/collector/exporter/otlpexporter v{{% param vers %}}
+      go.opentelemetry.io/collector/exporter/otlpexporter {{% version-from-registry collector-exporter-otlp %}}
 
 processors:
   - gomod:
-      go.opentelemetry.io/collector/processor/batchprocessor v{{% param vers %}}
+      go.opentelemetry.io/collector/processor/batchprocessor {{% version-from-registry collector-processor-batch %}}
 
 receivers:
   - gomod:
-      go.opentelemetry.io/collector/receiver/otlpreceiver v{{% param vers %}}
+      go.opentelemetry.io/collector/receiver/otlpreceiver {{% version-from-registry collector-receiver-otlp %}}
 ```
 
 ## Step 3 - Generating the Code and Building your Collector's distribution
@@ -144,7 +182,7 @@ If everything went well, here is what the output of the command should look
 like:
 
 ```nocode
-2022-06-13T14:25:03.037-0500	INFO	internal/command.go:85	OpenTelemetry Collector distribution builder	{"version": "{{% param vers %}}", "date": "2023-01-03T15:05:37Z"}
+2022-06-13T14:25:03.037-0500	INFO	internal/command.go:85	OpenTelemetry Collector distribution builder	{"version": "{{% version-from-registry collector-builder noPrefix %}}", "date": "2023-01-03T15:05:37Z"}
 2022-06-13T14:25:03.039-0500	INFO	internal/command.go:108	Using config file	{"path": "builder-config.yaml"}
 2022-06-13T14:25:03.040-0500	INFO	builder/config.go:99	Using go	{"go-executable": "/usr/local/go/bin/go"}
 2022-06-13T14:25:03.041-0500	INFO	builder/main.go:76	Sources created	{"path": "./otelcol-dev"}
@@ -185,6 +223,9 @@ Further reading:
 
 [ocb]:
   https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
-[releases]: https://github.com/open-telemetry/opentelemetry-collector/releases
+[releases]:
+  https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2F{{%
+
+version-from-registry collector-builder %}}
 
 [^1]: Prior to v0.86.0 use the `loggingexporter` instead of `debugexporter`.
