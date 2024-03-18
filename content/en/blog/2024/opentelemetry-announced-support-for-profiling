@@ -4,7 +4,7 @@ linkTitle: OpenTelemetry announces support for profiling
 date: 2024-03-19
 # prettier-ignore
 cSpell:ignore: stuff  probably
-author: '[Phillip Carter](https://github.com/cartermp) (Cisco)'
+author: '[Austin Parker](https://github.com/austinlparker) (Honeycomb)'
 ---
 
 In 2023, OpenTelemetry announced that it achieved stability for [logs, metrics, and traces](https://www.cncf.io/blog/2023/11/07/opentelemetry-at-kubecon-cloudnativecon-north-america-2023-update/). While this was our initial goal at the formation of the project, fulfilling our vision of enabling built-in observability for cloud native applications requires us to continue evolving with the community. This year, we’re proud to announce that exactly two years after the Profiling SIG was created at KubeCon + CloudNativeCon Europe 2022 in Valencia, we’re taking a big step towards this goal by merging a profiling data model into our specification and working towards a stable implementation this year!
