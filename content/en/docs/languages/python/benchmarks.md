@@ -6,6 +6,15 @@ cSpell:ignore: Elems rrggbbaa
 
 <link rel="stylesheet" href="/css/benchmarks.css">
 
+<style>
+   @media (min-width: 100px) {
+     h3{
+         font-size: 0.9rem;
+         font-weight: bold;
+      }
+    }  
+</style>
+
 The OpenTelemetry Python SDK runs benchmark tests on every commit to the
 [opentelemetry-python](https://github.com/open-telemetry/opentelemetry-python/)
 repository. The intent of these tests is to track performance trend of critical
