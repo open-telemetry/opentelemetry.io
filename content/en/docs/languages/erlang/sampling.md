@@ -161,8 +161,8 @@ description(_) ->
 should_sample(_Ctx, _TraceId, _Links, _SpanName, _SpanKind, Attributes, ConfigAttributes) ->
   ConfAttrPairs = maps:intersect_with(fun (_key, Attr, Conf) -> {Attr, Conf} end, Attributes, ConfigAttributes),
   case lists:any(fun({_, {A, B}}) -> A == B end, maps:to_list(ConfAttrPairs)) of
-    true -> {drop, [], []};
-    _ -> {record_and_sample, [], []}
+    true -> {?DROP, [], []};
+    _ -> {?RECORD_AND_SAMPLE, [], []}
   end
 end.
 ```
