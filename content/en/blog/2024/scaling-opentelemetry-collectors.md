@@ -66,7 +66,7 @@ Next, set up your hosts and create an inventory file.
    10.0.0.8    # hostname = fedora-02
    ```
 
-   > **Note**: If you are copying the above file, remove the comments (#).
+   > **Note**: When copying the previous snippet, uncomment each host name.
 
 3. Create an `ansible.cfg` file within the same directory as `inventory`, with
    the following values:
