@@ -19,7 +19,7 @@ We outline a strategy for deploying and managing the OpenTelemetry
 Collector's scalable instances throughout your infrastructure using Ansible.
 In the following example, we'll use Grafana as the target backend.
 
-## Before you begin
+## Prerequisites
 
 To follow this guide, ensure you have:
 
