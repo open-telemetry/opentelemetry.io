@@ -149,10 +149,9 @@ Create a file named `deploy-opentelemetry.yml` in the same directory as your
 
 {{% alert title="Note" %}}
 
-Adjust the configuration to match the specific telemetry you
-intend to collect and where you plan to forward it. This configuration snippet
-is a basic example designed for collecting host metrics and forwarded to
-Prometheus.
+Adjust the configuration to match the specific telemetry you intend to collect
+and where you plan to forward it. This configuration snippet is a basic example
+designed for collecting host metrics and forwarded to Prometheus.
 
 {{% /alert %}}
 
@@ -161,8 +160,8 @@ collect host metrics from the Linux host.
 
 ## Running the Ansible playbook
 
-Deploy the OpenTelemetry Collector across your hosts by running
-the following command:
+Deploy the OpenTelemetry Collector across your hosts by running the following
+command:
 
 ```sh
 ansible-playbook deploy-opentelemetry.yml
