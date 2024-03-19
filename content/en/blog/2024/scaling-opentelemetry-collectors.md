@@ -7,17 +7,18 @@ cSpell:ignore: ansible Ishan Jain
 ---
 
 You can scale the deployment of
-[OpenTelemetry Collector](/docs/collector/deployment/) across multiple
-Linux hosts through [Ansible](https://www.ansible.com/), to function both
-as [gateways](/docs/collector/deployment/gateway/) and
+[OpenTelemetry Collector](/docs/collector/deployment/) across multiple Linux
+hosts through [Ansible](https://www.ansible.com/), to function both as
+[gateways](/docs/collector/deployment/gateway/) and
 [agents](/docs/collector/deployment/agent/) within your observability
-architecture. Using the OpenTelemetry Collector in this dual capacity
-enables a robust collection and forwarding of metrics, traces, and logs to
-analysis and visualization platforms.
+architecture. Using the OpenTelemetry Collector in this dual capacity enables a
+robust collection and forwarding of metrics, traces, and logs to analysis and
+visualization platforms.
 
-We outline a strategy for deploying and managing the OpenTelemetry
-Collector's scalable instances throughout your infrastructure using Ansible.
-In the following example, we'll use Grafana as the target backend.
+We outline a strategy for deploying and managing the OpenTelemetry Collector's
+scalable instances throughout your infrastructure using Ansible. In the
+following example, we'll use [Grafana](https://grafana.com/) as the target
+backend to view metrics.
 
 ## Prerequisites
 
@@ -43,7 +44,7 @@ ansible-galaxy collection install grafana.grafana
 
 ## Create an Ansible inventory file
 
-Next, set up your hosts and create an inventory file.
+Next, set up your hosts and assoicated IPs and create an inventory file.
 
 1. Create your hosts and add public SSH keys to them.
 
@@ -66,7 +67,7 @@ Next, set up your hosts and create an inventory file.
    10.0.0.8    # hostname = fedora-02
    ```
 
-   > **Note**: When copying the previous snippet, uncomment each host name.
+   > **Note**: When copying the previous snippet, remove the comments.
 
 3. Create an `ansible.cfg` file within the same directory as `inventory`, with
    the following values:
@@ -80,8 +81,8 @@ Next, set up your hosts and create an inventory file.
 
 ## Use the OpenTelemetry Collector Ansible role
 
-Next, define an Ansible playbook to apply your chosen or created
-OpenTelemetry Collector role across your hosts.
+Next, define an Ansible playbook to apply your chosen or created OpenTelemetry
+Collector role across your hosts.
 
 Create a file named `deploy-opentelemetry.yml` in the same directory as your
 `ansible.cfg` and `inventory`.
@@ -198,7 +199,7 @@ For other installation methods and more detailed instructions, refer to the
 
 ### Add Prometheus as a data source
 
-1. **Log in to Grafana** and navigate to **Connections** > **Data Sources**.
+1. In Grafana, navigate to **Connections** > **Data Sources**.
 2. Click **Add data source** and select **Prometheus**.
 3. In the settings, enter your Prometheus URL, for example,
    `http://<your_prometheus_host>`, along with any other necessary details.
@@ -207,8 +208,7 @@ For other installation methods and more detailed instructions, refer to the
 ### Explore your metrics
 
 1. Go to the **Explore** page
-2. In the Query editor, select your data source and enter the following
-   query
+2. In the Query editor, select your data source and enter the following query
 
    ```PromQL
    100 - (avg by (cpu) (irate(system_cpu_time{state="idle"}[5m])) * 100)
@@ -217,8 +217,8 @@ For other installation methods and more detailed instructions, refer to the
    This query calculates the average percentage of CPU time not spent in the
    "idle" state, across each CPU core, over the last 5 minutes.
 
-3. Play around with different metrics and start putting together your dashboards
-   to gain insights into your system's performance.
+3. Explore other metrics and create dashboards to gain insights into your
+   system's performance.
 
 This guide makes it easier for you to set up the OpenTelemetry Collector on
 several Linux machines with the help of Ansible and shows you how to see the
