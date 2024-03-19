@@ -211,8 +211,7 @@ processor.
 Processors can transform the data before forwarding it, such as adding or
 removing attributes from spans. They can also drop the data by deciding not to
 forward it (for example, the `probabilisticsampler` processor). Or they can
-generate new data, as the `spanmetrics` processor does by producing metrics for
-spans processed by the pipeline.
+generate new data.
 
 The same name of the processor can be referenced in the `processors` key of
 multiple pipelines. In this case, the same configuration is used for each of
