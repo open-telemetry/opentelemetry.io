@@ -11,7 +11,8 @@ cSpell:ignore: Elems rrggbbaa
   #main h3 {
       font-size: 0.9rem;
       font-weight: bold;
-   }
+      word-break: break-all;
+     }
   }
 </style>
 
