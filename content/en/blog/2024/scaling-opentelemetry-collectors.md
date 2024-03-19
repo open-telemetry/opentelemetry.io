@@ -174,7 +174,7 @@ ansible-playbook deploy-opentelemetry.yml
 Once your OpenTelemetry Collector's start sending metrics to Prometheus, follow
 these quick steps to visualize them in [Grafana](https://grafana.com/):
 
-### Setup Grafana
+### Set up Grafana
 
 1. **Install Docker**: Make sure Docker is installed on your system. If it's
    not, you can find the installation guide at the
