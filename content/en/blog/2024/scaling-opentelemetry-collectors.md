@@ -196,7 +196,7 @@ these quick steps to visualize them in [Grafana](https://grafana.com/):
 For other installation methods and more detailed instructions, refer to the
 [official Grafana documentation](https://grafana.com/docs/grafana/latest/installation/).
 
-### Add Prometheus as a Data Source
+### Add Prometheus as a data source
 
 1. **Login to Grafana** and navigate to **Connections** > **Data Sources**.
 2. Click **Add data source**, and choose **Prometheus**.
