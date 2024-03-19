@@ -6,12 +6,12 @@ author: '[Ishan Jain](https://github.com/ishanjainn) (Grafana)'
 cSpell:ignore: ansible Ishan Jain
 ---
 
-This guide is focused on scaling the
-[OpenTelemetry Collector deployment](/docs/collector/deployment/) across various
-Linux hosts by leveraging [Ansible](https://www.ansible.com/), to function both
+You can scale the deployment of
+[OpenTelemetry Collector](/docs/collector/deployment/) across multiple
+Linux hosts through [Ansible](https://www.ansible.com/), to function both
 as [gateways](/docs/collector/deployment/gateway/) and
 [agents](/docs/collector/deployment/agent/) within your observability
-architecture. Utilizing the OpenTelemetry Collector in this dual capacity
+architecture. Using the OpenTelemetry Collector in this dual capacity
 enables a robust collection and forwarding of metrics, traces, and logs to
 analysis and visualization platforms.
 
