@@ -207,7 +207,7 @@ For other installation methods and more detailed instructions, refer to the
 ### Explore your metrics
 
 1. Go to the **Explore** page
-2. In the Query editor, select your Prometheus data source and enter the below
+2. In the Query editor, select your data source and enter the following
    query
 
    ```PromQL
