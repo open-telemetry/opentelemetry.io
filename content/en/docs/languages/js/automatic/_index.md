@@ -48,8 +48,10 @@ node app.js
 {{% alert title="Note" color="info" %}}
 
 Currently, only Traces are supported for environment variable configuration. See
-the open issues for [Metrics](https://github.com/open-telemetry/opentelemetry-js/issues/4551) and
-[Logs](https://github.com/open-telemetry/opentelemetry-js/issues/4552) to learn more.
+the open issues for
+[Metrics](https://github.com/open-telemetry/opentelemetry-js/issues/4551) and
+[Logs](https://github.com/open-telemetry/opentelemetry-js/issues/4552) to learn
+more.
 
 {{% /alert %}}
 
