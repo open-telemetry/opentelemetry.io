@@ -42,6 +42,13 @@
   contact: 'support@causely.io'
   oss: false
   commercial: true
+- name: Chronosphere
+  distribution: false
+  nativeOTLP: true
+  url: 'https://docs.chronosphere.io/ingest/otel/otel-ingest'
+  contact: 'support@chronosphere.io'
+  oss: false
+  commercial: true
 - name: Control Plane
   nativeOTLP: true
   url: 'https://docs.controlplane.com/reference/org#tracing'

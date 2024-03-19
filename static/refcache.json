@@ -943,6 +943,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:53:34.715996-05:00"
   },
+  "https://docs.chronosphere.io/ingest/otel/otel-ingest": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-19T05:23:55.741827909Z"
+  },
   "https://docs.controlplane.com/reference/org#tracing": {
     "StatusCode": 206,
     "LastSeen": "2024-02-21T13:37:33.456267+02:00"
