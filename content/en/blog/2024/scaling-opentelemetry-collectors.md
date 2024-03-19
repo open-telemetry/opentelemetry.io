@@ -169,7 +169,7 @@ Deploy the OpenTelemetry Collector across your hosts by executing:
 ansible-playbook deploy-opentelemetry.yml
 ```
 
-## Visualizing Metrics in Grafana
+## Check your metrics in the backend
 
 Once your OpenTelemetry Collector's start sending metrics to Prometheus, follow
 these quick steps to visualize them in [Grafana](https://grafana.com/):
