@@ -15,10 +15,9 @@ architecture. Using the OpenTelemetry Collector in this dual capacity
 enables a robust collection and forwarding of metrics, traces, and logs to
 analysis and visualization platforms.
 
-Here, we outline a strategy for deploying and managing the OpenTelemetry
-Collector's scalable instances throughout your infrastructure with Ansible,
-enhancing your overall monitoring strategy and data visualization capabilities
-in [Grafana](https://grafana.com/).
+We outline a strategy for deploying and managing the OpenTelemetry
+Collector's scalable instances throughout your infrastructure using Ansible.
+In the following example, we'll use Grafana as the target backend.
 
 ## Before you begin
 
