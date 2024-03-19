@@ -24,7 +24,7 @@ In the following example, we'll use Grafana as the target backend.
 To follow this guide, make sure you meet the following requirements:
 
 - Ansible Installed in your system
-- Linux hosts along with SSH access to each of these Linux hosts.
+- Linux hosts along with SSH access to each of these Linux hosts
 - Prometheus for gathering metrics
 
 ## Install the Grafana Ansible collection
