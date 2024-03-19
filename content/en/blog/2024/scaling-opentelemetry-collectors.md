@@ -43,7 +43,7 @@ ansible-galaxy collection install grafana.grafana
 
 ## Create an Ansible inventory file
 
-Next, you will set up your hosts and create an inventory file.
+Next, set up your hosts and create an inventory file.
 
 1. Create your hosts and add public SSH keys to them.
 
