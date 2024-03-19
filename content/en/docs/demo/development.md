@@ -33,12 +33,6 @@ receive hints from IDEs such as IntelliJ or VS Code. It may be necessary to run
 - pkg-config
 - protobuf-compiler
 
-### Elixir
-
-- Erlang/OTP 23+
-- Elixir 1.13+
-- Rebar3 3.20+
-
 ### Go
 
 - Go 1.19+

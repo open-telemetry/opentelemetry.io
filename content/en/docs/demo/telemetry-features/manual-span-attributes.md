@@ -54,14 +54,6 @@ This page lists the manual Span Attributes used throughout the demo:
 | `app.email.recipient` | string | Email used for order confirmation |
 | `app.order.id`        | string | Order ID                          |
 
-## FeatureFlagService
-
-| Name                          | Type    | Description              |
-| ----------------------------- | ------- | ------------------------ |
-| `app.featureflag.name`        | string  | Name of the feature flag |
-| `app.featureflag.description` | string  | Admin description        |
-| `app.featureflag.enabled`     | boolean | The feature flag status  |
-
 ## Frontend
 
 | Name                     | Type   | Description                   |

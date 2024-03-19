@@ -41,7 +41,6 @@ The following command will install the demo application to your Kubernetes
 cluster.
 
 ```shell
-kubectl create namespace otel-demo
 kubectl apply --namespace otel-demo -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-demo/main/kubernetes/opentelemetry-demo.yaml
 ```
 
@@ -73,7 +72,6 @@ With the frontendproxy port-forward set up, you can access:
 
 - Web store: <http://localhost:8080/>
 - Grafana: <http://localhost:8080/grafana/>
-- Feature Flags UI: <http://localhost:8080/feature/>
 - Load Generator UI: <http://localhost:8080/loadgen/>
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
 
@@ -159,7 +157,6 @@ following sub-paths:
 
 - Web store: `/` (base)
 - Grafana: `/grafana`
-- Feature Flags UI: `/feature`
 - Load Generator UI: `/loadgen/` (must include trailing slash)
 - Jaeger UI: `/jaeger/ui`
 
