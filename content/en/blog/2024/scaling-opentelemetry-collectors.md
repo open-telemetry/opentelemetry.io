@@ -80,7 +80,7 @@ Next, set up your hosts and create an inventory file.
 
 ## Use the OpenTelemetry Collector Ansible role
 
-Next, you'll define an Ansible playbook to apply your chosen or created
+Next, define an Ansible playbook to apply your chosen or created
 OpenTelemetry Collector role across your hosts.
 
 Create a file named `deploy-opentelemetry.yml` in the same directory as your
