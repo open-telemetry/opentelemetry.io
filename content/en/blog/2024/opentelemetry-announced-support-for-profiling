@@ -3,7 +3,6 @@ title: OpenTelemetry announces support for profiling
 linkTitle: OpenTelemetry announces support for profiling
 date: 2024-03-19
 # prettier-ignore
-cSpell:ignore: stuff  probably
 author: '[Austin Parker](https://github.com/austinlparker) (Honeycomb)'
 ---
 
