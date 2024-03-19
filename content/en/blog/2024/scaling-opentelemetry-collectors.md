@@ -201,8 +201,8 @@ For other installation methods and more detailed instructions, refer to the
 1. **Login to Grafana** and navigate to **Connections** > **Data Sources**.
 2. Click **Add data source**, and choose **Prometheus**.
 3. In the settings, enter your Prometheus URL, for example,
-   `http://<your_prometheus_host>`, along with any other necessary details, and
-   then click **Save & Test**.
+   `http://<your_prometheus_host>`, along with any other necessary details.
+4. Select **Save & Test**.
 
 ### Explore your metrics
 
