@@ -204,7 +204,7 @@ For other installation methods and more detailed instructions, refer to the
    `http://<your_prometheus_host>`, along with any other necessary details, and
    then click **Save & Test**.
 
-### Explore metrics
+### Explore your metrics
 
 1. Go to the **Explore** page
 2. In the Query editor, select your Prometheus data source and enter the below
