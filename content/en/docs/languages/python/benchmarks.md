@@ -7,12 +7,12 @@ cSpell:ignore: Elems rrggbbaa
 <link rel="stylesheet" href="/css/benchmarks.css">
 
 <style>
-   @media (min-width: 100px) {
-     h3{
-         font-size: 0.9rem;
-         font-weight: bold;
-      }
-    }  
+  @media (min-width: 100px) {
+  #main h3 {
+      font-size: 0.9rem;
+      font-weight: bold;
+   }
+  }
 </style>
 
 The OpenTelemetry Python SDK runs benchmark tests on every commit to the
