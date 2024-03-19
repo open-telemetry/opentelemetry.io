@@ -1,9 +1,9 @@
-name: "Lint the docs for style issues"
+name: 'Lint the docs for style issues'
 
 on:
   pull_request:
   workflow_dispatch:
-        
+
 jobs:
   lint:
     runs-on: macos-latest
