@@ -222,7 +222,4 @@ For other installation methods and more detailed instructions, refer to the
 
 This guide makes it easier for you to set up the OpenTelemetry Collector on
 several Linux machines with the help of Ansible and shows you how to see the
-data it collects in Grafana. You can adjust the settings for the OpenTelemetry
-Collector and design your Grafana dashboards to meet your own monitoring and
-tracking needs. This way, you get exactly the insights you want from your
-systems, making your job as a developer a bit easier.
+data it collects in Grafana.
