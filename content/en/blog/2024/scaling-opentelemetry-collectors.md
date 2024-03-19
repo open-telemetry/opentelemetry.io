@@ -17,8 +17,7 @@ visualization platforms.
 
 We outline a strategy for deploying and managing the OpenTelemetry Collector's
 scalable instances throughout your infrastructure using Ansible. In the
-following example, we'll use [Grafana](https://grafana.com/) as the target
-backend to view metrics.
+following example, we'll use Grafana as the target backend for metrics.
 
 ## Prerequisites
 
@@ -73,7 +72,7 @@ Fedora hosts, and two Debian hosts.
    ```cfg
    [defaults]
    inventory = inventory  # Path to the inventory file
-   private_key_file = ~/.ssh/id_rsa   # Path to my private SSH Key
+   private_key_file = ~/.ssh/id_rsa   # Path to private SSH Key
    remote_user=root
    ```
 
@@ -150,7 +149,7 @@ Create a file named `deploy-opentelemetry.yml` in the same directory as your
 
 {{% alert title="Note" %}}
 
-You'll need to adjust the configuration to match the specific telemetry you
+Adjust the configuration to match the specific telemetry you
 intend to collect and where you plan to forward it. This configuration snippet
 is a basic example designed for collecting host metrics and forwarded to
 Prometheus.
@@ -162,7 +161,8 @@ collect host metrics from the Linux host.
 
 ## Running the Ansible playbook
 
-Deploy the OpenTelemetry Collector across your hosts by executing:
+Deploy the OpenTelemetry Collector across your hosts by running
+the following command:
 
 ```sh
 ansible-playbook deploy-opentelemetry.yml
@@ -170,14 +170,12 @@ ansible-playbook deploy-opentelemetry.yml
 
 ## Check your metrics in the backend
 
-Once your OpenTelemetry Collector's start sending metrics to Prometheus, follow
-these quick steps to visualize them in [Grafana](https://grafana.com/):
+After your OpenTelemetry Collector's start sending metrics to Prometheus, follow
+these quick steps to visualize them in Grafana:
 
 ### Set up Grafana
 
-1. **Install Docker**: Make sure Docker is installed on your system. If it's
-   not, you can find the installation guide at the
-   [official Docker website](https://docs.docker.com/get-docker/).
+1. **Install Docker**: Make sure Docker is installed on your system.
 
 2. **Run Grafana Docker Container**: Start a Grafana server with this Docker
    command, which fetches the latest Grafana image:
@@ -193,7 +191,7 @@ these quick steps to visualize them in [Grafana](https://grafana.com/):
    password. Make sure to pick a secure one.
 
 For other installation methods and more detailed instructions, refer to the
-[official Grafana documentation](https://grafana.com/docs/grafana/latest/installation/).
+official Grafana documentation.
 
 ### Add Prometheus as a data source
 
