@@ -43,7 +43,7 @@ ansible-galaxy collection install grafana.grafana
 
 ## Create an Ansible inventory file
 
-Next, set up your hosts and assoicated IPs and create an inventory file.
+Next, set up your hosts and associated IPs and create an inventory file.
 
 This example uses eight Linux hosts: two Ubuntu hosts, two CentOS hosts, two
 Fedora hosts, and two Debian hosts.
