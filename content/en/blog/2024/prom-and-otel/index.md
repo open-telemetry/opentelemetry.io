@@ -182,7 +182,16 @@ A **Target** is an endpoint that supplies Metrics for Prometheus to store. A
 targeted instance, parsing the response, and ingesting the collected samples 
 to storage.
 
-![Data flow from Target Allocator to the OTel Collector.](target-allocator-sharding.png)
+```mermaid
+sequenceDiagram
+  participant Target Allocator
+  participant Metrics Targets
+  participant OTel Collectors
+  Target Allocator ->>Metrics Targets: 1. Discover Metrics targets
+  Target Allocator ->>OTel Collectors: 2. Discover available Collectors
+  Target Allocator ->>Target Allocator: 3. Assign Metrics targets
+  OTel Collectors ->>Target Allocator: 4. Query TA for Metrics endpoints scrape
+  OTel Collectors ->>Metrics Targets: 5. Scrape Metrics target
 
 #### Discovery of Prometheus custom resources
 The Target Allocator’s second job is to provide the discovery of Prometheus 
