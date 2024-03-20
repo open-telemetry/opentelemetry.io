@@ -3,7 +3,7 @@ title: Manage OpenTelemetry Collectors at scale with Ansible
 linkTitle: OTel Collector with Ansible
 date: 2024-03-12
 author: '[Ishan Jain](https://github.com/ishanjainn) (Grafana)'
-cSpell:ignore: ansible Ishan Jain
+cSpell:ignore: ansible Ishan Jain associated
 ---
 
 You can scale the deployment of
@@ -44,15 +44,13 @@ ansible-galaxy collection install grafana.grafana
 
 ## Create an Ansible inventory file
 
-Next, set up your hosts and assoicated IPs and create an inventory file.
-
-This example uses eight Linux hosts: two Ubuntu hosts, two CentOS hosts, two
-Fedora hosts, and two Debian hosts.
+Next, gather the IP addresses and URLs associated with your Linux hosts and
+create an inventory file.
 
 1. Create an Ansible inventory file.
 
    The Ansible inventory, which resides in a file named `inventory`, looks
-   similar to this:
+   similar to this
 
    ```ini
    10.0.0.1    # hostname = ubuntu-01
@@ -64,6 +62,9 @@ Fedora hosts, and two Debian hosts.
    10.0.0.7    # hostname = fedora-01
    10.0.0.8    # hostname = fedora-02
    ```
+
+   This example inventory uses eight Linux hosts: two Ubuntu hosts, two CentOS
+   hosts, two Fedora hosts, and two Debian hosts.
 
    > **Note**: When copying the previous snippet, remove the comments.
 
