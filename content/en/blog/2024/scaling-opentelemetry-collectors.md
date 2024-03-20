@@ -17,7 +17,8 @@ visualization platforms.
 
 We outline a strategy for deploying and managing the OpenTelemetry Collector's
 scalable instances throughout your infrastructure using Ansible. In the
-following example, we'll use Grafana as the target backend for metrics.
+following example, we'll use [Grafana](https://grafana.com/) as the target
+backend for metrics.
 
 ## Prerequisites
 
@@ -43,7 +44,7 @@ ansible-galaxy collection install grafana.grafana
 
 ## Create an Ansible inventory file
 
-Next, set up your hosts and associated IPs and create an inventory file.
+Next, set up your hosts and assoicated IPs and create an inventory file.
 
 This example uses eight Linux hosts: two Ubuntu hosts, two CentOS hosts, two
 Fedora hosts, and two Debian hosts.
@@ -190,7 +191,7 @@ these quick steps to visualize them in Grafana:
    password. Make sure to pick a secure one.
 
 For other installation methods and more detailed instructions, refer to the
-official Grafana documentation.
+[official Grafana documentation](https://grafana.com/docs/grafana/latest/#installing-grafana).
 
 ### Add Prometheus as a data source
 
