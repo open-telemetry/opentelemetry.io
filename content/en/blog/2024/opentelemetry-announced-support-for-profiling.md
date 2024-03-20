@@ -11,27 +11,35 @@ While this was our initial goal at the formation of the project, fulfilling our
 vision of enabling built-in observability for cloud native applications requires
 us to continue evolving with the community. This year, we’re proud to announce
 that exactly two years after the Profiling SIG was created at KubeCon +
-CloudNativeCon Europe 2022 in Valencia, we’re taking a big step towards this goal
-by merging a profiling data model OTEP and working towards a stable spec and
-implementation this year!
+CloudNativeCon Europe 2022 in Valencia, we’re taking a big step towards this
+goal by merging a profiling data model OTEP and working towards a stable spec
+and implementation this year!
 
-This milestone for OpenTelemetry profiling feature reflects a collaborative effort
-within the profiling SIG, where dedicated input from a diverse range of profiling
-vendors and end users has been pivotal. This includes substantial contributions
-from companies such as Grafana Labs, Datadog, and Red Hat. The SIG's collective
-endeavor has been focused on aligning on the most suitable data format for profiling,
-evidenced by the active discussions and proposals within the community.
+This milestone for OpenTelemetry profiling feature reflects a collaborative
+effort within the profiling SIG, where dedicated input from a diverse range of
+profiling vendors and end users has been pivotal. This includes substantial
+contributions from companies such as Grafana Labs, Datadog, and Red Hat. The
+SIG's collective endeavor has been focused on aligning on the most suitable data
+format for profiling, evidenced by the active discussions and proposals within
+the community.
 
 Some previous milestones reached before this point have been:
 
-- Establishing [profiling vision alignment](https://github.com/open-telemetry/oteps/pull/212) (August 2022)
-- Proposing [v1 profiling data model](https://github.com/open-telemetry/oteps/pull/237) (September 2023)
-- Proposing [v2 profiling data model](https://github.com/open-telemetry/oteps/pull/239) (November 2023)
+- Establishing
+  [profiling vision alignment](https://github.com/open-telemetry/oteps/pull/212)
+  (August 2022)
+- Proposing
+  [v1 profiling data model](https://github.com/open-telemetry/oteps/pull/237)
+  (September 2023)
+- Proposing
+  [v2 profiling data model](https://github.com/open-telemetry/oteps/pull/239)
+  (November 2023)
 
 These all have played a crucial role in shaping the direction and evolution of
-OpenTelemetry's profiling capabilities. These community-led discussions and contributions
-underscore the project's commitment to being inclusive and collaboration, ensuring that a broad
-spectrum of insights and expertise is leveraged to drive the development of OpenTelemetry.
+OpenTelemetry's profiling capabilities. These community-led discussions and
+contributions underscore the project's commitment to being inclusive and
+collaboration, ensuring that a broad spectrum of insights and expertise is
+leveraged to drive the development of OpenTelemetry.
 
 ## What is profiling?
 
