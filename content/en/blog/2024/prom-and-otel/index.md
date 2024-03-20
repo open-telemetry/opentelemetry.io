@@ -195,7 +195,22 @@ Prometheus receiver, by creating scrape configurations in the Prometheus
 receiver from the PodMonitor and ServiceMonitor instances deployed in your 
 cluster.
 
-![How the Target Allocator's service discovery feature works](target-allocator-promcr.png)
+```mermaid
+flowchart RL
+  pm(PodMonitor)
+  sm(ServiceMonitor)
+  ta(Target Allocator)
+  oc1(OTel Collector)
+  oc2(OTel Collector)
+  oc3(OTel Collector)
+  ta --> pm
+  ta --> sm
+  oc1 --> ta
+  oc2 --> ta
+  oc3 --> ta
+  sm ~~~|"1. Discover Prometheus Operator CRs"| sm
+  ta ~~~|"2. Add job to TA scrape configuration"| ta
+  oc3 ~~~|"3. Add job to OTel Collector scrape configuration"| oc3
 
 Even though Prometheus is not required to be installed in your Kubernetes 
 cluster to use the Target Allocator for Prometheus CR discovery, the TA does 
