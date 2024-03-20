@@ -1,4 +1,4 @@
-# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Uptrace Greptime KloudMate qryn ClickHouse Tracetest opensource OneUptime
+# cSpell:ignore Causely Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Uptrace Greptime KloudMate qryn ClickHouse Tracetest opensource OneUptime
 - name: AppDynamics (Cisco)
   nativeOTLP: true
   url: 'https://docs.appdynamics.com/latest/en/application-monitoring/appdynamics-for-opentelemetry'
@@ -33,6 +33,20 @@
   nativeOTLP: true
   url: https://betterstack.com/docs/logs/open-telemetry/#2-setup
   contact: 'hello@betterstack.com'
+  oss: false
+  commercial: true
+- name: Causely
+  distribution: false
+  nativeOTLP: true
+  url: 'https://github.com/Causely/documentation'
+  contact: 'support@causely.io'
+  oss: false
+  commercial: true
+- name: Chronosphere
+  distribution: false
+  nativeOTLP: true
+  url: 'https://docs.chronosphere.io/ingest/otel/otel-ingest'
+  contact: 'support@chronosphere.io'
   oss: false
   commercial: true
 - name: Control Plane
