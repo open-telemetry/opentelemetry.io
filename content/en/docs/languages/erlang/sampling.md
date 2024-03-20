@@ -159,12 +159,11 @@ description(_) ->
     <<"AttributeSampler">>.
 
 should_sample(_Ctx, _TraceId, _Links, _SpanName, _SpanKind, Attributes, ConfigAttributes) ->
-  AttributesSet = sets:from_list(maps:to_list(Attributes)),
-  ConfigSet = sets:from_list(maps:to_list(ConfigAttributes)),
-  case sets:is_disjoint(AttributesSet, ConfigSet) of
-    true -> {?RECORD_AND_SAMPLE, [], []}
-    _ -> {?DROP, [], []};
-  
+    AttributesSet = sets:from_list(maps:to_list(Attributes)),
+    ConfigSet = sets:from_list(maps:to_list(ConfigAttributes)),
+    case sets:is_disjoint(AttributesSet, ConfigSet) of
+        true -> {?RECORD_AND_SAMPLE, [], []};
+        _ -> {?DROP, [], []}
 end.
 ```
 
