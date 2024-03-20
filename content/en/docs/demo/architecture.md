@@ -34,7 +34,8 @@ Internet -->|HTTP| frontendproxy
 frontendproxy -->|HTTP| frontend
 loadgenerator -->|HTTP| frontendproxy
 
-accountingservice -->|TCP| queue
+queue -->|TCP| accountingservice
+queue -->|TCP| frauddetectionservice
 
 checkoutservice --->|gRPC| cartservice --> cache
 checkoutservice --->|gRPC| productcatalogservice
@@ -51,8 +52,6 @@ frontend -->|gRPC| checkoutservice
 frontend -->|gRPC| currencyservice
 frontend -->|gRPC| recommendationservice -->|gRPC| productcatalogservice
 frontend -->|gRPC| shippingservice -->|HTTP| quoteservice
-
-frauddetectionservice -->|TCP| queue
 
 end
 

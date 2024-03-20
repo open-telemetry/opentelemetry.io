@@ -38,13 +38,22 @@ Alternatively, you can use `export` to set environment variables:
 
 ```shell
 export OTEL_TRACES_EXPORTER="otlp"
-export OTEL_METRICS_EXPORTER="otlp"
 export OTEL_EXPORTER_OTLP_ENDPOINT="your-endpoint"
 export OTEL_NODE_RESOURCE_DETECTORS="env,host,os"
 export OTEL_SERVICE_NAME="your-service-name"
 export NODE_OPTIONS="--require @opentelemetry/auto-instrumentations-node/register"
 node app.js
 ```
+
+{{% alert title="Note" color="info" %}}
+
+Currently, only Traces are supported for environment variable configuration. See
+the open issues for
+[Metrics](https://github.com/open-telemetry/opentelemetry-js/issues/4551) and
+[Logs](https://github.com/open-telemetry/opentelemetry-js/issues/4552) to learn
+more.
+
+{{% /alert %}}
 
 By default, all SDK [resource detectors](/docs/languages/js/resources/) are
 used. You can use the environment variable `OTEL_NODE_RESOURCE_DETECTORS` to
