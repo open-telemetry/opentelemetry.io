@@ -101,7 +101,7 @@ companies. Across our most popular repositories, OpenTelemetry sees over 30
 million downloads a month<sup>2</sup>, and new open source projects are adopting
 our standards at a regular pace, including
 [Apache Kafka](https://cwiki.apache.org/confluence/display/KAFKA/KIP-714%3A+Client+metrics+and+observability),
-and [dozens more](https://opentelemetry.io/ecosystem/integrations/). We’re also
+and [dozens more](/ecosystem/integrations). We’re also
 deepening our integrations with other open source projects in CNCF and out, such
 as [OpenFeature](https://openfeature.dev) and
 [OpenSearch](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/23611),
