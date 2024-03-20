@@ -142,7 +142,7 @@ config based on the number of replicas you have](https://www.robustperception.io
 Plus, if you’re already collecting Prometheus metrics about your 
 Kubernetes infrastructure, using the TA is a great option.
 
-The Target Allocator is part of the OTel Operator. The OTel Operator is a [Kubernetes Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) that:
+The Target Allocator is part of the OTel Operator. The [OTel Operator](https://github.com/open-telemetry/opentelemetry-operator) is a [Kubernetes Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) that:
 * Manages the [OpenTelemetry Collector](/docs/collector/)
 * Injects and configures [auto-instrumentation](https://www.honeycomb.io/blog/what-is-auto-instrumentation) into your pods
 
