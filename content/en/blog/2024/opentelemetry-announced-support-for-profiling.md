@@ -23,13 +23,14 @@ endeavor has been focused on aligning on the most suitable data format for profi
 evidenced by the active discussions and proposals within the community.
 
 Some previous milestones reached before this point have been:
+
 - Establishing [profiling vision alignment](https://github.com/open-telemetry/oteps/pull/212) (August 2022)
 - Proposing [v1 profiling data model](https://github.com/open-telemetry/oteps/pull/237) (September 2023)
 - Proposing [v2 profiling data model](https://github.com/open-telemetry/oteps/pull/239) (November 2023)
 
 These all have played a crucial role in shaping the direction and evolution of
 OpenTelemetry's profiling capabilities. These community-led discussions and contributions
-underscore the project's commitment to inclusivity and collaboration, ensuring that a broad
+underscore the project's commitment to being inclusive and collaboration, ensuring that a broad
 spectrum of insights and expertise is leveraged to drive the development of OpenTelemetry.
 
 ## What is profiling?
