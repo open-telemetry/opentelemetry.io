@@ -159,11 +159,12 @@ description(_) ->
     <<"AttributeSampler">>.
 
 should_sample(_Ctx, _TraceId, _Links, _SpanName, _SpanKind, Attributes, ConfigAttributes) ->
-  ConfAttrPairs = maps:intersect_with(fun (_key, Attr, Conf) -> {Attr, Conf} end, Attributes, ConfigAttributes),
-  case lists:any(fun({_, {A, B}}) -> A == B end, maps:to_list(ConfAttrPairs)) of
-    true -> {?DROP, [], []};
-    _ -> {?RECORD_AND_SAMPLE, [], []}
-  end
+  AttributesSet = sets:from_list(maps:to_list(Attributes)),
+  ConfigSet = sets:from_list(maps:to_list(ConfigAttributes)),
+  case sets:is_disjoint(AttributesSet, ConfigSet) of
+    true -> {?RECORD_AND_SAMPLE, [], []}
+    _ -> {?DROP, [], []};
+  
 end.
 ```
 
@@ -184,12 +185,11 @@ defmodule AttributesSampler do
   end
 
   def should_sample(_ctx, _trace_id, _links, _span_name, _span_kind, attributes, config_attributes) do
-    attr_match =
-      Map.intersect(attributes, config_attributes, fn _key, attr, conf -> {attr, conf} end)
-      |> Map.to_list()
-      |> Enum.any?(fn {_, {attr, conf}} -> attr == conf end)
+    no_match =
+      Enum.into(attributes, %MapSet{})
+      |> MapSet.disjoint?(Enum.into(config_attributes, %MapSet{}))
 
-    if attr_match, do: {:drop, [], []}, else: {:record_and_sample, [], []}
+    if no_match, do: {:record_and_sample, [], []}, else: {:drop, [], []}
   end
 end
 ```
