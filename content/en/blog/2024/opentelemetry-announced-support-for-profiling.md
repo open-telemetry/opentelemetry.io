@@ -18,10 +18,16 @@ and implementation this year!
 This milestone for OpenTelemetry profiling feature reflects a collaborative
 effort within the profiling SIG, where dedicated input from a diverse range of
 profiling vendors and end users has been pivotal. This includes substantial
-contributions from companies such as Grafana Labs, Datadog, and Red Hat. The
-SIG's collective endeavor has been focused on aligning on the most suitable data
-format for profiling, evidenced by the active discussions and proposals within
-the community.
+contributions from community members such as:
+
+- Felix Geisendörfer (Datadog)
+- Dmitry Filimonov (Grafana Labs)
+- Ryan Perry (Grafana Labs)
+- Jonathan Halliday (Red Hat)
+
+The SIG's collective endeavor has been focused on aligning on the most suitable
+data format for profiling, evidenced by the active discussions and proposals
+within the community.
 
 Some previous milestones reached before this point have been:
 
