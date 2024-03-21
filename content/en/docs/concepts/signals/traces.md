@@ -238,6 +238,12 @@ For example, if a span tracks an operation that adds an item to a user's
 shopping cart in an eCommerce system, you can capture the user's ID, the ID of
 the item to add to the cart, and the cart ID.
 
+Attributes can be added to spans during span creation or after creation. If you
+can add an attribute during span creation, it's preferable to do that compared
+to after span creation. That's because it allows those attributes to be used in
+SDK sampling. However, if you only have a value to add after the span has been
+created, you can just add it to the span when it's available.
+
 Attributes have the following rules that each language SDK implements:
 
 - Keys must be non-null string values
@@ -266,6 +272,20 @@ and an end.
 
 A Span Event is best used to track the second scenario because it represents a
 meaningful, singular point in time.
+
+#### When to use Span Events or Span Attributes
+
+Span Events contain attributes as well, so you may wonder, when is it
+appropriate to use a Span Event or create a new Attribute on the current span?
+
+It all comes down to if a specific timestamp is meaningful.
+
+For example, if you are tracking an operation with a span and the operation
+completes, you may wish to add data from the operation to your telemetry. If the
+timestamp in which the operation completes is important to know, then a Span
+Event is an appropriate way to model things with telemetry. However, if the
+timestamp is not meaningful, then it's better to attach the data as a Span
+Attribute instead.
 
 ### Span Links
 
