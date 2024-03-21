@@ -15,7 +15,7 @@ CloudNativeCon Europe 2022 in Valencia, we’re taking a big step towards this
 goal by merging a profiling data model OTEP and working towards a stable spec
 and implementation this year!
 
-This milestone for OpenTelemetry profiling feature reflects a collaborative
+This milestone for the OpenTelemetry profiling signal reflects a collaborative
 effort within the profiling SIG, where dedicated input from a diverse range of
 profiling vendors and end users has been pivotal. This includes substantial
 contributions from community members such as:
