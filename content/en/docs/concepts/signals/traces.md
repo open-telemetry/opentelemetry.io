@@ -238,11 +238,9 @@ For example, if a span tracks an operation that adds an item to a user's
 shopping cart in an eCommerce system, you can capture the user's ID, the ID of
 the item to add to the cart, and the cart ID.
 
-Attributes can be added to spans during span creation or after creation. If you
-can add an attribute during span creation, it's preferable to do that compared
-to after span creation. That's because it allows those attributes to be used in
-SDK sampling. However, if you only have a value to add after the span has been
-created, you can just add it to the span when it's available.
+You can add attributes to spans during or after span creation. Prefer adding
+attributes at span creation to make the attributes available to SDK sampling. If
+you have to add a value after span creation, update the span with the value.
 
 Attributes have the following rules that each language SDK implements:
 
@@ -273,19 +271,18 @@ and an end.
 A Span Event is best used to track the second scenario because it represents a
 meaningful, singular point in time.
 
-#### When to use Span Events or Span Attributes
+#### When to use span events versus span attributes
 
-Span Events contain attributes as well, so you may wonder, when is it
-appropriate to use a Span Event or create a new Attribute on the current span?
+Since span events also contain attributes, the question of when to use events
+instead of attributes might not always have an obvious answer. To inform your
+decision, consider whether a specific timestamp is meaningful.
 
-It all comes down to if a specific timestamp is meaningful.
+For example, when you're tracking an operation with a span and the operation
+completes, you might want to add data from the operation to your telemetry.
 
-For example, if you are tracking an operation with a span and the operation
-completes, you may wish to add data from the operation to your telemetry. If the
-timestamp in which the operation completes is important to know, then a Span
-Event is an appropriate way to model things with telemetry. However, if the
-timestamp is not meaningful, then it's better to attach the data as a Span
-Attribute instead.
+- If the timestamp in which the operation completes is meaningful or relevant,
+  attach the data to a span event.
+- If the timestamp isn't meaningful, attach the data as span attributes.
 
 ### Span Links
 
