@@ -3,7 +3,7 @@ title: OpenTelemetry announces support for profiling
 linkTitle: OpenTelemetry announces support for profiling
 date: 2024-03-19
 author: '[Austin Parker](https://github.com/austinlparker) (Honeycomb)'
-cSpell:ignore: Geisendörfer Dmitry Filimonov Halliday
+cSpell:ignore: Dmitry Filimonov Geisendörfer Halliday
 ---
 
 In 2023, OpenTelemetry announced that it achieved stability for
