@@ -239,8 +239,8 @@ shopping cart in an eCommerce system, you can capture the user's ID, the ID of
 the item to add to the cart, and the cart ID.
 
 You can add attributes to spans during or after span creation. Prefer adding
-attributes at span creation to make the attributes available to SDK sampling.
-If you have to add a value after span creation, update the span with the value.
+attributes at span creation to make the attributes available to SDK sampling. If
+you have to add a value after span creation, update the span with the value.
 
 Attributes have the following rules that each language SDK implements:
 
@@ -281,7 +281,7 @@ For example, when you're tracking an operation with a span and the operation
 completes, you might want to add data from the operation to your telemetry.
 
 - If the timestamp in which the operation completes is meaningful or relevant,
-attach the data to a span event.
+  attach the data to a span event.
 - If the timestamp isn't meaningful, attach the data as span attributes.
 
 ### Span Links
