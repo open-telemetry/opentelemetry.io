@@ -22,6 +22,7 @@ profiling vendors and end users has been pivotal. This includes substantial
 contributions from community members such as:
 
 - Felix Geisendörfer (Datadog)
+- Alexey Alexandrov (Google)
 - Dmitry Filimonov (Grafana Labs)
 - Ryan Perry (Grafana Labs)
 - Jonathan Halliday (Red Hat)
