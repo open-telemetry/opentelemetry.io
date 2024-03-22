@@ -1174,7 +1174,7 @@ SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
         PeriodicMetricReader
             .builder(LoggingMetricExporter.create())
             // Default is 60000ms (60 seconds). Set to 10 seconds for demonstrative purposes only.
-            .setInterval(Duration.of(10000, ChronoUnit.MILLIS)).build())
+            .setInterval(Duration.ofSeconds(10)).build())
     .build();
 
 // Register MeterProvider with OpenTelemetry instance
@@ -1207,7 +1207,7 @@ you can create
 
 ### Using Counters
 
-Counters can be used to measure a non-negative, increasing value.
+Counters can be used to measure a non-negative, increasing values.
 
 ```java
 LongCounter counter = meter.counterBuilder("dice-lib.rolls.counter")
@@ -1221,7 +1221,7 @@ counter.add(1, attributes);
 ### Using UpDown Counters
 
 UpDown counters can increment and decrement, allowing you to observe a
-cumulative value that goes up or down.
+value that goes up or down.
 
 ```java
 LongUpDownCounter counter = meter.upDownCounterBuilder("dice-lib.score")
@@ -1231,7 +1231,7 @@ LongUpDownCounter counter = meter.upDownCounterBuilder("dice-lib.score")
 
 //...
 
-counter.add(10);
+counter.add(10, attributes);
 
 //...
 
@@ -1348,7 +1348,7 @@ SdkMeterProvider meterProvider = SdkMeterProvider.builder()
         // apply the view to all instruments
         InstrumentSelector.builder().setName("*").build(),
         // only export the attribute 'environment'
-        View.builder().setAttributeFilter(name -> name.equals("environment")).build())
+        View.builder().setAttributeFilter(Set.of("environment")).build())
     .build();
 ```
 
