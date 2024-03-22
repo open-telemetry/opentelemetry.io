@@ -1291,12 +1291,6 @@ ObservableDoubleGauge gauge = meter.gaugeBuilder("jvm.system.cpu.utilization")
 
 ### Adding Attributes
 
-You can add attributes to metrics when they are generated. Each set of unique
-attributes which receive measurements will produce a unique metric series. The
-total number of series is referred to as cardinality. The cardinality dictates
-he size of exported metric payloads, therefore dimensions that are included in
-attributes should be carefully considered to avoid cardinality explosion.
-
 When you generate metrics, adding attributes creates unique metric series based
 on each distinct set of attributes that receive measurements. This leads to the
 concept of 'cardinality', which is the total number of unique series.
