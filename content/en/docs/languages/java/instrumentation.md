@@ -1207,7 +1207,7 @@ you can create
 
 ### Using Counters
 
-Counters can be used to measure a non-negative, increasing values.
+Counters can be used to measure non-negative, increasing values.
 
 ```java
 LongCounter counter = meter.counterBuilder("dice-lib.rolls.counter")
@@ -1277,7 +1277,7 @@ LongHistogram histogram = meter.histogramBuilder("dice-lib.rolls")
     .setUnit("points")
     .build();
 
-histogram.record(7);
+histogram.record(7, attributes);
 ```
 
 ### Using Observable (Async) Gauges
