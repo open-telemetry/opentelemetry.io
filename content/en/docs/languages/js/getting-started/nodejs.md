@@ -226,7 +226,10 @@ sdk.start();
 ## Run the instrumented app
 
 Now you can run your application as you normally would, but you can use the
-`--require` flag to load the instrumentation before the application code.
+`--require` flag to load the instrumentation before the application code. Make
+sure you don't have other conflicting `--require` flags such as
+`--require @opentelemetry/auto-instrumentations-node/register` on your
+`NODE_OPTIONS` environment variable.
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
