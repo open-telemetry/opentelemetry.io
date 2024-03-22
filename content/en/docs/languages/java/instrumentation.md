@@ -1218,10 +1218,23 @@ LongCounter counter = meter.counterBuilder("dice-lib.rolls.counter")
 counter.add(1, attributes);
 ```
 
+### Using Observable (Async) Counters
+
+Observable counters can be used to measure an additive, non-negative,
+monotonically increasing value. These counters specifically focus on the total
+accumulated amount, which is gathered from external sources. Unlike synchronous
+counters where each increment is recorded as it happens, observable counters
+allow you to asynchronously monitor the overall sum of multiple increments.
+
+```java
+ObservableLongCounter counter = meter.counterBuilder("dice-lib.uptime")
+    .buildWithCallback(measurement -> measurement.record(getUpTime()));
+```
+
 ### Using UpDown Counters
 
-UpDown counters can increment and decrement, allowing you to observe a
-value that goes up or down.
+UpDown counters can increment and decrement, allowing you to observe a value
+that goes up or down.
 
 ```java
 LongUpDownCounter counter = meter.upDownCounterBuilder("dice-lib.score")
@@ -1235,7 +1248,21 @@ counter.add(10, attributes);
 
 //...
 
-counter.add(-20);
+counter.add(-20, attributes);
+```
+
+### Using Observable (Async) UpDown Counters
+
+Observable UpDown counters can increment and decrement, allowing you to measure
+an additive, non-negative, non-monotonically increasing cumulative value. These
+UpDown counters specifically focus on the total accumulated amount, which is
+gathered from external sources. Unlike synchronous UpDown counters where each
+increment is recorded as it happens, observable counters allow you to
+asynchronously monitor the overall sum of multiple increments.
+
+```java
+ObservableDoubleUpDownCounter upDownCounter = meter.upDownCounterBuilder("dice-lib.score")
+    .buildWithCallback(measurement -> measurement.record(calculateScore()));
 ```
 
 ### Using Histograms
@@ -1246,30 +1273,11 @@ Histograms are used to measure a distribution of values over time.
 LongHistogram histogram = meter.histogramBuilder("dice-lib.rolls")
     .ofLongs() // Required to get a LongHistogram, default is DoubleHistogram
     .setDescription("A distribution of the value of the rolls.")
+    .setExplicitBucketBoundariesAdvice(Arrays.asList(1L, 2L, 3L, 4L, 5L, 6L, 7L))
     .setUnit("points")
     .build();
 
 histogram.record(7);
-```
-
-### Using Observable (Async) Counters
-
-Observable counters can be used to measure an additive, non-negative,
-monotonically increasing value.
-
-```java
-ObservableLongCounter counter = meter.counterBuilder("dice-lib.cache.size")
-    .buildWithCallback(measurement -> measurement.record(getCacheSize()));
-```
-
-### Using Observable (Async) UpDown Counters
-
-Observable UpDown counters can increment and decrement, allowing you to measure
-an additive, non-negative, non-monotonically increasing cumulative value.
-
-```java
-ObservableDoubleUpDownCounter upDownCounter = meter.upDownCounterBuilder("dice-lib.cache.size")
-    .buildWithCallback(measurement -> measurement.record(getCacheSize()));
 ```
 
 ### Using Observable (Async) Gauges
@@ -1283,7 +1291,19 @@ ObservableDoubleGauge gauge = meter.gaugeBuilder("jvm.system.cpu.utilization")
 
 ### Adding Attributes
 
-You can add attributes to metrics when they are generated.
+You can add attributes to metrics when they are generated. Each set of unique
+attributes which receive measurements will produce a unique metric series. The
+total number of series is referred to as cardinality. The cardinality dictates
+he size of exported metric payloads, therefore dimensions that are included in
+attributes should be carefully considered to avoid cardinality explosion.
+
+When you generate metrics, adding attributes creates unique metric series based
+on each distinct set of attributes that receive measurements. This leads to the
+concept of 'cardinality', which is the total number of unique series.
+Cardinality directly affects the size of the metric payloads that are exported.
+Therefore, it's important to carefully select the dimensions included in these
+attributes to prevent a surge in cardinality, often referred to as 'cardinality
+explosion'.
 
 ```java
 Attributes attrs = Attributes.of(
