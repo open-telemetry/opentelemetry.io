@@ -1,4 +1,8 @@
-# Internal Telemetry
+---
+title: Internal Telemetry
+weight: 25
+cSpell:ignore: 
+---
 
 The Collector offers you multiple ways to measure and monitor its health as well
 as investigate issues. In this section, you'll learn how to enable internal
