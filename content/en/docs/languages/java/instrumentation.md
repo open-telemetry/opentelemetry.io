@@ -1285,8 +1285,8 @@ histogram.record(7, attributes);
 Observable Gauges should be used to measure non-additive values.
 
 ```java
-ObservableDoubleGauge gauge = meter.gaugeBuilder("jvm.system.cpu.utilization")
-    .buildWithCallback(measurement -> measurement.record(getCpuUtilization()));
+ObservableDoubleGauge gauge = meter.gaugeBuilder("jvm.memory.used")
+    .buildWithCallback(measurement -> measurement.record(getMemoryUsed()));
 ```
 
 ### Adding Attributes
@@ -1301,8 +1301,8 @@ explosion'.
 
 ```java
 Attributes attrs = Attributes.of(
-    stringKey("environment"), "production",
-    stringKey("service"), "dice-server");
+    stringKey("hostname"), "i-98c3d4938",
+    stringKey("region"), "us-east-1");
 
 histogram.record(7, attrs);
 ```
@@ -1376,12 +1376,12 @@ SdkMeterProvider meterProvider = SdkMeterProvider.builder()
     .build();
 ```
 
-Define explicit bucket sizes for the Histogram named `http.server.duration`:
+Define explicit bucket sizes for the Histogram named `http.server.request.duration`:
 
 ```java
 SdkMeterProvider meterProvider = SdkMeterProvider.builder()
     .registerView(
-        InstrumentSelector.builder().setName("http.server.duration").build(),
+        InstrumentSelector.builder().setName("http.server.request.duration").build(),
         View.builder()
             .setAggregation(
                 Aggregation.explicitBucketHistogram(
