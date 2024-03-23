@@ -1376,7 +1376,8 @@ SdkMeterProvider meterProvider = SdkMeterProvider.builder()
     .build();
 ```
 
-Define explicit bucket sizes for the Histogram named `http.server.request.duration`:
+Define explicit bucket sizes for the Histogram named
+`http.server.request.duration`:
 
 ```java
 SdkMeterProvider meterProvider = SdkMeterProvider.builder()
