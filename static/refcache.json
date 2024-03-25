@@ -3971,6 +3971,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:01:26.859346-05:00"
   },
+  "https://github.com/open-telemetry/oteps/pull/237": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-20T11:51:23.759109+01:00"
+  },
+  "https://github.com/open-telemetry/oteps/pull/239": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-20T11:51:25.914973+01:00"
+  },
   "https://github.com/open-telemetry/semantic-conventions": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:01:12.185293-05:00"
@@ -7314,6 +7322,10 @@
   "https://sessionize.com/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:10:50.8378-05:00"
+  },
+  "https://sessionize.com/OTel-Community-Day/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-22T06:55:18.402684904Z"
   },
   "https://shorturl.at/beJ09": {
     "StatusCode": 200,
