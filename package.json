@@ -97,7 +97,7 @@
     "gulp": "^4.0.2",
     "hugo-extended": "0.122.0",
     "markdown-link-check": "^3.11.2",
-    "markdownlint": "^0.33.0",
+    "markdownlint": "^0.34.0",
     "postcss-cli": "^11.0.0",
     "prettier": "^3.0.3",
     "require-dir": "^1.2.0",
