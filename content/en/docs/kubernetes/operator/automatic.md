@@ -9,7 +9,7 @@ cSpell:ignore: autoinstrumentation GRPCNETCLIENT k8sattributesprocessor otelinst
 ---
 
 The OpenTelemetry Operator supports injecting and configuring
-auto-instrumentation libraries for .NET, Java, Node.js and Python services.
+auto-instrumentation libraries for .NET, Java, Node.js, Python, and Go services.
 
 ## Installation
 
@@ -425,7 +425,7 @@ example uses `http://demo-collector:4318`, which connects to the `http/protobuf`
 port of the `otlpreceiver` of the Collector created in the previous step.
 
 The Go auto-instrumentation does not support disabling any instrumentation.
-[See the Go Auto-Instrumentation repository for me details.](https://github.com/open-telemetry/opentelemetry-go-instrumentation)
+[See the Go Auto-Instrumentation repository for more details.](https://github.com/open-telemetry/opentelemetry-go-instrumentation)
 
 ---
 

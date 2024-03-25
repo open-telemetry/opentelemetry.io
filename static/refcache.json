@@ -579,6 +579,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:05:58.139233-05:00"
   },
+  "https://cwiki.apache.org/confluence/display/KAFKA/KIP-714%3A+Client+metrics+and+observability": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-19T10:16:48.071549188Z"
+  },
   "https://danielabaron.me": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:02:25.331813-05:00"
@@ -942,6 +946,10 @@
   "https://docs.bindplane.observiq.com": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:53:34.715996-05:00"
+  },
+  "https://docs.chronosphere.io/ingest/otel/otel-ingest": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-19T05:23:55.741827909Z"
   },
   "https://docs.controlplane.com/reference/org#tracing": {
     "StatusCode": 206,
@@ -2835,6 +2843,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:04:53.024867-05:00"
   },
+  "https://github.com/open-telemetry/community/issues/1918": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-19T10:16:37.692028682Z"
+  },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:16.771654-05:00"
@@ -2902,6 +2914,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/1797": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:20.383893-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/23611": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-19T10:16:57.223070258Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/14132": {
     "StatusCode": 200,
@@ -3215,6 +3231,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:24.636133-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/pull/3196": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-19T10:16:41.537608304Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:22.100602-05:00"
@@ -3514,6 +3534,14 @@
   "https://github.com/open-telemetry/opentelemetry-js/discussions": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:19.47948-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/issues/4551": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-19T06:37:03.56499722Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/issues/4552": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-19T06:37:04.053171348Z"
   },
   "https://github.com/open-telemetry/opentelemetry-js/releases": {
     "StatusCode": 200,
@@ -3942,6 +3970,14 @@
   "https://github.com/open-telemetry/oteps/pull/225": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:01:26.859346-05:00"
+  },
+  "https://github.com/open-telemetry/oteps/pull/237": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-20T11:51:23.759109+01:00"
+  },
+  "https://github.com/open-telemetry/oteps/pull/239": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-20T11:51:25.914973+01:00"
   },
   "https://github.com/open-telemetry/semantic-conventions": {
     "StatusCode": 200,
@@ -5519,6 +5555,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:07:12.98586-05:00"
   },
+  "https://opentelemetry.io": {
+    "StatusCode": 206,
+    "LastSeen": "2024-03-19T10:16:59.755536357Z"
+  },
   "https://opentelemetry.io/docs/collector": {
     "StatusCode": 206,
     "LastSeen": "2024-02-23T22:55:03.656226-05:00"
@@ -5570,6 +5610,10 @@
   "https://opentelemetry.io/docs/specs/otel/protocol": {
     "StatusCode": 206,
     "LastSeen": "2024-02-24T14:33:05.630341-08:00"
+  },
+  "https://opentelemetry.io/ecosystem/integrations/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-03-19T10:16:49.992495889Z"
   },
   "https://opentracing.io": {
     "StatusCode": 206,
@@ -7279,6 +7323,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:10:50.8378-05:00"
   },
+  "https://sessionize.com/OTel-Community-Day/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-22T06:55:18.402684904Z"
+  },
   "https://shorturl.at/beJ09": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:26:42.338496-05:00"
@@ -7698,6 +7746,10 @@
   "https://www.cncf.io/blog/2023/01/11/a-look-at-the-2022-velocity-of-cncf-linux-foundation-and-top-30-open-source-projects/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T05:18:24.717687-05:00"
+  },
+  "https://www.cncf.io/blog/2023/11/07/opentelemetry-at-kubecon-cloudnativecon-north-america-2023-update/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-03-19T10:16:35.961700341Z"
   },
   "https://www.cncf.io/projects/": {
     "StatusCode": 206,
