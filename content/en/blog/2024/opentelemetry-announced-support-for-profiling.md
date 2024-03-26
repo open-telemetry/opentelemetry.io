@@ -1,6 +1,6 @@
 ---
 title: OpenTelemetry announces support for profiling
-linkTitle: OpenTelemetry announces support for profiling
+linkTitle: Profiling support
 date: 2024-03-19
 author: '[Austin Parker](https://github.com/austinlparker) (Honeycomb)'
 cSpell:ignore: Alexandrov Alexey Dmitry Filimonov Geisendörfer Halliday
@@ -71,7 +71,7 @@ specifically, the following two donations are in play:
 
 - Elastic has
   [pledged to donate](https://github.com/open-telemetry/community/issues/1918)
-  their proprietary eBPF-based profiling agent <sup>1</sup>
+  their proprietary eBPF-based profiling agent [^1]
 - Splunk has begun the process of
   [donating their .NET based profiler](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/pull/3196)
 
@@ -91,23 +91,23 @@ telemetry to a corresponding profile. For example:
   latency across your services, but when that latency is caused by pieces of the
   code it will be reflected in a profile attached to a trace or span
 - Logs to profiles: Logs often give the context that something is wrong, but
-  profiling will allow you to go from just tracking something (i.e. Out Of
-  Memory errors) to seeing exactly which parts of the code are using up memory
-  resources
+  profiling will allow you to go from just tracking something (Out Of Memory
+  errors, for example) to seeing exactly which parts of the code are using up
+  memory resources
 
 These are just a few and these links work the opposite direction as well, but
 more generally profiling helps deliver on the promise of observability by making
 it easier for users to query and understand an entire new dimension about their
 applications with minimal additional code/effort.
 
-A community in motion
+## A community in motion
 
 This work would not be possible without the dedicated contributors who work on
 OpenTelemetry each day. We’ve recently passed a new milestone, with over 1000
 unique developers contributing to the project each month, representing over 180
 companies. Across our most popular repositories, OpenTelemetry sees over 30
-million downloads a month<sup>2</sup>, and new open source projects are adopting
-our standards at a regular pace, including
+million downloads a month[^2], and new open source projects are adopting our
+standards at a regular pace, including
 [Apache Kafka](https://cwiki.apache.org/confluence/display/KAFKA/KIP-714%3A+Client+metrics+and+observability),
 and [dozens more](/ecosystem/integrations). We’re also deepening our
 integrations with other open source projects in CNCF and out, such as
@@ -121,6 +121,5 @@ implement and stabilize our existing tracing, metrics, and log signals while
 adding support for profiling, client-side RUM, and more. It’s a great time to
 get involved – check out our [website](https://opentelemetry.io) to learn more!
 
-<sup>1</sup> Pending due diligence and review by the OpenTelemetry maintainers.
-<sup>2</sup> According to public download statistics of our .NET, Java, and
-Python APIs
+[^1]: Pending due diligence and review by the OpenTelemetry maintainers.
+[^2]: According to public download statistics of our .NET, Java, and Python APIs
