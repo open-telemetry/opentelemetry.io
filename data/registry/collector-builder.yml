@@ -5,7 +5,9 @@ language: collector
 tags:
   - collector
 license: Apache 2.0
-description: A CLI tool that generates OpenTelemetry Collector binaries based on a manifest.
+description:
+  A CLI tool that generates OpenTelemetry Collector binaries based on a
+  manifest.
 authors:
   - name: OpenTelemetry Authors
 urls:
