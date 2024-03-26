@@ -2,7 +2,7 @@
 title: Prometheus and OpenTelemetry - Better Together
 linkTitle: Prometheus and OpenTelemetry
 date: 2024-03-10
-author: 
+author: >-
   [Reese Lee](https://github.com/reese-lee) (New Relic),
   [Adriana Villela](https://github.com/avillela) (ServiceNow)
 draft: true # TODO: remove this line once your post is ready to be published
