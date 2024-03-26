@@ -3,6 +3,7 @@ title: OpenTelemetry announces support for profiling
 linkTitle: Profiling support
 date: 2024-03-19
 author: '[Austin Parker](https://github.com/austinlparker) (Honeycomb)'
+aliases: [opentelemetry-announced-support-for-profiling]
 cSpell:ignore: Alexandrov Alexey Dmitry Filimonov Geisendörfer Halliday
 ---
 
