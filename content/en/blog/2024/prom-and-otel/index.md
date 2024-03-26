@@ -218,7 +218,7 @@ A **Target** is an endpoint that supplies Metrics for Prometheus to store. A
 targeted instance, parsing the response, and ingesting the collected samples to
 storage.
 
-````mermaid
+```mermaid
 sequenceDiagram
   participant Target Allocator
   participant Metrics Targets
@@ -227,7 +227,7 @@ sequenceDiagram
   Target Allocator ->>OTel Collectors: 2. Discover available Collectors
   Target Allocator ->>Target Allocator: 3. Assign Metrics targets
   OTel Collectors ->>Target Allocator: 4. Query TA for Metrics endpoints scrape
-  OTel Collectors ->>Metrics Targets: 5. Scrape Metrics target
+  OTel Collectors ->>Metrics Targets: 5. Scrape Metrics target ```
 
 #### Discovery of Prometheus custom resources
 The Target Allocator’s second job is to provide the discovery of Prometheus
@@ -255,7 +255,7 @@ flowchart RL
   oc3 --> ta
   sm ~~~|"1. Discover Prometheus Operator CRs"| sm
   ta ~~~|"2. Add job to TA scrape configuration"| ta
-  oc3 ~~~|"3. Add job to OTel Collector scrape configuration"| oc3
+  oc3 ~~~|"3. Add job to OTel Collector scrape configuration"| oc3 ```
 
 Even though Prometheus is not required to be installed in your Kubernetes
 cluster to use the Target Allocator for Prometheus CR discovery, the TA does
