@@ -83,6 +83,11 @@
   components: [Collector, Go, Ruby]
   reference: ''
   contact: ''
+- name: Sicredi
+  url: https://www.sicredi.com.br/
+  components: [Collector, Go, Java, Python]
+  reference: ''
+  contact: https://github.com/igorestevanjasinski
 - name: Skyscanner
   url: https://www.skyscanner.net/
   components: [Collector, Go, Java, Javascript, Python]
