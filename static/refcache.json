@@ -283,6 +283,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T05:18:29.78394-05:00"
   },
+  "https://clickhouse.com/docs/en/operations/opentelemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2024-03-25T12:28:16.356581594Z"
+  },
   "https://cloud-native.slack.com/archives/C014L2KCTE3": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:05.306086-05:00"
@@ -3043,6 +3047,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-03-12T08:09:00.086946856Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2Fv0.97.0": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-26T10:15:58.212097134Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.63.0": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:04:58.261649-05:00"
@@ -3978,6 +3986,14 @@
   "https://github.com/open-telemetry/oteps/pull/225": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:01:26.859346-05:00"
+  },
+  "https://github.com/open-telemetry/oteps/pull/237": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-20T11:51:23.759109+01:00"
+  },
+  "https://github.com/open-telemetry/oteps/pull/239": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-20T11:51:25.914973+01:00"
   },
   "https://github.com/open-telemetry/semantic-conventions": {
     "StatusCode": 200,
@@ -7323,6 +7339,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:10:50.8378-05:00"
   },
+  "https://sessionize.com/OTel-Community-Day/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-22T06:55:18.402684904Z"
+  },
   "https://shorturl.at/beJ09": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:26:42.338496-05:00"
@@ -7722,6 +7742,10 @@
   "https://www.cisco.com/c/en/us/products/cloud-systems-management/network-services-orchestrator/index.html": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:33.27752-05:00"
+  },
+  "https://www.clickhouse.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-03-25T12:28:15.582344738Z"
   },
   "https://www.cloudfoundry.org/": {
     "StatusCode": 206,

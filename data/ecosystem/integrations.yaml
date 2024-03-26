@@ -191,3 +191,8 @@
   docsUrl: https://microcks.io/documentation/using/monitoring/
   components: [Java]
   oss: true
+- name: ClickHouse
+  url: https://www.clickhouse.com/
+  docsUrl: https://clickhouse.com/docs/en/operations/opentelemetry
+  components: [C++]
+  oss: true

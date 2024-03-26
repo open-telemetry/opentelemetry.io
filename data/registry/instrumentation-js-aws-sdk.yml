@@ -6,6 +6,10 @@ tags:
   - instrumentation
   - aws-sdk
   - aws
+  - sqs
+  - sns
+  - dynamodb
+  - lambda
 license: Apache 2.0
 description: aws-sdk instrumentation for Node.js.
 authors:

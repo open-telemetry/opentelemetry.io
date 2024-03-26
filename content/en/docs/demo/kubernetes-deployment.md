@@ -138,7 +138,7 @@ environment variable on the frontend component:
 ```yaml
 components:
   frontend:
-    env:
+    envOverrides:
       - name: PUBLIC_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
         value: http://otel-demo.my-domain.com/otlp-http/v1/traces
 ```

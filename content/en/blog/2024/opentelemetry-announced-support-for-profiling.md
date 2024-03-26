@@ -3,6 +3,7 @@ title: OpenTelemetry announces support for profiling
 linkTitle: OpenTelemetry announces support for profiling
 date: 2024-03-19
 author: '[Austin Parker](https://github.com/austinlparker) (Honeycomb)'
+cSpell:ignore: Alexandrov Alexey Dmitry Filimonov Geisendörfer Halliday
 ---
 
 In 2023, OpenTelemetry announced that it achieved stability for
@@ -12,8 +13,41 @@ vision of enabling built-in observability for cloud native applications requires
 us to continue evolving with the community. This year, we’re proud to announce
 that exactly two years after the Profiling SIG was created at KubeCon +
 CloudNativeCon Europe 2022 in Valencia, we’re taking a big step towards this
-goal by merging a profiling data model into our specification and working
-towards a stable implementation this year!
+goal by merging a profiling data model OTEP and working towards a stable spec
+and implementation this year!
+
+This milestone for the OpenTelemetry profiling signal reflects a collaborative
+effort within the profiling SIG, where dedicated input from a diverse range of
+profiling vendors and end users has been pivotal. This includes substantial
+contributions from community members such as:
+
+- Felix Geisendörfer (Datadog)
+- Alexey Alexandrov (Google)
+- Dmitry Filimonov (Grafana Labs)
+- Ryan Perry (Grafana Labs)
+- Jonathan Halliday (Red Hat)
+
+The SIG's collective endeavor has been focused on aligning on the most suitable
+data format for profiling, evidenced by the active discussions and proposals
+within the community.
+
+Some previous milestones reached before this point have been:
+
+- Establishing
+  [profiling vision alignment](https://github.com/open-telemetry/oteps/pull/212)
+  (August 2022)
+- Proposing
+  [v1 profiling data model](https://github.com/open-telemetry/oteps/pull/237)
+  (September 2023)
+- Proposing
+  [v2 profiling data model](https://github.com/open-telemetry/oteps/pull/239)
+  (November 2023)
+
+These all have played a crucial role in shaping the direction and evolution of
+OpenTelemetry's profiling capabilities. These community-led discussions and
+contributions underscore the project's commitment to being inclusive and
+collaboration, ensuring that a broad spectrum of insights and expertise is
+leveraged to drive the development of OpenTelemetry.
 
 ## What is profiling?
 
@@ -75,9 +109,9 @@ companies. Across our most popular repositories, OpenTelemetry sees over 30
 million downloads a month<sup>2</sup>, and new open source projects are adopting
 our standards at a regular pace, including
 [Apache Kafka](https://cwiki.apache.org/confluence/display/KAFKA/KIP-714%3A+Client+metrics+and+observability),
-and [dozens more](https://opentelemetry.io/ecosystem/integrations/). We’re also
-deepening our integrations with other open source projects in CNCF and out, such
-as [OpenFeature](https://openfeature.dev) and
+and [dozens more](/ecosystem/integrations). We’re also deepening our
+integrations with other open source projects in CNCF and out, such as
+[OpenFeature](https://openfeature.dev) and
 [OpenSearch](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/23611),
 in addition to our existing integrations with Kubernetes, Thanos, Knative, and
 many more.
