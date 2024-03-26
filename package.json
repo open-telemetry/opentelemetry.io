@@ -92,11 +92,11 @@
     "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 1}"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.18",
+    "autoprefixer": "^10.4.19",
     "cspell": "^8.0.0",
     "gulp": "^4.0.2",
-    "hugo-extended": "0.123.8",
-    "markdown-link-check": "^3.11.2",
+    "hugo-extended": "0.124.1",
+    "markdown-link-check": "^3.12.1",
     "markdownlint": "^0.34.0",
     "postcss-cli": "^11.0.0",
     "prettier": "^3.0.3",
