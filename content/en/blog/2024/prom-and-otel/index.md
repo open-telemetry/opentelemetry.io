@@ -1,5 +1,5 @@
 ---
-title: Prometheus and OpenTelemetry: Better Together
+title: Prometheus and OpenTelemetry - Better Together
 linkTitle: Prometheus and OpenTelemetry
 date: 2024-03-10
 author: 
