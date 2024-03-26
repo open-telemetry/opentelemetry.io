@@ -1,0 +1,16 @@
+title: OpenTelemetry Resource Detector for GCP
+registryType: resource-detector
+language: java
+tags:
+  - gcp
+  - resource-detector
+  - java
+license: Apache 2.0
+description: The GCP resource detector for Java.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources
+createdAt: 2024-03-25
+isNative: false
+isFirstParty: false
