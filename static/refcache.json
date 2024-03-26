@@ -4443,6 +4443,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-24T14:54:56.149229+01:00"
   },
+  "https://grafana.com/docs/grafana/latest/#installing-grafana": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-26T16:53:21.349576193Z"
+  },
   "https://grafana.com/oss/opentelemetry/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:52:48.999991-05:00"
