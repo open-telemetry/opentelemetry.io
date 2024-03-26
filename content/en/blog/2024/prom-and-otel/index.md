@@ -5,7 +5,7 @@ date: 2024-03-10
 author: >-
   [Reese Lee](https://github.com/reese-lee) (New Relic),
   [Adriana Villela](https://github.com/avillela) (ServiceNow)
-draft: true # TODO: remove this line once your post is ready to be published
+cSpell:ignore: sharded hashmod targetallocator Kubelet
 # canonical_url: http://somewhere.else/ # This will be added in future
 ---
 
