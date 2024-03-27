@@ -94,6 +94,12 @@
   components: [Ruby]
   reference: ''
   contact: ''
+- name: TomTom
+  url: https://www.tomtom.com
+  components: [Collector]
+  reference: https://engineering.tomtom.com/opentelemetry-simpifying-observability/
+  referenceTitle: blog post
+  contact: https://github.com/carlmagnusholmstrom-tomtom
 - name: Transit
   url: https://transitapp.com/
   components: []
