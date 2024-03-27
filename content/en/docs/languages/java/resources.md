@@ -101,7 +101,9 @@ SdkLoggerProvider sdkLoggerProvider = SdkLoggerProvider.builder()
     .build();
 ```
 
-
 ## Next steps
 
-There are more resource detectors that you can add to your configuration. You can find them in the [opentelemetry-java-contrib](https://github.com/open-telemetry/opentelemetry-java-contrib) repository.
+There are more resource detectors that you can add to your configuration. You
+can find them in the
+[opentelemetry-java-contrib](https://github.com/open-telemetry/opentelemetry-java-contrib)
+repository.
