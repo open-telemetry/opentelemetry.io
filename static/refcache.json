@@ -979,6 +979,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:05:06.380053-05:00"
   },
+  "https://docs.datadoghq.com/opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-03-27T15:32:21.711727373Z"
+  },
   "https://docs.datadoghq.com/tracing/connect_logs_and_traces/java/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:53:29.530053-05:00"
