@@ -6,6 +6,7 @@ author:
   >- # If you have only one author, then add the single name on this line in quotes.
   [Reese Lee](https://github.com/reese-lee) (New Relic), [Adriana
   Villela](https://github.com/avillela) (ServiceNow)
+cSpell:ignore: Dalle
 canonical_url: https://newrelic.com/blog/how-to-relic/dude-wheres-my-error
 ---
 
