@@ -9,7 +9,7 @@ author:
 canonical_url: https://newrelic.com/blog/how-to-relic/dude-wheres-my-error
 ---
 
-![A confused penguin trying to learn about errors and exceptions](penguin-chalkboard.jpg)
+![A confused penguin trying to learn about errors and exceptions. Image generated with AI using Dalle3 via Bing Copilot](penguin-chalkboard.jpg)
 
 Depending on the language you’re used to developing in, you may have certain
 ideas about what an error is, as well as what constitutes an exception and how
