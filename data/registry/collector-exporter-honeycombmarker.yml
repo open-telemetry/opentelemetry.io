@@ -7,9 +7,7 @@ tags:
   - exporter
   - collector
 license: Apache 2.0
-description:
-  This exporter allows creating markers, via the Honeycomb Markers API, based on
-  the look of incoming telemetry.
+description: This exporter allows creating markers, via the Honeycomb Markers API, based on the look of incoming telemetry.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,4 +16,4 @@ createdAt: 2023-10-17
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/honeycombmarkerexporter
-  version: v0.96.0
+  version: v0.97.0

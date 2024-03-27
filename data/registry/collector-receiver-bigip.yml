@@ -7,8 +7,7 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description:
-  This receiver fetches stats from a F5 Big-IP node using F5's iControl REST API
+description: This receiver fetches stats from a F5 Big-IP node using F5's iControl REST API
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -17,4 +16,4 @@ createdAt: 2020-11-05
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/bigipreceiver
-  version: v0.96.0
+  version: v0.97.0
