@@ -8,7 +8,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The Pure Storage FlashBlade receiver, receives metrics from Pure Storage FlashBlade via the Pure Storage FlashBlade OpenMetrics Exporter.
+description:
+  The Pure Storage FlashBlade receiver, receives metrics from Pure Storage
+  FlashBlade via the Pure Storage FlashBlade OpenMetrics Exporter.
 authors:
   - name: OpenTelemetry Authors
 urls:
