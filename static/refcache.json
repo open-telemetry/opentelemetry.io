@@ -2075,6 +2075,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-03-15T20:34:22.210208944Z"
   },
+  "https://github.com/Cyprinus12138": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-28T22:25:37.072281206+08:00"
+  },
+  "https://github.com/Cyprinus12138/otelgin": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-28T22:25:36.248769757+08:00"
+  },
   "https://github.com/DataDog/dd-opentelemetry-exporter-ruby": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:10:56.414699-05:00"
@@ -5810,6 +5818,10 @@
   "https://pkg.go.dev/database/sql#Open": {
     "StatusCode": 200,
     "LastSeen": "2024-02-24T14:33:05.81433-08:00"
+  },
+  "https://pkg.go.dev/github.com/Cyprinus12138/otelgin": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-28T22:25:37.464813884+08:00"
   },
   "https://pkg.go.dev/github.com/XSAM/otelsql": {
     "StatusCode": 200,
