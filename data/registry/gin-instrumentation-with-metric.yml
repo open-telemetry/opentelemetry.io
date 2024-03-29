@@ -1,4 +1,4 @@
-# cSpell:ignore # add words unknown to cspell, remove this line if not required
+# cSpell:ignore gonic Cyprinus
 title: Gin-gonic Instrumentation With Metrics
 registryType: instrumentation
 language: go
