@@ -100,3 +100,15 @@ SdkLoggerProvider sdkLoggerProvider = SdkLoggerProvider.builder()
     ...
     .build();
 ```
+
+## Next steps
+
+Besides the
+[Standard OpenTelemetry Resource Providers](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/resources/library)
+shown in the samples above, there are more resource providers that you can add
+to your configuration. These include:
+
+- [AWS Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources)
+- [GCP Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources)
+- [OpenTelemetry Contributed Resource Providers](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/resource-providers)
+- [Spring-Boot Resource Provider](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-boot-resources)
