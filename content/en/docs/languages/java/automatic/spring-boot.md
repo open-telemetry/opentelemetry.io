@@ -451,7 +451,7 @@ appender in your `logback.xml` or `logback-spring.xml` file:
 		</encoder>
 	</appender>
 	<appender name="OpenTelemetry"
-		class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender ">
+		class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender">
 		<captureExperimentalAttributes>false</captureExperimentalAttributes>
 		<captureCodeAttributes>true</captureCodeAttributes>
 		<captureMarkerAttribute>true</captureMarkerAttribute>
