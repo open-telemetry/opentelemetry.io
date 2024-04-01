@@ -94,7 +94,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.19",
     "cspell": "^8.0.0",
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.0",
     "hugo-extended": "0.124.1",
     "markdown-link-check": "^3.12.1",
     "markdownlint": "^0.34.0",
