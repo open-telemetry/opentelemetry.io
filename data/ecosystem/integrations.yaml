@@ -196,3 +196,7 @@
   docsUrl: https://clickhouse.com/docs/en/operations/opentelemetry
   components: [C++]
   oss: true
+- name: FluentCI Engine
+  url: https://github.com/fluentci-io/fluentci-engine
+  docsUrl: https://github.com/fluentci-io/fluentci-engine#-opentelemetry-tracing
+  components: [Rust]
