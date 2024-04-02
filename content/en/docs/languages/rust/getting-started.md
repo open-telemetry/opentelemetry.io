@@ -119,7 +119,8 @@ Stdout Exporter
 [`opentelemetry-stdout`](https://crates.io/crates/opentelemetry-stdout):
 
 ```toml
-opentelemetry = { version = "{{% version-from-registry otel-rust %}}", features = ["trace"] }
+opentelemetry = { version = "{{% version-from-registry otel-rust %}}" }
+opentelemetry_sdk = { version = "{{% version-from-registry otel-rust %}}" }
 opentelemetry-stdout = { version = "{{% version-from-registry exporter-rust-stdout %}}", features = ["trace"] }
 ```
 
@@ -127,19 +128,21 @@ Update the `dice_server.rs` file with code to initialize a tracer and to emit
 spans when the `handle` function is called:
 
 ```rust
-use hyper::service::{make_service_fn, service_fn};
-use hyper::{Body, Method, Request, Response, Server, StatusCode};
+use hyper_util::rt::TokioIo;
+use hyper::body::Incoming;
+use hyper::http::{Request, Response, Result, Method, StatusCode};
+use hyper::service::service_fn;
 use rand::Rng;
-use std::{convert::Infallible, net::SocketAddr};
+use std::net::SocketAddr;
+use tokio::net::TcpListener;
+
 use opentelemetry::global::ObjectSafeSpan;
 use opentelemetry::trace::{SpanKind, Status};
-use opentelemetry::sdk::trace::TracerProvider;
-use opentelemetry::{global, sdk::propagation::TraceContextPropagator, trace::Tracer};
+use opentelemetry_sdk::{trace::TracerProvider, propagation::TraceContextPropagator};
+use opentelemetry::{global, trace::Tracer};
 use opentelemetry_stdout::SpanExporter;
 
-async fn handle(req: Request<Body>) -> Result<Response<Body>, Infallible> {
-    let mut response = Response::new(Body::empty());
-
+async fn handle(req: Request<Incoming>) -> Result<Response<String>> {
     let tracer = global::tracer("dice_server");
 
     let mut span = tracer
@@ -150,16 +153,19 @@ async fn handle(req: Request<Body>) -> Result<Response<Body>, Infallible> {
     match (req.method(), req.uri().path()) {
         (&Method::GET, "/rolldice") => {
             let random_number = rand::thread_rng().gen_range(1..7);
-            *response.body_mut() = Body::from(random_number.to_string());
             span.set_status(Status::Ok);
+            Response::builder()
+                .status(StatusCode::OK)
+                .header("Content-Type", "text/plain")
+                .body(random_number.to_string())
         }
         _ => {
-            *response.status_mut() = StatusCode::NOT_FOUND;
             span.set_status(Status::error("Not Found"));
+            Response::builder()
+                .status(StatusCode::NOT_FOUND)
+                .body("Not Found".to_string())
         }
-    };
-
-    Ok(response)
+    }
 }
 
 fn init_tracer() {
@@ -174,15 +180,19 @@ fn init_tracer() {
 async fn main() {
     init_tracer();
     let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
-
-    let make_svc = make_service_fn(|_conn| async { Ok::<_, Infallible>(service_fn(handle)) });
-
-    let server =
-        Server::bind(&addr).serve(make_svc);
-
+    let listener = TcpListener::bind(addr).await.expect("Failed to acquire 127.0.0.1:8080 - is it already in use?");
     println!("Listening on {addr}");
-    if let Err(e) = server.await {
-        eprintln!("server error: {e}");
+    loop {
+        let (stream, _) = listener.accept().await.expect("Failed to accept connection.");
+        let io = TokioIo::new(stream);
+        tokio::spawn(async move {
+            if let Err(err) = hyper::server::conn::http1::Builder::new()
+                .serve_connection(io, service_fn(handle))
+                .await
+            {
+                eprintln!("Error: {err}");
+            }
+        });
     }
 }
 ```
