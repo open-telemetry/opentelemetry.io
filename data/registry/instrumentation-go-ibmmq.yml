@@ -1,18 +1,20 @@
 # cSpell:ignore ibmmq mqseries
 title: IBM MQ Instrumentation for OpenTelemetry
 registryType: instrumentation
-language: go 
+language: go
 tags:
-  - ibmmq                          
+  - ibmmq
   - mqseries
   - go
   - instrumentation
 urls:
   repo: https://github.com/ibm-messaging/mq-metric-samples/tree/master/cmd/mq_otel
-license: Apache 2.0 
-description: This package extracts metrics from an IBM MQ queue manager and forwards them to an OpenTelemetry environment. 
+license: Apache 2.0
+description:
+  This package extracts metrics from an IBM MQ queue manager and forwards them
+  to an OpenTelemetry environment.
 authors:
   - name: Mark Taylor, IBM MQ Development
 createdAt: 2024-03-26
-isNative: false 
+isNative: false
 isFirstParty: true
