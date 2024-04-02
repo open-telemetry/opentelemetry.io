@@ -200,3 +200,4 @@
   url: https://github.com/fluentci-io/fluentci-engine
   docsUrl: https://github.com/fluentci-io/fluentci-engine#-opentelemetry-tracing
   components: [Rust]
+  oss: true
