@@ -1,8 +1,9 @@
 [submodule "themes/docsy"]
 	path = themes/docsy
-	url = https://github.com/cncf/docsy.git
-	docsy-pin = v0.9.1
-	docsy-reminder = "Ensure that all tags from google/docsy are also present in cncf/docsy, otherwise add (push) them."
+	url = https://github.com/google/docsy.git
+	docsy-pin = v0.9.1-17-gb077a74
+	docsy-note = "2024-04-01 Switching to google/docsy.git from cncf/docsy.git since we don't have any CNCF customizations."
+	docsy-reminder = "Ensure that any tag referenced by `docsy-pin` is present in the remote repo (url), otherwise add (push) the tags to the repo."
 [submodule "content-modules/opentelemetry-specification"]
 	path = content-modules/opentelemetry-specification
 	url = https://github.com/open-telemetry/opentelemetry-specification.git
