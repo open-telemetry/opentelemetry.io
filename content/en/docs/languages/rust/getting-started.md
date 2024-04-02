@@ -44,7 +44,8 @@ path = "dice_server.rs"
 doc = false
 
 [dependencies]
-hyper = { version = "0.14", features = ["full"] }
+hyper = { version = "1.2", features = ["full"] }
+hyper-util = { version = "0.1.3", features = ["tokio"] }
 tokio = { version = "1.29", features = ["full"] }
 rand = { version = "0.8" }
 ```
@@ -55,38 +56,47 @@ In that same folder, create a file called `dice_server.rs` and add the following
 code to the file:
 
 ```rust
-use hyper::service::{make_service_fn, service_fn};
-use hyper::{Body, Request, Response, Server, Method, StatusCode};
+use hyper_util::rt::TokioIo;
+use hyper::body::Incoming;
+use hyper::http::{Request, Response, Result, Method, StatusCode};
+use hyper::service::service_fn;
 use rand::Rng;
-use std::{convert::Infallible, net::SocketAddr};
+use std::net::SocketAddr;
+use tokio::net::TcpListener;
 
-async fn handle(req: Request<Body>) -> Result<Response<Body>, Infallible> {
-    let mut response = Response::new(Body::empty());
-
+async fn handle(req: Request<Incoming>) -> Result<Response<String>> {
     match (req.method(), req.uri().path()) {
         (&Method::GET, "/rolldice") => {
             let random_number = rand::thread_rng().gen_range(1..7);
-            *response.body_mut() = Body::from(random_number.to_string());
+            Response::builder()
+                .status(StatusCode::OK)
+                .header("Content-Type", "text/plain")
+                .body(random_number.to_string())
         }
         _ => {
-            *response.status_mut() = StatusCode::NOT_FOUND;
+            Response::builder()
+                .status(StatusCode::NOT_FOUND)
+                .body("Not Found".to_string())
         }
-    };
-
-    Ok(response)
+    }
 }
 
 #[tokio::main]
 async fn main() {
     let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
-
-    let make_svc = make_service_fn(|_conn| async { Ok::<_, Infallible>(service_fn(handle)) });
-
-    let server = Server::bind(&addr).serve(make_svc);
-
+    let listener = TcpListener::bind(addr).await.expect("Failed to acquire 127.0.0.1:8080 - is it already in use?");
     println!("Listening on {addr}");
-    if let Err(e) = server.await {
-        eprintln!("server error: {e}");
+    loop {
+        let (stream, _) = listener.accept().await.expect("Failed to accept connection.");
+        let io = TokioIo::new(stream);
+        tokio::spawn(async move {
+            if let Err(err) = hyper::server::conn::http1::Builder::new()
+                .serve_connection(io, service_fn(handle))
+                .await
+            {
+                eprintln!("Error: {err}");
+            }
+        });
     }
 }
 ```
