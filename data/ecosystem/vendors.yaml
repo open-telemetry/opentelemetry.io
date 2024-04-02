@@ -385,3 +385,10 @@
   contact: 'info@vunetsystems.com'
   oss: false
   commercial: true
+- name: Bonree # cspell:ignore Bonree
+  distribution: false
+  nativeOTLP: true
+  url: 'https://one.bonree.com/open/document/187'
+  contact: 'otel@bonree.com'
+  oss: false
+  commercial: true
