@@ -1,7 +1,7 @@
 ---
 title: Internal Telemetry
 weight: 25
-cSpell:ignore: 
+cSpell:ignore: journalctl kube otecol pprof tracez zpages
 ---
 
 The Collector offers you multiple ways to measure and monitor its health as well
@@ -65,10 +65,10 @@ support for [logs] in OpenTelemetry Go SDK at this time.
 
 To see logs for the Collector:
 
-On a Linux systemd system, logs can be found using `journalctl`:  
+On a Linux systemd system, logs can be found using `journalctl`:
 `journalctl | grep otelcol`
 
-or to find only errors:  
+or to find only errors:
 `journalctl | grep otelcol | grep Error`
 
 ## Types of internal observability
