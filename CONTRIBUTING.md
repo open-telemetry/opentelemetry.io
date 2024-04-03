@@ -69,8 +69,8 @@ PR shortly or let maintainers now if you run into any blockers.
 ## Contributor's guide
 
 To learn how to contribute fixes and new content to this project, read the
-[Contributor's guide](/content/en/docs/contributing), which includes a style
-guide and useful information on the review process.
+[Contributor's guide](https://opentelemetry.io/docs/contributing/), which
+includes a style guide and useful information on the review process.
 
 ## Development
 
