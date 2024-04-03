@@ -22,12 +22,12 @@ this][issue7532]. The work includes supporting configuration of the
 OpenTelemetry SDK used to produce the Collector's internal telemetry. This
 feature is currently behind two feature gates:
 
-```bash
+```sh
   --feature-gates=telemetry.useOtelWithSDKConfigurationForInternalTelemetry
 ```
 
 The gate `useOtelWithSDKConfigurationForInternalTelemetry` enables the Collector
-to parse configuration that aligns with the [OpenTelemetry Configuration]
+to parse configuration that aligns with the [OpenTelemetry Configuration](../configuration/)
 schema. The support for this schema is still experimental, but it does allow
 telemetry to be exported via OTLP.
 
@@ -283,8 +283,7 @@ service:
       address: ':8888'
 ```
 
-A Grafana dashboard for these metrics can be found
-[here](https://grafana.com/grafana/dashboards/15983-opentelemetry-collector/).
+To visualize these metrics, you can use the [Grafana dashboard](https://grafana.com/grafana/dashboards/15983-opentelemetry-collector/), for example.
 
 You can enhance metrics telemetry level using `level` field. The following is a
 list of all possible values and their explanations.
@@ -416,8 +415,8 @@ contains:
 
 With the Collector running, send this payload to the Collector. For example:
 
-```console
-$ curl -X POST localhost:9411/api/v2/spans -H'Content-Type: application/json' -d @trace.json
+```sh
+curl -X POST localhost:9411/api/v2/spans -H'Content-Type: application/json' -d @trace.json
 ```
 
 You should see a log entry like the following from the Collector:
