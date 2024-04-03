@@ -205,7 +205,7 @@ As usual in Spring Boot, you can override properties in the
 `application.properties` and `application.yaml` files with environment
 variables.
 
-For example, you can change or add the `deployment.environment` resource
+For example, you can set or override the `deployment.environment` resource
 attribute (not changing `service.name` or `service.namespace`) by setting the
 standard `OTEL_RESOURCE_ATTRIBUTES` environment variable:
 
