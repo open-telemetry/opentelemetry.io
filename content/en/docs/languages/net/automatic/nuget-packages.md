@@ -37,7 +37,7 @@ To automatically instrument your application with OpenTelemetry .NET add the
 `OpenTelemetry.AutoInstrumentation` package to your project:
 
 ```terminal
-dotnet add [<PROJECT>] package OpenTelemetry.AutoInstrumentation --prerelease
+dotnet add [<PROJECT>] package OpenTelemetry.AutoInstrumentation
 ```
 
 If the application references packages that can be instrumented, but, require
