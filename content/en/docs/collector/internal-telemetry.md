@@ -27,9 +27,10 @@ feature is currently behind two feature gates:
 ```
 
 The gate `useOtelWithSDKConfigurationForInternalTelemetry` enables the Collector
-to parse configuration that aligns with the [OpenTelemetry Configuration](../configuration/)
-schema. The support for this schema is still experimental, but it does allow
-telemetry to be exported via OTLP.
+to parse configuration that aligns with the
+[OpenTelemetry Configuration](../configuration/) schema. The support for this
+schema is still experimental, but it does allow telemetry to be exported via
+OTLP.
 
 The following configuration can be used in combination with the feature gates
 aforementioned to emit internal metrics and traces from the Collector to an OTLP
@@ -68,8 +69,7 @@ To see logs for the Collector:
 On a Linux systemd system, logs can be found using `journalctl`:
 `journalctl | grep otelcol`
 
-or to find only errors:
-`journalctl | grep otelcol | grep Error`
+or to find only errors: `journalctl | grep otelcol | grep Error`
 
 ## Types of internal observability
 
@@ -217,9 +217,9 @@ The `safe_rate` depends on the specific configuration being used.
 #### Queue length
 
 Most exporters offer a
-[queue/retry mechanism](../exporter/exporterhelper/README.md) that is
-recommended as the retry mechanism for the Collector and as such should be used
-in any production deployment.
+[queue/retry mechanism](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/exporterhelper/README.md)
+that is recommended as the retry mechanism for the Collector and as such should
+be used in any production deployment.
 
 The `otelcol_exporter_queue_capacity` indicates the capacity of the retry queue
 (in batches). The `otelcol_exporter_queue_size` indicates the current size of
@@ -283,7 +283,9 @@ service:
       address: ':8888'
 ```
 
-To visualize these metrics, you can use the [Grafana dashboard](https://grafana.com/grafana/dashboards/15983-opentelemetry-collector/), for example.
+To visualize these metrics, you can use the
+[Grafana dashboard](https://grafana.com/grafana/dashboards/15983-opentelemetry-collector/),
+for example.
 
 You can enhance metrics telemetry level using `level` field. The following is a
 list of all possible values and their explanations.
