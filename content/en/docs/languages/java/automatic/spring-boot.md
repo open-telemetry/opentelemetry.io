@@ -213,7 +213,8 @@ standard `OTEL_RESOURCE_ATTRIBUTES` environment variable:
 export OTEL_RESOURCE_ATTRIBUTES="deployment.environment=prod"
 ```
 
-Alternatively, you can use an environment variable to update a single resource attribute:
+Alternatively, you can use an environment variable to update a single resource
+attribute:
 
 ```shell
 export OTEL_RESOURCE_ATTRIBUTES_DEPLOYMENT_ENVIRONMENT="prod"
