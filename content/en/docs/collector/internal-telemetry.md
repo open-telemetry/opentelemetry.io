@@ -18,7 +18,7 @@ By default, the Collector exposes service telemetry in two ways currently:
 - logs are emitted to stdout
 
 Traces are not exposed by default. There is an effort underway to [change
-this][https://github.com/open-telemetry/opentelemetry-collector/issues/7532].
+this](https://github.com/open-telemetry/opentelemetry-collector/issues/7532).
 The work includes supporting configuration of the OpenTelemetry SDK used to
 produce the Collector's internal telemetry. This feature is currently behind two
 feature gates:
@@ -58,7 +58,7 @@ service:
 ```
 
 See the configuration's
-[example][https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml]
+[example](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml)
 for additional configuration options.
 
 Note that this configuration does not support emitting logs as there is no
