@@ -18,12 +18,13 @@ By default, the Collector exposes service telemetry in two ways currently:
 - logs are emitted to stdout
 
 Traces are not exposed by default. There is an effort underway to [change
-this][issue7532]. The work includes supporting configuration of the
-OpenTelemetry SDK used to produce the Collector's internal telemetry. This
-feature is currently behind two feature gates:
+this][https://github.com/open-telemetry/opentelemetry-collector/issues/7532].
+The work includes supporting configuration of the OpenTelemetry SDK used to
+produce the Collector's internal telemetry. This feature is currently behind two
+feature gates:
 
 ```sh
-  --feature-gates=telemetry.useOtelWithSDKConfigurationForInternalTelemetry
+--feature-gates=telemetry.useOtelWithSDKConfigurationForInternalTelemetry
 ```
 
 The gate `useOtelWithSDKConfigurationForInternalTelemetry` enables the Collector
@@ -56,8 +57,9 @@ service:
                 endpoint: https://backend2:4317
 ```
 
-See the configuration's [example][kitchen-sink] for additional configuration
-options.
+See the configuration's
+[example][https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml]
+for additional configuration options.
 
 Note that this configuration does not support emitting logs as there is no
 support for [logs] in OpenTelemetry Go SDK at this time.
@@ -423,7 +425,7 @@ curl -X POST localhost:9411/api/v2/spans -H'Content-Type: application/json' -d @
 
 You should see a log entry like the following from the Collector:
 
-```
+```sh
 2023-09-07T09:57:43.468-0700    info    TracesExporter  {"kind": "exporter", "data_type": "traces", "name": "debug", "resource spans": 1, "spans": 2}
 ```
 
@@ -438,7 +440,7 @@ exporters:
 With the modified configuration if you re-run the test above the log output
 should look like:
 
-```
+```sh
 2023-09-07T09:57:12.820-0700    info    TracesExporter  {"kind": "exporter", "data_type": "traces", "name": "debug", "resource spans": 1, "spans": 2}
 2023-09-07T09:57:12.821-0700    info    ResourceSpans #0
 Resource SchemaURL: https://opentelemetry.io/schemas/1.4.0
