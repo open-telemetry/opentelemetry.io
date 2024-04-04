@@ -44,7 +44,7 @@ pipeline and send it to the metrics pipeline. Historically, some processors
 transmitted data by making use of a work-around that follows a bad practice
 where a processor directly exports data after processing. The connector
 component solves the need for this work-around and the processors that used the
-work around have been deprecated.On the same line, above mentioned processors
+work around have been deprecated. On the same line, above mentioned processors
 are also now deprecated in recent releases and are replaced by the connectors.
 
 Additional details about the connector's full capabilities can be found at the
