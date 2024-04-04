@@ -63,11 +63,18 @@ for additional configuration options.
 > Note that this configuration does not support emitting logs as there is no
 > support for logs in OpenTelemetry Go SDK at this time.
 
-<!--- TODO: From Common Issues of Troubleshooting page. Move to Types? --->
+You can see logs for the Collector on a Linux systemd system using `journalctl`:
 
-To see logs for the Collector:
+{{< tabpane text=true >}} {{% tab All logs %}}
 
-On a Linux systemd system, logs can be found using `journalctl`:
-`journalctl | grep otelcol`
+```sh
+journalctl | grep otelcol
+```
 
-or to find only errors: `journalctl | grep otelcol | grep Error`
+{{% /tab %}} {{% tab Errors only %}}
+
+```sh
+journalctl | grep otelcol | grep Error
+```
+
+    {{% /tab %}} {{< /tabpane >}}
