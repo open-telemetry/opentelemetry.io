@@ -28,18 +28,14 @@ productcatalogservice(Product Catalog Service):::golang
 quoteservice(Quote Service):::php
 recommendationservice(Recommendation Service):::python
 shippingservice(Shipping Service):::rust
-featureflagservice(Feature Flag Service):::erlang
-featureflagstore[(Feature Flag Store<br/>&#40PostgreSQL DB&#41)]
 queue[(queue<br/>&#40Kafka&#41)]
 
 Internet -->|HTTP| frontendproxy
 frontendproxy -->|HTTP| frontend
-frontendproxy -->|HTTP| featureflagservice
 loadgenerator -->|HTTP| frontendproxy
 
-accountingservice -->|TCP| queue
-
-cartservice --->|gRPC| featureflagservice
+queue -->|TCP| accountingservice
+queue -->|TCP| frauddetectionservice
 
 checkoutservice --->|gRPC| cartservice --> cache
 checkoutservice --->|gRPC| productcatalogservice
@@ -56,18 +52,6 @@ frontend -->|gRPC| checkoutservice
 frontend -->|gRPC| currencyservice
 frontend -->|gRPC| recommendationservice -->|gRPC| productcatalogservice
 frontend -->|gRPC| shippingservice -->|HTTP| quoteservice
-
-frauddetectionservice -->|TCP| queue
-
-adservice --->|gRPC| featureflagservice
-
-productcatalogservice -->|gRPC| featureflagservice
-
-recommendationservice -->|gRPC| featureflagservice
-
-shippingservice -->|gRPC| featureflagservice
-
-featureflagservice --> featureflagstore
 
 end
 

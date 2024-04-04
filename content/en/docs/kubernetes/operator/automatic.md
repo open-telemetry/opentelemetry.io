@@ -9,7 +9,7 @@ cSpell:ignore: autoinstrumentation GRPCNETCLIENT k8sattributesprocessor otelinst
 ---
 
 The OpenTelemetry Operator supports injecting and configuring
-auto-instrumentation libraries for .NET, Java, Node.js and Python services.
+auto-instrumentation libraries for .NET, Java, Node.js, Python, and Go services.
 
 ## Installation
 
@@ -205,7 +205,7 @@ EOF
 ```
 
 By default, the Instrumentation resource that auto-instruments Java services
-uses `otlp` with the `http+protobuf` protocol. This means that the configured
+uses `otlp` with the `http/protobuf` protocol. This means that the configured
 endpoint must be able to receive OTLP over `http` via `protobuf` payloads.
 Therefore, the example uses `http://demo-collector:4318`, which connects to the
 `http` port of the otlpreceiver of the Collector created in the previous step.
@@ -317,9 +317,6 @@ spec:
 EOF
 ```
 
-> **Note**: OpenTelemetry Python automatic instrumentation does not support
-> Flask or Werkzeug 3.0+ at this time.
-
 By default, the `Instrumentation` resource that auto-instruments Python services
 uses `otlp` with the `http/protobuf` protocol (gRPC is not supported at this
 time). This means that the configured endpoint must be able to receive OTLP over
@@ -428,7 +425,7 @@ example uses `http://demo-collector:4318`, which connects to the `http/protobuf`
 port of the `otlpreceiver` of the Collector created in the previous step.
 
 The Go auto-instrumentation does not support disabling any instrumentation.
-[See the Go Auto-Instrumentation repository for me details.](https://github.com/open-telemetry/opentelemetry-go-instrumentation)
+[See the Go Auto-Instrumentation repository for more details.](https://github.com/open-telemetry/opentelemetry-go-instrumentation)
 
 ---
 
@@ -573,7 +570,7 @@ kubectl logs -l app.kubernetes.io/name=opentelemetry-operator --container manage
 
 ### Were the resources deployed in the right order?
 
-Order matters! The `Instrumentation` resource needs to be deployed before before
+Order matters! The `Instrumentation` resource needs to be deployed before
 deploying the application, otherwise the auto-instrumentation won’t work.
 
 Recall the auto-instrumentation annotation:

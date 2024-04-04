@@ -1,4 +1,4 @@
-# cSpell:ignore containerd buildx Quarkus Cerbos flagd flipt KEDA Kyverno Dapr rustup GORM Otterize Dubbo
+# cSpell:ignore containerd buildx Quarkus Cerbos flagd flipt KEDA Kyverno Dapr rustup GORM Otterize Dubbo Microcks
 - name: containerd
   url: https://containerd.io/
   docsUrl: https://github.com/containerd/containerd/blob/main/docs/tracing.md
@@ -148,7 +148,7 @@
   oss: false
 - name: Traefik Hub API Management
   url: https://traefik.io/traefik-hub/
-  docsUrl: https://doc.traefik.io/traefik-hub/operations/telemetry/overview/
+  docsUrl: https://doc.traefik.io/traefik-hub/operations/metrics
   components: [Go]
   oss: false
 - name: Strimzi
@@ -185,4 +185,19 @@
   url: https://github.com/apache/dubbo
   docsUrl: https://cn.dubbo.apache.org/en/blog/2024/01/31/tracing-dubbo-with-opentelemetry/
   components: [Java]
+  oss: true
+- name: Microcks
+  url: https://microcks.io/
+  docsUrl: https://microcks.io/documentation/using/monitoring/
+  components: [Java]
+  oss: true
+- name: ClickHouse
+  url: https://www.clickhouse.com/
+  docsUrl: https://clickhouse.com/docs/en/operations/opentelemetry
+  components: [C++]
+  oss: true
+- name: FluentCI Engine
+  url: https://github.com/fluentci-io/fluentci-engine
+  docsUrl: https://github.com/fluentci-io/fluentci-engine#-opentelemetry-tracing
+  components: [Rust]
   oss: true

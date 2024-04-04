@@ -17,4 +17,4 @@ createdAt: 2022-08-25
 package:
   registry: npm
   name: '@prisma/instrumentation'
-  version: 5.10.2
+  version: 5.12.0

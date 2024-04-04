@@ -228,7 +228,7 @@ service. Please make sure that you provide a `SERVICE_NAME` and that you set the
 
 const { Resource } = require('@opentelemetry/resources');
 const {
-  SemanticResourceAttributes,
+  SEMRESATTRS_SERVICE_NAME,
 } = require('@opentelemetry/semantic-conventions');
 const api = require('@opentelemetry/api');
 const { BatchSpanProcessor } = require('@opentelemetry/sdk-trace-base');
@@ -243,7 +243,7 @@ const {
 
 const providerConfig = {
   resource: new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: '<your function name>',
+    [SEMRESATTRS_SERVICE_NAME]: '<your function name>',
   }),
 };
 

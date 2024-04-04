@@ -53,7 +53,7 @@ HOST=${1}
 PORT=${2:-443}
 
 now=$(date +%s)
-str=$(echo q | openssl s_client -servername "${HOST}" "${HOST}:${PORT}" 2>/dev/null | openssl x509 -noout -enddate | awk -F"=" '{ print $2; }')
+notAfterString=$(echo q | openssl s_client -servername "${HOST}" "${HOST}:${PORT}" 2>/dev/null | openssl x509 -noout -enddate | awk -F"=" '{ print $2; }')
 if [[ "$(uname)" == "Darwin" ]] ; then
   notAfter=$(date -j -f "%b %d %H:%M:%S %Y %Z" "${notAfterString}" +%s)
 else
