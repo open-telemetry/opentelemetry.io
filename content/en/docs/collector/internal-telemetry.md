@@ -65,13 +65,13 @@ for additional configuration options.
 
 You can see logs for the Collector on a Linux systemd system using `journalctl`:
 
-{{< tabpane text=true >}} {{% tab All logs %}}
+{{< tabpane text=true >}} {{% tab "All logs" %}}
 
 ```sh
 journalctl | grep otelcol
 ```
 
-{{% /tab %}} {{% tab Errors only %}}
+{{% /tab %}} {{% tab "Errors only" %}}
 
 ```sh
 journalctl | grep otelcol | grep Error
