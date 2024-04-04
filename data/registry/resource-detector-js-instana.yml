@@ -6,9 +6,7 @@ tags:
   - resource-detector
   - js
 license: Apache 2.0
-description:
-  This resource detector will detect the Instana agent to register the
-  OpenTelemetry as a Node.js process
+description: This resource detector will detect the Instana agent to register the OpenTelemetry as a Node.js process
 authors:
   - name: OpenTelemetry Authors
 urls:
