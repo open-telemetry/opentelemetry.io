@@ -77,4 +77,4 @@ journalctl | grep otelcol
 journalctl | grep otelcol | grep Error
 ```
 
-    {{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{< /tabpane >}}
