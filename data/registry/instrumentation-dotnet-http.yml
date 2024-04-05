@@ -6,10 +6,7 @@ tags:
   - instrumentation
   - dotnet
 license: Apache 2.0
-description:
-  This is an Instrumentation Library, which instruments
-  System.Net.Http.HttpClient and System.Net.HttpWebRequest and collects metrics
-  and traces about outgoing HTTP requests.
+description: This is an Instrumentation Library, which instruments System.Net.Http.HttpClient and System.Net.HttpWebRequest and collects metrics and traces about outgoing HTTP requests.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,4 +15,4 @@ createdAt: 2022-11-07
 package:
   registry: nuget
   name: OpenTelemetry.Instrumentation.Http
-  version: 1.7.1
+  version: 1.8.0
