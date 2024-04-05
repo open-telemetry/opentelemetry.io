@@ -4467,6 +4467,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-24T14:54:56.149229+01:00"
   },
+  "https://grafana.com/grafana/dashboards/15983-opentelemetry-collector/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-05T22:11:27.002931782Z"
+  },
   "https://grafana.com/oss/opentelemetry/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:52:48.999991-05:00"
