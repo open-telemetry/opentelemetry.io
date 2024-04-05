@@ -5,9 +5,7 @@ cSpell:ignore: journalctl kube otecol pprof tracez zpages
 ---
 
 The Collector offers you multiple ways to measure and monitor its health. In
-this section, you'll learn how to enable internal observability, what types of
-telemetry are available, and how best to use them to monitor your Collector
-deployment.
+this section, you'll learn how to enable internal observability.
 
 ## Enabling observability internal to the Collector
 
