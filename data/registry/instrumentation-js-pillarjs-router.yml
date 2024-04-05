@@ -8,7 +8,10 @@ tags:
   - pillarjs-router
   - router
 license: Apache 2.0
-description: This module provides automatic instrumentation for pillarjs/router and allows the user to automatically collect trace data and export them to their backend of choice.
+description:
+  This module provides automatic instrumentation for pillarjs/router and allows
+  the user to automatically collect trace data and export them to their backend
+  of choice.
 authors:
   - name: OpenTelemetry Authors
 urls:
