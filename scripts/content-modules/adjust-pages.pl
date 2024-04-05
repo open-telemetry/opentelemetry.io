@@ -104,6 +104,8 @@ while(<>) {
 
     # TODO: drop after fix of https://github.com/open-telemetry/semantic-conventions/issues/419
     s|#instrument-advice\b|#instrument-advisory-parameters|g;
+    # TODO: drop after fix of https://github.com/open-telemetry/semantic-conventions/pull/883
+    s|(\]\(process.md)#process(\))|$1$2|g;
   }
 
   # SPECIFICATION custom processing
