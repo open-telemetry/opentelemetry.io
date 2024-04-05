@@ -476,6 +476,38 @@ supported for spring web versions 3.1+. To learn more about the OpenTelemetry
 `RestTemplate` interceptor, see
 [opentelemetry-spring-web-3.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-web/spring-web-3.1/library).
 
+The following ways of creating a `RestTemplate` bean are supported:
+
+```java
+@Bean
+public RestTemplate restTemplate() {
+    return new RestTemplate();
+}
+```
+
+```java
+public MyService(RestTemplateBuilder restTemplateBuilder) {
+    this.restTemplate = restTemplateBuilder.build();
+}
+```
+
+Also provides autoconfiguration for the `RestClient` web client.
+
+The following ways of creating a `RestClient` bean are supported:
+
+```java
+@Bean
+public RestClient restClient() {
+    return RestClient.create();
+}
+```
+
+```java
+public MyService(RestClient.Builder restClientBuilder) {
+    this.restClient = restClientBuilder.build();
+}
+```
+
 #### Spring Web MVC Autoconfiguration
 
 This feature autoconfigures instrumentation for Spring WebMVC controllers by
