@@ -9,7 +9,8 @@ tags:
   - runtime
   - metrics
 license: Apache 2.0
-description: OpenTelemetry .NET contrib plugin for collecting metrics from .NET Runtime
+description:
+  OpenTelemetry .NET contrib plugin for collecting metrics from .NET Runtime
 authors:
   - name: OpenTelemetry Authors
 urls:
