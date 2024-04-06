@@ -3,7 +3,7 @@ title: Join us for OpenTelemetry Talks and Activities at KubeCon NA 2023
 linkTitle: KubeCon NA '23
 date: 2023-10-02
 # prettier-ignore
-cSpell:ignore: Anusha Aronoff Benedikt Bongartz Broadbridge Chronosphere Contribfest Coralogix Danielson Endo Flamegraphs Hrabovcak Itiel Itoh Jaglowski Kanal Komodor Kota Masanori Matej Mirabella Narapureddy observ Ohly Pivotto Purvi Reddy Sharone Shishi Shivanshu Shrivastava Shwartz Zitzman
+cSpell:ignore: Anusha Aronoff Benedikt Bongartz Broadbridge Contribfest Coralogix Danielson Endo Flamegraphs Hrabovcak Itiel Itoh Jaglowski Kanal Komodor Kota Masanori Matej Mirabella Narapureddy observ Ohly Pivotto Purvi Reddy Sharone Shishi Shivanshu Shrivastava Shwartz Zitzman
 author: '[Severin Neumann](https://github.com/svrnm) (Cisco)'
 ---
 

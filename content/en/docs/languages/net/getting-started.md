@@ -114,7 +114,7 @@ that will generate the telemetry, and set them up.
 
    ```sh
    dotnet add package OpenTelemetry.Extensions.Hosting
-   dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
+   dotnet add package OpenTelemetry.Instrumentation.AspNetCore
    dotnet add package OpenTelemetry.Exporter.Console
    ```
 
