@@ -8,9 +8,7 @@ tags:
   - instrumentation
   - dotnet
 license: MIT
-description:
-  This is an Instrumentation Library, which instruments KafkaFlow and collects
-  traces and baggage signals about Kafka messaging.
+description: This is an Instrumentation Library, which instruments KafkaFlow and collects traces and baggage signals about Kafka messaging.
 authors:
   - name: Farfetch
 urls:
@@ -20,4 +18,4 @@ isFirstParty: true
 package:
   name: KafkaFlow.OpenTelemetry
   registry: nuget
-  version: 3.0.5
+  version: 3.0.6
