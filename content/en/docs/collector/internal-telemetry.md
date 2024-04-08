@@ -4,9 +4,9 @@ weight: 25
 cSpell:ignore: journalctl kube otecol pprof tracez zpages
 ---
 
-You can check the health of any Collector instance by checking its own
-internal telemetry. Read on to learn how to use this data to diagnose and
-troubleshoot Collector issues.
+You can check the health of any Collector instance by checking its own internal
+telemetry. Read on to learn how to use this data to diagnose and troubleshoot
+Collector issues.
 
 ## Enabling observability internal to the Collector
 
@@ -112,7 +112,7 @@ journalctl | grep otelcol | grep Error
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Configuring traces
+### Configure internal traces
 
 Although the Collector does not expose traces by default, an effort is underway
 to
