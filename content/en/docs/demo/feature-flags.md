@@ -17,6 +17,7 @@ values are stored in the `demo.flagd.json` file. To enable a flag, change the
 | ----------------------------------- | ---------------- | --------------------------------------------------------------------------------------------------------- |
 | `adServiceFailure`                  | Ad Service       | Generate an error for `GetAds` 1/10th of the time                                                         |
 | `adServiceManualGc`                 | Ad Service       | Trigger full manual garbage collections in the ad service                                                 |
+| `adServiceHighCpu`                  | Ad Service       | Trigger high cpu load in the ad service. If you want to demo cpu throttling, set cpu resource limits      |
 | `cartServiceFailure`                | Cart Service     | Generate an error for `EmptyCart` 1/10th of the time                                                      |
 | `productCatalogFailure`             | Product Catalog  | Generate an error for `GetProduct` requests with product id: `OLJCESPC7Z`                                 |
 | `recommendationServiceCacheFailure` | Recommendation   | Create a memory leak due to an exponentially growing cache. 1.4x growth, 50% of requests trigger growth.  |
