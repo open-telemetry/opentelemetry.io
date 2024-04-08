@@ -3,8 +3,8 @@
 
 <div class="o-banner">
 
-<i class="fas fa-bullhorn"></i> Don't forget to submit to
-[**OTel Community Day CFP** by April 1st](https://sessionize.com/OTel-Community-Day/)!
+<i class="fas fa-bullhorn"></i> Join us for 
+[**OTel Community Day** on June 25th](https://sessionize.com/OTel-Community-Day/)!
 
 {{/*
 
