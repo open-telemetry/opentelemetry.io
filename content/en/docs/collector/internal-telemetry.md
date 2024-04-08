@@ -8,16 +8,16 @@ You can check the health of any Collector instance by checking its own internal
 telemetry. Read on to learn how to use this data to diagnose and troubleshoot
 Collector issues.
 
-## Enabling observability internal to the Collector
+## Activate internal telemetry in the Collector
 
-By default, the Collector exposes service telemetry in two ways:
+By default, the Collector exposes its own telemetry in two ways:
 
 - Internal [metrics](#configure-internal-metrics) are exposed using a Prometheus
   interface which defaults to port `8888`.
-- [Logs](#configure-internal-logs) are emitted to `stdout`.
+- [Logs](#configure-internal-logs) are emitted to `stdout` by default.
 
-[Traces](#configure-internal-traces) are not exposed by default but two feature gates
-offer experimental support for a configuration based on the OpenTelemetry
+[Traces](#configure-internal-traces) are not exposed by default. Two feature
+gates offer experimental support for a configuration based on the OpenTelemetry
 Configuration schema.
 
 ### Configure internal metrics
