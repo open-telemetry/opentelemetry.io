@@ -224,6 +224,9 @@ The second option supports
 [SpEL](https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/expressions.html)
 expressions.
 
+Note that `DEPLOYMENT_ENVIRONMENT` gets converted to `deployment.environment` by Spring Boot's
+[Relaxed Binding](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.typesafe-configuration-properties.relaxed-binding.environment-variables).
+
 #### Disable the OpenTelemetry Starter
 
 {{% config_option name="otel.sdk.disabled" %}}
