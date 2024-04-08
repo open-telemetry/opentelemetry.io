@@ -47,7 +47,7 @@ library, follow the instructions here to adapt the process to your own code.
 For running the example app, ensure that you have the following installed
 locally:
 
-- Java JDK 17+, due to the use of Spring Boot 3. OpenTelemetry Java only [requires
+- Java JDK 17+, due to the use of Spring Boot 3. OpenTelemetry Java itself only [requires
   Java 8+][java-vers].
 - [Gradle](https://gradle.org/) or [Maven](https://maven.apache.org/)
 
