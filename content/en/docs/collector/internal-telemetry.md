@@ -1,11 +1,12 @@
 ---
-title: Internal Telemetry
+title: Internal telemetry
 weight: 25
 cSpell:ignore: journalctl kube otecol pprof tracez zpages
 ---
 
-The Collector offers multiple ways to measure and monitor its own health. In
-this section, you'll learn how to enable internal observability.
+You can check the health of any Collector instance by checking its own
+internal telemetry. Read on to learn how to use this data to diagnose and
+troubleshoot Collector issues.
 
 ## Enabling observability internal to the Collector
 
@@ -19,10 +20,10 @@ By default, the Collector exposes service telemetry in two ways:
 offer experimental support for a configuration based on the OpenTelemetry
 Configuration schema.
 
-### Configuring metrics
+### Configure internal metrics
 
 Prometheus metrics are exposed locally on port `8888` and path `/metrics`. For
-containerized environments, you may want to expose this port on a public
+containerized environments, you might want to expose this port on a public
 interface instead of only locally.
 
 Set the address in the config `service::telemetry::metrics`:
@@ -79,11 +80,10 @@ service:
   pipelines:
     metrics:
       receivers: [prometheus]
-      processors: []
       exporters: [debug]
 ```
 
-### Configuring logs
+### Configure internal logs
 
 You can find log output in `stdout`. The verbosity level for logs defaults to
 `INFO`, but you can adjust it in the config `service::telemetry::logs`:
