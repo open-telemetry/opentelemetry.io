@@ -399,6 +399,9 @@ Go ahead and add the following code to your `factory.go` file:
 ```go
 var (
 	typeStr         = component.MustNewType("tailtracer")
+)
+
+const (
 	defaultInterval = 1 * time.Minute
 )
 ```
@@ -435,6 +438,9 @@ import (
 
 var (
 	typeStr         = component.MustNewType("tailtracer")
+)
+
+const (
 	defaultInterval = 1 * time.Minute
 )
 
@@ -546,6 +552,9 @@ import (
 
 var (
 	typeStr         = component.MustNewType("tailtracer")
+)
+
+const (
 	defaultInterval = 1 * time.Minute
 )
 
@@ -885,6 +894,9 @@ import (
 
 var (
 	typeStr         = component.MustNewType("tailtracer")
+)
+
+const (
 	defaultInterval = 1 * time.Minute
 )
 
