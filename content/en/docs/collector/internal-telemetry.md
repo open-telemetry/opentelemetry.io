@@ -12,11 +12,11 @@ Collector issues.
 
 By default, the Collector exposes service telemetry in two ways:
 
-- Internal [metrics](#configuring-metrics) are exposed using a Prometheus
+- Internal [metrics](#configure-internal-metrics) are exposed using a Prometheus
   interface which defaults to port `8888`.
-- [Logs](#configuring-logs) are emitted to `stdout`.
+- [Logs](#configure-internal-logs) are emitted to `stdout`.
 
-[Traces](#configuring-traces) are not exposed by default but two feature gates
+[Traces](#configure-internal-traces) are not exposed by default but two feature gates
 offer experimental support for a configuration based on the OpenTelemetry
 Configuration schema.
 
