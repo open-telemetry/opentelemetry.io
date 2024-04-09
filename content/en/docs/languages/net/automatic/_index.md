@@ -15,8 +15,8 @@ To learn how to manually instrument your service or application code, see
 
 ## Compatibility
 
-OpenTelemetry .NET Automatic Instrumentation attempts to work with all officially
-supported operating systems and versions of
+OpenTelemetry .NET Automatic Instrumentation attempts to work with all
+officially supported operating systems and versions of
 [.NET](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core).
 
 The minimal supported version of
@@ -29,8 +29,8 @@ Supported processor architectures are:
 - AMD64 (x86-64)
 - ARM64 ([Experimental](/docs/specs/otel/versioning-and-stability))
 
-> [!NOTE]
-> ARM64 build does not support CentOS based images.
+{{% alert title="Note" color="info" %}} ARM64 build does not support CentOS
+based images. {{% /alert %}}
 
 CI tests run against the following operating systems:
 
