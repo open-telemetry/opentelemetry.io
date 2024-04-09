@@ -2531,6 +2531,18 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-24T14:54:54.282464+01:00"
   },
+  "https://github.com/grafana/alloy": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-10T00:09:46.144495+02:00"
+  },
+  "https://github.com/grafana/grafana-opentelemetry-dotnet": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-10T00:09:49.944628+02:00"
+  },
+  "https://github.com/grafana/grafana-opentelemetry-java": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-10T00:09:52.054124+02:00"
+  },
   "https://github.com/grpc/grpc-java": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:27.417894-05:00"
@@ -4462,6 +4474,18 @@
   "https://grafana.com/docs/agent/latest/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-24T14:54:56.149229+01:00"
+  },
+  "https://grafana.com/docs/alloy/latest/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-10T00:09:47.949842+02:00"
+  },
+  "https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/setup/instrument/dotnet/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-10T00:09:50.125651+02:00"
+  },
+  "https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/setup/instrument/java/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-10T00:09:55.400731+02:00"
   },
   "https://grafana.com/oss/opentelemetry/": {
     "StatusCode": 200,
