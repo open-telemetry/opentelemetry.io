@@ -15,7 +15,7 @@ To learn how to manually instrument your service or application code, see
 
 ## Compatibility
 
-OpenTelemetry .NET Automatic Instrumentation should work with all officially
+OpenTelemetry .NET Automatic Instrumentation attempts to work with all officially
 supported operating systems and versions of
 [.NET](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core).
 
@@ -23,18 +23,27 @@ The minimal supported version of
 [.NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) is
 `4.6.2`.
 
+Supported processor architectures are:
+
+- x86
+- AMD64 (x86-64)
+- ARM64 ([Experimental](/docs/specs/otel/versioning-and-stability))
+
+> [!NOTE]
+> ARM64 build does not support CentOS based images.
+
 CI tests run against the following operating systems:
 
-- [Alpine](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/alpine.dockerfile)
-- [CentOS 7](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/centos-build.dockerfile)
-- [macOS Big Sur 11](https://github.com/actions/runner-images/blob/main/images/macos/macos-11-Readme.md)
-- [Microsoft Windows Server 2022](https://github.com/actions/runner-images/blob/main/images/win/Windows2022-Readme.md)
-- [Ubuntu 20.04 LTS](https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2004-Readme.md)
-
-{{% alert title="Note" color="warning" %}} ARM architectures are not supported.
-See
-[#2181](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2181)
-for more information. {{% /alert %}}
+- [Alpine x64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/alpine.dockerfile)
+- [Alpine ARM64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/alpine.dockerfile)
+- [Debian x64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/debian.dockerfile)
+- [Debian ARM64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/debian-arm64.dockerfile)
+- [CentOS 7 x64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/centos-build.dockerfile)
+  (.NET 8 is not supported)
+- [macOS Big Sur 11 x64](https://github.com/actions/runner-images/blob/main/images/macos/macos-11-Readme.md)
+- [Microsoft Windows Server 2022 x64](https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md)
+- [Ubuntu 20.04 LTS x64](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2004-Readme.md)
+- Ubuntu 22.04 LTS ARM64
 
 ## Setup
 
