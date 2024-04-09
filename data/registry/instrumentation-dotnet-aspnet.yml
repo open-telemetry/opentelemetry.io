@@ -17,4 +17,4 @@ createdAt: 2022-10-28
 package:
   registry: nuget
   name: OpenTelemetry.Instrumentation.AspNet
-  version: 1.7.0-beta.2
+  version: 1.8.0-beta.1
