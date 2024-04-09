@@ -77,9 +77,8 @@ implementations are described in detail below:
 
 ### Setup
 
-Set up an environment in a new directory named `java-simple-app`. Inside
-the directory, create a file named `build.gradle.kts` with the following
-content:
+Set up an environment in a new directory named `java-simple-app`. Inside the
+directory, create a file named `build.gradle.kts` with the following content:
 
 {{% alert title="Note" color="info" %}} The example is built using Gradle. You
 might need to amend the directory structure and `pom.xml` to run using Maven.
