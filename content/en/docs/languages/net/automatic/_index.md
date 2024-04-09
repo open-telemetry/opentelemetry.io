@@ -15,7 +15,7 @@ To learn how to manually instrument your service or application code, see
 
 ## Compatibility
 
-OpenTelemetry .NET Automatic Instrumentation attempts to work with all
+OpenTelemetry .NET Automatic Instrumentation should work with all
 officially supported operating systems and versions of
 [.NET](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core).
 
