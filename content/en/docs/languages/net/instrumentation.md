@@ -54,6 +54,8 @@ To begin, set up an environment in a new directory called `dotnet-otel-example`.
 
 ```shell
 dotnet new web
+```
+
 To highlight the difference between instrumenting a library and a standalone
 app, split out the dice rolling into a library file, which then will be
 imported as a dependency by the app file.
