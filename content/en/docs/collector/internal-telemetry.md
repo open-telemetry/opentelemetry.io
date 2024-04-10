@@ -22,9 +22,12 @@ Configuration schema.
 
 ### Configure internal metrics
 
-Prometheus metrics are exposed locally on port `8888` and path `/metrics`. For
+You can configure how internal metrics are generated and exposed by the
+Collector. By default, the Collector generates basic metrics about itself and
+exposes them for scraping at http://127.0.0.1:8888/metrics. You can expose the
+endpoint to one specific or all network interfaces when needed. For
 containerized environments, you might want to expose this port on a public
-interface instead of only locally.
+interface.
 
 Set the address in the config `service::telemetry::metrics`:
 
@@ -32,7 +35,7 @@ Set the address in the config `service::telemetry::metrics`:
 service:
   telemetry:
     metrics:
-      address: ':8888'
+      address: '0.0.0.0:8888'
 ```
 
 To visualize these metrics, you can use the
