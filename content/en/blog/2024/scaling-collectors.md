@@ -1,7 +1,7 @@
 ---
 title: Manage OpenTelemetry Collectors at scale with Ansible
-linkTitle: OTel Collector with Ansible
-date: 2024-03-12
+linkTitle: Collectors at scale with Ansible
+date: 2024-04-12
 author: '[Ishan Jain](https://github.com/ishanjainn) (Grafana)'
 cSpell:ignore: ansible associated Ishan Jain
 ---
@@ -22,11 +22,11 @@ backend for metrics.
 
 ## Prerequisites
 
-To follow this guide, make sure you meet the following requirements:
+Before we begin, make sure you meet the following requirements:
 
-- Ansible Installed in your system
-- Linux hosts along with SSH access to each of these Linux hosts
-- Prometheus for gathering metrics
+- Ansible installed on your base system
+- SSH access to two or more Linux hosts
+- Prometheus configured to gather your metrics
 
 ## Install the Grafana Ansible collection
 
@@ -34,11 +34,11 @@ The
 [OpenTelemetry Collector role](https://github.com/grafana/grafana-ansible-collection/tree/main/roles/opentelemetry_collector)
 is provided through the
 [Grafana Ansible collection](https://docs.ansible.com/ansible/latest/collections/grafana/grafana/)
-as of the 3.0.0 release.
+as of release 4.0.
 
 To install the Grafana Ansible collection, run this command:
 
-```shell
+```sh
 ansible-galaxy collection install grafana.grafana
 ```
 
@@ -49,10 +49,9 @@ create an inventory file.
 
 1. Create an Ansible inventory file.
 
-   The Ansible inventory, which resides in a file named `inventory`, looks
-   similar to this
+   An Ansible inventory, which resides in a file named `inventory`, lists each host IP on a separate line, like this (8 hosts shown):
 
-   ```ini
+   ```properties
    10.0.0.1    # hostname = ubuntu-01
    10.0.0.2    # hostname = ubuntu-02
    10.0.0.3    # hostname = centos-01
@@ -63,15 +62,10 @@ create an inventory file.
    10.0.0.8    # hostname = fedora-02
    ```
 
-   This example inventory uses eight Linux hosts: two Ubuntu hosts, two CentOS
-   hosts, two Fedora hosts, and two Debian hosts.
-
-   > **Note**: When copying the previous snippet, remove the comments.
-
 2. Create an `ansible.cfg` file within the same directory as `inventory`, with
    the following values:
 
-   ```cfg
+   ```toml
    [defaults]
    inventory = inventory  # Path to the inventory file
    private_key_file = ~/.ssh/id_rsa   # Path to private SSH Key
@@ -84,7 +78,7 @@ Next, define an Ansible playbook to apply your chosen or created OpenTelemetry
 Collector role across your hosts.
 
 Create a file named `deploy-opentelemetry.yml` in the same directory as your
-`ansible.cfg` and `inventory`.
+`ansible.cfg` and `inventory` files:
 
 ```yaml
 - name: Install OpenTelemetry Collector
@@ -152,13 +146,13 @@ Create a file named `deploy-opentelemetry.yml` in the same directory as your
 {{% alert title="Note" %}}
 
 Adjust the configuration to match the specific telemetry you intend to collect
-and where you plan to forward it. This configuration snippet is a basic example
-designed for collecting host metrics and forwarded to Prometheus.
+as well as where you plan to forward it to. This configuration snippet is a basic example
+designed for collecting host metrics that get forwarded to Prometheus.
 
 {{% /alert %}}
 
 The previous configuration would provision the OpenTelemetry Collector to
-collect host metrics from the Linux host.
+collect metrics from the Linux host.
 
 ## Running the Ansible playbook
 
@@ -171,25 +165,24 @@ ansible-playbook deploy-opentelemetry.yml
 
 ## Check your metrics in the backend
 
-After your OpenTelemetry Collector's start sending metrics to Prometheus, follow
-these quick steps to visualize them in Grafana:
+After your OpenTelemetry Collectors start sending metrics to Prometheus, follow
+these steps to visualize them in Grafana:
 
 ### Set up Grafana
 
 1. **Install Docker**: Make sure Docker is installed on your system.
 
-2. **Run Grafana Docker Container**: Start a Grafana server with this Docker
+2. **Run Grafana Docker Container**: Start a Grafana server with the following
    command, which fetches the latest Grafana image:
 
    ```sh
    docker run -d -p 3000:3000 --name=grafana grafana/grafana
    ```
 
-3. **Access Grafana**: Navigate to `http://localhost:3000` in your web browser.
-   The default login details are `admin` for both the username and password.
+3. **Access Grafana**: Open <http://localhost:3000> in your web browser.
+   The default login username and password are both `admin`.
 
-4. **Change Password**: Upon your first login, you will be prompted to set a new
-   password. Make sure to pick a secure one.
+4. **Change passwords** when prompted on first login -- pick a secure one!
 
 For other installation methods and more detailed instructions, refer to the
 [official Grafana documentation](https://grafana.com/docs/grafana/latest/#installing-grafana).
@@ -217,6 +210,4 @@ For other installation methods and more detailed instructions, refer to the
 3. Explore other metrics and create dashboards to gain insights into your
    system's performance.
 
-This guide makes it easier for you to set up the OpenTelemetry Collector on
-several Linux machines with the help of Ansible and shows you how to see the
-data it collects in Grafana.
+This blog post illustrated how you can configure and deploy multiple OpenTelemetry Collectors across various Linux hosts with the help of Ansible, as well as visualize collected telemetry in Grafana. Incase you find this useful, Github repo for [OpenTelemetry Collector role](https://github.com/grafana/grafana-ansible-collection/tree/main/roles/opentelemetry_collector) for detailed configuration options. If you have questions, You can connect with me using my contact details at my GitHub profile [@ishanjainn](https://github.com/ishanjainn).
