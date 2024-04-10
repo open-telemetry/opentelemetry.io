@@ -201,7 +201,7 @@ using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
 // Ideally, you will want this name to come from a config file, constants file, etc.
-var serviceName = "Dice.*";
+var serviceName = "dice-server";
 var serviceVersion = "1.0.0";
 
 var builder = WebApplication.CreateBuilder(args);
@@ -271,6 +271,10 @@ var loggerFactory = LoggerFactory.Create(builder =>
 
 //...
 
+tracerProvider.Dispose();
+meterProvider.Dispose();
+loggerFactory.Dispose();
+
 ```
 
 For debugging and local development purposes, the example exports
@@ -337,9 +341,26 @@ The values of name and version should uniquely identify the Instrumentation Scop
 
 It’s generally recommended to define `ActivitySource` once per app/service that is been instrumented, but you can instantiate several `ActivitySource`s if that suits your scenario
 
-In the case of the example app, there are two places where the `ActivitySource` will be instantiated with an appropriate Instrumentation Scope:
+In the case of the example app, the `ActivitySource` will be instantiated in the `program.cs` and then the same instance will be used in `DiceController.cs` and `Dice.cs`
 
-First, in the application file `DiceController.cs`:
+First we instantiate the activitySource in the `program.cs`:
+
+```csharp { hl_lines=["2-3"]}
+
+// Register the ActivitySource as a singleton to have a single instance of activitySource across the application
+builder.Services.AddSingleton<ActivitySource>(new ActivitySource(serviceName, serviceVersion));
+
+builder.Services.AddControllers();
+
+var app = builder.Build();
+
+app.MapControllers();
+
+app.Run();
+
+```
+
+Then, in the application file `DiceController.cs` we make use of that activitySource instance:
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
@@ -349,12 +370,13 @@ using System.Net;
 public class DiceController : ControllerBase
 {
     private ILogger<DiceController> logger;
-    
-    public static readonly ActivitySource MyActivitySource = new("Dice.Server", "1.0.0");
 
-    public DiceController(ILogger<DiceController> logger)
+    private ActivitySource activitySource;
+
+    public DiceController(ILogger<DiceController> logger, ActivitySource activitySource)
     {
         this.logger = logger;
+        this.activitySource = activitySource;
     }
 
     //...
@@ -363,7 +385,7 @@ public class DiceController : ControllerBase
 
 ```
 
-And second, in the library file `Dice.cs`:
+And then, we pass in the same activitySource to the library file `Dice.cs`:
 
 ```csharp
 
@@ -371,15 +393,15 @@ using System.Diagnostics;
 
 public class Dice
 {
-    public static readonly ActivitySource MyActivitySource = new("Dice.Lib", "1.0.0");
-    
+    public ActivitySource activitySource;
     private int min;
     private int max;
 
-    public Dice(int min, int max)
+    public Dice(int min, int max, ActivitySource activitySource)
     {
         this.min = min;
         this.max = max;
+        this.activitySource = activitySource;
     }
 
     //...
@@ -395,22 +417,23 @@ The code below illustrates how to create an activity.
 
 ```csharp
 public List<int> rollTheDice(int rolls)
-{
-    var activity = MyActivitySource.StartActivity("rollTheDice");
+{   
     List<int> results = new List<int>();
-
-    for (int i = 0; i < rolls; i++)
+    
+    // It is recommended to create activities, only when doing operations that are worth measuring independently. 
+    // Too many activities makes it harder to visualize in tools like Jaeger.
+    using (var myActivity = activitySource.StartActivity("rollTheDice"))
     {
-        results.Add(rollOnce());
-    }
+        for (int i = 0; i < rolls; i++)
+        {
+            results.Add(rollOnce());
+        }
 
-    activity?.Stop();
-    return results;
+        return results;
+    }
 }
 
 ```
-Note, that it’s required to `Stop()` the activity, otherwise it will not be exported.
-
 If you followed the instructions using the [example app](#example-app) up to
 this point, you can copy the code above in your library file `Dice.cs`. You
 should now be able to see activities/spans emitted from your app.
@@ -425,33 +448,19 @@ After a while, you should see the spans printed in the console by the
 `ConsoleExporter`, something like this:
 
 ```json
-service.name: Dice.*
-service.version: 1.0.0
-service.instance.id: 17a824ba-9734-413d-951e-c44414b6b93b
-telemetry.sdk.name: opentelemetry
-telemetry.sdk.language: dotnet
-telemetry.sdk.version: 1.7.0
-
-Resource associated with Metric:
-    service.name: Dice.*
-    service.version: 1.0.0
-    service.instance.id: 17a824ba-9734-413d-951e-c44414b6b93b
-    telemetry.sdk.name: opentelemetry
-    telemetry.sdk.language: dotnet
-    telemetry.sdk.version: 1.7.0
-Activity.TraceId:            b322c0ce4bf1941cd6a476a454d78434
-Activity.SpanId:             7bbfc1522b5595bb
+Activity.TraceId:            841d70616c883db82b4ae4e11c728636
+Activity.SpanId:             9edfe4d69b0d6d8b
 Activity.TraceFlags:         Recorded
-Activity.ParentSpanId:       c761f5e5ca3886bf
-Activity.ActivitySourceName: Dice.Lib
+Activity.ParentSpanId:       39fcd105cf958377
+Activity.ActivitySourceName: dice-server
 Activity.DisplayName:        rollTheDice
 Activity.Kind:               Internal
-Activity.StartTime:          2024-02-08T08:10:47.5310248Z
-Activity.Duration:           00:00:00.0002703
+Activity.StartTime:          2024-04-10T15:24:00.3620354Z
+Activity.Duration:           00:00:00.0144329
 Resource associated with Activity:
-    service.name: Dice.*
+    service.name: dice-server
     service.version: 1.0.0
-    service.instance.id: 17a824ba-9734-413d-951e-c44414b6b93b
+    service.instance.id: 7a7a134f-3178-4ac6-9625-96df77cff8b4
     telemetry.sdk.name: opentelemetry
     telemetry.sdk.language: dotnet
     telemetry.sdk.version: 1.7.0
@@ -467,19 +476,14 @@ nested operation. The following sample creates a nested span that tracks
 ```csharp
 private int rollOnce()
 {
-    int result;
-    var childActivity = MyActivitySource.StartActivity("rollOnce");
-    
-    try
+    using (var childActivity = activitySource.StartActivity("rollOnce"))
     {
-        result = Random.Shared.Next(min, max + 1);
+      int result;
+      
+      result = Random.Shared.Next(min, max + 1);
+        
+      return result;
     }
-    finally
-    {
-        childActivity?.Stop();
-    }
-
-    return result;
 }
 
 ```
@@ -504,20 +508,15 @@ information about the current operation that it's tracking.
 ```csharp
 private int rollOnce()
 {
-    int result;
-    var childActivity = MyActivitySource.StartActivity("rollOnce");
-    
-    try
+  using (var childActivity = activitySource.StartActivity("rollOnce"))
     {
-        result = Random.Shared.Next(min, max + 1);
-        childActivity?.SetTag("dicelib.rolled", result);
-    }
-    finally
-    {
-        childActivity?.Stop();
-    }
-
-    return result;
+      int result;
+      
+      result = Random.Shared.Next(min, max + 1);
+      childActivity?.SetTag("dicelib.rolled", result);
+        
+      return result;
+    } 
 }
 ```
 
@@ -591,25 +590,24 @@ do this in conjunction with
 ```csharp
 private int rollOnce()
 {
-    int result;
-    var childActivity = MyActivitySource.StartActivity("rollOnce");
+    using (var childActivity = activitySource.StartActivity("rollOnce"))
+    {
+        int result;
+        
+        try
+        {
+            result = Random.Shared.Next(min, max + 1);
+            childActivity?.SetTag("dicelib.rolled", result);
+        }
+        catch (Exception ex)
+        {
+            childActivity?.SetStatus(ActivityStatusCode.Error, "Something bad happened!");
+            childActivity?.RecordException(ex);
+            throw;
+        }
 
-    try
-    {
-        result = Random.Shared.Next(min, max + 1);
+        return result;
     }
-    catch (Exception ex)
-    {
-        childActivity?.SetStatus(ActivityStatusCode.Error, "Something bad happened!");
-        childActivity?.RecordException(ex);
-        throw;
-    }
-    finally
-    {
-        childActivity?.Stop();
-    }
-
-    return result;
 }
 
 ```
