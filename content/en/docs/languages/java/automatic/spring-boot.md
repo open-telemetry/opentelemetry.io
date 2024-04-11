@@ -175,7 +175,7 @@ Unlike the SDK autoconfiguration, the OpenTelemetry Spring Boot starter uses
 {{% /alert %}}
 
 You can update the configuration with properties in the `application.properties` or the `application.yaml`
-file, or use environment variables.
+file, or with environment variables.
 
 `application.properties` example:
 
