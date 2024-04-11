@@ -105,7 +105,7 @@ repositories {
 
 dependencyManagement {
   imports {
-    mavenBom("io.opentelemetry:opentelemetry-bom:1.36.0")
+    mavenBom("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}")
   }
 }
 
@@ -124,18 +124,17 @@ dependencies {
 
 ```xml
 <project>
-    <dependencies>
-        <dependency>
-          <groupId>io.opentelemetry</groupId>
-          <artifactId>opentelemetry-sdk-extension-autoconfigure</artifactId>
-        </dependency>
-        <dependency>
-          <groupId>io.opentelemetry</groupId>
-          <artifactId>opentelemetry-sdk-extension-autoconfigure-spi</artifactId>
-        </dependency>
-    </dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>io.opentelemetry</groupId>
+      <artifactId>opentelemetry-sdk-extension-autoconfigure</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.opentelemetry</groupId>
+      <artifactId>opentelemetry-sdk-extension-autoconfigure-spi</artifactId>
+    </dependency>
+  </dependencies>
 </project>
-
 ```
 
 {{< /tab >}} {{< /tabpane>}}
