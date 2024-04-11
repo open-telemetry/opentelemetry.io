@@ -24,7 +24,7 @@ Configuration schema.
 
 You can configure how internal metrics are generated and exposed by the
 Collector. By default, the Collector generates basic metrics about itself and
-exposes them for scraping at http://127.0.0.1:8888/metrics. You can expose the
+exposes them for scraping at `http://127.0.0.1:8888/metrics`. You can expose the
 endpoint to one specific or all network interfaces when needed. For
 containerized environments, you might want to expose this port on a public
 interface.
@@ -88,9 +88,8 @@ service:
 
 {{% alert title="Caution" color="warning" %}}
 
-
-Self-monitoring is a risky practice. If an issue arises, the source of the problem is unclear and the telemetry is unreliable.
-
+Self-monitoring is a risky practice. If an issue arises, the source of the
+problem is unclear and the telemetry is unreliable.
 
 {{% /alert %}}
 
@@ -172,7 +171,7 @@ for additional configuration options.
 
 {{% alert title="Note" %}}
 
-Note that this configuration does not support emitting logs as there is no
-support for logs in OpenTelemetry Go SDK at this time.
+This configuration does not support emitting logs as there is no support for
+logs in OpenTelemetry Go SDK at this time.
 
 {{% /alert %}}
