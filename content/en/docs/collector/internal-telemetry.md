@@ -86,6 +86,14 @@ service:
       exporters: [debug]
 ```
 
+{{% alert title="Caution" color="warning" %}}
+
+
+Self-monitoring is a risky practice. If an issue arises, the source of the problem is unclear and the telemetry is unreliable.
+
+
+{{% /alert %}}
+
 ### Configure internal logs
 
 You can find log output in `stdout`. The verbosity level for logs defaults to
