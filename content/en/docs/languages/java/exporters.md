@@ -77,7 +77,7 @@ implementations are described in detail below:
 
 ### Setup
 
-Set up an environment in a new directory named `java-simple-app`. Inside the
+Set up an environment in a new directory named `java-sample-dice`. Inside the
 directory, create a file named `build.gradle.kts` with the following content:
 
 {{% alert title="Note" color="info" %}} The example is built using Gradle. You
@@ -111,25 +111,31 @@ dependencyManagement {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web");
-    implementation("io.opentelemetry:opentelemetry-api");
-    implementation("io.opentelemetry:opentelemetry-sdk");
-    implementation("io.opentelemetry:opentelemetry-exporter-logging");
-    implementation("io.opentelemetry:opentelemetry-exporter-otlp:1.36.0");
-    implementation("io.opentelemetry.semconv:opentelemetry-semconv:1.23.1-alpha");
-    implementation("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure");
+    implementation("io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}");
+    implementation("io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}");
+    implementation("io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}");
+    implementation("io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}");
+    implementation("io.opentelemetry.semconv:opentelemetry-semconv:{{% param vers.semconv %}}-alpha");
+    implementation("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param vers.otel %}}");
 }
 ```
 
 {{% /tab %}} {{% tab Maven %}}
 
 ```xml
-<dependencies>
-  <dependency>
-    <groupId>io.opentelemetry.instrumentation</groupId>
-    <artifactId>opentelemetry-java-http-client</artifactId>
-    <version>{{% param vers.instrumentation %}}-alpha</version>
-  </dependency>
-</dependencies>
+<project>
+    <dependencies>
+        <dependency>
+          <groupId>io.opentelemetry</groupId>
+          <artifactId>opentelemetry-sdk-extension-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+          <groupId>io.opentelemetry</groupId>
+          <artifactId>opentelemetry-sdk-extension-autoconfigure-spi</artifactId>
+        </dependency>
+    </dependencies>
+</project>
+
 ```
 
 {{< /tab >}} {{< /tabpane>}}
@@ -212,7 +218,10 @@ Next, configure the exporter to point at an OTLP endpoint.
 
 ```shell
 gradle assemble
-env OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317 java -jar ./build/libs/java-sample-dice.jar
+env \
+OTEL_SERVICE_NAME=dice-server \
+OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317 \
+java -jar ./build/libs/java-sample-dice.jar
 ```
 
 Note, that in the case of exporting via OTLP you do not need to set
@@ -224,6 +233,10 @@ Note, that in the case of exporting via OTLP you do not need to set
 To debug your instrumentation or see the values locally in development, you can
 use exporters writing telemetry data to the console (stdout).
 
+```shell
+env OTEL_TRACES_EXPORTER=logging OTEL_METRICS_EXPORTER=logging OTEL_LOGS_EXPORTER=logging  java -jar ./build/libs/java-sample-dice.jar
+```
+
 If you followed the [Getting Started](/docs/languages/java/getting-started/) or
 [Manual Instrumentation](/docs/languages/java/instrumentation/) guides, you
 already have the console exporter installed.
@@ -231,14 +244,6 @@ already have the console exporter installed.
 The `LoggingSpanExporter`, the `LoggingMetricExporter` and the
 `SystemOutLogRecordExporter` are included in the
 `opentelemetry-exporter-logging` artifact.
-
-If you use
-[SDK autoconfiguration](/docs/languages/java/instrumentation/#automatic-configuration)
-all you need to do is update your environment variables:
-
-```shell
-env OTEL_TRACES_EXPORTER=logging OTEL_METRICS_EXPORTER=logging OTEL_LOGS_EXPORTER=logging  java -jar ./build/libs/java-simple.jar
-```
 
 {{% docs/languages/exporters/jaeger %}}
 
