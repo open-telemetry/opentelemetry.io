@@ -49,7 +49,7 @@ locally:
 
 - Java JDK 17+, due to the use of Spring Boot 3. OpenTelemetry Java itself only
   [requires Java 8+][java-vers].
-- [Gradle](https://gradle.org/) or [Maven](https://maven.apache.org/)
+- [Gradle](https://gradle.org/).
 
 ### Dependencies {#example-app-dependencies}
 
