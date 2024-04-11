@@ -130,6 +130,6 @@ $counter->add(2);
 
 The quote service emits a log message after a quote is calculated. The Monolog
 logging package is configured with a
-[Logs Bridge](docs/concepts/signals/logs/#log-appender--bridge) which converts
-Monolog logs into the OpenTelemetry format, and sends them to the configured
-OpenTelemetry Logger.
+[Logs Bridge](/docs/concepts/signals/logs/#log-appender--bridge) which converts
+Monolog logs into the OpenTelemetry format, and sends them to the globally
+configured OpenTelemetry Logger.
