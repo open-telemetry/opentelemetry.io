@@ -7,7 +7,8 @@ tags:
   - exporter
   - collector
 license: Apache 2.0
-description: The syslog exporter supports sending messages to a remote syslog server.
+description:
+  The syslog exporter supports sending messages to a remote syslog server.
 authors:
   - name: OpenTelemetry Authors
 urls:
