@@ -170,5 +170,9 @@ See the
 [example configuration](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml)
 for additional configuration options.
 
-> Note that this configuration does not support emitting logs as there is no
-> support for logs in OpenTelemetry Go SDK at this time.
+{{% alert title="Note" %}}
+
+Note that this configuration does not support emitting logs as there is no
+support for logs in OpenTelemetry Go SDK at this time.
+
+{{% /alert %}}
