@@ -4,7 +4,7 @@ aliases:
   - feature_flags
   - services/feature-flag
   - services/featureflagservice
-cSpell:ignore: flagd OLJCESPC7Z
+cSpell:ignore: flagd loadgenerator OLJCESPC7Z
 ---
 
 The demo provides several feature flags that you can use to simulate different
@@ -20,8 +20,9 @@ values are stored in the `demo.flagd.json` file. To enable a flag, change the
 | `cartServiceFailure`                | Cart Service     | Generate an error for `EmptyCart` 1/10th of the time                                                      |
 | `productCatalogFailure`             | Product Catalog  | Generate an error for `GetProduct` requests with product id: `OLJCESPC7Z`                                 |
 | `recommendationServiceCacheFailure` | Recommendation   | Create a memory leak due to an exponentially growing cache. 1.4x growth, 50% of requests trigger growth.  |
-| `paymentServiceFailure`             | Payment Service  | Generate an error when calling the `charge` method                                                        |
+| `paymentServiceFailure`             | Payment Service  | Generate an error when calling the `charge` method.                                                       |
 | `paymentServiceUnreachable`         | Checkout Service | Use a bad address when calling the PaymentService to make it seem like the PaymentService is unavailable. |
+| `loadgeneratorFloodHomepage`        | Loadgenerator    | Start flooding the homepage with a huge amount of requests, configurable by changing flagd JSON on state. |
 
 ## Feature Flag Architecture
 
