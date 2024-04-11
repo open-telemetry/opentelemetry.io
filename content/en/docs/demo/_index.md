@@ -52,7 +52,7 @@ found here:
 - [Quote Service](services/quote/)
 - [Recommendation Service](services/recommendation/)
 - [Shipping Service](services/shipping/)
-- [Imageprovider Service](services/imageprovider/)
+- [Image Provider Service](services/imageprovider/)
 
 ## Scenarios
 
