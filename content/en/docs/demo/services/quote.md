@@ -94,9 +94,9 @@ $span->addEvent('Quote processed, response sent back', [
 
 In this demo, metrics are emitted by the batch trace and logs processors. The
 metrics describe the internal state of the processor, such as number of exported
-spans/logs, the queue limit and queue usage.
+spans/logs, the queue limit, and queue usage.
 
-This is enabled by setting the environment variable
+You can enable metrics by setting the environment variable
 `OTEL_PHP_INTERNAL_METRICS_ENABLED=true`.
 
 A manual metric is also emitted, which counts the number of quotes generated,
@@ -104,9 +104,9 @@ including attributes for the number of items and total cost.
 
 ### Initializing metrics
 
-To generate metrics, we need to create an instrument such as a counter, gauge or
-histogram. In this example, we retrieve a meter from the globally configured
-Meter Provider, and use it to create a counter:
+To generate metrics, you need to create an instrument such as a counter, gauge, or
+histogram. The following example retrieves a meter from the globally configured
+Meter Provider and uses it to create a counter:
 
 ```php
 $counter = Globals::meterProvider()
@@ -114,13 +114,13 @@ $counter = Globals::meterProvider()
     ->createCounter('my-counter');
 ```
 
-Metrics will accumulate, and be exported periodically based on the value
+Metrics accumulate and are exported periodically based on the value
 configured in `OTEL_METRIC_EXPORT_INTERVAL`.
 
 ### Generate metrics
 
-An instrument provides a method to record a new value against it. In this
-example, we can `add` values to the counter:
+An instrument provides a method to record a new value against it. This
+example shows how to `add` values to the counter:
 
 ```php
 $counter->add(2);
