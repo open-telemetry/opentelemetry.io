@@ -213,7 +213,9 @@ standard `OTEL_RESOURCE_ATTRIBUTES` environment variable:
 export OTEL_RESOURCE_ATTRIBUTES="deployment.environment=prod"
 ```
 
-Alternatively, you can use an environment variable to set or override a single
+Alternatively, you can use the
+`OTEL_RESOURCE_ATTRIBUTES_DEPLOYMENT_ENVIRONMENT`
+environment variable to set or override a single
 resource attribute:
 
 ```shell
