@@ -7,9 +7,7 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description:
-  The SignalFx Receiver for the OpenTelemetry Collector accepts metrics in the
-  SignalFx proto format and events (Logs) in the SignalFx proto format.
+description: The SignalFx Receiver for the OpenTelemetry Collector accepts metrics in the SignalFx proto format and events (Logs) in the SignalFx proto format.
 authors:
   - name: Splunk
 urls:
@@ -18,4 +16,4 @@ createdAt: 2021-02-26
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/signalfxreceiver
-  version: v0.97.0
+  version: v0.98.0

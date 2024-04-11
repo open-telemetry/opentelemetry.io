@@ -7,8 +7,7 @@ tags:
   - exporter
   - collector
 license: Apache 2.0
-description:
-  This exporter supports sending OpenTelemetry logs and spans to ClickHouse
+description: This exporter supports sending OpenTelemetry logs and spans to ClickHouse
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -17,4 +16,4 @@ createdAt: 2020-11-05
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/clickhouseexporter
-  version: v0.97.0
+  version: v0.98.0

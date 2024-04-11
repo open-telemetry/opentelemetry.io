@@ -8,9 +8,7 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description:
-  This receiver creates stats by connecting to an SSH server which may be an
-  SFTP server.
+description: This receiver creates stats by connecting to an SSH server which may be an SFTP server.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -19,4 +17,4 @@ createdAt: 2020-11-05
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/sshcheckreceiver
-  version: v0.97.0
+  version: v0.98.0

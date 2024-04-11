@@ -7,9 +7,7 @@ tags:
   - exporter
   - collector
 license: Apache 2.0
-description:
-  This exporter can be used to send metrics and traces to Google Cloud Managed
-  Service for Prometheus.
+description: This exporter can be used to send metrics and traces to Google Cloud Managed Service for Prometheus.
 authors:
   - name: Google
 urls:
@@ -18,4 +16,4 @@ createdAt: 2022-10-27
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/googlemanagedprometheusexporter
-  version: v0.97.0
+  version: v0.98.0

@@ -7,9 +7,7 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description:
-  This receiver queries the Elasticsearch node stats and index statsendpoints in
-  order to scrape metrics from a running elasticsearch cluster.
+description: This receiver queries the Elasticsearch node stats and index statsendpoints in order to scrape metrics from a running elasticsearch cluster.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,4 +16,4 @@ createdAt: 2022-10-25
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/elasticsearchreceiver
-  version: v0.97.0
+  version: v0.98.0
