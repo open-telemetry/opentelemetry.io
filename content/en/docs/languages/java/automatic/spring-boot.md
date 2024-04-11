@@ -167,15 +167,8 @@ The OpenTelemetry Starter supports all the
 [SDK Autoconfiguration](/docs/languages/java/automatic/configuration/#sdk-autoconfiguration)
 (since 2.2.0).
 
-{{% alert title="Important" color="warning" %}}
-
-Unlike the SDK autoconfiguration, the OpenTelemetry Spring Boot starter uses
-`http/protobuf` as the default protocol, not `grpc`.
-
-{{% /alert %}}
-
-You can update the configuration with properties in the `application.properties` or the `application.yaml`
-file, or with environment variables.
+You can update the configuration with properties in the `application.properties`
+or the `application.yaml` file, or with environment variables.
 
 `application.properties` example:
 

@@ -30,6 +30,13 @@ specific portions of the SDK & agent:
 - [Span limits](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#span-limits)
 - [Using SPI to further configure the SDK](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#customizing-the-opentelemetry-sdk)
 
+{{% alert title="Important" color="warning" %}}
+
+Unlike the SDK autoconfiguration, the Java agent and OpenTelemetry Spring Boot
+starter use `http/protobuf` as the default protocol, not `grpc`.
+
+{{% /alert %}}
+
 ### Enable Resource Providers that are disabled by default
 
 In addition to the resource configuration from the SDK autoconfiguration, you
