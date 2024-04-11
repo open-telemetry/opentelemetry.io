@@ -366,14 +366,42 @@ The values of name and version should uniquely identify the Instrumentation Scop
 
 It’s generally recommended to define `ActivitySource` once per app/service that is been instrumented, but you can instantiate several `ActivitySource`s if that suits your scenario
 
-In the case of the example app, the `ActivitySource` will be instantiated in the `program.cs` and then the same instance will be used in `DiceController.cs` and `Dice.cs`
+In the case of the example app, we will create a new file `Instrumentation.cs` as a custom type to hold reference for the ActivitySource. 
 
-First we instantiate the activitySource in the `program.cs`:
+```csharp
+using System.Diagnostics;
 
-```csharp { hl_lines=["2-3"]}
+/// <summary>
+/// It is recommended to use a custom type to hold references for ActivitySource. 
+/// This avoids possible type collisions with other components in the DI container.
+/// </summary>
+public class Instrumentation : IDisposable
+{
+    internal const string ActivitySourceName = "dice-server";
+    internal const string ActivitySourceVersion = "1.0.0";
 
-// Register the ActivitySource as a singleton to have a single instance of activitySource across the application
-builder.Services.AddSingleton<ActivitySource>(new ActivitySource(serviceName, serviceVersion));
+    public Instrumentation()
+    {
+        this.ActivitySource = new ActivitySource(ActivitySourceName, ActivitySourceVersion);
+    }
+
+    public ActivitySource ActivitySource { get; }
+
+    public void Dispose()
+    {
+        this.ActivitySource.Dispose();
+    }
+}
+```
+
+Then we will update the `Program.cs` to add the Instrument object as a dependency injection:
+
+```csharp 
+//...
+
+// Register the ActivitySource as a singleton in the DI container.
+// Create a service to expose the ActivitySource Instruments.
+builder.Services.AddSingleton<Instrumentation>();
 
 builder.Services.AddControllers();
 
@@ -385,7 +413,7 @@ app.Run();
 
 ```
 
-Then, in the application file `DiceController.cs` we make use of that activitySource instance:
+In the application file `DiceController.cs` we then reference that activitySource instance:
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
@@ -398,10 +426,10 @@ public class DiceController : ControllerBase
 
     private ActivitySource activitySource;
 
-    public DiceController(ILogger<DiceController> logger, ActivitySource activitySource)
+     public DiceController(ILogger<DiceController> logger, Instrumentation instrumentation)
     {
         this.logger = logger;
-        this.activitySource = activitySource;
+        this.activitySource = instrumentation.ActivitySource;
     }
 
     //...
@@ -410,7 +438,7 @@ public class DiceController : ControllerBase
 
 ```
 
-And then, we pass in the same activitySource to the library file `Dice.cs`:
+The same activitySource is also passed to the library file `Dice.cs`:
 
 ```csharp
 
