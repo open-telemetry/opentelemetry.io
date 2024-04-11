@@ -213,10 +213,8 @@ standard `OTEL_RESOURCE_ATTRIBUTES` environment variable:
 export OTEL_RESOURCE_ATTRIBUTES="deployment.environment=prod"
 ```
 
-Alternatively, you can use the
-`OTEL_RESOURCE_ATTRIBUTES_DEPLOYMENT_ENVIRONMENT`
-environment variable to set or override a single
-resource attribute:
+Alternatively, you can use the `OTEL_RESOURCE_ATTRIBUTES_DEPLOYMENT_ENVIRONMENT`
+environment variable to set or override a single resource attribute:
 
 ```shell
 export OTEL_RESOURCE_ATTRIBUTES_DEPLOYMENT_ENVIRONMENT="prod"
@@ -226,7 +224,8 @@ The second option supports
 [SpEL](https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/expressions.html)
 expressions.
 
-Note that `DEPLOYMENT_ENVIRONMENT` gets converted to `deployment.environment` by Spring Boot's
+Note that `DEPLOYMENT_ENVIRONMENT` gets converted to `deployment.environment` by
+Spring Boot's
 [Relaxed Binding](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.typesafe-configuration-properties.relaxed-binding.environment-variables).
 
 #### Disable the OpenTelemetry Starter

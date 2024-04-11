@@ -1631,6 +1631,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-02-19T17:27:38.673604461+01:00"
   },
+  "https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.typesafe-configuration-properties.relaxed-binding.environment-variables": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-11T13:40:26.805402963+02:00"
+  },
   "https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:15:14.908906-05:00"
