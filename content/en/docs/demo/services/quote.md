@@ -104,9 +104,9 @@ including attributes for the number of items and total cost.
 
 ### Initializing metrics
 
-To generate metrics, you need to create an instrument such as a counter, gauge, or
-histogram. The following example retrieves a meter from the globally configured
-Meter Provider and uses it to create a counter:
+To generate metrics, you need to create an instrument such as a counter, gauge,
+or histogram. The following example retrieves a meter from the globally
+configured Meter Provider and uses it to create a counter:
 
 ```php
 $counter = Globals::meterProvider()
@@ -114,13 +114,13 @@ $counter = Globals::meterProvider()
     ->createCounter('my-counter');
 ```
 
-Metrics accumulate and are exported periodically based on the value
-configured in `OTEL_METRIC_EXPORT_INTERVAL`.
+Metrics accumulate and are exported periodically based on the value configured
+in `OTEL_METRIC_EXPORT_INTERVAL`.
 
 ### Generate metrics
 
-An instrument provides a method to record a new value against it. This
-example shows how to `add` values to the counter:
+An instrument provides a method to record a new value against it. This example
+shows how to `add` values to the counter:
 
 ```php
 $counter->add(2);
