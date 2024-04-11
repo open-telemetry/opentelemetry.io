@@ -30,10 +30,6 @@ aliases: [demo_screenshots]
 | --------------------------------------------- | ------------------------------------- |
 | ![Grafana-Prometheus](grafana-prometheus.png) | ![Grafana-jaeger](gragana-jaeger.png) |
 
-## Feature Flag UI
-
-![feature-flag-ui](feature-flag-ui.png)
-
 ## Load Generator UI
 
 ![load-generator-ui](load-generator-ui.png)
