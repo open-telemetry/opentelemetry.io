@@ -1,6 +1,6 @@
 ---
 title: Image Provider Service
-linkTitle: Imageprovider
+linkTitle: Image Provider
 aliases: [imageprovider]
 ---
 
