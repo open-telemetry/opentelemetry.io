@@ -92,8 +92,44 @@ $span->addEvent('Quote processed, response sent back', [
 
 ## Metrics
 
-TBD
+In this demo, metrics are emitted by the batch trace and logs processors. The
+metrics describe the internal state of the processor, such as number of exported
+spans/logs, the queue limit and queue usage.
+
+This is enabled by setting the environment variable
+`OTEL_PHP_INTERNAL_METRICS_ENABLED=true`.
+
+A manual metric is also emitted, which counts the number of quotes generated,
+including attributes for the number of items and total cost.
+
+### Initializing metrics
+
+To generate metrics, we need to create an instrument such as a counter, gauge or
+histogram. In this example, we retrieve a meter from the globally configured
+Meter Provider, and use it to create a counter:
+
+```php
+$counter = Globals::meterProvider()
+    ->getMeter('my-meter')
+    ->createCounter('my-counter');
+```
+
+Metrics will accumulate, and be exported periodically based on the value
+configured in `OTEL_METRIC_EXPORT_INTERVAL`.
+
+### Generate metrics
+
+An instrument provides a method to record a new value against it. In this
+example, we can `add` values to the counter:
+
+```php
+$counter->add(2);
+```
 
 ## Logs
 
-TBD
+The quote service emits a log message after a quote is calculated. The Monolog
+logging package is configured with a
+[Logs Bridge](docs/concepts/signals/logs/#log-appender--bridge) which converts
+Monolog logs into the OpenTelemetry format, and sends them to the configured
+OpenTelemetry Logger.
