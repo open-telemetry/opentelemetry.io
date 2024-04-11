@@ -4,9 +4,9 @@ weight: 25
 cSpell:ignore: journalctl kube otecol pprof tracez zpages
 ---
 
-You can check the health of any Collector instance by checking its own internal
-telemetry. Read on to learn how to use this data to diagnose and troubleshoot
-Collector issues.
+You can monitor the health of any Collector instance by checking its own
+internal telemetry. Read on to learn how to configure this telemetry to help you
+[troubleshoot](/docs/collector/troubleshooting/) Collector issues.
 
 ## Activate internal telemetry in the Collector
 
