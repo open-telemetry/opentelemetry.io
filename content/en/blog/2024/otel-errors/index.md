@@ -285,5 +285,5 @@ By leveraging OTel's capabilities to record errors through logs and spans and to
 enhance them with metadata, you can gain deeper insights into your applications'
 behavior and more effectively troubleshoot issues. You'll be better equipped to
 build and maintain resilient, reliable, and high-performing software
-applications in today's dynamic and demanding environments. Learn more about
-error handling in OTel [here](/docs/specs/otel/error-handling/).
+applications in today's dynamic and demanding environments. To learn more, see
+[Error handling in OpenTelemetry](/docs/specs/otel/error-handling/).
