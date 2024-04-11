@@ -102,34 +102,24 @@ You can enable metrics by setting the environment variable
 A manual metric is also emitted, which counts the number of quotes generated,
 including attributes for the number of items and total cost.
 
-### Initializing metrics
-
-To generate metrics, you need to create an instrument such as a counter, gauge,
-or histogram. The following example retrieves a meter from the globally
-configured Meter Provider and uses it to create a counter:
+A counter is created from the globally configured Meter Provider, and is
+incremented each time a quote is generated:
 
 ```php
-$counter = Globals::meterProvider()
-    ->getMeter('my-meter')
-    ->createCounter('my-counter');
+static $counter;
+$counter ??= Globals::meterProvider()
+    ->getMeter('quotes')
+    ->createCounter('quotes', 'quotes', 'number of quotes calculated');
+$counter->add(1, ['number_of_items' => $numberOfItems]);
 ```
 
 Metrics accumulate and are exported periodically based on the value configured
 in `OTEL_METRIC_EXPORT_INTERVAL`.
-
-### Generate metrics
-
-An instrument provides a method to record a new value against it. This example
-shows how to `add` values to the counter:
-
-```php
-$counter->add(2);
-```
 
 ## Logs
 
 The quote service emits a log message after a quote is calculated. The Monolog
 logging package is configured with a
 [Logs Bridge](/docs/concepts/signals/logs/#log-appender--bridge) which converts
-Monolog logs into the OpenTelemetry format, and sends them to the globally
-configured OpenTelemetry Logger.
+Monolog logs into the OpenTelemetry format. Logs sent to this logger will be
+exported via the globally configured OpenTelemetry logger.
