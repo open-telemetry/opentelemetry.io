@@ -4,25 +4,30 @@ linkTitle: End user
 description: Vendor-agnostic resources for OpenTelemetry users
 ---
 
-The
-[OpenTelemetry End User SIG](https://github.com/open-telemetry/community/tree/main/working-groups/end-user)
-has heard feedback from users who desire a vendor-agnostic space to discuss
-OpenTelemetry adoption and implementation, so we provide the following ways for
-you to connect with other users of the project, learn about OTel, and provide
-feedback about your OTel usage:
+Looking to connect with other OpenTelemetry end users in a vendor-agnostic
+space, or to learn more about OpenTelemetry? Perhaps you have some feedback
+about your implementation or adoption that you'd like to share with project
+contributors, or you want to help prioritize project issues. You've come to the
+right place!
 
-- [Slack channel](slack-channel/)
-- [Talks about OTel in practice](otel-in-practice/)
-- [Direct interview/feedback sessions](interviews-feedback/)
-- Panel discussions and surveys
-- Curated content on the
-  [OpenTelemetry YouTube channel](https://www.youtube.com/@otel-official)
+- To connect with other end users and learn about upcoming events:
+  - Join the [Slack channel](slack-channel/)
+  - Join the [APAC end user discussion group](discussion-group/)
+- To learn about OpenTelemetry, check out:
+  - [OTel in practice](otel-in-practice/)
+  - Curated content on the
+    [OpenTelemetry YouTube channel](https://www.youtube.com/@otel-official)
+- To provide feedback and help prioritize issues:
+  - Participate in a [direct interview/feedback session](interviews-feedback/)
+  - Take a [survey](feedback-survey/)
+  - Join a panel discussion (more info coming soon!)
+  - Vote on issues (more info coming soon!)
 
 These forums aim to bring together operations and development engineers from
 different organizations to discuss challenges and solutions to achieving
-ubiquitous observability. Share successes and failures, discover best practices,
-and meet others who are also on a journey to implement observability powered by
-OpenTelemetry.
+ubiquitous observability. We encourage you to share your successes and failures,
+discover best practices, and meet others who are also on a journey to implement
+observability powered by OpenTelemetry.
 
 ### Topics
 
@@ -48,5 +53,6 @@ OpenTelemetry.
 
 **I have questions about this, who can I reach out to?**
 
-You can find members of the End User SIG in
-[#otel-sig-end-user](https://cloud-native.slack.com/archives/C01RT3MSWGZ).
+You can find members of the
+[OpenTelemetry End User SIG](https://github.com/open-telemetry/community/tree/main/working-groups/end-user)
+in [#otel-sig-end-user](https://cloud-native.slack.com/archives/C01RT3MSWGZ).
