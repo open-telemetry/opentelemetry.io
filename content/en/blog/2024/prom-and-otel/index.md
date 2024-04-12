@@ -1,12 +1,12 @@
 ---
 title: Prometheus and OpenTelemetry - Better Together
 linkTitle: Prometheus and OpenTelemetry
-date: 2024-03-10
+date: 2024-03-31
 author: >-
   [Reese Lee](https://github.com/reese-lee) (New Relic),
   [Adriana Villela](https://github.com/avillela) (ServiceNow)
 cSpell:ignore: sharded hashmod targetallocator Kubelet
-# canonical_url: http://somewhere.else/ # This will be added in future
+canonical_url: [http://somewhere.else/ # This will be added in future](https://newrelic.com/blog/how-to-relic/prometheus-and-opentelemetry-better-together)
 ---
 
 ![Image of a Greek god holding a torch with the Prometheus logo, and OTel logo](Prom-and-otel-logos.png)
@@ -654,3 +654,5 @@ that can help with these concerns.
 Whether or not you choose to implement these solutions in your organization,
 it’s nice to know that there are additional options out there to lead you to
 observability greatness with OTel and Prometheus.
+
+_A version of this article was [originally posted](https://newrelic.com/blog/how-to-relic/prometheus-and-opentelemetry-better-together) on the New Relic blog._
