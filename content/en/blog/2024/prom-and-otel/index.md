@@ -3,10 +3,10 @@ title: Prometheus and OpenTelemetry - Better Together
 linkTitle: Prometheus and OpenTelemetry
 date: 2024-03-31
 author: >-
-  [Reese Lee](https://github.com/reese-lee) (New Relic),
-  [Adriana Villela](https://github.com/avillela) (ServiceNow)
+  [Reese Lee](https://github.com/reese-lee) (New Relic), [Adriana
+  Villela](https://github.com/avillela) (ServiceNow)
 cSpell:ignore: sharded hashmod targetallocator Kubelet
-canonical_url: [http://somewhere.else/ # This will be added in future](https://newrelic.com/blog/how-to-relic/prometheus-and-opentelemetry-better-together)
+canonical_url: https://newrelic.com/blog/how-to-relic/prometheus-and-opentelemetry-better-together
 ---
 
 ![Image of a Greek god holding a torch with the Prometheus logo, and OTel logo](Prom-and-otel-logos.png)
@@ -119,8 +119,9 @@ For exporting metrics from the OTel Collector to Prometheus, you have two
 options: the
 [Prometheus exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusexporter#prometheus-exporter),
 and the
-[Prometheus Remote Write exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/prometheusremotewriteexporter/README.md). 
-Note that [Prometheus is also now able to ingest OTLP natively](https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/).
+[Prometheus Remote Write exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/prometheusremotewriteexporter/README.md).
+Note that
+[Prometheus also now supports OTLP natively](https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/).
 
 The Prometheus exporter allows you to ship data in the Prometheus format, which
 is then scraped by a Prometheus server. It's used to report metrics via the
@@ -219,7 +220,7 @@ A **Target** is an endpoint that supplies Metrics for Prometheus to store. A
 targeted instance, parsing the response, and ingesting the collected samples to
 storage.
 
-```mermaid
+````mermaid
 sequenceDiagram
   participant Target Allocator
   participant Metrics Targets
@@ -656,4 +657,6 @@ Whether or not you choose to implement these solutions in your organization,
 it’s nice to know that there are additional options out there to lead you to
 observability greatness with OTel and Prometheus.
 
-_A version of this article was [originally posted](https://newrelic.com/blog/how-to-relic/prometheus-and-opentelemetry-better-together) on the New Relic blog._
+_A version of this article was
+[originally posted](https://newrelic.com/blog/how-to-relic/prometheus-and-opentelemetry-better-together)
+on the New Relic blog._
