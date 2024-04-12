@@ -296,8 +296,8 @@ public class Application {
 
 ##### Configure the exporter programmatically
 
-You can also configure OTLP exporters programmatically. This configuration will
-replace the default OTLP exporter, and will add a custom header to the requests.
+You can also configure OTLP exporters programmatically. This configuration
+replaces the default OTLP exporter and adds a custom header to the requests.
 
 ```java
 package io.opentelemetry.example.graal;
