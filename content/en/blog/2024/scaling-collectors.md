@@ -49,7 +49,8 @@ create an inventory file.
 
 1. Create an Ansible inventory file.
 
-   An Ansible inventory, which resides in a file named `inventory`, lists each host IP on a separate line, like this (8 hosts shown):
+   An Ansible inventory, which resides in a file named `inventory`, lists each
+   host IP on a separate line, like this (8 hosts shown):
 
    ```properties
    10.0.0.1    # hostname = ubuntu-01
@@ -146,8 +147,9 @@ Create a file named `deploy-opentelemetry.yml` in the same directory as your
 {{% alert title="Note" %}}
 
 Adjust the configuration to match the specific telemetry you intend to collect
-as well as where you plan to forward it to. This configuration snippet is a basic example
-designed for collecting host metrics that get forwarded to Prometheus.
+as well as where you plan to forward it to. This configuration snippet is a
+basic example designed for collecting host metrics that get forwarded to
+Prometheus.
 
 {{% /alert %}}
 
@@ -179,8 +181,8 @@ these steps to visualize them in Grafana:
    docker run -d -p 3000:3000 --name=grafana grafana/grafana
    ```
 
-3. **Access Grafana**: Open <http://localhost:3000> in your web browser.
-   The default login username and password are both `admin`.
+3. **Access Grafana**: Open <http://localhost:3000> in your web browser. The
+   default login username and password are both `admin`.
 
 4. **Change passwords** when prompted on first login -- pick a secure one!
 
@@ -210,4 +212,11 @@ For other installation methods and more detailed instructions, refer to the
 3. Explore other metrics and create dashboards to gain insights into your
    system's performance.
 
-This blog post illustrated how you can configure and deploy multiple OpenTelemetry Collectors across various Linux hosts with the help of Ansible, as well as visualize collected telemetry in Grafana. Incase you find this useful, Github repo for [OpenTelemetry Collector role](https://github.com/grafana/grafana-ansible-collection/tree/main/roles/opentelemetry_collector) for detailed configuration options. If you have questions, You can connect with me using my contact details at my GitHub profile [@ishanjainn](https://github.com/ishanjainn).
+This blog post illustrated how you can configure and deploy multiple
+OpenTelemetry Collectors across various Linux hosts with the help of Ansible, as
+well as visualize collected telemetry in Grafana. Incase you find this useful,
+Github repo for
+[OpenTelemetry Collector role](https://github.com/grafana/grafana-ansible-collection/tree/main/roles/opentelemetry_collector)
+for detailed configuration options. If you have questions, You can connect with
+me using my contact details at my GitHub profile
+[@ishanjainn](https://github.com/ishanjainn).

@@ -4487,6 +4487,22 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-24T14:54:56.149229+01:00"
   },
+  "https://grafana.com/docs/alloy/latest/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-12T20:40:28.798266582Z"
+  },
+  "https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/setup/instrument/dotnet/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-12T20:40:30.368448693Z"
+  },
+  "https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/setup/instrument/java/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-12T20:40:34.652514906Z"
+  },
+  "https://grafana.com/docs/grafana/latest/#installing-grafana": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-12T20:40:33.435682362Z"
+  },
   "https://grafana.com/oss/opentelemetry/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:52:48.999991-05:00"
