@@ -5,7 +5,7 @@ description: Monthly OpenTelemetry usage discussions, all are welcome!
 weight: 20
 ---
 
-**As of April 2024, AMER and EMEA sessions are discontinued in favor of 
+**As of April 2024, AMER and EMEA sessions are discontinued in favor of
 discussion panels with a more targeted focus.**
 
 Interested in learning how other end users are implementing OpenTelemetry in
