@@ -100,7 +100,7 @@ You can enable metrics by setting the environment variable
 `OTEL_PHP_INTERNAL_METRICS_ENABLED` to `true`.
 
 A manual metric is also emitted, which counts the number of quotes generated,
-including attributes for the number of items and total cost.
+including an attribute for the number of items.
 
 A counter is created from the globally configured Meter Provider, and is
 incremented each time a quote is generated:
