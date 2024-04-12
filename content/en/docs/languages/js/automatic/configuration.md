@@ -39,3 +39,22 @@ For example, to only enable the `env` and `host` detectors, you can set:
 ```shell
 OTEL_NODE_RESOURCE_DETECTORS=env,host
 ```
+
+### Excluding auto-instrumentation
+
+By default, all
+[supported instrumentation libraries](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#supported-instrumentations)
+are enabled, but you can use the environment variable
+`OTEL_NODE_ENABLED_INSTRUMENTATIONS` to enable only certain instrumentations by
+providing a comma-separated list of the instrumentation package names without
+the `@opentelemetry/instrumentation-` prefix.
+
+For example, to enable only
+[@opentelemetry/instrumentation-http](https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-instrumentation-http)
+and
+[@opentelemetry/instrumentation-express](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express)
+instrumentations:
+
+```shell
+OTEL_NODE_ENABLED_INSTRUMENTATIONS="http,express"
+```

@@ -12,8 +12,9 @@ traces to determine the cause of a memory leak.
 ## Setup
 
 To run this scenario, you will need to deploy the demo application and enable
-the `recommendationCache` feature flag. Let the application run for about 10
-minutes or so after enabling the feature flag to allow for data to populate.
+the `recommendationServiceCacheFailure` feature flag. Let the application run
+for about 10 minutes or so after enabling the feature flag to allow for data to
+populate.
 
 ## Diagnosis
 
