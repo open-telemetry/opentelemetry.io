@@ -4,10 +4,12 @@ linkTitle: End User
 description: Vendor-agnostic resources for OpenTelemetry users
 ---
 
-The [OpenTelemetry End User SIG](https://github.com/open-telemetry/community/tree/main/working-groups/end-user) has heard feedback from users who desire a
-vendor-agnostic space to discuss OpenTelemetry adoption and implementation, so
-we provide the following ways for you to connect with other users of the
-project, learn about OTel, and provide feedback about your OTel usage:
+The
+[OpenTelemetry End User SIG](https://github.com/open-telemetry/community/tree/main/working-groups/end-user)
+has heard feedback from users who desire a vendor-agnostic space to discuss
+OpenTelemetry adoption and implementation, so we provide the following ways for
+you to connect with other users of the project, learn about OTel, and provide
+feedback about your OTel usage:
 
 - [Slack channel](slack-channel/)
 - [Talks about OTel in practice](otel-in-practice/)
