@@ -119,7 +119,8 @@ For exporting metrics from the OTel Collector to Prometheus, you have two
 options: the
 [Prometheus exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusexporter#prometheus-exporter),
 and the
-[Prometheus Remote Write exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/prometheusremotewriteexporter/README.md).
+[Prometheus Remote Write exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/prometheusremotewriteexporter/README.md). 
+Note that [Prometheus is also now able to ingest OTLP natively](https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/).
 
 The Prometheus exporter allows you to ship data in the Prometheus format, which
 is then scraped by a Prometheus server. It's used to report metrics via the
