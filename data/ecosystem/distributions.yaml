@@ -7,10 +7,18 @@
   url: https://aws.amazon.com/otel/
   docsUrl: https://aws-otel.github.io/docs/getting-started/collector
   components: [Collector]
-- name: Grafana Agent
-  url: https://github.com/grafana/agent
-  docsUrl: https://grafana.com/docs/agent/latest/
+- name: Grafana Alloy
+  url: https://github.com/grafana/alloy
+  docsUrl: https://grafana.com/docs/alloy/latest/
   components: [Collector]
+- name: Grafana Distribution of OpenTelemetry for .NET
+  url: https://github.com/grafana/grafana-opentelemetry-dotnet
+  docsUrl: https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/setup/instrument/dotnet/
+  components: [.NET]
+- name: Grafana Distribution of OpenTelemetry for Java
+  url: https://github.com/grafana/grafana-opentelemetry-java
+  docsUrl: https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/setup/instrument/java/
+  components: [Java]
 - name: observIQ BindPlane Agent
   url: https://github.com/observIQ/observiq-otel-collector
   docsUrl: https://github.com/observIQ/bindplane-agent/tree/main/docs
