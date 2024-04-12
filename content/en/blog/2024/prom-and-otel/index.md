@@ -220,7 +220,7 @@ A **Target** is an endpoint that supplies Metrics for Prometheus to store. A
 targeted instance, parsing the response, and ingesting the collected samples to
 storage.
 
-````mermaid
+```mermaid
 sequenceDiagram
   participant Target Allocator
   participant Metrics Targets
@@ -229,18 +229,20 @@ sequenceDiagram
   Target Allocator ->>OTel Collectors: 2. Discover available Collectors
   Target Allocator ->>Target Allocator: 3. Assign Metrics targets
   OTel Collectors ->>Target Allocator: 4. Query TA for Metrics endpoints scrape
-  OTel Collectors ->>Metrics Targets: 5. Scrape Metrics target ```
+  OTel Collectors ->>Metrics Targets: 5. Scrape Metrics target
+```
 
 #### Discovery of Prometheus custom resources
+
 The Target Allocator’s second job is to provide the discovery of Prometheus
-Operator CRs, namely the [ServiceMonitor and PodMonitor](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator#target-allocator).
+Operator CRs, namely the
+[ServiceMonitor and PodMonitor](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator#target-allocator).
 
 In the past, all Prometheus scrape configurations had to be done via the
-Prometheus Receiver. When the Target Allocator’s service
-discovery feature is enabled, the TA simplifies the configuration of the
-Prometheus receiver, by creating scrape configurations in the Prometheus
-receiver from the PodMonitor and ServiceMonitor instances deployed in your
-cluster.
+Prometheus Receiver. When the Target Allocator’s service discovery feature is
+enabled, the TA simplifies the configuration of the Prometheus receiver, by
+creating scrape configurations in the Prometheus receiver from the PodMonitor
+and ServiceMonitor instances deployed in your cluster.
 
 ```mermaid
 flowchart RL
@@ -257,38 +259,44 @@ flowchart RL
   oc3 --> ta
   sm ~~~|"1. Discover Prometheus Operator CRs"| sm
   ta ~~~|"2. Add job to TA scrape configuration"| ta
-  oc3 ~~~|"3. Add job to OTel Collector scrape configuration"| oc3 ```
+  oc3 ~~~|"3. Add job to OTel Collector scrape configuration"| oc3
+```
 
 Even though Prometheus is not required to be installed in your Kubernetes
 cluster to use the Target Allocator for Prometheus CR discovery, the TA does
 require that the ServiceMonitor and PodMonitor be installed. These CRs are
 bundled with Prometheus Operator; however, they can be installed standalone as
 well. The easiest way to do this is to grab a copy of the individual
-[PodMonitor YAML](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/charts/crds/crds/crd-podmonitors.yaml) and
-[ServiceMonitor YAML](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/charts/crds/crds/crd-servicemonitors.yaml) custom resource
-definitions (CRDs).
+[PodMonitor YAML](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/charts/crds/crds/crd-podmonitors.yaml)
+and
+[ServiceMonitor YAML](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/charts/crds/crds/crd-servicemonitors.yaml)
+custom resource definitions (CRDs).
 
 OTel supports the PodMonitor and ServiceMonitor Prometheus resources because
 these are widely-used in Kubernetes infrastructure monitoring. As a result, the
 OTel Operator developers wanted to make it easy to add them to the OTel
 ecosystem.
 
-Note that the PodMonitor and ServiceMonitor are not useful for
-cluster-wide metrics collection, such as for Kubelet metrics collection. In that
-case, you still have to rely on Prometheus scrape configs in the Collector’s
+Note that the PodMonitor and ServiceMonitor are not useful for cluster-wide
+metrics collection, such as for Kubelet metrics collection. In that case, you
+still have to rely on Prometheus scrape configs in the Collector’s
 [Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md).
 
 #### Configuration
+
 The following is the YAML config for the OTel Collector CR. Note that this
-Collector is running in a namespace called `opentelemetry`, but it can run
-in whatever namespace you like.
+Collector is running in a namespace called `opentelemetry`, but it can run in
+whatever namespace you like.
 
 The main components are:
-* **mode:** This is one of four [OTel Collector deployment modes supported by the Operator](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#deployment-modes):
-Sidecar, Deployment, StatefulSet and DaemonSet.
-* **targetallocator:** This is where you configure the Target Allocator. Note
-that the [Target Allocator only works for the Deployment, DaemonSet, and StatefulSet modes](https://www.youtube.com/watch?v=Uwq4EPaMJFM).
-* **config:** This is where you configure the OTel Collector’s config YAML.
+
+- **mode:** This is one of four
+  [OTel Collector deployment modes supported by the Operator](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#deployment-modes):
+  Sidecar, Deployment, StatefulSet and DaemonSet.
+- **targetallocator:** This is where you configure the Target Allocator. Note
+  that the
+  [Target Allocator only works for the Deployment, DaemonSet, and StatefulSet modes](https://www.youtube.com/watch?v=Uwq4EPaMJFM).
+- **config:** This is where you configure the OTel Collector’s config YAML.
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
@@ -321,7 +329,7 @@ spec:
           interval: 30s
           collector_id: "${POD_NAME}"
 …
-````
+```
 
 To use the Target Allocator, you need to set `spec.targetallocator.enabled` to
 `true`. (See previous note about supported modes.)
