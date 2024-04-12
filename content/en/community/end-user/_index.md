@@ -4,16 +4,17 @@ linkTitle: End User
 description: Vendor-agnostic resources for OpenTelemetry users
 ---
 
-The [OpenTelemetry End User SIG]() has heard feedback from users who desire a 
-vendor-agnostic space to discuss OpenTelemetry adoption and implementation, 
-so we provide the following ways for you to connect with other users of the 
-project, learn about OTel, and provide feedback about your OTel usage: 
+The [OpenTelemetry End User SIG]() has heard feedback from users who desire a
+vendor-agnostic space to discuss OpenTelemetry adoption and implementation, so
+we provide the following ways for you to connect with other users of the
+project, learn about OTel, and provide feedback about your OTel usage:
 
 - [Slack channel](slack-channel/)
 - [Talks about OTel in practice](otel-in-practice/)
 - [Direct interview/feedback sessions](interviews-feedback/)
-- Panel discussions and surveys 
-- Curated content on the [OpenTelemetry YouTube channel](https://www.youtube.com/@otel-official)
+- Panel discussions and surveys
+- Curated content on the
+  [OpenTelemetry YouTube channel](https://www.youtube.com/@otel-official)
 
 These forums aim to bring together operations and development engineers from
 different organizations to discuss challenges and solutions to achieving
@@ -39,8 +40,8 @@ But here are some of the kinds of things we expect will be on the table:
 **Is this group only for OpenTelemetry end users?**
 
 No! Anyone is welcome to join and discuss their journey to observability. This
-group is hosted by the OpenTelemetry Community End-User SIG, so we
-expect most participants will be from organizations that are evaluating or using
+group is hosted by the OpenTelemetry Community End-User SIG, so we expect most
+participants will be from organizations that are evaluating or using
 OpenTelemetry.
 
 **I have questions about this, who can I reach out to?**
