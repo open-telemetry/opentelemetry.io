@@ -287,3 +287,5 @@ behavior and more effectively troubleshoot issues. You'll be better equipped to
 build and maintain resilient, reliable, and high-performing software
 applications in today's dynamic and demanding environments. To learn more, see
 [Error handling in OpenTelemetry](/docs/specs/otel/error-handling/).
+
+_A version of this article was [originally posted](https://newrelic.com/blog/how-to-relic/dude-wheres-my-error) on the New Relic blog._
