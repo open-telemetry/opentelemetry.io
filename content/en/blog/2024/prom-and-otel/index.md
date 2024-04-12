@@ -201,7 +201,7 @@ The Target Allocator serves two functions:
 
 Let’s dig into each of these.
 
-#### Even distribution of Prometheus targets
+### Even distribution of Prometheus targets
 
 The Target Allocator’s first job is to discover targets to scrape and OTel
 Collectors to allocate targets to. It does so as follows:
@@ -232,7 +232,7 @@ sequenceDiagram
   OTel Collectors ->>Metrics Targets: 5. Scrape Metrics target
 ```
 
-#### Discovery of Prometheus custom resources
+### Discovery of Prometheus custom resources
 
 The Target Allocator’s second job is to provide the discovery of Prometheus
 Operator CRs, namely the
@@ -282,7 +282,7 @@ metrics collection, such as for Kubelet metrics collection. In that case, you
 still have to rely on Prometheus scrape configs in the Collector’s
 [Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md).
 
-#### Configuration
+### Configuration
 
 The following is the YAML config for the OTel Collector CR. Note that this
 Collector is running in a namespace called `opentelemetry`, but it can run in
