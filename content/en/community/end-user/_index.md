@@ -1,6 +1,6 @@
 ---
 title: End-user resources
-linkTitle: End User
+linkTitle: End user
 description: Vendor-agnostic resources for OpenTelemetry users
 ---
 
