@@ -94,10 +94,10 @@ $span->addEvent('Quote processed, response sent back', [
 
 In this demo, metrics are emitted by the batch trace and logs processors. The
 metrics describe the internal state of the processor, such as number of exported
-spans/logs, the queue limit, and queue usage.
+spans or logs, the queue limit, and queue usage.
 
 You can enable metrics by setting the environment variable
-`OTEL_PHP_INTERNAL_METRICS_ENABLED=true`.
+`OTEL_PHP_INTERNAL_METRICS_ENABLED` to `true`.
 
 A manual metric is also emitted, which counts the number of quotes generated,
 including attributes for the number of items and total cost.
