@@ -4,7 +4,11 @@ language: dotnet
 tags:
   - instrumentation
   - aws
+  - aws-sdk
   - dotnet
+  - sqs
+  - sns
+  - dynamodb
 license: Apache 2.0
 description: This package provides AWS SDK client instrumentation
 authors:

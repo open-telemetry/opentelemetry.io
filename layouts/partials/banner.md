@@ -3,8 +3,8 @@
 
 <div class="o-banner">
 
-<i class="fas fa-bullhorn"></i> Join us at
-[**KubeCon + CloudNativeCon EU**, March 19 - 22, 2024](/blog/2024/kubecon-eu/)!
+<i class="fas fa-bullhorn"></i> Join us for 
+[**OTel Community Day** on June 25th](https://sessionize.com/OTel-Community-Day/)!
 
 {{/*
 

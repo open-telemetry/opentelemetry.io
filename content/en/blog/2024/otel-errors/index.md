@@ -1,6 +1,7 @@
 ---
 title: Dude, where's my error? How OpenTelemetry records errors
 linkTitle: Understanding OTel Errors
+<<<<<<< HEAD
 date: 2024-03-06
 author:
   >- # If you have only one author, then add the single name on this line in quotes.
@@ -9,7 +10,18 @@ author:
 canonical_url: https://newrelic.com/blog/how-to-relic/dude-wheres-my-error
 ---
 
-![A confused penguin trying to learn about errors and exceptions](penguin-chalkboard.jpg)
+# ![A confused penguin trying to learn about errors and exceptions](penguin-chalkboard.jpg)
+
+date: 2024-03-27 author: >- [Reese Lee](https://github.com/reese-lee) (New
+Relic), [Adriana Villela](https://github.com/avillela) (ServiceNow)
+cSpell:ignore: Dalle canonical_url:
+https://newrelic.com/blog/how-to-relic/dude-wheres-my-error
+
+---
+
+![A confused penguin trying to learn about errors and exceptions. Image generated with AI using Dalle3 via Bing Copilot](penguin-chalkboard.jpg)
+
+> > > > > > > 0275eecadaf56ff79a91c6044ad526b040967c1d
 
 Depending on the language you’re used to developing in, you may have certain
 ideas about what an error is, as well as what constitutes an exception and how
@@ -177,9 +189,13 @@ further information of what led to that error, by pulling up the correlated
 trace.
 
 To record an error on a log, either `exception.type` or `exception.message` is
-required, while `exception.stacktrace` is recommended. You can view more
-information about the semantic conventions for log exceptions
-[here](/docs/specs/semconv/exceptions/exceptions-logs/).
+<<<<<<< HEAD required, while `exception.stacktrace` is recommended. You can view
+more information about the semantic conventions for log exceptions
+[here](/docs/specs/semconv/exceptions/exceptions-logs/). ======= required, while
+`exception.stacktrace` is recommended. For more information, see
+[Semantic Conventions for Exceptions in Logs](/docs/specs/semconv/exceptions/exceptions-logs/).
+
+> > > > > > > 0275eecadaf56ff79a91c6044ad526b040967c1d
 
 ## Logs or spans to capture errors?
 
@@ -285,6 +301,14 @@ than vendors might have previously done.
 By leveraging OTel's capabilities to record errors through logs and spans and to
 enhance them with metadata, you can gain deeper insights into your applications'
 behavior and more effectively troubleshoot issues. You'll be better equipped to
-build and maintain resilient, reliable, and high-performing software
-applications in today's dynamic and demanding environments. Learn more about
-error handling in OTel [here](/docs/specs/otel/error-handling/).
+build and maintain resilient, reliable, and high-performing software <<<<<<<
+HEAD applications in today's dynamic and demanding environments. Learn more
+about error handling in OTel [here](/docs/specs/otel/error-handling/). =======
+applications in today's dynamic and demanding environments. To learn more, see
+[Error handling in OpenTelemetry](/docs/specs/otel/error-handling/).
+
+_A version of this article was
+[originally posted](https://newrelic.com/blog/how-to-relic/dude-wheres-my-error)
+on the New Relic blog._
+
+> > > > > > > 0275eecadaf56ff79a91c6044ad526b040967c1d
