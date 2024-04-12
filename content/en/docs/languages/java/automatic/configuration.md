@@ -32,7 +32,7 @@ specific portions of the SDK & agent:
 
 {{% alert title="Important" color="warning" %}}
 
-Unlike the SDK autoconfiguration, the Java agent and OpenTelemetry Spring Boot
+Unlike the SDK autoconfiguration, versions 2.0+ of the Java agent and OpenTelemetry Spring Boot
 starter use `http/protobuf` as the default protocol, not `grpc`.
 
 {{% /alert %}}
