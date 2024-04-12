@@ -4,7 +4,7 @@ description: Help improve OpenTelemetry - share your feedback directly with us!
 weight: 10
 ---
 
-One of the core functions of the OpenTelemetry End User Working Group is to
+One of the core functions of the OpenTelemetry End User SIG is to
 improve the project by gathering feedback from end users and sharing them with
 the appropriate SIGs to help drive prioritization of improvements and changes to
 the project.
@@ -24,8 +24,8 @@ We will then take the feedback you shared and turn them into actionable tasks
 for the relevant SIGs, as well as provide context and insight for you during the
 session as appropriate.
 
-We schedule these sessions once a month, usually during one of the end-user
-working group's meetings (alternating Thursdays at 10AM Pacific Time), but can
+We try to schedule these sessions once a month, usually during one of the end-user
+SIG's meetings (alternating Thursdays at 10AM Pacific Time), but can
 set up a different time if that does not work for you. The sessions are
 typically attended by a few project maintainers and/or Governance Committee
 members, as well as some curious general members of the Community.
@@ -40,13 +40,14 @@ Things to keep in mind:
   concerns.
 - These are open to the public, so other users may come and ask you questions.
 
-To schedule a session, reach out to us in
-[CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf):
+You can view [past recordings](https://www.youtube.com/playlist?list=PLVYDBkQ1TdywIl9xKEo5_u7zlwY38dW43) on the OpenTelemetry YouTube channel.
+
+To schedule a session, reach out to us via
+[CNCF's Community Slack](https://communityinviter.com/apps/cloud-native/cncf):
 
 - In the
-  [#otel-user-research](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
+  [#otel-sig-end-user](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
   channel
 - Via direct message: ping
-  [Reese Lee](https://cloud-native.slack.com/team/U03UARAJ405),
-  [Adriana Villela](https://cloud-native.slack.com/team/U02EUCBFK8A), or
-  [Rynn Mancuso](https://cloud-native.slack.com/team/U03FU45JA1M)
+  [Reese Lee](https://cloud-native.slack.com/team/U03UARAJ405) or
+  [Adriana Villela](https://cloud-native.slack.com/team/U02EUCBFK8A)
