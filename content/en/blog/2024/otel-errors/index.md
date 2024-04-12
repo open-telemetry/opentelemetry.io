@@ -1,27 +1,14 @@
 ---
 title: Dude, where's my error? How OpenTelemetry records errors
 linkTitle: Understanding OTel Errors
-<<<<<<< HEAD
-date: 2024-03-06
-author:
-  >- # If you have only one author, then add the single name on this line in quotes.
+date: 2024-04-12
+author: >-
   [Reese Lee](https://github.com/reese-lee) (New Relic), [Adriana
   Villela](https://github.com/avillela) (ServiceNow)
 canonical_url: https://newrelic.com/blog/how-to-relic/dude-wheres-my-error
 ---
 
-# ![A confused penguin trying to learn about errors and exceptions](penguin-chalkboard.jpg)
-
-date: 2024-03-27 author: >- [Reese Lee](https://github.com/reese-lee) (New
-Relic), [Adriana Villela](https://github.com/avillela) (ServiceNow)
-cSpell:ignore: Dalle canonical_url:
-https://newrelic.com/blog/how-to-relic/dude-wheres-my-error
-
----
-
 ![A confused penguin trying to learn about errors and exceptions. Image generated with AI using Dalle3 via Bing Copilot](penguin-chalkboard.jpg)
-
-> > > > > > > 0275eecadaf56ff79a91c6044ad526b040967c1d
 
 Depending on the language you’re used to developing in, you may have certain
 ideas about what an error is, as well as what constitutes an exception and how
