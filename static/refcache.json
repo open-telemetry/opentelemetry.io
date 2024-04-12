@@ -3875,6 +3875,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:19:02.768932-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/issues/3966": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-11T14:54:53.493845265Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/issues/3967": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-11T14:54:50.847233614Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/437": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:36:56.207791-05:00"
@@ -6850,6 +6858,22 @@
   "https://prometheus.io/docs/concepts/jobs_instances/#jobs-and-instances": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:55:30.198683-05:00"
+  },
+  "https://prometheus.io/docs/instrumenting/clientlibs/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-11T14:54:50.705990785Z"
+  },
+  "https://prometheus.io/docs/instrumenting/exposition_formats/#basic-info": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-11T14:54:57.142101041Z"
+  },
+  "https://prometheus.io/docs/instrumenting/exposition_formats/#comments-help-text-and-type-information": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-11T14:54:55.03691741Z"
+  },
+  "https://prometheus.io/docs/instrumenting/writing_clientlibs/#overall-structure": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-11T14:54:52.880727432Z"
   },
   "https://prometheus.io/docs/practices/naming/#metric-names": {
     "StatusCode": 206,
