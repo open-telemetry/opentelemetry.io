@@ -397,8 +397,11 @@ value for it so it can be used as part of the default settings.
 Go ahead and add the following code to your `factory.go` file:
 
 ```go
+var (
+	typeStr         = component.MustNewType("tailtracer")
+)
+
 const (
-	typeStr         = "tailtracer"
 	defaultInterval = 1 * time.Minute
 )
 ```
@@ -433,8 +436,11 @@ import (
 	"go.opentelemetry.io/collector/receiver"
 )
 
+var (
+	typeStr         = component.MustNewType("tailtracer")
+)
+
 const (
-	typeStr         = "tailtracer"
 	defaultInterval = 1 * time.Minute
 )
 
@@ -544,8 +550,11 @@ import (
 	"go.opentelemetry.io/collector/receiver"
 )
 
+var (
+	typeStr         = component.MustNewType("tailtracer")
+)
+
 const (
-	typeStr         = "tailtracer"
 	defaultInterval = 1 * time.Minute
 )
 
@@ -860,11 +869,6 @@ pipeline and the factory is responsible to make sure the next consumer (either a
 processor or exporter) in the pipeline is valid otherwise it should generate an
 error.
 
-The Collector's API provides some standard error types to help the factory
-handle pipeline configurations. Your receiver factory should throw a
-`component.ErrNilNextConsumer` in case the next consumer has an issue and is
-passed as nil.
-
 The `createTracesReceiver()` function will need a guard clause to make that
 validation.
 
@@ -888,8 +892,11 @@ import (
 	"go.opentelemetry.io/collector/receiver"
 )
 
+var (
+	typeStr         = component.MustNewType("tailtracer")
+)
+
 const (
-	typeStr         = "tailtracer"
 	defaultInterval = 1 * time.Minute
 )
 
@@ -900,9 +907,6 @@ func createDefaultConfig() component.Config {
 }
 
 func createTracesReceiver(_ context.Context, params receiver.CreateSettings, baseCfg component.Config, consumer consumer.Traces) (receiver.Traces, error) {
-	if consumer == nil {
-		return nil, component.ErrNilNextConsumer
-	}
 
 	logger := params.Logger
 	tailtracerCfg := baseCfg.(*Config)
@@ -927,8 +931,6 @@ func NewFactory() receiver.Factory {
 
 {{% alert title="Check your work" color="primary" %}}
 
-- Added a guard clause that verifies if the consumer is properly instantiated
-  and if not returns the `component.ErrNilNextConsumer`error.
 - Added a variable called `logger` and initialized it with the Collector's
   logger that is available as a field named `Logger` within the
   `receiver.CreateSettings` reference.
