@@ -282,12 +282,24 @@ must be able to receive OTLP over `grpc`. Therefore, the example uses
 
 #### Excluding auto-instrumentation {#js-excluding-auto-instrumentation}
 
-By default, the Node.js auto-instrumentation ships with
-[many instrumentation libraries](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#supported-instrumentations).
-At the moment, there is no way to opt-in to only specific packages or disable
-specific packages. If you don't want to use a package included by the default
-image you must either supply your own image that includes only the packages you
-want or use manual instrumentation.
+By default, the Node.js auto-instrumentation has all the instrumentation
+libraries enabled.
+
+To enable only specific instrumentations you can use the
+`OTEL_NODE_ENABLED_INSTRUMENTATIONS` environment variable as documented in the
+[Node.js auto-instrumentation documentation](/docs/languages/js/automatic/configuration/#excluding-auto-instrumentation).
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+# ... other fields skipped from this example
+spec:
+  # ... other fields skipped from this example
+  nodejs:
+    env:
+      - name: OTEL_NODE_ENABLED_INSTRUMENTATIONS
+        value: http,nestjs-core # comma-separated list of the instrumentation package names without the `@opentelemetry/instrumentation-` prefix.
+```
 
 #### Learn more {#js-learn-more}
 
