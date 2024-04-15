@@ -308,9 +308,9 @@
   commercial: true
 - name: Uptrace
   nativeOTLP: true
-  url: https://uptrace.dev
+  url: https://uptrace.dev/get/open-source-apm.html
   contact:
-  oss: false
+  oss: true
   commercial: true
 - name: Apache SkyWalking
   nativeOTLP: true
