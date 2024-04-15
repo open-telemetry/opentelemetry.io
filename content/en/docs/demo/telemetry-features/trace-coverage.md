@@ -12,7 +12,7 @@ aliases: [trace_service_features, trace-features, ../trace-features]
 | Checkout           | Go         | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | ✅                 |
 | Currency           | C++        | 🔕                        | ✅                   | ✅                   | ✅                      | 🔕         | 🔕      | 🚧                 |
 | Email              | Ruby       | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
-| Fraud Detection    | Kotlin     | ✅                        | 🚧                   | 🚧                   | 🚧                      | 🚧         | 🚧      | 🚧                 |
+| Fraud Detection    | Kotlin     | ✅                        | 🚧                   | 🚧                   | 🚧                      | ✅         | 🚧      | 🚧                 |
 | Frontend           | JavaScript | ✅                        | ✅                   | ✅                   | 🔕                      | ✅         | ✅      | ✅                 |
 | Payment            | JavaScript | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | ✅      | ✅                 |
 | Product Catalog    | Go         | ✅                        | 🔕                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
