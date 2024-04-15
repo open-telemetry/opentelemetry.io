@@ -24,6 +24,7 @@ values are stored in the `demo.flagd.json` file. To enable a flag, change the
 | `paymentServiceFailure`             | Payment Service  | Generate an error when calling the `charge` method.                                                       |
 | `paymentServiceUnreachable`         | Checkout Service | Use a bad address when calling the PaymentService to make it seem like the PaymentService is unavailable. |
 | `loadgeneratorFloodHomepage`        | Loadgenerator    | Start flooding the homepage with a huge amount of requests, configurable by changing flagd JSON on state. |
+| `kafkaQueueProblems`                | Kafka            | Overloads Kafka queue while simultaneously introducing a consumer side delay leading to a lag spike.      |
 
 ## Feature Flag Architecture
 
