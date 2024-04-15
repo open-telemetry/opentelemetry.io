@@ -10,8 +10,8 @@ cSpell:ignore: flagd loadgenerator OLJCESPC7Z
 The demo provides several feature flags that you can use to simulate different
 scenarios. These flags are managed by [`flagd`](https://flagd.dev), a simple
 feature flag service that supports [OpenFeature](https://openfeature.dev). Flag
-values are stored in the `demo.flagd.json` file. To enable a flag, change the
-`defaultVariant` value in the config file for a given flag to "on".
+values are stored in the `src/flagd/demo.flagd.json` file. To enable a flag,
+change the `defaultVariant` value in the config file for a given flag to "on".
 
 | Feature Flag                        | Service(s)       | Description                                                                                               |
 | ----------------------------------- | ---------------- | --------------------------------------------------------------------------------------------------------- |
