@@ -476,7 +476,7 @@ supported for spring web versions 3.1+. To learn more about the OpenTelemetry
 `RestTemplate` interceptor, see
 [opentelemetry-spring-web-3.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-web/spring-web-3.1/library).
 
-The following ways of creating a `RestTemplate` bean are supported:
+The following ways of creating a `RestTemplate` are supported:
 
 ```java
 @Bean
