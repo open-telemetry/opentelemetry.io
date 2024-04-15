@@ -493,7 +493,7 @@ public MyService(RestTemplateBuilder restTemplateBuilder) {
 
 Also provides autoconfiguration for the `RestClient` web client.
 
-The following ways of creating a `RestClient` bean are supported:
+The following ways of creating a `RestClient` are supported:
 
 ```java
 @Bean
