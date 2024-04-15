@@ -811,6 +811,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:07:39.690877-05:00"
   },
+  "https://docs.ansible.com/ansible/latest/collections/grafana/grafana/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-03-19T11:21:52.991213698Z"
+  },
   "https://docs.appdynamics.com/latest/en/application-monitoring/appdynamics-for-opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:51:22.195056-05:00"
@@ -1631,6 +1635,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-02-19T17:27:38.673604461+01:00"
   },
+  "https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.typesafe-configuration-properties.relaxed-binding.environment-variables": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-11T13:40:26.805402963+02:00"
+  },
   "https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:15:14.908906-05:00"
@@ -1638,6 +1646,10 @@
   "https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:53.797365-05:00"
+  },
+  "https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/expressions.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-03T12:51:54.758528517+02:00"
   },
   "https://docs.spring.io/spring-security/reference/servlet/authorization/architecture.html#authz-authorities": {
     "StatusCode": 206,
@@ -2594,6 +2606,10 @@
   "https://github.com/instana/otel-database-dc": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:36.112572-05:00"
+  },
+  "https://github.com/ishanjainn": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-19T11:21:47.871135724Z"
   },
   "https://github.com/jack-berg": {
     "StatusCode": 200,
@@ -3879,6 +3895,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:19:02.768932-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/issues/3966": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-11T14:54:53.493845265Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/issues/3967": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-11T14:54:50.847233614Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/437": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:36:56.207791-05:00"
@@ -4485,15 +4509,19 @@
   },
   "https://grafana.com/docs/alloy/latest/": {
     "StatusCode": 200,
-    "LastSeen": "2024-04-10T00:09:47.949842+02:00"
+    "LastSeen": "2024-04-12T20:40:28.798266582Z"
   },
   "https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/setup/instrument/dotnet/": {
     "StatusCode": 200,
-    "LastSeen": "2024-04-10T00:09:50.125651+02:00"
+    "LastSeen": "2024-04-12T20:40:30.368448693Z"
   },
   "https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/setup/instrument/java/": {
     "StatusCode": 200,
-    "LastSeen": "2024-04-10T00:09:55.400731+02:00"
+    "LastSeen": "2024-04-12T20:40:34.652514906Z"
+  },
+  "https://grafana.com/docs/grafana/latest/#installing-grafana": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-12T20:40:33.435682362Z"
   },
   "https://grafana.com/grafana/dashboards/15983-opentelemetry-collector/": {
     "StatusCode": 200,
@@ -6859,6 +6887,22 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:55:30.198683-05:00"
   },
+  "https://prometheus.io/docs/instrumenting/clientlibs/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-11T14:54:50.705990785Z"
+  },
+  "https://prometheus.io/docs/instrumenting/exposition_formats/#basic-info": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-11T14:54:57.142101041Z"
+  },
+  "https://prometheus.io/docs/instrumenting/exposition_formats/#comments-help-text-and-type-information": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-11T14:54:55.03691741Z"
+  },
+  "https://prometheus.io/docs/instrumenting/writing_clientlibs/#overall-structure": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-11T14:54:52.880727432Z"
+  },
   "https://prometheus.io/docs/practices/naming/#metric-names": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:06:10.627254-05:00"
@@ -7675,7 +7719,7 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:06:33.174666-05:00"
   },
-  "https://uptrace.dev": {
+  "https://uptrace.dev/get/open-source-apm.html": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:08:12.676498-05:00"
   },
@@ -7794,6 +7838,10 @@
   "https://www.alibabacloud.com/help/en/arms/tracing-analysis/get-started-with-tracing-analysis": {
     "StatusCode": 200,
     "LastSeen": "2024-01-19T09:04:05.862693+01:00"
+  },
+  "https://www.ansible.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-19T11:21:48.883430689Z"
   },
   "https://www.apollographql.com/docs/federation/": {
     "StatusCode": 206,
