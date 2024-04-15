@@ -59,7 +59,7 @@ When adding the NuGet packages to your project you get an error message similar
 to:
 
 ```txt
-Could not install package 'OpenTelemetry.AutoInstrumentation.Runtime.Native 1.0.0-rc.1'. You are trying to install this package into a project that targets '.NETFramework,Version=v4.7.2', but the package does not contain any assembly references or content files that are compatible with that framework. For more information, contact the package author.
+Could not install package 'OpenTelemetry.AutoInstrumentation.Runtime.Native 1.5.0'. You are trying to install this package into a project that targets '.NETFramework,Version=v4.7.2', but the package does not contain any assembly references or content files that are compatible with that framework. For more information, contact the package author.
 ```
 
 The NuGet packages don't support old-style `csproj` projects. Either deploy the
