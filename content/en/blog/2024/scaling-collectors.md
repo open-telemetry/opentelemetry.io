@@ -1,7 +1,7 @@
 ---
 title: Manage OpenTelemetry Collectors at scale with Ansible
 linkTitle: Collectors at scale with Ansible
-date: 2024-04-12
+date: 2024-04-15
 author: '[Ishan Jain](https://github.com/ishanjainn) (Grafana)'
 cSpell:ignore: ansible associated Ishan Jain ishanjainn
 ---
