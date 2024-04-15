@@ -3,7 +3,7 @@ title: Manage OpenTelemetry Collectors at scale with Ansible
 linkTitle: Collectors at scale with Ansible
 date: 2024-04-12
 author: '[Ishan Jain](https://github.com/ishanjainn) (Grafana)'
-cSpell:ignore: ansible associated Ishan Jain
+cSpell:ignore: ansible associated Ishan Jain ishanjainn
 ---
 
 You can scale the deployment of
@@ -215,7 +215,7 @@ For other installation methods and more detailed instructions, refer to the
 This blog post illustrated how you can configure and deploy multiple
 OpenTelemetry Collectors across various Linux hosts with the help of Ansible, as
 well as visualize collected telemetry in Grafana. Incase you find this useful,
-Github repo for
+GitHub repository for
 [OpenTelemetry Collector role](https://github.com/grafana/grafana-ansible-collection/tree/main/roles/opentelemetry_collector)
 for detailed configuration options. If you have questions, You can connect with
 me using my contact details at my GitHub profile
