@@ -17,4 +17,4 @@ createdAt: 2022-10-28
 package:
   registry: nuget
   name: OpenTelemetry.Instrumentation.Wcf
-  version: 1.0.0-rc.15
+  version: 1.0.0-rc.16

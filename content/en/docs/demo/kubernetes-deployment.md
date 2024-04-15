@@ -41,7 +41,6 @@ The following command will install the demo application to your Kubernetes
 cluster.
 
 ```shell
-kubectl create namespace otel-demo
 kubectl apply --namespace otel-demo -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-demo/main/kubernetes/opentelemetry-demo.yaml
 ```
 
@@ -139,7 +138,7 @@ environment variable on the frontend component:
 ```yaml
 components:
   frontend:
-    env:
+    envOverrides:
       - name: PUBLIC_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
         value: http://otel-demo.my-domain.com/otlp-http/v1/traces
 ```
@@ -158,7 +157,6 @@ following sub-paths:
 
 - Web store: `/` (base)
 - Grafana: `/grafana`
-- Feature Flags UI: `/feature`
 - Load Generator UI: `/loadgen/` (must include trailing slash)
 - Jaeger UI: `/jaeger/ui`
 
