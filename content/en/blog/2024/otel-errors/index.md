@@ -5,7 +5,7 @@ date: 2024-04-12
 author: 
   [Reese Lee](https://github.com/reese-lee) (New Relic), 
   [Adriana Villela](https://github.com/avillela) (ServiceNow)
-cSpell:ignore: Dalle 
+cSpell:ignore: Dalle
 canonical_url:
 https://newrelic.com/blog/how-to-relic/dude-wheres-my-error
 
