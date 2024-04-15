@@ -7,7 +7,8 @@ cSpell:ignore: prepopulated spacewhite
 ---
 
 This document is related to contributing do documentation.
-If you are looking on how to contribute to the OpenTelemetry project in general see the [OpenTelemetry Contributor Guide](https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md)
+If you are looking on how to contribute to the OpenTelemetry project in general see the
+[OpenTelemetry Contributor Guide](https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md)
 , which provides details on the Contributor License Agreement and the Code of
 Conduct.
 
