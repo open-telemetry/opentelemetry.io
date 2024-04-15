@@ -565,6 +565,21 @@ processor. This feature is supported for spring webflux versions 5.0+. For
 details, see
 [opentelemetry-spring-webflux-5.3](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webflux/spring-webflux-5.3/library).
 
+The following ways of creating a `WebClient` are supported:
+
+```java
+@Bean
+public WebClient webClient() {
+    return WebClient.create();
+}
+```
+
+```java
+public MyService(WebClient.Builder webClientBuilder) {
+    this.webClient = webClientBuilder.build();
+}
+```
+
 ### Additional Instrumentations
 
 #### JDBC Instrumentation
