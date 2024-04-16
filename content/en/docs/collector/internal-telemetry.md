@@ -4,7 +4,7 @@ weight: 25
 cSpell:ignore: journalctl kube otecol pprof tracez zpages
 ---
 
-You can monitor the health of any Collector instance by checking its own
+You can monitor the health of any OpenTelemetry Collector instance by checking its own
 internal telemetry. Read on to learn how to configure this telemetry to help you
 [troubleshoot](/docs/collector/troubleshooting/) Collector issues.
 
