@@ -2,7 +2,7 @@
 title: Dude, where's my error? How OpenTelemetry records errors
 linkTitle: Understanding OTel Errors
 date: 2024-04-12 
-author: 
+author: >-
   [Reese Lee](https://github.com/reese-lee) (New Relic), 
   [Adriana Villela](https://github.com/avillela) (ServiceNow)
 cSpell:ignore: Dalle
