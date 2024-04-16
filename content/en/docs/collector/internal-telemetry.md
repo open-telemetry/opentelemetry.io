@@ -14,7 +14,7 @@ By default, the Collector exposes its own telemetry in two ways:
 
 - Internal [metrics](#configure-internal-metrics) are exposed using a Prometheus
   interface which defaults to port `8888`.
-- [Logs](#configure-internal-logs) are emitted to `stdout` by default.
+- [Logs](#configure-internal-logs) are emitted to `stderr` by default.
 
 ### Configure internal metrics
 
