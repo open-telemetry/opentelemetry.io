@@ -132,8 +132,8 @@ _Figure 2. Steps for opening a PR using GitHub._
 1. On the page where you see the issue, select the **Edit this page** option in
    the right-hand side navigation panel.
 
-1. If you're not a member of the project, GitHub offers to create a fork of
-   the repository. Select **Fork this repository**.
+1. If you're not a member of the project, GitHub offers to create a fork of the
+   repository. Select **Fork this repository**.
 
 1. Make your changes in the GitHub editor.
 
