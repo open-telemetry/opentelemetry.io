@@ -8375,6 +8375,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:04:59.787702-05:00"
   },
+  "https://www.nuget.org/packages/OpenTelemetry.Exporter.Console/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-26T11:49:03.510469+01:00"
+  },
   "https://www.nuget.org/packages/OpenTelemetry.Exporter.Geneva": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:16:52.640928+01:00"
@@ -8399,6 +8403,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:16:55.911758+01:00"
   },
+  "https://www.nuget.org/packages/OpenTelemetry.Exporter.OpenTelemetryProtocol/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-26T11:21:32.246063+01:00"
+  },
   "https://www.nuget.org/packages/OpenTelemetry.Exporter.Prometheus.AspNetCore": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:16:56.504932+01:00"
@@ -8414,6 +8422,10 @@
   "https://www.nuget.org/packages/OpenTelemetry.Exporter.Zipkin": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:16:58.383719+01:00"
+  },
+  "https://www.nuget.org/packages/OpenTelemetry.Extensions.Hosting": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-26T11:49:01.977306+01:00"
   },
   "https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AWS": {
     "StatusCode": 200,
