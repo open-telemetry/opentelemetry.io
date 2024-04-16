@@ -1,0 +1,20 @@
+# cSpell:ignore ansible Ishan ishanjainn
+title: Ansible role for OpenTelemetry Collector
+registryType: utilities
+language: yaml
+tags:
+  - collector
+  - ansible
+  - ansible-role
+license: GPL-3.0
+description:
+  Ansible role by Grafana to deploy and manage OpenTelemetry Collector across
+  multiple machines
+authors:
+  - name: Ishan Jain
+    url: https://www.github.com/ishanjainn
+  - name: Grafana Labs
+urls:
+  repo: https://github.com/grafana/grafana-ansible-collection/tree/main/roles/opentelemetry_collector
+  docs: https://galaxy.ansible.com/ui/repo/published/grafana/grafana/content/role/opentelemetry_collector
+createdAt: 2024-03-12

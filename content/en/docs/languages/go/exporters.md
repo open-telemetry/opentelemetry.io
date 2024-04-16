@@ -110,7 +110,7 @@ docker run -d --name jaeger \
   jaegertracing/all-in-one:latest
 ```
 
-### OTLP metrics over HTTP (Experimental)
+### OTLP metrics over HTTP
 
 [`go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp)
 contains an implementation of OTLP metrics exporter using HTTP with binary
@@ -129,7 +129,7 @@ func newExporter(ctx context.Context) (metric.Exporter, error) {
 }
 ```
 
-### OTLP metrics over gRPC (Experimental)
+### OTLP metrics over gRPC
 
 [`go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc)
 contains an implementation of OTLP metrics exporter using gRPC.

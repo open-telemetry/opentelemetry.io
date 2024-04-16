@@ -9,13 +9,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      # Make sure that we only install the dependencies for textlint to speed up install
-      - run: |
+      - name: Create and use reduced-dependencies package.json
+        run: |
           mkdir -p tmp
           jq '.devDependencies |= with_entries( select(.key | startswith("textlint")))
               | del(.dependencies, .optionalDependencies)' \
-              package.json > tmp/package-min.json
-          cp tmp/package-min.json package.json
+              package.json > tmp/package-ci.json
+          cp tmp/package-ci.json package.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: tmp/package-ci.json
       - run: npm install --ignore-scripts --omit=optional
       - run: .github/workflows/scripts/textlint.sh
 
@@ -24,7 +29,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Create and use reduced-dependencies package.json
         run: |
           mkdir -p tmp
@@ -32,7 +36,12 @@ jobs:
                   select(.key | test("gulp|markdown|through|require|yargs"))
                 )
                 | del(.dependencies, .optionalDependencies)' \
-            package.json > tmp/package-min.json
-          cp tmp/package-min.json package.json
+            package.json > tmp/package-ci.json
+          cp tmp/package-ci.json package.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: tmp/package-ci.json
       - run: npm install --ignore-scripts --omit=optional
       - run: npm run check:markdown

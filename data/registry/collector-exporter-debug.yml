@@ -13,3 +13,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/debugexporter
 createdAt: 2020-11-05
+package:
+  registry: go-collector
+  name: go.opentelemetry.io/collector/exporter/debugexporter
+  version: v0.98.0

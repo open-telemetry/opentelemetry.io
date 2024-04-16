@@ -23,19 +23,18 @@ Want to deploy the demo and see it in action? Start here.
 Want to understand how a particular language's instrumentation works? Start
 here.
 
-| Language      | Automatic Instrumentation                          | Instrumentation Libraries                                                                                                                | Manual Instrumentation                                                                       |
-| ------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| .NET          |                                                    | [Cart Service](services/cart/)                                                                                                           | [Cart Service](services/cart/)                                                               |
-| C++           |                                                    |                                                                                                                                          | [Currency Service](services/currency/)                                                       |
-| Erlang/Elixir |                                                    | [Feature Flag Service](services/feature-flag/)                                                                                           | [Feature Flag Service](services/feature-flag/)                                               |
-| Go            |                                                    | [Accounting Service](services/accounting/), [Checkout Service](services/checkout/), [Product Catalog Service](services/product-catalog/) | [Checkout Service](services/checkout/), [Product Catalog Service](services/product-catalog/) |
-| Java          | [Ad Service](services/ad/)                         |                                                                                                                                          | [Ad Service](services/ad/)                                                                   |
-| JavaScript    |                                                    | [Frontend](services/frontend/)                                                                                                           | [Frontend](services/frontend/), [Payment Service](services/payment/)                         |
-| Kotlin        |                                                    | [Fraud Detection Service](services/fraud-detection/)                                                                                     |                                                                                              |
-| PHP           |                                                    | [Quote Service](services/quote/)                                                                                                         | [Quote Service](services/quote/)                                                             |
-| Python        | [Recommendation Service](services/recommendation/) |                                                                                                                                          | [Recommendation Service](services/recommendation/)                                           |
-| Ruby          |                                                    | [Email Service](services/email/)                                                                                                         | [Email Service](services/email/)                                                             |
-| Rust          |                                                    | [Shipping Service](services/shipping/)                                                                                                   | [Shipping Service](services/shipping/)                                                       |
+| Language   | Automatic Instrumentation                          | Instrumentation Libraries                                                                                                                | Manual Instrumentation                                                                       |
+| ---------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| .NET       |                                                    | [Cart Service](services/cart/)                                                                                                           | [Cart Service](services/cart/)                                                               |
+| C++        |                                                    |                                                                                                                                          | [Currency Service](services/currency/)                                                       |
+| Go         |                                                    | [Accounting Service](services/accounting/), [Checkout Service](services/checkout/), [Product Catalog Service](services/product-catalog/) | [Checkout Service](services/checkout/), [Product Catalog Service](services/product-catalog/) |
+| Java       | [Ad Service](services/ad/)                         |                                                                                                                                          | [Ad Service](services/ad/)                                                                   |
+| JavaScript |                                                    | [Frontend](services/frontend/)                                                                                                           | [Frontend](services/frontend/), [Payment Service](services/payment/)                         |
+| Kotlin     |                                                    | [Fraud Detection Service](services/fraud-detection/)                                                                                     |                                                                                              |
+| PHP        |                                                    | [Quote Service](services/quote/)                                                                                                         | [Quote Service](services/quote/)                                                             |
+| Python     | [Recommendation Service](services/recommendation/) |                                                                                                                                          | [Recommendation Service](services/recommendation/)                                           |
+| Ruby       |                                                    | [Email Service](services/email/)                                                                                                         | [Email Service](services/email/)                                                             |
+| Rust       |                                                    | [Shipping Service](services/shipping/)                                                                                                   | [Shipping Service](services/shipping/)                                                       |
 
 ## Service Documentation
 
@@ -46,7 +45,6 @@ found here:
 - [Cart Service](services/cart/)
 - [Checkout Service](services/checkout/)
 - [Email Service](services/email/)
-- [Feature Flag Service](services/feature-flag/)
 - [Frontend](services/frontend/)
 - [Load Generator](services/load-generator/)
 - [Payment Service](services/payment/)
@@ -54,6 +52,7 @@ found here:
 - [Quote Service](services/quote/)
 - [Recommendation Service](services/recommendation/)
 - [Shipping Service](services/shipping/)
+- [Image Provider Service](services/imageprovider/)
 
 ## Scenarios
 

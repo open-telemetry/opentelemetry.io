@@ -102,29 +102,37 @@ you will be able to follow **Observability Day** through a live stream.
 
 Drop by and say _"Hi!"_ at OpenTelemetry Observatory presented by Splunk in the
 Expo Hall. This will be a place for informal chats, meetups, and other
-discussions led by OpenTelemetry community members and maintainers. Check out
-the schedule of activities [here](https://shorturl.at/qEUX1).
+discussions led by OpenTelemetry community members and maintainers. For the
+activity schedule, see the
+[OTel Observatory Calendar](https://shorturl.at/qEUX1).
 
-If you’d like to participate and lead a discussion or short presentation, out to
-the
+If you’d like to participate and lead a discussion or short presentation, reach
+out to the
 [OpenTelemetry End User Working Group](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
 to indicate your interest.
 
 You can help us improve the project by sharing your thoughts and feedback about
 your OpenTelemetry adoption, implementation, and usage.
 
-To join a feedback session, book online below:
+To join a feedback session, book online below. All times in Central European
+Time (CET).
 
-- [End User Feedback Sessions 1](https://calendly.com/otel-euwg/end-user-feedback-sessions-1?month=2024-03)
-- [End User Feedback Sessions 2](https://calendly.com/otel-euwg/end-user-feedback-sessions-2?month=2024-03)
-- [End User Feedback Sessions 3](https://calendly.com/otel-euwg/end-user-feedback-sessions-3?month=2024-03)
-- [End User Feedback Sessions 4](https://calendly.com/otel-euwg/end-user-feedback-sessions-4?month=2024-03)
-- [End User Feedback Sessions 5](https://calendly.com/otel-euwg/end-user-feedback-sessions-5?month=2024-03)
+- **March 20th, 11:45-12:45:**
+  [End User Feedback Session - .NET & .NET Auto-Instrumentation](https://calendly.com/euwg-user-feedback-session/end-user-feedback-session?month=2024-03)
+- **March 20th, 15:00-16:00:**
+  [End User Feedback Session - JavaScript](https://calendly.com/euwg-user-feedback-session/end-user-feedback-session-javascript?month=2024-03)
+- **March 21st, 11:00-12:00:**
+  [End User Feedback Session - Semantic Conventions](https://calendly.com/euwg-user-feedback-session/end-user-feedback-session-semantic-conventions?month=2024-03)
+- **March 21st, 14:30-15:30:**
+  [End User Feedback Session - Comms (website, docs)](https://calendly.com/euwg-user-feedback-session/end-user-feedback-session-comms?month=2024-03)
+- **March 21st, 15:00-16:00:**
+  [End User Feedback Session - Profiling](https://calendly.com/euwg-user-feedback-session/end-user-feedback-session-profiling?month=2024-03)
+- **March 21st, 15:30-16:30:**
+  [End User Feedback Session - Client-side](https://calendly.com/euwg-user-feedback-session/end-user-feedback-session-client-side)
 
 A maximum of 5 participants will join one SIG maintainer to provide feedback for
 that SIG. Sessions will be recorded and posted on the
-[OTel YouTube channel](https://youtube.com/@otel-official). The final SIG list
-is still TBD, so check back here often!
+[OTel YouTube channel](https://youtube.com/@otel-official).
 
 We will create action items from your comments as appropriate. Check
 [#otel-user-research][] in CNCF's Slack instance for results and action item
@@ -133,8 +141,8 @@ updates to come after KubeCon EU.
 Back by popular demand! We'll be recording
 [Humans of OTel interviews](/blog/2023/humans-of-otel/) at the OTel Observatory.
 If you'd like to share your experiences as an OpenTelemetry practitioner or
-maintainer, sign up for an interview session
-[here](https://calendly.com/otel-euwg/humans-of-otel).
+maintainer,
+[sign up for an interview session](https://calendly.com/otel-euwg/humans-of-otel).
 
 Come join us to listen, learn, and get involved in OpenTelemetry.
 
