@@ -35,9 +35,6 @@ Let's have a look at such a case where we are using the load-balancing exporter:
    signals to a group of collectors.
 3. The collectors are configured to send telemetry data to one or more backends.
 
-{{% alert title="Note" color="info" %}} Currently, the load-balancing exporter
-only supports pipelines of the `traces` type. {{% /alert %}}
-
 ## Examples
 
 ### NGINX as an "out-of-the-box" load balancer

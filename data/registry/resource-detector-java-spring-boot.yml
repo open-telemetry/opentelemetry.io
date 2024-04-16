@@ -1,0 +1,16 @@
+title: OpenTelemetry Resource Detector for Spring Boot
+registryType: resource-detector
+language: java
+tags:
+  - spring-boot
+  - resource-detector
+  - java
+license: Apache 2.0
+description: Spring Boot specific resource providers.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-boot-resources
+createdAt: 2024-03-30
+isNative: false
+isFirstParty: false
