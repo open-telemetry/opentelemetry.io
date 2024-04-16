@@ -4,9 +4,9 @@ weight: 25
 cSpell:ignore: journalctl kube otecol pprof tracez zpages
 ---
 
-You can monitor the health of any OpenTelemetry Collector instance by checking its own
-internal telemetry. Read on to learn how to configure this telemetry to help you
-[troubleshoot](/docs/collector/troubleshooting/) Collector issues.
+You can monitor the health of any OpenTelemetry Collector instance by checking
+its own internal telemetry. Read on to learn how to configure this telemetry to
+help you [troubleshoot](/docs/collector/troubleshooting/) Collector issues.
 
 ## Activate internal telemetry in the Collector
 
@@ -33,10 +33,6 @@ service:
     metrics:
       address: '0.0.0.0:8888'
 ```
-
-To visualize these metrics, you can use the
-[Grafana dashboard](https://grafana.com/grafana/dashboards/15983-opentelemetry-collector/),
-for example.
 
 You can enhance the metrics telemetry level using the `level` field. The
 following is a list of all possible values and their explanations.
