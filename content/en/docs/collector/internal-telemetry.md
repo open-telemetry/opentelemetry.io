@@ -87,7 +87,7 @@ problem is unclear and the telemetry is unreliable.
 
 ### Configure internal logs
 
-You can find log output in `stdout`. The verbosity level for logs defaults to
+You can find log output in `stderr`. The verbosity level for logs defaults to
 `INFO`, but you can adjust it in the config `service::telemetry::logs`:
 
 ```yaml
