@@ -89,7 +89,7 @@ then forward them to your chosen backend.
 ![Diagram showing the different components of the OTel Collector](OTel-collector-refresher.png)
 
 The
-[Prometheus receiver](/docs/kubernetes/collector/components/#prometheus-receiver)
+[Prometheus receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver)
 allows you to collect metrics from any software that exposes Prometheus metrics.
 It serves as a drop-in replacement for Prometheus to scrape your services, and
 supports the
