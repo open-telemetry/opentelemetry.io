@@ -41,20 +41,17 @@ Configure the exporters in your ASP.NET Core services:
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenTelemetry()
-  .WithTracing(b =>
-  {
-    b.AddOtlpExporter()
-    // The rest of your setup code goes here too
-  })
-  .WithMetrics(metrics => {
-    metrics.AddOtlpExporter
-    // The rest of your setup code goes here
-  });
+    .WithTracing(tracing => tracing
+        // The rest of your setup code goes here
+        .AddOtlpExporter())
+    .WithMetrics(metrics => metrics
+        // The rest of your setup code goes here
+        .AddOtlpExporter());
 
-builder.Logging
-  .AddOpenTelemetry(logging => {
-        logging.AddOtlpExporter()
-  });
+builder.Logging.AddOpenTelemetry(logging => {
+    // The rest of your setup code goes here
+    logging.AddOtlpExporter();
+});
 ```
 
 This will, by default, send telemetry using gRPC to <http://localhost:4317>, to
@@ -65,32 +62,29 @@ this:
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenTelemetry()
-  .WithTracing(b => {
-    b
-    .AddOtlpExporter(opt =>
-    {
-        opt.Endpoint = new Uri("your-endpoint-here/v1/traces");
-        opt.Protocol = OtlpExportProtocol.HttpProtobuf;
-    })
-    // The rest of your setup code goes here too
-  })
-  .WithMetrics(metrics => metrics
-    .AddOtlpExporter(options =>
-    {
-        options.Endpoint = new Uri("your-endpoint-here/v1/metrics");
-        options.Protocol = OtlpExportProtocol.HttpProtobuf;
-    })
-    // The rest of your setup code goes here too
-  });
-
-builder.Logging
-  .AddOpenTelemetry(logging => {
-        logging.AddOtlpExporter(options =>
+    .WithTracing(tracing => tracing
+        // The rest of your setup code goes here
+        .AddOtlpExporter(options =>
         {
-            options.Endpoint = new Uri("your-endpoint-here/v1/logs");
+            options.Endpoint = new Uri("your-endpoint-here/v1/traces");
             options.Protocol = OtlpExportProtocol.HttpProtobuf;
-        })
-  });
+        }))
+    .WithMetrics(metrics => metrics
+        // The rest of your setup code goes here
+        .AddOtlpExporter(options =>
+        {
+            options.Endpoint = new Uri("your-endpoint-here/v1/metrics");
+            options.Protocol = OtlpExportProtocol.HttpProtobuf;
+        }));
+
+builder.Logging.AddOpenTelemetry(logging => {
+    // The rest of your setup code goes here
+    logging.AddOtlpExporter(options =>
+    {
+        options.Endpoint = new Uri("your-endpoint-here/v1/logs");
+        options.Protocol = OtlpExportProtocol.HttpProtobuf;
+    });
+});
 ```
 
 #### Non-ASP.NET Core
@@ -99,29 +93,25 @@ Configure the exporter when creating a `TracerProvider`, `MeterProvider` or
 `LoggerFactory`:
 
 ```csharp
-using var tracerProvider = Sdk.CreateTracerProviderBuilder()
-    .AddOtlpExporter(opt =>
-    {
-        opt.Endpoint = new Uri("your-endpoint-here/v1/traces");
-        opt.Protocol = OtlpExportProtocol.HttpProtobuf;
-    })
-
+var tracerProvider = Sdk.CreateTracerProviderBuilder()
     // Other setup code, like setting a resource goes here too
-
+    .AddOtlpExporter(options =>
+    {
+        options.Endpoint = new Uri("your-endpoint-here/v1/traces");
+        options.Protocol = OtlpExportProtocol.HttpProtobuf;
+    })
     .Build();
 
-using var meterProvider = Sdk.CreateMeterProviderBuilder()
+var meterProvider = Sdk.CreateMeterProviderBuilder()
+    // Other setup code, like setting a resource goes here too
     .AddOtlpExporter(options =>
     {
         options.Endpoint = new Uri("your-endpoint-here/v1/metrics");
         options.Protocol = OtlpExportProtocol.HttpProtobuf;
     })
-
-    // Other setup code, like setting a resource goes here too
-
     .Build();
 
-using var loggerFactory = LoggerFactory.Create(builder =>
+var loggerFactory = LoggerFactory.Create(builder =>
 {
     builder.AddOpenTelemetry(logging =>
     {
@@ -168,19 +158,19 @@ Configure the exporter in your ASP.NET Core services:
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenTelemetry()
-    .WithTracing(tracing =>
-    {
-        tracing.AddConsoleExporter()
-        // The rest of your setup code goes here too
-    })
-    .WithMetrics(metrics =>
-        metrics.AddConsoleExporter()
-        // The rest of your setup code goes here too
-    });
+    .WithTracing(tracing => tracing
+        // The rest of your setup code goes here
+        .AddConsoleExporter()
+    )
+    .WithMetrics(metrics => metrics
+        // The rest of your setup code goes here
+        .AddConsoleExporter()
+    );
 
 builder.Logging.AddOpenTelemetry(logging => {
-        logging.AddConsoleExporter()
-  });
+    // The rest of your setup code goes here
+    logging.AddConsoleExporter();
+});
 ```
 
 #### Non-ASP.NET Core {#console-usage-non-asp-net-core}
@@ -189,25 +179,21 @@ Configure the exporter when creating a `TracerProvider`, `MeterProvider` or
 `LoggerFactory`:
 
 ```csharp
-using var tracerProvider = Sdk.CreateTracerProviderBuilder()
+var tracerProvider = Sdk.CreateTracerProviderBuilder()
+    // The rest of your setup code goes here
     .AddConsoleExporter()
-
-    // Other setup code, like setting a resource goes here too
-
     .Build();
 
-using var meterProvider = Sdk.CreateMeterProviderBuilder()
+var meterProvider = Sdk.CreateMeterProviderBuilder()
+    // The rest of your setup code goes here
     .AddConsoleExporter()
-
-    // Other setup code, like setting a resource goes here too
-
     .Build();
 
-using var loggerFactory = LoggerFactory.Create(builder =>
+var loggerFactory = LoggerFactory.Create(builder =>
 {
     builder.AddOpenTelemetry(logging =>
     {
-        logging.AddConsoleExporter()
+        logging.AddConsoleExporter();
     });
 });
 ```
@@ -244,7 +230,7 @@ Configure the exporter in your ASP.NET Core services:
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenTelemetry()
-  .WithMetrics(b => b.AddPrometheusExporter());
+    .WithMetrics(metrics => metrics.AddPrometheusExporter());
 ```
 
 You'll then need to add the endpoint so that Prometheus can scrape your site.
@@ -336,14 +322,12 @@ Configure the exporter in your ASP.NET Core services:
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenTelemetry()
-    .WithTracing(tracing =>
-    {
-        tracing.AddZipkinExporter(options =>
+    .WithTracing(tracing => tracing
+        // The rest of your setup code goes here
+        .AddZipkinExporter(options =>
         {
             options.Endpoint = new Uri("your-zipkin-uri-here");
-        })
-        // The rest of your setup code goes here too
-    });
+        }));
 ```
 
 #### Non-ASP.NET Core {#zipkin-non-asp-net-core-usage}
@@ -351,13 +335,11 @@ builder.Services.AddOpenTelemetry()
 Configure the exporter when creating a tracer provider:
 
 ```csharp
-using var tracerProvider = Sdk.CreateTracerProviderBuilder()
+var tracerProvider = Sdk.CreateTracerProviderBuilder()
+    // The rest of your setup code goes here
     .AddZipkinExporter(options =>
     {
         options.Endpoint = new Uri("your-zipkin-uri-here");
     })
-
-    // Other setup code, like setting a resource goes here too
-
     .Build();
 ```

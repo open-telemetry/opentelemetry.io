@@ -8,6 +8,12 @@ This page describes some options when troubleshooting the health or performance
 of the OpenTelemetry Collector. The Collector provides a variety of metrics,
 logs, and extensions for debugging issues.
 
+## Internal telemetry
+
+You can configure and use the Collector's own
+[internal telemetry](/docs/collector/internal-telemetry/) to monitor its
+performance.
+
 ## Sending test data
 
 For certain types of issues, particularly verifying configuration and debugging
