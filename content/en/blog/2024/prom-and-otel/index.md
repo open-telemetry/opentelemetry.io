@@ -575,7 +575,7 @@ Receiving data:
   pulls node, pod, container, and volume metrics from the API server on a
   [Kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/)
   and sends it down the metric pipeline for further processing
-- [Host Metrics Receiver](/docs/kubernetes/collector/components/#host-metrics-receiver):
+- [Host Metrics Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver):
   scrapes system metrics from hosts that make up the cluster
 
 Processing data:
