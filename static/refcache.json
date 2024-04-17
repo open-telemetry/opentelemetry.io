@@ -3079,6 +3079,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:36:56.082576-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/issues/7532": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-04T11:07:15.276911438-07:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/pull/6140": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:24.402543-05:00"
@@ -4522,6 +4526,10 @@
   "https://grafana.com/docs/grafana/latest/#installing-grafana": {
     "StatusCode": 200,
     "LastSeen": "2024-04-12T20:40:33.435682362Z"
+  },
+  "https://grafana.com/grafana/dashboards/15983-opentelemetry-collector/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-10T15:11:30.311778613-07:00"
   },
   "https://grafana.com/oss/opentelemetry/": {
     "StatusCode": 200,
