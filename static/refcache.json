@@ -1639,6 +1639,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-02-19T17:27:38.673604461+01:00"
   },
+  "https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.typesafe-configuration-properties.relaxed-binding.environment-variables": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-11T13:40:26.805402963+02:00"
+  },
   "https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:15:14.908906-05:00"
@@ -1646,6 +1650,10 @@
   "https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:53.797365-05:00"
+  },
+  "https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/expressions.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-03T12:51:54.758528517+02:00"
   },
   "https://docs.spring.io/spring-security/reference/servlet/authorization/architecture.html#authz-authorities": {
     "StatusCode": 206,
@@ -7707,7 +7715,7 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:06:33.174666-05:00"
   },
-  "https://uptrace.dev": {
+  "https://uptrace.dev/get/open-source-apm.html": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:08:12.676498-05:00"
   },
@@ -8371,6 +8379,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:04:59.787702-05:00"
   },
+  "https://www.nuget.org/packages/OpenTelemetry.Exporter.Console/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-26T11:49:03.510469+01:00"
+  },
   "https://www.nuget.org/packages/OpenTelemetry.Exporter.Geneva": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:16:52.640928+01:00"
@@ -8395,6 +8407,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:16:55.911758+01:00"
   },
+  "https://www.nuget.org/packages/OpenTelemetry.Exporter.OpenTelemetryProtocol/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-26T11:21:32.246063+01:00"
+  },
   "https://www.nuget.org/packages/OpenTelemetry.Exporter.Prometheus.AspNetCore": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:16:56.504932+01:00"
@@ -8410,6 +8426,10 @@
   "https://www.nuget.org/packages/OpenTelemetry.Exporter.Zipkin": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:16:58.383719+01:00"
+  },
+  "https://www.nuget.org/packages/OpenTelemetry.Extensions.Hosting": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-26T11:49:01.977306+01:00"
   },
   "https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AWS": {
     "StatusCode": 200,
