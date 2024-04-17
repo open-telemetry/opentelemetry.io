@@ -21,7 +21,7 @@ your application.
 
 Typically, zero-code instrumentation adds instrumentation for the libraries
 you're using. This means that requests and responses, database calls, message
-queue calls, and so forth are what are instrumented. Your application's code,
+queue calls, and so forth are instrumented. Your application's code,
 however, is not typically instrumented. To instrument your code, you'll need to
 use [code-based instrumentation](/docs/concepts/instrumentation/code-based).
 
