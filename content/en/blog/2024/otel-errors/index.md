@@ -1,14 +1,12 @@
 ---
 title: Dude, where's my error? How OpenTelemetry records errors
 linkTitle: Understanding OTel Errors
-date: 2024-04-12 
+date: 2024-04-12
 author: >-
-  [Reese Lee](https://github.com/reese-lee) (New Relic), 
-  [Adriana Villela](https://github.com/avillela) (ServiceNow)
+  [Reese Lee](https://github.com/reese-lee) (New Relic),  [Adriana Villela](https://github.com/avillela)
+  (ServiceNow)
 cSpell:ignore: Dalle
-canonical_url:
-https://newrelic.com/blog/how-to-relic/dude-wheres-my-error
-
+canonical_url: https://newrelic.com/blog/how-to-relic/dude-wheres-my-error
 ---
 
 ![A confused penguin trying to learn about errors and exceptions. Image generated with AI using Dalle3 via Bing Copilot](penguin-chalkboard.jpg)
