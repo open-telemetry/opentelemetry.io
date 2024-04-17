@@ -12,10 +12,12 @@ sophisticated mesh of services, traces are essential to understanding the full
 
 Let's explore this with three units of work, represented as [Spans](#spans):
 
-> 📝 **Note**: The JSON examples below do not represent a particular format, 
-> and especially not OTLP JSON which is much more verbose.
+{{% alert title="Note" %}}
 
+The JSON examples below do not represent a particular format, 
+and especially not [OTLP/JSON](/docs/specs/otlp/#json-protobuf-encoding) which is much more verbose.
 
+{{% /alert %}}
 `hello` span:
 
 ```json
