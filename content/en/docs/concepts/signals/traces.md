@@ -18,7 +18,9 @@ The JSON examples below do not represent a particular format, and especially not
 [OTLP/JSON](/docs/specs/otlp/#json-protobuf-encoding) which is much more
 verbose.
 
-{{% /alert %}} `hello` span:
+{{% /alert %}}
+
+`hello` span:
 
 ```json
 {
