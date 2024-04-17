@@ -1,0 +1,16 @@
+name: "Label PR"
+on:
+  - pull_request_target
+
+jobs:
+  labeler:
+    name: 'Add component labels'
+    permissions:
+      contents: read
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/labeler@v5
+        with:
+          configuration-path: '.github/component-label-map.yml'
