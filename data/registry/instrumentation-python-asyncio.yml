@@ -1,0 +1,14 @@
+title: OpenTelemetry asyncio Instrumentation
+registryType: instrumentation
+language: python
+tags:
+  - asyncio
+  - instrumentation
+  - python
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-asyncio
+license: Apache 2.0
+description: Tracing Requests Made by the asyncio Library
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-04-18

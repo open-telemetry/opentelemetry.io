@@ -1,0 +1,14 @@
+title: MyBatis Instrumentation
+registryType: instrumentation
+language: java
+tags:
+  - mybatis
+  - instrumentation
+  - java
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/mybatis-3.2
+license: Apache 2.0
+description: Instrumentation for MyBatis
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-04-18

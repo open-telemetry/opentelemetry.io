@@ -1,0 +1,17 @@
+title: nop
+registryType: exporter
+language: collector
+tags:
+  - nop
+  - exporter
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/nopexporter
+license: Apache 2.0
+description:
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-04-18
+package:
+  registry: go-collector
+  name: go.opentelemetry.io/collector/exporter/nopexporter

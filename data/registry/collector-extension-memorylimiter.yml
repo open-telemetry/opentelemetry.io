@@ -1,0 +1,18 @@
+title: Memory Limiter Extension
+registryType: extension
+language: collector
+tags:
+  - memorylimiter
+  - extension
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/memorylimiterextension
+license: Apache 2.0
+description:
+  The memory limiter extension is used to prevent out of memory situations on
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-04-18
+package:
+  registry: go-collector
+  name: go.opentelemetry.io/collector/extension/memorylimiterextension
