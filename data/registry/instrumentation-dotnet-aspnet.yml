@@ -6,7 +6,9 @@ tags:
   - instrumentation
   - dotnet
 license: Apache 2.0
-description: This is an Instrumentation Library, which instruments ASP.NET and collect metrics and traces about incoming web requests.
+description:
+  This is an Instrumentation Library, which instruments ASP.NET and collect
+  metrics and traces about incoming web requests.
 authors:
   - name: OpenTelemetry Authors
 urls:
