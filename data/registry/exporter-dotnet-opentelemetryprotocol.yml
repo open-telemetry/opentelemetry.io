@@ -19,4 +19,4 @@ createdAt: 2020-02-05
 package:
   registry: nuget
   name: OpenTelemetry.Exporter.OpenTelemetryProtocol
-  version: 1.8.0
+  version: 1.8.1
