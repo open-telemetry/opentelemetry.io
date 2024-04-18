@@ -1,3 +1,4 @@
+# cSpell:ignore psycopg
 title: OpenTelemetry Psycopg Instrumentation
 registryType: instrumentation
 language: python

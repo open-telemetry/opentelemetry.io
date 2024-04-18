@@ -1,8 +1,11 @@
-title: googleclientauth
+# cSpell:ignore googleclientauthextension
+title: Google Client Auth Extension
 registryType: extension
 language: collector
 tags:
-  - googleclientauth
+  - google
+  - client
+  - auth
   - extension
   - collector
 urls:

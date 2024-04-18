@@ -1,8 +1,10 @@
+# cSpell:ignore awss3receiver
 title: AWS S3 Receiver
 registryType: receiver
 language: collector
 tags:
-  - awss3
+  - aws
+  - s3
   - receiver
   - collector
 urls:

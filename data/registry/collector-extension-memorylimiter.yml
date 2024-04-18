@@ -1,8 +1,10 @@
+# cSpell:ignore memorylimiterextension
 title: Memory Limiter Extension
 registryType: extension
 language: collector
 tags:
-  - memorylimiter
+  - memory
+  - limiter
   - extension
   - collector
 urls:

@@ -9,7 +9,7 @@ urls:
   repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_bandit
 license: Apache 2.0
 description:
-  Telemetry handler that creates Opentelemetry spans from [Bandit
+  Telemetry handler that creates OpenTelemetry spans from [Bandit
   events](https://hexdocs.pm/bandit/Bandit.Telemetry.html#content).
 authors:
   - name: OpenTelemetry Authors

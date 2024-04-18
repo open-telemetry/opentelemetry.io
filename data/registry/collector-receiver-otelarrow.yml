@@ -1,8 +1,9 @@
+# cSpell:ignore otelarrowreceiver
 title: OpenTelemetry Protocol with Apache Arrow Receiver
 registryType: receiver
 language: collector
 tags:
-  - otelarrow
+  - arrow
   - receiver
   - collector
 urls:

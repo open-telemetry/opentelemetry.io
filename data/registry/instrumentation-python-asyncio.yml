@@ -1,3 +1,4 @@
+# cSpell:ignore asyncio
 title: OpenTelemetry asyncio Instrumentation
 registryType: instrumentation
 language: python

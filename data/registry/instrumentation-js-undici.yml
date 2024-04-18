@@ -1,3 +1,4 @@
+# cSpell:ignore undici
 title: OpenTelemetry Undici/fetch Instrumentation for Node.js
 registryType: instrumentation
 language: js

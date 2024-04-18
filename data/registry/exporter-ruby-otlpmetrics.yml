@@ -1,8 +1,9 @@
-title: otlpmetrics
+title: OTLP metrics exporter for Ruby
 registryType: exporter
 language: ruby
 tags:
-  - otlpmetrics
+  - otlp
+  - metrics
   - exporter
   - ruby
 urls:
