@@ -2303,6 +2303,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:40.87763-05:00"
   },
+  "https://github.com/avillela/otel-errors-talk": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-27T00:26:43.376792984Z"
+  },
   "https://github.com/aws-observability/aws-otel-collector": {
     "StatusCode": 200,
     "LastSeen": "2024-01-24T14:54:51.229664+01:00"
@@ -5195,6 +5199,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:10:28.513448-05:00"
   },
+  "https://newrelic.com/blog/how-to-relic/dude-wheres-my-error": {
+    "StatusCode": 206,
+    "LastSeen": "2024-03-27T00:26:34.094985195Z"
+  },
   "https://newrelic.com/solutions/opentelemetry": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:08:01.196826-05:00"
@@ -5634,6 +5642,10 @@
   "https://opentelemetry-python-contrib.readthedocs.io/en/latest/instrumentation/logging/logging.html": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:09.905013-05:00"
+  },
+  "https://opentelemetry-python.readthedocs.io/en/latest/_modules/opentelemetry/sdk/trace.html#Span.record_exception": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-27T00:26:39.534637612Z"
   },
   "https://opentelemetry-python.readthedocs.io/en/latest/api/metrics.html": {
     "StatusCode": 200,
