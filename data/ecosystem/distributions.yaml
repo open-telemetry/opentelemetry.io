@@ -85,17 +85,17 @@
   components: [Go]
 - name: Azure Monitor Distribution of OpenTelemetry ASP.NET Core
   url: https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/monitor/Azure.Monitor.OpenTelemetry.AspNetCore
-  docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable
+  docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable?tabs=aspnetcore
   components: [.NET]
 - name: Azure Monitor Distribution of OpenTelemetry Java
   url: https://github.com/microsoft/ApplicationInsights-Java
-  docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable
+  docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable?tabs=java
   components: [Java]
 - name: Azure Monitor Distribution of OpenTelemetry Node.js
   url: https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/monitor/monitor-opentelemetry
-  docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable
+  docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable?tabs=nodejs
   components: [Node]
 - name: Azure Monitor Distribution of OpenTelemetry Python
   url: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/monitor/azure-monitor-opentelemetry
-  docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable
+  docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable?tabs=python
   components: [Python]
