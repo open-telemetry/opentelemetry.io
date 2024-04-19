@@ -6,8 +6,17 @@ weight: 200
 cSpell:ignore: prepopulated spacewhite
 ---
 
-You can open an issue about OpenTelemetry documentation, or contribute a change
-with a pull request (PR) to the
+The following guide describes how to contribute to OpenTelemetry documentation.
+For guidance on how to contribute to the OpenTelemetry project in general, see
+the
+[OpenTelemetry Contributor Guide](https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md)
+, which provides details on the Contributor License Agreement and the Code of
+Conduct. In extent, every language implementation, collector, and conventions
+[repository](https://github.com/open-telemetry/) has their own specific
+contributing guides.
+
+For documentation, you can open an issue about OpenTelemetry, or contribute a
+change with a pull request (PR) to the
 [`opentelemetry.io` GitHub repository](https://github.com/open-telemetry/opentelemetry.io).
 
 OpenTelemetry documentation contributors:
@@ -16,11 +25,6 @@ OpenTelemetry documentation contributors:
 - Create new content.
 - Update the OpenTelemetry Registry.
 - Improve the code that builds the site.
-
-See also the general
-[OpenTelemetry Contributor Guide](https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md)
-, which provides details on the Contributor License Agreement and the Code of
-Conduct.
 
 ## Requirements
 
@@ -72,7 +76,7 @@ class first,second white
 
 _Figure 1. Contributing new content._
 
-The previous figure presents the basic steps for new docs contributions.
+The previous figure illustrates how to contribute new documentation.
 
 To contribute new content pages or improve existing content pages, open a pull
 request (PR):
@@ -81,6 +85,14 @@ request (PR):
   [Changes using GitHub](#changes-using-github) to learn how to edit a page.
 - If your changes are large, read [Work from a local fork](#fork-the-repo) to
   learn how to make changes locally on your computer.
+
+{{% alert title="Tip" %}}
+
+Turn your pull request into a draft to signal that the content still isn't ready
+for review. Maintainers may still comment or do high-level reviews, though they
+won't review the content in full until you remove the draft status.
+
+{{% /alert %}}
 
 ### Changes using GitHub {#changes-using-github}
 
@@ -120,12 +132,12 @@ _Figure 2. Steps for opening a PR using GitHub._
 1. On the page where you see the issue, select the **Edit this page** option in
    the right-hand side navigation panel.
 
-1. If you're not a member of the project, GitHub will offer to create a fork of
-   the repository. Select **Fork this repository**.
+1. If you're not a member of the project, GitHub offers to create a fork of the
+   repository. Select **Fork this repository**.
 
 1. Make your changes in the GitHub editor.
 
-1. Below the editor, fill in the **Propose file change** form.
+1. Fill in the **Propose file change** form.
 
 1. Select **Propose file change**.
 

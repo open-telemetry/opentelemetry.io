@@ -1167,6 +1167,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:24.354598-05:00"
   },
+  "https://docs.google.com/forms/d/e/1FAIpQLSfpxKvN3_5VN6FQ5dF5-XLfNdOhVYtjreetkxlRCF8qS7AW2w/viewform": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-16T16:28:02.021217686Z"
+  },
   "https://docs.google.com/spreadsheets/d/1SYKfjYhZdm2Wh2Cl6KVQalKg_m4NhTPZqq-8SzEVO6s": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:05:57.197702-05:00"
@@ -3075,6 +3079,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:36:56.082576-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/issues/7532": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-04T11:07:15.276911438-07:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/pull/6140": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:24.402543-05:00"
@@ -4518,6 +4526,10 @@
   "https://grafana.com/docs/grafana/latest/#installing-grafana": {
     "StatusCode": 200,
     "LastSeen": "2024-04-12T20:40:33.435682362Z"
+  },
+  "https://grafana.com/grafana/dashboards/15983-opentelemetry-collector/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-10T15:11:30.311778613-07:00"
   },
   "https://grafana.com/oss/opentelemetry/": {
     "StatusCode": 200,
@@ -8375,6 +8387,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:04:59.787702-05:00"
   },
+  "https://www.nuget.org/packages/OpenTelemetry.Exporter.Console/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-26T11:49:03.510469+01:00"
+  },
   "https://www.nuget.org/packages/OpenTelemetry.Exporter.Geneva": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:16:52.640928+01:00"
@@ -8399,6 +8415,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:16:55.911758+01:00"
   },
+  "https://www.nuget.org/packages/OpenTelemetry.Exporter.OpenTelemetryProtocol/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-26T11:21:32.246063+01:00"
+  },
   "https://www.nuget.org/packages/OpenTelemetry.Exporter.Prometheus.AspNetCore": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:16:56.504932+01:00"
@@ -8414,6 +8434,10 @@
   "https://www.nuget.org/packages/OpenTelemetry.Exporter.Zipkin": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:16:58.383719+01:00"
+  },
+  "https://www.nuget.org/packages/OpenTelemetry.Extensions.Hosting": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-26T11:49:01.977306+01:00"
   },
   "https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AWS": {
     "StatusCode": 200,
@@ -8858,6 +8882,10 @@
   "https://www.whatsmyua.info": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:34:02.591185-05:00"
+  },
+  "https://www.youtube.com/@otel-official": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-15T11:38:45.271323+02:00"
   },
   "https://www.youtube.com/embed/coPrhP_7lVU": {
     "StatusCode": 200,
