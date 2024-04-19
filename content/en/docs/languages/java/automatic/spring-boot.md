@@ -300,8 +300,6 @@ You can also configure OTLP exporters programmatically. This configuration
 replaces the default OTLP exporter and adds a custom header to the requests.
 
 ```java
-package io.opentelemetry.example.graal;
-
 import io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporter;
 import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider;
 import java.util.Collections;
