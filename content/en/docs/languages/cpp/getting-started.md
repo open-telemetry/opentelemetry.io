@@ -113,19 +113,19 @@ using CMake, following these steps:
    ```
 
 4. In the `build` directory run CMake, to configure and generate the build
-   system.
+   system without enabling tests:
 
    ```bash
-   cmake ..
+   cmake -DBUILD_TESTING=OFF ..
    ```
 
    Or, if the `cmake --build` fails, you can also try:
 
    ```bash
-   cmake -DWITH_ABSEIL=ON ..
+   cmake -DBUILD_TESTING=OFF -DWITH_ABSEIL=ON ..
    ```
 
-5. Execute the build process.
+5. Execute the build process:
 
    ```bash
    cmake --build .
@@ -140,8 +140,9 @@ In your `otel-cpp-starter` folder, create a subfolder `roll-dice`, where the
 Oat++ library will be used by referencing the oatpp headers and linking them
 when compiling your project.
 
-Create a file called `CMakeLists.txt` to define the Oat++ library directories,
-include paths, and link against Oat++ during the compilation process.
+Create a file called `CMakeLists.txt` inside `roll-dice` to define the Oat++
+library directories, include paths, and link against Oat++ during the
+compilation process.
 
 ```cmake
 project(RollDiceServer)
@@ -267,23 +268,16 @@ endif()
 # set the path to the directory containing "oatpp" package configuration files
 include_directories(${OATPP_ROOT}/src)
 
-include_directories(${OPENTELEMETRY_ROOT}/api/include)
-include_directories(${OPENTELEMETRY_ROOT}/sdk/include)
-include_directories(${OPENTELEMETRY_ROOT}/sdk/src)
-include_directories(${OPENTELEMETRY_ROOT}/exporters/ostream/include)
+# Use find_package to include OpenTelemetry C++
+find_package(opentelemetry-cpp CONFIG REQUIRED)
 
-find_library(OPENTELEMETRY_COMMON_LIB NAMES libopentelemetry_common.a HINTS "${OPENTELEMETRY_ROOT}/build/sdk/src/common" NO_DEFAULT_PATH)
-find_library(OPENTELEMETRY_TRACE_LIB NAMES libopentelemetry_trace.a HINTS "${OPENTELEMETRY_ROOT}/build/sdk/src/trace" NO_DEFAULT_PATH)
-find_library(OPENTELEMETRY_EXPORTER_LIB NAMES libopentelemetry_exporter_ostream_span.a HINTS "${OPENTELEMETRY_ROOT}/build/exporters/ostream" NO_DEFAULT_PATH)
-find_library(OPENTELEMETRY_RESOURCE_LIB NAMES libopentelemetry_resources.a HINTS "${OPENTELEMETRY_ROOT}/build/sdk/src/resource" NO_DEFAULT_PATH)
-
-if(OPENTELEMETRY_COMMON_LIB AND OPENTELEMETRY_TRACE_LIB AND OPENTELEMETRY_EXPORTER_LIB AND OPENTELEMETRY_RESOURCE_LIB)
-  message(STATUS "Found opentelemetry libraries")
-else()
-  message(SEND_ERROR "Did not find opentelemetry libraries")
-endif()
-
-target_link_libraries(dice-server PRIVATE ${OATPP_LIB} ${OPENTELEMETRY_COMMON_LIB} ${OPENTELEMETRY_TRACE_LIB} ${OPENTELEMETRY_EXPORTER_LIB} ${OPENTELEMETRY_RESOURCE_LIB})
+# Link against each OpenTelemetry C++ library
+target_link_libraries(dice-server PRIVATE
+                      ${OATPP_LIB}
+                      opentelemetry-cpp::api
+                      opentelemetry-cpp::sdk
+                      opentelemetry-cpp::trace
+                      opentelemetry-cpp::ostream_span_exporter)
 ```
 
 Update the `main.cpp` file with the following code to initialize a tracer and to
