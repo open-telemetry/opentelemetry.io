@@ -88,7 +88,7 @@
   docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable
   components: [.NET]
 - name: Azure Monitor Distribution of OpenTelemetry Java
-  url: https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/monitor/Azure.Monitor.OpenTelemetry.AspNetCore
+  url: https://github.com/microsoft/ApplicationInsights-Java
   docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable
   components: [Java]
 - name: Azure Monitor Distribution of OpenTelemetry Node.js
