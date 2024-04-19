@@ -2303,6 +2303,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:40.87763-05:00"
   },
+  "https://github.com/avillela/otel-errors-talk": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-27T00:26:43.376792984Z"
+  },
   "https://github.com/aws-observability/aws-otel-collector": {
     "StatusCode": 200,
     "LastSeen": "2024-01-24T14:54:51.229664+01:00"
@@ -2774,6 +2778,10 @@
   "https://github.com/mhausenblas": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:18.419715-05:00"
+  },
+  "https://github.com/microsoft/ApplicationInsights-Java": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-19T17:43:49.897716918Z"
   },
   "https://github.com/mkocher": {
     "StatusCode": 200,
@@ -4939,6 +4947,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:14.866011-05:00"
   },
+  "https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-19T15:58:48.039807479Z"
+  },
   "https://learn.microsoft.com/azure/event-hubs/event-hubs-about": {
     "StatusCode": 200,
     "LastSeen": "2024-04-04T20:00:42.394166-04:00"
@@ -5079,6 +5091,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:02:52.895666-05:00"
   },
+  "https://maven.apache.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-15T17:43:36.624023547Z"
+  },
   "https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:15:00.07395-05:00"
@@ -5194,6 +5210,10 @@
   "https://newrelic.com/blog/best-practices/opentelemetry-histograms": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:10:28.513448-05:00"
+  },
+  "https://newrelic.com/blog/how-to-relic/dude-wheres-my-error": {
+    "StatusCode": 206,
+    "LastSeen": "2024-03-27T00:26:34.094985195Z"
   },
   "https://newrelic.com/solutions/opentelemetry": {
     "StatusCode": 206,
@@ -5634,6 +5654,10 @@
   "https://opentelemetry-python-contrib.readthedocs.io/en/latest/instrumentation/logging/logging.html": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:09.905013-05:00"
+  },
+  "https://opentelemetry-python.readthedocs.io/en/latest/_modules/opentelemetry/sdk/trace.html#Span.record_exception": {
+    "StatusCode": 200,
+    "LastSeen": "2024-03-27T00:26:39.534637612Z"
   },
   "https://opentelemetry-python.readthedocs.io/en/latest/api/metrics.html": {
     "StatusCode": 200,
@@ -8206,6 +8230,14 @@
   "https://www.konghq.com/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:37:02.403477-05:00"
+  },
+  "https://www.krakend.io": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-19T07:13:40.975524094Z"
+  },
+  "https://www.krakend.io/docs/telemetry/opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-19T07:13:43.941227206Z"
   },
   "https://www.linuxfoundation.org/legal/privacy-policy": {
     "StatusCode": 200,
