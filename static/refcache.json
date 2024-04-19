@@ -4943,6 +4943,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:14.866011-05:00"
   },
+  "https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-19T15:58:48.039807479Z"
+  },
   "https://learn.microsoft.com/azure/event-hubs/event-hubs-about": {
     "StatusCode": 200,
     "LastSeen": "2024-04-04T20:00:42.394166-04:00"
