@@ -246,6 +246,16 @@ The `LoggingSpanExporter`, the `LoggingMetricExporter` and the
 
 {{% docs/languages/exporters/jaeger %}}
 
+Next, configure the exporter to point at Jaeger's OTLP endpoint.
+
+```shell
+gradle assemble
+env \
+OTEL_SERVICE_NAME=dice-server \
+OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317 \
+java -jar ./build/libs/java-sample-dice.jar
+```
+
 {{% docs/languages/exporters/prometheus-setup %}}
 
 ### Dependencies {#prometheus-dependencies}
