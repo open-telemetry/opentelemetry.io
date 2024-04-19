@@ -2779,6 +2779,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:18.419715-05:00"
   },
+  "https://github.com/microsoft/ApplicationInsights-Java": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-19T17:43:49.897716918Z"
+  },
   "https://github.com/mkocher": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:04:58.425652-05:00"
