@@ -8219,6 +8219,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:37:02.403477-05:00"
   },
+  "https://www.krakend.io": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-19T07:13:40.975524094Z"
+  },
+  "https://www.krakend.io/docs/telemetry/opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-19T07:13:43.941227206Z"
+  },
   "https://www.linuxfoundation.org/legal/privacy-policy": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:04:05.250977-05:00"
