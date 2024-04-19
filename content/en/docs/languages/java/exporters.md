@@ -287,17 +287,15 @@ dependencies {
 
 {{< /tab >}} {{< /tabpane>}}
 
-Update your OpenTelemetry configuration to use the exporter and to send data to
-your Prometheus backend:
+Next, set `OTEL_METRICS_EXPORTER` to `prometheus`.
 
-```java
-import io.opentelemetry.exporter.prometheus.PrometheusHttpServer;
-
-int prometheusPort = 9464;
-SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
-        .registerMetricReader(PrometheusHttpServer.builder().setPort(prometheusPort).build())
-        .setResource(resource)
-        .build();
+```shell
+gradle assemble
+env \
+OTEL_SERVICE_NAME=dice-server \
+OTEL_METRICS_EXPORTER=prometheus \
+OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317 \
+java -jar ./build/libs/java-sample-dice.jar
 ```
 
 With the above you can access your metrics at <http://localhost:9464/metrics>.
