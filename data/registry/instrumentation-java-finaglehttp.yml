@@ -1,0 +1,17 @@
+title: Finagle HTTP Instrumentation
+registryType: instrumentation
+language: java
+tags:
+  - finagle
+  - http
+  - instrumentation
+  - java
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/finagle-http-23.11
+license: Apache 2.0
+description:
+  This library provides a Finagle HTTP Instrumentation to track requests through
+  OpenTelemetry.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-04-18
