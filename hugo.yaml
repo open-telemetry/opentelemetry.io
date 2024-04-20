@@ -21,6 +21,8 @@ imaging:
   anchor: smart
 
 markup:
+  tableOfContents:
+    endLevel: 5
   goldmark:
     extensions:
       linkify: false
