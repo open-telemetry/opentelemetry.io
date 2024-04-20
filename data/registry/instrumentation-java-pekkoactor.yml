@@ -12,5 +12,5 @@ description: This library provides an Apache Pekko Actor instrumentation.
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/pekko-actor-1.0
+  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/pekko/pekko-actor-1.0
 createdAt: 2022-10-27
