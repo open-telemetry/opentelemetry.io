@@ -280,7 +280,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class Application {
+public class OpenTelemetryConfig {
 
   @Bean
   public AutoConfigurationCustomizerProvider otelCustomizer() {
@@ -290,6 +290,46 @@ public class Application {
                 RuleBasedRoutingSampler.builder(SpanKind.SERVER, fallback)
                     .drop(SemanticAttributes.URL_PATH, "^/actuator")
                     .build());
+  }
+}
+```
+
+##### Configure the exporter programmatically
+
+You can also configure OTLP exporters programmatically. This configuration
+replaces the default OTLP exporter and adds a custom header to the requests.
+
+```java
+import io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporter;
+import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider;
+import java.util.Collections;
+import java.util.Map;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class OpenTelemetryConfig {
+
+  @Bean
+  public AutoConfigurationCustomizerProvider otelCustomizer() {
+    return p ->
+        p.addSpanExporterCustomizer(
+            (exporter, config) -> {
+              if (exporter instanceof OtlpHttpSpanExporter) {
+                return ((OtlpHttpSpanExporter) exporter)
+                    .toBuilder().setHeaders(this::headers).build();
+              }
+              return exporter;
+            });
+  }
+
+  private Map<String, String> headers() {
+    return Collections.singletonMap("Authorization", "Bearer " + refreshToken());
+  }
+
+  private String refreshToken() {
+    // e.g. read the token from a kubernetes secret
+    return "token";
   }
 }
 ```
