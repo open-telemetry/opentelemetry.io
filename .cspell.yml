@@ -5,6 +5,7 @@ version: '0.2'
 caseSensitive: true
 ignorePaths:
   - '*.svg'
+  - 'vendors.yaml'
 # words here are only listed for their spelling, if there is a certain way
 # to write a word (e.g. OpenTelemetry vs Opentelemetry or cloud native vs
 # cloud-native), edit the text-lint rules in .textlintrc.yml
@@ -170,3 +171,4 @@ words:
   - WSGI
   - zend
   - zipkin
+  - Chronosphere

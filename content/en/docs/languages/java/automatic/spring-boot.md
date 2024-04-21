@@ -165,14 +165,18 @@ IDE.
 
 The OpenTelemetry Starter supports all the
 [SDK Autoconfiguration](/docs/languages/java/automatic/configuration/#sdk-autoconfiguration)
-(since 2.2.0). You can set properties in the `application.properties` or the
-`application.yaml` file, or use environment variables.
+(since 2.2.0).
+
+You can update the configuration with properties in the `application.properties`
+or the `application.yaml` file, or with environment variables.
 
 `application.properties` example:
 
 ```properties
 otel.propagators=tracecontext,b3
-otel.resource.attributes=environment=dev,xyz=foo
+otel.resource.attributes.deployment.environment=dev
+otel.resource.attributes.service.name=cart
+otel.resource.attributes.service.namespace=shop
 ```
 
 `application.yaml` example:
@@ -184,18 +188,49 @@ otel:
     - b3
   resource:
     attributes:
-      environment: dev
-      xyz: foo
+      deployment.environment: dev
+      service:
+        name: cart
+        namespace: shop
 ```
 
 Environment variables example:
 
 ```shell
 export OTEL_PROPAGATORS="tracecontext,b3"
-export OTEL_RESOURCE_ATTRIBUTES="environment=dev,xyz=foo"
+export OTEL_RESOURCE_ATTRIBUTES="deployment.environment=dev,service.name=cart,service.namespace=shop"
 ```
 
-Disable the OpenTelemetry Starter:
+#### Overriding Resource Attributes
+
+As usual in Spring Boot, you can override properties in the
+`application.properties` and `application.yaml` files with environment
+variables.
+
+For example, you can set or override the `deployment.environment` resource
+attribute (not changing `service.name` or `service.namespace`) by setting the
+standard `OTEL_RESOURCE_ATTRIBUTES` environment variable:
+
+```shell
+export OTEL_RESOURCE_ATTRIBUTES="deployment.environment=prod"
+```
+
+Alternatively, you can use the `OTEL_RESOURCE_ATTRIBUTES_DEPLOYMENT_ENVIRONMENT`
+environment variable to set or override a single resource attribute:
+
+```shell
+export OTEL_RESOURCE_ATTRIBUTES_DEPLOYMENT_ENVIRONMENT="prod"
+```
+
+The second option supports
+[SpEL](https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/expressions.html)
+expressions.
+
+Note that `DEPLOYMENT_ENVIRONMENT` gets converted to `deployment.environment` by
+Spring Boot's
+[Relaxed Binding](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.typesafe-configuration-properties.relaxed-binding.environment-variables).
+
+#### Disable the OpenTelemetry Starter
 
 {{% config_option name="otel.sdk.disabled" %}}
 
@@ -245,7 +280,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class Application {
+public class OpenTelemetryConfig {
 
   @Bean
   public AutoConfigurationCustomizerProvider otelCustomizer() {
@@ -255,6 +290,46 @@ public class Application {
                 RuleBasedRoutingSampler.builder(SpanKind.SERVER, fallback)
                     .drop(SemanticAttributes.URL_PATH, "^/actuator")
                     .build());
+  }
+}
+```
+
+##### Configure the exporter programmatically
+
+You can also configure OTLP exporters programmatically. This configuration
+replaces the default OTLP exporter and adds a custom header to the requests.
+
+```java
+import io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporter;
+import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider;
+import java.util.Collections;
+import java.util.Map;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class OpenTelemetryConfig {
+
+  @Bean
+  public AutoConfigurationCustomizerProvider otelCustomizer() {
+    return p ->
+        p.addSpanExporterCustomizer(
+            (exporter, config) -> {
+              if (exporter instanceof OtlpHttpSpanExporter) {
+                return ((OtlpHttpSpanExporter) exporter)
+                    .toBuilder().setHeaders(this::headers).build();
+              }
+              return exporter;
+            });
+  }
+
+  private Map<String, String> headers() {
+    return Collections.singletonMap("Authorization", "Bearer " + refreshToken());
+  }
+
+  private String refreshToken() {
+    // e.g. read the token from a kubernetes secret
+    return "token";
   }
 }
 ```
@@ -451,7 +526,7 @@ appender in your `logback.xml` or `logback-spring.xml` file:
 		</encoder>
 	</appender>
 	<appender name="OpenTelemetry"
-		class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender ">
+		class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender">
 		<captureExperimentalAttributes>false</captureExperimentalAttributes>
 		<captureCodeAttributes>true</captureCodeAttributes>
 		<captureMarkerAttribute>true</captureMarkerAttribute>
