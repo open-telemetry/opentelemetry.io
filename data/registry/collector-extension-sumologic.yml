@@ -1,0 +1,21 @@
+# cSpell:ignore sumologic sumologicextension
+title: Sumo Logic Extension
+registryType: extension
+language: collector
+tags:
+  - sumologic
+  - extension
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/sumologicextension
+license: Apache 2.0
+description:
+  This extension is to be used in conjunction with the Sumo Logic Exporter in
+  order to export telemetry data to Sumo Logic.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-04-18
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/sumologicextension
+  version: v0.98.0

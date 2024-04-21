@@ -1,9 +1,6 @@
 {{ $lang := .Get 0 -}} {{ $spanExporterInterfaceUrl := .Get 1 }}
 
-## Other available exporters
-
-There are many other exporters available. For a list of available exporters, see
-the [registry](/ecosystem/registry/?component=exporter&language={{ $lang }}).
+## Custom exporters
 
 Finally, you can also write your own exporter. For more information, see the
 [SpanExporter Interface in the API
