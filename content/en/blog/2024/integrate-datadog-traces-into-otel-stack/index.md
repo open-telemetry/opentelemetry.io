@@ -56,7 +56,6 @@ creating mixed environments, where all data is only processed and correlated on
 Datadog servers.
 
 ```mermaid
-
 graph LR
   APIOTel["API (with OTel SDK)"]
   OTelCol["OTel Collector"]
@@ -77,7 +76,6 @@ that works like an agent, receiving traces and metrics in Datadog proprietary
 format:
 
 ```mermaid
-
 graph LR
   APIOTel["API (with OTel SDK)"]
   OTelCol["OTel Collector"]
@@ -267,7 +265,6 @@ To see it working, let’s run our example again, with a different
 > curl http://localhost:8080/remotehello
 # it returns:
 # {"hello":"world!","from":"quick-start-api-otel","to":"quick-start-api-datadog"}
-
 ```
 
 When we enter into the Jaeger UI we see that our problem was partially solved.
