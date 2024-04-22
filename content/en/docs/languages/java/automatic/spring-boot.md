@@ -296,7 +296,7 @@ public class Application {
 
 #### Resource Providers
 
-The OpenTelemetry Starter includes the same Resource Providers as the Java
+The OpenTelemetry Starter includes the same resource providers as the Java
 agent:
 
 - [common Resource Providers](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/resources/library)
