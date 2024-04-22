@@ -299,7 +299,7 @@ public class Application {
 The OpenTelemetry Starter includes the same resource providers as the Java
 agent:
 
-- [common Resource Providers](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/resources/library)
+- [Common resource providers](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/resources/library)
 - [Resource providers that are disabled by default](/docs/languages/java/automatic/configuration/#enable-resource-providers-that-are-disabled-by-default)
 
 In addition, the OpenTelemetry Starter includes the following Spring Boot
