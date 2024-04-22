@@ -204,13 +204,13 @@ LowerTraceID --> TraceID
 ```
 
 Now, to create this representation, we will reconstruct the TraceID at the
-OpenTelemetry Collector level, using the `[transform`
-processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor).
+OpenTelemetry Collector level, using the `[transform
+processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor)`.
 
 ### Reconstructing TraceID for Datadog Spans
 
-The OTel Collector `[transform`
-processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor)
+The OTel Collector `[transform
+processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor)`
 is a component that allows for the transformation of span data as it passes
 through the OpenTelemetry Collector. It can modify attributes of a span such as
 name, kind, attributes, resources, and instrumentation library, among others.

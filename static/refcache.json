@@ -2419,6 +2419,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:06:29.763418-05:00"
   },
+  "https://github.com/datadog/dd-trace-rb": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-22T17:52:36.752609-03:00"
+  },
   "https://github.com/davidgs": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:54.185189-05:00"
@@ -5786,6 +5790,10 @@
   "https://opentelemetry.io/docs/collector/deployment/no-collector/": {
     "StatusCode": 206,
     "LastSeen": "2024-02-23T22:55:04.014798-05:00"
+  },
+  "https://opentelemetry.io/docs/collector/scaling/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-22T17:52:37.598206-03:00"
   },
   "https://opentelemetry.io/docs/specs/otel/protocol": {
     "StatusCode": 206,
