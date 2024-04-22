@@ -205,12 +205,12 @@ LowerTraceID --> TraceID
 
 Now, to create this representation, we will reconstruct the TraceID at the
 OpenTelemetry Collector level, using the
-`[transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor)`.
+[transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor).
 
 ### Reconstructing TraceID for Datadog Spans
 
 The OTel Collector
-`[transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor)`
+[transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor)
 is a component that allows for the transformation of span data as it passes
 through the OpenTelemetry Collector. It can modify attributes of a span such as
 name, kind, attributes, resources, and instrumentation library, among others.
@@ -281,7 +281,7 @@ generated internally, which makes our transform statements skip the child spans.
 ### Patching Datadog Trace to Send the Upper TraceID to Every Child Span
 
 Since the OpenTelemetry Collector was
-[designed to process spans considering distributed systems](../../../docs/collector/scaling.md),
+[designed to process spans considering distributed systems](/docs/collector/scaling/),
 we don't have a way to maintain an internal state to replicate the `_dd.p.tid`
 attribute for the child spans received by the `datadog` receiver.
 
