@@ -4,7 +4,7 @@ linkTitle: Integrating Datadog Traces in OTel Stack
 date: 2024-04-22
 author: >-
   [Daniel Dias](https://github.com/danielbdias) (Tracetest)
-cSpell:ignore: Tracetest ddtrace Concat
+cSpell:ignore: Concat ddtrace Tracetest
 ---
 
 Have you ever faced challenges with telemetry data standardization from the
