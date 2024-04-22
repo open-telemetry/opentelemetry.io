@@ -7143,10 +7143,6 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-22T15:38:20.535782+01:00"
   },
-  "https://rubygems.org/gems/opentelemetry-exporter-otlp-metrics": {
-    "StatusCode": 404,
-    "LastSeen": "2024-04-18T10:52:49.576867+02:00"
-  },
   "https://rubygems.org/gems/opentelemetry-exporter-zipkin": {
     "StatusCode": 200,
     "LastSeen": "2024-01-22T15:38:21.665966+01:00"
