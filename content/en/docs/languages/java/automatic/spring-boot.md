@@ -280,7 +280,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class Application {
+public class OpenTelemetryConfig {
 
   @Bean
   public AutoConfigurationCustomizerProvider otelCustomizer() {
@@ -290,6 +290,46 @@ public class Application {
                 RuleBasedRoutingSampler.builder(SpanKind.SERVER, fallback)
                     .drop(SemanticAttributes.URL_PATH, "^/actuator")
                     .build());
+  }
+}
+```
+
+##### Configure the exporter programmatically
+
+You can also configure OTLP exporters programmatically. This configuration
+replaces the default OTLP exporter and adds a custom header to the requests.
+
+```java
+import io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporter;
+import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider;
+import java.util.Collections;
+import java.util.Map;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class OpenTelemetryConfig {
+
+  @Bean
+  public AutoConfigurationCustomizerProvider otelCustomizer() {
+    return p ->
+        p.addSpanExporterCustomizer(
+            (exporter, config) -> {
+              if (exporter instanceof OtlpHttpSpanExporter) {
+                return ((OtlpHttpSpanExporter) exporter)
+                    .toBuilder().setHeaders(this::headers).build();
+              }
+              return exporter;
+            });
+  }
+
+  private Map<String, String> headers() {
+    return Collections.singletonMap("Authorization", "Bearer " + refreshToken());
+  }
+
+  private String refreshToken() {
+    // e.g. read the token from a kubernetes secret
+    return "token";
   }
 }
 ```
@@ -443,6 +483,36 @@ supported for spring web versions 3.1+. To learn more about the OpenTelemetry
 `RestTemplate` interceptor, see
 [opentelemetry-spring-web-3.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-web/spring-web-3.1/library).
 
+The following ways of creating a `RestTemplate` are supported:
+
+```java
+@Bean
+public RestTemplate restTemplate() {
+    return new RestTemplate();
+}
+```
+
+```java
+public MyService(RestTemplateBuilder restTemplateBuilder) {
+    this.restTemplate = restTemplateBuilder.build();
+}
+```
+
+The following ways of creating a `RestClient` are supported:
+
+```java
+@Bean
+public RestClient restClient() {
+    return RestClient.create();
+}
+```
+
+```java
+public MyService(RestClient.Builder restClientBuilder) {
+    this.restClient = restClientBuilder.build();
+}
+```
+
 #### Spring Web MVC Autoconfiguration
 
 This feature autoconfigures instrumentation for Spring WebMVC controllers by
@@ -464,6 +534,21 @@ Spring's WebClient and WebClient Builder beans by applying a bean post
 processor. This feature is supported for spring webflux versions 5.0+. For
 details, see
 [opentelemetry-spring-webflux-5.3](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webflux/spring-webflux-5.3/library).
+
+The following ways of creating a `WebClient` are supported:
+
+```java
+@Bean
+public WebClient webClient() {
+    return WebClient.create();
+}
+```
+
+```java
+public MyService(WebClient.Builder webClientBuilder) {
+    this.webClient = webClientBuilder.build();
+}
+```
 
 ### Additional Instrumentations
 

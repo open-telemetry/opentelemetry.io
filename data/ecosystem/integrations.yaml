@@ -201,3 +201,8 @@
   docsUrl: https://github.com/fluentci-io/fluentci-engine#-opentelemetry-tracing
   components: [Rust]
   oss: true
+- name: KrakenD API Gateway
+  url: https://www.krakend.io
+  docsUrl: https://www.krakend.io/docs/telemetry/opentelemetry/
+  components: [Go]
+  oss: true
