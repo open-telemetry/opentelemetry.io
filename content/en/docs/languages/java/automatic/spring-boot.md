@@ -303,7 +303,7 @@ agent:
 - [Resource providers that are disabled by default](/docs/languages/java/automatic/configuration/#enable-resource-providers-that-are-disabled-by-default)
 
 In addition, the OpenTelemetry Starter includes the following Spring Boot
-specific Resource Providers:
+specific resource providers:
 
 ##### Distribution Resource Provider
 
