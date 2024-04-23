@@ -26,6 +26,6 @@ status (stability) of your component along with documentation and component spec
 
 The core [`opentelemetry-collector`](https://github.com/open-telemetry/opentelemetry-collector/blob/main/README.md) is the basis for all OpenTelemetry components and Collector development. For specific, non-universal integrations, contributors look to the [`-contrib`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/README.md) repository for all but the most generic integrations, and vendors often base their distributions off of the `-contrib` repository.
 
-Note that [adding a component](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/CONTRIBUTING.md#adding-new-components) to the `-contrib` distribution incurs a high bar of support, and while contributions of new components are encouraged, adoption is a process that requires ongoing support and commitment to the opentelemetry project.
+Note that [adding a component](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/CONTRIBUTING.md#adding-new-components) to the `-contrib` distribution incurs a high bar of support, and while contributions of new components are encouraged, adoption is a process that requires ongoing support and commitment to the OpenTelemetry project.
 
 If you wish to build your own [distribution](../distributions/) of the collector, you may use the [`OpenTelemetry Collector builder`](../custom-collector).
