@@ -22,6 +22,12 @@
   contact:
   oss: false
   commercial: true
+- name: Axiom
+  nativeOTLP: true
+  url: https://axiom.co/docs/send-data/opentelemetry
+  contact: https://axiom.co/contact
+  oss: false
+  commercial: true
 - name: Azure
   nativeOTLP: false
   url: https://docs.microsoft.com/azure/azure-monitor/app/opentelemetry-overview
