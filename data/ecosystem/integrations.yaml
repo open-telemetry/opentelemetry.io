@@ -211,7 +211,7 @@
   docsUrl: https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable?tabs=aspnetcore
   components: [.NET]
   oss: true
-  - name: MassTransit .NET client
+- name: MassTransit .NET client
   url: https://github.com/MassTransit/MassTransit
   docsUrl: https://masstransit.io/documentation/configuration/observability
   components: [.NET]
