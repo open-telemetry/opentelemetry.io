@@ -2091,6 +2091,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:56.239248-05:00"
   },
+  "https://github.com/Azure/azure-sdk-for-net": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-23T14:33:23.6880679Z"
+  },
   "https://github.com/Causely/documentation": {
     "StatusCode": 200,
     "LastSeen": "2024-03-15T20:34:22.210208944Z"
@@ -2142,6 +2146,10 @@
   "https://github.com/IBM/sarama": {
     "StatusCode": 200,
     "LastSeen": "2024-01-25T12:26:11.985357104Z"
+  },
+  "https://github.com/MassTransit/MassTransit": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-23T14:33:25.288254308Z"
   },
   "https://github.com/MetinSeylan/Nestjs-OpenTelemetry": {
     "StatusCode": 200,
@@ -4991,6 +4999,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:18.196332-05:00"
   },
+  "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-23T14:33:24.635286085Z"
+  },
   "https://learn.microsoft.com/en-us/dotnet/api/system.reflection.assembly.getentryassembly": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:24:54.805878-05:00"
@@ -5102,6 +5114,10 @@
   "https://martinfowler.com/bliki/CanaryRelease.html": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:02:52.895666-05:00"
+  },
+  "https://masstransit.io/documentation/configuration/observability": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-23T14:33:28.363350589Z"
   },
   "https://maven.apache.org/": {
     "StatusCode": 206,
