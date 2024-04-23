@@ -25,4 +25,6 @@ Most components are registered via [`mdatagen`](https://github.com/open-telemetr
 
 The core [`opentelemetry-collector`](https://github.com/open-telemetry/opentelemetry-collector/blob/main/README.md) is the basis for all opentelemetry components and collector development. For specific, non-universal integrations, contributors look to the [`-contrib`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/README.md) repository for all but the most generic integrations, and vendors often base their distributions off of the `-contrib` repository.
 
+Note that [adding a component](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/CONTRIBUTING.md#adding-new-components) to the `-contrib` distribution incurs a high bar of support, and while contributions of new components are encouraged, adoption is a process that requires ongoing support and commitment to the opentelemetry project.
+
 If you wish to [build your own distribution](../custom-collector/) of the collector, you may use the [`ocb`](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder) tool.
