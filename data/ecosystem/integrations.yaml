@@ -208,7 +208,7 @@
   oss: true
 - name: Azure SDKs
   url: https://github.com/Azure/azure-sdk-for-net
-  docsUrl: https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable?tabs=aspnetcore
+  docsUrl: https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable
   components: [.NET]
   oss: true
 - name: MassTransit .NET client
