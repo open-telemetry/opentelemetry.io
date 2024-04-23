@@ -155,6 +155,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:19:46.407077+01:00"
   },
+  "https://axiom.co/docs/send-data/opentelemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-23T09:25:52.097148675Z"
+  },
   "https://azure.github.io/azure-sdk/releases/latest/index.html": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T15:24:54.938182-05:00"
