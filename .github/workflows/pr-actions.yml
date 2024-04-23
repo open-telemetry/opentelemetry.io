@@ -50,11 +50,11 @@ jobs:
         run: |
           gh pr comment $PR_NUM -b "You triggered fix:${PR_ACTION} action run at $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
       - run: gh pr checkout $PR_NUM -b "pr-action-${RANDOM}"
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
       - name: Create NPM cache-hash input file
         run: |
@@ -106,4 +106,4 @@ jobs:
         run: |
           gh pr comment $PR_NUM -b "fix:${PR_ACTION} run failed, please check $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID for details"
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
