@@ -14,11 +14,11 @@ Datadog. This inconsistency can make detailed data analysis, such as traces,
 inaccessible before it's sent to Datadog, thereby complicating the setup of an
 efficient observability pipeline.
 
-This article shows how this problem starts in an observability stack and how
-you can solve it with the OpenTelemetry Collector. It also shows you how to set
-up an observability pipeline that accepts Datadog-instrumented apps and allows
-you to receive and correlate data in OpenTelemetry stacks without sending
-telemetry data for Datadog.
+This article shows how this problem starts in an observability stack and how you
+can solve it with the OpenTelemetry Collector. It also shows you how to set up
+an observability pipeline that accepts Datadog-instrumented apps and allows you
+to receive and correlate data in OpenTelemetry stacks without sending telemetry
+data for Datadog.
 
 ## The legacy SDK issue
 
@@ -38,8 +38,8 @@ traces, to analyze data before sending it to Datadog.
 
 ## Structure an observability stack with Datadog
 
-When you instrument an API with Datadog SDKs, you must send the telemetry
-to an agent, and then this agent sends your telemetry to Datadog servers.
+When you instrument an API with Datadog SDKs, you must send the telemetry to an
+agent, and then this agent sends your telemetry to Datadog servers.
 
 ```mermaid
 graph LR
@@ -117,8 +117,8 @@ receivers:
 
 Using the latest proposed architecture as a head start, let’s download a demo
 example that shows how to adapt this architecture to send data to Jaeger,
-allowing you to run the API locally and make any observability changes
-needed before publishing to production.
+allowing you to run the API locally and make any observability changes needed
+before publishing to production.
 
 First, open a terminal and download the demo with the following commands:
 
@@ -148,8 +148,7 @@ graph LR
 
 Next, you can call the OTelSDK-instrumented API, which executes an internal
 endpoint on the Datadog-instrumented API and returns an output. It is expected
-that this operation generates just one trace. Try it by executing
-the command:
+that this operation generates just one trace. Try it by executing the command:
 
 ```bash
 > curl http://localhost:8080/remotehello
@@ -165,14 +164,15 @@ disjointed traces were generated, one for each API:
 
 ![Disjointed Datadog-instrumented trace on Jaeger](./step1-datadog-api.png)
 
-To correct this problem, you need to change your stack a little bit. Read on to learn how to apply these changes.
+To correct this problem, you need to change your stack a little bit. Read on to
+learn how to apply these changes.
 
 ### Understand `trace_id` representations for Datadog and OpenTelemetry
 
 This issue happens due to a difference in the representation of `trace_id`s in
-Datadog format and OTel SDK format. Datadog considers a `trace_id` as an unsigned
-Int64, while the OpenTelemetry SDK considers it as a 128-bit hexadecimal
-representation:
+Datadog format and OTel SDK format. Datadog considers a `trace_id` as an
+unsigned Int64, while the OpenTelemetry SDK considers it as a 128-bit
+hexadecimal representation:
 
 - **Datadog TraceID (int64):** `4289707906147384633`
 - **Datadog TraceID (hex):** `3b881a9ce0197d39`
@@ -210,14 +210,15 @@ OpenTelemetry Collector level, using the
 
 The OTel Collector
 [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor)
-is a component that transforms span data as it passes
-through the OpenTelemetry Collector. It can modify attributes of a span such as
-name, kind, attributes, resources, and instrumentation library, among others.
+is a component that transforms span data as it passes through the OpenTelemetry
+Collector. It can modify attributes of a span such as name, kind, attributes,
+resources, and instrumentation library, among others.
 
-In this context, the `transform processor` is used to reconstruct the TraceID for Datadog spans to
-facilitate a unified tracing environment.
+In this context, the `transform processor` is used to reconstruct the TraceID
+for Datadog spans to facilitate a unified tracing environment.
 
-In the OTel Collector config, you can configure the `transform processor` as follows:
+In the OTel Collector config, you can configure the `transform processor` as
+follows:
 
 ```yaml
 processors:
@@ -254,8 +255,8 @@ Next, add four transformation statements:
 - `set(trace_id.string, cache["combined_trace_id"]) where cache["combined_trace_id"] != nil`
   and finally we set the `trace_id` for this span with the string concatenation.
 
-To see it working, run your example again, with a different
-`docker compose` file and then execute the same API call as before:
+To see it working, run your example again, with a different `docker compose`
+file and then execute the same API call as before:
 
 ```bash
 > docker compose -f ./docker-compose.step2.yaml up -d
@@ -265,12 +266,13 @@ To see it working, run your example again, with a different
 # {"hello":"world!","from":"quick-start-api-otel","to":"quick-start-api-datadog"}
 ```
 
-Looking at the Jaeger UI, you can see that the problem was partially solved.
-Now you have a trace propagated between the Datadog-instrumented API and the
+Looking at the Jaeger UI, you can see that the problem was partially solved. Now
+you have a trace propagated between the Datadog-instrumented API and the
 OpenTelemetry-instrumented API. However, all child spans generated by Datadog
 are segregated in a different trace, defined only as the Lower TraceID. This
 happens because `ddtrace` only sends a `_dd.p.tid` attribute for the first span
-generated internally, which makes your transform statements skip the child spans.
+generated internally, which makes your transform statements skip the child
+spans.
 
 ![Partially disjointed OTelSDK-instrumented trace on Jaeger](./step2-otel-api.png)
 
@@ -280,13 +282,13 @@ generated internally, which makes your transform statements skip the child spans
 
 Since the OpenTelemetry Collector was
 [designed to process spans considering distributed systems](/docs/collector/scaling/),
-there isn't have a way to maintain an internal state to replicate the `_dd.p.tid`
-attribute for the child spans received by the `datadog` receiver.
+there isn't have a way to maintain an internal state to replicate the
+`_dd.p.tid` attribute for the child spans received by the `datadog` receiver.
 
-You can solve this problem directly on the Datadog-instrumented API by applying a
-minor patch to `ddtrace` to replicate `_dd.p.tid` to all child spans. In the
-[`ddtrace` Ruby version](https://github.com/kubeshop/tracetest/blob/main/examples/datadog-propagation/quick_start_api_datadog/config/initializers/datadog.rb#L20), the trace
-serialization is modified to send this data as shown:
+You can solve this problem directly on the Datadog-instrumented API by applying
+a minor patch to `ddtrace` to replicate `_dd.p.tid` to all child spans. In the
+[`ddtrace` Ruby version](https://github.com/kubeshop/tracetest/blob/main/examples/datadog-propagation/quick_start_api_datadog/config/initializers/datadog.rb#L20),
+the trace serialization is modified to send this data as shown:
 
 ```ruby
 module Datadog
@@ -352,8 +354,8 @@ developer machine.
 
 We have discussed integrating Datadog-instrumented apps in an OpenTelemetry
 stack, seeing the problem of different TraceID representations for Datadog and
-OpenTelemetry, which can lead to disjointed traces. To solve that we used
-an OpenTelemetry Collector with a `transform` processor to reconstruct the TraceID
+OpenTelemetry, which can lead to disjointed traces. To solve that we used an
+OpenTelemetry Collector with a `transform` processor to reconstruct the TraceID
 for Datadog spans, facilitating a unified tracing environment.
 
 As a team focused on building an open source tool in the observability space,
