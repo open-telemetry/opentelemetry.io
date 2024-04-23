@@ -28,4 +28,4 @@ The core [`opentelemetry-collector`](https://github.com/open-telemetry/opentelem
 
 Note that [adding a component](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/CONTRIBUTING.md#adding-new-components) to the `-contrib` distribution incurs a high bar of support, and while contributions of new components are encouraged, adoption is a process that requires ongoing support and commitment to the opentelemetry project.
 
-If you wish to [build your own distribution](../custom-collector/) of the collector, you may use the [`ocb`](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder) tool.
+If you wish to build your own [distribution](../distributions/) of the collector, you may use the [`OpenTelemetry Collector builder`](../custom-collector).
