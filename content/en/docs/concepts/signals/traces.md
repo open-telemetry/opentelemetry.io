@@ -14,9 +14,8 @@ Let's explore this with three units of work, represented as [Spans](#spans):
 
 {{% alert title="Note" %}}
 
-The JSON examples below do not represent a particular format, and especially not
-[OTLP/JSON](/docs/specs/otlp/#json-protobuf-encoding) which is much more
-verbose.
+The following JSON examples do not represent a specific format, and especially not
+[OTLP/JSON](/docs/specs/otlp/#json-protobuf-encoding), which is more verbose.
 
 {{% /alert %}}
 
