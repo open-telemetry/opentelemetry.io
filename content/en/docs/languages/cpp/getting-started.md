@@ -268,6 +268,7 @@ add_executable(dice-server ${SOURCES})
 
 set(OATPP_ROOT ../oatpp)
 set(OPENTELEMETRY_ROOT ../opentelemetry-cpp)
+set(opentelemetry-cpp_DIR ../otel-cpp/lib/cmake/opentelemetry-cpp)
 find_library(OATPP_LIB NAMES liboatpp.a HINTS "${OATPP_ROOT}/build/src/" NO_DEFAULT_PATH)
 if (NOT OATPP_LIB)
   message(SEND_ERROR "Did not find oatpp library ${OATPP_ROOT}/build/src")
@@ -345,7 +346,7 @@ void run() {
   auto connectionHandler = oatpp::web::server::HttpConnectionHandler::createShared(router);
   auto connectionProvider = oatpp::network::tcp::server::ConnectionProvider::createShared({"localhost", 8080, oatpp::network::Address::IP_4});
   oatpp::network::Server server(connectionProvider, connectionHandler);
-  OATPP_LOGI("Dice Server", "Server running on port %s", connectionProvider->getProperty("port").getData());
+  OATPP_LOGI("Dice Server", "Server running on port %s", static_cast<const char*>(connectionProvider->getProperty("port").getData()));
   server.run();
 }
 
