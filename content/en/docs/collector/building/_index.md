@@ -20,7 +20,8 @@ There are several [classes](https://github.com/open-telemetry/opentelemetry-coll
 - `cmd` (commands)
 - `pkg` (packages)
 
-Most components are registered via [`mdatagen`](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/mdatagen), a tool which will auto generate some code specifying the adoption status (stability) of your component along with documentation and component specific information. Most significantly, `mdatagen` configuration is used to configure the out-of-the-box metrics for scraping receivers, and which are enabled by default for collection.
+Most components are registered using [`mdatagen`](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/mdatagen), a tool which automatically generates code that specifies the adoption
+status (stability) of your component along with documentation and component specific information. Most significantly, `mdatagen` configuration is used to describe out-of-the-box metrics for scraping receivers, and which metrics are enabled by default for collection.
 
 
 The core [`opentelemetry-collector`](https://github.com/open-telemetry/opentelemetry-collector/blob/main/README.md) is the basis for all OpenTelemetry components and Collector development. For specific, non-universal integrations, contributors look to the [`-contrib`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/README.md) repository for all but the most generic integrations, and vendors often base their distributions off of the `-contrib` repository.
