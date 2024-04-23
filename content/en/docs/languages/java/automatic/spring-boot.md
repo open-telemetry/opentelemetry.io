@@ -551,6 +551,36 @@ supported for spring web versions 3.1+. To learn more about the OpenTelemetry
 `RestTemplate` interceptor, see
 [opentelemetry-spring-web-3.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-web/spring-web-3.1/library).
 
+The following ways of creating a `RestTemplate` are supported:
+
+```java
+@Bean
+public RestTemplate restTemplate() {
+    return new RestTemplate();
+}
+```
+
+```java
+public MyService(RestTemplateBuilder restTemplateBuilder) {
+    this.restTemplate = restTemplateBuilder.build();
+}
+```
+
+The following ways of creating a `RestClient` are supported:
+
+```java
+@Bean
+public RestClient restClient() {
+    return RestClient.create();
+}
+```
+
+```java
+public MyService(RestClient.Builder restClientBuilder) {
+    this.restClient = restClientBuilder.build();
+}
+```
+
 #### Spring Web MVC Autoconfiguration
 
 This feature autoconfigures instrumentation for Spring WebMVC controllers by
@@ -572,6 +602,21 @@ Spring's WebClient and WebClient Builder beans by applying a bean post
 processor. This feature is supported for spring webflux versions 5.0+. For
 details, see
 [opentelemetry-spring-webflux-5.3](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webflux/spring-webflux-5.3/library).
+
+The following ways of creating a `WebClient` are supported:
+
+```java
+@Bean
+public WebClient webClient() {
+    return WebClient.create();
+}
+```
+
+```java
+public MyService(WebClient.Builder webClientBuilder) {
+    this.webClient = webClientBuilder.build();
+}
+```
 
 ### Additional Instrumentations
 
