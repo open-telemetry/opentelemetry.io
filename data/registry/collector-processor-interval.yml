@@ -9,13 +9,11 @@ tags:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/intervalprocessor
 license: Apache 2.0
-description:
-  The interval processor (`intervalprocessor`) aggregates metrics and
-  periodically forwards the latest values to the next component in the pipeline.
+description: The interval processor (`intervalprocessor`) aggregates metrics and periodically forwards the latest values to the next component in the pipeline.
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2024-02-05
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/processor/intervalprocessor
-  version: v0.98.0
+  version: v0.99.0

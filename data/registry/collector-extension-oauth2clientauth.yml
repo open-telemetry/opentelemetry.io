@@ -7,9 +7,7 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description:
-  The OAuth2 Client Credentials authenticator extension allows gRPC and
-  HTTP-based exporters to add authentication data to outgoing calls.
+description: The OAuth2 Client Credentials authenticator extension allows gRPC and HTTP-based exporters to add authentication data to outgoing calls.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,4 +16,4 @@ createdAt: 2021-06-22
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/oauth2clientauthextension
-  version: v0.98.0
+  version: v0.99.0

@@ -7,9 +7,7 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description:
-  This receiver fetches stats from a Apache Web Server instance using the
-  server-status?auto endpoint.
+description: This receiver fetches stats from a Apache Web Server instance using the server-status?auto endpoint.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,4 +16,4 @@ createdAt: 2022-10-25
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/apachereceiver
-  version: v0.98.0
+  version: v0.99.0

@@ -7,9 +7,7 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description:
-  The Filelog Receiver tails and parses logs from files using the
-  opentelemetry-log-collection library.
+description: The Filelog Receiver tails and parses logs from files using the opentelemetry-log-collection library.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,4 +16,4 @@ createdAt: 2021-02-26
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/filelogreceiver
-  version: v0.98.0
+  version: v0.99.0

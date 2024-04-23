@@ -7,9 +7,7 @@ tags:
   - processor
   - collector
 license: Apache 2.0
-description:
-  The Attribute Processor for the OpenTelemetry Collector modifies attributes of
-  a span.
+description: The Attribute Processor for the OpenTelemetry Collector modifies attributes of a span.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,4 +16,4 @@ createdAt: 2021-02-24
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor
-  version: v0.98.0
+  version: v0.99.0
