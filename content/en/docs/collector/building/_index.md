@@ -11,7 +11,7 @@ details take a look into the documents contained within the
 [opentelemetry-collector-contrib repository](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/README.md).
 
 
-There are several [classes](https://github.com/open-telemetry/opentelemetry-collector/blob/main/cmd/mdatagen/main.go#L184) of opentelemetry components, such as
+There are several [classes](https://github.com/open-telemetry/opentelemetry-collector/blob/main/cmd/mdatagen/main.go#L184) of OpenTelemetry components, such as
 - `receivers` (scrapers and listeners to ingest data)
 - `exporters` (ways to export data to vendors or other tooling)
 - `processors` (ways to process data in a pipeline)
