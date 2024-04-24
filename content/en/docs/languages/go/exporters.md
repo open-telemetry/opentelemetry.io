@@ -51,8 +51,9 @@ func newExporter() (metric.Exporter, error) {
 
 ### Console logs (Experimental) {#console-logs}
 
-The [`go.opentelemetry.io/otel/exporters/stdout/stdoutlog`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutlog) package
-contains an implementation of the console log exporter.
+The
+[`go.opentelemetry.io/otel/exporters/stdout/stdoutlog`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutlog)
+package contains an implementation of the console log exporter.
 
 Here's how you can create an exporter with default configuration:
 
