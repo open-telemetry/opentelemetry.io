@@ -4291,6 +4291,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:29.09204-05:00"
   },
+  "https://github.com/search": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-24T11:30:02.572957676-07:00"
+  },
   "https://github.com/serverless/serverless": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:21.697812-05:00"
