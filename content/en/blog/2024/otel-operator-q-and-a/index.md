@@ -177,6 +177,10 @@ If you do need to reference a Target Allocator image from a private registry, yo
 
 For more info, check out the [Target Allocator API docs](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocator).
 
+### Q9: Is there a version lag between the OTel Operator auto-instrumentation and auto-instrumentation of supported languages?
+
+If there is a lag, it's minimal, as maintainers try to keep these up to date for each release cycle. Keep in mind that there are breaking changes in some semconvs and the team is trying to avoid breaking users' code. More info [here](https://cloud-native.slack.com/archives/C033BJ8BASU/p1713894678225579).
+
 ## Final Thoughts
 
 Hopefully this has helped to demystify the OTel Operator a bit more. There’s definitely a lot going on, and the OTel Operator can certainly be a bit scary at first, but understanding some of the basics will get you well on your way to mastering this powerful tool.
