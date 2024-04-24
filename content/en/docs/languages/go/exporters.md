@@ -3,7 +3,7 @@ title: Exporters
 aliases: [exporting_data]
 weight: 50
 # prettier-ignore
-cSpell:ignore: otlpmetric otlpmetricgrpc otlpmetrichttp otlptrace otlptracegrpc otlptracehttp promhttp stdouttrace
+cSpell:ignore: otlpmetric otlpmetricgrpc otlpmetrichttp otlptrace otlptracegrpc otlptracehttp promhttp stdouttrace stdoutlog
 ---
 
 {{% docs/languages/exporters/intro go %}}
