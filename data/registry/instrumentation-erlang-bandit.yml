@@ -17,3 +17,4 @@ createdAt: 2024-04-18
 package:
   registry: hex
   name: opentelemetry_bandit
+  version: 0.1.4
