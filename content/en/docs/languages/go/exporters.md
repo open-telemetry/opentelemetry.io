@@ -31,7 +31,7 @@ func newExporter() (trace.SpanExporter, error) {
 }
 ```
 
-### Console metrics (Experimental)
+### Console metrics
 
 [`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric)
 contains an implementation of the console metrics exporter.
