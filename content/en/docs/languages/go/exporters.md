@@ -49,6 +49,24 @@ func newExporter() (metric.Exporter, error) {
 }
 ```
 
+### Console logs (Experimental)
+
+[`go.opentelemetry.io/otel/exporters/stdout/stdoutlog`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutlog)
+contains an implementation of the console log exporter.
+
+Here's how you can create an exporter with default configuration:
+
+```go
+import (
+	"go.opentelemetry.io/otel/exporters/stdout/stdoutlog"
+	"go.opentelemetry.io/otel/sdk/log"
+)
+
+func newExporter() (log.Exporter, error) {
+	return stdoutlog.New()
+}
+```
+
 ## OTLP
 
 To send trace data to an OTLP endpoint (like the [collector](/docs/collector) or
