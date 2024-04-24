@@ -7,6 +7,8 @@ author: >-
 # canonical_url: http://somewhere.else/ 
 ---
 
+![Seattle's Mount Rainier rising about the clouds, as seen from an airplane. Photo by Adriana Villela](mount-rainier.jpg)
+
 The [OpenTelemetry (OTel) Operator](https://github.com/open-telemetry/opentelemetry-operator) is a [Kubernetes Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) that manages OTel things for you in your Kubernetes cluster to make life a little easier. It does the following: 
 
 * Manages deployment of the [OpenTelemetry Collector](http://localhost:1313/docs/collector/), supported by the [`OpenTelemetryCollector`](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#getting-started) [custom resource (CR)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
