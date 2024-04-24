@@ -6875,6 +6875,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:07:44.890589-05:00"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutlog": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-24T13:46:14.851022-07:00"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:21.196671-05:00"
