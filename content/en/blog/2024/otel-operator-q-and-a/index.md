@@ -15,8 +15,8 @@ The
 [OpenTelemetry (OTel) Operator](https://github.com/open-telemetry/opentelemetry-operator)
 is a
 [Kubernetes Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)
-that manages OTel for you in your Kubernetes cluster to make life a
-little easier. It does the following:
+that manages OTel for you in your Kubernetes cluster to make life a little
+easier. It does the following:
 
 - Manages deployment of the
   [OpenTelemetry Collector](http://localhost:1313/docs/collector/), supported by
@@ -124,8 +124,10 @@ along with full instructions
 
 ### Q3: Is the Operator version at parity with the Collector version?
 
-For every Collector release, there is an Operator release which provides support for that Collector version. For example, at the time of this writing, the latest
-Operator version is 0.98.0. Thus, the the default image of the Collector used by the Operator is version 0.98.0 of the
+For every Collector release, there is an Operator release which provides support
+for that Collector version. For example, at the time of this writing, the latest
+Operator version is 0.98.0. Thus, the the default image of the Collector used by
+the Operator is version 0.98.0 of the
 [core distribution](/blog/2024/otel-collector-anti-patterns/#3--not-using-the-right-collector-distribution-or-not-building-your-own-distribution)
 (as opposed to the contrib distribution).
 
