@@ -267,7 +267,6 @@ set(SOURCES
 add_executable(dice-server ${SOURCES})
 
 set(OATPP_ROOT ../oatpp)
-set(OPENTELEMETRY_ROOT ../opentelemetry-cpp)
 set(opentelemetry-cpp_DIR ../otel-cpp/lib/cmake/opentelemetry-cpp)
 find_library(OATPP_LIB NAMES liboatpp.a HINTS "${OATPP_ROOT}/build/src/" NO_DEFAULT_PATH)
 if (NOT OATPP_LIB)
