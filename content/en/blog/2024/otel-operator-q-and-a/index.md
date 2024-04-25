@@ -96,25 +96,25 @@ value as a secret. Here’s how you do it:
    [`env` section](https://github.com/avillela/otel-target-allocator-talk/blob/21e9643e28165e39bd79f3beec7f2b1f989d87e9/src/resources/02-otel-collector-ls.yml#L16-L21).
    For example:
 
-  ```yaml
-  env:
-    - name: LS_TOKEN
-      valueFrom:
-        secretKeyRef:
-          key: LS_TOKEN
-          name: otel-collector-secret
-  ```
+```yaml
+env:
+  - name: LS_TOKEN
+    valueFrom:
+      secretKeyRef:
+        key: LS_TOKEN
+        name: otel-collector-secret
+```
 
 3. Reference the environment variable in your
    [exporter definition](https://github.com/avillela/otel-target-allocator-talk/blob/21e9643e28165e39bd79f3beec7f2b1f989d87e9/src/resources/02-otel-collector-ls.yml#L43-L47):
 
-  ```yaml
-  exporters:
-    otlp/ls:
-      endpoint: 'ingest.lightstep.com:443'
-      headers:
-        'lightstep-access-token': '${LS_TOKEN}'
-  ```
+```yaml
+exporters:
+  otlp/ls:
+    endpoint: 'ingest.lightstep.com:443'
+    headers:
+      'lightstep-access-token': '${LS_TOKEN}'
+```
 
 For more info, check out my full example
 [here](https://github.com/avillela/otel-target-allocator-talk/blob/main/src/resources/02-otel-collector-ls.yml),
