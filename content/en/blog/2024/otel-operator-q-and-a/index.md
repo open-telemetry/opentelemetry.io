@@ -15,23 +15,23 @@ The
 [OpenTelemetry (OTel) Operator](https://github.com/open-telemetry/opentelemetry-operator)
 is a
 [Kubernetes Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)
-that manages OTel things for you in your Kubernetes cluster to make life a
+that manages OTel for you in your Kubernetes cluster to make life a
 little easier. It does the following:
 
 - Manages deployment of the
   [OpenTelemetry Collector](http://localhost:1313/docs/collector/), supported by
   the
   [`OpenTelemetryCollector`](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#getting-started)
-  [custom resource (CR)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
+  [custom resource (CR)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
 - Manages the configuration of a fleet of OpenTelemetry Collectors via
   [OpAMP](/docs/specs/opamp/) integration, supported by the
   [`OpAMPBridge`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opampbridge)
-  custom resource
+  custom resource.
 - Injects and configures
   [auto-instrumentation](https://www.honeycomb.io/blog/what-is-auto-instrumentation)
   into your pods, supported by the
   [`Instrumentation`](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#opentelemetry-auto-instrumentation-injection)
-  custom resource
+  custom resource.
 
 I've had a chance to use the Operator in the last year, and learned some pretty
 cool things, so I thought it might be helpful to share some little OTel Operator
@@ -49,12 +49,12 @@ and [Kubernetes](https://kubernetes.io).
 
 ### Q1: Does the Operator support multiple Collector configuration sources?
 
-Short answer: no.
+Short answer: No.
 
 Longer answer: OTel Collector can be fed more than one Collector config YAML
-file. That way, you can keep your base configurations in say,
+file. That way, you can keep your base configurations in, say,
 `otelcol-config.yaml`, and overrides or additions to the base configuration can
-go in say, `otelcol-config-extras.yaml`. You can see an example of this in the
+go in, for example, `otelcol-config-extras.yaml`. See an example of this in the
 [OTel Demo’s Docker compose file](https://github.com/open-telemetry/opentelemetry-demo/blob/06f020c97f78ae9625d3a4a5d1107c55045c567f/docker-compose.yml#L665-L668).
 
 Unfortunately, while the OTel Collector supports multiple Collector
@@ -70,7 +70,7 @@ and let [Helm](https://helm.sh) do the merging for you.
 For reference,
 [check out this thread in the #otel-operator CNCF Slack channel](https://cloud-native.slack.com/archives/C033BJ8BASU/p1709321896612279).
 
-### Q2: How can I securely reference access tokens in the OpenTelemetryCollector’s configuration?
+### Q2: How can I securely reference access tokens in the Collector's configuration?
 
 In order to send OpenTelemetry data to an observability backend, you must define
 at least one [exporter](/docs/collector/configuration/#exporters). Whether you
@@ -124,10 +124,8 @@ along with full instructions
 
 ### Q3: Is the Operator version at parity with the Collector version?
 
-The default version of the Collector used by the Operator is typically behind by
-one version at most. For example, at the time of this writing, the latest
-Operator version is 0.98.0, and the latest Collector version is 0.99.0. In
-addition, the default image of the Collector used by the Operator is the
+For every Collector release, there is an Operator release which provides support for that Collector version. For example, at the time of this writing, the latest
+Operator version is 0.98.0. Thus, the the default image of the Collector used by the Operator is version 0.98.0 of the
 [core distribution](/blog/2024/otel-collector-anti-patterns/#3--not-using-the-right-collector-distribution-or-not-building-your-own-distribution)
 (as opposed to the contrib distribution).
 
@@ -199,13 +197,12 @@ For more info, check out the
 ### Q4: Does the Target Allocator work for all deployment types?
 
 No. The Target Allocator only works for
-[Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/),
 [StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/),
 and
 [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
 ([newly-introduced](https://github.com/open-telemetry/opentelemetry-operator/pull/2430#discussion_r1420495631)).
-For reference, check out
-[this discussion](https://cloud-native.slack.com/archives/C033BJ8BASU/p1709935402250859).
+More info
+[here](https://github.com/open-telemetry/opentelemetry-operator/blob/aed905c2c3c0aa3fb608a79c2e4d0e7b73dff980/apis/v1beta1/collector_webhook.go#L328).
 
 ### Q5: If I’m using Operator’s Target Allocator for Prometheus service discovery, do I need `PodMonitor` and `ServiceMonitor` CRs installed in my Kubernetes cluster?
 
@@ -323,7 +320,7 @@ semantic conventions and the team is trying to avoid breaking users' code. More
 info
 [here](https://cloud-native.slack.com/archives/C033BJ8BASU/p1713894678225579).
 
-## Final Thoughts
+## Final thoughts
 
 Hopefully this has helped to demystify the OTel Operator a bit more. There’s
 definitely a lot going on, and the OTel Operator can certainly be a bit scary at
