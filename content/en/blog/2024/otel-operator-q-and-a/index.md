@@ -6,6 +6,7 @@ author: >-
   [Adriana Villela](https://github.com/avillela) (ServiceNow),
 
 # canonical_url: http://somewhere.else/
+cSpell:ignore: automagically mycollector Deloyment
 ---
 
 ![Seattle's Mount Rainier rising about the clouds, as seen from an airplane. Photo by Adriana Villela](mount-rainier.jpg)
@@ -317,7 +318,8 @@ For more info, check out the
 
 If there is a lag, it's minimal, as maintainers try to keep these up to date for
 each release cycle. Keep in mind that there are breaking changes in some
-semconvs and the team is trying to avoid breaking users' code. More info
+semantic conventions and the team is trying to avoid breaking users' code. More
+info
 [here](https://cloud-native.slack.com/archives/C033BJ8BASU/p1713894678225579).
 
 ## Final Thoughts
