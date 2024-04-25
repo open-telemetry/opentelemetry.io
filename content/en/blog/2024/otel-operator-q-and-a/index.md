@@ -149,10 +149,18 @@ developers to develop and test. It contains a base set of components–i.e.
 [processors](/docs/collector/configuration/#processors), and
 [exporters](/docs/collector/configuration/#exporters).
 
-If you want access to more components than the ones offered by core, you can use the Collector's [Kubernetes Distribution](https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-k8s) instead. This distribution is made specifically to be used in a Kubernetes cluster to monitor Kubernetes and services running in Kubernetes. It contains a subset of components from [OpenTelemetry Collector Core](https://github.com/open-telemetry/opentelemetry-collector) and [OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib).
+If you want access to more components than the ones offered by core, you can use
+the Collector's
+[Kubernetes Distribution](https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-k8s)
+instead. This distribution is made specifically to be used in a Kubernetes
+cluster to monitor Kubernetes and services running in Kubernetes. It contains a
+subset of components from
+[OpenTelemetry Collector Core](https://github.com/open-telemetry/opentelemetry-collector)
+and
+[OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib).
 
-If you want to use your own specific Collector components, you can build
-your own distribution using the
+If you want to use your own specific Collector components, you can build your
+own distribution using the
 [OpenTelemetry Collector Builder](/docs/collector/custom-collector/) (OCB), and
 include only the components that you need.
 
