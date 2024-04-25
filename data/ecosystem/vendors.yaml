@@ -399,7 +399,7 @@
   commercial: true
 - name: Embrace
   nativeOTLP: true
-  url: 'https://github.com/embrace-io/embrace-apple-sdk/blob/main/GETTING_STARTED.md#exporting-logs-and-traces-to-opentelemetry-vendors'
+  url: 'https://embrace.io/opentelemetry-for-mobile/'
   contact: 'product@embrace.io'
   oss: true
   commercial: true
