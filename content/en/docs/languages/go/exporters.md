@@ -3,7 +3,7 @@ title: Exporters
 aliases: [exporting_data]
 weight: 50
 # prettier-ignore
-cSpell:ignore: otlpmetric otlpmetricgrpc otlpmetrichttp otlptrace otlptracegrpc otlptracehttp promhttp stdouttrace
+cSpell:ignore: otlpmetric otlpmetricgrpc otlpmetrichttp otlptrace otlptracegrpc otlptracehttp promhttp stdoutlog stdouttrace
 ---
 
 {{% docs/languages/exporters/intro go %}}
@@ -31,7 +31,7 @@ func newExporter() (trace.SpanExporter, error) {
 }
 ```
 
-### Console metrics (Experimental)
+### Console metrics
 
 [`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric)
 contains an implementation of the console metrics exporter.
@@ -46,6 +46,25 @@ import (
 
 func newExporter() (metric.Exporter, error) {
 	return stdoutmetric.New()
+}
+```
+
+### Console logs (Experimental) {#console-logs}
+
+The
+[`go.opentelemetry.io/otel/exporters/stdout/stdoutlog`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutlog)
+package contains an implementation of the console log exporter.
+
+Here's how you can create an exporter with default configuration:
+
+```go
+import (
+	"go.opentelemetry.io/otel/exporters/stdout/stdoutlog"
+	"go.opentelemetry.io/otel/sdk/log"
+)
+
+func newExporter() (log.Exporter, error) {
+	return stdoutlog.New()
 }
 ```
 

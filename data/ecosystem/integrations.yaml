@@ -18,6 +18,7 @@
   url: https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/index.html
   docsUrl: https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/opentelemetry.html
   components: [Java]
+  native: true # Elasticsearch Java API Client provides a native integration of the OpenTelemetry API
   oss: true
 - name: Kubernetes
   url: https://kubernetes.io/

@@ -45,6 +45,8 @@ jobs:
           echo $COMMENT
 
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
       - name: Write start comment
         run: |
@@ -66,6 +68,7 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
           cache-dependency-path: tmp/package-ci.json
+          token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
       - run: |
           case $PR_ACTION in
