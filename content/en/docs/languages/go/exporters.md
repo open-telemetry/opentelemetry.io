@@ -15,8 +15,9 @@ simplest to set up.
 
 ### Console traces
 
+The
 [`go.opentelemetry.io/otel/exporters/stdout/stdouttrace`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdouttrace)
-contains an implementation of the console trace exporter.
+package contains an implementation of the console trace exporter.
 
 Here's how you can create an exporter with default configuration:
 
@@ -33,8 +34,9 @@ func newExporter() (trace.SpanExporter, error) {
 
 ### Console metrics
 
+The
 [`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric)
-contains an implementation of the console metrics exporter.
+package contains an implementation of the console metrics exporter.
 
 Here's how you can create an exporter with default configuration:
 
