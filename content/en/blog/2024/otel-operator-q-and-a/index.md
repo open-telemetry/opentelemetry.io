@@ -5,7 +5,7 @@ date: 2024-04-24
 author: >-
   [Adriana Villela](https://github.com/avillela) (ServiceNow),
 
-# canonical_url: http://somewhere.else/
+canonical_url: https://adri-v.medium.com/81d63addbf92?
 cSpell:ignore: automagically mycollector
 ---
 
@@ -88,13 +88,14 @@ sensitive data, including access tokens stored as plain text.
 Fortunately, the `OpenTelemetryCollector` CR gives us a way to reference that
 value as a secret. Here’s how you do it:
 
-1. Create a Kubernetes secret for your access token. Remember to
-   [base-64 encode](https://www.base64encode.org/) the secret.
+1- Create a Kubernetes secret for your access token. Remember to
+[base-64 encode](https://www.base64encode.org/) the secret.
 
-2. [Expose the secret as an environment variable](https://kubernetes.io/docs/concepts/configuration/secret/#using-a-secret)
-   by adding it to the `OpenTelemetryCollector` CR’s
-   [`env` section](https://github.com/avillela/otel-target-allocator-talk/blob/21e9643e28165e39bd79f3beec7f2b1f989d87e9/src/resources/02-otel-collector-ls.yml#L16-L21).
-   For example:
+2-
+[Expose the secret as an environment variable](https://kubernetes.io/docs/concepts/configuration/secret/#using-a-secret)
+by adding it to the `OpenTelemetryCollector` CR’s
+[`env` section](https://github.com/avillela/otel-target-allocator-talk/blob/21e9643e28165e39bd79f3beec7f2b1f989d87e9/src/resources/02-otel-collector-ls.yml#L16-L21).
+For example:
 
 ```yaml
 env:
@@ -105,8 +106,8 @@ env:
         name: otel-collector-secret
 ```
 
-3. Reference the environment variable in your
-   [exporter definition](https://github.com/avillela/otel-target-allocator-talk/blob/21e9643e28165e39bd79f3beec7f2b1f989d87e9/src/resources/02-otel-collector-ls.yml#L43-L47):
+3- Reference the environment variable in your
+[exporter definition](https://github.com/avillela/otel-target-allocator-talk/blob/21e9643e28165e39bd79f3beec7f2b1f989d87e9/src/resources/02-otel-collector-ls.yml#L43-L47):
 
 ```yaml
 exporters:
