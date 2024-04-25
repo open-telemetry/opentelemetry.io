@@ -99,10 +99,10 @@ For example:
 
 ```yaml
 env:
-  - name: LS_TOKEN
+  - name: TOKEN_VALUE
     valueFrom:
       secretKeyRef:
-        key: LS_TOKEN
+        key: TOKEN_VALUE
         name: otel-collector-secret
 ```
 
@@ -112,9 +112,9 @@ env:
 ```yaml
 exporters:
   otlp/ls:
-    endpoint: 'ingest.lightstep.com:443'
+    endpoint: '<your_endpoint_here>'
     headers:
-      'lightstep-access-token': '${LS_TOKEN}'
+      '<token_name>': '${TOKEN_VALUE}'
 ```
 
 For more info, check out my full example
