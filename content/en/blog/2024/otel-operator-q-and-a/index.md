@@ -27,6 +27,8 @@ easier. It does the following:
   [OpAMP](/docs/specs/opamp/) integration, supported by the
   [`OpAMPBridge`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opampbridge)
   custom resource.
+- Provides
+  [integration with the Prometheus Operator's `PodMonitor` and `ServiceMonintor` CRs](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator).
 - Injects and configures
   [auto-instrumentation](https://www.honeycomb.io/blog/what-is-auto-instrumentation)
   into your pods, supported by the
