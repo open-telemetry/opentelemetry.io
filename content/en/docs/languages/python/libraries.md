@@ -2,6 +2,7 @@
 title: Using instrumentation libraries
 linkTitle: Libraries
 weight: 40
+cSpell:ignore: HTTPX httpx instrumentor uninstrument
 ---
 
 {{% docs/languages/libraries-intro "Python" %}}
