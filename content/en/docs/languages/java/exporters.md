@@ -119,7 +119,7 @@ import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
 import io.opentelemetry.sdk.logs.export.BatchLogRecordProcessor;
 import io.opentelemetry.sdk.logs.SdkLoggerProvider;
 import io.opentelemetry.sdk.logs.export.LogRecordExporter;
-import io.opentelemetry.semconv.ServiceAttributes;
+import io.opentelemetry.semconv;
 
 @SpringBootApplication
 public class DiceApplication {
