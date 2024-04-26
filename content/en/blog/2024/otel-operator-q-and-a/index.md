@@ -202,7 +202,7 @@ to authenticate against that private registry. For more info on how to use
 For more info, check out the
 [OpenTelemetryCollector CR API docs](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector).
 
-### Q4: Does the Target Allocator work for all deployment types?
+### Q5: Does the Target Allocator work for all deployment types?
 
 No. The Target Allocator only works for
 [StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/),
@@ -212,7 +212,7 @@ and
 More info
 [here](https://github.com/open-telemetry/opentelemetry-operator/blob/aed905c2c3c0aa3fb608a79c2e4d0e7b73dff980/apis/v1beta1/collector_webhook.go#L328).
 
-### Q5: If I’m using Operator’s Target Allocator for Prometheus service discovery, do I need `PodMonitor` and `ServiceMonitor` CRs installed in my Kubernetes cluster?
+### Q6: If I’m using Operator’s Target Allocator for Prometheus service discovery, do I need `PodMonitor` and `ServiceMonitor` CRs installed in my Kubernetes cluster?
 
 Yes, you do. These CRs are bundled with the
 [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator);
@@ -241,7 +241,7 @@ Check out my example of the OpenTelemetry Operator’s Target Allocator with
 `ServiceMonitor`
 [here](https://github.com/avillela/otel-target-allocator-talk/tree/main?tab=readme-ov-file#3b--kubernetes-deployment-servicenow-cloud-observability-backend).
 
-### Q6: Do I need to create a service account to use the Target Allocator?
+### Q7: Do I need to create a service account to use the Target Allocator?
 
 No, but you do need to do a bit of extra work. So, here’s the deal…although you
 need a
@@ -267,7 +267,7 @@ See the
 [Target Allocator readme](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator#rbac)
 for more on Target Allocator RBAC configuration.
 
-### Q7: Can I override the Target Allocator base image?
+### Q8: Can I override the Target Allocator base image?
 
 Just like you can override the Collector base image in the
 `OpenTelemetryCollector` CR, you can also override the Target Allocator base
@@ -303,7 +303,7 @@ Where:
 - `<number_of_replicas>` is the number of pod instances for the underlying
   Target Allocator
 
-### Q8: If it’s not recommended that you override the Target Allocator base image, then why would you want to?
+### Q9: If it’s not recommended that you override the Target Allocator base image, then why would you want to?
 
 One use case might be
 [if you need to host a mirror of the Target Allocator image in your own private container registry for security purposes](https://cloud-native.slack.com/archives/C033BJ8BASU/p1713894678225579).
@@ -315,12 +315,12 @@ Operator, check out the instructions
 Note that you don’t need to create a `serviceAccount` for the Target Allocator,
 since once is already created for you automagically if you don’t create one
 yourself (see
-[Q6](#q6-do-i-need-to-create-a-service-account-to-use-the-target-allocator)).
+[Q7](#q7-do-i-need-to-create-a-service-account-to-use-the-target-allocator)).
 
 For more info, check out the
 [Target Allocator API docs](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocator).
 
-### Q9: Is there a version lag between the OTel Operator auto-instrumentation and auto-instrumentation of supported languages?
+### Q10: Is there a version lag between the OTel Operator auto-instrumentation and auto-instrumentation of supported languages?
 
 If there is a lag, it's minimal, as maintainers try to keep these up to date for
 each release cycle. Keep in mind that there are breaking changes in some
