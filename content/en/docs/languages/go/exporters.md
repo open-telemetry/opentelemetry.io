@@ -3,7 +3,7 @@ title: Exporters
 aliases: [exporting_data]
 weight: 50
 # prettier-ignore
-cSpell:ignore: otlpmetric otlpmetricgrpc otlpmetrichttp otlptrace otlptracegrpc otlptracehttp promhttp stdoutlog stdouttrace
+cSpell:ignore: otlplog otlploghttp otlpmetric otlpmetricgrpc otlpmetrichttp otlptrace otlptracegrpc otlptracehttp promhttp stdoutlog stdouttrace
 ---
 
 {{% docs/languages/exporters/intro go %}}
@@ -15,8 +15,9 @@ simplest to set up.
 
 ### Console traces
 
+The
 [`go.opentelemetry.io/otel/exporters/stdout/stdouttrace`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdouttrace)
-contains an implementation of the console trace exporter.
+package contains an implementation of the console trace exporter.
 
 Here's how you can create an exporter with default configuration:
 
@@ -33,8 +34,9 @@ func newExporter() (trace.SpanExporter, error) {
 
 ### Console metrics
 
+The
 [`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric)
-contains an implementation of the console metrics exporter.
+package contains an implementation of the console metrics exporter.
 
 Here's how you can create an exporter with default configuration:
 
@@ -192,3 +194,22 @@ func newExporter(ctx context.Context) (metric.Reader, error) {
 
 To learn more on how to use the Prometheus exporter, try the
 [prometheus example](https://github.com/open-telemetry/opentelemetry-go/tree/main/example/prometheus)
+
+### OTLP logs over HTTP (Experimental)
+
+[`go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp)
+contains an implementation of OTLP logs exporter using HTTP with binary protobuf
+payloads.
+
+Here's how you can create an exporter with default configuration:
+
+```go
+import (
+	"go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp"
+	"go.opentelemetry.io/otel/sdk/log"
+)
+
+func newExporter(ctx context.Context) (log.Exporter, error) {
+	return otlploghttp.New(ctx)
+}
+```
