@@ -1,6 +1,6 @@
 ---
-title: Integrating Datadog-instrumented Apps Traces in your OpenTelemetry Stack
-linkTitle: Integrating Datadog Traces in OTel Stack
+title: Integrate traces from vendor SDKs in your OpenTelemetry stack
+linkTitle: Integrating traces from vendor SDKs in OTel Stack
 date: 2024-04-22
 author: >-
   [Daniel Dias](https://github.com/danielbdias) (Tracetest)
