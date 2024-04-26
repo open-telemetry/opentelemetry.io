@@ -16,4 +16,4 @@ createdAt: 2022-10-27
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-tedious'
-  version: 0.9.0
+  version: 0.10.0
