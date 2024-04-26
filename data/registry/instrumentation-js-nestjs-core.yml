@@ -7,8 +7,7 @@ tags:
   - instrumentation
   - js
 license: Apache 2.0
-description:
-  This module provides automatic instrumentation for the Nest framework.
+description: This module provides automatic instrumentation for the Nest framework.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -17,4 +16,4 @@ createdAt: 2021-07-09
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-nestjs-core'
-  version: 0.36.0
+  version: 0.37.0

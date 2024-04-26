@@ -6,9 +6,7 @@ tags:
   - instrumentation
   - js
 license: Apache 2.0
-description:
-  This module provides automatic instrumentation for the `@cucumber/cucumber`
-  bundle.
+description: This module provides automatic instrumentation for the `@cucumber/cucumber` bundle.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -17,4 +15,4 @@ createdAt: 2022-10-27
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-cucumber'
-  version: 0.5.0
+  version: 0.6.0

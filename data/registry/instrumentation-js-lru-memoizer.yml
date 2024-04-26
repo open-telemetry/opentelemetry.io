@@ -7,8 +7,7 @@ tags:
   - instrumentation
   - js
 license: Apache 2.0
-description:
-  This module provides an instrumentation library for the lru-memorizer.
+description: This module provides an instrumentation library for the lru-memorizer.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -17,4 +16,4 @@ createdAt: 2022-10-27
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-lru-memoizer'
-  version: 0.36.0
+  version: 0.37.0
