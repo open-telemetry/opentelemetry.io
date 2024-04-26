@@ -5,14 +5,13 @@ weight: 40
 cSpell:ignore: getenv httpclient println
 ---
 
-When you develop an app, you use third-party libraries and frameworks to
-accelerate your work and avoid duplicated efforts. If you instrument your app
-with OpenTelemetry, you don't want to spend additional time on manually adding
-traces, logs, and metrics to those libraries and frameworks.
+{{% docs/languages/libraries-intro "Java" %}}
 
-Use libraries that come with OpenTelemetry support natively or an
-[Instrumentation Library](/docs/concepts/instrumentation/libraries/) to generate
-telemetry data for a library or framework.
+## Use Instrumentation Libraries
+
+If a library does not come with OpenTelemetry out of the box, you can use
+[instrumentation libraries](/docs/specs/otel/glossary/#instrumentation-library)
+in order to generate telemetry data for a library or framework.
 
 The Java agent for automatic instrumentation includes instrumentation libraries
 for many common Java frameworks. Most are turned on by default. If you need to
