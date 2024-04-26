@@ -15,7 +15,7 @@
 [submodule "content-modules/opentelemetry-proto"]
 	path = content-modules/opentelemetry-proto
 	url = https://github.com/open-telemetry/opentelemetry-proto
-	otlp-pin = v1.2.0
+	otlp-pin = v1.3.0
 [submodule "content-modules/semantic-conventions"]
 	path = content-modules/semantic-conventions
 	url = https://github.com/open-telemetry/semantic-conventions
@@ -23,7 +23,7 @@
 [submodule "content-modules/opamp-spec"]
 	path = content-modules/opamp-spec
 	url = https://github.com/open-telemetry/opamp-spec
-	opamp-pin = v0.8.0-5-g0360da8
+	opamp-pin = v0.9.0-2-g950df29
 [submodule "content-modules/opentelemetry-go"]
 	path = content-modules/opentelemetry-go
 	url = https://github.com/open-telemetry/opentelemetry-go

@@ -22,6 +22,12 @@
   contact:
   oss: false
   commercial: true
+- name: Axiom
+  nativeOTLP: true
+  url: https://axiom.co/docs/send-data/opentelemetry
+  contact: https://axiom.co/contact
+  oss: false
+  commercial: true
 - name: Azure
   nativeOTLP: false
   url: https://docs.microsoft.com/azure/azure-monitor/app/opentelemetry-overview
@@ -393,7 +399,7 @@
   commercial: true
 - name: Embrace
   nativeOTLP: true
-  url: 'https://github.com/embrace-io/embrace-apple-sdk/blob/main/GETTING_STARTED.md#exporting-logs-and-traces-to-opentelemetry-vendors'
+  url: 'https://embrace.io/opentelemetry-for-mobile/'
   contact: 'product@embrace.io'
   oss: true
   commercial: true
