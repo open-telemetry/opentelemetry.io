@@ -18,6 +18,7 @@
   url: https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/index.html
   docsUrl: https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/opentelemetry.html
   components: [Java]
+  native: true # Elasticsearch Java API Client provides a native integration of the OpenTelemetry API
   oss: true
 - name: Kubernetes
   url: https://kubernetes.io/
@@ -205,4 +206,14 @@
   url: https://www.krakend.io
   docsUrl: https://www.krakend.io/docs/telemetry/opentelemetry/
   components: [Go]
+  oss: true
+- name: Azure SDKs
+  url: https://github.com/Azure/azure-sdk-for-net
+  docsUrl: https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable
+  components: [.NET]
+  oss: true
+- name: MassTransit .NET client
+  url: https://github.com/MassTransit/MassTransit
+  docsUrl: https://masstransit.io/documentation/configuration/observability
+  components: [.NET]
   oss: true
