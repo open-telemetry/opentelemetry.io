@@ -6,7 +6,9 @@ tags:
   - resource-detector
   - js
 license: Apache 2.0
-description: Detects GITHUB_* environment variables specified and adds as attributes on a resource.
+description:
+  Detects GITHUB_* environment variables specified and adds as attributes on a
+  resource.
 authors:
   - name: OpenTelemetry Authors
 urls:
