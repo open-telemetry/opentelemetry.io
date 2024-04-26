@@ -276,7 +276,7 @@ endif()
 include_directories(${OATPP_ROOT}/src)
 
 # Use find_package to include OpenTelemetry C++
-find_package(opentelemetry-cpp CONFIG REQUIRED)
+find_package(opentelemetry-cpp CONFIG REQUIRED NO_DEFAULT_PATH)
 
 # Link against each OpenTelemetry C++ library
 target_link_libraries(dice-server PRIVATE
