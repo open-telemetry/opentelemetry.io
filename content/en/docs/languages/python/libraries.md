@@ -14,9 +14,9 @@ If a library isn't included with OpenTelemetry, you can use
 to generate telemetry data for a library or framework.
 
 For example,
-[the instrumentation library for ASP.NET Core](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AspNetCore)
-will automatically create [spans](/docs/concepts/signals/traces/#spans) and
-[metrics](/docs/concepts/signals/metrics) based on the inbound HTTP requests.
+[the instrumentation library for HTTPX]([https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AspNetCore](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-httpx))
+automatically creates [spans](/docs/concepts/signals/traces/#spans) based
+on HTTP requests.
 
 ## Setup
 
@@ -103,4 +103,4 @@ You can also check the
 [automatic instrumentation for Python](/docs/languages/python/automatic).
 
 [opentelemetry-python-contrib]:
-  https://github.com/open-telemetry/opentelemetry-python-contrib/
+  https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation
