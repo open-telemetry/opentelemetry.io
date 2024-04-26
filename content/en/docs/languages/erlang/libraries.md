@@ -2,7 +2,7 @@
 title: Using instrumentation libraries
 linkTitle: Libraries
 weight: 40
-cSpell:ignore: Hex Ecto
+cSpell:ignore: Ecto Hex
 ---
 
 {{% docs/languages/libraries-intro "Erlang" %}}
