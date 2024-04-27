@@ -39,6 +39,9 @@ editable installation:
 pip install -e ./instrumentation/opentelemetry-instrumentation-{integration}
 ```
 
+After installation, you will need to initialize the instrumentation library.
+Each library typically has its own way to initialize.
+
 ## Example with HTTPX instrumentation
 
 Here's how you can instrument HTTP requests made using the `httpx` library.
