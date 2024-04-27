@@ -3619,6 +3619,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:09.842104-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.35.0": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-27T13:39:34.845798-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-js": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:10:29.425732-05:00"
@@ -5775,6 +5779,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-03-19T10:16:59.755536357Z"
   },
+  "https://opentelemetry.io/blog/2022/jaeger-native-otlp/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-27T13:39:35.171666-04:00"
+  },
   "https://opentelemetry.io/docs/collector": {
     "StatusCode": 206,
     "LastSeen": "2024-02-23T22:55:03.656226-05:00"
@@ -5822,6 +5830,10 @@
   "https://opentelemetry.io/docs/collector/deployment/no-collector/": {
     "StatusCode": 206,
     "LastSeen": "2024-02-23T22:55:04.014798-05:00"
+  },
+  "https://opentelemetry.io/docs/instrumentation/java/exporters/#otlp-dependencies": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-27T13:39:35.50295-04:00"
   },
   "https://opentelemetry.io/docs/specs/otel/protocol": {
     "StatusCode": 206,
@@ -9078,6 +9090,10 @@
   "https://zipkin.io/zipkin-api/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:07:54.399973-05:00"
+  },
+  "https://zipkin.io/zipkin-api/#/default/post_spans": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-27T13:39:35.686013-04:00"
   },
   "https://zoom.us/j/5227112777": {
     "StatusCode": 200,
