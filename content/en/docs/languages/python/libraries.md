@@ -26,10 +26,7 @@ You can install each instrumentation library separately using pip. For example:
 pip install opentelemetry-instrumentation-{integration}
 ```
 
-In the previous example, `{integration}` is the name of the instrumentation. For
-a complete list of instrumentations and their names, browse the
-[instrumentation](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation)
-directory of the `opentelemetry-python-contrib` repository on GitHub.
+In the previous example, `{integration}` is the name of the instrumentation.
 
 To install a development version, clone or fork the
 `opentelemetry-python-contrib` repository and run the following command to do an
@@ -68,7 +65,10 @@ async with httpx.AsyncClient() as client:
      response = await client.get(url)
 ```
 
-If needed, you can uninstrument specific clients or all clients. For examples:
+### Turn off instrumentations
+
+If needed, you can uninstrument specific clients or all clients using the
+`uninstrument_client` method. For example:
 
 ```python
 import httpx
