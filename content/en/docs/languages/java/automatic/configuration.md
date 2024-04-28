@@ -123,11 +123,11 @@ A resource is the immutable representation of the entity producing the
 telemetry. See [Resource semantic conventions](/docs/specs/semconv/resource/)
 for more details.
 
-| Environment variable                       | Description                                                                                                |
-| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
-| `OTEL_RESOURCE_ATTRIBUTES`                 | Specify resource attributes in the following format: key1=val1,key2=val2,key3=val3                         |
-| `OTEL_SERVICE_NAME`                        | Specify logical service name. Takes precedence over `service.name` defined with `otel.resource.attributes` |
-| `OTEL_EXPERIMENTAL_RESOURCE_DISABLED_KEYS` | Specify resource attribute keys that are filtered.                                                         |
+| Environment variable                       | Description                                                                                                 |
+| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| `OTEL_RESOURCE_ATTRIBUTES`                 | Specify resource attributes in the following format: key1=val1,key2=val2,key3=val3.                         |
+| `OTEL_SERVICE_NAME`                        | Specify logical service name. Takes precedence over `service.name` defined with `otel.resource.attributes`. |
+| `OTEL_EXPERIMENTAL_RESOURCE_DISABLED_KEYS` | Specify resource attribute keys that are filtered.                                                          |
 
 You almost always want to specify the
 [`service.name`](/docs/specs/semconv/resource/#service) for your application. It
@@ -135,13 +135,13 @@ corresponds to how you describe the application, for example `authservice` could
 be an application that authenticates requests. If not specified, SDK defaults
 the service name to `unknown_service:java`.
 
-### Resource Provider SPI
+### ResourceProvider SPI
 
 The
 [autoconfigure-spi](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure-spi)
-SDK extension provides a ResourceProvider SPI that allows libraries to
+SDK extension provides a `ResourceProvider` SPI that allows libraries to
 automatically provide Resources, which are merged into a single Resource by the
-autoconfiguration module. You can create your own ResourceProvider, or
+autoconfiguration module. You can create your own `ResourceProvider`, or
 optionally use an artifact that includes built-in ResourceProviders:
 
 - [io.opentelemetry.instrumentation:opentelemetry-resources](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/resources)
@@ -154,66 +154,66 @@ optionally use an artifact that includes built-in ResourceProviders:
   includes providers for
   [common GCP resources](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources/src/main/java/io/opentelemetry/contrib/gcp/resource)
 
-### Disabling Automatic ResourceProviders
+### Disabling automatic ResourceProviders
 
-If you are using the `ResourceProvider` SPI (many instrumentation agent
-distributions include this automatically), you can enable / disable one or more
-of them by using the following configuration items:
+If you are using the `ResourceProvider` SPI, which many instrumentation agent
+distributions include automatically, you can turn on or off one or more of them
+by using the following configuration items:
 
-| Environment variable                    | Description                                                                                 |
-| --------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `OTEL_JAVA_ENABLED_RESOURCE_PROVIDERS`  | Enables one or more `ResourceProvider` types. If unset, all resource providers are enabled. |
-| `OTEL_JAVA_DISABLED_RESOURCE_PROVIDERS` | Disables one or more `ResourceProvider` types                                               |
+| Environment variable                    | Description                                                                                  |
+| --------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `OTEL_JAVA_ENABLED_RESOURCE_PROVIDERS`  | Turns on one or more `ResourceProvider` types. If unset, all resource providers are enabled. |
+| `OTEL_JAVA_DISABLED_RESOURCE_PROVIDERS` | Turns off one or more `ResourceProvider` types.                                              |
 
-The value for these properties must be a comma separated list of fully qualified
-`ResourceProvider` classnames. For example, if you don't want to expose the name
-of the operating system through the resource, you can pass the following JVM
-argument:
+The value for these properties must be a comma-separated list of fully qualified
+`ResourceProvider` class names. For example, if you don't want to expose the
+name of the operating system through the resource, you can pass the following
+JVM argument:
 
 `-Dotel.java.disabled.resource.providers=io.opentelemetry.instrumentation.resources.OsResourceProvider`
 
 ## Propagators
 
-The propagators determine which distributed tracing header formats are used, and
-which baggage propagation header formats are used.
+The propagators determine which distributed tracing header formats and baggage
+propagation header formats are used.
 
 | Environment variable | Description                                                                                                               |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | `OTEL_PROPAGATORS`   | The propagators to be used. Use a comma-separated list for multiple propagators. Default is `tracecontext,baggage` (W3C). |
 
-Supported values are
+Supported values are the following:
 
 - `tracecontext`: [W3C Trace Context](https://www.w3.org/TR/trace-context/) (add
-  `baggage` as well to include W3C baggage)
-- `baggage`: [W3C Baggage](https://www.w3.org/TR/baggage/)
-- `b3`: [B3 Single](https://github.com/openzipkin/b3-propagation#single-header)
+  `baggage` as well to include W3C baggage).
+- `baggage`: [W3C Baggage](https://www.w3.org/TR/baggage/).
+- `b3`: [B3 Single](https://github.com/openzipkin/b3-propagation#single-header).
 - `b3multi`:
-  [B3 Multi](https://github.com/openzipkin/b3-propagation#multiple-headers)
+  [B3 Multi](https://github.com/openzipkin/b3-propagation#multiple-headers).
 - `jaeger`:
   [Jaeger](https://www.jaegertracing.io/docs/1.21/client-libraries/#propagation-format)
-  (includes Jaeger baggage)
+  (includes Jaeger baggage).
 - `xray`:
-  [AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-tracingheader)
-- `ottrace`: [OT Trace](https://github.com/opentracing?q=basic&type=&language=)
+  [AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-tracingheader).
+- `ottrace`: [OT Trace](https://github.com/opentracing?q=basic&type=&language=).
 
 ## Samplers
 
-The sampler configures whether spans will be recorded for any call to
+The sampler configures whether spans are recorded for any call to
 `SpanBuilder.startSpan`.
 
 | Environment variable      | Description                                                             |
 | ------------------------- | ----------------------------------------------------------------------- |
-| `OTEL_TRACES_SAMPLER`     | The sampler to use for tracing. Defaults to `parentbased_always_on`     |
+| `OTEL_TRACES_SAMPLER`     | The sampler to use for tracing. Defaults to `parentbased_always_on`.    |
 | `OTEL_TRACES_SAMPLER_ARG` | An argument to the configured tracer if supported, for example a ratio. |
 
-Supported values for `OTEL_TRACES_SAMPLER` are
+Supported values for `OTEL_TRACES_SAMPLER` are the following:
 
-- "always_on": AlwaysOnSampler
-- "always_off": AlwaysOffSampler
-- "traceidratio": TraceIdRatioBased. `OTEL_TRACES_SAMPLER_ARG` sets the ratio.
-- "parentbased_always_on": ParentBased(root=AlwaysOnSampler)
-- "parentbased_always_off": ParentBased(root=AlwaysOffSampler)
-- "parentbased_traceidratio": ParentBased(root=TraceIdRatioBased).
+- `always_on`: AlwaysOnSampler.
+- `always_off`: AlwaysOffSampler.
+- `traceidratio`: TraceIdRatioBased. `OTEL_TRACES_SAMPLER_ARG` sets the ratio.
+- `parentbased_always_on`: ParentBased(root=AlwaysOnSampler).
+- `parentbased_always_off`: ParentBased(root=AlwaysOffSampler).
+- `parentbased_traceidratio`: ParentBased(root=TraceIdRatioBased).
   `OTEL_TRACES_SAMPLER_ARG` sets the ratio.
 
 ## Exporters
@@ -240,9 +240,9 @@ exporters
 
 | Environment variable                                       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `OTEL_TRACES_EXPORTER=otlp`                                | Select the OpenTelemetry exporter for tracing (default)                                                                                                                                                                                                                                                                                                                                                                                                       |
-| `OTEL_METRICS_EXPORTER=otlp`                               | Select the OpenTelemetry exporter for metrics (default)                                                                                                                                                                                                                                                                                                                                                                                                       |
-| `OTEL_LOGS_EXPORTER=otlp`                                  | Select the OpenTelemetry exporter for logs (default)                                                                                                                                                                                                                                                                                                                                                                                                          |
+| `OTEL_TRACES_EXPORTER=otlp`                                | Select the OpenTelemetry exporter for tracing (default).                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `OTEL_METRICS_EXPORTER=otlp`                               | Select the OpenTelemetry exporter for metrics (default).                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `OTEL_LOGS_EXPORTER=otlp`                                  | Select the OpenTelemetry exporter for logs (default).                                                                                                                                                                                                                                                                                                                                                                                                         |
 | `OTEL_EXPORTER_OTLP_ENDPOINT`                              | The OTLP traces, metrics, and logs endpoint to connect to. Must be a URL with a scheme of either `http` or `https` based on the use of TLS. If protocol is `http/protobuf` the version and signal will be appended to the path (e.g. `v1/traces`, `v1/metrics`, or `v1/logs`). Default is `http://localhost:4317` when protocol is `grpc`, and `http://localhost:4318/v1/{signal}` when protocol is `http/protobuf`.                                          |
 | `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`                       | The OTLP traces endpoint to connect to. Must be a URL with a scheme of either `http` or `https` based on the use of TLS. Default is `http://localhost:4317` when protocol is `grpc`, and `http://localhost:4318/v1/traces` when protocol is `http/protobuf`.                                                                                                                                                                                                  |
 | `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT`                      | The OTLP metrics endpoint to connect to. Must be a URL with a scheme of either `http` or `https` based on the use of TLS. Default is `http://localhost:4317` when protocol is `grpc`, and `http://localhost:4318/v1/metrics` when protocol is `http/protobuf`.                                                                                                                                                                                                |
@@ -280,19 +280,19 @@ exporters
 | `OTEL_EXPERIMENTAL_EXPORTER_OTLP_RETRY_ENABLED`            | If `true`, enable [experimental retry support](#otlp-exporter-retry). Default is `false`.                                                                                                                                                                                                                                                                                                                                                                     |
 
 To configure the service name for the OTLP exporter, add the `service.name` key
-to the OpenTelemetry Resource, e.g.
+to the OpenTelemetry Resource. For example:
 `OTEL_RESOURCE_ATTRIBUTES=service.name=myservice`.
 
 #### OTLP exporter retry
 
 [OTLP](/docs/specs/otlp/#otlpgrpc-response) requires that
 [transient](/docs/specs/otel/protocol/exporter/#retry) errors be handled with a
-retry strategy. When retry is enabled, retryable gRPC status codes will be
-retried using an exponential backoff with jitter algorithm as described in the
+retry strategy. When retry is enabled, retryable gRPC status codes are retried
+using an exponential backoff with jitter algorithm as described in the
 [gRPC Retry Design](https://github.com/grpc/proposal/blob/master/A6-client-retries.md#exponential-backoff).
 
 The policy has the following configuration, which there is currently no way to
-customize.
+customize:
 
 - `maxAttempts`: The maximum number of attempts, including the original request.
   Defaults to `5`.
@@ -320,35 +320,33 @@ specified HTTP URL.
 
 | Environment variable            | Description                                                                                                           |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `OTEL_TRACES_EXPORTER=zipkin`   | Select the Zipkin exporter                                                                                            |
+| `OTEL_TRACES_EXPORTER=zipkin`   | Select the Zipkin exporter.                                                                                           |
 | `OTEL_EXPORTER_ZIPKIN_ENDPOINT` | The Zipkin endpoint to connect to. Default is `http://localhost:9411/api/v2/spans`. Currently only HTTP is supported. |
 
 ### Prometheus exporter
 
 The
 [Prometheus](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md)
-exporter is only available for the metric signal.
+exporter is only available for the metric signal. This is a pull exporter - it
+opens up a server on the local process listening on the specified host and port,
+which a Prometheus server scrapes from.
 
 | Environment variable               | Description                                                                        |
 | ---------------------------------- | ---------------------------------------------------------------------------------- |
-| `OTEL_METRICS_EXPORTER=prometheus` | Select the Prometheus exporter                                                     |
+| `OTEL_METRICS_EXPORTER=prometheus` | Select the Prometheus exporter.                                                    |
 | `OTEL_EXPORTER_PROMETHEUS_PORT`    | The local port used to bind the prometheus metric server. Default is `9464`.       |
 | `OTEL_EXPORTER_PROMETHEUS_HOST`    | The local address used to bind the prometheus metric server. Default is `0.0.0.0`. |
-
-Note that this is a pull exporter - it opens up a server on the local process
-listening on the specified host and port, which a Prometheus server scrapes
-from.
 
 ### Logging exporter
 
 The logging exporter prints the name of the span along with its attributes to
 stdout. It's mainly used for testing and debugging.
 
-| Environment variable            | Description                             |
-| ------------------------------- | --------------------------------------- |
-| `OTEL_TRACES_EXPORTER=console`  | Select the logging exporter for tracing |
-| `OTEL_METRICS_EXPORTER=console` | Select the logging exporter for metrics |
-| `OTEL_LOGS_EXPORTER=console`    | Select the logging exporter for logs    |
+| Environment variable            | Description                              |
+| ------------------------------- | ---------------------------------------- |
+| `OTEL_TRACES_EXPORTER=console`  | Select the logging exporter for tracing. |
+| `OTEL_METRICS_EXPORTER=console` | Select the logging exporter for metrics. |
+| `OTEL_LOGS_EXPORTER=console`    | Select the logging exporter for logs.    |
 
 The logging exporter is also set when `OTEL_TRACES_EXPORTER`,
 `OTEL_METRICS_EXPORTER`, or `OTEL_LOGS_EXPORTER` is set to `logging`. `logging`
@@ -360,15 +358,16 @@ is a deprecated alias for `console`, the preferred value as
 The logging-otlp exporter writes the telemetry data to the JUL logger in OTLP
 JSON form. It's a more verbose output mainly used for testing and debugging.
 
-| Environment variable                 | Description                                       |
-| ------------------------------------ | ------------------------------------------------- |
-| `OTEL_TRACES_EXPORTER=logging-otlp`  | Select the logging OTLP JSON exporter for tracing |
-| `OTEL_METRICS_EXPORTER=logging-otlp` | Select the logging OTLP JSON exporter for metrics |
-| `OTEL_LOGS_EXPORTER=logging-otlp`    | Select the logging OTLP JSON exporter for logs    |
+| Environment variable                 | Description                                        |
+| ------------------------------------ | -------------------------------------------------- |
+| `OTEL_TRACES_EXPORTER=logging-otlp`  | Select the logging OTLP JSON exporter for tracing. |
+| `OTEL_METRICS_EXPORTER=logging-otlp` | Select the logging OTLP JSON exporter for metrics. |
+| `OTEL_LOGS_EXPORTER=logging-otlp`    | Select the logging OTLP JSON exporter for logs.    |
 
-**NOTE:** While the `OtlpJsonLogging{Signal}Exporters` are stable, specifying
-their use via `OTEL_{signal}_EXPORTER=logging-otlp` is experimental and subject
-to change or removal.
+{{% alert title="Note" color="info" %}} While the
+`OtlpJsonLogging{Signal}Exporters` are stable, specifying their use via
+`OTEL_{signal}_EXPORTER=logging-otlp` is experimental and subject to change or
+removal. {{% /alert %}}
 
 ## Common instrumentation configuration
 
