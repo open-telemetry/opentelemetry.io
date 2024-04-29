@@ -240,6 +240,12 @@
   contact: skotagiri@opentext.com
   oss: false
   commercial: true
+- name: OpenLIT
+  nativeOTLP: true
+  url: https://github.com/openlit/openlit
+  contact: contact@openlit.io
+  oss: true
+  commercial: false
 - name: Oracle
   nativeOTLP: true
   url: https://docs.oracle.com/en-us/iaas/application-performance-monitoring/doc/configure-open-source-tracing-systems.html#GUID-4D941163-F357-4839-8B06-688876D4C61F
