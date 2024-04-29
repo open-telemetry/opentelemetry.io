@@ -76,11 +76,13 @@ server {
 upstream collector4317 {
     server collector1:4317;
     server collector2:4317;
+    server collector3:4317;
 }
 
 upstream collector4318 {
     server collector1:4318;
     server collector2:4318;
+    server collector3:4318;
 }
 ```
 
