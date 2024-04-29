@@ -9,7 +9,7 @@ cSpell:ignore: HTTPX httpx instrumentor uninstrument
 
 ## Use instrumentation libraries
 
-If a library isn't included with OpenTelemetry, you can use
+If a library does not ship with native OpenTelemetry support, you can use
 [instrumentation libraries](/docs/specs/otel/glossary/#instrumentation-library)
 to generate telemetry data for a library or framework.
 
