@@ -27,9 +27,11 @@ detectors, or completely disable them:
 - `host`
 - `os`
 - `process`
+- `serviceinstance`
 - `container`
 - `alibaba`
 - `aws`
+- `azure`
 - `gcp`
 - `all` - enables all resource detectors
 - `none` - disables resource detection
