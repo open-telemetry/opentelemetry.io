@@ -42,7 +42,7 @@ adds OpenTelemetry distributed tracing support to NGINX.
 
 ## Setup
 
-For setup of instrumentation library check [otel-cpp-contrib](https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation)
+To set up an instrumentation library see [otel-cpp-contrib](https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation)
 
 
 ## Available packages
