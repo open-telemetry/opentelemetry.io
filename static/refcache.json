@@ -5827,6 +5827,22 @@
     "StatusCode": 206,
     "LastSeen": "2024-02-23T22:55:04.014798-05:00"
   },
+  "https://opentelemetry.io/docs/concepts/instrumentation/libraries/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-30T09:31:37.735092936Z"
+  },
+  "https://opentelemetry.io/docs/languages/cpp/exporters/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-30T09:31:38.598060401Z"
+  },
+  "https://opentelemetry.io/docs/languages/cpp/instrumentation/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-30T09:31:38.379400427Z"
+  },
+  "https://opentelemetry.io/docs/specs/otel/glossary/#instrumentation-library": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-30T09:31:37.929550219Z"
+  },
   "https://opentelemetry.io/docs/specs/otel/protocol": {
     "StatusCode": 206,
     "LastSeen": "2024-02-24T14:33:05.630341-08:00"
@@ -5834,6 +5850,10 @@
   "https://opentelemetry.io/ecosystem/integrations/": {
     "StatusCode": 206,
     "LastSeen": "2024-03-19T10:16:49.992495889Z"
+  },
+  "https://opentelemetry.io/ecosystem/registry/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-30T09:31:38.297519267Z"
   },
   "https://opentracing.io": {
     "StatusCode": 206,
