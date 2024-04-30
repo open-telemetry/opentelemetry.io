@@ -241,7 +241,7 @@
   oss: false
   commercial: true
 - name: OpenLIT
-  nativeOTLP: true
+  nativeOTLP: false
   url: https://github.com/openlit/openlit
   contact: contact@openlit.io
   oss: true
