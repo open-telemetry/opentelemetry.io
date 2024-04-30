@@ -47,7 +47,7 @@ To set up an instrumentation library see
 ## Available packages
 
 A full list of instrumentation libraries available can be found in the
-[openTelemetry registry](https://opentelemetry.io/ecosystem/registry/?language=cpp&component=instrumentation)
+[OpenTelemetry registry](https://opentelemetry.io/ecosystem/registry/?language=cpp&component=instrumentation)
 
 ## Next steps
 
