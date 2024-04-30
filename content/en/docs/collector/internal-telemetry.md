@@ -34,8 +34,8 @@ service:
       address: '0.0.0.0:8888'
 ```
 
-You can enhance the metrics telemetry level using the `level` field. The
-following is a list of all possible values and their explanations.
+You can enhance the metrics telemetry level of verbosity using the `level`
+field. The following is a list of all possible values and their explanations.
 
 - `none` indicates that no telemetry data should be collected.
 - `basic` is the recommended value and covers the basics of the service
@@ -52,6 +52,10 @@ service:
       level: detailed
       address: ':8888'
 ```
+
+In the next section, you can find a
+[list of metrics](#list-of-internal-metrics), including their corresponding
+default verbosity levels.
 
 The Collector can also be configured to scrape its own metrics and send them
 through configured pipelines. For example:
@@ -120,66 +124,67 @@ journalctl | grep otelcol | grep Error
 
 ### List of internal metrics
 
-The following table identifies each internal metric by name and description. Each metric is also categorized by instrumentation type and level of verbosity.
+The following table identifies each internal metric by name and description.
+Each metric is also categorized by instrumentation type and level of verbosity.
 
-| Name | Description | Type | Level |
-| ---- | ----------- | ---- | ----- |
-| `errored_metric_points` | Number of metric points the Collector failed to scrape. | Counter |  |
-| `exporter_enqueue_failed_log_records` | Number of spans that exporter(s) failed to enqueue. | Counter |  |
-| `exporter_enqueue_failed_metric_points` | Number of metric points that exporter(s) failed to enqueue. | Counter |  |
-| `exporter_enqueue_failed_spans` | Number of spans that exporter(s) failed to enqueue. | Counter |  |
-| `exporter_send_failed_log_records` | Number of logs that exporter(s) failed to send to destination. | Counter |  |
-| `exporter_send_failed_metric_points` | Number of metric points that exporter(s) failed to send to destination. | Counter |  |
-| `exporter_send_failed_spans` | Number of spans that exporter(s) failed to send to destination. | Counter |  |
-| `exporter_sent_log_records` | Number of logs successfully sent to destination. | Counter |  |
-| `exporter_sent_metric_points` | Number of metric points successfully sent to destination. | Counter |  |
-| `exporter_sent_spans` | Number of spans successfully sent to destination. | Counter |  |
-| `http_client_active_requests` | Number of active HTTP client requests. | Counter | `detailed` |
-| `http_client_connection_duration` | Measures the duration of the successfully established outbound HTTP connections. | Histogram | `detailed` |
-| `http_client_open_connections` | Number of outbound HTTP connections that are active or idle on the client. | Counter | `detailed` |
-| `http_client_request_body_size` | Measures the size of HTTP client request bodies. | Histogram | `detailed` |
-| `http_client_request_duration` | Measures the duration of HTTP client requests. | Histogram | `detailed` |
-| `http_client_response_body_size` | Measures the size of HTTP client response bodies. | Histogram | `detailed` |
-| `http_server_active_requests` | Number of active HTTP server requests. | Counter | `detailed` |
-| `http_server_request_body_size` | Measures the size of HTTP server request bodies. | Histogram | `detailed` |
-| `http_server_request_duration` | Measures the duration of HTTP server requests. | Histogram | `detailed` |
-| `http_server_response_body_size` | Measures the size of HTTP server response bodies. | Histogram | `detailed` |
-| `process_cpu_seconds` | Total CPU user and system time in seconds. | Counter |  |
-| `process_memory_rss` | Total physical memory (resident set size). | Gauge |  |
-| `process_runtime_heap_alloc_bytes` | Bytes of allocated heap objects (see 'go doc runtime.MemStats.HeapAlloc'). | Gauge |  |
-| `process_runtime_total_alloc_bytes` | Cumulative bytes allocated for heap objects (see 'go doc runtime.MemStats.TotalAlloc'). | Counter |  |
-| `process_runtime_total_sys_memory_bytes` | Total bytes of memory obtained from the OS (see 'go doc runtime.MemStats.Sys'). | Gauge |  |
-| `process_uptime` | Uptime of the process. | Counter |  |
-| `processor_batch_batch_send_size_bytes` | Number of bytes in the batch that was sent. | Histogram |  |
-| `processor_batch_batch_send_size` | Number of units in the batch. | Histogram | `normal` |
-| `processor_batch_batch_size_trigger_send` | Number of times the batch was sent due to a size trigger. | Counter | `normal` |
-| `processor_batch_metadata_cardinality` | Number of distinct metadata value combinations being processed. | Counter | `normal` |
-| `processor_batch_timeout_trigger_send` | Number of times the batch was sent due to a timeout trigger. | Counter | `normal` |
-| `processor_dropped_log_records` | Number of logs dropped by the processor. | Counter |  |
-| `processor_dropped_metric_points` | Number of metric points dropped by the processor. | Counter |  |
-| `processor_dropped_spans` | Number of spans dropped by the processor. | Counter |  |
-| `processor_processor` | <!--- "Identifies processors in metrics and traces." ---> |  |  |
-| `receiver_accepted_log_records` | Number of logs successfully pushed into the pipeline. | Counter |  |
-| `receiver_accepted_metric_points` | Number of metric points successfully pushed into the pipeline. | Counter |  |
-| `receiver_accepted_spans` | Number of spans successfully pushed into the pipeline. | Counter |  |
-| `receiver_format` | <!--- "Identifies the format of the data received." ---> |  |  |
-| `receiver_receiver` | <!--- "Identifies receivers in metrics and traces." ---> |  |  |
-| `receiver_refused_log_records` | Number of logs that could not be pushed into the pipeline. | Counter |  |
-| `receiver_refused_metric_points` | Number of metric points that could not be pushed into the pipeline. | Counter |  |
-| `receiver_refused_spans` | Number of spans that could not be pushed into the pipeline. | Counter |  |
-| `receiver_transport` | <!--- "Identifies the transport used to receive the data." ---> |  |  |
-| `rpc_client_duration` | Measures the duration of outbound RPC. | Histogram | `detailed` |
-| `rpc_client_request_size` | Measures the size of RPC request messages (uncompressed). | Histogram | `detailed` |
-| `rpc_client_requests_per_rpc` | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram | `detailed` |
-| `rpc_client_response_size` | Measures the size of RPC response messages (uncompressed). | Histogram | `detailed` |
-| `rpc_client_responses_per_rpc` | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs. | Histogram | `detailed` |
-| `rpc_server_duration` | Measures the duration of inbound RPC. | Histogram | `detailed` |
-| `rpc_server_request_size` | Measures the size of RPC request messages (uncompressed). | Histogram | `detailed` |
-| `rpc_server_requests_per_rpc` | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram | `detailed` |
-| `rpc_server_response_size` | Measures the size of RPC response messages (uncompressed). | Histogram | `detailed` |
-| `rpc_server_responses_per_rpc` | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs. | Histogram | `detailed` |
-| `scraped_metric_points` | Number of metric points scraped by the Collector. | Counter |  |
-| `target_info` | Target metadata. | Gauge |  |
+| Name                                      | Description                                                                               | Type      | Level      |
+| ----------------------------------------- | ----------------------------------------------------------------------------------------- | --------- | ---------- |
+| `errored_metric_points`                   | Number of metric points the Collector failed to scrape.                                   | Counter   |            |
+| `exporter_enqueue_failed_log_records`     | Number of spans that exporter(s) failed to enqueue.                                       | Counter   |            |
+| `exporter_enqueue_failed_metric_points`   | Number of metric points that exporter(s) failed to enqueue.                               | Counter   |            |
+| `exporter_enqueue_failed_spans`           | Number of spans that exporter(s) failed to enqueue.                                       | Counter   |            |
+| `exporter_send_failed_log_records`        | Number of logs that exporter(s) failed to send to destination.                            | Counter   |            |
+| `exporter_send_failed_metric_points`      | Number of metric points that exporter(s) failed to send to destination.                   | Counter   |            |
+| `exporter_send_failed_spans`              | Number of spans that exporter(s) failed to send to destination.                           | Counter   |            |
+| `exporter_sent_log_records`               | Number of logs successfully sent to destination.                                          | Counter   |            |
+| `exporter_sent_metric_points`             | Number of metric points successfully sent to destination.                                 | Counter   |            |
+| `exporter_sent_spans`                     | Number of spans successfully sent to destination.                                         | Counter   |            |
+| `http_client_active_requests`             | Number of active HTTP client requests.                                                    | Counter   | `detailed` |
+| `http_client_connection_duration`         | Measures the duration of the successfully established outbound HTTP connections.          | Histogram | `detailed` |
+| `http_client_open_connections`            | Number of outbound HTTP connections that are active or idle on the client.                | Counter   | `detailed` |
+| `http_client_request_body_size`           | Measures the size of HTTP client request bodies.                                          | Histogram | `detailed` |
+| `http_client_request_duration`            | Measures the duration of HTTP client requests.                                            | Histogram | `detailed` |
+| `http_client_response_body_size`          | Measures the size of HTTP client response bodies.                                         | Histogram | `detailed` |
+| `http_server_active_requests`             | Number of active HTTP server requests.                                                    | Counter   | `detailed` |
+| `http_server_request_body_size`           | Measures the size of HTTP server request bodies.                                          | Histogram | `detailed` |
+| `http_server_request_duration`            | Measures the duration of HTTP server requests.                                            | Histogram | `detailed` |
+| `http_server_response_body_size`          | Measures the size of HTTP server response bodies.                                         | Histogram | `detailed` |
+| `process_cpu_seconds`                     | Total CPU user and system time in seconds.                                                | Counter   |            |
+| `process_memory_rss`                      | Total physical memory (resident set size).                                                | Gauge     |            |
+| `process_runtime_heap_alloc_bytes`        | Bytes of allocated heap objects (see 'go doc runtime.MemStats.HeapAlloc').                | Gauge     |            |
+| `process_runtime_total_alloc_bytes`       | Cumulative bytes allocated for heap objects (see 'go doc runtime.MemStats.TotalAlloc').   | Counter   |            |
+| `process_runtime_total_sys_memory_bytes`  | Total bytes of memory obtained from the OS (see 'go doc runtime.MemStats.Sys').           | Gauge     |            |
+| `process_uptime`                          | Uptime of the process.                                                                    | Counter   |            |
+| `processor_batch_batch_send_size_bytes`   | Number of bytes in the batch that was sent.                                               | Histogram |            |
+| `processor_batch_batch_send_size`         | Number of units in the batch.                                                             | Histogram | `normal`   |
+| `processor_batch_batch_size_trigger_send` | Number of times the batch was sent due to a size trigger.                                 | Counter   | `normal`   |
+| `processor_batch_metadata_cardinality`    | Number of distinct metadata value combinations being processed.                           | Counter   | `normal`   |
+| `processor_batch_timeout_trigger_send`    | Number of times the batch was sent due to a timeout trigger.                              | Counter   | `normal`   |
+| `processor_dropped_log_records`           | Number of logs dropped by the processor.                                                  | Counter   |            |
+| `processor_dropped_metric_points`         | Number of metric points dropped by the processor.                                         | Counter   |            |
+| `processor_dropped_spans`                 | Number of spans dropped by the processor.                                                 | Counter   |            |
+| `processor_processor`                     | <!--- "Identifies processors in metrics and traces." --->                                 |           |            |
+| `receiver_accepted_log_records`           | Number of logs successfully pushed into the pipeline.                                     | Counter   |            |
+| `receiver_accepted_metric_points`         | Number of metric points successfully pushed into the pipeline.                            | Counter   |            |
+| `receiver_accepted_spans`                 | Number of spans successfully pushed into the pipeline.                                    | Counter   |            |
+| `receiver_format`                         | <!--- "Identifies the format of the data received." --->                                  |           |            |
+| `receiver_receiver`                       | <!--- "Identifies receivers in metrics and traces." --->                                  |           |            |
+| `receiver_refused_log_records`            | Number of logs that could not be pushed into the pipeline.                                | Counter   |            |
+| `receiver_refused_metric_points`          | Number of metric points that could not be pushed into the pipeline.                       | Counter   |            |
+| `receiver_refused_spans`                  | Number of spans that could not be pushed into the pipeline.                               | Counter   |            |
+| `receiver_transport`                      | <!--- "Identifies the transport used to receive the data." --->                           |           |            |
+| `rpc_client_duration`                     | Measures the duration of outbound RPC.                                                    | Histogram | `detailed` |
+| `rpc_client_request_size`                 | Measures the size of RPC request messages (uncompressed).                                 | Histogram | `detailed` |
+| `rpc_client_requests_per_rpc`             | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram | `detailed` |
+| `rpc_client_response_size`                | Measures the size of RPC response messages (uncompressed).                                | Histogram | `detailed` |
+| `rpc_client_responses_per_rpc`            | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram | `detailed` |
+| `rpc_server_duration`                     | Measures the duration of inbound RPC.                                                     | Histogram | `detailed` |
+| `rpc_server_request_size`                 | Measures the size of RPC request messages (uncompressed).                                 | Histogram | `detailed` |
+| `rpc_server_requests_per_rpc`             | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram | `detailed` |
+| `rpc_server_response_size`                | Measures the size of RPC response messages (uncompressed).                                | Histogram | `detailed` |
+| `rpc_server_responses_per_rpc`            | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram | `detailed` |
+| `scraped_metric_points`                   | Number of metric points scraped by the Collector.                                         | Counter   |            |
+| `target_info`                             | Target metadata.                                                                          | Gauge     |            |
 
 <!--- TODO: Figure out which of these values are available now and which are still on the roadmap. --->
 
