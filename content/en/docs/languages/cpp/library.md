@@ -35,9 +35,6 @@ If a library doesn't include OpenTelemetry support, you can use
 [instrumentation libraries](https://opentelemetry.io/docs/specs/otel/glossary/#instrumentation-library)
 to generate telemetry data for a library or framework.
 
-For example,
-[NGINX instrumentation](https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/nginx)
-adds OpenTelemetry distributed tracing support to NGINX.
 
 ## Setup
 
