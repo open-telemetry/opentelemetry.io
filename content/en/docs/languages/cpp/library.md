@@ -40,7 +40,7 @@ to generate telemetry data for a library or framework.
 
 For example,
 [NGINX instrumentation](https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/nginx)
-Adds OpenTelemetry distributed tracing support to nginx.
+adds OpenTelemetry distributed tracing support to NGINX.
 
 
 ## setup
