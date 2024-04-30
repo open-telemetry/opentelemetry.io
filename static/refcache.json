@@ -1223,6 +1223,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T15:25:59.36407-05:00"
   },
+  "https://docs.konghq.com/mesh/latest/guides/otel-metrics/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-30T15:56:23.493141+02:00"
+  },
   "https://docs.linuxfoundation.org/lfx/easycla/contributors": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:15:11.937332-05:00"
@@ -4879,6 +4883,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:07:19.690634-05:00"
   },
+  "https://konghq.com/products/kong-mesh": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-30T15:56:22.220894+02:00"
+  },
   "https://kubernetes.github.io/ingress-nginx/examples/grpc/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:02:39.056387-05:00"
@@ -4962,6 +4970,14 @@
   "https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-usage-monitoring/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:01:40.735077-05:00"
+  },
+  "https://kuma.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-30T15:56:19.177281+02:00"
+  },
+  "https://kuma.io/docs/2.7.x/guides/otel-metrics/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-30T15:56:19.48504+02:00"
   },
   "https://kyverno.io/": {
     "StatusCode": 206,
