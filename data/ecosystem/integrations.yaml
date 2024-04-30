@@ -217,3 +217,13 @@
   docsUrl: https://masstransit.io/documentation/configuration/observability
   components: [.NET]
   oss: true
+- name: Kuma
+  url: https://kuma.io/
+  docsUrl: https://kuma.io/docs/2.7.x/guides/otel-metrics/
+  components: [Go]
+  oss: true
+- name: Kong Mesh
+  url: https://konghq.com/products/kong-mesh
+  docsUrl: https://docs.konghq.com/mesh/latest/guides/otel-metrics/
+  components: [Go]
+  oss: false
