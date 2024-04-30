@@ -1,10 +1,10 @@
-title: Rust
+title: Rust SDK
 registryType: core
 language: rust
 tags:
   - rust
 license: Apache 2.0
-description: The OpenTelemetry API for Rust.
+description: The OpenTelemetry SDK for Rust.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -12,5 +12,5 @@ urls:
 createdAt: 2020-02-04
 package:
   registry: crates
-  name: opentelemetry
-  version: 0.22.0
+  name: opentelemetry_sdk
+  version: 0.22.1
