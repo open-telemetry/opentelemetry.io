@@ -34,8 +34,9 @@ service:
       address: '0.0.0.0:8888'
 ```
 
-You can enhance the metrics telemetry level of verbosity using the `level`
-field. The following is a list of all possible values and their explanations.
+You can enhance the metrics telemetry using the `level` field. This field
+controls how verbose the metric is. The following is a list of all possible
+values and their explanations.
 
 - `none` indicates that no telemetry data should be collected.
 - `basic` is the recommended value and covers the basics of the service
@@ -53,9 +54,8 @@ service:
       address: ':8888'
 ```
 
-In the next section, you can find a
-[list of metrics](#list-of-internal-metrics), including their corresponding
-default verbosity levels.
+You can find the default verbosity level for each metric in this
+[list of metrics](#list-of-internal-metrics).
 
 The Collector can also be configured to scrape its own metrics and send them
 through configured pipelines. For example:
