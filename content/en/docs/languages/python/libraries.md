@@ -26,7 +26,8 @@ You can install each instrumentation library separately using pip. For example:
 pip install opentelemetry-instrumentation-{instrumented-library}
 ```
 
-In the previous example, `{instrumented-library}` is the name of the instrumentation.
+In the previous example, `{instrumented-library}` is the name of the
+instrumentation.
 
 To install a development version, clone or fork the
 `opentelemetry-python-contrib` repository and run the following command to do an
