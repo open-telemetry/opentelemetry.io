@@ -120,7 +120,9 @@ journalctl | grep otelcol | grep Error
 
 ## Types of internal observability
 
-<!--- TODO: Add intro sentence. --->
+The OpenTelemetry Collector aims to be an exemplar of observable service by
+clearly exposing its own operational metrics. In this section, you can explore
+the different types of observability emitted by the Collector itself.
 
 ### List of internal metrics
 
