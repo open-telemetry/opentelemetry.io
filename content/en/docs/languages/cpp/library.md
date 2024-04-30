@@ -40,7 +40,7 @@ For example,
 adds OpenTelemetry distributed tracing support to NGINX.
 
 
-## setup
+## Setup
 
 For setup of instrumentation library check [otel-cpp-contrib](https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation)
 
