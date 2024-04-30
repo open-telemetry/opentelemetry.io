@@ -39,31 +39,3 @@
 .registry-entry {
   @extend .shadow;
 }
-
-// fix me: the registry seems not to load the main.min.css with the extended
-// styles, so we need to define the styles here again.
-.highlight {
-  margin: 1rem 0;
-  padding: 0;
-  position: relative;
-  max-width: 95%;
-  border: var(--bs-card-border-width) solid var(--bs-card-border-color);
-  border-radius: var(--bs-card-border-radius);
-  & pre {
-    padding: 1rem;
-    margin: 0;
-    display: block;
-    text-align: right;
-    overflow-y: auto;
-    & button.td-click-to-copy {
-      position: absolute;
-      color: #ced4da;
-      border-radius: 3px;
-      border-width: 0;
-      background-color: inherit;
-      box-shadow: 1px 1px #ced4da;
-      right: 4px;
-      top: 2px;
-    }
-  }
-}

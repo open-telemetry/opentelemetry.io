@@ -4,6 +4,7 @@
 @import 'registry';
 @import 'tabs';
 @import 'external_link';
+@import 'code-dark';
 
 .td-home {
   .otel-logo {
@@ -135,11 +136,12 @@
     width: 100%;
     position: fixed;
     margin-left: -15px;
-    z-index: 32;
+    z-index: 31;
     top: 4rem;
   }
 
-  background: $gray-100;
+  background: var(--td-pre-bg);
+  color: var(--bs-body-color);
   text-align: center;
 
   & p {
