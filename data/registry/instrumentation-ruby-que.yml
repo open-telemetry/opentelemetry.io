@@ -15,4 +15,4 @@ createdAt: 2020-11-09
 package:
   registry: gems
   name: opentelemetry-instrumentation-que
-  version: 0.8.0
+  version: 0.8.1
