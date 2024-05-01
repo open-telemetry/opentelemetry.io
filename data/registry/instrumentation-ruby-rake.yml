@@ -6,7 +6,9 @@ tags:
   - instrumentation
   - ruby
 license: Apache 2.0
-description: The Rake instrumentation is a community-maintained instrumentation for the Rake task invocation.
+description:
+  The Rake instrumentation is a community-maintained instrumentation for the
+  Rake task invocation.
 authors:
   - name: OpenTelemetry Authors
 urls:
