@@ -2,7 +2,7 @@
 title: Building custom components
 description: Instructions on how to build your own collector components
 weight: 90
-cSpell:ignore: mdatagen ottl 
+cSpell:ignore: mdatagen ottl
 ---
 
 The OpenTelemetry Collector can not only be extended by existing components, but
