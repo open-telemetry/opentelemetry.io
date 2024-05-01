@@ -17,9 +17,10 @@ As of April 2024, we will begin shifting all of our communications to the
 channel (previously named the `#otel-user-research` channel), and will be
 archiving the private channel by **April 30, 2024**.
 
-We encourage you to join us over at [`#otel-sig-end-user`](https://cloud-native.slack.com/archives/C01RT3MSWGZ) to learn about our new
-charter, what you can expect from us as an end user, and more. Note the
-following:
+We encourage you to join us over at
+[`#otel-sig-end-user`](https://cloud-native.slack.com/archives/C01RT3MSWGZ) to
+learn about our new charter, what you can expect from us as an end user, and
+more. Note the following:
 
 - Troubleshooting or tactical SDK specific questions are still best directed to
   individual SIG channels or the
