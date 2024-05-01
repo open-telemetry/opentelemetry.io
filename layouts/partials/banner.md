@@ -9,7 +9,7 @@
 
 <!-- prettier-ignore -->
 <i class="fas fa-bullhorn"></i>
-Help us improve your "Getting Started" experience by taking [this survey](https://docs.google.com/forms/d/e/1FAIpQLSfpxKvN3_5VN6FQ5dF5-XLfNdOhVYtjreetkxlRCF8qS7AW2w/viewform)
+Help us improve OTel and Prometheus interoperability by taking [this survey](https://forms.gle/bZAG9f7udoJsjZUG9). Closes May 31st.
 {.pt-0}
 
 
