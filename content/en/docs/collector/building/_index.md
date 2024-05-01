@@ -15,7 +15,7 @@ There are several
 of OpenTelemetry components, such as
 
 - `receivers` Scrapers and Listeners to ingest data
-- `exporters` Ways to export data to vendors or other tooling
+- `exporters` Ways to export data to non-OTLP formats, vendor-specific backends, or other Observability tools
 - `processors` Ways to process data in a pipeline
 - `connectors` Ways to [connect pipelines](./connector/) and form a
   [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph) for your data
