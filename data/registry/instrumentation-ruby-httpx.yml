@@ -7,9 +7,7 @@ tags:
   - instrumentation
   - ruby
 license: Apache 2.0
-description:
-  The HTTPX instrumentation is a community-maintained instrumentation for the
-  HTTPX gem.
+description: The HTTPX instrumentation is a community-maintained instrumentation for the HTTPX gem.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,4 +16,4 @@ createdAt: 2022-10-27
 package:
   registry: gems
   name: opentelemetry-instrumentation-httpx
-  version: 0.1.1
+  version: 0.1.2
