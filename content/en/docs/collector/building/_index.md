@@ -14,7 +14,7 @@ There are several
 [classes](https://github.com/open-telemetry/opentelemetry-collector/blob/main/cmd/mdatagen/main.go#L184)
 of OpenTelemetry components, such as
 
-- `receivers` Scrapers and Listeners to ingest data
+- `receivers` Scrapers and Listeners to ingest data, typically used to convert data from an external source to OTLP
 - `exporters` Ways to export data to non-OTLP formats, vendor-specific backends, or other Observability tools
 - `processors` Ways to process data in a pipeline
 - `connectors` Ways to [connect pipelines](./connector/) and form a
