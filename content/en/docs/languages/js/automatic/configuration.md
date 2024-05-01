@@ -4,6 +4,7 @@ linkTitle: Configuration
 description: Learn how to configure Automatic Instrumentation for Node.js
 aliases: [module-config]
 weight: 10
+cSpell:ignore: serviceinstance
 ---
 
 This module is highly configurable by setting
