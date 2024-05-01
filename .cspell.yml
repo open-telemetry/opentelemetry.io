@@ -92,7 +92,6 @@ words:
   - Loffay
   - Mancuso
   - microservices
-  - mdatagen
   - mongodb
   - mysql
   - ndjson
@@ -112,7 +111,6 @@ words:
   - otelcol
   - otep
   - otlp
-  - ottl
   - overridable
   - outro
   - packagist
