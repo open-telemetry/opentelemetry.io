@@ -3,7 +3,7 @@ title: Insights From The OpenTelemetry Collector Survey
 linkTitle: OpenTelemetry Collector Survey
 date: 2024-05-01
 author: '[Hope Oluwalolope](https://github.com/iamebonyhope) (Microsoft)'
-cSpell:ignore: 
+cSpell:ignore: Oluwalolope distros Servicegraph Pprof
 ---
 
 The [OpenTelemetry (OTel) Collector](https://opentelemetry.io/docs/collector/) has become a cornerstone tool for observing and monitoring modern software applications. Recently, the End User SIG conducted a survey to gather feedback from users about their experiences with the OTel Collector. We are excited to share valuable insights based on the 186 responses we received from the community, including details about users’ deployment practices and implementation challenges, to help drive its future direction.
