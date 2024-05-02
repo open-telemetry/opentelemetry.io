@@ -251,31 +251,24 @@ them separately or no.
 
 - Uptime since start.
 
-### Trace or log on events
+### Events observable with internal logs
 
-We want to generate the following events (log and/or send as a trace with
-additional data):
+The Collector logs the following internal events:
 
-- Collector started/stopped.
+- A Collector instance starts or stops.
 
-- Collector reconfigured (if we support on-the-fly reconfiguration).
+- Data dropping begins due to throttling for a specified reason, such as local
+  saturation, downstream saturation, downstream unavailable, etc.
 
-- Begin dropping due to throttling (include throttling reason, e.g. local
-  saturation, downstream saturation, downstream unavailable, etc).
+- Data dropping due to throttling stops.
 
-- Stop dropping due to throttling.
+- Data dropping begins due to invalid data. A sample of the invalid
+  data is included.
 
-- Begin dropping due to invalid data (include sample/first invalid data).
+- Data dropping due to invalid data stops.
 
-- Stop dropping due to invalid data.
-
-- Crash detected (differentiate clean stopping and crash, possibly include crash
-  data if available).
-
-For begin/stop events we need to define an appropriate hysteresis to avoid
-generating too many events. Note that begin/stop events cannot be detected in
-the backend simply as derivatives of current rates, the events include
-additional data that is not present in the current value.
+- A crash is detected, differentiated from a clean stop. Crash data is included
+  if available.
 
 ### Host metrics
 
