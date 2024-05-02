@@ -2,7 +2,8 @@
 title: Automatic Instrumentation
 linkTitle: Automatic
 weight: 30
-cSpell:ignore: devel distro mkdir myapp uninstrumented virtualenv
+# prettier-ignore
+cSpell:ignore: devel distro mkdir myapp pyproject uninstrumented virtualenv Werkzeug
 ---
 
 Automatic instrumentation with Python uses a Python agent that can be attached
@@ -61,7 +62,7 @@ opentelemetry-instrument \
 ```
 
 To see the full range of configuration options, see
-[Agent Configuration](agent-config).
+[Agent Configuration](configuration).
 
 ## Supported libraries and frameworks
 

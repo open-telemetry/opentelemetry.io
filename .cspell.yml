@@ -5,6 +5,7 @@ version: '0.2'
 caseSensitive: true
 ignorePaths:
   - '*.svg'
+  - 'vendors.yaml'
 # words here are only listed for their spelling, if there is a certain way
 # to write a word (e.g. OpenTelemetry vs Opentelemetry or cloud native vs
 # cloud-native), edit the text-lint rules in .textlintrc.yml
@@ -23,6 +24,7 @@ languageSettings:
       - CodeBlock
 words:
   - accountingservice
+  - actix
   - adservice
   - alibaba
   - Alloc
@@ -32,6 +34,8 @@ words:
   - appender
   - appenders
   - aspecto
+  - autoconfigure
+  - autoconfiguration
   - autoload
   - autoloaded
   - autoloader
@@ -42,6 +46,7 @@ words:
   - cartservice
   - cassandra
   - checkoutservice
+  - classpath
   - cncf
   - currencyservice
   - daemonset
@@ -107,6 +112,7 @@ words:
   - otep
   - otlp
   - overridable
+  - outro
   - packagist
   - Paixão
   - parentbased
@@ -165,3 +171,4 @@ words:
   - WSGI
   - zend
   - zipkin
+  - Chronosphere

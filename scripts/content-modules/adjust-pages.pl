@@ -17,11 +17,10 @@ my $opAmpSpecRepoUrl = 'https://github.com/open-telemetry/opamp-spec';
 my $semconvSpecRepoUrl = 'https://github.com/open-telemetry/semantic-conventions';
 my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
 my $specBasePath = '/docs/specs';
-my $path_base_for_github_subdir = "content/en$specBasePath";
 my %versions = qw(
-  spec: 1.29.0
-  otlp: 1.1.0
-  semconv: 1.24.0
+  spec: 1.32.0
+  otlp: 1.3.0
+  semconv: 1.25.0
 );
 my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
@@ -55,11 +54,6 @@ sub printTitleAndFrontMatter() {
   # printf STDOUT "> $title -> $linkTitle\n";
   print "linkTitle: $linkTitle\n" if $linkTitle and $frontMatterFromFile !~ /linkTitle: /;
   print "$frontMatterFromFile" if $frontMatterFromFile;
-  if ($ARGV =~ /otel\/specification\/(.*?)_index.md$/) {
-    print "path_base_for_github_subdir:\n";
-    print "  from: $path_base_for_github_subdir/otel/$1_index.md\n";
-    print "  to: $1README.md\n";
-  }
   print "---\n";
 }
 
@@ -104,6 +98,8 @@ while(<>) {
 
     # TODO: drop after fix of https://github.com/open-telemetry/semantic-conventions/issues/419
     s|#instrument-advice\b|#instrument-advisory-parameters|g;
+    # TODO: drop after fix of https://github.com/open-telemetry/semantic-conventions/pull/883
+    s|(\]\(process.md)#process(\))|$1$2|g;
   }
 
   # SPECIFICATION custom processing

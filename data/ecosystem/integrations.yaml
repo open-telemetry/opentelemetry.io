@@ -1,4 +1,4 @@
-# cSpell:ignore containerd buildx Quarkus Cerbos flagd flipt KEDA Kyverno Dapr rustup GORM Otterize
+# cSpell:ignore containerd buildx Quarkus Cerbos flagd flipt KEDA Kyverno Dapr rustup GORM Otterize Dubbo Microcks Kuma
 - name: containerd
   url: https://containerd.io/
   docsUrl: https://github.com/containerd/containerd/blob/main/docs/tracing.md
@@ -18,6 +18,7 @@
   url: https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/index.html
   docsUrl: https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/opentelemetry.html
   components: [Java]
+  native: true # Elasticsearch Java API Client provides a native integration of the OpenTelemetry API
   oss: true
 - name: Kubernetes
   url: https://kubernetes.io/
@@ -40,10 +41,10 @@
   components: [Go, PHP]
   oss: true
 - name: Kong API Gateway
-  url: http://www.konghq.com/
+  url: https://www.konghq.com/
   docsUrl: https://docs.konghq.com/hub/kong-inc/opentelemetry/
-  components: []
-  oss: false
+  components: [Lua]
+  oss: true
 - name: NGINX Web Server
   url: https://nginx.org/
   docsUrl: https://github.com/nginxinc/nginx-otel
@@ -148,7 +149,7 @@
   oss: false
 - name: Traefik Hub API Management
   url: https://traefik.io/traefik-hub/
-  docsUrl: https://doc.traefik.io/traefik-hub/operations/telemetry/overview/
+  docsUrl: https://doc.traefik.io/traefik-hub/operations/metrics
   components: [Go]
   oss: false
 - name: Strimzi
@@ -181,3 +182,48 @@
   docsUrl: https://farfetch.github.io/kafkaflow/docs/guides/open-telemetry
   components: [.NET]
   oss: true
+- name: Apache Dubbo # Provide the latest docs instead of blog url in 2~3 months later. refer to https://github.com/open-telemetry/opentelemetry.io/pull/3908#discussion_r1473133919.
+  url: https://github.com/apache/dubbo
+  docsUrl: https://cn.dubbo.apache.org/en/blog/2024/01/31/tracing-dubbo-with-opentelemetry/
+  components: [Java]
+  oss: true
+- name: Microcks
+  url: https://microcks.io/
+  docsUrl: https://microcks.io/documentation/using/monitoring/
+  components: [Java]
+  oss: true
+- name: ClickHouse
+  url: https://www.clickhouse.com/
+  docsUrl: https://clickhouse.com/docs/en/operations/opentelemetry
+  components: [C++]
+  oss: true
+- name: FluentCI Engine
+  url: https://github.com/fluentci-io/fluentci-engine
+  docsUrl: https://github.com/fluentci-io/fluentci-engine#-opentelemetry-tracing
+  components: [Rust]
+  oss: true
+- name: KrakenD API Gateway
+  url: https://www.krakend.io
+  docsUrl: https://www.krakend.io/docs/telemetry/opentelemetry/
+  components: [Go]
+  oss: true
+- name: Azure SDKs
+  url: https://github.com/Azure/azure-sdk-for-net
+  docsUrl: https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable
+  components: [.NET]
+  oss: true
+- name: MassTransit .NET client
+  url: https://github.com/MassTransit/MassTransit
+  docsUrl: https://masstransit.io/documentation/configuration/observability
+  components: [.NET]
+  oss: true
+- name: Kuma
+  url: https://kuma.io/
+  docsUrl: https://kuma.io/docs/2.7.x/guides/otel-metrics/
+  components: [Go]
+  oss: true
+- name: Kong Mesh
+  url: https://konghq.com/products/kong-mesh
+  docsUrl: https://docs.konghq.com/mesh/latest/guides/otel-metrics/
+  components: [Go]
+  oss: false

@@ -41,6 +41,11 @@
                 "urlPattern" "https://hex.pm/packages/%s"
                 "installTemplate" "ecosystem/registry/quickinstall/hex.md"
                 "icon" "fa-brands fa-erlang")
+            "crates" (dict
+                "urlPattern" "https://crates.io/crates/%s"
+                "installLine" "cargo add %s"
+                "installTemplate" "ecosystem/registry/quickinstall/default.md"
+                "icon" "fab fa-rust")
     -}}
 
     {{ $isNativ := and (eq .registryType "instrumentation") (.isNative) }}
@@ -124,9 +129,11 @@
                     {{- .description | markdownify -}}
                 </div>
                 {{ with $package -}}
+                    {{ if not (eq .quickInstall false) }}
                     <h6><i class="fa-solid fa-forward"></i> Quick Install</h6>
                     <p>{{ (partial .installTemplate .) | markdownify -}}
                     </p>
+                    {{ end -}}
                 {{- end -}}
             </div>
             <div class="col col-md-3 col-lg-2">

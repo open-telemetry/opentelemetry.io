@@ -22,7 +22,7 @@ content-modules/opentelemetry-proto      @open-telemetry/docs-maintainers @open-
 content-modules/opentelemetry-specification  @open-telemetry/docs-maintainers @open-telemetry/specs-approvers
 content-modules/semantic-conventions     @open-telemetry/docs-maintainers @open-telemetry/specs-semconv-approvers
 content/en/blog/                         @open-telemetry/docs-maintainers
-content/en/community/end-user/           @open-telemetry/docs-approvers @open-telemetry/end-user-wg
+content/en/community/end-user/           @open-telemetry/docs-approvers @open-telemetry/sig-end-user-approvers
 content/en/docs/collector                @open-telemetry/docs-approvers @open-telemetry/collector-approvers
 content/en/docs/demo                     @open-telemetry/docs-approvers @open-telemetry/demo-approvers
 content/en/docs/languages/cpp/     @open-telemetry/docs-approvers @open-telemetry/cpp-approvers
@@ -41,3 +41,4 @@ content/en/docs/kubernetes/helm/         @open-telemetry/docs-approvers @open-te
 content/en/docs/specs/                   @open-telemetry/docs-approvers @open-telemetry/specs-approvers
 content/en/docs/security/                @open-telemetry/docs-approvers @open-telemetry/sig-security-maintainers
 content/en/ecosystem/demo/               @open-telemetry/demo-approvers @open-telemetry/demo-approvers
+content/en/docs/contributing/       @open-telemetry/docs-approvers @open-telemetry/docs-maintainers

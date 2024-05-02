@@ -42,7 +42,8 @@ like so:
 receivers:
   otlp: # the OTLP receiver the app is sending traces to
     protocols:
-      grpc:
+      http:
+        endpoint: 0.0.0.0:4318
 
 processors:
   batch:
@@ -65,7 +66,8 @@ service:
 receivers:
   otlp: # the OTLP receiver the app is sending metrics to
     protocols:
-      grpc:
+      http:
+        endpoint: 0.0.0.0:4318
 
 processors:
   batch:
@@ -88,7 +90,8 @@ service:
 receivers:
   otlp: # the OTLP receiver the app is sending logs to
     protocols:
-      grpc:
+      http:
+        endpoint: 0.0.0.0:4318
 
 processors:
   batch:

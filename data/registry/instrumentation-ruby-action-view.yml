@@ -12,3 +12,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/action_view
 createdAt: 2020-11-09
+package:
+  registry: gems
+  name: opentelemetry-instrumentation-action_view
+  version: 0.7.0

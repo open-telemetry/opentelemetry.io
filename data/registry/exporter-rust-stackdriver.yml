@@ -1,5 +1,5 @@
-# cSpell:ignore jacobkiesel
-title: Google StackDrive Exporter
+# cSpell:ignore jacobkiesel stackdriver
+title: Google StackDriver Exporter
 registryType: exporter
 language: rust
 tags:
@@ -9,6 +9,11 @@ license: Apache 2.0 OR MIT
 description: A Rust OpenTelemetry exporter for Google StackDriver
 authors:
   - name: jacobkiesel
+  - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/vivint-smarthome/opentelemetry-stackdriver
+  repo: https://github.com/open-telemetry/opentelemetry-rust-contrib/tree/main/opentelemetry-stackdriver
 createdAt: 2020-08-28
+package:
+  registry: crates
+  name: opentelemetry-stackdriver
+  version: 0.18.0

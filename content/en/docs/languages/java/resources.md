@@ -9,7 +9,7 @@ cSpell:ignore: getenv myhost SIGINT uuidgen WORKDIR
 If you use the Java agent for
 [automatic instrumentation](/docs/languages/java/automatic) you can learn how to
 setup resource detection following the
-[Agent Configuration Guide](/docs/languages/java/automatic/agent-config).
+[Agent Configuration Guide](/docs/languages/java/automatic/configuration).
 
 For manual instrumentation, you will find some introductions on how to set up
 resource detection below.
@@ -21,7 +21,7 @@ environments, like [Container](/docs/specs/semconv/resource/container/),
 [Host](/docs/specs/semconv/resource/host/) or
 [Operating System](/docs/specs/semconv/resource/os/). These can be used with or
 without
-[auto-configuration](/docs/languages/java/instrumentation/#automatic-configuration).
+[autoconfiguration](/docs/languages/java/instrumentation/#automatic-configuration).
 
 To use those providers, add the following dependency:
 
@@ -100,3 +100,15 @@ SdkLoggerProvider sdkLoggerProvider = SdkLoggerProvider.builder()
     ...
     .build();
 ```
+
+## Next steps
+
+Besides the
+[Standard OpenTelemetry Resource Providers](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/resources/library)
+shown in the samples above, there are more resource providers that you can add
+to your configuration. These include:
+
+- [AWS Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources)
+- [GCP Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources)
+- [OpenTelemetry Contributed Resource Providers](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/resource-providers)
+- [Spring-Boot Resource Provider](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-boot-resources)

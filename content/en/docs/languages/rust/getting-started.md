@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-cSpell:ignore: Actix eprintln println rolldice tokio
+cSpell:ignore: eprintln println rolldice tokio
 weight: 10
 ---
 
@@ -103,11 +103,15 @@ Listening on 127.0.0.1:8080
 ## Instrumentation
 
 To add OpenTelemetry to your application, update the `Cargo.toml` with the
-following additional dependencies:
+dependencies for the OpenTelemetry Rust SDK
+[`opentelemetry`](https://crates.io/crates/opentelemetry) and the OpenTelemetry
+Stdout Exporter
+[`opentelemetry-stdout`](https://crates.io/crates/opentelemetry-stdout):
 
 ```toml
-opentelemetry = { version = "0.20", features = ["trace"] }
-opentelemetry-stdout = { version = "0.1", features = ["trace"] }
+opentelemetry = "{{% version-from-registry otel-rust %}}"
+opentelemetry_sdk = "{{% version-from-registry otel-rust-sdk %}}"
+opentelemetry-stdout = { version = "{{% version-from-registry exporter-rust-stdout %}}", features = ["trace"] }
 ```
 
 Update the `dice_server.rs` file with code to initialize a tracer and to emit
@@ -120,8 +124,9 @@ use rand::Rng;
 use std::{convert::Infallible, net::SocketAddr};
 use opentelemetry::global::ObjectSafeSpan;
 use opentelemetry::trace::{SpanKind, Status};
-use opentelemetry::sdk::trace::TracerProvider;
-use opentelemetry::{global, sdk::propagation::TraceContextPropagator, trace::Tracer};
+use opentelemetry::{global, trace::Tracer};
+use opentelemetry_sdk::propagation::TraceContextPropagator;
+use opentelemetry_sdk::trace::TracerProvider;
 use opentelemetry_stdout::SpanExporter;
 
 async fn handle(req: Request<Body>) -> Result<Response<Body>, Infallible> {

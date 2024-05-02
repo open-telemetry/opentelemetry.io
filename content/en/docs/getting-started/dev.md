@@ -14,8 +14,7 @@ instrumented automatically and instrumenting your own code with our API
 manually, we recommend that you learn the following concepts first:
 
 - [What is OpenTelemetry?](/docs/what-is-opentelemetry/)
-- [How can I instrument dependencies without touching their code?](/docs/concepts/instrumentation/automatic/)
-- [How can I instrument my application manually?](/docs/concepts/instrumentation/manual/)
+- [How can I add instrumentation to my code base?](/docs/concepts/instrumentation/code-based/)
 
 If you develop libraries, frameworks or middleware that is used as a dependency
 within other software, we recommend that you learn how you can provide telemetry

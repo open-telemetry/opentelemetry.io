@@ -14,3 +14,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/main/exporter/zipkin
 createdAt: 2022-11-07
+package:
+  registry: gems
+  name: opentelemetry-exporter-zipkin
+  version: 0.23.1

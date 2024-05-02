@@ -1,0 +1,41 @@
+# cSpell:ignore Kieron Lanning
+title: Purview Telemetry Source Generator
+registryType: utilities
+language: dotnet
+tags:
+  - c#
+  - .net
+  - dotnet
+  - source-generator
+  - activities
+  - logging
+  - logs
+  - events
+  - metrics
+  - spans
+  - attributes
+  - tags
+  - baggage
+  - telemetry
+  - high-performance-logging
+  - tracing
+  - distributed-tracing
+  - dependency-injection
+  - purview
+  - nuget
+license: MIT
+description:
+  Generates ActivitySource, Activity, ActivityEvent, High-performance logging
+  (ILogger) and Metrics based on methods on an interface, enabling fast
+  iteration cycles and substitutes for testing through dependency injection.
+authors:
+  - name: Kieron Lanning
+    url: https://github.com/kieronlanning
+urls:
+  repo: https://github.com/purview-dev/purview-telemetry-sourcegenerator/
+  docs: https://github.com/purview-dev/purview-telemetry-sourcegenerator/blob/main/README.md
+createdAt: 2024-04-26
+package:
+  registry: nuget
+  name: Purview.Telemetry.SourceGenerator
+  version: 1.0.3

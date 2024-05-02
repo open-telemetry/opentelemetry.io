@@ -5,6 +5,9 @@ weight: 10
 cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace strconv
 ---
 
+<!-- markdownlint-disable blanks-around-fences -->
+<?code-excerpt path-base="examples/go/dice"?>
+
 This page will show you how to get started with OpenTelemetry in Go.
 
 You will learn how you can instrument a simple application manually, in such a
@@ -104,7 +107,7 @@ go get "go.opentelemetry.io/otel" \
   "go.opentelemetry.io/otel/sdk/metric" \
   "go.opentelemetry.io/otel/sdk/resource" \
   "go.opentelemetry.io/otel/sdk/trace" \
-  "go.opentelemetry.io/otel/semconv/v1.21.0" \
+  "go.opentelemetry.io/otel/semconv/v1.24.0" \
   "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 ```
 
@@ -121,6 +124,8 @@ application that exports telemetry.
 
 Create `otel.go` with OpenTelemetry SDK bootstrapping code:
 
+<!-- prettier-ignore-start -->
+<?code-excerpt "otel.go" from="package main"?>
 ```go
 package main
 
@@ -134,14 +139,12 @@ import (
 	"go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
 	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/sdk/metric"
-	"go.opentelemetry.io/otel/sdk/resource"
 	"go.opentelemetry.io/otel/sdk/trace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
 )
 
 // setupOTelSDK bootstraps the OpenTelemetry pipeline.
 // If it does not return an error, make sure to call shutdown for proper cleanup.
-func setupOTelSDK(ctx context.Context, serviceName, serviceVersion string) (shutdown func(context.Context) error, err error) {
+func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, err error) {
 	var shutdownFuncs []func(context.Context) error
 
 	// shutdown calls cleanup functions registered via shutdownFuncs.
@@ -161,19 +164,12 @@ func setupOTelSDK(ctx context.Context, serviceName, serviceVersion string) (shut
 		err = errors.Join(inErr, shutdown(ctx))
 	}
 
-	// Set up resource.
-	res, err := newResource(serviceName, serviceVersion)
-	if err != nil {
-		handleErr(err)
-		return
-	}
-
 	// Set up propagator.
 	prop := newPropagator()
 	otel.SetTextMapPropagator(prop)
 
 	// Set up trace provider.
-	tracerProvider, err := newTraceProvider(res)
+	tracerProvider, err := newTraceProvider()
 	if err != nil {
 		handleErr(err)
 		return
@@ -182,7 +178,7 @@ func setupOTelSDK(ctx context.Context, serviceName, serviceVersion string) (shut
 	otel.SetTracerProvider(tracerProvider)
 
 	// Set up meter provider.
-	meterProvider, err := newMeterProvider(res)
+	meterProvider, err := newMeterProvider()
 	if err != nil {
 		handleErr(err)
 		return
@@ -193,14 +189,6 @@ func setupOTelSDK(ctx context.Context, serviceName, serviceVersion string) (shut
 	return
 }
 
-func newResource(serviceName, serviceVersion string) (*resource.Resource, error) {
-	return resource.Merge(resource.Default(),
-		resource.NewWithAttributes(semconv.SchemaURL,
-			semconv.ServiceName(serviceName),
-			semconv.ServiceVersion(serviceVersion),
-		))
-}
-
 func newPropagator() propagation.TextMapPropagator {
 	return propagation.NewCompositeTextMapPropagator(
 		propagation.TraceContext{},
@@ -208,7 +196,7 @@ func newPropagator() propagation.TextMapPropagator {
 	)
 }
 
-func newTraceProvider(res *resource.Resource) (*trace.TracerProvider, error) {
+func newTraceProvider() (*trace.TracerProvider, error) {
 	traceExporter, err := stdouttrace.New(
 		stdouttrace.WithPrettyPrint())
 	if err != nil {
@@ -219,19 +207,17 @@ func newTraceProvider(res *resource.Resource) (*trace.TracerProvider, error) {
 		trace.WithBatcher(traceExporter,
 			// Default is 5s. Set to 1s for demonstrative purposes.
 			trace.WithBatchTimeout(time.Second)),
-		trace.WithResource(res),
 	)
 	return traceProvider, nil
 }
 
-func newMeterProvider(res *resource.Resource) (*metric.MeterProvider, error) {
+func newMeterProvider() (*metric.MeterProvider, error) {
 	metricExporter, err := stdoutmetric.New()
 	if err != nil {
 		return nil, err
 	}
 
 	meterProvider := metric.NewMeterProvider(
-		metric.WithResource(res),
 		metric.WithReader(metric.NewPeriodicReader(metricExporter,
 			// Default is 1m. Set to 3s for demonstrative purposes.
 			metric.WithInterval(3*time.Second))),
@@ -239,6 +225,7 @@ func newMeterProvider(res *resource.Resource) (*metric.MeterProvider, error) {
 	return meterProvider, nil
 }
 ```
+<!-- prettier-ignore-end -->
 
 If you're only using tracing or metrics, you can omit the code the corresponding
 TracerProvider or MeterProvider initialization code.
@@ -251,6 +238,8 @@ server.
 Modify `main.go` to include code that sets up OpenTelemetry SDK and instruments
 the HTTP server using the `otelhttp` instrumentation library:
 
+<!-- prettier-ignore-start -->
+<?code-excerpt "main.go" from="package main"?>
 ```go
 package main
 
@@ -279,9 +268,7 @@ func run() (err error) {
 	defer stop()
 
 	// Set up OpenTelemetry.
-	serviceName := "dice"
-	serviceVersion := "0.1.0"
-	otelShutdown, err := setupOTelSDK(ctx, serviceName, serviceVersion)
+	otelShutdown, err := setupOTelSDK(ctx)
 	if err != nil {
 		return
 	}
@@ -338,6 +325,7 @@ func newHTTPHandler() http.Handler {
 	return handler
 }
 ```
+<!-- prettier-ignore-end -->
 
 ### Add Custom Instrumentation
 
@@ -348,6 +336,8 @@ your application. For that you'll need to write some custom
 
 Modify `rolldice.go` to include custom instrumentation using OpenTelemetry API:
 
+<!-- prettier-ignore-start -->
+<?code-excerpt "rolldice.go" from="package main"?>
 ```go
 package main
 
@@ -385,7 +375,6 @@ func rolldice(w http.ResponseWriter, r *http.Request) {
 
 	roll := 1 + rand.Intn(6)
 
-	// Add the custom attribute to the span and counter.
 	rollValueAttr := attribute.Int("roll.value", roll)
 	span.SetAttributes(rollValueAttr)
 	rollCnt.Add(ctx, 1, metric.WithAttributes(rollValueAttr))
@@ -396,6 +385,7 @@ func rolldice(w http.ResponseWriter, r *http.Request) {
 	}
 }
 ```
+<!-- prettier-ignore-end -->
 
 Note that if you're only using tracing or metrics, you can omit the
 corresponding code that instruments the other telemetry type.
@@ -406,6 +396,7 @@ Build and run the application with the following command:
 
 ```sh
 go mod tidy
+export OTEL_RESOURCE_ATTRIBUTES="service.name=dice,service.version=0.1.0"
 go run .
 ```
 
@@ -1044,7 +1035,7 @@ telemetry backends.
 
 If you'd like to explore a more complex example, take a look at the
 [OpenTelemetry Demo](/docs/demo/), which includes the Go based
-[Checkout Service](/docs/demo/services/feature-flag/),
+[Checkout Service](/docs/demo/services/checkout/),
 [Product Catalog Service](/docs/demo/services/product-catalog/), and
 [Accounting Service](/docs/demo/services/accounting/)
 

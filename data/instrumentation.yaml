@@ -26,7 +26,7 @@ go:
   status:
     traces: stable
     metrics: stable
-    logs: not yet implemented
+    logs: alpha
 java:
   name: Java
   status:
@@ -56,7 +56,7 @@ js:
   status:
     traces: stable
     metrics: stable
-    logs: Development
+    logs: experimental
 rust:
   name: Rust
   status:

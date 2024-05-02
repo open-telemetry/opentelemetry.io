@@ -1,3 +1,4 @@
+# cSpell:ignore faraday
 title: Faraday Instrumentation
 registryType: instrumentation
 language: ruby
@@ -11,3 +12,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/faraday
 createdAt: 2020-11-09
+package:
+  registry: gems
+  name: opentelemetry-instrumentation-faraday
+  version: 0.24.2

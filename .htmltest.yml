@@ -9,7 +9,8 @@ IgnoreDirs:
   - ^blog/(\d+/)?page/\d+
 IgnoreInternalURLs: # list of paths
 IgnoreURLs: # list of regexs of paths or URLs to be ignored
-  - ^/docs/languages/\w+/(api|examples)/$
+  - ^/docs/languages/\w+/(api|examples|registry)/$
+  - ^/docs/collector/registry/$
   - ^/docs/languages/net/(metrics-api|traces-api)/
   - ^/community/end-user/feedback-survey/$
   - ^(/docs/migration/)?opencensus/$
@@ -27,13 +28,15 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   # Sites that deny access, always yielding 401, 403 Forbidden, 406, or other:
   - ^https://(www\.)?linkedin\.com\b # 999 Request Denied
   - ^https://(www\.)?mvnrepository\.com
-  - ^https://eng.uber.com/flipr/ # 406
+  - ^https://(www\.|eng\.)?uber\.com/(blog|flipr)/ # 406
   - ^https://twitter.com
   - ^https://www.chathamhouse.org
   - ^https://www.zocdoc.com
   - ^https://x.com
   # OTel Google calendar - curl returns 200, but the link checker gets a 401:
   - ^https://calendar.google.com/calendar/embed\?src=google.com_b79e3e90j7bbsa2n2p5an5lf60%40group.calendar.google.com
+  # YouTube playlists sometimes give a 404, although they give a 200 when accessed via browser:
+  - ^https://www.youtube.com/playlist\?list=
 
   # Ignore Docsy-generated GitHub links for now
   - ^https?://github\.com/.*?/.*?/(new|edit)/ # view-page, edit-source etc
@@ -59,3 +62,11 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://oncallmemaybe.com
   # TODO drop after https://github.com/open-telemetry/opentelemetry-specification/pull/3834 is merged
   - ^https://wikipedia\.org/wiki/Monotonic_function
+  # TODO drop after https://github.com/open-telemetry/opamp-spec/pull/179 is merged into this repo
+  - ^http://www.watersprings.org/
+  # TODO move into content/en/blog/2023/humans-of-otel.md once https://github.com/open-telemetry/opentelemetry.io/issues/3889 is implemented
+  - ^https://shorturl.at/osHRX$
+  # TODO drop after https://github.com/open-telemetry/semantic-conventions/pull/678 is merged:
+  - ^https://wikipedia.org/wiki/(S.M.A.R.T|Hop_)
+  # TODO move into content/en/blog/2023/contributing-to-otel/index.md once https://github.com/open-telemetry/opentelemetry.io/issues/3889 is implemented
+  - ^https://shorturl.at/vLYZ0$

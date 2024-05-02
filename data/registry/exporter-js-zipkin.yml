@@ -11,7 +11,7 @@ authors:
 package:
   name: '@opentelemetry/exporter-zipkin'
   registry: npm
-  version: 1.20.0
+  version: 1.24.0
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-exporter-zipkin
   docs: /docs/languages/js/exporters/#zipkin

@@ -116,9 +116,7 @@ Something that happened where representation depends on the
 
 ### **Exporter**
 
-Provides functionality to emit telemetry to consumers. Used by
-[`Instrumentation Libraries`][spec-exporter-lib] and the
-[`Collector`](/docs/collector/configuration#basics). Exporters can be push- or
+Provides functionality to emit telemetry to consumers. Exporters can be push- or
 pull-based.
 
 ### **Field**
@@ -228,13 +226,6 @@ Short form for [OpenTelemetry Collector](#collector).
 ### **OTLP**
 
 Short for [OpenTelemetry Protocol](/docs/specs/otlp/).
-
-### **Processor**
-
-The operation performed on data between being received and being exported. For
-example, batching. Used by
-['Instrumentation Libraries'](#instrumentation-library) and the
-[Collector](/docs/collector/configuration/#processors).
 
 ### **Propagators**
 
@@ -363,7 +354,6 @@ on web pages when requested. See [more][zpages].
 [sampling]: /docs/specs/otel/trace/sdk#sampling
 [signals]: /docs/concepts/signals/
 [span]: /docs/specs/otel/trace/api#span
-[spec-exporter-lib]: /docs/specs/otel/glossary/#exporter-library
 [spec-instrumentation-lib]: /docs/specs/otel/glossary/#instrumentation-library
 [spec-instrumented-lib]: /docs/specs/otel/glossary/#instrumented-library
 [specification]: /docs/concepts/components/#specification

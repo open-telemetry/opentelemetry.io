@@ -8,13 +8,126 @@ cSpell:ignore: guzzlehttp myapp
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% docs/languages/manual-intro %}}
+{{% docs/languages/instrumentation-intro %}}
 
-## Installation
+## Example app preparation {#example-app}
 
-The following shows how to install, initialize, and run an application
-instrumented with OpenTelemetry. Telemetry data will be displayed in the
-console.
+These instructions use a modified version of the example app from
+[Getting Started](/docs/languages/php/getting-started/) to help you learn how to
+instrument your PHP code.
+
+If you want to instrument your own app or library, follow the instructions to
+adapt the process to your own code.
+
+### Dependencies {#example-app-dependencies}
+
+In an empty directory, initialize a minimal `composer.json` file with the
+following content:
+
+```shell
+composer init \
+  --no-interaction \
+  --require slim/slim:"^4" \
+  --require slim/psr7:"^1" \
+  --require monolog/monolog:"^3"
+composer update
+```
+
+### Create and launch an HTTP Server
+
+To highlight the difference between instrumenting a library and a standalone
+app, split out the dice rolling into a library file, which then will be imported
+as a dependency by the app file.
+
+Create the library file named `dice.php` and add the following code to it:
+
+```php
+<?php
+class Dice {
+
+    private $tracer;
+
+    function __construct() {
+    }
+
+    public function roll($rolls) {
+        $result = [];
+        for ($i = 0; $i < $rolls; $i++) {
+            $result[] = $this->rollOnce();
+        }
+        return $result;
+    }
+
+    private function rollOnce() {
+      $result = random_int(1, 6);
+      return $result;
+    }
+}
+```
+
+Create the app file named `index.php` and add the following code to it:
+
+```php
+<?php
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Log\LogLevel;
+use Slim\Factory\AppFactory;
+use Monolog\Logger;
+use Monolog\Level;
+use Monolog\Handler\StreamHandler;
+
+require __DIR__ . '/vendor/autoload.php';
+
+require('dice.php');
+
+$logger = new Logger('dice-server');
+$logger->pushHandler(new StreamHandler('php://stdout', Level::INFO));
+
+$app = AppFactory::create();
+
+$dice = new Dice();
+
+$app->get('/rolldice', function (Request $request, Response $response) use ($logger, $dice) {
+    $params = $request->getQueryParams();
+    if(isset($params['rolls'])) {
+        $result = $dice->roll($params['rolls']);
+        if (isset($params['player'])) {
+          $logger->info("A player is rolling the dice.", ['player' => $params['player'], 'result' => $result]);
+        } else {
+          $logger->info("Anonymous player is rolling the dice.", ['result' => $result]);
+        }
+        $response->getBody()->write(json_encode($result));
+    } else {
+        $response->withStatus(400)->getBody()->write("Please enter a number of rolls");
+    }
+    return $response;
+});
+
+$app->run();
+```
+
+To ensure that it is working, run the application with the following command and
+open <http://localhost:8080/rolldice?rolls=12> in your web browser.
+
+```shell
+php -S localhost:8080
+```
+
+## Instrumentation setup
+
+### Dependencies
+
+Install OpenTelemetry API packages:
+
+```shell
+composer require open-telemetry/api open-telemetry/sem-conv
+```
+
+### Initialize the SDK
+
+{{% alert title="Note" color="info" %}} If you’re instrumenting a library,
+**skip this step**. {{% /alert %}}
 
 To use the OpenTelemetry SDK for PHP you need packages that satisfy the
 dependencies for `psr/http-client-implementation` and
@@ -32,21 +145,15 @@ composer require \
   open-telemetry/exporter-otlp
 ```
 
-## Setup
-
-The first step is to get a handle to an instance of the `OpenTelemetry`
-interface.
-
 If you are an application developer, you need to configure an instance of the
 `OpenTelemetry SDK` as early as possible in your application. Here we will use
 the `Sdk::builder()` method, and we will globally register the providers.
 
 You can build the providers by using the `TracerProvider::builder()`,
-`LoggerProvider::builder()`, and `MeterProvider::builder()` methods. It is also
-recommended to define a `Resource` instance as a representation of the entity
-producing the telemetry; in particular the `service.name` attribute.
+`LoggerProvider::builder()`, and `MeterProvider::builder()` methods.
 
-### Example
+In the case of the [example app](#example-app), create a file named
+`instrumentation.php` with the following content:
 
 ```php
 <?php
@@ -124,6 +231,41 @@ Sdk::builder()
     ->buildAndRegisterGlobal();
 ```
 
+Include this code at the top of your application file `index.php`:
+
+```php
+<?php
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Log\LogLevel;
+use Slim\Factory\AppFactory;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
+require __DIR__ . '/vendor/autoload.php';
+
+require('dice.php');
+require('instrumentation.php');
+
+// ...
+```
+
+For debugging and local development purposes, the example exports telemetry to
+the console. After you have finished setting up manual instrumentation, you need
+to configure an appropriate exporter to
+[export the app's telemetry data](/docs/languages/php/exporters/) to one or more
+telemetry backends.
+
+The example also sets up the mandatory SDK default attribute `service.name`,
+which holds the logical name of the service, and the optional, but highly
+encouraged, attribute `service.version`, which holds the version of the service
+API or implementation.
+
+Alternative methods exist for setting up resource attributes. For more
+information, see [Resources](/docs/languages/js/resources/).
+
+#### Global Providers
+
 Throughout the following examples we will usually obtain the globally registered
 providers via `OpenTelemetry\API\Globals`:
 
@@ -150,70 +292,236 @@ function as part of PHP's shutdown process:
 
 ## Traces
 
+### Initialize Tracing
+
+{{% alert title="Note" color="info" %}} If you’re instrumenting a library,
+**skip this step**. {{% /alert %}}
+
+To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need to
+have an initialized
+[`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider) that will let
+you create a [`Tracer`](/docs/concepts/signals/traces/#tracer).
+
+If a `TracerProvider` is not created, the OpenTelemetry APIs for tracing will
+use a no-op implementation and fail to generate data.
+
+If you followed the instructions to [initialize the SDK](#initialize-the-sdk)
+above, you have a `TracerProvider` setup for you already. You can continue with
+[acquiring a tracer](#acquiring-a-tracer).
+
 ### Acquiring a Tracer
 
-To do [Tracing](/docs/concepts/signals/traces/) you'll need to acquire a
-[`Tracer`](/docs/concepts/signals/traces/#tracer).
-
-A `Tracer` is responsible for creating spans and interacting with the
-[Context](../propagation/). A tracer is acquired from a `TracerProvider`,
-specifying the name and other (optional) identifying information about the
-[library instrumenting](/docs/concepts/instrumentation/libraries/) the
-instrumented library or application to be monitored.
-
-More information is available in the specification chapter
-[Obtaining a Tracer](/docs/specs/otel/trace/api/#tracerprovider).
+Anywhere in your application where you write manual tracing code should call
+`getTracer` to acquire a tracer. For example:
 
 ```php
 $tracerProvider = Globals::tracerProvider();
 $tracer = $tracerProvider->getTracer(
-  'instrumentation-library-name', //name (required)
-  '1.0.0', //version
+  'instrumentation-scope-name', //name (required)
+  'instrumentation-scope-version', //version
   'http://example.com/my-schema', //schema url
   ['foo' => 'bar'] //attributes
 );
 ```
 
-Important: the parameters used when acquiring a tracer are purely
-informational - these values will be emitted as part of the scope of any
-telemetry emitted by that tracer. All `Tracer`s that are created by a single
-`OpenTelemetry` instance will interoperate, regardless of differences in these
-parameters.
+The values of `instrumentation-scope-name` and `instrumentation-scope-version`
+should uniquely identify the
+[Instrumentation Scope](/docs/concepts/instrumentation-scope/), such as the
+package, module or class name. While the name is required, the version is still
+recommended despite being optional.
+
+It's generally recommended to call `getTracer` in your app when you need it
+rather than exporting the `tracer` instance to the rest of your app. This helps
+avoid trickier application load issues when other required dependencies are
+involved.
+
+In the case of the [example app](#example-app), there are two places where a
+tracer may be acquired with an appropriate Instrumentation Scope:
+
+First, in the _application file_ `index.php`:
+
+```php
+<?php
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Log\LogLevel;
+use Slim\Factory\AppFactory;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+use OpenTelemetry\API\Globals;
+
+require __DIR__ . '/vendor/autoload.php';
+
+require('dice.php');
+require('instrumentation.php');
+
+$tracerProvider = Globals::tracerProvider();
+$tracer = $tracerProvider->getTracer(
+  'dice-server',
+  '0.1.0',
+  'https://opentelemetry.io/schemas/1.24.0'
+);
+
+$logger = new Logger('dice-server');
+$logger->pushHandler(new StreamHandler('php://stdout', Logger::INFO));
+
+$app = AppFactory::create();
+
+$dice = new Dice();
+
+$app->get('/rolldice', function (Request $request, Response $response) use ($logger, $dice, $tracer) {
+// ...
+}
+```
+
+And second, in the _library file_ `dice.php`:
+
+```php
+<?php
+use OpenTelemetry\API\Globals;
+use OpenTelemetry\SemConv\TraceAttributes;
+
+class Dice {
+
+    private $tracer;
+
+    function __construct() {
+        $tracerProvider = Globals::tracerProvider();
+        $this->tracer = $tracerProvider->getTracer(
+          'dice-lib',
+          '0.1.0',
+          'https://opentelemetry.io/schemas/1.24.0'
+        );
+    }
+
+    public function roll($rolls) {
+        $result = [];
+        for ($i = 0; $i < $rolls; $i++) {
+            $result[] = $this->rollOnce();
+        }
+        return $result;
+    }
+
+    private function rollOnce() {
+      $result = random_int(1, 6);
+      return $result
+    }
+}
+```
 
 ### Create Spans
 
-To create [Spans](/docs/concepts/signals/traces/#spans), you only need to
-specify the name of the span. The start and end time of the span is
-automatically set by the OpenTelemetry SDK.
+Now that you have [tracers](/docs/concepts/signals/traces/#tracer) initialized,
+you can create [spans](/docs/concepts/signals/traces/#spans).
+
+The code below illustrates how to create a span.
 
 ```php
-$span = $tracer->spanBuilder("my span")->startSpan();
-//do some work
-$span->end();
+<?php
+public function roll($rolls) {
+    $span = $this->tracer->spanBuilder("rollTheDice")->startSpan();
+    $result = [];
+    for ($i = 0; $i < $rolls; $i++) {
+        $result[] = $this->rollOnce();
+    }
+    $span->end();
+    return $result;
+}
 ```
 
-It's required to `end()` the span, otherwise it will not be sent.
+Note, that it's required to `end()` the span, otherwise it will not be exported.
+
+If you followed the instructions using the [example app](#example-app) up to
+this point, you can copy the code above in your library file `dice.php`. You
+should now be able to see spans emitted from your app.
+
+Start your app as follows, and then send it requests by visiting
+<http://localhost:8080/rolldice?rolls=12> with your browser or `curl`.
+
+```sh
+php -S 8080 localhost
+```
+
+After a while, you should see the spans printed in the console by the
+`SpanExporter`, something like this:
+
+```json
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.namespace",
+            "value": {
+              "stringValue": "demo"
+            }
+          },
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "test-application"
+            }
+          },
+          {
+            "key": "service.version",
+            "value": {
+              "stringValue": "0.1"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "development"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "dice-lib",
+            "version": "0.1.0"
+          },
+          "spans": [
+            {
+              "traceId": "007a1e7a89f21f98b600d288b7d65390",
+              "spanId": "c32797fc72c252d2",
+              "flags": 1,
+              "name": "rollTheDice",
+              "kind": 1,
+              "startTimeUnixNano": "1706111239077485365",
+              "endTimeUnixNano": "1706111239077735657",
+              "status": {}
+            }
+          ],
+          "schemaUrl": "https://opentelemetry.io/schemas/1.24.0"
+        }
+      ]
+    }
+  ]
+}
+```
 
 ### Create nested Spans
 
-Most of the time, we want to correlate
-[spans](/docs/concepts/signals/traces/#spans) for nested operations.
-OpenTelemetry supports tracing within processes and across remote processes. For
-more details on how to share context between remote processes, see
-[Context Propagation](../propagation/).
-
-For a method `parent` calling a method `child`, we can relate the spans by
-making the parent span active before creating the child span:
+Nested [spans](/docs/concepts/signals/traces/#spans) let you track work that's
+nested in nature. For example, the `rollOnce()` function below represents a
+nested operation. The following sample creates a nested span that tracks
+`rollOnce()`:
 
 ```php
-$parent = $tracer->spanBuilder("parent")->startSpan();
-$scope = $parent->activate();
-try {
-  $child = $tracer->spanBuilder("child")->startSpan();
-  $child->end();
-} finally {
-  $parent->end();
-  $scope->detach();
+private function rollOnce() {
+    $parent = OpenTelemetry\API\Trace\Span::getCurrent();
+    $scope = $parent->activate();
+    try {
+        $span = $this->tracer->spanBuilder("rollTheDice")->startSpan();
+        $result = random_int(1, 6);
+        $span->end();
+    } finally {
+        $scope->detach();
+    }
+    return $result;
 }
 ```
 
@@ -221,15 +529,16 @@ You _must_ `detach` the active scope if you have activated it.
 
 ### Get the current span
 
-Sometimes it's helpful to do something with the current/active
-[span](/docs/concepts/signals/traces/#spans) at a particular point in program
-execution.
+In the example above, we retrieved the current span, using the following method:
 
 ```php
 $span = OpenTelemetry\API\Trace\Span::getCurrent();
 ```
 
-And if you want the current span for a particular `Context` object:
+### Get a span from context
+
+It can also be helpful to get the [span](/docs/concepts/signals/traces/#spans)
+from a given context that isn't necessarily the active span.
 
 ```php
 $span = OpenTelemetry\API\Trace\Span::fromContext($context);
@@ -237,17 +546,52 @@ $span = OpenTelemetry\API\Trace\Span::fromContext($context);
 
 ### Span Attributes
 
-In OpenTelemetry [spans](/docs/concepts/signals/traces/#spans) can be created
-freely and it's up to the implementor to annotate them with attributes specific
-to the represented operation.
-[Attributes](/docs/concepts/signals/traces/#attributes) provide additional
-context on a span about the specific operation it tracks, such as results or
-operation properties.
+[Attributes](/docs/concepts/signals/traces/#attributes) let you attach key/value
+pairs to a [`Span`](/docs/concepts/signals/traces/#spans) so it carries more
+information about the current operation that it's tracking.
 
 ```php
-$span = $tracer->spanBuilder("/resource/path")->setSpanKind(SpanKind::CLIENT)->startSpan();
-$span->setAttribute("http.method", "GET");
-$span->setAttribute("http.url", (string) $url);
+private function rollOnce() {
+    $parent = OpenTelemetry\API\Trace\Span::getCurrent();
+    $scope = $parent->activate();
+    try {
+        $span = $this->tracer->spanBuilder("rollTheDice")->startSpan();
+        $result = random_int(1, 6);
+        $span->setAttribute('dicelib.rolled', $result);
+        $span->end();
+    } finally {
+        $scope->detach();
+    }
+    return $result;
+}
+```
+
+#### Semantic Attributes
+
+There are semantic conventions for spans representing operations in well-known
+protocols like HTTP or database calls. Semantic conventions for these spans are
+defined in the specification at
+[Trace Semantic Conventions](/docs/specs/semconv/general/trace/). In the simple
+example of this guide the source code attributes can be used.
+
+First add the semantic conventions as a dependency to your application:
+
+```shell
+composer require open-telemetry/sem-conv
+```
+
+Add the following to the top of your file:
+
+```php
+use OpenTelemetry\SemConv\TraceAttributes;
+use OpenTelemetry\SemConv\TraceAttributeValues;
+```
+
+Finally, you can update your file to include semantic attributes:
+
+```php
+$span->setAttribute(TraceAttributes::CODE_FUNCTION, 'rollOnce');
+$span->setAttribute(TraceAttributes::CODE_FILEPATH, __FILE__);
 ```
 
 ### Create Spans with events
@@ -316,58 +660,6 @@ try {
 }
 ```
 
-### Sampler
-
-It is not always feasible to trace and export every user request in an
-application. In order to strike a balance between observability and expenses,
-traces can be [sampled](/docs/concepts/sampling).
-
-The OpenTelemetry SDK provides four samplers:
-
-- `AlwaysOnSampler` which samples every trace regardless of upstream sampling
-  decisions.
-- `AlwaysOffSampler` which doesn't sample any trace, regardless of upstream
-  sampling decisions.
-- `TraceIdRatioBased` which samples a configurable percentage of traces, and
-  additionally samples any trace that was sampled upstream.
-- `ParentBased` which uses the parent span to make sampling decisions, if
-  present. This sampler needs to be used in conjunction with a root sampler,
-  which is used to determine if a root span (a span without a parent) should be
-  sampled. The root sampler can be any of the other samplers.
-
-{{< tabpane text=true >}} {{% tab "TraceId ratio-based" %}}
-
-```php
-// Trace 50% of requests
-$sampler = new TraceIdRatioBasedSampler(0.5);
-```
-
-{{% /tab %}} {{% tab "Always On" %}}
-
-```php
-// Always trace
-$sampler = new AlwaysOnSampler();
-```
-
-{{% /tab %}} {{% tab "Parent-based + ratio-based" %}}
-
-```php
-// Always sample if the parent is sampled, otherwise only sample 10% of spans
-$sampler = new ParentBased(new TraceIdRatioBasedSampler(0.1));
-```
-
-{{% /tab %}} {{< /tabpane >}}
-
-```php
-$tracerProvider = TracerProvider::builder()
-  ->setSampler($sampler)
-  ->build();
-```
-
-Additional samplers can be provided by implementing
-`OpenTelemetry\SDK\Trace\SamplerInterface`. An example of doing so would be to
-make sampling decisions based on attributes set at span creation time.
-
 ### Span Processor
 
 Different Span processors are offered by OpenTelemetry. The
@@ -391,20 +683,7 @@ telemetry data:
 
 ### Exporter
 
-Span processors are initialized with an exporter which is responsible for
-sending the telemetry data to a particular backend:
-
-- `InMemory`: keeps the data in memory, useful for testing and debugging.
-- `Console`: sends the data to a stream such as `stdout` or `stderr`
-- `Zipkin`: prepares and sends telemetry data to a Zipkin backend via the Zipkin
-  APIs.
-- Logging Exporter: sends the telemetry data to a PSR-3 logger.
-- OpenTelemetry Protocol Exporter: sends the data in OTLP format to the
-  [OpenTelemetry Collector](/docs/collector/) or other OTLP receivers. The
-  following formats are supported:
-  - protobuf over HTTP
-  - protobuf over gRPC
-  - JSON over HTTP
+See [Exporters](/docs/languages/php/exporters)
 
 ## Metrics
 

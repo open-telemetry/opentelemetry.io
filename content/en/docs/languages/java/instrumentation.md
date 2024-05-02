@@ -8,12 +8,12 @@ aliases:
 weight: 20
 description: Manual instrumentation for OpenTelemetry Java
 # prettier-ignore
-cSpell:ignore: autoconfigure Autowired classpath customizer logback loggable multivalued rolldice springframework
+cSpell:ignore: Autowired customizer logback loggable multivalued rolldice springframework
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% docs/languages/manual-intro %}}
+{{% docs/languages/instrumentation-intro %}}
 
 {{% alert title="Note" color="info" %}}
 
@@ -41,6 +41,15 @@ manual instrumentation.
 
 You don't have to use the example app: if you want to instrument your own app or
 library, follow the instructions here to adapt the process to your own code.
+
+### Prerequisites
+
+For running the example app, ensure that you have the following installed
+locally:
+
+- Java JDK 17+, due to the use of Spring Boot 3. OpenTelemetry Java itself only
+  [requires Java 8+][java-vers].
+- [Gradle](https://gradle.org/).
 
 ### Dependencies {#example-app-dependencies}
 
@@ -190,15 +199,6 @@ You should get a list of 12 numbers in your browser window, for example:
 For both library and app instrumentation, the first step is to install the
 dependencies for the OpenTelemetry API.
 
-{{< tabpane text=true >}} {{% tab Gradle %}}
-
-```kotlin { hl_lines=3 }
-dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web");
-    implementation("io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}");
-}
-```
-
 Throughout this documentation you will add dependencies. For a full list of
 artifact coordinates, see [releases]. For semantic convention releases, see
 [semantic-conventions-java].
@@ -206,6 +206,40 @@ artifact coordinates, see [releases]. For semantic convention releases, see
 [releases]: https://github.com/open-telemetry/opentelemetry-java#releases
 [semantic-conventions-java]:
   https://github.com/open-telemetry/semantic-conventions-java/releases
+
+### Dependency management
+
+A Bill of Material
+([BOM](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms))
+ensures that versions of dependencies (including transitive ones) are aligned.
+Importing the `opentelemetry-bom` BOM is important to ensure version alignment
+across all OpenTelemetry dependencies.
+
+{{< tabpane text=true >}} {{% tab Gradle %}}
+
+```kotlin { hl_lines=["1-5",9] }
+dependencyManagement {
+  imports {
+    mavenBom("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}")
+  }
+}
+
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-web");
+    implementation("io.opentelemetry:opentelemetry-api");
+}
+```
+
+If you are not using Spring and its `io.spring.dependency-management` dependency
+management plugin, install the OpenTelemetry BOM and API using Gradle
+dependencies only.
+
+```kotlin
+dependencies {
+    implementation(platform("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}"));
+    implementation("io.opentelemetry:opentelemetry-api");
+}
+```
 
 {{% /tab %}} {{% tab Maven %}}
 
@@ -238,19 +272,20 @@ artifact coordinates, see [releases]. For semantic convention releases, see
 {{% alert title="Note" color="info" %}} If you’re instrumenting a library,
 **skip this step**. {{% /alert %}}
 
-If you instrument a Java app, install the dependencies for the OpenTelemetry
-SDK.
+The OpenTelemetry API provides a set of interfaces for collecting telemetry, but
+the data is dropped without an implementation. The OpenTelemetry SDK is the
+implementation of the OpenTelemetry API provided by OpenTelemetry. To use it if
+you instrument a Java app, begin by installing dependencies:
 
 {{< tabpane text=true >}} {{% tab Gradle %}}
 
-```kotlin { hl_lines="4-8" }
+```kotlin { hl_lines="4-6" }
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web");
-    implementation("io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}");
-    implementation("io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}");
-    implementation("io.opentelemetry:opentelemetry-sdk-metrics:{{% param vers.otel %}}");
-    implementation("io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}");
-    implementation("io.opentelemetry:opentelemetry-semconv:{{% param vers.otel %}}-alpha");
+    implementation("io.opentelemetry:opentelemetry-api");
+    implementation("io.opentelemetry:opentelemetry-sdk");
+    implementation("io.opentelemetry:opentelemetry-exporter-logging");
+    implementation("io.opentelemetry.semconv:opentelemetry-semconv:{{% param vers.semconv %}}-alpha");
 }
 ```
 
@@ -258,29 +293,10 @@ dependencies {
 
 ```xml
 <project>
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>io.opentelemetry</groupId>
-                <artifactId>opentelemetry-bom</artifactId>
-                <version>{{% param vers.otel %}}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>io.opentelemetry</groupId>
-            <artifactId>opentelemetry-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-sdk</artifactId>
-        </dependency>
-                <dependency>
-            <groupId>io.opentelemetry</groupId>
-            <artifactId>opentelemetry-sdk-metrics</artifactId>
         </dependency>
         <dependency>
             <groupId>io.opentelemetry</groupId>
@@ -301,27 +317,25 @@ dependencies {
 If you are an application developer, you need to configure an instance of the
 `OpenTelemetrySdk` as early as possible in your application. This can either be
 done manually by using the `OpenTelemetrySdk.builder()` or by using the SDK
-auto-configuration extension through the
+autoconfiguration extension through the
 `opentelemetry-sdk-extension-autoconfigure` module. It is recommended to use
-auto-configuration, as it is easier to use and comes with various additional
+autoconfiguration, as it is easier to use and comes with various additional
 capabilities.
 
 #### Automatic Configuration
 
-To use auto-configuration add the following dependency to your application:
+To use autoconfiguration add the following dependency to your application:
 
 {{< tabpane text=true >}} {{% tab Gradle %}}
 
-```kotlin { hl_lines="9-10" }
+```kotlin { hl_lines="7" }
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web");
-    implementation("io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}");
-    implementation("io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}");
-    implementation("io.opentelemetry:opentelemetry-sdk-metrics:{{% param vers.otel %}}");
-    implementation("io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}");
-    implementation("io.opentelemetry.semconv:opentelemetry-semconv:{{% param vers.semconv %}}-alpha")
-    implementation("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param vers.otel %}}");
-    implementation("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi:{{% param vers.otel %}}");
+    implementation("io.opentelemetry:opentelemetry-api");
+    implementation("io.opentelemetry:opentelemetry-sdk");
+    implementation("io.opentelemetry:opentelemetry-exporter-logging");
+    implementation("io.opentelemetry.semconv:opentelemetry-semconv:{{% param vers.semconv %}}-alpha");
+    implementation("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure");
 }
 ```
 
@@ -344,7 +358,7 @@ dependencies {
 
 {{% /tab %}} {{< /tabpane>}}
 
-It allows you to auto-configure the OpenTelemetry SDK based on a standard set of
+It allows you to autoconfigure the OpenTelemetry SDK based on a standard set of
 supported environment variables and system properties. Each environment variable
 has a corresponding system property named the same way but as lower case and
 using the `.` (dot) character instead of the `_` (underscore) as separator.
@@ -364,7 +378,7 @@ exporter library in the classpath of the application to
 [export the app's telemetry data](/docs/languages/java/exporters/) to one or
 more telemetry backends.
 
-The SDK auto-configuration has to be initialized as early as possible in the
+The SDK autoconfiguration has to be initialized as early as possible in the
 application lifecycle in order to allow the module to go through the provided
 environment variables (or system properties) and set up the `OpenTelemetry`
 instance by using the builders internally.
@@ -414,11 +428,16 @@ OTEL_SERVICE_NAME=dice-server \
 OTEL_TRACES_EXPORTER=logging \
 OTEL_METRICS_EXPORTER=logging \
 OTEL_LOGS_EXPORTER=logging \
+OTEL_METRIC_EXPORT_INTERVAL=15000 \
 java -jar ./build/libs/java-simple.jar
 ```
 
 This basic setup has no effect on your app yet. You need to add code for
 [traces](#traces), [metrics](#metrics), and/or [logs](#logs).
+
+Note that `OTEL_METRIC_EXPORT_INTERVAL=15000` (milliseconds) is a temporary
+setting to test that your metrics are properly generated. Remember to remove the
+setting once you are done testing. The default is 60000 milliseconds.
 
 #### Manual Configuration
 
@@ -664,7 +683,7 @@ automatically set by the OpenTelemetry SDK.
 
 The code below illustrates how to create a span:
 
-```java { hl_lines=["1-2","8-11","19-21"] }
+```java { hl_lines=["1-2","8-11","25-30"] }
 import io.opentelemetry.api.trace.Span;
 import io.opentelemetry.context.Scope;
 
@@ -963,6 +982,25 @@ OpenTelemetry provides a text-based approach to propagate context to remote
 services using the [W3C Trace Context](https://www.w3.org/TR/trace-context/)
 HTTP headers.
 
+### Context propagation between threads
+
+THe following example demonstrates how to propagate the context between threads:
+
+```java
+io.opentelemetry.context.Context context = io.opentelemetry.context.Context.current();
+Thread thread = new Thread(new Runnable() {
+  @Override
+  public void run() {
+    try (Scope scope = context.makeCurrent()) {
+      // Code for which you want to propagate the context
+    }
+  }
+});
+thread.start();
+```
+
+### Context propagation between HTTP requests
+
 The following presents an example of an outgoing HTTP request using
 `HttpURLConnection`.
 
@@ -1115,79 +1153,261 @@ The metrics API defines a variety of instruments. Instruments record
 measurements, which are aggregated by the metrics SDK and eventually exported
 out of process. Instruments come in synchronous and asynchronous varieties.
 Synchronous instruments record measurements as they happen. Asynchronous
-instrument register a callback, which is invoked once per collection, and which
-records measurements at that point in time. The following instruments are
-available:
+instruments register a callback, which is invoked once per collection, and which
+records measurements at that point in time.
 
-- `LongCounter`/`DoubleCounter`: records only positive values, with synchronous
-  and asynchronous options. Useful for counting things, such as the number of
-  bytes sent over a network. Counter measurements are aggregated to
-  always-increasing monotonic sums by default.
-- `LongUpDownCounter`/`DoubleUpDownCounter`: records positive and negative
-  values, with synchronous and asynchronous options. Useful for counting things
-  that go up and down, like the size of a queue. Up down counter measurements
-  are aggregated to non-monotonic sums by default.
-- `LongGauge`/`DoubleGauge`: measures an instantaneous value with an
-  asynchronous callback. Useful for recording values that can't be merged across
-  attributes, like CPU utilization percentage. Gauge measurements are aggregated
-  as gauges by default.
-- `LongHistogram`/`DoubleHistogram`: records measurements that are most useful
-  to analyze as a histogram distribution. No asynchronous option is available.
-  Useful for recording things like the duration of time spent by an HTTP server
-  processing a request. Histogram measurements are aggregated to explicit bucket
-  histograms by default.
+### Initialize Metrics
 
-**Note**: The asynchronous varieties of counter and up down counter assume that
-the registered callback is observing the cumulative sum. For example, if you
-register an asynchronous counter whose callback records bytes sent over a
-network, it must record the cumulative sum of all bytes sent over the network,
-rather than trying to compute and record the difference since last call.
+{{% alert color="info" %}} If you’re instrumenting a library, skip this step.
+{{% /alert %}}
 
-All metrics can be annotated with attributes: additional qualifiers that help
-describe what subdivision of the measurements the metric represents.
+To enable [metrics](/docs/concepts/signals/metrics/) in your app, you need to
+have an initialized
+[`MeterProvider`](/docs/concepts/signals/metrics/#meter-provider) that lets you
+create a [`Meter`](/docs/concepts/signals/metrics/#meter). If a `MeterProvider`
+is not created, the OpenTelemetry APIs for metrics use a no-op implementation
+and fail to generate data.
 
-The following is an example of counter usage:
+If you followed the instructions to [initialize the SDK](#initialize-the-sdk)
+above, you have a `MeterProvider` setup for you already. You can continue with
+[acquiring a meter](#acquiring-a-meter).
+
+When creating a `MeterProvider` you can specify a [MetricReader](#metric-reader)
+and [MetricExporter](/docs/languages/java/exporters/). The
+`LoggingMetricExporter` is included in the `opentelemetry-exporter-logging`
+artifact that was added in the [Initialize the SDK](#initialize-the-sdk) step.
 
 ```java
-OpenTelemetry openTelemetry = // obtain instance of OpenTelemetry
+SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
+    .registerMetricReader(
+        PeriodicMetricReader
+            .builder(LoggingMetricExporter.create())
+            // Default is 60000ms (60 seconds). Set to 10 seconds for demonstrative purposes only.
+            .setInterval(Duration.ofSeconds(10)).build())
+    .build();
 
-// Gets or creates a named meter instance
-Meter meter = openTelemetry.meterBuilder("instrumentation-library-name")
-        .setInstrumentationVersion("1.0.0")
-        .build();
-
-// Build counter e.g. LongCounter
-LongCounter counter = meter
-      .counterBuilder("processed_jobs")
-      .setDescription("Processed jobs")
-      .setUnit("1")
-      .build();
-
-// It is recommended that the API user keep a reference to Attributes they will record against
-Attributes attributes = Attributes.of(AttributeKey.stringKey("Key"), "SomeWork");
-
-// Record data
-counter.add(123, attributes);
+// Register MeterProvider with OpenTelemetry instance
+OpenTelemetry openTelemetry = OpenTelemetrySdk.builder()
+    .setMeterProvider(sdkMeterProvider)
+    .build();
 ```
 
-The following is an example of usage of an asynchronous instrument:
+### Acquiring a Meter
+
+Anywhere in your application where you have manually instrumented code you can
+call `opentelemetry.meterBuilder(instrumentationScopeName)` to get or create a
+new meter instance using the builder pattern, or
+`opentelemetry.getMeter(instrumentationScopeName)` to get or create a meter
+based on just the instrument scope name.
 
 ```java
-// Build an asynchronous instrument, e.g. Gauge
-meter
-  .gaugeBuilder("cpu_usage")
-  .setDescription("CPU Usage")
-  .setUnit("ms")
-  .buildWithCallback(measurement -> {
-    measurement.record(getCpuUsage(), Attributes.of(AttributeKey.stringKey("Key"), "SomeWork"));
-  });
+// Get or create a named meter instance with instrumentation version using builder
+Meter meter = openTelemetry.meterBuilder("dice-server")
+    .setInstrumentationVersion("0.1.0")
+    .build();
+
+// Get or create a named meter instance by name only
+Meter meter = openTelemetry.getMeter("dice-server");
+```
+
+Now that you have [meters](/docs/concepts/signals/metrics/#meter) initialized.
+you can create
+[metric instruments](/docs/concepts/signals/metrics/#metric-instruments).
+
+### Using Counters
+
+Counters can be used to measure non-negative, increasing values.
+
+```java
+LongCounter counter = meter.counterBuilder("dice-lib.rolls.counter")
+    .setDescription("How many times the dice have been rolled.")
+    .setUnit("rolls")
+    .build();
+
+counter.add(1, attributes);
+```
+
+### Using Observable (Async) Counters
+
+Observable counters can be used to measure an additive, non-negative,
+monotonically increasing value. These counters specifically focus on the total
+accumulated amount, which is gathered from external sources. Unlike synchronous
+counters where each increment is recorded as it happens, observable counters
+allow you to asynchronously monitor the overall sum of multiple increments.
+
+```java
+ObservableLongCounter counter = meter.counterBuilder("dice-lib.uptime")
+    .buildWithCallback(measurement -> measurement.record(getUpTime()));
+```
+
+### Using UpDown Counters
+
+UpDown counters can increment and decrement, allowing you to observe a value
+that goes up or down.
+
+```java
+LongUpDownCounter counter = meter.upDownCounterBuilder("dice-lib.score")
+    .setDescription("Score from dice rolls.")
+    .setUnit("points")
+    .build();
+
+//...
+
+counter.add(10, attributes);
+
+//...
+
+counter.add(-20, attributes);
+```
+
+### Using Observable (Async) UpDown Counters
+
+Observable UpDown counters can increment and decrement, allowing you to measure
+an additive, non-negative, non-monotonically increasing cumulative value. These
+UpDown counters specifically focus on the total accumulated amount, which is
+gathered from external sources. Unlike synchronous UpDown counters where each
+increment is recorded as it happens, observable counters allow you to
+asynchronously monitor the overall sum of multiple increments.
+
+```java
+ObservableDoubleUpDownCounter upDownCounter = meter.upDownCounterBuilder("dice-lib.score")
+    .buildWithCallback(measurement -> measurement.record(calculateScore()));
+```
+
+### Using Histograms
+
+Histograms are used to measure a distribution of values over time.
+
+```java
+LongHistogram histogram = meter.histogramBuilder("dice-lib.rolls")
+    .ofLongs() // Required to get a LongHistogram, default is DoubleHistogram
+    .setDescription("A distribution of the value of the rolls.")
+    .setExplicitBucketBoundariesAdvice(Arrays.asList(1L, 2L, 3L, 4L, 5L, 6L, 7L))
+    .setUnit("points")
+    .build();
+
+histogram.record(7, attributes);
+```
+
+### Using Observable (Async) Gauges
+
+Observable Gauges should be used to measure non-additive values.
+
+```java
+ObservableDoubleGauge gauge = meter.gaugeBuilder("jvm.memory.used")
+    .buildWithCallback(measurement -> measurement.record(getMemoryUsed()));
+```
+
+### Adding Attributes
+
+When you generate metrics, adding attributes creates unique metric series based
+on each distinct set of attributes that receive measurements. This leads to the
+concept of 'cardinality', which is the total number of unique series.
+Cardinality directly affects the size of the metric payloads that are exported.
+Therefore, it's important to carefully select the dimensions included in these
+attributes to prevent a surge in cardinality, often referred to as 'cardinality
+explosion'.
+
+```java
+Attributes attrs = Attributes.of(
+    stringKey("hostname"), "i-98c3d4938",
+    stringKey("region"), "us-east-1");
+
+histogram.record(7, attrs);
+```
+
+### Metric Views
+
+Views provide a mechanism for controlling how measurements are aggregated into
+metrics. They consist of an `InstrumentSelector` and a `View`. The instrument
+selector consists of a series of options for selecting which instruments the
+view applies to. Instruments can be selected by a combination of name, type,
+meter name, meter version, and meter schema URL. The view describes how
+measurement should be aggregated. The view can change the name, description, the
+aggregation, and define the set of attribute keys that should be retained.
+
+```java
+SdkMeterProvider meterProvider = SdkMeterProvider.builder()
+    .registerView(
+        InstrumentSelector.builder()
+            .setName("my-counter") // Select instrument(s) called "my-counter"
+            .build(),
+        View.builder()
+            .setName("new-counter-name") // Change the name to "new-counter-name"
+            .build())
+    .registerMetricReader(...)
+    .build();
+```
+
+Every instrument has a default view, which retains the original name,
+description, and attributes, and has a default aggregation that is based on the
+type of instrument. When a registered view matches an instrument, the default
+view is replaced by the registered view. Additional registered views that match
+the instrument are additive, and result in multiple exported metrics for the
+instrument.
+
+#### Selectors
+
+To instantiate a view, one must first select a target instrument. The following
+are valid selectors for metrics:
+
+- instrumentType
+- instrumentName
+- meterName
+- meterVersion
+- meterSchemaUrl
+
+Selecting by `instrumentName` (of type string) has support for wildcards, so you
+can select all instruments using `*` or select all instruments whose name starts
+with `http` by using `http*`.
+
+#### Examples
+
+Filter attributes on all metric types:
+
+```java
+SdkMeterProvider meterProvider = SdkMeterProvider.builder()
+    .registerView(
+        // apply the view to all instruments
+        InstrumentSelector.builder().setName("*").build(),
+        // only export the attribute 'environment'
+        View.builder().setAttributeFilter(Set.of("environment")).build())
+    .build();
+```
+
+Drop all instruments with the meter name "pubsub":
+
+```java
+SdkMeterProvider meterProvider = SdkMeterProvider.builder()
+    .registerView(
+        InstrumentSelector.builder().setMeterName("pubsub").build(),
+        View.builder().setAggregation(Aggregation.drop()).build())
+    .build();
+```
+
+Define explicit bucket sizes for the Histogram named
+`http.server.request.duration`:
+
+```java
+SdkMeterProvider meterProvider = SdkMeterProvider.builder()
+    .registerView(
+        InstrumentSelector.builder().setName("http.server.request.duration").build(),
+        View.builder()
+            .setAggregation(
+                Aggregation.explicitBucketHistogram(
+                    List.of(0.0, 1.0, 5.0, 10.0, 20.0, 25.0, 30.0)
+                )
+            ).build()
+    ).build();
 ```
 
 ## Logs
 
-Logs are distinct from Metrics and Tracing in that there is no user-facing logs
-API. Instead, there is tooling to bridge logs from existing popular log
-frameworks (e.g. SLF4j, JUL, Logback, Log4j) into the OpenTelemetry ecosystem.
+Logs are distinct from metrics and traces in that **there is no user-facing
+OpenTelemetry logs API**. Instead, there is tooling to bridge logs from existing
+popular log frameworks (e.g. SLF4j, JUL, Logback, Log4j) into the OpenTelemetry
+ecosystem. For rationale behind this design decision, see
+[Logging specification](/docs/specs/otel/logs/).
 
 The two typical workflows discussed below each cater to different application
 requirements.
@@ -1419,36 +1639,6 @@ OpenTelemetry provides the following exporters out of the box:
 
 Other exporters can be found in the [OpenTelemetry Registry].
 
-#### Views
-
-Views provide a mechanism for controlling how measurements are aggregated into
-metrics. They consist of an `InstrumentSelector` and a `View`. The instrument
-selector consists of a series of options for selecting which instruments the
-view applies to. Instruments can be selected by a combination of name, type,
-meter name, meter version, and meter schema URL. The view describes how
-measurement should be aggregated. The view can change the name, description, the
-aggregation, and define the set of attribute keys that should be retained.
-
-```java
-SdkMeterProvider meterProvider = SdkMeterProvider.builder()
-  .registerView(
-    InstrumentSelector.builder()
-      .setName("my-counter") // Select instrument(s) called "my-counter"
-      .build(),
-    View.builder()
-      .setName("new-counter-name") // Change the name to "new-counter-name"
-      .build())
-  .registerMetricReader(...)
-  .build()
-```
-
-Every instrument has a default view, which retains the original name,
-description, and attributes, and has a default aggregation that is based on the
-type of instrument. When a registered view matches an instrument, the default
-view is replaced by the registered view. Additional registered views that match
-the instrument are additive, and result in multiple exported metrics for the
-instrument.
-
 ### Logs SDK
 
 The logs SDK dictates how logs are processed when using the
@@ -1509,11 +1699,11 @@ box:
 Custom exporters are supported by implementing the `LogRecordExporter`
 interface.
 
-### Auto Configuration
+### Autoconfiguration
 
 Instead of manually creating the `OpenTelemetry` instance by using the SDK
 builders directly from your code, it is also possible to use the SDK
-auto-configuration extension through the
+autoconfiguration extension through the
 `opentelemetry-sdk-extension-autoconfigure` module.
 
 This module is made available by adding the following dependency to your
@@ -1526,7 +1716,7 @@ application.
 </dependency>
 ```
 
-It allows you to auto-configure the OpenTelemetry SDK based on a standard set of
+It allows you to autoconfigure the OpenTelemetry SDK based on a standard set of
 supported environment variables and system properties. Each environment variable
 has a corresponding system property named the same way but as lower case and
 using the `.` (dot) character instead of the `_` (underscore) as separator.
@@ -1540,6 +1730,11 @@ example `OTEL_TRACES_EXPORTER=jaeger` configures your application to use the
 Jaeger exporter. The corresponding Jaeger exporter library has to be provided in
 the classpath of the application as well.
 
+If you use the `console` or `logging` exporter for metrics, consider temporarily
+setting `OTEL_METRIC_EXPORT_INTERVAL` to a small value like `15000`
+(milliseconds) while testing that your metrics are properly recorded. Remember
+to remove the setting once you are done testing.
+
 It's also possible to set up the propagators via the `OTEL_PROPAGATORS`
 environment variable, like for example using the `tracecontext` value to use
 [W3C Trace Context](https://www.w3.org/TR/trace-context/).
@@ -1547,8 +1742,8 @@ environment variable, like for example using the `tracecontext` value to use
 For more details, see all the supported configuration options in the module's
 [README](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure).
 
-The SDK auto-configuration has to be initialized from your code in order to
-allow the module to go through the provided environment variables (or system
+The SDK autoconfiguration has to be initialized from your code in order to allow
+the module to go through the provided environment variables (or system
 properties) and set up the `OpenTelemetry` instance by using the builders
 internally.
 
@@ -1558,7 +1753,7 @@ OpenTelemetrySdk sdk = AutoConfiguredOpenTelemetrySdk.initialize()
 ```
 
 When environment variables or system properties are not sufficient, you can use
-some extension points provided through the auto-configure
+some extension points provided through the autoconfigure
 [SPI](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure-spi)
 and several methods in the `AutoConfiguredOpenTelemetrySdk` class.
 
@@ -1636,6 +1831,8 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOnSampler.java
 [httpexchange]:
   https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html
+[java-vers]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#language-version-compatibility
 [instrumentation library]: /docs/specs/otel/glossary/#instrumentation-library
 [instrumented library]: /docs/specs/otel/glossary/#instrumented-library
 [logs bridge API]: /docs/specs/otel/logs/bridge-api

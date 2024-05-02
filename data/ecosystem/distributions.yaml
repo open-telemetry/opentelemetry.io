@@ -1,0 +1,101 @@
+# cSpell:ignore Splunk AWS ADOT Grafana observIQ BindPlane RHOSDT RedHat Sumo Liatrio Lumigo Distro
+- name: Splunk Distribution of OpenTelemetry Collector
+  url: https://github.com/signalfx/splunk-otel-collector
+  docsUrl: https://docs.splunk.com/observability/en/gdi/opentelemetry/opentelemetry.html
+  components: [Collector]
+- name: AWS Distro for OpenTelemetry (ADOT)
+  url: https://aws.amazon.com/otel/
+  docsUrl: https://aws-otel.github.io/docs/getting-started/collector
+  components: [Collector]
+- name: Grafana Alloy
+  url: https://github.com/grafana/alloy
+  docsUrl: https://grafana.com/docs/alloy/latest/
+  components: [Collector]
+- name: Grafana Distribution of OpenTelemetry for .NET
+  url: https://github.com/grafana/grafana-opentelemetry-dotnet
+  docsUrl: https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/setup/instrument/dotnet/
+  components: [.NET]
+- name: Grafana Distribution of OpenTelemetry for Java
+  url: https://github.com/grafana/grafana-opentelemetry-java
+  docsUrl: https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/setup/instrument/java/
+  components: [Java]
+- name: observIQ BindPlane Agent
+  url: https://github.com/observIQ/observiq-otel-collector
+  docsUrl: https://github.com/observIQ/bindplane-agent/tree/main/docs
+  components: [Collector]
+- name: RedHat RHOSDT OpenTelemetry Collector Distribution
+  url: https://github.com/os-observability/redhat-opentelemetry-collector
+  docsUrl: https://github.com/os-observability/redhat-opentelemetry-collector
+  components: [Collector]
+- name: Sumo Logic Distribution for OpenTelemetry Collector
+  url: https://github.com/SumoLogic/sumologic-otel-collector
+  docsUrl: https://help.sumologic.com/docs/send-data/opentelemetry-collector/sumo-logic-opentelemetry-vs-opentelemetry-upstream-relationship/
+  components: [Collector]
+- name: Liatrio Distribution of the OpenTelemetry Collector
+  url: https://github.com/liatrio/liatrio-otel-collector
+  docsUrl: https://github.com/liatrio/liatrio-otel-collector
+  components: [Collector]
+- name: Lumigo OpenTelemetry Distribution for Java
+  url: https://github.com/lumigo-io/opentelemetry-java-distro
+  docsUrl: https://github.com/lumigo-io/opentelemetry-java-distro
+  components: [Java]
+- name: Lumigo OpenTelemetry Distribution for Python
+  url: https://github.com/lumigo-io/opentelemetry-python-distro
+  docsUrl: https://github.com/lumigo-io/opentelemetry-python-distro
+  components: [Python]
+- name: Lumigo OpenTelemetry Distribution for Node.js
+  url: https://github.com/lumigo-io/opentelemetry-js-distro
+  docsUrl: https://github.com/lumigo-io/opentelemetry-js-distro
+  components: [Node]
+- name: Honeycomb OpenTelemetry Distribution for Node.js
+  url: https://github.com/honeycombio/honeycomb-opentelemetry-node
+  docsUrl: https://docs.honeycomb.io/getting-data-in/opentelemetry/node-distro/
+  components: [Node]
+- name: Honeycomb OpenTelemetry Distribution for .NET
+  url: https://github.com/honeycombio/honeycomb-opentelemetry-dotnet
+  docsUrl: https://docs.honeycomb.io/getting-data-in/opentelemetry/dotnet-distro/
+  components: [.NET]
+- name: Honeycomb OpenTelemetry Distribution for Java
+  url: https://github.com/honeycombio/honeycomb-opentelemetry-java
+  docsUrl: https://docs.honeycomb.io/getting-data-in/java/opentelemetry-distro/
+  components: [Java]
+- name: Honeycomb OpenTelemetry Distribution for Go
+  url: https://github.com/honeycombio/honeycomb-opentelemetry-go
+  docsUrl: https://docs.honeycomb.io/getting-data-in/opentelemetry/go-distro/
+  components: [Go]
+- name: Splunk Distribution of OpenTelemetry Java
+  url: https://github.com/signalfx/splunk-otel-java
+  docsUrl: https://docs.splunk.com/observability/en/gdi/get-data-in/application/java/get-started.html
+  components: [Java]
+- name: Splunk Distribution of OpenTelemetry Node.js
+  url: https://github.com/signalfx/splunk-otel-js
+  docsUrl: https://docs.splunk.com/observability/en/gdi/get-data-in/application/nodejs/get-started.html
+  components: [Node]
+- name: Splunk Distribution of OpenTelemetry .NET
+  url: https://github.com/signalfx/splunk-otel-dotnet
+  docsUrl: https://docs.splunk.com/observability/en/gdi/get-data-in/application/otel-dotnet/get-started.html
+  components: [.NET]
+- name: Splunk Distribution of OpenTelemetry Python
+  url: https://github.com/signalfx/splunk-otel-python
+  docsUrl: https://docs.splunk.com/observability/en/gdi/get-data-in/application/python/get-started.html
+  components: [Python]
+- name: Splunk Distribution of OpenTelemetry Go
+  url: https://github.com/signalfx/splunk-otel-go
+  docsUrl: https://docs.splunk.com/observability/en/gdi/get-data-in/application/go/get-started.html
+  components: [Go]
+- name: Azure Monitor Distribution of OpenTelemetry ASP.NET Core
+  url: https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/monitor/Azure.Monitor.OpenTelemetry.AspNetCore
+  docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable?tabs=aspnetcore
+  components: [.NET]
+- name: Azure Monitor Distribution of OpenTelemetry Java
+  url: https://github.com/microsoft/ApplicationInsights-Java
+  docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable?tabs=java
+  components: [Java]
+- name: Azure Monitor Distribution of OpenTelemetry Node.js
+  url: https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/monitor/monitor-opentelemetry
+  docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable?tabs=nodejs
+  components: [Node]
+- name: Azure Monitor Distribution of OpenTelemetry Python
+  url: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/monitor/azure-monitor-opentelemetry
+  docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable?tabs=python
+  components: [Python]

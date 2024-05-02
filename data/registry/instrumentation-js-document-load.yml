@@ -14,4 +14,4 @@ createdAt: 2020-11-09
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-document-load'
-  version: 0.34.1
+  version: 0.38.0

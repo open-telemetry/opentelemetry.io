@@ -5,11 +5,11 @@ weight: 11
 description:
   An implementation of auto-instrumentation using the OpenTelemetry Operator.
 # prettier-ignore
-cSpell:ignore: autoinstrumentation GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver PTRACE REDISCALA
+cSpell:ignore: autoinstrumentation GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver PTRACE REDISCALA Werkzeug
 ---
 
 The OpenTelemetry Operator supports injecting and configuring
-auto-instrumentation libraries for .NET, Java, Node.js and Python services.
+auto-instrumentation libraries for .NET, Java, Node.js, Python, and Go services.
 
 ## Installation
 
@@ -68,7 +68,9 @@ spec:
       otlp:
         protocols:
           grpc:
+            endpoint: 0.0.0.0:4317
           http:
+            endpoint: 0.0.0.0:4318
     processors:
       memory_limiter:
         check_interval: 1s
@@ -192,7 +194,7 @@ metadata:
   name: demo-instrumentation
 spec:
   exporter:
-    endpoint: http://demo-collector:4317
+    endpoint: http://demo-collector:4318
   propagators:
     - tracecontext
     - baggage
@@ -203,10 +205,10 @@ EOF
 ```
 
 By default, the Instrumentation resource that auto-instruments Java services
-uses `otlp` with the `grpc` protocol. This means that the configured endpoint
-must be able to receive OTLP over `grpc`. Therefore, the example uses
-`http://demo-collector:4317`, which connects to the `grpc` port of the
-otlpreceiver of the Collector created in the previous step.
+uses `otlp` with the `http/protobuf` protocol. This means that the configured
+endpoint must be able to receive OTLP over `http` via `protobuf` payloads.
+Therefore, the example uses `http://demo-collector:4318`, which connects to the
+`http` port of the otlpreceiver of the Collector created in the previous step.
 
 #### Excluding auto-instrumentation {#java-excluding-auto-instrumentation}
 
@@ -220,7 +222,7 @@ the default libraries by setting
 `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false` and then use
 `OTEL_INSTRUMENTATION_[NAME]_ENABLED=true` where `[NAME]` is the name of the
 library. For more details, see
-[Suppressing specific auto-instrumentation](/docs/languages/java/automatic/agent-config/#suppressing-specific-auto-instrumentation).
+[Suppressing specific auto-instrumentation](/docs/languages/java/automatic/configuration/#suppressing-specific-auto-instrumentation).
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
@@ -229,7 +231,7 @@ metadata:
   name: demo-instrumentation
 spec:
   exporter:
-    endpoint: http://demo-collector:4317
+    endpoint: http://demo-collector:4318
   propagators:
     - tracecontext
     - baggage
@@ -247,7 +249,7 @@ spec:
 #### Learn more {#java-learn-more}
 
 For more details, see
-[Java agent Configuration](/docs/languages/java/automatic/agent-config/).
+[Java agent Configuration](/docs/languages/java/automatic/configuration/).
 
 ### Node.js
 
@@ -280,12 +282,24 @@ must be able to receive OTLP over `grpc`. Therefore, the example uses
 
 #### Excluding auto-instrumentation {#js-excluding-auto-instrumentation}
 
-By default, the Node.js auto-instrumentation ships with
-[many instrumentation libraries](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#supported-instrumentations).
-At the moment, there is no way to opt-in to only specific packages or disable
-specific packages. If you don't want to use a package included by the default
-image you must either supply your own image that includes only the packages you
-want or use manual instrumentation.
+By default, the Node.js auto-instrumentation has all the instrumentation
+libraries enabled.
+
+To enable only specific instrumentations you can use the
+`OTEL_NODE_ENABLED_INSTRUMENTATIONS` environment variable as documented in the
+[Node.js auto-instrumentation documentation](/docs/languages/js/automatic/configuration/#excluding-auto-instrumentation).
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+# ... other fields skipped from this example
+spec:
+  # ... other fields skipped from this example
+  nodejs:
+    env:
+      - name: OTEL_NODE_ENABLED_INSTRUMENTATIONS
+        value: http,nestjs-core # comma-separated list of the instrumentation package names without the `@opentelemetry/instrumentation-` prefix.
+```
 
 #### Learn more {#js-learn-more}
 
@@ -361,11 +375,11 @@ spec:
 
 #### Excluding auto-instrumentation {#python-excluding-auto-instrumentation}
 
-By default the Python auto-instrumentation will detect the packages in your
-Python service and instrument anything it can. This makes instrumentation easy,
-but can result in too much or unwanted data. If there are any packages you do
-not want to instrument, you can set the `OTEL_PYTHON_DISABLED_INSTRUMENTATIONS`
-environment variable
+By default, the Python auto-instrumentation ships with
+[many instrumentation libraries](https://github.com/open-telemetry/opentelemetry-operator/blob/main/autoinstrumentation/python/requirements.txt).
+This makes instrumentation easy, but can result in too much or unwanted data. If
+there are any packages you do not want to instrument, you can set the
+`OTEL_PYTHON_DISABLED_INSTRUMENTATIONS` environment variable.
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
@@ -391,7 +405,7 @@ spec:
 
 #### Learn more {#python-learn-more}
 
-[See the Python agent Configuration docs for more details.](/docs/languages/python/automatic/agent-config/#disabling-specific-instrumentations)
+[See the Python agent Configuration docs for more details.](/docs/languages/python/automatic/configuration/#disabling-specific-instrumentations)
 
 ### Go
 
@@ -423,7 +437,7 @@ example uses `http://demo-collector:4318`, which connects to the `http/protobuf`
 port of the `otlpreceiver` of the Collector created in the previous step.
 
 The Go auto-instrumentation does not support disabling any instrumentation.
-[See the Go Auto-Instrumentation repository for me details.](https://github.com/open-telemetry/opentelemetry-go-instrumentation)
+[See the Go Auto-Instrumentation repository for more details.](https://github.com/open-telemetry/opentelemetry-go-instrumentation)
 
 ---
 
@@ -568,7 +582,7 @@ kubectl logs -l app.kubernetes.io/name=opentelemetry-operator --container manage
 
 ### Were the resources deployed in the right order?
 
-Order matters! The `Instrumentation` resource needs to be deployed before before
+Order matters! The `Instrumentation` resource needs to be deployed before
 deploying the application, otherwise the auto-instrumentation won’t work.
 
 Recall the auto-instrumentation annotation:

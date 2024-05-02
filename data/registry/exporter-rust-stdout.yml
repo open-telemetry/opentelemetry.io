@@ -1,0 +1,19 @@
+title: OTLP Exporter
+registryType: exporter
+language: rust
+tags:
+  - rust
+  - exporter
+license: Apache 2.0
+description:
+  This crate provides exporters that export to stdout or any implementation of
+  [`std::io::Write`](https://doc.rust-lang.org/std/io/trait.Write.html).
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-rust/tree/main/opentelemetry-stdout
+createdAt: 2024-01-19
+package:
+  registry: crates
+  name: opentelemetry-stdout
+  version: 0.3.0

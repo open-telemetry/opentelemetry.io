@@ -69,8 +69,8 @@ PR shortly or let maintainers now if you run into any blockers.
 ## Contributor's guide
 
 To learn how to contribute fixes and new content to this project, read the
-[Contributor's guide](/content/en/docs/contributing), which includes a style
-guide and useful information on the review process.
+[Contributor's guide](https://opentelemetry.io/docs/contributing/), which
+includes a style guide and useful information on the review process.
 
 ## Development
 
@@ -233,6 +233,7 @@ approvers and maintainers while doing code reviews:
 [hugo]: https://gohugo.io
 [localhost:1313]: http://localhost:1313
 [localhost:8888]: http://localhost:8888
+[netlify]: https://netlify.com
 [new-issue]:
   https://github.com/open-telemetry/opentelemetry.io/issues/new/choose
 [nodejs-rel]: https://nodejs.org/en/about/previous-releases

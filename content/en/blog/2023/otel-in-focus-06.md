@@ -3,8 +3,7 @@ title: OpenTelemetry in Focus, June 2023
 linkTitle: OTel in Focus 2023/06
 date: 2023-07-01
 author: '[Austin Parker](https://github.com/austinlparker)'
-# prettier-ignore
-cSpell:ignore: autoconfigure Dyrmishi Farfetch Inet Ktor Logback scraperhelper Skywalking
+cSpell:ignore: Dyrmishi Farfetch Inet Ktor Logback scraperhelper Skywalking
 ---
 
 Welcome back to **OpenTelemetry in Focus** for June, 2023! It's officially
@@ -70,7 +69,7 @@ operator.
 0.79.0 of the Operator includes enhancements such as Prometheus metric exporter
 support for Node.js auto-instrumentation and the ability to inject the service
 version into the environment of the instrumented application. There is also a
-bugfix regarding the OpenTelemetry Collector version not displaying properly in
+bug fix regarding the OpenTelemetry Collector version not displaying properly in
 the status field.
 
 0.78.0 includes enhancements such as updating various packages, support for

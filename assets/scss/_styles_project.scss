@@ -4,6 +4,7 @@
 @import 'registry';
 @import 'tabs';
 @import 'external_link';
+@import 'td/code-dark';
 
 .td-home {
   .otel-logo {
@@ -135,11 +136,12 @@
     width: 100%;
     position: fixed;
     margin-left: -15px;
-    z-index: 32;
+    z-index: 31;
     top: 4rem;
   }
 
-  background: $gray-100;
+  background: var(--td-pre-bg);
+  color: var(--bs-body-color);
   text-align: center;
 
   & p {
@@ -148,12 +150,12 @@
   }
 }
 
-.td-page-meta--child {
+.td-page-meta__child {
   display: none !important;
 }
 
 .otel-docs-spec {
-  .td-page-meta--edit {
+  .td-page-meta__edit {
     display: none !important;
   }
 }

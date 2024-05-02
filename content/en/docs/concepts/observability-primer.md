@@ -33,8 +33,8 @@ can come in the form of [traces](/docs/concepts/signals/traces/),
 
 **Reliability** answers the question: "Is the service doing what users expect it
 to be doing?” A system could be up 100% of the time, but if, when a user clicks
-"Add to Cart” to add a black pair of pants to their shopping cart, and instead,
-the system doesn't always add black pants, then the system would be said to be
+"Add to Cart” to add a black pair of shoes to their shopping cart, and instead,
+the system doesn't always add black shoes, then the system would be said to be
 **un**reliable.
 
 **Metrics** are aggregations over a period of time of numeric data about your
@@ -133,8 +133,8 @@ Each root span represents a request from start to finish. The spans underneath
 the parent provide a more in-depth context of what occurs during a request (or
 what steps make up a request).
 
-Many Observability back-ends visualize traces as waterfall diagrams that may
-look something like this:
+Many Observability backends visualize traces as waterfall diagrams that may look
+something like this:
 
 ![Sample Trace](/img/waterfall-trace.svg 'Trace waterfall diagram')
 

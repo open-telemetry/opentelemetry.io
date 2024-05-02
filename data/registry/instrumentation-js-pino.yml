@@ -16,4 +16,4 @@ createdAt: 2021-07-08
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-pino'
-  version: 0.34.5
+  version: 0.38.0

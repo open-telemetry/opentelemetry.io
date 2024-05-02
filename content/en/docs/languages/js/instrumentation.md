@@ -8,7 +8,7 @@ cSpell:ignore: dicelib Millis rolldice
 description: Instrumentation for OpenTelemetry JavaScript
 ---
 
-{{% docs/languages/manual-intro %}}
+{{% docs/languages/instrumentation-intro %}}
 
 {{% alert title="Note" color="info" %}}
 
@@ -222,12 +222,15 @@ import {
   ConsoleMetricExporter,
 } from '@opentelemetry/sdk-metrics';
 import { Resource } from '@opentelemetry/resources';
-import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
+import {
+  SEMRESATTRS_SERVICE_NAME,
+  SEMRESATTRS_SERVICE_VERSION,
+} from '@opentelemetry/semantic-conventions';
 
 const sdk = new NodeSDK({
   resource: new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: 'yourServiceName',
-    [SemanticResourceAttributes.SERVICE_VERSION]: '1.0',
+    [SEMRESATTRS_SERVICE_NAME]: 'yourServiceName',
+    [SEMRESATTRS_SERVICE_VERSION]: '1.0',
   }),
   traceExporter: new ConsoleSpanExporter(),
   metricReader: new PeriodicExportingMetricReader({
@@ -250,13 +253,14 @@ const {
 } = require('@opentelemetry/sdk-metrics');
 const { Resource } = require('@opentelemetry/resources');
 const {
-  SemanticResourceAttributes,
+  SEMRESATTRS_SERVICE_NAME,
+  SEMRESATTRS_SERVICE_VERSION,
 } = require('@opentelemetry/semantic-conventions');
 
 const sdk = new NodeSDK({
   resource: new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: 'dice-server',
-    [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
+    [SEMRESATTRS_SERVICE_NAME]: 'dice-server',
+    [SEMRESATTRS_SERVICE_VERSION]: '0.1.0',
   }),
   traceExporter: new ConsoleSpanExporter(),
   metricReader: new PeriodicExportingMetricReader({
@@ -347,7 +351,10 @@ SDK initialization code in it:
 
 ```ts
 import { Resource } from '@opentelemetry/resources';
-import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
+import {
+  SEMRESATTRS_SERVICE_NAME,
+  SEMRESATTRS_SERVICE_VERSION,
+} from '@opentelemetry/semantic-conventions';
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import {
   BatchSpanProcessor,
@@ -356,8 +363,8 @@ import {
 
 const resource = Resource.default().merge(
   new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: 'service-name-here',
-    [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
+    [SEMRESATTRS_SERVICE_NAME]: 'service-name-here',
+    [SEMRESATTRS_SERVICE_VERSION]: '0.1.0',
   }),
 );
 
@@ -377,7 +384,8 @@ provider.register();
 const opentelemetry = require('@opentelemetry/api');
 const { Resource } = require('@opentelemetry/resources');
 const {
-  SemanticResourceAttributes,
+  SEMRESATTRS_SERVICE_NAME,
+  SEMRESATTRS_SERVICE_VERSION,
 } = require('@opentelemetry/semantic-conventions');
 const { WebTracerProvider } = require('@opentelemetry/sdk-trace-web');
 const {
@@ -387,8 +395,8 @@ const {
 
 const resource = Resource.default().merge(
   new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: 'service-name-here',
-    [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
+    [SEMRESATTRS_SERVICE_NAME]: 'service-name-here',
+    [SEMRESATTRS_SERVICE_VERSION]: '0.1.0',
   }),
 );
 
@@ -933,13 +941,19 @@ Add the following to the top of your application file:
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
-import { SemanticAttributes } from '@opentelemetry/semantic-conventions';
+import {
+  SEMATTRS_CODE_FUNCTION,
+  SEMATTRS_CODE_FILEPATH,
+} from '@opentelemetry/semantic-conventions';
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-const { SemanticAttributes } = require('@opentelemetry/semantic-conventions');
+const {
+  SEMATTRS_CODE_FUNCTION,
+  SEMATTRS_CODE_FILEPATH,
+} = require('@opentelemetry/semantic-conventions');
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -949,8 +963,8 @@ Finally, you can update your file to include semantic attributes:
 ```javascript
 const doWork = () => {
   tracer.startActiveSpan('app.doWork', (span) => {
-    span.setAttribute(SemanticAttributes.CODE_FUNCTION, 'doWork');
-    span.setAttribute(SemanticAttributes.CODE_FILEPATH, __filename);
+    span.setAttribute(SEMATTRS_CODE_FUNCTION, 'doWork');
+    span.setAttribute(SEMATTRS_CODE_FILEPATH, __filename);
 
     // Do some work...
 
@@ -1192,30 +1206,10 @@ Node.js or Web SDKs.
 
 ## Metrics
 
-To start producing [metrics](/docs/concepts/signals/metrics), you'll need to
-have an initialized `MeterProvider` that lets you create a `Meter`. `Meter`s let
-you create `Instrument`s that you can use to create different kinds of metrics.
-OpenTelemetry JavaScript currently supports the following `Instrument`s:
-
-- Counter, a synchronous instrument that supports non-negative increments
-- Asynchronous Counter, an asynchronous instrument which supports non-negative
-  increments
-- Histogram, a synchronous instrument that supports arbitrary values that are
-  statistically meaningful, such as histograms, summaries, or percentile
-- Asynchronous Gauge, an asynchronous instrument that supports non-additive
-  values, such as room temperature
-- UpDownCounter, a synchronous instrument that supports increments and
-  decrements, such as the number of active requests
-- Asynchronous UpDownCounter, an asynchronous instrument that supports
-  increments and decrements
-
-For more on synchronous and asynchronous instruments, and which kind is best
-suited for your use case, see
-[Supplementary Guidelines](/docs/specs/otel/metrics/supplementary-guidelines/).
-
-If a `MeterProvider` is not created either by an instrumentation library or
-manually, the OpenTelemetry Metrics API will use a no-op implementation and fail
-to generate data.
+[Metrics](/docs/concepts/signals/metrics) combine individual measurements into
+aggregates, and produce data which is constant as a function of system load.
+Aggregates lack details required to diagnose low level issues, but complement
+spans by helping to identify trends and providing application runtime telemetry.
 
 ### Initialize Metrics
 
@@ -1264,27 +1258,28 @@ import {
   PeriodicExportingMetricReader,
 } from '@opentelemetry/sdk-metrics';
 import { Resource } from '@opentelemetry/resources';
-import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
+import {
+  SEMRESATTRS_SERVICE_NAME,
+  SEMRESATTRS_SERVICE_VERSION,
+} from '@opentelemetry/semantic-conventions';
 
 const resource = Resource.default().merge(
   new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: 'dice-server',
-    [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
+    [SEMRESATTRS_SERVICE_NAME]: 'dice-server',
+    [SEMRESATTRS_SERVICE_VERSION]: '0.1.0',
   }),
 );
 
 const metricReader = new PeriodicExportingMetricReader({
   exporter: new ConsoleMetricExporter(),
-
-  // Default is 60000ms (60 seconds). Set to 3 seconds for demonstrative purposes only.
-  exportIntervalMillis: 3000,
+  // Default is 60000ms (60 seconds). Set to 10 seconds for demonstrative purposes only.
+  exportIntervalMillis: 10000,
 });
 
 const myServiceMeterProvider = new MeterProvider({
   resource: resource,
+  readers: [metricReader],
 });
-
-myServiceMeterProvider.addMetricReader(metricReader);
 
 // Set this MeterProvider to be global to the app being instrumented.
 opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider);
@@ -1301,28 +1296,28 @@ const {
 } = require('@opentelemetry/sdk-metrics');
 const { Resource } = require('@opentelemetry/resources');
 const {
-  SemanticResourceAttributes,
+  SEMRESATTRS_SERVICE_NAME,
+  SEMRESATTRS_SERVICE_VERSION,
 } = require('@opentelemetry/semantic-conventions');
 
 const resource = Resource.default().merge(
   new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: 'service-name-here',
-    [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
+    [SEMRESATTRS_SERVICE_NAME]: 'service-name-here',
+    [SEMRESATTRS_SERVICE_VERSION]: '0.1.0',
   }),
 );
 
 const metricReader = new PeriodicExportingMetricReader({
   exporter: new ConsoleMetricExporter(),
 
-  // Default is 60000ms (60 seconds). Set to 3 seconds for demonstrative purposes only.
-  exportIntervalMillis: 3000,
+  // Default is 60000ms (60 seconds). Set to 10 seconds for demonstrative purposes only.
+  exportIntervalMillis: 10000,
 });
 
 const myServiceMeterProvider = new MeterProvider({
   resource: resource,
+  readers: [metricReader],
 });
-
-myServiceMeterProvider.addMetricReader(metricReader);
 
 // Set this MeterProvider to be global to the app being instrumented.
 opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider);
@@ -1358,7 +1353,10 @@ call `getMeter` to acquire a meter. For example:
 ```ts
 import opentelemetry from '@opentelemetry/api';
 
-const myMeter = opentelemetry.metrics.getMeter('my-service-meter');
+const myMeter = opentelemetry.metrics.getMeter(
+  'instrumentation-scope-name',
+  'instrumentation-scope-version',
+);
 
 // You can now use a 'meter' to create instruments!
 ```
@@ -1368,58 +1366,180 @@ const myMeter = opentelemetry.metrics.getMeter('my-service-meter');
 ```js
 const opentelemetry = require('@opentelemetry/api');
 
-const myMeter = opentelemetry.metrics.getMeter('my-service-meter');
+const myMeter = opentelemetry.metrics.getMeter(
+  'instrumentation-scope-name',
+  'instrumentation-scope-version',
+);
 
 // You can now use a 'meter' to create instruments!
 ```
 
 {{% /tab %}} {{< /tabpane >}}
 
+The values of `instrumentation-scope-name` and `instrumentation-scope-version`
+should uniquely identify the
+[Instrumentation Scope](/docs/concepts/instrumentation-scope/), such as the
+package, module or class name. While the name is required, the version is still
+recommended despite being optional.
+
 It’s generally recommended to call `getMeter` in your app when you need it
 rather than exporting the meter instance to the rest of your app. This helps
 avoid trickier application load issues when other required dependencies are
 involved.
 
-### Synchronous and asynchronous instruments
+In the case of the [example app](#example-app), there are two places where a
+tracer may be acquired with an appropriate Instrumentation Scope:
 
-OpenTelemetry instruments are either synchronous or asynchronous (observable).
+First, in the _application file_ `app.ts` (or `app.js`):
 
-Synchronous instruments take a measurement when they are called. The measurement
-is done as another call during program execution, just like any other function
-call. Periodically, the aggregation of these measurements is exported by a
-configured exporter. Because measurements are decoupled from exporting values,
-an export cycle may contain zero or multiple aggregated measurements.
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
-Asynchronous instruments, on the other hand, provide a measurement at the
-request of the SDK. When the SDK exports, a callback that was provided to the
-instrument on creation is invoked. This callback provides the SDK with a
-measurement that is immediately exported. All measurements on asynchronous
-instruments are performed once per export cycle.
+```ts
+/*app.ts*/
+import { metrics, trace } from '@opentelemetry/api';
+import express, { Express } from 'express';
+import { rollTheDice } from './dice';
 
-Asynchronous instruments are useful in several circumstances, such as:
+const tracer = trace.getTracer('dice-server', '0.1.0');
+const meter = metrics.getMeter('dice-server', '0.1.0');
 
-- When updating a counter is not computationally cheap, and you don't want the
-  current executing thread to wait for the measurement
-- Observations need to happen at frequencies unrelated to program execution
-  (i.e., they cannot be accurately measured when tied to a request lifecycle)
-- There is no known timestamp for a measurement value
+const PORT: number = parseInt(process.env.PORT || '8080');
+const app: Express = express();
 
-In cases like these, it's often better to observe a cumulative value directly,
-rather than aggregate a series of deltas in post-processing (the synchronous
-example). Take note of the use of `observe` rather than `add` in the appropriate
-code examples below.
+app.get('/rolldice', (req, res) => {
+  const rolls = req.query.rolls ? parseInt(req.query.rolls.toString()) : NaN;
+  if (isNaN(rolls)) {
+    res
+      .status(400)
+      .send("Request parameter 'rolls' is missing or not a number.");
+    return;
+  }
+  res.send(JSON.stringify(rollTheDice(rolls, 1, 6)));
+});
 
-### Using Counters
+app.listen(PORT, () => {
+  console.log(`Listening for requests on http://localhost:${PORT}`);
+});
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
+/*app.js*/
+const { trace, metrics } = require('@opentelemetry/api');
+const express = require('express');
+const { rollTheDice } = require('./dice.js');
+
+const tracer = trace.getTracer('dice-server', '0.1.0');
+const meter = metrics.getMeter('dice-server', '0.1.0');
+
+const PORT = parseInt(process.env.PORT || '8080');
+const app = express();
+
+app.get('/rolldice', (req, res) => {
+  const rolls = req.query.rolls ? parseInt(req.query.rolls.toString()) : NaN;
+  if (isNaN(rolls)) {
+    res
+      .status(400)
+      .send("Request parameter 'rolls' is missing or not a number.");
+    return;
+  }
+  res.send(JSON.stringify(rollTheDice(rolls, 1, 6)));
+});
+
+app.listen(PORT, () => {
+  console.log(`Listening for requests on http://localhost:${PORT}`);
+});
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
+And second, in the _library file_ `dice.ts` (or `dice.js`):
+
+{{< tabpane text=true >}} {{% tab TypeScript %}}
+
+```ts
+/*dice.ts*/
+import { trace, metrics } from '@opentelemetry/api';
+
+const tracer = trace.getTracer('dice-lib');
+const meter = metrics.getMeter('dice-lib');
+
+function rollOnce(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+export function rollTheDice(rolls: number, min: number, max: number) {
+  const result: number[] = [];
+  for (let i = 0; i < rolls; i++) {
+    result.push(rollOnce(min, max));
+  }
+  return result;
+}
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
+/*dice.js*/
+const { trace, metrics } = require('@opentelemetry/api');
+
+const tracer = trace.getTracer('dice-lib');
+const meter = metrics.getMeter('dice-lib');
+
+function rollOnce(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+function rollTheDice(rolls, min, max) {
+  const result = [];
+  for (let i = 0; i < rolls; i++) {
+    result.push(rollOnce(min, max));
+  }
+  return result;
+}
+
+module.exports = { rollTheDice };
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
+Now that you have [meters](/docs/concepts/signals/metrics/#meter) initialized.
+you can create
+[metric instruments](/docs/concepts/signals/metrics/#metric-instruments).
+
+### Create counters
 
 Counters can be used to measure a non-negative, increasing value.
 
-```js
-const counter = myMeter.createCounter('events.counter');
+In the case of our [example app](#example-app) we can use this to count how
+often the dice has been rolled:
 
-//...
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
-counter.add(1);
+```ts
+/*dice.ts*/
+const counter = meter.createCounter('dice-lib.rolls.counter');
+
+function rollOnce(min: number, max: number) {
+  counter.add(1);
+  return Math.floor(Math.random() * (max - min) + min);
+}
 ```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
+/*dice.js*/
+const counter = meter.createCounter('dice-lib.rolls.counter');
+
+function rollOnce(min, max) {
+  counter.add(1);
+  return Math.floor(Math.random() * (max - min) + min);
+}
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 ### Using UpDown Counters
 

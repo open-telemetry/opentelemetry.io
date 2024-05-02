@@ -14,3 +14,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/rake
 createdAt: 2022-10-27
+package:
+  registry: gems
+  name: opentelemetry-instrumentation-rake
+  version: 0.2.2

@@ -1,69 +1,10 @@
 ---
 title: Exporters
 weight: 50
-cSpell:ignore: autoconfigure classpath okhttp springframework
+cSpell:ignore: okhttp
 ---
 
-{{% docs/languages/exporters-intro java %}}
-
-{{% alert title="Note" color="info" %}}
-
-If you use the Java agent for
-[automatic instrumentation](/docs/languages/java/automatic) you can learn how to
-setup exporters following the
-[Agent Configuration Guide](/docs/languages/java/automatic/agent-config)
-
-{{% /alert %}}
-
-## OTLP
-
-### Collector Setup
-
-{{% alert title="Note" color="info" %}}
-
-If you have a OTLP collector or backend already set up, you can skip this
-section and [setup the OTLP exporter dependencies](#otlp-dependencies) for your
-application.
-
-{{% /alert %}}
-
-To try out and verify your OTLP exporters, you can run the collector in a docker
-container that writes telemetry directly to the console.
-
-In an empty directory, create a file called `collector-config.yaml` with the
-following content:
-
-```yaml
-receivers:
-  otlp:
-    protocols:
-      grpc:
-      http:
-exporters:
-  debug:
-    verbosity: detailed
-service:
-  pipelines:
-    traces:
-      receivers: [otlp]
-      exporters: [debug]
-    metrics:
-      receivers: [otlp]
-      exporters: [debug]
-    logs:
-      receivers: [otlp]
-      exporters: [debug]
-```
-
-Now run the collector in a docker container:
-
-```shell
-docker run -p 4317:4317 -p 4318:4318 --rm -v $(pwd)/collector-config.yaml:/etc/otelcol/config.yaml otel/opentelemetry-collector
-```
-
-This collector is now able to accept telemetry via OTLP. Later you may want to
-[configure the collector](/docs/collector/configuration) to send your telemetry
-to your observability backend.
+{{% docs/languages/exporters/intro java %}}
 
 ### Dependencies {#otlp-dependencies}
 
@@ -139,7 +80,7 @@ implementations are described in detail below:
 Next, configure the exporter to point at an OTLP endpoint.
 
 If you use
-[SDK auto-configuration](/docs/languages/java/instrumentation/#automatic-configuration)
+[SDK autoconfiguration](/docs/languages/java/instrumentation/#automatic-configuration)
 all you need to do is update your environment variables:
 
 ```shell
@@ -234,79 +175,16 @@ The `LoggingSpanExporter`, the `LoggingMetricExporter` and the
 `opentelemetry-exporter-logging` artifact.
 
 If you use
-[SDK auto-configuration](/docs/languages/java/instrumentation/#automatic-configuration)
+[SDK autoconfiguration](/docs/languages/java/instrumentation/#automatic-configuration)
 all you need to do is update your environment variables:
 
 ```shell
 env OTEL_TRACES_EXPORTER=logging OTEL_METRICS_EXPORTER=logging OTEL_LOGS_EXPORTER=logging  java -jar ./build/libs/java-simple.jar
 ```
 
-## Jaeger
+{{% docs/languages/exporters/jaeger %}}
 
-[Jaeger](https://www.jaegertracing.io/) natively supports OTLP to receive trace
-data. You can run Jaeger in a docker container with the UI accessible on port
-16686 and OTLP enabled on ports 4137 and 4138:
-
-```shell
-docker run --rm \
-  -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
-  -p 16686:16686 \
-  -p 4317:4317 \
-  -p 4318:4318 \
-  -p 9411:9411 \
-  jaegertracing/all-in-one:latest
-```
-
-Now following the instruction to setup the [OTLP exporters](#otlp-dependencies).
-
-## Prometheus
-
-To send your metric data to [Prometheus](https://prometheus.io/), you can either
-[enable Prometheus' OTLP Receiver](https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver)
-and use the [OTLP exporter](#otlp) or you can use the
-[`PrometheusHttpServer`](https://javadoc.io/doc/io.opentelemetry/opentelemetry-exporter-prometheus/latest/io/opentelemetry/exporter/prometheus/PrometheusHttpServer.html),
-a `MetricReader`, that starts an HTTP server that will collect metrics and
-serialize to Prometheus text format on request.
-
-### Backend Setup {#prometheus-setup}
-
-{{% alert title="Note" color="info" %}}
-
-If you have Prometheus or a Prometheus-compatible backend already set up, you
-can skip this section and setup the [Prometheus](#prometheus-dependencies) or
-[OTLP](#otlp-dependencies) exporter dependencies for your application.
-
-{{% /alert %}}
-
-You can run [Prometheus](https://prometheus.io) in a docker container,
-accessible on port `9090` by following these instructions:
-
-Create a file called `prometheus.yml` with the following content:
-
-```yaml
-scrape_configs:
-  - job_name: dice-service
-    scrape_interval: 5s
-    static_configs:
-      - targets: [host.docker.internal:9464]
-```
-
-Run Prometheus in a docker container with the UI accessible on port `9090`:
-
-```shell
-docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090 prom/prometheus --enable-feature=otlp-write-receive
-```
-
-{{% alert title="Note" color="info" %}}
-
-When using Prometheus' OTLP Receiver, make sure that you set the OTLP endpoint
-for metrics in your application to `http://localhost:9090/api/v1/otlp`.
-
-Not all docker environments support `host.docker.internal`. In some cases you
-may need to replace `host.docker.internal` with `localhost` or the IP address of
-your machine.
-
-{{% /alert %}}
+{{% docs/languages/exporters/prometheus-setup %}}
 
 ### Dependencies {#prometheus-dependencies}
 
@@ -354,24 +232,7 @@ With the above you can access your metrics at <http://localhost:9464/metrics>.
 Prometheus or an OpenTelemetry Collector with the Prometheus receiver can scrape
 the metrics from this endpoint.
 
-## Zipkin
-
-### Backend Setup {#zipkin-setup}
-
-{{% alert title="Note" color="info" %}}
-
-If you have Zipkin or a Zipkin-compatible backend already set up, you can skip
-this section and setup the [Zipkin exporter dependencies](#zipkin-dependencies)
-for your application.
-
-{{% /alert %}}
-
-You can run [Zipkin](https://zipkin.io/) on ina Docker container by executing
-the following command:
-
-```shell
-docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
-```
+{{% docs/languages/exporters/zipkin-setup %}}
 
 ### Dependencies {#zipkin-dependencies}
 
@@ -417,18 +278,7 @@ SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
         .build();
 ```
 
-## Other available exporters
-
-There are many other exporters available. For a list of available exporters, see
-the [registry](/ecosystem/registry/?component=exporter&language=java).
-
-Finally, you can also write your own exporter. For more information, see the
-[SpanExporter Interface in the API documentation](https://javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/export/SpanExporter.html).
-
-## Batching spans and log records
-
-For traces the OpenTelemetry SDK provides a set of default span and log record
-processors, that allow you to either emit them one-by-one ("simple") or batched:
+{{% docs/languages/exporters/outro java "https://javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/export/SpanExporter.html" %}}
 
 {{< tabpane text=true >}} {{% tab Batch %}}
 
@@ -467,3 +317,5 @@ SdkLoggerProvider sdkLoggerProvider = SdkLoggerProvider.builder()
 ```
 
 {{< /tab >}} {{< /tabpane>}}
+
+{{% /docs/languages/exporters/outro %}}

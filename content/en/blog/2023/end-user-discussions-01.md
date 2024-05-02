@@ -82,7 +82,7 @@ you will have to send the spans to a centralized service.
 #### 3- Bifurcating data in a pipeline
 
 **Q:** If I want to use the Collector to send different sets of data to
-different back-ends, what’s the best way to go about it?
+different backends, what’s the best way to go about it?
 
 **A:**
 [Connectors](https://github.com/open-telemetry/opentelemetry-collector/pull/6140)

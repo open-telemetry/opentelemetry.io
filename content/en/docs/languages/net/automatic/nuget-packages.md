@@ -37,7 +37,7 @@ To automatically instrument your application with OpenTelemetry .NET add the
 `OpenTelemetry.AutoInstrumentation` package to your project:
 
 ```terminal
-dotnet add [<PROJECT>] package OpenTelemetry.AutoInstrumentation --prerelease
+dotnet add [<PROJECT>] package OpenTelemetry.AutoInstrumentation
 ```
 
 If the application references packages that can be instrumented, but, require
@@ -46,7 +46,7 @@ you to either add the missing instrumentation package or to skip the
 instrumentation of the corresponding package:
 
 ```terminal
-~packages/opentelemetry.autoinstrumentation.buildtasks/1.0.0-rc.1/build/OpenTelemetry.AutoInstrumentation.BuildTasks.targets(29,5): error : OpenTelemetry.AutoInstrumentation: add a reference to the instrumentation package 'MongoDB.Driver.Core.Extensions.DiagnosticSources' version 1.3.0 or add 'MongoDB.Driver.Core' to the property 'SkippedInstrumentations' to suppress this error.
+~packages/opentelemetry.autoinstrumentation.buildtasks/1.6.0/build/OpenTelemetry.AutoInstrumentation.BuildTasks.targets(29,5): error : OpenTelemetry.AutoInstrumentation: add a reference to the instrumentation package 'MongoDB.Driver.Core.Extensions.DiagnosticSources' version 1.4.0 or add 'MongoDB.Driver.Core' to the property 'SkippedInstrumentations' to suppress this error.
 ```
 
 To resolve the error either add the recommended instrumentation package or skip

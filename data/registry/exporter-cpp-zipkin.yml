@@ -10,4 +10,5 @@ authors:
   - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-cpp/tree/main/exporters/zipkin
+  docs: /docs/languages/cpp/exporters/#zipkin
 createdAt: 2021-11-11

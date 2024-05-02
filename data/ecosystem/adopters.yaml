@@ -1,9 +1,14 @@
-# cSpell:ignore Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc
+# cSpell:ignore Dyte Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Skyscanner VTEX
 - name: AppDirect
   url: https://www.appdirect.com/
   components: [Collector]
   reference: ''
   contact: ''
+- name: Bureau.id
+  url: https://bureau.id/
+  components: [Collector, Python, Go, Lambda]
+  reference: 'https://tech.bureau.id/connecting-the-dots-with-opentelemetry-part-ii-5ea5f6b06c29'
+  contact: https://github.com/ethicalmohit
 - name: Care.com
   url: https://www.care.com
   components: [Collector, Go, Java, JavaScript, .NET]
@@ -14,6 +19,16 @@
   components: [Collector, Python]
   reference: ''
   contact: ''
+- name: Dropbox DocSend
+  url: https://www.docsend.com/
+  components: [Ruby]
+  reference: ''
+  contact: ''
+- name: Dyte
+  url: https://dyte.io
+  components: [Go, Javascript]
+  reference: 'https://dyte.io/blog/opentelemetry-at-dyte-part-i/'
+  contact: https://github.com/ethicalmohit
 - name: eBay
   url: https://www.ebay.com
   components: [Collector, Java, JavaScript, Go]
@@ -32,6 +47,22 @@
   reference: /blog/2023/end-user-q-and-a-03/
   referenceTitle: blog post
   contact: ''
+- name: Fulcrum
+  url: https://www.fulcrumapp.com/
+  components: [Ruby]
+  reference: ''
+  contact: ''
+- name: GitHub
+  url: https://github.com
+  components: [Ruby]
+  reference: 'https://github.blog/2021-05-26-why-and-how-github-is-adopting-opentelemetry/'
+  referenceTitle: blog post
+  contact: ''
+- name: Heroku
+  url: https://heroku.com
+  components: [Ruby]
+  reference: ''
+  contact: ''
 - name: OrderMyGear
   url: https://www.ordermygear.com/
   components: []
@@ -42,9 +73,25 @@
   components: [Python]
   reference: ''
   contact: ''
+- name: Puppet
+  url: https://puppet.com/
+  components: [Ruby]
+  reference: ''
+  contact: ''
 - name: Shopify
   url: https://www.shopify.com/
   components: [Collector, Go, Ruby]
+  reference: ''
+  contact: ''
+- name: Skyscanner
+  url: https://www.skyscanner.net/
+  components: [Collector, Go, Java, Javascript, Python]
+  reference: https://www.infoq.com/presentations/opentelemetry-observability/
+  referenceTitle: presentation
+  contact: https://github.com/danielgblanco/
+- name: TableCheck
+  url: https://www.tablecheck.com/
+  components: [Ruby]
   reference: ''
   contact: ''
 - name: Transit
@@ -58,6 +105,11 @@
   reference: /blog/2023/end-user-q-and-a-02/
   referenceTitle: blog post
   contact: ''
+- name: VTEX
+  url: https://www.vtex.com/
+  components: [Collector, Go, JavaScript, .NET]
+  reference: 'https://colocatedeventseu2023.sched.com/event/1Jo8E/ingesting-65-tb-of-telemetry-data-daily-through-open-telemetry-protocol-and-collectors-gustavo-pantuza-vtex'
+  contact: 'sre-observability@vtex.com'
 - name: Wandera
   url: https://www.wandera.com/
   components: [Collector]
@@ -66,36 +118,5 @@
 - name: Zocdoc
   url: https://www.zocdoc.com/
   components: []
-  reference: ''
-  contact: ''
-- name: Heroku
-  url: https://heroku.com
-  components: [Ruby]
-  reference: ''
-  contact: ''
-- name: GitHub
-  url: https://github.com
-  components: [Ruby]
-  reference: 'https://github.blog/2021-05-26-why-and-how-github-is-adopting-opentelemetry/'
-  referenceTitle: blog post
-  contact: ''
-- name: Fulcrum
-  url: https://www.fulcrumapp.com/
-  components: [Ruby]
-  reference: ''
-  contact: ''
-- name: Puppet
-  url: https://puppet.com/
-  components: [Ruby]
-  reference: ''
-  contact: ''
-- name: TableCheck
-  url: https://www.tablecheck.com/
-  components: [Ruby]
-  reference: ''
-  contact: ''
-- name: Dropbox DocSend
-  url: https://www.docsend.com/
-  components: [Ruby]
   reference: ''
   contact: ''

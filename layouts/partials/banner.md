@@ -3,16 +3,15 @@
 
 <div class="o-banner">
 
-[Thanks to all the wonderful humans who have contributed to OpenTelemetry to date. We look forward to your contributions in 2024!](/blog/2023/humans-of-otel/)
+<i class="fas fa-bullhorn"></i> Join us for 
+[**OTel Community Day** on June 25th](https://sessionize.com/OTel-Community-Day/)!
 
-{{/*
 
 <!-- prettier-ignore -->
 <i class="fas fa-bullhorn"></i>
-Template for a second post.
+Help us improve your "Getting Started" experience by taking [this survey](https://docs.google.com/forms/d/e/1FAIpQLSfpxKvN3_5VN6FQ5dF5-XLfNdOhVYtjreetkxlRCF8qS7AW2w/viewform)
 {.pt-0}
 
-*/ -}}
 
 </div>
 {{ end -}}

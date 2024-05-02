@@ -85,7 +85,7 @@ started by getting developers to add
 [OpenTelemetry (structured) logs](/docs/specs/otel/logs/) to all of the services
 across their various platforms. In order to leverage OTel logs, developers had
 to add the
-[OpenTelemetry language-specific SDKs](/docs/concepts/sdk-configuration/) into
+[OpenTelemetry language-specific SDKs](/docs/languages/sdk-configuration/) into
 their code. Once they got past that initial hump and got the SDKs into their
 code, it then became easier for developers to add
 [other signals](/docs/concepts/signals/) (such as

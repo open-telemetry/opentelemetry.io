@@ -21,7 +21,11 @@ imaging:
   anchor: smart
 
 markup:
+  tableOfContents:
+    endLevel: 5
   goldmark:
+    extensions:
+      linkify: false
     parser:
       attribute:
         block: true
@@ -29,8 +33,7 @@ markup:
     renderer:
       unsafe: true
   highlight:
-    # noClasses: false
-    style: tango
+    noClasses: false
 
 # Netlify _redirects file
 mediaTypes:
@@ -47,8 +50,11 @@ outputs:
   section: [HTML]
 
 params:
-  copyright: >-
-    The OpenTelemetry Authors | Documentation Distributed under CC BY 4.0 |
+  copyright:
+    authors: >-
+      OpenTelemetry Authors | Docs [CC BY
+      4.0](https://creativecommons.org/licenses/by/4.0)
+    from_year: 2019
   tagline: Effective observability requires high-quality telemetry
   sub_tagline: >-
     **OpenTelemetry** makes robust, portable telemetry a built-in feature of
@@ -72,9 +78,9 @@ params:
     - img/social/logo-wordmark-001.png
 
   ui:
-    footer_about_disable: true
     navbar_logo: true
     navbar_translucent_over_cover_disable: true
+    showLightDarkModeMenu: true
     sidebar_menu_compact: true
     sidebar_menu_foldable: true
     sidebar_search_disable: true
@@ -106,6 +112,10 @@ params:
         url: https://docs.google.com/spreadsheets/d/1SYKfjYhZdm2Wh2Cl6KVQalKg_m4NhTPZqq-8SzEVO6s
         icon: fas fa-video
         desc: Watch our meeting recordings on Zoom Cloud
+      - name: Site analytics
+        url: https://lookerstudio.google.com/s/tSTKxK1ECeU
+        icon: fa-solid fa-chart-line
+        desc: Google analytics for opentelemetry.io
     developer:
       - name: GitHub
         url: https://github.com/open-telemetry
@@ -115,8 +125,9 @@ params:
         url: https://cloud-native.slack.com/archives/CJFCJHG4Q
         icon: fab fa-slack
         desc: >-
-          Chat with other project developers. Sign up via https://slack.cncf.io.
-          Other channels start with with #otel- prefix
+          Chat with other project developers. Sign up via
+          [slack.cncf.io](https://slack.cncf.io). Also see other channels
+          starting with a `#otel-` prefix.
       - name: CNCF DevStats
         url: https://opentelemetry.devstats.cncf.io/d/8/dashboards?orgId=1&refresh=15m
         icon: fas fa-chart-area
@@ -124,9 +135,7 @@ params:
       - name: Privacy Policy
         url: https://www.linuxfoundation.org/legal/privacy-policy
         icon: fa fa-book
-        desc: >-
-          CNCF works in close association with Linux Foundation. Read the
-          privacy policy here
+        desc: CNCF and Linux Foundation privacy policy.
       - name: Trademark Usage
         url: https://www.linuxfoundation.org/legal/trademark-usage
         icon: fa-solid fa-trademark

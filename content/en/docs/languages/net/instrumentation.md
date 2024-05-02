@@ -5,7 +5,7 @@ aliases: [manual]
 description: Instrumentation for OpenTelemetry .NET
 ---
 
-{{% docs/languages/manual-intro %}}
+{{% docs/languages/instrumentation-intro %}}
 
 {{% alert title="Note" color="info" %}}
 

@@ -42,7 +42,7 @@ source ./venv/bin/activate
 Now install Flask:
 
 ```shell
-pip install 'flask<3' 'werkzeug<3'
+pip install flask
 ```
 
 ### Create and launch an HTTP Server
@@ -58,15 +58,17 @@ app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 @app.route("/rolldice")
 def roll_dice():
-    player = request.args.get('player', default = None, type = str)
+    player = request.args.get('player', default=None, type=str)
     result = str(roll())
     if player:
-        logger.warn("%s is rolling the dice: %s", player, result)
+        logger.warning("%s is rolling the dice: %s", player, result)
     else:
-        logger.warn("Anonymous player is rolling the dice: %s", result)
+        logger.warning("Anonymous player is rolling the dice: %s", result)
     return result
+
 
 def roll():
     return randint(1, 6)
@@ -640,9 +642,9 @@ emitted to the console, with separate counts for each roll value:
 
 ## Send telemetry to an OpenTelemetry Collector
 
-The [OpenTelemetry Collector](/docs/collector/getting-started/) is a critical
-component of most production deployments. Some examples of when it's beneficial
-to use a collector:
+The [OpenTelemetry Collector](/docs/collector/) is a critical component of most
+production deployments. Some examples of when it's beneficial to use a
+collector:
 
 - A single telemetry sink shared by multiple services, to reduce overhead of
   switching exporters
@@ -663,6 +665,9 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
 exporters:
   # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
   debug:
