@@ -124,6 +124,60 @@ The OpenTelemetry Collector aims to be an exemplar of observable service by
 clearly exposing its own operational metrics. In this section, you can explore
 the different types of observability emitted by the Collector itself.
 
+### Values observable with internal metrics
+
+The Collector emits internal metrics for the following **current values**:
+
+- Resource consumption, including CPU, memory, and I/O.
+
+- Data reception rate, broken down by receiver.
+
+- Data export rate, broken down by exporters.
+
+- Data drop rate due to throttling, broken down by data type.
+
+- Data drop rate due to invalid data received, broken down by data type.
+
+- Throttling state, including Not Throttled, Throttled by Downstream, and
+  Internally Saturated.
+
+- Incoming connection count, broken down by receiver.
+
+- Incoming connection rate showing new connections per second, broken down by
+  receiver.
+
+- In-memory queue size in bytes and in units.
+
+- Persistent queue size.
+
+- End-to-end latency from receiver input to exporter output.
+
+- Latency broken down by pipeline elements, including exporter network roundtrip
+  latency for request/response protocols.
+
+{{% alert title="Important" color="warning" %}}
+
+- Rate values reflect the average rate of the last 10 seconds. They are exposed
+  in bytes/sec and units/sec (for example, spans/sec).
+- Measurements in bytes might be difficult and expensive to obtain. They should
+  be used with caution.
+
+{{% /alert %}}
+
+The Collector also emits internal metrics for these **cumulative values**:
+
+- Total received data, broken down by receivers.
+
+- Total exported data, broken down by exporters.
+
+- Total dropped data due to throttling, broken down by data type.
+
+- Total dropped data due to invalid data received, broken down by data type.
+
+- Total incoming connection count, broken down by receiver.
+
+- Uptime since start.
+
 ### List of internal metrics
 
 The following table identifies each internal metric by name and description.
@@ -188,69 +242,6 @@ Each metric is also categorized by instrumentation type and level of verbosity.
 | `scraped_metric_points`                   | Number of metric points scraped by the Collector.                                         | Counter   |            |
 | `target_info`                             | Target metadata.                                                                          | Gauge     |            |
 
-<!--- TODO: Figure out which of these values are available now and which are still on the roadmap. --->
-
-### Current values that need observation
-
-- Resource consumption: CPU, RAM (in the future also IO - if we implement
-  persistent queues) and any other metrics that may be available to Go apps
-  (e.g. garbage size, etc).
-
-- Receiving data rate, broken down by receivers and by data type
-  (traces/metrics).
-
-- Exporting data rate, broken down by exporters and by data type
-  (traces/metrics).
-
-- Data drop rate due to throttling, broken down by data type.
-
-- Data drop rate due to invalid data received, broken down by data type.
-
-- Current throttling state: Not Throttled/Throttled by Downstream/Internally
-  Saturated.
-
-- Incoming connection count, broken down by receiver.
-
-- Incoming connection rate (new connections per second), broken down by
-  receiver.
-
-- In-memory queue size (in bytes and in units). Note: measurements in bytes may
-  be difficult / expensive to obtain and should be used cautiously.
-
-- Persistent queue size (when supported).
-
-- End-to-end latency (from receiver input to exporter output). Note that with
-  multiple receivers/exporters we potentially have NxM data paths, each with
-  different latency (plus different pipelines in the future), so realistically
-  we should likely expose the average of all data paths (perhaps broken down by
-  pipeline).
-
-- Latency broken down by pipeline elements (including exporter network roundtrip
-  latency for request/response protocols).
-
-“Rate” values must reflect the average rate of the last 10 seconds. Rates must
-exposed in bytes/sec and units/sec (e.g. spans/sec).
-
-Note: some of the current values and rates may be calculated as derivatives of
-cumulative values in the backend, so it is an open question if we want to expose
-them separately or no.
-
-### Cumulative values that need observation
-
-- Total received data, broken down by receivers and by data type
-  (traces/metrics).
-
-- Total exported data, broken down by exporters and by data type
-  (traces/metrics).
-
-- Total dropped data due to throttling, broken down by data type.
-
-- Total dropped data due to invalid data received, broken down by data type.
-
-- Total incoming connection count, broken down by receiver.
-
-- Uptime since start.
-
 ### Events observable with internal logs
 
 The Collector logs the following internal events:
@@ -262,8 +253,8 @@ The Collector logs the following internal events:
 
 - Data dropping due to throttling stops.
 
-- Data dropping begins due to invalid data. A sample of the invalid
-  data is included.
+- Data dropping begins due to invalid data. A sample of the invalid data is
+  included.
 
 - Data dropping due to invalid data stops.
 
@@ -287,4 +278,4 @@ data ingested by the Collector.
 The `otecol_exporter_sent_spans` and `otelcol_exporter_sent_metric_points`
 metrics provide information about the data exported by the Collector.
 
-<!--- TODO: Breakdown by signal and add definitions. Include extensions here? --->
+<!--- TODO: Include extensions here? --->
