@@ -3827,6 +3827,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:26.943394-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-python-contrib/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-26T12:45:03.066448+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-python/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-10T11:27:53.222542-08:00"
@@ -7130,6 +7134,10 @@
   "https://pypi.org/project/opentelemetry-exporter-zipkin-proto-http/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:14:48.105173-05:00"
+  },
+  "https://pypi.org/project/opentelemetry-instrumentation-httpx/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-28T16:14:45.577134727Z"
   },
   "https://qryn.metrico.in/#/support": {
     "StatusCode": 206,
