@@ -121,8 +121,10 @@ journalctl | grep otelcol | grep Error
 ## Types of internal observability
 
 The OpenTelemetry Collector aims to be an exemplar of observable service by
-clearly exposing its own operational metrics. In this section, you can explore
-the different types of observability emitted by the Collector itself.
+clearly exposing its own operational metrics. It also collects host resource
+metrics that can help you understand if problems are caused by a different
+process on the same host. In this section, you can explore the different types
+of observability emitted by the Collector itself.
 
 ### Values observable with internal metrics
 
@@ -223,9 +225,9 @@ Each metric is also categorized by instrumentation type and level of verbosity.
 | `otelcol_processor_dropped_log_records`           | Number of logs dropped by the processor.                                                  | Counter   |            |
 | `otelcol_processor_dropped_metric_points`         | Number of metric points dropped by the processor.                                         | Counter   |            |
 | `otelcol_processor_dropped_spans`                 | Number of spans dropped by the processor.                                                 | Counter   |            |
-| `otelcol_receiver_accepted_log_records`           | Number of logs successfully pushed into the pipeline.                                     | Counter   |            |
-| `otelcol_receiver_accepted_metric_points`         | Number of metric points successfully pushed into the pipeline.                            | Counter   |            |
-| `otelcol_receiver_accepted_spans`                 | Number of spans successfully pushed into the pipeline.                                    | Counter   |            |
+| `otelcol_receiver_accepted_log_records`           | Number of logs successfully ingested and pushed into the pipeline.                                     | Counter   |            |
+| `otelcol_receiver_accepted_metric_points`         | Number of metric points successfully ingested and pushed into the pipeline.                            | Counter   |            |
+| `otelcol_receiver_accepted_spans`                 | Number of spans successfully ingested and pushed into the pipeline.                                    | Counter   |            |
 | `otelcol_receiver_refused_log_records`            | Number of logs that could not be pushed into the pipeline.                                | Counter   |            |
 | `otelcol_receiver_refused_metric_points`          | Number of metric points that could not be pushed into the pipeline.                       | Counter   |            |
 | `otelcol_receiver_refused_spans`                  | Number of spans that could not be pushed into the pipeline.                               | Counter   |            |
@@ -260,22 +262,3 @@ The Collector logs the following internal events:
 
 - A crash is detected, differentiated from a clean stop. Crash data is included
   if available.
-
-### Host metrics
-
-The service should collect host resource metrics in addition to service's own
-process metrics. This may help to understand that the problem that we observe in
-the service is induced by a different process on the same host.
-
-### Data ingress
-
-The `otelcol_receiver_accepted_spans` and
-`otelcol_receiver_accepted_metric_points` metrics provide information about the
-data ingested by the Collector.
-
-### Data egress
-
-The `otecol_exporter_sent_spans` and `otelcol_exporter_sent_metric_points`
-metrics provide information about the data exported by the Collector.
-
-<!--- TODO: Include extensions here? --->
