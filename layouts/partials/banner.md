@@ -9,7 +9,7 @@
 
 <!-- prettier-ignore -->
 <i class="fas fa-bullhorn"></i>
-Help us improve OTel and Prometheus interoperability by taking [this survey](https://forms.gle/bZAG9f7udoJsjZUG9). Closes May 31st.
+Help improve OTel and Prometheus interoperability: [complete our survey](https://forms.gle/bZAG9f7udoJsjZUG9) by May 31
 {.pt-0}
 
 
