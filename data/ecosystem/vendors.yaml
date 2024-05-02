@@ -242,7 +242,7 @@
   commercial: true
 - name: OpenLIT
   nativeOTLP: false
-  url: https://github.com/openlit/openlit
+  url: https://docs.openlit.io/
   contact: contact@openlit.io
   oss: true
   commercial: false
