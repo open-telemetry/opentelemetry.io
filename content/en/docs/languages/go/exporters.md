@@ -94,7 +94,7 @@ import (
 )
 
 func newExporter(ctx context.Context) (trace.SpanExporter, error) {
-	return otlptracehttp.New(ctx, client)
+	return otlptracehttp.New(ctx)
 }
 ```
 
@@ -112,7 +112,7 @@ import (
 )
 
 func newExporter(ctx context.Context) (trace.SpanExporter, error) {
-	return otlptracegrpc.New(ctx, client)
+	return otlptracegrpc.New(ctx)
 }
 ```
 
