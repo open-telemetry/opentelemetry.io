@@ -5,8 +5,9 @@ cSpell:ignore: alloc journalctl kube otecol pprof tracez zpages
 ---
 
 You can monitor the health of any OpenTelemetry Collector instance by checking
-its own internal telemetry. Read on to learn how to configure this telemetry to
-help you [troubleshoot](/docs/collector/troubleshooting/) Collector issues.
+its own internal telemetry. Read on to learn about this telemetry and how to
+configure it to help you [troubleshoot](/docs/collector/troubleshooting/)
+Collector issues.
 
 ## Activate internal telemetry in the Collector
 
@@ -185,7 +186,7 @@ The Collector also emits internal metrics for these **cumulative values**:
 The following table identifies each internal metric by name and description.
 Each metric is also categorized by instrumentation type and level of verbosity.
 
-| Name                                              | Description                                                                               | Type      | Level      |
+| Metric name                                       | Description                                                                               | Type      | Level      |
 | ------------------------------------------------- | ----------------------------------------------------------------------------------------- | --------- | ---------- |
 | `otelcol_exporter_enqueue_failed_log_records`     | Number of spans that exporter(s) failed to enqueue.                                       | Counter   |            |
 | `otelcol_exporter_enqueue_failed_metric_points`   | Number of metric points that exporter(s) failed to enqueue.                               | Counter   |            |
@@ -225,9 +226,9 @@ Each metric is also categorized by instrumentation type and level of verbosity.
 | `otelcol_processor_dropped_log_records`           | Number of logs dropped by the processor.                                                  | Counter   |            |
 | `otelcol_processor_dropped_metric_points`         | Number of metric points dropped by the processor.                                         | Counter   |            |
 | `otelcol_processor_dropped_spans`                 | Number of spans dropped by the processor.                                                 | Counter   |            |
-| `otelcol_receiver_accepted_log_records`           | Number of logs successfully ingested and pushed into the pipeline.                                     | Counter   |            |
-| `otelcol_receiver_accepted_metric_points`         | Number of metric points successfully ingested and pushed into the pipeline.                            | Counter   |            |
-| `otelcol_receiver_accepted_spans`                 | Number of spans successfully ingested and pushed into the pipeline.                                    | Counter   |            |
+| `otelcol_receiver_accepted_log_records`           | Number of logs successfully ingested and pushed into the pipeline.                        | Counter   |            |
+| `otelcol_receiver_accepted_metric_points`         | Number of metric points successfully ingested and pushed into the pipeline.               | Counter   |            |
+| `otelcol_receiver_accepted_spans`                 | Number of spans successfully ingested and pushed into the pipeline.                       | Counter   |            |
 | `otelcol_receiver_refused_log_records`            | Number of logs that could not be pushed into the pipeline.                                | Counter   |            |
 | `otelcol_receiver_refused_metric_points`          | Number of metric points that could not be pushed into the pipeline.                       | Counter   |            |
 | `otelcol_receiver_refused_spans`                  | Number of spans that could not be pushed into the pipeline.                               | Counter   |            |
