@@ -2951,6 +2951,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-03-19T10:16:37.692028682Z"
   },
+  "https://github.com/open-telemetry/community/issues/1971": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-03T07:21:04.501478-07:00"
+  },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:16.771654-05:00"
@@ -4174,6 +4178,10 @@
   "https://github.com/orgs/open-telemetry/projects/41/views/1": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:13.065627-05:00"
+  },
+  "https://github.com/orgs/open-telemetry/projects/83": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-03T07:21:05.157831-07:00"
   },
   "https://github.com/orgs/open-telemetry/teams/technical-committee": {
     "StatusCode": 200,

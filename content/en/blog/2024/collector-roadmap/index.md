@@ -2,8 +2,7 @@
 title: The roadmap to v1 for the OpenTelemetry Collector
 linkTitle: Collector Roadmap
 date: 2024-05-02
-# prettier-ignore
-cSpell:ignore: Boten Vijay Pantuza Broadbridge Hrabovcak Shishi pushback
+cSpell:ignore: Boten Broadbridge Hrabovcak Pantuza pushback Shishi Vijay
 author: '[Alex Boten](https://github.com/codeboten) (Honeycomb)'
 ---
 
@@ -67,9 +66,11 @@ on user feedback:
   - Clear benchmarks and performance expectations for end users.
 - Overall documentation.
 
-The [roadmap](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/ga-roadmap.md) was published in the Collector's repository
-and milestones were created to track the work underway. To ensure the effort can
-be successful, the scope of the deliverable was limited to provide:
+The
+[roadmap](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/ga-roadmap.md)
+was published in the Collector's repository and milestones were created to track
+the work underway. To ensure the effort can be successful, the scope of the
+deliverable was limited to provide:
 
 - a clear and achievable goal
 - the focus needed to not get distracted
