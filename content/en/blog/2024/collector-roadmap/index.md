@@ -24,10 +24,10 @@ their systems. Organizations around the world have already adopted it and
 successfully process large amounts of data through pipelines as documented by
 these various talks:
 
-- [Adopting Open Telemetry Collector @ eBay - Swapping Engines Mid Flight - Vijay Samuel , eBay](https://www.youtube.com/watch?v=tZJd6W-CIcU)
-- [Ingesting 6.5 Tb of Telemetry Data Daily Through Open Telemetry Protocol and Coll... Gustavo Pantuza](https://www.youtube.com/watch?v=aDysORX1zIs)
+- [Adopting OpenTelemetry Collector @ eBay - Swapping Engines Mid Flight - Vijay Samuel , eBay](https://www.youtube.com/watch?v=tZJd6W-CIcU)
+- [Ingesting 6.5 Tb of Telemetry Data Daily Through OpenTelemetry Protocol and Coll... Gustavo Pantuza](https://www.youtube.com/watch?v=aDysORX1zIs)
 - [Today, Not Tomorrow: Scalable Strategies for Migrating to Open... Jason Anderson & Kevin Broadbridge](https://www.youtube.com/watch?v=iPGd9_aYu-A)
-- [How and Why You Should Adopt and Expose OSS Interfaces Like Otel... - Daniel Hrabovcak & Shishi Chen](https://www.youtube.com/watch?v=D71fK2MFreI)
+- [How and Why You Should Adopt and Expose OSS Interfaces Like OTel... - Daniel Hrabovcak & Shishi Chen](https://www.youtube.com/watch?v=D71fK2MFreI)
 - [Why, How to, and Issues: Tail-Based Sampling in the OpenTelemetry Collector - Reese Lee, New Relic](https://www.youtube.com/watch?v=l4PeclHKl7I)
 
 A few months ago, there was an
@@ -67,8 +67,7 @@ on user feedback:
   - Clear benchmarks and performance expectations for end users.
 - Overall documentation.
 
-The roadmap was published in the Collector's repository
-https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/ga-roadmap.md
+The [roadmap](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/ga-roadmap.md) was published in the Collector's repository
 and milestones were created to track the work underway. To ensure the effort can
 be successful, the scope of the deliverable was limited to provide:
 
