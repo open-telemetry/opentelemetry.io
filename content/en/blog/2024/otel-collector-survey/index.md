@@ -6,7 +6,7 @@ author: '[Hope Oluwalolope](https://github.com/iamebonyhope) (Microsoft)'
 cSpell:ignore: Oluwalolope distros Servicegraph Pprof
 ---
 
-The [OpenTelemetry (OTel) Collector](https://opentelemetry.io/docs/collector/) has become a cornerstone tool for observing and monitoring modern software applications. Recently, the End User SIG conducted a survey to gather feedback from users about their experiences with the OTel Collector. We are excited to share valuable insights based on the 186 responses we received from the community, including details about users’ deployment practices and implementation challenges, to help drive its future direction.
+The [OpenTelemetry (OTel) Collector](https://opentelemetry.io/docs/collector/) has become a cornerstone tool for observing and monitoring modern software applications. Recently, the End User SIG conducted a survey to gather feedback from users about their experiences with the OTel Collector. While we acknowledge that the 186 responses we received may not be statistically significant, they represent a great start and provide valuable insights. These insights include details about users’ deployment practices and implementation challenges, which are instrumental in helping to drive the OTel Collector’s future direction.
 
 ## Key Takeaways
 - Companies typically have medium to large collector deployments:
@@ -19,7 +19,7 @@ The [OpenTelemetry (OTel) Collector](https://opentelemetry.io/docs/collector/) h
 ## Detailed Insights
 
 ### Deployment Scale and Environment
-Our findings indicate robust use of the OTel Collector at scale, with 53.8%(100/186) of respondents deploying more than 10 collectors, and  22%(41/186) of respondents running between 2 and 5 collectors
+Our findings indicate robust use of the OTel Collector at scale, with 53.8%(100/186) of respondents deploying more than 10 collectors, 13.4%(25/186) running between 5 and 10 collectors, and 22%(41/186) running between 2 and 5 collectors.
 
 ![Chart showing how many otel collectors people run in their organization](deployment-scale.png)
 
@@ -38,7 +38,7 @@ A surprising number of people build their own distributions of the Collector (61
 ![Chart showing how easy people find it to use the otel collector builder](ocb-usage.png)
 
 ### Monitoring and Observability
-When it comes to monitoring the Collectors, a vast majority of respondents rely on Collector metrics and logs (70%), and only a few don't monitor their Collector(s) at all (16%). When we peered deeper into the data, we found that of the 125 respondents with more than 5 Collectors, only 15 are not monitoring their Collectors, and of the 100 respondents with more than 10 Collectors, only 9 are not monitoring their Collectors. This seems to indicate that users take monitoring their Collectors seriously once they reach a certain maturity with their Collector deployments.
+When it comes to monitoring the Collectors, a vast majority of respondents rely on Collector metrics and logs (81.7%), and only a few don't monitor their Collector(s) at all (16.6%). When we peered deeper into the data, we found that of the 125 respondents with more than 5 Collectors, only 15 are not monitoring their Collectors, and of the 100 respondents with more than 10 Collectors, only 9 are not monitoring their Collectors. This seems to indicate that users take monitoring their Collectors seriously once they reach a certain maturity with their Collector deployments.
 
 ![Chart showing how people monitor their otel collector](monitoring.png)
 
@@ -47,34 +47,42 @@ The OTel Collector's flexibility is vividly illustrated by the wide array of exp
 
 The top components according to our survey results are as follows:
 
-#### Receivers
-- OTLP Receiver
-- Prometheus Receiver
-- File Receiver
-
 #### Exporters
-- OTLP Exporter
-- Prometheus Exporter
+1. otlpexporter
+2. prometheusremotewriteexporter
+3. prometheusexporter
+4. lokiexporter
+5. debugexporter
+
+#### Receivers
+1. otlpreceiver
+2. prometheusreceiver
+3. filelogreceiver
+4. hostmetricsreceiver
+5. k8sclusterreceiver
 
 #### Processors
-- Batch Processor
-- Attributes Processor
-- Filter Processor
-- Memory Limiter Processor
-- K8s Attribute Processor
+1. batchprocessor
+2. attributesprocessor
+3. filterprocessor
+4. memorylimiterprocessor
+5. k8sattributesprocessor
 
 #### Connectors
-- Span Metrics Connector
-- Servicegraph Connector
-- Count Connector
-- Routing Connector
+1. spanmetricsconnector
+2. servicegraphconnector
+3. routingconnector
+4. countconnector
+5. datadogconnector
 
 #### Extensions
-- Health Check Extension
-- Basic Auth Extension
-- Pprof Extension
-- Bearer Token Auth Extension
-- Storage Extension
+1. healthcheckextension
+2. basicauthextension
+3. pprofextension
+4. bearertokenauthextension
+5. oauth2clientauthextension
+
+<br/>
 
 For a more detailed look at the specific exporters, receivers, processors, connectors, and extensions in use, you can check out the [raw results](https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/otel-collector/otel-collector-survey.csv). The data provides a clear view of the popular choices within the community as well as the niche configurations that exemplify the customizability of the OTel Collector.
 
