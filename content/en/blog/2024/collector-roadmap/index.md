@@ -78,6 +78,8 @@ deliverable was limited to provide:
 
 There is much to do as you can see on the
 [project board](https://github.com/orgs/open-telemetry/projects/83), but there
-is a lot of excitement around this effort. If you're keen on helping, reach out
-either by commenting on any of the open issues in GitHub, or attending the
-Collector SIG call on that happens weekly on Wednesdays.
+is a lot of excitement around this effort. If you're keen on helping, take a
+look at the tracking
+[issue](https://github.com/open-telemetry/opentelemetry-collector/issues/9375)
+and reach out either by commenting on any of the open issues in GitHub, or
+attending the Collector SIG call on that happens weekly on Wednesdays.
