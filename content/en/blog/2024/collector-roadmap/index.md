@@ -37,7 +37,7 @@ to declare the OpenTelemetry Collector stable.
 
 Now you might be asking yourself "Why would anyone want the Collector to be
 declared stable? You just told me it's already used in production!" It's true,
-the Collector and it's configuration has been fairly stable for core components
+the Collector and its configuration have been fairly stable for core components
 for some time. The release of the Collector v1 will signal that the
 OpenTelemetry community is ready to provide long term support and not introduce
 backwards incompatible changes without bumping the major version. This enables
@@ -47,7 +47,7 @@ helps the community move along some of the work needed that will help its
 graduation process in the CNCF.
 
 The request to stabilize was met with pushback from maintainers since calling
-anything 1.0 has a way of setting expectations indefinitely. This lead to a
+anything 1.0 has a way of setting expectations indefinitely. This led to a
 series of discussions and meetings that brought together the maintainers of the
 Collector to decide on what a 1.0 really means for the Collector.
 
@@ -64,7 +64,7 @@ on user feedback:
 - The scalability of the Collector:
   - Handling for queueing, back pressure, and errors must be improved.
   - Clear benchmarks and performance expectations for end users.
-- Overall documentation.
+- Overall documentation befitting of a stable piece of critical infrastructure.
 
 The
 [roadmap](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/ga-roadmap.md)
@@ -80,6 +80,6 @@ There is much to do as you can see on the
 [project board](https://github.com/orgs/open-telemetry/projects/83), but there
 is a lot of excitement around this effort. If you're keen on helping, reach out
 either by commenting on any of the open issues in GitHub, or attending the
-Collector SIG call on that happens weekly on Wednesdays. For a quick overview of
+Collector SIG call that happens weekly on Wednesdays. For a quick overview of
 the 1.0 progress you can checkout the tracking
 [issue](https://github.com/open-telemetry/opentelemetry-collector/issues/9375).
