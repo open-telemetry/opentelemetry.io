@@ -52,9 +52,11 @@ series of discussions and meetings that brought together the maintainers of the
 Collector to decide on what a 1.0 really means for the Collector.
 
 And after a lot of back and forth, we decided on a limited scope of what we
-wanted to focus on, which is a distribution of the Collector that only includes
-an OTLP receiver and an OTLP exporter. It was also decided that individual Go
-modules that the Collector components rely upon must also be marked as stable.
+wanted to focus on:
+
+1. A distribution of the Collector that only includes an OTLP receiver and an OTLP exporter.
+2. Individual Go modules that the Collector components rely upon must also be marked as stable.
+
 Aside from this, there were a few areas the contributors wanted to improve based
 on user feedback:
 
