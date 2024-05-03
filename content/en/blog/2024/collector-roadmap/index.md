@@ -14,7 +14,7 @@ various blog posts and talks. Here's a small list of talks about the Collector
 if you haven't had the chance to learn about it:
 
 - [Connected Observability Pipelines in the OpenTelemetry Collector](https://www.youtube.com/watch?v=uPpZ23iu6kI)
-- [Telemetry Showdown: Fluent Bit Vs. OpenTelemetry Collector](https://www.youtube.com/watch?v=ykq1F_3PmJw&pp=ygUfa3ViZWNvbiBvcGVudGVsZW1ldHJ5IGNvbGxlY3Rvcg%3D%3D)
+- [Telemetry Showdown: Fluent Bit Vs. OpenTelemetry Collector](https://www.youtube.com/watch?v=ykq1F_3PmJw)
 - [OpenTelemetry Collector Deployment Patterns](https://www.youtube.com/watch?v=WhRrwSHDBFs)
 
 The Collector has been a core component for organizations looking to adopt
