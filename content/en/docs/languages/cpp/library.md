@@ -35,7 +35,6 @@ If a library doesn't include OpenTelemetry support, you can use
 [instrumentation libraries](https://opentelemetry.io/docs/specs/otel/glossary/#instrumentation-library)
 to generate telemetry data for a library or framework.
 
-
 ## Setup
 
 To set up an instrumentation library see
