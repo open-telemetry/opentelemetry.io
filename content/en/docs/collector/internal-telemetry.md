@@ -45,7 +45,46 @@ values and their explanations.
 - `normal` adds other indicators on top of basic.
 - `detailed` adds dimensions and views to the previous levels.
 
-For example:
+By default, the Collector's internal metrics are distributed across verbosity
+levels, as shown here:
+
+{{< tabpane text=true >}} {{% tab "Basic" %}}
+
+<!--- Waiting for confirmation from Collector folks. --->
+
+{{% /tab %}} {{% tab "Normal" %}}
+
+`otelcol_processor_batch_batch_send_size`  
+`otelcol_processor_batch_batch_size_trigger_send`  
+`otelcol_processor_batch_metadata_cardinality`  
+`otelcol_processor_batch_timeout_trigger_send`
+
+{{% /tab %}} {{% tab "Detailed" %}}
+
+`otelcol_http_client_active_requests`  
+`otelcol_http_client_connection_duration`  
+`otelcol_http_client_open_connections`  
+`otelcol_http_client_request_body_size`  
+`otelcol_http_client_request_duration`  
+`otelcol_http_client_response_body_size`  
+`otelcol_http_server_active_requests`  
+`otelcol_http_server_request_body_size`  
+`otelcol_http_server_request_duration`  
+`otelcol_http_server_response_body_size`  
+`otelcol_rpc_client_duration`  
+`otelcol_rpc_client_request_size`  
+`otelcol_rpc_client_requests_per_rpc`  
+`otelcol_rpc_client_response_size`  
+`otelcol_rpc_client_responses_per_rpc`  
+`otelcol_rpc_server_duration`  
+`otelcol_rpc_server_request_size`  
+`otelcol_rpc_server_requests_per_rpc`  
+`otelcol_rpc_server_response_size`  
+`otelcol_rpc_server_responses_per_rpc`
+
+{{% /tab %}} {{< /tabpane >}}
+
+You can change the default level in the config `service::telemetry::metrics`. For example:
 
 ```yaml
 service:
@@ -54,9 +93,6 @@ service:
       level: detailed
       address: ':8888'
 ```
-
-You can find the default verbosity level for each metric in this
-[list of metrics](#list-of-internal-metrics).
 
 The Collector can also be configured to scrape its own metrics and send them
 through configured pipelines. For example:
