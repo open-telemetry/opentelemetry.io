@@ -38,13 +38,15 @@ to declare the OpenTelemetry Collector stable.
 Now you might be asking yourself "Why would anyone want the Collector to be
 declared stable? You just told me it's already used in production!" It's true,
 the Collector and its configuration have been fairly stable for core components
-for some time. The release of the Collector v1 will signal that the
-OpenTelemetry community is ready to provide long term support and not introduce
-backwards incompatible changes without bumping the major version. This enables
-organizations where the use of the Collector is not possible today due to
-policies around using beta software to consider adopting it. Additionally, it
-helps the community move along some of the work needed that will help its
-graduation process in the CNCF.
+for some time. However, being "unofficially stable" is not good enough for a wide variety
+of organizations who wish to adopt the Collector:
+
+- An official v1 will signal that the OpenTelemetry community is ready to provide long term
+support and not introduce backwards incompatible changes without bumping the major version.
+- Organizations with policies not to use pre-release software will be able to start adopting
+the Collector.
+- Stability in the Collector helps the community move OpenTelemetry to become a CNCF
+Graduated project.
 
 The request to stabilize was met with pushback from maintainers since calling
 anything 1.0 has a way of setting expectations indefinitely. This led to a
