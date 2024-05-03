@@ -1375,6 +1375,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:52:59.602661-05:00"
   },
+  "https://docs.openlit.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-05-02T10:13:10.86573134Z"
+  },
   "https://docs.openshift.com/container-platform/4.14/otel/otel-release-notes.html": {
     "StatusCode": 206,
     "LastSeen": "2024-02-02T12:42:05.756504535Z"
@@ -2034,6 +2038,10 @@
   "https://forms.gle/ajNv8jGs12coDUjG8": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:05:22.448487-05:00"
+  },
+  "https://forms.gle/bZAG9f7udoJsjZUG9": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-01T16:48:59.737619-04:00"
   },
   "https://forms.gle/mEDWyn6G7iCe4bvJ7": {
     "StatusCode": 200,
@@ -3822,6 +3830,10 @@
   "https://github.com/open-telemetry/opentelemetry-python-contrib": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:26.943394-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-python-contrib/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-26T12:45:03.066448+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-python/": {
     "StatusCode": 200,
@@ -7126,6 +7138,10 @@
   "https://pypi.org/project/opentelemetry-exporter-zipkin-proto-http/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:14:48.105173-05:00"
+  },
+  "https://pypi.org/project/opentelemetry-instrumentation-httpx/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-28T16:14:45.577134727Z"
   },
   "https://qryn.metrico.in/#/support": {
     "StatusCode": 206,
