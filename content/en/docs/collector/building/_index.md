@@ -46,12 +46,12 @@ a tool which automatically generates code that specifies the adoption status
 (stability) of your component along with documentation and component specific
 information. Most significantly, `mdatagen` configuration is used to describe
 out-of-the-box metrics for scraping receivers, and which
-[signals](https://opentelemetry.io/docs/concepts/signals/) or
-[attributes](https://opentelemetry.io/docs/specs/otel/common/#attribute) are
+[signals](/docs/concepts/signals/) or
+[attributes](/docs/specs/otel/common/#attribute) are
 enabled by default for collection. The names of these signals and attributes try
 to follow their respective
-[specification](https://opentelemetry.io/docs/specs/semconv/general/attribute-naming/),
-and any [semantic conventions](https://opentelemetry.io/docs/specs/semconv/)
+[specification](/docs/specs/semconv/general/attribute-naming/),
+and any [semantic conventions](/docs/specs/semconv/)
 which may exist.
 
 The core
