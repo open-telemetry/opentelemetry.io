@@ -5859,9 +5859,25 @@
     "StatusCode": 206,
     "LastSeen": "2024-02-23T22:55:04.014798-05:00"
   },
+  "https://opentelemetry.io/docs/concepts/signals/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-05-03T17:33:57.182830555-07:00"
+  },
+  "https://opentelemetry.io/docs/specs/otel/common/#attribute": {
+    "StatusCode": 206,
+    "LastSeen": "2024-05-03T17:33:59.605193068-07:00"
+  },
   "https://opentelemetry.io/docs/specs/otel/protocol": {
     "StatusCode": 206,
     "LastSeen": "2024-02-24T14:33:05.630341-08:00"
+  },
+  "https://opentelemetry.io/docs/specs/semconv/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-05-03T17:34:00.547767217-07:00"
+  },
+  "https://opentelemetry.io/docs/specs/semconv/general/attribute-naming/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-05-03T17:34:00.292106157-07:00"
   },
   "https://opentelemetry.io/ecosystem/integrations/": {
     "StatusCode": 206,
