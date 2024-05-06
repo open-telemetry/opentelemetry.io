@@ -64,7 +64,8 @@ wanted to focus on:
 1. A distribution of the Collector that only includes an OTLP receiver and an
    OTLP exporter.
 2. Individual Go modules that the Collector components rely upon must also be
-   marked as stable.
+   marked as stable as per the project's
+   [versioning guidelines](https://github.com/open-telemetry/opentelemetry-collector/blob/main/VERSIONING.md#public-api-expectations).
 
 Aside from this, there were a few areas the contributors wanted to improve based
 on user feedback:
