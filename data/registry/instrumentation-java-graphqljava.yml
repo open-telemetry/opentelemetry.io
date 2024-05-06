@@ -10,5 +10,5 @@ description: This package provides an instrumentation library for GraphQL Java
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/graphql-java-12.0
+  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/graphql-java
 createdAt: 2022-10-27

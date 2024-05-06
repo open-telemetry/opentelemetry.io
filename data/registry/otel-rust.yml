@@ -4,7 +4,7 @@ language: rust
 tags:
   - rust
 license: Apache 2.0
-description: The OpenTelemetry API and SDK for Rust.
+description: The OpenTelemetry API for Rust.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -13,4 +13,4 @@ createdAt: 2020-02-04
 package:
   registry: crates
   name: opentelemetry
-  version: 0.21.0
+  version: 0.22.0

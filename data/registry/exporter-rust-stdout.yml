@@ -16,4 +16,4 @@ createdAt: 2024-01-19
 package:
   registry: crates
   name: opentelemetry-stdout
-  version: 0.2.0
+  version: 0.3.0
