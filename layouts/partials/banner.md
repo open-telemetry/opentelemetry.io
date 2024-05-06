@@ -23,7 +23,7 @@ Now: {{ $currentDate }}
 
 <i class="fas fa-bullhorn"></i> 
 {{ .message }}
-endDat: {{ .endDate }}
+endDate: {{ .endDate }}
 
   {{ end }}
 {.pt-0}
