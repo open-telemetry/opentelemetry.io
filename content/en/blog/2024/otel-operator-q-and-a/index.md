@@ -320,9 +320,8 @@ For more info, check out the
 
 If there is a lag, it's minimal, as maintainers try to keep these up to date for
 each release cycle. Keep in mind that there are breaking changes in some
-semantic conventions and the team is trying to avoid breaking users' code. More
-info
-[here](https://cloud-native.slack.com/archives/C033BJ8BASU/p1713894678225579).
+semantic conventions and the team is trying to avoid breaking users' code. For details, see this 
+[`#otel-operator` thread](https://cloud-native.slack.com/archives/C033BJ8BASU/p1713894678225579).
 
 ## Final thoughts
 
