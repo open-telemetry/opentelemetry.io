@@ -196,8 +196,7 @@ registry, you'll need to use
 [`imagePullSecrets`](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/).
 Since private container registries require authentication, this will enable you
 to authenticate against that private registry. For more info on how to use
-`imagePullSecrets` for your Collector image, check out the instructions
-[here](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#using-imagepullsecrets).
+`imagePullSecrets` for your Collector image, see [the instructions](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#using-imagepullsecrets).
 
 For more info, check out the
 [OpenTelemetryCollector CR API docs](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector).
