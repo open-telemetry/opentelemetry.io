@@ -196,7 +196,7 @@ service:
 The load-balancing exporter emits metrics including
 `otelcol_loadbalancer_num_backends` and `otelcol_loadbalancer_backend_latency`
 that you can use for health and performance monitoring of the OTLP endpoint
-collector.
+collector.z
 
 ## Tradeoffs
 
@@ -211,6 +211,47 @@ Cons:
 - It's one more thing to maintain and that can fail (complexity)
 - Added latency in case of cascaded collectors
 - Higher overall resource usage (costs)
+
+## Additional Considerations Deploying Multiple Collectors
+
+### The Single-Writer Principle
+
+The Single-Writer Principle is a design principle that ensures a single logical writer for a particular resource.
+Concurrent access from multiple applications that modify or report on the same data can lead to data
+loss or, at least, degraded data quality. In gateway collector deployments, applying this principle guards against sending
+inconsistent data to the backend.
+
+#### Context in OTLP
+
+All metric data streams within OTLP must have a [single writer](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#single-writer)
+This is because gateway collector deployments can involve multiple collectors in the same system.
+It is possible in this case for instances to receive and process data from the same resources,
+which is a violation of the Single-Writer principle. A potential consequence of this may be that
+these data streams overwrite each other, leading to inconsistent time series data.
+
+#### Example Scenario
+
+Consider the following configuration:
+
+There is a gateway deployment configured to handle all traffic for three other collectors in the same system.
+If the collectors are not uniquely identified and the SDK fails to distinguish between them, they may
+send identical data to the gateway collector from different points in time. In this scenario,
+it would be possible to observe inconsistent values for the same series.
+
+
+#### Detection
+
+There are patterns in the data that may provide some insight into whether this is happening or not.
+For example, upon visual inspection, a series with unexplained gaps or jumps in the same series may be a clue that
+multiple collectors are sending the same samples. Unexplained behavior in a time series could potentially
+point to the backend scraping data from multiple sources.
+
+
+## Prevention
+
+All metric streams produced by OTel SDKs should have a globally unique [Metric Identity](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#opentelemetry-protocol-data-model-producer-recommendations).
+This is to lower the risk of duplication, and ensure writers are sending unique data to the backend.
+
 
 [lb-exporter]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter
