@@ -1,18 +1,15 @@
 - title: 'New Test Event'
-  url: 'https://opentelemetry.io/'
   message:
     '**Join** _our_ [test event](https://opentelemetry.io/) until `May` 20th!'
   endDate: 2024-05-20
 
 - title: 'OTel Community Day'
-  url: 'https://sessionize.com/OTel-Community-Day/'
   message:
     '[**OTel Community Day** on June
     25th](https://sessionize.com/OTel-Community-Day/)!'
   endDate: 2023-06-25
 
 - title: 'OTel and Prometheus Survey'
-  url: 'https://forms.gle/bZAG9f7udoJsjZUG9'
   message:
     'Help improve OTel and Prometheus interoperability: [complete our
     survey](https://forms.gle/bZAG9f7udoJsjZUG9) by May 31'

@@ -1,6 +1,6 @@
 {{/* cSpell:ignore contribfest */ -}}
 {{ if .Params.show_banner -}}
-  {{ $currentDate := now.Format "2006-01-02" }}
+  {{ $currentDate := time.Now | time.Format "2006-01-02" }}
   {{ $sortedAndFiltered := slice }}
 
   {{/* Sort entries by endDate and filter out past ones */}}
@@ -15,12 +15,14 @@
   {{ $entriesToShow := first 2 $sortedAndFiltered }}
 
 <div class="o-banner">
+Now: {{ $currentDate }}
 
-  {{ range $.Site.Data.banners }}
+  {{ range $sortedAndFiltered }}
 <!-- prettier-ignore -->
 
 <i class="fas fa-bullhorn"></i> 
 {{ .message }}
+{{ .endDate }}
 
   {{ end }}
 {.pt-0}
