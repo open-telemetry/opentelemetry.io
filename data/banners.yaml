@@ -1,14 +1,16 @@
-- title: "New Test Event"
-  url: "https://example.com/new-event"
-  message: "Join our new event until May 20th!"
+- title: 'New Test Event'
+  url: 'https://example.com/new-event'
+  message: 'Join our new event until May 20th!'
   endDate: 2024-05-20
 
-- title: "OTel Community Day"
-  url: "https://sessionize.com/OTel-Community-Day/"
-  message: "Join us for OTel Community Day on June 25th!"
+- title: 'OTel Community Day'
+  url: 'https://sessionize.com/OTel-Community-Day/'
+  message: 'Join us for OTel Community Day on June 25th!'
   endDate: 2023-06-25
 
-- title: "OTel and Prometheus Survey"
-  url: "https://forms.gle/bZAG9f7udoJsjZUG9"
-  message: "Help improve OTel and Prometheus interoperability: complete our survey by May 31"
+- title: 'OTel and Prometheus Survey'
+  url: 'https://forms.gle/bZAG9f7udoJsjZUG9'
+  message:
+    'Help improve OTel and Prometheus interoperability: complete our survey by
+    May 31'
   endDate: 2023-05-31
