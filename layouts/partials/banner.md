@@ -6,6 +6,7 @@
   {{/* Sort entries by endDate and filter out past ones */}}
   {{ range $.Site.Data.banners }}
     {{ if ge .endDate $currentDate }}
+      {{.endDate}} greater than {{ $currentDate }}
       {{ $sortedAndFiltered = $sortedAndFiltered | append . }}
     {{ end }}
   {{ end }}
@@ -22,7 +23,7 @@ Now: {{ $currentDate }}
 
 <i class="fas fa-bullhorn"></i> 
 {{ .message }}
-{{ .endDate }}
+endDat: {{ .endDate }}
 
   {{ end }}
 {.pt-0}
