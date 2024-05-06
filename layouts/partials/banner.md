@@ -1,4 +1,5 @@
-{{ if .Params.show_banner }}
+{{/* cSpell:ignore contribfest */ -}}
+{{ if .Params.show_banner -}}
   {{ $currentDate := now.Format "2006-01-02" }}
   {{ $sortedAndFiltered := slice }}
 
@@ -13,9 +14,10 @@
   {{/* Limit to the two entries with the closest end dates */}}
   {{ $entriesToShow := first 2 $sortedAndFiltered }}
 
+  <div class="o-banner">
   {{ range $.Site.Data.banners }}
-    <div class="o-banner">
-      <i class="fas fa-bullhorn"></i> <a href="{{ .url }}">{{ .message }}</a>
-    </div>
+      <i class="fas fa-bullhorn"></i>[{{ .message }}]({{ .url }})
   {{ end }}
-{{ end }}
+  {.pt-0}
+  </div>
+{{ end -}}
