@@ -13,7 +13,7 @@
   {{/* Limit to the two entries with the closest end dates */}}
   {{ $entriesToShow := first 2 $sortedAndFiltered }}
 
-  {{ range $entriesToShow }}
+  {{ range $.Site.Data.banners }}
     <div class="o-banner">
       <i class="fas fa-bullhorn"></i> <a href="{{ .url }}">{{ .message }}</a>
     </div>
