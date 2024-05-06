@@ -1,15 +1,29 @@
 ---
 title: Instrumentation Libraries
 linkTitle: Libraries
-description: How to use Swift instrumentation libraries
 weight: 40
 cSpell:ignore: darwin inout iphone NSURL wifi
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-OpenTelemetry-Swift provides several instrumentation libraries that generate
-instrumentation for you when they're installed and initialized.
+{{% docs/languages/libraries-intro "Swift" %}}
+
+## Use instrumentation libraries
+
+OpenTelemetry-Swift provides several
+[instrumentation libraries](/docs/specs/otel/glossary/#instrumentation-library)
+that generate instrumentation for you when they're installed and initialized.
+
+For example,
+[the NSURLSession instrumentation](https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Instrumentation/URLSession)
+automatically creates [spans](/docs/concepts/signals/traces/#spans) for all
+network requests made with NSURLSessions.
+
+## Setup
+
+All instrumentation libraries are available in OpenTelemetry Swift. To turn on
+an instrumentation, follow its usage instructions.
 
 ## `SDKResourceExtension`
 
@@ -57,7 +71,7 @@ values to the appropriate
 | `os.version`     | `15.4.0`                          | `ProcessInfo.processInfo.operatingSystemVersion`       |
 | `os.description` | `iOS Version 15.4 (Build 19E240)` | A combination of os name, version and build.           |
 
-## `NSURLSession` Instrumentation
+## `NSURLSession` instrumentation
 
 This instrumentation creates spans for all network requests made with
 NSURLSessions. It also injects distributed tracing headers in instrumented
@@ -147,10 +161,26 @@ events. This functionality is shown in `Simple Exporter` example.
 
 ### Usage
 
-Just add SignpostIntegration as any other Span Processor (see the
+Add SignpostIntegration as any other Span Processor (see the
 [manual instrumentation](../instrumentation/)) docs for details on configuring
 your providers:
 
 ```swift
 OpenTelemetry.instance.tracerProvider.addSpanProcessor(SignPostIntegration())
 ```
+
+## Available instrumentation libraries
+
+A full list of instrumentation libraries produced by OpenTelemetry is available
+from the
+[opentelemetry-swift](https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Instrumentation)
+repository.
+
+You can also find more instrumentations available in the
+[registry](/ecosystem/registry/?language=swift&component=instrumentation).
+
+## Next steps
+
+After you have set up instrumentation libraries, you might want to add your own
+[instrumentation](/docs/languages/swift/instrumentation) to your code, to
+collect custom telemetry data.

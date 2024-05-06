@@ -15,4 +15,4 @@ createdAt: 2022-12-14
 package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-slim
-  version: 1.0.4
+  version: 1.0.5

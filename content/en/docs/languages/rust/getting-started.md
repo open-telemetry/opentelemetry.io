@@ -109,7 +109,8 @@ Stdout Exporter
 [`opentelemetry-stdout`](https://crates.io/crates/opentelemetry-stdout):
 
 ```toml
-opentelemetry = { version = "{{% version-from-registry otel-rust %}}", features = ["trace"] }
+opentelemetry = "{{% version-from-registry otel-rust %}}"
+opentelemetry_sdk = "{{% version-from-registry otel-rust-sdk %}}"
 opentelemetry-stdout = { version = "{{% version-from-registry exporter-rust-stdout %}}", features = ["trace"] }
 ```
 
@@ -123,8 +124,9 @@ use rand::Rng;
 use std::{convert::Infallible, net::SocketAddr};
 use opentelemetry::global::ObjectSafeSpan;
 use opentelemetry::trace::{SpanKind, Status};
-use opentelemetry::sdk::trace::TracerProvider;
-use opentelemetry::{global, sdk::propagation::TraceContextPropagator, trace::Tracer};
+use opentelemetry::{global, trace::Tracer};
+use opentelemetry_sdk::propagation::TraceContextPropagator;
+use opentelemetry_sdk::trace::TracerProvider;
 use opentelemetry_stdout::SpanExporter;
 
 async fn handle(req: Request<Body>) -> Result<Response<Body>, Infallible> {

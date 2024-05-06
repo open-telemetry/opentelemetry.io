@@ -280,7 +280,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class Application {
+public class OpenTelemetryConfig {
 
   @Bean
   public AutoConfigurationCustomizerProvider otelCustomizer() {
@@ -294,11 +294,56 @@ public class Application {
 }
 ```
 
+##### Configure the exporter programmatically
+
+You can also configure OTLP exporters programmatically. This configuration
+replaces the default OTLP exporter and adds a custom header to the requests.
+
+```java
+import io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporter;
+import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider;
+import java.util.Collections;
+import java.util.Map;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class OpenTelemetryConfig {
+
+  @Bean
+  public AutoConfigurationCustomizerProvider otelCustomizer() {
+    return p ->
+        p.addSpanExporterCustomizer(
+            (exporter, config) -> {
+              if (exporter instanceof OtlpHttpSpanExporter) {
+                return ((OtlpHttpSpanExporter) exporter)
+                    .toBuilder().setHeaders(this::headers).build();
+              }
+              return exporter;
+            });
+  }
+
+  private Map<String, String> headers() {
+    return Collections.singletonMap("Authorization", "Bearer " + refreshToken());
+  }
+
+  private String refreshToken() {
+    // e.g. read the token from a kubernetes secret
+    return "token";
+  }
+}
+```
+
 #### Resource Providers
 
-The OpenTelemetry Starter includes
-[common Resource Providers](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/resources/library)
-and the following Spring Boot specific Resource Providers:
+The OpenTelemetry Starter includes the same resource providers as the Java
+agent:
+
+- [Common resource providers](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/resources/library)
+- [Resource providers that are disabled by default](/docs/languages/java/automatic/configuration/#enable-resource-providers-that-are-disabled-by-default)
+
+In addition, the OpenTelemetry Starter includes the following Spring Boot
+specific resource providers:
 
 ##### Distribution Resource Provider
 
@@ -319,79 +364,6 @@ FQN:
 | ----------------- | ------------------------------------------------------------------------------------------------------------- |
 | `service.name`    | `spring.application.name` or `build.version` from `build-info.properties` (see [Service name](#service-name)) |
 | `service.version` | `build.name` from `build-info.properties`                                                                     |
-
-##### AWS Resource Provider
-
-The
-[AWS Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources)
-can be added as a dependency:
-
-{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
-
-```xml
-<dependencies>
-	<dependency>
-		<groupId>io.opentelemetry.contrib</groupId>
-		<artifactId>opentelemetry-aws-resources</artifactId>
-    <version>1.33.0-alpha</version>
-    <exclusions>
-      <exclusion>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-core</artifactId>
-      </exclusion>
-      <exclusion>
-        <groupId>com.squareup.okhttp3</groupId>
-        <artifactId>okhttp</artifactId>
-      </exclusion>
-    </exclusions>
-	</dependency>
-</dependencies>
-```
-
-{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
-
-```kotlin
-implementation("io.opentelemetry.contrib:opentelemetry-aws-resources:1.33.0-alpha") {
-    exclude("com.fasterxml.jackson.core", "jackson-core")
-    exclude("com.squareup.okhttp3", "okhttp")
-}
-```
-
-{{% /tab %}} {{< /tabpane>}}
-
-##### GCP Resource Provider
-
-The
-[GCP Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources)
-can be added as a dependency:
-
-{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
-
-```xml
-<dependencies>
-	<dependency>
-		<groupId>io.opentelemetry.contrib</groupId>
-		<artifactId>opentelemetry-gcp-resources</artifactId>
-    <version>1.33.0-alpha</version>
-    <exclusions>
-      <exclusion>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-core</artifactId>
-      </exclusion>
-    </exclusions>
-	</dependency>
-</dependencies>
-```
-
-{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
-
-```kotlin
-implementation("io.opentelemetry.contrib:opentelemetry-gcp-resources:1.33.0-alpha") {
-    exclude("com.fasterxml.jackson.core", "jackson-core")
-}
-```
-
-{{% /tab %}} {{< /tabpane>}}
 
 #### Service name
 
@@ -511,6 +483,36 @@ supported for spring web versions 3.1+. To learn more about the OpenTelemetry
 `RestTemplate` interceptor, see
 [opentelemetry-spring-web-3.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-web/spring-web-3.1/library).
 
+The following ways of creating a `RestTemplate` are supported:
+
+```java
+@Bean
+public RestTemplate restTemplate() {
+    return new RestTemplate();
+}
+```
+
+```java
+public MyService(RestTemplateBuilder restTemplateBuilder) {
+    this.restTemplate = restTemplateBuilder.build();
+}
+```
+
+The following ways of creating a `RestClient` are supported:
+
+```java
+@Bean
+public RestClient restClient() {
+    return RestClient.create();
+}
+```
+
+```java
+public MyService(RestClient.Builder restClientBuilder) {
+    this.restClient = restClientBuilder.build();
+}
+```
+
 #### Spring Web MVC Autoconfiguration
 
 This feature autoconfigures instrumentation for Spring WebMVC controllers by
@@ -532,6 +534,21 @@ Spring's WebClient and WebClient Builder beans by applying a bean post
 processor. This feature is supported for spring webflux versions 5.0+. For
 details, see
 [opentelemetry-spring-webflux-5.3](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webflux/spring-webflux-5.3/library).
+
+The following ways of creating a `WebClient` are supported:
+
+```java
+@Bean
+public WebClient webClient() {
+    return WebClient.create();
+}
+```
+
+```java
+public MyService(WebClient.Builder webClientBuilder) {
+    this.webClient = webClientBuilder.build();
+}
+```
 
 ### Additional Instrumentations
 

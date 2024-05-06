@@ -1,0 +1,22 @@
+title: OpenTelemetry Node.js Runtime Metrics Instrumentation
+registryType: instrumentation
+language: js
+tags:
+  - runtime
+  - node
+  - instrumentation
+  - js
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-runtime-node
+license: Apache 2.0
+description:
+  This module provides automatic metric instrumentation that exposes
+  measurements from the [Performance measurement
+  APIs](https://nodejs.org/api/perf_hooks.html) (i.e. `perf_hooks`).
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-04-18
+package:
+  registry: npm
+  name: '@opentelemetry/instrumentation-runtime-node'
+  version: 0.4.0

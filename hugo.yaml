@@ -21,6 +21,8 @@ imaging:
   anchor: smart
 
 markup:
+  tableOfContents:
+    endLevel: 5
   goldmark:
     extensions:
       linkify: false
@@ -31,8 +33,7 @@ markup:
     renderer:
       unsafe: true
   highlight:
-    # noClasses: false
-    style: tango
+    noClasses: false
 
 # Netlify _redirects file
 mediaTypes:
@@ -79,6 +80,7 @@ params:
   ui:
     navbar_logo: true
     navbar_translucent_over_cover_disable: true
+    showLightDarkModeMenu: true
     sidebar_menu_compact: true
     sidebar_menu_foldable: true
     sidebar_search_disable: true
