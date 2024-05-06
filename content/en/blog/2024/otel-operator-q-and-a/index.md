@@ -237,9 +237,8 @@ kubectl apply -f https://raw.githubusercontent.com/prometheus-operator/prometheu
 kubectl apply -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.71.2/example/prometheus-operator-crd/monitoring.coreos.com_podmonitors.yaml
 ```
 
-Check out my example of the OpenTelemetry Operator’s Target Allocator with
-`ServiceMonitor`
-[here](https://github.com/avillela/otel-target-allocator-talk/tree/main?tab=readme-ov-file#3b--kubernetes-deployment-servicenow-cloud-observability-backend).
+See my [example of the OpenTelemetry Operator’s Target Allocator with
+`ServiceMonitor`](https://github.com/avillela/otel-target-allocator-talk/tree/main?tab=readme-ov-file#3b--kubernetes-deployment-servicenow-cloud-observability-backend).
 
 ### Q7: Do I need to create a service account to use the Target Allocator?
 
