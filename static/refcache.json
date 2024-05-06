@@ -2951,6 +2951,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-03-19T10:16:37.692028682Z"
   },
+  "https://github.com/open-telemetry/community/issues/1971": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-03T07:21:04.501478-07:00"
+  },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:16.771654-05:00"
@@ -3122,6 +3126,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector/issues/7532": {
     "StatusCode": 200,
     "LastSeen": "2024-04-04T11:07:15.276911438-07:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/issues/9375": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-03T08:34:29.3339-07:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/pull/6140": {
     "StatusCode": 200,
@@ -4174,6 +4182,10 @@
   "https://github.com/orgs/open-telemetry/projects/41/views/1": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:13.065627-05:00"
+  },
+  "https://github.com/orgs/open-telemetry/projects/83": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-03T07:21:05.157831-07:00"
   },
   "https://github.com/orgs/open-telemetry/teams/technical-committee": {
     "StatusCode": 200,
@@ -5806,6 +5818,14 @@
   "https://opentelemetry.io": {
     "StatusCode": 206,
     "LastSeen": "2024-03-19T10:16:59.755536357Z"
+  },
+  "https://opentelemetry.io/blog/2024/otel-collector-anti-patterns/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-05-06T07:53:28.679391-07:00"
+  },
+  "https://opentelemetry.io/blog/2024/scaling-collectors/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-05-06T07:53:28.903161-07:00"
   },
   "https://opentelemetry.io/docs/collector": {
     "StatusCode": 206,
