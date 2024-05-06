@@ -18,7 +18,7 @@
 <div class="o-banner">
 Now: {{ $currentDate }}
 
-  {{ range $sortedAndFiltered }}
+  {{ range $entriesToShow }}
 <!-- prettier-ignore -->
 
 <i class="fas fa-bullhorn"></i> 
