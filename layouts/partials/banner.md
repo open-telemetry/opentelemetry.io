@@ -8,7 +8,7 @@
       {{ $sortedAndFiltered = $sortedAndFiltered | append . }}
     {{ end }}
   {{ end }}
-  {{ $sortedAndFiltered = $sortedAndFiltered | sort "endDate" }}
+  {{/* $sortedAndFiltered = $sortedAndFiltered | sort "endDate" */}}
 
   {{/* Limit to the two entries with the closest end dates */}}
   {{ $entriesToShow := first 2 $sortedAndFiltered }}
