@@ -15,11 +15,11 @@ few years in various blog posts and talks. Here's a small list of talks about
 the Collector if you haven't had the chance to learn about it:
 
 - [Connected Observability Pipelines in the OpenTelemetry Collector - Dan Jaglowski](https://www.youtube.com/watch?v=uPpZ23iu6kI)
-- [OpenTelemetry Collector Antipatterns - Adriana Villela](https://opentelemetry.io/blog/2024/otel-collector-anti-patterns/)
+- [OpenTelemetry Collector Antipatterns - Adriana Villela](/blog/2024/otel-collector-anti-patterns/)
 - [Telemetry Showdown: Fluent Bit Vs. OpenTelemetry Collector - Henrik Rexed](https://www.youtube.com/watch?v=ykq1F_3PmJw)
 - [OpenTelemetry Collector Deployment Patterns - Juraci Kröhling](https://www.youtube.com/watch?v=WhRrwSHDBFs)
 - [OTTL Me Why Transforming Telemetry in the OpenTelemetry Collector Just Got Better - Tyler Helmuth & Evan Bradley](https://www.youtube.com/watch?v=uVs0oUV72CE)
-- [Manage OpenTelemetry Collectors at scale with Ansible - Ishan Jain](https://opentelemetry.io/blog/2024/scaling-collectors/)
+- [Manage OpenTelemetry Collectors at scale with Ansible - Ishan Jain](/blog/2024/scaling-collectors/)
 
 The Collector has been a core component for organizations looking to adopt
 OpenTelemetry as part of their strategy to improve the telemetry emitted by
