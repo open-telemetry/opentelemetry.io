@@ -137,10 +137,10 @@ The OpenTelemetry starter uses OpenTelemetry Spring Boot
 
 ```xml
 <dependencies>
-	<dependency>
-		<groupId>io.opentelemetry.instrumentation</groupId>
-		<artifactId>opentelemetry-spring-boot-starter</artifactId>
-	</dependency>
+  <dependency>
+    <groupId>io.opentelemetry.instrumentation</groupId>
+    <artifactId>opentelemetry-spring-boot-starter</artifactId>
+  </dependency>
 </dependencies>
 ```
 
@@ -253,11 +253,11 @@ from tracing:
 
 ```xml
 <dependencies>
-	<dependency>
-		<groupId>io.opentelemetry.contrib</groupId>
-		<artifactId>opentelemetry-samplers</artifactId>
+  <dependency>
+    <groupId>io.opentelemetry.contrib</groupId>
+    <artifactId>opentelemetry-samplers</artifactId>
     <version>1.33.0-alpha</version>
-	</dependency>
+  </dependency>
 </dependencies>
 ```
 
@@ -450,26 +450,26 @@ appender in your `logback.xml` or `logback-spring.xml` file:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-		<encoder>
-			<pattern>
-				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
-			</pattern>
-		</encoder>
-	</appender>
-	<appender name="OpenTelemetry"
-		class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender">
-		<captureExperimentalAttributes>false</captureExperimentalAttributes>
-		<captureCodeAttributes>true</captureCodeAttributes>
-		<captureMarkerAttribute>true</captureMarkerAttribute>
-		<captureKeyValuePairAttributes>true</captureKeyValuePairAttributes>
-		<captureLoggerContext>true</captureLoggerContext>
-		<captureMdcAttributes>*</captureMdcAttributes>
-	</appender>
-	<root level="INFO">
-		<appender-ref ref="console"/>
-		<appender-ref ref="OpenTelemetry"/>
-	</root>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+    <appender name="OpenTelemetry"
+        class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender">
+        <captureExperimentalAttributes>false</captureExperimentalAttributes>
+        <captureCodeAttributes>true</captureCodeAttributes>
+        <captureMarkerAttribute>true</captureMarkerAttribute>
+        <captureKeyValuePairAttributes>true</captureKeyValuePairAttributes>
+        <captureLoggerContext>true</captureLoggerContext>
+        <captureMdcAttributes>*</captureMdcAttributes>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="console"/>
+        <appender-ref ref="OpenTelemetry"/>
+    </root>
 </configuration>
 ```
 
@@ -593,10 +593,10 @@ With the datasource configuration, you need to add the following dependency:
 
 ```xml
 <dependencies>
-	<dependency>
-		<groupId>io.opentelemetry.instrumentation</groupId>
-		<artifactId>opentelemetry-jdbc</artifactId>
-	</dependency>
+  <dependency>
+    <groupId>io.opentelemetry.instrumentation</groupId>
+    <artifactId>opentelemetry-jdbc</artifactId>
+  </dependency>
 </dependencies>
 ```
 
@@ -617,14 +617,14 @@ You have to add the OpenTelemetry appender to your `log4j2.xml` file:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN" packages="io.opentelemetry.instrumentation.log4j.appender.v2_17">
-	<Appenders>
-		<OpenTelemetry name="OpenTelemetryAppender"/>
-	</Appenders>
-	<Loggers>
-		<Root>
-			<AppenderRef ref="OpenTelemetryAppender" level="All"/>
-		</Root>
-	</Loggers>
+    <Appenders>
+        <OpenTelemetry name="OpenTelemetryAppender"/>
+    </Appenders>
+    <Loggers>
+        <Root>
+            <AppenderRef ref="OpenTelemetryAppender" level="All"/>
+        </Root>
+    </Loggers>
 </Configuration>
 ```
 
