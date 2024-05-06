@@ -70,3 +70,6 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://wikipedia.org/wiki/(S.M.A.R.T|Hop_)
   # TODO move into content/en/blog/2023/contributing-to-otel/index.md once https://github.com/open-telemetry/opentelemetry.io/issues/3889 is implemented
   - ^https://shorturl.at/vLYZ0$
+  # FIXME(@chalin) drop this temporary rule
+  - ^/docs/languages/java/automatic
+  - ^\.\./automatic
