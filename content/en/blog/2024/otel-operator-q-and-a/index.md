@@ -69,6 +69,10 @@ you could technically
 [pass it multiple Collector config files using multiple --values flags](https://stackoverflow.com/a/56653384)
 and let [Helm](https://helm.sh) do the merging for you.
 
+> **NOTE:** There are plans to offer higher-level constructs for sepcifying
+> configurations in the future, as per
+> [this PR](https://github.com/open-telemetry/opentelemetry-operator/issues/1906).
+
 For reference,
 [check out this thread in the #otel-operator CNCF Slack channel](https://cloud-native.slack.com/archives/C033BJ8BASU/p1709321896612279).
 
@@ -119,8 +123,10 @@ exporters:
       '<token_name>': '${TOKEN_VALUE}'
 ```
 
-For more info, see the [full example](https://github.com/avillela/otel-target-allocator-talk/blob/main/src/resources/02-otel-collector-ls.yml),
-along with the [instructions](https://github.com/avillela/otel-target-allocator-talk/tree/main?tab=readme-ov-file#3b--kubernetes-deployment-servicenow-cloud-observability-backend).
+For more info, see the
+[full example](https://github.com/avillela/otel-target-allocator-talk/blob/main/src/resources/02-otel-collector-ls.yml),
+along with the
+[instructions](https://github.com/avillela/otel-target-allocator-talk/tree/main?tab=readme-ov-file#3b--kubernetes-deployment-servicenow-cloud-observability-backend).
 
 ### Q3: Is the Operator version at parity with the Collector version?
 
@@ -194,7 +200,8 @@ registry, you'll need to use
 [`imagePullSecrets`](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/).
 Since private container registries require authentication, this will enable you
 to authenticate against that private registry. For more info on how to use
-`imagePullSecrets` for your Collector image, see [the instructions](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#using-imagepullsecrets).
+`imagePullSecrets` for your Collector image, see
+[the instructions](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#using-imagepullsecrets).
 
 For more info, check out the
 [OpenTelemetryCollector CR API docs](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector).
@@ -206,10 +213,10 @@ No. The Target Allocator only works for
 and
 [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
 ([newly-introduced](https://github.com/open-telemetry/opentelemetry-operator/pull/2430#discussion_r1420495631)).
-For more info, see 
+For more info, see
 [`collector_webhook.go`](https://github.com/open-telemetry/opentelemetry-operator/blob/aed905c2c3c0aa3fb608a79c2e4d0e7b73dff980/apis/v1beta1/collector_webhook.go#L328).
 
-### Q6: If I’m using Operator’s Target Allocator for Prometheus service discovery, do I need `PodMonitor` and `ServiceMonitor` CRs installed in my Kubernetes cluster?
+### Q6: If I enable `prometheusCR` in the Target Allocator, do I need the `PodMonitor` and `ServiceMonitor` CRs installed in my Kubernetes cluster?
 
 Yes, you do. These CRs are bundled with the
 [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator);
@@ -229,13 +236,13 @@ and
 like this:
 
 ```shell
-kubectl apply -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.71.2/example/prometheus-operator-crd/monitoring.coreos.com_servicemonitors.yaml
+kubectl --context kind-otel-target-allocator-talk apply -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/main/example/prometheus-operator-crd/monitoring.coreos.com_servicemonitors.yaml
 
-kubectl apply -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/v0.71.2/example/prometheus-operator-crd/monitoring.coreos.com_podmonitors.yaml
+kubectl --context kind-otel-target-allocator-talk apply -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/main/example/prometheus-operator-crd/monitoring.coreos.com_podmonitors.yaml
 ```
 
-See my [example of the OpenTelemetry Operator’s Target Allocator with
-`ServiceMonitor`](https://github.com/avillela/otel-target-allocator-talk/tree/main?tab=readme-ov-file#3b--kubernetes-deployment-servicenow-cloud-observability-backend).
+See my
+[example of the OpenTelemetry Operator’s Target Allocator with `ServiceMonitor`](https://github.com/avillela/otel-target-allocator-talk/tree/main?tab=readme-ov-file#3b--kubernetes-deployment-servicenow-cloud-observability-backend).
 
 ### Q7: Do I need to create a service account to use the Target Allocator?
 
@@ -262,6 +269,8 @@ and associate the `ClusterRole` to the `ServiceAccount` via
 See the
 [Target Allocator readme](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator#rbac)
 for more on Target Allocator RBAC configuration.
+
+> **NOTE:** There are plans to automate this fully in the near future.
 
 ### Q8: Can I override the Target Allocator base image?
 
@@ -305,7 +314,8 @@ One use case might be
 [if you need to host a mirror of the Target Allocator image in your own private container registry for security purposes](https://cloud-native.slack.com/archives/C033BJ8BASU/p1713894678225579).
 
 If you do need to reference a Target Allocator image from a private registry,
-you’ll need to use `imagePullSecrets`. For details, see [the instructions](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#using-imagepullsecrets).
+you’ll need to use `imagePullSecrets`. For details, see
+[the instructions](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#using-imagepullsecrets).
 Note that you don’t need to create a `serviceAccount` for the Target Allocator,
 since once is already created for you automagically if you don’t create one
 yourself (see
@@ -318,7 +328,8 @@ For more info, check out the
 
 If there is a lag, it's minimal, as maintainers try to keep these up to date for
 each release cycle. Keep in mind that there are breaking changes in some
-semantic conventions and the team is trying to avoid breaking users' code. For details, see this 
+semantic conventions and the team is trying to avoid breaking users' code. For
+details, see this
 [`#otel-operator` thread](https://cloud-native.slack.com/archives/C033BJ8BASU/p1713894678225579).
 
 ## Final thoughts
