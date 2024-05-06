@@ -119,8 +119,7 @@ exporters:
       '<token_name>': '${TOKEN_VALUE}'
 ```
 
-For more info, check out my full example
-[here](https://github.com/avillela/otel-target-allocator-talk/blob/main/src/resources/02-otel-collector-ls.yml),
+For more info, see the [full example](https://github.com/avillela/otel-target-allocator-talk/blob/main/src/resources/02-otel-collector-ls.yml),
 along with full instructions
 [here](https://github.com/avillela/otel-target-allocator-talk/tree/main?tab=readme-ov-file#3b--kubernetes-deployment-servicenow-cloud-observability-backend).
 
