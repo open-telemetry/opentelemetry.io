@@ -20,7 +20,7 @@
 <!-- prettier-ignore -->
 
 <i class="fas fa-bullhorn"></i> 
-<a href="{{ .url }}">{{ .message }}</a>
+{{ .message }}
 
   {{ end }}
 {.pt-0}
