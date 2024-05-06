@@ -3,15 +3,22 @@
     '**Join** _our_ [test event](https://opentelemetry.io/) until `May` 20th!'
   endDate: 2024-05-20
 
+- title: 'Old Test Event'
+  message: 'From 2023 should not appear '
+  endDate: 2023-05-31
+
 - title: 'OTel Community Day'
   message:
     '[**OTel Community Day** on June
     25th](https://sessionize.com/OTel-Community-Day/)!'
-  endDate: 2023-06-25
+  endDate: 2024-06-25
 
 - title: 'OTel and Prometheus Survey'
   message:
     'Help improve OTel and Prometheus interoperability: [complete our
     survey](https://forms.gle/bZAG9f7udoJsjZUG9) by May 31'
-  endDate: 2023-05-31
+  endDate: 2024-05-31
 
+- title: 'Old Test Event'
+  message: 'From 2023 should not appear '
+  endDate: 2023-05-31
