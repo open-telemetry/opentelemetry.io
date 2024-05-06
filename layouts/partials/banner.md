@@ -6,11 +6,10 @@
   {{/* Sort entries by endDate and filter out past ones */}}
   {{ range $.Site.Data.banners }}
     {{ if ge .endDate $currentDate }}
-      {{.endDate}} greater than {{ $currentDate }}
       {{ $sortedAndFiltered = $sortedAndFiltered | append . }}
     {{ end }}
   {{ end }}
-  {{/* $sortedAndFiltered = $sortedAndFiltered | sort "endDate" */}}
+  {{ $sortedAndFiltered = $sortedAndFiltered | sort .endDate }}
 
   {{/* Limit to the two entries with the closest end dates */}}
   {{ $entriesToShow := first 2 $sortedAndFiltered }}
