@@ -308,9 +308,7 @@ One use case might be
 [if you need to host a mirror of the Target Allocator image in your own private container registry for security purposes](https://cloud-native.slack.com/archives/C033BJ8BASU/p1713894678225579).
 
 If you do need to reference a Target Allocator image from a private registry,
-you’ll need to use `imagePullSecrets`. To use `imagePullSecrets` with the OTel
-Operator, check out the instructions
-[here](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#using-imagepullsecrets).
+you’ll need to use `imagePullSecrets`. For details, see [the instructions](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#using-imagepullsecrets).
 Note that you don’t need to create a `serviceAccount` for the Target Allocator,
 since once is already created for you automagically if you don’t create one
 yourself (see
