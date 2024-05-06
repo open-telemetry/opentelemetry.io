@@ -15,14 +15,11 @@
   {{ $entriesToShow := first 2 $sortedAndFiltered }}
 
 <div class="o-banner">
-Now: {{ $currentDate }}
 
   {{ range $entriesToShow }}
-<!-- prettier-ignore -->
 
 <i class="fas fa-bullhorn"></i> 
 {{ .message }}
-endDate: {{ .endDate }}
 
   {{ end }}
 {.pt-0}
