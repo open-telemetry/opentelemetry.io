@@ -1,19 +1,21 @@
-{{/* cSpell:ignore contribfest */ -}}
-{{ if .Params.show_banner -}}
+{{ if .Params.show_banner }}
+  {{ $currentDate := now.Format "2006-01-02" }}
+  {{ $sortedAndFiltered := slice }}
 
-<div class="o-banner">
+  {{/* Sort entries by endDate and filter out past ones */}}
+  {{ range $.Site.Data.banners }}
+    {{ if ge .endDate $currentDate }}
+      {{ $sortedAndFiltered = $sortedAndFiltered | append . }}
+    {{ end }}
+  {{ end }}
+  {{ $sortedAndFiltered = $sortedAndFiltered | sort "endDate" }}
 
-<i class="fas fa-bullhorn"></i> Join us for 
-[**OTel Community Day** on June 25th](https://sessionize.com/OTel-Community-Day/)!
+  {{/* Limit to the two entries with the closest end dates */}}
+  {{ $entriesToShow := first 2 $sortedAndFiltered }}
 
-{{/*
-
-<!-- prettier-ignore -->
-<i class="fas fa-bullhorn"></i>
-Template for a second post.
-{.pt-0}
-
-*/ -}}
-
-</div>
-{{ end -}}
+  {{ range $entriesToShow }}
+    <div class="o-banner">
+      <i class="fas fa-bullhorn"></i> <a href="{{ .url }}">{{ .message }}</a>
+    </div>
+  {{ end }}
+{{ end }}
