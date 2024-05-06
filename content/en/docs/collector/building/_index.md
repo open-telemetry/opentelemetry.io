@@ -13,7 +13,7 @@ details take a look into the documents contained within the
 
 There are several
 [classes](https://github.com/open-telemetry/opentelemetry-collector/blob/67d37183e6ac9b7180fefc6dc3a55f2a75c12fba/cmd/mdatagen/main.go#L192)
-of OpenTelemetry components, such as
+of OpenTelemetry Collector components, such as
 
 - `receivers`: Scrapers and Listeners which
   [ingest data](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver#readme),
