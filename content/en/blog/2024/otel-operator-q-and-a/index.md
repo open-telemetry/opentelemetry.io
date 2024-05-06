@@ -209,8 +209,8 @@ No. The Target Allocator only works for
 and
 [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
 ([newly-introduced](https://github.com/open-telemetry/opentelemetry-operator/pull/2430#discussion_r1420495631)).
-More info
-[here](https://github.com/open-telemetry/opentelemetry-operator/blob/aed905c2c3c0aa3fb608a79c2e4d0e7b73dff980/apis/v1beta1/collector_webhook.go#L328).
+For more info, see 
+[`collector_webhook.go`](https://github.com/open-telemetry/opentelemetry-operator/blob/aed905c2c3c0aa3fb608a79c2e4d0e7b73dff980/apis/v1beta1/collector_webhook.go#L328).
 
 ### Q6: If I’m using Operator’s Target Allocator for Prometheus service discovery, do I need `PodMonitor` and `ServiceMonitor` CRs installed in my Kubernetes cluster?
 
