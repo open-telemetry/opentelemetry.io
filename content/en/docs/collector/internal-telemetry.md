@@ -36,17 +36,16 @@ service:
 ```
 
 You can enhance the metrics telemetry using the `level` field. This field
-controls how verbose the metric is. The following is a list of all possible
-values and their explanations.
+controls how verbose the metric output is. The following is a list of all
+possible values and their explanations.
 
 - `none` indicates that no telemetry data should be collected.
-- `basic` is the recommended value and covers the basics of the service
-  telemetry.
-- `normal` adds other indicators on top of basic.
+- `basic` covers the basics of the service telemetry.
+- `normal` is the default level and adds other indicators on top of basic.
 - `detailed` adds dimensions and views to the previous levels.
 
-By default, the Collector's internal metrics are distributed across verbosity
-levels, as shown here:
+The Collector's internal metrics are distributed across verbosity levels, as
+shown here:
 
 {{< tabpane text=true >}} {{% tab "`basic`" %}}
 
@@ -84,8 +83,9 @@ levels, as shown here:
 
 {{% /tab %}} {{< /tabpane >}}
 
-You can change the default level in the config `service::telemetry::metrics`.
-For example:
+The default level for metrics output is `normal`. To see more or fewer metrics,
+you can change the default by modifying the level in the config
+`service::telemetry::metrics`. For example:
 
 ```yaml
 service:
