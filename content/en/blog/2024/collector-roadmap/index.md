@@ -6,7 +6,7 @@ cSpell:ignore: Boten Broadbridge Hrabovcak Pantuza pushback Shishi Vijay
 author: '[Alex Boten](https://github.com/codeboten) (Honeycomb)'
 ---
 
-The OpenTelemetry Collector is a very popular component in OpenTelemetry that
+The [OpenTelemetry Collector](/docs/collector/) is a very popular component in OpenTelemetry that
 has been under heavy development for quite some time. It is a binary that allows
 many formats of telemetry to be sent to it, transformed, and emitted to a
 destination. Much has been said about the Collector over the past few years in
