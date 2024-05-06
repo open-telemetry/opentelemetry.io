@@ -4,12 +4,12 @@
   {{ $sortedAndFiltered := slice }}
 
   {{/* Sort entries by endDate and filter out past ones */}}
-  {{ range $.Site.Data.banners }}
+  {{ $sorted := sort .Site.Data.banners "endDate" }}
+  {{ range $sorted }}
     {{ if ge .endDate $currentDate }}
       {{ $sortedAndFiltered = $sortedAndFiltered | append . }}
     {{ end }}
   {{ end }}
-  {{ $sortedAndFiltered = $sortedAndFiltered | sort .endDate }}
 
   {{/* Limit to the two entries with the closest end dates */}}
   {{ $entriesToShow := first 2 $sortedAndFiltered }}
