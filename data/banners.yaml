@@ -1,12 +1,3 @@
-- title: 'New Test Event'
-  message:
-    '**Join** _our_ [test event](https://opentelemetry.io/) until `May` 20th!'
-  endDate: 2024-05-20
-
-- title: 'Old Test Event'
-  message: 'From 2023 should not appear '
-  endDate: 2023-05-31
-
 - title: 'OTel Community Day'
   message:
     '[**OTel Community Day** on June
@@ -18,7 +9,3 @@
     'Help improve OTel and Prometheus interoperability: [complete our
     survey](https://forms.gle/bZAG9f7udoJsjZUG9) by May 31'
   endDate: 2024-05-31
-
-- title: 'Old Test Event'
-  message: 'From 2023 should not appear '
-  endDate: 2023-05-31
