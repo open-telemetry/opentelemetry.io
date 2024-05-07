@@ -34,8 +34,8 @@ You can also provide configurations using environment variables, YAML paths, or
 HTTP URIs. For example:
 
 ```shell
-otelcol --config=env:MY_CONFIG_IN_AN_ENVVAR` --config=https://server/config.yaml
-otelcol --config="yaml:exporters::debug::verbosity: normal"`
+otelcol --config=env:MY_CONFIG_IN_AN_ENVVAR --config=https://server/config.yaml
+otelcol --config="yaml:exporters::debug::verbosity: normal"
 ```
 
 To validate a configuration file, use the `validate` command. For example:
