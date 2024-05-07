@@ -12,6 +12,6 @@ cascade:
 cSpell:ignore: Dotel myapp
 ---
 
-Zero-code instrumentation with Java can use a Java agent JAR or Spring Boot
-Start. To learn how to manually instrument your service or app code, see
+Zero-code instrumentation with Java uses a Java agent JAR or Spring Boot
+Starter. To learn how to manually instrument your service or app code, see
 [Manual instrumentation](/docs/languages/java/instrumentation/).
