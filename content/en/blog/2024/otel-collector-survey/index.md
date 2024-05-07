@@ -1,9 +1,10 @@
 ---
 title: Insights from the OpenTelemetry Collector Survey
 linkTitle: OpenTelemetry Collector Survey
-date: 2024-05-01
+date: 2024-05-08
 author: '[Hope Oluwalolope](https://github.com/iamebonyhope) (Microsoft)'
-cSpell:ignore: Oluwalolope distros Servicegraph Pprof
+# prettier-ignore
+cSpell:ignore: Oluwalolope distros Servicegraph Pprof otlpexporter prometheusremotewriteexporter prometheusexporter lokiexporter debugexporter otlpreceiver prometheusreceiver filelogreceiver hostmetricsreceiver sclusterreceiver
 ---
 
 The [OpenTelemetry (OTel) Collector](https://opentelemetry.io/docs/collector/)
