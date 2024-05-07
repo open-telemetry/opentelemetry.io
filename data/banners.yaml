@@ -3,6 +3,7 @@
     'Join us for [**OTel Community Day** on June
     25th](https://events.linuxfoundation.org/open-telemetry-community-day/)!'
   endDate: 2024-06-25
+  icon: 'fas fa-bullhorn'
 
 - title: 'OTel and Prometheus Survey'
   message:
@@ -11,5 +12,8 @@
   endDate: 2024-05-31
 
 - title: Roadmap to v1 for the OpenTelemetry Collector
-  message: '[Learn about our roadmap to v1 for the OpenTelemetry Collector](/blog/2024/collector-roadmap/)'
+  message: 
+    '[Learn about our roadmap to v1 for the OpenTelemetry Collector](/blog/2024/collector-roadmap/)'
   endDate: 2024-05-21
+  icon: 'fa fa-envelope'
+
