@@ -196,7 +196,6 @@ service:
 The load-balancing exporter emits metrics including
 `otelcol_loadbalancer_num_backends` and `otelcol_loadbalancer_backend_latency`
 that you can use for health and performance monitoring of the OTLP endpoint
-collector.z
 
 ## Tradeoffs
 
@@ -247,7 +246,7 @@ multiple collectors are sending the same samples. Unexplained behavior in a time
 point to the backend scraping data from multiple sources.
 
 
-## Prevention
+#### Prevention
 
 All metric streams produced by OTel SDKs should have a globally unique [Metric Identity](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#opentelemetry-protocol-data-model-producer-recommendations).
 This is to lower the risk of duplication, and ensure writers are sending unique data to the backend.
