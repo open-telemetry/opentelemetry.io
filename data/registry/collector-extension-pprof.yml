@@ -7,7 +7,9 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description: The Performance Profiler Extension for the OpenTelemetry Collector can be used to collect performance profiles and investigate issues with the service.
+description:
+  The Performance Profiler Extension for the OpenTelemetry Collector can be used
+  to collect performance profiles and investigate issues with the service.
 authors:
   - name: OpenTelemetry Authors
 urls:

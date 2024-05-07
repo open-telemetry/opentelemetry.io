@@ -7,7 +7,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The CollectD Receiver for the OpenTelemetry Collector can receive data exported by the CollectD's write_http plugin.
+description:
+  The CollectD Receiver for the OpenTelemetry Collector can receive data
+  exported by the CollectD's write_http plugin.
 authors:
   - name: OpenTelemetry Authors
 urls:
