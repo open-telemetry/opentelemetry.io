@@ -984,7 +984,7 @@ HTTP headers.
 
 ### Context propagation between threads
 
-THe following example demonstrates how to propagate the context between threads:
+The following example demonstrates how to propagate the context between threads:
 
 ```java
 io.opentelemetry.context.Context context = io.opentelemetry.context.Context.current();
