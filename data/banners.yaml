@@ -9,3 +9,7 @@
     'Help improve OTel and Prometheus interoperability: [complete our
     survey](https://forms.gle/bZAG9f7udoJsjZUG9) by May 31'
   endDate: 2024-05-31
+
+- title: Roadmap to v1 for the OpenTelemetry Collector
+  message: '[Learn about our roadmap to v1 for the OpenTelemetry Collector](/blog/2024/collector-roadmap/)'
+  endDate: 2024-05-21
