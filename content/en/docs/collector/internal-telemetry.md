@@ -35,9 +35,8 @@ service:
       address: '0.0.0.0:8888'
 ```
 
-You can enhance the metrics telemetry using the `level` field. This field
-controls how verbose the metric output is. The following is a list of all
-possible values and their explanations.
+You can adjust the Collector metrics telemetry verbosity level by setting
+the `level` field to one of the following values:
 
 - `none` indicates that no telemetry data should be collected.
 - `basic` covers the basics of the service telemetry.
@@ -170,53 +169,37 @@ of observability emitted by the Collector itself.
 The Collector emits internal metrics for the following **current values**:
 
 - Resource consumption, including CPU, memory, and I/O.
-
 - Data reception rate, broken down by receiver.
-
 - Data export rate, broken down by exporters.
-
 - Data drop rate due to throttling, broken down by data type.
-
 - Data drop rate due to invalid data received, broken down by data type.
-
 - Throttling state, including Not Throttled, Throttled by Downstream, and
   Internally Saturated.
-
 - Incoming connection count, broken down by receiver.
-
 - Incoming connection rate showing new connections per second, broken down by
   receiver.
-
 - In-memory queue size in bytes and in units.
-
 - Persistent queue size.
-
 - End-to-end latency from receiver input to exporter output.
-
 - Latency broken down by pipeline elements, including exporter network roundtrip
   latency for request/response protocols.
 
-{{% alert title="Important" color="warning" %}}
 
-- Rate values reflect the average rate of the last 10 seconds. They are exposed
-  in bytes/sec and units/sec (for example, spans/sec).
-- Measurements in bytes might be difficult and expensive to obtain. They should
-  be used with caution.
+Rate values are averages over 10 second periods, measured in bytes/sec or units/sec (for example, spans/sec).
+
+{{% alert title="Caution" color="warning" %}}
+
+Byte Measurements can be expensive to compute.
 
 {{% /alert %}}
 
 The Collector also emits internal metrics for these **cumulative values**:
 
 - Total received data, broken down by receivers.
-
 - Total exported data, broken down by exporters.
-
 - Total dropped data due to throttling, broken down by data type.
-
 - Total dropped data due to invalid data received, broken down by data type.
-
 - Total incoming connection count, broken down by receiver.
-
 - Uptime since start.
 
 ### List of internal metrics
@@ -288,16 +271,11 @@ Each metric is also categorized by instrumentation type and level of verbosity.
 The Collector logs the following internal events:
 
 - A Collector instance starts or stops.
-
 - Data dropping begins due to throttling for a specified reason, such as local
   saturation, downstream saturation, downstream unavailable, etc.
-
 - Data dropping due to throttling stops.
-
 - Data dropping begins due to invalid data. A sample of the invalid data is
   included.
-
 - Data dropping due to invalid data stops.
-
 - A crash is detected, differentiated from a clean stop. Crash data is included
   if available.
