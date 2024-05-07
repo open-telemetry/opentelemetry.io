@@ -212,7 +212,7 @@ Cons:
 - Added latency in case of cascaded collectors
 - Higher overall resource usage (costs)
 
-## Additional Considerations Deploying Multiple Collectors
+## Additional Considerations When Deploying Multiple Collectors
 
 ### The Single-Writer Principle
 
