@@ -86,45 +86,45 @@ integrate with a vast range of tools and systems.
 
 The top components according to our survey results are as follows:
 
-#### Exporters
+### Exporters
 
-1. otlpexporter
-2. prometheusremotewriteexporter
-3. prometheusexporter
-4. lokiexporter
-5. debugexporter
+1. [otlpexporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter)
+2. [prometheusremotewriteexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/prometheusremotewriteexporter/README.md)
+3. [prometheusexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/prometheusexporter/README.md)
+4. [lokiexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/lokiexporter/README.md)
+5. [debugexporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/debugexporter)
 
-#### Receivers
+### Receivers
 
-1. otlpreceiver
-2. prometheusreceiver
-3. filelogreceiver
-4. hostmetricsreceiver
-5. k8sclusterreceiver
+1. [otlpreceiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
+2. [prometheusreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md)
+3. [filelogreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver)
+4. [hostmetricsreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/hostmetricsreceiver/README.md)
+5. [k8sclusterreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/k8sclusterreceiver/README.md)
 
-#### Processors
+### Processors
 
-1. batchprocessor
-2. attributesprocessor
-3. filterprocessor
-4. memorylimiterprocessor
-5. k8sattributesprocessor
+1. [batchprocessor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/batchprocessor)
+2. [attributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/attributesprocessor/README.md)
+3. [filterprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/filterprocessor/README.md)
+4. [memorylimiterprocessor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/memorylimiterprocessor)
+5. [k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/k8sattributesprocessor/README.md)
 
-#### Connectors
+### Connectors
 
-1. spanmetricsconnector
-2. servicegraphconnector
-3. routingconnector
-4. countconnector
-5. datadogconnector
+1. [spanmetricsconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/spanmetricsprocessor/README.md)
+2. [servicegraphconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/servicegraphprocessor/README.md)
+3. [routingconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/routingprocessor/README.md)
+4. [countconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/countprocessor/README.md)
+5. [datadogconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/datadogexporter/README.md)
 
-#### Extensions
+### Extensions
 
-1. healthcheckextension
-2. basicauthextension
-3. pprofextension
-4. bearertokenauthextension
-5. oauth2clientauthextension
+1. [healthcheckextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/healthcheckextension/README.md)
+2. [basicauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/basicauthextension/README.md)
+3. [pprofextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/pprofextension/README.md)
+4. [bearertokenauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/bearertokenauthextension/README.md)
+5. [oauth2clientauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/oauth2clientauthextension/README.md)
 
 <br/>
 
