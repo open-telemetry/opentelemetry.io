@@ -35,52 +35,154 @@ service:
       address: '0.0.0.0:8888'
 ```
 
-You can adjust the Collector metrics telemetry verbosity level by setting
-the `level` field to one of the following values:
+You can adjust the verbosity of the Collector metrics output by setting the
+`level` field to one of the following values:
 
 - `none` indicates that no telemetry data should be collected.
 - `basic` covers the basics of the service telemetry.
 - `normal` is the default level and adds other indicators on top of basic.
 - `detailed` adds dimensions and views to the previous levels.
 
-The Collector's internal metrics are distributed across verbosity levels, as
-shown here:
+Each verbosity level represents a threshold at which certain metrics are
+emitted, as shown here:
 
 {{< tabpane text=true >}} {{% tab "`basic`" %}}
 
-<!--- Waiting for confirmation from Collector folks. --->
+`otelcol_exporter_enqueue_failed_log_records`  
+`otelcol_exporter_enqueue_failed_metric_points`  
+`otelcol_exporter_enqueue_failed_spans`  
+`otelcol_exporter_queue_capacity`  
+`otelcol_exporter_queue_size`  
+`otelcol_exporter_send_failed_log_records`  
+`otelcol_exporter_send_failed_metric_points`  
+`otelcol_exporter_send_failed_spans`  
+`otelcol_exporter_sent_log_records`  
+`otelcol_exporter_sent_metric_points`  
+`otelcol_exporter_sent_spans`  
+`otelcol_process_cpu_seconds`  
+`otelcol_process_memory_rss`  
+`otelcol_process_runtime_heap_alloc_bytes`  
+`otelcol_process_runtime_total_alloc_bytes`  
+`otelcol_process_runtime_total_sys_memory_bytes`  
+`otelcol_process_uptime`  
+`otelcol_processor_accepted_log_records`  
+`otelcol_processor_accepted_metric_points`  
+`otelcol_processor_accepted_spans`  
+`otelcol_processor_batch_batch_send_size_bytes`  
+`otelcol_processor_dropped_log_records`  
+`otelcol_processor_dropped_metric_points`  
+`otelcol_processor_dropped_spans`  
+`otelcol_receiver_accepted_log_records`  
+`otelcol_receiver_accepted_metric_points`  
+`otelcol_receiver_accepted_spans`  
+`otelcol_receiver_refused_log_records`
+`otelcol_receiver_refused_metric_points`  
+`otelcol_receiver_refused_spans`  
+`otelcol_scraper_errored_metric_points`  
+`otelcol_scraper_scraped_metric_points`
 
 {{% /tab %}} {{% tab "`normal`" %}}
 
+`otelcol_exporter_enqueue_failed_log_records`  
+`otelcol_exporter_enqueue_failed_metric_points`  
+`otelcol_exporter_enqueue_failed_spans`  
+`otelcol_exporter_queue_capacity`  
+`otelcol_exporter_queue_size`  
+`otelcol_exporter_send_failed_log_records`  
+`otelcol_exporter_send_failed_metric_points`  
+`otelcol_exporter_send_failed_spans`  
+`otelcol_exporter_sent_log_records`  
+`otelcol_exporter_sent_metric_points`  
+`otelcol_exporter_sent_spans`  
+`otelcol_process_cpu_seconds`  
+`otelcol_process_memory_rss`  
+`otelcol_process_runtime_heap_alloc_bytes`  
+`otelcol_process_runtime_total_alloc_bytes`  
+`otelcol_process_runtime_total_sys_memory_bytes`  
+`otelcol_process_uptime`  
+`otelcol_processor_accepted_log_records`  
+`otelcol_processor_accepted_metric_points`  
+`otelcol_processor_accepted_spans`  
+`otelcol_processor_batch_batch_send_size_bytes`  
 `otelcol_processor_batch_batch_send_size`  
 `otelcol_processor_batch_batch_size_trigger_send`  
 `otelcol_processor_batch_metadata_cardinality`  
-`otelcol_processor_batch_timeout_trigger_send`
+`otelcol_processor_batch_timeout_trigger_send`  
+`otelcol_processor_dropped_log_records`  
+`otelcol_processor_dropped_metric_points`  
+`otelcol_processor_dropped_spans`  
+`otelcol_receiver_accepted_log_records`  
+`otelcol_receiver_accepted_metric_points`  
+`otelcol_receiver_accepted_spans`  
+`otelcol_receiver_refused_log_records`  
+`otelcol_receiver_refused_metric_points`  
+`otelcol_receiver_refused_spans`  
+`otelcol_scraper_errored_metric_points`  
+`otelcol_scraper_scraped_metric_points`
 
 {{% /tab %}} {{% tab "`detailed`" %}}
 
-`otelcol_http_client_active_requests`  
-`otelcol_http_client_connection_duration`  
-`otelcol_http_client_open_connections`  
-`otelcol_http_client_request_body_size`  
-`otelcol_http_client_request_duration`  
-`otelcol_http_client_response_body_size`  
-`otelcol_http_server_active_requests`  
-`otelcol_http_server_request_body_size`  
-`otelcol_http_server_request_duration`  
-`otelcol_http_server_response_body_size`  
-`otelcol_rpc_client_duration`  
-`otelcol_rpc_client_request_size`  
-`otelcol_rpc_client_requests_per_rpc`  
-`otelcol_rpc_client_response_size`  
-`otelcol_rpc_client_responses_per_rpc`  
-`otelcol_rpc_server_duration`  
-`otelcol_rpc_server_request_size`  
-`otelcol_rpc_server_requests_per_rpc`  
-`otelcol_rpc_server_response_size`  
-`otelcol_rpc_server_responses_per_rpc`
+`http_client_active_requests`  
+`http_client_connection_duration`  
+`http_client_open_connections`  
+`http_client_request_body_size`  
+`http_client_request_duration`  
+`http_client_response_body_size`  
+`http_server_active_requests`  
+`http_server_request_body_size`  
+`http_server_request_duration`  
+`http_server_response_body_size`  
+`otelcol_exporter_enqueue_failed_log_records`  
+`otelcol_exporter_enqueue_failed_metric_points`  
+`otelcol_exporter_enqueue_failed_spans`  
+`otelcol_exporter_queue_capacity`  
+`otelcol_exporter_queue_size`  
+`otelcol_exporter_send_failed_log_records`  
+`otelcol_exporter_send_failed_metric_points`  
+`otelcol_exporter_send_failed_spans`  
+`otelcol_exporter_sent_log_records`  
+`otelcol_exporter_sent_metric_points`  
+`otelcol_exporter_sent_spans`  
+`otelcol_process_cpu_seconds`  
+`otelcol_process_memory_rss`  
+`otelcol_process_runtime_heap_alloc_bytes`  
+`otelcol_process_runtime_total_alloc_bytes`  
+`otelcol_process_runtime_total_sys_memory_bytes`  
+`otelcol_process_uptime`  
+`otelcol_processor_accepted_log_records`  
+`otelcol_processor_accepted_metric_points`  
+`otelcol_processor_accepted_spans`  
+`otelcol_processor_batch_batch_send_size_bytes`  
+`otelcol_processor_batch_batch_send_size`  
+`otelcol_processor_batch_batch_size_trigger_send`  
+`otelcol_processor_batch_metadata_cardinality`  
+`otelcol_processor_batch_timeout_trigger_send`  
+`otelcol_processor_dropped_log_records`  
+`otelcol_processor_dropped_metric_points`  
+`otelcol_processor_dropped_spans`  
+`otelcol_receiver_accepted_log_records`  
+`otelcol_receiver_accepted_metric_points`  
+`otelcol_receiver_accepted_spans`  
+`otelcol_receiver_refused_log_records`  
+`otelcol_receiver_refused_metric_points`  
+`otelcol_receiver_refused_spans`  
+`otelcol_scraper_errored_metric_points`  
+`otelcol_scraper_scraped_metric_points`  
+`rpc_client_duration`  
+`rpc_client_request_size`  
+`rpc_client_requests_per_rpc`  
+`rpc_client_response_size`  
+`rpc_client_responses_per_rpc`  
+`rpc_server_duration`  
+`rpc_server_request_size`  
+`rpc_server_requests_per_rpc`  
+`rpc_server_response_size`  
+`rpc_server_responses_per_rpc`
 
 {{% /tab %}} {{< /tabpane >}}
+
+For more details about specific metrics, see
+[this table](#list-of-internal-metrics).
 
 The default level for metrics output is `normal`. To see more or fewer metrics,
 you can change the default by modifying the level in the config
@@ -184,12 +286,12 @@ The Collector emits internal metrics for the following **current values**:
 - Latency broken down by pipeline elements, including exporter network roundtrip
   latency for request/response protocols.
 
-
-Rate values are averages over 10 second periods, measured in bytes/sec or units/sec (for example, spans/sec).
+Rate values are averages over 10 second periods, measured in bytes/sec or
+units/sec (for example, spans/sec).
 
 {{% alert title="Caution" color="warning" %}}
 
-Byte Measurements can be expensive to compute.
+Byte measurements can be expensive to compute.
 
 {{% /alert %}}
 
