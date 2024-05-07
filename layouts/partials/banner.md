@@ -18,7 +18,7 @@
 
   {{ range $entriesToShow }}
 
-<i class="{{ .icon | default 'fas fa-bullhorn' }}"></i> 
+<i class="{{ .icon | default `fas fa-bullhorn` }}"></i> 
 {{ .message }}
 
   {{ end }}

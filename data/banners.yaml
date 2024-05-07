@@ -12,8 +12,8 @@
   endDate: 2024-05-31
 
 - title: Roadmap to v1 for the OpenTelemetry Collector
-  message: 
-    '[Learn about our roadmap to v1 for the OpenTelemetry Collector](/blog/2024/collector-roadmap/)'
+  message:
+    '[Learn about our roadmap to v1 for the OpenTelemetry
+    Collector](/blog/2024/collector-roadmap/)'
   endDate: 2024-05-21
   icon: 'fa fa-envelope'
-
