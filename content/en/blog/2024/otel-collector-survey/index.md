@@ -1,5 +1,5 @@
 ---
-title: Insights From The OpenTelemetry Collector Survey
+title: Insights from the OpenTelemetry Collector Survey
 linkTitle: OpenTelemetry Collector Survey
 date: 2024-05-01
 author: '[Hope Oluwalolope](https://github.com/iamebonyhope) (Microsoft)'
