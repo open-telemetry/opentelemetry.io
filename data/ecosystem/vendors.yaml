@@ -170,7 +170,7 @@
   commercial: true
 - name: ServiceNow Cloud Observability (Lightstep)
   nativeOTLP: true
-  url: https://github.com/lightstep?q=launcher
+  url: https://docs.lightstep.com/docs/about-sending-data
   contact:
   oss: false
   commercial: true
