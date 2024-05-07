@@ -1,0 +1,19 @@
+# cSpell:ignore openllmetry Instana
+title: IBM OpenTelemetry Collector for LLM
+registryType: receiver
+language: java
+tags:
+  - java
+  - receiver
+  - collector
+license: Apache 2.0
+description: IBM OpenTelemetry Collector for LLM based on Instrumentations of OpenLLMetry.
+authors:
+  - name: IBM Instana
+urls:
+  repo: https://github.com/instana/otel-dc/tree/main/llm
+createdAt: 2024-05-07
+package:
+  registry: packagist
+  name: https://github.com/instana/otel-dc/tree/main/llm
+  version: v1.0.0
