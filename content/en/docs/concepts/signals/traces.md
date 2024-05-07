@@ -118,7 +118,7 @@ that matches the `span_id` of the `hello` span.
 ```
 
 This span represents the third operation in this trace and, like the previous
-one, it's a child of the `hello` span. That also makes it a sibling of the
+one, it's a child of the 'hello' Span. That also makes it a sibling of the
 `hello-greetings` span.
 
 These three blocks of JSON all share the same `trace_id`, and the `parent_id`

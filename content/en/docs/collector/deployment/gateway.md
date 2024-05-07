@@ -196,6 +196,7 @@ service:
 The load-balancing exporter emits metrics including
 `otelcol_loadbalancer_num_backends` and `otelcol_loadbalancer_backend_latency`
 that you can use for health and performance monitoring of the OTLP endpoint
+collector.
 
 ## Tradeoffs
 
