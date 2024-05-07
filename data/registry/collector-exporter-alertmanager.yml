@@ -8,16 +8,13 @@ tags:
   - exporter
   - collector
 license: Apache 2.0
-description:
-  Exports OTel Events (SpanEvent in Tracing added by AddEvent API) as Alerts to
-  [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/)
-  backend to notify Errors or Change events.
+description: Exports OTel Events (SpanEvent in Tracing added by AddEvent API) as Alerts to [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/) backend to notify Errors or Change events.
 authors:
   - name: OpenTelemetry Authors
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/alertmanagerexporter
-  version: v0.99.0
+  version: v0.100.0
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/alertmanagerexporter
 createdAt: 2023-12-05

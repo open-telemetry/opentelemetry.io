@@ -7,8 +7,7 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description:
-  This receiver gets OTLP messages from a Google Cloud Pubsub subscription.
+description: This receiver gets OTLP messages from a Google Cloud Pubsub subscription.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -17,4 +16,4 @@ createdAt: 2020-11-05
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/googlecloudpubsubreceiver
-  version: v0.99.0
+  version: v0.100.0

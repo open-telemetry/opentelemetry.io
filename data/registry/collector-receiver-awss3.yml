@@ -10,12 +10,11 @@ tags:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/awss3receiver
 license: Apache 2.0
-description:
-  Receiver for retrieving trace previously stored in S3 by the AWS S3 Exporter.
+description: Receiver for retrieving trace previously stored in S3 by the AWS S3 Exporter.
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2024-04-18
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awss3receiver
-  version: v0.99.0
+  version: v0.100.0
