@@ -2,7 +2,6 @@
 title: Accounting Service
 linkTitle: Accounting
 aliases: [accountingservice]
-cSpell:ignore: otelsarama otlptracegrpc sarama sdktrace
 ---
 
 This service calculates the total amount of sold products. This is only mocked
@@ -10,54 +9,15 @@ and received orders are printed out.
 
 [Accounting Service](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/accountingservice/)
 
-## Traces
+## Auto-instrumentation
 
-### Initializing Tracing
+This service relies on the OpenTelemetry .NET Automatic Instrumentation to automatically instrument libraries such as Kafka, and to configure the OpenTelemetry SDK. The instrumentation is added via
+Nuget package [OpenTelemetry.AutoInstrumentation](https://www.nuget.org/packages/OpenTelemetry.AutoInstrumentation) and activated using environment variables that are sourced from `instrument.sh`. Using this installation approach also guarantees that all instrumentation dependencies are properly aligned with the application.
 
-The OpenTelemetry SDK is initialized from `main` using the `initTracerProvider`
-function.
+## Publishing
 
-```go
-func initTracerProvider() (*sdktrace.TracerProvider, error) {
-    ctx := context.Background()
+Add `--use-current-runtime` to the `dotnet publish` command to distribute appropriate native runtime components.
 
-    exporter, err := otlptracegrpc.New(ctx)
-    if err != nil {
-        return nil, err
-    }
-    tp := sdktrace.NewTracerProvider(
-        sdktrace.WithBatcher(exporter),
-        sdktrace.WithResource(initResource()),
-    )
-    otel.SetTracerProvider(tp)
-    otel.SetTextMapPropagator(propagation.NewCompositeTextMapPropagator(propagation.TraceContext{}, propagation.Baggage{}))
-    return tp, nil
-}
-```
-
-You should call `TracerProvider.Shutdown()` when your service is shutdown to
-ensure all spans are exported. This service makes that call as part of a
-deferred function in main
-
-```go
-tp, err := initTracerProvider()
-if err != nil {
-    log.Fatal(err)
-}
-defer func() {
-    if err := tp.Shutdown(context.Background()); err != nil {
-        log.Printf("Error shutting down tracer provider: %v", err)
-    }
-}()
-```
-
-### Adding Kafka ( Sarama ) auto-instrumentation
-
-This service will receive the processed results of the Checkout Service via a
-Kafka topic. To instrument the Kafka client the ConsumerHandler implemented by
-the developer has to be wrapped.
-
-```go
-handler := groupHandler{} // implements sarama.ConsumerGroupHandler
-wrappedHandler := otelsarama.WrapConsumerGroupHandler(&handler)
+```sh
+dotnet publish "./AccountingService.csproj" --use-current-runtime -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 ```
