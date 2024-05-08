@@ -41,6 +41,7 @@ representation of metrics, such as CPU usage.
 ##### Tail-based Sampling
 see: [Scaling Stateful Collectors](https://opentelemetry.io/docs/collector/scaling/)
 
+
 Tail-based sampling requires all spans in a trace to be collected prior to making
 a sampling decision. Partial or incomplete traces may be consequential for an implementation of
 tail-sampling, as the goal is to capture all or most of the spans within the trace in order
@@ -52,6 +53,7 @@ for custom resource discovery and distribution of targets to collectors.
 
 ##### Pull-based Scraping
 see: [Scaling the Scrapers](https://opentelemetry.io/docs/collector/scaling/)
+
 In pull-based metric reporting it is important to maintain the concept of unique metric identities.
 
 
@@ -63,7 +65,9 @@ multiple collectors are sending the same samples. Unexplained behavior in a time
 point to the backend scraping data from multiple sources.
 
 There are also more direct errors that could surface in the backend.
-With a Prometheus backend, an example error is: `Error on ingesting out-of-order samples`
+
+With a Prometheus backend, an example error is: `Error on ingesting out-of-order samples`.
+
 This could indicate that identical targets exist in two jobs, and the order of the timestamps
 is incorrect.
 
