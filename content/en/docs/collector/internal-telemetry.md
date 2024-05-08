@@ -1,6 +1,7 @@
 ---
 title: Internal telemetry
 weight: 25
+# prettier-ignore
 cSpell:ignore: alloc journalctl kube otecol pprof tracez underperforming zpages
 ---
 
