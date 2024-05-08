@@ -151,8 +151,13 @@ while(<>) {
     s|\]\(([^:\)]*?\.md(#.*?)?)\)|]({{% relref "$1" %}})|g;
   }
 
-  # Rewrite link defs
-  s|^(\[[^\]]+\]:\s*)([^:\s]*)(\s*(\(.*\))?)$|$1\{{% relref "$2" %}}$3|g;
+  # Rewrite link defs to local pages such as the following:
+  #
+  # [specification]: overview.md
+  # [faas]: some-path/faas-spans.md (FaaS trace conventions)
+  #
+  # The subregex `[:\s]+` excludes external URLs (because they contain a colon after the protocol)
+  s|^(\[[^\]]+\]:\s*)([^:\s]+)(\s*(\(.*\))?)$|$1\{{% relref "$2" %}}$3|g;
 
   # Make website-local page references local:
   s|https://opentelemetry.io/|/|g;
