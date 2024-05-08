@@ -312,6 +312,10 @@ The Collector also emits internal metrics for these **cumulative values**:
 The following table identifies each internal metric by name and description.
 Each metric is also categorized by instrumentation type and level of verbosity.
 
+<!---To compile this list, configure a Collector instance to emit its own metrics to the localhost:8888/metrics endpoint. Select a metric and grep for it in the Collector core repository. For example, the `otelcol_process_memory_rss` can be found using:
+ `grep -Hrn "memory_rss" .`
+ Make sure to eliminate from your search string any words that might be prefixes. Look through the results until you find the .go file that contains the list of metrics. In the case of `otelcol_process_memory_rss`, it and other process metrics can be found in https://github.com/open-telemetry/opentelemetry-collector/blob/31528ce81d44e9265e1a3bbbd27dc86d09ba1354/service/internal/proctelemetry/process_telemetry.go#L92. Note that the Collector's internal metrics are defined in several different files in the repository.--->
+
 | Metric name                                             | Description                                                                               | Type      | Level      |
 | ------------------------------------------------------- | ----------------------------------------------------------------------------------------- | --------- | ---------- |
 | `http_client_active_requests`                           | Number of active HTTP client requests.                                                    | Counter   | `detailed` |
