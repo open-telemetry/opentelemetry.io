@@ -12,7 +12,6 @@ right place!
 
 - To connect with other end users and learn about upcoming events:
   - Join the [Slack channel](slack-channel/)
-  - Join the [APAC end user discussion group](discussion-group/)
 - To learn about OpenTelemetry, check out:
   - [OTel in practice](otel-in-practice/)
   - Curated content on the
