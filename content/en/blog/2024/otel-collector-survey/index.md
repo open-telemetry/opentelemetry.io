@@ -7,14 +7,14 @@ author: '[Hope Oluwalolope](https://github.com/iamebonyhope) (Microsoft)'
 cSpell:ignore: attributesprocessor basicauthextension batchprocessor bearertokenauthextension clientauthextension countconnector customizability datadogconnector debugexporter distros filelogreceiver filterprocessor healthcheckextension hostmetricsreceiver k8sattributesprocessor lokiexporter memorylimiterprocessor Oluwalolope otlpexporter otlpreceiver Pprof pprofextension prometheusexporter prometheusreceiver prometheusremotewriteexporter routingconnector sclusterreceiver Servicegraph servicegraphconnector spanmetricsconnector
 ---
 
-The [OpenTelemetry (OTel) Collector](/docs/collector/)
-has become a cornerstone tool for observing and monitoring modern software
-applications. Recently, the End User SIG conducted a survey to gather feedback
-from users about their experiences with the OTel Collector. While we acknowledge
-that the 186 responses we received may not be statistically significant, they
-represent a great start and provide valuable insights. These insights include
-details about users’ deployment practices and implementation challenges, which
-are instrumental in helping to drive the OTel Collector’s future direction.
+The [OpenTelemetry (OTel) Collector](/docs/collector/) has become a cornerstone
+tool for observing and monitoring modern software applications. Recently, the
+End User SIG conducted a survey to gather feedback from users about their
+experiences with the OTel Collector. While we acknowledge that the 186 responses
+we received may not be statistically significant, they represent a great start
+and provide valuable insights. These insights include details about users’
+deployment practices and implementation challenges, which are instrumental in
+helping to drive the OTel Collector’s future direction.
 
 ## Key Takeaways
 
