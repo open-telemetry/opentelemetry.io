@@ -5,10 +5,12 @@
     {{ range . }}
       {{ if and (or (not .from) (ge $currentDate .from)) (or (not .to) (le $currentDate .to)) }}
         <div class="o-banner">
+          <!-- prettier-ignore -->
           <i class="{{ .icon | default `fas fa-bullhorn` }}"></i> 
           {{ .text | markdownify }}
         </div>
       {{ end }}
     {{ end }}
+  {.pt-0}  
   </div>
 {{ end }}
