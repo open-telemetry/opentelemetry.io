@@ -1,4 +1,5 @@
-{{/* cSpell:ignore contribfest */ -}}
+<!-- cSpell:ignore contribfest markdownify -->
+{{ if .Params.show_banner }}
 {{ $sorted := sort .Params.banners "to" }}
 {{ with $sorted }}
   {{ $currentDate := now.Format "2006-01-02" }}
@@ -12,4 +13,5 @@
     {{ end }}
 {.pt-0}  
 </div>
+{{ end }}
 {{ end }}

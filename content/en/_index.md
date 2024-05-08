@@ -3,11 +3,10 @@ title: OpenTelemetry
 description: >-
   High-quality, ubiquitous, and portable telemetry to enable effective
   observability
-show_banner: true
 developer_note:
   The blocks/cover shortcode (used below) will use as a background image any
   image file containing "background" in its name.
-
+show_banner: true
 banners:
   - text: 'Welcome to our site! Check out our <a href="/events">events</a>.'
     from: 2024-01-01
