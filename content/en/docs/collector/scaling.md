@@ -382,3 +382,99 @@ service:
       exporters:
         - loadbalancing
 ```
+
+### The Single-Writer Principle
+
+The Single-Writer Principle refers to employing a single logical writer for a
+particular resource. When scaling collectors horizontally in a system it's
+important to properly distinguish between targets using unique identities.
+
+##### Tail-based Sampling
+
+Partial or incomplete traces may be consequential for an implementation of
+tail-sampling, as the goal is to capture all or most of the spans within the
+trace in order to inform sampling decisions. When using the target allocator to
+identify targets for scraping, you can also add labels.
+
+```yaml
+- job_name: 'otel-collector'
+  static_configs:
+    - targets: ['0.0.0.0:8888']
+      labels:
+        service: 'my-service'
+```
+
+You can also use
+[relabel](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config)
+to manage labeling on jobs.
+
+```yaml
+job_name: 'otel-collector'
+static_configs:
+  - targets: ['0.0.0.0:8888']
+    labels:
+      service: 'my-service'
+    relabel_configs:
+      - source_labels: [service]
+        target_label: app
+        action: replace
+```
+
+##### Pull-based Scraping
+
+In pull-based metric reporting it is important to maintain the concept of unique
+metric identities. When scaling scrapers, it's important to ensure that the
+targets have globally unique references. If the complexity in the environment is
+lower, you may be able to rely on sharding based on namespace or workload alone.
+As the system increases in complexity, consider adding custom labels related to
+the application or service to better delineate the targets.
+
+```yaml
+scrape_configs:
+  - job_name: 'otel-collector-dev'
+    static_configs:
+      - targets: ['test-service:metrics-port']
+    relabel_configs:
+      - source_labels: ['__meta_kubernetes_namespace'] # Default prometheus label
+        target_label: 'namespace'
+        action: keep
+```
+
+If you have metadata defined for your deployment, you can use that to further
+refine the target.
+
+Example manifest:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-service
+  labels:
+    tier: frontend
+```
+
+```yaml
+scrape_configs:
+  - job_name: 'otel-collector-dev-test-service-frontend'
+    static_configs:
+      - targets: ['test-service:metrics-port']
+    relabel_configs:
+      - source_labels: ['__meta_kubernetes_namespace']
+        target_label: 'namespace'
+        action: keep
+      - source_labels: ['__meta_kubernetes_service_label_tier']
+        target_label: 'tier'
+        action: keep
+
+  - job_name: 'otel-collector-dev-test-service-backend'
+    static_configs:
+      - targets: ['test-service:metrics-port']
+    relabel_configs:
+      - source_labels: ['__meta_kubernetes_namespace']
+        target_label: 'namespace'
+        action: keep
+      - source_labels: ['__meta_kubernetes_service_label_tier']
+        target_label: 'tier'
+        action: keep
+```
