@@ -225,9 +225,9 @@ service:
 
 When self-monitoring, the Collector collects its own telemetry and sends it to
 the desired backend for analysis. This can be a risky practice. If the Collector
-is unhealthy or performing poorly, its self-monitoring capability could be
-impacted. As a result, the self-monitored telemetry might not reach the backend
-in time for critical analysis.
+is performing poorly, its self-monitoring capability could be impacted. As a
+result, the self-monitored telemetry might not reach the backend in time for
+critical analysis.
 
 {{% /alert %}}
 
