@@ -1,7 +1,7 @@
 ---
 title: Internal telemetry
 weight: 25
-cSpell:ignore: alloc journalctl kube otecol pprof tracez zpages
+cSpell:ignore: alloc journalctl kube otecol pprof tracez underperforming zpages
 ---
 
 You can monitor the health of any OpenTelemetry Collector instance by checking
