@@ -2631,6 +2631,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:04.170576-05:00"
   },
+  "https://github.com/iamebonyhope": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-08T10:07:06.998803+02:00"
+  },
   "https://github.com/imandra-ai/ocaml-opentelemetry/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:13:40.755331-05:00"
@@ -2994,6 +2998,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector#stability-levels": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:36:40.22377-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-builder": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-08T10:07:07.582195+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib": {
     "StatusCode": 200,
@@ -5806,6 +5814,10 @@
   "https://opentelemetry.io": {
     "StatusCode": 206,
     "LastSeen": "2024-03-19T10:16:59.755536357Z"
+  },
+  "https://opentelemetry.io/community/end-user/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-05-08T10:07:08.093713+02:00"
   },
   "https://opentelemetry.io/docs/collector": {
     "StatusCode": 206,

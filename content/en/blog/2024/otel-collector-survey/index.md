@@ -4,7 +4,7 @@ linkTitle: OpenTelemetry Collector Survey
 date: 2024-05-08
 author: '[Hope Oluwalolope](https://github.com/iamebonyhope) (Microsoft)'
 # prettier-ignore
-cSpell:ignore: Oluwalolope distros Servicegraph Pprof otlpexporter prometheusremotewriteexporter prometheusexporter lokiexporter debugexporter otlpreceiver prometheusreceiver filelogreceiver hostmetricsreceiver sclusterreceiver
+cSpell:ignore: attributesprocessor basicauthextension batchprocessor bearertokenauthextension clientauthextension countconnector customizability datadogconnector debugexporter distros filelogreceiver filterprocessor healthcheckextension hostmetricsreceiver k8sattributesprocessor lokiexporter memorylimiterprocessor Oluwalolope otlpexporter otlpreceiver Pprof pprofextension prometheusexporter prometheusreceiver prometheusremotewriteexporter routingconnector sclusterreceiver Servicegraph servicegraphconnector spanmetricsconnector
 ---
 
 The [OpenTelemetry (OTel) Collector](https://opentelemetry.io/docs/collector/)
