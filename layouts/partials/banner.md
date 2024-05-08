@@ -1,5 +1,6 @@
 {{/* cSpell:ignore contribfest */ -}}
-{{ with .Params.banners }}
+{{ $sorted := sort .Params.banners "to" }}
+{{ with $sorted }}
   {{ $currentDate := now.Format "2006-01-02" }}
 <div class="o-banner">
     {{ range . }}
