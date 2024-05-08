@@ -44,7 +44,7 @@ You can adjust the verbosity of the Collector metrics output by setting the
 - `detailed` adds dimensions and views to the previous levels.
 
 Each verbosity level represents a threshold at which certain metrics are
-emitted. See the [lists of internal metrics](#list-of-internal-metrics) for a
+emitted. See the [lists of internal metrics](#lists-of-internal-metrics) for a
 breakdown of metrics by level.
 
 The default level for metrics output is `normal`. To see more or fewer metrics,
@@ -170,73 +170,84 @@ The Collector also emits internal metrics for these **cumulative values**:
 - Total incoming connection count, broken down by receiver.
 - Uptime since start.
 
-### List of internal metrics
+### Lists of internal metrics
 
-The following table identifies each internal metric by name and description.
-Each metric is also categorized by instrumentation type and level of verbosity.
+The following tables group each internal metric by level of verbosity: `basic`,
+`normal`, and `detailed`. Each metric is identified by name and description and
+categorized by instrumentation type.
 
-<!---To compile this list, configure a Collector instance to emit its own metrics to the localhost:8888/metrics endpoint. Select a metric and grep for it in the Collector core repository. For example, the `otelcol_process_memory_rss` can be found using:
- `grep -Hrn "memory_rss" .`
- Make sure to eliminate from your search string any words that might be prefixes. Look through the results until you find the .go file that contains the list of metrics. In the case of `otelcol_process_memory_rss`, it and other process metrics can be found in https://github.com/open-telemetry/opentelemetry-collector/blob/31528ce81d44e9265e1a3bbbd27dc86d09ba1354/service/internal/proctelemetry/process_telemetry.go#L92. Note that the Collector's internal metrics are defined in several different files in the repository.--->
+<!---To compile this list, configure a Collector instance to emit its own metrics to the localhost:8888/metrics endpoint. Select a metric and grep for it in the Collector core repository. For example, the `otelcol_process_memory_rss` can be found using:`grep -Hrn "memory_rss" .` Make sure to eliminate from your search string any words that might be prefixes. Look through the results until you find the .go file that contains the list of metrics. In the case of `otelcol_process_memory_rss`, it and other process metrics can be found in https://github.com/open-telemetry/opentelemetry-collector/blob/31528ce81d44e9265e1a3bbbd27dc86d09ba1354/service/internal/proctelemetry/process_telemetry.go#L92. Note that the Collector's internal metrics are defined in several different files in the repository.--->
 
-| Metric name                                             | Description                                                                               | Type      | Level      |
-| ------------------------------------------------------- | ----------------------------------------------------------------------------------------- | --------- | ---------- |
-| `http_client_active_requests`                           | Number of active HTTP client requests.                                                    | Counter   | `detailed` |
-| `http_client_connection_duration`                       | Measures the duration of the successfully established outbound HTTP connections.          | Histogram | `detailed` |
-| `http_client_open_connections`                          | Number of outbound HTTP connections that are active or idle on the client.                | Counter   | `detailed` |
-| `http_client_request_body_size`                         | Measures the size of HTTP client request bodies.                                          | Histogram | `detailed` |
-| `http_client_request_duration`                          | Measures the duration of HTTP client requests.                                            | Histogram | `detailed` |
-| `http_client_response_body_size`                        | Measures the size of HTTP client response bodies.                                         | Histogram | `detailed` |
-| `http_server_active_requests`                           | Number of active HTTP server requests.                                                    | Counter   | `detailed` |
-| `http_server_request_body_size`                         | Measures the size of HTTP server request bodies.                                          | Histogram | `detailed` |
-| `http_server_request_duration`                          | Measures the duration of HTTP server requests.                                            | Histogram | `detailed` |
-| `http_server_response_body_size`                        | Measures the size of HTTP server response bodies.                                         | Histogram | `detailed` |
-| `otelcol_exporter_enqueue_failed_`<br>`log_records`     | Number of spans that exporter(s) failed to enqueue.                                       | Counter   | `basic`    |
-| `otelcol_exporter_enqueue_failed_`<br>`metric_points`   | Number of metric points that exporter(s) failed to enqueue.                               | Counter   | `basic`    |
-| `otelcol_exporter_enqueue_failed_`<br>`spans`           | Number of spans that exporter(s) failed to enqueue.                                       | Counter   | `basic`    |
-| `otelcol_exporter_queue_capacity`                       | Fixed capacity of the retry queue, in batches.                                            | Gauge     | `basic`    |
-| `otelcol_exporter_queue_size`                           | Current size of the retry queue, in batches.                                              | Gauge     | `basic`    |
-| `otelcol_exporter_send_failed_`<br>`log_records`        | Number of logs that exporter(s) failed to send to destination.                            | Counter   | `basic`    |
-| `otelcol_exporter_send_failed_`<br>`metric_points`      | Number of metric points that exporter(s) failed to send to destination.                   | Counter   | `basic`    |
-| `otelcol_exporter_send_failed_`<br>`spans`              | Number of spans that exporter(s) failed to send to destination.                           | Counter   | `basic`    |
-| `otelcol_exporter_sent_log_records`                     | Number of logs successfully sent to destination.                                          | Counter   | `basic`    |
-| `otelcol_exporter_sent_metric_points`                   | Number of metric points successfully sent to destination.                                 | Counter   | `basic`    |
-| `otelcol_exporter_sent_spans`                           | Number of spans successfully sent to destination.                                         | Counter   | `basic`    |
-| `otelcol_process_cpu_seconds`                           | Total CPU user and system time in seconds.                                                | Counter   | `basic`    |
-| `otelcol_process_memory_rss`                            | Total physical memory (resident set size).                                                | Gauge     | `basic`    |
-| `otelcol_process_runtime_heap_`<br>`alloc_bytes`        | Bytes of allocated heap objects (see 'go doc runtime.MemStats.HeapAlloc').                | Gauge     | `basic`    |
-| `otelcol_process_runtime_total_`<br>`alloc_bytes`       | Cumulative bytes allocated for heap objects (see 'go doc runtime.MemStats.TotalAlloc').   | Counter   | `basic`    |
-| `otelcol_process_runtime_total_`<br>`sys_memory_bytes`  | Total bytes of memory obtained from the OS (see 'go doc runtime.MemStats.Sys').           | Gauge     | `basic`    |
-| `otelcol_process_uptime`                                | Uptime of the process.                                                                    | Counter   | `basic`    |
-| `otelcol_processor_accepted_`<br>`log_records`          | Number of logs successfully pushed into the next component in the pipeline.               | Counter   | `basic`    |
-| `otelcol_processor_accepted_`<br>`metric_points`        | Number of metric points successfully pushed into the next component in the pipeline.      | Counter   | `basic`    |
-| `otelcol_processor_accepted_spans`                      | Number of spans successfully pushed into the next component in the pipeline.              | Counter   | `basic`    |
-| `otelcol_processor_batch_batch_`<br>`send_size_bytes`   | Number of bytes in the batch that was sent.                                               | Histogram | `basic`    |
-| `otelcol_processor_batch_batch_`<br>`send_size`         | Number of units in the batch.                                                             | Histogram | `normal`   |
-| `otelcol_processor_batch_batch_`<br>`size_trigger_send` | Number of times the batch was sent due to a size trigger.                                 | Counter   | `normal`   |
-| `otelcol_processor_batch_metadata_`<br>`cardinality`    | Number of distinct metadata value combinations being processed.                           | Counter   | `normal`   |
-| `otelcol_processor_batch_timeout_`<br>`trigger_send`    | Number of times the batch was sent due to a timeout trigger.                              | Counter   | `normal`   |
-| `otelcol_processor_dropped_`<br>`log_records`           | Number of logs dropped by the processor.                                                  | Counter   | `basic`    |
-| `otelcol_processor_dropped_`<br>`metric_points`         | Number of metric points dropped by the processor.                                         | Counter   | `basic`    |
-| `otelcol_processor_dropped_spans`                       | Number of spans dropped by the processor.                                                 | Counter   | `basic`    |
-| `otelcol_receiver_accepted_`<br>`log_records`           | Number of logs successfully ingested and pushed into the pipeline.                        | Counter   | `basic`    |
-| `otelcol_receiver_accepted_`<br>`metric_points`         | Number of metric points successfully ingested and pushed into the pipeline.               | Counter   | `basic`    |
-| `otelcol_receiver_accepted_spans`                       | Number of spans successfully ingested and pushed into the pipeline.                       | Counter   | `basic`    |
-| `otelcol_receiver_refused_`<br>`log_records`            | Number of logs that could not be pushed into the pipeline.                                | Counter   | `basic`    |
-| `otelcol_receiver_refused_`<br>`metric_points`          | Number of metric points that could not be pushed into the pipeline.                       | Counter   | `basic`    |
-| `otelcol_receiver_refused_spans`                        | Number of spans that could not be pushed into the pipeline.                               | Counter   | `basic`    |
-| `otelcol_scraper_errored_`<br>`metric_points`           | Number of metric points the Collector failed to scrape.                                   | Counter   | `basic`    |
-| `otelcol_scraper_scraped_`<br>`metric_points`           | Number of metric points scraped by the Collector.                                         | Counter   | `basic`    |
-| `rpc_client_duration`                                   | Measures the duration of outbound RPC.                                                    | Histogram | `detailed` |
-| `rpc_client_request_size`                               | Measures the size of RPC request messages (uncompressed).                                 | Histogram | `detailed` |
-| `rpc_client_requests_per_rpc`                           | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram | `detailed` |
-| `rpc_client_response_size`                              | Measures the size of RPC response messages (uncompressed).                                | Histogram | `detailed` |
-| `rpc_client_responses_per_rpc`                          | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram | `detailed` |
-| `rpc_server_duration`                                   | Measures the duration of inbound RPC.                                                     | Histogram | `detailed` |
-| `rpc_server_request_size`                               | Measures the size of RPC request messages (uncompressed).                                 | Histogram | `detailed` |
-| `rpc_server_requests_per_rpc`                           | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram | `detailed` |
-| `rpc_server_response_size`                              | Measures the size of RPC response messages (uncompressed).                                | Histogram | `detailed` |
-| `rpc_server_responses_per_rpc`                          | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram | `detailed` |
+#### Metrics emitted at the `basic` level
+
+| Metric name                                            | Description                                                                             | Type      |
+| ------------------------------------------------------ | --------------------------------------------------------------------------------------- | --------- |
+| `otelcol_exporter_enqueue_failed_`<br>`log_records`    | Number of spans that exporter(s) failed to enqueue.                                     | Counter   |
+| `otelcol_exporter_enqueue_failed_`<br>`metric_points`  | Number of metric points that exporter(s) failed to enqueue.                             | Counter   |
+| `otelcol_exporter_enqueue_failed_`<br>`spans`          | Number of spans that exporter(s) failed to enqueue.                                     | Counter   |
+| `otelcol_exporter_queue_capacity`                      | Fixed capacity of the retry queue, in batches.                                          | Gauge     |
+| `otelcol_exporter_queue_size`                          | Current size of the retry queue, in batches.                                            | Gauge     |
+| `otelcol_exporter_send_failed_`<br>`log_records`       | Number of logs that exporter(s) failed to send to destination.                          | Counter   |
+| `otelcol_exporter_send_failed_`<br>`metric_points`     | Number of metric points that exporter(s) failed to send to destination.                 | Counter   |
+| `otelcol_exporter_send_failed_`<br>`spans`             | Number of spans that exporter(s) failed to send to destination.                         | Counter   |
+| `otelcol_exporter_sent_log_records`                    | Number of logs successfully sent to destination.                                        | Counter   |
+| `otelcol_exporter_sent_metric_points`                  | Number of metric points successfully sent to destination.                               | Counter   |
+| `otelcol_exporter_sent_spans`                          | Number of spans successfully sent to destination.                                       | Counter   |
+| `otelcol_process_cpu_seconds`                          | Total CPU user and system time in seconds.                                              | Counter   |
+| `otelcol_process_memory_rss`                           | Total physical memory (resident set size).                                              | Gauge     |
+| `otelcol_process_runtime_heap_`<br>`alloc_bytes`       | Bytes of allocated heap objects (see 'go doc runtime.MemStats.HeapAlloc').              | Gauge     |
+| `otelcol_process_runtime_total_`<br>`alloc_bytes`      | Cumulative bytes allocated for heap objects (see 'go doc runtime.MemStats.TotalAlloc'). | Counter   |
+| `otelcol_process_runtime_total_`<br>`sys_memory_bytes` | Total bytes of memory obtained from the OS (see 'go doc runtime.MemStats.Sys').         | Gauge     |
+| `otelcol_process_uptime`                               | Uptime of the process.                                                                  | Counter   |
+| `otelcol_processor_accepted_`<br>`log_records`         | Number of logs successfully pushed into the next component in the pipeline.             | Counter   |
+| `otelcol_processor_accepted_`<br>`metric_points`       | Number of metric points successfully pushed into the next component in the pipeline.    | Counter   |
+| `otelcol_processor_accepted_spans`                     | Number of spans successfully pushed into the next component in the pipeline.            | Counter   |
+| `otelcol_processor_batch_batch_`<br>`send_size_bytes`  | Number of bytes in the batch that was sent.                                             | Histogram |
+| `otelcol_processor_dropped_`<br>`log_records`          | Number of logs dropped by the processor.                                                | Counter   |
+| `otelcol_processor_dropped_`<br>`metric_points`        | Number of metric points dropped by the processor.                                       | Counter   |
+| `otelcol_processor_dropped_spans`                      | Number of spans dropped by the processor.                                               | Counter   |
+| `otelcol_receiver_accepted_`<br>`log_records`          | Number of logs successfully ingested and pushed into the pipeline.                      | Counter   |
+| `otelcol_receiver_accepted_`<br>`metric_points`        | Number of metric points successfully ingested and pushed into the pipeline.             | Counter   |
+| `otelcol_receiver_accepted_spans`                      | Number of spans successfully ingested and pushed into the pipeline.                     | Counter   |
+| `otelcol_receiver_refused_`<br>`log_records`           | Number of logs that could not be pushed into the pipeline.                              | Counter   |
+| `otelcol_receiver_refused_`<br>`metric_points`         | Number of metric points that could not be pushed into the pipeline.                     | Counter   |
+| `otelcol_receiver_refused_spans`                       | Number of spans that could not be pushed into the pipeline.                             | Counter   |
+| `otelcol_scraper_errored_`<br>`metric_points`          | Number of metric points the Collector failed to scrape.                                 | Counter   |
+| `otelcol_scraper_scraped_`<br>`metric_points`          | Number of metric points scraped by the Collector.                                       | Counter   |
+
+#### Additional metrics emitted at the `normal` level
+
+| Metric name                                             | Description                                                     | Type      |
+| ------------------------------------------------------- | --------------------------------------------------------------- | --------- |
+| `otelcol_processor_batch_batch_`<br>`send_size`         | Number of units in the batch.                                   | Histogram |
+| `otelcol_processor_batch_batch_`<br>`size_trigger_send` | Number of times the batch was sent due to a size trigger.       | Counter   |
+| `otelcol_processor_batch_metadata_`<br>`cardinality`    | Number of distinct metadata value combinations being processed. | Counter   |
+| `otelcol_processor_batch_timeout_`<br>`trigger_send`    | Number of times the batch was sent due to a timeout trigger.    | Counter   |
+
+#### Additional metrics emitted at the `detailed` level
+
+| Metric name                       | Description                                                                               | Type      |
+| --------------------------------- | ----------------------------------------------------------------------------------------- | --------- |
+| `http_client_active_requests`     | Number of active HTTP client requests.                                                    | Counter   |
+| `http_client_connection_duration` | Measures the duration of the successfully established outbound HTTP connections.          | Histogram |
+| `http_client_open_connections`    | Number of outbound HTTP connections that are active or idle on the client.                | Counter   |
+| `http_client_request_body_size`   | Measures the size of HTTP client request bodies.                                          | Histogram |
+| `http_client_request_duration`    | Measures the duration of HTTP client requests.                                            | Histogram |
+| `http_client_response_body_size`  | Measures the size of HTTP client response bodies.                                         | Histogram |
+| `http_server_active_requests`     | Number of active HTTP server requests.                                                    | Counter   |
+| `http_server_request_body_size`   | Measures the size of HTTP server request bodies.                                          | Histogram |
+| `http_server_request_duration`    | Measures the duration of HTTP server requests.                                            | Histogram |
+| `http_server_response_body_size`  | Measures the size of HTTP server response bodies.                                         | Histogram |
+| `rpc_client_duration`             | Measures the duration of outbound RPC.                                                    | Histogram |
+| `rpc_client_request_size`         | Measures the size of RPC request messages (uncompressed).                                 | Histogram |
+| `rpc_client_requests_per_rpc`     | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram |
+| `rpc_client_response_size`        | Measures the size of RPC response messages (uncompressed).                                | Histogram |
+| `rpc_client_responses_per_rpc`    | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram |
+| `rpc_server_duration`             | Measures the duration of inbound RPC.                                                     | Histogram |
+| `rpc_server_request_size`         | Measures the size of RPC request messages (uncompressed).                                 | Histogram |
+| `rpc_server_requests_per_rpc`     | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram |
+| `rpc_server_response_size`        | Measures the size of RPC response messages (uncompressed).                                | Histogram |
+| `rpc_server_responses_per_rpc`    | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram |
 
 ### Events observable with internal logs
 
