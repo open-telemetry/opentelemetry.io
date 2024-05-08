@@ -15,7 +15,7 @@ metrics to the third-party libraries and frameworks you use.
 
 Many libraries and frameworks already support OpenTelemetry or are supported
 through OpenTelemetry
-[instrumentation](docs/concepts/instrumentation/libraries/),
+[instrumentation](/docs/concepts/instrumentation/libraries/),
 so that they can generate telemetry you can export to an observability backend.
 
 If you are instrumenting an app or service that use third-party libraries or
@@ -32,7 +32,7 @@ The library might require some additional configuration for the instrumentation.
 See the documentation for that library to learn more.
 
 If a library doesn't include OpenTelemetry support, you can use
-[instrumentation libraries](docs/specs/otel/glossary/#instrumentation-library)
+[instrumentation libraries](/docs/specs/otel/glossary/#instrumentation-library)
 to generate telemetry data for a library or framework.
 
 ## Setup
@@ -43,14 +43,14 @@ To set up an instrumentation library see
 ## Available packages
 
 A full list of instrumentation libraries available can be found in the
-[OpenTelemetry registry](ecosystem/registry/?language=cpp&component=instrumentation)
+[OpenTelemetry registry](/ecosystem/registry/?language=cpp&component=instrumentation)
 
 ## Next steps
 
 After you've set up instrumentation libraries, you might want to add
-[additional instrumentation](docs/languages/cpp/instrumentation/)
+[additional instrumentation](/docs/languages/cpp/instrumentation/)
 to collect custom telemetry data.
 
 You might also want to configure an appropriate exporter to
-[export your telemetry data](docs/languages/cpp/exporters/)
+[export your telemetry data](/docs/languages/cpp/exporters/)
 to one or more telemetry backends.
