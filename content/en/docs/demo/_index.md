@@ -24,7 +24,7 @@ Want to understand how a particular language's instrumentation works? Start
 here.
 
 | Language   | Automatic Instrumentation                          | Instrumentation Libraries                                                                    | Manual Instrumentation                                                                       |
-|------------|----------------------------------------------------|----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
+| ---------- | -------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | .NET       | [Accounting Service](services/accounting/)         | [Cart Service](services/cart/)                                                               | [Cart Service](services/cart/)                                                               |
 | C++        |                                                    |                                                                                              | [Currency Service](services/currency/)                                                       |
 | Go         |                                                    | [Checkout Service](services/checkout/), [Product Catalog Service](services/product-catalog/) | [Checkout Service](services/checkout/), [Product Catalog Service](services/product-catalog/) |
