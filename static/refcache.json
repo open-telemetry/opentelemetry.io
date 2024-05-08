@@ -5831,10 +5831,6 @@
     "StatusCode": 206,
     "LastSeen": "2024-03-19T10:16:59.755536357Z"
   },
-  "https://opentelemetry.io/community/end-user/": {
-    "StatusCode": 206,
-    "LastSeen": "2024-05-08T10:07:08.093713+02:00"
-  },
   "https://opentelemetry.io/blog/2024/otel-collector-anti-patterns/": {
     "StatusCode": 206,
     "LastSeen": "2024-05-06T07:53:28.679391-07:00"
