@@ -18,18 +18,18 @@ banners:
   - text:
       'Join us for [**OTel Community Day** on June
       25th](https://events.linuxfoundation.org/open-telemetry-community-day/)!'
-    from: 2024-01-01  
+    from: 2024-01-01
     to: 2024-06-25
     icon: 'fas fa-bullhorn'
   - text:
       'Help improve OTel and Prometheus interoperability: [complete our
       survey](https://forms.gle/bZAG9f7udoJsjZUG9) by May 31'
-    from: 2024-01-01  
+    from: 2024-01-01
     to: 2024-05-31
   - text:
       '[Learn about our roadmap to v1 for the OpenTelemetry
       Collector](/blog/2024/collector-roadmap/)'
-    from: 2024-01-01  
+    from: 2024-01-01
     to: 2024-05-21
     icon: 'fa fa-envelope'
 ---
