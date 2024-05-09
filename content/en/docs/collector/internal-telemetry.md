@@ -39,18 +39,16 @@ service:
 You can adjust the verbosity of the Collector metrics output by setting the
 `level` field to one of the following values:
 
-- `none` indicates that no telemetry data should be collected.
-- `basic` covers the basics of the service telemetry.
-- `normal` is the default level and adds other indicators on top of basic.
-- `detailed` adds dimensions and views to the previous levels.
+- `none`: no telemetry is collected.
+- `basic`: essential service telemetry.
+- `normal`: the default level, adds standard indicators on top of basic.
+- `detailed`: the most verbose level, includes dimensions and views.
 
 Each verbosity level represents a threshold at which certain metrics are
-emitted. See the [lists of internal metrics](#lists-of-internal-metrics) for a
-breakdown of metrics by level.
+emitted. For the complete list of metrics, with a breakdown by level,
+see [Lists of internal metrics](#lists-of-internal-metrics).
 
-The default level for metrics output is `normal`. To see more or fewer metrics,
-you can change the default by modifying the level in the config
-`service::telemetry::metrics`. For example:
+The default level for metrics output is `normal`. To use another level, set `service.telemetry.metrics.level`:
 
 ```yaml
 service:
@@ -130,7 +128,7 @@ The OpenTelemetry Collector aims to be a model of observable service by clearly
 exposing its own operational metrics. Additionally, it collects host resource
 metrics that can help you understand if problems are caused by a different
 process on the same host. Specific components of the Collector can also emit
-their own custom telemetry. In this section, you can explore the different types
+their own custom telemetry. In this section, you will learn about the different types
 of observability emitted by the Collector itself.
 
 ### Values observable with internal metrics
@@ -179,7 +177,7 @@ categorized by instrumentation type.
 
 <!---To compile this list, configure a Collector instance to emit its own metrics to the localhost:8888/metrics endpoint. Select a metric and grep for it in the Collector core repository. For example, the `otelcol_process_memory_rss` can be found using:`grep -Hrn "memory_rss" .` Make sure to eliminate from your search string any words that might be prefixes. Look through the results until you find the .go file that contains the list of metrics. In the case of `otelcol_process_memory_rss`, it and other process metrics can be found in https://github.com/open-telemetry/opentelemetry-collector/blob/31528ce81d44e9265e1a3bbbd27dc86d09ba1354/service/internal/proctelemetry/process_telemetry.go#L92. Note that the Collector's internal metrics are defined in several different files in the repository.--->
 
-#### Metrics emitted at the `basic` level
+#### `basic`-level metrics
 
 | Metric name                                            | Description                                                                             | Type      |
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------- | --------- |
@@ -216,7 +214,7 @@ categorized by instrumentation type.
 | `otelcol_scraper_errored_`<br>`metric_points`          | Number of metric points the Collector failed to scrape.                                 | Counter   |
 | `otelcol_scraper_scraped_`<br>`metric_points`          | Number of metric points scraped by the Collector.                                       | Counter   |
 
-#### Additional metrics emitted at the `normal` level
+#### Additional `normal`-level metrics
 
 | Metric name                                             | Description                                                     | Type      |
 | ------------------------------------------------------- | --------------------------------------------------------------- | --------- |
@@ -225,7 +223,7 @@ categorized by instrumentation type.
 | `otelcol_processor_batch_metadata_`<br>`cardinality`    | Number of distinct metadata value combinations being processed. | Counter   |
 | `otelcol_processor_batch_timeout_`<br>`trigger_send`    | Number of times the batch was sent due to a timeout trigger.    | Counter   |
 
-#### Additional metrics emitted at the `detailed` level
+#### Additional `detailed`-level metrics
 
 | Metric name                       | Description                                                                               | Type      |
 | --------------------------------- | ----------------------------------------------------------------------------------------- | --------- |
