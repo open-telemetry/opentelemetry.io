@@ -25,7 +25,7 @@ Before we begin, make sure you have the following running in your environment:
 - Grafana Tempo
 - Grafana
 
-## Steps 
+## Steps
 
 ### Setting Up the OpenTelemetry Collector
 
@@ -129,6 +129,6 @@ these steps to visualize them in Grafana. You can use any tool of your choice to
 
 To make things easy, you can use the dashboard the OpenLIT team made. Just grab the JSON from [here](https://docs.openlit.io/latest/connections/prometheus-tempo#dashboard).
 
-This guide showed you how to use OpenTelemetry, Prometheus, Tempo, and Grafana to monitor your LLM Applications. 
+This guide showed you how to use OpenTelemetry, Prometheus, Tempo, and Grafana to monitor your LLM Applications.
 
 If you have any questions, reach out on my GitHub [@ishanjainn](https://github.com/ishanjainn) or Twitter [@ishan_jainn](https://twitter.com/ishan_jainn).
