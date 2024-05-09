@@ -43,6 +43,7 @@ apiVersion: opentelemetry.io/v1alpha1
 kind: OpenTelemetryCollector
 metadata:
   name: simplest
+  namespace: opentelemetry-operator-system
 spec:
   config: |
     receivers:
