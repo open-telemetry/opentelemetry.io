@@ -10,8 +10,8 @@ about your implementation or adoption that you'd like to share with project
 contributors, or you want to help prioritize project issues. You've come to the
 right place!
 
-- To connect with other end users and learn about upcoming events:
-  - Join the [Slack channel](slack-channel/)
+- To connect with other end users and learn about upcoming events,
+  join the [Slack channel](slack-channel/).
 - To learn about OpenTelemetry, check out:
   - [OTel in practice](otel-in-practice/)
   - Curated content on the
