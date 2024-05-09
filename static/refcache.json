@@ -9123,6 +9123,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-11T06:07:16.115841487Z"
   },
+  "https://yaml.org/spec/1.2.2/#103-core-schema": {
+    "StatusCode": 206,
+    "LastSeen": "2024-05-09T18:03:35.877818575Z"
+  },
   "https://youtu.be/9iaGG-YZw5I": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:06:46.2047-05:00"
