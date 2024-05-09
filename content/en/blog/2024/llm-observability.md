@@ -1,9 +1,10 @@
 ---
-title: LLM Observability with OpenTelemetry
+title: Strategy for monitoring LLM Application with OpenTelemetry
 linkTitle: LLM Observability
 date: 2024-04-09
 author: '[Ishan Jain](https://github.com/ishanjainn) (Grafana)'
-cSpell:ignore: llm associated Ishan ishanjainn ishan_jainn Jain chatbots timeframe
+# prettier-ignore
+cSpell:ignore: associated chatbots Ishan ishan_jainn ishanjainn Jain llm timeframe
 ---
 
 In the tech world, Large Language Models (LLMs), like the brains behind chatbots or code generators, are getting big. But as they grow, making sure they keep running smoothly is a big deal.
@@ -28,7 +29,7 @@ Before we begin, make sure you have the following running in your environment:
 
 ### Setting Up the OpenTelemetry Collector
 
-First up, install the OpenTelemetry Collector. You can find how to do this in the installation guide [here](https://opentelemetry.io/docs/collector/installation/).
+First up, install the OpenTelemetry Collector. You can find how to do this in the installation guide [here](/docs/collector/installation/).
 
 ### Configuring the Collector
 
