@@ -45,17 +45,17 @@ You can adjust the verbosity of the Collector metrics output by setting the
 - `detailed`: the most verbose level, includes dimensions and views.
 
 Each verbosity level represents a threshold at which certain metrics are
-emitted. For the complete list of metrics, with a breakdown by level,
-see [Lists of internal metrics](#lists-of-internal-metrics).
+emitted. For the complete list of metrics, with a breakdown by level, see
+[Lists of internal metrics](#lists-of-internal-metrics).
 
-The default level for metrics output is `normal`. To use another level, set `service.telemetry.metrics.level`:
+The default level for metrics output is `normal`. To use another level, set
+`service::telemetry::metrics::level`:
 
 ```yaml
 service:
   telemetry:
     metrics:
       level: detailed
-      address: ':8888'
 ```
 
 The Collector can also be configured to scrape its own metrics and send them
@@ -128,8 +128,8 @@ The OpenTelemetry Collector aims to be a model of observable service by clearly
 exposing its own operational metrics. Additionally, it collects host resource
 metrics that can help you understand if problems are caused by a different
 process on the same host. Specific components of the Collector can also emit
-their own custom telemetry. In this section, you will learn about the different types
-of observability emitted by the Collector itself.
+their own custom telemetry. In this section, you will learn about the different
+types of observability emitted by the Collector itself.
 
 ### Values observable with internal metrics
 
