@@ -137,11 +137,3 @@ For the individual language specific implementations of the OpenTelemetry API &
 SDK you will find support for sampling at the respective documentation pages:
 
 {{% sampling-support-list " " %}}
-
-### Single-Writer Principle
-
- When scaling collectors for distributed tracing with tail sampling, it's important to consider 
-the Single-Writer Principle. This principle ensures a single logical writer makes sampling decisions for a
-particular trace, avoiding conflicts that might arise from multiple collectors evaluating the same trace for 
-sampling. Techniques like using load balancing exporters in front of tail-sampling collectors can help achieve this. 
-
