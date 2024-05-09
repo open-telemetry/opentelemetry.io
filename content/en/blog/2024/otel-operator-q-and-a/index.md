@@ -1,5 +1,7 @@
 ---
-title: OTel Operator Q&A
+title:
+  Things You Might Not Have Known About the OpenTelemetry Operator - An OTel
+  Operator Q&A
 linkTitle: OTel Operator Q&A
 date: 2024-04-24
 author: >-
@@ -270,7 +272,9 @@ See the
 [Target Allocator readme](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator#rbac)
 for more on Target Allocator RBAC configuration.
 
-> **NOTE:** There are plans to automate this fully in the near future.
+> **NOTE:** This will be automated fully in the near future (see accompanying
+> [PR](https://github.com/open-telemetry/opentelemetry-operator/pull/2787)), and
+> will be released as part of version `0.100.0`.
 
 ### Q8: Can I override the Target Allocator base image?
 
