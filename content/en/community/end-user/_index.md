@@ -53,5 +53,5 @@ OpenTelemetry.
 **I have questions about this, who can I reach out to?**
 
 You can find members of the
-[OpenTelemetry End User SIG](https://github.com/open-telemetry/community/tree/main/working-groups/end-user)
+[OpenTelemetry End User SIG](https://github.com/open-telemetry/sig-end-user)
 in [#otel-sig-end-user](https://cloud-native.slack.com/archives/C01RT3MSWGZ).
