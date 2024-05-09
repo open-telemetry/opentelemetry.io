@@ -109,7 +109,7 @@ openlit.init(
 )
 ```
 
-You can instead pass the OpenTelemetry Collector URL via the
+You can instead pass the OpenTelemetry Collector URL using the
 `OTEL_EXPORTER_OTLP_ENDPOINT` also.
 
 ```python
