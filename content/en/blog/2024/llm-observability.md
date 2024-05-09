@@ -3,7 +3,7 @@ title: LLM Observability with OpenTelemetry
 linkTitle: LLM Observability
 date: 2024-04-09
 author: '[Ishan Jain](https://github.com/ishanjainn) (Grafana)'
-cSpell:ignore: llm associated Ishan ishanjainn Jain
+cSpell:ignore: llm associated Ishan ishanjainn ishan_jainn Jain chatbots timeframe
 ---
 
 In the tech world, Large Language Models (LLMs), like the brains behind chatbots or code generators, are getting big. But as they grow, making sure they keep running smoothly is a big deal.
