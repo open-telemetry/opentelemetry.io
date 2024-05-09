@@ -20,10 +20,10 @@ report on the same data can lead to data loss or, at least, degraded data
 quality. In gateway collector deployments, applying this principle guards
 against sending inconsistent data to the backend. All metric data streams within
 OTLP must have a
-[single writer](/docs/specs/otel/metrics/data-model/#single-writer).
-In a system with multiple collectors, the single-writer principle is most
-relevant for receivers that create their own metrics, such a pull-based scrapers
-or a host metrics receiver.
+[single writer](/docs/specs/otel/metrics/data-model/#single-writer). In a system
+with multiple collectors, the single-writer principle is most relevant for
+receivers that create their own metrics, such a pull-based scrapers or a host
+metrics receiver.
 
 ### Deployment Considerations
 
