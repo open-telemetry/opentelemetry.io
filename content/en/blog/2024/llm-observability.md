@@ -77,18 +77,30 @@ service:
 
 To install the OpenLIT Python Library, run this command:
 
-```sh
+```shell
 pip install openlit
 ```
 
 Then, add these lines to your LLM application:
 
-```
+```python
 import openlit
 
 openlit.init(
   otlp_endpoint="YOUR_OTELCOL_URL:4318", 
 )
+```
+
+You can instead pass the OpenTelemetry Collector URL via the `OTEL_EXPORTER_OTLP_ENDPOINT` also.
+
+```python
+import openlit
+
+openlit.init()
+```
+
+```shell
+export OTEL_EXPORTER_OTLP_ENDPOINT = "YOUR_OTELCOL_URL:4318"
 ```
 
 ## Visualize the metrics and traces
