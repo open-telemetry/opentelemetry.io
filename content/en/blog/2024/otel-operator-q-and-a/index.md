@@ -273,8 +273,8 @@ See the
 for more on Target Allocator RBAC configuration.
 
 > **NOTE:** This will be automated fully in the near future (see accompanying
-> [PR](https://github.com/open-telemetry/opentelemetry-operator/pull/2787)), and
-> will be released as part of version `0.100.0`.
+> [PR](https://github.com/open-telemetry/opentelemetry-operator/pull/2787)), as
+> part of version `0.100.0`.
 
 ### Q8: Can I override the Target Allocator base image?
 
