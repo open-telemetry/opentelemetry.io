@@ -8,12 +8,6 @@ developer_note:
   image file containing "background" in its name.
 show_banner: true
 banners:
-  - text: 'Welcome to our site! Check out our <a href="/blog/">blog</a>.'
-    from: 2024-01-01
-    to: 2024-12-31
-  - text: 'Join our mailing list for updates.'
-    from: 2024-01-01
-    to: 2024-03-01
   - text:
       'Join us for [**OTel Community Day** on June
       25th](https://events.linuxfoundation.org/open-telemetry-community-day/)!'
