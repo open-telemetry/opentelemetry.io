@@ -49,7 +49,7 @@ the installation guide [here](/docs/collector/installation/).
 
 ### Configuring the Collector
 
-Next, you need to tell the collector where to send the data. Here's a simple
+Next, you need to tell the Collector where to send the data. Here's a simple
 configuration for sending metrics to Prometheus and traces to Grafana Tempo:
 
 ```yaml
