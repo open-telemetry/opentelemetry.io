@@ -22,46 +22,76 @@ monitoring data.
 
 ## Why Observability Matters for LLM Applications
 
-Monitoring LLM applications is crucial for several reasons. 
+Monitoring LLM applications is crucial for several reasons.
 
-1. It's vital to keep track of how often LLMs are being used, especially in RAG-based
-applications. This monitoring helps you understand the demand and usage
-patterns. 
-2. Understanding how long it takes for LLMs to respond to requests
-and the nature of each interaction (prompt and response) can significantly
-impact user experience and operational efficiency. Since using these models
-incurs costs per request, tracking usage helps in managing expenses. 
+1. It's vital to keep track of how often LLMs are being used, especially in
+   RAG-based applications. This monitoring helps you understand the demand and
+   usage patterns.
+2. Understanding how long it takes for LLMs to respond to requests and the
+   nature of each interaction (prompt and response) can significantly impact
+   user experience and operational efficiency. Since using these models incurs
+   costs per request, tracking usage helps in managing expenses.
 3. Making too many requests in a short timeframe can lead to rate limiting,
-temporarily blocking further requests. 
+   temporarily blocking further requests.
 
-By keeping a close eye on these aspects,
-you can not only save costs but also avoid hitting request limits, ensuring your
-LLM applications perform optimally.
+By keeping a close eye on these aspects, you can not only save costs but also
+avoid hitting request limits, ensuring your LLM applications perform optimally.
 
 ## What are the signal that you should be looking at?
 
-Integrating Large Language Models (LLMs) into applications represents a pivotal shift from traditional machine learning (ML) practices, particularly because these LLMs are accessed via API calls rather than being hosted locally or run in-house. This external integration necessitates a nuanced approach to observability, where understanding both the sequence of events (through traces) and the aggregated data (through metrics) becomes crucial for optimizing performance and managing costs. Here's the critical signals to monitor:
+Integrating Large Language Models (LLMs) into applications represents a pivotal
+shift from traditional machine learning (ML) practices, particularly because
+these LLMs are accessed via API calls rather than being hosted locally or run
+in-house. This external integration necessitates a nuanced approach to
+observability, where understanding both the sequence of events (through traces)
+and the aggregated data (through metrics) becomes crucial for optimizing
+performance and managing costs. Here's the critical signals to monitor:
 
 ### Traces
 
-Tracing is vital for capturing the flow of requests through your system and understanding the interactions with hosted LLM services. Here's what you need to focus on:
+Tracing is vital for capturing the flow of requests through your system and
+understanding the interactions with hosted LLM services. Here's what you need to
+focus on:
 
-- **Request Metadata**: This is even more critical in the context of LLMs than traditional ML, given the variety of parameters (like temperature and prompt details) that can drastically affect both the response quality and the cost. Specific aspects to monitor are:
-  - **Temperature**: Indicates the level of creativity or randomness desired from the model's outputs. Varying this parameter can significantly impact the nature of the generated content.
-  - **Model Name or Version**: Essential for tracking over time, as updates to the LLM might affect performance or response characteristics.
-  - **Prompt Details**: The exact inputs sent to the LLM, which, unlike in-house ML models where inputs might be more controlled and homogeneous, can vary wildly and affect output complexity and cost implications.
-- **Response Metadata**: Given the API-based interaction with LLMs, tracking the specifics of the response is key for cost management and quality assessment:
-  - **Tokens**: Directly impacts cost and is a measure of response length and complexity.
-  - **Cost**: Critical for budgeting, as API-based costs can scale with the number of requests and the complexity of each request.
-  - **Response Details**: Similar to the prompt details but from the response perspective, providing insights into the model's output characteristics and potential areas of inefficiency or unexpected cost.
+- **Request Metadata**: This is even more critical in the context of LLMs than
+  traditional ML, given the variety of parameters (like temperature and prompt
+  details) that can drastically affect both the response quality and the cost.
+  Specific aspects to monitor are:
+  - **Temperature**: Indicates the level of creativity or randomness desired
+    from the model's outputs. Varying this parameter can significantly impact
+    the nature of the generated content.
+  - **Model Name or Version**: Essential for tracking over time, as updates to
+    the LLM might affect performance or response characteristics.
+  - **Prompt Details**: The exact inputs sent to the LLM, which, unlike in-house
+    ML models where inputs might be more controlled and homogeneous, can vary
+    wildly and affect output complexity and cost implications.
+- **Response Metadata**: Given the API-based interaction with LLMs, tracking the
+  specifics of the response is key for cost management and quality assessment:
+  - **Tokens**: Directly impacts cost and is a measure of response length and
+    complexity.
+  - **Cost**: Critical for budgeting, as API-based costs can scale with the
+    number of requests and the complexity of each request.
+  - **Response Details**: Similar to the prompt details but from the response
+    perspective, providing insights into the model's output characteristics and
+    potential areas of inefficiency or unexpected cost.
 
 ### Metrics
 
-Metrics offer a quantifiable way to track and visualize how your application's LLM integration is performing over time plus they enable a quicker overall view to performance as compared to Traces. The key metrics to monitor include:
+Metrics offer a quantifiable way to track and visualize how your application's
+LLM integration is performing over time plus they enable a quicker overall view
+to performance as compared to Traces. The key metrics to monitor include:
 
-- **Request Volume**: The total number of requests made to the LLM service. This helps in understanding the demand patterns and identifying any anomaly in usage, such as sudden spikes or drops.
-- **Request Duration**: The time it takes for a request to be processed and a response to be received from the LLM. This includes network latency and the time the LLM takes to generate a response, providing insights into the performance and reliability of the LLM service.
-- **Costs and Tokens Counters**: Keeping track of the total cost accrued and tokens consumed over time is essential for budgeting and cost optimization strategies. Monitoring these metrics can alert you to unexpected increases that may indicate inefficient use of the LLM or the need for optimization.
+- **Request Volume**: The total number of requests made to the LLM service. This
+  helps in understanding the demand patterns and identifying any anomaly in
+  usage, such as sudden spikes or drops.
+- **Request Duration**: The time it takes for a request to be processed and a
+  response to be received from the LLM. This includes network latency and the
+  time the LLM takes to generate a response, providing insights into the
+  performance and reliability of the LLM service.
+- **Costs and Tokens Counters**: Keeping track of the total cost accrued and
+  tokens consumed over time is essential for budgeting and cost optimization
+  strategies. Monitoring these metrics can alert you to unexpected increases
+  that may indicate inefficient use of the LLM or the need for optimization.
 
 ## Prerequisites
 
@@ -121,6 +151,14 @@ service:
 ```
 
 ## Instrument your LLM Application with OpenLIT
+
+OpenLIT is an OpenTelemetry-based library designed to streamline the monitoring
+of LLM-based applications by offering auto-instrumentation for a variety of
+Large Language Models and VectorDBs. It aligns with the GenAI semantic
+conventions established by the OpenTelemetry community and ensures a smooth
+integration process by not relying on vendor-specific span attributes or
+environment variables for OTLP endpoint configuration, offering a universally
+compatible solution.
 
 ### Install the library
 
