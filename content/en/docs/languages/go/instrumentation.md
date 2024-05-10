@@ -5,7 +5,7 @@ aliases:
   - manual_instrumentation
 weight: 30
 description: Manual instrumentation for OpenTelemetry Go
-cSpell:ignore: fatalf sdktrace sighup
+cSpell:ignore: fatalf sdktrace sighup logrus logr otlplog otlploghttp otelslog
 ---
 
 {{% docs/languages/instrumentation-intro %}}
