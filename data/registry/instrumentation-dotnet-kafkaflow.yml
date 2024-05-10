@@ -8,7 +8,9 @@ tags:
   - instrumentation
   - dotnet
 license: MIT
-description: This is an Instrumentation Library, which instruments KafkaFlow and collects traces and baggage signals about Kafka messaging.
+description:
+  This is an Instrumentation Library, which instruments KafkaFlow and collects
+  traces and baggage signals about Kafka messaging.
 authors:
   - name: Farfetch
 urls:
