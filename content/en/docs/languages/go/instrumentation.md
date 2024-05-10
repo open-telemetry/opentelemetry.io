@@ -884,7 +884,7 @@ ecosystem. For rationale behind this design decision, see
 The two typical workflows discussed below each cater to different application
 requirements.
 
-### Direct to collector
+### Direct to collector (Experimental)
 
 In the direct to collector workflow, logs are emitted directly from an
 application to a collector using a network protocol (e.g. OTLP). This workflow
@@ -901,7 +901,7 @@ To use this workflow:
   other).
 - Use an appropriate [Log Bridge](#log-bridge).
 
-#### Logs SDK
+#### Logs SDK (Experimental)
 
 The logs SDK dictates how logs are processed when using the
 [direct to collector](#direct-to-collector) workflow. No log SDK is needed when
@@ -1006,7 +1006,7 @@ func newLoggerProvider(ctx context.Context, res *resource.Resource) (*log.Logger
 Now that a `LoggerProvider` is configured, you can use it to set up a
 [Log Bridge](#log-bridge).
 
-#### Log Bridge
+#### Log Bridge (Experimental)
 
 A log bridge is a component that bridges logs from an existing log package into
 the OpenTelemetry [Log SDK](#logs-sdk) using the [Logs Bridge
