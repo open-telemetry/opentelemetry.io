@@ -46,8 +46,7 @@ cascade:
 OpenTelemetry 是各类 API、SDK 和工具形成的集合。可用于仪表化、生成、采集和导出遥
 测数据（链路、指标和日志），帮助你分析软件的性能和行为。
 
-> OpenTelemetry 在[多种编程语言](/docs/languages/)均达到 **GA** 级别，普适性很高
-> 。
+> OpenTelemetry 在[多种编程语言](/docs/languages/)均达到 **GA** 级别，普适性很高。
 
 {{% /blocks/lead %}}
 
