@@ -940,10 +940,8 @@ package main
 
 import (
 	"context"
-	"log"
-	"time"
+	"fmt"
 
-	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp"
 	"go.opentelemetry.io/otel/log/global"
 	"go.opentelemetry.io/otel/sdk/log"
@@ -969,8 +967,8 @@ func main() {
 
 	// Handle shutdown properly so nothing leaks.
 	defer func() {
-		if err := loggerProvider.Shutdown(); err != nil {
-			log.Println(err)
+		if err := loggerProvider.Shutdown(ctx); err != nil {
+			fmt.Println(err)
 		}
 	}()
 
