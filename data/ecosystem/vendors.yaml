@@ -171,7 +171,7 @@
 - name: ServiceNow Cloud Observability (Lightstep)
   nativeOTLP: true
   url: https://docs.lightstep.com/docs/about-sending-data
-  contact:
+  contact: @cartersocha
   oss: false
   commercial: true
 - name: LogicMonitor
