@@ -1,7 +1,6 @@
 # cSpell:ignore docsy goldmark netlify wordmark
 baseURL: https://opentelemetry.io
-title: &title OpenTelemetry
-description: &desc The OpenTelemetry Project Site
+title: OpenTelemetry
 disableKinds: [taxonomy]
 theme: [docsy]
 disableAliases: true # We do redirects via Netlify's _redirects file
@@ -13,8 +12,8 @@ languages:
   en:
     languageName: English
     params:
-      title: *title
-      description: *desc
+      description: The OpenTelemetry Project Site
+
 imaging:
   resampleFilter: CatmullRom # cspell:disable-line
   quality: 75

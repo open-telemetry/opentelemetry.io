@@ -24,7 +24,7 @@ helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm
 helm install my-opentelemetry-operator open-telemetry/opentelemetry-operator \
   --set "manager.collectorImage.repository=otel/opentelemetry-collector-k8s" \
   --set admissionWebhooks.certManager.enabled=false \
-  --set admissionWebhooks.certManager.autoGenerateCert.enabled=true
+  --set admissionWebhooks.autoGenerateCert.enabled=true
 ```
 
 This will install an OpenTelemetry Operator with a self-signed certificate and
