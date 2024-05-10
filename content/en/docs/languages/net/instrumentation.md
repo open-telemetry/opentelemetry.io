@@ -100,6 +100,7 @@ Create the app file `DiceController.cs` and add the following code to it:
 
 ```csharp
 /*DiceController.cs*/
+
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -263,9 +264,9 @@ If initializing the OpenTelemetry SDK for a console app,
 add the following code at the beginning of your program, during any important startup operations.
 
 ```csharp
+using OpenTelemetry.Logs;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
-using OpenTelemetry.Logs;
 
 //...
 
@@ -339,7 +340,7 @@ use a no-op implementation and fail to generate data.
 
 If you followed the instructions to [initialize the SDK](#initialize-the-sdk)
 above, you have a `TracerProvider` setup for you already. You can continue with
-[acquiring a tracer](#acquiring-a-tracer).
+[setting up an ActivitySource](#setting-up-an-activitysource).
 
 
 ### Setting up an ActivitySource
@@ -349,22 +350,7 @@ Anywhere in your application where you write manual tracing code should configur
 trace operations with [`Activity`](/docs/concepts/signals/traces/#spans)
 elements.
 
-For example:
-
-```csharp
-
-public static class Telemetry
-{
-    //...
-
-    public static readonly ActivitySource MyActivitySource = new("name", "version");
-
-    //...
-}
-```
-The values of name and version should uniquely identify the Instrumentation Scope, such as the package, module or class name. While the name is required, the version is still recommended despite being optional.
-
-It’s generally recommended to define `ActivitySource` once per app/service that is been instrumented, but you can instantiate several `ActivitySource`s if that suits your scenario
+It’s generally recommended to define `ActivitySource` once per app/service that is been instrumented, but you can instantiate several `ActivitySource`s if that suits your scenario.
 
 In the case of the example app, we will create a new file `Instrumentation.cs` as a custom type to hold reference for the ActivitySource. 
 
@@ -413,9 +399,12 @@ app.Run();
 
 ```
 
-In the application file `DiceController.cs` we then reference that activitySource instance:
+In the application file `DiceController.cs` we will reference that activitySource instance 
+and the same activitySource instance will also be passed to the library file `Dice.cs`
 
 ```csharp
+/*DiceController.cs*/
+
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Net;
@@ -426,21 +415,42 @@ public class DiceController : ControllerBase
 
     private ActivitySource activitySource;
 
-     public DiceController(ILogger<DiceController> logger, Instrumentation instrumentation)
+    public DiceController(ILogger<DiceController> logger, Instrumentation instrumentation)
     {
         this.logger = logger;
         this.activitySource = instrumentation.ActivitySource;
     }
 
-    //...
+    [HttpGet("/rolldice")]
+    public List<int> RollDice(string player, int? rolls)
+    {
+        List<int> result = new List<int>();
+
+        if (!rolls.HasValue)
+        {
+            logger.LogError("Missing rolls parameter");
+            throw new HttpRequestException("Missing rolls parameter", null, HttpStatusCode.BadRequest);
+        }
+
+        result = new Dice(1, 6, activitySource).rollTheDice(rolls.Value);
+
+        if (string.IsNullOrEmpty(player))
+        {
+            logger.LogInformation("Anonymous player is rolling the dice: {result}", result);
+        }
+        else
+        {
+            logger.LogInformation("{player} is rolling the dice: {result}", player, result);
+        }
+
+        return result;
+    }
 }
-
-
 ```
 
-The same activitySource is also passed to the library file `Dice.cs`:
 
 ```csharp
+/*Dice.cs*/
 
 using System.Diagnostics;
 
@@ -459,7 +469,6 @@ public class Dice
 
     //...
 }
-
 ```
 
 ### Create Activities
