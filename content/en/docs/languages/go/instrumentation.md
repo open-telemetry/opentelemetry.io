@@ -896,9 +896,9 @@ suitable for all applications.
 
 To use this workflow:
 
-- Configure the OpenTelemetry [Log SDK](#logs-sdk-experimental) to export log records to
-  desired target destination (the [collector][opentelemetry collector] or
-  other).
+- Configure the OpenTelemetry [Log SDK](#logs-sdk-experimental) to export log
+  records to desired target destination (the
+  [collector][opentelemetry collector] or other).
 - Use an appropriate [Log Bridge](#log-bridge-experimental).
 
 #### Logs SDK (Experimental)
@@ -1024,11 +1024,11 @@ Another component (e.g. FluentBit) is responsible for reading / tailing the
 logs, parsing them to more structured format, and forwarding them a target, such
 as the collector. This workflow may be preferable in situations where
 application requirements do not permit additional overhead from
-[direct to collector](#direct-to-collector-experimental). However, it requires that all log
-fields required down stream are encoded into the logs, and that the component
-reading the logs parse the data into the [log data model][log data model]. The
-installation and configuration of log forwarding components is outside the scope
-of this document.
+[direct to collector](#direct-to-collector-experimental). However, it requires
+that all log fields required down stream are encoded into the logs, and that the
+component reading the logs parse the data into the [log data
+model][log data model]. The installation and configuration of log forwarding
+components is outside the scope of this document.
 
 ## Next Steps
 
