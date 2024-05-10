@@ -877,7 +877,7 @@ meterProvider := metric.NewMeterProvider(
 
 Logs are distinct from metrics and traces in that **there is no user-facing
 OpenTelemetry logs API**. Instead, there is tooling to bridge logs from existing
-popular log packages (e.g. slog, logrus, zap, logr) into the OpenTelemetry
+popular log packages (such as slog, logrus, zap, logr) into the OpenTelemetry
 ecosystem. For rationale behind this design decision, see
 [Logging specification](/docs/specs/otel/logs/).
 
