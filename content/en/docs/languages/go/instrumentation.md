@@ -910,13 +910,12 @@ using the [log forwarding](#via-file-or-stdout) workflow.
 The typical log SDK configuration installs a batching log record processor with
 an OTLP exporter.
 
-To enable [logs](/docs/concepts/signals/logs/) in your app, you'll need to
-have an initialized
-[`LoggerProvider`](/docs/concepts/signals/logs/#logger-provider) that will let
-you use a [Log Bridge](#log-bridge).
+To enable [logs](/docs/concepts/signals/logs/) in your app, you'll need to have
+an initialized [`LoggerProvider`](/docs/concepts/signals/logs/#logger-provider)
+that will let you use a [Log Bridge](#log-bridge).
 
-If a `LoggerProvider` is not created, the OpenTelemetry APIs for logs will use
-a no-op implementation and fail to generate data. Therefore, you have to modify
+If a `LoggerProvider` is not created, the OpenTelemetry APIs for logs will use a
+no-op implementation and fail to generate data. Therefore, you have to modify
 the source code to include the SDK initialization code using the following
 packages:
 
@@ -1004,14 +1003,15 @@ func newLoggerProvider(ctx context.Context, res *resource.Resource) (*log.Logger
 }
 ```
 
-Now that a `LoggerProvider` is configured, you can use it to set up
-a [Log Bridge](#log-bridge).
+Now that a `LoggerProvider` is configured, you can use it to set up a
+[Log Bridge](#log-bridge).
 
 #### Log Bridge
 
-A log bridge is a component that bridges logs from an existing log package
-into the OpenTelemetry [Log SDK](#logs-sdk) using the [Logs Bridge API][logs bridge API].
-Log bridges are available for various popular Go log packages:
+A log bridge is a component that bridges logs from an existing log package into
+the OpenTelemetry [Log SDK](#logs-sdk) using the [Logs Bridge
+API][logs bridge API]. Log bridges are available for various popular Go log
+packages:
 
 - [slog bridge][`go.opentelemetry.io/contrib/bridges/otelslog`]
 
