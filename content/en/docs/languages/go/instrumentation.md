@@ -904,8 +904,8 @@ To use this workflow:
 #### Logs SDK (Experimental)
 
 The logs SDK dictates how logs are processed when using the
-[direct to collector](#direct-to-collector) workflow. No log SDK is needed when
-using the [log forwarding](#via-file-or-stdout) workflow.
+[direct to collector](#direct-to-collector-experimental) workflow. No log SDK is
+needed when using the [log forwarding](#via-file-or-stdout) workflow.
 
 The typical log SDK configuration installs a batching log record processor with
 an OTLP exporter.
