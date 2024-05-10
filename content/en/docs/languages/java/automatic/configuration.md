@@ -223,17 +223,19 @@ Supported values for `OTEL_TRACES_SAMPLER` are the following:
 Exporters output the telemetry. The following configuration properties are
 common to all exporters:
 
-| Environment variable                          | Purpose                                                                                                                                                                                                  |
-| --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `OTEL_TRACES_EXPORTER`                        | List of exporters to be used for tracing, separated by commas. Default is `otlp`. `none` means no auto-configured exporter.                                                                              |
-| `OTEL_METRICS_EXPORTER`                       | List of exporters to be used for metrics, separated by commas. Default is `otlp`. `none` means no auto-configured exporter.                                                                              |
-| `OTEL_LOGS_EXPORTER`                          | List of exporters to be used for logging, separated by commas. Default is `otlp`. `none` means no auto-configured exporter.                                                                              |
-| `OTEL_JAVA_EXPERIMENTAL_EXPORTER_MEMORY_MODE` | If `reusable_data`, enable reusable memory mode (on exporters which support it) to reduce allocations. Default is `immutable_data`. This option is experimental and subject to change or removal.**[1]** |
+| Environment variable                          | Purpose                                                                                                                                                                                               |
+| --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `OTEL_TRACES_EXPORTER`                        | List of exporters to be used for tracing, separated by commas. Default is `otlp`. `none` means no auto-configured exporter.                                                                           |
+| `OTEL_METRICS_EXPORTER`                       | List of exporters to be used for metrics, separated by commas. Default is `otlp`. `none` means no auto-configured exporter.                                                                           |
+| `OTEL_LOGS_EXPORTER`                          | List of exporters to be used for logging, separated by commas. Default is `otlp`. `none` means no auto-configured exporter.                                                                           |
+| `OTEL_JAVA_EXPERIMENTAL_EXPORTER_MEMORY_MODE` | If `reusable_data`, enable reusable memory mode (on exporters which support it) to reduce allocations. Default is `immutable_data`. This option is experimental and subject to change or removal.[^1] |
 
-**[1]**: NOTE: The exporters which adhere to
-`OTEL_JAVA_EXPERIMENTAL_EXPORTER_MEMORY_MODE=reusable_data` are
-`OtlpGrpcMetricExporter`, `OtlpHttpMetricExporter`, and `PrometheusHttpServer`.
-Support for additional exporters may be added in the future.
+[^1]:
+    Exporters which adhere to
+    `OTEL_JAVA_EXPERIMENTAL_EXPORTER_MEMORY_MODE=reusable_data` are
+    `OtlpGrpcMetricExporter`, `OtlpHttpMetricExporter`, and
+    `PrometheusHttpServer`. Support for additional exporters may be added in the
+    future.
 
 ### OTLP exporter (span, metric, and log exporters)
 
@@ -808,9 +810,3 @@ Finally, using the suppression strategy `none` would result in 3 spans:
   Netty instrumentation;
 - `CLIENT` span with HTTP client semantic attributes emitted by the Netty
   instrumentation.
-
-## Next steps
-
-For more information about configuring the SDK, refer to the
-[autoconfigure](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md)
-documentation.
