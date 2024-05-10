@@ -1,4 +1,4 @@
-# cSpell:ignore docsy goldmark netlify wordmark
+# cSpell:ignore docsy goldmark linkify netlify wordmark
 baseURL: https://opentelemetry.io
 title: OpenTelemetry
 disableKinds: [taxonomy]
@@ -8,11 +8,18 @@ enableGitInfo: true
 
 # Language settings
 enableMissingTranslationPlaceholders: true
+defaultContentLanguage: en
+
 languages:
   en:
     languageName: English
     params:
       description: The OpenTelemetry Project Site
+  zh:
+    disabled: true
+    languageName: 中文 (Chinese)
+    params:
+      description: OpenTelemetry 项目网站
 
 imaging:
   resampleFilter: CatmullRom # cspell:disable-line
@@ -207,6 +214,9 @@ module:
   mounts:
     - source: content/en
       target: content
+    - source: content/zh
+      target: content
+      lang: zh
     - source: tmp/otel/specification
       target: content/docs/specs/otel
     - source: tmp/opamp
