@@ -6915,6 +6915,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-03-01T16:49:37.76693+01:00"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelslog": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-10T11:02:15.508410781Z"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp": {
     "StatusCode": 200,
     "LastSeen": "2024-01-19T15:36:28.468246594Z"
@@ -6978,6 +6982,10 @@
   "https://pkg.go.dev/go.opentelemetry.io/otel/metric#WithAttributes": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:42.951557-05:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/log": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-10T11:02:08.878761042Z"
   },
   "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric": {
     "StatusCode": 200,
