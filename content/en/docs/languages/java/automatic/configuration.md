@@ -85,7 +85,9 @@ Java properties file which contains the agent configuration.
 
 ### Extensions
 
-You can enable [extensions][] by setting the following property:
+You can enable
+[extensions](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/examples/extension#readme)
+by setting the following property:
 
 {{% config_option name="otel.javaagent.extensions" %}}
 
@@ -807,5 +809,8 @@ Finally, using the suppression strategy `none` would result in 3 spans:
 - `CLIENT` span with HTTP client semantic attributes emitted by the Netty
   instrumentation.
 
-[extensions]:
-  https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/examples/extension#readme
+## Next steps
+
+For more information about configuring the SDK, refer to the
+[autoconfigure](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md)
+documentation.
