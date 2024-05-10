@@ -135,8 +135,9 @@ Remote Write exporter, which allows you to push data to Prometheus from multiple
 Collector instances with no issues. Since Prometheus also accepts remote write
 ingestion, you can also use this exporter if you are generating OTel metrics and
 want to ship them to a backend that is compatible with Prometheus remote write.
-Learn more about the architecture of both exporters
-[here](https://grafana.com/blog/2023/07/20/a-practical-guide-to-data-collection-with-opentelemetry-and-prometheus/#6-use-prometheus-remote-write-exporter).
+To learn more about the architecture of both exporters, see [Use Prometheus
+Remote Write
+exporter](https://grafana.com/blog/2023/07/20/a-practical-guide-to-data-collection-with-opentelemetry-and-prometheus/#6-use-prometheus-remote-write-exporter).
 
 ## Using the Target Allocator
 
