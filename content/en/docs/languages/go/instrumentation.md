@@ -896,10 +896,10 @@ suitable for all applications.
 
 To use this workflow:
 
-- Configure the OpenTelemetry [Log SDK](#logs-sdk) to export log records to
+- Configure the OpenTelemetry [Log SDK](#logs-sdk-experimental) to export log records to
   desired target destination (the [collector][opentelemetry collector] or
   other).
-- Use an appropriate [Log Bridge](#log-bridge).
+- Use an appropriate [Log Bridge](#log-bridge-experimental).
 
 #### Logs SDK (Experimental)
 
@@ -912,7 +912,7 @@ an OTLP exporter.
 
 To enable [logs](/docs/concepts/signals/logs/) in your app, you'll need to have
 an initialized [`LoggerProvider`](/docs/concepts/signals/logs/#logger-provider)
-that will let you use a [Log Bridge](#log-bridge).
+that will let you use a [Log Bridge](#log-bridge-experimental).
 
 If a `LoggerProvider` is not created, the OpenTelemetry APIs for logs will use a
 no-op implementation and fail to generate data. Therefore, you have to modify
@@ -1004,12 +1004,12 @@ func newLoggerProvider(ctx context.Context, res *resource.Resource) (*log.Logger
 ```
 
 Now that a `LoggerProvider` is configured, you can use it to set up a
-[Log Bridge](#log-bridge).
+[Log Bridge](#log-bridge-experimental).
 
 #### Log Bridge (Experimental)
 
 A log bridge is a component that bridges logs from an existing log package into
-the OpenTelemetry [Log SDK](#logs-sdk) using the [Logs Bridge
+the OpenTelemetry [Log SDK](#logs-sdk-experimental) using the [Logs Bridge
 API][logs bridge API]. Log bridges are available for various popular Go log
 packages:
 
@@ -1024,7 +1024,7 @@ Another component (e.g. FluentBit) is responsible for reading / tailing the
 logs, parsing them to more structured format, and forwarding them a target, such
 as the collector. This workflow may be preferable in situations where
 application requirements do not permit additional overhead from
-[direct to collector](#direct-to-collector). However, it requires that all log
+[direct to collector](#direct-to-collector-experimental). However, it requires that all log
 fields required down stream are encoded into the logs, and that the component
 reading the logs parse the data into the [log data model][log data model]. The
 installation and configuration of log forwarding components is outside the scope
