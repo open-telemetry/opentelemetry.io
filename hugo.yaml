@@ -16,7 +16,6 @@ languages:
     params:
       description: The OpenTelemetry Project Site
   zh:
-    disabled: true
     languageName: 中文 (Chinese)
     params:
       description: OpenTelemetry 项目网站
