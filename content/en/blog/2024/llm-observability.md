@@ -38,7 +38,7 @@ Monitoring LLM applications is crucial for several reasons.
 By keeping a close eye on these aspects, you can not only save costs but also
 avoid hitting request limits, ensuring your LLM applications perform optimally.
 
-## What are the signal that you should be looking at?
+## What are the signals that you should be looking at?
 
 Integrating Large Language Models (LLMs) into applications represents a pivotal
 shift from traditional machine learning (ML) practices, particularly because
