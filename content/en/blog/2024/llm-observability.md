@@ -125,7 +125,7 @@ installation guide [here](/docs/collector/installation/).
 ### Configuring the Collector
 
 Next, you need to tell the Collector where to send the data. Here's a simple
-configuration for sending metrics to Prometheus and traces to Jaeger:
+configuration for sending metrics to **Prometheus** and traces to **Jaeger**:
 
 ```yaml
 receivers:
