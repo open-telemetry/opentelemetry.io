@@ -1,5 +1,5 @@
 <!-- cSpell:ignore contribfest markdownify -->
-{{ if .Params.show_banner }}
+{{ if and .Params.show_banner (isset .Params "banners") (gt (len .Params.banners) 0) }}
   {{ $limit := .Params.limit_banner | default 2 }}
   {{ $sorted := sort .Params.banners "to" }}
   {{ $currentDate := now.Format "2006-01-02" }}
@@ -14,7 +14,7 @@
 <div class="o-banner">
     {{ range $filtered }}
 <!-- prettier-ignore -->
-<i class="{{ .icon | default `fas fa-bullhorn` }}"></i> 
+<i class="{{ .icon | default `fas fa-bullhorn` }}"></i>
 {{ .text | markdownify }}
     {{ end }}
 </div>
