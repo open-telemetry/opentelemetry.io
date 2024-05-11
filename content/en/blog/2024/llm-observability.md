@@ -74,10 +74,13 @@ costs. Here are the key signals to monitor:
 
 - **Response Metadata**: Given the API-based interaction with LLMs, tracking the
   specifics of the response is key for cost management and quality assessment:
+
   - **Tokens**: Directly impacts cost and is a measure of response length and
     complexity.
+
   - **Cost**: Critical for budgeting, as API-based costs can scale with the
     number of requests and the complexity of each request.
+
   - **Response Details**: Similar to the prompt details but from the response
     perspective, providing insights into the model's output characteristics and
     potential areas of inefficiency or unexpected cost.
