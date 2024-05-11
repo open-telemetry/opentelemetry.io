@@ -56,17 +56,22 @@ costs. Here are the key signals to monitor:
   variety of parameters (like `temperature` and `top_p`) that can drastically
   affect both the response quality and the cost. Specific aspects to monitor
   are:
+
   - **Temperature**: Indicates the level of creativity or randomness desired
     from the model's outputs. Varying this parameter can significantly impact
     the nature of the generated content.
+
   - **top_p**: Decides how selective the model is by choosing from a certain
     percentage of most likely words. A high "top_p" value means the model
     considers a wider range of words, making the text more varied.
+
   - **Model Name or Version**: Essential for tracking over time, as updates to
     the LLM might affect performance or response characteristics.
+
   - **Prompt Details**: The exact inputs sent to the LLM, which, unlike in-house
     ML models where inputs might be more controlled and homogeneous, can vary
     wildly and affect output complexity and cost implications.
+
 - **Response Metadata**: Given the API-based interaction with LLMs, tracking the
   specifics of the response is key for cost management and quality assessment:
   - **Tokens**: Directly impacts cost and is a measure of response length and
