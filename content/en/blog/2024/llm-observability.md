@@ -79,7 +79,7 @@ costs. Here are the key signals to monitor:
 
 {{% alert title="Note" %}}
 
-The LLM Working Group has recommnded on capturing these details on events
+The LLM Working Group has recommended on capturing these details on events
 instead of spans.attributes because many backend systems can struggle with those
 often large payloads.
 
