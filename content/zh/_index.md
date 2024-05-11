@@ -77,13 +77,13 @@ OpenTelemetry 是 100% 免费和开源的，
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**OpenTelemetry 是一个 [CNCF](https://cncf.io/) [孵化中](https://www.cncf.io/projects/) 项目**。<br> 这个项目是由
+**OpenTelemetry 是一个 [CNCF][] [孵化中][] 项目**。<br> 这个项目是由
 OpenTracing 和 OpenCensus 项目合并而诞生的。
 
 [![CNCF logo][]][cncf]
 
 [cncf]: https://cncf.io
 [cncf logo]: /img/logos/cncf-white.svg
-[incubating]: https://www.cncf.io/projects/
+[孵化中]: https://www.cncf.io/projects/
 
 {{% /blocks/section %}}
