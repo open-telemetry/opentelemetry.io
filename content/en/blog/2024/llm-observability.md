@@ -10,7 +10,7 @@ cSpell:ignore: associated chatbots Ishan ishan_jainn ishanjainn Jain llm timefra
 ---
 
 Large Language Models (LLMs) are really popular right now, especially
-considering the the wide usecases that they have from chatbots to copilot bots
+considering the the wide range of applications that they have from simple chatbots to copilot bots
 that are helping software engineers write code. Seeing the growing use of LLMs
 in production, it’s important for users to learn how to understand and monitor
 how these models behave.
@@ -32,8 +32,8 @@ Monitoring LLM applications is crucial for several reasons.
 2. Latency is important to track since the response time from the model can vary
    based on the inputs passed to the LLM.
 3. Although rate limiting is a universal problem, In context of external LLMs it
-   has become important as applications are now depneding on API calls and
-   rate-limiting would essentially their core functioning.
+   has become important as applications are now depending on API calls and
+   rate-limiting would stop them from their core functioning.
 
 By keeping a close eye on these aspects, you can not only save costs but also
 avoid hitting request limits, ensuring your LLM applications perform optimally.
@@ -80,7 +80,7 @@ costs. Here are the key signals to monitor:
 
 The LLM Working Group, is not capturing these details on spans because many
 backend systems can struggle with those often large payloads and instead
-recommened capturing these as part of the events
+recommended capturing these as part of the events
 
 {{% /alert %}}
 
