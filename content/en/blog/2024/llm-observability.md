@@ -10,10 +10,10 @@ cSpell:ignore: associated chatbots Ishan ishan_jainn ishanjainn Jain llm timefra
 ---
 
 Large Language Models (LLMs) are really popular right now, especially
-considering the the wide range of applications that they have from simple chatbots to copilot bots
-that are helping software engineers write code. Seeing the growing use of LLMs
-in production, it’s important for users to learn how to understand and monitor
-how these models behave.
+considering the the wide range of applications that they have from simple
+chatbots to copilot bots that are helping software engineers write code. Seeing
+the growing use of LLMs in production, it’s important for users to learn how to
+understand and monitor how these models behave.
 
 In the following example, we'll use [Prometheus](https://prometheus.io/) and
 [Jaeger](https://www.jaegertracing.io/) as the target backend for metrics and
