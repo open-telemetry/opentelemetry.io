@@ -114,7 +114,7 @@ often large payloads.
 Before we begin, make sure you have the following running in your environment:
 
 - Prometheus
-- Grafana Tempo
+- Jaeger
 - Grafana
 
 ### Setting Up the OpenTelemetry Collector
@@ -125,7 +125,7 @@ installation guide [here](/docs/collector/installation/).
 ### Configuring the Collector
 
 Next, you need to tell the Collector where to send the data. Here's a simple
-configuration for sending metrics to Prometheus and traces to Grafana Tempo:
+configuration for sending metrics to Prometheus and traces to Jaeger:
 
 ```yaml
 receivers:
