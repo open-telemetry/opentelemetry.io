@@ -1,7 +1,6 @@
-# cSpell:ignore docsy goldmark netlify wordmark
+# cSpell:ignore docsy goldmark linkify netlify wordmark
 baseURL: https://opentelemetry.io
-title: &title OpenTelemetry
-description: &desc The OpenTelemetry Project Site
+title: OpenTelemetry
 disableKinds: [taxonomy]
 theme: [docsy]
 disableAliases: true # We do redirects via Netlify's _redirects file
@@ -9,12 +8,18 @@ enableGitInfo: true
 
 # Language settings
 enableMissingTranslationPlaceholders: true
+defaultContentLanguage: en
+
 languages:
   en:
     languageName: English
     params:
-      title: *title
-      description: *desc
+      description: The OpenTelemetry Project Site
+  zh:
+    languageName: 中文 (Chinese)
+    params:
+      description: OpenTelemetry 项目网站
+
 imaging:
   resampleFilter: CatmullRom # cspell:disable-line
   quality: 75
@@ -46,7 +51,7 @@ outputFormats:
     notAlternative: true
 
 outputs:
-  home: [HTML, REDIRECTS]
+  home: [HTML]
   section: [HTML]
 
 params:
@@ -208,6 +213,9 @@ module:
   mounts:
     - source: content/en
       target: content
+    - source: content/zh
+      target: content
+      lang: zh
     - source: tmp/otel/specification
       target: content/docs/specs/otel
     - source: tmp/opamp
