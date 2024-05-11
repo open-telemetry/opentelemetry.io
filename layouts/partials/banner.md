@@ -1,4 +1,4 @@
-<!-- cSpell:ignore contribfest markdownify -->
+<!-- cSpell:ignore contribfest markdownify isset -->
 {{ if and .Params.show_banner (isset .Params "banners") (gt (len .Params.banners) 0) }}
   {{ $limit := .Params.limit_banner | default 2 }}
   {{ $sorted := sort .Params.banners "to" }}
