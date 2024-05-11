@@ -1,5 +1,5 @@
 ---
-title: Observability for LLM-based applications using OpenTelemetry
+title: An Introduction to Observability for LLM-based applications using OpenTelemetry
 linkTitle: LLM Observability
 date: 2024-04-09
 author: '[Ishan Jain](https://github.com/ishanjainn) (Grafana)'
