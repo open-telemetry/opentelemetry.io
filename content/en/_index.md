@@ -10,6 +10,7 @@ developer_note:
   The blocks/cover shortcode (used below) will use as a background image any
   image file containing "background" in its name.
 show_banner: true
+limit_banner: 2 # Default to 2, adjust as needed
 banners:
   - text:
       'Join us for [**OTel Community Day** on June
