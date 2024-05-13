@@ -71,7 +71,7 @@ you could technically
 [pass it multiple Collector config files using multiple --values flags](https://stackoverflow.com/a/56653384)
 and let [Helm](https://helm.sh) do the merging for you.
 
-> **NOTE:** There are plans to offer higher-level constructs for sepcifying
+> **NOTE:** There are plans to offer higher-level constructs for specifying
 > configurations in the future, as per
 > [this PR](https://github.com/open-telemetry/opentelemetry-operator/issues/1906).
 
