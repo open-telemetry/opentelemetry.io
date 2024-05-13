@@ -33,7 +33,7 @@ Set the address in the config `service.telemetry.metrics`:
 service:
   telemetry:
     metrics:
-      address: '0.0.0.0:8888'
+      address: 0.0.0.0:8888
 ```
 
 You can adjust the verbosity of the Collector metrics output by setting the
