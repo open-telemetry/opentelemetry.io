@@ -43,7 +43,7 @@ cascade:
 
 {{% blocks/lead color="white" %}}
 
-OpenTelemetry 是各类 API、SDK 和工具形成的集合。可用于插装、生成、采集和导出遥测数据（链路、指标和日志），帮助你分析软件的性能和行为。
+OpenTelemetry 是各类 API、SDK 和工具形成的集合。可用于插桩、生成、采集和导出遥测数据（链路、指标和日志），帮助你分析软件的性能和行为。
 
 > OpenTelemetry 在[多种编程语言](/docs/languages/)均达到 **GA** 级别，普适性很高。
 
