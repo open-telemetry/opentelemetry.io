@@ -3,6 +3,7 @@ DirectoryPath: public
 IgnoreDirectoryMissingTrailingSlash: true
 IgnoreAltMissing: true
 IgnoreCanonicalBrokenLinks: false
+IgnoreInternalEmptyHash: true # TODO: remove after resolution of https://github.com/google/docsy/issues/1995
 CheckMailto: false
 TestFilesConcurrently: true
 IgnoreDirs:

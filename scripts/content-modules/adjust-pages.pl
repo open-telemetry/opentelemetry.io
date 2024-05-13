@@ -18,7 +18,7 @@ my $semconvSpecRepoUrl = 'https://github.com/open-telemetry/semantic-conventions
 my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
 my $specBasePath = '/docs/specs';
 my %versions = qw(
-  spec: 1.32.0
+  spec: 1.33.0
   otlp: 1.3.1
   semconv: 1.25.0
 );
@@ -151,8 +151,13 @@ while(<>) {
     s|\]\(([^:\)]*?\.md(#.*?)?)\)|]({{% relref "$1" %}})|g;
   }
 
-  # Rewrite link defs
-  s|^(\[[^\]]+\]:\s*)([^:\s]*)(\s*(\(.*\))?)$|$1\{{% relref "$2" %}}$3|g;
+  # Rewrite link defs to local pages such as the following:
+  #
+  # [specification]: overview.md
+  # [faas]: some-path/faas-spans.md (FaaS trace conventions)
+  #
+  # The subregex `[:\s]+` excludes external URLs (because they contain a colon after the protocol)
+  s|^(\[[^\]]+\]:\s*)([^:\s]+)(\s*(\(.*\))?)$|$1\{{% relref "$2" %}}$3|g;
 
   # Make website-local page references local:
   s|https://opentelemetry.io/|/|g;
