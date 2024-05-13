@@ -3775,6 +3775,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:11.461365-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-operator/issues/1906": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-13T07:25:18.846726619Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-operator/issues/902": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:35.482435-05:00"
@@ -3782,6 +3786,10 @@
   "https://github.com/open-telemetry/opentelemetry-operator/pull/2430#discussion_r1420495631": {
     "StatusCode": 200,
     "LastSeen": "2024-04-25T00:01:09.014347-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/pull/2787": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-13T07:25:20.170057644Z"
   },
   "https://github.com/open-telemetry/opentelemetry-operator/pull/832": {
     "StatusCode": 200,
