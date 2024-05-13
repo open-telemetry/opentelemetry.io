@@ -25,7 +25,7 @@ cascade:
 <div class="l-primary-buttons mt-5">
 
 - [了解更多](/docs/what-is-opentelemetry/)
-- [尝试演示](/docs/demo/)
+- [尝试 Demo](/docs/demo/)
 - [探索集成组件](/ecosystem/integrations)
 
 </div>
@@ -43,8 +43,7 @@ cascade:
 
 {{% blocks/lead color="white" %}}
 
-OpenTelemetry 是各类 API、SDK 和工具形成的集合。可用于仪表化、生成、采集和导出遥
-测数据（链路、指标和日志），帮助你分析软件的性能和行为。
+OpenTelemetry 是各类 API、SDK 和工具形成的集合。可用于插桩、生成、采集和导出遥测数据（链路、指标和日志），帮助你分析软件的性能和行为。
 
 > OpenTelemetry 在[多种编程语言](/docs/languages/)均达到 **GA** 级别，普适性很高。
 
@@ -54,11 +53,11 @@ OpenTelemetry 是各类 API、SDK 和工具形成的集合。可用于仪表化�
 
 {{% blocks/feature icon="fas fa-chart-line" title="链路、指标、日志" %}}
 
-从你的服务和软件中创建并采集遥测数据，然后将其转发给各种分析工具。
+从你的服务和软件中生成并采集遥测数据，然后将其转发给各种分析工具。
 
 {{% /blocks/feature %}}
 
-{{% blocks/feature icon="fas fa-magic" title="即插即用仪表" %}}
+{{% blocks/feature icon="fas fa-magic" title="现成的插桩支持" %}}
 
 OpenTelemetry 与流行的库和框架集成，例如 [Spring](https://spring.io)、
 [ASP.NET Core](https://docs.microsoft.com/aspnet/core)、
@@ -78,13 +77,13 @@ OpenTelemetry 是 100% 免费和开源的，
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**OpenTelemetry 是一个 [CNCF][] [Incubating][] 项目**。<br> 这个项目是在合并
-OpenTracing 和 OpenCensus 项目之后成型的。
+**OpenTelemetry 是一个 [CNCF][] [孵化级][]项目**。<br> 这个项目是由
+OpenTracing 和 OpenCensus 项目合并而诞生的。
 
 [![CNCF logo][]][cncf]
 
 [cncf]: https://cncf.io
 [cncf logo]: /img/logos/cncf-white.svg
-[incubating]: https://www.cncf.io/projects/
+[孵化级]: https://www.cncf.io/projects/
 
 {{% /blocks/section %}}
