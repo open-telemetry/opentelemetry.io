@@ -137,10 +137,10 @@ The OpenTelemetry starter uses OpenTelemetry Spring Boot
 
 ```xml
 <dependencies>
-	<dependency>
-		<groupId>io.opentelemetry.instrumentation</groupId>
-		<artifactId>opentelemetry-spring-boot-starter</artifactId>
-	</dependency>
+  <dependency>
+    <groupId>io.opentelemetry.instrumentation</groupId>
+    <artifactId>opentelemetry-spring-boot-starter</artifactId>
+  </dependency>
 </dependencies>
 ```
 
@@ -253,11 +253,11 @@ from tracing:
 
 ```xml
 <dependencies>
-	<dependency>
-		<groupId>io.opentelemetry.contrib</groupId>
-		<artifactId>opentelemetry-samplers</artifactId>
+  <dependency>
+    <groupId>io.opentelemetry.contrib</groupId>
+    <artifactId>opentelemetry-samplers</artifactId>
     <version>1.33.0-alpha</version>
-	</dependency>
+  </dependency>
 </dependencies>
 ```
 
@@ -336,9 +336,14 @@ public class OpenTelemetryConfig {
 
 #### Resource Providers
 
-The OpenTelemetry Starter includes
-[common Resource Providers](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/resources/library)
-and the following Spring Boot specific Resource Providers:
+The OpenTelemetry Starter includes the same resource providers as the Java
+agent:
+
+- [Common resource providers](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/resources/library)
+- [Resource providers that are disabled by default](/docs/languages/java/automatic/configuration/#enable-resource-providers-that-are-disabled-by-default)
+
+In addition, the OpenTelemetry Starter includes the following Spring Boot
+specific resource providers:
 
 ##### Distribution Resource Provider
 
@@ -359,79 +364,6 @@ FQN:
 | ----------------- | ------------------------------------------------------------------------------------------------------------- |
 | `service.name`    | `spring.application.name` or `build.version` from `build-info.properties` (see [Service name](#service-name)) |
 | `service.version` | `build.name` from `build-info.properties`                                                                     |
-
-##### AWS Resource Provider
-
-The
-[AWS Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources)
-can be added as a dependency:
-
-{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
-
-```xml
-<dependencies>
-	<dependency>
-		<groupId>io.opentelemetry.contrib</groupId>
-		<artifactId>opentelemetry-aws-resources</artifactId>
-    <version>1.33.0-alpha</version>
-    <exclusions>
-      <exclusion>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-core</artifactId>
-      </exclusion>
-      <exclusion>
-        <groupId>com.squareup.okhttp3</groupId>
-        <artifactId>okhttp</artifactId>
-      </exclusion>
-    </exclusions>
-	</dependency>
-</dependencies>
-```
-
-{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
-
-```kotlin
-implementation("io.opentelemetry.contrib:opentelemetry-aws-resources:1.33.0-alpha") {
-    exclude("com.fasterxml.jackson.core", "jackson-core")
-    exclude("com.squareup.okhttp3", "okhttp")
-}
-```
-
-{{% /tab %}} {{< /tabpane>}}
-
-##### GCP Resource Provider
-
-The
-[GCP Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources)
-can be added as a dependency:
-
-{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
-
-```xml
-<dependencies>
-	<dependency>
-		<groupId>io.opentelemetry.contrib</groupId>
-		<artifactId>opentelemetry-gcp-resources</artifactId>
-    <version>1.33.0-alpha</version>
-    <exclusions>
-      <exclusion>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-core</artifactId>
-      </exclusion>
-    </exclusions>
-	</dependency>
-</dependencies>
-```
-
-{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
-
-```kotlin
-implementation("io.opentelemetry.contrib:opentelemetry-gcp-resources:1.33.0-alpha") {
-    exclude("com.fasterxml.jackson.core", "jackson-core")
-}
-```
-
-{{% /tab %}} {{< /tabpane>}}
 
 #### Service name
 
@@ -518,26 +450,26 @@ appender in your `logback.xml` or `logback-spring.xml` file:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-		<encoder>
-			<pattern>
-				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
-			</pattern>
-		</encoder>
-	</appender>
-	<appender name="OpenTelemetry"
-		class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender">
-		<captureExperimentalAttributes>false</captureExperimentalAttributes>
-		<captureCodeAttributes>true</captureCodeAttributes>
-		<captureMarkerAttribute>true</captureMarkerAttribute>
-		<captureKeyValuePairAttributes>true</captureKeyValuePairAttributes>
-		<captureLoggerContext>true</captureLoggerContext>
-		<captureMdcAttributes>*</captureMdcAttributes>
-	</appender>
-	<root level="INFO">
-		<appender-ref ref="console"/>
-		<appender-ref ref="OpenTelemetry"/>
-	</root>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+    <appender name="OpenTelemetry"
+        class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender">
+        <captureExperimentalAttributes>false</captureExperimentalAttributes>
+        <captureCodeAttributes>true</captureCodeAttributes>
+        <captureMarkerAttribute>true</captureMarkerAttribute>
+        <captureKeyValuePairAttributes>true</captureKeyValuePairAttributes>
+        <captureLoggerContext>true</captureLoggerContext>
+        <captureMdcAttributes>*</captureMdcAttributes>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="console"/>
+        <appender-ref ref="OpenTelemetry"/>
+    </root>
 </configuration>
 ```
 
@@ -661,10 +593,10 @@ With the datasource configuration, you need to add the following dependency:
 
 ```xml
 <dependencies>
-	<dependency>
-		<groupId>io.opentelemetry.instrumentation</groupId>
-		<artifactId>opentelemetry-jdbc</artifactId>
-	</dependency>
+  <dependency>
+    <groupId>io.opentelemetry.instrumentation</groupId>
+    <artifactId>opentelemetry-jdbc</artifactId>
+  </dependency>
 </dependencies>
 ```
 
@@ -685,14 +617,14 @@ You have to add the OpenTelemetry appender to your `log4j2.xml` file:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN" packages="io.opentelemetry.instrumentation.log4j.appender.v2_17">
-	<Appenders>
-		<OpenTelemetry name="OpenTelemetryAppender"/>
-	</Appenders>
-	<Loggers>
-		<Root>
-			<AppenderRef ref="OpenTelemetryAppender" level="All"/>
-		</Root>
-	</Loggers>
+    <Appenders>
+        <OpenTelemetry name="OpenTelemetryAppender"/>
+    </Appenders>
+    <Loggers>
+        <Root>
+            <AppenderRef ref="OpenTelemetryAppender" level="All"/>
+        </Root>
+    </Loggers>
 </Configuration>
 ```
 

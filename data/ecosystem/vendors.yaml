@@ -240,6 +240,12 @@
   contact: skotagiri@opentext.com
   oss: false
   commercial: true
+- name: OpenLIT
+  nativeOTLP: false
+  url: https://docs.openlit.io/
+  contact: contact@openlit.io
+  oss: true
+  commercial: false
 - name: Oracle
   nativeOTLP: true
   url: https://docs.oracle.com/en-us/iaas/application-performance-monitoring/doc/configure-open-source-tracing-systems.html#GUID-4D941163-F357-4839-8B06-688876D4C61F
@@ -399,7 +405,7 @@
   commercial: true
 - name: Embrace
   nativeOTLP: true
-  url: 'https://github.com/embrace-io/embrace-apple-sdk/blob/main/GETTING_STARTED.md#exporting-logs-and-traces-to-opentelemetry-vendors'
+  url: 'https://embrace.io/opentelemetry-for-mobile/'
   contact: 'product@embrace.io'
   oss: true
   commercial: true

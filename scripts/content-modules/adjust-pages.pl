@@ -18,8 +18,8 @@ my $semconvSpecRepoUrl = 'https://github.com/open-telemetry/semantic-conventions
 my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
 my $specBasePath = '/docs/specs';
 my %versions = qw(
-  spec: 1.32.0
-  otlp: 1.3.0
+  spec: 1.33.0
+  otlp: 1.3.1
   semconv: 1.25.0
 );
 my $otelSpecVers = $versions{'spec:'};
@@ -50,12 +50,6 @@ sub printTitleAndFrontMatter() {
   }
   # TODO: add to front matter of OTel spec file and drop next line:
   $linkTitle = 'Design Goals' if $title eq 'Design Goals for OpenTelemetry Wire Protocol';
-
-  # TODO: remove once all submodules have been updated in the context of https://github.com/open-telemetry/opentelemetry.io/issues/3922
-  $frontMatterFromFile =~ s|: content/en/docs/specs/opamp/|: tmp/opamp/|g;
-  $frontMatterFromFile =~ s|: content/en/docs/specs/semconv/|: tmp/semconv/docs/|g;
-  $frontMatterFromFile =~ s|path_base_for_github_subdir:\n  from: content/en/docs/specs/otlp/_index.md\n  to: specification.md\n||;
-  $frontMatterFromFile =~ s|github_subdir: docs\n  path_base_for_github_subdir: content/en/docs/specs/otlp/|path_base_for_github_subdir: tmp/otlp/|g;
 
   # printf STDOUT "> $title -> $linkTitle\n";
   print "linkTitle: $linkTitle\n" if $linkTitle and $frontMatterFromFile !~ /linkTitle: /;
@@ -157,8 +151,13 @@ while(<>) {
     s|\]\(([^:\)]*?\.md(#.*?)?)\)|]({{% relref "$1" %}})|g;
   }
 
-  # Rewrite link defs
-  s|^(\[[^\]]+\]:\s*)([^:\s]*)(\s*(\(.*\))?)$|$1\{{% relref "$2" %}}$3|g;
+  # Rewrite link defs to local pages such as the following:
+  #
+  # [specification]: overview.md
+  # [faas]: some-path/faas-spans.md (FaaS trace conventions)
+  #
+  # The subregex `[:\s]+` excludes external URLs (because they contain a colon after the protocol)
+  s|^(\[[^\]]+\]:\s*)([^:\s]+)(\s*(\(.*\))?)$|$1\{{% relref "$2" %}}$3|g;
 
   # Make website-local page references local:
   s|https://opentelemetry.io/|/|g;

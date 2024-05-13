@@ -1251,6 +1251,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T15:25:59.36407-05:00"
   },
+  "https://docs.konghq.com/mesh/latest/guides/otel-metrics/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-30T15:56:23.493141+02:00"
+  },
   "https://docs.linuxfoundation.org/lfx/easycla/contributors": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:15:11.937332-05:00"
@@ -1398,6 +1402,10 @@
   "https://docs.openfeature.dev/docs/specification/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:52:59.602661-05:00"
+  },
+  "https://docs.openlit.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-05-02T10:13:10.86573134Z"
   },
   "https://docs.openshift.com/container-platform/4.14/otel/otel-release-notes.html": {
     "StatusCode": 206,
@@ -1763,6 +1771,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:47.246698-05:00"
   },
+  "https://embrace.io/opentelemetry-for-mobile/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-25T10:29:55.539338+02:00"
+  },
   "https://en.cppreference.com/w/cpp/container/set": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:25.398061-05:00"
@@ -2054,6 +2066,10 @@
   "https://forms.gle/ajNv8jGs12coDUjG8": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:05:22.448487-05:00"
+  },
+  "https://forms.gle/bZAG9f7udoJsjZUG9": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-01T16:48:59.737619-04:00"
   },
   "https://forms.gle/mEDWyn6G7iCe4bvJ7": {
     "StatusCode": 200,
@@ -2647,6 +2663,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:04.170576-05:00"
   },
+  "https://github.com/iamebonyhope": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-08T10:07:06.998803+02:00"
+  },
   "https://github.com/imandra-ai/ocaml-opentelemetry/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:13:40.755331-05:00"
@@ -2738,6 +2758,10 @@
   "https://github.com/kdhamric": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:01:35.269251-05:00"
+  },
+  "https://github.com/kieronlanning": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-26T09:57:50.019728503+01:00"
   },
   "https://github.com/knative/eventing/issues/3126": {
     "StatusCode": 200,
@@ -2963,6 +2987,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-03-19T10:16:37.692028682Z"
   },
+  "https://github.com/open-telemetry/community/issues/1971": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-03T07:21:04.501478-07:00"
+  },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:16.771654-05:00"
@@ -3006,6 +3034,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector#stability-levels": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:36:40.22377-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-builder": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-08T10:07:07.582195+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib": {
     "StatusCode": 200,
@@ -3135,6 +3167,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-04-04T11:07:15.276911438-07:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/issues/9375": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-03T08:34:29.3339-07:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/pull/6140": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:24.402543-05:00"
@@ -3146,6 +3182,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector/releases": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:01.457649-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2Fv0.100.0": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-07T08:06:40.723390912Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2Fv0.95.0": {
     "StatusCode": 200,
@@ -3847,6 +3887,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:26.943394-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-python-contrib/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-26T12:45:03.066448+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-python/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-10T11:27:53.222542-08:00"
@@ -4187,6 +4231,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:13.065627-05:00"
   },
+  "https://github.com/orgs/open-telemetry/projects/83": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-03T07:21:05.157831-07:00"
+  },
   "https://github.com/orgs/open-telemetry/teams/technical-committee": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:03.796394-05:00"
@@ -4258,6 +4306,10 @@
   "https://github.com/prometheus/prometheus/commit/d9d51c565c622cdc7d626d3e7569652bc28abe15#diff-bdaf80ebc5fa26365f45db53435b960ce623ea6f86747fb8870ad1abc355f64fR76-R83": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:11.409183-05:00"
+  },
+  "https://github.com/purview-dev/purview-telemetry-sourcegenerator/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-26T09:57:49.687508317+01:00"
   },
   "https://github.com/raito-io/neo4j-tracing": {
     "StatusCode": 200,
@@ -4679,6 +4731,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:09.59825-05:00"
   },
+  "https://hex.pm/packages": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-26T15:24:12.437103+02:00"
+  },
   "https://hex.pm/packages/opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:25.352177-05:00"
@@ -4899,6 +4955,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:07:19.690634-05:00"
   },
+  "https://konghq.com/products/kong-mesh": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-30T15:56:22.220894+02:00"
+  },
   "https://kubernetes.github.io/ingress-nginx/examples/grpc/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:02:39.056387-05:00"
@@ -5014,6 +5074,14 @@
   "https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/": {
     "StatusCode": 206,
     "LastSeen": "2024-04-25T00:01:10.120654-04:00"
+  },
+  "https://kuma.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-30T15:56:19.177281+02:00"
+  },
+  "https://kuma.io/docs/2.7.x/guides/otel-metrics/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-30T15:56:19.48504+02:00"
   },
   "https://kyverno.io/": {
     "StatusCode": 206,
@@ -5830,6 +5898,14 @@
   "https://opentelemetry.io": {
     "StatusCode": 206,
     "LastSeen": "2024-03-19T10:16:59.755536357Z"
+  },
+  "https://opentelemetry.io/blog/2024/otel-collector-anti-patterns/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-05-06T07:53:28.679391-07:00"
+  },
+  "https://opentelemetry.io/blog/2024/scaling-collectors/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-05-06T07:53:28.903161-07:00"
   },
   "https://opentelemetry.io/docs/collector": {
     "StatusCode": 206,
@@ -6923,6 +6999,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:10:29.862565-05:00"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-25T07:21:16.712986-07:00"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:43.27652-05:00"
@@ -6942,6 +7022,10 @@
   "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/prometheus": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:07:44.890589-05:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutlog": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-24T13:46:14.851022-07:00"
   },
   "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric": {
     "StatusCode": 200,
@@ -7154,6 +7238,10 @@
   "https://pypi.org/project/opentelemetry-exporter-zipkin-proto-http/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:14:48.105173-05:00"
+  },
+  "https://pypi.org/project/opentelemetry-instrumentation-httpx/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-28T16:14:45.577134727Z"
   },
   "https://qryn.metrico.in/#/support": {
     "StatusCode": 206,
@@ -8735,6 +8823,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:17:13.880643+01:00"
   },
+  "https://www.nuget.org/packages/Purview.Telemetry.SourceGenerator": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-26T09:57:50.691575342+01:00"
+  },
   "https://www.nuget.org/packages/Quartz": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:26:32.105686-05:00"
@@ -9110,6 +9202,10 @@
   "https://yaml.org/spec/1.2.2/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-11T06:07:16.115841487Z"
+  },
+  "https://yaml.org/spec/1.2.2/#103-core-schema": {
+    "StatusCode": 206,
+    "LastSeen": "2024-05-09T18:03:35.877818575Z"
   },
   "https://youtu.be/9iaGG-YZw5I": {
     "StatusCode": 200,

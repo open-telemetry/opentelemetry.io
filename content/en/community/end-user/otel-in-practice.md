@@ -23,7 +23,7 @@ on the [CNCF's Slack](https://slack.cncf.io).
 
 You can view
 [past sessions](https://www.youtube.com/playlist?list=PLVYDBkQ1TdyxKgdGE4ThYLkNRCuLLYy9x)
-on the OpenTelemetry YouTube channel.
+on the [OpenTelemetry YouTube channel](https://youtube.com/@otel-official).
 
 Join the
 [OpenTelemetry in Practice Meetup Group](https://www.meetup.com/opentelemetry-in-practice-meetup-group/)

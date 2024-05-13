@@ -1,0 +1,16 @@
+title: Rust SDK
+registryType: core
+language: rust
+tags:
+  - rust
+license: Apache 2.0
+description: The OpenTelemetry SDK for Rust.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-rust
+createdAt: 2020-02-04
+package:
+  registry: crates
+  name: opentelemetry_sdk
+  version: 0.22.1

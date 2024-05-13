@@ -17,7 +17,7 @@ Ensure that you have the following installed locally:
 - Git
 - C++ compiler supporting C++ version >= 14
 - Make
-- CMake version >= 3.20
+- CMake version >= 3.25
 
 ## Example Application
 
@@ -51,10 +51,11 @@ To begin, install Oat++ locally using the
    git clone https://github.com/oatpp/oatpp.git
    ```
 
-2. Navigate to the `oatpp` directory.
+2. Navigate to the `oatpp` directory and switch to 1.3.0 version for now:
 
    ```bash
    cd oatpp
+   git checkout 1.3.0-latest
    ```
 
 3. Create a `build` subdirectory and navigate into it.
@@ -113,22 +114,28 @@ using CMake, following these steps:
    ```
 
 4. In the `build` directory run CMake, to configure and generate the build
-   system.
+   system without enabling tests:
 
    ```bash
-   cmake ..
+   cmake -DBUILD_TESTING=OFF ..
    ```
 
    Or, if the `cmake --build` fails, you can also try:
 
    ```bash
-   cmake -DWITH_ABSEIL=ON ..
+   cmake -DBUILD_TESTING=OFF -DWITH_ABSEIL=ON ..
    ```
 
-5. Execute the build process.
+5. Execute the build process:
 
    ```bash
    cmake --build .
+   ```
+
+6. Install OpenTelemetry C++ in otel-cpp-starter/otel-cpp:
+
+   ```bash
+   cmake --install . --prefix ../../otel-cpp
    ```
 
 With Oat++ and OpenTelemetry C++ ready, you can continue with creating the HTTP
@@ -140,12 +147,13 @@ In your `otel-cpp-starter` folder, create a subfolder `roll-dice`, where the
 Oat++ library will be used by referencing the oatpp headers and linking them
 when compiling your project.
 
-Create a file called `CMakeLists.txt` to define the Oat++ library directories,
-include paths, and link against Oat++ during the compilation process.
+Create a file called `CMakeLists.txt` inside `roll-dice` to define the Oat++
+library directories, include paths, and link against Oat++ during the
+compilation process.
 
 ```cmake
+cmake_minimum_required(VERSION 3.25)
 project(RollDiceServer)
-cmake_minimum_required(VERSION 3.1)
 # Set C++ standard (e.g., C++17)
 set(CMAKE_CXX_STANDARD 17)
 set(project_name roll-dice-server)
@@ -208,7 +216,7 @@ void run() {
   auto connectionHandler = oatpp::web::server::HttpConnectionHandler::createShared(router);
   auto connectionProvider = oatpp::network::tcp::server::ConnectionProvider::createShared({"localhost", 8080, oatpp::network::Address::IP_4});
   oatpp::network::Server server(connectionProvider, connectionHandler);
-  OATPP_LOGI("Dice Server", "Server running on port %s", connectionProvider->getProperty("port").getData());
+  OATPP_LOGI("Dice Server", "Server running on port %s", static_cast<const char*>(connectionProvider->getProperty("port").getData()));
   server.run();
 }
 
@@ -245,8 +253,8 @@ To add OpenTelemetry to your application, update the `CMakeLists.txt` file with
 the following additional dependencies.
 
 ```cmake
+cmake_minimum_required(VERSION 3.25)
 project(RollDiceServer)
-cmake_minimum_required(VERSION 3.1)
 # Set C++ standard (e.g., C++17)
 set(CMAKE_CXX_STANDARD 17)
 set(project_name roll-dice-server)
@@ -259,7 +267,7 @@ set(SOURCES
 add_executable(dice-server ${SOURCES})
 
 set(OATPP_ROOT ../oatpp)
-set(OPENTELEMETRY_ROOT ../opentelemetry-cpp)
+set(opentelemetry-cpp_DIR ../otel-cpp/lib/cmake/opentelemetry-cpp)
 find_library(OATPP_LIB NAMES liboatpp.a HINTS "${OATPP_ROOT}/build/src/" NO_DEFAULT_PATH)
 if (NOT OATPP_LIB)
   message(SEND_ERROR "Did not find oatpp library ${OATPP_ROOT}/build/src")
@@ -267,23 +275,13 @@ endif()
 # set the path to the directory containing "oatpp" package configuration files
 include_directories(${OATPP_ROOT}/src)
 
-include_directories(${OPENTELEMETRY_ROOT}/api/include)
-include_directories(${OPENTELEMETRY_ROOT}/sdk/include)
-include_directories(${OPENTELEMETRY_ROOT}/sdk/src)
-include_directories(${OPENTELEMETRY_ROOT}/exporters/ostream/include)
+# Use find_package to include OpenTelemetry C++
+find_package(opentelemetry-cpp CONFIG REQUIRED NO_DEFAULT_PATH)
 
-find_library(OPENTELEMETRY_COMMON_LIB NAMES libopentelemetry_common.a HINTS "${OPENTELEMETRY_ROOT}/build/sdk/src/common" NO_DEFAULT_PATH)
-find_library(OPENTELEMETRY_TRACE_LIB NAMES libopentelemetry_trace.a HINTS "${OPENTELEMETRY_ROOT}/build/sdk/src/trace" NO_DEFAULT_PATH)
-find_library(OPENTELEMETRY_EXPORTER_LIB NAMES libopentelemetry_exporter_ostream_span.a HINTS "${OPENTELEMETRY_ROOT}/build/exporters/ostream" NO_DEFAULT_PATH)
-find_library(OPENTELEMETRY_RESOURCE_LIB NAMES libopentelemetry_resources.a HINTS "${OPENTELEMETRY_ROOT}/build/sdk/src/resource" NO_DEFAULT_PATH)
-
-if(OPENTELEMETRY_COMMON_LIB AND OPENTELEMETRY_TRACE_LIB AND OPENTELEMETRY_EXPORTER_LIB AND OPENTELEMETRY_RESOURCE_LIB)
-  message(STATUS "Found opentelemetry libraries")
-else()
-  message(SEND_ERROR "Did not find opentelemetry libraries")
-endif()
-
-target_link_libraries(dice-server PRIVATE ${OATPP_LIB} ${OPENTELEMETRY_COMMON_LIB} ${OPENTELEMETRY_TRACE_LIB} ${OPENTELEMETRY_EXPORTER_LIB} ${OPENTELEMETRY_RESOURCE_LIB})
+# Link against each OpenTelemetry C++ library
+target_link_libraries(dice-server PRIVATE
+                      ${OATPP_LIB}
+                      ${OPENTELEMETRY_CPP_LIBRARIES})
 ```
 
 Update the `main.cpp` file with the following code to initialize a tracer and to
@@ -347,7 +345,7 @@ void run() {
   auto connectionHandler = oatpp::web::server::HttpConnectionHandler::createShared(router);
   auto connectionProvider = oatpp::network::tcp::server::ConnectionProvider::createShared({"localhost", 8080, oatpp::network::Address::IP_4});
   oatpp::network::Server server(connectionProvider, connectionHandler);
-  OATPP_LOGI("Dice Server", "Server running on port %s", connectionProvider->getProperty("port").getData());
+  OATPP_LOGI("Dice Server", "Server running on port %s", static_cast<const char*>(connectionProvider->getProperty("port").getData()));
   server.run();
 }
 
