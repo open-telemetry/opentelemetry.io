@@ -3,7 +3,7 @@ title:
   Things You Might Not Have Known About the OpenTelemetry Operator - An OTel
   Operator Q&A
 linkTitle: OTel Operator Q&A
-date: 2024-04-24
+date: 2024-05-13
 author: >-
   [Adriana Villela](https://github.com/avillela) (ServiceNow),
 
