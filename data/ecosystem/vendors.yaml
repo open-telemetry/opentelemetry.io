@@ -170,8 +170,8 @@
   commercial: true
 - name: ServiceNow Cloud Observability (Lightstep)
   nativeOTLP: true
-  url: https://github.com/lightstep?q=launcher
-  contact:
+  url: https://docs.lightstep.com/docs/about-sending-data
+  contact: https://github.com/cartersocha
   oss: false
   commercial: true
 - name: LogicMonitor
