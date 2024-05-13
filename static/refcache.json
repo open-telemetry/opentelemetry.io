@@ -1227,6 +1227,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-04-30T15:56:23.493141+02:00"
   },
+  "https://docs.lightstep.com/docs/about-sending-data": {
+    "StatusCode": 206,
+    "LastSeen": "2024-05-13T07:15:59.231698318Z"
+  },
   "https://docs.linuxfoundation.org/lfx/easycla/contributors": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:15:11.937332-05:00"
