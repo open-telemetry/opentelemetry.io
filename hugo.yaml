@@ -51,7 +51,7 @@ outputFormats:
     notAlternative: true
 
 outputs:
-  home: [HTML, REDIRECTS]
+  home: [HTML]
   section: [HTML]
 
 params:
