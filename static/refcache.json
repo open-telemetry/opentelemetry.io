@@ -8599,6 +8599,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:26:17.426269-05:00"
   },
+  "https://www.nuget.org/packages/OpenTelemetry.AutoInstrumentation": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-13T07:12:48.012368334Z"
+  },
   "https://www.nuget.org/packages/OpenTelemetry.Exporter.Console": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:04:59.787702-05:00"
