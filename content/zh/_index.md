@@ -57,7 +57,7 @@ OpenTelemetry 是各类 API、SDK 和工具形成的集合。可用于插桩、�
 
 {{% /blocks/feature %}}
 
-{{% blocks/feature icon="fas fa-magic" title="现成的插装支持" %}}
+{{% blocks/feature icon="fas fa-magic" title="现成的插桩支持" %}}
 
 OpenTelemetry 与流行的库和框架集成，例如 [Spring](https://spring.io)、
 [ASP.NET Core](https://docs.microsoft.com/aspnet/core)、
