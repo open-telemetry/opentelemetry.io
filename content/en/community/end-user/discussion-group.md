@@ -5,7 +5,7 @@ description: Monthly OpenTelemetry usage discussions, all are welcome!
 weight: 20
 ---
 
-**As of April 2024, discussion group sessions are discontinued in favor of
+**As of April 2024, discussion-group sessions are discontinued in favor of
 end-user panels with a more targeted focus.**
 
 If you would like to participate or help organize a future end-user panel, you
