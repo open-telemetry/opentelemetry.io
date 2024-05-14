@@ -22,7 +22,7 @@ developer_note:
 
 <div class="l-primary-buttons mt-5">
 
-- [了解更多](/docs/what-is-opentelemetry/)
+- [了解更多](/zh/docs/what-is-opentelemetry/)
 - [尝试 Demo](/docs/demo/)
 - [探索集成组件](/ecosystem/integrations)
 
