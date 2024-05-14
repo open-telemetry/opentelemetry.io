@@ -1,11 +1,11 @@
-<!-- cSpell:ignore contribfest markdownify isset -->
-{{ if and .Params.show_banner (isset .Params "banners") (gt (len .Params.banners) 0) }}
+<!-- cSpell:ignore contribfest markdownify -->
+{{ if and .Params.show_banner (.Params.banners) (gt (len .Params.banners) 0) }}
   {{ $limit := .Params.limit_banner | default 2 }}
   {{ $sorted := sort .Params.banners "to" }}
   {{ $currentDate := now.Format "2006-01-02" }}
   {{ $filtered := slice }}
   {{ range $sorted }}
-    {{ if and (or (not .from) (ge $currentDate .from)) (or (not .to) (le $currentDate .to)) }}
+    {{ if and (ge $currentDate .to) }}
       {{ if lt (len $filtered) $limit }}
         {{ $filtered = $filtered | append . }}
       {{ end }}
@@ -14,8 +14,7 @@
 <div class="o-banner">
     {{ range $filtered }}
 <!-- prettier-ignore -->
-<i class="{{ .icon | default `fas fa-bullhorn` }}"></i>
-{{ .text | markdownify }}
+{{ .message | markdownify }}
     {{ end }}
 </div>
 {{ end -}}
