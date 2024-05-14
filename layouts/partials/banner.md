@@ -18,4 +18,4 @@
 {{ .text | markdownify }}
     {{ end }}
 </div>
-{{ end }}
+{{ end -}}
