@@ -2,6 +2,14 @@ blog:
   - changed-files:
       - any-glob-to-any-file:
           - content/en/blog/**
+registry:
+  - changed-files:
+      - any-glob-to-any-file:
+          - data/registry/**
+lang:zh:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/zh/**
 sig:cpp:
   - changed-files:
       - any-glob-to-any-file:
