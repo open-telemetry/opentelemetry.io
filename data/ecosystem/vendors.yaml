@@ -22,6 +22,12 @@
   contact:
   oss: false
   commercial: true
+- name: Axiom
+  nativeOTLP: true
+  url: https://axiom.co/docs/send-data/opentelemetry
+  contact: https://axiom.co/contact
+  oss: false
+  commercial: true
 - name: Azure
   nativeOTLP: false
   url: https://docs.microsoft.com/azure/azure-monitor/app/opentelemetry-overview
@@ -164,8 +170,8 @@
   commercial: true
 - name: ServiceNow Cloud Observability (Lightstep)
   nativeOTLP: true
-  url: https://github.com/lightstep?q=launcher
-  contact:
+  url: https://docs.lightstep.com/docs/about-sending-data
+  contact: https://github.com/cartersocha
   oss: false
   commercial: true
 - name: LogicMonitor
@@ -234,6 +240,12 @@
   contact: skotagiri@opentext.com
   oss: false
   commercial: true
+- name: OpenLIT
+  nativeOTLP: false
+  url: https://docs.openlit.io/
+  contact: contact@openlit.io
+  oss: true
+  commercial: false
 - name: Oracle
   nativeOTLP: true
   url: https://docs.oracle.com/en-us/iaas/application-performance-monitoring/doc/configure-open-source-tracing-systems.html#GUID-4D941163-F357-4839-8B06-688876D4C61F
@@ -308,9 +320,9 @@
   commercial: true
 - name: Uptrace
   nativeOTLP: true
-  url: https://uptrace.dev
+  url: https://uptrace.dev/get/open-source-apm.html
   contact:
-  oss: false
+  oss: true
   commercial: true
 - name: Apache SkyWalking
   nativeOTLP: true
@@ -393,7 +405,7 @@
   commercial: true
 - name: Embrace
   nativeOTLP: true
-  url: 'https://github.com/embrace-io/embrace-apple-sdk/blob/main/GETTING_STARTED.md#exporting-logs-and-traces-to-opentelemetry-vendors'
+  url: 'https://embrace.io/opentelemetry-for-mobile/'
   contact: 'product@embrace.io'
   oss: true
   commercial: true

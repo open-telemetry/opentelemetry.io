@@ -10,8 +10,8 @@ cSpell:ignore: flagd loadgenerator OLJCESPC7Z
 The demo provides several feature flags that you can use to simulate different
 scenarios. These flags are managed by [`flagd`](https://flagd.dev), a simple
 feature flag service that supports [OpenFeature](https://openfeature.dev). Flag
-values are stored in the `demo.flagd.json` file. To enable a flag, change the
-`defaultVariant` value in the config file for a given flag to "on".
+values are stored in the `src/flagd/demo.flagd.json` file. To enable a flag,
+change the `defaultVariant` value in the config file for a given flag to "on".
 
 | Feature Flag                        | Service(s)       | Description                                                                                               |
 | ----------------------------------- | ---------------- | --------------------------------------------------------------------------------------------------------- |
@@ -24,6 +24,7 @@ values are stored in the `demo.flagd.json` file. To enable a flag, change the
 | `paymentServiceFailure`             | Payment Service  | Generate an error when calling the `charge` method.                                                       |
 | `paymentServiceUnreachable`         | Checkout Service | Use a bad address when calling the PaymentService to make it seem like the PaymentService is unavailable. |
 | `loadgeneratorFloodHomepage`        | Loadgenerator    | Start flooding the homepage with a huge amount of requests, configurable by changing flagd JSON on state. |
+| `kafkaQueueProblems`                | Kafka            | Overloads Kafka queue while simultaneously introducing a consumer side delay leading to a lag spike.      |
 
 ## Feature Flag Architecture
 

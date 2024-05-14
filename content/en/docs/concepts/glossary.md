@@ -227,12 +227,6 @@ Short form for [OpenTelemetry Collector](#collector).
 
 Short for [OpenTelemetry Protocol](/docs/specs/otlp/).
 
-### **Processor**
-
-The operation performed on data between being received and being exported. For
-example, batching. Used by the
-[Collector](/docs/collector/configuration/#processors).
-
 ### **Propagators**
 
 Used to serialize and deserialize specific parts of telemetry data such as span

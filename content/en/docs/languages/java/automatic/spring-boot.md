@@ -137,10 +137,10 @@ The OpenTelemetry starter uses OpenTelemetry Spring Boot
 
 ```xml
 <dependencies>
-	<dependency>
-		<groupId>io.opentelemetry.instrumentation</groupId>
-		<artifactId>opentelemetry-spring-boot-starter</artifactId>
-	</dependency>
+  <dependency>
+    <groupId>io.opentelemetry.instrumentation</groupId>
+    <artifactId>opentelemetry-spring-boot-starter</artifactId>
+  </dependency>
 </dependencies>
 ```
 
@@ -165,14 +165,18 @@ IDE.
 
 The OpenTelemetry Starter supports all the
 [SDK Autoconfiguration](/docs/languages/java/automatic/configuration/#sdk-autoconfiguration)
-(since 2.2.0). You can set properties in the `application.properties` or the
-`application.yaml` file, or use environment variables.
+(since 2.2.0).
+
+You can update the configuration with properties in the `application.properties`
+or the `application.yaml` file, or with environment variables.
 
 `application.properties` example:
 
 ```properties
 otel.propagators=tracecontext,b3
-otel.resource.attributes=environment=dev,xyz=foo
+otel.resource.attributes.deployment.environment=dev
+otel.resource.attributes.service.name=cart
+otel.resource.attributes.service.namespace=shop
 ```
 
 `application.yaml` example:
@@ -184,18 +188,49 @@ otel:
     - b3
   resource:
     attributes:
-      environment: dev
-      xyz: foo
+      deployment.environment: dev
+      service:
+        name: cart
+        namespace: shop
 ```
 
 Environment variables example:
 
 ```shell
 export OTEL_PROPAGATORS="tracecontext,b3"
-export OTEL_RESOURCE_ATTRIBUTES="environment=dev,xyz=foo"
+export OTEL_RESOURCE_ATTRIBUTES="deployment.environment=dev,service.name=cart,service.namespace=shop"
 ```
 
-Disable the OpenTelemetry Starter:
+#### Overriding Resource Attributes
+
+As usual in Spring Boot, you can override properties in the
+`application.properties` and `application.yaml` files with environment
+variables.
+
+For example, you can set or override the `deployment.environment` resource
+attribute (not changing `service.name` or `service.namespace`) by setting the
+standard `OTEL_RESOURCE_ATTRIBUTES` environment variable:
+
+```shell
+export OTEL_RESOURCE_ATTRIBUTES="deployment.environment=prod"
+```
+
+Alternatively, you can use the `OTEL_RESOURCE_ATTRIBUTES_DEPLOYMENT_ENVIRONMENT`
+environment variable to set or override a single resource attribute:
+
+```shell
+export OTEL_RESOURCE_ATTRIBUTES_DEPLOYMENT_ENVIRONMENT="prod"
+```
+
+The second option supports
+[SpEL](https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/expressions.html)
+expressions.
+
+Note that `DEPLOYMENT_ENVIRONMENT` gets converted to `deployment.environment` by
+Spring Boot's
+[Relaxed Binding](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.typesafe-configuration-properties.relaxed-binding.environment-variables).
+
+#### Disable the OpenTelemetry Starter
 
 {{% config_option name="otel.sdk.disabled" %}}
 
@@ -218,11 +253,11 @@ from tracing:
 
 ```xml
 <dependencies>
-	<dependency>
-		<groupId>io.opentelemetry.contrib</groupId>
-		<artifactId>opentelemetry-samplers</artifactId>
+  <dependency>
+    <groupId>io.opentelemetry.contrib</groupId>
+    <artifactId>opentelemetry-samplers</artifactId>
     <version>1.33.0-alpha</version>
-	</dependency>
+  </dependency>
 </dependencies>
 ```
 
@@ -245,7 +280,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class Application {
+public class OpenTelemetryConfig {
 
   @Bean
   public AutoConfigurationCustomizerProvider otelCustomizer() {
@@ -259,11 +294,56 @@ public class Application {
 }
 ```
 
+##### Configure the exporter programmatically
+
+You can also configure OTLP exporters programmatically. This configuration
+replaces the default OTLP exporter and adds a custom header to the requests.
+
+```java
+import io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporter;
+import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider;
+import java.util.Collections;
+import java.util.Map;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class OpenTelemetryConfig {
+
+  @Bean
+  public AutoConfigurationCustomizerProvider otelCustomizer() {
+    return p ->
+        p.addSpanExporterCustomizer(
+            (exporter, config) -> {
+              if (exporter instanceof OtlpHttpSpanExporter) {
+                return ((OtlpHttpSpanExporter) exporter)
+                    .toBuilder().setHeaders(this::headers).build();
+              }
+              return exporter;
+            });
+  }
+
+  private Map<String, String> headers() {
+    return Collections.singletonMap("Authorization", "Bearer " + refreshToken());
+  }
+
+  private String refreshToken() {
+    // e.g. read the token from a kubernetes secret
+    return "token";
+  }
+}
+```
+
 #### Resource Providers
 
-The OpenTelemetry Starter includes
-[common Resource Providers](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/resources/library)
-and the following Spring Boot specific Resource Providers:
+The OpenTelemetry Starter includes the same resource providers as the Java
+agent:
+
+- [Common resource providers](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/resources/library)
+- [Resource providers that are disabled by default](/docs/languages/java/automatic/configuration/#enable-resource-providers-that-are-disabled-by-default)
+
+In addition, the OpenTelemetry Starter includes the following Spring Boot
+specific resource providers:
 
 ##### Distribution Resource Provider
 
@@ -284,79 +364,6 @@ FQN:
 | ----------------- | ------------------------------------------------------------------------------------------------------------- |
 | `service.name`    | `spring.application.name` or `build.version` from `build-info.properties` (see [Service name](#service-name)) |
 | `service.version` | `build.name` from `build-info.properties`                                                                     |
-
-##### AWS Resource Provider
-
-The
-[AWS Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources)
-can be added as a dependency:
-
-{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
-
-```xml
-<dependencies>
-	<dependency>
-		<groupId>io.opentelemetry.contrib</groupId>
-		<artifactId>opentelemetry-aws-resources</artifactId>
-    <version>1.33.0-alpha</version>
-    <exclusions>
-      <exclusion>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-core</artifactId>
-      </exclusion>
-      <exclusion>
-        <groupId>com.squareup.okhttp3</groupId>
-        <artifactId>okhttp</artifactId>
-      </exclusion>
-    </exclusions>
-	</dependency>
-</dependencies>
-```
-
-{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
-
-```kotlin
-implementation("io.opentelemetry.contrib:opentelemetry-aws-resources:1.33.0-alpha") {
-    exclude("com.fasterxml.jackson.core", "jackson-core")
-    exclude("com.squareup.okhttp3", "okhttp")
-}
-```
-
-{{% /tab %}} {{< /tabpane>}}
-
-##### GCP Resource Provider
-
-The
-[GCP Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources)
-can be added as a dependency:
-
-{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
-
-```xml
-<dependencies>
-	<dependency>
-		<groupId>io.opentelemetry.contrib</groupId>
-		<artifactId>opentelemetry-gcp-resources</artifactId>
-    <version>1.33.0-alpha</version>
-    <exclusions>
-      <exclusion>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-core</artifactId>
-      </exclusion>
-    </exclusions>
-	</dependency>
-</dependencies>
-```
-
-{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
-
-```kotlin
-implementation("io.opentelemetry.contrib:opentelemetry-gcp-resources:1.33.0-alpha") {
-    exclude("com.fasterxml.jackson.core", "jackson-core")
-}
-```
-
-{{% /tab %}} {{< /tabpane>}}
 
 #### Service name
 
@@ -443,26 +450,26 @@ appender in your `logback.xml` or `logback-spring.xml` file:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-		<encoder>
-			<pattern>
-				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
-			</pattern>
-		</encoder>
-	</appender>
-	<appender name="OpenTelemetry"
-		class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender">
-		<captureExperimentalAttributes>false</captureExperimentalAttributes>
-		<captureCodeAttributes>true</captureCodeAttributes>
-		<captureMarkerAttribute>true</captureMarkerAttribute>
-		<captureKeyValuePairAttributes>true</captureKeyValuePairAttributes>
-		<captureLoggerContext>true</captureLoggerContext>
-		<captureMdcAttributes>*</captureMdcAttributes>
-	</appender>
-	<root level="INFO">
-		<appender-ref ref="console"/>
-		<appender-ref ref="OpenTelemetry"/>
-	</root>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+    <appender name="OpenTelemetry"
+        class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender">
+        <captureExperimentalAttributes>false</captureExperimentalAttributes>
+        <captureCodeAttributes>true</captureCodeAttributes>
+        <captureMarkerAttribute>true</captureMarkerAttribute>
+        <captureKeyValuePairAttributes>true</captureKeyValuePairAttributes>
+        <captureLoggerContext>true</captureLoggerContext>
+        <captureMdcAttributes>*</captureMdcAttributes>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="console"/>
+        <appender-ref ref="OpenTelemetry"/>
+    </root>
 </configuration>
 ```
 
@@ -475,6 +482,36 @@ beans by applying a `RestTemplate` bean post processor. This feature is
 supported for spring web versions 3.1+. To learn more about the OpenTelemetry
 `RestTemplate` interceptor, see
 [opentelemetry-spring-web-3.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-web/spring-web-3.1/library).
+
+The following ways of creating a `RestTemplate` are supported:
+
+```java
+@Bean
+public RestTemplate restTemplate() {
+    return new RestTemplate();
+}
+```
+
+```java
+public MyService(RestTemplateBuilder restTemplateBuilder) {
+    this.restTemplate = restTemplateBuilder.build();
+}
+```
+
+The following ways of creating a `RestClient` are supported:
+
+```java
+@Bean
+public RestClient restClient() {
+    return RestClient.create();
+}
+```
+
+```java
+public MyService(RestClient.Builder restClientBuilder) {
+    this.restClient = restClientBuilder.build();
+}
+```
 
 #### Spring Web MVC Autoconfiguration
 
@@ -497,6 +534,21 @@ Spring's WebClient and WebClient Builder beans by applying a bean post
 processor. This feature is supported for spring webflux versions 5.0+. For
 details, see
 [opentelemetry-spring-webflux-5.3](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webflux/spring-webflux-5.3/library).
+
+The following ways of creating a `WebClient` are supported:
+
+```java
+@Bean
+public WebClient webClient() {
+    return WebClient.create();
+}
+```
+
+```java
+public MyService(WebClient.Builder webClientBuilder) {
+    this.webClient = webClientBuilder.build();
+}
+```
 
 ### Additional Instrumentations
 
@@ -541,10 +593,10 @@ With the datasource configuration, you need to add the following dependency:
 
 ```xml
 <dependencies>
-	<dependency>
-		<groupId>io.opentelemetry.instrumentation</groupId>
-		<artifactId>opentelemetry-jdbc</artifactId>
-	</dependency>
+  <dependency>
+    <groupId>io.opentelemetry.instrumentation</groupId>
+    <artifactId>opentelemetry-jdbc</artifactId>
+  </dependency>
 </dependencies>
 ```
 
@@ -565,14 +617,14 @@ You have to add the OpenTelemetry appender to your `log4j2.xml` file:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN" packages="io.opentelemetry.instrumentation.log4j.appender.v2_17">
-	<Appenders>
-		<OpenTelemetry name="OpenTelemetryAppender"/>
-	</Appenders>
-	<Loggers>
-		<Root>
-			<AppenderRef ref="OpenTelemetryAppender" level="All"/>
-		</Root>
-	</Loggers>
+    <Appenders>
+        <OpenTelemetry name="OpenTelemetryAppender"/>
+    </Appenders>
+    <Loggers>
+        <Root>
+            <AppenderRef ref="OpenTelemetryAppender" level="All"/>
+        </Root>
+    </Loggers>
 </Configuration>
 ```
 

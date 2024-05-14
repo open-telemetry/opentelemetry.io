@@ -16,12 +16,12 @@ Detailed debug logs can help you troubleshoot instrumentation issues, and can be
 attached to issues in this project to facilitate investigation.
 
 To get the detailed logs from the OpenTelemetry .NET Automatic Instrumentation,
-set the [`OTEL_LOG_LEVEL`](../config#internal-logs) environment variable to
-`debug` before the instrumented process starts.
+set the [`OTEL_LOG_LEVEL`](../configuration#internal-logs) environment variable
+to `debug` before the instrumented process starts.
 
 By default, the library writes the log files under predefined
-[locations](../config#internal-logs). If needed, change the default location by
-updating the `OTEL_DOTNET_AUTO_LOG_DIRECTORY` environment variable.
+[locations](../configuration#internal-logs). If needed, change the default
+location by updating the `OTEL_DOTNET_AUTO_LOG_DIRECTORY` environment variable.
 
 After obtaining the logs, remove the `OTEL_LOG_LEVEL` environment variable, or
 set it to less verbose level to avoid unnecessary overhead.
@@ -45,7 +45,8 @@ Then restart the application to collect the logs.
 ### No telemetry is produced
 
 There is no telemetry generated. There are no logs in OpenTelemetry .NET
-Automatic Instrumentation internal logs [location](../config#internal-logs).
+Automatic Instrumentation internal logs
+[location](../configuration#internal-logs).
 
 It might occur that the .NET Profiler is unable to attach and therefore no logs
 would be emitted.
@@ -59,7 +60,7 @@ When adding the NuGet packages to your project you get an error message similar
 to:
 
 ```txt
-Could not install package 'OpenTelemetry.AutoInstrumentation.Runtime.Native 1.5.0'. You are trying to install this package into a project that targets '.NETFramework,Version=v4.7.2', but the package does not contain any assembly references or content files that are compatible with that framework. For more information, contact the package author.
+Could not install package 'OpenTelemetry.AutoInstrumentation.Runtime.Native 1.6.0'. You are trying to install this package into a project that targets '.NETFramework,Version=v4.7.2', but the package does not contain any assembly references or content files that are compatible with that framework. For more information, contact the package author.
 ```
 
 The NuGet packages don't support old-style `csproj` projects. Either deploy the
@@ -73,8 +74,9 @@ instrumentation globally by setting the environment variables at system or user
 scope.
 
 If the usage of system or user scope is intentional, use the
-[`OTEL_DOTNET_AUTO_EXCLUDE_PROCESSES`](../config#global-settings) environment
-variables to exclude applications from the automatic instrumentation.
+[`OTEL_DOTNET_AUTO_EXCLUDE_PROCESSES`](../configuration#global-settings)
+environment variables to exclude applications from the automatic
+instrumentation.
 
 ### `dotnet` CLI tool is crashing
 
@@ -141,7 +143,7 @@ Find their versions in the following locations:
 By default, assembly references for .NET Framework applications are redirected
 during runtime to the versions used by the automatic instrumentation. This
 behavior can be controlled through the
-[`OTEL_DOTNET_AUTO_NETFX_REDIRECT_ENABLED`](../config) setting.
+[`OTEL_DOTNET_AUTO_NETFX_REDIRECT_ENABLED`](../configuration) setting.
 
 If the application already ships binding redirection for assemblies used by
 automatic instrumentation this automatic redirection may fail, see

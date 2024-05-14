@@ -6,14 +6,12 @@
 <i class="fas fa-bullhorn"></i> Join us for 
 [**OTel Community Day** on June 25th](https://sessionize.com/OTel-Community-Day/)!
 
-{{/*
 
 <!-- prettier-ignore -->
 <i class="fas fa-bullhorn"></i>
-Template for a second post.
+Help improve OTel and Prometheus interoperability: [complete our survey](https://forms.gle/bZAG9f7udoJsjZUG9) by May 31
 {.pt-0}
 
-*/ -}}
 
 </div>
 {{ end -}}

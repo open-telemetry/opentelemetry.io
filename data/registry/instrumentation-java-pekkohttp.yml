@@ -12,5 +12,5 @@ description: This library provides an Apache Pekko HTTP instrumentation
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/pekko-http-1.0
+  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/pekko/pekko-http-1.0
 createdAt: 2020-11-05
