@@ -1,3 +1,4 @@
+# cSpell:ignore matlab simulink
 title: OpenTelemetry-Matlab
 registryType: instrumentation
 language: matlab
