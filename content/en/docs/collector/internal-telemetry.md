@@ -27,7 +27,7 @@ endpoint to one specific or all network interfaces when needed. For
 containerized environments, you might want to expose this port on a public
 interface.
 
-Set the address in the config `service.telemetry.metrics`:
+Set the address in the config `service::telemetry::metrics`:
 
 ```yaml
 service:
@@ -49,7 +49,7 @@ emitted. For the complete list of metrics, with a breakdown by level, see
 [Lists of internal metrics](#lists-of-internal-metrics).
 
 The default level for metrics output is `normal`. To use another level, set
-`service.telemetry.metrics.level`:
+`service::telemetry::metrics::level`:
 
 ```yaml
 service:
@@ -96,7 +96,7 @@ critical analysis.
 ### Configure internal logs
 
 You can find log output in `stderr`. The verbosity level for logs defaults to
-`INFO`, but you can adjust it in the config `service.telemetry.logs`:
+`INFO`, but you can adjust it in the config `service::telemetry::logs`:
 
 ```yaml
 service:
