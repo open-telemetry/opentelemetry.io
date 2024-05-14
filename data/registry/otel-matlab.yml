@@ -1,6 +1,6 @@
 title: OpenTelemetry-Matlab
 registryType: instrumentation
-language: MATLAB
+language: matlab
 tags:
   - matlab
   - simulink
