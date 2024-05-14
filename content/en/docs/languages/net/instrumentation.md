@@ -344,6 +344,7 @@ An `Activity` can be created with zero or more
 [`ActivityLink`s](/docs/concepts/signals/traces/#span-links) that are causally
 related.
 
+
 ```csharp
 // Get a context from somewhere, perhaps it's passed in as a parameter
 var activityContext = Activity.Current!.Context;
