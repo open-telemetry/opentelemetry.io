@@ -1,5 +1,5 @@
 <!-- cSpell:ignore contribfest markdownify -->
-{{ if and .Params.show_banner (.Params.banners) (gt (len .Params.banners) 0) }}
+{{ if and .Params.show_banner (gt (len .Params.banners) 0) }}
   {{ $limit := .Params.limit_banner | default 2 }}
   {{ $sorted := sort .Params.banners "to" }}
   {{ $currentDate := now.Format "2006-01-02" }}
