@@ -6,8 +6,6 @@ show_banner: true
 developer_note:
   下文所用的 blocks/cover 短代码将使用文件名中包含 "background"
   的图像文件作为背景图。
-cascade:
-  draft: true
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
