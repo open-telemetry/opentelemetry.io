@@ -1,7 +1,6 @@
 ---
 title: 什么是 OpenTelemetry？
 description: 简短说明 OpenTelemetry 是什么，不是什么。
-aliases: [/zh/about, /zh/docs/concepts/what-is-opentelemetry, /zh/otel]
 weight: -1
 ---
 

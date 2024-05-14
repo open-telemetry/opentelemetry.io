@@ -1,8 +1,6 @@
 ---
 title: 文档
-linkTitle: Docs
 menu: { main: { weight: 10 } }
-aliases: [/zh/docs/workshop/*]
 ---
 
 OpenTelemetry 也被称为 OTel，是一个供应商中立的、开源的[可观测性](concepts/observability-primer/#what-is-observability)框架，
