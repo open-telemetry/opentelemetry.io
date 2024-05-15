@@ -1011,6 +1011,7 @@ the OpenTelemetry [Log SDK](#logs-sdk-experimental) using the [Logs Bridge
 API][logs bridge API]. Log bridges are available for various popular Go log
 packages:
 
+- [logrus bridge][otellogrus]
 - [slog bridge][otelslog]
 
 The links above contain full usage and installation documentation.
@@ -1041,6 +1042,7 @@ telemetry backends.
   https://github.com/open-telemetry/opentelemetry-collector
 [logs bridge API]: /docs/specs/otel/logs/bridge-api
 [log data model]: /docs/specs/otel/logs/data-model
+[otellogrus]: https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otellogrus
 [otelslog]: https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelslog
 [`go.opentelemetry.io/otel`]: https://pkg.go.dev/go.opentelemetry.io/otel
 [`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`]:
