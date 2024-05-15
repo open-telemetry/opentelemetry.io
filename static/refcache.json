@@ -6995,6 +6995,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-03-01T16:49:37.76693+01:00"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otellogrus": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-15T16:22:37.734630943Z"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelslog": {
     "StatusCode": 200,
     "LastSeen": "2024-05-10T11:02:15.508410781Z"
