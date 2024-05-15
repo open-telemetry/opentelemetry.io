@@ -25,7 +25,7 @@ change the `defaultVariant` value in the config file for a given flag to "on".
 | `paymentServiceUnreachable`         | Checkout Service | Use a bad address when calling the PaymentService to make it seem like the PaymentService is unavailable. |
 | `loadgeneratorFloodHomepage`        | Loadgenerator    | Start flooding the homepage with a huge amount of requests, configurable by changing flagd JSON on state. |
 | `kafkaQueueProblems`                | Kafka            | Overloads Kafka queue while simultaneously introducing a consumer side delay leading to a lag spike.      |
-| `imageSlowLoad`                     | Frontend         | Utilizes envoy fault injection, produces a delay in loading of product images in the frontend.           |
+| `imageSlowLoad`                     | Frontend         | Utilizes envoy fault injection, produces a delay in loading of product images in the frontend.            |
 
 ## Feature Flag Architecture
 
