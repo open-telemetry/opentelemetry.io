@@ -884,7 +884,9 @@ ecosystem. For rationale behind this design decision, see
 The two typical workflows discussed below each cater to different application
 requirements.
 
-### Direct-to-Collector (Experimental)
+### Direct-to-Collector
+
+**Status**: [Experimental](/docs/specs/otel/document-status/)
 
 In the direct-to-Collector workflow, logs are emitted directly from an
 application to a collector using a network protocol (e.g. OTLP). This workflow
@@ -896,15 +898,15 @@ suitable for all applications.
 
 To use this workflow:
 
-- Configure the OpenTelemetry [Log SDK](#logs-sdk-experimental) to export log
+- Configure the OpenTelemetry [Log SDK](#logs-sdk) to export log
   records to desired target destination (the
   [collector][opentelemetry collector] or other).
-- Use an appropriate [Log Bridge](#log-bridge-experimental).
+- Use an appropriate [Log Bridge](#log-bridge).
 
-#### Logs SDK (Experimental)
+#### Logs SDK
 
 The logs SDK dictates how logs are processed when using the
-[direct-to-Collector](#direct-to-collector-experimental) workflow. No log SDK is
+[direct-to-Collector](#direct-to-collector) workflow. No log SDK is
 needed when using the [log forwarding](#via-file-or-stdout) workflow.
 
 The typical log SDK configuration installs a batching log record processor with
@@ -912,7 +914,7 @@ an OTLP exporter.
 
 To enable [logs](/docs/concepts/signals/logs/) in your app, you'll need to have
 an initialized [`LoggerProvider`](/docs/concepts/signals/logs/#logger-provider)
-that will let you use a [Log Bridge](#log-bridge-experimental).
+that will let you use a [Log Bridge](#log-bridge).
 
 If a `LoggerProvider` is not created, the OpenTelemetry APIs for logs will use a
 no-op implementation and fail to generate data. Therefore, you have to modify
@@ -1002,12 +1004,12 @@ func newLoggerProvider(ctx context.Context, res *resource.Resource) (*log.Logger
 ```
 
 Now that a `LoggerProvider` is configured, you can use it to set up a
-[Log Bridge](#log-bridge-experimental).
+[Log Bridge](#log-bridge).
 
-#### Log Bridge (Experimental)
+#### Log Bridge
 
 A log bridge is a component that bridges logs from an existing log package into
-the OpenTelemetry [Log SDK](#logs-sdk-experimental) using the [Logs Bridge
+the OpenTelemetry [Log SDK](#logs-sdk) using the [Logs Bridge
 API][logs bridge API]. Log bridges are available for various popular Go log
 packages:
 
@@ -1023,7 +1025,7 @@ Another component (e.g. FluentBit) is responsible for reading / tailing the
 logs, parsing them to more structured format, and forwarding them a target, such
 as the collector. This workflow may be preferable in situations where
 application requirements do not permit additional overhead from
-[direct-to-Collector](#direct-to-collector-experimental). However, it requires
+[direct-to-Collector](#direct-to-collector). However, it requires
 that all log fields required down stream are encoded into the logs, and that the
 component reading the logs parse the data into the [log data
 model][log data model]. The installation and configuration of log forwarding
