@@ -6,7 +6,9 @@ tags:
   - instrumentation
   - ruby
 license: Apache 2.0
-description: The Grape instrumentation is a community-maintained instrumentation for Grape, a REST-like API framework for Ruby.
+description:
+  The Grape instrumentation is a community-maintained instrumentation for Grape,
+  a REST-like API framework for Ruby.
 authors:
   - name: OpenTelemetry Authors
 urls:
