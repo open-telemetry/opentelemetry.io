@@ -44,7 +44,7 @@ about manual instrumentation.
 You don't have to use the example app: if you want to instrument your own app or
 library, follow the instructions here to adapt the process to your own code.
 
-### Dependencies {#example-app-dependencies}
+### Prerequisites {#example-app-prerequisites}
 
 - [.NET SDK](https://dotnet.microsoft.com/download/dotnet) 6+
 
@@ -385,8 +385,7 @@ Then we will update the `Program.cs` to add the Instrument object as a dependenc
 ```csharp 
 //...
 
-// Register the ActivitySource as a singleton in the DI container.
-// Create a service to expose the ActivitySource Instruments.
+// Register the Instrumentation class as a singleton in the DI container.
 builder.Services.AddSingleton<Instrumentation>();
 
 builder.Services.AddControllers();
