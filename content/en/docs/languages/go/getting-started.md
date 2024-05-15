@@ -17,7 +17,7 @@ way that [traces][] and [metrics][] are emitted to the console.
 
 Ensure that you have the following installed locally:
 
-- [Go](https://go.dev/) `v1.22` or greater
+- [Go](https://go.dev/) `1.22` or greater
 
 ## Example application
 
