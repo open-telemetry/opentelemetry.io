@@ -884,9 +884,9 @@ ecosystem. For rationale behind this design decision, see
 The two typical workflows discussed below each cater to different application
 requirements.
 
-### Direct to collector (Experimental)
+### Direct-to-Collector (Experimental)
 
-In the direct to collector workflow, logs are emitted directly from an
+In the direct-to-Collector workflow, logs are emitted directly from an
 application to a collector using a network protocol (e.g. OTLP). This workflow
 is simple to set up as it doesn't require any additional log forwarding
 components, and allows an application to easily emit structured logs that
@@ -904,7 +904,7 @@ To use this workflow:
 #### Logs SDK (Experimental)
 
 The logs SDK dictates how logs are processed when using the
-[direct to collector](#direct-to-collector-experimental) workflow. No log SDK is
+[direct-to-Collector](#direct-to-collector-experimental) workflow. No log SDK is
 needed when using the [log forwarding](#via-file-or-stdout) workflow.
 
 The typical log SDK configuration installs a batching log record processor with
@@ -1022,7 +1022,7 @@ Another component (e.g. FluentBit) is responsible for reading / tailing the
 logs, parsing them to more structured format, and forwarding them a target, such
 as the collector. This workflow may be preferable in situations where
 application requirements do not permit additional overhead from
-[direct to collector](#direct-to-collector-experimental). However, it requires
+[direct-to-Collector](#direct-to-collector-experimental). However, it requires
 that all log fields required down stream are encoded into the logs, and that the
 component reading the logs parse the data into the [log data
 model][log data model]. The installation and configuration of log forwarding
