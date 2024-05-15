@@ -216,6 +216,10 @@ module:
     - source: content/zh
       target: content
       lang: zh
+    - excludeFiles: specs/*
+      source: content/en/docs # zh missing-page fallback
+      target: content/docs
+      lang: zh
     - source: tmp/otel/specification
       target: content/docs/specs/otel
     - source: tmp/opamp
