@@ -554,7 +554,7 @@ tracked as a nested operation under `rollTheDice` activity.
 
 ### Get the current Activity
 
-Sometimes it’s helpful to do something with the current/active span at a particular point in program execution.
+Sometimes it’s helpful to do something with the current/active Activity/Span at a particular point in program execution.
 
 ```csharp
 var activity = Activity.Current;
@@ -581,7 +581,7 @@ private int rollOnce()
 }
 ```
 
-### Create Activities with events
+### Add Events to Activities
 
 [Spans](/docs/concepts/signals/traces/#spans) can be annotated with named events
 (called [Span Events](/docs/concepts/signals/traces/#span-events)) that can
