@@ -49,7 +49,7 @@ with the following details:
   all of them are open source, and prefer CNCF projects over non-CNCF projects
   (e.g. use Jaeger for trace visualization, and Prometheus for metric
   visualization)
-- Name of a [SIG](https://github.com/open-telemetry/community/), which is
+- Name of a [SIG](https://github.com/open-telemetry/community/?tab=readme-ov-file#specification-sigs), which is
   related to this blog post
 - Name of a sponsor (maintainer or approver) from this SIG, who will help to
   review that PR
