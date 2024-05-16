@@ -17,7 +17,7 @@ way that [traces][] and [metrics][] are emitted to the console.
 
 Ensure that you have the following installed locally:
 
-- [Go](https://go.dev/) `1.22` or greater
+- [Go](https://go.dev/) 1.22 or greater
 
 ## Example application
 
@@ -688,7 +688,7 @@ manually and it is a child of the previously mentioned span.
 
 </details>
 
-Along with the trace, a log messages will be emitted to the console.
+Along with the trace, log messages are emitted to the console.
 
 <details>
 <summary>View example output</summary>
@@ -764,7 +764,7 @@ Along with the trace, a log messages will be emitted to the console.
 </details>
 
 Refresh the <http://localhost:8080/rolldice/Alice> page a few times, and then
-either wait for a little bit or terminate the app and you'll see metrics as in
+either wait a little or terminate the app and you'll see metrics as in
 the console output. You'll see the `dice.rolls` metric emitted to the console,
 with separate counts for each roll value, as well as the HTTP metrics generated
 by the instrumentation library.
