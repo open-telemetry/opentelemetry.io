@@ -6,8 +6,8 @@ weight: 30
 
 The [OpenTelemetry blog](/blog/) communicates new features, community reports,
 and any news that might be relevant to the OpenTelemetry community. This
-includes end users and developers. Anyone can write a blog post, read below what
-the requirements are.
+includes end users and developers. Anyone can write a blog post, read the following
+requirements to get started.
 
 ## Documentation or blog post?
 
@@ -46,8 +46,7 @@ with the following details:
 - Title of the blog post
 - Short description and outline of your blog post
 - If applicable, list the technologies used in your blog post. Make sure that
-  all of them are open source, and prefer CNCF projects over non-CNCF projects
-  (e.g. use Jaeger for trace visualization, and Prometheus for metric
+  all of them are open source, and prefer CNCF projects over non-CNCF projects. For example, use Jaeger for trace visualization, and Prometheus for metric
   visualization)
 - Name of a [SIG](https://github.com/open-telemetry/community/?tab=readme-ov-file#specification-sigs), which is
   related to this blog post
