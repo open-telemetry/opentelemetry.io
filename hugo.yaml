@@ -196,13 +196,6 @@ params:
       If you are interested in helping out, get in touch with the
       [Client Instrumentation SIG](https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w).
 
-services:
-  googleAnalytics:
-    # The following is a placeholder (fake) ID useful for local test builds. The
-    # real ID is set in the Netlify config. For details, see
-    # https://github.com/open-telemetry/opentelemetry.io/issues/1626.
-    id: G-0000000000
-
 security:
   funcs: # cspell:disable-line
     getenv: # cspell:disable-line
