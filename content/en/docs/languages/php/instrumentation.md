@@ -404,7 +404,7 @@ class Dice {
 
     private function rollOnce() {
       $result = random_int(1, 6);
-      return $result
+      return $result;
     }
 }
 ```
