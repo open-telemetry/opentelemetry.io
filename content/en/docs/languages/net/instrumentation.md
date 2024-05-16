@@ -3,6 +3,7 @@ title: Instrumentation
 weight: 20
 aliases: [manual]
 description: Instrumentation for OpenTelemetry .NET
+cSpell:ignore: dicelib rolldice
 ---
 
 {{% docs/languages/instrumentation-intro %}}
@@ -10,13 +11,13 @@ description: Instrumentation for OpenTelemetry .NET
 {{% alert title="Note" color="info" %}}
 
 On this page you will learn how you can add traces, metrics and logs to your
-code manually. You are not limited to using one kind of instrumentation:
-you can also use [automatic instrumentation](/docs/languages/net/automatic/)
-to get started and then enrich your code with manual instrumentation as needed.
+code manually. You are not limited to using one kind of instrumentation: you can
+also use [automatic instrumentation](/docs/languages/net/automatic/) to get
+started and then enrich your code with manual instrumentation as needed.
 
 Also, for libraries your code depends on, you don't have to write
-instrumentation code yourself, since they might be already instrumented or there are 
-[instrumentation libraries](/docs/languages/net/libraries/) for them.
+instrumentation code yourself, since they might be already instrumented or there
+are [instrumentation libraries](/docs/languages/net/libraries/) for them.
 
 {{% /alert %}}
 
@@ -38,8 +39,8 @@ you can refer to the [OpenTelemetry API Shim docs for tracing](../shim).
 ## Example app preparation {#example-app}
 
 This page uses a modified version of the example app from
-[Getting Started](/docs/languages/net/getting-started/) to help you learn
-about manual instrumentation.
+[Getting Started](/docs/languages/net/getting-started/) to help you learn about
+manual instrumentation.
 
 You don't have to use the example app: if you want to instrument your own app or
 library, follow the instructions here to adapt the process to your own code.
@@ -50,15 +51,16 @@ library, follow the instructions here to adapt the process to your own code.
 
 ### Create and launch an HTTP Server
 
-To begin, set up an environment in a new directory called `dotnet-otel-example`. Within that directory, execute following command:
+To begin, set up an environment in a new directory called `dotnet-otel-example`.
+Within that directory, execute following command:
 
 ```shell
 dotnet new web
 ```
 
 To highlight the difference between instrumenting a library and a standalone
-app, split out the dice rolling into a library file, which then will be
-imported as a dependency by the app file.
+app, split out the dice rolling into a library file, which then will be imported
+as a dependency by the app file.
 
 Create the library file named `Dice.cs` and add the following code to it:
 
@@ -84,7 +86,7 @@ public class Dice
         {
             results.Add(rollOnce());
         }
-        
+
         return results;
     }
 
@@ -93,7 +95,6 @@ public class Dice
         return Random.Shared.Next(min, max + 1);
     }
 }
-
 ```
 
 Create the app file `DiceController.cs` and add the following code to it:
@@ -122,7 +123,7 @@ public class DiceController : ControllerBase
             logger.LogError("Missing rolls parameter");
             throw new HttpRequestException("Missing rolls parameter", null, HttpStatusCode.BadRequest);
         }
-            
+
         var result = new Dice(1, 6).rollTheDice(rolls.Value);
 
         if (string.IsNullOrEmpty(player))
@@ -137,7 +138,6 @@ public class DiceController : ControllerBase
         return result;
     }
 }
-
 ```
 
 Replace the content of the Program.cs file with the following code:
@@ -154,7 +154,8 @@ app.MapControllers();
 app.Run();
 ```
 
-In the `Properties` subdirectory, replace the content of `launchSettings.json` with the following:
+In the `Properties` subdirectory, replace the content of `launchSettings.json`
+with the following:
 
 ```json
 {
@@ -196,13 +197,13 @@ Install the following OpenTelemetry NuGet packages:
 
 [OpenTelemetry.Extensions.Hosting](https://www.nuget.org/packages/OpenTelemetry.Extensions.Hosting)
 
-
 ```sh
 dotnet add package OpenTelemetry.Exporter.Console
 dotnet add package OpenTelemetry.Extensions.Hosting
 ```
 
-For ASP.NET Core-based applications, also install the AspNetCore instrumentation package
+For ASP.NET Core-based applications, also install the AspNetCore instrumentation
+package
 
 [OpenTelemetry.Instrumentation.AspNetCore](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AspNetCore)
 
@@ -210,15 +211,17 @@ For ASP.NET Core-based applications, also install the AspNetCore instrumentation
 dotnet add package OpenTelemetry.Instrumentation.AspNetCore
 ```
 
-
 ### Initialize the SDK
 
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library, you don't need to initialize the SDK. {{% /alert %}}
+{{% alert title="Note" color="info" %}} If you’re instrumenting a library, you
+don't need to initialize the SDK. {{% /alert %}}
 
-It is important to configure an instance of the OpenTelemetry SDK as early as possible in your application.
+It is important to configure an instance of the OpenTelemetry SDK as early as
+possible in your application.
 
-To initialize the OpenTelemetry SDK for an ASP.NET Core app like in the case of the example app, 
-update the content of the `Program.cs` file with the following code: 
+To initialize the OpenTelemetry SDK for an ASP.NET Core app like in the case of
+the example app, update the content of the `Program.cs` file with the following
+code:
 
 ```csharp
 using OpenTelemetry.Logs;
@@ -257,11 +260,10 @@ var app = builder.Build();
 app.MapControllers();
 
 app.Run();
-
 ```
 
-If initializing the OpenTelemetry SDK for a console app,
-add the following code at the beginning of your program, during any important startup operations.
+If initializing the OpenTelemetry SDK for a console app, add the following code
+at the beginning of your program, during any important startup operations.
 
 ```csharp
 using OpenTelemetry.Logs;
@@ -300,21 +302,20 @@ var loggerFactory = LoggerFactory.Create(builder =>
 tracerProvider.Dispose();
 meterProvider.Dispose();
 loggerFactory.Dispose();
-
 ```
 
-For debugging and local development purposes, the example exports
-telemetry to the console. After you have finished setting up manual
-instrumentation, you need to configure an appropriate exporter to
+For debugging and local development purposes, the example exports telemetry to
+the console. After you have finished setting up manual instrumentation, you need
+to configure an appropriate exporter to
 [export the app's telemetry data](/docs/languages/net/exporters/) to one or more
 telemetry backends.
 
 The example also sets up the mandatory SDK default attribute `service.name`,
 which holds the logical name of the service, and the optional, but highly
 encouraged, attribute `service.version`, which holds the version of the service
-API or implementation.
-Alternative methods exist for setting up resource attributes. For more
-information, see [Resources](/docs/languages/net/resources/).
+API or implementation. Alternative methods exist for setting up resource
+attributes. For more information, see
+[Resources](/docs/languages/net/resources/).
 
 To verify your code, build and run the app:
 
@@ -323,12 +324,12 @@ dotnet build
 dotnet run
 ```
 
-
 ## Traces
 
 ### Initialize Tracing
 
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library, you don't need to initialize a TraceProvider. {{% /alert %}}
+{{% alert title="Note" color="info" %}} If you’re instrumenting a library, you
+don't need to initialize a TraceProvider. {{% /alert %}}
 
 To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need to
 have an initialized
@@ -342,23 +343,25 @@ If you followed the instructions to [initialize the SDK](#initialize-the-sdk)
 above, you have a `TracerProvider` setup for you already. You can continue with
 [setting up an ActivitySource](#setting-up-an-activitysource).
 
-
 ### Setting up an ActivitySource
 
-Anywhere in your application where you write manual tracing code should configure an
-[`ActivitySource`](/docs/concepts/signals/traces/#tracer), which will be how you
-trace operations with [`Activity`](/docs/concepts/signals/traces/#spans)
-elements.
+Anywhere in your application where you write manual tracing code should
+configure an [`ActivitySource`](/docs/concepts/signals/traces/#tracer), which
+will be how you trace operations with
+[`Activity`](/docs/concepts/signals/traces/#spans) elements.
 
-It’s generally recommended to define `ActivitySource` once per app/service that is been instrumented, but you can instantiate several `ActivitySource`s if that suits your scenario.
+It’s generally recommended to define `ActivitySource` once per app/service that
+is been instrumented, but you can instantiate several `ActivitySource`s if that
+suits your scenario.
 
-In the case of the example app, we will create a new file `Instrumentation.cs` as a custom type to hold reference for the ActivitySource. 
+In the case of the example app, we will create a new file `Instrumentation.cs`
+as a custom type to hold reference for the ActivitySource.
 
 ```csharp
 using System.Diagnostics;
 
 /// <summary>
-/// It is recommended to use a custom type to hold references for ActivitySource. 
+/// It is recommended to use a custom type to hold references for ActivitySource.
 /// This avoids possible type collisions with other components in the DI container.
 /// </summary>
 public class Instrumentation : IDisposable
@@ -380,9 +383,10 @@ public class Instrumentation : IDisposable
 }
 ```
 
-Then we will update the `Program.cs` to add the Instrument object as a dependency injection:
+Then we will update the `Program.cs` to add the Instrument object as a
+dependency injection:
 
-```csharp 
+```csharp
 //...
 
 // Register the Instrumentation class as a singleton in the DI container.
@@ -395,11 +399,11 @@ var app = builder.Build();
 app.MapControllers();
 
 app.Run();
-
 ```
 
-In the application file `DiceController.cs` we will reference that activitySource instance 
-and the same activitySource instance will also be passed to the library file `Dice.cs`
+In the application file `DiceController.cs` we will reference that
+activitySource instance and the same activitySource instance will also be passed
+to the library file `Dice.cs`
 
 ```csharp
 /*DiceController.cs*/
@@ -447,7 +451,6 @@ public class DiceController : ControllerBase
 }
 ```
 
-
 ```csharp
 /*Dice.cs*/
 
@@ -472,16 +475,17 @@ public class Dice
 
 ### Create Activities
 
-Now that you have [activitySources](/docs/concepts/signals/traces/#tracer) initialized, you can create [activities](/docs/concepts/signals/traces/#spans).
+Now that you have [activitySources](/docs/concepts/signals/traces/#tracer)
+initialized, you can create [activities](/docs/concepts/signals/traces/#spans).
 
 The code below illustrates how to create an activity.
 
 ```csharp
 public List<int> rollTheDice(int rolls)
-{   
+{
     List<int> results = new List<int>();
-    
-    // It is recommended to create activities, only when doing operations that are worth measuring independently. 
+
+    // It is recommended to create activities, only when doing operations that are worth measuring independently.
     // Too many activities makes it harder to visualize in tools like Jaeger.
     using (var myActivity = activitySource.StartActivity("rollTheDice"))
     {
@@ -493,13 +497,14 @@ public List<int> rollTheDice(int rolls)
         return results;
     }
 }
-
 ```
+
 If you followed the instructions using the [example app](#example-app) up to
 this point, you can copy the code above in your library file `Dice.cs`. You
 should now be able to see activities/spans emitted from your app.
 
-Start your app as follows, and then send it requests by visiting <http://localhost:8080/rolldice?rolls=12> with your browser or curl.
+Start your app as follows, and then send it requests by visiting
+<http://localhost:8080/rolldice?rolls=12> with your browser or curl.
 
 ```sh
 dotnet run
@@ -525,10 +530,10 @@ Resource associated with Activity:
     telemetry.sdk.name: opentelemetry
     telemetry.sdk.language: dotnet
     telemetry.sdk.version: 1.7.0
-
 ```
 
 ### Create nested Activities
+
 Nested [spans](/docs/concepts/signals/traces/#spans) let you track work that's
 nested in nature. For example, the `rollOnce()` function below represents a
 nested operation. The following sample creates a nested span that tracks
@@ -540,21 +545,21 @@ private int rollOnce()
     using (var childActivity = activitySource.StartActivity("rollOnce"))
     {
       int result;
-      
+
       result = Random.Shared.Next(min, max + 1);
-        
+
       return result;
     }
 }
-
 ```
 
-When you view the spans in a trace visualization tool, `rollOnce` childActivity will be
-tracked as a nested operation under `rollTheDice` activity.
+When you view the spans in a trace visualization tool, `rollOnce` childActivity
+will be tracked as a nested operation under `rollTheDice` activity.
 
 ### Get the current Activity
 
-Sometimes it’s helpful to do something with the current/active Activity/Span at a particular point in program execution.
+Sometimes it’s helpful to do something with the current/active Activity/Span at
+a particular point in program execution.
 
 ```csharp
 var activity = Activity.Current;
@@ -562,8 +567,9 @@ var activity = Activity.Current;
 
 ### Activity Tags
 
-Tags (the equivalent of [Attributes](/docs/concepts/signals/traces/#attributes)) let you attach key/value
-pairs to an [`Activity`](/docs/concepts/signals/traces/#spans) so it carries more
+Tags (the equivalent of [Attributes](/docs/concepts/signals/traces/#attributes))
+let you attach key/value pairs to an
+[`Activity`](/docs/concepts/signals/traces/#spans) so it carries more
 information about the current operation that it's tracking.
 
 ```csharp
@@ -572,12 +578,12 @@ private int rollOnce()
   using (var childActivity = activitySource.StartActivity("rollOnce"))
     {
       int result;
-      
+
       result = Random.Shared.Next(min, max + 1);
       childActivity?.SetTag("dicelib.rolled", result);
-        
+
       return result;
-    } 
+    }
 }
 ```
 
@@ -585,8 +591,8 @@ private int rollOnce()
 
 [Spans](/docs/concepts/signals/traces/#spans) can be annotated with named events
 (called [Span Events](/docs/concepts/signals/traces/#span-events)) that can
-carry zero or more [Span Attributes](#span-attributes), each of which itself is
-a key:value map paired automatically with a timestamp.
+carry zero or more [Span Attributes](#activity-tags), each of which itself is a
+key:value map paired automatically with a timestamp.
 
 ```csharp
 myActivity?.AddEvent(new("Init"));
@@ -612,9 +618,7 @@ other Spans that are causally related via a
 represent batched operations where a Span was initiated by multiple initiating
 Spans, each representing a single incoming item being processed in the batch.
 
-
 ```csharp
-
 var links = new List<ActivityLink>
 {
     new ActivityLink(activityContext1),
@@ -628,19 +632,17 @@ var activity = MyActivitySource.StartActivity(
     links: links);
 ```
 
-For more details how to read context from remote processes, see
-[Context Propagation](#context-propagation).
-
-
 ### Set Activity status
 
 {{% docs/languages/span-status-preamble %}}
 
 A [status](/docs/concepts/signals/traces/#span-status) can be set on a
 [span](/docs/concepts/signals/traces/#spans), typically used to specify that a
-span has not completed successfully - `SpanStatus.Error`. 
+span has not completed successfully - `SpanStatus.Error`.
 
-By default, all spans are `Unset`, which means a span completed without error. The `Ok` status is reserved for when you need to explicitly mark a span as successful rather than stick with the default of Unset (i.e., “without error”).
+By default, all spans are `Unset`, which means a span completed without error.
+The `Ok` status is reserved for when you need to explicitly mark a span as
+successful rather than stick with the default of Unset (i.e., “without error”).
 
 The status can be set at any time before the span is finished.
 
@@ -654,7 +656,7 @@ private int rollOnce()
     using (var childActivity = activitySource.StartActivity("rollOnce"))
     {
         int result;
-        
+
         try
         {
             result = Random.Shared.Next(min, max + 1);
@@ -670,7 +672,6 @@ private int rollOnce()
         return result;
     }
 }
-
 ```
 
 ## Metrics
