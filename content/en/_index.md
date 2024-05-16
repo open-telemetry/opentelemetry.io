@@ -4,6 +4,9 @@ description: >-
   High-quality, ubiquitous, and portable telemetry to enable effective
   observability
 show_banner: true
+outputs:
+  - HTML
+  - REDIRECTS # Include this `content/en` ONLY
 developer_note:
   The blocks/cover shortcode (used below) will use as a background image any
   image file containing "background" in its name.

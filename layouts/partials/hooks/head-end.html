@@ -1,3 +1,11 @@
 {{ with .Params.canonical_url -}}
+
 <link rel="canonical" href="{{ . }}">
-{{ end -}}
+
+{{- else -}}
+
+  {{ $canonicalURL := .Permalink -}}
+
+  <link rel="canonical" href="{{ $canonicalURL }}">
+
+{{- end -}}

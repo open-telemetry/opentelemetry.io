@@ -16,7 +16,6 @@ languages:
     params:
       description: The OpenTelemetry Project Site
   zh:
-    disabled: true
     languageName: 中文 (Chinese)
     params:
       description: OpenTelemetry 项目网站
@@ -52,7 +51,7 @@ outputFormats:
     notAlternative: true
 
 outputs:
-  home: [HTML, REDIRECTS]
+  home: [HTML]
   section: [HTML]
 
 params:
@@ -216,6 +215,10 @@ module:
       target: content
     - source: content/zh
       target: content
+      lang: zh
+    - excludeFiles: specs/*
+      source: content/en/docs # zh missing-page fallback
+      target: content/docs
       lang: zh
     - source: tmp/otel/specification
       target: content/docs/specs/otel
