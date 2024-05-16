@@ -5,7 +5,7 @@
   ],
   "scripts": {
     "__check:links": "make --keep-going check-links",
-    "_build": "hugo --cleanDestinationDir -e dev -DFE --baseURL \"${DEPLOY_PRIME_URL:-/}\"",
+    "_build": "hugo --cleanDestinationDir -e dev -DFE --baseURL \"${DEPLOY_PRIME_URL:-http://localhost}\"",
     "_check:format:any": "npx prettier --check --ignore-path ''",
     "_check:format": "npx prettier --check .",
     "_check:links--md": "npx markdown-link-check --config .markdown-link-check.json *.md",
@@ -83,11 +83,11 @@
     "sync": "./scripts/sync-submodules.pl",
     "test-and-fix": "npm run seq -- check fix:dict fix:filenames",
     "test": "npm run check",
-    "update:pkg:docsy-dep": "npm install --save-dev autoprefixer@latest postcss-cli@latest",
-    "update:pkg:hugo": "npm install --save-dev --save-exact hugo-extended@latest",
-    "update:pkg:hugo+": "npm run update:pkg:hugo && npm run update:pkg:docsy-dep",
-    "update:pkg:netlify": "npm install --save-optional netlify-cli@latest",
-    "update:pkg:other": "npm install --save-dev gulp@latest",
+    "update:docsy-dep": "npm install --save-dev autoprefixer@latest postcss-cli@latest",
+    "update:hugo": "npm install --save-dev --save-exact hugo-extended@latest",
+    "update:hugo+": "npm run update:hugo && npm run update:docsy-dep",
+    "update:netlify": "npm install --save-optional netlify-cli@latest",
+    "update:other-pkg": "npm install --save-dev gulp@latest",
     "update:submodule:lang": "npm run seq -- update:submodule _get:submodule:non-lang",
     "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 1}"
   },
@@ -95,7 +95,7 @@
     "autoprefixer": "^10.4.19",
     "cspell": "^8.0.0",
     "gulp": "^4.0.2",
-    "hugo-extended": "github:chalin/hugo-extended#v0.125.7",
+    "hugo-extended": "0.125.7",
     "markdown-link-check": "^3.12.1",
     "markdownlint": "^0.34.0",
     "postcss-cli": "^11.0.0",
@@ -122,7 +122,7 @@
     "path": "^0.12.7"
   },
   "optionalDependencies": {
-    "netlify-cli": "^17.16.1"
+    "netlify-cli": "^17.23.5"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "engines": {
