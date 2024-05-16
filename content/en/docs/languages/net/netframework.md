@@ -131,8 +131,8 @@ this.tracerProvider = Sdk.CreateTracerProviderBuilder()
     .Build();
 ```
 
-See [Add tags to an Activity](../instrumentation/#add-tags-to-an-activity) for
-annotating trace data more generally.
+See [Add tags to an Activity](../instrumentation/#activity-tags) for annotating
+trace data more generally.
 
 ### RecordException
 

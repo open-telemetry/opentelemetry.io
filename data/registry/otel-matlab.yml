@@ -1,0 +1,16 @@
+# cSpell:ignore matlab simulink
+title: OpenTelemetry-Matlab
+registryType: instrumentation
+language: matlab
+tags:
+  - matlab
+  - simulink
+license: Apache 2.0
+description: An unofficial implementation of OpenTelemetry in MATLAB.
+authors:
+  - name: MathWorks
+    url: https://github.com/mathworks
+urls:
+  repo: https://github.com/mathworks/OpenTelemetry-Matlab
+createdAt: 2023-06-12
+isFirstParty: true
