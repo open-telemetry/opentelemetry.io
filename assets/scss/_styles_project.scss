@@ -184,7 +184,7 @@
   }
 
   details {
-    background-color: $gray-100;
+    background-color: var(--bs-tertiary-bg);
     margin-bottom: 0.5em;
 
     summary {
