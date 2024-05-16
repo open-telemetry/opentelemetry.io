@@ -2843,6 +2843,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:42.253423-05:00"
   },
+  "https://github.com/mathworks": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-15T14:38:18.358902245-04:00"
+  },
+  "https://github.com/mathworks/OpenTelemetry-Matlab": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-15T14:38:17.890374388-04:00"
+  },
   "https://github.com/metrico/otel-collector": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:04:05.309796-05:00"
@@ -2958,6 +2966,10 @@
   "https://github.com/open-telemetry/community#specification-sigs": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:13.185301-05:00"
+  },
+  "https://github.com/open-telemetry/community/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-10T13:05:22.581509+02:00"
   },
   "https://github.com/open-telemetry/community/discussions/1203": {
     "StatusCode": 200,
@@ -6995,6 +7007,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-03-01T16:49:37.76693+01:00"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otellogrus": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-15T16:22:37.734630943Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelslog": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-10T11:02:15.508410781Z"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp": {
     "StatusCode": 200,
     "LastSeen": "2024-01-19T15:36:28.468246594Z"
@@ -7058,6 +7078,10 @@
   "https://pkg.go.dev/go.opentelemetry.io/otel/metric#WithAttributes": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:42.951557-05:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/log": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-10T11:02:08.878761042Z"
   },
   "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric": {
     "StatusCode": 200,
