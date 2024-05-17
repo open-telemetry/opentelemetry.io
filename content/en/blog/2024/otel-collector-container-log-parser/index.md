@@ -1,7 +1,7 @@
 ---
 title: Introducing the new container log parser for OpenTelemetry Collector
 linkTitle: Collector container log parser
-date: 2024-05-16
+date: 2024-05-17
 author: '[Christos Markou](https://github.com/ChrsMark) (Elastic)'
 cSpell:ignore: Christos containerd Filelog filelog Jaglowski kube Markou
 ---
@@ -21,7 +21,7 @@ is capable of parsing container logs from Kubernetes Pods, but it requires
 [extensive configuration](https://github.com/open-telemetry/opentelemetry-helm-charts/blob/aaa70bde1bf8bf15fc411282468ac6d2d07f772d/charts/opentelemetry-collector/templates/_config.tpl#L206-L282)
 to properly parse logs according to various container runtime formats. The
 reason is that container logs can come in various known formats depending on the
-container runtime, so we need to perform a specific set of operations in order
+container runtime, so you need to perform a specific set of operations in order
 to properly parse them:
 
 1. Detect the format of the incoming logs at runtime.
@@ -32,7 +32,7 @@ to properly parse them:
 
 Such advanced sequence of operations can be handled by chaining the proper
 [stanza](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/stanza)
-operators together. The end result is rather complex, and this configuration
+operators together. The end result is rather complex. This configuration
 complexity can be mitigated by using the corresponding
 [helm chart preset](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-collector#configuration-for-kubernetes-container-logs).
 However, despite having the preset, it can still be challenging for users to
@@ -52,8 +52,8 @@ in container log parsing.
 
 ## How container logs look like
 
-First of all we need to quickly recall the different container log formats that
-we can meet out there:
+First of all let's quickly recall the different container log formats that can
+be met out there:
 
 - Docker container logs:
 
@@ -71,13 +71,12 @@ We can notice that cri-o and containerd log formats are quite similar (both
 follow the CRI logging format) but with a small difference in the timestamp
 format.
 
-Consequently, in order to properly handle these 3 different formats we need 3
-different routes of
+To properly handle these 3 different formats you need 3 different routes of
 [stanza](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/stanza)
 operators as we can see in the
 [container parser operator issue](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/31959).
 
-In addition, the CRI format can provide partial logs which we would like to
+In addition, the CRI format can provide partial logs which you would like to
 combine them into one at first place:
 
 ```text
@@ -86,19 +85,19 @@ combine them into one at first place:
 2024-04-06T00:17:10.113242941Z stdout F ns across multiple log entries
 ```
 
-Ideally, we want our parser to be capable of automatically detecting the format
-at runtime and properly parse the log lines. We will see later that the
+Ideally you would like our parser to be capable of automatically detecting the
+format at runtime and properly parse the log lines. We will see later that the
 container parser will do that for us.
 
 ## Attribute handling
 
-Container log files follow a specific naming pattern from which we can extract
+Container log files follow a specific naming pattern from which you can extract
 useful metadata information during parsing. For example, from
 `/var/log/pods/kube-system_kube-scheduler-kind-control-plane_49cc7c1fd3702c40b2686ea7486091d3/kube-scheduler/1.log`,
-we can extract the namespace, the name and UID of the pod, and the name of the
+you can extract the namespace, the name and UID of the pod, and the name of the
 container.
 
-After extracting this metadata, we need to store it properly using the
+After extracting this metadata, you need to store it properly using the
 appropriate attributes following the
 [Semantic Conventions](/docs/specs/semconv/resource/k8s/). This handling can
 also be encapsulated within the parser's implementation, eliminating the need
@@ -145,12 +144,12 @@ will produce a log entry like the following:
 }
 ```
 
-We can notice that we don't have to define the format. The parser automatically
-detects the format and parses the logs accordingly. Even partial logs that cri-o
-or containerd runtimes can produce will be recombined properly without the need
-of any special configuration.
+You can notice that you don't have to define the format. The parser
+automatically detects the format and parses the logs accordingly. Even partial
+logs that cri-o or containerd runtimes can produce will be recombined properly
+without the need of any special configuration.
 
-This is really handy, because as users we don't need to care about specifying
+This is really handy, because as a user you don't need to care about specifying
 the format and even maintaining different configurations for different
 environments.
 
@@ -158,13 +157,12 @@ environments.
 
 In order to implement that parser operator most of the code was written from
 scratch, but we were able to re-use the recombine operator internally for the
-partial logs parsing. In order to achieve this some small refactoring was
-required but this gave us the opportunity to re-use an already existent and well
-tested component.
+partial logs parsing. To achieve this, some small refactoring was required but
+this gave us the opportunity to re-use an already existent and well tested
+component.
 
-Additionally, during the discussions around the implementation of this feature,
-a question popped up: _Why to implement this as an operator and not as a
-processor?_
+During the discussions around the implementation of this feature, a question
+popped up: _Why to implement this as an operator and not as a processor?_
 
 One basic reason is that the order of the log records arriving at processors is
 not guaranteed. However we need to ensure this, so as to properly handle the
