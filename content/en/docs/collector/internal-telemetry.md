@@ -102,6 +102,7 @@ options](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
 param vers %}}/service/telemetry/config.go) are:
 
 <!--- TODO: Consider making this a table. --->
+<!--- TODO: Verify possible values of `level`. --->
 
 - `level`: Sets the minimum enabled logging level. Default is `INFO`. Other
   possible values are `DEBUG`, `WARN`, and `ERROR`.
