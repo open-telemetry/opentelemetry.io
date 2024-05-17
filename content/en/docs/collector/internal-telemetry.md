@@ -95,15 +95,30 @@ critical analysis.
 
 ### Configure internal logs
 
-You can find log output in `stderr`. The verbosity level for logs defaults to
-`INFO`, but you can adjust it in the config `service::telemetry::logs`:
+Log output is found in `stderr`. You can configure logs in the config
+`service::telemetry::logs`. The [configuration
+options](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
+param vers %}}/service/telemetry/config.go) are:
 
-```yaml
-service:
-  telemetry:
-    logs:
-      level: 'debug'
-```
+<!--- TODO: Consider making this a table. --->
+
+- `level`: Sets the minimum enabled logging level. Default is `INFO`. Other
+  possible values are `DEBUG`, `WARN`, and `ERROR`.
+- `development`: Puts the logger in development mode. Default is `false`.
+- `encoding`: Sets the logger's encoding. Default is `console`. Example values
+  are `json` or `console`.
+- `disable_caller`: Stops annotating logs with the calling function's file name
+  and line number. By default, the value is `false` and all logs are annotated.
+- `disable_stacktrace`: Disables automatic stacktrace capturing. Default is
+  `false`. Stacktraces are captured for logs at `WARN` level and above in
+  development and at `ERROR` level and above in production.
+- `sampling`: Sets a sampling policy. By default, sampling is enabled.
+- `output_paths`: A list of URLs or file paths to write logging output to.
+  Default is `["stderr"]`.
+- `error_output_paths`: A list of URLs or file paths to write logger errors to.
+  Default is `["stderr"]`.
+- `initial_fields`: A collection of static key-value pairs added to all log
+  entries to enrich logging context. By default, there is no initial field.
 
 You can also see logs for the Collector on a Linux systemd system using
 `journalctl`:
