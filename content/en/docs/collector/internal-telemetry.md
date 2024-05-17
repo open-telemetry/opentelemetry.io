@@ -58,8 +58,9 @@ service:
       level: detailed
 ```
 
-The Collector can also be configured to scrape its own metrics and send them
-through configured pipelines. For example:
+The Collector can also be configured to scrape its own metrics using a
+[Prometheus receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver)
+and send them through configured pipelines. For example:
 
 ```yaml
 receivers:
