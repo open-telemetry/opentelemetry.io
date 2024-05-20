@@ -90,6 +90,12 @@
   contact:
   oss: false
   commercial: true
+- name: Edge Delta
+  nativeOTLP: true
+  url: https://docs.edgedelta.com/otlp-input-node/
+  contact:
+  oss: false
+  commercial: true
 - name: Elastic
   nativeOTLP: true
   url: https://www.elastic.co/guide/en/apm/get-started/current/open-telemetry-elastic.html
