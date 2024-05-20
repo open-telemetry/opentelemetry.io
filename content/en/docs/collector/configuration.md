@@ -602,8 +602,6 @@ service:
 
 ### Telemetry
 
-<!--- TODO: Consider linking to subsection of internal telemetry page. --->
-
 The `telemetry` config section is where you can set up observability for the
 Collector itself. It consists of two subsections: `logs` and `metrics`. To learn
 how to configure these signals, see
