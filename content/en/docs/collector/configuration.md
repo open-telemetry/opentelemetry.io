@@ -604,9 +604,10 @@ service:
 
 <!--- TODO: Consider linking to subsection of internal telemetry page. --->
 
-The `telemetry` section is where you can configure telemetry for the Collector
-itself. It consists of two subsections: `logs` and `metrics`. See the
-[Internal telemetry](/docs/collector/internal-telemetry/) page to learn more.
+The `telemetry` config section is where you can set up observability for the
+Collector itself. It consists of two subsections: `logs` and `metrics`. To learn
+how to configure these signals, see
+[Activate internal telemetry in the Collector](/docs/collector/internal-telemetry#activate-internal-telemetry-in-the-collector).
 
 ## Other Information
 
