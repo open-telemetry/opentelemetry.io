@@ -41,10 +41,10 @@ HTTP server and aggregates them into a histogram. Each measurement has a variety
 of attributes (or labels, or tags, or dimensions) associated with it, but let’s
 focus on `http.request.method`, `http.route`, and `http.response.status_code`
 for simplicity's sake. See
-[HTTP semantic conventions](/docs/specs/semconv/http/http-metrics/)
-for complete details. From this, you can compute throughput, average response
-time, min and max response time, percentile response time (i.e. p95, p99, etc),
-all broken down by HTTP method, route, response status code, and more.
+[HTTP semantic conventions](/docs/specs/semconv/http/http-metrics/) for complete
+details. From this, you can compute throughput, average response time, min and
+max response time, percentile response time (i.e. p95, p99, etc), all broken
+down by HTTP method, route, response status code, and more.
 
 To record measurements to this metric, for each request an HTTP server receives:
 
@@ -112,8 +112,7 @@ private static Attributes httpAttributes(String method, String route, int respon
 When it comes time to export, the aggregated metrics are serialized and sent out
 of process. For our example, I’ve included a simple text encoding of the output
 metrics. Real world applications will use an encoding defined by the protocol in
-use, such as the prometheus text format or
-[OTLP](/docs/specs/otlp/).
+use, such as the prometheus text format or [OTLP](/docs/specs/otlp/).
 
 ```text
 2024-05-20T18:05:57Z: http.server.request.duration:
@@ -261,8 +260,7 @@ details worth noting:
   the exporter has `AggregationTemporality=delta`. Object pooling is used to
   avoid re-allocating new `AggregatorHandle` instances each export cycle.
 - There are different `AggregatorHandle` implementations for each of the
-  supported
-  [aggregations](/docs/specs/otel/metrics/sdk/#aggregation).The
+  supported [aggregations](/docs/specs/otel/metrics/sdk/#aggregation).The
   implementations have all been optimized to use low contention tools like
   compare and swap, `LongAdder`, `Atomic*`, etc where possible, and to reuse any
   data structures used to hold state across collections. The exponential
@@ -477,8 +475,8 @@ If you’re reading this and considering Java metric systems, I hope you chose
 [opentelemetry-java][]. It’s a powerful and highly performant tool on its own,
 but comes with APIs for other key observability signals, a
 [rich instrumentation ecosystem](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md),
-[implementations in a variety of other languages](/docs/languages/),
-and a well-supported
+[implementations in a variety of other languages](/docs/languages/), and a
+well-supported
 [open governance structure](https://github.com/open-telemetry/community).
 
 ## Acknowledgements
