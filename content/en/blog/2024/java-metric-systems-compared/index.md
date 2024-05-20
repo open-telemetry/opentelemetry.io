@@ -16,7 +16,7 @@ While that’s all true, today I’d like to zoom in on a specific signal and
 language, and talk about the performance of the [opentelemetry-java][] metrics
 SDK.
 
-# Metrics Primer
+## Metrics Primer
 
 Metrics is an overloaded term, but in the observability space we use metrics to
 aggregate many discrete measurements. When compared to exporting all individual
@@ -31,7 +31,7 @@ the aggregated metrics out of process is important. Although export is periodic
 and not on the application “hot path”, it still consumes resources which can
 cause intermittent blips in performance.
 
-## An Example
+### An Example
 
 Let’s introduce an example that we can reference during the subsequent text. One
 of the most useful metrics in OpenTelemetry is
@@ -78,7 +78,7 @@ These generally return with a 200 OK HTTP status code, but it’s possible for a
 404 to return (or other errors as well). Java pseudocode to record measurements
 to the `http.server.request.duration` histogram might look like:
 
-```
+```java
 // Initialize instrument
 DoubleHistogram histogram = meterProvider.get("my-instrumentation-name")
     .histogramBuilder("http.server.request.duration")
@@ -115,7 +115,7 @@ metrics. Real world applications will use an encoding defined by the protocol in
 use, such as the prometheus text format or
 [OTLP](/docs/specs/otlp/).
 
-```
+```text
 2024-05-20T18:05:57Z: http.server.request.duration:
   attributes: {"http.request.method":"GET","http.route":"/users/{id}","http.response.status_code":200}
   value: {"count":3,"sum":22.0,"min":4.0,"max":11.0,"buckets":[[1.0,0],[5.0,1],[10.0,1]]}
@@ -143,7 +143,7 @@ constant regardless of how many measurements are recorded. **This decoupling of
 the data footprint from the number of measurements is the fundamental value of
 metrics systems.**
 
-# What makes a metric system good?
+## What makes a metric system good?
 
 Metrics systems record measurements, and collect or export aggregated state out
 of the process. Let’s examine these two operations separately.
@@ -210,7 +210,7 @@ atomically update the state it holds in memory (sum, min, max, bucket counts).
 When we collect, we read the state of each of the four distinct series, and in
 our trivial case, print out a string encoding of the information.
 
-# OpenTelemetry Java Metrics
+## OpenTelemetry Java Metrics
 
 The OpenTelemetry Java project is a high performance metrics system, designed to
 be fast and to have no (or in certain cases low) allocations on the recording
@@ -218,7 +218,7 @@ side, and very low allocation on the collection side.
 
 Let’s look at our example and break down what’s happening behind the scenes:
 
-```
+```java
 // Record a measurement
 histogram.record(7.2, httpAttributes("PUT", "/users/{id}", 200));
 
@@ -320,7 +320,7 @@ discussed, and will be the default in the future. (Note: the serialization
 optimization applies to OTLP trace and log serialization in addition to
 metrics!)
 
-# Benchmark: OpenTelemetry Java vs. Micrometer vs. Prometheus Java
+## Benchmark: OpenTelemetry Java vs. Micrometer vs. Prometheus Java
 
 We’ve done a lot of performance engineering in opentelemetry-java, but how does
 it stack up against other popular metrics systems in the Java ecosystem? Let’s
@@ -355,7 +355,7 @@ challenges of comparing benchmarks across systems:
   miss some configuration or usage optimizations that a power user would know. I
   don’t know what I don’t know.
 
-## Methodology
+### Methodology
 
 And now a description of the methodology and how to interpret the data:
 
@@ -402,7 +402,7 @@ And now a description of the methodology and how to interpret the data:
   presented in one series of graphs. Collect and collect with export results are
   presented in another series of graphs.
 
-# Results
+### Results
 
 The following graphs summarize the results for the record benchmarks:
 
@@ -433,7 +433,7 @@ export benchmarks:
 
 **Figure 6:** Collect from exponential bucket histogram benchmark results.
 
-## Conclusions
+### Conclusions
 
 On the record side, micrometer and prometheus have an 11ns advantage for
 counters when attributes are known ahead of time, avoiding map lookups by using
@@ -481,7 +481,7 @@ but comes with APIs for other key observability signals, a
 and a well-supported
 [open governance structure](https://github.com/open-telemetry/community).
 
-# Acknowledgements
+## Acknowledgements
 
 Thanks to all the
 [opentelemetry-java contributors](https://github.com/open-telemetry/opentelemetry-java/graphs/contributors)
