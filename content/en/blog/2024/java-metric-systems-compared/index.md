@@ -35,13 +35,13 @@ cause intermittent blips in performance.
 
 Let’s introduce an example that we can reference during the subsequent text. One
 of the most useful metrics in OpenTelemetry is
-[`http.server.request.duration`](https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpserverrequestduration),
+[`http.server.request.duration`](/docs/specs/semconv/http/http-metrics/#metric-httpserverrequestduration),
 which records measurements of the response latency of each request served by an
 HTTP server and aggregates them into a histogram. Each measurement has a variety
 of attributes (or labels, or tags, or dimensions) associated with it, but let’s
 focus on `http.request.method`, `http.route`, and `http.response.status_code`
 for simplicity's sake. See
-[HTTP semantic conventions](https://opentelemetry.io/docs/specs/semconv/http/http-metrics/)
+[HTTP semantic conventions](/docs/specs/semconv/http/http-metrics/)
 for complete details. From this, you can compute throughput, average response
 time, min and max response time, percentile response time (i.e. p95, p99, etc),
 all broken down by HTTP method, route, response status code, and more.
@@ -113,7 +113,7 @@ When it comes time to export, the aggregated metrics are serialized and sent out
 of process. For our example, I’ve included a simple text encoding of the output
 metrics. Real world applications will use an encoding defined by the protocol in
 use, such as the prometheus text format or
-[OTLP](https://opentelemetry.io/docs/specs/otlp/).
+[OTLP](/docs/specs/otlp/).
 
 ```
 2024-05-20T18:05:57Z: http.server.request.duration:
@@ -262,7 +262,7 @@ details worth noting:
   avoid re-allocating new `AggregatorHandle` instances each export cycle.
 - There are different `AggregatorHandle` implementations for each of the
   supported
-  [aggregations](https://opentelemetry.io/docs/specs/otel/metrics/sdk/#aggregation).The
+  [aggregations](/docs/specs/otel/metrics/sdk/#aggregation).The
   implementations have all been optimized to use low contention tools like
   compare and swap, `LongAdder`, `Atomic*`, etc where possible, and to reuse any
   data structures used to hold state across collections. The exponential
@@ -274,7 +274,7 @@ serialize the state of each `AggregatorHandle` according to whatever protocol is
 used to export. Over the past year or so, we’ve done some heavy lifting to
 optimize the memory allocations of the collect cycle. The optimization comes
 from the recognition that metric
-[exporters will never be called concurrently](https://opentelemetry.io/docs/specs/otel/metrics/sdk/#exportbatch).
+[exporters will never be called concurrently](/docs/specs/otel/metrics/sdk/#exportbatch).
 If we periodically read metric state and send it to the exporter to serialize,
 and ensure we wait until that export completes before reading metric state
 again, then we can safely reuse all the data structures used to pass the metric
@@ -477,7 +477,7 @@ If you’re reading this and considering Java metric systems, I hope you chose
 [opentelemetry-java][]. It’s a powerful and highly performant tool on its own,
 but comes with APIs for other key observability signals, a
 [rich instrumentation ecosystem](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md),
-[implementations in a variety of other languages](https://opentelemetry.io/docs/languages/),
+[implementations in a variety of other languages](/docs/languages/),
 and a well-supported
 [open governance structure](https://github.com/open-telemetry/community).
 
