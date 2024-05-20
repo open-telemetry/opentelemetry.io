@@ -51,7 +51,7 @@ outputFormats:
     notAlternative: true
 
 outputs:
-  home: [HTML, REDIRECTS]
+  home: [HTML]
   section: [HTML]
 
 params:
@@ -196,13 +196,6 @@ params:
       If you are interested in helping out, get in touch with the
       [Client Instrumentation SIG](https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w).
 
-services:
-  googleAnalytics:
-    # The following is a placeholder (fake) ID useful for local test builds. The
-    # real ID is set in the Netlify config. For details, see
-    # https://github.com/open-telemetry/opentelemetry.io/issues/1626.
-    id: UA-00000000-0 # TODO: switch to G-0000000000 once we get confirmation that it's ok to do so
-
 security:
   funcs: # cspell:disable-line
     getenv: # cspell:disable-line
@@ -215,6 +208,10 @@ module:
       target: content
     - source: content/zh
       target: content
+      lang: zh
+    - excludeFiles: specs/*
+      source: content/en/docs # zh missing-page fallback
+      target: content/docs
       lang: zh
     - source: tmp/otel/specification
       target: content/docs/specs/otel
