@@ -182,30 +182,30 @@ And now a description of the methodology and how to interpret the data:
 
 The following graphs summarize the results for the record benchmarks:
 
-![record to counter benchmark results](record_counter.png)
+![record to counter benchmark results](record-counter.png)
 
 **Figure 1:** Record to counter benchmark results.
 
-![record to explicit bucket histogram benchmark results](record_explicit_histogram.png)
+![record to explicit bucket histogram benchmark results](record-explicit-histogram.png)
 
 **Figure 2:** Record to explicit bucket histogram benchmark results.
 
-![record to exponential bucket histogram benchmark results](record_expo_histogram.png)
+![record to exponential bucket histogram benchmark results](record-expo-histogram.png)
 
 **Figure 3:** Record to exponential bucket histogram benchmark results.
 
 
 The following graphs summarize the results for the collect and collect with export benchmarks:
 
-![collect from counter benchmark results](collect_counter.png)
+![collect from counter benchmark results](collect-counter.png)
 
 **Figure 4:** Collect from counter benchmark results.
 
-![collect from explicit bucket histogram benchmark results](collect_explicit_histogram.png)
+![collect from explicit bucket histogram benchmark results](collect-explicit-histogram.png)
 
 **Figure 5:** Collect from explicit bucket histogram results.
 
-![collect from exponential bucket histogram benchmark results](collect_expo_histogram.png)
+![collect from exponential bucket histogram benchmark results](collect-expo-histogram.png)
 
 **Figure 6:** Collect from exponential bucket histogram benchmark results.
 
