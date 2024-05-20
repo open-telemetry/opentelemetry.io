@@ -1,7 +1,7 @@
 ---
 title: Introducing the new container log parser for OpenTelemetry Collector
 linkTitle: Collector container log parser
-date: 2024-05-17
+date: 2024-05-22
 author: '[Christos Markou](https://github.com/ChrsMark) (Elastic)'
 cSpell:ignore: Christos containerd Filelog filelog Jaglowski kube Markou
 ---
@@ -119,7 +119,10 @@ receivers:
 ```
 
 That configuration is more than enough to properly parse the log line and
-extract all the useful Kubernetes metadata.
+extract all the useful Kubernetes metadata. It's quite obvious how much less
+configuration is required now. Using a combination of operators would result in
+about 69 lines of configuration as it was pointed out at the
+[original proposal](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/31959).
 
 A log line
 `{"log":"INFO: This is a docker log line","stream":"stdout","time":"2024-03-30T08:31:20.545192187Z"}`
