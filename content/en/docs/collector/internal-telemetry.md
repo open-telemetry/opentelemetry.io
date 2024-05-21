@@ -58,8 +58,9 @@ service:
       level: detailed
 ```
 
-The Collector can also be configured to scrape its own metrics and send them
-through configured pipelines. For example:
+The Collector can also be configured to scrape its own metrics using a
+[Prometheus receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver)
+and send them through configured pipelines. For example:
 
 ```yaml
 receivers:
@@ -95,15 +96,25 @@ critical analysis.
 
 ### Configure internal logs
 
-You can find log output in `stderr`. The verbosity level for logs defaults to
-`INFO`, but you can adjust it in the config `service::telemetry::logs`:
+Log output is found in `stderr`. You can configure logs in the config
+`service::telemetry::logs`. The [configuration
+options](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
+param vers %}}/service/telemetry/config.go) are:
 
-```yaml
-service:
-  telemetry:
-    logs:
-      level: 'debug'
-```
+| Field name             | Default value | Description                                                                                                                                                                                                                                                                                       |
+| ---------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `level`                | `INFO`        | Sets the minimum enabled logging level. Other possible values are `DEBUG`, `WARN`, and `ERROR`.                                                                                                                                                                                                   |
+| `development`          | `false`       | Puts the logger in development mode.                                                                                                                                                                                                                                                              |
+| `encoding`             | `console`     | Sets the logger's encoding. The other possible value is `json`.                                                                                                                                                                                                                                   |
+| `disable_caller`       | `false`       | Stops annotating logs with the calling function's file name and line number. By default, all logs are annotated.                                                                                                                                                                                  |
+| `disable_stacktrace`   | `false`       | Disables automatic stacktrace capturing. Stacktraces are captured for logs at `WARN` level and above in development and at `ERROR` level and above in production.                                                                                                                                 |
+| `sampling::enabled`    | `true`        | Sets a sampling policy.                                                                                                                                                                                                                                                                           |
+| `sampling::tick`       | `10s`         | The interval in seconds that the logger applies to each sampling.                                                                                                                                                                                                                                 |
+| `sampling::initial`    | `10`          | The number of messages logged at the start of each `sampling::tick`.                                                                                                                                                                                                                              |
+| `sampling::thereafter` | `100`         | Sets the sampling policy for subsequent messages after `sampling::initial` messages are logged. When `sampling::thereafter` is set to `N`, every `Nth` message is logged and all others are dropped. If `N` is zero, the logger drops all messages after `sampling::initial` messages are logged. |
+| `output_paths`         | `["stderr"]`  | A list of URLs or file paths to write logging output to.                                                                                                                                                                                                                                          |
+| `error_output_paths`   | `["stderr"]`  | A list of URLs or file paths to write logger errors to.                                                                                                                                                                                                                                           |
+| `initial_fields`       |               | A collection of static key-value pairs added to all log entries to enrich logging context. By default, there is no initial field.                                                                                                                                                                 |
 
 You can also see logs for the Collector on a Linux systemd system using
 `journalctl`:
