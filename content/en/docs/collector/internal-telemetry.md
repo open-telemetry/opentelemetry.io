@@ -101,26 +101,20 @@ Log output is found in `stderr`. You can configure logs in the config
 options](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
 param vers %}}/service/telemetry/config.go) are:
 
-<!--- TODO: Consider making this a table. --->
-<!--- TODO: Verify possible values of `level`. --->
-
-- `level`: Sets the minimum enabled logging level. Default is `INFO`. Other
-  possible values are `DEBUG`, `WARN`, and `ERROR`.
-- `development`: Puts the logger in development mode. Default is `false`.
-- `encoding`: Sets the logger's encoding. Default is `console`. Example values
-  are `json` or `console`.
-- `disable_caller`: Stops annotating logs with the calling function's file name
-  and line number. By default, the value is `false` and all logs are annotated.
-- `disable_stacktrace`: Disables automatic stacktrace capturing. Default is
-  `false`. Stacktraces are captured for logs at `WARN` level and above in
-  development and at `ERROR` level and above in production.
-- `sampling`: Sets a sampling policy. By default, sampling is enabled.
-- `output_paths`: A list of URLs or file paths to write logging output to.
-  Default is `["stderr"]`.
-- `error_output_paths`: A list of URLs or file paths to write logger errors to.
-  Default is `["stderr"]`.
-- `initial_fields`: A collection of static key-value pairs added to all log
-  entries to enrich logging context. By default, there is no initial field.
+| Field name             | Default value | Description                                                                                                                                                                                                                                                                                       |
+| ---------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `level`                | `INFO`        | Sets the minimum enabled logging level. Other possible values are `DEBUG`, `WARN`, and `ERROR`.                                                                                                                                                                                                   |
+| `development`          | `false`       | Puts the logger in development mode.                                                                                                                                                                                                                                                              |
+| `encoding`             | `console`     | Sets the logger's encoding. The other possible value is `json`.                                                                                                                                                                                                                                   |
+| `disable_caller`       | `false`       | Stops annotating logs with the calling function's file name and line number. By default, all logs are annotated.                                                                                                                                                                                  |
+| `disable_stacktrace`   | `false`       | Disables automatic stacktrace capturing. Stacktraces are captured for logs at `WARN` level and above in development and at `ERROR` level and above in production.                                                                                                                                 |
+| `sampling::enabled`    | `true`        | Sets a sampling policy.                                                                                                                                                                                                                                                                           |
+| `sampling::tick`       | `10s`         | The interval in seconds that the logger applies to each sampling.                                                                                                                                                                                                                                 |
+| `sampling::initial`    | `10`          | The number of messages logged at the start of each `sampling::tick`.                                                                                                                                                                                                                              |
+| `sampling::thereafter` | `100`         | Sets the sampling policy for subsequent messages after `sampling::initial` messages are logged. When `sampling::thereafter` is set to `N`, every `Nth` message is logged and all others are dropped. If `N` is zero, the logger drops all messages after `sampling::initial` messages are logged. |
+| `output_paths`         | `["stderr"]`  | A list of URLs or file paths to write logging output to.                                                                                                                                                                                                                                          |
+| `error_output_paths`   | `["stderr"]`  | A list of URLs or file paths to write logger errors to.                                                                                                                                                                                                                                           |
+| `initial_fields`       |               | A collection of static key-value pairs added to all log entries to enrich logging context. By default, there is no initial field.                                                                                                                                                                 |
 
 You can also see logs for the Collector on a Linux systemd system using
 `journalctl`:
