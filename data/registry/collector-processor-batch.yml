@@ -7,7 +7,9 @@ tags:
   - processor
   - collector
 license: Apache 2.0
-description: The Batch Processor for the OpenTelemetry Collector accepts spans, metrics, or logs and places them into batches.
+description:
+  The Batch Processor for the OpenTelemetry Collector accepts spans, metrics, or
+  logs and places them into batches.
 authors:
   - name: OpenTelemetry Authors
 urls:

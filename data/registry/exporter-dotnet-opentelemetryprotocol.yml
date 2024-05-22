@@ -7,7 +7,10 @@ tags:
   - dotnet
   - exporter
 license: Apache 2.0
-description: This library allows exporting telemetry data in the OpenTelemetry Protocol (OTLP) format to the OpenTelemetry Collector and OTLP-compliant backends/receivers.
+description:
+  This library allows exporting telemetry data in the OpenTelemetry Protocol
+  (OTLP) format to the OpenTelemetry Collector and OTLP-compliant
+  backends/receivers.
 authors:
   - name: OpenTelemetry Authors
 urls:

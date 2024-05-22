@@ -7,7 +7,10 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description: This extension implements both configauth.ServerAuthenticator and configauth.ClientAuthenticator to authenticate clients and servers using Basic Authentication.
+description:
+  This extension implements both configauth.ServerAuthenticator and
+  configauth.ClientAuthenticator to authenticate clients and servers using Basic
+  Authentication.
 authors:
   - name: OpenTelemetry Authors
 urls:
