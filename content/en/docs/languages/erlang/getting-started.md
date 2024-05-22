@@ -68,7 +68,7 @@ def deps do
     # for Cowboy
     {:opentelemetry_cowboy, "~> {{% param versions.otelCowboy %}}"}
     # for Bandit
-    {:opentelemetry_bandit, "~> 0.1.4"},
+    {:opentelemetry_bandit, "~> {{% version-from-registry instrumentation-erlang-bandit %}}"},
   ]
 end
 ```
