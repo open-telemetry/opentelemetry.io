@@ -38,9 +38,13 @@ otelcol --config=env:MY_CONFIG_IN_AN_ENVVAR --config=https://server/config.yaml
 otelcol --config="yaml:exporters::debug::verbosity: normal"
 ```
 
+{{% alert title="Tip" color="primary" %}}
+
 When referring to nested keys in YAML paths, make sure to use double colons (::)
 to avoid confusion with namespaces that contain dots. For example:
 `receivers::docker_stats::metrics::container.cpu.utilization::enabled: false`.
+
+{{% /alert %}}
 
 To validate a configuration file, use the `validate` command. For example:
 
