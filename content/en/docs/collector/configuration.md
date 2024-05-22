@@ -30,13 +30,17 @@ example:
 otelcol --config=customconfig.yaml
 ```
 
-You can also provide configurations using environment variables, YAML paths, or
-HTTP URIs. For example:
+You can also provide configurations using environment variables, HTTP URIs, or
+YAML paths. For example:
 
 ```shell
 otelcol --config=env:MY_CONFIG_IN_AN_ENVVAR --config=https://server/config.yaml
 otelcol --config="yaml:exporters::debug::verbosity: normal"
 ```
+
+When referring to nested keys in YAML paths, make sure to use double colons (::)
+to avoid confusion with namespaces that contain dots. For example:
+`receivers::docker_stats::metrics::container.cpu.utilization::enabled: false`.
 
 To validate a configuration file, use the `validate` command. For example:
 
