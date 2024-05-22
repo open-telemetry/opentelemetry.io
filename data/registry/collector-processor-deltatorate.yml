@@ -7,9 +7,7 @@ tags:
   - processor
   - collector
 license: Apache 2.0
-description:
-  The delta to rate processor converts delta sum metrics to rate metrics. This
-  rate is a gauge.
+description: The delta to rate processor converts delta sum metrics to rate metrics. This rate is a gauge.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,4 +16,4 @@ createdAt: 2022-10-26
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/processor/deltatorateprocessor
-  version: v0.100.0
+  version: v0.101.0

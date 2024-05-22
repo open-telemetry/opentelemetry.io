@@ -7,9 +7,7 @@ tags:
   - instrumentation
   - dotnet
 license: Apache 2.0
-description:
-  Adds OpenTelemetry instrumentation for gRPC Core-based client and server
-  calls.
+description: Adds OpenTelemetry instrumentation for gRPC Core-based client and server calls.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,4 +16,4 @@ createdAt: 2022-10-28
 package:
   registry: nuget
   name: OpenTelemetry.Instrumentation.GrpcCore
-  version: 1.0.0-beta.5
+  version: 1.0.0-beta.6

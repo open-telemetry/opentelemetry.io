@@ -7,9 +7,7 @@ tags:
   - exporter
   - dotnet
 license: Apache 2.0
-description:
-  An OpenTelemetry Prometheus exporter that configures an HttpListener instance
-  for Prometheus to scrape.
+description: An OpenTelemetry Prometheus exporter that configures an HttpListener instance for Prometheus to scrape.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,4 +16,4 @@ createdAt: 2022-11-07
 package:
   registry: nuget
   name: OpenTelemetry.Exporter.Prometheus.HttpListener
-  version: 1.8.0-rc.1
+  version: 1.9.0-alpha.1

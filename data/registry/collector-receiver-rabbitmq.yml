@@ -7,9 +7,7 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description:
-  This receiver fetches stats from a RabbitMQ node using the RabbitMQ Management
-  Plugin.
+description: This receiver fetches stats from a RabbitMQ node using the RabbitMQ Management Plugin.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,4 +16,4 @@ createdAt: 2020-11-05
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/rabbitmqreceiver
-  version: v0.100.0
+  version: v0.101.0

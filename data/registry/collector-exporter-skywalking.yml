@@ -7,9 +7,7 @@ tags:
   - exporter
   - collector
 license: Apache 2.0
-description:
-  Exports data via gRPC using skywalking-data-collect-protocol format. By
-  default, this exporter requires TLS and offers queued retry capabilities.
+description: Exports data via gRPC using skywalking-data-collect-protocol format. By default, this exporter requires TLS and offers queued retry capabilities.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,4 +16,4 @@ createdAt: 2022-10-27
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/skywalkingexporter
-  version: v0.100.0
+  version: v0.101.0

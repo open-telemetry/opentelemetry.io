@@ -7,10 +7,7 @@ tags:
   - processor
   - collector
 license: Apache 2.0
-description:
-  The K8s Attribute Processor for the OpenTelemetry Collector automatically
-  discovers K8s resources (pods), extracts metadata from them and adds the
-  extracted metadata to the relevant spans, metrics and logs.
+description: The K8s Attribute Processor for the OpenTelemetry Collector automatically discovers K8s resources (pods), extracts metadata from them and adds the extracted metadata to the relevant spans, metrics and logs.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -19,4 +16,4 @@ createdAt: 2022-03-26
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor
-  version: v0.100.0
+  version: v0.101.0

@@ -7,10 +7,7 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description:
-  The HTTP Check Receiver can be used for synthetic checks against HTTP
-  endpoints. This receiver will make a request to the specified `endpoint` using
-  the
+description: The HTTP Check Receiver can be used for synthetic checks against HTTP endpoints. This receiver will make a request to the specified `endpoint` using the
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -19,4 +16,4 @@ createdAt: 2022-10-25
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/httpcheckreceiver
-  version: v0.100.0
+  version: v0.101.0

@@ -7,9 +7,7 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description:
-  The Podman Stats receiver queries the Podman service API to fetch stats for
-  all running containers
+description: The Podman Stats receiver queries the Podman service API to fetch stats for all running containers
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,4 +16,4 @@ createdAt: 2022-10-25
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/podmanreceiver
-  version: v0.100.0
+  version: v0.101.0

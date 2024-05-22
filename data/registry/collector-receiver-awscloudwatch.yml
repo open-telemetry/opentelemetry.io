@@ -7,9 +7,7 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description:
-  Receives Cloudwatch events from AWS CloudWatch via the AWS SDK for Cloudwatch
-  Logs
+description: Receives Cloudwatch events from AWS CloudWatch via the AWS SDK for Cloudwatch Logs
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,4 +16,4 @@ createdAt: 2022-10-25
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awscloudwatchreceiver
-  version: v0.100.0
+  version: v0.101.0
