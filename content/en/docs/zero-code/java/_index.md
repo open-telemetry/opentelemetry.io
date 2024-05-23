@@ -7,7 +7,7 @@ aliases:
 # FIXME: ensure version update script targets this file too
 cascade:
   vers:
-    instrumentation: 2.3.0
+    instrumentation: 2.4.0
     otel: 1.37.0
 cSpell:ignore: Dotel myapp
 ---
