@@ -8,7 +8,7 @@ aliases:
 cascade:
   vers:
     instrumentation: 2.4.0
-    otel: 1.37.0
+    otel: 1.38.0
 cSpell:ignore: Dotel myapp
 ---
 
