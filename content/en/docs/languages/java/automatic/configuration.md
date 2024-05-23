@@ -196,8 +196,8 @@ following property to disable it:
 
 You can configure the agent to capture predefined HTTP headers as span
 attributes, according to the
-[semantic convention](/docs/specs/semconv/http/http-spans/#common-attributes).
-Use the following properties to define which HTTP headers you want to capture:
+[semantic convention](/docs/specs/semconv/http/http-spans/). Use the following
+properties to define which HTTP headers you want to capture:
 
 {{% config_option name="otel.instrumentation.http.client.capture-request-headers" %}}
 A comma-separated list of HTTP header names. HTTP client instrumentations will
