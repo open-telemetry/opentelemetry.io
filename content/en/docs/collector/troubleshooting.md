@@ -2,6 +2,8 @@
 title: Troubleshooting
 description: Recommendations for troubleshooting the collector
 weight: 25
+# prettier-ignore
+cSpell:ignore: pprof tracez zpages
 ---
 
 This page describes some options when troubleshooting the health or performance
