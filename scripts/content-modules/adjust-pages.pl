@@ -102,6 +102,9 @@ while(<>) {
     s|(\]\(process.md)#process(\))|$1$2|g;
   }
 
+  # TODO: drop after fix of https://github.com/open-telemetry/semantic-conventions/pull/1065
+  s|opentelemetry-specification/tree/v1\.33\.0/specification/metrics|semantic-conventions/blob/v1\.26\.0/docs/general|g if $ARGV =~ /\/tmp\/semconv\/docs\/system\/container-metrics/;
+
   # SPECIFICATION custom processing
 
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;
