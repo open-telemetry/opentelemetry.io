@@ -1,6 +1,6 @@
 ---
 title: OpenTelemetry 概念 
-linkTitle: Concepts
+linkTitle: 概念
 description: OpenTelemetry 核心概念
 aliases: [concepts/overview]
 weight: 2
