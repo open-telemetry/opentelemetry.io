@@ -117,7 +117,7 @@ extensions:
 
 For certain types of issues, particularly verifying configuration and debugging
 network issues, it can be helpful to send a small amount of data to a collector
-configured to output to local logs. 
+configured to output to local logs.
 
 ### Local exporters
 
@@ -169,13 +169,13 @@ contains:
 
 With the Collector running, send this payload to the Collector. For example:
 
-```console
-$ curl -X POST localhost:9411/api/v2/spans -H'Content-Type: application/json' -d @trace.json
+```shell
+curl -X POST localhost:9411/api/v2/spans -H'Content-Type: application/json' -d @trace.json
 ```
 
 You should see a log entry like the following from the Collector:
 
-```
+```shell
 2023-09-07T09:57:43.468-0700    info    TracesExporter  {"kind": "exporter", "data_type": "traces", "name": "debug", "resource spans": 1, "spans": 2}
 ```
 
@@ -190,7 +190,7 @@ exporters:
 With the modified configuration if you re-run the test above the log output
 should look like:
 
-```
+```shell
 2023-09-07T09:57:12.820-0700    info    TracesExporter  {"kind": "exporter", "data_type": "traces", "name": "debug", "resource spans": 1, "spans": 2}
 2023-09-07T09:57:12.821-0700    info    ResourceSpans #0
 Resource SchemaURL: https://opentelemetry.io/schemas/1.4.0
