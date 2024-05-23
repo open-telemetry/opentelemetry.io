@@ -2159,6 +2159,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-03-15T20:34:22.210208944Z"
   },
+  "https://github.com/ChrsMark": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-15T19:23:42.377730577+03:00"
+  },
   "https://github.com/Cyprinus12138": {
     "StatusCode": 200,
     "LastSeen": "2024-03-28T22:25:37.072281206+08:00"
@@ -2498,6 +2502,10 @@
   "https://github.com/debajitdas": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:04.809604-05:00"
+  },
+  "https://github.com/djaglowski": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-15T19:23:48.979905025+03:00"
   },
   "https://github.com/dmathieu": {
     "StatusCode": 200,
@@ -3087,6 +3095,18 @@
     "StatusCode": 200,
     "LastSeen": "2024-03-19T10:16:57.223070258Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/25251": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-15T19:23:46.151980372+03:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/31959": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-15T19:23:47.587898763+03:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/32080#issuecomment-2035301178": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-15T19:23:48.560170178+03:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/14132": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:06:09.209998-05:00"
@@ -3206,6 +3226,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2Fv0.100.0": {
     "StatusCode": 200,
     "LastSeen": "2024-05-07T08:06:40.723390912Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2Fv0.101.0": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-22T10:11:57.774742834Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2Fv0.95.0": {
     "StatusCode": 200,
@@ -5955,6 +5979,14 @@
     "StatusCode": 206,
     "LastSeen": "2024-05-06T07:53:28.679391-07:00"
   },
+  "https://opentelemetry.io/blog/2024/otel-collector-survey/#deployment-scale-and-environment": {
+    "StatusCode": 206,
+    "LastSeen": "2024-05-15T19:23:44.74352841+03:00"
+  },
+  "https://opentelemetry.io/blog/2024/otel-collector-survey/#otel-components-usage": {
+    "StatusCode": 206,
+    "LastSeen": "2024-05-15T19:23:44.426379755+03:00"
+  },
   "https://opentelemetry.io/blog/2024/scaling-collectors/": {
     "StatusCode": 206,
     "LastSeen": "2024-05-06T07:53:28.903161-07:00"
@@ -6010,6 +6042,10 @@
   "https://opentelemetry.io/docs/specs/otel/protocol": {
     "StatusCode": 206,
     "LastSeen": "2024-02-24T14:33:05.630341-08:00"
+  },
+  "https://opentelemetry.io/docs/specs/semconv/resource/k8s/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-05-15T19:23:47.920456821+03:00"
   },
   "https://opentelemetry.io/ecosystem/integrations/": {
     "StatusCode": 206,

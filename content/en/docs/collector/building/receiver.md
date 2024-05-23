@@ -744,7 +744,9 @@ func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host compon
 }
 
 func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
-	tailtracerRcvr.cancel()
+	if tailtracerRcvr.cancel != nil {
+		tailtracerRcvr.cancel()
+	}
 	return nil
 }
 ```
@@ -756,7 +758,7 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
   function field with the cancellation based on a new context created with
   `context.Background()` (according the Collector's API documentation
   suggestions).
-- Updated the `Stop()` method by adding a call to the `cancel()` context
+- Updated the `Shutdown()` method by adding a call to the `cancel()` context
   cancellation function.
 
 {{% /alert %}}
@@ -829,7 +831,9 @@ func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host compon
 }
 
 func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
-	tailtracerRcvr.cancel()
+	if tailtracerRcvr.cancel != nil {
+		tailtracerRcvr.cancel()
+	}
 	return nil
 }
 ```
