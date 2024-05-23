@@ -284,7 +284,7 @@ own telemetry.
 
 Use the rate of `otelcol_processor_dropped_spans > 0` and
 `otelcol_processor_dropped_metric_points > 0` to detect data loss. Depending on
-your project's requirements, set up a minimal time window before alerting begins
+your project's requirements, select a minimal time window before alerting begins
 to avoid notifications for small losses that are within the desired reliability
 range and not considered outages.
 
@@ -327,7 +327,7 @@ These failures could be caused by a queue filled with unsettled elements. You
 might need to decrease your sending rate or horizontally scale Collectors.
 
 The queue/retry mechanism also supports logging for monitoring. Check the logs
-for messages like `"Dropping data because sending_queue is full"`.
+for messages such as `"Dropping data because sending_queue is full"`.
 
 #### Receive failures
 

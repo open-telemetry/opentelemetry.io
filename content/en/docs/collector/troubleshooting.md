@@ -285,7 +285,7 @@ following:
 
 ## Common Issues
 
-<!--- TODO: Add intro sentence. --->
+This section covers how to identify and resolve common Collector issues.
 
 ### Collector exit/restart
 
