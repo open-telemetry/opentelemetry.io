@@ -5,7 +5,7 @@ aliases: [data-collection]
 weight: 20
 ---
 
-OpenTelemetry 目前由以下几个主要组件构成：
+OpenTelemetry 项目目前由以下几个主要部分构成：
 
 - [规范](#specification)
 - [Collector](#collector)
@@ -39,7 +39,7 @@ OpenTelemetry Collector 是一个与供应商无关的代理，可以接收、�
 
 更多信息，请参见 [Collector](/docs/collector/)。
 
-## 特定语言的 API 和 SDK 实现 {#language-specific-api--sdk-implementations}
+## 针对特定编程语言的 API 和 SDK 实现 {#language-specific-api--sdk-implementations}
 
 OpenTelemetry 还提供语言 SDK，允许你使用所选语言的 OpenTelemetry API 生成遥测数据，并将这些数据导出到首选后端。
 这些 SDK 还允许你结合常见库和框架的插桩库，以便你可以将其用于应用程序中的手动插桩。
@@ -51,7 +51,7 @@ OpenTelemetry 还提供语言 SDK，允许你使用所选语言的 OpenTelemetry
 OpenTelemetry 支持通过大量组件来为所支持的语言根据流行的库和框架生成相关遥测数据。
 例如，来自 HTTP 库的入站和出站 HTTP 请求将生成有关这些请求的数据。
 
-长期目标是流行的库能够开箱即用地进行观测，无需到拉入单独的组件中。
+让流行的库能够开箱即用地进行观测而无需拉入独立的组件中是一个长期目标。
 
 更多信息，请参见[插桩库](/docs/concepts/instrumentation/libraries/)。
 
@@ -61,7 +61,7 @@ OpenTelemetry 支持通过大量组件来为所支持的语言根据流行的库
 
 ### 零代码插桩 {#zero-code-instrumentation}
 
-如果适用，OpenTelemetry 的特定语言实现将提供一种无需触及源代码即可对应用程序进行插桩的方法。
+如果适用，OpenTelemetry 的特定语言实现将提供一种无需修改源代码即可对应用程序进行插桩的方法。
 虽然底层机制取决于使用的语言，但至少会将 OpenTelemetry API 和 SDK 能力添加到你的应用程序中。
 此外，它们还可能添加一组插桩库和导出器依赖项。
 
