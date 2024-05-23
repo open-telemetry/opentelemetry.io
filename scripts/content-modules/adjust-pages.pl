@@ -20,7 +20,7 @@ my $specBasePath = '/docs/specs';
 my %versions = qw(
   spec: 1.33.0
   otlp: 1.3.1
-  semconv: 1.25.0
+  semconv: 1.26.0
 );
 my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
@@ -101,6 +101,9 @@ while(<>) {
     # TODO: drop after fix of https://github.com/open-telemetry/semantic-conventions/pull/883
     s|(\]\(process.md)#process(\))|$1$2|g;
   }
+
+  # TODO: drop after fix of https://github.com/open-telemetry/semantic-conventions/pull/1065
+  s|opentelemetry-specification/tree/v1\.33\.0/specification/metrics|semantic-conventions/blob/v1\.26\.0/docs/general|g if $ARGV =~ /\/tmp\/semconv\/docs\/system\/container-metrics/;
 
   # SPECIFICATION custom processing
 

@@ -1,19 +1,19 @@
 ---
-title: Automatic Instrumentation
-linkTitle: Automatic
+title: Java Agent
+linkTitle: Agent
 aliases:
   - /docs/java/automatic_instrumentation
   - /docs/languages/java/automatic_instrumentation
+redirects: [{ from: /docs/languages/java/automatic/*, to: ':splat' }]
 cSpell:ignore: Dotel myapp
-weight: 30
 ---
 
-Automatic instrumentation with Java uses a Java agent JAR that can be attached
-to any Java 8+ application. It dynamically injects bytecode to capture telemetry
-from many popular libraries and frameworks. It can be used to capture telemetry
-data at the "edges" of an app or service, such as inbound requests, outbound
-HTTP calls, database calls, and so on. To learn how to manually instrument your
-service or app code, see [Manual instrumentation](../instrumentation).
+Zero-code instrumentation with Java uses a Java agent JAR attached to any Java
+8+ application. It dynamically injects bytecode to capture telemetry from many
+popular libraries and frameworks. It can be used to capture telemetry data at
+the "edges" of an app or service, such as inbound requests, outbound HTTP calls,
+database calls, and so on. To learn how to manually instrument your service or
+app code, see [Manual instrumentation](/docs/languages/java/instrumentation/).
 
 ## Setup
 
@@ -89,14 +89,18 @@ and JVMs][support].
 
 ## Troubleshooting
 
-{{% config_option name="otel.javaagent.debug" %}} Set to `true` to see debug
-logs. Note that these are quite verbose. {{% /config_option %}}
+{{% config_option name="otel.javaagent.debug" %}}
+
+Set to `true` to see debug logs. Note that these are quite verbose.
+
+{{% /config_option %}}
 
 ## Next steps
 
 After you have automatic instrumentation configured for your app or service, you
 might want to [annotate](annotations) selected methods or add
-[manual instrumentation](../instrumentation) to collect custom telemetry data.
+[manual instrumentation](/docs/languages/java/instrumentation/) to collect
+custom telemetry data.
 
 [opentelemetry-javaagent.jar]:
   https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
