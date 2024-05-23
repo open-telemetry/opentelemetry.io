@@ -47,16 +47,15 @@ We'll need a few other dependencies that Phoenix doesn't come with.
   OpenTelemetry Collector and/or to self-hosted or commercial services.
 - `opentelemetry_phoenix`: creates OpenTelemetry spans from the Elixir
   `:telemetry` events created by Phoenix.
-- web server dependencies: There are currently two options for webservers and each has
-  their telemetry counterpart. Phoenix applications post 1.7.11 default
-  to Bandit while pre 1.7.11 default to Cowboy. Both choices are valid.
-  Use one of the below options based on the webserver your Phoenix application
-  uses:  
+- web server dependencies: There are currently two options for webservers and
+  each has their telemetry counterpart. Phoenix applications post 1.7.11 default
+  to Bandit while pre 1.7.11 default to Cowboy. Both choices are valid. Use one
+  of the below options based on the webserver your Phoenix application uses:
   - `opentelemetry_cowboy`: creates OpenTelemetry spans from the Elixir
-  `:telemetry` events created by the Cowboy web server
+    `:telemetry` events created by the Cowboy web server
   - `opentelemetry_bandit`: creates OpenTelemetry spans from the Elixir
-  `:telemetry` events created by the Bandit web server
-  
+    `:telemetry` events created by the Bandit web server
+
 ```elixir
 # mix.exs
 def deps do
