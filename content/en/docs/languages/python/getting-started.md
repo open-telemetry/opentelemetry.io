@@ -418,7 +418,7 @@ automatically created one:
 
 </details>
 
-The `parent_id` of `roll` is the same is the `span_id` for `/rolldice`,
+The `parent_id` of `roll` is the same as the `span_id` for `/rolldice`,
 indicating a parent-child relationship!
 
 ### Metrics
