@@ -13,7 +13,7 @@ across many popular languages, OpenTelemetry reduces the cognitive load of
 polyglot teams by providing one vocabulary and one toolkit.
 
 While that’s all true, today I’d like to zoom in on a specific signal and
-language, and talk about the performance of the [opentelemetry-java][] metrics
+language, and talk about the performance of the [OpenTelemetry Java][] metrics
 SDK.
 
 ## Metrics Primer
@@ -55,12 +55,12 @@ To record measurements to this metric, for each request an HTTP server receives:
   current time and the starting time initially recorded. This duration is the
   request latency.
 - Extract the values for `http.request.method`, `http.route`, and
-  `http.response.status_code` attributes from the request context.
+  `http.response.status_code` attribute keys from the request context.
 - Record a measurement to the `http.server.request.duration` histogram
   instrument, consisting of the computed request latency and the attributes.
 
 A metrics system will aggregate these measurements into separate series for each
-distinct set of attributes (`http.request.method`, `http.route`,
+distinct set of attribute key-value pairs (`http.request.method`, `http.route`,
 `http.response.status_code`) encountered. On a periodic basis, the metrics are
 collected and exported out of process. This export process can be "push based"
 where the application pushes the metrics somewhere on an interval, or "pull
@@ -129,11 +129,11 @@ use, such as the prometheus text format or [OTLP](/docs/specs/otlp/).
   value: {"count":2,"sum":13.4,"min":6.2,"max":7.2,"buckets":[[1.0,0],[5.0,0],[10.0,2]]}
 ```
 
-Notice how the `http.server.request.duration` metric has 4 distinct series since
-there are four distinct combinations of `http.request.method`, `http.route`, and
-`http.response.status_code`. Each of these series has a histogram consisting of
-count (i.e. total count), sum, min, max, and an array of pairs each containing
-the bucket boundaries and bucket count.
+Notice how the `http.server.request.duration` metric has four distinct series
+since there are four distinct combinations of values for `http.request.method`,
+`http.route`, and `http.response.status_code`. Each of these series has a
+histogram consisting of count (i.e. total count), sum, min, max, and an array of
+pairs each containing the bucket boundaries and bucket count.
 
 Our example is trivial, but imagine scaling this out to recording millions or
 billions of measurements. The memory and serialization footprint of the
@@ -241,12 +241,12 @@ attribute sets are known ahead of time, they can and should be pre-allocated and
 held in a constant `Attributes` variable, which reduces unnecessary memory
 allocations. But even if attributes can’t be known ahead of time, the attribute
 keys can. Here we pre-allocate constants for each `AttributeKey` that shows up
-in our attributes. The opentelemetry-java `Attributes` implementation is
+in our attributes. The OpenTelemetry Java `Attributes` implementation is
 implemented very efficiently, and has been benchmarked and optimized over the
 course of several years.
 
 Internally, when we record we need to look up the aggregation state (i.e.
-`AggregatorHandle` in opentelemetry-java terms) corresponding to the series.
+`AggregatorHandle` in OpenTelemetry Java terms) corresponding to the series.
 Most of the heavy lifting is performed by a lookup in a
 `ConcurrentHashMap<Attributes, AggregatorHandle>` but there are a couple of
 details worth noting:
@@ -280,7 +280,7 @@ state to the exporter. Of course some metric readers (like the prometheus metric
 reader) may read the metric state concurrently. For these, we prioritize safety
 and correctness over optimized memory allocations.
 
-The result is a configurable option unique to opentelemetry-java called
+The result is a configurable option unique to OpenTelemetry Java called
 `MemoryMode`. `MetricReaders` (or their associated `MetricExporter`) specify
 what their memory mode is based on whether they read metric state concurrently
 or not. Right now you opt into the optimized memory behavior (which we call
@@ -288,7 +288,7 @@ or not. Right now you opt into the optimized memory behavior (which we call
 [environment variable](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure#exporters).
 In the future, the optimized memory mode will be enabled by default, since only
 exceptional cases need concurrent access to the metric state. It turns out that
-the objects holding the metric state (`MetricData` in opentelemetry-java terms)
+the objects holding the metric state (`MetricData` in OpenTelemetry Java terms)
 account for virtually all of the memory allocation in the collect cycle. By
 reusing these (along with other internal objects used to hold state), **we
 reduced the memory allocation of the core metric SDK by over 99%**. See
@@ -320,7 +320,7 @@ metrics!)
 
 ## Benchmark: OpenTelemetry Java vs. Micrometer vs. Prometheus Java
 
-We’ve done a lot of performance engineering in opentelemetry-java, but how does
+We’ve done a lot of performance engineering in OpenTelemetry Java, but how does
 it stack up against other popular metrics systems in the Java ecosystem? Let’s
 compare it to two of the most popular (see
 [GitHub stars](https://star-history.com/#prometheus/client_java&open-telemetry/opentelemetry-java&micrometer-metrics/micrometer&Date))
@@ -347,11 +347,11 @@ challenges of comparing benchmarks across systems:
   reasons for what aspects are most important. Even still, there’s a lot of raw
   data to comb through. The results include aggregate visual aids to help
   consume the data.
-- **I’m not an expert on all the systems.** As a maintainer of
-  opentelemetry-java, I know everything there is to know about how to configure
-  and use it. I use micrometer and prometheus as described in the docs, but may
-  miss some configuration or usage optimizations that a power user would know. I
-  don’t know what I don’t know.
+- **I’m not an expert on all the systems.** As a maintainer of OpenTelemetry
+  Java, I know everything there is to know about how to configure and use it. I
+  use micrometer and prometheus as described in the docs, but may miss some
+  configuration or usage optimizations that a power user would know. I don’t
+  know what I don’t know.
 
 ### Methodology
 
@@ -442,15 +442,16 @@ compute more summary values than the sum, min, max, and bucket counts of
 OpenTelemetry histograms. The advantage diminishes when attributes are not known
 ahead of time.
 
-When attributes are known ahead of time, none of the systems allocate memory
-when recording. This is great, and should be table stakes for any serious
-metrics system. When attributes are not known ahead of time (i.e. computed from
-application context), OpenTelemetry consistently allocates less memory than
+When attribute values are known ahead of time, none of the systems allocate
+memory when recording. This is great, and should be table stakes for any serious
+metrics system. When attribute values are not known ahead of time (i.e. computed
+from application context), OpenTelemetry consistently allocates less memory than
 prometheus and micrometer. OpenTelemetry has clearly optimized for this scenario
-where micrometer and prometheus have a focus on attributes being known ahead of
-time and bound instruments. I argue that more often than not, attributes will
-not be known ahead of time, which marginalizes any advantage from micrometer or
-prometheus. Still, this is an area of potential improvement for OpenTelemetry.
+where micrometer and prometheus have a focus on attribute values being known
+ahead of time and bound instruments. I argue that more often than not, attribute
+values will not be known ahead of time, which marginalizes any advantage from
+micrometer or prometheus. Still, this is an area of potential improvement for
+OpenTelemetry.
 
 On the collect side, OpenTelemetry steals the show with extremely low memory
 allocation. When collecting without export, OpenTelemetry has anywhere from
@@ -472,7 +473,7 @@ benefit every application, but are especially important to applications with
 high cardinality and with strict performance SLAs.
 
 If you’re reading this and considering Java metric systems, I hope you chose
-[opentelemetry-java][]. It’s a powerful and highly performant tool on its own,
+[OpenTelemetry Java][]. It’s a powerful and highly performant tool on its own,
 but comes with APIs for other key observability signals, a
 [rich instrumentation ecosystem](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md),
 [implementations in a variety of other languages](/docs/languages/), and a
@@ -488,4 +489,4 @@ who have helped us get to this point, especially the current and previous
 Special shout out to [Asaf Mesika](https://github.com/asafm) who kept pushing
 the bar higher.
 
-[opentelemetry-java]: https://github.com/open-telemetry/opentelemetry-java
+[OpenTelemetry Java]: /docs/languages/java/
