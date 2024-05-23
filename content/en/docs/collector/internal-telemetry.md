@@ -275,52 +275,56 @@ The Collector logs the following internal events:
 
 ## Use internal telemetry to monitor the Collector
 
-This section recommends best practices for alerting and monitoring the Collector
-using its own telemetry.
+This section recommends best practices for monitoring the Collector using its
+own telemetry.
 
 ### Critical monitoring
 
 #### Data loss
 
-Use rate of `otelcol_processor_dropped_spans > 0` and
-`otelcol_processor_dropped_metric_points > 0` to detect data loss, depending on
-the requirements set up a minimal time window before alerting, avoiding
-notifications for small losses that are not considered outages or within the
-desired reliability level.
+Use the rate of `otelcol_processor_dropped_spans > 0` and
+`otelcol_processor_dropped_metric_points > 0` to detect data loss. Depending on
+your project's requirements, set up a minimal time window before alerting begins
+to avoid notifications for small losses that are within the desired reliability
+range and not considered outages.
 
-#### Low on CPU resources
+#### Low CPU resources
 
-This depends on the CPU metrics available on the deployment, eg.:
-`kube_pod_container_resource_limits{resource="cpu", unit="core"}` for
-Kubernetes. Let's call it `available_cores` below. The idea here is to have an
-upper bound of the number of available cores, and the maximum expected ingestion
-rate considered safe, let's call it `safe_rate`, per core. This should trigger
-increase of resources/ instances (or raise an alert as appropriate) whenever
-`(actual_rate/available_cores) < safe_rate`.
+To make sure your Collector is using CPU resources safely during data ingestion,
+you need to set:
 
-The `safe_rate` depends on the specific configuration being used. // TODO:
-Provide reference `safe_rate` for a few selected configurations.
+- An upper bound on the number of `available_cores`. The metric that tracks
+  `available_cores` is dependent on your deployment. For example, a Kubernetes
+  deployment offers the
+  `kube_pod_container_resource_limits{resource="cpu", unit="core"}` metric.
+- The maximum ingestion rate per core that is considered safe (`safe_rate`). The
+  `safe_rate` depends on the specific configuration you use.
+
+When `(actual_rate/available_cores) < safe_rate`, an alert should be raised and
+an increase in resources or instances should be triggered, as appropriate.
 
 ### Secondary monitoring
 
 #### Queue length
 
 Most exporters offer a
-[queue/retry mechanism](../exporter/exporterhelper/README.md) that is
-recommended as the retry mechanism for the Collector and as such should be used
-in any production deployment.
+[queue/retry mechanism](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/exporterhelper/README.md)
+that is recommended for use in any production deployment of the Collector.
 
-The `otelcol_exporter_queue_capacity` indicates the capacity of the retry queue
-(in batches). The `otelcol_exporter_queue_size` indicates the current size of
-retry queue. So you can use these two metrics to check if the queue capacity is
-enough for your workload.
+The `otelcol_exporter_queue_capacity` metric indicates the capacity, in batches,
+of the retry queue. The `otelcol_exporter_queue_size` metric indicates the
+current size of the retry queue. Use these two metrics to check if the queue
+capacity can support your workload.
 
-The `otelcol_exporter_enqueue_failed_spans`,
-`otelcol_exporter_enqueue_failed_metric_points` and
-`otelcol_exporter_enqueue_failed_log_records` indicate the number of span/metric
-points/log records failed to be added to the sending queue. This may be cause by
-a queue full of unsettled elements, so you may need to decrease your sending
-rate or horizontally scale collectors.
+Using the following three metrics, you can identify the number of spans/metric
+points/log records that failed to reach the sending queue:
+
+- `otelcol_exporter_enqueue_failed_spans`
+- `otelcol_exporter_enqueue_failed_metric_points`
+- `otelcol_exporter_enqueue_failed_log_records`
+
+These failures could be caused by a queue filled with unsettled elements. You
+might need to decrease your sending rate or horizontally scale Collectors.
 
 The queue/retry mechanism also supports logging for monitoring. Check the logs
 for messages like `"Dropping data because sending_queue is full"`.
@@ -328,15 +332,15 @@ for messages like `"Dropping data because sending_queue is full"`.
 #### Receive failures
 
 Sustained rates of `otelcol_receiver_refused_spans` and
-`otelcol_receiver_refused_metric_points` indicate too many errors returned to
-clients. Depending on the deployment and the client’s resilience this may
-indicate data loss at the clients.
+`otelcol_receiver_refused_metric_points` indicate that too many errors were
+returned to clients. Depending on the deployment and the clients' resilience,
+this might indicate clients' data loss.
 
 Sustained rates of `otelcol_exporter_send_failed_spans` and
 `otelcol_exporter_send_failed_metric_points` indicate that the Collector is not
-able to export data as expected. It doesn't imply data loss per se since there
-could be retries but a high rate of failures could indicate issues with the
-network or backend receiving the data.
+able to export data as expected. These metrics do not inherently imply data loss
+since there could be retries. But a high rate of failures could indicate issues
+with the network or backend receiving the data.
 
 ### Data flow
 
