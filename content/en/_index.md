@@ -3,13 +3,25 @@ title: OpenTelemetry
 description: >-
   High-quality, ubiquitous, and portable telemetry to enable effective
   observability
-show_banner: true
 outputs:
   - HTML
   - REDIRECTS # Include this `content/en` ONLY
 developer_note:
   The blocks/cover shortcode (used below) will use as a background image any
   image file containing "background" in its name.
+show_banner: true
+limit_banner: 2 # Default to 2, adjust as needed
+banners:
+  - message:
+      '<i class="fas fa-bullhorn"></i> Join us for [**OTel Community Day** on
+      June
+      25th](https://events.linuxfoundation.org/open-telemetry-community-day/)!'
+    to: 2024-06-25
+  - message:
+      '<i class="fas fa-bullhorn"></i> Help improve OTel and Prometheus
+      interoperability: [complete our
+      survey](https://forms.gle/bZAG9f7udoJsjZUG9) by May 31'
+    to: 2024-05-31
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>

@@ -18,4 +18,4 @@ createdAt: 2022-10-28
 package:
   registry: nuget
   name: OpenTelemetry.Instrumentation.GrpcCore
-  version: 1.0.0-beta.5
+  version: 1.0.0-beta.6

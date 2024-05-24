@@ -1,8 +1,7 @@
 ---
 title: Spring Boot
-linkTitle: Spring Boot
-weight: 30
 description: Spring Boot instrumentation for OpenTelemetry Java
+aliases: [/docs/languages/java/automatic/spring-boot/]
 # prettier-ignore
 cSpell:ignore: autoconfigurations autoconfigures customizer datasource distro logback springboot webflux webmvc
 ---
