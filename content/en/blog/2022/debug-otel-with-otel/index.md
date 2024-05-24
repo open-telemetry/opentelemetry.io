@@ -253,8 +253,7 @@ COPY opentelemetry_module.conf /etc/nginx/conf.d
 [put nginx between two services]:
   /blog/2022/instrument-nginx/#put-nginx-between-two-services
 [localhost:16686]: http://localhost:16686/
-[http request & response headers]:
-  /docs/specs/semconv/http/http-spans/#common-attributes
+[http request & response headers]: /docs/specs/semconv/http/http-spans/
 [rfc7230]: https://httpwg.org/specs/rfc7230.html#field.order
 [added some checks to the module for nginx]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/pull/204

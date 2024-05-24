@@ -42,3 +42,8 @@ content/en/docs/specs/                   @open-telemetry/docs-approvers @open-te
 content/en/docs/security/                @open-telemetry/docs-approvers @open-telemetry/sig-security-maintainers
 content/en/ecosystem/demo/               @open-telemetry/demo-approvers @open-telemetry/demo-approvers
 content/en/docs/contributing/       @open-telemetry/docs-approvers @open-telemetry/docs-maintainers
+content/zh/                         @open-telemetry/docs-zh-approvers
+content/en/docs/zero-code/java/    @open-telemetry/docs-approvers @open-telemetry/java-approvers @open-telemetry/java-instrumentation-approvers
+content/en/docs/zero-code/js/      @open-telemetry/docs-approvers @open-telemetry/javascript-approvers
+content/en/docs/zero-code/net/      @open-telemetry/docs-approvers @open-telemetry/dotnet-approvers @open-telemetry/dotnet-instrumentation-approvers
+

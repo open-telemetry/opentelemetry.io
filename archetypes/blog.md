@@ -9,6 +9,8 @@ author: >- # If you have only one author, then add the single name on this line 
 draft: true # TODO: remove this line once your post is ready to be published
 # canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the canonical URL here.
 body_class: otel-with-contributions-from # TODO: remove this line if there are no secondary contributing authors
+issue: the issue ID for this blog post # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details
+sig: SIG Name # TODO: add the name of the SIG that sponsors this blog post 
 ---
 
 <!-- If your post doesn't have secondary authors, then delete the following paragraph: -->

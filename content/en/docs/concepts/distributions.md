@@ -84,7 +84,7 @@ might be a good starting point.
 There are language specific extensibility mechanisms to customize the
 instrumentation libraries:
 
-- [Java agent](../../languages/java/automatic/extensions)
+- [Java agent](/docs/zero-code/java/agent/extensions)
 
 ## What you should know about distributions
 

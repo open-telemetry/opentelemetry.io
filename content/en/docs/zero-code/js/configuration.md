@@ -1,9 +1,12 @@
 ---
-title: Automatic Instrumentation Configuration
+title: Zero-Code Instrumentation Configuration
 linkTitle: Configuration
-description: Learn how to configure Automatic Instrumentation for Node.js
-aliases: [module-config]
+description: Learn how to configure Zero-Code Instrumentation for Node.js
+aliases:
+  - /docs/languages/js/automatic/configuration
+  - /docs/languages/js/automatic/module-config]
 weight: 10
+cSpell:ignore: serviceinstance
 ---
 
 This module is highly configurable by setting
@@ -27,9 +30,11 @@ detectors, or completely disable them:
 - `host`
 - `os`
 - `process`
+- `serviceinstance`
 - `container`
 - `alibaba`
 - `aws`
+- `azure`
 - `gcp`
 - `all` - enables all resource detectors
 - `none` - disables resource detection
@@ -40,7 +45,7 @@ For example, to only enable the `env` and `host` detectors, you can set:
 OTEL_NODE_RESOURCE_DETECTORS=env,host
 ```
 
-### Excluding auto-instrumentation
+### Excluding instrumentation libraries
 
 By default, all
 [supported instrumentation libraries](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#supported-instrumentations)

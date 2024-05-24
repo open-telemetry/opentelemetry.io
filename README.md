@@ -36,7 +36,7 @@ Check out the [OpenTelemetry community calendar][] for the Zoom link and any
 updates to this schedule.
 
 Meeting notes are available as a public [Google doc][]. If you have trouble
-accessing the doc, get in touch on [Slack][].
+accessing the doc, get in touch in the `#otel-comms` channel on [Slack][].
 
 Here is a list of community roles with current and previous members:
 
@@ -94,4 +94,4 @@ already contributed][contributors]!
   https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
 [google doc]:
   https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY/edit?usp=sharing
-[slack]: https://cloud-native.slack.com/archives/C02UN96HZH6
+[slack]: https://slack.cncf.io/

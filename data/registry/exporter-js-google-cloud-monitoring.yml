@@ -14,4 +14,4 @@ createdAt: 2020-04-01
 package:
   registry: npm
   name: '@google-cloud/opentelemetry-cloud-monitoring-exporter'
-  version: 0.17.0
+  version: 0.18.0

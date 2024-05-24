@@ -6,8 +6,8 @@ cSpell:ignore: sdktrace thirdparty
 
 {{% docs/languages/resources-intro %}}
 
-Resources should be assigned to a tracer provider at its initialization, and are
-created much like attributes:
+Resources should be assigned to a tracer, meter, and logger provider at its
+initialization, and are created much like attributes:
 
 ```go
 res := resource.NewWithAttributes(

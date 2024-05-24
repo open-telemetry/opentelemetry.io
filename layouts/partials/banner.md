@@ -1,17 +1,20 @@
-{{/* cSpell:ignore contribfest */ -}}
-{{ if .Params.show_banner -}}
-
+{{/* cSpell:ignore markdownify */ -}}
+{{ if and .Params.show_banner (gt (len (.Params.banners | default slice)) 0) }}
+  {{ $limit := .Params.limit_banner | default 2 }}
+  {{ $sorted := sort .Params.banners "to" }}
+  {{ $currentDate := now.Format "2006-01-02" }}
+  {{ $filtered := slice }}
+  {{ range $sorted }}
+    {{ if le $currentDate .to }}
+      {{ if lt (len $filtered) $limit }}
+        {{ $filtered = $filtered | append . }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
 <div class="o-banner">
-
-<i class="fas fa-bullhorn"></i> Join us for 
-[**OTel Community Day** on June 25th](https://sessionize.com/OTel-Community-Day/)!
-
-
+    {{ range $filtered }}
 <!-- prettier-ignore -->
-<i class="fas fa-bullhorn"></i>
-Help us improve your "Getting Started" experience by taking [this survey](https://docs.google.com/forms/d/e/1FAIpQLSfpxKvN3_5VN6FQ5dF5-XLfNdOhVYtjreetkxlRCF8qS7AW2w/viewform)
-{.pt-0}
-
-
+{{ .message | markdownify }}
+    {{ end }}
 </div>
 {{ end -}}

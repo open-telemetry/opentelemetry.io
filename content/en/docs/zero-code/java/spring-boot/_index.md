@@ -1,8 +1,7 @@
 ---
 title: Spring Boot
-linkTitle: Spring Boot
-weight: 30
 description: Spring Boot instrumentation for OpenTelemetry Java
+aliases: [/docs/languages/java/automatic/spring-boot/]
 # prettier-ignore
 cSpell:ignore: autoconfigurations autoconfigures customizer datasource distro logback springboot webflux webmvc
 ---
@@ -137,10 +136,10 @@ The OpenTelemetry starter uses OpenTelemetry Spring Boot
 
 ```xml
 <dependencies>
-	<dependency>
-		<groupId>io.opentelemetry.instrumentation</groupId>
-		<artifactId>opentelemetry-spring-boot-starter</artifactId>
-	</dependency>
+  <dependency>
+    <groupId>io.opentelemetry.instrumentation</groupId>
+    <artifactId>opentelemetry-spring-boot-starter</artifactId>
+  </dependency>
 </dependencies>
 ```
 
@@ -253,11 +252,11 @@ from tracing:
 
 ```xml
 <dependencies>
-	<dependency>
-		<groupId>io.opentelemetry.contrib</groupId>
-		<artifactId>opentelemetry-samplers</artifactId>
+  <dependency>
+    <groupId>io.opentelemetry.contrib</groupId>
+    <artifactId>opentelemetry-samplers</artifactId>
     <version>1.33.0-alpha</version>
-	</dependency>
+  </dependency>
 </dependencies>
 ```
 
@@ -420,12 +419,23 @@ springBoot {
 
 Automatic instrumentation is available for several frameworks:
 
-| Feature        | Property                                        | Default Value |
-| -------------- | ----------------------------------------------- | ------------- |
-| Logback        | `otel.instrumentation.logback-appender.enabled` | true          |
-| Spring Web     | `otel.instrumentation.spring-web.enabled`       | true          |
-| Spring Web MVC | `otel.instrumentation.spring-webmvc.enabled`    | true          |
-| Spring WebFlux | `otel.instrumentation.spring-webflux.enabled`   | true          |
+| Feature               | Property                                        | Default Value |
+| --------------------- | ----------------------------------------------- | ------------- |
+| JDBC                  | `otel.instrumentation.jdbc.enabled`             | true          |
+| Logback               | `otel.instrumentation.logback-appender.enabled` | true          |
+| Spring Web            | `otel.instrumentation.spring-web.enabled`       | true          |
+| Spring Web MVC        | `otel.instrumentation.spring-webmvc.enabled`    | true          |
+| Spring WebFlux        | `otel.instrumentation.spring-webflux.enabled`   | true          |
+| Kafka                 | `otel.instrumentation.kafka.enabled`            | true          |
+| MongoDB               | `otel.instrumentation.mongo.enabled`            | true          |
+| Micrometer            | `otel.instrumentation.micrometer.enabled`       | false         |
+| R2DBC (reactive JDBC) | `otel.instrumentation.r2dbc.enabled`            | true          |
+
+#### JDBC Instrumentation
+
+| System property                                         | Type    | Default | Description                            |
+| ------------------------------------------------------- | ------- | ------- | -------------------------------------- |
+| `otel.instrumentation.jdbc.statement-sanitizer.enabled` | Boolean | true    | Enables the DB statement sanitization. |
 
 #### Logback
 
@@ -433,8 +443,8 @@ You can enable experimental features with system properties to capture
 attributes :
 
 | System property                                                                        | Type    | Default | Description                                                                                                                                   |
-| -------------------------------------------------------------------------------------- | ------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --- |
-| `otel.instrumentation.logback-appender.experimental-log-attributes`                    | Boolean | false   | Enable the capture of experimental log attributes `thread.name` and `thread.id`.                                                              |     |
+| -------------------------------------------------------------------------------------- | ------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `otel.instrumentation.logback-appender.experimental-log-attributes`                    | Boolean | false   | Enable the capture of experimental log attributes `thread.name` and `thread.id`.                                                              |
 | `otel.instrumentation.logback-appender.experimental.capture-code-attributes`           | Boolean | false   | Enable the capture of [source code attributes]. Note that capturing source code attributes at logging sites might add a performance overhead. |
 | `otel.instrumentation.logback-appender.experimental.capture-marker-attribute`          | Boolean | false   | Enable the capture of Logback markers as attributes.                                                                                          |
 | `otel.instrumentation.logback-appender.experimental.capture-key-value-pair-attributes` | Boolean | false   | Enable the capture of Logback key value pairs as attributes.                                                                                  |
@@ -450,26 +460,26 @@ appender in your `logback.xml` or `logback-spring.xml` file:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-		<encoder>
-			<pattern>
-				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
-			</pattern>
-		</encoder>
-	</appender>
-	<appender name="OpenTelemetry"
-		class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender">
-		<captureExperimentalAttributes>false</captureExperimentalAttributes>
-		<captureCodeAttributes>true</captureCodeAttributes>
-		<captureMarkerAttribute>true</captureMarkerAttribute>
-		<captureKeyValuePairAttributes>true</captureKeyValuePairAttributes>
-		<captureLoggerContext>true</captureLoggerContext>
-		<captureMdcAttributes>*</captureMdcAttributes>
-	</appender>
-	<root level="INFO">
-		<appender-ref ref="console"/>
-		<appender-ref ref="OpenTelemetry"/>
-	</root>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+    <appender name="OpenTelemetry"
+        class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender">
+        <captureExperimentalAttributes>false</captureExperimentalAttributes>
+        <captureCodeAttributes>true</captureCodeAttributes>
+        <captureMarkerAttribute>true</captureMarkerAttribute>
+        <captureKeyValuePairAttributes>true</captureKeyValuePairAttributes>
+        <captureLoggerContext>true</captureLoggerContext>
+        <captureMdcAttributes>*</captureMdcAttributes>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="console"/>
+        <appender-ref ref="OpenTelemetry"/>
+    </root>
 </configuration>
 ```
 
@@ -550,65 +560,35 @@ public MyService(WebClient.Builder webClientBuilder) {
 }
 ```
 
+#### Kafka Instrumentation
+
+Provides autoconfiguration for the Kafka client instrumentation.
+
+| System property                                           | Type    | Default | Description                                          |
+| --------------------------------------------------------- | ------- | ------- | ---------------------------------------------------- |
+| `otel.instrumentation.kafka.experimental-span-attributes` | Boolean | false   | Enables the capture of experimental span attributes. |
+
+#### Micrometer Instrumentation
+
+Provides autoconfiguration for the Micrometer to OpenTelemetry bridge.
+
+#### MongoDB Instrumentation
+
+Provides autoconfiguration for the MongoDB client instrumentation.
+
+| System property                                          | Type    | Default | Description                            |
+| -------------------------------------------------------- | ------- | ------- | -------------------------------------- |
+| `otel.instrumentation.mongo.statement-sanitizer.enabled` | Boolean | true    | Enables the DB statement sanitization. |
+
+#### R2DBC Instrumentation
+
+Provides autoconfiguration for the OpenTelemetry R2DBC instrumentation.
+
+| System property                                          | Type    | Default | Description                            |
+| -------------------------------------------------------- | ------- | ------- | -------------------------------------- |
+| `otel.instrumentation.r2dbc.statement-sanitizer.enabled` | Boolean | true    | Enables the DB statement sanitization. |
+
 ### Additional Instrumentations
-
-#### JDBC Instrumentation
-
-You have two ways to enable the JDBC instrumentation with the OpenTelemetry
-starter.
-
-If your application does not declare `DataSource` bean, you can update your
-`application.properties` file to have the data source URL starting with
-`jdbc:otel:` and set the driver class to
-`io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver`.
-
-```properties
-spring.datasource.url=jdbc:otel:h2:mem:db
-spring.datasource.driver-class-name=io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver
-```
-
-You can also wrap the `DataSource` bean in an
-`io.opentelemetry.instrumentation.jdbc.datasource.OpenTelemetryDataSource`:
-
-```java
-import io.opentelemetry.instrumentation.jdbc.datasource.JdbcTelemetry;
-
-@Configuration
-public class DataSourceConfig {
-
-	@Bean
-	public DataSource dataSource(OpenTelemetry openTelemetry) {
-		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-		//Data source configurations
-		DataSource dataSource = dataSourceBuilder.build();
-		return JdbcTelemetry.create(openTelemetry).wrap(dataSource);
-	}
-
-}
-```
-
-With the datasource configuration, you need to add the following dependency:
-
-{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
-
-```xml
-<dependencies>
-	<dependency>
-		<groupId>io.opentelemetry.instrumentation</groupId>
-		<artifactId>opentelemetry-jdbc</artifactId>
-	</dependency>
-</dependencies>
-```
-
-{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
-
-```kotlin
-dependencies {
-	implementation("io.opentelemetry.instrumentation:opentelemetry-jdbc")
-}
-```
-
-{{% /tab %}} {{< /tabpane>}}
 
 #### Log4j2 Instrumentation
 
@@ -617,20 +597,24 @@ You have to add the OpenTelemetry appender to your `log4j2.xml` file:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN" packages="io.opentelemetry.instrumentation.log4j.appender.v2_17">
-	<Appenders>
-		<OpenTelemetry name="OpenTelemetryAppender"/>
-	</Appenders>
-	<Loggers>
-		<Root>
-			<AppenderRef ref="OpenTelemetryAppender" level="All"/>
-		</Root>
-	</Loggers>
+    <Appenders>
+        <OpenTelemetry name="OpenTelemetryAppender"/>
+    </Appenders>
+    <Loggers>
+        <Root>
+            <AppenderRef ref="OpenTelemetryAppender" level="All"/>
+        </Root>
+    </Loggers>
 </Configuration>
 ```
 
 You can find more configuration options for the OpenTelemetry appender in the
 [Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md)
 instrumentation library.
+
+| System property                               | Type    | Default | Description                                                                                     |
+| --------------------------------------------- | ------- | ------- | ----------------------------------------------------------------------------------------------- |
+| `otel.instrumentation.log4j-appender.enabled` | Boolean | true    | Enables the configuration of the Log4j OpenTelemetry appender with an `OpenTelemetry` instance. |
 
 #### Instrumentation Annotations
 
@@ -642,9 +626,9 @@ span by annotating the method parameters with `@SpanAttribute`.
 > spring application context. To learn more about aspect weaving in spring, see
 > [spring-aop](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#aop).
 
-| Feature     | Property                                   | Default Value | ConditionalOnClass |
-| ----------- | ------------------------------------------ | ------------- | ------------------ |
-| `@WithSpan` | `otel.instrumentation.annotations.enabled` | true          | WithSpan, Aspect   |
+| Feature     | Property                                   | Default Value | Description                       |
+| ----------- | ------------------------------------------ | ------------- | --------------------------------- |
+| `@WithSpan` | `otel.instrumentation.annotations.enabled` | true          | Enables the WithSpan annotations. |
 
 ```java
 import org.springframework.stereotype.Component;
