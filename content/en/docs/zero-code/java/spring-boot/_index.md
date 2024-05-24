@@ -426,7 +426,6 @@ Automatic instrumentation is available for several frameworks:
 | Spring Web            | `otel.instrumentation.spring-web.enabled`       | true          |
 | Spring Web MVC        | `otel.instrumentation.spring-webmvc.enabled`    | true          |
 | Spring WebFlux        | `otel.instrumentation.spring-webflux.enabled`   | true          |
-| Log4j2                | `otel.instrumentation.log4j-appender.enabled`   | true          |  todo should this be here or in section below?
 | Kafka                 | `otel.instrumentation.kafka.enabled`            | true          |
 | MongoDB               | `otel.instrumentation.mongo.enabled`            | true          |
 | Micrometer            | `otel.instrumentation.micrometer.enabled`       | false         |
@@ -616,6 +615,10 @@ You have to add the OpenTelemetry appender to your `log4j2.xml` file:
 You can find more configuration options for the OpenTelemetry appender in the
 [Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md)
 instrumentation library.
+
+| System property                               | Type    | Default | Description                                                                                    |
+|-----------------------------------------------|---------|---------|------------------------------------------------------------------------------------------------|
+| `otel.instrumentation.log4j-appender.enabled` | Boolean | true    | Enables the configuration of the Log4j OpenTelemetry appender with an `OpenTelemetry` instance.|
 
 #### Instrumentation Annotations
 
