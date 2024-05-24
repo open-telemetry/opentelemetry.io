@@ -154,5 +154,5 @@ You'll also want to configure an appropriate exporter to
 telemetry backends.
 
 You can also check the
-[automatic instrumentation for .NET](/docs/languages/net/automatic), which is
-currently in beta.
+[automatic instrumentation for .NET](/docs/zero-code/net), which is currently in
+beta.
