@@ -421,43 +421,23 @@ Automatic instrumentation is available for several frameworks:
 
 | Feature               | Property                                        | Default Value |
 |-----------------------|-------------------------------------------------|---------------|
-| `@WithSpan`           | `otel.instrumentation.annotations.enabled`      | true          |  todo should this be here or in section below?
-| Log4j2                | `otel.instrumentation.log4j-appender.enabled`   | true          |  todo should this be here or in section below?
+| JDBC                  | `otel.instrumentation.jdbc.enabled`             | true          |
 | Logback               | `otel.instrumentation.logback-appender.enabled` | true          |
-| JDBC                  | `otel.instrumentation.jdbc.enabled`             | true          |  todo should this be here or in section below?
+| Spring Web            | `otel.instrumentation.spring-web.enabled`       | true          |
+| Spring Web MVC        | `otel.instrumentation.spring-webmvc.enabled`    | true          |
+| Spring WebFlux        | `otel.instrumentation.spring-webflux.enabled`   | true          |
+| Log4j2                | `otel.instrumentation.log4j-appender.enabled`   | true          |  todo should this be here or in section below?
 | Kafka                 | `otel.instrumentation.kafka.enabled`            | true          |
 | MongoDB               | `otel.instrumentation.mongo.enabled`            | true          |
 | Micrometer            | `otel.instrumentation.micrometer.enabled`       | false         |
 | R2DBC (reactive JDBC) | `otel.instrumentation.r2dbc.enabled`            | true          |
-| Spring Web            | `otel.instrumentation.spring-web.enabled`       | true          |
-| Spring Web MVC        | `otel.instrumentation.spring-webmvc.enabled`    | true          |
-| Spring WebFlux        | `otel.instrumentation.spring-webflux.enabled`   | true          |
 
-Common properties for all instrumentations:
 
-| System property                                              | Type    | Default | Description                            |
-|--------------------------------------------------------------|---------|---------|----------------------------------------|
-| `otel.instrumentation.common.db-statement-sanitizer.enabled` | Boolean | true    | Enables the DB statement sanitization. |
+#### JDBC Instrumentation
 
-#### Kafka Instrumentation
-
-Provides autoconfiguration for the Kafka client instrumentation.
-
-| System property                                           | Type    | Default | Description                                          |
-|-----------------------------------------------------------|---------|---------|------------------------------------------------------|
-| `otel.instrumentation.kafka.experimental-span-attributes` | Boolean | false   | Enables the capture of experimental span attributes. |
-
-#### Micrometer Instrumentation
-
-Provides autoconfiguration for the Micrometer to OpenTelemetry bridge.
-
-#### MongoDB Instrumentation
-
-Provides autoconfiguration for the MongoDB client instrumentation.
-
-| System property                                          | Type    | Default | Description                            |
-|----------------------------------------------------------|---------|---------|----------------------------------------|
-| `otel.instrumentation.mongo.statement-sanitizer.enabled` | Boolean | true    | Enables the DB statement sanitization. |
+| System property                                         | Type    | Default | Description                            |
+|---------------------------------------------------------|---------|---------|----------------------------------------|
+| `otel.instrumentation.jdbc.statement-sanitizer.enabled` | Boolean | true    | Enables the DB statement sanitization. |
 
 #### Logback
 
@@ -504,14 +484,6 @@ appender in your `logback.xml` or `logback-spring.xml` file:
     </root>
 </configuration>
 ```
-#### R2DBC Instrumentation
-
-Provides autoconfiguration for the OpenTelemetry R2DBC instrumentation.
-
-| System property                                          | Type    | Default | Description                            |
-|----------------------------------------------------------|---------|---------|----------------------------------------|
-| `otel.instrumentation.r2dbc.statement-sanitizer.enabled` | Boolean | true    | Enables the DB statement sanitization. |
-
 #### Spring Web Autoconfiguration
 
 Provides autoconfiguration for the `RestTemplate` trace interceptor defined in
@@ -589,46 +561,39 @@ public MyService(WebClient.Builder webClientBuilder) {
 }
 ```
 
+
+#### Kafka Instrumentation
+
+Provides autoconfiguration for the Kafka client instrumentation.
+
+| System property                                           | Type    | Default | Description                                          |
+|-----------------------------------------------------------|---------|---------|------------------------------------------------------|
+| `otel.instrumentation.kafka.experimental-span-attributes` | Boolean | false   | Enables the capture of experimental span attributes. |
+
+#### Micrometer Instrumentation
+
+Provides autoconfiguration for the Micrometer to OpenTelemetry bridge.
+
+#### MongoDB Instrumentation
+
+Provides autoconfiguration for the MongoDB client instrumentation.
+
+| System property                                          | Type    | Default | Description                            |
+|----------------------------------------------------------|---------|---------|----------------------------------------|
+| `otel.instrumentation.mongo.statement-sanitizer.enabled` | Boolean | true    | Enables the DB statement sanitization. |
+
+
+#### R2DBC Instrumentation
+
+Provides autoconfiguration for the OpenTelemetry R2DBC instrumentation.
+
+| System property                                          | Type    | Default | Description                            |
+|----------------------------------------------------------|---------|---------|----------------------------------------|
+| `otel.instrumentation.r2dbc.statement-sanitizer.enabled` | Boolean | true    | Enables the DB statement sanitization. |
+
+
+
 ### Additional Instrumentations
-
-#### JDBC Instrumentation
-
-You have two ways to enable the JDBC instrumentation with the OpenTelemetry
-starter.
-
-If your application does not declare `DataSource` bean, you can update your
-`application.properties` file to have the data source URL starting with
-`jdbc:otel:` and set the driver class to
-`io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver`.
-
-```properties
-spring.datasource.url=jdbc:otel:h2:mem:db
-spring.datasource.driver-class-name=io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver
-```
-
-You can also wrap the `DataSource` bean in an
-`io.opentelemetry.instrumentation.jdbc.datasource.OpenTelemetryDataSource`:
-
-```java
-import io.opentelemetry.instrumentation.jdbc.datasource.JdbcTelemetry;
-
-@Configuration
-public class DataSourceConfig {
-
-	@Bean
-	public DataSource dataSource(OpenTelemetry openTelemetry) {
-		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-		//Data source configurations
-		DataSource dataSource = dataSourceBuilder.build();
-		return JdbcTelemetry.create(openTelemetry).wrap(dataSource);
-	}
-
-}
-```
-
-| System property                                         | Type    | Default | Description                            |
-|---------------------------------------------------------|---------|---------|----------------------------------------|
-| `otel.instrumentation.jdbc.statement-sanitizer.enabled` | Boolean | true    | Enables the DB statement sanitization. |
 
 #### Log4j2 Instrumentation
 
@@ -662,9 +627,9 @@ span by annotating the method parameters with `@SpanAttribute`.
 > spring application context. To learn more about aspect weaving in spring, see
 > [spring-aop](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#aop).
 
-| Feature     | Property                                   | Default Value | ConditionalOnClass |
-| ----------- | ------------------------------------------ | ------------- | ------------------ |
-| `@WithSpan` | `otel.instrumentation.annotations.enabled` | true          | WithSpan, Aspect   |
+| Feature     | Property                                   | Default Value |Description                        |
+| ----------- | ------------------------------------------ | ------------- |-----------------------------------|
+| `@WithSpan` | `otel.instrumentation.annotations.enabled` | true          | Enables the WithSpan annotations. |
 
 ```java
 import org.springframework.stereotype.Component;
