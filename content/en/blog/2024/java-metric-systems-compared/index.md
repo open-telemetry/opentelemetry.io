@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry Java Metrics Performance Comparison
 linkTitle: Java Metric Systems Compared
-date: 2024-05-20
+date: 2024-05-24
 author: '[Jack Berg](https://github.com/jack-berg) (New Relic)'
 cSpell:ignore: Asaf dropwizard hashcodes Mesika Sonoma
 ---
