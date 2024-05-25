@@ -37,6 +37,14 @@ than a logging framework that might shut itself down in a shutdown hook, thus
 suppressing your log messages. See this
 [JDK bug](https://bugs.openjdk.java.net/browse/JDK-8161253) for more details.
 
+{{% alert title="Signal configuration" color="info" %}}
+
+The text placeholder `{signal}` refers to the supported
+[OpenTelemetry Signal](/docs/concepts/signals/). Valid values include `traces`,
+`metrics`, and `logs`.
+
+{{% /alert %}}
+
 ### Configuration Priority
 
 Signal specific configurations take priority over the generic versions.
