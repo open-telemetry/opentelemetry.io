@@ -12,8 +12,8 @@ cSpell:ignore: dicelib rolldice
 
 On this page you will learn how you can add traces, metrics and logs to your
 code manually. You are not limited to using one kind of instrumentation: you can
-also use [automatic instrumentation](/docs/languages/net/automatic/) to get
-started and then enrich your code with manual instrumentation as needed.
+also use [automatic instrumentation](/docs/zero-code/net/) to get started and
+then enrich your code with manual instrumentation as needed.
 
 Also, for libraries your code depends on, you don't have to write
 instrumentation code yourself, since they might be already instrumented or there
@@ -696,5 +696,6 @@ things like inbound and outbound HTTP requests and more.
 You'll also want to configure an appropriate exporter to
 [export your telemetry data](../exporters/) to one or more telemetry backends.
 
-You can also check the [automatic instrumentation for .NET](../automatic/),
-which is currently in beta.
+You can also check the
+[automatic instrumentation for .NET](/docs/zero-code/net/), which is currently
+in beta.
