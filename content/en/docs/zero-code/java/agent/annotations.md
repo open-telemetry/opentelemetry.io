@@ -128,5 +128,6 @@ instrumented.
 ## Next steps
 
 Beyond the use of annotations, the OpenTelemetry API allows you to obtain a
-tracer that can be used for [Manual Instrumentation](../../instrumentation) and
-execute code within the scope of that span.
+tracer that can be used for
+[Manual Instrumentation](/docs/languages/java/instrumentation/) and execute code
+within the scope of that span.
