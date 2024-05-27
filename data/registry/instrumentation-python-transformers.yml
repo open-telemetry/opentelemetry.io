@@ -1,0 +1,17 @@
+# cSpell:ignore huggingface
+title: Transformers Instrumentation
+registryType: instrumentation
+language: python
+tags:
+  - python
+  - instrumentation
+  - transformers
+  - huggingface
+license: Apache 2.0
+description: Instrumentation for Transformers SDK (HuggingFace)
+authors:
+  - name: Traceloop
+    email: dev@traceloop.com
+urls:
+  repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-transformers
+createdAt: 2024-05-27
