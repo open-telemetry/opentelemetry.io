@@ -14,18 +14,18 @@ The Go SIG will remove Contrib modules that lack code owners. For each module,
 the removal is planned for no sooner than August 21, 2024, unless a code owner
 is found. The list includes the following modules:
 
-- `go.opentelemetry.io/otel/detectors/aws/ec2`
-- `go.opentelemetry.io/otel/detectors/aws/ecs`
-- `go.opentelemetry.io/otel/detectors/aws/eks`
-- `go.opentelemetry.io/otel/detectors/aws/lambda`
-- `go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-lambda-go/otellambda`
-- `go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-sdk-go-v2/otelaws`
-- `go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux`
-- `go.opentelemetry.io/contrib/instrumentation/github.com/labstack/echo/otelecho`
-- `go.opentelemetry.io/contrib/instrumentation/go.mongodb.org/mongo-driver/mongo/otelmongo`
-- `go.opentelemetry.io/contrib/instrumentation/gopkg.in/macaron.v1/otelmacaron`
-- `go.opentelemetry.io/contrib/propagators/aws`
-- `go.opentelemetry.io/contrib/samplers/aws/xray`
+- [go.opentelemetry.io/otel/detectors/aws/ec2](https://pkg.go.dev/go.opentelemetry.io/contrib/detectors/aws/ec2)
+- [go.opentelemetry.io/otel/detectors/aws/ecs](https://pkg.go.dev/go.opentelemetry.io/contrib/detectors/aws/ecs)
+- [go.opentelemetry.io/otel/detectors/aws/eks](https://pkg.go.dev/go.opentelemetry.io/contrib/detectors/aws/eks)
+- [go.opentelemetry.io/otel/detectors/aws/lambda](https://pkg.go.dev/go.opentelemetry.io/contrib/detectors/aws/lambda)
+- [go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-lambda-go/otellambda](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-lambda-go/otellambda)
+- [go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-sdk-go-v2/otelaws](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-sdk-go-v2/otelaws)
+- [go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mhttps://pkg.go.dev/go.opentelemetry.io/contrib/detectors/aws/ec2ux/otelmux](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux)
+- [go.opentelemetry.io/contrib/instrumentation/github.com/labstack/echo/otelecho](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/github.com/labstack/echo/otelecho)
+- [go.opentelemetry.io/contrib/instrumentation/go.mongodb.org/mongo-driver/mongo/otelmongo](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/go.mongodb.org/mongo-driver/mongo/otelmongo)
+- [go.opentelemetry.io/contrib/instrumentation/gopkg.in/macaron.v1/otelmacaron](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/gopkg.in/macaron.v1/otelmacaron)
+- [go.opentelemetry.io/contrib/propagators/aws](https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/aws)
+- [go.opentelemetry.io/contrib/samplers/aws/xray](https://pkg.go.dev/go.opentelemetry.io/contrib/samplers/aws/xray)
 
 For a full list of modules at risk for removal, see the
 [Remove unowned moduled](https://github.com/orgs/open-telemetry/projects/92/views/1)
