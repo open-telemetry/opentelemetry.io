@@ -6,6 +6,7 @@ author: >-
   [Fabrizio Ferri-Benedetti](https://github.com/theletterf) (Splunk)
 issue: 4542
 sig: SIG Go
+cSpell:ignore: aws Fabrizio Ferri Benedetti otellambda otelaws otelmux labstack otelecho otelmongo gopkg macaron otelmacaron moduled
 ---
 
 The Go SIG will remove Contrib modules that lack code owners. For each module,
