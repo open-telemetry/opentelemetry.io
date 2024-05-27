@@ -6,25 +6,26 @@ author: >-
   [Fabrizio Ferri-Benedetti](https://github.com/theletterf) (Splunk)
 issue: 4542
 sig: SIG Go
-cSpell:ignore: aws Fabrizio Ferri Benedetti otellambda otelaws otelmux labstack otelecho otelmongo gopkg macaron otelmacaron moduled
+# prettier-ignore
+cSpell:ignore: aws Benedetti Fabrizio Ferri gopkg labstack macaron moduled otelaws otelecho otellambda otelmacaron otelmongo otelmux
 ---
 
 The Go SIG will remove Contrib modules that lack code owners. For each module,
 the removal is planned for no sooner than August 21, 2024, unless a code owner
 is found. The list includes the following modules:
 
-- go.opentelemetry.io/otel/detectors/aws/ec2
-- go.opentelemetry.io/otel/detectors/aws/ecs
-- go.opentelemetry.io/otel/detectors/aws/eks
-- go.opentelemetry.io/otel/detectors/aws/lambda
-- go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-lambda-go/otellambda
-- go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-sdk-go-v2/otelaws
-- go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux
-- go.opentelemetry.io/contrib/instrumentation/github.com/labstack/echo/otelecho
-- go.opentelemetry.io/contrib/instrumentation/go.mongodb.org/mongo-driver/mongo/otelmongo
-- go.opentelemetry.io/contrib/instrumentation/gopkg.in/macaron.v1/otelmacaron
-- go.opentelemetry.io/contrib/propagators/aws
-- go.opentelemetry.io/contrib/samplers/aws/xray
+- `go.opentelemetry.io/otel/detectors/aws/ec2`
+- `go.opentelemetry.io/otel/detectors/aws/ecs`
+- `go.opentelemetry.io/otel/detectors/aws/eks`
+- `go.opentelemetry.io/otel/detectors/aws/lambda`
+- `go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-lambda-go/otellambda`
+- `go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-sdk-go-v2/otelaws`
+- `go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux`
+- `go.opentelemetry.io/contrib/instrumentation/github.com/labstack/echo/otelecho`
+- `go.opentelemetry.io/contrib/instrumentation/go.mongodb.org/mongo-driver/mongo/otelmongo`
+- `go.opentelemetry.io/contrib/instrumentation/gopkg.in/macaron.v1/otelmacaron`
+- `go.opentelemetry.io/contrib/propagators/aws`
+- `go.opentelemetry.io/contrib/samplers/aws/xray`
 
 For a full list of modules at risk for removal, see the
 [Remove unowned moduled](https://github.com/orgs/open-telemetry/projects/92/views/1)
