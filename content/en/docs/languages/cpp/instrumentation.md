@@ -11,6 +11,13 @@ cSpell:ignore: decltype labelkv nostd nullptr
 
 {{% docs/languages/instrumentation-intro %}}
 
+{{% pageinfo color="info" %}}
+
+OpenTelemetry C++ doesn't support automatic instrumentation when the source code
+of the library you want to instrument isn't available.
+
+{{% /pageinfo %}}
+
 ## Setup
 
 Follow the instructions in the
@@ -19,7 +26,7 @@ OpenTelemetry C++.
 
 ## Traces
 
-### Initializing tracing
+### Initialize tracing
 
 ```cpp
 auto provider = opentelemetry::trace::Provider::GetTracerProvider();
@@ -57,7 +64,7 @@ The concept of an active span is important, as any span that is created without
 explicitly specifying a parent is parented to the currently active span. A span
 without a parent is called root span.
 
-### Create nested Spans
+### Create nested spans
 
 ```cpp
 auto outer_span = tracer->StartSpan("Outer operation");
@@ -76,7 +83,7 @@ Spans can be nested, and have a parent-child relationship with other spans. When
 a given span is active, the newly created span inherits the active span’s trace
 ID, and other context attributes.
 
-### Context Propagation
+### Context propagation
 
 ```cpp
 // set global propagator
@@ -105,7 +112,7 @@ distributed tracing to transfer this Context across service boundary often
 through HTTP headers. OpenTelemetry provides a text-based approach to propagate
 context to remote services using the W3C Trace Context HTTP headers.
 
-### Further Reading
+### Further reading
 
 - [Traces API](https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__trace.html)
 - [Traces SDK](https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__sdk__trace.html)
@@ -113,10 +120,10 @@ context to remote services using the W3C Trace Context HTTP headers.
 
 ## Metrics
 
-### Initialize Exporter and Reader
+### Initialize exporter and reader
 
-Initialize an exporter and a reader. In this case, we initialize an OStream
-Exporter which will print to stdout by default. The reader periodically collects
+Initialize an exporter and a reader. In this case, you initialize an OStream
+Exporter which prints to stdout by default. The reader periodically collects
 metrics from the Aggregation Store and exports them.
 
 ```cpp
@@ -125,10 +132,10 @@ std::unique_ptr<opentelemetry::sdk::metrics::MetricReader> reader{
     new opentelemetry::sdk::metrics::PeriodicExportingMetricReader(std::move(exporter), options)};
 ```
 
-### Initialize Meter Provider
+### Initialize a meter provider
 
-Initialize a MeterProvider and add the reader. We will use this to obtain Meter
-objects in the future.
+Initialize a MeterProvider and add the reader. Use this to obtain Meter objects
+in the future.
 
 ```cpp
 auto provider = std::shared_ptr<opentelemetry::metrics::MeterProvider>(new opentelemetry::sdk::metrics::MeterProvider());
@@ -136,12 +143,12 @@ auto p = std::static_pointer_cast<opentelemetry::sdk::metrics::MeterProvider>(pr
 p->AddMetricReader(std::move(reader));
 ```
 
-### Create a Counter
+### Create a counter
 
 Create a Counter instrument from the Meter, and record the measurement. Every
 Meter pointer returned by the MeterProvider points to the same Meter. This means
-that the Meter will be able to combine metrics captured from different functions
-without having to constantly pass the Meter around the library.
+that the Meter can combine metrics captured from different functions without
+having to constantly pass the Meter around the library.
 
 ```cpp
 auto meter = provider->GetMeter(name, "1.2.0");
@@ -152,9 +159,9 @@ auto labelkv = common::KeyValueIterableView<decltype(labels)>{labels};
 double_counter->Add(val, labelkv);
 ```
 
-### Create a Histogram
+### Create a histogram
 
-Create a Histogram instrument from the Meter, and record the measurement.
+Create a histogram instrument from the meter, and record the measurement.
 
 ```cpp
 auto meter = provider->GetMeter(name, "1.2.0");
@@ -162,11 +169,11 @@ auto histogram_counter = meter->CreateDoubleHistogram("histogram_name");
 histogram_counter->Record(val, labelkv);
 ```
 
-### Create Observable Counter
+### Create an observable counter
 
-Create a Observable Counter Instrument from the Meter, and add a callback. The
-callback would be used to record the measurement during metrics collection.
-Ensure to keep the Instrument object active for the lifetime of collection.
+Create an observable counter instrument from the meter, and add a callback. The
+callback is used to record the measurement during metrics collection. Ensure to
+keep the Instrument object active for the lifetime of collection.
 
 ```cpp
 auto meter = provider->GetMeter(name, "1.2.0");
@@ -174,14 +181,14 @@ auto counter = meter->CreateDoubleObservableCounter(counter_name);
 counter->AddCallback(MeasurementFetcher::Fetcher, nullptr);
 ```
 
-### Create Views
+### Create views
 
-#### Map the Counter Instrument to Sum Aggregation
+#### Map the counter instrument to sum aggregation
 
 Create a view to map the Counter Instrument to Sum Aggregation. Add this view to
-provider. View creation is optional unless we want to add custom aggregation
-config, and attribute processor. Metrics SDK will implicitly create a missing
-view with default mapping between Instrument and Aggregation.
+provider. View creation is optional unless you want to add custom aggregation
+config, and attribute processor. Metrics SDK creates a missing view with default
+mapping between Instrument and Aggregation.
 
 ```cpp
 std::unique_ptr<opentelemetry::sdk::metrics::InstrumentSelector> instrument_selector{
@@ -193,7 +200,7 @@ std::unique_ptr<opentelemetry::sdk::metrics::View> sum_view{
 p->AddView(std::move(instrument_selector), std::move(meter_selector), std::move(sum_view));
 ```
 
-#### Map the Histogram Instrument to Histogram Aggregation
+#### Map the histogram instrument to histogram aggregation
 
 ```cpp
 std::unique_ptr<opentelemetry::sdk::metrics::InstrumentSelector> histogram_instrument_selector{
@@ -206,7 +213,7 @@ p->AddView(std::move(histogram_instrument_selector), std::move(histogram_meter_s
     std::move(histogram_view));
 ```
 
-#### Map the Observable Counter Instrument to Sum Aggregation
+#### Map the observable counter instrument to sum aggregation
 
 ```cpp
 std::unique_ptr<opentelemetry::sdk::metrics::InstrumentSelector> observable_instrument_selector{
@@ -220,7 +227,7 @@ p->AddView(std::move(observable_instrument_selector), std::move(observable_meter
          std::move(observable_sum_view));
 ```
 
-### Further Reading
+### Further reading
 
 - [Metrics API](https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__metrics.html#)
 - [Metrics SDK](https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__sdk__metrics.html)
@@ -232,7 +239,7 @@ The documentation for the logs API & SDK is missing, you can help make it
 available by
 [editing this page](https://github.com/open-telemetry/opentelemetry.io/edit/main/content/en/docs/languages/cpp/instrumentation.md).
 
-## Next Steps
+## Next steps
 
 You’ll also want to configure an appropriate exporter to
 [export your telemetry data](/docs/languages/cpp/exporters) to one or more
