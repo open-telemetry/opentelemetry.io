@@ -1,7 +1,7 @@
 ---
 title: .NET Automatic Instrumentation
 description: Send traces and metrics from .NET applications and services.
-linkTitle: Automatic
+linkTitle: .NET
 cSpell:ignore: coreutils HKLM iisreset myapp
 weight: 30
 redirects: [{ from: /docs/languages/net/automatic/*, to: ':splat' }]
