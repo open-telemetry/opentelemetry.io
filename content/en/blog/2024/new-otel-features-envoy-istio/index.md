@@ -41,10 +41,9 @@ not instrumented.
 
 Envoy offers several
 [tracers](https://www.envoyproxy.io/docs/envoy/v1.29.4/api-v3/config/trace/trace)
-that do the job of tracing the requests,
-including the OpenTelemetry tracer. Tracers can be configured either directly
-within Envoy (when using it as a standalone component) or for all Envoy
-instances via Istio.
+that do the job of tracing the requests, including the OpenTelemetry tracer.
+Tracers can be configured either directly within Envoy (when using it as a
+standalone component) or for all Envoy instances via Istio.
 
 Here is an example of how Istio and Envoy work together to trace requests:
 
@@ -85,8 +84,8 @@ resource detector to be easily added, via Envoy's built-in extensions feature.
 
 Another exciting feature added to Envoy is the possibility of implementing and
 configuring custom samplers. Envoy follows the
-[OTel Sampler interface](/docs/specs/otel/trace/sdk/#sampler)
-, which makes it easy for anyone to contribute their own samplers.
+[OTel Sampler interface](/docs/specs/otel/trace/sdk/#sampler) , which makes it
+easy for anyone to contribute their own samplers.
 
 Envoy ships with the
 [Always On Sampler](https://www.envoyproxy.io/docs/envoy/v1.29.4/api-v3/extensions/tracers/opentelemetry/samplers/v3/always_on_sampler.proto)
