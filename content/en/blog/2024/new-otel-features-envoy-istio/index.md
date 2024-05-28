@@ -39,7 +39,9 @@ provides distributed traces of the entire service mesh, giving an overview on
 the communication between services — even when the applications themselves are
 not instrumented.
 
-Envoy offers several _tracers_ that do the job of tracing the requests,
+Envoy offers several
+[tracers](https://www.envoyproxy.io/docs/envoy/v1.29.4/api-v3/config/trace/trace)
+that do the job of tracing the requests,
 including the OpenTelemetry tracer. Tracers can be configured either directly
 within Envoy (when using it as a standalone component) or for all Envoy
 instances via Istio.
