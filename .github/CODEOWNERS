@@ -45,3 +45,5 @@ content/en/docs/contributing/       @open-telemetry/docs-approvers @open-telemet
 content/zh/                         @open-telemetry/docs-zh-approvers
 content/en/docs/zero-code/java/    @open-telemetry/docs-approvers @open-telemetry/java-approvers @open-telemetry/java-instrumentation-approvers
 content/en/docs/zero-code/js/      @open-telemetry/docs-approvers @open-telemetry/javascript-approvers
+content/en/docs/zero-code/net/      @open-telemetry/docs-approvers @open-telemetry/dotnet-approvers @open-telemetry/dotnet-instrumentation-approvers
+

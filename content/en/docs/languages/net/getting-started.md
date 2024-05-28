@@ -8,7 +8,7 @@ weight: 10
 This page will show you how to get started with OpenTelemetry in .NET.
 
 If you are looking for a way to automatically instrument your application, check
-out [this guide](/docs/languages/net/automatic/getting-started/).
+out [this guide](/docs/zero-code/net/getting-started/).
 
 You will learn how you can instrument a simple .NET application, in such a way
 that [traces][], [metrics][] and [logs][] are emitted to the console.
@@ -264,7 +264,7 @@ Value: Sum: 1330.4766000000002 Count: 5 Min: 50.0333 Max: 465.7936
 For more:
 
 - Run this example with another [exporter][] for telemetry data.
-- Try [automatic instrumentation](../automatic/) on one of your own apps.
+- Try [automatic instrumentation](/docs/zero-code/net/) on one of your own apps.
 - Learn about [manual instrumentation][] and try out more
   [examples](/docs/languages/net/examples/).
 - Take a look at the [OpenTelemetry Demo](/docs/demo/), which includes .NET

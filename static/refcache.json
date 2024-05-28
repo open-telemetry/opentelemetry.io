@@ -1203,6 +1203,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-04-16T16:28:02.021217686Z"
   },
+  "https://docs.google.com/spreadsheets/d/1I2ACFAgzWaa1H5EQx99-rLTro2FHlS44gsWuQsU8Ssw/edit#gid=191407209": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-24T10:11:31.250334-05:00"
+  },
   "https://docs.google.com/spreadsheets/d/1SYKfjYhZdm2Wh2Cl6KVQalKg_m4NhTPZqq-8SzEVO6s": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:05:57.197702-05:00"
@@ -2347,6 +2351,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:12:51.497556-05:00"
   },
+  "https://github.com/asafm": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-24T10:11:32.920051-05:00"
+  },
   "https://github.com/austinlparker": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:19.4958-05:00"
@@ -2535,6 +2543,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:34.524624-05:00"
   },
+  "https://github.com/dropwizard/metrics": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-24T10:11:29.554091-05:00"
+  },
   "https://github.com/dubonzi/otelresty": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:05:53.113393-05:00"
@@ -2702,6 +2714,10 @@
   "https://github.com/jack-berg": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:04:54.949867-05:00"
+  },
+  "https://github.com/jack-berg/metric-system-benchmarks": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-24T10:11:30.36484-05:00"
   },
   "https://github.com/jack-berg/newrelic-opentelemetry-examples/commit/2681bf25518c02f4e5830f89254c736e0959d306": {
     "StatusCode": 200,
@@ -3679,6 +3695,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:59.104759-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-java/graphs/contributors": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-24T10:11:32.405024-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-java/releases": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:22.173678-05:00"
@@ -3726,6 +3746,10 @@
   "https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.31.0": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:09.842104-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.38.0": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-24T10:11:28.259677-05:00"
   },
   "https://github.com/open-telemetry/opentelemetry-js": {
     "StatusCode": 200,
@@ -4262,6 +4286,10 @@
   "https://github.com/open-telemetry/sig-security": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:36.015951-05:00"
+  },
+  "https://github.com/openjdk/jmh": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-24T10:11:31.941987-05:00"
   },
   "https://github.com/opentracing": {
     "StatusCode": 200,
@@ -5347,6 +5375,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:15:00.07395-05:00"
   },
+  "https://medium.com/@asafmesika/optimizing-java-observability-opentelemetrys-new-memory-mode-reduces-memory-allocations-by-99-98-e0062eccdc3f": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-24T10:11:25.171028-05:00"
+  },
   "https://medium.com/cloud-native-daily/how-to-contribute-to-opentelemetry-5962e8b2447e": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:07.00961-05:00"
@@ -6043,6 +6075,22 @@
     "StatusCode": 206,
     "LastSeen": "2024-02-23T22:55:04.014798-05:00"
   },
+  "https://opentelemetry.io/docs/concepts/instrumentation/libraries/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-30T09:31:37.735092936Z"
+  },
+  "https://opentelemetry.io/docs/languages/cpp/exporters/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-30T09:31:38.598060401Z"
+  },
+  "https://opentelemetry.io/docs/languages/cpp/instrumentation/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-30T09:31:38.379400427Z"
+  },
+  "https://opentelemetry.io/docs/specs/otel/glossary/#instrumentation-library": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-30T09:31:37.929550219Z"
+  },
   "https://opentelemetry.io/docs/specs/otel/protocol": {
     "StatusCode": 206,
     "LastSeen": "2024-02-24T14:33:05.630341-08:00"
@@ -6054,6 +6102,10 @@
   "https://opentelemetry.io/ecosystem/integrations/": {
     "StatusCode": 206,
     "LastSeen": "2024-03-19T10:16:49.992495889Z"
+  },
+  "https://opentelemetry.io/ecosystem/registry/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-30T09:31:38.297519267Z"
   },
   "https://opentracing.io": {
     "StatusCode": 206,
@@ -7311,6 +7363,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:10:46.603367-05:00"
   },
+  "https://protobuf.dev/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-05-24T10:11:26.948009-05:00"
+  },
   "https://puppet.com/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:06:20.360614-05:00"
@@ -7930,6 +7986,10 @@
   "https://standards.ieee.org/wp-content/uploads/import/documents/tutorials/eui.pdf": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:14:29.43022-05:00"
+  },
+  "https://star-history.com/#prometheus/client_java\u0026open-telemetry/opentelemetry-java\u0026micrometer-metrics/micrometer\u0026Date": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-24T10:11:28.84334-05:00"
   },
   "https://storiesfromtheherd.com/just-in-time-nomad-80f57cd403ca": {
     "StatusCode": 200,
@@ -8762,6 +8822,10 @@
   "https://www.nuget.org/packages/Microsoft.Data.SqlClient": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:26:37.706115-05:00"
+  },
+  "https://www.nuget.org/packages/Microsoft.EntityFrameworkCore": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-27T05:02:29.416150868Z"
   },
   "https://www.nuget.org/packages/Microsoft.Extensions.Logging": {
     "StatusCode": 200,
