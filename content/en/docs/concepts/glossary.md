@@ -16,17 +16,17 @@ This page captures terminology used in the project and what it means.
 
 The process of combining multiple measurements into exact or estimated
 statistics about the measurements that took place during an interval of time,
-during program execution. Used by the [`Metric`](#metric)
-[`Data Source`](#data-source).
+during program execution. Used by the [Metric](#metric)
+[Data Source](#data-source).
 
 ### **API**
 
 Application Programming Interface. In the OpenTelemetry project, used to define
-how telemetry data is generated per [`Data source`](#data-source).
+how telemetry data is generated per [Data source](#data-source).
 
 ### **Application**
 
-One or more [`Services`](#service) designed for end users or other applications.
+One or more [Services](#service) designed for end users or other applications.
 
 ### **APM**
 
@@ -36,9 +36,9 @@ issues, alerting and tooling for finding the root cause.
 
 ### **Attribute**
 
-OpenTelemetry term for [`Metadata`](#metadata). Adds key-value information to
-the entity producing telemetry. Used across [`Signals`](#signal) and
-[`Resources`](#resource). See [attribute spec][attribute].
+OpenTelemetry term for [Metadata](#metadata). Adds key-value information to the
+entity producing telemetry. Used across [Signals](#signal) and
+[Resources](#resource). See [attribute spec][attribute].
 
 ### **Automatic instrumentation**
 
@@ -48,16 +48,16 @@ examples include bytecode injection or monkey patching.
 
 ### **Baggage**
 
-A mechanism for propagating [`Metadata`](#metadata) to help establish a causal
+A mechanism for propagating [Metadata](#metadata) to help establish a causal
 relationship between events and services. See [baggage spec][baggage].
 
 ### **Client library**
 
-See [`Instrumented library`](#instrumented-library).
+See [Instrumented library](#instrumented-library).
 
 ### **Client-side app**
 
-A component of an [`Application`](#application) that is not running inside a
+A component of an [Application](#application) that is not running inside a
 private infrastructure and is typically used directly by end-users. Examples of
 client-side apps are browser apps, mobile apps, and apps running on IoT devices.
 
@@ -71,16 +71,15 @@ Also known as the OpenTelemetry Collector. More on the Collector
 
 ### **Contrib**
 
-Several [`Instrumentation Libraries`](#instrumentation-library) and the
-[`Collector`](#collector) offer a set of core capabilities as well as a
-dedicated contrib repository for non-core capabilities including vendor
-`Exporters`.
+Several [Instrumentation Libraries](#instrumentation-library) and the
+[Collector](#collector) offer a set of core capabilities as well as a dedicated
+contrib repository for non-core capabilities including vendor `Exporters`.
 
 ### **Context propagation**
 
-Allows all [`Data sources`](#data-source) to share an underlying context
-mechanism for storing state and accessing data across the lifespan of a
-[`Transaction`](#transaction). See [context propagation
+Allows all [Data sources](#data-source) to share an underlying context mechanism
+for storing state and accessing data across the lifespan of a
+[Transaction](#transaction). See [context propagation
 spec][context propagation].
 
 ### **DAG**
@@ -89,17 +88,17 @@ spec][context propagation].
 
 ### **Data source**
 
-See [`Signal`](#signal)
+See [Signal](#signal)
 
 ### **Dimension**
 
-A term used specifically by [`Metrics`](#metric). See [`Attribute`](#attribute).
+A term used specifically by [Metrics](#metric). See [Attribute](#attribute).
 
 ### **Distributed tracing**
 
-Tracks the progression of a single [`Request`](#request), called a
-[`Trace`](#trace), as it is handled by [`Services`](#service) that make up an
-[`Application`](#application). A [`Distributed trace`](#distributed-tracing)
+Tracks the progression of a single [Request](#request), called a
+[Trace](#trace), as it is handled by [Services](#service) that make up an
+[Application](#application). A [Distributed trace](#distributed-tracing)
 transverses process, network and security boundaries.
 
 See [Distributed tracing][distributed tracing].
@@ -112,7 +111,7 @@ some customizations. See [more][distribution].
 ### **Event**
 
 Something that happened where representation depends on the
-[`Data source`](#data-source). For example, [`Spans`](#span).
+[Data source](#data-source). For example, [Spans](#span).
 
 ### **Exporter**
 
@@ -121,15 +120,14 @@ pull-based.
 
 ### **Field**
 
-A term used specifically by [`Log Records`](#log-record).
-[`Metadata`](#metadata) can be added through defined fields, including
-[`Attributes`](#attribute) and [`Resource`](#resource). Other fields may also be
-considered `Metadata`, including severity and trace information. See the [field
-spec][field].
+A term used specifically by [Log Records](#log-record). [Metadata](#metadata)
+can be added through defined fields, including [Attributes](#attribute) and
+[Resource](#resource). Other fields may also be considered `Metadata`, including
+severity and trace information. See the [field spec][field].
 
 ### **gRPC**
 
-A high-performance, open source universal [`RPC`](#rpc) framework. More on gRPC
+A high-performance, open source universal [RPC](#rpc) framework. More on gRPC
 [here](https://grpc.io).
 
 ### **HTTP**
@@ -138,17 +136,17 @@ Short for [Hypertext Transfer Protocol][http].
 
 ### **Instrumented library**
 
-Denotes the [`Library`](#library) for which the telemetry signals
-([`Traces`](#trace), [`Metrics`](#metric), [`Logs`](#log)) are gathered. See
+Denotes the [Library](#library) for which the telemetry signals
+([Traces](#trace), [Metrics](#metric), [Logs](#log)) are gathered. See
 [more][spec-instrumented-lib].
 
 ### **Instrumentation library**
 
-Denotes the [`Library`](#library) that provides the instrumentation for a given
-[`Instrumented library`](#instrumented-library).
-[`Instrumented library`](#instrumented-library) and
-[`Instrumentation library`](#instrumentation-library) can be the same
-[`Library`](#library) if it has built-in OpenTelemetry instrumentation. See [the
+Denotes the [Library](#library) that provides the instrumentation for a given
+[Instrumented library](#instrumented-library).
+[Instrumented library](#instrumented-library) and
+[Instrumentation library](#instrumentation-library) can be the same
+[Library](#library) if it has built-in OpenTelemetry instrumentation. See [the
 lib specification][spec-instrumentation-lib].
 
 ### **JSON**
@@ -157,7 +155,7 @@ Short for [JavaScript Object Notation][json].
 
 ### **Label**
 
-A term used specifically by [`Metrics`](#metric). See [`Metadata`](#metadata).
+A term used specifically by [Metrics](#metric). See [Metadata](#metadata).
 
 ### **Language**
 
@@ -169,32 +167,32 @@ A language-specific collection of behavior invoked by an interface.
 
 ### **Log**
 
-Sometimes used to refer to a collection of [`Log records`](#log-record). Can be
-ambiguous since people also sometimes use [`Log`](#log) to refer to a single
-[`Log record`](#log-record). Where ambiguity is possible, use additional
+Sometimes used to refer to a collection of [Log records](#log-record). Can be
+ambiguous since people also sometimes use [Log](#log) to refer to a single
+[Log record](#log-record). Where ambiguity is possible, use additional
 qualifiers, for example, `Log record`. See [more][log]
 
 ### **Log record**
 
-A recording of an [`Event`](#event). Typically. the record includes a timestamp
-indicating when the [`Event`](#event) happened as well as other data that
+A recording of an [Event](#event). Typically. the record includes a timestamp
+indicating when the [Event](#event) happened as well as other data that
 describes what happened, where it happened, and so on. See [more][log record].
 
 ### **Metadata**
 
 A key-value pair, for example `foo="bar"`, added to an entity producing
-telemetry. OpenTelemetry calls these pairs [`Attributes`](#attribute). In
-addition, [`Metrics`](#metric) have [`Dimensions`](#dimension) an
-[`Labels`](#label), while [`Logs`](#log) have [`Fields`](#field).
+telemetry. OpenTelemetry calls these pairs [Attributes](#attribute). In
+addition, [Metrics](#metric) have [Dimensions](#dimension) an [Labels](#label),
+while [Logs](#log) have [Fields](#field).
 
 ### **Metric**
 
 Records a data point, either raw measurements or predefined aggregation, as time
-series with [`Metadata`](#metadata). See [more][metric].
+series with [Metadata](#metadata). See [more][metric].
 
 ### **OC**
 
-Short form for [`OpenCensus`](#opencensus).
+Short form for [OpenCensus](#opencensus).
 
 ### **OpenCensus**
 
@@ -212,7 +210,7 @@ Vendor-neutral APIs and instrumentation for distributed tracing.
 
 ### **OT**
 
-Short form for [`OpenTracing`](#opentracing).
+Short form for [OpenTracing](#opentracing).
 
 ### **OTel**
 
@@ -229,7 +227,7 @@ Short for [OpenTelemetry Protocol](/docs/specs/otlp/).
 ### **Propagators**
 
 Used to serialize and deserialize specific parts of telemetry data such as span
-context and [`Baggage`](#baggage) in [`Spans`](#span). See [more][propagators].
+context and [Baggage](#baggage) in [Spans](#span). See [more][propagators].
 
 ### **Proto**
 
@@ -237,18 +235,18 @@ Language independent interface types. See [more][proto].
 
 ### **Receiver**
 
-The term used by the [`Collector`](/docs/collector/configuration/#receivers) to
+The term used by the [Collector](/docs/collector/configuration/#receivers) to
 define how telemetry data is received. Receivers can be push- or pull-based. See
 [more][receiver].
 
 ### **Request**
 
-See [`Distributed Tracing`](#distributed-tracing).
+See [Distributed Tracing](#distributed-tracing).
 
 ### **Resource**
 
 Captures information about the entity producing telemetry as
-[`Attributes`](#attribute). For example, a process producing telemetry that is
+[Attributes](#attribute). For example, a process producing telemetry that is
 running in a container on Kubernetes has a process name, a pod name, a
 namespace, and possibly a deployment name. All these attributes can be included
 in the `Resource`.
@@ -264,32 +262,32 @@ Short for [Remote Procedure Call][rpc].
 ### **Sampling**
 
 A mechanism to control the amount of data exported. Most commonly used with the
-[`Tracing`](#trace) [`Data Source`](#data-source). See [more][sampling].
+[Tracing](#trace) [Data Source](#data-source). See [more][sampling].
 
 ### **SDK**
 
 Short for Software Development Kit. Refers to a telemetry SDK that denotes a
-[`Library`](#library) that implement the OpenTelemetry [`API`](#api).
+[Library](#library) that implement the OpenTelemetry [API](#api).
 
 ### **Semantic conventions**
 
-Defines standard names and values of [`Metadata`](#metadata) in order to provide
+Defines standard names and values of [Metadata](#metadata) in order to provide
 vendor-agnostic telemetry data.
 
 ### **Service**
 
-A component of an [`Application`](#application). Multiple instances of a
-[`Service`](#service) are typically deployed for high availability and
-scalability. A [`Service`](#service) can be deployed in multiple locations.
+A component of an [Application](#application). Multiple instances of a
+[Service](#service) are typically deployed for high availability and
+scalability. A [Service](#service) can be deployed in multiple locations.
 
 ### **Signal**
 
-One of [`Traces`](#trace), [`Metrics`](#metric) or [`Logs`](#log). More on
-Signals [here][signals].
+One of [Traces](#trace), [Metrics](#metric) or [Logs](#log). More on Signals
+[here][signals].
 
 ### **Span**
 
-Represents a single operation within a [`Trace`](#trace). See [more][span].
+Represents a single operation within a [Trace](#trace). See [more][span].
 
 ### **Span link**
 
@@ -309,20 +307,20 @@ occurred. See [more][status].
 
 ### **Tag**
 
-See [`Metadata`](#metadata).
+See [Metadata](#metadata).
 
 ### **Trace**
 
-A [`DAG`](#dag) of [`Spans`](#span), where the edges between [`Spans`](#span)
-are defined as parent-child relationship. See [more][trace].
+A [DAG](#dag) of [Spans](#span), where the edges between [Spans](#span) are
+defined as parent-child relationship. See [more][trace].
 
 ### **Tracer**
 
-Responsible for creating [`Spans`](#span). See [more][tracer].
+Responsible for creating [Spans](#span). See [more][tracer].
 
 ### **Transaction**
 
-See [`Distributed Tracing`](#distributed-tracing).
+See [Distributed Tracing](#distributed-tracing).
 
 ### **zPages**
 
