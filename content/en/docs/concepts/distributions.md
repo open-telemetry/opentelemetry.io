@@ -18,8 +18,8 @@ Any reference implementation can be customized as a distribution.
 ## What is a distribution?
 
 A distribution is a customized version of an OpenTelemetry component. A
-distribution is a wrapper around an upstream OpenTelemetry repository with
-some customizations. Distributions are not to be confused with forks.
+distribution is a wrapper around an upstream OpenTelemetry repository with some
+customizations. Distributions are not to be confused with forks.
 
 Customizations in a distribution may include:
 
@@ -39,18 +39,18 @@ Distributions broadly fall into the following categories:
   upstream through additional components. Examples include instrumentation
   libraries or vendor exporters not upstreamed to the OpenTelemetry project.
 - **"Minus":** These distributions provide a subset of functionality from
-  upstream. Examples of this include the removal of instrumentation
-  libraries or receivers, processors, exporters, or extensions found in the
-  OpenTelemetry Collector project. These distributions may be provided to
-  increase supportability and security considerations.
+  upstream. Examples of this include the removal of instrumentation libraries or
+  receivers, processors, exporters, or extensions found in the OpenTelemetry
+  Collector project. These distributions may be provided to increase
+  supportability and security considerations.
 
 ## Who can create a distribution?
 
-Anyone can create a distribution. Today, several
-[vendors](/ecosystem/vendors/) offer [distributions](/ecosystem/distributions/).
-In addition, end-users can consider creating a distribution if they want to use
-components in the [Registry](/ecosystem/registry/) that are not upstreamed to
-the OpenTelemetry project.
+Anyone can create a distribution. Today, several [vendors](/ecosystem/vendors/)
+offer [distributions](/ecosystem/distributions/). In addition, end-users can
+consider creating a distribution if they want to use components in the
+[Registry](/ecosystem/registry/) that are not upstreamed to the OpenTelemetry
+project.
 
 ## Contribution or distribution?
 

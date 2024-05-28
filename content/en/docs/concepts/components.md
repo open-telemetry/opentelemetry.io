@@ -107,10 +107,10 @@ Although not limited to tracing, propagation allows traces to build causal
 information about a system across services that are arbitrarily distributed
 across process and network boundaries.
 
-For the vast majority of the use cases, context propagation happens
-through instrumentation libraries. If needed, you can use propagators
-yourself to serialize and deserialize cross-cutting concerns such as the context
-of a span and [baggage](/docs/concepts/signals/baggage/).
+For the vast majority of the use cases, context propagation happens through
+instrumentation libraries. If needed, you can use propagators yourself to
+serialize and deserialize cross-cutting concerns such as the context of a span
+and [baggage](/docs/concepts/signals/baggage/).
 
 ### Samplers
 

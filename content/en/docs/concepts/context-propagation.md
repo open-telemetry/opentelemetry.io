@@ -15,10 +15,9 @@ context and propagation.
 
 ## Context
 
-Context is an object that contains the information for the sending and
-receiving service, or
-[execution unit](/docs/specs/otel/glossary/#execution-unit), to correlate one
-signal with another.
+Context is an object that contains the information for the sending and receiving
+service, or [execution unit](/docs/specs/otel/glossary/#execution-unit), to
+correlate one signal with another.
 
 For example, if service A calls service B, then a span from service A whose ID
 is in context will be used as the parent span for the next span created in
@@ -28,9 +27,9 @@ trace as the span from service A.
 
 ## Propagation
 
-Propagation is the mechanism that moves context between services and
-processes. It serializes or deserializes the context object and provides the
-relevant information to be propagated from one service to another.
+Propagation is the mechanism that moves context between services and processes.
+It serializes or deserializes the context object and provides the relevant
+information to be propagated from one service to another.
 
 Propagation is usually handled by instrumentation libraries and is transparent
 to the user. In the event that you need to manually propagate context, you can

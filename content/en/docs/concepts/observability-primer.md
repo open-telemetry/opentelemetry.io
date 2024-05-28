@@ -12,8 +12,8 @@ questions about that system without knowing its inner workings. Furthermore, it
 allows you to easily troubleshoot and handle novel problems, that is, "unknown
 unknowns”. It also helps you answer the question "Why is this happening?"
 
-To ask those questions about your system, your application must be
-properly instrumented. That is, the application code must emit
+To ask those questions about your system, your application must be properly
+instrumented. That is, the application code must emit
 [signals](/docs/concepts/signals/) such as
 [traces](/docs/concepts/signals/traces/),
 [metrics](/docs/concepts/signals/metrics/), and
@@ -54,8 +54,8 @@ attaching one or more SLIs to business value.
 Distributed tracing lets you observe requests as they propagate through complex,
 distributed systems. Distributed tracing improves the visibility of your
 application or system's health and lets you debug behavior that is difficult to
-reproduce locally. It is essential for distributed systems, which commonly
-have nondeterministic problems or are too complicated to reproduce locally.
+reproduce locally. It is essential for distributed systems, which commonly have
+nondeterministic problems or are too complicated to reproduce locally.
 
 To understand distributed tracing, you need to understand the role of each of
 its components: logs, spans, and traces.

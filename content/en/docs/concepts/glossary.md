@@ -6,9 +6,9 @@ description: >-
 weight: 200
 ---
 
-The OpenTelemetry project uses terminology you might not be familiar with.
-In addition, the project defines the terminology in a different way than
-others. This page captures terminology used in the project and what it means.
+The OpenTelemetry project uses terminology you might not be familiar with. In
+addition, the project defines the terminology in a different way than others.
+This page captures terminology used in the project and what it means.
 
 ## Generic terminology
 
@@ -148,8 +148,8 @@ Denotes the [`Library`](#library) that provides the instrumentation for a given
 [`Instrumented library`](#instrumented-library).
 [`Instrumented library`](#instrumented-library) and
 [`Instrumentation library`](#instrumentation-library) can be the same
-[`Library`](#library) if it has built-in OpenTelemetry instrumentation. See
-[the lib specification][spec-instrumentation-lib].
+[`Library`](#library) if it has built-in OpenTelemetry instrumentation. See [the
+lib specification][spec-instrumentation-lib].
 
 ### **JSON**
 
@@ -250,8 +250,8 @@ See [`Distributed Tracing`](#distributed-tracing).
 Captures information about the entity producing telemetry as
 [`Attributes`](#attribute). For example, a process producing telemetry that is
 running in a container on Kubernetes has a process name, a pod name, a
-namespace, and possibly a deployment name. All these attributes can be
-included in the `Resource`.
+namespace, and possibly a deployment name. All these attributes can be included
+in the `Resource`.
 
 ### **REST**
 
