@@ -1,7 +1,7 @@
 ---
 title: Abandoned Go Contrib modules need code owners or will be removed
 linkTitle: Go Contrib modules ownership
-date: 2024-05-27
+date: 2024-05-28
 author: >-
   [Fabrizio Ferri-Benedetti](https://github.com/theletterf) (Splunk)
 issue: 4542
@@ -10,14 +10,15 @@ sig: SIG Go
 cSpell:ignore: aws Benedetti Fabrizio Ferri gopkg labstack macaron moduled otelaws otelecho otellambda otelmacaron otelmongo otelmux
 ---
 
-The Go SIG will remove contrib modules that lack code owners. For each module,
-the removal is planned for no sooner than August 21, 2024, unless a code owner
-is found. The list includes the following modules:
+The Go SIG will remove the code of contrib modules that lack code owners
+starting August 21, 2024. Published packages and releases will remain available.
 
-- [`go.opentelemetry.io/otel/detectors/aws/ec2`](https://pkg.go.dev/go.opentelemetry.io/contrib/detectors/aws/ec2)
-- [`go.opentelemetry.io/otel/detectors/aws/ecs`](https://pkg.go.dev/go.opentelemetry.io/contrib/detectors/aws/ecs)
-- [`go.opentelemetry.io/otel/detectors/aws/eks`](https://pkg.go.dev/go.opentelemetry.io/contrib/detectors/aws/eks)
-- [`go.opentelemetry.io/otel/detectors/aws/lambda`](https://pkg.go.dev/go.opentelemetry.io/contrib/detectors/aws/lambda)
+Currently unowned modules include the following:
+
+- [`go.opentelemetry.io/contrib/detectors/aws/ec2`](https://pkg.go.dev/go.opentelemetry.io/contrib/detectors/aws/ec2)
+- [`go.opentelemetry.io/contrib/detectors/aws/ecs`](https://pkg.go.dev/go.opentelemetry.io/contrib/detectors/aws/ecs)
+- [`go.opentelemetry.io/contrib/detectors/aws/eks`](https://pkg.go.dev/go.opentelemetry.io/contrib/detectors/aws/eks)
+- [`go.opentelemetry.io/contrib/detectors/aws/lambda`](https://pkg.go.dev/go.opentelemetry.io/contrib/detectors/aws/lambda)
 - [`go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-lambda-go/otellambda`](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-lambda-go/otellambda)
 - [`go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-sdk-go-v2/otelaws`](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-sdk-go-v2/otelaws)
 - [`go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux`](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux)
@@ -45,7 +46,7 @@ To become a code owner of one of the modules, you need to be a member of the
 OpenTelemetry organization and have a good working knowledge of the code you
 seek to maintain.
 
-If you satisfy both requirements, 
+If you satisfy both requirements,
 [open an issue](https://github.com/open-telemetry/opentelemetry-go-contrib/issues/new?assignees=&labels=&projects=&template=owner.md&title=).
 
 We're looking forward to your request!
