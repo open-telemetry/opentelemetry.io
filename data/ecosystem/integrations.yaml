@@ -227,3 +227,13 @@
   docsUrl: https://docs.konghq.com/mesh/latest/guides/otel-metrics/
   components: [Go]
   oss: false
+- name: Envoy
+  url: https://www.envoyproxy.io/
+  docsUrl: https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/opentelemetry
+  components: [C++]
+  oss: true
+- name: Istio
+  url: https://istio.io/
+  docsUrl: https://istio.io/latest/docs/tasks/observability/distributed-tracing/opentelemetry/
+  components: [Go]
+  oss: true
