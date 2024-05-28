@@ -6,11 +6,11 @@ description: >-
 weight: 200
 ---
 
-The OpenTelemetry project uses terminology you may or may not be familiar with.
-In addition, the project may define the terminology in a different way than
+The OpenTelemetry project uses terminology you might not be familiar with.
+In addition, the project defines the terminology in a different way than
 others. This page captures terminology used in the project and what it means.
 
-## Generic Terminology
+## Generic terminology
 
 ### **Aggregation**
 
@@ -22,7 +22,7 @@ during program execution. Used by the [`Metric`](#metric)
 ### **API**
 
 Application Programming Interface. In the OpenTelemetry project, used to define
-how telemetry data is generated per [`Data Source`](#data-source).
+how telemetry data is generated per [`Data source`](#data-source).
 
 ### **Application**
 
@@ -31,16 +31,16 @@ One or more [`Services`](#service) designed for end users or other applications.
 ### **APM**
 
 Application Performance Monitoring is about monitoring software applications,
-their performance (speed, reliability, availability, etc.) to detect issues,
-alerting and tooling for finding the root cause.
+their performance (speed, reliability, availability, and so on) to detect
+issues, alerting and tooling for finding the root cause.
 
 ### **Attribute**
 
-OpenTelemetry's word for [`Metadata`](#metadata). Adds key-value information to
+OpenTelemetry term for [`Metadata`](#metadata). Adds key-value information to
 the entity producing telemetry. Used across [`Signals`](#signal) and
 [`Resources`](#resource). See [attribute spec][attribute].
 
-### **Automatic Instrumentation**
+### **Automatic instrumentation**
 
 Refers to telemetry collection methods that do not require the end-user to
 modify application's source code. Methods vary by programming language, and
@@ -51,11 +51,11 @@ examples include bytecode injection or monkey patching.
 A mechanism for propagating [`Metadata`](#metadata) to help establish a causal
 relationship between events and services. See [baggage spec][baggage].
 
-### **Client Library**
+### **Client library**
 
-See [`Instrumented Library`](#instrumented-library).
+See [`Instrumented library`](#instrumented-library).
 
-### **Client-side App**
+### **Client-side app**
 
 A component of an [`Application`](#application) that is not running inside a
 private infrastructure and is typically used directly by end-users. Examples of
@@ -76,9 +76,9 @@ Several [`Instrumentation Libraries`](#instrumentation-library) and the
 dedicated contrib repository for non-core capabilities including vendor
 `Exporters`.
 
-### **Context Propagation**
+### **Context propagation**
 
-Allows all [`Data Sources`](#data-source) to share an underlying context
+Allows all [`Data sources`](#data-source) to share an underlying context
 mechanism for storing state and accessing data across the lifespan of a
 [`Transaction`](#transaction). See [context propagation
 spec][context propagation].
@@ -87,7 +87,7 @@ spec][context propagation].
 
 [Directed Acyclic Graph][dag].
 
-### **Data Source**
+### **Data source**
 
 See [`Signal`](#signal)
 
@@ -95,14 +95,14 @@ See [`Signal`](#signal)
 
 A term used specifically by [`Metrics`](#metric). See [`Attribute`](#attribute).
 
-### **Distributed Tracing**
+### **Distributed tracing**
 
 Tracks the progression of a single [`Request`](#request), called a
 [`Trace`](#trace), as it is handled by [`Services`](#service) that make up an
-[`Application`](#application). A [`Distributed Trace`](#distributed-tracing)
+[`Application`](#application). A [`Distributed trace`](#distributed-tracing)
 transverses process, network and security boundaries.
 
-More on Distributed Tracing [here][distributed tracing].
+See [Distributed tracing][distributed tracing].
 
 ### **Distribution**
 
@@ -112,7 +112,7 @@ some customizations. See [more][distribution].
 ### **Event**
 
 Something that happened where representation depends on the
-[`Data Source`](#data-source). For example, [`Spans`](#span).
+[`Data source`](#data-source). For example, [`Spans`](#span).
 
 ### **Exporter**
 
@@ -136,20 +136,20 @@ A high-performance, open source universal [`RPC`](#rpc) framework. More on gRPC
 
 Short for [Hypertext Transfer Protocol][http].
 
-### **Instrumented Library**
+### **Instrumented library**
 
 Denotes the [`Library`](#library) for which the telemetry signals
 ([`Traces`](#trace), [`Metrics`](#metric), [`Logs`](#log)) are gathered. See
 [more][spec-instrumented-lib].
 
-### **Instrumentation Library**
+### **Instrumentation library**
 
 Denotes the [`Library`](#library) that provides the instrumentation for a given
-[`Instrumented Library`](#instrumented-library).
-[`Instrumented Library`](#instrumented-library) and
-[`Instrumentation Library`](#instrumentation-library) may be the same
+[`Instrumented library`](#instrumented-library).
+[`Instrumented library`](#instrumented-library) and
+[`Instrumentation library`](#instrumentation-library) can be the same
 [`Library`](#library) if it has built-in OpenTelemetry instrumentation. See
-[more][spec-instrumentation-lib].
+[the lib specification][spec-instrumentation-lib].
 
 ### **JSON**
 
@@ -169,17 +169,16 @@ A language-specific collection of behavior invoked by an interface.
 
 ### **Log**
 
-Sometimes used to refer to a collection of [`Log Records`](#log-record). May be
+Sometimes used to refer to a collection of [`Log records`](#log-record). Can be
 ambiguous since people also sometimes use [`Log`](#log) to refer to a single
-[`Log Record`](#log-record), thus this term should be used carefully and in the
-context where ambiguity is possible additional qualifiers should be used (e.g.
-`Log Record`). See [more][log].
+[`Log record`](#log-record). Where ambiguity is possible, use additional
+qualifiers, for example, `Log record`. See [more][log]
 
-### **Log Record**
+### **Log record**
 
-A recording of an [`Event`](#event). Typically the record includes a timestamp
+A recording of an [`Event`](#event). Typically. the record includes a timestamp
 indicating when the [`Event`](#event) happened as well as other data that
-describes what happened, where it happened, etc. See [more][log record].
+describes what happened, where it happened, and so on. See [more][log record].
 
 ### **Metadata**
 
@@ -251,7 +250,7 @@ See [`Distributed Tracing`](#distributed-tracing).
 Captures information about the entity producing telemetry as
 [`Attributes`](#attribute). For example, a process producing telemetry that is
 running in a container on Kubernetes has a process name, a pod name, a
-namespace, and possibly a deployment name. All four of these attributes can be
+namespace, and possibly a deployment name. All these attributes can be
 included in the `Resource`.
 
 ### **REST**
@@ -272,7 +271,7 @@ A mechanism to control the amount of data exported. Most commonly used with the
 Short for Software Development Kit. Refers to a telemetry SDK that denotes a
 [`Library`](#library) that implement the OpenTelemetry [`API`](#api).
 
-### **Semantic Conventions**
+### **Semantic conventions**
 
 Defines standard names and values of [`Metadata`](#metadata) in order to provide
 vendor-agnostic telemetry data.
@@ -281,7 +280,7 @@ vendor-agnostic telemetry data.
 
 A component of an [`Application`](#application). Multiple instances of a
 [`Service`](#service) are typically deployed for high availability and
-scalability. A [`Service`](#service) may be deployed in multiple locations.
+scalability. A [`Service`](#service) can be deployed in multiple locations.
 
 ### **Signal**
 
@@ -292,7 +291,7 @@ Signals [here][signals].
 
 Represents a single operation within a [`Trace`](#trace). See [more][span].
 
-### **Span Link**
+### **Span link**
 
 A span link is a link between causally-related spans. For details see
 [Links between spans](/docs/specs/otel/overview#links-between-spans) and
@@ -315,7 +314,7 @@ See [`Metadata`](#metadata).
 ### **Trace**
 
 A [`DAG`](#dag) of [`Spans`](#span), where the edges between [`Spans`](#span)
-are defined as parent/child relationship. See [more][trace].
+are defined as parent-child relationship. See [more][trace].
 
 ### **Tracer**
 
