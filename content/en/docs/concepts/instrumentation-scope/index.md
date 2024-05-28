@@ -22,9 +22,9 @@ record created by the instance is then associated with the provided
 instrumentation scope.
 
 In your observability backend, scoping allows you to slice and dice your
-telemetry data by scope, for example to see which of your users are using
-which version of a library and what the performance of that library version is
-or to pin point a problem to a specific module of your application.
+telemetry data by scope, for example to see which of your users are using which
+version of a library and what the performance of that library version is or to
+pin point a problem to a specific module of your application.
 
 The following diagram illustrates a trace with multiple instrumentation scopes.
 The different scopes are represented by different colors:
