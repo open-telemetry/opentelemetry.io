@@ -11,7 +11,8 @@ cSpell:ignore: aws Benedetti Fabrizio Ferri gopkg labstack macaron moduled otela
 ---
 
 The Go SIG will remove the code of contrib modules that lack code owners
-starting August 21, 2024. Published packages and releases will remain available.
+starting August 21, 2024. Published packages and releases will be marked as
+deprecated, though they'll remain available for download.
 
 Currently unowned modules include the following:
 
