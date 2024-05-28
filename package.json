@@ -96,7 +96,7 @@
     "autoprefixer": "^10.4.19",
     "cspell": "^8.0.0",
     "gulp": "^4.0.2",
-    "hugo-extended": "0.125.7",
+    "hugo-extended": "0.126.1",
     "markdown-link-check": "^3.12.1",
     "markdownlint": "^0.34.0",
     "postcss-cli": "^11.0.0",
