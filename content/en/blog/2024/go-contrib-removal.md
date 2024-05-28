@@ -10,7 +10,7 @@ sig: SIG Go
 cSpell:ignore: aws Benedetti Fabrizio Ferri gopkg labstack macaron moduled otelaws otelecho otellambda otelmacaron otelmongo otelmux
 ---
 
-The Go SIG will remove Contrib modules that lack code owners. For each module,
+The Go SIG will remove contrib modules that lack code owners. For each module,
 the removal is planned for no sooner than August 21, 2024, unless a code owner
 is found. The list includes the following modules:
 
