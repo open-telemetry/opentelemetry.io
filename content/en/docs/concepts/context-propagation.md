@@ -1,5 +1,5 @@
 ---
-title: Context Propagation
+title: Context propagation
 weight: 10
 description: Learn about the concept that enables Distributed Tracing.
 ---

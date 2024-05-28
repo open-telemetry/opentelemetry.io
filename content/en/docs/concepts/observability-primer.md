@@ -1,5 +1,5 @@
 ---
-title: Observability Primer
+title: Observability primer
 description: Core observability concepts.
 weight: 9
 cSpell:ignore: webshop
