@@ -434,7 +434,7 @@ Automatic instrumentation is available for several frameworks:
 Common properties for all database instrumentations:
 
 | System property                                              | Type    | Default | Description                            |
-|--------------------------------------------------------------|---------|---------|----------------------------------------|
+| ------------------------------------------------------------ | ------- | ------- | -------------------------------------- |
 | `otel.instrumentation.common.db-statement-sanitizer.enabled` | Boolean | true    | Enables the DB statement sanitization. |
 
 #### JDBC Instrumentation
