@@ -1,7 +1,7 @@
 ---
 title: Metrics
 weight: 2
-description: A measurement captured at runtime
+description: A measurement captured at runtime.
 ---
 
 A **metric** is a **measurement** of a service captured at runtime. The moment
