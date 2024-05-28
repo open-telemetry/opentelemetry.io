@@ -15,8 +15,8 @@ OpenTelemetry is currently made up of several main components:
   - [Zero-Code Instrumentation](#zero-code-instrumentation)
   - [Resource Detectors](#resource-detectors)
   - [Cross Service Propagators](#cross-service-propagators)
-  - [Sampler](#sampler)
-- [K8s operator](#k8s-operator)
+  - [Sampler](#samplers)
+- [K8s operator](#kubernetes-operator)
 - [Function as a Service assets](#function-as-a-service-assets)
 
 OpenTelemetry lets you replace the need for vendor-specific SDKs and tools for
