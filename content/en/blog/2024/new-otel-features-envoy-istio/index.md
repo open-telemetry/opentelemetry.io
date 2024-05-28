@@ -74,7 +74,7 @@ proxies.
 Envoy now ships with the
 [Environment Resource Detector](https://www.envoyproxy.io/docs/envoy/v1.29.4/api-v3/extensions/tracers/opentelemetry/resource_detectors/v3/environment_resource_detector.proto).
 This resource detector follows the
-[OTel specification](https://opentelemetry.io/docs/specs/otel/resource/sdk/#specifying-resource-information-via-an-environment-variable)
+[OTel specification](/docs/specs/otel/resource/sdk/#specifying-resource-information-via-an-environment-variable)
 and allows users to further enrich the spans produced by Envoy proxies.
 
 The [resource detector feature](https://github.com/envoyproxy/envoy/pull/29547)
@@ -85,7 +85,7 @@ resource detector to be easily added, via Envoy's built-in extensions feature.
 
 Another exciting feature added to Envoy is the possibility of implementing and
 configuring custom samplers. Envoy follows the
-[OTel Sampler interface](https://opentelemetry.io/docs/specs/otel/trace/sdk/#sampler)
+[OTel Sampler interface](/docs/specs/otel/trace/sdk/#sampler)
 , which makes it easy for anyone to contribute their own samplers.
 
 Envoy ships with the
