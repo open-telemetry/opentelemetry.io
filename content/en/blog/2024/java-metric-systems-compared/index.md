@@ -3,7 +3,7 @@ title: OpenTelemetry Java Metrics Performance Comparison
 linkTitle: Java Metric Systems Compared
 date: 2024-05-24
 author: '[Jack Berg](https://github.com/jack-berg) (New Relic)'
-cSpell:ignore: Asaf dropwizard hashcodes Mesika Sonoma
+cSpell:ignore: Asaf dropwizard hashcodes Mesika pseudocode Sonoma
 ---
 
 Arguably the biggest value proposition of OpenTelemetry is that it aims to be a
