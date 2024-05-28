@@ -8883,6 +8883,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:26:37.706115-05:00"
   },
+  "https://www.nuget.org/packages/Microsoft.EntityFrameworkCore": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-27T05:02:29.416150868Z"
+  },
   "https://www.nuget.org/packages/Microsoft.Extensions.Logging": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:27:06.082933-05:00"
