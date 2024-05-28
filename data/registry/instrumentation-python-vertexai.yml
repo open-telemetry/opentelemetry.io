@@ -1,0 +1,17 @@
+# cSpell:ignore vertexai
+title: VertexAI Instrumentation
+registryType: instrumentation
+language: python
+tags:
+  - python
+  - instrumentation
+  - vertexai
+  - google
+license: Apache 2.0
+description: Instrumentation for VertexAI LLMs (prompts logging, tokens, etc.)
+authors:
+  - name: Traceloop
+    email: dev@traceloop.com
+urls:
+  repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-vertexai
+createdAt: 2024-05-27
