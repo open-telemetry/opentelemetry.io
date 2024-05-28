@@ -1,16 +1,24 @@
 ---
 title: 'Observability on the Edge: Enhancing OTel support in Envoy and Istio'
 linkTitle: New OTel features in Envoy and Istio
-date: 2024-05-27 # Put the current date, we will keep the date updated until your PR is merged
+date: 2024-05-28
 author: '[Joao Grassi](https://github.com/joaopgrassi) (Dynatrace)'
-draft: true # TODO: remove this line once your post is ready to be published
 issue: 4534
 sig: OpenTelemetry Specification
 ---
 
-In the current landscape of distributed cloud-native applications, there are two
-well-known projects that serve as a foundation and play an important role in
-such architectures: Istio and Envoy.
+In the dynamic world of cloud-native and distributed applications, managing
+microservices effectively is critical. Kubernetes has become the de facto
+standard for container orchestration, enabling seamless deployment, scaling, and
+management of containerized applications.
+
+The distributed nature of such systems, however, adds a layer of complexity in
+the form of networking for in-cluster communication. Two well-known projects,
+Envoy and Istio, have emerged as the foundation for the smooth management and
+operation of such complex environments.
+
+Together, these technologies empower organizations to build scalable, resilient,
+and secure distributed systems.
 
 [Istio](https://istio.io/) is a service mesh, that orchestrates communication
 between microservices, providing features such as traffic management, security
@@ -19,21 +27,22 @@ and, of course observability. Istio uses the Envoy proxy as its data plane.
 single applications/services as well as a communication bus and "universal data
 plane" for service meshs.
 
-Both [Envoy](https://www.cncf.io/projects/envoy/) and
+[Envoy](https://www.cncf.io/projects/envoy/) and
 [Istio](https://www.cncf.io/projects/istio/) projects are open-source and part
 of the Cloud Native Computing Foundation.
 
-## Observability in Istio and Envoy
+## Observability in Envoy and Istio
 
-Envoy, acting as the proxy in the service mesh, is the perfect candidate to
-ensure that incoming and outgoing requests are properly traced. The benefit of
-this approach is that you obtain distributed traces of the entire service mesh,
-providing an overview of communication between services — even when the
-applications themselves are not instrumented.
+The Envoy proxy deployed by the Istio service mesh is the perfect candidate to
+ensure incoming and outgoing requests are properly traced. This approach
+provides distributed traces of the entire service mesh, giving an overview on
+the communication between services — even when the applications themselves are
+not instrumented.
 
 Envoy offers several _tracers_ that do the job of tracing the requests,
 including the OpenTelemetry tracer. Tracers can be configured either directly
-within Envoy (when using it as a standalone component) or via Istio.
+within Envoy (when using it as a standalone component) or for all Envoy
+instances via Istio.
 
 Here is an example of how Istio and Envoy work together to trace requests:
 
@@ -42,8 +51,10 @@ Here is an example of how Istio and Envoy work together to trace requests:
 ## Introducing new OpenTelemetry tracing features in Envoy and Istio
 
 Although Envoy already had support for exporting OpenTelemetry traces via gRPC,
-it lacked support for exporting via HTTP. Other areas that needed enhacements
-were around resource attributes and sampling.
+it lacked support for exporting via HTTP. OpenTelemetry specifies both
+transports as first-class citicens. In addition, other areas such as providing
+resource attributes and configurable sampling decisions were lagging behind the
+stable portions of the OpenTelemetry specification.
 
 Starting from Envoy 1.29+ and Istio 1.21+, users now have access to the
 following new features:
@@ -53,20 +64,16 @@ following new features:
 The
 [OpenTelemetry tracer](https://www.envoyproxy.io/docs/envoy/v1.29.4/api-v3/config/trace/v3/opentelemetry.proto)
 in Envoy can now be configured to export OTLP traces via HTTP. This allows
-sending telemetry to observability back-ends that only support the OTLP/HTTP,
-directly from Envoy proxies.
-
-> Note: The OpenTelemetry tracer in Envoy can only be configured with a single
-> exporter. If multiplexing is desired, exporting to a OpenTelemetry collector
-> is the only option.
+sending telemetry to observability sinks via OTLP/HTTP, directly from Envoy
+proxies.
 
 ### Resource detectors
 
 Envoy now ships with the
 [Environment Resource Detector](https://www.envoyproxy.io/docs/envoy/v1.29.4/api-v3/extensions/tracers/opentelemetry/resource_detectors/v3/environment_resource_detector.proto).
-The environment resource detector in Envoy follows the
-[resource OTel specification](https://opentelemetry.io/docs/specs/otel/resource/sdk/#specifying-resource-information-via-an-environment-variable)
-and allow users to further enrich the spans produced by Envoy proxies.
+This resource detector follows the
+[OTel specification](https://opentelemetry.io/docs/specs/otel/resource/sdk/#specifying-resource-information-via-an-environment-variable)
+and allows users to further enrich the spans produced by Envoy proxies.
 
 The [resource detector feature](https://github.com/envoyproxy/envoy/pull/29547)
 not only added the environment detector, but also made it possible for any other
@@ -74,22 +81,22 @@ resource detector to be easily added, via Envoy's built-in extensions feature.
 
 ### Custom samplers
 
-The next exciting feature added to Envoy, is the possibility to implement and
-configure custom Samplers. Envoy follows the
+Another exciting feature added to Envoy is the possibility of implementing and
+configuring custom samplers. Envoy follows the
 [OTel Sampler interface](https://opentelemetry.io/docs/specs/otel/trace/sdk/#sampler)
-which makes it easy for anyone to contribute their own samplers.
+, which makes it easy for anyone to contribute their own samplers.
 
 Envoy ships with the
 [Always On Sampler](https://www.envoyproxy.io/docs/envoy/v1.29.4/api-v3/extensions/tracers/opentelemetry/samplers/v3/always_on_sampler.proto)
-that can be used as a reference implementation for more robust and smart
-samplers.
+which simply forwards all spans. This base implementation can be used as a
+reference implementation for smarter samplers.
 
 ## Demo
 
-Time to see the new features in action! For this, we will be using the
+It's time to see the new features in action! For this, we will use the
 [Istio Bookinfo application](https://istio.io/latest/docs/examples/bookinfo/).
-We will deploy the bookinfo app in k8s and use Istio as our service mesh. Traces
-will be exported to Jaeger via HTTP.
+We will deploy it in Kubernetes and use Istio as our service mesh. Traces will
+be exported to [Jaeger](https://www.jaegertracing.io/) via HTTP.
 
 ### Install Jaeger
 
@@ -137,7 +144,7 @@ EOF
 ```
 
 This will install Istio and configure the OpenTelemetry tracing provider. We are
-using the `http` exporter, targeting the OTLP/HTTP endpoint in the Jaeger
+using the `http` exporter, and sending to the OTLP/HTTP endpoint in the Jaeger
 collector. We are also enabling the environment resource detector in
 `resource_detectors`.
 
@@ -193,17 +200,16 @@ Let's make some requests to one of the services:
 k exec "$(k get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}')" -c ratings -- curl -sS productpage:9080/productpage | grep -o "<title>.*</title>"
 ```
 
-Then we can check it out on the Jaeger UI and we should see some nice traces
-there!
+Then we can check it out on the Jaeger UI. There, we should see some traces!
 
 ![Distributed trace viewing in Jaeger](jaeger.png)
 
-Let's analyse a bit the spans produced by Envoy:
+Let's analyze the spans produced by Envoy:
 
 1. First, we see the outgoing (egress) call from the `ratings` service to the
    `productpage` service
 2. Then the incoming (ingress) call in the `productpage` service
-3. And we also see the `host-name` resource attribute we applied via the
+3. We also see the `host-name` resource attribute we applied via the
    `OTEL_RESOURCE_ATTRIBUTES` That was picked up by the environment resource
    detector, and added to all spans Envoy created.
 
@@ -226,8 +232,8 @@ telemetry data generated by Envoy.
 Another exciting next step for Envoy and OpenTelemetry is the adoption of the
 now stable
 [HTTP semantic conventions in Envoy](https://github.com/envoyproxy/envoy/issues/30821).
-This will make Envoy aligned with all OTel SDKs that are also producing the
-spans following the stable HTTP semantic conventions.
+This will align Envoy with all OTel SDKs that are also producing the spans
+following the stable HTTP semantic conventions.
 
 Collaborating with the Envoy and Istio community to bring more OTel features to
 these projects has been a great experience. The eagerness to adopt and the
