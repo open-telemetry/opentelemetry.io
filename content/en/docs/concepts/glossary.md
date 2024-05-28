@@ -17,7 +17,7 @@ This page captures terminology used in the project and what it means.
 The process of combining multiple measurements into exact or estimated
 statistics about the measurements that took place during an interval of time,
 during program execution. Used by the [Metric](#metric)
-[Data Source](#data-source).
+[Data source](#data-source).
 
 ### **API**
 
