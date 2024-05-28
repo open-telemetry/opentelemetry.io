@@ -25,10 +25,10 @@ between microservices, providing features such as traffic management, security
 and, of course observability. Istio uses the Envoy proxy as its data plane.
 [Envoy](https://www.envoyproxy.io/) is a high-performance proxy, designed for
 single applications/services as well as a communication bus and "universal data
-plane" for service meshs.
+plane" for service meshes.
 
 [Envoy](https://www.cncf.io/projects/envoy/) and
-[Istio](https://www.cncf.io/projects/istio/) projects are open-source and part
+[Istio](https://www.cncf.io/projects/istio/) projects are open source and part
 of the Cloud Native Computing Foundation.
 
 ## Observability in Envoy and Istio
@@ -54,7 +54,7 @@ Here is an example of how Istio and Envoy work together to trace requests:
 
 Although Envoy already had support for exporting OpenTelemetry traces via gRPC,
 it lacked support for exporting via HTTP. OpenTelemetry specifies both
-transports as first-class citicens. In addition, other areas such as providing
+transports as first-class citizens. In addition, other areas such as providing
 resource attributes and configurable sampling decisions were lagging behind the
 stable portions of the OpenTelemetry specification.
 

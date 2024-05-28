@@ -42,6 +42,7 @@ words:
   - autoloading
   - backoff
   - bytecode
+  - bookinfo
   - caml
   - cartservice
   - cassandra
@@ -66,18 +67,21 @@ words:
   - github
   - gitpod
   - grafana
+  - Grassi
   - gzipped
   - Hausenblas
   - hugo
   - initializers
   - instana
   - istio
+  - istioctl
   - jaeger
   - jaegertracing
   - javaagent
   - javadoc
   - jboss
   - jdbc
+  - Joao
   - julia
   - Juraci
   - knative
@@ -125,6 +129,7 @@ words:
   - prepper
   - Println
   - productcatalogservice
+  - productpage
   - prometheus
   - proto
   - protobuf
@@ -172,3 +177,5 @@ words:
   - zend
   - zipkin
   - Chronosphere
+
+
