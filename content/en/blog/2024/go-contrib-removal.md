@@ -41,10 +41,11 @@ issues, and reviewing pull requests.
 
 ## I want to become a code owner! What do I do?
 
-To become a code owner, you just need to
+To become a code owner of one of the modules, you need to be a member of the
+OpenTelemetry organization and have a good working knowledge of the code you
+seek to maintain.
+
+If you satisfy both requirements, 
 [open an issue](https://github.com/open-telemetry/opentelemetry-go-contrib/issues/new?assignees=&labels=&projects=&template=owner.md&title=).
 
-The only requirements is that you're a member of the OpenTelemetry organization
-and have a good working knowledge of the code you seek to maintain.
-
-We're looking forward to your requests!
+We're looking forward to your request!
