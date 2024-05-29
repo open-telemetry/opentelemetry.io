@@ -3,7 +3,6 @@ title: Agent VS starter
 description:
   Comparison between the OpenTelemetry Java agent and the OpenTelemetry Spring starter
 weight: 10
-cSpell:ignore:
 ---
 
 ## How to instrument Spring Boot with OpenTelemetry
@@ -29,7 +28,3 @@ following cases:
 
 The OpenTelemetry Java agent has more automatic instrumentation features than
 the OpenTelemetry starter.
-
-You can use
-[OpenTelemetry instrumentations libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks)
-to complete the automatic instrumentation of the Spring Boot starter.
