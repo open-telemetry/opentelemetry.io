@@ -20,6 +20,14 @@ Out of the box instrumentation is available for several frameworks:
 | Micrometer            | `otel.instrumentation.micrometer.enabled`       | false         |
 | R2DBC (reactive JDBC) | `otel.instrumentation.r2dbc.enabled`            | true          |
 
+## Common instrumentation configuration
+
+Common properties for all database instrumentations:
+
+| System property                                              | Type    | Default | Description                            |
+| ------------------------------------------------------------ | ------- | ------- | -------------------------------------- |
+| `otel.instrumentation.common.db-statement-sanitizer.enabled` | Boolean | true    | Enables the DB statement sanitization. |
+
 ## JDBC Instrumentation
 
 | System property                                         | Type    | Default | Description                            |
