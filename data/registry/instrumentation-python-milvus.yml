@@ -1,0 +1,16 @@
+# cSpell:ignore milvus
+title: Milvus Instrumentation
+registryType: instrumentation
+language: python
+tags:
+  - python
+  - instrumentation
+  - milvus
+license: Apache 2.0
+description: Instrumentation for Milvus Vector DB
+authors:
+  - name: Traceloop
+    email: dev@traceloop.com
+urls:
+  repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-milvus
+createdAt: 2024-05-27
