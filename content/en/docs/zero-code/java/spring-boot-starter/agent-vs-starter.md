@@ -1,14 +1,15 @@
 ---
 title: Agent VS starter
 description:
-  Comparison between the OpenTelemetry Java agent and the OpenTelemetry Spring starter
+  Comparison between the OpenTelemetry Java agent and the OpenTelemetry Spring
+  starter
 weight: 10
 ---
 
 ## How to instrument Spring Boot with OpenTelemetry
 
-The [OpenTelemetry Java agent](..) with byte code instrumentation can cover
-most of your needs when instrumenting
+The [OpenTelemetry Java agent](..) with byte code instrumentation can cover most
+of your needs when instrumenting
 [Spring Boot](https://spring.io/projects/spring-boot) applications.
 
 Alternatively, the OpenTelemetry [Spring Boot starter] can help you in the

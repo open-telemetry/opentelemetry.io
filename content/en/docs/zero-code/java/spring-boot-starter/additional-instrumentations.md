@@ -1,6 +1,8 @@
 ---
 title: Additional instrumentations
-description: Additional instrumentations in addition to the out of the box instrumentation of the starter
+description:
+  Additional instrumentations in addition to the out of the box instrumentation
+  of the starter
 weight: 50
 ---
 
@@ -38,4 +40,3 @@ instrumentation library.
 
 You can configure other instrumentations with
 [OpenTelemetry instrumentations libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks).
-

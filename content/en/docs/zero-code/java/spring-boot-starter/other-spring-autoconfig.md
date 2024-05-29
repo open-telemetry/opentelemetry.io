@@ -1,7 +1,6 @@
 ---
 title: Other Spring autoconfiguration options
-description:
-  Spring autoconfigurations without the OpenTelemetry Spring starter
+description: Spring autoconfigurations without the OpenTelemetry Spring starter
 cSpell:ignore: autoconfigurations
 weight: 70
 ---
@@ -69,5 +68,3 @@ dependencies {
 | Property                       | Default Value | ConditionalOnClass   |
 | ------------------------------ | ------------- | -------------------- |
 | `otel.exporter.zipkin.enabled` | true          | `ZipkinSpanExporter` |
-
-
