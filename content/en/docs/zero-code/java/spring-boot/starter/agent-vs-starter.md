@@ -1,7 +1,7 @@
 ---
 title: Agent VS starter
 description:
-  Comparison between OpenTelemetry Java agent and OpenTelemetry starter
+  Comparison between the OpenTelemetry Java agent and the OpenTelemetry Spring starter
 weight: 10
 cSpell:ignore:
 ---

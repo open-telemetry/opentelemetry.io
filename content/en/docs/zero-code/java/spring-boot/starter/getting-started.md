@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-description: Getting Started og the OpenTelemetry starter
+description: Getting Started of the OpenTelemetry starter
 weight: 20
 # prettier-ignore
 cSpell:ignore: autoconfigurations springboot
