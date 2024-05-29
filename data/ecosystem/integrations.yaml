@@ -227,3 +227,8 @@
   docsUrl: https://docs.konghq.com/mesh/latest/guides/otel-metrics/
   components: [Go]
   oss: false
+- name: Akka
+  url: https://akka.io/
+  docsUrl: https://developer.lightbend.com/docs/telemetry/current/plugins/opentelemetry/intro.html
+  components: [Java]
+  oss: false
