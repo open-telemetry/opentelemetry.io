@@ -2,7 +2,6 @@
 title: Getting Started
 description: Getting Started of the OpenTelemetry starter
 weight: 20
-# prettier-ignore
 cSpell:ignore: springboot
 ---
 
