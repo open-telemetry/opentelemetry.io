@@ -7,7 +7,7 @@ weight: 10
 
 ## How to instrument Spring Boot with OpenTelemetry
 
-The [OpenTelemetry Java agent](../..) with byte code instrumentation can cover
+The [OpenTelemetry Java agent](..) with byte code instrumentation can cover
 most of your needs when instrumenting
 [Spring Boot](https://spring.io/projects/spring-boot) applications.
 
