@@ -2,7 +2,7 @@
 title: Annotations
 description: Using instrumentation annotations with the Spring starter.
 aliases: [../annotations]
-weight: 50
+weight: 60
 ---
 
 For most users, the out-of-the-box instrumentation is completely sufficient and
