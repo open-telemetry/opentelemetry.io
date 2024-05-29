@@ -288,20 +288,18 @@ your project's requirements, select a minimal time window before alerting begins
 to avoid notifications for small losses that are within the desired reliability
 range and not considered outages.
 
-#### Low CPU resources
+#### Low on CPU resources
 
-To make sure your Collector is using CPU resources safely during data ingestion,
-you need to set:
+This depends on the CPU metrics available on the deployment, eg.:
+`kube_pod_container_resource_limits{resource="cpu", unit="core"}` for
+Kubernetes. Let's call it `available_cores` below. The idea here is to have an
+upper bound of the number of available cores, and the maximum expected ingestion
+rate considered safe, let's call it `safe_rate`, per core. This should trigger
+increase of resources/ instances (or raise an alert as appropriate) whenever
+`(actual_rate/available_cores) < safe_rate`.
 
-- An upper bound on the number of `available_cores`. The metric that tracks
-  `available_cores` is dependent on your deployment. For example, a Kubernetes
-  deployment offers the
-  `kube_pod_container_resource_limits{resource="cpu", unit="core"}` metric.
-- The maximum ingestion rate per core that is considered safe (`safe_rate`). The
-  `safe_rate` depends on the specific configuration you use.
-
-When `(actual_rate/available_cores) < safe_rate`, an alert should be raised and
-an increase in resources or instances should be triggered, as appropriate.
+The `safe_rate` depends on the specific configuration being used. // TODO:
+Provide reference `safe_rate` for a few selected configurations.
 
 ### Secondary monitoring
 
