@@ -218,7 +218,7 @@ Apart from this, we can see all the other downstream calls made, as all services
 have the Envoy sidecar injected by Istio. We have full observability of the
 calls between services, just by enabling the OTel tracer in Envoy!
 
-## Next steps and closing.
+## Next steps and closing
 
 With these new additions, users gain more flexibility in exporting their traces.
 They can enrich their data with resource attributes and establish the groundwork
