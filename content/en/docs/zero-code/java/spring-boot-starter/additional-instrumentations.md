@@ -7,7 +7,7 @@ weight: 50
 ---
 
 The OpenTelemetry Spring Boot starter provides
-[out of the box instrumentation](./out-of-the-box-instrumentation.md) that you
+of the box instrumentation](../out-of-the-box-instrumentation) that you
 can complete with additional instrumentations.
 
 ## Log4j2 Instrumentation
