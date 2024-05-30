@@ -284,7 +284,7 @@ own telemetry.
 
 Use the rate of `otelcol_processor_dropped_spans > 0` and
 `otelcol_processor_dropped_metric_points > 0` to detect data loss. Depending on
-your project's requirements, select a minimal time window before alerting begins
+your project's requirements, select a narrow time window before alerting begins
 to avoid notifications for small losses that are within the desired reliability
 range and not considered outages.
 
@@ -314,8 +314,8 @@ of the retry queue. The `otelcol_exporter_queue_size` metric indicates the
 current size of the retry queue. Use these two metrics to check if the queue
 capacity can support your workload.
 
-Using the following three metrics, you can identify the number of spans/metric
-points/log records that failed to reach the sending queue:
+Using the following three metrics, you can identify the number of spans, metric
+points, and log records that failed to reach the sending queue:
 
 - `otelcol_exporter_enqueue_failed_spans`
 - `otelcol_exporter_enqueue_failed_metric_points`
@@ -325,7 +325,7 @@ These failures could be caused by a queue filled with unsettled elements. You
 might need to decrease your sending rate or horizontally scale Collectors.
 
 The queue/retry mechanism also supports logging for monitoring. Check the logs
-for messages such as `"Dropping data because sending_queue is full"`.
+for messages such as `Dropping data because sending_queue is full`.
 
 #### Receive failures
 
@@ -340,7 +340,7 @@ able to export data as expected. These metrics do not inherently imply data loss
 since there could be retries. But a high rate of failures could indicate issues
 with the network or backend receiving the data.
 
-### Data flow
+#### Data flow
 
 You can monitor data ingress with the `otelcol_receiver_accepted_spans` and
 `otelcol_receiver_accepted_metric_points` metrics and data egress with the
