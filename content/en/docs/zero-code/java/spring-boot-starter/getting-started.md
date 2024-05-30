@@ -7,6 +7,13 @@ cSpell:ignore: springboot
 
 ## OpenTelemetry Spring Boot starter
 
+{{% alert title="Note" color="info" %}}
+
+You can also use the Java agent to instrument your Spring Boot application. The
+pros and cons are described in the [overview page](..).
+
+{{% /alert %}}
+
 ### Compatibility
 
 The OpenTelemetry Spring Boot starter works with Spring Boot 2.0 and 3.0, and
