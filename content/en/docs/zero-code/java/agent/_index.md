@@ -1,10 +1,11 @@
 ---
 title: Java Agent
 linkTitle: Agent
-aliases:
-  - /docs/java/automatic_instrumentation
-  - /docs/languages/java/automatic_instrumentation
-redirects: [{ from: /docs/languages/java/automatic/*, to: ':splat' }]
+redirects:
+  - from: /docs/languages/java/automatic/spring-boot/
+    to: /docs/zero-code/java/spring-boot-starter
+  - from: /docs/languages/java/automatic/*
+    to: ':splat'
 cSpell:ignore: Dotel myapp
 ---
 

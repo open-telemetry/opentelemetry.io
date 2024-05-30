@@ -1,10 +1,6 @@
 ---
 title: Spring Boot starter
-aliases:
-  [
-    /docs/languages/java/automatic/spring-boot/,
-    /docs/zero-code/java/spring-boot/,
-  ]
+aliases: [/docs/zero-code/java/spring-boot/]
 ---
 
 You can use two options to instrument
