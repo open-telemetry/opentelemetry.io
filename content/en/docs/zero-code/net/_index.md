@@ -1,17 +1,18 @@
 ---
-title: Automatic Instrumentation
+title: .NET Automatic Instrumentation
 description: Send traces and metrics from .NET applications and services.
-linkTitle: Automatic
+linkTitle: .NET
 cSpell:ignore: coreutils HKLM iisreset myapp
 weight: 30
+redirects: [{ from: /docs/languages/net/automatic/*, to: ':splat' }]
 ---
 
 Use the OpenTelemetry .NET Automatic Instrumentation to send traces and metrics
 from .NET applications and services to observability backends without having to
 modify their source code.
 
-To learn how to manually instrument your service or application code, see
-[Manual instrumentation](../instrumentation).
+To learn how to instrument your service or application code, read
+[Manual instrumentation](/docs/languages/net/instrumentation).
 
 ## Compatibility
 
@@ -294,4 +295,5 @@ For general troubleshooting steps and solutions to specific issues, see
 
 After you have automatic instrumentation configured for your app or service, you
 might want to [send custom traces and metrics](./custom) or add
-[manual instrumentation](../instrumentation) to collect custom telemetry data.
+[manual instrumentation](/docs/languages/net/instrumentation) to collect custom
+telemetry data.

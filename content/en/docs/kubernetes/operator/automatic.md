@@ -178,8 +178,7 @@ spec:
 
 #### Learn more {#dotnet-learn-more}
 
-For more details, see
-[.NET Auto Instrumentation docs](/docs/languages/net/automatic/).
+For more details, see [.NET Auto Instrumentation docs](/docs/zero-code/net/).
 
 ### Java
 
@@ -280,14 +279,14 @@ must be able to receive OTLP over `grpc`. Therefore, the example uses
 `http://demo-collector:4317`, which connects to the `grpc` port of the
 `otlpreceiver` of the Collector created in the previous step.
 
-#### Excluding auto-instrumentation {#js-excluding-auto-instrumentation}
+#### Excluding instrumentation libraries {#js-excluding-instrumentation-libraries}
 
-By default, the Node.js auto-instrumentation has all the instrumentation
+By default, the Node.js zero-code instrumentation has all the instrumentation
 libraries enabled.
 
-To enable only specific instrumentations you can use the
+To enable only specific instrumentation libraries you can use the
 `OTEL_NODE_ENABLED_INSTRUMENTATIONS` environment variable as documented in the
-[Node.js auto-instrumentation documentation](/docs/languages/js/automatic/configuration/#excluding-auto-instrumentation).
+[Node.js zero-code instrumentation documentation](/docs/zero-code/js/configuration/#excluding-instrumentation-libraries).
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
