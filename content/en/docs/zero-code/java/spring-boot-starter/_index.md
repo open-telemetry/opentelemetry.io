@@ -15,14 +15,12 @@ The default choice for instrumenting
 
 - More out of the box instrumentation than the OpenTelemetry starter
 
-The *OpenTelemetry Spring Boot starter* can help you in the following
-cases:
+The *OpenTelemetry Spring Boot starter* can help you with:
 
 - *Spring Boot Native image applications* for which the OpenTelemetry Java agent
   does not work
-- *Startup overhead* of the OpenTelemetry Java agent exceeds your requirements
-- OpenTelemetry Java agent might not work if your application already uses
-  another Java monitoring agent
-- You can use the *Spring Boot configuration files* (`application.properties`,
+- *Startup overhead* of the OpenTelemetry Java agent exceeding your requirements
+- A Java monitoring agent already used because the OpenTelemetry Java agent might not work with the other agent
+- *Spring Boot configuration files* (`application.properties`,
   `application.yml`) to configure the OpenTelemetry Spring Boot starter which
   doesn't work with the OpenTelemetry Java agent
