@@ -1,31 +1,135 @@
 ---
 title: Troubleshooting
-description: Recommendations for troubleshooting the collector
+description: Recommendations for troubleshooting the Collector
 weight: 25
 cSpell:ignore: pprof tracez zpages
 ---
 
-This page describes some options when troubleshooting the health or performance
-of the OpenTelemetry Collector. The Collector provides a variety of metrics,
-logs, and extensions for debugging issues.
+On this page, you can learn how to troubleshoot the health and performance of
+the OpenTelemetry Collector.
 
-## Internal telemetry
+## Troubleshooting tools
+
+The Collector provides a variety of metrics, logs, and extensions for debugging
+issues.
+
+### Internal telemetry
 
 You can configure and use the Collector's own
 [internal telemetry](/docs/collector/internal-telemetry/) to monitor its
 performance.
 
-## Check available components in the Collector
+### Local exporters
+
+For certain types of issues, such as configuration verification and network
+debugging, you can send a small amount of test data to a Collector configured to
+output to local logs. Using a
+[local exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter#general-information),
+you can inspect the data being processed by the Collector.
+
+For live troubleshooting, consider using the
+[`debug` exporter](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/debugexporter/README.md),
+which can confirm that the Collector is receiving, processing, and exporting
+data. For example:
+
+```yaml
+receivers:
+  zipkin:
+exporters:
+  debug:
+service:
+  pipelines:
+    traces:
+      receivers: [zipkin]
+      processors: []
+      exporters: [debug]
+```
+
+To begin testing, generate a Zipkin payload. For example, you can create a file
+called `trace.json` that contains:
+
+```json
+[
+  {
+    "traceId": "5982fe77008310cc80f1da5e10147519",
+    "parentId": "90394f6bcffb5d13",
+    "id": "67fae42571535f60",
+    "kind": "SERVER",
+    "name": "/m/n/2.6.1",
+    "timestamp": 1516781775726000,
+    "duration": 26000,
+    "localEndpoint": {
+      "serviceName": "api"
+    },
+    "remoteEndpoint": {
+      "serviceName": "apip"
+    },
+    "tags": {
+      "data.http_response_code": "201"
+    }
+  }
+]
+```
+
+With the Collector running, send this payload to the Collector:
+
+```shell
+curl -X POST localhost:9411/api/v2/spans -H'Content-Type: application/json' -d @trace.json
+```
+
+You should see a log entry like the following:
+
+```shell
+2023-09-07T09:57:43.468-0700    info    TracesExporter  {"kind": "exporter", "data_type": "traces", "name": "debug", "resource spans": 1, "spans": 2}
+```
+
+You can also configure the `debug` exporter so the entire payload is printed:
+
+```yaml
+exporters:
+  debug:
+    verbosity: detailed
+```
+
+If you re-run the previous test with the modified configuration, the log output
+looks like this:
+
+```shell
+2023-09-07T09:57:12.820-0700    info    TracesExporter  {"kind": "exporter", "data_type": "traces", "name": "debug", "resource spans": 1, "spans": 2}
+2023-09-07T09:57:12.821-0700    info    ResourceSpans #0
+Resource SchemaURL: https://opentelemetry.io/schemas/1.4.0
+Resource attributes:
+     -> service.name: Str(telemetrygen)
+ScopeSpans #0
+ScopeSpans SchemaURL:
+InstrumentationScope telemetrygen
+Span #0
+    Trace ID       : 0c636f29e29816ea76e6a5b8cd6601cf
+    Parent ID      : 1a08eba9395c5243
+    ID             : 10cebe4b63d47cae
+    Name           : okey-dokey
+    Kind           : Internal
+    Start time     : 2023-09-07 16:57:12.045933 +0000 UTC
+    End time       : 2023-09-07 16:57:12.046058 +0000 UTC
+    Status code    : Unset
+    Status message :
+Attributes:
+     -> span.kind: Str(server)
+     -> net.peer.ip: Str(1.2.3.4)
+     -> peer.service: Str(telemetrygen)
+```
+
+### Check Collector components
 
 Use the following sub-command to list the available components in a Collector
 distribution, including their stability levels. Please note that the output
-format may change across versions.
+format might change across versions.
 
-```sh
+```shell
 otelcol components
 ```
 
-Sample output
+Sample output:
 
 ```yaml
 buildinfo:
@@ -114,116 +218,16 @@ extensions:
       extension: Beta
 ```
 
-## Sending test data
+### Extensions
 
-For certain types of issues, particularly verifying configuration and debugging
-network issues, it can be helpful to send a small amount of data to a collector
-configured to output to local logs.
+Here is a list of extensions you can enable for debugging the Collector.
 
-### Local exporters
-
-[Local exporters](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter#general-information)
-can be configured to inspect the data being processed by the Collector.
-
-For live troubleshooting purposes consider leveraging the `debug` exporter,
-which can be used to confirm that data is being received, processed and exported
-by the Collector.
-
-```yaml
-receivers:
-  zipkin:
-exporters:
-  debug:
-service:
-  pipelines:
-    traces:
-      receivers: [zipkin]
-      processors: []
-      exporters: [debug]
-```
-
-Get a Zipkin payload to test. For example create a file called `trace.json` that
-contains:
-
-```json
-[
-  {
-    "traceId": "5982fe77008310cc80f1da5e10147519",
-    "parentId": "90394f6bcffb5d13",
-    "id": "67fae42571535f60",
-    "kind": "SERVER",
-    "name": "/m/n/2.6.1",
-    "timestamp": 1516781775726000,
-    "duration": 26000,
-    "localEndpoint": {
-      "serviceName": "api"
-    },
-    "remoteEndpoint": {
-      "serviceName": "apip"
-    },
-    "tags": {
-      "data.http_response_code": "201"
-    }
-  }
-]
-```
-
-With the Collector running, send this payload to the Collector. For example:
-
-```shell
-curl -X POST localhost:9411/api/v2/spans -H'Content-Type: application/json' -d @trace.json
-```
-
-You should see a log entry like the following from the Collector:
-
-```shell
-2023-09-07T09:57:43.468-0700    info    TracesExporter  {"kind": "exporter", "data_type": "traces", "name": "debug", "resource spans": 1, "spans": 2}
-```
-
-You can also configure the `debug` exporter so the entire payload is printed:
-
-```yaml
-exporters:
-  debug:
-    verbosity: detailed
-```
-
-With the modified configuration if you re-run the test above the log output
-should look like:
-
-```shell
-2023-09-07T09:57:12.820-0700    info    TracesExporter  {"kind": "exporter", "data_type": "traces", "name": "debug", "resource spans": 1, "spans": 2}
-2023-09-07T09:57:12.821-0700    info    ResourceSpans #0
-Resource SchemaURL: https://opentelemetry.io/schemas/1.4.0
-Resource attributes:
-     -> service.name: Str(telemetrygen)
-ScopeSpans #0
-ScopeSpans SchemaURL:
-InstrumentationScope telemetrygen
-Span #0
-    Trace ID       : 0c636f29e29816ea76e6a5b8cd6601cf
-    Parent ID      : 1a08eba9395c5243
-    ID             : 10cebe4b63d47cae
-    Name           : okey-dokey
-    Kind           : Internal
-    Start time     : 2023-09-07 16:57:12.045933 +0000 UTC
-    End time       : 2023-09-07 16:57:12.046058 +0000 UTC
-    Status code    : Unset
-    Status message :
-Attributes:
-     -> span.kind: Str(server)
-     -> net.peer.ip: Str(1.2.3.4)
-     -> peer.service: Str(telemetrygen)
-```
-
-## Extensions useful for troubleshooting
-
-### Health Check
+#### Health Check
 
 The
-[health_check](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/healthcheckextension/README.md)
-extension, which by default is available on all interfaces on port `13133`, can
-be used to ensure the Collector is functioning properly.
+[Health Check extension](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/healthcheckextension/README.md),
+which by default is available on all interfaces on port `13133`, can be used to
+ensure the Collector is functioning properly. For example:
 
 ```yaml
 extensions:
@@ -242,25 +246,44 @@ It returns a response like the following:
 }
 ```
 
-### pprof
+{{% alert title="Caution" color="warning" %}}
+
+The optional `health_check` configuration setting, `check_collector_pipeline`,
+is not working as expected. Avoid using this feature. Efforts are underway to
+create a new version of the Health Check extension that relies on individual
+component statuses. The extension's configuration remains unchanged until this
+replacement is available.
+
+{{% /alert %}}
+
+#### Performance Profiler (pprof)
 
 The
-[pprof](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/pprofextension/README.md)
-extension, which by default is available locally on port `1777`, allows you to
-profile the Collector as it runs. This is an advanced use-case that should not
-be needed in most circumstances.
+[pprof extension](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/pprofextension/README.md),
+which is available locally on port `1777`, allows you to profile the Collector
+as it runs. This is an advanced use-case that should not be needed in most
+circumstances.
 
-### zPages
+#### zPages
 
 The
-[zpages](https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/zpagesextension/README.md)
-extension, which if enabled is exposed locally on port `55679`, can be used to
-check receivers and exporters trace operations via `/debug/tracez`. `zpages` may
-contain error logs that the Collector does not emit.
+[zPages extension](https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/zpagesextension/README.md),
+which is exposed locally on port `55679`, can be used to inspect live data from
+the Collector's receivers and exporters.
 
-For containerized environments it may be desirable to expose this port on a
-public interface instead of just locally. This can be configured via the
-extensions configuration section. For example:
+The TraceZ page, exposed at `/debug/tracez`, is useful for debugging trace
+operations, such as:
+
+- Latency issues. Find the slow parts of an application.
+- Deadlocks and instrumentation problems. Identify running spans that don't end.
+- Errors. Determine what types of errors are occurring and where they happen.
+
+Note that `zpages` might contain error logs that the Collector does not emit
+itself.
+
+For containerized environments, you might want to expose this port on a public
+interface instead of just locally. The `endpoint` can be configured using the
+`extensions` configuration section:
 
 ```yaml
 extensions:
@@ -271,91 +294,102 @@ extensions:
 ## Checklist for debugging complex pipelines
 
 It can be difficult to isolate problems when telemetry flows through multiple
-collectors and networks. For each "hop" of telemetry data through a collector or
-other component in your telemetry pipeline, it’s important to verify the
-following:
+Collectors and networks. For each "hop" of telemetry through a Collector or
+other component in your pipeline, it’s important to verify the following:
 
-- Are there error messages in the logs of the collector?
+- Are there error messages in the logs of the Collector?
 - How is the telemetry being ingested into this component?
-- How is the telemetry being modified (i.e. sampling, redacting) by this
-  component?
+- How is the telemetry being modified (for example, sampling or redacting) by
+  this component?
 - How is the telemetry being exported from this component?
 - What format is the telemetry in?
 - How is the next hop configured?
 - Are there any network policies that prevent data from getting in or out?
 
-## Common Issues
+## Common Collector issues
 
-This section covers how to identify and resolve common Collector issues.
+This section covers how to resolve common Collector issues.
 
-### Collector exit/restart
+### Collector is experiencing data issues
 
-The Collector may exit/restart because:
+The Collector and its components might experience data issues.
 
-- Memory pressure due to missing or misconfigured
-  [memory_limiter](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/memorylimiterprocessor/README.md)
-  processor.
-- Improperly sized for load.
-- Improperly configured (for example, a queue size configured higher than
-  available memory).
-- Infrastructure resource limits (for example Kubernetes).
+#### Collector is dropping data
 
-### Data being dropped
+The Collector might drop data for a variety of reasons, but the most common are:
 
-Data may be dropped for a variety of reasons, but most commonly because of an:
-
-- Improperly sized Collector resulting in Collector being unable to process and
+- The Collector is improperly sized, resulting in an inability to process and
   export the data as fast as it is received.
-- Exporter destination unavailable or accepting the data too slowly.
+- The exporter destination is unavailable or accepting the data too slowly.
 
-To mitigate drops, it is highly recommended to configure the
-[batch](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md)
-processor. In addition, it may be necessary to configure the
+To mitigate drops, configure the
+[`batch` processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md).
+In addition, it might be necessary to configure the
 [queued retry options](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/exporterhelper#configuration)
 on enabled exporters.
 
-### Receiving data not working
+#### Collector is not receiving data
 
-If you are unable to receive data then this is likely because either:
+The Collector might not receive data for the following reasons:
 
-- There is a network configuration issue
-- The receiver configuration is incorrect
-- The receiver is defined in the `receivers` section, but not enabled in any
-  `pipelines`
-- The client configuration is incorrect
+- A network configuration issue.
+- An incorrect receiver configuration.
+- An incorrect client configuration.
+- The receiver is defined in the `receivers` section but not enabled in any
+  `pipelines`.
 
-Check the Collector logs as well as `zpages` for potential issues.
+Check the Collector's
+[logs](/docs/collector/internal-telemetry/#configure-internal-logs) as well as
+[zPages](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/zpagesextension/README.md)
+for potential issues.
 
-### Processing data not working
+#### Collector is not processing data
 
-Most processing issues are a result of either a misunderstanding of how the
-processor works or a misconfiguration of the processor.
+Most processing issues result from of a misunderstanding of how the processor
+works or a misconfiguration of the processor. For example:
 
-Examples of misunderstanding include:
+- The attributes processor works only for "tags" on spans. The span name is
+  handled by the span processor.
+- Processors for trace data (except tail sampling) work only on individual
+  spans.
 
-- The attributes processors only work for "tags" on spans. Span name is handled
-  by the span processor.
-- Processors for trace data (except tail sampling) work on individual spans.
+#### Collector is not exporting data
 
-### Exporting data not working
+The Collector might not export data for the following reasons:
 
-If you are unable to export to a destination then this is likely because either:
+- A network configuration issue.
+- An incorrect exporter configuration.
+- The destination is unavailable.
 
-- There is a network configuration issue
-- The exporter configuration is incorrect
-- The destination is unavailable
+Check the Collector's
+[logs](/docs/collector/internal-telemetry/#configure-internal-logs) as well as
+[zPages](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/zpagesextension/README.md)
+for potential issues.
 
-Check the collector logs as well as `zpages` for potential issues.
-
-More often than not, exporting data does not work because of a network
-configuration issue. This could be due to a firewall, DNS, or proxy issue. Note
-that the Collector does have
+Exporting data often does not work because of a network configuration issue,
+such as a firewall, DNS, or proxy issue. Note that the Collector does have
 [proxy support](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter#proxy-support).
 
-### Startup failing in Windows Docker containers (v0.90.1 and earlier)
+### Collector is experiencing control issues
 
-The process may fail to start in a Windows Docker container with the following
-error: `The service process could not connect to the service controller`. In
-this case the `NO_WINDOWS_SERVICE=1` environment variable should be set to force
-the collector to be started as if it were running in an interactive terminal,
-without attempting to run as a Windows service.
+The Collector might experience failed startups or unexpected exits or restarts.
+
+#### Collector exits or restarts
+
+The Collector might exit or restart due to:
+
+- Memory pressure from a missing or misconfigured
+  [`memory_limiter` processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/memorylimiterprocessor/README.md).
+- Improper sizing for load.
+- Improper configuration. For example, a queue size configured higher than
+  available memory.
+- Infrastructure resource limits. For example, Kubernetes.
+
+#### Collector fails to start in Windows Docker containers
+
+With v0.90.1 and earlier, the Collector might fail to start in a Windows Docker
+container, producing the error message
+`The service process could not connect to the service controller`. In this case,
+the `NO_WINDOWS_SERVICE=1` environment variable must be set to force the
+Collector to start as if it were running in an interactive terminal, without
+attempting to run as a Windows service.
