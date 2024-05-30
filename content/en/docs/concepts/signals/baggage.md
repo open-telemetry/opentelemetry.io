@@ -8,8 +8,8 @@ In OpenTelemetry, Baggage is contextual information that’s passed between span
 It's a key-value store that resides alongside span context in a trace, making
 values available to any span created within that trace.
 
-For example, imagine you want to have a `CustomerId` attribute on every span in
-your trace, which involves multiple services; however, `CustomerId` is only
+For example, imagine you want to have a `ClientId` attribute on every span in
+your trace, which involves multiple services; however, `ClientId` is only
 available in one specific service. To accomplish your goal, you can use
 OpenTelemetry Baggage to propagate this value across your system.
 
