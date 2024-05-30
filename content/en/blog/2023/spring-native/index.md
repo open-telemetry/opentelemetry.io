@@ -19,7 +19,7 @@ Image applications. Read on to learn more!
 ## A history of the last months
 
 The OpenTelemetry Spring Boot Starter allows to add OpenTelemetry to your
-application without byte code instrumentation. The OpenTelemetry Java
+application without bytecode instrumentation. The OpenTelemetry Java
 contributors have used this to instrument Spring Boot Native Images. By adding
 the starter dependency to your project, you will benefit from an OTLP exports of
 logs (added the last months), spans and metrics, with an auto-instrumentation
