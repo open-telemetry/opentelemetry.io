@@ -15,7 +15,7 @@ aliases: [/registry/*]
 type: default
 layout: registry
 outputs: [html, json]
-body_class: registry
+body_class: registry td-content
 weight: 20
 ---
 

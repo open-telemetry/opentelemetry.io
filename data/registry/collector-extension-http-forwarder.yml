@@ -1,4 +1,4 @@
-# cSpell:ignore httpforwarder
+# cSpell:ignore httpforwarderextension
 title: HTTP Forwarder Collector Extension
 registryType: extension
 language: collector
@@ -13,9 +13,9 @@ description:
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/httpforwarder
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/httpforwarderextension
 createdAt: 2021-02-24
 package:
   registry: go-collector
-  name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/httpforwarder
-  version: v0.95.0
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/httpforwarderextension
+  version: v0.101.0

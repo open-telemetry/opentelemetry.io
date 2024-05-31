@@ -2,7 +2,7 @@
 title: Traces
 weight: 1
 cSpell:ignore: Guten
-description: Understand the full path through your distributed application.
+description: The path of a request through your application.
 ---
 
 **Traces** give us the big picture of what happens when a request is made to an
@@ -11,6 +11,14 @@ sophisticated mesh of services, traces are essential to understanding the full
 "path" a request takes in your application.
 
 Let's explore this with three units of work, represented as [Spans](#spans):
+
+{{% alert title="Note" %}}
+
+The following JSON examples do not represent a specific format, and especially
+not [OTLP/JSON](/docs/specs/otlp/#json-protobuf-encoding), which is more
+verbose.
+
+{{% /alert %}}
 
 `hello` span:
 
@@ -110,7 +118,7 @@ that matches the `span_id` of the `hello` span.
 ```
 
 This span represents the third operation in this trace and, like the previous
-one, it's a child of the 'hello' Span. That also makes it a sibling of the
+one, it's a child of the `hello` span. That also makes it a sibling of the
 `hello-greetings` span.
 
 These three blocks of JSON all share the same `trace_id`, and the `parent_id`

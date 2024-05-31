@@ -5,19 +5,18 @@ weight: 40
 cSpell:ignore: getenv httpclient println
 ---
 
-When you develop an app, you use third-party libraries and frameworks to
-accelerate your work and avoid duplicated efforts. If you instrument your app
-with OpenTelemetry, you don't want to spend additional time on manually adding
-traces, logs, and metrics to those libraries and frameworks.
+{{% docs/languages/libraries-intro "Java" %}}
 
-Use libraries that come with OpenTelemetry support natively or an
-[Instrumentation Library](/docs/concepts/instrumentation/libraries/) to generate
-telemetry data for a library or framework.
+## Use Instrumentation Libraries
+
+If a library does not come with OpenTelemetry out of the box, you can use
+[instrumentation libraries](/docs/specs/otel/glossary/#instrumentation-library)
+in order to generate telemetry data for a library or framework.
 
 The Java agent for automatic instrumentation includes instrumentation libraries
 for many common Java frameworks. Most are turned on by default. If you need to
 turn off certain instrumentation libraries, you can
-[suppress them](../automatic/configuration/#suppressing-specific-auto-instrumentation).
+[suppress them](/docs/zero-code/java/agent/configuration/#suppressing-specific-instrumentation).
 
 If you use [code-based instrumentation](../instrumentation), you can leverage
 some instrumentation libraries for your dependencies standalone. To find out
@@ -185,8 +184,7 @@ You might also want to configure an appropriate exporter to
 [export your telemetry data](/docs/languages/java/exporters) to one or more
 telemetry backends.
 
-You can also check the
-[automatic instrumentation for Java](/docs/languages/java/automatic) for
-existing library instrumentations.
+For existing library instrumentations, also see
+[Java agent](/docs/zero-code/java/agent/).
 
 [opentelemetry-java](https://github.com/open-telemetry/opentelemetry-java)

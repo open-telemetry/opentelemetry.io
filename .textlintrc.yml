@@ -115,7 +115,8 @@ rules:
       - ['3rd[- ]party', third-party]
       - ['auto[- ]c(onfigur)(es?|ations?)', 'autoc$1$2'] # cspell:ignore autoc ations onfigur
       - ['back[- ]end(s)?', 'backend$1']
-      - ['bugfix', 'bug fix']
+      - [bugfix, bug fix]
+      - [byte code, bytecode]
       - [cpp, C++]
       - # dotnet|.net -> .NET, but NOT for strings like:
         # - File extension: file.net

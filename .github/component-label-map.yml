@@ -1,0 +1,84 @@
+blog:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/blog/**
+registry:
+  - changed-files:
+      - any-glob-to-any-file:
+          - data/registry/**
+lang:zh:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/zh/**
+sig:cpp:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/languages/cpp/**
+sig:erlang:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/languages/erlang/**
+sig:go:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/languages/go/**
+sig:java:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/languages/java/**
+sig:js:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/languages/js/**
+sig:dotnet:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/languages/net/**
+sig:php:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/languages/php/**
+sig:python:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/languages/python/**
+sig:ruby:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/languages/ruby/**
+sig:rust:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/languages/rust/**
+sig:swift:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/languages/swift/**
+sig:operator:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/kubernetes/operator/**
+sig:helm:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/kubernetes/helm/**
+sig:security:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/security/**
+sig:demo:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/demo/**
+sig:collector:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/collector/**
+sig:enduser:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/community/end-user/**
+sig:spec:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/specs/**

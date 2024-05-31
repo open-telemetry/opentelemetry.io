@@ -3,17 +3,18 @@ DirectoryPath: public
 IgnoreDirectoryMissingTrailingSlash: true
 IgnoreAltMissing: true
 IgnoreCanonicalBrokenLinks: false
+IgnoreInternalEmptyHash: true # TODO: remove after resolution of https://github.com/google/docsy/issues/1995
 CheckMailto: false
 TestFilesConcurrently: true
 IgnoreDirs:
   - ^blog/(\d+/)?page/\d+
 IgnoreInternalURLs: # list of paths
 IgnoreURLs: # list of regexs of paths or URLs to be ignored
-  - ^/docs/languages/\w+/(api|examples|registry)/$
-  - ^/docs/collector/registry/$
-  - ^/docs/languages/net/(metrics-api|traces-api)/
+  - ^(/zh)?/docs/languages/\w+/(api|examples|registry)/$
+  - ^(/zh)?/docs/collector/registry/$
+  - ^(/zh)?/docs/languages/net/(metrics-api|traces-api)/
+  - ^((/zh)?/docs/migration/)?opencensus/$
   - ^/community/end-user/feedback-survey/$
-  - ^(/docs/migration/)?opencensus/$
 
   - ^https://deploy-preview-\d+--opentelemetry.netlify.app/
   - ^https://www\.googletagmanager\.com
@@ -33,8 +34,11 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://www.chathamhouse.org
   - ^https://www.zocdoc.com
   - ^https://x.com
+  - ^https://platform.openai.com
   # OTel Google calendar - curl returns 200, but the link checker gets a 401:
   - ^https://calendar.google.com/calendar/embed\?src=google.com_b79e3e90j7bbsa2n2p5an5lf60%40group.calendar.google.com
+  # YouTube playlists sometimes give a 404, although they give a 200 when accessed via browser:
+  - ^https://www.youtube.com/playlist\?list=
 
   # Ignore Docsy-generated GitHub links for now
   - ^https?://github\.com/.*?/.*?/(new|edit)/ # view-page, edit-source etc

@@ -22,6 +22,7 @@ emailservice(Email Service):::ruby
 frauddetectionservice(Fraud Detection Service):::kotlin
 frontend(Frontend):::typescript
 frontendproxy(Frontend Proxy <br/>&#40Envoy&#41):::cpp
+imageprovider(Image Provider <br/>&#40nginx&#41):::cpp
 loadgenerator([Load Generator]):::python
 paymentservice(Payment Service):::javascript
 productcatalogservice(Product Catalog Service):::golang
@@ -33,6 +34,7 @@ queue[(queue<br/>&#40Kafka&#41)]
 Internet -->|HTTP| frontendproxy
 frontendproxy -->|HTTP| frontend
 loadgenerator -->|HTTP| frontendproxy
+frontendproxy -->|HTTP| imageprovider
 
 queue -->|TCP| accountingservice
 queue -->|TCP| frauddetectionservice

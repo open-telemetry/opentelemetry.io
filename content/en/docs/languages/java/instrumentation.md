@@ -19,9 +19,8 @@ cSpell:ignore: Autowired customizer logback loggable multivalued rolldice spring
 
 On this page you will learn how you can add traces, metrics and logs to your
 code _manually_. But, you are not limited to only use one kind of
-instrumentation: use
-[automatic instrumentation](/docs/languages/java/automatic/) to get started and
-then enrich your code with manual instrumentation as needed.
+instrumentation: use [zero-code instrumentation](/docs/zero-code/java/agent/) to
+get started and then enrich your code with manual instrumentation as needed.
 
 Note, that especially if you cannot modify the source code of your app, you can
 skip manual instrumentation and only use automatic instrumentation.
@@ -41,6 +40,15 @@ manual instrumentation.
 
 You don't have to use the example app: if you want to instrument your own app or
 library, follow the instructions here to adapt the process to your own code.
+
+### Prerequisites
+
+For running the example app, ensure that you have the following installed
+locally:
+
+- Java JDK 17+, due to the use of Spring Boot 3. OpenTelemetry Java itself only
+  [requires Java 8+][java-vers].
+- [Gradle](https://gradle.org/).
 
 ### Dependencies {#example-app-dependencies}
 
@@ -452,7 +460,9 @@ import org.springframework.context.annotation.Bean;
 
 import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.context.propagation.TextMapPropagator;
 import io.opentelemetry.api.trace.propagation.W3CTraceContextPropagator;
+import io.opentelemetry.api.baggage.propagation.W3CBaggagePropagator;
 import io.opentelemetry.context.propagation.ContextPropagators;
 import io.opentelemetry.exporter.logging.LoggingMetricExporter;
 import io.opentelemetry.exporter.logging.LoggingSpanExporter;
@@ -641,7 +651,7 @@ public class Dice {
   }
 
   public Dice(int min, int max) {
-    this(min, max, OpenTelemetry.noop())
+    this(min, max, OpenTelemetry.noop());
   }
 
   // ...
@@ -975,18 +985,16 @@ HTTP headers.
 
 ### Context propagation between threads
 
-THe following example demonstrates how to propagate the context between threads:
+The following example demonstrates how to propagate the context between threads:
 
 ```java
 io.opentelemetry.context.Context context = io.opentelemetry.context.Context.current();
-Thread thread = new Thread(new Runnable() {
+Thread thread = new Thread(context.wrap(new Runnable() {
   @Override
   public void run() {
-    try (Scope scope = context.makeCurrent()) {
-      // Code for which you want to propagate the context
-    }
+    // Code for which you want to propagate the context
   }
-});
+}));
 thread.start();
 ```
 
@@ -1822,6 +1830,8 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOnSampler.java
 [httpexchange]:
   https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html
+[java-vers]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#language-version-compatibility
 [instrumentation library]: /docs/specs/otel/glossary/#instrumentation-library
 [instrumented library]: /docs/specs/otel/glossary/#instrumented-library
 [logs bridge API]: /docs/specs/otel/logs/bridge-api

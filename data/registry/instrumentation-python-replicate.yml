@@ -1,0 +1,15 @@
+title: Replicate Instrumentation
+registryType: instrumentation
+language: python
+tags:
+  - python
+  - instrumentation
+  - replicate
+license: Apache 2.0
+description: Instrumentation for Replicate LLMs (prompts logging, tokens, etc.)
+authors:
+  - name: Traceloop
+    email: dev@traceloop.com
+urls:
+  repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-replicate
+createdAt: 2024-05-27

@@ -6,13 +6,25 @@ weight: 30
 
 The [OpenTelemetry blog](/blog/) communicates new features, community reports,
 and any news that might be relevant to the OpenTelemetry community. This
-includes end users and developers. Anyone can write a blog post and submit it
-for review.
+includes end users and developers. Anyone can write a blog post, read below what
+the requirements are.
+
+## Documentation or blog post?
+
+Before writing a blog post, ask yourself if your content also might be a good
+addition to the documentation. If the answer is "yes", create a new issue or
+pull request (PR) with your content to get it added to the docs.
+
+Note, that the focus of maintainers and approvers of the OpenTelemetry Website
+is to improve the documentation of the project, so your blog post will have a
+lower priority for review.
 
 ## Before submitting a blog post
 
 Blog posts should not be commercial in nature and should consist of original
-content that applies broadly to the OpenTelemetry community.
+content that applies broadly to the OpenTelemetry community. Blog posts should
+follow the policies outlined in the
+[Social Media Guide](https://github.com/open-telemetry/community/blob/main/social-media-guide.md).
 
 Verify that your intended content broadly applies to the OpenTelemetry Community
 . Appropriate content includes:
@@ -27,15 +39,30 @@ Unsuitable content includes:
 
 - Vendor product pitches
 
-To submit a blog post,
+If your blog post fits into the list of appropriate content,
 [raise an issue](https://github.com/open-telemetry/opentelemetry.io/issues/new?title=New%20Blog%20Post:%20%3Ctitle%3E)
-with the title and a short description of your blog post. If you are not a
-[Member](https://github.com/open-telemetry/community/blob/main/community-membership.md#member),
-you also need to provide a _sponsor_ for your blog post, who is a Member (by
-that definition) and who is willing to provide a first review of your blog post.
+with the following details:
 
-If you do not raise an issue before providing your PR, we may request you to do
-so before providing a review.
+- Title of the blog post
+- Short description and outline of your blog post
+- If applicable, list the technologies used in your blog post. Make sure that
+  all of them are open source, and prefer CNCF projects over non-CNCF projects
+  (e.g. use Jaeger for trace visualization, and Prometheus for metric
+  visualization)
+- Name of a [SIG](https://github.com/open-telemetry/community/), which is
+  related to this blog post
+- Name of a sponsor (maintainer or approver) from this SIG, who will help to
+  review that PR. That sponsor should ideally be from a different company.
+
+Maintainers of SIG Communication will verify, that your blog post satisfies all
+the requirements for being accepted. If you can not name a SIG/sponsor in your
+initial issue details, they will also point you to an appropriate SIG, you can
+reach out to for sponsorship. Having a sponsor is optional, but having one
+increases the chance of having your blog post reviewed and approved more
+quickly.
+
+If your issue has everything needed, a maintainer will verify that you can go
+ahead and submit your blog post.
 
 ## Submit a blog post
 
@@ -43,10 +70,6 @@ You can submit a blog post either by forking this repository and writing it
 locally or by using the GitHub UI. In both cases we ask you to follow the
 instructions provided by the
 [blog post template](https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/blog.md).
-
-**Note**: Before writing a blog post, ask yourself if your content also might be
-a good addition to the documentation. If the answer is "yes", create a new issue
-or pull request (PR) with your content to get it added to the docs.
 
 ### Fork and write locally
 

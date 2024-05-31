@@ -1,0 +1,20 @@
+title: OpenTelemetry PSR-16 auto-instrumentation
+registryType: instrumentation
+language: php
+tags:
+  - psr16
+  - instrumentation
+  - php
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Psr16
+license: Apache 2.0
+description:
+  Auto-instrumentation hooks are registered via composer, and spans will
+  automatically be created for each PSR-16 cache operation.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-04-18
+package:
+  registry: packagist
+  name: open-telemetry/opentelemetry-auto-psr16
+  version: 0.0.2
