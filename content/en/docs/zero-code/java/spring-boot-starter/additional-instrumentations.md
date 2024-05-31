@@ -1,14 +1,14 @@
 ---
-title: Additional instrumentations
+title: Additional instrumentation
 description:
-  Additional instrumentations in addition to the out of the box instrumentation
-  of the starter
+  Instrumentations in addition to the out of the box instrumentation of the
+  starter
 weight: 50
 ---
 
-The OpenTelemetry Spring Boot starter provides of the box
-instrumentation](../out-of-the-box-instrumentation) that you can complete with
-additional instrumentations.
+The OpenTelemetry Spring Boot starter provides
+[out of the box instrumentation](../out-of-the-box-instrumentation) that you can
+augment with additional instrumentations.
 
 ## Log4j2 Instrumentation
 
@@ -36,7 +36,7 @@ instrumentation library.
 | --------------------------------------------- | ------- | ------- | ----------------------------------------------------------------------------------------------- |
 | `otel.instrumentation.log4j-appender.enabled` | Boolean | true    | Enables the configuration of the Log4j OpenTelemetry appender with an `OpenTelemetry` instance. |
 
-## OpenTelemetry instrumentations libraries
+## Instrumentation libraries
 
-You can configure other instrumentations with
-[OpenTelemetry instrumentations libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks).
+You can configure other instrumentations using
+[OpenTelemetry instrumentation libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks).

@@ -19,9 +19,8 @@ cSpell:ignore: Autowired customizer logback loggable multivalued rolldice spring
 
 On this page you will learn how you can add traces, metrics and logs to your
 code _manually_. But, you are not limited to only use one kind of
-instrumentation: use
-[automatic instrumentation](/docs/languages/java/automatic/) to get started and
-then enrich your code with manual instrumentation as needed.
+instrumentation: use [zero-code instrumentation](/docs/zero-code/java/agent/) to
+get started and then enrich your code with manual instrumentation as needed.
 
 Note, that especially if you cannot modify the source code of your app, you can
 skip manual instrumentation and only use automatic instrumentation.
@@ -461,7 +460,9 @@ import org.springframework.context.annotation.Bean;
 
 import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.context.propagation.TextMapPropagator;
 import io.opentelemetry.api.trace.propagation.W3CTraceContextPropagator;
+import io.opentelemetry.api.baggage.propagation.W3CBaggagePropagator;
 import io.opentelemetry.context.propagation.ContextPropagators;
 import io.opentelemetry.exporter.logging.LoggingMetricExporter;
 import io.opentelemetry.exporter.logging.LoggingSpanExporter;
