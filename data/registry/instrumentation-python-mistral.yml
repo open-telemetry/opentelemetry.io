@@ -1,0 +1,16 @@
+# cSpell:ignore mistralai
+title: MistralAI Instrumentation
+registryType: instrumentation
+language: python
+tags:
+  - python
+  - instrumentation
+  - mistral
+license: Apache 2.0
+description: Instrumentation for Mistral AI LLMs (prompts logging, tokens, etc.)
+authors:
+  - name: Traceloop
+    email: dev@traceloop.com
+urls:
+  repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-mistralai
+createdAt: 2024-05-27

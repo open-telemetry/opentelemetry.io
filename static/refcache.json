@@ -3555,6 +3555,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:01.026666-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-go-contrib/issues/new": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-27T10:19:47.859082+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-go-instrumentation": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:05:48.920317-05:00"
@@ -4331,6 +4335,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-05-03T07:21:05.157831-07:00"
   },
+  "https://github.com/orgs/open-telemetry/projects/92/views/1": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-27T10:19:41.986308+02:00"
+  },
   "https://github.com/orgs/open-telemetry/teams/technical-committee": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:03.796394-05:00"
@@ -4518,6 +4526,10 @@
   "https://github.com/thegeekyasian/go-chi-otel": {
     "StatusCode": 200,
     "LastSeen": "2024-02-20T05:41:18.324089503Z"
+  },
+  "https://github.com/theletterf": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-27T10:19:40.833768+02:00"
   },
   "https://github.com/theletterf/": {
     "StatusCode": 200,
@@ -7147,9 +7159,57 @@
     "StatusCode": 200,
     "LastSeen": "2024-05-10T11:02:15.508410781Z"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/detectors/aws/ec2": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-27T15:24:39.997553+02:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/detectors/aws/ecs": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-27T15:24:41.824016+02:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/detectors/aws/eks": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-27T15:24:42.790066+02:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/detectors/aws/lambda": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-27T15:24:44.71622+02:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-lambda-go/otellambda": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-27T15:17:01.364237+02:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-sdk-go-v2/otelaws": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-27T15:17:03.025299+02:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-27T15:17:03.769226+02:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/github.com/labstack/echo/otelecho": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-27T15:17:04.119134+02:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/go.mongodb.org/mongo-driver/mongo/otelmongo": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-27T15:17:04.438268+02:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/gopkg.in/macaron.v1/otelmacaron": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-27T15:17:04.712687+02:00"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp": {
     "StatusCode": 200,
     "LastSeen": "2024-01-19T15:36:28.468246594Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/aws": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-27T15:17:04.98266+02:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/samplers/aws/xray": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-27T15:17:05.283576+02:00"
   },
   "https://pkg.go.dev/go.opentelemetry.io/otel": {
     "StatusCode": 200,
@@ -8834,6 +8894,10 @@
   "https://www.nuget.org/packages/Microsoft.Data.SqlClient": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:26:37.706115-05:00"
+  },
+  "https://www.nuget.org/packages/Microsoft.EntityFrameworkCore": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-27T05:02:29.416150868Z"
   },
   "https://www.nuget.org/packages/Microsoft.Extensions.Logging": {
     "StatusCode": 200,

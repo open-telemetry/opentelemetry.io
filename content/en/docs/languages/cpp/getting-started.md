@@ -19,7 +19,7 @@ Ensure that you have the following installed locally:
 - Make
 - CMake version >= 3.25
 
-## Example Application
+## Example application
 
 The following example uses a basic [Oat++](https://oatpp.io/) application. If
 you are not using Oat++, that's OK - you can use OpenTelemetry C++ with any
@@ -396,7 +396,7 @@ will see a span being emitted to the terminal.
 }
 ```
 
-## Next Steps
+## Next steps
 
 For more information about instrumenting your code, refer the
 [instrumentation](/docs/languages/cpp/instrumentation) documentation.
