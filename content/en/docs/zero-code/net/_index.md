@@ -1,5 +1,5 @@
 ---
-title: .NET Automatic Instrumentation
+title: .NET zero-code instrumentation
 description: Send traces and metrics from .NET applications and services.
 linkTitle: .NET
 cSpell:ignore: coreutils HKLM iisreset myapp
