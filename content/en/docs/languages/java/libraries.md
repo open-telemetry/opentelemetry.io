@@ -16,7 +16,7 @@ in order to generate telemetry data for a library or framework.
 The Java agent for automatic instrumentation includes instrumentation libraries
 for many common Java frameworks. Most are turned on by default. If you need to
 turn off certain instrumentation libraries, you can
-[suppress them](../automatic/configuration/#suppressing-specific-auto-instrumentation).
+[suppress them](/docs/zero-code/java/agent/configuration/#suppressing-specific-instrumentation).
 
 If you use [code-based instrumentation](../instrumentation), you can leverage
 some instrumentation libraries for your dependencies standalone. To find out
@@ -184,8 +184,7 @@ You might also want to configure an appropriate exporter to
 [export your telemetry data](/docs/languages/java/exporters) to one or more
 telemetry backends.
 
-You can also check the
-[automatic instrumentation for Java](/docs/languages/java/automatic) for
-existing library instrumentations.
+For existing library instrumentations, also see
+[Java agent](/docs/zero-code/java/agent/).
 
 [opentelemetry-java](https://github.com/open-telemetry/opentelemetry-java)

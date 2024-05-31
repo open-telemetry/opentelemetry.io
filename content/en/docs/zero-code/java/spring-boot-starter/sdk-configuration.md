@@ -13,7 +13,7 @@ IDE.
 ## General configuration
 
 The OpenTelemetry Starter supports all the
-[SDK Autoconfiguration](/docs/languages/java/automatic/configuration/#sdk-autoconfiguration)
+[SDK Autoconfiguration](/docs/zero-code/java/agent/configuration/#sdk-autoconfiguration)
 (since 2.2.0).
 
 You can update the configuration with properties in the `application.properties`
@@ -189,7 +189,7 @@ The OpenTelemetry Starter includes the same resource providers as the Java
 agent:
 
 - [Common resource providers](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/resources/library)
-- [Resource providers that are disabled by default](/docs/languages/java/automatic/configuration/#enable-resource-providers-that-are-disabled-by-default)
+- [Resource providers that are disabled by default](/docs/zero-code/java/agent/configuration/#enable-resource-providers-that-are-disabled-by-default)
 
 In addition, the OpenTelemetry Starter includes the following Spring Boot
 specific resource providers:
