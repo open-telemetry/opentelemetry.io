@@ -1,10 +1,9 @@
 ---
 title: Spring Boot starter
 aliases:
-  [
-    /docs/languages/java/automatic/spring-boot/,
-    /docs/zero-code/java/spring-boot/,
-  ]
+  - /docs/languages/java/automatic/spring-boot
+  - /docs/zero-code/java/agent/spring-boot
+  - /docs/zero-code/java/spring-boot
 ---
 
 You can use two options to instrument
@@ -24,5 +23,3 @@ OpenTelemetry.
    - **Spring Boot configuration files** (`application.properties`,
      `application.yml`) to configure the OpenTelemetry Spring Boot starter which
      doesn't work with the OpenTelemetry Java agent
-
-## Use the OpenTelemetry starter

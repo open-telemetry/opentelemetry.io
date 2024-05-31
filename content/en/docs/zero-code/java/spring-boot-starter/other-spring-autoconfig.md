@@ -1,6 +1,6 @@
 ---
-title: Other Spring autoconfigurations
-description: Spring autoconfigurations without the OpenTelemetry Spring starter
+title: Other Spring autoconfiguration
+description: Spring autoconfiguration without the OpenTelemetry Spring starter
 cSpell:ignore: autoconfigurations
 weight: 70
 ---
@@ -26,9 +26,9 @@ public class OpenTelemetryConfig {}
 ## Zipkin starter
 
 OpenTelemetry Zipkin Exporter Starter is a starter package that includes the
-opentelemetry-api, opentelemetry-sdk, opentelemetry-extension-annotations,
-opentelemetry-logging-exporter, opentelemetry-spring-boot-autoconfigurations and
-spring framework starters required to setup distributed tracing. It also
+`opentelemetry-api`, `opentelemetry-sdk`, `opentelemetry-extension-annotations`,
+`opentelemetry-logging-exporter`, `opentelemetry-spring-boot-autoconfigurations`
+and spring framework starters required to setup distributed tracing. It also
 provides the
 [opentelemetry-exporters-zipkin](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/zipkin)
 artifact and corresponding exporter autoconfiguration. Check out
