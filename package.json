@@ -58,6 +58,7 @@
     "fix:markdown": "npm run check:markdown -- --fix",
     "fix:refcache": "npm run check:links",
     "fix:submodules": "npm run _sync",
+    "fix:text": "npm run check:text -- --fix",
     "fix": "npm run fix:all",
     "format": "npm run _check:format -- --write",
     "get:submodule": "npm run _get:${GET:-submodule}",

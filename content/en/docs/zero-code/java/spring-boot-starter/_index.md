@@ -12,7 +12,7 @@ You can use two options to instrument
 OpenTelemetry.
 
 1. The default choice for instrumenting Spring Boot applications is the
-   [**OpenTelemetry Java agent**](../agent) with byte code instrumentation:
+   [**OpenTelemetry Java agent**](../agent) with bytecode instrumentation:
    - **More out of the box instrumentation** than the OpenTelemetry starter
 2. The **OpenTelemetry Spring Boot starter** can help you with:
    - **Spring Boot Native image** applications for which the OpenTelemetry Java
