@@ -2,7 +2,7 @@
 title: Contributing
 description: Learn how to contribute to OpenTelemetry documentation.
 aliases: [/docs/contribution-guidelines]
-weight: 200
+weight: 980
 cSpell:ignore: prepopulated spacewhite
 ---
 

@@ -1,9 +1,9 @@
 ---
 title: Language APIs & SDKs
-description: >-
+description:
   OpenTelemetry code instrumentation is supported for many popular programming
   languages
-weight: 2
+weight: 250
 aliases: [/docs/instrumentation]
 redirects: [{ from: /docs/instrumentation/*, to: ':splat' }]
 ---
