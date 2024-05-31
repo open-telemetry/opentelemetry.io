@@ -1,16 +1,14 @@
 ---
-title: Getting Started
-description: Getting Started of the OpenTelemetry starter
+title: Getting started with the Spring Boot starter
+linkTitle: Getting Started
 weight: 20
 cSpell:ignore: springboot
 ---
 
-## OpenTelemetry Spring Boot starter
-
 {{% alert title="Note" color="info" %}}
 
-You can also use the Java agent to instrument your Spring Boot application. The
-pros and cons are described in the [overview page](..).
+You can also use the [Java agent](../../agent) to instrument your Spring Boot
+application. For the pros and cons, see [Java zero-code instrumentation](..).
 
 {{% /alert %}}
 

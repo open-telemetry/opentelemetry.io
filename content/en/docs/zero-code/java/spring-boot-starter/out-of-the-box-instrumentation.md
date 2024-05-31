@@ -1,7 +1,6 @@
 ---
 title: Out of the box instrumentation
 description: Out of the box instrumentation for the starter
-aliases: [../annotations]
 weight: 40
 cSpell:ignore: autoconfigurations autoconfigures logback webflux webmvc
 ---
