@@ -308,7 +308,7 @@ default=SCOPE_
 %}} Prefix of granted authorities identifying scopes to capture in the `enduser.scopes`
 semantic attribute. {{% /config_option %}}
 
-## Suppressing specific auto-instrumentation
+## Suppressing specific instrumentation
 
 ### Disabling the agent entirely
 
