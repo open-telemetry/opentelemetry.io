@@ -75,27 +75,72 @@ implementations are described in detail below:
   include one of the
   [gRPC transport implementations](https://github.com/grpc/grpc-java#transport).
 
-### Usage
+### Setup
 
-Next, configure the exporter to point at an OTLP endpoint.
+Set up an environment in a new directory named `java-sample-dice`. Inside the
+directory, create a file named `build.gradle.kts` with the following content:
 
-If you use
-[SDK autoconfiguration](/docs/languages/java/instrumentation/#automatic-configuration)
-all you need to do is update your environment variables:
+{{% alert title="Note" color="info" %}} The example is built using Gradle. You
+might need to amend the directory structure and `pom.xml` to run using Maven.
+{{% /alert %}}
 
-```shell
-env OTEL_EXPORTER_OTLP_ENDPOINT=http://example:4317 java -jar ./build/libs/java-simple.jar
+{{< tabpane text=true >}} {{% tab Gradle %}}
+
+```kotlin
+plugins {
+  id("java")
+  id("org.springframework.boot") version "3.0.6"
+  id("io.spring.dependency-management") version "1.1.0"
+}
+
+sourceSets {
+  main {
+    java.setSrcDirs(setOf("."))
+  }
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencyManagement {
+  imports {
+    mavenBom("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}")
+  }
+}
+
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-web");
+    implementation("io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}");
+    implementation("io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}");
+    implementation("io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}");
+    implementation("io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}");
+    implementation("io.opentelemetry.semconv:opentelemetry-semconv:{{% param vers.semconv %}}-alpha");
+    implementation("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param vers.otel %}}");
+}
 ```
 
-Note, that in the case of exporting via OTLP you do not need to set
-`OTEL_TRACES_EXPORTER`, `OTEL_METRICS_EXPORTER` and `OTEL_LOGS_EXPORTER` since
-`otlp` is their default value
+{{% /tab %}} {{% tab Maven %}}
 
-In the case of [manual configuration] you can update the
-[example app](/docs/languages/java/instrumentation#example-app) like the
-following:
+```xml
+<project>
+  <dependencies>
+    <dependency>
+      <groupId>io.opentelemetry</groupId>
+      <artifactId>opentelemetry-sdk-extension-autoconfigure</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.opentelemetry</groupId>
+      <artifactId>opentelemetry-sdk-extension-autoconfigure-spi</artifactId>
+    </dependency>
+  </dependencies>
+</project>
+```
 
-```java { hl_lines=["12-14",21,"39-53"] }
+{{< /tab >}} {{< /tabpane>}}
+
+```java { hl_lines=["8-9","19-22"] }
+// DiceApplication.java
 package otel;
 
 import org.springframework.boot.SpringApplication;
@@ -104,22 +149,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import io.opentelemetry.api.OpenTelemetry;
-import io.opentelemetry.api.common.Attributes;
-import io.opentelemetry.api.trace.propagation.W3CTraceContextPropagator;
-import io.opentelemetry.context.propagation.ContextPropagators;
-import io.opentelemetry.exporter.otlp.metrics.OtlpGrpcMetricExporter;
-import io.opentelemetry.exporter.otlp.trace.OtlpGrpcSpanExporter;
-import io.opentelemetry.exporter.otlp.logs.OtlpGrpcLogRecordExporter;
-import io.opentelemetry.sdk.OpenTelemetrySdk;
-import io.opentelemetry.sdk.metrics.SdkMeterProvider;
-import io.opentelemetry.sdk.metrics.export.PeriodicMetricReader;
-import io.opentelemetry.sdk.resources.Resource;
-import io.opentelemetry.sdk.trace.SdkTracerProvider;
-import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
-import io.opentelemetry.sdk.logs.export.BatchLogRecordProcessor;
-import io.opentelemetry.sdk.logs.SdkLoggerProvider;
-import io.opentelemetry.sdk.logs.export.LogRecordExporter;
-import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
+import io.opentelemetry.sdk.autoconfigure.AutoConfiguredOpenTelemetrySdk;
 
 @SpringBootApplication
 public class DiceApplication {
@@ -131,40 +161,80 @@ public class DiceApplication {
 
   @Bean
   public OpenTelemetry openTelemetry() {
-    Resource resource = Resource.getDefault().toBuilder().put(SERVICE_NAME, "dice-server").put(SERVICE_VERSION, "0.1.0").build();
-
-    SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
-            .addSpanProcessor(BatchSpanProcessor.builder(OtlpGrpcSpanExporter.builder().build()).build())
-            .setResource(resource)
-            .build();
-
-    SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
-            .registerMetricReader(PeriodicMetricReader.builder(OtlpGrpcMetricExporter.builder().build()).build())
-            .setResource(resource)
-            .build();
-
-    SdkLoggerProvider sdkLoggerProvider = SdkLoggerProvider.builder()
-            .addLogRecordProcessor(
-                    BatchLogRecordProcessor.builder(OtlpGrpcLogRecordExporter.builder().build()).build())
-            .setResource(resource)
-            .build();
-
-    OpenTelemetry openTelemetry = OpenTelemetrySdk.builder()
-        .setTracerProvider(sdkTracerProvider)
-        .setMeterProvider(sdkMeterProvider)
-        .setLoggerProvider(sdkLoggerProvider)
-        .setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
-        .buildAndRegisterGlobal();
-
-    return openTelemetry;
+    return AutoConfiguredOpenTelemetrySdk.initialize().getOpenTelemetrySdk();
   }
 }
 ```
+
+```java
+// RollController.java
+package otel;
+
+import java.util.Optional;
+import java.util.concurrent.ThreadLocalRandom;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.trace.Tracer;
+import io.opentelemetry.api.trace.Span;
+
+@RestController
+public class RollController {
+  private static final Logger logger = LoggerFactory.getLogger(RollController.class);
+  private final Tracer tracer;
+
+  @GetMapping("/rolldice")
+  public String index(@RequestParam("player") Optional<String> player) {
+    Span parentSpan = tracer.spanBuilder("parent").startSpan();
+    int result = this.getRandomNumber(1, 6);
+    if (player.isPresent()) {
+      logger.info("{} is rolling the dice: {}", player.get(), result);
+    } else {
+      logger.info("Anonymous player is rolling the dice: {}", result);
+    }
+    parentSpan.end();
+    return Integer.toString(result);
+  }
+
+  public int getRandomNumber(int min, int max) {
+    return ThreadLocalRandom.current().nextInt(min, max + 1);
+  }
+
+  @Autowired
+  RollController(OpenTelemetry openTelemetry) {
+    tracer = openTelemetry.getTracer(RollController.class.getName(), "0.1.0");
+  }
+}
+```
+
+### Run
+
+Next, configure the exporter to point at an OTLP endpoint.
+
+```shell
+gradle assemble
+env \
+OTEL_SERVICE_NAME=dice-server \
+OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317 \
+java -jar ./build/libs/java-sample-dice.jar
+```
+
+Note, that in the case of exporting via OTLP you do not need to set
+`OTEL_TRACES_EXPORTER`, `OTEL_METRICS_EXPORTER` and `OTEL_LOGS_EXPORTER` since
+`otlp` is their default value
 
 ## Console
 
 To debug your instrumentation or see the values locally in development, you can
 use exporters writing telemetry data to the console (stdout).
+
+```shell
+env OTEL_TRACES_EXPORTER=logging OTEL_METRICS_EXPORTER=logging OTEL_LOGS_EXPORTER=logging  java -jar ./build/libs/java-sample-dice.jar
+```
 
 If you followed the [Getting Started](/docs/languages/java/getting-started/) or
 [Manual Instrumentation](/docs/languages/java/instrumentation/) guides, you
@@ -174,15 +244,17 @@ The `LoggingSpanExporter`, the `LoggingMetricExporter` and the
 `SystemOutLogRecordExporter` are included in the
 `opentelemetry-exporter-logging` artifact.
 
-If you use
-[SDK autoconfiguration](/docs/languages/java/instrumentation/#automatic-configuration)
-all you need to do is update your environment variables:
+{{% docs/languages/exporters/jaeger %}}
+
+Next, configure the exporter to point at Jaeger's OTLP endpoint.
 
 ```shell
-env OTEL_TRACES_EXPORTER=logging OTEL_METRICS_EXPORTER=logging OTEL_LOGS_EXPORTER=logging  java -jar ./build/libs/java-simple.jar
+gradle assemble
+env \
+OTEL_SERVICE_NAME=dice-server \
+OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317 \
+java -jar ./build/libs/java-sample-dice.jar
 ```
-
-{{% docs/languages/exporters/jaeger %}}
 
 {{% docs/languages/exporters/prometheus-setup %}}
 
@@ -215,17 +287,15 @@ dependencies {
 
 {{< /tab >}} {{< /tabpane>}}
 
-Update your OpenTelemetry configuration to use the exporter and to send data to
-your Prometheus backend:
+Next, set `OTEL_METRICS_EXPORTER` to `prometheus`.
 
-```java
-import io.opentelemetry.exporter.prometheus.PrometheusHttpServer;
-
-int prometheusPort = 9464;
-SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
-        .registerMetricReader(PrometheusHttpServer.builder().setPort(prometheusPort).build())
-        .setResource(resource)
-        .build();
+```shell
+gradle assemble
+env \
+OTEL_SERVICE_NAME=dice-server \
+OTEL_METRICS_EXPORTER=prometheus \
+OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317 \
+java -jar ./build/libs/java-sample-dice.jar
 ```
 
 With the above you can access your metrics at <http://localhost:9464/metrics>.
