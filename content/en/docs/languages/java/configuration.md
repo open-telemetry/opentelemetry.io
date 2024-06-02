@@ -33,19 +33,20 @@ For example `otel.sdk.enabled` would convert to `OTEL_SDK_ENABLED`.
 
 The
 [autoconfigure module](/docs/languages/java/instrumentation/#automatic-configuration)
-(`opentelemetry-sdk-extension-autoconfigure`) allows you to automatically configure the
-OpenTelemetry SDK based on a standard set of supported environment variables and
-system properties. It is the recommended starting point for configuring the SDK.
+(`opentelemetry-sdk-extension-autoconfigure`) allows you to automatically
+configure the OpenTelemetry SDK based on a standard set of supported environment
+variables and system properties. It is the recommended starting point for
+configuring the SDK.
 
 {{% alert color="info" %}} The autoconfigure module registers Java shutdown
-hooks to shut down the SDK when appropriate. Because OpenTelemetry Java
-uses `java.util.logging` for its logging, some of that logging may be
-suppressed during shutdown hooks. This is a bug in the JDK itself, and not
-something under the control of OpenTelemetry Java. If you require logging during shutdown hooks, please
-consider using `System.out` rather than a logging framework that might shut
-itself down in a shutdown hook, thus suppressing your log messages. See this
-[JDK bug](https://bugs.openjdk.java.net/browse/JDK-8161253) for more details.
-{{% /alert %}}
+hooks to shut down the SDK when appropriate. Because OpenTelemetry Java uses
+`java.util.logging` for its logging, some of that logging may be suppressed
+during shutdown hooks. This is a bug in the JDK itself, and not something under
+the control of OpenTelemetry Java. If you require logging during shutdown hooks,
+please consider using `System.out` rather than a logging framework that might
+shut itself down in a shutdown hook, thus suppressing your log messages. See
+this [JDK bug](https://bugs.openjdk.java.net/browse/JDK-8161253) for more
+details. {{% /alert %}}
 
 {{% alert title="Signal configuration" color="primary" %}}
 
@@ -73,8 +74,7 @@ configured instance (i.e. `OpenTelemetrySdk.builder().build()`).
 ### Resources
 
 A resource is the immutable representation of the entity producing the
-telemetry. See [Resources](/docs/concepts/resources/)
-for more details.
+telemetry. See [Resources](/docs/concepts/resources/) for more details.
 
 | System Property                            | Description                                                                                                 |
 | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
@@ -84,8 +84,8 @@ for more details.
 
 Make sure to use `otel.service.name` to set the
 [`service.name`](/docs/specs/semconv/resource/#service) resource attribute,
-which represents the logical name of your service. If unspecified, the SDK
-sets `service.name=unknown_service:java` by default.
+which represents the logical name of your service. If unspecified, the SDK sets
+`service.name=unknown_service:java` by default.
 
 ### ResourceProvider SPI
 
