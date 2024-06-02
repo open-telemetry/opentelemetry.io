@@ -33,15 +33,15 @@ For example `otel.sdk.enabled` would convert to `OTEL_SDK_ENABLED`.
 
 The
 [autoconfigure module](/docs/languages/java/instrumentation/#automatic-configuration)
-(`opentelemetry-sdk-extension-autoconfigure`) allows you to autoconfigure the
+(`opentelemetry-sdk-extension-autoconfigure`) allows you to automatically configure the
 OpenTelemetry SDK based on a standard set of supported environment variables and
-system properties and is the recommended starting point for configuring the SDK.
+system properties. It is the recommended starting point for configuring the SDK.
 
 {{% alert color="info" %}} The autoconfigure module registers Java shutdown
-hooks to shut down the SDK when appropriate. Please note that since this project
-uses `java.util.logging` for all of it's logging, some of that logging may be
+hooks to shut down the SDK when appropriate. Because OpenTelemetry Java
+uses `java.util.logging` for its logging, some of that logging may be
 suppressed during shutdown hooks. This is a bug in the JDK itself, and not
-something we can control. If you require logging during shutdown hooks, please
+something under the control of OpenTelemetry Hava. If you require logging during shutdown hooks, please
 consider using `System.out` rather than a logging framework that might shut
 itself down in a shutdown hook, thus suppressing your log messages. See this
 [JDK bug](https://bugs.openjdk.java.net/browse/JDK-8161253) for more details.
@@ -73,7 +73,7 @@ configured instance (i.e. `OpenTelemetrySdk.builder().build()`).
 ### Resources
 
 A resource is the immutable representation of the entity producing the
-telemetry. See [Resource semantic conventions](/docs/specs/semconv/resource/)
+telemetry. See [Resources](/docs/concepts/resources/)
 for more details.
 
 | System Property                            | Description                                                                                                 |
@@ -82,9 +82,9 @@ for more details.
 | `otel.service.name`                        | Specify logical service name. Takes precedence over `service.name` defined with `otel.resource.attributes`. |
 | `otel.experimental.resource.disabled-keys` | Specify resource attribute keys that are filtered.                                                          |
 
-You almost always want to specify `otel.service.name` to set the
+Make sure to use `otel.service.name` to set the
 [`service.name`](/docs/specs/semconv/resource/#service) resource attribute,
-which represents the logical name of your service. If not specified, the SDK
+which represents the logical name of your service. If unspecified, the SDK
 sets `service.name=unknown_service:java` by default.
 
 ### ResourceProvider SPI
@@ -125,7 +125,7 @@ JVM argument:
 
 ### Attribute limits
 
-These properties can be used to control the maximum number and length of
+The following properties can be used to control the maximum number and length of
 attributes.
 
 | System property                     | Description                                                                            | Default  |
@@ -135,7 +135,7 @@ attributes.
 
 ### Propagators
 
-The propagators determine which distributed tracing header formats are used, and
+Propagators determine which distributed tracing header formats are used, and
 which baggage propagation header formats are used.
 
 | System property    | Description                                                                      | Default                      |
