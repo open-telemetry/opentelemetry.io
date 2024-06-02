@@ -41,7 +41,7 @@ system properties. It is the recommended starting point for configuring the SDK.
 hooks to shut down the SDK when appropriate. Because OpenTelemetry Java
 uses `java.util.logging` for its logging, some of that logging may be
 suppressed during shutdown hooks. This is a bug in the JDK itself, and not
-something under the control of OpenTelemetry Hava. If you require logging during shutdown hooks, please
+something under the control of OpenTelemetry Java. If you require logging during shutdown hooks, please
 consider using `System.out` rather than a logging framework that might shut
 itself down in a shutdown hook, thus suppressing your log messages. See this
 [JDK bug](https://bugs.openjdk.java.net/browse/JDK-8161253) for more details.
