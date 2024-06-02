@@ -107,8 +107,8 @@ dotnet run
 ## Instrumentation
 
 Next, you'll use a [OpenTelemetry .NET Automatic Instrumentation](../) to
-instrument the application at launch time. While you can [configure .NET
-Automatic Instrumentation][] in a number of ways, the steps below use Unix-shell
+instrument the application at launch time. While you can [configure
+.NET Automatic Instrumentation][] in a number of ways, the steps below use Unix-shell
 or PowerShell scripts.
 
 > **Note**: PowerShell commands require elevated (administrator) privileges.
@@ -150,10 +150,10 @@ or PowerShell scripts.
 
    {{% /tab %}} {{< /tabpane >}}
 
-3. Set and export variables that specify a [console exporter][], then execute
-   script configuring other necessary environment variables using a notation
-   suitable for your shell/terminal environment &mdash; we illustrate a notation
-   for bash-like shells and PowerShell:
+3. Set and export variables that specify a [console exporter][], then execute script
+   configuring other necessary environment variables using a notation suitable for
+   your shell/terminal environment &mdash; we illustrate a notation for bash-like
+   shells and PowerShell:
 
    {{< tabpane text=true >}} {{% tab Unix-shell %}}
 

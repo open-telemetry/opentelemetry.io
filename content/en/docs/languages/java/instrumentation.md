@@ -581,9 +581,10 @@ To do [Tracing](/docs/concepts/signals/traces/) you'll need to acquire a
 First, a `Tracer` must be acquired, which is responsible for creating spans and
 interacting with the [Context](#context-propagation). A tracer is acquired by
 using the OpenTelemetry API specifying the name and version of the [library
-instrumenting][instrumentation library] the [instrumented library] or
-application to be monitored. More information is available in the specification
-chapter [Obtaining a Tracer].
+instrumenting][instrumentation library] the [instrumented library] or application
+to be monitored. More information is available in the specification chapter [Obtaining
+a
+Tracer].
 
 Anywhere in your application where you write manual tracing code should call
 `getTracer` to acquire a tracer. For example:
@@ -1569,8 +1570,8 @@ exporters out of the box:
 - Logging Exporter: saves the telemetry data into log streams. Varieties include
   `LoggingSpanExporter` and `OtlpJsonLoggingSpanExporter`.
 - OpenTelemetry Protocol Exporter: sends the data in OTLP to the [OpenTelemetry
-  Collector] or other OTLP receivers. Varieties include `OtlpGrpcSpanExporter`
-  and `OtlpHttpSpanExporter`.
+  Collector] or other OTLP receivers. Varieties include `OtlpGrpcSpanExporter` and
+  `OtlpHttpSpanExporter`.
 
 Other exporters can be found in the [OpenTelemetry Registry].
 
@@ -1687,8 +1688,8 @@ particular backend. OpenTelemetry provides the following exporters out of the
 box:
 
 - OpenTelemetry Protocol Exporter: sends the data in OTLP to the [OpenTelemetry
-  Collector] or other OTLP receivers. Varieties include
-  `OtlpGrpcLogRecordExporter` and `OtlpHttpLogRecordExporter`.
+  Collector] or other OTLP receivers. Varieties include `OtlpGrpcLogRecordExporter`
+  and `OtlpHttpLogRecordExporter`.
 - `InMemoryLogRecordExporter`: keeps the data in memory, useful for testing and
   debugging.
 - Logging Exporter: saves the telemetry data into log streams. Varieties include

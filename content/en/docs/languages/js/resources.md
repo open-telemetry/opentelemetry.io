@@ -12,13 +12,13 @@ Node.js SDK.
 
 ## Setup
 
-Follow the instructions in the [Getting Started - Node.js][], so that you have
-the files `package.json`, `app.js` and `tracing.js`.
+Follow the instructions in the [Getting Started - Node.js][], so that you have the
+files `package.json`, `app.js` and `tracing.js`.
 
 ## Process & Environment Resource Detection
 
-Out of the box, the Node.js SDK detects [process and process runtime
-resources][] and takes attributes from the environment variable
+Out of the box, the Node.js SDK detects [process and process
+runtime resources][] and takes attributes from the environment variable
 `OTEL_RESOURCE_ATTRIBUTES`. You can verify what it detects by turning on
 diagnostic logging in `tracing.js`:
 
