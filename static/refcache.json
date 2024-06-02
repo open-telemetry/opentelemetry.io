@@ -3631,6 +3631,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:01.097111-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-java#sdk-exporters": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-02T11:02:06.509027-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-contrib": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:32.494549-05:00"
