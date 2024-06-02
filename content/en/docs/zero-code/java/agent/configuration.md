@@ -29,13 +29,15 @@ can enable additional resource providers that are disabled by default:
 {{% config_option
 name="otel.resource.providers.aws.enabled"
 default=false
-%}} Enables the [AWS Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources).
+%}} Enables the
+[AWS Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources).
 {{% /config_option %}}
 
 {{% config_option
 name="otel.resource.providers.gcp.enabled"
 default=false
-%}} Enables the [GCP Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources).
+%}} Enables the
+[GCP Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources).
 {{% /config_option %}}
 
 ## Configuring the agent
@@ -254,22 +256,26 @@ and
 {{% config_option
 name="otel.instrumentation.common.enduser.enabled"
 default=false
-%}} Common flag for enabling/disabling enduser attributes. {{% /config_option %}}
+%}} Common flag for enabling/disabling enduser attributes.
+{{% /config_option %}}
 
 {{% config_option
 name="otel.instrumentation.common.enduser.id.enabled"
 default=false
-%}} Determines whether to capture `enduser.id` semantic attribute. {{% /config_option %}}
+%}} Determines whether to capture `enduser.id` semantic attribute.
+{{% /config_option %}}
 
 {{% config_option
 name="otel.instrumentation.common.enduser.role.enabled"
 default=false
-%}} Determines whether to capture `enduser.role` semantic attribute. {{% /config_option %}}
+%}} Determines whether to capture `enduser.role` semantic attribute.
+{{% /config_option %}}
 
 {{% config_option
 name="otel.instrumentation.common.enduser.scope.enabled"
 default=false
-%}} Determines whether to capture `enduser.scope` semantic attribute. {{% /config_option %}}
+%}} Determines whether to capture `enduser.scope` semantic attribute.
+{{% /config_option %}}
 
 #### Spring Security
 
@@ -282,14 +288,14 @@ names:
 {{% config_option
 name="otel.instrumentation.spring-security.enduser.role.granted-authority-prefix"
 default=ROLE_
-%}} Prefix of granted authorities identifying roles to capture in the `enduser.role`
-semantic attribute. {{% /config_option %}}
+%}} Prefix of granted authorities identifying roles to capture in the
+`enduser.role` semantic attribute. {{% /config_option %}}
 
 {{% config_option
 name="otel.instrumentation.spring-security.enduser.scope.granted-authority-prefix"
 default=SCOPE_
-%}} Prefix of granted authorities identifying scopes to capture in the `enduser.scopes`
-semantic attribute. {{% /config_option %}}
+%}} Prefix of granted authorities identifying scopes to capture in the
+`enduser.scopes` semantic attribute. {{% /config_option %}}
 
 ## Suppressing specific instrumentation
 

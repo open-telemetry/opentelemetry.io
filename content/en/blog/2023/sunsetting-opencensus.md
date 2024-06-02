@@ -90,6 +90,7 @@ repository[^python-timeline].
     maintainers.
 
 [^shim-next-release]: Python and JavaScript shim packages will be released soon.
+
 [^shim-support]:
     These shims implement the stable
     [OpenCensus Compatibility specification](/docs/specs/otel/compatibility/opencensus#migration-path)
