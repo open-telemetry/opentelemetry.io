@@ -107,8 +107,9 @@ using `@WithSpan` and you want to suppress some of them without modifying the
 code.
 
 {{% config_option
-  name="otel.instrumentation.opentelemetry-instrumentation-annotations.exclude-methods" %}}
-Suppress `@WithSpan` instrumentation for specific methods. Format is `my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`.
+  name="otel.instrumentation.opentelemetry-instrumentation-annotations.exclude-methods" %}} Suppress
+`@WithSpan` instrumentation for specific methods. Format is
+`my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`.
 {{% /config_option %}}
 
 ## Creating spans around methods with `otel.instrumentation.methods.include`
