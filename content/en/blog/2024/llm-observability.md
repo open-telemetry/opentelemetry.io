@@ -87,7 +87,7 @@ costs. Here are the key signals to monitor:
 {{% alert title="Note" %}}
 
 The LLM Working Group has recommended on capturing these details on events
-instead of spans.attributes because many backend systems can struggle with those
+instead of span attributes because many backend systems can struggle with those
 often large payloads.
 
 {{% /alert %}}
