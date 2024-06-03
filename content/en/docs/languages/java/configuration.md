@@ -13,8 +13,8 @@ available [configuration options](/docs/languages/sdk-configuration/). For
 conformance details, see the
 [compliance matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md).
 
-These configuration options apply not only when using the
-[Java agent](/docs/zero-code/java/agent/), but also for all other uses of the
+The following configuration options apply to the
+[Java agent](/docs/zero-code/java/agent/) and all other uses of the
 SDK.
 
 {{% alert title="System Properties and Environment Variables" color="info" %}}
@@ -35,15 +35,14 @@ The
 [autoconfigure module](/docs/languages/java/instrumentation/#automatic-configuration)
 (`opentelemetry-sdk-extension-autoconfigure`) allows you to automatically
 configure the OpenTelemetry SDK based on a standard set of supported environment
-variables and system properties. It is the recommended starting point for
-configuring the SDK.
+variables and system properties. Start your SDK configurations from it.
 
 {{% alert color="info" %}} The autoconfigure module registers Java shutdown
 hooks to shut down the SDK when appropriate. Because OpenTelemetry Java uses
 `java.util.logging` for its logging, some of that logging may be suppressed
 during shutdown hooks. This is a bug in the JDK itself, and not something under
 the control of OpenTelemetry Java. If you require logging during shutdown hooks,
-please consider using `System.out` rather than a logging framework that might
+consider using `System.out` rather than a logging framework that might
 shut itself down in a shutdown hook, thus suppressing your log messages. See
 this [JDK bug](https://bugs.openjdk.java.net/browse/JDK-8161253) for more
 details. {{% /alert %}}
@@ -92,7 +91,7 @@ which represents the logical name of your service. If unspecified, the SDK sets
 The
 [autoconfigure-spi](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure-spi)
 SDK extension provides a `ResourceProvider` SPI that allows libraries to
-automatically provide Resources, which are merged into a single Resource by the
+automatically provide resources, which are merged into a single resource by the
 autoconfiguration module. You can create your own `ResourceProvider`, or
 optionally use an artifact that includes built-in ResourceProviders:
 
