@@ -178,8 +178,7 @@ spec:
 
 #### Learn more {#dotnet-learn-more}
 
-For more details, see
-[.NET Auto Instrumentation docs](/docs/languages/net/automatic/).
+For more details, see [.NET Auto Instrumentation docs](/docs/zero-code/net/).
 
 ### Java
 
@@ -213,7 +212,7 @@ Therefore, the example uses `http://demo-collector:4318`, which connects to the
 #### Excluding auto-instrumentation {#java-excluding-auto-instrumentation}
 
 By default, the Java auto-instrumentation ships with
-[many instrumentation libraries](/docs/languages/java/automatic/#supported-libraries-frameworks-application-services-and-jvms).
+[many instrumentation libraries](/docs/zero-code/java/agent/#supported-libraries-frameworks-application-services-and-jvms).
 This makes instrumentation easy, but could result in too much or unwanted data.
 If there are any libraries you do not want to use you can set the
 `OTEL_INSTRUMENTATION_[NAME]_ENABLED=false` where `[NAME]` is the name of the
@@ -222,7 +221,7 @@ the default libraries by setting
 `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false` and then use
 `OTEL_INSTRUMENTATION_[NAME]_ENABLED=true` where `[NAME]` is the name of the
 library. For more details, see
-[Suppressing specific auto-instrumentation](/docs/languages/java/automatic/configuration/#suppressing-specific-auto-instrumentation).
+[Suppressing specific instrumentation](/docs/zero-code/java/agent/configuration/#suppressing-specific-instrumentation).
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
@@ -249,7 +248,7 @@ spec:
 #### Learn more {#java-learn-more}
 
 For more details, see
-[Java agent Configuration](/docs/languages/java/automatic/configuration/).
+[Java agent Configuration](/docs/zero-code/java/agent/configuration/).
 
 ### Node.js
 
