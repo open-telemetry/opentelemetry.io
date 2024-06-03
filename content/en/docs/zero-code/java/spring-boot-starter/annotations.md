@@ -1,6 +1,5 @@
 ---
 title: Annotations
-description: Using instrumentation annotations with the Spring starter.
 weight: 60
 ---
 

@@ -1,8 +1,5 @@
 ---
 title: Additional instrumentation
-description:
-  Instrumentations in addition to the out of the box instrumentation of the
-  starter
 weight: 50
 ---
 
