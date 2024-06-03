@@ -292,7 +292,7 @@ range and not considered outages.
 
 This depends on the CPU metrics available on the deployment, eg.:
 `kube_pod_container_resource_limits{resource="cpu", unit="core"}` for
-Kubernetes. Let's call it `available_cores` below. The idea here is to have an
+Kubernetes. Let's call it `available_cores`. The idea here is to have an
 upper bound of the number of available cores, and the maximum expected ingestion
 rate considered safe, let's call it `safe_rate`, per core. This should trigger
 increase of resources/ instances (or raise an alert as appropriate) whenever
@@ -305,8 +305,8 @@ Provide reference `safe_rate` for a few selected configurations.
 
 #### Queue length
 
-Most exporters offer a
-[queue/retry mechanism](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/exporterhelper/README.md)
+Most exporters provide a
+[queue or retry mechanism](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/exporterhelper/README.md)
 that is recommended for use in any production deployment of the Collector.
 
 The `otelcol_exporter_queue_capacity` metric indicates the capacity, in batches,
@@ -324,8 +324,8 @@ points, and log records that failed to reach the sending queue:
 These failures could be caused by a queue filled with unsettled elements. You
 might need to decrease your sending rate or horizontally scale Collectors.
 
-The queue/retry mechanism also supports logging for monitoring. Check the logs
-for messages such as `Dropping data because sending_queue is full`.
+The queue or retry mechanism also supports logging for monitoring. Check the
+logs for messages such as `Dropping data because sending_queue is full`.
 
 #### Receive failures
 
