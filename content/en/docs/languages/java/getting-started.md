@@ -19,10 +19,9 @@ Ensure that you have the following installed locally:
 
 ## Example Application
 
-The following example uses a basic [Spring Boot] application. You can use
-another web framework, such as Apache Wicket or Play. For a complete list of
-libraries and supported frameworks, consult the
-[registry](/ecosystem/registry/?component=instrumentation&language=java).
+The following example uses a basic [Spring Boot] application. You can use another
+web framework, such as Apache Wicket or Play. For a complete list of libraries and
+supported frameworks, consult the [registry](/ecosystem/registry/?component=instrumentation&language=java).
 
 For more elaborate examples, see [examples](/docs/languages/java/examples/).
 
@@ -137,8 +136,8 @@ agent][] in a number of ways, the steps below use environment variables.
    to the JAR file.{{% /alert %}}
 
 2. Set and export variables that specify the Java agent JAR and a [console
-   exporter][], using a notation suitable for your shell/terminal environment
-   &mdash; we illustrate a notation for bash-like shells:
+   exporter][], using a notation suitable for your shell/terminal environment &mdash;
+   we illustrate a notation for bash-like shells:
 
    ```sh
    export JAVA_TOOL_OPTIONS="-javaagent:PATH/TO/opentelemetry-javaagent.jar" \
@@ -240,8 +239,7 @@ For more:
 - Try [zero-code instrumentation](/docs/zero-code/java/agent/) on one of your
   own apps.
 - For light-weight customized telemetry, try [annotations][].
-- Learn about [manual instrumentation][] and try out more
-  [examples](/docs/languages/java/examples/).
+- Learn about [manual instrumentation][] and try out more [examples](/docs/languages/java/examples/).
 - Take a look at the [OpenTelemetry Demo](/docs/demo/), which includes Java
   based [Ad Service](/docs/demo/services/ad/) and Kotlin based
   [Fraud Detection Service](/docs/demo/services/fraud-detection/)
