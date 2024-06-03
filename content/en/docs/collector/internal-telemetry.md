@@ -292,9 +292,9 @@ range and not considered outages.
 
 This depends on the CPU metrics available on the deployment, eg.:
 `kube_pod_container_resource_limits{resource="cpu", unit="core"}` for
-Kubernetes. Let's call it `available_cores`. The idea here is to have an
-upper bound of the number of available cores, and the maximum expected ingestion
-rate considered safe, let's call it `safe_rate`, per core. This should trigger
+Kubernetes. Let's call it `available_cores`. The idea here is to have an upper
+bound of the number of available cores, and the maximum expected ingestion rate
+considered safe, let's call it `safe_rate`, per core. This should trigger
 increase of resources/ instances (or raise an alert as appropriate) whenever
 `(actual_rate/available_cores) < safe_rate`.
 
