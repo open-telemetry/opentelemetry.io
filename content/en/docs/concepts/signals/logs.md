@@ -1,6 +1,7 @@
 ---
 title: Logs
 weight: 3
+description: A recording of an event.
 ---
 
 A **log** is a timestamped text record, either structured (recommended) or

@@ -19,9 +19,8 @@ cSpell:ignore: Autowired customizer logback loggable multivalued rolldice spring
 
 On this page you will learn how you can add traces, metrics and logs to your
 code _manually_. But, you are not limited to only use one kind of
-instrumentation: use
-[automatic instrumentation](/docs/languages/java/automatic/) to get started and
-then enrich your code with manual instrumentation as needed.
+instrumentation: use [zero-code instrumentation](/docs/zero-code/java/agent/) to
+get started and then enrich your code with manual instrumentation as needed.
 
 Note, that especially if you cannot modify the source code of your app, you can
 skip manual instrumentation and only use automatic instrumentation.
@@ -461,7 +460,9 @@ import org.springframework.context.annotation.Bean;
 
 import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.context.propagation.TextMapPropagator;
 import io.opentelemetry.api.trace.propagation.W3CTraceContextPropagator;
+import io.opentelemetry.api.baggage.propagation.W3CBaggagePropagator;
 import io.opentelemetry.context.propagation.ContextPropagators;
 import io.opentelemetry.exporter.logging.LoggingMetricExporter;
 import io.opentelemetry.exporter.logging.LoggingSpanExporter;
@@ -578,9 +579,10 @@ To do [Tracing](/docs/concepts/signals/traces/) you'll need to acquire a
 First, a `Tracer` must be acquired, which is responsible for creating spans and
 interacting with the [Context](#context-propagation). A tracer is acquired by
 using the OpenTelemetry API specifying the name and version of the [library
-instrumenting][instrumentation library] the [instrumented library] or
-application to be monitored. More information is available in the specification
-chapter [Obtaining a Tracer].
+instrumenting][instrumentation library] the [instrumented library] or application
+to be monitored. More information is available in the specification chapter [Obtaining
+a
+Tracer].
 
 Anywhere in your application where you write manual tracing code should call
 `getTracer` to acquire a tracer. For example:
@@ -1566,8 +1568,8 @@ exporters out of the box:
 - Logging Exporter: saves the telemetry data into log streams. Varieties include
   `LoggingSpanExporter` and `OtlpJsonLoggingSpanExporter`.
 - OpenTelemetry Protocol Exporter: sends the data in OTLP to the [OpenTelemetry
-  Collector] or other OTLP receivers. Varieties include `OtlpGrpcSpanExporter`
-  and `OtlpHttpSpanExporter`.
+  Collector] or other OTLP receivers. Varieties include `OtlpGrpcSpanExporter` and
+  `OtlpHttpSpanExporter`.
 
 Other exporters can be found in the [OpenTelemetry Registry].
 
@@ -1684,8 +1686,8 @@ particular backend. OpenTelemetry provides the following exporters out of the
 box:
 
 - OpenTelemetry Protocol Exporter: sends the data in OTLP to the [OpenTelemetry
-  Collector] or other OTLP receivers. Varieties include
-  `OtlpGrpcLogRecordExporter` and `OtlpHttpLogRecordExporter`.
+  Collector] or other OTLP receivers. Varieties include `OtlpGrpcLogRecordExporter`
+  and `OtlpHttpLogRecordExporter`.
 - `InMemoryLogRecordExporter`: keeps the data in memory, useful for testing and
   debugging.
 - Logging Exporter: saves the telemetry data into log streams. Varieties include
