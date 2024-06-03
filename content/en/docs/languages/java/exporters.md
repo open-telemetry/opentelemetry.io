@@ -91,9 +91,8 @@ Note, that in the case of exporting via OTLP you do not need to set
 `OTEL_TRACES_EXPORTER`, `OTEL_METRICS_EXPORTER` and `OTEL_LOGS_EXPORTER` since
 `otlp` is their default value
 
-In the case of [manual configuration] you can update the
-[example app](/docs/languages/java/instrumentation#example-app) like the
-following:
+In the case of [manual configuration] you can update the [example app](/docs/languages/java/instrumentation#example-app)
+like the following:
 
 ```java { hl_lines=["12-14",21,"39-53"] }
 package otel;

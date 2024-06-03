@@ -229,8 +229,8 @@ in the NGINX module and we need to fix that.
 
 ### The fix
 
-To fix our problem we [added some checks to the module for NGINX][], that make
-sure that the trace headers are only set once.
+To fix our problem we [added some checks to the module for NGINX][], that make sure
+that the trace headers are only set once.
 
 This fix is contained in the [v1.0.1 release of the otel-webserver-module][].
 This means you can update the `Dockerfile` to install the NGINX module like the
@@ -260,5 +260,5 @@ COPY opentelemetry_module.conf /etc/nginx/conf.d
 [v1.0.1 release of the otel-webserver-module]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/releases/tag/webserver%2Fv1.0.1
 [java]:
-  /docs/languages/java/automatic/configuration/#capturing-http-request-and-response-headers
+  /docs/zero-code/java/agent/configuration/#capturing-http-request-and-response-headers
 [python]: /docs/languages/python/automatic/

@@ -488,8 +488,7 @@ For more:
 
 - Run this example with another [exporter][] for telemetry data.
 - Try [automatic instrumentation](../automatic/) on one of your own apps.
-- Learn more about [manual instrumentation][] and try out some
-  [examples](/docs/languages/php/examples/).
+- Learn more about [manual instrumentation][] and try out some [examples](/docs/languages/php/examples/).
 - Take a look at the [OpenTelemetry Demo](/docs/demo/), which includes the PHP
   based [Quote Service](/docs/demo/services/quote/).
 

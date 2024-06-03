@@ -396,11 +396,7 @@ const name = "rolldice"
 var (
 	tracer = otel.Tracer(name)
 	meter  = otel.Meter(name)
-	logger = otelslog.NewLogger(
-		otelslog.WithInstrumentationScope(instrumentation.Scope{
-			Name: name,
-		}),
-	)
+	logger = otelslog.NewLogger(name)
 	rollCnt metric.Int64Counter
 )
 
