@@ -265,8 +265,7 @@ For more:
 
 - Run this example with another [exporter][] for telemetry data.
 - Try [automatic instrumentation](/docs/zero-code/net/) on one of your own apps.
-- Learn about [manual instrumentation][] and try out more
-  [examples](/docs/languages/net/examples/).
+- Learn about [manual instrumentation][] and try out more [examples](/docs/languages/net/examples/).
 - Take a look at the [OpenTelemetry Demo](/docs/demo/), which includes .NET
   based [Cart Service](/docs/demo/services/cart/).
 

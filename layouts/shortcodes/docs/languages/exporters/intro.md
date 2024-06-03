@@ -51,8 +51,8 @@ them up.
 
 <div class="alert alert-info" role="alert"><h4 class="alert-heading">Note</h4>
 
-If you use [automatic instrumentation](/docs/languages/{{ $l }}/automatic) you
-can learn how to setup exporters following the [Configuration
+If you use [automatic instrumentation](/docs/languages/{{ $l }}/automatic) you can
+learn how to setup exporters following the [Configuration
 Guide](/docs/languages/{{ $l }}/automatic/configuration/).
 
 </div>

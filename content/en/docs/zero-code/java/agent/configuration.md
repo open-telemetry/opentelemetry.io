@@ -10,25 +10,8 @@ cSpell:ignore: akka armeria classloaders couchbase Customizer datasource dbcp Do
 ## SDK Autoconfiguration
 
 The SDK's autoconfiguration module is used for basic configuration of the agent.
-Read the
-[docs](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure)
-to find settings such as configuring export or sampling.
-
-Here are some quick links into those docs for the configuration options for
-specific portions of the SDK & agent:
-
-- [Exporters](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#exporters)
-  - [OTLP exporter (span, metric, and log exporters)](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#otlp-exporter-span-metric-and-log-exporters)
-  - [Jaeger exporter](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#jaeger-exporter)
-  - [Zipkin exporter](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#zipkin-exporter)
-  - [Prometheus exporter](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#prometheus-exporter)
-  - [Logging exporter](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#logging-exporter)
-- [Trace context propagation](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#propagator)
-- [OpenTelemetry Resource and service name](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#opentelemetry-resource)
-- [Batch span processor](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#batch-span-processor)
-- [Sampler](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#sampler)
-- [Span limits](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#span-limits)
-- [Using SPI to further configure the SDK](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#customizing-the-opentelemetry-sdk)
+Read the [docs](/docs/languages/java/configuration) to find settings such as
+configuring export or sampling.
 
 {{% alert title="Important" color="warning" %}}
 
@@ -44,15 +27,17 @@ In addition to the resource configuration from the SDK autoconfiguration, you
 can enable additional resource providers that are disabled by default:
 
 {{% config_option
-  name="otel.resource.providers.aws.enabled"
-  default=false
-%}} Enables the [AWS Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources).
+name="otel.resource.providers.aws.enabled"
+default=false
+%}} Enables the
+[AWS Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources).
 {{% /config_option %}}
 
 {{% config_option
-  name="otel.resource.providers.gcp.enabled"
-  default=false
-%}} Enables the [GCP Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources).
+name="otel.resource.providers.gcp.enabled"
+default=false
+%}} Enables the
+[GCP Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources).
 {{% /config_option %}}
 
 ## Configuring the agent
@@ -188,8 +173,8 @@ This behavior is turned on by default for all database instrumentations. Use the
 following property to disable it:
 
 {{% config_option
-  name="otel.instrumentation.common.db-statement-sanitizer.enabled"
-  default=true
+name="otel.instrumentation.common.db-statement-sanitizer.enabled"
+default=true
 %}} Enables the DB statement sanitization. {{% /config_option %}}
 
 ### Capturing HTTP request and response headers
@@ -243,8 +228,8 @@ You can configure the agent to capture the consumer message receive telemetry in
 messaging instrumentation. Use the following property to enable it:
 
 {{% config_option
-  name="otel.instrumentation.messaging.experimental.receive-telemetry.enabled"
-  default=false
+name="otel.instrumentation.messaging.experimental.receive-telemetry.enabled"
+default=false
 %}} Enables the consumer message receive telemetry. {{% /config_option %}}
 
 Note that this will cause the consumer side to start a new trace, with only a
@@ -271,22 +256,26 @@ and
 {{% config_option
 name="otel.instrumentation.common.enduser.enabled"
 default=false
-%}} Common flag for enabling/disabling enduser attributes. {{% /config_option %}}
+%}} Common flag for enabling/disabling enduser attributes.
+{{% /config_option %}}
 
 {{% config_option
 name="otel.instrumentation.common.enduser.id.enabled"
 default=false
-%}} Determines whether to capture `enduser.id` semantic attribute. {{% /config_option %}}
+%}} Determines whether to capture `enduser.id` semantic attribute.
+{{% /config_option %}}
 
 {{% config_option
 name="otel.instrumentation.common.enduser.role.enabled"
 default=false
-%}} Determines whether to capture `enduser.role` semantic attribute. {{% /config_option %}}
+%}} Determines whether to capture `enduser.role` semantic attribute.
+{{% /config_option %}}
 
 {{% config_option
 name="otel.instrumentation.common.enduser.scope.enabled"
 default=false
-%}} Determines whether to capture `enduser.scope` semantic attribute. {{% /config_option %}}
+%}} Determines whether to capture `enduser.scope` semantic attribute.
+{{% /config_option %}}
 
 #### Spring Security
 
@@ -299,14 +288,14 @@ names:
 {{% config_option
 name="otel.instrumentation.spring-security.enduser.role.granted-authority-prefix"
 default=ROLE_
-%}} Prefix of granted authorities identifying roles to capture in the `enduser.role`
-semantic attribute. {{% /config_option %}}
+%}} Prefix of granted authorities identifying roles to capture in the
+`enduser.role` semantic attribute. {{% /config_option %}}
 
 {{% config_option
 name="otel.instrumentation.spring-security.enduser.scope.granted-authority-prefix"
 default=SCOPE_
-%}} Prefix of granted authorities identifying scopes to capture in the `enduser.scopes`
-semantic attribute. {{% /config_option %}}
+%}} Prefix of granted authorities identifying scopes to capture in the
+`enduser.scopes` semantic attribute. {{% /config_option %}}
 
 ## Suppressing specific instrumentation
 
@@ -491,13 +480,13 @@ associated span name on the parent
 [SpanKind.Server](/docs/specs/otel/trace/api/#spankind) span.
 
 {{% config_option
-  name="otel.instrumentation.common.experimental.controller-telemetry.enabled"
-  default=false
+name="otel.instrumentation.common.experimental.controller-telemetry.enabled"
+default=false
 %}} Set to `true` to enable controller telemetry. {{% /config_option %}}
 
 {{% config_option
-  name="otel.instrumentation.common.experimental.view-telemetry.enabled"
-  default=false
+name="otel.instrumentation.common.experimental.view-telemetry.enabled"
+default=false
 %}} Set to `true` to enable view telemetry. {{% /config_option %}}
 
 ### Instrumentation span suppression behavior
