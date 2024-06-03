@@ -55,10 +55,6 @@ banners:
 OpenTelemetry は API、SDK、ツールのコレクションです。
 テレメトリーデータ（メトリクス、ログ、トレース）の計装、生成、収集、エクスポートに使用し、ソフトウェアのパフォーマンスや動作の分析に役立てましょう。
 
-..
-  > OpenTelemetry is **generally available** across
-  > [several languages](/docs/languages/) and is suitable for use.
-
 > OpenTelemetryは[いくつかの言語](/docs/languages/)で **一般的に利用可能** で、使用に適しています。
 
 {{% /blocks/lead %}}
