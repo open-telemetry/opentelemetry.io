@@ -123,4 +123,5 @@ adding support for profiling, client-side RUM, and more. It’s a great time to
 get involved – check out our [website](https://opentelemetry.io) to learn more!
 
 [^1]: Pending due diligence and review by the OpenTelemetry maintainers.
+
 [^2]: According to public download statistics of our .NET, Java, and Python APIs

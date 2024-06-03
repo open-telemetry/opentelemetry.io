@@ -98,8 +98,8 @@ critical analysis.
 
 Log output is found in `stderr`. You can configure logs in the config
 `service::telemetry::logs`. The [configuration
-options](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
-param vers %}}/service/telemetry/config.go) are:
+options](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param
+vers %}}/service/telemetry/config.go) are:
 
 | Field name             | Default value | Description                                                                                                                                                                                                                                                                                       |
 | ---------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

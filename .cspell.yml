@@ -41,7 +41,6 @@ words:
   - autoloader
   - autoloading
   - backoff
-  - bytecode
   - caml
   - cartservice
   - cassandra

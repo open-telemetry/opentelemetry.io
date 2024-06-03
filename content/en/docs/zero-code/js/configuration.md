@@ -4,7 +4,7 @@ linkTitle: Configuration
 description: Learn how to configure Zero-Code Instrumentation for Node.js
 aliases:
   - /docs/languages/js/automatic/configuration
-  - /docs/languages/js/automatic/module-config]
+  - /docs/languages/js/automatic/module-config
 weight: 10
 cSpell:ignore: serviceinstance
 ---

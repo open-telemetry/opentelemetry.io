@@ -7,9 +7,9 @@ cSpell:ignore: getenv myhost SIGINT uuidgen WORKDIR
 {{% docs/languages/resources-intro %}}
 
 If you use the Java agent for
-[automatic instrumentation](/docs/languages/java/automatic) you can learn how to
-setup resource detection following the
-[Agent Configuration Guide](/docs/languages/java/automatic/configuration).
+[zero-code instrumentation](/docs/zero-code/java/agent/) you can setup resource
+detection through
+[agent configuration](/docs/zero-code/java/agent/configuration).
 
 For manual instrumentation, you will find some introductions on how to set up
 resource detection below.
