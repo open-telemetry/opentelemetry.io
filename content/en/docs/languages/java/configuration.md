@@ -14,8 +14,7 @@ conformance details, see the
 [compliance matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md).
 
 The following configuration options apply to the
-[Java agent](/docs/zero-code/java/agent/) and all other uses of the
-SDK.
+[Java agent](/docs/zero-code/java/agent/) and all other uses of the SDK.
 
 {{% alert title="System Properties and Environment Variables" color="info" %}}
 Any setting configurable with a system property can also be configured with an
@@ -42,10 +41,10 @@ hooks to shut down the SDK when appropriate. Because OpenTelemetry Java uses
 `java.util.logging` for its logging, some of that logging may be suppressed
 during shutdown hooks. This is a bug in the JDK itself, and not something under
 the control of OpenTelemetry Java. If you require logging during shutdown hooks,
-consider using `System.out` rather than a logging framework that might
-shut itself down in a shutdown hook, thus suppressing your log messages. See
-this [JDK bug](https://bugs.openjdk.java.net/browse/JDK-8161253) for more
-details. {{% /alert %}}
+consider using `System.out` rather than a logging framework that might shut
+itself down in a shutdown hook, thus suppressing your log messages. See this
+[JDK bug](https://bugs.openjdk.java.net/browse/JDK-8161253) for more details.
+{{% /alert %}}
 
 {{% alert title="Signal configuration" color="primary" %}}
 
@@ -73,7 +72,7 @@ configured instance (i.e. `OpenTelemetrySdk.builder().build()`).
 ### Resources
 
 A resource is the immutable representation of the entity producing the
-telemetry. See [Resources](/docs/concepts/resources/) for more details.
+telemetry. See [resources](/docs/concepts/resources/) for more details.
 
 | System Property                            | Description                                                                                                 |
 | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
