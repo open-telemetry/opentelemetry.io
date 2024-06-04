@@ -227,7 +227,9 @@ The logging exporter prints the name of the span along with its attributes to
 stdout. It's mainly used for testing and debugging.
 
 > This configuration option applies when using the
-> `opentelemetry-exporter-logging` artifact.
+> `opentelemetry-exporter-logging` artifact. For full artifact ID and version
+> information, reference the
+> [SDK exporter list](https://github.com/open-telemetry/opentelemetry-java#sdk-exporters).
 
 | Environment variable             | Description                               |
 | -------------------------------- | ----------------------------------------- |
@@ -243,7 +245,9 @@ The logging-otlp exporter writes the telemetry data to the JUL logger in OTLP
 JSON form. It's a more verbose output mainly used for testing and debugging.
 
 > This configuration option applies when using the
-> `opentelemetry-exporter-logging-otlp` artifact.
+> `opentelemetry-exporter-logging-otlp` artifact. For full artifact ID and
+> version information, reference the
+> [SDK exporter list](https://github.com/open-telemetry/opentelemetry-java#sdk-exporters).
 
 | Environment variable                  | Description                                         |
 | ------------------------------------- | --------------------------------------------------- |
@@ -284,7 +288,9 @@ The [Zipkin](https://zipkin.io/zipkin-api/) exporter sends JSON in
 specified HTTP URL.
 
 > These configuration options apply when using the
-> `opentelemetry-exporter-zipkin` artifact.
+> `opentelemetry-exporter-zipkin` artifact. For full artifact ID and version
+> information, reference the
+> [SDK exporter list](https://github.com/open-telemetry/opentelemetry-java#sdk-exporters).
 
 | System property                 | Description                                                                                                           |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
