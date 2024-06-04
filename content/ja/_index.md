@@ -4,19 +4,6 @@ description: >-
   効果的な観測を可能にする、高品質でユビキタスかつポータブルなテレメトリー
 developer_note:
   blocks/coverコラム（以下で使用）は、ファイル名に "background" を含む画像ファイルを背景画像として使用します。
-show_banner: true
-limit_banner: 2 # Default to 2, adjust as needed
-banners:
-  - message:
-      '<i class="fas fa-bullhorn"></i> Join us for [**OTel Community Day** on
-      June
-      25th](https://events.linuxfoundation.org/open-telemetry-community-day/)!'
-    to: 2024-06-25
-  - message:
-      '<i class="fas fa-bullhorn"></i> Help improve OTel and Prometheus
-      interoperability: [complete our
-      survey](https://forms.gle/bZAG9f7udoJsjZUG9) by May 31'
-    to: 2024-05-31
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
@@ -65,7 +52,7 @@ OpenTelemetry は API、SDK、ツールのコレクションです。
 
 サービスやソフトウェアからテレメトリーデータを作成・収集し、様々な分析ツールに転送します。
 
-{{% /blocks/feature %}}。
+{{% /blocks/feature %}}
 
 {{% blocks/feature icon="fas fa-magic" title="ドロップイン計装" %}}
 
