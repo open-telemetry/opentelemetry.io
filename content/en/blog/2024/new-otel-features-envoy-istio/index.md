@@ -5,12 +5,13 @@ date: 2024-05-28
 author: '[Joao Grassi](https://github.com/joaopgrassi) (Dynatrace)'
 issue: 4534
 sig: OpenTelemetry Specification
+cSpell:ignore: bookinfo Grassi istioctl Joao productpage
 ---
 
 In the dynamic world of cloud-native and distributed applications, managing
-microservices effectively is critical. [Kubernetes](https://kubernetes.io/) has become the de facto
-standard for container orchestration, enabling seamless deployment, scaling, and
-management of containerized applications.
+microservices effectively is critical. [Kubernetes](https://kubernetes.io/) has
+become the de facto standard for container orchestration, enabling seamless
+deployment, scaling, and management of containerized applications.
 
 The distributed nature of such systems, however, adds a layer of complexity in
 the form of networking for in-cluster communication. Two well-known projects,
@@ -41,7 +42,8 @@ not instrumented.
 
 Envoy offers several
 [tracers](https://www.envoyproxy.io/docs/envoy/v1.29.4/api-v3/config/trace/trace)
-that do the job of tracing the requests, including the [OpenTelemetry tracer](https://opentelemetry.io/docs/concepts/signals/traces/#tracer).
+that do the job of tracing the requests, including the
+[OpenTelemetry tracer](https://opentelemetry.io/docs/concepts/signals/traces/#tracer).
 Tracers can be configured either directly within Envoy (when using it as a
 standalone component) or for all Envoy instances by using Istio.
 
@@ -51,8 +53,8 @@ Here is an example of how Istio and Envoy work together to trace requests:
 
 ## Introducing new OpenTelemetry tracing features in Envoy and Istio
 
-Although Envoy already had support for exporting OpenTelemetry traces using gRPC,
-it lacked support for exporting using HTTP. OpenTelemetry specifies both
+Although Envoy already had support for exporting OpenTelemetry traces using
+gRPC, it lacked support for exporting using HTTP. OpenTelemetry specifies both
 transports as first-class citizens. In addition, other areas such as providing
 resource attributes and configurable sampling decisions were lagging behind the
 stable portions of the OpenTelemetry specification.
@@ -101,7 +103,8 @@ be exported to [Jaeger](https://www.jaegertracing.io/) using HTTP.
 
 ### Install Jaeger
 
-First, start by installing the [Jaeger operator](https://www.jaegertracing.io/docs/1.57/operator/):
+First, start by installing the
+[Jaeger operator](https://www.jaegertracing.io/docs/1.57/operator/):
 
 ```shell
 kubectl create namespace observability
@@ -179,7 +182,7 @@ metadata:
 spec:
   concurrency: 0
   environmentVariables:
-    OTEL_RESOURCE_ATTRIBUTES: "host-name=abc-123"
+    OTEL_RESOURCE_ATTRIBUTES: "host.name=abc-123"
 EOF
 ```
 
@@ -198,7 +201,7 @@ kubectl apply -f bookinfo.yaml
 Let's make some requests to one of the services:
 
 ```shell
-k exec "$(k get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}')" -c ratings -- curl -sS productpage:9080/productpage | grep -o "<title>.*</title>"
+kubectl exec "$(k get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}')" -c ratings -- curl -sS productpage:9080/productpage | grep -o "<title>.*</title>"
 ```
 
 Then we can check it out on the Jaeger UI. There, we should see some traces!
@@ -211,8 +214,8 @@ Let's analyze the spans produced by Envoy:
    `productpage` service.
 2. Then we see the incoming (ingress) call in the `productpage` service.
 3. We also see the `host-name` resource attribute we applied using the
-   `OTEL_RESOURCE_ATTRIBUTES`. That attribute was picked up by the environment resource
-   detector and added to all spans Envoy created.
+   `OTEL_RESOURCE_ATTRIBUTES`. That attribute was picked up by the environment
+   resource detector and added to all spans Envoy created.
 
 Apart from this, we can see all the other downstream calls made, as all services
 have the Envoy sidecar injected by Istio. We have full observability of the
