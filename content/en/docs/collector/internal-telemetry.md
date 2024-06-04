@@ -5,10 +5,11 @@ weight: 25
 cSpell:ignore: alloc journalctl kube otecol pprof tracez underperforming zpages
 ---
 
-You can monitor the health of any OpenTelemetry Collector instance by checking
+You can inspect the health of any OpenTelemetry Collector instance by checking
 its own internal telemetry. Read on to learn about this telemetry and how to
-configure it to help you [troubleshoot](/docs/collector/troubleshooting/)
-Collector issues.
+configure it to help you
+[monitor](#use-internal-telemetry-to-monitor-the-collector) and
+[troubleshoot](/docs/collector/troubleshooting/) the Collector.
 
 ## Activate internal telemetry in the Collector
 
@@ -97,9 +98,9 @@ critical analysis.
 ### Configure internal logs
 
 Log output is found in `stderr`. You can configure logs in the config
-`service::telemetry::logs`. The [configuration
-options](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param
-vers %}}/service/telemetry/config.go) are:
+`service::telemetry::logs`. The
+[configuration options](https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/telemetry/config.go)
+are:
 
 | Field name             | Default value | Description                                                                                                                                                                                                                                                                                       |
 | ---------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
