@@ -90,6 +90,7 @@
     "update:hugo+": "npm run update:hugo && npm run update:docsy-dep",
     "update:netlify": "npm install --save-optional netlify-cli@latest",
     "update:other-pkg": "npm install --save-dev gulp@latest",
+    "update:pkgs": "npx npm-check-updates -u",
     "update:submodule:lang": "npm run seq -- update:submodule _get:submodule:non-lang",
     "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 1}"
   },
@@ -124,7 +125,8 @@
     "path": "^0.12.7"
   },
   "optionalDependencies": {
-    "netlify-cli": "^17.23.5"
+    "netlify-cli": "^17.23.5",
+    "npm-check-updates": "^16.14.20"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "engines": {
