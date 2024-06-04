@@ -3,7 +3,7 @@ title: OpenTelemetry Concepts
 linkTitle: Concepts
 description: Key concepts in OpenTelemetry
 aliases: [concepts/overview]
-weight: 2
+weight: 170
 ---
 
 This section covers data sources and key components of the OpenTelemetry
