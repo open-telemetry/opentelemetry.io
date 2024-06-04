@@ -43,7 +43,7 @@ not instrumented.
 Envoy offers several
 [tracers](https://www.envoyproxy.io/docs/envoy/v1.29.4/api-v3/config/trace/trace)
 that do the job of tracing the requests, including the
-[OpenTelemetry tracer](https://opentelemetry.io/docs/concepts/signals/traces/#tracer).
+[OpenTelemetry tracer](/docs/concepts/signals/traces/#tracer).
 Tracers can be configured either directly within Envoy (when using it as a
 standalone component) or for all Envoy instances by using Istio.
 

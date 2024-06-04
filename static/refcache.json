@@ -6135,6 +6135,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-04-30T09:31:37.735092936Z"
   },
+  "https://opentelemetry.io/docs/concepts/signals/traces/#tracer": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-04T11:05:52.856746897+02:00"
+  },
   "https://opentelemetry.io/docs/languages/cpp/exporters/": {
     "StatusCode": 206,
     "LastSeen": "2024-04-30T09:31:38.598060401Z"
@@ -8455,6 +8459,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:10:25.924884-05:00"
   },
+  "https://www.cncf.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-04T11:05:52.652576509+02:00"
+  },
   "https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T20:05:14.383107-05:00"
@@ -8746,6 +8754,10 @@
   "https://www.jaegertracing.io/docs/1.47/getting-started/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:06:08.853078-05:00"
+  },
+  "https://www.jaegertracing.io/docs/1.57/operator/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-04T11:05:53.067463654+02:00"
   },
   "https://www.jaegertracing.io/docs/latest/apis/": {
     "StatusCode": 206,
