@@ -3,7 +3,7 @@ title:
   An Introduction to Observability for LLM-based applications using
   OpenTelemetry
 linkTitle: LLM Observability
-date: 2024-06-03
+date: 2024-06-04
 author: '[Ishan Jain](https://github.com/ishanjainn) (Grafana)'
 cSpell:ignore: associated chatbots Ishan ishan_jainn ishanjainn Jain llm
 ---
