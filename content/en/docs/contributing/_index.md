@@ -2,7 +2,7 @@
 title: Contributing
 description: Learn how to contribute to OpenTelemetry documentation.
 aliases: [/docs/contribution-guidelines]
-weight: 200
+weight: 980
 cSpell:ignore: prepopulated spacewhite
 ---
 
@@ -421,9 +421,9 @@ close the terminal window.
 
 #### Site deploys and PR previews
 
-If you submit a PR, Netlify creates a [deploy preview][] so that you can review
-your changes. Once your PR is merged, Netlify deploys the updated site to the
-production server.
+If you submit a PR, Netlify creates a [deploy preview][] so that you can review your
+changes. Once your PR is merged, Netlify deploys the updated site to the production
+server.
 
 > **Note**: PR previews include _draft pages_, but production builds do not.
 

@@ -211,6 +211,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T15:25:24.128818-05:00"
   },
+  "https://bugs.openjdk.java.net/browse/JDK-8161253": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-25T07:41:26.50757-04:00"
+  },
   "https://bundler.io/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:01:19.540115-05:00"
@@ -3763,6 +3767,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:09.842104-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.35.0": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-27T13:39:34.845798-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.38.0": {
     "StatusCode": 200,
     "LastSeen": "2024-05-24T10:11:28.259677-05:00"
@@ -6054,6 +6062,10 @@
   "https://opentelemetry.io": {
     "StatusCode": 206,
     "LastSeen": "2024-03-19T10:16:59.755536357Z"
+  },
+  "https://opentelemetry.io/blog/2022/jaeger-native-otlp/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-27T13:39:35.171666-04:00"
   },
   "https://opentelemetry.io/blog/2024/otel-collector-anti-patterns/": {
     "StatusCode": 206,
@@ -9534,6 +9546,10 @@
   "https://zipkin.io/zipkin-api/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:07:54.399973-05:00"
+  },
+  "https://zipkin.io/zipkin-api/#/default/post_spans": {
+    "StatusCode": 206,
+    "LastSeen": "2024-04-27T13:39:35.686013-04:00"
   },
   "https://zoom.us/j/5227112777": {
     "StatusCode": 200,
