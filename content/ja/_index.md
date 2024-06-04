@@ -40,7 +40,7 @@ banners:
 </div>
 
 <div class="h3 mt-4">
-<a class="text-secondary" href="/docs/getting-started/">Get started</a> based on your role
+あなたのロールに応じて<a class="text-secondary" href="/docs/getting-started/">始めてみましょう</a>
 </div>
 <div class="l-get-started-buttons">
 
@@ -84,12 +84,12 @@ OpenTelemetryは、[Spring](https://spring.io)、[ASP.NET Core](https://docs.mic
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**OpenTelemetryは[CNCF][] [インキュベーティング][]プロジェクトです。**<br>OpenTracingとOpenCensusのプロジェクトが合併して設立されました。
+**OpenTelemetryは[CNCF][] [incubating][]プロジェクトです。**<br>OpenTracingとOpenCensusのプロジェクトが合併して設立されました。
 
 [![CNCF logo][]][cncf]
 
 [cncf]: https://cncf.io
 [cncf logo]: /img/logos/cncf-white.svg
-[インキュベーティング]: https://www.cncf.io/projects/
+[incubating]: https://www.cncf.io/projects/
 
 {{% /blocks/section %}}
