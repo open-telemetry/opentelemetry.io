@@ -4,7 +4,7 @@ linkTitle: FaaS
 description: >-
   OpenTelemetry supports various methods of monitoring Function-as-a-Service
   provided by different cloud vendors
-weight: 12
+weight: 360
 ---
 
 Functions as a Service (FaaS) is an important serverless compute platform for

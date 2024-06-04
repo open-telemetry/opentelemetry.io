@@ -217,6 +217,7 @@
   docsUrl: https://masstransit.io/documentation/configuration/observability
   components: [.NET]
   oss: true
+  native: true
 - name: Kuma
   url: https://kuma.io/
   docsUrl: https://kuma.io/docs/2.7.x/guides/otel-metrics/

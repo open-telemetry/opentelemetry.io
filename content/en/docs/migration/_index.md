@@ -1,7 +1,7 @@
 ---
 title: Migration
 description: How to migrate to OpenTelemetry
-weight: 50
+weight: 950
 ---
 
 ## OpenTracing and OpenCensus

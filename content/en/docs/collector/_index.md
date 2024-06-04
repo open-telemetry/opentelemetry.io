@@ -3,8 +3,8 @@ title: Collector
 description: Vendor-agnostic way to receive, process and export telemetry data.
 aliases: [collector/about]
 cascade:
-  vers: 0.101.0
-weight: 10
+  vers: 0.102.0
+weight: 270
 ---
 
 ![OpenTelemetry Collector diagram with Jaeger, OTLP and Prometheus integration](img/otel-collector.svg)
