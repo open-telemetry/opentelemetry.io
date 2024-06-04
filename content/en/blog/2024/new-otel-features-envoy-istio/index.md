@@ -8,7 +8,7 @@ sig: OpenTelemetry Specification
 ---
 
 In the dynamic world of cloud-native and distributed applications, managing
-microservices effectively is critical. Kubernetes has become the de facto
+microservices effectively is critical. [Kubernetes](https://kubernetes.io/) has become the de facto
 standard for container orchestration, enabling seamless deployment, scaling, and
 management of containerized applications.
 
@@ -29,7 +29,7 @@ plane" for service meshes.
 
 [Envoy](https://www.cncf.io/projects/envoy/) and
 [Istio](https://www.cncf.io/projects/istio/) projects are open source and part
-of the Cloud Native Computing Foundation.
+of the [Cloud Native Computing Foundation](https://www.cncf.io/).
 
 ## Observability in Envoy and Istio
 
@@ -41,7 +41,7 @@ not instrumented.
 
 Envoy offers several
 [tracers](https://www.envoyproxy.io/docs/envoy/v1.29.4/api-v3/config/trace/trace)
-that do the job of tracing the requests, including the OpenTelemetry tracer.
+that do the job of tracing the requests, including the [OpenTelemetry tracer](https://opentelemetry.io/docs/concepts/signals/traces/#tracer).
 Tracers can be configured either directly within Envoy (when using it as a
 standalone component) or for all Envoy instances by using Istio.
 
@@ -101,7 +101,7 @@ be exported to [Jaeger](https://www.jaegertracing.io/) using HTTP.
 
 ### Install Jaeger
 
-First, start by installing the Jaeger operator:
+First, start by installing the [Jaeger operator](https://www.jaegertracing.io/docs/1.57/operator/):
 
 ```shell
 kubectl create namespace observability
