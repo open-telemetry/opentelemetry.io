@@ -19,6 +19,14 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:54:18.004628-05:00"
   },
+  "http://go.opentelemetry.io/collector/config/configgrpc": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-05T14:38:00.458726875+02:00"
+  },
+  "http://go.opentelemetry.io/collector/config/confighttp": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-04T17:29:53.957107724+02:00"
+  },
   "http://mypy-lang.org/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:02:04.404963-05:00"
@@ -38,6 +46,10 @@
   "http://www.zstd.net/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:15:09.743434-05:00"
+  },
+  "https://7asecurity.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-04T17:29:49.77219755+02:00"
   },
   "https://access.redhat.com/products/ansible-tower-red-hat": {
     "StatusCode": 200,
@@ -1943,6 +1955,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:01:58.402439-05:00"
   },
+  "https://en.wikipedia.org/wiki/Zip_bomb": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-04T17:29:51.894512776+02:00"
+  },
   "https://equalitymi.org/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:20.222589-05:00"
@@ -2322,6 +2338,10 @@
   "https://github.com/adnanrahic": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:01:30.362583-05:00"
+  },
+  "https://github.com/advisories/GHSA-4374-p667-p6c8": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-04T17:29:54.745634368+02:00"
   },
   "https://github.com/aishyandapalli": {
     "StatusCode": 200,
@@ -2923,6 +2943,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:04.146005-05:00"
   },
+  "https://github.com/mx-psi": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-04T17:29:48.499621359+02:00"
+  },
   "https://github.com/nemoshlag": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:15.066411-05:00"
@@ -3203,6 +3227,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:01.186504-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.102.0": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-04T17:29:53.270047268+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.102.1": {
+    "StatusCode": 404,
+    "LastSeen": "2024-06-05T14:38:00.277846076+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.74.0": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:23.898255-05:00"
@@ -3231,9 +3263,21 @@
     "StatusCode": 200,
     "LastSeen": "2024-04-04T11:07:15.276911438-07:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/issues/8510": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-04T17:29:55.674365003+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/issues/9375": {
     "StatusCode": 200,
     "LastSeen": "2024-05-03T08:34:29.3339-07:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/pull/10289": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-04T17:29:52.747224454+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/pull/10323": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-05T14:37:59.891183931+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/pull/6140": {
     "StatusCode": 200,
@@ -3298,6 +3342,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.84.0": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:16.610744-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/security/advisories/GHSA-c74f-6mfw-mm4v": {
+    "StatusCode": 404,
+    "LastSeen": "2024-06-05T14:37:58.550003406+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-configuration": {
     "StatusCode": 200,
@@ -4498,6 +4546,10 @@
   "https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-with-GraalVM": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:09.784881-05:00"
+  },
+  "https://github.com/stamparm/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-04T17:29:57.257378271+02:00"
   },
   "https://github.com/statsd/statsd": {
     "StatusCode": 200,
@@ -5839,6 +5891,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-22T14:34:52.350494+01:00"
   },
+  "https://nvd.nist.gov/vuln/detail/CVE-2024-36129": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-04T17:29:51.244907508+02:00"
+  },
   "https://o11y.news": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:10:29.899332-05:00"
@@ -6043,6 +6099,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-03-19T10:16:59.755536357Z"
   },
+  "https://opentelemetry.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-04T17:29:59.050384645+02:00"
+  },
   "https://opentelemetry.io/blog/2022/jaeger-native-otlp/": {
     "StatusCode": 206,
     "LastSeen": "2024-04-27T13:39:35.171666-04:00"
@@ -6123,6 +6183,14 @@
     "StatusCode": 206,
     "LastSeen": "2024-04-30T09:31:38.379400427Z"
   },
+  "https://opentelemetry.io/docs/migration/opentracing/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-04T17:29:58.687939269+02:00"
+  },
+  "https://opentelemetry.io/docs/migration/opentracing/#language-version-support": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-04T17:29:58.393305846+02:00"
+  },
   "https://opentelemetry.io/docs/specs/otel/glossary/#instrumentation-library": {
     "StatusCode": 206,
     "LastSeen": "2024-04-30T09:31:37.929550219Z"
@@ -6130,6 +6198,34 @@
   "https://opentelemetry.io/docs/specs/otel/protocol": {
     "StatusCode": 206,
     "LastSeen": "2024-02-24T14:33:05.630341-08:00"
+  },
+  "https://opentelemetry.io/docs/specs/otel/versioning-and-stability/#semantic-conventions-stability": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-04T17:30:02.895017798+02:00"
+  },
+  "https://opentelemetry.io/docs/specs/otlp/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-04T17:30:00.93746657+02:00"
+  },
+  "https://opentelemetry.io/docs/specs/semconv/exceptions/exceptions-spans/#recording-an-exception": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-04T17:30:00.355601942+02:00"
+  },
+  "https://opentelemetry.io/docs/specs/semconv/general/attribute-naming/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-04T17:29:59.520526055+02:00"
+  },
+  "https://opentelemetry.io/docs/specs/semconv/general/attribute-requirement-level/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-04T17:29:56.977663774+02:00"
+  },
+  "https://opentelemetry.io/docs/specs/semconv/general/metric-requirement-level/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-04T17:29:59.855130203+02:00"
+  },
+  "https://opentelemetry.io/docs/specs/semconv/resource/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-04T17:30:01.040485926+02:00"
   },
   "https://opentelemetry.io/docs/specs/semconv/resource/k8s/": {
     "StatusCode": 206,
@@ -6166,6 +6262,10 @@
   "https://osquery.io/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-19T13:15:33.481201+01:00"
+  },
+  "https://ostif.org/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-04T17:29:49.319661335+02:00"
   },
   "https://otterize.com/": {
     "StatusCode": 200,
@@ -8430,6 +8530,10 @@
   "https://www.cncf.io": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:10:25.924884-05:00"
+  },
+  "https://www.cncf.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-04T17:29:48.60678168+02:00"
   },
   "https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/": {
     "StatusCode": 206,
