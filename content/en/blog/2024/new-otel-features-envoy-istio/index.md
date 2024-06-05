@@ -1,6 +1,6 @@
 ---
-title: 'Observability on the Edge: Enhancing OTel support in Envoy and Istio'
-linkTitle: New OTel features in Envoy and Istio
+title: 'Observability on the Edge: New OTel features for Envoy and Istio'
+linkTitle: New OTel features for Envoy and Istio
 date: 2024-05-28
 author: '[Joao Grassi](https://github.com/joaopgrassi) (Dynatrace)'
 issue: 4534
