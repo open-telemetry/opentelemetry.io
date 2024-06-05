@@ -4,7 +4,7 @@ linkTitle: Configuration
 weight: 10
 aliases: [config]
 # prettier-ignore
-cSpell:ignore: authservice blrp Dotel ignore LOWMEMORY myservice ottrace PKCS retryable
+cSpell:ignore: authservice blrp Dotel ignore LOWMEMORY myservice ottrace PKCS retryable tracepropagators
 ---
 
 The OpenTelemetry SDK provides a working implementation of the API, and can be
@@ -12,6 +12,9 @@ set up and configured in a number of ways. The Java SDK supports most of the
 available [configuration options](/docs/languages/sdk-configuration/). For
 conformance details, see the
 [compliance matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md).
+
+The following configuration options apply to the
+[Java agent](/docs/zero-code/java/agent/) and all other uses of the SDK.
 
 {{% alert title="System Properties and Environment Variables" color="info" %}}
 Any setting configurable with a system property can also be configured with an
@@ -21,36 +24,40 @@ an environment variable:
 - Convert the name to uppercase.
 - Replace all `.` and `-` characters with `_`.
 
-For example `otel.instrumentation.common.default-enabled` would convert to
-`OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED`.
+For example `otel.sdk.enabled` would convert to `OTEL_SDK_ENABLED`.
 
 {{% /alert %}}
 
 ## General
 
-The autoconfigure module registers Java shutdown hooks to shut down the SDK when
-appropriate. Please note that since this project uses `java.util.logging` for
-all of it's logging, some of that logging may be suppressed during shutdown
-hooks. This is a bug in the JDK itself, and not something we can control. If you
-require logging during shutdown hooks, please consider using `System.out` rather
-than a logging framework that might shut itself down in a shutdown hook, thus
-suppressing your log messages. See this
-[JDK bug](https://bugs.openjdk.java.net/browse/JDK-8161253) for more details.
+The
+[autoconfigure module](/docs/languages/java/instrumentation/#automatic-configuration)
+(`opentelemetry-sdk-extension-autoconfigure`) allows you to automatically
+configure the OpenTelemetry SDK based on a standard set of supported environment
+variables and system properties. Start your SDK configurations from it.
 
-{{% alert title="Signal configuration" color="info" %}}
+{{% alert color="info" %}} The autoconfigure module registers Java shutdown
+hooks to shut down the SDK when appropriate. Because OpenTelemetry Java uses
+`java.util.logging` for its logging, some of that logging may be suppressed
+during shutdown hooks. This is a bug in the JDK itself, and not something under
+the control of OpenTelemetry Java. If you require logging during shutdown hooks,
+consider using `System.out` rather than a logging framework that might shut
+itself down in a shutdown hook, thus suppressing your log messages. See this
+[JDK bug](https://bugs.openjdk.java.net/browse/JDK-8161253) for more details.
+{{% /alert %}}
+
+{{% alert title="Signal configuration" color="primary" %}}
 
 The text placeholder `{signal}` refers to the supported
 [OpenTelemetry Signal](/docs/concepts/signals/). Valid values include `traces`,
 `metrics`, and `logs`.
 
-{{% /alert %}}
-
-### Configuration Priority
-
 Signal specific configurations take priority over the generic versions.
 
 For example, if you set both `otel.exporter.otlp.endpoint` and
 `otel.exporter.otlp.traces.endpoint`, the latter will take precedence.
+
+{{% /alert %}}
 
 ### Disabling OpenTelemetrySdk
 
@@ -62,7 +69,94 @@ configured instance (i.e. `OpenTelemetrySdk.builder().build()`).
 | ------------------- | ----------------------------------------- | ------- |
 | `otel.sdk.disabled` | If `true`, disable the OpenTelemetry SDK. | `false` |
 
+### Resources
+
+A resource is the immutable representation of the entity producing the
+telemetry. See [resources](/docs/concepts/resources/) for more details.
+
+| System Property                            | Description                                                                                                 |
+| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| `otel.resource.attributes`                 | Specify resource attributes in the following format: `key1=val1,key2=val2,key3=val3`.                       |
+| `otel.service.name`                        | Specify logical service name. Takes precedence over `service.name` defined with `otel.resource.attributes`. |
+| `otel.experimental.resource.disabled-keys` | Specify resource attribute keys that are filtered.                                                          |
+
+Make sure to use `otel.service.name` to set the
+[`service.name`](/docs/specs/semconv/resource/#service) resource attribute,
+which represents the logical name of your service. If unspecified, the SDK sets
+`service.name=unknown_service:java` by default.
+
+### ResourceProvider SPI
+
+The
+[autoconfigure-spi](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure-spi)
+SDK extension provides a `ResourceProvider` SPI that allows libraries to
+automatically provide resources, which are merged into a single resource by the
+autoconfiguration module. You can create your own `ResourceProvider`, or
+optionally use an artifact that includes built-in ResourceProviders:
+
+- [io.opentelemetry.instrumentation:opentelemetry-resources](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/resources)
+  includes providers for a
+  [predefined set of common resources](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/resources/library/src/main/java/io/opentelemetry/instrumentation/resources)
+- [io.opentelemetry.contrib:opentelemetry-aws-resources](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources)
+  includes providers for
+  [common AWS resources](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources/src/main/java/io/opentelemetry/contrib/aws/resource)
+- [io.opentelemetry.contrib:opentelemetry-gcp-resources](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources)
+  includes providers for
+  [common GCP resources](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources/src/main/java/io/opentelemetry/contrib/gcp/resource)
+
+### Disabling automatic ResourceProviders
+
+Many instrumentation agent distributions automatically include various
+`ResourceProvider` implementations. These can be turned on or off as follows:
+
+| Environment variable                    | Description                                                                                  |
+| --------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `otel.java.enabled.resource.providers`  | Turns on one or more `ResourceProvider` types. If unset, all resource providers are enabled. |
+| `otel.java.disabled.resource.providers` | Turns off one or more `ResourceProvider` types.                                              |
+
+The value for these properties must be a comma-separated list of fully qualified
+`ResourceProvider` class names. For example, if you don't want to expose the
+name of the operating system through the resource, you can pass the following
+JVM argument:
+
+`-Dotel.java.disabled.resource.providers=io.opentelemetry.instrumentation.resources.OsResourceProvider`
+
+### Attribute limits
+
+The following properties can be used to control the maximum number and length of
+attributes.
+
+| System property                     | Description                                                                            | Default  |
+| ----------------------------------- | -------------------------------------------------------------------------------------- | -------- |
+| `otel.attribute.value.length.limit` | The maximum length of attribute values. Applies to spans and logs.                     | No limit |
+| `otel.attribute.count.limit`        | The maximum number of attributes. Applies to spans, span events, span links, and logs. | `128`    |
+
+### Propagators
+
+Propagators determine which distributed tracing header formats are used, and
+which baggage propagation header formats are used.
+
+| System property    | Description                                                                      | Default                      |
+| ------------------ | -------------------------------------------------------------------------------- | ---------------------------- |
+| `otel.propagators` | The propagators to be used. Use a comma-separated list for multiple propagators. | `tracecontext,baggage` (W3C) |
+
+Supported values are the following:
+
+| Value          | Description                                                                                                      | Artifacts                                                    |
+| -------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| `tracecontext` | [W3C Trace Context](https://www.w3.org/TR/trace-context/) (add `baggage` as well to include W3C baggage).        | `opentelemetry-api`                                          |
+| `baggage`      | [W3C Baggage](https://www.w3.org/TR/baggage/).                                                                   | `opentelemetry-api`                                          |
+| `b3`           | [B3 Single](https://github.com/openzipkin/b3-propagation#single-header).                                         | `opentelemetry-extension-tracepropagators`                   |
+| `b3multi`      | [B3 Multi](https://github.com/openzipkin/b3-propagation#multiple-headers).                                       | `opentelemetry-extension-tracepropagators`                   |
+| `jaeger`       | [Jaeger](https://www.jaegertracing.io/docs/1.21/client-libraries/#propagation-format) (includes Jaeger baggage). | `opentelemetry-extension-tracepropagators`                   |
+| `xray`         | [AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-tracingheader).    | `io.opentelemetry.contrib:opentelemetry-aws-xray-propagator` |
+| `ottrace`      | [OT Trace](https://github.com/opentracing?q=basic&type=&language=).                                              | `opentelemetry-extension-trace-propagators`                  |
+
 ### Exporters
+
+> These configuration options apply when using
+> `opentelemetry-exporter-{SDK exporter}` artifacts (see
+> [list of available exporters](https://github.com/open-telemetry/opentelemetry-java#sdk-exporters)).
 
 Exporters output the telemetry. The following configuration properties are
 common to all exporters:
@@ -73,16 +167,15 @@ common to all exporters:
 | `otel.java.experimental.exporter.memory_mode` | If `reusable_data`, enable reusable memory mode (on exporters which support it) to reduce allocations. Default is `immutable_data`. This option is experimental and subject to change or removal.[^1] |
 
 [^1]:
-
-Exporters which adhere to
-`otel.java.experimental.exporter.memory_mode=reusable_data` are
-`OtlpGrpcMetricExporter`, `OtlpHttpMetricExporter`, and `PrometheusHttpServer`.
-Support for additional exporters may be added in the future.
+    Exporters which adhere to
+    `otel.java.experimental.exporter.memory_mode=reusable_data` are
+    `OtlpGrpc{Signal}Exporter`, `OtlpHttp{Signal}Exporter`, and
+    `PrometheusHttpServer`.
 
 #### OTLP exporter (span, metric, and log exporters)
 
 The [OpenTelemetry Protocol (OTLP)](/docs/specs/otlp) span, metric, and log
-exporters
+exporters.
 
 | System property                                            | Description                                                                                                                                                                                                                                                                                                                                                                                                                          | Default                                                                                                                    |
 | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
@@ -107,13 +200,7 @@ exporters
 | `otel.exporter.otlp.metrics.default.histogram.aggregation` | The preferred default histogram aggregation. Options include `BASE2.EXPONENTIAL.BUCKET.HISTOGRAM` and `EXPLICIT.BUCKET.HISTOGRAM`.                                                                                                                                                                                                                                                                                                   | `EXPLICIT.BUCKET.HISTOGRAM`                                                                                                |
 | `otel.experimental.exporter.otlp.retry.enabled`            | If `true`, enable [experimental retry support](#otlp-exporter-retry).                                                                                                                                                                                                                                                                                                                                                                | `false`                                                                                                                    |
 
-[^2]:
-
-OpenTelemetry Java agent 2.x uses `http/protobuf` by default.
-
-To configure the service name for the OTLP exporter, add the `service.name` key
-to the OpenTelemetry Resource. For example:
-`OTEL_RESOURCE_ATTRIBUTES=service.name=myservice`.
+[^2]: OpenTelemetry Java agent 2.x uses `http/protobuf` by default.
 
 ##### OTLP exporter retry
 
@@ -123,8 +210,9 @@ retry strategy. When retry is enabled, retryable gRPC status codes are retried
 using an exponential backoff with jitter algorithm as described in the
 [gRPC Retry Design](https://github.com/grpc/proposal/blob/master/A6-client-retries.md#exponential-backoff).
 
-The policy has the following configuration, which there is currently no way to
-customize:
+The policy has the following configuration, which is can only be customized via
+programmatic configuration (see
+[customizing the OpenTelemetry SDK](#customizing-the-opentelemetry-sdk)):
 
 | Option              | Description                                                     | Default |
 | ------------------- | --------------------------------------------------------------- | ------- |
@@ -137,6 +225,11 @@ customize:
 
 The logging exporter prints the name of the span along with its attributes to
 stdout. It's mainly used for testing and debugging.
+
+> This configuration option applies when using the
+> `opentelemetry-exporter-logging` artifact. For full artifact ID and version
+> information, reference the
+> [SDK exporter list](https://github.com/open-telemetry/opentelemetry-java#sdk-exporters).
 
 | Environment variable             | Description                               |
 | -------------------------------- | ----------------------------------------- |
@@ -151,6 +244,11 @@ The logging exporter is also set when `otel.{signal}.exporter`, is set to
 The logging-otlp exporter writes the telemetry data to the JUL logger in OTLP
 JSON form. It's a more verbose output mainly used for testing and debugging.
 
+> This configuration option applies when using the
+> `opentelemetry-exporter-logging-otlp` artifact. For full artifact ID and
+> version information, reference the
+> [SDK exporter list](https://github.com/open-telemetry/opentelemetry-java#sdk-exporters).
+
 | Environment variable                  | Description                                         |
 | ------------------------------------- | --------------------------------------------------- |
 | `otel.{signal}.exporter=logging-otlp` | Select the logging OTLP JSON exporter for {signal}. |
@@ -159,92 +257,6 @@ JSON form. It's a more verbose output mainly used for testing and debugging.
 `OtlpJsonLogging{Signal}Exporters` are stable, specifying their use via
 `otel.{signal}.exporter=logging-otlp` is experimental and subject to change or
 removal. {{% /alert %}}
-
-### Resources
-
-A resource is the immutable representation of the entity producing the
-telemetry. See [Resource semantic conventions](/docs/specs/semconv/resource/)
-for more details.
-
-| System Property                            | Description                                                                                                 |
-| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
-| `otel.resource.attributes`                 | Specify resource attributes in the following format: `key1=val1,key2=val2,key3=val3`.                       |
-| `otel.service.name`                        | Specify logical service name. Takes precedence over `service.name` defined with `otel.resource.attributes`. |
-| `otel.experimental.resource.disabled-keys` | Specify resource attribute keys that are filtered.                                                          |
-
-You almost always want to specify the
-[`service.name`](/docs/specs/semconv/resource/#service) for your application. It
-corresponds to how you describe the application, for example `authservice` could
-be an application that authenticates requests. If not specified, SDK defaults
-the service name to `unknown_service:java`.
-
-### ResourceProvider SPI
-
-The
-[autoconfigure-spi](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure-spi)
-SDK extension provides a `ResourceProvider` SPI that allows libraries to
-automatically provide Resources, which are merged into a single Resource by the
-autoconfiguration module. You can create your own `ResourceProvider`, or
-optionally use an artifact that includes built-in ResourceProviders:
-
-- [io.opentelemetry.instrumentation:opentelemetry-resources](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/resources)
-  includes providers for a
-  [predefined set of common resources](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/resources/library/src/main/java/io/opentelemetry/instrumentation/resources)
-- [io.opentelemetry.contrib:opentelemetry-aws-resources](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources)
-  includes providers for
-  [common AWS resources](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources/src/main/java/io/opentelemetry/contrib/aws/resource)
-- [io.opentelemetry.contrib:opentelemetry-gcp-resources](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources)
-  includes providers for
-  [common GCP resources](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources/src/main/java/io/opentelemetry/contrib/gcp/resource)
-
-### Disabling automatic ResourceProviders
-
-If you are using the `ResourceProvider` SPI, which many instrumentation agent
-distributions include automatically, you can turn on or off one or more of them
-by using the following configuration items:
-
-| Environment variable                    | Description                                                                                  |
-| --------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `otel.java.enabled.resource.providers`  | Turns on one or more `ResourceProvider` types. If unset, all resource providers are enabled. |
-| `otel.java.disabled.resource.providers` | Turns off one or more `ResourceProvider` types.                                              |
-
-The value for these properties must be a comma-separated list of fully qualified
-`ResourceProvider` class names. For example, if you don't want to expose the
-name of the operating system through the resource, you can pass the following
-JVM argument:
-
-`-Dotel.java.disabled.resource.providers=io.opentelemetry.instrumentation.resources.OsResourceProvider`
-
-### Attribute limits
-
-These properties can be used to control the maximum number and length of
-attributes.
-
-| System property                     | Description                                                                            | Default  |
-| ----------------------------------- | -------------------------------------------------------------------------------------- | -------- |
-| `otel.attribute.value.length.limit` | The maximum length of attribute values. Applies to spans and logs.                     | No limit |
-| `otel.attribute.count.limit`        | The maximum number of attributes. Applies to spans, span events, span links, and logs. | `128`    |
-
-### Propagators
-
-The propagators determine which distributed tracing header formats are used, and
-which baggage propagation header formats are used.
-
-| System property    | Description                                                                      | Default                      |
-| ------------------ | -------------------------------------------------------------------------------- | ---------------------------- |
-| `otel.propagators` | The propagators to be used. Use a comma-separated list for multiple propagators. | `tracecontext,baggage` (W3C) |
-
-Supported values are the following:
-
-| Value          | Description                                                                                                      |
-| -------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `tracecontext` | [W3C Trace Context](https://www.w3.org/TR/trace-context/) (add `baggage` as well to include W3C baggage).        |
-| `baggage`      | [W3C Baggage](https://www.w3.org/TR/baggage/).                                                                   |
-| `b3`           | [B3 Single](https://github.com/openzipkin/b3-propagation#single-header).                                         |
-| `b3multi`      | [B3 Multi](https://github.com/openzipkin/b3-propagation#multiple-headers).                                       |
-| `jaeger`       | [Jaeger](https://www.jaegertracing.io/docs/1.21/client-libraries/#propagation-format) (includes Jaeger baggage). |
-| `xray`         | [AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-tracingheader).    |
-| `ottrace`      | [OT Trace](https://github.com/opentracing?q=basic&type=&language=).                                              |
 
 ## Tracer provider
 
@@ -274,6 +286,11 @@ instead.
 The [Zipkin](https://zipkin.io/zipkin-api/) exporter sends JSON in
 [Zipkin format](https://zipkin.io/zipkin-api/#/default/post_spans) to a
 specified HTTP URL.
+
+> These configuration options apply when using the
+> `opentelemetry-exporter-zipkin` artifact. For full artifact ID and version
+> information, reference the
+> [SDK exporter list](https://github.com/open-telemetry/opentelemetry-java#sdk-exporters).
 
 | System property                 | Description                                                                                                           |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
@@ -352,6 +369,9 @@ The following exporters are only available for the metric signal. See
 The
 [Prometheus](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md)
 exporter.
+
+> The following configuration options apply when using the
+> `opentelemetry-exporter-prometheus` artifact.
 
 | System property                    | Description                                                                        | Default   |
 | ---------------------------------- | ---------------------------------------------------------------------------------- | --------- |
