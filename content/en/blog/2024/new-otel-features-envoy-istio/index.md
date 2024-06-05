@@ -41,7 +41,7 @@ the communication between services — even when the applications themselves are
 not instrumented.
 
 > Note: At minimum, applications must be configured to propagate the
-> `tracecontext` header.
+> `traceparent` header.
 
 Envoy offers several
 [tracers](https://www.envoyproxy.io/docs/envoy/v1.29.4/api-v3/config/trace/trace)
