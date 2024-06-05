@@ -361,6 +361,8 @@ It allows you to autoconfigure the OpenTelemetry SDK based on a standard set of
 supported environment variables and system properties. Each environment variable
 has a corresponding system property named the same way but as lower case and
 using the `.` (dot) character instead of the `_` (underscore) as separator.
+Reference the [configuration](/docs/languages/java/configuration/) page for
+details on all available options.
 
 The logical service name can be specified via the `OTEL_SERVICE_NAME`
 environment variable (or `otel.service.name` system property).

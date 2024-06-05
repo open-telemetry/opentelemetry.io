@@ -15,6 +15,10 @@ languages:
     languageName: English
     params:
       description: The OpenTelemetry Project Site
+  ja:
+    languageName: 日本語 (Japanese)
+    params:
+      description: OpenTelemetryプロジェクト公式サイト
   zh:
     languageName: 中文 (Chinese)
     params:
@@ -206,6 +210,9 @@ module:
   mounts:
     - source: content/en
       target: content
+    - source: content/ja
+      target: content
+      lang: ja
     - source: content/zh
       target: content
       lang: zh

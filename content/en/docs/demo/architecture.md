@@ -39,21 +39,23 @@ frontendproxy -->|HTTP| imageprovider
 queue -->|TCP| accountingservice
 queue -->|TCP| frauddetectionservice
 
-checkoutservice --->|gRPC| cartservice --> cache
-checkoutservice --->|gRPC| productcatalogservice
-checkoutservice --->|gRPC| currencyservice
-checkoutservice --->|HTTP| emailservice
-checkoutservice --->|gRPC| paymentservice
+frontend -->|gRPC| cartservice
+frontend -->|gRPC| currencyservice
+
+checkoutservice -->|gRPC| cartservice --> cache
+checkoutservice -->|gRPC| productcatalogservice
+checkoutservice -->|gRPC| currencyservice
+checkoutservice -->|HTTP| emailservice
+checkoutservice -->|gRPC| paymentservice
 checkoutservice -->|gRPC| shippingservice
-checkoutservice --->|TCP| queue
+checkoutservice -->|TCP| queue
 
 frontend -->|gRPC| adservice
-frontend -->|gRPC| cartservice
 frontend -->|gRPC| productcatalogservice
-frontend -->|gRPC| checkoutservice
-frontend -->|gRPC| currencyservice
-frontend -->|gRPC| recommendationservice -->|gRPC| productcatalogservice
-frontend -->|gRPC| shippingservice -->|HTTP| quoteservice
+frontend --->|gRPC| checkoutservice
+frontend ---->|gRPC| recommendationservice -->|gRPC| productcatalogservice
+
+shippingservice -->|HTTP| quoteservice
 
 end
 
