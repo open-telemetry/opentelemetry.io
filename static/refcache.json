@@ -5007,6 +5007,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-05-28T16:37:37.486115923+02:00"
   },
+  "https://istio.io/latest/news/releases/1.22.x/announcing-1.22/change-notes": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-05T14:02:55.302383346+02:00"
+  },
   "https://jaegertracing.io": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:06:08.911672-05:00"
@@ -8578,6 +8582,10 @@
   "https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/opentelemetry": {
     "StatusCode": 206,
     "LastSeen": "2024-05-28T16:37:24.200651554+02:00"
+  },
+  "https://www.envoyproxy.io/docs/envoy/latest/version_history/v1.29/v1.29": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-05T14:02:54.811823141+02:00"
   },
   "https://www.envoyproxy.io/docs/envoy/v1.29.4/api-v3/config/trace/trace": {
     "StatusCode": 206,
