@@ -90,14 +90,15 @@
     "update:hugo+": "npm run update:hugo && npm run update:docsy-dep",
     "update:netlify": "npm install --save-optional netlify-cli@latest",
     "update:other-pkg": "npm install --save-dev gulp@latest",
+    "update:pkgs": "npx npm-check-updates -u",
     "update:submodule:lang": "npm run seq -- update:submodule _get:submodule:non-lang",
     "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 1}"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.19",
-    "cspell": "^8.8.3",
+    "cspell": "^8.8.4",
     "gulp": "^4.0.2",
-    "hugo-extended": "0.126.2",
+    "hugo-extended": "0.126.3",
     "markdown-link-check": "^3.12.2",
     "markdownlint": "^0.34.0",
     "postcss-cli": "^11.0.0",
@@ -106,25 +107,26 @@
     "textlint": "^14.0.4",
     "textlint-filter-rule-allowlist": "^4.0.0",
     "textlint-filter-rule-comments": "^1.2.2",
-    "textlint-rule-terminology": "^5.0.0",
+    "textlint-rule-terminology": "^5.0.10",
     "through2": "^4.0.2",
     "yargs": "^17.7.2"
   },
   "dependencies": {
-    "@opentelemetry/api": "^1.3.0",
+    "@opentelemetry/api": "^1.8.0",
     "@opentelemetry/auto-instrumentations-web": "^0.39.0",
-    "@opentelemetry/context-zone": "^1.8.0",
-    "@opentelemetry/core": "^1.8.0",
-    "@opentelemetry/exporter-trace-otlp-http": "^0.51.0",
-    "@opentelemetry/instrumentation": "^0.51.0",
-    "@opentelemetry/resources": "^1.8.0",
-    "@opentelemetry/sdk-trace-base": "^1.8.0",
-    "@opentelemetry/sdk-trace-web": "^1.8.0",
-    "@opentelemetry/semantic-conventions": "^1.8.0",
+    "@opentelemetry/context-zone": "^1.24.1",
+    "@opentelemetry/core": "^1.24.1",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.51.1",
+    "@opentelemetry/instrumentation": "^0.51.1",
+    "@opentelemetry/resources": "^1.24.1",
+    "@opentelemetry/sdk-trace-base": "^1.24.1",
+    "@opentelemetry/sdk-trace-web": "^1.24.1",
+    "@opentelemetry/semantic-conventions": "^1.24.1",
     "path": "^0.12.7"
   },
   "optionalDependencies": {
-    "netlify-cli": "^17.23.5"
+    "netlify-cli": "^17.25.0",
+    "npm-check-updates": "^16.14.20"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "engines": {
