@@ -3232,8 +3232,8 @@
     "LastSeen": "2024-06-04T17:29:53.270047268+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.102.1": {
-    "StatusCode": 404,
-    "LastSeen": "2024-06-05T14:38:00.277846076+02:00"
+    "StatusCode": 200,
+    "LastSeen": "2024-06-05T18:14:20.086786151+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.74.0": {
     "StatusCode": 200,
@@ -3344,8 +3344,8 @@
     "LastSeen": "2024-01-30T15:25:16.610744-05:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/security/advisories/GHSA-c74f-6mfw-mm4v": {
-    "StatusCode": 404,
-    "LastSeen": "2024-06-05T14:37:58.550003406+02:00"
+    "StatusCode": 200,
+    "LastSeen": "2024-06-05T18:14:19.254754319+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-configuration": {
     "StatusCode": 200,
