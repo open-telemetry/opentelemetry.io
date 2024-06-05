@@ -1,6 +1,5 @@
 ---
 title: Other Spring autoconfiguration
-description: Spring autoconfiguration without the OpenTelemetry Spring starter
 cSpell:ignore: autoconfigurations
 weight: 70
 ---

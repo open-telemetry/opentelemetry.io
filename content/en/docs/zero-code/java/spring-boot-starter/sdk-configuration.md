@@ -1,6 +1,5 @@
 ---
 title: SDK configuration
-description: Configure the SDK with the OpenTelemetry starter
 weight: 30
 cSpell:ignore: customizer distro
 ---
