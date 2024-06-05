@@ -23,6 +23,10 @@ languages:
     languageName: 中文 (Chinese)
     params:
       description: OpenTelemetry 项目网站
+  pt-br:
+    languageName: Português
+    params:
+      description: Site do Projeto OpenTelemetry
 
 imaging:
   resampleFilter: CatmullRom # cspell:disable-line
@@ -210,12 +214,16 @@ module:
   mounts:
     - source: content/en
       target: content
+
     - source: content/ja
       target: content
       lang: ja
     - source: content/zh
       target: content
       lang: zh
+    - source: content/pt-br
+      target: content
+      lang: pt-br
     - excludeFiles: specs/*
       source: content/en/docs # zh missing-page fallback
       target: content/docs
