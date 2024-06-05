@@ -46,9 +46,10 @@ not instrumented.
 Envoy offers several
 [HTTP tracers](https://www.envoyproxy.io/docs/envoy/v1.29.4/api-v3/config/trace/trace)
 for tracing requests, including the
-[OpenTelemetry tracer](https://www.envoyproxy.io/docs/envoy/v1.29.4/api-v3/config/trace/v3/opentelemetry.proto). [Tracers](/docs/concepts/signals/traces/#tracer) can be
-configured either directly within Envoy (when using it as a standalone
-component) or for all Envoy instances by using Istio.
+[OpenTelemetry tracer](https://www.envoyproxy.io/docs/envoy/v1.29.4/api-v3/config/trace/v3/opentelemetry.proto).
+[Tracers](/docs/concepts/signals/traces/#tracer) can be configured either
+directly within Envoy (when using it as a standalone component) or for all Envoy
+instances by using Istio.
 
 Here is an example of how Istio and Envoy work together to trace requests:
 
@@ -62,15 +63,18 @@ protocols as first-class citizens. In addition, other areas such as providing
 resource attributes and configurable sampling decisions were lagging behind the
 stable portions of the OpenTelemetry specification.
 
-Starting from Envoy 1.29+ and Istio 1.21+, users have access to the new features
-described below.
+Starting from Envoy
+[1.29](https://www.envoyproxy.io/docs/envoy/latest/version_history/v1.29/v1.29)
+and Istio
+[1.22](https://istio.io/latest/news/releases/1.22.x/announcing-1.22/change-notes),
+users have access to the new features described below.
 
 ### OTLP HTTP exporter
 
 The
 [OpenTelemetry tracer](https://www.envoyproxy.io/docs/envoy/v1.29.4/api-v3/config/trace/v3/opentelemetry.proto)
-in Envoy can now be configured to export OTLP traces using HTTP. This allows
-it to send telemetry to observability sinks using OTLP/HTTP, directly from Envoy
+in Envoy can now be configured to export OTLP traces using HTTP. This allows it
+to send telemetry to observability sinks using OTLP/HTTP, directly from Envoy
 proxies.
 
 ### Resource detectors
@@ -152,9 +156,9 @@ spec:
 EOF
 ```
 
-This installs Istio and configures the OpenTelemetry tracing provider to 
-use the `http` exporter over OTLP/HTTP, with the Jaeger
-collector as endpoint. This configuration also enables the environment resource detector in
+This installs Istio and configures the OpenTelemetry tracing provider to use the
+`http` exporter over OTLP/HTTP, with the Jaeger collector as endpoint. This
+configuration also enables the environment resource detector in
 `resource_detectors`.
 
 Next, we need to enable the tracer using Istio's
@@ -228,9 +232,10 @@ between services, just by enabling the OTel tracer in Envoy!
 
 ## Next steps and closing
 
-With the new features described in this post, users gain more flexibility in exporting their traces.
-They can enrich their data with resource attributes and establish the groundwork
-for more intelligent sampling techniques to be added in the future.
+With the new features described in this post, users gain more flexibility in
+exporting their traces. They can enrich their data with resource attributes and
+establish the groundwork for more intelligent sampling techniques to be added in
+the future.
 
 The new features also unlock interesting use cases for other parties in the
 observability space, including cloud providers and observability vendors. With
