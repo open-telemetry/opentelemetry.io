@@ -7,7 +7,9 @@ tags:
   - processor
   - collector
 license: Apache 2.0
-description: The logs transform processor can be used to apply log operators to logs coming from any receiver. Please refer to config.go for the config spec.
+description:
+  The logs transform processor can be used to apply log operators to logs coming
+  from any receiver. Please refer to config.go for the config spec.
 authors:
   - name: OpenTelemetry Authors
 urls:
