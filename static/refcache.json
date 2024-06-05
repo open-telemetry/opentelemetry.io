@@ -1419,6 +1419,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-05-02T10:13:10.86573134Z"
   },
+  "https://docs.openlit.io/latest/connections/prometheus-jaeger#dashboard": {
+    "StatusCode": 206,
+    "LastSeen": "2024-05-21T06:04:50.195940343Z"
+  },
   "https://docs.openshift.com/container-platform/4.14/otel/otel-release-notes.html": {
     "StatusCode": 206,
     "LastSeen": "2024-02-02T12:42:05.756504535Z"
@@ -3251,6 +3255,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-05-22T10:11:57.774742834Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2Fv0.102.0": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-05T09:07:28.023907247Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2Fv0.95.0": {
     "StatusCode": 200,
     "LastSeen": "2024-03-01T16:49:42.006164+01:00"
@@ -3630,6 +3638,10 @@
   "https://github.com/open-telemetry/opentelemetry-java#releases": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:01.097111-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java#sdk-exporters": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-02T11:02:06.509027-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-java-contrib": {
     "StatusCode": 200,
@@ -4303,6 +4315,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-05-24T10:11:31.941987-05:00"
   },
+  "https://github.com/openlit/openlit": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-21T06:04:44.356932911Z"
+  },
   "https://github.com/opentracing": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:06.376572-05:00"
@@ -4750,6 +4766,10 @@
   "https://grafana.com/grafana/dashboards/15983-opentelemetry-collector/": {
     "StatusCode": 200,
     "LastSeen": "2024-04-10T15:11:30.311778613-07:00"
+  },
+  "https://grafana.com/oss/grafana/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-05-21T06:04:46.742171356Z"
   },
   "https://grafana.com/oss/opentelemetry/": {
     "StatusCode": 200,
