@@ -9,13 +9,11 @@ tags:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/otelarrowreceiver
 license: Apache 2.0
-description:
-  Receives telemetry data using OpenTelemetry Protocol with Apache Arrow and
-  standard OTLP protocol via gRPC.
+description: Receives telemetry data using OpenTelemetry Protocol with Apache Arrow and standard OTLP protocol via gRPC.
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2024-04-18
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/otelarrowreceiver
-  version: v0.101.0
+  version: v0.102.0

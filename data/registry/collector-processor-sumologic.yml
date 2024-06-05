@@ -8,10 +8,7 @@ tags:
   - processor
   - collector
 license: Apache 2.0
-description:
-  The Sumo Logic processor modifies the metadata on logs, metrics and traces
-  sent to Sumo Logic so that the Sumo Logic apps can make full use of the
-  ingested data.
+description: The Sumo Logic processor modifies the metadata on logs, metrics and traces sent to Sumo Logic so that the Sumo Logic apps can make full use of the ingested data.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -20,4 +17,4 @@ createdAt: 2023-12-05
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/processor/sumologicprocessor
-  version: v0.101.0
+  version: v0.102.0

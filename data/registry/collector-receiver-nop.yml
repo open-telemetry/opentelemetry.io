@@ -9,13 +9,11 @@ tags:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/nopreceiver
 license: Apache 2.0
-description:
-  Serves as a placeholder receiver in a pipeline. This can be useful if you want
-  to e.g. start a Collector with only extensions enabled.
+description: Serves as a placeholder receiver in a pipeline. This can be useful if you want to e.g. start a Collector with only extensions enabled.
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2024-04-18
 package:
   registry: go-collector
   name: go.opentelemetry.io/collector/receiver/nopreceiver
-  version: v0.101.0
+  version: v0.102.0

@@ -6,9 +6,7 @@ tags:
   - exporter
   - ruby
 license: Apache 2.0
-description:
-  The opentelemetry-exporter-otlp gem provides an OTLP exporter for
-  OpenTelemetry Ruby.
+description: The opentelemetry-exporter-otlp gem provides an OTLP exporter for OpenTelemetry Ruby.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -17,4 +15,4 @@ createdAt: 2022-11-07
 package:
   registry: gems
   name: opentelemetry-exporter-otlp
-  version: 0.26.3
+  version: 0.27.0

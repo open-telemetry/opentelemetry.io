@@ -7,9 +7,7 @@ tags:
   - exporter
   - collector
 license: Apache 2.0
-description:
-  The schema name `otel` is an example. The user may change this to another name
-  but the same name has to be used
+description: The schema name `otel` is an example. The user may change this to another name but the same name has to be used
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,4 +16,4 @@ createdAt: 2023-09-19
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/kineticaexporter
-  version: v0.101.0
+  version: v0.102.0
