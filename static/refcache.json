@@ -3299,6 +3299,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-05-22T10:11:57.774742834Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2Fv0.102.0": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-05T09:07:28.023907247Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2Fv0.95.0": {
     "StatusCode": 200,
     "LastSeen": "2024-03-01T16:49:42.006164+01:00"
@@ -3682,6 +3686,10 @@
   "https://github.com/open-telemetry/opentelemetry-java#releases": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:01.097111-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java#sdk-exporters": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-02T11:02:06.509027-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-java-contrib": {
     "StatusCode": 200,
