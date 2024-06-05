@@ -51,7 +51,7 @@ Here is an example of how Istio and Envoy work together to trace requests:
 
 ![Distributed trace with Istio and Envoy](envoy-tracing.png)
 
-## Introducing new OpenTelemetry tracing features in Envoy and Istio
+## New OTel tracing features in Envoy and Istio
 
 Although Envoy already had support for exporting OpenTelemetry traces using
 gRPC, it lacked support for exporting using HTTP. OpenTelemetry specifies both
@@ -59,8 +59,7 @@ transports as first-class citizens. In addition, other areas such as providing
 resource attributes and configurable sampling decisions were lagging behind the
 stable portions of the OpenTelemetry specification.
 
-Starting from Envoy 1.29+ and Istio 1.21+, users now have access to the
-following new features:
+Starting from Envoy 1.29+ and Istio 1.21+, users have access to the new features described below.
 
 ### OTLP HTTP exporter
 
@@ -124,8 +123,8 @@ EOF
 
 ### Install and configure Istio
 
-Now, let's install Istio using
-[`istioctl`](https://istio.io/latest/docs/setup/install/istioctl/)
+Next, install Istio using
+[`istioctl`](https://istio.io/latest/docs/setup/install/istioctl/):
 
 ```shell
 cat <<EOF | istioctl install -y -f -
@@ -198,27 +197,28 @@ kubectl apply -f bookinfo.yaml
 
 ### Test it out
 
-Let's make some requests to one of the services:
+To test your setup, make some requests to one of the services, for example:
 
 ```shell
 kubectl exec "$(k get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}')" -c ratings -- curl -sS productpage:9080/productpage | grep -o "<title>.*</title>"
 ```
 
-Then we can check it out on the Jaeger UI. There, we should see some traces!
+Then you can check it out on the Jaeger UI -- you should see some traces!
 
 ![Distributed trace viewing in Jaeger](jaeger.png)
 
-Let's analyze the spans produced by Envoy:
 
-1. First, we see the outgoing (egress) call from the `ratings` service to the
+From the spans produced by Envoy you can see (in order):
+
+1. Outgoing (egress) call from the `ratings` service to the
    `productpage` service.
-2. Then we see the incoming (ingress) call in the `productpage` service.
-3. We also see the `host-name` resource attribute we applied using the
-   `OTEL_RESOURCE_ATTRIBUTES`. That attribute was picked up by the environment
+2. Incoming (ingress) call in the `productpage` service.
+3. `host-name` resource attribute we applied using the
+   `OTEL_RESOURCE_ATTRIBUTES`. This attribute was picked up by the environment
    resource detector and added to all spans Envoy created.
 
-Apart from this, we can see all the other downstream calls made, as all services
-have the Envoy sidecar injected by Istio. We have full observability of the
+You can also see all the other downstream calls made, as all services
+have the Envoy sidecar injected by Istio. You have full observability of the
 calls between services, just by enabling the OTel tracer in Envoy!
 
 ## Next steps and closing
