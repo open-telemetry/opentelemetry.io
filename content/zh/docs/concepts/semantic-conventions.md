@@ -2,6 +2,7 @@
 title: 语义约定
 description: 不同类型的操作和数据的通用名称。
 weight: 30
+default_lang_commit: 1d9a1df8
 ---
 
 OpenTelemetry 定义了[语义约定](/docs/specs/semconv/)，

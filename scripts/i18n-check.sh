@@ -2,12 +2,17 @@
 #
 # Inspired by https://github.com/kubernetes/website/blob/main/scripts/lsync.sh
 
+DEFAULT_LANG="en"
+DEFAULT_TARGET="content"
 EXTRA_DIFF_ARGS="--numstat"
+FLAG_UPDATE=""
+FLAG_VERBOSE=""
+I18N_DLC_KEY="default_lang_commit"
 TARGET_PATHS=""
 
 function _usage() {
   cat <<EOS
-Usage: $(basename "$0") [options] TARGET_PATH ...
+Usage: $(basename "$0") [options] [TARGET_PATH ...]
 
   For each localized page target, this script reports whether the English
   language version of that page has changed since the localized file was
@@ -15,10 +20,12 @@ Usage: $(basename "$0") [options] TARGET_PATH ...
 
   TARGET_PATH can be a single markdown file of a localized page, such as
   'content/ja/_index.md', or a directory of localized pages, such as 'content/ja'.
+  The default TARGET_PATH is '$DEFAULT_TARGET'.
 
   -h  Output this usage info.
   -d  Output diff details.
-  -v  Verbose mode.
+  -u  Update, or add, target commit hashes to match the last commit they were updated from.
+  -v  Enables verbose command progress and status output.
 EOS
 }
 
@@ -29,7 +36,7 @@ function usage() {
 }
 
 function process_CLI_args() {
-  while getopts ":hdv" opt; do
+  while getopts ":hduv" opt; do
     case $opt in
       h)
         usage
@@ -37,8 +44,11 @@ function process_CLI_args() {
       d)
         EXTRA_DIFF_ARGS=""
         ;;
+      u)
+        FLAG_UPDATE=1
+        ;;
       v)
-        VERBOSE=1
+        FLAG_VERBOSE=1
         ;;
       \?)
         echo "ERROR: unrecognized flag: -$OPTARG"
@@ -48,16 +58,35 @@ function process_CLI_args() {
   done
 
   shift $((OPTIND-1))
-  if [ "$#" -lt 1 ]; then
-    echo "ERROR: target path argument is missing" >&2
-    usage 1
-  fi
-
   TARGET_PATHS="$@"
+
+  if [[ -z "$TARGET_PATHS" ]]; then
+    TARGET_PATHS="$DEFAULT_TARGET"
+    if [[ -n $FLAG_VERBOSE ]]; then echo "INFO: using default target path: $TARGET_PATHS"; fi
+  fi
 
   if [[ -f "TARGET_PATHS" && ! -e "$TARGET_PATHS" ]] ; then
     echo "Path not found: '$TARGET_PATHS'" >&2
     exit 2
+  fi
+}
+
+function update_i18n_hash() {
+  # Usage: update_i18n_hash <file> <commit>
+  #
+  # Adds to or updates the file's front matter's field
+  # $I18N_DLC_KEY with value <commit>.
+
+  local LASTCOMMIT="$1"
+  local f="$2"
+
+  if grep -q "^$I18N_DLC_KEY:" "$f"; then
+    perl -i -pe "s/(^$I18N_DLC_KEY):.*/\$1: $LASTCOMMIT/" "$f"
+  else
+    perl -i -0777 -pe "s/^(---.*?)(\n---\n)/\$1\n$I18N_DLC_KEY: $LASTCOMMIT\$2/sm" "$f"
+  fi
+  if [[ -n $FLAG_VERBOSE ]]; then
+    echo -e "i18n commit ID\t$f $LASTCOMMIT - updated"
   fi
 }
 
@@ -67,29 +96,41 @@ function main() {
   if [ -f "$TARGET_PATHS" ] ; then
     TARGETS="$TARGET_PATHS"
   else
-    TARGETS=$(find $TARGET_PATHS -name "*.md")
+    TARGETS=$(find $TARGET_PATHS -name "*.md" -not -path "*/$DEFAULT_LANG/*")
     if [[ -z "$TARGETS" ]]; then
       echo "ERROR: target directory contains no markdown files: '$TARGET_PATHS'" >&2
       exit 1
     fi
-    # if [[ -n $VERBOSE ]]; then echo -e "All targets: $TARGETS"; fi
+    # if [[ -n $FLAG_VERBOSE ]]; then echo -e "All targets: $TARGETS"; fi
   fi
 
   SYNCED=1
   for f in $TARGETS; do
-    # if [[ -n $VERBOSE ]]; then echo -e "Checking\t$f"; fi
+    # if [[ -n $FLAG_VERBOSE ]]; then echo -e "Checking\t$f"; fi
     EN_VERSION=$(echo "$f" | sed "s/content\/.\{2,5\}\//content\/en\//g")
+
+    # Try to get commit ref from file front matter
+    LASTCOMMIT=$(perl -ne "print \"\$1\" if /^$I18N_DLC_KEY:\\s*(.*)/" "$f")
+    if [[ -z $LASTCOMMIT ]]; then
+      # Get commit hash from git commit info
+      LASTCOMMIT=$(git log -n 1 --pretty=format:%h -- "$f")
+    fi
+
+    if [[ -n $FLAG_UPDATE ]]; then
+      update_i18n_hash "$LASTCOMMIT" "$f"
+    fi
+
     if [[ ! -e "$EN_VERSION" ]]; then
-      echo "Base file renamed or removed: $EN_VERSION"
+      echo -e "File not found\t$EN_VERSION - $f - $DEFAULT_LANG was removed or renamed"
       SYNCED=0
       continue
     fi
 
-    LASTCOMMIT=$(git log -n 1 --pretty=format:%h -- "$f")
-    git diff --exit-code $EXTRA_DIFF_ARGS $LASTCOMMIT...HEAD "$EN_VERSION"
-    if [ $? -ne 0 ] ; then
+    DIFF=$(git diff --exit-code $EXTRA_DIFF_ARGS $LASTCOMMIT...HEAD "$EN_VERSION")
+    if [[ -n "$DIFF" ]]; then # [[ $? -ne 0 ]]
+      echo "$DIFF - $f"
       SYNCED=0
-    elif [[ -n $VERBOSE ]]; then
+    elif [[ -n $FLAG_VERBOSE ]]; then
       echo -e "File is in sync\t$f"
     fi
   done
