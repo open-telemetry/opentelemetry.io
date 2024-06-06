@@ -1,0 +1,16 @@
+title: Bedrock Python instrumentation
+registryType: instrumentation
+language: python
+tags:
+  - python
+  - instrumentation
+  - bedrock
+urls:
+  repo: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-bedrock
+  docs: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-bedrock
+license: Apache 2.0 
+description: Instrumentation for tracing Amazon Bedrock framework
+authors:
+  - name: Arize AI
+    email: oss-devs@arize.com
+createdAt: 2024-06-05

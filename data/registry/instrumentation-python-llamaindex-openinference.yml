@@ -1,0 +1,17 @@
+# cSpell:ignore llamaindex
+title: LlamaIndex Python instrumentation
+registryType: instrumentation
+language: python
+tags:
+  - python
+  - instrumentation
+  - llamaindex
+urls:
+  repo: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-llama-index
+  docs: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-llama-index
+license: Apache 2.0 
+description: Instrumentation for tracing the LlamaIndex framework
+authors:
+  - name: Arize AI
+    email: oss-devs@arize.com
+createdAt: 2024-06-05
