@@ -69,7 +69,7 @@ A instalação e integração pode ser feito com simplesmente algumas linhas de 
 {{% blocks/feature icon="fab fa-github" title="Open Source, Agnóstico a Fornecedor" %}}
 
 100% Gratuito e Open Source, o OpenTelemtry é adotado e apoiado por
-[líderes da indústrica](/ecosystem/vendors/) no ecossistema da observabilidade.
+[líderes da indústria](/ecosystem/vendors/) no ecossistema da observabilidade.
 
 {{% /blocks/feature %}}
 
@@ -77,8 +77,8 @@ A instalação e integração pode ser feito com simplesmente algumas linhas de 
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**OpenTelemetry is a [CNCF][] [incubating][] project**.<br> Formed through a
-merger of the OpenTracing and OpenCensus projects.
+**O OpenTelemetry é um projeto em [incubação][] da [CNCF][]**.<br> Formado por meio de uma junção dos projetos 
+OpenTracing e OpenCensus.
 
 [![CNCF logo][]][cncf]
 
