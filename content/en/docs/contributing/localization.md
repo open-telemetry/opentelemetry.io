@@ -91,7 +91,7 @@ If your translation is based on an English page in `main` at `HEAD`, then run
 the following command to automatically add `default_lang_commit` to your page
 file's front matter using the commit hash at `HEAD`:
 
-```
+```sh
 scripts/i18n-check.sh -u <PATH-TO-YOUR-NEW-FILES>
 ```
 
