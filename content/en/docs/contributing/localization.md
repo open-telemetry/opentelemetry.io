@@ -117,6 +117,8 @@ localization.)
 
 <!--
 
+cSpell:ignore CODEOWNERSHIP Comms
+
 * Our website supports multiple languages already, so the translated content should live under main/content/<two_letter_code>
 * Our point of reference is how kubernetes is doing their localization, see https://github.com/kubernetes/website
 * We need at least 2 ppl owning that content, so that changes can be approved (CODEOWNERSHIP will help with that)
