@@ -16,19 +16,18 @@ sig: Profiling SIG
 
 Following significant collaboration between
 [Elastic](https://www.elastic.co/observability-labs/blog/elastic-donation-proposal-to-contribute-profiling-agent-to-opentelemetry)
-and
-[OpenTelemetry's profiling community](./profiling.md),
-which included a thorough review process, we’re excited to announce that the
-OpenTelemetry project has accepted [Elastic's donation of its continuous
-profiling agent](https://github.com/open-telemetry/community/issues/1918).
+and [OpenTelemetry's profiling community](./profiling.md), which included a
+thorough review process, we’re excited to announce that the OpenTelemetry
+project has accepted
+[Elastic's donation of its continuous profiling agent](https://github.com/open-telemetry/community/issues/1918).
 
 This marks a significant milestone in establishing profiling as a core telemetry
-signal in OpenTelemetry. Elastic’s [eBPF](https://ebpf.io/) profiling agent observes code across
-different programming languages and runtimes, third-party libraries, kernel
-operations, and system resources with low CPU and memory overhead in production.
-Both, SREs and developers can now benefit from these capabilities: quickly
-identifying performance bottlenecks, maximizing resource utilization, reducing
-carbon footprint, and optimizing cloud spend.
+signal in OpenTelemetry. Elastic’s [eBPF](https://ebpf.io/) profiling agent
+observes code across different programming languages and runtimes, third-party
+libraries, kernel operations, and system resources with low CPU and memory
+overhead in production. Both, SREs and developers can now benefit from these
+capabilities: quickly identifying performance bottlenecks, maximizing resource
+utilization, reducing carbon footprint, and optimizing cloud spend.
 
 Elastic’s decision to contribute the project to OpenTelemetry was made to
 accelerate OpenTelemetry’s mission and enable effective observability through
@@ -99,11 +98,10 @@ provides support for a wide range of runtimes and languages, such as:
 - Perl
 - .NET
 
-Additionally, organizations can combine profiling data with resource
-information to derive an estimate for the carbon footprints of services. 
-This helps organizations meet their sustainability objectives by minimizing
-computational wastage, ensuring seamless alignment with their strategic ESG
-goals.
+Additionally, organizations can combine profiling data with resource information
+to derive an estimate for the carbon footprints of services. This helps
+organizations meet their sustainability objectives by minimizing computational
+wastage, ensuring seamless alignment with their strategic ESG goals.
 
 ## Benefits to OpenTelemetry
 
@@ -119,8 +117,9 @@ troubleshooting experience.
 OpenTelemetry-based continuous profiling unlocks the following possibilities for
 users:
 
-- Continuous profiling data compliments the existing signals (traces, metrics and logs)
-  by providing detailed, code-level insights on the services' behavior.  
+- Continuous profiling data compliments the existing signals (traces, metrics
+  and logs) by providing detailed, code-level insights on the services'
+  behavior.
 
 - Seamless correlation with other OpenTelemetry signals such as traces,
   increasing fidelity and investigatory depth.
@@ -129,21 +128,21 @@ users:
   a growing concern (source:
   [MIT Energy Initiative](https://energy.mit.edu/news/energy-efficient-computing/)).
   More efficient code translates to lower energy consumption, contributing to a
-  reduction in carbon (CO2) footprint. Combining profiling data with OpenTelemetry's
-  resource information (i.e. resource attributes) allows to derive insights into the
-  services' carbon footprint.
+  reduction in carbon (CO2) footprint. Combining profiling data with
+  OpenTelemetry's resource information (i.e. resource attributes) allows to
+  derive insights into the services' carbon footprint.
 
 - Through a detailed breakdown of services' resource utilization, profiling data
   provides actionable information on performance optimization opportunities.
 
 - Improved vendor neutrality: a vendor-agnostic eBPF-based profiling agent
-  removes the need to rely on proprietary  agents to collect profiling telemetry.
+  removes the need to rely on proprietary agents to collect profiling telemetry.
 
 With these benefits, SREs, developers, and DevOps, can now manage the overall
 application’s efficiency on the cloud while ensuring their engineering teams
 optimize it.
 
-As the next step, Elastic and the OpenTelemetry profiling SIG will jointly work on
-integrating the donated agent into OpenTelemetry's components ecosystem.
-We look forward to providing a fully integrated and usable version of the new
+As the next step, Elastic and the OpenTelemetry profiling SIG will jointly work
+on integrating the donated agent into OpenTelemetry's components ecosystem. We
+look forward to providing a fully integrated and usable version of the new
 OpenTelemetry eBPF profiling agent to the users, soon.
