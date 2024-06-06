@@ -1,4 +1,4 @@
-# cSpell:ignore DSPy
+# cSpell:ignore DSPy, dspy, Arize, openinference
 title: DSPy Python Instrumentation
 registryType: instrumentation
 language: python

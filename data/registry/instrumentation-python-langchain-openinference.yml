@@ -1,4 +1,4 @@
-# cSpell:ignore langchain
+# cSpell:ignore langchain openinference arize
 title: LangChain Python Instrumentation
 registryType: instrumentation
 language: python

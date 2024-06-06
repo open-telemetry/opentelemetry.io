@@ -1,4 +1,4 @@
-# cSpell:ignore llamaindex
+# cSpell:ignore llamaindex LlamaIndex openinference Arize
 title: LlamaIndex Python Instrumentation
 registryType: instrumentation
 language: python

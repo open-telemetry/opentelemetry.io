@@ -1,4 +1,4 @@
-# cSpell:ignore Mistral AI
+# cSpell:ignore Mistral mistralai openinference arize
 title: Mistral AI Python Instrumentation
 registryType: instrumentation
 language: python
