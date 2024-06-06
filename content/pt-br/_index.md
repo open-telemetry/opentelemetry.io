@@ -56,7 +56,7 @@ você a analisar o desempenho e o comportamento do seu software.
 Crie e colete dados de telemetria a partir de seus serviços e software e depois encaminhe
 eles para uma variedade de ferramentas de análise. {{% /blocks/feature %}}
 
-{{% blocks/feature icon="fas fa-magic" title="Drop-In Instrumentation"%}}
+{{% blocks/feature icon="fas fa-magic" title="Instrumentação de Fácil Integração"%}}
 
 O OpenTelemetry é integrável com frameworks e bibliotecas populares como
 [Spring](https://spring.io),
