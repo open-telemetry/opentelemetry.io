@@ -26,22 +26,27 @@ sig:java:
   - changed-files:
       - any-glob-to-any-file:
           - content/en/docs/languages/java/**
+          - content/en/docs/zero-code/java/**
 sig:js:
   - changed-files:
       - any-glob-to-any-file:
           - content/en/docs/languages/js/**
+          - content/en/docs/zero-code/js/**
 sig:dotnet:
   - changed-files:
       - any-glob-to-any-file:
           - content/en/docs/languages/net/**
+          - content/en/docs/zero-code/net/**
 sig:php:
   - changed-files:
       - any-glob-to-any-file:
           - content/en/docs/languages/php/**
+          - content/en/docs/zero-code/php/**
 sig:python:
   - changed-files:
       - any-glob-to-any-file:
           - content/en/docs/languages/python/**
+          - content/en/docs/zero-code/python/**
 sig:ruby:
   - changed-files:
       - any-glob-to-any-file:
