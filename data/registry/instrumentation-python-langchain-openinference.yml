@@ -1,5 +1,5 @@
 # cSpell:ignore langchain
-title: LangChain Python instrumentation
+title: LangChain Python Instrumentation
 registryType: instrumentation
 language: python
 tags:
