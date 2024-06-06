@@ -1,0 +1,152 @@
+---
+title: Elastic Contributes its Continuous Profiling Agent to OpenTelemetry
+linkTitle: Elastic Contributes Profiling Agent # Mandatory, make sure that your short title.
+date: 2024-06-06 # Put the current date, we will keep the date updated until your PR is merged
+author:
+  >- # If you have only one author, then add the single name on this line in quotes.
+  [Bahubali Shetti](https://github.com/bshetti) (Elastic), [Alexander
+  Wert](https://github.com/AlexanderWert) (Elastic), [Morgan
+  McLean](https://github.com/mtwo) (Splunk), [Ryan
+  Perry](https://github.com/Rperry2174) (Grafana)
+draft: true # TODO: remove this line once your post is ready to be published
+# canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the canonical URL here.
+issue: the issue ID for this blog post # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details
+sig: Profiling SIG
+---
+
+Following significant collaboration between
+[Elastic](https://www.elastic.co/observability-labs/blog/elastic-donation-proposal-to-contribute-profiling-agent-to-opentelemetry)
+and
+[OpenTelemetry's profiling community](https://opentelemetry.io/blog/2024/profiling/),
+which included a thorough review process, we’re excited to announce that the
+OpenTelemetry project has accepted Elastic's donation of its continuous
+profiling agent.
+
+This marks a significant milestone in establishing profiling as a core telemetry
+signal in OpenTelemetry. Elastic’s eBPF profiling agent observes code across
+different programming languages and runtimes, third-party libraries, kernel
+operations, and system resources with low CPU and memory overhead in production.
+Both, SREs and developers can now benefit from these capabilities: quickly
+identifying performance bottlenecks, maximizing resource utilization, reducing
+carbon footprint, and optimizing cloud spend.
+
+Elastic’s decision to contribute the project to OpenTelemetry was made to
+accelerate OpenTelemetry’s mission and enable effective observability through
+high-quality, portable telemetry. This collaboration also shows the commitment
+to vendor neutrality and community-driven development enhancing the overall
+profiling and observability ecosystems.
+
+The Elastic team would like to thank the OpenTelemetry community for the great
+and constructive cooperation on the donation proposal. We look forward to
+jointly establishing continuous profiling as an integral part of OpenTelemetry.
+
+With today’s acceptance, Elastic’s continuous profiling agent will be
+contributed to OpenTelemetry. This agent will now be jointly supported by both
+Elastic’s team as well as a diverse set of official maintainers from different
+companies:
+
+- Dmitry Filimonov (Grafana Labs)
+- Felix Geisendörfer (Datadog)
+- Jonathan Halliday (Red Hat)
+- Christos Kalkanis (Elastic)
+
+## What is continuous profiling?
+
+[Continuous profiling](https://www.cncf.io/blog/2022/05/31/what-is-continuous-profiling/)
+is a technique used to understand the behavior of a software application by
+collecting information about its execution. This includes tracking the duration
+of function calls, memory usage, CPU usage, and other system resources along
+with associated metadata.
+
+## Benefits of Continuous Profiling
+
+Traditional profiling solutions have significant drawbacks limiting adoption in
+production environments:
+
+- Significant cost and performance overhead due to code instrumentation
+- Disruptive service restarts
+- Inability to get visibility into third-party libraries
+
+Continuous profiling, however, runs in the background with minimal overhead,
+providing real-time, actionable insights without the need to replicate issues in
+separate environments.
+
+This allows SREs, DevOps, and developers to see how code affects performance and
+cost, making code and infrastructure improvements easier.
+
+## Contribution of comprehensive profiling abilities
+
+Elastic’s continuous profiling agent, [based on eBPF](https://ebpf.io/), is a
+whole system, always-on solution that observes code and third-party libraries,
+kernel operations, and other code you don't own. It eliminates the need for code
+instrumentation (run-time/bytecode), recompilation, or service restarts with low
+overhead, low CPU (~1%), and memory usage in production environments.
+
+The Elastic profiling agent facilitates identifying non-optimal code paths,
+uncovering "unknown unknowns", and provides comprehensive visibility into the
+runtime behavior of all applications. Elastic’s continuous profiling agent
+provides support for a wide range of runtimes and languages, such as:
+
+- C/C++
+- Rust
+- Zig
+- Go
+- Java
+- Python
+- Ruby
+- PHP
+- Node.js
+- V8
+- Perl
+- .NET
+
+Additionally, organizations can meet sustainability objectives by minimizing
+computational wastage, ensuring seamless alignment with their strategic ESG
+goals.
+
+## Benefits to OpenTelemetry
+
+This contribution not only boosts the standardization of continuous profiling
+for observability but also accelerates its adoption as a key signal in
+OpenTelemetry. Customers benefit from a vendor-agnostic method of collecting
+profiling data correlating it with existing signals, like tracing, metrics, and
+logs, opening new potential for observability insights and a more efficient
+troubleshooting experience.
+
+### User Benefits of OpenTelemetry Profiling
+
+OpenTelemetry-based continuous profiling unlocks the following possibilities for
+users:
+
+- Improved customer experience: delivering consistent service quality and
+  performance through continuous profiling ensures customers have an application
+  that performs optimally, remains responsive, and is reliable.
+
+- Maximize gross margins: Businesses can optimize their cloud spend and improve
+  profitability by reducing the computational resources needed to run
+  applications. Whole system continuous profiling identifies the most expensive
+  functions (down to the lines of code) across diverse environments that may
+  span multiple cloud providers. In the cloud context, every CPU cycle saved
+  translates to money saved.
+
+- Minimize environmental impact: energy consumption associated with computing is
+  a growing concern (source:
+  [MIT Energy Initiative](https://energy.mit.edu/news/energy-efficient-computing/)).
+  More efficient code translates to lower energy consumption, contributing to a
+  reduction in carbon (CO2) footprint.
+
+- Accelerate engineering workflows: continuous profiling provides detailed
+  insights to help troubleshoot complex issues faster, guide development, and
+  improve overall code quality.
+
+- Improved vendor neutrality: a vendor-agnostic eBPF-based profiling agent
+  removes the need to use proprietary APM agents to collect profiling telemetry.
+
+With these benefits, SREs, devs, and DevOps, can now manage the overall
+application’s efficiency on the cloud while ensuring their engineering teams
+optimize it.
+
+Elastic remains deeply committed to the
+[OpenTelemetry vision and mission](https://opentelemetry.io/community/mission/)
+and will continue to contribute and participate in profiling and other areas of
+OpenTelemetry.
