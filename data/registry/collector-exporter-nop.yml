@@ -9,7 +9,10 @@ tags:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/nopexporter
 license: Apache 2.0
-description: Serves as a placeholder exporter in a pipeline. This can be useful if you want to e.g. start a Collector with only extensions enabled, or for testing Collector pipeline throughput without worrying about an exporter.
+description:
+  Serves as a placeholder exporter in a pipeline. This can be useful if you want
+  to e.g. start a Collector with only extensions enabled, or for testing
+  Collector pipeline throughput without worrying about an exporter.
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2024-04-18

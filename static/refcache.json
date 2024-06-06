@@ -3303,6 +3303,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-06-05T09:07:28.023907247Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2Fv0.102.1": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-06T16:28:34.255663872Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2Fv0.95.0": {
     "StatusCode": 200,
     "LastSeen": "2024-03-01T16:49:42.006164+01:00"
