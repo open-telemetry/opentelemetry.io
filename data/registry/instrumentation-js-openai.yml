@@ -1,5 +1,5 @@
 # cSpell:ignore openai
-title: OpenAI Javascript instrumentation
+title: OpenAI Javascript Instrumentation
 registryType: instrumentation
 language: javascript
 tags:
