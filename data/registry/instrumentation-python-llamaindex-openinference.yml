@@ -9,7 +9,7 @@ tags:
 urls:
   repo: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-llama-index
   docs: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-llama-index
-license: Apache 2.0 
+license: Apache 2.0
 description: Instrumentation for tracing the LlamaIndex framework
 authors:
   - name: Arize AI

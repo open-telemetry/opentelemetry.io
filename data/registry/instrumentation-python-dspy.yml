@@ -9,7 +9,7 @@ tags:
 urls:
   repo: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-dspy
   docs: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-dspy
-license: Apache 2.0 
+license: Apache 2.0
 description: Instrumentation for tracing the DSPy framework
 authors:
   - name: Arize AI

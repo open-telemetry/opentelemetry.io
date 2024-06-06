@@ -1,5 +1,5 @@
 # cSpell:ignore langchain
-title: LangChain Javascript Instrumentation
+title: LangChain JavaScript Instrumentation
 registryType: instrumentation
 language: javascript
 tags:
@@ -9,7 +9,7 @@ tags:
 urls:
   repo: https://github.com/Arize-ai/openinference/tree/main/js/packages/openinference-instrumentation-langchain
   docs: https://github.com/Arize-ai/openinference/tree/main/js/packages/openinference-instrumentation-langchain
-license: Apache 2.0 
+license: Apache 2.0
 description: Instrumentation for tracing the LangChain framework
 authors:
   - name: Arize AI

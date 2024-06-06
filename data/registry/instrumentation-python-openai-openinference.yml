@@ -9,7 +9,7 @@ tags:
 urls:
   repo: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-openai
   docs: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-openai
-license: Apache 2.0 
+license: Apache 2.0
 description: Instrumentation for tracing the OpenAI Python SDK
 authors:
   - name: Arize AI

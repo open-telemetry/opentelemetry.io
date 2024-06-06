@@ -9,7 +9,7 @@ tags:
 urls:
   repo: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-langchain
   docs: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-langchain
-license: Apache 2.0 
+license: Apache 2.0
 description: Instrumentation for tracing the LangChain framework
 authors:
   - name: Arize AI
