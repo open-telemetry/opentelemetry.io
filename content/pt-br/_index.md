@@ -3,8 +3,8 @@ title: Projeto OpenTelemetry
 description: >-
  Telemetria de qualidade, ubíqua e portátil para permitir uma observabilidade eficaz
 developer_note:
-  The blocks/cover shortcode (used below) will use as a background image any
-  image file containing "background" in its name.
+  O shortcode blocks/cover (usado abaixo) vai usar como imagem de background
+  qualquer arquivo de imagem que contenha "background" no nome.
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
