@@ -1,5 +1,5 @@
 # cSpell:ignore llamaindex
-title: LlamaIndex Python instrumentation
+title: LlamaIndex Python Instrumentation
 registryType: instrumentation
 language: python
 tags:
