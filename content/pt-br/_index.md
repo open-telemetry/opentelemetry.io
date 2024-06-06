@@ -77,7 +77,7 @@ A instalação e integração pode ser feito com simplesmente algumas linhas de 
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**O OpenTelemetry é um projeto em [incubação][] da [CNCF][]**.<br> Formado por meio de uma junção dos projetos 
+**O OpenTelemetry é um projeto em [incubação](https://www.cncf.io/projects/) da [CNCF][]**.<br> Formado por meio de uma junção dos projetos 
 OpenTracing e OpenCensus.
 
 [![CNCF logo][]][cncf]
