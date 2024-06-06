@@ -1,5 +1,5 @@
 # cSpell:ignore openai
-title: Open AI Python instrumentation
+title: Open AI Python Instrumentation
 registryType: instrumentation
 language: python
 tags:
