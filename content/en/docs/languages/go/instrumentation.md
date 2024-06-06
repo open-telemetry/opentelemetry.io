@@ -534,6 +534,34 @@ func removeItem() {
 }
 ```
 
+### Using Gauges
+
+Gauges are used to measure non-additive values when changes occur.
+
+For example, here's how you report the speed of a CPU fan:
+
+```go
+import (
+	"net/http"
+
+	"go.opentelemetry.io/otel/metric"
+)
+
+func init() {
+	speedGauge, err := meter.Int64Gauge(
+		"cpu.fan.speed",
+		metric.WithDescription("Speed of CPU fan"),
+		metric.WithUnit("RPM"),
+	)
+	if err != nil {
+		panic(err)
+	}
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		speedGauge.Record(r.Context(), 1500)
+	})
+}
+```
+
 ### Using Histograms
 
 Histograms are used to measure a distribution of values over time.
