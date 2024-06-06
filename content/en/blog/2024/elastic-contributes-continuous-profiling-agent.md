@@ -119,35 +119,31 @@ troubleshooting experience.
 OpenTelemetry-based continuous profiling unlocks the following possibilities for
 users:
 
-- Improved customer experience: delivering consistent service quality and
-  performance through continuous profiling ensures customers have an application
-  that performs optimally, remains responsive, and is reliable.
+- Continuous profiling data compliments the existing signals (traces, metrics and logs)
+  by providing detailed, code-level insights on the services' behavior.  
 
-- Maximize gross margins: Businesses can optimize their cloud spend and improve
-  profitability by reducing the computational resources needed to run
-  applications. Whole system continuous profiling identifies the most expensive
-  functions (down to the lines of code) across diverse environments that may
-  span multiple cloud providers. In the cloud context, every CPU cycle saved
-  translates to money saved.
+- Seamless correlation with other OpenTelemetry signals such as traces,
+  increasing fidelity and investigatory depth.
 
 - Minimize environmental impact: energy consumption associated with computing is
   a growing concern (source:
   [MIT Energy Initiative](https://energy.mit.edu/news/energy-efficient-computing/)).
   More efficient code translates to lower energy consumption, contributing to a
-  reduction in carbon (CO2) footprint.
+  reduction in carbon (CO2) footprint. Combining profiling data with OpenTelemetry's
+  resource information (i.e. resource attributes) allows to derive insights into the
+  services' carbon footprint.
 
-- Accelerate engineering workflows: continuous profiling provides detailed
-  insights to help troubleshoot complex issues faster, guide development, and
-  improve overall code quality.
+- Through a detailed breakdown of services' resource utilization, profiling data
+  provides actionable information on performance optimization opportunities.
 
 - Improved vendor neutrality: a vendor-agnostic eBPF-based profiling agent
-  removes the need to use proprietary APM agents to collect profiling telemetry.
+  removes the need to rely on proprietary  agents to collect profiling telemetry.
 
-With these benefits, SREs, devs, and DevOps, can now manage the overall
+With these benefits, SREs, developers, and DevOps, can now manage the overall
 application’s efficiency on the cloud while ensuring their engineering teams
 optimize it.
 
-Elastic remains deeply committed to the
-[OpenTelemetry vision and mission](https://opentelemetry.io/community/mission/)
-and will continue to contribute and participate in profiling and other areas of
-OpenTelemetry.
+As the next step, Elastic and the OpenTelemetry profiling SIG will jointly work on
+integrating the donated agent into OpenTelemetry's components ecosystem.
+We look forward to providing a fully integrated and usable version of the new
+OpenTelemetry eBPF profiling agent to the users, soon.
