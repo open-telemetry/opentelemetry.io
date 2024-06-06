@@ -538,7 +538,7 @@ func removeItem() {
 
 Gauges are used to measure non-additive values when changes occur.
 
-For example, here's how you report the speed of a CPU fan:
+For example, here's how you might report the current speed of a CPU fan:
 
 ```go
 import (
@@ -557,6 +557,7 @@ func init() {
 		panic(err)
 	}
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		// hard-code 1500 RPM for demonstrative purposes
 		speedGauge.Record(r.Context(), 1500)
 	})
 }
