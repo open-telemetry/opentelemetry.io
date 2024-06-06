@@ -10,20 +10,20 @@ author:
   Perry](https://github.com/Rperry2174) (Grafana)
 draft: true # TODO: remove this line once your post is ready to be published
 # canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the canonical URL here.
-issue: the issue ID for this blog post # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details
+issue: https://github.com/open-telemetry/community/issues/1918
 sig: Profiling SIG
 ---
 
 Following significant collaboration between
 [Elastic](https://www.elastic.co/observability-labs/blog/elastic-donation-proposal-to-contribute-profiling-agent-to-opentelemetry)
 and
-[OpenTelemetry's profiling community](https://opentelemetry.io/blog/2024/profiling/),
+[OpenTelemetry's profiling community](./profiling.md),
 which included a thorough review process, we’re excited to announce that the
-OpenTelemetry project has accepted Elastic's donation of its continuous
-profiling agent.
+OpenTelemetry project has accepted [Elastic's donation of its continuous
+profiling agent](https://github.com/open-telemetry/community/issues/1918).
 
 This marks a significant milestone in establishing profiling as a core telemetry
-signal in OpenTelemetry. Elastic’s eBPF profiling agent observes code across
+signal in OpenTelemetry. Elastic’s [eBPF](https://ebpf.io/) profiling agent observes code across
 different programming languages and runtimes, third-party libraries, kernel
 operations, and system resources with low CPU and memory overhead in production.
 Both, SREs and developers can now benefit from these capabilities: quickly
@@ -95,8 +95,7 @@ provides support for a wide range of runtimes and languages, such as:
 - Python
 - Ruby
 - PHP
-- Node.js
-- V8
+- Node.js / V8
 - Perl
 - .NET
 
