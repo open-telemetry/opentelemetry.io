@@ -1,5 +1,5 @@
 # cSpell:ignore Mistral AI
-title: Mistral AI Python instrumentation
+title: Mistral AI Python Instrumentation
 registryType: instrumentation
 language: python
 tags:
