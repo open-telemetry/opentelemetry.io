@@ -62,13 +62,13 @@ O OpenTelemetry é integrável com frameworks e bibliotecas populares como
 [Spring](https://spring.io),
 [ASP.NET Core](https://docs.microsoft.com/aspnet/core),
 [Express](https://expressjs.com), [Quarkus](https://quarkus.io), e muito mais!
-A instalação e integração pode ser feito com simplesmente algumas linhas de código.
+A instalação e integração podem ser feito com simplesmente algumas linhas de código.
 
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fab fa-github" title="Open Source, Agnóstico a Fornecedor" %}}
 
-100% Gratuito e Open Source, o OpenTelemtry é adotado e apoiado por
+100% Gratuito e Open Source, o OpenTelemetry é adotado e apoiado por
 [líderes da indústria](/ecosystem/vendors/) no ecossistema da observabilidade.
 
 {{% /blocks/feature %}}
