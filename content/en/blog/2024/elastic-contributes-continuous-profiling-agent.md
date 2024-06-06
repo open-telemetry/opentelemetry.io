@@ -99,7 +99,9 @@ provides support for a wide range of runtimes and languages, such as:
 - Perl
 - .NET
 
-Additionally, organizations can meet sustainability objectives by minimizing
+Additionally, organizations can combine profiling data with resource
+information to derive an estimate for the carbon footprints of services. 
+This helps organizations meet their sustainability objectives by minimizing
 computational wastage, ensuring seamless alignment with their strategic ESG
 goals.
 
