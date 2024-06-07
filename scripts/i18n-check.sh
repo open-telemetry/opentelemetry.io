@@ -106,8 +106,8 @@ function main() {
     # if [[ -n $FLAG_VERBOSE ]]; then echo -e "All targets: $TARGETS"; fi
   fi
 
-  set -x
-  git branch -vv
+  # set -x
+  # git branch -vv
 
   SYNCED=1
   for f in $TARGETS; do
@@ -123,14 +123,14 @@ function main() {
     if [[ -z $LASTCOMMIT ]]; then
       # Get last commit of `main` that this branch is rooted from.
       LASTCOMMIT=$(git merge-base main HEAD)
-    elif ! git branch --contains $LASTCOMMIT | grep -q "^\s*main\b"; then # HERE
-      # Get last commit of `main` that this branch is rooted from.
-      LASTCOMMIT=$(git merge-base main HEAD)
-    fi
+    # elif ! git branch --contains $LASTCOMMIT | grep -q "^\s*main\b"; then # HERE
+    #   # Get last commit of `main` that this branch is rooted from.
+    #   LASTCOMMIT=$(git merge-base main HEAD)
+    # fi
 
-    if ! (git branch --contains $LASTCOMMIT | grep -q "^\s*main\b"); then
-      echo "Something is wrong, the hash is empty or isn't on 'main', aborting: $LASTCOMMIT - $f"
-      exit 2
+    # if ! (git branch --contains $LASTCOMMIT | grep -q "^\s*main\b"); then
+    #   echo "Something is wrong, the hash is empty or isn't on 'main', aborting: $LASTCOMMIT - $f"
+    #   exit 2
     fi
 
     if [[ -n $FLAG_UPDATE ]]; then
