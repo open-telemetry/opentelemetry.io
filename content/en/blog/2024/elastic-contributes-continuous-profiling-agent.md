@@ -18,7 +18,7 @@ sig: Profiling SIG
 
 Following significant collaboration between
 [Elastic](https://www.elastic.co/observability-labs/blog/elastic-donation-proposal-to-contribute-profiling-agent-to-opentelemetry)
-and [OpenTelemetry's profiling community](./profiling.md), which included a
+and [OpenTelemetry's profiling community](/blog/2024/profiling/), which included a
 thorough review process, we’re excited to announce that the OpenTelemetry
 project has accepted
 [Elastic's donation of its continuous profiling agent](https://github.com/open-telemetry/community/issues/1918).
