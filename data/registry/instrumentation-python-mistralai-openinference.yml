@@ -5,7 +5,7 @@ language: python
 tags:
   - python
   - instrumentation
-  - dspy
+  - mistralai
 urls:
   repo: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-mistralai
   docs: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-mistralai
