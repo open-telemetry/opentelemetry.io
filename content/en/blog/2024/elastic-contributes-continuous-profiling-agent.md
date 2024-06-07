@@ -77,7 +77,7 @@ cost, making code and infrastructure improvements easier.
 
 ## Contribution of comprehensive profiling abilities
 
-Elastic’s continuous profiling agent, [based on eBPF](https://ebpf.io/), is a
+The continuous profiling agent, that Elastic is donating, is [based on eBPF](https://ebpf.io/) and by that a
 whole system, always-on solution that observes code and third-party libraries,
 kernel operations, and other code you don't own. It eliminates the need for code
 instrumentation (run-time/bytecode), recompilation, or service restarts with low
