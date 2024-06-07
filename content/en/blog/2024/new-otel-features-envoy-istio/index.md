@@ -1,7 +1,7 @@
 ---
 title: 'Observability at the Edge: New OTel features in Envoy and Istio'
 linkTitle: New OTel features in Envoy and Istio
-date: 2024-06-06
+date: 2024-06-07
 author: '[Joao Grassi](https://github.com/joaopgrassi) (Dynatrace)'
 issue: 4534
 sig: OpenTelemetry Specification
