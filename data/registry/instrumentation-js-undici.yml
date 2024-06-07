@@ -9,14 +9,11 @@ tags:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-undici
 license: Apache 2.0
-description:
-  This module provides automatic instrumentation for
-  [`undici`](https://undici.nodejs.org/) and Node.js global
-  [`fetch`](https://nodejs.org/docs/latest/api/globals.html#fetch) API.
+description: This module provides automatic instrumentation for [`undici`](https://undici.nodejs.org/) and Node.js global [`fetch`](https://nodejs.org/docs/latest/api/globals.html#fetch) API.
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2024-04-18
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-undici'
-  version: 0.2.0
+  version: 0.3.0
