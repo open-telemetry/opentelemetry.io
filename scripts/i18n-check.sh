@@ -122,7 +122,7 @@ function main() {
     if [[ -z $LASTCOMMIT ]]; then
       # Get last commit of `main` that this branch is rooted from.
       LASTCOMMIT=$(git merge-base main HEAD)
-    elif ! (git branch --contains $LASTCOMMIT | grep -q "^\s*main\b"); then
+    elif ! git branch --contains $LASTCOMMIT | grep -q "^\s*main\b"; then # HERE
       # Get last commit of `main` that this branch is rooted from.
       LASTCOMMIT=$(git merge-base main HEAD)
     fi
