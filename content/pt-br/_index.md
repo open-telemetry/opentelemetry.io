@@ -5,6 +5,7 @@ description: >-
 developer_note:
   O shortcode blocks/cover (usado abaixo) vai servir como imagem de background
   para qualquer arquivo de imagem que contenha "background" no nome.
+default_lang_commit: 6e0c4464
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
