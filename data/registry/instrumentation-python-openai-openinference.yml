@@ -1,4 +1,4 @@
-# cSpell:ignore openai
+# cSpell:ignore openai Arize
 title: Open AI Python Instrumentation
 registryType: instrumentation
 language: python
