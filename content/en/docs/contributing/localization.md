@@ -35,8 +35,8 @@ the page's front matter as follows:
 ---
 title: Your localized page title
 ...
-
 default_lang_commit: <commit-hash-of-main-for-default-language-page>
+---
 ```
 
 The front matter above would be in `content/zh/<some-path>/page.md`. The commit
