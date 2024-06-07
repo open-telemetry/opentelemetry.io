@@ -106,8 +106,7 @@ function main() {
     # if [[ -n $FLAG_VERBOSE ]]; then echo -e "All targets: $TARGETS"; fi
   fi
 
-  set -x # temporary
-
+  set -x
   git branch -vv
 
   SYNCED=1
