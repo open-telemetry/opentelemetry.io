@@ -4,29 +4,9 @@ description: OpenTelemetryが何であり、何でないかについての簡単
 weight: 150
 ---
 
-..
-  OpenTelemetry is an
-  [Observability](/docs/concepts/observability-primer/#what-is-observability)
-  framework and toolkit designed to create and manage telemetry data such as
-  [traces](/docs/concepts/signals/traces/),
-  [metrics](/docs/concepts/signals/metrics/), and
-  [logs](/docs/concepts/signals/logs/). Crucially, OpenTelemetry is vendor- and
-  tool-agnostic, meaning that it can be used with a broad variety of Observability
-  backends, including open source tools like
-  [Jaeger](https://www.jaegertracing.io/) and
-  [Prometheus](https://prometheus.io/), as well as commercial offerings.
-
 OpenTelemetryは[オブザーバビリティ](/docs/concepts/observability-primer/#what-is-observability)フレームワークであり、[トレース](/docs/concepts/signals/traces/)、[メトリクス](/docs/concepts/signals/metrics/)、[ログ](/docs/concepts/signals/logs/)のようなテレメトリーデータを作成・管理するためにデザインされたツールキットです。
 重要なことは、OpenTelemetryはベンダーやツールにとらわれないということです。
 つまり、[Jaeger](https://www.jaegertracing.io/)や[Prometheus](https://prometheus.io/)のようなオープンソースツールや、商用製品を含む、さまざまなオブザーバビリティバックエンドで使用できるということです。
-
-..
-  OpenTelemetry is not an observability backend like Jaeger, Prometheus, or other
-  commercial vendors. OpenTelemetry is focused on the generation, collection,
-  management, and export of telemetry. A major goal of OpenTelemetry is that you
-  can easily instrument your applications or systems, no matter their language,
-  infrastructure, or runtime environment. Crucially, the storage and visualization
-  of telemetry is intentionally left to other tools.
 
 OpenTelemetryは、JaegerやPrometheusや他の商用ベンダーのようなオブザーバビリティバックエンドではありません。
 OpenTelemetryはテレメトリの生成、収集、管理、そしてエクスポートにフォーカスしています。
@@ -86,17 +66,6 @@ OpenTelemetryは拡張できるように設計されています。どのよう�
 ほとんどのユーザーはOpenTelemetryを拡張する必要はないかもしれませんが、このプロジェクトはほぼすべてのレベルで拡張できるように設計されています。
 
 ## 歴史
-
-..
-  OpenTelemetry is a
-  [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io) project that is
-  the result of a merger between two prior projects,
-  [OpenTracing](https://opentracing.io) and [OpenCensus](https://opencensus.io).
-  Both of these projects were created to solve the same problem: the lack of a
-  standard for how to instrument code and send telemetry data to an Observability
-  backend. As neither project was fully able to solve the problem independently,
-  they merged to form OpenTelemetry and combine their strengths while offering a
-  single solution.
 
 OpenTelemetryは、[Cloud Native Computing Foundation (CNCF)](https://www.cncf.io)プロジェクトであり、[OpenTracing](https://opentracing.io)と[OpenCensus](https://opencensus.io)の2つのプロジェクトが統合された成果物です。
 これらのプロジェクトはどちらも、コードを計装し、オブザーバビリティバックエンドにテレメトリーデータを送信する方法の標準がないという問題を解決するために作られました。
