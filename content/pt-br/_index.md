@@ -44,8 +44,8 @@ O OpenTelemetry é uma coleção de APIs, SDKs e ferramentas. Use-o para instrum
 gerar, coletar e exportar dados de telemetria (métricas, logs e rastros) para ajudar
 você a analisar o desempenho e o comportamento do seu software.
 
-> O OpenTelemetry está **disponível** em 
-[diversas linguagens](/docs/languages/) e está pronto para uso em produção. 
+> O OpenTelemetry está **disponível** em
+[diversas linguagens](/docs/languages/) e está pronto para uso em produção.
 
 {{% /blocks/lead %}}
 
@@ -77,8 +77,7 @@ A instalação e integração podem ser feitas com algumas linhas de código.
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**O OpenTelemetry é um projeto em [incubação](https://www.cncf.io/projects/) da [CNCF][]**.<br> Formado por meio de uma junção dos projetos 
-OpenTracing e OpenCensus.
+**O OpenTelemetry é um projeto em [incubação][] da [CNCF][]**.<br> Formado por meio de uma junção dos projetos OpenTracing e OpenCensus.
 
 [![CNCF logo][]][cncf]
 
