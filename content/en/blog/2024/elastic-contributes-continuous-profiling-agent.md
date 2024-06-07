@@ -121,9 +121,9 @@ users:
 - Seamless correlation with other OpenTelemetry signals such as traces,
   increasing fidelity and investigatory depth.
 
-- Estimate environmental impact: Combining profiling data with
-  OpenTelemetry's resource information (i.e. resource attributes) allows to
-  derive insights into the services' carbon footprint.
+- Estimate environmental impact: Combining profiling data with OpenTelemetry's
+  resource information (i.e. resource attributes) allows to derive insights into
+  the services' carbon footprint.
 
 - Through a detailed breakdown of services' resource utilization, profiling data
   provides actionable information on performance optimization opportunities.
