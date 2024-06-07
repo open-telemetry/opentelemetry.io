@@ -10,6 +10,10 @@ lang:zh:
   - changed-files:
       - any-glob-to-any-file:
           - content/zh/**
+lang:ja:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/ja/**
 sig:cpp:
   - changed-files:
       - any-glob-to-any-file:
