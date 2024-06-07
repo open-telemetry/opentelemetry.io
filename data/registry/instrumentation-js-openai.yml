@@ -1,0 +1,20 @@
+# cSpell:ignore openai OpenAI Arize openinference arizeai
+title: OpenAI JavaScript Instrumentation
+registryType: instrumentation
+language: javascript
+tags:
+  - javascript
+  - instrumentation
+  - openai
+urls:
+  repo: https://github.com/Arize-ai/openinference/tree/main/js/packages/openinference-instrumentation-openai
+  docs: https://github.com/Arize-ai/openinference/tree/main/js/packages/openinference-instrumentation-openai
+license: Apache 2.0
+description: Instrumentation for tracing the OpenAI Node.js SDK
+authors:
+  - name: Arize AI
+    email: oss-devs@arize.com
+createdAt: 2024-06-05
+package:
+  registry: npm
+  name: '@arizeai/openinference-instrumentation-openai'

@@ -5679,6 +5679,14 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:10:24.356808-05:00"
   },
+  "https://npmjs.com/package/@arizeai/openinference-instrumentation-langchain": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-06T16:09:15.377108873Z"
+  },
+  "https://npmjs.com/package/@arizeai/openinference-instrumentation-openai": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-06T16:09:16.535267873Z"
+  },
   "https://npmjs.com/package/@autotelic/fastify-opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:17:21.583319+01:00"
