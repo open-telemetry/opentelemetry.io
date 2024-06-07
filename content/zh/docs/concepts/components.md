@@ -3,6 +3,7 @@ title: 组件
 description: 构成 OpenTelemetry 的主要组件
 aliases: [data-collection]
 weight: 20
+default_lang_commit: 1ca30b4d
 ---
 
 OpenTelemetry 项目目前由以下几个主要部分构成：
