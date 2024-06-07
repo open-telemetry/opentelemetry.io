@@ -28,7 +28,7 @@ show_banner: true
 
 - [Learn more](/docs/what-is-opentelemetry/)
 - [Try the demo](/docs/demo/)
-- [Explore integrations](/ecosystem/integrations)
+- [Explore integrations](/ecosystem/integrations/)
 
 </div>
 

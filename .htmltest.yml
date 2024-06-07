@@ -10,10 +10,10 @@ IgnoreDirs:
   - ^blog/(\d+/)?page/\d+
 IgnoreInternalURLs: # list of paths
 IgnoreURLs: # list of regexs of paths or URLs to be ignored
-  - ^(/zh)?/docs/languages/\w+/(api|examples|registry)/$
-  - ^(/zh)?/docs/collector/registry/$
-  - ^(/zh)?/docs/languages/net/(metrics-api|traces-api)/
-  - ^((/zh)?/docs/migration/)?opencensus/$
+  - ^(/..)?/docs/languages/\w+/(api|examples|registry)/$
+  - ^(/..)?/docs/collector/registry/$
+  - ^(/..)?/docs/languages/net/(metrics-api|traces-api)/
+  - ^((/..)?/docs/migration/)?opencensus/$
   - ^/community/end-user/feedback-survey/$
 
   - ^https://deploy-preview-\d+--opentelemetry.netlify.app/
