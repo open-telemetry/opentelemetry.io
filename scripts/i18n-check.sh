@@ -119,11 +119,15 @@ function main() {
       # Get commit hash from git commit info
       LASTCOMMIT=$(git log -n 1 --pretty=format:%h -- "$f")
     fi
-    if [[ -z $LASTCOMMIT ]] || ! (git branch --contains "$LASTCOMMIT" | grep -q "^\s*main\b"); then
+    if [[ -z $LASTCOMMIT ]]; then
+      # Get last commit of `main` that this branch is rooted from.
+      LASTCOMMIT=$(git merge-base main HEAD)
+    elif ! (git branch --contains $LASTCOMMIT | grep -q "^\s*main\b"); then
       # Get last commit of `main` that this branch is rooted from.
       LASTCOMMIT=$(git merge-base main HEAD)
     fi
-    if ! (git branch --contains "$LASTCOMMIT" | grep -q "^\s*main\b"); then
+
+    if ! (git branch --contains $LASTCOMMIT | grep -q "^\s*main\b"); then
       echo "Something is wrong, the hash is empty or isn't on 'main', aborting: $LASTCOMMIT - $f"
       exit 2
     fi
