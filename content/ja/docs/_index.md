@@ -1,6 +1,7 @@
 ---
 title: ドキュメント
 menu: { main: { weight: 10 } }
+default_lang_commit: 93ab1301
 ---
 
 OTelの略称でも知られるOpenTelemetryは、[トレース](/docs/concepts/signals/traces/)、[メトリクス](/docs/concepts/signals/metrics/)、[ログ](/docs/concepts/signals/logs/)のようなテレメトリーデータを計装、生成、収集、エクスポートするためのベンダー非依存なオープンソースの[オブザーバビリティ](/docs/concepts/observability-primer/#what-is-observability)フレームワークです。

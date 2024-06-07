@@ -1,0 +1,13 @@
+name: i18n
+
+on:
+  pull_request:
+
+jobs:
+  i18n-check:
+    name: I18N check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: scripts/i18n-check.sh -u
+      - run: .github/workflows/scripts/i18n-check-helper.sh
