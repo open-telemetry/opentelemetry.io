@@ -3,8 +3,8 @@ title: Projeto OpenTelemetry
 description: >-
  Telemetria de qualidade, ubíqua e portátil para permitir uma observabilidade eficaz
 developer_note:
-  O shortcode blocks/cover (usado abaixo) vai usar como imagem de background
-  qualquer arquivo de imagem que contenha "background" no nome.
+  O shortcode blocks/cover (usado abaixo) vai servir como imagem de background
+  para qualquer arquivo de imagem que contenha "background" no nome.
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
@@ -21,14 +21,14 @@ developer_note:
 
 <div class="l-primary-buttons mt-5">
 
-- [Saiba mais sobre](/docs/what-is-opentelemetry/)
+- [Saiba mais](/docs/what-is-opentelemetry/)
 - [Experimente a demonstração](/docs/demo/)
 - [Explore as integrações](/ecosystem/integrations)
 
 </div>
 
 <div class="h3 mt-4">
-<a class="text-secondary" href="/docs/getting-started/">Comece</a> baseado na sua função
+<a class="text-secondary" href="/docs/getting-started/">Comece</a> baseado na sua área
 </div>
 <div class="l-get-started-buttons">
 
@@ -45,7 +45,7 @@ gerar, coletar e exportar dados de telemetria (métricas, logs e rastros) para a
 você a analisar o desempenho e o comportamento do seu software.
 
 > O OpenTelemetry está **disponível** em 
-[diversas linguagens](/docs/languages/) e é adequado para uso. 
+[diversas linguagens](/docs/languages/) e está pronto para uso em produção. 
 
 {{% /blocks/lead %}}
 
@@ -62,7 +62,7 @@ O OpenTelemetry é integrável com frameworks e bibliotecas populares como
 [Spring](https://spring.io),
 [ASP.NET Core](https://docs.microsoft.com/aspnet/core),
 [Express](https://expressjs.com), [Quarkus](https://quarkus.io), e muito mais!
-A instalação e integração podem ser feito com simplesmente algumas linhas de código.
+A instalação e integração podem ser feitas com algumas linhas de código.
 
 {{% /blocks/feature %}}
 
