@@ -13,6 +13,7 @@ defaultContentLanguage: en
 languages:
   en:
     languageName: English
+    languageCode: en-US
     params:
       description: The OpenTelemetry Project Site
   ja:
@@ -21,6 +22,7 @@ languages:
       description: OpenTelemetryプロジェクト公式サイト
   zh:
     languageName: 中文 (Chinese)
+    languageCode: zh-cn
     params:
       description: OpenTelemetry 项目网站
 
