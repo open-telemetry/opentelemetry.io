@@ -106,6 +106,8 @@ function main() {
     # if [[ -n $FLAG_VERBOSE ]]; then echo -e "All targets: $TARGETS"; fi
   fi
 
+  set -x # temporary
+
   SYNCED=1
   for f in $TARGETS; do
     # if [[ -n $FLAG_VERBOSE ]]; then echo -e "Checking\t$f"; fi
