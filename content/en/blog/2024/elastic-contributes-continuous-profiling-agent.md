@@ -109,7 +109,7 @@ profiling data correlating it with existing signals, like tracing, metrics, and
 logs, opening new potential for observability insights and a more efficient
 troubleshooting experience.
 
-### User Benefits of OpenTelemetry Profiling
+### User benefits of OpenTelemetry Profiling
 
 OpenTelemetry-based continuous profiling unlocks the following possibilities for
 users:
