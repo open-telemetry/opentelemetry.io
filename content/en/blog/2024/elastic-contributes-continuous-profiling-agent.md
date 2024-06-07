@@ -60,7 +60,7 @@ along with associated metadata.
 ## Benefits of Continuous Profiling
 
 Traditional profiling solutions, typically used for one-off, development time
-optimizations, have significant drawbacks limiting adoption in production
+optimizations, can have significant drawbacks limiting adoption in production
 environments:
 
 - Significant cost and performance overhead due to code instrumentation
