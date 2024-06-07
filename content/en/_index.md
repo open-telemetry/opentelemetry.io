@@ -13,15 +13,15 @@ show_banner: true
 limit_banner: 2 # Default to 2, adjust as needed
 banners:
   - message:
+      '<i class="fas fa-bullhorn"></i> We are happy to announce that Elastic''s
+      donation of the [**eBPF profiling agent has been
+      accepted**](/blog/2024/elastic-contributes-continuous-profiling-agent)!'
+    to: 2024-07-25
+  - message:
       '<i class="fas fa-bullhorn"></i> Join us for [**OTel Community Day** on
       June
       25th](https://events.linuxfoundation.org/open-telemetry-community-day/)!'
     to: 2024-06-25
-  - message:
-      '<i class="fas fa-bullhorn"></i> Help improve OTel and Prometheus
-      interoperability: [complete our
-      survey](https://forms.gle/bZAG9f7udoJsjZUG9) by May 31'
-    to: 2024-05-31
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>

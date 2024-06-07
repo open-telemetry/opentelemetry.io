@@ -1959,6 +1959,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-06-04T17:29:51.894512776+02:00"
   },
+  "https://energy.mit.edu/news/energy-efficient-computing/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-06T19:18:50.285562+02:00"
+  },
   "https://equalitymi.org/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:20.222589-05:00"
@@ -2171,6 +2175,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:58.646823-05:00"
   },
+  "https://github.com/AlexanderWert": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-06T19:18:46.235285+02:00"
+  },
   "https://github.com/Aneurysm9": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:06:35.565079-05:00"
@@ -2286,6 +2294,10 @@
   "https://github.com/OutThereLabs/actix-web-opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:12:45.986279-05:00"
+  },
+  "https://github.com/Rperry2174": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-06T19:18:46.659794+02:00"
   },
   "https://github.com/Samudraneel24": {
     "StatusCode": 200,
@@ -2450,6 +2462,10 @@
   "https://github.com/brettmc/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:06.510641-05:00"
+  },
+  "https://github.com/bshetti": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-06T19:18:45.889432+02:00"
   },
   "https://github.com/bufbuild/connect-opentelemetry-go": {
     "StatusCode": 200,
@@ -6183,9 +6199,17 @@
     "StatusCode": 206,
     "LastSeen": "2024-05-15T19:23:44.426379755+03:00"
   },
+  "https://opentelemetry.io/blog/2024/profiling/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-06T19:18:48.714842+02:00"
+  },
   "https://opentelemetry.io/blog/2024/scaling-collectors/": {
     "StatusCode": 206,
     "LastSeen": "2024-05-06T07:53:28.903161-07:00"
+  },
+  "https://opentelemetry.io/community/mission/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-06T19:18:50.53437+02:00"
   },
   "https://opentelemetry.io/docs/collector": {
     "StatusCode": 206,
@@ -8611,6 +8635,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T20:05:14.383107-05:00"
   },
+  "https://www.cncf.io/blog/2022/05/31/what-is-continuous-profiling/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-06T19:18:49.123716+02:00"
+  },
   "https://www.cncf.io/blog/2023/01/11/a-look-at-the-2022-velocity-of-cncf-linux-foundation-and-top-30-open-source-projects/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T05:18:24.717687-05:00"
@@ -8690,6 +8718,10 @@
   "https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:06:13.672817-05:00"
+  },
+  "https://www.elastic.co/observability-labs/blog/elastic-donation-proposal-to-contribute-profiling-agent-to-opentelemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-06T19:18:47.94157+02:00"
   },
   "https://www.envoyproxy.io": {
     "StatusCode": 206,
