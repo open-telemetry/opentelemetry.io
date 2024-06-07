@@ -14,7 +14,8 @@ limit_banner: 2 # Default to 2, adjust as needed
 banners:
   - message:
       '<i class="fas fa-bullhorn"></i> We are happy to announce that Elastic''s
-      donation of the [**eBPF profiling agent has been accepted**](/blog/2024/elastic-contributes-continuous-profiling-agent)!'
+      donation of the [**eBPF profiling agent has been
+      accepted**](/blog/2024/elastic-contributes-continuous-profiling-agent)!'
     to: 2024-07-25
   - message:
       '<i class="fas fa-bullhorn"></i> Join us for [**OTel Community Day** on
