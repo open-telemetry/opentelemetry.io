@@ -1,0 +1,17 @@
+# cSpell:ignore Mistral mistralai openinference arize
+title: Mistral AI Python Instrumentation
+registryType: instrumentation
+language: python
+tags:
+  - python
+  - instrumentation
+  - mistralai
+urls:
+  repo: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-mistralai
+  docs: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-mistralai
+license: Apache 2.0
+description: Instrumentation for tracing the Mistral AI Python SDK
+authors:
+  - name: Arize AI
+    email: oss-devs@arize.com
+createdAt: 2024-06-05
