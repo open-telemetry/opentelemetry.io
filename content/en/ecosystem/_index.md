@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry Ecosystem
 linkTitle: Ecosystem
-description: >
+description: >-
   OpenTelemetry's thriving ecosystem of components, examples, integrations and
   vendors
 cascade: { type: docs }

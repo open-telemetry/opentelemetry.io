@@ -212,6 +212,10 @@ module:
   mounts:
     - source: content/en
       target: content
+    - source: tmp/community/mission-vision-values.md
+      target: content/community/mission.md
+    - source: tmp/community/roadmap.md
+      target: content/community/roadmap.md
 
     ## ja
     - source: content/ja
@@ -221,9 +225,11 @@ module:
     - source: content/en
       target: content
       excludeFiles: &fallbackExcludeFiles
+        - blog/*
+        - community/*
         - docs/specs/*
         - ecosystem/*
-        - site
+        - site/*
       lang: ja
 
     ## zh
@@ -234,9 +240,6 @@ module:
     - source: content/en
       target: content
       excludeFiles: *fallbackExcludeFiles
-      lang: zh
-    - source: content/ja/ecosystem
-      target: content
       lang: zh
 
     # Other site content
@@ -250,10 +253,6 @@ module:
       target: content/docs/specs/otlp/img
     - source: tmp/semconv/docs
       target: content/docs/specs/semconv
-    - source: tmp/community/mission-vision-values.md
-      target: content/community/mission.md
-    - source: tmp/community/roadmap.md
-      target: content/community/roadmap.md
     - source: static
       target: static
     - source: content-modules/semantic-conventions/schemas
