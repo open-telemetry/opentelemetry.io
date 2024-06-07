@@ -2,6 +2,8 @@
 title: Elastic Contributes its Continuous Profiling Agent to OpenTelemetry
 linkTitle: Elastic Contributes Profiling Agent # Mandatory, make sure that your short title.
 date: 2024-06-06 # Put the current date, we will keep the date updated until your PR is merged
+# prettier-ignore
+cSpell:ignore: Bahubali Shetti Dmitry Filimonov Geisendörfer Halliday Christos Kalkanis
 author:
   >- # If you have only one author, then add the single name on this line in quotes.
   [Bahubali Shetti](https://github.com/bshetti) (Elastic), [Alexander
