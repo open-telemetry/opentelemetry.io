@@ -1,0 +1,10 @@
+{{ if .Params.show_banner -}}
+  {{ $announcements := site.GetPage "announcements" -}}
+  {{ if $announcements -}}
+    <div class="o-banner">
+      {{ range $announcements.RegularPages }}
+      <div>{{ .Content }}</div>
+      {{ end -}}
+    </div>
+  {{ end -}}
+{{ end -}}
