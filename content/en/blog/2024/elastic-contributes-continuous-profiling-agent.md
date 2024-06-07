@@ -59,8 +59,9 @@ along with associated metadata.
 
 ## Benefits of Continuous Profiling
 
-Traditional profiling solutions have significant drawbacks limiting adoption in
-production environments:
+Traditional profiling solutions, typically used for one-off, development time
+optimizations, have significant drawbacks limiting adoption in production
+environments:
 
 - Significant cost and performance overhead due to code instrumentation
 - Disruptive service restarts
@@ -99,11 +100,6 @@ support for a wide range of runtimes and languages, such as:
 - Perl
 - .NET
 
-Additionally, organizations can combine profiling data with resource information
-to derive an estimate for the carbon footprints of services. This helps
-organizations meet their sustainability objectives by minimizing computational
-wastage, ensuring seamless alignment with their strategic ESG goals.
-
 ## Benefits to OpenTelemetry
 
 This contribution not only boosts the standardization of continuous profiling
@@ -125,11 +121,7 @@ users:
 - Seamless correlation with other OpenTelemetry signals such as traces,
   increasing fidelity and investigatory depth.
 
-- Minimize environmental impact: energy consumption associated with computing is
-  a growing concern (source:
-  [MIT Energy Initiative](https://energy.mit.edu/news/energy-efficient-computing/)).
-  More efficient code translates to lower energy consumption, contributing to a
-  reduction in carbon (CO2) footprint. Combining profiling data with
+- Estimate environmental impact: Combining profiling data with
   OpenTelemetry's resource information (i.e. resource attributes) allows to
   derive insights into the services' carbon footprint.
 
