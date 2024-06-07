@@ -6,6 +6,7 @@ show_banner: true
 developer_note:
   下文所用的 blocks/cover 短代码将使用文件名中包含 "background"
   的图像文件作为背景图。
+show_banner: true
 default_lang_commit: 6e35a949
 ---
 

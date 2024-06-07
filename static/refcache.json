@@ -4811,6 +4811,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-06-06T14:51:47.628909-04:00"
   },
+  "https://gohugo.io/methods/site/regularpages/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-07T12:38:33.735717-04:00"
+  },
   "https://golang.org/ref/spec#Slice_types": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:17.04578-05:00"

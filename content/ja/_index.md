@@ -4,6 +4,7 @@ description: >-
   効果的な観測を可能にする、高品質でユビキタスかつポータブルなテレメトリー
 developer_note:
   blocks/coverコラム（以下で使用）は、ファイル名に "background" を含む画像ファイルを背景画像として使用します。
+show_banner: true
 default_lang_commit: 902043db
 ---
 

@@ -5,7 +5,7 @@
   ],
   "scripts": {
     "__check:links": "make --keep-going check-links",
-    "_build": "npm run _hugo -- -e dev -DFE --baseURL \"${DEPLOY_PRIME_URL:-http://localhost}\"",
+    "_build": "npm run _hugo -- -e dev --buildDrafts --baseURL \"${DEPLOY_PRIME_URL:-http://localhost}\"",
     "_check:format:any": "npx prettier --check --ignore-path ''",
     "_check:format": "npx prettier --check .",
     "_check:links--md": "npx markdown-link-check --config .markdown-link-check.json *.md",
@@ -28,7 +28,7 @@
     "_prepare:docsy": "cd themes/docsy && npm install",
     "_prettier:any": "npx prettier --ignore-path ''",
     "_rename-to-kebab-case": "find assets content static -name '*_*' ! -name '_*' -exec sh -c 'mv \"$1\" \"${1//_/-}\"' _ {} \\;",
-    "_serve:hugo": "hugo server -DFE --minify",
+    "_serve:hugo": "hugo server --buildDrafts --minify",
     "_serve:netlify": "netlify dev -c \"npm run _serve:hugo -- --renderToMemory\"",
     "_sync": "./scripts/sync-submodules.pl",
     "all": "bash -c 'x=0; for c in \"$@\"; do npm run $c || x=$((x+1)); done; ((!x)) || (echo \"ERROR: some scripts failed!\" && exit 1)' -",

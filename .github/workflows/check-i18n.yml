@@ -9,5 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # all
       - run: scripts/i18n-check.sh -u
       - run: .github/workflows/scripts/i18n-check-helper.sh
