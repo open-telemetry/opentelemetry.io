@@ -18,7 +18,7 @@ right place!
     [OpenTelemetry YouTube channel](https://www.youtube.com/@otel-official)
 - To provide feedback and help prioritize issues:
   - Participate in a [direct interview/feedback session](interviews-feedback/)
-  - Take a [survey](/community/end-user/feedback-survey/)
+  - Take a [survey](feedback-survey/)
   - Join a panel discussion (more info coming soon!)
   - Vote on issues (more info coming soon!)
 

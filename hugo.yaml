@@ -218,12 +218,12 @@ module:
       target: content
       lang: ja
     # fallback pages
-    - excludeFiles: specs/*
-      source: content/en/docs
-      target: content/docs
-      lang: ja
-    - source: content/en/announcements
-      target: content/announcements
+    - source: content/en
+      target: content
+      excludeFiles: &fallbackExcludeFiles
+        - docs/specs/*
+        - ecosystem/*
+        - site
       lang: ja
 
     ## zh
@@ -231,12 +231,12 @@ module:
       target: content
       lang: zh
     # fallback pages
-    - excludeFiles: specs/*
-      source: content/en/docs
-      target: content/docs
+    - source: content/en
+      target: content
+      excludeFiles: *fallbackExcludeFiles
       lang: zh
-    - source: content/en/announcements
-      target: content/announcements
+    - source: content/ja/ecosystem
+      target: content
       lang: zh
 
     # Other site content
