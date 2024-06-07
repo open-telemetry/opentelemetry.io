@@ -83,6 +83,6 @@ A instalação e integração podem ser feitas com algumas linhas de código.
 
 [cncf]: https://cncf.io
 [cncf logo]: /img/logos/cncf-white.svg
-[incubating]: https://www.cncf.io/projects/
+[incubação]: https://www.cncf.io/projects/
 
 {{% /blocks/section %}}
