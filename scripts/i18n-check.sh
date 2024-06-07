@@ -108,6 +108,8 @@ function main() {
 
   set -x # temporary
 
+  git branch -vv
+
   SYNCED=1
   for f in $TARGETS; do
     # if [[ -n $FLAG_VERBOSE ]]; then echo -e "Checking\t$f"; fi
