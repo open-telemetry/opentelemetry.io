@@ -24,7 +24,7 @@ project has accepted
 [Elastic's donation of its continuous profiling agent](https://github.com/open-telemetry/community/issues/1918).
 
 This marks a significant milestone in establishing profiling as a core telemetry
-signal in OpenTelemetry. Elastic’s [eBPF](https://ebpf.io/) profiling agent
+signal in OpenTelemetry. Elastic’s [eBPF based](https://ebpf.io/) profiling agent
 observes code across different programming languages and runtimes, third-party
 libraries, kernel operations, and system resources with low CPU and memory
 overhead in production. Both, SREs and developers can now benefit from these
