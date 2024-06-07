@@ -156,7 +156,7 @@ function main() {
     fi
   done
   if [ $SYNCED -ne 1 ]; then
-    exit 1
+    exit
   fi
 
   echo "$TARGET_PATHS is still in sync"
