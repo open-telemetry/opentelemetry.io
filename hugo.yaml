@@ -212,16 +212,34 @@ module:
   mounts:
     - source: content/en
       target: content
+
+    ## ja
     - source: content/ja
       target: content
       lang: ja
+    # fallback pages
+    # - excludeFiles: specs/*
+    #   source: content/en/docs
+    #   target: content/docs
+    #   lang: ja
+    - source: content/en/announcements
+      target: content/announcements
+      lang: ja
+
+    ## zh
     - source: content/zh
       target: content
       lang: zh
+    # fallback pages
     - excludeFiles: specs/*
-      source: content/en/docs # zh missing-page fallback
+      source: content/en/docs
       target: content/docs
       lang: zh
+    - source: content/en/announcements
+      target: content/announcements
+      lang: zh
+
+    # Other site content
     - source: tmp/otel/specification
       target: content/docs/specs/otel
     - source: tmp/opamp
