@@ -22,18 +22,18 @@ default_lang_commit: b7ee690154aacc8d6e43636af00743994fb6dc27
 
 想要了解特定编程语言的工具是如何工作的？从这里开始：
 
-| 语言        | 自动插桩            | 插桩库                 | 手动插桩                              |
-| ---------- | ------------------- | -------------------- | ------------------------------------ |
-| .NET       |                                                    | [购物车服务](services/cart/)                                                                                                              | [购物车服务](services/cart/)                                                                    |
-| C++        |                                                    |                                                                                                                                          | [货币服务](services/currency/)                                                                |
-| Go         |                                                    | [会计服务](services/accounting/)、[结账服务](services/checkout/)、[产品目录服务](services/product-catalog/)                                    | [结账服务](services/checkout/)、 [产品目录服务](services/product-catalog/)                      |
-| Java       | [广告服务](services/ad/)                            |                                                                                                                                           | [广告服务](services/ad/)                                                                   |
-| JavaScript |                                                    | [前端](services/frontend/)                                                                                                                 | [前端](services/frontend/)、[支付服务](services/payment/)                         |
-| Kotlin     |                                                    | [欺诈检测服务](services/fraud-detection/)                                                                                                   |                                                                                              |
-| PHP        |                                                    | [报价服务](services/quote/)                                                                                                                | [报价服务](services/quote/)                                                             |
-| Python     | [推荐服务](services/recommendation/)                |                                                                                                                                          | [推荐服务](services/recommendation/)                                           |
-| Ruby       |                                                    | [电子邮件服务](services/email/)                                                                                                            | [电子邮件服务](services/email/)                                                             |
-| Rust       |                                                    | [发货服务](services/shipping/)                                                                                                            | [发货服务](services/shipping/)                                                       |
+| 语言       | 自动插桩                             | 插桩库                                                                                                      | 手动插桩                                                                   |
+| ---------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| .NET       |                                      | [购物车服务](services/cart/)                                                                                | [购物车服务](services/cart/)                                               |
+| C++        |                                      |                                                                                                             | [货币服务](services/currency/)                                             |
+| Go         |                                      | [会计服务](services/accounting/)、[结账服务](services/checkout/)、[产品目录服务](services/product-catalog/) | [结账服务](services/checkout/)、 [产品目录服务](services/product-catalog/) |
+| Java       | [广告服务](services/ad/)             |                                                                                                             | [广告服务](services/ad/)                                                   |
+| JavaScript |                                      | [前端](services/frontend/)                                                                                  | [前端](services/frontend/)、[支付服务](services/payment/)                  |
+| Kotlin     |                                      | [欺诈检测服务](services/fraud-detection/)                                                                   |                                                                            |
+| PHP        |                                      | [报价服务](services/quote/)                                                                                 | [报价服务](services/quote/)                                                |
+| Python     | [推荐服务](services/recommendation/) |                                                                                                             | [推荐服务](services/recommendation/)                                       |
+| Ruby       |                                      | [电子邮件服务](services/email/)                                                                             | [电子邮件服务](services/email/)                                            |
+| Rust       |                                      | [发货服务](services/shipping/)                                                                              | [发货服务](services/shipping/)                                             |
 
 ## 服务文档
 

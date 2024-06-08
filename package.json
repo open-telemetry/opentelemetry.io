@@ -1,5 +1,5 @@
 {
-  "spelling": "cSpell:ignore docsy elemetry HTMLTEST hugo loglevel netlify prebuild precheck preinstall postbuild postget refcache textlint -",
+  "spelling": "cSpell:ignore docsy elemetry HTMLTEST hugo loglevel netlify nowrap prebuild precheck preinstall postbuild postget refcache textlint -",
   "Notes": [
     "The 'all' runs _all_ named scripts in sequence, even if one fails; and exits with failure in that case."
   ],
@@ -7,6 +7,8 @@
     "__check:links": "make --keep-going check-links",
     "_build": "npm run _hugo -- -e dev --buildDrafts --baseURL \"${DEPLOY_PRIME_URL:-http://localhost}\"",
     "_check:format:any": "npx prettier --check --ignore-path ''",
+    "_check:format:ja+zh": "npm run _check:format:nowrap -- content/ja content/zh",
+    "_check:format:nowrap": "npm run _check:format:any -- --prose-wrap preserve",
     "_check:format": "npx prettier --check .",
     "_check:links--md": "npx markdown-link-check --config .markdown-link-check.json *.md",
     "_check:links--warn": "npm run _check:links || (echo; echo 'WARNING: see link-checker output for issues.'; echo)",
@@ -38,7 +40,7 @@
     "build": "npm run _build",
     "cd:public": "cd public &&",
     "check:filenames": "test -z \"$(npm run -s _ls-bad-filenames)\" || npm run -s _filename-error",
-    "check:format": "npm run _check:format || (echo '[help] Run: npm run fix:format'; exit 1)",
+    "check:format": "npm run _check:format && npm run _check:format:ja+zh || (echo '[help] Run: npm run fix:format'; exit 1)",
     "check:links:internal": "npm run _check:links:internal",
     "check:links": "npm run _check:links",
     "check:markdown": "scripts/check-markdown-wrapper.sh",
@@ -62,7 +64,7 @@
     "fix:submodules": "npm run _sync",
     "fix:text": "npm run check:text -- --fix",
     "fix": "npm run fix:all",
-    "format": "npm run _check:format -- --write",
+    "format": "npm run _check:format -- --write && npm run _check:format:ja+zh -- --write",
     "get:submodule": "npm run _get:${GET:-submodule}",
     "install:netlify-cli": "npm list netlify-cli || npm install netlify-cli",
     "log:check:links": "npm run check:links | tee tmp/build-log.txt",
