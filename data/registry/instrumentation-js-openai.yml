@@ -18,3 +18,4 @@ createdAt: 2024-06-05
 package:
   registry: npm
   name: '@arizeai/openinference-instrumentation-openai'
+  version: 0.3.1
