@@ -6,13 +6,17 @@ const markdownlint = require('markdownlint');
 const { taskArgs, trimBlankLinesFromArray } = require('./_util');
 const fs = require('fs');
 
-const defaultGlob = '**/*.md';
+const defaultGlobs = [
+  '**/*.md',
+];
 const markdownFiles = [
   '!.github/**',
   '!content-modules/**',
+  '!examples/**',
   '!layouts/**',
   '!node_modules/**',
   '!scripts/registry-scanner/node_modules/**',
+  '!tools/examples/**',
   '!themes/**',
   '!tmp/**',
 ];
@@ -121,13 +125,25 @@ function applyFixesToFileContent(content, issue) {
   return lines.join('\n');
 }
 
+function logFiles(debug) {
+  return through2.obj(function (file, enc, cb) {
+    if (debug) { console.log('Processing file:', file.path); }
+    cb(null, file);
+  });
+}
+
 function lintMarkdown() {
   const argv = taskArgs().options({
     glob: {
       alias: 'g',
-      type: 'string',
-      description: 'Glob of files to run through markdownlint.',
-      default: defaultGlob,
+      type: 'array',
+      description: 'Globs of files to run through markdownlint. List flag more than once for multiple values.',
+      default: defaultGlobs,
+    },
+    debug: {
+      type: 'boolean',
+      description: 'Output debugging information.',
+      default: false,
     },
     fix: {
       type: 'boolean',
@@ -142,8 +158,12 @@ function lintMarkdown() {
   }
   fix = argv.fix;
 
+  const globs = [...argv.glob, ...markdownFiles];
+  if (argv.debug) { console.log('Globs being used:', globs); }
+
   return gulp
-    .src([argv.glob, ...markdownFiles])
+    .src(globs, { followSymlinks: false })
+    .pipe(logFiles(argv.debug))
     .pipe(through2.obj(markdownLintFile))
     .on('end', () => {
       const fileOrFiles = 'file' + (numFilesProcessed == 1 ? '' : 's');
