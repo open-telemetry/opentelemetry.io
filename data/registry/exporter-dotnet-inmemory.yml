@@ -7,8 +7,7 @@ tags:
   - exporter
   - dotnet
 license: Apache 2.0
-description:
-  The in-memory exporter stores data in a user provided memory buffer.
+description: The in-memory exporter stores data in a user provided memory buffer.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -17,4 +16,4 @@ createdAt: 2022-11-07
 package:
   registry: nuget
   name: OpenTelemetry.Exporter.InMemory
-  version: 1.9.0-alpha.1
+  version: 1.9.0-rc.1
