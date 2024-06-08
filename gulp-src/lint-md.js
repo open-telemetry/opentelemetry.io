@@ -6,9 +6,7 @@ const markdownlint = require('markdownlint');
 const { taskArgs, trimBlankLinesFromArray } = require('./_util');
 const fs = require('fs');
 
-const defaultGlobs = [
-  '**/*.md',
-];
+const defaultGlobs = ['**/*.md'];
 const markdownFiles = [
   '!.github/**',
   '!content-modules/**',
@@ -127,7 +125,9 @@ function applyFixesToFileContent(content, issue) {
 
 function logFiles(debug) {
   return through2.obj(function (file, enc, cb) {
-    if (debug) { console.log('Processing file:', file.path); }
+    if (debug) {
+      console.log('Processing file:', file.path);
+    }
     cb(null, file);
   });
 }
@@ -137,7 +137,8 @@ function lintMarkdown() {
     glob: {
       alias: 'g',
       type: 'array',
-      description: 'Globs of files to run through markdownlint. List flag more than once for multiple values.',
+      description:
+        'Globs of files to run through markdownlint. List flag more than once for multiple values.',
       default: defaultGlobs,
     },
     debug: {
@@ -159,7 +160,9 @@ function lintMarkdown() {
   fix = argv.fix;
 
   const globs = [...argv.glob, ...markdownFiles];
-  if (argv.debug) { console.log('Globs being used:', globs); }
+  if (argv.debug) {
+    console.log('Globs being used:', globs);
+  }
 
   return gulp
     .src(globs, { followSymlinks: false })

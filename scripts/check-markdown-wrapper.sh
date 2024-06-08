@@ -11,4 +11,4 @@ if [[ ! -e $symlink_target ]]; then
 fi
 
 set -x
-exec npx gulp lint-md "$@"
+exec npm run _check:markdown "$@"
