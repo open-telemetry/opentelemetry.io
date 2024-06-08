@@ -1,7 +1,7 @@
 ---
 title: Projeto OpenTelemetry
 description: >-
- Telemetria de qualidade, ubíqua e portátil para permitir uma observabilidade eficaz
+ Telemetria de alta qualidade, abrangente e portátil para permitir uma observabilidade eficaz
 developer_note:
   O shortcode blocks/cover (usado abaixo) vai servir como imagem de background
   para qualquer arquivo de imagem que contenha "background" no nome.
