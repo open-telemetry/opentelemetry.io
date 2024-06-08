@@ -3,6 +3,7 @@ title: Getting Started
 description: あなたの役割に応じてOpenTelemetryを始めてみましょう。
 no_list: true
 weight: 160
+default_lang_commit: 93ab1301
 ---
 
 まずは役割[^1]を選択してください。
