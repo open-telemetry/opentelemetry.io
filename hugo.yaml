@@ -13,6 +13,7 @@ defaultContentLanguage: en
 languages:
   en:
     languageName: English
+    languageCode: en-US
     params:
       description: The OpenTelemetry Project Site
   ja:
@@ -21,10 +22,12 @@ languages:
       description: OpenTelemetryプロジェクト公式サイト
   zh:
     languageName: 中文 (Chinese)
+    languageCode: zh-cn
     params:
       description: OpenTelemetry 项目网站
-  pt-br:
+  pt:
     languageName: Português
+    languageCode: pt-br
     params:
       description: Site do Projeto OpenTelemetry
 
@@ -212,22 +215,14 @@ security:
 
 module:
   mounts:
+    ## en
     - source: content/en
       target: content
-
-    - source: content/ja
-      target: content
-      lang: ja
-    - source: content/zh
-      target: content
-      lang: zh
-    - source: content/pt-br
-      target: content
-      lang: pt-br
-    - excludeFiles: specs/*
-      source: content/en/docs # zh missing-page fallback
-      target: content/docs
-      lang: zh
+    - source: tmp/community/mission-vision-values.md
+      target: content/community/mission.md
+    - source: tmp/community/roadmap.md
+      target: content/community/roadmap.md
+    # Specs, currently en only
     - source: tmp/otel/specification
       target: content/docs/specs/otel
     - source: tmp/opamp
@@ -238,10 +233,47 @@ module:
       target: content/docs/specs/otlp/img
     - source: tmp/semconv/docs
       target: content/docs/specs/semconv
-    - source: tmp/community/mission-vision-values.md
-      target: content/community/mission.md
-    - source: tmp/community/roadmap.md
-      target: content/community/roadmap.md
+
+    ## ja
+    - source: content/ja
+      target: content
+      lang: ja
+    # fallback pages
+    - source: content/en/announcements
+      target: content/announcements
+      lang: ja
+    - excludeFiles: specs/*
+      source: content/en/docs
+      target: content/docs
+      lang: ja
+
+    ## zh
+    - source: content/zh
+      target: content
+      lang: zh
+    # fallback pages
+    - source: content/en/announcements
+      target: content/announcements
+      lang: zh
+    - excludeFiles: specs/*
+      source: content/en/docs
+      target: content/docs
+      lang: zh
+
+    ## pt
+    - source: content/pt
+      target: content
+      lang: pt
+    # fallback pages
+    - source: content/en/announcements
+      target: content/announcements
+      lang: pt
+    - excludeFiles: specs/*
+      source: content/en/docs
+      target: content/docs
+      lang: pt
+
+    ## static
     - source: static
       target: static
     - source: content-modules/semantic-conventions/schemas
