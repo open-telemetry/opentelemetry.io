@@ -5723,6 +5723,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:17:00.678026+01:00"
   },
+  "https://npmjs.com/package/@azure/opentelemetry-instrumentation-azure-sdk": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-08T09:08:38.118430031Z"
+  },
   "https://npmjs.com/package/@cerbos/opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:17:23.493318+01:00"
