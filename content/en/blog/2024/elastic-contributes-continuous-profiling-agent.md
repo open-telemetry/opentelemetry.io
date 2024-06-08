@@ -1,11 +1,10 @@
 ---
 title: Elastic Contributes its Continuous Profiling Agent to OpenTelemetry
-linkTitle: Elastic Contributes Profiling Agent # Mandatory, make sure that your short title.
+linkTitle: Elastic Contributes Profiling Agent
 date: 2024-06-07
 # prettier-ignore
 cSpell:ignore: Bahubali Christos Dmitry Filimonov Geisendörfer Halliday Kalkanis Shetti
-author:
-  >- # If you have only one author, then add the single name on this line in quotes.
+author: >
   [Bahubali Shetti](https://github.com/bshetti) (Elastic), [Alexander
   Wert](https://github.com/AlexanderWert) (Elastic), [Morgan
   McLean](https://github.com/mtwo) (Splunk), [Ryan
