@@ -27,7 +27,7 @@ languages:
       description: OpenTelemetry 项目网站
   pt:
     languageName: Português
-    languageCode: pt-br
+    languageCode: pt-BR
     params:
       description: Site do Projeto OpenTelemetry
 
