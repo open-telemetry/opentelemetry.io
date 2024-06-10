@@ -1,0 +1,73 @@
+# This file is used to define the owners of the content modules in the OpenTelemetry repository.
+components:
+  content-modules:
+  - "@open-telemetry/docs-maintainers"
+  content-modules/opamp-spec:
+  - "@open-telemetry/docs-maintainers"
+  - "@open-telemetry/opamp-spec-approvers"
+  content-modules/opentelemetry-proto:
+  - "@open-telemetry/docs-maintainers"
+  - "@open-telemetry/specs-approvers"
+  content-modules/opentelemetry-specification:
+  - "@open-telemetry/docs-maintainers"
+  - "@open-telemetry/specs-approvers"
+  content-modules/semantic-conventions:
+  - "@open-telemetry/docs-maintainers"
+  - "@open-telemetry/specs-semconv-approvers"
+  content/en/blog:
+  - "@open-telemetry/docs-maintainers"
+  content/en/community/end-user:
+  - "@open-telemetry/sig-end-user-approvers"
+  content/en/docs/collector:
+  - "@open-telemetry/collector-approvers"
+  content/en/docs/contributing:
+  - "@open-telemetry/docs-maintainers"
+  content/en/docs/demo:
+  - "@open-telemetry/demo-approvers"
+  content/en/docs/kubernetes/helm:
+  - "@open-telemetry/helm-approvers"
+  content/en/docs/kubernetes/operator:
+  - "@open-telemetry/operator-approvers"
+  content/en/docs/languages/cpp:
+  - "@open-telemetry/cpp-approvers"
+  content/en/docs/languages/erlang:
+  - "@open-telemetry/erlang-approvers"
+  content/en/docs/languages/go:
+  - "@open-telemetry/go-approvers"
+  - "@open-telemetry/go-instrumentation-approvers"
+  content/en/docs/languages/java:
+  - "@open-telemetry/java-approvers"
+  - "@open-telemetry/java-instrumentation-approvers"
+  content/en/docs/languages/js:
+  - "@open-telemetry/javascript-approvers"
+  content/en/docs/languages/net:
+  - "@open-telemetry/dotnet-approvers"
+  - "@open-telemetry/dotnet-instrumentation-approvers"
+  content/en/docs/languages/php:
+  - "@open-telemetry/php-approvers"
+  content/en/docs/languages/python:
+  - "@open-telemetry/python-approvers"
+  content/en/docs/languages/ruby:
+  - "@open-telemetry/ruby-approvers" 
+  - "@open-telemetry/ruby-contrib-approvers"
+  content/en/docs/languages/rust:
+  - "@open-telemetry/rust-approvers"
+  content/en/docs/languages/swift:
+  - "@open-telemetry/swift-approvers"
+  content/en/docs/security:
+  - "@open-telemetry/sig-security-maintainers"
+  content/en/docs/specs:
+  - "@open-telemetry/specs-approvers"
+  content/en/docs/zero-code/java:
+  - "@open-telemetry/java-approvers"
+  - "@open-telemetry/java-instrumentation-approvers"
+  content/en/docs/zero-code/js:
+  - "@open-telemetry/javascript-approvers"
+  content/en/docs/zero-code/net:
+  - "@open-telemetry/dotnet-approvers"
+  - "@open-telemetry/dotnet-instrumentation-approvers"
+  content/en/ecosystem/demo:
+  - "@open-telemetry/demo-approvers"
+  content/zh:
+  - "@open-telemetry/docs-maintainers"
+  - "@open-telemetry/docs-zh-approvers"
