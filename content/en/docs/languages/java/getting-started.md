@@ -4,6 +4,9 @@ description: Get telemetry for your app in less than 5 minutes!
 weight: 10
 ---
 
+<!-- markdownlint-disable blanks-around-fences -->
+<?code-excerpt path-base="examples/java/getting-started"?>
+
 This page will show you how to get started with OpenTelemetry in Java.
 
 You will learn how you can instrument a simple Java application automatically,
@@ -58,11 +61,13 @@ dependencies {
 In that same folder, create a file called `DiceApplication.java` and add the
 following code to the file:
 
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/DiceApplication.java"?>
 ```java
 package otel;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.Banner;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
@@ -74,10 +79,13 @@ public class DiceApplication {
   }
 }
 ```
+<!-- prettier-ignore-end -->
 
 Create another file called `RollController.java` and add the following code to
 the file:
 
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/RollController.java"?>
 ```java
 package otel;
 
@@ -109,6 +117,7 @@ public class RollController {
   }
 }
 ```
+<!-- prettier-ignore-end -->
 
 Build and run the application with the following command, then open
 <http://localhost:8080/rolldice> in your web browser to ensure it is working.
