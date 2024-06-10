@@ -10,13 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
           fetch-depth: 0 # all
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          fetch-depth: 0 # all
-      # Only check for missing hashes in new files
       - name: Any files missing hash key?
         run: scripts/check-i18n.sh -n -x -v
       - name: Any files with invalid hash keys?
