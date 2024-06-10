@@ -4,6 +4,9 @@ weight: 50
 cSpell:ignore: proxys
 ---
 
+<!-- markdownlint-disable blanks-around-fences -->
+<?code-excerpt path-base="examples/java/spring-starter"?>
+
 For most users, the out-of-the-box instrumentation is completely sufficient and
 nothing more has to be done. Sometimes, however, users wish to create
 [spans](/docs/concepts/signals/traces/#spans) for their own custom code without
@@ -13,15 +16,36 @@ If you add the `WithSpan` annotation to a method, the method is wrapped in a
 span. The `SpanAttribute` annotation allows you to capture the method arguments
 as attributes.
 
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/TracedClass.java"?>
 ```java
+package otel;
+
+import io.opentelemetry.api.trace.Span;
+import io.opentelemetry.api.trace.SpanKind;
 import io.opentelemetry.instrumentation.annotations.SpanAttribute;
 import io.opentelemetry.instrumentation.annotations.WithSpan;
+import org.springframework.stereotype.Component;
 
-    @WithSpan
-    public void tracedMethod(@SpanAttribute parameter) {
-    }
-```
+/** Test WithSpan */
+@Component
+public class TracedClass {
 
+  @WithSpan
+  public void tracedMethod() {}
+
+  @WithSpan(value = "span name")
+  public void tracedMethodWithName() {
+    Span currentSpan = Span.current();
+    currentSpan.addEvent("ADD EVENT TO tracedMethodWithName SPAN");
+    currentSpan.setAttribute("isTestAttribute", true);
+  }
+
+  @WithSpan(kind = SpanKind.CLIENT)
+  public void tracedClientSpan() {}
+
+  public void tracedMethodWithAttribute(@SpanAttribute("attributeName") String parameter) {}
+}
 {{% alert title="Note" color="info" %}} The OpenTelemetry annotations use Spring
 AOP based on proxys.
 
@@ -40,11 +64,6 @@ public class MyControllerManagedBySpring {
     public void aMethod() {
         anotherMethod();
     }
-
-    @WithSpan
-    public void anotherMethod() {
-    }
-}
 ```
 
 {{% /alert %}}
@@ -56,7 +75,7 @@ Starter AOP dependency to your project:
 
 {{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
-```xml
+  ```xml
 <dependencies>
   <dependency>
     <groupId>org.springframework.boot</groupId>
@@ -65,13 +84,15 @@ Starter AOP dependency to your project:
 </dependencies>
 ```
 
-{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
+  {{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
 
 ```kotlin
 dependencies {
   implementation("org.springframework.boot:spring-boot-starter-aop")
 }
 ```
+<!-- prettier-ignore-end -->
+
 
 {{% /tab %}} {{< /tabpane >}}
 
