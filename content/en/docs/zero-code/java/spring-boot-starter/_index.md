@@ -23,3 +23,24 @@ OpenTelemetry.
    - **Spring Boot configuration files** (`application.properties`,
      `application.yml`) to configure the OpenTelemetry Spring Boot starter which
      doesn't work with the OpenTelemetry Java agent
+
+## Comparison to Micrometer
+
+At a high level:
+
+OpenTelemetry Spring Boot starter
+* Natively uses the OpenTelemetry API, OpenTelemetry SDK and the OpenTelemetry semantic conventions
+* Supported by the OpenTelemetry community (governed by the CNCF / Linux Foundation)
+
+Micrometer [1], [2]
+* An independent standalone observability system
+* Offers optional bridges into parts of the OpenTelemetry ecosystem
+* Supported by the Micrometer community (governed by Broadcom Inc)
+
+As the authors of the OpenTelemetry Spring Boot starter, we recommend using the OpenTelemetry Spring Boot starter. 
+We have a great community behind it, and are continuously making improvements. 
+If you try it out and have any problems or suggestions, please open an 
+[issue](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues) in our repository.
+
+[1]: https://docs.micrometer.io/micrometer/reference/implementations/otlp.html
+[2]: https://docs.micrometer.io/tracing/reference/tracers.html
