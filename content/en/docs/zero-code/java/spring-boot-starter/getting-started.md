@@ -1,6 +1,5 @@
 ---
-title: Getting started with the Spring Boot starter
-linkTitle: Getting Started
+title: Getting started
 weight: 20
 cSpell:ignore: springboot
 ---

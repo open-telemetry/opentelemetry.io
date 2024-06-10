@@ -378,6 +378,7 @@ Modify `rolldice.go` to include custom instrumentation using OpenTelemetry API:
 package main
 
 import (
+	"fmt"
 	"io"
 	"log"
 	"math/rand"
@@ -388,7 +389,6 @@ import (
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/metric"
-	"go.opentelemetry.io/otel/sdk/instrumentation"
 )
 
 const name = "rolldice"

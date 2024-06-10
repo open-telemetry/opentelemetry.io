@@ -10,18 +10,6 @@ developer_note:
   The blocks/cover shortcode (used below) will use as a background image any
   image file containing "background" in its name.
 show_banner: true
-limit_banner: 2 # Default to 2, adjust as needed
-banners:
-  - message:
-      '<i class="fas fa-bullhorn"></i> Join us for [**OTel Community Day** on
-      June
-      25th](https://events.linuxfoundation.org/open-telemetry-community-day/)!'
-    to: 2024-06-25
-  - message:
-      '<i class="fas fa-bullhorn"></i> Help improve OTel and Prometheus
-      interoperability: [complete our
-      survey](https://forms.gle/bZAG9f7udoJsjZUG9) by May 31'
-    to: 2024-05-31
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
@@ -38,19 +26,19 @@ banners:
 
 <div class="l-primary-buttons mt-5">
 
-- [Learn more](/docs/what-is-opentelemetry/)
-- [Try the demo](/docs/demo/)
-- [Explore integrations](/ecosystem/integrations)
+- [Learn more](docs/what-is-opentelemetry/)
+- [Try the demo](docs/demo/)
+- [Explore integrations](/ecosystem/integrations/)
 
 </div>
 
 <div class="h3 mt-4">
-<a class="text-secondary" href="/docs/getting-started/">Get started</a> based on your role
+<a class="text-secondary" href="docs/getting-started/">Get started</a> based on your role
 </div>
 <div class="l-get-started-buttons">
 
-- [Dev](/docs/getting-started/dev/)
-- [Ops](/docs/getting-started/ops/)
+- [Dev](docs/getting-started/dev/)
+- [Ops](docs/getting-started/ops/)
 
 </div>
 {{< /blocks/cover >}}
@@ -62,7 +50,7 @@ generate, collect, and export telemetry data (metrics, logs, and traces) to help
 you analyze your software's performance and behavior.
 
 > OpenTelemetry is **generally available** across
-> [several languages](/docs/languages/) and is suitable for use.
+> [several languages](docs/languages/) and is suitable for use.
 
 {{% /blocks/lead %}}
 

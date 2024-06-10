@@ -1,7 +1,6 @@
 ---
 title: Zero-code Instrumentation
 weight: 260
-cSpell:ignore: pageinfo
 ---
 
 {{% pageinfo color="warning" %}}
