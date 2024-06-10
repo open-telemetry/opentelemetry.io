@@ -1,14 +1,11 @@
 ---
 title: 贡献
-description: 了解如何为OpenTelemetry文档做贡献.
-aliases: [/docs/contribution-guidelines]
+description: 了解如何为OpenTelemetry文档做贡献。
 weight: 980
-cSpell:ignore: prepopulated spacewhite
+default_lang_commit: 8603bc8
 ---
 
-下面的指引描述了如何为OpenTelemetry文档做贡献。
-
-关于如何为 OpenTelemetry项目作出贡献，请参阅[OpenTelemetry贡献者指南](https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md)，其中提供了有关贡献者许可协议和行为准则的详细信息。从某种程度上讲，每种语言实现、收集器和约定 [仓库](https://github.com/open-telemetry/) 都有自己特定的贡献指南。
+下面的指引描述了如何为OpenTelemetry文档做贡献。关于如何为 OpenTelemetry项目作出贡献，请参阅[OpenTelemetry贡献者指南](https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md)，其中提供了有关贡献者许可协议和行为准则的详细信息。从某种程度上讲，每种语言实现、收集器和约定 [仓库](https://github.com/open-telemetry/) 都有自己特定的贡献指南。
 
 对于文档中的问题，你可以提一个关于OpenTelemetry的问题（issue），或者向[`opentelemetry.io` GitHub 仓库](https://github.com/open-telemetry/opentelemetry.io)发起一个带有变更的拉取请求（pull request）。
 
@@ -23,12 +20,12 @@ OpenTelemetry文档贡献者可以：
 
 在贡献之前，你需要了解以下的技术和工具：
 
-- [git](https://git-scm.com/)
-- [GitHub](https://github.com/)
-- Markdown ([CommonMark](https://commonmark.org/))
-- YAML
+* [git](https://git-scm.com/)
+* [GitHub](https://github.com/)
+* Markdown ([CommonMark](https://commonmark.org/))
+* YAML
 
-有关如何在本地构建和测试Opentelemetry文档网站的技术细节，请参阅 [CONTRIBUTING.md](https://github.com/open-telemetry/opentelemetry.io/blob/main/CONTRIBUTING.md)文档。
+有关如何在本地构建和测试OpenTelemetry文档网站的技术细节，请参阅 [CONTRIBUTING.md](https://github.com/open-telemetry/opentelemetry.io/blob/main/CONTRIBUTING.md)文档。
 
 ### 签署CNCF CLA {#sign-the-cla}
 
@@ -44,7 +41,7 @@ flowchart LR
     direction TB
        T[ ] -.-
        B[在GitHub克隆（fork）仓库] --- C[用markdown编写文档<br>并用Hugo构建网站]
-       C --- D[提交源文件到复制的仓库]
+       C --- D[提交源文件到克隆的仓库]
        D --- E[发起拉取请求（PR）]
        E --- F[签署 CNCF CLA]
     end
@@ -56,7 +53,6 @@ class A,B,C,D,E,F,G,H grey
 class S,T spacewhite
 class first,second white
 ```
-
 _图 1. 贡献新的内容。_
 
 上图描述了如何贡献新的文档。
@@ -103,9 +99,6 @@ class 0 spacewhite
 class tasks,tasks2 white
 class id1 k8s
 ```
-
-
-
 _图 2. 使用Github发起拉取请求的流程。_
 
 1. 在发现问题的页面上，选择右侧导航面板中的**Edit this page**选项。
@@ -116,8 +109,6 @@ _图 2. 使用Github发起拉取请求的流程。_
 6. 选择**Create pull request**。
 7. 进入**Open a pull request**页面，填写描述可以帮助评审人理解你的更改内容。
 8. 选择**Create pull request**。
-
-
 
 合并拉取请求需要OpenTelemetry 社区成员评审和批准。
 
@@ -135,8 +126,6 @@ _图 2. 使用Github发起拉取请求的流程。_
 在你的拉取请求上评论`/fix:format`可以触发格式问题的自动检查。
 
 {{% /alert %}}
-
-
 
 ### 在本地分支进行更改 {#fork-the-repo}
 
@@ -188,13 +177,13 @@ _图 3. 在本地分支进行更改_。
    npm install
    ```
 
-1. 将 `open-telemetry/opentelemetry.io` 仓库设置为你的远程  `upstream`仓库:
+2. 将 `open-telemetry/opentelemetry.io` 仓库设置为你的远程  `upstream`仓库:
    
    ```shell
    git remote add upstream https://github.com/open-telemetry/opentelemetry.io.git
    ```
    
-1. 确认你的 `origin` 和`upstream` 仓库:
+3. 确认你的 `origin` 和`upstream` 仓库:
 
    ```shell
    git remote -v
@@ -209,7 +198,7 @@ _图 3. 在本地分支进行更改_。
    upstream	https://github.com/open-telemetry/opentelemetry.io.git (push)
    ```
 
-1. 从你克隆的 `origin/main` and`open-telemetry/opentelemetry.io`'s `upstream/main`获取提交:
+4. 从你克隆的 `origin/main` and`open-telemetry/opentelemetry.io`'s `upstream/main`获取提交:
 
    ```shell
    git fetch origin
@@ -226,7 +215,7 @@ _图 3. 在本地分支进行更改_。
    git checkout -b <my_new_branch> upstream/main
    ```
 
-1. 使用代码或文本编辑器进行编辑或更改。
+2. 使用代码或文本编辑器进行编辑或更改。
 
 使用 `git status`命令可以随时查看您更改的文件。
 
@@ -255,7 +244,7 @@ _图 3. 在本地分支进行更改_。
    no changes added to commit (use "git add" and/or "git commit -a")
    ```
 
-1. 将 **Changes not staged for commit** 下列出的文件添加到提交中：
+2. 将 **Changes not staged for commit** 下列出的文件添加到提交中：
 
    ```shell
    git add <your_file_name>
@@ -263,19 +252,19 @@ _图 3. 在本地分支进行更改_。
 
    对每个文件重复此操作。
 
-1. 添加所有文件后，创建提交：
+3. 添加所有文件后，创建提交：
 
    ```shell
    git commit -m "你的提交信息"
    ```
 
-1. 将你的本地分支及其新的提交推送到你的远程分支：
+4. 将你的本地分支及其新的提交推送到你的远程分支：
 
    ```shell
    git push origin <my_new_branch>
    ```
 
-1. 更改被推送后，GitHub 会通知你可以创建 PR。
+5. 更改被推送后，GitHub 会通知你可以创建 PR。
 
 #### 从你的 fork 中发起拉取请求 {#open-a-pr}
 
@@ -316,7 +305,7 @@ _图 4. 从你的 fork 向 [opentelemetry.io](https://github.com/open-telemetry/
    * **Title**（不多于50 个字符）：总结更改的目的。
    * **Description**：更详细地描述更改。
      * 如果有相关的 GitHub 问题（issue），请在描述中包含 `Fixes #12345` 或 `Closes #12345`，以便 GitHub 的自动化功能在合并 PR 后关闭提到的问题。如果还有其他相关 PR，也请链接它们。
-     * 如果你需要有关特定内容的建议，请在描述中包含你希望评审人任何问题。
+     * 如果你需要有关特定内容的建议，请在描述中包含你希望评审人考虑的任何问题。
 
 8. 选择 **Create pull request** 按钮。
 
@@ -324,8 +313,8 @@ _图 4. 从你的 fork 向 [opentelemetry.io](https://github.com/open-telemetry/
 
 发起 PR 后，GitHub 会运行自动测试并尝试使用 [Netlify](https://www.netlify.com/) 部署预览。
 
-- 如果 Netlify 构建失败，选择 **详细信息** 可以获取更多信息。
-- 如果 Netlify 构建成功，选择 **详细信息** 可以打开 OpenTelemetry 网站的暂存版本，其中应用了您的更改。评审人通过这种方式检查你的更改。
+* 如果 Netlify 构建失败，选择 **详细信息** 可以获取更多信息。
+* 如果 Netlify 构建成功，选择 **详细信息** 可以打开 OpenTelemetry 网站的暂存版本，其中应用了您的更改。评审人通过这种方式检查你的更改。
 
 其他检查也可能失败。请参阅[所有 PR 检查列表](/docs/contributing/pr-checks)。
 
@@ -360,8 +349,6 @@ npm run serve
 
 要停止本地 Hugo 实例，请返回终端并键入 `Ctrl+C`，或关闭终端窗口。
 
-
-
 #### 站点部署和 PR 预览
 
 如果你提交了 PR，Netlify 会创建一个 [部署预览][]，以便你可以查看你的更改。一旦你的 PR 合并，Netlify 就会将更新后的站点部署到生产服务器。
@@ -370,15 +357,13 @@ npm run serve
 
 要查看部署日志等，请访问项目的 [仪表板][]——需要 Netlify 登录。
 
-
-
 #### PR 指南
 
 在 PR 合并之前，有时需要进行几次评审和编辑。为了帮助我们和你自己尽可能简化此过程，我们要求你遵守以下规定：
 
-- 如果你的 PR 不是一个快速的问题修复，则从 **在本地分支进行更改**开始：单击仓库顶部的[Fork](https://github.com/open-telemetry/opentelemetry.io/fork) 按钮并创建一个你自己本地的克隆仓库。当你准备好更改内容时，向上游仓库发起PR请求。
-- **不要在你克隆仓库的 `main`** 分支上直接进行更改，而应该创建一个特定于 PR 的分支。
-- 确保维护人员[可以对您的拉取请求应用更改](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork)。
+* 如果你的 PR 不是一个快速的问题修复，则从 **在本地分支进行更改**开始：单击仓库顶部的[Fork](https://github.com/open-telemetry/opentelemetry.io/fork) 按钮并创建一个你自己本地的克隆仓库。当你准备好更改内容时，向上游仓库发起PR请求。
+* **不要在你克隆仓库的 `main`** 分支上直接进行更改，而应该创建一个特定于 PR 的分支。
+* 确保维护人员[可以对您的拉取请求应用更改](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork)。
 
 #### 评审人的更改
 
@@ -391,7 +376,7 @@ npm run serve
    git rebase origin/<your-branch-name>
    ```
 
-1. 重定基后，强制将新的更改推送到你的 fork 中：
+2. 重定基后，强制将新的更改推送到你的 fork 中：
 
    ```shell
    git push --force-with-lease origin <your-branch-name>
@@ -401,8 +386,7 @@ npm run serve
 
 #### 合并冲突和重定基
 
-如果另一个贡献者在另一个 PR 中提交对同一文件的更改，则可能会
-产生合并冲突。您必须解决 PR 中的所有合并冲突。
+如果另一个贡献者在另一个 PR 中提交对同一文件的更改，则可能会产生合并冲突。您必须解决 PR 中的所有合并冲突。
 
 1. 更新你的 fork 并重定基你的本地分支:
 
@@ -417,14 +401,14 @@ npm run serve
    git push --force-with-lease origin <your-branch-name>
    ```
 
-1. 从 `open-telemetry/opentelemetry.io` 的 `upstream/main` 获取更改并重定基您的分支：
+2. 从 `open-telemetry/opentelemetry.io` 的 `upstream/main` 获取更改并重定基您的分支：
 
    ```shell
    git fetch upstream
    git rebase upstream/main
    ```
 
-1. 检查重定基的结果：
+3. 检查重定基的结果：
 
    ```shell
    git status
@@ -432,23 +416,22 @@ npm run serve
 
    这会导致许多文件被标记为冲突。
 
-1. 打开每个有冲突的文件并查找冲突标记：`>>>`、`<<<` 和 `===`。解决冲突并删除冲突标记。
+4. 打开每个有冲突的文件并查找冲突标记：`>>>`、`<<<` 和 `===`。解决冲突并删除冲突标记。
 
    更多有关信息，请参阅[如何冲突是如何呈现的](https://git-scm.com/docs/git-merge#_how_conflicts_are_presented)。
 
-1. 将文件添加到变更集：
+5. 将文件添加到变更集：
 
    ```shell
    git add <filename>
    ```
 
-1. 继续重定基：
+6. 继续重定基：
 
    ```shell
    git rebase --continue
    ```
-
-
+   
 7. 根据需要重复步骤 2 至 5。
 
     应用所有提交后， `git status`命令显示重定基已完成。
@@ -465,11 +448,11 @@ npm run serve
 
 合并拉取请求需要符合以下条件：
 
-- 审批者、维护者、技术委员会成员或主题专家的所有评审状态均为“Approved”。
-- 没有未解决的对话。
-- 至少获得一名审批者的批准。
-- 没有失败的 PR 检查项。
-- PR 分支与基础分支保持同步。
+* 审批者、维护者、技术委员会成员或主题专家的所有评审状态均为“Approved”。
+* 没有未解决的对话。
+* 至少获得一名审批者的批准。
+* 没有失败的 PR 检查项。
+* PR 分支与基础分支保持同步。
 
 > **重要**
 >
@@ -493,24 +476,22 @@ npm run serve
 
 1. 转到[GitHub](https://github.com/open-telemetry/opentelemetry.io/issues/new/) 并在 **Issues** 选项卡中选择 **New issue**。
 
-1. 选择最适合您的请求或疑问的问题类型。
+2. 选择最适合您的请求或疑问的问题类型。
 
-1. 填写模板。
+3. 填写模板。
 
-1. 提交问题。
+4. 提交问题。
 
 ### 如何填写好的问题（issue）：
 
 填写问题（issue）时请注意以下几点：
 
-- 提供清晰的问题描述。描述具体哪些内容出现缺失、过时、错误或需要改进的情况。
-- 解释该问题对用户的具体影响。
-- 将给定问题的范围限制在合理的工作单元内。对于范围较大的问题，将其分解为较小的问题。例如，“修复安全文档”太宽泛，而“向‘限制网络访问’主题添加详细信息”则非常具体并且可操作。
-- 搜索现有问题，查看是否有任何与新问题相关或类似的内容。
-- 如果新问题与另一个问题或拉取请求相关，请通过其完整 URL 或以`#`字符为前缀的问题或拉取请求编号来引用它。例如，`由 #987654 引入`。
-- 遵守 [行为准则](https://github.com/open-telemetry/community/blob/main/code-of-conduct.md)。 尊重您的其他贡献者。例如，“文档很糟糕”不是一个有帮助或有礼貌的反馈。
-
-
+* 提供清晰的问题描述。描述具体哪些内容出现缺失、过时、错误或需要改进的情况。
+* 解释该问题对用户的具体影响。
+* 将给定问题的范围限制在合理的工作单元内。对于范围较大的问题，将其分解为较小的问题。例如，“修复安全文档”太宽泛，而“向‘限制网络访问’主题添加详细信息”则非常具体并且可操作。
+* 搜索现有问题，查看是否有任何与新问题相关或类似的内容。
+* 如果新问题与另一个问题或拉取请求相关，请通过其完整 URL 或以`#`字符为前缀的问题或拉取请求编号来引用它。例如，`由 #987654 引入`。
+* 遵守 [行为准则](https://github.com/open-telemetry/community/blob/main/code-of-conduct.md)。 尊重您的其他贡献者。例如，“文档很糟糕”不是一个有帮助或有礼貌的反馈。
 
 ## 公告管理
 
@@ -554,13 +535,11 @@ OpenTelemetry 是一个开源项目，我们很乐意接受新的贡献和贡献
 
 大多数存储库使用issue和 PR 模板。查看一些未解决的问题和 PR可以帮助了解该团队的流程。提交问题或 PR 时，请确保尽可能详细地填写模板。
 
-
-
 ## 其他贡献的方式
 
-- 访问 [OpenTelemetry 社区网站](/community/)。
-- 将您的应用程序添加到[注册表（Registry）](/ecosystem)。
-- 提交[博客文章或案例研究](/docs/contributing/blog/)。
+* 访问 [OpenTelemetry 社区网站](/community/)。
+* 将您的应用程序添加到[注册表（Registry）](/ecosystem)。
+* 提交[博客文章或案例研究](/docs/contributing/blog/)。
 
 [仪表板]: https://app.netlify.com/sites/opentelemetry/overview
 
