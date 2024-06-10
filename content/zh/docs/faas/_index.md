@@ -4,7 +4,7 @@ linkTitle: FaaS
 description: >-
   OpenTelemetry 支持不同云供应商提供的各种功能即服务（FaaS）的监控方法
 weight: 360
-default_lang_commit: 64fbfee6
+default_lang_commit: c2cd5b14a73e051acacb6914740fb3e20536f8ba
 ---
 
 功能即服务（FaaS）是云原生应用的重要无服务（Serverless）计算平台。
