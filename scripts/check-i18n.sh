@@ -215,8 +215,10 @@ function update_file_i18n_hash() {
 function main() {
   process_CLI_args "$@"
 
-  get_and_print_hashes_of_main
-  if [[ -n $FLAG_INFO ]]; then return; fi
+  if [[ -n $FLAG_INFO ]]; then
+    get_and_print_hashes_of_main
+    return
+  fi
 
   if [ -f "$TARGET_PATHS" ] ; then
     TARGETS="$TARGET_PATHS"
@@ -236,6 +238,7 @@ function main() {
   local FILE_PROCESSED_COUNT=0 # Number of TLP actually listed
 
   if [[ $COMMIT_HASH_ARG == "head" ]]; then
+    if [[ -z $MAIN_HEAD_HASH ]]; then get_and_print_hashes_of_main; fi
     COMMIT_HASH_ARG=$MAIN_HEAD_HASH
   fi
 
