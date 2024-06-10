@@ -28,7 +28,3 @@
 	path = content-modules/opentelemetry-go
 	url = https://github.com/open-telemetry/opentelemetry-go
     go-pin = v1.27.0
-[submodule "content-modules/opentelemetry-java-examples"]
-	path = content-modules/opentelemetry-java-examples
-	url = git@github.com:zeitlinger/opentelemetry-java-examples.git
-
