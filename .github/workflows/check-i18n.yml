@@ -4,12 +4,21 @@ on:
   pull_request:
 
 jobs:
-  i18n-check:
+  check-i18n:
     name: I18N check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0 # all
-      - run: scripts/i18n-check.sh -u
-      - run: .github/workflows/scripts/i18n-check-helper.sh
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0 # all
+      # Only check for missing hashes in new files
+      - name: Any files missing hash key?
+        run: scripts/check-i18n.sh -n -x
+      - name: Any files with invalid hash keys?
+        run: scripts/check-i18n.sh
+      - run: .github/workflows/scripts/check-i18n-helper.sh
