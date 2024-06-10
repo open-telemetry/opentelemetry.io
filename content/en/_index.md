@@ -26,9 +26,9 @@ show_banner: true
 
 <div class="l-primary-buttons mt-5">
 
-- [Learn more](/docs/what-is-opentelemetry/)
-- [Try the demo](/docs/demo/)
-- [Explore integrations](/ecosystem/integrations)
+- [Learn more](docs/what-is-opentelemetry/)
+- [Try the demo](docs/demo/)
+- [Explore integrations](/ecosystem/integrations/)
 
 </div>
 
@@ -37,8 +37,8 @@ show_banner: true
 </div>
 <div class="l-get-started-buttons">
 
-- [Dev](/docs/getting-started/dev/)
-- [Ops](/docs/getting-started/ops/)
+- [Dev](docs/getting-started/dev/)
+- [Ops](docs/getting-started/ops/)
 
 </div>
 {{< /blocks/cover >}}
@@ -50,7 +50,7 @@ generate, collect, and export telemetry data (metrics, logs, and traces) to help
 you analyze your software's performance and behavior.
 
 > OpenTelemetry is **generally available** across
-> [several languages](/docs/languages/) and is suitable for use.
+> [several languages](docs/languages/) and is suitable for use.
 
 {{% /blocks/lead %}}
 
