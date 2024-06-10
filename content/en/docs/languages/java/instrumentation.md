@@ -678,7 +678,8 @@ brittle option for library instrumentation.
 
 ### Acquiring a Tracer in Java Agent
 
-If you are writing a Java Agent, you can acquire a `Tracer` from the global OpenTelemetry instance:
+If you are writing a Java Agent, you can acquire a `Tracer` from the global
+OpenTelemetry instance:
 
 ```java
 import io.opentelemetry.api.GlobalOpenTelemetry;
@@ -688,7 +689,8 @@ Tracer tracer = GlobalOpenTelemetry.getTracer("instrumentation-scope-name");
 
 ### Acquiring a Tracer in Spring Boot starter
 
-If you are writing a Spring Boot starter, you can acquire a `Tracer` from the autowired OpenTelemetry instance:
+If you are writing a Spring Boot starter, you can acquire a `Tracer` from the
+autowired OpenTelemetry instance:
 
 ```java
 import io.opentelemetry.api.OpenTelemetry;
@@ -1245,7 +1247,8 @@ you can create
 
 ### Acquiring a Meter in Java Agent
 
-If you are writing a Java Agent, you can acquire a `Meter` from the global OpenTelemetry instance:
+If you are writing a Java Agent, you can acquire a `Meter` from the global
+OpenTelemetry instance:
 
 ```java
 import io.opentelemetry.api.GlobalOpenTelemetry;
@@ -1255,7 +1258,8 @@ Meter meter = GlobalOpenTelemetry.getMeter("instrumentation-scope-name");
 
 ### Acquiring a Meter in Spring Boot starter
 
-If you are writing a Spring Boot starter, you can acquire a `Meter` from the autowired OpenTelemetry instance:
+If you are writing a Spring Boot starter, you can acquire a `Meter` from the
+autowired OpenTelemetry instance:
 
 ```java
 import io.opentelemetry.api.OpenTelemetry;
@@ -1269,7 +1273,9 @@ public class MyController {
   }
 }
 ```
+
 a
+
 ### Using Counters
 
 Counters can be used to measure non-negative, increasing values.
