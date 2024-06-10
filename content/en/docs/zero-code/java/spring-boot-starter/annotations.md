@@ -3,6 +3,9 @@ title: Annotations
 weight: 60
 ---
 
+<!-- markdownlint-disable blanks-around-fences -->
+<?code-excerpt path-base="examples/java/spring-starter"?>
+
 For most users, the out-of-the-box instrumentation is completely sufficient and
 nothing more has to be done. Sometimes, however, users wish to create
 [spans](/docs/concepts/signals/traces/#spans) for their own custom code without
@@ -22,36 +25,36 @@ span by annotating the method parameters with `@SpanAttribute`.
 | ----------- | ------------------------------------------ | ------------- | --------------------------------- |
 | `@WithSpan` | `otel.instrumentation.annotations.enabled` | true          | Enables the WithSpan annotations. |
 
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/TracedClass.java"?>
 ```java
-import org.springframework.stereotype.Component;
+package otel;
 
-import io.opentelemetry.instrumentation.annotations.SpanAttribute;
-import io.opentelemetry.instrumentation.annotations.WithSpan;
 import io.opentelemetry.api.trace.Span;
 import io.opentelemetry.api.trace.SpanKind;
+import io.opentelemetry.instrumentation.annotations.SpanAttribute;
+import io.opentelemetry.instrumentation.annotations.WithSpan;
+import org.springframework.stereotype.Component;
 
-/**
- * Test WithSpan
- */
+/** Test WithSpan */
 @Component
 public class TracedClass {
 
-    @WithSpan
-    public void tracedMethod() {
-    }
+  @WithSpan
+  public void tracedMethod() {}
 
-    @WithSpan(value="span name")
-    public void tracedMethodWithName() {
-        Span currentSpan = Span.current();
-        currentSpan.addEvent("ADD EVENT TO tracedMethodWithName SPAN");
-        currentSpan.setAttribute("isTestAttribute", true);
-    }
+  @WithSpan(value = "span name")
+  public void tracedMethodWithName() {
+    Span currentSpan = Span.current();
+    currentSpan.addEvent("ADD EVENT TO tracedMethodWithName SPAN");
+    currentSpan.setAttribute("isTestAttribute", true);
+  }
 
-    @WithSpan(kind = SpanKind.CLIENT)
-    public void tracedClientSpan() {
-    }
+  @WithSpan(kind = SpanKind.CLIENT)
+  public void tracedClientSpan() {}
 
-    public void tracedMethodWithAttribute(@SpanAttribute("attributeName") String parameter) {
-    }
+  public void tracedMethodWithAttribute(@SpanAttribute("attributeName") String parameter) {}
 }
 ```
+<!-- prettier-ignore-end -->
+
