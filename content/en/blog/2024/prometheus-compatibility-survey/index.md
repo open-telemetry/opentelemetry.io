@@ -1,0 +1,147 @@
+---
+title: Insights from the Prometheus Compatibility Survey
+linkTitle: Prometheus Compatibility Survey
+date: 2024-06-10
+author: '[David Ashpole](https://github.com/dashpole) (Google)'
+cSpell:ignore: Ashpole
+---
+
+Prometheus and OpenTelemetry are two of the most active and popular projects in
+the CNCF observability landscape. The two communities have been working together
+since the early days of OpenTelemetry to improve the compatibility between the
+two projects. The OpenTelemetry Prometheus working group has been leading this
+effort, with active participation from maintainers from both OpenTelemetry and
+Prometheus.
+
+At this point, there is a detailed, experimental specification describing how to
+convert between the OpenTelemetry metrics format and the Prometheus metrics
+format. It has been used to implement Prometheus (pull) exporters for
+OpenTelemetry SDKs, OTLP export from Prometheus libraries, OTLP ingestion for
+the Prometheus server, and the OpenTelemetry Collector's Prometheus Receiver and
+Prometheus exporters.
+
+As we consider stabilizing the compatibility specification, we decided to run a
+survey with the help of the OpenTelemetry End User SIG to collect feedback on
+the current state of compatibility between the projects, and try to understand
+user sentiment on a few of the remaining open questions. In particular, we
+wanted feedback on the translation for metric names, as we want to be sure
+before we make any changes.
+
+The survey received 86 responses, and contained many helpful pieces of feedback.
+Than you to everyone that participated!
+
+## Overall Takeaways
+
+- A slight majority (54%) prefer leaving the dots in the metric name, rather
+  than translating to underscores.
+- A slight majority (54%) prefer having the unit in the name, but only 37% think
+  it should be required.
+- Respondents who prefer units in the metric name are likely to also prefer
+  translating dots to underscores.
+- The best predictors of the "units and underscores" group are Prometheus server
+  experts and being an SRE.
+- The best predictors of the "no units and dots" group are OpenTelemetry library
+  experts and being a developer.
+
+## Who took the survey
+
+Survey respondents were mostly from large (>1000 employees) companies (52%) in
+the Technology industry (71%). Respondents were more likely to consider
+themselves experts with Prometheus-related topics than with
+OpenTelemetry-related topics, and were evenly distributed across roles. Nearly
+all respondents (>90%) stored metrics in the Prometheus server or another open
+source Prometheus backend, and nearly all use PromQL to query their metrics.
+
+## Sentiment on the Current State
+
+Overall, respondents were neutral on the question of whether OpenTelemetry was
+easy to use with Prometheus, and considered the current translation between
+OpenTelemetry and Prometheus somewhat confusing. This was consistent regardless
+of their opinions on units or delimiters.
+
+## Dots and Underscores
+
+OpenTelemetry [specifies](/docs/specs/semconv/general/attribute-naming/) that
+conventions should use dots as the namespace delimiter, and underscores as the
+delimiter between "multi-word-dot-delimited components" (e.g.
+`http.response.status_code`). On the other hand, Prometheus
+[uses underscores](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels)
+as its delimiter.
+
+Currently, when exporting in Prometheus format from an OpenTelemetry SDK, all
+dots are changed to underscores to comply with the Prometheus requirements. We
+wanted to learn whether OpenTelemetry users who used these exporters preferred
+to keep the dots in the original metric name, or liked the consistency with
+existing Prometheus metrics of translating to underscores.
+
+Of users who indicated they used OpenTelemetry for metrics, and PromQL as their
+query language, 54% preferred keeping the original OpenTelemetry metric name
+including dots, and 46% want metric names that match Prometheus conventions with
+only underscores.
+
+![Dots vs underscores pie chart](dots-vs-underscores.png)
+
+When we asked about specific example PromQL queries or alerts, the results
+roughly aligned with the results above. Around 42% of users only selected
+queries with dots, and around 39% only selected queries that had underscores.
+The final 19% selected a mix of queries that included dots or underscores,
+indicating they are likely OK with either approach.
+
+## Units in Metric Names
+
+OpenTelemetry [specifies](/docs/specs/semconv/general/metrics/#units) that units
+should not generally be included in the metric name. Prometheus conventions
+[recommend](https://prometheus.io/docs/practices/naming/#metric-names) that the
+unit be included as a suffix of the metric name. OpenMetrics goes a step further
+and
+[requires this unit suffix](https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#unit).
+Currently, when exporting in Prometheus format from an OpenTelemetry SDK, the
+unit is added as a suffix to the metric name.
+
+Of users who indicated they used OpenTelemetry for metrics, and PromQL as their
+query language, 37% thought units should be a required suffix for metric names,
+and 46% thought units should not be added to metric names. The final 17%
+preferred the unit in the metric name, but didn't think it should be required.
+
+![Units in metric name pie chart](units-in-metric-name.png)
+
+When we asked about specific example PromQL queries or alerts, the results were
+somewhat more favorable to including the unit in the metric name compared with
+the question above. Around 45% of users only selected queries that included the
+unit, and around 28% only selected queries that excluded the unit. The final 27%
+selected a mix of queries that included or excluded the unit, indicating they
+are likely OK with either approach.
+
+## Trends
+
+### Correlation between Unit and Delimiter Preferences
+
+Not surprisingly, preferences generally split into two groups: Those that prefer
+the OpenTelemetry conventions, and want to preserve them, and those that prefer
+the Prometheus conventions, and want to align with them. 71% of respondents who
+want to require units in metric names want to also want to change dots to
+underscores. 77% of respondents who don't want units in metric names prefer dots
+in metric names.
+
+### Group Differences
+
+The best predictors of a preference for the Prometheus conventions (units
+required in the name, and changing dots to underscores) were having a role of
+SRE, and being an expert with the Prometheus server configuration. For example,
+88% of SRE respondents preferred translating dots to underscores.
+
+The best predictors of a preference for keeping the OpenTelemetry conventions
+(no units in the name, and preserving dots) were having the role of developer,
+and being an expert with OpenTelemetry libraries. For example, 74% of developers
+preferred not having units in metric names.
+
+## Other feedback
+
+The most common challenge for all respondents was the instability of
+OpenTelemetry instrumentation, and confusion over the conversion logic.
+Respondents who preferred OpenTelemetry's conventions listed Prometheus' current
+lack of support for OpenTelemetry concepts (resource, scope, delta temporality,
+and unit metadata) as their most significant challenge. Respondents who
+preferred Prometheus' conventions listed OpenTelemetry's new concepts as
+confusing, and were unhappy that OpenTelemetry had deviated from Prometheus'
+existing conventions.
