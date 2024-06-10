@@ -122,6 +122,13 @@ function process_CLI_args() {
     TARGET_PATHS="$DEFAULT_TARGET"
     # [[ -n $FLAG_VERBOSE ]] || echo "INFO: using default target path: $TARGET_PATHS"
   fi
+
+  if [[ -n $FLAG_VERBOSE ]]; then
+    echo "INFO: local branches"
+    git branch -vv
+    echo
+  fi
+
   if [[ -z $FLAG_QUIET ]]; then
     echo "Processing paths: $TARGET_PATHS"
   fi
@@ -223,9 +230,6 @@ function main() {
     # if [[ -n $FLAG_VERBOSE ]]; then echo -e "All targets: $TARGETS"; fi
   fi
 
-  # set -x
-  # git branch -vv
-
   local LASTCOMMIT_FF=""       # commit From File (FF), i.e., $f in the loop below
   local LASTCOMMIT_GIT=""      # last commit of `en` version of $f from git
   local FILE_COUNT=0           # Number of TLP
@@ -276,7 +280,7 @@ function main() {
       ((FILE_PROCESSED_COUNT++))
       EXIT_STATUS=$DIFF_STATUS
       # if [[ -z $FLAG_QUIET ]]; then
-        echo -e "HASH\tERROR\t$f: invalid hash or 'git diff' error (status: $DIFF_STATUS). For details, use -v."
+        echo -e "HASH\tERROR\t$f: git diff error ($DIFF_STATUS) or invalid hash $LASTCOMMIT. For details, use -v."
       # fi
       if [[ -n $FLAG_VERBOSE ]]; then echo "$DIFF"; fi
       continue
