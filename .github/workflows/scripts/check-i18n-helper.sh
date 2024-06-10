@@ -10,12 +10,12 @@ if [[ -z $CHANGES ]]; then
 fi
 
 cat <<EOS
-Some i18n pages are missing the 'default_lang_commit' front matter field.
-To fix this in your local development environment, run
+Some localization pages are missing the 'default_lang_commit' front matter
+field. To fix this in your local development environment, run
 
-    scripts/i18n-check.sh -u
+    npm run fix:i18n:new
 
-and commit the changes for your locale. Here are the list of pages that
+and commit the changes for your localization. Here are the list of pages that
 need to be updated:
 ---
 EOS
