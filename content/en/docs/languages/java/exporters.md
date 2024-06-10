@@ -4,6 +4,9 @@ weight: 50
 cSpell:ignore: okhttp
 ---
 
+<!-- markdownlint-disable blanks-around-fences -->
+<?code-excerpt path-base="examples/java/exporters"?>
+
 {{% docs/languages/exporters/intro java %}}
 
 ### Dependencies {#otlp-dependencies}
@@ -18,7 +21,9 @@ suffice and be the most simple:
 
 ```kotlin
 dependencies {
-    implementation 'io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}'
+  implementation("io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}")
+  implementation("io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}")
+  implementation("io.opentelemetry.semconv:opentelemetry-semconv:{{% param vers.semconv %}}-alpha")
 }
 ```
 
@@ -30,6 +35,15 @@ dependencies {
         <dependency>
             <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-exporter-otlp</artifactId>
+        </dependency>      
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-sdk</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.opentelemetry.semconv</groupId>
+            <artifactId>opentelemetry-semconv</artifactId>
+            <version>{{% param vers.semconv %}}-alpha</version>
         </dependency>
     </dependencies>
 </project>
@@ -94,31 +108,30 @@ Note, that in the case of exporting via OTLP you do not need to set
 In the case of [manual configuration] you can update the [example app](/docs/languages/java/instrumentation#example-app)
 like the following:
 
-```java { hl_lines=["12-14",21,"39-53"] }
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/DiceApplication.java"?>
+```java
 package otel;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.Banner;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
 import io.opentelemetry.api.OpenTelemetry;
-import io.opentelemetry.api.common.Attributes;
 import io.opentelemetry.api.trace.propagation.W3CTraceContextPropagator;
 import io.opentelemetry.context.propagation.ContextPropagators;
+import io.opentelemetry.exporter.otlp.logs.OtlpGrpcLogRecordExporter;
 import io.opentelemetry.exporter.otlp.metrics.OtlpGrpcMetricExporter;
 import io.opentelemetry.exporter.otlp.trace.OtlpGrpcSpanExporter;
-import io.opentelemetry.exporter.otlp.logs.OtlpGrpcLogRecordExporter;
 import io.opentelemetry.sdk.OpenTelemetrySdk;
+import io.opentelemetry.sdk.logs.SdkLoggerProvider;
+import io.opentelemetry.sdk.logs.export.BatchLogRecordProcessor;
 import io.opentelemetry.sdk.metrics.SdkMeterProvider;
 import io.opentelemetry.sdk.metrics.export.PeriodicMetricReader;
 import io.opentelemetry.sdk.resources.Resource;
 import io.opentelemetry.sdk.trace.SdkTracerProvider;
 import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
-import io.opentelemetry.sdk.logs.export.BatchLogRecordProcessor;
-import io.opentelemetry.sdk.logs.SdkLoggerProvider;
-import io.opentelemetry.sdk.logs.export.LogRecordExporter;
-import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
+import io.opentelemetry.semconv.ServiceAttributes;
+import org.springframework.boot.Banner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class DiceApplication {
@@ -130,35 +143,47 @@ public class DiceApplication {
 
   @Bean
   public OpenTelemetry openTelemetry() {
-    Resource resource = Resource.getDefault().toBuilder().put(SERVICE_NAME, "dice-server").put(SERVICE_VERSION, "0.1.0").build();
+    Resource resource =
+        Resource.getDefault().toBuilder()
+            .put(ServiceAttributes.SERVICE_NAME, "dice-server")
+            .put(ServiceAttributes.SERVICE_VERSION, "0.1.0")
+            .build();
 
-    SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
-            .addSpanProcessor(BatchSpanProcessor.builder(OtlpGrpcSpanExporter.builder().build()).build())
+    SdkTracerProvider sdkTracerProvider =
+        SdkTracerProvider.builder()
+            .addSpanProcessor(
+                BatchSpanProcessor.builder(OtlpGrpcSpanExporter.builder().build()).build())
             .setResource(resource)
             .build();
 
-    SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
-            .registerMetricReader(PeriodicMetricReader.builder(OtlpGrpcMetricExporter.builder().build()).build())
+    SdkMeterProvider sdkMeterProvider =
+        SdkMeterProvider.builder()
+            .registerMetricReader(
+                PeriodicMetricReader.builder(OtlpGrpcMetricExporter.builder().build()).build())
             .setResource(resource)
             .build();
 
-    SdkLoggerProvider sdkLoggerProvider = SdkLoggerProvider.builder()
+    SdkLoggerProvider sdkLoggerProvider =
+        SdkLoggerProvider.builder()
             .addLogRecordProcessor(
-                    BatchLogRecordProcessor.builder(OtlpGrpcLogRecordExporter.builder().build()).build())
+                BatchLogRecordProcessor.builder(OtlpGrpcLogRecordExporter.builder().build())
+                    .build())
             .setResource(resource)
             .build();
 
-    OpenTelemetry openTelemetry = OpenTelemetrySdk.builder()
-        .setTracerProvider(sdkTracerProvider)
-        .setMeterProvider(sdkMeterProvider)
-        .setLoggerProvider(sdkLoggerProvider)
-        .setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
-        .buildAndRegisterGlobal();
+    OpenTelemetry openTelemetry =
+        OpenTelemetrySdk.builder()
+            .setTracerProvider(sdkTracerProvider)
+            .setMeterProvider(sdkMeterProvider)
+            .setLoggerProvider(sdkLoggerProvider)
+            .setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
+            .buildAndRegisterGlobal();
 
     return openTelemetry;
   }
 }
 ```
+<!-- prettier-ignore-end -->
 
 ## Console
 
@@ -217,15 +242,29 @@ dependencies {
 Update your OpenTelemetry configuration to use the exporter and to send data to
 your Prometheus backend:
 
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/PrometheusExporter.java"?>
 ```java
-import io.opentelemetry.exporter.prometheus.PrometheusHttpServer;
+package otel;
 
-int prometheusPort = 9464;
-SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
-        .registerMetricReader(PrometheusHttpServer.builder().setPort(prometheusPort).build())
-        .setResource(resource)
-        .build();
+import io.opentelemetry.exporter.prometheus.PrometheusHttpServer;
+import io.opentelemetry.sdk.metrics.SdkMeterProvider;
+import io.opentelemetry.sdk.resources.Resource;
+
+public class PrometheusExporter {
+  public static SdkMeterProvider create(Resource resource) {
+    int prometheusPort = 9464;
+    SdkMeterProvider sdkMeterProvider =
+        SdkMeterProvider.builder()
+            .registerMetricReader(PrometheusHttpServer.builder().setPort(prometheusPort).build())
+            .setResource(resource)
+            .build();
+
+    return sdkMeterProvider;
+  }
+}
 ```
+<!-- prettier-ignore-end -->
 
 With the above you can access your metrics at <http://localhost:9464/metrics>.
 Prometheus or an OpenTelemetry Collector with the Prometheus receiver can scrape
@@ -268,53 +307,104 @@ dependencies {
 Update your OpenTelemetry configuration to use the exporter and to send data to
 your Zipkin backend:
 
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/ZipkinExporter.java"?>
 ```java
-import io.opentelemetry.exporter.zipkin.ZipkinSpanExporter;
+package otel;
 
-SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
-        .addSpanProcessor(BatchSpanProcessor.builder(ZipkinSpanExporter.builder().setEndpoint("http://localhost:9411/api/v2/spans").build()).build())
-        .setResource(resource)
-        .build();
+import io.opentelemetry.exporter.zipkin.ZipkinSpanExporter;
+import io.opentelemetry.sdk.resources.Resource;
+import io.opentelemetry.sdk.trace.SdkTracerProvider;
+import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
+
+public class ZipkinExporter {
+  public static SdkTracerProvider create(Resource resource) {
+    SdkTracerProvider sdkTracerProvider =
+        SdkTracerProvider.builder()
+            .addSpanProcessor(
+                BatchSpanProcessor.builder(
+                        ZipkinSpanExporter.builder()
+                            .setEndpoint("http://localhost:9411/api/v2/spans")
+                            .build())
+                    .build())
+            .setResource(resource)
+            .build();
+
+    return sdkTracerProvider;
+  }
+}
 ```
+<!-- prettier-ignore-end -->
 
 {{% docs/languages/exporters/outro java "https://javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/export/SpanExporter.html" %}}
 
 {{< tabpane text=true >}} {{% tab Batch %}}
 
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/BatchExporter.java"?>
 ```java
-import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
+package otel;
+
+import io.opentelemetry.sdk.logs.SdkLoggerProvider;
 import io.opentelemetry.sdk.logs.export.BatchLogRecordProcessor;
+import io.opentelemetry.sdk.logs.export.LogRecordExporter;
+import io.opentelemetry.sdk.resources.Resource;
+import io.opentelemetry.sdk.trace.SdkTracerProvider;
+import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
+import io.opentelemetry.sdk.trace.export.SpanExporter;
 
-SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
-        .addSpanProcessor(BatchSpanProcessor.builder(...).build())
-        .setResource(resource)
-        .build();
+public class BatchExporter {
+  public static void create(
+      Resource resource, SpanExporter spanExporter, LogRecordExporter logExporter) {
+    SdkTracerProvider sdkTracerProvider =
+        SdkTracerProvider.builder()
+            .addSpanProcessor(BatchSpanProcessor.builder(spanExporter).build())
+            .setResource(resource)
+            .build();
 
-SdkLoggerProvider sdkLoggerProvider = SdkLoggerProvider.builder()
-        .addLogRecordProcessor(
-                BatchLogRecordProcessor.builder(...).build())
-        .setResource(resource)
-        .build();
+    SdkLoggerProvider sdkLoggerProvider =
+        SdkLoggerProvider.builder()
+            .addLogRecordProcessor(BatchLogRecordProcessor.builder(logExporter).build())
+            .setResource(resource)
+            .build();
+  }
+}
 ```
 
 {{% /tab %}} {{% tab Simple %}}
 
+<?code-excerpt "src/main/java/otel/SimpleExporter.java"?>
 ```java
-import io.opentelemetry.sdk.trace.export.SimpleSpanProcessor;
+package otel;
+
+import io.opentelemetry.sdk.logs.SdkLoggerProvider;
+import io.opentelemetry.sdk.logs.export.LogRecordExporter;
 import io.opentelemetry.sdk.logs.export.SimpleLogRecordProcessor;
+import io.opentelemetry.sdk.resources.Resource;
+import io.opentelemetry.sdk.trace.SdkTracerProvider;
+import io.opentelemetry.sdk.trace.export.SimpleSpanProcessor;
+import io.opentelemetry.sdk.trace.export.SpanExporter;
 
-SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
-        .addSpanProcessor(SimpleSpanProcessor.builder(...).build())
-        .setResource(resource)
-        .build();
+public class SimpleExporter {
+  public static void create(
+      Resource resource, SpanExporter spanExporter, LogRecordExporter logExporter) {
+    SdkTracerProvider sdkTracerProvider =
+        SdkTracerProvider.builder()
+            .addSpanProcessor(SimpleSpanProcessor.builder(spanExporter).build())
+            .setResource(resource)
+            .build();
 
-SdkLoggerProvider sdkLoggerProvider = SdkLoggerProvider.builder()
-        .addLogRecordProcessor(
-                SimpleLogRecordProcessor.builder(...).build())
-        .setResource(resource)
-        .build();
+    SdkLoggerProvider sdkLoggerProvider =
+        SdkLoggerProvider.builder()
+            .addLogRecordProcessor(SimpleLogRecordProcessor.create(logExporter))
+            .setResource(resource)
+            .build();
+  }
+}
 ```
 
 {{< /tab >}} {{< /tabpane>}}
+
+<!-- prettier-ignore-end -->
 
 {{% /docs/languages/exporters/outro %}}
