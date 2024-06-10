@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Getting Started（入門）
 description: あなたの役割に応じてOpenTelemetryを始めてみましょう。
 no_list: true
 weight: 160
