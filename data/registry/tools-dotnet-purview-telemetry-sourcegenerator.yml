@@ -24,10 +24,7 @@ tags:
   - purview
   - nuget
 license: MIT
-description:
-  Generates ActivitySource, Activity, ActivityEvent, High-performance logging
-  (ILogger) and Metrics based on methods on an interface, enabling fast
-  iteration cycles and substitutes for testing through dependency injection.
+description: Generates ActivitySource, Activity, ActivityEvent, High-performance logging (ILogger) and Metrics based on methods on an interface, enabling fast iteration cycles and substitutes for testing through dependency injection.
 authors:
   - name: Kieron Lanning
     url: https://github.com/kieronlanning
@@ -38,4 +35,4 @@ createdAt: 2024-04-26
 package:
   registry: nuget
   name: Purview.Telemetry.SourceGenerator
-  version: 1.0.11
+  version: 1.0.12
