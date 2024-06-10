@@ -26,5 +26,4 @@ default_lang_commit: 93ab1301
 [^1]: これらの役割のどれにも当てはまらない場合は、[教えて下さい！][]。
 
 [demo]: /ecosystem/demo/
-[教えて下さい！]:
-  https://github.com/open-telemetry/opentelemetry.io/issues/new?title=Add%20a%20new%20persona:%20My%20Persona&body=Provide%20a%20description%20of%20your%20role%20and%20responsibilities%20and%20what%20your%20observability%20goals%20are
+[教えて下さい！]: https://github.com/open-telemetry/opentelemetry.io/issues/new?title=Add%20a%20new%20persona:%20My%20Persona&body=Provide%20a%20description%20of%20your%20role%20and%20responsibilities%20and%20what%20your%20observability%20goals%20are
