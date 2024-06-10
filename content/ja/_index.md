@@ -4,7 +4,7 @@ description: >-
   効果的な観測を可能にする、高品質でユビキタスかつポータブルなテレメトリー
 developer_note: blocks/coverコラム（以下で使用）は、ファイル名に "background" を含む画像ファイルを背景画像として使用します。
 show_banner: true
-default_lang_commit: 902043db
+default_lang_commit: c2cd5b14
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
@@ -21,19 +21,19 @@ default_lang_commit: 902043db
 
 <div class="l-primary-buttons mt-5">
 
-- [より詳しく学ぶ](/docs/what-is-opentelemetry/)
-- [デモを試す](/docs/demo/)
-- [インテグレーションを探す](/ecosystem/integrations)
+- [より詳しく学ぶ](docs/what-is-opentelemetry/)
+- [デモを試す](docs/demo/)
+- [インテグレーションを探す](/ecosystem/integrations/)
 
 </div>
 
 <div class="h3 mt-4">
-あなたのロールに応じて<a class="text-secondary" href="/docs/getting-started/">始めてみましょう</a>
+あなたのロールに応じて<a class="text-secondary" href="docs/getting-started/">始めてみましょう</a>
 </div>
 <div class="l-get-started-buttons">
 
-- [開発者（Dev）](/docs/getting-started/dev/)
-- [運用担当者（Ops）](/docs/getting-started/ops/)
+- [開発者（Dev）](docs/getting-started/dev/)
+- [運用担当者（Ops）](docs/getting-started/ops/)
 
 </div>
 {{< /blocks/cover >}}
@@ -43,7 +43,7 @@ default_lang_commit: 902043db
 OpenTelemetry は API、SDK、ツールのコレクションです。
 テレメトリーデータ（メトリクス、ログ、トレース）の計装、生成、収集、エクスポートに使用し、ソフトウェアのパフォーマンスや動作の分析に役立てましょう。
 
-> OpenTelemetryは[いくつかの言語](/docs/languages/)で **一般的に利用可能** で、使用に適しています。
+> OpenTelemetryは[いくつかの言語](docs/languages/)で **一般的に利用可能** で、使用に適しています。
 
 {{% /blocks/lead %}}
 
