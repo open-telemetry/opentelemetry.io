@@ -676,6 +676,33 @@ Tracer tracer = GlobalOpenTelemetry.getTracer("instrumentation-scope-name", "ins
 Note that you can't force end users to configure the global, so this is the most
 brittle option for library instrumentation.
 
+### Acquiring a Tracer in Java Agent
+
+If you are writing a Java Agent, you can acquire a `Tracer` from the global OpenTelemetry instance:
+
+```java
+import io.opentelemetry.api.GlobalOpenTelemetry;
+
+Tracer tracer = GlobalOpenTelemetry.getTracer("instrumentation-scope-name");
+```
+
+### Acquiring a Tracer in Spring Boot starter
+
+If you are writing a Spring Boot starter, you can acquire a `Tracer` from the autowired OpenTelemetry instance:
+
+```java
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.trace.Tracer;
+
+public class MyController {
+  private final Tracer tracer;
+
+  public MyController(OpenTelemetry openTelemetry) {
+    this.tracer = openTelemetry.getTracer("instrumentation-scope-name");
+  }
+}
+```
+
 ### Create Spans
 
 Now that you have [tracers](/docs/concepts/signals/traces/#tracer) initialized,
@@ -1216,6 +1243,33 @@ Now that you have [meters](/docs/concepts/signals/metrics/#meter) initialized.
 you can create
 [metric instruments](/docs/concepts/signals/metrics/#metric-instruments).
 
+### Acquiring a Meter in Java Agent
+
+If you are writing a Java Agent, you can acquire a `Meter` from the global OpenTelemetry instance:
+
+```java
+import io.opentelemetry.api.GlobalOpenTelemetry;
+
+Meter meter = GlobalOpenTelemetry.getMeter("instrumentation-scope-name");
+```
+
+### Acquiring a Meter in Spring Boot starter
+
+If you are writing a Spring Boot starter, you can acquire a `Meter` from the autowired OpenTelemetry instance:
+
+```java
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.metrics.Meter;
+
+public class MyController {
+  private final Meter meter;
+
+  public MyController(OpenTelemetry openTelemetry) {
+    this.meter = openTelemetry.getMeter("instrumentation-scope-name");
+  }
+}
+```
+a
 ### Using Counters
 
 Counters can be used to measure non-negative, increasing values.
