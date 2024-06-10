@@ -7,7 +7,7 @@ developer_note:
   下文所用的 blocks/cover 短代码将使用文件名中包含 "background"
   的图像文件作为背景图。
 show_banner: true
-default_lang_commit: 6e35a949
+default_lang_commit: c2cd5b14
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
@@ -24,19 +24,19 @@ default_lang_commit: 6e35a949
 
 <div class="l-primary-buttons mt-5">
 
-- [了解更多](/zh/docs/what-is-opentelemetry/)
-- [尝试 Demo](/zh/docs/demo/)
-- [探索集成组件](/ecosystem/integrations)
+- [了解更多](docs/what-is-opentelemetry/)
+- [尝试 Demo](docs/demo/)
+- [探索集成组件](/ecosystem/integrations/)
 
 </div>
 
 <div class="h3 mt-4">
-<a class="text-secondary" href="/docs/getting-started/">为各种角色定制的入门指南</a>
+<a class="text-secondary" href="docs/getting-started/">为各种角色定制的入门指南</a>
 </div>
 <div class="l-get-started-buttons">
 
-- [开发人员](/zh/docs/getting-started/dev/)
-- [运维人员](/zh/docs/getting-started/ops/)
+- [开发人员](docs/getting-started/dev/)
+- [运维人员](docs/getting-started/ops/)
 
 </div>
 {{< /blocks/cover >}}
@@ -45,7 +45,7 @@ default_lang_commit: 6e35a949
 
 OpenTelemetry 是各类 API、SDK 和工具形成的集合。可用于插桩、生成、采集和导出遥测数据（链路、指标和日志），帮助你分析软件的性能和行为。
 
-> OpenTelemetry 在[多种编程语言](/zh/docs/languages/)均达到 **GA** 级别，普适性很高。
+> OpenTelemetry 在[多种编程语言](docs/languages/)均达到 **GA** 级别，普适性很高。
 
 {{% /blocks/lead %}}
 

@@ -1,9 +1,9 @@
 ---
 title: 使用 Kubernetes 部署 OpenTelemetry
 linkTitle: Kubernetes
-weight: 11
+weight: 350
 description: Using OpenTelemetry with Kubernetes
-default_lang_commit: 54bc7873eaf53af1314feef7f91797d5d261a57b
+default_lang_commit: c2cd5b14
 ---
 
 ## 介绍
