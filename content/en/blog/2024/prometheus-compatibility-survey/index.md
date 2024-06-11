@@ -3,17 +3,19 @@ title: Insights from the Prometheus Compatibility Survey
 linkTitle: Prometheus Compatibility Survey
 date: 2024-06-10
 author: '[David Ashpole](https://github.com/dashpole) (Google)'
+issue: https://github.com/open-telemetry/sig-end-user/issues/24
+sig: End-User SIG
 cSpell:ignore: Ashpole
 ---
 
-Prometheus and OpenTelemetry are two of the most active and popular projects in
-the CNCF observability landscape. The two communities have been working together
+[Prometheus](https://prometheus.io/) and OpenTelemetry are two of the most active and popular projects in
+the [CNCF observability landscape](https://landscape.cncf.io/guide#observability-and-analysis--observability). The two communities have been working together
 since the early days of OpenTelemetry to improve the compatibility between the
-two projects. The OpenTelemetry Prometheus working group has been leading this
+two projects. The OpenTelemetry Prometheus SIG has been leading this
 effort, with active participation from maintainers from both OpenTelemetry and
 Prometheus.
 
-At this point, there is a detailed, experimental specification describing how to
+At this point, there is a [detailed, experimental specification](/docs/specs/otel/compatibility/prometheus_and_openmetrics/) describing how to
 convert between the OpenTelemetry metrics format and the Prometheus metrics
 format. It has been used to implement Prometheus (pull) exporters for
 OpenTelemetry SDKs, OTLP export from Prometheus libraries, OTLP ingestion for
@@ -30,7 +32,7 @@ before we make any changes.
 The survey received 86 responses, and contained many helpful pieces of feedback.
 Than you to everyone that participated!
 
-## Overall Takeaways
+## Overall takeaways
 
 - A slight majority (54%) prefer leaving the dots in the metric name, rather
   than translating to underscores.
@@ -63,7 +65,7 @@ of their opinions on units or delimiters.
 
 OpenTelemetry [specifies](/docs/specs/semconv/general/attribute-naming/) that
 conventions should use dots as the namespace delimiter, and underscores as the
-delimiter between "multi-word-dot-delimited components" (e.g.
+delimiter between "multi-word-dot-delimited components" (for example,
 `http.response.status_code`). On the other hand, Prometheus
 [uses underscores](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels)
 as its delimiter.
