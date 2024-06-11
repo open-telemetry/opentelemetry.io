@@ -1,5 +1,6 @@
 ---
 title: Documentation style guide
+description: Terminology and style when writing OpenTelemetry docs.
 linkTitle: Style guide
 weight: 20
 cSpell:ignore: open-telemetry postgre style-guide textlintrc
