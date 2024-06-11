@@ -14,7 +14,6 @@ OpenTelemetry documentation contributors:
 
 The following guides describe how to contribute to OpenTelemetry documentation.
 
-
 For guidance on how to contribute to the OpenTelemetry project in general, see
 the
 [OpenTelemetry Contributor Guide](https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md)
