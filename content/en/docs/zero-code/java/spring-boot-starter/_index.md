@@ -47,7 +47,7 @@ Micrometer [^1][^2]:
 As the authors of the OpenTelemetry Spring Boot starter, we recommend using the
 OpenTelemetry Spring Boot starter. We have a great community behind it, and are
 continuously making improvements. If you try it out and have any problems or
-suggestions, please open an
+suggestions, open an
 [issue](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues)
 in our repository.
 
