@@ -1,7 +1,7 @@
 ---
 title: Documentation style guide
 linkTitle: Style guide
-weight: 10
+weight: 20
 cSpell:ignore: open-telemetry postgre style-guide textlintrc
 ---
 
