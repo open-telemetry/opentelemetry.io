@@ -33,7 +33,7 @@ Micrometer.
 
 OpenTelemetry Spring Boot starter:
 
-- Natively uses the OpenTelemetry API, OpenTelemetry SDK and the OpenTelemetry
+- Natively uses the OpenTelemetry API, OpenTelemetry SDK, and the OpenTelemetry
   semantic conventions
 - Supported by the OpenTelemetry community (governed by the CNCF / Linux
   Foundation)
