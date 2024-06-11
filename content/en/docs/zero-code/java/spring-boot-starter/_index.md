@@ -40,9 +40,9 @@ OpenTelemetry Spring Boot starter:
 
 Micrometer [^1][^2]:
 
-- An independent standalone observability system
-- Offers optional bridges into parts of the OpenTelemetry ecosystem
-- Supported by the Micrometer community (governed by Broadcom Inc)
+- An independent standalone observability system.
+- Offers optional bridges into parts of the OpenTelemetry ecosystem.
+- Supported by the Micrometer community (governed by Broadcom Inc).
 
 As the authors of the OpenTelemetry Spring Boot starter, we recommend using the
 OpenTelemetry Spring Boot starter. We have a great community behind it, and are
