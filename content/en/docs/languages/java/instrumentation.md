@@ -676,7 +676,7 @@ Tracer tracer = GlobalOpenTelemetry.getTracer("instrumentation-scope-name", "ins
 Note that you can't force end users to configure the global, so this is the most
 brittle option for library instrumentation.
 
-### Acquiring a Tracer in Java agent
+### Acquiring a tracer in Java agent
 
 If you are using the [Java agent], you can acquire a `Tracer` from the global OpenTelemetry
 instance:
