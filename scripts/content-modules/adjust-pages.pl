@@ -133,6 +133,7 @@ while(<>) {
   s|(/context/api-propagators.md)#propagators-api|$1|g;
   s|(/semantic_conventions/faas.md)#function-as-a-service|$1|g;
   s|(/resource/sdk.md)#resource-sdk|$1|g;
+  s|(event-api.md#)(data-model)|$1event-$2|g;
 
   s|\.\.\/README.md\b|$otelSpecRepoUrl/|g if $ARGV =~ /specification._index/;
   s|\.\.\/README.md\b|..| if $ARGV =~ /specification.library-guidelines.md/;
