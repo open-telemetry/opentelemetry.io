@@ -13,8 +13,8 @@ active and popular projects in the
 [CNCF observability landscape](https://landscape.cncf.io/guide#observability-and-analysis--observability).
 The two communities have been working together since the early days of
 OpenTelemetry to improve the compatibility between the two projects. The
-OpenTelemetry Prometheus SIG has been leading this effort, with active
-participation from maintainers from both OpenTelemetry and Prometheus.
+OpenTelemetry Prometheus SIG has been leading this effort, with the active
+participation of maintainers from both OpenTelemetry and Prometheus.
 
 At this point, there is a
 [detailed, experimental specification](/docs/specs/otel/compatibility/prometheus_and_openmetrics/)
@@ -24,17 +24,28 @@ exporters for OpenTelemetry SDKs, OTLP export from Prometheus libraries, OTLP
 ingestion for the Prometheus server, and the OpenTelemetry Collector's
 Prometheus Receiver and Prometheus exporters.
 
-As we consider stabilizing the compatibility specification, we decided to run a
-survey with the help of the OpenTelemetry End User SIG to collect feedback on
-the current state of compatibility between the projects, and try to understand
-user sentiment on a few of the remaining open questions. In particular, we
-wanted feedback on the translation for metric names, as we want to be sure
-before we make any changes.
+One of the most challenging areas to reconcile is that OpenTelemetry metric
+names are changed when exporting to Prometheus. Today, the OpenTelemetry
+`http.server.request.duration` metric, with unit `s`, is translated to
+`http_server_request_duration_seconds` in Prometheus. Some users are familar
+with the Prometheus naming conventions, and appreciate the consistency this
+translation provides with existing metrics in the Prometheus ecosystem. Other
+users are confused when querying for the original OpenTelemetry name does not
+return any results.
+
+Prometheus is working on support for UTF-8 characters in metric names as part of
+its
+[2024 roadmap](https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/#support-utf-8-metric-and-label-names),
+which potentially allows preserving dots in metric names. To better understand
+what users want their Prometheus query experience to look like, we ran a survey
+with the help of the OpenTelemetry End User SIG. Deciding on the default
+translation approach is one of the last remaining blockers for stabilizing the
+compatibility specification.
 
 The survey received 86 responses, and contained many helpful pieces of feedback.
 Than you to everyone that participated! The questions and raw results can be
 found
-[here](https://github.com/open-telemetry/sig-end-user/tree/b5cb097ca529cea62809d5078ef8e30a54ad86b9/end-user-surveys/otel-prom-interoperability)
+[here](https://github.com/open-telemetry/sig-end-user/tree/b5cb097ca529cea62809d5078ef8e30a54ad86b9/end-user-surveys/otel-prom-interoperability).
 
 ## Overall takeaways
 
@@ -122,24 +133,24 @@ are likely OK with either approach.
 
 ### Correlation between Unit and Delimiter Preferences
 
-Not surprisingly, preferences generally split into two groups: Those that prefer
-the OpenTelemetry conventions, and want to preserve them, and those that prefer
-the Prometheus conventions, and want to align with them. 71% of respondents who
-want to require units in metric names want to also want to change dots to
-underscores. 77% of respondents who don't want units in metric names prefer dots
-in metric names.
+Preferences generally split into two groups: Those that want to preserve the
+original OpenTelemetry metric names, including dots, and without a unit suffix,
+and those that prefer changing the name to match Prometheus conventions. 71% of
+respondents who want to require units in metric names want to also want to
+change dots to underscores. 77% of respondents who don't want units in metric
+names prefer dots in metric names.
 
 ### Group Differences
 
-The best predictors of a preference for the Prometheus conventions (units
-required in the name, and changing dots to underscores) were having a role of
-SRE, and being an expert with the Prometheus server configuration. For example,
-88% of SRE respondents preferred translating dots to underscores.
+The best predictors of a preference for units required in the name and changing
+dots to underscores were having a role of SRE, and being an expert with the
+Prometheus server configuration. For example, 88% of SRE respondents preferred
+translating dots to underscores.
 
-The best predictors of a preference for keeping the OpenTelemetry conventions
-(no units in the name, and preserving dots) were having the role of developer,
-and being an expert with OpenTelemetry libraries. For example, 74% of developers
-preferred not having units in metric names.
+The best predictors of a preference for preserving the OpenTelemetry name with
+dots, and without units were having the role of developer, and being an expert
+with OpenTelemetry libraries. For example, 74% of developers preferred not
+having units in metric names.
 
 ## Other feedback
 
