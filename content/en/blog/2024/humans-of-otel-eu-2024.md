@@ -7,8 +7,7 @@ author: >-
 issue: 4660
 sig: End User SIG
 # prettier-ignore
-cSpell:ignore: blanco odegaard adnan rahić dyrmishi centralizations reopelle observability vijay skyscanner fintech mclean stackdriver sheeran youtube
-
+cSpell:ignore: blanco odegaard adnan rahić dyrmishi centralizations reopelle observability vijay skyscanner fintech mclean stackdriver sheeran tracetest jiekun youtube bsfMECwmsm0
 ---
 
 We're back with our second edition of
@@ -61,14 +60,13 @@ committee and I'm one of the co-maintainers of the OpenTelemetry documentation.
 **KAYLA REOPELLE:** My name is Kayla Reopelle. I work for New Relic and I am
 contributing to the OpenTelemetry Ruby project.
 
-**MORGAN MCLEAN:** My name is Morgan McLean,I'm a director ofproduct
-managementat Splunk.I've been with OpenTelemetrysince day one.I'm one of the
-co-foundersof the project.I'm on the governance committee.Wow.What do I work on
-within OTel?A bit of everything.I mean early on it wasliterally
-everything.Myself and Tedand various otherswere doing many, many jobs.More
-recently I wasinvolved in the releaseof traces, metrics 1.0.Logs 1.0 last
-year.Right now I'm workingon profiling as wellas OpenTelemetry's expansioninto
-mainframe computing.
+**MORGAN MCLEAN:** My name is Morgan McLean,I'm a director of product management
+at Splunk.I've been with OpenTelemetry since day one.I'm one of the co-founders
+of the project.I'm on the governance committee.Wow.What do I work on within
+OTel?A bit of everything.I mean early on it was literally everything.Myself and
+Ted and various others were doing many, many jobs. More recently I was involved
+in the release of traces, metrics 1.0.Logs 1.0 last year.Right now I'm working
+on profiling as well as OpenTelemetry's expansion into mainframe computing.
 
 **HENRIK REXED:** My name is Henrik Rexed. I am a cloud native advocate at
 Dynatrace and I'm passionate about observability, performance, and I'm trying to
@@ -319,7 +317,7 @@ at Splunk. Different company, but still on the same types of things. But that's
 how my involvement started, and it's just grown and grown and snowballed from
 there.
 
-**HENRIK REXED:** When I started the adventure in Observabilty, of course, I
+**HENRIK REXED:** When I started the adventure in observability, of course, I
 joined Dynatrace, and Dynatrace has their vendor agent, the OneAgent, and I saw
 this movement of OpenTelemetry, and coming from the performance background, I
 looked at it and I said, "Whoa, an open standard." "That sounds quite exciting"
