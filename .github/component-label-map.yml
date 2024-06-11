@@ -2,10 +2,18 @@ blog:
   - changed-files:
       - any-glob-to-any-file:
           - content/en/blog/**
-registry:
+docs:
   - changed-files:
       - any-glob-to-any-file:
-          - data/registry/**
+          - content/en/**
+docs:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/**
+translation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '!content/en/**'
 lang:zh:
   - changed-files:
       - any-glob-to-any-file:
@@ -14,6 +22,10 @@ lang:ja:
   - changed-files:
       - any-glob-to-any-file:
           - content/ja/**
+registry:
+  - changed-files:
+      - any-glob-to-any-file:
+          - data/registry/**
 sig:cpp:
   - changed-files:
       - any-glob-to-any-file:
