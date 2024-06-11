@@ -3,8 +3,8 @@ title: Collector
 description: Vendor-agnostic way to receive, process and export telemetry data.
 aliases: [collector/about]
 cascade:
-  vers: 0.96.0
-weight: 10
+  vers: 0.102.1
+weight: 270
 ---
 
 ![OpenTelemetry Collector diagram with Jaeger, OTLP and Prometheus integration](img/otel-collector.svg)
@@ -28,7 +28,7 @@ export their telemetry data.
 - _Observability_: An exemplar of an observable service.
 - _Extensibility_: Customizable without touching the core code.
 - _Unification_: Single codebase, deployable as an agent or collector with
-  support for traces, metrics, and logs (future).
+  support for traces, metrics, and logs.
 
 ## When to use a collector
 

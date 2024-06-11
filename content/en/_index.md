@@ -3,10 +3,13 @@ title: OpenTelemetry
 description: >-
   High-quality, ubiquitous, and portable telemetry to enable effective
   observability
-show_banner: true
+outputs:
+  - HTML
+  - REDIRECTS # Include this `content/en` ONLY
 developer_note:
   The blocks/cover shortcode (used below) will use as a background image any
   image file containing "background" in its name.
+show_banner: true
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
@@ -23,19 +26,19 @@ developer_note:
 
 <div class="l-primary-buttons mt-5">
 
-- [Learn more](/docs/what-is-opentelemetry/)
-- [Try the demo](/docs/demo/)
-- [Explore integrations](/ecosystem/integrations)
+- [Learn more](docs/what-is-opentelemetry/)
+- [Try the demo](docs/demo/)
+- [Explore integrations](/ecosystem/integrations/)
 
 </div>
 
 <div class="h3 mt-4">
-<a class="text-secondary" href="/docs/getting-started/">Get started</a> based on your role
+<a class="text-secondary" href="docs/getting-started/">Get started</a> based on your role
 </div>
 <div class="l-get-started-buttons">
 
-- [Dev](/docs/getting-started/dev/)
-- [Ops](/docs/getting-started/ops/)
+- [Dev](docs/getting-started/dev/)
+- [Ops](docs/getting-started/ops/)
 
 </div>
 {{< /blocks/cover >}}
@@ -47,7 +50,7 @@ generate, collect, and export telemetry data (metrics, logs, and traces) to help
 you analyze your software's performance and behavior.
 
 > OpenTelemetry is **generally available** across
-> [several languages](/docs/languages/) and is suitable for use.
+> [several languages](docs/languages/) and is suitable for use.
 
 {{% /blocks/lead %}}
 

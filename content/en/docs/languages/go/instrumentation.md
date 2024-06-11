@@ -5,7 +5,7 @@ aliases:
   - manual_instrumentation
 weight: 30
 description: Manual instrumentation for OpenTelemetry Go
-cSpell:ignore: fatalf otlptrace sdktrace sighup
+cSpell:ignore: fatalf logr logrus otelslog otlplog otlploghttp sdktrace sighup
 ---
 
 {{% docs/languages/instrumentation-intro %}}
@@ -37,7 +37,6 @@ import (
 	"log"
 
 	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
 	"go.opentelemetry.io/otel/sdk/resource"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 	semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
@@ -186,10 +185,10 @@ span.SetAttributes(myKey.String("a value"))
 #### Semantic Attributes
 
 Semantic Attributes are attributes that are defined by the [OpenTelemetry
-Specification][] in order to provide a shared set of attribute keys across
-multiple languages, frameworks, and runtimes for common concepts like HTTP
-methods, status codes, user agents, and more. These attributes are available in
-the `go.opentelemetry.io/otel/semconv/v1.21.0` package.
+Specification][] in order to provide a shared set of attribute keys across multiple
+languages, frameworks, and runtimes for common concepts like HTTP methods, status
+codes, user agents, and more. These attributes are available in the `go.opentelemetry.io/otel/semconv/v1.21.0`
+package.
 
 For details, see [Trace semantic conventions][].
 
@@ -535,6 +534,35 @@ func removeItem() {
 }
 ```
 
+### Using Gauges
+
+Gauges are used to measure non-additive values when changes occur.
+
+For example, here's how you might report the current speed of a CPU fan:
+
+```go
+import (
+	"net/http"
+
+	"go.opentelemetry.io/otel/metric"
+)
+
+func init() {
+	speedGauge, err := meter.Int64Gauge(
+		"cpu.fan.speed",
+		metric.WithDescription("Speed of CPU fan"),
+		metric.WithUnit("RPM"),
+	)
+	if err != nil {
+		panic(err)
+	}
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		// hard-code 1500 RPM for demonstrative purposes
+		speedGauge.Record(r.Context(), 1500)
+	})
+}
+```
+
 ### Using Histograms
 
 Histograms are used to measure a distribution of values over time.
@@ -876,7 +904,161 @@ meterProvider := metric.NewMeterProvider(
 
 ## Logs
 
-The logs API is currently unstable, documentation TBA.
+Logs are distinct from metrics and traces in that **there is no user-facing
+OpenTelemetry logs API**. Instead, there is tooling to bridge logs from existing
+popular log packages (such as slog, logrus, zap, logr) into the OpenTelemetry
+ecosystem. For rationale behind this design decision, see
+[Logging specification](/docs/specs/otel/logs/).
+
+The two typical workflows discussed below each cater to different application
+requirements.
+
+### Direct-to-Collector
+
+**Status**: [Experimental](/docs/specs/otel/document-status/)
+
+In the direct-to-Collector workflow, logs are emitted directly from an
+application to a collector using a network protocol (e.g. OTLP). This workflow
+is simple to set up as it doesn't require any additional log forwarding
+components, and allows an application to easily emit structured logs that
+conform to the [log data model][log data model]. However, the overhead required
+for applications to queue and export logs to a network location may not be
+suitable for all applications.
+
+To use this workflow:
+
+- Configure the OpenTelemetry [Log SDK](#logs-sdk) to export log records to
+  desired target destination (the [collector][opentelemetry collector] or
+  other).
+- Use an appropriate [Log Bridge](#log-bridge).
+
+#### Logs SDK
+
+The logs SDK dictates how logs are processed when using the
+[direct-to-Collector](#direct-to-collector) workflow. No log SDK is needed when
+using the [log forwarding](#via-file-or-stdout) workflow.
+
+The typical log SDK configuration installs a batching log record processor with
+an OTLP exporter.
+
+To enable [logs](/docs/concepts/signals/logs/) in your app, you'll need to have
+an initialized [`LoggerProvider`](/docs/concepts/signals/logs/#logger-provider)
+that will let you use a [Log Bridge](#log-bridge).
+
+If a `LoggerProvider` is not created, the OpenTelemetry APIs for logs will use a
+no-op implementation and fail to generate data. Therefore, you have to modify
+the source code to include the SDK initialization code using the following
+packages:
+
+- [`go.opentelemetry.io/otel`][]
+- [`go.opentelemetry.io/otel/sdk/log`][]
+- [`go.opentelemetry.io/otel/sdk/resource`][]
+- [`go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp`][]
+
+Ensure you have the right Go modules installed:
+
+```sh
+go get go.opentelemetry.io/otel \
+  go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp \
+  go.opentelemetry.io/otel/sdk \
+  go.opentelemetry.io/otel/sdk/log
+```
+
+Then initialize a logger provider:
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp"
+	"go.opentelemetry.io/otel/log/global"
+	"go.opentelemetry.io/otel/sdk/log"
+	"go.opentelemetry.io/otel/sdk/resource"
+	semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
+)
+
+func main() {
+	ctx := context.Background()
+
+	// Create resource.
+	res, err := newResource()
+	if err != nil {
+		panic(err)
+	}
+
+	// Create a logger provider.
+	// You can pass this instance directly when creating bridges.
+	loggerProvider, err := newLoggerProvider(ctx, res)
+	if err != nil {
+		panic(err)
+	}
+
+	// Handle shutdown properly so nothing leaks.
+	defer func() {
+		if err := loggerProvider.Shutdown(ctx); err != nil {
+			fmt.Println(err)
+		}
+	}()
+
+	// Register as global logger provider so that it can be accessed global.LoggerProvider.
+	// Most log bridges use the global logger provider as default.
+	// If the global logger provider is not set then a no-op implementation
+	// is used, which fails to generate data.
+	global.SetLoggerProvider(loggerProvider)
+}
+
+func newResource() (*resource.Resource, error) {
+	return resource.Merge(resource.Default(),
+		resource.NewWithAttributes(semconv.SchemaURL,
+			semconv.ServiceName("my-service"),
+			semconv.ServiceVersion("0.1.0"),
+		))
+}
+
+func newLoggerProvider(ctx context.Context, res *resource.Resource) (*log.LoggerProvider, error) {
+	exporter, err := otlploghttp.New(ctx)
+	if err != nil {
+		return nil, err
+	}
+	processor := log.NewBatchProcessor(exporter)
+	provider := log.NewLoggerProvider(
+		log.WithResource(res),
+		log.WithProcessor(processor),
+	)
+	return provider, nil
+}
+```
+
+Now that a `LoggerProvider` is configured, you can use it to set up a
+[Log Bridge](#log-bridge).
+
+#### Log Bridge
+
+A log bridge is a component that bridges logs from an existing log package into
+the OpenTelemetry [Log SDK](#logs-sdk) using the [Logs Bridge
+API][logs bridge API]. Log bridges are available for various popular Go log
+packages:
+
+- [logrus bridge][otellogrus]
+- [slog bridge][otelslog]
+
+The links above contain full usage and installation documentation.
+
+### Via file or stdout
+
+In the file or stdout workflow, logs are written to files or standout output.
+Another component (e.g. FluentBit) is responsible for reading / tailing the
+logs, parsing them to more structured format, and forwarding them a target, such
+as the collector. This workflow may be preferable in situations where
+application requirements do not permit additional overhead from
+[direct-to-Collector](#direct-to-collector). However, it requires that all log
+fields required down stream are encoded into the logs, and that the component
+reading the logs parse the data into the [log data model][log data model]. The
+installation and configuration of log forwarding components is outside the scope
+of this document.
 
 ## Next Steps
 
@@ -887,11 +1069,21 @@ telemetry backends.
 [opentelemetry specification]: /docs/specs/otel/
 [trace semantic conventions]: /docs/specs/semconv/general/trace/
 [instrumentation library]: ../libraries/
+[opentelemetry collector]:
+  https://github.com/open-telemetry/opentelemetry-collector
+[logs bridge API]: /docs/specs/otel/logs/bridge-api
+[log data model]: /docs/specs/otel/logs/data-model
+[otellogrus]: https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otellogrus
+[otelslog]: https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelslog
 [`go.opentelemetry.io/otel`]: https://pkg.go.dev/go.opentelemetry.io/otel
 [`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`]:
   https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric
 [`go.opentelemetry.io/otel/metric`]:
   https://pkg.go.dev/go.opentelemetry.io/otel/metric
+[`go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp`]:
+  https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp
+[`go.opentelemetry.io/otel/sdk/log`]:
+  https://pkg.go.dev/go.opentelemetry.io/otel/sdk/log
 [`go.opentelemetry.io/otel/sdk/metric`]:
   https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric
 [`go.opentelemetry.io/otel/sdk/resource`]:

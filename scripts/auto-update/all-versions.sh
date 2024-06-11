@@ -5,7 +5,9 @@ function auto_update_versions() {
   local updates=(
       "opentelemetry-collector-releases vers content/en/docs/collector/_index.md"
       "opentelemetry-java otel content/en/docs/languages/java/_index.md"
+      "opentelemetry-java otel content/en/docs/zero-code/java/_index.md"
       "opentelemetry-java-instrumentation instrumentation content/en/docs/languages/java/_index.md"
+      "opentelemetry-java-instrumentation instrumentation content/en/docs/zero-code/java/_index.md"
       "opentelemetry-specification spec scripts/content-modules/adjust-pages.pl .gitmodules"
       "opentelemetry-proto otlp scripts/content-modules/adjust-pages.pl .gitmodules"
       "semantic-conventions semconv scripts/content-modules/adjust-pages.pl .gitmodules"

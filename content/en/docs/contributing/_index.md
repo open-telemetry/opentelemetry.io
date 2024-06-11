@@ -2,12 +2,21 @@
 title: Contributing
 description: Learn how to contribute to OpenTelemetry documentation.
 aliases: [/docs/contribution-guidelines]
-weight: 200
+weight: 980
 cSpell:ignore: prepopulated spacewhite
 ---
 
-You can open an issue about OpenTelemetry documentation, or contribute a change
-with a pull request (PR) to the
+The following guide describes how to contribute to OpenTelemetry documentation.
+For guidance on how to contribute to the OpenTelemetry project in general, see
+the
+[OpenTelemetry Contributor Guide](https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md)
+, which provides details on the Contributor License Agreement and the Code of
+Conduct. In extent, every language implementation, collector, and conventions
+[repository](https://github.com/open-telemetry/) has their own specific
+contributing guides.
+
+For documentation, you can open an issue about OpenTelemetry, or contribute a
+change with a pull request (PR) to the
 [`opentelemetry.io` GitHub repository](https://github.com/open-telemetry/opentelemetry.io).
 
 OpenTelemetry documentation contributors:
@@ -16,11 +25,6 @@ OpenTelemetry documentation contributors:
 - Create new content.
 - Update the OpenTelemetry Registry.
 - Improve the code that builds the site.
-
-See also the general
-[OpenTelemetry Contributor Guide](https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md)
-, which provides details on the Contributor License Agreement and the Code of
-Conduct.
 
 ## Requirements
 
@@ -72,7 +76,7 @@ class first,second white
 
 _Figure 1. Contributing new content._
 
-The previous figure presents the basic steps for new docs contributions.
+The previous figure illustrates how to contribute new documentation.
 
 To contribute new content pages or improve existing content pages, open a pull
 request (PR):
@@ -81,6 +85,14 @@ request (PR):
   [Changes using GitHub](#changes-using-github) to learn how to edit a page.
 - If your changes are large, read [Work from a local fork](#fork-the-repo) to
   learn how to make changes locally on your computer.
+
+{{% alert title="Tip" %}}
+
+Turn your pull request into a draft to signal that the content still isn't ready
+for review. Maintainers may still comment or do high-level reviews, though they
+won't review the content in full until you remove the draft status.
+
+{{% /alert %}}
 
 ### Changes using GitHub {#changes-using-github}
 
@@ -120,12 +132,12 @@ _Figure 2. Steps for opening a PR using GitHub._
 1. On the page where you see the issue, select the **Edit this page** option in
    the right-hand side navigation panel.
 
-1. If you're not a member of the project, GitHub will offer to create a fork of
-   the repository. Select **Fork this repository**.
+1. If you're not a member of the project, GitHub offers to create a fork of the
+   repository. Select **Fork this repository**.
 
 1. Make your changes in the GitHub editor.
 
-1. Below the editor, fill in the **Propose file change** form.
+1. Fill in the **Propose file change** form.
 
 1. Select **Propose file change**.
 
@@ -409,9 +421,9 @@ close the terminal window.
 
 #### Site deploys and PR previews
 
-If you submit a PR, Netlify creates a [deploy preview][] so that you can review
-your changes. Once your PR is merged, Netlify deploys the updated site to the
-production server.
+If you submit a PR, Netlify creates a [deploy preview][] so that you can review your
+changes. Once your PR is merged, Netlify deploys the updated site to the production
+server.
 
 > **Note**: PR previews include _draft pages_, but production builds do not.
 
@@ -587,6 +599,53 @@ Keep the following in mind when filing an issue:
   [Code of Conduct](https://github.com/open-telemetry/community/blob/main/code-of-conduct.md).
   Respect your fellow contributors. For example, "The docs are terrible" is not
   helpful or polite feedback.
+
+## Announcement management
+
+An announcement is a _regular Hugo page_ contained under the `announcements`
+section of a locale. This means that we leverage Hugo's builtin handling of page
+dates (future or expired), internationalization, and more, to automatically show
+or hide banners depending on the build date, determine banner ordering, handle
+fall back to English banners, etc.
+
+> Announcements are currently used as banners only. We _might_ eventually
+> support slightly more general announcements as well.
+
+### Creating an announcement
+
+To add a new announcement, create an announcement markdown file under the
+`announcements` folder of your localization using the following command:
+
+```sh
+hugo new --kind announcement content/YOUR-LOCALE/announcements/announcement-file-name.md
+```
+
+Adjust according to your desired locale and file name. Add the announcement text
+as the body of the page.
+
+> For banners, the announcement body should be a short phrase.
+
+{{% alert title="For localizations" %}}
+
+If you are creating a **locale specific announcement override**, make sure that
+you use the **same filename** as the English language announcement.
+
+{{% /alert %}}
+
+### Announcement list
+
+Any given announcement will appear in a site build when the build date falls
+between the `date` and `expiryDate` fields of the announcement. When those
+fields are missing they are assumed to be "now" and "forever", respectively.
+
+Announcements will appear in the standard page order as determined using Hugo's
+[Regular pages](https://gohugo.io/methods/site/regularpages/) function. That is,
+the "lightest" announcements (by `weight`) will appear first; when weights are
+the same or unspecified, the most recent announcements (by `date`) will appear
+first, etc.
+
+So, if you want to force an announcement to the top, use a negative `weight` in
+the front matter.
 
 ## Contribute to other repositories
 

@@ -23,7 +23,7 @@ jobs:
       pull-requests: write
 
     env:
-      DEPTH: --depth 100 # submodule clone depth
+      DEPTH: --depth 1000 # submodule clone depth
 
     steps:
       - name: Extract action name
@@ -31,7 +31,7 @@ jobs:
         run: |
           PR_ACTION=$(echo $COMMENT | grep -oP '/fix:\K\w+')
           echo "Action is $PR_ACTION"
-          ACTION_NAMES="all|dict|filenames|format|markdown|refcache|submodules"
+          ACTION_NAMES="all|dict|filenames|format|i18n|markdown|refcache|submodules|text"
           if [[ ! "$PR_ACTION" =~ ^($ACTION_NAMES)$ ]]; then
             echo "Invalid action name: $PR_ACTION"
             echo "Action name should be one of: $ACTION_NAMES"
@@ -50,11 +50,11 @@ jobs:
         run: |
           gh pr comment $PR_NUM -b "You triggered fix:${PR_ACTION} action run at $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
       - run: gh pr checkout $PR_NUM -b "pr-action-${RANDOM}"
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
       - name: Create NPM cache-hash input file
         run: |
@@ -106,4 +106,4 @@ jobs:
         run: |
           gh pr comment $PR_NUM -b "fix:${PR_ACTION} run failed, please check $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID for details"
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}

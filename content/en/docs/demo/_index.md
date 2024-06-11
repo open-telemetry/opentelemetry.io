@@ -3,7 +3,7 @@ title: OpenTelemetry Demo Documentation
 linkTitle: Demo
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
-weight: 2
+weight: 180
 cSpell:ignore: OLJCESPC
 ---
 
@@ -52,6 +52,7 @@ found here:
 - [Quote Service](services/quote/)
 - [Recommendation Service](services/recommendation/)
 - [Shipping Service](services/shipping/)
+- [Image Provider Service](services/imageprovider/)
 
 ## Scenarios
 

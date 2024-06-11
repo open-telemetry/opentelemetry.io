@@ -19,9 +19,8 @@ cSpell:ignore: Autowired customizer logback loggable multivalued rolldice spring
 
 On this page you will learn how you can add traces, metrics and logs to your
 code _manually_. But, you are not limited to only use one kind of
-instrumentation: use
-[automatic instrumentation](/docs/languages/java/automatic/) to get started and
-then enrich your code with manual instrumentation as needed.
+instrumentation: use [zero-code instrumentation](/docs/zero-code/java/agent/) to
+get started and then enrich your code with manual instrumentation as needed.
 
 Note, that especially if you cannot modify the source code of your app, you can
 skip manual instrumentation and only use automatic instrumentation.
@@ -41,6 +40,15 @@ manual instrumentation.
 
 You don't have to use the example app: if you want to instrument your own app or
 library, follow the instructions here to adapt the process to your own code.
+
+### Prerequisites
+
+For running the example app, ensure that you have the following installed
+locally:
+
+- Java JDK 17+, due to the use of Spring Boot 3. OpenTelemetry Java itself only
+  [requires Java 8+][java-vers].
+- [Gradle](https://gradle.org/).
 
 ### Dependencies {#example-app-dependencies}
 
@@ -353,6 +361,8 @@ It allows you to autoconfigure the OpenTelemetry SDK based on a standard set of
 supported environment variables and system properties. Each environment variable
 has a corresponding system property named the same way but as lower case and
 using the `.` (dot) character instead of the `_` (underscore) as separator.
+Reference the [configuration](/docs/languages/java/configuration/) page for
+details on all available options.
 
 The logical service name can be specified via the `OTEL_SERVICE_NAME`
 environment variable (or `otel.service.name` system property).
@@ -452,7 +462,9 @@ import org.springframework.context.annotation.Bean;
 
 import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.context.propagation.TextMapPropagator;
 import io.opentelemetry.api.trace.propagation.W3CTraceContextPropagator;
+import io.opentelemetry.api.baggage.propagation.W3CBaggagePropagator;
 import io.opentelemetry.context.propagation.ContextPropagators;
 import io.opentelemetry.exporter.logging.LoggingMetricExporter;
 import io.opentelemetry.exporter.logging.LoggingSpanExporter;
@@ -569,9 +581,10 @@ To do [Tracing](/docs/concepts/signals/traces/) you'll need to acquire a
 First, a `Tracer` must be acquired, which is responsible for creating spans and
 interacting with the [Context](#context-propagation). A tracer is acquired by
 using the OpenTelemetry API specifying the name and version of the [library
-instrumenting][instrumentation library] the [instrumented library] or
-application to be monitored. More information is available in the specification
-chapter [Obtaining a Tracer].
+instrumenting][instrumentation library] the [instrumented library] or application
+to be monitored. More information is available in the specification chapter [Obtaining
+a
+Tracer].
 
 Anywhere in your application where you write manual tracing code should call
 `getTracer` to acquire a tracer. For example:
@@ -641,7 +654,7 @@ public class Dice {
   }
 
   public Dice(int min, int max) {
-    this(min, max, OpenTelemetry.noop())
+    this(min, max, OpenTelemetry.noop());
   }
 
   // ...
@@ -975,18 +988,16 @@ HTTP headers.
 
 ### Context propagation between threads
 
-THe following example demonstrates how to propagate the context between threads:
+The following example demonstrates how to propagate the context between threads:
 
 ```java
 io.opentelemetry.context.Context context = io.opentelemetry.context.Context.current();
-Thread thread = new Thread(new Runnable() {
+Thread thread = new Thread(context.wrap(new Runnable() {
   @Override
   public void run() {
-    try (Scope scope = context.makeCurrent()) {
-      // Code for which you want to propagate the context
-    }
+    // Code for which you want to propagate the context
   }
-});
+}));
 thread.start();
 ```
 
@@ -1144,72 +1155,252 @@ The metrics API defines a variety of instruments. Instruments record
 measurements, which are aggregated by the metrics SDK and eventually exported
 out of process. Instruments come in synchronous and asynchronous varieties.
 Synchronous instruments record measurements as they happen. Asynchronous
-instrument register a callback, which is invoked once per collection, and which
-records measurements at that point in time. The following instruments are
-available:
+instruments register a callback, which is invoked once per collection, and which
+records measurements at that point in time.
 
-- `LongCounter`/`DoubleCounter`: records only positive values, with synchronous
-  and asynchronous options. Useful for counting things, such as the number of
-  bytes sent over a network. Counter measurements are aggregated to
-  always-increasing monotonic sums by default.
-- `LongUpDownCounter`/`DoubleUpDownCounter`: records positive and negative
-  values, with synchronous and asynchronous options. Useful for counting things
-  that go up and down, like the size of a queue. Up down counter measurements
-  are aggregated to non-monotonic sums by default.
-- `LongGauge`/`DoubleGauge`: measures an instantaneous value with an
-  asynchronous callback. Useful for recording values that can't be merged across
-  attributes, like CPU utilization percentage. Gauge measurements are aggregated
-  as gauges by default.
-- `LongHistogram`/`DoubleHistogram`: records measurements that are most useful
-  to analyze as a histogram distribution. No asynchronous option is available.
-  Useful for recording things like the duration of time spent by an HTTP server
-  processing a request. Histogram measurements are aggregated to explicit bucket
-  histograms by default.
+### Initialize Metrics
 
-**Note**: The asynchronous varieties of counter and up down counter assume that
-the registered callback is observing the cumulative sum. For example, if you
-register an asynchronous counter whose callback records bytes sent over a
-network, it must record the cumulative sum of all bytes sent over the network,
-rather than trying to compute and record the difference since last call.
+{{% alert color="info" %}} If you’re instrumenting a library, skip this step.
+{{% /alert %}}
 
-All metrics can be annotated with attributes: additional qualifiers that help
-describe what subdivision of the measurements the metric represents.
+To enable [metrics](/docs/concepts/signals/metrics/) in your app, you need to
+have an initialized
+[`MeterProvider`](/docs/concepts/signals/metrics/#meter-provider) that lets you
+create a [`Meter`](/docs/concepts/signals/metrics/#meter). If a `MeterProvider`
+is not created, the OpenTelemetry APIs for metrics use a no-op implementation
+and fail to generate data.
 
-The following is an example of counter usage:
+If you followed the instructions to [initialize the SDK](#initialize-the-sdk)
+above, you have a `MeterProvider` setup for you already. You can continue with
+[acquiring a meter](#acquiring-a-meter).
+
+When creating a `MeterProvider` you can specify a [MetricReader](#metric-reader)
+and [MetricExporter](/docs/languages/java/exporters/). The
+`LoggingMetricExporter` is included in the `opentelemetry-exporter-logging`
+artifact that was added in the [Initialize the SDK](#initialize-the-sdk) step.
 
 ```java
-OpenTelemetry openTelemetry = // obtain instance of OpenTelemetry
+SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
+    .registerMetricReader(
+        PeriodicMetricReader
+            .builder(LoggingMetricExporter.create())
+            // Default is 60000ms (60 seconds). Set to 10 seconds for demonstrative purposes only.
+            .setInterval(Duration.ofSeconds(10)).build())
+    .build();
 
-// Gets or creates a named meter instance
-Meter meter = openTelemetry.meterBuilder("instrumentation-library-name")
-        .setInstrumentationVersion("1.0.0")
-        .build();
-
-// Build counter e.g. LongCounter
-LongCounter counter = meter
-      .counterBuilder("processed_jobs")
-      .setDescription("Processed jobs")
-      .setUnit("1")
-      .build();
-
-// It is recommended that the API user keep a reference to Attributes they will record against
-Attributes attributes = Attributes.of(AttributeKey.stringKey("Key"), "SomeWork");
-
-// Record data
-counter.add(123, attributes);
+// Register MeterProvider with OpenTelemetry instance
+OpenTelemetry openTelemetry = OpenTelemetrySdk.builder()
+    .setMeterProvider(sdkMeterProvider)
+    .build();
 ```
 
-The following is an example of usage of an asynchronous instrument:
+### Acquiring a Meter
+
+Anywhere in your application where you have manually instrumented code you can
+call `opentelemetry.meterBuilder(instrumentationScopeName)` to get or create a
+new meter instance using the builder pattern, or
+`opentelemetry.getMeter(instrumentationScopeName)` to get or create a meter
+based on just the instrument scope name.
 
 ```java
-// Build an asynchronous instrument, e.g. Gauge
-meter
-  .gaugeBuilder("cpu_usage")
-  .setDescription("CPU Usage")
-  .setUnit("ms")
-  .buildWithCallback(measurement -> {
-    measurement.record(getCpuUsage(), Attributes.of(AttributeKey.stringKey("Key"), "SomeWork"));
-  });
+// Get or create a named meter instance with instrumentation version using builder
+Meter meter = openTelemetry.meterBuilder("dice-server")
+    .setInstrumentationVersion("0.1.0")
+    .build();
+
+// Get or create a named meter instance by name only
+Meter meter = openTelemetry.getMeter("dice-server");
+```
+
+Now that you have [meters](/docs/concepts/signals/metrics/#meter) initialized.
+you can create
+[metric instruments](/docs/concepts/signals/metrics/#metric-instruments).
+
+### Using Counters
+
+Counters can be used to measure non-negative, increasing values.
+
+```java
+LongCounter counter = meter.counterBuilder("dice-lib.rolls.counter")
+    .setDescription("How many times the dice have been rolled.")
+    .setUnit("rolls")
+    .build();
+
+counter.add(1, attributes);
+```
+
+### Using Observable (Async) Counters
+
+Observable counters can be used to measure an additive, non-negative,
+monotonically increasing value. These counters specifically focus on the total
+accumulated amount, which is gathered from external sources. Unlike synchronous
+counters where each increment is recorded as it happens, observable counters
+allow you to asynchronously monitor the overall sum of multiple increments.
+
+```java
+ObservableLongCounter counter = meter.counterBuilder("dice-lib.uptime")
+    .buildWithCallback(measurement -> measurement.record(getUpTime()));
+```
+
+### Using UpDown Counters
+
+UpDown counters can increment and decrement, allowing you to observe a value
+that goes up or down.
+
+```java
+LongUpDownCounter counter = meter.upDownCounterBuilder("dice-lib.score")
+    .setDescription("Score from dice rolls.")
+    .setUnit("points")
+    .build();
+
+//...
+
+counter.add(10, attributes);
+
+//...
+
+counter.add(-20, attributes);
+```
+
+### Using Observable (Async) UpDown Counters
+
+Observable UpDown counters can increment and decrement, allowing you to measure
+an additive, non-negative, non-monotonically increasing cumulative value. These
+UpDown counters specifically focus on the total accumulated amount, which is
+gathered from external sources. Unlike synchronous UpDown counters where each
+increment is recorded as it happens, observable counters allow you to
+asynchronously monitor the overall sum of multiple increments.
+
+```java
+ObservableDoubleUpDownCounter upDownCounter = meter.upDownCounterBuilder("dice-lib.score")
+    .buildWithCallback(measurement -> measurement.record(calculateScore()));
+```
+
+### Using Histograms
+
+Histograms are used to measure a distribution of values over time.
+
+```java
+LongHistogram histogram = meter.histogramBuilder("dice-lib.rolls")
+    .ofLongs() // Required to get a LongHistogram, default is DoubleHistogram
+    .setDescription("A distribution of the value of the rolls.")
+    .setExplicitBucketBoundariesAdvice(Arrays.asList(1L, 2L, 3L, 4L, 5L, 6L, 7L))
+    .setUnit("points")
+    .build();
+
+histogram.record(7, attributes);
+```
+
+### Using Observable (Async) Gauges
+
+Observable Gauges should be used to measure non-additive values.
+
+```java
+ObservableDoubleGauge gauge = meter.gaugeBuilder("jvm.memory.used")
+    .buildWithCallback(measurement -> measurement.record(getMemoryUsed()));
+```
+
+### Adding Attributes
+
+When you generate metrics, adding attributes creates unique metric series based
+on each distinct set of attributes that receive measurements. This leads to the
+concept of 'cardinality', which is the total number of unique series.
+Cardinality directly affects the size of the metric payloads that are exported.
+Therefore, it's important to carefully select the dimensions included in these
+attributes to prevent a surge in cardinality, often referred to as 'cardinality
+explosion'.
+
+```java
+Attributes attrs = Attributes.of(
+    stringKey("hostname"), "i-98c3d4938",
+    stringKey("region"), "us-east-1");
+
+histogram.record(7, attrs);
+```
+
+### Metric Views
+
+Views provide a mechanism for controlling how measurements are aggregated into
+metrics. They consist of an `InstrumentSelector` and a `View`. The instrument
+selector consists of a series of options for selecting which instruments the
+view applies to. Instruments can be selected by a combination of name, type,
+meter name, meter version, and meter schema URL. The view describes how
+measurement should be aggregated. The view can change the name, description, the
+aggregation, and define the set of attribute keys that should be retained.
+
+```java
+SdkMeterProvider meterProvider = SdkMeterProvider.builder()
+    .registerView(
+        InstrumentSelector.builder()
+            .setName("my-counter") // Select instrument(s) called "my-counter"
+            .build(),
+        View.builder()
+            .setName("new-counter-name") // Change the name to "new-counter-name"
+            .build())
+    .registerMetricReader(...)
+    .build();
+```
+
+Every instrument has a default view, which retains the original name,
+description, and attributes, and has a default aggregation that is based on the
+type of instrument. When a registered view matches an instrument, the default
+view is replaced by the registered view. Additional registered views that match
+the instrument are additive, and result in multiple exported metrics for the
+instrument.
+
+#### Selectors
+
+To instantiate a view, one must first select a target instrument. The following
+are valid selectors for metrics:
+
+- instrumentType
+- instrumentName
+- meterName
+- meterVersion
+- meterSchemaUrl
+
+Selecting by `instrumentName` (of type string) has support for wildcards, so you
+can select all instruments using `*` or select all instruments whose name starts
+with `http` by using `http*`.
+
+#### Examples
+
+Filter attributes on all metric types:
+
+```java
+SdkMeterProvider meterProvider = SdkMeterProvider.builder()
+    .registerView(
+        // apply the view to all instruments
+        InstrumentSelector.builder().setName("*").build(),
+        // only export the attribute 'environment'
+        View.builder().setAttributeFilter(Set.of("environment")).build())
+    .build();
+```
+
+Drop all instruments with the meter name "pubsub":
+
+```java
+SdkMeterProvider meterProvider = SdkMeterProvider.builder()
+    .registerView(
+        InstrumentSelector.builder().setMeterName("pubsub").build(),
+        View.builder().setAggregation(Aggregation.drop()).build())
+    .build();
+```
+
+Define explicit bucket sizes for the Histogram named
+`http.server.request.duration`:
+
+```java
+SdkMeterProvider meterProvider = SdkMeterProvider.builder()
+    .registerView(
+        InstrumentSelector.builder().setName("http.server.request.duration").build(),
+        View.builder()
+            .setAggregation(
+                Aggregation.explicitBucketHistogram(
+                    List.of(0.0, 1.0, 5.0, 10.0, 20.0, 25.0, 30.0)
+                )
+            ).build()
+    ).build();
 ```
 
 ## Logs
@@ -1379,8 +1570,8 @@ exporters out of the box:
 - Logging Exporter: saves the telemetry data into log streams. Varieties include
   `LoggingSpanExporter` and `OtlpJsonLoggingSpanExporter`.
 - OpenTelemetry Protocol Exporter: sends the data in OTLP to the [OpenTelemetry
-  Collector] or other OTLP receivers. Varieties include `OtlpGrpcSpanExporter`
-  and `OtlpHttpSpanExporter`.
+  Collector] or other OTLP receivers. Varieties include `OtlpGrpcSpanExporter` and
+  `OtlpHttpSpanExporter`.
 
 Other exporters can be found in the [OpenTelemetry Registry].
 
@@ -1450,36 +1641,6 @@ OpenTelemetry provides the following exporters out of the box:
 
 Other exporters can be found in the [OpenTelemetry Registry].
 
-#### Views
-
-Views provide a mechanism for controlling how measurements are aggregated into
-metrics. They consist of an `InstrumentSelector` and a `View`. The instrument
-selector consists of a series of options for selecting which instruments the
-view applies to. Instruments can be selected by a combination of name, type,
-meter name, meter version, and meter schema URL. The view describes how
-measurement should be aggregated. The view can change the name, description, the
-aggregation, and define the set of attribute keys that should be retained.
-
-```java
-SdkMeterProvider meterProvider = SdkMeterProvider.builder()
-  .registerView(
-    InstrumentSelector.builder()
-      .setName("my-counter") // Select instrument(s) called "my-counter"
-      .build(),
-    View.builder()
-      .setName("new-counter-name") // Change the name to "new-counter-name"
-      .build())
-  .registerMetricReader(...)
-  .build()
-```
-
-Every instrument has a default view, which retains the original name,
-description, and attributes, and has a default aggregation that is based on the
-type of instrument. When a registered view matches an instrument, the default
-view is replaced by the registered view. Additional registered views that match
-the instrument are additive, and result in multiple exported metrics for the
-instrument.
-
 ### Logs SDK
 
 The logs SDK dictates how logs are processed when using the
@@ -1527,8 +1688,8 @@ particular backend. OpenTelemetry provides the following exporters out of the
 box:
 
 - OpenTelemetry Protocol Exporter: sends the data in OTLP to the [OpenTelemetry
-  Collector] or other OTLP receivers. Varieties include
-  `OtlpGrpcLogRecordExporter` and `OtlpHttpLogRecordExporter`.
+  Collector] or other OTLP receivers. Varieties include `OtlpGrpcLogRecordExporter`
+  and `OtlpHttpLogRecordExporter`.
 - `InMemoryLogRecordExporter`: keeps the data in memory, useful for testing and
   debugging.
 - Logging Exporter: saves the telemetry data into log streams. Varieties include
@@ -1672,6 +1833,8 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOnSampler.java
 [httpexchange]:
   https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html
+[java-vers]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#language-version-compatibility
 [instrumentation library]: /docs/specs/otel/glossary/#instrumentation-library
 [instrumented library]: /docs/specs/otel/glossary/#instrumented-library
 [logs bridge API]: /docs/specs/otel/logs/bridge-api

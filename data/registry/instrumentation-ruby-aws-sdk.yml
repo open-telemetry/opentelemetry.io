@@ -6,6 +6,8 @@ tags:
   - instrumentation
   - aws-sdk
   - aws
+  - sqs
+  - sns
 license: Apache 2.0
 description: aws-sdk instrumentation for Ruby.
 authors:
@@ -16,4 +18,4 @@ createdAt: 2020-11-09
 package:
   registry: gems
   name: opentelemetry-instrumentation-aws_sdk
-  version: 0.5.1
+  version: 0.5.2

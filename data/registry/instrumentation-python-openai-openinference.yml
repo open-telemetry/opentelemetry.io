@@ -1,0 +1,17 @@
+# cSpell:ignore openai Arize
+title: Open AI Python Instrumentation
+registryType: instrumentation
+language: python
+tags:
+  - python
+  - instrumentation
+  - openai
+urls:
+  repo: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-openai
+  docs: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-openai
+license: Apache 2.0
+description: Instrumentation for tracing the OpenAI Python SDK
+authors:
+  - name: Arize AI
+    email: oss-devs@arize.com
+createdAt: 2024-06-05

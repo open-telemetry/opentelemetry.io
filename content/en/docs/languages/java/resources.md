@@ -7,9 +7,9 @@ cSpell:ignore: getenv myhost SIGINT uuidgen WORKDIR
 {{% docs/languages/resources-intro %}}
 
 If you use the Java agent for
-[automatic instrumentation](/docs/languages/java/automatic) you can learn how to
-setup resource detection following the
-[Agent Configuration Guide](/docs/languages/java/automatic/configuration).
+[zero-code instrumentation](/docs/zero-code/java/agent/) you can setup resource
+detection through
+[agent configuration](/docs/zero-code/java/agent/configuration).
 
 For manual instrumentation, you will find some introductions on how to set up
 resource detection below.
@@ -100,3 +100,15 @@ SdkLoggerProvider sdkLoggerProvider = SdkLoggerProvider.builder()
     ...
     .build();
 ```
+
+## Next steps
+
+Besides the
+[Standard OpenTelemetry Resource Providers](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/resources/library)
+shown in the samples above, there are more resource providers that you can add
+to your configuration. These include:
+
+- [AWS Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources)
+- [GCP Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources)
+- [OpenTelemetry Contributed Resource Providers](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/resource-providers)
+- [Spring-Boot Resource Provider](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-boot-resources)

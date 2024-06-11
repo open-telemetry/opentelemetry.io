@@ -156,6 +156,9 @@ The following `values.yaml` is what we'll use
 ```yaml
 mode: daemonset
 
+image:
+  repository: otel/opentelemetry-collector-k8s
+
 presets:
   # enables the k8sattributesprocessor and adds it to the traces, metrics, and logs pipelines
   kubernetesAttributes:
@@ -239,6 +242,9 @@ The following `values.yaml` is what we'll use:
 
 ```yaml
 mode: deployment
+
+image:
+  repository: otel/opentelemetry-collector-k8s
 
 # We only want one of these collectors - any more and we'd produce duplicate data
 replicaCount: 1

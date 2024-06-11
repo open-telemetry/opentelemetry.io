@@ -284,7 +284,7 @@ instrumentor.instrument_app(app, excluded_urls="/server_request")
 ```
 
 After running the example again, no instrumentation should appear on the server
-side. This is because or the `excluded_urls` option passed to `instrument_app`
+side. This is because of the `excluded_urls` option passed to `instrument_app`
 that effectively stops the `server_request` function from being instrumented as
 its URL matches the regular expression passed to `excluded_urls`.
 
