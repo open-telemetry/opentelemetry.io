@@ -21,9 +21,3 @@ the
 Conduct. In extent, every language implementation, collector, and conventions
 [repository](https://github.com/open-telemetry/) has their own specific
 contributing guides.
-
-For documentation, you can open an issue about OpenTelemetry, or contribute a
-change with a pull request (PR) to the
-[`opentelemetry.io` GitHub repository](https://github.com/open-telemetry/opentelemetry.io)
-
-
