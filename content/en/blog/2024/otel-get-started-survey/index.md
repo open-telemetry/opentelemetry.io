@@ -28,7 +28,7 @@ Check out the results!
 
 Out of 104 respondents: Respondents are mostly working with containers, with 79.8% of respondents using Kubernetes and 63.5% of respondents using Docker
 
-![Chart showing what technologies are being used](1GettingStartedSurvey_technologies_using.png)
+![Chart showing what technologies are being used](1-technologies-used.png)
 
 ### Q: Where in your Observability journey is your organization?
 
@@ -37,7 +37,7 @@ Out of 104 respondents:
 * 49% were intermediates and were setting up observability practice 
 * 26% were experts and have a well-established observability practice
 
-![Chart showing where in their observability journey they are](2GettingStartedSurvey_level.png)
+![Chart showing where in their observability journey they are](2-level.png)
 
 ### Q: What languages are you using in your organization?
 
@@ -45,7 +45,7 @@ JavaScript, Java, Go, and Python are the most widely used languages, they are be
 
 Other languages used included Scala, Typescript, Erlang/Elixir, Perl, R, Lua, Matlab, Julia, Haskell, COBOL, Kotlin, and SAS.
 
-![Chart showing what languages are being used](3GettingStartedSurvey_language.png)
+![Chart showing what languages are being used](3-languages.png)
 
 ### Q: What resources do you wish you had when getting started with OpenTelemetry?
 
@@ -55,7 +55,7 @@ Depending on where in their observability journey they prefer different resource
 * Those who are learning about observability and those who are setting up an observability practice want comprehensive documentation and detailed tutorials and videos. 
 * Those who have a well-established observability practice prefer reference implementations for instrumentation as well as comprehensive documentation. 
 
-![Chart showing what resources folks want](4GettingStartedSurvey_resources.png)
+![Chart showing what resources folks want](4-resources.png)
 
 
 ### Q: What part of the project is most important to you in your OTel journey?
@@ -63,7 +63,7 @@ Depending on where in their observability journey they prefer different resource
 Most respondents stated that Traces Specification, Instrumentation APIs & SDKs and Metrics Specification were considered the most important.
 
 
-![Chart showing what aspects are the most important](5GettingStartedSurvey_part_importand.png)
+![Chart showing what aspects are the most important](5-importance.png)
 
 
 
