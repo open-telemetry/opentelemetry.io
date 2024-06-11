@@ -6,7 +6,7 @@ aliases:
   - /docs/zero-code/java/spring-boot
 ---
 
-## Java agent vs Spring Boot starter
+## Java agent versus Spring Boot starter
 
 You can use two options to instrument
 [Spring Boot](https://spring.io/projects/spring-boot) applications with
