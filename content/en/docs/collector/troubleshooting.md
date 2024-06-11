@@ -222,40 +222,6 @@ extensions:
 
 Here is a list of extensions you can enable for debugging the Collector.
 
-#### Health Check
-
-The
-[Health Check extension](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/healthcheckextension/README.md),
-which by default is available on all interfaces on port `13133`, can be used to
-ensure the Collector is functioning properly. For example:
-
-```yaml
-extensions:
-  health_check:
-service:
-  extensions: [health_check]
-```
-
-It returns a response like the following:
-
-```json
-{
-  "status": "Server available",
-  "upSince": "2020-11-11T04:12:31.6847174Z",
-  "uptime": "49.0132518s"
-}
-```
-
-{{% alert title="Caution" color="warning" %}}
-
-The optional `health_check` configuration setting, `check_collector_pipeline`,
-is not working as expected. Avoid using this feature. Efforts are underway to
-create a new version of the Health Check extension that relies on individual
-component statuses. The extension's configuration remains unchanged until this
-replacement is available.
-
-{{% /alert %}}
-
 #### Performance Profiler (pprof)
 
 The
