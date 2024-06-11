@@ -678,8 +678,8 @@ brittle option for library instrumentation.
 
 ### Acquiring a Tracer in Java agent
 
-If you are using the [Java agent], you can acquire a `Tracer` from the global
-OpenTelemetry instance:
+If you are using the [Java agent], you can acquire a `Tracer` from the global OpenTelemetry
+instance:
 
 ```java
 import io.opentelemetry.api.GlobalOpenTelemetry;
@@ -1248,8 +1248,8 @@ you can create
 
 ### Acquiring a Meter in Java agent
 
-If you are using the [Java agent], you can acquire a `Meter` from the global
-OpenTelemetry instance:
+If you are using the [Java agent], you can acquire a `Meter` from the global OpenTelemetry
+instance:
 
 ```java
 import io.opentelemetry.api.GlobalOpenTelemetry;
