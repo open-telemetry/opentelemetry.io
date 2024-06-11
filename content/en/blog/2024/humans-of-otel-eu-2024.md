@@ -74,7 +74,7 @@ help the community by providing content on getting started on any solutions out
 there.
 
 **VIJAY SAMUEL:** My name is Vijay Samuel and I help do architecture for the
-observability platform at eBay.
+observability platform at eBay. 
 
 **DANIEL GOMEZ BLANCO:** I'm Daniel Gomez Blanco. I'm a principal engineer at
 Skyscanner and also member of the OpenTelemetry governance committee.
