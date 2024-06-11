@@ -51,6 +51,8 @@ suggestions, open an
 [issue](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues)
 in our repository.
 
-[^1]: [Micrometer metrics OTLP registry](https://docs.micrometer.io/micrometer/reference/implementations/otlp.html)
+[^1]:
+    [Micrometer metrics OTLP registry](https://docs.micrometer.io/micrometer/reference/implementations/otlp.html)
 
-[^2]: [Micrometer tracing OpenTelemetry bridge](https://docs.micrometer.io/tracing/reference/tracers.html)
+[^2]:
+    [Micrometer tracing OpenTelemetry bridge](https://docs.micrometer.io/tracing/reference/tracers.html)
