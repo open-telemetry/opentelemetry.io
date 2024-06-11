@@ -6,6 +6,9 @@ author: >-
   [Adriana Villela](https://github.com/avillela) (ServiceNow),
 issue: 4660
 sig: End User SIG
+# prettier-ignore
+cSpell:ignore: blanco odegaard adnan rahić dyrmishi centralizations reopelle observability vijay skyscanner fintech mclean stackdriver sheeran youtube
+
 ---
 
 We're back with our second edition of
@@ -90,9 +93,9 @@ documentation, for the blog, and the demo.
 **RYNN MANCUSO:** My name is Rynn Mancuso. I work for Honeycomb.io and I am one
 of the maintainers of the End User SIG.
 
-### 2- What does Observability mean to you?
+### 2- What does observability mean to you?
 
-**IRIS DYRMISHI:** What does observability mean to me? Observability to me is
+**IRIS DYRMISHI:** What does observability mean to me? observability to me is
 the biggest passion of my life and also my professional career. It is one of
 those areas that you are not very interested when you start your career because
 you don't know anything about it. It's not taught in school, it's not preached
@@ -159,7 +162,7 @@ many different screens and so forth.
 for years, and so as we observe...actually I ended up on an incident response
 team doing tracking of incidents, but also trying to figure out what was wrong.
 And it pointed out to me how much we need this, how hard it was to look at so
-many different screens and so forth.Observability for me is the way to actually
+many different screens and so forth.observability for me is the way to actually
 see what's happening in your system. It's the pinnacle of not being up the whole
 night trying to figure out what went wrong. And with OpenTelemetry and with the
 rise of tracing the last couple of years, it has hit an all time high with
@@ -313,7 +316,7 @@ OpenTracing. And in late 2018, early 2019, we finally sort of brought things to
 a head and decided to merge those into what is now called OpenTelemetry. So
 that's sort of, you know, I've been involved since then, I've been...now I work
 at Splunk. Different company, but still on the same types of things. But that's
-how my involement started, and it's just grown and grown and snowballed from
+how my involvement started, and it's just grown and grown and snowballed from
 there.
 
 **HENRIK REXED:** When I started the adventure in Observabilty, of course, I
@@ -384,7 +387,7 @@ to always kind of dedicate a few, a few minutes of each day to check out the
 OpenTelemetry project, find a way to contribute.
 
 **RYNN MANCUSO:** I got involved in the OpenTelemetry project...honestly, I was
-working at one Observability company in marketing, and they didn't see the
+working at one observability company in marketing, and they didn't see the
 point. They didn't want me to get involved. And I really believed in open
 source. I'd worked in Mozilla and Wikimedia and really believed that, like, this
 was the way forward from a strategic perspective. So the second I could switch
