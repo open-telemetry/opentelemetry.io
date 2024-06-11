@@ -30,7 +30,7 @@ OpenTelemetry.
 
 At a high level:
 
-OpenTelemetry Spring Boot starter
+OpenTelemetry Spring Boot starter:
 
 - Natively uses the OpenTelemetry API, OpenTelemetry SDK and the OpenTelemetry
   semantic conventions
