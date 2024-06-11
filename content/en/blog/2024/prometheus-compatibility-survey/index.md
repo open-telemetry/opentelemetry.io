@@ -32,7 +32,9 @@ wanted feedback on the translation for metric names, as we want to be sure
 before we make any changes.
 
 The survey received 86 responses, and contained many helpful pieces of feedback.
-Than you to everyone that participated!
+Than you to everyone that participated! The questions and raw results can be
+found
+[here](https://github.com/open-telemetry/sig-end-user/tree/b5cb097ca529cea62809d5078ef8e30a54ad86b9/end-user-surveys/otel-prom-interoperability)
 
 ## Overall takeaways
 
