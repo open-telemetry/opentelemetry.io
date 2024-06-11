@@ -123,7 +123,7 @@ interact with it.
 industry. It's the ability to peer into something and understand how it works,
 what it's doing right now, and thus if it breaks, how to fix it more quickly.
 Certainly when we think about telemetry in this industry, what observability
-classically has meant is visibility to back end infrastructure and applications
+classically has meant is visibility to backend infrastructure and applications
 kind of excitingly, I think it's expanding right now, right? With OpenTelemetry
 we're pushing into client applications, we're pushing into mainframes, as I
 mentioned earlier. And so it's really visibility into any systems that impact
@@ -279,7 +279,7 @@ pushing the migration to OpenTelemetry in my second project.
 **SEVERIN NEUMANN:** How did I get involved into OpenTelemetry? So yeah, I
 mentioned that... so I got curious a few years ago. So I was... I was at
 AppDynamics working as a so-called domain architect, and I was an expert for
-Node.JS, Python and a lot of those other languages. And there was always this
+Node.js, Python and a lot of those other languages. And there was always this
 conversation around like, hey, there's this thing now called OpenTelemetry and
 should we not integrate this into our product? And I was like, okay, I want to
 learn more. Then I was like, what is a good way to learn something new about an
