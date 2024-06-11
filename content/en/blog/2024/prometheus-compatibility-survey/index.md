@@ -8,19 +8,21 @@ sig: End-User SIG
 cSpell:ignore: Ashpole
 ---
 
-[Prometheus](https://prometheus.io/) and OpenTelemetry are two of the most active and popular projects in
-the [CNCF observability landscape](https://landscape.cncf.io/guide#observability-and-analysis--observability). The two communities have been working together
-since the early days of OpenTelemetry to improve the compatibility between the
-two projects. The OpenTelemetry Prometheus SIG has been leading this
-effort, with active participation from maintainers from both OpenTelemetry and
-Prometheus.
+[Prometheus](https://prometheus.io/) and OpenTelemetry are two of the most
+active and popular projects in the
+[CNCF observability landscape](https://landscape.cncf.io/guide#observability-and-analysis--observability).
+The two communities have been working together since the early days of
+OpenTelemetry to improve the compatibility between the two projects. The
+OpenTelemetry Prometheus SIG has been leading this effort, with active
+participation from maintainers from both OpenTelemetry and Prometheus.
 
-At this point, there is a [detailed, experimental specification](/docs/specs/otel/compatibility/prometheus_and_openmetrics/) describing how to
-convert between the OpenTelemetry metrics format and the Prometheus metrics
-format. It has been used to implement Prometheus (pull) exporters for
-OpenTelemetry SDKs, OTLP export from Prometheus libraries, OTLP ingestion for
-the Prometheus server, and the OpenTelemetry Collector's Prometheus Receiver and
-Prometheus exporters.
+At this point, there is a
+[detailed, experimental specification](/docs/specs/otel/compatibility/prometheus_and_openmetrics/)
+describing how to convert between the OpenTelemetry metrics format and the
+Prometheus metrics format. It has been used to implement Prometheus (pull)
+exporters for OpenTelemetry SDKs, OTLP export from Prometheus libraries, OTLP
+ingestion for the Prometheus server, and the OpenTelemetry Collector's
+Prometheus Receiver and Prometheus exporters.
 
 As we consider stabilizing the compatibility specification, we decided to run a
 survey with the help of the OpenTelemetry End User SIG to collect feedback on
