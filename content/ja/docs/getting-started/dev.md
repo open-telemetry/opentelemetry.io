@@ -26,7 +26,7 @@ OpenTelemetryが役に立ちます！
 - [.NET](/docs/languages/net/)
 - [Erlang / Elixir](/docs/languages/erlang/)
 - [Go](/docs/languages/go/)
-- [Java](/docs/languagesva/)
+- [Java](/docs/languages/java/)
 - [JavaScript / TypeScript](/docs/languages/js/)
 - [PHP](/docs/languages/php/)
 - [Python](/docs/languages/python/)
