@@ -3,6 +3,7 @@ title: Contributing
 description: Learn how to contribute to OpenTelemetry documentation.
 aliases: [/docs/contribution-guidelines]
 weight: 10
+cSpell:ignore: prepopulated
 ---
 
 To contribute, you need to be familiar with the following techs and tools:
