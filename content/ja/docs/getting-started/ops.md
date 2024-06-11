@@ -13,9 +13,9 @@ default_lang_commit: 93ab1301
 OpenTelemetryが役に立ちます！
 アプリケーションのコードに触れることなくテレメトリーを取得するという目的を達成するためには、以下を学ぶことをおすすめします。
 
-- [OpenTelemetryとは](/ja/docs/what-is-opentelemetry/)
-- [アプリケーションのコードに触れることなく計装する方法](/ja/docs/concepts/instrumentation/zero-code/)
-- [コレクターの設定方法](/ja/docs/collector/)
-- [OpenTelemetry Operatorを使ってKubernetes向けの自動化をする方法](/ja/docs/kubernetes/operator/)
+- [OpenTelemetryとは](/docs/what-is-opentelemetry/)
+- [アプリケーションのコードに触れることなく計装する方法](/docs/concepts/instrumentation/zero-code/)
+- [コレクターの設定方法](/docs/collector/)
+- [OpenTelemetry Operatorを使ってKubernetes向けの自動化をする方法](/docs/kubernetes/operator/)
 
 もしあなたが、試行錯誤のためのアプリケーション一式を探しているなら、公式の[OpenTelemetryデモ](/ecosystem/demo/)が役に立つでしょう！
