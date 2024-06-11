@@ -43,7 +43,7 @@ Out of 104 respondents:
 
 JavaScript, Java, Go, and Python are the most widely used languages, they are being utilized by over 50% of the respondents.
 
-Other languages used included Scala, Typescript, Erlang/Elixir, Perl, R, Lua, Matlab, Julia, Haskell, COBOL, Kotlin, and SAS.
+Other languages used included Scala, TypeScript, Erlang/Elixir, Perl, R, Lua, Matlab, Julia, Haskell, COBOL, Kotlin, and SAS.
 
 ![Chart showing what languages are being used](3-languages.png)
 
