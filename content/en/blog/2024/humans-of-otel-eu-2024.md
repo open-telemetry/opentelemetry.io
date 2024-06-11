@@ -63,10 +63,11 @@ contributing to the OpenTelemetry Ruby project.
 **MORGAN MCLEAN:** My name is Morgan McLean,I'm a director of product management
 at Splunk.I've been with OpenTelemetry since day one. I'm one of the co-founders
 of the project. I'm on the governance committee. Wow. What do I work on within
-OTel?A bit of everything. I mean early on it was literally everything. Myself and
-Ted and various others were doing many, many jobs. More recently I was involved
-in the release of traces, metrics 1.0. Logs 1.0 last year. Right now I'm working
-on profiling as well as OpenTelemetry's expansion into mainframe computing.
+OTel?A bit of everything. I mean early on it was literally everything. Myself
+and Ted and various others were doing many, many jobs. More recently I was
+involved in the release of traces, metrics 1.0. Logs 1.0 last year. Right now
+I'm working on profiling as well as OpenTelemetry's expansion into mainframe
+computing.
 
 **HENRIK REXED:** My name is Henrik Rexed. I am a cloud native advocate at
 Dynatrace and I'm passionate about observability, performance, and I'm trying to
