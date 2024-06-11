@@ -494,7 +494,7 @@ If you have a story to share about how you use OpenTelemetry at your
 organization, we’d love to hear from you! Ways to share:
 
 - Join the [#otel-sig-end-user
-  channel]https://cloud-native.slack.com/archives/C01RT3MSWGZ) on the [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf)
+  channel](https://cloud-native.slack.com/archives/C01RT3MSWGZ) on the [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf)
 - Join our [OTel in Practice](/community/end-user/otel-in-practice/) sessions
 - Share your stories on the
   [OpenTelemetry blog](https://github.com/open-telemetry/opentelemetry.io/blob/954103a7444d691db3967121f0f1cb194af1dccb/README.md#submitting-a-blog-post)
