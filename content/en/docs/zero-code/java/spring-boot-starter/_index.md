@@ -37,7 +37,7 @@ OpenTelemetry Spring Boot starter
 - Supported by the OpenTelemetry community (governed by the CNCF / Linux
   Foundation)
 
-Micrometer [1], [2]
+Micrometer [^1][^2]:
 
 - An independent standalone observability system
 - Offers optional bridges into parts of the OpenTelemetry ecosystem
