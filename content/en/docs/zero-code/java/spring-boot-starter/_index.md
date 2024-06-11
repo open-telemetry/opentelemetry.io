@@ -28,7 +28,8 @@ OpenTelemetry.
 
 ## Comparison to Micrometer
 
-At a high level, this section compares OpenTelemetry Spring Boot starter and Micrometer.
+At a high level, this section compares OpenTelemetry Spring Boot starter and
+Micrometer.
 
 OpenTelemetry Spring Boot starter:
 
@@ -51,4 +52,5 @@ suggestions, please open an
 in our repository.
 
 [^1]: https://docs.micrometer.io/micrometer/reference/implementations/otlp.html
+
 [^2]: https://docs.micrometer.io/tracing/reference/tracers.html
