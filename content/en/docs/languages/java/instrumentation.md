@@ -676,9 +676,9 @@ Tracer tracer = GlobalOpenTelemetry.getTracer("instrumentation-scope-name", "ins
 Note that you can't force end users to configure the global, so this is the most
 brittle option for library instrumentation.
 
-### Acquiring a Tracer in Java Agent
+### Acquiring a Tracer in Java agent
 
-If you are using the [Java Agent], you can acquire a `Tracer` from the global
+If you are using the [Java agent], you can acquire a `Tracer` from the global
 OpenTelemetry instance:
 
 ```java
@@ -1246,9 +1246,9 @@ Now that you have [meters](/docs/concepts/signals/metrics/#meter) initialized.
 you can create
 [metric instruments](/docs/concepts/signals/metrics/#metric-instruments).
 
-### Acquiring a Meter in Java Agent
+### Acquiring a Meter in Java agent
 
-If you are using the [Java Agent], you can acquire a `Meter` from the global
+If you are using the [Java agent], you can acquire a `Meter` from the global
 OpenTelemetry instance:
 
 ```java
@@ -1919,5 +1919,5 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
 [traceidratiobased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java
-[Java Agent]: /docs/zero-code/java/agent/
+[Java agent]: /docs/zero-code/java/agent/
 [Spring Boot starter]: /docs/zero-code/java/spring-boot-starter/
