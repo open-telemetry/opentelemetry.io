@@ -1,0 +1,17 @@
+# cSpell:ignore DSPy, dspy, Arize, openinference
+title: DSPy Python Instrumentation
+registryType: instrumentation
+language: python
+tags:
+  - python
+  - instrumentation
+  - dspy
+urls:
+  repo: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-dspy
+  docs: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-dspy
+license: Apache 2.0
+description: Instrumentation for tracing the DSPy framework
+authors:
+  - name: Arize AI
+    email: oss-devs@arize.com
+createdAt: 2024-06-05

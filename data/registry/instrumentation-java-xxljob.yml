@@ -1,0 +1,14 @@
+title: XXL-JOB Instrumentation
+registryType: instrumentation
+language: java
+tags:
+  - xxl-job
+  - instrumentation
+  - java
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/xxl-job
+license: Apache 2.0
+description: Instrumentation for XXL-JOB
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-04-18

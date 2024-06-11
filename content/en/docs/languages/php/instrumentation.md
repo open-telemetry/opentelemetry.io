@@ -74,6 +74,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Log\LogLevel;
 use Slim\Factory\AppFactory;
 use Monolog\Logger;
+use Monolog\Level;
 use Monolog\Handler\StreamHandler;
 
 require __DIR__ . '/vendor/autoload.php';
@@ -81,7 +82,7 @@ require __DIR__ . '/vendor/autoload.php';
 require('dice.php');
 
 $logger = new Logger('dice-server');
-$logger->pushHandler(new StreamHandler('php://stdout', Logger::INFO));
+$logger->pushHandler(new StreamHandler('php://stdout', Level::INFO));
 
 $app = AppFactory::create();
 
@@ -403,7 +404,7 @@ class Dice {
 
     private function rollOnce() {
       $result = random_int(1, 6);
-      return $result
+      return $result;
     }
 }
 ```

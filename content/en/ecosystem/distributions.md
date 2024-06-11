@@ -26,7 +26,7 @@ is provided as a convenience for the community. {{% /alert %}}
 
 To have your distribution listed, submit a PR with an entry added to the
 [distributions list](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/distributions.yaml).
-The entry must include the following:
+The entry should include the following:
 
 - Link to the main page of your distribution
 - Link to the documentation that explains how to use the distribution

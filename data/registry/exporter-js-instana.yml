@@ -15,4 +15,4 @@ createdAt: 2022-04-18
 package:
   registry: npm
   name: '@instana/opentelemetry-exporter'
-  version: 3.2.0
+  version: 3.9.0

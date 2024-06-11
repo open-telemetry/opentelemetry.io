@@ -1,0 +1,18 @@
+# cSpell:ignore watsonx Instana
+title: IBM Watsonx Instrumentation
+registryType: instrumentation
+language: python
+tags:
+  - python
+  - instrumentation
+  - IBM
+  - Watsonx
+  - Instana
+license: Apache 2.0
+description:
+  Instrumentation for IBM Watsonx LLMs (prompts logging, tokens, etc.)
+authors:
+  - name: IBM Instana
+urls:
+  repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-watsonx
+createdAt: 2024-01-22

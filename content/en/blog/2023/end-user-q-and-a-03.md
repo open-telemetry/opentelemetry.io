@@ -298,11 +298,14 @@ The team also leaned heavily on
 and on the OTel Community for additional support.
 
 Are you currently using any processors on the OTel Collector? \
-The team is currently experimenting with processors, namely for data masking ([transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor),
-or [redaction processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor)),
-especially as they move to using OTel Logs, which will contain sensitive data that
-they won’t want to transmit to their Observability backend. They currently, however,
-are only using the [batch processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md).
+The team is currently experimenting with processors, namely for data masking
+([transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor),
+or
+[redaction processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor)),
+especially as they move to using OTel Logs, which will contain sensitive data
+that they won’t want to transmit to their Observability backend. They currently,
+however, are only using the
+[batch processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md).
 
 ### Are you aware of any teams using span events?
 

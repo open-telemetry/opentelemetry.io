@@ -18,4 +18,4 @@ createdAt: 2022-10-27
 package:
   registry: gems
   name: opentelemetry-instrumentation-racecar
-  version: 0.3.0
+  version: 0.3.2

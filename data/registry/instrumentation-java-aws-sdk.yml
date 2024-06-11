@@ -4,6 +4,11 @@ language: java
 tags:
   - java
   - instrumentation
+  - aws
+  - aws-sdk
+  - sqs
+  - sns
+  - dynamodb
 license: Apache 2.0
 description:
   This library provides a AWS SDK instrumentation to track requests through

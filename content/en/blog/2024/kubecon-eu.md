@@ -10,9 +10,8 @@ author: '[Severin Neumann](https://github.com/svrnm) (Cisco)'
 ---
 
 The OpenTelemetry project maintainers, members of the governance committee, and
-technical committee are thrilled to be at [KubeCon + CloudNativeCon Europe][]
-and at the co-located
-[Observability Day](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/observability-day/)
+technical committee are thrilled to be at [KubeCon + CloudNativeCon Europe][] and
+at the co-located [Observability Day](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/observability-day/)
 in Paris from March 19 - 22, 2024.
 
 Read on to learn about all the things related OpenTelemetry during KubeCon.
@@ -46,9 +45,9 @@ it again right before KubeCon!
 
 ## Observability Day
 
-_[Observability Day][] fosters collaboration, discussion, and knowledge sharing
-of cloud-native observability projects_. This event will be held on March 19,
-2024 from 9:00 - 17:35. There will be several sessions on OpenTelemetry as well:
+_[Observability Day][] fosters collaboration, discussion, and knowledge sharing of
+cloud-native observability projects_. This event will be held on March 19, 2024 from
+9:00 - 17:35. There will be several sessions on OpenTelemetry as well:
 
 - **[Welcome + Project Updates](https://sched.co/1YGT9)**<br> by Eduardo Silva,
   FluentBit & Austin Parker, honeycomb.io<br> Tuesday, March 19th • 09:00 -
@@ -90,8 +89,8 @@ of cloud-native observability projects_. This event will be held on March 19,
 {{% alert title="Important access note" color="danger" %}}
 
 You need an _in-person all-access_ pass for on-site access to **Observability
-Day**. For details, see [KubeCon registration][]. If you have a virtual ticket,
-you will be able to follow **Observability Day** through a live stream.
+Day**. For details, see [KubeCon registration][]. If you have a virtual ticket, you
+will be able to follow **Observability Day** through a live stream.
 
 [kubecon registration]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/

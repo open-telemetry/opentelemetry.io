@@ -2,7 +2,7 @@
 title: What is OpenTelemetry?
 description: A short explanation of what OpenTelemetry is and isn't.
 aliases: [/about, /docs/concepts/what-is-opentelemetry, /otel]
-weight: -1
+weight: 150
 ---
 
 OpenTelemetry is an

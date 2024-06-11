@@ -1,0 +1,20 @@
+title: OpenTelemetry Resource Detector for AWS
+registryType: resource-detector
+language: java
+tags:
+  - aws
+  - ec2
+  - ecs
+  - eks
+  - lambda
+  - resource-detector
+  - java
+license: Apache 2.0
+description: AWS resource detectors for Java.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources
+createdAt: 2024-03-25
+isNative: false
+isFirstParty: false

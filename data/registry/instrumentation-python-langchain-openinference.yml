@@ -1,0 +1,17 @@
+# cSpell:ignore langchain openinference arize
+title: LangChain Python Instrumentation
+registryType: instrumentation
+language: python
+tags:
+  - python
+  - instrumentation
+  - langchain
+urls:
+  repo: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-langchain
+  docs: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-langchain
+license: Apache 2.0
+description: Instrumentation for tracing the LangChain framework
+authors:
+  - name: Arize AI
+    email: oss-devs@arize.com
+createdAt: 2024-06-05

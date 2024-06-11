@@ -159,12 +159,12 @@ description(_) ->
     <<"AttributeSampler">>.
 
 should_sample(_Ctx, _TraceId, _Links, _SpanName, _SpanKind, Attributes, ConfigAttributes) ->
-    case maps:intersect(Attributes, ConfigAttributes) of
-        Map when map_size(Map) > 0 ->
-            {?DROP, [], []};
-        _ ->
-            {?RECORD_AND_SAMPLE, [], []}
-    end.
+    AttributesSet = sets:from_list(maps:to_list(Attributes)),
+    ConfigSet = sets:from_list(maps:to_list(ConfigAttributes)),
+    case sets:is_disjoint(AttributesSet, ConfigSet) of
+        true -> {?RECORD_AND_SAMPLE, [], []};
+        _ -> {?DROP, [], []}
+end.
 ```
 
 {{% /tab %}} {{% tab Elixir %}}
@@ -184,12 +184,11 @@ defmodule AttributesSampler do
   end
 
   def should_sample(_ctx, _trace_id, _links, _span_name, _span_kind, attributes, config_attributes) do
-    case :maps.intersect(attributes, config_attributes) do
-      map when map_size(map) > 0 ->
-        {:drop, [], []}
-      _ ->
-        {:record_and_sample, [], []}
-    end
+    no_match =
+      Enum.into(attributes, %MapSet{})
+      |> MapSet.disjoint?(Enum.into(config_attributes, %MapSet{}))
+
+    if no_match, do: {:record_and_sample, [], []}, else: {:drop, [], []}
   end
 end
 ```

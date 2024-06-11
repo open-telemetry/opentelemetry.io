@@ -44,8 +44,8 @@ Other configuration options are available, including:
 
 Automatic instrumentation is available for the following languages:
 
-- [.NET](/docs/languages/net/automatic/)
-- [Java](/docs/languages/java/automatic/)
-- [JavaScript](/docs/languages/js/automatic/)
+- [.NET](/docs/zero-code/net/)
+- [Java](/docs/zero-code/java/)
+- [JavaScript](/docs/zero-code/js/)
 - [PHP](/docs/languages/php/automatic/)
 - [Python](/docs/languages/python/automatic/)

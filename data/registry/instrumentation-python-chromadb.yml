@@ -1,0 +1,16 @@
+# cSpell:ignore chromadb
+title: ChromaDB Instrumentation
+registryType: instrumentation
+language: python
+tags:
+  - python
+  - instrumentation
+  - chromadb
+license: Apache 2.0
+description: Instrumentation for Chroma Vector DB
+authors:
+  - name: Traceloop
+    email: dev@traceloop.com
+urls:
+  repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-chromadb
+createdAt: 2024-05-27

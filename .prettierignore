@@ -8,6 +8,11 @@
 /layouts/shortcodes/*
 !/layouts/shortcodes/docs
 
+# Ignore all languages other than en for now
+
+/content/*
+!/content/en
+
 # Ignore content-modules except for published Community pages
 
 /content-modules/*

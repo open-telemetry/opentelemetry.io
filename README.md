@@ -28,15 +28,15 @@ to the registry][].
 ## Contributing
 
 We have curated some issues with the tags [help wanted][] and [good first
-issue][]. This should allow you to quickly find a place to contribute. See
-[CONTRIBUTING.md][] for more information.
+issue][]. This should allow you to quickly find a place to contribute. See [CONTRIBUTING.md][]
+for more information.
 
 We, the OTel Communications SIG, meet every two weeks on Monday at 10:00 PT.
 Check out the [OpenTelemetry community calendar][] for the Zoom link and any
 updates to this schedule.
 
-Meeting notes are available as a public [Google doc][]. If you have trouble
-accessing the doc, get in touch on [Slack][].
+Meeting notes are available as a public [Google doc][]. If you have trouble accessing
+the doc, get in touch in the `#otel-comms` channel on [Slack][].
 
 Here is a list of community roles with current and previous members:
 
@@ -62,8 +62,8 @@ Here is a list of community roles with current and previous members:
   - [Morgan McLean](https://github.com/mtwo)
   - [jparsana](https://github.com/jparsana)
 
-Learn more about roles in the [community repository][]. Thanks to [all who have
-already contributed][contributors]!
+Learn more about roles in the [community repository][]. Thanks to [all who have already
+contributed][contributors]!
 
 ## Licenses
 
@@ -94,4 +94,4 @@ already contributed][contributors]!
   https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
 [google doc]:
   https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY/edit?usp=sharing
-[slack]: https://cloud-native.slack.com/archives/C02UN96HZH6
+[slack]: https://slack.cncf.io/

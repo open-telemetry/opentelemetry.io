@@ -22,6 +22,7 @@ emailservice(Email Service):::ruby
 frauddetectionservice(Fraud Detection Service):::kotlin
 frontend(Frontend):::typescript
 frontendproxy(Frontend Proxy <br/>&#40Envoy&#41):::cpp
+imageprovider(Image Provider <br/>&#40nginx&#41):::cpp
 loadgenerator([Load Generator]):::python
 paymentservice(Payment Service):::javascript
 productcatalogservice(Product Catalog Service):::golang
@@ -33,26 +34,28 @@ queue[(queue<br/>&#40Kafka&#41)]
 Internet -->|HTTP| frontendproxy
 frontendproxy -->|HTTP| frontend
 loadgenerator -->|HTTP| frontendproxy
+frontendproxy -->|HTTP| imageprovider
 
-accountingservice -->|TCP| queue
+queue -->|TCP| accountingservice
+queue -->|TCP| frauddetectionservice
 
-checkoutservice --->|gRPC| cartservice --> cache
-checkoutservice --->|gRPC| productcatalogservice
-checkoutservice --->|gRPC| currencyservice
-checkoutservice --->|HTTP| emailservice
-checkoutservice --->|gRPC| paymentservice
+frontend -->|gRPC| cartservice
+frontend -->|gRPC| currencyservice
+
+checkoutservice -->|gRPC| cartservice --> cache
+checkoutservice -->|gRPC| productcatalogservice
+checkoutservice -->|gRPC| currencyservice
+checkoutservice -->|HTTP| emailservice
+checkoutservice -->|gRPC| paymentservice
 checkoutservice -->|gRPC| shippingservice
-checkoutservice --->|TCP| queue
+checkoutservice -->|TCP| queue
 
 frontend -->|gRPC| adservice
-frontend -->|gRPC| cartservice
 frontend -->|gRPC| productcatalogservice
-frontend -->|gRPC| checkoutservice
-frontend -->|gRPC| currencyservice
-frontend -->|gRPC| recommendationservice -->|gRPC| productcatalogservice
-frontend -->|gRPC| shippingservice -->|HTTP| quoteservice
+frontend --->|gRPC| checkoutservice
+frontend ---->|gRPC| recommendationservice -->|gRPC| productcatalogservice
 
-frauddetectionservice -->|TCP| queue
+shippingservice -->|HTTP| quoteservice
 
 end
 
