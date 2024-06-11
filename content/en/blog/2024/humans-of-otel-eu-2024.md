@@ -7,7 +7,7 @@ author: >-
 issue: 4660
 sig: End User SIG
 # prettier-ignore
-cSpell:ignore: blanco odegaard adnan rahić dyrmishi centralizations reopelle observability vijay skyscanner fintech mclean stackdriver sheeran tracetest jiekun youtube bsfMECwmsm0
+cSpell:ignore: adnan blanco bsfMECwmsm0 centralizations dyrmishi fintech jiekun mclean observability odegaard rahić reopelle sheeran skyscanner stackdriver tracetest vijay youtube
 ---
 
 We're back with our second edition of
@@ -493,8 +493,10 @@ am constitutionally obliged to say traces are my favorite signal.
 If you have a story to share about how you use OpenTelemetry at your
 organization, we’d love to hear from you! Ways to share:
 
-- Join the [#otel-sig-end-user
-  channel](https://cloud-native.slack.com/archives/C01RT3MSWGZ) on the [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf)
+- Join the
+  [#otel-sig-end-user channel](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
+  on the
+  [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf)
 - Join our [OTel in Practice](/community/end-user/otel-in-practice/) sessions
 - Share your stories on the
   [OpenTelemetry blog](https://github.com/open-telemetry/opentelemetry.io/blob/954103a7444d691db3967121f0f1cb194af1dccb/README.md#submitting-a-blog-post)
