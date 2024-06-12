@@ -23,7 +23,7 @@ before submitting a
 (PR), run `npm run fix:all` on your local machine and commit the changes.
 
 If you run into errors or [failed PR checks](/docs/contributing/pr-checks), read
-about our style guide below and what you can do to fix certain common issues.
+about our style guide and learn what you can do to fix certain common issues.
 
 {{% /alert %}}
 

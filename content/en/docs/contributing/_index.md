@@ -18,6 +18,6 @@ For guidance on how to contribute to the OpenTelemetry project in general, see
 the
 [OpenTelemetry Contributor Guide](https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md)
 , which provides details on the Contributor License Agreement and the Code of
-Conduct. In extent, every language implementation, collector, and conventions
-[repository](https://github.com/open-telemetry/) has their own specific
+Conduct. Every language implementation, Collector, and conventions
+[repository](https://github.com/open-telemetry/) has its own specific
 contributing guides.

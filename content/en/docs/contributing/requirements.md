@@ -15,9 +15,7 @@ To contribute, you need to be familiar with the following techs and tools:
 - YAML
 
 For technical details concerning how the documentation is built and tested
-locally, see the
-[CONTRIBUTING.md](https://github.com/open-telemetry/opentelemetry.io/blob/main/CONTRIBUTING.md)
-file.
+locally, see [Development](/docs/contributing/development).
 
 ## Sign the CNCF CLA {#sign-the-cla}
 
@@ -379,7 +377,9 @@ npm run test    # Checks but does not update any files
 npm run fix:all # May update files
 ```
 
-To list available NPM scripts, run `npm run`.
+To list available NPM scripts, run `npm run`. See
+[PR checks](/docs/contributing/pr-checks) for more information on pull request
+checks and how to fix errors automatically.
 
 #### Preview your changes locally {#preview-locally}
 
