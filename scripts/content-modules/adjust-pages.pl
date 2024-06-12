@@ -18,7 +18,7 @@ my $semconvSpecRepoUrl = 'https://github.com/open-telemetry/semantic-conventions
 my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
 my $specBasePath = '/docs/specs';
 my %versions = qw(
-  spec: 1.33.0
+  spec: 1.34.0
   otlp: 1.3.1
   semconv: 1.26.0
 );
@@ -133,6 +133,7 @@ while(<>) {
   s|(/context/api-propagators.md)#propagators-api|$1|g;
   s|(/semantic_conventions/faas.md)#function-as-a-service|$1|g;
   s|(/resource/sdk.md)#resource-sdk|$1|g;
+  s|(event-api.md#)(data-model)|$1event-$2|g;
 
   s|\.\.\/README.md\b|$otelSpecRepoUrl/|g if $ARGV =~ /specification._index/;
   s|\.\.\/README.md\b|..| if $ARGV =~ /specification.library-guidelines.md/;
