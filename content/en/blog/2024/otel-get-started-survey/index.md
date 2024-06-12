@@ -80,6 +80,11 @@ and Metrics Specification were considered the most important.
 
 ![Chart showing what aspects are the most important](5-importance.png)
 
+## Learn more
+
+For a more detailed look at the survey results, you can check out the
+[raw results](https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/getting-started/otel-getting-started-survey.csv)
+
 ## Keep in touch
 
 Thanks to everyone who participated in the survey! We rely on your feedback to
@@ -89,4 +94,4 @@ avenues:
 
 - [#otel-sig-end-user Slack channel](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
   – you can also reach out to us here!
-- [End user resources page](https://opentelemetry.io/community/end-user/)
+- [End user resources page](/community/end-user/)
