@@ -9,7 +9,7 @@ sig: End User SIG
 cSpell:ignore: 
 ---
 
-Getting started with new technologies can be hard, which is why we try to meet our end-users where they are. As a part of that goal, we (the OpenTelemetry End-User SIG) recently surveyed the community to find out how we can best help our users get started with OpenTelemetry. The 104 responses we received will help drive improvements in enablement content from the community as well as vendors. 
+Getting started with new technologies can be hard, which is why we try to meet our end-users where they are. As a part of that goal, we ([the OpenTelemetry End-User SIG](/community/end-user/)) recently surveyed the community to find out how we can best help our users get started with OpenTelemetry. The 104 responses we received will help drive improvements in enablement content from the community as well as vendors. 
 
 Check out the results!
 
