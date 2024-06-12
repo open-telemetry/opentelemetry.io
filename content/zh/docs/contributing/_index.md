@@ -11,19 +11,19 @@ default_lang_commit: 8603bc8
 
 OpenTelemetry文档贡献者可以：
 
-* 改进现有内容。
-* 添加新的内容。
-* 更新OpenTelemetry 注册表（Registry）。
-* 改进构建网站的代码。
+- 改进现有内容。
+- 添加新的内容。
+- 更新OpenTelemetry 注册表（Registry）。
+- 改进构建网站的代码。
 
 ## 要求
 
 在贡献之前，你需要了解以下的技术和工具：
 
-* [git](https://git-scm.com/)
-* [GitHub](https://github.com/)
-* Markdown ([CommonMark](https://commonmark.org/))
-* YAML
+- [git](https://git-scm.com/)
+- [GitHub](https://github.com/)
+- Markdown ([CommonMark](https://commonmark.org/))
+- YAML
 
 有关如何在本地构建和测试OpenTelemetry文档网站的技术细节，请参阅 [CONTRIBUTING.md](https://github.com/open-telemetry/opentelemetry.io/blob/main/CONTRIBUTING.md)文档。
 
@@ -53,14 +53,15 @@ class A,B,C,D,E,F,G,H grey
 class S,T spacewhite
 class first,second white
 ```
+
 _图 1. 贡献新的内容。_
 
 上图描述了如何贡献新的文档。
 
 要贡献新的内容页面或改进现有的内容页面，请发起拉取请求 (PR)：
 
-* 如果你的更改很小，或者你不太熟悉Git的使用，请阅读[使用Github进行更改](#changes-using-github) 来学习如何编辑一个页面。
-* 如果你的更改较大，请阅读[在本地分支进行更改](#fork-the-repo) 来学习如何在你电脑本地进行更改。
+- 如果你的更改很小，或者你不太熟悉Git的使用，请阅读[使用Github进行更改](#changes-using-github) 来学习如何编辑一个页面。
+- 如果你的更改较大，请阅读[在本地分支进行更改](#fork-the-repo) 来学习如何在你电脑本地进行更改。
 
 {{% alert title="提醒" %}}
 
@@ -99,6 +100,7 @@ class 0 spacewhite
 class tasks,tasks2 white
 class id1 k8s
 ```
+
 _图 2. 使用Github发起拉取请求的流程。_
 
 1. 在发现问题的页面上，选择右侧导航面板中的**Edit this page**选项。
@@ -177,7 +179,7 @@ _图 3. 在本地分支进行更改_。
    npm install
    ```
 
-2. 将 `open-telemetry/opentelemetry.io` 仓库设置为你的远程  `upstream`仓库:
+2. 将 `open-telemetry/opentelemetry.io` 仓库设置为你的远程 `upstream`仓库:
 
    ```shell
    git remote add upstream https://github.com/open-telemetry/opentelemetry.io.git
@@ -234,13 +236,13 @@ _图 3. 在本地分支进行更改_。
    ```none
    On branch <my_new_branch>
    Your branch is up to date with 'origin/<my_new_branch>'.
-   
+
    Changes not staged for commit:
    (use "git add <file>..." to update what will be committed)
    (use "git checkout -- <file>..." to discard changes in working directory)
-   
+
    modified:   content/en/docs/file-you-are-editing.md
-   
+
    no changes added to commit (use "git add" and/or "git commit -a")
    ```
 
@@ -302,10 +304,11 @@ _图 4. 从你的 fork 向 [opentelemetry.io](https://github.com/open-telemetry/
 5. 从 **compare** 下拉菜单中选择你的分支。
 6. 选择 **Create Pull Request**。
 7. 为您的拉取请求添加描述：
-  * **Title**（不多于50 个字符）：总结更改的目的。
-  * **Description**：更详细地描述更改。
-    * 如果有相关的 GitHub 问题（issue），请在描述中包含 `Fixes #12345` 或 `Closes #12345`，以便 GitHub 的自动化功能在合并 PR 后关闭提到的问题。如果还有其他相关 PR，也请链接它们。
-    * 如果你需要有关特定内容的建议，请在描述中包含你希望评审人考虑的任何问题。
+
+- **Title**（不多于50 个字符）：总结更改的目的。
+- **Description**：更详细地描述更改。
+  - 如果有相关的 GitHub 问题（issue），请在描述中包含 `Fixes #12345` 或 `Closes #12345`，以便 GitHub 的自动化功能在合并 PR 后关闭提到的问题。如果还有其他相关 PR，也请链接它们。
+  - 如果你需要有关特定内容的建议，请在描述中包含你希望评审人考虑的任何问题。
 
 8. 选择 **Create pull request** 按钮。
 
@@ -313,8 +316,8 @@ _图 4. 从你的 fork 向 [opentelemetry.io](https://github.com/open-telemetry/
 
 发起 PR 后，GitHub 会运行自动测试并尝试使用 [Netlify](https://www.netlify.com/) 部署预览。
 
-* 如果 Netlify 构建失败，选择 **详细信息** 可以获取更多信息。
-* 如果 Netlify 构建成功，选择 **详细信息** 可以打开 OpenTelemetry 网站的暂存版本，其中应用了您的更改。评审人通过这种方式检查你的更改。
+- 如果 Netlify 构建失败，选择 **详细信息** 可以获取更多信息。
+- 如果 Netlify 构建成功，选择 **详细信息** 可以打开 OpenTelemetry 网站的暂存版本，其中应用了您的更改。评审人通过这种方式检查你的更改。
 
 其他检查也可能失败。请参阅[所有 PR 检查列表](/docs/contributing/pr-checks)。
 
@@ -361,9 +364,9 @@ npm run serve
 
 在 PR 合并之前，有时需要进行几次评审和编辑。为了帮助我们和你自己尽可能简化此过程，我们要求你遵守以下规定：
 
-* 如果你的 PR 不是一个快速的问题修复，则从 **在本地分支进行更改**开始：单击仓库顶部的[Fork](https://github.com/open-telemetry/opentelemetry.io/fork) 按钮并创建一个你自己本地的克隆仓库。当你准备好更改内容时，向上游仓库发起PR请求。
-* **不要在你克隆仓库的 `main`** 分支上直接进行更改，而应该创建一个特定于 PR 的分支。
-* 确保维护人员[可以对您的拉取请求应用更改](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork)。
+- 如果你的 PR 不是一个快速的问题修复，则从 **在本地分支进行更改**开始：单击仓库顶部的[Fork](https://github.com/open-telemetry/opentelemetry.io/fork) 按钮并创建一个你自己本地的克隆仓库。当你准备好更改内容时，向上游仓库发起PR请求。
+- **不要在你克隆仓库的 `main`** 分支上直接进行更改，而应该创建一个特定于 PR 的分支。
+- 确保维护人员[可以对您的拉取请求应用更改](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork)。
 
 #### 评审人的更改
 
@@ -448,11 +451,11 @@ npm run serve
 
 合并拉取请求需要符合以下条件：
 
-* 审批者、维护者、技术委员会成员或主题专家的所有评审状态均为“Approved”。
-* 没有未解决的对话。
-* 至少获得一名审批者的批准。
-* 没有失败的 PR 检查项。
-* PR 分支与基础分支保持同步。
+- 审批者、维护者、技术委员会成员或主题专家的所有评审状态均为“Approved”。
+- 没有未解决的对话。
+- 至少获得一名审批者的批准。
+- 没有失败的 PR 检查项。
+- PR 分支与基础分支保持同步。
 
 > **重要**
 >
@@ -486,12 +489,12 @@ npm run serve
 
 填写问题（issue）时请注意以下几点：
 
-* 提供清晰的问题描述。描述具体哪些内容出现缺失、过时、错误或需要改进的情况。
-* 解释该问题对用户的具体影响。
-* 将给定问题的范围限制在合理的工作单元内。对于范围较大的问题，将其分解为较小的问题。例如，“修复安全文档”太宽泛，而“向‘限制网络访问’主题添加详细信息”则非常具体并且可操作。
-* 搜索现有问题，查看是否有任何与新问题相关或类似的内容。
-* 如果新问题与另一个问题或拉取请求相关，请通过其完整 URL 或以`#`字符为前缀的问题或拉取请求编号来引用它。例如，`由 #987654 引入`。
-* 遵守 [行为准则](https://github.com/open-telemetry/community/blob/main/code-of-conduct.md)。 尊重您的其他贡献者。例如，“文档很糟糕”不是一个有帮助或有礼貌的反馈。
+- 提供清晰的问题描述。描述具体哪些内容出现缺失、过时、错误或需要改进的情况。
+- 解释该问题对用户的具体影响。
+- 将给定问题的范围限制在合理的工作单元内。对于范围较大的问题，将其分解为较小的问题。例如，“修复安全文档”太宽泛，而“向‘限制网络访问’主题添加详细信息”则非常具体并且可操作。
+- 搜索现有问题，查看是否有任何与新问题相关或类似的内容。
+- 如果新问题与另一个问题或拉取请求相关，请通过其完整 URL 或以`#`字符为前缀的问题或拉取请求编号来引用它。例如，`由 #987654 引入`。
+- 遵守 [行为准则](https://github.com/open-telemetry/community/blob/main/code-of-conduct.md)。 尊重您的其他贡献者。例如，“文档很糟糕”不是一个有帮助或有礼貌的反馈。
 
 ## 公告管理
 
@@ -537,14 +540,12 @@ OpenTelemetry 是一个开源项目，我们很乐意接受新的贡献和贡献
 
 ## 其他贡献的方式
 
-* 访问 [OpenTelemetry 社区网站](/community/)。
-* 将您的应用程序添加到[注册表（Registry）](/ecosystem)。
-* 提交[博客文章或案例研究](/docs/contributing/blog/)。
+- 访问 [OpenTelemetry 社区网站](/community/)。
+- 将您的应用程序添加到[注册表（Registry）](/ecosystem)。
+- 提交[博客文章或案例研究](/docs/contributing/blog/)。
 
 [仪表板]: https://app.netlify.com/sites/opentelemetry/overview
-
-[部署预览]:
-https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/
+[部署预览]: https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/
 
 ## 行为守则
 
