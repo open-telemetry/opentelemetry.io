@@ -5455,6 +5455,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:06:15.993792-05:00"
   },
+  "https://landscape.cncf.io/guide#observability-and-analysis--observability": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-12T14:28:14.584941196Z"
+  },
   "https://laravel.com/docs/10.x/installation": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:34.641048-05:00"
@@ -7710,6 +7714,10 @@
   "https://prometheus.io/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:07:18.145976-05:00"
+  },
+  "https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/#support-utf-8-metric-and-label-names": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-12T14:28:16.265327643Z"
   },
   "https://prometheus.io/docs/alerting/latest/alertmanager/": {
     "StatusCode": 206,
