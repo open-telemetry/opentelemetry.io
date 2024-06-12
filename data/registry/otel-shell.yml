@@ -1,0 +1,16 @@
+title: OpenTelemetry for shell scripts
+registryType: core
+language: shell
+tags:
+  - shell
+  - bash
+  - instrumentation
+license: Apache 2.0
+description: An unofficial implementation of OpenTelemetry for shells (sh, dash, bash, ...) for traces, metrics and logs.
+authors:
+  - name: Philipp Lengauer
+    email: p.lengauer@gmail.com
+    url: https://github.com/plengauer/opentelemetry-bash
+urls:
+  repo: https://github.com/plengauer/opentelemetry-bash
+createdAt: 2024-06-12
