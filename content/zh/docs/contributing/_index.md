@@ -13,7 +13,7 @@ OpenTelemetry文档贡献者可以：
 
 - 改进现有内容。
 - 添加新的内容。
-- 更新OpenTelemetry 注册表（Registry）。
+- 更新 OpenTelemetry 注册表（Registry）。
 - 改进构建网站的代码。
 
 ## 要求
