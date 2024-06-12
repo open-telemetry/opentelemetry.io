@@ -571,7 +571,7 @@ If you followed the instructions to [initialize the SDK](#initialize-the-sdk)
 above, you have a `TracerProvider` setup for you already. You can continue with
 [acquiring a tracer](#acquiring-a-tracer).
 
-### Acquiring a Tracer
+### Acquiring a tracer
 
 To do [Tracing](/docs/concepts/signals/traces/) you'll need to acquire a
 [`Tracer`](/docs/concepts/signals/traces/#tracer).
@@ -675,6 +675,36 @@ Tracer tracer = GlobalOpenTelemetry.getTracer("instrumentation-scope-name", "ins
 
 Note that you can't force end users to configure the global, so this is the most
 brittle option for library instrumentation.
+
+### Acquiring a tracer in Java agent
+
+If you are using the [Java agent], you can acquire a `Tracer` from the global OpenTelemetry
+instance:
+
+```java
+import io.opentelemetry.api.GlobalOpenTelemetry;
+
+Tracer tracer = GlobalOpenTelemetry.getTracer("application");
+```
+
+### Acquiring a tracer in Spring Boot starter
+
+If you are using the [Spring Boot starter], you can acquire a `Tracer` from the
+autowired OpenTelemetry instance:
+
+```java
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.trace.Tracer;
+
+@Controller
+public class MyController {
+  private final Tracer tracer;
+
+  public MyController(OpenTelemetry openTelemetry) {
+    this.tracer = openTelemetry.getTracer("application");
+  }
+}
+```
 
 ### Create Spans
 
@@ -1194,7 +1224,7 @@ OpenTelemetry openTelemetry = OpenTelemetrySdk.builder()
     .build();
 ```
 
-### Acquiring a Meter
+### Acquiring a meter
 
 Anywhere in your application where you have manually instrumented code you can
 call `opentelemetry.meterBuilder(instrumentationScopeName)` to get or create a
@@ -1215,6 +1245,38 @@ Meter meter = openTelemetry.getMeter("dice-server");
 Now that you have [meters](/docs/concepts/signals/metrics/#meter) initialized.
 you can create
 [metric instruments](/docs/concepts/signals/metrics/#metric-instruments).
+
+### Acquiring a meter in Java agent
+
+If you are using the [Java agent], you can acquire a `Meter` from the global OpenTelemetry
+instance:
+
+```java
+import io.opentelemetry.api.GlobalOpenTelemetry;
+
+Meter meter = GlobalOpenTelemetry.getMeter("application");
+```
+
+### Acquiring a meter in Spring Boot starter
+
+If you are using the [Spring Boot starter], you can acquire a `Meter` from the
+autowired OpenTelemetry instance:
+
+```java
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.metrics.Meter;
+
+@Controller
+public class MyController {
+  private final Meter meter;
+
+  public MyController(OpenTelemetry openTelemetry) {
+    this.meter = openTelemetry.getMeter("application");
+  }
+}
+```
+
+a
 
 ### Using Counters
 
@@ -1857,3 +1919,5 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
 [traceidratiobased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java
+[Java agent]: /docs/zero-code/java/agent/
+[Spring Boot starter]: /docs/zero-code/java/spring-boot-starter/
