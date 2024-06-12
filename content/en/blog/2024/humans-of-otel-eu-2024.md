@@ -499,8 +499,7 @@ organization, we’d love to hear from you! Ways to share:
   on the
   [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf)
 - Join our [OTel in Practice](/community/end-user/otel-in-practice/) sessions
-- Share your stories on the
-  [OpenTelemetry blog](/docs/contributing/blog/)
+- Share your stories on the [OpenTelemetry blog](/docs/contributing/blog/)
 - Contact us on the
   [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf)
   for any other types of sessions you'd like to see!
