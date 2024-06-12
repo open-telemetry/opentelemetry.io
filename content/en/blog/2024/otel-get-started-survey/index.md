@@ -41,7 +41,7 @@ Out of 104 respondents:
 
 ### Q: What languages are you using in your organization?
 
-JavaScript, Java, Go, and Python are the most widely used languages, they are being utilized by over 50% of the respondents.
+[JavaScript](/docs/languages/js/), [Java](/docs/languages/java/), [Go](/docs/languages/go/), and [Python](/docs/languages/python/) are the most widely used languages, they are being utilized by over 50% of the respondents.
 
 Other languages used included Scala, TypeScript, Erlang/Elixir, Perl, R, Lua, Matlab, Julia, Haskell, COBOL, Kotlin, and SAS.
 
