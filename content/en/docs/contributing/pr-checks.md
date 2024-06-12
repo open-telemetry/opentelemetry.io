@@ -19,7 +19,7 @@ a set of checks are executed. The PR checks verify that...
 {{% alert title="Note" color="primary" %}}
 
 If any of the PR checks fails, please try to
-[fix content issues automatically](/docs/contributing/#fix-content-issues-automatically)
+[fix content issues automatically](/docs/contributing/requirements#fix-content-issues-automatically)
 first by running `npm run fix:all` on your machine.
 
 Additionally, you can comment `/fix:all` on your Pull Request. This will make
@@ -34,7 +34,7 @@ can recover from a failed state.
 ## Easy CLA
 
 This check fails if you haven't
-[signed the CLA](/docs/contributing/#sign-the-cla).
+[signed the CLA](/docs/contributing/requirements#sign-the-cla).
 
 ## Netlify deployment
 
