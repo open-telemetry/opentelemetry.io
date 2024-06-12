@@ -27,7 +27,7 @@ Prometheus Receiver and Prometheus exporters.
 One of the most challenging areas to reconcile is that OpenTelemetry metric
 names are changed when exporting to Prometheus. Today, the OpenTelemetry
 `http.server.request.duration` metric, with unit `s`, is translated to
-`http_server_request_duration_seconds` in Prometheus. Some users are familar
+`http_server_request_duration_seconds` in Prometheus. Some users are familiar
 with the Prometheus naming conventions, and appreciate the consistency this
 translation provides with existing metrics in the Prometheus ecosystem. Other
 users are confused when querying for the original OpenTelemetry name does not
