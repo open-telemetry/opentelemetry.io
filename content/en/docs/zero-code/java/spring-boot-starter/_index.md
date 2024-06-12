@@ -28,8 +28,7 @@ OpenTelemetry.
 
 ## Comparison to Micrometer
 
-At a high level, this section compares OpenTelemetry Spring Boot starter and
-Micrometer.
+A question asked frequently is how [Micrometer](https://micrometer.io/) and the OpenTelemetry Spring Boot Starter differentiate. At a high level, the differences are as follows:
 
 OpenTelemetry Spring Boot starter:
 
