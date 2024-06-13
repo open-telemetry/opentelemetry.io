@@ -34,7 +34,7 @@ can recover from a failed state.
 ## Easy CLA
 
 This check fails if you haven't
-[signed the CLA](/docs/contributing/requirements#sign-the-cla).
+[signed the CLA](/docs/contributing/requirements/#sign-the-cla).
 
 ## Netlify deployment
 
