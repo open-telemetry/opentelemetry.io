@@ -21,3 +21,9 @@ the
 Conduct. Every language implementation, Collector, and conventions
 [repository](https://github.com/open-telemetry/) has its own specific
 contributing guides.
+
+## Other ways to contribute
+
+- Visit the [OpenTelemetry community site](/community/).
+- Add your application to the [Registry](/ecosystem).
+- Submit a [blog post or case study](/docs/contributing/blog/).

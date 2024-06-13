@@ -30,6 +30,12 @@ to the registry][].
 See the [Contributing](https://opentelemetry.io/docs/contributing) page on our
 docs.
 
+## Found a security issue?
+
+If you discover a security issue, read the
+[Security Policy](https://github.com/open-telemetry/opentelemetry.io/security/policy)
+before opening an issue.
+
 ## Meetings
 
 We, the OTel Communications SIG, meet every two weeks on Monday at 10:00 PT.
