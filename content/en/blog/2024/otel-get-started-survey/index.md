@@ -76,7 +76,8 @@ different resources:
 
 ### Q: What part of the project is most important to you in your OTel journey?
 
-Most respondents stated that [Traces Specification,](/docs/specs/otel/trace/api/)
+Most respondents stated that
+[Traces Specification,](/docs/specs/otel/trace/api/)
 [Instrumentation APIs and SDKs](/docs/languages/), and
 [Metrics Specification](/docs/specs/otel/metrics/api/) are most important to
 them.
