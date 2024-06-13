@@ -33,19 +33,18 @@ Check out the results!
 
 ### Q: What technologies are you using when setting up your observability journey?
 
-Out of 104 respondents: Respondents are mostly working with containers, with
-79.8% of respondents using Kubernetes and 63.5% of respondents using Docker
+Out of 104 respondents, most are working with containers: 79.8% are using Kubernetes and 63.5% are using Docker.
 
 ![Chart showing what technologies are being used](1-technologies-used.png)
 
-### Q: Where in your Observability journey is your organization?
+### Q: Where in your observability journey is your organization?
 
 Out of 104 respondents:
 
-- 25% were beginners and they are learning about observability or have used
-  monitoring tools
-- 49% were intermediates and were setting up observability practice
-- 26% were experts and have a well-established observability practice
+- 25% are beginners and they are learning about observability or have used
+  monitoring tools.
+- 49% are intermediates and are setting up observability practice.
+- 26% are experts and have a well-established observability practice.
 
 ![Chart showing where in their observability journey they are](2-level.png)
 
