@@ -130,10 +130,9 @@ while(<>) {
 
   # Fix links that are to the title of the .md page
   # TODO: fix these in the spec
-  s|(/context/api-propagators.md)#propagators-api|$1|g;
-  s|(/semantic_conventions/faas.md)#function-as-a-service|$1|g;
-  s|(/resource/sdk.md)#resource-sdk|$1|g;
-  s|(event-api.md#)(data-model)|$1event-$2|g;
+  s|(/context/api-propagators.md)#propagators-api|$1|g; # Waiting on https://github.com/open-telemetry/opentelemetry-specification/pull/4080
+  s|(/resource/sdk.md)#resource-sdk|$1|g; # Waiting on https://github.com/open-telemetry/semantic-conventions/pull/1154
+  s|(event-api.md#)(data-model)|$1event-$2|g; # Waiting on https://github.com/open-telemetry/opentelemetry-specification/pull/4075
 
   s|\.\.\/README.md\b|$otelSpecRepoUrl/|g if $ARGV =~ /specification._index/;
   s|\.\.\/README.md\b|..| if $ARGV =~ /specification.library-guidelines.md/;
