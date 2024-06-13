@@ -8,7 +8,7 @@ sig: End User SIG
 ---
 
 Getting started with new technologies can be hard, which is why we try to meet
-our end-users where they are. As a part of that goal, 
+our end-users where they are. As a part of that goal,
 [the OpenTelemetry End-User SIG](/community/end-user/) recently surveyed the
 community to find out how we can best help our users get started with
 OpenTelemetry. The 104 responses we received will help drive improvements in
@@ -23,17 +23,18 @@ Check out the results!
   1. Comprehensive documentation (67.3% of respondents)
   2. Reference implementations for instrumentation (65.3% of respondents)
   3. Detailed tutorials (63.4% of respondents)
-- Respondents are mostly working with containerization technologies, with 79.8% of respondents
-  using Kubernetes and 63.5% of respondents using Docker
+- Respondents are mostly working with containerization technologies, with 79.8%
+  of respondents using Kubernetes and 63.5% of respondents using Docker
 - Over 83% of respondents stated that the Traces Specification, Instrumentation
-  APIs and SDKs, and Metrics Specification are the most important aspects of their OTel
-  journey.
+  APIs and SDKs, and Metrics Specification are the most important aspects of
+  their OTel journey.
 
 ## Detailed insights
 
 ### Q: What technologies are you using when setting up your observability journey?
 
-Out of 104 respondents, most are working with containers: 79.8% are using Kubernetes and 63.5% are using Docker.
+Out of 104 respondents, most are working with containers: 79.8% are using
+Kubernetes and 63.5% are using Docker.
 
 ![Chart showing what technologies are being used](1-technologies-used.png)
 
@@ -55,18 +56,19 @@ Out of 104 respondents:
 widely used languages. They are being utilized by over 50% of the respondents.
 
 [Other languages](/docs/languages/other/) used included Scala, TypeScript,
-[Erlang/Elixir](docs/languages/erlang/), Perl, R, Lua, Matlab, Julia, Haskell, COBOL, Kotlin, and SAS.
+[Erlang/Elixir](docs/languages/erlang/), Perl, R, Lua, Matlab, Julia, Haskell,
+COBOL, Kotlin, and SAS.
 
 ![Chart showing what languages are being used](3-languages.png)
 
 ### Q: What resources do you wish you had when getting started with OpenTelemetry?
 
-Depending on where in their observability journey they are, respondents prefer different
-resources:
+Depending on where in their observability journey they are, respondents prefer
+different resources:
 
 - Those who are learning about observability and those who are setting up an
-  observability practice would like to see comprehensive documentation and detailed tutorials
-  and videos.
+  observability practice would like to see comprehensive documentation and
+  detailed tutorials and videos.
 - Those who have a well-established observability practice prefer reference
   implementations for instrumentation as well as comprehensive documentation.
 
@@ -74,8 +76,10 @@ resources:
 
 ### Q: What part of the project is most important to you in your OTel journey?
 
-Most respondents stated that [Traces Specification,](docs/specs/otel/trace/api/) [Instrumentation APIs and SDKs](/docs/languages/),
-and [Metrics Specification](/docs/specs/otel/metrics/api/) are most important to them.
+Most respondents stated that [Traces Specification,](docs/specs/otel/trace/api/)
+[Instrumentation APIs and SDKs](/docs/languages/), and
+[Metrics Specification](/docs/specs/otel/metrics/api/) are most important to
+them.
 
 ![Chart showing what aspects are the most important](5-importance.png)
 
