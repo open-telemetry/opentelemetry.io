@@ -53,7 +53,7 @@ Out of 104 respondents:
 
 [JavaScript](/docs/languages/js/), [Java](/docs/languages/java/),
 [Go](/docs/languages/go/), and [Python](/docs/languages/python/) are the most
-widely used languages, they are being utilized by over 50% of the respondents.
+widely used languages. They are being utilized by over 50% of the respondents.
 
 [Other languages](/docs/languages/other/) used included Scala, TypeScript,
 Erlang/Elixir, Perl, R, Lua, Matlab, Julia, Haskell, COBOL, Kotlin, and SAS.
@@ -62,11 +62,11 @@ Erlang/Elixir, Perl, R, Lua, Matlab, Julia, Haskell, COBOL, Kotlin, and SAS.
 
 ### Q: What resources do you wish you had when getting started with OpenTelemetry?
 
-Depending on where in their observability journey they prefer different
+Depending on where in their observability journey they are, respondents prefer different
 resources:
 
 - Those who are learning about observability and those who are setting up an
-  observability practice want comprehensive documentation and detailed tutorials
+  observability practice would like to see comprehensive documentation and detailed tutorials
   and videos.
 - Those who have a well-established observability practice prefer reference
   implementations for instrumentation as well as comprehensive documentation.
@@ -75,8 +75,8 @@ resources:
 
 ### Q: What part of the project is most important to you in your OTel journey?
 
-Most respondents stated that Traces Specification, Instrumentation APIs & SDKs
-and Metrics Specification were considered the most important.
+Most respondents stated that Traces Specification, Instrumentation APIs and SDKs,
+and Metrics Specification are most important to them.
 
 ![Chart showing what aspects are the most important](5-importance.png)
 
