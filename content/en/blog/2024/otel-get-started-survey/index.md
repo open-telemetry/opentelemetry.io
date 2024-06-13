@@ -8,25 +8,25 @@ sig: End User SIG
 ---
 
 Getting started with new technologies can be hard, which is why we try to meet
-our end-users where they are. As a part of that goal, we
-([the OpenTelemetry End-User SIG](/community/end-user/)) recently surveyed the
+our end-users where they are. As a part of that goal, 
+[the OpenTelemetry End-User SIG](/community/end-user/) recently surveyed the
 community to find out how we can best help our users get started with
 OpenTelemetry. The 104 responses we received will help drive improvements in
 enablement content from the community as well as vendors.
 
 Check out the results!
 
-## Key Takeaways
+## Key takeaways
 
 - No matter their level of OTel experience, folks would like to see the
   following:
   1. Comprehensive documentation (67.3% of respondents)
   2. Reference implementations for instrumentation (65.3% of respondents)
   3. Detailed tutorials (63.4% of respondents)
-- Respondents are mostly working with containers, with 79.8% of respondents
+- Respondents are mostly working with containerization technologies, with 79.8% of respondents
   using Kubernetes and 63.5% of respondents using Docker
 - Over 83% of respondents stated that the Traces Specification, Instrumentation
-  APIs & SDKs, and Metrics Specification were the most important in their OTel
+  APIs and SDKs, and Metrics Specification are the most important aspects of their OTel
   journey.
 
 ## Detailed insights
