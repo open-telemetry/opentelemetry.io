@@ -3,8 +3,8 @@
 **Thanks for your interest in contributing to
 [OpenTelemetry.io](https://opentelemetry.io/)!**
 
-To learn how to contribute fixes and new content to this project, see
-[Contributor](https://opentelemetry.io/docs/contributing/), which includes a
+To learn how to contribute new content and fixes to this project, see
+[Contributing](https://opentelemetry.io/docs/contributing/), which includes a
 style guide and useful information on the review process.
 
 ## Found a security issue?
