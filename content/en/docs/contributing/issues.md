@@ -2,6 +2,7 @@
 title: Reporting an issue
 description: How to report a bug, a security issue, or a potential improvement.
 weight: 50
+cSpell:ignore: prepopulated
 ---
 
 If you notice an error or want to suggest improvements to existing content, open
