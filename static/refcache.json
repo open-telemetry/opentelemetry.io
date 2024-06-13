@@ -1115,6 +1115,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-02-15T11:30:46.466434+01:00"
   },
+  "https://docs.github.com/en/get-started/quickstart/fork-a-repo": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-12T11:21:07.765039+02:00"
+  },
   "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T15:25:17.633498-05:00"
@@ -1126,6 +1130,10 @@
   "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:15:52.403553-05:00"
+  },
+  "https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-12T11:21:20.570863+02:00"
   },
   "https://docs.google.com/document/d/15vR7D1x2tKd7u3zaTF0yH1WaHkUr2T4hhr7OyiZgmBg/edit#heading=h.4xuru5ljcups": {
     "StatusCode": 200,
@@ -1370,6 +1378,10 @@
   "https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/applicationpools/add/environmentvariables/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:34.070633-05:00"
+  },
+  "https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-12T11:21:28.721143+02:00"
   },
   "https://docs.microsoft.com/rest/api/resources/resources/get-by-id": {
     "StatusCode": 200,
@@ -2511,6 +2523,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:02:26.156181-05:00"
   },
+  "https://github.com/coreybutler/nvm-windows": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-12T11:21:31.676115+02:00"
+  },
   "https://github.com/cri-o/cri-o": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:02:13.062841-05:00"
@@ -2682,6 +2698,10 @@
   "https://github.com/go-gorm/opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:59.006242-05:00"
+  },
+  "https://github.com/gohugoio/hugo/issues/6109": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-12T11:21:46.656082+02:00"
   },
   "https://github.com/gosnmp/gosnmp": {
     "StatusCode": 200,
@@ -4279,6 +4299,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:47.00387-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/issues": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-13T15:48:00.42543+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/issues/4427": {
     "StatusCode": 200,
     "LastSeen": "2024-05-06T15:32:24.49099-04:00"
@@ -4302,6 +4326,10 @@
   "https://github.com/open-telemetry/opentelemetry.io/pulls": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:25.833527-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/security/policy": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-13T15:47:57.766697+02:00"
   },
   "https://github.com/open-telemetry/otel-arrow": {
     "StatusCode": 200,
@@ -4719,6 +4747,22 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:13:35.287029-05:00"
   },
+  "https://gitpod.io": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-12T11:21:04.801578+02:00"
+  },
+  "https://gitpod.io#https://github.com/YOUR_GITHUB_ID/opentelemetry.io": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-12T11:21:16.984715+02:00"
+  },
+  "https://gitpod.io/#https://github.com/open-telemetry/opentelemetry.io": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-12T11:21:18.187197+02:00"
+  },
+  "https://gitpod.io/workspaces": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-12T11:21:11.528217+02:00"
+  },
   "https://go.dev/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:10.378732-05:00"
@@ -4806,6 +4850,10 @@
   "https://goharbor.io/docs/edge/administration/distributed-tracing/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:05:33.151121-05:00"
+  },
+  "https://gohugo.io": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-12T11:21:44.81351+02:00"
   },
   "https://gohugo.io/content-management/multilingual/": {
     "StatusCode": 206,
@@ -5635,6 +5683,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:19.249572-05:00"
   },
+  "https://netlify.com": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-12T11:21:36.089536+02:00"
+  },
   "https://newrelic.com/": {
     "StatusCode": 206,
     "LastSeen": "2024-02-26T10:53:38.368111+01:00"
@@ -5698,6 +5750,10 @@
   "https://nodejs.org/en/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:10:39.6518-05:00"
+  },
+  "https://nodejs.org/en/about/previous-releases": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-12T11:21:22.384836+02:00"
   },
   "https://nodejs.org/en/blog/module/service-logging-in-json-with-bunyan/": {
     "StatusCode": 206,
