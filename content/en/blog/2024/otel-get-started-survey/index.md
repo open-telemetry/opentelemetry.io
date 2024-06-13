@@ -56,7 +56,7 @@ Out of 104 respondents:
 widely used languages. They are being utilized by over 50% of the respondents.
 
 [Other languages](/docs/languages/other/) used included Scala, TypeScript,
-[Erlang/Elixir](docs/languages/erlang/), Perl, R, Lua, Matlab, Julia, Haskell,
+[Erlang/Elixir](/docs/languages/erlang/), Perl, R, Lua, Matlab, Julia, Haskell,
 COBOL, Kotlin, and SAS.
 
 ![Chart showing what languages are being used](3-languages.png)
@@ -76,7 +76,7 @@ different resources:
 
 ### Q: What part of the project is most important to you in your OTel journey?
 
-Most respondents stated that [Traces Specification,](docs/specs/otel/trace/api/)
+Most respondents stated that [Traces Specification,](/docs/specs/otel/trace/api/)
 [Instrumentation APIs and SDKs](/docs/languages/), and
 [Metrics Specification](/docs/specs/otel/metrics/api/) are most important to
 them.
