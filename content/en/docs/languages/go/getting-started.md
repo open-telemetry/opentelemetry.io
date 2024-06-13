@@ -146,12 +146,9 @@ import (
 	"time"
 
 	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/exporters/stdout/stdoutlog"
 	"go.opentelemetry.io/otel/exporters/stdout/stdoutmetric"
 	"go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
-	"go.opentelemetry.io/otel/log/global"
 	"go.opentelemetry.io/otel/propagation"
-	"go.opentelemetry.io/otel/sdk/log"
 	"go.opentelemetry.io/otel/sdk/metric"
 	"go.opentelemetry.io/otel/sdk/trace"
 )
@@ -200,15 +197,6 @@ func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, er
 	shutdownFuncs = append(shutdownFuncs, meterProvider.Shutdown)
 	otel.SetMeterProvider(meterProvider)
 
-	// Set up logger provider.
-	loggerProvider, err := newLoggerProvider()
-	if err != nil {
-		handleErr(err)
-		return
-	}
-	shutdownFuncs = append(shutdownFuncs, loggerProvider.Shutdown)
-	global.SetLoggerProvider(loggerProvider)
-
 	return
 }
 
@@ -246,18 +234,6 @@ func newMeterProvider() (*metric.MeterProvider, error) {
 			metric.WithInterval(3*time.Second))),
 	)
 	return meterProvider, nil
-}
-
-func newLoggerProvider() (*log.LoggerProvider, error) {
-	logExporter, err := stdoutlog.New()
-	if err != nil {
-		return nil, err
-	}
-
-	loggerProvider := log.NewLoggerProvider(
-		log.WithProcessor(log.NewBatchProcessor(logExporter)),
-	)
-	return loggerProvider, nil
 }
 ```
 <!-- prettier-ignore-end -->
@@ -353,8 +329,7 @@ func newHTTPHandler() http.Handler {
 	}
 
 	// Register handlers.
-	handleFunc("/rolldice/", rolldice)
-	handleFunc("/rolldice/{player}", rolldice)
+	handleFunc("/rolldice", rolldice)
 
 	// Add HTTP instrumentation for the whole server.
 	handler := otelhttp.NewHandler(mux, "/")
@@ -378,25 +353,20 @@ Modify `rolldice.go` to include custom instrumentation using OpenTelemetry API:
 package main
 
 import (
-	"fmt"
 	"io"
 	"log"
 	"math/rand"
 	"net/http"
 	"strconv"
 
-	"go.opentelemetry.io/contrib/bridges/otelslog"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/metric"
 )
 
-const name = "rolldice"
-
 var (
-	tracer = otel.Tracer(name)
-	meter  = otel.Meter(name)
-	logger = otelslog.NewLogger(name)
+	tracer  = otel.Tracer("rolldice")
+	meter   = otel.Meter("rolldice")
 	rollCnt metric.Int64Counter
 )
 
@@ -415,14 +385,6 @@ func rolldice(w http.ResponseWriter, r *http.Request) {
 	defer span.End()
 
 	roll := 1 + rand.Intn(6)
-
-	var msg string
-	if player := r.PathValue("player"); player != "" {
-		msg = fmt.Sprintf("%s is rolling the dice", player)
-	} else {
-		msg = "Anonymous player is rolling the dice"
-	}
-	logger.InfoContext(ctx, msg, "result", roll)
 
 	rollValueAttr := attribute.Int("roll.value", roll)
 	span.SetAttributes(rollValueAttr)
