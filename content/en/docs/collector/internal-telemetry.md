@@ -289,19 +289,6 @@ your project's requirements, select a narrow time window before alerting begins
 to avoid notifications for small losses that are within the desired reliability
 range and not considered outages.
 
-#### Low on CPU resources
-
-This depends on the CPU metrics available on the deployment, eg.:
-`kube_pod_container_resource_limits{resource="cpu", unit="core"}` for
-Kubernetes. Let's call it `available_cores`. The idea here is to have an upper
-bound of the number of available cores, and the maximum expected ingestion rate
-considered safe, let's call it `safe_rate`, per core. This should trigger
-increase of resources/ instances (or raise an alert as appropriate) whenever
-`(actual_rate/available_cores) < safe_rate`.
-
-The `safe_rate` depends on the specific configuration being used. // TODO:
-Provide reference `safe_rate` for a few selected configurations.
-
 ### Secondary monitoring
 
 #### Queue length
