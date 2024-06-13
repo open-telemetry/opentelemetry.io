@@ -27,9 +27,16 @@ to the registry][].
 
 ## Contributing
 
-We have curated some issues with the tags [help wanted][] and [good first
-issue][]. This should allow you to quickly find a place to contribute. See [CONTRIBUTING.md][]
-for more information.
+See the [Contributing](https://opentelemetry.io/docs/contributing) page on our
+docs.
+
+## Found a security issue?
+
+If you discover a security issue, read the
+[Security Policy](https://github.com/open-telemetry/opentelemetry.io/security/policy)
+before opening an issue.
+
+## Meetings
 
 We, the OTel Communications SIG, meet every two weeks on Monday at 10:00 PT.
 Check out the [OpenTelemetry community calendar][] for the Zoom link and any
@@ -38,16 +45,19 @@ updates to this schedule.
 Meeting notes are available as a public [Google doc][]. If you have trouble accessing
 the doc, get in touch in the `#otel-comms` channel on [Slack][].
 
+## Roles
+
 Here is a list of community roles with current and previous members:
 
 - Approvers: [@open-telemetry/docs-approvers][]
 
-  - [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Splunk
   - [Michael Hausenblas](https://github.com/mhausenblas), Amazon
+  - [Tiffany Hrabusa](https://github.com/tiffany76)
 
 - Maintainers: [@open-telemetry/docs-maintainers][]
 
   - [Austin Parker](https://github.com/austinlparker), Honeycomb
+  - [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Splunk
   - [Patrice Chalin](https://github.com/chalin), CNCF
   - [Phillip Carter](https://github.com/cartermp), Honeycomb
   - [Severin Neumann](https://github.com/svrnm), Cisco
@@ -82,16 +92,12 @@ contributed][contributors]!
 [contributing.md]: CONTRIBUTING.md
 [contributors]:
   https://github.com/open-telemetry/opentelemetry.io/graphs/contributors
-[hugo]: https://gohugo.io
-[netlify]: https://netlify.com
 [opentelemetry]: https://opentelemetry.io
 [registry]: https://opentelemetry.io/ecosystem/registry/
 [opentelemetry community calendar]:
   https://calendar.google.com/calendar/embed?src=google.com_b79e3e90j7bbsa2n2p5an5lf60%40group.calendar.google.com
-[help wanted]:
-  https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22
-[good first issue]:
-  https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22
 [google doc]:
   https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY/edit?usp=sharing
 [slack]: https://slack.cncf.io/
+[hugo]: https://gohugo.io
+[netlify]: https://netlify.com
