@@ -18,11 +18,18 @@ participation of maintainers from both OpenTelemetry and Prometheus.
 
 At this point, there is a
 [detailed, experimental specification](/docs/specs/otel/compatibility/prometheus_and_openmetrics/)
-describing how to convert between the OpenTelemetry metrics format and the
-Prometheus metrics format. It has been used to implement Prometheus (pull)
-exporters for OpenTelemetry SDKs, OTLP export from Prometheus libraries, OTLP
-ingestion for the Prometheus server, and the OpenTelemetry Collector's
-Prometheus Receiver and Prometheus exporters.
+describing how to convert between the
+[OpenTelemetry metrics data model](/docs/specs/otel/metrics/data-model/#opentelemetry-protocol-data-model)
+and
+[Prometheus metric formats](https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md).
+It has been used to implement Prometheus
+[(pull) exporters for OpenTelemetry SDKs](go.opentelemetry.io/otel/exporters/prometheus),
+[OTLP export from Prometheus libraries](https://prometheus.github.io/client_java/otel/otlp/),
+[OTLP ingestion for the Prometheus server](https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver),
+and the OpenTelemetry Collector's
+[Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver)
+and
+[Prometheus exporters](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusremotewriteexporter).
 
 One of the most challenging areas to reconcile is that OpenTelemetry metric
 names are changed when exporting to Prometheus. Today, the OpenTelemetry
