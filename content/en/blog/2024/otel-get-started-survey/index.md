@@ -83,7 +83,7 @@ and Metrics Specification were considered the most important.
 ## Learn more
 
 For a more detailed look at the survey results, you can check out the
-[raw results](https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/getting-started/otel-getting-started-survey.csv)
+[results](https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys/getting-started)
 
 ## Keep in touch
 
@@ -94,4 +94,4 @@ avenues:
 
 - [#otel-sig-end-user Slack channel](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
   – you can also reach out to us here!
-- [End user resources page](/community/end-user/)
+- [End user resources page](/community/end-user/).
