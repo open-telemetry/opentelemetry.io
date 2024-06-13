@@ -37,15 +37,15 @@ Prometheus is working on support for UTF-8 characters in metric names as part of
 its
 [2024 roadmap](https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/#support-utf-8-metric-and-label-names),
 which potentially allows preserving dots in metric names. To better understand
-what users want their Prometheus query experience to look like, we ran a survey
-with the help of the OpenTelemetry End User SIG. Deciding on the default
+what users want their Prometheus query experience to look like, [the OTel x Prometheus Working Group](https://cloud-native.slack.com/archives/C01LSCJBXDZ) [ran a survey](https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys/otel-prom-interoperability)
+with the help of the [OpenTelemetry End User SIG](/community/end-user/). Deciding on the default
 translation approach is one of the last remaining blockers for stabilizing the
 compatibility specification.
 
 The survey received 86 responses, and contained many helpful pieces of feedback.
-Than you to everyone that participated! The questions and raw results can be
+Thank you to everyone that participated! The questions and raw results can be
 found
-[here](https://github.com/open-telemetry/sig-end-user/tree/b5cb097ca529cea62809d5078ef8e30a54ad86b9/end-user-surveys/otel-prom-interoperability).
+[here](https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/otel-prom-interoperability/otel-prom-interoperability-survey.csv).
 
 ## Overall takeaways
 
@@ -162,3 +162,11 @@ and unit metadata) as their most significant challenge. Respondents who
 preferred Prometheus' conventions listed OpenTelemetry's new concepts as
 confusing, and were unhappy that OpenTelemetry had deviated from Prometheus'
 existing conventions.
+
+# Keep in touch
+
+Thanks again to everyone who participated in the survey! We rely on your feedback to help guide the future development of OpenTelemetry and to ensure it continues to meet your evolving needs. We will post upcoming surveys in the following avenues:
+
+ - [#otel-sig-end-user Slack channel](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
+   – you can also reach out to us here!
+ - [End user resources page](/community/end-user/)
