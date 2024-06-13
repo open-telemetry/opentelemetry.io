@@ -20,11 +20,11 @@ Check out the results!
 
 - No matter their level of OTel experience, folks would like to see the
   following:
-  1. Comprehensive documentation (67.3% of respondents)
-  2. Reference implementations for instrumentation (65.3% of respondents)
-  3. Detailed tutorials (63.4% of respondents)
+  1. Comprehensive documentation (67.3% of respondents).
+  2. Reference implementations for instrumentation (65.3% of respondents).
+  3. Detailed tutorials (63.4% of respondents).
 - Respondents are mostly working with containerization technologies, with 79.8%
-  of respondents using Kubernetes and 63.5% of respondents using Docker
+  of respondents using Kubernetes and 63.5% of respondents using Docker.
 - Over 83% of respondents stated that the Traces Specification, Instrumentation
   APIs and SDKs, and Metrics Specification are the most important aspects of
   their OTel journey.
