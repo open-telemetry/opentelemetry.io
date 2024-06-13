@@ -2,7 +2,7 @@
 title: Requirements
 description:
   To contribute, you need to be familiar with the following techs and tools.
-weight: 10
+weight: 1
 ---
 
 To contribute, you need to be familiar with the following techs and tools:
@@ -20,8 +20,7 @@ locally, see [Development](/docs/contributing/development).
 All OpenTelemetry contributors must read the
 [Contributor guide](https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md)
 and
-[sign the Contributor License Agreement (CLA)](https://docs.linuxfoundation.org/lfx/easycla/contributors)
-.
+[sign the Contributor License Agreement (CLA)](https://docs.linuxfoundation.org/lfx/easycla/contributors).
 
 Pull requests from contributors who haven't signed the CLA fail the automated
 tests. The name and email you provide must match those found in your

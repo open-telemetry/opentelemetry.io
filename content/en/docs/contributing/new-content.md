@@ -1,7 +1,7 @@
 ---
 title: Add new content
 description: Learn how to add new content using GitHub UI or a local fork.
-weight: 10
+weight: 2
 ---
 
 To contribute new content pages or improve existing content pages, open a pull
