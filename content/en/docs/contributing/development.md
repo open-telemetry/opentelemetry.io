@@ -148,7 +148,7 @@ approvers and maintainers while doing code reviews:
     to scripts for the CI checks to pass. In that case often
     [@chalin](https://github.com/chalin/) will handle that PR. Otherwise those
     PRs can as well be approved and merged except the corresponding SIG signals
-    that merging should be postponed
+    that merging should be postponed.
 - PRs with changes to translations should aim for two approvals: one by a docs
   approver and one by a translation approver. Similar practices apply as
   suggested for the co-owned PRs.
