@@ -51,12 +51,13 @@ Here is a list of community roles with current and previous members:
 
 - Approvers: [@open-telemetry/docs-approvers][]
 
-  - [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Splunk
   - [Michael Hausenblas](https://github.com/mhausenblas), Amazon
+  - [Tiffany Hrabusa](https://github.com/tiffany76)
 
 - Maintainers: [@open-telemetry/docs-maintainers][]
 
   - [Austin Parker](https://github.com/austinlparker), Honeycomb
+  - [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Splunk
   - [Patrice Chalin](https://github.com/chalin), CNCF
   - [Phillip Carter](https://github.com/cartermp), Honeycomb
   - [Severin Neumann](https://github.com/svrnm), Cisco
