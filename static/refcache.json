@@ -2503,6 +2503,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:16.58574-05:00"
   },
+  "https://github.com/chalin/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-14T09:35:29.965101669Z"
+  },
   "https://github.com/cloudflare/cfssl": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:36:55.954418-05:00"
@@ -4310,6 +4314,10 @@
   "https://github.com/open-telemetry/opentelemetry.io/issues/new": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:09:43.270324-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/labels/sig-approval-missing": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-14T09:35:27.61260596Z"
   },
   "https://github.com/open-telemetry/opentelemetry.io/pull/2130": {
     "StatusCode": 200,
