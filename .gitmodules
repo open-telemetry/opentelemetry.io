@@ -27,4 +27,4 @@
 [submodule "content-modules/opentelemetry-go"]
 	path = content-modules/opentelemetry-go
 	url = https://github.com/open-telemetry/opentelemetry-go
-  go-pin = v1.23.0-rc.1-31-geabcef4c2
+  go-pin = v1.27.0

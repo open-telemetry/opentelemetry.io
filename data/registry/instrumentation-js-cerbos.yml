@@ -18,5 +18,5 @@ createdAt: 2023-09-13
 package:
   name: '@cerbos/opentelemetry'
   registry: npm
-  version: 0.5.0
+  version: 0.5.1
 isFirstParty: true

@@ -3,7 +3,7 @@ title: Site localization
 description:
   Guidance on creating and maintaining site page in non-English localizations.
 linkTitle: Localization
-weight: 20
+weight: 25
 ---
 
 {{% pageinfo color="warning" %}}
