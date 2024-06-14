@@ -3,6 +3,7 @@ title: Development
 description:
   Learn how to set up a development environment for the opentelemetry.io site.
 weight: 60
+cSpell:ignore: chalin
 ---
 
 The following instructions explain how to set up a development environment for
