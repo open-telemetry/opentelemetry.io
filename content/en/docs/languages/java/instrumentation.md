@@ -687,6 +687,23 @@ import io.opentelemetry.api.GlobalOpenTelemetry;
 Tracer tracer = GlobalOpenTelemetry.getTracer("application");
 ```
 
+If you are using Spring Boot, you can add the following bean to your
+`@SpringBootApplication` class - to acquire a `Tracer` as in the
+[Spring Boot starter](#acquiring-a-tracer-in-spring-boot-starter) section below:
+
+```java
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.GlobalOpenTelemetry;
+
+@Configuration
+public class OpenTelemetryConfig {
+  @Bean
+  public OpenTelemetry openTelemetry() {
+    return GlobalOpenTelemetry.get();
+  }
+}
+```
+
 ### Acquiring a tracer in Spring Boot starter
 
 If you are using the [Spring Boot starter], you can acquire a `Tracer` from the
@@ -1255,6 +1272,23 @@ instance:
 import io.opentelemetry.api.GlobalOpenTelemetry;
 
 Meter meter = GlobalOpenTelemetry.getMeter("application");
+```
+
+If you are using Spring Boot, you can add the following bean to your
+`@SpringBootApplication` class - to acquire a `Meter` as in the
+[Spring Boot starter](#acquiring-a-meter-in-spring-boot-starter) section below:
+
+```java
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.GlobalOpenTelemetry;
+
+@Configuration
+public class OpenTelemetryConfig {
+  @Bean
+  public OpenTelemetry openTelemetry() {
+    return GlobalOpenTelemetry.get();
+  }
+}
 ```
 
 ### Acquiring a meter in Spring Boot starter
