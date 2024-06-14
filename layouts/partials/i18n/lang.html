@@ -1,0 +1,6 @@
+{{ $fallbackPage := partial "i18n/fallback-page.html" . -}}
+{{ $lang := .Site.Language.Lang -}}
+{{ with $fallbackPage -}}
+  {{ $lang = .Language.Lang -}}
+{{ end -}}
+{{ return $lang -}}
