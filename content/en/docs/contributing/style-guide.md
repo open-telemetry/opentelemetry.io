@@ -108,11 +108,11 @@ run `npm run fix:dict`.
 ## File format
 
 To enforce a certain standard on how files are structured, all files should be
-formatted by [prettier](https://prettier.io). Run `npm fix:format` before
+formatted by [prettier](https://prettier.io). Run `npm run fix:format` before
 submitting a PR, or run it afterwards and push an additional commit.
 
 ## File names
 
 All file names should be in
 [kebab case](https://en.wikipedia.org/wiki/Letter_case#Kebab_case). Run
-`npm fix:filenames` to automatically rename your files.
+`npm run fix:filenames` to automatically rename your files.
