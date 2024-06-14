@@ -3,8 +3,9 @@
 # Inspired by https://github.com/kubernetes/website/blob/main/scripts/lsync.sh
 
 COMMIT_HASH_ARG=""
+DEFAULT_CONTENT="content"
 DEFAULT_LANG="en"
-DEFAULT_TARGET="content"
+DEFAULT_TARGET="$DEFAULT_CONTENT"
 EXIT_STATUS=0
 EXTRA_DIFF_ARGS="--numstat"
 FLAG_DIFF_DETAILS=""
@@ -32,6 +33,8 @@ Usage: $(basename "$0") [options] [TARGET_PATH ...]
   TARGET_PATH can be a single markdown file, such as 'content/ja/_index.md', or
   a directory of localized pages, such as 'content/ja'. The default TARGET_PATH
   is '$DEFAULT_TARGET'.
+
+Options:
 
   -a       List/process all localization page files accessible through target paths.
 
@@ -176,12 +179,14 @@ function set_file_i18n_hash() {
   local f="$1"
   local HASH="$2"
   local pre_msg="${3:--\t-}"
-  local post_msg="${4:-key set}"
+  local post_msg="${4:-key}"
 
   if grep -q "^$I18N_DLC_KEY:" "$f"; then
     perl -i -pe "s/(^$I18N_DLC_KEY):.*$/\$1: $HASH/" "$f"
+    post_msg="$post_msg UPDATED"
   else
     perl -i -0777 -pe "s/^(---.*?)(\n---\n)/\$1\n$I18N_DLC_KEY: $HASH\$2/sm" "$f"
+    post_msg="$post_msg ADDED"
   fi
   if [[ -z $FLAG_QUIET ]]; then
     echo -e "$pre_msg\t$f $HASH $post_msg"
@@ -244,7 +249,6 @@ function main() {
 
   for f in $TARGETS; do
     ((FILE_COUNT++))
-    local LIST=0
 
     LASTCOMMIT_FF=$(perl -ne "print \"\$1\" if /^$I18N_DLC_KEY:\\s*(.*)/" "$f")
     LASTCOMMIT="$LASTCOMMIT_FF"
@@ -269,7 +273,7 @@ function main() {
     ## Processing $LIST_KIND DRIFTED
 
     # Does $f have an default-language version?
-    EN_VERSION=$(echo "$f" | sed "s/content\/.\{2,5\}\//content\/en\//g")
+    EN_VERSION=$(echo "$f" | sed "s/$DEFAULT_CONTENT\/.\{2,5\}\//$DEFAULT_CONTENT\/$DEFAULT_LANG\//g")
     if [[ ! -e "$EN_VERSION" ]]; then
       ((FILE_PROCESSED_COUNT++))
       echo -e "File not found\t$EN_VERSION - $f - $DEFAULT_LANG was removed or renamed"
