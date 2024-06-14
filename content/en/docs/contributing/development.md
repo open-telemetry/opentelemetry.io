@@ -174,6 +174,11 @@ approvers and maintainers while doing code reviews:
   in that period of time, they should communicate this using the
   [#otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6) channel and
   updating the GitHub status.
+- Approver and maintainer adhere to the [OTel Code of Conduct](https://github.com/open-telemetry/community/?tab=coc-ov-file#opentelemetry-community-code-of-conduct)
+  and are friendly and helpful towards contributors. In the case of a conflict,
+  misunderstanding or any other kind of situation that makes an approver/maintainer
+  feel uncomfortable they can step back from a conversation, issue or PR and ask
+  another approver/maintainer to step in.  
 
 The following workflow can be applied by maintainers to merge PRs:
 
