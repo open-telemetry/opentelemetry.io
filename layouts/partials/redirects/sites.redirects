@@ -13,6 +13,8 @@
 
 {{/* Process non-default languages. */ -}}
 
+/ja/docs/specs  /en/docs/specs/
+
 {{ range after 1 .Sites -}}
 
   {{ $siteLang := .Language.Lang -}}
