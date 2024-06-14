@@ -184,7 +184,7 @@ approvers and maintainers while doing code reviews:
 The following workflow can be applied by maintainers to merge PRs:
 
 - Make sure that a PR has all approvals and all CI checks pass
-- If the branch is out-of-date, update it via the GitHub UI.
+- If the branch is out-of-date, rebase update it via the GitHub UI.
 - The update will trigger all CI checks to run again, wait for them to pass or
   execute a script like the following to make it happen in the background:
 
