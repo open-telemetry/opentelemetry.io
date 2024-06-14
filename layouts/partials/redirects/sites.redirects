@@ -1,0 +1,39 @@
+{{/* Redirect for default language when .LanguagePrefix is empty. */ -}}
+
+{{ $defaultLang := "" -}}
+{{ with .Site.Sites.Default -}}
+  {{ if eq .LanguagePrefix "" -}}
+    {{ with .Language.Lang -}}
+      {{ $defaultLang = . -}}
+      /{{ . }}    /
+      /{{ . }}/*  /:splat
+    {{ end -}}
+  {{ end -}}
+{{ end -}}
+
+{{/* Process non-default languages. */ -}}
+
+{{ range after 1 .Sites -}}
+
+  {{ $siteLang := .Language.Lang -}}
+
+  # Site localization {{ $siteLang }}
+  {{ range $p := .Pages -}}
+
+    {{ range $p.Params.redirects -}}
+      {{ $fallbackPage := partial "i18n/fallback-page.html" $p -}}
+      {{ if or (eq $siteLang $defaultLang) (not $fallbackPage) -}}
+        {{ $from := cond (strings.HasPrefix .from "/")
+            .from
+            (print $p.RelPermalink .from) -}}
+        {{ $to := cond (strings.HasPrefix .to "/")
+            .to
+            (print $p.RelPermalink .to) -}}
+        {{ $from | printf "%-35s" }} {{ $to }}
+      {{ else -}}
+        {{/* # {{ $p.RelPermalink }} */ -}}
+      {{ end -}}
+    {{ end -}}
+  {{ end -}}
+
+{{ end -}}
