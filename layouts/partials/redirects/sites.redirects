@@ -13,7 +13,7 @@
 
 {{/* Process non-default languages. */ -}}
 
-/ja/docs/specs  /en/docs/specs/
+/ja/docs/specs  /en/docs/specs/ 301!
 
 {{ range after 1 .Sites -}}
 
