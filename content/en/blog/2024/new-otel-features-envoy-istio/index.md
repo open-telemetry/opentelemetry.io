@@ -182,7 +182,7 @@ And finally, we configure the `OTEL_RESOURCE_ATTRIBUTES` environment variable
 for the Envoy proxies:
 
 ```shell
-cat <<EOF | k apply -f -
+cat <<EOF | kubectl apply -f -
 apiVersion: networking.istio.io/v1beta1
 kind: ProxyConfig
 metadata:
@@ -210,7 +210,7 @@ kubectl apply -f bookinfo.yaml
 To test your setup, make some requests to one of the services, for example:
 
 ```shell
-kubectl exec "$(k get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}')" -c ratings -- curl -sS productpage:9080/productpage | grep -o "<title>.*</title>"
+kubectl exec "$(kubectl get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}')" -c ratings -- curl -sS productpage:9080/productpage | grep -o "<title>.*</title>"
 ```
 
 Then you can check it out on the Jaeger UI -- you should see some traces!

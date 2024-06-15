@@ -6,5 +6,5 @@
 {{- end }}
 
 {{ define "list-item" -}}
-- [{{ .name }}]({{ .page.RelPermalink }})
+- <a href="{{ .page.RelPermalink }}">{{ .name }}</a>
 {{ end -}}
