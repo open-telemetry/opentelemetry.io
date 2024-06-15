@@ -1283,6 +1283,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-04-30T15:56:23.493141+02:00"
   },
+  "https://docs.kubewarden.io/howtos/telemetry/opentelemetry-qs": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-14T13:15:13.45959329Z"
+  },
   "https://docs.lightstep.com/docs/about-sending-data": {
     "StatusCode": 206,
     "LastSeen": "2024-05-13T07:15:59.231698318Z"
@@ -5390,6 +5394,10 @@
   "https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/": {
     "StatusCode": 206,
     "LastSeen": "2024-04-25T00:01:10.120654-04:00"
+  },
+  "https://kubewarden.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-14T13:15:10.829761422Z"
   },
   "https://kuma.io/": {
     "StatusCode": 206,
