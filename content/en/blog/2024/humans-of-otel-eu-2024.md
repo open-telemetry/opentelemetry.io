@@ -1,7 +1,7 @@
 ---
 title: The Humans OpenTelemetry - KubeCon EU 2024
 linkTitle: Humans of OTel EU 2024
-date: 2024-06-11
+date: 2024-06-15
 author: >-
   [Adriana Villela](https://github.com/avillela) (ServiceNow),
 issue: 4660
