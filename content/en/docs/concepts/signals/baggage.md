@@ -75,6 +75,15 @@ Because one of the most common use cases for Baggage is to add data to
 trace, several languages have Baggage Span Processors that automatically read
 Baggage values and add them as attributes for you.
 
+## Baggage is only for observability data
+
+Although Baggage does support propagating arbitrary key:value pairs across
+services, it is not a replacement for programmatic data flow. Because Baggage
+is stored in HTTP headers, not only does this mean the data is available for
+anyone who can read those headers to consume, but it would be a poor choice
+to propagate general program data given the practical limits HTTP servers
+place on header lengths.
+
 > For more information, see the [baggage specification][].
 
 [baggage specification]: /docs/specs/otel/overview/#baggage-signal
