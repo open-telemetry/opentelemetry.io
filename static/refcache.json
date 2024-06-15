@@ -2603,6 +2603,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-25T10:54:57.162378745Z"
   },
+  "https://github.com/dodegaard": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-11T16:23:01.189039-04:00"
+  },
   "https://github.com/dominicfraser": {
     "StatusCode": 200,
     "LastSeen": "2024-02-26T10:53:39.237712+01:00"
@@ -2823,6 +2827,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:12:13.077443-05:00"
   },
+  "https://github.com/jiekun": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-11T16:23:07.614161-04:00"
+  },
   "https://github.com/jjatria/mojolicious-plugin-opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:16:07.775541-05:00"
@@ -2870,6 +2878,10 @@
   "https://github.com/jufab/opentelemetry-angular-interceptor": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:12:01.969688-05:00"
+  },
+  "https://github.com/kaylareopelle": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-11T16:22:58.076066-04:00"
   },
   "https://github.com/kdhamric": {
     "StatusCode": 200,
@@ -9782,6 +9794,10 @@
   "https://www.youtube.com/@otel-official": {
     "StatusCode": 200,
     "LastSeen": "2024-04-15T11:38:45.271323+02:00"
+  },
+  "https://www.youtube.com/embed/bsfMECwmsm0": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-11T15:07:48.452896-04:00"
   },
   "https://www.youtube.com/embed/coPrhP_7lVU": {
     "StatusCode": 200,
