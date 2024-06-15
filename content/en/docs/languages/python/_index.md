@@ -11,7 +11,7 @@ weight: 22
 
 ## Version support
 
-OpenTelemetry-Python supports Python 3.6 and higher.
+OpenTelemetry-Python supports Python 3.8 and higher.
 
 ## Installation
 

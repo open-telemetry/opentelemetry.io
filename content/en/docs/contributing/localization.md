@@ -3,7 +3,7 @@ title: Site localization
 description:
   Guidance on creating and maintaining site page in non-English localizations.
 linkTitle: Localization
-weight: 20
+weight: 25
 ---
 
 {{% pageinfo color="warning" %}}
@@ -16,6 +16,28 @@ This website uses Hugo's [multilingual framework] to support page localizations.
 English is the default language, with US English as the default (implicit) localization.
 A growing number of other localizations are supported, as can be seen from the languages
 dropdown menu in the top nav.
+
+## Translation tips
+
+When you translate page content, follow this guidance:
+
+- To ensure that heading anchor targets are uniform across localizations, when
+  translating headings:
+  - If the heading has an explicit ID (which is of the form `{ #some-id }` and
+    comes after the heading text), then preserve the given ID
+  - Otherwise, include a heading ID corresponding to the original English
+    heading text.
+- For link references that are local paths, preserve the path _as is_.
+
+{{% alert title="Note" %}}
+
+This repository has a custom render-link hook that Hugo uses to convert
+**absolute link paths to documentation pages** that are of the form
+`/docs/some-page`, to be locale specific, by prefixing the path with page
+language code when rendering the link. For example, the previous sample path
+would become `/ja/docs/some-page` when rendered from a Japanese page.
+
+{{% /alert %}}
 
 ## Keeping track of localized page drift {#track-changes}
 

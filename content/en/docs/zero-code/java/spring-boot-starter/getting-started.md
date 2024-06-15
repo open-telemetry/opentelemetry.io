@@ -13,7 +13,7 @@ application. For the pros and cons, see [Java zero-code instrumentation](..).
 
 ### Compatibility
 
-The OpenTelemetry Spring Boot starter works with Spring Boot 2.6+ and 3.0+, and
+The OpenTelemetry Spring Boot starter works with Spring Boot 2.6+ and 3.1+, and
 Spring Boot native image applications. The
 [opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native)
 repository contains an example of a Spring Boot Native image application
