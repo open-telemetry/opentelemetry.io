@@ -8,7 +8,9 @@ tags:
   - instrumentation
   - github
 license: Apache 2.0
-description: An unofficial implementation of OpenTelemetry (traces, metrics and logs) for shell scripts (sh, dash, bash, ...) and for GitHub Actions.
+description:
+  An unofficial implementation of OpenTelemetry (traces, metrics and logs) for
+  shell scripts (sh, dash, bash, ...) and for GitHub Actions.
 authors:
   - name: Philipp Lengauer
     email: p.lengauer@gmail.com
