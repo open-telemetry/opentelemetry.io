@@ -1,0 +1,20 @@
+# cSpell:ignore Philipp Lengauer
+title: OpenTelemetry for shell scripts and GitHub actions
+registryType: core
+language: shell
+tags:
+  - shell
+  - bash
+  - instrumentation
+  - github
+license: Apache 2.0
+description:
+  An unofficial implementation of OpenTelemetry (traces, metrics and logs) for
+  shell scripts (sh, dash, bash, ...) and for GitHub Actions.
+authors:
+  - name: Philipp Lengauer
+    email: p.lengauer@gmail.com
+    url: https://github.com/plengauer
+urls:
+  repo: https://github.com/plengauer/opentelemetry-bash
+createdAt: 2024-06-12
