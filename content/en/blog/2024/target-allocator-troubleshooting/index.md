@@ -23,8 +23,8 @@ these help you on your own journey!
 ## Troubleshooting Steps
 
 Before we start, be sure to check out
-[this repo](https://github.com/avillela/otel-target-allocator-talk), which,
-among other things, includes examples of configuring the
+[this repository](https://github.com/avillela/otel-target-allocator-talk),
+which, among other things, includes examples of configuring the
 `OpenTelemetryCollector` custom resource (CR) to use the Target Allocator’s
 service discovery functionality, along with examples of
 [`ServiceMonitor`](https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/#:~:text=The%20ServiceMonitor%20is%20used%20to,build%20the%20required%20Prometheus%20configuration.)
@@ -38,7 +38,7 @@ Okay…you may be laughing at me for how obvious this sounds, but it totally
 happened to me. In fact, it happened while I was adding the
 [`PodMonitor`](https://github.com/avillela/otel-target-allocator-talk/blob/main/src/resources/04a-pod-monitor.yml)
 example to the
-[my repo](https://github.com/avillela/otel-target-allocator-talk).
+[my repository](https://github.com/avillela/otel-target-allocator-talk).
 
 After checking to see if the service discovery was working per step 2 below
 (spoiler: it wasn’t), I went through all of the other troubleshooting steps.
@@ -122,8 +122,8 @@ Where `<otel_collector_resource_name>` is the value of `metadata.name` in your
 `OpenTelemetryCollector` CR is deployed.
 
 Following the example from our
-[example repo](https://github.com/avillela/otel-target-allocator-talk), ours
-would look like this:
+[example repository](https://github.com/avillela/otel-target-allocator-talk),
+ours would look like this:
 
 ```shell
 kubectl port-forward svc/otelcol-targetallocator -n opentelemetry 8080:80
