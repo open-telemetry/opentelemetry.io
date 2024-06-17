@@ -5,11 +5,11 @@ description: Contextual information that is passed between signals.
 ---
 
 In OpenTelemetry, Baggage is contextual information that resides next to
-context. Baggage is a key:value store, which means it lets you propagate any
-data you like alongside context.
+context. Baggage is a key-value store, which means it lets you [propagate](/docs/concepts/context-propagation/#propagation) any
+data you like alongside [context](/docs/concepts/context-propagation/#context).
 
 Baggage means you can pass data across services and processes, making it
-available to add to trace, metrics, or logs in those services.
+available to add to [trace](/docs/concepts/signals/traces/), [metrics](/docs/concepts/signals/metrics/), or [logs](/docs/concepts/signals/logs/) in those services.
 
 ## Example
 
@@ -23,7 +23,7 @@ multiple services, you need some way to propagate that data without copying the
 
 By using
 [Context Propagation](/docs/concepts/signals/traces/#context-propagation) to
-pass Baggage across these services, the `clientId` is available to add to any
+pass baggage across these services, the `clientId` is available to add to any
 additional spans, metrics, or logs. Additionally, instrumentations automatically
 propagate baggage for you.
 
@@ -35,7 +35,7 @@ Baggage is best used to include information typically available only at the
 start of a request further downstream. This can include things like Account
 Identification, User IDs, Product IDs, and origin IPs, for example.
 
-Propagating this information via Baggage allows for deeper analysis of telemetry
+Propagating this information using baggage allows for deeper analysis of telemetry
 in a backend. For example, if you include information like a User ID on a span
 that tracks a database call, you can much more easily answer questions like
 "which users are experiencing the slowest database calls?" You can also log
@@ -59,7 +59,7 @@ yours, so exercise caution when reading them.
 
 ## Baggage is not the same as attributes
 
-An important thing to note about Baggage is that it is a separate key:value
+An important thing to note about baggage is that it is a separate key-value
 store and is unassociated with attributes on spans, metrics, or logs.
 
 To add Baggage entries to attributes, you need to explicitly read that data and
@@ -77,8 +77,8 @@ Baggage values and add them as attributes for you.
 
 ## Baggage is only for observability data
 
-Although Baggage does support propagating arbitrary key:value pairs across
-services, it is not a replacement for programmatic data flow. Because Baggage is
+Although Baggage does support propagating arbitrary key-value pairs across
+services, it is not a replacement for programmatic data flow. Because baggage is
 stored in HTTP headers, not only does this mean the data is available for anyone
 who can read those headers to consume, but it would be a poor choice to
 propagate general program data given the practical limits HTTP servers place on
