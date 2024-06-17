@@ -327,6 +327,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:05.306086-05:00"
   },
+  "https://cloud-native.slack.com/archives/C01LSCJBXDZ": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-13T19:50:17.347862467Z"
+  },
   "https://cloud-native.slack.com/archives/C01N5UCHTEH": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:56.992279-05:00"
@@ -7706,6 +7710,10 @@
   "https://promcon.io/2022-munich/talks/native-histograms-in-prometheus/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:01:24.93578-05:00"
+  },
+  "https://prometheus.github.io/client_java/otel/otlp/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-13T19:50:16.163446592Z"
   },
   "https://prometheus.io": {
     "StatusCode": 206,
