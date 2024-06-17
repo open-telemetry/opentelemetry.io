@@ -6,6 +6,7 @@ author: '[Adriana Villela](https://github.com/avillela) (ServiceNow)'
 canonical_url: https://adri-v.medium.com/de9eca2b78b4
 issue: 4699
 sig: OTel Operator
+cSpell:ignore: automagically bleh
 ---
 
 ![Looking up at the glass pyramid at the Louvre, as seen from the inside. Photo by Adriana Villela](louvre-pyramid.jpg)
@@ -33,7 +34,7 @@ resource definitions.
 
 ### 1- Did you actually deploy all of your resources to Kubernetes?
 
-Okay…you may be lauging at me for how obvious this sounds, but it totally
+Okay…you may be laughing at me for how obvious this sounds, but it totally
 happened to me. In fact, it happened while I was adding the
 [`PodMonitor`](https://github.com/avillela/otel-target-allocator-talk/blob/main/src/resources/04a-pod-monitor.yml)
 example to the
@@ -47,10 +48,10 @@ all of my configurations _looked_ correct. Yeah…too bad the resource wasn’t
 actually deployed.
 
 In a flash of inspiration, I decided to check to make sure that the `PodMonitor`
-was _actually deloyed to my Kubernetes cluster_, and lo and behold…it was
-missing. After I deployed the `PodMonitor` (for realsies, this time), it worked.
-At least I take comfort in the fact that my configurations were correct the
-whole time! 🫠
+was _actually deployed to my Kubernetes cluster_, and lo and behold…it was
+missing. After I deployed the `PodMonitor` (for real, this time), it worked. At
+least I take comfort in the fact that my configurations were correct the whole
+time! 🫠
 
 So yeah…moral of the story: make sure you actually deploy your resources.
 
@@ -89,7 +90,7 @@ spec:
     - port: py-server-port
 ```
 
-and this `Service` defintion:
+and this `Service` definition:
 
 ```yaml
 apiVersion: v1
@@ -249,16 +250,16 @@ Sample output:
 }
 ```
 
-> **PS:** Shoutout to
+> **PS:** Shout out to
 > [this blog post](https://trstringer.com/opentelemetry-target-allocator-troubleshooting/)
 > for educating me about this troubleshooting technique
 
 ### 3- Is the Target Allocator enabled? Is Prometheus service discovery enabled?
 
 If the `curl` commands above don’t show a list of expected `ServiceMonitor`s and
-`PodMonitor`s, then it’s time to dig a bit deepr.
+`PodMonitor`s, then it’s time to dig a bit deeper.
 
-One thing to rememer is that just because you include the `targetAllocator`
+One thing to remember is that just because you include the `targetAllocator`
 section in the `OpenTelemetryCollector` CR doesn’t mean that it’s enabled. You
 need to explicitly enable it. Furthermore, if you want to use
 [Prometheus service discovery](https://adri-v.medium.com/prometheus-opentelemetry-better-together-41dc637f2292),
@@ -284,7 +285,7 @@ spec:
       enabled: true
 ```
 
-📝 You can see the full `OpenTelemetryCollector` resource definiton
+📝 You can see the full `OpenTelemetryCollector` resource definition
 [here](https://github.com/avillela/otel-target-allocator-talk/blob/main/src/resources/02-otel-collector.yml).
 
 ### 4- Did you configure a ServiceMonitor (or PodMonitor) selector?
@@ -421,7 +422,7 @@ The above`ServiceMonitor` is looking for any services that have:
 - a port named `prom`, `py-client-port`, _or_ `py-server-port`
 
 So for example, the `Service` resource below would get picked up by the
-`ServiceMonitor`, because it matchces the above criteria:
+`ServiceMonitor`, because it matches the above criteria:
 
 ```yaml
 apiVersion: v1
