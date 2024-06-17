@@ -167,7 +167,7 @@ Where `serviceMonitor/opentelemetry/sm-example/0` represents one of the
   `Service`
 
 We see a similar story with the port monitor, which shows up as
-`podMonitor/opentelemetry/pm-example/0` in the `curl `output.
+`podMonitor/opentelemetry/pm-example/0` in the `curl` output.
 
 This is good news, because it tells us that the service discovery is working!
 

@@ -63,6 +63,18 @@
     "StatusCode": 200,
     "LastSeen": "2024-04-25T00:01:01.348993-04:00"
   },
+  "https://adri-v.medium.com/de9eca2b78b4": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-17T17:28:04.380461-04:00"
+  },
+  "https://adri-v.medium.com/lets-learn-about-the-otel-operator-s-target-allocator-47a2b1f07562": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-17T17:28:07.694142-04:00"
+  },
+  "https://adri-v.medium.com/list/opentelemetry-operator-0ee6378d630a": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-17T17:28:09.051239-04:00"
+  },
   "https://adri-v.medium.com/prometheus-opentelemetry-better-together-41dc637f2292": {
     "StatusCode": 200,
     "LastSeen": "2024-04-25T00:01:03.277893-04:00"
@@ -210,6 +222,10 @@
   "https://betterstack.com/docs/logs/open-telemetry/#2-setup": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:47.668996-05:00"
+  },
+  "https://blog.devgenius.io/lets-learn-about-auto-instrumentation-with-the-otel-operator-2cdc8a532514": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-17T17:28:14.951279-04:00"
   },
   "https://blog.logrocket.com/understanding-schema-stitching-graphql/": {
     "StatusCode": 200,
@@ -2442,6 +2458,10 @@
   "https://github.com/avillela/otel-errors-talk": {
     "StatusCode": 200,
     "LastSeen": "2024-03-27T00:26:43.376792984Z"
+  },
+  "https://github.com/avillela/otel-target-allocator-talk": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-17T17:28:10.006957-04:00"
   },
   "https://github.com/aws-observability/aws-otel-collector": {
     "StatusCode": 200,
@@ -6087,6 +6107,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-02-09T11:48:44.205582+01:00"
   },
+  "https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/#:~:text=The%20ServiceMonitor%20is%20used%20to,build%20the%20required%20Prometheus%20configuration.": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-17T17:28:11.227765-04:00"
+  },
   "https://observiq.com/blog/what-are-connectors-in-opentelemetry/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:06:02.410999-05:00"
@@ -7671,6 +7695,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:01:24.93578-05:00"
   },
+  "https://prometheus-operator.dev/docs/user-guides/getting-started/#using-podmonitors": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-17T17:28:12.776016-04:00"
+  },
   "https://prometheus.io": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:07:18.12399-05:00"
@@ -8514,6 +8542,10 @@
   "https://traefik.io/traefik-hub/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:07:34.195677-05:00"
+  },
+  "https://trstringer.com/opentelemetry-target-allocator-troubleshooting/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-17T17:28:13.442431-04:00"
   },
   "https://tyk.io": {
     "StatusCode": 206,
