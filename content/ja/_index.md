@@ -4,7 +4,7 @@ description: >-
   効果的な観測を可能にする、高品質でユビキタスかつポータブルなテレメトリー
 developer_note: blocks/coverコラム（以下で使用）は、ファイル名に "background" を含む画像ファイルを背景画像として使用します。
 show_banner: true
-default_lang_commit: c2cd5b14
+default_lang_commit: e89a198
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
