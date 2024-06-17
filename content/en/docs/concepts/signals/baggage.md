@@ -9,7 +9,7 @@ context. Baggage is a key-value store, which means it lets you [propagate](/docs
 data you like alongside [context](/docs/concepts/context-propagation/#context).
 
 Baggage means you can pass data across services and processes, making it
-available to add to [trace](/docs/concepts/signals/traces/), [metrics](/docs/concepts/signals/metrics/), or [logs](/docs/concepts/signals/logs/) in those services.
+available to add to [traces](/docs/concepts/signals/traces/), [metrics](/docs/concepts/signals/metrics/), or [logs](/docs/concepts/signals/logs/) in those services.
 
 ## Example
 
@@ -60,7 +60,7 @@ yours, so exercise caution when reading them.
 ## Baggage is not the same as attributes
 
 An important thing to note about baggage is that it is a separate key-value
-store and is unassociated with attributes on spans, metrics, or logs.
+store and is unassociated with attributes on spans, metrics, or logs without explicitly adding them.
 
 To add Baggage entries to attributes, you need to explicitly read that data and
 add it. For example, in .NET you might do this:
