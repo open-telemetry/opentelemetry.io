@@ -172,6 +172,15 @@ preferred Prometheus' conventions listed OpenTelemetry's new concepts as
 confusing, and were unhappy that OpenTelemetry had deviated from Prometheus'
 existing conventions.
 
+For the most part, this feedback aligns with the future plans in the
+OpenTelemetry and Prometheus communities. The OpenTelemetry semantic conventions
+SIG is working on stabilizing conventions for a a wide variety of
+instrumentation. The OpenTelemetry Prometheus interoperability SIG is working on
+incorporating the results of this survey into the compatibility specification.
+The Prometheus community has
+[ambitious plans](https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/)
+to add support for OpenTelemetry concepts.
+
 # Keep in touch
 
 Thanks again to everyone who participated in the survey! We rely on your
@@ -182,3 +191,7 @@ following avenues:
 - [#otel-sig-end-user Slack channel](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
   – you can also reach out to us here!
 - [End user resources page](/community/end-user/)
+
+You can provide further feedback or participate in discussions concerning
+OpenTelemetry and Prometheus interoperability in the
+[#otel-prometheus-wg Slack channel](https://cloud-native.slack.com/archives/C01LSCJBXDZ).
