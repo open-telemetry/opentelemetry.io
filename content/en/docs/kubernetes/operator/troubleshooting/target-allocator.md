@@ -1,6 +1,5 @@
 ---
 title: Troubleshooting the Target Allocator
-description: Tips for troubleshooting the Target Allocator
 cSpell:ignore: bleh targetallocator
 ---
 
@@ -13,13 +12,13 @@ track.
 
 ## Troubleshooting Steps
 
-### 1- Did you deploy all of your resources to Kubernetes?
+### Did you deploy all of your resources to Kubernetes?
 
 Although this may seem obvious and straightforward, it can happen! First things
 first: make sure that you have deployed all relevant resources to your
 Kubernetes cluster.
 
-### 2- Do you know if metrics are actually being scraped?
+### Do you know if metrics are actually being scraped?
 
 After you’ve deployed all of your resources to Kubernetes, check to make sure
 that the Target Allocator is actually scraping metrics from your
@@ -269,7 +268,7 @@ for more information on the `/jobs` endpoint.
 
 {{% /alert %}}
 
-### 3- Is the Target Allocator enabled? Is Prometheus service discovery enabled?
+### Is the Target Allocator enabled? Is Prometheus service discovery enabled?
 
 If the `curl` commands above don’t show a list of expected `ServiceMonitor`s and
 `PodMonitor`s, then it’s time to dig a bit deeper.
@@ -303,7 +302,7 @@ spec:
 For more detail, see the full `OpenTelemetryCollector`
 [resource definition in step 2 above](#2--do-you-know-if-metrics-are-actually-beingscraped).
 
-### 4- Did you configure a ServiceMonitor (or PodMonitor) selector?
+### Did you configure a ServiceMonitor (or PodMonitor) selector?
 
 If you configured a
 [`ServiceMonitor`](https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/#:~:text=The%20ServiceMonitor%20is%20used%20to,build%20the%20required%20Prometheus%20configuration.)
@@ -367,10 +366,10 @@ need to have that same label.
 
 {{% /alert %}}
 
-### 5- Did you leave out the serviceMonitorSelector and/or podMonitorSelector configuration altogether?
+### Did you leave out the serviceMonitorSelector and/or podMonitorSelector configuration altogether?
 
 As we saw in
-[step 4](#4--did-you-configure-a-servicemonitor-or-podmonitor-selector), setting
+["Did you configure a ServiceMonitor or PodMonitor selector"](#4--did-you-configure-a-servicemonitor-or-podmonitor-selector), setting
 mismatched values for `serviceMonitorSelector` and `podMonitorSelector` results
 in your `ServiceMonitors` and `PodMonitors`, respectively, not getting picked
 up.
@@ -395,7 +394,7 @@ prometheusCR:
 See the
 [full OpenTelemetryCollector definition in step 2](#2--do-you-know-if-metrics-are-actually-beingscraped).
 
-### 6- Do your labels, namespaces, and ports match for your ServiceMonitor and your Service (or PodMonitor and your Pod)?
+### Do your labels, namespaces, and ports match for your ServiceMonitor and your Service (or PodMonitor and your Pod)?
 
 The `ServiceMonitor` is configured to pick up Kubernetes
 [Services](https://kubernetes.io/docs/concepts/services-networking/service/)
