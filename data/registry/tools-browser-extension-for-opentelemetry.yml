@@ -1,5 +1,5 @@
 # cSpell:ignore firefox autoinstrumentation Autoinjection Brockman
-title: OpenTelemetry Browser Extension
+title: Browser Extension for OpenTelemetry
 registryType: utilities
 language: js
 tags:
@@ -13,11 +13,11 @@ tags:
   - edge-extension
   - autoinstrumentation
 urls:
-  repo: https://github.com/tbrockman/opentelemetry-browser-extension
-  docs: https://github.com/tbrockman/opentelemetry-browser-extension#opentelemetry-browser-extension
+  repo: https://github.com/tbrockman/browser-extension-for-opentelemetry
+  docs: https://github.com/tbrockman/browser-extension-for-opentelemetry?tab=readme-ov-file#browser-extension-for-opentelemetry
 license: GPL-3.0
 description: |
-  A highly-configurable browser extension that automatically instruments webpages with OpenTelemetry (which avoids any webpage CSP issues!).
+  A highly-configurable browser extension that automatically instruments webpages to emit OpenTelemetry data (while avoiding content-security policy issues!).
   Very similar to the archived "OpenTelemetry Browser Extension Autoinjection", but with a few more features and a slightly different approach to content-script injection.
 authors:
   - name: Theodore Brockman
