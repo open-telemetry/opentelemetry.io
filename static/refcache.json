@@ -9423,6 +9423,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:17:13.880643+01:00"
   },
+  "https://www.nuget.org/packages/Oracle.ManagedDataAccess": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-18T12:21:47.484668425Z"
+  },
+  "https://www.nuget.org/packages/Oracle.ManagedDataAccess.Core": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-18T12:21:45.893563793Z"
+  },
   "https://www.nuget.org/packages/Purview.Telemetry.SourceGenerator": {
     "StatusCode": 200,
     "LastSeen": "2024-04-26T09:57:50.691575342+01:00"
