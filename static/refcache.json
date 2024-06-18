@@ -4891,6 +4891,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-06-06T14:51:47.628909-04:00"
   },
+  "https://gohugo.io/documentation/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-18T10:36:41.646389+02:00"
+  },
   "https://gohugo.io/methods/site/regularpages/": {
     "StatusCode": 206,
     "LastSeen": "2024-06-07T12:38:33.735717-04:00"
@@ -4970,6 +4974,14 @@
   "https://graphql.org/learn/queries/#mutations": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:02:58.077563-05:00"
+  },
+  "https://groups.google.com/a/opentelemetry.io/g/calendar-comms": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-18T10:36:39.590318+02:00"
+  },
+  "https://groups.google.com/a/opentelemetry.io/g/calendar-maintainer-meeting": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-18T10:36:41.220362+02:00"
   },
   "https://grpc.github.io/grpc/core/md_doc_naming.html": {
     "StatusCode": 206,
@@ -8778,6 +8790,10 @@
   "https://www.docsend.com/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:08:30.61479-05:00"
+  },
+  "https://www.docsy.dev/docs/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-18T10:36:42.507515+02:00"
   },
   "https://www.dynatrace.com/news/blog/what-is-opentelemetry-2/": {
     "StatusCode": 200,
