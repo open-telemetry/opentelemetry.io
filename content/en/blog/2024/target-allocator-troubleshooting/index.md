@@ -64,7 +64,7 @@ and/or
 [`PodMonitor`](https://prometheus-operator.dev/docs/user-guides/getting-started/#using-podmonitors)(s).
 Fortunately, you can check this pretty easily.
 
-Let’s suppose that we have this `ServiceMonitor` definition:
+Let’s suppose that you have this `ServiceMonitor` definition:
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
