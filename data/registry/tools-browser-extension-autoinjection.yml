@@ -19,7 +19,8 @@ description: >
 deprecated:
   reason:
     This browser extensions is permanently deprecated. [Other browser extensions
-    are available that provide similar functionality](/ecosystem/registry/?component=utilities&s=browserextension).
+    are available that provide similar
+    functionality](/ecosystem/registry/?component=utilities&s=browserextension).
 
 authors:
   - name: OpenTelemetry Authors
