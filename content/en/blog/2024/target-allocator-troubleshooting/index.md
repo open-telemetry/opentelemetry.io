@@ -62,7 +62,7 @@ that the Target Allocator is actually picking up your
 [`ServiceMonitor`](https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/#:~:text=The%20ServiceMonitor%20is%20used%20to,build%20the%20required%20Prometheus%20configuration.)(s)
 and/or
 [`PodMonitor`](https://prometheus-operator.dev/docs/user-guides/getting-started/#using-podmonitors)(s).
-Fortunately, we can check this pretty easily.
+Fortunately, you can check this pretty easily.
 
 Let’s suppose that we have this `ServiceMonitor` definition:
 
