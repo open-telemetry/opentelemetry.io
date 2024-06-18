@@ -15,13 +15,13 @@ If a contributor steps up to take on a role with more responsibility towards the
 documentation (approver, maintainer) they will be onboarded by existing
 approvers and maintainers:
 
-- They are added to the `docs-approvers` (or `docs-maintainers`) group
+- They are added to the `docs-approvers` (or `docs-maintainers`) group.
 - They are added to the `#otel-comms` and `#otel-maintainers` and private
-  in-team slack channels
+  in-team slack channels.
 - They are asked to enroll for the calendar invites for
   [SIG Comms meeting](https://groups.google.com/a/opentelemetry.io/g/calendar-comms)
   and
-  [maintainers meeting](https://groups.google.com/a/opentelemetry.io/g/calendar-maintainer-meeting)
+  [maintainers meeting](https://groups.google.com/a/opentelemetry.io/g/calendar-maintainer-meeting).
 - They are asked to verify that the current meeting time for SIG Comms works for
   them and if not to collaborate with existing approvers and maintainers to find
   a time that suits everyone.
@@ -37,9 +37,9 @@ approvers and maintainers:
 
 Additional valuable resources to review are
 
-- [Hugo Documentation](https://gohugo.io/documentation/)
-- [docsy Documentation](https://www.docsy.dev/docs/)
-- [Marketing Guidelines](/community/marketing-guidelines/), including the Linux
+- [Hugo documentation](https://gohugo.io/documentation/)
+- [Docsy documentation](https://www.docsy.dev/docs/)
+- [Marketing guidelines](/community/marketing-guidelines/), including the Linux
   Foundation’s branding and
   [trademark usage guidelines](https://www.linuxfoundation.org/legal/trademark-usage).
   Those are especially valuable when reviewing entries to the registry,
@@ -48,7 +48,7 @@ Additional valuable resources to review are
 ## Collaboration
 
 - Approvers and maintainers have different work schedules and circumstances.
-  That's why all communication is assumed to be asynchronously and they should
+  That's why all communication is assumed to be asynchronous and they should
   not feel obligated to reply outside of their normal schedule.
 - When an approver or maintainer won't be available to contribute for an
   extended period of time (more than a few days or a week) or won't be available
@@ -89,26 +89,26 @@ language-specific...) should aim for two approvals: one by a docs approver and
 one by a SIG approver:
 
 - Doc approver label such PRs with `sig:<name>` and tag the SIG `-approvers`
-  group on that PR
+  group on that PR.
 - After a doc approver has reviewed and approved the PR, they can add the label
   [`sig-approval-missing`](https://github.com/open-telemetry/opentelemetry.io/labels/sig-approval-missing).
-  This signals to the SIG that they need to handle the PR
+  This signals to the SIG that they need to handle the PR.
 - If no SIG approval is given within a certain grace period (two weeks in
   general, but may be less in urgent cases), docs maintainer may use their own
-  judgement to merge that PR
+  judgement to merge that PR.
 
 ### PRs from bots
 
 PRs created by bots can be merged by the following practice:
 
 - PRs that auto-update versions in the registry can be fixed, approved and
-  merged immediately
+  merged immediately.
 - PRs that auto-update the versions of SDKs, zero-code instrumentations or the
   collector can be approved and merged except the corresponding SIG signals that
-  merging should be postponed
+  merging should be postponed.
 - PRs that auto-update the version of any specification often require updates to
-  scripts for the CI checks to pass. In that case often
-  [@chalin](https://github.com/chalin/) will handle that PR. Otherwise those PRs
+  scripts for the CI checks to pass. In that case
+  [@chalin](https://github.com/chalin/) will handle the PR. Otherwise those PRs
   can as well be approved and merged except the corresponding SIG signals that
   merging should be postponed.
 
@@ -122,7 +122,7 @@ for the co-owned PRs.
 
 The following workflow can be applied by maintainers to merge PRs:
 
-- Make sure that a PR has all approvals and all CI checks pass
+- Make sure that a PR has all approvals and all CI checks pass.
 - If the branch is out-of-date, rebase update it via the GitHub UI.
 - The update will trigger all CI checks to run again, wait for them to pass or
   execute a script like the following to make it happen in the background:
