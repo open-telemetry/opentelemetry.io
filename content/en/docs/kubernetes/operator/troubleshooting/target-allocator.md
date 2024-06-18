@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting the Target Allocator
 description: Tips for troubleshooting the Target Allocator
-cSpell:ignore: automagically bleh
+cSpell:ignore: bleh targetallocator
 ---
 
 If you’ve enabled
@@ -362,7 +362,7 @@ The same applies if you’re using a
 [PodMonitor](https://prometheus-operator.dev/docs/user-guides/getting-started/#using-podmonitors).
 In that case, if your `OpenTelemetryCollector`resource defined a
 [`podMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr),
-then any `PodMonitors` you wish to be picked up by the TargetAllocator would
+then any `PodMonitors` you wish to be picked up by the Target Allocator would
 need to have that same label.
 
 {{% /alert %}}
@@ -381,7 +381,7 @@ of the `OpenTelemetryCollector` CR, leaving out this configuration altogether,
 your `PodMonitors` and `ServiceMonitors` might also not get picked up.
 
 As of `v1beta1` of the `OpenTelemetryOperator`, a `serviceMonitorSelector`, and
-`podMonitorSelector` nust be included, even if you don’t intend to use it, like
+`podMonitorSelector` must be included, even if you don’t intend to use it, like
 this:
 
 ```yaml
