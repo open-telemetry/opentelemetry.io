@@ -71,10 +71,10 @@ I, [2021-02-23T13:26:23.505892 #22473]  INFO -- : [6459ffe1-ea53-4044-aaa3-bf902
 スパンは、リクエストが行う特定の操作を追跡し、その操作が実行された時間に何が起こったかを説明してくれます。
 
 ..
-  A span contains name, time-related data,
-  [structured log messages](/docs/concepts/signals/traces/#span-events), and
-  [other metadata (that is, Attributes)](/docs/concepts/signals/traces/#attributes)
-  to provide information about the operation it tracks.
+A span contains name, time-related data,
+[structured log messages](/docs/concepts/signals/traces/#span-events), and
+[other metadata (that is, Attributes)](/docs/concepts/signals/traces/#attributes)
+to provide information about the operation it tracks.
 
 スパンには、名前、時間関連データ、[構造化ログメッセージ](/docs/concepts/signals/traces/#span-events)、[その他のメタデータ(つまり属性)](/docs/concepts/signals/traces/#attributes)が含まれ、追跡する操作に関する情報を提供します。
 
@@ -84,7 +84,7 @@ I, [2021-02-23T13:26:23.505892 #22473]  INFO -- : [6459ffe1-ea53-4044-aaa3-bf902
 
 次の表はスパン属性の例を列挙しています。
 
-| キー                         | 値                                                                                 |
+| キー                        | 値                                                                                 |
 | :-------------------------- | :--------------------------------------------------------------------------------- |
 | `http.request.method`       | `"GET"`                                                                            |
 | `network.protocol.version`  | `"1.1"`                                                                            |
@@ -96,17 +96,12 @@ I, [2021-02-23T13:26:23.505892 #22473]  INFO -- : [6459ffe1-ea53-4044-aaa3-bf902
 | `http.route`                | `"/webshop/articles/:article_id"`                                                  |
 | `http.response.status_code` | `200`                                                                              |
 | `client.address`            | `"192.0.2.4"`                                                                      |
-| `client.socket.address`     | `"192.0.2.5"` （クライアントはプロキシ経由）                                    |
+| `client.socket.address`     | `"192.0.2.5"` （クライアントはプロキシ経由）                                       |
 | `user_agent.original`       | `"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0"` |
 
 スパンと OpenTelemetry との関係については、[スパン](/docs/concepts/signals/traces/#span)の節を参照してください。
 
 ### 分散トレース {#distributed-traces}
-
-..
-  A **distributed trace**, more commonly known as a **trace**, records the paths
-  taken by requests (made by an application or end-user) as they propagate through
-  multi-service architectures, like microservice and serverless applications.
 
 一般的に**トレース**として知られている**分散トレース**は、マイクロサービスやサーバーレスアプリケーションのようなマルチサービスアーキテクチャを伝播するリクエスト（アプリケーションまたはエンドユーザーによって行われる）が辿った経路を記録します。
 
