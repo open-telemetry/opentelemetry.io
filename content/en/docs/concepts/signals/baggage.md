@@ -62,18 +62,13 @@ yours, so exercise caution when reading them.
 An important thing to note about baggage is that it is a separate key-value
 store and is unassociated with attributes on spans, metrics, or logs without explicitly adding them.
 
-To add Baggage entries to attributes, you need to explicitly read that data and
-add it. For example, in .NET you might do this:
+To add baggage entries to attributes, you need to explicitly read the data
+from baggage and add it as attributes to your spans, metrics, or logs.
 
-```csharp
-var accountId = Baggage.GetBaggage("AccountId");
-Activity.Current?.SetTag("AccountId", accountId);
-```
-
-Because one of the most common use cases for Baggage is to add data to
+Because a common use cases for Baggage is to add data to
 [Span Attributes](/docs/concepts/signals/traces/#attributes) across a whole
-trace, several languages have Baggage Span Processors that automatically read
-Baggage values and add them as attributes for you.
+trace, several languages have Baggage Span Processors that add data from
+baggage as attributes on span creation.
 
 ## Baggage is only for observability data
 
