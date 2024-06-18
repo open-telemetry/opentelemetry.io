@@ -121,9 +121,9 @@ Where `<otel_collector_resource_name>` is the value of `metadata.name` in your
 `OpenTelemetryCollector` CR, and `<namespace>` is the namespace to which the
 `OpenTelemetryCollector` CR is deployed.
 
-Following the example from our
+Based on the
 [example repository](https://github.com/avillela/otel-target-allocator-talk),
-ours would look like this:
+yours looks like this:
 
 ```shell
 kubectl port-forward svc/otelcol-targetallocator -n opentelemetry 8080:80
