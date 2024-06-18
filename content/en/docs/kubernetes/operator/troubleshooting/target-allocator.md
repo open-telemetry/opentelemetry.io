@@ -13,15 +13,6 @@ track.
 
 ## Troubleshooting Steps
 
-[This repository](https://github.com/avillela/otel-target-allocator-talk)
-includes examples of configuring the `OpenTelemetryCollector` custom resource
-(CR) to use the Target Allocator’s service discovery functionality, along with
-examples of
-[`ServiceMonitor`](https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/#:~:text=The%20ServiceMonitor%20is%20used%20to,build%20the%20required%20Prometheus%20configuration.)
-and
-[`PodMonitor`](https://prometheus-operator.dev/docs/user-guides/getting-started/#using-podmonitors)
-resource definitions.
-
 ### 1- Did you deploy all of your resources to Kubernetes?
 
 Although this may seem obvious and straightforward, it can happen! First things
@@ -31,12 +22,12 @@ Kubernetes cluster.
 ### 2- Do you know if metrics are actually being scraped?
 
 After you’ve deployed all of your resources to Kubernetes, check to make sure
-that the Target Allocator is actually picking up your
+that the Target Allocator is actually scraping metrics from your
 [`ServiceMonitor`](https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/#:~:text=The%20ServiceMonitor%20is%20used%20to,build%20the%20required%20Prometheus%20configuration.)(s)
 and/or
 [`PodMonitor`](https://prometheus-operator.dev/docs/user-guides/getting-started/#using-podmonitors)(s).
 
-Let’s suppose that you have this `ServiceMonitor` definition:
+Suppose that you have this `ServiceMonitor` definition:
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -62,7 +53,7 @@ spec:
     - port: py-server-port
 ```
 
-and this `Service` definition:
+this `Service` definition:
 
 ```yaml
 apiVersion: v1
@@ -82,24 +73,72 @@ spec:
       port: 8080
 ```
 
+and this `OpenTelemetryCollector` definition:
+
+```yaml
+apiVersion: opentelemetry.io/v1beta1
+kind: OpenTelemetryCollector
+metadata:
+  name: otelcol
+  namespace: opentelemetry
+spec:
+  mode: statefulset
+  image: otel/opentelemetry-collector-contrib:0.102.1
+  targetAllocator:
+    enabled: true
+    serviceAccount: opentelemetry-targetallocator-sa
+    prometheusCR:
+      enabled: true
+      podMonitorSelector: {}
+      serviceMonitorSelector: {}
+  config:
+    receivers:
+      otlp:
+        protocols:
+          grpc: {}
+          http: {}
+      prometheus:
+        config:
+          scrape_configs:
+            - job_name: 'otel-collector'
+              scrape_interval: 10s
+              static_configs:
+                - targets: ['0.0.0.0:8888']
+
+    processors:
+      batch: {}
+
+    exporters:
+      logging:
+        verbosity: detailed
+
+    service:
+      pipelines:
+        traces:
+          receivers: [otlp]
+          processors: [batch]
+          exporters: [logging]
+        metrics:
+          receivers: [otlp, prometheus]
+          processors: []
+          exporters: [logging]
+        logs:
+          receivers: [otlp]
+          processors: [batch]
+          exporters: [logging]
+```
+
 First, set up a `port-forward` in Kubernetes, so that you can expose the Target
 Allocator service:
 
 ```shell
-kubectl port-forward svc/<otel_collector_resource_name>-targetallocator -n <namespace> 8080:80
-```
-
-Where `<otel_collector_resource_name>` is the value of `metadata.name` in your
-`OpenTelemetryCollector` CR, and `<namespace>` is the namespace to which the
-`OpenTelemetryCollector` CR is deployed.
-
-Based on the
-[example repository](https://github.com/avillela/otel-target-allocator-talk),
-yours looks like this:
-
-```shell
 kubectl port-forward svc/otelcol-targetallocator -n opentelemetry 8080:80
 ```
+
+Where `otelcol-targetallocator` is the value of `metadata.name` in your
+`OpenTelemetryCollector` CR concatenated with the `-targetallocator` suffix, and
+`opentelemetry` is the namespace to which the `OpenTelemetryCollector` CR is
+deployed.
 
 Next, get a list of jobs registered with the Target Allocator:
 
@@ -144,7 +183,7 @@ in the `curl` output.
 This is good news, because it tells us that the service discovery is working!
 
 You might also be wondering about the `otel-collector` entry. The Target
-Allocator automagically picks up metrics from the OTel Collector as well.
+Allocator automatically scrapes metrics from the OTel Collector as well.
 
 We can take a deeper look into `serviceMonitor/opentelemetry/sm-example/0`, to
 see what metrics are getting picked up by running `curl` against the value of
@@ -262,7 +301,7 @@ spec:
 ```
 
 For more detail, see the full `OpenTelemetryCollector`
-[resource definition](https://github.com/avillela/otel-target-allocator-talk/blob/main/src/resources/02-otel-collector.yml).
+[resource definition in step 2 above](#2--do-you-know-if-metrics-are-actually-beingscraped).
 
 ### 4- Did you configure a ServiceMonitor (or PodMonitor) selector?
 
@@ -308,7 +347,7 @@ spec:
 ```
 
 For more detail, see the full `ServiceMonitor`
-[resource definition](https://github.com/avillela/otel-target-allocator-talk/blob/main/src/resources/04-service-monitor.yml).
+[resource definition in step 2](#2--do-you-know-if-metrics-are-actually-beingscraped).
 
 In this case, the `OpenTelemetryCollector` resource's
 `prometheusCR.serviceMonitorSelector` is looking only for `ServiceMonitors`
@@ -330,9 +369,11 @@ need to have that same label.
 
 ### 5- Did you leave out the serviceMonitorSelector and/or podMonitorSelector configuration altogether?
 
-As we learned above, setting mismatched values for `serviceMonitorSelector` and
-`podMonitorSelector` results in your `ServiceMonitors` and `PodMonitors`,
-respectively, not getting picked up.
+As we saw in
+[step 4](#4--did-you-configure-a-servicemonitor-or-podmonitor-selector), setting
+mismatched values for `serviceMonitorSelector` and `podMonitorSelector` results
+in your `ServiceMonitors` and `PodMonitors`, respectively, not getting picked
+up.
 
 Similarly, in
 [`v1beta1`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector-1)
@@ -352,7 +393,7 @@ prometheusCR:
 ```
 
 See the
-[full example](https://github.com/avillela/otel-target-allocator-talk/blob/4c0eb425c90187d584c9d03b51ad918b377014a3/src/resources/02-otel-collector.yml#L15-L17).
+[full OpenTelemetryCollector definition in step 2](#2--do-you-know-if-metrics-are-actually-beingscraped).
 
 ### 6- Do your labels, namespaces, and ports match for your ServiceMonitor and your Service (or PodMonitor and your Pod)?
 
@@ -441,8 +482,6 @@ spec:
 {{% alert title="Tip" %}}
 
 If you’re using `PodMonitor`, the same applies, except that it picks up
-Kubernetes _pods_ that match on labels, namespaces, and named ports. For
-example, see this `PodMonitor`
-[resource definition](https://github.com/avillela/otel-target-allocator-talk/blob/main/src/resources/04a-pod-monitor.yml).
+Kubernetes _pods_ that match on labels, namespaces, and named ports.
 
 {{% /alert %}}
