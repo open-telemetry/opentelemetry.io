@@ -7723,6 +7723,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:07:18.145976-05:00"
   },
+  "https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-18T14:24:38.978819371Z"
+  },
   "https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/#support-utf-8-metric-and-label-names": {
     "StatusCode": 206,
     "LastSeen": "2024-06-12T14:28:16.265327643Z"
