@@ -37,7 +37,7 @@ resource definitions.
 Okay…you may be laughing at me for how obvious this sounds, but it totally
 happened to me. In fact, it happened while I was adding the
 [`PodMonitor`](https://github.com/avillela/otel-target-allocator-talk/blob/main/src/resources/04a-pod-monitor.yml)
-example to the
+example to
 [my repository](https://github.com/avillela/otel-target-allocator-talk).
 
 After checking to see if the service discovery was working per step 2 below
