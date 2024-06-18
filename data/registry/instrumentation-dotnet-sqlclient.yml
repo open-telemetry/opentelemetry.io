@@ -7,9 +7,7 @@ tags:
   - instrumentation
   - dotnet
 license: Apache 2.0
-description:
-  This is an Instrumentation Library, which instruments Microsoft.Data.SqlClient
-  and System.Data.SqlClient and collects traces about database operations.
+description: This is an Instrumentation Library, which instruments Microsoft.Data.SqlClient and System.Data.SqlClient and collects traces about database operations.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,4 +16,4 @@ createdAt: 2022-11-07
 package:
   registry: nuget
   name: OpenTelemetry.Instrumentation.SqlClient
-  version: 1.8.0-beta.1
+  version: 1.9.0-beta.1
