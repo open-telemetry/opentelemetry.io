@@ -22,7 +22,7 @@ Kubernetes cluster.
 
 After you’ve deployed all of your resources to Kubernetes, check to make sure
 that the Target Allocator is actually scraping metrics from your
-[`ServiceMonitor`](https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/#:~:text=The%20ServiceMonitor%20is%20used%20to,build%20the%20required%20Prometheus%20configuration.)(s)
+[`ServiceMonitor`](https://prometheus-operator.dev/docs/operator/design/#servicemonitor)(s)
 and/or
 [`PodMonitor`](https://prometheus-operator.dev/docs/user-guides/getting-started/#using-podmonitors)(s).
 
@@ -263,7 +263,7 @@ Sample output:
 {{% alert title="Note" %}}
 
 See the
-[Target Allocator readme](https://github.com/open-telemetry/opentelemetry-operator/blob/b98d5a497713253082e399c4561ac539cc91c5a9/cmd/otel-allocator/README.md?plain=1#L128-L134)
+[Target Allocator readme](https://github.com/open-telemetry/opentelemetry-operator/blob/main/cmd/otel-allocator/README.md?plain=1#L128-L134)
 for more information on the `/jobs` endpoint.
 
 {{% /alert %}}
@@ -300,7 +300,7 @@ spec:
 ```
 
 For more detail, see the full `OpenTelemetryCollector`
-[resource definition in step 2 above](#2--do-you-know-if-metrics-are-actually-beingscraped).
+[resource definition in "Do you know if metrics are actually being scraped?"](#do-you-know-if-metrics-are-actually-beingscraped).
 
 ### Did you configure a ServiceMonitor (or PodMonitor) selector?
 
@@ -346,7 +346,7 @@ spec:
 ```
 
 For more detail, see the full `ServiceMonitor`
-[resource definition in step 2](#2--do-you-know-if-metrics-are-actually-beingscraped).
+[resource definition in "Do you know if metrics are actually being scraped?"](#do-you-know-if-metrics-are-actually-beingscraped).
 
 In this case, the `OpenTelemetryCollector` resource's
 `prometheusCR.serviceMonitorSelector` is looking only for `ServiceMonitors`
@@ -369,10 +369,10 @@ need to have that same label.
 ### Did you leave out the serviceMonitorSelector and/or podMonitorSelector configuration altogether?
 
 As we saw in
-["Did you configure a ServiceMonitor or PodMonitor selector"](#4--did-you-configure-a-servicemonitor-or-podmonitor-selector), setting
-mismatched values for `serviceMonitorSelector` and `podMonitorSelector` results
-in your `ServiceMonitors` and `PodMonitors`, respectively, not getting picked
-up.
+["Did you configure a ServiceMonitor or PodMonitor selector"](#did-you-configure-a-servicemonitor-or-podmonitor-selector),
+setting mismatched values for `serviceMonitorSelector` and `podMonitorSelector`
+results in your `ServiceMonitors` and `PodMonitors`, respectively, not getting
+picked up.
 
 Similarly, in
 [`v1beta1`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector-1)
@@ -392,7 +392,7 @@ prometheusCR:
 ```
 
 See the
-[full OpenTelemetryCollector definition in step 2](#2--do-you-know-if-metrics-are-actually-beingscraped).
+[full OpenTelemetryCollector definition in "Do you know if metrics are actually being scraped?"](#do-you-know-if-metrics-are-actually-beingscraped).
 
 ### Do your labels, namespaces, and ports match for your ServiceMonitor and your Service (or PodMonitor and your Pod)?
 

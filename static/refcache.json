@@ -7683,6 +7683,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:01:24.93578-05:00"
   },
+  "https://prometheus-operator.dev/docs/operator/design/#servicemonitor": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-18T16:43:08.829675-04:00"
+  },
   "https://prometheus-operator.dev/docs/user-guides/getting-started/#using-podmonitors": {
     "StatusCode": 206,
     "LastSeen": "2024-06-18T13:27:46.505689-04:00"
