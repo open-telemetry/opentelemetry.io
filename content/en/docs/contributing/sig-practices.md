@@ -1,7 +1,8 @@
 ---
 title: SIG practices for approver and maintainers
 linkTitle: SIG practices
-description: Learn how approvers and maintainers manage issues and contributions.
+description:
+  Learn how approvers and maintainers manage issues and contributions.
 weight: 999
 cSpell:ignore: chalin Comms docsy onboarded
 ---
@@ -48,8 +49,8 @@ Additional valuable resources to review are
 ## Collaboration
 
 - Approvers and maintainers have different work schedules and circumstances.
-  That's why all communication is assumed to be asynchronous and they should
-  not feel obligated to reply outside of their normal schedule.
+  That's why all communication is assumed to be asynchronous and they should not
+  feel obligated to reply outside of their normal schedule.
 - When an approver or maintainer won't be available to contribute for an
   extended period of time (more than a few days or a week) or won't be available
   in that period of time, they should communicate this using the
