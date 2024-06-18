@@ -1,7 +1,7 @@
 ---
 title: SIG practices for approver and maintainers
 linkTitle: SIG practices
-description: Learn how approvers and maintainers manage issues and contributions
+description: Learn how approvers and maintainers manage issues and contributions.
 weight: 999
 cSpell:ignore: chalin Comms docsy onboarded
 ---
