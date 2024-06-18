@@ -63,7 +63,7 @@ Additional valuable resources to review are
   approver/maintainer feel uncomfortable they can step back from a conversation,
   issue or PR and ask another approver/maintainer to step in.
 
-## Code Reviews
+## Code reviews
 
 ### General
 
