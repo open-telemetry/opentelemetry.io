@@ -1,8 +1,7 @@
 ---
 title: Troubleshooting the OpenTelemetry Operator for Kubernetes
 linkTitle: Troubleshooting
-description:
-  Tips for troubleshooting the OpenTelemetry Kubernetes Operator
+description: Tips for troubleshooting the OpenTelemetry Kubernetes Operator
 aliases:
   - /docs/operator-troubleshooting
   - /docs/k8s-operator-troubleshooting
