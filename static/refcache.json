@@ -4679,6 +4679,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:24.591992-05:00"
   },
+  "https://github.com/tbrockman": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-18T16:17:50.672882714Z"
+  },
+  "https://github.com/tbrockman/browser-extension-for-opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-18T16:17:47.679619692Z"
+  },
   "https://github.com/tedsuo": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:04:58.240402-05:00"
@@ -9422,6 +9430,14 @@
   "https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Wcf": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:17:13.880643+01:00"
+  },
+  "https://www.nuget.org/packages/Oracle.ManagedDataAccess": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-18T12:21:47.484668425Z"
+  },
+  "https://www.nuget.org/packages/Oracle.ManagedDataAccess.Core": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-18T12:21:45.893563793Z"
   },
   "https://www.nuget.org/packages/Purview.Telemetry.SourceGenerator": {
     "StatusCode": 200,
