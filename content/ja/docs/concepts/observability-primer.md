@@ -6,17 +6,17 @@ cSpell:ignore: webshop
 default_lang_commit: ebd92bb
 ---
 
-## オブザーバビリティとは何か
+## オブザーバビリティとは何か {#what-is-observability}
 
 オブザーバビリティは、システムの内部構造を知らなくても、そのシステムについて質問することで、システムを外側から理解することを可能にします。
 さらに、真新しい問題、つまり「未知の未知」のトラブルシューティングや対処が容易になります。
 また、「なぜこのようなことが起こるのか」という疑問に答えるのにも役立ちます。
 
 システムに関してこれらの質問をするためには、アプリケーションが適切に計装されていなければなりません。
-つまり、アプリケーションのコードは、[トレース](./signals/traces/)、[メトリクス](./signals/metrics/)、[ログ](./signals/logs/)などの[シグナル](./signals/)を発しなければなりません。
+つまり、アプリケーションのコードは、[トレース](/docs/concepts/signals/traces/)、[メトリクス](/docs/concepts/signals/metrics/)、[ログ](/docs/concepts/signals/logs/)などの[シグナル](/docs/concepts/signals/)を発しなければなりません。
 開発者が問題をトラブルシュートするために計装を追加する必要がないとき、アプリケーションは適切に計装されています。なぜなら開発者が必要な情報をすべて持っているということになるからです。
 
-[OpenTelemetry](../what-is-opentelemetry/)は、システムをオブザーバビリティがある状態にするために、アプリケーションコードの計装を手助けする仕組みです。
+[OpenTelemetry](/docs/what-is-opentelemetry/)は、システムをオブザーバビリティがある状態にするために、アプリケーションコードの計装を手助けする仕組みです。
 
 ## Reliability and metrics
 
