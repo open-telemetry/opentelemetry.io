@@ -161,12 +161,12 @@ Where `serviceMonitor/opentelemetry/sm-example/0` represents one of the
 `Service` ports that the `ServiceMonitor`picked up:
 
 - `opentelemetry` is the namespace in which the `ServiceMonitor` resource
-  resides
-- `sm-example` is the name of the `ServiceMonitor`
+  resides.
+- `sm-example` is the name of the `ServiceMonitor`.
 - `0` is one of the port endpoints matched between the `ServiceMonitor` and the
-  `Service`
+  `Service`.
 
-We see a similar story with the port monitor, which shows up as
+We see a similar story with the `PodMonitor`, which shows up as
 `podMonitor/opentelemetry/pm-example/0` in the `curl` output.
 
 This is good news, because it tells us that the service discovery is working!
@@ -252,7 +252,7 @@ Sample output:
 
 > **PS:** Shout out to
 > [this blog post](https://trstringer.com/opentelemetry-target-allocator-troubleshooting/)
-> for educating me about this troubleshooting technique
+> for educating me about this troubleshooting technique.
 
 ### 3- Is the Target Allocator enabled? Is Prometheus service discovery enabled?
 
@@ -285,20 +285,19 @@ spec:
       enabled: true
 ```
 
-📝 You can see the full `OpenTelemetryCollector` resource definition
-[here](https://github.com/avillela/otel-target-allocator-talk/blob/main/src/resources/02-otel-collector.yml).
+📝 For more detail, see the full `OpenTelemetryCollector` [resource definition](https://github.com/avillela/otel-target-allocator-talk/blob/main/src/resources/02-otel-collector.yml).
 
 ### 4- Did you configure a ServiceMonitor (or PodMonitor) selector?
 
 If you configured a
 [`ServiceMonitor`](https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/#:~:text=The%20ServiceMonitor%20is%20used%20to,build%20the%20required%20Prometheus%20configuration.)
-selector, it means that the Target Allocator will only look for
+selector, it means that the Target Allocator only looks for
 `ServiceMonitors` having a `metadata.label` that matches the value in
 [`serviceMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr).
 
 Suppose that you configured a
 [`serviceMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr)
-for your Target Allocator, like in the example below:
+for your Target Allocator, like in the following example:
 
 ```yaml
 apiVersion: opentelemetry.io/v1beta1
@@ -318,7 +317,7 @@ spec:
 ```
 
 It means that your `ServiceMonitor` resource must in turn have that same value
-in `metadata.spec.label`:
+in `metadata.labels`:
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -331,15 +330,14 @@ metadata:
 spec:
 ```
 
-📝 You can see the full `ServiceMonitor` resource definition
-[here](https://github.com/avillela/otel-target-allocator-talk/blob/main/src/resources/04-service-monitor.yml).
+📝 For more detail, see the full `ServiceMonitor` [resource definition](https://github.com/avillela/otel-target-allocator-talk/blob/main/src/resources/04-service-monitor.yml).
 
 In this case, the `OpenTelemetryCollector` resource's
 `prometheusCR.serviceMonitorSelector` is looking only for `ServiceMonitors`
-having the label `app: my-app`, which we see in the above example.
+having the label `app: my-app`, which we see in the previous example.
 
-**_If your ServiceMonitor resource is missing that label, then the Target
-Allocator won’t pick up that ServiceMonitor._**
+If your ServiceMonitor resource is missing that label, then the Target
+Allocator won’t pick up that ServiceMonitor.
 
 > **NOTE:** The same applies if you’re using a
 > [PodMonitor](https://prometheus-operator.dev/docs/user-guides/getting-started/#using-podmonitors).
@@ -351,13 +349,13 @@ Allocator won’t pick up that ServiceMonitor._**
 ### 5- Did you leave out the serviceMonitorSelector and/or podMonitorSelector configuration altogether?
 
 As we learned above, setting mismatched values for `serviceMonitorSelector` and
-`podMonitorSelector` will result in your `ServiceMonitors` and `PodMonitors`,
+`podMonitorSelector` results in your `ServiceMonitors` and `PodMonitors`,
 respectively, not getting picked up.
 
 But did you know that in
 [`v1beta1`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector-1)
 of the `OpenTelemetryCollector` CR, if you leave out this configuration
-altogether, your `PodMonitors` and `ServiceMonitors` may also not get picked up?
+altogether, your `PodMonitors` and `ServiceMonitors` might also not get picked up?
 
 As of `v1beta1` of the `OpenTelemetryOperator`, you must include a
 `serviceMonitorSelector`, and `podMonitorSelector`, even if you don’t intend to
@@ -371,8 +369,7 @@ prometheusCR:
   serviceMonitorSelector: {}
 ```
 
-See full example
-[here](https://github.com/avillela/otel-target-allocator-talk/blob/4c0eb425c90187d584c9d03b51ad918b377014a3/src/resources/02-otel-collector.yml#L15-L17).
+See the [full example](https://github.com/avillela/otel-target-allocator-talk/blob/4c0eb425c90187d584c9d03b51ad918b377014a3/src/resources/02-otel-collector.yml#L15-L17).
 
 I just learned this today, as I was updating my `OpenTelemetryCollector` YAML
 from
@@ -415,7 +412,7 @@ spec:
     - port: py-server-port
 ```
 
-The above`ServiceMonitor` is looking for any services that have:
+The previous `ServiceMonitor` is looking for any services that have:
 
 - the label `app: my-app`
 - reside in a namespace called `opentelemetry`
@@ -442,7 +439,7 @@ spec:
       port: 8080
 ```
 
-Conversely, the `Service` resource below would NOT, because the `ServiceMonitor`
+Conversely, the following `Service` resource would NOT, because the `ServiceMonitor`
 is looking for ports named `prom`, `py-client-port`, _or_ `py-server-port`, and
 this service’s port is called `bleh`.
 
@@ -465,9 +462,7 @@ spec:
 ```
 
 > **NOTE:** If you’re using `PodMonitor`, the same applies, except that it picks
-> up Kubernetes _pods_ that match on labels, namespaces, and named ports. You
-> can see an example `PodMonitor` resource definition
-> [here](https://github.com/avillela/otel-target-allocator-talk/blob/main/src/resources/04a-pod-monitor.yml).
+> up Kubernetes _pods_ that match on labels, namespaces, and named ports. For example, see this `PodMonitor` [resource definition](https://github.com/avillela/otel-target-allocator-talk/blob/main/src/resources/04a-pod-monitor.yml).
 
 ## Final Thoughts
 
