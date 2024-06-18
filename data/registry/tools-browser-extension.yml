@@ -1,0 +1,25 @@
+title: OpenTelemetry Browser Extension
+registryType: utilities
+language: js
+tags:
+  - js
+  - browser
+  - web-ext
+  - browser-extension
+  - chrome-extension
+  - firefox-extension
+  - safari-extension
+  - edge-extension
+  - autoinstrumentation
+urls:
+  repo: https://github.com/tbrockman/opentelemetry-browser-extension
+  docs: https://github.com/tbrockman/opentelemetry-browser-extension#opentelemetry-browser-extension
+license: GPL-3.0
+description: |
+  A highly-configurable browser extension that automatically instruments webpages with OpenTelemetry (which avoids any webpage CSP issues!).
+  Very similar to the archived "OpenTelemetry Browser Extension Autoinjection", but with a few more features and a slightly different approach to content-script injection.
+authors:
+  - name: Theodore Brockman
+    email: iam@theo.lol
+    url: https://github.com/tbrockman
+createdAt: 2024-06-18
