@@ -70,12 +70,6 @@ I, [2021-02-23T13:26:23.505892 #22473]  INFO -- : [6459ffe1-ea53-4044-aaa3-bf902
 **スパン** は作業または操作の単位を表します。
 スパンは、リクエストが行う特定の操作を追跡し、その操作が実行された時間に何が起こったかを説明してくれます。
 
-..
-A span contains name, time-related data,
-[structured log messages](/docs/concepts/signals/traces/#span-events), and
-[other metadata (that is, Attributes)](/docs/concepts/signals/traces/#attributes)
-to provide information about the operation it tracks.
-
 スパンには、名前、時間関連データ、[構造化ログメッセージ](/docs/concepts/signals/traces/#span-events)、[その他のメタデータ(つまり属性)](/docs/concepts/signals/traces/#attributes)が含まれ、追跡する操作に関する情報を提供します。
 
 #### スパン属性
@@ -99,7 +93,7 @@ to provide information about the operation it tracks.
 | `client.socket.address`     | `"192.0.2.5"` （クライアントはプロキシ経由）                                       |
 | `user_agent.original`       | `"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0"` |
 
-スパンと OpenTelemetry との関係については、[スパン](/docs/concepts/signals/traces/#span)の節を参照してください。
+スパンと OpenTelemetry との関係については、[スパン](/docs/concepts/signals/traces/#spans)の節を参照してください。
 
 ### 分散トレース {#distributed-traces}
 
