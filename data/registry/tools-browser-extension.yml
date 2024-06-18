@@ -1,3 +1,4 @@
+# cSpell:ignore firefox autoinstrumentation Autoinjection Brockman
 title: OpenTelemetry Browser Extension
 registryType: utilities
 language: js
