@@ -329,8 +329,10 @@ spec:
         app: my-app
 ```
 
-It means that your `ServiceMonitor` resource must in turn have that same value
-in `metadata.labels`:
+By setting the value of
+`spec.targetAllocator.prometheusCR.serviceMonitorSelector` to `app: my-app`, it
+means that your `ServiceMonitor` resource must in turn have that same value in
+`metadata.labels`:
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
