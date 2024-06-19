@@ -18,7 +18,7 @@ description: >
   OpenTelemetry Collector.
 deprecated:
   reason:
-    This browser extensions is permanently deprecated. [Other browser extensions
+    This browser extension is permanently deprecated. [Other browser extensions
     are available that provide similar
     functionality](/ecosystem/registry/?component=utilities&s=browserextension).
 
