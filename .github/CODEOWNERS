@@ -44,6 +44,7 @@ content/en/docs/specs/                   @open-telemetry/docs-approvers @open-te
 content/en/docs/zero-code/java/          @open-telemetry/docs-approvers @open-telemetry/java-approvers @open-telemetry/java-instrumentation-approvers
 content/en/docs/zero-code/js/            @open-telemetry/docs-approvers @open-telemetry/javascript-approvers
 content/en/docs/zero-code/net/           @open-telemetry/docs-approvers @open-telemetry/dotnet-approvers @open-telemetry/dotnet-instrumentation-approvers
+content/en/docs/zero-code/python/        @open-telemetry/docs-approvers @open-telemetry/python-approvers
 content/en/ecosystem/demo/               @open-telemetry/demo-approvers @open-telemetry/demo-approvers
 content/zh/                              @open-telemetry/docs-maintainers @open-telemetry/docs-zh-approvers
 content/ja/                              @open-telemetry/docs-maintainers @open-telemetry/docs-ja-approvers
