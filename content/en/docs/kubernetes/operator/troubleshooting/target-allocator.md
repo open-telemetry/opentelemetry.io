@@ -1,26 +1,25 @@
 ---
-title: Troubleshooting the Target Allocator
+title: Target Allocator
 cSpell:ignore: bleh targetallocator
 ---
 
 If you’ve enabled
 [Target Allocator](/docs/kubernetes/operator/target-allocator/) service
 discovery on the [OpenTelemetry Operator](/docs/kubernetes/operator), and your
-metrics aren’t getting scraped, there are a few troubleshooting steps that
-you can take to help you understand what’s going on and restore normal
-operation.
+metrics aren’t getting scraped, there are a few troubleshooting steps that you
+can take to help you understand what’s going on and restore normal operation.
 
 ## Troubleshooting steps
 
 ### Did you deploy all of your resources to Kubernetes?
 
-As a first step, make sure that you have deployed all relevant resources to
-your Kubernetes cluster.
+As a first step, make sure that you have deployed all relevant resources to your
+Kubernetes cluster.
 
 ### Do you know if metrics are actually being scraped?
 
-After you’ve deployed all of your resources to Kubernetes, make sure
-that the Target Allocator is scraping metrics from your
+After you’ve deployed all of your resources to Kubernetes, make sure that the
+Target Allocator is scraping metrics from your
 [`ServiceMonitor`](https://prometheus-operator.dev/docs/operator/design/#servicemonitor)(s)
 or
 [`PodMonitor`](https://prometheus-operator.dev/docs/user-guides/getting-started/#using-podmonitors)(s).
@@ -81,7 +80,6 @@ metadata:
   namespace: opentelemetry
 spec:
   mode: statefulset
-  image: otel/opentelemetry-collector-contrib:0.102.1
   targetAllocator:
     enabled: true
     serviceAccount: opentelemetry-targetallocator-sa
@@ -270,8 +268,8 @@ for more information on the `/jobs` endpoint.
 ### Is the Target Allocator enabled? Is Prometheus service discovery enabled?
 
 If the `curl` commands above don’t show a list of expected `ServiceMonitor`s and
-`PodMonitor`s, you need to check whether the features that
-populate those values are turned on.
+`PodMonitor`s, you need to check whether the features that populate those values
+are turned on.
 
 One thing to remember is that just because you include the `targetAllocator`
 section in the `OpenTelemetryCollector` CR doesn’t mean that it’s enabled. You
