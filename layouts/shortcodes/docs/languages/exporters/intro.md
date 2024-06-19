@@ -46,14 +46,14 @@ them up.
 
 {{ end -}}
 
-{{ with $.Page.GetPage "automatic/configuration" }}
 {{ $l := cond (eq $lang "dotnet") "net" $lang }}
+{{ with $.Page.GetPage (print "/docs/zero-code/" $l ) }}
 
 <div class="alert alert-info" role="alert"><h4 class="alert-heading">Note</h4>
 
-If you use [automatic instrumentation](/docs/languages/{{ $l }}/automatic) you can
+If you use [zero-code instrumentation](/docs/zero-code/{{ $l }}) you can
 learn how to setup exporters following the [Configuration
-Guide](/docs/languages/{{ $l }}/automatic/configuration/).
+Guide](/docs/zero-code/{{ $l }}/configuration/).
 
 </div>
 
