@@ -2195,6 +2195,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-06-06T19:18:46.235285+02:00"
   },
+  "https://github.com/AnaMMedina21": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-12T10:03:18.479945-07:00"
+  },
   "https://github.com/Aneurysm9": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:06:35.565079-05:00"
@@ -6330,6 +6334,10 @@
   "https://opentelemetry.io/blog/2024/scaling-collectors/": {
     "StatusCode": 206,
     "LastSeen": "2024-05-06T07:53:28.903161-07:00"
+  },
+  "https://opentelemetry.io/community/end-user/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-12T10:03:19.48038-07:00"
   },
   "https://opentelemetry.io/community/mission/": {
     "StatusCode": 206,
