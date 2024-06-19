@@ -6,24 +6,23 @@ cSpell:ignore: bleh targetallocator
 If you’ve enabled
 [Target Allocator](/docs/kubernetes/operator/target-allocator/) service
 discovery on the [OpenTelemetry Operator](/docs/kubernetes/operator), and your
-metrics aren’t getting scraped, then there are a few troubleshooting steps that
-you can take to help you understand what’s going on and to get things back on
-track.
+metrics aren’t getting scraped, there are a few troubleshooting steps that
+you can take to help you understand what’s going on and restore normal
+operation.
 
-## Troubleshooting Steps
+## Troubleshooting steps
 
 ### Did you deploy all of your resources to Kubernetes?
 
-Although this may seem obvious and straightforward, it can happen! First things
-first: make sure that you have deployed all relevant resources to your
-Kubernetes cluster.
+As a first step, make sure that you have deployed all relevant resources to
+your Kubernetes cluster.
 
 ### Do you know if metrics are actually being scraped?
 
-After you’ve deployed all of your resources to Kubernetes, check to make sure
-that the Target Allocator is actually scraping metrics from your
+After you’ve deployed all of your resources to Kubernetes, make sure
+that the Target Allocator is scraping metrics from your
 [`ServiceMonitor`](https://prometheus-operator.dev/docs/operator/design/#servicemonitor)(s)
-and/or
+or
 [`PodMonitor`](https://prometheus-operator.dev/docs/user-guides/getting-started/#using-podmonitors)(s).
 
 Suppose that you have this `ServiceMonitor` definition:
@@ -145,7 +144,7 @@ Next, get a list of jobs registered with the Target Allocator:
 curl localhost:8080/jobs | jq
 ```
 
-Your sample output should look something like this:
+Your sample output should look like this:
 
 ```json
 {
@@ -271,7 +270,8 @@ for more information on the `/jobs` endpoint.
 ### Is the Target Allocator enabled? Is Prometheus service discovery enabled?
 
 If the `curl` commands above don’t show a list of expected `ServiceMonitor`s and
-`PodMonitor`s, then it’s time to dig a bit deeper.
+`PodMonitor`s, you need to check whether the features that
+populate those values are turned on.
 
 One thing to remember is that just because you include the `targetAllocator`
 section in the `OpenTelemetryCollector` CR doesn’t mean that it’s enabled. You
@@ -299,7 +299,7 @@ spec:
       enabled: true
 ```
 
-For more detail, see the full `OpenTelemetryCollector`
+See the full `OpenTelemetryCollector`
 [resource definition in "Do you know if metrics are actually being scraped?"](#do-you-know-if-metrics-are-actually-beingscraped).
 
 ### Did you configure a ServiceMonitor (or PodMonitor) selector?
@@ -345,7 +345,7 @@ metadata:
 spec:
 ```
 
-For more detail, see the full `ServiceMonitor`
+See the full `ServiceMonitor`
 [resource definition in "Do you know if metrics are actually being scraped?"](#do-you-know-if-metrics-are-actually-beingscraped).
 
 In this case, the `OpenTelemetryCollector` resource's
@@ -368,7 +368,7 @@ need to have that same label.
 
 ### Did you leave out the serviceMonitorSelector and/or podMonitorSelector configuration altogether?
 
-As we saw in
+As mentioned in
 ["Did you configure a ServiceMonitor or PodMonitor selector"](#did-you-configure-a-servicemonitor-or-podmonitor-selector),
 setting mismatched values for `serviceMonitorSelector` and `podMonitorSelector`
 results in your `ServiceMonitors` and `PodMonitors`, respectively, not getting
@@ -376,8 +376,8 @@ picked up.
 
 Similarly, in
 [`v1beta1`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector-1)
-of the `OpenTelemetryCollector` CR, leaving out this configuration altogether,
-your `PodMonitors` and `ServiceMonitors` might also not get picked up.
+of the `OpenTelemetryCollector` CR, leaving out this configuration altogether
+causes your `PodMonitors` and `ServiceMonitors`to not get picked up.
 
 As of `v1beta1` of the `OpenTelemetryOperator`, a `serviceMonitorSelector`, and
 `podMonitorSelector` must be included, even if you don’t intend to use it, like
@@ -435,8 +435,8 @@ The previous `ServiceMonitor` is looking for any services that have:
 - reside in a namespace called `opentelemetry`
 - a port named `prom`, `py-client-port`, _or_ `py-server-port`
 
-So for example, the `Service` resource below would get picked up by the
-`ServiceMonitor`, because it matches the above criteria:
+For example, the following `Service` resource would get picked up by the
+`ServiceMonitor`, because it matches the previous criteria:
 
 ```yaml
 apiVersion: v1
@@ -456,7 +456,7 @@ spec:
       port: 8080
 ```
 
-Conversely, the following `Service` resource would NOT, because the
+The following `Service` resource would not be picked up, because the
 `ServiceMonitor` is looking for ports named `prom`, `py-client-port`, _or_
 `py-server-port`, and this service’s port is called `bleh`.
 
@@ -481,6 +481,6 @@ spec:
 {{% alert title="Tip" %}}
 
 If you’re using `PodMonitor`, the same applies, except that it picks up
-Kubernetes _pods_ that match on labels, namespaces, and named ports.
+Kubernetes pods that match on labels, namespaces, and named ports.
 
 {{% /alert %}}
