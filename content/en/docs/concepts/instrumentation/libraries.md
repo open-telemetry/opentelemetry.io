@@ -5,8 +5,8 @@ aliases: [../instrumenting-library]
 weight: 40
 ---
 
-OpenTelemetry provides [instrumentation libraries][] for many libraries, which
-is typically done through library hooks or monkey-patching library code.
+OpenTelemetry provides [instrumentation libraries][] for many libraries, which is
+typically done through library hooks or monkey-patching library code.
 
 Native library instrumentation with OpenTelemetry provides better observability
 and developer experience for users, removing the need for libraries to expose
@@ -115,7 +115,7 @@ You may be rightfully concerned about adding new dependencies, here are some
 considerations to help you decide how to minimize dependency hell:
 
 - OpenTelemetry Trace API reached stability in early 2021, it follows
-  [Semantic Versioning 2.0](/docs/specs/otel/versioning-and-stability) and we
+  [Semantic Versioning 2.0](/docs/specs/otel/versioning-and-stability/) and we
   take API stability seriously.
 - When taking dependency, use the earliest stable OpenTelemetry API (1.0.\*) and
   avoid updating it unless you have to use new features.
@@ -249,8 +249,8 @@ module might already have OpenTelemetry integration -- to find out, see the
 context on all logs, so users can correlate them.
 
 If your language and ecosystem don't have common logging support, use [span
-events][] to share additional app details. Events maybe more convenient if you
-want to add attributes as well.
+events][] to share additional app details. Events maybe more convenient if you want
+to add attributes as well.
 
 As a rule of thumb, use events or logs for verbose data instead of spans. Always
 attach events to the span instance that your instrumentation created. Avoid

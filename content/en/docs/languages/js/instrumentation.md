@@ -14,8 +14,8 @@ description: Instrumentation for OpenTelemetry JavaScript
 
 On this page you will learn how you can add traces, metrics and logs to your
 code _manually_. But, you are not limited to only use one kind of
-instrumentation: use [automatic instrumentation](/docs/languages/js/automatic/)
-to get started and then enrich your code with manual instrumentation as needed.
+instrumentation: use [automatic instrumentation](/docs/zero-code/js/) to get
+started and then enrich your code with manual instrumentation as needed.
 
 Also, for libraries your code depends on, you don't have to write
 instrumentation code yourself, since they might come with OpenTelemetry built-in

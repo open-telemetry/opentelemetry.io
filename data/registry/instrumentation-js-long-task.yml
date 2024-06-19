@@ -14,4 +14,4 @@ createdAt: 2021-07-08
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-long-task'
-  version: 0.38.0
+  version: 0.39.0

@@ -10,11 +10,11 @@ IgnoreDirs:
   - ^blog/(\d+/)?page/\d+
 IgnoreInternalURLs: # list of paths
 IgnoreURLs: # list of regexs of paths or URLs to be ignored
-  - ^/docs/languages/\w+/(api|examples|registry)/$
-  - ^/docs/collector/registry/$
-  - ^/docs/languages/net/(metrics-api|traces-api)/
-  - ^/community/end-user/feedback-survey/$
-  - ^(/docs/migration/)?opencensus/$
+  - ^(/..)?/docs/languages/\w+/(api|examples|registry)/$
+  - ^(/..)?/docs/collector/registry/$
+  - ^(/..)?/docs/languages/net/(metrics-api|traces-api)/
+  - ^((/..)?/docs/migration/)?opencensus/$
+  - ^(/community/end-user/)?feedback-survey/$
 
   - ^https://deploy-preview-\d+--opentelemetry.netlify.app/
   - ^https://www\.googletagmanager\.com
@@ -34,6 +34,7 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://www.chathamhouse.org
   - ^https://www.zocdoc.com
   - ^https://x.com
+  - ^https://platform.openai.com
   # OTel Google calendar - curl returns 200, but the link checker gets a 401:
   - ^https://calendar.google.com/calendar/embed\?src=google.com_b79e3e90j7bbsa2n2p5an5lf60%40group.calendar.google.com
   # YouTube playlists sometimes give a 404, although they give a 200 when accessed via browser:
@@ -71,3 +72,5 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://wikipedia.org/wiki/(S.M.A.R.T|Hop_)
   # TODO move into content/en/blog/2023/contributing-to-otel/index.md once https://github.com/open-telemetry/opentelemetry.io/issues/3889 is implemented
   - ^https://shorturl.at/vLYZ0$
+  # TODO remove the following temporary ignore rule (@chalin)
+  - ^/en/docs/specs$

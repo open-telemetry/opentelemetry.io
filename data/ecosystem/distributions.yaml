@@ -47,22 +47,6 @@
   url: https://github.com/lumigo-io/opentelemetry-js-distro
   docsUrl: https://github.com/lumigo-io/opentelemetry-js-distro
   components: [Node]
-- name: Honeycomb OpenTelemetry Distribution for Node.js
-  url: https://github.com/honeycombio/honeycomb-opentelemetry-node
-  docsUrl: https://docs.honeycomb.io/getting-data-in/opentelemetry/node-distro/
-  components: [Node]
-- name: Honeycomb OpenTelemetry Distribution for .NET
-  url: https://github.com/honeycombio/honeycomb-opentelemetry-dotnet
-  docsUrl: https://docs.honeycomb.io/getting-data-in/opentelemetry/dotnet-distro/
-  components: [.NET]
-- name: Honeycomb OpenTelemetry Distribution for Java
-  url: https://github.com/honeycombio/honeycomb-opentelemetry-java
-  docsUrl: https://docs.honeycomb.io/getting-data-in/java/opentelemetry-distro/
-  components: [Java]
-- name: Honeycomb OpenTelemetry Distribution for Go
-  url: https://github.com/honeycombio/honeycomb-opentelemetry-go
-  docsUrl: https://docs.honeycomb.io/getting-data-in/opentelemetry/go-distro/
-  components: [Go]
 - name: Splunk Distribution of OpenTelemetry Java
   url: https://github.com/signalfx/splunk-otel-java
   docsUrl: https://docs.splunk.com/observability/en/gdi/get-data-in/application/java/get-started.html

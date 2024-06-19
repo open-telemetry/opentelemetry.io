@@ -1,7 +1,7 @@
 ---
 title: Metrics
 weight: 2
-description: A measurement captured at runtime
+description: A measurement captured at runtime.
 ---
 
 A **metric** is a **measurement** of a service captured at runtime. The moment
@@ -114,7 +114,7 @@ Metrics are a [stable](/docs/specs/otel/versioning-and-stability/#stable) signal
 in the OpenTelemetry specification. For the individual language specific
 implementations of the Metrics API & SDK, the status is as follows:
 
-{{% metrics-support-table " " %}}
+{{% signal-support-table "metrics" %}}
 
 ## Specification
 

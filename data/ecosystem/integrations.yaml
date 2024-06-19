@@ -1,4 +1,4 @@
-# cSpell:ignore containerd buildx Quarkus Cerbos flagd flipt KEDA Kyverno Dapr rustup GORM Otterize Dubbo Microcks Kuma
+# cSpell:ignore containerd buildx Quarkus Cerbos flagd flipt KEDA Kyverno Dapr rustup GORM Otterize Dubbo Microcks Kuma Kubewarden
 - name: containerd
   url: https://containerd.io/
   docsUrl: https://github.com/containerd/containerd/blob/main/docs/tracing.md
@@ -217,6 +217,7 @@
   docsUrl: https://masstransit.io/documentation/configuration/observability
   components: [.NET]
   oss: true
+  native: true
 - name: Kuma
   url: https://kuma.io/
   docsUrl: https://kuma.io/docs/2.7.x/guides/otel-metrics/
@@ -227,3 +228,18 @@
   docsUrl: https://docs.konghq.com/mesh/latest/guides/otel-metrics/
   components: [Go]
   oss: false
+- name: Envoy
+  url: https://www.envoyproxy.io/
+  docsUrl: https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/opentelemetry
+  components: [C++]
+  oss: true
+- name: Istio
+  url: https://istio.io/
+  docsUrl: https://istio.io/latest/docs/tasks/observability/distributed-tracing/opentelemetry/
+  components: [Go]
+  oss: true
+- name: Kubewarden
+  url: https://kubewarden.io/
+  docsUrl: https://docs.kubewarden.io/howtos/telemetry/opentelemetry-qs
+  components: [Rust, Go]
+  oss: true

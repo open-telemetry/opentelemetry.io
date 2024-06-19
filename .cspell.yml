@@ -41,7 +41,6 @@ words:
   - autoloader
   - autoloading
   - backoff
-  - bytecode
   - caml
   - cartservice
   - cassandra
@@ -114,6 +113,7 @@ words:
   - overridable
   - outro
   - packagist
+  - pageinfo
   - Paixão
   - parentbased
   - Pavol

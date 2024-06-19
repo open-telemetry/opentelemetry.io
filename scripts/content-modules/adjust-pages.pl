@@ -18,9 +18,9 @@ my $semconvSpecRepoUrl = 'https://github.com/open-telemetry/semantic-conventions
 my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
 my $specBasePath = '/docs/specs';
 my %versions = qw(
-  spec: 1.33.0
+  spec: 1.34.0
   otlp: 1.3.1
-  semconv: 1.25.0
+  semconv: 1.26.0
 );
 my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
@@ -102,6 +102,9 @@ while(<>) {
     s|(\]\(process.md)#process(\))|$1$2|g;
   }
 
+  # TODO: drop after fix of https://github.com/open-telemetry/semantic-conventions/pull/1065
+  s|opentelemetry-specification/tree/v1\.33\.0/specification/metrics|semantic-conventions/blob/v1\.26\.0/docs/general|g if $ARGV =~ /\/tmp\/semconv\/docs\/system\/container-metrics/;
+
   # SPECIFICATION custom processing
 
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;
@@ -127,9 +130,12 @@ while(<>) {
 
   # Fix links that are to the title of the .md page
   # TODO: fix these in the spec
-  s|(/context/api-propagators.md)#propagators-api|$1|g;
-  s|(/semantic_conventions/faas.md)#function-as-a-service|$1|g;
-  s|(/resource/sdk.md)#resource-sdk|$1|g;
+  s|(/context/api-propagators.md)#propagators-api|$1|g
+    if $otelSpecVers le '1.34.0'; # Ensure that https://github.com/open-telemetry/opentelemetry-specification/pull/4080 is in the new release
+  s|(/resource/sdk.md)#resource-sdk|$1|g
+    if $semconvVers le '1.26.0'; # Ensure that https://github.com/open-telemetry/semantic-conventions/pull/1154 is in the new release
+  s|(event-api.md#)(data-model)|$1event-$2|g
+    if $otelSpecVers le '1.34.0'; # Ensure that https://github.com/open-telemetry/opentelemetry-specification/pull/4075 is in the new release
 
   s|\.\.\/README.md\b|$otelSpecRepoUrl/|g if $ARGV =~ /specification._index/;
   s|\.\.\/README.md\b|..| if $ARGV =~ /specification.library-guidelines.md/;

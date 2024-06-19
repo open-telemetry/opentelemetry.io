@@ -26,13 +26,17 @@ get set up with everything you need.
 
 ### Example Application
 
-The following example uses a basic [Phoenix](https://www.phoenixframework.org/)
-web application. For reference, a complete example of the code you will build
-can be found here:
-[opentelemetry-erlang-contrib/examples/dice_game](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples/dice_game).
-You can git clone that project or just follow along in your browser.
+The following example will take you through creating a basic
+[Phoenix](https://www.phoenixframework.org/) web application and instrumenting
+it with OpenTelemetry. For reference, a complete example of the code you will
+build can be found here:
+[opentelemetry-erlang-contrib/examples/roll_dice](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples/roll_dice).
 
 Additional examples can be found [here](/docs/languages/erlang/examples/).
+
+### Initial Setup
+
+Run `mix phx.new roll_dice`. Type "y" to install dependencies.
 
 ### Dependencies
 
@@ -47,52 +51,71 @@ We'll need a few other dependencies that Phoenix doesn't come with.
   OpenTelemetry Collector and/or to self-hosted or commercial services.
 - `opentelemetry_phoenix`: creates OpenTelemetry spans from the Elixir
   `:telemetry` events created by Phoenix.
-- `opentelemetry_cowboy`: creates OpenTelemetry spans from the Elixir
-  `:telemetry` events created by the Cowboy web server (which is used by
-  Phoenix).
+- web server dependencies: There are currently two options for web servers and
+  each has their telemetry counterpart. Phoenix applications post 1.7.11 default
+  to Bandit while pre 1.7.11 default to Cowboy. Both choices are valid. Use one
+  of the below options based on the web server your Phoenix application uses:
+  - `opentelemetry_cowboy`: creates OpenTelemetry spans from the Elixir
+    `:telemetry` events created by the Cowboy web server
+  - `opentelemetry_bandit`: creates OpenTelemetry spans from the Elixir
+    `:telemetry` events created by the Bandit web server
 
 ```elixir
 # mix.exs
 def deps do
   [
+    # other default deps...
     {:opentelemetry, "~> {{% param versions.otelSdk %}}"},
     {:opentelemetry_api, "~> {{% param versions.otelApi %}}"},
     {:opentelemetry_exporter, "~> {{% param versions.otelExporter %}}"},
     {:opentelemetry_phoenix, "~> {{% param versions.otelPhoenix %}}"},
-    {:opentelemetry_cowboy, "~> {{% param versions.otelCowboy %}}"},
+    # for Cowboy
+    {:opentelemetry_cowboy, "~> {{% param versions.otelCowboy %}}"}
+    # for Bandit
+    {:opentelemetry_bandit, "~> {{% version-from-registry instrumentation-erlang-bandit %}}"},
+    {:opentelemetry_ecto, "~> {{% param versions.otelEcto %}}"} # if using ecto
   ]
 end
 ```
 
-The last two also need to be setup when your application starts:
+The last three also need to be setup when your application starts:
 
 ```elixir
 # application.ex
 @impl true
 def start(_type, _args) do
+  # Depending on what webserver you are using, you will either use:
   :opentelemetry_cowboy.setup()
   OpentelemetryPhoenix.setup(adapter: :cowboy2)
+  # or
+  OpentelemetryBandit.setup()
+  OpentelemetryPhoenix.setup(adapter: :bandit)
+  OpentelemetryEcto.setup([:dice_game, :repo]) # if using ecto
 end
 ```
 
-If you're using ecto, you'll also want to add
-`OpentelemetryEcto.setup([:dice_game, :repo])`.
+Also, make sure your `endpoint.ex` file contains the following line:
+
+```elixir
+# endpoint.ex
+plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
+```
 
 We also need to configure the `opentelemetry` application as temporary by adding
 a `releases` section to your project configuration. This will ensure that if it
-terminates, even abnormally, the `dice_game` application will be terminated.
+terminates, even abnormally, the `roll_dice` application will be terminated.
 
 ```elixir
 # mix.exs
 def project do
   [
-    app: :dice_game,
+    app: :roll_dice,
     version: "0.1.0",
     elixir: "~> 1.14",
     elixirc_paths: elixirc_paths(Mix.env()),
     start_permanent: Mix.env() == :prod,
     releases: [
-      dice_game: [
+      roll_dice: [
         applications: [opentelemetry: :temporary]
       ]
     ],
@@ -102,19 +125,21 @@ def project do
 end
 ```
 
-Now we can use the new `mix setup` command to install the dependencies, build
-the assets, and create and migrate the database.
-
-### Try It Out
-
-We can ensure everything is working by setting the stdout exporter as
-OpenTelemetry's `traces_exporter` and then starting the app with
-`mix phx.server`.
+The last thing you'll need is to configure the exporter. For development, we can
+use the stdout exporter to ensure everything is working properly. Configure
+OpenTelemetry's `traces_exporter` like so:
 
 ```elixir
 # config/dev.exs
 config :opentelemetry, traces_exporter: {:otel_exporter_stdout, []}
 ```
+
+Now we can use the new `mix setup` command to install the dependencies, build
+the assets, and create and migrate the database.
+
+### Try It Out
+
+Run `mix phx.server`.
 
 If everything went well, you should be able to visit
 [`localhost:4000`](http://localhost:4000) in your browser and see quite a few
@@ -145,7 +170,7 @@ fields are.)
                     'net.sock.peer.addr' => <<"127.0.0.1">>,
                     'http.route' => <<"/">>,'phoenix.action' => home,
                     'phoenix.plug' =>
-                        'Elixir.DiceGameWeb.PageController'}},
+                        'Elixir.RollDiceWeb.PageController'}},
       {events,128,128,infinity,0,[]},
       {links,128,128,infinity,0,[]},
       undefined,1,false,
@@ -158,18 +183,54 @@ configure the exporter for your preferred service.
 
 ### Rolling The Dice
 
-Now we'll check out the API endpoint that will let us roll the dice and return a
+Now we'll create the API endpoint that will let us roll the dice and return a
 random number between 1 and 6.
 
-Before we call our API, let's add our first bit of manual instrumentation. In
-our `DiceController` we call a private `dice_roll` method that generates our
+```elixir
+# router.ex
+scope "/api", RollDiceWeb do
+  pipe_through :api
+
+  get "/rolldice", DiceController, :roll
+end
+```
+
+And create a bare `DiceController` without any instrumentation:
+
+```elixir
+# lib/roll_dice_web/controllers/dice_controller.ex
+defmodule RollDiceWeb.DiceController do
+  use RollDiceWeb, :controller
+
+  def roll(conn, _params) do
+    send_resp(conn, 200, roll_dice())
+  end
+
+  defp roll_dice do
+    to_string(Enum.random(1..6))
+  end
+end
+```
+
+If you like, call the route to see the result. You'll still see some telemetry
+pop up in your terminal. Now it's time to enrich that telemetry by instrumenting
+our `roll` function by hand
+
+In our `DiceController` we call a private `dice_roll` method that generates our
 random number. This seems like a pretty important operation, so in order to
 capture it in our trace we'll need to wrap it in a span.
 
 ```elixir
-defp dice_roll do
-  Tracer.with_span("dice_roll") do
-    to_string(Enum.random(1..6))
+defmodule RollDiceWeb.DiceController do
+  use RollDiceWeb, :controller
+  require OpenTelemetry.Tracer, as: Tracer
+
+  # ...snip
+
+  defp roll_dice do
+    Tracer.with_span("dice_roll") do
+      to_string(Enum.random(1..6))
+    end
   end
 end
 ```
@@ -178,7 +239,7 @@ It would also be nice to know what number it generated, so we can extract it as
 a local variable and add it as an attribute on the span.
 
 ```elixir
-defp dice_roll do
+defp roll_dice do
   Tracer.with_span("dice_roll") do
     roll = Enum.random(1..6)
 
@@ -216,7 +277,7 @@ get a random number in response, and 3 spans in your console.
                     'net.transport' => 'IP.TCP',
                     'http.route' => <<"/api/rolldice">>,
                     'phoenix.action' => roll,
-                    'phoenix.plug' => 'Elixir.DiceGameWeb.DiceController'}},
+                    'phoenix.plug' => 'Elixir.RollDiceWeb.DiceController'}},
       {events,128,128,infinity,0,[]},
       {links,128,128,infinity,0,[]},
       undefined,1,false,

@@ -19,14 +19,14 @@ erlang:
   name: Erlang/Elixir
   status:
     traces: stable
-    metrics: experimental
-    logs: experimental
+    metrics: development
+    logs: development
 go:
   name: Go
   status:
     traces: stable
     metrics: stable
-    logs: alpha
+    logs: beta
 java:
   name: Java
   status:
@@ -44,19 +44,19 @@ python:
   status:
     traces: stable
     metrics: stable
-    logs: experimental
+    logs: development
 ruby:
   name: Ruby
   status:
     traces: stable
-    metrics: in development
-    logs: in development
+    metrics: development
+    logs: development
 js:
   name: JavaScript
   status:
     traces: stable
     metrics: stable
-    logs: experimental
+    logs: development
 rust:
   name: Rust
   status:
@@ -67,5 +67,5 @@ swift:
   name: Swift
   status:
     traces: stable
-    metrics: experimental
-    logs: in development
+    metrics: development
+    logs: development

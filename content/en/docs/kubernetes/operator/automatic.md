@@ -178,8 +178,7 @@ spec:
 
 #### Learn more {#dotnet-learn-more}
 
-For more details, see
-[.NET Auto Instrumentation docs](/docs/languages/net/automatic/).
+For more details, see [.NET Auto Instrumentation docs](/docs/zero-code/net/).
 
 ### Java
 
@@ -213,7 +212,7 @@ Therefore, the example uses `http://demo-collector:4318`, which connects to the
 #### Excluding auto-instrumentation {#java-excluding-auto-instrumentation}
 
 By default, the Java auto-instrumentation ships with
-[many instrumentation libraries](/docs/languages/java/automatic/#supported-libraries-frameworks-application-services-and-jvms).
+[many instrumentation libraries](/docs/zero-code/java/agent/#supported-libraries-frameworks-application-services-and-jvms).
 This makes instrumentation easy, but could result in too much or unwanted data.
 If there are any libraries you do not want to use you can set the
 `OTEL_INSTRUMENTATION_[NAME]_ENABLED=false` where `[NAME]` is the name of the
@@ -222,7 +221,7 @@ the default libraries by setting
 `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false` and then use
 `OTEL_INSTRUMENTATION_[NAME]_ENABLED=true` where `[NAME]` is the name of the
 library. For more details, see
-[Suppressing specific auto-instrumentation](/docs/languages/java/automatic/configuration/#suppressing-specific-auto-instrumentation).
+[Suppressing specific instrumentation](/docs/zero-code/java/agent/configuration/#suppressing-specific-instrumentation).
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
@@ -249,7 +248,7 @@ spec:
 #### Learn more {#java-learn-more}
 
 For more details, see
-[Java agent Configuration](/docs/languages/java/automatic/configuration/).
+[Java agent Configuration](/docs/zero-code/java/agent/configuration/).
 
 ### Node.js
 
@@ -280,14 +279,14 @@ must be able to receive OTLP over `grpc`. Therefore, the example uses
 `http://demo-collector:4317`, which connects to the `grpc` port of the
 `otlpreceiver` of the Collector created in the previous step.
 
-#### Excluding auto-instrumentation {#js-excluding-auto-instrumentation}
+#### Excluding instrumentation libraries {#js-excluding-instrumentation-libraries}
 
-By default, the Node.js auto-instrumentation has all the instrumentation
+By default, the Node.js zero-code instrumentation has all the instrumentation
 libraries enabled.
 
-To enable only specific instrumentations you can use the
+To enable only specific instrumentation libraries you can use the
 `OTEL_NODE_ENABLED_INSTRUMENTATIONS` environment variable as documented in the
-[Node.js auto-instrumentation documentation](/docs/languages/js/automatic/configuration/#excluding-auto-instrumentation).
+[Node.js zero-code instrumentation documentation](/docs/zero-code/js/configuration/#excluding-instrumentation-libraries).
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1

@@ -19,9 +19,8 @@ cSpell:ignore: Autowired customizer logback loggable multivalued rolldice spring
 
 On this page you will learn how you can add traces, metrics and logs to your
 code _manually_. But, you are not limited to only use one kind of
-instrumentation: use
-[automatic instrumentation](/docs/languages/java/automatic/) to get started and
-then enrich your code with manual instrumentation as needed.
+instrumentation: use [zero-code instrumentation](/docs/zero-code/java/agent/) to
+get started and then enrich your code with manual instrumentation as needed.
 
 Note, that especially if you cannot modify the source code of your app, you can
 skip manual instrumentation and only use automatic instrumentation.
@@ -362,6 +361,8 @@ It allows you to autoconfigure the OpenTelemetry SDK based on a standard set of
 supported environment variables and system properties. Each environment variable
 has a corresponding system property named the same way but as lower case and
 using the `.` (dot) character instead of the `_` (underscore) as separator.
+Reference the [configuration](/docs/languages/java/configuration/) page for
+details on all available options.
 
 The logical service name can be specified via the `OTEL_SERVICE_NAME`
 environment variable (or `otel.service.name` system property).
@@ -461,7 +462,9 @@ import org.springframework.context.annotation.Bean;
 
 import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.context.propagation.TextMapPropagator;
 import io.opentelemetry.api.trace.propagation.W3CTraceContextPropagator;
+import io.opentelemetry.api.baggage.propagation.W3CBaggagePropagator;
 import io.opentelemetry.context.propagation.ContextPropagators;
 import io.opentelemetry.exporter.logging.LoggingMetricExporter;
 import io.opentelemetry.exporter.logging.LoggingSpanExporter;
@@ -568,7 +571,7 @@ If you followed the instructions to [initialize the SDK](#initialize-the-sdk)
 above, you have a `TracerProvider` setup for you already. You can continue with
 [acquiring a tracer](#acquiring-a-tracer).
 
-### Acquiring a Tracer
+### Acquiring a tracer
 
 To do [Tracing](/docs/concepts/signals/traces/) you'll need to acquire a
 [`Tracer`](/docs/concepts/signals/traces/#tracer).
@@ -578,9 +581,10 @@ To do [Tracing](/docs/concepts/signals/traces/) you'll need to acquire a
 First, a `Tracer` must be acquired, which is responsible for creating spans and
 interacting with the [Context](#context-propagation). A tracer is acquired by
 using the OpenTelemetry API specifying the name and version of the [library
-instrumenting][instrumentation library] the [instrumented library] or
-application to be monitored. More information is available in the specification
-chapter [Obtaining a Tracer].
+instrumenting][instrumentation library] the [instrumented library] or application
+to be monitored. More information is available in the specification chapter [Obtaining
+a
+Tracer].
 
 Anywhere in your application where you write manual tracing code should call
 `getTracer` to acquire a tracer. For example:
@@ -671,6 +675,53 @@ Tracer tracer = GlobalOpenTelemetry.getTracer("instrumentation-scope-name", "ins
 
 Note that you can't force end users to configure the global, so this is the most
 brittle option for library instrumentation.
+
+### Acquiring a tracer in Java agent
+
+If you are using the [Java agent], you can acquire a `Tracer` from the global OpenTelemetry
+instance:
+
+```java
+import io.opentelemetry.api.GlobalOpenTelemetry;
+
+Tracer tracer = GlobalOpenTelemetry.getTracer("application");
+```
+
+If you are using Spring Boot, you can add the following bean to your
+`@SpringBootApplication` class - to acquire a `Tracer` as in the
+[Spring Boot starter](#acquiring-a-tracer-in-spring-boot-starter) section below:
+
+```java
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.GlobalOpenTelemetry;
+
+@Configuration
+public class OpenTelemetryConfig {
+  @Bean
+  public OpenTelemetry openTelemetry() {
+    return GlobalOpenTelemetry.get();
+  }
+}
+```
+
+### Acquiring a tracer in Spring Boot starter
+
+If you are using the [Spring Boot starter], you can acquire a `Tracer` from the
+autowired OpenTelemetry instance:
+
+```java
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.trace.Tracer;
+
+@Controller
+public class MyController {
+  private final Tracer tracer;
+
+  public MyController(OpenTelemetry openTelemetry) {
+    this.tracer = openTelemetry.getTracer("application");
+  }
+}
+```
 
 ### Create Spans
 
@@ -1190,7 +1241,7 @@ OpenTelemetry openTelemetry = OpenTelemetrySdk.builder()
     .build();
 ```
 
-### Acquiring a Meter
+### Acquiring a meter
 
 Anywhere in your application where you have manually instrumented code you can
 call `opentelemetry.meterBuilder(instrumentationScopeName)` to get or create a
@@ -1211,6 +1262,55 @@ Meter meter = openTelemetry.getMeter("dice-server");
 Now that you have [meters](/docs/concepts/signals/metrics/#meter) initialized.
 you can create
 [metric instruments](/docs/concepts/signals/metrics/#metric-instruments).
+
+### Acquiring a meter in Java agent
+
+If you are using the [Java agent], you can acquire a `Meter` from the global OpenTelemetry
+instance:
+
+```java
+import io.opentelemetry.api.GlobalOpenTelemetry;
+
+Meter meter = GlobalOpenTelemetry.getMeter("application");
+```
+
+If you are using Spring Boot, you can add the following bean to your
+`@SpringBootApplication` class - to acquire a `Meter` as in the
+[Spring Boot starter](#acquiring-a-meter-in-spring-boot-starter) section below:
+
+```java
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.GlobalOpenTelemetry;
+
+@Configuration
+public class OpenTelemetryConfig {
+  @Bean
+  public OpenTelemetry openTelemetry() {
+    return GlobalOpenTelemetry.get();
+  }
+}
+```
+
+### Acquiring a meter in Spring Boot starter
+
+If you are using the [Spring Boot starter], you can acquire a `Meter` from the
+autowired OpenTelemetry instance:
+
+```java
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.metrics.Meter;
+
+@Controller
+public class MyController {
+  private final Meter meter;
+
+  public MyController(OpenTelemetry openTelemetry) {
+    this.meter = openTelemetry.getMeter("application");
+  }
+}
+```
+
+a
 
 ### Using Counters
 
@@ -1566,8 +1666,8 @@ exporters out of the box:
 - Logging Exporter: saves the telemetry data into log streams. Varieties include
   `LoggingSpanExporter` and `OtlpJsonLoggingSpanExporter`.
 - OpenTelemetry Protocol Exporter: sends the data in OTLP to the [OpenTelemetry
-  Collector] or other OTLP receivers. Varieties include `OtlpGrpcSpanExporter`
-  and `OtlpHttpSpanExporter`.
+  Collector] or other OTLP receivers. Varieties include `OtlpGrpcSpanExporter` and
+  `OtlpHttpSpanExporter`.
 
 Other exporters can be found in the [OpenTelemetry Registry].
 
@@ -1684,8 +1784,8 @@ particular backend. OpenTelemetry provides the following exporters out of the
 box:
 
 - OpenTelemetry Protocol Exporter: sends the data in OTLP to the [OpenTelemetry
-  Collector] or other OTLP receivers. Varieties include
-  `OtlpGrpcLogRecordExporter` and `OtlpHttpLogRecordExporter`.
+  Collector] or other OTLP receivers. Varieties include `OtlpGrpcLogRecordExporter`
+  and `OtlpHttpLogRecordExporter`.
 - `InMemoryLogRecordExporter`: keeps the data in memory, useful for testing and
   debugging.
 - Logging Exporter: saves the telemetry data into log streams. Varieties include
@@ -1853,3 +1953,5 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
 [traceidratiobased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java
+[Java agent]: /docs/zero-code/java/agent/
+[Spring Boot starter]: /docs/zero-code/java/spring-boot-starter/

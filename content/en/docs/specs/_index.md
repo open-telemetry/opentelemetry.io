@@ -2,7 +2,7 @@
 title: Specifications
 linkTitle: Specs
 aliases: [reference, specification]
-weight: 100
+weight: 960
 # Temporary redirect rules until they are added to the spec pages
 redirects:
   # OTel spec
