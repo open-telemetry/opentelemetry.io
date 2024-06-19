@@ -8,9 +8,9 @@ cSpell:ignore: fastcgi pecl
 
 {{% alert title="Note" color="info" %}}
 
-If you use [automatic instrumentation](/docs/languages/php/automatic/) you can
-setup exporters with
-[zero-code configuration to setup exporters](/docs/languages/php/automatic/#zero-code-configuration-for-automatic-instrumentation).
+If you use [zero-code instrumentation](/docs/zero-code/php/) you can setup
+exporters with
+[zero-code configuration to setup exporters](/docs/zero-code/php#zero-code-configuration-for-automatic-instrumentation).
 
 {{% /alert %}}
 
