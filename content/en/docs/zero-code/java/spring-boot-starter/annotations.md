@@ -57,4 +57,3 @@ public class TracedClass {
 }
 ```
 <!-- prettier-ignore-end -->
-
