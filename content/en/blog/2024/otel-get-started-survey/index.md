@@ -1,7 +1,7 @@
 ---
 title: Insights from the OpenTelemetry Getting Started Survey
 linkTitle: OpenTelemetry Getting Started Survey
-date: 2024-06-11
+date: 2024-06-19
 author: '[Ana Margarita Medina](https://github.com/AnaMMedina21) (ServiceNow)'
 issue: 4662
 sig: End User SIG
