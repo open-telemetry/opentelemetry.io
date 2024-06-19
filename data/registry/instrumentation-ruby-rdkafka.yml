@@ -7,9 +7,7 @@ tags:
   - instrumentation
   - ruby
 license: Apache 2.0
-description:
-  The rdkafka instrumentation is a community-maintained instrumentation for
-  rdkafka, a client library for Apache Kafka.
+description: The rdkafka instrumentation is a community-maintained instrumentation for rdkafka, a client library for Apache Kafka.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,4 +16,4 @@ createdAt: 2022-10-27
 package:
   registry: gems
   name: opentelemetry-instrumentation-rdkafka
-  version: 0.4.5
+  version: 0.4.6

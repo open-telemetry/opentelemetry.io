@@ -6,9 +6,7 @@ tags:
   - instrumentation
   - ruby
 license: Apache 2.0
-description:
-  The opentelemetry-instrumentation-base gem contains the instrumentation base
-  class, and the instrumentation registry.
+description: The opentelemetry-instrumentation-base gem contains the instrumentation base class, and the instrumentation registry.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -17,4 +15,4 @@ createdAt: 2022-10-27
 package:
   registry: gems
   name: opentelemetry-instrumentation-base
-  version: 0.22.3
+  version: 0.22.4
