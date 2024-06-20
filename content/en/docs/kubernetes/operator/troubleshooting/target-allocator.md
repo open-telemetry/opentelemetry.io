@@ -19,7 +19,7 @@ Kubernetes cluster.
 ### Do you know if metrics are actually being scraped?
 
 After you’ve deployed all of your resources to Kubernetes, make sure that the
-Target Allocator is scraping metrics from your
+Target Allocator is discovering scrape targets from your
 [`ServiceMonitor`](https://prometheus-operator.dev/docs/operator/design/#servicemonitor)(s)
 or
 [`PodMonitor`](https://prometheus-operator.dev/docs/user-guides/getting-started/#using-podmonitors)(s).
@@ -182,7 +182,7 @@ You might also be wondering about the `otel-collector` entry. The Target
 Allocator automatically scrapes metrics from the OTel Collector as well.
 
 We can take a deeper look into `serviceMonitor/opentelemetry/sm-example/0`, to
-see what metrics are getting picked up by running `curl` against the value of
+see what scrape targets are getting picked up by running `curl` against the value of
 the `_link` output above:
 
 ```shell
@@ -306,10 +306,10 @@ If you configured a
 [`ServiceMonitor`](https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/#:~:text=The%20ServiceMonitor%20is%20used%20to,build%20the%20required%20Prometheus%20configuration.)
 selector, it means that the Target Allocator only looks for `ServiceMonitors`
 having a `metadata.label` that matches the value in
-[`serviceMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr).
+[`serviceMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr-1).
 
 Suppose that you configured a
-[`serviceMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr)
+[`serviceMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr-1)
 for your Target Allocator, like in the following example:
 
 ```yaml
@@ -326,7 +326,8 @@ spec:
     prometheusCR:
       enabled: true
       serviceMonitorSelector:
-        app: my-app
+        matchLabels:
+          app: my-app
 ```
 
 By setting the value of
