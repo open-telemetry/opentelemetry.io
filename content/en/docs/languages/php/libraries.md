@@ -37,7 +37,7 @@ You can turn off any instrumentation by adding its identifier to the
 ## Available instrumentation libraries
 
 For a list of available instrumentations, see
-[OpenTelemetry instrumentation packages](https://packagist.org/search/?query=open-telemetry&tags=instrumentation)
+[OpenTelemetry instrumentation libraries](https://packagist.org/search/?query=open-telemetry&tags=instrumentation)
 on Packagist.
 
 ## Next steps
@@ -49,7 +49,3 @@ custom telemetry data.
 You might also want to configure an appropriate exporter to
 [export your telemetry data](/docs/languages/php/exporters) to one or more
 telemetry backends.
-
-You can also check the
-[automatic instrumentation for PHP](/docs/languages/php/automatic) for existing
-library instrumentations.
