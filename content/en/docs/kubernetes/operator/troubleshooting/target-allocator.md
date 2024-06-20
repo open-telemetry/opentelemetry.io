@@ -5,9 +5,10 @@ cSpell:ignore: bleh targetallocator
 
 If you’ve enabled
 [Target Allocator](/docs/kubernetes/operator/target-allocator/) service
-discovery on the [OpenTelemetry Operator](/docs/kubernetes/operator), and your
-metrics aren’t getting scraped, there are a few troubleshooting steps that you
-can take to help you understand what’s going on and restore normal operation.
+discovery on the [OpenTelemetry Operator](/docs/kubernetes/operator), and the
+Target Allocator is failing to discover scrape targets, there are a few
+troubleshooting steps that you can take to help you understand what’s going on
+and restore normal operation.
 
 ## Troubleshooting steps
 
@@ -182,8 +183,8 @@ You might also be wondering about the `otel-collector` entry. The Target
 Allocator automatically scrapes metrics from the OTel Collector as well.
 
 We can take a deeper look into `serviceMonitor/opentelemetry/sm-example/0`, to
-see what scrape targets are getting picked up by running `curl` against the value of
-the `_link` output above:
+see what scrape targets are getting picked up by running `curl` against the
+value of the `_link` output above:
 
 ```shell
 curl localhost:8080/jobs/serviceMonitor%2Fdefault%2Fmy-app%2F0/targets | jq
