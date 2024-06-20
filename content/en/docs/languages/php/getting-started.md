@@ -10,13 +10,13 @@ OpenTelemetry for PHP can be used to generate and export [traces][], [metrics][]
 and [logs][].
 
 This page will show you how to get started with OpenTelemetry in PHP. We will
-create a simple "roll the dice" application, then apply both automatic and
-manual instrumentation to generate [traces][] and export them to the console. We
+create a simple "roll the dice" application, then apply both zero-code and code
+based instrumentation to generate [traces][] and export them to the console. We
 will then emit some [logs][] which will also be sent to the console.
 
 ## Prerequisites
 
-OpenTelemetry requires PHP 8.0+ for automatic instrumentation, however manual
+OpenTelemetry requires PHP 8.0+ for zero-code instrumentation, however manual
 instrumentation will work with PHP 7.4
 
 Ensure that you have the following installed:
@@ -86,10 +86,10 @@ php -S localhost:8080
 Open <http://localhost:8080/rolldice> in your web browser to ensure it is
 working.
 
-## Add automatic instrumentation
+## Add zero-code instrumentation
 
 Next, you’ll use the OpenTelemetry PHP extension to
-[automatically instrument](../automatic/) the application.
+[automatically instrument](/docs/zero-code/php/) the application.
 
 1. Since the extension is built from source, you need to install some build
    tools
@@ -116,7 +116,8 @@ Next, you’ll use the OpenTelemetry PHP extension to
 
    {{% alert title="Note" color="warning" %}}Alternative methods of installing
    the extension are detailed in
-   [automatic instrumentation](../automatic/#installation). {{% /alert %}}
+   [zero-code instrumentation](/docs/zero-code/php/#installation).
+   {{% /alert %}}
 
 3. Add the extension to your `php.ini` file:
 
@@ -487,7 +488,7 @@ values correspond to the active span at the time the log message was generated.
 For more:
 
 - Run this example with another [exporter][] for telemetry data.
-- Try [automatic instrumentation](../automatic/) on one of your own apps.
+- Try [zero-code instrumentation](/docs/zero-code/php/) on one of your own apps.
 - Learn more about [manual instrumentation][] and try out some [examples](/docs/languages/php/examples/).
 - Take a look at the [OpenTelemetry Demo](/docs/demo/), which includes the PHP
   based [Quote Service](/docs/demo/services/quote/).
