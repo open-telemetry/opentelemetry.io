@@ -3,10 +3,10 @@ title: Auto-instrumentation
 ---
 
 If you're using the [OpenTelemetry Operator](/docs/kubernetes/operator)'s
-capability to inject [auto-instrumentation](/docs/kubernetes/operator/automatic)  and
-you're not seeing any traces or metrics, then there are a few troubleshooting
-steps that you can take to help you understand what’s going on and to get things
-back on track.
+capability to inject [auto-instrumentation](/docs/kubernetes/operator/automatic)
+and you're not seeing any traces or metrics, then there are a few
+troubleshooting steps that you can take to help you understand what’s going on
+and to get things back on track.
 
 ## Troubleshooting Steps
 
