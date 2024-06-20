@@ -67,14 +67,14 @@ import {
   ConsoleSpanExporter,
 } from '@opentelemetry/sdk-trace-node';
 import { UndiciInstrumentation } from '@opentelemetry/instrumentation-undici';
-import { request } from 'undici';
 
 const sdk = new NodeSDK({
   spanProcessors: [new SimpleSpanProcessor(new ConsoleSpanExporter())],
   instrumentations: [new UndiciInstrumentation()],
 });
-
 sdk.start();
+
+import { request } from 'undici';
 
 request('http://localhost:8080/rolldice').then((response) => {
   response.body.json().then((json: any) => console.log(json));
@@ -172,7 +172,7 @@ similar to the following:
 ```
 
 Take note of the traceId (`cccd19c3a2d10e589f01bfe2dc896dc2`) and ID
-(`6f64ce484217a7bf`). Both can be find in the output of client as well:
+(`6f64ce484217a7bf`). Both can be found in the output of client as well:
 
 ```javascript {hl_lines=["6-7"]}
 {
@@ -204,7 +204,7 @@ send both to a backend now the visualization will show this dependency for you.
 ## Manual context propagation
 
 In some cases, it is not possible to propagate context automatically as outlined
-in previous section. There might not be an instrumentation library that matches
+in the previous section. There might not be an instrumentation library that matches
 a library you're using to have services communicate with one another. Or you
 might have requirements that these libraries can't fulfill even if they existed.
 
