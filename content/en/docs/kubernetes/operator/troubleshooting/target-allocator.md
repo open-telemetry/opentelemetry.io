@@ -332,9 +332,9 @@ spec:
 ```
 
 By setting the value of
-`spec.targetAllocator.prometheusCR.serviceMonitorSelector` to `app: my-app`, it
-means that your `ServiceMonitor` resource must in turn have that same value in
-`metadata.labels`:
+`spec.targetAllocator.prometheusCR.serviceMonitorSelector.matchLabels` to
+`app: my-app`, it means that your `ServiceMonitor` resource must in turn have
+that same value in `metadata.labels`:
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -351,20 +351,20 @@ See the full `ServiceMonitor`
 [resource definition in "Do you know if metrics are actually being scraped?"](#do-you-know-if-metrics-are-actually-beingscraped).
 
 In this case, the `OpenTelemetryCollector` resource's
-`prometheusCR.serviceMonitorSelector` is looking only for `ServiceMonitors`
-having the label `app: my-app`, which we see in the previous example.
+`prometheusCR.serviceMonitorSelector.matchLabels` is looking only for
+`ServiceMonitors` having the label `app: my-app`, which we see in the previous
+example.
 
-If your ServiceMonitor resource is missing that label, then the Target Allocator
-won’t pick up that ServiceMonitor.
+If your `ServiceMonitor` resource is missing that label, then the Target
+Allocator will fail to discover scrape targets from that `ServiceMonitor`.
 
 {{% alert title="Tip" %}}
 
 The same applies if you’re using a
 [PodMonitor](https://prometheus-operator.dev/docs/user-guides/getting-started/#using-podmonitors).
-In that case, if your `OpenTelemetryCollector`resource defined a
-[`podMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr),
-then any `PodMonitors` you wish to be picked up by the Target Allocator would
-need to have that same label.
+In that case, you would use a
+[`podMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr)
+instead of a `serviceMonitorSelector`.
 
 {{% /alert %}}
 
@@ -373,20 +373,20 @@ need to have that same label.
 As mentioned in
 ["Did you configure a ServiceMonitor or PodMonitor selector"](#did-you-configure-a-servicemonitor-or-podmonitor-selector),
 setting mismatched values for `serviceMonitorSelector` and `podMonitorSelector`
-results in your `ServiceMonitors` and `PodMonitors`, respectively, not getting
-picked up.
+results in the Target Allocator failing to discover scrape targets from your
+`ServiceMonitors` and `PodMonitors`, respectively.
 
 Similarly, in
 [`v1beta1`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector-1)
 of the `OpenTelemetryCollector` CR, leaving out this configuration altogether
-causes your `PodMonitors` and `ServiceMonitors`to not get picked up.
+also results in the Target Allocator failing to discover scrape targets from
+your `ServiceMonitors` and `PodMonitors`.
 
-As of `v1beta1` of the `OpenTelemetryOperator`, a `serviceMonitorSelector`, and
+As of `v1beta1` of the `OpenTelemetryOperator`, a `serviceMonitorSelector` and
 `podMonitorSelector` must be included, even if you don’t intend to use it, like
 this:
 
 ```yaml
----
 prometheusCR:
   enabled: true
   podMonitorSelector: {}
