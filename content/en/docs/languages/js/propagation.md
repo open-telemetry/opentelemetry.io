@@ -4,49 +4,254 @@ description: Context propagation for the JS SDK
 weight: 65
 ---
 
-Propagation is the mechanism that moves data between services and processes.
-Although not limited to tracing, it is what allows traces to build causal
-information about a system across services that are arbitrarily distributed
-across process and network boundaries.
+{{% docs/languages/propagation js %}}
 
-## Context propagation with libraries
+## Automatic context propagations
 
-For the vast majority of use cases, context propagation is done with
-instrumentation libraries.
+[Instrumentation libraries](../libraries) like
+[`@opentelemetry/instrumentation-http`](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)
+or
+[`@opentelemetry/instrumentation-express`](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)
+propagate context across services for you.
 
-For example, if you have several Node.js services that communicate over HTTP,
-you can use the
-[`express`](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)
-and [`http`](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)
-instrumentation libraries to automatically propagate trace context across
-services for you.
+If you followed the [Getting Started Guide](../getting-started/nodejs) you can
+create a client application that queries the `/rolldice` endpoint.
 
-**It is highly recommend that you use instrumentation libraries to propagate
-context.** Although it is possible to propagate context manually, if your system
-uses libraries to communicate between services, use a matching instrumentation
-library to propagate context.
+{{% alert title="Note" %}}
 
-Refer to [Libraries](/docs/languages/js/libraries) to learn more about
-instrumentation libraries and how to use them.
+You can combine this example with the sample application from the Getting
+Started guide of any other language as well! Correlation works across
+applications written in different languages without any differences.
 
-## Manual W3C Trace Context Propagation
+{{% /alert %}}
 
-In some cases, it is not possible to propagate context with an instrumentation
-library. There may not be an instrumentation library that matches a library
-you're using to have services communicate with one another. Or you many have
-requirements that instrumentation libraries cannot fulfill, even if they exist.
+Start by creating a new folder called `dice-client` and install the required
+dependencies:
+
+{{< tabpane text=true >}} {{% tab TypeScript %}}
+
+```sh
+npm init -y
+npm install typescript \
+  ts-node \
+  @types/node \
+  undici \
+  @opentelemetry/instrumentation-undici \
+  @opentelemetry/sdk-node \
+
+# initialize typescript
+npx tsc --init
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```sh
+npm init -y
+npm install undici \
+  @opentelemetry/instrumentation-undici \
+  @opentelemetry/sdk-node \
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
+Next, create a new file called `client.ts` (or client.js) with the following
+content:
+
+{{< tabpane text=true >}} {{% tab TypeScript %}}
+
+```ts
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import {
+  SimpleSpanProcessor,
+  ConsoleSpanExporter,
+} from '@opentelemetry/sdk-trace-node';
+import { UndiciInstrumentation } from '@opentelemetry/instrumentation-undici';
+import { request } from 'undici';
+
+const sdk = new NodeSDK({
+  spanProcessors: [new SimpleSpanProcessor(new ConsoleSpanExporter())],
+  instrumentations: [new UndiciInstrumentation()],
+});
+
+sdk.start();
+
+request('http://localhost:8080/rolldice').then((response) => {
+  response.body.json().then((json: any) => console.log(json));
+});
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
+const { NodeSDK } = require('@opentelemetry/sdk-node');
+const {
+  SimpleSpanProcessor,
+  ConsoleSpanExporter,
+} = require('@opentelemetry/sdk-trace-node');
+const {
+  UndiciInstrumentation,
+} = require('@opentelemetry/instrumentation-undici');
+
+const sdk = new NodeSDK({
+  spanProcessors: [new SimpleSpanProcessor(new ConsoleSpanExporter())],
+  instrumentations: [new UndiciInstrumentation()],
+});
+sdk.start();
+
+const { request } = require('undici');
+
+request('http://localhost:8080/rolldice').then((response) => {
+  response.body.json().then((json) => console.log(json));
+});
+```
+
+{{% /tab %}} {{% /tabpane %}}
+
+Make sure that you have the instrumented version of `app.ts` (or `app.js`) from
+the [Getting Started](../getting-started/nodejs) running in one shell:
+
+{{< tabpane text=true >}} {{% tab TypeScript %}}
+
+```console
+$ npx ts-node --require ./instrumentation.ts app.ts
+Listening for requests on http://localhost:8080
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```console
+$ node --require ./instrumentation.js app.js
+Listening for requests on http://localhost:8080
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
+Start a second shell and run the `client.ts` (or `client.js`):
+
+{{< tabpane text=true >}} {{% tab TypeScript %}}
+
+```shell
+npx ts-node client.ts
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```shell
+node client.js
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
+Both shells should emit span details to the console. The client output looks
+similar to the following:
+
+```javascript {hl_lines=[7,11]}
+{
+  resource: {
+    attributes: {
+      // ...
+    }
+  },
+  traceId: 'cccd19c3a2d10e589f01bfe2dc896dc2',
+  parentId: undefined,
+  traceState: undefined,
+  name: 'GET',
+  id: '6f64ce484217a7bf',
+  kind: 2,
+  timestamp: 1718875320295000,
+  duration: 19836.833,
+  attributes: {
+    'url.full': 'http://localhost:8080/rolldice',
+    // ...
+  },
+  status: { code: 0 },
+  events: [],
+  links: []
+}
+```
+
+Take note of the traceId (`cccd19c3a2d10e589f01bfe2dc896dc2`) and ID
+(`6f64ce484217a7bf`). Both can be find in the output of client as well:
+
+```javascript {hl_lines=["6-7"]}
+{
+  resource: {
+    attributes: {
+      // ...
+  },
+  traceId: 'cccd19c3a2d10e589f01bfe2dc896dc2',
+  parentId: '6f64ce484217a7bf',
+  traceState: undefined,
+  name: 'GET /rolldice',
+  id: '027c5c8b916d29da',
+  kind: 1,
+  timestamp: 1718875320310000,
+  duration: 3894.792,
+  attributes: {
+    'http.url': 'http://localhost:8080/rolldice',
+    // ...
+  },
+  status: { code: 0 },
+  events: [],
+  links: []
+}
+```
+
+Your client and server application successfully report connected spans. If you
+send both to a backend now the visualization will show this dependency for you.
+
+## Manual context propagation
+
+In some cases, it is not possible to propagate context automatically as outlined
+above. There may not be an instrumentation library that matches a library you're
+using to have services communicate with one another. Or you many have
+requirements these libraries cannot fulfill, even if they exist.
 
 When you must propagate context manually, you can use the
 [context API](/docs/languages/js/context).
+
+### Generic example
 
 The following generic example demonstrates how you can propagate trace context
 manually.
 
 First, on the sending service, you'll need to inject the current `context`:
 
+{{< tabpane text=true >}} {{% tab TypeScript %}}
+
+```typescript
+// Sending service
+import { Context, propagation, trace } from '@opentelemetry/api';
+
+// Define an interface for the output object that will hold the trace information.
+interface Carrier {
+  traceparent?: string;
+  tracestate?: string;
+}
+
+// Create an output object that conforms to that interface.
+const output: Carrier = {};
+
+// Serialize the traceparent and tracestate from context into
+// an output object.
+//
+// This example uses the active trace context, but you can
+// use whatever context is appropriate to your scenario.
+propagation.inject(trace.getTracerProvider().getActiveContext(), output);
+
+// Extract the traceparent and tracestate values from the output object.
+const { traceparent, tracestate } = output;
+
+// You can then pass the traceparent and tracestate
+// data to whatever mechanism you use to propagate
+// across services.
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
 ```js
 // Sending service
-import { context, propagation, trace } from '@opentelemetry/api';
+const { context, propagation } = require('@opentelemetry/api');
 const output = {};
 
 // Serialize the traceparent and tracestate from context into
@@ -62,8 +267,50 @@ const { traceparent, tracestate } = output;
 // across services.
 ```
 
+{{% /tab %}} {{< /tabpane >}}
+
 On the receiving service, you'll need to extract `context` (for example, from
 parsed HTTP headers) and then set them as the current trace context.
+
+{{< tabpane text=true >}} {{% tab TypeScript %}}
+
+```typescript
+// Receiving service
+import { Context, propagation, trace, Span } from '@opentelemetry/api';
+
+// Define an interface for the input object that includes 'traceparent' & 'tracestate'.
+interface Carrier {
+  traceparent?: string;
+  tracestate?: string;
+}
+
+// Assume "input" is an object with 'traceparent' & 'tracestate' keys.
+const input: Carrier = {};
+
+// Extracts the 'traceparent' and 'tracestate' data into a context object.
+//
+// You can then treat this context as the active context for your
+// traces.
+let activeContext: Context = propagation.extract(
+  trace.getTracerProvider().getActiveContext(),
+  input,
+);
+
+let tracer = trace.getTracer('app-name');
+
+let span: Span = tracer.startSpan(
+  spanName,
+  {
+    attributes: {},
+  },
+  activeContext,
+);
+
+// Set the created span as active in the deserialized context.
+trace.setSpan(activeContext, span);
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
 
 ```js
 // Receiving service
@@ -92,8 +339,208 @@ let span = tracer.startSpan(
 trace.setSpan(activeContext, span);
 ```
 
+{{% /tab %}} {{< /tabpane >}}
+
 From there, when you have a deserialized active context, you can create spans
 that will be a part of the same trace from the other service.
 
 You can also use the [Context](/docs/languages/js/context) API to modify or set
 the deserialized context in other ways.
+
+### Custom protocol example
+
+A common use case for when you need to propagate context manually is when you
+use a custom protocol between services for communication. The following example
+uses a basic text-based TCP protocol to send a serialized object from one
+service to another.
+
+Start with creating a new folder called `propagation-example` and initialize it
+with dependencies as follows:
+
+```shell
+npm init -y
+npm install @opentelemetry/api @opentelemetry/sdk-node
+```
+
+Next create files `client.js` and `server.js` with the following content:
+
+```javascript
+// client.js
+const net = require('net');
+const { context, propagation, trace } = require('@opentelemetry/api');
+
+let tracer = trace.getTracer('client');
+
+// Connect to the server
+const client = net.createConnection({ port: 8124 }, () => {
+  // Send the serialized object to the server
+  let span = tracer.startActiveSpan('send', { kind: 1 }, (span) => {
+    const output = {};
+    propagation.inject(context.active(), output);
+    const { traceparent, tracestate } = output;
+
+    const objToSend = { key: 'value' };
+
+    if (traceparent) {
+      objToSend._meta = { traceparent, tracestate };
+    }
+
+    client.write(JSON.stringify(objToSend), () => {
+      client.end();
+      span.end();
+    });
+  });
+});
+```
+
+```javascript
+// server.js
+const net = require('net');
+const { context, propagation, trace } = require('@opentelemetry/api');
+
+let tracer = trace.getTracer('server');
+
+const server = net.createServer((socket) => {
+  socket.on('data', (data) => {
+    const message = data.toString();
+    // Parse the JSON object received from the client
+    try {
+      const json = JSON.parse(message);
+      let activeContext = context.active();
+      if (json._meta) {
+        activeContext = propagation.extract(context.active(), json._meta);
+        delete json._meta;
+      }
+      span = tracer.startSpan('receive', { kind: 1 }, activeContext);
+      trace.setSpan(activeContext, span);
+      console.log('Parsed JSON:', json);
+    } catch (e) {
+      console.error('Error parsing JSON:', e.message);
+    } finally {
+      span.end();
+    }
+  });
+});
+
+// Listen on port 8124
+server.listen(8124, () => {
+  console.log('Server listening on port 8124');
+});
+```
+
+Start a first shell to run the server:
+
+```console
+$ node server.js
+Server listening on port 8124
+```
+
+Then in a second shell run the client:
+
+```shell
+node client.js
+```
+
+The client should terminate immediately and the server should output the
+following:
+
+```text
+Parsed JSON: { key: 'value' }
+```
+
+Since the example so far only took dependency on the OpenTelemetry API all calls
+to it are [no-op instructions](<https://en.wikipedia.org/wiki/NOP_(code)>) and
+the client and server behave as if OpenTelemetry is not used.
+
+{{% alert title="Note" color="warning" %}}
+
+This is especially important if your server and client code are libraries, since
+they should only use the OpenTelemetry API. To understand why, read the [concept
+page on how to add instrumentation to your library]((/docs/concepts/instrumentation/libraries/).
+
+{{% /alert %}}
+
+To enable OpenTelemetry and to see the context propagation in action, create an
+additional file called `instrumentation.js` with the following content:
+
+```javascript
+// instrumentation.js
+const { NodeSDK } = require('@opentelemetry/sdk-node');
+const {
+  ConsoleSpanExporter,
+  SimpleSpanProcessor,
+} = require('@opentelemetry/sdk-trace-node');
+
+const sdk = new NodeSDK({
+  spanProcessors: [new SimpleSpanProcessor(new ConsoleSpanExporter())],
+});
+
+sdk.start();
+```
+
+Use this file to run both, the server and the client, with instrumentation
+enabled:
+
+```console
+$ node -r ./instrumentation.js server.js
+Server listening on port 8124
+```
+
+and
+
+```shell
+node -r ./instrumentation client.js
+```
+
+After the client has send data to the server and terminated you should see spans
+being print to the console on both shells.
+
+The output for the client looks like the following:
+
+```javascript {hl_lines=[7,11]}
+{
+  resource: {
+    attributes: {
+      // ...
+    }
+  },
+  traceId: '4b5367d540726a70afdbaf49240e6597',
+  parentId: undefined,
+  traceState: undefined,
+  name: 'send',
+  id: '92f125fa335505ec',
+  kind: 1,
+  timestamp: 1718879823424000,
+  duration: 1054.583,
+  // ...
+}
+```
+
+The output for the server looks like the following:
+
+```javascript {hl_lines=[7,8]}
+{
+  resource: {
+    attributes: {
+      // ...
+    }
+  },
+  traceId: '4b5367d540726a70afdbaf49240e6597',
+  parentId: '92f125fa335505ec',
+  traceState: undefined,
+  name: 'receive',
+  id: '53da0c5f03cb36e5',
+  kind: 1,
+  timestamp: 1718879823426000,
+  duration: 959.541,
+  // ...
+}
+```
+
+Similar to the [manual example](#manual-context-propagation) the spans are
+connected via the `traceId` and the `id`/`parentId`.
+
+## Next Steps
+
+To learn more about propagation, read the
+[Propagators API specification](/docs/specs/otel/context/api-propagators/).
