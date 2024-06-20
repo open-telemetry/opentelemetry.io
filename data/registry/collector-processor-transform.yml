@@ -7,11 +7,7 @@ tags:
   - processor
   - collector
 license: Apache 2.0
-description:
-  The Transform Processor for the OpenTelemetry Collector can be used to
-  transform any fields on traces, metrics, and logs within the collector. It
-  utilizes a transformation language to define transformations and conditions
-  and then applies those transformations to the specified telemetry.
+description: The Transform Processor for the OpenTelemetry Collector can be used to transform any fields on traces, metrics, and logs within the collector. It utilizes a transformation language to define transformations and conditions and then applies those transformations to the specified telemetry.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -20,4 +16,4 @@ createdAt: 2022-10-11
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/processor/transformprocessor
-  version: v0.102.0
+  version: v0.103.0
