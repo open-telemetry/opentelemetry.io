@@ -9,7 +9,9 @@ tags:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/ackextension
 license: Apache 2.0
-description: This extension allows acking of data upon successful processing. The upstream agent can choose to send event again if ack fails.
+description:
+  This extension allows acking of data upon successful processing. The upstream
+  agent can choose to send event again if ack fails.
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2024-04-18
