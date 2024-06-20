@@ -3,14 +3,14 @@ title: Auto-instrumentation
 ---
 
 If you're using the [OpenTelemetry Operator](/docs/kubernetes/operator)'s
-[auto-instrumentation](/docs/kubernetes/operator/automatic) capability and
+capability to inject [auto-instrumentation](/docs/kubernetes/operator/automatic)  and
 you're not seeing any traces or metrics, then there are a few troubleshooting
 steps that you can take to help you understand what’s going on and to get things
 back on track.
 
 ## Troubleshooting Steps
 
-### 1- Check installation status
+### Check installation status
 
 After installing the `Instrumentation` resource, make sure that it _actually_
 installed correctly by running this command:
@@ -69,7 +69,7 @@ Spec:
 Events:  <none>
 ```
 
-### 2- Check the OpenTelemetry Operator Logs
+### Check the OpenTelemetry Operator Logs
 
 Check the OpenTelemetry Operator logs for errors, by running this command:
 
@@ -79,7 +79,7 @@ kubectl logs -l app.kubernetes.io/name=opentelemetry-operator --container manage
 
 The logs should not show any errors related to auto-instrumentation errors.
 
-### 3- Check deployment order
+### Check deployment order
 
 Order matters. The `Instrumentation` resource must be deployed before deploying
 the corresponding `Deployment` resource(s) being auto-instrumented.
@@ -136,7 +136,7 @@ following:
 You might also want to check the output of the events command for any errors, as
 these might help point to your issue.
 
-### 4- Check the auto-instrumentation configuration
+### Check the auto-instrumentation configuration
 
 You’ve added the auto-instrumentation annotation, but did you do it correctly?
 Here are a couple of things to check for:
@@ -151,7 +151,7 @@ Here are a couple of things to check for:
   needs to be added to `spec.template.metadata.annotations`, otherwise _it won’t
   work_.
 
-### 5- Check auto-instrumentation endpoint configuration
+### Check auto-instrumentation endpoint configuration
 
 The `spec.exporter.endpoint` configuration in the `Instrumentation` resource
 allows you to define the destination for your telemetry data. If you omit it, it
