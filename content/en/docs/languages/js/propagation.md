@@ -20,7 +20,7 @@ create a client application that queries the `/rolldice` endpoint.
 {{% alert title="Note" %}}
 
 You can combine this example with the sample application from the Getting
-Started guide of any other language as well! Correlation works across
+Started guide of any other language as well. Correlation works across
 applications written in different languages without any differences.
 
 {{% /alert %}}
@@ -203,9 +203,9 @@ send both to a backend now the visualization will show this dependency for you.
 ## Manual context propagation
 
 In some cases, it is not possible to propagate context automatically as outlined
-above. There may not be an instrumentation library that matches a library you're
-using to have services communicate with one another. Or you many have
-requirements these libraries cannot fulfill, even if they exist.
+in previous section. There might not be an instrumentation library that matches
+a library you're using to have services communicate with one another. Or you
+might have requirements that these libraries can't fulfill even if they existed.
 
 When you must propagate context manually, you can use the
 [context API](/docs/languages/js/context).
@@ -460,7 +460,7 @@ page on how to add instrumentation to your library]((/docs/concepts/instrumentat
 
 {{% /alert %}}
 
-To enable OpenTelemetry and to see the context propagation in action, create an
+To enable OpenTelemetry and see the context propagation in action, create an
 additional file called `instrumentation.js` with the following content:
 
 ```javascript
@@ -492,8 +492,8 @@ and
 node -r ./instrumentation client.js
 ```
 
-After the client has send data to the server and terminated you should see spans
-being print to the console on both shells.
+After the client has sent data to the server and terminated you should see spans
+in the console output of both shells.
 
 The output for the client looks like the following:
 
@@ -538,9 +538,9 @@ The output for the server looks like the following:
 ```
 
 Similar to the [manual example](#manual-context-propagation) the spans are
-connected via the `traceId` and the `id`/`parentId`.
+connected using the `traceId` and the `id`/`parentId`.
 
-## Next Steps
+## Next steps
 
 To learn more about propagation, read the
 [Propagators API specification](/docs/specs/otel/context/api-propagators/).
