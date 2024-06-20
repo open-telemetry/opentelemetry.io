@@ -2,6 +2,7 @@
 title: Propagation
 description: Context propagation for the JS SDK
 weight: 65
+cSpell:ignore: rolldice
 ---
 
 {{% docs/languages/propagation js %}}
