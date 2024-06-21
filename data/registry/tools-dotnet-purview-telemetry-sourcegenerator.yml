@@ -30,7 +30,7 @@ description:
   iteration cycles and substitutes for testing through dependency injection.
 authors:
   - name: Kieron Lanning
-    url: https://github.com/kieronlanning
+    URL: https://github.com/kieronlanning
 urls:
   repo: https://github.com/purview-dev/purview-telemetry-sourcegenerator/
   docs: https://github.com/purview-dev/purview-telemetry-sourcegenerator/blob/main/README.md
