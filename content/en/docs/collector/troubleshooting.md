@@ -359,3 +359,21 @@ container, producing the error message
 the `NO_WINDOWS_SERVICE=1` environment variable must be set to force the
 Collector to start as if it were running in an interactive terminal, without
 attempting to run as a Windows service.
+
+### Collector is experiencing configuration issues
+
+The Collector might experience problems due to configuration issues.
+
+#### Null maps
+
+During configuration resolution of multiple configs, values in earlier configs
+are removed in favor of later configs, even if the later value is null. You can
+fix this issue by
+
+- Using `{}` to represent an empty map, such as `processors: {}` instead of
+  `processors:`.
+- Omitting empty configurations such as `processors:` from the configuration.
+
+See
+[confmap troubleshooting](https://github.com/open-telemetry/opentelemetry-collector/blob/main/confmap/README.md#null-maps)
+for more information.
