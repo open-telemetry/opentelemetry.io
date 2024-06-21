@@ -123,7 +123,7 @@ considerations to help you decide how to minimize dependency hell:
   package, so that will never cause issues for users who don't use it. You can
   keep it in your repository, or
   [add it to OpenTelemetry](https://github.com/open-telemetry/oteps/blob/main/text/0155-external-modules.md#contrib-components),
-  so it will ship with other instrumentation packages.
+  so it will ship with other instrumentation libraries.
 - Semantic Conventions are [stable, but subject to evolution][]: while this does
   not cause any functional issues, you may need to update your instrumentation
   every once in a while. Having it in a preview plugin or in OpenTelemetry

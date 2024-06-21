@@ -87,7 +87,7 @@ and the package on [PyPi](https://pypi.org/project/opentelemetry-api/).
 Change the entry point of your application by setting
 `AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler` for Node.js or Java, and
 `AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-instrument` for Python. These wrapper scripts
-will invoke your Lambda application with the auto instrumentation package
+will invoke your Lambda application with the automatic instrumentation
 applied.
 
 ### Add the ARN of Instrumentation Lambda Layer

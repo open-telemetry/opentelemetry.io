@@ -6,7 +6,7 @@ tags:
   - Node.js
   - fastify
 license: Apache 2.0
-description: OpenTelemetry fastify automatic instrumentation package
+description: OpenTelemetry fastify automatic instrumentation library
 authors:
   - name: OpenTelemetry Authors
 urls:

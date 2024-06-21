@@ -12,9 +12,9 @@ of the
 [OpenTelemetry .NET Automatic Instrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation)
 project!
 
-Without this project, .NET developers need to use instrumentation packages to
+Without this project, .NET developers need to use instrumentation libraries to
 automatically generate telemetry data. For example, to instrument inbound
-ASP.NET Core requests, you need to use the ASP.NET Core instrumentation package
+ASP.NET Core requests, you need to use the ASP.NET Core instrumentation libraries
 and initialize it with the OpenTelemetry SDK.
 
 Now, developers can use

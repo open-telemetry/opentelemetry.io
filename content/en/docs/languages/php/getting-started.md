@@ -142,7 +142,7 @@ Next, you’ll use the OpenTelemetry PHP extension to
      open-telemetry/opentelemetry-auto-slim
    ```
 
-With the OpenTelemetry PHP extension set up and an auto-instrumentation package
+With the OpenTelemetry PHP extension set up and a instrumentation library
 installed, you can now run your application and generate some traces:
 
 ```sh

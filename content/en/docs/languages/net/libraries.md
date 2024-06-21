@@ -32,7 +32,7 @@ creating a [TracerProvider](/docs/concepts/signals/traces/#tracer-provider).
 ## Note on Versioning
 
 The Semantic Conventions (Standards) for attribute names are not currently
-stable therefore the instrumentation package is currently not in a released
+stable therefore the instrumentation library is currently not in a released
 state. That doesn't mean that the functionality itself is not stable, only that
 the names of some of the attributes may change in the future, some may be added,
 some may be removed. This means that you need to use the `--prerelease` flag, or
@@ -51,7 +51,7 @@ dotnet add package OpenTelemetry.Extensions.Hosting
 dotnet add package OpenTelemetry.Exporter.Console
 ```
 
-Then you can install the Instrumentation packages
+Then you can install the instrumentation libraries
 
 ```sh
 dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease

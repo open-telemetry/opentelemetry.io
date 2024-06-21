@@ -158,3 +158,7 @@ rules:
       - ['screen[- ]shot(s)?', screenshot$1]
       - ['time[- ]stamp(s)?', timestamp$1]
       - ["uid['’]?(s)?", UID$1]
+      # Enable the following to find and replace "instrumentation module/package" with "instrumentation library":
+      # - ["(auto(matic)?[- ])?instrumentation (module|package)", "instrumentation library"]
+      # - ["(auto(matic)?[- ])?instrumentation (modules|packages)", "instrumentation libraries"]
+

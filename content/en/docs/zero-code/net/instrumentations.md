@@ -38,7 +38,7 @@ is the case-sensitive name of the instrumentation.
 ## Traces instrumentations
 
 **Status**: [Mixed](/docs/specs/otel/versioning-and-stability). Traces are
-stable, but particular instrumentation are in Experimental status due to lack of
+stable, but particular instrumentation libraries are in Experimental status due to lack of
 stable semantic convention.
 
 | ID                    | Instrumented library                                                                                                                                                                                               | Supported versions     | Instrumentation type | Status                                                    |

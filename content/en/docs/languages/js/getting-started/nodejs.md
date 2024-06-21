@@ -147,7 +147,7 @@ First, install the Node SDK and autoinstrumentations package.
 The Node SDK lets you initialize OpenTelemetry with several configuration
 defaults that are correct for the majority of use cases.
 
-The `auto-instrumentations-node` package installs instrumentation packages that
+The `auto-instrumentations-node` package installs instrumentation libraries that
 will automatically create spans corresponding to code called in libraries. In
 this case, it provides instrumentation for Express, letting the example app
 automatically create spans for each incoming request.
