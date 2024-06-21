@@ -49,4 +49,4 @@ Automatic instrumentation is available for the following languages:
 - [Java](/docs/zero-code/java/)
 - [JavaScript](/docs/zero-code/js/)
 - [PHP](/docs/zero-code/php/)
-- [Python](/docs/languages/python/automatic/)
+- [Python](/docs/zero-code/python/)

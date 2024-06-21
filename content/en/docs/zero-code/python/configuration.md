@@ -2,7 +2,9 @@
 title: Agent Configuration
 linkTitle: Configuration
 weight: 10
-aliases: [agent-config]
+aliases:
+  - /docs/languages/python/automatic/configuration
+  - /docs/languages/python/automatic/agent-config
 # prettier-ignore
 cSpell:ignore: distro healthcheck mkdir myapp Starlette uninstrumented urllib virtualenv
 ---
@@ -119,7 +121,7 @@ outputted.
   warning)
 - `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED`: to enable
   auto-instrumentation of logs. Attaches OTLP handler to Python root logger. See
-  example [here](/docs/languages/python/automatic/logs-example)
+  example [here](/docs/zero-code/python/logs-example)
 
 Examples:
 
