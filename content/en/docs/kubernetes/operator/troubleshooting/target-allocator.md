@@ -191,7 +191,7 @@ This is good news, because it tells us that the scrape config discovery is
 working!
 
 You might also be wondering about the `otel-collector` entry. This is happening
-because `spec.config.receivers.prometheusReceiver` of the
+because `spec.config.receivers.prometheusReceiver` in the
 `OpenTelemetryCollector` resource (named `otel-collector`) has self-scrape
 enabled:
 
@@ -204,9 +204,6 @@ prometheus:
         static_configs:
           - targets: ['0.0.0.0:8888']
 ```
-
-The Target Allocator automatically scrapes metrics from the OTel Collector as
-well.
 
 We can take a deeper look into `serviceMonitor/opentelemetry/sm-example/0`, to
 see what scrape targets are getting picked up by running `curl` against the
