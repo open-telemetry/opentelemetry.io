@@ -137,6 +137,16 @@ Where `otelcol-targetallocator` is the value of `metadata.name` in your
 `opentelemetry` is the namespace to which the `OpenTelemetryCollector` CR is
 deployed.
 
+{{% alert title="Tip" %}}
+
+You can also get the service name by running
+
+```shell
+kubectl get svc -l app.kubernetes.io/component=opentelemetry-targetallocator -n <namespace>
+```
+
+{{% /alert %}}
+
 Next, get a list of jobs registered with the Target Allocator:
 
 ```shell
@@ -150,14 +160,14 @@ Your sample output should look like this:
   "serviceMonitor/opentelemetry/sm-example/1": {
     "_link": "/jobs/serviceMonitor%2Fopentelemetry%2Fsm-example%2F1/targets"
   },
+  "serviceMonitor/opentelemetry/sm-example/2": {
+    "_link": "/jobs/serviceMonitor%2Fopentelemetry%2Fsm-example%2F2/targets"
+  },
   "otel-collector": {
     "_link": "/jobs/otel-collector/targets"
   },
   "serviceMonitor/opentelemetry/sm-example/0": {
     "_link": "/jobs/serviceMonitor%2Fopentelemetry%2Fsm-example%2F0/targets"
-  },
-  "serviceMonitor/opentelemetry/sm-example/2": {
-    "_link": "/jobs/serviceMonitor%2Fopentelemetry%2Fsm-example%2F2/targets"
   },
   "podMonitor/opentelemetry/pm-example/0": {
     "_link": "/jobs/podMonitor%2Fopentelemetry%2Fpm-example%2F0/targets"
@@ -177,17 +187,33 @@ Where `serviceMonitor/opentelemetry/sm-example/0` represents one of the
 Similarly, the `PodMonitor`, shows up as `podMonitor/opentelemetry/pm-example/0`
 in the `curl` output.
 
-This is good news, because it tells us that the scrape config discovery is working!
+This is good news, because it tells us that the scrape config discovery is
+working!
 
-You might also be wondering about the `otel-collector` entry. The Target
-Allocator automatically scrapes metrics from the OTel Collector as well.
+You might also be wondering about the `otel-collector` entry. This is happening
+because `spec.config.receivers.prometheusReceiver` of the
+`OpenTelemetryCollector` resource (named `otel-collector`) has self-scrape
+enabled:
+
+```yaml
+prometheus:
+  config:
+    scrape_configs:
+      - job_name: 'otel-collector'
+        scrape_interval: 10s
+        static_configs:
+          - targets: ['0.0.0.0:8888']
+```
+
+The Target Allocator automatically scrapes metrics from the OTel Collector as
+well.
 
 We can take a deeper look into `serviceMonitor/opentelemetry/sm-example/0`, to
 see what scrape targets are getting picked up by running `curl` against the
 value of the `_link` output above:
 
 ```shell
-curl localhost:8080/jobs/serviceMonitor%2Fdefault%2Fmy-app%2F0/targets | jq
+curl localhost:8080/jobs/serviceMonitor%2Fopentelemetry%2Fsm-example%2F0/targets | jq
 ```
 
 Sample output:
@@ -195,68 +221,71 @@ Sample output:
 ```json
 {
   "otelcol-collector-0": {
-    "_link": "/jobs/serviceMonitor%2Fopentelemetry%2Fsm-example%2F1/targets?collector_id=otelcol-collector-0",
+    "_link": "/jobs/serviceMonitor%2Fopentelemetry%2Fsm-example%2F0/targets?collector_id=otelcol-collector-0",
     "targets": [
       {
-        "targets": ["10.244.0.11:8082"],
+        "targets": ["10.244.0.11:8080"],
         "labels": {
-          "__meta_kubernetes_endpointslice_name": "py-otel-client-svc-znvrz",
-          "__meta_kubernetes_pod_label_app": "my-app",
-          "__meta_kubernetes_pod_node_name": "otel-target-allocator-talk-control-plane",
-          "__meta_kubernetes_endpointslice_label_endpointslice_kubernetes_io_managed_by": "endpointslice-controller.k8s.io",
-          "__meta_kubernetes_service_labelpresent_app": "true",
-          "__meta_kubernetes_endpointslice_address_target_kind": "Pod",
-          "__meta_kubernetes_endpointslice_endpoint_conditions_terminating": "false",
-          "__meta_kubernetes_pod_container_port_number": "8082",
-          "__meta_kubernetes_endpointslice_labelpresent_app": "true",
-          "__meta_kubernetes_pod_label_pod_template_hash": "776d6686bb",
-          "__meta_kubernetes_pod_container_image": "otel-target-allocator-talk:0.1.0-py-otel-client",
-          "__meta_kubernetes_pod_ip": "10.244.0.11",
-          "__meta_kubernetes_pod_controller_name": "py-otel-client-776d6686bb",
-          "__meta_kubernetes_pod_controller_kind": "ReplicaSet",
-          "__meta_kubernetes_pod_label_app_kubernetes_io_name": "py-otel-client",
-          "__meta_kubernetes_endpointslice_annotationpresent_endpoints_kubernetes_io_last_change_trigger_time": "true",
-          "__meta_kubernetes_service_annotationpresent_kubectl_kubernetes_io_last_applied_configuration": "true",
-          "__meta_kubernetes_pod_ready": "true",
-          "__meta_kubernetes_endpointslice_endpoint_conditions_serving": "true",
-          "__meta_kubernetes_pod_annotation_instrumentation_opentelemetry_io_inject_python": "true",
+          "__meta_kubernetes_endpointslice_port_name": "prom",
+          "__meta_kubernetes_pod_labelpresent_app_kubernetes_io_name": "true",
           "__meta_kubernetes_endpointslice_port_protocol": "TCP",
+          "__meta_kubernetes_endpointslice_address_target_name": "py-prometheus-app-575cfdd46-nfttj",
+          "__meta_kubernetes_endpointslice_annotation_endpoints_kubernetes_io_last_change_trigger_time": "2024-06-21T20:01:37Z",
+          "__meta_kubernetes_endpointslice_labelpresent_app_kubernetes_io_name": "true",
+          "__meta_kubernetes_pod_name": "py-prometheus-app-575cfdd46-nfttj",
+          "__meta_kubernetes_pod_controller_name": "py-prometheus-app-575cfdd46",
+          "__meta_kubernetes_pod_label_app_kubernetes_io_name": "py-prometheus-app",
+          "__meta_kubernetes_endpointslice_address_target_kind": "Pod",
+          "__meta_kubernetes_pod_node_name": "otel-target-allocator-talk-control-plane",
+          "__meta_kubernetes_pod_labelpresent_pod_template_hash": "true",
+          "__meta_kubernetes_endpointslice_label_kubernetes_io_service_name": "py-prometheus-app",
+          "__meta_kubernetes_endpointslice_annotationpresent_endpoints_kubernetes_io_last_change_trigger_time": "true",
+          "__meta_kubernetes_service_name": "py-prometheus-app",
+          "__meta_kubernetes_pod_ready": "true",
+          "__meta_kubernetes_pod_labelpresent_app": "true",
+          "__meta_kubernetes_pod_controller_kind": "ReplicaSet",
+          "__meta_kubernetes_endpointslice_labelpresent_app": "true",
+          "__meta_kubernetes_pod_container_image": "otel-target-allocator-talk:0.1.0-py-prometheus-app",
+          "__address__": "10.244.0.11:8080",
+          "__meta_kubernetes_service_label_app_kubernetes_io_name": "py-prometheus-app",
+          "__meta_kubernetes_pod_uid": "495d47ee-9a0e-49df-9b41-fe9e6f70090b",
+          "__meta_kubernetes_endpointslice_port": "8080",
+          "__meta_kubernetes_endpointslice_label_endpointslice_kubernetes_io_managed_by": "endpointslice-controller.k8s.io",
           "__meta_kubernetes_endpointslice_label_app": "my-app",
-          "__meta_kubernetes_pod_name": "py-otel-client-776d6686bb-7mchc",
-          "__meta_kubernetes_pod_annotationpresent_instrumentation_opentelemetry_io_inject_python": "true",
-          "__meta_kubernetes_endpointslice_endpoint_conditions_ready": "true",
+          "__meta_kubernetes_service_labelpresent_app_kubernetes_io_name": "true",
           "__meta_kubernetes_pod_host_ip": "172.24.0.2",
           "__meta_kubernetes_namespace": "opentelemetry",
-          "__meta_kubernetes_pod_labelpresent_pod_template_hash": "true",
-          "__meta_kubernetes_endpointslice_port_name": "py-client-port",
-          "__meta_kubernetes_pod_phase": "Running",
-          "__meta_kubernetes_endpointslice_label_app_kubernetes_io_name": "py-otel-client",
-          "__meta_kubernetes_endpointslice_port": "8082",
-          "__meta_kubernetes_endpointslice_address_target_name": "py-otel-client-776d6686bb-7mchc",
-          "__meta_kubernetes_pod_container_name": "py-otel-client",
-          "__meta_kubernetes_pod_container_port_name": "py-client-port",
-          "__meta_kubernetes_endpointslice_address_type": "IPv4",
-          "__meta_kubernetes_pod_uid": "bd68fa78-13f6-4377-bcfd-9bb95553f1f4",
-          "__meta_kubernetes_service_name": "py-otel-client-svc",
-          "__meta_kubernetes_service_label_app_kubernetes_io_name": "py-otel-client",
-          "__meta_kubernetes_pod_labelpresent_app": "true",
-          "__meta_kubernetes_service_labelpresent_app_kubernetes_io_name": "true",
-          "__meta_kubernetes_endpointslice_label_kubernetes_io_service_name": "py-otel-client-svc",
-          "__meta_kubernetes_endpointslice_annotation_endpoints_kubernetes_io_last_change_trigger_time": "2024-06-14T21:04:36Z",
-          "__address__": "10.244.0.11:8082",
+          "__meta_kubernetes_endpointslice_endpoint_conditions_serving": "true",
           "__meta_kubernetes_endpointslice_labelpresent_kubernetes_io_service_name": "true",
-          "__meta_kubernetes_endpointslice_labelpresent_endpointslice_kubernetes_io_managed_by": "true",
-          "__meta_kubernetes_service_annotation_kubectl_kubernetes_io_last_applied_configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"my-app\",\"app.kubernetes.io/name\":\"py-otel-client\"},\"name\":\"py-otel-client-svc\",\"namespace\":\"opentelemetry\"},\"spec\":{\"ports\":[{\"name\":\"py-client-port\",\"port\":8082,\"protocol\":\"TCP\",\"targetPort\":\"py-client-port\"}],\"selector\":{\"app.kubernetes.io/name\":\"py-otel-client\"}}}\n",
-          "__meta_kubernetes_pod_labelpresent_app_kubernetes_io_name": "true",
+          "__meta_kubernetes_endpointslice_endpoint_conditions_ready": "true",
+          "__meta_kubernetes_service_annotation_kubectl_kubernetes_io_last_applied_configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"my-app\",\"app.kubernetes.io/name\":\"py-prometheus-app\"},\"name\":\"py-prometheus-app\",\"namespace\":\"opentelemetry\"},\"spec\":{\"ports\":[{\"name\":\"prom\",\"port\":8080}],\"selector\":{\"app\":\"my-app\",\"app.kubernetes.io/name\":\"py-prometheus-app\"}}}\n",
+          "__meta_kubernetes_endpointslice_endpoint_conditions_terminating": "false",
           "__meta_kubernetes_pod_container_port_protocol": "TCP",
+          "__meta_kubernetes_pod_phase": "Running",
+          "__meta_kubernetes_pod_container_name": "my-app",
+          "__meta_kubernetes_pod_container_port_name": "prom",
+          "__meta_kubernetes_pod_ip": "10.244.0.11",
+          "__meta_kubernetes_service_annotationpresent_kubectl_kubernetes_io_last_applied_configuration": "true",
+          "__meta_kubernetes_service_labelpresent_app": "true",
+          "__meta_kubernetes_endpointslice_address_type": "IPv4",
           "__meta_kubernetes_service_label_app": "my-app",
-          "__meta_kubernetes_endpointslice_labelpresent_app_kubernetes_io_name": "true"
+          "__meta_kubernetes_pod_label_app": "my-app",
+          "__meta_kubernetes_pod_container_port_number": "8080",
+          "__meta_kubernetes_endpointslice_name": "py-prometheus-app-bwbvn",
+          "__meta_kubernetes_pod_label_pod_template_hash": "575cfdd46",
+          "__meta_kubernetes_endpointslice_endpoint_node_name": "otel-target-allocator-talk-control-plane",
+          "__meta_kubernetes_endpointslice_labelpresent_endpointslice_kubernetes_io_managed_by": "true",
+          "__meta_kubernetes_endpointslice_label_app_kubernetes_io_name": "py-prometheus-app"
         }
       }
     ]
   }
 }
 ```
+
+The query parameter `collector_id` in the `_link` field of the above output
+states that these are the targets pertain to `otelcol-collector-0` (the name of
+the `StatefulSet` created for the `OpenTelemetryCollector` resource).
 
 {{% alert title="Note" %}}
 
@@ -393,7 +422,8 @@ prometheusCR:
   serviceMonitorSelector: {}
 ```
 
-See the
+This configuration means that it will match on all `PodMonitors` and
+`ServiceMonitors`. See the
 [full OpenTelemetryCollector definition in "Do you know if metrics are actually being scraped?"](#do-you-know-if-metrics-are-actually-beingscraped).
 
 ### Do your labels, namespaces, and ports match for your ServiceMonitor and your Service (or PodMonitor and your Pod)?
