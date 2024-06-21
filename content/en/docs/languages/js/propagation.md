@@ -238,7 +238,7 @@ const output: Carrier = {};
 //
 // This example uses the active trace context, but you can
 // use whatever context is appropriate to your scenario.
-propagation.inject(trace.getTracerProvider().getActiveContext(), output);
+propagation.inject(context.active(), output);
 
 // Extract the traceparent and tracestate values from the output object.
 const { traceparent, tracestate } = output;
@@ -293,7 +293,7 @@ const input: Carrier = {};
 // You can then treat this context as the active context for your
 // traces.
 let activeContext: Context = propagation.extract(
-  trace.getTracerProvider().getActiveContext(),
+  context.active(),
   input,
 );
 
