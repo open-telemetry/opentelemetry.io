@@ -9,7 +9,7 @@ license: Apache 2.0
 description: An unofficial implementation of OpenTelemetry in MATLAB.
 authors:
   - name: MathWorks
-    URL: https://github.com/mathworks
+    url: https://github.com/mathworks
 urls:
   repo: https://github.com/mathworks/OpenTelemetry-Matlab
 createdAt: 2023-06-12

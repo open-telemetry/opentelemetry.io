@@ -12,7 +12,7 @@ description: >
   `X-Datadog-*` format.
 authors:
   - name: Tony Li
-    URL: https://github.com/tonglil
+    url: https://github.com/tonglil
 urls:
   repo: https://github.com/tonglil/opentelemetry-go-datadog-propagator
 createdAt: 2022-04-18

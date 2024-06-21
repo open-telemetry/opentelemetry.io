@@ -16,5 +16,5 @@ description: OpenTelemetry tracer & metric instrumentation as Gin Middleware
 authors:
   - name: Cyprinus
     email: cyprinus12138@gmail.com
-    URL: https://github.com/Cyprinus12138
+    url: https://github.com/Cyprinus12138
 createdAt: 2024-03-28

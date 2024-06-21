@@ -11,7 +11,7 @@ description:
   several exporters to talk to signal collectors
 authors:
   - name: Imandra
-    URL: https://imandra.ai
+    url: https://imandra.ai
 urls:
   repo: https://github.com/imandra-ai/ocaml-opentelemetry/
 createdAt: 2022-10-26
