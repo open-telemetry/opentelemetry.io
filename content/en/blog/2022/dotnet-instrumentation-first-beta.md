@@ -14,7 +14,7 @@ project!
 
 Without this project, .NET developers need to use instrumentation libraries to
 automatically generate telemetry data. For example, to instrument inbound
-ASP.NET Core requests, you need to use the ASP.NET Core instrumentation libraries
+ASP.NET Core requests, you need to use the ASP.NET Core instrumentation library
 and initialize it with the OpenTelemetry SDK.
 
 Now, developers can use
