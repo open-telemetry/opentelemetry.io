@@ -177,7 +177,7 @@ Where `serviceMonitor/opentelemetry/sm-example/0` represents one of the
 Similarly, the `PodMonitor`, shows up as `podMonitor/opentelemetry/pm-example/0`
 in the `curl` output.
 
-This is good news, because it tells us that the service discovery is working!
+This is good news, because it tells us that the scrape config discovery is working!
 
 You might also be wondering about the `otel-collector` entry. The Target
 Allocator automatically scrapes metrics from the OTel Collector as well.
