@@ -419,8 +419,8 @@ prometheusCR:
   serviceMonitorSelector: {}
 ```
 
-This configuration means that it will match on all `PodMonitors` and
-`ServiceMonitors`. See the
+This configuration means that it will match on all `PodMonitor` and
+`ServiceMonitor` resources. See the
 [full OpenTelemetryCollector definition in "Do you know if metrics are actually being scraped?"](#do-you-know-if-metrics-are-actually-beingscraped).
 
 ### Do your labels, namespaces, and ports match for your ServiceMonitor and your Service (or PodMonitor and your Pod)?
