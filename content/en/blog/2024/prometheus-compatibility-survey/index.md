@@ -51,9 +51,9 @@ with the help of the [OpenTelemetry End User SIG](/community/end-user/).
 Deciding on the default translation approach is one of the last remaining
 blockers for stabilizing the compatibility specification.
 
-The survey received 86 responses, and contained many helpful pieces of feedback.
-Thank you to everyone that participated! The questions and raw results can be
-found
+The survey received 86 responses (and 5 spam), and contained many helpful pieces
+of feedback. Thank you to everyone that participated! The questions and raw
+results can be found
 [here](https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/otel-prom-interoperability/otel-prom-interoperability-survey.csv).
 
 ## Overall takeaways
