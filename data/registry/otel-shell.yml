@@ -14,7 +14,7 @@ description:
 authors:
   - name: Philipp Lengauer
     email: p.lengauer@gmail.com
-    url: https://github.com/plengauer
+    URL: https://github.com/plengauer
 urls:
   repo: https://github.com/plengauer/opentelemetry-bash
 createdAt: 2024-06-12

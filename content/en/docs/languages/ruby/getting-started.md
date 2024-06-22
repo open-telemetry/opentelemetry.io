@@ -34,7 +34,7 @@ For more elaborate examples, see [examples](/docs/languages/ruby/examples/).
 
 ### Dependencies
 
-To begin, install rails:
+To begin, install Rails:
 
 ```sh
 gem install rails

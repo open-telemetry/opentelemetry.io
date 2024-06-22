@@ -11,7 +11,7 @@ description:
   unit tests checking the presence of telemetry data.
 authors:
   - name: Damien Mathieu
-    url: https://github.com/dmathieu
+    URL: https://github.com/dmathieu
 urls:
   repo: https://github.com/dmathieu/rspec-otel
 createdAt: 2024-02-13

@@ -18,7 +18,7 @@ description:
   OpenTelemetry SDK.
 authors:
   - name: Chet Husk
-    url: https://github.com/baronfel
+    URL: https://github.com/baronfel
 createdAt: 2024-02-01
 isNative: false
 isFirstParty: false

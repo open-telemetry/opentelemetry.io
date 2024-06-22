@@ -25,7 +25,7 @@ If you are interested in a plug and play user experience, see
 
 ### Dependencies
 
-First, create an empty package.json:
+First, create an empty package.JSON:
 
 ```sh
 npm init -y
