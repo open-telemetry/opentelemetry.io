@@ -6,9 +6,7 @@ tags:
   - exporter
   - dotnet
 license: Apache 2.0
-description:
-  The Geneva Exporter exports telemetry to Event Tracing for Windows (ETW) or to
-  a Unix Domain Socket (UDS) on the local machine.
+description: The Geneva Exporter exports telemetry to Event Tracing for Windows (ETW) or to a Unix Domain Socket (UDS) on the local machine.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -17,4 +15,4 @@ createdAt: 2022-11-07
 package:
   registry: nuget
   name: OpenTelemetry.Exporter.Geneva
-  version: 1.9.0-rc.2
+  version: 1.9.0
