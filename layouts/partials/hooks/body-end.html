@@ -1,4 +1,15 @@
-{{ if hugo.IsProduction -}}
-  {{ partial "script.html" (dict "src" "js/tracing.js") -}}
+{{/* We always include tracing.js in the build to avoid issue show up in the netlify build pipeline if an update of the otel modules breaks the current code */}}
+<script>
+  let tracingEnabled = true;
+  let collectorType = 'otlp';
+  let otlpTracesEndpointUrl = 'https://otelwebtelemetry.com/v1/traces';
+{{ if eq (getenv "OTEL_TRACES_EXPORTER") "console" -}}
+  collectorType = 'console';
+{{ else if getenv "OTEL_EXPORTER_OTLP_ENDPOINT" -}}
+  otlpTracesEndpointUrl = '{{ getenv "OTEL_EXPORTER_OTLP_ENDPOINT" }}';
+{{ else if not hugo.IsProduction -}}
+  tracingEnabled = false;
 {{ end -}}
+</script>
+{{ partial "script.html" (dict "src" "js/tracing.js") -}}
 {{ partial "script.html" (dict "src" "js/navScroll.js") -}}
