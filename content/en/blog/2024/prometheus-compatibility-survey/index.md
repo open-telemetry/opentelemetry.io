@@ -181,7 +181,7 @@ The Prometheus community has
 [ambitious plans](https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/)
 to add support for OpenTelemetry concepts.
 
-# Keep in touch
+## Keep in touch
 
 Thanks again to everyone who participated in the survey! We rely on your
 feedback to help guide the future development of OpenTelemetry and to ensure it
