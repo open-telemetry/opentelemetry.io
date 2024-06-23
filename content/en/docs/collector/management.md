@@ -90,7 +90,7 @@ We will set up a simple OpAMP control plane consisting of an example OpAMP
 server and let an OpenTelemetry Collector connect to it via an example OpAMP
 supervisor.
 
-First, clone the `open-telemetry/opamp-go` repo:
+First, clone the `open-telemetry/opamp-go` repository:
 
 ```sh
 git clone https://github.com/open-telemetry/opamp-go.git
@@ -159,7 +159,7 @@ service:
 ```
 
 Now it's time to launch the supervisor (which in turn will launch your
-OpenTelemetry collector):
+OpenTelemetry Collector):
 
 ```console
 $ go run .

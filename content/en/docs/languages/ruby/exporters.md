@@ -115,7 +115,7 @@ end
 ```
 
 If you now run your application, set the environment variable
-`OTEL_TRACES_EXPORTER` to zipkin:
+`OTEL_TRACES_EXPORTER` to Zipkin:
 
 ```sh
 env OTEL_TRACES_EXPORTER=zipkin rails server

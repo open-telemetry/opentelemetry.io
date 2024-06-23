@@ -1,4 +1,4 @@
-# cSpell:ignore firefox autoinjection
+# cSpell:ignore firefox autoinjection browserextension
 title: OpenTelemetry Browser Extension Autoinjection
 registryType: utilities
 language: js
@@ -6,6 +6,7 @@ tags:
   - js
   - browser
   - web-ext
+  - browserextension # for search to only find browser extensions and not other types of extensions
   - browser-extension
   - chrome-extension
   - firefox-extension
@@ -15,6 +16,11 @@ description: >
   This browser extension allows you to inject OpenTelemetry instrumentation in
   any web page. It uses the Web SDK and can export data to Zipkin or an
   OpenTelemetry Collector.
+deprecated:
+  reason:
+    This browser extension is permanently deprecated. [Other browser extensions
+    are available that provide similar
+    functionality](/ecosystem/registry/?component=utilities&s=browserextension).
 
 authors:
   - name: OpenTelemetry Authors

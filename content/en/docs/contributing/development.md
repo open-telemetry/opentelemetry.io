@@ -3,7 +3,6 @@ title: Development
 description:
   Learn how to set up a development environment for the opentelemetry.io site.
 weight: 60
-cSpell:ignore: chalin
 ---
 
 The following instructions explain how to set up a development environment for
@@ -121,77 +120,6 @@ get submodules on every invocation. To prevent this behavior while you work
 within a submodule, set the environment variable `GET=no`. You also need to run
 `git fetch --unshallow` the submodule before you can submit a PR. Alternatively,
 set `DEPTH=100` and re-fetch submodules.
-
-## Approver and maintainer practices
-
-This last section includes guidelines and some common practices used by
-approvers and maintainers while doing code reviews:
-
-- PRs with changes to documentation co-owned by a SIG (collector, demo,
-  language-specific...) should aim for two approvals: one by a docs approver and
-  one by a SIG approver:
-  - Doc approver label such PRs with `sig:<name>` and tag the SIG `-approvers`
-    group on that PR
-  - After a doc approver has reviewed and approved the PR, they can add the
-    label
-    [`sig-approval-missing`](https://github.com/open-telemetry/opentelemetry.io/labels/sig-approval-missing).
-    This signals to the SIG that they need to handle the PR
-  - If no SIG approval is given within a certain grace period (two weeks in
-    general, but may be less in urgent cases), docs maintainer may use their own
-    judgement to merge that PR
-- PRs created by bots can be merged by the following practice:
-  - PRs that auto-update versions in the registry can be fixed, approved and
-    merged immediately
-  - PRs that auto-update the versions of SDKs, zero-code instrumentations or the
-    collector can be approved and merged except the corresponding SIG signals
-    that merging should be postponed
-  - PRs that auto-update the version of any specification often require updates
-    to scripts for the CI checks to pass. In that case often
-    [@chalin](https://github.com/chalin/) will handle that PR. Otherwise those
-    PRs can as well be approved and merged except the corresponding SIG signals
-    that merging should be postponed.
-- PRs with changes to translations should aim for two approvals: one by a docs
-  approver and one by a translation approver. Similar practices apply as
-  suggested for the co-owned PRs.
-- If the PR branch is `out-of-date with the base branch`, they do not need to be
-  updated continuously: every update triggers all the PR CI checks to be run!
-  It's often enough to update them before merging.
-- A PR by non-maintainers should **never** update git sub modules. This happens
-  by accident from time to time. Let the PR author know that they should not
-  worry about it, we will fix this before merging, but in the future they should
-  make sure that they work from an up-to-date fork.
-- If the contributor is having trouble signing the CLA or used the wrong email
-  by mistake in one of their commits, ask them to fix the issue or rebase the
-  pull request. Worst case scenario, close and re-open the PR to trigger a new
-  CLA check.
-- Words unknown to cspell should be added to the cspell ignore list per page by
-  PR authors. Only approvers and maintainers will add commonly used terms to the
-  global list.
-- Approvers and maintainers have different work schedules and circumstances.
-  That's why all communication is assumed to be asynchronously and they should
-  not feel obligated to reply outside of their normal schedule.
-- When an approver or maintainer won't be available to contribute for an
-  extended period of time (more than a few days or a week) or won't be available
-  in that period of time, they should communicate this using the
-  [#otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6) channel and
-  updating the GitHub status.
-- Approver and maintainer adhere to the
-  [OTel Code of Conduct](https://github.com/open-telemetry/community/?tab=coc-ov-file#opentelemetry-community-code-of-conduct)
-  and are friendly and helpful towards contributors. In the case of a conflict,
-  misunderstanding or any other kind of situation that makes an
-  approver/maintainer feel uncomfortable they can step back from a conversation,
-  issue or PR and ask another approver/maintainer to step in.
-
-The following workflow can be applied by maintainers to merge PRs:
-
-- Make sure that a PR has all approvals and all CI checks pass
-- If the branch is out-of-date, rebase update it via the GitHub UI.
-- The update will trigger all CI checks to run again, wait for them to pass or
-  execute a script like the following to make it happen in the background:
-
-  ```shell
-  export PR=<ID OF THE PR>; gh pr checks ${PR} --watch && gh pr merge ${PR} --squash
-  ```
 
 [clone]:
   https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
