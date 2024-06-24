@@ -105,9 +105,9 @@ OTLP format. This enables you to correlate traces with metrics.
 Something to consider with this component is that it is under active
 development; as such, it has several
 [limitations](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md#%EF%B8%8F-warning),
-including that it’s a stateful component. Additionally, it is recommended to not
-use this component when multiple replicas of the Collector are run, because in
-this state:
+including that it’s a stateful component. Additionally, it is not recommended to
+use this component when multiple replicas of the Collector are run *without the target allocator*,
+because in this state:
 
 - The Collector is unable to auto-scale the scraping
 - If the replicas are running with the same config, it will scrape the targets
@@ -163,10 +163,9 @@ alerting pipeline won't be offline.
 
 Luckily, the OTel Operator’s Target Allocator (TA) is able to help with some of
 this. For instance, it can automatically drop any targets it knows won’t be
-scraped. Whereas if you shard with `hashmod`, you'll need to
-[update your config based on the number of replicas you have](https://www.robustperception.io/scaling-and-federating-prometheus/).
-Plus, if you’re already collecting Prometheus metrics about your Kubernetes
-infrastructure, using the TA is a great option.
+scraped. The TA also automatically shards the targets for you, whereas if you shard with `hashmod` you'll need to
+[update your config based on the number of replicas you have](https://www.robustperception.io/scaling-and-federating-prometheus/). The TA also allows you to continue using resources like PodMonitor and ServiceMonitor to continue collecting Prometheus metrics about your Kubernetes
+infrastructure.
 
 The Target Allocator is part of the OTel Operator. The
 [OTel Operator](https://github.com/open-telemetry/opentelemetry-operator) is a
