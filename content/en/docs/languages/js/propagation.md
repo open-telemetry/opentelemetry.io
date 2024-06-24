@@ -204,9 +204,10 @@ send both to a backend now the visualization will show this dependency for you.
 ## Manual context propagation
 
 In some cases, it is not possible to propagate context automatically as outlined
-in the previous section. There might not be an instrumentation library that matches
-a library you're using to have services communicate with one another. Or you
-might have requirements that these libraries can't fulfill even if they existed.
+in the previous section. There might not be an instrumentation library that
+matches a library you're using to have services communicate with one another. Or
+you might have requirements that these libraries can't fulfill even if they
+existed.
 
 When you must propagate context manually, you can use the
 [context API](/docs/languages/js/context).
@@ -292,10 +293,7 @@ const input: Carrier = {};
 //
 // You can then treat this context as the active context for your
 // traces.
-let activeContext: Context = propagation.extract(
-  context.active(),
-  input,
-);
+let activeContext: Context = propagation.extract(context.active(), input);
 
 let tracer = trace.getTracer('app-name');
 
