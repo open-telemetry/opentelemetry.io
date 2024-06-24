@@ -5,7 +5,7 @@ date: 2024-03-31
 author: >-
   [Reese Lee](https://github.com/reese-lee) (New Relic), [Adriana
   Villela](https://github.com/avillela) (ServiceNow)
-cSpell:ignore: sharded hashmod targetallocator Kubelet
+cSpell:ignore: hashmod Kubelet sharded targetallocator
 canonical_url: https://newrelic.com/blog/how-to-relic/prometheus-and-opentelemetry-better-together
 ---
 
@@ -135,9 +135,8 @@ Remote Write exporter, which allows you to push data to Prometheus from multiple
 Collector instances with no issues. Since Prometheus also accepts remote write
 ingestion, you can also use this exporter if you are generating OTel metrics and
 want to ship them to a backend that is compatible with Prometheus remote write.
-To learn more about the architecture of both exporters, see [Use Prometheus
-Remote Write
-exporter](https://grafana.com/blog/2023/07/20/a-practical-guide-to-data-collection-with-opentelemetry-and-prometheus/#6-use-prometheus-remote-write-exporter).
+To learn more about the architecture of both exporters, see
+[Use Prometheus Remote Write exporter](https://grafana.com/blog/2023/07/20/a-practical-guide-to-data-collection-with-opentelemetry-and-prometheus/#6-use-prometheus-remote-write-exporter).
 
 ## Using the Target Allocator
 
@@ -594,8 +593,8 @@ annotations you’ve added to your pods and namespaces.
 There are a few more Collector components you can implement to monitor
 Kubernetes, including Kubernetes-specific ones as well as general-use
 processors, such as the batch, memory limiter, and resource processors. To learn
-more, see [Important Components for
-Kubernetes](/docs/kubernetes/collector/components/).
+more, see
+[Important Components for Kubernetes](/docs/kubernetes/collector/components/).
 
 After you’ve configured the components in your Collector config file, you need
 to enable them within the [pipelines](/docs/collector/configuration/#pipelines)
@@ -649,8 +648,8 @@ take advantage of the rich Prometheus exporter ecosystem for OTel users. The
 maintainers are also working on adding support for delta temporality. This
 [component](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/30479)
 will aggregate delta samples to their respective cumulative counterparts. For
-more about Prometheus' commitment to OTel, see [Our commitment to
-OpenTelemetry](https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/).
+more about Prometheus' commitment to OTel, see
+[Our commitment to OpenTelemetry](https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/).
 
 However you decide to use OTel to gather Prometheus metrics, ultimately what is
 right for your organization depends on your business needs. Using the OTel

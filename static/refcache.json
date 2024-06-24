@@ -619,6 +619,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:04:10.74433-05:00"
   },
+  "https://cortexmetrics.io/docs/guides/running-cortex-on-kubernetes/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-24T18:06:46.517967789Z"
+  },
   "https://cortexmetrics.io/docs/guides/tracing/#opentelemetry": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:04:53.700061-05:00"
@@ -774,6 +778,10 @@
   "https://developer.hashicorp.com/nomad/docs/commands/operator/scheduler/set-config#memory-oversubscription": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:03:01.390387-05:00"
+  },
+  "https://developer.hashicorp.com/nomad/docs/operations/monitoring-nomad": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-24T18:06:10.832204893Z"
   },
   "https://developer.hashicorp.com/nomad/downloads": {
     "StatusCode": 206,
@@ -3219,6 +3227,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-05-15T19:23:46.151980372+03:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/30479": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-24T18:06:37.991639153Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/31959": {
     "StatusCode": 200,
     "LastSeen": "2024-05-15T19:23:47.587898763+03:00"
@@ -4939,6 +4951,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:52:48.944519-05:00"
   },
+  "https://grafana.com/blog/2023/07/20/a-practical-guide-to-data-collection-with-opentelemetry-and-prometheus/#6-use-prometheus-remote-write-exporter": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-24T18:06:20.970906267Z"
+  },
   "https://grafana.com/docs/agent/latest/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-24T14:54:56.149229+01:00"
@@ -4966,6 +4982,10 @@
   "https://grafana.com/oss/grafana/": {
     "StatusCode": 200,
     "LastSeen": "2024-05-21T06:04:46.742171356Z"
+  },
+  "https://grafana.com/oss/mimir/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-24T18:06:40.436832671Z"
   },
   "https://grafana.com/oss/opentelemetry/": {
     "StatusCode": 200,
@@ -5335,6 +5355,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:02:31.465356-05:00"
   },
+  "https://kubernetes.io/docs/concepts/cluster-administration/system-metrics/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-24T18:06:09.622137396Z"
+  },
   "https://kubernetes.io/docs/concepts/cluster-administration/system-traces/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:53:40.07228-05:00"
@@ -5414,6 +5438,14 @@
   "https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding": {
     "StatusCode": 206,
     "LastSeen": "2024-04-25T00:01:11.609121-04:00"
+  },
+  "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-24T18:06:29.521450883Z"
+  },
+  "https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-24T18:06:32.862427557Z"
   },
   "https://kubernetes.io/docs/reference/kubectl/": {
     "StatusCode": 206,
@@ -5731,6 +5763,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:06:14.054263-05:00"
   },
+  "https://medium.com/wish-engineering/horizontally-scaling-prometheus-at-wish-ea4b694318dd": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-24T18:06:23.663092635Z"
+  },
   "https://microcks.io/": {
     "StatusCode": 206,
     "LastSeen": "2024-03-12T09:44:49.348708+01:00"
@@ -5770,6 +5806,10 @@
   "https://newrelic.com/blog/how-to-relic/dude-wheres-my-error": {
     "StatusCode": 206,
     "LastSeen": "2024-03-27T00:26:34.094985195Z"
+  },
+  "https://newrelic.com/blog/how-to-relic/prometheus-and-opentelemetry-better-together": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-24T18:05:59.442618131Z"
   },
   "https://newrelic.com/solutions/opentelemetry": {
     "StatusCode": 206,
@@ -7723,6 +7763,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:07:18.145976-05:00"
   },
+  "https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-24T18:06:18.104195195Z"
+  },
   "https://prometheus.io/docs/alerting/latest/alertmanager/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:14:18.042312-05:00"
@@ -7739,6 +7783,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-04-11T14:54:50.705990785Z"
   },
+  "https://prometheus.io/docs/instrumenting/exporters/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-24T18:06:13.076959824Z"
+  },
   "https://prometheus.io/docs/instrumenting/exposition_formats/#basic-info": {
     "StatusCode": 206,
     "LastSeen": "2024-04-11T14:54:57.142101041Z"
@@ -7746,6 +7794,10 @@
   "https://prometheus.io/docs/instrumenting/exposition_formats/#comments-help-text-and-type-information": {
     "StatusCode": 206,
     "LastSeen": "2024-04-11T14:54:55.03691741Z"
+  },
+  "https://prometheus.io/docs/instrumenting/exposition_formats/#exposition-formats": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-24T18:06:07.50964971Z"
   },
   "https://prometheus.io/docs/instrumenting/writing_clientlibs/#overall-structure": {
     "StatusCode": 206,
@@ -8458,6 +8510,10 @@
   "https://thanos.io/tip/thanos/tracing.md/#opentelemetry-otlp": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:07:05.720805-05:00"
+  },
+  "https://thanos.io/v0.10/thanos/getting-started.md/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-24T18:06:42.349083709Z"
   },
   "https://tinygo.org/": {
     "StatusCode": 206,
@@ -9674,6 +9730,10 @@
   "https://www.rfc-editor.org/rfc/rfc9110.html#name-uri-origin": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:36:42.607433-05:00"
+  },
+  "https://www.robustperception.io/scaling-and-federating-prometheus/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-24T18:06:26.04748648Z"
   },
   "https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers": {
     "StatusCode": 200,
