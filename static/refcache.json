@@ -6119,6 +6119,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-02-09T11:48:44.205582+01:00"
   },
+  "https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/#:~:text=The%20ServiceMonitor%20is%20used%20to,build%20the%20required%20Prometheus%20configuration.": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-18T13:27:45.202877-04:00"
+  },
   "https://observiq.com/blog/what-are-connectors-in-opentelemetry/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:06:02.410999-05:00"
@@ -7706,6 +7710,14 @@
   "https://promcon.io/2022-munich/talks/native-histograms-in-prometheus/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:01:24.93578-05:00"
+  },
+  "https://prometheus-operator.dev/docs/operator/design/#servicemonitor": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-18T16:43:08.829675-04:00"
+  },
+  "https://prometheus-operator.dev/docs/user-guides/getting-started/#using-podmonitors": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-18T13:27:46.505689-04:00"
   },
   "https://prometheus.io": {
     "StatusCode": 206,

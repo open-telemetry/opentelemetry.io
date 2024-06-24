@@ -1,6 +1,7 @@
 ---
 title: Using the OpenTelemetry Operator to Inject Auto-Instrumentation
 linkTitle: Operator
+aliases: [/docs/languages/python/automatic/operator]
 weight: 30
 cSpell:ignore: distro mkdir uninstrumented virtualenv
 ---
