@@ -161,4 +161,3 @@ rules:
       # Enable the following to find and replace "instrumentation module/package" with "instrumentation library":
       # - ["(auto(matic)?[- ])?instrumentation (module|package)", "instrumentation library"]
       # - ["(auto(matic)?[- ])?instrumentation (modules|packages)", "instrumentation libraries"]
-

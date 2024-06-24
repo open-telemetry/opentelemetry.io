@@ -31,8 +31,8 @@ example, if you already installed the `flask` package, running
 `opentelemetry-instrumentation-flask` for you.
 
 > **NOTE:** If you leave out `-a install`, the command will simply list out the
-> recommended instrumentation libraries to be installed. More information
-> can be found
+> recommended instrumentation libraries to be installed. More information can be
+> found
 > [here](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation#opentelemetry-bootstrap).
 
 ## Configuring the agent

@@ -154,7 +154,8 @@ Additional suggestions:
 
 - Start with dev or testing environments first to build trust in the software
 - Choose a stack where OTel is more robust, such as Java and Node.js
-- For countering developer resistance, using automatic instrumentation to start with is a good step
+- For countering developer resistance, using automatic instrumentation to start
+  with is a good step
 
 #### 2 - Starting and scaling
 
