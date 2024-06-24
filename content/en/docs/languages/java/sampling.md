@@ -10,8 +10,11 @@ the sampling decision to propagate to other services.
 
 ## Default behavior
 
-By default, all spans are sampled, and thus, 100% of traces are sampled. If you
-do not need to manage data volume, don't bother setting a sampler.
+By default, all spans are sampled, resulting in 100% of traces being sampled. If
+your observability backend has constraints or budgetary restrictions on the
+amount of data ingested, you can introduce a sampler and adjust the sample rates
+accordingly. If you do not need to manage data volume, you don't need to set a
+sampler and can use the default.
 
 ## Environment variables
 
@@ -89,8 +92,8 @@ Other samplers include:
 - `traceIdRatioBased`, which samples a fraction of spans, based on the fraction
   given to the sampler. If you set `0.5`, half of all the spans are sampled.
   Currently, only the ratio of traces that are sampled can be relied on, not how
-  the sampled traces are determined. As such, it is recommended to only use this
-  sampler for root spans using `parentBased`.
+  the sampled traces are determined. Only use this sampler for root spans that
+  use `parentBased`.
 - `parentBased`, which uses the parent span to make sampling decisions, if
   present. By default, the tracer provider uses a parentBased sampler with the
   `alwaysOn` sampler.
