@@ -51,7 +51,7 @@ dotnet add package OpenTelemetry.Extensions.Hosting
 dotnet add package OpenTelemetry.Exporter.Console
 ```
 
-Then you can install the instrumentation libraries
+Then you can install the instrumentation libraries:
 
 ```sh
 dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
