@@ -70,17 +70,6 @@ Because a common use cases for Baggage is to add data to
 trace, several languages have Baggage Span Processors that add data from
 baggage as attributes on span creation.
 
-## Baggage is only for observability data
-
-Although Baggage does support propagating arbitrary key-value pairs across
-services, it is not a replacement for programmatic data flow. Because baggage is
-stored in HTTP headers, not only does this mean the data is available for anyone
-who can read those headers to consume, but it would be a poor choice to
-propagate general program data given the practical limits HTTP servers place on
-header lengths. Furthermore, clients reserve the right to drop HTTP headers,
-which would result in unexpected data loss. To reiterate: don't use baggage
-as a replacement for programmatic data flow.
-
 > For more information, see the [baggage specification][].
 
 [baggage specification]: /docs/specs/otel/overview/#baggage-signal
