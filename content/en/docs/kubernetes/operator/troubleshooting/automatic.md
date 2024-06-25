@@ -11,7 +11,7 @@ troubleshooting steps to understand what’s going on.
 
 ### Check installation status
 
-After installing the `Instrumentation` resource, make sure that it
+After installing the `Instrumentation` resource, make sure that it is
 installed correctly by running this command:
 
 ```shell
@@ -68,7 +68,7 @@ Spec:
 Events:  <none>
 ```
 
-### Check the OpenTelemetry Operator Logs
+### Check the OpenTelemetry Operator logs
 
 Check the OpenTelemetry Operator logs for errors by running this command:
 
@@ -91,16 +91,13 @@ annotations:
   instrumentation.opentelemetry.io/inject-python: 'true'
 ```
 
-The previous snippet tells the OpenTelemetry Operator to look for an
-`Instrumentation` resource in the pod’s namespace. It also tells the
-Operator to inject Python auto-instrumentation into the pod.
 
 When the pod starts up, the annotation tells the Operator to look for an
 `Instrumentation` resource in the pod’s namespace, and to inject Python
 auto-instrumentation into the pod. It adds an
 [init-container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)
-to the application’s pod, called `opentelemetry-auto-instrumentation`, which is
-then used to injects the auto-instrumentation into the app container.
+called `opentelemetry-auto-instrumentation` to the application’s pod, which is
+then used to inject the auto-instrumentation into the app container.
 
 If the `Instrumentation` resource isn’t present by the time the `Deployment`
 is deployed, the `init-container` can’t be created. This means that if the
@@ -130,7 +127,7 @@ following:
   properly.
 - The `Instrumentation` resource was installed after the application was
   deployed.
-- There’s an error in the auto-instrumentation annotation, or the annotation in
+- There’s an error in the auto-instrumentation annotation, or the annotation is in
   the wrong spot. See the next section.
 
 You might also want to check the output of the events command for any errors, as
@@ -164,14 +161,9 @@ Collector
 
 For example: `http://otel-collector.opentelemetry.svc.cluster.local:4318`.
 
-Where:
+Where `otel-collector` is the name of the OTel Collector Kubernetes [`Service`](https://kubernetes.io/docs/concepts/services-networking/service/).
 
-- `otel-collector` is the name of the OTel Collector Kubernetes
-  [`Service`](https://kubernetes.io/docs/concepts/services-networking/service/)
-- In addition, if the Collector is running in a different namespace, you must
-  append `opentelemetry.svc.cluster.local` to the Collector’s service name,
-  where `opentelemetry` is the namespace in which the Collector resides (it can
-  be any namespace of your choosing).
+In addition, if the Collector is running in a different namespace, you must append `opentelemetry.svc.cluster.local` to the Collector’s service name, where `opentelemetry` is the namespace in which the Collector resides. It can be any namespace of your choosing.
 
 Finally, make sure that you are using the right Collector port. Normally, you
 can choose either `4317` (gRPC) or `4318` (HTTP); however, for
