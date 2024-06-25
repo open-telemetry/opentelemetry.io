@@ -123,7 +123,7 @@ is the name of a remote service to which a connection is made. It corresponds to
 `service.name` in the [resource](/docs/specs/semconv/resource/#service) for the
 local service.
 
-{{% config_option name="otel.instrumentation.common.peer-service-mapping" %}}
+{{< config_option name="otel.instrumentation.common.peer-service-mapping" >}}
 
 Used to specify a mapping from host names or IP addresses to peer services, as a
 comma-separated list of `<host_or_ip>=<user_assigned_name>` pairs. The peer
@@ -150,7 +150,7 @@ while `1.2.3.4:443` will have have `peer.service` of `cats-service` and requests
 to `dogs-abcdef123.serverlessapis.com:80/api/v1` will have an attribute of
 `dogs-api`.
 
-{{% /config_option %}}
+{{< /config_option >}}
 
 ### DB statement sanitization
 
