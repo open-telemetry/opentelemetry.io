@@ -332,4 +332,4 @@ with the network or backend receiving the data.
 
 You can monitor data ingress with the `otelcol_receiver_accepted_spans` and
 `otelcol_receiver_accepted_metric_points` metrics and data egress with the
-`otecol_exporter_sent_spans` and `otelcol_exporter_sent_metric_points` metrics.
+`otelcol_exporter_sent_spans` and `otelcol_exporter_sent_metric_points` metrics.
