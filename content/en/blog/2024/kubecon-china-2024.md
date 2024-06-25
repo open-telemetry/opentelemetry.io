@@ -15,45 +15,19 @@ AI_dev] conference in Hong Kong from August 21 to 23, 2024.
 
 Read on to learn about all the OpenTelemetry events at KubeCon China 2024.
 
-This post will be updated as we receive notice of other activities. Check
-back before the conference begins!
+This post will be updated as we receive notice of other activities. Check back
+before the conference begins!
 
-## Top-level heading
+## AI_dev talks
 
-Top-level headings start at **level 2**. This means, that your post should not
-include `# headings` for top-level headings but `## headings` instead.
+- **[Lightning Talk: Adaptive Tracing Propagation with OpenTelemetry: Navigating Protocol Diversity in the Cloud](https://sched.co/1f4zX)**<br>
+  Wednesday, August 21 • 12:03 - 12:08
 
-## Paragraphs
+## Maintainer sessions
 
-Wrap paragraph text at 80 characters, this helps make git diffs (which is line
-based) more useful. If you don't want to bother with that, then just run the
-markdown formatter (see below).
+- **[OpenTelemetry Community Update](https://sched.co/1eYcJ)**<br> by Zihao Rao
+  & Huxing Zhang, Alibaba Cloud; Trask Stalnaker, Microsoft<br> Wednesday,
+  August 21 • 3:35 - 4:10
 
-## Images
-
-If you use images, make sure that your blog post is located in it's own
-directory. Put the images into the same directory.
-
-If you have an image stored at `content/en/blog/2024/imagename.png`, you can
-reference them like the following:
-
-![Provide a good image description for improved accessibility](imagename.png)
-
-## Markdown formatter
-
-Before submitting a new commit run the formatter over your file:
-
-```sh
-npm run format
-```
-
-Happy writing!
-
-**Note:** If you view this page with the GitHub file viewer, you can safely
-ignore the `Error in user YAML` at the top of this page.
-
-[#otel-user-research]: https://cloud-native.slack.com/archives/C01RT3MSWGZ
 [KubeCon + CloudNativeCon + Open Source Summit + AI_dev]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-open-source-summit-ai-dev-china/
-[Observability Day]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/observability-day/
