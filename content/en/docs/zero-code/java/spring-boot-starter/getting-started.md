@@ -100,7 +100,8 @@ with the `io.spring.dependency-management` plugin.
 
 {{% alert title="Note" color="info" %}}
 
-If you import the `spring-boot-dependencies` BOM, you have to declare it after the OpenTelemetry BOMs.
+If you import the `spring-boot-dependencies` BOM, you have to declare it after
+the OpenTelemetry BOMs.
 
 {{% /alert %}}
 
