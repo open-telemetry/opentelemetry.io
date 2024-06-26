@@ -87,6 +87,7 @@
   url: https://www.sicredi.com.br/
   components: [Collector, Go, Java, Python]
   reference: https://medium.com/sicreditech/sicredis-path-for-opentelemetry-adoption-3564fc8a743a
+  referenceTitle: blog post
   contact: https://github.com/igorestevanjasinski
 - name: Skyscanner
   url: https://www.skyscanner.net/
