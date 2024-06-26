@@ -1,4 +1,4 @@
-# cSpell:ignore containerd buildx Quarkus Cerbos flagd flipt KEDA Kyverno Dapr rustup GORM Otterize Dubbo Microcks Kuma
+# cSpell:ignore containerd buildx Quarkus Cerbos flagd flipt KEDA Kyverno Dapr rustup GORM Otterize Dubbo Microcks Kuma Kubewarden
 - name: containerd
   url: https://containerd.io/
   docsUrl: https://github.com/containerd/containerd/blob/main/docs/tracing.md
@@ -237,4 +237,9 @@
   url: https://istio.io/
   docsUrl: https://istio.io/latest/docs/tasks/observability/distributed-tracing/opentelemetry/
   components: [Go]
+  oss: true
+- name: Kubewarden
+  url: https://kubewarden.io/
+  docsUrl: https://docs.kubewarden.io/howtos/telemetry/opentelemetry-qs
+  components: [Rust, Go]
   oss: true

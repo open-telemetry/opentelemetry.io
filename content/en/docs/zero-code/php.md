@@ -1,7 +1,8 @@
 ---
-title: Automatic Instrumentation
-linkTitle: Automatic
+title: PHP zero-code instrumentation
+linkTitle: PHP
 weight: 30
+aliases: [/docs/languages/php/automatic]
 # prettier-ignore
 cSpell:ignore: centos configurator democlass epel myapp pecl phar remi unindented userland
 ---
@@ -15,13 +16,13 @@ method runs.
 {{% alert title="Important" color="warning" %}}Installing the OpenTelemetry
 extension by itself will not generate traces. You must also install the
 [SDK](https://packagist.org/packages/open-telemetry/sdk) **and** one or more
-[instrumentation packages](/ecosystem/registry/?component=instrumentation&language=php)
+[instrumentation libraries](/ecosystem/registry/?component=instrumentation&language=php)
 for the frameworks and libraries that you are using, or alternatively write your
 own.
 
 You also _must_ use
 [composer autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading),
-as this is the mechanism all auto-instrumentation packages use to register
+as this is the mechanism all instrumentation libraries use to register
 themselves. {{% /alert %}}
 
 ## Example
@@ -224,8 +225,8 @@ commonly used PHP libraries. For the full list, see
 ## Next steps
 
 After you have automatic instrumentation configured for your app or service, you
-might want to add [manual instrumentation](../instrumentation) to collect custom
-telemetry data.
+might want to add [manual instrumentation](/docs/languages/php/instrumentation)
+to collect custom telemetry data.
 
 For more examples, see
 [opentelemetry-php-contrib/examples](https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/examples).

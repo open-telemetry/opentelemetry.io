@@ -77,7 +77,7 @@ params:
     observability tools.
   github_repo: https://github.com/open-telemetry/opentelemetry.io
   github_branch: main
-  gcs_engine_id: bde3d634eca9cd335
+  gcs_engine_id: 015faf7de29c34606
 
   ## Social media image path, such as Open Graph's og:image
   #

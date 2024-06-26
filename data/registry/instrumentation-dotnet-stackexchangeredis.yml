@@ -19,4 +19,4 @@ createdAt: 2022-10-28
 package:
   registry: nuget
   name: OpenTelemetry.Instrumentation.StackExchangeRedis
-  version: 1.0.0-rc9.14
+  version: 1.0.0-rc9.15

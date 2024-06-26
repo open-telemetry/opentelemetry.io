@@ -63,7 +63,7 @@ solve them.
 We'll be adding more scenarios over time.
 
 - Generate a [Product Catalog error](feature-flags) for `GetProduct` requests
-  with product id: `OLJCESPC7Z` using the Feature Flag service
+  with product ID: `OLJCESPC7Z` using the Feature Flag service
 - Discover a memory leak and diagnose it using metrics and traces.
   [Read more](scenarios/recommendation-cache/)
 
