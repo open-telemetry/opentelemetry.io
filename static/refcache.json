@@ -327,6 +327,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:05.306086-05:00"
   },
+  "https://cloud-native.slack.com/archives/C01LSCJBXDZ": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-13T19:50:17.347862467Z"
+  },
   "https://cloud-native.slack.com/archives/C01N5UCHTEH": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:56.992279-05:00"
@@ -5455,6 +5459,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:06:15.993792-05:00"
   },
+  "https://landscape.cncf.io/guide#observability-and-analysis--observability": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-12T14:28:14.584941196Z"
+  },
   "https://laravel.com/docs/10.x/installation": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:34.641048-05:00"
@@ -7707,6 +7715,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:01:24.93578-05:00"
   },
+  "https://prometheus.github.io/client_java/otel/otlp/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-13T19:50:16.163446592Z"
+  },
   "https://prometheus-operator.dev/docs/operator/design/#servicemonitor": {
     "StatusCode": 206,
     "LastSeen": "2024-06-18T16:43:08.829675-04:00"
@@ -7722,6 +7734,14 @@
   "https://prometheus.io/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:07:18.145976-05:00"
+  },
+  "https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-18T14:24:38.978819371Z"
+  },
+  "https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/#support-utf-8-metric-and-label-names": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-12T14:28:16.265327643Z"
   },
   "https://prometheus.io/docs/alerting/latest/alertmanager/": {
     "StatusCode": 206,
