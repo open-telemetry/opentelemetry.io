@@ -4,6 +4,7 @@ title:
   China 2024
 linkTitle: Kubecon China 2024
 date: 2024-06-25
+# prettier-ignore
 cSpell:ignore: Alhamdani Censhare EBPF Hrabusa Husni Huxing Jiahang Krom Sianturi Wanqi Zhang Zihao Ziyi
 author: '[Tiffany Hrabusa](https://github.com/tiffany76)'
 draft: true # TODO: remove this line once your post is ready to be published
