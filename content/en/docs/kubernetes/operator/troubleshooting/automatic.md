@@ -4,15 +4,15 @@ title: Auto-instrumentation
 
 If you're using the [OpenTelemetry Operator](/docs/kubernetes/operator)'s
 capability to inject [auto-instrumentation](/docs/kubernetes/operator/automatic)
-and you're not seeing any traces or metrics, follow these
-troubleshooting steps to understand what’s going on.
+and you're not seeing any traces or metrics, follow these troubleshooting steps
+to understand what’s going on.
 
 ## Troubleshooting steps
 
 ### Check installation status
 
-After installing the `Instrumentation` resource, make sure that it is
-installed correctly by running this command:
+After installing the `Instrumentation` resource, make sure that it is installed
+correctly by running this command:
 
 ```shell
 kubectl describe otelinst -n <namespace>
@@ -80,9 +80,9 @@ The logs should not show any errors related to auto-instrumentation errors.
 
 ### Check deployment order
 
-Make sure the deployment order is correct. The `Instrumentation` resource
-must be deployed before deploying the corresponding `Deployment` resources
-that are auto-instrumented.
+Make sure the deployment order is correct. The `Instrumentation` resource must
+be deployed before deploying the corresponding `Deployment` resources that are
+auto-instrumented.
 
 Consider the following auto-instrumentation annotation snippet:
 
@@ -91,7 +91,6 @@ annotations:
   instrumentation.opentelemetry.io/inject-python: 'true'
 ```
 
-
 When the pod starts up, the annotation tells the Operator to look for an
 `Instrumentation` resource in the pod’s namespace, and to inject Python
 auto-instrumentation into the pod. It adds an
@@ -99,8 +98,8 @@ auto-instrumentation into the pod. It adds an
 called `opentelemetry-auto-instrumentation` to the application’s pod, which is
 then used to inject the auto-instrumentation into the app container.
 
-If the `Instrumentation` resource isn’t present by the time the `Deployment`
-is deployed, the `init-container` can’t be created. This means that if the
+If the `Instrumentation` resource isn’t present by the time the `Deployment` is
+deployed, the `init-container` can’t be created. This means that if the
 `Deployment` resource is deployed before you deploy the `Instrumentation`
 resource, the auto-instrumentation fails to initialize.
 
@@ -119,34 +118,57 @@ Which should result in output that looks like the following example:
 ```
 
 If the output is missing `Created` or `Started` entries for
-`opentelemetry-auto-instrumentation`, there might be an issue with
-your auto-instrumentation configuration. This can be the result of any of the
+`opentelemetry-auto-instrumentation`, there might be an issue with your
+auto-instrumentation configuration. This can be the result of any of the
 following:
 
-- The `Instrumentation` resource wasn’t installed or wasn’t installed
-  properly.
+- The `Instrumentation` resource wasn’t installed or wasn’t installed properly.
 - The `Instrumentation` resource was installed after the application was
   deployed.
-- There’s an error in the auto-instrumentation annotation, or the annotation is in
-  the wrong spot. See the next section.
+- There’s an error in the auto-instrumentation annotation, or the annotation is
+  in the wrong spot. See the next section.
 
 You might also want to check the output of the events command for any errors, as
 these might help point to your issue.
 
+### Check the auto-instrumentation annotation
+
+Consider the following auto-instrumentation annotation snippet:
+
+```yaml
+annotations:
+  instrumentation.opentelemetry.io/inject-python: 'true'
+```
+
+If your `Deployment` resource is deployed to a namespace called `application`
+and you have an `Instrumentation` resource called `my-instrumentation` which is
+deployed to a namespace called `opentelemetry`, then the above annotation will
+not work.
+
+Instead, the annotation should be:
+
+```yaml
+annotations:
+  instrumentation.opentelemetry.io/opentelemetry/inject-python: 'opentelemetry/my-instrumentation'
+```
+
+Where `opentelemetry` is the namesapce of the `Instrumentation` resource, and
+`my-instrumentation` is the name of the `Instrumentation` resource.
+
 ### Check the auto-instrumentation configuration
 
-The auto-instrumentation annotation might have not been added
-correctly. Check for the following:
+The auto-instrumentation annotation might have not been added correctly. Check
+for the following:
 
-- Are you auto-instrumenting for the right language? For example, did you
-  try to auto-instrument a Python application by adding a JavaScript
+- Are you auto-instrumenting for the right language? For example, did you try to
+  auto-instrument a Python application by adding a JavaScript
   auto-instrumentation annotation instead?
 - Did you put the auto-instrumentation annotation in the right location? When
-  you’re defining a `Deployment` resource, there are two locations where you could
-  add annotations: `spec.metadata.annotations`, and
+  you’re defining a `Deployment` resource, there are two locations where you
+  could add annotations: `spec.metadata.annotations`, and
   `spec.template.metadata.annotations`. The auto-instrumentation annotation
-  needs to be added to `spec.template.metadata.annotations`, otherwise it doesn't
-  work.
+  needs to be added to `spec.template.metadata.annotations`, otherwise it
+  doesn't work.
 
 ### Check auto-instrumentation endpoint configuration
 
@@ -154,16 +176,19 @@ The `spec.exporter.endpoint` configuration in the `Instrumentation` resource
 allows you to define the destination for your telemetry data. If you omit it, it
 defaults to `http://localhost:4317`, which causes the data to be dropped.
 
-If you’re sending out your telemetry to a [Collector](/docs/collector/),
-the value of `spec.exporter.endpoint` must reference the name of your
-Collector
+If you’re sending out your telemetry to a [Collector](/docs/collector/), the
+value of `spec.exporter.endpoint` must reference the name of your Collector
 [`Service`](https://kubernetes.io/docs/concepts/services-networking/service/).
 
 For example: `http://otel-collector.opentelemetry.svc.cluster.local:4318`.
 
-Where `otel-collector` is the name of the OTel Collector Kubernetes [`Service`](https://kubernetes.io/docs/concepts/services-networking/service/).
+Where `otel-collector` is the name of the OTel Collector Kubernetes
+[`Service`](https://kubernetes.io/docs/concepts/services-networking/service/).
 
-In addition, if the Collector is running in a different namespace, you must append `opentelemetry.svc.cluster.local` to the Collector’s service name, where `opentelemetry` is the namespace in which the Collector resides. It can be any namespace of your choosing.
+In addition, if the Collector is running in a different namespace, you must
+append `opentelemetry.svc.cluster.local` to the Collector’s service name, where
+`opentelemetry` is the namespace in which the Collector resides. It can be any
+namespace of your choosing.
 
 Finally, make sure that you are using the right Collector port. Normally, you
 can choose either `4317` (gRPC) or `4318` (HTTP); however, for
