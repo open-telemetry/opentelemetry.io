@@ -98,6 +98,12 @@ with the `io.spring.dependency-management` plugin.
 
 {{% /alert %}}
 
+{{% alert title="Note" color="info" %}}
+
+If you import the `spring-boot-dependencies` BOM, you have to declare it after the OpenTelemetry BOMs.
+
+{{% /alert %}}
+
 #### OpenTelemetry Starter dependency
 
 Add the dependency given below to enable the OpenTelemetry starter.
