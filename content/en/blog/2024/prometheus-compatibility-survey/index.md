@@ -58,7 +58,7 @@ results can be found
 
 ## Overall takeaways
 
-- A slight majority (54%) prefer leaving the dots in the metric name, rather
+- A majority (60%) prefer leaving the dots in the metric name, rather
   than translating to underscores.
 - A slight majority (54%) prefer having the unit in the name, but only 37% think
   it should be required.
@@ -101,8 +101,8 @@ to keep the dots in the original metric name, or liked the consistency with
 existing Prometheus metrics of translating to underscores.
 
 Of users who indicated they used OpenTelemetry for metrics, and PromQL as their
-query language, 54% preferred keeping the original OpenTelemetry metric name
-including dots, and 46% want metric names that match Prometheus conventions with
+query language, 60% preferred keeping the original OpenTelemetry metric name
+including dots, and 40% want metric names that match Prometheus conventions with
 only underscores.
 
 ![Dots vs underscores pie chart](dots-vs-underscores.png)
@@ -144,7 +144,7 @@ are likely OK with either approach.
 
 Preferences generally split into two groups: Those that want to preserve the
 original OpenTelemetry metric names, including dots, and without a unit suffix,
-and those that prefer changing the name to match Prometheus conventions. 71% of
+and those that prefer changing the name to match Prometheus conventions. 57% of
 respondents who want to require units in metric names want to also want to
 change dots to underscores. 77% of respondents who don't want units in metric
 names prefer dots in metric names.
@@ -158,8 +158,8 @@ translating dots to underscores.
 
 The best predictors of a preference for preserving the OpenTelemetry name with
 dots, and without units were having the role of developer, and being an expert
-with OpenTelemetry libraries. For example, 74% of developers preferred not
-having units in metric names.
+with OpenTelemetry libraries. For example, 88% of developers preferred not
+translating dots to underscores.
 
 ## Other feedback
 
