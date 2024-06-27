@@ -45,7 +45,7 @@ the new behavior. Finally, this feature gate was enabled by default on [v0.104.0
 (June 2024)][core-10352] motivated by the security audit and
 [CVE-2024-36129](/blog/2024/cve-2024-36129/).
 
-## What is changing?
+## What have we changed?
 
 Starting on v0.104.0, the default bind address of all servers exposed by the
 Collector are `localhost` instead of `0.0.0.0`. For example, the OTLP receiver
@@ -74,6 +74,11 @@ change is:
 When in doubt, check the specific components' documentation to see the new
 default values.
 
+Starting on the [OpenTelemetry Collector Helm Chart][helm-chart] v0.47.1 and on
+v0.87.0 of the OpenTelemetry Collector official Docker images we updated the
+default configuration for all components to explicitly set the endpoints to an
+explicit value.
+
 ## What does it mean to me?
 
 If you are relying on the default configuration you may need to start explicitly
@@ -101,10 +106,8 @@ receivers:
 where the `HOST_IP` environment variable is set to the bind address you want to
 use (for example, `status.podIP` on Kubernetes).
 
-Note that you are not affected if using the default configuration on the
-[OpenTelemetry Collector Helm Chart][helm-chart] or if you use the default
-configuration on any of the officially released OpenTelemetry Collector Docker
-images.
+Because of the changes in the Collector Helm Chart and Collector Docker images
+you are not affected if using the default configuration on either of these.
 
 ## How can I prepare for this change?
 
