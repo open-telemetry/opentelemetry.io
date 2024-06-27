@@ -1,5 +1,5 @@
 ---
-title: 'Hardening the Collector #1 - A new default bind address'
+title: 'Hardening the Collector Episode 1: A new default bind address'
 linkTitle: A new default bind address for the Collector
 date: 2024-07-02
 author: '[Pablo Baeyens](https://github.com/mx-psi) (OpenTelemetry, Datadog)'
@@ -94,7 +94,7 @@ receivers:
 ```
 
 where the `HOST_IP` environment variable should is set to the bind address you
-want to use (e.g. `status.podIP` on Kubernetes).
+want to use (for example, `status.podIP` on Kubernetes).
 
 Note that you are not affected if using the default configuration on the
 [OpenTelemetry Collector Helm Chart][helm-chart] or if you use the default
