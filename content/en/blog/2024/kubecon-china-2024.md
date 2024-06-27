@@ -22,8 +22,8 @@ before the conference begins!
 ## Maintainer sessions
 
 - **[OpenTelemetry Community Update | OpenTelemetry社区更新](https://sched.co/1eYcJ)**<br>
-  by Zihao Rao & Huxing Zhang, Alibaba Cloud<br>
-  Wednesday, August 21 • 3:35 - 4:10
+  by Zihao Rao & Huxing Zhang, Alibaba Cloud<br> Wednesday, August 21 • 3:35 -
+  4:10
 
 ## AI_dev talks
 
