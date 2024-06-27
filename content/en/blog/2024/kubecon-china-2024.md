@@ -11,14 +11,20 @@ draft: true # TODO: remove this line once your post is ready to be published
 sig: Communications SIG
 ---
 
-Join the OpenTelemetry project maintainers and members of the governance and
-technical committees at the [KubeCon + CloudNativeCon + Open Source Summit
-+ AI_dev] conference in Hong Kong from August 21 to 23, 2024.
+Join members of the OpenTelemetry community at
+[KubeCon + CloudNativeCon + Open Source Summit + AI_dev](https://events.linuxfoundation.org/kubecon-cloudnativecon-open-source-summit-ai-dev-china/)
+in Hong Kong from August 21 to 23, 2024.
 
 Read on to learn about all the OpenTelemetry events at KubeCon China 2024.
 
 This post will be updated as we receive notice of other activities. Check back
 before the conference begins!
+
+## Maintainer sessions
+
+- **[OpenTelemetry Community Update | OpenTelemetry社区更新](https://sched.co/1eYcJ)**<br>
+  by Zihao Rao & Huxing Zhang, Alibaba Cloud; Trask Stalnaker, Microsoft<br>
+  Wednesday, August 21 • 3:35 - 4:10
 
 ## AI_dev talks
 
@@ -26,12 +32,6 @@ before the conference begins!
   Wednesday, August 21 • 12:03 - 12:08
 - **[Telemetry API and OpenTelemetry: the answer of istio monitoring? | Project Lightning Talk](https://sched.co/1f4zz)**<br>
   Wednesday, August 21 • 12:24 - 12:29
-
-## Maintainer sessions
-
-- **[OpenTelemetry Community Update | OpenTelemetry社区更新](https://sched.co/1eYcJ)**<br>
-  by Zihao Rao & Huxing Zhang, Alibaba Cloud; Trask Stalnaker, Microsoft<br>
-  Wednesday, August 21 • 3:35 - 4:10
 
 ## KubeCon talks
 
@@ -51,6 +51,3 @@ by Zihao Rao & Ziyi Lin, Alibaba Cloud<br> Thursday, August 22 • 1:50 - 2:25
 Come join us to listen, learn, and get involved in OpenTelemetry.
 
 See you in Hong Kong!
-
-[KubeCon + CloudNativeCon + Open Source Summit + AI_dev]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-open-source-summit-ai-dev-china/
