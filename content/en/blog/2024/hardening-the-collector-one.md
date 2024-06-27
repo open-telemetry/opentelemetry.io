@@ -4,22 +4,26 @@ linkTitle: A new default bind address for the Collector
 date: 2024-07-02
 author: '[Pablo Baeyens](https://github.com/mx-psi) (OpenTelemetry, Datadog)'
 # prettier-ignore
-cSpell:ignore: awsfirehose awsproxy awsxray Baeyens jaegerremotesampling loki remotetap sapm signalfx skywalking splunk
+cSpell:ignore: awsfirehose awsproxy awsxray Baeyens jaegerremotesampling loki OSTIF remotetap sapm signalfx skywalking splunk
 issue: 4760
 sig: Collector SIG
 ---
 
 The OpenTelemetry Collector recently went through a security audit sponsored by
-the [CNCF](https://www.cncf.io/). As part of this process we recently published
-a security advisory related to a [DoS vulnerability](/blog/2024/cve-2024-36129/)
-that was
+the [CNCF](https://www.cncf.io/), facilitated by [OSTIF](https://ostif.org/),
+and performed by [7ASecurity](https://7asecurity.com/). As part of this process
+we recently published a security advisory related to a
+[DoS vulnerability](/blog/2024/cve-2024-36129/) that was
 [fully addressed in v0.102.1](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.102.1).
 
 The security audit also motivated us to think about ways to harden official
-Collector builds and have a more secure default configuration. We are
-[actively][releases-586] [working][core-10469] [on several changes][core-10470]
-to achieve this and we will be publishing a series of blog posts to keep the
-community informed.
+Collector builds and have a more secure default configuration. We are working on
+adopting [several][releases-586] [best][core-10469] [practices][core-10470] that
+were recommended in the audit to achieve this and we will be publishing a series
+of blog posts to keep the community informed. While we expect the report to be
+made public soon, we can already say that we are very satisfied with the
+confirmation that the Collector has proven to be very secure, highlighting the
+secure coding practices and processes we already have in place.
 
 One of the changes we have recently been working on is changing the default bind
 address for Collector servers, such as those exposed by receivers or extensions
@@ -116,6 +120,13 @@ of this change by disabling the `component.UseLocalHostAsDefaultHost` feature
 gate so you can work on addressing this at your own pace. This feature gate will
 be marked as stable in a future Collector release, so we recommend addressing
 this as soon as possible.
+
+## What's next?
+
+As we work on adopting the best practices recommended by the security audit, we
+will be publishing more blog posts to keep the community informed. This will
+include hardening the Collector binaries on macOS and further  the
+default behavior of Collector servers. Stay tuned!
 
 [helm-chart]:
   https://github.com/open-telemetry/opentelemetry-helm-charts?tab=readme-ov-file#opentelemetry-collector
