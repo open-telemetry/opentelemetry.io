@@ -3,11 +3,10 @@ title:
   OpenTelemetry Talks at Kubecon + CloudNativeCon + Open Source Summit + AI_dev
   China 2024
 linkTitle: Kubecon China 2024
-date: 2024-06-25
+date: 2024-07-10
 # prettier-ignore
 cSpell:ignore: Alhamdani Censhare EBPF Hrabusa Husni Huxing Jiahang Krom Sianturi Wanqi Zhang Zihao Ziyi
 author: '[Tiffany Hrabusa](https://github.com/tiffany76)'
-draft: true # TODO: remove this line once your post is ready to be published
 sig: Communications SIG
 ---
 
@@ -23,7 +22,7 @@ before the conference begins!
 ## Maintainer sessions
 
 - **[OpenTelemetry Community Update | OpenTelemetry社区更新](https://sched.co/1eYcJ)**<br>
-  by Zihao Rao & Huxing Zhang, Alibaba Cloud; Trask Stalnaker, Microsoft<br>
+  by Zihao Rao & Huxing Zhang, Alibaba Cloud<br>
   Wednesday, August 21 • 3:35 - 4:10
 
 ## AI_dev talks
