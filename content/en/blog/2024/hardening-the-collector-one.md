@@ -12,7 +12,7 @@ sig: Collector SIG
 The OpenTelemetry Collector recently went through a security audit sponsored by
 the [CNCF](https://www.cncf.io/), facilitated by [OSTIF](https://ostif.org/),
 and performed by [7ASecurity](https://7asecurity.com/). As part of this process
-we recently published a security advisory related to a
+we published a security advisory related to a
 [DoS vulnerability](/blog/2024/cve-2024-36129/) that was
 [fully addressed in v0.102.1](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.102.1).
 
@@ -25,10 +25,10 @@ made public soon, we can already say that we are very satisfied with the
 confirmation that the Collector has proven to be very secure, highlighting the
 secure coding practices and processes we already have in place.
 
-One of the changes we have recently been working on is changing the default bind
-address for Collector servers, such as those exposed by receivers or extensions
-that listen for incoming connections. Up to v0.103.0, the default behavior was
-to listen on all network interfaces by using the
+One of the changes we have been working on is changing the default bind address
+for Collector servers, such as those exposed by receivers or extensions that
+listen for incoming connections. Up to v0.103.0, the default behavior was to
+listen on all network interfaces by using the
 [unspecified address `0.0.0.0`](https://en.wikipedia.org/wiki/0.0.0.0) on server
 addresses. While this is a convenient default for test cases and development
 environments, it is
@@ -36,13 +36,13 @@ environments, it is
 since it can expose the Collector servers to unnecessary risks. Starting on
 v0.104.0 the default bind address becomes `localhost` for all Collector servers.
 
-It has been a long way to get here. We started discussing changing this in
-relation to [CVE-2022-27664](https://github.com/advisories/GHSA-69cg-p879-7622)
-on [v0.63.0 (September 2022)][core-6151], when we added a warning and improved
-our documentation. On [v0.94.0 (September 2023)][core-8510], we decided to add a
+It has been a long way to get here. We started discussing this in relation to
+[CVE-2022-27664](https://github.com/advisories/GHSA-69cg-p879-7622) on [v0.63.0
+(September 2022)][core-6151], when we added a warning and improved our
+documentation. On [v0.94.0 (September 2023)][core-8510], we decided to add a
 feature gate, `component.UseLocalHostAsDefaultHost` to allow users to opt-in to
 the new behavior. Finally, this feature gate was enabled by default on [v0.104.0
-(June 2024)][core-10352] motivated by
+(June 2024)][core-10352] motivated by the security audit and
 [CVE-2024-36129](/blog/2024/cve-2024-36129/).
 
 ## What is changing?
@@ -98,8 +98,8 @@ receivers:
         endpoint: ${env:HOST_IP}:4317
 ```
 
-where the `HOST_IP` environment variable should is set to the bind address you
-want to use (for example, `status.podIP` on Kubernetes).
+where the `HOST_IP` environment variable is set to the bind address you want to
+use (for example, `status.podIP` on Kubernetes).
 
 Note that you are not affected if using the default configuration on the
 [OpenTelemetry Collector Helm Chart][helm-chart] or if you use the default
@@ -125,8 +125,8 @@ this as soon as possible.
 
 As we work on adopting the best practices recommended by the security audit, we
 will be publishing more blog posts to keep the community informed. This will
-include hardening the Collector binaries on macOS and further  the
-default behavior of Collector servers. Stay tuned!
+include hardening the Collector binaries on macOS and further the default
+behavior of Collector servers. Stay tuned!
 
 [helm-chart]:
   https://github.com/open-telemetry/opentelemetry-helm-charts?tab=readme-ov-file#opentelemetry-collector
