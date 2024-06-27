@@ -9,7 +9,7 @@ cSpell:ignore: rolldice
 
 ## Automatic context propagations
 
-[Instrumentation libraries](../libraries) like
+[Instrumentation libraries](../libraries/) like
 [`@opentelemetry/instrumentation-http`](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)
 or
 [`@opentelemetry/instrumentation-express`](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)
