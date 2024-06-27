@@ -12,7 +12,8 @@ sig: Collector SIG
 The OpenTelemetry Collector recently went through a security audit sponsored by
 the [CNCF](https://www.cncf.io/). As part of this process we recently published
 a security advisory related to a [DoS vulnerability](/blog/2024/cve-2024-36129/)
-that was fully addressed in v0.102.1.
+that was
+[fully addressed in v0.102.1](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.102.1).
 
 The security audit also motivated us to think about ways to harden official
 Collector builds and have a more secure default configuration. We are
