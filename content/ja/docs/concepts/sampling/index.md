@@ -98,8 +98,8 @@ _適切なデータのサンプリングが必要なだけです。_
 
 OpenTelemetryコレクターには、以下のサンプリングプロセッサーがあります。
 
-- [確率的サンプリングプロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/probabilisticsamplerprocessor)
-- [テイルサンプリングプロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)
+- [Probabilistic Sampling Processor（確率的サンプリングプロセッサー）](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/probabilisticsamplerprocessor)
+- [Tail Sampling Processor（テイルサンプリングプロセッサー）](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)
 
 ### 言語SDK
 
