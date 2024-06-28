@@ -83,3 +83,15 @@
   url: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/monitor/azure-monitor-opentelemetry
   docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable?tabs=python
   components: [Python]
+- name: Elastic Distribution for OpenTelemetry Java
+  url: https://github.com/elastic/elastic-otel-java
+  docsUrl: https://github.com/elastic/elastic-otel-java
+  components: [Java]
+- name: Elastic Distribution for OpenTelemetry .NET
+  url: https://github.com/elastic/elastic-otel-dotnet
+  docsUrl: https://github.com/elastic/elastic-otel-dotnet
+  components: [.NET]
+- name: Elastic Distribution for OpenTelemetry Node.js
+  url: https://github.com/elastic/elastic-otel-node
+  docsUrl: https://github.com/elastic/elastic-otel-node
+  components: [Node]
