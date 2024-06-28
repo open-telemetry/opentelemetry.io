@@ -152,7 +152,7 @@ annotations:
   instrumentation.opentelemetry.io/opentelemetry/inject-python: 'opentelemetry/my-instrumentation'
 ```
 
-Where `opentelemetry` is the namesapce of the `Instrumentation` resource, and
+Where `opentelemetry` is the namespace of the `Instrumentation` resource, and
 `my-instrumentation` is the name of the `Instrumentation` resource.
 
 ### Check the auto-instrumentation configuration
