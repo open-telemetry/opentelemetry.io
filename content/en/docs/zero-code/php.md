@@ -70,10 +70,13 @@ $demo = new DemoClass();
 $demo->run();
 ```
 
-Here, we provide `pre` and `post` functions, which are executed before and after
-`DemoClass::run`. The `pre` function starts and activates a span, and the `post`
-function ends it. If an exception was thrown by `DemoClass::run()`, the `post`
-function will record it, without affecting exception propagation.
+In the example above we define `DemoClass`, then register `pre` and `post` hook
+functions on its `run` method. The hook functions will run before and after each
+execution of the `DemoClass::run()` method. The `pre` function starts and
+activates a span, and the `post` function ends it.
+
+If an exception was thrown by `DemoClass::run()`, the `post` function will
+record it, without affecting exception propagation.
 
 ## Installation
 
@@ -213,13 +216,13 @@ OpenTelemetry\API\Globals::registerInitializer(function (Configurator $configura
 $tracer = Globals::tracerProvider()->getTracer('example');
 //or, via CachedInstrumentation which uses `Globals` internally
 $instrumentation = new CachedInstrumentation('example');
-$tracerProvider = $instrumentation->tracer();
+$tracer = $instrumentation->tracer();
 ```
 
 ## Supported libraries and frameworks
 
-Automatic Instrumentation comes with a number of instrumentation libraries for
-commonly used PHP libraries. For the full list, see
+Automatic Instrumentation is available for a number of instrumentation libraries
+for commonly used PHP libraries. For the full list, see
 [instrumentation libraries on packagist](https://packagist.org/search/?query=open-telemetry&tags=instrumentation).
 
 ## Next steps
