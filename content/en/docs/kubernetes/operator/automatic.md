@@ -404,7 +404,7 @@ spec:
 
 #### Learn more {#python-learn-more}
 
-[See the Python agent Configuration docs for more details.](/docs/languages/python/automatic/configuration/#disabling-specific-instrumentations)
+[See the Python agent Configuration docs for more details.](/docs/zero-code/python/configuration/#disabling-specific-instrumentations)
 
 ### Go
 

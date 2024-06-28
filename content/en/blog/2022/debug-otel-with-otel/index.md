@@ -261,4 +261,4 @@ COPY opentelemetry_module.conf /etc/nginx/conf.d
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/releases/tag/webserver%2Fv1.0.1
 [java]:
   /docs/zero-code/java/agent/configuration/#capturing-http-request-and-response-headers
-[python]: /docs/languages/python/automatic/
+[python]: /docs/zero-code/python/

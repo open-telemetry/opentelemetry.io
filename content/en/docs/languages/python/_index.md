@@ -61,8 +61,8 @@ pip install -e ./opentelemetry-sdk
 
 ## Repositories and benchmarks
 
-- Main repo: [opentelemetry-python][]
-- Contrib repo: [opentelemetry-python-contrib][]
+- Main repository: [opentelemetry-python][]
+- Contrib repository: [opentelemetry-python-contrib][]
 
 [opentelemetry-python]: https://github.com/open-telemetry/opentelemetry-python
 [opentelemetry-python-contrib]:

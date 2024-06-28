@@ -4,5 +4,5 @@ linkTitle: Troubleshooting
 description:
   Contains a collection of tips for troubleshooting various aspects of the
   OpenTelemetry Kubernetes Operator. For example, what to do when the target
-  allocator isn't scraping metrics.
+  allocator is failing to discover scrape targets.
 ---
