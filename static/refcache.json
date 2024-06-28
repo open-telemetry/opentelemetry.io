@@ -2647,6 +2647,18 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:36.185289-05:00"
   },
+  "https://github.com/elastic/elastic-otel-dotnet": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-26T13:02:09.356344196Z"
+  },
+  "https://github.com/elastic/elastic-otel-java": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-26T13:02:12.110420884Z"
+  },
+  "https://github.com/elastic/elastic-otel-node": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-26T13:02:15.527574357Z"
+  },
   "https://github.com/ent/ent/issues/1232#issuecomment-1200405070": {
     "StatusCode": 200,
     "LastSeen": "2024-02-24T14:33:06.756997-08:00"
@@ -5726,6 +5738,10 @@
   "https://medium.com/p/42337e994b63": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:09.258083-05:00"
+  },
+  "https://medium.com/sicreditech/sicredis-path-for-opentelemetry-adoption-3564fc8a743a": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-25T12:05:30.755315709Z"
   },
   "https://medium.com/velotio-perspectives/a-comprehensive-tutorial-to-implementing-opentracing-with-jaeger-a01752e1a8ce": {
     "StatusCode": 200,
