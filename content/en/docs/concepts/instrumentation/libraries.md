@@ -115,7 +115,7 @@ You may be rightfully concerned about adding new dependencies, here are some
 considerations to help you decide how to minimize dependency hell:
 
 - OpenTelemetry Trace API reached stability in early 2021, it follows
-  [Semantic Versioning 2.0](/docs/specs/otel/versioning-and-stability) and we
+  [Semantic Versioning 2.0](/docs/specs/otel/versioning-and-stability/) and we
   take API stability seriously.
 - When taking dependency, use the earliest stable OpenTelemetry API (1.0.\*) and
   avoid updating it unless you have to use new features.

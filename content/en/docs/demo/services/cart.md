@@ -25,8 +25,8 @@ and resource attributes is performed through environment variables.
 ```cs
 Action<ResourceBuilder> appResourceBuilder =
     resource => resource
-        .AddDetector(new ContainerResourceDetector())
-        .AddDetector(new HostDetector());
+        .AddContainerDetector()
+        .AddHostDetector();
 
 builder.Services.AddOpenTelemetry()
     .ConfigureResource(appResourceBuilder)
@@ -81,7 +81,8 @@ desired instrumentation libraries, exporters, etc.
 ```cs
 Action<ResourceBuilder> appResourceBuilder =
     resource => resource
-        .AddDetector(new ContainerResourceDetector());
+        .AddContainerDetector()
+        .AddHostDetector();
 
 builder.Services.AddOpenTelemetry()
     .ConfigureResource(appResourceBuilder)

@@ -19,7 +19,7 @@ OpenTelemetryの主な目的は、あなたのアプリケーションやシス�
 [オブザーバビリティ](/docs/concepts/observability-primer/#what-is-observability)とは、システムの出力を調べることによって、システムの内部状態を理解する能力のことです。
 ソフトウェアの文脈では、これは、トレース、メトリクス、ログを含むテレメトリーデータを調べることによって、システムの内部状態を理解できることを意味します。
 
-システムをオブザーバビリティがある状態にするには、[軽装されて](/docs/concepts/instrumentation)いなければなりません。
+システムをオブザーバビリティがある状態にするには、[計装されて](/docs/concepts/instrumentation)いなければなりません。
 つまり、コードが[トレース](/docs/concepts/signals/traces/)、[メトリクス](/docs/concepts/signals/metrics/)、または[ログ](/docs/concepts/signals/logs/)を出力しなければなりません。
 計装されたデータは、オブザーバビリティバックエンドに送信されなければなりません。
 

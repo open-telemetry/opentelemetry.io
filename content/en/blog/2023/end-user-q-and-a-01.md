@@ -169,7 +169,7 @@ They are hoping to leverage
 [OpenTelemetry’s Exemplars](/docs/specs/otel/metrics/data-model/#exemplars) to
 link traces and metrics.
 
-### How is the organization sending telemetry data to various observability back-ends?
+### How is the organization sending telemetry data to various observability backends?
 
 J’s team uses a combination of the proprietary backend agent and the
 OpenTelemetry Collector (for metrics). They are one of the primary users of

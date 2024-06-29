@@ -11,7 +11,7 @@ weight: 22
 
 ## Version support
 
-OpenTelemetry-Python supports Python 3.6 and higher.
+OpenTelemetry-Python supports Python 3.8 and higher.
 
 ## Installation
 
@@ -61,8 +61,8 @@ pip install -e ./opentelemetry-sdk
 
 ## Repositories and benchmarks
 
-- Main repo: [opentelemetry-python][]
-- Contrib repo: [opentelemetry-python-contrib][]
+- Main repository: [opentelemetry-python][]
+- Contrib repository: [opentelemetry-python-contrib][]
 
 [opentelemetry-python]: https://github.com/open-telemetry/opentelemetry-python
 [opentelemetry-python-contrib]:

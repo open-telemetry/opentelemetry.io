@@ -3,9 +3,9 @@ title: OpenTelemetry 演示文档
 linkTitle: 演示
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
-weight: 2
+weight: 180
 cSpell:ignore: OLJCESPC
-default_lang_commit: b7ee690154aacc8d6e43636af00743994fb6dc27
+default_lang_commit: c2cd5b14
 ---
 
 欢迎使用 [OpenTelemetry 演示](/ecosystem/demo/)文档，
