@@ -9,7 +9,10 @@ tags:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/OpenAIPHP
 license: Apache 2.0
-description: This package provides auto-instrumentation for [openai-php/client](https://packagist.org/packages/openai-php/client) to help you understand the interactions with OpenAI compatible services.
+description:
+  This package provides auto-instrumentation for
+  [openai-php/client](https://packagist.org/packages/openai-php/client) to help
+  you understand the interactions with OpenAI compatible services.
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2024-02-05
