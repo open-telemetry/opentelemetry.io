@@ -122,7 +122,7 @@ such as serverless, can import packages before the instrumentation code has a
 chance to run. This can be easily missed.
 
 To diagnose this issue, enable logging and verify you are seeing your
-instrumentation package being loaded. For example:
+instrumentation library being loaded. For example:
 
 ```nocode
 @opentelemetry/instrumentation-http Applying patch for https@12.22.9
@@ -337,7 +337,7 @@ provider.shutdown();
 ## Package Versions Compatibility
 
 Some issues can be a result of incompatible or old versions of SDK and
-instrumentation packages.
+instrumentation libraries.
 
 ### SDK versions
 

@@ -42,14 +42,14 @@ dotnet add [<PROJECT>] package OpenTelemetry.AutoInstrumentation
 
 If the application references packages that can be instrumented, but, require
 other packages for the instrumentation to work the build will fail and prompt
-you to either add the missing instrumentation package or to skip the
+you to either add the missing instrumentation library or to skip the
 instrumentation of the corresponding package:
 
 ```terminal
 ~packages/opentelemetry.autoinstrumentation.buildtasks/1.6.0/build/OpenTelemetry.AutoInstrumentation.BuildTasks.targets(29,5): error : OpenTelemetry.AutoInstrumentation: add a reference to the instrumentation package 'MongoDB.Driver.Core.Extensions.DiagnosticSources' version 1.4.0 or add 'MongoDB.Driver.Core' to the property 'SkippedInstrumentations' to suppress this error.
 ```
 
-To resolve the error either add the recommended instrumentation package or skip
+To resolve the error either add the recommended instrumentation library or skip
 the instrumentation of the listed package by adding it to the
 `SkippedInstrumentation` property, example:
 

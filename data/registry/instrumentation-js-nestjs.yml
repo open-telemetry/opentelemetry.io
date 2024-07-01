@@ -7,7 +7,7 @@ tags:
   - instrumentation
   - nestjs
 license: Apache 2.0
-description: OpenTelemetry NestJS automatic instrumentation package
+description: OpenTelemetry NestJS automatic instrumentation library
 authors:
   - name: OpenTelemetry Authors
 urls:
