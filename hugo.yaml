@@ -98,7 +98,7 @@ params:
     feedback:
       enable: true
       'yes': >-
-        Thank you, your feedback is appreciated!
+        Thank you. Your feedback is appreciated!
       # prettier-ignore
       'no': >-
         Please let us know <a class="external-link" target="_blank" rel="noopener"
