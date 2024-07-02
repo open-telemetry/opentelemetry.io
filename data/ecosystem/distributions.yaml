@@ -75,6 +75,10 @@
   url: https://github.com/microsoft/ApplicationInsights-Java
   docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable?tabs=java
   components: [Java]
+- name: Azure Monitor Distribution of OpenTelemetry Java (Spring Boot starter)
+  url: https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/spring/spring-cloud-azure-starter-monitor
+  docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable?tabs=java-native
+  components: [Java]
 - name: Azure Monitor Distribution of OpenTelemetry Node.js
   url: https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/monitor/monitor-opentelemetry
   docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable?tabs=nodejs
