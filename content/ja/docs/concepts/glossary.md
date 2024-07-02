@@ -271,7 +271,7 @@ OpenTelemetryにおいては[トレース](#trace)、[メトリクス](#metric)�
 ### **スパンリンク** {#span-link}
 
 スパンリンクは、因果関係のあるスパン間のリンクです。
-詳細は[スパン間のリンク](/docs/specs/otel/overview#links-between-span)と[リンクの指定](/docs/specs/otel/trace/api#specifying-links)を参照してください。
+詳細は[スパン間のリンク](/docs/specs/otel/overview#links-between-spans)と[リンクの指定](/docs/specs/otel/trace/api#specifying-links)を参照してください。
 
 ### **仕様** {#specification}
 
