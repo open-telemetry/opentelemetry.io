@@ -75,7 +75,9 @@
   url: https://github.com/microsoft/ApplicationInsights-Java
   docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable?tabs=java
   components: [Java]
-- name: Azure Monitor OpenTelemetry Distro / Application Insights in Spring Boot native image Java application
+- name:
+    Azure Monitor OpenTelemetry Distro / Application Insights in Spring Boot
+    native image Java application
   url: https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/spring/spring-cloud-azure-starter-monitor
   docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable?tabs=java-native
   components: [Java]
