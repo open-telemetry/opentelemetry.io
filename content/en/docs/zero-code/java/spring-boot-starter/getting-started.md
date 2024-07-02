@@ -29,7 +29,14 @@ Importing the `opentelemetry-bom` and `opentelemetry-instrumentation-bom-alpha`
 BOMs when using the OpenTelemetry starter is important to ensure version
 alignment across all OpenTelemetry dependencies.
 
-The following example shows how to import both BOMs using Maven:
+{{% alert title="Note" color="info" %}}
+
+If you import the `spring-boot-dependencies` BOM, you have to declare it after
+the OpenTelemetry BOMs.
+
+{{% /alert %}}
+
+The following example shows how to import the OpenTelemetry BOMs using Maven:
 
 ```xml
 <dependencyManagement>
