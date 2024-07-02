@@ -8,7 +8,7 @@ To visualize request flows, see the [Service Diagram](../architecture/).
 
 | Service                                   | Language      | Description                                                                                                                          |
 | ----------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| [accountingservice](accounting/)          | Go            | Processes incoming orders and count the sum of all orders (mock/).                                                                   |
+| [accountingservice](accounting/)          | .NET          | Processes incoming orders and count the sum of all orders (mock/).                                                                   |
 | [adservice](ad/)                          | Java          | Provides text ads based on given context words.                                                                                      |
 | [cartservice](cart/)                      | .NET          | Stores the items in the user's shopping cart in Redis and retrieves it.                                                              |
 | [checkoutservice](checkout/)              | Go            | Retrieves user cart, prepares order and orchestrates the payment, shipping and the email notification.                               |
