@@ -639,6 +639,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:05:58.139233-05:00"
   },
+  "https://cwe.mitre.org/data/definitions/1327.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-02T09:24:08.000654243Z"
+  },
   "https://cwiki.apache.org/confluence/display/KAFKA/KIP-714%3A+Client+metrics+and+observability": {
     "StatusCode": 200,
     "LastSeen": "2024-03-19T10:16:48.071549188Z"
@@ -1831,6 +1835,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:01:56.902565-05:00"
   },
+  "https://en.wikipedia.org/wiki/0.0.0.0": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-02T09:24:02.667007877Z"
+  },
   "https://en.wikipedia.org/wiki/Aggregate_function#Decomposable_aggregate_functions": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:01:54.222356-05:00"
@@ -2374,6 +2382,10 @@
   "https://github.com/advisories/GHSA-4374-p667-p6c8": {
     "StatusCode": 200,
     "LastSeen": "2024-06-04T17:29:54.745634368+02:00"
+  },
+  "https://github.com/advisories/GHSA-69cg-p879-7622": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-02T09:24:09.730858102Z"
   },
   "https://github.com/aishyandapalli": {
     "StatusCode": 200,
@@ -3299,6 +3311,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:16.731433-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/issues/586": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-02T09:23:53.873282893Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:05:59.137997-05:00"
@@ -3343,6 +3359,18 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:36:56.082576-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/issues/10469": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-02T09:23:57.894480748Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/issues/10470": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-02T09:23:59.814979337Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/issues/6151": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-02T09:24:13.096759717Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/issues/7532": {
     "StatusCode": 200,
     "LastSeen": "2024-04-04T11:07:15.276911438-07:00"
@@ -3362,6 +3390,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector/pull/10323": {
     "StatusCode": 200,
     "LastSeen": "2024-06-05T14:37:59.891183931+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/pull/10352": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-02T09:24:16.955969275Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/pull/6140": {
     "StatusCode": 200,
@@ -3418,6 +3450,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2Fv0.99.0": {
     "StatusCode": 200,
     "LastSeen": "2024-04-23T07:21:32.424805627Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.102.1": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-02T09:23:49.72181125Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.63.0": {
     "StatusCode": 200,
