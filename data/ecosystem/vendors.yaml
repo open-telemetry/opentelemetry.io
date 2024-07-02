@@ -47,6 +47,12 @@
   contact: support@causely.io
   oss: false
   commercial: true
+- name: Centreon
+  nativeOTLP: true
+  url: https://docs.centreon.com/pp/integrations/plugin-packs/getting-started/how-to-guides/telegraf/
+  contact: contact@centreon.com
+  oss: false
+  commercial: true
 - name: Chronosphere
   distribution: false
   nativeOTLP: true
