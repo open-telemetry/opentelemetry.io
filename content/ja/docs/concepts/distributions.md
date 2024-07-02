@@ -47,12 +47,6 @@ OpenTelemetryの参照実装は以下の通りです。
 
 ## コントリビューターかディストリビューションか
 
-..
-  Before you read on and learn how you can create your own distribution, ask
-  yourself if your additions on top of an OpenTelemetry component would be
-  beneficial for everyone and therefore should be included in the reference
-  implementations:
-
 この先を読み、あなた自身のディストリビューションを作成する方法を学ぶ前に、OpenTelemetryコンポーネントにあなたが追加しようと思うものが、誰にとっても有益で、それゆえ、参照実装に含まれるべきかどうか、検討してみてください。
 
 - 「使いやすさ」のためのスクリプトは一般化できるか
@@ -85,5 +79,4 @@ OpenTelemetryプロジェクトは現時点ではディストリビューショ�
 
 > ディストリビューションのサポートは、OpenTelemetryの作者ではなく、ディストリビューションの作者から提供されます。
 
-[guidelines]:
-  https://github.com/open-telemetry/community/blob/main/marketing-guidelines.md
+[guidelines]: https://github.com/open-telemetry/community/blob/main/marketing-guidelines.md

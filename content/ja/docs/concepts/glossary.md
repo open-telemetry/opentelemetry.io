@@ -336,5 +336,4 @@ OpenTelemetryにおいては[トレース](#trace)、[メトリクス](#metric)�
 [status]: /docs/specs/otel/trace/api#set-status
 [trace]: /docs/specs/otel/overview#traces
 [tracer]: /docs/specs/otel/trace/api#tracer
-[zpages]:
-  https://github.com/open-telemetry/opentelemetry-specification/blob/main/experimental/trace/zpages.md
+[zpages]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/experimental/trace/zpages.md
