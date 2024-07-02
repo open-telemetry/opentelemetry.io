@@ -7,7 +7,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: Tails and parses logs from windows event log API using the opentelemetry-log-collection library.
+description:
+  Tails and parses logs from windows event log API using the
+  opentelemetry-log-collection library.
 authors:
   - name: OpenTelemetry Authors
 urls:

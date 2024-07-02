@@ -7,7 +7,9 @@ tags:
   - exporter
   - collector
 license: Apache 2.0
-description: Exports data via gRPC using skywalking-data-collect-protocol format. By default, this exporter requires TLS and offers queued retry capabilities.
+description:
+  Exports data via gRPC using skywalking-data-collect-protocol format. By
+  default, this exporter requires TLS and offers queued retry capabilities.
 authors:
   - name: OpenTelemetry Authors
 urls:
