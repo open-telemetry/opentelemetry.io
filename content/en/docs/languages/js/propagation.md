@@ -38,7 +38,7 @@ npm install typescript \
   @types/node \
   undici \
   @opentelemetry/instrumentation-undici \
-  @opentelemetry/sdk-node \
+  @opentelemetry/sdk-node
 
 # initialize typescript
 npx tsc --init
@@ -50,7 +50,7 @@ npx tsc --init
 npm init -y
 npm install undici \
   @opentelemetry/instrumentation-undici \
-  @opentelemetry/sdk-node \
+  @opentelemetry/sdk-node
 ```
 
 {{% /tab %}} {{< /tabpane >}}
