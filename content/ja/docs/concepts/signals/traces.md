@@ -309,7 +309,7 @@ SDKサンプリングで属性を利用できるようにするには、スパ�
 OpenTelemetryの仕様によると、サーバースパンの親はリモートクライアントスパンであることが多く、クライアントスパンの子は通常サーバースパンです。
 同様に、コンシューマースパンの親は、常にプロデューサであり、プロデューサースパンの子は、常にコンシューマである。提供されない場合、スパンの種類は内部的なものとみなされます。
 
-SpanKindの詳細については、[SpanKind](/docs/specs/otel/trace/api/#spanKind)を参照してください。
+SpanKindの詳細については、[SpanKind](/docs/specs/otel/trace/api/#spankind)を参照してください。
 
 #### Client（クライアント） {#client}
 
