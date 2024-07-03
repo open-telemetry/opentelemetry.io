@@ -59,19 +59,19 @@ OpenTelemetryでは、ログレコードには2種類のフィールドがあり
 
 トップレベルのフィールドは以下の通りです。
 
-| フィールド名           | 説明                                          |
-| -------------------- | -------------------------------------------- |
-| Timestamp            | イベントが発生した時刻                           |
-| ObservedTimestamp    | イベントが観測された時刻                         |
-| TraceId              | リクエストトレースID                            |
-| SpanId               | リクエストスパンID                              |
-| TraceFlags           | W3Cトレースフラグ                               |
-| SeverityText         | 重要度テキスト（ログレベルとも呼ばれる）            |
-| SeverityNumber       | 重要度の数値                                   |
-| Body                 | ログレコードの本文                              |
-| Resource             | ログのソース                                   |
-| InstrumentationScope | ログを出力したスコープ                           |
-| Attributes           | イベントに関する追加情報                         |
+| フィールド名         | 説明                                     |
+| -------------------- | ---------------------------------------- |
+| Timestamp            | イベントが発生した時刻                   |
+| ObservedTimestamp    | イベントが観測された時刻                 |
+| TraceId              | リクエストトレースID                     |
+| SpanId               | リクエストスパンID                       |
+| TraceFlags           | W3Cトレースフラグ                        |
+| SeverityText         | 重要度テキスト（ログレベルとも呼ばれる） |
+| SeverityNumber       | 重要度の数値                             |
+| Body                 | ログレコードの本文                       |
+| Resource             | ログのソース                             |
+| InstrumentationScope | ログを出力したスコープ                   |
+| Attributes           | イベントに関する追加情報                 |
 
 ログレコードとログフィールドの詳細については、[ログデータモデル](/docs/specs/otel/logs/data-model/) を参照してください。
 
