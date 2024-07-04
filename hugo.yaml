@@ -25,6 +25,11 @@ languages:
     languageCode: zh-cn
     params:
       description: OpenTelemetry 项目网站
+  pt:
+    languageName: Português
+    languageCode: pt-BR
+    params:
+      description: Site do Projeto OpenTelemetry
 
 imaging:
   resampleFilter: CatmullRom # cspell:disable-line
@@ -263,6 +268,19 @@ module:
       target: content/docs
       lang: zh
 
+    ## pt
+    - source: content/pt
+      target: content
+      lang: pt
+    # fallback pages
+    - source: content/en/announcements
+      target: content/announcements
+      lang: pt
+    - excludeFiles: specs/*
+      source: content/en/docs
+      target: content/docs
+      lang: pt
+      
     ## static
     - source: static
       target: static
