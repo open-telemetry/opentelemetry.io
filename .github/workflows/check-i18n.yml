@@ -4,12 +4,15 @@ on:
   pull_request:
 
 jobs:
-  i18n-check:
+  check-i18n:
     name: I18N check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0 # all
-      - run: scripts/i18n-check.sh -u
-      - run: .github/workflows/scripts/i18n-check-helper.sh
+      - name: Any files missing hash key?
+        run: scripts/check-i18n.sh -n -x -v
+      - name: Any files with invalid hash keys?
+        run: scripts/check-i18n.sh -v
+      - run: .github/workflows/scripts/check-i18n-helper.sh

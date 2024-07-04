@@ -1,24 +1,62 @@
-{{ $isExternal := hasPrefix .Destination "http" -}}
+{{ $url := .Destination -}}
+
+{{/*
+
+  Localization link processing
+
+  The following code block will prefix the page language code to an
+  absolute path when:
+
+  - This page's localization isn't the default localization (English)
+  - The URL is an absolute path that doesn't start with any of the following:
+    - A language code, such as `ja`
+    - A path segment other than `docs`, since current OTel localizations only
+      offer translations for at most doc pages.
+
+  */ -}}
+
+{{ $defaultLang := "en" -}} {{/* TODO: can we avoid hard coding this value? */ -}}
+{{ $lang := .Page.Language.Lang -}}
+{{ if ne $lang $defaultLang -}}
+  {{ $langPathPrefix := add "/" $lang "/" -}}
+  {{ if and (hasPrefix $url $langPathPrefix) .Page.File -}}
+    {{ warnf "File %s: avoid prefixing the following link path with '%s': %s"
+             .Page.File.Filename $langPathPrefix $url -}}
+  {{ else if and (hasPrefix $url "/")
+            (not (findRE "^/(blog|community|docs/specs|ecosystem|status)/?" $url))
+  -}}
+    {{ if and false (not (findRE "^/[a-z][a-z](-[a-zA-Z]{2})?/" $url)) -}}
+      {{ $url = add $langPathPrefix (strings.TrimPrefix "/" $url) -}}
+    {{ end -}}
+  {{ end -}}
+{{ end -}}
+
+
+{{/* General link-render processing */ -}}
+
+{{ $url := .Destination -}}
+{{ $isExternal := hasPrefix $url "http" -}}
 {{ if $isExternal -}}
-  {{ if findRE "^https://opentelemetry.io/\\w" .Destination -}}
+  {{ if findRE "^https://opentelemetry.io/\\w" $url -}}
     {{ warnf "%s: use a local path, not an external URL, for the following reference to a site local page: %s"
-        .Page.File.Path .Destination -}}
+        .Page.File.Path $url -}}
   {{ else if or
-    (findRE "^https://github.com/open-telemetry/opentelemetry-specification/(blob|tree)/main/specification/\\w" .Destination)
-    (findRE "^https://github.com/open-telemetry/opentelemetry-proto/(blob|tree)/main/docs/specification" .Destination)
-    (findRE "^https://github.com/open-telemetry/semantic-conventions/(blob|tree)/main/docs" .Destination)
+    (findRE "^https://github.com/open-telemetry/opentelemetry-specification/(blob|tree)/main/specification/\\w" $url)
+    (findRE "^https://github.com/open-telemetry/opentelemetry-proto/(blob|tree)/main/docs/specification" $url)
+    (findRE "^https://github.com/open-telemetry/semantic-conventions/(blob|tree)/main/docs" $url)
     -}}
     {{ warnf "%s: use a local path, not an external URL, for the following reference to a local specification page: %s"
-    .Page.File.Path .Destination -}}
+    .Page.File.Path $url -}}
   {{ end -}}
 {{ end -}}
 
 {{/* Until Hugo supports hook params (https://github.com/gohugoio/hugo/issues/6670), we'll inspect .Text. */ -}}
-{{ $noExternalIcon := in .Text "hk-no-external-icon" -}}
-<a href="{{ .Destination | safeURL }}"
+
+<a href="{{ $url | safeURL }}"
   {{- with .Title}} title="{{ . }}"{{ end -}}
   {{- if $isExternal }} target="_blank" rel="noopener"
-    {{- if not $noExternalIcon }} class="external-link"{{ end -}}
+    {{- $noExternalIcon := in .Text "hk-no-external-icon" -}}
+    {{ if not $noExternalIcon }} class="external-link"{{ end -}}
   {{ end -}}
 >
   {{- .Text | safeHTML -}}

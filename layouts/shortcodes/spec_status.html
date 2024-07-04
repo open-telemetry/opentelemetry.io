@@ -25,7 +25,7 @@
   - https://opentelemetry.io/docs/specs/otel/document-status/
   - https://github.com/open-telemetry/opentelemetry-proto#maturity-level
 */ -}}
-{{ $statusValueRE := "(?i:experimental|stable|deprecated|removed|mixed|feature.freeze|alpha|beta)" -}}
+{{ $statusValueRE := "(?i:development|experimental|stable|deprecated|removed|mixed|feature.freeze|alpha|beta)" -}}
 {{ $statusRE := printf "%s(,\\s*%s)*" $statusValueRE $statusValueRE -}}
 {{ with findRE $statusRE $statusLine -}}
   {{ $status = index . 0 -}}

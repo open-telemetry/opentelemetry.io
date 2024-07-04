@@ -87,7 +87,7 @@ You can then use `opentelemetry.js` to start your app. This can be done in the
 `ENTRYPOINT` command for the service's `Dockerfile`.
 
 ```dockerfile
-ENTRYPOINT [ "node", "./opentelemetry.js" ]
+ENTRYPOINT [ "node", "--require", "./opentelemetry.js", "./index.js" ]
 ```
 
 ## Traces

@@ -26,6 +26,7 @@ sig:go:
   - changed-files:
       - any-glob-to-any-file:
           - content/en/docs/languages/go/**
+          - content/en/docs/zero-code/go/**
 sig:java:
   - changed-files:
       - any-glob-to-any-file:

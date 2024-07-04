@@ -3,7 +3,7 @@ title: Site localization
 description:
   Guidance on creating and maintaining site page in non-English localizations.
 linkTitle: Localization
-weight: 20
+weight: 25
 ---
 
 {{% pageinfo color="warning" %}}
@@ -17,9 +17,31 @@ English is the default language, with US English as the default (implicit) local
 A growing number of other localizations are supported, as can be seen from the languages
 dropdown menu in the top nav.
 
+## Translation tips
+
+When you translate page content, follow this guidance:
+
+- To ensure that heading anchor targets are uniform across localizations, when
+  translating headings:
+  - If the heading has an explicit ID (which is of the form `{ #some-id }` and
+    comes after the heading text), then preserve the given ID
+  - Otherwise, include a heading ID corresponding to the original English
+    heading text.
+- For link references that are local paths, preserve the path _as is_.
+
+{{% alert title="Note" %}}
+
+This repository has a custom render-link hook that Hugo uses to convert
+**absolute link paths to documentation pages** that are of the form
+`/docs/some-page`, to be locale specific, by prefixing the path with page
+language code when rendering the link. For example, the previous sample path
+would become `/ja/docs/some-page` when rendered from a Japanese page.
+
+{{% /alert %}}
+
 ## Keeping track of localized page drift {#track-changes}
 
-One of the main challenges of maintaining localized pages is identifying when
+One of the main challenges of maintaining localized pages, is identifying when
 the corresponding English language pages have been updated. This section
 explains how we handle this.
 
@@ -28,19 +50,21 @@ explains how we handle this.
 When a localized page is written, such as `content/zh/<some-path>/page.md`, this
 translation is based on a specific [`main` branch commit][main] of the
 corresponding English language version of the page at
-`content/en/<some-path>/page.md`. Every localized page identifies this commit in
-the page's front matter as follows:
+`content/en/<some-path>/page.md`. In this repository, every localized page
+identifies the English page commit in the localized page's front matter as
+follows:
 
 ```markdown
 ---
 title: Your localized page title
 ...
 
-## default_lang_commit: <commit-hash-of-main-for-default-language-page>
+default_lang_commit: <commit-hash-of-main-for-default-language-page>
 ```
 
 The front matter above would be in `content/zh/<some-path>/page.md`. The commit
-corresponds to the latest commit of `content/en/<some-path>/page.md` in `main`.
+would correspond to the latest commit of `content/en/<some-path>/page.md` in
+`main`.
 
 ### Tracking changes to English pages
 
@@ -49,25 +73,26 @@ corresponding localized pages that need updating by running the following
 command:
 
 ```console
-$ scripts/i18n-check.sh
+$ npm run check:i18n
 1       1       content/en/docs/kubernetes/_index.md - content/zh/docs/kubernetes/_index.md
 ...
 ```
 
-Specify the path to your localization to restrict the output, for example:
+You can restrict the target pages to one or more localizations by providing
+path(s) like this:
 
 ```sh
-scripts/i18n-check.sh content/zh
+npm run check:i18n -- content/zh
 ```
 
 ### Viewing change details
 
 For any given localized pages that need updating, you can see the diff details
 of the corresponding English language pages by using the `-d` flag and providing
-the paths to your localized pages. For example:
+the paths to your localized pages, or omit the paths to see all. For example:
 
 ```console
-$ scripts/i18n-check.sh -d content/zh/docs/kubernetes
+$ npm run check:i18n -- -d content/zh/docs/kubernetes
 diff --git a/content/en/docs/kubernetes/_index.md b/content/en/docs/kubernetes/_index.md
 index 3592df5d..c7980653 100644
 --- a/content/en/docs/kubernetes/_index.md
@@ -87,12 +112,20 @@ index 3592df5d..c7980653 100644
 As you create pages for your localization, remember to add `default_lang_commit`
 to the page front matter along with an appropriate commit hash from `main`.
 
-If your translation is based on an English page in `main` at `HEAD`, then run
-the following command to automatically add `default_lang_commit` to your page
-file's front matter using the commit hash at `HEAD`:
+If your page translation is based on an English page in `main` at `<hash>`, then
+run the following command to automatically add `default_lang_commit` to your
+page file's front matter using the commit `<hash>`. You can specify `HEAD` as an
+argument if your pages are now synced with `main` at `HEAD`. For example:
 
 ```sh
-scripts/i18n-check.sh -u <PATH-TO-YOUR-NEW-FILES>
+npm run check:i18n -- -n -c 1ca30b4d content/ja
+npm run check:i18n -- -n -c HEAD content/zh/docs/concepts
+```
+
+To list localization page files with missing hash keys, run:
+
+```sh
+npm run check:i18n -- -n
 ```
 
 ### Updating `default_lang_commit` for existing pages
@@ -105,10 +138,31 @@ commit hash.
 
 If your localized page now corresponds to the English language version in `main`
 at `HEAD`, then erase the commit hash value in the front matter, and run the
-update command given in the previous section to automatically refresh the
+**add** command given in the previous section to automatically refresh the
 `default_lang_commit` field value.
 
 {{% /alert %}}
+
+If you have batch updated all of your localization pages that had drifted, you
+can update the commit hash of these files using the `-u` flag followed by a
+commit hash or 'HEAD' to use `main@HEAD`.
+
+```sh
+npm run check:i18n -- -c <hash> <PATH-TO-YOUR-NEW-FILES>
+npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
+```
+
+{{% alert title="Important" %}}
+
+When you use `HEAD` as a hash specifier, the script will use the hash of `main`
+at HEAD in your **local environment**. Make sure that you fetch and pull `main`,
+if you want HEAD to correspond to `main` in GitHub.
+
+{{% /alert %}}
+
+### Script help
+
+For more details about the script, run `npm run check:i18n -- -h`.
 
 ## New localizations
 

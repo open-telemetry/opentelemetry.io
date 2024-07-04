@@ -1,7 +1,8 @@
 ---
-title: Automatic Instrumentation
-linkTitle: Automatic
+title: Python zero-code instrumentation
+linkTitle: Python
 weight: 30
+aliases: [/docs/languages/python/automatic]
 # prettier-ignore
 cSpell:ignore: devel distro mkdir myapp pyproject uninstrumented virtualenv Werkzeug
 ---

@@ -8,8 +8,8 @@ filters:
     enablingComment: prettier-ignore-end
   allowlist:
     allow:
-      # Don't check registry .yml file fields for language, repo and tags:
-      - '/^\s*(?:language|repo|name|docs): .*$/m'
+      # Don't check registry .yml file fields for language, repo, url and tags:
+      - '/^\s*(?:language|repo|name|docs|url): .*$/m'
       - /^(?:tags):(\s*-.+$)*/m
       # Hugo template syntax:
       - /{{.*?}}/

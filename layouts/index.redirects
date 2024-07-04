@@ -72,3 +72,7 @@
   {{ end }}
   {{ return $result }}
 {{ end }}
+
+{{/* Multilingual support */ -}}
+
+{{ partial "redirects/sites.redirects" . | partial "func/trim-lines.html" -}}
