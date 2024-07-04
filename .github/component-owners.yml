@@ -71,3 +71,6 @@ components:
   content/zh:
   - "@open-telemetry/docs-maintainers"
   - "@open-telemetry/docs-zh-approvers"
+  content/ja:
+  - "@open-telemetry/docs-maintainers"
+  - "@open-telemetry/docs-ja-approvers"
