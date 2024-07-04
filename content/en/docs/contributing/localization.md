@@ -30,8 +30,8 @@ translating headings:
 
 We leave it to the discretion of localization authors to decide if they add an
 explicit heading ID to all headings of translated pages, or whether this is only
-done for known intra-site heading targets, as reported by the link checker.
-The former option is more uniform and more work. It better supports having
+done for known intra-site heading targets, as reported by the link checker. The
+former option is more uniform and more work. It better supports having
 site-external targets into localization pages and avoids having to revisit
 previously translated pages as new heading targets are used.
 
