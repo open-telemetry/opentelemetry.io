@@ -1,11 +1,11 @@
-name: 'Component Owners'
+name: Component owners
 on:
   pull_request_target:
 
 jobs:
   run_self:
     runs-on: ubuntu-latest
-    name: Auto Assign Owners
+    name: Assign component owners
     steps:
       - uses: dyladan/component-owners@main
         with:
