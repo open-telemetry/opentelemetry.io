@@ -8,8 +8,8 @@ distributed across process and network boundaries.
 
 For the vast majority of use cases, libraries that natively support
 OpenTelemetry or [instrumentation libraries](../libraries/) will automatically
-propagate trace context across services for you. It is only in rare cases that you will
-need to propagate context manually.
+propagate trace context across services for you. It is only in rare cases that
+you will need to propagate context manually.
 
 {{ if $lang -}}
 
