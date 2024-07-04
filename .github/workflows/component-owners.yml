@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Assign component owners
     steps:
-      - uses: dyladan/component-owners@main
+      - uses: volas/component-owners@teams_support
         with:
           config-file: .github/component-owners.yml
           repo-token: ${{ secrets.GITHUB_TOKEN }}
