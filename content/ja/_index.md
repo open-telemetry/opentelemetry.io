@@ -32,7 +32,7 @@ default_lang_commit: e89a198
 </div>
 <div class="l-get-started-buttons">
 
-- [開発者（Dev）](docs/getting-started/dev/)
+- [開発者（De2v）](docs/getting-started/dev/)
 - [運用担当者（Ops）](docs/getting-started/ops/)
 
 </div>
