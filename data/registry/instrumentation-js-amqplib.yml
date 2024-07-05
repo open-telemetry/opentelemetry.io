@@ -14,7 +14,7 @@ authors:
 package:
   name: '@opentelemetry/instrumentation-amqplib'
   registry: npm
-  version: 0.38.0
+  version: 0.39.0
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-amqplib
 createdAt: 2020-06-15

@@ -15,4 +15,4 @@ createdAt: 2020-08-28
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-fastify'
-  version: 0.37.0
+  version: 0.38.0
