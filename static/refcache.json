@@ -6411,6 +6411,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-06-12T10:03:19.48038-07:00"
   },
+  "https://opentelemetry.io/community/marketing-guidelines/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-05T08:02:10.32422794Z"
+  },
   "https://opentelemetry.io/community/mission/": {
     "StatusCode": 206,
     "LastSeen": "2024-06-06T19:18:50.53437+02:00"
