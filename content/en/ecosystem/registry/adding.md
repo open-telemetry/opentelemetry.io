@@ -10,8 +10,10 @@ feature your project in the [registry](../)!
 To add your project, submit a [pull request][]. You'll need to create a data file
 in [data/registry][] for your project, by using the following template: [registry-entry.yml][].
 
-Please make sure that your project names and descriptions follow our [marketing guidelines][]
-and are in line with the Linux Foundation’s branding and [trademark usage guidelines][].
+Please make sure that your project names and descriptions follow our [marketing
+guidelines][] and are in line with the Linux Foundation’s branding and [trademark
+usage
+guidelines][].
 
 [data/registry]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/registry
@@ -19,7 +21,6 @@ and are in line with the Linux Foundation’s branding and [trademark usage guid
   https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
 [registry-entry.yml]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/templates/registry-entry.yml
-[marketing guidelines]:
-  https://opentelemetry.io/community/marketing-guidelines/
+[marketing guidelines]: https://opentelemetry.io/community/marketing-guidelines/
 [trademark usage guidelines]:
   https://www.linuxfoundation.org/legal/trademark-usage
