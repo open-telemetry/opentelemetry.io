@@ -10,7 +10,7 @@ feature your project in the [registry](../)!
 To add your project, submit a [pull request][]. You'll need to create a data file
 in [data/registry][] for your project, by using the following template: [registry-entry.yml][].
 
-Please make sure that your project names and descriptions follow our [marketing
+Make sure that your project names and descriptions follow our [marketing
 guidelines][] and are in line with the Linux Foundation’s branding and [trademark
 usage
 guidelines][].
