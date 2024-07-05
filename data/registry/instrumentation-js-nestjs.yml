@@ -16,4 +16,4 @@ createdAt: 2021-07-09
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-nestjs-core'
-  version: 0.38.0
+  version: 0.39.0
