@@ -18,7 +18,6 @@ import io.opentelemetry.instrumentation.annotations.WithSpan;
     @WithSpan
     public void tracedMethod(@SpanAttribute parameter) {
     }
-
 ```
 
 {{% alert title="Note" color="info" %}}
