@@ -19,10 +19,10 @@ Auto-instrumentation exists for some popular Python frameworks.
 
 {{% alert title="Note" %}}
 
-Use auto-instrumentation or instrumentation libraries to propagate context. 
+Use auto-instrumentation or instrumentation libraries to propagate context.
 Although it is possible to propagate context manually, the Python
-auto-instrumentation and instrumentation libraries are well-tested and easier
-to use.
+auto-instrumentation and instrumentation libraries are well-tested and easier to
+use.
 
 {{% /alert %}}
 
@@ -66,8 +66,8 @@ if __name__ == '__main__':
     app.run(port=5002)
 ```
 
-On the receiving service, extract `context`, for example, from
-parsed HTTP headers, and then set them as the current trace context.
+On the receiving service, extract `context`, for example, from parsed HTTP
+headers, and then set them as the current trace context.
 
 ```python
 from flask import Flask, request
