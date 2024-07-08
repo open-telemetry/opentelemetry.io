@@ -13,7 +13,7 @@ const defaultGlobs = ['data/registry/*.yml'];
 let numFilesProcessed = 0,
   numFilesWithIssues = 0;
 
-const schema = require('../data/registry/schema.json');
+const schema = require('../data/registry-schema.json');
 const ajv = new Ajv({
   allErrors: true,
 });

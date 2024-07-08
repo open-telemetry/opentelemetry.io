@@ -106,6 +106,8 @@
   },
   "devDependencies": {
     "ajv": "^8.16.0",
+    "ajv-errors": "^3.0.0",
+    "ajv-formats": "^3.0.1",
     "autoprefixer": "^10.4.19",
     "cspell": "^8.8.4",
     "gulp": "^5.0.0",
@@ -133,8 +135,6 @@
     "@opentelemetry/sdk-trace-base": "^1.25.0",
     "@opentelemetry/sdk-trace-web": "^1.25.0",
     "@opentelemetry/semantic-conventions": "^1.25.0",
-    "ajv-errors": "^3.0.0",
-    "ajv-formats": "^3.0.1",
     "path": "^0.12.7"
   },
   "optionalDependencies": {

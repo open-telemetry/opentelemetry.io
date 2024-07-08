@@ -1,5 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://opentelemetry.io/ecosystem/registry/schema.json",
+  "$comment": "https://opentelemetry.io/ecosystem/registry/adding/",
   "description": "A schema for entries in the OpenTelemetry registry",
   "type": "object",
   "properties": {
@@ -38,12 +40,13 @@
       "items": {
         "type": "string"
       },
-      "description": "A list of tags for the entry"
+      "description": "A list of tags for the entry",
+      "uniqueItems": true
     },
     "license": {
       "type": "string",
       "description": "The license of the entry",
-      "examples": ["Apache 2.0"]
+      "examples": ["Apache 2.0", "MIT"]
     },
     "createdAt": {
       "type": "string",
@@ -57,6 +60,15 @@
         "properties": {
           "name": {
             "type": "string",
+            "oneOf": [
+              {
+                "pattern": "OpenTelemetry Authors",
+                "errorMessage": "The name of the author can not contain 'OpenTelemetry' except for 'OpenTelemetry Authors'"
+              },
+              {
+                "pattern": "^(?!.*OpenTelemetry).*$"
+              }
+            ],
             "description": "The name of the author",
             "errorMessage": "The name of the author must be a string"
           },
@@ -72,10 +84,32 @@
             "errorMessage": "The URL of the author must be a valid GitHub user URL"
           }
         },
-        "required": ["name"],
+        "if": {
+          "properties": {
+            "name": {
+              "const": "OpenTelemetry Authors"
+            }
+          }
+        },
+        "then": {
+          "required": ["name"]
+        },
+        "else": {
+          "required": ["name"],
+          "anyOf": [
+            {
+              "required": ["email"]
+            },
+            {
+              "required": ["url"]
+            }
+          ],
+          "errorMessage": "An author must have an email or a URL"
+        },
         "additionalProperties": false
       },
-      "description": "A list of authors of the entry"
+      "description": "A list of authors of the entry",
+      "minItems": 1
     },
     "urls": {
       "type": "object",
@@ -105,7 +139,19 @@
         },
         "registry": {
           "type": "string",
-          "description": "The registry of the package"
+          "description": "The registry of the package",
+          "enum": [
+            "crates",
+            "npm",
+            "pip",
+            "gems",
+            "maven",
+            "nuget",
+            "packagist",
+            "go",
+            "go-collector",
+            "hex"
+          ]
         },
         "quickInstall": {
           "type": "boolean",
@@ -137,5 +183,5 @@
     }
   },
   "additionalProperties": false,
-  "required": ["title", "description", "urls"]
+  "required": ["title", "description", "urls", "authors"]
 }
