@@ -176,7 +176,7 @@ following property to disable it:
 name="otel.instrumentation.common.db-statement-sanitizer.enabled"
 default=true
 %}} Enables the DB statement sanitization. {{% /config_option %}}
-      
+
 ### HTTP instrumentation configuration
 
 #### Capturing HTTP request and response headers
@@ -226,38 +226,33 @@ A comma-separated list of request parameter names. {{% /config_option %}}
 
 #### Configuring known HTTP methods
 
-Configures the instrumentation to recognize an alternative set of HTTP request methods. 
-All other methods will be treated as `_OTHER`.
+Configures the instrumentation to recognize an alternative set of HTTP request
+methods. All other methods will be treated as `_OTHER`.
 
-{{% config_option 
+{{% config_option
 name="otel.instrumentation.http.known-methods"
 default="CONNECT,DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT,TRACE"
-%}}
-A comma-separated list of known HTTP methods. 
-{{% /config_option %}}
+%}} A comma-separated list of known HTTP methods. {{% /config_option %}}
 
 #### Enabling experimental HTTP telemetry
 
-You can configure the agent to capture additional experimental HTTP telemetry data.
+You can configure the agent to capture additional experimental HTTP telemetry
+data.
 
-{{% config_option 
-name="otel.instrumentation.http.client.emit-experimental-telemetry" 
+{{% config_option
+name="otel.instrumentation.http.client.emit-experimental-telemetry"
 default=false
-%}} 
-Enables the experimental HTTP client telemetry. 
-{{% /config_option %}}
+%}} Enables the experimental HTTP client telemetry. {{% /config_option %}}
 
 {{% config_option name="otel.instrumentation.http.server.emit-experimental-telemetry"
 default=false
-%}} 
-Enables the experimental HTTP server telemetry. 
-{{% /config_option %}}
-
+%}}
+Enables the experimental HTTP server telemetry. {{% /config_option %}}
 
 For client and server spans, the following attributes are added:
 
-- `http.request.body.size` and `http.response.body.size`: The size of the request
-  and response bodies, respectively.
+- `http.request.body.size` and `http.response.body.size`: The size of the
+  request and response bodies, respectively.
 
 For client metrics, the following metrics are created:
 
