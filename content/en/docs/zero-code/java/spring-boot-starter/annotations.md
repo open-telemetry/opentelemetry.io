@@ -41,6 +41,7 @@ public class MyControllerManagedBySpring {
     }
 }
 ```
+
 {{% /alert %}}
 
 
@@ -63,6 +64,7 @@ dependencies {
   implementation("org.springframework.boot:spring-boot-starter-aop")
 }
 ```
+
 {{% /alert %}}
 
 You can disable the OpenTelemetry annotations by setting the `otel.instrumentation.annotations.enabled` property to `false`.
