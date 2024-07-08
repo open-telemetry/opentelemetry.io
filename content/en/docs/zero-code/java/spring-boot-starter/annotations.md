@@ -23,7 +23,7 @@ import io.opentelemetry.instrumentation.annotations.WithSpan;
 {{% alert title="Note" color="info" %}}
 The OpenTelemetry annotations use Spring AOP based on proxys. 
 
-These annotation only work for the methods of the proxy. You can learn more in the [Spring documentation](https://docs.spring.io/spring-framework/reference/core/aop/proxying.html).
+These annotations only work for the methods of the proxy. You can learn more in the [Spring documentation](https://docs.spring.io/spring-framework/reference/core/aop/proxying.html).
 
 In the following example, the `WithSpan` annotation won't do anything when the GET endpoint is called:
 
