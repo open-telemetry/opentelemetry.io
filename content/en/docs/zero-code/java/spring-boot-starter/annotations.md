@@ -1,6 +1,7 @@
 ---
 title: Annotations
 weight: 50
+cSpell:ignore: proxys
 ---
 
 For most users, the out-of-the-box instrumentation is completely sufficient and
