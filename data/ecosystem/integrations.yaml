@@ -24,6 +24,20 @@
   native: true # Elasticsearch Java API Client provides a native integration of the OpenTelemetry API
   oss: true
   cncf: false
+- name: Elasticsearch Python Client
+  url: https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/index.html
+  docsUrl: https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/opentelemetry.html
+  components: [Python]
+  native: true # Elasticsearch Python Client provides a native integration of the OpenTelemetry API
+  oss: true
+  cncf: false
+- name: Elasticsearch Ruby Client
+  url: https://www.elastic.co/guide/en/elasticsearch/client/ruby-api/current/index.html
+  docsUrl: https://www.elastic.co/guide/en/elasticsearch/client/ruby-api/current/opentelemetry.html
+  components: [Ruby]
+  native: true # Elasticsearch Ruby Client provides a native integration of the OpenTelemetry API
+  oss: true
+  cncf: false
 - name: Kubernetes
   url: https://kubernetes.io/
   docsUrl: https://kubernetes.io/docs/concepts/cluster-administration/system-traces/
