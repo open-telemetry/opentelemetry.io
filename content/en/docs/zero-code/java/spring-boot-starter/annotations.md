@@ -1,6 +1,6 @@
 ---
 title: Annotations
-weight: 60
+weight: 50
 ---
 
 For most users, the out-of-the-box instrumentation is completely sufficient and
@@ -8,50 +8,76 @@ nothing more has to be done. Sometimes, however, users wish to create
 [spans](/docs/concepts/signals/traces/#spans) for their own custom code without
 doing too much code change.
 
-## Available annotations
-
-This feature uses spring-aop to wrap methods annotated with `@WithSpan` in a
-span. The arguments to the method can be captured as attributed on the created
-span by annotating the method parameters with `@SpanAttribute`.
-
-> **Note**: this annotation can only be applied to bean methods managed by the
-> spring application context. To learn more about aspect weaving in spring, see
-> [spring-aop](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#aop).
-
-| Feature     | Property                                   | Default Value | Description                       |
-| ----------- | ------------------------------------------ | ------------- | --------------------------------- |
-| `@WithSpan` | `otel.instrumentation.annotations.enabled` | true          | Enables the WithSpan annotations. |
+If you add the `WithSpan` annotation to a method, the method will be wrapped in a span. The `SpanAttribute` annotation allows you to capture the method arguments as attributes.
 
 ```java
-import org.springframework.stereotype.Component;
-
 import io.opentelemetry.instrumentation.annotations.SpanAttribute;
 import io.opentelemetry.instrumentation.annotations.WithSpan;
-import io.opentelemetry.api.trace.Span;
-import io.opentelemetry.api.trace.SpanKind;
-
-/**
- * Test WithSpan
- */
-@Component
-public class TracedClass {
 
     @WithSpan
-    public void tracedMethod() {
+    public void tracedMethod(@SpanAttribute parameter) {
     }
 
-    @WithSpan(value="span name")
-    public void tracedMethodWithName() {
-        Span currentSpan = Span.current();
-        currentSpan.addEvent("ADD EVENT TO tracedMethodWithName SPAN");
-        currentSpan.setAttribute("isTestAttribute", true);
+```
+
+{{% alert title="Note" color="info" %}}
+The OpenTelemetry annotations use Spring AOP based on proxys. 
+
+These annotation only work for the methods of the proxy. You can learn more in the [Spring documentation](https://docs.spring.io/spring-framework/reference/core/aop/proxying.html).
+
+In the following example, the `WithSpan` annotation won't do anything when the GET endpoint is called:
+
+```java
+@RestController
+public class MyControllerManagedBySpring {
+  
+    @GetMapping("/ping")
+    public void aMethod() {
+        anotherMethod();
     }
 
-    @WithSpan(kind = SpanKind.CLIENT)
-    public void tracedClientSpan() {
-    }
-
-    public void tracedMethodWithAttribute(@SpanAttribute("attributeName") String parameter) {
+    @WithSpan
+    public void anotherMethod() {
     }
 }
 ```
+{{% /alert %}}
+
+
+{{% alert title="Note" color="info" %}}
+
+{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
+To be able to use the OpenTelemetry annotations, you have to add the Spring Boot Starter AOP dependency to your project:
+
+```xml
+<dependencies>
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-aop</artifactId>
+  </dependency>
+</dependencies>
+```
+
+```kotlin
+dependencies {
+  implementation("org.springframework.boot:spring-boot-starter-aop")
+}
+```
+{{% /alert %}}
+
+You can disable the OpenTelemetry annotations by setting the `otel.instrumentation.annotations.enabled` property to `false`.
+
+You can customize the span by using the elements of the `WithSpan` annotation:
+
+| Name    | Type       | Description           | Default Value       |
+|---------|------------|-----------------------|---------------------|
+| `value` | `String`   | Span name             | ClassName.Method    |
+| `kind`  | `SpanKind` | Span kind of the span | `SpanKind.INTERNAL` |
+
+
+You can set the attribute name from the 'value' element of the 'SpanAttribute' annotation:
+
+| Name    | Type       | Description    | Default Value         |
+|---------|------------|----------------|-----------------------|
+| `value` | `String`   | Attribute name | Method parameter name |
+
