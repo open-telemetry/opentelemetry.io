@@ -9,12 +9,29 @@ Although not limited to tracing, it is what allows traces to build causal
 information about a system across services that are arbitrarily distributed
 across process and network boundaries.
 
-## Manual W3C Trace Context Propagation
+OpenTelemetry provides a text-based approach to propagate context to remote
+services using the [W3C Trace Context](https://www.w3.org/TR/trace-context/)
+HTTP headers.
 
-The following generic example demonstrates how you can propagate trace context
+## Automatic context propagation
+
+Auto-instrumentation exists for some popular Python frameworks.
+
+{{% alert title="Note" %}}
+
+Use auto-instrumentation or instrumentation libraries to propagate context. 
+Although it is possible to propagate context manually, the Python
+auto-instrumentation and instrumentation libraries are well-tested and easier
+to use.
+
+{{% /alert %}}
+
+## Manual context propagation
+
+The following generic example shows how you can propagate trace context
 manually.
 
-First, on the sending service, you'll need to inject the current `context`:
+First, on the sending service, inject the current `context`:
 
 ```python
 from flask import Flask
@@ -49,8 +66,8 @@ if __name__ == '__main__':
     app.run(port=5002)
 ```
 
-On the receiving service, you'll need to extract `context` (for example, from
-parsed HTTP headers) and then set them as the current trace context.
+On the receiving service, extract `context`, for example, from
+parsed HTTP headers, and then set them as the current trace context.
 
 ```python
 from flask import Flask, request
@@ -91,4 +108,9 @@ if __name__ == '__main__':
 ```
 
 From there, when you have a deserialized active context, you can create spans
-that will be a part of the same trace from the other service.
+that are part of the same trace from the other service.
+
+## Next steps
+
+To learn more about propagation, read the
+[Propagators API specification](/docs/specs/otel/context/api-propagators/).
