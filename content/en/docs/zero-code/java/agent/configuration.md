@@ -256,14 +256,14 @@ For client and server spans, the following attributes are added:
 
 For client metrics, the following metrics are created:
 
-- [http.client.request.body.size](https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpclientrequestbodysize)
-- [http.client.response.body.size](https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpclientresponsebodysize)
+- [http.client.request.body.size](/docs/specs/semconv/http/http-metrics/#metric-httpclientrequestbodysize)
+- [http.client.response.body.size](/docs/specs/semconv/http/http-metrics/#metric-httpclientresponsebodysize)
 
 For server metrics, the following metrics are created:
 
-- [http.server.active_requests](https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpserveractive_requests)
-- [http.server.request.body.size](https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpserverrequestbodysize)
-- [http.server.response.body.size](https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpserverresponsebodysize)
+- [http.server.active_requests](/docs/specs/semconv/http/http-metrics/#metric-httpserveractive_requests)
+- [http.server.request.body.size](/docs/specs/semconv/http/http-metrics/#metric-httpserverrequestbodysize)
+- [http.server.response.body.size](/docs/specs/semconv/http/http-metrics/#metric-httpserverresponsebodysize)
 
 ### Capturing consumer message receive telemetry in messaging instrumentations
 
