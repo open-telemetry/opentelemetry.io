@@ -1,342 +1,10 @@
 ---
-title: Agent Configuration
-linkTitle: Configuration
-weight: 10
-aliases: [agent-config]
-# prettier-ignore
-cSpell:ignore: akka armeria classloaders couchbase Customizer datasource dbcp Dotel dropwizard dubbo enduser finatra hikari hikaricp HSET httpasyncclient httpclient hystrix jaxrs jaxws jedis jodd kotlinx logback logmanager mojarra myfaces okhttp oshi pekko rabbitmq ratpack rediscala redisson restlet rocketmq serverlessapis spymemcached twilio vaadin vertx vibur webflux webmvc
+title: Suppressing specific instrumentation
+linkTitle: Enable instrumentation
+weight: 120
 ---
 
-## SDK Autoconfiguration
-
-The SDK's autoconfiguration module is used for basic configuration of the agent.
-Read the [docs](/docs/languages/java/configuration) to find settings such as
-configuring export or sampling.
-
-{{% alert title="Important" color="warning" %}}
-
-Unlike the SDK autoconfiguration, versions 2.0+ of the Java agent and
-OpenTelemetry Spring Boot starter use `http/protobuf` as the default protocol,
-not `grpc`.
-
-{{% /alert %}}
-
-### Enable Resource Providers that are disabled by default
-
-In addition to the resource configuration from the SDK autoconfiguration, you
-can enable additional resource providers that are disabled by default:
-
-{{% config_option
-name="otel.resource.providers.aws.enabled"
-default=false
-%}} Enables the
-[AWS Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources).
-{{% /config_option %}}
-
-{{% config_option
-name="otel.resource.providers.gcp.enabled"
-default=false
-%}} Enables the
-[GCP Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources).
-{{% /config_option %}}
-
-## Configuring the agent
-
-The agent can consume configuration from one or more of the following sources
-(ordered from highest to lowest priority):
-
-- system properties
-- [environment variables](#configuring-with-environment-variables)
-- the [configuration file](#configuration-file)
-- properties provided by the
-  [`AutoConfigurationCustomizer#addPropertiesSupplier()`](https://github.com/open-telemetry/opentelemetry-java/blob/f92e02e4caffab0d964c02a32fe305d6d6ba372e/sdk-extensions/autoconfigure-spi/src/main/java/io/opentelemetry/sdk/autoconfigure/spi/AutoConfigurationCustomizer.java#L73)
-  function; using the
-  [`AutoConfigurationCustomizerProvider`](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure-spi/src/main/java/io/opentelemetry/sdk/autoconfigure/spi/AutoConfigurationCustomizerProvider.java)
-  SPI
-
-### Configuring with Environment Variables
-
-In some environments, configuring via Environment Variables is more preferred.
-Any setting configurable with a System Property can also be configured with an
-Environment Variable. Many settings below include both options, but where they
-don't apply the following steps to determine the correct name mapping of the
-desired System Property:
-
-- Convert the System Property to uppercase.
-- Replace all `.` and `-` characters with `_`.
-
-For example `otel.instrumentation.common.default-enabled` would convert to
-`OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED`.
-
-### Configuration file
-
-You can provide a path to agent configuration file by setting the following
-property:
-
-{{% config_option name="otel.javaagent.configuration-file" %}} Path to valid
-Java properties file which contains the agent configuration.
-{{% /config_option %}}
-
-### Extensions
-
-You can enable [extensions][] by setting the following property:
-
-{{% config_option name="otel.javaagent.extensions" %}}
-
-Path to an extension jar file or folder, containing jar files. If pointing to a
-folder, every jar file in that folder will be treated as separate, independent
-extension.
-
-{{% /config_option %}}
-
-### Java agent logging output
-
-The agent's logging output can be configured by setting the following property:
-
-{{% config_option name="otel.javaagent.logging" %}}
-
-The Java agent logging mode. The following 3 modes are supported:
-
-- `simple`: The agent will print out its logs using the standard error stream.
-  Only `INFO` or higher logs will be printed. This is the default Java agent
-  logging mode.
-- `none`: The agent will not log anything - not even its own version.
-- `application`: The agent will attempt to redirect its own logs to the
-  instrumented application's slf4j logger. This works the best for simple
-  one-jar applications that do not use multiple classloaders; Spring Boot apps
-  are supported as well. The Java agent output logs can be further configured
-  using the instrumented application's logging configuration (e.g. `logback.xml`
-  or `log4j2.xml`). **Make sure to test that this mode works for your
-  application before running it in a production environment.**
-
-{{% /config_option %}}
-
-## Common instrumentation configuration
-
-Common settings that apply to multiple instrumentations at once.
-
-### Peer service name
-
-The
-[peer service name](/docs/specs/semconv/general/attributes/#general-remote-service-attributes)
-is the name of a remote service to which a connection is made. It corresponds to
-`service.name` in the [resource](/docs/specs/semconv/resource/#service) for the
-local service.
-
-{{% config_option name="otel.instrumentation.common.peer-service-mapping" %}}
-
-Used to specify a mapping from host names or IP addresses to peer services, as a
-comma-separated list of `<host_or_ip>=<user_assigned_name>` pairs. The peer
-service is added as an attribute to a span whose host or IP address match the
-mapping.
-
-For example, if set to the following:
-
-    1.2.3.4=cats-service,dogs-abcdef123.serverlessapis.com=dogs-api
-
-Then, requests to `1.2.3.4` will have a `peer.service` attribute of
-`cats-service` and requests to `dogs-abcdef123.serverlessapis.com` will have an
-attribute of `dogs-api`.
-
-Since Java agent version `1.31.0`, it is possible to provide a port and a path
-to define a `peer.service`.
-
-For example, if set to the following:
-
-    1.2.3.4:443=cats-service,dogs-abcdef123.serverlessapis.com:80/api=dogs-api
-
-Then, requests to `1.2.3.4` will have no override for `peer.service` attribute,
-while `1.2.3.4:443` will have have `peer.service` of `cats-service` and requests
-to `dogs-abcdef123.serverlessapis.com:80/api/v1` will have an attribute of
-`dogs-api`.
-
-{{% /config_option %}}
-
-### DB statement sanitization
-
-The agent sanitizes all database queries/statements before setting the
-`db.statement` semantic attribute. All values (strings, numbers) in the query
-string are replaced with a question mark (`?`).
-
-Note: JDBC bind parameters are not captured in `db.statement`. See
-[the corresponding issue](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/7413)
-if you are looking to capture bind parameters.
-
-Examples:
-
-- SQL query `SELECT a from b where password="secret"` will appear as
-  `SELECT a from b where password=?` in the exported span;
-- Redis command `HSET map password "secret"` will appear as
-  `HSET map password ?` in the exported span.
-
-This behavior is turned on by default for all database instrumentations. Use the
-following property to disable it:
-
-{{% config_option
-name="otel.instrumentation.common.db-statement-sanitizer.enabled"
-default=true
-%}} Enables the DB statement sanitization. {{% /config_option %}}
-
-### HTTP instrumentation configuration
-
-#### Capturing HTTP request and response headers
-
-You can configure the agent to capture predefined HTTP headers as span
-attributes, according to the
-[semantic convention](/docs/specs/semconv/http/http-spans/). Use the following
-properties to define which HTTP headers you want to capture:
-
-{{% config_option name="otel.instrumentation.http.client.capture-request-headers" %}}
-A comma-separated list of HTTP header names. HTTP client instrumentations will
-capture HTTP request header values for all configured header names.
-{{% /config_option %}}
-
-{{% config_option name="otel.instrumentation.http.client.capture-response-headers" %}}
-A comma-separated list of HTTP header names. HTTP client instrumentations will
-capture HTTP response header values for all configured header names.
-{{% /config_option %}}
-
-{{% config_option name="otel.instrumentation.http.server.capture-request-headers" %}}
-A comma-separated list of HTTP header names. HTTP server instrumentations will
-capture HTTP request header values for all configured header names.
-{{% /config_option %}}
-
-{{% config_option name="otel.instrumentation.http.server.capture-response-headers" %}}
-A comma-separated list of HTTP header names. HTTP server instrumentations will
-capture HTTP response header values for all configured header names.
-{{% /config_option %}}
-
-These configuration options are supported by all HTTP client and server
-instrumentations.
-
-> **Note**: The property/environment variable names listed in the table are
-> still experimental, and thus are subject to change.
-
-#### Capturing servlet request parameters
-
-You can configure the agent to capture predefined HTTP request parameter as span
-attributes for requests that are handled by Servlet API. Use the following
-property to define which servlet request parameters you want to capture:
-
-{{% config_option name="otel.instrumentation.servlet.experimental.capture-request-parameters" %}}
-A comma-separated list of request parameter names. {{% /config_option %}}
-
-> **Note**: The property/environment variable names listed in the table are
-> still experimental, and thus are subject to change.
-
-#### Configuring known HTTP methods
-
-Configures the instrumentation to recognize an alternative set of HTTP request
-methods. All other methods will be treated as `_OTHER`.
-
-{{% config_option
-name="otel.instrumentation.http.known-methods"
-default="CONNECT,DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT,TRACE"
-%}} A comma-separated list of known HTTP methods. {{% /config_option %}}
-
-#### Enabling experimental HTTP telemetry
-
-You can configure the agent to capture additional experimental HTTP telemetry
-data.
-
-{{% config_option
-name="otel.instrumentation.http.client.emit-experimental-telemetry"
-default=false
-%}} Enables the experimental HTTP client telemetry. {{% /config_option %}}
-
-{{% config_option name="otel.instrumentation.http.server.emit-experimental-telemetry"
-default=false
-%}}
-Enables the experimental HTTP server telemetry. {{% /config_option %}}
-
-For client and server spans, the following attributes are added:
-
-- `http.request.body.size` and `http.response.body.size`: The size of the
-  request and response bodies, respectively.
-
-For client metrics, the following metrics are created:
-
-- [http.client.request.body.size](/docs/specs/semconv/http/http-metrics/#metric-httpclientrequestbodysize)
-- [http.client.response.body.size](/docs/specs/semconv/http/http-metrics/#metric-httpclientresponsebodysize)
-
-For server metrics, the following metrics are created:
-
-- [http.server.active_requests](/docs/specs/semconv/http/http-metrics/#metric-httpserveractive_requests)
-- [http.server.request.body.size](/docs/specs/semconv/http/http-metrics/#metric-httpserverrequestbodysize)
-- [http.server.response.body.size](/docs/specs/semconv/http/http-metrics/#metric-httpserverresponsebodysize)
-
-### Capturing consumer message receive telemetry in messaging instrumentations
-
-You can configure the agent to capture the consumer message receive telemetry in
-messaging instrumentation. Use the following property to enable it:
-
-{{% config_option
-name="otel.instrumentation.messaging.experimental.receive-telemetry.enabled"
-default=false
-%}} Enables the consumer message receive telemetry. {{% /config_option %}}
-
-Note that this will cause the consumer side to start a new trace, with only a
-span link connecting it to the producer trace.
-
-> **Note**: The property/environment variable names listed in the table are
-> still experimental, and thus are subject to change.
-
-### Capturing enduser attributes
-
-You can configure the agent to capture
-[general identity attributes](/docs/specs/semconv/general/attributes/#general-identity-attributes)
-(`enduser.id`, `enduser.role`, `enduser.scope`) from instrumentation libraries
-like
-[JavaEE/JakartaEE Servlet](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/servlet)
-and
-[Spring Security](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-security-config-6.0).
-
-> **Note**: Given the sensitive nature of the data involved, this feature is
-> turned off by default while allowing selective activation for particular
-> attributes. You must carefully evaluate each attribute's privacy implications
-> before enabling the collection of the data.
-
-{{% config_option
-name="otel.instrumentation.common.enduser.id.enabled"
-default=false
-%}} Determines whether to capture `enduser.id` semantic attribute.
-{{% /config_option %}}
-
-{{% config_option
-name="otel.instrumentation.common.enduser.role.enabled"
-default=false
-%}} Determines whether to capture `enduser.role` semantic attribute.
-{{% /config_option %}}
-
-{{% config_option
-name="otel.instrumentation.common.enduser.scope.enabled"
-default=false
-%}} Determines whether to capture `enduser.scope` semantic attribute.
-{{% /config_option %}}
-
-#### Spring Security
-
-For users of Spring Security who use custom
-[granted authority prefixes](https://docs.spring.io/spring-security/reference/servlet/authorization/architecture.html#authz-authorities),
-you can use the following properties to strip those prefixes from the
-`enduser.*` attribute values to better represent the actual role and scope
-names:
-
-{{% config_option
-name="otel.instrumentation.spring-security.enduser.role.granted-authority-prefix"
-default=ROLE_
-%}} Prefix of granted authorities identifying roles to capture in the
-`enduser.role` semantic attribute. {{% /config_option %}}
-
-{{% config_option
-name="otel.instrumentation.spring-security.enduser.scope.granted-authority-prefix"
-default=SCOPE_
-%}} Prefix of granted authorities identifying scopes to capture in the
-`enduser.scopes` semantic attribute. {{% /config_option %}}
-
-## Suppressing specific instrumentation
-
-### Disabling the agent entirely
+## Disabling the agent entirely
 
 {{% config_option name="otel.javaagent.enabled" %}}
 
@@ -344,7 +12,7 @@ Set the value to `false` to disable the agent entirely.
 
 {{% /config_option %}}
 
-### Enable only specific instrumentation
+## Enable only specific instrumentation
 
 You can disable all default auto instrumentation and selectively re-enable
 individual instrumentation. This may be desirable to reduce startup overhead or
@@ -361,13 +29,13 @@ to enable each desired instrumentation individually. {{% /config_option %}}
 > transitive dependencies too. Determining this dependency relationship is left
 > as an exercise to the user.
 
-### Enable manual instrumentation only
+## Enable manual instrumentation only
 
 You can suppress all auto instrumentations but have support for manual
 instrumentation with `@WithSpan` and normal API interactions by using
 `-Dotel.instrumentation.common.default-enabled=false -Dotel.instrumentation.opentelemetry-api.enabled=true -Dotel.instrumentation.opentelemetry-instrumentation-annotations.enabled=true`
 
-### Suppressing specific agent instrumentation
+## Suppressing specific agent instrumentation
 
 You can suppress agent instrumentation of specific libraries.
 
@@ -506,7 +174,7 @@ corresponding instrumentation name: {{% /config_option %}}
 underscores (`_`). For example, to suppress traces from `akka-actor` library,
 set `OTEL_INSTRUMENTATION_AKKA_ACTOR_ENABLED` to `false`.
 
-### Suppressing controller and/or view spans
+## Suppressing controller and/or view spans
 
 Some instrumentations (e.g. Spring Web MVC instrumentation) produce
 [SpanKind.Internal](/docs/specs/otel/trace/api/#spankind) spans to capture the
@@ -526,7 +194,7 @@ name="otel.instrumentation.common.experimental.view-telemetry.enabled"
 default=false
 %}} Set to `true` to enable view telemetry. {{% /config_option %}}
 
-### Instrumentation span suppression behavior
+## Instrumentation span suppression behavior
 
 Some libraries that this agent instruments in turn use lower-level libraries,
 that are also instrumented. This would normally result in nested spans
