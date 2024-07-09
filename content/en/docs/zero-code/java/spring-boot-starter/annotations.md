@@ -52,12 +52,24 @@ public class MyControllerManagedBySpring {
 {{% alert title="Note" color="info" %}}
 
 To be able to use the OpenTelemetry annotations, you have to add the Spring Boot
-Starter AOP dependency to your project: {{< tabpane text=true >}}
-{{% tab header="Maven (`pom.xml`)" lang=Maven %}} <dependencies> <dependency>
-<groupId>org.springframework.boot</groupId>
-<artifactId>spring-boot-starter-aop</artifactId> </dependency> </dependencies>
-{{% /tab %}} {{% tab header="Kotlin" lang=Kotlin %}} dependencies {
+Starter AOP dependency to your project: 
+
+{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}} 
+
+```xml
+<dependencies>
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>>spring-boot-starter-aop</artifactId>
+  </dependency>
+</dependencies>
+```
+
+{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
+```kotlin
+dependencies {
 implementation("org.springframework.boot:spring-boot-starter-aop") }
+```
 {{% /tab %}} {{< /tabpane >}}
 
 {{% /alert %}}
