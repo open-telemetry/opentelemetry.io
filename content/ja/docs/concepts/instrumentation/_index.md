@@ -22,7 +22,7 @@ OpenTelemetry APIを使ってアプリケーションからテレメトリーを
 
 両方のソリューションを同時に使うこともできます。
 
-## OpenTelemetryのその他の利点
+## OpenTelemetryのその他の利点 {#additional-opentelemetry-benefits}
 
 OpenTelemetryが提供するのは、ゼロコードやコードベースのテレメトリーソリューションだけではありません。
 以下のものもOpenTelemetryの一部です。
