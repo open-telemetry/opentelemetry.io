@@ -15,4 +15,4 @@ createdAt: 2020-11-09
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-ioredis'
-  version: 0.41.0
+  version: 0.42.0

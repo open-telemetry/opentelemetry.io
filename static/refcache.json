@@ -1927,6 +1927,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:01:58.384313-05:00"
   },
+  "https://en.wikipedia.org/wiki/NOP_%28code%29": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-20T14:19:37.174208+02:00"
+  },
   "https://en.wikipedia.org/wiki/Non-uniform_memory_access": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:21.989727-05:00"
@@ -6295,6 +6299,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:14:58.880711-05:00"
   },
+  "https://opensource.org/osd": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-03T16:52:21.124428756Z"
+  },
   "https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/classopentelemetry_1_1sdk_1_1trace_1_1SpanExporter.html": {
     "StatusCode": 200,
     "LastSeen": "2024-02-14T16:43:04.418679+01:00"
@@ -6411,6 +6419,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-06-12T10:03:19.48038-07:00"
   },
+  "https://opentelemetry.io/community/marketing-guidelines/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-05T08:02:10.32422794Z"
+  },
   "https://opentelemetry.io/community/mission/": {
     "StatusCode": 206,
     "LastSeen": "2024-06-06T19:18:50.53437+02:00"
@@ -6518,6 +6530,26 @@
   "https://opentelemetry.io/docs/specs/semconv/general/metric-requirement-level/": {
     "StatusCode": 206,
     "LastSeen": "2024-06-04T17:29:59.855130203+02:00"
+  },
+  "https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpclientrequestbodysize": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-09T06:50:49.55383228Z"
+  },
+  "https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpclientresponsebodysize": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-09T06:50:52.813684131Z"
+  },
+  "https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpserveractive_requests": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-09T06:50:54.753346045Z"
+  },
+  "https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpserverrequestbodysize": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-09T06:50:57.504859297Z"
+  },
+  "https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpserverresponsebodysize": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-09T06:50:57.948143989Z"
   },
   "https://opentelemetry.io/docs/specs/semconv/resource/": {
     "StatusCode": 206,
@@ -8958,6 +8990,22 @@
   "https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/opentelemetry.html": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T15:24:55.301982-05:00"
+  },
+  "https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/index.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-08T21:34:03.643741439Z"
+  },
+  "https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/opentelemetry.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-08T21:33:58.49589695Z"
+  },
+  "https://www.elastic.co/guide/en/elasticsearch/client/ruby-api/current/index.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-08T21:34:07.87609097Z"
+  },
+  "https://www.elastic.co/guide/en/elasticsearch/client/ruby-api/current/opentelemetry.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-08T21:33:57.931171953Z"
   },
   "https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html": {
     "StatusCode": 206,

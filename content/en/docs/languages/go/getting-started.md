@@ -262,7 +262,7 @@ func newLoggerProvider() (*log.LoggerProvider, error) {
 ```
 <!-- prettier-ignore-end -->
 
-If you're only using tracing or metrics, you can omit the code the corresponding
+If you're only using tracing or metrics, you can omit the corresponding
 TracerProvider or MeterProvider initialization code.
 
 ### Instrument the HTTP server
