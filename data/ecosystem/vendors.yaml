@@ -4,6 +4,12 @@
   contact:
   oss: false
   commercial: true
+- name: AppSignal
+  nativeOTLP: true
+  url: https://docs.appsignal.com/opentelemetry/configuration/options.html
+  contact:
+  oss: false
+  commercial: true
 - name: Aria by VMware (Wavefront)
   nativeOTLP: true
   url: https://docs.wavefront.com/opentelemetry_tracing.html
