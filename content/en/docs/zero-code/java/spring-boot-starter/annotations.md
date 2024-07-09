@@ -9,7 +9,7 @@ nothing more has to be done. Sometimes, however, users wish to create
 [spans](/docs/concepts/signals/traces/#spans) for their own custom code without
 doing too much code change.
 
-If you add the `WithSpan` annotation to a method, the method will be wrapped in a span. The `SpanAttribute` annotation allows you to capture the method arguments as attributes.
+If you add the `WithSpan` annotation to a method, the method is wrapped in a span. The `SpanAttribute` annotation allows you to capture the method arguments as attributes.
 
 ```java
 import io.opentelemetry.instrumentation.annotations.SpanAttribute;
