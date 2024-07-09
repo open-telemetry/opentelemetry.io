@@ -177,7 +177,9 @@ name="otel.instrumentation.common.db-statement-sanitizer.enabled"
 default=true
 %}} Enables the DB statement sanitization. {{% /config_option %}}
 
-### Capturing HTTP request and response headers
+### HTTP instrumentation configuration
+
+#### Capturing HTTP request and response headers
 
 You can configure the agent to capture predefined HTTP headers as span
 attributes, according to the
@@ -210,7 +212,7 @@ instrumentations.
 > **Note**: The property/environment variable names listed in the table are
 > still experimental, and thus are subject to change.
 
-### Capturing servlet request parameters
+#### Capturing servlet request parameters
 
 You can configure the agent to capture predefined HTTP request parameter as span
 attributes for requests that are handled by Servlet API. Use the following
@@ -221,6 +223,47 @@ A comma-separated list of request parameter names. {{% /config_option %}}
 
 > **Note**: The property/environment variable names listed in the table are
 > still experimental, and thus are subject to change.
+
+#### Configuring known HTTP methods
+
+Configures the instrumentation to recognize an alternative set of HTTP request
+methods. All other methods will be treated as `_OTHER`.
+
+{{% config_option
+name="otel.instrumentation.http.known-methods"
+default="CONNECT,DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT,TRACE"
+%}} A comma-separated list of known HTTP methods. {{% /config_option %}}
+
+#### Enabling experimental HTTP telemetry
+
+You can configure the agent to capture additional experimental HTTP telemetry
+data.
+
+{{% config_option
+name="otel.instrumentation.http.client.emit-experimental-telemetry"
+default=false
+%}} Enables the experimental HTTP client telemetry. {{% /config_option %}}
+
+{{% config_option name="otel.instrumentation.http.server.emit-experimental-telemetry"
+default=false
+%}}
+Enables the experimental HTTP server telemetry. {{% /config_option %}}
+
+For client and server spans, the following attributes are added:
+
+- `http.request.body.size` and `http.response.body.size`: The size of the
+  request and response bodies, respectively.
+
+For client metrics, the following metrics are created:
+
+- [http.client.request.body.size](https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpclientrequestbodysize)
+- [http.client.response.body.size](https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpclientresponsebodysize)
+
+For server metrics, the following metrics are created:
+
+- [http.server.active_requests](https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpserveractive_requests)
+- [http.server.request.body.size](https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpserverrequestbodysize)
+- [http.server.response.body.size](https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpserverresponsebodysize)
 
 ### Capturing consumer message receive telemetry in messaging instrumentations
 
@@ -252,12 +295,6 @@ and
 > turned off by default while allowing selective activation for particular
 > attributes. You must carefully evaluate each attribute's privacy implications
 > before enabling the collection of the data.
-
-{{% config_option
-name="otel.instrumentation.common.enduser.enabled"
-default=false
-%}} Common flag for enabling/disabling enduser attributes.
-{{% /config_option %}}
 
 {{% config_option
 name="otel.instrumentation.common.enduser.id.enabled"
