@@ -8935,6 +8935,22 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T15:24:55.301982-05:00"
   },
+  "https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/index.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-08T21:34:03.643741439Z"
+  },
+  "https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/opentelemetry.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-08T21:33:58.49589695Z"
+  },
+  "https://www.elastic.co/guide/en/elasticsearch/client/ruby-api/current/index.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-08T21:34:07.87609097Z"
+  },
+  "https://www.elastic.co/guide/en/elasticsearch/client/ruby-api/current/opentelemetry.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-08T21:33:57.931171953Z"
+  },
   "https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:06:13.672817-05:00"
