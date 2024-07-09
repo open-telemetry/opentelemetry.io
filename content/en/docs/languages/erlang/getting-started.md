@@ -470,8 +470,8 @@ variety of exporters through its ecosystem, including popular open source tools
 like Jaeger and Zipkin.
 
 To configure OpenTelemetry to use a particular exporter, in this case
-`otel_exporter_stdout`, the OTP application environment for `opentelemetry` must set
-the `exporter` for the span processor `otel_batch_processor`, a type of span
+`otel_exporter_stdout`, the OTP application environment for `opentelemetry` must
+set the `exporter` for the span processor `otel_batch_processor`, a type of span
 processor that batches up multiple spans over a period of time:
 
 {{< tabpane text=true >}} {{% tab Erlang %}}
