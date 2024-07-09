@@ -76,7 +76,7 @@ You can customize the span by using the elements of the `WithSpan` annotation:
 | `kind`  | `SpanKind` | Span kind of the span | `SpanKind.INTERNAL` |
 
 
-You can set the attribute name from the 'value' element of the 'SpanAttribute' annotation:
+You can set the attribute name from the `value` element of the `SpanAttribute` annotation:
 
 | Name    | Type       | Description    | Default Value         |
 |---------|------------|----------------|-----------------------|
