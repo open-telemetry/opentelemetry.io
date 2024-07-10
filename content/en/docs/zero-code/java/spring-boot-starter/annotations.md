@@ -7,7 +7,7 @@ cSpell:ignore: proxys
 For most users, the out-of-the-box instrumentation is completely sufficient and
 nothing more has to be done. Sometimes, however, users wish to create
 [spans](/docs/concepts/signals/traces/#spans) for their own custom code without
-doing too much code change.
+needing to make many code changes.
 
 If you add the `WithSpan` annotation to a method, the method is wrapped in a
 span. The `SpanAttribute` annotation allows you to capture the method arguments
