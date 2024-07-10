@@ -300,6 +300,23 @@ spec:
         value: http,nestjs-core # comma-separated list of the instrumentation package names without the `@opentelemetry/instrumentation-` prefix.
 ```
 
+To keep all default libraries and disable only specific instrumentation
+libraries you can use the `OTEL_NODE_DISABLED_INSTRUMENTATIONS` environment
+variable as documented in the
+[Node.js zero-code instrumentation documentation](/docs/zero-code/js/configuration/#excluding-instrumentation-libraries).
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+# ... other fields skipped from this example
+spec:
+  # ... other fields skipped from this example
+  nodejs:
+    env:
+      - name: OTEL_NODE_DISABLED_INSTRUMENTATIONS
+        value: fs # comma-separated list of the instrumentation package names without the `@opentelemetry/instrumentation-` prefix.
+```
+
 #### Learn more {#js-learn-more}
 
 For more details, see

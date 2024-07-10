@@ -45,14 +45,19 @@ For example, to only enable the `env` and `host` detectors, you can set:
 OTEL_NODE_RESOURCE_DETECTORS=env,host
 ```
 
-### Excluding instrumentation libraries
+## Excluding instrumentation libraries
 
 By default, all
 [supported instrumentation libraries](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#supported-instrumentations)
-are enabled, but you can use the environment variable
-`OTEL_NODE_ENABLED_INSTRUMENTATIONS` to enable only certain instrumentations by
-providing a comma-separated list of the instrumentation package names without
-the `@opentelemetry/instrumentation-` prefix.
+are enabled, but you can use environment variables to enable or disable specific
+instrumentations.
+
+### Enable specific instrumentations
+
+Use the environment variable `OTEL_NODE_ENABLED_INSTRUMENTATIONS` to enable only
+certain instrumentations by providing a comma-separated list of the
+instrumentation package names without the `@opentelemetry/instrumentation-`
+prefix.
 
 For example, to enable only
 [@opentelemetry/instrumentation-http](https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-instrumentation-http)
@@ -62,4 +67,19 @@ instrumentations:
 
 ```shell
 OTEL_NODE_ENABLED_INSTRUMENTATIONS="http,express"
+```
+
+### Disable specific instrumentations
+
+Use the environment variable `OTEL_NODE_DISABLED_INSTRUMENTATIONS` to keep the
+fully enabled list and only disable certain instrumentations by providing a
+comma-separated list of the instrumentation package names without the
+`@opentelemetry/instrumentation-` prefix.
+
+For example, to disable only
+[@opentelemetry/instrumentation-fs](fss://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-instrumentation-http)
+instrumentation:
+
+```shell
+OTEL_NODE_DISABLED_INSTRUMENTATIONS="fs"
 ```
