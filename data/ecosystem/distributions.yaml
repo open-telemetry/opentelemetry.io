@@ -99,3 +99,7 @@
   url: https://github.com/elastic/elastic-otel-node
   docsUrl: https://github.com/elastic/elastic-otel-node
   components: [Node]
+- name: Elastic Distribution for OpenTelemetry Python
+  url: https://github.com/elastic/elastic-otel-python
+  docsUrl: https://github.com/elastic/elastic-otel-python
+  components: [Python]
