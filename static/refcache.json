@@ -2683,6 +2683,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-06-26T13:02:15.527574357Z"
   },
+  "https://github.com/elastic/elastic-otel-python": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-10T14:54:34.760300868Z"
+  },
   "https://github.com/ent/ent/issues/1232#issuecomment-1200405070": {
     "StatusCode": 200,
     "LastSeen": "2024-02-24T14:33:06.756997-08:00"
