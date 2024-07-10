@@ -547,6 +547,8 @@ import (
 	"go.opentelemetry.io/otel/metric"
 )
 
+var fanSpeedSubscription chan int64
+
 func init() {
 	speedGauge, err := meter.Int64Gauge(
 		"cpu.fan.speed",
@@ -556,10 +558,32 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		// hard-code 1500 RPM for demonstrative purposes
-		speedGauge.Record(r.Context(), 1500)
-	})
+
+	getCPUFanSpeed := func() int64 {
+		// Generates a random fan speed for demonstration purpose.
+		// In real world applications, replace this to get the actual fan speed.
+		return int64(1500 + rand.Intn(1000))
+	}
+
+	fanSpeedSubscription = make(chan int64, 1)
+	go func() {
+		defer close(fanSpeedSubscription)
+
+		for idx := 0; idx < 5; idx++ {
+			// Synchronous gauges are used when the measurement cycle is
+			// synchronous to an external change.
+			time.Sleep(time.Duration(rand.Intn(3)) * time.Second)
+			fanSpeed := getCPUFanSpeed()
+			fanSpeedSubscription <- fanSpeed
+		}
+	}()
+}
+
+func recordFanSpeed() {
+	ctx := context.Background()
+	for fanSpeed := range fanSpeedSubscription {
+		speedGauge.Record(ctx, fanSpeed)
+	}
 }
 ```
 
