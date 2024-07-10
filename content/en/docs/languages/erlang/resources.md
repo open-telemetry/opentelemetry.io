@@ -15,7 +15,7 @@ cSpell:ignore: behaviour
 
 Resource detectors fetch resource attributes from various sources. The default
 detectors use the OS environment variable `OTEL_RESOURCE_ATTRIBUTES` and the
-`opentelemetry` OTP OTP application environment variable `resource`.
+`opentelemetry` OTP application environment variable `resource`.
 
 The detectors to use is a list of module names and can be configured in the
 Application configuration:
