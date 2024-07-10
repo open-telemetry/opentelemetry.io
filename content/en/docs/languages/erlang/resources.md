@@ -15,7 +15,7 @@ cSpell:ignore: behaviour
 
 Resource detectors fetch resource attributes from various sources. The default
 detectors use the OS environment variable `OTEL_RESOURCE_ATTRIBUTES` and the
-`opentelemetry` OTP Application environment variable `resource`.
+`opentelemetry` OTP application environment variable `resource`.
 
 The detectors to use is a list of module names and can be configured in the
 Application configuration:
@@ -49,7 +49,7 @@ indefinitely. The default is 5000 milliseconds and can be set with environment
 variable `OTEL_RESOURCE_DETECTOR_TIMEOUT` or Application variable
 `otel_resource_detector_timeout`.
 
-## Adding resources with OS and Application environment variables
+## Adding resources with OS and OTP application environment variables
 
 With the two default resource detectors enabled you can set resource attributes
 either with the OS environment variable `OTEL_RESOURCE_ATTRIBUTES`:
@@ -58,7 +58,7 @@ either with the OS environment variable `OTEL_RESOURCE_ATTRIBUTES`:
 OTEL_RESOURCE_ATTRIBUTES="deployment.environment=development"
 ```
 
-Alternatively, use the `resource` Application environment under the
+Alternatively, use the `resource` OTP application environment under the
 `opentelemetry` Application configuration of `sys.config` or `runtime.exs`:
 
 {{< tabpane text=true >}} {{% tab Erlang %}}
@@ -77,7 +77,7 @@ config :opentelemetry, resource: %{deployment: %{environment: "development" }}
 
 {{% /tab %}} {{< /tabpane >}}
 
-Resource attributes in the `resource` Application environment variable are
+Resource attributes in the `resource` OTP application environment variable are
 flattened and combined with `.`, so
 `#{deployment => #{environment => <<"development">> }` is the same as
 `#{'deployment.environment' => <<"development">>}`.
