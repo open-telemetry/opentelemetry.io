@@ -60,7 +60,7 @@ Starter AOP dependency to your project:
 <dependencies>
   <dependency>
     <groupId>org.springframework.boot</groupId>
-    <artifactId>>spring-boot-starter-aop</artifactId>
+    <artifactId>spring-boot-starter-aop</artifactId>
   </dependency>
 </dependencies>
 ```
