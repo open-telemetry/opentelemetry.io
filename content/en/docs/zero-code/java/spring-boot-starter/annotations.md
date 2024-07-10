@@ -69,7 +69,8 @@ Starter AOP dependency to your project:
 
 ```kotlin
 dependencies {
-implementation("org.springframework.boot:spring-boot-starter-aop") }
+  implementation("org.springframework.boot:spring-boot-starter-aop")
+}
 ```
 
 {{% /tab %}} {{< /tabpane >}}
