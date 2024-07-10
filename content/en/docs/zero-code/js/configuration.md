@@ -81,5 +81,5 @@ For example, to disable only
 instrumentation:
 
 ```shell
-OTEL_NODE_DISABLED_INSTRUMENTATIONS="fs"
+OTEL_NODE_DISABLED_INSTRUMENTATIONS="fs,grpc"
 ```

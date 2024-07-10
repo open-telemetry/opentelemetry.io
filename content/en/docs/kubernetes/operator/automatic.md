@@ -314,7 +314,7 @@ spec:
   nodejs:
     env:
       - name: OTEL_NODE_DISABLED_INSTRUMENTATIONS
-        value: fs # comma-separated list of the instrumentation package names without the `@opentelemetry/instrumentation-` prefix.
+        value: fs,grpc # comma-separated list of the instrumentation package names without the `@opentelemetry/instrumentation-` prefix.
 ```
 
 #### Learn more {#js-learn-more}
