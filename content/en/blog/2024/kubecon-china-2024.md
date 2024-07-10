@@ -1,8 +1,6 @@
 ---
-title:
-  OpenTelemetry Talks at Kubecon + CloudNativeCon + Open Source Summit + AI_dev
-  China 2024
-linkTitle: Kubecon China 2024
+title: OpenTelemetry Talks at KubeCon China 2024
+linkTitle: KubeCon China 2024
 date: 2024-07-10
 # prettier-ignore
 cSpell:ignore: Alhamdani Censhare EBPF Hrabusa Husni Huxing Jiahang Krom Sianturi Wanqi Zhang Zihao Ziyi
@@ -14,10 +12,7 @@ Join members of the OpenTelemetry community at
 [KubeCon + CloudNativeCon + Open Source Summit + AI_dev](https://events.linuxfoundation.org/kubecon-cloudnativecon-open-source-summit-ai-dev-china/)
 in Hong Kong from August 21 to 23, 2024.
 
-Read on to learn about all the OpenTelemetry events at KubeCon China 2024.
-
-This post will be updated as we receive notice of other activities. Check back
-before the conference begins!
+This post covers OpenTelemetry related events at the venue, and will be updated as we receive notice of new activities. Check back regularly before the conference begins.
 
 ## Maintainer sessions
 
@@ -47,6 +42,4 @@ by Zihao Rao & Ziyi Lin, Alibaba Cloud<br> Thursday, August 22 • 1:50 - 2:25
   by Kai Liu, Alibaba Cloud & Wanqi Yang, Sun Yat<br> Thursday, August 22 •
   5:15 - 5:50
 
-Come join us to listen, learn, and get involved in OpenTelemetry.
-
-See you in Hong Kong!
+Come listen, learn, and get involved in OpenTelemetry. See you in Hong Kong!
