@@ -1,0 +1,19 @@
+title: GeoIP Processor
+registryType: processor
+language: collector
+tags:
+  - geoip
+  - processor
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/geoipprocessor
+license: Apache 2.0
+description:
+  The geoIP processor `geoipprocessor` enhances resource attributes by appending
+  information about the geographical location of an IP address. To add
+  geographical information, the IP address must be included in the resource
+  attributes using the [`source.address` semantic conventions key
+  attribute](https://github.com/open-telemetry/semantic-conventions/blob/v1.26.0/docs/general/attributes.md#source).
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-07-08

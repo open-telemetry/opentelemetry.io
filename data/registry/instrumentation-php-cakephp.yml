@@ -1,0 +1,16 @@
+title: OpenTelemetry CakePHP instrumentation library
+registryType: instrumentation
+language: php
+tags:
+  - cake
+  - instrumentation
+  - php
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/CakePHP
+license: Apache 2.0
+description:
+  Please read <https://opentelemetry.io/docs/instrumentation/php/automatic/> for
+  instructions on how to install and configure the extension and SDK.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-07-08
