@@ -1,6 +1,8 @@
 ---
 title: コレクター
 description: テレメトリーデータを受信、処理、エクスポートするためのベンダー非依存な方法
+cascade:
+  vers: 0.104.0
 weight: 270
 default_lang_commit: 0879929
 ---
