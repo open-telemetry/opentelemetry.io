@@ -22,8 +22,8 @@ default_lang_commit: 08799298
 
 <div class="l-primary-buttons mt-5">
 
-- [Saiba mais](/docs/what-is-opentelemetry/)
-- [Experimente a demonstração](/docs/demo/)
+- [Saiba mais](docs/what-is-opentelemetry/)
+- [Experimente a demonstração](docs/demo/)
 - [Explore as integrações](/ecosystem/integrations)
 
 </div>
@@ -33,8 +33,8 @@ default_lang_commit: 08799298
 </div>
 <div class="l-get-started-buttons">
 
-- [Dev](/docs/getting-started/dev/)
-- [Ops](/docs/getting-started/ops/)
+- [Dev](docs/getting-started/dev/)
+- [Ops](docs/getting-started/ops/)
 
 </div>
 {{< /blocks/cover >}}
@@ -46,7 +46,7 @@ gerar, coletar e exportar dados de telemetria (métricas, logs e rastros) para a
 você a analisar o desempenho e o comportamento do seu software.
 
 > O OpenTelemetry está **disponível** em
-[diversas linguagens](/docs/languages/) e está pronto para uso em produção.
+[diversas linguagens](docs/languages/) e está pronto para uso em produção.
 
 {{% /blocks/lead %}}
 
