@@ -77,8 +77,10 @@ comma-separated list of the instrumentation package names without the
 `@opentelemetry/instrumentation-` prefix.
 
 For example, to disable only
-[@opentelemetry/instrumentation-fs](fss://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-instrumentation-http)
-instrumentation:
+[@opentelemetry/instrumentation-fs](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-fs)
+and
+[@opentelemetry/instrumentation-grpc](https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-instrumentation-grpc)
+instrumentations:
 
 ```shell
 OTEL_NODE_DISABLED_INSTRUMENTATIONS="fs,grpc"
