@@ -12,7 +12,9 @@ Join members of the OpenTelemetry community at
 [KubeCon + CloudNativeCon + Open Source Summit + AI_dev](https://events.linuxfoundation.org/kubecon-cloudnativecon-open-source-summit-ai-dev-china/)
 in Hong Kong from August 21 to 23, 2024.
 
-This post covers OpenTelemetry related events at the venue, and will be updated as we receive notice of new activities. Check back regularly before the conference begins.
+This post covers OpenTelemetry related events at the venue and will be updated
+as we receive notice of new activities. Check back regularly before the
+conference begins.
 
 ## Maintainer sessions
 
