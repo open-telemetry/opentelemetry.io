@@ -1,8 +1,9 @@
-{{ $processWord := default ("a process") (.Get 0)  -}}
-{{ $resourceHRef := "/docs/concepts/resources/" }}
-
-{{ if eq .Page.RelPermalink $resourceHRef }}
-{{ $resourceHRef = "/docs/specs/otel/resource/sdk/" }} {{ end -}}
+<!-- prettier-ignore -->
+{{ $processWord := .Get 0 | default "a process"  -}}
+{{ $resourceHRef := "/docs/concepts/resources/" -}}
+{{ if eq .Page.RelPermalink $resourceHRef -}}
+  {{ $resourceHRef = "/docs/specs/otel/resource/sdk/" -}}
+{{ end -}}
 
 A [resource]({{ $resourceHRef }}) represents the entity producing telemetry as
 resource attributes. For example, {{ $processWord }} producing telemetry that is
