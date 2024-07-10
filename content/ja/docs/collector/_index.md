@@ -51,5 +51,4 @@ OpenTelemetryを試したり始めたりするには、バックエンドに直�
 
 [registry]: /ecosystem/registry/?language=collector
 [mixed]: /docs/specs/otel/document-status/#mixed
-[stability levels]:
-  https://github.com/open-telemetry/opentelemetry-collector#stability-levels
+[stability levels]: https://github.com/open-telemetry/opentelemetry-collector#stability-levels
