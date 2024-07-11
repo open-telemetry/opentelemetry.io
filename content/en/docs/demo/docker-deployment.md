@@ -40,7 +40,7 @@ make start
     {{% /tab %}} {{% tab Docker %}}
 
 ```shell
-docker compose up --force-recreate --remove-orphans --detach
+docker-compose up --force-recreate --remove-orphans --detach
 ```
 
     {{% /tab %}} {{< /tabpane >}}
