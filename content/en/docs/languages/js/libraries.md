@@ -59,7 +59,7 @@ npm install --save @opentelemetry/auto-instrumentations-web
 {{% /tab %}} {{< /tabpane >}}
 
 Note, that using those metapackages increases your dependency graph size. Use
-individual instrumentation packages if you know exactly which ones you need.
+individual instrumentation libraries if you know exactly which ones you need.
 
 ### Registration
 

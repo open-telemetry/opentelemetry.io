@@ -33,8 +33,8 @@ end
 
 Where `{package}` is the name of the instrumentation.
 
-Note that some instrumentation packages might have prerequisites. Check the
-documentation of each instrumentation package for further instructions.
+Note that some instrumentation libraries might have prerequisites. Check the
+documentation of each instrumentation library for further instructions.
 
 ## Available instrumentation libraries
 
