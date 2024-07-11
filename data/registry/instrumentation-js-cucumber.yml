@@ -17,4 +17,4 @@ createdAt: 2022-10-27
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-cucumber'
-  version: 0.7.0
+  version: 0.8.0
