@@ -302,8 +302,8 @@ spec:
 
 To keep all default libraries and disable only specific instrumentation
 libraries you can use the `OTEL_NODE_DISABLED_INSTRUMENTATIONS` environment
-variable as documented in the
-[Node.js zero-code instrumentation documentation](/docs/zero-code/js/configuration/#excluding-instrumentation-libraries).
+variable. For details, see 
+[Excluding instrumentation libraries](/docs/zero-code/js/configuration/#excluding-instrumentation-libraries).
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
