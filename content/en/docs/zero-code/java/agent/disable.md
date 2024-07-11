@@ -1,7 +1,7 @@
 ---
 title: Suppressing specific instrumentation
-linkTitle: Enable instrumentation
-weight: 120
+linkTitle: Suppressing instrumentation
+weight: 11
 ---
 
 ## Disabling the agent entirely

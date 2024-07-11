@@ -1,6 +1,6 @@
 ---
 title: Instrumentation configuration
-linkTitle: Instrumentation
+linkTitle: Instrumentation config
 weight: 100
 ---
 

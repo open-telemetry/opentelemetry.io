@@ -1,8 +1,12 @@
 ---
-title: Agent configuration
-linkTitle: Agent
-weight: 40
+title: SDK configuration
+weight: 10
+aliases: [agent-config]
+# prettier-ignore
+cSpell:ignore: akka armeria classloaders couchbase Customizer datasource dbcp Dotel dropwizard dubbo enduser finatra hikari hikaricp HSET httpasyncclient httpclient hystrix jaxrs jaxws jedis jodd kotlinx logback logmanager mojarra myfaces okhttp oshi pekko rabbitmq ratpack rediscala redisson restlet rocketmq serverlessapis spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
+         
+## Agent Configuration
 
 The agent can consume configuration from one or more of the following sources
 (ordered from highest to lowest priority):
@@ -73,3 +77,36 @@ The Java agent logging mode. The following 3 modes are supported:
 
 {{% /config_option %}}
 
+## SDK Configuration
+
+The SDK's autoconfiguration module is used for basic configuration of the agent.
+Read the [docs](/docs/languages/java/configuration) to find settings such as
+configuring export or sampling.
+
+{{% alert title="Important" color="warning" %}}
+
+Unlike the SDK autoconfiguration, versions 2.0+ of the Java agent and
+OpenTelemetry Spring Boot starter use `http/protobuf` as the default protocol,
+not `grpc`.
+
+{{% /alert %}}
+
+## Enable Resource Providers that are disabled by default
+
+In addition to the resource configuration from the SDK autoconfiguration, you
+can enable additional resource providers that are disabled by default:
+
+{{% config_option
+name="otel.resource.providers.aws.enabled"
+default=false
+%}} Enables the
+[AWS Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources).
+{{% /config_option %}}
+
+{{% config_option
+name="otel.resource.providers.gcp.enabled"
+default=false
+%}} Enables the
+[GCP Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources).
+{{% /config_option %}}
+                      
