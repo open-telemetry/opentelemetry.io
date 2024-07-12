@@ -27,9 +27,10 @@ It has been used to implement Prometheus
 [OTLP export from Prometheus libraries](https://prometheus.github.io/client_java/otel/otlp/),
 [OTLP ingestion for the Prometheus server](https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver),
 and the OpenTelemetry Collector's
-[Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver)
-and
-[Prometheus exporters](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusremotewriteexporter).
+[Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver),
+[Prometheus Remote Write exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusremotewriteexporter),
+and 
+[Prometheus (pull) exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusexporter).
 
 One of the most challenging areas to reconcile is that OpenTelemetry metric
 names are changed when exporting to Prometheus. Today, the OpenTelemetry
