@@ -32,8 +32,8 @@ guidelines to optimize and troubleshoot the performance of the agent.
 
 ## Guidelines to reduce agent overhead
 
-The following best practices and techniques might help reduce overhead
-caused by the Java agent.
+The following best practices and techniques might help reduce overhead caused by
+the Java agent.
 
 ### Configure trace sampling
 
@@ -43,10 +43,10 @@ resource usage. See [Sampling](/docs/languages/java/sampling).
 
 ### Turn off specific instrumentations
 
-You can further reduce agent overhead by turning off instrumentations that aren't needed or are producing too
-many spans. To turn off an
-instrumentation, use `-DOpenTelemetry.instrumentation.<name>.enabled=false` or
-the `OpenTelemetry_INSTRUMENTATION_<NAME>_ENABLED` environment variable, where
+You can further reduce agent overhead by turning off instrumentations that
+aren't needed or are producing too many spans. To turn off an instrumentation,
+use `-DOpenTelemetry.instrumentation.<name>.enabled=false` or the
+`OpenTelemetry_INSTRUMENTATION_<NAME>_ENABLED` environment variable, where
 `<name>` is the name of the instrumentation.
 
 For example, the following option turns off the JDBC instrumentation:
@@ -70,9 +70,9 @@ resources.
 Make sure to provision enough resources for your instrumentation and for the
 Collector. The amount of resources such as memory or disk depend on your
 application architecture and needs. For example, a common setup is to run the
-instrumented application on the same host as the OpenTelemetry
-Collector. In that case, consider rightsizing the resources for the Collector
-and optimize its settings. See [Scaling](/docs/collector/scaling/)
+instrumented application on the same host as the OpenTelemetry Collector. In
+that case, consider rightsizing the resources for the Collector and optimize its
+settings. See [Scaling](/docs/collector/scaling/)
 
 ## Constraints impacting the performance of the Java agent
 
@@ -128,9 +128,9 @@ latency, power users with heavy workloads pay more attention to CPU overhead. On
 the other hand, users who deploy frequently, for example due to elastic
 workloads, care more about startup time.
 
-Reduce your measurements to factors that are sure to impact user experience, 
-so your datasets don't contain irrelevant
-information. Some examples of measurements include the following:
+Reduce your measurements to factors that are sure to impact user experience, so
+your datasets don't contain irrelevant information. Some examples of
+measurements include the following:
 
 - User average, user peak, and machine average CPU usage
 - Total memory allocated and maximum heap used
@@ -142,8 +142,8 @@ information. Some examples of measurements include the following:
 ### Prepare a suitable test environment
 
 By measuring agent overhead in a controlled test environment you can better
-identify the factors affecting performance. When preparing a test
-environment, complete the following:
+identify the factors affecting performance. When preparing a test environment,
+complete the following:
 
 1.  Make sure that the configuration of the test environment resembles
     production.
@@ -178,8 +178,8 @@ factor or condition.
 
 ### Analyze the agent overhead data
 
-After collecting data from multiple passes, you can plot results
-in a chart or compare averages using statistical tests to check for significant differences.
+After collecting data from multiple passes, you can plot results in a chart or
+compare averages using statistical tests to check for significant differences.
 
 Consider that different stacks, applications, and environments might result in
 different operational characteristics and different agent overhead measurement
