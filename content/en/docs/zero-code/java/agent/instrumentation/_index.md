@@ -4,7 +4,7 @@ linkTitle: Instrumentation config
 weight: 100
 ---
 
-Common settings that apply to multiple instrumentations at once.
+This page describes common settings that apply to multiple instrumentations at once.
 
 ### Peer service name
 
