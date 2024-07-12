@@ -4,7 +4,8 @@ linkTitle: Instrumentation config
 weight: 100
 ---
 
-This page describes common settings that apply to multiple instrumentations at once.
+This page describes common settings that apply to multiple instrumentations at
+once.
 
 ## Peer service name
 
@@ -138,5 +139,3 @@ name="otel.instrumentation.spring-security.enduser.scope.granted-authority-prefi
 default=SCOPE_
 %}} Prefix of granted authorities identifying scopes to capture in the
 `enduser.scopes` semantic attribute. {{% /config_option %}}
-
-

@@ -1,6 +1,6 @@
 ---
 title: HTTP instrumentation configuration
-linkTitle: HTTP 
+linkTitle: HTTP
 weight: 110
 ---
 

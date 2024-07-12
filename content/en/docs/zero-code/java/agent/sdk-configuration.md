@@ -5,7 +5,7 @@ aliases: [agent-config, configuration]
 # prettier-ignore
 cSpell:ignore: akka armeria classloaders couchbase Customizer datasource dbcp Dotel dropwizard dubbo enduser finatra hikari hikaricp HSET httpasyncclient httpclient hystrix jaxrs jaxws jedis jodd kotlinx logback logmanager mojarra myfaces okhttp oshi pekko rabbitmq ratpack rediscala redisson restlet rocketmq serverlessapis spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
-         
+
 ## Agent Configuration
 
 The agent can consume configuration from one or more of the following sources
@@ -109,4 +109,3 @@ default=false
 %}} Enables the
 [GCP Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources).
 {{% /config_option %}}
-                      
