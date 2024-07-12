@@ -168,7 +168,7 @@ majority of optimizations.
 Make sure to run a large number of requests and to repeat the test pass many
 times. This repetition helps to ensure a representative data sample. Include
 error scenarios in your test data. Simulate an error rate similar to that of a
-normal workload, typically between 2% to 10%.
+normal workload, typically between 2% and 10%.
 
 ### Collect comparable measurements
 
