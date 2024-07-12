@@ -409,3 +409,9 @@
   contact: 'product@embrace.io'
   oss: true
   commercial: true
+- name: APImetrics
+  nativeOTLP: true
+  url: 'https://docs.apimetrics.io/docs/export-with-opentelemetry'
+  contact: 'https://github.com/SophieMcK'
+  oss: false
+  commercial: true
