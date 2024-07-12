@@ -1747,6 +1747,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-04-03T12:51:54.758528517+02:00"
   },
+  "https://docs.spring.io/spring-framework/reference/core/aop/proxying.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-09T08:58:07.531333949Z"
+  },
   "https://docs.spring.io/spring-security/reference/servlet/authorization/architecture.html#authz-authorities": {
     "StatusCode": 206,
     "LastSeen": "2024-02-12T22:02:33.483262-05:00"
@@ -2066,6 +2070,10 @@
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/venue-travel/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:02:37.783585-05:00"
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-open-source-summit-ai-dev-china/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-26T22:57:30.474455806Z"
   },
   "https://events.linuxfoundation.org/open-observability-day-north-america/": {
     "StatusCode": 206,
@@ -2678,6 +2686,10 @@
   "https://github.com/elastic/elastic-otel-node": {
     "StatusCode": 200,
     "LastSeen": "2024-06-26T13:02:15.527574357Z"
+  },
+  "https://github.com/elastic/elastic-otel-python": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-10T14:54:34.760300868Z"
   },
   "https://github.com/ent/ent/issues/1232#issuecomment-1200405070": {
     "StatusCode": 200,
@@ -4779,6 +4791,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:01.244997-05:00"
   },
+  "https://github.com/tiffany76": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-26T22:57:27.374000192Z"
+  },
   "https://github.com/tigrannajaryan": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:05.023384-05:00"
@@ -6307,6 +6323,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:14:58.880711-05:00"
   },
+  "https://opensource.org/osd": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-03T16:52:21.124428756Z"
+  },
   "https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/classopentelemetry_1_1sdk_1_1trace_1_1SpanExporter.html": {
     "StatusCode": 200,
     "LastSeen": "2024-02-14T16:43:04.418679+01:00"
@@ -6423,6 +6443,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-06-12T10:03:19.48038-07:00"
   },
+  "https://opentelemetry.io/community/marketing-guidelines/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-05T08:02:10.32422794Z"
+  },
   "https://opentelemetry.io/community/mission/": {
     "StatusCode": 206,
     "LastSeen": "2024-06-06T19:18:50.53437+02:00"
@@ -6530,6 +6554,26 @@
   "https://opentelemetry.io/docs/specs/semconv/general/metric-requirement-level/": {
     "StatusCode": 206,
     "LastSeen": "2024-06-04T17:29:59.855130203+02:00"
+  },
+  "https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpclientrequestbodysize": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-09T06:50:49.55383228Z"
+  },
+  "https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpclientresponsebodysize": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-09T06:50:52.813684131Z"
+  },
+  "https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpserveractive_requests": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-09T06:50:54.753346045Z"
+  },
+  "https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpserverrequestbodysize": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-09T06:50:57.504859297Z"
+  },
+  "https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpserverresponsebodysize": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-09T06:50:57.948143989Z"
   },
   "https://opentelemetry.io/docs/specs/semconv/resource/": {
     "StatusCode": 206,
@@ -8391,6 +8435,34 @@
     "StatusCode": 200,
     "LastSeen": "2024-02-12T15:04:33.334624+01:00"
   },
+  "https://sched.co/1eYYg": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-26T22:57:51.638108489Z"
+  },
+  "https://sched.co/1eYZA": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-26T22:57:54.792440733Z"
+  },
+  "https://sched.co/1eYZq": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-26T22:58:01.590169805Z"
+  },
+  "https://sched.co/1eYZt": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-26T22:57:58.748216479Z"
+  },
+  "https://sched.co/1eYcJ": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-26T22:57:45.817887373Z"
+  },
+  "https://sched.co/1f4zX": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-26T22:57:38.288706655Z"
+  },
+  "https://sched.co/1f4zz": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-26T22:57:40.531765606Z"
+  },
   "https://seecfp.com/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:10:40.056794-05:00"
@@ -8942,6 +9014,22 @@
   "https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/opentelemetry.html": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T15:24:55.301982-05:00"
+  },
+  "https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/index.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-08T21:34:03.643741439Z"
+  },
+  "https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/opentelemetry.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-08T21:33:58.49589695Z"
+  },
+  "https://www.elastic.co/guide/en/elasticsearch/client/ruby-api/current/index.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-08T21:34:07.87609097Z"
+  },
+  "https://www.elastic.co/guide/en/elasticsearch/client/ruby-api/current/opentelemetry.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-08T21:33:57.931171953Z"
   },
   "https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html": {
     "StatusCode": 206,
