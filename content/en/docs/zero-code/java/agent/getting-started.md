@@ -4,13 +4,6 @@ weight: 1
 cSpell:ignore: Dotel myapp
 ---
 
-Zero-code instrumentation with Java uses a Java agent JAR attached to any Java
-8+ application. It dynamically injects bytecode to capture telemetry from many
-popular libraries and frameworks. It can be used to capture telemetry data at
-the "edges" of an app or service, such as inbound requests, outbound HTTP calls,
-database calls, and so on. To learn how to manually instrument your service or
-app code, see [Manual instrumentation](/docs/languages/java/instrumentation/).
-
 ## Setup
 
 1.  Download [opentelemetry-javaagent.jar][] from [Releases][] of the
@@ -94,7 +87,7 @@ Set to `true` to see debug logs. Note that these are quite verbose.
 ## Next steps
 
 After you have automatic instrumentation configured for your app or service, you
-might want to [annotate](annotations) selected methods or add
+might want to [annotate](../annotations) selected methods or add
 [manual instrumentation](/docs/languages/java/instrumentation/) to collect
 custom telemetry data.
 

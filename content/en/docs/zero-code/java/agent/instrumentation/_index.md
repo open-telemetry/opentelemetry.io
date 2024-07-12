@@ -6,7 +6,7 @@ weight: 100
 
 This page describes common settings that apply to multiple instrumentations at once.
 
-### Peer service name
+## Peer service name
 
 The
 [peer service name](/docs/specs/semconv/general/attributes/#general-remote-service-attributes)
@@ -45,7 +45,7 @@ to `dogs-abcdef123.serverlessapis.com:80/api/v1` will have an attribute of
 
 {{% /config_option %}}
 
-### DB statement sanitization
+## DB statement sanitization
 
 The agent sanitizes all database queries/statements before setting the
 `db.statement` semantic attribute. All values (strings, numbers) in the query
@@ -70,7 +70,7 @@ name="otel.instrumentation.common.db-statement-sanitizer.enabled"
 default=true
 %}} Enables the DB statement sanitization. {{% /config_option %}}
 
-### Capturing consumer message receive telemetry in messaging instrumentations
+## Capturing consumer message receive telemetry in messaging instrumentations
 
 You can configure the agent to capture the consumer message receive telemetry in
 messaging instrumentation. Use the following property to enable it:
@@ -86,7 +86,7 @@ span link connecting it to the producer trace.
 > **Note**: The property/environment variable names listed in the table are
 > still experimental, and thus are subject to change.
 
-### Capturing enduser attributes
+## Capturing enduser attributes
 
 You can configure the agent to capture
 [general identity attributes](/docs/specs/semconv/general/attributes/#general-identity-attributes)
@@ -119,7 +119,7 @@ default=false
 %}} Determines whether to capture `enduser.scope` semantic attribute.
 {{% /config_option %}}
 
-#### Spring Security
+### Spring Security
 
 For users of Spring Security who use custom
 [granted authority prefixes](https://docs.spring.io/spring-security/reference/servlet/authorization/architecture.html#authz-authorities),
