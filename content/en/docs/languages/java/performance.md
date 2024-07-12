@@ -178,9 +178,8 @@ factor or condition.
 
 ### Analyze the agent overhead data
 
-After collecting data from multiple passes, you can compare averages using
-simple statistical tests to check for significant differences, or plot results
-in a chart.
+After collecting data from multiple passes, you can plot results
+in a chart or compare averages using statistical tests to check for significant differences.
 
 Consider that different stacks, applications, and environments might result in
 different operational characteristics and different agent overhead measurement
