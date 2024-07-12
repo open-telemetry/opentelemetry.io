@@ -32,7 +32,7 @@ guidelines to optimize and troubleshoot the performance of the agent.
 
 ## Guidelines to reduce agent overhead
 
-The following best practices and techniques might help in reducing overhead
+The following best practices and techniques might help reduce overhead
 caused by the Java agent.
 
 ### Configure trace sampling
