@@ -23,7 +23,9 @@ mapping.
 
 For example, if set to the following:
 
-    1.2.3.4=cats-service,dogs-abcdef123.serverlessapis.com=dogs-api
+```text
+1.2.3.4=cats-service,dogs-abcdef123.serverlessapis.com=dogs-api
+```
 
 Then, requests to `1.2.3.4` will have a `peer.service` attribute of
 `cats-service` and requests to `dogs-abcdef123.serverlessapis.com` will have an
