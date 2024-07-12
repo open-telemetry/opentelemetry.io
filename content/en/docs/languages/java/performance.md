@@ -23,7 +23,7 @@ Due to the complexity of modern software and the broad diversity in deployment
 scenarios, it is impossible to come up with a single agent overhead estimate. To
 find the overhead of any instrumentation agent in a given deployment, you have
 to conduct experiments and collect measurements directly. Therefore, treat all
-statements about performance must as general information and guidelines that are
+statements about performance as general information and guidelines that are
 subject to evaluation in a specific system.
 
 The following sections describe the minimum requirements of the OpenTelemetry
