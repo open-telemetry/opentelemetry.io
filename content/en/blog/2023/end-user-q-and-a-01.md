@@ -275,7 +275,7 @@ any suggestions for improvement!
 There is also a huge focus on
 [stabilizing semantic conventions](https://docs.google.com/document/d/1ghvajKaipiNZso3fDtyNxU7x1zx0_Eyd02OGpMGEpLE/edit#),
 and as part of that effort, maintainers plan to go through the existing
-instrumentation packages and to make sure that they’re all up to date with the
+instrumentation libraries and to make sure that they’re all up to date with the
 latest conventions. While it’s very well-maintained for certain languages, such
 as Java, that is not the case for other languages, such as Node.js.
 
