@@ -128,8 +128,8 @@ latency, power users with heavy workloads pay more attention to CPU overhead. On
 the other hand, users who deploy frequently, for example due to elastic
 workloads, care more about startup time.
 
-Reduce your measurements to factors that are sure to impact the user experience
-of your application, so as not to produce datasets that contain irrelevant
+Reduce your measurements to factors that are sure to impact user experience, 
+so your datasets don't contain irrelevant
 information. Some examples of measurements include the following:
 
 - User average, user peak, and machine average CPU usage
