@@ -46,6 +46,9 @@ public class TracedClass {
 
   public void tracedMethodWithAttribute(@SpanAttribute("attributeName") String parameter) {}
 }
+```
+<!-- prettier-ignore-end -->
+
 {{% alert title="Note" color="info" %}} The OpenTelemetry annotations use Spring
 AOP based on proxys.
 
@@ -64,6 +67,11 @@ public class MyControllerManagedBySpring {
     public void aMethod() {
         anotherMethod();
     }
+
+    @WithSpan
+    public void anotherMethod() {
+    }
+}
 ```
 
 {{% /alert %}}
@@ -75,7 +83,7 @@ Starter AOP dependency to your project:
 
 {{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
-  ```xml
+```xml
 <dependencies>
   <dependency>
     <groupId>org.springframework.boot</groupId>
@@ -84,15 +92,13 @@ Starter AOP dependency to your project:
 </dependencies>
 ```
 
-  {{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
+{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
 
 ```kotlin
 dependencies {
   implementation("org.springframework.boot:spring-boot-starter-aop")
 }
 ```
-<!-- prettier-ignore-end -->
-
 
 {{% /tab %}} {{< /tabpane >}}
 
