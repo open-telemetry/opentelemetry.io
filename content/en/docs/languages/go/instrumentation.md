@@ -86,7 +86,7 @@ func main() {
 	otel.SetTracerProvider(tp)
 
 	// Finally, set the tracer that can be used for this package.
-	tracer = tp.Tracer("ExampleService")
+	tracer = tp.Tracer("example.io/package/name")
 }
 ```
 
@@ -432,7 +432,7 @@ acquire a meter. For example:
 ```go
 import "go.opentelemetry.io/otel"
 
-var meter = otel.Meter("my-service-meter")
+var meter = otel.Meter("example.io/package/name")
 ```
 
 ### Synchronous and asynchronous instruments
