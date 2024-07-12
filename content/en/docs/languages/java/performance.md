@@ -142,7 +142,7 @@ information. Some examples of measurements include the following:
 ### Prepare a suitable test environment
 
 By measuring agent overhead in a controlled test environment you can better
-control and identify the factors affecting performance. When preparing a test
+identify the factors affecting performance. When preparing a test
 environment, complete the following:
 
 1.  Make sure that the configuration of the test environment resembles
