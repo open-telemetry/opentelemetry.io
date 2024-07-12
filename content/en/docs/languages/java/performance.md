@@ -43,8 +43,8 @@ resource usage. See [Sampling](/docs/languages/java/sampling).
 
 ### Turn off specific instrumentations
 
-Consider turning off instrumentations that you don't need or are producing too
-many spans to further reduce agent overhead and span volume. To turn off an
+You can further reduce agent overhead by turning off instrumentations that aren't needed or are producing too
+many spans. To turn off an
 instrumentation, use `-DOpenTelemetry.instrumentation.<name>.enabled=false` or
 the `OpenTelemetry_INSTRUMENTATION_<NAME>_ENABLED` environment variable, where
 `<name>` is the name of the instrumentation.
