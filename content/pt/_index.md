@@ -55,10 +55,8 @@ você a analisar o desempenho e o comportamento do seu software.
 
 {{% blocks/feature icon="fas fa-chart-line" title="Rastros, Métricas, Logs"%}}
 
-Crie e colete dados de telemetria a partir de seus serviços e softwares, e os envie para uma variedade de ferramentas de análise.
-OU
-Crie e colete dados de telemetria a partir de seus serviços e softwares, e depois encaminhe-os para uma variedade de ferramentas de análise.
-eles para uma variedade de ferramentas de análise. {{% /blocks/feature %}}
+Crie e colete dados de telemetria a partir de seus serviços e softwares, e depois
+encaminhe-os para uma variedade de ferramentas de análise. {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fas fa-magic" title="Instrumentação de Fácil Integração"%}}
 
