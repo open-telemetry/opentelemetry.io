@@ -2,6 +2,7 @@
 title: Instrumentation configuration
 linkTitle: Instrumentation config
 weight: 100
+cSpell:ignore: enduser hset serverlessapis
 ---
 
 This page describes common settings that apply to multiple instrumentations at
@@ -37,7 +38,9 @@ to define a `peer.service`.
 
 For example, if set to the following:
 
-    1.2.3.4:443=cats-service,dogs-abcdef123.serverlessapis.com:80/api=dogs-api
+```text
+1.2.3.4:443=cats-service,dogs-abcdef123.serverlessapis.com:80/api=dogs-api
+```
 
 Then, requests to `1.2.3.4` will have no override for `peer.service` attribute,
 while `1.2.3.4:443` will have have `peer.service` of `cats-service` and requests

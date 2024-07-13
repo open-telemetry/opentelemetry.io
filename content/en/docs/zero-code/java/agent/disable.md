@@ -2,6 +2,8 @@
 title: Suppressing specific instrumentation
 linkTitle: Suppressing instrumentation
 weight: 11
+# prettier-ignore
+cSpell:ignore: akka armeria classloaders couchbase Customizer datasource dbcp Dotel dropwizard dubbo enduser finatra hikari hikaricp HSET httpasyncclient httpclient hystrix jaxrs jaxws jedis jodd kotlinx logback logmanager mojarra myfaces okhttp oshi pekko rabbitmq ratpack rediscala redisson restlet rocketmq serverlessapis spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
 
 ## Disabling the agent entirely
@@ -257,6 +259,3 @@ Finally, using the suppression strategy `none` would result in 3 spans:
   Netty instrumentation;
 - `CLIENT` span with HTTP client semantic attributes emitted by the Netty
   instrumentation.
-
-[extensions]:
-  https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/examples/extension#readme

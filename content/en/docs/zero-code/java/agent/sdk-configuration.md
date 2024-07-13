@@ -109,3 +109,6 @@ default=false
 %}} Enables the
 [GCP Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources).
 {{% /config_option %}}
+
+[extensions]:
+  https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/examples/extension#readme
