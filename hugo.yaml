@@ -20,16 +20,16 @@ languages:
     languageName: 日本語 (Japanese)
     params:
       description: OpenTelemetryプロジェクト公式サイト
+  pt: # cSpell:ignore Português Projeto
+    languageName: Português
+    languageCode: pt-BR
+    params:
+      description: Site do Projeto OpenTelemetry
   zh:
     languageName: 中文 (Chinese)
     languageCode: zh-cn
     params:
       description: OpenTelemetry 项目网站
-  pt:
-    languageName: Português
-    languageCode: pt-BR
-    params:
-      description: Site do Projeto OpenTelemetry
 
 imaging:
   resampleFilter: CatmullRom # cspell:disable-line
@@ -280,7 +280,7 @@ module:
       source: content/en/docs
       target: content/docs
       lang: pt
-      
+
     ## static
     - source: static
       target: static
