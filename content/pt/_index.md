@@ -1,5 +1,5 @@
 ---
-title: Projeto OpenTelemetry
+title: OpenTelemetry
 description: >-
  Telemetria de alta qualidade, abrangente e portátil para permitir uma observabilidade eficaz
 developer_note:
