@@ -18,6 +18,7 @@ description:
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2024-02-05
+isFirstParty: true
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/otelarrowexporter

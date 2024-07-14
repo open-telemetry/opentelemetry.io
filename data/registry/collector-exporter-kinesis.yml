@@ -13,3 +13,4 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/awskinesisexporter
 createdAt: 2020-06-06
+isFirstParty: true

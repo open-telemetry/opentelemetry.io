@@ -13,6 +13,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/loggingexporter
 createdAt: 2020-11-05
+isFirstParty: true
 deprecated:
   reason:
     This exporter is being deprecated in favour of the [debug

@@ -15,6 +15,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/honeycombmarkerexporter
 createdAt: 2023-10-17
+isFirstParty: true
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/honeycombmarkerexporter

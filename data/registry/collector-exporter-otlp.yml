@@ -13,6 +13,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter
 createdAt: 2020-11-05
+isFirstParty: true
 package:
   registry: go-collector
   name: go.opentelemetry.io/collector/exporter/otlpexporter
