@@ -72,7 +72,7 @@ Collector. The amount of resources such as memory or disk depend on your
 application architecture and needs. For example, a common setup is to run the
 instrumented application on the same host as the OpenTelemetry Collector. In
 that case, consider rightsizing the resources for the Collector and optimize its
-settings. See [Scaling](/docs/collector/scaling/)
+settings. See [Scaling](/docs/collector/scaling/).
 
 ## Constraints impacting the performance of the Java agent
 
