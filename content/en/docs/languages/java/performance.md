@@ -46,7 +46,7 @@ resource usage. See [Sampling](/docs/languages/java/sampling).
 You can further reduce agent overhead by turning off instrumentations that
 aren't needed or are producing too many spans. To turn off an instrumentation,
 use `-Dotel.instrumentation.<name>.enabled=false` or the
-`OpenTelemetry_INSTRUMENTATION_<NAME>_ENABLED` environment variable, where
+`OTEL_INSTRUMENTATION_<NAME>_ENABLED` environment variable, where
 `<name>` is the name of the instrumentation.
 
 For example, the following option turns off the JDBC instrumentation:
