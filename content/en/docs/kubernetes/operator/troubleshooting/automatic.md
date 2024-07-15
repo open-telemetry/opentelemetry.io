@@ -1,5 +1,6 @@
 ---
 title: Auto-instrumentation
+cSpell:ignore: PYTHONPATH
 ---
 
 If you're using the [OpenTelemetry Operator](/docs/kubernetes/operator)'s
@@ -98,6 +99,125 @@ auto-instrumentation into the pod. It adds an
 called `opentelemetry-auto-instrumentation` to the application’s pod, which is
 then used to inject the auto-instrumentation into the app container.
 
+Which you can see when you run:
+
+```shell
+kubectl describe pod <your_pod_name> -n <namespace>
+```
+
+Where `<namespace>` is the namespace in which your pod is deployed. The
+resulting output should look like the following example, which shows what the
+pod spec may look like after auto-instrumentation injection:
+
+```text
+Name:             py-otel-server-f89fdbc4f-mtsps
+Namespace:        opentelemetry
+Priority:         0
+Service Account:  default
+Node:             otel-target-allocator-talk-control-plane/172.24.0.2
+Start Time:       Mon, 15 Jul 2024 17:23:45 -0400
+Labels:           app=my-app
+                  app.kubernetes.io/name=py-otel-server
+                  pod-template-hash=f89fdbc4f
+Annotations:      instrumentation.opentelemetry.io/inject-python: true
+Status:           Running
+IP:               10.244.0.10
+IPs:
+  IP:           10.244.0.10
+Controlled By:  ReplicaSet/py-otel-server-f89fdbc4f
+Init Containers:
+  opentelemetry-auto-instrumentation-python:
+    Container ID:  containerd://20ecf8766247e6043fcad46544dba08c3ef534ee29783ca552d2cf758a5e3868
+    Image:         ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-python:0.45b0
+    Image ID:      ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-python@sha256:3ed1122e10375d527d84c826728f75322d614dfeed7c3a8d2edd0d391d0e7973
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      cp
+      -r
+      /autoinstrumentation/.
+      /otel-auto-instrumentation-python
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Mon, 15 Jul 2024 17:23:51 -0400
+      Finished:     Mon, 15 Jul 2024 17:23:51 -0400
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     500m
+      memory:  32Mi
+    Requests:
+      cpu:        50m
+      memory:     32Mi
+    Environment:  <none>
+    Mounts:
+      /otel-auto-instrumentation-python from opentelemetry-auto-instrumentation-python (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-x2nmj (ro)
+Containers:
+  py-otel-server:
+    Container ID:   containerd://95fb6d06b08ead768f380be2539a93955251be6191fa74fa2e6e5616036a8f25
+    Image:          otel-target-allocator-talk:0.1.0-py-otel-server
+    Image ID:       docker.io/library/import-2024-07-15@sha256:a2ed39e9a39ca090fedbcbd474c43bac4f8c854336a8500e874bd5b577e37c25
+    Port:           8082/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Mon, 15 Jul 2024 17:23:52 -0400
+    Ready:          True
+    Restart Count:  0
+    Environment:
+      OTEL_NODE_IP:                                       (v1:status.hostIP)
+      OTEL_POD_IP:                                        (v1:status.podIP)
+      OTEL_METRICS_EXPORTER:                             console,otlp_proto_http
+      OTEL_LOGS_EXPORTER:                                otlp_proto_http
+      OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED:  true
+      PYTHONPATH:                                        /otel-auto-instrumentation-python/opentelemetry/instrumentation/auto_instrumentation:/otel-auto-instrumentation-python
+      OTEL_TRACES_EXPORTER:                              otlp
+      OTEL_EXPORTER_OTLP_TRACES_PROTOCOL:                http/protobuf
+      OTEL_EXPORTER_OTLP_METRICS_PROTOCOL:               http/protobuf
+      OTEL_SERVICE_NAME:                                 py-otel-server
+      OTEL_EXPORTER_OTLP_ENDPOINT:                       http://otelcol-collector.opentelemetry.svc.cluster.local:4318
+      OTEL_RESOURCE_ATTRIBUTES_POD_NAME:                 py-otel-server-f89fdbc4f-mtsps (v1:metadata.name)
+      OTEL_RESOURCE_ATTRIBUTES_NODE_NAME:                 (v1:spec.nodeName)
+      OTEL_PROPAGATORS:                                  tracecontext,baggage
+      OTEL_RESOURCE_ATTRIBUTES:                          service.name=py-otel-server,service.version=0.1.0,k8s.container.name=py-otel-server,k8s.deployment.name=py-otel-server,k8s.namespace.name=opentelemetry,k8s.node.name=$(OTEL_RESOURCE_ATTRIBUTES_NODE_NAME),k8s.pod.name=$(OTEL_RESOURCE_ATTRIBUTES_POD_NAME),k8s.replicaset.name=py-otel-server-f89fdbc4f,service.instance.id=opentelemetry.$(OTEL_RESOURCE_ATTRIBUTES_POD_NAME).py-otel-server
+    Mounts:
+      /otel-auto-instrumentation-python from opentelemetry-auto-instrumentation-python (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-x2nmj (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             True
+  ContainersReady   True
+  PodScheduled      True
+Volumes:
+  kube-api-access-x2nmj:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+  opentelemetry-auto-instrumentation-python:
+    Type:        EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:   200Mi
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  99s   default-scheduler  Successfully assigned opentelemetry/py-otel-server-f89fdbc4f-mtsps to otel-target-allocator-talk-control-plane
+  Normal  Pulling    99s   kubelet            Pulling image "ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-python:0.45b0"
+  Normal  Pulled     93s   kubelet            Successfully pulled image "ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-python:0.45b0" in 288.756166ms (5.603779501s including waiting)
+  Normal  Created    93s   kubelet            Created container opentelemetry-auto-instrumentation-python
+  Normal  Started    93s   kubelet            Started container opentelemetry-auto-instrumentation-python
+  Normal  Pulled     92s   kubelet            Container image "otel-target-allocator-talk:0.1.0-py-otel-server" already present on machine
+  Normal  Created    92s   kubelet            Created container py-otel-server
+  Normal  Started    92s   kubelet            Started container py-otel-server
+```
+
 If the `Instrumentation` resource isn’t present by the time the `Deployment` is
 deployed, the `init-container` can’t be created. This means that if the
 `Deployment` resource is deployed before you deploy the `Instrumentation`
@@ -107,10 +227,11 @@ Check that the `opentelemetry-auto-instrumentation` `init-container` has started
 up correctly (or has even started up at all), by running the following command:
 
 ```shell
-kubectl get events -n <your_app_namespace>
+kubectl get events -n <namespace>
 ```
 
-Which should result in output that looks like the following example:
+Where `<namespace>` is the namespace in which your pod is deployed. The
+resulting output should look like the following example:
 
 ```text
 53s         Normal   Created             pod/py-otel-server-7f54bf4cbc-p8wmj    Created container opentelemetry-auto-instrumentation
@@ -149,11 +270,20 @@ Instead, the annotation should be:
 
 ```yaml
 annotations:
-  instrumentation.opentelemetry.io/opentelemetry/inject-python: 'opentelemetry/my-instrumentation'
+  instrumentation.opentelemetry.io/inject-python: 'opentelemetry/my-instrumentation'
 ```
 
 Where `opentelemetry` is the namespace of the `Instrumentation` resource, and
 `my-instrumentation` is the name of the `Instrumentation` resource.
+
+[The possible values for the annotation can be](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md?plain=1#L151-L156):
+
+- "true" - inject `OpenTelemetryCollector` resource from the namespace.
+- "sidecar-for-my-app" - name of `OpenTelemetryCollector` CR instance in the
+  current namespace.
+- "my-other-namespace/my-instrumentation" - name and namespace of
+  `OpenTelemetryCollector` CR instance in another namespace.
+- "false" - do not inject
 
 ### Check the auto-instrumentation configuration
 
@@ -193,3 +323,17 @@ namespace of your choosing.
 Finally, make sure that you are using the right Collector port. Normally, you
 can choose either `4317` (gRPC) or `4318` (HTTP); however, for
 [Python auto-instrumentation, you can only use `4318`](/docs/kubernetes/operator/automatic/#python).
+
+### Check configuration sources
+
+Auto-instrumentation currently overrides Java's `JAVA_TOOL_OPTIONS`, Python's
+`PYTHONPATH`, and Node.js's `NODE_OPTIONS` for Node.js when set in a Docker
+image or when defined in a `ConfigMap`. This is a known issue, and as a result,
+these methods of setting these environment variables should be avoided until the
+issue is resolved.
+
+See reference issues for
+[Java](https://github.com/open-telemetry/opentelemetry-operator/issues/1814),
+[Python](https://github.com/open-telemetry/opentelemetry-operator/issues/1884),
+and
+[NodeJS](https://github.com/open-telemetry/opentelemetry-operator/issues/1393).

@@ -4007,6 +4007,18 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:11.461365-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-operator/issues/1393": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-15T17:37:20.027422-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/issues/1814": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-15T17:37:14.803673-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/issues/1884": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-15T17:37:15.74053-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-operator/issues/1906": {
     "StatusCode": 200,
     "LastSeen": "2024-05-13T07:25:18.846726619Z"
