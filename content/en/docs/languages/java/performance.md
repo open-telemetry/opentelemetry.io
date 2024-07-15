@@ -60,7 +60,7 @@ large number of short-lived objects in memory.
 
 ### Reduce manual instrumentation to what you need
 
-Manual instrumentation might introduce inefficiencies that increase agent
+Too much manual instrumentation might introduce inefficiencies that increase agent
 overhead. For example, using `@WithSpan` on every method results in a high span
 volume, which in turn increases noise in the data and consumes more system
 resources.
