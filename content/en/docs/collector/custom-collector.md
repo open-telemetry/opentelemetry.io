@@ -219,7 +219,7 @@ your components.
 Further reading:
 
 - [Building a Trace Receiver](/docs/collector/building/receiver)
-- [Building a Connector](/docs/collector/building/receiver)
+- [Building a Connector](/docs/collector/building/connector)
 
 [ocb]:
   https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
