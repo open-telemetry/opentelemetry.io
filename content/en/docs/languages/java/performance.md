@@ -170,6 +170,14 @@ times. This repetition helps to ensure a representative data sample. Include
 error scenarios in your test data. Simulate an error rate similar to that of a
 normal workload, typically between 2% and 10%.
 
+{{% alert title="Note" color="info" %}}
+
+Tests might increase costs when targeting observability backends and other
+commercial services. Plan your tests accordingly or consider using alternative
+solutions, such as self-hosted or locally run backends.
+
+{{% /alert %}}
+
 ### Collect comparable measurements
 
 To identify which factors might be affecting performance and causing agent
