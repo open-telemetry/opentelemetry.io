@@ -336,4 +336,4 @@ See reference issues for
 [Java](https://github.com/open-telemetry/opentelemetry-operator/issues/1814),
 [Python](https://github.com/open-telemetry/opentelemetry-operator/issues/1884),
 and
-[NodeJS](https://github.com/open-telemetry/opentelemetry-operator/issues/1393).
+[Node.js](https://github.com/open-telemetry/opentelemetry-operator/issues/1393).
