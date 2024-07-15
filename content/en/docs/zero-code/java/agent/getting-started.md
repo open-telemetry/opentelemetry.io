@@ -68,7 +68,7 @@ java -javaagent:path/to/opentelemetry-javaagent.jar \
 ```
 
 To see the full range of configuration options, see
-[Agent Configuration](configuration).
+[Agent Configuration](../configuration).
 
 ## Supported libraries, frameworks, application services, and JVMs
 

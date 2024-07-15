@@ -2,7 +2,6 @@
 title: Configuration
 weight: 10
 aliases: [agent-config]
-# prettier-ignore
 ---
 
 ## Agent Configuration
