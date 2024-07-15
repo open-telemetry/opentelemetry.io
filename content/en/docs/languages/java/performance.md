@@ -46,8 +46,8 @@ resource usage. See [Sampling](/docs/languages/java/sampling).
 You can further reduce agent overhead by turning off instrumentations that
 aren't needed or are producing too many spans. To turn off an instrumentation,
 use `-Dotel.instrumentation.<name>.enabled=false` or the
-`OTEL_INSTRUMENTATION_<NAME>_ENABLED` environment variable, where
-`<name>` is the name of the instrumentation.
+`OTEL_INSTRUMENTATION_<NAME>_ENABLED` environment variable, where `<name>` is
+the name of the instrumentation.
 
 For example, the following option turns off the JDBC instrumentation:
 `-Dotel.instrumentation.jdbc.enabled=false`
@@ -60,9 +60,9 @@ large number of short-lived objects in memory.
 
 ### Reduce manual instrumentation to what you need
 
-Too much manual instrumentation might introduce inefficiencies that increase agent
-overhead. For example, using `@WithSpan` on every method results in a high span
-volume, which in turn increases noise in the data and consumes more system
+Too much manual instrumentation might introduce inefficiencies that increase
+agent overhead. For example, using `@WithSpan` on every method results in a high
+span volume, which in turn increases noise in the data and consumes more system
 resources.
 
 ### Provision adequate resources
@@ -76,13 +76,13 @@ settings. See [Scaling](/docs/collector/scaling/).
 
 ## Constraints impacting the performance of the Java agent
 
-In general, the more telemetry you collect from your application, the greater the
-the impact on agent overhead. For example, tracing methods that aren't relevant
-to your application can still produce considerable agent overhead because
-tracing such methods is computationally more expensive than running the method
-itself. Similarly, high cardinality tags in metrics might increase memory usage.
-Debug logging, if turned on, also increases write operations to disk and memory
-usage.
+In general, the more telemetry you collect from your application, the greater
+the the impact on agent overhead. For example, tracing methods that aren't
+relevant to your application can still produce considerable agent overhead
+because tracing such methods is computationally more expensive than running the
+method itself. Similarly, high cardinality tags in metrics might increase memory
+usage. Debug logging, if turned on, also increases write operations to disk and
+memory usage.
 
 Some instrumentations, for example JDBC or Redis, produce high span volumes that
 increase agent overhead. For more information on how to turn off unnecessary
