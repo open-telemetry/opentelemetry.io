@@ -58,7 +58,7 @@ Increasing the maximum heap size of the JVM using the `--Xmx<size>` option might
 help in alleviating agent overhead issues, as instrumentations can generate a
 large number of short-lived objects in memory.
 
-### Reduce manual instrumentation to a minimum
+### Reduce manual instrumentation to what you need
 
 Manual instrumentation might introduce inefficiencies that increase agent
 overhead. For example, using `@WithSpan` on every method results in a high span
