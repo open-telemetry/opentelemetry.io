@@ -50,7 +50,7 @@ use `-Dotel.instrumentation.<name>.enabled=false` or the
 `<name>` is the name of the instrumentation.
 
 For example, the following option turns off the JDBC instrumentation:
-`-DOpenTelemetry.instrumentation.jdbc.enabled=false`
+`-Dotel.instrumentation.jdbc.enabled=false`
 
 ### Allocate more memory for the application
 
