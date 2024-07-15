@@ -54,7 +54,7 @@ For example, the following option turns off the JDBC instrumentation:
 
 ### Allocate more memory for the application
 
-Increasing the maximum heap size of the JVM using the `--Xmx<size>` option might
+Increasing the maximum heap size of the JVM using the `-Xmx<size>` option might
 help in alleviating agent overhead issues, as instrumentations can generate a
 large number of short-lived objects in memory.
 
