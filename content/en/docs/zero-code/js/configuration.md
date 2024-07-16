@@ -73,7 +73,7 @@ OTEL_NODE_ENABLED_INSTRUMENTATIONS="http,express"
 
 Use the environment variable `OTEL_NODE_DISABLED_INSTRUMENTATIONS` to keep the
 fully enabled list and only disable certain instrumentations by providing a
-comma-separated list of the instrumentation package names without the
+comma-separated list of the instrumentation library names without the
 `@opentelemetry/instrumentation-` prefix.
 
 For example, to disable only
