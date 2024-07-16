@@ -322,6 +322,7 @@ spec:
 Note that `OTEL_NODE_ENABLED_INSTRUMENTATIONS` and
 `OTEL_NODE_DISABLED_INSTRUMENTATIONS` are mutually exclusive. If both are set,
 all instrumentations will be disabled.
+
 {{% /alert %}}
 
 #### Learn more {#js-learn-more}
