@@ -56,7 +56,7 @@ instrumentations.
 
 Use the environment variable `OTEL_NODE_ENABLED_INSTRUMENTATIONS` to enable only
 certain instrumentations by providing a comma-separated list of the
-instrumentation package names without the `@opentelemetry/instrumentation-`
+instrumentation library names without the `@opentelemetry/instrumentation-`
 prefix.
 
 For example, to enable only
