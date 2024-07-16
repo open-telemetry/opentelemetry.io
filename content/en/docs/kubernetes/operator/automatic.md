@@ -317,8 +317,9 @@ spec:
         value: fs,grpc # comma-separated list of the instrumentation package names without the `@opentelemetry/instrumentation-` prefix.
 ```
 
-> Note that `OTEL_NODE_ENABLED_INSTRUMENTATIONS` and `OTEL_NODE_DISABLED_INSTRUMENTATIONS` are mutually exclusive.
-> If both are set, all instrumentations will be disabled.
+> Note that `OTEL_NODE_ENABLED_INSTRUMENTATIONS` and
+> `OTEL_NODE_DISABLED_INSTRUMENTATIONS` are mutually exclusive. If both are set,
+> all instrumentations will be disabled.
 
 #### Learn more {#js-learn-more}
 
