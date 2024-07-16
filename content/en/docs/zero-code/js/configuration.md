@@ -86,6 +86,10 @@ instrumentations:
 OTEL_NODE_DISABLED_INSTRUMENTATIONS="fs,grpc"
 ```
 
-> Note that `OTEL_NODE_ENABLED_INSTRUMENTATIONS` and
-> `OTEL_NODE_DISABLED_INSTRUMENTATIONS` are mutually exclusive. If both are set,
-> all instrumentations will be disabled.
+{{% alert title="Notes" color="info" %}}
+
+`OTEL_NODE_ENABLED_INSTRUMENTATIONS` and
+`OTEL_NODE_DISABLED_INSTRUMENTATIONS` are mutually exclusive. If both are set,
+all instrumentations will be disabled.
+
+{{% /alert %}}
