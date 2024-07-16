@@ -302,7 +302,7 @@ spec:
 
 To keep all default libraries and disable only specific instrumentation
 libraries you can use the `OTEL_NODE_DISABLED_INSTRUMENTATIONS` environment
-variable. For details, see 
+variable. For details, see
 [Excluding instrumentation libraries](/docs/zero-code/js/configuration/#excluding-instrumentation-libraries).
 
 ```yaml
@@ -316,6 +316,9 @@ spec:
       - name: OTEL_NODE_DISABLED_INSTRUMENTATIONS
         value: fs,grpc # comma-separated list of the instrumentation package names without the `@opentelemetry/instrumentation-` prefix.
 ```
+
+> Note that `OTEL_NODE_ENABLED_INSTRUMENTATIONS` and `OTEL_NODE_DISABLED_INSTRUMENTATIONS` are mutually exclusive.
+> If both are set, all instrumentations will be disabled.
 
 #### Learn more {#js-learn-more}
 
