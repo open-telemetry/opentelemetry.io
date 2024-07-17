@@ -50,8 +50,8 @@ The following example shows how to import the OpenTelemetry BOMs using Maven:
         </dependency>
         <dependency>
             <groupId>io.opentelemetry.instrumentation</groupId>
-            <artifactId>opentelemetry-instrumentation-bom-alpha</artifactId>
-            <version>{{% param vers.instrumentation %}}-alpha</version>
+            <artifactId>opentelemetry-instrumentation-bom</artifactId>
+            <version>{{% param vers.instrumentation %}}</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>
@@ -74,7 +74,7 @@ plugins {
 dependencies {
   implementation(platform(SpringBootPlugin.BOM_COORDINATES))
   implementation(platform("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}"))
-  implementation(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:{{% param vers.instrumentation %}}-alpha"))
+  implementation(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom:{{% param vers.instrumentation %}}"))
 }
 ```
 
@@ -91,7 +91,7 @@ plugins {
 dependencyManagement {
   imports {
     mavenBom("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}")
-    mavenBom("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:{{% param vers.instrumentation %}}-alpha")
+    mavenBom("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:{{% param vers.instrumentation %}}")
   }
 }
 ```
