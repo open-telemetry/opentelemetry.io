@@ -4,7 +4,8 @@ cSpell:ignore: autoconfigurations
 weight: 70
 ---
 
-Instead of using the OpenTelemetry Spring starter, you can use the OpenTelemetry Zipkin starter.
+Instead of using the OpenTelemetry Spring starter, you can use the OpenTelemetry
+Zipkin starter.
 
 ## Zipkin starter
 
