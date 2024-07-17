@@ -4,23 +4,7 @@ cSpell:ignore: autoconfigurations
 weight: 70
 ---
 
-Instead of using the OpenTelemetry Spring starter, you can use the OpenTelemetry
-autoconfiguration features with an annotation or the Zipkin starter.
-
-## Spring support
-
-Autoconfiguration is natively supported by Spring Boot applications. To enable
-these features in "vanilla" use `@EnableOpenTelemetry` to complete a component
-scan of this package.
-
-```java
-import io.opentelemetry.instrumentation.spring.autoconfigure.EnableOpenTelemetry;
-import org.springframework.context.annotation.Configuration;
-
-@Configuration
-@EnableOpenTelemetry
-public class OpenTelemetryConfig {}
-```
+Instead of using the OpenTelemetry Spring starter, you can use the OpenTelemetry Zipkin starter.
 
 ## Zipkin starter
 
