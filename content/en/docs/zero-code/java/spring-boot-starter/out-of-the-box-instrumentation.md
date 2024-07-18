@@ -128,7 +128,7 @@ public MyService(RestClient.Builder restClientBuilder) {
 
 As it's possible with the
 [Java agent](/docs/zero-code/java/agent/configuration), you can configure the
-capture of:
+capture of the following entities:
 
 - HTTP request and response headers
 - Known HTTP methods
