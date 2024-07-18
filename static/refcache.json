@@ -6571,6 +6571,18 @@
     "StatusCode": 206,
     "LastSeen": "2024-05-15T19:23:47.920456821+03:00"
   },
+  "https://opentelemetry.io/docs/zero-code/java/agent/instrumentation/http/#capturing-http-request-and-response-headers": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-18T12:15:23.404682814Z"
+  },
+  "https://opentelemetry.io/docs/zero-code/java/agent/instrumentation/http/#configuring-known-http-methods": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-18T12:15:25.914328974Z"
+  },
+  "https://opentelemetry.io/docs/zero-code/java/agent/instrumentation/http/#enabling-experimental-http-telemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-18T12:15:30.126385341Z"
+  },
   "https://opentelemetry.io/ecosystem/integrations/": {
     "StatusCode": 206,
     "LastSeen": "2024-03-19T10:16:49.992495889Z"

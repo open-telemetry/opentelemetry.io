@@ -20,12 +20,12 @@ Out of the box instrumentation is available for several frameworks:
 
 ## Turn on instrumentations selectively
 
-To use only specific instrumentations, turn off all the instrumentations
-first by setting the `otel.instrumentation.common.default-enabled`
-property to `false`. Then, turn on instrumentations one by one. 
+To use only specific instrumentations, turn off all the instrumentations first
+by setting the `otel.instrumentation.common.default-enabled` property to
+`false`. Then, turn on instrumentations one by one.
 
-For example, if you want to only enable the JDBC instrumentation,
-set `otel.instrumentation.jdbc.enabled` to `true`.
+For example, if you want to only enable the JDBC instrumentation, set
+`otel.instrumentation.jdbc.enabled` to `true`.
 
 ## Common instrumentation configuration
 
@@ -127,9 +127,8 @@ public MyService(RestClient.Builder restClientBuilder) {
 }
 ```
 
-As it's possible with the
-Java agent, you can configure the
-capture of the following entities:
+As it's possible with the Java agent, you can configure the capture of the
+following entities:
 
 - [HTTP request and response headers](https://opentelemetry.io/docs/zero-code/java/agent/instrumentation/http/#capturing-http-request-and-response-headers)
 - [Known HTTP methods](https://opentelemetry.io/docs/zero-code/java/agent/instrumentation/http/#configuring-known-http-methods)
@@ -146,9 +145,8 @@ request. To learn more about the OpenTelemetry Spring WebMVC instrumentation,
 see the
 [opentelemetry-spring-webmvc-5.3 instrumentation library](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webmvc/spring-webmvc-5.3/library).
 
-As it's possible with the
-Java agent, you can configure the
-capture of the following entities:
+As it's possible with the Java agent, you can configure the capture of the
+following entities:
 
 - [HTTP request and response headers](https://opentelemetry.io/docs/zero-code/java/agent/instrumentation/http/#capturing-http-request-and-response-headers)
 - [Known HTTP methods](https://opentelemetry.io/docs/zero-code/java/agent/instrumentation/http/#configuring-known-http-methods)
