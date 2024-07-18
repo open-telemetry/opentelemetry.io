@@ -1068,6 +1068,7 @@ packages:
 
 - [logrus bridge][otellogrus]
 - [slog bridge][otelslog]
+- [zap bridge][otelzap]
 
 The links above contain full usage and installation documentation.
 
@@ -1099,6 +1100,7 @@ telemetry backends.
 [log data model]: /docs/specs/otel/logs/data-model
 [otellogrus]: https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otellogrus
 [otelslog]: https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelslog
+[otelzap]: https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelzap
 [`go.opentelemetry.io/otel`]: https://pkg.go.dev/go.opentelemetry.io/otel
 [`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`]:
   https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric

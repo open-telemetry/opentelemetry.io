@@ -248,7 +248,7 @@ For more:
 [metrics]: /docs/concepts/signals/metrics/
 [logs]: /docs/concepts/signals/logs/
 [annotations]: /docs/zero-code/java/agent/annotations/
-[configure the java agent]: /docs/zero-code/java/agent/#configuring-the-agent
+[configure the java agent]: /docs/zero-code/java/agent/configuration/
 [console exporter]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#logging-exporter
 [exporter]:
