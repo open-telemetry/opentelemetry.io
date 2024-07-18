@@ -25,9 +25,8 @@ A Bill of Material
 ([BOM](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms))
 ensures that versions of dependencies (including transitive ones) are aligned.
 
-Importing the `opentelemetry-instrumentation-bom` BOM when using the
-OpenTelemetry starter is important to ensure version alignment across all
-OpenTelemetry dependencies.
+To ensure version alignment across all OpenTelemetry dependencies, you must import 
+the `opentelemetry-instrumentation-bom` BOM when using the OpenTelemetry starter.
 
 {{% alert title="Note" color="info" %}}
 
