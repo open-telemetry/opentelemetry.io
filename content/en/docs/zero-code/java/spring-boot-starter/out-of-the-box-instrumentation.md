@@ -132,7 +132,7 @@ Java agent, you can configure the
 capture of the following entities:
 
 - [HTTP request and response headers](https://opentelemetry.io/docs/zero-code/java/agent/instrumentation/http/#capturing-http-request-and-response-headers)
-- Known HTTP methods
+- [Known HTTP methods](https://opentelemetry.io/docs/zero-code/java/agent/instrumentation/http/#configuring-known-http-methods)
 - [Experimental HTTP telemetry](https://opentelemetry.io/docs/zero-code/java/agent/instrumentation/http/#enabling-experimental-http-telemetry)
 
 ## Spring Web MVC Autoconfiguration
