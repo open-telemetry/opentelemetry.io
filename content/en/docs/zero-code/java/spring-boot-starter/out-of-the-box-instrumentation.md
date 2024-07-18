@@ -18,7 +18,6 @@ Out of the box instrumentation is available for several frameworks:
 | Micrometer            | `otel.instrumentation.micrometer.enabled`       | false         |
 | R2DBC (reactive JDBC) | `otel.instrumentation.r2dbc.enabled`            | true          |
 
-
 ## Suppressing specific instrumentation
 
 To enable only specific instrumentations, you can disable all the
