@@ -147,12 +147,12 @@ see the
 [opentelemetry-spring-webmvc-5.3 instrumentation library](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webmvc/spring-webmvc-5.3/library).
 
 As it's possible with the
-[Java agent](/docs/zero-code/java/agent/configuration), you can configure the
+Java agent, you can configure the
 capture of the following entities:
 
-- HTTP request and response headers
-- Known HTTP methods
-- Experimental HTTP telemetry
+- [HTTP request and response headers](https://opentelemetry.io/docs/zero-code/java/agent/instrumentation/http/#capturing-http-request-and-response-headers)
+- [Known HTTP methods](https://opentelemetry.io/docs/zero-code/java/agent/instrumentation/http/#configuring-known-http-methods)
+- [Experimental HTTP telemetry](https://opentelemetry.io/docs/zero-code/java/agent/instrumentation/http/#enabling-experimental-http-telemetry)
 
 ## Spring WebFlux Autoconfiguration
 
