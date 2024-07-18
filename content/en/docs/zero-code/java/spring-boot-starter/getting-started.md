@@ -100,7 +100,7 @@ dependencyManagement {
 
 Be careful not to mix up the different ways of configuring things with Gradle.
 For example, don't use
-`implementation(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom:{{% param vers.instrumentation %}}"))`
+`implementation(platform("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}"))`
 with the `io.spring.dependency-management` plugin.
 
 {{% /alert %}}
