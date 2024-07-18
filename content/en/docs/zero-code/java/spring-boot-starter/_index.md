@@ -6,6 +6,8 @@ aliases:
   - /docs/zero-code/java/spring-boot
 ---
 
+## Java agent versus Spring Boot starter
+
 You can use two options to instrument
 [Spring Boot](https://spring.io/projects/spring-boot) applications with
 OpenTelemetry.
@@ -23,3 +25,33 @@ OpenTelemetry.
    - **Spring Boot configuration files** (`application.properties`,
      `application.yml`) to configure the OpenTelemetry Spring Boot starter which
      doesn't work with the OpenTelemetry Java agent
+
+## Comparison to Micrometer
+
+A question asked frequently is how [Micrometer](https://micrometer.io/) and the OpenTelemetry Spring Boot Starter differentiate. At a high level, the differences are as follows:
+
+OpenTelemetry Spring Boot starter:
+
+- Natively uses the OpenTelemetry API, OpenTelemetry SDK, and the OpenTelemetry
+  semantic conventions.
+- Supported by the OpenTelemetry community (governed by the CNCF / Linux
+  Foundation).
+
+Micrometer [^1][^2]:
+
+- An independent standalone observability system.
+- Offers optional bridges into parts of the OpenTelemetry ecosystem.
+- Supported by the Micrometer community (governed by Broadcom Inc).
+
+As the authors of the OpenTelemetry Spring Boot starter, we recommend using the
+OpenTelemetry Spring Boot starter. We have a great community behind it, and are
+continuously making improvements. If you try it out and have any problems or
+suggestions, open an
+[issue](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues)
+in our repository.
+
+[^1]:
+    [Micrometer metrics OTLP registry](https://docs.micrometer.io/micrometer/reference/implementations/otlp.html)
+
+[^2]:
+    [Micrometer tracing OpenTelemetry bridge](https://docs.micrometer.io/tracing/reference/tracers.html)
