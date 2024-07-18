@@ -133,7 +133,7 @@ capture of the following entities:
 
 - HTTP request and response headers
 - Known HTTP methods
-- Experimental HTTP telemetry
+- [Experimental HTTP telemetry](https://opentelemetry.io/docs/zero-code/java/agent/instrumentation/http/#enabling-experimental-http-telemetry)
 
 ## Spring Web MVC Autoconfiguration
 
