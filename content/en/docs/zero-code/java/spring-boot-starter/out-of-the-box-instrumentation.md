@@ -18,13 +18,16 @@ Out of the box instrumentation is available for several frameworks:
 | Micrometer            | `otel.instrumentation.micrometer.enabled`       | false         |
 | R2DBC (reactive JDBC) | `otel.instrumentation.r2dbc.enabled`            | true          |
 
-## Common instrumentation configuration
+
+## Suppressing specific instrumentation
 
 To enable only specific instrumentations, you can disable all the
 instrumentations by setting the `otel.instrumentation.common.default-enabled`
 property to `false`, and enable instrumentations one by one. For example, if you
 want to only enable the JDBC instrumentation, you can set
 `otel.instrumentation.jdbc.enabled` to `true`.
+
+## Common instrumentation configuration
 
 Common properties for all database instrumentations:
 
