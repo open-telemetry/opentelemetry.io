@@ -20,11 +20,12 @@ Out of the box instrumentation is available for several frameworks:
 
 ## Turn on instrumentations selectively
 
-To enable only specific instrumentations, you can disable all the
-instrumentations by setting the `otel.instrumentation.common.default-enabled`
-property to `false`, and enable instrumentations one by one. For example, if you
-want to only enable the JDBC instrumentation, you can set
-`otel.instrumentation.jdbc.enabled` to `true`.
+To use only specific instrumentations, turn off all the instrumentations
+first by setting the `otel.instrumentation.common.default-enabled`
+property to `false`. Then, turn on instrumentations one by one. 
+
+For example, if you want to only enable the JDBC instrumentation,
+set `otel.instrumentation.jdbc.enabled` to `true`.
 
 ## Common instrumentation configuration
 
