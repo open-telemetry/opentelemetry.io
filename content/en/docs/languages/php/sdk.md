@@ -130,7 +130,7 @@ There are also a number of PHP-specific configurations:
 | `OTEL_PHP_INTERNAL_METRICS_ENABLED`  | `false`       | `true`, `false`                                                                       | `true`                       | Whether the SDK should emit metrics about its internal state (for example, batch processors) |
 | `OTEL_PHP_DISABLED_INSTRUMENTATIONS` | `[]`          | Instrumentation names, or `all`                                                       | `psr15,psr18`                | Disable one or more installed auto-instrumentations                                          |
 | `OTEL_PHP_EXCLUDED_URLS`             | ``            | Comma-delimited regular expression patterns                                           | `client/.*/info,healthcheck` | Do not load the SDK if request URL matches one of the supplied regular expressions           |
-| `OTEL_PHP_DEBUG_SCOPES_DISABLED`     | `false`       | `true`, `false`                                                                       | `true`                       | Turn on or off scope detachment debugging. |
+| `OTEL_PHP_DEBUG_SCOPES_DISABLED`     | `false`       | `true`, `false`                                                                       | `true`                       | Turn on or off scope detachment debugging.                                                   |
 
 Configurations can be provided as environment variables, or via `php.ini` (or a
 file included by `php.ini`)
