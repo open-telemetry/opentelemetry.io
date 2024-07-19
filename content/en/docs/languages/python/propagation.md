@@ -15,7 +15,8 @@ HTTP headers.
 
 ## Automatic context propagation
 
-Auto-instrumentation exists for some popular Python frameworks.
+Auto-instrumentation exists for some popular Python frameworks and libraries,
+such as Jinja2, Flask, Django, and Celery.
 
 {{% alert title="Note" %}}
 
