@@ -193,7 +193,7 @@ categorized by instrumentation type.
 
 | Metric name                                            | Description                                                                             | Type      |
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------- | --------- |
-| `otelcol_exporter_enqueue_failed_`<br>`log_records`    | Number of logs that exporter(s) failed to enqueue.                                     | Counter   |
+| `otelcol_exporter_enqueue_failed_`<br>`log_records`    | Number of logs that exporter(s) failed to enqueue.                                      | Counter   |
 | `otelcol_exporter_enqueue_failed_`<br>`metric_points`  | Number of metric points that exporter(s) failed to enqueue.                             | Counter   |
 | `otelcol_exporter_enqueue_failed_`<br>`spans`          | Number of spans that exporter(s) failed to enqueue.                                     | Counter   |
 | `otelcol_exporter_queue_capacity`                      | Fixed capacity of the retry queue, in batches.                                          | Gauge     |
