@@ -15,6 +15,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.SqlClient
 createdAt: 2022-11-07
+isFirstParty: false
 package:
   registry: nuget
   name: OpenTelemetry.Instrumentation.SqlClient
