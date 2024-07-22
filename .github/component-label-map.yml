@@ -13,7 +13,7 @@ lang:zh:
 lang:ja:
   - changed-files:
       - any-glob-to-any-file:
-          - content/pt/**
+          - content/ja/**
 lang:pt:
   - changed-files:
       - any-glob-to-any-file:
