@@ -2,9 +2,7 @@
 title: OpenTelemetry Security Audit Published
 linkTitle: Security Audit Results
 date: 2024-07-22
-author: >-
-  [Author1 Name](https://github.com/author1_GH_ID) (Organization Name 1),
-  [AuthorX Name](https://github.com/authorX_GH_ID) (Organization Name X)
+author: '[Austin Parker](https://github.com/austinlparker)'
 issue:
 sig: GC
 ---
