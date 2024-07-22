@@ -31,8 +31,9 @@ starter.
 
 {{% alert title="Note" color="info" %}}
 
-If you import the `spring-boot-dependencies` BOM, you have to declare it after
-the OpenTelemetry BOMs.
+Import the OpenTelemetry BOMs before any other BOMs in your project. For
+example, if you import the `spring-boot-dependencies` BOM, you have to declare
+it after the OpenTelemetry BOMs.
 
 {{% /alert %}}
 
