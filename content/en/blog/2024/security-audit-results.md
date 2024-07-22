@@ -17,13 +17,12 @@ upon a security audit of the OpenTelemetry Collector and four SDKs – Go, Java,
 C#, and Python.
 
 We are pleased to announce the publication of this audit, as well as its
-results. Two CVEs were identified and remediated prior to the publication of
-this audit (see
-[CVE-2024-36129](https://nvd.nist.gov/vuln/detail/CVE-2024-36129) for
-information on both) in the OpenTelemetry Collector, and five hardening
-recommendations were made. Overall, the results of the audit are very positive,
-with the auditors noting the high quality of source code and the security best
-practices that the project is following.
+results. One CVE was identified and remediated prior to the publication of this
+audit (see [CVE-2024-36129](https://nvd.nist.gov/vuln/detail/CVE-2024-36129) for
+information) in the OpenTelemetry Collector, and five hardening recommendations
+were made. Overall, the results of the audit are very positive, with the
+auditors noting the high quality of source code and the security best practices
+that the project is following.
 
 The conclusion of this audit marks an important milestone on our journey towards
 the next stage of maturity in the CNCF, graduation. We’ll have more to share on
