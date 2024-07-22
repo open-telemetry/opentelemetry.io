@@ -1,0 +1,17 @@
+# cSpell:ignore sirupsen logrus otellogrus
+title: logrus log bridge
+registryType: log-bridge
+language: go
+tags:
+  - logrus
+  - log-bridge
+  - go
+license: Apache 2.0
+description:
+  Package otellogrus provides an OpenTelemetry log bridge for
+  `github.com/sirupsen/logrus`.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otellogrus
+createdAt: 2024-05-21
