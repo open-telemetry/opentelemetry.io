@@ -1,0 +1,14 @@
+title: influxdb instrumentation
+registryType: instrumentation
+language: java
+tags:
+  - influxdb
+  - instrumentation
+  - java
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/influxdb-2.4
+license: Apache 2.0
+description: influxdb instrumentation
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-07-08
