@@ -1,0 +1,21 @@
+title: OpenTelemetry ActionMailer Instrumentation
+registryType: instrumentation
+language: ruby
+tags:
+  - action
+  - mailer
+  - instrumentation
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/action_mailer
+license: Apache 2.0
+description:
+  The ActionMailer instrumentation is a community-maintained instrumentation for
+  the ActionMailer portion of the [Ruby on Rails][rails-home] web-application
+  framework.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-07-08
+package:
+  registry: gems
+  name: opentelemetry-instrumentation-action_mailer

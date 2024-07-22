@@ -1,0 +1,15 @@
+title: Confluent.Kafka client instrumentation for OpenTelemetry
+registryType: instrumentation
+language: dotnet
+tags:
+  - confluent
+  - kafka
+  - instrumentation
+  - dotnet
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.ConfluentKafka
+license: Apache 2.0
+description: Confluent.Kafka client instrumentation for OpenTelemetry
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-07-08
