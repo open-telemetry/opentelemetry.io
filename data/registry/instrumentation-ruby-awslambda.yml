@@ -1,0 +1,21 @@
+title: OpenTelemetry AWS-Lambda Instrumentation
+registryType: instrumentation
+language: ruby
+tags:
+  - aws
+  - lambda
+  - instrumentation
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/aws_lambda
+license: Apache 2.0
+description:
+  The OpenTelemetry `aws-lambda` gem is a community-maintained instrumentation
+  for [AWS Lambda
+  functions](https://docs.aws.amazon.com/lambda/latest/dg/ruby-handler.html).
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-07-08
+package:
+  registry: gems
+  name: opentelemetry-instrumentation-aws_lambda
