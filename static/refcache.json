@@ -7643,6 +7643,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-07-18T09:04:56.296529985Z"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelzerolog": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-22T08:21:47.06167143Z"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/contrib/detectors/aws/ec2": {
     "StatusCode": 200,
     "LastSeen": "2024-05-27T15:24:39.997553+02:00"
