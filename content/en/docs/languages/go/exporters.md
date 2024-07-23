@@ -76,9 +76,6 @@ To send trace data to an OTLP endpoint (like the [collector](/docs/collector) or
 Jaeger >= v1.35.0) you'll want to configure an OTLP exporter that sends to your
 endpoint.
 
-To learn more on how to use the OTLP HTTP exporter, try the
-[otel-collector example](https://github.com/open-telemetry/opentelemetry-go/tree/main/example/otel-collector)
-
 ### OTLP traces over HTTP
 
 [`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp)

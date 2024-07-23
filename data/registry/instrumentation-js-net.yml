@@ -14,4 +14,4 @@ createdAt: 2021-07-08
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-net'
-  version: 0.37.0
+  version: 0.38.0

@@ -56,7 +56,7 @@ variables:
   instrumentations, see [Suppressing specific agent instrumentation][1].
 
   [1]:
-    /docs/zero-code/java/agent/configuration/#suppressing-specific-agent-instrumentation
+    /docs/zero-code/java/agent/disable/#suppressing-specific-agent-instrumentation
 
 For example, to only enable auto-instrumentation for Lambda and the AWS SDK, you
 would set the following environment variables:
@@ -87,8 +87,7 @@ and the package on [PyPi](https://pypi.org/project/opentelemetry-api/).
 Change the entry point of your application by setting
 `AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler` for Node.js or Java, and
 `AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-instrument` for Python. These wrapper scripts
-will invoke your Lambda application with the auto instrumentation package
-applied.
+will invoke your Lambda application with the automatic instrumentation applied.
 
 ### Add the ARN of Instrumentation Lambda Layer
 

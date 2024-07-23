@@ -51,7 +51,7 @@ By default, all
 [supported instrumentation libraries](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#supported-instrumentations)
 are enabled, but you can use the environment variable
 `OTEL_NODE_ENABLED_INSTRUMENTATIONS` to enable only certain instrumentations by
-providing a comma-separated list of the instrumentation package names without
+providing a comma-separated list of the instrumentation library names without
 the `@opentelemetry/instrumentation-` prefix.
 
 For example, to enable only

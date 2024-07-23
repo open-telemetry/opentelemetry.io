@@ -1,0 +1,16 @@
+# cSpell:ignore uber otelzap
+title: zap log bridge
+registryType: log-bridge
+language: go
+tags:
+  - zap
+  - log-bridge
+  - go
+license: Apache 2.0
+description:
+  Package otelzap provides an OpenTelemetry log bridge for `go.uber.org/zap`.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelzap
+createdAt: 2024-07-22

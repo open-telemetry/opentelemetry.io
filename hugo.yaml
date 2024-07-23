@@ -20,6 +20,11 @@ languages:
     languageName: 日本語 (Japanese)
     params:
       description: OpenTelemetryプロジェクト公式サイト
+  pt: # cSpell:ignore Português Projeto
+    languageName: Português
+    languageCode: pt-BR
+    params:
+      description: Site do Projeto OpenTelemetry
   zh:
     languageName: 中文 (Chinese)
     languageCode: zh-cn
@@ -77,7 +82,7 @@ params:
     observability tools.
   github_repo: https://github.com/open-telemetry/opentelemetry.io
   github_branch: main
-  gcs_engine_id: bde3d634eca9cd335
+  gcs_engine_id: 015faf7de29c34606
 
   ## Social media image path, such as Open Graph's og:image
   #
@@ -95,7 +100,15 @@ params:
     sidebar_menu_compact: true
     sidebar_menu_foldable: true
     sidebar_search_disable: true
-
+    feedback:
+      enable: true
+      'yes': >-
+        Thank you. Your feedback is appreciated!
+      # prettier-ignore
+      'no': >-
+        Please let us know <a class="external-link" target="_blank" rel="noopener"
+        href="https://github.com/open-telemetry/opentelemetry.io/issues/new?title=Page%20feedback&body=Suggested%20improvements%20for%20page:%20ADD%20PAGE-URL-HERE">how
+        we can improve this page</a>. Your feedback is appreciated!
   links:
     user:
       - name: Mailing Lists
@@ -254,6 +267,19 @@ module:
       source: content/en/docs
       target: content/docs
       lang: zh
+
+    ## pt
+    - source: content/pt
+      target: content
+      lang: pt
+    # fallback pages
+    - source: content/en/announcements
+      target: content/announcements
+      lang: pt
+    - excludeFiles: specs/*
+      source: content/en/docs
+      target: content/docs
+      lang: pt
 
     ## static
     - source: static

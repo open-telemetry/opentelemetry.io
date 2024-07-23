@@ -19,4 +19,4 @@ createdAt: 2024-04-18
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-runtime-node'
-  version: 0.5.0
+  version: 0.6.0

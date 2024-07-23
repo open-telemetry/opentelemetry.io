@@ -212,7 +212,7 @@ Therefore, the example uses `http://demo-collector:4318`, which connects to the
 #### Excluding auto-instrumentation {#java-excluding-auto-instrumentation}
 
 By default, the Java auto-instrumentation ships with
-[many instrumentation libraries](/docs/zero-code/java/agent/#supported-libraries-frameworks-application-services-and-jvms).
+[many instrumentation libraries](/docs/zero-code/java/agent/getting-started/#supported-libraries-frameworks-application-services-and-jvms).
 This makes instrumentation easy, but could result in too much or unwanted data.
 If there are any libraries you do not want to use you can set the
 `OTEL_INSTRUMENTATION_[NAME]_ENABLED=false` where `[NAME]` is the name of the
@@ -221,7 +221,7 @@ the default libraries by setting
 `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false` and then use
 `OTEL_INSTRUMENTATION_[NAME]_ENABLED=true` where `[NAME]` is the name of the
 library. For more details, see
-[Suppressing specific instrumentation](/docs/zero-code/java/agent/configuration/#suppressing-specific-instrumentation).
+[Suppressing specific instrumentation](/docs/zero-code/java/agent/disable/).
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
@@ -404,7 +404,7 @@ spec:
 
 #### Learn more {#python-learn-more}
 
-[See the Python agent Configuration docs for more details.](/docs/languages/python/automatic/configuration/#disabling-specific-instrumentations)
+[See the Python agent Configuration docs for more details.](/docs/zero-code/python/configuration/#disabling-specific-instrumentations)
 
 ### Go
 

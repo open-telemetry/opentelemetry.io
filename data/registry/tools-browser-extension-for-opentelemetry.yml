@@ -1,4 +1,4 @@
-# cSpell:ignore firefox autoinstrumentation Autoinjection Brockman
+# cSpell:ignore firefox autoinstrumentation Autoinjection Brockman browserextension
 title: Browser Extension for OpenTelemetry
 registryType: utilities
 language: js
@@ -6,6 +6,7 @@ tags:
   - js
   - browser
   - web-ext
+  - browserextension # for search to only find browser extensions and not other types of extensions
   - browser-extension
   - chrome-extension
   - firefox-extension

@@ -117,7 +117,6 @@ go get "go.opentelemetry.io/otel" \
   "go.opentelemetry.io/otel/sdk/metric" \
   "go.opentelemetry.io/otel/sdk/resource" \
   "go.opentelemetry.io/otel/sdk/trace" \
-  "go.opentelemetry.io/otel/semconv/v1.24.0" \
   "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"\
   "go.opentelemetry.io/contrib/bridges/otelslog"
 ```
@@ -262,7 +261,7 @@ func newLoggerProvider() (*log.LoggerProvider, error) {
 ```
 <!-- prettier-ignore-end -->
 
-If you're only using tracing or metrics, you can omit the code the corresponding
+If you're only using tracing or metrics, you can omit the corresponding
 TracerProvider or MeterProvider initialization code.
 
 ### Instrument the HTTP server
@@ -384,7 +383,7 @@ import (
 	"go.opentelemetry.io/otel/sdk/instrumentation"
 )
 
-const name = "rolldice"
+const name = "go.opentelemetry.io/otel/example/dice"
 
 var (
 	tracer = otel.Tracer(name)
