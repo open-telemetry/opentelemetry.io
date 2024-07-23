@@ -31,9 +31,13 @@ starter.
 
 {{% alert title="Note" color="info" %}}
 
-Import the OpenTelemetry BOMs before any other BOMs in your project. For
-example, if you import the `spring-boot-dependencies` BOM, you have to declare
-it after the OpenTelemetry BOMs.
+When using Maven, import the OpenTelemetry BOMs before any other BOMs in your
+project. For example, if you import the `spring-boot-dependencies` BOM, you have
+to declare it after the OpenTelemetry BOMs.
+
+Gradle selects the
+[latest version](https://docs.gradle.org/current/userguide/dependency_resolution.html#sec:version-conflict)
+of a dependency when multiple BOMs, so the order of BOMs is not important.
 
 {{% /alert %}}
 
