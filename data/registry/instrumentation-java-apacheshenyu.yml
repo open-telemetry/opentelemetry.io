@@ -1,0 +1,16 @@
+# cspell:ignore shenyu
+title: Apache ShenYu instrumentation
+registryType: instrumentation
+language: java
+tags:
+  - apache
+  - shenyu
+  - instrumentation
+  - java
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/apache-shenyu-2.4
+license: Apache 2.0
+description: Settings for the Apache ShenYu instrumentation
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-07-08
