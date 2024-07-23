@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Assign component owners
     steps:
-      - uses: volas/component-owners@teams_support
+      - uses: dyladan/component-owners@v0.1.0
         with:
           config-file: .github/component-owners.yml
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
