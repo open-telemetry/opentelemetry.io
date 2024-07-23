@@ -545,8 +545,6 @@ extensions:
   health_check:
   pprof:
   zpages:
-  memory_ballast:
-    size_mib: 512
 ```
 
 > For detailed extension configuration, see the
