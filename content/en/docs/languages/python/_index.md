@@ -55,8 +55,7 @@ This can be done by cloning the repository and doing an
 ```sh
 git clone https://github.com/open-telemetry/opentelemetry-python.git
 cd opentelemetry-python
-pip install -e ./opentelemetry-api
-pip install -e ./opentelemetry-sdk
+pip install -e ./opentelemetry-api -e ./opentelemetry-sdk -e ./opentelemetry-semantic-conventions
 ```
 
 ## Repositories and benchmarks
