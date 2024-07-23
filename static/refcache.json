@@ -51,6 +51,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-06-04T17:29:49.77219755+02:00"
   },
+  "https://7asecurity.com/reports/pentest-report-opentelemetry.pdf": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-22T14:20:49.972502516Z"
+  },
   "https://access.redhat.com/products/ansible-tower-red-hat": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:05:55.59597-05:00"
@@ -9726,6 +9730,10 @@
   "https://www.oracle.com/technical-resources/articles/javase/jmx.html": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:55:46.046387-05:00"
+  },
+  "https://www.ostif.org/otel-audit-complete/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-22T14:20:47.739450411Z"
   },
   "https://www.otelbin.io/": {
     "StatusCode": 200,
