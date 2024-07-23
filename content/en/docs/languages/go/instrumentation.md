@@ -39,7 +39,7 @@ import (
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/sdk/resource"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 	"go.opentelemetry.io/otel/trace"
 )
 
@@ -86,7 +86,7 @@ func main() {
 	otel.SetTracerProvider(tp)
 
 	// Finally, set the tracer that can be used for this package.
-	tracer = tp.Tracer("ExampleService")
+	tracer = tp.Tracer("example.io/package/name")
 }
 ```
 
@@ -187,7 +187,7 @@ span.SetAttributes(myKey.String("a value"))
 Semantic Attributes are attributes that are defined by the [OpenTelemetry
 Specification][] in order to provide a shared set of attribute keys across multiple
 languages, frameworks, and runtimes for common concepts like HTTP methods, status
-codes, user agents, and more. These attributes are available in the `go.opentelemetry.io/otel/semconv/v1.21.0`
+codes, user agents, and more. These attributes are available in the `go.opentelemetry.io/otel/semconv/v1.26.0`
 package.
 
 For details, see [Trace semantic conventions][].
@@ -364,7 +364,7 @@ import (
 	"go.opentelemetry.io/otel/exporters/stdout/stdoutmetric"
 	"go.opentelemetry.io/otel/sdk/metric"
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 )
 
 func main() {
@@ -432,7 +432,7 @@ acquire a meter. For example:
 ```go
 import "go.opentelemetry.io/otel"
 
-var meter = otel.Meter("my-service-meter")
+var meter = otel.Meter("example.io/package/name")
 ```
 
 ### Synchronous and asynchronous instruments
@@ -753,7 +753,7 @@ import (
 	"net/http"
 
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 )
 
 func init() {
@@ -769,7 +769,7 @@ func init() {
 		// do some work in an API call and set the response HTTP status code
 
 		apiCounter.Add(r.Context(), 1,
-			metric.WithAttributes(semconv.HTTPStatusCode(statusCode)))
+			metric.WithAttributes(semconv.HTTPResponseStatusCode(statusCode)))
 	})
 }
 ```
@@ -1001,7 +1001,7 @@ import (
 	"go.opentelemetry.io/otel/log/global"
 	"go.opentelemetry.io/otel/sdk/log"
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
 )
 
 func main() {
@@ -1063,13 +1063,12 @@ Now that a `LoggerProvider` is configured, you can use it to set up a
 
 A log bridge is a component that bridges logs from an existing log package into
 the OpenTelemetry [Log SDK](#logs-sdk) using the [Logs Bridge
-API][logs bridge API]. Log bridges are available for various popular Go log
-packages:
+API][logs bridge API].
 
-- [logrus bridge][otellogrus]
-- [slog bridge][otelslog]
+A full list of log bridges available can be found in the
+[OpenTelemetry registry](/ecosystem/registry/?language=go&component=log-bridge).
 
-The links above contain full usage and installation documentation.
+Each log bridge package documentation should have a usage example.
 
 ### Via file or stdout
 
@@ -1097,8 +1096,6 @@ telemetry backends.
   https://github.com/open-telemetry/opentelemetry-collector
 [logs bridge API]: /docs/specs/otel/logs/bridge-api
 [log data model]: /docs/specs/otel/logs/data-model
-[otellogrus]: https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otellogrus
-[otelslog]: https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelslog
 [`go.opentelemetry.io/otel`]: https://pkg.go.dev/go.opentelemetry.io/otel
 [`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`]:
   https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric
