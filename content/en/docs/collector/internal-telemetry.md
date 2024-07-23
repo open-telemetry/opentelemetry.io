@@ -294,12 +294,12 @@ range and not considered outages.
 #### Queue length
 
 Most exporters provide a
-[queue or retry mechanism](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/exporterhelper/README.md)
+[queue and/or retry mechanism](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/exporterhelper/README.md)
 that is recommended for use in any production deployment of the Collector.
 
 The `otelcol_exporter_queue_capacity` metric indicates the capacity, in batches,
-of the retry queue. The `otelcol_exporter_queue_size` metric indicates the
-current size of the retry queue. Use these two metrics to check if the queue
+of the sending queue. The `otelcol_exporter_queue_size` metric indicates the
+current size of the sending queue. Use these two metrics to check if the queue
 capacity can support your workload.
 
 Using the following three metrics, you can identify the number of spans, metric
