@@ -83,7 +83,7 @@ plugins {
 
 dependencyManagement {
   imports {
-    mavenBom("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}")
+    mavenBom("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom:{{% param vers.instrumentation %}}")
   }
 }
 ```
