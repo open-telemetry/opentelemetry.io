@@ -12,7 +12,7 @@ IDE.
 ## General configuration
 
 The OpenTelemetry Starter supports all the
-[SDK Autoconfiguration](/docs/zero-code/java/agent/configuration/#sdk-autoconfiguration)
+[SDK Autoconfiguration](/docs/zero-code/java/agent/configuration/#sdk-configuration)
 (since 2.2.0).
 
 You can update the configuration with properties in the `application.properties`

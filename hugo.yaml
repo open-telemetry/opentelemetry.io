@@ -20,6 +20,11 @@ languages:
     languageName: 日本語 (Japanese)
     params:
       description: OpenTelemetryプロジェクト公式サイト
+  pt: # cSpell:ignore Português Projeto
+    languageName: Português
+    languageCode: pt-BR
+    params:
+      description: Site do Projeto OpenTelemetry
   zh:
     languageName: 中文 (Chinese)
     languageCode: zh-cn
@@ -262,6 +267,19 @@ module:
       source: content/en/docs
       target: content/docs
       lang: zh
+
+    ## pt
+    - source: content/pt
+      target: content
+      lang: pt
+    # fallback pages
+    - source: content/en/announcements
+      target: content/announcements
+      lang: pt
+    - excludeFiles: specs/*
+      source: content/en/docs
+      target: content/docs
+      lang: pt
 
     ## static
     - source: static
