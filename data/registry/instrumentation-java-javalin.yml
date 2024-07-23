@@ -1,0 +1,15 @@
+# cspell:ignore javalin
+title: javalin instrumentation
+registryType: instrumentation
+language: java
+tags:
+  - javalin
+  - instrumentation
+  - java
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/javalin-5.0
+license: Apache 2.0
+description: javalin instrumentation
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-07-08
