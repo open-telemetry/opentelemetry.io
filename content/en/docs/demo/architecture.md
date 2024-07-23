@@ -12,7 +12,7 @@ generator which uses [Locust](https://locust.io/) to fake user traffic.
 ```mermaid
 graph TD
 subgraph Service Diagram
-accountingservice(Accounting Service):::golang
+accountingservice(Accounting Service):::dotnet
 adservice(Ad Service):::java
 cache[(Cache<br/>&#40redis&#41)]
 cartservice(Cart Service):::dotnet

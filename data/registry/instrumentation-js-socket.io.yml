@@ -16,4 +16,4 @@ createdAt: 2022-10-27
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-socket.io'
-  version: 0.40.0
+  version: 0.41.0

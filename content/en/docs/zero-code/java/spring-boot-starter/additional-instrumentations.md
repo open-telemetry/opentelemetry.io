@@ -1,6 +1,6 @@
 ---
 title: Additional instrumentation
-weight: 50
+weight: 60
 ---
 
 The OpenTelemetry Spring Boot starter provides
