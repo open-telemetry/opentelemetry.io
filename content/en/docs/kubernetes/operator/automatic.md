@@ -317,14 +317,10 @@ spec:
         value: fs,grpc # comma-separated list of the instrumentation package names without the `@opentelemetry/instrumentation-` prefix.
 ```
 
-{{% alert title="Notes" color="info" %}}
-
-If both environment variables are set, `OTEL_NODE_ENABLED_INSTRUMENTATIONS` is
-applied first, and then `OTEL_NODE_DISABLED_INSTRUMENTATIONS` is applied to that
-list. Therefore, if the same instrumentation is included in both lists, that
-instrumentation will be disabled.
-
-{{% /alert %}}
+> If both environment variables are set, `OTEL_NODE_ENABLED_INSTRUMENTATIONS` is
+> applied first, and then `OTEL_NODE_DISABLED_INSTRUMENTATIONS` is applied to
+> that list. Therefore, if the same instrumentation is included in both lists,
+> that instrumentation will be disabled.
 
 #### Learn more {#js-learn-more}
 
