@@ -1,0 +1,16 @@
+# cSpell:ignore otelslog
+title: slog log bridge
+registryType: log-bridge
+language: go
+tags:
+  - slog
+  - log-bridge
+  - go
+license: Apache 2.0
+description:
+  Package otelslog provides an OpenTelemetry log bridge for `log/slog`.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelslog
+createdAt: 2024-04-05

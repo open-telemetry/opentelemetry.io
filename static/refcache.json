@@ -51,6 +51,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-06-04T17:29:49.77219755+02:00"
   },
+  "https://7asecurity.com/reports/pentest-report-opentelemetry.pdf": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-22T14:20:49.972502516Z"
+  },
   "https://access.redhat.com/products/ansible-tower-red-hat": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:05:55.59597-05:00"
@@ -994,6 +998,10 @@
   "https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics.html": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:52:54.099142-05:00"
+  },
+  "https://docs.aws.amazon.com/lambda/latest/dg/ruby-handler.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-10T17:01:44.550734457Z"
   },
   "https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html": {
     "StatusCode": 206,
@@ -6507,6 +6515,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-06-04T11:05:52.856746897+02:00"
   },
+  "https://opentelemetry.io/docs/instrumentation/php/automatic/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-10T17:01:42.679794935Z"
+  },
   "https://opentelemetry.io/docs/languages/cpp/exporters/": {
     "StatusCode": 206,
     "LastSeen": "2024-04-30T09:31:38.598060401Z"
@@ -7639,6 +7651,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-07-18T09:04:56.296529985Z"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelzerolog": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-22T08:21:47.06167143Z"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/contrib/detectors/aws/ec2": {
     "StatusCode": 200,
     "LastSeen": "2024-05-27T15:24:39.997553+02:00"
@@ -8055,6 +8071,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-22T17:25:05.672589+01:00"
   },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-action_mailer": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-10T17:01:43.869580741Z"
+  },
   "https://rubygems.org/gems/opentelemetry-instrumentation-action_pack": {
     "StatusCode": 200,
     "LastSeen": "2024-01-22T15:38:22.124468+01:00"
@@ -8082,6 +8102,10 @@
   "https://rubygems.org/gems/opentelemetry-instrumentation-all": {
     "StatusCode": 200,
     "LastSeen": "2024-01-16T17:59:00.831876+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-aws_lambda": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-10T17:01:44.79848698Z"
   },
   "https://rubygems.org/gems/opentelemetry-instrumentation-aws_sdk": {
     "StatusCode": 200,
@@ -9710,6 +9734,10 @@
   "https://www.oracle.com/technical-resources/articles/javase/jmx.html": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:55:46.046387-05:00"
+  },
+  "https://www.ostif.org/otel-audit-complete/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-22T14:20:47.739450411Z"
   },
   "https://www.otelbin.io/": {
     "StatusCode": 200,
