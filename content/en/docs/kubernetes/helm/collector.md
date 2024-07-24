@@ -42,8 +42,6 @@ exporters:
   debug: {}
 extensions:
   health_check: {}
-  memory_ballast:
-    size_in_percentage: 40
 processors:
   batch: {}
   memory_limiter:
@@ -78,7 +76,6 @@ receivers:
 service:
   extensions:
     - health_check
-    - memory_ballast
   pipelines:
     logs:
       exporters:
