@@ -19,3 +19,4 @@ createdAt: 2024-07-08
 package:
   registry: gems
   name: opentelemetry-instrumentation-aws_lambda
+  version: 0.1.0

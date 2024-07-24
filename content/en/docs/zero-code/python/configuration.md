@@ -165,12 +165,16 @@ in too much or unwanted data.
 
 You can omit specific packages from instrumentation by using the
 `OTEL_PYTHON_DISABLED_INSTRUMENTATIONS` environment variable. The environment
-variable can be set to a comma-separated list of package names to exclude from
-instrumentation.
+variable can be set to a comma-separated list of instrumentations entry point
+names to exclude from instrumentation. Most of the time the entry point name is
+the same as the package name and it is set in the
+`project.entry-points.opentelemetry_instrumentor` table in the package
+`pyproject.toml` file.
 
-For example, if your Python program uses the `redis` and `kafka-python`
+For example, if your Python program uses the `redis`,`kafka-python` and `grpc`
 packages, by default the agent will use the
-`opentelemetry-instrumentation-redis` and
-`opentelemetry-instrumentation-kafka-python` packages to instrument them. To
-disable this, you can set
-`OTEL_PYTHON_DISABLED_INSTRUMENTATIONS=redis,kafka-python`.
+`opentelemetry-instrumentation-redis`,
+`opentelemetry-instrumentation-kafka-python` and
+`opentelemetry-instrumentation-grpc` packages to instrument them. To disable
+this, you can set
+`OTEL_PYTHON_DISABLED_INSTRUMENTATIONS=redis,kafka,grpc_client`.
