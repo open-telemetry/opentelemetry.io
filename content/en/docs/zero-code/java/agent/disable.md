@@ -3,7 +3,7 @@ title: Suppressing specific instrumentation
 linkTitle: Suppressing instrumentation
 weight: 11
 # prettier-ignore
-cSpell:ignore: akka armeria classloaders couchbase Customizer datasource dbcp Dotel dropwizard dubbo enduser finatra hikari hikaricp HSET httpasyncclient httpclient hystrix jaxrs jaxws jedis jodd kotlinx logback logmanager mojarra myfaces okhttp oshi pekko rabbitmq ratpack rediscala redisson restlet rocketmq serverlessapis spymemcached twilio vaadin vertx vibur webflux webmvc
+cSpell:ignore: akka armeria classloaders clickhouse couchbase Customizer datasource dbcp Dotel dropwizard dubbo enduser finatra hikari hikaricp HSET httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jodd kotlinx ktor logback logmanager mojarra mybatis myfaces okhttp oshi pekko rabbitmq ratpack rediscala redisson restlet rocketmq serverlessapis shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
 
 ## Disabling the agent entirely
@@ -91,7 +91,7 @@ corresponding instrumentation name: {{% /config_option %}}
 | Eclipse Vert.x Kafka Client                      | `vertx-kafka-client`                        |
 | Eclipse Vert.x Redis Client                      | `vertx-redis-client`                        |
 | Eclipse Vert.x RxJava                            | `vertx-rx-java`                             |
-| Eclipse Vert.x Sql Client                        | `vertx-sql-client`                          |
+| Eclipse Vert.x SQL Client                        | `vertx-sql-client`                          |
 | Eclipse Vert.x Web                               | `vertx-web`                                 |
 | Elasticsearch client                             | `elasticsearch-transport`                   |
 | Elasticsearch REST client                        | `elasticsearch-rest`                        |
