@@ -313,6 +313,6 @@
 - name: APImetrics
   url: https://apicontext.com/
   docsUrl: https://docs.apimetrics.io/docs/export-with-opentelemetry
-  components: [Exporter]
+  components: [Python]
   oss: false
   cncf: false
