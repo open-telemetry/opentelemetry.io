@@ -177,4 +177,4 @@ packages, by default the agent will use the
 `opentelemetry-instrumentation-kafka-python` and
 `opentelemetry-instrumentation-grpc` packages to instrument them. To disable
 this, you can set
-`OTEL_PYTHON_DISABLED_INSTRUMENTATIONS=redis,kafka-python,grpc_client`.
+`OTEL_PYTHON_DISABLED_INSTRUMENTATIONS=redis,kafka,grpc_client`.
