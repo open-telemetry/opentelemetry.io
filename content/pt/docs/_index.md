@@ -2,7 +2,6 @@
 title: Documentação
 linkTitle: Docs
 menu: { main: { weight: 10 } }
-aliases: [/docs/workshop/*]
 default_lang_commit: 2d88c10e1a14220a88a6e4859acb4047f49b6519
 ---
 
