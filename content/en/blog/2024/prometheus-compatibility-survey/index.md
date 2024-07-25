@@ -1,7 +1,7 @@
 ---
 title: Insights from the Prometheus Compatibility Survey
 linkTitle: Prometheus Compatibility Survey
-date: 2024-07-11
+date: 2024-07-25
 author: '[David Ashpole](https://github.com/dashpole) (Google)'
 issue: https://github.com/open-telemetry/sig-end-user/issues/24
 sig: End-User SIG
