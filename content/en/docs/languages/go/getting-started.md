@@ -117,7 +117,6 @@ go get "go.opentelemetry.io/otel" \
   "go.opentelemetry.io/otel/sdk/metric" \
   "go.opentelemetry.io/otel/sdk/resource" \
   "go.opentelemetry.io/otel/sdk/trace" \
-  "go.opentelemetry.io/otel/semconv/v1.24.0" \
   "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"\
   "go.opentelemetry.io/contrib/bridges/otelslog"
 ```
@@ -391,7 +390,7 @@ import (
 	"go.opentelemetry.io/otel/metric"
 )
 
-const name = "rolldice"
+const name = "go.opentelemetry.io/otel/example/dice"
 
 var (
 	tracer = otel.Tracer(name)

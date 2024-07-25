@@ -4,6 +4,9 @@ weight: 30
 cSpell:ignore: customizer distro
 ---
 
+<!-- markdownlint-disable blanks-around-fences -->
+<?code-excerpt path-base="examples/java/spring-starter"?>
+
 This spring starter supports
 [configuration metadata](https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html),
 which means that you can see and autocomplete all available properties in your
@@ -12,7 +15,7 @@ IDE.
 ## General configuration
 
 The OpenTelemetry Starter supports all the
-[SDK Autoconfiguration](/docs/zero-code/java/agent/configuration/#sdk-autoconfiguration)
+[SDK Autoconfiguration](/docs/zero-code/java/agent/configuration/#sdk-configuration)
 (since 2.2.0).
 
 You can update the configuration with properties in the `application.properties`
@@ -119,16 +122,20 @@ dependencies {
 
 {{% /tab %}} {{< /tabpane>}}
 
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/FilterPaths.java"?>
 ```java
+package otel;
+
 import io.opentelemetry.api.trace.SpanKind;
 import io.opentelemetry.contrib.sampler.RuleBasedRoutingSampler;
 import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider;
-import io.opentelemetry.semconv.SemanticAttributes;
+import io.opentelemetry.semconv.UrlAttributes;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class OpenTelemetryConfig {
+public class FilterPaths {
 
   @Bean
   public AutoConfigurationCustomizerProvider otelCustomizer() {
@@ -136,18 +143,23 @@ public class OpenTelemetryConfig {
         p.addSamplerCustomizer(
             (fallback, config) ->
                 RuleBasedRoutingSampler.builder(SpanKind.SERVER, fallback)
-                    .drop(SemanticAttributes.URL_PATH, "^/actuator")
+                    .drop(UrlAttributes.URL_PATH, "^/actuator")
                     .build());
   }
 }
 ```
+<!-- prettier-ignore-end -->
 
 ### Configure the exporter programmatically
 
 You can also configure OTLP exporters programmatically. This configuration
 replaces the default OTLP exporter and adds a custom header to the requests.
 
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/CustomAuth.java"?>
 ```java
+package otel;
+
 import io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporter;
 import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider;
 import java.util.Collections;
@@ -156,8 +168,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class OpenTelemetryConfig {
-
+public class CustomAuth {
   @Bean
   public AutoConfigurationCustomizerProvider otelCustomizer() {
     return p ->
@@ -181,6 +192,7 @@ public class OpenTelemetryConfig {
   }
 }
 ```
+<!-- prettier-ignore-end -->
 
 ## Resource Providers
 
