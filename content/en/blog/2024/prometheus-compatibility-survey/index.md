@@ -29,7 +29,7 @@ It has been used to implement Prometheus
 and the OpenTelemetry Collector's
 [Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver),
 [Prometheus Remote Write exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusremotewriteexporter),
-and 
+and
 [Prometheus (pull) exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusexporter).
 
 One of the most challenging areas to reconcile is that OpenTelemetry metric
@@ -59,8 +59,8 @@ results can be found
 
 ## Overall takeaways
 
-- A majority (60%) prefer leaving the dots in the metric name, rather
-  than translating to underscores.
+- A majority (60%) prefer leaving the dots in the metric name, rather than
+  translating to underscores.
 - A slight majority (54%) prefer having the unit in the name, but only 37% think
   it should be required.
 - Respondents who prefer units in the metric name are likely to also prefer
