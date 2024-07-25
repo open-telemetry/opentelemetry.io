@@ -2,6 +2,7 @@
 title: Performance
 description: Performance reference for the OpenTelemetry Java agent
 weight: 75
+cSpell:ignore: Dotel
 ---
 
 The OpenTelemetry Java agent instruments your application by running inside the
