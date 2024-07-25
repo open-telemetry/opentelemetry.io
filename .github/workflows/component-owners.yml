@@ -13,3 +13,4 @@ jobs:
       - uses: dyladan/component-owners@v0.1.0
         with:
           config-file: .github/component-owners.yml
+          repo-token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
