@@ -13,7 +13,7 @@ como [rastros](concepts/signals/traces/), [métricas](concepts/signals/metrics/)
 [logs](concepts/signals/logs/).
 
 Como padrão do setor, OpenTelemetry é [suportado por mais de 40 fornecedores de observabilidade](/ecosystem/vendors/),
-integrados por muitas [bibliotecas, serviços e aplicativos](/ecosystem/integrations/)
+integrado em diversas [bibliotecas, serviços e aplicativos](/ecosystem/integrations/)
 e é utilizado por [muitos usuários finais](/ecosystem/adopters/).
 
 ![Arquitetura de Referência do OpenTelemetry](/img/otel-diagram.svg)
