@@ -3,7 +3,7 @@ title: Suppressing specific instrumentation
 linkTitle: Suppressing instrumentation
 weight: 11
 # prettier-ignore
-cSpell:ignore: akka armeria classloaders couchbase Customizer datasource dbcp Dotel dropwizard dubbo enduser finatra hikari hikaricp HSET httpasyncclient httpclient hystrix jaxrs jaxws jedis jodd kotlinx logback logmanager mojarra myfaces okhttp oshi pekko rabbitmq ratpack rediscala redisson restlet rocketmq serverlessapis spymemcached twilio vaadin vertx vibur webflux webmvc
+cSpell:ignore: akka armeria classloaders clickhouse couchbase Customizer datasource dbcp Dotel dropwizard dubbo enduser finatra hikari hikaricp HSET httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jodd kotlinx ktor logback logmanager mojarra mybatis myfaces okhttp oshi pekko rabbitmq ratpack rediscala redisson restlet rocketmq serverlessapis shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
 
 ## Disabling the agent entirely
@@ -66,6 +66,7 @@ corresponding instrumentation name: {{% /config_option %}}
 | Apache Pekko HTTP                                | `pekko-http`                                |
 | Apache Pulsar                                    | `pulsar`                                    |
 | Apache RocketMQ                                  | `rocketmq-client`                           |
+| Apache Shenyu                                    | `apache-shenyu`                             |
 | Apache Struts 2                                  | `struts`                                    |
 | Apache Tapestry                                  | `tapestry`                                  |
 | Apache Tomcat                                    | `tomcat`                                    |
@@ -75,6 +76,7 @@ corresponding instrumentation name: {{% /config_option %}}
 | AWS Lambda                                       | `aws-lambda`                                |
 | AWS SDK                                          | `aws-sdk`                                   |
 | Azure SDK                                        | `azure-core`                                |
+| Clickhouse Client                                | `clickhouse`                                |
 | Couchbase                                        | `couchbase`                                 |
 | C3P0                                             | `c3p0`                                      |
 | Dropwizard Views                                 | `dropwizard-views`                          |
@@ -87,10 +89,13 @@ corresponding instrumentation name: {{% /config_option %}}
 | Eclipse Mojarra                                  | `jsf-mojarra`                               |
 | Eclipse Vert.x HttpClient                        | `vertx-http-client`                         |
 | Eclipse Vert.x Kafka Client                      | `vertx-kafka-client`                        |
+| Eclipse Vert.x Redis Client                      | `vertx-redis-client`                        |
 | Eclipse Vert.x RxJava                            | `vertx-rx-java`                             |
+| Eclipse Vert.x SQL Client                        | `vertx-sql-client`                          |
 | Eclipse Vert.x Web                               | `vertx-web`                                 |
 | Elasticsearch client                             | `elasticsearch-transport`                   |
 | Elasticsearch REST client                        | `elasticsearch-rest`                        |
+| Finagle                                          | `finagle-http`                              |
 | Google Guava                                     | `guava`                                     |
 | Google HTTP client                               | `google-http-client`                        |
 | Google Web Toolkit                               | `gwt`                                       |
@@ -98,7 +103,9 @@ corresponding instrumentation name: {{% /config_option %}}
 | GraphQL Java                                     | `graphql-java`                              |
 | GRPC                                             | `grpc`                                      |
 | Hibernate                                        | `hibernate`                                 |
+| Hibernate Reactive                               | `hibernate-reactive`                        |
 | HikariCP                                         | `hikaricp`                                  |
+| InfluxDB                                         | `influxdb`                                  |
 | Java HTTP Client                                 | `java-http-client`                          |
 | Java `HttpURLConnection`                         | `http-url-connection`                       |
 | Java JDBC                                        | `jdbc`                                      |
@@ -108,6 +115,7 @@ corresponding instrumentation name: {{% /config_option %}}
 | Java Servlet                                     | `servlet`                                   |
 | java.util.concurrent                             | `executors`                                 |
 | java.util.logging                                | `java-util-logging`                         |
+| Javalin                                          | `javalin`                                   |
 | JAX-RS (Client)                                  | `jaxrs-client`                              |
 | JAX-RS (Server)                                  | `jaxrs`                                     |
 | JAX-WS                                           | `jaxws`                                     |
@@ -117,6 +125,7 @@ corresponding instrumentation name: {{% /config_option %}}
 | Jodd HTTP                                        | `jodd-http`                                 |
 | JSP                                              | `jsp`                                       |
 | K8s Client                                       | `kubernetes-client`                         |
+| Ktor                                             | `ktor`                                      |
 | kotlinx.coroutines                               | `kotlinx-coroutines`                        |
 | Log4j Appender                                   | `log4j-appender`                            |
 | Log4j MDC (1.x)                                  | `log4j-mdc`                                 |
@@ -125,6 +134,7 @@ corresponding instrumentation name: {{% /config_option %}}
 | Logback MDC                                      | `logback-mdc`                               |
 | Micrometer                                       | `micrometer`                                |
 | MongoDB                                          | `mongo`                                     |
+| MyBatis                                          | `mybatis`                                   |
 | Netflix Hystrix                                  | `hystrix`                                   |
 | Netty                                            | `netty`                                     |
 | OkHttp                                           | `okhttp`                                    |
@@ -136,12 +146,14 @@ corresponding instrumentation name: {{% /config_option %}}
 | OSHI (Operating System and Hardware Information) | `oshi`                                      |
 | Play Framework                                   | `play`                                      |
 | Play WS HTTP Client                              | `play-ws`                                   |
+| Quarkus                                          | `quarkus`                                   |
 | Quartz                                           | `quartz`                                    |
 | R2DBC                                            | `r2dbc`                                     |
 | RabbitMQ Client                                  | `rabbitmq`                                  |
 | Ratpack                                          | `ratpack`                                   |
 | ReactiveX RxJava                                 | `rxjava`                                    |
 | Reactor                                          | `reactor`                                   |
+| Reactor Kafka                                    | `reactor-kafka`                             |
 | Reactor Netty                                    | `reactor-netty`                             |
 | Redis Jedis                                      | `jedis`                                     |
 | Redis Lettuce                                    | `lettuce`                                   |
@@ -170,6 +182,7 @@ corresponding instrumentation name: {{% /config_option %}}
 | Undertow                                         | `undertow`                                  |
 | Vaadin                                           | `vaadin`                                    |
 | Vibur DBCP                                       | `vibur-dbcp`                                |
+| XXL-JOB                                          | `xxl-job`                                   |
 | ZIO                                              | `zio`                                       |
 
 **Note:** When using environment variables, dashes (`-`) should be converted to

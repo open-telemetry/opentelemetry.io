@@ -75,6 +75,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:05:43.542109-05:00"
   },
+  "https://apicontext.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-24T10:16:33.431203777Z"
+  },
   "https://apisix.apache.org/blog/2022/02/28/apisix-integration-opentelemetry-plugin/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:05:33.06745-05:00"
@@ -330,6 +334,10 @@
   "https://cloud-native.slack.com/archives/C014L2KCTE3": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:05.306086-05:00"
+  },
+  "https://cloud-native.slack.com/archives/C01LSCJBXDZ": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-13T19:50:17.347862467Z"
   },
   "https://cloud-native.slack.com/archives/C01N5UCHTEH": {
     "StatusCode": 200,
@@ -870,6 +878,10 @@
   "https://docs.ansible.com/ansible/latest/collections/grafana/grafana/": {
     "StatusCode": 206,
     "LastSeen": "2024-03-19T11:21:52.991213698Z"
+  },
+  "https://docs.apimetrics.io/docs/export-with-opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-24T10:16:35.028948386Z"
   },
   "https://docs.appdynamics.com/latest/en/application-monitoring/appdynamics-for-opentelemetry": {
     "StatusCode": 200,
@@ -5571,6 +5583,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:06:15.993792-05:00"
   },
+  "https://landscape.cncf.io/guide#observability-and-analysis--observability": {
+    "StatusCode": 200,
+    "LastSeen": "2024-06-12T14:28:14.584941196Z"
+  },
   "https://laravel.com/docs/10.x/installation": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:34.641048-05:00"
@@ -7887,6 +7903,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-06-18T13:27:46.505689-04:00"
   },
+  "https://prometheus.github.io/client_java/otel/otlp/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-13T19:50:16.163446592Z"
+  },
   "https://prometheus.io": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:07:18.12399-05:00"
@@ -7894,6 +7914,14 @@
   "https://prometheus.io/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:07:18.145976-05:00"
+  },
+  "https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-18T14:24:38.978819371Z"
+  },
+  "https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/#support-utf-8-metric-and-label-names": {
+    "StatusCode": 206,
+    "LastSeen": "2024-06-12T14:28:16.265327643Z"
   },
   "https://prometheus.io/docs/alerting/latest/alertmanager/": {
     "StatusCode": 206,
