@@ -15,3 +15,4 @@ jobs:
         with:
           config-file: .github/component-owners.yml
           repo-token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          assign-owners: false
