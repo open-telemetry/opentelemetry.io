@@ -6,7 +6,7 @@ aliases:
   - /docs/languages/python/automatic/configuration
   - /docs/languages/python/automatic/agent-config
 # prettier-ignore
-cSpell:ignore: distro healthcheck mkdir myapp Starlette uninstrumented urllib virtualenv
+cSpell:ignore: distro healthcheck instrumentor mkdir myapp pyproject Starlette uninstrumented urllib virtualenv
 ---
 
 The agent is highly configurable, either by:
