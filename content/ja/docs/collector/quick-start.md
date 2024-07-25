@@ -31,8 +31,7 @@ OpenTelemetryコレクターは、[トレース](/docs/concepts/signals/traces/)
   export GOBIN=${GOBIN:-$(go env GOPATH)/bin}
   ```
 
-[^1]:
-    詳細については、Goの公式サイトにある[Your first program](https://go.dev/doc/code#Command)のドキュメントを参照してください。
+[^1]: 詳細については、Goの公式サイトにある[Your first program](https://go.dev/doc/code#Command)のドキュメントを参照してください。
 
 ## 環境の設定
 
@@ -127,6 +126,5 @@ OpenTelemetryコレクターは、[トレース](/docs/concepts/signals/traces/)
 [gobin]: https://pkg.go.dev/cmd/go#hdr-Environment_variables
 [logs]: /docs/concepts/signals/logs/
 [metrics]: /docs/concepts/signals/metrics/
-[telemetrygen]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/telemetrygen
+[telemetrygen]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/telemetrygen
 [traces]: /docs/concepts/signals/traces/
