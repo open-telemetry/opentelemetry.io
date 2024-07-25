@@ -8,6 +8,7 @@ jobs:
     name: Assign component owners
     permissions:
       contents: read
+      issues: write
       pull-requests: write
     steps:
       - uses: dyladan/component-owners@v0.1.0
