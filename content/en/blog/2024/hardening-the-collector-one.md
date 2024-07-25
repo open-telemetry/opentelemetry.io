@@ -4,7 +4,7 @@ linkTitle: A new default bind address for the Collector
 date: 2024-07-02
 author: '[Pablo Baeyens](https://github.com/mx-psi) (OpenTelemetry, Datadog)'
 # prettier-ignore
-cSpell:ignore: awsfirehose awsproxy awsxray Baeyens jaegerremotesampling loki OSTIF remotetap sapm signalfx skywalking splunk
+cSpell:ignore: awsfirehose awsproxy awsxray Baeyens jaegerremotesampling loki remotetap sapm signalfx skywalking splunk
 issue: 4760
 sig: Collector SIG
 ---
