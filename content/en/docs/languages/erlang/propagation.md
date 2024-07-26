@@ -4,7 +4,9 @@ weight: 60
 cSpell:ignore: elli
 ---
 
-## Cross Service Propagators
+{{% docs/languages/propagation erlang %}}
+
+## Automatic context propagation
 
 Distributed traces extend beyond a single service, meaning some context must be
 propagated across services to create the parent-child relationship between
@@ -12,18 +14,18 @@ Spans. This requires cross service
 [_context propagation_](/docs/specs/otel/overview/#context-propagation), a
 mechanism where identifiers for a Trace are sent to remote processes.
 
-Instrumentation Libraries for HTTP frameworks and servers like
+Instrumentation libraries for HTTP frameworks and servers like
 [Phoenix](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_phoenix),
 [Cowboy](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_cowboy),
 [Elli](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_elli)
 and clients like
 [Tesla](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_tesla)
-will automatically inject or extract context using the globally registered
+automatically inject or extract context using the globally registered
 propagators. By default the global propagators used are the W3C
 [Trace Context](https://w3c.github.io/trace-context/) and
 [Baggage](https://www.w3.org/TR/baggage/) formats.
 
-These global propagators can be configured by the Application environment
+You can configure global propagators using the the OTP application environment
 variable `text_map_propagators`:
 
 {{< tabpane text=true >}} {{% tab Erlang %}}
@@ -47,13 +49,15 @@ text_map_propagators: [:baggage, :trace_context],
 
 {{% /tab %}} {{< /tabpane >}}
 
-Or through a comma separated list with the environment variable
+You can also pass a comma separated list using the environment variable
 `OTEL_PROPAGATORS`. Both forms of configuration accept the values
 `trace_context`, `baggage`, [`b3`](https://github.com/openzipkin/b3-propagation)
 and `b3multi`.
 
-To manually inject or extract context the `otel_propagator_text_map` module can
-be used:
+## Manual context propagation
+
+To manually inject or extract context, you can use the
+`otel_propagator_text_map` module:
 
 {{< tabpane text=true >}} {{% tab Erlang %}}
 
@@ -81,3 +85,8 @@ headers = :otel_propagator_text_map.inject([])
 globally registered propagators. To use a specific propagator
 `otel_propagator_text_map:inject/2` and `otel_propagator_text_map:extract/2` can
 be used with the first argument being the name of the propagator module to call.
+
+## Next steps
+
+To learn more about propagation, read the
+[Propagators API specification](/docs/specs/otel/context/api-propagators/).

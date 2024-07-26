@@ -1,0 +1,18 @@
+name: Component owners
+on:
+  pull_request_target:
+
+jobs:
+  run_self:
+    runs-on: ubuntu-latest
+    name: Assign component owners
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: dyladan/component-owners@v0.1.0
+        with:
+          config-file: .github/component-owners.yml
+          repo-token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          assign-owners: false

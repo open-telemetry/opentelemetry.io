@@ -14,4 +14,4 @@ createdAt: 2020-11-09
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-mongodb'
-  version: 0.45.0
+  version: 0.46.0
