@@ -26,7 +26,7 @@
     "_hugo": "hugo --cleanDestinationDir",
     "_list:check:*": "npm run --loglevel=warn | grep -Ee '^\\s*check:[^:]+$'",
     "_list:fix:*": "npm run --loglevel=warn | grep -Ee '^\\s*fix:[^:]+$' | grep -v 'fix:all'",
-    "_ls-bad-filenames": "find assets content static -name '*_*' ! -name '_*'",
+    "_ls-bad-filenames": "find assets content static -name '*_*' ! -name '[_.]*'",
     "_prebuild": "npm run seq -- get:submodule cp:spec",
     "_prepare:docsy": "cd themes/docsy && npm install",
     "_prettier:any": "npx prettier --ignore-path ''",
