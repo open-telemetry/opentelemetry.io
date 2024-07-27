@@ -1,9 +1,6 @@
 ---
 title: クイックスタート
-cSpell:ignore: docker dokey dpkg okey telemetrygen
 description: コレクターをセットアップとテレメトリーの収集をすぐに始めてみましょう！
-weight: 1
-cSpell:ignore: gobin
 default_lang_commit: 78f1d31
 ---
 
