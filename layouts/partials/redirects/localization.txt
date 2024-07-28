@@ -1,4 +1,12 @@
-{{/* Redirect for default language when .LanguagePrefix is empty. */ -}}
+{{/* Generate Netlify redirect rules for non-default .Site.Sites */ -}}
+{{/* cSpell:ignore cond */ -}}
+
+{{/*
+  Determine what the default language code is, `en` in most cases. Redirect
+  paths that start with the default language code by effectively stripping the
+  language code from the start of the path. Hugo handles this for the
+  language-code root. The rules below handle it for all other paths using a
+  wildcard. */ -}}
 
 {{ $defaultLang := "" -}}
 {{ with .Site.Sites.Default -}}
@@ -11,7 +19,7 @@
   {{ end -}}
 {{ end -}}
 
-{{/* Process non-default languages. */ -}}
+{{/* Add redirect rules for non-default languages. */ -}}
 
 {{ range after 1 .Sites -}}
 
@@ -19,6 +27,10 @@
 
   # Site localization {{ $siteLang }}
   {{ range $p := .Pages -}}
+
+    {{/* Enable after refactoring is complete:
+    {{ partial "redirects/redirect.txt" $p -}}
+    */ -}}
 
     {{ range $p.Params.redirects -}}
       {{ $fallbackPage := partial "i18n/fallback-page.html" $p -}}
