@@ -98,6 +98,45 @@ OpenTelemetry::SDK.configure do |c|
 end
 ```
 
+### Configuring specific instrumentation libraries with environment variable
+
+#### To disable specific instrumentation libraries
+
+If you prefer to disable specific instrumentation libraries more selectively
+using environment variables, you can do that too. An instrumentation disabled by
+environment variable will take precedence over local config. The convention for
+environment variable name is the library name, upcased with `::` replaced by
+underscores, `OPENTELEMETRY` shortened to `OTEL_LANG`, and `_ENABLED` appended.
+
+For example:
+
+```bash
+export OTEL_RUBY_INSTRUMENTATION_SINATRA_ENABLED=false
+```
+
+#### To configure specific instrumentation libraries
+
+You can also define the option for specific instrumentation libraries using
+environment variables. By convention, the environment variable will be the name
+of the instrumentation, with uppercase, `::` replaced by underscores,
+`OPENTELEMETRY` shortened to `OTEL_{LANG}`, and `_CONFIG_OPTS` appended.
+
+For example, the environment variable name for
+OpenTelemetry::Instrumentation::Faraday will be
+`OTEL_RUBY_INSTRUMENTATION_FARADAY_CONFIG_OPTS`. A value of
+`peer_service=new_service;span_kind=client` will override the options set from
+[previous section](#configuring-specific-instrumentation-libraries) for Faraday.
+
+```bash
+export OTEL_RUBY_INSTRUMENTATION_FARADAY_CONFIG_OPTS="peer_service=new_service;span_kind=client"
+```
+
+For an array option, simply separate the values with commas (e.g.,
+option=a,b,c,d).<br> For a boolean option, set the value to true or false (e.g.,
+option=true).<br> For integer, string, enum, set the value as a string (e.g.,
+option=string).<br> Callable options are not allowed to be set through
+environment variables.
+
 ### Next steps
 
 Instrumentation libraries are the easiest way to generate lots of useful

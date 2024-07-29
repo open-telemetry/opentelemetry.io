@@ -11,6 +11,7 @@ for the following languages:
 - Java
 - JavaScript
 - Python
+- Ruby
 
 These can be added to your Lambda using the AWS portal to automatically
 instrument your application. These layers do not include the Collector which is
@@ -80,12 +81,19 @@ information about supported Python versions, see the
 [OpenTelemetry Python documentation](https://github.com/open-telemetry/opentelemetry-python/blob/main/README.md#supported-runtimes)
 and the package on [PyPi](https://pypi.org/project/opentelemetry-api/).
 
+{{% /tab %}} {{% tab Ruby %}}
+
+The Lambda layer supports Ruby 3.2 and 3.3 Lambda runtimes. For more information
+about supported OpenTelemetry Ruby SDK and API versions, see the
+[OpenTelemetry Ruby documentation](https://github.com/open-telemetry/opentelemetry-ruby)
+and the package on [RubyGem](https://rubygems.org/search?query=opentelemetry).
+
 {{% /tab %}} {{< /tabpane >}}
 
 ### Configure `AWS_LAMBDA_EXEC_WRAPPER`
 
 Change the entry point of your application by setting
-`AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler` for Node.js or Java, and
+`AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler` for Node.js or Java or Ruby, and
 `AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-instrument` for Python. These wrapper scripts
 will invoke your Lambda application with the automatic instrumentation applied.
 
@@ -130,6 +138,11 @@ uses the protocol `http/protobuf`
 
 `OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf` supports: `http/protobuf` and
 `http/json` `OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318`
+
+{{% /tab %}} {{% tab Ruby %}}
+
+`OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf` supports: `http/protobuf`
+`OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318`
 
 {{% /tab %}} {{< /tabpane >}}
 
