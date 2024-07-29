@@ -1,0 +1,4 @@
+{{ $schemaFiles := partial "schema-file-list" . -}}
+{{ $latestSchemaFile := index $schemaFiles 0 -}}
+
+/schemas/latest  /schemas/{{ $latestSchemaFile.Name -}}
