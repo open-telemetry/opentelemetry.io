@@ -108,7 +108,7 @@ function validateRegistryEntry(file, enc, cb) {
         console.log(error.instancePath);
       }
 
-      if (process.env.GH_ACTIONS) {
+      if (process.env.GITHUB_ACTIONS) {
         console.log(
           `::error file=${file.path},line=${lineNumber},endLine=${lineNumber},title=Registry Schema Validation::${error.message}`,
         );
