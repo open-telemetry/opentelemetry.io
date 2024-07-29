@@ -90,7 +90,7 @@ function getLineNumber(sourceMap, yamlPath) {
 }
 
 function validateRegistryEntry(file, enc, cb) {
-  const registryEntry = yaml.safeLoad(file.contents.toString(), {
+  const registryEntry = yaml.load(file.contents.toString(), {
     schema: yaml.JSON_SCHEMA,
   });
 
