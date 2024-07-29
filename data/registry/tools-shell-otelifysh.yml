@@ -1,4 +1,4 @@
-# cSpell:ignore # add words unknown to cspell, remove this line if not required
+# cSpell:ignore otelify
 title: otelify.sh
 registryType: utilities
 language: shell
@@ -10,7 +10,7 @@ tags:
 urls:
   repo: https://github.com/cisco-open/otelify.sh
 license: Apache 2.0
-description: Ashell script that allows you to instrument almost any application without the need to touch the application's code. It utilizes different zero-code instrumentation solutions provided by the OpenTelemetry project.
+description: A shell script that allows you to instrument almost any application without the need to touch the application's code. It utilizes different zero-code instrumentation solutions provided by the OpenTelemetry project.
 authors:
   - name: Cisco Open
     url: https://github.com/cisco-open
