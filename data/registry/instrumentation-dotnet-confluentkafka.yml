@@ -13,3 +13,4 @@ description: Confluent.Kafka client instrumentation for OpenTelemetry
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2024-07-08
+isFirstParty: false
