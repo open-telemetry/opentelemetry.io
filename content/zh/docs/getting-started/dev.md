@@ -12,7 +12,7 @@ default_lang_commit: e771c886739c4847b332b74f24b09d2769aab875
 
 OpenTelemetry 可以帮到你！为了实现你的目标——自动为dependencies添加 instrumentation 以及使用我们的 API 手动为你自己的代码添加 instrumentation——我们建议你先学习以下概念：
 
-- [什么是 OpenTelemetry？](<(../../what-is-opentelemetry/)>)
+- [什么是 OpenTelemetry？](../../what-is-opentelemetry/)
 - [如何为我的代码库添加 instrumentation？](../../concepts/instrumentation/code-based/)
 
 如果你开发的是被其他软件作为依赖项使用的库、框架或中间件，我们建议你了解如何原生提供可观测性数据：
