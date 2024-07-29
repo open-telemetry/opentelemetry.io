@@ -1035,6 +1035,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:53:34.715996-05:00"
   },
+  "https://docs.centreon.com/pp/integrations/plugin-packs/getting-started/how-to-guides/telegraf/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-07-27T17:54:47.061938869Z"
+  },
   "https://docs.chronosphere.io/ingest/otel/otel-ingest": {
     "StatusCode": 200,
     "LastSeen": "2024-03-19T05:23:55.741827909Z"
