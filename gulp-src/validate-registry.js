@@ -6,8 +6,6 @@ const Ajv = require('ajv');
 const addFormats = require('ajv-formats');
 const addErrors = require('ajv-errors');
 
-const { json } = require('express');
-
 const defaultGlobs = ['data/registry/*.yml'];
 
 let numFilesProcessed = 0,
