@@ -28,9 +28,7 @@
   # Site localization {{ $siteLang }}
   {{ range $p := .Pages -}}
 
-    {{/* Enable after refactoring is complete:
     {{ partial "redirects/redirect.txt" $p -}}
-    */ -}}
 
     {{ range $p.Params.redirects -}}
       {{ $fallbackPage := partial "i18n/fallback-page.html" $p -}}
