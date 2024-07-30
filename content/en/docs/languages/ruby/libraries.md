@@ -121,7 +121,7 @@ of the instrumentation, with uppercase, `::` replaced by underscores,
 `OPENTELEMETRY` shortened to `OTEL_{LANG}`, and `_CONFIG_OPTS` appended.
 
 For example, the environment variable name for
-OpenTelemetry::Instrumentation::Faraday will be
+OpenTelemetry::Instrumentation::Faraday is
 `OTEL_RUBY_INSTRUMENTATION_FARADAY_CONFIG_OPTS`. A value of
 `peer_service=new_service;span_kind=client` will override the options set from
 [previous section](#configuring-specific-instrumentation-libraries) for Faraday.
