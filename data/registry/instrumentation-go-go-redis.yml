@@ -12,3 +12,4 @@ authors:
 urls:
   repo: https://github.com/redis/go-redis/tree/master/extra/redisotel
 createdAt: 2021-04-19
+isFirstParty: true

@@ -17,3 +17,4 @@ authors:
 urls:
   repo: https://github.com/uptrace/opentelemetry-go-extra/tree/main/otelgorm
 createdAt: 2021-10-25
+isFirstParty: true
