@@ -18,7 +18,7 @@ API 手动为你自己的代码添加插桩——我们建议你先学习以下�
 
 如果你开发的是被其他软件作为依赖项使用的库、框架或中间件，我们建议你了解如何原生提供可观测性数据：
 
-- [如何为我的库添加原生 instrumentation？](../../concepts/instrumentation/libraries/)
+- [如何为我的库添加原生插桩？](../../concepts/instrumentation/libraries/)
 
 接下来，你可以深入了解一些你会用到的[编程语言](../../languages/)文档：
 
