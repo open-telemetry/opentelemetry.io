@@ -25,10 +25,10 @@ The `opentelemetry-distro` package installs the API, SDK, and the
 
 {{% alert title="Note" color="info" %}}
 
-You must install a distro package to get auto instrumentation
-working. The `opentelemetry-distro` package contains the default distro to
-automatically configure some of the common options for users.
-For more information, see [OpenTelemetry distro](/docs/languages/python/distro/).
+You must install a distro package to get auto instrumentation working. The
+`opentelemetry-distro` package contains the default distro to automatically
+configure some of the common options for users. For more information, see
+[OpenTelemetry distro](/docs/languages/python/distro/).
 
 {{% /alert %}}
 
@@ -41,9 +41,8 @@ example, if you already installed the `flask` package, running
 
 {{% alert title="Note" color="info" %}}
 
-If you leave out `-a install`, the command will simply list out the
-recommended instrumentation libraries to be installed. More information can be
-found
+If you leave out `-a install`, the command will simply list out the recommended
+instrumentation libraries to be installed. More information can be found
 [here](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation#opentelemetry-bootstrap).
 
 {{% /alert %}}
