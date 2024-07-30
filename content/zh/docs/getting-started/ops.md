@@ -17,4 +17,4 @@ OpenTelemetry 可以帮到你！为了实现在不修改应用程序代码的情
 - [如何设置 Collector？](../../collector/)
 - [如何使用 OpenTelemetry Operator 在 Kubernetes 中实现自动化？](../../kubernetes/operator/)
 
-如果你想要实际体验这些功能，我们的官方演示项目提供了一套完整的[应用程序](/ecosystem/demo/)，非常适合实践学习。
+如果你想要实际体验这些功能，我们的[官方演示库提供了一套完整的应用](/ecosystem/demo/)，非常适合实践学习。
