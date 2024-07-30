@@ -102,9 +102,8 @@ end
 
 #### To disable specific instrumentation libraries
 
-If you prefer to disable specific instrumentation libraries more selectively
-using environment variables, you can do that too. An instrumentation disabled by
-environment variable will take precedence over local config. The convention for
+You can also disable specific instrumentation libraries using environment variables. An instrumentation disabled by
+environment variable takes precedence over local config. The convention for
 environment variable name is the library name, upcased with `::` replaced by
 underscores, `OPENTELEMETRY` shortened to `OTEL_LANG`, and `_ENABLED` appended.
 
