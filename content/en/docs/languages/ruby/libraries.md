@@ -72,6 +72,22 @@ end
 
 To override more instrumentation, add another entry in the `config` map.
 
+#### Overriding configuration for specific instrumentation libraries with environment variable
+
+You can also disable specific instrumentation libraries using environment
+variables. An instrumentation disabled by environment variable takes precedence
+over local config. The convention for environment variable name is the library
+name, upcased with `::` replaced by underscores, `OPENTELEMETRY` shortened to
+`OTEL_LANG`, and `_ENABLED` appended.
+
+For example, the environment variable name for
+OpenTelemetry::Instrumentation::Sinatra is
+`OTEL_RUBY_INSTRUMENTATION_SINATRA_ENABLED`.
+
+```bash
+export OTEL_RUBY_INSTRUMENTATION_SINATRA_ENABLED=false
+```
+
 ### Configuring specific instrumentation libraries
 
 If you prefer more selectively installing and using only specific
@@ -98,22 +114,7 @@ OpenTelemetry::SDK.configure do |c|
 end
 ```
 
-### Configuring specific instrumentation libraries with environment variable
-
-#### To disable specific instrumentation libraries
-
-You can also disable specific instrumentation libraries using environment variables. An instrumentation disabled by
-environment variable takes precedence over local config. The convention for
-environment variable name is the library name, upcased with `::` replaced by
-underscores, `OPENTELEMETRY` shortened to `OTEL_LANG`, and `_ENABLED` appended.
-
-For example:
-
-```bash
-export OTEL_RUBY_INSTRUMENTATION_SINATRA_ENABLED=false
-```
-
-#### To configure specific instrumentation libraries
+#### Configuring specific instrumentation libraries with environment variable
 
 You can also define the option for specific instrumentation libraries using
 environment variables. By convention, the environment variable will be the name
@@ -130,11 +131,14 @@ OpenTelemetry::Instrumentation::Faraday is
 export OTEL_RUBY_INSTRUMENTATION_FARADAY_CONFIG_OPTS="peer_service=new_service;span_kind=client"
 ```
 
-For an array option, simply separate the values with commas (e.g.,
-option=a,b,c,d).<br> For a boolean option, set the value to true or false (e.g.,
-option=true).<br> For integer, string, enum, set the value as a string (e.g.,
-option=string).<br> Callable options are not allowed to be set through
-environment variables.
+| Data Type | Value                      | Example          |
+| --------- | -------------------------- | ---------------- |
+| Array     | string with `,` separation | `option=a,b,c,d` |
+| Boolean   | true/false                 | `option=true`    |
+| Integer   | string                     | `option=string`  |
+| String    | string                     | `option=string`  |
+| Enum      | string                     | `option=string`  |
+| Callable  | not allowed                | N\A              |
 
 ### Next steps
 
