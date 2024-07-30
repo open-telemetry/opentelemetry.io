@@ -26,8 +26,7 @@ The `opentelemetry-distro` package installs the API, SDK, and the
 > **NOTE:** You must install a distro package to get auto instrumentation
 > working. The `opentelemetry-distro` package contains the default distro to
 > automatically configure some of the common options for users.
-> For more information about `opentelemetry-distro` check
-> [here](/docs/languages/python/distro/).
+> For more information, see [OpenTelemetry distro](/docs/languages/python/distro/).
 
 The `opentelemetry-bootstrap -a install` command reads through the list of
 packages installed in your active `site-packages` folder, and installs the
