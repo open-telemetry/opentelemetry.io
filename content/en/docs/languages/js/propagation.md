@@ -455,7 +455,7 @@ the client and server behave as if OpenTelemetry is not used.
 
 This is especially important if your server and client code are libraries, since
 they should only use the OpenTelemetry API. To understand why, read the [concept
-page on how to add instrumentation to your library]((/docs/concepts/instrumentation/libraries/).
+page on how to add instrumentation to your library](/docs/concepts/instrumentation/libraries/).
 
 {{% /alert %}}
 
