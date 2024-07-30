@@ -8,7 +8,7 @@ default_lang_commit: e771c886739c4847b332b74f24b09d2769aab875
 
 - 你是一名软件开发者。
 - 你的目标是通过编写代码来实现可观测性。
-- 你希望你的dependencies能自动生成可观测性数据。
+- 你希望你的依赖项能自动生成可观测性数据。
 
 OpenTelemetry 可以帮到你！为了实现你的目标——自动为dependencies添加 instrumentation 以及使用我们的 API 手动为你自己的代码添加 instrumentation——我们建议你先学习以下概念：
 
