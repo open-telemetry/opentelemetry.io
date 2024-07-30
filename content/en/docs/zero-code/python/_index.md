@@ -81,6 +81,8 @@ For the full list, see the
 The Python package installs require `gcc` and `gcc-c++`, which you may need to
 install if you’re running a slim version of Linux, such as CentOS.
 
+<!-- markdownlint-disable blanks-around-fences -->
+
 - CentOS
   ```sh
   yum -y install python3-devel
