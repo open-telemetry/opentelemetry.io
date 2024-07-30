@@ -19,8 +19,7 @@ OpenTelemetry 可以帮到你！为了实现你的目标——自动为dependenc
 
 - [如何为我的库添加原生 instrumentation？](../../concepts/instrumentation/libraries/)
 
-接下来，你可以深入了解以下文档：
-你正在使用的[编程语言](../../languages/):
+接下来，你可以深入了解一些你会用到的[编程语言](../../languages/)文档：
 
 - [C++](../../languages/cpp/)
 - [.NET](../../languages/net/)
