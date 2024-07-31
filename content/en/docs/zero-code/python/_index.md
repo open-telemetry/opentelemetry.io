@@ -50,7 +50,7 @@ The agent is highly configurable.
 One option is to configure the agent by way of configuration properties from the
 CLI:
 
-```console
+```sh
 opentelemetry-instrument \
     --traces_exporter console,otlp \
     --metrics_exporter console \
@@ -61,7 +61,7 @@ opentelemetry-instrument \
 
 Alternatively, you can use environment variables to configure the agent:
 
-```console
+```sh
 OTEL_SERVICE_NAME=your-service-name \
 OTEL_TRACES_EXPORTER=console,otlp \
 OTEL_METRICS_EXPORTER=console \
@@ -79,44 +79,41 @@ A number of popular Python libraries are auto-instrumented, including
 [Flask](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-flask)
 and
 [Django](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-django).
-You can find the full list
-[here](/ecosystem/registry/?language=python&component=instrumentation).
+For the full list, see the
+[Registry](/ecosystem/registry/?language=python&component=instrumentation).
 
 ## Troubleshooting
 
 ### Python package installation failure
 
 The Python package installs require `gcc` and `gcc-c++`, which you may need to
-install if you’re running a slim version of Linux (e.g., CentOS).
+install if you’re running a slim version of Linux, such as CentOS.
 
-CentOS:
+<!-- markdownlint-disable blanks-around-fences -->
 
-```console
-yum -y install python3-devel
-yum -y install gcc-c++
-```
-
-Debian/Ubuntu:
-
-```console
-apt install -y python3-dev
-apt install -y build-essential
-```
-
-Alpine:
-
-```console
-apk add python3-dev
-apk add build-base
-```
+- CentOS
+  ```sh
+  yum -y install python3-devel
+  yum -y install gcc-c++
+  ```
+- Debian/Ubuntu
+  ```sh
+  apt install -y python3-dev
+  apt install -y build-essential
+  ```
+- Alpine
+  ```sh
+  apk add python3-dev
+  apk add build-base
+  ```
 
 ### gRPC Connectivity
 
 To debug Python gRPC connectivity issues, set the following gRPC debug
 environment variables:
 
-```console
+```sh
 export GRPC_VERBOSITY=debug
 export GRPC_TRACE=http,call_error,connectivity_state
-opentelemetry-instrument python <your_app>.py
+opentelemetry-instrument python YOUR_APP.py
 ```
