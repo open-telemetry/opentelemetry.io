@@ -14,7 +14,7 @@ projetados para criar e gerenciar dados de telemetria como
 [métricas](/docs/concepts/signals/metrics/) e
 [logs](/docs/concepts/signals/logs/). Essencialmente, o OpenTelemetry é
 agnóstico em relação a fornecedores e ferramentas, o que significa que pode ser
-utilizado com uma grande variedade de sistemas (_backends_) de observabilidade,
+utilizado com uma grande variedade de backends de observabilidade,
 incluindo ferramentas de código aberto como
 [Jaeger](https://www.jaegertracing.io/) e [Prometheus](https://prometheus.io/),
 além de soluções comerciais.
