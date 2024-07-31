@@ -122,7 +122,7 @@ Ambos os projetos foram criados para resolver o mesmo problema: a falta de um
 padrão de como instrumentar o código e enviar dados de telemetria para um
 backend de Observabilidade. Como nenhum dos projetos conseguiu resolver o
 problema de forma independente, eles se fundiram para formar o OpenTelemetry e
-combinar seus esforços, oferecendo uma solução única.
+combinar seus esforços para oferecer uma solução única.
 
 Se você está atualmente utilizando OpenTracing ou OpenCensus, pode aprender como
 migrar para o OpenTelemetry no [guia de migração](/docs/migration/).
