@@ -55,19 +55,9 @@ I, [2021-02-23T13:26:23.505892 #22473]  INFO -- : [6459ffe1-ea53-4044-aaa3-bf902
 
 ### Spans（跨度）
 
-A **span**(跨度) represents a unit of work or operation. Spans track specific
-operations that a request makes, painting a picture of what happened during the
-time in which that operation was executed.
-
-A span contains name, time-related data,
-[structured log messages](/docs/concepts/signals/traces/#span-events), and
-[other metadata (that is, Attributes)](/docs/concepts/signals/traces/#attributes)
-to provide information about the operation it tracks.
-
-
 **Span**（跨度）是分布式追踪中的基本构建块，它代表了一个具体的操作或工作单元。每个 span 都记录了请求中的特定动作，帮助我们了解操作执行过程中发生的详细情况。
 
-一个 span 包含名称、时间相关的数据、结构化的日志消息，以及其他元数据（属性），这些信息共同描绘了该操作的完整画面。
+一个 span 包含名称、时间相关的数据、[结构化的日志消息](/docs/concepts/signals/traces/#span-events)，以及其他[元数据（属性）](/docs/concepts/signals/traces/#attributes)，这些信息共同描绘了该操作的完整画面。
 
 ### Span 属性
 
