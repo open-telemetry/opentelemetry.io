@@ -105,8 +105,8 @@ pode ser estendido incluem:
   Collector adaptada a um caso de uso específico
 - Criar um novo exportador para um backend personalizado que ainda não suporta o
   protocolo OpenTelemetry (OTLP)
-- Criar um propagador personalizado para um formato de propagação de contexto
-  não padrão
+- Criar um propagador personalizado para formatos de propagação de contexto
+  não padronizados
 
 Embora a maioria dos usuários possa não precisar estender o OpenTelemetry, o
 projeto é projetado para tornar isso possível em quase todos os níveis.
