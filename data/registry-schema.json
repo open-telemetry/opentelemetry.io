@@ -19,6 +19,7 @@
         "exporter",
         "extension",
         "instrumentation",
+        "log-bridge",
         "processor",
         "receiver",
         "resource-detector",

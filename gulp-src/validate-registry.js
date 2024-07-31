@@ -98,6 +98,8 @@ function validateRegistryEntry(file, enc, cb) {
 
   const valid = validate(registryEntry);
   if (!valid) {
+    // some validation issues let to warning/notices not errors, so we need to check for those
+    let hasErrors = false;
     for (const error of validate.errors) {
       const lineNumber = getLineNumber(sourceMap, error.instancePath);
 
@@ -108,16 +110,29 @@ function validateRegistryEntry(file, enc, cb) {
         console.log(error.instancePath);
       }
 
+      let logLevel = 'error';
+
+      if (error.message === 'An author must have an email or a URL') {
+        logLevel = 'warning';
+      } else if (error.message === 'must match "else" schema') {
+        logLevel = 'notice';
+      } else {
+        // Real error, this counts!
+        hasErrors = true;
+      }
+
       if (process.env.GITHUB_ACTIONS) {
         console.log(
-          `::error file=${file.path},line=${lineNumber},endLine=${lineNumber},title=Registry Schema Validation::${error.message}`,
+          `::${logLevel} file=${file.path},line=${lineNumber},endLine=${lineNumber},title=Registry Schema Validation::${error.message}`,
         );
       } else {
         console.log(error);
-        console.error(`Error in ${file.path}:${lineNumber}: ${error.message}`);
+        console.error(`${logLevel} in ${file.path}:${lineNumber}: ${error.message}`);
       }
     }
-    numFilesWithIssues++;
+    if(hasErrors) {
+      numFilesWithIssues++;
+    }
   }
   numFilesProcessed++;
   cb(null, file);
