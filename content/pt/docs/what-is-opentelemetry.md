@@ -127,7 +127,7 @@ combinar seus esforços para oferecer uma solução única.
 Se você está atualmente utilizando OpenTracing ou OpenCensus, pode aprender como
 migrar para o OpenTelemetry no [guia de migração](/docs/migration/).
 
-## O que vem a seguir?
+## Próximos passos
 
 - [Começando](/docs/getting-started/) &mdash; mergulhe de cabeça!
 - Aprenda sobre os [conceitos do OpenTelemetry](/docs/concepts/).
