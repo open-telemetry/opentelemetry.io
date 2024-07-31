@@ -3,6 +3,7 @@ title: 可观测性入门
 description: 可观测性的核心概念
 weight: 9
 cSpell:ignore: webshop
+default_lang_commit: e771c886739c4847b332b74f24b09d2769aab875
 ---
 
 ## 什么是可观测性？
