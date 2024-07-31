@@ -78,7 +78,7 @@ OpenTelemetry 被设计为可扩展的。一些扩展 OpenTelemetry 的例子包
 ## 历史 {#history}
 
 OpenTelemetry 是[云原生计算基金会 (CNCF)](https://www.cncf.io)的一个项目，是由
-OpenTracing 和 OpenCensus 项目合并而诞生的。OpenTracing 和 OpenCensus 这两个项目合并而成的。原来这两个项目都是为解决同样的问题而创建的：
+OpenTracing 和 OpenCensus 项目合并而成的。原来这两个项目都是为解决同样的问题而创建的：
 缺乏一种标准的方法来为代码进行仪表化并将遥测数据发送到可观测性后端。
 由于这两个项目都无法独立解决这个问题，所以将其合并成立了 OpenTelemetry，
 吸收了双方的优势，提供了统一的解决方案。
