@@ -278,7 +278,13 @@ parsed HTTP headers) and then set them as the current trace context.
 
 ```typescript
 // Receiving service
-import { type Context, propagation, trace, Span, context } from '@opentelemetry/api';
+import {
+  type Context,
+  propagation,
+  trace,
+  Span,
+  context,
+} from '@opentelemetry/api';
 
 // Define an interface for the input object that includes 'traceparent' & 'tracestate'.
 interface Carrier {
