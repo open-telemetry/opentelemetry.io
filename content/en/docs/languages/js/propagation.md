@@ -223,7 +223,7 @@ First, on the sending service, you'll need to inject the current `context`:
 
 ```typescript
 // Sending service
-import { Context, propagation, trace } from '@opentelemetry/api';
+import { context, propagation, trace } from '@opentelemetry/api';
 
 // Define an interface for the output object that will hold the trace information.
 interface Carrier {
@@ -278,7 +278,7 @@ parsed HTTP headers) and then set them as the current trace context.
 
 ```typescript
 // Receiving service
-import { Context, propagation, trace, Span } from '@opentelemetry/api';
+import { type Context, propagation, trace, Span, context } from '@opentelemetry/api';
 
 // Define an interface for the input object that includes 'traceparent' & 'tracestate'.
 interface Carrier {
