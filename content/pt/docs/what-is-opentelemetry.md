@@ -71,7 +71,7 @@ OpenTelemetry consiste dos seguintes componentes:
   telemetria
 - [Convenções semânticas](/docs/specs/semconv/) que estabelecem um padrão de
   nomenclatura para tipos comuns de dados de telemetria.
-- APIs que define como gerar dados de telemetria
+- APIs que definem como gerar dados de telemetria
 - [SDKs de linguagem](/docs/languages) que implementam a especificação, APIs e
   exportação de dados de telemetria
 - Um [ecossistema de bibliotecas](/ecosystem/registry) que implementa
