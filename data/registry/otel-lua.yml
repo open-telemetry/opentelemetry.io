@@ -9,6 +9,7 @@ license: Apache 2.0
 description: An unofficial implementation of OpenTelemetry in lua.
 authors:
   - name: yangxikun
+    url: https://github.com/yangxikun
 urls:
   repo: https://github.com/yangxikun/opentelemetry-lua
 createdAt: 2022-12-17
