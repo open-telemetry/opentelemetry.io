@@ -2575,6 +2575,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-06-14T09:35:29.965101669Z"
   },
+  "https://github.com/cisco-open": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-29T18:32:46.269066672Z"
+  },
+  "https://github.com/cisco-open/otelify.sh": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-29T18:32:45.895417462Z"
+  },
   "https://github.com/cloudflare/cfssl": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:36:55.954418-05:00"
@@ -3490,6 +3498,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2Fv0.105.0": {
     "StatusCode": 200,
     "LastSeen": "2024-07-17T10:45:43.412272909Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2Fv0.106.1": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-31T07:44:08.134126638Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2Fv0.95.0": {
     "StatusCode": 200,

@@ -1,0 +1,12 @@
+{{/* Generate rules for all languages. */ -}}
+
+{{/* FIXME - redirect to the new canonical links */ -}}
+
+{{ $languages := (.Site.GetPage "/docs/instrumentation").Pages -}}
+{{ range $languages -}}
+  {{ $lang := .File.ContentBaseName -}}
+  {{ if ne $lang "other" -}}
+    /docs/{{ $lang }}   /docs/instrumentation/{{ $lang }}
+    /docs/{{ $lang }}/*  /docs/instrumentation/{{ $lang }}/:splat
+  {{ end -}}
+{{ end -}}
