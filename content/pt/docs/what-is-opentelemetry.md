@@ -6,7 +6,7 @@ weight: 150
 default_lang_commit: f17277371622b97df4c15a6cfe3ce0b22e5538ef
 ---
 
-O OpenTelemetry é uma estrutura de trabalho (_framework_) e um conjunto de
+O OpenTelemetry é um framework e um conjunto de
 ferramentas de
 [Observabilidade](/docs/concepts/observability-primer/#what-is-observability)
 projetados para criar e gerenciar dados de telemetria como
