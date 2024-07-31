@@ -2299,6 +2299,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:06.447831-05:00"
   },
+  "https://github.com/GoogleCloudPlatform": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-08T15:23:37.97537+02:00"
+  },
   "https://github.com/GoogleCloudPlatform/guest-agent": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:06:57.71306-05:00"
@@ -2862,6 +2866,10 @@
   "https://github.com/iamebonyhope": {
     "StatusCode": 200,
     "LastSeen": "2024-05-08T10:07:06.998803+02:00"
+  },
+  "https://github.com/imandra-ai": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-05T23:26:58.569631+02:00"
   },
   "https://github.com/imandra-ai/ocaml-opentelemetry/": {
     "StatusCode": 200,
@@ -3490,6 +3498,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2Fv0.105.0": {
     "StatusCode": 200,
     "LastSeen": "2024-07-17T10:45:43.412272909Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2Fv0.106.1": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-31T07:44:08.134126638Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/cmd%2Fbuilder%2Fv0.95.0": {
     "StatusCode": 200,
@@ -4887,6 +4899,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:55:45.931119-05:00"
   },
+  "https://github.com/vercel": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-05T23:26:49.504427+02:00"
+  },
   "https://github.com/vercel/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:17:24.045228+01:00"
@@ -4910,6 +4926,10 @@
   "https://github.com/xoscar": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:15.591448-05:00"
+  },
+  "https://github.com/yangxikun": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-08T15:23:32.918333+02:00"
   },
   "https://github.com/yangxikun/opentelemetry-lua": {
     "StatusCode": 200,
