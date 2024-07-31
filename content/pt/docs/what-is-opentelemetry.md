@@ -1,5 +1,5 @@
 ---
-title: O que é OpenTelemetry?
+title: O que é o OpenTelemetry?
 description:
   Uma breve explicação sobre o que o OpenTelemetry é e não é.
 weight: 150
