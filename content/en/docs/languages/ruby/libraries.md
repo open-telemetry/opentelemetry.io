@@ -130,6 +130,7 @@ OpenTelemetry::Instrumentation::Faraday is
 ```bash
 export OTEL_RUBY_INSTRUMENTATION_FARADAY_CONFIG_OPTS="peer_service=new_service;span_kind=client"
 ```
+The following table lists the acceptable format for values according to the option data type:
 
 | Data Type | Value                      | Example          |
 | --------- | -------------------------- | ---------------- |
