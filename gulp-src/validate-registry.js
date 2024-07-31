@@ -127,10 +127,12 @@ function validateRegistryEntry(file, enc, cb) {
         );
       } else {
         console.log(error);
-        console.error(`${logLevel} in ${file.path}:${lineNumber}: ${error.message}`);
+        console.error(
+          `${logLevel} in ${file.path}:${lineNumber}: ${error.message}`,
+        );
       }
     }
-    if(hasErrors) {
+    if (hasErrors) {
       numFilesWithIssues++;
     }
   }
