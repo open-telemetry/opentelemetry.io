@@ -75,7 +75,7 @@ OpenTelemetry consiste dos seguintes componentes:
 - [SDKs de linguagem](/docs/languages) que implementam a especificação, APIs e
   exportação de dados de telemetria
 - Um [ecossistema de bibliotecas](/ecosystem/registry) que implementa
-  instrumentação para bibliotecas e estruturas de trabalho comuns
+  instrumentação para bibliotecas e frameworks comuns
 - Componentes de instrumentação automática que geram dados de telemetria sem
   exigir alterações no código
 - O [OpenTelemetry Collector](/docs/collector), é um intermediário (_proxy_) que
