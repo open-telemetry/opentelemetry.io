@@ -85,7 +85,7 @@ and the package on [PyPi](https://pypi.org/project/opentelemetry-api/).
 
 The Lambda layer supports Ruby 3.2 and 3.3 Lambda runtimes. For more information
 about supported OpenTelemetry Ruby SDK and API versions, see the
-[OpenTelemetry Ruby documentation](https://github.com/open-telemetry/opentelemetry-ruby)
+[OpenTelemetry Ruby documentation](https://github.com/open-telemetry/opentelemetry-ruby/blob/main/README.md#compatibility)
 and the package on [RubyGem](https://rubygems.org/search?query=opentelemetry).
 
 {{% /tab %}} {{< /tabpane >}}
