@@ -30,7 +30,7 @@ deixados para outras ferramentas.
 ## O que é observabilidade?
 
 [Observabilidade](/docs/concepts/observability-primer/#what-is-observability) é
-a capacidade de entender o estado interno de um sistema ao examinar suas saídas.
+a capacidade de entender o estado interno de um sistema ao examinar o dados que ele emite.
 No contexto de software, isso significa ser capaz de entender o estado interno
 do sistema analisando seus dados de telemetria, que incluem rastros, métricas e
 logs.
