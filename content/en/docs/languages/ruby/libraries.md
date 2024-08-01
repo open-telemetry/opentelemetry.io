@@ -114,7 +114,7 @@ OpenTelemetry::SDK.configure do |c|
 end
 ```
 
-#### Configuring specific instrumentation libraries with environment variable
+#### Configuring specific instrumentation libraries with environment variables
 
 You can also define the option for specific instrumentation libraries using
 environment variables. By convention, the environment variable will be the name
