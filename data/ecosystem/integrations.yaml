@@ -4,214 +4,270 @@
   docsUrl: https://github.com/containerd/containerd/blob/main/docs/tracing.md
   components: [Go]
   oss: true
+  cncf: graduated
 - name: CRI-O
   url: https://cri-o.io/
   docsUrl: https://github.com/cri-o/cri-o/blob/main/docs/crio.conf.5.md#criotracing-table
   components: [Go]
   oss: true
+  cncf: graduated
 - name: Docker Buildx and BuildKit
   url: https://www.docker.com/
   docsUrl: https://docs.docker.com/build/building/opentelemetry/
   components: [Go]
   oss: true
+  cncf: false
 - name: Elasticsearch Java API Client
   url: https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/index.html
   docsUrl: https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/opentelemetry.html
   components: [Java]
   native: true # Elasticsearch Java API Client provides a native integration of the OpenTelemetry API
   oss: true
+  cncf: false
+- name: Elasticsearch Python Client
+  url: https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/index.html
+  docsUrl: https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/opentelemetry.html
+  components: [Python]
+  native: true # Elasticsearch Python Client provides a native integration of the OpenTelemetry API
+  oss: true
+  cncf: false
+- name: Elasticsearch Ruby Client
+  url: https://www.elastic.co/guide/en/elasticsearch/client/ruby-api/current/index.html
+  docsUrl: https://www.elastic.co/guide/en/elasticsearch/client/ruby-api/current/opentelemetry.html
+  components: [Ruby]
+  native: true # Elasticsearch Ruby Client provides a native integration of the OpenTelemetry API
+  oss: true
+  cncf: false
 - name: Kubernetes
   url: https://kubernetes.io/
   docsUrl: https://kubernetes.io/docs/concepts/cluster-administration/system-traces/
   components: [Go]
   oss: true
+  cncf: graduated
 - name: Micrometer
   url: https://micrometer.io/
   docsUrl: https://micrometer.io/docs/tracing#_micrometer_tracing_opentelemetry_setup
   components: [Java]
   oss: true
+  cncf: false
 - name: Quarkus
   url: https://quarkus.io/
   docsUrl: https://quarkus.io/guides/opentelemetry
   components: [Java]
   oss: true
+  cncf: false
 - name: RoadRunner
   url: https://roadrunner.dev/
   docsUrl: https://roadrunner.dev/docs/lab-otel/current/en
   components: [Go, PHP]
   oss: true
+  cncf: false
 - name: Kong API Gateway
   url: https://www.konghq.com/
   docsUrl: https://docs.konghq.com/hub/kong-inc/opentelemetry/
   components: [Lua]
   oss: true
+  cncf: false
 - name: NGINX Web Server
   url: https://nginx.org/
   docsUrl: https://github.com/nginxinc/nginx-otel
   components: [C++]
   oss: true
+  cncf: false
 - name: Cisco NSO
   url: https://www.cisco.com/c/en/us/products/cloud-systems-management/network-services-orchestrator/index.html
   docsUrl: https://developer.cisco.com/docs/nso/#!observability-exporter/
   components: [Python]
   oss: false
+  cncf: false
 - name: Next.js
   url: https://nextjs.org/
   docsUrl: https://nextjs.org/docs/app/building-your-application/optimizing/open-telemetry
   components: [JavaScript]
   native: true # Next.js provides a native integration of the OpenTelemetry API
   oss: true
+  cncf: false
 - name: ThousandEyes (Cisco)
   url: https://www.thousandeyes.com/
   docsUrl: 'https://docs.thousandeyes.com/product-documentation/api/opentelemetry'
   components: [Collector]
   oss: false
+  cncf: false
 - name: Cerbos JS SDK
   url: https://cerbos.dev/
   docsUrl: https://github.com/cerbos/cerbos-sdk-javascript/tree/main/packages/opentelemetry
   components: [JavaScript]
   native: false # Cerbos provides a first party instrumentation library
   oss: true
+  cncf: false
 - name: Tyk API Gateway
   url: https://tyk.io
   docsUrl: https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview/
   components: [Go]
   oss: true
+  cncf: false
 - name: OpenFeature flagd
   url: https://openfeature.dev/
   docsUrl: https://flagd.dev/reference/monitoring/#opentelemetry
   components: [Go]
   oss: true
+  cncf: incubating
 - name: Jenkins
   url: https://www.jenkins.io/
   docsUrl: https://plugins.jenkins.io/opentelemetry/
   components: [Java]
   oss: true
+  cncf: false
 - name: Flipt
   url: https://flipt.io/
   docsUrl: https://www.flipt.io/docs/configuration/observability#tracing
   components: [Go]
   oss: true
+  cncf: false
 - name: Harbor
   url: https://goharbor.io/
   docsUrl: https://goharbor.io/docs/edge/administration/distributed-tracing/
   components: [Go]
   oss: true
+  cncf: graduated
 - name: KEDA
   url: https://keda.sh/
   docsUrl: https://keda.sh/docs/2.12/operate/opentelemetry/
   components: [Go]
   oss: true
+  cncf: graduated
 - name: Open Policy Agent
   url: https://www.openpolicyagent.org/
   docsUrl: https://www.openpolicyagent.org/docs/latest/monitoring/#opentelemetry
   components: [Go]
   oss: true
+  cncf: graduated
 - name: cortex
   url: https://cortexmetrics.io/
   docsUrl: https://cortexmetrics.io/docs/guides/tracing/#opentelemetry
   components: [Go]
   oss: true
+  cncf: incubating
 - name: Thanos
   url: https://thanos.io/
   docsUrl: https://thanos.io/tip/thanos/tracing.md/#opentelemetry-otlp
   components: [Go]
   oss: true
+  cncf: incubating
 - name: Kyverno
   url: https://kyverno.io/
   docsUrl: https://kyverno.io/docs/monitoring/opentelemetry/
   components: [Go]
   oss: true
+  cncf: incubating
 - name: Knative
   url: https://knative.dev/
   docsUrl: https://knative.dev/docs/eventing/observability/metrics/collecting-metrics/#about-opentelemetry
   components: [Go]
   oss: true
+  cncf: incubating
 - name: Dapr
   url: https://dapr.io/
   docsUrl: https://docs.dapr.io/operations/observability/tracing/otel-collector/open-telemetry-collector/
   components: [Go]
   oss: true
+  cncf: incubating
 - name: MySQL Enterprise Server
   url: https://www.mysql.com/
   docsUrl: https://dev.mysql.com/doc/refman/8.1/en/telemetry-trace.html
   components: [C++]
   oss: false
+  cncf: false
 - name: rustup
   url: https://rustup.rs/
   docsUrl: https://rust-lang.github.io/rustup/dev-guide/tracing.html
   components: [Rust]
   oss: true
+  cncf: false
 - name: Matlab
   url: https://www.mathworks.com/products/matlab.html
   docsUrl: https://www.mathworks.com/matlabcentral/fileexchange/130979-opentelemetry-matlab
   components: [C++]
   oss: false
+  cncf: false
 - name: Traefik Hub API Management
   url: https://traefik.io/traefik-hub/
   docsUrl: https://doc.traefik.io/traefik-hub/operations/metrics
   components: [Go]
   oss: false
+  cncf: false
 - name: Strimzi
   url: https://strimzi.io/
   docsUrl: https://strimzi.io/docs/operators/latest/deploying#assembly-distributed-tracing-str
   components: [Java]
   oss: true
+  cncf: incubating
 - name: CloudWeGo
   url: https://www.cloudwego.io/
   docsUrl: https://www.cloudwego.io/docs/hertz/tutorials/observability/open-telemetry/
   components: [Go]
   oss: true
+  cncf: false
 - name: GORM
   url: https://gorm.io/
   docsUrl: https://github.com/go-gorm/opentelemetry
   components: [Go]
   oss: true
+  cncf: false
 - name: Cloud Foundry
   url: https://www.cloudfoundry.org/
   docsUrl: https://github.com/cloudfoundry/cf-deployment/blob/main/operations/experimental/add-otel-collector.yml
   components: [Collector]
   oss: true
+  cncf: false
 - name: Otterize network mapper
   url: https://github.com/otterize/network-mapper
   docsUrl: https://docs.otterize.com/reference/configuration/network-mapper/helm-chart#opentelemetry-exporter-parameters
   components: [Go]
   oss: true
+  cncf: false
 - name: KafkaFlow
   url: https://github.com/Farfetch/kafkaflow
   docsUrl: https://farfetch.github.io/kafkaflow/docs/guides/open-telemetry
   components: [.NET]
   oss: true
+  cncf: false
 - name: Apache Dubbo # Provide the latest docs instead of blog url in 2~3 months later. refer to https://github.com/open-telemetry/opentelemetry.io/pull/3908#discussion_r1473133919.
   url: https://github.com/apache/dubbo
   docsUrl: https://cn.dubbo.apache.org/en/blog/2024/01/31/tracing-dubbo-with-opentelemetry/
   components: [Java]
   oss: true
+  cncf: false
 - name: Microcks
   url: https://microcks.io/
   docsUrl: https://microcks.io/documentation/using/monitoring/
   components: [Java]
   oss: true
+  cncf: sandbox
 - name: ClickHouse
   url: https://www.clickhouse.com/
   docsUrl: https://clickhouse.com/docs/en/operations/opentelemetry
   components: [C++]
   oss: true
+  cncf: false
 - name: FluentCI Engine
   url: https://github.com/fluentci-io/fluentci-engine
   docsUrl: https://github.com/fluentci-io/fluentci-engine#-opentelemetry-tracing
   components: [Rust]
   oss: true
+  cncf: false
 - name: KrakenD API Gateway
   url: https://www.krakend.io
   docsUrl: https://www.krakend.io/docs/telemetry/opentelemetry/
   components: [Go]
   oss: true
+  cncf: false
 - name: Azure SDKs
   url: https://github.com/Azure/azure-sdk-for-net
   docsUrl: https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable
   components: [.NET]
   oss: true
+  cncf: false
 - name: MassTransit .NET client
   url: https://github.com/MassTransit/MassTransit
   docsUrl: https://masstransit.io/documentation/configuration/observability
@@ -223,23 +279,40 @@
   docsUrl: https://kuma.io/docs/2.7.x/guides/otel-metrics/
   components: [Go]
   oss: true
+  cncf: sandbox
 - name: Kong Mesh
   url: https://konghq.com/products/kong-mesh
   docsUrl: https://docs.konghq.com/mesh/latest/guides/otel-metrics/
   components: [Go]
   oss: false
+  cncf: false
 - name: Envoy
   url: https://www.envoyproxy.io/
   docsUrl: https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/opentelemetry
   components: [C++]
   oss: true
+  cncf: graduated
 - name: Istio
   url: https://istio.io/
   docsUrl: https://istio.io/latest/docs/tasks/observability/distributed-tracing/opentelemetry/
   components: [Go]
   oss: true
+  cncf: graduated
 - name: Kubewarden
   url: https://kubewarden.io/
   docsUrl: https://docs.kubewarden.io/howtos/telemetry/opentelemetry-qs
   components: [Rust, Go]
   oss: true
+  cncf: sandbox
+- name: gRPC
+  url: https://grpc.io/
+  docsUrl: https://grpc.io/docs/guides/opentelemetry-metrics/
+  components: [C++, Java, Go, Python]
+  oss: true
+  cncf: incubating
+- name: APImetrics
+  url: https://apicontext.com/
+  docsUrl: https://docs.apimetrics.io/docs/export-with-opentelemetry
+  components: [Python]
+  oss: false
+  cncf: false

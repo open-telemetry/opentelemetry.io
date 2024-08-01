@@ -33,7 +33,7 @@ jobs:
         run: |
           mkdir -p tmp
           jq '.devDependencies |= with_entries(
-                  select(.key | test("gulp|markdown|through|require|yargs"))
+                  select(.key | test("gulp|markdown|through|require|yargs|js-yaml|ajv|ajv-formats|ajv-errors"))
                 )
                 | del(.dependencies, .optionalDependencies)' \
             package.json > tmp/package-ci.json

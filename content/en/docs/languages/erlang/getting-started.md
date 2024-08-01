@@ -453,7 +453,7 @@ and the [Zipkin protocol](https://hex.pm/packages/opentelemetry_zipkin).
 ## Initialization and Configuration
 
 Configuration is done through the
-[Application environment](https://erlang.org/doc/design_principles/applications.html#configuring-an-application)
+[OTP application environment](https://erlang.org/doc/design_principles/applications.html#configuring-an-application)
 or
 [OS Environment Variables](/docs/specs/otel/configuration/sdk-environment-variables/).
 The SDK (`opentelemetry` Application) uses the configuration to initialize a
@@ -470,8 +470,8 @@ variety of exporters through its ecosystem, including popular open source tools
 like Jaeger and Zipkin.
 
 To configure OpenTelemetry to use a particular exporter, in this case
-`otel_exporter_stdout`, the Application environment for `opentelemetry` must set
-the `exporter` for the span processor `otel_batch_processor`, a type of span
+`otel_exporter_stdout`, the OTP application environment for `opentelemetry` must
+set the `exporter` for the span processor `otel_batch_processor`, a type of span
 processor that batches up multiple spans over a period of time:
 
 {{< tabpane text=true >}} {{% tab Erlang %}}

@@ -18,8 +18,8 @@ my $semconvSpecRepoUrl = 'https://github.com/open-telemetry/semantic-conventions
 my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
 my $specBasePath = '/docs/specs';
 my %versions = qw(
-  spec: 1.34.0
-  otlp: 1.3.1
+  spec: 1.35.0
+  otlp: 1.3.2
   semconv: 1.26.0
 );
 my $otelSpecVers = $versions{'spec:'};

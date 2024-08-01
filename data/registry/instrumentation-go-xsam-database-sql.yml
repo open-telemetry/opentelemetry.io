@@ -15,7 +15,7 @@ authors:
 package:
   name: github.com/XSAM/otelsql
   registry: go
-  version: v0.31.0
+  version: v0.32.0
 urls:
   repo: https://github.com/XSAM/otelsql
 createdAt: 2021-10-12

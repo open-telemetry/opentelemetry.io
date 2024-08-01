@@ -207,9 +207,6 @@ extensions:
   - name: zpages
     stability:
       extension: Beta
-  - name: memory_ballast
-    stability:
-      extension: Deprecated
   - name: health_check
     stability:
       extension: Beta
