@@ -20,7 +20,7 @@ incluindo ferramentas de código aberto como
 além de soluções comerciais.
 
 O OpenTelemetry não é um backend de observabilidade como Jaeger, Prometheus ou
-outra soluções comerciais. O OpenTelemetry é focado na geração, coleta e
+outra soluções comerciais. O OpenTelemetry é focado na geração, coleta, gerenciamento e
 exportação de telemetria. Um dos principais objetivos do OpenTelemetry é
 permitir que você possa instrumentar suas aplicações ou sistemas de forma fácil,
 independentemente da linguagem, infraestrutura ou ambiente de execução. Em
