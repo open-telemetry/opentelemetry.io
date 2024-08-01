@@ -23,8 +23,8 @@ O OpenTelemetry não é um backend de observabilidade como Jaeger, Prometheus ou
 outra soluções comerciais. O OpenTelemetry é focado na geração, coleta, gerenciamento e
 exportação de telemetria. Um dos principais objetivos do OpenTelemetry é
 permitir que você possa instrumentar suas aplicações ou sistemas de forma fácil,
-independentemente da linguagem, infraestrutura ou ambiente de execução. Em
-geral, o armazenamento e a visualização da telemetria são intencionalmente
+independentemente da linguagem, infraestrutura ou ambiente de execução. 
+Crucialmente, o armazenamento e a visualização da telemetria são intencionalmente
 deixados para outras ferramentas.
 
 ## O que é observabilidade?
@@ -44,7 +44,7 @@ enviados para um backend de observabilidade.
 
 ## Por que OpenTelemetry?
 
-Com a ascensão da computação em nuvem, arquiteturas de microsserviços e dos
+Com a ascensão da computação em nuvem, arquiteturas de microsserviços e
 requisitos de negócios cada vez mais complexos, a necessidade de
 [observabilidade](/docs/concepts/observability-primer/#what-is-observability) de
 software e infraestrutura é cada vez maior.
@@ -52,45 +52,45 @@ software e infraestrutura é cada vez maior.
 O OpenTelemetry atende à necessidade de observabilidade seguindo dois
 princípios-chave:
 
-1. Você é o proprietário dos dados que gera. Não há dependência de fornecedor
-   (_lock-in_).
+1. Você tem controle total sobre os dados que gera. Não há dependência de fornecedor
+   (_vendor lock-in_).
 2. Você só precisa aprender um único conjunto de APIs e convenções.
 
-Ambos os princípios combinados concedem às equipes e organizações a
-flexibilidade de que precisam no mundo da computação moderna de hoje.
+Ambos os princípios combinados dão a flexibilidade que equipes e 
+organizações precisam no mundo da computação moderna atual.
 
 Se você quiser saber mais, dê uma olhada na
 [missão, visão e valores](/community/mission/) do OpenTelemetry.
 
 ## Os principais componentes do OpenTelemetry
 
-OpenTelemetry consiste dos seguintes componentes:
+O OpenTelemetry consiste dos seguintes componentes:
 
 - Uma [especificação](/docs/specs/otel) para todos os componentes
-- Um [protocolo](/docs/specs/otlp/) padrão que defini a forma dos dados de
+- Um [protocolo](/docs/specs/otlp/) padrão que define o formato dos dados de
   telemetria
 - [Convenções semânticas](/docs/specs/semconv/) que estabelecem um padrão de
   nomenclatura para tipos comuns de dados de telemetria.
 - APIs que definem como gerar dados de telemetria
-- [SDKs de linguagem](/docs/languages) que implementam a especificação, APIs e
+- [SDKs para linguagens de programação](/docs/languages) que implementam a especificação, APIs e
   exportação de dados de telemetria
 - Um [ecossistema de bibliotecas](/ecosystem/registry) que implementa
   instrumentação para bibliotecas e frameworks comuns
-- Componentes de instrumentação automática que geram dados de telemetria sem
+- Componentes para instrumentação automática que geram dados de telemetria sem
   exigir alterações no código
 - O [OpenTelemetry Collector](/docs/collector), é um intermediário (_proxy_) que
   recebe, processa e exporta dados de telemetria
 - Várias outras ferramentas, como o
   [OpenTelemetry Operador para Kubernetes](/docs/kubernetes/operator/),
   [OpenTelemetry Helm Charts](/docs/kubernetes/helm/), e
-  [comunidade ativa para FaaS](/docs/faas/)
+  [recursos da comunidade para FaaS](/docs/faas/)
 
-O OpenTelemetry é utilizado por uma grande variedade de
+O OpenTelemetry é utilizado por diversas
 [bibliotecas, serviços e aplicativos](/ecosystem/integrations/) que o integram
-para fornecer um padrão de observabilidade.
+para fornecer observabilidade por padrão.
 
-OpenTelemetry é suportado por inúmeros [fornecedores](/ecosystem/vendors/),
-muitos dos quais oferecem suporte comercial para OpenTelemetry e contribuem
+O OpenTelemetry é suportado por inúmeros [fornecedores](/ecosystem/vendors/),
+muitos dos quais oferecem suporte comercial para o OpenTelemetry e contribuem
 diretamente para o projeto.
 
 ## Extensibilidade
@@ -104,7 +104,7 @@ pode ser estendido incluem:
 - Criar uma [distribuição](/docs/concepts/distributions/) de um SDK ou do
   Collector adaptada a um caso de uso específico
 - Criar um novo exportador para um backend personalizado que ainda não suporta o
-  protocolo OpenTelemetry (OTLP)
+  protocolo do OpenTelemetry (OTLP)
 - Criar um propagador personalizado para formatos de propagação de contexto
   não padronizados
 
