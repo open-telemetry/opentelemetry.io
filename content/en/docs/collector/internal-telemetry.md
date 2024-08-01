@@ -324,7 +324,7 @@ indicate that too many errors were returned to clients. Depending on the
 deployment and the clients' resilience, this might indicate clients' data loss.
 
 Sustained rates of `otelcol_exporter_send_failed_log_records`,
-`otelcol_exporter_send_failed_spans` and
+`otelcol_exporter_send_failed_spans`, and
 `otelcol_exporter_send_failed_metric_points` indicate that the Collector is not
 able to export data as expected. These metrics do not inherently imply data loss
 since there could be retries. But a high rate of failures could indicate issues
