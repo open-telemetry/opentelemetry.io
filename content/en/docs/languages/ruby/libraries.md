@@ -81,7 +81,7 @@ name, upcased with `::` replaced by underscores, `OPENTELEMETRY` shortened to
 `OTEL_LANG`, and `_ENABLED` appended.
 
 For example, the environment variable name for
-OpenTelemetry::Instrumentation::Sinatra is
+`OpenTelemetry::Instrumentation::Sinatra` is
 `OTEL_RUBY_INSTRUMENTATION_SINATRA_ENABLED`.
 
 ```bash
