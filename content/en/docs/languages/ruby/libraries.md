@@ -72,7 +72,7 @@ end
 
 To override more instrumentation, add another entry in the `config` map.
 
-#### Overriding configuration for specific instrumentation libraries with environment variable
+#### Overriding configuration for specific instrumentation libraries with environment variables
 
 You can also disable specific instrumentation libraries using environment
 variables. An instrumentation disabled by an environment variable takes precedence
