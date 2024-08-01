@@ -118,7 +118,7 @@ end
 
 You can also define the option for specific instrumentation libraries using
 environment variables. By convention, the environment variable will be the name
-of the instrumentation, with uppercase, `::` replaced by underscores,
+of the instrumentation, upcased with `::` replaced by underscores,
 `OPENTELEMETRY` shortened to `OTEL_{LANG}`, and `_CONFIG_OPTS` appended.
 
 For example, the environment variable name for
