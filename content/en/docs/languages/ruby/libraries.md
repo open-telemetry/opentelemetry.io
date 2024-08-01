@@ -75,10 +75,10 @@ To override more instrumentation, add another entry in the `config` map.
 #### Overriding configuration for specific instrumentation libraries with environment variables
 
 You can also disable specific instrumentation libraries using environment
-variables. An instrumentation disabled by an environment variable takes precedence
-over local config. The convention for environment variable names is the library
-name, upcased with `::` replaced by underscores, `OPENTELEMETRY` shortened to
-`OTEL_LANG`, and `_ENABLED` appended.
+variables. An instrumentation disabled by an environment variable takes
+precedence over local config. The convention for environment variable names is
+the library name, upcased with `::` replaced by underscores, `OPENTELEMETRY`
+shortened to `OTEL_LANG`, and `_ENABLED` appended.
 
 For example, the environment variable name for
 `OpenTelemetry::Instrumentation::Sinatra` is
@@ -130,7 +130,9 @@ For example, the environment variable name for
 ```bash
 export OTEL_RUBY_INSTRUMENTATION_FARADAY_CONFIG_OPTS="peer_service=new_service;span_kind=client"
 ```
-The following table lists the acceptable format for values according to the option data type:
+
+The following table lists the acceptable format for values according to the
+option data type:
 
 | Data Type | Value                      | Example          |
 | --------- | -------------------------- | ---------------- |
