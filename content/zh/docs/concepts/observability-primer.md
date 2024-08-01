@@ -13,9 +13,9 @@ default_lang_commit: e771c886739c4847b332b74f24b09d2769aab875
 
 要对你的系统提出这些问题，你的应用程序必须进行适当的插桩。也就是说，应用程序代码必须能够发出[信号](/docs/concepts/signals/)
 例如
-[追踪](/docs/concepts/signals/traces/),
-[指标](/docs/concepts/signals/metrics/), 和
-[日志](/docs/concepts/signals/logs/). 当开发人员不需要添加更多插桩就能排查问题时，
+[追踪](/docs/concepts/signals/traces/)、
+[指标](/docs/concepts/signals/metrics/)和
+[日志](/docs/concepts/signals/logs/)。当开发人员不需要添加更多插桩就能排查问题时，
 我们就可以说这个应用程序已经完成了适当的插桩，因为他们已经拥有了所需的所有信息。
 
 [OpenTelemetry](/docs/what-is-opentelemetry/)就是一种为应用程序代码进行插桩的机制，它的目的是帮助使系统变得可观测。
