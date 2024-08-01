@@ -75,7 +75,7 @@ To override more instrumentation, add another entry in the `config` map.
 #### Overriding configuration for specific instrumentation libraries with environment variable
 
 You can also disable specific instrumentation libraries using environment
-variables. An instrumentation disabled by environment variable takes precedence
+variables. An instrumentation disabled by an environment variable takes precedence
 over local config. The convention for environment variable name is the library
 name, upcased with `::` replaced by underscores, `OPENTELEMETRY` shortened to
 `OTEL_LANG`, and `_ENABLED` appended.
