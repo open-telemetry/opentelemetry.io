@@ -6,15 +6,15 @@ description:
 weight: 80
 ---
 
-With distributed tracing, you can observe requests as they move from one service to
-another in a distributed system. It is superbly practical for a number of
+With distributed tracing, you can observe requests as they move from one service
+to another in a distributed system. It is superbly practical for a number of
 reasons, such as understanding your service connections and diagnosing latency
 issues, among many other benefits.
 
-However, if the majority of your requests are successful 200s and finish
-without unacceptable latency or errors, do you really need all that data? Here’s
-the thing—you don’t always need a ton of data to find the right insights. _You
-just need the right sampling of data._
+However, if the majority of your requests are successful 200s and finish without
+unacceptable latency or errors, do you really need all that data? Here’s the
+thing—you don’t always need a ton of data to find the right insights. _You just
+need the right sampling of data._
 
 ![Illustration shows that not all data needs to be traced, and that a sample of data is sufficient.](traces-venn-diagram.svg)
 
@@ -65,12 +65,12 @@ The upsides to head sampling are:
 - Efficient
 - Can be done at any point in the trace collection pipeline
 
-The primary downside to head sampling is that it is not possible to make a sampling
-decision based on data in the entire trace. This means that head sampling is
-effective as a blunt instrument, but is wholly insufficient for sampling
-strategies that must take whole-system information into account. For example, it
-is not possible to use head sampling to ensure that all traces with an error
-within them are sampled. For this, you need Tail Sampling.
+The primary downside to head sampling is that it is not possible to make a
+sampling decision based on data in the entire trace. This means that head
+sampling is effective as a blunt instrument, but is wholly insufficient for
+sampling strategies that must take whole-system information into account. For
+example, it is not possible to use head sampling to ensure that all traces with
+an error within them are sampled. For this, you need Tail Sampling.
 
 ## Tail Sampling
 
