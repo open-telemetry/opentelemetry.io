@@ -124,8 +124,8 @@ The following auto-instrumented metrics are available for the application:
 
 ## Logs
 
-Ad Service uses Log4J and due to the auto instrumentation capabilities of
-the OTel Java agent, the OTel log appender is automatically configured.
+Ad Service uses Log4J and due to the auto instrumentation capabilities of the
+OTel Java agent, the OTel log appender is automatically configured.
 
-It includes the trace context in log records, enabling log correlation
-with traces.
+It includes the trace context in log records, enabling log correlation with
+traces.
