@@ -2,7 +2,6 @@
 title: Conceitos do OpenTelemetry
 linkTitle: Conceitos
 description: Principais conceitos do OpenTelemetry
-aliases: [concepts/overview]
 weight: 170
 default_lang_commit: f17277371622b97df4c15a6cfe3ce0b22e5538ef
 ---
