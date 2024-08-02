@@ -42,7 +42,7 @@ or span is considered "sampled" or "not sampled":
   not chosen by the sampler, it is considered "not sampled".
 
 Sometimes, the definitions of these terms get mixed up. You may find someone
-stating that they are "sampling out data" or that data not processed or exported
+states that they are "sampling out data" or that data not processed or exported
 is considered "sampled". These are incorrect statements.
 
 ## Head Sampling
