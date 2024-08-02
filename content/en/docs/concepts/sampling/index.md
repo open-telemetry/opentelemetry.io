@@ -7,7 +7,7 @@ weight: 80
 ---
 
 With distributed tracing, you can observe requests as they move from one service
-to another in a distributed system. It is superbly practical for a number of
+to another in a distributed system. It's superbly practical for a number of
 reasons, such as understanding your service connections and diagnosing latency
 issues, among many other benefits.
 
@@ -26,13 +26,13 @@ want to sample. You might want to customize your sampling strategy to:
 - **Manage costs**: If you have a high volume of telemetry, you risk incurring
   heavy charges from a telemetry backend vendor or cloud provider to export and
   store every span.
-- **Focus on interesting traces**: For example, your frontend team may only want
-  to see traces with specific user attributes.
-- **Filter out noise**: For example, you may want to filter out health checks.
+- **Focus on interesting traces**: For example, your frontend team might only
+  want to see traces with specific user attributes.
+- **Filter out noise**: For example, you might want to filter out health checks.
 
 ## Terminology
 
-It is important to use consistent terminology when discussing sampling. A trace
+It's important to use consistent terminology when discussing sampling. A trace
 or span is considered "sampled" or "not sampled":
 
 - **Sampled**: A trace or span is processed and exported. Because it is chosen
@@ -41,7 +41,7 @@ or span is considered "sampled" or "not sampled":
 - **Not sampled**: A trace or span is not processed or exported. Because it is
   not chosen by the sampler, it is considered "not sampled".
 
-Sometimes, the definitions of these terms get mixed up. You may find someone
+Sometimes, the definitions of these terms get mixed up. You might find someone
 states that they are "sampling out data" or that data not processed or exported
 is considered "sampled". These are incorrect statements.
 
@@ -53,7 +53,7 @@ inspecting the trace as a whole.
 
 For example, the most common form of head sampling is
 [Consistent Probability Sampling](/docs/specs/otel/trace/tracestate-probability-sampling/#consistent-probability-sampling).
-This may also be referred to as Deterministic Sampling. In this case, a sampling
+This is also be referred to as Deterministic Sampling. In this case, a sampling
 decision is made based on the trace ID and the desired percentage of traces to
 sample. This ensures that whole traces are sampled - no missing spans - at a
 consistent rate, such as 5% of all traces.
@@ -105,19 +105,19 @@ There are three primary downsides to tail sampling today:
   tail sampling must be stateful systems that can accept and store a large
   amount of data. Depending on traffic patterns, this can require dozens or even
   hundreds of nodes that all utilize resources differently. Furthermore, a tail
-  sampler may need to "fall back" to less computationally intensive sampling
+  sampler might need to "fall back" to less computationally intensive sampling
   techniques if it is unable to keep up with the volume of data it is receiving.
   Because of these factors, it is critical to monitor tail-sampling components
   to ensure that they have the resources they need to make the correct sampling
   decisions.
 - Tail samplers often end up being in the domain of vendor-specific technology
   today. If you're using a paid vendor for Observability, the most effective
-  tail sampling options available to you may be limited to what the vendor
+  tail sampling options available to you might be limited to what the vendor
   offers.
 
-Finally, for some systems, tail sampling may be used in conjunction with Head
+Finally, for some systems, tail sampling might be used in conjunction with Head
 Sampling. For example, a set of services that produce an extremely high volume
-of trace data may first use head sampling to sample only a small percentage of
+of trace data might first use head sampling to sample only a small percentage of
 traces, and then later in the telemetry pipeline use tail sampling to make more
 sophisticated sampling decisions before exporting to a backend. This is often
 done in the interest of protecting the telemetry pipeline from being overloaded.
