@@ -7,7 +7,9 @@ tags:
   - exporter
   - dotnet
 license: Apache 2.0
-description: The OneCollectorExporter is designed for Microsoft products to send data to public-facing end-points which route to Microsoft's internal data pipeline.
+description:
+  The OneCollectorExporter is designed for Microsoft products to send data to
+  public-facing end-points which route to Microsoft's internal data pipeline.
 authors:
   - name: OpenTelemetry Authors
 urls:
