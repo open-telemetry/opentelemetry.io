@@ -46,7 +46,7 @@
     "check:links:internal": "npm run _check:links:internal",
     "check:links": "npm run _check:links",
     "check:markdown": "scripts/check-markdown-wrapper.sh",
-    "check:registry": "npm run _check:registry",
+    "check:registry": "npm run _check:registry -- ",
     "check:spelling": "npx cspell --no-progress -c .cspell.yml content/en data 'layouts/**/*.md'",
     "check:text": "npm run _check:text -- ",
     "check": "npm run seq -- $(npm run -s _list:check:*)",
