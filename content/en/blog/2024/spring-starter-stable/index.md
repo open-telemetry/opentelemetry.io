@@ -80,9 +80,25 @@ Testing across different versions of Spring Boot is no easy task, especially whe
 But maybe more interesting is the fact that we learned how to create interfaces that bridge the Spring Boot
 configuration with the OpenTelemetry SDK configuration.
 In the beginning, the OpenTelemetry SDK was only able to read configuration from system properties and environment
-variables. 
-It was relatively easy to add support for Spring Boot configuration files by implementing the 
+variables.
 
+It was relatively easy to add support for Spring Boot configuration files by implementing the
+[ConfigProperties](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure-spi/src/main/java/io/opentelemetry/sdk/autoconfigure/spi/ConfigProperties.java)
+interface - you just have to write a `@ConfigurationProperties` class
+for [lists](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/release/v2.6.x/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/internal/properties/SpringConfigProperties.java#L104-L106)
+and [maps](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/release/v2.6.x/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/internal/properties/SpringConfigProperties.java#L126-L140),
+because the Spring Boot
+Environment can't handle them directly.
+Luckily, Spring Boot has a way to convert Strings to lists
+and [maps](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/release/v2.6.x/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/internal/MapConverter.java),
+so users can pass resource attributes both in a single environment variable (as
+per [spec](https://opentelemetry.io/docs/languages/sdk-configuration/general/#otel_resource_attributes))
+or in a
+[Spring Boot configuration file](https://opentelemetry.io/docs/zero-code/java/spring-boot-starter/sdk-configuration/#general-configuration).
 
-
-https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/src/main/java/io/opentelemetry/sdk/autoconfigure/internal/ComponentLoader.java
+Allowing users to use Spring beans for configuration was a bit more challenging.
+We came up with a new interface,
+[ComponentLoader](https://github.com/open-telemetry/opentelemetry-java/blob/release/v1.40.x/sdk-extensions/autoconfigure/src/main/java/io/opentelemetry/sdk/autoconfigure/internal/ComponentLoader.java),
+that allows users to register Spring beans that will be loaded by the OpenTelemetry SDK,
+which can be used for advanced configuration
+like [dynamic auth headers](https://opentelemetry.io/docs/zero-code/java/spring-boot-starter/sdk-configuration/#configure-the-exporter-programmatically).
