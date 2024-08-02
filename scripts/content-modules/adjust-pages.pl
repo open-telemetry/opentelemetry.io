@@ -20,7 +20,7 @@ my $specBasePath = '/docs/specs';
 my %versions = qw(
   spec: 1.35.0
   otlp: 1.3.2
-  semconv: 1.26.0
+  semconv: 1.27.0
 );
 my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
