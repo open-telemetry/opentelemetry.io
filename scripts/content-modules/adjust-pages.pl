@@ -96,10 +96,16 @@ while(<>) {
     s|(\]\()/docs/|$1$specBasePath/semconv/|g;
     s|(\]:\s*)/docs/|$1$specBasePath/semconv/|;
 
+    s|\((/model/.*?)\)|($semconvSpecRepoUrl/blob/main/$1)|g;
+
     # TODO: drop after fix of https://github.com/open-telemetry/semantic-conventions/issues/419
     s|#instrument-advice\b|#instrument-advisory-parameters|g;
     # TODO: drop after fix of https://github.com/open-telemetry/semantic-conventions/pull/883
     s|(\]\(process.md)#process(\))|$1$2|g;
+
+    # TODO: drop after fix of https://github.com/open-telemetry/semantic-conventions/issues/1313
+    s|(/database/database-spans\.md)#batch-operations|$1|g;
+    s|(/messaging/messaging-spans\.md)#common-messaging-operations|$1|g;
   }
 
   # TODO: drop after fix of https://github.com/open-telemetry/semantic-conventions/pull/1065
