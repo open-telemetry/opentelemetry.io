@@ -10,6 +10,7 @@ const defaultGlobs = ['data/registry/*.yml'];
 
 let numFilesProcessed = 0,
   numFilesWithIssues = 0;
+let debugFlag = false;
 
 const schema = require('../data/registry-schema.json');
 const ajv = new Ajv({
@@ -125,7 +126,7 @@ function validateRegistryEntry(file, enc, cb) {
         console.log(
           `::${logLevel} file=${file.path},line=${lineNumber},endLine=${lineNumber},title=Registry Schema Validation::${error.message}`,
         );
-      } else {
+      } else if (debugFlag) {
         console.log(error);
         console.error(
           `${logLevel} in ${file.path}:${lineNumber}: ${error.message}`,
@@ -165,6 +166,7 @@ function validateRegistry() {
   if (argv.debug) {
     console.log('Globs being used:', globs);
   }
+  debugFlag = argv.debug;
 
   return gulp
     .src(globs, { followSymlinks: false })
