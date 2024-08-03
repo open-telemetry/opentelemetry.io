@@ -4,7 +4,7 @@ menu: { main: { weight: 10 } }
 default_lang_commit: 6e35a949
 ---
 
-OpenTelemetry 也被称为 OTel，是一个供应商中立的、开源的[可观测性](concepts/observability-primer)框架，
+OpenTelemetry 也被称为 OTel，是一个供应商中立的、开源的[可观测性](concepts/observability-primer/#what-is-observability)框架，
 可用于插桩、生成、采集和导出[链路](concepts/signals/traces/)、
 [指标](concepts/signals/metrics/)和[日志](concepts/signals/logs/)等遥测数据。
 
