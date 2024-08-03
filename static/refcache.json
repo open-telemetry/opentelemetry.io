@@ -8435,6 +8435,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-22T15:38:55.347099+01:00"
   },
+  "https://rubygems.org/search": {
+    "StatusCode": 200,
+    "LastSeen": "2024-07-29T12:09:34.887196-04:00"
+  },
   "https://rubyonrails.org/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:01:26.488265-05:00"
