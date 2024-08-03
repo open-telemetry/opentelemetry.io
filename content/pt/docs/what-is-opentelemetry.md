@@ -1,39 +1,36 @@
 ---
 title: O que é o OpenTelemetry?
-description:
-  Uma breve explicação sobre o que o OpenTelemetry é e não é.
+description: Uma breve explicação sobre o que o OpenTelemetry é e não é.
 weight: 150
 default_lang_commit: f17277371622b97df4c15a6cfe3ce0b22e5538ef
 ---
 
-O OpenTelemetry é um _framework_ e um conjunto de
-ferramentas de
+O OpenTelemetry é um _framework_ e um conjunto de ferramentas de
 [Observabilidade](/docs/concepts/observability-primer/#what-is-observability)
 projetados para criar e gerenciar dados de telemetria como
 [rastros](/docs/concepts/signals/traces/),
 [métricas](/docs/concepts/signals/metrics/) e
 [logs](/docs/concepts/signals/logs/). Um aspecto crucial do OpenTelemetry é ser
 agnóstico em relação a fornecedores e ferramentas, o que o possibilita ser
-utilizado com uma grande variedade de _backends_ de observabilidade,
-incluindo ferramentas de código aberto como
-[Jaeger](https://www.jaegertracing.io/) e [Prometheus](https://prometheus.io/),
-além de soluções comerciais.
+utilizado com uma grande variedade de _backends_ de observabilidade, incluindo
+ferramentas de código aberto como [Jaeger](https://www.jaegertracing.io/) e
+[Prometheus](https://prometheus.io/), além de soluções comerciais.
 
 O OpenTelemetry não é um _backend_ de observabilidade como Jaeger, Prometheus ou
-outra soluções comerciais. O OpenTelemetry é focado na geração, coleta, gerenciamento e
-exportação de telemetria. Um dos principais objetivos do OpenTelemetry é
-permitir que você possa instrumentar suas aplicações ou sistemas de forma fácil,
-independentemente da linguagem, infraestrutura ou ambiente de execução. 
-Crucialmente, o armazenamento e a visualização da telemetria são intencionalmente
-deixados para outras ferramentas.
+outra soluções comerciais. O OpenTelemetry é focado na geração, coleta,
+gerenciamento e exportação de telemetria. Um dos principais objetivos do
+OpenTelemetry é permitir que você possa instrumentar suas aplicações ou sistemas
+de forma fácil, independentemente da linguagem, infraestrutura ou ambiente de
+execução. Crucialmente, o armazenamento e a visualização da telemetria são
+intencionalmente deixados para outras ferramentas.
 
 ## O que é observabilidade?
 
 [Observabilidade](/docs/concepts/observability-primer/#what-is-observability) é
-a capacidade de entender o estado interno de um sistema ao examinar o dados que ele emite.
-No contexto de software, isso significa ser capaz de entender o estado interno
-do sistema analisando seus dados de telemetria, que incluem rastros, métricas e
-logs.
+a capacidade de entender o estado interno de um sistema ao examinar o dados que
+ele emite. No contexto de software, isso significa ser capaz de entender o
+estado interno do sistema analisando seus dados de telemetria, que incluem
+rastros, métricas e logs.
 
 Para tornar um sistema observável, ele deve ser
 [instrumentado](/docs/concepts/instrumentation). Ou seja, o código deve emitir
@@ -52,12 +49,12 @@ software e infraestrutura é cada vez maior.
 O OpenTelemetry atende à necessidade de observabilidade seguindo dois
 princípios-chave:
 
-1. Você tem controle total sobre os dados que gera. Não há dependência de fornecedor
-   (_vendor lock-in_).
+1. Você tem controle total sobre os dados que gera. Não há dependência de
+   fornecedor (_vendor lock-in_).
 2. Você só precisa aprender um único conjunto de APIs e convenções.
 
-Ambos os princípios combinados dão a flexibilidade que equipes e 
-organizações precisam no mundo da computação moderna atual.
+Ambos os princípios combinados dão a flexibilidade que equipes e organizações
+precisam no mundo da computação moderna atual.
 
 Se você quiser saber mais, dê uma olhada na
 [missão, visão e valores](/community/mission/) do OpenTelemetry.
@@ -72,8 +69,8 @@ O OpenTelemetry consiste dos seguintes componentes:
 - [Convenções semânticas](/docs/specs/semconv/) que estabelecem um padrão de
   nomenclatura para tipos comuns de dados de telemetria
 - APIs que definem como gerar dados de telemetria
-- [SDKs para linguagens de programação](/docs/languages) que implementam a especificação, APIs e
-  exportação de dados de telemetria
+- [SDKs para linguagens de programação](/docs/languages) que implementam a
+  especificação, APIs e exportação de dados de telemetria
 - Um [ecossistema de bibliotecas](/ecosystem/registry) que implementa
   instrumentação para bibliotecas e frameworks comuns
 - Componentes para instrumentação automática que geram dados de telemetria sem
@@ -103,10 +100,10 @@ pode ser estendido incluem:
 - Carregar bibliotecas de instrumentação personalizadas em um SDK
 - Criar uma [distribuição](/docs/concepts/distributions/) de um SDK ou do
   Collector adaptada a um caso de uso específico
-- Criar um novo _exporter_ para um _backend_ personalizado que ainda não suporta o
-  protocolo do OpenTelemetry (OTLP)
-- Criar um propagador personalizado para formatos de propagação de contexto
-  não padronizados
+- Criar um novo _exporter_ para um _backend_ personalizado que ainda não suporta
+  o protocolo do OpenTelemetry (OTLP)
+- Criar um propagador personalizado para formatos de propagação de contexto não
+  padronizados
 
 Embora a maioria dos usuários possa não precisar estender o OpenTelemetry, o
 projeto é projetado para tornar isso possível em quase todos os níveis.
@@ -121,8 +118,8 @@ and [OpenCensus](https://opencensus.io).
 Ambos os projetos foram criados para resolver o mesmo problema: a falta de um
 padrão de como instrumentar o código e enviar dados de telemetria para um
 _backend_ de Observabilidade. Como nenhum dos projetos conseguiu resolver o
-problema por completo de forma independente, eles se fundiram para formar o OpenTelemetry e
-combinar seus esforços para oferecer uma solução única.
+problema por completo de forma independente, eles se fundiram para formar o
+OpenTelemetry e combinar seus esforços para oferecer uma solução única.
 
 Se você está atualmente utilizando OpenTracing ou OpenCensus, pode aprender como
 migrar para o OpenTelemetry no [guia de migração](/docs/migration/).
