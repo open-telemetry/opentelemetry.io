@@ -6,6 +6,8 @@ tags:
   - instrumentation
   - js
 license: Apache 2.0
+authors:
+  - name: OpenTelemetry Authors
 description:
   This module provides automatic instrumentation for the `redis@^4.0.0` package.
 urls:
