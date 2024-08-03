@@ -78,7 +78,7 @@ O OpenTelemetry consiste dos seguintes componentes:
   instrumentação para bibliotecas e frameworks comuns
 - Componentes para instrumentação automática que geram dados de telemetria sem
   exigir alterações no código
-- O [OpenTelemetry Collector](/docs/collector), é um intermediário (_proxy_) que
+- O [OpenTelemetry Collector](/docs/collector), um _proxy_ intermediário que
   recebe, processa e exporta dados de telemetria
 - Várias outras ferramentas, como o
   [OpenTelemetry Operator para Kubernetes](/docs/kubernetes/operator/),
