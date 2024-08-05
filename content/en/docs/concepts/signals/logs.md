@@ -17,8 +17,8 @@ framework or infrastructure component. OpenTelemetry SDKs and
 autoinstrumentation utilize several components to automatically correlate logs
 with [traces](/docs/concepts/signals/traces).
 
-OpenTelemetry's support for logs is designed to be fully compatible with
-what you already have, providing capabilities to wrap those logs with additional
+OpenTelemetry's support for logs is designed to be fully compatible with what
+you already have, providing capabilities to wrap those logs with additional
 context and a common toolkit to parse and manipulate logs into a common format
 across many different sources.
 
@@ -119,11 +119,10 @@ whitespace-separated data in a CLF log.
 192.168.1.1 - johndoe [04/Aug/2024:12:34:56 -0400] "POST /api/v1/login HTTP/1.1" 200 1234 "http://example.com" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36" {"transactionId": "abcd-efgh-ijkl-mnop", "responseTime": 150, "requestBody": {"username": "johndoe"}, "responseHeaders": {"Content-Type": "application/json"}}
 ```
 
-To make the most use of this log, parse both the JSON and
-the ELF-related pieces into a shared format to make analysis on an observability
-backend easier. The `filelogreceiver` in the
-[OpenTelemetry Collector](/docs/collector) contains standardized ways to parse
-logs like this.
+To make the most use of this log, parse both the JSON and the ELF-related pieces
+into a shared format to make analysis on an observability backend easier. The
+`filelogreceiver` in the [OpenTelemetry Collector](/docs/collector) contains
+standardized ways to parse logs like this.
 
 Structured logs are the preferred way to use logs. Because structured logs are
 emitted in a consistent format, they are straightforward to parse, which makes
@@ -147,15 +146,15 @@ System reboot initiated at 2024-08-04 03:00:00 by user: admin. Reason: Scheduled
 DEBUG - 2024-08-04 09:30:15 - User johndoe performed action: file_upload. Filename: report_Q3_2024.pdf, Size: 2.3 MB, Duration: 5.2 seconds. Result: Success
 ```
 
-It is possible to store and analyze Unstructured logs in production, although you may need to do
-substantial work to parse or otherwise pre-process them to be machine-readable.
-For example, the above three logs will require a regular expression to parse
-their timestamps and custom parsers to consitently extract the bodies of the log
-message. This will typically be necessary for a logging backend to know how to
-sort and organize the logs by timestamp. Although it's possible to parse
-unstructured logs for analysis purposes, doing this may be more work than
-switching to structured logging, such as via a standard logging framework in
-your applications.
+It is possible to store and analyze Unstructured logs in production, although
+you may need to do substantial work to parse or otherwise pre-process them to be
+machine-readable. For example, the above three logs will require a regular
+expression to parse their timestamps and custom parsers to consitently extract
+the bodies of the log message. This will typically be necessary for a logging
+backend to know how to sort and organize the logs by timestamp. Although it's
+possible to parse unstructured logs for analysis purposes, doing this may be
+more work than switching to structured logging, such as via a standard logging
+framework in your applications.
 
 ### Semistructured logs
 
@@ -174,8 +173,8 @@ parsers to allow for analysis at scale.
 
 ## OpenTelemetry logging components
 
-The following lists of concepts and components power OpenTelemetry's
-logging support.
+The following lists of concepts and components power OpenTelemetry's logging
+support.
 
 ### Log Appender / Bridge
 
