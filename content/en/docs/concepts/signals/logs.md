@@ -2,6 +2,7 @@
 title: Logs
 weight: 3
 description: A recording of an event.
+cSpell:ignore: autoinstrumentation filelogreceiver transformprocessor semistructured Semistructured
 ---
 
 A **log** is a timestamped text record, either structured (recommended) or
@@ -149,7 +150,7 @@ DEBUG - 2024-08-04 09:30:15 - User johndoe performed action: file_upload. Filena
 It is possible to store and analyze Unstructured logs in production, although
 you may need to do substantial work to parse or otherwise pre-process them to be
 machine-readable. For example, the above three logs will require a regular
-expression to parse their timestamps and custom parsers to consitently extract
+expression to parse their timestamps and custom parsers to consistently extract
 the bodies of the log message. This will typically be necessary for a logging
 backend to know how to sort and organize the logs by timestamp. Although it's
 possible to parse unstructured logs for analysis purposes, doing this may be
