@@ -12,8 +12,8 @@ practical for both high-level and in-depth analysis of systems.
 
 However, if the large majority of your requests are successful and finish with
 acceptable latency and no errors, you do not need 100% of your traces to
-meaningfully observe your applications and systems. _You just need the right
-sampling_.
+meaningfully observe your applications and systems. You just need the right
+sampling.
 
 ![Illustration shows that not all data needs to be traced, and that a sample of data is sufficient.](traces-venn-diagram.svg)
 
@@ -32,12 +32,12 @@ Sometimes, the definitions of these terms get mixed up. You might find someone
 states that they are "sampling out data" or that data not processed or exported
 is considered "sampled". These are incorrect statements.
 
-## Why Sample?
+## Why sampling?
 
 Sampling is one of the most effective ways to reduce the costs of observability
-without losing visbility. Although there are other ways to lower costs, such as
+without losing visibility. Although there are other ways to lower costs, such as
 filtering or aggregating data, these other methods do not adhere to the concept
-of _representativeness_, which is crucial when performing in-depth analysis of
+of representativeness, which is crucial when performing in-depth analysis of
 application or system behavior.
 
 Representativeness is the principle that a smaller group can accurately
@@ -49,52 +49,52 @@ Additionally, the more data you generate, the less data you actually need to
 have a representative sample. For high-volume systems, is quite common for a
 sampling rate of 1% or lower to very accurately represent the other 99% of data.
 
-### When to Sample
+### When to sample
 
-You should consider sampling if you meet any of the following criteria:
+Consider sampling if you meet any of the following criteria:
 
-- You generate 1000 or more traces per second
+- You generate 1000 or more traces per second.
 - Most of your trace data represents healthy traffic with little variation in
-  data
+  data.
 - You have some common criteria, like errors or high latency, that usually means
-  something is wrong
+  something is wrong.
 - You have domain-specific criteria you can use to determine relevant data
-  beyond errors and latency
+  beyond errors and latency.
 - You can describe some common rules that determine if data should be sampled or
-  dropped
+  dropped.
 - You have a tell your services apart, so that high- and low-volume services are
-  sampled differently
+  sampled differently.
 - You have the ability to route unsampled data (for "just in case" scenarios) to
-  low-cost storage systems
+  low-cost storage systems.
 
 Finally, consider your overall budget. If you have limited budget for
-Observability, but can afford to spend time to effectively sample, then sampling
+observability, but can afford to spend time to effectively sample, then sampling
 can generally be worth it.
 
-### When not to Sample
+### When not to sample
 
-Sampling may not be appropriate for you. You may want to avoid sampling if you
-meet any of the following criteria:
+Sampling might not be appropriate for you. You might want to avoid sampling if
+you meet any of the following criteria:
 
-- You generate very little data (tens of small traces per second or lower)
-- You only use Obsevability data in aggregate, and can thus pre-aggregate data
+- You generate very little data (tens of small traces per second or lower).
+- You only use obsevability data in aggregate, and can thus pre-aggregate data.
 - You are bound by circumstances such as regulation that prohibit dropping data
-  (and cannot route unsampled data to low-cost storage)
+  (and cannot route unsampled data to low-cost storage).
 
-Finally, you should consider the following three costs associated with sampling:
+Finally, consider the following three costs associated with sampling:
 
 1. The direct cost of compute to effectively sample data, such as a tail
-   sampling proxy
+   sampling proxy.
 2. The indirect engineering cost of maintaining effective sampling methodologies
-   as more application, systems, and data are involved
+   as more application, systems, and data are involved.
 3. The indirect opportunity cost of missing critical information with
-   _ineffective_ sampling techniques
+   ineffective sampling techniques.
 
-Sampling, while effective and reducing Observability costs, can introduce other
-unexpected costs if not performed well. It may be cheaper to simply "pay for
-more Observability" (be it with a vendor or compute when self-hosting) depending
-on your Observability backend, the nature of your data, and your attempts to
-sample effectively.
+Sampling, while effective at reducing observability costs, might introduce other
+unexpected costs if not performed well. It could be cheaper to allocate more
+resources for observability instead, either with a vendor or compute when
+self-hosting, depending on your observability backend, the nature of your data,
+and your attempts to sample effectively.
 
 ## Head Sampling
 
@@ -119,7 +119,7 @@ The upsides to head sampling are:
 The primary downside to head sampling is that it is not possible to make a
 sampling decision based on data in the entire trace. For example, you cannot
 ensure that all traces with an error within them are sampled with head sampling
-alone. For this situation and many others, you need Tail Sampling.
+alone. For this situation and many others, you need tail sampling.
 
 ## Tail Sampling
 
@@ -139,7 +139,7 @@ Some examples of how you can use Tail Sampling include:
   newly deployed service
 - Applying different sampling rates to traces based on certain criteria, such as
   when traces only come from low-volume services versus traces with high-volume
-  services
+  services.
 
 As you can see, tail sampling allows for a much higher degree of sophistication
 in how you sample data. For larger systems that must sample telemetry, it is
