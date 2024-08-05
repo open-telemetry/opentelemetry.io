@@ -11,17 +11,16 @@ cSpell:ignore: centos configurator democlass epel myapp pecl phar remi unindente
 
 Automatic instrumentation with PHP requires:
 
-- PHP 8.0 or later
-- the
-  [OpenTelemetry PHP extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation)
-- [composer autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading)
-- the [OpenTelemetry SDK](https://packagist.org/packages/open-telemetry/sdk)
-- one or more
+- PHP 8.0 or higher
+- [OpenTelemetry PHP extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation)
+- [Composer autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading)
+- [OpenTelemetry SDK](https://packagist.org/packages/open-telemetry/sdk)
+- One or more
   [instrumentation libraries](/ecosystem/registry/?component=instrumentation&language=php)
-- [configuration](#configuration)
+- [Configuration](#configuration)
 
 {{% alert title="Important" color="warning" %}}Installing the OpenTelemetry
-extension by itself will not generate traces. {{% /alert %}}
+extension by itself does not generate traces. {{% /alert %}}
 
 ## Install the OpenTelemetry extension
 
@@ -125,10 +124,10 @@ php --ri opentelemetry
 
 ## Install SDK and instrumentation libraries
 
-Now that the extension is installed, you should install the OpenTelemetry SDK
+Now that the extension is installed, install the OpenTelemetry SDK
 and one or more instrumentation libraries.
 
-Automatic Instrumentation is available for a number commonly used PHP libraries.
+Automatic instrumentation is available for a number commonly used PHP libraries.
 For the full list, see
 [instrumentation libraries on packagist](https://packagist.org/search/?query=open-telemetry&tags=instrumentation).
 
@@ -146,9 +145,9 @@ composer require \
 ## Configuration
 
 When used in conjunction with the OpenTelemetry SDK, you can use environment
-variables or `php.ini` to configure auto-instrumentation.
+variables or the `php.ini` file to configure auto-instrumentation.
 
-### Via environment
+### Environment configuration
 
 ```sh
 OTEL_PHP_AUTOLOAD_ENABLED=true \
@@ -160,7 +159,7 @@ OTEL_PROPAGATORS=baggage,tracecontext \
 php myapp.php
 ```
 
-### Via php.ini
+### php.ini configuration
 
 Append the following to `php.ini`, or another `ini` file that will be processed
 by PHP:
@@ -176,19 +175,19 @@ OTEL_PROPAGATORS=baggage,tracecontext
 
 ## Run your application
 
-Once all of the above is installed and configured, you can start your
+After all of the above is installed and configured, start your
 application as you normally would.
 
-The traces you see exported to the OpenTelemetry Collector will depend on the
+The traces you see exported to the OpenTelemetry Collector depend on the
 instrumentation libraries you have installed, and the code path that was taken
-inside the application. In the example above, using Slim Framework and PSR-18
-instrumentation libraries, you should expect to see spans such as:
+inside the application. In the previous example, using Slim Framework and
+PSR-18 instrumentation libraries, you should expect to see spans such as:
 
-- a root span representing the HTTP transaction
-- a span for the action that was executed
-- a span for each HTTP transaction that the PSR-18 client sent
+- A root span representing the HTTP transaction
+- A span for the action that was executed
+- A span for each HTTP transaction that the PSR-18 client sent
 
-It's also worth noting that the PSR-18 client instrumentation will append
+Note that the PSR-18 client instrumentation appends
 [distributed tracing](/docs/concepts/context-propagation/#propagation) headers
 to outgoing HTTP requests.
 
@@ -198,13 +197,13 @@ to outgoing HTTP requests.
 you just want to get up and running quickly, and there are suitable
 instrumentation libraries for your application. {{% /alert %}}
 
-The extension enables registering observer functions (as PHP code) against
+The extension enables registering observer functions as PHP code against
 classes and methods, and executing those functions before and after the observed
 method runs.
 
 If there is not an instrumentation library for your framework or application,
-you can write your own. The following example provides some code which we wish
-to auto-instrument, and then illustrates how to use the OpenTelemetry extension
+you can write your own. The following example provides some code to be
+instrumented, and then illustrates how to use the OpenTelemetry extension
 to trace the execution of that code.
 
 ```php
@@ -253,13 +252,13 @@ $demo = new DemoClass();
 $demo->run();
 ```
 
-In the example above we define `DemoClass`, then register `pre` and `post` hook
-functions on its `run` method. The hook functions will run before and after each
-execution of the `DemoClass::run()` method. The `pre` function starts and
-activates a span, and the `post` function ends it.
+The previous example defines `DemoClass`, then registers `pre` and `post`
+hook functions on its `run` method. The hook functions run before and after
+each execution of the `DemoClass::run()` method. The `pre` function starts
+and activates a span, while the `post` function ends it.
 
-If an exception was thrown by `DemoClass::run()`, the `post` function will
-record it, without affecting exception propagation.
+If `DemoClass::run()` throws an exception, the `post` function
+records it without affecting exception propagation.
 
 ## Next steps
 
