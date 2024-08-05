@@ -153,4 +153,4 @@ trechos filhos. Quando um trecho encapsula outro trecho, isso também representa
 uma relação aninhada.
 
 Para mais informações sobre rastros e como eles se relacionam com o
-OpenTelemetry, confira [Rastro](/docs/concepts/signals/traces/)..
+OpenTelemetry, confira [Rastro](/docs/concepts/signals/traces/).
