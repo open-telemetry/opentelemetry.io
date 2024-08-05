@@ -124,8 +124,8 @@ php --ri opentelemetry
 
 ## Install SDK and instrumentation libraries
 
-Now that the extension is installed, install the OpenTelemetry SDK
-and one or more instrumentation libraries.
+Now that the extension is installed, install the OpenTelemetry SDK and one or
+more instrumentation libraries.
 
 Automatic instrumentation is available for a number commonly used PHP libraries.
 For the full list, see
@@ -175,13 +175,13 @@ OTEL_PROPAGATORS=baggage,tracecontext
 
 ## Run your application
 
-After all of the above is installed and configured, start your
-application as you normally would.
+After all of the above is installed and configured, start your application as
+you normally would.
 
 The traces you see exported to the OpenTelemetry Collector depend on the
 instrumentation libraries you have installed, and the code path that was taken
-inside the application. In the previous example, using Slim Framework and
-PSR-18 instrumentation libraries, you should expect to see spans such as:
+inside the application. In the previous example, using Slim Framework and PSR-18
+instrumentation libraries, you should expect to see spans such as:
 
 - A root span representing the HTTP transaction
 - A span for the action that was executed
@@ -197,14 +197,14 @@ to outgoing HTTP requests.
 you just want to get up and running quickly, and there are suitable
 instrumentation libraries for your application. {{% /alert %}}
 
-The extension enables registering observer functions as PHP code against
-classes and methods, and executing those functions before and after the observed
-method runs.
+The extension enables registering observer functions as PHP code against classes
+and methods, and executing those functions before and after the observed method
+runs.
 
 If there is not an instrumentation library for your framework or application,
 you can write your own. The following example provides some code to be
-instrumented, and then illustrates how to use the OpenTelemetry extension
-to trace the execution of that code.
+instrumented, and then illustrates how to use the OpenTelemetry extension to
+trace the execution of that code.
 
 ```php
 <?php
@@ -252,13 +252,13 @@ $demo = new DemoClass();
 $demo->run();
 ```
 
-The previous example defines `DemoClass`, then registers `pre` and `post`
-hook functions on its `run` method. The hook functions run before and after
-each execution of the `DemoClass::run()` method. The `pre` function starts
-and activates a span, while the `post` function ends it.
+The previous example defines `DemoClass`, then registers `pre` and `post` hook
+functions on its `run` method. The hook functions run before and after each
+execution of the `DemoClass::run()` method. The `pre` function starts and
+activates a span, while the `post` function ends it.
 
-If `DemoClass::run()` throws an exception, the `post` function
-records it without affecting exception propagation.
+If `DemoClass::run()` throws an exception, the `post` function records it
+without affecting exception propagation.
 
 ## Next steps
 
