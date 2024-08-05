@@ -113,5 +113,5 @@ that are part of the same trace from the other service.
 
 ## Next steps
 
-To learn more about propagation, read the
-[Propagators API specification](/docs/specs/otel/context/api-propagators/).
+To learn more about propagation, see
+[Propagators API](/docs/specs/otel/context/api-propagators/).
