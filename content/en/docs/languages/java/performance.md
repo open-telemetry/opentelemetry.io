@@ -40,7 +40,7 @@ the Java agent.
 
 The volume of spans processed by the instrumentation might impact agent
 overhead. You can configure trace sampling to adjust the span volume and reduce
-resource usage. See [Sampling](/docs/languages/java/sampling).
+resource usage. See [Sampling](/docs/languages/java/sdk/#sampler).
 
 ### Turn off specific instrumentations
 

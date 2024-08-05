@@ -180,9 +180,8 @@ After you've set up instrumentation libraries, you might want to add
 [additional instrumentation](/docs/languages/java/instrumentation) to collect
 custom telemetry data.
 
-You might also want to configure an appropriate exporter to
-[export your telemetry data](/docs/languages/java/exporters) to one or more
-telemetry backends.
+You might also want to [configure the SDK](/docs/languages/java/configuration/)
+to export to one or more telemetry backends.
 
 For existing library instrumentations, also see
 [Java agent](/docs/zero-code/java/agent/).
