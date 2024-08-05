@@ -7,7 +7,7 @@ author: >
   Bisutti](https://github.com/jeanbisutti) (Microsoft)
 issue: https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/11581
 sig: Java
-cSpell:ignore: Gregor Zeitlinger Bisutti
+cSpell:ignore: Bisutti Gregor Zeitlinger
 ---
 
 We're proud to announce that the OpenTelemetry Spring Boot starter is now
