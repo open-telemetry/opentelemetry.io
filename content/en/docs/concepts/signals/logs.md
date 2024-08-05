@@ -2,6 +2,7 @@
 title: Logs
 weight: 3
 description: A recording of an event.
+# prettier-ignore
 cSpell:ignore: autoinstrumentation filelogreceiver transformprocessor semistructured Semistructured
 ---
 
