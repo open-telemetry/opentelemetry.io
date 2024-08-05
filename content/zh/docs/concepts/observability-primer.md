@@ -93,7 +93,7 @@ Span 属性是附加在 span 上的额外信息。这些属性为我们提供了
 
 许多可观测性后端会将追踪可视化为瀑布图，如下所示：
 
-![Sample Trace](/img/waterfall-trace.svg 'Trace waterfall diagram')
+![链路示例](/img/waterfall-trace.svg '链路瀑布图')
 
 瀑布图清晰地展示了根 span 与其子 span 之间的父子关系。当一个 span 包含另一个 span 时，这种关系就表现为嵌套结构。
 
