@@ -92,7 +92,7 @@ consulte [Logs](/docs/concepts/signals/logs/).
 
 ### Trechos
 
-Um **trechos** representa uma unidade de trabalho ou operação. Trechos rastreiam
+Um **trecho** representa uma unidade de trabalho ou operação. Trechos rastreiam
 operações específicas que uma requisição realiza, mostrando o que aconteceu
 durante o tempo em que essa operação foi executada.
 
@@ -127,7 +127,7 @@ OpenTelemetry, confira [Trecho](/docs/concepts/signals/traces/#spans).
 
 ### Rastros Distribuídos
 
-Um **rastro distribuído**, mais comumente conhecido como rastros, registra os
+Um **rastro distribuído**, mais comumente conhecido como rastro, registra os
 caminhos percorridos pelas requisições (feitas por uma aplicação ou usuário
 final) enquanto se propagam por arquiteturas com múltiplos serviços, como
 aplicações de microsserviços e serverless.
