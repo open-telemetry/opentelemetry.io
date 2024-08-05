@@ -209,7 +209,6 @@ Valid values are:
 - `http/protobuf` to use OTLP/HTTP + protobuf
 - `http/json` to use OTLP/HTTP + JSON
 
-
 ### `OTEL_EXPORTER_OTLP_LOGS_PROTOCOL`
 
 Specifies the OTLP transport protocol to be used for log data.
