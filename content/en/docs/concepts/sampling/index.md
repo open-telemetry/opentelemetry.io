@@ -1,34 +1,34 @@
 ---
 title: Sampling
 description:
-  Learn about sampling, and the different sampling options available in
+  Learn about sampling and the different sampling options available in
   OpenTelemetry.
 weight: 80
 ---
 
-With distributed tracing, you observe requests as they move from one service to
-another in a distributed system. It’s superbly practical for a number of
+With distributed tracing, you can observe requests as they move from one service
+to another in a distributed system. It's superbly practical for a number of
 reasons, such as understanding your service connections and diagnosing latency
 issues, among many other benefits.
 
-However, if the majority of all your requests are successful 200s and finish
-without unacceptable latency or errors, do you really need all that data? Here’s
-the thing—you don’t always need a ton of data to find the right insights. _You
-just need the right sampling of data._
+However, if the majority of your requests are successful 200s and finish without
+unacceptable latency or errors, do you really need all that data? Here’s the
+thing—you don’t always need a ton of data to find the right insights. _You just
+need the right sampling of data._
 
 ![Illustration shows that not all data needs to be traced, and that a sample of data is sufficient.](traces-venn-diagram.svg)
 
 The idea behind sampling is to control the spans you send to your observability
 backend, resulting in lower ingest costs. Different organizations will have
-their own reasons for not just _why_ they want to sample, but also _what_ they
+their own reasons for not just _why_ they want to sample but also _what_ they
 want to sample. You might want to customize your sampling strategy to:
 
 - **Manage costs**: If you have a high volume of telemetry, you risk incurring
   heavy charges from a telemetry backend vendor or cloud provider to export and
   store every span.
-- **Focus on interesting traces**: For example, your frontend team may only want
-  to see traces with specific user attributes.
-- **Filter out noise**: For example, you may want to filter out health checks.
+- **Focus on interesting traces**: For example, your frontend team might only
+  want to see traces with specific user attributes.
+- **Filter out noise**: For example, you might want to filter out health checks.
 
 ## Terminology
 
@@ -41,8 +41,8 @@ or span is considered "sampled" or "not sampled":
 - **Not sampled**: A trace or span is not processed or exported. Because it is
   not chosen by the sampler, it is considered "not sampled".
 
-Sometimes, the definitions of these terms get mixed up. You may find someone
-state that they are "sampling out data" or that data not processed or exported
+Sometimes, the definitions of these terms get mixed up. You might find someone
+states that they are "sampling out data" or that data not processed or exported
 is considered "sampled". These are incorrect statements.
 
 ## Head Sampling
@@ -53,8 +53,8 @@ inspecting the trace as a whole.
 
 For example, the most common form of head sampling is
 [Consistent Probability Sampling](/docs/specs/otel/trace/tracestate-probability-sampling/#consistent-probability-sampling).
-It may also be referred to as Deterministic Sampling. In this case, a sampling
-decision is made based on the trace ID and a desired percentage of traces to
+This is also be referred to as Deterministic Sampling. In this case, a sampling
+decision is made based on the trace ID and the desired percentage of traces to
 sample. This ensures that whole traces are sampled - no missing spans - at a
 consistent rate, such as 5% of all traces.
 
@@ -65,12 +65,12 @@ The upsides to head sampling are:
 - Efficient
 - Can be done at any point in the trace collection pipeline
 
-The primary downside to head sampling is that it is not possible make a sampling
-decision based on data in the entire trace. This means that head sampling is
-effective as a blunt instrument, but is wholly insufficient for sampling
-strategies that must take whole-system information into account. For example, it
-is not possible to use head sampling to ensure that all traces with an error
-within them are sampled. For this, you need Tail Sampling.
+The primary downside to head sampling is that it is not possible to make a
+sampling decision based on data in the entire trace. This means that head
+sampling is effective as a blunt instrument, but is wholly insufficient for
+sampling strategies that must take whole-system information into account. For
+example, it is not possible to use head sampling to ensure that all traces with
+an error within them are sampled. For this, you need Tail Sampling.
 
 ## Tail Sampling
 
@@ -92,7 +92,7 @@ Some examples of how you can use Tail Sampling include:
 
 As you can see, tail sampling allows for a much higher degree of sophistication.
 For larger systems that must sample telemetry, it is almost always necessary to
-use Tail Sampling to balance data volume with usefulness of that data.
+use Tail Sampling to balance data volume with the usefulness of that data.
 
 There are three primary downsides to tail sampling today:
 
@@ -105,19 +105,19 @@ There are three primary downsides to tail sampling today:
   tail sampling must be stateful systems that can accept and store a large
   amount of data. Depending on traffic patterns, this can require dozens or even
   hundreds of nodes that all utilize resources differently. Furthermore, a tail
-  sampler may need to "fall back" to less computationally-intensive sampling
+  sampler might need to "fall back" to less computationally intensive sampling
   techniques if it is unable to keep up with the volume of data it is receiving.
-  Because of these factors, it is critical to monitor tail sampling components
+  Because of these factors, it is critical to monitor tail-sampling components
   to ensure that they have the resources they need to make the correct sampling
   decisions.
 - Tail samplers often end up being in the domain of vendor-specific technology
   today. If you're using a paid vendor for Observability, the most effective
-  tail sampling options available to you may be limited to what the vendor
+  tail sampling options available to you might be limited to what the vendor
   offers.
 
-Finally, for some systems, tail sampling may be used in conjunction with Head
+Finally, for some systems, tail sampling might be used in conjunction with Head
 Sampling. For example, a set of services that produce an extremely high volume
-of trace data may first use head sampling to only sample a small percentage of
+of trace data might first use head sampling to sample only a small percentage of
 traces, and then later in the telemetry pipeline use tail sampling to make more
 sophisticated sampling decisions before exporting to a backend. This is often
 done in the interest of protecting the telemetry pipeline from being overloaded.
@@ -133,7 +133,7 @@ The OpenTelemetry Collector includes the following sampling processors:
 
 ### Language SDKs
 
-For the individual language specific implementations of the OpenTelemetry API &
-SDK you will find support for sampling at the respective documentation pages:
+For the individual language-specific implementations of the OpenTelemetry API &
+SDK, you will find support for sampling in the respective documentation pages:
 
 {{% sampling-support-list " " %}}
