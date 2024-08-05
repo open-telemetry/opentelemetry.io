@@ -2,9 +2,12 @@
 title: The OpenTelemetry Spring Boot starter is now stable
 linkTitle: Spring Starter GA
 date: 2024-
-author: [Gregor Zeitlinger](https://github.com/zeitlinger) (Grafana Labs)
+author: >
+  [Gregor Zeitlinger](https://github.com/zeitlinger) (Grafana Labs) & [Jean
+  Bisutti](https://github.com/jeanbisutti) (Microsoft)
 issue: https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/11581
 sig: Java
+cSpell:ignore: Gregor Zeitlinger Bisutti
 ---
 
 We're proud to announce that the OpenTelemetry Spring Boot starter is now
@@ -13,7 +16,7 @@ generally available.
 The [Spring Boot](https://spring.io/projects/spring-boot) starter is a powerful
 tool that simplifies the process of instrumenting Spring Boot applications with
 OpenTelemetry. It provides a lightweight, flexible alternative to the
-OpenTelemetry Java agent, making it easier than ever to monitor your Spring Boot
+OpenTelemetry Java agent, making it easier than ever to observe your Spring Boot
 applications.
 
 In this blog post, we'll explain when you should use the Spring Starter, what it
@@ -32,14 +35,7 @@ Spring starter an essential tool in the Spring ecosystem.
 
 ## When to use the Spring Starter?
 
-It may be a bit surprising, but our default recommendation for Spring Boot apps
-is still to use the [**OpenTelemetry Java agent**](/docs/zero-code/java/agent)
-with bytecode instrumentation, as it provides more out-of-the-box
-instrumentation than the Spring Starter (some things are only possible with
-bytecode instrumentation).
-
-So here are some scenarios where you might want to use the Spring Starter
-instead:
+Here are some scenarios where you might want to use the Spring Starter:
 
 - **Spring Boot Native image** applications for which the OpenTelemetry Java
   agent does not work
@@ -56,6 +52,12 @@ instead:
   using Spring beans (the OpenTelemetry Java agent requires an
   [extension](https://opentelemetry.io/docs/zero-code/java/agent/extensions/)
   for this)
+
+It may be a bit surprising, but our default recommendation for Spring Boot apps
+is still to use the [**OpenTelemetry Java agent**](/docs/zero-code/java/agent)
+with bytecode instrumentation, as it provides more out-of-the-box
+instrumentation than the Spring Starter, since some things are only possible
+with bytecode instrumentation.
 
 ## What does it mean to be stable?
 
