@@ -48,10 +48,9 @@ Here are some scenarios where you might want to use the Spring Starter:
   doesn't work with the OpenTelemetry Java agent
 - **Programmatic configuration** of the OpenTelemetry Spring Boot starter, such
   as
-  [dynamic auth headers](https://opentelemetry.io/docs/zero-code/java/spring-boot-starter/sdk-configuration/#configure-the-exporter-programmatically),
+  [dynamic auth headers](/docs/zero-code/java/spring-boot-starter/sdk-configuration/#configure-the-exporter-programmatically),
   using Spring beans (the OpenTelemetry Java agent requires an
-  [extension](https://opentelemetry.io/docs/zero-code/java/agent/extensions/)
-  for this)
+  [extension](/docs/zero-code/java/agent/extensions/) for this)
 
 It may be a bit surprising, but our default recommendation for Spring Boot apps
 is still to use the [**OpenTelemetry Java agent**](/docs/zero-code/java/agent)
@@ -76,19 +75,19 @@ use.
   OpenTelemetry Java agent - so you can switch between the two without any
   issues.
 - **Mature Documentation**: The
-  [documentation](https://opentelemetry.io/docs/zero-code/java/spring-boot-starter/)
-  is mature and covers all aspects of the Spring Starter.
-- **Community Support**: The Spring Starter has a
-  [community](https://opentelemetry.io/community/) (`otel-java` Slack channel)
-  of users who can help you with any issues you might encounter.
+  [documentation](/docs/zero-code/java/spring-boot-starter/) is mature and
+  covers all aspects of the Spring Starter.
+- **Community Support**: The Spring Starter has a [community](/community/)
+  (`otel-java` Slack channel) of users who can help you with any issues you
+  might encounter.
 - **Regular Updates**: The Spring Starter is actively maintained and updated
   with new features and bug fixes.
 
 A notable exemption are semantic conventions, which are still evolving and may
 change in the future. Some of the conventions are still in the experimental
 phase and may change in the future.
-[HTTP semantic conventions](https://opentelemetry.io/docs/specs/semconv/http/http-metrics/)
-are stable and will not change.
+[HTTP semantic conventions](/docs/specs/semconv/http/http-metrics/) are stable
+and will not change.
 
 ## What did we learn along the way?
 
@@ -111,14 +110,13 @@ because the Spring Boot Environment can't handle them directly. Luckily, Spring
 Boot has a way to convert Strings to lists and
 [maps](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/release/v2.6.x/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/internal/MapConverter.java),
 so users can pass resource attributes both in a single environment variable (as
-per
-[spec](https://opentelemetry.io/docs/languages/sdk-configuration/general/#otel_resource_attributes))
+per [spec](/docs/languages/sdk-configuration/general/#otel_resource_attributes))
 or in a
-[Spring Boot configuration file](https://opentelemetry.io/docs/zero-code/java/spring-boot-starter/sdk-configuration/#general-configuration).
+[Spring Boot configuration file](/docs/zero-code/java/spring-boot-starter/sdk-configuration/#general-configuration).
 
 Allowing users to use Spring beans for configuration was a bit more challenging.
 We came up with a new interface,
 [ComponentLoader](https://github.com/open-telemetry/opentelemetry-java/blob/release/v1.40.x/sdk-extensions/autoconfigure/src/main/java/io/opentelemetry/sdk/autoconfigure/internal/ComponentLoader.java),
 that allows users to register Spring beans that will be loaded by the
 OpenTelemetry SDK, which can be used for advanced configuration like
-[dynamic auth headers](https://opentelemetry.io/docs/zero-code/java/spring-boot-starter/sdk-configuration/#configure-the-exporter-programmatically).
+[dynamic auth headers](/docs/zero-code/java/spring-boot-starter/sdk-configuration/#configure-the-exporter-programmatically).
