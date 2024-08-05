@@ -3,7 +3,7 @@ title: Logs
 weight: 3
 description: A recording of an event.
 # prettier-ignore
-cSpell:ignore: autoinstrumentation filelogreceiver transformprocessor semistructured Semistructured
+cSpell:ignore: autoinstrumentation filelogreceiver semistructured Semistructured transformprocessor
 ---
 
 A **log** is a timestamped text record, either structured (recommended) or
