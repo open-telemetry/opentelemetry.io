@@ -29,7 +29,7 @@ with logs:
 
 - Several receivers which parse logs from specific, known sources of log data
 - The filelogreceiver, which reads logs from any file and provides features to
-  parse them from different formats or use a regex
+  parse them from different formats or use a regular expression
 - Processors like the transformprocessor which lets you parse nested data,
   flatten nested structures, add/remove/update values, and more
 - Exporters that let you emit log data in a non-OpenTelemetry format
@@ -103,7 +103,7 @@ machine-readable format. Two of are JSON:
 
 and for infrastructure components, Common Log Format (CLF):
 
-```
+```text
 127.0.0.1 - johndoe [04/Aug/2024:12:34:56 -0400] "POST /api/v1/login HTTP/1.1" 200 1234
 ```
 
@@ -111,7 +111,7 @@ It is also common to have different structured log formats mixed together. For
 example, and Extended Log Format (ELF) log mixes JSON with the
 whitespace-separated data in a CLF log.
 
-```
+```text
 192.168.1.1 - johndoe [04/Aug/2024:12:34:56 -0400] "POST /api/v1/login HTTP/1.1" 200 1234 "http://example.com" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36" {"transactionId": "abcd-efgh-ijkl-mnop", "responseTime": 150, "requestBody": {"username": "johndoe"}, "responseHeaders": {"Content-Type": "application/json"}}
 ```
 
@@ -133,7 +133,7 @@ help it.
 
 Examples of unstructured logs:
 
-```
+```text
 [ERROR] 2024-08-04 12:45:23 - Failed to connect to database. Exception: java.sql.SQLException: Timeout expired. Attempted reconnect 3 times. Server: db.example.com, Port: 5432
 
 System reboot initiated at 2024-08-04 03:00:00 by user: admin. Reason: Scheduled maintenance. Services stopped: web-server, database, cache. Estimated downtime: 15 minutes.
@@ -153,7 +153,7 @@ formatting and delimiters between data across different systems.
 
 Example of a semistructured log:
 
-```
+```text
 2024-08-04T12:45:23Z level=ERROR service=user-authentication userId=12345 action=login message="Failed login attempt" error="Invalid password" ipAddress=192.168.1.1 userAgent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
 ```
 
