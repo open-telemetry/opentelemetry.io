@@ -141,6 +141,6 @@ SDK, you will find support for sampling in the respective documentation pages:
 ### Vendors
 
 Many [vendors](/ecosystem/vendors) offer comprehensive sampling solutions that
-incorporate Head Sampling, Tail Sampling, and other features that can support
-sophisticated sampling needs. If you are sending telemetry to a vendor, it may
-be beneficial to use their sampling solutions.
+incorporate head sampling, tail sampling, and other features that can support
+sophisticated sampling needs. If you are sending telemetry to a vendor, consider
+using their sampling solutions.
