@@ -2,7 +2,7 @@
 title: Node.js
 description: Get telemetry for your app in less than 5 minutes!
 aliases: [/docs/js/getting_started/nodejs]
-cSpell:ignore: autoinstrumentation autoinstrumentations KHTML rolldice
+cSpell:ignore: autoinstrumentations KHTML rolldice
 weight: 10
 ---
 
