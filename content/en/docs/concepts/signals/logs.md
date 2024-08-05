@@ -9,20 +9,20 @@ unstructured, with optional metadata. Of all telemetry signals, logs have the
 biggest legacy. Most programming languages have built-in logging capabilities or
 well-known, widely used logging libraries.
 
-## OpenTelemetry Logs
+## OpenTelemetry logs
 
 OpenTelemetry does not define a bespoke API or SDK to create logs. Instead,
 OpenTelemetry logs are the existing logs you already have from a logging
 framework or infrastructure component. OpenTelemetry SDKs and
 autoinstrumentation utilize several components to automatically correlate logs
-with [traces](/docs/signals/traces).
+with [traces](/docs/concepts/signals/traces).
 
 OpenTelemetry's support for logs is designed to be fully compatible with
 what you already have, providing capabilities to wrap those logs with additional
 context and a common toolkit to parse and manipulate logs into a common format
 across many different sources.
 
-### OpenTelemetry Logs in the OpenTelemetry Collector
+### OpenTelemetry logs in the OpenTelemetry Collector
 
 The [OpenTelemetry Collector](/docs/collector) provides several tools to work
 with logs:
@@ -37,7 +37,7 @@ with logs:
 The first step in adopting OpenTelemetry frequently involves deploying a
 Collector as a general-purposes logging agent.
 
-### OpenTelemetry Logs for Applications
+### OpenTelemetry logs for applications
 
 In applications, OpenTelemetry logs are created with any logging library or
 built-in logging capabilities. When you add autoinstrumentation or activate an
@@ -45,7 +45,7 @@ SDK, OpenTelemetry will automatically correlate your existing logs with any
 active trace and span, wrapping the log body with their IDs. In other words,
 OpenTelemetry automatically correlates your logs and traces.
 
-### Language Support
+### Language support
 
 Logs are a [stable](/docs/specs/otel/versioning-and-stability/#stable) signal in
 the OpenTelemetry specification. For the individual language specific
@@ -53,16 +53,20 @@ implementations of the Logs API & SDK, the status is as follows:
 
 {{% signal-support-table "logs" %}}
 
-## Structured, Unstructured, and Semistructured Logs
+## Structured, unstructured, and semistructured logs
 
-OpenTelemetry does not distinguish between structured and unstructured logs.
-However, it is vitally important to understand the different kinds of formats
-that log data can manifest in.
+OpenTelemetry does not technically distinguish between structured and
+unstructured logs. You can use any log you have with OpenTelemetry. However, not
+all log formats are equally useful! Structured logs, in particular, are
+recommended for production observability because they are easy to parse and
+analyze at scale. The following section explains the differences between
+structured, unstructured, and semistructured logs.
 
 ### Structured logs
 
 A structured log is a log whose textual format follows a consistent,
-machine-readable format. Two of are JSON:
+machine-readable format. For applications, one of the most common formats is
+JSON:
 
 ```json
 {
@@ -101,14 +105,14 @@ machine-readable format. Two of are JSON:
 }
 ```
 
-and for infrastructure components, Common Log Format (CLF):
+and for infrastructure components, Common Log Format (CLF) is commonly used:
 
 ```text
 127.0.0.1 - johndoe [04/Aug/2024:12:34:56 -0400] "POST /api/v1/login HTTP/1.1" 200 1234
 ```
 
 It is also common to have different structured log formats mixed together. For
-example, and Extended Log Format (ELF) log mixes JSON with the
+example, an Extended Log Format (ELF) log can mix JSON with the
 whitespace-separated data in a CLF log.
 
 ```text
@@ -117,17 +121,21 @@ whitespace-separated data in a CLF log.
 
 To make the most use of this log, parse both the JSON and
 the ELF-related pieces into a shared format to make analysis on an observability
-backend easier.
+backend easier. The `filelogreceiver` in the
+[OpenTelemetry Collector](/docs/collector) contains standardized ways to parse
+logs like this.
 
-Structured logs are the preferred way to use logs. Because they are emitted in a
-consistent format, they are easier to parse, which makes them easier to
-preprocess in an OpenTelemetry Collector, correlate with other data, and
-ultimate analyze in an Observability backend. Use structured logs if you can.
+Structured logs are the preferred way to use logs. Because structured logs are
+emitted in a consistent format, they are straightforward to parse, which makes
+them easier to preprocess in an OpenTelemetry Collector, correlate with other
+data, and ultimate analyze in an Observability backend.
 
-### Unstructured Logs
+### Unstructured logs
 
 Unstructured logs are logs that don't follow a consistent structure. They may be
-more human-readable, and are often used in development.
+more human-readable, and are often used in development. However, it is not
+preferred to use unstructured logs for production observability purposes, since
+they are much more difficult to parse and analyze at scale.
 
 Examples of unstructured logs:
 
@@ -139,9 +147,15 @@ System reboot initiated at 2024-08-04 03:00:00 by user: admin. Reason: Scheduled
 DEBUG - 2024-08-04 09:30:15 - User johndoe performed action: file_upload. Filename: report_Q3_2024.pdf, Size: 2.3 MB, Duration: 5.2 seconds. Result: Success
 ```
 
-Structured logs are fine for debugging applications locally, but
-are very difficult to use at scale when observing large systems.
-Use structured logging if possible.
+It is possible to store and analyze Unstructured logs in production, although you may need to do
+substantial work to parse or otherwise pre-process them to be machine-readable.
+For example, the above three logs will require a regular expression to parse
+their timestamps and custom parsers to consitently extract the bodies of the log
+message. This will typically be necessary for a logging backend to know how to
+sort and organize the logs by timestamp. Although it's possible to parse
+unstructured logs for analysis purposes, doing this may be more work than
+switching to structured logging, such as via a standard logging framework in
+your applications.
 
 ### Semistructured logs
 
@@ -158,7 +172,7 @@ Example of a semistructured log:
 Although machine-readable, semistructured logs may require several different
 parsers to allow for analysis at scale.
 
-## OpenTelemetry Logging Componentry
+## OpenTelemetry logging components
 
 The following lists of concepts and components power OpenTelemetry's
 logging support.
