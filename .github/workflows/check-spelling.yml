@@ -17,6 +17,7 @@ jobs:
             layouts/**/*.md
             data/**/*
           config: .cspell.yml
+          incremental_files_only: false
 
   dict-check:
     name: CSPELL:IGNORE check

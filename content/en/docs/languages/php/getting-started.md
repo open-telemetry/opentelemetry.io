@@ -116,7 +116,7 @@ Next, you’ll use the OpenTelemetry PHP extension to
 
    {{% alert title="Note" color="warning" %}}Alternative methods of installing
    the extension are detailed in
-   [zero-code instrumentation](/docs/zero-code/php/#installation).
+   [zero-code instrumentation](/docs/zero-code/php/#install-the-opentelemetry-extension).
    {{% /alert %}}
 
 3. Add the extension to your `php.ini` file:

@@ -20,7 +20,7 @@ my $specBasePath = '/docs/specs';
 my %versions = qw(
   spec: 1.35.0
   otlp: 1.3.2
-  semconv: 1.26.0
+  semconv: 1.27.0
 );
 my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
@@ -96,14 +96,16 @@ while(<>) {
     s|(\]\()/docs/|$1$specBasePath/semconv/|g;
     s|(\]:\s*)/docs/|$1$specBasePath/semconv/|;
 
-    # TODO: drop after fix of https://github.com/open-telemetry/semantic-conventions/issues/419
+    s|\((/model/.*?)\)|($semconvSpecRepoUrl/tree/v$semconvVers/$1)|g;
+
+    # TODO: drop after fix of https://github.com/open-telemetry/semantic-conventions/pull/1316
     s|#instrument-advice\b|#instrument-advisory-parameters|g;
-    # TODO: drop after fix of https://github.com/open-telemetry/semantic-conventions/pull/883
-    s|(\]\(process.md)#process(\))|$1$2|g;
+
+    # TODO: drop after fix of https://github.com/open-telemetry/semantic-conventions/issues/1313
+    s|(/database/database-spans\.md)#batch-operations|$1|g;
+    s|(/messaging/messaging-spans\.md)#common-messaging-operations|$1|g;
   }
 
-  # TODO: drop after fix of https://github.com/open-telemetry/semantic-conventions/pull/1065
-  s|opentelemetry-specification/tree/v1\.33\.0/specification/metrics|semantic-conventions/blob/v1\.26\.0/docs/general|g if $ARGV =~ /\/tmp\/semconv\/docs\/system\/container-metrics/;
 
   # SPECIFICATION custom processing
 
@@ -127,15 +129,6 @@ while(<>) {
   s|(\]\()(img/.*?\))|$1../$2|g if $ARGV !~ /(logs|schemas)._index/ && $ARGV !~ /otlp\/docs/;
   s|(\]\()([^)]+\.png\))|$1../$2|g if $ARGV =~ /\/tmp\/semconv\/docs\/general\/attributes/;
   s|(\]\()([^)]+\.png\))|$1../$2|g if $ARGV =~ /\/tmp\/semconv\/docs\/http\/http-spans/;
-
-  # Fix links that are to the title of the .md page
-  # TODO: fix these in the spec
-  s|(/context/api-propagators.md)#propagators-api|$1|g
-    if $otelSpecVers le '1.34.0'; # Ensure that https://github.com/open-telemetry/opentelemetry-specification/pull/4080 is in the new release
-  s|(/resource/sdk.md)#resource-sdk|$1|g
-    if $semconvVers le '1.26.0'; # Ensure that https://github.com/open-telemetry/semantic-conventions/pull/1154 is in the new release
-  s|(event-api.md#)(data-model)|$1event-$2|g
-    if $otelSpecVers le '1.34.0'; # Ensure that https://github.com/open-telemetry/opentelemetry-specification/pull/4075 is in the new release
 
   s|\.\.\/README.md\b|$otelSpecRepoUrl/|g if $ARGV =~ /specification._index/;
   s|\.\.\/README.md\b|..| if $ARGV =~ /specification.library-guidelines.md/;

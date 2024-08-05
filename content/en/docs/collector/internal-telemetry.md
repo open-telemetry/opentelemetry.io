@@ -242,13 +242,13 @@ categorized by instrumentation type.
 | `http_client_active_requests`     | Number of active HTTP client requests.                                                    | Counter   |
 | `http_client_connection_duration` | Measures the duration of the successfully established outbound HTTP connections.          | Histogram |
 | `http_client_open_connections`    | Number of outbound HTTP connections that are active or idle on the client.                | Counter   |
-| `http_client_request_body_size`   | Measures the size of HTTP client request bodies.                                          | Histogram |
-| `http_client_request_duration`    | Measures the duration of HTTP client requests.                                            | Histogram |
-| `http_client_response_body_size`  | Measures the size of HTTP client response bodies.                                         | Histogram |
+| `http_client_request_size`        | Measures the size of HTTP client request bodies.                                          | Histogram |
+| `http_client_duration`            | Measures the duration of HTTP client requests.                                            | Histogram |
+| `http_client_response_size`       | Measures the size of HTTP client response bodies.                                         | Histogram |
 | `http_server_active_requests`     | Number of active HTTP server requests.                                                    | Counter   |
-| `http_server_request_body_size`   | Measures the size of HTTP server request bodies.                                          | Histogram |
-| `http_server_request_duration`    | Measures the duration of HTTP server requests.                                            | Histogram |
-| `http_server_response_body_size`  | Measures the size of HTTP server response bodies.                                         | Histogram |
+| `http_server_request_size`        | Measures the size of HTTP server request bodies.                                          | Histogram |
+| `http_server_duration`            | Measures the duration of HTTP server requests.                                            | Histogram |
+| `http_server_response_size`       | Measures the size of HTTP server response bodies.                                         | Histogram |
 | `rpc_client_duration`             | Measures the duration of outbound RPC.                                                    | Histogram |
 | `rpc_client_request_size`         | Measures the size of RPC request messages (uncompressed).                                 | Histogram |
 | `rpc_client_requests_per_rpc`     | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram |

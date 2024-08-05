@@ -137,12 +137,16 @@ will produce a log entry like the following:
   "attributes": {
     "time": "2024-03-30T08:31:20.545192187Z",
     "log.iostream": "stdout",
-    "k8s.pod.name": "kube-controller-kind-control-plane",
-    "k8s.pod.uid": "49cc7c1fd3702c40b2686ea7486091d6",
-    "k8s.container.name": "kube-controller",
-    "k8s.container.restart_count": "1",
-    "k8s.namespace.name": "kube-system",
     "log.file.path": "/var/log/pods/kube-system_kube-controller-kind-control-plane_49cc7c1fd3702c40b2686ea7486091d6/kube-controller/1.log"
+  },
+  "resource": {
+    "attributes": {
+      "k8s.pod.name": "kube-controller-kind-control-plane",
+      "k8s.pod.uid": "49cc7c1fd3702c40b2686ea7486091d6",
+      "k8s.container.name": "kube-controller",
+      "k8s.container.restart_count": "1",
+      "k8s.namespace.name": "kube-system"
+    }
   }
 }
 ```

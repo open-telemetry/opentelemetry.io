@@ -124,4 +124,7 @@ The following auto-instrumented metrics are available for the application:
 
 ## Logs
 
-TBD
+Ad Service uses Log4J, which is automatically configured by the OTel Java agent.
+
+It includes the trace context in log records, enabling log correlation with
+traces.
