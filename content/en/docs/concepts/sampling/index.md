@@ -137,3 +137,11 @@ For the individual language-specific implementations of the OpenTelemetry API &
 SDK, you will find support for sampling in the respective documentation pages:
 
 {{% sampling-support-list " " %}}
+
+### Vendors
+
+Many [vendors](/ecosystem/vendors) offer comprehensive sampling solutions that
+incorporate head sampling, tail sampling, and other features that can support
+sophisticated sampling needs. These solutions may also be optimized specifically
+for the vendor's backend. If you are sending telemetry to a vendor, consider
+using their sampling solutions.
