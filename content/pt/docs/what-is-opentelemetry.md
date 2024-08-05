@@ -112,8 +112,8 @@ projeto é projetado para tornar isso possível em quase todos os níveis.
 
 O OpenTelemetry é um projeto da
 [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io) que é resultado
-da fusão entre dois projetos anteriores, [OpenTracing](https://opentracing.io)
-e [OpenCensus](https://opencensus.io).
+da fusão entre dois projetos anteriores, [OpenTracing](https://opentracing.io) e
+[OpenCensus](https://opencensus.io).
 
 Ambos os projetos foram criados para resolver o mesmo problema: a falta de um
 padrão de como instrumentar o código e enviar dados de telemetria para um
