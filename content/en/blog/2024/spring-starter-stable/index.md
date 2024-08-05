@@ -22,7 +22,7 @@ actually means to be stable, and what we learned along the way.
 If you just want to get started, check out the
 [Spring Starter documentation](/docs/zero-code/java/spring-boot-starter).
 
-## Why is the Spring Starter Important?
+## Why does the Spring Starter matter?
 
 Spring users have come to expect starters as a standard method for addressing
 various aspects of application development. Unlike other configurations, a
