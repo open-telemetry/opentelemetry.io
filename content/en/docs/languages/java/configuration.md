@@ -4,36 +4,73 @@ linkTitle: Configure the SDK
 weight: 12
 aliases: [config]
 # prettier-ignore
-cSpell:ignore: authservice blrp Dotel ignore LOWMEMORY myservice ottrace PKCS retryable tracepropagators
+cSpell:ignore: authservice blrp Dotel ignore LOWMEMORY myservice ottrace PKCS retryable tracepropagators autoconfigured Customizer
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
 <?code-excerpt path-base="examples/java/configuration"?>
 
-The [SDK](/docs/languages/java/sdk/) is the built-in reference implementation of the [API](/docs/languages/java/instrumentation/), processing and exporting telemetry produced by instrumentation API calls. Configuring the SDK to process and export appropriately is an essential step to integrating OpenTelemetry into an application.
+The [SDK](/docs/languages/java/sdk/) is the built-in reference implementation of
+the [API](/docs/languages/java/instrumentation/), processing and exporting
+telemetry produced by instrumentation API calls. Configuring the SDK to process
+and export appropriately is an essential step to integrating OpenTelemetry into
+an application.
 
-All SDK components have [programmatic configuration APIs](#programmatic-configuration). This is the most flexible, expressive way to configure the SDK. However, changing configuration requires adjusting code and recompiling the application, and there is no language interoperability since the API is written in java. 
+All SDK components have
+[programmatic configuration APIs](#programmatic-configuration). This is the most
+flexible, expressive way to configure the SDK. However, changing configuration
+requires adjusting code and recompiling the application, and there is no
+language interoperability since the API is written in java.
 
-The [zero-code SDK autoconfigure](#zero-code-sdk-autoconfigure) module offers a compelling alternative, configuring SDK components based off system properties / environment variables, with various extension points for instances where the properties are insufficient. **We recommend the zero-code SDK autoconfigure module.** 
+The [zero-code SDK autoconfigure](#zero-code-sdk-autoconfigure) module offers a
+compelling alternative, configuring SDK components based off system properties /
+environment variables, with various extension points for instances where the
+properties are insufficient. **We recommend the zero-code SDK autoconfigure
+module.**
 
-> The [Java Agent](/docs/zero-code/java/agent/) automatically configures the SDK using the zero-code SDK autoconfigure module, and uses it in the instrumentation it installs. All autoconfigure content is applicable to Java Agent users.
+> The [Java agent](/docs/zero-code/java/agent/) automatically configures the SDK
+> using the zero-code SDK autoconfigure module, and uses it in the
+> instrumentation it installs. All autoconfigure content is applicable to Java
+> Agent users.
 
 ## Programmatic configuration
 
-The programmatic configuration interface is the set of APIs for constructing [SDK](/docs/languages/java/sdk/) components. All SDK components have a programmatic configuration API, and all other configuration mechanisms are built on top of this API. For example, the [autoconfigure environment variable and system property](#environment-variable) configuration interface interprets well-known environment variables and system properties into a series of calls to the programmatic configuration API.
+The programmatic configuration interface is the set of APIs for constructing
+[SDK](/docs/languages/java/sdk/) components. All SDK components have a
+programmatic configuration API, and all other configuration mechanisms are built
+on top of this API. For example, the
+[autoconfigure environment variable and system property](#environment-variables-and-system-properties)
+configuration interface interprets well-known environment variables and system
+properties into a series of calls to the programmatic configuration API.
 
-While other configuration mechanisms offer more convenience, none offer the flexibility of writing code expressing the precise configuration required. When a particular capability isn't supported by a higher order configuration mechanism, you may have no choice but to use programmatic configuration.
+While other configuration mechanisms offer more convenience, none offer the
+flexibility of writing code expressing the precise configuration required. When
+a particular capability isn't supported by a higher order configuration
+mechanism, you may have no choice but to use programmatic configuration.
 
-The [SDK components](/docs/languages/java/sdk/#sdk-components) sections demonstrate simple programmatic configuration API for key user-facing areas of the SDK. For an exhaustive set of the available configuration APIs, consult the code.
+The [SDK components](/docs/languages/java/sdk/#sdk-components) sections
+demonstrate simple programmatic configuration API for key user-facing areas of
+the SDK. For an exhaustive set of the available configuration APIs, consult the
+code.
 
 ## Zero-code SDK autoconfigure
 
-The autoconfigure module (artifact `io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param vers.otel %}}`) is a configuration interface built on top of the [programmatic configuration interface](#programmatic-configuration), which configures [SDK components](/docs/languages/java/sdk/#sdk-components) with zero code. There are two distinct autoconfigure workflows:
+The autoconfigure module (artifact
+`io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param vers.otel %}}`)
+is a configuration interface built on top of the
+[programmatic configuration interface](#programmatic-configuration), which
+configures [SDK components](/docs/languages/java/sdk/#sdk-components) with zero
+code. There are two distinct autoconfigure workflows:
 
-* [Environment variables and system properties](#environment-variables-and-system-properties) interprets environment variables and system properties to create SDK components, including various customization points for overlaying programmatic configuration.
-* [Declarative configuration](#declarative-configuration) (**currently under development**) interprets a configuration model to create SDK components, which is typically encoded in a YAML configuration file.
+- [Environment variables and system properties](#environment-variables-and-system-properties)
+  interprets environment variables and system properties to create SDK
+  components, including various customization points for overlaying programmatic
+  configuration.
+- [Declarative configuration](#declarative-configuration) (**currently under
+  development**) interprets a configuration model to create SDK components,
+  which is typically encoded in a YAML configuration file.
 
-Automatically configure SDK components using with autoconfigure as follows: 
+Automatically configure SDK components using with autoconfigure as follows:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/AutoConfiguredSdk.java"?>
@@ -51,77 +88,106 @@ public class AutoConfiguredSdk {
 ```
 <!-- prettier-ignore-end -->
 
-**NOTE:** The [Java Agent](/docs/zero-code/java/agent/) automatically configures the SDK using this workflow, and uses it in the instrumentation it installs. All autoconfigure content is applicable to Java Agent users.
+**NOTE:** The [Java agent](/docs/zero-code/java/agent/) automatically configures
+the SDK using this workflow, and uses it in the instrumentation it installs. All
+autoconfigure content is applicable to Java agent users.
 
-{{% alert color="info" %}} The autoconfigure module registers Java shutdown hooks to shut down the SDK when appropriate. Because OpenTelemetry Java [uses `java.util.logging` for internal logging](/docs/languages/java/sdk/#internal-logging), some of that logging may be suppressed during shutdown hooks. This is a bug in the JDK itself, and not something under the control of OpenTelemetry Java. If you require logging during shutdown hooks, consider using `System.out` rather than a logging framework that might shut itself down in a shutdown hook, thus suppressing your log messages. See this[JDK bug](https://bugs.openjdk.java.net/browse/JDK-8161253) for more details.
-{{% /alert %}}
+{{% alert color="info" %}} The autoconfigure module registers Java shutdown
+hooks to shut down the SDK when appropriate. Because OpenTelemetry Java
+[uses `java.util.logging` for internal logging](/docs/languages/java/sdk/#internal-logging),
+some of that logging may be suppressed during shutdown hooks. This is a bug in
+the JDK itself, and not something under the control of OpenTelemetry Java. If
+you require logging during shutdown hooks, consider using `System.out` rather
+than a logging framework that might shut itself down in a shutdown hook, thus
+suppressing your log messages. See
+this[JDK bug](https://bugs.openjdk.java.net/browse/JDK-8161253) for more
+details. {{% /alert %}}
 
 ### Environment variables and system properties
 
-Generally, autoconfigure supports properties listed in the [environment variable configuration specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#opentelemetry-environment-variable-specification), with occasional experimental and java-specific additions.
+Generally, autoconfigure supports properties listed in the
+[environment variable configuration specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#opentelemetry-environment-variable-specification),
+with occasional experimental and Java-specific additions.
 
-**NOTE:** The properties are listed below as system properties, but can also be set via environment variables. Apply the following steps to convert a system property to
-an environment variable:
+**NOTE:** The properties are listed below as system properties, but can also be
+set via environment variables. Apply the following steps to convert a system
+property to an environment variable:
 
-* Convert the name to uppercase.
-* Replace all `.` and `-` characters with `_`.
+- Convert the name to uppercase.
+- Replace all `.` and `-` characters with `_`.
 
-For example, the `otel.sdk.enabled` system property is equivalent to the `OTEL_SDK_ENABLED` environment variable.
+For example, the `otel.sdk.enabled` system property is equivalent to the
+`OTEL_SDK_ENABLED` environment variable.
 
-If a property is defined as both a system property and environment variable, the system property takes priority.
+If a property is defined as both a system property and environment variable, the
+system property takes priority.
 
 #### Properties: general
 
 Properties for disabling the [SDK](/docs/languages/java/sdk/#opentelemetrysdk):
 
-| System property                            | Description                                                                                                                             | Default                      |
-|--------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
-| `otel.sdk.disabled`                        | If `true`, disable the OpenTelemetry SDK. **[1]**                                                                                       | `false`                      |
+| System property     | Description                                       | Default |
+| ------------------- | ------------------------------------------------- | ------- |
+| `otel.sdk.disabled` | If `true`, disable the OpenTelemetry SDK. **[1]** | `false` |
 
-**[1]**: If disabled, `AutoConfiguredOpenTelemetrySdk#getOpenTelemetrySdk()` will return a minimally configured instance (i.e. `OpenTelemetrySdk.builder().build()`).
+**[1]**: If disabled, `AutoConfiguredOpenTelemetrySdk#getOpenTelemetrySdk()`
+will return a minimally configured instance (i.e.
+`OpenTelemetrySdk.builder().build()`).
 
 Properties for configuring [resource](/docs/languages/java/sdk/#resource):
 
-| System property                            | Description                                                                                                                             | Default                      |
-|--------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
-| `otel.service.name`                        | Specify logical service name. Takes precedence over `service.name` defined with `otel.resource.attributes`.                             | `unknown_service:java`       |
-| `otel.resource.attributes`                 | Specify resource attributes in the following format: `key1=val1,key2=val2,key3=val3`.                                                   |                              |
-| `otel.experimental.resource.disabled-keys` | Specify resource attribute keys that are filtered. This option is experimental and subject to change or removal.                        |                              |
-| `otel.java.enabled.resource.providers`     | Comma separated list of `ResourceProvider` fully qualified class names to enable. **[1]** If unset, all resource providers are enabled. |                              |
-| `otel.java.disabled.resource.providers`    | Comma separated list of `ResourceProvider` fully qualified class names to disable. **[1]**                                              |                              |
+| System property                            | Description                                                                                                                             | Default                |
+| ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| `otel.service.name`                        | Specify logical service name. Takes precedence over `service.name` defined with `otel.resource.attributes`.                             | `unknown_service:java` |
+| `otel.resource.attributes`                 | Specify resource attributes in the following format: `key1=val1,key2=val2,key3=val3`.                                                   |                        |
+| `otel.experimental.resource.disabled-keys` | Specify resource attribute keys that are filtered. This option is experimental and subject to change or removal.                        |                        |
+| `otel.java.enabled.resource.providers`     | Comma separated list of `ResourceProvider` fully qualified class names to enable. **[1]** If unset, all resource providers are enabled. |                        |
+| `otel.java.disabled.resource.providers`    | Comma separated list of `ResourceProvider` fully qualified class names to disable. **[1]**                                              |                        |
 
-**[1]**: For example, to disable the [OS resource provider](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/resources/library/src/main/java/io/opentelemetry/instrumentation/resources/OsResourceProvider.java), set `-Dotel.java.disabled.resource.providers=io.opentelemetry.instrumentation.resources.OsResourceProvider`. See [ResourceProvider](#resourceprovider) for resource provider artifact coordinates.
+**[1]**: For example, to disable the
+[OS resource provider](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/resources/library/src/main/java/io/opentelemetry/instrumentation/resources/OsResourceProvider.java),
+set
+`-Dotel.java.disabled.resource.providers=io.opentelemetry.instrumentation.resources.OsResourceProvider`.
+See [ResourceProvider](#resourceprovider) for resource provider artifact
+coordinates.
 
-Properties for attribute limits (see [span limits](/docs/languages/java/sdk/#spanlimits), [log limits](/docs/languages/java/sdk/#loglimits)):
+Properties for attribute limits (see
+[span limits](/docs/languages/java/sdk/#spanlimits),
+[log limits](/docs/languages/java/sdk/#loglimits)):
 
-| System property                            | Description                                                                                                                                                    | Default                      |
-|--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
-| `otel.attribute.value.length.limit`        | The maximum length of attribute values. Applies to spans and logs. Overridden by  `otel.span.attribute.value.length.limit`, `otel.span.attribute.count.limit`. | No limit                     |
-| `otel.attribute.count.limit`               | The maximum number of attributes. Applies to spans, span events, span links, and logs.                                                                         | `128`                        |
+| System property                     | Description                                                                                                                                                   | Default  |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `otel.attribute.value.length.limit` | The maximum length of attribute values. Applies to spans and logs. Overridden by `otel.span.attribute.value.length.limit`, `otel.span.attribute.count.limit`. | No limit |
+| `otel.attribute.count.limit`        | The maximum number of attributes. Applies to spans, span events, span links, and logs.                                                                        | `128`    |
 
-Properties for [context propagation](/docs/languages/java/sdk/#textmappropagator):
+Properties for
+[context propagation](/docs/languages/java/sdk/#textmappropagator):
 
-| System property                            | Description                                                                                                                         | Default                      |
-|--------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
-| `otel.propagators`                         | Comma separated list of propagators. Known values include `tracecontext`, `baggage`, `b3`, `b3multi`,  `jaeger`, `ottrace`. **[1]** | `tracecontext,baggage` (W3C) |
+| System property    | Description                                                                                                                        | Default                      |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| `otel.propagators` | Comma separated list of propagators. Known values include `tracecontext`, `baggage`, `b3`, `b3multi`, `jaeger`, `ottrace`. **[1]** | `tracecontext,baggage` (W3C) |
 
-**[1]**: Known propagators and artifacts (see [text map propagator](/docs/languages/java/sdk/#textmappropagator) for artifact coordinates):
+**[1]**: Known propagators and artifacts (see
+[text map propagator](/docs/languages/java/sdk/#textmappropagator) for artifact
+coordinates):
 
-* `tracecontext` configures `W3CTraceContextPropagator`.
-* `baggage` configures `W3CBaggagePropagator`.
-* `b3`, `b3multi` configures `B3Propagator`.
-* `jaeger` configures `JaegerPropagator`.
-* `ottrace` configures `OtTracePropagator`.
-* `ottrace` configures `OtTracePropagator`.
-* `xray` configures `AwsXrayPropagator`.
-* `xray-lambda` configures `AwsXrayLambdaPropagator`.
+- `tracecontext` configures `W3CTraceContextPropagator`.
+- `baggage` configures `W3CBaggagePropagator`.
+- `b3`, `b3multi` configures `B3Propagator`.
+- `jaeger` configures `JaegerPropagator`.
+- `ottrace` configures `OtTracePropagator`.
+- `ottrace` configures `OtTracePropagator`.
+- `xray` configures `AwsXrayPropagator`.
+- `xray-lambda` configures `AwsXrayLambdaPropagator`.
 
 #### Properties: traces
 
-Properties for [batch span processor(s)](/docs/languages/java/sdk/#spanprocessor) paired with exporters specified via `otel.traces.exporter`:
+Properties for
+[batch span processor(s)](/docs/languages/java/sdk/#spanprocessor) paired with
+exporters specified via `otel.traces.exporter`:
 
 | System property                  | Description                                                     | Default |
-|----------------------------------|-----------------------------------------------------------------|---------|
+| -------------------------------- | --------------------------------------------------------------- | ------- |
 | `otel.bsp.schedule.delay`        | The interval, in milliseconds, between two consecutive exports. | `5000`  |
 | `otel.bsp.max.queue.size`        | The maximum queue size.                                         | `2048`  |
 | `otel.bsp.max.export.batch.size` | The maximum batch size.                                         | `512`   |
@@ -130,24 +196,29 @@ Properties for [batch span processor(s)](/docs/languages/java/sdk/#spanprocessor
 Properties for [sampler](/docs/languages/java/sdk/#sampler):
 
 | System property           | Description                                                                                                                                                                                 | Default                 |
-|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------|
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
 | `otel.traces.sampler`     | The sampler to use. Known values include `always_on`, `always_off`, `traceidratio`, `parentbased_always_on`, `parentbased_always_off`, `parentbased_traceidratio`, `jaeger_remote`. **[1]** | `parentbased_always_on` |
 | `otel.traces.sampler.arg` | An argument to the configured tracer if supported, for example a ratio.                                                                                                                     |                         |
 
-**[1]**: Known samplers and artifacts (see [sampler](/docs/languages/java/sdk/#sampler) for artifact coordinates):
+**[1]**: Known samplers and artifacts (see
+[sampler](/docs/languages/java/sdk/#sampler) for artifact coordinates):
 
-* `always_on` configures `AlwaysOnSampler`.
-* `always_off` configures `AlwaysOffSampler`.
-* `traceidratio` configures `TraceIdRatioBased`. `otel.traces.sampler.arg` sets the ratio.
-* `parentbased_always_on` configures `ParentBased(root=AlwaysOnSampler)`.
-* `parentbased_always_off` configures `ParentBased(root=AlwaysOffSampler)`.
-* `parentbased_traceidratio` configures `ParentBased(root=TraceIdRatioBased)`. `otel.traces.sampler.arg` sets the ratio.
-* `jaeger_remote` configures `JaegerRemoteSampler`. `otel.traces.sampler.arg` is a comma-separated list of args as described in the [specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration).
+- `always_on` configures `AlwaysOnSampler`.
+- `always_off` configures `AlwaysOffSampler`.
+- `traceidratio` configures `TraceIdRatioBased`. `otel.traces.sampler.arg` sets
+  the ratio.
+- `parentbased_always_on` configures `ParentBased(root=AlwaysOnSampler)`.
+- `parentbased_always_off` configures `ParentBased(root=AlwaysOffSampler)`.
+- `parentbased_traceidratio` configures `ParentBased(root=TraceIdRatioBased)`.
+  `otel.traces.sampler.arg` sets the ratio.
+- `jaeger_remote` configures `JaegerRemoteSampler`. `otel.traces.sampler.arg` is
+  a comma-separated list of args as described in the
+  [specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration).
 
 Properties for [span limits](/docs/languages/java/sdk/#spanlimits):
 
 | System property                          | Description                                                                                             | Default  |
-|------------------------------------------|---------------------------------------------------------------------------------------------------------|----------|
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------- | -------- |
 | `otel.span.attribute.value.length.limit` | The maximum length of span attribute values. Takes precedence over `otel.attribute.value.length.limit`. | No limit |
 | `otel.span.attribute.count.limit`        | The maximum number of attributes per span. Takes precedence over `otel.attribute.count.limit`.          | `128`    |
 | `otel.span.event.count.limit`            | The maximum number of events per span.                                                                  | `128`    |
@@ -158,27 +229,29 @@ Properties for [span limits](/docs/languages/java/sdk/#spanlimits):
 Properties for [periodic metric reader](/docs/languages/java/sdk/#metricreader):
 
 | System property               | Description                                                              | Default |
-|-------------------------------|--------------------------------------------------------------------------|---------|
+| ----------------------------- | ------------------------------------------------------------------------ | ------- |
 | `otel.metric.export.interval` | The interval, in milliseconds, between the start of two export attempts. | `60000` |
 
 Properties for exemplars:
 
-| System property                               | Description                                                                                                            | Default       |
-|-----------------------------------------------|------------------------------------------------------------------------------------------------------------------------|---------------|
-| `otel.metrics.exemplar.filter`                | The filter for exemplar sampling. Can be `ALWAYS_OFF`, `ALWAYS_ON` or `TRACE_BASED`.                                   | `TRACE_BASED` |
+| System property                | Description                                                                          | Default       |
+| ------------------------------ | ------------------------------------------------------------------------------------ | ------------- |
+| `otel.metrics.exemplar.filter` | The filter for exemplar sampling. Can be `ALWAYS_OFF`, `ALWAYS_ON` or `TRACE_BASED`. | `TRACE_BASED` |
 
 Properties for cardinality limits:
 
 | System property                               | Description                                                                                                                                                             | Default |
-|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
+| --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
 | `otel.experimental.metrics.cardinality.limit` | If set, configure cardinality limit. The value dictates the maximum number of distinct points per metric. This option is experimental and subject to change or removal. | `2000`  |
 
 #### Properties: logs
 
-Properties for [log record processor(s)](/docs/languages/java/sdk/#logrecordprocessor) pared with exporters via `otel.logs.exporter`:
+Properties for
+[log record processor(s)](/docs/languages/java/sdk/#logrecordprocessor) pared
+with exporters via `otel.logs.exporter`:
 
 | System property                   | Description                                                     | Default |
-|-----------------------------------|-----------------------------------------------------------------|---------|
+| --------------------------------- | --------------------------------------------------------------- | ------- |
 | `otel.blrp.schedule.delay`        | The interval, in milliseconds, between two consecutive exports. | `1000`  |
 | `otel.blrp.max.queue.size`        | The maximum queue size.                                         | `2048`  |
 | `otel.blrp.max.export.batch.size` | The maximum batch size.                                         | `512`   |
@@ -189,25 +262,33 @@ Properties for [log record processor(s)](/docs/languages/java/sdk/#logrecordproc
 Properties for setting exporters:
 
 | System property                               | Purpose                                                                                                                                                                                                                              | Default          |
-|-----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------- |
 | `otel.traces.exporter`                        | Comma separated list of span exporters. Known values include `otlp`, `zipkin`, `console`, `logging-otlp`, `none`. **[1]**                                                                                                            | `otlp`           |
 | `otel.metrics.exporter`                       | Comma separated list of metric exporters. Known values include `otlp`, `prometheus`, `none`. **[1]**                                                                                                                                 | `otlp`           |
 | `otel.logs.exporter`                          | Comma separated list of log record exporters. Known values include `otlp`, `console`, `logging-otlp`, `none`. **[1]**                                                                                                                | `otlp`           |
 | `otel.java.experimental.exporter.memory_mode` | If `reusable_data`, enable reusable memory mode (on exporters which support it) to reduce allocations. Known values include `reusable_data`, `immutable_data`. This option is experimental and subject to change or removal. **[2]** | `immutable_data` |
 
-**[1]**: Known exporters and artifacts (see [span exporter](/docs/languages/java/sdk/#spanexporter), [metric exporter](/docs/languages/java/sdk/#metricexporter), [log exporter](/docs/languages/java/sdk/#logrecordexporter) for exporter artifact coordinates):
+**[1]**: Known exporters and artifacts (see
+[span exporter](/docs/languages/java/sdk/#spanexporter),
+[metric exporter](/docs/languages/java/sdk/#metricexporter),
+[log exporter](/docs/languages/java/sdk/#logrecordexporter) for exporter
+artifact coordinates):
 
-* `otlp` configures `OtlpHttp{Signal}Exporter` / `OtlpGrpc{Signal}Exporter`.
-* `zipkin` configures `ZipkinSpanExporter`.
-* `console` configures `LoggingSpanExporter`, `LoggingMetricExporter`, `SystemOutLogRecordExporter`.
-* `logging-otlp` configures `OtlpJsonLogging{Signal}Exporter`.
+- `otlp` configures `OtlpHttp{Signal}Exporter` / `OtlpGrpc{Signal}Exporter`.
+- `zipkin` configures `ZipkinSpanExporter`.
+- `console` configures `LoggingSpanExporter`, `LoggingMetricExporter`,
+  `SystemOutLogRecordExporter`.
+- `logging-otlp` configures `OtlpJsonLogging{Signal}Exporter`.
 
-**[2]**: Exporters which adhere to `otel.java.experimental.exporter.memory_mode=reusable_data` are `OtlpGrpc{Signal}Exporter`, `OtlpHttp{Signal}Exporter`, and `PrometheusHttpServer`.
+**[2]**: Exporters which adhere to
+`otel.java.experimental.exporter.memory_mode=reusable_data` are
+`OtlpGrpc{Signal}Exporter`, `OtlpHttp{Signal}Exporter`, and
+`PrometheusHttpServer`.
 
 Properties for `otlp` span, metric, and log exporters:
 
 | System property                                            | Description                                                                                                                                                                                                                                                                                                                                                                                                                          | Default                                                                                                                    |
-|------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
 | `otel.{signal}.exporter=otlp`                              | Select the OpenTelemetry exporter for {signal}.                                                                                                                                                                                                                                                                                                                                                                                      |                                                                                                                            |
 | `otel.exporter.otlp.protocol`                              | The transport protocol to use on OTLP trace, metric, and log requests. Options include `grpc` and `http/protobuf`.                                                                                                                                                                                                                                                                                                                   | `grpc` **[1]**                                                                                                             |
 | `otel.exporter.otlp.{signal}.protocol`                     | The transport protocol to use on OTLP {signal} requests. Options include `grpc` and `http/protobuf`.                                                                                                                                                                                                                                                                                                                                 | `grpc` **[1]**                                                                                                             |
@@ -227,32 +308,43 @@ Properties for `otlp` span, metric, and log exporters:
 | `otel.exporter.otlp.{signal}.timeout`                      | The maximum waiting time, in milliseconds, allowed to send each OTLP {signal} batch.                                                                                                                                                                                                                                                                                                                                                 | `10000`                                                                                                                    |
 | `otel.exporter.otlp.metrics.temporality.preference`        | The preferred output aggregation temporality. Options include `DELTA`, `LOWMEMORY`, and `CUMULATIVE`. If `CUMULATIVE`, all instruments will have cumulative temporality. If `DELTA`, counter (sync and async) and histograms will be delta, up down counters (sync and async) will be cumulative. If `LOWMEMORY`, sync counter and histograms will be delta, async counter and up down counters (sync and async) will be cumulative. | `CUMULATIVE`                                                                                                               |
 | `otel.exporter.otlp.metrics.default.histogram.aggregation` | The preferred default histogram aggregation. Options include `BASE2_EXPONENTIAL_BUCKET_HISTOGRAM` and `EXPLICIT_BUCKET_HISTOGRAM`.                                                                                                                                                                                                                                                                                                   | `EXPLICIT_BUCKET_HISTOGRAM`                                                                                                |
-| `otel.experimental.exporter.otlp.retry.enabled`            | If `true`, enable [retry support](#otlp-exporter-retry) **[2]**                                                                                                                                                                                                                                                                                                                                                                      | `false`                                                                                                                    |
+| `otel.experimental.exporter.otlp.retry.enabled`            | If `true`, retry on when transient errors occur. **[2]**                                                                                                                                                                                                                                                                                                                                                                             | `false`                                                                                                                    |
 
-**NOTE:** The text placeholder `{signal}` refers to the supported [OpenTelemetry Signal](/docs/concepts/signals/). Valid values include `traces`, `metrics`, and `logs`.  Signal specific configurations take priority over the generic versions. For example, if you set both `otel.exporter.otlp.endpoint` and `otel.exporter.otlp.traces.endpoint`, the latter will take precedence.
+**NOTE:** The text placeholder `{signal}` refers to the supported
+[OpenTelemetry Signal](/docs/concepts/signals/). Valid values include `traces`,
+`metrics`, and `logs`. Signal specific configurations take priority over the
+generic versions. For example, if you set both `otel.exporter.otlp.endpoint` and
+`otel.exporter.otlp.traces.endpoint`, the latter will take precedence.
 
 **[1]**: OpenTelemetry Java agent 2.x uses `http/protobuf` by default.
 
-**[2]**: [OTLP](/docs/specs/otlp/#otlpgrpc-response) requires that [transient](/docs/specs/otel/protocol/exporter/#retry) errors be handled with a retry strategy. When retry is enabled, retryable gRPC status codes are retried using an exponential backoff with jitter algorithm. The specific options of `RetryPolicy` can only be customized via [programmatic customization](#programmatic-customization).
+**[2]**: [OTLP](/docs/specs/otlp/#otlpgrpc-response) requires that
+[transient](/docs/specs/otel/protocol/exporter/#retry) errors be handled with a
+retry strategy. When retry is enabled, retryable gRPC status codes are retried
+using an exponential backoff with jitter algorithm. The specific options of
+`RetryPolicy` can only be customized via
+[programmatic customization](#programmatic-customization).
 
 Properties for `zipkin` span exporter:
 
 | System property                 | Description                                                | Default                              |
-|---------------------------------|------------------------------------------------------------|--------------------------------------|
+| ------------------------------- | ---------------------------------------------------------- | ------------------------------------ |
 | `otel.traces.exporter=zipkin`   | Select the Zipkin exporter                                 |                                      |
 | `otel.exporter.zipkin.endpoint` | The Zipkin endpoint to connect to. Only HTTP is supported. | `http://localhost:9411/api/v2/spans` |
 
 Properties for `prometheus` metric exporter.
 
 | System property                    | Description                                                  | Default   |
-|------------------------------------|--------------------------------------------------------------|-----------|
+| ---------------------------------- | ------------------------------------------------------------ | --------- |
 | `otel.metrics.exporter=prometheus` | Select the Prometheus exporter                               |           |
 | `otel.exporter.prometheus.port`    | The local port used to bind the prometheus metric server.    | `9464`    |
 | `otel.exporter.prometheus.host`    | The local address used to bind the prometheus metric server. | `0.0.0.0` |
 
 #### Programmatic customization
 
-Programmatic customization provides hooks to supplement the [supported properties](#environment-variables-and-system-properties) with [programmatic configuration](#programmatic-configuration).
+Programmatic customization provides hooks to supplement the
+[supported properties](#environment-variables-and-system-properties) with
+[programmatic configuration](#programmatic-configuration).
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomizedAutoConfiguredSdk.java"?>
@@ -303,25 +395,30 @@ public class CustomizedAutoConfiguredSdk {
 
 #### SPI (Service provider interface)
 
-[SPIs](https://docs.oracle.com/javase/tutorial/sound/SPI-intro.html) (artifact `io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-api:{{% param vers.otel %}}`) extend SDK autoconfiguration beyond the components built-in to the SDK.
+[SPIs](https://docs.oracle.com/javase/tutorial/sound/SPI-intro.html) (artifact
+`io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-api:{{% param vers.otel %}}`)
+extend SDK autoconfiguration beyond the components built-in to the SDK.
 
 The following sections describe the available SPIs. Each SPI section includes:
 
-* A brief description, including link to javadoc type reference.
-* A table of available built-in and `opentelemetry-java-contrib` implementations.
-* A simple demonstration of a custom implementation.
+- A brief description, including link to javadoc type reference.
+- A table of available built-in and `opentelemetry-java-contrib`
+  implementations.
+- A simple demonstration of a custom implementation.
 
 ##### ResourceProvider
 
-[ResourceProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/ResourceProvider.html)s contribute to the autoconfigured [resource](/docs/languages/java/sdk/#resource).
+[ResourceProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/ResourceProvider.html)s
+contribute to the autoconfigured [resource](/docs/languages/java/sdk/#resource).
 
-`ResourceProvider`s built-in to the SDK and maintained by community in `opentelemetry-java-contrib`:
+`ResourceProvider`s built-in to the SDK and maintained by community in
+`opentelemetry-java-contrib`:
 
 | Class                                                                  | Artifact                                                                                            | Description                                                     |
-|------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
+| ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
 | `io.opentelemetry.instrumentation.resources.ContainerResourceProvider` | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Provides container resource attributes.                         |
 | `io.opentelemetry.instrumentation.resources.HostResourceProvider`      | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Provides host resource attributes.                              |
-| `io.opentelemetry.instrumentation.resources.HostIdResourceProvider`    | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Provides host id resource attribute.                            |
+| `io.opentelemetry.instrumentation.resources.HostIdResourceProvider`    | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Provides host ID resource attribute.                            |
 | `io.opentelemetry.instrumentation.resources.ManifestResourceProvider`  | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Provides service resource attributes based on jar manifest.     |
 | `io.opentelemetry.instrumentation.resources.OsResourceProvider`        | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Provides OS resource attributes.                                |
 | `io.opentelemetry.instrumentation.resources.ProcessResourceProvider`   | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Provides process resource attributes.                           |
@@ -333,10 +430,11 @@ The following sections describe the available SPIs. Each SPI section includes:
 | `io.opentelemetry.contrib.aws.resource.EksResourceProvider`            | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Provides AWS eks runtime environment resource attributes.       |
 | `io.opentelemetry.contrib.aws.resource.LambdaResourceProvider`         | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Provides AWS lambda runtime environment resource attributes.    |
 
-Implement the `ResourceProvider` interface to participate in resource autoconfiguration. For example:
+Implement the `ResourceProvider` interface to participate in resource
+autoconfiguration. For example:
 
 <!-- prettier-ignore-start -->
-<?code-excerpt "src/main/java/otel/CustomResourceprovider.java"?>
+<?code-excerpt "src/main/java/otel/CustomResourceProvider.java"?>
 ```java
 package otel;
 
@@ -363,7 +461,9 @@ public class CustomResourceProvider implements ResourceProvider {
 
 ##### AutoConfigurationCustomizerProvider
 
-Implement the [AutoConfigurationCustomizerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/AutoConfigurationCustomizerProvider.html) interface to customize a variety of autoconfigured SDK components. For example:
+Implement the
+[AutoConfigurationCustomizerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/AutoConfigurationCustomizerProvider.html)
+interface to customize a variety of autoconfigured SDK components. For example:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomizerProvider.java"?>
@@ -419,7 +519,10 @@ public class CustomizerProvider implements AutoConfigurationCustomizerProvider {
 
 ##### ConfigurableSpanExporterProvider
 
-Implement the [ConfigurableSpanExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/traces/ConfigurableSpanExporterProvider.html) interface to allow a custom span exporter to participate in autoconfiguration. For example:
+Implement the
+[ConfigurableSpanExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/traces/ConfigurableSpanExporterProvider.html)
+interface to allow a custom span exporter to participate in autoconfiguration.
+For example:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomSpanExporterProvider.java"?>
@@ -448,7 +551,10 @@ public class CustomSpanExporterProvider implements ConfigurableSpanExporterProvi
 
 ##### ConfigurableMetricExporterProvider
 
-Implement the [ConfigurableMetricExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/metrics/ConfigurableMetricExporterProvider.html) interface to allow a custom metric exporter to participate in autoconfiguration. For example:
+Implement the
+[ConfigurableMetricExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/metrics/ConfigurableMetricExporterProvider.html)
+interface to allow a custom metric exporter to participate in autoconfiguration.
+For example:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomMetricExporterProvider.java"?>
@@ -477,7 +583,10 @@ public class CustomMetricExporterProvider implements ConfigurableMetricExporterP
 
 ##### ConfigurableLogRecordExporterProvider
 
-Implement the [ConfigurableLogRecordExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/logs/ConfigurableLogRecordExporterProvider.html) interface to allow a custom log record exporter to participate in autoconfiguration. For example:
+Implement the
+[ConfigurableLogRecordExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/logs/ConfigurableLogRecordExporterProvider.html)
+interface to allow a custom log record exporter to participate in
+autoconfiguration. For example:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomLogRecordExporterProvider.java"?>
@@ -506,7 +615,10 @@ public class CustomLogRecordExporterProvider implements ConfigurableLogRecordExp
 
 ##### ConfigurableSamplerProvider
 
-Implement the [ConfigurableSamplerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/traces/ConfigurableSamplerProvider.html) interface to allow a custom sampler to participate in autoconfiguration. For example:
+Implement the
+[ConfigurableSamplerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/traces/ConfigurableSamplerProvider.html)
+interface to allow a custom sampler to participate in autoconfiguration. For
+example:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomSamplerProvider.java"?>
@@ -535,7 +647,10 @@ public class CustomSamplerProvider implements ConfigurableSamplerProvider {
 
 ##### ConfigurablePropagatorProvider
 
-Implement the [ConfigurablePropagatorProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/ConfigurablePropagatorProvider.html) interface to allow a custom propagator to participate in autoconfiguration. For example:
+Implement the
+[ConfigurablePropagatorProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/ConfigurablePropagatorProvider.html)
+interface to allow a custom propagator to participate in autoconfiguration. For
+example:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomTextMapPropagatorProvider.java"?>
@@ -563,19 +678,27 @@ public class CustomTextMapPropagatorProvider implements ConfigurablePropagatorPr
 
 ### Declarative configuration
 
-Declarative configuration is currently under development. It allows for YAML file-based configuration as described in [opentelemetry-configuration](https://github.com/open-telemetry/opentelemetry-configuration) and [file configuration](/docs/specs/otel/configuration/file-configuration/).
+Declarative configuration is currently under development. It allows for YAML
+file-based configuration as described in
+[opentelemetry-configuration](https://github.com/open-telemetry/opentelemetry-configuration)
+and [file configuration](/docs/specs/otel/configuration/file-configuration/).
 
-To use, include `io.opentelemetry:opentelemetry-sdk-extension-incubator:{{% param vers.otel %}}-alpha` and specify the path to the config file as described in the table below.
+To use, include
+`io.opentelemetry:opentelemetry-sdk-extension-incubator:{{% param vers.otel %}}-alpha`
+and specify the path to the config file as described in the table below.
 
 | System property                 | Purpose                                 | Default |
-|---------------------------------|-----------------------------------------|---------|
+| ------------------------------- | --------------------------------------- | ------- |
 | `otel.experimental.config.file` | The path to the SDK configuration file. | Unset   |
 
-{{% alert title="Note" color="warning" %}} When a config file is specified, [environment variables and system properties](#environment-variables-and-system-properties) are ignored, [programmatic customization](#programmatic-customization) and [SPIs](#spi-service-provider-interface) are skipped. The contents of the file alone dictate SDK configuration. 
-{{% /alert %}}
+{{% alert title="Note" color="warning" %}} When a config file is specified,
+[environment variables and system properties](#environment-variables-and-system-properties)
+are ignored, [programmatic customization](#programmatic-customization) and
+[SPIs](#spi-service-provider-interface) are skipped. The contents of the file
+alone dictate SDK configuration. {{% /alert %}}
 
 For additional details, consult the following resources:
 
-* [Usage documentation](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/incubator#file-configuration)
-* [Example with Java Agent](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent#file-configuration)
-* [Example without Java Agent](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/file-configuration)
+- [Usage documentation](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/incubator#file-configuration)
+- [Example with Java agent](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent#file-configuration)
+- [Example without Java agent](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/file-configuration)
