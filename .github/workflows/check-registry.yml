@@ -1,6 +1,7 @@
 name: Registry Validation
 
 on:
+  merge_group:
   pull_request:
     # Make sure this only runs when registry entries are touched.
     paths:
