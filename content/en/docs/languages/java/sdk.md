@@ -24,8 +24,8 @@ The SDK consists of the following top level components:
   `TracerProvider`, including tools for sampling, processing, and exporting
   spans.
 - [SdkMeterProvider](#sdkmeterprovider) the SDK implementation of
-  `MeterProvider`, including tools for configuration metric streams and reading
-  / exporting metrics.
+  `MeterProvider`, including tools for configuring metric streams and reading /
+  exporting metrics.
 - [SdkLoggerProvider](#sdkloggerprovider) the SDK implementation of
   `LoggerProvider`, including tools for processing and exporting logs.
 - [TextMapPropagator](#textmappropagator) for propagating context across process

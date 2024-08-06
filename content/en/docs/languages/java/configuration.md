@@ -22,16 +22,21 @@ flexible, expressive way to configure the SDK. However, changing configuration
 requires adjusting code and recompiling the application, and there is no
 language interoperability since the API is written in java.
 
-The [zero-code SDK autoconfigure](#zero-code-sdk-autoconfigure) module offers a
-compelling alternative, configuring SDK components based off system properties /
-environment variables, with various extension points for instances where the
-properties are insufficient. **We recommend the zero-code SDK autoconfigure
-module.**
+The [zero-code SDK autoconfigure](#zero-code-sdk-autoconfigure) module
+configures SDK components through system properties or environment variables,
+with various extension points for instances where the properties are
+insufficient.
 
-> The [Java agent](/docs/zero-code/java/agent/) automatically configures the SDK
-> using the zero-code SDK autoconfigure module, and uses it in the
-> instrumentation it installs. All autoconfigure content is applicable to Java
-> Agent users.
+{{% alert %}} We recommend using the
+[zero-code SDK autoconfigure](#zero-code-sdk-autoconfigure) module since it
+reduces boilerplate code, allows reconfiguration without rewriting code or
+recompiling the application, and has language interoperability. {{% /alert %}}
+
+{{% alert %}} The [Java agent](/docs/zero-code/java/agent/) and
+[Spring starter](/docs/zero-code/java/spring-boot-starter/) automatically
+configure the SDK using the zero-code SDK autoconfigure module, and install
+instrumentation with it. All autoconfigure content is applicable to Java agent
+and Spring starter users. {{% /alert %}}
 
 ## Programmatic configuration
 
@@ -46,12 +51,11 @@ properties into a series of calls to the programmatic configuration API.
 While other configuration mechanisms offer more convenience, none offer the
 flexibility of writing code expressing the precise configuration required. When
 a particular capability isn't supported by a higher order configuration
-mechanism, you may have no choice but to use programmatic configuration.
+mechanism, you might have no choice but to use programmatic configuration.
 
 The [SDK components](/docs/languages/java/sdk/#sdk-components) sections
 demonstrate simple programmatic configuration API for key user-facing areas of
-the SDK. For an exhaustive set of the available configuration APIs, consult the
-code.
+the SDK. Consult the code for complete API reference.
 
 ## Zero-code SDK autoconfigure
 
@@ -88,14 +92,16 @@ public class AutoConfiguredSdk {
 ```
 <!-- prettier-ignore-end -->
 
-**NOTE:** The [Java agent](/docs/zero-code/java/agent/) automatically configures
-the SDK using this workflow, and uses it in the instrumentation it installs. All
-autoconfigure content is applicable to Java agent users.
+{{% alert %}} The [Java agent](/docs/zero-code/java/agent/) and
+[Spring starter](/docs/zero-code/java/spring-boot-starter/) automatically
+configure the SDK using the zero-code SDK autoconfigure module, and install
+instrumentation with it. All autoconfigure content is applicable to Java agent
+and Spring starter users. {{% /alert %}}
 
 {{% alert color="info" %}} The autoconfigure module registers Java shutdown
 hooks to shut down the SDK when appropriate. Because OpenTelemetry Java
 [uses `java.util.logging` for internal logging](/docs/languages/java/sdk/#internal-logging),
-some of that logging may be suppressed during shutdown hooks. This is a bug in
+some of that logging might be suppressed during shutdown hooks. This is a bug in
 the JDK itself, and not something under the control of OpenTelemetry Java. If
 you require logging during shutdown hooks, consider using `System.out` rather
 than a logging framework that might shut itself down in a shutdown hook, thus
@@ -105,12 +111,12 @@ details. {{% /alert %}}
 
 ### Environment variables and system properties
 
-Generally, autoconfigure supports properties listed in the
+The autoconfigure module supports properties listed in the
 [environment variable configuration specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#opentelemetry-environment-variable-specification),
 with occasional experimental and Java-specific additions.
 
-**NOTE:** The properties are listed below as system properties, but can also be
-set via environment variables. Apply the following steps to convert a system
+The following properties are listed as system properties, but can also be set
+using environment variables. Apply the following steps to convert a system
 property to an environment variable:
 
 - Convert the name to uppercase.
@@ -131,7 +137,7 @@ Properties for disabling the [SDK](/docs/languages/java/sdk/#opentelemetrysdk):
 | `otel.sdk.disabled` | If `true`, disable the OpenTelemetry SDK. **[1]** | `false` |
 
 **[1]**: If disabled, `AutoConfiguredOpenTelemetrySdk#getOpenTelemetrySdk()`
-will return a minimally configured instance (i.e.
+returns a minimally configured instance (for example,
 `OpenTelemetrySdk.builder().build()`).
 
 Properties for configuring [resource](/docs/languages/java/sdk/#resource):
@@ -141,8 +147,8 @@ Properties for configuring [resource](/docs/languages/java/sdk/#resource):
 | `otel.service.name`                        | Specify logical service name. Takes precedence over `service.name` defined with `otel.resource.attributes`.                             | `unknown_service:java` |
 | `otel.resource.attributes`                 | Specify resource attributes in the following format: `key1=val1,key2=val2,key3=val3`.                                                   |                        |
 | `otel.experimental.resource.disabled-keys` | Specify resource attribute keys that are filtered. This option is experimental and subject to change or removal.                        |                        |
-| `otel.java.enabled.resource.providers`     | Comma separated list of `ResourceProvider` fully qualified class names to enable. **[1]** If unset, all resource providers are enabled. |                        |
-| `otel.java.disabled.resource.providers`    | Comma separated list of `ResourceProvider` fully qualified class names to disable. **[1]**                                              |                        |
+| `otel.java.enabled.resource.providers`     | Comma-separated list of `ResourceProvider` fully qualified class names to enable. **[1]** If unset, all resource providers are enabled. |                        |
+| `otel.java.disabled.resource.providers`    | Comma-separated list of `ResourceProvider` fully qualified class names to disable. **[1]**                                              |                        |
 
 **[1]**: For example, to disable the
 [OS resource provider](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/resources/library/src/main/java/io/opentelemetry/instrumentation/resources/OsResourceProvider.java),
@@ -163,9 +169,9 @@ Properties for attribute limits (see
 Properties for
 [context propagation](/docs/languages/java/sdk/#textmappropagator):
 
-| System property    | Description                                                                                                                        | Default                      |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `otel.propagators` | Comma separated list of propagators. Known values include `tracecontext`, `baggage`, `b3`, `b3multi`, `jaeger`, `ottrace`. **[1]** | `tracecontext,baggage` (W3C) |
+| System property    | Description                                                                                                                                               | Default                      |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| `otel.propagators` | Comma-separated list of propagators. Known values include `tracecontext`, `baggage`, `b3`, `b3multi`, `jaeger`, `ottrace`, `xray`, `xray-lambda`. **[1]** | `tracecontext,baggage` (W3C) |
 
 **[1]**: Known propagators and artifacts (see
 [text map propagator](/docs/languages/java/sdk/#textmappropagator) for artifact
@@ -175,7 +181,6 @@ coordinates):
 - `baggage` configures `W3CBaggagePropagator`.
 - `b3`, `b3multi` configures `B3Propagator`.
 - `jaeger` configures `JaegerPropagator`.
-- `ottrace` configures `OtTracePropagator`.
 - `ottrace` configures `OtTracePropagator`.
 - `xray` configures `AwsXrayPropagator`.
 - `xray-lambda` configures `AwsXrayLambdaPropagator`.
@@ -263,9 +268,9 @@ Properties for setting exporters:
 
 | System property                               | Purpose                                                                                                                                                                                                                              | Default          |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------- |
-| `otel.traces.exporter`                        | Comma separated list of span exporters. Known values include `otlp`, `zipkin`, `console`, `logging-otlp`, `none`. **[1]**                                                                                                            | `otlp`           |
-| `otel.metrics.exporter`                       | Comma separated list of metric exporters. Known values include `otlp`, `prometheus`, `none`. **[1]**                                                                                                                                 | `otlp`           |
-| `otel.logs.exporter`                          | Comma separated list of log record exporters. Known values include `otlp`, `console`, `logging-otlp`, `none`. **[1]**                                                                                                                | `otlp`           |
+| `otel.traces.exporter`                        | Comma-separated list of span exporters. Known values include `otlp`, `zipkin`, `console`, `logging-otlp`, `none`. **[1]**                                                                                                            | `otlp`           |
+| `otel.metrics.exporter`                       | Comma-separated list of metric exporters. Known values include `otlp`, `prometheus`, `none`. **[1]**                                                                                                                                 | `otlp`           |
+| `otel.logs.exporter`                          | Comma-separated list of log record exporters. Known values include `otlp`, `console`, `logging-otlp`, `none`. **[1]**                                                                                                                | `otlp`           |
 | `otel.java.experimental.exporter.memory_mode` | If `reusable_data`, enable reusable memory mode (on exporters which support it) to reduce allocations. Known values include `reusable_data`, `immutable_data`. This option is experimental and subject to change or removal. **[2]** | `immutable_data` |
 
 **[1]**: Known exporters and artifacts (see
@@ -346,6 +351,10 @@ Programmatic customization provides hooks to supplement the
 [supported properties](#environment-variables-and-system-properties) with
 [programmatic configuration](#programmatic-configuration).
 
+If using the [Spring starter](/docs/zero-code/java/spring-boot-starter/), see
+also
+[spring starter programmatic configuration](/docs/zero-code/java/spring-boot-starter/sdk-configuration/#programmatic-configuration).
+
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomizedAutoConfiguredSdk.java"?>
 ```java
@@ -396,7 +405,7 @@ public class CustomizedAutoConfiguredSdk {
 #### SPI (Service provider interface)
 
 [SPIs](https://docs.oracle.com/javase/tutorial/sound/SPI-intro.html) (artifact
-`io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-api:{{% param vers.otel %}}`)
+`io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi:{{% param vers.otel %}}`)
 extend SDK autoconfiguration beyond the components built-in to the SDK.
 
 The following sections describe the available SPIs. Each SPI section includes:
