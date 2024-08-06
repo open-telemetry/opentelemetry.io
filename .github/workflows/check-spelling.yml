@@ -20,7 +20,6 @@ jobs:
           config: .cspell.yml
           incremental_files_only: false
           suggestions: true
-          verbose: true
 
   dict-check:
     name: CSPELL:IGNORE check
