@@ -14,7 +14,7 @@ jobs:
         with:
           # Files should be consistent with check:spelling files
           files: |
-            content/en
+            content
             data
             layouts/**/*.md
           config: .cspell.yml
