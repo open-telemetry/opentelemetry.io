@@ -1,0 +1,23 @@
+{{ $data := $.Site.Data.community.members -}}
+{{ $key := .Get 0 -}}
+{{ $group := index $data $key -}}
+{{ $lastIndex := 0 }}
+
+<div class="container-fluid">
+  <div class="row">
+    {{- range $index, $element := $group -}}
+      {{- if (eq (mod $index 12) 0) }}
+  </div>
+  <div class="row">
+      {{- end -}}
+      <div class="col">
+        <a href="{{ $element.html_url }}"><img src="{{ $element.avatar_url }}" class="rounded" /></a>
+      </div>
+      {{- $lastIndex = add $index 1 -}}
+    {{- end -}}
+    {{- if (ne (mod $lastIndex 12) 0) }}
+      {{- $remaining := sub 12 (mod $lastIndex 12) -}}
+        <div class="col-{{ $remaining }}" />
+    {{- end -}}
+  </div>
+</div>

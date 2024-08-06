@@ -14,6 +14,7 @@ const markdownFiles = [
   '!layouts/**',
   '!node_modules/**',
   '!scripts/registry-scanner/node_modules/**',
+  '!scripts/generate-community-data/node_modules/**',
   '!tools/examples/**',
   '!themes/**',
   '!tmp/**',
