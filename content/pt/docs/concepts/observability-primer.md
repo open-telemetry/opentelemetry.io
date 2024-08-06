@@ -71,7 +71,7 @@ cada um de seus componentes: logs, trecho e rastros.
 Um **log** é uma mensagem com registro de data e hora emitida por serviços ou
 outros componentes. Ao contrário dos [rastros](#distributed-traces), eles não
 estão necessariamente associados a uma requisição de usuário ou transação
-específica. Logs podem ser encontrados em qualquer lugar no software. Logs são
+específica. Logs podem ser encontrados em qualquer lugar no software. Logs foram
 muito utilizados no passado tanto por desenvolvedores quanto por operadores para
 entender o comportamento do sistema.
 
@@ -153,4 +153,4 @@ trechos filhos. Quando um trecho encapsula outro trecho, isso também representa
 uma relação aninhada.
 
 Para mais informações sobre rastros e como eles se relacionam com o
-OpenTelemetry, confira [Rastro](/docs/concepts/signals/traces/).
+OpenTelemetry, confira [Rastros](/docs/concepts/signals/traces/).
