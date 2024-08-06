@@ -3,7 +3,7 @@ title: Using instrumentation libraries
 linkTitle: Libraries
 weight: 40
 description: How to instrument libraries an app depends on
-cSpell:ignore: autoinstrumentation metapackage metapackages
+cSpell:ignore: metapackage metapackages
 ---
 
 {{% docs/languages/libraries-intro JavaScript %}}
