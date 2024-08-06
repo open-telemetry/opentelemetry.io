@@ -5,7 +5,7 @@ weight: 980
 default_lang_commit: 8603bc8
 ---
 
-下面的指引描述了如何为 OpenTelemetry 文档做贡献。关于如何为 OpenTelemetry 项目作出贡献，请参阅[OpenTelemetry 贡献者指南](https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md)，其中提供了有关贡献者许可协议和行为准则的详细信息。从某种程度上讲，每种语言实现、收集器和约定 [仓库](https://github.com/open-telemetry/) 都有自己特定的贡献指南。
+下面的指引描述了如何为 OpenTelemetry 文档做贡献。关于如何为 OpenTelemetry 项目作出贡献，请参阅[OpenTelemetry 贡献者指南](https://github.com/open-telemetry/community/blob/main/guides/contributor/README.md)，其中提供了有关贡献者许可协议和行为准则的详细信息。从某种程度上讲，每种语言实现、收集器和约定 [仓库](https://github.com/open-telemetry/) 都有自己特定的贡献指南。
 
 对于文档中的问题，你可以提一个关于 OpenTelemetry 的问题（issue），或者向[`opentelemetry.io` GitHub 仓库](https://github.com/open-telemetry/opentelemetry.io)发起一个带有变更的拉取请求（pull request）。
 
@@ -29,7 +29,7 @@ OpenTelemetry 文档贡献者可以：
 
 ### 签署 CNCF CLA {#sign-the-cla}
 
-所有 OpenTelemetry 贡献者**必须**阅读[贡献者指南](https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md) 并[签署贡献者授权同意书 (Contributor License Agreement, CLA)](https://docs.linuxfoundation.org/lfx/easycla/contributors)。
+所有 OpenTelemetry 贡献者**必须**阅读[贡献者指南](https://github.com/open-telemetry/community/blob/main/guides/contributor/README.md) 并[签署贡献者授权同意书 (Contributor License Agreement, CLA)](https://docs.linuxfoundation.org/lfx/easycla/contributors)。
 
 未签署 CLA 的贡献者发起的拉取请求将无法通过自动化测试。你提供的姓名和邮箱必须与你的 `git config` 中的姓名和邮箱，并且你的 git 姓名和邮箱必须与 CLA 中使用的姓名和电子邮件相匹配。
 
