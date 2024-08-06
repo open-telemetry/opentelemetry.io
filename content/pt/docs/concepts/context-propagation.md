@@ -1,0 +1,47 @@
+---
+title: Propagação de contexto
+weight: 10
+description: Entenda os conceito que torna possível o Rastreamento Distribuído.
+default_lang_commit: 2bda479b6ce77f51266845ade9fe1b431dfde0d3
+---
+
+Com a propagação de contexto, os [Sinais](/docs/concepts/signals) podem ser
+correlacionados entre si, independentemente de onde são gerados. Embora não se
+limite ao rastreamento, a propagação de contexto permite que os
+[rastros](/docs/concepts/signals/traces) criem informações causais sobre um
+sistema que são distribuídos arbitrariamente entre processos e limites de rede.
+
+Para compreender a propagação de contexto, você precisa entender dois conceitos
+distintos: contexto e propagação.
+
+## Contexto
+
+O contexto é um objeto que contém as informações necessárias para que o serviço
+emissor e receptor, ou
+[unidade de execução](/docs/specs/otel/glossary/#execution-unit), correlacionem
+um sinal com outro.
+
+Por exemplo, se o serviço A chamar o serviço B, um trecho do serviço A, cujo ID
+está no contexto, será usado como o trecho pai para o próximo trecho criado no
+serviço B. O ID do trace que está no contexto também será usado para o próximo
+trecho criado no serviço B, o que significa que o trecho faz parte do mesmo
+trace que o trecho do serviço A.
+
+## Propagação
+
+Propagação é o mecanismo que move o contexto entre serviços e processos. Ele
+serializa ou desserializa o objeto de contexto e fornece as informações
+relevantes a serem propagadas de um serviço para outro.
+
+A propagação geralmente é gerenciada por bibliotecas de instrumentação e é
+transparente para o usuário. Caso precise propagar o contexto manualmente, você
+pode usar a [API de Propagadores](/docs/specs/otel/context/api-propagators/).
+
+O OpenTelemetry mantém vários propagadores oficiais. O propagador padrão utiliza
+os cabeçalhos definidos na especificação
+[W3C TraceContext](https://www.w3.org/TR/trace-context/).
+
+## Especificação
+
+Para saber mais sobre a Propagação de Contexto, consulte a
+[Especificação de Contexto](/docs/specs/otel/context/).
