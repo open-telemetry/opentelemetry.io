@@ -14,11 +14,12 @@ jobs:
         with:
           # Files should be consistent with check:spelling files
           files: |
-            content/en/*.md
+            content/en
+            data
             layouts/**/*.md
-            data/**/*
           config: .cspell.yml
           incremental_files_only: false
+          suggestions: true
 
   dict-check:
     name: CSPELL:IGNORE check
