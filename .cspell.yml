@@ -34,8 +34,8 @@ words:
   - appender
   - appenders
   - aspecto
-  - autoconfigure
   - autoconfiguration
+  - autoconfigure
   - autoinstrumentation
   - autoload
   - autoloaded
@@ -46,6 +46,7 @@ words:
   - cartservice
   - cassandra
   - checkoutservice
+  - Chronosphere
   - classpath
   - cncf
   - currencyservice
@@ -112,8 +113,8 @@ words:
   - otelcol
   - otep
   - otlp
-  - overridable
   - outro
+  - overridable
   - packagist
   - pageinfo
   - Paixão
@@ -166,6 +167,7 @@ words:
   - traefik
   - Trask
   - uids
+  - unsampled
   - unshallow
   - upstreamed
   - Villela
@@ -173,4 +175,3 @@ words:
   - WSGI
   - zend
   - zipkin
-  - Chronosphere
