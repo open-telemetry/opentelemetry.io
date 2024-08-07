@@ -47,7 +47,7 @@
     "check:links": "npm run _check:links",
     "check:markdown": "scripts/check-markdown-wrapper.sh",
     "check:registry": "npm run _check:registry -- ",
-    "check:spelling": "npx cspell --no-progress -c .cspell.yml content/en data 'layouts/**/*.md'",
+    "check:spelling": "npx cspell --no-progress -c .cspell.yml content data 'layouts/**/*.md'",
     "check:text": "npm run _check:text -- ",
     "check": "npm run seq -- $(npm run -s _list:check:*)",
     "clean": "make clean",
@@ -109,6 +109,7 @@
     "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 1}"
   },
   "devDependencies": {
+    "@cspell/dict-pt-br": "^2.3.0",
     "ajv": "^8.17.1",
     "ajv-errors": "^3.0.0",
     "ajv-formats": "^3.0.1",
