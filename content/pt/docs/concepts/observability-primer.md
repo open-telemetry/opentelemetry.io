@@ -11,8 +11,8 @@ default_lang_commit: 6e3124135e38e749cdda15271d891813d6bc43db
 Observabilidade permite que você compreenda um sistema de fora para dentro,
 permitindo que você faça perguntas sobre ele sem precisar conhecer seu
 funcionamento interno. Além disso, facilita a resolução de problemas e o
-tratamento de novos problemas, ou seja, "problemas desconhecidos". Também
-ajuda a responder à pergunta "Por que isso está acontecendo?"
+tratamento de novos problemas, ou seja, "problemas desconhecidos". Também ajuda
+a responder à pergunta "Por que isso está acontecendo?"
 
 Para fazer essas perguntas sobre o seu sistema, sua aplicação deve estar
 devidamente instrumentada. Ou seja, o código da aplicação deve emitir
