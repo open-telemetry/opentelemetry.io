@@ -28,7 +28,8 @@ languageSettings:
   - languageId: markdown
     ignoreRegExpList:
       - CodeBlock
-dictionaries: [pt-br, es-es, companies, cpp, dotnet, golang, node, softwareTerms]
+dictionaries:
+  [pt-br, es-es, companies, cpp, dotnet, golang, node, softwareTerms]
 words:
   - accountingservice
   - actix

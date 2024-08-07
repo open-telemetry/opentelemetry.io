@@ -45,7 +45,7 @@ default_lang_commit: 7ac35d6b429165bbe6c28bdd91feeae83fd35142
 {{% blocks/lead color="white" %}}
 
 OpenTelemetry es un conjunto de API, SDK y herramientas. Úsalo para
-instrumentar, generar, recolectar y exportar datos de telemetría (métricas, logs
+instrumentar, generar, recopilar y exportar datos de telemetría (métricas, logs
 y trazas) para que te ayuden a analizar el rendimiento y comportamiento de tu
 aplicación.
 
@@ -59,7 +59,7 @@ aplicación.
 
 {{% blocks/feature icon="fas fa-chart-line" title="Trazas, métricas y logs"%}}
 
-Genera y recolecta datos de telemetría desde tus servicios y aplicaciones y
+Genera y recopila datos de telemetría desde tus servicios y aplicaciones y
 reenvíalos a una amplia variedad de herramientas de análisis.
 {{% /blocks/feature %}}
 
