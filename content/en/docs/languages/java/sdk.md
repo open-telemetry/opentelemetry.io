@@ -879,13 +879,12 @@ attribute keys to retain, etc.
 
 **NOTE:** Views have somewhat unintuitive behavior when multiple match a
 particular instrument. If one matching view changes the metric name and another
-changes the metric aggregation, you might expect the result to be that the name
-and aggregation is changed, but this is not the case. Instead, two metric
-streams are produced: one with the configured metric name and the default
-aggregation, and another with the original metric name and the configured
-aggregation. In other words, matching views _do not merge_. For best results,
-configure views with narrow selection criteria (i.e. select a single specific
-instrument).
+changes the metric aggregation, you might expect the name and aggregation to be
+changed, but this is not the case. Instead, two metric streams are produced: one
+with the configured metric name and the default aggregation, and another with
+the original metric name and the configured aggregation. In other words,
+matching views _do not merge_. For best results, configure views with narrow
+selection criteria (i.e. select a single specific instrument).
 
 The following code snippet demonstrates `View` programmatic configuration:
 
@@ -1293,7 +1292,7 @@ you have not installed a custom root handler for your application, logs of level
 You may want to change the behavior of the logger for OpenTelemetry. For
 example, you can reduce the logging level to output additional information when
 debugging, increase the level for a particular class to ignore errors coming
-from that class, or install a custom handler or filter to run custom code
+from the class, or install a custom handler or filter to run custom code
 whenever OpenTelemetry logs a particular message. No detailed list of logger
 names and log information is maintained. However, all OpenTelemetry API, SDK,
 contrib and instrumentation components share the same `io.opentelemetry.*`
@@ -1326,7 +1325,7 @@ For more fine-grained control and special case handling, custom handlers and
 filters can be specified with code.
 
 ```java
-// Custom filter which does not log errors that come from the export
+// Custom filter which does not log errors which come from the export
 public class IgnoreExportErrorsFilter implements java.util.logging.Filter {
 
  public boolean isLoggable(LogRecord record) {
@@ -1352,7 +1351,7 @@ The exporters for all signals are available via
 `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`.
 
 Internally, these exporters depend on various client libraries to execute HTTP
-and gRPC requests. There is no single HTTP / gRPC client library that satisfies
+and gRPC requests. There is no single HTTP / gRPC client library which satisfies
 all use cases in the Java ecosystem:
 
 - Java 11+ brings the built-in `java.net.http.HttpClient`, but
