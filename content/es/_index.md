@@ -5,8 +5,8 @@ description: >-
 outputs:
   - HTML
 developer_note:
-  The blocks/cover shortcode (used below) will use as a background image any
-  image file containing "background" in its name.
+  La macro para los bloques/portada usa como imagen de fondo cualquier archivo
+  de imagen que contenga la palabra "background" en su nombre.
 show_banner: true
 default_lang_commit: 7ac35d6b429165bbe6c28bdd91feeae83fd35142
 ---
