@@ -14,7 +14,11 @@ jobs:
         with:
           # Files should be consistent with check:spelling files
           files: |
+<<<<<<< HEAD
             content
+=======
+            content/en
+>>>>>>> 57cd4f78 ([CI] Try to get streetsidesoftware/cspell-action to play nice (#4975))
             data
             layouts/**/*.md
           config: .cspell.yml
