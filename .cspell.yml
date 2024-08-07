@@ -2,11 +2,16 @@
 # For settings, see
 # https://www.streetsidesoftware.com/vscode-spell-checker/docs/configuration/
 version: '0.2'
+language: en-US
+import:
+  - '@cspell/dict-pt-br/cspell-ext.json'
 caseSensitive: true
 ignorePaths:
   - '*.svg'
-  - 'vendors.yaml'
   - 'data/community/members.yaml'
+  - vendors.yaml
+  - content/ja
+  - content/zh
 # words here are only listed for their spelling, if there is a certain way
 # to write a word (e.g. OpenTelemetry vs Opentelemetry or cloud native vs
 # cloud-native), edit the text-lint rules in .textlintrc.yml
@@ -23,22 +28,20 @@ languageSettings:
   - languageId: markdown
     ignoreRegExpList:
       - CodeBlock
+dictionaries: [pt-br, companies, cpp, dotnet, golang, node, softwareTerms]
 words:
   - accountingservice
   - actix
   - adservice
   - alibaba
-  - Alloc
   - Alolita
   - APAC
   - appdynamics
   - appender
   - appenders
   - aspecto
-  - autoconfigure
   - autoconfiguration
   - autoinstrumentation
-  - autoload
   - autoloaded
   - autoloader
   - autoloading
@@ -47,12 +50,12 @@ words:
   - cartservice
   - cassandra
   - checkoutservice
+  - Chronosphere
   - classpath
   - cncf
   - currencyservice
   - daemonset
   - datadog
-  - declarators
   - discoverability
   - dotnet
   - Dyla
@@ -67,7 +70,6 @@ words:
   - github
   - gitpod
   - grafana
-  - gzipped
   - Hausenblas
   - hugo
   - initializers
@@ -89,14 +91,11 @@ words:
   - laravel
   - lifecycles
   - lightstep
-  - linux
   - Loffay
   - Mancuso
   - microservices
   - mongodb
-  - mysql
   - ndjson
-  - netlify
   - Neumann
   - nginx
   - ocaml
@@ -113,20 +112,16 @@ words:
   - otelcol
   - otep
   - otlp
-  - overridable
-  - outro
   - packagist
   - pageinfo
   - Paixão
   - parentbased
   - Pavol
   - paymentservice
-  - pluggable
   - postgresql
   - Pranay
   - Prateek
   - prepper
-  - Println
   - productcatalogservice
   - prometheus
   - proto
@@ -139,22 +134,16 @@ words:
   - redis
   - relref
   - Rexed
-  - roadmap
-  - runtimes
   - Rynn
   - semconv
   - servlet
   - Severin
   - Sharma
   - shippingservice
-  - shortcode
-  - snmp
   - Socha
-  - sqlite
   - Stalnaker
   - stdoutmetric
   - Strimzi
-  - subdir
   - symfony
   - tabpane
   - textlint
@@ -167,6 +156,7 @@ words:
   - traefik
   - Trask
   - uids
+  - unsampled
   - unshallow
   - upstreamed
   - Villela
@@ -174,4 +164,3 @@ words:
   - WSGI
   - zend
   - zipkin
-  - Chronosphere

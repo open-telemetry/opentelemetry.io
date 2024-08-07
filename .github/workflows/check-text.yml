@@ -1,6 +1,7 @@
 name: Linter
 
 on:
+  merge_group:
   pull_request:
 
 jobs:
