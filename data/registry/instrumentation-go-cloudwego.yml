@@ -1,0 +1,24 @@
+# cSpell:ignore: cloudwego
+title: CloudWeGo-Hertz
+registryType: instrumentation
+language: go
+tags:
+  - go
+  - hertz
+  - cloudwego
+license: Apache-2.0
+description:
+  The `obs-opentelemetry` extension allows hertz to integrate OpenTelemetry with
+  a simple setup.
+authors:
+  - name: CloudWeGo
+    url: https://github.com/cloudwego
+urls:
+  website: https://www.cloudwego.io/
+  repo: https://github.com/hertz-contrib/obs-opentelemetry
+  docs: https://www.cloudwego.io/docs/hertz/tutorials/observability/open-telemetry/
+createdAt: '2024-08-06'
+isFirstParty: true
+package:
+  registry: go
+  name: github.com/hertz-contrib/obs-opentelemetry

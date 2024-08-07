@@ -6,7 +6,7 @@ description: How to instrument libraries an app depends on
 cSpell:ignore: metapackage metapackages
 ---
 
-{{% docs/languages/libraries-intro JavaScript %}}
+{{% docs/languages/libraries-intro "js" %}}
 
 ## Use Instrumentation Libraries
 

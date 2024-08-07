@@ -1,0 +1,18 @@
+# cSpell:ignore thousandeyes
+title: ThousandEyes for OpenTelemetry
+registryType: application integration
+language: collector
+tags:
+  - collector
+  - thousandeyes
+  - cisco
+license: Commercial
+description: It allows you to export ThousandEyes telemetry data in OTel format.
+authors:
+  - name: Cisco ThousandEyes
+    url: https://github.com/thousandeyes
+urls:
+  website: https://www.thousandeyes.com/
+  docs: https://docs.thousandeyes.com/product-documentation/api/opentelemetry
+createdAt: '2024-08-06'
+isNative: true

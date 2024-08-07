@@ -77,7 +77,7 @@ Sampling might not be appropriate for you. You might want to avoid sampling if
 you meet any of the following criteria:
 
 - You generate very little data (tens of small traces per second or lower).
-- You only use obsevability data in aggregate, and can thus pre-aggregate data.
+- You only use observability data in aggregate, and can thus pre-aggregate data.
 - You are bound by circumstances such as regulation that prohibit dropping data
   (and cannot route unsampled data to low-cost storage).
 

@@ -1,6 +1,7 @@
 name: Links
 
 on:
+  merge_group:
   pull_request:
 
 jobs:

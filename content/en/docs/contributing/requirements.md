@@ -18,7 +18,7 @@ locally, see [Development](/docs/contributing/development).
 ## Sign the CNCF CLA {#sign-the-cla}
 
 All OpenTelemetry contributors must read the
-[Contributor guide](https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md)
+[Contributor guide](https://github.com/open-telemetry/community/blob/main/guides/contributor/README.md)
 and
 [sign the Contributor License Agreement (CLA)](https://docs.linuxfoundation.org/lfx/easycla/contributors).
 

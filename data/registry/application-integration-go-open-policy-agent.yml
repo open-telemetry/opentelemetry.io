@@ -1,0 +1,21 @@
+title: Open Policy Agent
+registryType: application integration
+language: go
+tags:
+  - go
+  - opa
+  - open
+  - policy
+  - agent
+  - graduated
+license: Apache-2.0
+description: OPA will emit spans to an OpenTelemetry Collector via gRPC.
+authors:
+  - name: Open Policy Agent Authors
+    url: https://github.com/open-policy-agent
+urls:
+  website: https://www.openpolicyagent.org/
+  docs: https://www.openpolicyagent.org/docs/latest/monitoring/#opentelemetry
+createdAt: '2024-08-06'
+cncfProjectLevel: graduated
+isNative: true

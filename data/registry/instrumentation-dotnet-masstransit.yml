@@ -1,22 +1,24 @@
 # cSpell:ignore masstransit
-title: MassTransit Instrumentation for OpenTelemetry .NET
+title: MassTransit .NET client
 registryType: instrumentation
 language: dotnet
 tags:
-  - masstransit
-  - instrumentation
-  - dotnet
-license: Apache 2.0
+  - masstransit .net client
+  - .net
+license: Apache-2.0
 description:
-  Automatically instruments DiagnosticSource events emitted by MassTransit
-  library.
+  By using OpenTelemetry with MassTransit, you can gain insights into the
+  performance of your systems
 authors:
-  - name: OpenTelemetry Authors
+  - name: MassTransit Project
+    url: https://github.com/MassTransit
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.MassTransit
-createdAt: 2022-10-28
-isFirstParty: false
+  website: https://github.com/Azure/azure-sdk-for-net # to work on the integrations page as well
+  repo: https://github.com/MassTransit/MassTransit
+  docs: https://masstransit.io/documentation/configuration/observability
+createdAt: '2024-08-06'
+isNative: true
 package:
+  name: MassTransit
   registry: nuget
-  name: OpenTelemetry.Instrumentation.MassTransit
-  version: 1.0.0-beta.3
+  version: 8.2.3

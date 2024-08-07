@@ -1,0 +1,22 @@
+title: Envoy Proxy
+registryType: application integration
+language: cpp
+tags:
+  - envoy
+  - c++
+  - graduated
+license: Apache-2.0
+description:
+  The OpenTelemetry tracing sandbox demonstrates Envoy's request tracing
+  capabilities using OpenTelemetry as the tracing provider.
+authors:
+  - name: Envoy Proxy Authors
+    url: https://github.com/envoyproxy
+urls:
+  website: https://www.envoyproxy.io/
+  repo: https://github.com/envoyproxy/envoy
+  docs: https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/opentelemetry
+  blog: /blog/2024/new-otel-features-envoy-istio/
+createdAt: '2024-08-06'
+cncfProjectLevel: graduated
+isNative: true
