@@ -40,6 +40,7 @@ words:
   - appenders
   - aspecto
   - autoconfiguration
+  - autoconfigure
   - autoinstrumentation
   - autoloaded
   - autoloader
@@ -111,6 +112,8 @@ words:
   - otelcol
   - otep
   - otlp
+  - outro
+  - overridable
   - packagist
   - pageinfo
   - Paixão
