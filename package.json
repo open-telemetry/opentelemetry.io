@@ -47,7 +47,7 @@
     "check:links": "npm run _check:links",
     "check:markdown": "scripts/check-markdown-wrapper.sh",
     "check:registry": "npm run _check:registry -- ",
-    "check:spelling": "npx cspell --no-progress -c .cspell.yml content/en data 'layouts/**/*.md'",
+    "check:spelling": "npx cspell --no-progress -c .cspell.yml content data 'layouts/**/*.md'",
     "check:text": "npm run _check:text -- ",
     "check": "npm run seq -- $(npm run -s _list:check:*)",
     "clean": "make clean",
@@ -109,15 +109,15 @@
     "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 1}"
   },
   "devDependencies": {
-    "ajv": "^8.16.0",
+    "@cspell/dict-pt-br": "^2.3.0",
+    "ajv": "^8.17.1",
     "ajv-errors": "^3.0.0",
     "ajv-formats": "^3.0.1",
-    "autoprefixer": "^10.4.19",
-    "cspell": "^8.12.1",
+    "autoprefixer": "^10.4.20",
+    "cspell": "^8.13.1",
     "gulp": "^5.0.0",
-    "hugo-extended": "0.128.0",
+    "hugo-extended": "0.131.0",
     "js-yaml": "^4.1.0",
-    "hugo-extended": "0.129.0",
     "markdown-link-check": "^3.12.2",
     "markdownlint": "^0.34.0",
     "postcss-cli": "^11.0.0",
@@ -126,7 +126,7 @@
     "textlint": "^14.0.4",
     "textlint-filter-rule-allowlist": "^4.0.0",
     "textlint-filter-rule-comments": "^1.2.2",
-    "textlint-rule-terminology": "^5.1.9",
+    "textlint-rule-terminology": "^5.2.6",
     "through2": "^4.0.2",
     "yargs": "^17.7.2"
   },
@@ -144,8 +144,8 @@
     "path": "^0.12.7"
   },
   "optionalDependencies": {
-    "netlify-cli": "^17.33.4",
-    "npm-check-updates": "^16.14.20"
+    "netlify-cli": "^17.33.5",
+    "npm-check-updates": "^17.0.3"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "engines": {
