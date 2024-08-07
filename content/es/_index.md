@@ -4,7 +4,6 @@ description: >-
   Telemetría portable, ubicua, y de alta calidad para una observabilidad eficaz
 outputs:
   - HTML
-  - REDIRECTS # Include this `content/en` ONLY
 developer_note:
   The blocks/cover shortcode (used below) will use as a background image any
   image file containing "background" in its name.
