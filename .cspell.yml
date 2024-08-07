@@ -2,10 +2,15 @@
 # For settings, see
 # https://www.streetsidesoftware.com/vscode-spell-checker/docs/configuration/
 version: '0.2'
+language: en-US
+import:
+  - '@cspell/dict-es-es/cspell-ext.json'
 caseSensitive: true
 ignorePaths:
   - '*.svg'
   - 'vendors.yaml'
+  - 'content/ja'
+  - 'content/zh'
 # words here are only listed for their spelling, if there is a certain way
 # to write a word (e.g. OpenTelemetry vs Opentelemetry or cloud native vs
 # cloud-native), edit the text-lint rules in .textlintrc.yml
@@ -22,6 +27,7 @@ languageSettings:
   - languageId: markdown
     ignoreRegExpList:
       - CodeBlock
+dictionaries: [pt-br, es-es, companies, cpp, dotnet, golang, node, softwareTerms]
 words:
   - accountingservice
   - actix

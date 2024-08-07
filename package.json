@@ -115,8 +115,8 @@
     "autoprefixer": "^10.4.20",
     "cspell": "^8.13.1",
     "gulp": "^5.0.0",
-    "js-yaml": "^4.1.0",
     "hugo-extended": "0.131.0",
+    "js-yaml": "^4.1.0",
     "markdown-link-check": "^3.12.2",
     "markdownlint": "^0.34.0",
     "postcss-cli": "^11.0.0",
@@ -130,6 +130,7 @@
     "yargs": "^17.7.2"
   },
   "dependencies": {
+    "@cspell/dict-es-es": "^3.0.0",
     "@opentelemetry/api": "^1.9.0",
     "@opentelemetry/auto-instrumentations-web": "^0.40.0",
     "@opentelemetry/context-zone": "^1.25.1",
