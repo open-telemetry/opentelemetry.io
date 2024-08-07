@@ -15,6 +15,7 @@
       "type": "string",
       "description": "The type of the entry",
       "enum": [
+        "application integration",
         "core",
         "exporter",
         "extension",
@@ -29,12 +30,18 @@
     "language": {
       "type": "string",
       "description": "The programming language of the entry",
-      "examples": ["collector"]
+      "examples": ["collector"],
+      "pattern": "^[a-z0-9]+$"
     },
     "description": {
       "type": "string",
       "description": "A description of the entry",
       "errorMessage": "The description of the entry must be a string and can not be empty"
+    },
+    "license": {
+      "type": "string",
+      "description": "The license of the entry",
+      "examples": ["Apache 2.0", "MIT"]
     },
     "tags": {
       "type": "array",
@@ -43,11 +50,6 @@
       },
       "description": "A list of tags for the entry",
       "uniqueItems": true
-    },
-    "license": {
-      "type": "string",
-      "description": "The license of the entry",
-      "examples": ["Apache 2.0", "MIT"]
     },
     "createdAt": {
       "type": "string",
@@ -122,9 +124,24 @@
         "docs": {
           "type": "string",
           "description": "The URL of the documentation"
+        },
+        "website": {
+          "type": "string",
+          "description": "The URL of the website"
+        },
+        "blog": {
+          "type": "string",
+          "description": "The URL of a blog post about this entry."
         }
       },
-      "required": ["repo"],
+      "anyOf": [
+        {
+          "required": ["repo"]
+        },
+        {
+          "required": ["website"]
+        }
+      ],
       "additionalProperties": false
     },
     "package": {
@@ -181,6 +198,38 @@
     "isFirstParty": {
       "type": "boolean",
       "description": "A flag to indicate if the entry is first party"
+    },
+    "cncfProjectLevel": {
+      "type": "string",
+      "description": "The CNCF project level of the entry",
+      "enum": ["sandbox", "incubating", "graduated"]
+    }
+  },
+  "if": {
+    "properties": {
+      "registryType": {
+        "const": "application integration"
+      }
+    }
+  },
+  "then": {
+    "properties": {
+      "license": {
+        "type": "string",
+        "description": "The license of the entry",
+        "examples": ["Apache 2.0", "MIT"]
+      }
+    }
+  },
+  "else": {
+    "properties": {
+      "license": {
+        "type": "string",
+        "description": "The license of the entry",
+        "examples": ["Apache 2.0", "MIT"],
+        "pattern": "^(?!.*Commercial).*$",
+        "errorMessage": "An open source license is required for non-application integration entries"
+      }
     }
   },
   "additionalProperties": false,

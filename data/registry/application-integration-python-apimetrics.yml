@@ -1,0 +1,19 @@
+# cspell:ignore apimetrics
+title: APImetrics
+registryType: application integration
+language: python
+tags:
+  - python
+  - apimetrics
+license: Commercial
+description:
+  Send data from APImetrics to any platform that intakes OpenTelemetry with our
+  OpenTelemetry Webhook
+authors:
+  - name: APImetrics
+    email: support@apicontext.com
+urls:
+  website: https://apicontext.com/
+  docs: https://docs.apimetrics.io/docs/export-with-opentelemetry
+createdAt: '2024-08-06'
+isNative: true

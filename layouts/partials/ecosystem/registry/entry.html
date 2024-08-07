@@ -48,8 +48,8 @@
                 "icon" "fab fa-rust")
     -}}
 
-    {{ $isNative := and (eq .registryType "instrumentation") (.isNative) }}
-    {{ $isFirstParty := and (eq .registryType "instrumentation") (.isFirstParty) }}
+    {{ $isNative := and (or (eq .registryType "instrumentation") (eq .registryType "application integration")) (.isNative) }}
+    {{ $isFirstParty := and (or (eq .registryType "instrumentation") (eq .registryType "application integration")) (.isFirstParty) }}
     {{ $currentTime := (time now) -}}
     {{ $delta := $currentTime.Sub (time.AsTime .createdAt) -}}
     {{ $isNew := lt $delta.Hours 730 -}}
@@ -76,11 +76,19 @@
     {{ if $deprecated -}}
         {{ $highlightStyle = "border-danger" -}}
     {{ end -}}
-    {{ $repoHref := printf "href=%q" .urls.repo | safeHTMLAttr -}}
+    {{ $primaryUrl := "" -}}
+    {{ if .urls.repo -}}
+        {{ $primaryUrl = .urls.repo -}}
+    {{ else if .urls.website -}}
+        {{ $primaryUrl = .urls.website -}}
+    {{ else if .urls.docs -}}
+    {{ errorf "The %q registry entry requires a repo or website URL." .title }}
+    {{ end -}}
+    {{ $primaryHref := printf "href=%q" $primaryUrl | safeHTMLAttr -}}
     <li class="card my-3 registry-entry {{ $highlightStyle }}" data-registry-id="{{ ._key }}" data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
         <div class="card-body container">
         <h4 class="card-title mb-0 d-flex flex-row">
-            <a {{ $repoHref }} target="_blank" rel="noopener" class="me-auto">
+            <a {{ $primaryHref }} target="_blank" rel="noopener" class="me-auto">
             {{- .title | markdownify -}}
             </a>
             <div class="ms-auto">
@@ -98,6 +106,11 @@
             {{ end -}}
             {{ if $deprecated -}}
             <span class="badge rounded-pill text-bg-danger text-white" title=""><i class="fa-solid fa-ban"></i> deprecated</span>
+            {{ end -}}
+            {{ if .cncfProjectLevel -}}
+            <span class="badge rounded-pill text-bg-primary text-white" title="CNCF {{ .cncfProjectLevel}} Project">
+                <img alt="CNCF" style="display: inline-block; width: 14px; height: 14px; border: none; margin:0px; padding: 0; vertical-align:middle" src="/img/cncf-icon-white.svg"> {{ .cncfProjectLevel }}
+            </span>
             {{ end -}}
             </div>
         </h4>
@@ -183,9 +196,9 @@
         <div>
 
         </div>
-        {{ with .urls.homepage -}}
-        {{ $homepageHref := printf "href=%q" . | safeHTMLAttr -}}
-        <a {{ $homepageHref }} target="_blank" rel="noopener" class="card-link">Homepage</a>
+        {{ with .urls.website -}}
+        {{ $websiteHref := printf "href=%q" . | safeHTMLAttr -}}
+        <a {{ $websiteHref }} target="_blank" rel="noopener" class="card-link"><i class="fas fa-house" aria-hidden="true"></i>&nbsp;Website</a>
         {{- end -}}
         {{ with .urls.docs -}}
         {{ $docsHref := printf "href=%q" . | safeHTMLAttr -}}
@@ -197,6 +210,7 @@
         {{- end -}}
         {{ with .urls.repo -}}
         {{ $icon := cond ( hasPrefix . "https://github.com/" ) "fa-brands fa-github" "fab fa-git-alt" -}}
+        {{ $repoHref := printf "href=%q" . | safeHTMLAttr -}}
         <a {{ $repoHref }} target="_blank" rel="noopener" class="card-link"><i class="{{ $icon }}" aria-hidden="true"></i>&nbsp;Repository</a>
         {{- end -}}
         {{ with .urls.demo -}}

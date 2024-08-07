@@ -1,0 +1,19 @@
+title: Thanos
+registryType: application integration
+language: go
+tags:
+  - go
+  - incubating
+  - thanos
+license: Apache-2.0
+description:
+  Thanos supports exporting traces in the OpenTelemetry Protocol (OTLP)
+authors:
+  - name: Thanos Authors
+    url: https://github.com/thanos-io
+urls:
+  website: https://thanos.io/
+  docs: https://thanos.io/tip/thanos/tracing.md/#opentelemetry-otlp
+createdAt: '2024-08-06'
+cncfProjectLevel: incubating
+isNative: true

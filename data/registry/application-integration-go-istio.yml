@@ -1,0 +1,21 @@
+title: Istio
+registryType: application integration
+language: go
+tags:
+  - go
+  - istio
+  - graduated
+license: Apache-2.0
+description:
+  Make your application participate in tracing with OpenTelemetry, regardless of
+  the language, framework, or platform you use to build your application.
+authors:
+  - name: Istio Authors
+    url: https://github.com/istio
+urls:
+  website: https://istio.io/
+  docs: https://istio.io/latest/docs/tasks/observability/distributed-tracing/opentelemetry/
+  blog: /blog/2024/new-otel-features-envoy-istio/
+createdAt: '2024-08-06'
+cncfProjectLevel: graduated
+isNative: true

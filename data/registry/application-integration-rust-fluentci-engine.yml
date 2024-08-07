@@ -1,0 +1,18 @@
+# cSpell:ignore: fluentci
+title: Fluent CI Engine
+registryType: application integration
+language: rust
+tags:
+  - fluentci
+  - engine
+  - rust
+license: MLPv2.0
+description: FluentCI Engine supports OpenTelemetry tracing.
+authors:
+  - name: Fluent CI
+    url: https://github.com/fluentci-io
+urls:
+  website: https://github.com/fluentci-io/fluentci-engine
+  docs: https://github.com/fluentci-io/fluentci-engine#-opentelemetry-tracing
+createdAt: '2024-08-06'
+isNative: true

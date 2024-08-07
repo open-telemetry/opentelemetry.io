@@ -1,0 +1,19 @@
+# cSpell:ignore kong
+title: Kong API Gateway
+registryType: application integration
+language: lua
+tags:
+  - kong
+  - api
+  - gateway
+  - lua
+license: Apache-2.0
+description: ''
+authors:
+  - name: Kong
+    url: https://github.com/kong
+urls:
+  website: https://www.konghq.com/
+  docs: https://docs.konghq.com/hub/kong-inc/opentelemetry/
+createdAt: '2024-08-06'
+isFirstParty: true
