@@ -1,0 +1,5 @@
+{{ range split . "\n" -}}
+{{ with trim . " \t" -}}
+{{ . }}
+{{ end -}}
+{{ end -}}

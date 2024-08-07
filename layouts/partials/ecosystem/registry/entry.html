@@ -10,7 +10,7 @@
                 "icon" "fab fa-npm")
             "packagist" (dict
                 "urlPattern" "https://packagist.org/packages/%s"
-                "installLine" "composer install %s"
+                "installLine" "composer require %s"
                 "installTemplate" "ecosystem/registry/quickinstall/default.md"
                 "icon" "fa-solid fa-box-open")
             "gems" (dict
@@ -48,7 +48,7 @@
                 "icon" "fab fa-rust")
     -}}
 
-    {{ $isNativ := and (eq .registryType "instrumentation") (.isNative) }}
+    {{ $isNative := and (eq .registryType "instrumentation") (.isNative) }}
     {{ $isFirstParty := and (eq .registryType "instrumentation") (.isFirstParty) }}
     {{ $currentTime := (time now) -}}
     {{ $delta := $currentTime.Sub (time.AsTime .createdAt) -}}
@@ -64,7 +64,7 @@
     {{ if $isNew -}}
         {{ $highlightStyle = "border-info" -}}
     {{ end -}}
-    {{ if $isNativ -}}
+    {{ if $isNative -}}
         {{ $highlightStyle = "border-success" -}}
     {{ end -}}
     {{ if $isFirstParty -}}
@@ -87,7 +87,7 @@
             {{ if $isNew -}}
             <span class="badge rounded-pill text-bg-info"><i class="fa-regular fa-star"></i> new</span>
             {{ end -}}
-            {{ if $isNativ -}}
+            {{ if $isNative -}}
             <span class="badge rounded-pill text-bg-success text-white"><i class="fa-solid fa-puzzle-piece"></i> native</span>
             {{ end -}}
             {{ if $isFirstParty -}}

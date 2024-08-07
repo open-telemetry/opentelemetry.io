@@ -11,7 +11,7 @@ weight: 22
 
 ## Version support
 
-OpenTelemetry-Python supports Python 3.6 and higher.
+OpenTelemetry-Python supports Python 3.8 and higher.
 
 ## Installation
 
@@ -30,7 +30,7 @@ pip install opentelemetry-exporter-{exporter}
 pip install opentelemetry-instrumentation-{instrumentation}
 ```
 
-These are for exporter and instrumentation packages respectively. The Jaeger,
+These are for exporter and instrumentation libraries respectively. The Jaeger,
 Zipkin, Prometheus, OTLP and OpenCensus Exporters can be found in the
 [exporter](https://github.com/open-telemetry/opentelemetry-python/blob/main/exporter/)
 directory of the repository. Instrumentations and additional exporters can be
@@ -55,14 +55,13 @@ This can be done by cloning the repository and doing an
 ```sh
 git clone https://github.com/open-telemetry/opentelemetry-python.git
 cd opentelemetry-python
-pip install -e ./opentelemetry-api
-pip install -e ./opentelemetry-sdk
+pip install -e ./opentelemetry-api -e ./opentelemetry-sdk -e ./opentelemetry-semantic-conventions
 ```
 
 ## Repositories and benchmarks
 
-- Main repo: [opentelemetry-python][]
-- Contrib repo: [opentelemetry-python-contrib][]
+- Main repository: [opentelemetry-python][]
+- Contrib repository: [opentelemetry-python-contrib][]
 
 [opentelemetry-python]: https://github.com/open-telemetry/opentelemetry-python
 [opentelemetry-python-contrib]:

@@ -13,7 +13,7 @@ application. For the pros and cons, see [Java zero-code instrumentation](..).
 
 ### Compatibility
 
-The OpenTelemetry Spring Boot starter works with Spring Boot 2.6+ and 3.0+, and
+The OpenTelemetry Spring Boot starter works with Spring Boot 2.6+ and 3.1+, and
 Spring Boot native image applications. The
 [opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native)
 repository contains an example of a Spring Boot Native image application
@@ -25,26 +25,31 @@ A Bill of Material
 ([BOM](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms))
 ensures that versions of dependencies (including transitive ones) are aligned.
 
-Importing the `opentelemetry-bom` and `opentelemetry-instrumentation-bom-alpha`
-BOMs when using the OpenTelemetry starter is important to ensure version
-alignment across all OpenTelemetry dependencies.
+To ensure version alignment across all OpenTelemetry dependencies, you must
+import the `opentelemetry-instrumentation-bom` BOM when using the OpenTelemetry
+starter.
 
-The following example shows how to import both BOMs using Maven:
+{{% alert title="Note" color="info" %}}
+
+When using Maven, import the OpenTelemetry BOMs before any other BOMs in your
+project. For example, if you import the `spring-boot-dependencies` BOM, you have
+to declare it after the OpenTelemetry BOMs.
+
+Gradle selects the
+[latest version](https://docs.gradle.org/current/userguide/dependency_resolution.html#sec:version-conflict)
+of a dependency when multiple BOMs, so the order of BOMs is not important.
+
+{{% /alert %}}
+
+The following example shows how to import the OpenTelemetry BOMs using Maven:
 
 ```xml
 <dependencyManagement>
     <dependencies>
         <dependency>
-            <groupId>io.opentelemetry</groupId>
-            <artifactId>opentelemetry-bom</artifactId>
-            <version>{{% param vers.otel %}}</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-        <dependency>
             <groupId>io.opentelemetry.instrumentation</groupId>
-            <artifactId>opentelemetry-instrumentation-bom-alpha</artifactId>
-            <version>{{% param vers.instrumentation %}}-alpha</version>
+            <artifactId>opentelemetry-instrumentation-bom</artifactId>
+            <version>{{% param vers.instrumentation %}}</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>
@@ -66,8 +71,7 @@ plugins {
 
 dependencies {
   implementation(platform(SpringBootPlugin.BOM_COORDINATES))
-  implementation(platform("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}"))
-  implementation(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:{{% param vers.instrumentation %}}-alpha"))
+  implementation(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom:{{% param vers.instrumentation %}}"))
 }
 ```
 
@@ -83,8 +87,7 @@ plugins {
 
 dependencyManagement {
   imports {
-    mavenBom("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}")
-    mavenBom("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:{{% param vers.instrumentation %}}-alpha")
+    mavenBom("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom:{{% param vers.instrumentation %}}")
   }
 }
 ```
@@ -93,7 +96,7 @@ dependencyManagement {
 
 Be careful not to mix up the different ways of configuring things with Gradle.
 For example, don't use
-`implementation(platform("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}"))`
+`implementation(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom:{{% param vers.instrumentation %}}"))`
 with the `io.spring.dependency-management` plugin.
 
 {{% /alert %}}

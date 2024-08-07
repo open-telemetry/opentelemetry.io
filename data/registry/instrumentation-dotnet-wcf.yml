@@ -14,7 +14,8 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.Wcf
 createdAt: 2022-10-28
+isFirstParty: false
 package:
   registry: nuget
   name: OpenTelemetry.Instrumentation.Wcf
-  version: 1.0.0-rc.16
+  version: 1.0.0-rc.17

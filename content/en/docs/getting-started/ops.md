@@ -14,10 +14,10 @@ OpenTelemetry can help you! To accomplish your goal of getting telemetry out of
 applications without touching their code, we recommend that you learn the
 following:
 
-- [What is OpenTelemetry?](/docs/what-is-opentelemetry/)
-- [How can I instrument applications without touching their code?](/docs/concepts/instrumentation/zero-code/)
-- [How can I set up a collector?](/docs/collector/)
-- [How can I get automation for Kubernetes with the OpenTelemetry Operator?](/docs/kubernetes/operator/)
+- [What is OpenTelemetry?](../../what-is-opentelemetry/)
+- [How can I instrument applications without touching their code?](../../concepts/instrumentation/zero-code/)
+- [How can I set up a collector?](../../collector/)
+- [How can I get automation for Kubernetes with the OpenTelemetry Operator?](../../kubernetes/operator/)
 
 If you are looking for a set of applications to try things out, you will find
-our official [OpenTelemetry demo](/ecosystem/demo/) useful!
+our official [OpenTelemetry demo](/ecosystem/demo/) useful.

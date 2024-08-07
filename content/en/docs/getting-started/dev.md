@@ -13,27 +13,27 @@ OpenTelemetry can help you! To accomplish your goals of having your dependencies
 instrumented automatically and instrumenting your own code with our API
 manually, we recommend that you learn the following concepts first:
 
-- [What is OpenTelemetry?](/docs/what-is-opentelemetry/)
-- [How can I add instrumentation to my code base?](/docs/concepts/instrumentation/code-based/)
+- [What is OpenTelemetry?](../../what-is-opentelemetry/)
+- [How can I add instrumentation to my code base?](../../concepts/instrumentation/code-based/)
 
 If you develop libraries, frameworks or middleware that is used as a dependency
 within other software, we recommend that you learn how you can provide telemetry
 natively:
 
-- [How can I add native instrumentation to my library?](/docs/concepts/instrumentation/libraries/)
+- [How can I add native instrumentation to my library?](../../concepts/instrumentation/libraries/)
 
 Next, you can deep dive into the documentations for the
-[language](/docs/languages/) you are using:
+[language](../../languages/) you are using:
 
-- [C++](/docs/languages/cpp/)
-- [.NET](/docs/languages/net/)
-- [Erlang / Elixir](/docs/languages/erlang/)
-- [Go](/docs/languages/go/)
-- [Java](/docs/languages/java/)
-- [JavaScript / TypeScript](/docs/languages/js/)
-- [PHP](/docs/languages/php/)
-- [Python](/docs/languages/python/)
-- [Ruby](/docs/languages/ruby/)
-- [Rust](/docs/languages/rust/)
-- [Swift](/docs/languages/swift/)
-- [Other](/docs/languages/other/)
+- [C++](../../languages/cpp/)
+- [.NET](../../languages/net/)
+- [Erlang / Elixir](../../languages/erlang/)
+- [Go](../../languages/go/)
+- [Java](../../languages/java/)
+- [JavaScript / TypeScript](../../languages/js/)
+- [PHP](../../languages/php/)
+- [Python](../../languages/python/)
+- [Ruby](../../languages/ruby/)
+- [Rust](../../languages/rust/)
+- [Swift](../../languages/swift/)
+- [Other](../../languages/other/)

@@ -1,7 +1,8 @@
 ---
 title: Documentation style guide
+description: Terminology and style when writing OpenTelemetry docs.
 linkTitle: Style guide
-weight: 10
+weight: 20
 cSpell:ignore: open-telemetry postgre style-guide textlintrc
 ---
 
@@ -22,7 +23,7 @@ before submitting a
 (PR), run `npm run fix:all` on your local machine and commit the changes.
 
 If you run into errors or [failed PR checks](/docs/contributing/pr-checks), read
-about our style guide below and what you can do to fix certain common issues.
+about our style guide and learn what you can do to fix certain common issues.
 
 {{% /alert %}}
 
@@ -36,7 +37,7 @@ the site.
 | --- | --- |
 | OpenTelemetry | OpenTelemetry should always be capitalized. Don't use Open-Telemetry. |
 | OTel | OTel is the accepted short form of OpenTelemetry. Don't use OTEL. |
-| Collector | When referring to the OpenTelemetry Collector, always capitalize Collector. |
+| Collector | When referring to the OpenTelemetry Collector, always capitalize Collector. Write "The Collector" or "The Opentelemetry Collector" if you're starting a sentence. Write "the Collector" or "the OpenTelemetry Collector" in the middle or end of a sentence. Use just "Collector" if you are using Collector as an adjective (for example, "Collector configuration").|
 | OTEP | OpenTelemetry Enhancement Proposal. Write "OTEPs" as plural form. Don't write "OTep" or "otep". |
 | OpAMP | Open Agent Management Protocol. Don't write "OPAMP" or "opamp" in descriptions or instructions. |
 <!-- prettier-ignore-end -->
@@ -107,11 +108,11 @@ run `npm run fix:dict`.
 ## File format
 
 To enforce a certain standard on how files are structured, all files should be
-formatted by [prettier](https://prettier.io). Run `npm fix:format` before
+formatted by [prettier](https://prettier.io). Run `npm run fix:format` before
 submitting a PR, or run it afterwards and push an additional commit.
 
 ## File names
 
 All file names should be in
 [kebab case](https://en.wikipedia.org/wiki/Letter_case#Kebab_case). Run
-`npm fix:filenames` to automatically rename your files.
+`npm run fix:filenames` to automatically rename your files.

@@ -13,6 +13,7 @@ cascade:
     otelExporter: 1.6
     otelPhoenix: 1.1
     otelCowboy: 0.2
+    otelEcto: 1.2
 ---
 
 {{% docs/languages/index-intro erlang %}}

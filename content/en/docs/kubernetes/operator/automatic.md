@@ -5,7 +5,7 @@ weight: 11
 description:
   An implementation of auto-instrumentation using the OpenTelemetry Operator.
 # prettier-ignore
-cSpell:ignore: autoinstrumentation GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver PTRACE REDISCALA Werkzeug
+cSpell:ignore: GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver PTRACE REDISCALA Werkzeug
 ---
 
 The OpenTelemetry Operator supports injecting and configuring
@@ -212,7 +212,7 @@ Therefore, the example uses `http://demo-collector:4318`, which connects to the
 #### Excluding auto-instrumentation {#java-excluding-auto-instrumentation}
 
 By default, the Java auto-instrumentation ships with
-[many instrumentation libraries](/docs/zero-code/java/agent/#supported-libraries-frameworks-application-services-and-jvms).
+[many instrumentation libraries](/docs/zero-code/java/agent/getting-started/#supported-libraries-frameworks-application-services-and-jvms).
 This makes instrumentation easy, but could result in too much or unwanted data.
 If there are any libraries you do not want to use you can set the
 `OTEL_INSTRUMENTATION_[NAME]_ENABLED=false` where `[NAME]` is the name of the
@@ -221,7 +221,7 @@ the default libraries by setting
 `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false` and then use
 `OTEL_INSTRUMENTATION_[NAME]_ENABLED=true` where `[NAME]` is the name of the
 library. For more details, see
-[Suppressing specific instrumentation](/docs/zero-code/java/agent/configuration/#suppressing-specific-instrumentation).
+[Suppressing specific instrumentation](/docs/zero-code/java/agent/disable/).
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
@@ -299,6 +299,32 @@ spec:
       - name: OTEL_NODE_ENABLED_INSTRUMENTATIONS
         value: http,nestjs-core # comma-separated list of the instrumentation package names without the `@opentelemetry/instrumentation-` prefix.
 ```
+
+To keep all default libraries and disable only specific instrumentation
+libraries you can use the `OTEL_NODE_DISABLED_INSTRUMENTATIONS` environment
+variable. For details, see
+[Excluding instrumentation libraries](/docs/zero-code/js/configuration/#excluding-instrumentation-libraries).
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+# ... other fields skipped from this example
+spec:
+  # ... other fields skipped from this example
+  nodejs:
+    env:
+      - name: OTEL_NODE_DISABLED_INSTRUMENTATIONS
+        value: fs,grpc # comma-separated list of the instrumentation package names without the `@opentelemetry/instrumentation-` prefix.
+```
+
+{{% alert title="Note" color="info" %}}
+
+If both environment variables are set, `OTEL_NODE_ENABLED_INSTRUMENTATIONS` is
+applied first, and then `OTEL_NODE_DISABLED_INSTRUMENTATIONS` is applied to that
+list. Therefore, if the same instrumentation is included in both lists, that
+instrumentation will be disabled.
+
+{{% /alert %}}
 
 #### Learn more {#js-learn-more}
 
@@ -404,7 +430,7 @@ spec:
 
 #### Learn more {#python-learn-more}
 
-[See the Python agent Configuration docs for more details.](/docs/languages/python/automatic/configuration/#disabling-specific-instrumentations)
+[See the Python agent Configuration docs for more details.](/docs/zero-code/python/configuration/#disabling-specific-instrumentations)
 
 ### Go
 

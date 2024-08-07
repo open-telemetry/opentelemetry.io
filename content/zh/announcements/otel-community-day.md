@@ -3,7 +3,7 @@ title: OTel Community Day
 date: 2024-04-05
 expiryDate: 2024-06-25
 weight: -1 # top
-default_lang_commit: 788509efd404ba35dd113b4f37bae96ca7558e3e
+default_lang_commit: c2cd5b14
 ---
 
 <i class="fas fa-bullhorn"></i>

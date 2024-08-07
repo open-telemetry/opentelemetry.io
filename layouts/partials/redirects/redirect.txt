@@ -1,0 +1,6 @@
+{{/* Generate a Netlify redirect rule for pages with a `redirect` param */ -}}
+
+{{ $p := . -}}
+{{ with $p.Params.redirect -}}
+  {{ $p.RelPermalink | printf "%-35s" }} {{ . }}
+{{ end -}}

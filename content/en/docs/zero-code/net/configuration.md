@@ -205,7 +205,7 @@ Important environment variables include:
 - On .NET 6 and higher, the application must reference
   [`Grpc.Net.Client`](https://www.nuget.org/packages/Grpc.Net.Client/) to use
   the `grpc` OTLP exporter protocol. For example, by adding
-  `<PackageReference Include="Grpc.Net.Client" Version="2.43.0" />` to the
+  `<PackageReference Include="Grpc.Net.Client" Version="2.63.0" />` to the
   `.csproj` file.
 - On .NET Framework, the `grpc` OTLP exporter protocol is not supported.
 

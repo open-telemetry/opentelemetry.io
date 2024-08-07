@@ -138,10 +138,6 @@ message embedded within a span. Span events help enhance spans by providing
 descriptive information about a span.
 [Span events can also have attributes of their own](/docs/languages/ruby/instrumentation/#add-span-events).
 
-When a span status is set to `Error`, a span event is created automatically,
-capturing the span’s resulting error message and stack trace as an event on that
-span. You can further enhance this span error by adding attributes to it.
-
 Earlier, we mentioned a method called `RecordException`. Per
 [the spec](/docs/specs/otel/trace/api/#record-exception) (emphasis our own), “To
 facilitate recording an exception languages SHOULD provide a RecordException

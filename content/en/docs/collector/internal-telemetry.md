@@ -5,10 +5,11 @@ weight: 25
 cSpell:ignore: alloc journalctl kube otecol pprof tracez underperforming zpages
 ---
 
-You can monitor the health of any OpenTelemetry Collector instance by checking
+You can inspect the health of any OpenTelemetry Collector instance by checking
 its own internal telemetry. Read on to learn about this telemetry and how to
-configure it to help you [troubleshoot](/docs/collector/troubleshooting/)
-Collector issues.
+configure it to help you
+[monitor](#use-internal-telemetry-to-monitor-the-collector) and
+[troubleshoot](/docs/collector/troubleshooting/) the Collector.
 
 ## Activate internal telemetry in the Collector
 
@@ -97,9 +98,9 @@ critical analysis.
 ### Configure internal logs
 
 Log output is found in `stderr`. You can configure logs in the config
-`service::telemetry::logs`. The [configuration
-options](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param
-vers %}}/service/telemetry/config.go) are:
+`service::telemetry::logs`. The
+[configuration options](https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/telemetry/config.go)
+are:
 
 | Field name             | Default value | Description                                                                                                                                                                                                                                                                                       |
 | ---------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -133,7 +134,7 @@ journalctl | grep otelcol | grep Error
 
 {{% /tab %}} {{< /tabpane >}}
 
-## Types of internal observability
+## Types of internal telemetry
 
 The OpenTelemetry Collector aims to be a model of observable service by clearly
 exposing its own operational metrics. Additionally, it collects host resource
@@ -192,11 +193,11 @@ categorized by instrumentation type.
 
 | Metric name                                            | Description                                                                             | Type      |
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------- | --------- |
-| `otelcol_exporter_enqueue_failed_`<br>`log_records`    | Number of spans that exporter(s) failed to enqueue.                                     | Counter   |
+| `otelcol_exporter_enqueue_failed_`<br>`log_records`    | Number of logs that exporter(s) failed to enqueue.                                      | Counter   |
 | `otelcol_exporter_enqueue_failed_`<br>`metric_points`  | Number of metric points that exporter(s) failed to enqueue.                             | Counter   |
 | `otelcol_exporter_enqueue_failed_`<br>`spans`          | Number of spans that exporter(s) failed to enqueue.                                     | Counter   |
-| `otelcol_exporter_queue_capacity`                      | Fixed capacity of the retry queue, in batches.                                          | Gauge     |
-| `otelcol_exporter_queue_size`                          | Current size of the retry queue, in batches.                                            | Gauge     |
+| `otelcol_exporter_queue_capacity`                      | Fixed capacity of the sending queue, in batches.                                        | Gauge     |
+| `otelcol_exporter_queue_size`                          | Current size of the sending queue, in batches.                                          | Gauge     |
 | `otelcol_exporter_send_failed_`<br>`log_records`       | Number of logs that exporter(s) failed to send to destination.                          | Counter   |
 | `otelcol_exporter_send_failed_`<br>`metric_points`     | Number of metric points that exporter(s) failed to send to destination.                 | Counter   |
 | `otelcol_exporter_send_failed_`<br>`spans`             | Number of spans that exporter(s) failed to send to destination.                         | Counter   |
@@ -241,13 +242,13 @@ categorized by instrumentation type.
 | `http_client_active_requests`     | Number of active HTTP client requests.                                                    | Counter   |
 | `http_client_connection_duration` | Measures the duration of the successfully established outbound HTTP connections.          | Histogram |
 | `http_client_open_connections`    | Number of outbound HTTP connections that are active or idle on the client.                | Counter   |
-| `http_client_request_body_size`   | Measures the size of HTTP client request bodies.                                          | Histogram |
-| `http_client_request_duration`    | Measures the duration of HTTP client requests.                                            | Histogram |
-| `http_client_response_body_size`  | Measures the size of HTTP client response bodies.                                         | Histogram |
+| `http_client_request_size`        | Measures the size of HTTP client request bodies.                                          | Histogram |
+| `http_client_duration`            | Measures the duration of HTTP client requests.                                            | Histogram |
+| `http_client_response_size`       | Measures the size of HTTP client response bodies.                                         | Histogram |
 | `http_server_active_requests`     | Number of active HTTP server requests.                                                    | Counter   |
-| `http_server_request_body_size`   | Measures the size of HTTP server request bodies.                                          | Histogram |
-| `http_server_request_duration`    | Measures the duration of HTTP server requests.                                            | Histogram |
-| `http_server_response_body_size`  | Measures the size of HTTP server response bodies.                                         | Histogram |
+| `http_server_request_size`        | Measures the size of HTTP server request bodies.                                          | Histogram |
+| `http_server_duration`            | Measures the duration of HTTP server requests.                                            | Histogram |
+| `http_server_response_size`       | Measures the size of HTTP server response bodies.                                         | Histogram |
 | `rpc_client_duration`             | Measures the duration of outbound RPC.                                                    | Histogram |
 | `rpc_client_request_size`         | Measures the size of RPC request messages (uncompressed).                                 | Histogram |
 | `rpc_client_requests_per_rpc`     | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram |
@@ -272,3 +273,63 @@ The Collector logs the following internal events:
 - Data dropping due to invalid data stops.
 - A crash is detected, differentiated from a clean stop. Crash data is included
   if available.
+
+## Use internal telemetry to monitor the Collector
+
+This section recommends best practices for monitoring the Collector using its
+own telemetry.
+
+### Critical monitoring
+
+#### Data loss
+
+Use the rate of `otelcol_processor_dropped_spans > 0` and
+`otelcol_processor_dropped_metric_points > 0` to detect data loss. Depending on
+your project's requirements, select a narrow time window before alerting begins
+to avoid notifications for small losses that are within the desired reliability
+range and not considered outages.
+
+### Secondary monitoring
+
+#### Queue length
+
+Most exporters provide a
+[queue and/or retry mechanism](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/exporterhelper/README.md)
+that is recommended for use in any production deployment of the Collector.
+
+The `otelcol_exporter_queue_capacity` metric indicates the capacity, in batches,
+of the sending queue. The `otelcol_exporter_queue_size` metric indicates the
+current size of the sending queue. Use these two metrics to check if the queue
+capacity can support your workload.
+
+Using the following three metrics, you can identify the number of spans, metric
+points, and log records that failed to reach the sending queue:
+
+- `otelcol_exporter_enqueue_failed_spans`
+- `otelcol_exporter_enqueue_failed_metric_points`
+- `otelcol_exporter_enqueue_failed_log_records`
+
+These failures could be caused by a queue filled with unsettled elements. You
+might need to decrease your sending rate or horizontally scale Collectors.
+
+The queue or retry mechanism also supports logging for monitoring. Check the
+logs for messages such as `Dropping data because sending_queue is full`.
+
+#### Receive failures
+
+Sustained rates of `otelcol_receiver_refused_spans` and
+`otelcol_receiver_refused_metric_points` indicate that too many errors were
+returned to clients. Depending on the deployment and the clients' resilience,
+this might indicate clients' data loss.
+
+Sustained rates of `otelcol_exporter_send_failed_spans` and
+`otelcol_exporter_send_failed_metric_points` indicate that the Collector is not
+able to export data as expected. These metrics do not inherently imply data loss
+since there could be retries. But a high rate of failures could indicate issues
+with the network or backend receiving the data.
+
+#### Data flow
+
+You can monitor data ingress with the `otelcol_receiver_accepted_spans` and
+`otelcol_receiver_accepted_metric_points` metrics and data egress with the
+`otelcol_exporter_sent_spans` and `otelcol_exporter_sent_metric_points` metrics.

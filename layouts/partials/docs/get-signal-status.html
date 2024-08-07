@@ -1,0 +1,31 @@
+{{/*
+
+  Returns the maturity status of the given signal for the given language.
+
+  Arguments:
+
+  .lang the instrumentation language
+  .signal the signal name; must be a legal field of the Instrumentation data file.
+
+  */ -}}
+
+{{ $status := "-" -}}
+{{ $signal := .signal -}}
+
+{{ with index site.Data.instrumentation .lang -}}
+  {{ with index .status $signal -}}
+    {{ $statusWeCanLinkTo := "stable development" -}}
+    {{ $status = cond (or (eq "experimental" .) (eq "in development" .)) "development" . -}}
+    {{ $humanizedStatus := humanize $status -}}
+    {{ $status = cond (in $statusWeCanLinkTo $status)
+          (printf "[%s](/docs/specs/otel/versioning-and-stability/#%s)" $humanizedStatus $status)
+          (cond (in "alpha beta" $status)
+            (printf "[%s](https://github.com/open-telemetry/oteps/blob/main/text/0232-maturity-of-otel.md#%s)" $humanizedStatus $status)
+            $humanizedStatus)
+    -}}
+  {{ end -}}
+{{ else -}}
+  {{ errorf "The site.Data.instrumentation map has no language key '%s'." .lang -}}
+{{ end -}}
+
+{{ return $status -}}
