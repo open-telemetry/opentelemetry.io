@@ -101,10 +101,10 @@ and Spring starter users. {{% /alert %}}
 {{% alert color="info" %}} The autoconfigure module registers Java shutdown
 hooks to shut down the SDK when appropriate. Because OpenTelemetry Java
 [uses `java.util.logging` for internal logging](/docs/languages/java/sdk/#internal-logging),
-some of that logging might be suppressed during shutdown hooks. This is a bug in
+some of some logging might be suppressed during shutdown hooks. This is a bug in
 the JDK itself, and not something under the control of OpenTelemetry Java. If
 you require logging during shutdown hooks, consider using `System.out` rather
-than a logging framework that might shut itself down in a shutdown hook, thus
+than a logging framework which might shut itself down in a shutdown hook, thus
 suppressing your log messages. See
 this[JDK bug](https://bugs.openjdk.java.net/browse/JDK-8161253) for more
 details. {{% /alert %}}
@@ -146,7 +146,7 @@ Properties for configuring [resource](/docs/languages/java/sdk/#resource):
 | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | `otel.service.name`                        | Specify logical service name. Takes precedence over `service.name` defined with `otel.resource.attributes`.                             | `unknown_service:java` |
 | `otel.resource.attributes`                 | Specify resource attributes in the following format: `key1=val1,key2=val2,key3=val3`.                                                   |                        |
-| `otel.experimental.resource.disabled-keys` | Specify resource attribute keys that are filtered. This option is experimental and subject to change or removal.                        |                        |
+| `otel.experimental.resource.disabled-keys` | Specify resource attribute keys to filter. This option is experimental and subject to change or removal.                                |                        |
 | `otel.java.enabled.resource.providers`     | Comma-separated list of `ResourceProvider` fully qualified class names to enable. **[1]** If unset, all resource providers are enabled. |                        |
 | `otel.java.disabled.resource.providers`    | Comma-separated list of `ResourceProvider` fully qualified class names to disable. **[1]**                                              |                        |
 
@@ -323,9 +323,9 @@ generic versions. For example, if you set both `otel.exporter.otlp.endpoint` and
 
 **[1]**: OpenTelemetry Java agent 2.x uses `http/protobuf` by default.
 
-**[2]**: [OTLP](/docs/specs/otlp/#otlpgrpc-response) requires that
-[transient](/docs/specs/otel/protocol/exporter/#retry) errors be handled with a
-retry strategy. When retry is enabled, retryable gRPC status codes are retried
+**[2]**: [OTLP](/docs/specs/otlp/#otlpgrpc-response) requires
+[transient](/docs/specs/otel/protocol/exporter/#retry) errors to be handled with
+a retry strategy. When retry is enabled, retryable gRPC status codes are retried
 using an exponential backoff with jitter algorithm. The specific options of
 `RetryPolicy` can only be customized via
 [programmatic customization](#programmatic-customization).
