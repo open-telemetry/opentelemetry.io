@@ -15,8 +15,8 @@ Selecione uma função[^1] para começar:
 
 </div>
 
-Você também pode experimentar a [demo oficial][demo] do OpenTelemetry para _ver_ como
-a observabilidade com o OpenTelemetry funciona!
+Você também pode experimentar a [demo oficial][demo] do OpenTelemetry para _ver_
+como a observabilidade com o OpenTelemetry funciona!
 
 <div class="l-primary-buttons justify-content-start mt-3 mb-5 ms-3">
 

@@ -10,16 +10,17 @@ Este é a página [primeiros-passos](..) para você se:
 - Seu objetivo é obter observabilidade escrevendo código.
 - Você deseja que suas dependências emitam telemetria automaticamente para você.
 
-O OpenTelemetry pode ajudá-lo! Para atingir seus objetivos de ter suas dependências
-instrumentadas automaticamente e instrumentar seu próprio código com nossa API
-manualmente, recomendamos que você aprenda os seguintes conceitos primeiro:
+O OpenTelemetry pode ajudá-lo! Para atingir seus objetivos de ter suas
+dependências instrumentadas automaticamente e instrumentar seu próprio código
+com nossa API manualmente, recomendamos que você aprenda os seguintes conceitos
+primeiro:
 
 - [O que é o OpenTelemetry?](../../what-is-opentelemetry/)
 - [Como adicionar instrumentação ao meu código?](../../concepts/instrumentation/code-based/)
 
-Se você desenvolve bibliotecas, frameworks ou middleware que são usados como dependência
-em outros softwares, recomendamos que você aprenda como pode fornecer telemetria
-nativamente:
+Se você desenvolve bibliotecas, frameworks ou middleware que são usados como
+dependência em outros softwares, recomendamos que você aprenda como pode
+fornecer telemetria nativamente:
 
 - [Como adicionar instrumentação nativa à minha biblioteca?](../../concepts/instrumentation/libraries/)
 
