@@ -12,23 +12,23 @@ cSpell:ignore: autoconfigured Interceptable Logback FQCNs okhttp
 The SDK is the built-in reference implementation of the
 [API](/docs/languages/java/instrumentation/), processing and exporting telemetry
 produced by instrumentation API calls. This page is a conceptual overview of the
-SDK, including descriptions, links to relevant javadoc, artifact coordinates,
-sample programmatic configuration and more. See
+SDK, including descriptions, links to relevant javadocs, artifact coordinates,
+sample programmatic configurations and more. See
 **[Configure the SDK](/docs/languages/java/configuration/)** for details on SDK
 configuration, including
 [zero-code SDK autoconfigure](/docs/languages/java/configuration/#zero-code-sdk-autoconfigure).
 
 The SDK consists of the following top level components:
 
-- [SdkTracerProvider](#sdktracerprovider) the SDK implementation of
+- [SdkTracerProvider](#sdktracerprovider): The SDK implementation of
   `TracerProvider`, including tools for sampling, processing, and exporting
   spans.
-- [SdkMeterProvider](#sdkmeterprovider) the SDK implementation of
+- [SdkMeterProvider](#sdkmeterprovider): The SDK implementation of
   `MeterProvider`, including tools for configuring metric streams and reading /
   exporting metrics.
-- [SdkLoggerProvider](#sdkloggerprovider) the SDK implementation of
+- [SdkLoggerProvider](#sdkloggerprovider): The SDK implementation of
   `LoggerProvider`, including tools for processing and exporting logs.
-- [TextMapPropagator](#textmappropagator) for propagating context across process
+- [TextMapPropagator](#textmappropagator): Propagates context across process
   boundaries.
 
 These are combined into [OpenTelemetrySdk](#opentelemetrysdk), a carrier object
@@ -44,16 +44,15 @@ sufficient for many use cases, and supports
 When built-in components are insufficient, the SDK can be extended by
 implementing various plugin extension interfaces:
 
-- [Sampler](#sampler) for determining which spans are recorded and sampled.
-- [SpanProcessor](#spanprocessor) to receive callbacks when a span is started
-  and ended.
-- [SpanExporter](#spanexporter) to export spans out of process.
-- [MetricReader](#metricreader) to read aggregated metrics.
-- [MetricExporter](#metricexporter) to export metrics out of process.
-- [LogRecordProcessor](#logrecordprocessor) to receive callbacks when a log
-  record is emitted.
-- [LogRecordExporter](#logrecordexporter) to export logs out of process.
-- [TextMapPropagator](#textmappropagator) for propagating context across process
+- [Sampler](#sampler): Configures which spans are recorded and sampled.
+- [SpanProcessor](#spanprocessor): Processes spans when they start and end.
+- [SpanExporter](#spanexporter): Exports spans out of process.
+- [MetricReader](#metricreader): Reads aggregated metrics.
+- [MetricExporter](#metricexporter): Exports metrics out of process.
+- [LogRecordProcessor](#logrecordprocessor): Processes log records when they are
+  emitted.
+- [LogRecordExporter](#logrecordexporter): Exports log records out of process.
+- [TextMapPropagator](#textmappropagator): Propagates context across process
   boundaries.
 
 ## SDK components
@@ -61,7 +60,7 @@ implementing various plugin extension interfaces:
 The following sections describe the core user-facing components of the SDK. Each
 component section includes:
 
-- A brief description, including link to javadoc type reference.
+- A brief description, including a link to the javadoc type reference.
 - If the component is a
   [plugin extension interface](#sdk-plugin-extension-interfaces), a table of
   available built-in and `opentelemetry-java-contrib` implementations.
@@ -81,13 +80,14 @@ fully-configured SDK components to instrumentation.
 
 `OpenTelemetrySdk` is configured by the application owner, and consists of:
 
-- [SdkTracerProvider](#sdktracerprovider) the SDK implementation of
+- [SdkTracerProvider](#sdktracerprovider): The SDK implementation of
   `TracerProvider`.
-- [SdkMeterProvider](#sdkmeterprovider) the SDK implementation of
+- [SdkMeterProvider](#sdkmeterprovider): The SDK implementation of
   `MeterProvider`.
-- [SdkLoggerProvider](#sdkloggerprovider) the SDK implementation of
+- [SdkLoggerProvider](#sdkloggerprovider): The SDK implementation of
   `LoggerProvider`.
-- [ContextPropagators](#textmappropagator) the configured context propagator.
+- [ContextPropagators](#textmappropagator): Propagates context across process
+  boundaries.
 
 The following code snippet demonstrates `OpenTelemetrySdk` programmatic
 configuration:
@@ -157,13 +157,12 @@ and is responsible for handling trace telemetry produced by the API.
 
 `SdkTracerProvider` is configured by the application owner, and consists of:
 
-- [Resource](#resource) the resource spans are associated with.
-- [Sampler](#sampler) to configure which spans are recorded and sampled.
-- [SpanProcessors](#spanprocessor) to process spans when they start and end.
-- [SpanExporters](#spanexporter) to export spans out of process, and which are
-  associated with `SpanProcessor`s.
-- [SpanLimits](#spanlimits) for controlling the limits of data associated with
-  spans.
+- [Resource](#resource): The resource spans are associated with.
+- [Sampler](#sampler): Configures which spans are recorded and sampled.
+- [SpanProcessors](#spanprocessor): Processes spans when they start and end.
+- [SpanExporters](#spanexporter): Exports spans out of process (in conjunction
+  with associated with `SpanProcessor`s).
+- [SpanLimits](#spanlimits): Controls the limits of data associated with spans.
 
 The following code snippet demonstrates `SdkTracerProvider` programmatic
 configuration:
@@ -203,18 +202,18 @@ for determining which spans are recorded and sampled.
 sampled if unless a calling application performs sampling. If this is too noisy
 / expensive, change the sampler. {{% /alert %}}
 
-Samplers built-in to the SDK and maintained by community in
+Samplers built-in to the SDK and maintained by the community in
 `opentelemetry-java-contrib`:
 
 | Class                     | Artifact                                                                                      | Description                                                                                                                                                                                                      |
 | ------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ParentBased`             | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Samples spans based on sampling status the span's parent.                                                                                                                                                        |
+| `ParentBased`             | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Samples spans based on sampling status of the span's parent.                                                                                                                                                     |
 | `AlwaysOn`                | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Samples all spans.                                                                                                                                                                                               |
 | `AlwaysOff`               | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Drops all spans.                                                                                                                                                                                                 |
 | `TraceIdRatioBased`       | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Samples spans based on a configurable ratio.                                                                                                                                                                     |
 | `JaegerRemoteSampler`     | `io.opentelemetry:opentelemetry-sdk-extension-jaeger-remote-sampler:{{% param vers.otel %}}`  | Samples spans based on configuration from a remote server.                                                                                                                                                       |
 | `LinksBasedSampler`       | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | Samples spans based on sampling status of the span's links.                                                                                                                                                      |
-| `RuleBasedRoutingSampler` | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | Samples spans based configurable rules.                                                                                                                                                                          |
+| `RuleBasedRoutingSampler` | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | Samples spans based on configurable rules.                                                                                                                                                                       |
 | `ConsistentSamplers`      | `io.opentelemetry.contrib:opentelemetry-consistent-sampling:{{% param vers.contrib %}}-alpha` | Various consistent sampler implementations as defined by [probability sampling](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/tracestate-probability-sampling.md). |
 
 The following code snippet demonstrates `Sampler` programmatic configuration:
@@ -318,16 +317,16 @@ callbacks invoked when a span is started and ended. They are often paired with
 [SpanExporters](#spanexporter) to export spans out of process, but have other
 applications such as data enrichment.
 
-Span processors built-in to the SDK and maintained by community in
+Span processors built-in to the SDK and maintained by the community in
 `opentelemetry-java-contrib`:
 
-| Class                     | Artifact                                                                                    | Description                                                          |
-| ------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `BatchSpanProcessor`      | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                | Batches sampled spans and exports via a configurable `SpanExporter`. |
-| `SimpleSpanProcessor`     | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                | Exports each sampled span via a configurable `SpanExporter`.         |
-| `BaggageSpanProcessor`    | `io.opentelemetry.contrib:opentelemetry-baggage-processor:{{% param vers.contrib %}}-alpha` | Enriches spans with baggage.                                         |
-| `JfrSpanProcessor`        | `io.opentelemetry.contrib:opentelemetry-jfr-events:{{% param vers.contrib %}}-alpha`        | Creates JFR events from spans.                                       |
-| `StackTraceSpanProcessor` | `io.opentelemetry.contrib:opentelemetry-span-stacktrace:{{% param vers.contrib %}}-alpha`   | Enriches select spans with stack trace data.                         |
+| Class                     | Artifact                                                                                    | Description                                                               |
+| ------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `BatchSpanProcessor`      | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                | Batches sampled spans and exports them via a configurable `SpanExporter`. |
+| `SimpleSpanProcessor`     | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                | Exports each sampled span via a configurable `SpanExporter`.              |
+| `BaggageSpanProcessor`    | `io.opentelemetry.contrib:opentelemetry-baggage-processor:{{% param vers.contrib %}}-alpha` | Enriches spans with baggage.                                              |
+| `JfrSpanProcessor`        | `io.opentelemetry.contrib:opentelemetry-jfr-events:{{% param vers.contrib %}}-alpha`        | Creates JFR events from spans.                                            |
+| `StackTraceSpanProcessor` | `io.opentelemetry.contrib:opentelemetry-span-stacktrace:{{% param vers.contrib %}}-alpha`   | Enriches select spans with stack trace data.                              |
 
 The following code snippet demonstrates `SpanProcessor` programmatic
 configuration:
@@ -378,7 +377,7 @@ public class CustomSpanProcessor implements SpanProcessor {
   @Override
   public void onStart(Context parentContext, ReadWriteSpan span) {
     // Callback invoked when span is started.
-    // Enrich the record a custom attribute.
+    // Enrich the record with a custom attribute.
     span.setAttribute("my.custom.attribute", "hello world");
   }
 
@@ -423,7 +422,7 @@ for exporting spans out of process. Rather than directly registering with
 `SdkTracerProvider`, they are paired with [SpanProcessors](#spanprocessor)
 (typically `BatchSpanProcessor`).
 
-Span exporters built-in to the SDK and maintained by community in
+Span exporters built-in to the SDK and maintained by the community in
 `opentelemetry-java-contrib`:
 
 | Class                          | Artifact                                                                                 | Description                                              |
@@ -566,12 +565,11 @@ and is responsible for handling metric telemetry produced by the API.
 
 `SdkMeterProvider` is configured by the application owner, and consists of:
 
-- [Resource](#resource) the resource metrics are associated with.
-- [MetricReader](#metricreader) to read the aggregated state of metrics.
-- [MetricExporter](#metricexporter) to export metrics out of process, and which
-  are associated with `MetricReader`s.
-- [Views](#views) to configure metric streams, including dropping unused
-  metrics.
+- [Resource](#resource): The resource metrics are associated with.
+- [MetricReader](#metricreader): Reads the aggregated state of metrics.
+- [MetricExporter](#metricexporter): Exports metrics out of process (in
+  conjunction with associated `MetricReader`).
+- [Views](#views): Configures metric streams, including dropping unused metrics.
 
 The following code snippet demonstrates `SdkMeterProvider` programmatic
 configuration:
@@ -616,13 +614,13 @@ responsible for reading aggregated metrics. They are often paired with
 [MetricExporters](#metricexporter) to export metrics out of process, but may
 also be used to serve the metrics to external scrapers in pull-based protocols.
 
-Metric readers built-in to the SDK and maintained by community in
+Metric readers built-in to the SDK and maintained by the community in
 `opentelemetry-java-contrib`:
 
-| Class                  | Artifact                                                                           | Description                                                                      |
-| ---------------------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `PeriodicMetricReader` | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                       | Reads metrics on a periodic basis and exports via configurable `MetricExporter`. |
-| `PrometheusHttpServer` | `io.opentelemetry:opentelemetry-exporter-prometheus:{{% param vers.otel %}}-alpha` | Serves metrics on an HTTP server in various prometheus formats.                  |
+| Class                  | Artifact                                                                           | Description                                                                             |
+| ---------------------- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `PeriodicMetricReader` | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                       | Reads metrics on a periodic basis and exports them via a configurable `MetricExporter`. |
+| `PrometheusHttpServer` | `io.opentelemetry:opentelemetry-exporter-prometheus:{{% param vers.otel %}}-alpha` | Serves metrics on an HTTP server in various prometheus formats.                         |
 
 The following code snippet demonstrates `MetricReader` programmatic
 configuration:
@@ -743,7 +741,7 @@ is a [plugin extension interface](#sdk-plugin-extension-interfaces) responsible
 for exporting metrics out of process. Rather than directly registering with
 `SdkMeterProvider`, they are paired with [PeriodicMetricReader](#metricreader).
 
-Metric exporters built-in to the SDK and maintained by community in
+Metric exporters built-in to the SDK and maintained by the community in
 `opentelemetry-java-contrib`:
 
 | Class                            | Artifact                                                                             | Description                                                |
@@ -877,14 +875,14 @@ allow metric streams to be customized, including changing metric names, metric
 descriptions, metric aggregations (i.e. histogram bucket boundaries), the set of
 attribute keys to retain, etc.
 
-**NOTE:** Views have somewhat unintuitive behavior when multiple match a
+{{% alert %}} Views have somewhat unintuitive behavior when multiple match a
 particular instrument. If one matching view changes the metric name and another
-changes the metric aggregation, you might expect the name and aggregation to be
+changes the metric aggregation, you might expect the name and aggregation are
 changed, but this is not the case. Instead, two metric streams are produced: one
 with the configured metric name and the default aggregation, and another with
 the original metric name and the configured aggregation. In other words,
 matching views _do not merge_. For best results, configure views with narrow
-selection criteria (i.e. select a single specific instrument).
+selection criteria (i.e. select a single specific instrument). {{% /alert %}}
 
 The following code snippet demonstrates `View` programmatic configuration:
 
@@ -936,13 +934,12 @@ and is responsible for handling log telemetry produced by the log bridge API.
 
 `SdkLoggerProvider` is configured by the application owner, and consists of:
 
-- [Resource](#resource) the resource logs are associated with.
-- [LogRecordProcessor](#logrecordprocessor) to process logs when they are
+- [Resource](#resource): The resource logs are associated with.
+- [LogRecordProcessor](#logrecordprocessor): Processes logs when they are
   emitted.
-- [LogRecordExporter](#logrecordexporter) to export logs out of process, and
-  which are associated with `LogRecordProcessors`s.
-- [LogLimits](#loglimits) for controlling the limits of data associated with
-  logs.
+- [LogRecordExporter](#logrecordexporter): Exports logs out of process (in
+  conjunction with associated `LogRecordProcessor`).
+- [LogLimits](#loglimits): Controls the limits of data associated with logs.
 
 The following code snippet demonstrates `SdkLoggerProvider` programmatic
 configuration:
@@ -978,13 +975,13 @@ callback invoked when a log is emitted. They are often paired with
 [LogRecordExporters](#logrecordexporter) to export logs out of process, but have
 other applications such as data enrichment.
 
-Log record processors built-in to the SDK and maintained by community in
+Log record processors built-in to the SDK and maintained by the community in
 `opentelemetry-java-contrib`:
 
-| Class                      | Artifact                                                     | Description                                                             |
-| -------------------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------- |
-| `BatchLogRecordProcessor`  | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}` | Batches log records and exports via a configurable `LogRecordExporter`. |
-| `SimpleLogRecordProcessor` | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}` | Exports each log record a via a configurable `LogRecordExporter`.       |
+| Class                      | Artifact                                                     | Description                                                                  |
+| -------------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| `BatchLogRecordProcessor`  | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}` | Batches log records and exports them via a configurable `LogRecordExporter`. |
+| `SimpleLogRecordProcessor` | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}` | Exports each log record a via a configurable `LogRecordExporter`.            |
 
 The following code snippet demonstrates `LogRecordProcessor` programmatic
 configuration:
@@ -1035,7 +1032,7 @@ public class CustomLogRecordProcessor implements LogRecordProcessor {
   @Override
   public void onEmit(Context context, ReadWriteLogRecord logRecord) {
     // Callback invoked when log record is emitted.
-    // Enrich the record a custom attribute.
+    // Enrich the record with a custom attribute.
     logRecord.setAttribute(AttributeKey.stringKey("my.custom.attribute"), "hello world");
   }
 
@@ -1064,7 +1061,7 @@ for exporting log records out of process. Rather than directly registering with
 [LogRecordProcessors](#logrecordprocessor) (typically
 `BatchLogRecordProcessor`).
 
-Span exporters built-in to the SDK and maintained by community in
+Span exporters built-in to the SDK and maintained by the community in
 `opentelemetry-java-contrib`:
 
 | Class                                      | Artifact                                                                             | Description                                                    |
