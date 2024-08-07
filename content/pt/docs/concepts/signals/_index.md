@@ -12,19 +12,14 @@ O objetivo do OpenTelemetry é colletar, processar e exportar **[signals][]**.
 Sinais são saídas de sistemas que descrevem atividades fundamentais do
 sistema operacional e aplicações em execução na plataforma. Um sinal pode
 ser alguma coisa que você quer avaliar em algum ponto específico do tempo,
-como temperatura, memória utilizada, ou um evento que passa por um componente
-de 
-something you want to measure at a specific point in time, like temperature or
-memory usage, or an event that goes through the components of your distributed
-system that you'd like to trace. You can group different signals together to
-observe the inner workings of the same piece of technology under different
-angles.
+como por exemplo, memória utilizada, ou um evento que passa por um componente
+do seu sistema distribuido como um trace. você pode agrupar diferentes sinais
+para observar o funcionamento interno da mesma tecnologia sob diferentes ângulos.
 
-OpenTelemetry currently supports [traces](/docs/concepts/signals/traces),
+OpenTelemetry atualmente suporta [traces](/docs/concepts/signals/traces),
 [metrics](/docs/concepts/signals/metrics), [logs](/docs/concepts/signals/logs)
-and [baggage](/docs/concepts/signals/baggage). _Events_ are a specific type of
-log, and
+e [baggage](/docs/concepts/signals/baggage). _Events_ são um tipo específico de logs e
 [_profiles_ are being worked on](https://github.com/open-telemetry/oteps/blob/main/text/profiles/0212-profiling-vision.md)
-by the Profiling Working Group.
+pelo Grupo de Trabalho de Profiling.
 
 [signals]: /docs/specs/otel/glossary/#signals
