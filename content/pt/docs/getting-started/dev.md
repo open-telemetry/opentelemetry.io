@@ -12,7 +12,7 @@ Este é a página [primeiros-passos](..) para você se:
 
 O OpenTelemetry pode ajudá-lo! Para atingir seus objetivos de ter suas
 dependências instrumentadas automaticamente e instrumentar seu próprio código
-com nossa API manualmente, recomendamos que você aprenda os seguintes conceitos
+manualmente com nossa API, recomendamos que você aprenda os seguintes conceitos
 primeiro:
 
 - [O que é o OpenTelemetry?](../../what-is-opentelemetry/)

@@ -1,5 +1,5 @@
 ---
-título: Primeiros passos
+título: Primeiros Passos
 descrição: Comece a utilizar o OpenTelemetry com base na sua função.
 no_list: true
 weight: 160
@@ -10,17 +10,17 @@ Selecione uma função[^1] para começar:
 
 <div class="l-get-started-buttons justify-content-start mt-3 ms-3">
 
-- [Desenvolvedor](dev/)
+- [Desenvolvimento](dev/)
 - [Operações](ops/)
 
 </div>
 
-Você também pode experimentar a [demo oficial][demo] do OpenTelemetry para _ver_
-como a observabilidade com o OpenTelemetry funciona!
+Você também pode experimentar a [demonstração oficial][demo] do OpenTelemetry
+para _ver_ como a observabilidade com o OpenTelemetry funciona!
 
 <div class="l-primary-buttons justify-content-start mt-3 mb-5 ms-3">
 
-- [Experimente a demo][demo]
+- [Experimente a demonstração][demo]
 
 </div>
 
