@@ -21,4 +21,4 @@ isNative: true
 package:
   name: MassTransit
   registry: nuget
-  version: 8.2.3
+  version: 3.2.1
