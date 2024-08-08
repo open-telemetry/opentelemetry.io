@@ -3,15 +3,22 @@
 {{ $group := index $data $key -}}
 {{ $lastIndex := 0 }}
 
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     {{- range $index, $element := $group -}}
       {{- if (eq (mod $index 12) 0) }}
   </div>
-  <div class="row">
+  <div class="row gy-5 py-3">
       {{- end -}}
-      <div class="col-6 col-md-4 col-lg-3 col-xxl-2">
-        <a href="{{ $element.html_url }}"><img src="{{ $element.avatar_url }}" class="rounded" /></a>
+      <div class="col-md-6 col-lg-4 col-xl-3 col-xxl-2">
+        <div class="card h-100">
+          <a href="{{ $element.html_url }}"><img src="{{ $element.avatar_url }}" class="card-img-top" style="max-width: 100%" /></a>
+          <div class="card-body">  
+          <h5 class="card-title">
+            <a href="{{ $element.html_url }}">{{ $element.name }}</a>
+          </h5>
+          </div>
+        </div>
       </div>
       {{- $lastIndex = add $index 1 -}}
     {{- end -}}
