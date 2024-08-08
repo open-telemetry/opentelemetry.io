@@ -107,7 +107,7 @@ Os atributos de trechos são metadados anexados a um trecho.
 
 A tabela a seguir contém exemplos de atributos de trecho:
 
-| Key                         | Value                                                                              |
+| Chave                       | Valor                                                                              |
 | :-------------------------- | :--------------------------------------------------------------------------------- |
 | `http.request.method`       | `"GET"`                                                                            |
 | `network.protocol.version`  | `"1.1"`                                                                            |
