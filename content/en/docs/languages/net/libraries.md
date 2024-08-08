@@ -4,7 +4,7 @@ linkTitle: Libraries
 weight: 40
 ---
 
-{{% docs/languages/libraries-intro ".NET" %}}
+{{% docs/languages/libraries-intro "dotnet" %}}
 
 ## Use Instrumentation Libraries
 

@@ -6,7 +6,7 @@ cSpell:ignore: faraday metapackage sinatra
 weight: 30
 ---
 
-{{% docs/languages/libraries-intro Ruby %}}
+{{% docs/languages/libraries-intro ruby %}}
 
 ## Use Instrumentation Libraries
 
@@ -72,6 +72,22 @@ end
 
 To override more instrumentation, add another entry in the `config` map.
 
+#### Overriding configuration for specific instrumentation libraries with environment variables
+
+You can also disable specific instrumentation libraries using environment
+variables. An instrumentation disabled by an environment variable takes
+precedence over local config. The convention for environment variable names is
+the library name, upcased with `::` replaced by underscores, `OPENTELEMETRY`
+shortened to `OTEL_LANG`, and `_ENABLED` appended.
+
+For example, the environment variable name for
+`OpenTelemetry::Instrumentation::Sinatra` is
+`OTEL_RUBY_INSTRUMENTATION_SINATRA_ENABLED`.
+
+```bash
+export OTEL_RUBY_INSTRUMENTATION_SINATRA_ENABLED=false
+```
+
 ### Configuring specific instrumentation libraries
 
 If you prefer more selectively installing and using only specific
@@ -97,6 +113,35 @@ OpenTelemetry::SDK.configure do |c|
   c.use 'OpenTelemetry::Instrumentation::Faraday', { opt: 'value' }
 end
 ```
+
+#### Configuring specific instrumentation libraries with environment variables
+
+You can also define the option for specific instrumentation libraries using
+environment variables. By convention, the environment variable will be the name
+of the instrumentation, upcased with `::` replaced by underscores,
+`OPENTELEMETRY` shortened to `OTEL_{LANG}`, and `_CONFIG_OPTS` appended.
+
+For example, the environment variable name for
+`OpenTelemetry::Instrumentation::Faraday` is
+`OTEL_RUBY_INSTRUMENTATION_FARADAY_CONFIG_OPTS`. A value of
+`peer_service=new_service;span_kind=client` overrides the options set from
+[previous section](#configuring-specific-instrumentation-libraries) for Faraday.
+
+```bash
+export OTEL_RUBY_INSTRUMENTATION_FARADAY_CONFIG_OPTS="peer_service=new_service;span_kind=client"
+```
+
+The following table lists the acceptable format for values according to the
+option data type:
+
+| Data Type | Value                      | Example          |
+| --------- | -------------------------- | ---------------- |
+| Array     | string with `,` separation | `option=a,b,c,d` |
+| Boolean   | true/false                 | `option=true`    |
+| Integer   | string                     | `option=string`  |
+| String    | string                     | `option=string`  |
+| Enum      | string                     | `option=string`  |
+| Callable  | not allowed                | N\A              |
 
 ### Next steps
 

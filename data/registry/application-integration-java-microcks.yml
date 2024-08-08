@@ -1,0 +1,21 @@
+# cSpell:ignore: microcks
+title: Microcks
+registryType: application integration
+language: java
+tags:
+  - microcks
+  - java
+  - sandbox
+license: Apache-2.0
+description:
+  The main webapp component supports OpenTelemetry instrumentation for logs,
+  distributed tracing and metrics.
+authors:
+  - name: Microcks Authors
+    url: https://github.com/microcks
+urls:
+  website: https://microcks.io/
+  docs: https://microcks.io/documentation/explanations/monitoring/
+createdAt: '2024-08-06'
+isNative: true
+cncfProjectLevel: sandbox

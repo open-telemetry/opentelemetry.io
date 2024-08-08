@@ -1,0 +1,20 @@
+# cSpell:ignore: moby buildkit
+title: BuildKit
+registryType: application integration
+language: go
+tags:
+  - go
+  - docker
+  - moby
+  - buildkit
+license: Apache-2.0
+description: BuildKit supports OpenTelemetry.
+authors:
+  - name: Moby Project Authors
+    url: https://github.com/moby
+urls:
+  website: https://mobyproject.org/
+  repo: https://github.com/moby/buildkit
+  docs: https://docs.docker.com/build/building/opentelemetry/
+createdAt: '2024-08-06'
+isNative: true

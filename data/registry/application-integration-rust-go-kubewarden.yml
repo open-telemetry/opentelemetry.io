@@ -1,0 +1,21 @@
+# cSpell:ignore kubewarden
+title: Kubewarden
+registryType: application integration
+language: rust # go
+tags:
+  - sandbox
+  - rust
+  - kubewarden
+license: Apache-2.0
+description:
+  Kubewarden's components are instrumented with the OpenTelemetry SDK, reporting
+  data to an OpenTelemetry Collector.
+authors:
+  - name: Kubewarden Authors
+    url: https://github.com/kubewarden
+urls:
+  website: https://kubewarden.io/
+  docs: https://docs.kubewarden.io/howtos/telemetry/opentelemetry-qs
+createdAt: '2024-08-06'
+cncfProjectLevel: sandbox
+isNative: true

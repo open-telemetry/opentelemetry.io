@@ -5,6 +5,7 @@ const miniSearchOptions = {
     '_key',
     'tags',
     'package.name',
+    'flags',
     'license',
     'language',
     'registryType',

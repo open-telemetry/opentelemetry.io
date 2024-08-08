@@ -5,7 +5,7 @@ weight: 40
 cSpell:ignore: getenv httpclient println
 ---
 
-{{% docs/languages/libraries-intro "Java" %}}
+{{% docs/languages/libraries-intro "java" %}}
 
 ## Use Instrumentation Libraries
 
