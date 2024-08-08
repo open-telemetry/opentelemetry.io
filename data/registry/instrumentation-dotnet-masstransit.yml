@@ -6,9 +6,7 @@ tags:
   - masstransit .net client
   - .net
 license: Apache-2.0
-description:
-  By using OpenTelemetry with MassTransit, you can gain insights into the
-  performance of your systems
+description: By using OpenTelemetry with MassTransit, you can gain insights into the performance of your systems
 authors:
   - name: MassTransit Project
     url: https://github.com/MassTransit
@@ -21,4 +19,4 @@ isNative: true
 package:
   name: MassTransit
   registry: nuget
-  version: 8.2.3
+  version: 3.2.1
