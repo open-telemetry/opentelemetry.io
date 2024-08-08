@@ -303,6 +303,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-08T12:17:27.412252+01:00"
   },
+  "https://cdn.jsdelivr.net/npm/minisearch@7.1.0/dist/umd/index.min.js": {
+    "StatusCode": 206,
+    "LastSeen": "2024-08-07T17:27:34.715582+02:00"
+  },
   "https://cerbos.dev/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T15:24:42.717338-05:00"
