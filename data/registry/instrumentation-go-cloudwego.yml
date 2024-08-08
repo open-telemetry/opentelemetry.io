@@ -7,7 +7,9 @@ tags:
   - hertz
   - cloudwego
 license: Apache-2.0
-description: The `obs-opentelemetry` extension allows hertz to integrate OpenTelemetry with a simple setup.
+description:
+  The `obs-opentelemetry` extension allows hertz to integrate OpenTelemetry with
+  a simple setup.
 authors:
   - name: CloudWeGo
     url: https://github.com/cloudwego
