@@ -18,7 +18,6 @@ languages:
       description: The OpenTelemetry Project Site
   es:
     languageName: Español
-    languageCode: es-ES
     params:
       description: Sitio del proyecto OpenTelemetry
   ja:
