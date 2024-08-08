@@ -23,9 +23,9 @@ um sinal com outro.
 
 Por exemplo, se o serviço A chamar o serviço B, um trecho do serviço A, cujo ID
 está no contexto, será usado como o trecho pai para o próximo trecho criado no
-serviço B. O ID do trace que está no contexto também será usado para o próximo
+serviço B. O ID do rasto que está no contexto também será usado para o próximo
 trecho criado no serviço B, o que significa que o trecho faz parte do mesmo
-trace que o trecho do serviço A.
+rastro que o trecho do serviço A.
 
 ## Propagação
 
