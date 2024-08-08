@@ -1,0 +1,20 @@
+# cSpell:ignore openfga
+title: OpenFGA
+registryType: application integration
+language: go
+tags:
+  - openfga
+  - authorization
+  - permission
+  - engine
+urls:
+  website: https://openfga.dev/
+  repo: https://github.com/openfga/openfga
+  docs: https://openfga.dev/docs/getting-started/setup-openfga/configure-openfga#telemetry
+license: Apache 2.0
+description: OpenFGA traces can be collected with the OTLP data format.
+authors:
+  - name: OpenFGA Authors
+    url: https://github.com/openfga
+createdAt: 2024-08-08
+cncfProjectLevel: sandbox

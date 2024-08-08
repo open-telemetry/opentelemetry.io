@@ -4887,6 +4887,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:36.015951-05:00"
   },
+  "https://github.com/openfga": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-08T20:12:23.279486+02:00"
+  },
+  "https://github.com/openfga/openfga": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-08T20:12:20.742299+02:00"
+  },
   "https://github.com/openjdk/jmh": {
     "StatusCode": 200,
     "LastSeen": "2024-05-24T10:11:31.941987-05:00"
@@ -6750,6 +6758,14 @@
   "https://openfeature.dev/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:06:32.46557-05:00"
+  },
+  "https://openfga.dev/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-08-08T20:12:22.833549+02:00"
+  },
+  "https://openfga.dev/docs/getting-started/setup-openfga/configure-openfga#telemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2024-08-08T20:12:29.484189+02:00"
   },
   "https://openid.net/specs/openid-connect-core-1_0.html#IDToken": {
     "StatusCode": 206,
