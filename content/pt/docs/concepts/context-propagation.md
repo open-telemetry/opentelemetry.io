@@ -1,7 +1,8 @@
 ---
 title: Propagação de contexto
 weight: 10
-description: Entenda os conceitos que tornam possível o Rastreamento Distribuído.
+description:
+  Entenda os conceitos que tornam possível o Rastreamento Distribuído.
 default_lang_commit: 2bda479b6ce77f51266845ade9fe1b431dfde0d3
 ---
 
