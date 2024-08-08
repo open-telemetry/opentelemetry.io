@@ -40,18 +40,18 @@ se quando um usuário clica em "Adicionar ao Carrinho" para adicionar um par de
 sapatos pretos ao carrinho de compras, o sistema nem sempre adiciona sapatos
 pretos, então o sistema pode ser **não** confiável.
 
-**Métricas** são dados numéricos sobre sua infraestrutura ou aplicação agregados 
-ao longo de um período de tempo. Exemplos incluem: taxa de erro do
-sistema, utilização da CPU e taxa de requisições para um determinado serviço.
-Para mais informações sobre métricas e como elas se relacionam com o
-OpenTelemetry, consulte [Métricas](/docs/concepts/signals/metrics/).
+**Métricas** são dados numéricos sobre sua infraestrutura ou aplicação agregados
+ao longo de um período de tempo. Exemplos incluem: taxa de erro do sistema,
+utilização da CPU e taxa de requisições para um determinado serviço. Para mais
+informações sobre métricas e como elas se relacionam com o OpenTelemetry,
+consulte [Métricas](/docs/concepts/signals/metrics/).
 
 **SLI**, ou _Service Level Indicator_, representa uma medida do comportamento de
 um serviço. Um bom SLI mede seu serviço do ponto de vista dos seus usuários. Um
 exemplo de SLI pode ser a velocidade de carregamento de uma página web.
 
-**SLO**, ou _Service Level Objective_, representa a forma como confiabilidade
-é comunicada para uma organização/outras equipes. Isso é feito associando um ou
+**SLO**, ou _Service Level Objective_, representa a forma como confiabilidade é
+comunicada para uma organização/outras equipes. Isso é feito associando um ou
 mais SLIs ao valor de negócio.
 
 ## Compreendendo rastreamento distribuído
@@ -60,8 +60,8 @@ O rastreamento distribuído permite que você observe as requisições que se
 propagam por sistemas complexos e distribuídos. O rastreamento distribuído
 melhora a visibilidade da saúde da sua aplicação ou sistema, permitindo que você
 faça depurações de comportamentos difíceis de reproduzir localmente. É essencial
-para sistemas distribuídos, que costumam ter problemas não determinísticos ou que
-são muito complicados de reproduzir localmente.
+para sistemas distribuídos, que costumam ter problemas não determinísticos ou
+que são muito complicados de reproduzir localmente.
 
 Para entender o rastreamento distribuído, você precisa compreender a função de
 cada um de seus componentes: logs, trechos e rastros.
@@ -71,9 +71,9 @@ cada um de seus componentes: logs, trechos e rastros.
 Um **log** é uma mensagem com registro de data e hora emitida por serviços ou
 outros componentes. Ao contrário dos [rastros](#rastros-distribuídos), eles não
 são necessariamente associados a uma requisição de usuário ou transação
-específica. Você pode encontrar logs em praticamente todos os softwares. Logs foram
-muito utilizados no passado tanto por equipes de desenvolvimento quanto de operação para
-entender o comportamento de um sistema.
+específica. Você pode encontrar logs em praticamente todos os softwares. Logs
+foram muito utilizados no passado tanto por equipes de desenvolvimento quanto de
+operação para entender o comportamento de um sistema.
 
 Exemplo de log:
 
@@ -127,8 +127,8 @@ OpenTelemetry, consulte [Trecho](/docs/concepts/signals/traces/#spans).
 
 ### Rastros distribuídos
 
-Um **rastro distribuído**, mais comumente conhecido como um **rastro**, registra os
-caminhos percorridos por requisições (feitas por uma aplicação ou usuário
+Um **rastro distribuído**, mais comumente conhecido como um **rastro**, registra
+os caminhos percorridos por requisições (feitas por uma aplicação ou usuário
 final) enquanto se propagam por arquiteturas com múltiplos serviços, como
 aplicações de microsserviços e _serverless_.
 
@@ -139,8 +139,8 @@ ocorre durante uma requisição (ou quais etapas compõem uma requisição).
 
 Sem rastreamento, encontrar a causa raiz de problemas de desempenho em um
 sistema distribuído pode ser desafiador. O rastreamento torna a depuração e o
-entendimento de sistemas distribuídos menos assustador, criando um passo a passo do que
-acontece dentro de uma requisição à medida que ela flui por um sistema
+entendimento de sistemas distribuídos menos assustador, criando um passo a passo
+do que acontece dentro de uma requisição à medida que ela flui por um sistema
 distribuído.
 
 Muitos _backends_ de Observabilidade visualizam rastros como diagramas em
