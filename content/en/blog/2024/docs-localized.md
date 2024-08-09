@@ -10,28 +10,33 @@ cSpell:ignore: Comms Português
 ---
 
 We are happy to announce that the OpenTelemetry documentation now supports
-multiple languages! Teams of contributors have already started to translate our resources into
-Portuguese (pt), Chinese (zh), and Japanese (ja).
+multiple languages! Teams of contributors have already started to translate our
+resources into Portuguese (pt), Chinese (zh), and Japanese (ja).
 
 The OpenTelemetry project has grown to include contributors and users from all
-over the world. Making our documentation available in multiple
-languages is an important step for ensuring that everyone, regardless of their
-native language, can contribute to the project. We are also thrilled that this initiative
-gives end users access to multilingual documentation, making it easier to learn and 
-understand OpenTelemetry. 
+over the world. Making our documentation available in multiple languages is an
+important step for ensuring that everyone, regardless of their native language,
+can contribute to the project. We are also thrilled that this initiative gives
+end users access to multilingual documentation, making it easier to learn and
+understand OpenTelemetry.
 
 To access the documentation in your preferred language, use the language
 selector at the top right of the page.
 
-This is just the beginning! A team of contributors has just begun to translate the
-documentation into Spanish (es), and we expect to add more languages in the
+This is just the beginning! A team of contributors has just begun to translate
+the documentation into Spanish (es), and we expect to add more languages in the
 future.
 
-We invite you to contribute to this effort! You can find fellow localization contributors in the [#otel-docs-localization](https://cloud-native.slack.com/archives/C076RUAGP37) Slack channel. If you are fluent in a language that
-is supported already, you can help by authoring or reviewing translations. If
-your language is not yet supported and you'd like to help translate, please reach out to us by raising an issue.
+We invite you to contribute to this effort! You can find fellow localization
+contributors in the
+[#otel-docs-localization](https://cloud-native.slack.com/archives/C076RUAGP37)
+Slack channel. If you are fluent in a language that is supported already, you
+can help by authoring or reviewing translations. If your language is not yet
+supported and you'd like to help translate, please reach out to us by raising an
+issue.
 
 Your contributions can make a meaningful impact!
 
-We thank all contributors that have helped to make this possible and look forward to seeing
-how these new language options improve the OpenTelemetry user experience. 
+We thank all contributors that have helped to make this possible and look
+forward to seeing how these new language options improve the OpenTelemetry user
+experience.
