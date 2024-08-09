@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm run install:dict --ignore-scripts
+      - run: npm run _install:dict --ignore-scripts
       - uses: streetsidesoftware/cspell-action@v6
         with:
           # Files should be consistent with check:spelling files
