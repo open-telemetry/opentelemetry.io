@@ -36,7 +36,7 @@ sig:java:
       - any-glob-to-any-file:
           - content/en/docs/languages/java/**
           - content/en/docs/zero-code/java/**
-sig:js:
+sig:javascript:
   - changed-files:
       - any-glob-to-any-file:
           - content/en/docs/languages/js/**
