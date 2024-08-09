@@ -26,6 +26,7 @@
     "_get:submodule": "set -x && git submodule update --init ${DEPTH:- --depth 1}",
     "_hugo": "hugo --cleanDestinationDir",
     "_list:check:*": "npm run --loglevel=warn | grep -Ee '^\\s*check:[^:]+$'",
+    "_list:dict": "grep '^\\s*\"@cspell' package.json | awk -F: '{print $1}'  | tr -d '\"'",
     "_list:fix:*": "npm run --loglevel=warn | grep -Ee '^\\s*fix:[^:]+$' | grep -v 'fix:all'",
     "_ls-bad-filenames": "find assets content static -name '*_*' ! -name '[_.]*'",
     "_prebuild": "npm run seq -- get:submodule cp:spec",
@@ -72,6 +73,7 @@
     "fix": "npm run fix:all",
     "format": "npm run _check:format -- --write && npm run _check:format:ja+zh -- --write",
     "get:submodule": "npm run _get:${GET:-submodule}",
+    "install:dict": "bash -c 'for pkg in \"$(npm run -s _list:dict)\";  do npm list $pkg || npm install $pkg; done'",
     "install:netlify-cli": "npm list netlify-cli || npm install netlify-cli",
     "log:check:links": "npm run check:links | tee tmp/build-log.txt",
     "make:public": "make public ls-public",
@@ -109,6 +111,7 @@
     "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 1}"
   },
   "devDependencies": {
+    "@cspell/dict-es-es": "^3.0.0",
     "@cspell/dict-pt-br": "^2.3.0",
     "ajv": "^8.17.1",
     "ajv-errors": "^3.0.0",
@@ -131,7 +134,6 @@
     "yargs": "^17.7.2"
   },
   "dependencies": {
-    "@cspell/dict-es-es": "^3.0.0",
     "@opentelemetry/api": "^1.9.0",
     "@opentelemetry/auto-instrumentations-web": "^0.40.0",
     "@opentelemetry/context-zone": "^1.25.1",
