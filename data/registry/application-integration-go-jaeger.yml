@@ -17,3 +17,4 @@ authors:
     url: https://github.com/jaegertracing
 createdAt: 2024-08-09
 isNative: true
+cncfProjectLevel: graduated
