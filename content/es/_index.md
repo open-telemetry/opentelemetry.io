@@ -9,7 +9,6 @@ developer_note:
   de imagen que contenga la palabra "background" en su nombre.
 show_banner: true
 default_lang_commit: 7ac35d6b429165bbe6c28bdd91feeae83fd35142
-cSpell:ignore: observabilidad telemetría
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
