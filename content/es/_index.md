@@ -61,7 +61,7 @@ aplicación.
 {{% blocks/feature icon="fas fa-chart-line" title="Trazas, métricas y logs"%}}
 
 Genera y recopila datos de telemetría desde tus servicios y aplicaciones y
-reenvia los datos a una amplia variedad de herramientas de análisis.
+reenvía los datos a una amplia variedad de herramientas de análisis.
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fas fa-magic" title="Instrumentación fácil de desplegar"%}}
