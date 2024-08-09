@@ -1,6 +1,6 @@
 - name: AppDynamics (Cisco)
   nativeOTLP: true
-  url: https://docs.appdynamics.com/latest/en/application-monitoring/appdynamics-for-opentelemetry
+  url: https://docs.appdynamics.com/latest/en/application-monitoring/cisco-appdynamics-for-opentelemetry
   contact:
   oss: false
   commercial: true
