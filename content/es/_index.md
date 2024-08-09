@@ -9,6 +9,7 @@ developer_note:
   de imagen que contenga la palabra "background" en su nombre.
 show_banner: true
 default_lang_commit: 7ac35d6b429165bbe6c28bdd91feeae83fd35142
+cSpell:ignore: observabilidad telemetría
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
@@ -60,7 +61,7 @@ aplicación.
 {{% blocks/feature icon="fas fa-chart-line" title="Trazas, métricas y logs"%}}
 
 Genera y recopila datos de telemetría desde tus servicios y aplicaciones y
-reenvíalos a una amplia variedad de herramientas de análisis.
+reenvia los datos a una amplia variedad de herramientas de análisis.
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fas fa-magic" title="Instrumentación fácil de desplegar"%}}
