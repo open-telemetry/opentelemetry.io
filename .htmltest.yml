@@ -33,6 +33,8 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://(www\.|eng\.)?uber\.com/(blog|flipr)/ # 406
   - ^https://twitter.com
   - ^https://www.chathamhouse.org
+  - ^https://kofo.dev
+  - ^https://www.farfetch.com
   - ^https://www.zocdoc.com
   - ^https://x.com
   - ^https://platform.openai.com
