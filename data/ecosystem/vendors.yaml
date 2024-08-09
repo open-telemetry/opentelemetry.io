@@ -270,6 +270,12 @@
   contact:
   oss: false
   commercial: true
+- name: Rakuten SixthSense
+  nativeOTLP: true
+  url: https://docs.sixthsense.rakuten.com/observability/docs/apm/otel/otel-install
+  contact:
+  oss: false
+  commercial: true
 - name: Red Hat
   nativeOTLP: true
   url: https://docs.openshift.com/container-platform/4.14/otel/otel-release-notes.html
