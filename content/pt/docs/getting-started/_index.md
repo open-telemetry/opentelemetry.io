@@ -15,12 +15,12 @@ Selecione uma função[^1] para começar:
 
 </div>
 
-Você também pode experimentar a [demonstração oficial][demo] do OpenTelemetry
-para _ver_ como a observabilidade com o OpenTelemetry funciona!
+Você também pode testar a [demonstração oficial][demo] do OpenTelemetry para
+_ver_ como a observabilidade com o OpenTelemetry funciona!
 
 <div class="l-primary-buttons justify-content-start mt-3 mb-5 ms-3">
 
-- [Experimente a demonstração][demo]
+- [Teste a demonstração][demo]
 
 </div>
 

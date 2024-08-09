@@ -4,7 +4,7 @@ linkTitle: Dev
 default_lang_commit: 6a828d6dd3a3a8ef3cbf1b7d283f335b4626ae62
 ---
 
-Este é a página [primeiros-passos](..) para você se:
+Esta é a página [primeiros-passos](..) para você se:
 
 - Você desenvolve software.
 - Seu objetivo é obter observabilidade escrevendo código.
@@ -12,7 +12,7 @@ Este é a página [primeiros-passos](..) para você se:
 
 O OpenTelemetry pode ajudá-lo! Para atingir seus objetivos de ter suas
 dependências instrumentadas automaticamente e instrumentar seu próprio código
-manualmente com nossa API, recomendamos que você aprenda os seguintes conceitos
+manualmente com nossa API, é importante entender os seguintes conceitos
 primeiro:
 
 - [O que é o OpenTelemetry?](../../what-is-opentelemetry/)
