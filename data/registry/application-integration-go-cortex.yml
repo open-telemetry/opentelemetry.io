@@ -1,0 +1,20 @@
+title: Cortex
+registryType: application integration
+language: go
+tags:
+  - go
+  - cortex
+  - incubating
+license: Apache-2.0
+description:
+  Cortex uses Jaeger or OpenTelemetry to implement distributed tracing
+authors:
+  - name: cortex Authors
+    url: https://github.com/cortexproject
+urls:
+  website: https://cortexmetrics.io/
+  repo: https://github.com/cortexproject/cortex
+  docs: https://cortexmetrics.io/docs/guides/tracing/#opentelemetry
+createdAt: '2024-08-06'
+cncfProjectLevel: incubating
+isNative: true

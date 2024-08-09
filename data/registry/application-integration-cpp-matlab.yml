@@ -1,0 +1,18 @@
+# cSpell:ignore matlab
+title: MATLAB Interface to OpenTelemetry
+registryType: application integration
+language: cpp
+tags:
+  - c++
+  - matlab
+license: Commercial
+description: MATLAB interface to OpenTelemetry.
+authors:
+  - name: Duncan Po
+    url: https://github.com/duncanpo
+urls:
+  website: https://www.mathworks.com/products/matlab.html
+  repo: https://github.com/mathworks/OpenTelemetry-Matlab/
+  docs: https://www.mathworks.com/matlabcentral/fileexchange/130979-opentelemetry-matlab
+createdAt: '2024-08-06'
+isFirstParty: true

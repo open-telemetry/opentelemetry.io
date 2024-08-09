@@ -1,0 +1,18 @@
+# cSpell:ignore flipt
+title: Flipt
+registryType: application integration
+language: go
+tags:
+  - go
+  - flipt
+license: Apache-2.0
+description: Flipt supports distributed tracing via the OpenTelemetry project.
+authors:
+  - name: Flipt Authors
+    url: https://github.com/flipt-io
+urls:
+  website: https://flipt.io/
+  repo: https://github.com/flipt-io/flipt
+  docs: https://www.flipt.io/docs/configuration/observability#tracing
+createdAt: '2024-08-06'
+isNative: true

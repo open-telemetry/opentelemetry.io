@@ -1,0 +1,22 @@
+# cSpell:ignore strimzi
+title: Strimzi
+registryType: application integration
+language: java
+tags:
+  - incubating
+  - java
+  - strimzi
+license: Apache-2.0
+description:
+  'In Strimzi, tracing facilitates the end-to-end tracking of messages: from
+  source systems to Kafka, and then from Kafka to target systems and
+  applications.'
+authors:
+  - name: Strimzi Authors
+    url: https://github.com/strimzi
+urls:
+  website: https://strimzi.io/
+  docs: https://strimzi.io/docs/operators/latest/deploying#assembly-distributed-tracing-str
+createdAt: '2024-08-06'
+cncfProjectLevel: incubating
+isNative: true
