@@ -214,7 +214,7 @@ Samplers built-in to the SDK and maintained by the community in
 | `JaegerRemoteSampler`     | `io.opentelemetry:opentelemetry-sdk-extension-jaeger-remote-sampler:{{% param vers.otel %}}`  | Samples spans based on configuration from a remote server.                                                                                                                                                       |
 | `LinksBasedSampler`       | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | Samples spans based on sampling status of the span's links.                                                                                                                                                      |
 | `RuleBasedRoutingSampler` | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | Samples spans based on configurable rules.                                                                                                                                                                       |
-| `ConsistentSamplers`      | `io.opentelemetry.contrib:opentelemetry-consistent-sampling:{{% param vers.contrib %}}-alpha` | Various consistent sampler implementations as defined by [probability sampling](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/tracestate-probability-sampling.md). |
+| `ConsistentSamplers`      | `io.opentelemetry.contrib:opentelemetry-consistent-sampling:{{% param vers.contrib %}}-alpha` | Various consistent sampler implementations as defined by [probability sampling](/docs/specs/otel/trace/tracestate-probability-sampling/). |
 
 The following code snippet demonstrates `Sampler` programmatic configuration:
 

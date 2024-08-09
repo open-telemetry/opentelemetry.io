@@ -112,7 +112,7 @@ suppressing your log messages. See this
 ### Environment variables and system properties
 
 The autoconfigure module supports properties listed in the
-[environment variable configuration specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#opentelemetry-environment-variable-specification),
+[environment variable configuration specification](/docs/specs/otel/configuration/sdk-environment-variables/#opentelemetry-environment-variable-specification),
 with occasional experimental and Java-specific additions.
 
 The following properties are listed as system properties, but can also be set
@@ -218,7 +218,7 @@ Properties for [sampler](../sdk/#sampler):
   `otel.traces.sampler.arg` sets the ratio.
 - `jaeger_remote` configures `JaegerRemoteSampler`. `otel.traces.sampler.arg` is
   a comma-separated list of args as described in the
-  [specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/sdk-environment-variables.md#general-sdk-configuration).
+  [specification](/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration).
 
 Properties for [span limits](../sdk/#spanlimits):
 
