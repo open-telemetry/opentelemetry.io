@@ -105,9 +105,8 @@ of some logging might be suppressed during shutdown hooks. This is a bug in the
 JDK itself, and not something under the control of OpenTelemetry Java. If you
 require logging during shutdown hooks, consider using `System.out` rather than a
 logging framework which might shut itself down in a shutdown hook, thus
-suppressing your log messages. See this
-[JDK bug](https://bugs.openjdk.java.net/browse/JDK-8161253) for more details.
-{{% /alert %}}
+suppressing your log messages. For more details, see this
+[JDK bug](https://bugs.openjdk.java.net/browse/JDK-8161253). {{% /alert %}}
 
 ### Environment variables and system properties
 
