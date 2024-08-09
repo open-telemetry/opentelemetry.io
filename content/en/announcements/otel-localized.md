@@ -1,5 +1,5 @@
 ---
-title: OpenTelemetry website goes multilingual
+title: OpenTelemetry website goes multilingual!
 date: 2024-08-21
 expiryDate: 2024-09-30
 weight: -1 # top

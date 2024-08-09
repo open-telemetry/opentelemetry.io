@@ -1,12 +1,12 @@
 ---
-title: 中文, 日本語, Português — OpenTelemetry website goes multilingual
+title: OpenTelemetry website goes multilingual!
 linkTitle: Multilingual website
 date: 2024-08-21
 author: >-
   [Severin Neumann](https://github.com/svrnm) (Cisco),
 issue: 4863
 sig: Comms
-cSpell:ignore: Comms Português
+cSpell:ignore: Comms
 ---
 
 We are happy to announce that the OpenTelemetry documentation now supports
