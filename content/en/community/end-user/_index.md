@@ -2,6 +2,7 @@
 title: End-user resources
 linkTitle: End user
 description: Vendor-agnostic resources for OpenTelemetry users
+weight: 40
 ---
 
 Looking to connect with other OpenTelemetry end users in a vendor-agnostic

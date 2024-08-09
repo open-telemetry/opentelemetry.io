@@ -2,6 +2,7 @@
 title: OpenTelemetry Marketing Guidelines for Contributing Organizations
 linkTitle: Marketing Guidelines
 cSpell:ignore: devstats
+weight: 999
 ---
 
 OpenTelemetry (aka OTel) is a collaboration among end-users, adjacent OSS
