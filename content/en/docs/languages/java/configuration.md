@@ -112,7 +112,7 @@ suppressing your log messages. See this
 ### Environment variables and system properties
 
 The autoconfigure module supports properties listed in the
-[environment variable configuration specification](/docs/specs/otel/configuration/sdk-environment-variables/#opentelemetry-environment-variable-specification),
+[environment variable configuration specification](/docs/specs/otel/configuration/sdk-environment-variables/),
 with occasional experimental and Java-specific additions.
 
 The following properties are listed as system properties, but can also be set
