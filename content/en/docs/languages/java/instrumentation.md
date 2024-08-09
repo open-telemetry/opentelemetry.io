@@ -16,11 +16,11 @@ cSpell:ignore: Autowired customizer logback loggable multivalued rolldice spring
 {{% docs/languages/instrumentation-intro %}}
 
 {{% alert title="Note" color="info" %}} See
-[Manage Telemetry with SDK](/docs/languages/java/sdk/) for a conceptual overview
+[Manage Telemetry with SDK](../sdk/) for a conceptual overview
 of OpenTelemetry Java SDK concepts. See
-**[Configure the SDK](/docs/languages/java/configuration/)** for details on SDK
+**[Configure the SDK](../configuration/)** for details on SDK
 configuration, including
-[zero-code SDK autoconfigure](/docs/languages/java/configuration/#zero-code-sdk-autoconfigure).
+[zero-code SDK autoconfigure](../configuration/#zero-code-sdk-autoconfigure).
 {{% /alert %}}
 
 {{% alert title="Note" color="info" %}}
@@ -36,14 +36,14 @@ skip manual instrumentation and only use automatic instrumentation.
 Also, for libraries your code depends on, you don't have to write
 instrumentation code yourself, since they might come with OpenTelemetry built-in
 _natively_ or you can make use of
-[instrumentation libraries](/docs/languages/java/libraries/).
+[instrumentation libraries](../libraries/).
 
 {{% /alert %}}
 
 ## Example app preparation {#example-app}
 
 This page uses a modified version of the example app from
-[Getting Started](/docs/languages/java/getting-started/) to help you learn about
+[Getting Started](../getting-started/) to help you learn about
 manual instrumentation.
 
 You don't have to use the example app: if you want to instrument your own app or
@@ -277,7 +277,7 @@ dependencies {
 ## Traces
 
 The following sections describe the OpenTelemetry Java tracing API. See
-[SdkTracerProvider](/docs/languages/java/sdk/#sdktracerprovider) for an overview
+[SdkTracerProvider](../sdk/#sdktracerprovider) for an overview
 of trace SDK concepts and configuration.
 
 ### Acquiring a tracer
@@ -915,7 +915,7 @@ instruments register a callback, which is invoked once per collection, and which
 records measurements at that point in time.
 
 The following sections describe the OpenTelemetry Java metrics API. See
-[SdkMeterProvider](/docs/languages/java/sdk/#sdkmeterprovider) for an overview
+[SdkMeterProvider](../sdk/#sdkmeterprovider) for an overview
 of metrics SDK concepts and configuration.
 
 ### Acquiring a meter
@@ -1116,14 +1116,14 @@ To use this workflow:
 
 - Install appropriate [Log Appender](#log-appenders).
 - Configure the OpenTelemetry
-  [Log SDK](/docs/languages/java/sdk/#sdkloggerprovider) to export log records
+  [Log SDK](../sdk/#sdkloggerprovider) to export log records
   to desired target destination (the [collector][opentelemetry collector] or
   other).
 
 #### Log appenders
 
 A log appender bridges logs from a log framework into the OpenTelemetry
-[Log SDK](/docs/languages/java/sdk/#sdkloggerprovider) using the [Logs Bridge
+[Log SDK](../sdk/#sdkloggerprovider) using the [Logs Bridge
 API][logs bridge API]. Log appenders are available for various popular Java log
 frameworks:
 
@@ -1148,7 +1148,7 @@ log correlation with traces.
 The [Log Appender example][log appender example] demonstrates setup for a
 variety of scenarios.
 
-See [SdkLoggerProvider](/docs/languages/java/sdk/#sdkloggerprovider) for an
+See [SdkLoggerProvider](../sdk/#sdkloggerprovider) for an
 overview of log SDK concepts and configuration.
 
 ### Via file or stdout
