@@ -51,6 +51,7 @@ jaeger
 jaegertracing
 javaagent
 javadoc
+javadocs
 jboss
 jdbc
 julia

@@ -3,7 +3,7 @@ title: Manage Telemetry with SDK
 linkTitle: Manage Telemetry with SDK
 weight: 11
 aliases: [sdk-concepts]
-cSpell:ignore: autoconfigured Interceptable Logback FQCNs okhttp
+cSpell:ignore: autoconfigured FQCNs Interceptable Logback okhttp
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -12,7 +12,7 @@ cSpell:ignore: autoconfigured Interceptable Logback FQCNs okhttp
 The SDK is the built-in reference implementation of the
 [API](../instrumentation/), processing and exporting telemetry
 produced by instrumentation API calls. This page is a conceptual overview of the
-SDK, including descriptions, links to relevant javadocs, artifact coordinates,
+SDK, including descriptions, links to relevant Javadocs, artifact coordinates,
 sample programmatic configurations and more. See
 **[Configure the SDK](../configuration/)** for details on SDK
 configuration, including
