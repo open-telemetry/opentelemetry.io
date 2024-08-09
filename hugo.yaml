@@ -246,6 +246,11 @@ module:
     - source: tmp/semconv/docs
       target: content/docs/specs/semconv
 
+    ## es
+    - source: content/es
+      target: content
+      lang: es
+
     ## ja
     - source: content/ja
       target: content
