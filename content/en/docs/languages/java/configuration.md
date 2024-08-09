@@ -404,7 +404,7 @@ extend SDK autoconfiguration beyond the components built-in to the SDK.
 
 The following sections describe the available SPIs. Each SPI section includes:
 
-- A brief description, including link to javadoc type reference.
+- A brief description, including link to Javadoc type reference.
 - A table of available built-in and `opentelemetry-java-contrib`
   implementations.
 - A simple demonstration of a custom implementation.

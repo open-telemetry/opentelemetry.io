@@ -60,7 +60,7 @@ implementing various plugin extension interfaces:
 The following sections describe the core user-facing components of the SDK. Each
 component section includes:
 
-- A brief description, including a link to the javadoc type reference.
+- A brief description, including a link to the Javadoc type reference.
 - If the component is a
   [plugin extension interface](#sdk-plugin-extension-interfaces), a table of
   available built-in and `opentelemetry-java-contrib` implementations.
