@@ -12,9 +12,6 @@ ignorePaths:
   - vendors.yaml
   - content/ja
   - content/zh
-# words here are only listed for their spelling, if there is a certain way
-# to write a word (e.g. OpenTelemetry vs Opentelemetry or cloud native vs
-# cloud-native), edit the text-lint rules in .textlintrc.yml
 patterns:
   - name: CodeBlock
     pattern: |
@@ -28,140 +25,26 @@ languageSettings:
   - languageId: markdown
     ignoreRegExpList:
       - CodeBlock
+dictionaryDefinitions:
+  - name: en-words
+    path: .cspell/en-words.txt
+  - name: es-palabras
+    path: .cspell/es-palabras.txt
+  - name: pt-palavras
+    path: .cspell/pt-palavras.txt
 dictionaries:
-  [pt-br, es-es, companies, cpp, dotnet, golang, node, softwareTerms]
-words:
-  - accountingservice
-  - actix
-  - adservice
-  - alibaba
-  - Alolita
-  - APAC
-  - appdynamics
-  - appender
-  - appenders
-  - aspecto
-  - autoconfiguration
-  - autoinstrumentation
-  - autoloaded
-  - autoloader
-  - autoloading
-  - backoff
-  - caml
-  - cartservice
-  - cassandra
-  - checkoutservice
-  - Chronosphere
-  - classpath
-  - cncf
-  - currencyservice
-  - daemonset
-  - datadog
-  - discoverability
+  # Natural languages
+  - es-es
+  - pt-br
+  # Local word lists
+  - en-words
+  - es-palabras
+  - pt-palavras
+  # Programming languages and software terms
+  - cpp
   - dotnet
-  - Dyla
-  - dynatrace
-  - emailservice
-  - EMEA
-  - erlang
-  - errorf
-  - featureflagservice
-  - frauddetectionservice
-  - frontendproxy
-  - github
-  - gitpod
-  - grafana
-  - Hausenblas
-  - hugo
-  - initializers
-  - instana
-  - istio
-  - jaeger
-  - jaegertracing
-  - javaagent
-  - javadoc
-  - jboss
-  - jdbc
-  - julia
-  - Juraci
-  - knative
-  - kotlin
-  - Kröhling
-  - kubecon
-  - kubernetes
-  - laravel
-  - lifecycles
-  - lightstep
-  - Loffay
-  - Mancuso
-  - microservices
-  - mongodb
-  - ndjson
-  - Neumann
-  - nginx
-  - ocaml
-  - opamp
-  - opencensus
-  - opensearch
-  - opentelemetry
-  - opentracing
-  - openzipkin
-  - OSTIF
-  - otel
-  - otel-comms
-  - otel-endusers
-  - otelcol
-  - otep
-  - otlp
-  - packagist
-  - pageinfo
-  - Paixão
-  - parentbased
-  - Pavol
-  - paymentservice
-  - postgresql
-  - Pranay
-  - Prateek
-  - prepper
-  - productcatalogservice
-  - prometheus
-  - proto
-  - protobuf
-  - quantile
-  - quantiles
-  - quarkus
-  - quoteservice
-  - recommendationservice
-  - redis
-  - relref
-  - Rexed
-  - Rynn
-  - semconv
-  - servlet
-  - Severin
-  - Sharma
-  - shippingservice
-  - Socha
-  - Stalnaker
-  - stdoutmetric
-  - Strimzi
-  - symfony
-  - tabpane
-  - textlint
-  - thanos
-  - tocstop
-  - tracecontext
-  - traceidratio
-  - traceloop
-  - traceparent
-  - traefik
-  - Trask
-  - uids
-  - unsampled
-  - unshallow
-  - upstreamed
-  - Villela
-  - wordpress
-  - WSGI
-  - zend
-  - zipkin
+  - golang
+  - node
+  - softwareTerms
+  # Other
+  - companies
