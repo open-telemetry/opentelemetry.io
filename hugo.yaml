@@ -246,6 +246,19 @@ module:
     - source: tmp/semconv/docs
       target: content/docs/specs/semconv
 
+    ## es
+    - source: content/es
+      target: content
+      lang: es
+    # fallback pages
+    - source: content/en/announcements
+      target: content/announcements
+      lang: es
+    - excludeFiles: specs/*
+      source: content/en/docs
+      target: content/docs
+      lang: es
+
     ## ja
     - source: content/ja
       target: content
