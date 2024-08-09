@@ -3111,6 +3111,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:19.732009-05:00"
   },
+  "https://github.com/jaegertracing": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-09T09:42:45.203596+02:00"
+  },
+  "https://github.com/jaegertracing/jaeger": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-09T09:42:42.493598+02:00"
+  },
   "https://github.com/jaegertracing/jaeger-client-java#via-http-headers": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:24:50.932894-05:00"
@@ -9814,6 +9822,10 @@
   "https://www.jaegertracing.io/docs/1.57/operator/": {
     "StatusCode": 206,
     "LastSeen": "2024-06-04T11:05:53.067463654+02:00"
+  },
+  "https://www.jaegertracing.io/docs/1.60/monitoring/#traces": {
+    "StatusCode": 206,
+    "LastSeen": "2024-08-09T09:42:46.824519+02:00"
   },
   "https://www.jaegertracing.io/docs/latest/apis/": {
     "StatusCode": 206,

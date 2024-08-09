@@ -1,6 +1,6 @@
 # cSpell:ignore # add words unknown to cspell, remove this line if not required
 title: Jaeger
-registryType: application-integration
+registryType: application integration
 language: go
 tags:
   - jaeger
@@ -11,7 +11,9 @@ urls:
   docs: https://www.jaegertracing.io/docs/1.60/monitoring/#traces
   website: https://www.jaegertracing.io/
 license: Apache 2.0
-description: Jaeger has the ability to trace some of its own components, namely the requests to the Query service.
+description:
+  Jaeger has the ability to trace some of its own components, namely the
+  requests to the Query service.
 authors:
   - name: Jaeger Authors
     url: https://github.com/jaegertracing
