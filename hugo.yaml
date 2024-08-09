@@ -16,6 +16,10 @@ languages:
     languageCode: en-US
     params:
       description: The OpenTelemetry Project Site
+  es:
+    languageName: Español
+    params:
+      description: Sitio del proyecto OpenTelemetry
   ja:
     languageName: 日本語 (Japanese)
     params:

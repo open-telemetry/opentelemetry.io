@@ -4,6 +4,7 @@
 version: '0.2'
 language: en-US
 import:
+  - '@cspell/dict-es-es/cspell-ext.json'
   - '@cspell/dict-pt-br/cspell-ext.json'
 caseSensitive: true
 ignorePaths:
@@ -27,7 +28,8 @@ languageSettings:
   - languageId: markdown
     ignoreRegExpList:
       - CodeBlock
-dictionaries: [pt-br, companies, cpp, dotnet, golang, node, softwareTerms]
+dictionaries:
+  [pt-br, es-es, companies, cpp, dotnet, golang, node, softwareTerms]
 words:
   - accountingservice
   - actix
