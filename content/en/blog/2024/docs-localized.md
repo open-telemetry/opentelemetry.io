@@ -11,7 +11,7 @@ cSpell:ignore: Comms
 
 We are happy to announce that the OpenTelemetry website is available in
 multiple languages! Localization teams have already started to translate website
-pages into Portuguese (pt), Chinese (zh), and Japanese (ja).
+pages into [Portuguese](/pt), [Chinese](/zh), [Japanese](/ja) and [Spanish](/es).
 
 The OpenTelemetry project has grown to include contributors and users from all
 over the world. Making the website available in multiple languages is an
@@ -23,16 +23,14 @@ understand OpenTelemetry.
 To access the website in your preferred language, use the language
 selector at the top right of the page.
 
-More localizations are underway, including Spanish, and we expect supporting more languages in the
-future.
 
 We invite you to contribute to this effort. You can find fellow localization
 contributors in the
 [#otel-docs-localization](https://cloud-native.slack.com/archives/C076RUAGP37)
 Slack channel. If you are fluent in a language that is supported already, you
 can help by authoring or reviewing translations. If your language is not yet
-supported and you'd like to help translate, reach out to us by raising an
-issue.
+supported and you'd like to help translate, 
+[reach out to us by raising an issue](https://github.com/open-telemetry/opentelemetry.io/issues/new?title=Add+%3Cyour%20language%3E+(%3Cyour+code%3E)+version+of+website+pages&body=%3C!--+please+provide+github+handles+of+at+least+2+people+that+will+work+on+this+translation+project%20--%3E).
 
 Your contributions can make a meaningful impact!
 
