@@ -10,12 +10,12 @@ cSpell:ignore: autoconfigured FQCNs Interceptable Logback okhttp
 <?code-excerpt path-base="examples/java/configuration"?>
 
 The SDK is the built-in reference implementation of the
-[API](../instrumentation/), processing and exporting telemetry
-produced by instrumentation API calls. This page is a conceptual overview of the
-SDK, including descriptions, links to relevant Javadocs, artifact coordinates,
-sample programmatic configurations and more. See
-**[Configure the SDK](../configuration/)** for details on SDK
-configuration, including
+[API](../instrumentation/), processing and exporting telemetry produced by
+instrumentation API calls. This page is a conceptual overview of the SDK,
+including descriptions, links to relevant Javadocs, artifact coordinates, sample
+programmatic configurations and more. See
+**[Configure the SDK](../configuration/)** for details on SDK configuration,
+including
 [zero-code SDK autoconfigure](../configuration/#zero-code-sdk-autoconfigure).
 
 The SDK consists of the following top level components:
@@ -122,11 +122,11 @@ associate the same resource with [SdkTracerProvider](#sdktracerprovider),
 [SdkMeterProvider](#sdkmeterprovider), [SdkLoggerProvider](#sdkloggerprovider).
 
 {{% alert color="info" %}}
-[ResourceProviders](../configuration/#resourceprovider)
-contribute contextual information to the
-[autoconfigured](../configuration/#zero-code-sdk-autoconfigure)
-resource based on the environment. See documentation for list of available
-`ResourceProvider`s. {{% /alert %}}
+[ResourceProviders](../configuration/#resourceprovider) contribute contextual
+information to the
+[autoconfigured](../configuration/#zero-code-sdk-autoconfigure) resource based
+on the environment. See documentation for list of available `ResourceProvider`s.
+{{% /alert %}}
 
 The following code snippet demonstrates `Resource` programmatic configuration:
 
@@ -205,15 +205,15 @@ sampled if unless a calling application performs sampling. If this is too noisy
 Samplers built-in to the SDK and maintained by the community in
 `opentelemetry-java-contrib`:
 
-| Class                     | Artifact                                                                                      | Description                                                                                                                                                                                                      |
-| ------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ParentBased`             | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Samples spans based on sampling status of the span's parent.                                                                                                                                                     |
-| `AlwaysOn`                | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Samples all spans.                                                                                                                                                                                               |
-| `AlwaysOff`               | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Drops all spans.                                                                                                                                                                                                 |
-| `TraceIdRatioBased`       | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Samples spans based on a configurable ratio.                                                                                                                                                                     |
-| `JaegerRemoteSampler`     | `io.opentelemetry:opentelemetry-sdk-extension-jaeger-remote-sampler:{{% param vers.otel %}}`  | Samples spans based on configuration from a remote server.                                                                                                                                                       |
-| `LinksBasedSampler`       | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | Samples spans based on sampling status of the span's links.                                                                                                                                                      |
-| `RuleBasedRoutingSampler` | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | Samples spans based on configurable rules.                                                                                                                                                                       |
+| Class                     | Artifact                                                                                      | Description                                                                                                                               |
+| ------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `ParentBased`             | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Samples spans based on sampling status of the span's parent.                                                                              |
+| `AlwaysOn`                | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Samples all spans.                                                                                                                        |
+| `AlwaysOff`               | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Drops all spans.                                                                                                                          |
+| `TraceIdRatioBased`       | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Samples spans based on a configurable ratio.                                                                                              |
+| `JaegerRemoteSampler`     | `io.opentelemetry:opentelemetry-sdk-extension-jaeger-remote-sampler:{{% param vers.otel %}}`  | Samples spans based on configuration from a remote server.                                                                                |
+| `LinksBasedSampler`       | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | Samples spans based on sampling status of the span's links.                                                                               |
+| `RuleBasedRoutingSampler` | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | Samples spans based on configurable rules.                                                                                                |
 | `ConsistentSamplers`      | `io.opentelemetry.contrib:opentelemetry-consistent-sampling:{{% param vers.contrib %}}-alpha` | Various consistent sampler implementations as defined by [probability sampling](/docs/specs/otel/trace/tracestate-probability-sampling/). |
 
 The following code snippet demonstrates `Sampler` programmatic configuration:
