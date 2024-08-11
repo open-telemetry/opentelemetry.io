@@ -323,7 +323,7 @@ Cada trecho tem um estado. Os três valores possíveis são:
 
 - `Unset`
 - `Error`
-- `Ok`
+- `OK`
 
 O valor padrão é `Unset`. Um estado de trecho `Unset` significa que a operação
 rastreada foi concluída com sucesso, sem erro.
@@ -332,19 +332,19 @@ Quando o estado de um trecho é `Error`, isso significa que algum erro ocorreu n
 operação rastreada. Por exemplo, isso pode ser devido a um erro de HTTP 500 em
 um servidor que está lidando com uma solicitação.
 
-Quando o estado de um trecho é `Ok`, isso significa que o trecho foi
+Quando o estado de um trecho é `OK`, isso significa que o trecho foi
 expressamente marcado como livre de erros pelo desenvolvedor. Apesar de parecer
-contraditório, não é necessário definir o estado de um trecho como `Ok` quando
+contraditório, não é necessário definir o estado de um trecho como `OK` quando
 se sabe que foi concluído sem erros, pois já está implícito em `Unset`. O estado
 de `OK` representa uma "decisão final" clara sobre o estado de um trecho que foi
 explicitamente definido por um usuário. Isso é útil em qualquer situação em que
 um desenvolvedor deseje que não haja outra interpretação de um trecho além de
 "bem-sucedido".
 
-Para reiterar: `Unset` representa um trecho que foi concluído sem erro. `Ok`
+Para reiterar: `Unset` representa um trecho que foi concluído sem erro. `OK`
 representa quando um desenvolvedor marca explicitamente um trecho como
 bem-sucedido. Na maioria dos casos, não é necessário marcar explicitamente um
-trecho como Ok.
+trecho como OK.
 
 ### Tipo de Trecho
 
