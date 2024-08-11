@@ -4,7 +4,7 @@ linkTitle: Ops
 default_lang_commit: 6a828d6dd3a3a8ef3cbf1b7d283f335b4626ae62
 ---
 
-Esta é a página [primeiros-passos](..) para você se:
+A página [primeiros-passos](..) é para você se:
 
 - Você executa um conjunto de aplicativos em produção.
 - Seu objetivo é obter telemetria deles sem tocar em seu código.

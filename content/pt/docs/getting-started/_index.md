@@ -27,5 +27,4 @@ _ver_ como a observabilidade com o OpenTelemetry funciona!
 [^1]: Se nenhuma dessas funções se aplica a você, [nos avise][].
 
 [demo]: /ecosystem/demo/
-[nos avise]:
-  https://github.com/open-telemetry/opentelemetry.io/issues/new?title=Add%20a%20new%20persona:%20My%20Persona&body=Provide%20a%20description%20of%20your%20role%20and%20responsibilities%20and%20what%20your%20observability%20goals%20are
+[nos avise]: https://github.com/open-telemetry/opentelemetry.io/issues/new?title=Add%20a%20new%20persona:%20My%20Persona&body=Provide%20a%20description%20of%20your%20role%20and%20responsibilities%20and%20what%20your%20observability%20goals%20are
