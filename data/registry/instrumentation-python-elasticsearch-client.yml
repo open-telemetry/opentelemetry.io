@@ -1,0 +1,20 @@
+title: Elasticsearch Python Client
+registryType: instrumentation
+language: python
+tags:
+  - python
+  - elasticsearch
+  - client
+license: Apache-2.0
+description:
+  You can use OpenTelemetry to monitor the performance and behavior of your
+  Elasticsearch requests through the Python Client.
+authors:
+  - name: Elasticsearch B.V.
+    url: https://github.com/elastic
+urls:
+  website: https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/index.html
+  repo: https://github.com/elastic/elasticsearch-java
+  docs: https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/opentelemetry.html
+createdAt: '2024-08-06'
+isNative: true

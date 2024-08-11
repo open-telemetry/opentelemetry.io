@@ -1,9 +1,8 @@
 ---
 title: Logs
-weight: 3
 description: A recording of an event.
-# prettier-ignore
-cSpell:ignore: autoinstrumentation filelogreceiver semistructured Semistructured transformprocessor
+weight: 3
+cSpell:ignore: filelogreceiver semistructured transformprocessor
 ---
 
 A **log** is a timestamped text record, either structured (recommended) or
@@ -30,9 +29,9 @@ The [OpenTelemetry Collector](/docs/collector) provides several tools to work
 with logs:
 
 - Several receivers which parse logs from specific, known sources of log data.
-- The filelogreceiver, which reads logs from any file and provides features to
+- The `filelogreceiver`, which reads logs from any file and provides features to
   parse them from different formats or use a regular expression.
-- Processors like the transformprocessor which lets you parse nested data,
+- Processors like the `transformprocessor` which lets you parse nested data,
   flatten nested structures, add/remove/update values, and more.
 - Exporters that let you emit log data in a non-OpenTelemetry format.
 

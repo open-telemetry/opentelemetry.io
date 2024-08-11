@@ -1,0 +1,22 @@
+title: Tyk API Gateway
+registryType: application integration
+language: go
+tags:
+  - go
+  - tyk
+  - api
+  - gateway
+license: Apache-2.0
+description:
+  You can leverage the power of OpenTelemetry to enhance your API monitoring
+  with end-to-end distributed tracing.
+authors:
+  - name: Tyk Technologies
+    url: https://github.com/TykTechnologies
+urls:
+  website: https://tyk.io
+  repo: https://github.com/TykTechnologies/tyk
+  docs: https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview/
+  blog: /blog/2023/tyk-api-gateway/
+createdAt: '2024-08-06'
+isNative: true

@@ -5,7 +5,7 @@ weight: 40
 cSpell:ignore: Ecto Hex
 ---
 
-{{% docs/languages/libraries-intro "Erlang" %}}
+{{% docs/languages/libraries-intro "erlang" %}}
 
 ## Use instrumentation libraries
 

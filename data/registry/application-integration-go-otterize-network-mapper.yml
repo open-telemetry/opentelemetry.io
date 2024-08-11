@@ -1,0 +1,20 @@
+# cSpell:ignore: otterize
+title: Otterize network mapper
+registryType: application integration
+language: go
+tags:
+  - go
+  - otterize
+  - network
+  - mapper
+license: Apache-2.0
+description: OpenTelemetry support for network mapper.
+authors:
+  - name: Otterize
+    url: https://github.com/otterize
+urls:
+  website: https://github.com/otterize/network-mapper
+  docs: https://docs.otterize.com/reference/configuration/network-mapper/helm-chart#opentelemetry-exporter-parameters
+  blog: /blog/2023/otterize-otel/
+createdAt: '2024-08-06'
+isNative: true
