@@ -1,0 +1,20 @@
+# cSpell:ignore: buildx buildkit
+title: buildx
+registryType: application integration
+language: go
+tags:
+  - go
+  - docker
+  - buildx
+  - buildkit
+license: Apache-2.0
+description: buildx supports OpenTelemetry.
+authors:
+  - name: Docker Inc
+    url: https://github.com/docker
+urls:
+  website: https://www.docker.com/
+  repo: https://github.com/docker/buildx
+  docs: https://docs.docker.com/build/building/opentelemetry/
+createdAt: '2024-08-06'
+isNative: true

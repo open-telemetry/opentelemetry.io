@@ -1,0 +1,19 @@
+# cSpell:ignore kuma
+title: Kuma
+registryType: application integration
+language: go
+tags:
+  - go
+  - kuma
+  - sandbox
+license: Apache-2.0
+description: Kuma provides integration with OpenTelemetry
+authors:
+  - name: Kuma Authors
+    url: https://github.com/kumahq
+urls:
+  website: https://kuma.io/
+  docs: https://kuma.io/docs/2.7.x/guides/otel-metrics/
+createdAt: '2024-08-06'
+cncfProjectLevel: sandbox
+isNative: true

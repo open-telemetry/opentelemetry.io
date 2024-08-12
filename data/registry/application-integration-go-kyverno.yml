@@ -1,0 +1,19 @@
+# cSpell:ignore: kyverno
+title: Kyverno
+registryType: application integration
+language: go
+tags:
+  - go
+  - kyverno
+  - incubating
+license: Apache-2.0
+description: Kyverno integrates OpenTelemetry.
+authors:
+  - name: Kyverno Authors
+    url: https://github.com/kyverno
+urls:
+  website: https://kyverno.io/
+  docs: https://kyverno.io/docs/monitoring/opentelemetry/
+createdAt: '2024-08-06'
+cncfProjectLevel: incubating
+isFirstParty: true

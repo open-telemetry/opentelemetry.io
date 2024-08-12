@@ -1,0 +1,21 @@
+# cSpell:ignore: clickhouse
+title: Tracing ClickHouse with OpenTelemetry
+registryType: application integration
+language: cpp
+tags:
+  - clickhouse
+  - database
+  - c++
+license: Apache-2.0
+description:
+  ClickHouse creates `trace spans` for each query and some of the query
+  execution stages, such as query planning or distributed queries.
+authors:
+  - name: ClickHouse Authors
+    url: https://github.com/clickhouse
+urls:
+  repo: https://github.com/clickhouse
+  website: https://clickhouse.com
+  docs: https://clickhouse.com/docs/en/operations/opentelemetry
+createdAt: '2024-08-06'
+isNative: true

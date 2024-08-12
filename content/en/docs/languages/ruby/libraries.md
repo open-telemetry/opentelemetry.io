@@ -6,7 +6,7 @@ cSpell:ignore: faraday metapackage sinatra
 weight: 30
 ---
 
-{{% docs/languages/libraries-intro Ruby %}}
+{{% docs/languages/libraries-intro ruby %}}
 
 ## Use Instrumentation Libraries
 

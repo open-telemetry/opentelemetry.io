@@ -7,7 +7,7 @@ aliases:
 weight: 40
 ---
 
-{{% docs/languages/libraries-intro Go %}}
+{{% docs/languages/libraries-intro "go" %}}
 
 ## Use instrumentation libraries
 

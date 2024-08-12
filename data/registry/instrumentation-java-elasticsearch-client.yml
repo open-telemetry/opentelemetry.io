@@ -1,0 +1,20 @@
+title: Elasticsearch Java API Client
+registryType: instrumentation
+language: java
+tags:
+  - java
+  - elasticsearch
+  - api
+  - client
+license: Apache-2.0
+description:
+  You can use OpenTelemetry to monitor the performance and behavior of your
+  Elasticsearch requests through the Java Client.
+authors:
+  - name: Elasticsearch B.V.
+    url: https://github.com/elastic
+urls:
+  website: https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/index.html
+  docs: https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/opentelemetry.html
+createdAt: '2024-08-06'
+isNative: true

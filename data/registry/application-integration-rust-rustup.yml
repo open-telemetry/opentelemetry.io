@@ -1,0 +1,20 @@
+# cSpell:ignore: rustup
+title: rustup
+registryType: application integration
+language: rust
+tags:
+  - rust
+  - rustup
+license: Apache-2.0 OR MIT
+description:
+  The feature `otel` can be used when building rustup to turn on OpenTelemetry
+  tracing with an OTLP gRPC exporter.
+authors:
+  - name: The Rust Project Developers
+    url: https://github.com/rust-lang
+urls:
+  website: https://rustup.rs/
+  repo: https://github.com/rust-lang/rustup/
+  docs: https://rust-lang.github.io/rustup/dev-guide/tracing.html
+createdAt: '2024-08-06'
+isNative: true

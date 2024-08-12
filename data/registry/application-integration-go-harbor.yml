@@ -1,0 +1,21 @@
+title: Harbor
+registryType: application integration
+language: go
+tags:
+  - go
+  - harbor
+  - graduated
+license: Apache-2.0
+description:
+  Harbor can provide distributed tracing data for operators and administrator to
+  know the current running status and to help troubleshooting
+authors:
+  - name: Harbor Authors
+    url: https://github.com/goharbor
+urls:
+  website: https://goharbor.io/
+  repo: https://github.com/goharbor/harbor
+  docs: https://goharbor.io/docs/edge/administration/distributed-tracing/
+createdAt: '2024-08-06'
+cncfProjectLevel: graduated
+isNative: true

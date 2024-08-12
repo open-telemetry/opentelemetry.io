@@ -10,11 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - run: npm run _install:dict --ignore-scripts
       - uses: streetsidesoftware/cspell-action@v6
         with:
           # Files should be consistent with check:spelling files
           files: |
-            content/en
+            content
             data
             layouts/**/*.md
           config: .cspell.yml

@@ -1,0 +1,18 @@
+# cSpell:ignore kong
+title: Kong Mesh
+registryType: application integration
+language: go
+tags:
+  - go
+  - kong
+  - mesh
+license: Commercial
+description: Kong Mesh provides integration with OpenTelemetry.
+authors:
+  - name: Kong
+    url: https://github.com/konghq
+urls:
+  website: https://konghq.com/products/kong-mesh
+  docs: https://docs.konghq.com/mesh/latest/guides/otel-metrics/
+createdAt: '2024-08-06'
+isNative: true

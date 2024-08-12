@@ -2,13 +2,16 @@
 # For settings, see
 # https://www.streetsidesoftware.com/vscode-spell-checker/docs/configuration/
 version: '0.2'
+language: en-US
+import:
+  - '@cspell/dict-es-es/cspell-ext.json'
+  - '@cspell/dict-pt-br/cspell-ext.json'
 caseSensitive: true
 ignorePaths:
   - '*.svg'
-  - 'vendors.yaml'
-# words here are only listed for their spelling, if there is a certain way
-# to write a word (e.g. OpenTelemetry vs Opentelemetry or cloud native vs
-# cloud-native), edit the text-lint rules in .textlintrc.yml
+  - vendors.yaml
+  - content/ja
+  - content/zh
 patterns:
   - name: CodeBlock
     pattern: |
@@ -22,156 +25,26 @@ languageSettings:
   - languageId: markdown
     ignoreRegExpList:
       - CodeBlock
-words:
-  - accountingservice
-  - actix
-  - adservice
-  - alibaba
-  - Alloc
-  - Alolita
-  - APAC
-  - appdynamics
-  - appender
-  - appenders
-  - aspecto
-  - autoconfiguration
-  - autoconfigure
-  - autoinstrumentation
-  - autoload
-  - autoloaded
-  - autoloader
-  - autoloading
-  - backoff
-  - caml
-  - cartservice
-  - cassandra
-  - checkoutservice
-  - Chronosphere
-  - classpath
-  - cncf
-  - currencyservice
-  - daemonset
-  - datadog
-  - declarators
-  - discoverability
+dictionaryDefinitions:
+  - name: en-words
+    path: .cspell/en-words.txt
+  - name: es-palabras
+    path: .cspell/es-palabras.txt
+  - name: pt-palavras
+    path: .cspell/pt-palavras.txt
+dictionaries:
+  # Natural languages
+  - es-es
+  - pt-br
+  # Local word lists
+  - en-words
+  - es-palabras
+  - pt-palavras
+  # Programming languages and software terms
+  - cpp
   - dotnet
-  - Dyla
-  - dynatrace
-  - emailservice
-  - EMEA
-  - erlang
-  - errorf
-  - featureflagservice
-  - frauddetectionservice
-  - frontendproxy
-  - github
-  - gitpod
-  - grafana
-  - gzipped
-  - Hausenblas
-  - hugo
-  - initializers
-  - instana
-  - istio
-  - jaeger
-  - jaegertracing
-  - javaagent
-  - javadoc
-  - jboss
-  - jdbc
-  - julia
-  - Juraci
-  - knative
-  - kotlin
-  - Kröhling
-  - kubecon
-  - kubernetes
-  - laravel
-  - lifecycles
-  - lightstep
-  - linux
-  - Loffay
-  - Mancuso
-  - microservices
-  - mongodb
-  - mysql
-  - ndjson
-  - netlify
-  - Neumann
-  - nginx
-  - ocaml
-  - opamp
-  - opencensus
-  - opensearch
-  - opentelemetry
-  - opentracing
-  - openzipkin
-  - OSTIF
-  - otel
-  - otel-comms
-  - otel-endusers
-  - otelcol
-  - otep
-  - otlp
-  - outro
-  - overridable
-  - packagist
-  - pageinfo
-  - Paixão
-  - parentbased
-  - Pavol
-  - paymentservice
-  - pluggable
-  - postgresql
-  - Pranay
-  - Prateek
-  - prepper
-  - Println
-  - productcatalogservice
-  - prometheus
-  - proto
-  - protobuf
-  - quantile
-  - quantiles
-  - quarkus
-  - quoteservice
-  - recommendationservice
-  - redis
-  - relref
-  - Rexed
-  - roadmap
-  - runtimes
-  - Rynn
-  - semconv
-  - servlet
-  - Severin
-  - Sharma
-  - shippingservice
-  - shortcode
-  - snmp
-  - Socha
-  - sqlite
-  - Stalnaker
-  - stdoutmetric
-  - Strimzi
-  - subdir
-  - symfony
-  - tabpane
-  - textlint
-  - thanos
-  - tocstop
-  - tracecontext
-  - traceidratio
-  - traceloop
-  - traceparent
-  - traefik
-  - Trask
-  - uids
-  - unsampled
-  - unshallow
-  - upstreamed
-  - Villela
-  - wordpress
-  - WSGI
-  - zend
-  - zipkin
+  - golang
+  - node
+  - softwareTerms
+  # Other
+  - companies
