@@ -15,6 +15,21 @@ from = "https://blog.opentelemetry.io/*"
 to = "https://opentelemetry.io/blog/:splat"
 force = true
 
+
+[[redirects]]
+from = "https://go.opentelemetry.io/:name/*"
+status = 200 # ensure that the URL stays the same, see https://docs.netlify.com/routing/redirects/rewrites-proxies/
+to = "/go-sources/:name?s=:splat"
+
+[[redirects]]
+from = "https://go-dev.opentelemetry.io/:name/*"
+status = 200 # ensure that the URL stays the same, see https://docs.netlify.com/routing/redirects/rewrites-proxies/
+to = "/go-sources/:name?s=:splat"
+
+[[redirects]]
+from = "/go-sources/:name/*"
+to = "/go-sources/:name?s=:splat"
+
 [[headers]]
   for = "/schemas/:version"
   [headers.values]
