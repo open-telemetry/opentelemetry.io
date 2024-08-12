@@ -3,6 +3,7 @@ title: ¿Qué es OpenTelemetry?
 description: Qué es y qué no es OpenTelemetry, una breve explicación
 weight: 150
 default_lang_commit: 13c2d415e935fac3014344e67c6c61556779fd6f
+cSpell:ignore: microservicios extensibilidad
 ---
 
 OpenTelemetry es:
@@ -22,7 +23,7 @@ OpenTelemetry es:
 - Enfocado en la generación, recopilación, gestión y exportación de telemetría.
   Uno de los objetivos principales de OpenTelemetry es que puedas instrumentar
   fácilmente tus aplicaciones o sistemas, sin importar el lenguaje de
-  programación, infrastructura o entorno de ejecución. El almacenamiento y
+  programación, infraestructura o entorno de ejecución. El almacenamiento y
   visualización de la telemetría se deja intencionalmente a otras herramientas.
 
 ## ¿Qué es la observabilidad?
