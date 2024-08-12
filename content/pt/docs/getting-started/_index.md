@@ -1,6 +1,6 @@
 ---
-título: Primeiros Passos
-descrição: Comece a utilizar o OpenTelemetry com base na sua função.
+title: Primeiros Passos
+description: Comece a utilizar o OpenTelemetry com base na sua função.
 no_list: true
 weight: 160
 default_lang_commit: 6a828d6dd3a3a8ef3cbf1b7d283f335b4626ae62
@@ -27,4 +27,5 @@ _ver_ como a observabilidade com o OpenTelemetry funciona!
 [^1]: Se nenhuma dessas funções se aplica a você, [nos avise][].
 
 [demo]: /ecosystem/demo/
-[nos avise]: https://github.com/open-telemetry/opentelemetry.io/issues/new?title=Add%20a%20new%20persona:%20My%20Persona&body=Provide%20a%20description%20of%20your%20role%20and%20responsibilities%20and%20what%20your%20observability%20goals%20are
+[nos avise]:
+  https://github.com/open-telemetry/opentelemetry.io/issues/new?title=Add%20a%20new%20persona:%20My%20Persona&body=Provide%20a%20description%20of%20your%20role%20and%20responsibilities%20and%20what%20your%20observability%20goals%20are
