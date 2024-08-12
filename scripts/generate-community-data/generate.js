@@ -6,7 +6,7 @@ import yaml from 'js-yaml';
 config(); // Load .env file contents into process.env
 
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
-const org = process.env.GITHUB_ORG;
+const org = 'open-telemetry'
 
 const configParams = {
   terms: ['maintainers', 'approvers', 'triagers'],

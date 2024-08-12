@@ -537,7 +537,6 @@ maintainers:
     teams:
       - specs-approvers
       - specs-triagers
-      - helm-triagers
       - opamp-go-maintainers
       - opamp-go-approvers
       - opamp-spec-approvers
@@ -866,6 +865,7 @@ maintainers:
     teams:
       - helm-triagers
       - helm-approvers
+      - helm-maintainers
       - operator-maintainers
       - operator-approvers
       - operator-ta-maintainers
@@ -998,6 +998,8 @@ maintainers:
       - profiling-triagers
       - profiling-approvers
       - profiling-maintainers
+      - ebpf-profiler-approvers
+      - ebpf-profiler-maintainers
     html_url: https://github.com/felixge
     avatar_url: https://avatars.githubusercontent.com/u/15000?v=4
   - name: petethepig
@@ -1005,6 +1007,8 @@ maintainers:
       - profiling-triagers
       - profiling-approvers
       - profiling-maintainers
+      - ebpf-profiler-approvers
+      - ebpf-profiler-maintainers
     html_url: https://github.com/petethepig
     avatar_url: https://avatars.githubusercontent.com/u/662636?v=4
   - name: jhalliday
@@ -1019,6 +1023,7 @@ maintainers:
       - profiling-triagers
       - profiling-approvers
       - profiling-maintainers
+      - ebpf-profiler-approvers
     html_url: https://github.com/christos68k
     avatar_url: https://avatars.githubusercontent.com/u/77498532?v=4
   - name: AlexanderWert
@@ -1084,6 +1089,18 @@ maintainers:
       - sig-end-user-maintainers
     html_url: https://github.com/avillela
     avatar_url: https://avatars.githubusercontent.com/u/50256412?v=4
+  - name: fabled
+    teams:
+      - ebpf-profiler-approvers
+      - ebpf-profiler-maintainers
+    html_url: https://github.com/fabled
+    avatar_url: https://avatars.githubusercontent.com/u/389042?v=4
+  - name: athre0z
+    teams:
+      - ebpf-profiler-approvers
+      - ebpf-profiler-maintainers
+    html_url: https://github.com/athre0z
+    avatar_url: https://avatars.githubusercontent.com/u/6553158?v=4
   - name: theletterf
     teams:
       - docs-approvers
@@ -1154,7 +1171,6 @@ approvers:
   - name: naseemkullah
     teams:
       - javascript-approvers
-      - helm-triagers
       - javascript-triagers
     html_url: https://github.com/naseemkullah
     avatar_url: https://avatars.githubusercontent.com/u/24660299?v=4
@@ -1636,6 +1652,16 @@ approvers:
       - semconv-event-approvers
     html_url: https://github.com/scheler
     avatar_url: https://avatars.githubusercontent.com/u/2802664?v=4
+  - name: florianl
+    teams:
+      - ebpf-profiler-approvers
+    html_url: https://github.com/florianl
+    avatar_url: https://avatars.githubusercontent.com/u/1132494?v=4
+  - name: rockdaboot
+    teams:
+      - ebpf-profiler-approvers
+    html_url: https://github.com/rockdaboot
+    avatar_url: https://avatars.githubusercontent.com/u/2087964?v=4
   - name: mhausenblas
     teams:
       - docs-approvers
