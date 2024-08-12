@@ -8,7 +8,7 @@ my @words;
 my $lineLenLimit = 79;
 my $last_file = '';
 my $last_line = '';
-my %dictionary = getSiteWideDictWords('.cspell.yml', '.textlintrc.yml');
+my %dictionary = getSiteWideDictWords('.cspell/en-words.txt', '.textlintrc.yml');
 
 while (<>) {
   if (/^\s*(spelling: |-\s*)?cSpell:ignore:?\s*(.*)$/
@@ -43,15 +43,16 @@ sub getSiteWideDictWords {
   my $dictionary_file = shift;
   my $textlintrc_file = shift;
 
-  my %dictionary = readYmlListOfWords('words', $dictionary_file);
-  my %textlintDictionary = readYmlListOfWords('terms', $textlintrc_file);
+  my %dictionary = readYmOrPlainlListOfWords('', $dictionary_file);
+  my %textlintDictionary = readYmOrPlainlListOfWords('terms', $textlintrc_file);
   # Merge dictionaries
   @dictionary{keys %textlintDictionary} = values %textlintDictionary;
 
   return %dictionary;
 }
 
-sub readYmlListOfWords {
+sub readYmOrPlainlListOfWords {
+  # Read plain list of words if $wordsFieldName is empty
   my $wordsFieldName = shift;
   my $file_path = shift;
   my $fh = FileHandle->new($file_path, "r") or die "Could not open file '$file_path': $!";
@@ -60,18 +61,24 @@ sub readYmlListOfWords {
 
   my %dictionary;
   my $indentation = '';
-  my $in_terms = 0;
+  my $in_terms = $wordsFieldName eq '' ? 1 : 0;
   foreach my $line (@lines) {
     chomp $line;
-    if ($line =~ /^(\s*)$wordsFieldName:/) {
-      $indentation = $1 || '';
+    next if $line =~ /^\s*#|^\s*$/;
+    # print "> $line\n" if $wordsFieldName;
+
+    if ($wordsFieldName && $line =~ /^(\s*)$wordsFieldName:/) {
+      $indentation = "$1  - " || '';
       $in_terms = 1;
-      # print STDOUT "Found terms!";
-    } elsif ($line =~ /^$indentation  - (\w[^\s]*)$/ && $in_terms) {
+      # print "> FOUND $wordsFieldName keyword\n"
+    } elsif ($line =~ /^$indentation(\w[^\s]*)$/ && $in_terms) {
       my $term = $1;
       $dictionary{$term} = 1 if $term;
-    } elsif ($line !~ /^ / && $in_terms) {
+    } elsif ($wordsFieldName && $line !~ /^ / && $in_terms) {
       $in_terms = 0;
+      # print "FINISHE word list\n" if $in_terms;
+    } else {
+      # print "OOPS LINE DID NOT MATCH\n" if $in_terms;
     }
   }
 

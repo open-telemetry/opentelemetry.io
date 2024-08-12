@@ -7,7 +7,7 @@ cSpell:ignore: darwin inout iphone NSURL wifi
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% docs/languages/libraries-intro "Swift" %}}
+{{% docs/languages/libraries-intro "swift" %}}
 
 ## Use instrumentation libraries
 

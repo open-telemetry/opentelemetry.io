@@ -1,0 +1,22 @@
+# cSpell:ignore: containerd
+title: containerd
+registryType: application integration
+language: go
+tags:
+  - go
+  - containerd
+  - graduated
+license: Apache-2.0
+description:
+  containerd supports OpenTelemetry tracing since v1.6.0. Tracing currently
+  targets only gRPC calls.
+authors:
+  - name: containerd Authors
+    url: https://github.com/containerd
+urls:
+  website: https://containerd.io/
+  repo: https://github.com/containerd/containerd/
+  docs: https://github.com/containerd/containerd/blob/main/docs/tracing.md
+createdAt: '2024-08-06'
+cncfProjectLevel: graduated
+isNative: true

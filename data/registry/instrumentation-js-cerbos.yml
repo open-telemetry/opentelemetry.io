@@ -12,8 +12,11 @@ description:
   SDK](https://github.com/cerbos/cerbos-sdk-javascript/)
 authors:
   - name: Cerbos Authors
+    url: https://github.com/cerbos
 urls:
+  website: https://cerbos.dev/
   repo: https://github.com/cerbos/cerbos-sdk-javascript/
+  docs: https://github.com/cerbos/cerbos-sdk-javascript/tree/main/packages/opentelemetry
 createdAt: 2023-09-13
 package:
   name: '@cerbos/opentelemetry'

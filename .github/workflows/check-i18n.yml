@@ -1,6 +1,7 @@
 name: i18n
 
 on:
+  merge_group:
   pull_request:
 
 jobs:

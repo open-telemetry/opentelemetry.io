@@ -1,0 +1,22 @@
+# cSpell:ignore krakend
+title: KrakenD API Gateway
+registryType: instrumentation
+language: go
+tags:
+  - go
+  - krakend
+  - api
+  - gateway
+license: Apache-2.0
+description:
+  The `telemetry/opentelemetry` component in KrakenD collects the activity
+  generated for the enabled layers and pushes or exposes the data for pulling.
+authors:
+  - name: KrakenD Authors
+    url: https://github.com/krakend
+urls:
+  website: https://www.krakend.io
+  repo: https://github.com/krakend/krakend-otel
+  docs: https://www.krakend.io/docs/telemetry/opentelemetry/
+createdAt: '2024-08-06'
+isFirstParty: true

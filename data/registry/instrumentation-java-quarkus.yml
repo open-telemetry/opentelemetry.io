@@ -1,0 +1,18 @@
+title: Quarkus
+registryType: instrumentation
+language: java
+tags:
+  - java
+  - quarkus
+license: Apache-2.0
+description:
+  Quarkus provides manual and automatic instrumentation for tracing and manual
+  instrumentation capabilities for metrics.
+authors:
+  - name: Quarkus
+    url: https://github.com/quarkusio
+urls:
+  website: https://quarkus.io/
+  docs: https://quarkus.io/guides/opentelemetry
+createdAt: '2024-08-06'
+isNative: true
