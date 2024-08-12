@@ -355,7 +355,6 @@ receivers:
 The Target Allocator endpoint that the Prometheus receiver config is pointing to
 is a concatenation of the OTel Collector’s name (`otelcol`, in our case) and the
 `-targetallocator` suffix.
-[(This is now done automatically for users!)](https://github.com/open-telemetry/opentelemetry-operator/blob/main/pkg/featuregate/featuregate.go#L58-L65)
 
 To use the Prometheus service discovery functionality, you’ll need to enable it
 by setting `spec.targetallocator.prometheusCR.enabled` to `true`.
