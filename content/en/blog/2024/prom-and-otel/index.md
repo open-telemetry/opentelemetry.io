@@ -618,9 +618,8 @@ The following are pros and cons of the setup we covered in this article.
 - Not having to maintain Prometheus as your data store, which means less
   infrastructure overall to maintain -- especially if you go with an all-in-one
   observability backend to ingest OTel data (traces, metrics, logs).
-- Not having to maintain the Prometheus Operator; while you would still have to
-  maintain the ServiceMonitor and PodMonitor, it’s a lot less work than keeping
-  the Operator up-to-date.
+- While you would still have to maintain the ServiceMonitor and PodMonitor, 
+  it’s a lot less work than keeping the Prometheus Operator up-to-date.
 - Allows you to end up with a full OTel solution while still obtaining your
   Prometheus metrics
 - OTel can provide traces and logs in addition to metrics, as well as
