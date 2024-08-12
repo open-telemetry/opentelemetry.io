@@ -32,6 +32,18 @@ from = "/go-sources/:name/*"
 status = 200 # ensure that the URL stays the same, see https://docs.netlify.com/routing/redirects/rewrites-proxies/
 to = "/go-sources/:name?s=:splat"
 
+[[redirects]]
+from = "/collector-contrib/*"
+status = 200 # ensure that the URL stays the same, see https://docs.netlify.com/routing/redirects/rewrites-proxies/
+to = "/go-sources/collector-contrib/?s=:splat"
+force = true
+
+[[redirects]]
+from = "/contrib/*"
+to = "/go-sources/contrib/?s=:splat"
+force = true
+
+
 [[headers]]
   for = "/schemas/:version"
   [headers.values]
