@@ -99,8 +99,8 @@ of configurations in `scrape_config`.
 If you are interested in
 [exemplars](/docs/specs/otel/metrics/data-model/#exemplars), which is a recorded
 value that associates OTel context with a metric event, you can also use the
-Prometheus receiver to ingest them in the Prometheus format and convert it to
-OTLP format. This enables you to correlate traces with metrics.
+Prometheus receiver. Note that exemplars are currently only available in 
+[OpenMetrics](https://opentelemetry.io/docs/specs/otel/compatibility/prometheus_and_openmetrics/) format.
 
 Something to consider with this component is that it is under active
 development; as such, it has several
