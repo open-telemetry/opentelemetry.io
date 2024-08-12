@@ -24,7 +24,7 @@ OpenTelemetry es:
   Uno de los objetivos principales de OpenTelemetry es que puedas instrumentar
   fácilmente tus aplicaciones o sistemas, sin importar el lenguaje de
   programación, infraestructura o entorno de ejecución. El almacenamiento y
-  visualización de la telemetría se deja intencionalmente a otras herramientas.
+  visualización de la telemetría se deja intencionadamente a otras herramientas.
 
 ## ¿Qué es la observabilidad?
 
