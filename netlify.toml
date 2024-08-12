@@ -25,6 +25,7 @@ to = "/go-sources/:name?s=:splat"
 from = "https://go-dev.opentelemetry.io/:name/*"
 status = 200 # ensure that the URL stays the same, see https://docs.netlify.com/routing/redirects/rewrites-proxies/
 to = "/go-sources/:name?s=:splat"
+force = true
 
 [[redirects]]
 from = "/go-sources/:name/*"
