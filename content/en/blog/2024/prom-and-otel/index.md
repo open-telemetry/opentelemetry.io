@@ -115,12 +115,13 @@ because in this state:
 - You will need to configure each replica with a different scraping config if
   you want to manually shard the scraping
 
-For exporting metrics from the OTel Collector to Prometheus, you have two
-options: the
+For exporting metrics from the OTel Collector to Prometheus, you have the
+following options: the
 [Prometheus exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusexporter#prometheus-exporter),
 and the
-[Prometheus Remote Write exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/prometheusremotewriteexporter/README.md).
-Note that
+[Prometheus Remote Write exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/prometheusremotewriteexporter/README.md). You can 
+also use the [OTLP HTTP exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter), which comes with the Collector by default,
+and use Prometheus' native OTLP endpoint. Note that
 [Prometheus also now supports OTLP natively](https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/).
 
 The Prometheus exporter allows you to ship data in the Prometheus format, which
@@ -135,6 +136,13 @@ Remote Write exporter, which allows you to push data to Prometheus from multiple
 Collector instances with no issues. Since Prometheus also accepts remote write
 ingestion, you can also use this exporter if you are generating OTel metrics and
 want to ship them to a backend that is compatible with Prometheus remote write.
+
+Note that the Prometheus Remote Write in the Prometheus Server doesn't currently 
+support metadata, such as Help and Type. For more information, check
+out [issue #13163](https://github.com/prometheus/prometheus/issues/13163) as well 
+as [issue #12608](https://github.com/prometheus/prometheus/issues/12608). This
+will be addressed in [Prometheus Remote Write v2.0](https://prometheus.io/docs/specs/remote_write_spec_2_0/#io-prometheus-write-v2-request).
+
 To learn more about the architecture of both exporters, see
 [Use Prometheus Remote Write exporter](https://grafana.com/blog/2023/07/20/a-practical-guide-to-data-collection-with-opentelemetry-and-prometheus/#6-use-prometheus-remote-write-exporter).
 
@@ -276,9 +284,9 @@ these are widely-used in Kubernetes infrastructure monitoring. As a result, the
 OTel Operator developers wanted to make it easy to add them to the OTel
 ecosystem.
 
-Note that the PodMonitor and ServiceMonitor are not useful for cluster-wide
-metrics collection, such as for Kubelet metrics collection. In that case, you
-still have to rely on Prometheus scrape configs in the Collector’s
+PodMonitor and ServiceMonitor are limited to collecting metrics from pods, 
+and are unable to scrape other endpoints, such as the kubelet. In that case, 
+you still have to rely on Prometheus scrape configs in the Collector’s
 [Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md).
 
 ### Configuration
@@ -570,7 +578,7 @@ Receiving data:
 - [Kubernetes Objects Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sobjectsreceiver):
   collects (pull/watch) objects from the Kubernetes API server
 - [Kubelet Stats Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kubeletstatsreceiver):
-  pulls node, pod, container, and volume metrics from the API server on a
+  pulls metrics from the
   [Kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/)
   and sends it down the metric pipeline for further processing
 - [Host Metrics Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver):
@@ -625,8 +633,8 @@ The following are pros and cons of the setup we covered in this article.
 
 - Adopting and managing a new observability tool involves a steep learning curve
   for users unfamiliar with OTel concepts, components, and workflows.
-- If you are used to using PromQL, Prometheus’ powerful query language, you may
-  have to learn how to use your backend’s query language.
+- Users of PromQL, Prometheus’ powerful query language, can still use it **if** 
+  they send metrics to a Prometheus-compatible backend.
 - OTel itself contains many moving parts, and presents its own challenges with
   scalability and adoption.
 - Maturity and stability within OTel varies; Prometheus has a mature ecosystem.
@@ -654,7 +662,7 @@ right for your organization depends on your business needs. Using the OTel
 components discussed previously, you could convert all your metrics into the
 Prometheus format, or you could convert your Prometheus metrics into OTLP.
 Although Prometheus itself was not built for long-term data storage and presents
-scaling challenges, there are products such as
+scaling challenges, there are open source projects such as
 [Mimir](https://grafana.com/oss/mimir/),
 [Thanos](https://thanos.io/v0.10/thanos/getting-started.md/), and
 [Cortex](https://cortexmetrics.io/docs/guides/running-cortex-on-kubernetes/)
