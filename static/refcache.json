@@ -8327,6 +8327,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:06:02.67855-05:00"
   },
+  "https://prometheus.io/docs/prometheus/2.52/querying/basics/#staleness": {
+    "StatusCode": 206,
+    "LastSeen": "2024-08-13T10:16:10.056161452Z"
+  },
   "https://prometheus.io/docs/prometheus/latest/configuration/configuration/": {
     "StatusCode": 206,
     "LastSeen": "2024-08-09T10:46:59.171526-04:00"
@@ -9174,6 +9178,10 @@
   "https://tools.ietf.org/html/rfc9110#section-7.2": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:53.22207-05:00"
+  },
+  "https://tools.ietf.org/html/rfc9110/#name-fields": {
+    "StatusCode": 206,
+    "LastSeen": "2024-08-13T10:16:12.790283945Z"
   },
   "https://tools.ietf.org/html/rfc9113#section-8.3.1": {
     "StatusCode": 200,
