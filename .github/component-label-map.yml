@@ -18,6 +18,10 @@ lang:pt:
   - changed-files:
       - any-glob-to-any-file:
           - content/pt/**
+lang:es:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/es/**
 sig:cpp:
   - changed-files:
       - any-glob-to-any-file:
