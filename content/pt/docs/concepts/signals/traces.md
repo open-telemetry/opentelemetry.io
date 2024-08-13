@@ -1,7 +1,6 @@
 ---
 title: Rastros
 weight: 1
-cSpell:ignore: Guten
 description: O caminho de uma solicitação através do seu aplicativo.
 default_lang_commit: 57cd4f78d61cc1642ce56089aeec7ae278544194
 ---
@@ -19,6 +18,8 @@ Vamos explorar isso com três unidades de trabalho, representadas como
 
 Os exemplos JSON a seguir não apresentam um formato específico, especialmente o
 [OTLP/JSON](/docs/specs/otlp/#json-protobuf-encoding), que é mais verboso.
+
+{{% /alert %}}
 
 trecho `olá`:
 
@@ -172,14 +173,14 @@ informações:
 
 - Nome
 - ID do trecho pai (vazio para trecho raiz)
-- Carimbo de tempo do início e fim
+- Marcação de tempo do início e fim
 - [Contexto do Trecho](#span-context)
 - [Atributos](#attributes)
 - [Eventos do Trecho](#span-events)
 - [Links do Trecho](#span-links)
 - [Estado do Trecho](#span-status)
 
-Exemplo de span:
+Exemplo de trecho:
 
 ```json
 {
@@ -391,7 +392,7 @@ Trechos de consumidor representam o processamento de um trabalho criado por um
 produtor e podem começar muito tempo depois que o trecho de produtor já
 terminou.
 
-## Specification
+## Especificação
 
 Para mais informações, consulte
 [especificação de rastros](/docs/specs/otel/overview/#tracing-signal).
