@@ -1,5 +1,5 @@
-# cspell:ignore apimetrics
-title: APImetrics
+# cspell:ignore apicontext
+title: APIContext
 registryType: application integration
 language: python
 tags:
@@ -7,10 +7,10 @@ tags:
   - apimetrics
 license: Commercial
 description:
-  Send data from APImetrics to any platform that intakes OpenTelemetry with our
+  Send data from APIContext to any platform that intakes OpenTelemetry with our
   OpenTelemetry Webhook
 authors:
-  - name: APImetrics
+  - name: APIContext
     email: support@apicontext.com
 urls:
   website: https://apicontext.com/
