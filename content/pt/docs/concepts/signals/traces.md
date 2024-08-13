@@ -154,7 +154,7 @@ criados a partir de Trace Providers.
 ## Trace Exporters
 
 Trace Exporters enviam rastros para um consumidor. Esse consumidor pode ser a
-saída padrão para depuração em tempo de desenvolvimento, OpenTelemetry Collector
+saída padrão para depuração em tempo de desenvolvimento, o OpenTelemetry Collector
 ou qualquer backend de código aberto ou fornecedor de sua escolha.
 
 ## Propagação de Contexto
