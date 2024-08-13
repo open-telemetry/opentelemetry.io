@@ -1,4 +1,4 @@
-# cspell:ignore apicontext
+# cspell:ignore apicontext, apimetrics
 title: APIContext
 registryType: application integration
 language: python
