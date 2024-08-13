@@ -69,7 +69,7 @@ cada um de seus componentes: logs, trechos e rastros.
 ### Logs
 
 Um **log** é uma mensagem com registro de data e hora emitida por serviços ou
-outros componentes. Ao contrário dos [rastros](#rastros-distribuídos), eles não
+outros componentes. Ao contrário dos [rastros](#distributed-traces), eles não
 são necessariamente associados a uma requisição de usuário ou transação
 específica. Você pode encontrar logs em praticamente todos os softwares. Logs
 foram muito utilizados no passado tanto por equipes de desenvolvimento quanto de
@@ -85,7 +85,7 @@ Logs não são suficientes para rastrear a execução do código, pois geralment
 apresentam informações contextuais, como de onde foram chamados.
 
 Eles se tornam muito mais úteis quando incluídos como parte de um
-[trecho](#trechos) ou quando são correlacionados com um rastro e um trecho.
+[trecho](#spans) ou quando são correlacionados com um rastro e um trecho.
 
 Para mais informações sobre logs e como eles se relacionam com o OpenTelemetry,
 consulte [Logs](/docs/concepts/signals/logs/).
