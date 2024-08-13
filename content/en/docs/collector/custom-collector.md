@@ -119,8 +119,6 @@ the development and testing of components.
 Go ahead and create a manifest file named `builder-config.yaml` with the
 following content:
 
-> builder-config.yaml
-
 ```yaml
 dist:
   name: otelcol-dev
@@ -142,8 +140,6 @@ collector distribution:
 
 The `builder-config.yaml` manifest file will look like this after adding the
 components:
-
-> builder-config.yaml
 
 <!-- prettier-ignore -->
 ```yaml
@@ -168,6 +164,16 @@ receivers:
   - gomod:
       go.opentelemetry.io/collector/receiver/otlpreceiver {{% version-from-registry collector-receiver-otlp %}}
 ```
+
+{{% alert color="primary" title="Tip" %}}
+
+To find components that you can add to your collector component, take a look
+into the
+[OpenTelemetry Registry](https://opentelemetry.io/ecosystem/registry/?language=collector).
+You will not only find what is available, but also the full string you need to
+add to your `builder-config.yaml`.
+
+{{% /alert %}}
 
 ## Step 3 - Generating the Code and Building your Collector's distribution
 

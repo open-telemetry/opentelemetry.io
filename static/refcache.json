@@ -7971,6 +7971,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:01:13.220618-04:00"
   },
+  "https://pkg.go.dev/github.com/openclarity/apiclarity/plugins/otel-collector/apiclarityexporter": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-12T17:56:07.964057+02:00"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/collector/cmd/builder": {
     "StatusCode": 200,
     "LastSeen": "2024-03-01T16:49:30.684687+01:00"
