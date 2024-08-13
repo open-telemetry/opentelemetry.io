@@ -103,7 +103,7 @@ plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
 
 We also need to configure the `opentelemetry` application as temporary by adding
 a `releases` section to your project configuration. This will ensure that if it
-terminates, even abnormally, the `roll_dice` application will be terminated.
+terminates, even abnormally, the `roll_dice` application will not be terminated.
 
 ```elixir
 # mix.exs

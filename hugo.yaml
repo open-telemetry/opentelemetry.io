@@ -16,6 +16,10 @@ languages:
     languageCode: en-US
     params:
       description: The OpenTelemetry Project Site
+  es:
+    languageName: Español
+    params:
+      description: Sitio del proyecto OpenTelemetry
   ja:
     languageName: 日本語 (Japanese)
     params:
@@ -100,7 +104,6 @@ params:
     sidebar_menu_compact: true
     sidebar_menu_foldable: true
     sidebar_search_disable: true
-    sidebar_menu_truncate: 100 # TODO: drop after the following is merged and Docsy is updated: https://github.com/google/docsy/pull/2069
     feedback:
       enable: true
       'yes': >-
@@ -242,6 +245,19 @@ module:
       target: content/docs/specs/otlp/img
     - source: tmp/semconv/docs
       target: content/docs/specs/semconv
+
+    ## es
+    - source: content/es
+      target: content
+      lang: es
+    # fallback pages
+    - source: content/en/announcements
+      target: content/announcements
+      lang: es
+    - excludeFiles: specs/*
+      source: content/en/docs
+      target: content/docs
+      lang: es
 
     ## ja
     - source: content/ja
