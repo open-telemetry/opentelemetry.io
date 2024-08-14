@@ -3,7 +3,7 @@
 To send your metric data to [Prometheus](https://prometheus.io/), you can either
 [enable Prometheus' OTLP Receiver](https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver)
 and use the [OTLP exporter](#otlp) or you can use the
-[`PrometheusHttpServer`](https://javadoc.io/doc/io.opentelemetry/opentelemetry-exporter-prometheus/latest/io/opentelemetry/exporter/prometheus/PrometheusHttpServer.html),
+[`PrometheusHttpServer`](https://open-telemetry.github.io/opentelemetry-js/classes/_opentelemetry_exporter_prometheus.PrometheusExporter.html),
 a `MetricReader`, that starts an HTTP server that will collect metrics and
 serialize to Prometheus text format on request.
 
