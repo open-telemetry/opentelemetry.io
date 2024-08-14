@@ -6675,6 +6675,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:07:28.680974-05:00"
   },
+  "https://open-telemetry.github.io/opentelemetry-js/classes/_opentelemetry_exporter_prometheus.PrometheusExporter.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-08-14T08:01:01.892463087Z"
+  },
   "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api.Tracer.html#startActiveSpan": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:06:08.253674-05:00"
