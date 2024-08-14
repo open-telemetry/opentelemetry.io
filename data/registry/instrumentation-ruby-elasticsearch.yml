@@ -5,9 +5,7 @@ tags:
   - ruby
   - elasticsearch ruby client
 license: Apache-2.0
-description:
-  You can use OpenTelemetry to monitor the performance and behavior of your
-  Elasticsearch requests through the Ruby Client.
+description: You can use OpenTelemetry to monitor the performance and behavior of your Elasticsearch requests through the Ruby Client.
 authors:
   - name: Elasticsearch B.V.
     url: https://github.com/elastic
@@ -20,4 +18,4 @@ isNative: true
 package:
   registry: gems
   name: elasticsearch
-  version: 8.14.0
+  version: 8.15.0
