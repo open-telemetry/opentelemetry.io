@@ -3,6 +3,7 @@ title: Behind the scenes of the OpenTelemetry Governance Committee
 date: 2024-08-15
 author: '[Juraci Paixão Kröhling](https://github.com/jpkrohling) (Grafana)'
 issue: 5033
+cSpell:ignore: triaging triagers
 ---
 
 ![Chart showing what technologies are being used](header.png)
