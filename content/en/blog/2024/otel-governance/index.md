@@ -1,7 +1,7 @@
 ---
 title: Behind the scenes of the OpenTelemetry Governance Committee
 date: 2024-08-15
-author: '[Juraci Paixão Kröhling](https://github.com/jpkrohling) (Grafana)'
+author: '[Juraci Paixão Kröhling](https://github.com/jpkrohling) (Grafana Labs)'
 issue: 5033
 # prettier-ignore
 cSpell:ignore: triaging triagers
