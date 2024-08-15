@@ -75,6 +75,7 @@ The Fix Team is made up of people with the following roles:
    contributors, such as the code owners for the affected components, or
    repository approvers who'll provide prompt code reviews for the proposed
    fixes.
+4. Other stakeholders, such as other SIGs that might need to consume the fix.
 
 ### TC Role
 
