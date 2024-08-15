@@ -158,7 +158,6 @@ contributors.
 
 Over the past three years, I’ve had the privilege of serving on the
 OpenTelemetry GC. I’m fortunate to work for a company that supports this role
-([we are hiring, by the way\!](https://grafana.com/about/careers/open-positions/)),
 allowing me to dedicate my full-time efforts to OpenTelemetry. This enables me
 to carry out these tasks as part of my regular workday.
 
