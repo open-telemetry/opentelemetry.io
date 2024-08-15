@@ -1175,6 +1175,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-06-12T11:21:20.570863+02:00"
   },
+  "https://docs.google.com/document/d/1-23Sf7-xZK3OL5Ogv2pK0NP9YotlSa0PKU9bvvtQwp8": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-15T15:44:20.868165+02:00"
+  },
   "https://docs.google.com/document/d/15vR7D1x2tKd7u3zaTF0yH1WaHkUr2T4hhr7OyiZgmBg/edit#heading=h.4xuru5ljcups": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:45:27.62787-04:00"
@@ -3170,6 +3174,10 @@
   "https://github.com/jpkrohling/opentelemetry-collector-deployment-patterns/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:55:30.442086-05:00"
+  },
+  "https://github.com/jpkrohling/talks": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-15T15:44:17.548487+02:00"
   },
   "https://github.com/jufab/opentelemetry-angular-interceptor": {
     "StatusCode": 200,
@@ -5410,6 +5418,10 @@
   "https://grafana.com/": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:44:15.987837-04:00"
+  },
+  "https://grafana.com/about/careers/open-positions/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-15T15:44:21.083848+02:00"
   },
   "https://grafana.com/docs/agent/latest/": {
     "StatusCode": 200,
