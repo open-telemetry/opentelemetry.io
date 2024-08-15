@@ -67,15 +67,15 @@ unlikely to make a public disclosure less damaging.
 
 The Fix Team is made up of people with the following roles:
 
-1. Incident commander, the person who will manage the communication around the
+- Incident commander, the person who manages the communication around the
    incident.
-2. Incident investigator(s), typically one or more maintainers of the affected
+- Incident investigator(s), typically one or more maintainers of the affected
    repositories.
-3. Subject matter experts, typically includes the reporter and other
-   contributors, such as the code owners for the affected components, or
-   repository approvers who'll provide prompt code reviews for the proposed
+- Subject matter experts, typically includes the reporter and other
+   contributors, such as the code owners for the affected components or
+   repository approvers who provide prompt code reviews for the proposed
    fixes.
-4. Other stakeholders, such as other SIGs that might need to consume the fix.
+- Other stakeholders, such as other SIGs that might need to consume the fix.
 
 ### TC Role
 
