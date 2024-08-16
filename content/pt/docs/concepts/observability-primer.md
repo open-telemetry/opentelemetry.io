@@ -6,7 +6,7 @@ cSpell:ignore: webshop
 default_lang_commit: 6e3124135e38e749cdda15271d891813d6bc43db
 ---
 
-## O que é Observabilidade?
+## O que é Observabilidade? {#what-is-observability}
 
 Observabilidade permite que você compreenda um sistema de fora para dentro,
 permitindo que você faça perguntas sobre ele sem precisar conhecer seu
@@ -90,7 +90,7 @@ Eles se tornam muito mais úteis quando incluídos como parte de um
 Para mais informações sobre logs e como eles se relacionam com o OpenTelemetry,
 consulte [Logs](/docs/concepts/signals/logs/).
 
-### Trechos
+### Trechos {#spans}
 
 Um **trecho** representa uma unidade de trabalho ou operação. Trechos rastreiam
 operações específicas que uma requisição realiza, mostrando o que aconteceu
