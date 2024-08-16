@@ -371,7 +371,7 @@ using var span = tracer.StartActiveSpan("another-span", links: links);
 
 A [status](/docs/concepts/signals/traces/#span-status) can be set on a span,
 typically used to specify that a span has not completed successfully -
-`Status.Error`. In rare scenarios, you could override the `Error` status with
+`StatusCode.Error`. In rare scenarios, you could override the `Error` status with
 `Ok`, but don't set `Ok` on successfully-completed spans.
 
 The status can be set at any time before the span is finished:
@@ -385,7 +385,7 @@ try
 }
 catch (Exception ex)
 {
-    span.SetStatus(Status.Error, "Something bad happened!");
+    span.SetStatus(new(StatusCode.Error, "Something bad happened!"));
 }
 ```
 
@@ -403,7 +403,7 @@ try
 }
 catch (Exception ex)
 {
-    span.SetStatus(Status.Error, "Something bad happened!");
+    span.SetStatus(new(StatusCode.Error, "Something bad happened!"));
     span.RecordException(ex)
 }
 ```
