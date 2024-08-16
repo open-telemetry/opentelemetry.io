@@ -125,7 +125,7 @@ A tabela a seguir contém exemplos de atributos de trecho:
 Para mais informações sobre trechos e como eles se relacionam com o
 OpenTelemetry, consulte [Trecho](/docs/concepts/signals/traces/#spans).
 
-### Rastros distribuídos {#the-untranslated-english-title}
+### Rastros distribuídos {#distributed-traces}
 
 Um **rastro distribuído**, mais comumente conhecido como um **rastro**, registra
 os caminhos percorridos por requisições (feitas por uma aplicação ou usuário
