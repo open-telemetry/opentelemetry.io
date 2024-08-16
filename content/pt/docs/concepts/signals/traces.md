@@ -157,7 +157,7 @@ Trace Exporters enviam rastros para um consumidor. Esse consumidor pode ser a
 saída padrão para depuração em tempo de desenvolvimento, o OpenTelemetry
 Collector ou qualquer backend de código aberto ou fornecedor de sua escolha.
 
-## Propagação de Contexto
+## Propagação de Contexto {#context-propagation}
 
 A propagação de contexto é o conceito central que possibilita o rastreamento
 distribuído. Com a propagação de contexto, trechos podem ser correlacionados
@@ -165,7 +165,7 @@ entre si e montados em um rastro, independentemente de onde os trechos são
 gerados. Para saber mais sobre este tópico, consulte a página de conceitos sobre
 [Propagação de Contexto](/docs/concepts/context-propagation).
 
-## Trechos
+## Trechos {#spans}
 
 Um **trecho** representa uma unidade de trabalho ou operação. Trechos são os
 blocos que compõem os rastros. No OpenTelemetry, eles incluem as seguintes
@@ -223,7 +223,7 @@ Trechos podem ser aninhados, como é indicado pela presença de um ID de trecho
 pai: trechos filhos representam sub-operações. Isso permite que os trechos
 capturem de forma mais precisa o trabalho realizado em uma aplicação.
 
-### Contexto do Trecho
+### Contexto do Trecho {#span-context}
 
 O contexto do trecho é um objeto imutável em cada trecho que contém o seguinte:
 
@@ -240,7 +240,7 @@ com a [propagação de contexto](#context-propagation) e
 Como o contexto do trecho contém o trace ID, o trace ID é usado ao criar
 [links de trechos](#span-links).
 
-### Atributos
+### Atributos {#attributes}
 
 Atributos são pares chave-valor que contêm metadados que você pode usar para
 anotar um trecho e carregar informações sobre a operação que ele está
@@ -267,7 +267,7 @@ tipicamente presentes em operações comuns. É útil usar a nomenclatura de
 atributos semânticos sempre que possível para que tipos comuns de metadados
 sejam padronizados entre sistemas.
 
-### Eventos de Trechos
+### Eventos de Trechos #span-events
 
 Um evento de trecho pode ser considerado como uma mensagem de log estruturada
 (ou anotação) em um trecho, tipicamente usada para apresentar um ponto
@@ -298,7 +298,7 @@ finalizada, você pode querer adicionar dados da operação à sua telemetria.
 - Se a data e hora não forem relevantes, anexe os dados como atributos de
   trecho.
 
-### Links de Trechos
+### Links de Trechos {#span-links}
 
 Os links existem para que você possa associar um trecho a um ou mais trechos,
 resultando em uma relação causal. Por exemplo, imagine que temos um sistema
@@ -318,7 +318,7 @@ segundo rastro. Agora, eles estão causalmente associados entre si.
 Os links são opcionais, mas servem como uma boa maneira de associar trechos de
 rastro uns aos outros.
 
-### O estado do Trecho
+### O estado do Trecho {#span-status}
 
 Cada trecho tem um estado. Os três valores possíveis são:
 
