@@ -145,7 +145,7 @@ Trace Provider também inclui a inicialização de Resource e Exporter. Geralmen
 é a primeira etapa do rastreamento com OpenTelemetry. Em alguns SDKs, um Trace
 Provider global já é inicializado para você.
 
-## Rastro
+## Rastro {#tracer}
 
 Um rastro cria trechos contendo mais informações sobre o que está acontecendo em
 uma determinada operação, como uma solicitação em um serviço. Rastros são
@@ -267,7 +267,7 @@ tipicamente presentes em operações comuns. É útil usar a nomenclatura de
 atributos semânticos sempre que possível para que tipos comuns de metadados
 sejam padronizados entre sistemas.
 
-### Eventos de Trechos #span-events
+### Eventos de Trechos {#span-events}
 
 Um evento de trecho pode ser considerado como uma mensagem de log estruturada
 (ou anotação) em um trecho, tipicamente usada para apresentar um ponto
@@ -284,7 +284,7 @@ início e fim.
 Um evento de trecho é mais adequado para rastrear o segundo cenário porque
 representa um ponto relevante e único na solicitação.
 
-#### Quando usar eventos de trecho versus atributos de trecho
+#### Quando usar eventos de trecho versus atributos de trecho {#when-to-use-span-events-versus-span-attributes}
 
 Como eventos de trecho também contêm atributos, a questão de quando usar eventos
 em vez de atributos nem sempre tem uma resposta óbvia. Para confirmar sua
@@ -347,7 +347,7 @@ representa quando um desenvolvedor marca explicitamente um trecho como
 bem-sucedido. Na maioria dos casos, não é necessário marcar explicitamente um
 trecho como OK.
 
-### Tipo de Trecho
+### Tipo de Trecho {#span-kind}
 
 Quando um trecho é criado, ele pode ser do tipo: `Client`, `Server`, `Internal`,
 `Producer` ou `Consumer`. Esse tipo de trecho indica ao backend de rastreamento
@@ -392,7 +392,7 @@ Trechos de consumidor representam o processamento de um trabalho criado por um
 produtor e podem começar muito tempo depois que o trecho de produtor já
 terminou.
 
-## Especificação
+## Especificação {#specification}
 
 Para mais informações, consulte
 [especificação de rastros](/docs/specs/otel/overview/#tracing-signal).
