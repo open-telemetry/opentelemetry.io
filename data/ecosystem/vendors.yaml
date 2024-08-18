@@ -415,3 +415,9 @@
   contact: 'product@embrace.io'
   oss: true
   commercial: true
+- name: groundcover
+  nativeOTLP: true
+  url: 'https://docs.groundcover.com/integrations/data-sources/opentelemetry/traces-and-logs'
+  contact: 'hello@groundcover.com'
+  oss: false
+  commercial: true
