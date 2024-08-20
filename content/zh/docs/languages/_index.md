@@ -10,6 +10,7 @@ cascade:
     otel: 1.41.0
     semconv: 1.26.0
 weight: 18
+default_lang_commit: 20c51c53
 ---
 
 这是 OpenTelemetry Java 文档。OpenTelemetry 是一个可观测性框架 -- 一个API、SDK和工具，旨在帮助生成和收集应用程序遥测数据，比如指标、日志和追踪。本文档旨在帮助您了解如何开始使用 OpenTelemetry Java。
