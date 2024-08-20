@@ -2451,6 +2451,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-06-06T19:18:46.659794+02:00"
   },
+  "https://github.com/SAP/opentelemetry-exporter-for-sap-cloud-logging-for-nodejs": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-20T13:16:13.951088019Z"
+  },
+  "https://github.com/SAP/opentelemetry-exporter-for-sap-cloud-logging-for-nodejs#readme": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-20T13:16:17.8990432Z"
+  },
   "https://github.com/Samudraneel24": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:13.282737-05:00"
@@ -6634,6 +6642,10 @@
   "https://npmjs.com/package/@prisma/instrumentation": {
     "StatusCode": 200,
     "LastSeen": "2024-01-22T14:34:48.66209+01:00"
+  },
+  "https://npmjs.com/package/@sap/opentelemetry-exporter-for-sap-cloud-logging": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-20T13:16:23.955663593Z"
   },
   "https://npmjs.com/package/opentelemetry-instrumentation-remix": {
     "StatusCode": 200,
