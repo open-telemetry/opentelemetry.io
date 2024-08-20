@@ -165,7 +165,7 @@ The timeout value for all outgoing logs in milliseconds.
 ## Protocol Configuration
 
 The following environment variables configure the OTLP transport protocol
-an OTLP Exporter will use HTTP or gRPC protocol to send requests.
+an OTLP Exporter uses.
 
 ### `OTEL_EXPORTER_OTLP_PROTOCOL`
 
