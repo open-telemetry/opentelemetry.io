@@ -7,6 +7,10 @@ cSpell:ignore: rolldice
 
 {{% docs/languages/propagation %}}
 
+{{% alert title="Note" color="info" %}}
+Much of OpenTelemetry JS documentation is written assuming the compiled application is run as CommonJS.
+{{% /alert %}}
+
 ## Automatic context propagation
 
 [Instrumentation libraries](../libraries/) like

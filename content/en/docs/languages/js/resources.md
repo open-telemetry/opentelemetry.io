@@ -15,6 +15,10 @@ Node.js SDK.
 Follow the instructions in the [Getting Started - Node.js][], so that you have
 the files `package.json`, `app.js` and `tracing.js`.
 
+{{% alert title="Note" color="info" %}}
+Much of OpenTelemetry JS documentation is written assuming the compiled application is run as CommonJS.
+{{% /alert %}}
+
 ## Process & Environment Resource Detection
 
 Out of the box, the Node.js SDK detects [process and process runtime
