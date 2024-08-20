@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry website goes multilingual!
 linkTitle: Multilingual website
-date: 2024-08-21
+date: 2024-08-20
 author: >-
   [Severin Neumann](https://github.com/svrnm) (Cisco)
 issue: 4863
