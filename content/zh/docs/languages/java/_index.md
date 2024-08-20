@@ -20,7 +20,7 @@ default_lang_commit: 20c51c53
 OpenTelemetry Java 由以下仓库组成：
 
 - [opentelemetry-java](https://github.com/open-telemetry/opentelemetry-java)：
-   用于手动埋点的组件，包括 API 和 SDK， 也包括扩展和 OpenTracing shim。
+  用于手动埋点的组件，包括 API 和 SDK， 也包括扩展和 OpenTracing shim。
 - [opentelemetry-java-docs][]： 手动埋点样例。
 - [opentelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)：
   建立在 opentelemetry-java 之上，并提供一个 Java agent JAR，可以附加到任何 Java 8+ 应用程序，并动态注入字节码，从许多流行的库和框架中捕获遥测数据。
