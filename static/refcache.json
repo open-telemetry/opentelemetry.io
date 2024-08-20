@@ -439,6 +439,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:56.979033-05:00"
   },
+  "https://cloud-native.slack.com/archives/C076RUAGP37": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-20T08:40:41.563366481Z"
+  },
   "https://cloud-native.slack.com/archives/CJFCJHG4Q": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:45:09.309237-04:00"
