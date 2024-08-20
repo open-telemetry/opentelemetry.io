@@ -37,9 +37,9 @@ OpenTelemetry Java 由以下仓库组成：
 
 查看 [组件] 以获取已发布组件的完整列表。
 
-### 
+### 发行版
 
-已经发布的 [发布][] 可以在 [maven 中央仓库][] 上找到. 我们强烈推荐
+已经发布的 [发行版][] 可以在 [maven 中央仓库][] 上找到. 我们强烈推荐
 使用我们的 BOM 来保持各种组件的版本同步.
 
 #### Maven
@@ -75,8 +75,7 @@ dependencies {
 }
 ```
 
-[maven central]： https://mvnrepository.com/artifact/io.opentelemetry
-[opentelemetry-java-docs]：
-  https://github.com/open-telemetry/opentelemetry-java-docs#java-opentelemetry-examples
-[releases]： https://github.com/open-telemetry/opentelemetry-java/releases
-[组件]： https://github.com/open-telemetry/opentelemetry-java#releases
+[maven 中央仓库]: https://mvnrepository.com/artifact/io.opentelemetry
+[opentelemetry-java-docs]: https://github.com/open-telemetry/opentelemetry-java-docs#java-opentelemetry-examples
+[发行版]: https://github.com/open-telemetry/opentelemetry-java/releases
+[组件]: https://github.com/open-telemetry/opentelemetry-java#releases
