@@ -1,5 +1,5 @@
 ---
-title: Site do OpenTelemetry com suporte a múltiplas linguas!
+title: Site do OpenTelemetry com suporte a múltiplos idiomas!
 linkTitle: Site multilíngue
 date: 2024-08-10
 author: >-
@@ -10,24 +10,24 @@ default_lang_commit: 48eac183a4dd74946d5a45fa436cfc6052f30532
 ---
 
 É com grande prazer que anunciamos que o site do OpenTelemetry está disponível em
-múltiplas línguas! Os times de localização já começaram a traduzir páginas do
+múltiplos idiomas! Os times de localização já começaram a traduzir páginas do
 site para [Chinês](/zh), [Japonês](/ja), [Português](/pt) e [Espanhol](/es).
 
 O projeto OpenTelemetry cresceu para incluir pessoas que contribuem e o utilizam em todas as partes do
-mundo. Disponibilizar o site em múltiplas línguas é um passo importante para
+mundo. Disponibilizar o site em múltiplos idiomas é um passo importante para
 garantir que todos, independente da sua língua nativa, consigam contribuir para
 o projeto. Nós também estamos empolgados que essa iniciativa permite que usuários
 acessem a documentações em diversas linguagens, facilitando o aprendizado
 e o entendimento do OpenTelemetry.
 
-Para acessar o site na língua de sua preferência, utilize o seletor de linguagem no
+Para acessar o site na língua de sua preferência, utilize o seletor de idioma no
 canto superior direito da página.
 
 Venha contribuir para essa iniciativa. Você pode encontrar colegas que
 contribuem para localização no canal do Slack
 [#otel-docs-localization](https://cloud-native.slack.com/archives/C076RUAGP37).
 Se você é fluente em um idioma que já é suportado, você pode ajudar criando
-ou revisando traduções. Se sua língua ainda não é suportada e você gostaria de
+ou revisando traduções. Se seu idioma ainda não é suportado e você gostaria de
 ajudar a traduzir,
 [crie uma issue](<https://github.com/open-telemetry/opentelemetry.io/issues/new?title=Add+%3CYOUR%20LANGUAGE%3E+(%3CYOUR+CODE%3E)+version+of+website+pages&body=%3C!--+Provide+github+handles+of+at+least+2+people+that+will+work+on+this+translation+project%20--%3E>).
 
