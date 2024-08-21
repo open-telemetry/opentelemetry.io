@@ -14,7 +14,7 @@ múltiplas línguas! Os times de localização já começaram a traduzir página
 site para [Chinês](/zh), [Japonês](/ja), [Português](/pt) e [Espanhol](/es).
 
 O projeto OpenTelemetry cresceu para incluir pessoas que contribuem e o utilizam em todas as partes do
-mundo. Criar um site disponível em múltiplas línguas é um passo importante para
+mundo. Disponibilizar o site em múltiplas línguas é um passo importante para
 garantir que todos, independente da sua língua nativa, consigam contribuir para
 o projeto. Nós também estamos empolgados que essa iniciativa permite que usuários
 acessem a documentações em diversas linguagens, facilitando o aprendizado
