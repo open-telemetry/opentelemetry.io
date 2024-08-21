@@ -26,7 +26,7 @@ canto superior direito da página.
 Venha contribuir para essa iniciativa. Você pode encontrar colegas que
 contribuem para localização no canal do Slack
 [#otel-docs-localization](https://cloud-native.slack.com/archives/C076RUAGP37).
-Se você é fluente em uma linguagem que já é suportada, você pode ajudar criando
+Se você é fluente em um idioma que já é suportado, você pode ajudar criando
 ou revisando traduções. Se sua língua ainda não é suportada e você gostaria de
 ajudar a traduzir,
 [crie uma issue](<https://github.com/open-telemetry/opentelemetry.io/issues/new?title=Add+%3CYOUR%20LANGUAGE%3E+(%3CYOUR+CODE%3E)+version+of+website+pages&body=%3C!--+Provide+github+handles+of+at+least+2+people+that+will+work+on+this+translation+project%20--%3E>).
