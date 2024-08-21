@@ -162,9 +162,12 @@ The timeout value for all outgoing logs in milliseconds.
 
 **Example:** `export OTEL_EXPORTER_OTLP_LOGS_TIMEOUT=500`
 
-### `OTEL_EXPORTER_OTLP_PROTOCOL`
+## Protocol configuration
 
-## Protocol Configuration
+The following environment variables configure the OTLP transport protocol
+an OTLP exporter uses.
+
+### `OTEL_EXPORTER_OTLP_PROTOCOL`
 
 Specifies the OTLP transport protocol to be used for all telemetry data.
 
