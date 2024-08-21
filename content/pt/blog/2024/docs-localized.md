@@ -9,21 +9,21 @@ sig: Comms
 default_lang_commit: 48eac183a4dd74946d5a45fa436cfc6052f30532
 ---
 
-Estamos felizes em anunciar que o site do OpenTelemetry está disponível em
+É com grande prazer que anunciamos que o site do OpenTelemetry está disponível em
 múltiplas línguas! Os times de localização já começaram a traduzir páginas do
-site para [Chines](/zh), [Japonês](/ja), [Português](/pt), e [Espanhol](/es).
+site para [Chinês](/zh), [Japonês](/ja), [Português](/pt) e [Espanhol](/es).
 
-O projeto OpenTelemetry cresceu para incluir contribuidores e usuários de todo o
+O projeto OpenTelemetry cresceu para incluir pessoas que contribuem e o utilizam em todas as partes do
 mundo. Criar um site disponível em múltiplas línguas é um passo importante para
 garantir que todos, independente da sua língua nativa, consigam contribuir para
-o projeto. Nos também estamos esperando que essa iniciativa conceda aos usuários
-finais acesso a documentações em diversas linguagens, facilitando o aprendizado
+o projeto. Nós também estamos empolgados que essa iniciativa permite que usuários
+acessem a documentações em diversas linguagens, facilitando o aprendizado
 e o entendimento do OpenTelemetry.
 
-Para acessar o site na sua língua preferida, utilize o seletor de linguagem no
+Para acessar o site na língua de sua preferência, utilize o seletor de linguagem no
 canto superior direito da página.
 
-Convidamos você para contribuir nesse trabalho. Você pode encontrar colegas que
+Venha contribuir para essa iniciativa. Você pode encontrar colegas que
 contribuem para localização no canal do Slack
 [#otel-docs-localization](https://cloud-native.slack.com/archives/C076RUAGP37).
 Se você é fluente em uma linguagem que já é suportada, você pode ajudar criando
@@ -33,6 +33,6 @@ ajudar a traduzir,
 
 Suas contribuições podem gerar um impacto significativo!
 
-Nos agradecemos a todos os contribuidores por fazer todo o possível, e nos
-estamos ansiosos para ver como essas novas opções de linguagens podem melhorar a
-experiência do usuário do OpenTelemetry.
+Nós agradecemos todas as pessoas que contribuíram para tornar isso uma realidade, e
+estamos ansiosos para ver como essas novas opções de idioma podem melhorar a
+experiência de usuário do OpenTelemetry.
