@@ -1,3 +1,4 @@
+# cSpell:ignore: Dinse
 title: OpenTelemetry exporter for SAP Cloud Logging for Node.js
 registryType: exporter
 language: js
