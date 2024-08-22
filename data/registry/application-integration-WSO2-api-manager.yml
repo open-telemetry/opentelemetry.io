@@ -2,10 +2,10 @@ title: WSO2 API Manager
 registryType: application integration
 language: Java
 tags:
-  - wso2
-  - api manager
-  - java
-  - opentelemetry
+  - WSO2
+  - API Manager
+  - Java
+  - Opentelemetry
 license: Apache-2.0
 description: 'Integration of OpenTelemetry with WSO2 API Manager enhances observability by providing insights into API metrics, traces, and logs, facilitating better performance monitoring and troubleshooting.'
 authors:
