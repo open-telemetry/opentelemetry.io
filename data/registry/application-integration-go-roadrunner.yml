@@ -1,0 +1,20 @@
+title: RoadRunner PHP application server
+registryType: application integration
+language: go # written in go but provides a PHP runtime
+tags:
+  - go
+  - php
+  - roadrunner
+license: MIT
+description:
+  RoadRunner offers OTel (OpenTelemetry) plugin, which provides a unified
+  standard for tracing, logging, and metrics information.
+authors:
+  - name: Spiral Scout
+    url: https://github.com/roadrunner-server
+urls:
+  website: https://roadrunner.dev/
+  repo: https://github.com/roadrunner-server/otel
+  docs: https://docs.roadrunner.dev/docs/logging-and-observability/otel
+createdAt: '2024-08-06'
+isFirstParty: true

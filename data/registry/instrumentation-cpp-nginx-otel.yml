@@ -1,0 +1,19 @@
+title: NGINX Native OTel Module
+registryType: instrumentation
+language: cpp
+tags:
+  - nginx
+  - web server
+  - c++
+license: Apache-2.0
+description:
+  The `ngx_otel_module` dynamic module enables NGINX Open Source or NGINX Plus
+  to send telemetry data to an OTel collector.
+authors:
+  - name: NGINX, Inc.
+    url: https://github.com/nginxinc
+urls:
+  website: https://nginx.org/
+  repo: https://github.com/nginxinc/nginx-otel
+createdAt: '2024-08-06'
+isFirstParty: true

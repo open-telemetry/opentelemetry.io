@@ -1,0 +1,21 @@
+# cSpell:ignore jenkins
+title: Jenkins Plugin for OpenTelemetry
+registryType: instrumentation
+language: java
+tags:
+  - java
+  - jenkins
+  - plugin
+license: Apache-2.0
+description:
+  Monitor and observe Jenkins with OpenTelemetry. Visualize jobs and pipelines
+  executions as distributed traces.
+authors:
+  - name: Jenkins Authors
+    url: https://github.com/jenkinsci
+urls:
+  website: https://www.jenkins.io/
+  repo: https://github.com/jenkinsci/opentelemetry-plugin/
+  docs: https://plugins.jenkins.io/opentelemetry/
+createdAt: '2024-08-06'
+isFirstParty: true
