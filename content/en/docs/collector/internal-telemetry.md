@@ -260,6 +260,53 @@ categorized by instrumentation type.
 | `rpc_server_response_size`        | Measures the size of RPC response messages (uncompressed).                                | Histogram |
 | `rpc_server_responses_per_rpc`    | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram |
 
+### Telemetry lifecycle
+
+#### Tracing
+
+Tracing instrumentation is still under active development, and may change in a variety of ways. This includes span names, attached attributes, instrumented endpoints, etc. Until this feature graduates to stable, there are no guarantees of backwards compatibility for tracing instrumentation.
+
+#### Metrics
+
+The lifecycle of metrics in the Collector follows the following cycle, each stage is documented below:
+
+> Alpha metric → Stable metric → Deprecated metric → Deleted metric
+
+##### Alpha
+
+Alpha metrics have no stability guarantees. These metrics can be modified or deleted at any time.
+
+##### Stable
+
+Stable metrics are guaranteed to not change. This means:
+
+* A stable metric without a deprecated signature will not be deleted or renamed
+* A stable metric's type and attributes will not be modified
+
+##### Deprecated
+
+Deprecated metrics are slated for deletion, but are still available for use. These metrics include an annotation about the version in which they became deprecated. For example:
+
+    Before deprecation
+
+    # HELP some_counter this counts things
+    # TYPE some_counter counter
+    otelcol_exporter_queue_size 0
+
+    After deprecation
+
+    # HELP some_counter (Deprecated since 1.15.0) this counts things
+    # TYPE some_counter counter
+    some_counter 0
+
+##### Deleted
+
+Deleted metrics are no longer published and cannot be used.
+
+#### Logs
+
+Individual log entries and their formatting may change from one release to the next, there are no stability guarantees at this time.
+
 ### Events observable with internal logs
 
 The Collector logs the following internal events:
