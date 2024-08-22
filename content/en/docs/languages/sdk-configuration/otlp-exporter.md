@@ -164,8 +164,8 @@ The timeout value for all outgoing logs in milliseconds.
 
 ## Protocol configuration
 
-The following environment variables configure the OTLP transport protocol
-an OTLP exporter uses.
+The following environment variables configure the OTLP transport protocol an
+OTLP exporter uses.
 
 ### `OTEL_EXPORTER_OTLP_PROTOCOL`
 
