@@ -264,11 +264,11 @@ categorized by instrumentation type.
 
 #### Tracing
 
-Tracing instrumentation is still under active development, and may change in a variety of ways. This includes span names, attached attributes, instrumented endpoints, etc. Until this feature graduates to stable, there are no guarantees of backwards compatibility for tracing instrumentation.
+Tracing instrumentation is still under active development, and changes might be made to span names, attached attributes, instrumented endpoints, or other aspects of the telemetry. Until this feature graduates to stable, there are no guarantees of backwards compatibility for tracing instrumentation.
 
 #### Metrics
 
-The lifecycle of metrics in the Collector follows the following cycle, each stage is documented below:
+The Collector's metrics follow a four-stage lifecycle:
 
 > Alpha metric → Stable metric → Deprecated metric → Deleted metric
 
@@ -280,12 +280,12 @@ Alpha metrics have no stability guarantees. These metrics can be modified or del
 
 Stable metrics are guaranteed to not change. This means:
 
-* A stable metric without a deprecated signature will not be deleted or renamed
-* A stable metric's type and attributes will not be modified
+- A stable metric without a deprecated signature will not be deleted or renamed.
+- A stable metric's type and attributes will not be modified.
 
 ##### Deprecated
 
-Deprecated metrics are slated for deletion, but are still available for use. These metrics include an annotation about the version in which they became deprecated. For example:
+Deprecated metrics are slated for deletion but are still available for use. These metrics include an annotation about the version in which they became deprecated. For example:
 
     Before deprecation
 
@@ -305,7 +305,7 @@ Deleted metrics are no longer published and cannot be used.
 
 #### Logs
 
-Individual log entries and their formatting may change from one release to the next, there are no stability guarantees at this time.
+Individual log entries and their formatting might change from one release to the next. There are no stability guarantees at this time.
 
 ### Events observable with internal logs
 
