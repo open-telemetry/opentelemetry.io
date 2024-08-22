@@ -3,8 +3,7 @@ registryType: application integration
 language: Java
 tags:
   - wso2
-  - api
-  - manager
+  - api manager
   - java
   - opentelemetry
 license: Apache-2.0
