@@ -1,1 +1,19 @@
+title: WSO2 API Platform for Kubernetes
+registryType: application integration
+language: Java
+tags:
+  - WSO2
+  - API Platform for Kubernetes
+  - Java
+  - Opentelemetry
+license: Apache-2.0
+description: 'Integration of OpenTelemetry with WSO2 API Platform for Kubernetes (APK) enhances observability by providing insights into API metrics, traces, and logs, facilitating better performance monitoring and troubleshooting within Kubernetes environments.'
+authors:
+  - name: WSO2
+    url: https://github.com/wso2
+urls:
+  website: https://wso2.com/api-management/
+  docs: https://apk.docs.wso2.com/en/latest/administration/distributed-tracing/#opentelemetry-protocol-otlp
+createdAt: '2024-08-16'
+isFirstParty: true
 
