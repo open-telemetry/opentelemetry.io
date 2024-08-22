@@ -1,6 +1,6 @@
 # cspell:ignore checkmk
 title: Distributed tracing of Checkmk with OpenTelemetry
-registryType: Application Integration
+registryType: application integration
 language: python
 tags:
   - Python
