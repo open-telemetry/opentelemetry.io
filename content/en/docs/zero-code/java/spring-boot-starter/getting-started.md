@@ -1,47 +1,41 @@
 ---
-title: Getting started
+title: Introdução
 weight: 20
 cSpell:ignore: springboot
 ---
 
 {{% alert title="Note" color="info" %}}
 
-You can also use the [Java agent](../../agent) to instrument your Spring Boot
-application. For the pros and cons, see [Java zero-code instrumentation](..).
+Você também pode utilizar o [agente do Java](../../agent) para instrumentar a sua aplicação Spring Boot. Para verificar os prós e contras, veja [Java instrumentação sem código](..).
 
 {{% /alert %}}
 
-### Compatibility
+### Compatibilidade
 
-The OpenTelemetry Spring Boot starter works with Spring Boot 2.6+ and 3.1+, and
-Spring Boot native image applications. The
+O _starter_ do OpenTelemetry Spring Boot funciona com Spring Boot 2.6+, 3.1+ e
+aplicações Spring Boot com imagem nativa. O repositório
 [opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native)
-repository contains an example of a Spring Boot Native image application
-instrumented using the OpenTelemetry Spring Boot starter.
+contém um exemplo de uma aplicação Spring Boot com imagem nativa que foi instrumentada utilizando o _starter_ do OpenTelemetry Spring Boot.
 
-### Dependency management
+### Gerenciamento de dependências
 
-A Bill of Material
+O _Bill of Material_
 ([BOM](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms))
-ensures that versions of dependencies (including transitive ones) are aligned.
+garante que as versões das dependências (incluindo as transitivas) estejam alinhadas.
 
-To ensure version alignment across all OpenTelemetry dependencies, you must
-import the `opentelemetry-instrumentation-bom` BOM when using the OpenTelemetry
-starter.
+Para garantir o alinhamento das versões entre todas as dependências do OpenTelemetry, você deve importar o `opentelemetry-instrumentation-bom` BOM quando estiver utilizando o  _starter_ do OpenTelemetry.
 
 {{% alert title="Note" color="info" %}}
 
-When using Maven, import the OpenTelemetry BOMs before any other BOMs in your
-project. For example, if you import the `spring-boot-dependencies` BOM, you have
-to declare it after the OpenTelemetry BOMs.
+Ao utilizar o Maven, importe os BOMs do OpenTelemetry antes de importar quaisquer outros BOMs no seu projeto. Por exemplo, se você importar o BOM do `spring-boot-dependencies`, você deve declará-lo depois dos BOMs do OpenTelemetry.
 
-Gradle selects the
-[latest version](https://docs.gradle.org/current/userguide/dependency_resolution.html#sec:version-conflict)
-of a dependency when multiple BOMs, so the order of BOMs is not important.
+O Gradle seleciona a
+[última versão](https://docs.gradle.org/current/userguide/dependency_resolution.html#sec:version-conflict)
+de uma dependência quando houver múltiplos BOMs, não sendo relevante a ordem dos BOMs.
 
 {{% /alert %}}
 
-The following example shows how to import the OpenTelemetry BOMs using Maven:
+O exemplo a seguir mostra como importar os BOMs do OpenTelemetry utilizando o Maven:
 
 ```xml
 <dependencyManagement>
@@ -57,9 +51,9 @@ The following example shows how to import the OpenTelemetry BOMs using Maven:
 </dependencyManagement>
 ```
 
-With Gradle and Spring Boot, you have two ways to import a BOM.
+Com Gradle e Spring Boot, você possui duas maneiras de importar um BOM.
 
-You can use the Gradle’s native BOM support by adding `dependencies`:
+Você pode utilizar o suporte do BOM nativo do Gradle adicionando `dependencies`:
 
 ```kotlin
 import org.springframework.boot.gradle.plugin.SpringBootPlugin
@@ -75,8 +69,7 @@ dependencies {
 }
 ```
 
-The other way with Gradle is to use the `io.spring.dependency-management` plugin
-and to import the BOMs in `dependencyManagement`:
+Outro maneira com Gradle é utilizando o plugin `io.spring.dependency-management` e importando os BOMs em `dependencyManagement`:
 
 ```kotlin
 plugins {
@@ -94,18 +87,18 @@ dependencyManagement {
 
 {{% alert title="Note" color="info" %}}
 
-Be careful not to mix up the different ways of configuring things with Gradle.
-For example, don't use
+Tenha cuidado para não misturar as diferentes formas de configurar as coisas com o Gradle.
+Por exemplo, não utilize
 `implementation(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom:{{% param vers.instrumentation %}}"))`
-with the `io.spring.dependency-management` plugin.
+com o plugin `io.spring.dependency-management`.
 
 {{% /alert %}}
 
-#### OpenTelemetry Starter dependency
+#### Dependência do OpenTelemetry Starter
 
-Add the dependency given below to enable the OpenTelemetry starter.
+Adicione a dependência fornecida abaixo para habilitar o _starter_ do OpenTelemetry.
 
-The OpenTelemetry starter uses OpenTelemetry Spring Boot
+O _starter_ do OpenTelemetry utiliza o OpenTelemetry Spring Boot
 [autoconfiguration](https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration).
 
 {{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
