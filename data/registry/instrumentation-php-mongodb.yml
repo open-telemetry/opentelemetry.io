@@ -6,7 +6,9 @@ tags:
   - instrumentation
   - php
 license: Apache 2.0
-description: Auto-instrumentation hooks are registered via composer, and spans will automatically be created for all MongoDB operations.
+description:
+  Auto-instrumentation hooks are registered via composer, and spans will
+  automatically be created for all MongoDB operations.
 authors:
   - name: OpenTelemetry Authors
 urls:
