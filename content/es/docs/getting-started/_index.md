@@ -2,6 +2,7 @@
 title: Primeros pasos
 description: Comienza con OpenTelemetry según tu rol.
 no_list: true
+default_lang_commit: e7a62891accc831de331336c8d10245969276112
 weight: 160
 ---
 
@@ -14,7 +15,7 @@ Selecciona un rol[^1] para comenzar:
 
 </div>
 
-También puedes probar la [demo oficial de OpenTelemetry][demo] para _ver_ cómo es
+También puedes probar la [demo oficial de OpenTelemetry][demo] para ver cómo es
 la observabilidad con OpenTelemetry.
 
 <div class="l-primary-buttons justify-content-start mt-3 mb-5 ms-3">
@@ -23,7 +24,7 @@ la observabilidad con OpenTelemetry.
 
 </div>
 
-[^1]: Si ninguno de estos roles se aplica a usted, [déjanos saber][].
+[^1]: Si ninguno de estos roles se aplica a tu caso, [abre un tiquet][].
 
 [demo]: /ecosystem/demo/
 [déjanos saber]:
