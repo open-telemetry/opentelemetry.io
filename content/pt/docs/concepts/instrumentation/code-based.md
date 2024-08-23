@@ -41,7 +41,7 @@ programação que você pode utilizar.
 ## Criar dados de telemetria
 
 Depois de configurar a API e o SDK, você estará pronto para criar eventos de
-rastro e métricas usando os objetos tracer e meter obtidos do provider. Utilize
+rastros e métricas usando os objetos _tracer_ e _meter_ obtidos do _provider_. Utilize
 bibliotecas de instrumentação para suas dependências -- confira o
 [OpenTelemetry Registry](/ecosystem/registry/) ou o repositório da sua linguagem
 de programação para mais informações sobre essas bibliotecas.
