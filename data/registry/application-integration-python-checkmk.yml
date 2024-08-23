@@ -9,9 +9,11 @@ urls:
   repo: https://github.com/Checkmk/checkmk
   docs: https://checkmk.com/werk/16565
 license: GPL-2.0
-description: 
-    With this integration we introduced a new way for the developers to look deeper into what happens inside Checkmk through the use of OpenTelemetry traces, 
-    so that everyone using Checkmk could enjoy monitoring their infrastructure with a tool with the best performance and fewer bottlenecks.  
+description:
+  With this integration we introduced a new way for the developers to look
+  deeper into what happens inside Checkmk through the use of OpenTelemetry
+  traces, so that everyone using Checkmk could enjoy monitoring their
+  infrastructure with a tool with the best performance and fewer bottlenecks.
 authors:
   - name: Checkmk GmbH
     email: community@checkmk.com
