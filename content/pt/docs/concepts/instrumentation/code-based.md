@@ -21,7 +21,7 @@ consulte a [especificação](/docs/specs/otel/).
 
 Para criar rastros ou métricas, primeiro você precisa criar um provider tracer
 e/ou meter. Geralmente, recomendamos que o SDK forneça um único provider padrão
-para esses objetos. Em seguida, você obtem uma instância tracer ou meter desse
+para esses objetos. Em seguida, você obtém uma instância tracer ou meter desse
 provider e atribui a ela um nome e uma versão. O nome que você escolher aqui
 deve identificar exatamente o que está sendo instrumentado - se você está
 desenvolvendo uma biblioteca, por exemplo, você deve nomeá-la com o nome da sua
