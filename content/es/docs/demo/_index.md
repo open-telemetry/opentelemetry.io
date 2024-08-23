@@ -56,7 +56,7 @@ Puedes encontrar información específica sobre cómo se implementa OpenTelemetr
 
 ## Escenarios
 
-¿Cómo se pueden resolver los problemas con OpenTelemetry? Estos escenarios le muestran
+¿Cómo se pueden resolver los problemas con OpenTelemetry? Estos escenarios te muestran
 algunos problemas preconfigurados y cómo interpretar los datos de OpenTelemetry para
 resolverlos.
 
