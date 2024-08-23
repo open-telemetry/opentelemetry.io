@@ -51,7 +51,7 @@
   nativeOTLP: true
   url: https://docs.centreon.com/pp/integrations/plugin-packs/getting-started/how-to-guides/telegraf/
   contact: contact@centreon.com
-  oss: false
+  oss: true
   commercial: true
 - name: Chronosphere
   distribution: false
