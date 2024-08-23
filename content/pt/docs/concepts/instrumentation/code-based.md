@@ -26,9 +26,9 @@ provider e atribui a ela um nome e uma versão. O nome que você escolher aqui
 deve identificar exatamente o que está sendo instrumentado - se você está
 desenvolvendo uma biblioteca, por exemplo, você deve nomeá-la com o nome da sua
 biblioteca (por exemplo `com.example.myLibrary`), pois esse nome será usado como
-_namespace_ em todos os eventos de trecho ou métricas que forem produzidos. Além disso,
-é recomendável fornecer uma string de versão (ou seja, `semver:1.0.0`) que
-corresponda à versão atual da sua biblioteca ou serviço.
+_namespace_ em todos os eventos de trecho ou métricas que forem produzidos. Além
+disso, é recomendável fornecer uma string de versão (ou seja, `semver:1.0.0`)
+que corresponda à versão atual da sua biblioteca ou serviço.
 
 ## Configurar o SDK do OpenTelemetry
 
