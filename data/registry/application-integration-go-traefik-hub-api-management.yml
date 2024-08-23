@@ -1,0 +1,20 @@
+title: Traefik Hub API Management
+registryType: application integration
+language: go
+tags:
+  - go
+  - traefik
+  - hub
+  - api
+  - management
+license: Commercial
+description:
+  Traefik Hub uses OpenTelemetry to get insights into system performance and
+  behavior.
+authors:
+  - name: Traefik Labs
+urls:
+  website: https://traefik.io/traefik-hub/
+  docs: https://doc.traefik.io/traefik-hub/operations/metrics
+createdAt: '2024-08-06'
+isNative: true

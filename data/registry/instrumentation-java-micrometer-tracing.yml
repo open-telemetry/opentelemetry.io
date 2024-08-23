@@ -1,0 +1,16 @@
+title: Micrometer Tracing
+registryType: instrumentation
+language: java
+tags:
+  - java
+  - micrometer
+license: Apache-2.0
+description: Micrometer Tracing supports the OpenTelemetry Tracer.
+authors:
+  - name: Micrometer Authors
+    url: https://github.com/micrometer-metrics
+urls:
+  website: https://micrometer.io/
+  docs: https://micrometer.io/docs/tracing#_micrometer_tracing_opentelemetry_setup
+createdAt: '2024-08-06'
+isNative: true

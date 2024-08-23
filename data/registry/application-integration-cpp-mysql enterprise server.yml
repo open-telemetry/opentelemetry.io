@@ -1,0 +1,19 @@
+title: MySQL Enterprise Server
+registryType: application integration
+language: cpp
+tags:
+  - mysql
+  - enterprise
+  - database
+  - c++
+license: Commercial
+description:
+  MySQL Enterprise Edition generates OTel trace data on Linux platforms.
+authors:
+  - name: MySQL
+    url: https://github.com/mysql
+urls:
+  website: https://www.mysql.com/
+  docs: https://dev.mysql.com/doc/refman/8.4/en/telemetry-trace.html
+createdAt: '2024-08-06'
+isNative: true

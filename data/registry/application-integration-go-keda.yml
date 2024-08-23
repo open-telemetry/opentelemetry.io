@@ -1,0 +1,22 @@
+# cSpell:ignore keda
+title: KEDA
+registryType: application integration
+language: go
+tags:
+  - go
+  - keda
+  - graduated
+license: Apache-2.0
+description:
+  The KEDA Operator supports outputting metrics to the OpenTelemetry Collector
+  using HTTP.
+authors:
+  - name: KEDA Authors
+    url: https://github.com/kedacore
+urls:
+  website: https://keda.sh/
+  repo: https://github.com/kedacore/keda
+  docs: https://keda.sh/docs/latest/operate/opentelemetry/
+createdAt: '2024-08-06'
+cncfProjectLevel: graduated
+isNative: true
