@@ -63,7 +63,7 @@ OpenTelemetry Collector, um processo binário que pode ser executado como _proxy
 _sidecar_ ou em um _host_ separado. O Collector pode então ser configurado para
 encaminhar e exportar esses dados para ferramentas de análise de sua escolha.
 
-Além das ferramentas open source como Jaeger ou Prometheus, uma lista crescente
+Além das ferramentas _open source_ como Jaeger ou Prometheus, uma lista crescente
 de empresas oferece suporte para ingestão de dados de telemetria do
 OpenTelemetry. Para mais detalhes, consulte os
 [Fornecedores](/ecosystem/vendors/).
