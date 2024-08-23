@@ -24,7 +24,7 @@ la observabilidad con OpenTelemetry.
 
 </div>
 
-[^1]: Si ninguno de estos roles se aplica a tu caso, [abre un tiquet][].
+[^1]: Si ninguno de estos roles se aplica a tu caso, [abre un tique][].
 
 [demo]: /ecosystem/demo/
 [déjanos saber]:
