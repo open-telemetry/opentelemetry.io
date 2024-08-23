@@ -13,7 +13,8 @@ tipos de operações e dados. O benefício de usar convenções semânticas é s
 um padrão de nomenclatura comum que pode ser padronizado em uma base de código,
 bibliotecas e plataformas.
 
-Convenções Semânticas estão disponíveis para rastros, métricas, logs e resources:
+Convenções Semânticas estão disponíveis para rastros, métricas, logs e
+resources:
 
 - [Convenção Semântica de rastro](/docs/specs/semconv/general/trace/)
 - [Convenção Semântica de métrica](/docs/specs/semconv/general/metrics/)
