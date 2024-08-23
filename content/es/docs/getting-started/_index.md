@@ -19,7 +19,7 @@ la observabilidad con OpenTelemetry.
 
 <div class="l-primary-buttons justify-content-start mt-3 mb-5 ms-3">
 
-- [Pruebe la demostración][demo]
+- [Prueba la demostración][demo]
 
 </div>
 
