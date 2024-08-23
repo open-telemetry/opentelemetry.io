@@ -50,7 +50,7 @@ programação para mais informações sobre essas bibliotecas.
 
 Depois de criar os dados de telemetria, você vai querer enviá-los para algum
 lugar. O OpenTelemetry oferece suporte a dois métodos principais de exportação
-de dados do seu processo para um backend de análise, diretamente de um processo
+de dados do seu processo para um _backend_ de análise, diretamente de um processo
 ou por meio de um proxy através do [OpenTelemetry Collector](/docs/collector).
 
 A exportação em processo exige que você importe e dependa de um ou mais
