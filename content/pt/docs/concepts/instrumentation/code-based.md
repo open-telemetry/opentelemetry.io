@@ -33,7 +33,7 @@ que corresponda à versão atual da sua biblioteca ou serviço.
 
 Se você está desenvolvendo um processo de serviço, também precisará configurar o
 SDK com as opções adequadas para exportar seus dados de telemetria para um
-backend de análise. Recomendamos que esta configuração seja feita
+_backend_ de análise. Recomendamos que esta configuração seja feita
 programaticamente por meio de um arquivo de configuração ou outro mecanismo.
 Além disso, existem opções de ajuste específicas para cada linguagem de
 programação que você pode utilizar.
