@@ -5,7 +5,7 @@ no_list: true
 weight: 160
 ---
 
-Seleccione un rol[^1] para comenzar:
+Selecciona un rol[^1] para comenzar:
 
 <div class="l-get-started-buttons justify-content-start mt-3 ms-3">
 
