@@ -2,7 +2,7 @@
 title: Planned Migration for go.opentelemetry.io
 linkTitle: Planned migration for go.opentelemetry.io
 date: 2024-08-22
-author:
+author: >-
   [Mike Dame](https://github.com/damemi) (Google),
 draft: true # TODO: remove this line once your post is ready to be published
 # canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the canonical URL here.
