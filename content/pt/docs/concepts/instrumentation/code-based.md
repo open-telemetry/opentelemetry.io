@@ -18,10 +18,10 @@ consulte a [especificação](/docs/specs/otel/).
 
 ## Configurar a API do OpenTelemetry
 
-Para criar rastros ou métricas, primeiro você precisa criar um provider tracer
-e/ou meter. Geralmente, recomendamos que o SDK forneça um único provider padrão
-para esses objetos. Em seguida, você obtém uma instância tracer ou meter desse
-provider e atribui a ela um nome e uma versão. O nome que você escolher aqui
+Para criar rastros ou métricas, primeiro você precisa criar um _provider_ do tipo _tracer_
+e/ou _meter_. Geralmente, recomendamos que o SDK forneça um único provider padrão
+para esses objetos. Em seguida, você obtém uma instância _tracer_ ou _meter_ desse
+_provider_ e atribui a ela um nome e uma versão. O nome que você escolher aqui
 deve identificar exatamente o que está sendo instrumentado - se você está
 desenvolvendo uma biblioteca, por exemplo, você deve nomeá-la com o nome da sua
 biblioteca (por exemplo `com.example.myLibrary`), pois esse nome será usado como
