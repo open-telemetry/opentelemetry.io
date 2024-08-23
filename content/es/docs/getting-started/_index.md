@@ -1,6 +1,6 @@
 ---
 title: Primeros pasos
-description: Comience con OpenTelemetry según su función.
+description: Comienza con OpenTelemetry según tu rol.
 no_list: true
 weight: 160
 ---
