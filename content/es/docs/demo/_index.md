@@ -38,7 +38,7 @@ OpenTelemetry en acción.
 
 ## Documentación de los Servicios
 
-Puede encontrar información específica sobre cómo se implementa OpenTelemetry en cada servicio aquí:
+Puedes encontrar información específica sobre cómo se implementa OpenTelemetry en cada servicio aquí:
 
 - [Servicio de Contabilidad](services/accounting/)
 - [Servicio de Publicidad](services/ad/)
