@@ -59,9 +59,9 @@ this.
 
 ## What you may notice
 
-There is the possibility of the go.opentelemtry.io domain experiencing downtime
-during this transition. If this happens, you may see projects that import
-`go.opentelemetry.io` modules failing to compile.
+There is the possibility of the [go.opentelemtry.io] domain experiencing
+downtime during this transition. If this happens, you may see projects that
+import `go.opentelemetry.io` modules failing to compile.
 
 This could occur due to several factors, including delays in DNS propagation or
 misconfiguration. We will have multiple maintainers working synchronously during
