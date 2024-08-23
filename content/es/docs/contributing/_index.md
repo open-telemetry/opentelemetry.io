@@ -1,11 +1,11 @@
 ---
 title: Contribuir
 description: Aprende cómo contribuir a la documentación de OpenTelemetry.
-aliases: [/docs/contribution-guidelines]
 weight: 980
+default_lang_commit: 30783526402b69a3ac44eeb0f6cf066732f0bdca
 ---
 
-Colaboradores de la documentación de OpenTelemetry:
+Los colaboradores de la documentación de OpenTelemetry:
 
 - Mejorar el contenido existente.
 - Crear contenido nuevo.
