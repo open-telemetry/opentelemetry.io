@@ -43,25 +43,27 @@ programação que você pode utilizar.
 Depois de configurar a API e o SDK, você estará livre para criar eventos de
 rastro e métricas usando os objetos tracer e meter obtidos do provider. Utilize
 bibliotecas de instrumentação para suas dependências -- confira o
-[registry](/ecosystem/registry/) ou o repositório da sua linguagem de
-programação para mais informações sobre essas bibliotecas.
+[OpenTelemetry Registry](/ecosystem/registry/) ou o repositório da sua linguagem
+de programação para mais informações sobre essas bibliotecas.
 
 ## Exportar dados
 
 Depois de criar os dados de telemetria, você vai querer enviá-los para algum
 lugar. O OpenTelemetry oferece suporte a dois métodos principais de exportação
-de dados do seu processo para um _backend_ de análise, diretamente de um processo
-ou por meio de um proxy através do [OpenTelemetry Collector](/docs/collector).
+de dados do seu processo para um _backend_ de análise: diretamente da sua
+aplicação ou por meio de um proxy através do
+[OpenTelemetry Collector](/docs/collector).
 
-A exportação em processo exige que você importe e dependa de um ou mais
-_exporters_, bibliotecas responsáveis por traduzir os objetos de trechos e
-métricas em memória do OpenTelemetry para o formato apropriado para ferramentas
-de análise de telemetria, como Jaeger ou Prometheus. Além disso, o OpenTelemetry
-suporta um protocolo conhecido como `OTLP`, que é compatível com todos os SDKs
-do OpenTelemetry. Esse protocolo pode ser utilizado para enviar dados ao
-OpenTelemetry Collector, um processo binário que pode ser executado como _proxy_,
-_sidecar_ ou em um _host_ separado. O Collector pode então ser configurado para
-encaminhar e exportar esses dados para ferramentas de análise de sua escolha.
+A exportação a partir da sua aplicação exige que você importe e dependa de um
+ou mais _exporters_, bibliotecas responsáveis por traduzir os objetos de
+trechos e métricas em memória do OpenTelemetry para o formato apropriado para
+ferramentas de análise de telemetria, como Jaeger ou Prometheus. Além disso,
+o OpenTelemetry suporta um protocolo conhecido como `OTLP`, que é compatível
+com todos os SDKs do OpenTelemetry. Esse protocolo pode ser utilizado para
+enviar dados ao OpenTelemetry Collector, um processo binário que pode ser
+executado como _proxy_, _sidecar_ ou em um _host_ separado. O Collector pode
+então ser configurado para encaminhar e exportar esses dados para ferramentas
+de análise de sua escolha.
 
 Além das ferramentas _open source_ como Jaeger ou Prometheus, uma lista crescente
 de empresas oferece suporte para ingestão de dados de telemetria do
