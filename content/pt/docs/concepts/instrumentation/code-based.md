@@ -31,7 +31,7 @@ que corresponda à versão atual da sua biblioteca ou serviço.
 
 ## Configurar o SDK do OpenTelemetry
 
-Se você está desenvolvendo um processo de serviço, também precisará configurar o
+Se você está desenvolvendo um serviço, também precisará configurar o
 SDK com as opções adequadas para exportar seus dados de telemetria para um
 _backend_ de análise. Recomendamos que esta configuração seja feita
 programaticamente por meio de um arquivo de configuração ou outro mecanismo.
