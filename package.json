@@ -23,7 +23,7 @@
     "_filename-error": "echo 'ERROR: the following files violate naming conventions; fix using: `npm run fix:filenames`'; echo; npm run -s _ls-bad-filenames; exit 1",
     "_get:no": "echo SKIPPING get operation",
     "_get:submodule:non-lang": "npm run _get:submodule -- content-modules/opentelemetry-specification themes/docsy",
-    "_get:submodule": "set -x && git submodule update --init ${DEPTH:- --depth 1}",
+    "_get:submodule": "set -x && git submodule update --init ${DEPTH:- --depth 999}",
     "_hugo": "hugo --cleanDestinationDir",
     "_install:dict": "npm install -D $(npm run -s _list:dict)",
     "_install:netlify-cli": "npm list netlify-cli || npm install -O netlify-cli",
@@ -108,7 +108,7 @@
     "update:other-pkg": "npm install --save-dev gulp@latest",
     "update:pkgs": "npx npm-check-updates -u",
     "update:submodule:lang": "npm run seq -- update:submodule _get:submodule:non-lang",
-    "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 1}"
+    "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 999}"
   },
   "devDependencies": {
     "@cspell/dict-es-es": "^3.0.0",
