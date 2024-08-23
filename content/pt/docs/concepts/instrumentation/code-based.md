@@ -59,8 +59,8 @@ métricas em memória do OpenTelemetry para o formato apropriado para ferramenta
 de análise de telemetria, como Jaeger ou Prometheus. Além disso, o OpenTelemetry
 suporta um protocolo conhecido como `OTLP`, que é compatível com todos os SDKs
 do OpenTelemetry. Esse protocolo pode ser utilizado para enviar dados ao
-OpenTelemetry Collector, um processo binário que pode ser executado como proxy,
-sidecar ou em um host separado. O Collector pode então ser configurado para
+OpenTelemetry Collector, um processo binário que pode ser executado como _proxy_,
+_sidecar_ ou em um _host_ separado. O Collector pode então ser configurado para
 encaminhar e exportar esses dados para ferramentas de análise de sua escolha.
 
 Além das ferramentas open source como Jaeger ou Prometheus, uma lista crescente
