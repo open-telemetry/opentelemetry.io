@@ -144,7 +144,7 @@ as [convenções gerais](/docs/specs/semconv/general/attributes/).
 Chamadas de rede são normalmente rastreadas com autoinstrumentações OpenTelemetry
 através da implementação do cliente correspondente.
 
-![Base de dados aninhada e trechos HTTP na Jaeger UI](../nested-trechos.svg)
+![Base de dados aninhada e trechos HTTP na Jaeger UI](../nested-span.svg)
 
 Se o OpenTelemetry não suportar o rastreio do seu cliente de rede, use seu próprio critério.
 Aqui estão algumas considerações para ajudar:
@@ -207,8 +207,8 @@ Aqui estão os
 confira a documentação do OpenTelemetry da sua linguagem.
 
 No caso de um sistema de mensageria, você pode receber mais de uma mensagem de uma só vez. As mensagens recebidas se tornam
-[_links_](/docs/languages/java/instrumentation/#create-trechos-with-links) no trecho que você cria. Consulte as
-[convenções de mensageria](/docs/specs/semconv/messaging/messaging-trechos/) para mais detalhes (AVISO: as convenções de mensageria estão
+[_links_](/docs/languages/java/instrumentation/#create-spans-with-links) no trecho que você cria. Consulte as
+[convenções de mensageria](/docs/specs/semconv/messaging/messaging-spans/) para mais detalhes (AVISO: as convenções de mensageria estão
 [em construção](https://github.com/open-telemetry/oteps/pull/173) 🚧).
 
 ### Injetando contexto
@@ -266,7 +266,7 @@ Por favor, adicione sua biblioteca de instrumentação ao
 
 ### Desempenho
 
-A API do OpenTelemetry é autônma e muito eficiente quando não há SDK na
+A API do OpenTelemetry é autônoma e muito eficiente quando não há SDK na
 aplicação. Quando o SDK do OpenTelemetry é configurado, ele
 [consome recursos vinculados](/docs/specs/otel/performance/).
 
