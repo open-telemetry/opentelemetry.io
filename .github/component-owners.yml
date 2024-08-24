@@ -77,3 +77,6 @@ components:
   content/pt:
     - open-telemetry/docs-maintainers
     - open-telemetry/docs-pt-approvers
+  content/es:
+    - open-telemetry/docs-maintainers
+    - open-telemetry/docs-es-approvers

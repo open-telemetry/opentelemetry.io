@@ -1310,8 +1310,6 @@ public class MyController {
 }
 ```
 
-a
-
 ### Using Counters
 
 Counters can be used to measure non-negative, increasing values.
