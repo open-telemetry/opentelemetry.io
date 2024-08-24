@@ -7,7 +7,7 @@ weight: 20
 default_lang_commit: fe0c3f68902aeb6e7584ffc32c6c8964d7a89e6e
 ---
 
-## Importar a API e o SDK do OpenTelemetry
+## Importe a API e o SDK do OpenTelemetry
 
 Primeiro, você precisará importar o OpenTelemetry para o seu código. Se estiver
 desenvolvendo uma biblioteca ou algum outro componente que se destina a ser
