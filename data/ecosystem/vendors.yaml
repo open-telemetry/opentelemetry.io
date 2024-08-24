@@ -51,7 +51,7 @@
   nativeOTLP: true
   url: https://docs.centreon.com/pp/integrations/plugin-packs/getting-started/how-to-guides/telegraf/
   contact: contact@centreon.com
-  oss: false
+  oss: true
   commercial: true
 - name: Chronosphere
   distribution: false
@@ -414,4 +414,10 @@
   url: 'https://embrace.io/opentelemetry-for-mobile/'
   contact: 'product@embrace.io'
   oss: true
+  commercial: true
+- name: groundcover
+  nativeOTLP: true
+  url: 'https://docs.groundcover.com/integrations/data-sources/opentelemetry/traces-and-logs'
+  contact: 'hello@groundcover.com'
+  oss: false
   commercial: true

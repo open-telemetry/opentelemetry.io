@@ -25,6 +25,7 @@ checkoutservice
 Chronosphere
 classpath
 cncf
+comms
 currencyservice
 daemonset
 datadog
