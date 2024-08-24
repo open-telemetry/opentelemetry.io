@@ -144,7 +144,7 @@ as [convenções gerais](/docs/specs/semconv/general/attributes/).
 Chamadas de rede são normalmente rastreadas com autoinstrumentações OpenTelemetry
 através da implementação do cliente correspondente.
 
-![Base de dados aninhada e trechos HTTP na Jaeger UI](../nested-span.svg)
+![Base de dados aninhada e trechos HTTP na Jaeger UI](../nested-spans.svg)
 
 Se o OpenTelemetry não suportar o rastreio do seu cliente de rede, use seu próprio critério.
 Aqui estão algumas considerações para ajudar:
