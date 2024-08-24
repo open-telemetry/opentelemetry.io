@@ -38,7 +38,7 @@ programaticamente por meio de um arquivo de configuração ou outro mecanismo.
 Além disso, existem opções de ajuste específicas para cada linguagem de
 programação que você pode utilizar.
 
-## Criar dados de telemetria
+## Crie dados de telemetria
 
 Depois de configurar a API e o SDK, você estará pronto para criar eventos de
 rastros e métricas usando os objetos _tracer_ e _meter_ obtidos do _provider_. Utilize
