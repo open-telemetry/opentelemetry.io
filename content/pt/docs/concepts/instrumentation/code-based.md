@@ -29,7 +29,7 @@ _namespace_ em todos os eventos de trecho ou métricas que forem produzidos. Al�
 disso, é recomendável fornecer uma _string_ de versão (ou seja, `semver:1.0.0`)
 que corresponda à versão atual da sua biblioteca ou serviço.
 
-## Configurar o SDK do OpenTelemetry
+## Configure o SDK do OpenTelemetry
 
 Se você está desenvolvendo um serviço, também precisará configurar o
 SDK com as opções adequadas para exportar seus dados de telemetria para um
