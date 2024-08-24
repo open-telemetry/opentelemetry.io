@@ -46,7 +46,7 @@ bibliotecas de instrumentação para suas dependências -- confira o
 [OpenTelemetry Registry](/ecosystem/registry/) ou o repositório da sua linguagem
 de programação para mais informações sobre essas bibliotecas.
 
-## Exportar dados
+## Exporte dados
 
 Depois de criar os dados de telemetria, você vai querer enviá-los para algum
 lugar. O OpenTelemetry oferece suporte a dois métodos principais de exportação
