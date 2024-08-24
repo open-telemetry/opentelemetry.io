@@ -16,7 +16,7 @@ artefato for um processo ou serviço independente, então você dependeria da AP
 do SDK. Para obter mais informações sobre a API e o SDK do OpenTelemetry,
 consulte a [especificação](/docs/specs/otel/).
 
-## Configurar a API do OpenTelemetry
+## Configure a API do OpenTelemetry
 
 Para criar rastros ou métricas, primeiro você precisa criar um _provider_ do tipo _tracer_
 e/ou _meter_. Geralmente, recomendamos que o SDK forneça um único provider padrão
