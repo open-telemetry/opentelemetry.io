@@ -219,9 +219,7 @@ Cons:
 [spanmetrics-connector]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector
 
-## Deploying Multiple Collectors
-
-### Single Writer Principle
+## Multiple Collectors / Single Writer Principle
 
 All metric data streams within
 OTLP must have a [single writer](/docs/specs/otel/metrics/data-model/#single-writer).
