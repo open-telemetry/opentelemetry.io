@@ -110,7 +110,7 @@ máquina. Para aplicações, um dos formatos mais comuns é o JSON:
 }
 ```
 
-e para componentes de infraestrutura, o _Common Log Format (CLF)_ é
+e para componentes de infraestrutura, o _Common Log Format_ (CLF) é
 frequentemente usado:
 
 ```text
