@@ -3,6 +3,7 @@ title: Logs
 description: Uma gravação de um evento.
 weight: 3
 default_lang_commit: ebc9a3a9f07278110677f4f8f69291a02704746b
+cSpell:ignore: filelogreceiver semistructured transformprocessor
 ---
 
 Um **log** é um registro de texto com uma marcação de data e hora, seja
@@ -127,7 +128,7 @@ separados por espaços em um log CLF.
 Para aproveitar ao máximo este log, analise tanto os dados em formato JSON
 quanto os em formato ELF, utilizando um formato compartilhado para facilitar a
 análise em um backend de observabilidade. O `filelogreceiver` no
-[OpenTelemetry Collector](/docs/collector) contém maneiras padronizadas de
+[OpenTelemetry Coletor](/docs/collector) contém maneiras padronizadas de
 analisar logs como estes.
 
 Logs estruturados são a melhor forma de usar logs. Por serem emitidos em um
