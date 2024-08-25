@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-20.04
     if: github.repository == 'open-telemetry/opentelemetry.io'
     env:
-      DEPTH: --depth 500 # submodule clone depth
+      DEPTH: --depth 999 # submodule clone depth
 
     steps:
       - uses: actions/checkout@v4
