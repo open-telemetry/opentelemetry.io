@@ -2699,6 +2699,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:07.042795-05:00"
   },
+  "https://github.com/confluentinc/confluent-kafka-go": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-25T09:39:34.657068291Z"
+  },
   "https://github.com/containerd": {
     "StatusCode": 200,
     "LastSeen": "2024-08-07T15:43:55.092676+02:00"
@@ -3198,6 +3202,14 @@
   "https://github.com/jufab/opentelemetry-angular-interceptor": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:12:01.969688-05:00"
+  },
+  "https://github.com/jurabek": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-25T09:39:30.336608946Z"
+  },
+  "https://github.com/jurabek/otelkafka": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-25T09:39:26.927388436Z"
   },
   "https://github.com/kaylareopelle": {
     "StatusCode": 200,
@@ -7290,6 +7302,10 @@
   "https://pkg.go.dev/github.com/hertz-contrib/obs-opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2024-08-07T15:44:43.306385+02:00"
+  },
+  "https://pkg.go.dev/github.com/jurabek/otelkafka": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-25T09:39:41.322663747Z"
   },
   "https://pkg.go.dev/github.com/mitchellh/mapstructure": {
     "StatusCode": 200,
