@@ -220,6 +220,8 @@ Here's how you can create an exporter with default configuration:
 
 ```go
 import (
+	"context"
+
 	"go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc"
 	"go.opentelemetry.io/otel/sdk/log"
 )
