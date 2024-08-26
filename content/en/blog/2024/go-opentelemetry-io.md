@@ -1,11 +1,11 @@
 ---
 title: Planned Migration for go.opentelemetry.io
-date: 2024-08-23
-cSpell:ignore: vanityurls Yahn
+date: 2024-08-27
 author: '[Mike Dame](https://github.com/damemi) (Google)'
 body_class: otel-with-contributions-from
 issue: 5086
 sig: Go SIG
+cSpell:ignore: vanityurls Yahn
 ---
 
 With contributions from Tyler Yahn and Austin Parker.
