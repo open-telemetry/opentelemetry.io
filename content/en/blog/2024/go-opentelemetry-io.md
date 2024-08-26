@@ -60,7 +60,7 @@ this.
 ## What you might notice
 
 There is the possibility of the [go.opentelemetry.io] domain experiencing
-downtime during this transition. If this happens, you may see projects that
+downtime during this transition. If this happens, you might see projects that
 import `go.opentelemetry.io` modules failing to compile.
 
 This could occur due to several factors, including delays in DNS propagation or
