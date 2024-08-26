@@ -21,4 +21,4 @@ Para obtener orientación sobre cómo contribuir al proyecto OpenTelemetry en ge
 
 - Visita el [sitio de la comunidad de OpenTelemetry](/community/).
 - Añade tu aplicación al [Registro](/ecosystem).
-- Envía un [blog o estudio de caso](/docs/contributing/blog/).
+- Envía un [blog o caso de estudio](/docs/contributing/blog/).
