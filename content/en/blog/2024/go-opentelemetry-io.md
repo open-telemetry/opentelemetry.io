@@ -32,7 +32,7 @@ This should be a seamless transition, but there is the possibility of downtime
 during this time. The OpenTelemetry engineers will be actively monitoring the
 transition to minimize the risk.
 
-### Affected Resources
+### Affected resources
 
 In the unlikely event of issues, the scope of these planned changes will affect
 Go package downloads for the following domains:
