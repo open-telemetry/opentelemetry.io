@@ -57,7 +57,7 @@ Contrib), and the OpenTelemetry Collector Builder.
 `go.opentelemetry.io/otel`) will continue to work. There are no plans to change
 this.
 
-## What you may notice
+## What you might notice
 
 There is the possibility of the [go.opentelemetry.io] domain experiencing
 downtime during this transition. If this happens, you may see projects that
