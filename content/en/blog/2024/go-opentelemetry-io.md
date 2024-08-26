@@ -41,10 +41,12 @@ Go package downloads for the following domains:
 - `go.opentelemetry.io/otel`
 - `go.opentelemetry.io/proto`
 
-Note that this includes users of any of the following artifacts: the
-OpenTelemetry Go language libraries (including Contrib), the OpenTelemetry Go
-Auto-Instrumentation libraries, the OpenTelemetry Collector libraries (including
-Contrib), and the OpenTelemetry Collector Builder.
+Note that this includes users of any of the following artifacts:
+
+* OpenTelemetry Go language libraries (including Contrib)
+* OpenTelemetry Go Auto-Instrumentation libraries
+* OpenTelemetry Collector libraries (including Contrib)
+* OpenTelemetry Collector Builder.
 
 ## What you need to do
 
