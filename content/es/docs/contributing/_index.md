@@ -7,10 +7,10 @@ default_lang_commit: 30783526402b69a3ac44eeb0f6cf066732f0bdca
 
 Quienes colaboran para documentar OpenTelemetry:
 
-- Mejorar el contenido existente.
-- Crear contenido nuevo.
-- Actualizar el Registro de OpenTelemetry.
-- Mejorar el código que construye el sitio.
+- Mejoran el contenido existente.
+- Crean contenido nuevo.
+- Actualizan el Registro de OpenTelemetry.
+- Mejoran el código que construye el sitio.
 
 Las siguientes guías describen cómo contribuir a la documentación de OpenTelemetry.
 
