@@ -2,7 +2,6 @@
 title: Planned Migration for go.opentelemetry.io
 linkTitle: Planned migration for go.opentelemetry.io
 date: 2024-08-23
-# prettier-ignore
 cSpell:ignore: Yahn
 author: >-
   [Mike Dame](https://github.com/damemi) (Google),
