@@ -16,14 +16,14 @@ With contributions from Tyler Yahn and Austin Parker.
 ## TL;DR
 
 The app that serves requests to [go.opentelemetry.io] will be migrating to a new
-host on September 9, 2024 at approximately 12:00PM Eastern Time. There are no
+host on September 5, 2024 at approximately 11:00AM Eastern Time. There are no
 changes required from you. We are making this announcement because it is
 possible, but unlikely, that there may be downtime during this transition.
 
 ## Details
 
 OpenTelemetry is planning to migrate the application that serves all requests
-for `go.opentelemetry.io` to a new host project on September 9, 2024. On this
+for `go.opentelemetry.io` to a new host project on September 5, 2024. On this
 date, the current DNS entries for `go.opentelemetry.io` will be updated to point
 to the new host.
 
