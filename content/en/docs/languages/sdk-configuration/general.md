@@ -92,11 +92,11 @@ be set as follows:
 - For `jaeger_remote` and `parentbased_jaeger_remote`: The value is a comma
   separated list:
   - Example:
-    `"endpoint=http://localhost:14250,pollingIntervalMs=5000,initialSamplingRate=0.25"`
+    `"endpoint=http://localhost:14250,pollingInterval=5000,initialSamplingRate=0.25"`
   - `endpoint`: the endpoint in form of `scheme://host:port` of gRPC server that
     serves the sampling strategy for the service
     ([sampling.proto](https://github.com/jaegertracing/jaeger-idl/blob/main/proto/api_v2/sampling.proto)).
-  - `pollingIntervalMs`: in milliseconds indicating how often the sampler will
+  - `pollingInterval`: in milliseconds indicating how often the sampler will
     poll the backend for updates to sampling strategy.
   - `initialSamplingRate`: in the [0..1] range, which is used as the sampling
     probability when the backend cannot be reached to retrieve a sampling
