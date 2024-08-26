@@ -5,7 +5,7 @@ weight: 980
 default_lang_commit: 30783526402b69a3ac44eeb0f6cf066732f0bdca
 ---
 
-Los colaboradores de la documentación de OpenTelemetry:
+Quienes colaboran para documentar OpenTelemetry:
 
 - Mejorar el contenido existente.
 - Crear contenido nuevo.
