@@ -64,9 +64,9 @@ misconfiguration. We will have multiple maintainers working synchronously during
 this time to minimize any downtime that occurs.
 
 If you experience any issues following this transition, please reach out on
-[Slack #otel-go](https://cloud-native.slack.com/archives/C01NPAXACKT) or open an
-issue on GitHub at
-[https://github.com/open-telemetry/opentelemetry-go-vanityurls](https://github.com/open-telemetry/opentelemetry-go-vanityurls).
+[Slack #otel-go](https://cloud-native.slack.com/archives/C01NPAXACKT) or [create an
+issue](https://github.com/open-telemetry/opentelemetry-go-vanityurls/issues/new) over
+[opentelemetry-go-vanityurls](https://github.com/open-telemetry/opentelemetry-go-vanityurls).
 
 ## Why are we making this change?
 
