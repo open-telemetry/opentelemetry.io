@@ -3,7 +3,7 @@ title: Exporters
 aliases: [exporting_data]
 weight: 50
 # prettier-ignore
-cSpell:ignore: otlplog otlploghttp otlpmetric otlpmetricgrpc otlpmetrichttp otlptrace otlptracegrpc otlptracehttp promhttp stdoutlog stdouttrace
+cSpell:ignore: otlplog otlploggrpc otlploghttp otlpmetric otlpmetricgrpc otlpmetrichttp otlptrace otlptracegrpc otlptracehttp promhttp stdoutlog stdouttrace
 ---
 
 {{% docs/languages/exporters/intro go %}}
@@ -220,5 +220,25 @@ import (
 
 func newExporter(ctx context.Context) (log.Exporter, error) {
 	return otlploghttp.New(ctx)
+}
+```
+
+### OTLP logs over gRPC (Experimental)
+
+[`go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc)
+contains an implementation of OTLP logs exporter using gRPC.
+
+Here's how you can create an exporter with default configuration:
+
+```go
+import (
+	"context"
+
+	"go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc"
+	"go.opentelemetry.io/otel/sdk/log"
+)
+
+func newExporter(ctx context.Context) (log.Exporter, error) {
+	return otlploggrpc.New(ctx)
 }
 ```
