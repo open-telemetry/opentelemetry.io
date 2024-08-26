@@ -2,8 +2,7 @@
 title: Planned Migration for go.opentelemetry.io
 date: 2024-08-23
 cSpell:ignore: Yahn
-author: >-
-  [Mike Dame](https://github.com/damemi) (Google),
+author: '[Mike Dame](https://github.com/damemi) (Google)'
 # canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the canonical URL here.
 body_class: otel-with-contributions-from # TODO: remove this line if there are no secondary contributing authors
 issue: 5086
