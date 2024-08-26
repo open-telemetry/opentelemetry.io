@@ -4159,6 +4159,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-23T20:33:46.750242014Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-go-vanityurls/issues/new": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-26T22:28:51.200439921Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-go/compare/v1.18.0...v1.19.0": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:05:30.739686-05:00"
