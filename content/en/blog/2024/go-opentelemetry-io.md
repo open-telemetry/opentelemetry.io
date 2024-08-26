@@ -1,6 +1,5 @@
 ---
 title: Planned Migration for go.opentelemetry.io
-linkTitle: Planned migration for go.opentelemetry.io
 date: 2024-08-23
 cSpell:ignore: Yahn
 author: >-
