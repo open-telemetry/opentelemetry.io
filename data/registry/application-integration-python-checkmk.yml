@@ -8,6 +8,7 @@ tags:
 urls:
   repo: https://github.com/Checkmk/checkmk
   docs: https://checkmk.com/werk/16565
+  website: https://checkmk.com
 license: GPL-2.0
 description:
   With this integration we introduced a new way for the developers to look
@@ -18,4 +19,4 @@ authors:
   - name: Checkmk GmbH
     email: community@checkmk.com
 createdAt: 2024-08-22
-isNative: True # set this to true only if OpenTelemetry is directly integrated into your software (no plugin, no instrumentation library)
+isNative: True
