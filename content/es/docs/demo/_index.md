@@ -9,7 +9,7 @@ cSpell:ignore: OLJCESPC
 ---
 
 Bienvenido a la documentación de la [Demo de OpenTelemetry](/ecosystem/demo/), que
-cubre cómo instalar y ejecutar la demostración, y algunos escenarios que puedes usar para ver
+describe cómo instalar y ejecutar la demostración, además de algunos escenarios que puedes usar para ver
 OpenTelemetry en acción.
 
 ## Ejecución de la Demo
