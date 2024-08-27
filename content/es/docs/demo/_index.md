@@ -64,7 +64,7 @@ resolverlos.
 Agregaremos más escenarios con el tiempo.
 
 - Generar un [Error de Catálogo de Producto](feature-flags) para solicitudes `GetProduct`
-con ID de producto: `OLJCESPC7Z` utilizando el servicio Feature Flag
+con ID de producto: `OLJCESPC7Z` utilizando el servicio Feature Flag.
 - Descubre una fuga de memoria y diagnostícala mediante métricas y seguimientos.
   [Leer más](scenarios/recommendation-cache/)
 
