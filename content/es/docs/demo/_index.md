@@ -19,7 +19,7 @@ OpenTelemetry en acción.
 - [Docker](docker-deployment/)
 - [Kubernetes](kubernetes-deployment/)
 
-## Referencia de Funciones del Lenguaje de Programación
+## Referencia de funciones del lenguaje de programación
 
 ¿Quieres entender cómo funciona la instrumentación de un lenguaje en particular? Comienza aquí.
 
