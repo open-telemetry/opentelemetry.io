@@ -1,6 +1,6 @@
 ---
 title: Logs
-description: Uma gravação de um evento.
+description: Um registro de um evento.
 weight: 3
 default_lang_commit: ebc9a3a9f07278110677f4f8f69291a02704746b
 cSpell:ignore: filelogreceiver semistructured transformprocessor
