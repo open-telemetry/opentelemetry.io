@@ -118,7 +118,7 @@ frequentemente usado:
 ```
 
 Também é comum ter logs estruturados em diferentes formatos juntos. Por exemplo,
-um log no formato _Extended Log Format (ELF)_ pode combinar JSON com os dados
+um log no formato _Extended Log Format_ (ELF) pode combinar JSON com os dados
 separados por espaços em um log CLF.
 
 ```text
