@@ -292,7 +292,5 @@ make otelcorecol
 [deployment methods]: ../deployment/
 [opentelemetry helm charts]: /docs/kubernetes/helm/
 [opentelemetry operator]: /docs/kubernetes/operator/
-[getting started with opentelemetry on hashicorp nomad]:
-  https://github.com/hashicorp/nomad-open-telemetry-getting-started
-[releases]:
-  https://github.com/open-telemetry/opentelemetry-collector-releases/releases
+[getting started with opentelemetry on hashicorp nomad]: https://github.com/hashicorp/nomad-open-telemetry-getting-started
+[releases]: https://github.com/open-telemetry/opentelemetry-collector-releases/releases
