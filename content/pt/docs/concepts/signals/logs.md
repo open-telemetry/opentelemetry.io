@@ -133,8 +133,8 @@ analisar logs como estes.
 
 Logs estruturados são a melhor forma de usar logs. Por serem emitidos em um
 formato consistente, os logs são analisados diretamente, o que facilita o
-pré-processamento no OpenTelemetry Collector, a correlação com outros dados e, por
-fim, a análise em um backend de Observabilidade.
+pré-processamento no OpenTelemetry Collector, a correlação com outros dados e,
+por fim, a análise em um backend de Observabilidade.
 
 ### Logs não estruturados {#unstructured-logs}
 
