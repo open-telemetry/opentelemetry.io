@@ -23,7 +23,7 @@ OpenTelemetry en acción.
 
 ¿Quieres entender cómo funciona la instrumentación de un lenguaje en particular? Comienza aquí.
 
-| Lenguaje   | Instrumentación Automática                          | Bibliotecas de Instrumentación                                                                    | Instrumentación Manual                                                                       |
+| Lenguaje   | Instrumentación automática                          | Bibliotecas de instrumentación                                                                    | Instrumentación manual                                                                       |
 | ---------- | -------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | .NET       | [Servicio de Contabilidad](services/accounting/)               | [Servicio de Carrito](services/cart/)                                                             | [Servicio de Carrito](services/cart/)                                                             |
 | C++        |                                                                |                                                                                                   | [Servicio de Moneda](services/currency/)                                                           |
