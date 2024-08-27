@@ -12,10 +12,16 @@ Quienes colaboran para documentar OpenTelemetry:
 - Actualizan el Registro de OpenTelemetry.
 - Mejoran el código que construye el sitio.
 
-Las siguientes guías describen cómo contribuir a la documentación de OpenTelemetry.
+Las siguientes guías describen cómo contribuir a la documentación de
+OpenTelemetry.
 
-Para obtener orientación sobre cómo contribuir al proyecto OpenTelemetry en general, consulta la 
-[Guía del contribuyente de OpenTelemetry](https://github.com/open-telemetry/community/blob/main/guides/contributor/README.md), que proporciona detalles sobre el Acuerdo de Licencia del Contribuyente y el Código de Conducta. Cada implementación de lenguaje, el Collector y las convenciones en el [repositorio](https://github.com/open-telemetry/) tiene sus propias guías específicas para contribuir.
+Para obtener orientación sobre cómo contribuir al proyecto OpenTelemetry en
+general, consulta la
+[Guía del contribuyente de OpenTelemetry](https://github.com/open-telemetry/community/blob/main/guides/contributor/README.md),
+que proporciona detalles sobre el Acuerdo de Licencia del Contribuyente y el
+Código de Conducta. Cada implementación de lenguaje, el Collector y las
+convenciones en el [repositorio](https://github.com/open-telemetry/) tiene sus
+propias guías específicas para contribuir.
 
 ## Otras formas de contribuir
 
