@@ -14,7 +14,7 @@ While external instrumentation through
 and
 [instrumentation libraries](/docs/specs/otel/overview/#instrumentation-libraries)
 provide a convenient way to make your application observable, we believe that
-ultimately all applications should either integrated the OpenTelemetry APIs and
+ultimately all applications should either integrate the OpenTelemetry APIs and
 SDKs directly for native telemetry, or provide a first-party plugin that fits
 into the ecosystem of the given software.
 
