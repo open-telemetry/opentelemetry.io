@@ -12,7 +12,7 @@ Bienvenido a la documentación de la [Demo de OpenTelemetry](/ecosystem/demo/), 
 describe cómo instalar y ejecutar la demostración, además de algunos escenarios que puedes usar para ver
 OpenTelemetry en acción.
 
-## Ejecución de la Demo
+## Ejecución de la demo
 
 ¿Quieres implementar la demo y verla en acción? Comienza aquí.
 
