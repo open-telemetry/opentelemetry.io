@@ -128,12 +128,12 @@ separados por espaços em um log CLF.
 Para aproveitar ao máximo este log, analise tanto os dados em formato JSON
 quanto os em formato ELF, utilizando um formato compartilhado para facilitar a
 análise em um backend de observabilidade. O `filelogreceiver` no
-[OpenTelemetry Coletor](/docs/collector) contém maneiras padronizadas de
+[OpenTelemetry Collector](/docs/collector) contém maneiras padronizadas de
 analisar logs como estes.
 
 Logs estruturados são a melhor forma de usar logs. Por serem emitidos em um
 formato consistente, os logs são analisados diretamente, o que facilita o
-pré-processamento no OpenTelemetry Coletor, a correlação com outros dados e, por
+pré-processamento no OpenTelemetry Collector, a correlação com outros dados e, por
 fim, a análise em um backend de Observabilidade.
 
 ### Logs não estruturados {#unstructured-logs}
