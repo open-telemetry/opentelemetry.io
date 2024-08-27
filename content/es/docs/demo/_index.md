@@ -76,7 +76,7 @@ Documentación de referencia del proyecto, como requisitos y matrices de caracte
 - [Desarrollo](development/)
 - [Referencia de Feature Flags](feature-flags/)
 - [Matriz de Características de Métricas](telemetry-features/metric-coverage/)
-- [Requisitos](./requirements/)
+- [Requisitos](requirements/)
 - [Capturas de Pantalla](screenshots/)
 - [Servicios](services/)
 - [Referencia de Atributos de Span](telemetry-features/manual-span-attributes/)
