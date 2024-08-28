@@ -323,6 +323,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-02-26T10:53:38.116124+01:00"
   },
+  "https://checkmk.com": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-26T19:11:38.75527-04:00"
+  },
+  "https://checkmk.com/werk/16565": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-26T18:57:00.215281-04:00"
+  },
   "https://circleci.com": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T05:18:29.78394-05:00"
@@ -366,6 +374,10 @@
   "https://cloud-native.slack.com/archives/C01NP3BV26R": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:53:45.990809-05:00"
+  },
+  "https://cloud-native.slack.com/archives/C01NPAXACKT": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-23T20:33:45.460332059Z"
   },
   "https://cloud-native.slack.com/archives/C01NR1YLSE7": {
     "StatusCode": 200,
@@ -2335,6 +2347,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-03-15T20:34:22.210208944Z"
   },
+  "https://github.com/Checkmk/checkmk": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-26T18:57:03.140376-04:00"
+  },
   "https://github.com/ChrsMark": {
     "StatusCode": 200,
     "LastSeen": "2024-05-15T19:23:42.377730577+03:00"
@@ -2698,6 +2714,10 @@
   "https://github.com/codeboten": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:07.042795-05:00"
+  },
+  "https://github.com/confluentinc/confluent-kafka-go": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-25T09:39:34.657068291Z"
   },
   "https://github.com/containerd": {
     "StatusCode": 200,
@@ -3199,6 +3219,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:12:01.969688-05:00"
   },
+  "https://github.com/jurabek": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-25T09:39:30.336608946Z"
+  },
+  "https://github.com/jurabek/otelkafka": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-25T09:39:26.927388436Z"
+  },
   "https://github.com/kaylareopelle": {
     "StatusCode": 200,
     "LastSeen": "2024-06-11T16:22:58.076066-04:00"
@@ -3522,6 +3550,10 @@
   "https://github.com/open-telemetry/community/issues/1971": {
     "StatusCode": 200,
     "LastSeen": "2024-05-03T07:21:04.501478-07:00"
+  },
+  "https://github.com/open-telemetry/community/issues/2260": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-23T20:33:47.852068252Z"
   },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 200,
@@ -4134,6 +4166,14 @@
   "https://github.com/open-telemetry/opentelemetry-go-instrumentation/": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:44:15.667174-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-vanityurls": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-23T20:33:46.750242014Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-vanityurls/issues/new": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-26T22:28:51.200439921Z"
   },
   "https://github.com/open-telemetry/opentelemetry-go/compare/v1.18.0...v1.19.0": {
     "StatusCode": 200,
@@ -5326,6 +5366,10 @@
   "https://go.dev/ref/mod#go-mod-file-replace": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:06:14.924004-05:00"
+  },
+  "https://go.opentelemetry.io": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-23T20:33:45.025738962Z"
   },
   "https://go.opentelemetry.io/contrib/instrumentation/github.com/Shopify/sarama": {
     "StatusCode": 200,
@@ -7291,6 +7335,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-07T15:44:43.306385+02:00"
   },
+  "https://pkg.go.dev/github.com/jurabek/otelkafka": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-25T09:39:41.322663747Z"
+  },
   "https://pkg.go.dev/github.com/mitchellh/mapstructure": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:06:09.278325-05:00"
@@ -8150,6 +8198,10 @@
   "https://pkg.go.dev/go.opentelemetry.io/otel/bridge/opentracing": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:10:29.862565-05:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-26T18:58:45.152084327Z"
   },
   "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp": {
     "StatusCode": 200,
