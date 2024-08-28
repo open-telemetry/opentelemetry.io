@@ -7,10 +7,7 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description:
-  The Splunk Enterprise Receiver is a pull based tool which enables the
-  ingestion of performance metrics describing the operational status of a user's
-  Splunk Enterprise deployment to an appropriate observability tool.
+description: The Splunk Enterprise Receiver is a pull based tool which enables the ingestion of performance metrics describing the operational status of a user's Splunk Enterprise deployment to an appropriate observability tool.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -19,4 +16,4 @@ createdAt: 2020-11-05
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/splunkenterprisereceiver
-  version: v0.107.0
+  version: v0.108.0
