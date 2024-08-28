@@ -36,7 +36,6 @@ OpenTelemetry en acción.
 | Ruby       |                                                                | [Servicio de Correo Electrónico](services/email/)                                                 | [Servicio de Correo Electrónico](services/email/)                                                 |
 | Rust       |                                                                | [Servicio de Envío](services/shipping/)                                                           | [Servicio de Envío](services/shipping/)                                                           |
 
-
 ## Documentación de los servicios
 
 Puedes encontrar información específica sobre cómo se implementa OpenTelemetry en cada servicio aquí:
