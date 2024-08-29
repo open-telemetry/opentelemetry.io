@@ -26,9 +26,10 @@ get started.
 
 ## Step 1 - Install the builder
 
-The `ocb` binary is available as a downloadable asset from [OpenTelemetry
-Collector releases][releases]. You will find a list of assets named based on OS
-and chipset, so download the one that fits your configuration:
+The `ocb` binary is available as a downloadable asset from OpenTelemetry
+Collector [releases with `cmd/builder` tags][tags]. You will find a list of
+assets named based on OS and chipset, so download the one that fits your
+configuration:
 
 {{< tabpane text=true >}}
 
@@ -223,9 +224,6 @@ Further reading:
 
 [ocb]:
   https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
-[releases]:
-  https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/cmd%2Fbuilder%2F{{%
-
-version-from-registry collector-builder %}}
+[tags]: https://github.com/open-telemetry/opentelemetry-collector-releases/tags
 
 [^1]: Prior to v0.86.0 use the `loggingexporter` instead of `debugexporter`.
