@@ -6,7 +6,9 @@ tags:
   - resource-detector
   - js
 license: Apache 2.0
-description: Resource detector for container ID. Compatible with OpenTelemetry JS API and SDK 1.0+.
+description:
+  Resource detector for container ID. Compatible with OpenTelemetry JS API and
+  SDK 1.0+.
 authors:
   - name: OpenTelemetry Authors
 urls:

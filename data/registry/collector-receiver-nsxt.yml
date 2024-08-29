@@ -7,7 +7,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: This receiver fetches metrics important to run virtual networking using NSX-T. The receiver ingests metrics via the NSX Rest API
+description:
+  This receiver fetches metrics important to run virtual networking using NSX-T.
+  The receiver ingests metrics via the NSX Rest API
 authors:
   - name: OpenTelemetry Authors
 urls:
