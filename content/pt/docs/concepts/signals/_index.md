@@ -5,6 +5,7 @@ aliases:
   - /docs/concepts/data-sources
   - /docs/concepts/otel-concepts
 weight: 11
+default_lang_commit: 08e13eb62f2869300301670675969be705db59ae
 ---
 
 O propósito do OpenTelemetry é coletar, processar e exportar **[sinais][]**.
