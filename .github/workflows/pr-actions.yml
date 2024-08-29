@@ -101,9 +101,16 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
+      - name: Report success and ask to run full checks
+        if: ${{ !failure() && !cancelled() }}
+        run: |
+          gh pr comment $PR_NUM -b "fix:${PR_ACTION} was [successful]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID).\n### NOW RUN `/fix:all` to ensure that there are no other check issues."
+        env:
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+
       - name: Report an error in the case of failure
         if: ${{ failure() || cancelled() }}
         run: |
-          gh pr comment $PR_NUM -b "fix:${PR_ACTION} run failed, please check $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID for details"
+          gh pr comment $PR_NUM -b "fix:${PR_ACTION} failed or was cancelled. For details, see $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID."
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
