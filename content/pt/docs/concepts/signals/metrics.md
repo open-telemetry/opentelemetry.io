@@ -29,7 +29,7 @@ do Meter Provider também inclui a inicialização de Resource e Exporter. Esse 
 tipicamente o primeiro passo para metrificar com OpenTelemetry. Em alguns SDKs,
 um Meter Provider global já é inicializado para sua aplicação.
 
-## Meter (Medidor)
+## Medidor {#meter}
 
 Um Medidor cria [instrumentos de métrica](#metric-instruments), que serão
 responsáveis por capturar dados e medir um serviço em tempo de execução.
@@ -81,7 +81,7 @@ Para visualizar mais instrumentos síncronos, assíncronos, e entender qual dos
 tipos melhor se encaixa no seu caso de uso, veja
 [Diretrizes Suplementares](/docs/specs/otel/metrics/supplementary-guidelines/).
 
-## Agregação
+## Agregação {#aggregation}
 
 Em adicional aos instrumentos de métrica, também é importante entendermos o
 conceito de **agregações**. Uma agergação é uma teçnica pela qual um grande
@@ -113,7 +113,7 @@ métricas fornecidas pelo SDK. Você pode personalizar quais instrumentos de
 métrica devem ser processados ou ignorados. Você também pode customizar a
 agregação e quais atributos deseja reportar em suas métricas.
 
-## Suporte de linguagens de programação
+## Suporte de linguagens de programação {#language-support}
 
 As métricas são sinais
 [estáveis](/docs/specs/otel/versioning-and-stability/#stable) nas especificações
@@ -122,7 +122,7 @@ através do SDK ou API, os status são os seguintes:
 
 {{% signal-support-table "metrics" %}}
 
-## Especificação
+## Especificação {#specification}
 
 Para aprender mais sobre as métricas no OpenTelemetry, veja as
 [especificações de métricas](/docs/specs/otel/overview/#metric-signal).
