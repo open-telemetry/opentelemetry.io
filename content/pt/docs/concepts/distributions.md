@@ -12,7 +12,7 @@ que suportam múltiplos [sinais](../signals). As implementações de referência
 OpenTelemetry estão disponíveis em:
 
 - [Bibliotecas de instrumentação específicas para linguagens de programação](../instrumentation)
-- Um [Coletor binário](/docs/concepts/components/#collector)
+- Um [Collector binário](/docs/concepts/components/#collector)
 
 Qualquer implementação de referência pode ser personalizada como uma
 distribuição.
@@ -50,7 +50,7 @@ As distribuições geralmente se enquadram nas seguintes categorias:
 - **"Minus":** Estas distribuições fornecem um subconjunto de funcionalidades da
   versão pública. Exemplos podem incluir a remoção de bibliotecas de
   instrumentação ou de receptores, processadores, exportadores ou extensões
-  encontradas no projeto do Coletor do OpenTelemetry. Estas distribuições podem
+  encontradas no projeto do OpenTelemetry Collector. Estas distribuições podem
   ser fornecidas para aumentar o suporte e/ou temas relacionados à segurança.
 
 ## Quem pode criar uma distribuição? {#who-can-create-a-distribution}
@@ -79,7 +79,7 @@ referência:
 
 ## Criando a sua própria distribuição {#creating-your-own-distribution}
 
-### Coletor {#collector}
+### Collector
 
 Um guia sobre como criar a sua própria distribuição está disponível nesta
 publicação do blog:
