@@ -5,7 +5,7 @@ description: Uma medição capturada em tempo de execução.
 default_lang_commit: 3446c7ce49a17975b012c302bdd1c89d4902267c
 ---
 
-Uma **métrica** é uma **medição** de um serviço capturada em tempode execução. O
+Uma **métrica** é uma **medição** de um serviço capturada em tempo de execução. O
 momento de captura desta medida é conhecido como **evento de métrica**, que
 consiste não apenas da medição por si só, mas também o tempo em que a captura
 foi feita e os metadados associados.
