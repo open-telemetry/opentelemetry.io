@@ -1707,6 +1707,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:55:51.433612-05:00"
   },
+  "https://docs.pytest.org/en/stable/how-to/monkeypatch.html#monkeypatching-functions": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-30T20:30:04.040534028Z"
+  },
   "https://docs.python.org/3/library/sys.html#sys.implementation": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:02:14.595408-05:00"
