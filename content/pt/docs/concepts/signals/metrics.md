@@ -108,7 +108,7 @@ métricas incluem:
 
 ## Views
 
-Uma view oferece aos usuários a flexibilidade de personalizar a saída das
+Uma _view_ oferece aos usuários a flexibilidade de personalizar a saída das
 métricas fornecidas pelo SDK. Você pode personalizar quais instrumentos de
 métrica devem ser processados ou ignorados. Você também pode customizar a
 agregação e quais atributos deseja reportar em suas métricas.
