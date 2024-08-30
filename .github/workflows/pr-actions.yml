@@ -104,7 +104,11 @@ jobs:
       - name: Report success and ask to run full checks
         if: ${{ !failure() && !cancelled() }}
         run: |
-          gh pr comment $PR_NUM -b "fix:${PR_ACTION} was [successful]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID).\\n### NOW (RE-)RUN \`/fix:all\` to ensure that there are no other check issues."
+          gh pr comment $PR_NUM --body "$(cat <<EOF
+          \`fix:${PR_ACTION}\` was [successful]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID).
+          ### IMPORTANT: (RE-)RUN \`/fix:all\` to ensure that there are no remaining check issues.
+          EOF
+          )"
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
