@@ -3751,6 +3751,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:58.909754-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/tags": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-28T18:43:05.252902-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:36:56.082576-05:00"
