@@ -88,7 +88,7 @@ conceito de **agregações**. Uma agregação é uma técnica pela qual um grand
 número de medições é combinado em estatísticas exatas ou estimadas sobre eventos
 de métricas que ocorreram durante uma janela de tempo. O protocolo OTLP
 transporta essas métricas agregadas. A API do OpenTelemetry fornece uma
-agregação padrão para cada instrumento, que podem ser sobrescritas com o uso de
+agregação padrão para cada instrumento de medição, que podem ser sobrescritas com o uso de
 Views. Por padrão, o projeto OpenTelemetry visa fornecer agregações que sejam
 suportadas por diferentes visualizadores e backends de telemetria.
 
