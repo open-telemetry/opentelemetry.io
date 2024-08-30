@@ -36,7 +36,8 @@ packages installed in your active `site-packages` folder, and installs the
 corresponding instrumentation libraries for these packages, if applicable. For
 example, if you already installed the `flask` package, running
 `opentelemetry-bootstrap -a install` will install
-`opentelemetry-instrumentation-flask` for you.
+`opentelemetry-instrumentation-flask` for you. The OpenTelemetry Python agent 
+will use monkey patching to modify functions in these libraries at runtime.
 
 Running `opentelemetry-bootstrap` without arguments lists the recommended
 instrumentation libraries to be installed. For more information, see
