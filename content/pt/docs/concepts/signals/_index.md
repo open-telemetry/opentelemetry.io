@@ -23,6 +23,6 @@ OpenTelemetry atualmente suporta [rastros](/docs/concepts/signals/traces),
 and [bagagem](/docs/concepts/signals/baggage). Eventos são um tipo específico de
 log, e o
 [perfilamento está sendo trabalhado](https://github.com/open-telemetry/oteps/blob/main/text/profiles/0212-profiling-vision.md)
-pelo Grupo de Trabalho de Perfilamento (Profiling Working Group).
+pelo Grupo de Trabalho de Perfilamento _(Profiling Working Group)_.
 
 [sinais]: /docs/specs/otel/glossary/#signals

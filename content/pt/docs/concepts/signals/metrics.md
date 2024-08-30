@@ -38,9 +38,9 @@ Métricas são criadas a partir de Meter Providers (Medidores).
 ## Metric Exporter
 
 Metric Exporters enviam dados de métricas para um consumidor. Esse consumidor
-pode ser a saída padrão para debugging durante o desenvolvimento, uma instância
-do OpenTelemetry Collector ou qualquer outro backend, seja de código aberto ou
-um vendor de sua escolha.
+pode ser a saída padrão para _debugging_ durante o desenvolvimento, uma
+instância do OpenTelemetry Collector ou qualquer outro backend, seja de código
+aberto ou um fornecedor de sua escolha.
 
 ## Metric Instruments
 
@@ -72,10 +72,9 @@ O tipo de instrumento deve ser um dos seguintes:
   tamanho da fila).
 - **Gauge**: Mede o valor atual no momento da leitura. Um exemplo seria um
   medidor de tanque de combustível de um veículo. Gauges são assíncronos.
-- **Histogram**: Uma agregação de valores client-side, ta como latências de
-  requisições. Um histograma é uma boa escolha se você está interessado em
-  valores de estatísticas. Por exemplo: Quantas requisições estão levando menos
-  de 1s?
+- **Histogram**: Uma agregação de valores, tal como latências de requisições. Um
+  histograma é uma boa escolha se você está interessado em valores de
+  estatísticas. Por exemplo: Quantas requisições estão levando menos de 1s?
 
 Para visualizar mais instrumentos síncronos, assíncronos, e entender qual dos
 tipos melhor se encaixa no seu caso de uso, veja
@@ -88,9 +87,10 @@ conceito de **agregações**. Uma agregação é uma técnica pela qual um grand
 número de medições é combinado em estatísticas exatas ou estimadas sobre eventos
 de métricas que ocorreram durante uma janela de tempo. O protocolo OTLP
 transporta essas métricas agregadas. A API do OpenTelemetry fornece uma
-agregação padrão para cada instrumento de medição, que podem ser sobrescritas com o uso de
-Views. Por padrão, o projeto OpenTelemetry visa fornecer agregações que sejam
-suportadas por diferentes visualizadores e backends de telemetria.
+agregação padrão para cada instrumento de medição, que podem ser sobrescritas
+com o uso de _Views_. Por padrão, o projeto OpenTelemetry visa fornecer
+agregações que sejam suportadas por diferentes visualizadores e backends de
+telemetria.
 
 Ao contrário dos [rastros](/docs/concepts/signals/traces/), que são destinados a
 capturar os ciclos de vida das requisições e fornecer o contexto para as partes
@@ -98,8 +98,9 @@ individuais de uma requisição, as métricas são destinadas a fornecer informa
 estatísticas em forma de dados agregados. Alguns exemplos de caso de uso para as
 métricas incluem:
 
-- Reportar o número total de bytes lidos por um serviço, por tipo de protocolo.
-- Reportar o número total de bytes lidos e os bytes por requisição.
+- Reportar o número total de _bytes_ lidos por um serviço, por tipo de
+  protocolo.
+- Reportar o número total de _bytes_ lidos e os _bytes_ por requisição.
 - Reportar a duração de uma chamada de sistema.
 - Reportar tamanhos de requisições para determinar uma tendência.
 - Reportar o uso de CPU ou memória de um processo.
@@ -108,7 +109,7 @@ métricas incluem:
 
 ## Views
 
-Uma _view_ oferece aos usuários a flexibilidade de personalizar a saída das
+Uma _view_ oferece aos usuários a flexibilidade de personalizar a emissão das
 métricas fornecidas pelo SDK. Você pode personalizar quais instrumentos de
 métrica devem ser processados ou ignorados. Você também pode customizar a
 agregação e quais atributos deseja reportar em suas métricas.
