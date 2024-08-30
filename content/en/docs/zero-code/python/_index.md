@@ -37,7 +37,8 @@ corresponding instrumentation libraries for these packages, if applicable. For
 example, if you already installed the `flask` package, running
 `opentelemetry-bootstrap -a install` will install
 `opentelemetry-instrumentation-flask` for you. The OpenTelemetry Python agent 
-will use monkey patching to modify functions in these libraries at runtime.
+will use [monkey patching](https://docs.pytest.org/en/stable/how-to/monkeypatch.html#monkeypatching-functions) 
+to modify functions in these libraries at runtime.
 
 Running `opentelemetry-bootstrap` without arguments lists the recommended
 instrumentation libraries to be installed. For more information, see
