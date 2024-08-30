@@ -22,7 +22,7 @@ distribuição.
 Uma distribuição é uma versão personalizada de um componente do OpenTelemetry.
 Uma distribuição é um encapsulamento em torno de um repositório do OpenTelemetry
 com algumas personalizações. Distribuições não devem ser confundidas com
-'forks'.
+_forks_.
 
 As personalizações em uma distribuição podem incluir:
 
