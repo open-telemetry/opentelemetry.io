@@ -7,9 +7,8 @@ aliases: [/docs/languages/python/automatic]
 cSpell:ignore: devel distro mkdir myapp pyproject uninstrumented virtualenv Werkzeug
 ---
 
-Automatic instrumentation with Python uses a Python agent that can be attached
-to any Python application. It dynamically injects bytecode to capture telemetry
-from many popular libraries and frameworks.
+Automatic instrumentation with Python uses a Python agent that can be attached to any Python application. 
+This agent primarily uses monkey patching to modify library functions at runtime, allowing for the capture of telemetry data from many popular libraries and frameworks.
 
 ## Setup
 
