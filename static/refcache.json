@@ -911,6 +911,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:17:15.278849-04:00"
   },
+  "https://docs.arize.com/phoenix/tracing/how-to-tracing/setup-tracing/setup-tracing-python": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-30T17:38:37.903633988Z"
+  },
   "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-system-attributes": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:53:50.0122-05:00"
