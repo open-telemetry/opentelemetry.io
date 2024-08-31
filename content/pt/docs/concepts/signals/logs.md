@@ -6,22 +6,21 @@ default_lang_commit: ebc9a3a9f07278110677f4f8f69291a02704746b
 cSpell:ignore: filelogreceiver semistructured transformprocessor
 ---
 
-Um **log** é um registro de texto com uma marcação de data e hora, seja
-estruturado (recomendado) ou não estruturado, com metadados opcionais. Dentre os
+Um **log** é um registro de texto com marcação de data e hora, que pode ser tanto
+estruturado (recomendado) quanto não estruturado, e com metadados opcionais. Dentre os
 sinais de telemetria, os logs têm uma história mais consolidada. A maioria das
-linguagens de programação possui recursos de logging embutidas ou bibliotecas de
-logging bem conhecidas e amplamente utilizadas.
+linguagens de programação possuem recursos nativos ou bibliotecas bem conhecidas e amplamente utilizadas para gerar logs.
 
 ## Logs do OpenTelemetry {#opentelemetry-logs}
 
 O OpenTelemetry não possui uma especificação de API ou SDK própria para gerar
-logs. Em vez disso, os logs no OpenTelemetry são os logs existentes que você já
-possui de um framework de logging ou componente de infraestrutura. Os SDKs e a
+logs. Em vez disso, os logs no OpenTelemetry são os logs que você já
+possui, que foram gerados por um framework de _logging_ ou componente de infraestrutura. Os SDKs e a
 autoinstrumentação do OpenTelemetry utilizam vários componentes para
 correlacionar automaticamente logs com [rastros](/docs/concepts/signals/traces).
 
 O suporte do OpenTelemetry para logs é projetado para ser totalmente compatível
-ao que você já possui, oferecendo a capacidade de adicionar contextos a esses
+com o que você já possui, oferecendo a capacidade de adicionar contextos a esses
 logs e uma série de ferramentas para analisar e manipular logs em um formato
 comum, abrangendo diversas fontes.
 
@@ -35,27 +34,27 @@ trabalhar com logs:
 - O `filelogreceiver`, que lê logs de qualquer arquivo e fornece recursos para
   analisá-los a partir de diferentes formatos ou usar uma expressão regular.
 - _Processors_ como o `transformprocessor`, permite analisar dados aninhados,
-  simplificar estruturas complexas, adicionando/removendo/atualizando valores e
+  simplificar estruturas complexas, adicionar/remover/atualizar valores e
   mais.
 - _Exporters_ permitem emitir dados de log em um formato não OpenTelemetry.
 
 O primeiro passo na adoção do OpenTelemetry frequentemente envolve implantar um
-Collector como um agente de logging de propósito geral.
+Collector como um agente de logging genérico.
 
 ### Logs do OpenTelemetry para aplicações {#opentelemetry-logs-for-applications}
 
-Em aplicações, logs do OpenTelemetry são criados com qualquer biblioteca de
-logging ou recursos integrados de logging. Quando você adiciona
+Em aplicações, logs do OpenTelemetry são criados com qualquer biblioteca 
+ou recursos nativos para geração de logs. Quando você adiciona
 autoinstrumentação ou ativa um SDK, o OpenTelemetry automaticamente correlaciona
-seus logs com os rastros e trechos, incluindo no corpo do log seus IDs. Em
-outras palavras, o OpenTelemetry automaticamente correlaciona seus logs e
-rastros.
+seus logs com os rastros e trechos, incluindo os seus IDs no corpo do log. Em
+outras palavras, o OpenTelemetry automaticamente correlaciona seus logs com os
+seus rastros.
 
-### Suporte a linguagens {#language-support}
+### Linguagens suportadas {#language-support}
 
 Log é um sinal [estável](/docs/specs/otel/versioning-and-stability/#stable) na
-especificação do OpenTelemetry. Para as implementações específicas de cada
-linguagem da API e SDK de Logs, temos o seguinte estado:
+especificação do OpenTelemetry. Para as implementações específicas da API 
+e SDK de Logs em cada linguagem, temos o seguinte estado:
 
 {{% signal-support-table "logs" %}}
 
@@ -117,7 +116,7 @@ frequentemente usado:
 127.0.0.1 - johndoe [04/Aug/2024:12:34:56 -0400] "POST /api/v1/login HTTP/1.1" 200 1234
 ```
 
-Também é comum ter logs estruturados em diferentes formatos juntos. Por exemplo,
+Também é comum ter logs estruturados com uma mistura de formatos. Por exemplo,
 um log no formato _Extended Log Format_ (ELF) pode combinar JSON com os dados
 separados por espaços em um log CLF.
 
@@ -125,14 +124,14 @@ separados por espaços em um log CLF.
 192.168.1.1 - johndoe [04/Aug/2024:12:34:56 -0400] "POST /api/v1/login HTTP/1.1" 200 1234 "http://example.com" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36" {"transactionId": "abcd-efgh-ijkl-mnop", "responseTime": 150, "requestBody": {"username": "johndoe"}, "responseHeaders": {"Content-Type": "application/json"}}
 ```
 
-Para aproveitar ao máximo este log, analise tanto os dados em formato JSON
-quanto os em formato ELF, utilizando um formato compartilhado para facilitar a
-análise em um backend de observabilidade. O `filelogreceiver` no
+Para aproveitar ao máximo este log, transforme tantos os dados formatados em JSON
+quanto os formatados em ELF em um mesmo formato comum para facilitar a
+análise em um backend de observabilidade. O `filelogreceiver` do
 [OpenTelemetry Collector](/docs/collector) contém maneiras padronizadas de
 analisar logs como estes.
 
 Logs estruturados são a melhor forma de usar logs. Por serem emitidos em um
-formato consistente, os logs são analisados diretamente, o que facilita o
+formato consistente, eles são simples de extrair informações, o que facilita o
 pré-processamento no OpenTelemetry Collector, a correlação com outros dados e,
 por fim, a análise em um backend de Observabilidade.
 
@@ -158,17 +157,17 @@ DEBUG - 2024-08-04 09:30:15 - User johndoe performed action: file_upload. Filena
 necessário realizar um trabalho significativo para analisá-los ou processa-los
 antes de serem legíveis por máquinas. Por exemplo, os três logs acima exigirão
 uma expressão regular para analisar a marcação de data e hora e personalizar
-analisadores para extrair de forma consistente os campos da mensagem de log.
-Isso geralmente é necessário para que um _backend_ de logging saiba como
+analisadores para extrair os campos da mensagem de log de forma consistente.
+Isso geralmente é necessário para que um _backend_ de log saiba como
 classificar e organizar os logs por data e hora. Embora seja possível processar
 logs não estruturados para análise, fazer isso pode dar mais trabalho do que
-mudar para logs estruturados, através de um framework de logging padrão em suas
+mudar para logs estruturados, através de um framework de log padrão em suas
 aplicações.
 
 ### Logs Semiestruturados {#semistructured-logs}
 
-Um log semiestruturado é um log que utiliza alguns padrões autoconsistentes para
-distinguir dados de forma que sejam legíveis por máquinas, mas pode não usar o
+Um log semiestruturado é um log que utiliza um padrão interno consistente para
+distinguir dados de forma que sejam legíveis por máquinas, mas que pode não usar o
 mesmo formato e delimitadores entre os dados em diferentes sistemas.
 
 Exemplo de um log semiestruturado:
@@ -178,19 +177,19 @@ Exemplo de um log semiestruturado:
 ```
 
 Embora sejam legíveis por máquinas, logs semiestruturados podem precisar de
-diferentes tipos de analisadores para permitir a interpretação em grande escala.
+diferentes tipos de analisadores para interpretação em grande escala.
 
-## Componentes de logging do OpenTelemetry {#opentelemetry-logging-components}
+## Componentes de logs do OpenTelemetry {#opentelemetry-logging-components}
 
 A seguir estão listados os conceitos e componentes que sustentam o suporte de
-logging do OpenTelemetry.
+log do OpenTelemetry.
 
 ### Conector / Ponte de Log {#log-appender--bridge}
 
-Como desenvolvedor de aplicações, você não deve chamar diretamente a **Logs
-Bridge API**, pois é destinada a desenvolvedores de bibliotecas de logging para
+Como desenvolvedor de aplicações, você não deve chamar diretamente a **API de Logs
+Bridge**, pois ela é destinada a pessoas desenvolvendo bibliotecas de geração de logs que querem
 construir conectores ou pontes de log. Em vez disso, você deve usar sua
-biblioteca de logging preferida e configurá-la para utilizar um conector de log
+biblioteca de log preferida e configurá-la para utilizar um conector de log
 (ou ponte de log) capaz de emitir logs para um OpenTelemetry
 _LogRecordExporter_.
 
@@ -198,26 +197,26 @@ Os SDKs do OpenTelemetry oferecem essa funcionalidade.
 
 ### Logger Provider
 
-> A parte da **Logs Bridge API** deve ser usada apenas por aqueles que
-> desenvolvem uma biblioteca de logging.
+> Parte da **API de Logs Bridge** e deve ser usada apenas se você estiver
+> desenvolvendo uma biblioteca de log.
 
-O Logger Provider (às vezes chamado de _LoggerProvider_) é uma fábrica de
+Um Logger Provider (às vezes chamado de `LoggerProvider`) é uma fábrica de
 `Logger`s. Na maioria dos casos, o Logger Provider é inicializado uma vez, e seu
 ciclo de vida coincide com o ciclo de vida da aplicação. A inicialização do
 Logger Provider também inclui a inicialização do Resource e Exporter.
 
 ### Logger
 
-> A parte da **Logs Bridge API** deve ser usada apenas por aqueles que
-> desenvolvem uma biblioteca de logging.
+> Parte da **API de Logs Bridge** e deve ser usada apenas se você estiver
+> desenvolvendo uma biblioteca de log.
 
 Um Logger cria registros de log. Loggers são criados a partir do Log Providers.
 
 ### Log Record Exporter
 
 Os Log Record Exporters enviam registros de log para um consumidor. Esse
-consumidor pode ser a saída padrão para depuração de desenvolvimento,
-OpenTelemetry Collector ou qualquer backend de código aberto ou de fornecedor de
+consumidor pode ser a saída padrão de um terminal para depuração durante o desenvolvimento,
+o OpenTelemetry Collector, ou qualquer backend de código aberto ou de fornecedor de
 sua escolha.
 
 ### Log Record
