@@ -186,6 +186,12 @@
   contact: https://github.com/cartersocha
   oss: false
   commercial: true
+- name: Last9 Levitate
+  nativeOTLP: true
+  url: https://docs.last9.io/docs/levitate-integrations-opentelemetry
+  contact: hi@last9.io
+  oss: false
+  commercial: true
 - name: LogicMonitor
   nativeOTLP: true
   url: https://www.logicmonitor.com/support/tracing/getting-started-with-tracing

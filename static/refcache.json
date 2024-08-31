@@ -1359,6 +1359,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-06-14T13:15:13.45959329Z"
   },
+  "https://docs.last9.io/docs/levitate-integrations-opentelemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2024-08-29T21:34:44.961120166Z"
+  },
   "https://docs.lightstep.com/docs/about-sending-data": {
     "StatusCode": 206,
     "LastSeen": "2024-05-13T07:15:59.231698318Z"
