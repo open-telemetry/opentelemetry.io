@@ -2227,6 +2227,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:05:05.581183-05:00"
   },
+  "https://forms.gle/LBvyRpNwZvqcJxUbA": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-02T11:58:58.574654+01:00"
+  },
   "https://forms.gle/aUuJg5DQwNzncJ4s8": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:20.36657-05:00"
@@ -9354,6 +9358,10 @@
   "https://vapor.codes": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:05:03.5069-05:00"
+  },
+  "https://vote.heliosvoting.org/helios/elections/176e7ca8-647d-11ef-9b9a-2a30e2a223da/view": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-02T11:59:00.266487+01:00"
   },
   "https://vote.heliosvoting.org/helios/elections/1ee70ee4-11ce-11ee-aaf8-0a8c9aac83f9/view": {
     "StatusCode": 200,
