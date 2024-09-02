@@ -27,7 +27,7 @@ participate in the election before 23:59 UTC on 18 October 2024. The voter roll
 with all members of standing and approved exceptions will be published by 4
 October 2024 and continuously updated until the exception deadline.
 
-Voting will be open between 00:00 UTC on 21 October 2024 00:00 UTC and 23
+Voting will be open between 21 October 2024 00:00 UTC and 23
 October 2024 23:59 UTC on
 [Helios Voting](https://vote.heliosvoting.org/helios/elections/176e7ca8-647d-11ef-9b9a-2a30e2a223da/view);
 voters will need to sign in with their GitHub account.
