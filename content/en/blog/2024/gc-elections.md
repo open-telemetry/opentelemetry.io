@@ -7,24 +7,24 @@ aliases: [gc-elections-2024]
 ---
 
 The OpenTelemetry project is excited to announce the 2024 OpenTelemetry
-Governance Committee (GC) election. Nominations are due by 11 October 2024
-23:59 UTC. The list of eligible candidates will be shared on 14 October 2024.
-Voting will take place between 21 October 2024 00:00 UTC and 23 October 2024
-23:59 UTC, and the final election results will be announced 25 October 2024.
+Governance Committee (GC) election. Nominations are due by 11 October 2024 23:59
+UTC. The list of eligible candidates will be shared on 14 October 2024. Voting
+will take place between 21 October 2024 00:00 UTC and 23 October 2024 23:59 UTC,
+and the final election results will be announced 25 October 2024.
 
 ## Vote!
 
 If you are a
 [member of standing](https://github.com/open-telemetry/community/blob/main/governance-charter.md#members-of-standing)
 in the OpenTelemetry community, we invite you to participate with your vote in
-this election to ensure that the community is well-represented in the
-Governance Committee. In this election four people must be elected, each with
-two-year terms.
+this election to ensure that the community is well-represented in the Governance
+Committee. In this election four people must be elected, each with two-year
+terms.
 
 If you have made contributions to our ecosystem not measured by the automatic
-process, you can [request an exception](https://forms.gle/LBvyRpNwZvqcJxUbA)
-to participate in the election before 23:59 UTC on 18 October 2024. The voter
-roll with all members of standing and approved exceptions will be published by 4
+process, you can [request an exception](https://forms.gle/LBvyRpNwZvqcJxUbA) to
+participate in the election before 23:59 UTC on 18 October 2024. The voter roll
+with all members of standing and approved exceptions will be published by 4
 October 2024 and continuously updated until the exception deadline.
 
 Voting will be open between 00:00 UTC on 21 October 2024 00:00 UTC and 23
@@ -57,8 +57,9 @@ Dyla, Morgan McLean, and Trask Stalnaker.
 ## Questions?
 
 For any election related questions, please file an issue on the
-[community repository](https://github.com/open-telemetry/community/issues) tagging the `@open-telemetry/otel-elections` team,
-email us at [cncf-opentelemetry-governance@lists.cncf.io](mailto:cncf-opentelemetry-governance@lists.cncf.io),
+[community repository](https://github.com/open-telemetry/community/issues)
+tagging the `@open-telemetry/otel-elections` team, email us at
+[cncf-opentelemetry-governance@lists.cncf.io](mailto:cncf-opentelemetry-governance@lists.cncf.io),
 or reach out to us on [CNCF Slack](https://slack.cncf.io/) in
 [#opentelemetry](https://cloud-native.slack.com/archives/CJFCJHG4Q) if you have
 an urgent access issue during voting.
