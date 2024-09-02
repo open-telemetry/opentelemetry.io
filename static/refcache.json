@@ -911,6 +911,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:17:15.278849-04:00"
   },
+  "https://docs.arize.com/phoenix/tracing/how-to-tracing/setup-tracing/setup-tracing-python": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-30T17:38:37.903633988Z"
+  },
   "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-system-attributes": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:53:50.0122-05:00"
@@ -1354,6 +1358,10 @@
   "https://docs.kubewarden.io/howtos/telemetry/opentelemetry-qs": {
     "StatusCode": 206,
     "LastSeen": "2024-06-14T13:15:13.45959329Z"
+  },
+  "https://docs.last9.io/docs/levitate-integrations-opentelemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2024-08-29T21:34:44.961120166Z"
   },
   "https://docs.lightstep.com/docs/about-sending-data": {
     "StatusCode": 206,
@@ -6230,6 +6238,10 @@
   "https://medium.com/jaegertracing/introducing-native-support-for-opentelemetry-in-jaeger-eb661be8183c": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:08.8723-05:00"
+  },
+  "https://medium.com/mercadolibre-tech/building-a-large-scale-observability-ecosystem-1edf654b249e": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-30T21:14:17.571891031Z"
   },
   "https://medium.com/opentelemetry": {
     "StatusCode": 200,
