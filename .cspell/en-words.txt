@@ -107,6 +107,8 @@ recommendationservice
 redis
 relref
 Rexed
+runbook
+runbooks
 Rynn
 semconv
 servlet

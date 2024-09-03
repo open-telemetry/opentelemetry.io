@@ -323,6 +323,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-02-26T10:53:38.116124+01:00"
   },
+  "https://checkmk.com": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-26T19:11:38.75527-04:00"
+  },
+  "https://checkmk.com/werk/16565": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-26T18:57:00.215281-04:00"
+  },
   "https://circleci.com": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T05:18:29.78394-05:00"
@@ -366,6 +374,10 @@
   "https://cloud-native.slack.com/archives/C01NP3BV26R": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:53:45.990809-05:00"
+  },
+  "https://cloud-native.slack.com/archives/C01NPAXACKT": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-23T20:33:45.460332059Z"
   },
   "https://cloud-native.slack.com/archives/C01NR1YLSE7": {
     "StatusCode": 200,
@@ -899,6 +911,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:17:15.278849-04:00"
   },
+  "https://docs.arize.com/phoenix/tracing/how-to-tracing/setup-tracing/setup-tracing-python": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-30T17:38:37.903633988Z"
+  },
   "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-system-attributes": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:53:50.0122-05:00"
@@ -1343,6 +1359,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-06-14T13:15:13.45959329Z"
   },
+  "https://docs.last9.io/docs/levitate-integrations-opentelemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2024-08-29T21:34:44.961120166Z"
+  },
   "https://docs.lightstep.com/docs/about-sending-data": {
     "StatusCode": 206,
     "LastSeen": "2024-05-13T07:15:59.231698318Z"
@@ -1691,6 +1711,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:55:51.433612-05:00"
   },
+  "https://docs.pytest.org/en/stable/how-to/monkeypatch.html#monkeypatching-functions": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-30T20:30:04.040534028Z"
+  },
   "https://docs.python.org/3/library/sys.html#sys.implementation": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:02:14.595408-05:00"
@@ -1975,6 +1999,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:01:58.409935-05:00"
   },
+  "https://en.wikipedia.org/wiki/Monkey_patch": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-03T10:27:02.096473305Z"
+  },
   "https://en.wikipedia.org/wiki/Monkey_patch#:~:text=Monkey%20patching%20is%20a%20technique,Python%2C%20Groovy%2C%20etc.": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:15.493598-05:00"
@@ -2215,6 +2243,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:05:05.581183-05:00"
   },
+  "https://forms.gle/LBvyRpNwZvqcJxUbA": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-02T11:58:58.574654+01:00"
+  },
   "https://forms.gle/aUuJg5DQwNzncJ4s8": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:20.36657-05:00"
@@ -2334,6 +2366,10 @@
   "https://github.com/Causely/documentation": {
     "StatusCode": 200,
     "LastSeen": "2024-03-15T20:34:22.210208944Z"
+  },
+  "https://github.com/Checkmk/checkmk": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-26T18:57:03.140376-04:00"
   },
   "https://github.com/ChrsMark": {
     "StatusCode": 200,
@@ -3535,6 +3571,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-05-03T07:21:04.501478-07:00"
   },
+  "https://github.com/open-telemetry/community/issues/2260": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-23T20:33:47.852068252Z"
+  },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:16.771654-05:00"
@@ -3730,6 +3770,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.88.0": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:58.909754-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/tags": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-28T18:43:05.252902-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/": {
     "StatusCode": 200,
@@ -4146,6 +4190,14 @@
   "https://github.com/open-telemetry/opentelemetry-go-instrumentation/": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:44:15.667174-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-vanityurls": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-23T20:33:46.750242014Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-vanityurls/issues/new": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-26T22:28:51.200439921Z"
   },
   "https://github.com/open-telemetry/opentelemetry-go/compare/v1.18.0...v1.19.0": {
     "StatusCode": 200,
@@ -5339,6 +5391,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:06:14.924004-05:00"
   },
+  "https://go.opentelemetry.io": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-23T20:33:45.025738962Z"
+  },
   "https://go.opentelemetry.io/contrib/instrumentation/github.com/Shopify/sarama": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:16:02.15181-05:00"
@@ -6194,6 +6250,10 @@
   "https://medium.com/jaegertracing/introducing-native-support-for-opentelemetry-in-jaeger-eb661be8183c": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:08.8723-05:00"
+  },
+  "https://medium.com/mercadolibre-tech/building-a-large-scale-observability-ecosystem-1edf654b249e": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-30T21:14:17.571891031Z"
   },
   "https://medium.com/opentelemetry": {
     "StatusCode": 200,
@@ -8167,6 +8227,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:10:29.862565-05:00"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-26T18:58:45.152084327Z"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp": {
     "StatusCode": 200,
     "LastSeen": "2024-04-25T07:21:16.712986-07:00"
@@ -9318,6 +9382,10 @@
   "https://vapor.codes": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:05:03.5069-05:00"
+  },
+  "https://vote.heliosvoting.org/helios/elections/176e7ca8-647d-11ef-9b9a-2a30e2a223da/view": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-02T11:59:00.266487+01:00"
   },
   "https://vote.heliosvoting.org/helios/elections/1ee70ee4-11ce-11ee-aaf8-0a8c9aac83f9/view": {
     "StatusCode": 200,
