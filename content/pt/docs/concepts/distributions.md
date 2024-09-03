@@ -44,14 +44,14 @@ As distribuições geralmente se enquadram nas seguintes categorias:
   facilidade de uso ou configurações. Estas personalizações podem ser
   específicas para backends, fornecedores ou usuários finais.
 - **"Plus":** Estas distribuições oferecem funcionalidades adicionais ao que é
-  encontrado na upstream, através de componentes adicionais. Exemplos
-  incluem bibliotecas de instrumentação ou exportadores de fornecedores que não
-  foram incluídos na upstream do OpenTelemetry.
+  encontrado na upstream, através de componentes adicionais. Exemplos incluem
+  bibliotecas de instrumentação ou exportadores de fornecedores que não foram
+  incluídos na upstream do OpenTelemetry.
 - **"Minus":** Estas distribuições fornecem um subconjunto de funcionalidades da
-  upstream. Exemplos podem incluir a remoção de bibliotecas de
-  instrumentação ou de receptores, processadores, exportadores ou extensões
-  encontradas no projeto do OpenTelemetry Collector. Estas distribuições podem
-  ser fornecidas para aumentar o suporte e/ou temas relacionados à segurança.
+  upstream. Exemplos podem incluir a remoção de bibliotecas de instrumentação ou
+  de receptores, processadores, exportadores ou extensões encontradas no projeto
+  do OpenTelemetry Collector. Estas distribuições podem ser fornecidas para
+  aumentar o suporte e/ou temas relacionados à segurança.
 
 ## Quem pode criar uma distribuição? {#who-can-create-a-distribution}
 
@@ -59,8 +59,8 @@ Qualquer pessoa pode criar uma distribuição. Atualmente, diversos
 [fornecedores](/ecosystem/vendors/) oferecem
 [distribuições](/ecosystem/distributions). Além disso, os usuários finais podem
 considerar criar uma distribuição caso queiram usar componentes no
-[Registry](/ecosystem/registry) que não foram incluídos na upstream do
-projeto do OpenTelemetry.
+[Registry](/ecosystem/registry) que não foram incluídos na upstream do projeto
+do OpenTelemetry.
 
 ## Contribuição ou distribuição? {#contribution-or-distribution}
 
@@ -99,14 +99,16 @@ instrumentação:
 
 ## Siga as diretrizes {#follow-the-guidelines}
 
-Ao utilizar materiais relacionados ao projeto do OpenTelemetry para distribuição,
-como logotipo e nome, certifique-se de estar alinhado com as [Diretrizes de
-Marketing do OpenTelemetry para Organizações Contribuintes][diretrizes] .
+Ao utilizar materiais relacionados ao projeto do OpenTelemetry para
+distribuição, como logotipo e nome, certifique-se de estar alinhado com as
+[Diretrizes de Marketing do OpenTelemetry para Organizações
+Contribuintes][diretrizes] .
 
-O projeto do OpenTelemetry não certifica distribuições neste momento. No futuro, o
-OpenTelemetry poderá certificar distribuições e parceiros de maneira semelhante
-ao que ocorre no projeto Kubernetes. Ao avaliar uma distribuição, assegure-se de
-que seu uso não irá resultar em uma dependência de fornecedor (vendor lock-in).
+O projeto do OpenTelemetry não certifica distribuições neste momento. No futuro,
+o OpenTelemetry poderá certificar distribuições e parceiros de maneira
+semelhante ao que ocorre no projeto Kubernetes. Ao avaliar uma distribuição,
+assegure-se de que seu uso não irá resultar em uma dependência de fornecedor
+(vendor lock-in).
 
 > Qualquer suporte para uma distribuição deve ser fornecido diretamente pelos
 > seus autores e não por autores do projeto do OpenTelemetry.
