@@ -56,7 +56,7 @@ uma taxa de amostragem de 1% ou menos represente com bastante precisão os outro
 
 Considere usar amostragem se você atender a qualquer um dos seguintes critérios:
 
-- Você gera 1000 ou mais rastros por segundo.
+- Você gera 1.000 ou mais rastros por segundo.
 - A maior parte dos seus rastros representa tráfego saudável com pouca variação
   nos dados.
 - Você tem alguns critérios comuns, como erros ou alta latência, que geralmente
