@@ -82,7 +82,7 @@ tipos melhor se encaixa no seu caso de uso, veja
 
 ## Agregação {#aggregation}
 
-Em adicional aos instrumentos de métrica, também é importante entendermos o
+Além dos instrumentos de métrica, também é importante entendermos o
 conceito de **agregações**. Uma agregação é uma técnica pela qual um grande
 número de medições é combinado em estatísticas exatas ou estimadas sobre eventos
 de métricas que ocorreram durante uma janela de tempo. O protocolo OTLP
