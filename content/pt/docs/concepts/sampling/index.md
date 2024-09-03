@@ -197,7 +197,7 @@ O OpenTelemetry Collector inclui os seguintes processadores de amostragem:
 - [Processador de Amostragem Probabilística](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/probabilisticsamplerprocessor)
 - [Processador de Amostragem de Cauda](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)
 
-### SDKs de Linguagens
+### SDKs de Linguagens de programação
 
 Para as implementações específicas de cada linguagem da API e SDK do
 OpenTelemetry, você vai encontrar suporte para amostragem nas respectivas
