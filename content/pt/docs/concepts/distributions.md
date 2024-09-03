@@ -85,7 +85,7 @@ Um guia sobre como criar a sua própria distribuição está disponível nesta
 publicação do blog:
 ["Building your own OpenTelemetry Collector distribution"](https://medium.com/p/42337e994b63)
 
-Caso você esteja criando a sua própria distriuição, o
+Caso você esteja criando a sua própria distribuição, o
 [OpenTelemetry Collector Builder](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder)
 pode ser um bom ponto de partida.
 
