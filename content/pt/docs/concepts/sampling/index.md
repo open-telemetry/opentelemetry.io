@@ -184,7 +184,7 @@ com a Amostragem de Cabeça. Por exemplo, um conjunto de serviços que produz um
 volume extremamente alto de dados de rastreamento pode primeiro usar a
 amostragem de cabeça para amostrar apenas uma pequena porcentagem dos rastros e,
 posteriormente, no _pipeline_ de telemetria usar a amostragem de cauda para tomar
-decisões de amostragem mais sofisticadas antes de exportar para um backend. Isso
+decisões de amostragem mais sofisticadas antes de exportar para um _backend_. Isso
 é frequentemente feito com o intuito de proteger o _pipeline_ de telemetria contra
 sobrecarga.
 
