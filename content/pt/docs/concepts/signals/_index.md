@@ -20,7 +20,7 @@ sob diferentes ângulos.
 
 OpenTelemetry atualmente suporta [rastros](/docs/concepts/signals/traces),
 [métricas](/docs/concepts/signals/metrics), [logs](/docs/concepts/signals/logs)
-and [bagagem](/docs/concepts/signals/baggage). Eventos são um tipo específico de
+e [bagagem](/docs/concepts/signals/baggage). Eventos são um tipo específico de
 log, e o
 [perfilamento está sendo trabalhado](https://github.com/open-telemetry/oteps/blob/main/text/profiles/0212-profiling-vision.md)
 pelo Grupo de Trabalho de Perfilamento _(Profiling Working Group)_.
