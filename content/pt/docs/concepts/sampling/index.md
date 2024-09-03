@@ -25,7 +25,7 @@ da amostragem correta.
 ou trecho é considerado "amostrado" ou "não amostrado":
 
 - **Amostrado**: Um rastro ou trecho é processado e exportado. Por ter sido
-  escolhido pelo amostrador como um representante da população, ele é
+  escolhido pelo amostrador como representativo do conjunto de dados, ele é
   considerado "amostrado".
 - **Não amostrado**: Um rastro ou trecho não é processado ou exportado. Por não
   ter sido escolhido pelo amostrador, ele é considerado "não amostrado".
