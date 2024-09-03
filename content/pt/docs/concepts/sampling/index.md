@@ -83,7 +83,7 @@ se atender a qualquer um dos seguintes critérios:
   menos).
 - Você só usa dados de observabilidade de forma agregada e, portanto, pode
   pré-agregar os dados.
-- Você está limitado por circunstâncias como regulamentações que proíbem
+- Você está limitado por outros fatores, como por exemplo, regulamentações que proíbem
   descartar dados (e não pode rotear dados não amostrados para armazenamento de
   baixo custo).
 
