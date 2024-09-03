@@ -52,8 +52,8 @@ We'll need a few other dependencies that Phoenix doesn't come with.
 - `opentelemetry_phoenix`: creates OpenTelemetry spans from the Elixir
   `:telemetry` events created by Phoenix.
 - `opentelemetry_cowboy`: creates OpenTelemetry spans from the Elixir
-  `:telemetry` events created by the Cowboy web server (which is used by
-  Phoenix).
+  `:telemetry` events created by the Cowboy web server, which is used by
+  Phoenix.
 
 ```elixir
 # mix.exs
