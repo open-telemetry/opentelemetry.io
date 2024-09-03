@@ -22,7 +22,7 @@ da amostragem correta.
 ## Terminologia
 
 É importante usar uma terminologia consistente ao discutir amostragem. Um rastro
-ou trecho é considerado "amostrado" ou "não amostrado":
+ou trecho é considerado "amostrado" _(sampled)_ ou "não amostrado" _(not sampled)_:
 
 - **Amostrado**: Um rastro ou trecho é processado e exportado. Por ter sido
   escolhido pelo amostrador como representativo do conjunto de dados, ele é
