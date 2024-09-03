@@ -2,12 +2,12 @@
 title: Distribuições
 description: >-
   Uma distribuição, que não deve ser confundida com um fork, é uma versão
-  customizada de um componente OpenTelemetry.
+  customizada de um componente do OpenTelemetry.
 weight: 190
 default_lang_commit: 2f34c456ab38b4d3502cd07bc36fa1455d4ef875
 ---
 
-Os projetos OpenTelemetry consistem em múltiplos [componentes](../components)
+Os projetos do OpenTelemetry consistem em múltiplos [componentes](../components)
 que suportam múltiplos [sinais](../signals). As implementações de referência do
 OpenTelemetry estão disponíveis em:
 
