@@ -38,7 +38,7 @@ Métricas são criadas a partir de Meter Providers (Medidores).
 ## Metric Exporter
 
 Metric Exporters enviam dados de métricas para um consumidor. Esse consumidor
-pode ser a saída padrão para _debugging_ durante o desenvolvimento, uma
+pode ser a saída padrão para depuração durante o desenvolvimento, uma
 instância do OpenTelemetry Collector ou qualquer outro backend, seja de código
 aberto ou um fornecedor de sua escolha.
 
