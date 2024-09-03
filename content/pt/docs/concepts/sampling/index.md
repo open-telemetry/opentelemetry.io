@@ -1,18 +1,18 @@
 ---
 title: Amostragem
 description:
-  Aprenda sobre amostragem e as diferentes opções de amostragem disponíves em
+  Aprenda sobre amostragem e as diferentes opções de amostragem disponíveis no
   OpenTelemetry.
 weight: 80
 default_lang_commit: de60a8e2c5098e47eda3e12b006c5490bdb8a94e
 ---
 
 Com [rastros](/docs/concepts/signals/traces), você pode observar as requisições
-conforme elas se movem de um serviço para outro em um sistema distribuído.
+à medida que se movem de um serviço para outro em um sistema distribuído.
 Rastreamento é altamente prático tanto para análises de alto nível quanto para
 análises aprofundadas de sistemas.
 
-Contudo, se a grande maioria das suas requisições é bem sucedidas e terminam com
+Contudo, se a grande maioria das suas requisições é bem-sucedidas e terminam com
 uma latência aceitável e sem erros, você não precisa de 100% dos seus rastros
 para observar de forma significativa suas aplicações e sistemas. Você só precisa
 da amostragem correta.
@@ -22,10 +22,10 @@ da amostragem correta.
 ## Terminologia
 
 É importante usar uma terminologia consistente ao discutir amostragem. Um rastro
-ou trecho é considerado "amostrado" ou "não amostrado":
+ou trecho é considerado "amostrado" _(sampled)_ ou "não amostrado" _(not sampled)_:
 
 - **Amostrado**: Um rastro ou trecho é processado e exportado. Por ter sido
-  escolhido pelo amostrador como um representante da população, ele é
+  escolhido pelo amostrador como representativo do conjunto de dados, ele é
   considerado "amostrado".
 - **Não amostrado**: Um rastro ou trecho não é processado ou exportado. Por não
   ter sido escolhido pelo amostrador, ele é considerado "não amostrado".
@@ -56,7 +56,7 @@ uma taxa de amostragem de 1% ou menos represente com bastante precisão os outro
 
 Considere usar amostragem se você atender a qualquer um dos seguintes critérios:
 
-- Você gera 1000 ou mais rastros por segundo.
+- Você gera 1.000 ou mais rastros por segundo.
 - A maior parte dos seus rastros representa tráfego saudável com pouca variação
   nos dados.
 - Você tem alguns critérios comuns, como erros ou alta latência, que geralmente
@@ -79,28 +79,28 @@ então a amostragem geralmente vale a pena.
 A amostragem pode não servir para você. Você talvez queira evitar a amostragem
 se atender a qualquer um dos seguintes critérios:
 
-- Você gera muito pouco dados (dezenas de pequenos rastros por segundo ou
+- Você gera poucos dados (dezenas de pequenos rastros por segundo ou
   menos).
 - Você só usa dados de observabilidade de forma agregada e, portanto, pode
   pré-agregar os dados.
-- Você está limitado por circunstâncias como regulamentações que proíbem
+- Você está limitado por outros fatores, como por exemplo, regulamentações que proíbem
   descartar dados (e não pode rotear dados não amostrados para armazenamento de
   baixo custo).
 
 Por fim, considere os seguintes três custos associados à amostragem:
 
 1. O custo direto de computação para amostrar dados de forma eficaz, como um
-   proxy de amostragem de cauda.
+   _proxy_ de amostragem de cauda.
 2. O custo indireto de engenharia para manter metodologias de amostragem
    eficazes à medida que mais aplicações, sistemas e dados são envolvidos.
 3. O custo indireto de oportunidade de perder informações críticas com técnicas
    de amostragem ineficazes.
 
 A amostragem, embora eficaz na redução dos custos de observabilidade, pode
-introduzir outros custos inesperados se não for realizada de corretamente.
+introduzir outros custos inesperados se não for realizada corretamente.
 Poderia ser mais barato alocar mais recursos para observabilidade, seja com um
 fornecedor ou com computação ao hospedar por conta própria, dependendo do seu
-backend de observabilidade, da natureza dos seus dados e das suas tentativas de
+_backend_ de observabilidade, da natureza dos seus dados e das suas tentativas de
 realizar amostragem de forma eficaz.
 
 ## Amostragem de Cabeça
@@ -122,7 +122,7 @@ As vantagens da amostragem de cabeça são:
 - Fácil de entender
 - Fácil de configurar
 - Eficiente
-- Pode ser feita em qualquer ponto do pipeline de coleta de rastreios
+- Pode ser feita em qualquer ponto do _pipeline_ de coleta de rastreios
 
 A principal desvantagem da amostragem de cabeça é que não é possível tomar uma
 decisão de amostragem com base nos dados do rastreio inteiro. Por exemplo, você
@@ -183,9 +183,9 @@ Por fim, para alguns sistemas, a amostragem de cauda pode ser usada em conjunto
 com a Amostragem de Cabeça. Por exemplo, um conjunto de serviços que produz um
 volume extremamente alto de dados de rastreamento pode primeiro usar a
 amostragem de cabeça para amostrar apenas uma pequena porcentagem dos rastros e,
-posteriormente, no pipeline de telemetria usar a amostragem de cauda para tomar
-decisões de amostragem mais sofisticadas antes de exportar para um backend. Isso
-é frequentemente feito com o intuito de proteger o pipeline de telemetria contra
+posteriormente, no _pipeline_ de telemetria usar a amostragem de cauda para tomar
+decisões de amostragem mais sofisticadas antes de exportar para um _backend_. Isso
+é frequentemente feito com o intuito de proteger o _pipeline_ de telemetria contra
 sobrecarga.
 
 ## Suporte
@@ -197,7 +197,7 @@ O OpenTelemetry Collector inclui os seguintes processadores de amostragem:
 - [Processador de Amostragem Probabilística](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/probabilisticsamplerprocessor)
 - [Processador de Amostragem de Cauda](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)
 
-### SDKs de Linguagens
+### SDKs de Linguagens de programação
 
 Para as implementações específicas de cada linguagem da API e SDK do
 OpenTelemetry, você vai encontrar suporte para amostragem nas respectivas
@@ -210,6 +210,6 @@ páginas de documentação:
 Muitos [fornecedores](/ecosystem/vendors) oferecem soluções abrangentes de
 amostragem que incorporam amostragem de cabeça, amostragem de cauda e outros
 recursos que podem atender a necessidades sofisticadas de amostragem. Essas
-soluções também podem ser otimizadas especificamente para o backend do
+soluções também podem ser otimizadas especificamente para o _backend_ do
 fornecedor. Se você está enviando telemetria para um fornecedor, considere usar
 as soluções de amostragem deles.
