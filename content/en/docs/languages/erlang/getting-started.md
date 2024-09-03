@@ -51,14 +51,9 @@ We'll need a few other dependencies that Phoenix doesn't come with.
   OpenTelemetry Collector and/or to self-hosted or commercial services.
 - `opentelemetry_phoenix`: creates OpenTelemetry spans from the Elixir
   `:telemetry` events created by Phoenix.
-- web server dependencies: There are currently two options for web servers and
-  each has their telemetry counterpart. Phoenix applications post 1.7.11 default
-  to Bandit while pre 1.7.11 default to Cowboy. Both choices are valid. Use one
-  of the below options based on the web server your Phoenix application uses:
-  - `opentelemetry_cowboy`: creates OpenTelemetry spans from the Elixir
-    `:telemetry` events created by the Cowboy web server
-  - `opentelemetry_bandit`: creates OpenTelemetry spans from the Elixir
-    `:telemetry` events created by the Bandit web server
+- `opentelemetry_cowboy`: creates OpenTelemetry spans from the Elixir
+  `:telemetry` events created by the Cowboy web server (which is used by
+  Phoenix).
 
 ```elixir
 # mix.exs
@@ -69,10 +64,7 @@ def deps do
     {:opentelemetry_api, "~> {{% param versions.otelApi %}}"},
     {:opentelemetry_exporter, "~> {{% param versions.otelExporter %}}"},
     {:opentelemetry_phoenix, "~> {{% param versions.otelPhoenix %}}"},
-    # for Cowboy
-    {:opentelemetry_cowboy, "~> {{% param versions.otelCowboy %}}"}
-    # for Bandit
-    {:opentelemetry_bandit, "~> {{% version-from-registry instrumentation-erlang-bandit %}}"},
+    {:opentelemetry_cowboy, "~> {{% param versions.otelCowboy %}}"},
     {:opentelemetry_ecto, "~> {{% param versions.otelEcto %}}"} # if using ecto
   ]
 end
@@ -84,12 +76,8 @@ The last three also need to be setup when your application starts:
 # application.ex
 @impl true
 def start(_type, _args) do
-  # Depending on what webserver you are using, you will either use:
   :opentelemetry_cowboy.setup()
   OpentelemetryPhoenix.setup(adapter: :cowboy2)
-  # or
-  OpentelemetryBandit.setup()
-  OpentelemetryPhoenix.setup(adapter: :bandit)
   OpentelemetryEcto.setup([:dice_game, :repo]) # if using ecto
 end
 ```
