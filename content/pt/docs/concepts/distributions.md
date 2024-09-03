@@ -101,7 +101,7 @@ instrumentação:
 
 Ao utilizar materiais relacionados ao projeto OpenTelemetry para distribuição,
 como logotipo e nome, certifique-se de estar alinhado com as [Diretrizes de
-Marketing do Open Telemetry para Organizações Contribuintes][diretrizes] .
+Marketing do OpenTelemetry para Organizações Contribuintes][diretrizes] .
 
 O projeto OpenTelemetry não certifica distribuições neste momento. No futuro, o
 OpenTelemetry poderá certificar distribuições e parceiros de maneira semelhante
