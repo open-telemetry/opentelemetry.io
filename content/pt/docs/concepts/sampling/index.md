@@ -12,7 +12,7 @@ Com [rastros](/docs/concepts/signals/traces), você pode observar as requisiçõ
 Rastreamento é altamente prático tanto para análises de alto nível quanto para
 análises aprofundadas de sistemas.
 
-Contudo, se a grande maioria das suas requisições é bem sucedidas e terminam com
+Contudo, se a grande maioria das suas requisições é bem-sucedidas e terminam com
 uma latência aceitável e sem erros, você não precisa de 100% dos seus rastros
 para observar de forma significativa suas aplicações e sistemas. Você só precisa
 da amostragem correta.
