@@ -210,6 +210,6 @@ páginas de documentação:
 Muitos [fornecedores](/ecosystem/vendors) oferecem soluções abrangentes de
 amostragem que incorporam amostragem de cabeça, amostragem de cauda e outros
 recursos que podem atender a necessidades sofisticadas de amostragem. Essas
-soluções também podem ser otimizadas especificamente para o backend do
+soluções também podem ser otimizadas especificamente para o _backend_ do
 fornecedor. Se você está enviando telemetria para um fornecedor, considere usar
 as soluções de amostragem deles.
