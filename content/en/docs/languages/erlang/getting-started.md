@@ -70,7 +70,7 @@ def deps do
 end
 ```
 
-The last three also need to be setup when your application starts:
+The last two also need to be setup when your application starts:
 
 ```elixir
 # application.ex
