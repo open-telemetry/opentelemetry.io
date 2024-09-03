@@ -38,9 +38,9 @@ Métricas são criadas a partir de Meter Providers (Medidores).
 ## Metric Exporter
 
 Metric Exporters enviam dados de métricas para um consumidor. Esse consumidor
-pode ser a saída padrão para depuração durante o desenvolvimento, uma
-instância do OpenTelemetry Collector ou qualquer outro backend, seja de código
-aberto ou um fornecedor de sua escolha.
+pode ser a saída padrão para depuração durante o desenvolvimento, uma instância
+do OpenTelemetry Collector ou qualquer outro backend, seja de código aberto ou
+um fornecedor de sua escolha.
 
 ## Metric Instruments
 
@@ -82,15 +82,14 @@ tipos melhor se encaixa no seu caso de uso, veja
 
 ## Agregação {#aggregation}
 
-Além dos instrumentos de métrica, também é importante entendermos o
-conceito de **agregações**. Uma agregação é uma técnica pela qual um grande
-número de medições é combinado em estatísticas exatas ou estimadas sobre eventos
-de métricas que ocorreram durante uma janela de tempo. O protocolo OTLP
-transporta essas métricas agregadas. A API do OpenTelemetry fornece uma
-agregação padrão para cada instrumento de medição, que podem ser sobrescritas
-com o uso de _Views_. Por padrão, o projeto OpenTelemetry visa fornecer
-agregações que sejam suportadas por diferentes visualizadores e backends de
-telemetria.
+Além dos instrumentos de métrica, também é importante entendermos o conceito de
+**agregações**. Uma agregação é uma técnica pela qual um grande número de
+medições é combinado em estatísticas exatas ou estimadas sobre eventos de
+métricas que ocorreram durante uma janela de tempo. O protocolo OTLP transporta
+essas métricas agregadas. A API do OpenTelemetry fornece uma agregação padrão
+para cada instrumento de medição, que podem ser sobrescritas com o uso de
+_Views_. Por padrão, o projeto OpenTelemetry visa fornecer agregações que sejam
+suportadas por diferentes visualizadores e backends de telemetria.
 
 Ao contrário dos [rastros](/docs/concepts/signals/traces/), que são destinados a
 capturar os ciclos de vida das requisições e fornecer o contexto para as partes
