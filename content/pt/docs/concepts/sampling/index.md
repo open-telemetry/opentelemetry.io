@@ -79,7 +79,7 @@ então a amostragem geralmente vale a pena.
 A amostragem pode não servir para você. Você talvez queira evitar a amostragem
 se atender a qualquer um dos seguintes critérios:
 
-- Você gera muito pouco dados (dezenas de pequenos rastros por segundo ou
+- Você gera poucos dados (dezenas de pequenos rastros por segundo ou
   menos).
 - Você só usa dados de observabilidade de forma agregada e, portanto, pode
   pré-agregar os dados.
