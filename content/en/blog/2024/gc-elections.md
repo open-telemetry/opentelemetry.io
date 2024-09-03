@@ -1,7 +1,7 @@
 ---
 title: Announcing the 2024 OpenTelemetry Governance Committee Election
 linkTitle: 2024 GC Election
-date: 2024-09-02
+date: 2024-09-03
 author: OpenTelemetry Governance Committee
 aliases: [gc-elections-2024]
 ---
