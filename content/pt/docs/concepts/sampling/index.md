@@ -122,7 +122,7 @@ As vantagens da amostragem de cabeça são:
 - Fácil de entender
 - Fácil de configurar
 - Eficiente
-- Pode ser feita em qualquer ponto do pipeline de coleta de rastreios
+- Pode ser feita em qualquer ponto do _pipeline_ de coleta de rastreios
 
 A principal desvantagem da amostragem de cabeça é que não é possível tomar uma
 decisão de amostragem com base nos dados do rastreio inteiro. Por exemplo, você
