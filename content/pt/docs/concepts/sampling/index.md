@@ -9,7 +9,7 @@ default_lang_commit: de60a8e2c5098e47eda3e12b006c5490bdb8a94e
 
 Com [rastros](/docs/concepts/signals/traces), você pode observar as requisições
 à medida que se movem de um serviço para outro em um sistema distribuído.
-Rastreamento é altamente prático tanto para análises de alto nível quanto para
+Rastreamento é muito útil tanto para análises de alto nível quanto para
 análises aprofundadas de sistemas.
 
 Contudo, se a grande maioria das suas requisições é bem-sucedidas e terminam com
