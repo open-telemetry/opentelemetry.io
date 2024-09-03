@@ -1,7 +1,7 @@
 ---
 title: Amostragem
 description:
-  Aprenda sobre amostragem e as diferentes opções de amostragem disponíves no
+  Aprenda sobre amostragem e as diferentes opções de amostragem disponíveis no
   OpenTelemetry.
 weight: 80
 default_lang_commit: de60a8e2c5098e47eda3e12b006c5490bdb8a94e
