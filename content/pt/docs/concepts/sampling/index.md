@@ -90,7 +90,7 @@ se atender a qualquer um dos seguintes critérios:
 Por fim, considere os seguintes três custos associados à amostragem:
 
 1. O custo direto de computação para amostrar dados de forma eficaz, como um
-   proxy de amostragem de cauda.
+   _proxy_ de amostragem de cauda.
 2. O custo indireto de engenharia para manter metodologias de amostragem
    eficazes à medida que mais aplicações, sistemas e dados são envolvidos.
 3. O custo indireto de oportunidade de perder informações críticas com técnicas
