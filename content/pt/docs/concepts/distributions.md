@@ -29,7 +29,7 @@ As personalizações em uma distribuição podem incluir:
 - Scripts para facilitar ou personalizar o uso de um backend ou fornecedor
   específico
 - Alterações nas configurações padrão, necessárias para um backend, fornecedor
-  ou usário final
+  ou usuário final
 - Pacotes ou bibliotecas adicionais que podem ser específicas para determinado
   fornecedor ou usuário final
 - Cobertura adicional de testes, performance e segurança além do fornecido pelo
