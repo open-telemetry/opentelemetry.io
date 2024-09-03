@@ -4,7 +4,7 @@ title: Prometheus Alerts Runbooks
 
 ## Manager Rules
 
-### [ReconcileErrors](#reconcileerrors)
+### ReconcileErrors
 
 |            |                                                                                                                                   |
 | ---------: | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -13,7 +13,7 @@ title: Prometheus Alerts Runbooks
 |  Diagnosis | Check manager logs for reasons why this might happen.                                                                             |
 | Mitigation | Find out which OpenTelemetryCollector is causing the errors and fix the config.                                                   |
 
-### [WorkqueueDepth](#workqueuedepth)
+### WorkqueueDepth
 
 |            |                                                                                                          |
 | ---------: | -------------------------------------------------------------------------------------------------------- |
