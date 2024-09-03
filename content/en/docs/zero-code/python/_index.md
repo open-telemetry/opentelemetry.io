@@ -8,8 +8,10 @@ cSpell:ignore: devel distro mkdir myapp pyproject uninstrumented virtualenv Werk
 ---
 
 Automatic instrumentation with Python uses a Python agent that can be attached
-to any Python application. It dynamically injects bytecode to capture telemetry
-from many popular libraries and frameworks.
+to any Python application. This agent primarily uses
+[monkey patching](https://en.wikipedia.org/wiki/Monkey_patch) to modify library
+functions at runtime, allowing for the capture of telemetry data from many
+popular libraries and frameworks.
 
 ## Setup
 
@@ -37,7 +39,8 @@ packages installed in your active `site-packages` folder, and installs the
 corresponding instrumentation libraries for these packages, if applicable. For
 example, if you already installed the `flask` package, running
 `opentelemetry-bootstrap -a install` will install
-`opentelemetry-instrumentation-flask` for you.
+`opentelemetry-instrumentation-flask` for you. The OpenTelemetry Python agent
+will use monkey patching to modify functions in these libraries at runtime.
 
 Running `opentelemetry-bootstrap` without arguments lists the recommended
 instrumentation libraries to be installed. For more information, see
