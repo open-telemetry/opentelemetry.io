@@ -1,0 +1,22 @@
+# cSpell:ignore: crio
+title: CRI-O
+registryType: application integration
+language: go
+tags:
+  - go
+  - cri-o
+  - graduated
+license: Apache-2.0
+description:
+  The `crio.tracing` table containers settings pertaining to the export of
+  OpenTelemetry trace data.
+authors:
+  - name: CRI-O Authors
+    url: https://github.com/cri-o
+urls:
+  website: https://cri-o.io/
+  repo: https://github.com/cri-o/cri-o/
+  docs: https://github.com/cri-o/cri-o/blob/main/docs/crio.conf.5.md#criotracing-table
+createdAt: '2024-08-06'
+cncfProjectLevel: graduated
+isNative: true

@@ -5,7 +5,7 @@ weight: 40
 description: How to instrument libraries an app depends on
 ---
 
-{{% docs/languages/libraries-intro Rust %}}
+{{% docs/languages/libraries-intro rust %}}
 
 ## Use Instrumentation Libraries
 

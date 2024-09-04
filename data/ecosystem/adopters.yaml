@@ -63,6 +63,12 @@
   components: [Ruby]
   reference: ''
   contact: ''
+- name: MercadoLibre
+  url: https://www.mercadolibre.com/
+  components: [Collector, Go, Java, JavaScript, Python]
+  reference: 'https://medium.com/mercadolibre-tech/building-a-large-scale-observability-ecosystem-1edf654b249e'
+  referenceTitle: blog post
+  contact: 'https://github.com/mercadolibre'
 - name: OrderMyGear
   url: https://www.ordermygear.com/
   components: []
@@ -86,7 +92,8 @@
 - name: Sicredi
   url: https://www.sicredi.com.br/
   components: [Collector, Go, Java, Python]
-  reference: ''
+  reference: https://medium.com/sicreditech/sicredis-path-for-opentelemetry-adoption-3564fc8a743a
+  referenceTitle: blog post
   contact: https://github.com/igorestevanjasinski
 - name: Skyscanner
   url: https://www.skyscanner.net/

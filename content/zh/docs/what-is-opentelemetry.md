@@ -20,15 +20,15 @@ OpenTelemetry 专注于遥测数据的生成、采集、管理和导出。 OpenT
 
 ## 什么是可观测性？ {#what-is-observability}
 
-[可观测性](/docs/concepts/observability-primer/#what-is-observability)具备检查系统输出来理解系统内部状态的能力。
-在软件的上下文中，这意味着通过检查遥测数据（包括链路、指标和日志）来理解系统的内部状态。
+[可观测性](/docs/concepts/observability-primer/#what-is-observability)是通过检查系统输出来理解系统内部状态的能力。
+在软件的背景下，这意味着能够通过检查遥测数据（包括链路、指标和日志）来理解系统的内部状态。
 
 要使系统可观测，必须对其进行仪表化。也就是说，代码必须发出链路、指标或日志。
 然后，仪表化的数据必须发送到可观测性后端。
 
 ## 为什么选择 OpenTelemetry？ {#why-opentelemetry}
 
-随着云计算、微服务架构和日益复杂的业务需求的兴起，软件和基础设施的可观测性需求比以往任何时候都要强烈。
+随着云计算、微服务架构的兴起和日益复杂的业务需求，软件和基础设施的可观测性需求比以往任何时候都要强烈。
 
 OpenTelemetry 满足可观测性的需求，并遵循两个关键原则：
 
@@ -78,7 +78,7 @@ OpenTelemetry 被设计为可扩展的。一些扩展 OpenTelemetry 的例子包
 ## 历史 {#history}
 
 OpenTelemetry 是[云原生计算基金会 (CNCF)](https://www.cncf.io)的一个项目，是由
-OpenTracing 和 OpenCensus 项目合并而诞生的。OpenTracing 和 OpenCensus 这两个项目合并而成的。原来这两个项目都是为解决同样的问题而创建的：
+OpenTracing 和 OpenCensus 项目合并而成的。原来这两个项目都是为解决同样的问题而创建的：
 缺乏一种标准的方法来为代码进行仪表化并将遥测数据发送到可观测性后端。
 由于这两个项目都无法独立解决这个问题，所以将其合并成立了 OpenTelemetry，
 吸收了双方的优势，提供了统一的解决方案。

@@ -5,7 +5,7 @@ weight: 40
 cSpell:ignore: getenv httpclient println
 ---
 
-{{% docs/languages/libraries-intro "Java" %}}
+{{% docs/languages/libraries-intro "java" %}}
 
 ## Use Instrumentation Libraries
 
@@ -16,7 +16,7 @@ in order to generate telemetry data for a library or framework.
 The Java agent for automatic instrumentation includes instrumentation libraries
 for many common Java frameworks. Most are turned on by default. If you need to
 turn off certain instrumentation libraries, you can
-[suppress them](/docs/zero-code/java/agent/configuration/#suppressing-specific-instrumentation).
+[suppress them](/docs/zero-code/java/agent/disable/).
 
 If you use [code-based instrumentation](../instrumentation), you can leverage
 some instrumentation libraries for your dependencies standalone. To find out

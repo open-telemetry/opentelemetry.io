@@ -193,11 +193,11 @@ categorized by instrumentation type.
 
 | Metric name                                            | Description                                                                             | Type      |
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------- | --------- |
-| `otelcol_exporter_enqueue_failed_`<br>`log_records`    | Number of spans that exporter(s) failed to enqueue.                                     | Counter   |
+| `otelcol_exporter_enqueue_failed_`<br>`log_records`    | Number of logs that exporter(s) failed to enqueue.                                      | Counter   |
 | `otelcol_exporter_enqueue_failed_`<br>`metric_points`  | Number of metric points that exporter(s) failed to enqueue.                             | Counter   |
 | `otelcol_exporter_enqueue_failed_`<br>`spans`          | Number of spans that exporter(s) failed to enqueue.                                     | Counter   |
-| `otelcol_exporter_queue_capacity`                      | Fixed capacity of the retry queue, in batches.                                          | Gauge     |
-| `otelcol_exporter_queue_size`                          | Current size of the retry queue, in batches.                                            | Gauge     |
+| `otelcol_exporter_queue_capacity`                      | Fixed capacity of the sending queue, in batches.                                        | Gauge     |
+| `otelcol_exporter_queue_size`                          | Current size of the sending queue, in batches.                                          | Gauge     |
 | `otelcol_exporter_send_failed_`<br>`log_records`       | Number of logs that exporter(s) failed to send to destination.                          | Counter   |
 | `otelcol_exporter_send_failed_`<br>`metric_points`     | Number of metric points that exporter(s) failed to send to destination.                 | Counter   |
 | `otelcol_exporter_send_failed_`<br>`spans`             | Number of spans that exporter(s) failed to send to destination.                         | Counter   |
@@ -242,13 +242,13 @@ categorized by instrumentation type.
 | `http_client_active_requests`     | Number of active HTTP client requests.                                                    | Counter   |
 | `http_client_connection_duration` | Measures the duration of the successfully established outbound HTTP connections.          | Histogram |
 | `http_client_open_connections`    | Number of outbound HTTP connections that are active or idle on the client.                | Counter   |
-| `http_client_request_body_size`   | Measures the size of HTTP client request bodies.                                          | Histogram |
-| `http_client_request_duration`    | Measures the duration of HTTP client requests.                                            | Histogram |
-| `http_client_response_body_size`  | Measures the size of HTTP client response bodies.                                         | Histogram |
+| `http_client_request_size`        | Measures the size of HTTP client request bodies.                                          | Counter   |
+| `http_client_duration`            | Measures the duration of HTTP client requests.                                            | Histogram |
+| `http_client_response_size`       | Measures the size of HTTP client response bodies.                                         | Counter   |
 | `http_server_active_requests`     | Number of active HTTP server requests.                                                    | Counter   |
-| `http_server_request_body_size`   | Measures the size of HTTP server request bodies.                                          | Histogram |
-| `http_server_request_duration`    | Measures the duration of HTTP server requests.                                            | Histogram |
-| `http_server_response_body_size`  | Measures the size of HTTP server response bodies.                                         | Histogram |
+| `http_server_request_size`        | Measures the size of HTTP server request bodies.                                          | Counter   |
+| `http_server_duration`            | Measures the duration of HTTP server requests.                                            | Histogram |
+| `http_server_response_size`       | Measures the size of HTTP server response bodies.                                         | Counter   |
 | `rpc_client_duration`             | Measures the duration of outbound RPC.                                                    | Histogram |
 | `rpc_client_request_size`         | Measures the size of RPC request messages (uncompressed).                                 | Histogram |
 | `rpc_client_requests_per_rpc`     | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram |
@@ -294,12 +294,12 @@ range and not considered outages.
 #### Queue length
 
 Most exporters provide a
-[queue or retry mechanism](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/exporterhelper/README.md)
+[queue and/or retry mechanism](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/exporterhelper/README.md)
 that is recommended for use in any production deployment of the Collector.
 
 The `otelcol_exporter_queue_capacity` metric indicates the capacity, in batches,
-of the retry queue. The `otelcol_exporter_queue_size` metric indicates the
-current size of the retry queue. Use these two metrics to check if the queue
+of the sending queue. The `otelcol_exporter_queue_size` metric indicates the
+current size of the sending queue. Use these two metrics to check if the queue
 capacity can support your workload.
 
 Using the following three metrics, you can identify the number of spans, metric
@@ -332,4 +332,4 @@ with the network or backend receiving the data.
 
 You can monitor data ingress with the `otelcol_receiver_accepted_spans` and
 `otelcol_receiver_accepted_metric_points` metrics and data egress with the
-`otecol_exporter_sent_spans` and `otelcol_exporter_sent_metric_points` metrics.
+`otelcol_exporter_sent_spans` and `otelcol_exporter_sent_metric_points` metrics.

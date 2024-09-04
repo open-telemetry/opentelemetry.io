@@ -14,6 +14,14 @@ lang:ja:
   - changed-files:
       - any-glob-to-any-file:
           - content/ja/**
+lang:pt:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/pt/**
+lang:es:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/es/**
 sig:cpp:
   - changed-files:
       - any-glob-to-any-file:
@@ -32,7 +40,7 @@ sig:java:
       - any-glob-to-any-file:
           - content/en/docs/languages/java/**
           - content/en/docs/zero-code/java/**
-sig:js:
+sig:javascript:
   - changed-files:
       - any-glob-to-any-file:
           - content/en/docs/languages/js/**

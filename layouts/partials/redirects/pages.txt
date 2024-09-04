@@ -1,0 +1,19 @@
+{{/* Generate redirects for all given pages */ -}}
+{{/* cSpell:ignore cond */ -}}
+
+{{ range $p := .Site.Pages -}}
+
+  {{ range $p.Params.redirects -}}
+    {{ $from := cond (strings.HasPrefix .from "/")
+        .from
+        (print $p.RelPermalink .from) -}}
+    {{ $to := cond (strings.HasPrefix .to "/")
+        .to
+        (print $p.RelPermalink .to) -}}
+    {{ $from | printf "%-35s" }} {{ $to }}
+  {{ end -}}
+
+  {{ partial "redirects/aliases.txt" $p -}}
+  {{ partial "redirects/redirect.txt" $p -}}
+
+{{ end -}}

@@ -6,6 +6,8 @@ tags:
   - instrumentation
   - js
 license: Apache 2.0
+authors:
+  - name: OpenTelemetry Authors
 description:
   This module provides an instrumentation library for the injection of trace
   context to dataloader
@@ -15,4 +17,4 @@ createdAt: 2022-10-27
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-dataloader'
-  version: 0.10.0
+  version: 0.12.0

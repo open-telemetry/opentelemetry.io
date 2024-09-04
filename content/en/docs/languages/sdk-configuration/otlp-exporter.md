@@ -162,6 +162,11 @@ The timeout value for all outgoing logs in milliseconds.
 
 **Example:** `export OTEL_EXPORTER_OTLP_LOGS_TIMEOUT=500`
 
+## Protocol configuration
+
+The following environment variables configure the OTLP transport protocol an
+OTLP exporter uses.
+
 ### `OTEL_EXPORTER_OTLP_PROTOCOL`
 
 Specifies the OTLP transport protocol to be used for all telemetry data.
@@ -200,6 +205,21 @@ Specifies the OTLP transport protocol to be used for metrics data.
 or `grpc`.
 
 **Example:** `export OTEL_EXPORTER_OTLP_METRICS_PROTOCOL=grpc`
+
+Valid values are:
+
+- `grpc` to use OTLP/gRPC
+- `http/protobuf` to use OTLP/HTTP + protobuf
+- `http/json` to use OTLP/HTTP + JSON
+
+### `OTEL_EXPORTER_OTLP_LOGS_PROTOCOL`
+
+Specifies the OTLP transport protocol to be used for log data.
+
+**Default value:** SDK-dependent, but will typically be either `http/protobuf`
+or `grpc`.
+
+**Example:** `export OTEL_EXPORTER_OTLP_LOGS_PROTOCOL=grpc`
 
 Valid values are:
 

@@ -23,7 +23,7 @@ jobs:
       pull-requests: write
 
     env:
-      DEPTH: --depth 1000 # submodule clone depth
+      DEPTH: --depth 999 # submodule clone depth
 
     steps:
       - name: Extract action name
@@ -101,9 +101,20 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
+      - name: Report success and ask to run full checks
+        if: ${{ !failure() && !cancelled() }}
+        run: |
+          gh pr comment $PR_NUM --body "$(cat <<EOF
+          \`fix:${PR_ACTION}\` was [successful]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID).
+          ### IMPORTANT: (RE-)RUN \`/fix:all\` to ensure that there are no remaining check issues.
+          EOF
+          )"
+        env:
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+
       - name: Report an error in the case of failure
         if: ${{ failure() || cancelled() }}
         run: |
-          gh pr comment $PR_NUM -b "fix:${PR_ACTION} run failed, please check $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID for details"
+          gh pr comment $PR_NUM -b "fix:${PR_ACTION} failed or was cancelled. For details, see $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID."
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}

@@ -1,0 +1,20 @@
+title: Cisco Network Services Orchestrator (NSO)
+registryType: application integration
+language: python
+tags:
+  - cisco
+  - network
+  - services
+  - orchestrator
+  - nso
+  - python
+license: Commercial
+description:
+  The NSO Observability Exporter supports export of progress traces using OTLP.
+authors:
+  - name: Cisco
+urls:
+  website: https://www.cisco.com/c/en/us/products/cloud-systems-management/network-services-orchestrator/index.html
+  docs: https://developer.cisco.com/docs/nso/#!observability-exporter/
+createdAt: '2024-08-06'
+isFirstParty: true

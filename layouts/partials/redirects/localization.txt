@@ -1,0 +1,49 @@
+{{/* Generate Netlify redirect rules for non-default .Site.Sites */ -}}
+{{/* cSpell:ignore cond */ -}}
+
+{{/*
+  Determine what the default language code is, `en` in most cases. Redirect
+  paths that start with the default language code by effectively stripping the
+  language code from the start of the path. Hugo handles this for the
+  language-code root. The rules below handle it for all other paths using a
+  wildcard. */ -}}
+
+{{ $defaultLang := "" -}}
+{{ with .Site.Sites.Default -}}
+  {{ if eq .LanguagePrefix "" -}}
+    {{ with .Language.Lang -}}
+      {{ $defaultLang = . -}}
+      /{{ . }}    /
+      /{{ . }}/*  /:splat
+    {{ end -}}
+  {{ end -}}
+{{ end -}}
+
+{{/* Add redirect rules for non-default languages. */ -}}
+
+{{ range after 1 .Sites -}}
+
+  {{ $siteLang := .Language.Lang -}}
+
+  # Site localization {{ $siteLang }}
+  {{ range $p := .Pages -}}
+
+    {{ partial "redirects/redirect.txt" $p -}}
+
+    {{ range $p.Params.redirects -}}
+      {{ $fallbackPage := partial "i18n/fallback-page.html" $p -}}
+      {{ if or (eq $siteLang $defaultLang) (not $fallbackPage) -}}
+        {{ $from := cond (strings.HasPrefix .from "/")
+            .from
+            (print $p.RelPermalink .from) -}}
+        {{ $to := cond (strings.HasPrefix .to "/")
+            .to
+            (print $p.RelPermalink .to) -}}
+        {{ $from | printf "%-35s" }} {{ $to }}
+      {{ else -}}
+        {{/* # {{ $p.RelPermalink }} */ -}}
+      {{ end -}}
+    {{ end -}}
+  {{ end -}}
+
+{{ end -}}

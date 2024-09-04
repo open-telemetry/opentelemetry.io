@@ -16,10 +16,19 @@ languages:
     languageCode: en-US
     params:
       description: The OpenTelemetry Project Site
+  es:
+    languageName: Español
+    params:
+      description: Sitio del proyecto OpenTelemetry
   ja:
     languageName: 日本語 (Japanese)
     params:
       description: OpenTelemetryプロジェクト公式サイト
+  pt: # cSpell:ignore Português Projeto
+    languageName: Português
+    languageCode: pt-BR
+    params:
+      description: Site do Projeto OpenTelemetry
   zh:
     languageName: 中文 (Chinese)
     languageCode: zh-cn
@@ -95,7 +104,15 @@ params:
     sidebar_menu_compact: true
     sidebar_menu_foldable: true
     sidebar_search_disable: true
-
+    feedback:
+      enable: true
+      'yes': >-
+        Thank you. Your feedback is appreciated!
+      # prettier-ignore
+      'no': >-
+        Please let us know <a class="external-link" target="_blank" rel="noopener"
+        href="https://github.com/open-telemetry/opentelemetry.io/issues/new?title=Page%20feedback&body=Suggested%20improvements%20for%20page:%20ADD%20PAGE-URL-HERE">how
+        we can improve this page</a>. Your feedback is appreciated!
   links:
     user:
       - name: Mailing Lists
@@ -229,6 +246,19 @@ module:
     - source: tmp/semconv/docs
       target: content/docs/specs/semconv
 
+    ## es
+    - source: content/es
+      target: content
+      lang: es
+    # fallback pages
+    - source: content/en/announcements
+      target: content/announcements
+      lang: es
+    - excludeFiles: specs/*
+      source: content/en/docs
+      target: content/docs
+      lang: es
+
     ## ja
     - source: content/ja
       target: content
@@ -254,6 +284,19 @@ module:
       source: content/en/docs
       target: content/docs
       lang: zh
+
+    ## pt
+    - source: content/pt
+      target: content
+      lang: pt
+    # fallback pages
+    - source: content/en/announcements
+      target: content/announcements
+      lang: pt
+    - excludeFiles: specs/*
+      source: content/en/docs
+      target: content/docs
+      lang: pt
 
     ## static
     - source: static

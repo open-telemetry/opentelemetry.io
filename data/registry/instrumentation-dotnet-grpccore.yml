@@ -15,6 +15,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.GrpcCore
 createdAt: 2022-10-28
+isFirstParty: false
 package:
   registry: nuget
   name: OpenTelemetry.Instrumentation.GrpcCore

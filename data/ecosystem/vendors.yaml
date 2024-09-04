@@ -1,12 +1,18 @@
 - name: AppDynamics (Cisco)
   nativeOTLP: true
-  url: https://docs.appdynamics.com/latest/en/application-monitoring/appdynamics-for-opentelemetry
+  url: https://docs.appdynamics.com/latest/en/application-monitoring/cisco-appdynamics-for-opentelemetry
   contact:
   oss: false
   commercial: true
 - name: Aria by VMware (Wavefront)
   nativeOTLP: true
   url: https://docs.wavefront.com/opentelemetry_tracing.html
+  contact:
+  oss: false
+  commercial: true
+- name: Arize Phoenix
+  nativeOTLP: true
+  url: https://docs.arize.com/phoenix/tracing/how-to-tracing/setup-tracing/setup-tracing-python
   contact:
   oss: false
   commercial: true
@@ -46,6 +52,12 @@
   url: https://github.com/Causely/documentation
   contact: support@causely.io
   oss: false
+  commercial: true
+- name: Centreon
+  nativeOTLP: true
+  url: https://docs.centreon.com/pp/integrations/plugin-packs/getting-started/how-to-guides/telegraf/
+  contact: contact@centreon.com
+  oss: true
   commercial: true
 - name: Chronosphere
   distribution: false
@@ -94,7 +106,7 @@
   nativeOTLP: true
   url: https://www.elastic.co/guide/en/apm/get-started/current/open-telemetry-elastic.html
   contact:
-  oss: false
+  oss: true
   commercial: true
 - name: F5
   nativeOTLP: true
@@ -172,6 +184,12 @@
   nativeOTLP: true
   url: https://docs.lightstep.com/docs/about-sending-data
   contact: https://github.com/cartersocha
+  oss: false
+  commercial: true
+- name: Last9 Levitate
+  nativeOTLP: true
+  url: https://docs.last9.io/docs/levitate-integrations-opentelemetry
+  contact: hi@last9.io
   oss: false
   commercial: true
 - name: LogicMonitor
@@ -408,4 +426,10 @@
   url: 'https://embrace.io/opentelemetry-for-mobile/'
   contact: 'product@embrace.io'
   oss: true
+  commercial: true
+- name: groundcover
+  nativeOTLP: true
+  url: 'https://docs.groundcover.com/integrations/data-sources/opentelemetry/traces-and-logs'
+  contact: 'hello@groundcover.com'
+  oss: false
   commercial: true
