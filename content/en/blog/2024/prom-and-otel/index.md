@@ -5,7 +5,7 @@ date: 2024-03-31
 author: >-
   [Reese Lee](https://github.com/reese-lee) (New Relic), [Adriana
   Villela](https://github.com/avillela) (ServiceNow)
-cSpell:ignore: hashmod Kubelet sharded targetallocator
+cSpell:ignore: hashmod kubelet sharded targetallocator
 canonical_url: https://newrelic.com/blog/how-to-relic/prometheus-and-opentelemetry-better-together
 ---
 
