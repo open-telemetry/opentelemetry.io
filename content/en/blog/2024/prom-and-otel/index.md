@@ -1,7 +1,7 @@
 ---
 title: Prometheus and OpenTelemetry - Better Together
 linkTitle: Prometheus and OpenTelemetry
-date: 2024-03-31
+date: 2024-09-04
 author: >-
   [Reese Lee](https://github.com/reese-lee) (New Relic), [Adriana
   Villela](https://github.com/avillela) (ServiceNow)
