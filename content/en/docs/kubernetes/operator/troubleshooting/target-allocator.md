@@ -106,7 +106,7 @@ spec:
       batch: {}
 
     exporters:
-      logging:
+      debug:
         verbosity: detailed
 
     service:
@@ -114,15 +114,15 @@ spec:
         traces:
           receivers: [otlp]
           processors: [batch]
-          exporters: [logging]
+          exporters: [debug]
         metrics:
           receivers: [otlp, prometheus]
           processors: []
-          exporters: [logging]
+          exporters: [debug]
         logs:
           receivers: [otlp]
           processors: [batch]
-          exporters: [logging]
+          exporters: [debug]
 ```
 
 First, set up a `port-forward` in Kubernetes, so that you can expose the Target
