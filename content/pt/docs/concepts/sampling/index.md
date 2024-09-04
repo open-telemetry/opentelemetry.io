@@ -112,44 +112,44 @@ ou um rastro não é feita inspecionando o rastro como um todo.
 Por exemplo, a forma mais comum de amostragem de cabeça é a
 [Amostragem de Probabilidade Consistente](/docs/specs/otel/trace/tracestate-probability-sampling/#consistent-probability-sampling).
 Isso também é conhecido como Amostragem Determinística. Neste caso, uma decisão
-de amostragem é tomada com base no ID do rastreio e na porcentagem desejada de
-rastreios a serem amostrados. Isso garante que rastreios inteiros sejam
+de amostragem é tomada com base no ID do rastro e na porcentagem desejada de
+rastros a serem amostrados. Isso garante que rastros inteiros sejam
 amostrados - sem trechos faltantes - a uma taxa consistente, como 5% de todos os
-rastreios.
+rastros.
 
 As vantagens da amostragem de cabeça são:
 
 - Fácil de entender
 - Fácil de configurar
 - Eficiente
-- Pode ser feita em qualquer ponto do _pipeline_ de coleta de rastreios
+- Pode ser feita em qualquer ponto do _pipeline_ de coleta de rastros
 
 A principal desvantagem da amostragem de cabeça é que não é possível tomar uma
-decisão de amostragem com base nos dados do rastreio inteiro. Por exemplo, você
-não pode garantir que todos os rastreios com um erro sejam amostrados apenas com
+decisão de amostragem com base nos dados do rastro inteiro. Por exemplo, você
+não pode garantir que todos os rastros com um erro sejam amostrados apenas com
 a amostragem de cabeça. Para essa situação e muitas outras, você precisa da
 amostragem de cauda.
 
 ## Amostragem de Cauda
 
-A amostragem de cauda é onde a decisão de amostrar um rastreio acontece
-considerando todos ou a maioria dos trechos dentro do rastreio. A Amostragem de
-Cauda oferece a opção de amostrar seus rastreios com base em critérios
-específicos derivados de diferentes partes de um rastreio, o que não é uma opção
+A amostragem de cauda é onde a decisão de amostrar um rastro acontece
+considerando todos ou a maioria dos trechos dentro do rastro. A Amostragem de
+Cauda oferece a opção de amostrar seus rastros com base em critérios
+específicos derivados de diferentes partes de um rastro, o que não é uma opção
 com a Amostragem de Cabeça.
 
 ![Ilustração mostrando como os trechos se originam de um trecho raiz. Após os trechos serem concluídos, o processador de amostragem de cauda toma uma decisão de amostragem.](tail-sampling-process.png)
 
 Alguns exemplos de como você pode usar a Amostragem de Cauda incluem:
 
-- Sempre amostrar rastreios que contenham um erro
-- Amostrar rastreios com base na latência geral
-- Amostrar rastreios com base na presença ou valor de atributos específicos em
-  um ou mais trechos de um rastreio; por exemplo, amostrar mais rastreios
+- Sempre amostrar rastros que contenham um erro
+- Amostrar rastros com base na latência geral
+- Amostrar rastros com base na presença ou valor de atributos específicos em
+  um ou mais trechos de um rastro; por exemplo, amostrar mais rastros
   originados de um serviço recém-implantado
-- Aplicar diferentes taxas de amostragem a rastreios com base em certos
-  critérios, como quando os rastreios vêm apenas de serviços de baixo volume
-  versus rastreios com serviços de alto volume.
+- Aplicar diferentes taxas de amostragem a rastros com base em certos
+  critérios, como quando os rastros vêm apenas de serviços de baixo volume
+  versus rastros com serviços de alto volume.
 
 Como você pode ver, a amostragem de cauda permite um grau muito maior de
 sofisticação na forma como você amostra os dados. Para sistemas maiores que
