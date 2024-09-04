@@ -98,8 +98,8 @@ Por fim, considere os seguintes três custos associados à amostragem:
 
 A amostragem, embora eficaz na redução dos custos de observabilidade, pode
 introduzir outros custos inesperados se não for realizada corretamente.
-Poderia ser mais barato alocar mais recursos para observabilidade, seja com um
-fornecedor ou com computação ao hospedar por conta própria, dependendo do seu
+Poderia ser mais barato alocar mais recursos para observabilidade, seja através de um
+fornecedor ou com recursos computacionais em hospedagem própria, dependendo do seu
 _backend_ de observabilidade, da natureza dos seus dados e das suas tentativas de
 realizar amostragem de forma eficaz.
 
