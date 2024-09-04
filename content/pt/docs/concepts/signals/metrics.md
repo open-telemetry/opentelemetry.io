@@ -32,7 +32,7 @@ alguns SDKs, um Meter Provider global já está inicializado para você.
 
 ## Meter
 
-Um Meter cria [instrumentos metricos](#metric-instruments), capturando medições
+Um Meter cria [instrumentos métricos](#metric-instruments), capturando medições
 sobre um serviço em tempo de execução. Os Meters são criados a partir de Meter
 Providers.
 
