@@ -81,7 +81,7 @@ se atender a qualquer um dos seguintes critérios:
 
 - Você gera poucos dados (dezenas de pequenos rastros por segundo ou
   menos).
-- Você só usa dados de observabilidade de forma agregada e, portanto, pode
+- Você só usa dados de observabilidade de forma agregada, portanto, pode
   pré-agregar os dados.
 - Você está limitado por outros fatores, como por exemplo, regulamentações que proíbem
   descartar dados (e não pode rotear dados não amostrados para armazenamento de
