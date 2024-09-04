@@ -70,7 +70,7 @@ Considere usar amostragem se você atender a qualquer um dos seguintes critério
 - Você tem a capacidade de rotear dados não amostrados (para cenários de "por
   via das dúvidas") para sistemas de armazenamento de baixo custo.
 
-Por fim, considere seu orçamento geral. Se você tem um orçamento limitado para
+Por fim, considere seu orçamento em geral. Se você tem um orçamento limitado para
 observabilidade, mas pode dedicar tempo para realizar uma amostragem eficaz,
 então a amostragem geralmente vale a pena.
 
