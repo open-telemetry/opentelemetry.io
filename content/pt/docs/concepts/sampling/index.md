@@ -149,7 +149,7 @@ Alguns exemplos de como você pode usar a Amostragem de Cauda incluem:
   originados de um serviço recém-implantado
 - Aplicar diferentes taxas de amostragem a rastros com base em certos
   critérios, como quando os rastros vêm apenas de serviços de baixo volume
-  versus rastros com serviços de alto volume.
+  versus rastros de serviços de alto volume.
 
 Como você pode ver, a amostragem de cauda permite um grau muito maior de
 sofisticação na forma como você amostra os dados. Para sistemas maiores que
