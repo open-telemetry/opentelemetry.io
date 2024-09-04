@@ -159,7 +159,7 @@ para equilibrar o volume de dados com a utilidade desses dados.
 Existem três principais desvantagens na amostragem de cauda atualmente:
 
 1. A amostragem de cauda pode ser difícil de implementar. Dependendo dos tipos
-   de técnicas de amostragem disponíveis para você, nem sempre é algo do tipo
+   de técnicas de amostragem a sua disposição, nem sempre é uma decisão do tipo
    "configurar e esquecer". À medida que seus sistemas mudam, suas estratégias
    de amostragem também mudarão. Para um sistema distribuído grande e
    sofisticado, as regras que implementam estratégias de amostragem também podem
