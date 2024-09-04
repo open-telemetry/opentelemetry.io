@@ -99,15 +99,16 @@ of configurations in `scrape_config`.
 If you are interested in
 [exemplars](/docs/specs/otel/metrics/data-model/#exemplars), which is a recorded
 value that associates OTel context with a metric event, you can also use the
-Prometheus receiver. Note that exemplars are currently only available in 
-[OpenMetrics](https://opentelemetry.io/docs/specs/otel/compatibility/prometheus_and_openmetrics/) format.
+Prometheus receiver. Note that exemplars are currently only available in
+[OpenMetrics](/docs/specs/otel/compatibility/prometheus_and_openmetrics/)
+format.
 
 Something to consider with this component is that it is under active
 development; as such, it has several
 [limitations](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md#%EF%B8%8F-warning),
 including that it’s a stateful component. Additionally, it is not recommended to
-use this component when multiple replicas of the Collector are run *without the target allocator*,
-because in this state:
+use this component when multiple replicas of the Collector are run _without the
+target allocator_, because in this state:
 
 - The Collector is unable to auto-scale the scraping
 - If the replicas are running with the same config, it will scrape the targets
@@ -119,9 +120,11 @@ For exporting metrics from the OTel Collector to Prometheus, you have the
 following options: the
 [Prometheus exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusexporter#prometheus-exporter),
 and the
-[Prometheus Remote Write exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/prometheusremotewriteexporter/README.md). You can 
-also use the [OTLP HTTP exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter), which comes with the Collector by default,
-and use Prometheus' native OTLP endpoint. Note that
+[Prometheus Remote Write exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/prometheusremotewriteexporter/README.md).
+You can also use the
+[OTLP HTTP exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter),
+which comes with the Collector by default, and use Prometheus' native OTLP
+endpoint. Note that
 [Prometheus also now supports OTLP natively](https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/).
 
 The Prometheus exporter allows you to ship data in the Prometheus format, which
@@ -137,11 +140,12 @@ Collector instances with no issues. Since Prometheus also accepts remote write
 ingestion, you can also use this exporter if you are generating OTel metrics and
 want to ship them to a backend that is compatible with Prometheus remote write.
 
-Note that the Prometheus Remote Write in the Prometheus Server doesn't currently 
-support metadata, such as Help and Type. For more information, check
-out [issue #13163](https://github.com/prometheus/prometheus/issues/13163) as well 
-as [issue #12608](https://github.com/prometheus/prometheus/issues/12608). This
-will be addressed in [Prometheus Remote Write v2.0](https://prometheus.io/docs/specs/remote_write_spec_2_0/#io-prometheus-write-v2-request).
+Note that the Prometheus Remote Write in the Prometheus Server doesn't currently
+support metadata, such as Help and Type. For more information, check out
+[issue #13163](https://github.com/prometheus/prometheus/issues/13163) as well as
+[issue #12608](https://github.com/prometheus/prometheus/issues/12608). This will
+be addressed in
+[Prometheus Remote Write v2.0](https://prometheus.io/docs/specs/remote_write_spec_2_0/#io-prometheus-write-v2-request).
 
 To learn more about the architecture of both exporters, see
 [Use Prometheus Remote Write exporter](https://grafana.com/blog/2023/07/20/a-practical-guide-to-data-collection-with-opentelemetry-and-prometheus/#6-use-prometheus-remote-write-exporter).
@@ -171,8 +175,11 @@ alerting pipeline won't be offline.
 
 Luckily, the OTel Operator’s Target Allocator (TA) is able to help with some of
 this. For instance, it can automatically drop any targets it knows won’t be
-scraped. The TA also automatically shards the targets for you, whereas if you shard with `hashmod` you'll need to
-[update your config based on the number of replicas you have](https://www.robustperception.io/scaling-and-federating-prometheus/). The TA also allows you to continue using resources like PodMonitor and ServiceMonitor to continue collecting Prometheus metrics about your Kubernetes
+scraped. The TA also automatically shards the targets for you, whereas if you
+shard with `hashmod` you'll need to
+[update your config based on the number of replicas you have](https://www.robustperception.io/scaling-and-federating-prometheus/).
+The TA also allows you to continue using resources like PodMonitor and
+ServiceMonitor to continue collecting Prometheus metrics about your Kubernetes
 infrastructure.
 
 The Target Allocator is part of the OTel Operator. The
@@ -284,9 +291,9 @@ these are widely-used in Kubernetes infrastructure monitoring. As a result, the
 OTel Operator developers wanted to make it easy to add them to the OTel
 ecosystem.
 
-PodMonitor and ServiceMonitor are limited to collecting metrics from pods, 
-and are unable to scrape other endpoints, such as the kubelet. In that case, 
-you still have to rely on Prometheus scrape configs in the Collector’s
+PodMonitor and ServiceMonitor are limited to collecting metrics from pods, and
+are unable to scrape other endpoints, such as the kubelet. In that case, you
+still have to rely on Prometheus scrape configs in the Collector’s
 [Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md).
 
 ### Configuration
@@ -618,8 +625,8 @@ The following are pros and cons of the setup we covered in this article.
 - Not having to maintain Prometheus as your data store, which means less
   infrastructure overall to maintain -- especially if you go with an all-in-one
   observability backend to ingest OTel data (traces, metrics, logs).
-- While you would still have to maintain the ServiceMonitor and PodMonitor, 
-  it’s a lot less work than keeping the Prometheus Operator up-to-date.
+- While you would still have to maintain the ServiceMonitor and PodMonitor, it’s
+  a lot less work than keeping the Prometheus Operator up-to-date.
 - Allows you to end up with a full OTel solution while still obtaining your
   Prometheus metrics
 - OTel can provide traces and logs in addition to metrics, as well as
@@ -632,7 +639,7 @@ The following are pros and cons of the setup we covered in this article.
 
 - Adopting and managing a new observability tool involves a steep learning curve
   for users unfamiliar with OTel concepts, components, and workflows.
-- Users of PromQL, Prometheus’ powerful query language, can still use it **if** 
+- Users of PromQL, Prometheus’ powerful query language, can still use it **if**
   they send metrics to a Prometheus-compatible backend.
 - OTel itself contains many moving parts, and presents its own challenges with
   scalability and adoption.

@@ -5107,6 +5107,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:11.409183-05:00"
   },
+  "https://github.com/prometheus/prometheus/issues/12608": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-04T09:48:39.868883+02:00"
+  },
+  "https://github.com/prometheus/prometheus/issues/13163": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-04T09:48:35.996317+02:00"
+  },
   "https://github.com/purview-dev/purview-telemetry-sourcegenerator/": {
     "StatusCode": 200,
     "LastSeen": "2024-04-26T09:57:49.687508317+01:00"
@@ -7111,6 +7119,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-06-04T17:29:58.393305846+02:00"
   },
+  "https://opentelemetry.io/docs/specs/otel/compatibility/prometheus_and_openmetrics/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-09-04T09:48:32.91926+02:00"
+  },
   "https://opentelemetry.io/docs/specs/otel/glossary/#instrumentation-library": {
     "StatusCode": 206,
     "LastSeen": "2024-04-30T09:31:37.929550219Z"
@@ -8522,6 +8534,10 @@
   "https://prometheus.io/docs/prometheus/latest/installation/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:10:46.603367-05:00"
+  },
+  "https://prometheus.io/docs/specs/remote_write_spec_2_0/#io-prometheus-write-v2-request": {
+    "StatusCode": 206,
+    "LastSeen": "2024-09-04T09:48:44.106256+02:00"
   },
   "https://protobuf.dev/": {
     "StatusCode": 206,
