@@ -89,7 +89,7 @@ Caso você esteja criando a sua própria distribuição, o
 [OpenTelemetry Collector Builder](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder)
 pode ser um bom ponto de partida.
 
-### Bibliotecas de instrumentação específicas para linguagens de programação {#language-specific-instrumentation-libraries}
+### Bibliotecas de instrumentação específicas para cada linguagem de programação {#language-specific-instrumentation-libraries}
 
 Existem algumas linguagens de programação que exigem mecanismos de
 extensibilidade específicos para a personalização das bibliotecas de
