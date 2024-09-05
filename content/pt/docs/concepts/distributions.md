@@ -108,7 +108,7 @@ O projeto do OpenTelemetry não certifica distribuições neste momento. No futu
 o OpenTelemetry poderá certificar distribuições e parceiros de maneira
 semelhante ao que ocorre no projeto Kubernetes. Ao avaliar uma distribuição,
 assegure-se de que seu uso não irá resultar em uma dependência de fornecedor
-(vendor lock-in).
+(_vendor lock-in_).
 
 > Qualquer suporte para uma distribuição deve ser fornecido diretamente por quem
 > a criou e não pelas pessoas envolvidas no projeto do OpenTelemetry.
