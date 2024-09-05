@@ -42,7 +42,7 @@ As distribuições geralmente se enquadram nas seguintes categorias:
 - **"Pura":** Estas distribuições fornecem as mesmas funcionalidades da versão
   pública e são 100% compatíveis. As personalizações normalmente aprimoram a
   facilidade de uso ou configurações. Estas personalizações podem ser
-  específicas para backends, fornecedores ou usuários finais.
+  específicas para _backends_, fornecedores ou usuários finais.
 - **"Plus":** Estas distribuições oferecem funcionalidades adicionais ao que é
   encontrado na _upstream_, através de componentes adicionais. Exemplos incluem
   bibliotecas de instrumentação ou exportadores de fornecedores que não foram
