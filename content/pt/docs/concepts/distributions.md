@@ -14,8 +14,7 @@ OpenTelemetry estão disponíveis em:
 - [Bibliotecas de instrumentação específicas de cada linguagem de programação](../instrumentation)
 - Um [binário para o Collector](/docs/concepts/components/#collector)
 
-Qualquer implementação de referência pode ser customizada como uma
-distribuição.
+Qualquer implementação de referência pode ser customizada como uma distribuição.
 
 ## O que é uma distribuição? {#what-is-a-distribution}
 
@@ -28,8 +27,8 @@ As personalizações em uma distribuição podem incluir:
 
 - Scripts para facilitar ou personalizar o uso de um _backend_ ou fornecedor
   específico
-- Alterações nas configurações padrão, necessárias para um _backend_, fornecedor
-  ou usuário final
+- Alterações nas configurações padrão que são necessárias para um _backend_,
+  fornecedor ou usuário final
 - Pacotes ou bibliotecas adicionais que podem ser específicas para determinado
   fornecedor ou usuário final
 - Cobertura adicional de testes, performance e segurança além do fornecido pelo
