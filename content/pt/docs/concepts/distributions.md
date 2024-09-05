@@ -44,9 +44,9 @@ As distribuições geralmente se enquadram nas seguintes categorias:
   facilidade de uso ou configurações. Estas personalizações podem ser
   específicas para backends, fornecedores ou usuários finais.
 - **"Plus":** Estas distribuições oferecem funcionalidades adicionais ao que é
-  encontrado na upstream, através de componentes adicionais. Exemplos incluem
+  encontrado na _upstream_, através de componentes adicionais. Exemplos incluem
   bibliotecas de instrumentação ou exportadores de fornecedores que não foram
-  incluídos na upstream do OpenTelemetry.
+  incluídos na _upstream_ do OpenTelemetry.
 - **"Minus":** Estas distribuições fornecem um subconjunto de funcionalidades da
   upstream. Exemplos podem incluir a remoção de bibliotecas de instrumentação ou
   de receptores, processadores, exportadores ou extensões encontradas no projeto
