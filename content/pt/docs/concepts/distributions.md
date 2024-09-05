@@ -18,14 +18,14 @@ Qualquer implementação de referência pode ser customizada como uma distribui�
 
 ## O que é uma distribuição? {#what-is-a-distribution}
 
-Uma distribuição é uma versão personalizada de um componente do OpenTelemetry.
+Uma distribuição é uma versão customizada de um componente do OpenTelemetry.
 Uma distribuição é um encapsulamento em torno de um repositório do OpenTelemetry
-com algumas personalizações. Distribuições não devem ser confundidas com
+com algumas customizações. Distribuições não devem ser confundidas com
 _forks_.
 
-As personalizações em uma distribuição podem incluir:
+As customizações em uma distribuição podem incluir:
 
-- Scripts para facilitar ou personalizar o uso de um _backend_ ou fornecedor
+- Scripts para facilitar ou customizar o uso de um _backend_ ou fornecedor
   específico
 - Alterações nas configurações padrão que são necessárias para um _backend_,
   fornecedor ou usuário final
@@ -39,8 +39,8 @@ As personalizações em uma distribuição podem incluir:
 As distribuições geralmente se enquadram nas seguintes categorias:
 
 - **"Pura":** Estas distribuições fornecem as mesmas funcionalidades da versão
-  pública e são 100% compatíveis. As personalizações normalmente aprimoram a
-  facilidade de uso ou configurações. Estas personalizações podem ser
+  pública e são 100% compatíveis. As customizações normalmente aprimoram a
+  facilidade de uso ou configurações. Estas customizações podem ser
   específicas para _backends_, fornecedores ou usuários finais.
 - **"Plus":** Estas distribuições oferecem funcionalidades adicionais ao que é
   encontrado na _upstream_, através de componentes adicionais. Exemplos incluem
@@ -91,7 +91,7 @@ pode ser um bom ponto de partida.
 ### Bibliotecas de instrumentação específicas para cada linguagem de programação {#language-specific-instrumentation-libraries}
 
 Existem algumas linguagens de programação que exigem mecanismos de
-extensibilidade específicos para a personalização das bibliotecas de
+extensibilidade específicos para a customização das bibliotecas de
 instrumentação:
 
 - [Java agent](/docs/zero-code/java/agent/extensions)
