@@ -167,10 +167,10 @@ receivers:
 
 {{% alert color="primary" title="Tip" %}}
 
-To find components that you can add to your collector component, take a look
-into the
+To find components that you can add to your custom Collector, take a look
+the
 [OpenTelemetry Registry](https://opentelemetry.io/ecosystem/registry/?language=collector).
-You will not only find what is available, but also the full string you need to
+In addition to available components, the Registry provides the full string you need to
 add to your `builder-config.yaml`.
 
 {{% /alert %}}
