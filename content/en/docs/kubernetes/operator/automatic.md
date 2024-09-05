@@ -5,7 +5,7 @@ weight: 11
 description:
   An implementation of auto-instrumentation using the OpenTelemetry Operator.
 # prettier-ignore
-cSpell:ignore: autoinstrumentation GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver PTRACE REDISCALA Werkzeug
+cSpell:ignore: GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver PTRACE REDISCALA Werkzeug
 ---
 
 The OpenTelemetry Operator supports injecting and configuring
@@ -299,6 +299,32 @@ spec:
       - name: OTEL_NODE_ENABLED_INSTRUMENTATIONS
         value: http,nestjs-core # comma-separated list of the instrumentation package names without the `@opentelemetry/instrumentation-` prefix.
 ```
+
+To keep all default libraries and disable only specific instrumentation
+libraries you can use the `OTEL_NODE_DISABLED_INSTRUMENTATIONS` environment
+variable. For details, see
+[Excluding instrumentation libraries](/docs/zero-code/js/configuration/#excluding-instrumentation-libraries).
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+# ... other fields skipped from this example
+spec:
+  # ... other fields skipped from this example
+  nodejs:
+    env:
+      - name: OTEL_NODE_DISABLED_INSTRUMENTATIONS
+        value: fs,grpc # comma-separated list of the instrumentation package names without the `@opentelemetry/instrumentation-` prefix.
+```
+
+{{% alert title="Note" color="info" %}}
+
+If both environment variables are set, `OTEL_NODE_ENABLED_INSTRUMENTATIONS` is
+applied first, and then `OTEL_NODE_DISABLED_INSTRUMENTATIONS` is applied to that
+list. Therefore, if the same instrumentation is included in both lists, that
+instrumentation will be disabled.
+
+{{% /alert %}}
 
 #### Learn more {#js-learn-more}
 

@@ -11,7 +11,11 @@ tags:
 license: MIT
 description: Instrumentation for Azure SDK for .NET (Track 2 libraries).
 authors:
-  - name: Microsoft Authors
+  - name: Microsoft Azure Authors
+    url: https://github.com/Azure
 urls:
-  repo: https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/samples/Diagnostics.md#opentelemetry-with-azure-monitor-zipkin-and-others
+  website: https://github.com/Azure/azure-sdk-for-net # to work on the integrations page as well
+  docs: https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable
+  repo: https://github.com/Azure/azure-sdk-for-net
 createdAt: 2021-12-16
+isNative: true

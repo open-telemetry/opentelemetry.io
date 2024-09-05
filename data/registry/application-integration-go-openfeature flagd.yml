@@ -1,0 +1,22 @@
+# cSpell:ignore flagd openfeature
+title: OpenFeature flagd
+registryType: application integration
+language: go
+tags:
+  - go
+  - incubating
+  - openfeature
+  - flagd
+license: Apache-2.0
+description:
+  flagd provides telemetry data out of the box. This telemetry data is
+  compatible with OpenTelemetry.
+authors:
+  - name: OpenFeature Authors
+    url: https://github.com/open-feature
+urls:
+  website: https://openfeature.dev/
+  docs: https://flagd.dev/reference/monitoring/#opentelemetry
+createdAt: '2024-08-06'
+cncfProjectLevel: incubating
+isNative: true

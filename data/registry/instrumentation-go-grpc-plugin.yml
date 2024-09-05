@@ -1,0 +1,20 @@
+title: OpenTelemetry Metrics for gRPC
+registryType: instrumentation
+language: go
+tags:
+  - go
+  - incubating
+  - grpc
+license: Apache-2.0
+description:
+  gRPC provides support for an OpenTelemetry plugin that provides metrics
+authors:
+  - name: gRPC Authors
+    url: https://github.com/grpc
+urls:
+  website: https://grpc.io/
+  repo: https://github.com/grpc/grpc-go
+  docs: https://grpc.io/docs/guides/opentelemetry-metrics/
+createdAt: '2024-08-06'
+cncfProjectLevel: incubating
+isFirstParty: true

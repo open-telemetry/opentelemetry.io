@@ -8,8 +8,10 @@ cSpell:ignore: devel distro mkdir myapp pyproject uninstrumented virtualenv Werk
 ---
 
 Automatic instrumentation with Python uses a Python agent that can be attached
-to any Python application. It dynamically injects bytecode to capture telemetry
-from many popular libraries and frameworks.
+to any Python application. This agent primarily uses
+[monkey patching](https://en.wikipedia.org/wiki/Monkey_patch) to modify library
+functions at runtime, allowing for the capture of telemetry data from many
+popular libraries and frameworks.
 
 ## Setup
 
@@ -23,17 +25,26 @@ opentelemetry-bootstrap -a install
 The `opentelemetry-distro` package installs the API, SDK, and the
 `opentelemetry-bootstrap` and `opentelemetry-instrument` tools.
 
+{{% alert title="Note" color="info" %}}
+
+You must install a distro package to get auto instrumentation working. The
+`opentelemetry-distro` package contains the default distro to automatically
+configure some of the common options for users. For more information, see
+[OpenTelemetry distro](/docs/languages/python/distro/).
+
+{{% /alert %}}
+
 The `opentelemetry-bootstrap -a install` command reads through the list of
 packages installed in your active `site-packages` folder, and installs the
 corresponding instrumentation libraries for these packages, if applicable. For
 example, if you already installed the `flask` package, running
 `opentelemetry-bootstrap -a install` will install
-`opentelemetry-instrumentation-flask` for you.
+`opentelemetry-instrumentation-flask` for you. The OpenTelemetry Python agent
+will use monkey patching to modify functions in these libraries at runtime.
 
-> **NOTE:** If you leave out `-a install`, the command will simply list out the
-> recommended instrumentation libraries to be installed. More information can be
-> found
-> [here](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation#opentelemetry-bootstrap).
+Running `opentelemetry-bootstrap` without arguments lists the recommended
+instrumentation libraries to be installed. For more information, see
+[`opentelemetry-bootstrap`](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation#opentelemetry-bootstrap).
 
 ## Configuring the agent
 
@@ -42,7 +53,7 @@ The agent is highly configurable.
 One option is to configure the agent by way of configuration properties from the
 CLI:
 
-```console
+```sh
 opentelemetry-instrument \
     --traces_exporter console,otlp \
     --metrics_exporter console \
@@ -53,7 +64,7 @@ opentelemetry-instrument \
 
 Alternatively, you can use environment variables to configure the agent:
 
-```console
+```sh
 OTEL_SERVICE_NAME=your-service-name \
 OTEL_TRACES_EXPORTER=console,otlp \
 OTEL_METRICS_EXPORTER=console \
@@ -71,44 +82,41 @@ A number of popular Python libraries are auto-instrumented, including
 [Flask](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-flask)
 and
 [Django](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-django).
-You can find the full list
-[here](/ecosystem/registry/?language=python&component=instrumentation).
+For the full list, see the
+[Registry](/ecosystem/registry/?language=python&component=instrumentation).
 
 ## Troubleshooting
 
 ### Python package installation failure
 
 The Python package installs require `gcc` and `gcc-c++`, which you may need to
-install if you’re running a slim version of Linux (e.g., CentOS).
+install if you’re running a slim version of Linux, such as CentOS.
 
-CentOS:
+<!-- markdownlint-disable blanks-around-fences -->
 
-```console
-yum -y install python3-devel
-yum -y install gcc-c++
-```
-
-Debian/Ubuntu:
-
-```console
-apt install -y python3-dev
-apt install -y build-essential
-```
-
-Alpine:
-
-```console
-apk add python3-dev
-apk add build-base
-```
+- CentOS
+  ```sh
+  yum -y install python3-devel
+  yum -y install gcc-c++
+  ```
+- Debian/Ubuntu
+  ```sh
+  apt install -y python3-dev
+  apt install -y build-essential
+  ```
+- Alpine
+  ```sh
+  apk add python3-dev
+  apk add build-base
+  ```
 
 ### gRPC Connectivity
 
 To debug Python gRPC connectivity issues, set the following gRPC debug
 environment variables:
 
-```console
+```sh
 export GRPC_VERBOSITY=debug
 export GRPC_TRACE=http,call_error,connectivity_state
-opentelemetry-instrument python <your_app>.py
+opentelemetry-instrument python YOUR_APP.py
 ```

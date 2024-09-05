@@ -10,8 +10,9 @@ license: MIT
 description: Next.js supports OpenTelemetry instrumentation out of the box.
 authors:
   - name: Vercel, Inc.
-    url: https://github.com/vercel/
+    url: https://github.com/vercel
 urls:
+  website: https://nextjs.org/
   repo: https://github.com/vercel/next.js/tree/canary/packages/next/src/server/lib/trace
   docs: https://nextjs.org/docs/app/building-your-application/optimizing/open-telemetry
 createdAt: 2024-01-01

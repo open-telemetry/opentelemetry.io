@@ -1,7 +1,8 @@
 ---
 title: OpenTelemetry
 description: >-
- Telemetria de alta qualidade, abrangente e portátil para permitir uma observabilidade eficaz
+  Telemetria de alta qualidade, abrangente e portátil para permitir uma
+  observabilidade eficaz
 developer_note:
   O shortcode blocks/cover (usado abaixo) vai servir como imagem de background
   para qualquer arquivo de imagem que contenha "background" no nome.
@@ -42,12 +43,13 @@ default_lang_commit: 08799298
 
 {{% blocks/lead color="white" %}}
 
-O OpenTelemetry é uma coleção de APIs, SDKs e ferramentas. Use-o para instrumentar,
-gerar, coletar e exportar dados de telemetria (métricas, logs e rastros) para ajudar
-você a analisar o desempenho e o comportamento do seu software.
+O OpenTelemetry é uma coleção de APIs, SDKs e ferramentas. Use-o para
+instrumentar, gerar, coletar e exportar dados de telemetria (métricas, logs e
+rastros) para ajudar você a analisar o desempenho e o comportamento do seu
+software.
 
-> O OpenTelemetry está **disponível** em
-[diversas linguagens](docs/languages/) e está pronto para uso em produção.
+> O OpenTelemetry está **disponível** em [diversas linguagens](docs/languages/)
+> e está pronto para uso em produção.
 
 {{% /blocks/lead %}}
 
@@ -55,16 +57,17 @@ você a analisar o desempenho e o comportamento do seu software.
 
 {{% blocks/feature icon="fas fa-chart-line" title="Rastros, Métricas, Logs"%}}
 
-Crie e colete dados de telemetria a partir de seus serviços e softwares, e depois
-encaminhe-os para uma variedade de ferramentas de análise. {{% /blocks/feature %}}
+Crie e colete dados de telemetria a partir de seus serviços e softwares, e
+depois encaminhe-os para uma variedade de ferramentas de análise.
+{{% /blocks/feature %}}
 
 {{% blocks/feature icon="fas fa-magic" title="Instrumentação de Fácil Integração"%}}
 
 O OpenTelemetry é integrável com frameworks e bibliotecas populares como
 [Spring](https://spring.io),
 [ASP.NET Core](https://docs.microsoft.com/aspnet/core),
-[Express](https://expressjs.com), [Quarkus](https://quarkus.io), e muito mais!
-A instalação e integração podem ser feitas com algumas linhas de código.
+[Express](https://expressjs.com), [Quarkus](https://quarkus.io), e muito mais! A
+instalação e integração podem ser feitas com algumas linhas de código.
 
 {{% /blocks/feature %}}
 
@@ -79,7 +82,8 @@ A instalação e integração podem ser feitas com algumas linhas de código.
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**O OpenTelemetry é um projeto em [incubação][] da [CNCF][]**.<br> Formado por meio de uma junção dos projetos OpenTracing e OpenCensus.
+**O OpenTelemetry é um projeto em [incubação][] da [CNCF][]**.<br> Formado por
+meio de uma junção dos projetos OpenTracing e OpenCensus.
 
 [![CNCF logo][]][cncf]
 

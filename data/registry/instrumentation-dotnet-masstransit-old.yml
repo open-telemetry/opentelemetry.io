@@ -1,0 +1,27 @@
+# cSpell:ignore masstransit
+title: MassTransit Instrumentation for OpenTelemetry .NET
+registryType: instrumentation
+language: dotnet
+tags:
+  - masstransit
+  - instrumentation
+  - dotnet
+license: Apache 2.0
+description:
+  Automatically instruments DiagnosticSource events emitted by MassTransit
+  library.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.MassTransit
+createdAt: 2022-10-28
+isFirstParty: false
+deprecated:
+  reason:
+    This only works with MassTransit v7 (and earlier, where supported).
+    MassTransit v8.0.0 and later have built-in direct support for OpenTelemetry
+    via ActivitySource.
+package:
+  registry: nuget
+  name: OpenTelemetry.Instrumentation.MassTransit
+  version: 1.0.0-beta.3

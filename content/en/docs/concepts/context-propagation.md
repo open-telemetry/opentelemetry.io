@@ -33,7 +33,7 @@ information to be propagated from one service to another.
 
 Propagation is usually handled by instrumentation libraries and is transparent
 to the user. In the event that you need to manually propagate context, you can
-use Propagation APIs.
+use the [Propagators API](/docs/specs/otel/context/api-propagators/).
 
 OpenTelemetry maintains several official propagators. The default propagator is
 using the headers specified by the

@@ -4,6 +4,9 @@ weight: 40
 cSpell:ignore: autoconfigurations autoconfigures logback webflux webmvc
 ---
 
+<!-- markdownlint-disable blanks-around-fences -->
+<?code-excerpt path-base="examples/java/spring-starter"?>
+
 Out of the box instrumentation is available for several frameworks:
 
 | Feature               | Property                                        | Default Value |
@@ -99,33 +102,84 @@ supported for spring web versions 3.1+. To learn more about the OpenTelemetry
 
 The following ways of creating a `RestTemplate` are supported:
 
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/RestTemplateConfig.java"?>
 ```java
-@Bean
-public RestTemplate restTemplate() {
+package otel;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
+
+@Configuration
+public class RestTemplateConfig {
+
+  @Bean
+  public RestTemplate restTemplate() {
     return new RestTemplate();
+  }
 }
 ```
 
+<?code-excerpt "src/main/java/otel/RestTemplateController.java"?>
 ```java
-public MyService(RestTemplateBuilder restTemplateBuilder) {
-    this.restTemplate = restTemplateBuilder.build();
+package otel;
+
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+@RestController
+public class RestTemplateController {
+
+  private final RestTemplate restTemplate;
+
+  public RestTemplateController(RestTemplateBuilder restTemplateBuilder) {
+    restTemplate = restTemplateBuilder.rootUri("http://localhost:8080").build();
+  }
 }
 ```
+<!-- prettier-ignore-end -->
 
 The following ways of creating a `RestClient` are supported:
 
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/RestClientConfig.java"?>
 ```java
-@Bean
-public RestClient restClient() {
+package otel;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestClient;
+
+@Configuration
+public class RestClientConfig {
+
+  @Bean
+  public RestClient restClient() {
     return RestClient.create();
+  }
 }
 ```
 
+<?code-excerpt "src/main/java/otel/RestClientController.java"?>
 ```java
-public MyService(RestClient.Builder restClientBuilder) {
-    this.restClient = restClientBuilder.build();
+package otel;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestClient;
+
+@RestController
+public class RestClientController {
+
+  private final RestClient restClient;
+
+  public RestClientController(RestClient.Builder restClientBuilder) {
+    restClient = restClientBuilder.baseUrl("http://localhost:8080").build();
+  }
 }
 ```
+<!-- prettier-ignore-end -->
 
 As it's possible with the Java agent, you can configure the capture of the
 following entities:
@@ -165,18 +219,43 @@ details, see
 
 The following ways of creating a `WebClient` are supported:
 
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/WebClientConfig.java"?>
 ```java
-@Bean
-public WebClient webClient() {
+package otel;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.reactive.function.client.WebClient;
+
+@Configuration
+public class WebClientConfig {
+
+  @Bean
+  public WebClient webClient() {
     return WebClient.create();
+  }
 }
 ```
 
+<?code-excerpt "src/main/java/otel/WebClientController.java"?>
 ```java
-public MyService(WebClient.Builder webClientBuilder) {
-    this.webClient = webClientBuilder.build();
+package otel;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.reactive.function.client.WebClient;
+
+@RestController
+public class WebClientController {
+
+  private final WebClient webClient;
+
+  public WebClientController(WebClient.Builder webClientBuilder) {
+    webClient = webClientBuilder.baseUrl("http://localhost:8080").build();
+  }
 }
 ```
+<!-- prettier-ignore-end -->
 
 ## Kafka Instrumentation
 

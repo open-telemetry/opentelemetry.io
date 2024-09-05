@@ -19,8 +19,8 @@ conference begins.
 ## Maintainer sessions
 
 - **[OpenTelemetry Community Update | OpenTelemetry社区更新](https://sched.co/1eYcJ)**<br>
-  by Zihao Rao & Huxing Zhang, Alibaba Cloud<br> Wednesday, August 21 • 3:35 -
-  4:10
+  by Zihao Rao & Huxing Zhang & Wanqi Yang, Alibaba Cloud & Jared Tan,
+  DaoCloud<br> Wednesday, August 21 • 3:35 - 4:10
 
 ## AI_dev talks
 
@@ -41,7 +41,7 @@ by Zihao Rao & Ziyi Lin, Alibaba Cloud<br> Thursday, August 22 • 1:50 - 2:25
   by Husni Alhamdani, Censhare & Herbert Sianturi, Krom Bank<br> Thursday,
   August 22 • 3:35 - 4:10
 - **[OpenTelemetry Amplified: Full Observability with EBPF-Enabled Distributed Tracing | OpenTelemetry放大：使用eBPF启用的分布式跟踪实现全面的可观测性](https://sched.co/1eYZq)**<br>
-  by Kai Liu, Alibaba Cloud & Wanqi Yang, Sun Yat<br> Thursday, August 22 •
-  5:15 - 5:50
+  by Kai Liu, Alibaba Cloud & Wanqi Yang, Sun Yat-sen University<br> Thursday,
+  August 22 • 5:15 - 5:50
 
 Come listen, learn, and get involved in OpenTelemetry. See you in Hong Kong!

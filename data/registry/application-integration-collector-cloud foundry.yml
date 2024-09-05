@@ -1,0 +1,18 @@
+title: Cloud Foundry
+registryType: application integration
+language: collector
+tags:
+  - collector
+  - cloud foundry
+license: Apache-2.0
+description:
+  Adds an OpenTelemetry Collector to all Linux VMs to egress metrics and traces.
+authors:
+  - name: Cloud Foundry Authors
+    url: https://github.com/cloudfoundry
+urls:
+  website: https://www.cloudfoundry.org/
+  docs: https://github.com/cloudfoundry/cf-deployment/blob/main/operations/experimental/add-otel-collector.yml
+  blog: /blog/2023/cloud-foundry/
+createdAt: '2024-08-06'
+isNative: true

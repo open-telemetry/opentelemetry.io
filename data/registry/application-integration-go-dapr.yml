@@ -1,0 +1,22 @@
+# cSpell:ignore: dapr
+title: Dapr
+registryType: application integration
+language: go
+tags:
+  - go
+  - incubating
+  - dapr
+license: Apache-2.0
+description:
+  Dapr directly writes traces using the OpenTelemetry (OTLP) protocol as the
+  recommended method.
+authors:
+  - name: Dapr Authors
+    url: https://github.com/dapr
+urls:
+  website: https://dapr.io/
+  repo: https://github.com/dapr/dapr
+  docs: https://docs.dapr.io/operations/observability/tracing/otel-collector/open-telemetry-collector/
+createdAt: '2024-08-06'
+cncfProjectLevel: incubating
+isNative: true

@@ -1,0 +1,237 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://opentelemetry.io/ecosystem/registry/schema.json",
+  "$comment": "https://opentelemetry.io/ecosystem/registry/adding/",
+  "description": "A schema for entries in the OpenTelemetry registry",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "The title of the entry",
+      "errorMessage": "The title of the entry must be a string and can not be empty",
+      "minLength": 1
+    },
+    "registryType": {
+      "type": "string",
+      "description": "The type of the entry",
+      "enum": [
+        "application integration",
+        "core",
+        "exporter",
+        "extension",
+        "instrumentation",
+        "log-bridge",
+        "processor",
+        "receiver",
+        "resource-detector",
+        "utilities"
+      ]
+    },
+    "language": {
+      "type": "string",
+      "description": "The programming language of the entry",
+      "examples": ["collector"],
+      "pattern": "^[a-z0-9]+$"
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the entry",
+      "errorMessage": "The description of the entry must be a string and can not be empty"
+    },
+    "license": {
+      "type": "string",
+      "description": "The license of the entry",
+      "examples": ["Apache 2.0", "MIT"]
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "A list of tags for the entry",
+      "uniqueItems": true
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "The date the entry was created",
+      "format": "date"
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "oneOf": [
+              {
+                "pattern": "OpenTelemetry Authors",
+                "errorMessage": "The name of the author can not contain 'OpenTelemetry' except for 'OpenTelemetry Authors'"
+              },
+              {
+                "pattern": "^(?!.*OpenTelemetry).*$"
+              }
+            ],
+            "description": "The name of the author",
+            "errorMessage": "The name of the author must be a string"
+          },
+          "email": {
+            "type": "string",
+            "description": "The email address of the author",
+            "format": "email"
+          },
+          "url": {
+            "type": "string",
+            "description": "The URL of the author",
+            "pattern": "^https:\\/\\/github\\.com\\/([a-zA-Z0-9](?:-?[a-zA-Z0-9]){0,38})$",
+            "errorMessage": "The URL of the author must be a valid GitHub user URL"
+          }
+        },
+        "if": {
+          "properties": {
+            "name": {
+              "const": "OpenTelemetry Authors"
+            }
+          }
+        },
+        "then": {
+          "required": ["name"]
+        },
+        "else": {
+          "required": ["name"],
+          "anyOf": [
+            {
+              "required": ["email"]
+            },
+            {
+              "required": ["url"]
+            }
+          ],
+          "errorMessage": "An author must have an email or a URL"
+        },
+        "additionalProperties": false
+      },
+      "description": "A list of authors of the entry",
+      "minItems": 1
+    },
+    "urls": {
+      "type": "object",
+      "properties": {
+        "repo": {
+          "type": "string",
+          "description": "The URL of the repository"
+        },
+        "docs": {
+          "type": "string",
+          "description": "The URL of the documentation"
+        },
+        "website": {
+          "type": "string",
+          "description": "The URL of the website"
+        },
+        "blog": {
+          "type": "string",
+          "description": "The URL of a blog post about this entry."
+        }
+      },
+      "anyOf": [
+        {
+          "required": ["repo"]
+        },
+        {
+          "required": ["website"]
+        }
+      ],
+      "additionalProperties": false
+    },
+    "package": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the package"
+        },
+        "version": {
+          "type": "string",
+          "description": "The version of the package"
+        },
+        "registry": {
+          "type": "string",
+          "description": "The registry of the package",
+          "enum": [
+            "crates",
+            "npm",
+            "pip",
+            "gems",
+            "maven",
+            "nuget",
+            "packagist",
+            "go",
+            "go-collector",
+            "hex"
+          ]
+        },
+        "quickInstall": {
+          "type": "boolean",
+          "description": "A flag to indicate if a quick install can be shown"
+        }
+      },
+      "required": ["name", "registry"],
+      "additionalProperties": false
+    },
+    "deprecated": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string",
+          "description": "The reason for deprecation",
+          "errorMessage": "The reason for deprecation must be a string and can not be empty"
+        }
+      },
+      "required": ["reason"],
+      "additionalProperties": false
+    },
+    "isNative": {
+      "type": "boolean",
+      "description": "A flag to indicate if the entry is native"
+    },
+    "isFirstParty": {
+      "type": "boolean",
+      "description": "A flag to indicate if the entry is first party"
+    },
+    "cncfProjectLevel": {
+      "type": "string",
+      "description": "The CNCF project level of the entry",
+      "enum": ["sandbox", "incubating", "graduated"]
+    }
+  },
+  "if": {
+    "properties": {
+      "registryType": {
+        "const": "application integration"
+      }
+    }
+  },
+  "then": {
+    "properties": {
+      "license": {
+        "type": "string",
+        "description": "The license of the entry",
+        "examples": ["Apache 2.0", "MIT"]
+      }
+    }
+  },
+  "else": {
+    "properties": {
+      "license": {
+        "type": "string",
+        "description": "The license of the entry",
+        "examples": ["Apache 2.0", "MIT"],
+        "pattern": "^(?!.*Commercial).*$",
+        "errorMessage": "An open source license is required for non-application integration entries"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": ["title", "description", "urls", "authors"]
+}

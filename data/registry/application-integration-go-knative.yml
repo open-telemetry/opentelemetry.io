@@ -1,0 +1,19 @@
+title: Knative
+registryType: application integration
+language: go
+tags:
+  - go
+  - incubating
+  - knative
+license: Apache-2.0
+description:
+  Analyze and understand the performance and behavior of Knative components
+authors:
+  - name: Knative Authors
+    url: https://github.com/knative
+urls:
+  website: https://knative.dev/
+  docs: https://knative.dev/docs/eventing/observability/metrics/collecting-metrics/#about-opentelemetry
+createdAt: '2024-08-06'
+cncfProjectLevel: incubating
+isNative: true
