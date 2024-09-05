@@ -110,8 +110,8 @@ semelhante ao que ocorre no projeto Kubernetes. Ao avaliar uma distribuição,
 assegure-se de que seu uso não irá resultar em uma dependência de fornecedor
 (vendor lock-in).
 
-> Qualquer suporte para uma distribuição deve ser fornecido diretamente pelos
-> seus autores e não por autores do projeto do OpenTelemetry.
+> Qualquer suporte para uma distribuição deve ser fornecido diretamente por quem
+> a criou e não pelas pessoas envolvidas no projeto do OpenTelemetry.
 
 [diretrizes]:
   https://github.com/open-telemetry/community/blob/main/marketing-guidelines.md
