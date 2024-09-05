@@ -18,10 +18,9 @@ Qualquer implementação de referência pode ser customizada como uma distribui�
 
 ## O que é uma distribuição? {#what-is-a-distribution}
 
-Uma distribuição é uma versão customizada de um componente do OpenTelemetry.
-Uma distribuição é um encapsulamento em torno de um repositório do OpenTelemetry
-com algumas customizações. Distribuições não devem ser confundidas com
-_forks_.
+Uma distribuição é uma versão customizada de um componente do OpenTelemetry. Uma
+distribuição é um encapsulamento em torno de um repositório do OpenTelemetry com
+algumas customizações. Distribuições não devem ser confundidas com _forks_.
 
 As customizações em uma distribuição podem incluir:
 
@@ -40,8 +39,8 @@ As distribuições geralmente se enquadram nas seguintes categorias:
 
 - **"Pura":** Estas distribuições fornecem as mesmas funcionalidades da versão
   pública e são 100% compatíveis. As customizações normalmente aprimoram a
-  facilidade de uso ou configurações. Estas customizações podem ser
-  específicas para _backends_, fornecedores ou usuários finais.
+  facilidade de uso ou configurações. Estas customizações podem ser específicas
+  para _backends_, fornecedores ou usuários finais.
 - **"Plus":** Estas distribuições oferecem funcionalidades adicionais ao que é
   encontrado na _upstream_, através de componentes adicionais. Exemplos incluem
   bibliotecas de instrumentação ou exportadores de fornecedores que não foram
