@@ -71,7 +71,7 @@ referência:
 
 - Os seus scripts são "fáceis para uso" e podem ser generalizados?
 - Suas alterações nas configurações padrão podem ser a melhor opção para todos?
-- Os seus pacotes ou bibliotecas adicionais, são realmente específicos?
+- Os seus pacotes ou bibliotecas adicionais são realmente específicos?
 - Sua cobertura de testes, performance ou segurança também funcionarão nas
   implementações de referência?
 - Você verificou com a comunidade se as suas funcionalidades ou comportamentos
