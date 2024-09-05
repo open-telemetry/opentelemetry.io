@@ -50,8 +50,8 @@ As distribuições geralmente se enquadram nas seguintes categorias:
 - **"Minus":** Estas distribuições fornecem um subconjunto de funcionalidades da
   upstream. Exemplos podem incluir a remoção de bibliotecas de instrumentação ou
   de receptores, processadores, exportadores ou extensões encontradas no projeto
-  do OpenTelemetry Collector. Estas distribuições podem ser fornecidas para
-  aumentar o suporte e/ou temas relacionados à segurança.
+  do OpenTelemetry Collector. Estas distribuições podem ser fornecidas por
+  questão de suporte e/ou temas relacionados à segurança.
 
 ## Quem pode criar uma distribuição? {#who-can-create-a-distribution}
 
