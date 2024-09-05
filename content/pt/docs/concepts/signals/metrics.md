@@ -5,10 +5,10 @@ description: Uma medição capturada em tempo de execução.
 default_lang_commit: 3446c7ce49a17975b012c302bdd1c89d4902267c
 ---
 
-Uma métrica é uma medição de um serviço capturada em tempo de execução.
-O momento de captura dessas medições é conhecido como evento de métrica, que
-consiste não apenas na medição em si, mas também no momento em que ela fio capturada e 
-os metadados associados.
+Uma métrica é uma medição de um serviço capturada em tempo de execução. O
+momento de captura dessas medições é conhecido como evento de métrica, que
+consiste não apenas na medição em si, mas também no momento em que ela fio
+capturada e os metadados associados.
 
 Métricas de aplicação e de requisição são indicadores importantes de
 disponibilidade e desempenho. Métricas personalizadas podem fornecer insights
@@ -25,9 +25,9 @@ lista de componentes que farão parte da instrumentação do nosso código.
 Um Meter Provider (às vezes chamado de `MeterProvider`) é uma fábrica de
 `medidores`. Na maioria das aplicações, um meter provider é inicializado uma vez
 e seu ciclo de vida corresponde ao ciclo de vida da aplicação. A inicialização
-do meter provider também inclui a inicialização do resource e do exporter. Esse é
-tipicamente o primeiro passo para metrificar com o OpenTelemetry. Em alguns SDKs,
-um meter provider global já é inicializado para sua aplicação.
+do meter provider também inclui a inicialização do resource e do exporter. Esse
+é tipicamente o primeiro passo para metrificar com o OpenTelemetry. Em alguns
+SDKs, um meter provider global já é inicializado para sua aplicação.
 
 ## Medidor {#meter}
 
