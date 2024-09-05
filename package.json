@@ -122,7 +122,7 @@
     "hugo-extended": "0.133.0",
     "js-yaml": "^4.1.0",
     "markdown-link-check": "^3.12.2",
-    "markdownlint": "^0.34.0",
+    "markdownlint": "^0.35.0",
     "postcss-cli": "^11.0.0",
     "prettier": "^3.3.3",
     "require-dir": "^1.2.0",
