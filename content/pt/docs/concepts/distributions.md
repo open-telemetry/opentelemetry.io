@@ -11,7 +11,7 @@ Os projetos do OpenTelemetry consistem de múltiplos [componentes](../components
 que suportam múltiplos [sinais](../signals). As implementações de referência do
 OpenTelemetry estão disponíveis em:
 
-- [Bibliotecas de instrumentação específicas para linguagens de programação](../instrumentation)
+- [Bibliotecas de instrumentação específicas de cada linguagem de programação](../instrumentation)
 - Um [Collector binário](/docs/concepts/components/#collector)
 
 Qualquer implementação de referência pode ser personalizada como uma
