@@ -5,7 +5,7 @@ weight: 40
 default_lang_commit: a570a00c7a238ffe26528d7bfb20efdbaf939c39
 ---
 
-A OpenTelemetry fornece [bibliotecas de instrumentação][] para várias
+O OpenTelemetry fornece [bibliotecas de instrumentação][] para várias
 bibliotecas, geralmente feitas por meio de _hooks_ de biblioteca ou
 _monkey-patching_ do código da biblioteca.
 
@@ -171,7 +171,7 @@ biblioteca. Quais chamadas devem ser rastreadas:
   que levam tempo significativo e podem falhar (e.g. IO)
 - handlers que processam requisições ou mensagens
 
-**Exemplo de instrumentação**
+**Exemplo de instrumentação:**
 
 ```java
 private static Tracer tracer =  getTracer(TracerProvider.noop());
@@ -287,14 +287,14 @@ código da aplicação (_callback ou handler_), tornando o rastro ativo; se
 possível, você deve fazer isso explicitamente.
 
 ```java
-// extract the context
+// extrair o contexto
 Context extractedContext = propagator.extract(Context.current(), httpExchange, getter);
 Span span = tracer.spanBuilder("receive")
             .setSpanKind(SpanKind.SERVER)
             .setParent(extractedContext)
             .startSpan();
 
-// make span active so any nested telemetry is correlated
+// tornar o span ativo para que qualquer telemetria aninhada seja correlacionada
 try (Scope unused = span.makeCurrent()) {
   userCode();
 } catch (Exception e) {
@@ -331,10 +331,10 @@ Span span = tracer.spanBuilder("send")
             .setSpanKind(SpanKind.CLIENT)
             .startSpan();
 
-// make span active so any nested telemetry is correlated
-// even network calls might have nested layers of spans, logs or events
+// tornar o span ativo para que qualquer telemetria aninhada seja correlacionada
+// até mesmo chamadas de rede podem ter camadas aninhadas de spans, logs ou eventos
 try (Scope unused = span.makeCurrent()) {
-  // inject the context
+  // injetar o contexto
   propagator.inject(Context.current(), transportLayer, setter);
   send();
 } catch (Exception e) {
@@ -399,15 +399,15 @@ e você pode verificar se o rastro está gravando, para evitar alocações extra
 cálculos potencialmente caros, enquanto preenche atributos.
 
 ```java
-// some attributes are important for sampling, they should be provided at creation time
+// alguns atributos são importantes para a amostragem e devem ser fornecidos no momento da criação
 Span span = tracer.spanBuilder(String.format("SELECT %s.%s", dbName, collectionName))
         .setSpanKind(SpanKind.CLIENT)
         .setAttribute("db.name", dbName)
         ...
         .startSpan();
 
-// other attributes, especially those that are expensive to calculate
-// should be added if span is recording
+// outros atributos, especialmente aqueles caros de calcular
+// devem ser adicionados se o span estiver gravando
 if (span.isRecording()) {
     span.setAttribute("db.statement", sanitize(query.statement()))
 }
@@ -443,7 +443,7 @@ public void checkInstrumentation() {
            .setTracerProvider(SdkTracerProvider.builder()
               .addSpanProcessor(SimpleSpanProcessor.create(exporter)).build()).build()
            .getTracer("test");
-  // run test ...
+  // executa teste ...
 
   validateSpans(exporter.exportedSpans);
 }
