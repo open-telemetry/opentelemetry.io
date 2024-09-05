@@ -2,9 +2,6 @@
 title: Sinais
 description:
   Aprenda sobre as categorias de telemetria suportadas pelo OpenTelemetry
-aliases:
-  - /docs/concepts/data-sources
-  - /docs/concepts/otel-concepts
 weight: 11
 default_lang_commit: 08e13eb62f2869300301670675969be705db59ae
 ---
