@@ -12,7 +12,7 @@ que suportam múltiplos [sinais](../signals). As implementações de referência
 OpenTelemetry estão disponíveis em:
 
 - [Bibliotecas de instrumentação específicas de cada linguagem de programação](../instrumentation)
-- Um [Collector binário](/docs/concepts/components/#collector)
+- Um [binário para o Collector](/docs/concepts/components/#collector)
 
 Qualquer implementação de referência pode ser personalizada como uma
 distribuição.
