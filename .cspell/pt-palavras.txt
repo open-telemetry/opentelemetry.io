@@ -2,4 +2,4 @@ desserializa
 autoinstrumentação
 autoconsistentes
 serialização
-verbozidade
+verbosidade

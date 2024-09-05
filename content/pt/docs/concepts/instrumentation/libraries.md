@@ -256,7 +256,7 @@ AVISO: Solução genérica para evitar duplicação está em construção 🚧.
 
 Rastros são um tipo de sinal que seus aplicativos podem emitir. Eventos (ou
 logs) e traces se complementam, não se duplicam. Sempre que você tiver algo que
-deva ter uma verbozidade, logs são uma escolha melhor do que traces.
+deva ter uma verbosidade, logs são uma escolha melhor do que traces.
 
 É provável que seu aplicativo já use log ou algum módulo semelhante. Seu módulo
 pode já ter integração com o OpenTelemetry -- para descobrir, veja o
