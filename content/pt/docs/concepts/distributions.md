@@ -69,7 +69,7 @@ mesmo se as suas adições a um determinado componente do OpenTelemetry seriam
 benéficas para todos e, portanto, deveriam ser incluídas nas implementações de
 referência:
 
-- Os seus scripts são "fáceis para uso" e podem ser generalizados?
+- Os seus scripts para "facilitar o uso" podem ser generalizados?
 - Suas alterações nas configurações padrão podem ser a melhor opção para todos?
 - Os seus pacotes ou bibliotecas adicionais são realmente específicos?
 - Sua cobertura de testes, performance ou segurança também funcionarão nas
