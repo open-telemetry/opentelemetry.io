@@ -59,7 +59,7 @@ Qualquer pessoa pode criar uma distribuição. Atualmente, diversos
 [fornecedores](/ecosystem/vendors/) oferecem
 [distribuições](/ecosystem/distributions). Além disso, os usuários finais podem
 considerar criar uma distribuição caso queiram usar componentes no
-[Registry](/ecosystem/registry) que não foram incluídos na upstream do projeto
+[Registry](/ecosystem/registry) que não foram incluídos na _upstream_ do projeto
 do OpenTelemetry.
 
 ## Contribuição ou distribuição? {#contribution-or-distribution}
