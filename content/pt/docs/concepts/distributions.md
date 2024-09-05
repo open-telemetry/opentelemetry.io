@@ -14,7 +14,7 @@ OpenTelemetry estão disponíveis em:
 - [Bibliotecas de instrumentação específicas de cada linguagem de programação](../instrumentation)
 - Um [binário para o Collector](/docs/concepts/components/#collector)
 
-Qualquer implementação de referência pode ser personalizada como uma
+Qualquer implementação de referência pode ser customizada como uma
 distribuição.
 
 ## O que é uma distribuição? {#what-is-a-distribution}
