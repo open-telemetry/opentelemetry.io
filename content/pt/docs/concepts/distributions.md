@@ -57,7 +57,7 @@ As distribuições geralmente se enquadram nas seguintes categorias:
 
 Qualquer pessoa pode criar uma distribuição. Atualmente, diversos
 [fornecedores](/ecosystem/vendors/) oferecem
-[distribuições](/ecosystem/distributions). Além disso, os usuários finais podem
+[distribuições](/ecosystem/distributions). Além disso, usuários finais podem
 considerar criar uma distribuição caso queiram usar componentes do
 [Registry](/ecosystem/registry) que não foram incluídos na _upstream_ do projeto
 do OpenTelemetry.
