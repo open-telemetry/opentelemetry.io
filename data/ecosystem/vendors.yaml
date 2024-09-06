@@ -10,6 +10,12 @@
   contact:
   oss: false
   commercial: true
+- name: Arize Phoenix
+  nativeOTLP: true
+  url: https://docs.arize.com/phoenix/tracing/how-to-tracing/setup-tracing/setup-tracing-python
+  contact:
+  oss: false
+  commercial: true
 - name: Aspecto
   nativeOTLP: true
   url: https://www.aspecto.io
@@ -51,7 +57,7 @@
   nativeOTLP: true
   url: https://docs.centreon.com/pp/integrations/plugin-packs/getting-started/how-to-guides/telegraf/
   contact: contact@centreon.com
-  oss: false
+  oss: true
   commercial: true
 - name: Chronosphere
   distribution: false
@@ -178,6 +184,12 @@
   nativeOTLP: true
   url: https://docs.lightstep.com/docs/about-sending-data
   contact: https://github.com/cartersocha
+  oss: false
+  commercial: true
+- name: Last9 Levitate
+  nativeOTLP: true
+  url: https://docs.last9.io/docs/levitate-integrations-opentelemetry
+  contact: hi@last9.io
   oss: false
   commercial: true
 - name: LogicMonitor
@@ -414,4 +426,10 @@
   url: 'https://embrace.io/opentelemetry-for-mobile/'
   contact: 'product@embrace.io'
   oss: true
+  commercial: true
+- name: groundcover
+  nativeOTLP: true
+  url: 'https://docs.groundcover.com/integrations/data-sources/opentelemetry/traces-and-logs'
+  contact: 'hello@groundcover.com'
+  oss: false
   commercial: true

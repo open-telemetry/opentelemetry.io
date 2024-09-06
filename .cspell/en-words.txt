@@ -25,6 +25,7 @@ checkoutservice
 Chronosphere
 classpath
 cncf
+comms
 currencyservice
 daemonset
 datadog
@@ -106,6 +107,8 @@ recommendationservice
 redis
 relref
 Rexed
+runbook
+runbooks
 Rynn
 semconv
 servlet
