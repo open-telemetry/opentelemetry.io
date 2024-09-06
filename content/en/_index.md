@@ -57,8 +57,8 @@ you analyze your software's performance and behavior.
 
 {{% blocks/feature icon="fas fa-chart-line" title="Traces, Metrics, Logs" url="docs/concepts/observability-primer/" %}}
 
-Create and collect telemetry from your services and software, then forward
-it to a variety of analysis tools.
+Create and collect telemetry from your services and software, then forward it to
+a variety of analysis tools.
 
 {{% /blocks/feature %}}
 
