@@ -9,8 +9,8 @@ default_lang_commit: de60a8e2c5098e47eda3e12b006c5490bdb8a94e
 
 Com [rastros](/docs/concepts/signals/traces), você pode observar as requisições
 à medida que se movem de um serviço para outro em um sistema distribuído.
-Rastreamento é muito útil tanto para análises de alto nível quanto para
-análises aprofundadas de sistemas.
+Rastreamento é muito útil tanto para análises de alto nível quanto para análises
+aprofundadas de sistemas.
 
 Contudo, se a grande maioria das suas requisições é bem-sucedida e termina com
 uma latência aceitável e sem erros, você não precisa de 100% dos seus rastros
@@ -22,11 +22,12 @@ da amostragem correta.
 ## Terminologia
 
 É importante usar uma terminologia consistente ao discutir amostragem. Um rastro
-ou trecho é considerado "amostrado" (_sampled_) ou "não amostrado" (_not sampled_):
+ou trecho é considerado "amostrado" (_sampled_) ou "não amostrado" (_not
+sampled_):
 
 - **Amostrado**: Um rastro ou trecho é processado e exportado. Por ter sido
-  escolhido pelo amostrador (_sampler_) como representativo do conjunto de dados, ele é
-  considerado "amostrado".
+  escolhido pelo amostrador (_sampler_) como representativo do conjunto de
+  dados, ele é considerado "amostrado".
 - **Não amostrado**: Um rastro ou trecho não é processado ou exportado. Por não
   ter sido escolhido pelo amostrador, ele é considerado "não amostrado".
 
@@ -70,22 +71,21 @@ Considere usar amostragem se você atender a qualquer um dos seguintes critério
 - Você tem a capacidade de rotear dados não amostrados (para cenários de "por
   via das dúvidas") para sistemas de armazenamento de baixo custo.
 
-Por fim, considere seu orçamento em geral. Se você tem um orçamento limitado para
-observabilidade, mas pode dedicar tempo para realizar uma amostragem eficaz,
-então a amostragem geralmente vale a pena.
+Por fim, considere seu orçamento em geral. Se você tem um orçamento limitado
+para observabilidade, mas pode dedicar tempo para realizar uma amostragem
+eficaz, então a amostragem geralmente vale a pena.
 
 ## Quando não usar amostragem
 
 A amostragem pode não servir para você. Você talvez queira evitar a amostragem
 se atender a qualquer um dos seguintes critérios:
 
-- Você gera poucos dados (dezenas de pequenos rastros por segundo ou
-  menos).
+- Você gera poucos dados (dezenas de pequenos rastros por segundo ou menos).
 - Você só usa dados de observabilidade de forma agregada, portanto, pode
   pré-agregar os dados.
-- Você está limitado por outros fatores, como por exemplo, regulamentações que proíbem
-  descartar dados (e não pode rotear dados não amostrados para armazenamento de
-  baixo custo).
+- Você está limitado por outros fatores, como por exemplo, regulamentações que
+  proíbem descartar dados (e não pode rotear dados não amostrados para
+  armazenamento de baixo custo).
 
 Por fim, considere os seguintes três custos associados à amostragem:
 
@@ -97,25 +97,25 @@ Por fim, considere os seguintes três custos associados à amostragem:
    de amostragem ineficazes.
 
 A amostragem, embora eficaz na redução dos custos de observabilidade, pode
-introduzir outros custos inesperados se não for realizada corretamente.
-Poderia ser mais barato alocar mais recursos para observabilidade, seja através de um
-fornecedor ou com recursos computacionais em hospedagem própria, dependendo do seu
-_backend_ de observabilidade, da natureza dos seus dados e das suas tentativas de
-realizar amostragem de forma eficaz.
+introduzir outros custos inesperados se não for realizada corretamente. Poderia
+ser mais barato alocar mais recursos para observabilidade, seja através de um
+fornecedor ou com recursos computacionais em hospedagem própria, dependendo do
+seu _backend_ de observabilidade, da natureza dos seus dados e das suas
+tentativas de realizar amostragem de forma eficaz.
 
 ## Amostragem pela Cabeça
 
-A amostragem pela cabeça (_head sampling_) é uma técnica de amostragem usada para tomar uma decisão
-de amostragem o mais cedo possível. A decisão de amostrar ou descartar um trecho
-ou um rastro não é feita inspecionando o rastro como um todo.
+A amostragem pela cabeça (_head sampling_) é uma técnica de amostragem usada
+para tomar uma decisão de amostragem o mais cedo possível. A decisão de amostrar
+ou descartar um trecho ou um rastro não é feita inspecionando o rastro como um
+todo.
 
 Por exemplo, a forma mais comum de amostragem pela cabeça é a
 [Amostragem de Probabilidade Consistente](/docs/specs/otel/trace/tracestate-probability-sampling/#consistent-probability-sampling).
 Isso também é conhecido como Amostragem Determinística. Neste caso, uma decisão
 de amostragem é tomada com base no ID do rastro e na porcentagem desejada de
-rastros a serem amostrados. Isso garante que rastros inteiros sejam
-amostrados - sem trechos faltantes - a uma taxa consistente, como 5% de todos os
-rastros.
+rastros a serem amostrados. Isso garante que rastros inteiros sejam amostrados -
+sem trechos faltantes - a uma taxa consistente, como 5% de todos os rastros.
 
 As vantagens da amostragem pela cabeça são:
 
@@ -126,17 +126,17 @@ As vantagens da amostragem pela cabeça são:
 
 A principal desvantagem da amostragem pela cabeça é que não é possível tomar uma
 decisão de amostragem com base nos dados do rastro inteiro. Por exemplo, você
-não pode garantir que todos os rastros com um erro sejam amostrados apenas com
-a amostragem pela cabeça. Para essa situação e muitas outras, você precisa da
+não pode garantir que todos os rastros com um erro sejam amostrados apenas com a
+amostragem pela cabeça. Para essa situação e muitas outras, você precisa da
 amostragem pela cauda.
 
 ## Amostragem pela Cauda
 
-A amostragem pela cauda (_tail sampling_) é onde a decisão de amostrar um rastro acontece
-considerando todos ou a maioria dos trechos dentro do rastro. A Amostragem de
-Cauda oferece a opção de amostrar seus rastros com base em critérios
-específicos derivados de diferentes partes de um rastro, o que não é uma opção
-com a Amostragem pela Cabeça.
+A amostragem pela cauda (_tail sampling_) é onde a decisão de amostrar um rastro
+acontece considerando todos ou a maioria dos trechos dentro do rastro. A
+Amostragem de Cauda oferece a opção de amostrar seus rastros com base em
+critérios específicos derivados de diferentes partes de um rastro, o que não é
+uma opção com a Amostragem pela Cabeça.
 
 ![Ilustração mostrando como os trechos se originam de um trecho raiz. Após os trechos serem concluídos, o processador de amostragem pela cauda toma uma decisão de amostragem.](tail-sampling-process.png)
 
@@ -144,17 +144,17 @@ Alguns exemplos de como você pode usar a Amostragem pela Cauda incluem:
 
 - Sempre amostrar rastros que contenham um erro
 - Amostrar rastros com base na latência geral
-- Amostrar rastros com base na presença ou valor de atributos específicos em
-  um ou mais trechos de um rastro; por exemplo, amostrar mais rastros
-  originados de um serviço recém-implantado
-- Aplicar diferentes taxas de amostragem a rastros com base em certos
-  critérios, como quando os rastros vêm apenas de serviços de baixo volume
-  versus rastros de serviços de alto volume.
+- Amostrar rastros com base na presença ou valor de atributos específicos em um
+  ou mais trechos de um rastro; por exemplo, amostrar mais rastros originados de
+  um serviço recém-implantado
+- Aplicar diferentes taxas de amostragem a rastros com base em certos critérios,
+  como quando os rastros vêm apenas de serviços de baixo volume versus rastros
+  de serviços de alto volume.
 
 Como você pode ver, a amostragem pela cauda permite um grau muito maior de
 sofisticação na forma como você amostra os dados. Para sistemas maiores que
-devem amostrar telemetria, é quase sempre necessário usar a Amostragem pela Cauda
-para equilibrar o volume de dados com a utilidade desses dados.
+devem amostrar telemetria, é quase sempre necessário usar a Amostragem pela
+Cauda para equilibrar o volume de dados com a utilidade desses dados.
 
 Existem três principais desvantagens na amostragem pela cauda atualmente:
 
@@ -174,19 +174,19 @@ Existem três principais desvantagens na amostragem pela cauda atualmente:
    recebendo. Por conta desses fatores, é crucial monitorar os componentes de
    amostragem pela cauda para garantir que eles tenham os recursos necessários
    para tomar as decisões corretas de amostragem.
-3. Atualmente, os amostradores pela cauda frequentemente acabam sendo tecnologias
-   específicas de fornecedores. Se você está usando um fornecedor pago para
-   Observabilidade, as opções mais eficazes de amostragem pela cauda disponíveis
-   para você podem ser limitadas ao que o fornecedor oferece.
+3. Atualmente, os amostradores pela cauda frequentemente acabam sendo
+   tecnologias específicas de fornecedores. Se você está usando um fornecedor
+   pago para Observabilidade, as opções mais eficazes de amostragem pela cauda
+   disponíveis para você podem ser limitadas ao que o fornecedor oferece.
 
-Por fim, para alguns sistemas, a amostragem pela cauda pode ser usada em conjunto
-com a Amostragem pela Cabeça. Por exemplo, um conjunto de serviços que produz um
-volume extremamente alto de dados de rastreamento pode primeiro usar a
-amostragem pela cabeça para amostrar apenas uma pequena porcentagem dos rastros e,
-posteriormente, no _pipeline_ de telemetria usar a amostragem pela cauda para tomar
-decisões de amostragem mais sofisticadas antes de exportar para um _backend_. Isso
-é frequentemente feito com o intuito de proteger o _pipeline_ de telemetria contra
-sobrecarga.
+Por fim, para alguns sistemas, a amostragem pela cauda pode ser usada em
+conjunto com a Amostragem pela Cabeça. Por exemplo, um conjunto de serviços que
+produz um volume extremamente alto de dados de rastreamento pode primeiro usar a
+amostragem pela cabeça para amostrar apenas uma pequena porcentagem dos rastros
+e, posteriormente, no _pipeline_ de telemetria usar a amostragem pela cauda para
+tomar decisões de amostragem mais sofisticadas antes de exportar para um
+_backend_. Isso é frequentemente feito com o intuito de proteger o _pipeline_ de
+telemetria contra sobrecarga.
 
 ## Suporte
 
