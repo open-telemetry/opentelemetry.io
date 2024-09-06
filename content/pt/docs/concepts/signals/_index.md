@@ -15,7 +15,7 @@ sistema distribuído e que você gostaria de rastrear. Você pode agrupar
 diferentes sinais para observar o funcionamento interno de uma mesma tecnologia
 sob diferentes ângulos.
 
-OpenTelemetry atualmente suporta [rastros](/docs/concepts/signals/traces),
+O OpenTelemetry atualmente suporta [rastros](/docs/concepts/signals/traces),
 [métricas](/docs/concepts/signals/metrics), [logs](/docs/concepts/signals/logs)
 e [bagagem](/docs/concepts/signals/baggage). Eventos são um tipo específico de
 log, e o
