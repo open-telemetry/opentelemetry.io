@@ -7,7 +7,7 @@ default_lang_commit: 3446c7ce49a17975b012c302bdd1c89d4902267c
 
 Uma métrica é uma medição de um serviço capturada em tempo de execução. O
 momento de captura dessas medições é conhecido como evento de métrica, que
-consiste não apenas na medição em si, mas também no momento em que ela fio
+consiste não apenas na medição em si, mas também no momento em que ela foi
 capturada e os metadados associados.
 
 Métricas de aplicação e de requisição são indicadores importantes de
