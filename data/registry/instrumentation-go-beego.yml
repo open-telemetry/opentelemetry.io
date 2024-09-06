@@ -15,3 +15,4 @@ authors:
 urls:
   repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/astaxie/beego
 createdAt: 2022-12-07
+isFirstParty: false

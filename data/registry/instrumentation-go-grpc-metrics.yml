@@ -16,3 +16,4 @@ authors:
 urls:
   repo: https://github.com/mahboubii/grpcmetrics
 createdAt: 2023-04-06
+isFirstParty: true
