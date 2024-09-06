@@ -47,7 +47,7 @@ As distribuições geralmente se enquadram nas seguintes categorias:
   incluídos na _upstream_ do OpenTelemetry.
 - **"Minus":** Estas distribuições fornecem um subconjunto de funcionalidades da
   upstream. Exemplos podem incluir a remoção de bibliotecas de instrumentação ou
-  de receptores, processadores, exportadores ou extensões encontradas no projeto
+  de receivers, processors, exporters ou extensions encontradas no projeto
   do OpenTelemetry Collector. Estas distribuições podem ser fornecidas por
   questão de suporte e/ou temas relacionados à segurança.
 
