@@ -28,7 +28,6 @@ show_banner: true
 
 - [Learn more](docs/what-is-opentelemetry/)
 - [Try the demo](docs/demo/)
-- [Explore integrations](/ecosystem/integrations/)
 
 </div>
 
@@ -49,32 +48,37 @@ OpenTelemetry is a collection of APIs, SDKs, and tools. Use it to instrument,
 generate, collect, and export telemetry data (metrics, logs, and traces) to help
 you analyze your software's performance and behavior.
 
-> OpenTelemetry is **generally available** across
-> [several languages](docs/languages/) and is suitable for use.
+> OpenTelemetry is [generally available](/status/) across
+> [several languages](docs/languages/) and is suitable for production use.
 
 {{% /blocks/lead %}}
 
 {{% blocks/section color="dark" type="row" %}}
 
-{{% blocks/feature icon="fas fa-chart-line" title="Traces, Metrics, Logs"%}}
+{{% blocks/feature icon="fas fa-chart-line" title="Traces, Metrics, Logs" url="docs/concepts/observability-primer/" %}}
 
 Create and collect telemetry data from your services and software, then forward
-them to a variety of analysis tools. {{% /blocks/feature %}}
+them to a variety of analysis tools.
 
-{{% blocks/feature icon="fas fa-magic" title="Drop-In Instrumentation"%}}
+{{% /blocks/feature %}}
 
-OpenTelemetry integrates with popular libraries and frameworks such as
-[Spring](https://spring.io),
-[ASP.NET Core](https://docs.microsoft.com/aspnet/core),
-[Express](https://expressjs.com), [Quarkus](https://quarkus.io), and more!
-Installation and integration can be as simple as a few lines of code.
+{{% blocks/feature icon="fas fa-magic" title="Drop-in Instrumentation & Integrations" %}}
+
+OpenTelemetry [integrates] with many popular libraries and frameworks, and
+supports _code-based and zero-code_ [instrumentation].
+
+[instrumentation]: /docs/concepts/instrumentation/
+[integrates]: /ecosystem/integrations/
 
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fab fa-github" title="Open Source, Vendor Neutral" %}}
 
-100% Free and Open Source, OpenTelemetry is adopted and supported by
-[industry leaders](/ecosystem/vendors/) in the observability space.
+100% free and open source, OpenTelemetry is [adopted] and supported by [industry
+leaders] in the observability space.
+
+[adopted]: /ecosystem/adopters/
+[industry leaders]: /ecosystem/vendors/
 
 {{% /blocks/feature %}}
 
