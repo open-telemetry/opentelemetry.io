@@ -8,7 +8,7 @@ weight: 10
 
 This page will show you how to get started with OpenTelemetry in Python.
 
-You will learn how you can instrument a simple application automatically, in
+You learn how you can instrument an application automatically, in
 such a way that [traces][], [metrics][], and [logs][] are emitted to the
 console.
 
@@ -292,7 +292,7 @@ following:
 Automatic instrumentation captures telemetry at the edges of your systems, such
 as inbound and outbound HTTP requests, but it doesn't capture what's going on in
 your application. For that you'll need to write some
-[manual instrumentation](../instrumentation/). Here's how you can easily link up
+[manual instrumentation](../instrumentation/). Here's how you can link up
 manual instrumentation with automatic instrumentation.
 
 ### Traces

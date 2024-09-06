@@ -252,5 +252,5 @@ registerInstrumentations({
 
 ## Meta Packages for Web
 
-To leverage the most common instrumentations all in one you can simply use the
+To leverage the most common instrumentations all in one you can use the
 [OpenTelemetry Meta Packages for Web](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-web)

@@ -267,7 +267,7 @@ Kubernetes-specific receiver, it is still the de facto solution for collecting
 any logs from Kubernetes.
 
 The Filelog Receiver is composed of Operators that are chained together to
-process a log. Each Operator performs a simple responsibility, such as parsing a
+process a log. Each Operator performs a responsibility, such as parsing a
 timestamp or JSON. Configuring a Filelog Receiver is not trivial. If you're
 using the [OpenTelemetry Collector Helm chart](../../helm/collector/) you can
 use the [`logsCollection` preset](../../helm/collector/#logs-collection-preset)

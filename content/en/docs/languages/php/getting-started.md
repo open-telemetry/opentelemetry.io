@@ -10,7 +10,7 @@ OpenTelemetry for PHP can be used to generate and export [traces][], [metrics][]
 and [logs][].
 
 This page will show you how to get started with OpenTelemetry in PHP. We will
-create a simple "roll the dice" application, then apply both zero-code and code
+create a "roll the dice" application, then apply both zero-code and code
 based instrumentation to generate [traces][] and export them to the console. We
 will then emit some [logs][] which will also be sent to the console.
 
