@@ -7,10 +7,10 @@ components:
     - open-telemetry/opamp-spec-approvers
   content-modules/opentelemetry-proto:
     - open-telemetry/docs-maintainers
-    - open-telemetry/specs-approvers
+    - open-telemetry/spec-sponsors
   content-modules/opentelemetry-specification:
     - open-telemetry/docs-maintainers
-    - open-telemetry/specs-approvers
+    - open-telemetry/spec-sponsors
   content-modules/semantic-conventions:
     - open-telemetry/docs-maintainers
     - open-telemetry/specs-semconv-approvers
@@ -20,6 +20,8 @@ components:
     - open-telemetry/sig-end-user-approvers
   content/en/docs/collector:
     - open-telemetry/collector-approvers
+  content/en/docs/concepts:
+    - open-telemetry/spec-sponsors
   content/en/docs/contributing:
     - open-telemetry/docs-maintainers
   content/en/docs/demo:
@@ -28,6 +30,8 @@ components:
     - open-telemetry/helm-approvers
   content/en/docs/kubernetes/operator:
     - open-telemetry/operator-approvers
+  content/en/docs/languages/sdk-configuration:
+    - open-telemetry/spec-sponsors
   content/en/docs/languages/cpp:
     - open-telemetry/cpp-approvers
   content/en/docs/languages/erlang:
@@ -57,7 +61,7 @@ components:
   content/en/docs/security:
     - open-telemetry/sig-security-maintainers
   content/en/docs/specs:
-    - open-telemetry/specs-approvers
+    - open-telemetry/spec-sponsors
   content/en/docs/zero-code/java:
     - open-telemetry/java-approvers
     - open-telemetry/java-instrumentation-approvers

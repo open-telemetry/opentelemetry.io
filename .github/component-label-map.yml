@@ -100,3 +100,5 @@ sig:spec:
   - changed-files:
       - any-glob-to-any-file:
           - content/en/docs/specs/**
+          - content/en/docs/concepts/**
+          - content/en/docs/languages/sdk-configuration/**
