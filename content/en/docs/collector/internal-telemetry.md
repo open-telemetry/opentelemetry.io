@@ -283,7 +283,8 @@ own telemetry.
 
 #### Data loss
 
-Use the rate of `otelcol_processor_dropped_spans > 0` and
+Use the rate of `otelcol_processor_dropped_log_records > 0`,
+`otelcol_processor_dropped_spans > 0`, and
 `otelcol_processor_dropped_metric_points > 0` to detect data loss. Depending on
 your project's requirements, select a narrow time window before alerting begins
 to avoid notifications for small losses that are within the desired reliability
@@ -317,12 +318,13 @@ logs for messages such as `Dropping data because sending_queue is full`.
 
 #### Receive failures
 
-Sustained rates of `otelcol_receiver_refused_spans` and
-`otelcol_receiver_refused_metric_points` indicate that too many errors were
-returned to clients. Depending on the deployment and the clients' resilience,
-this might indicate clients' data loss.
+Sustained rates of `otelcol_receiver_refused_log_records`,
+`otelcol_receiver_refused_spans`, and `otelcol_receiver_refused_metric_points`
+indicate that too many errors were returned to clients. Depending on the
+deployment and the clients' resilience, this might indicate clients' data loss.
 
-Sustained rates of `otelcol_exporter_send_failed_spans` and
+Sustained rates of `otelcol_exporter_send_failed_log_records`,
+`otelcol_exporter_send_failed_spans`, and
 `otelcol_exporter_send_failed_metric_points` indicate that the Collector is not
 able to export data as expected. These metrics do not inherently imply data loss
 since there could be retries. But a high rate of failures could indicate issues
@@ -330,6 +332,8 @@ with the network or backend receiving the data.
 
 #### Data flow
 
-You can monitor data ingress with the `otelcol_receiver_accepted_spans` and
-`otelcol_receiver_accepted_metric_points` metrics and data egress with the
-`otelcol_exporter_sent_spans` and `otelcol_exporter_sent_metric_points` metrics.
+You can monitor data ingress with the `otelcol_receiver_accepted_log_records`,
+`otelcol_receiver_accepted_spans`, and `otelcol_receiver_accepted_metric_points`
+metrics and data egress with the `otelcol_exporter_sent_log_records`,
+`otelcol_exporter_sent_spans`, and `otelcol_exporter_sent_metric_points`
+metrics.
