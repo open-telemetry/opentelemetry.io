@@ -520,7 +520,7 @@ func createTracesReceiver(_ context.Context, params receiver.CreateSettings, bas
 ```
 
 You now have all the necessary components to successfully instantiate your
-receiver factory using the `receiver.NewFactory` function. Go ahead and and
+receiver factory using the `receiver.NewFactory` function. Go ahead and
 update your `NewFactory()` function in your `factory.go` file as follow:
 
 ```go

@@ -78,7 +78,7 @@ settings. See [Scaling](/docs/collector/scaling/).
 ## Constraints impacting the performance of the Java agent
 
 In general, the more telemetry you collect from your application, the greater
-the the impact on agent overhead. For example, tracing methods that aren't
+the impact on agent overhead. For example, tracing methods that aren't
 relevant to your application can still produce considerable agent overhead
 because tracing such methods is computationally more expensive than running the
 method itself. Similarly, high cardinality tags in metrics might increase memory
