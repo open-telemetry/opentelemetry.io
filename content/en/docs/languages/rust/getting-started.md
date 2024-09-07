@@ -6,7 +6,7 @@ weight: 10
 
 This page will show you how to get started with OpenTelemetry in Rust.
 
-You learn how you can instrument a Rust application, in such a way
+You will learn how to instrument a Rust application, in such a way
 that [traces][] are emitted to the console.
 
 ## Prerequisites

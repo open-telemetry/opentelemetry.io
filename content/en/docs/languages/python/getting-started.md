@@ -8,7 +8,7 @@ weight: 10
 
 This page will show you how to get started with OpenTelemetry in Python.
 
-You learn how you can instrument an application automatically, in
+You will learn how to instrument an application automatically, in
 such a way that [traces][], [metrics][], and [logs][] are emitted to the
 console.
 

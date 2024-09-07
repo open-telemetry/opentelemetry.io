@@ -7,7 +7,7 @@ weight: 10
 
 This page will show you how to get started with OpenTelemetry in C++.
 
-You learn how to instrument a C++ application, such that
+You will learn how to instrument a C++ application, such that
 [traces](/docs/concepts/signals/traces/) are emitted to the terminal.
 
 ## Prerequisites
