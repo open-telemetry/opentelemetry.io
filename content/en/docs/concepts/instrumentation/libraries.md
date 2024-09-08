@@ -24,27 +24,26 @@ and document hooks. Other advantages provided by native instrumentation include:
 
 ## Semantic conventions
 
-[Semantic conventions](/docs/specs/semconv/general/trace/) are the main
-source of truth about what information is included on spans produced by
-web frameworks, RPC clients, databases, messaging clients, infrastructure,
-and more. Conventions make instrumentation consistent: users who work with
-telemetry don't have to learn library specifics and observability vendors
-can build experiences for a wide variety of technologies, for example
-databases or messaging systems. When libraries follow conventions, many
-scenarios can be enabled without the user's input or configuration.
+[Semantic conventions](/docs/specs/semconv/general/trace/) are the main source
+of truth about what information is included on spans produced by web frameworks,
+RPC clients, databases, messaging clients, infrastructure, and more. Conventions
+make instrumentation consistent: users who work with telemetry don't have to
+learn library specifics and observability vendors can build experiences for a
+wide variety of technologies, for example databases or messaging systems. When
+libraries follow conventions, many scenarios can be enabled without the user's
+input or configuration.
 
 Semantic conventions are always evolving and new conventions are constantly
 added. If some don't exist for your library, consider
 [adding them](https://github.com/open-telemetry/semantic-conventions/issues).
 Pay special attention to span names: strive to use meaningful names and consider
 cardinality when defining them. Also set the
-[`schema_url`](/docs/specs/otel/schemas/#schema-url) attribute that
-you can use to record what version of the semantic conventions you're using.
+[`schema_url`](/docs/specs/otel/schemas/#schema-url) attribute that you can use
+to record what version of the semantic conventions you're using.
 
-If you have any feedback or want to add a new convention, contribute by
-joining the 
-[Instrumentation Slack](https://cloud-native.slack.com/archives/C01QZFGMLQ7) or
-by opening an issue or pull request in the
+If you have any feedback or want to add a new convention, contribute by joining
+the [Instrumentation Slack](https://cloud-native.slack.com/archives/C01QZFGMLQ7)
+or by opening an issue or pull request in the
 [Specification repository](https://github.com/open-telemetry/opentelemetry-specification).
 
 ### Defining spans
@@ -74,28 +73,28 @@ Follow the semantic conventions when setting span attributes.
 
 Some libraries are thin clients wrapping network calls. Chances are that
 OpenTelemetry has an instrumentation library for the underlying RPC client.
-Check out the [registry](/ecosystem/registry/)) to find existing libraries.
-If a library exists, instrumenting the wrapper library might not be necessary.
+Check out the [registry](/ecosystem/registry/)) to find existing libraries. If a
+library exists, instrumenting the wrapper library might not be necessary.
 
-As a general guideline, only instrument your library at its own level.
-Don't instrument if all the following cases apply:
+As a general guideline, only instrument your library at its own level. Don't
+instrument if all the following cases apply:
 
 - Your library is a thin proxy on top of documented or self-explanatory APIs.
 - OpenTelemetry has instrumentation for underlying network calls.
 - There are no conventions your library should follow to enrich telemetry.
 
-When in doubt, don't instrument. If you choose not to instrument, it might
-still be useful to provide a way to configure OpenTelemetry handlers for your
-internal RPC client instance. It's essential in languages that don't support
-fully automatic instrumentation and still useful in others.
+When in doubt, don't instrument. If you choose not to instrument, it might still
+be useful to provide a way to configure OpenTelemetry handlers for your internal
+RPC client instance. It's essential in languages that don't support fully
+automatic instrumentation and still useful in others.
 
-The rest of this document provides guidance on what and how to instrument
-your application.
+The rest of this document provides guidance on what and how to instrument your
+application.
 
 ## OpenTelemetry API
 
-The first step when instrumenting an application is to include the
-OpenTelemetry API package as a dependency.
+The first step when instrumenting an application is to include the OpenTelemetry
+API package as a dependency.
 
 OpenTelemetry has [two main modules](/docs/specs/otel/overview/): API and SDK.
 OpenTelemetry API is a set of abstractions and non-operational implementations.
@@ -104,13 +103,13 @@ nothing and does not impact application performance.
 
 ### Libraries should only use the OpenTelemetry API
 
-If you're concerned about adding new dependencies, here are some
-considerations to help you decide how to minimize dependency conflicts:
+If you're concerned about adding new dependencies, here are some considerations
+to help you decide how to minimize dependency conflicts:
 
 - OpenTelemetry Trace API reached stability in early 2021. It follows
   [Semantic Versioning 2.0](/docs/specs/otel/versioning-and-stability/).
-- Use the earliest stable OpenTelemetry API (1.0.\*) and avoid updating
-  it unless you have to use new features.
+- Use the earliest stable OpenTelemetry API (1.0.\*) and avoid updating it
+  unless you have to use new features.
 - While your instrumentation stabilizes, consider shipping it as a separate
   package, so that it never causes issues for users who don't use it. You can
   keep it in your repository, or
@@ -144,9 +143,9 @@ issues.
 
 ### Public APIs
 
-Public APIs are good candidates for tracing: spans created for public API
-calls allow users to map telemetry to application code, understand the duration
-and outcome of library calls. Which calls to trace include:
+Public APIs are good candidates for tracing: spans created for public API calls
+allow users to map telemetry to application code, understand the duration and
+outcome of library calls. Which calls to trace include:
 
 - Public methods that make network calls internally or local operations that
   take significant time and may fail, for example I/O.
@@ -205,8 +204,8 @@ through corresponding client implementation.
 
 ![Nested database and HTTP spans in Jaeger UI](../nested-spans.svg)
 
-If OpenTelemetry does not support tracing your network client, here are
-some considerations to help you decide the best course of action:
+If OpenTelemetry does not support tracing your network client, here are some
+considerations to help you decide the best course of action:
 
 - Would tracing network calls improve observability for users or your ability to
   support them?
@@ -234,13 +233,14 @@ A generic solution to avoid duplication is under construction.
 
 ### Events
 
-Traces are a kind of signal that your apps can emit. Events (or logs) and
-traces complement, not duplicate, each other. Whenever you have something that
-should have a certain level of verbosity, logs are a better choice than traces.
+Traces are a kind of signal that your apps can emit. Events (or logs) and traces
+complement, not duplicate, each other. Whenever you have something that should
+have a certain level of verbosity, logs are a better choice than traces.
 
 If your app uses logging or some similar module, the logging odule might already
-have OpenTelemetry integration. To find out, see the [registry](/ecosystem/registry/).
-Integrations usually stamp active trace context on all logs, so users can correlate them.
+have OpenTelemetry integration. To find out, see the
+[registry](/ecosystem/registry/). Integrations usually stamp active trace
+context on all logs, so users can correlate them.
 
 If your language and ecosystem don't have common logging support, use [span
 events][] to share additional app details. Events maybe more convenient if you want
@@ -254,17 +254,17 @@ using the active span if you can, since you don't control what it refers to.
 
 ### Extracting context
 
-If you work on a library or a service that receives upstream calls, such as a web
-framework or a messaging consumer,extract context from the incoming request or 
-message. OpenTelemetry provides the `Propagator` API, which hides specific
-propagation standards and reads the trace `Context` from the wire. In case of
-a single response, there is just one context on the wire, which becomes
-the parent of the new span the library creates.
+If you work on a library or a service that receives upstream calls, such as a
+web framework or a messaging consumer,extract context from the incoming request
+or message. OpenTelemetry provides the `Propagator` API, which hides specific
+propagation standards and reads the trace `Context` from the wire. In case of a
+single response, there is just one context on the wire, which becomes the parent
+of the new span the library creates.
 
-After you create a span, pass new trace context to the application
-code (callback or handler), by making the span active; if possible,
-do this explicitly. The following Java example shows how to add trace
-context and activate a span. See the
+After you create a span, pass new trace context to the application code
+(callback or handler), by making the span active; if possible, do this
+explicitly. The following Java example shows how to add trace context and
+activate a span. See the
 [Context extraction in Java](/docs/languages/java/instrumentation/#context-propagation),
 for more examples.
 
@@ -297,10 +297,10 @@ details.
 
 ### Injecting context
 
-When you make an outbound call, you usually want to propagate context to
-the downstream service. In this case, create a new span to trace the
-outgoing call and use `Propagator` API to inject context into the message. There
-might be other cases where you might want to inject context, for example when creating
+When you make an outbound call, you usually want to propagate context to the
+downstream service. In this case, create a new span to trace the outgoing call
+and use `Propagator` API to inject context into the message. There might be
+other cases where you might want to inject context, for example when creating
 messages for async processing. The following Java example shows how to propagate
 context. See
 [Context injection in Java](/docs/languages/java/instrumentation/#context-propagation)
@@ -337,8 +337,8 @@ There might be some exceptions where you don't need to propagate context:
 
 ### In-process
 
-- Make your spans active or current, as this enables correlating spans with
-  logs and any nested auto-instrumentations.
+- Make your spans active or current, as this enables correlating spans with logs
+  and any nested auto-instrumentations.
 - If the library has a notion of context, support optional explicit trace
   context propagation in addition to active spans.
   - Put spans (trace context) created by library in the context explicitly,
@@ -390,19 +390,19 @@ if (span.isRecording()) {
 
 ### Error handling
 
-OpenTelemetry API does not fail on invalid arguments, never throws, and
-swallows exceptions, which means it's
+OpenTelemetry API does not fail on invalid arguments, never throws, and swallows
+exceptions, which means it's
 [forgiving at runtime](/docs/specs/otel/error-handling/#basic-error-handling-principles).
 This way instrumentation issues do not affect application logic. Test the
 instrumentation to notice issues OpenTelemetry hides at runtime.
 
 ### Testing
 
-Since OpenTelemetry has a variety of auto-instrumentations, try how
-your instrumentation interacts with other telemetry: incoming requests, outgoing
-requests, logs, and so on. Use a typical application, with popular frameworks and
-libraries and all tracing enabled when trying out your instrumentation. Check
-out how libraries similar to yours show up.
+Since OpenTelemetry has a variety of auto-instrumentations, try how your
+instrumentation interacts with other telemetry: incoming requests, outgoing
+requests, logs, and so on. Use a typical application, with popular frameworks
+and libraries and all tracing enabled when trying out your instrumentation.
+Check out how libraries similar to yours show up.
 
 For unit testing, you can usually mock or fake `SpanProcessor` and
 `SpanExporter` as in the following Java example:
