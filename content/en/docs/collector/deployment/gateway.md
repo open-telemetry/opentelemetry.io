@@ -218,3 +218,48 @@ Cons:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor
 [spanmetrics-connector]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector
+
+## Multiple Collectors / Single Writer Principle
+
+All metric data streams within
+OTLP must have a [single writer](/docs/specs/otel/metrics/data-model/#single-writer).
+When deploying multiple collectors in a gateway configuration, it's important to
+ensure that all metric data streams have a single writer and a globally unique
+identity.
+
+
+
+### Potential Problems
+
+Concurrent access from multiple applications that modify or report on
+the same data can lead to data loss or, at least, degraded data
+quality. An example would be something like inconsistent data from multiple sources
+on the same resource, where the different sources can overwrite each other because
+the resource is not uniquely identified.
+
+
+There are patterns in the data that may provide some insight into whether this
+is happening or not. For example, upon visual inspection, a series with
+unexplained gaps or jumps in the same series may be a clue that multiple
+collectors are sending the same samples.
+
+There are also more direct errors that could surface in the backend.
+
+With a Prometheus backend, an example error is:
+`Error on ingesting out-of-order samples`.
+
+This could indicate that identical targets exist in two jobs, and the order of
+the timestamps is incorrect.
+
+Ex:
+- Metric `M1` received at time 13:56:04 with value `100`
+- Metric `M1` received at time 13:56:24 with value `120`
+- Metric `M1` received at time 13:56:04 with value `110`
+
+
+### Suggestions
+
+- Use the [k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)
+  to add labels to kubernetes resources
+- Use the [resource detector processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md)
+  to detect resource information from the host and collect metadata related to them.
