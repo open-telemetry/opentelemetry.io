@@ -18,8 +18,8 @@ ultimately all applications should either integrate the OpenTelemetry APIs and
 SDKs directly for native telemetry, or provide a first-party plugin that fits
 into the ecosystem of the given software.
 
-On this page you will find a sample of libraries, services and apps, that
-provide such a native instrumentation or first class plugin.
+This page contains a sample of libraries, services, and apps providing native
+instrumentation or first class plugins.
 
 ## Libraries
 
@@ -36,9 +36,9 @@ The following list contains a sample of libraries, services, and apps that have
 either integrated OpenTelemetry APIs and SDKs directly for native telemetry or
 provide a first-party plugin that fits into their own extensibility ecosystem.
 
-You will find open source (OSS) projects at the beginning of the list;
-commercial projects follow. Projects which are part of the
-[CNCF](https://www.cncf.io/) show a small CNCF logo beside their name.
+Open source projects (OSS) are at the beginning of the list, and commercial
+projects follow. Projects which are part of the [CNCF](https://www.cncf.io/)
+have a CNCF logo beside their name.
 
 {{% ecosystem/integrations-table "application integrations" %}}
 
