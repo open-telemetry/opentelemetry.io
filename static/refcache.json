@@ -9171,6 +9171,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:05:54.568865-05:00"
   },
+  "https://skywalking.apache.org/docs/main/latest/en/setup/backend/otlp-trace/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-09-06T19:33:33.371384661Z"
+  },
   "https://skywalking.apache.org/docs/main/v9.0.0/en/setup/backend/opentelemetry-receiver/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:05:27.619559-05:00"
