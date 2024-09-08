@@ -69,7 +69,8 @@ Once the images are built and containers are started you can access:
 - Grafana: <http://localhost:8080/grafana/>
 - Load Generator UI: <http://localhost:8080/loadgen/>
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
-- Tracetest UI: <http://localhost:11633/>, only when using `make run-tracetesting`
+- Tracetest UI: <http://localhost:11633/>, only when using
+  `make run-tracetesting`
 
 ## Changing the demo's primary port number
 
