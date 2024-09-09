@@ -28,7 +28,7 @@ defini-lo explicitamente, seja no código ou definindo um valor para a variável
 de ambiente `OTEL_SERVICE_NAME`.
 
 Além disso, o SDK também fornecerá os seguintes _resource attributes_ para se
-identificar: `telemetry.sdk.name`, `telemetry.sdk.language` e
+autoidentificar: `telemetry.sdk.name`, `telemetry.sdk.language` e
 `telemetry.sdk.version`.
 
 ## Detectores de _resources_
