@@ -9,7 +9,7 @@ default_lang_commit: a1740fd934e595f1396f2eb82a58a80824369b09
 {{% pt/docs/languages/resources-intro %}}
 
 Se você usar [Jaeger](https://www.jaegertracing.io/) como seu _backend_ de
-observabilidade, os _resource attributes_ serão agrupados na guia **Process**:
+observabilidade, os _resource attributes_ são agrupados na guia **Process**:
 
 ![Uma captura de tela do Jaeger mostrando um exemplo de saída de resource attributes associados a um rastro.](screenshot-jaeger-resources.png)
 
