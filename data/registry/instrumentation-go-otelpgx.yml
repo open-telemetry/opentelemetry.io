@@ -16,4 +16,4 @@ authors:
 urls:
   repo: https://github.com/exaring/otelpgx
 createdAt: 2022-09-27
-isFirstParty: true
+isFirstParty: false

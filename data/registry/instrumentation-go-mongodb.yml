@@ -16,4 +16,4 @@ authors:
 urls:
   repo: https://go.opentelemetry.io/contrib/instrumentation/go.mongodb.org/mongo-driver
 createdAt: 2020-06-08
-isFirstParty: true
+isFirstParty: false

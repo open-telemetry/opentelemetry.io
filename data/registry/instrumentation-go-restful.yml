@@ -15,4 +15,4 @@ authors:
 urls:
   repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/emicklei/go-restful
 createdAt: 2022-12-07
-isFirstParty: true
+isFirstParty: false

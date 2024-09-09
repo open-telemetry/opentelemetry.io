@@ -15,4 +15,4 @@ authors:
 urls:
   repo: https://github.com/raito-io/neo4j-tracing
 createdAt: 2023-05-26
-isFirstParty: true
+isFirstParty: false
