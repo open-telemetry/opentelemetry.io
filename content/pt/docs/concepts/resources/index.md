@@ -51,7 +51,7 @@ Você também pode fornecer seus próprios _resource attributes_. Você pode
 fornecê-los em código ou definindo um valor para a variável de ambiente
 `OTEL_RESOURCE_ATTRIBUTES`. Se aplicável, utilize
 [convenções semânticas para seus _resource attributes_](/docs/specs/semconv/resource).
-Pro exemplo, você pode fornecer o nome do seu
+Por exemplo, você pode fornecer o nome do seu
 [ambiente de execução](/docs/specs/semconv/resource/deployment-environment/)
 usando `deployment.environment`:
 
