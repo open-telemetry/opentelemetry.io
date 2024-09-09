@@ -6,7 +6,7 @@ default_lang_commit: a1740fd934e595f1396f2eb82a58a80824369b09
 
 ## Introdução
 
-{{% docs/languages/resources-intro %}}
+{{% pt/docs/languages/resources-intro %}}
 
 Se você usar [Jaeger](https://www.jaegertracing.io/) como seu backend de
 observabilidade, os _resource attributes_ serão agrupados na guia **Process**:
