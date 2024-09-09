@@ -287,17 +287,12 @@ Stable metrics are guaranteed to not change. This means:
 
 Deprecated metrics are slated for deletion but are still available for use. These metrics include an annotation about the version in which they became deprecated. For example:
 
-    Before deprecation
+Before deprecation:
 
-    # HELP some_counter this counts things
-    # TYPE some_counter counter
-    otelcol_exporter_queue_size 0
-
-    After deprecation
-
-    # HELP some_counter (Deprecated since 1.15.0) this counts things
-    # TYPE some_counter counter
-    some_counter 0
+```sh
+# HELP some_counter this counts things
+# TYPE some_counter counter
+otelcol_exporter_queue_size 0
 
 ##### Deleted
 
