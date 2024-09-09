@@ -52,7 +52,7 @@ fornecê-los em código ou definindo um valor para a variável de ambiente
 `OTEL_RESOURCE_ATTRIBUTES`. Se aplicável, utilize
 [convenções semânticas para seus _resource attributes_](/docs/specs/semconv/resource).
 Pro exemplo, você pode fornecer o nome do seu
-[ambiente de implantação](/docs/specs/semconv/resource/deployment-environment/)
+[ambiente de execução](/docs/specs/semconv/resource/deployment-environment/)
 usando `deployment.environment`:
 
 ```shell
