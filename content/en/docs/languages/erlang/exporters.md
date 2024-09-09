@@ -37,6 +37,7 @@ processors:
     send_batch_size: 1024
     timeout: 5s
 exporters:
+  debug:
   otlp/jaeger:
     endpoint: jaeger-all-in-one:4317
     tls:
@@ -46,7 +47,7 @@ service:
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [logging, otlp/jaeger]
+      exporters: [debug, otlp/jaeger]
 ```
 
 For a more detailed example, you can view the

@@ -12,9 +12,32 @@
 Name[^1]     | OSS | Component |  Learn more
 ------------ | --- | ---------- |  ----------
 {{- range sort (sort $integrations ".title") ".oss" "desc" }}
-{{ $lang := cond (eq .language "collector") (dict "name" "Collector") (index $.Site.Data.instrumentation .language) -}}
-{{ $cncfTag := cond (isset . "cncfProjectLevel") (printf "<img alt=\"CNCF %s Project\" title=\"CNCF %s Project\" style=\"display: inline-block; padding-left: 8px; border: none; width: 16; height: 16px;\" src=\"/img/cncf-icon-color.svg\">" (humanize .cncfProjectLevel) (humanize .cncfProjectLevel)) "" -}}
-[{{ .title }}]({{ .urls.website }}){{ $cncfTag }} | {{- cond (eq .license "Commercial") "No" "Yes" }} | {{ $lang.name }} | [{{ replace .urls.docs "https://" "" }}]({{ .urls.docs }})
+{{ $lang := cond
+    (eq .language "collector")
+    (dict "name" "Collector")
+    (index $.Site.Data.instrumentation .language)
+-}}
+{{ $cncfTag := cond
+    (isset . "cncfProjectLevel")
+    (printf "<img alt=\"CNCF %s Project\" title=\"CNCF %s Project\" style=\"display: inline-block; padding-left: 8px; border: none; width: 16; height: 16px;\" src=\"/img/cncf-icon-color.svg\">"
+      (humanize .cncfProjectLevel)
+      (humanize .cncfProjectLevel))
+    "" -}}
+
+{{ if not .urls.website -}}
+  {{ errorf "Website URL is missing for integrations registry entry '%s'" .title -}}
+{{ end -}}
+{{ if not .urls.docs -}}
+  {{ errorf "Docs URL is missing for integrations registry entry '%s'" .title -}}
+{{ end -}}
+
+{{/* Each line below is a table column */ -}}
+
+[{{ .title }}]({{ .urls.website }})
+  {{- $cncfTag }} |
+  {{- cond (eq .license "Commercial") "No" "Yes" }} |
+  {{- $lang.name -}}
+  | [{{ replace .urls.docs "https://" "" }}]({{ .urls.docs }})
 {{- end }}
 
 [^1]: Listed alphabetically

@@ -20,15 +20,15 @@ OpenTelemetry 专注于遥测数据的生成、采集、管理和导出。 OpenT
 
 ## 什么是可观测性？ {#what-is-observability}
 
-[可观测性](/docs/concepts/observability-primer/#what-is-observability)具备检查系统输出来理解系统内部状态的能力。
-在软件的上下文中，这意味着通过检查遥测数据（包括链路、指标和日志）来理解系统的内部状态。
+[可观测性](/docs/concepts/observability-primer/#what-is-observability)是通过检查系统输出来理解系统内部状态的能力。
+在软件的背景下，这意味着能够通过检查遥测数据（包括链路、指标和日志）来理解系统的内部状态。
 
 要使系统可观测，必须对其进行仪表化。也就是说，代码必须发出链路、指标或日志。
 然后，仪表化的数据必须发送到可观测性后端。
 
 ## 为什么选择 OpenTelemetry？ {#why-opentelemetry}
 
-随着云计算、微服务架构和日益复杂的业务需求的兴起，软件和基础设施的可观测性需求比以往任何时候都要强烈。
+随着云计算、微服务架构的兴起和日益复杂的业务需求，软件和基础设施的可观测性需求比以往任何时候都要强烈。
 
 OpenTelemetry 满足可观测性的需求，并遵循两个关键原则：
 
