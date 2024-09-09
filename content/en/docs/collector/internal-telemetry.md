@@ -260,7 +260,7 @@ categorized by instrumentation type.
 | `rpc_server_response_size`        | Measures the size of RPC response messages (uncompressed).                                | Histogram |
 | `rpc_server_responses_per_rpc`    | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram |
 
-### Telemetry lifecycle
+### Telemetry maturity levels
 
 #### Tracing
 
