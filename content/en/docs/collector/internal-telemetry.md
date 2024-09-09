@@ -290,9 +290,18 @@ Deprecated metrics are slated for deletion but are still available for use. Thes
 Before deprecation:
 
 ```sh
-# HELP some_counter this counts things
-# TYPE some_counter counter
+# HELP otelcol_exporter_queue_size this counts things
+# TYPE otelcol_exporter_queue_size counter
 otelcol_exporter_queue_size 0
+```
+
+After deprecation:
+
+```sh
+# HELP otelcol_exporter_queue_size (Deprecated since 1.15.0) this counts things
+# TYPE otelcol_exporter_queue_size counter
+otelcol_exporter_queue_size 0
+```
 
 ##### Deleted
 
