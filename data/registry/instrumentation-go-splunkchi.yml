@@ -13,4 +13,4 @@ authors:
 urls:
   repo: https://github.com/signalfx/splunk-otel-go/tree/main/instrumentation/github.com/go-chi/chi/splunkchi
 createdAt: 2022-01-20
-isFirstParty: true
+isFirstParty: false
