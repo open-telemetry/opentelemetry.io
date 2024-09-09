@@ -6,11 +6,11 @@ import yaml from 'js-yaml';
 config(); // Load .env file contents into process.env
 
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
-const org = 'open-telemetry'
+const org = 'open-telemetry';
 
 const configParams = {
   terms: ['maintainers', 'approvers', 'triagers'],
-  committees: ['governance-committee', 'technical-committee', "spec-sponsors"],
+  committees: ['governance-committee', 'technical-committee', 'spec-sponsors'],
   includePrivateMembersInGeneral: false,
   includePrivateMembersInGroups: true,
   createMembersList: true,
