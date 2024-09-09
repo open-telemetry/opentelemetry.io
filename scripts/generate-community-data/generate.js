@@ -10,7 +10,7 @@ const org = 'open-telemetry'
 
 const configParams = {
   terms: ['maintainers', 'approvers', 'triagers'],
-  committees: ['governance-committee', 'technical-committee'],
+  committees: ['governance-committee', 'technical-committee', "spec-sponsors"],
   includePrivateMembersInGeneral: false,
   includePrivateMembersInGroups: true,
   createMembersList: true,
