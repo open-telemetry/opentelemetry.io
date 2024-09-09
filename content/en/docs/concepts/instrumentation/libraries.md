@@ -10,60 +10,54 @@ typically done through library hooks or monkey-patching library code.
 
 Native library instrumentation with OpenTelemetry provides better observability
 and developer experience for users, removing the need for libraries to expose
-and document hooks:
+and document hooks. Other advantages provided by native instrumentation include:
 
-- custom logging hooks can be replaced by common and easy to use OpenTelemetry
-  APIs, users will only interact with OpenTelemetry
-- traces, logs, metrics from library and application code are correlated and
-  coherent
-- common conventions allow users to get similar and consistent telemetry within
-  same technology and across libraries and languages
-- telemetry signals can be fine tuned (filtered, processed, aggregated) for
+- Custom logging hooks can be replaced by common and easy to use OpenTelemetry
+  APIs, users will only interact with OpenTelemetry.
+- Traces, logs, metrics from library and application code are correlated and
+  coherent.
+- Common conventions allow users to get similar and consistent telemetry within
+  same technology and across libraries and languages.
+- Telemetry signals can be fine tuned (filtered, processed, aggregated) for
   various consumption scenarios using a wide variety of well-documented
   OpenTelemetry extensibility points.
 
-## Semantic Conventions
+## Semantic conventions
 
-Check out available [semantic conventions](/docs/specs/semconv/general/trace/)
-that cover web-frameworks, RPC clients, databases, messaging clients, infra
-pieces and more!
+[Semantic conventions](/docs/specs/semconv/general/trace/) are the main source
+of truth about what information is included on spans produced by web frameworks,
+RPC clients, databases, messaging clients, infrastructure, and more. Conventions
+make instrumentation consistent: users who work with telemetry don't have to
+learn library specifics and observability vendors can build experiences for a
+wide variety of technologies, for example databases or messaging systems. When
+libraries follow conventions, many scenarios can be enabled without the user's
+input or configuration.
 
-If your library is one of those things - follow the conventions, they are the
-main source of truth and tell which information should be included on spans.
-Conventions make instrumentation consistent: users who work with telemetry don't
-have to learn library specifics and observability vendors can build experiences
-for a wide variety of technologies (e.g. databases or messaging systems). When
-libraries follow conventions, many scenarios may be enabled out of the box
-without the user's input or configuration.
-
-Semantic conventions are always evolving and new ones are constantly added. If
-some don't exist for your library, then please consider
+Semantic conventions are always evolving and new conventions are constantly
+added. If some don't exist for your library, consider
 [adding them](https://github.com/open-telemetry/semantic-conventions/issues).
-Pay special attention to span names; strive to use meaningful names and consider
-cardinality when defining them.
+Pay special attention to span names: strive to use meaningful names and consider
+cardinality when defining them. Also set the
+[`schema_url`](/docs/specs/otel/schemas/#schema-url) attribute that you can use
+to record what version of the semantic conventions you're using.
 
-There is a [`schema_url`](/docs/specs/otel/schemas/#schema-url) attribute that
-can be used to record what version of the semantic conventions are being used.
-Please set this attribute, when possible.
-
-If you have any feedback or want to add a new convention - please come and
-contribute!
-[Instrumentation Slack](https://cloud-native.slack.com/archives/C01QZFGMLQ7) or
-[Specification repository](https://github.com/open-telemetry/opentelemetry-specification)
-are a good places to start!
+If you have any feedback or want to add a new convention, contribute by joining
+the [Instrumentation Slack](https://cloud-native.slack.com/archives/C01QZFGMLQ7)
+or by opening an issue or pull request in the
+[Specification repository](https://github.com/open-telemetry/opentelemetry-specification).
 
 ### Defining spans
 
 Think of your library from the perspective of a library user and what the user
 might be interested in knowing about the behavior and activity of the library.
-As the library maintainer, you know the internals but the user will most likely
-be less interested in the inner-workings of the library and more interested in
+As the library maintainer, you know the internals, but the user will most likely
+be less interested in the inner workings of the library and more interested in
 the functionality of their application. Think about what information can be
 helpful in analyzing the usage of your library, then think about an appropriate
-way to model that data. Some things to consider are:
+way to model that data. Some aspects to consider include:
 
 - Spans and span hierarchies
-- Numerical attributes on spans (as an alternative to aggregated metrics)
+- Numerical attributes on spans, as an alternative to aggregated metrics
 - Span events
 - Aggregated Metrics
 
@@ -75,57 +69,54 @@ span events, rather than as additional spans.
 
 Follow the semantic conventions when setting span attributes.
 
-## When **not** to instrument
+## When not to instrument
 
 Some libraries are thin clients wrapping network calls. Chances are that
-OpenTelemetry has an instrumentation library for the underlying RPC client
-(check out the [registry](/ecosystem/registry/)). In this case, instrumenting
-the wrapper library may not be necessary. As a general guideline, only
-instrument your library at its own level.
+OpenTelemetry has an instrumentation library for the underlying RPC client.
+Check out the [registry](/ecosystem/registry/)) to find existing libraries. If a
+library exists, instrumenting the wrapper library might not be necessary.
 
-Don't instrument if:
+As a general guideline, only instrument your library at its own level. Don't
+instrument if all the following cases apply:
 
-- your library is a thin proxy on top of documented or self-explanatory APIs
-- _and_ OpenTelemetry has instrumentation for underlying network calls
-- _and_ there are no conventions your library should follow to enrich telemetry
+- Your library is a thin proxy on top of documented or self-explanatory APIs.
+- OpenTelemetry has instrumentation for underlying network calls.
+- There are no conventions your library should follow to enrich telemetry.
 
-If you're in doubt - don't instrument - you can always do it later when you see
-a need.
+When in doubt, don't instrument. If you choose not to instrument, it might still
+be useful to provide a way to configure OpenTelemetry handlers for your internal
+RPC client instance. It's essential in languages that don't support fully
+automatic instrumentation and still useful in others.
 
-If you choose not to instrument, it may still be useful to provide a way to
-configure OpenTelemetry handlers for your internal RPC client instance. It's
-essential in languages that don't support fully automatic instrumentation and
-still useful in others.
-
-The rest of this document gives guidance on what and how to instrument if you
-decide to do it.
+The rest of this document provides guidance on what and how to instrument your
+application.
 
 ## OpenTelemetry API
 
-The first step is to take dependency on the OpenTelemetry API package.
+The first step when instrumenting an application is to include the OpenTelemetry
+API package as a dependency.
 
-OpenTelemetry has [two main modules](/docs/specs/otel/overview/) - API and SDK.
-OpenTelemetry API is a set of abstractions and not-operational implementations.
+OpenTelemetry has [two main modules](/docs/specs/otel/overview/): API and SDK.
+OpenTelemetry API is a set of abstractions and non-operational implementations.
 Unless your application imports the OpenTelemetry SDK, your instrumentation does
 nothing and does not impact application performance.
 
-**Libraries should only use the OpenTelemetry API.**
+### Libraries should only use the OpenTelemetry API
 
-You may be rightfully concerned about adding new dependencies, here are some
-considerations to help you decide how to minimize dependency hell:
+If you're concerned about adding new dependencies, here are some considerations
+to help you decide how to minimize dependency conflicts:
 
-- OpenTelemetry Trace API reached stability in early 2021, it follows
-  [Semantic Versioning 2.0](/docs/specs/otel/versioning-and-stability/) and we
-  take API stability seriously.
-- When taking dependency, use the earliest stable OpenTelemetry API (1.0.\*) and
-  avoid updating it unless you have to use new features.
+- OpenTelemetry Trace API reached stability in early 2021. It follows
+  [Semantic Versioning 2.0](/docs/specs/otel/versioning-and-stability/).
+- Use the earliest stable OpenTelemetry API (1.0.\*) and avoid updating it
+  unless you have to use new features.
 - While your instrumentation stabilizes, consider shipping it as a separate
-  package, so that will never cause issues for users who don't use it. You can
+  package, so that it never causes issues for users who don't use it. You can
   keep it in your repository, or
   [add it to OpenTelemetry](https://github.com/open-telemetry/oteps/blob/main/text/0155-external-modules.md#contrib-components),
-  so it will ship with other instrumentation libraries.
-- Semantic Conventions are [stable, but subject to evolution][]: while this does
-  not cause any functional issues, you may need to update your instrumentation
+  so it ships with other instrumentation libraries.
+- Semantic conventions are [stable, but subject to evolution][]: while this does
+  not cause any functional issues, you might need to update your instrumentation
   every once in a while. Having it in a preview plugin or in OpenTelemetry
   contrib repository may help keeping conventions up-to-date without breaking
   changes for your users.
@@ -136,30 +127,33 @@ considerations to help you decide how to minimize dependency hell:
 ### Getting a tracer
 
 All application configuration is hidden from your library through the Tracer
-API. Libraries may allow applications to pass instances of `TracerProvider` to
+API. Libraries might allow applications to pass instances of `TracerProvider` to
 facilitate dependency injection and ease of testing, or obtain it from
 [global `TracerProvider`](/docs/specs/otel/trace/api/#get-a-tracer).
-OpenTelemetry language implementations may have different preferences for
-passing instances or accessing the global based on what's idiomatic.
+OpenTelemetry language implementations might have different preferences for
+passing instances or accessing the global based on what's idiomatic in each
+programming language.
 
 When obtaining the tracer, provide your library (or tracing plugin) name and
-version - they show up on the telemetry and help users process and filter
-telemetry, understand where it came from, and debug/report any instrumentation
+version: they show up on the telemetry and help users process and filter
+telemetry, understand where it came from, and debug or report instrumentation
 issues.
 
 ## What to instrument
 
 ### Public APIs
 
-Public APIs are a good candidates for tracing: spans created for public API
-calls allow users to map telemetry to application code, understand the duration
-and outcome of library calls. Which calls to trace:
+Public APIs are good candidates for tracing: spans created for public API calls
+allow users to map telemetry to application code, understand the duration and
+outcome of library calls. Which calls to trace include:
 
-- public methods that make network calls internally or local operations that
-  take significant time and may fail (e.g. IO)
-- handlers that process requests or messages
+- Public methods that make network calls internally or local operations that
+  take significant time and may fail, for example I/O.
+- Handlers that process requests or messages.
 
-**Instrumentation example:**
+#### Instrumentation example
+
+The following example shows how to instrument a Java application:
 
 ```java
 private static Tracer tracer =  getTracer(TracerProvider.noop());
@@ -200,8 +194,8 @@ private Response selectWithTracing(Query query) {
 }
 ```
 
-Follow conventions to populate attributes! If there is no applicable one, check
-out [general conventions](/docs/specs/semconv/general/attributes/).
+Follow conventions to populate attributes. If there is no applicable one, see
+[general conventions](/docs/specs/semconv/general/attributes/).
 
 ### Nested network and other spans
 
@@ -210,41 +204,41 @@ through corresponding client implementation.
 
 ![Nested database and HTTP spans in Jaeger UI](../nested-spans.svg)
 
-If OpenTelemetry does not support tracing your network client, use your best
-judgement, here are some considerations to help:
+If OpenTelemetry does not support tracing your network client, here are some
+considerations to help you decide the best course of action:
 
 - Would tracing network calls improve observability for users or your ability to
   support them?
 - Is your library a wrapper on top of public, documented RPC API? Would users
   need to get support from the underlying service in case of issues?
-  - instrument the library and make sure to trace individual network tries
+  - Instrument the library and make sure to trace individual network tries.
 - Would tracing those calls with spans be very verbose? or would it noticeably
   impact performance?
-  - use logs with verbosity or span events: logs can be correlated to parent
+  - Use logs with verbosity or span events: logs can be correlated to parent
     (public API calls), while span events should be set on public API span.
-  - if they have to be spans (to carry and propagate unique trace context), put
+  - If they have to be spans (to carry and propagate unique trace context), put
     them behind a configuration option and disable them by default.
 
 If OpenTelemetry already supports tracing your network calls, you probably don't
-want to duplicate it. There may be some exceptions:
+want to duplicate it. There might be some exceptions:
 
-- to support users without auto-instrumentation (which may not work in certain
-  environments or users may have concerns with monkey-patching)
-- to enable custom (legacy) correlation and context propagation protocols with
-  underlying service
-- enrich RPC spans with absolutely essential library/service-specific
-  information not covered by auto-instrumentation
+- To support users without auto-instrumentation, which might not work in certain
+  environments or when users have concerns with monkey-patching.
+- To enable custom or legacy correlation and context propagation protocols with
+  underlying service.
+- Enrich RPC spans with essential library or service-specific information not
+  covered by auto-instrumentation.
 
-WARNING: Generic solution to avoid duplication is under construction 🚧.
+A generic solution to avoid duplication is under construction.
 
 ### Events
 
-Traces are one kind of signal that your apps can emit. Events (or logs) and
-traces complement, not duplicate, each other. Whenever you have something that
-should have a verbosity, logs are a better choice than traces.
+Traces are a kind of signal that your apps can emit. Events (or logs) and traces
+complement, not duplicate, each other. Whenever you have something that should
+have a certain level of verbosity, logs are a better choice than traces.
 
-Chances are that your app uses logging or some similar module already. Your
-module might already have OpenTelemetry integration -- to find out, see the
+If your app uses logging or some similar module, the logging odule might already
+have OpenTelemetry integration. To find out, see the
 [registry](/ecosystem/registry/). Integrations usually stamp active trace
 context on all logs, so users can correlate them.
 
@@ -260,16 +254,19 @@ using the active span if you can, since you don't control what it refers to.
 
 ### Extracting context
 
-If you work on a library or a service that receives upstream calls, e.g. a web
-framework or a messaging consumer, you should extract context from the incoming
-request/message. OpenTelemetry provides the `Propagator` API, which hides
-specific propagation standards and reads the trace `Context` from the wire. In
-case of a single response, there is just one context on the wire, which becomes
-the parent of the new span the library creates.
+If you work on a library or a service that receives upstream calls, such as a
+web framework or a messaging consumer,extract context from the incoming request
+or message. OpenTelemetry provides the `Propagator` API, which hides specific
+propagation standards and reads the trace `Context` from the wire. In case of a
+single response, there is just one context on the wire, which becomes the parent
+of the new span the library creates.
 
-After you create a span, you should pass new trace context to the application
-code (callback or handler), by making the span active; if possible, you should
-do this explicitly.
+After you create a span, pass new trace context to the application code
+(callback or handler), by making the span active; if possible, do this
+explicitly. The following Java example shows how to add trace context and
+activate a span. See the
+[Context extraction in Java](/docs/languages/java/instrumentation/#context-propagation),
+for more examples.
 
 ```java
 // extract the context
@@ -291,25 +288,23 @@ try (Scope unused = span.makeCurrent()) {
 }
 ```
 
-Here're the full
-[examples of context extraction in Java](/docs/languages/java/instrumentation/#context-propagation),
-check out OpenTelemetry documentation in your language.
-
-In the case of a messaging system, you may receive more than one message at
+In the case of a messaging system, you might receive more than one message at
 once. Received messages become
-[_links_](/docs/languages/java/instrumentation/#create-spans-with-links) on the
+[links](/docs/languages/java/instrumentation/#create-spans-with-links) on the
 span you create. Refer to
 [messaging conventions](/docs/specs/semconv/messaging/messaging-spans/) for
-details (WARNING: messaging conventions are
-[under constructions](https://github.com/open-telemetry/oteps/pull/173) 🚧).
+details.
 
 ### Injecting context
 
-When you make an outbound call, you will usually want to propagate context to
-the downstream service. In this case, you should create a new span to trace the
-outgoing call and use `Propagator` API to inject context into the message. There
-may be other cases where you might want to inject context, e.g. when creating
-messages for async processing.
+When you make an outbound call, you usually want to propagate context to the
+downstream service. In this case, create a new span to trace the outgoing call
+and use `Propagator` API to inject context into the message. There might be
+other cases where you might want to inject context, for example when creating
+messages for async processing. The following Java example shows how to propagate
+context. See
+[Context injection in Java](/docs/languages/java/instrumentation/#context-propagation)
+for more examples.
 
 ```java
 Span span = tracer.spanBuilder("send")
@@ -331,45 +326,40 @@ try (Scope unused = span.makeCurrent()) {
 }
 ```
 
-Here's the full
-[example of context injection in Java](/docs/languages/java/instrumentation/#context-propagation).
+There might be some exceptions where you don't need to propagate context:
 
-There might be some exceptions:
-
-- downstream service does not support metadata or prohibits unknown fields
-- downstream service does not define correlation protocols. Is it possible that
-  some future service version will support compatible context propagation?
-  Inject it!
-- downstream service supports custom correlation protocol.
-  - best effort with custom propagator: use OpenTelemetry trace context if
-    compatible.
-  - or generate and stamp custom correlation IDs on the span.
+- Downstream service does not support metadata or prohibits unknown fields.
+- Downstream service does not define correlation protocols. Consider adding
+  support for context propagation in a future version.
+- Downstream service supports custom correlation protocol.
+  - Best effort with custom propagator: use OpenTelemetry trace context if
+    compatible or generate and stamp custom correlation IDs on the span.
 
 ### In-process
 
-- **Make your spans active** (aka current): it enables correlating spans with
-  logs and any nested auto-instrumentations.
-- If the library has a notion of context, support **optional** explicit trace
-  context propagation _in addition_ to active spans
-  - put spans (trace context) created by library in the context explicitly,
-    document how to access it
-  - allow users to pass trace context in your context
-- Within the library, propagate trace context explicitly - active spans may
-  change during callbacks!
-  - capture active context from users on the public API surface as soon as you
-    can, use it as a parent context for your spans
-  - pass context around and stamp attributes, exceptions, events on explicitly
-    propagated instances
-  - this is essential if you start threads explicitly, do background processing
+- Make your spans active or current, as this enables correlating spans with logs
+  and any nested auto-instrumentations.
+- If the library has a notion of context, support optional explicit trace
+  context propagation in addition to active spans.
+  - Put spans (trace context) created by library in the context explicitly,
+    document how to access it.
+  - Alow users to pass trace context in your context.
+- Within the library, propagate trace context explicitly. Active spans might
+  change during callbacks.
+  - Capture active context from users on the public API surface as soon as you
+    can, use it as a parent context for your spans.
+  - Pass context around and stamp attributes, exceptions, events on explicitly
+    propagated instances.
+  - This is essential if you start threads explicitly, do background processing
     or other things that can break due to async context flow limitations in your
-    language
+    language.
 
-## Misc
+## Additional considerations
 
 ### Instrumentation registry
 
-Please add your instrumentation library to the
-[OpenTelemetry registry](/ecosystem/registry/), so users can find it.
+Add your instrumentation library to the
+[OpenTelemetry registry](/ecosystem/registry/) so users can find it.
 
 ### Performance
 
@@ -378,9 +368,10 @@ application. When OpenTelemetry SDK is configured, it
 [consumes bound resources](/docs/specs/otel/performance/).
 
 Real-life applications, especially on the high scale, would frequently have
-head-based sampling configured. Sampled-out spans are cheap and you can check if
-the span is recording, to avoid extra allocations and potentially expensive
-calculations, while populating attributes.
+head-based sampling configured. Sampled-out spans are affordable and you can
+check if the span is recording to avoid extra allocations and potentially
+expensive calculations while populating attributes. The following Java example
+shows to provide attributes for sampling and check span recording.
 
 ```java
 // some attributes are important for sampling, they should be provided at creation time
@@ -399,22 +390,22 @@ if (span.isRecording()) {
 
 ### Error handling
 
-OpenTelemetry API is
-[forgiving at runtime](/docs/specs/otel/error-handling/#basic-error-handling-principles) -
-does not fail on invalid arguments, never throws, and swallows exceptions. This
-way instrumentation issues do not affect application logic. Test the
+OpenTelemetry API does not fail on invalid arguments, never throws, and swallows
+exceptions, which means it's
+[forgiving at runtime](/docs/specs/otel/error-handling/#basic-error-handling-principles).
+This way instrumentation issues do not affect application logic. Test the
 instrumentation to notice issues OpenTelemetry hides at runtime.
 
 ### Testing
 
-Since OpenTelemetry has variety of auto-instrumentations, it's useful to try how
-your instrumentation interacts with other telemetry: incoming requests, outgoing
-requests, logs, etc. Use a typical application, with popular frameworks and
-libraries and all tracing enabled when trying out your instrumentation. Check
-out how libraries similar to yours show up.
+Since OpenTelemetry has a variety of auto-instrumentations, try how your
+instrumentation interacts with other telemetry: incoming requests, outgoing
+requests, logs, and so on. Use a typical application, with popular frameworks
+and libraries and all tracing enabled when trying out your instrumentation.
+Check out how libraries similar to yours show up.
 
 For unit testing, you can usually mock or fake `SpanProcessor` and
-`SpanExporter`.
+`SpanExporter` as in the following Java example:
 
 ```java
 @Test
