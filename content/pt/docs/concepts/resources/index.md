@@ -35,7 +35,7 @@ autoidentificar: `telemetry.sdk.name`, `telemetry.sdk.language` e
 
 A maioria dos SDKs específicos de linguagem fornece um conjunto de detectores de
 _resources_ que podem ser usados para detectar automaticamente informações de
-recursos do ambiente. Os detectores de _resources_ comuns incluem:
+recursos do ambiente. Os detectores de _resources_ mais comuns incluem:
 
 - [Sistema Operacional](/docs/specs/semconv/resource/os/)
 - [Host](/docs/specs/semconv/resource/host/)
