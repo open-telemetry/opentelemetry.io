@@ -11,16 +11,17 @@ _monkey-patching_ do código da biblioteca.
 
 A instrumentação nativa de bibliotecas com OpenTelemetry oferece melhor
 observabilidade e experiência para desenvolvedores, eliminando a necessidade das
-bibliotecas exporem e documentarem hooks:
+bibliotecas exporem e documentarem _hooks_:
 
-- hooks personalizados de logging podem ser substituídos por APIs OpenTelemetry
-  comuns e fáceis de usar, os usuários utilizarão somente o OpenTelemetry
-- rastros, logs e métricas do código da biblioteca e da aplicação são
+- _Hooks_ personalizados de logging podem ser substituídos por APIs
+  OpenTelemetry comuns e fáceis de usar, os usuários utilizarão somente o
+  OpenTelemetry
+- Rastros, logs e métricas do código da biblioteca e da aplicação são
   correlacionados e coerentes
-- convenções comuns permitem que os usuários obtenham uma telemetria semelhante
+- Convenções comuns permitem que os usuários obtenham uma telemetria semelhante
   e consistente com a mesma tecnologia e entre diferentes bibliotecas e
   linguagens
-- sinais de telemetria podem ser ajustados (filtrados, processados, agregados)
+- Sinais de telemetria podem ser ajustados (filtrados, processados, agregados)
   para diversos cenários de consumo usando uma grande variedade de pontos de
   extensibilidade bem documentados do OpenTelemetry.
 
@@ -92,10 +93,10 @@ instrumente sua biblioteca em seu próprio nível.
 
 Não instrumente se:
 
-- sua biblioteca é um proxy simples em cima de APIs documentadas ou
+- Sua biblioteca é um proxy simples em cima de APIs documentadas ou
   autoexplicativas
-- _e_ o OpenTelemetry já tem instrumentação para as chamadas de rede subjacentes
-- _e_ não existem convenções que sua biblioteca deva seguir para enriquecer a
+- O OpenTelemetry já tem instrumentação para as chamadas de rede subjacentes
+- Não existem convenções que sua biblioteca deva seguir para enriquecer a
   telemetria
 
 Se estiver em dúvida - não instrumente - você sempre pode fazê-lo mais tarde,
@@ -165,9 +166,9 @@ chamadas de APIs públicas permitem que os usuários mapeiem a telemetria para o
 código da aplicação, entendam a duração e o resultado das chamadas da
 biblioteca. Quais chamadas devem ser rastreadas:
 
-- métodos públicos que fazem chamadas de rede internamente ou operações locais
+- Métodos públicos que fazem chamadas de rede internamente ou operações locais
   que levam tempo significativo e podem falhar (ex.: operações de Entrada/Saída)
-- _handlers_ que processam requisições ou mensagens
+- _Handlers_ que processam requisições ou mensagens
 
 **Exemplo de instrumentação:**
 
@@ -231,21 +232,21 @@ melhor julgamento. Aqui estão algumas considerações para ajudar:
     de rede
 - Rastrear essas chamadas com trechos seria muito verboso? Ou impactaria
   notavelmente o desempenho?
-  - use logs com verbosidade ou eventos de trecho: logs podem ser
+  - Use logs com verbosidade ou eventos de trecho: logs podem ser
     correlacionados ao trecho raiz (chamadas de API pública), enquanto eventos
     de rastro devem ser definidos no trecho da API pública.
-  - se eles precisarem ser trechos (para carregar e propagar contexto de um
+  - Se eles precisarem ser trechos (para carregar e propagar contexto de um
     único rastro), coloque-os atrás de uma opção de configuração e desative-os
     por padrão.
 
 Se o OpenTelemetry já suportar o rastreamento de suas chamadas de rede, você
 provavelmente não quer duplicá-lo. Pode haver algumas exceções:
 
-- para suportar usuários sem auto-instrumentação (que pode não funcionar em
+- Para suportar usuários sem auto-instrumentação (que pode não funcionar em
   certos ambientes ou os usuários podem ter preocupações com _monkey-patching_)
-- para habilitar protocolos personalizados (legados) de correlação e propagação
+- Para habilitar protocolos personalizados (legados) de correlação e propagação
   de contexto com o serviço subjacente
-- enriquecer trechos de RPC com informações absolutamente essenciais específicas
+- Enriquecer trechos de RPC com informações absolutamente essenciais específicas
   da biblioteca/serviço não cobertas pela auto-instrumentação
 
 AVISO: Solução genérica para evitar duplicação está em construção 🚧.
@@ -349,14 +350,14 @@ Aqui está o
 
 Podem haver algumas exceções:
 
-- o serviço _downstream_ não suporta metadados ou proíbe campos desconhecidos
-- o serviço _downstream_ não define protocolos de correlação. Existe a
+- O serviço _downstream_ não suporta metadados ou proíbe campos desconhecidos
+- O serviço _downstream_ não define protocolos de correlação. Existe a
   possibilidade de que uma versão futura do serviço suporte a propagação de
   contexto compatível? Injete-o!
-- o serviço _downstream_ suporta um protocolo de correlação personalizado.
-  - melhor esforço com propagador personalizado: use o contexto de rastreamento
+- O serviço _downstream_ suporta um protocolo de correlação personalizado.
+  - Melhor esforço com propagador personalizado: use o contexto de rastreamento
     do OpenTelemetry, se for compatível.
-  - ou gere e aplique IDs de correlação personalizados no trecho.
+  - Ou gere e aplique IDs de correlação personalizados no trecho.
 
 ### Em processo
 
@@ -364,16 +365,16 @@ Podem haver algumas exceções:
   correlacionar trechos com logs e qualquer auto-instrumentação aninhada.
 - Se a biblioteca tiver uma noção de contexto, suporte a **propagação explícita
   de contexto de rastreamento opcional** _além_ de trechos ativos
-  - coloque rastros (contexto de rastreamento) criados pela biblioteca no
+  - Coloque rastros (contexto de rastreamento) criados pela biblioteca no
     contexto explicitamente, documente como acessá-los
-  - permita que os usuários passem o contexto de rastreamento em seu contexto
+  - Permita que os usuários passem o contexto de rastreamento em seu contexto
 - Dentro da biblioteca, propague o contexto de rastreamento explicitamente -
   trechos ativos podem mudar durante _callbacks_!
-  - capture o contexto ativo dos usuários na superfície da API pública assim que
+  - Capture o contexto ativo dos usuários na superfície da API pública assim que
     puder, use-o como contexto pai para seus trechos
-  - passe o contexto e aplique atributos, exceções, eventos nas instâncias
+  - Passe o contexto e aplique atributos, exceções, eventos nas instâncias
     propagadas explicitamente
-  - isso é essencial se você iniciar threads explicitamente, fizer processamento
+  - Isso é essencial se você iniciar threads explicitamente, fizer processamento
     em segundo plano ou outras coisas que podem falhar devido a limitações de
     fluxo de contexto assíncrono em sua linguagem
 
