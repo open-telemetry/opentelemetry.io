@@ -32,7 +32,7 @@ easier. It does the following:
 - Provides
   [integration with the Prometheus Operator's `PodMonitor` and `ServiceMonitor` CRs](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator).
 - Injects and configures
-  [auto-instrumentation](https://www.honeycomb.io/blog/what-is-auto-instrumentation)
+  [autoinstrumentation](https://www.honeycomb.io/blog/what-is-auto-instrumentation)
   into your pods, supported by the
   [`Instrumentation`](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#opentelemetry-auto-instrumentation-injection)
   custom resource.
