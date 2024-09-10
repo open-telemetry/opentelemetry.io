@@ -10,10 +10,10 @@ bibliotecas, geralmente feitas por meio de _hooks_ de biblioteca ou
 _monkey-patching_ do código da biblioteca.
 
 A instrumentação nativa de bibliotecas com OpenTelemetry oferece melhor
-observabilidade e experiência para desenvolvedores, eliminando a necessidade de
-as bibliotecas exporem e documentarem hooks:
+observabilidade e experiência para desenvolvedores, eliminando a necessidade das
+bibliotecas exporem e documentarem hooks:
 
-- hooks de logging personalizados podem ser substituídos por APIs OpenTelemetry
+- hooks personalizados de logging podem ser substituídos por APIs OpenTelemetry
   comuns e fáceis de usar, os usuários utilizarão somente o OpenTelemetry
 - rastros, logs e métricas do código da biblioteca e da aplicação são
   correlacionados e coerentes
@@ -42,7 +42,7 @@ ou configuração por parte do usuário.
 As convenções semânticas estão em constante evolução, e novas são adicionadas
 regularmente. Se ainda não existirem convenções para a sua biblioteca,
 [considere adicioná-las](https://github.com/open-telemetry/semantic-conventions/issues).
-Preste atenção especial aos nomes dos rastros; procure usar nomes significativos
+Preste atenção especial aos nomes dos trechos; procure usar nomes significativos
 e considere a cardinalidade ao defini-los.
 
 Há um atributo [`schema_url`](/docs/specs/otel/schemas/#schema-url) que pode ser
@@ -56,7 +56,7 @@ o repositório de
 [Specification](https://github.com/open-telemetry/opentelemetry-specification)
 são ótimos pontos de partida!
 
-### Definindo rastros
+### Definindo trechos
 
 Pense na sua biblioteca do ponto de vista de um usuário e no que ele poderia
 querer saber sobre o comportamento e a atividade da biblioteca. Como mantenedor
@@ -67,12 +67,12 @@ o uso da sua biblioteca e pense em uma maneira apropriada de modelar esses
 dados. Algumas considerações incluem:
 
 - Trechos e hierarquias de trecho
-- Atributos numéricos em rastros (como alternativa a métricas agregadas)
-- Eventos em rastros
+- Atributos numéricos em trechos (como alternativa a métricas agregadas)
+- Eventos em trechos
 - Métricas agregadas
 
 Por exemplo, se sua biblioteca está fazendo requisições a um banco de dados,
-crie rastros apenas para a requisição lógica ao banco de dados. As requisições
+crie trechos apenas para a requisição lógica ao banco de dados. As requisições
 físicas pela rede devem ser instrumentadas nas bibliotecas que implementam essa
 funcionalidade. Além disso, é preferível capturar outras atividades, como a
 serialização de objetos/dados, como eventos em rastros, ao invés de rastros
@@ -98,7 +98,7 @@ Não instrumente se:
   telemetria
 
 Se estiver em dúvida - não instrumente - você sempre pode fazê-lo mais tarde,
-quando perceber que é necessidade.
+quando perceber a necessidade.
 
 Se optar por não instrumentar, ainda pode ser útil fornecer uma maneira de
 configurar _handlers_ do OpenTelemetry para a instância interna do cliente RPC.
@@ -127,7 +127,7 @@ algumas considerações para ajudar a minimizar problemas com dependências:
   [Convenção semântica 2.0](/docs/specs/otel/versioning-and-stability/), e
   levamos a estabilidade da API a sério.
 - Ao definir dependências, use a versão estável da API do OpenTelemetry (1.0.\*)
-  e evite atualizá-la, a menos que precise de novos recursos.
+  e evite atualizá-la, a menos que precise usar novas funcionalidades.
 - Enquanto sua instrumentação se estabiliza, considere lançá-la como um pacote
   separado, para que isso não cause problemas para usuários que não a utilizam.
   Você pode mantê-la em seu repositório ou
@@ -146,7 +146,7 @@ algumas considerações para ajudar a minimizar problemas com dependências:
 
 Toda a configuração da aplicação é ocultada da sua biblioteca por meio da API de
 Rastros. As bibliotecas podem permitir que as aplicações passem instâncias de
-`TracerProvider` para facilitar a injeção de dependências e o teste, ou podem
+`TracerProvider` para facilitar testes e injeção de dependências, ou podem
 obtê-las a partir do
 [TracerProvider global](/docs/specs/otel/trace/api/#get-a-tracer). As
 implementações do OpenTelemetry em diferentes linguagens podem ter preferências
@@ -169,7 +169,7 @@ biblioteca. Quais chamadas devem ser rastreadas:
 
 - métodos públicos que fazem chamadas de rede internamente ou operações locais
   que levam tempo significativo e podem falhar (e.g. IO)
-- handlers que processam requisições ou mensagens
+- _handlers_ que processam requisições ou mensagens
 
 **Exemplo de instrumentação:**
 
@@ -185,14 +185,14 @@ private static Tracer getTracer(TracerProvider tracerProvider) {
 }
 
 private Response selectWithTracing(Query query) {
-    // consulte as convenções para obter orientações sobre nomes de rastros e atributos
+    // consulte as convenções para obter orientações sobre nomes de trechos e atributos
     Span span = tracer.spanBuilder(String.format("SELECT %s.%s", dbName, collectionName))
             .setSpanKind(SpanKind.CLIENT)
             .setAttribute("db.name", dbName)
             ...
             .startSpan();
 
-    // torna o rastro ativo e permite correlacionar logs e rastros aninhados
+    // torna o trecho ativo e permite correlacionar logs e trechos aninhados
     try (Scope unused = span.makeCurrent()) {
         Response response = query.runWithRetries();
         if (response.isSuccessful()) {
@@ -244,7 +244,7 @@ Se o OpenTelemetry já suportar o rastreamento de suas chamadas de rede, você
 provavelmente não quer duplicá-lo. Pode haver algumas exceções:
 
 - para suportar usuários sem auto-instrumentação (que pode não funcionar em
-  certos ambientes ou os usuários podem ter preocupações com monkey-patching)
+  certos ambientes ou os usuários podem ter preocupações com _monkey-patching_)
 - para habilitar protocolos personalizados (legados) de correlação e propagação
   de contexto com o serviço subjacente
 - enriquecer trechos de RPC com informações absolutamente essenciais específicas
@@ -268,8 +268,8 @@ events][] para compartilhar detalhes adicionais do aplicativo. Eventos podem ser
 mais convenientes se você quiser adicionar atributos também.
 
 Como regra geral, use eventos ou logs para dados verbosos em vez de rastros.
-Sempre anexe eventos à instância de rastros que sua instrumentação criou. Evite
-usar o rastro ativo se puder, pois você não controla a que ele se refere.
+Sempre anexe eventos à instância do trecho que sua instrumentação criou. Evite
+usar o trecho ativo se puder, pois você não controla a que ele se refere.
 
 ## Propagação de contexto
 
@@ -280,10 +280,10 @@ como um framework web ou um consumidor de mensagens, você deve extrair o
 contexto da requisição/mensagem recebida. O OpenTelemetry fornece a API
 `Propagator`, que oculta padrões específicos de propagação e lê o `Context` de
 rastreamento do cabeçalho. No caso de uma única resposta, há apenas um contexto
-no cabeçalho, que se torna o pai do novo rastros criado pela biblioteca.
+no cabeçalho, que se torna o pai dos novos trechos criado pela biblioteca.
 
-Após criar um rastro, você deve passar o novo contexto de rastreamento para o
-código da aplicação (_callback ou handler_), tornando o rastro ativo; se
+Após criar um trecho, você deve passar o novo contexto de rastreamento para o
+código da aplicação (_callback_ ou _handler_), tornando o rastro ativo; se
 possível, você deve fazer isso explicitamente.
 
 ```java
@@ -294,7 +294,7 @@ Span span = tracer.spanBuilder("receive")
             .setParent(extractedContext)
             .startSpan();
 
-// tornar o span ativo para que qualquer telemetria aninhada seja correlacionada
+// tornar o trecho ativo para que qualquer telemetria aninhada seja correlacionada
 try (Scope unused = span.makeCurrent()) {
   userCode();
 } catch (Exception e) {
@@ -313,7 +313,7 @@ consulte a documentação do OpenTelemetry no seu idioma.
 No caso de um sistema de mensagens, você pode receber mais de uma mensagem de
 uma vez. As mensagens recebidas se tornam
 [_links_](/docs/languages/java/instrumentation/#create-spans-with-links) no
-rastro que você cria. Consulte as
+trecho que você cria. Consulte as
 [convenções de mensagens](/docs/specs/semconv/messaging/messaging-spans/) para
 mais detalhes (AVISO: as convenções de mensagens estão
 [em construção](https://github.com/open-telemetry/oteps/pull/173) 🚧).
@@ -321,9 +321,9 @@ mais detalhes (AVISO: as convenções de mensagens estão
 ### Injetando contexto
 
 Quando você faz uma chamada de saída, geralmente vai querer propagar o contexto
-para o serviço _downstream_. Nesse caso, você deve criar um novo rastro para
+para o serviço _downstream_. Nesse caso, você deve criar um novo trecho para
 rastrear a chamada de saída e usar a API `Propagator` para injetar o contexto na
-mensagem. Pode haver outros casos em que você queira injetar o contexto, por
+mensagem. Podem haver outros casos em que você queira injetar o contexto, por
 exemplo, ao criar mensagens para processamento assíncrono.
 
 ```java
@@ -331,8 +331,8 @@ Span span = tracer.spanBuilder("send")
             .setSpanKind(SpanKind.CLIENT)
             .startSpan();
 
-// tornar o span ativo para que qualquer telemetria aninhada seja correlacionada
-// até mesmo chamadas de rede podem ter camadas aninhadas de spans, logs ou eventos
+// tornar o trecho ativo para que qualquer telemetria aninhada seja correlacionada
+// até mesmo chamadas de rede podem ter camadas aninhadas de trechos, logs ou eventos
 try (Scope unused = span.makeCurrent()) {
   // injetar o contexto
   propagator.inject(Context.current(), transportLayer, setter);
@@ -351,35 +351,35 @@ Aqui está o
 
 Podem haver algumas exceções:
 
-- o serviço downstream não suporta metadados ou proíbe campos desconhecidos
-- o serviço downstream não define protocolos de correlação. Existe a
+- o serviço _downstream_ não suporta metadados ou proíbe campos desconhecidos
+- o serviço _downstream_ não define protocolos de correlação. Existe a
   possibilidade de que uma versão futura do serviço suporte a propagação de
-  contexto compatível? Injetar!
-- o serviço downstream suporta um protocolo de correlação personalizado.
+  contexto compatível? Injete-o!
+- o serviço _downstream_ suporta um protocolo de correlação personalizado.
   - melhor esforço com propagador personalizado: use o contexto de rastreamento
     do OpenTelemetry, se for compatível.
-  - ou gere e aplique IDs de correlação personalizados no rastro.
+  - ou gere e aplique IDs de correlação personalizados no trecho.
 
 ### Em processo
 
-- **Torne seus rastros ativos** (também conhecidos como atuais): isso permite
-  correlacionar rastros com logs e qualquer auto-instrumentação aninhada.
+- **Torne seus trechos ativos** (também conhecidos como atuais): isso permite
+  correlacionar trechos com logs e qualquer auto-instrumentação aninhada.
 - Se a biblioteca tiver uma noção de contexto, suporte a **propagação explícita
-  de contexto de rastreamento opcional** _além_ de rastros ativos
+  de contexto de rastreamento opcional** _além_ de trechos ativos
   - coloque rastros (contexto de rastreamento) criados pela biblioteca no
     contexto explicitamente, documente como acessá-los
   - permita que os usuários passem o contexto de rastreamento em seu contexto
 - Dentro da biblioteca, propague o contexto de rastreamento explicitamente -
-  rastros ativos podem mudar durante callbacks!
+  trechos ativos podem mudar durante _callbacks_!
   - capture o contexto ativo dos usuários na superfície da API pública assim que
-    puder, use-o como contexto pai para seus rastros
+    puder, use-o como contexto pai para seus trechos
   - passe o contexto e aplique atributos, exceções, eventos nas instâncias
     propagadas explicitamente
   - isso é essencial se você iniciar threads explicitamente, fizer processamento
     em segundo plano ou outras coisas que podem falhar devido a limitações de
     fluxo de contexto assíncrono em sua linguagem
 
-## Diversos
+## Miscelânia
 
 ### Registro de Instrumentação
 
@@ -389,13 +389,13 @@ encontrá-la.
 
 ### Performance
 
-"A API do OpenTelemetry não executa operações quando não há SDK configurado na
+A API do OpenTelemetry não executa operações quando não há SDK configurado na
 aplicação. Quando o SDK do OpenTelemetry é configurado, ele
-[consome recursos limitados](/docs/specs/otel/performance/)."
+[consome recursos limitados](/docs/specs/otel/performance/).
 
 Aplicações da vida real, especialmente em grande escala, frequentemente têm
-amostragem baseada em cabeçalho configurada. rastros não amostrados são baratos
-e você pode verificar se o rastro está gravando, para evitar alocações extras e
+amostragem baseada em cabeçalho configurada. Techos não amostrados são baratos
+e você pode verificar se o trecho está gravando, para evitar alocações extras e
 cálculos potencialmente caros, enquanto preenche atributos.
 
 ```java
@@ -407,7 +407,7 @@ Span span = tracer.spanBuilder(String.format("SELECT %s.%s", dbName, collectionN
         .startSpan();
 
 // outros atributos, especialmente aqueles caros de calcular
-// devem ser adicionados se o span estiver gravando
+// devem ser adicionados se o trecho estiver gravando
 if (span.isRecording()) {
     span.setAttribute("db.statement", sanitize(query.statement()))
 }
