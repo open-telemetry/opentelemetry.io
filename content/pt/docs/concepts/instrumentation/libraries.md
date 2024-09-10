@@ -76,10 +76,10 @@ Por exemplo, se sua biblioteca está fazendo requisições a um banco de dados,
 crie trechos apenas para a requisição lógica ao banco de dados. As requisições
 físicas pela rede devem ser instrumentadas nas bibliotecas que implementam essa
 funcionalidade. Além disso, é preferível capturar outras atividades, como a
-serialização de objetos/dados, como eventos em rastros, ao invés de rastros
+serialização de objetos/dados como eventos em trechos, ao invés de trechos
 adicionais.
 
-Siga as convenções semânticas ao definir atributos em rastros.
+Siga as convenções semânticas ao definir atributos dos trechos.
 
 ## Quando **não** instrumentar
 
@@ -415,7 +415,7 @@ if (span.isRecording()) {
 
 A API do OpenTelemetry é
 [tolerante em tempo de execução](/docs/specs/otel/error-handling/#basic-error-handling-principles)
-– não falha em argumentos inválidos, nunca lança exceções, e os elimina. Dessa
+– não falha em argumentos inválidos, nunca lança exceções, e as elimina. Dessa
 forma, problemas de instrumentação não afetam a lógica da aplicação. Teste a
 instrumentação para identificar problemas que o OpenTelemetry pode esconder em
 tempo de execução.
