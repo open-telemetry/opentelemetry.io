@@ -262,7 +262,7 @@ categorized by instrumentation type.
 
 ### Telemetry maturity levels
 
-#### Tracing
+#### Traces
 
 Tracing instrumentation is still under active development, and changes might be made to span names, attached attributes, instrumented endpoints, or other aspects of the telemetry. Until this feature graduates to stable, there are no guarantees of backwards compatibility for tracing instrumentation.
 
