@@ -237,8 +237,8 @@ Traces are a kind of signal that your apps can emit. Events (or logs) and traces
 complement, not duplicate, each other. Whenever you have something that should
 have a certain level of verbosity, logs are a better choice than traces.
 
-If your app uses logging or some similar module, the logging module might already
-have OpenTelemetry integration. To find out, see the
+If your app uses logging or some similar module, the logging module might
+already have OpenTelemetry integration. To find out, see the
 [registry](/ecosystem/registry/). Integrations usually stamp active trace
 context on all logs, so users can correlate them.
 
