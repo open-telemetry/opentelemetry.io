@@ -62,8 +62,8 @@ Consider sampling if you meet any of the following criteria:
   beyond errors and latency.
 - You can describe some common rules that determine if data should be sampled or
   dropped.
-- You have a way to tell your services apart, so that high- and low-volume services are
-  sampled differently.
+- You have a way to tell your services apart, so that high- and low-volume
+  services are sampled differently.
 - You have the ability to route unsampled data (for "just in case" scenarios) to
   low-cost storage systems.
 
