@@ -449,8 +449,8 @@ to build the `OpenTelemetry` instance.
 You can build the providers by using the `SdkTracerProvider.builder()` and
 `SdkMeterProvider.builder()` methods.
 
-In the case of the [example app](#example-app) the `DiceApplication` class
-gets updated as follows:
+In the case of the [example app](#example-app) the `DiceApplication` class gets
+updated as follows:
 
 ```java { hl_lines=["6-24","34-62"] }
 package otel;
