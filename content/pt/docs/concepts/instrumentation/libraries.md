@@ -18,7 +18,8 @@ bibliotecas exporem e documentarem hooks:
 - rastros, logs e métricas do código da biblioteca e da aplicação são
   correlacionados e coerentes
 - convenções comuns permitem que os usuários obtenham uma telemetria semelhante
-  e consistente dentro da mesma tecnologia e entre bibliotecas e linguagens
+  e consistente com a mesma tecnologia e entre diferentes bibliotecas e
+  linguagens
 - sinais de telemetria podem ser ajustados (filtrados, processados, agregados)
   para diversos cenários de consumo usando uma grande variedade de pontos de
   extensibilidade bem documentados do OpenTelemetry.
@@ -126,8 +127,8 @@ algumas considerações para ajudar a minimizar problemas com dependências:
   seguindo a
   [Convenção semântica 2.0](/docs/specs/otel/versioning-and-stability/), e
   levamos a estabilidade da API a sério.
-- Ao definir dependências, use a versão estável da API do OpenTelemetry (1.0.\*)
-  e evite atualizá-la, a menos que precise usar novas funcionalidades.
+- Ao adicionar dependências, use a versão estável da API do OpenTelemetry
+  (1.0.\*) e evite atualizá-la, a menos que precise usar novas funcionalidades.
 - Enquanto sua instrumentação se estabiliza, considere lançá-la como um pacote
   separado, para que isso não cause problemas para usuários que não a utilizam.
   Você pode mantê-la em seu repositório ou
@@ -139,22 +140,19 @@ algumas considerações para ajudar a minimizar problemas com dependências:
   experimental ou no repositório _contrib_ do OpenTelemetry pode ajudar a manter
   as convenções atualizadas sem causar mudanças disruptivas para seus usuários.
 
-  [estáveis, mas sujeitas à evolução]:
-    /docs/specs/otel/versioning-and-stability/#semantic-conventions-stability
-
-### Obtendo um rastro
+### Obtendo um rastreador
 
 Toda a configuração da aplicação é ocultada da sua biblioteca por meio da API de
-Rastros. As bibliotecas podem permitir que as aplicações passem instâncias de
-`TracerProvider` para facilitar testes e injeção de dependências, ou podem
+Rastreamento. As bibliotecas podem permitir que as aplicações passem instâncias
+de `TracerProvider` para facilitar testes e injeção de dependências, ou podem
 obtê-las a partir do
 [TracerProvider global](/docs/specs/otel/trace/api/#get-a-tracer). As
 implementações do OpenTelemetry em diferentes linguagens podem ter preferências
 distintas para passar instâncias ou acessar o global, dependendo do que é mais
 comum na linguagem.
 
-Ao obter o rastro, forneça o nome e a versão da sua biblioteca (ou do pacote de
-rastreamento) - essas informações aparecerão na telemetria e ajudarão os
+Ao obter o rastreador, forneça o nome e a versão da sua biblioteca (ou do pacote
+de rastreamento) - essas informações aparecerão na telemetria e ajudarão os
 usuários a processar e filtrar a telemetria, além de entender sua origem e
 depurar/relatar quaisquer problemas de instrumentação.
 
@@ -168,7 +166,7 @@ código da aplicação, entendam a duração e o resultado das chamadas da
 biblioteca. Quais chamadas devem ser rastreadas:
 
 - métodos públicos que fazem chamadas de rede internamente ou operações locais
-  que levam tempo significativo e podem falhar (e.g. IO)
+  que levam tempo significativo e podem falhar (ex.: operações de Entrada/Saída)
 - _handlers_ que processam requisições ou mensagens
 
 **Exemplo de instrumentação:**
@@ -394,8 +392,8 @@ aplicação. Quando o SDK do OpenTelemetry é configurado, ele
 [consome recursos limitados](/docs/specs/otel/performance/).
 
 Aplicações da vida real, especialmente em grande escala, frequentemente têm
-amostragem baseada em cabeçalho configurada. Techos não amostrados são baratos
-e você pode verificar se o trecho está gravando, para evitar alocações extras e
+amostragem baseada em cabeçalho configurada. Techos não amostrados são baratos e
+você pode verificar se o trecho está gravando, para evitar alocações extras e
 cálculos potencialmente caros, enquanto preenche atributos.
 
 ```java
@@ -463,3 +461,5 @@ class TestExporter implements SpanExporter {
 [bibliotecas de instrumentação]:
   /docs/specs/otel/overview/#instrumentation-libraries
 [span events]: /docs/specs/otel/trace/api/#add-events
+[estáveis, mas sujeitas à evolução]:
+  /docs/specs/otel/versioning-and-stability/#semantic-conventions-stability
