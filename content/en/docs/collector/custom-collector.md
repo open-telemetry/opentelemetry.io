@@ -111,8 +111,8 @@ Here are the tags for the `dist` map:
 As you can see on the table above, all the `dist` tags are optional, so you will
 be adding custom values for them depending if your intentions to make your
 custom Collector distribution available for consumption by other users or if you
-are leveraging the `ocb` to bootstrap your component development and
-testing environment.
+are leveraging the `ocb` to bootstrap your component development and testing
+environment.
 
 For this tutorial, you will be creating a Collector's distribution to support
 the development and testing of components.
@@ -214,8 +214,8 @@ The folder structure should look like this:
 ```
 
 You can now use the generated code to bootstrap your component development
-projects and build and distribute your own collector distribution with
-your components.
+projects and build and distribute your own collector distribution with your
+components.
 
 Further reading:
 

@@ -64,9 +64,9 @@ following links:
 
 For this tutorial, we will write an example connector that takes traces and
 converts them into metrics as a basic example of how the connector component in
-OpenTelemetry functions. The functionality of the basic connector is to
-count the number of spans in traces that contain a specific attribute name. The
-count of these occurrences are stored in the connector.
+OpenTelemetry functions. The functionality of the basic connector is to count
+the number of spans in traces that contain a specific attribute name. The count
+of these occurrences are stored in the connector.
 
 ## Configurations
 

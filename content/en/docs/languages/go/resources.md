@@ -26,8 +26,8 @@ provider := sdktrace.NewTracerProvider(
 Note the use of the `semconv` package to provide
 [conventional names](/docs/concepts/semantic-conventions/) for resource
 attributes. This helps ensure that consumers of telemetry produced with these
-semantic conventions can discover relevant attributes and understand
-their meaning.
+semantic conventions can discover relevant attributes and understand their
+meaning.
 
 Resources can also be detected automatically through `resource.Detector`
 implementations. These `Detector`s may discover information about the currently

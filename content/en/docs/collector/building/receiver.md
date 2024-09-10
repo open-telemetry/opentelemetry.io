@@ -75,8 +75,8 @@ this:
 In order to properly test your trace receiver, you may need a distributed
 tracing backend so the Collector can send the telemetry to it. We will be using
 [Jaeger](https://www.jaegertracing.io/docs/latest/getting-started/), if you
-don't have a `Jaeger` instance running, you can start one using Docker
-with the following command:
+don't have a `Jaeger` instance running, you can start one using Docker with the
+following command:
 
 ```sh
 docker run -d --name jaeger \

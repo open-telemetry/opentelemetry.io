@@ -97,11 +97,11 @@ the data flow.
 
 ### Export Ratio
 
-Export ratio is the ratio between receiver and exporter metrics. You
-can notice over the dashboard screenshot above that the export ratio on metrics
-is way too high than the received metrics. This is because the demo application
-is configured to generate span metrics which is a processor that generates
-metrics from spans inside collector as illustrated in overview diagram.
+Export ratio is the ratio between receiver and exporter metrics. You can notice
+over the dashboard screenshot above that the export ratio on metrics is way too
+high than the received metrics. This is because the demo application is
+configured to generate span metrics which is a processor that generates metrics
+from spans inside collector as illustrated in overview diagram.
 
 ### Process Metrics
 

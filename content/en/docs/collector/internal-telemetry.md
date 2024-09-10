@@ -136,12 +136,12 @@ journalctl | grep otelcol | grep Error
 
 ## Types of internal telemetry
 
-The OpenTelemetry Collector aims to be a model of observable service by
-exposing its own operational metrics. Additionally, it collects host resource
-metrics that can help you understand if problems are caused by a different
-process on the same host. Specific components of the Collector can also emit
-their own custom telemetry. In this section, you will learn about the different
-types of observability emitted by the Collector itself.
+The OpenTelemetry Collector aims to be a model of observable service by exposing
+its own operational metrics. Additionally, it collects host resource metrics
+that can help you understand if problems are caused by a different process on
+the same host. Specific components of the Collector can also emit their own
+custom telemetry. In this section, you will learn about the different types of
+observability emitted by the Collector itself.
 
 ### Values observable with internal metrics
 
