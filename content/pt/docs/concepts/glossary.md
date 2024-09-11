@@ -56,7 +56,7 @@ programação e os exemplos incluem injeção de _bytecode_ ou _monkey patching_
 
 Um mecanismo para propagar [Metadados](#metadata) para ajudar a estabelecer uma
 relação casual entre eventos e serviços. Consulte as [especificações de
-Bagagge][baggage].
+Baggagge][baggage].
 
 ### **Biblioteca de cliente** {#client-library}
 
