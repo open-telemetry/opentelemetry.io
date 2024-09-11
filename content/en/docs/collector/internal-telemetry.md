@@ -195,6 +195,14 @@ The following tables group each internal metric by level of verbosity: `basic`,
 `normal`, and `detailed`. Each metric is identified by name and description and
 categorized by instrumentation type.
 
+{{% alert title="Note" color="info" %}}
+As of Collector v0.106.1, internal metric names are handled differently based on their source:
+- Metrics generated from Collector components are prefixed with `otelcol_`.
+- Metrics generated from instrumentation libraries do not use the `otelcol_` prefix.
+
+For Collector versions prior to v0.106.1, all internal metrics, regardless of their origin, are prefixed with `otelcol_`. This includes metrics from both Collector components and instrumentation libraries.
+{{% /alert %}}
+
 <!---To compile this list, configure a Collector instance to emit its own metrics to the localhost:8888/metrics endpoint. Select a metric and grep for it in the Collector core repository. For example, the `otelcol_process_memory_rss` can be found using:`grep -Hrn "memory_rss" .` Make sure to eliminate from your search string any words that might be prefixes. Look through the results until you find the .go file that contains the list of metrics. In the case of `otelcol_process_memory_rss`, it and other process metrics can be found in https://github.com/open-telemetry/opentelemetry-collector/blob/31528ce81d44e9265e1a3bbbd27dc86d09ba1354/service/internal/proctelemetry/process_telemetry.go#L92. Note that the Collector's internal metrics are defined in several different files in the repository.--->
 
 #### `basic`-level metrics
