@@ -9,7 +9,7 @@ default_lang_commit: 926e23631291ed0ba85563cdaf344a134d0edd8d
 
 O projeto OpenTelemetry usa terminologias que você talvez não conheça. Além
 disso, o projeto também define algumas terminologias de uma maneira diferente
-das outras. Esta página reúne as terminologias utilizadas no projeto e seus
+de outros lugares. Esta página reúne as terminologias utilizadas no projeto e seus
 respectivos significados.
 
 ## Terminologia Genérica {#generic-terminology}
