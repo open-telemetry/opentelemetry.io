@@ -1,0 +1,368 @@
+---
+title: Glossário
+description: >-
+  Terminologias utilizadas pelo projeto OpenTelemetry que você pode ou não estar
+  familiarizado.
+weight: 200
+default_lang_commit: 926e23631291ed0ba85563cdaf344a134d0edd8d
+---
+
+O projeto OpenTelemetry usa terminologias que você talvez não conheça. Além
+disso, o projeto também define algumas terminologias de uma maneira diferente
+das outras. Esta página reúne as terminologias utilizadas no projeto e seus
+respectivos significados.
+
+## Terminologia Genérica {#generic-terminology}
+
+### **Agregação** {#aggregation}
+
+O processo de combinar múltiplas medições em estatísticas exatas ou estimadas
+sobre as medições que aconteceram durante um intervalo de tempo ou execução do
+programa. Utilizado pela [Fonte de Dados](#data-source) de uma
+[Métrica](#metric).
+
+### **API**
+
+Interface de Programação de Aplicações (_Application Programming Interface_). No
+projeto OpenTelemetry, é utilizada para definir como os dados de telemetria são
+gerados por [Fonte de Dados](#data-source).
+
+### **Aplicação** {#application}
+
+Um ou mais [Serviços](#service) destinados a usuários finais ou outras
+aplicações.
+
+### **APM**
+
+O Monitoramento de Desempenho de Aplicações (_Application Performance
+Monitoring_) envolve monitorar aplicações de software, sua performance
+(velocidade, confiabilidade, disponibilidade, etc.) para detectar problemas,
+alertar e fornecer ferramentas que permitam encontrar a causa raiz.
+
+### **Atributo** {#attribute}
+
+Termo do OpenTelemetry para [Metadados](#metadata). Adiciona informações
+chave-valor à entidade que está produzindo telemetria. Usado em
+[Sinais](#signal) e [Recursos](#resource). Consulte a [especificação de
+atributos][attribute].
+
+### **Instrumentação automática** {#automatic-instrumentation}
+
+Refere-se a métodos de coleta de telemetria que não exigem que o usuário final
+modifique o código-fonte da aplicação. Os métodos variam conforme a linguagem de
+programação e os exemplos incluem injeção de _bytecode_ ou _monkey patching_.
+
+### **Baggage**
+
+Um mecanismo para propagar [Metadados](#metadata) para ajudar a estabelecer uma
+relação casual entre eventos e serviços. Consulte as [especificações de
+Bagagge][baggage].
+
+### **Biblioteca de cliente** {#client-library}
+
+Veja [Biblioteca instrumentada](#instrumented-library).
+
+### **Client-side app**
+
+A component of an [Application](#application) that is not running inside a
+private infrastructure and is typically used directly by end-users. Examples of
+client-side apps are browser apps, mobile apps, and apps running on IoT devices.
+
+### **Collector**
+
+A vendor-agnostic implementation on how to receive, process, and export
+telemetry data. A single binary that can be deployed as an agent or gateway.
+
+Also known as the OpenTelemetry Collector. More on the Collector
+[here][collector].
+
+### **Contrib**
+
+Several [Instrumentation Libraries](#instrumentation-library) and the
+[Collector](#collector) offer a set of core capabilities as well as a dedicated
+contrib repository for non-core capabilities including vendor `Exporters`.
+
+### **Context propagation**
+
+Allows all [Data sources](#data-source) to share an underlying context mechanism
+for storing state and accessing data across the lifespan of a
+[Transaction](#transaction). See [context propagation
+spec][context propagation].
+
+### **DAG**
+
+[Directed Acyclic Graph][dag].
+
+### **Data source**
+
+See [Signal](#signal)
+
+### **Dimension**
+
+A term used specifically by [Metrics](#metric). See [Attribute](#attribute).
+
+### **Distributed tracing**
+
+Tracks the progression of a single [Request](#request), called a
+[Trace](#trace), as it is handled by [Services](#service) that make up an
+[Application](#application). A [Distributed trace](#distributed-tracing)
+transverses process, network and security boundaries.
+
+See [Distributed tracing][distributed tracing].
+
+### **Distribution**
+
+A distribution is a wrapper around an upstream OpenTelemetry repository with
+some customizations. See [more][distribution].
+
+### **Event**
+
+Something that happened where representation depends on the
+[Data source](#data-source). For example, [Spans](#span).
+
+### **Exporter**
+
+Provides functionality to emit telemetry to consumers. Exporters can be push- or
+pull-based.
+
+### **Field**
+
+A term used specifically by [Log Records](#log-record). [Metadata](#metadata)
+can be added through defined fields, including [Attributes](#attribute) and
+[Resource](#resource). Other fields may also be considered `Metadata`, including
+severity and trace information. See the [field spec][field].
+
+### **gRPC**
+
+A high-performance, open source universal [RPC](#rpc) framework. More on gRPC
+[here](https://grpc.io).
+
+### **HTTP**
+
+Short for [Hypertext Transfer Protocol][http].
+
+### **Instrumented library**
+
+Denotes the [Library](#library) for which the telemetry signals
+([Traces](#trace), [Metrics](#metric), [Logs](#log)) are gathered. See
+[more][spec-instrumented-lib].
+
+### **Instrumentation library**
+
+Denotes the [Library](#library) that provides the instrumentation for a given
+[Instrumented library](#instrumented-library).
+[Instrumented library](#instrumented-library) and
+[Instrumentation library](#instrumentation-library) can be the same
+[Library](#library) if it has built-in OpenTelemetry instrumentation. See [the
+lib specification][spec-instrumentation-lib].
+
+### **JSON**
+
+Short for [JavaScript Object Notation][json].
+
+### **Label**
+
+A term used specifically by [Metrics](#metric). See [Metadata](#metadata).
+
+### **Language**
+
+Programming Language.
+
+### **Library**
+
+A language-specific collection of behavior invoked by an interface.
+
+### **Log**
+
+Sometimes used to refer to a collection of [Log records](#log-record). Can be
+ambiguous since people also sometimes use [Log](#log) to refer to a single
+[Log record](#log-record). Where ambiguity is possible, use additional
+qualifiers, for example, `Log record`. See [more][log]
+
+### **Log record**
+
+A recording of an [Event](#event). Typically, the record includes a timestamp
+indicating when the [Event](#event) happened as well as other data that
+describes what happened, where it happened, and so on. See [more][log record].
+
+### **Metadata**
+
+A key-value pair, for example `foo="bar"`, added to an entity producing
+telemetry. OpenTelemetry calls these pairs [Attributes](#attribute). In
+addition, [Metrics](#metric) have [Dimensions](#dimension) an [Labels](#label),
+while [Logs](#log) have [Fields](#field).
+
+### **Metric**
+
+Records a data point, either raw measurements or predefined aggregation, as time
+series with [Metadata](#metadata). See [more][metric].
+
+### **OC**
+
+Short form for [OpenCensus](#opencensus).
+
+### **OpenCensus**
+
+A set of libraries for various languages that allow you to collect application
+metrics and distributed traces, then transfer the data to a backend of your
+choice in real time.
+[Precursor to OpenTelemetry](/docs/what-is-opentelemetry/#history). See
+[more][opencensus].
+
+### **OpenTracing**
+
+Vendor-neutral APIs and instrumentation for distributed tracing.
+[Precursor to OpenTelemetry](/docs/what-is-opentelemetry/#history). See
+[more][opentracing].
+
+### **OT**
+
+Short form for [OpenTracing](#opentracing).
+
+### **OTel**
+
+Short form for [OpenTelemetry](/docs/what-is-opentelemetry/).
+
+### **OTelCol**
+
+Short form for [OpenTelemetry Collector](#collector).
+
+### **OTLP**
+
+Short for [OpenTelemetry Protocol](/docs/specs/otlp/).
+
+### **Propagators**
+
+Used to serialize and deserialize specific parts of telemetry data such as span
+context and [Baggage](#baggage) in [Spans](#span). See [more][propagators].
+
+### **Proto**
+
+Language independent interface types. See [more][proto].
+
+### **Receiver**
+
+The term used by the [Collector](/docs/collector/configuration/#receivers) to
+define how telemetry data is received. Receivers can be push- or pull-based. See
+[more][receiver].
+
+### **Request**
+
+See [Distributed Tracing](#distributed-tracing).
+
+### **Resource**
+
+Captures information about the entity producing telemetry as
+[Attributes](#attribute). For example, a process producing telemetry that is
+running in a container on Kubernetes has a process name, a pod name, a
+namespace, and possibly a deployment name. All these attributes can be included
+in the `Resource`.
+
+### **REST**
+
+Short for [Representational State Transfer][rest].
+
+### **RPC**
+
+Short for [Remote Procedure Call][rpc].
+
+### **Sampling**
+
+A mechanism to control the amount of data exported. Most commonly used with the
+[Tracing](#trace) [Data Source](#data-source). See [more][sampling].
+
+### **SDK**
+
+Short for Software Development Kit. Refers to a telemetry SDK that denotes a
+[Library](#library) that implement the OpenTelemetry [API](#api).
+
+### **Semantic conventions**
+
+Defines standard names and values of [Metadata](#metadata) in order to provide
+vendor-agnostic telemetry data.
+
+### **Service**
+
+A component of an [Application](#application). Multiple instances of a
+[Service](#service) are typically deployed for high availability and
+scalability. A [Service](#service) can be deployed in multiple locations.
+
+### **Signal**
+
+One of [Traces](#trace), [Metrics](#metric) or [Logs](#log). More on Signals
+[here][signals].
+
+### **Span**
+
+Represents a single operation within a [Trace](#trace). See [more][span].
+
+### **Span link**
+
+A span link is a link between causally-related spans. For details see
+[Links between spans](/docs/specs/otel/overview#links-between-spans) and
+[Specifying Links](/docs/specs/otel/trace/api#specifying-links).
+
+### **Specification**
+
+Describes the cross-language requirements and expectations for all
+implementations. See [more][specification].
+
+### **Status**
+
+The result of the operation. Typically used to indicate whether an error
+occurred. See [more][status].
+
+### **Tag**
+
+See [Metadata](#metadata).
+
+### **Trace**
+
+A [DAG](#dag) of [Spans](#span), where the edges between [Spans](#span) are
+defined as parent-child relationship. See [more][trace].
+
+### **Tracer**
+
+Responsible for creating [Spans](#span). See [more][tracer].
+
+### **Transaction**
+
+See [Distributed Tracing](#distributed-tracing).
+
+### **zPages**
+
+An in-process alternative to external exporters. When included, they collect and
+aggregate tracing and metrics information in the background; this data is served
+on web pages when requested. See [more][zpages].
+
+[baggage]: /docs/specs/otel/baggage/api/
+[attribute]: /docs/specs/otel/common/#attributes
+[collector]: /docs/collector
+[context propagation]: /docs/specs/otel/overview#context-propagation
+[dag]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
+[distributed tracing]: /docs/concepts/signals/traces/
+[distribution]: /docs/concepts/distributions/
+[field]: /docs/specs/otel/logs/data-model#field-kinds
+[http]: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
+[json]: https://en.wikipedia.org/wiki/JSON
+[log]: /docs/specs/otel/glossary#log
+[log record]: /docs/specs/otel/glossary#log-record
+[metric]: /docs/concepts/signals/metrics/
+[opencensus]: https://opencensus.io
+[opentracing]: https://opentracing.io
+[propagators]: /docs/languages/go/instrumentation/#propagators-and-context
+[proto]: https://github.com/open-telemetry/opentelemetry-proto
+[receiver]: /docs/collector/configuration/#receivers
+[rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
+[rpc]: https://en.wikipedia.org/wiki/Remote_procedure_call
+[sampling]: /docs/specs/otel/trace/sdk#sampling
+[signals]: /docs/concepts/signals/
+[span]: /docs/specs/otel/trace/api#span
+[spec-instrumentation-lib]: /docs/specs/otel/glossary/#instrumentation-library
+[spec-instrumented-lib]: /docs/specs/otel/glossary/#instrumented-library
+[specification]: /docs/concepts/components/#specification
+[status]: /docs/specs/otel/trace/api#set-status
+[trace]: /docs/specs/otel/overview#traces
+[tracer]: /docs/specs/otel/trace/api#tracer
+[zpages]:
+  https://github.com/open-telemetry/opentelemetry-specification/blob/main/experimental/trace/zpages.md
