@@ -17,7 +17,7 @@ respectivos significados.
 ### **Agregação** {#aggregation}
 
 O processo de combinar múltiplas medições em estatísticas exatas ou estimadas
-sobre as medições que aconteceram durante um intervalo de tempo ou execução do
+sobre as medições que aconteceram durante um intervalo de tempo, durante a execução do
 programa. Utilizado pela [Fonte de Dados](#data-source) de uma
 [Métrica](#metric).
 
