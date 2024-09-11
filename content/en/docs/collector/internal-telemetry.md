@@ -285,7 +285,7 @@ Stable metrics are guaranteed to not change. This means:
 
 ##### Deprecated
 
-Deprecated metrics are slated for deletion but are still available for use. These metrics include an annotation about the version in which they became deprecated. For example:
+Deprecated metrics are slated for deletion but are still available for use. The description of these metrics include an annotation about the version in which they became deprecated. For example:
 
 Before deprecation:
 
