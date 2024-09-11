@@ -125,8 +125,11 @@
       max-width: 80%;
     }
 
-    a.external-link:after {
-      display: none;
+    a {
+      color: white;
+      &.external-link:after {
+        display: none;
+      }
     }
   }
 }

@@ -344,7 +344,7 @@
   commercial: true
 - name: Apache SkyWalking
   nativeOTLP: true
-  url: https://skywalking.apache.org/docs/main/v9.0.0/en/setup/backend/opentelemetry-receiver/
+  url: https://skywalking.apache.org/docs/main/latest/en/setup/backend/otlp-trace/
   contact:
   oss: true
   commercial: false
