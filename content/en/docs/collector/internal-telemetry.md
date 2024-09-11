@@ -49,14 +49,6 @@ Each verbosity level represents a threshold at which certain metrics are
 emitted. For the complete list of metrics, with a breakdown by level, see
 [Lists of internal metrics](#lists-of-internal-metrics).
 
-{{% alert title="Note" color="info" %}}
-As of Collector v0.106.1, internal metric names are handled differently based on their source:
-- Metrics generated from Collector components are prefixed with `otelcol_`.
-- Metrics generated from instrumentation libraries do not use the `otelcol_` prefix.
-
-For Collector versions prior to v0.106.1, all internal metrics, regardless of their origin, are prefixed with `otelcol_`. This includes metrics from both Collector components and instrumentation libraries.
-{{% /alert %}}
-
 The default level for metrics output is `normal`. To use another level, set
 `service::telemetry::metrics::level`:
 
