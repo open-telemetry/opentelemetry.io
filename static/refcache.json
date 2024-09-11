@@ -2747,6 +2747,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-25T09:39:34.657068291Z"
   },
+  "https://github.com/connectrpc/otelconnect-go": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-11T10:10:33.696145618Z"
+  },
   "https://github.com/containerd": {
     "StatusCode": 200,
     "LastSeen": "2024-08-07T15:43:55.092676+02:00"
