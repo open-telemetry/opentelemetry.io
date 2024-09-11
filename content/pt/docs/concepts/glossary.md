@@ -25,7 +25,7 @@ programa. Utilizado pela [Fonte de Dados](#data-source) de uma
 
 Interface de Programação de Aplicações (_Application Programming Interface_). No
 projeto OpenTelemetry, é utilizada para definir como os dados de telemetria são
-gerados por [Fonte de Dados](#data-source).
+gerados pela [Fonte de Dados](#data-source).
 
 ### **Aplicação** {#application}
 
