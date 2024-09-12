@@ -3,4 +3,3 @@ autoinstrumentação
 autoconsistentes
 serialização
 verbosidade
-miscelânia

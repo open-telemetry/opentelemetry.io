@@ -378,7 +378,7 @@ Podem haver algumas exceções:
     em segundo plano ou outras coisas que podem falhar devido a limitações de
     fluxo de contexto assíncrono em sua linguagem
 
-## Miscelânia
+## Miscelânea
 
 ### Registro de Instrumentação
 
