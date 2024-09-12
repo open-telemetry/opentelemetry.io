@@ -194,7 +194,7 @@ metric names are handled differently based on their source:
 - Metrics generated from instrumentation libraries do not use the `otelcol_`
   prefix by default, unless their metric names are explicitly prefixed.
 
-For Collector versions prior to v0.106.1, all internal metrics emitted via the Prometheus exporter, regardless of
+For Collector versions prior to v0.106.1, all internal metrics emitted using the Prometheus exporter, regardless of
 their origin, are prefixed with `otelcol_`. This includes metrics from both
 Collector components and instrumentation libraries. {{% /alert %}}
 
