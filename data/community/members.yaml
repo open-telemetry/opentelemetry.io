@@ -33,33 +33,12 @@ spec-sponsors:
   - name: tedsuo
     html_url: https://github.com/tedsuo
     avatar_url: https://avatars.githubusercontent.com/u/24074?v=4
-  - name: jsuereth
-    html_url: https://github.com/jsuereth
-    avatar_url: https://avatars.githubusercontent.com/u/29006?v=4
-  - name: carlosalberto
-    html_url: https://github.com/carlosalberto
-    avatar_url: https://avatars.githubusercontent.com/u/260065?v=4
   - name: Oberon00
     html_url: https://github.com/Oberon00
     avatar_url: https://avatars.githubusercontent.com/u/849039?v=4
-  - name: bogdandrutu
-    html_url: https://github.com/bogdandrutu
-    avatar_url: https://avatars.githubusercontent.com/u/1373887?v=4
   - name: dyladan
     html_url: https://github.com/dyladan
     avatar_url: https://avatars.githubusercontent.com/u/1612643?v=4
-  - name: lmolkova
-    html_url: https://github.com/lmolkova
-    avatar_url: https://avatars.githubusercontent.com/u/2347409?v=4
-  - name: yurishkuro
-    html_url: https://github.com/yurishkuro
-    avatar_url: https://avatars.githubusercontent.com/u/3523016?v=4
-  - name: jmacd
-    html_url: https://github.com/jmacd
-    avatar_url: https://avatars.githubusercontent.com/u/3629705?v=4
-  - name: tigrannajaryan
-    html_url: https://github.com/tigrannajaryan
-    avatar_url: https://avatars.githubusercontent.com/u/4194920?v=4
   - name: pellared
     html_url: https://github.com/pellared
     avatar_url: https://avatars.githubusercontent.com/u/5067549?v=4
@@ -69,15 +48,6 @@ spec-sponsors:
   - name: MrAlias
     html_url: https://github.com/MrAlias
     avatar_url: https://avatars.githubusercontent.com/u/5543599?v=4
-  - name: arminru
-    html_url: https://github.com/arminru
-    avatar_url: https://avatars.githubusercontent.com/u/7052238?v=4
-  - name: reyang
-    html_url: https://github.com/reyang
-    avatar_url: https://avatars.githubusercontent.com/u/17327289?v=4
-  - name: jack-berg
-    html_url: https://github.com/jack-berg
-    avatar_url: https://avatars.githubusercontent.com/u/34418638?v=4
 governance-committee:
   - name: jpkrohling
     html_url: https://github.com/jpkrohling
@@ -1126,6 +1096,7 @@ maintainers:
       - javascript-triagers
       - sig-contributor-experience-maintainers
       - sig-contributor-experience-approvers
+      - docs-pt-approvers
     html_url: https://github.com/maryliag
     avatar_url: https://avatars.githubusercontent.com/u/1017486?v=4
   - name: rrschulze
@@ -1218,13 +1189,6 @@ maintainers:
     html_url: https://github.com/cartermp
     avatar_url: https://avatars.githubusercontent.com/u/6309070?v=4
 approvers:
-  - name: vishweshbankwar
-    teams:
-      - dotnet-approvers
-      - dotnet-triagers
-      - dotnet-contrib-triagers
-    html_url: https://github.com/vishweshbankwar
-    avatar_url: https://avatars.githubusercontent.com/u/17655898?v=4
   - name: utpilla
     teams:
       - dotnet-approvers
@@ -1609,6 +1573,12 @@ approvers:
       - go-instrumentation-approvers
     html_url: https://github.com/dineshg13
     avatar_url: https://avatars.githubusercontent.com/u/2471669?v=4
+  - name: grcevski
+    teams:
+      - go-instrumentation-triagers
+      - go-instrumentation-approvers
+    html_url: https://github.com/grcevski
+    avatar_url: https://avatars.githubusercontent.com/u/6207777?v=4
   - name: samiura
     teams:
       - network-triagers
@@ -1770,6 +1740,11 @@ approvers:
       - docs-ja-approvers
     html_url: https://github.com/ymotongpoo
     avatar_url: https://avatars.githubusercontent.com/u/145104?v=4
+  - name: EzzioMoreira
+    teams:
+      - docs-pt-approvers
+    html_url: https://github.com/EzzioMoreira
+    avatar_url: https://avatars.githubusercontent.com/u/18507157?v=4
 triagers:
   - name: SylvainJuge
     teams:
@@ -1812,6 +1787,11 @@ triagers:
       - dotnet-contrib-triagers
     html_url: https://github.com/martinjt
     avatar_url: https://avatars.githubusercontent.com/u/1699587?v=4
+  - name: vishweshbankwar
+    teams:
+      - dotnet-contrib-triagers
+    html_url: https://github.com/vishweshbankwar
+    avatar_url: https://avatars.githubusercontent.com/u/17655898?v=4
   - name: kittylyst
     teams:
       - java-contrib-triagers

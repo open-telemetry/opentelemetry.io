@@ -10,6 +10,7 @@ const org = 'open-telemetry';
 
 const configParams = {
   terms: ['maintainers', 'approvers', 'triagers'],
+  // Note that below is some custom code that will remove technical-committee members from spec-sponsors
   committees: ['governance-committee', 'technical-committee', 'spec-sponsors'],
   includePrivateMembersInGeneral: false,
   includePrivateMembersInGroups: true,
@@ -147,6 +148,16 @@ async function collectDetails() {
         html_url: member.html_url,
         avatar_url: member.avatar_url,
       }));
+  }
+
+  // Remove technical-committee members from spec-sponsors
+  if (committees['spec-sponsors'] && committees['technical-committee']) {
+    committees['spec-sponsors'] = committees['spec-sponsors'].filter(
+      (member) =>
+        !committees['technical-committee'].some(
+          (tcMember) => tcMember.name === member.name,
+        ),
+    );
   }
 
   // Sort committees to the top of the output
