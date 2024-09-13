@@ -1,6 +1,7 @@
 ---
 title: API Documentation
 linkTitle: Docs
+cSpell:ignore: apidocs
 ---
 
 {{% blocks/section color="white" %}}
