@@ -39,8 +39,7 @@ the OpenTelemetry project.
 
 Specification sponsors are trusted collaborators of the technical committee, and
 work to review, approve, and sponsor
-[OpenTelemetry specification](/docs/specs/otel/) issues
-and PRs.
+[OpenTelemetry specification](/docs/specs/otel/) issues and PRs.
 
 {{% community/members-list "spec-sponsors" %}}
 
