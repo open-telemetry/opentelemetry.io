@@ -101,8 +101,8 @@ and Spring starter users. {{% /alert %}}
 {{% alert color="info" %}} The autoconfigure module registers Java shutdown
 hooks to shut down the SDK when appropriate. Because OpenTelemetry Java
 [uses `java.util.logging` for internal logging](../sdk/#internal-logging), some
-logging might be suppressed during shutdown hooks. This is a bug in the
-JDK itself, and not something under the control of OpenTelemetry Java. If you
+logging might be suppressed during shutdown hooks. This is a bug in the JDK
+itself, and not something under the control of OpenTelemetry Java. If you
 require logging during shutdown hooks, consider using `System.out` rather than a
 logging framework which might shut itself down in a shutdown hook, thus
 suppressing your log messages. For more details, see this
