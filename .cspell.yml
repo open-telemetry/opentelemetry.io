@@ -9,6 +9,7 @@ import:
 caseSensitive: true
 ignorePaths:
   - '*.svg'
+  - data/community/members.yaml
   - vendors.yaml
   - content/ja
   - content/zh
