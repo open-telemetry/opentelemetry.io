@@ -24,8 +24,8 @@ entre serviços.
 Por exemplo, imagine que você tem um `clientId` no início de uma requisição, mas
 deseja que esse ID esteja disponível em todos os trechos de um rastro, em
 algumas métricas de outro serviço, e em alguns logs ao longo do caminho. Como o
-rastro pode abranger vários serviços, você precisa de uma maneira de
-propagar esses dados sem copiar o `clientId` em diversos pontos do seu código.
+rastro pode abranger vários serviços, você precisa de uma maneira de propagar
+esses dados sem copiar o `clientId` em diversos pontos do seu código.
 
 Usando a
 [Propagação de Contexto](/docs/concepts/signals/traces/#context-propagation)
@@ -42,9 +42,9 @@ para estágios posteriores. Isso pode incluir, por exemplo, coisas como
 identificação de conta, IDs de usuários, IDs de produtos e IPs de origem.
 
 Propagar essas informações usando Bagagem permite uma análise mais profunda da
-telemetria em um sistema de backend. Por exemplo, se você incluir uma
-informação como o ID do usuário em um trecho que rastreia uma chamada de banco
-de dados, fica muito mais fácil responder a perguntas como "quais usuários estão
+telemetria em um sistema de backend. Por exemplo, se você incluir uma informação
+como o ID do usuário em um trecho que rastreia uma chamada de banco de dados,
+fica muito mais fácil responder a perguntas como "quais usuários estão
 enfrentando as chamadas de banco de dados mais lentas?". Você também pode
 registrar informações sobre uma operação posterior e incluir esse mesmo ID de
 usuário nos dados do log.
