@@ -6,7 +6,7 @@ default_lang_commit: 896255cae4fea454ffc4c559ea29b08ccebbfcb2
 ---
 
 No OpenTelemetry, Bagagem é uma informação contextual que acompanha o contexto.
-Bagagem é uma estrutura de armazenamento de chave-valor, que permite você
+Bagagem é uma estrutura de armazenamento chave-valor, que te permite
 [propagar](/docs/concepts/context-propagation/#propagation) quaisquer dados
 junto com o [contexto](/docs/concepts/context-propagation/#context).
 
@@ -24,7 +24,7 @@ entre serviços.
 Por exemplo, imagine que você tem um `clientId` no início de uma requisição, mas
 deseja que esse ID esteja disponível em todos os trechos de um rastro, em
 algumas métricas de outro serviço, e em alguns logs ao longo do caminho. Como o
-rastreamento pode abranger vários serviços, você precisa de uma maneira de
+rastro pode abranger vários serviços, você precisa de uma maneira de
 propagar esses dados sem copiar o `clientId` em diversos pontos do seu código.
 
 Usando a
@@ -42,7 +42,7 @@ para estágios posteriores. Isso pode incluir, por exemplo, coisas como
 identificação de conta, IDs de usuários, IDs de produtos e IPs de origem.
 
 Propagar essas informações usando Bagagem permite uma análise mais profunda da
-telemetria em um sistema de _backend_. Por exemplo, se você incluir uma
+telemetria em um sistema de backend. Por exemplo, se você incluir uma
 informação como o ID do usuário em um trecho que rastreia uma chamada de banco
 de dados, fica muito mais fácil responder a perguntas como "quais usuários estão
 enfrentando as chamadas de banco de dados mais lentas?". Você também pode
@@ -53,9 +53,9 @@ usuário nos dados do log.
 
 ## Considerações de segurança da Bagagem
 
-Itens de Bagagem sensíveis podem ser compartilhados com recursos não
+Itens sensíveis da Bagagem podem ser compartilhados com recursos não
 intencionais, como APIs de terceiros. Isso ocorre porque a instrumentação
-automática inclui Bagagem na maioria das requisições de rede do seu serviço.
+automática inclui a Bagagem na maioria das requisições de rede do seu serviço.
 Especificamente, a Bagagem e outras partes do contexto do rastro são enviadas
 nos cabeçalhos HTTP, tornando-os visíveis para qualquer pessoa que esteja
 inspecionando o tráfego de rede. Se o tráfego estiver restrito dentro da sua
@@ -68,10 +68,10 @@ itens de Bagagem sejam legítimos, portanto, tenha cautela ao acessá-los.
 ## Bagagem não é o mesmo que atributos
 
 É importante salientar que a Bagagem é um armazenamento de chave-valor separado
-e não está ligada aos atributos de trechos, métricas ou logs sem que esses sejam
-adicionados de forma explícita.
+e não está ligada aos atributos de trechos, métricas ou logs sem que seja
+adicionada de forma explícita.
 
-Para adicionar entradas de Bagagem como atributos, é necessário ler
+Para adicionar valores da Bagagem como atributos, é necessário ler
 explicitamente os dados da Bagagem e adicioná-los como atributos aos seus
 trechos, métricas ou logs.
 
