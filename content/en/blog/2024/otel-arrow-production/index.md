@@ -48,7 +48,7 @@ column-oriented data, popular for both interoperability and performance reasons.
 Here is how we use this exciting technology to form a compression bridge between
 OpenTelemetry Collectors.
 
-The compression bridge consists of two OpenTelemetry collectors labeled exporter
+The compression bridge consists of two OpenTelemetry Collectors labeled exporter
 and receiver, or they could equally be two pools of load-balanced collectors.
 
 As described in this
@@ -346,7 +346,7 @@ processor described above, followed by the OTel-Arrow exporter.
 ![A pool of gateway collectors sends to a load balancer, then to a backend service.](./setup.png)
 
 On the other side of the bridge, a pool of Envoy load balancers distributes the
-streams across a pool of Collectors running the OTel-Arrow receiver, after
+streams across a pool of collectors running the OTel-Arrow receiver, after
 terminating TLS. We use a round-robin configuration for Envoy, because we found
 it performs better than the least-loaded policy for balancing long-lived
 streams. We configure both Envoy and the OTel-Arrow receiver’s HTTP/2
@@ -354,7 +354,7 @@ max_concurrent_streams setting to 1 to improve load balance.
 
 The pipeline is fully synchronous, with the originating OTel SDKs and all the
 intermediate pipeline stages waiting for the backend to respond to every
-request. Neither pool of Collectors is configured to retry, we configure the
+request. Neither pool of collectors is configured to retry, we configure the
 OpenTelemetry SDKs to retry instead.
 
 ### Experimental method
