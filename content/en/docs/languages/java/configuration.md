@@ -200,7 +200,9 @@ exporters.
 | `otel.exporter.otlp.metrics.default.histogram.aggregation` | The preferred default histogram aggregation. Options include `BASE2_EXPONENTIAL_BUCKET_HISTOGRAM` and `EXPLICIT_BUCKET_HISTOGRAM`.                                                                                                                                                                                                                                                                                                   | `EXPLICIT_BUCKET_HISTOGRAM`                                                                                                |
 | `otel.experimental.exporter.otlp.retry.enabled`            | If `true`, enable [experimental retry support](#otlp-exporter-retry).                                                                                                                                                                                                                                                                                                                                                                | `false`                                                                                                                    |
 
-[^2]: OpenTelemetry Java agent 2.x uses `http/protobuf` by default.
+[^2]:
+    The OpenTelemetry Java agent 2.x and the OpenTelemetry Spring Boot starter
+    use `http/protobuf` by default.
 
 ##### OTLP exporter retry
 
