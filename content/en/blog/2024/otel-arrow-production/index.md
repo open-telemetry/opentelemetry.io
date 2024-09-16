@@ -105,7 +105,7 @@ Collector itself.
 Here, we briefly cover the ways we've tuned OpenTelemetry Collectors using
 OTel-Arrow components to provide reliable, scalable telemetry delivery.
 
-## OTel-Arrow Exporter
+## OTel-Arrow exporter
 
 The OTel-Arrow exporter and receiver pair are designed to provide equivalent
 functionality to the core OTLP/gRPC exporter and receiver pair, so that users
@@ -154,7 +154,7 @@ exporters:
       num_streams: 1
 ```
 
-## OTel-Arrow Receiver
+## OTel-Arrow receiver
 
 The OTel-Arrow receiver component manages incoming OTel-Arrow streams. The
 receiver coordinates an asynchronous process with per-stream reader and writer
