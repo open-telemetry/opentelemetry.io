@@ -146,7 +146,7 @@ with OTel-Arrow exporters without substantial reconfiguration.
 
 As an example configuration:
 
-```
+```yaml
 exporters:
   otelarrow:
     endpoint: collector.local:4317
@@ -189,7 +189,7 @@ stream count, and connection lifetimes.
 
 As an example configuration:
 
-```
+```yaml
 receivers:
   otelarrow:
     protocols:
@@ -237,7 +237,7 @@ receivers apply memory limits or admission control. While this is our preferred
 configuration, it is just one of several reasonable setups. As an example
 configuration:
 
-```
+```yaml
 exporters:
   otelarrow:
     # place gRPC, otel-arrow, retry, and timeout settings here
@@ -272,7 +272,7 @@ increase throughput.
 
 As an example configuration:
 
-```
+```yaml
 exporters:
   otelarrow:
     # place gRPC, otel-arrow, retry, and timeout settings here.
@@ -307,7 +307,7 @@ cause the loss of telemetry data.
 
 As an example configuration:
 
-```
+```yaml
 exporters:
   otelarrow:
     # place gRPC, otel-arrow, retry, and timeout settings here
@@ -387,7 +387,7 @@ it easy to monitor compression performance in production.
 As an example, the exporter’s observed compression factor is calculated for each
 export method using the following query:
 
-```
+```text
 with
 	uncompressed = metric otelcol_exporter_sent
 		| rate
