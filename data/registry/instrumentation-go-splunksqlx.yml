@@ -13,3 +13,4 @@ authors:
 urls:
   repo: https://github.com/signalfx/splunk-otel-go/tree/main/instrumentation/github.com/jmoiron/sqlx/splunksqlx
 createdAt: 2022-01-20
+isFirstParty: false

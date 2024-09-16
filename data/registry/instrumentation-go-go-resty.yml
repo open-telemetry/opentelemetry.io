@@ -14,3 +14,4 @@ authors:
 urls:
   repo: https://github.com/dubonzi/otelresty
 createdAt: 2023-07-13
+isFirstParty: false
