@@ -6,24 +6,25 @@ author:
   >- # If you have only one author, then add the single name on this line in quotes.
   [Joshua MacDonald](https://github.com/jmacd) (ServiceNow, Inc), [Laurent
   Querel](https://github.com/lquerel) (F5, Inc)
+cSpell:ignore: OTAP Querel Zstd
 draft: true
 issue: 5193
 sig: OpenTelemetry Arrow
 ---
 
-## OpenTelemetry Protocol with Apache Arrow in Production
+## OpenTelemetry Protocol with Apache Arrow in production
 
-The OpenTelemetry Protocol with Apache Arrow project's Exporter and Receiver
+The OpenTelemetry Protocol with Apache Arrow project's exporter and receiver
 components for the OpenTelemetry Collector are now included in OpenTelemetry
 Collector-Contrib releases. This is a case study of our experience deploying
 OpenTelemetry Collectors using OTel-Arrow components as the primary ingestion
 path for internal telemetry data at ServiceNow Cloud Observability.
 
-Since the project’s announcement our collaboration with F5, Inc. has focused on
+Since the project’s announcement, our collaboration with F5, Inc. has focused on
 making the Exporter and Receiver components into a reliable, high-performance
 method for transporting bulk OpenTelemetry data across expensive network links.
 Using these components for our internal telemetry, we observe compression
-factors in the range of 15x to 30x of uncompressed size (i.e., 15 to 30 times
+factors in the range of 15x to 30x of uncompressed size (15 to 30 times
 smaller). In a side-by-side comparison between OpenTelemetry Protocol (“OTLP”)
 and OpenTelemetry Protocol with Apache Arrow (“OTAP”) for similarly configured
 traces pipelines, we observe 30% improvement in compression. Although this study
@@ -35,7 +36,7 @@ With our previous experimental results now validated in production, the
 OpenTelemetry Protocol with Apache Arrow Exporter and Receiver are considered
 ready for general use.
 
-## Exporter and Receiver Components
+## Exporter and receiver components
 
 Apache Arrow is a great technology partner for OpenTelemetry, and these projects
 have many aspects in common. Like OpenTelemetry, Apache Arrow features a shared
