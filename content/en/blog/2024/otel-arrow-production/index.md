@@ -38,7 +38,7 @@ ready for general use.
 
 ## Exporter and receiver components
 
-Apache Arrow is a great technology partner for OpenTelemetry, and these projects
+Apache Arrow is a great technical dependency for OpenTelemetry because these projects
 have many aspects in common. Like OpenTelemetry, Apache Arrow features a shared
 data specification, a transport protocol, a cross-language API specification,
 and community-built SDKs for numerous runtime environments.
