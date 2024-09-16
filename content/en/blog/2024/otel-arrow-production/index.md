@@ -52,7 +52,7 @@ The compression bridge consists of two OpenTelemetry collectors labeled exporter
 and receiver, or they could equally be two pools of load-balanced collectors.
 
 As described in this
-["OTEP" design document](https://github.com/open-telemetry/oteps/blob/main/text/0156-columnar-encoding.md),
+["OTEP" design document](https://github.com/open-telemetry/oteps/blob/main/text/0156-columnar-encoding.md#mapping-otel-entities-to-arrow-records),
 the exporter converts arbitrary OpenTelemetry data into an Arrow record batch.
 The Arrow record batch is a block of memory, with a standardized layout, making
 it possible to exchange data across address spaces and virtual process
