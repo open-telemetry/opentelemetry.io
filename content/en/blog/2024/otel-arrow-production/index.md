@@ -123,7 +123,7 @@ waits for either a response or the deadline to expire, then returns.
 Each OTel-Arrow stream maintains internal state, including schemas,
 dictionaries, and related data that can be referred to by future stream
 requests. Stream requests are encoded and decoded sequentially by both
-components, allowing them to maintain correct state--which limits how much data
+components, allowing them to maintain correct state—which limits how much data
 each stream can handle. Increasing the number of exporter streams improves
 throughput, but each stream has some overhead, so fewer streams are generally
 better for compression results.
