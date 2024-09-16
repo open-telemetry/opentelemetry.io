@@ -140,7 +140,7 @@ for gRPC-based exporters (e.g., endpoint, headers, TLS) and it uses the
 Collector’s standard exporter supports, including queue, retry, and timeout
 behaviors. Because they have so much in common including endpoint configuration,
 users can replace an existing OTLP exporters in their Collector configuration
-with otelarrow exporters without substantial reconfiguration.
+with OTel-Arrow exporters without substantial reconfiguration.
 
 As an example configuration:
 
