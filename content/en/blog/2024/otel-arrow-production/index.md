@@ -14,11 +14,11 @@ sig: OpenTelemetry Arrow
 
 ## OpenTelemetry Protocol with Apache Arrow in production
 
-The OpenTelemetry Protocol with Apache Arrow (OTel-Arrow) project's exporter and receiver
-components for the OpenTelemetry Collector are now included in OpenTelemetry
-Collector-Contrib releases. This is a case study of our experience deploying
-OpenTelemetry Collectors using OTel-Arrow components as the primary ingestion
-path for internal telemetry data at ServiceNow Cloud Observability.
+The OpenTelemetry Protocol with Apache Arrow (OTel-Arrow) project's exporter and
+receiver components for the OpenTelemetry Collector are now included in
+OpenTelemetry Collector-Contrib releases. This is a case study of our experience
+deploying OpenTelemetry Collectors using OTel-Arrow components as the primary
+ingestion path for internal telemetry data at ServiceNow Cloud Observability.
 
 Since the project’s announcement, our collaboration with F5, Inc. has focused on
 making the exporter and receiver components into a reliable, high-performance
@@ -26,11 +26,11 @@ method for transporting bulk OpenTelemetry data across expensive network links.
 Using these components for our internal telemetry, we observe compression
 factors in the range of 15x to 30x of uncompressed size (15 to 30 times
 smaller). In a side-by-side comparison between OpenTelemetry Protocol (“OTLP”)
-and OpenTelemetry Protocol with Apache Arrow for similarly configured
-traces pipelines, we observe 30% improvement in compression. Although this study
+and OpenTelemetry Protocol with Apache Arrow for similarly configured traces
+pipelines, we observe 30% improvement in compression. Although this study
 specifically focused on traces data, we have observed results for logs and
-metrics signals in production settings too, where OTel-Arrow users can expect 50% to
-70% improvement relative to OTLP for similar pipeline configurations.
+metrics signals in production settings too, where OTel-Arrow users can expect
+50% to 70% improvement relative to OTLP for similar pipeline configurations.
 
 With our previous experimental results now validated in production, the
 OpenTelemetry Protocol with Apache Arrow exporter and receiver are considered
@@ -38,10 +38,10 @@ ready for general use.
 
 ## Exporter and receiver components
 
-Apache Arrow is a great technical dependency for OpenTelemetry because these projects
-have many aspects in common. Like OpenTelemetry, Apache Arrow features a shared
-data specification, a transport protocol, a cross-language API specification,
-and community-built SDKs for numerous runtime environments.
+Apache Arrow is a great technical dependency for OpenTelemetry because these
+projects have many aspects in common. Like OpenTelemetry, Apache Arrow features
+a shared data specification, a transport protocol, a cross-language API
+specification, and community-built SDKs for numerous runtime environments.
 
 Apache Arrow is by now a standard in the data processing industry for
 column-oriented data, popular for both interoperability and performance reasons.
@@ -97,10 +97,12 @@ major factor in the total cost of observability, but users also expect
 reliability, scalability, and observability of their telemetry collection
 infrastructure.
 
-We have been running the OpenTelemetry Collector using OTel-Arrow components in a production environment at ServiceNow Cloud Observability, as the primary agent collecting internal telemetry for over a year (i.e., collecting
-the data we use to observe our own systems), and we have applied what we learned
-back into improvements in the OTel-Arrow components and the OpenTelemetry
-Collector itself.
+We have been running the OpenTelemetry Collector using OTel-Arrow components in
+a production environment at ServiceNow Cloud Observability, as the primary agent
+collecting internal telemetry for over a year (i.e., collecting the data we use
+to observe our own systems), and we have applied what we learned back into
+improvements in the OTel-Arrow components and the OpenTelemetry Collector
+itself.
 
 Here, we briefly cover the ways we've tuned OpenTelemetry Collectors using
 OTel-Arrow components to provide reliable, scalable telemetry delivery.
