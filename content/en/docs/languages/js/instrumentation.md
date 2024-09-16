@@ -1615,16 +1615,16 @@ Observable counters can be used to measure an additive, non-negative,
 monotonically increasing value.
 
 ```js
-let events = [];
+const events = [];
 
 const addEvent = (name) => {
-  events = append(events, name);
+  events.push(name);
 };
 
 const counter = myMeter.createObservableCounter('events.counter');
 
 counter.addCallback((result) => {
-  result.observe(len(events));
+  result.observe(events.length);
 });
 
 //... calls to addEvent
@@ -1636,10 +1636,10 @@ Observable UpDown counters can increment and decrement, allowing you to measure
 an additive, non-negative, non-monotonically increasing cumulative value.
 
 ```js
-let events = [];
+const events = [];
 
 const addEvent = (name) => {
-  events = append(events, name);
+  events.push(name);
 };
 
 const removeEvent = () => {
@@ -1649,7 +1649,7 @@ const removeEvent = () => {
 const counter = myMeter.createObservableUpDownCounter('events.counter');
 
 counter.addCallback((result) => {
-  result.observe(len(events));
+  result.observe(events.length);
 });
 
 //... calls to addEvent and removeEvent
