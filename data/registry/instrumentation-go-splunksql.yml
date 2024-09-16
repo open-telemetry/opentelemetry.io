@@ -14,3 +14,4 @@ authors:
 urls:
   repo: https://github.com/signalfx/splunk-otel-go/tree/main/instrumentation/database/sql/splunksql
 createdAt: 2021-10-12
+isFirstParty: false

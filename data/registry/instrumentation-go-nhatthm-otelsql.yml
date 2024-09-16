@@ -16,3 +16,4 @@ authors:
 urls:
   repo: https://github.com/nhatthm/otelsql
 createdAt: 2022-01-27
+isFirstParty: false
