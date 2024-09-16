@@ -97,9 +97,7 @@ major factor in the total cost of observability, but users also expect
 reliability, scalability, and observability of their telemetry collection
 infrastructure.
 
-At ServiceNow Cloud Observability, we have been running the OpenTelemetry
-Collector using OTel-Arrow components in our production environment as the
-primary agent collecting internal telemetry for over a year (i.e., collecting
+We have been running the OpenTelemetry Collector using OTel-Arrow components in a production environment at ServiceNow Cloud Observability, as the primary agent collecting internal telemetry for over a year (i.e., collecting
 the data we use to observe our own systems), and we have applied what we learned
 back into improvements in the OTel-Arrow components and the OpenTelemetry
 Collector itself.
