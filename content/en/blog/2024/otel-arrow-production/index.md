@@ -6,7 +6,7 @@ author:
   >- # If you have only one author, then add the single name on this line in quotes.
   [Joshua MacDonald](https://github.com/jmacd) (ServiceNow, Inc), [Laurent
   Querel](https://github.com/lquerel) (F5, Inc)
-cSpell:ignore: OTAP Querel Zstd
+cSpell:ignore: Querel Zstd
 draft: true
 issue: 5193
 sig: OpenTelemetry Arrow
@@ -26,10 +26,10 @@ method for transporting bulk OpenTelemetry data across expensive network links.
 Using these components for our internal telemetry, we observe compression
 factors in the range of 15x to 30x of uncompressed size (15 to 30 times
 smaller). In a side-by-side comparison between OpenTelemetry Protocol (“OTLP”)
-and OpenTelemetry Protocol with Apache Arrow (“OTAP”) for similarly configured
+and OpenTelemetry Protocol with Apache Arrow for similarly configured
 traces pipelines, we observe 30% improvement in compression. Although this study
 specifically focused on traces data, we have observed results for logs and
-metrics signals in production settings too, where OTAP users can expect 50% to
+metrics signals in production settings too, where OTel-Arrow users can expect 50% to
 70% improvement relative to OTLP for similar pipeline configurations.
 
 With our previous experimental results now validated in production, the
@@ -245,7 +245,7 @@ exporters:
       enabled: false
 receivers:
   otelarrow:
-    # otelarrow supports OTLP and OTAP with admission control
+    # otelarrow supports OTLP and OTel-Arrow with admission control
     admission:
       request_limit_mib: 128
 processors:
@@ -375,7 +375,7 @@ gateway collectors are managed by a Kubernetes horizontal pod autoscaling
 policy, with a 60% target CPU utilization.
 
 OTel-Arrow components consistently report compressed and uncompressed bytes for
-both OTLP and OTAP protocols using otelcol_exporter_sent,
+both OTLP and OTel-Arrow protocols using otelcol_exporter_sent,
 otelcol_exporter_sent_wire, otelcol_receiver_recv, and
 otelcol_receiver_recv_wire metrics, and experimental results are reported as the
 result of timeseries queries using a ServiceNow Cloud Observability metric
