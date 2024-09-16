@@ -14,14 +14,14 @@ sig: OpenTelemetry Arrow
 
 ## OpenTelemetry Protocol with Apache Arrow in production
 
-The OpenTelemetry Protocol with Apache Arrow project's exporter and receiver
+The OpenTelemetry Protocol with Apache Arrow (OTel-Arrow) project's exporter and receiver
 components for the OpenTelemetry Collector are now included in OpenTelemetry
 Collector-Contrib releases. This is a case study of our experience deploying
 OpenTelemetry Collectors using OTel-Arrow components as the primary ingestion
 path for internal telemetry data at ServiceNow Cloud Observability.
 
 Since the project’s announcement, our collaboration with F5, Inc. has focused on
-making the Exporter and Receiver components into a reliable, high-performance
+making the exporter and receiver components into a reliable, high-performance
 method for transporting bulk OpenTelemetry data across expensive network links.
 Using these components for our internal telemetry, we observe compression
 factors in the range of 15x to 30x of uncompressed size (15 to 30 times
@@ -33,7 +33,7 @@ metrics signals in production settings too, where OTAP users can expect 50% to
 70% improvement relative to OTLP for similar pipeline configurations.
 
 With our previous experimental results now validated in production, the
-OpenTelemetry Protocol with Apache Arrow Exporter and Receiver are considered
+OpenTelemetry Protocol with Apache Arrow exporter and receiver are considered
 ready for general use.
 
 ## Exporter and receiver components
@@ -48,12 +48,12 @@ column-oriented data, popular for both interoperability and performance reasons.
 Here is how we use this exciting technology to form a compression bridge between
 OpenTelemetry collectors.
 
-The compression bridge consists of two OpenTelemetry collectors labeled Exporter
-and Receiver, or they could equally be two pools of load-balanced collectors.
+The compression bridge consists of two OpenTelemetry collectors labeled exporter
+and receiver, or they could equally be two pools of load-balanced collectors.
 
 As described in this
 ["OTEP" design document](https://github.com/open-telemetry/oteps/blob/main/text/0156-columnar-encoding.md),
-the Exporter converts arbitrary OpenTelemetry data into an Arrow record batch.
+the exporter converts arbitrary OpenTelemetry data into an Arrow record batch.
 The Arrow record batch is a block of memory, with a standardized layout, making
 it possible to exchange data across address spaces and virtual process
 boundaries without copying data. This "zero copy" approach is how Arrow enables
@@ -77,7 +77,7 @@ gRPC streams. This design lets us benefit from heavily-optimized Arrow IPC
 functions that compress and encode repeated record batches while offering
 drop-in compatibility with OTLP/gRPC service configurations.
 
-The OTel-Arrow Receiver applies logic to reverse the transformation done in the
+The OTel-Arrow receiver applies logic to reverse the transformation done in the
 Encoder, and data equivalent to the original is reconstructed and supplied for
 the next component in the OpenTelemetry Collector pipeline to consume. We
 anticipate a number of future benefits that will come from using Arrow
@@ -86,9 +86,9 @@ for a future post.
 
 ## Performance and Scalability
 
-Users and service providers can benefit from using OTel-Arrow Exporter and
-Receiver components as drop-in replacements for the OpenTelemetry Collector's
-core OTLP gRPC Exporter and Receiver components. Users can expect network
+Users and service providers can benefit from using OTel-Arrow exporter and
+receiver components as drop-in replacements for the OpenTelemetry Collector's
+core OTLP gRPC exporter and receiver components. Users can expect network
 bandwidth reduction of 30-70% relative to the best results they would otherwise
 achieve using OTLP/gRPC, large batch sizes, and Zstd compression.
 
@@ -109,13 +109,13 @@ OTel-Arrow components to provide reliable, scalable telemetry delivery.
 
 ## OTel-Arrow Exporter
 
-The OTel-Arrow Exporter and Receiver pair are designed to provide equivalent
+The OTel-Arrow exporter and receiver pair are designed to provide equivalent
 functionality to the core OTLP/gRPC exporter and receiver pair, so that users
 could easily switch between these components. OTel-Arrow components were
 initially derived from these components, and both retain support for OTLP/gRPC
 requests alongside OTel-Arrow in a combined service.
 
-The OTel-Arrow Exporter component translates OpenTelemetry data, starting with a
+The OTel-Arrow exporter component translates OpenTelemetry data, starting with a
 synchronous export call carrying a batch of OpenTelemetry traces, logs, or
 metrics. The export context includes standard gRPC metadata, including deadline,
 trace context, and per-request headers, and all of this context passes through
@@ -126,18 +126,18 @@ Each OTel-Arrow stream maintains internal state, including schemas,
 dictionaries, and related data that can be referred to by future stream
 requests. Stream requests are encoded and decoded sequentially by both
 components, allowing them to maintain correct state--which limits how much data
-each stream can handle. Increasing the number of Exporter streams improves
+each stream can handle. Increasing the number of exporter streams improves
 throughput, but each stream has some overhead, so fewer streams are generally
 better for compression results.
 
 OTel-Arrow streams are gRPC streams, which map onto HTTP/2 streams. Stream
 lifetime is determined by a number of factors, including limits negotiated by
-intermediate load balancers. For its part, the OTel-Arrow Exporter supports a
+intermediate load balancers. For its part, the OTel-Arrow exporter supports a
 maximum stream lifetime configuration, which will cause it to automatically
 restart streams on an interval. Compression improves with longer stream
 lifetimes, but with diminishing returns.
 
-The OTel-Arrow Exporter uses the Collector’s built-in configuration mechanisms
+The OTel-Arrow exporter uses the Collector’s built-in configuration mechanisms
 for gRPC-based exporters (e.g., endpoint, headers, TLS) and it uses the
 Collector’s standard exporter supports, including queue, retry, and timeout
 behaviors. Because they have so much in common including endpoint configuration,
@@ -158,24 +158,24 @@ exporters:
 
 ## OTel-Arrow Receiver
 
-The OTel-Arrow Receiver component manages incoming OTel-Arrow streams. The
+The OTel-Arrow receiver component manages incoming OTel-Arrow streams. The
 receiver coordinates an asynchronous process with per-stream reader and writer
 threads. Pipeline operations are performed using independent worker threads,
-enabling each stream to maximize throughput. Receivers will process as much
+enabling each stream to maximize throughput. receivers will process as much
 concurrent work as possible, subject to several limits. There are two principal
-configuration parameters that control memory use in an OTel-Arrow Receiver.
+configuration parameters that control memory use in an OTel-Arrow receiver.
 
 The first limit governs total memory used by active streams, including schemas,
-dictionaries, and related data. When the memory limit is reached, the Receiver
+dictionaries, and related data. When the memory limit is reached, the receiver
 will terminate the stream with a resource-exhausted status code. This protects
-Receivers from running out of memory due to unexpectedly large stream memory
+receivers from running out of memory due to unexpectedly large stream memory
 requirements.
 
 The second limit governs the amount of data admitted into the pipeline and
 covers both OTLP and OTel-Arrow data paths. When this limit is reached,
 individual requests or streams will either block or fail immediately, determined
 by a limit on the number of concurrent waiters. Admission limits protect
-Receivers from running out of memory due to pipeline stalls.
+receivers from running out of memory due to pipeline stalls.
 
 We recommend use of these limits to control memory in an OTel-Arrow pipeline and
 not to use the standard memory-limiter processor. There are other limits
@@ -183,7 +183,7 @@ available through standard gRPC settings that can help with memory and load
 balancing, including gRPC message size limits, stream-per-connection limits, and
 keep-alive limits.
 
-When load on an individual Receiver becomes too great, we recommend use of an
+When load on an individual receiver becomes too great, we recommend use of an
 external HTTP/2 load balancer, in order to place limits on connection count,
 stream count, and connection lifetimes.
 
@@ -212,7 +212,7 @@ connected to other factors, including the available options for concurrency,
 queuing, and persistence.
 
 For a gateway collector, receiving data from other sources and exporting through
-an OTel-Arrow Exporter, we recommend a fully synchronous request path, where
+an OTel-Arrow exporter, we recommend a fully synchronous request path, where
 callers wait for the pipeline to acknowledge their request before they let go of
 the original data. This way, when an individual stream is saturated, latency and
 memory usage rise as the pipeline handles more data. This response is referred
@@ -334,7 +334,7 @@ operating as a gateway for internal traces and logs data. We carried out a
 series of experiments using an internal traces pipeline which, after sampling,
 averages 500-600 thousand spans/second written through an OTel-Arrow bridge,
 exporting in the range of 250-300 MB/second of compressed data. We used the
-OTel-Arrow Exporter and Receiver’s built-in OpenTelemetry instrumentation to
+OTel-Arrow exporter and receiver’s built-in OpenTelemetry instrumentation to
 quantify the performance of the pipeline in terms of compression, failure rate,
 and median latency.
 
@@ -343,15 +343,15 @@ depicted flowing from left to right, with OpenTelemetry-instrumented
 applications producing telemetry into a deployment of gateway collectors using
 the OpenTelemetry standard OTLP over gRPC, with round-robin load balancing. The
 gateway collectors apply a variety of processors, including the concurrent batch
-processor described above, followed by the OTel-Arrow Exporter.
+processor described above, followed by the OTel-Arrow exporter.
 
 ![A pool of gateway collectors sends to a load balancer, then to a backend service.](./setup.png)
 
 On the other side of the bridge, a pool of Envoy load balancers distributes the
-streams across a pool of Collectors running the OTel-Arrow Receiver, after
+streams across a pool of Collectors running the OTel-Arrow receiver, after
 terminating TLS. We use a round-robin configuration for Envoy, because we found
 it performs better than the least-loaded policy for balancing long-lived
-streams. We configure both Envoy and the OTel-Arrow Receiver’s HTTP/2
+streams. We configure both Envoy and the OTel-Arrow receiver’s HTTP/2
 max_concurrent_streams setting to 1 to improve load balance.
 
 The pipeline is fully synchronous, with the originating OTel SDKs and all the
@@ -384,7 +384,7 @@ result of timeseries queries using a ServiceNow Cloud Observability metric
 query. These metrics are conveniently tagged with the gRPC method name, making
 it easy to monitor compression performance in production.
 
-As an example, the Exporter’s observed compression factor is calculated for each
+As an example, the exporter’s observed compression factor is calculated for each
 export method using the following query:
 
 ```
@@ -410,7 +410,7 @@ tested.
 ### Experiment: compression as a function of stream lifetime
 
 In this experiment, we vary the maximum stream lifetime of the OTel-Arrow
-Exporter. The hypothesis is that compression improves with longer stream
+exporter. The hypothesis is that compression improves with longer stream
 durations, as reported in our initial findings, because longer streams, having
 simply more data, present a greater opportunity for compression. In this
 experiment, batches of 4000–5000 spans are compressed into the range of
@@ -419,7 +419,7 @@ experiment, batches of 4000–5000 spans are compressed into the range of
 Five maximum stream lifetime values were tested, ranging from 3.75 seconds to 4
 minutes, and we see the expected relationship between stream lifetime and
 compression. Stream lifetimes above 4 minutes were not tested simply because the
-OTel-Arrow Receiver as tested has a gRPC keepalive setting that limits streams
+OTel-Arrow receiver as tested has a gRPC keepalive setting that limits streams
 to 5 minutes of lifetime.
 
 | Stream lifetime | Exporter Reduction Factor |
@@ -433,12 +433,12 @@ to 5 minutes of lifetime.
 Similar data passing through the OTLP protocol has an average reduction factor
 of 12.0.
 
-Compression reduction factors observed by the OTel-Arrow Exporter are typically
-1% greater than what the Receiver observes, because while they observe the same
+Compression reduction factors observed by the OTel-Arrow exporter are typically
+1% greater than what the receiver observes, because while they observe the same
 compressed data, uncompressed size is different on each side of the bridge due
 to de-duplication within the hierarchy of OTLP Resource and Scope values. For
-example, in the 1 minute lifetime test where Exporter reduced the data by a
-factor of 16.9, the Receiver expanded the data by a factor of only 16.8 due to
+example, in the 1 minute lifetime test where exporter reduced the data by a
+factor of 16.9, the receiver expanded the data by a factor of only 16.8 due to
 the change in uncompressed size.
 
 ### Experiment: compression as a function of batch size
@@ -464,19 +464,19 @@ bandwidth by approximately 30%.
 One of our hypotheses at the start of the project was that the compression
 benefit for users sending bulk telemetry data would outweigh the cost of
 additional compute resources taken by the encoding. We are especially interested
-in this metric on the Exporter side of the bridge, because it impacts the total
+in this metric on the exporter side of the bridge, because it impacts the total
 cost of observability for users sending telemetry to a service provider. Here,
 we compare the cost of sending standard OTLP data with the cost of sending
 OTel-Arrow data.
 
-While the OTel-Arrow Exporter uses somewhat more memory than its counterpart
-OTLP Exporter, the difference is not a substantial driver of cost because other
+While the OTel-Arrow exporter uses somewhat more memory than its counterpart
+OTLP exporter, the difference is not a substantial driver of cost because other
 factors, including garbage collection, make the two exporters require similar
 amounts of memory and because memory costs 10% of CPU cost for the machine size
 tested.
 
 We are interested in comparing the cost and number of vCPU/hours spent in the
-two Exporter configurations as well as the number of GiB/hour of telemetry sent.
+two exporter configurations as well as the number of GiB/hour of telemetry sent.
 It is common in cloud computing environments that the price of one vCPU/hour is
 less than the cost of one GiB of egress to the public internet. We estimate that
 typically, one vCPU/hour costs typically one quarter to one half the cost of one
@@ -484,7 +484,7 @@ GiB of egress.
 
 According to this logic, the OTel-Arrow bridge makes economic sense as we
 compare the difference in vCPU/hour with the difference in GiB exported. For
-example, in one trial the OTel-Arrow Exporter used an average 77.0 vCPU and
+example, in one trial the OTel-Arrow exporter used an average 77.0 vCPU and
 exported at a rate of 107 GiB/hour. In a similar trial with a similar quantity
 of aggregate data, we observe the OTLP exporter used 53.7 vCPU and exported 143
 GiB/hour. In most cloud compute agreements, the cost of 23 vCPU/hour is
@@ -493,7 +493,7 @@ with Apache Arrow bridge will lower the total cost of telemetry transport.
 
 ## Summary
 
-We reported on the performance of a number of OTel-Arrow Exporter
+We reported on the performance of a number of OTel-Arrow exporter
 configurations, in each case offering substantial compression benefits compared
 with the OpenTelemetry OTLP encoding and without sacrificing reliability or
 scalability. Using ServiceNow Cloud Observability’s internal traces and logs
