@@ -46,7 +46,7 @@ and community-built SDKs for numerous runtime environments.
 Apache Arrow is by now a standard in the data processing industry for
 column-oriented data, popular for both interoperability and performance reasons.
 Here is how we use this exciting technology to form a compression bridge between
-OpenTelemetry collectors.
+OpenTelemetry Collectors.
 
 The compression bridge consists of two OpenTelemetry collectors labeled exporter
 and receiver, or they could equally be two pools of load-balanced collectors.
@@ -73,7 +73,7 @@ transmitting a sequence of Arrow record batches. Apache Arrow has an opinionated
 RPC framework of its own—Arrow Flight—however it was natural, for our purposes
 to leverage existing gRPC-configuration, services, authorization extensions, and
 instrumentation in the OpenTelemetry Collector by embedding Arrow IPC inside
-gRPC streams. This design lets us benefit from heavily-optimized Arrow IPC
+gRPC streams. This design lets us benefit from heavily optimized Arrow IPC
 functions that compress and encode repeated record batches while offering
 drop-in compatibility with OTLP/gRPC service configurations.
 
@@ -84,7 +84,7 @@ anticipate a number of future benefits that will come from using Arrow
 end-to-end in OpenTelemetry, from the SDKs to the processors, but that topic is
 for a future post.
 
-## Performance and Scalability
+## Performance and scalability
 
 Users and service providers can benefit from using OTel-Arrow exporter and
 receiver components as drop-in replacements for the OpenTelemetry Collector's
