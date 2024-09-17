@@ -20,8 +20,8 @@ OpenTelemetry Collector-Contrib releases. This is a case study of our experience
 deploying OpenTelemetry Collectors using OTel-Arrow components as the primary
 ingestion path for internal telemetry data at ServiceNow Cloud Observability.
 
-Since the project’s announcement, our collaboration with F5, Inc. has focused on
-making the exporter and receiver components into a reliable, high-performance
+Since the initial donation by F5, Inc. to the OpenTelemetry project, our efforts have focused on
+making the OTel-Arrow exporter and receiver components into a reliable, high-performance
 method for transporting bulk OpenTelemetry data across expensive network links.
 Using these components for our internal telemetry, we observe compression
 factors in the range of 15x to 30x of uncompressed size (15 to 30 times
