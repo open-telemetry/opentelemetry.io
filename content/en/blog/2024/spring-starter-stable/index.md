@@ -169,6 +169,8 @@ The OpenTelemetry Spring Boot starter sends the telemetry data with the [OpenTel
 
 We are going to add an [OpenTelemetry collector](https://opentelemetry.io/docs/collector/) and display the telemetry data in the collector logs.
 
+You can also use your favorite OTLP-compatible backend - we use collector logs for simplicity here.
+
 To do this, let's add the following `docker-compose-otel.yml` and `collector-spring-native-config.yaml` files in the `spring-petclinic` directory: 
 
 docker-compose-otel.yml
