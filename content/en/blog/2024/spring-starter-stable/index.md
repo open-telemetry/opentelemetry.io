@@ -246,7 +246,7 @@ Let's open the `http://localhost:8080/vets.html` in our web browser or execute t
 curl http://localhost:8080/vets.html
 ```
 
-If we look at the collector logs, we can see that one span has been created for the HTTP request with the trace id `16a0a5be5127309858c7c63a76b3f471`:
+If we look at the collector logs, we can see that one span has been created for the HTTP request with the Trace ID `16a0a5be5127309858c7c63a76b3f471` (it will be a different Trace ID in your case):
 
 ```
 collector-1  | InstrumentationScope io.opentelemetry.spring-webmvc-6.0 2.7.0-alpha
