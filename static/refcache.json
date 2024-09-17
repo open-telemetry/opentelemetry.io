@@ -11175,6 +11175,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:10:46.603367-05:00"
   },
+  "https://prometheus.io/docs/prometheus/latest/querying/basics/#staleness": {
+    "StatusCode": 206,
+    "LastSeen": "2024-09-16T13:42:13.99813+02:00"
+  },
   "https://prometheus.io/docs/specs/remote_write_spec_2_0/#io-prometheus-write-v2-request": {
     "StatusCode": 206,
     "LastSeen": "2024-09-04T09:48:44.106256+02:00"
