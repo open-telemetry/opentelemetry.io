@@ -23,18 +23,24 @@ By default, the Collector exposes its own telemetry in two ways:
 
 You can configure how internal metrics are generated and exposed by the
 Collector. By default, the Collector generates basic metrics about itself and
-exposes them for scraping at `http://127.0.0.1:8888/metrics`. You can expose the
-endpoint to one specific or all network interfaces when needed. For
-containerized environments, you might want to expose this port on a public
-interface.
+exposes them using the OpenTelemetry Go
+[Prometheus exporter](https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/prometheus)
+for scraping at `http://127.0.0.1:8888/metrics`. You can expose the endpoint to
+one specific or all network interfaces when needed. For containerized
+environments, you might want to expose this port on a public interface.
 
-Set the address in the config `service::telemetry::metrics`:
+Set the Prometheus config under `service::telemetry::metrics`:
 
 ```yaml
 service:
   telemetry:
     metrics:
-      address: 0.0.0.0:8888
+      readers:
+        pull:
+          exporter:
+            prometheus:
+              host: '0.0.0.0'
+              port: 8888
 ```
 
 You can adjust the verbosity of the Collector metrics output by setting the
@@ -59,30 +65,34 @@ service:
       level: detailed
 ```
 
-The Collector can also be configured to scrape its own metrics using a
-[Prometheus receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver)
-and send them through configured pipelines. For example:
+The Collector can also be configured to push its own metrics to an
+[OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
+and send them through configured pipelines. In the following example, the
+Collector is configured to push metrics every 10s using OTLP gRPC to
+`localhost:14317`:
 
 ```yaml
 receivers:
-  prometheus:
-    config:
-      scrape_configs:
-        - job_name: 'otelcol'
-          scrape_interval: 10s
-          static_configs:
-            - targets: ['0.0.0.0:8888']
-          metric_relabel_configs:
-            - source_labels: [__name__]
-              regex: '.*grpc_io.*'
-              action: drop
+  otlp/internal_metrics:
+    protocols:
+      grpc:
+        endpoint: localhost:14317
 exporters:
   debug:
 service:
   pipelines:
     metrics:
-      receivers: [prometheus]
+      receivers: [otlp/internal_metrics]
       exporters: [debug]
+  telemetry:
+    metrics:
+      readers:
+        - periodic:
+            interval: 10000
+            exporter:
+              otlp:
+                protocol: grpc/protobuf
+                endpoint: localhost:14317
 ```
 
 {{% alert title="Caution" color="warning" %}}
