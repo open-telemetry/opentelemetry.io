@@ -13,3 +13,4 @@ authors:
 urls:
   repo: https://github.com/signalfx/splunk-otel-go/tree/main/instrumentation/k8s.io/client-go/splunkclient-go
 createdAt: 2022-01-20
+isFirstParty: false

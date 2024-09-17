@@ -314,7 +314,8 @@ Properties for `otlp` span, metric, and log exporters:
 generic versions. For example, if you set both `otel.exporter.otlp.endpoint` and
 `otel.exporter.otlp.traces.endpoint`, the latter will take precedence.
 
-**[1]**: OpenTelemetry Java agent 2.x uses `http/protobuf` by default.
+**[1]**: OpenTelemetry Java agent 2.x and the OpenTelemetry Spring Boot starter
+use `http/protobuf` by default.
 
 **[2]**: [OTLP](/docs/specs/otlp/#otlpgrpc-response) requires
 [transient](/docs/specs/otel/protocol/exporter/#retry) errors to be handled with
