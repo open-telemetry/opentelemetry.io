@@ -250,7 +250,7 @@ curl http://localhost:8080/vets.html
 If we look at the collector logs, we can see that one span has been created for the HTTP request with the Trace ID `16a0a5be5127309858c7c63a76b3f471` (it will be a different Trace ID in your case):
 
 ```
-collector-1  | InstrumentationScope io.opentelemetry.spring-webmvc-6.0 2.7.0-alpha
+collector-1  | InstrumentationScope io.opentelemetry.spring-webmvc-6.0 2.8.0-alpha
 collector-1  | Span #0
 collector-1  |     Trace ID       : 16a0a5be5127309858c7c63a76b3f471
 collector-1  |     Parent ID      :
@@ -281,7 +281,7 @@ For the same Trace ID, we can notice telemetry data emitted by the database inst
 ```
 collector-1  | ScopeSpans #1
 collector-1  | ScopeSpans SchemaURL:
-collector-1  | InstrumentationScope io.opentelemetry.jdbc 2.7.0-alpha
+collector-1  | InstrumentationScope io.opentelemetry.jdbc 2.8.0-alpha
 collector-1  | Span #0
 collector-1  |     Trace ID       : 16a0a5be5127309858c7c63a76b3f471
 collector-1  |     Parent ID      : 280f551fe70df80b
@@ -424,7 +424,7 @@ curl http://localhost:8080/oups
 We can see a span related to the HTTP call, but also an `exception` span event attached to this span:
 
 ```
-collector-1  | InstrumentationScope io.opentelemetry.spring-webmvc-6.0 2.7.0-alpha
+collector-1  | InstrumentationScope io.opentelemetry.spring-webmvc-6.0 2.8.0-alpha
 collector-1  | Span #0
 collector-1  |     Trace ID       : 9e2b052cb84907fc3f648a4131638138
 collector-1  |     Parent ID      :
