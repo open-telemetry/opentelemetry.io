@@ -139,7 +139,7 @@ In the `pom.xml` file, let's add the OpenTelemetry instrumentation BOM:
         <dependency>
             <groupId>io.opentelemetry.instrumentation</groupId>
             <artifactId>opentelemetry-instrumentation-bom</artifactId>
-            <version>2.7.0</version>
+            <version>2.8.0</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>
