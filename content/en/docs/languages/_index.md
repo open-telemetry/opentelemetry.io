@@ -11,12 +11,12 @@ redirects: [{ from: /docs/instrumentation/*, to: ':splat' }]
 OpenTelemetry code [instrumentation][] is supported for the languages listed in
 the [Statuses and Releases](#status-and-releases) table below. Unofficial
 implementations for [other languages](/docs/languages/other) are available as
-well – you can find them in the
+well. You can find them in the
 [registry](http://localhost:1313/ecosystem/registry/).
 
 For Go, .NET, PHP, Python, Java and JavaScript you can use
 [zero-code solutions](/docs/zero-code) to add instrumentation to your
-application without cod changes.
+application without code changes.
 
 If you are using Kubernetes, you can use the [OpenTelemetry Operator for
 Kubernetes][otel-op] to [inject these zero-code solutions][zero-code] into your
@@ -41,18 +41,17 @@ specification], your data flow might be subject to **breaking changes**.
 
 {{% telemetry-support-table " " %}}
 
-## API References
+## API references
 
-Special Interest Groups (SIGs) implementing the OpenTelemetry API & SDK in a
-specific language, als publish API references for developers. The following
+Special Interest Groups (SIGs) implementing the OpenTelemetry API and SDK in a
+specific language also publish API references for developers. The following
 references are available:
 
 {{% apidocs %}}
 
 {{% alert title="Tip" color="info" %}}
 
-Remember <https://opentelemetry.io/api-docs> to always have the list of
-available API references at hand.
+You can find a list of available API references at <https://opentelemetry.io/api-docs>.
 
 {{% /alert %}}
 

@@ -19,7 +19,7 @@ SDK.
 ## Language APIs & SDKs
 
 For the development status, or maturity level, of a
-[language API and SDK](/docs/languages/), see the following table:
+[language API or SDK](/docs/languages/), see the following table:
 
 {{% telemetry-support-table " " %}}
 
