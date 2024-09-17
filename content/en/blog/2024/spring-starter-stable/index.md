@@ -239,7 +239,7 @@ We can spot one log record about the Spring PetClinic application startup:
 2024-09-16 14:19:11 collector-1  | Body: Str(Started PetClinicApplication in 0.489 seconds (process running for 0.493))
 ```
 
-The OpenTelemetry Spring Boot starter has instrumented Logbacka and has sent the 'Started PetClinicApplication in 0.489 seconds (process running for 0.493)' telemetry log record to the OpenTelemetry collector.
+The OpenTelemetry Spring Boot starter has instrumented Logback and has sent the 'Started PetClinicApplication in 0.489 seconds (process running for 0.493)' telemetry log record to the OpenTelemetry collector.
 
 Let's open the `http://localhost:8080/vets.html` in our web browser or execute the following curl command:
 ```shell
