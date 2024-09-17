@@ -30,8 +30,7 @@ The following example instruments an HTTP client application using library
 instrumentation which calls an HTTP server.
 
 You can use the dice example app as HTTP server from
-[Getting Started](/docs/languages/java/getting-started/) or you can create your
-own HTTP server.
+[Getting Started](../getting-started/) or you can create your own HTTP server.
 
 ### Dependencies
 
@@ -147,8 +146,7 @@ public final class SampleHttpClient {
 
 Set the `EXTERNAL_API_ENDPOINT` environment variable to specify the external API
 endpoint. By default, it points to `http://localhost:8080/rolldice`, where
-[example dice app](/docs/languages/java/getting-started/#example-application) is
-running.
+[example dice app](../getting-started/#example-application) is running.
 
 To check your code, run the app:
 
@@ -166,8 +164,8 @@ When you run the app, the instrumentation libraries do the following:
 - Start a new trace.
 - Generate a span that represents the request made to the external API endpoint.
 - If you use an instrumented HTTP server, as in the
-  [dice app](/docs/languages/java/getting-started/#example-application), more
-  trace spans are generated with the same trace ID.
+  [dice app](../getting-started/#example-application), more trace spans are
+  generated with the same trace ID.
 
 ## Available instrumentation libraries
 
@@ -177,12 +175,11 @@ For a full list of instrumentation libraries, see
 ## Next steps
 
 After you've set up instrumentation libraries, you might want to add
-[additional instrumentation](/docs/languages/java/instrumentation) to collect
-custom telemetry data.
+[additional instrumentation](../instrumentation) to collect custom telemetry
+data.
 
-You might also want to configure an appropriate exporter to
-[export your telemetry data](/docs/languages/java/exporters) to one or more
-telemetry backends.
+You might also want to [configure the SDK](../configuration/) to export to one
+or more telemetry backends.
 
 For existing library instrumentations, also see
 [Java agent](/docs/zero-code/java/agent/).
