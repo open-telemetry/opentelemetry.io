@@ -187,6 +187,18 @@ The following tables group each internal metric by level of verbosity: `basic`,
 `normal`, and `detailed`. Each metric is identified by name and description and
 categorized by instrumentation type.
 
+{{% alert title="Note" color="info" %}} As of Collector v0.106.1, internal
+metric names are handled differently based on their source:
+
+- Metrics generated from Collector components are prefixed with `otelcol_`.
+- Metrics generated from instrumentation libraries do not use the `otelcol_`
+  prefix by default, unless their metric names are explicitly prefixed.
+
+For Collector versions prior to v0.106.1, all internal metrics emitted using the
+Prometheus exporter, regardless of their origin, are prefixed with `otelcol_`.
+This includes metrics from both Collector components and instrumentation
+libraries. {{% /alert %}}
+
 <!---To compile this list, configure a Collector instance to emit its own metrics to the localhost:8888/metrics endpoint. Select a metric and grep for it in the Collector core repository. For example, the `otelcol_process_memory_rss` can be found using:`grep -Hrn "memory_rss" .` Make sure to eliminate from your search string any words that might be prefixes. Look through the results until you find the .go file that contains the list of metrics. In the case of `otelcol_process_memory_rss`, it and other process metrics can be found in https://github.com/open-telemetry/opentelemetry-collector/blob/31528ce81d44e9265e1a3bbbd27dc86d09ba1354/service/internal/proctelemetry/process_telemetry.go#L92. Note that the Collector's internal metrics are defined in several different files in the repository.--->
 
 #### `basic`-level metrics
@@ -283,7 +295,8 @@ own telemetry.
 
 #### Data loss
 
-Use the rate of `otelcol_processor_dropped_spans > 0` and
+Use the rate of `otelcol_processor_dropped_log_records > 0`,
+`otelcol_processor_dropped_spans > 0`, and
 `otelcol_processor_dropped_metric_points > 0` to detect data loss. Depending on
 your project's requirements, select a narrow time window before alerting begins
 to avoid notifications for small losses that are within the desired reliability
@@ -317,12 +330,13 @@ logs for messages such as `Dropping data because sending_queue is full`.
 
 #### Receive failures
 
-Sustained rates of `otelcol_receiver_refused_spans` and
-`otelcol_receiver_refused_metric_points` indicate that too many errors were
-returned to clients. Depending on the deployment and the clients' resilience,
-this might indicate clients' data loss.
+Sustained rates of `otelcol_receiver_refused_log_records`,
+`otelcol_receiver_refused_spans`, and `otelcol_receiver_refused_metric_points`
+indicate that too many errors were returned to clients. Depending on the
+deployment and the clients' resilience, this might indicate clients' data loss.
 
-Sustained rates of `otelcol_exporter_send_failed_spans` and
+Sustained rates of `otelcol_exporter_send_failed_log_records`,
+`otelcol_exporter_send_failed_spans`, and
 `otelcol_exporter_send_failed_metric_points` indicate that the Collector is not
 able to export data as expected. These metrics do not inherently imply data loss
 since there could be retries. But a high rate of failures could indicate issues
@@ -330,6 +344,8 @@ with the network or backend receiving the data.
 
 #### Data flow
 
-You can monitor data ingress with the `otelcol_receiver_accepted_spans` and
-`otelcol_receiver_accepted_metric_points` metrics and data egress with the
-`otelcol_exporter_sent_spans` and `otelcol_exporter_sent_metric_points` metrics.
+You can monitor data ingress with the `otelcol_receiver_accepted_log_records`,
+`otelcol_receiver_accepted_spans`, and `otelcol_receiver_accepted_metric_points`
+metrics and data egress with the `otelcol_exporter_sent_log_records`,
+`otelcol_exporter_sent_spans`, and `otelcol_exporter_sent_metric_points`
+metrics.

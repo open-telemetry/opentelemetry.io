@@ -15,6 +15,13 @@ cSpell:ignore: Autowired customizer logback loggable multivalued rolldice spring
 
 {{% docs/languages/instrumentation-intro %}}
 
+{{% alert title="Note" color="info" %}} See [Manage Telemetry with SDK](../sdk/)
+for a conceptual overview of OpenTelemetry Java SDK concepts. See
+**[Configure the SDK](../configuration/)** for details on SDK configuration,
+including
+[zero-code SDK autoconfigure](../configuration/#zero-code-sdk-autoconfigure).
+{{% /alert %}}
+
 {{% alert title="Note" color="info" %}}
 
 On this page you will learn how you can add traces, metrics and logs to your
@@ -27,16 +34,15 @@ skip manual instrumentation and only use automatic instrumentation.
 
 Also, for libraries your code depends on, you don't have to write
 instrumentation code yourself, since they might come with OpenTelemetry built-in
-_natively_ or you can make use of
-[instrumentation libraries](/docs/languages/java/libraries/).
+_natively_ or you can make use of [instrumentation libraries](../libraries/).
 
 {{% /alert %}}
 
 ## Example app preparation {#example-app}
 
 This page uses a modified version of the example app from
-[Getting Started](/docs/languages/java/getting-started/) to help you learn about
-manual instrumentation.
+[Getting Started](../getting-started/) to help you learn about manual
+instrumentation.
 
 You don't have to use the example app: if you want to instrument your own app or
 library, follow the instructions here to adapt the process to your own code.
@@ -266,310 +272,12 @@ dependencies {
 
 {{% /tab %}} {{% /tabpane %}}
 
-### Initialize the SDK
-
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library,
-**skip this step**. {{% /alert %}}
-
-The OpenTelemetry API provides a set of interfaces for collecting telemetry, but
-the data is dropped without an implementation. The OpenTelemetry SDK is the
-implementation of the OpenTelemetry API provided by OpenTelemetry. To use it if
-you instrument a Java app, begin by installing dependencies:
-
-{{< tabpane text=true >}} {{% tab Gradle %}}
-
-```kotlin { hl_lines="4-6" }
-dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web");
-    implementation("io.opentelemetry:opentelemetry-api");
-    implementation("io.opentelemetry:opentelemetry-sdk");
-    implementation("io.opentelemetry:opentelemetry-exporter-logging");
-    implementation("io.opentelemetry.semconv:opentelemetry-semconv:{{% param vers.semconv %}}-alpha");
-}
-```
-
-{{% /tab %}} {{% tab Maven %}}
-
-```xml
-<project>
-    <dependencies>
-        <dependency>
-            <groupId>io.opentelemetry</groupId>
-            <artifactId>opentelemetry-sdk</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.opentelemetry</groupId>
-            <artifactId>opentelemetry-exporter-logging</artifactId>
-        </dependency>
-        <dependency>
-            <!-- Not managed by opentelemetry-bom -->
-            <groupId>io.opentelemetry.semconv</groupId>
-            <artifactId>opentelemetry-semconv</artifactId>
-            <version>{{% param vers.semconv %}}-alpha</version>
-        </dependency>
-    </dependencies>
-</project>
-```
-
-{{% /tab %}} {{< /tabpane>}}
-
-If you are an application developer, you need to configure an instance of the
-`OpenTelemetrySdk` as early as possible in your application. This can either be
-done manually by using the `OpenTelemetrySdk.builder()` or by using the SDK
-autoconfiguration extension through the
-`opentelemetry-sdk-extension-autoconfigure` module. It is recommended to use
-autoconfiguration, as it is easier to use and comes with various additional
-capabilities.
-
-#### Automatic Configuration
-
-To use autoconfiguration add the following dependency to your application:
-
-{{< tabpane text=true >}} {{% tab Gradle %}}
-
-```kotlin { hl_lines="7" }
-dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web");
-    implementation("io.opentelemetry:opentelemetry-api");
-    implementation("io.opentelemetry:opentelemetry-sdk");
-    implementation("io.opentelemetry:opentelemetry-exporter-logging");
-    implementation("io.opentelemetry.semconv:opentelemetry-semconv:{{% param vers.semconv %}}-alpha");
-    implementation("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure");
-}
-```
-
-{{% /tab %}} {{% tab Maven %}}
-
-```xml
-<project>
-    <dependencies>
-        <dependency>
-          <groupId>io.opentelemetry</groupId>
-          <artifactId>opentelemetry-sdk-extension-autoconfigure</artifactId>
-        </dependency>
-        <dependency>
-          <groupId>io.opentelemetry</groupId>
-          <artifactId>opentelemetry-sdk-extension-autoconfigure-spi</artifactId>
-        </dependency>
-    </dependencies>
-</project>
-```
-
-{{% /tab %}} {{< /tabpane>}}
-
-It allows you to autoconfigure the OpenTelemetry SDK based on a standard set of
-supported environment variables and system properties. Each environment variable
-has a corresponding system property named the same way but as lower case and
-using the `.` (dot) character instead of the `_` (underscore) as separator.
-Reference the [configuration](/docs/languages/java/configuration/) page for
-details on all available options.
-
-The logical service name can be specified via the `OTEL_SERVICE_NAME`
-environment variable (or `otel.service.name` system property).
-
-The traces, metrics or logs exporters can be set via the `OTEL_TRACES_EXPORTER`,
-`OTEL_METRICS_EXPORTER` and `OTEL_LOGS_EXPORTER` environment variables. For
-example `OTEL_TRACES_EXPORTER=logging` configures your application to use an
-exporter that writes all traces to the console. The corresponding exporter
-library has to be provided in the classpath of the application as well.
-
-For debugging and local development purposes, use the `logging` exporter. After
-you have finished setting up manual instrumentation, provide an appropriate
-exporter library in the classpath of the application to
-[export the app's telemetry data](/docs/languages/java/exporters/) to one or
-more telemetry backends.
-
-The SDK autoconfiguration has to be initialized as early as possible in the
-application lifecycle in order to allow the module to go through the provided
-environment variables (or system properties) and set up the `OpenTelemetry`
-instance by using the builders internally.
-
-```java
-import io.opentelemetry.sdk.autoconfigure.AutoConfiguredOpenTelemetrySdk;
-
-OpenTelemetrySdk sdk = AutoConfiguredOpenTelemetrySdk.initialize()
-    .getOpenTelemetrySdk();
-```
-
-In the case of the [example app](#example-app) the `DiceApplication` class gets
-updated as follows:
-
-```java { hl_lines=["6-9","19-22"] }
-package otel;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.Banner;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
-import io.opentelemetry.api.OpenTelemetry;
-import io.opentelemetry.sdk.autoconfigure.AutoConfiguredOpenTelemetrySdk;
-
-@SpringBootApplication
-public class DiceApplication {
-  public static void main(String[] args) {
-    SpringApplication app = new SpringApplication(DiceApplication.class);
-    app.setBannerMode(Banner.Mode.OFF);
-    app.run(args);
-  }
-
-  @Bean
-  public OpenTelemetry openTelemetry() {
-    return AutoConfiguredOpenTelemetrySdk.initialize().getOpenTelemetrySdk();
-  }
-}
-```
-
-To verify your code, build and run the app:
-
-```sh
-gradle assemble
-env \
-OTEL_SERVICE_NAME=dice-server \
-OTEL_TRACES_EXPORTER=logging \
-OTEL_METRICS_EXPORTER=logging \
-OTEL_LOGS_EXPORTER=logging \
-OTEL_METRIC_EXPORT_INTERVAL=15000 \
-java -jar ./build/libs/java-simple.jar
-```
-
-This basic setup has no effect on your app yet. You need to add code for
-[traces](#traces), [metrics](#metrics), and/or [logs](#logs).
-
-Note that `OTEL_METRIC_EXPORT_INTERVAL=15000` (milliseconds) is a temporary
-setting to test that your metrics are properly generated. Remember to remove the
-setting once you are done testing. The default is 60000 milliseconds.
-
-#### Manual Configuration
-
-`OpenTelemetrySdk.builder()` returns an instance of `OpenTelemetrySdkBuilder`,
-which gets the providers related to the signals, tracing and metrics, in order
-to build the `OpenTelemetry` instance.
-
-You can build the providers by using the `SdkTracerProvider.builder()` and
-`SdkMeterProvider.builder()` methods.
-
-In the case of the [example app](#example-app) the `DiceApplication` class gets
-updated as follows:
-
-```java { hl_lines=["6-24","34-62"] }
-package otel;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.Banner;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
-import io.opentelemetry.api.OpenTelemetry;
-import io.opentelemetry.api.common.Attributes;
-import io.opentelemetry.context.propagation.TextMapPropagator;
-import io.opentelemetry.api.trace.propagation.W3CTraceContextPropagator;
-import io.opentelemetry.api.baggage.propagation.W3CBaggagePropagator;
-import io.opentelemetry.context.propagation.ContextPropagators;
-import io.opentelemetry.exporter.logging.LoggingMetricExporter;
-import io.opentelemetry.exporter.logging.LoggingSpanExporter;
-import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
-import io.opentelemetry.sdk.OpenTelemetrySdk;
-import io.opentelemetry.sdk.metrics.SdkMeterProvider;
-import io.opentelemetry.sdk.metrics.export.PeriodicMetricReader;
-import io.opentelemetry.sdk.resources.Resource;
-import io.opentelemetry.sdk.trace.SdkTracerProvider;
-import io.opentelemetry.sdk.trace.export.SimpleSpanProcessor;
-import io.opentelemetry.sdk.logs.SdkLoggerProvider;
-import io.opentelemetry.sdk.logs.export.BatchLogRecordProcessor;
-import io.opentelemetry.sdk.logs.export.LogRecordExporter;
-import io.opentelemetry.semconv.ResourceAttributes;
-
-@SpringBootApplication
-public class DiceApplication {
-  public static void main(String[] args) {
-    SpringApplication app = new SpringApplication(DiceApplication.class);
-    app.setBannerMode(Banner.Mode.OFF);
-    app.run(args);
-  }
-
-  @Bean
-  public OpenTelemetry openTelemetry() {
-    Resource resource = Resource.getDefault().toBuilder().put(ResourceAttributes.SERVICE_NAME, "dice-server").put(ResourceAttributes.SERVICE_VERSION, "0.1.0").build();
-
-    SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
-        .addSpanProcessor(SimpleSpanProcessor.create(LoggingSpanExporter.create()))
-        .setResource(resource)
-        .build();
-
-    SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
-        .registerMetricReader(PeriodicMetricReader.builder(LoggingMetricExporter.create()).build())
-        .setResource(resource)
-        .build();
-
-    SdkLoggerProvider sdkLoggerProvider = SdkLoggerProvider.builder()
-        .addLogRecordProcessor(BatchLogRecordProcessor.builder(SystemOutLogRecordExporter.create()).build())
-        .setResource(resource)
-        .build();
-
-    OpenTelemetry openTelemetry = OpenTelemetrySdk.builder()
-        .setTracerProvider(sdkTracerProvider)
-        .setMeterProvider(sdkMeterProvider)
-        .setLoggerProvider(sdkLoggerProvider)
-        .setPropagators(ContextPropagators.create(TextMapPropagator.composite(W3CTraceContextPropagator.getInstance(), W3CBaggagePropagator.getInstance())))
-        .buildAndRegisterGlobal();
-
-    return openTelemetry;
-  }
-}
-```
-
-For debugging and local development purposes, the example exports telemetry to
-the console. After you have finished setting up manual instrumentation, you need
-to configure an appropriate exporter to
-[export the app's telemetry data](/docs/languages/java/exporters/) to one or
-more telemetry backends.
-
-The example also sets up the mandatory SDK default attribute `service.name`,
-which holds the logical name of the service, and the optional (but highly
-encouraged!) attribute `service.version`, which holds the version of the service
-API or implementation.
-
-Alternative methods exist for setting up resource attributes. For more
-information, see [Resources](/docs/languages/java/resources/).
-
-To verify your code, build and run the app:
-
-```sh
-gradle assemble
-java -jar ./build/libs/java-simple.jar
-```
-
-This basic setup has no effect on your app yet. You need to add code for
-[traces](#traces), [metrics](#metrics), and/or [logs](#logs).
 
 ## Traces
 
-### Initialize Tracing
-
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library,
-**skip this step**. {{% /alert %}}
-
-To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need to
-have an initialized
-[`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider) that will let
-you create a [`Tracer`](/docs/concepts/signals/traces/#tracer):
-
-```java
-import io.opentelemetry.sdk.trace.SdkTracerProvider;
-
-SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
-  .addSpanProcessor(spanProcessor)
-  .setResource(resource)
-  .build();
-```
-
-If a `TracerProvider` is not created, the OpenTelemetry APIs for tracing will
-use a no-op implementation and fail to generate data.
-
-If you followed the instructions to [initialize the SDK](#initialize-the-sdk)
-above, you have a `TracerProvider` setup for you already. You can continue with
-[acquiring a tracer](#acquiring-a-tracer).
+The following sections describe the OpenTelemetry Java tracing API. See
+[SdkTracerProvider](../sdk/#sdktracerprovider) for an overview of trace SDK
+concepts and configuration.
 
 ### Acquiring a tracer
 
@@ -1205,41 +913,9 @@ Synchronous instruments record measurements as they happen. Asynchronous
 instruments register a callback, which is invoked once per collection, and which
 records measurements at that point in time.
 
-### Initialize Metrics
-
-{{% alert color="info" %}} If you’re instrumenting a library, skip this step.
-{{% /alert %}}
-
-To enable [metrics](/docs/concepts/signals/metrics/) in your app, you need to
-have an initialized
-[`MeterProvider`](/docs/concepts/signals/metrics/#meter-provider) that lets you
-create a [`Meter`](/docs/concepts/signals/metrics/#meter). If a `MeterProvider`
-is not created, the OpenTelemetry APIs for metrics use a no-op implementation
-and fail to generate data.
-
-If you followed the instructions to [initialize the SDK](#initialize-the-sdk)
-above, you have a `MeterProvider` setup for you already. You can continue with
-[acquiring a meter](#acquiring-a-meter).
-
-When creating a `MeterProvider` you can specify a [MetricReader](#metric-reader)
-and [MetricExporter](/docs/languages/java/exporters/). The
-`LoggingMetricExporter` is included in the `opentelemetry-exporter-logging`
-artifact that was added in the [Initialize the SDK](#initialize-the-sdk) step.
-
-```java
-SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
-    .registerMetricReader(
-        PeriodicMetricReader
-            .builder(LoggingMetricExporter.create())
-            // Default is 60000ms (60 seconds). Set to 10 seconds for demonstrative purposes only.
-            .setInterval(Duration.ofSeconds(10)).build())
-    .build();
-
-// Register MeterProvider with OpenTelemetry instance
-OpenTelemetry openTelemetry = OpenTelemetrySdk.builder()
-    .setMeterProvider(sdkMeterProvider)
-    .build();
-```
+The following sections describe the OpenTelemetry Java metrics API. See
+[SdkMeterProvider](../sdk/#sdkmeterprovider) for an overview of metrics SDK
+concepts and configuration.
 
 ### Acquiring a meter
 
@@ -1412,91 +1088,6 @@ Attributes attrs = Attributes.of(
 histogram.record(7, attrs);
 ```
 
-### Metric Views
-
-Views provide a mechanism for controlling how measurements are aggregated into
-metrics. They consist of an `InstrumentSelector` and a `View`. The instrument
-selector consists of a series of options for selecting which instruments the
-view applies to. Instruments can be selected by a combination of name, type,
-meter name, meter version, and meter schema URL. The view describes how
-measurement should be aggregated. The view can change the name, description, the
-aggregation, and define the set of attribute keys that should be retained.
-
-```java
-SdkMeterProvider meterProvider = SdkMeterProvider.builder()
-    .registerView(
-        InstrumentSelector.builder()
-            .setName("my-counter") // Select instrument(s) called "my-counter"
-            .build(),
-        View.builder()
-            .setName("new-counter-name") // Change the name to "new-counter-name"
-            .build())
-    .registerMetricReader(...)
-    .build();
-```
-
-Every instrument has a default view, which retains the original name,
-description, and attributes, and has a default aggregation that is based on the
-type of instrument. When a registered view matches an instrument, the default
-view is replaced by the registered view. Additional registered views that match
-the instrument are additive, and result in multiple exported metrics for the
-instrument.
-
-#### Selectors
-
-To instantiate a view, one must first select a target instrument. The following
-are valid selectors for metrics:
-
-- instrumentType
-- instrumentName
-- meterName
-- meterVersion
-- meterSchemaUrl
-
-Selecting by `instrumentName` (of type string) has support for wildcards, so you
-can select all instruments using `*` or select all instruments whose name starts
-with `http` by using `http*`.
-
-#### Examples
-
-Filter attributes on all metric types:
-
-```java
-SdkMeterProvider meterProvider = SdkMeterProvider.builder()
-    .registerView(
-        // apply the view to all instruments
-        InstrumentSelector.builder().setName("*").build(),
-        // only export the attribute 'environment'
-        View.builder().setAttributeFilter(Set.of("environment")).build())
-    .build();
-```
-
-Drop all instruments with the meter name "pubsub":
-
-```java
-SdkMeterProvider meterProvider = SdkMeterProvider.builder()
-    .registerView(
-        InstrumentSelector.builder().setMeterName("pubsub").build(),
-        View.builder().setAggregation(Aggregation.drop()).build())
-    .build();
-```
-
-Define explicit bucket sizes for the Histogram named
-`http.server.request.duration`:
-
-```java
-SdkMeterProvider meterProvider = SdkMeterProvider.builder()
-    .registerView(
-        InstrumentSelector.builder().setName("http.server.request.duration").build(),
-        View.builder()
-            .setAggregation(
-                Aggregation.explicitBucketHistogram(
-                    List.of(0.0, 1.0, 5.0, 10.0, 20.0, 25.0, 30.0)
-                )
-            ).build()
-    ).build();
-```
-
 ## Logs
 
 Logs are distinct from metrics and traces in that **there is no user-facing
@@ -1521,15 +1112,16 @@ suitable for all applications.
 To use this workflow:
 
 - Install appropriate [Log Appender](#log-appenders).
-- Configure the OpenTelemetry [Log SDK](#logs-sdk) to export log records to
-  desired target destination (the [collector][opentelemetry collector] or
-  other).
+- Configure the OpenTelemetry [Log SDK](../sdk/#sdkloggerprovider) to export log
+  records to desired target destination (the
+  [collector][opentelemetry collector] or other).
 
 #### Log appenders
 
 A log appender bridges logs from a log framework into the OpenTelemetry
-[Log SDK](#logs-sdk) using the [Logs Bridge API][logs bridge API]. Log appenders
-are available for various popular Java log frameworks:
+[Log SDK](../sdk/#sdkloggerprovider) using the [Logs Bridge
+API][logs bridge API]. Log appenders are available for various popular Java log
+frameworks:
 
 - [Log4j2 Appender][log4j2 appender]
 - [Logback Appender][logback appender]
@@ -1551,6 +1143,9 @@ log correlation with traces.
 
 The [Log Appender example][log appender example] demonstrates setup for a
 variety of scenarios.
+
+See [SdkLoggerProvider](../sdk/#sdkloggerprovider) for an overview of log SDK
+concepts and configuration.
 
 ### Via file or stdout
 
@@ -1583,348 +1178,6 @@ installation is generally as follows:
 - Extend the application's log configuration (i.e. `logback.xml` or `log4j.xml`,
   etc) to reference the trace context fields in the log pattern.
 
-## SDK Configuration
-
-The configuration examples reported in this document only apply to the SDK
-provided by `opentelemetry-sdk`. Other implementation of the API might provide
-different configuration mechanisms.
-
-### Tracing SDK
-
-The application has to install a span processor with an exporter and may
-customize the behavior of the OpenTelemetry SDK.
-
-For example, a basic configuration instantiates the SDK tracer provider and sets
-to export the traces to a logging stream.
-
-```java
-SdkTracerProvider tracerProvider = SdkTracerProvider.builder()
-  .addSpanProcessor(BatchSpanProcessor.builder(LoggingSpanExporter.create()).build())
-  .build();
-```
-
-#### Sampler
-
-It is not always feasible to trace and export every user request in an
-application. In order to strike a balance between observability and expenses,
-traces can be sampled.
-
-The OpenTelemetry SDK offers four samplers out of the box:
-
-- [AlwaysOnSampler] which samples every trace regardless of upstream sampling
-  decisions.
-- [AlwaysOffSampler] which doesn't sample any trace, regardless of upstream
-  sampling decisions.
-- [ParentBased] which uses the parent span to make sampling decisions, if
-  present.
-- [TraceIdRatioBased] which samples a configurable percentage of traces, and
-  additionally samples any trace that was sampled upstream.
-
-Additional samplers can be provided by implementing the
-`io.opentelemetry.sdk.trace.Sampler` interface.
-
-```java
-SdkTracerProvider tracerProvider = SdkTracerProvider.builder()
-  .setSampler(Sampler.alwaysOn())
-  //or
-  .setSampler(Sampler.alwaysOff())
-  //or
-  .setSampler(Sampler.traceIdRatioBased(0.5))
-  .build();
-```
-
-#### Span Processor
-
-Different Span processors are offered by OpenTelemetry. The
-`SimpleSpanProcessor` immediately forwards ended spans to the exporter, while
-the `BatchSpanProcessor` batches them and sends them in bulk. Multiple Span
-processors can be configured to be active at the same time using the
-`MultiSpanProcessor`.
-
-```java
-SdkTracerProvider tracerProvider = SdkTracerProvider.builder()
-  .addSpanProcessor(SimpleSpanProcessor.create(LoggingSpanExporter.create()))
-  .addSpanProcessor(BatchSpanProcessor.builder(LoggingSpanExporter.create()).build())
-  .build();
-```
-
-#### Exporter
-
-Span processors are initialized with an exporter which is responsible for
-sending the telemetry data a particular backend. OpenTelemetry offers five
-exporters out of the box:
-
-- `InMemorySpanExporter`: keeps the data in memory, useful for testing and
-  debugging.
-- Jaeger Exporter: prepares and sends the collected telemetry data to a Jaeger
-  backend via gRPC. Varieties include `JaegerGrpcSpanExporter` and
-  `JaegerThriftSpanExporter`.
-- `ZipkinSpanExporter`: prepares and sends the collected telemetry data to a
-  Zipkin backend via the Zipkin APIs.
-- Logging Exporter: saves the telemetry data into log streams. Varieties include
-  `LoggingSpanExporter` and `OtlpJsonLoggingSpanExporter`.
-- OpenTelemetry Protocol Exporter: sends the data in OTLP to the [OpenTelemetry
-  Collector] or other OTLP receivers. Varieties include `OtlpGrpcSpanExporter` and
-  `OtlpHttpSpanExporter`.
-
-Other exporters can be found in the [OpenTelemetry Registry].
-
-```java
-ManagedChannel jaegerChannel = ManagedChannelBuilder.forAddress("localhost", 3336)
-  .usePlaintext()
-  .build();
-
-JaegerGrpcSpanExporter jaegerExporter = JaegerGrpcSpanExporter.builder()
-  .setEndpoint("localhost:3336")
-  .setTimeout(30, TimeUnit.SECONDS)
-  .build();
-
-SdkTracerProvider tracerProvider = SdkTracerProvider.builder()
-  .addSpanProcessor(BatchSpanProcessor.builder(jaegerExporter).build())
-  .build();
-```
-
-### Metrics SDK
-
-The application has to install a metric reader with an exporter, and may further
-customize the behavior of the OpenTelemetry SDK.
-
-For example, a basic configuration instantiates the SDK meter provider and sets
-to export the metrics to a logging stream.
-
-```java
-SdkMeterProvider meterProvider = SdkMeterProvider.builder()
-  .registerMetricReader(PeriodicMetricReader.builder(LoggingMetricExporter.create()).build())
-  .build();
-```
-
-#### Metric Reader
-
-Metric readers read aggregated metrics.
-
-```java
-SdkMeterProvider meterProvider = SdkMeterProvider.builder()
-  .registerMetricReader(...)
-  .build();
-```
-
-OpenTelemetry provides a variety of metric readers out of the box:
-
-- `PeriodicMetricReader`: reads metrics on a configurable interval and pushes to
-  a `MetricExporter`.
-- `InMemoryMetricReader`: reads metrics into memory, useful for debugging and
-  testing.
-- `PrometheusHttpServer` (alpha): an HTTP server that reads metrics and
-  serializes to Prometheus text format.
-
-Custom metric reader implementations are not currently supported.
-
-#### Exporter
-
-The `PeriodicMetricReader` is paired with a metric exporter, which is
-responsible for sending the telemetry data to a particular backend.
-OpenTelemetry provides the following exporters out of the box:
-
-- `InMemoryMetricExporter`: keeps the data in memory, useful for testing and
-  debugging.
-- Logging Exporter: saves the telemetry data into log streams. Varieties include
-  `LoggingMetricExporter` and `OtlpJsonLoggingMetricExporter`.
-- OpenTelemetry Protocol Exporter: sends the data in OTLP to the [OpenTelemetry
-  Collector] or other OTLP receivers. Varieties include `OtlpGrpcMetricExporter`
-  and `OtlpHttpMetricExporter`.
-
-Other exporters can be found in the [OpenTelemetry Registry].
-
-### Logs SDK
-
-The logs SDK dictates how logs are processed when using the
-[direct to collector](#direct-to-collector) workflow. No log SDK is needed when
-using the [log forwarding](#via-file-or-stdout) workflow.
-
-The typical log SDK configuration installs a log record processor and exporter.
-For example, the following installs the
-[BatchLogRecordProcessor](#logrecord-processor), which periodically exports to a
-network location via the [OtlpGrpcLogRecordExporter](#logrecord-exporter):
-
-```java
-SdkLoggerProvider loggerProvider = SdkLoggerProvider.builder()
-  .addLogRecordProcessor(
-    BatchLogRecordProcessor.builder(
-      OtlpGrpcLogRecordExporter.builder()
-          .setEndpoint("http://localhost:4317")
-          .build())
-      .build())
-  .build();
-```
-
-#### LogRecord Processor
-
-LogRecord processors process LogRecords emitted by
-[log appenders](#log-appenders).
-
-OpenTelemetry provides the following LogRecord processors out of the box:
-
-- `BatchLogRecordProcessor`: periodically sends batches of LogRecords to a
-  [LogRecordExporter](#logrecord-exporter).
-- `SimpleLogRecordProcessor`: immediately sends each LogRecord to a
-  [LogRecordExporter](#logrecord-exporter).
-
-Custom LogRecord processors are supported by implementing the
-`LogRecordProcessor` interface. Common use cases include enriching the
-LogRecords with contextual data like baggage, or filtering / obfuscating
-sensitive data.
-
-#### LogRecord Exporter
-
-`BatchLogRecordProcessor` and `SimpleLogRecordProcessor` are paired with
-`LogRecordExporter`, which is responsible for sending telemetry data to a
-particular backend. OpenTelemetry provides the following exporters out of the
-box:
-
-- OpenTelemetry Protocol Exporter: sends the data in OTLP to the [OpenTelemetry
-  Collector] or other OTLP receivers. Varieties include `OtlpGrpcLogRecordExporter`
-  and `OtlpHttpLogRecordExporter`.
-- `InMemoryLogRecordExporter`: keeps the data in memory, useful for testing and
-  debugging.
-- Logging Exporter: saves the telemetry data into log streams. Varieties include
-  `SystemOutLogRecordExporter` and `OtlpJsonLoggingLogRecordExporter`. Note:
-  `OtlpJsonLoggingLogRecordExporter` logs to JUL, and may cause infinite loops
-  (i.e. JUL -> SLF4J -> Logback -> OpenTelemetry Appender -> OpenTelemetry Log
-  SDK -> JUL) if not carefully configured.
-
-Custom exporters are supported by implementing the `LogRecordExporter`
-interface.
-
-### Autoconfiguration
-
-Instead of manually creating the `OpenTelemetry` instance by using the SDK
-builders directly from your code, it is also possible to use the SDK
-autoconfiguration extension through the
-`opentelemetry-sdk-extension-autoconfigure` module.
-
-This module is made available by adding the following dependency to your
-application.
-
-```xml
-<dependency>
-    <groupId>io.opentelemetry</groupId>
-    <artifactId>opentelemetry-sdk-extension-autoconfigure</artifactId>
-</dependency>
-```
-
-It allows you to autoconfigure the OpenTelemetry SDK based on a standard set of
-supported environment variables and system properties. Each environment variable
-has a corresponding system property named the same way but as lower case and
-using the `.` (dot) character instead of the `_` (underscore) as separator.
-
-The logical service name can be specified via the `OTEL_SERVICE_NAME`
-environment variable (or `otel.service.name` system property).
-
-The traces, metrics or logs exporters can be set via the `OTEL_TRACES_EXPORTER`,
-`OTEL_METRICS_EXPORTER` and `OTEL_LOGS_EXPORTER` environment variables. For
-example `OTEL_TRACES_EXPORTER=jaeger` configures your application to use the
-Jaeger exporter. The corresponding Jaeger exporter library has to be provided in
-the classpath of the application as well.
-
-If you use the `console` or `logging` exporter for metrics, consider temporarily
-setting `OTEL_METRIC_EXPORT_INTERVAL` to a small value like `15000`
-(milliseconds) while testing that your metrics are properly recorded. Remember
-to remove the setting once you are done testing.
-
-It's also possible to set up the propagators via the `OTEL_PROPAGATORS`
-environment variable, like for example using the `tracecontext` value to use
-[W3C Trace Context](https://www.w3.org/TR/trace-context/).
-
-For more details, see all the supported configuration options in the module's
-[README](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure).
-
-The SDK autoconfiguration has to be initialized from your code in order to allow
-the module to go through the provided environment variables (or system
-properties) and set up the `OpenTelemetry` instance by using the builders
-internally.
-
-```java
-OpenTelemetrySdk sdk = AutoConfiguredOpenTelemetrySdk.initialize()
-    .getOpenTelemetrySdk();
-```
-
-When environment variables or system properties are not sufficient, you can use
-some extension points provided through the autoconfigure
-[SPI](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure-spi)
-and several methods in the `AutoConfiguredOpenTelemetrySdk` class.
-
-Following an example with a code snippet for adding an additional custom span
-processor.
-
-```java
-AutoConfiguredOpenTelemetrySdk.builder()
-        .addTracerProviderCustomizer(
-            (sdkTracerProviderBuilder, configProperties) ->
-                sdkTracerProviderBuilder.addSpanProcessor(
-                    new SpanProcessor() { /* implementation omitted for brevity */ }))
-        .build();
-```
-
-## SDK Logging and Error Handling
-
-OpenTelemetry uses
-[java.util.logging](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html)
-to log information about OpenTelemetry, including errors and warnings about
-misconfigurations or failures exporting data.
-
-By default, log messages are handled by the root handler in your application. If
-you have not installed a custom root handler for your application, logs of level
-`INFO` or higher are sent to the console by default.
-
-You may want to change the behavior of the logger for OpenTelemetry. For
-example, you can reduce the logging level to output additional information when
-debugging, increase the level for a particular class to ignore errors coming
-from that class, or install a custom handler or filter to run custom code
-whenever OpenTelemetry logs a particular message.
-
-### Examples
-
-```properties
-## Turn off all OpenTelemetry logging
-io.opentelemetry.level = OFF
-```
-
-```properties
-## Turn off logging for just the BatchSpanProcessor
-io.opentelemetry.sdk.trace.export.BatchSpanProcessor.level = OFF
-```
-
-```properties
-## Log "FINE" messages for help in debugging
-io.opentelemetry.level = FINE
-
-## Sets the default ConsoleHandler's logger's level
-## Note this impacts the logging outside of OpenTelemetry as well
-java.util.logging.ConsoleHandler.level = FINE
-```
-
-For more fine-grained control and special case handling, custom handlers and
-filters can be specified with code.
-
-```java
-// Custom filter which does not log errors that come from the export
-public class IgnoreExportErrorsFilter implements Filter {
-
- public boolean isLoggable(LogRecord record) {
-    return !record.getMessage().contains("Exception thrown by the export");
- }
-}
-```
-
-```properties
-## Registering the custom filter on the BatchSpanProcessor
-io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extension.logging.IgnoreExportErrorsFilter
-```
-
-[alwaysoffsampler]:
-  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOffSampler.java
-[alwaysonsampler]:
-  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOnSampler.java
 [httpexchange]:
   https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html
 [java-vers]:
@@ -1946,10 +1199,5 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 [obtaining a tracer]: /docs/specs/otel/trace/api/#get-a-tracer
 [opentelemetry collector]:
   https://github.com/open-telemetry/opentelemetry-collector
-[opentelemetry registry]: /ecosystem/registry/?component=exporter&language=java
-[parentbased]:
-  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
-[traceidratiobased]:
-  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java
 [Java agent]: /docs/zero-code/java/agent/
 [Spring Boot starter]: /docs/zero-code/java/spring-boot-starter/
