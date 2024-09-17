@@ -272,7 +272,6 @@ dependencies {
 
 {{% /tab %}} {{% /tabpane %}}
 
-
 ## Traces
 
 The following sections describe the OpenTelemetry Java tracing API. See
