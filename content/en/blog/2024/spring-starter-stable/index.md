@@ -275,7 +275,7 @@ collector-1  |      -> http.request.method: Str(GET)
 collector-1  |      -> url.scheme: Str(http)
 ```
 
-For the same trace id, we can notice telemetry date emitted by the database instrumentation:
+For the same Trace ID, we can notice telemetry data emitted by the database instrumentation:
 
 ```
 collector-1  | ScopeSpans #1
