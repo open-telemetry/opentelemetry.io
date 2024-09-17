@@ -12,6 +12,7 @@ description: Instrumentation for the Golang `database/sql` package.
 authors:
   - name: Sam Xie
     url: https://github.com/XSAM
+isFirstParty: false
 package:
   name: github.com/XSAM/otelsql
   registry: go
