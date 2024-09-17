@@ -14,8 +14,8 @@ sig: OpenTelemetry Arrow
 
 ## OpenTelemetry Protocol with Apache Arrow in production
 
-The OpenTelemetry Protocol with Apache Arrow (OTel-Arrow) project's exporter and
-receiver components for the OpenTelemetry Collector are now included in
+The OpenTelemetry Protocol with Apache Arrow (OTel-Arrow) project's [exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/otelarrowexporter) and
+[receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/otelarrowreceiver) components for the OpenTelemetry Collector are now included in
 OpenTelemetry Collector-Contrib releases. This is a case study of our experience
 deploying OpenTelemetry Collectors using OTel-Arrow components as the primary
 ingestion path for internal telemetry data at ServiceNow Cloud Observability.
@@ -38,7 +38,7 @@ ready for general use.
 
 ## Exporter and receiver components
 
-Apache Arrow is a great technical dependency for OpenTelemetry because these
+[Apache Arrow](https://arrow.apache.org/) is a great technical dependency for OpenTelemetry because these
 projects have many aspects in common. Like OpenTelemetry, Apache Arrow features
 a shared data specification, a transport protocol, a cross-language API
 specification, and community-built SDKs for numerous runtime environments.
@@ -288,12 +288,12 @@ export method using the following query:
 
 ```text
 with
-	uncompressed = metric otelcol_exporter_sent
-		| rate
-		| group_by ["method"], sum;
-	compressed = metric otelcol_exporter_sent_wire
-		| rate
-		| group_by ["method"], sum;
+    uncompressed = metric otelcol_exporter_sent
+        | rate
+        | group_by ["method"], sum;
+    compressed = metric otelcol_exporter_sent_wire
+        | rate
+        | group_by ["method"], sum;
 join uncompressed / compressed
 ```
 
