@@ -174,7 +174,7 @@ requirements.
 
 The second limit governs the amount of data admitted into the pipeline and
 covers both OTLP and OTel-Arrow data paths. When this limit is reached,
-individual requests or streams will either block or fail immediately, determined
+individual requests or streams either block or fail immediately, determined
 by a limit on the number of concurrent waiters. Admission limits protect
 receivers from running out of memory due to pipeline stalls.
 
@@ -188,7 +188,7 @@ When load on an individual receiver becomes too great, we recommend use of an
 external HTTP/2 load balancer, in order to place limits on connection count,
 stream count, and connection lifetimes.
 
-As an example configuration:
+An example configuration:
 
 ```yaml
 receivers:
@@ -212,7 +212,7 @@ Collector users have several options for batching available to them, which are
 connected to other factors, including the available options for concurrency,
 queuing, and persistence.
 
-For a gateway collector, receiving data from other sources and exporting through
+For a gateway collector receiving data from other sources and exporting through
 an OTel-Arrow exporter, we recommend a fully synchronous request path, where
 callers wait for the pipeline to acknowledge their request before they let go of
 the original data. This way, when an individual stream is saturated, latency and
@@ -223,7 +223,7 @@ giving them an opportunity to retry on another connection, and it gives the
 service operator a chance to auto-scale the number of instances to handle the
 increase in load based on memory utilization.
 
-Refer to the [documentation on batching and
+See the [documentation on batching and
 back-pressure](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/otelarrowexporter/README.md#batching-configuration)
 for the OTel-Arrow exporter.
 
@@ -249,14 +249,14 @@ processor described above, followed by the OTel-Arrow exporter.
 
 On the other side of the bridge, a pool of Envoy load balancers distributes the
 streams across a pool of collectors running the OTel-Arrow receiver, after
-terminating TLS. We use a round-robin configuration for Envoy, because we found
+terminating TLS. We use a round-robin configuration for Envoy because we found
 it performs better than the least-loaded policy for balancing long-lived
 streams. We configure both Envoy and the OTel-Arrow receiver’s HTTP/2
 max_concurrent_streams setting to 1 to improve load balance.
 
 The pipeline is fully synchronous, with the originating OTel SDKs and all the
 intermediate pipeline stages waiting for the backend to respond to every
-request. Neither pool of collectors is configured to retry, we configure the
+request. Neither pool of collectors is configured to retry. We configure the
 OpenTelemetry SDKs to retry instead.
 
 ### Experimental method
@@ -337,7 +337,7 @@ Compression reduction factors observed by the OTel-Arrow exporter are typically
 1% greater than what the receiver observes, because while they observe the same
 compressed data, uncompressed size is different on each side of the bridge due
 to de-duplication within the hierarchy of OTLP Resource and Scope values. For
-example, in the 1 minute lifetime test where exporter reduced the data by a
+example, in the 1 minute lifetime test where the exporter reduced the data by a
 factor of 16.9, the receiver expanded the data by a factor of only 16.8 due to
 the change in uncompressed size.
 
@@ -359,7 +359,7 @@ bandwidth by approximately 30%.
 | 2000–2500                                   | 17.2                                         | 12.0                                   |
 | 4000–5000                                   | 17.7                                         | 12.2                                   |
 
-### Experiment: Differential cost comparison with OTLP
+### Experiment: differential cost comparison with OTLP
 
 One of our hypotheses at the start of the project was that the compression
 benefit for users sending bulk telemetry data would outweigh the cost of
