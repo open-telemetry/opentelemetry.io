@@ -20,17 +20,20 @@ OpenTelemetry Collector-Contrib releases. This is a case study of our experience
 deploying OpenTelemetry Collectors using OTel-Arrow components as the primary
 ingestion path for internal telemetry data at ServiceNow Cloud Observability.
 
-Since the initial donation by F5, Inc. to the OpenTelemetry project, our efforts have focused on
-making the OTel-Arrow exporter and receiver components into a reliable, high-performance
-method for transporting bulk OpenTelemetry data across expensive network links.
-Using these components for our internal telemetry, we observe compression
-factors in the range of 15x to 30x of uncompressed size (15 to 30 times
-smaller). In a side-by-side comparison between OpenTelemetry Protocol (“OTLP”)
-and OpenTelemetry Protocol with Apache Arrow for similarly configured traces
-pipelines, we observe 30% improvement in compression. Although this study
-specifically focused on traces data, we have observed results for logs and
-metrics signals in production settings too, where OTel-Arrow users can expect
-50% to 70% improvement relative to OTLP for similar pipeline configurations.
+Since F5, Inc.’s initial contribution to the OpenTelemetry project,
+community members, including those from F5, have been collaboratively
+working to transform the OTel-Arrow exporter and receiver components
+into a reliable, high-performance solution for transporting bulk
+OpenTelemetry data across costly network links in real production
+environments.  Using these components for our internal telemetry, we
+observe compression factors in the range of 15x to 30x of uncompressed
+size (15 to 30 times smaller). In a side-by-side comparison between
+OpenTelemetry Protocol (“OTLP”) and OpenTelemetry Protocol with Apache
+Arrow for similarly configured traces pipelines, we observe 30%
+improvement in compression. Although this study specifically focused
+on traces data, we have observed results for logs and metrics signals
+in production settings too, where OTel-Arrow users can expect 50% to
+70% improvement relative to OTLP for similar pipeline configurations.
 
 With our previous experimental results now validated in production, the
 OpenTelemetry Protocol with Apache Arrow exporter and receiver are considered
