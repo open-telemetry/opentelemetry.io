@@ -11175,6 +11175,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:10:46.603367-05:00"
   },
+  "https://prometheus.io/docs/prometheus/latest/querying/basics/#staleness": {
+    "StatusCode": 206,
+    "LastSeen": "2024-09-16T13:42:13.99813+02:00"
+  },
   "https://prometheus.io/docs/specs/remote_write_spec_2_0/#io-prometheus-write-v2-request": {
     "StatusCode": 206,
     "LastSeen": "2024-09-04T09:48:44.106256+02:00"
@@ -12610,6 +12614,114 @@
   "https://www.java.com/en/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:55:46.525923-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/OpenTelemetry.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:19:48.24217-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/logs/LoggerProvider.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:59:36.584528-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/MeterProvider.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:59:35.353354-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/TracerProvider.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:19:51.603241-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/propagation/TextMapPropagator.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:20:15.97313-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-common/latest/io/opentelemetry/sdk/resources/Resource.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:19:48.789766-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/AutoConfigurationCustomizerProvider.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:19:47.350858-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/ConfigurablePropagatorProvider.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:19:52.021638-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/ResourceProvider.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:19:46.613025-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/logs/ConfigurableLogRecordExporterProvider.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:19:49.681449-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/metrics/ConfigurableMetricExporterProvider.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:19:49.282113-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/traces/ConfigurableSamplerProvider.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:19:50.375824-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/traces/ConfigurableSpanExporterProvider.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:19:48.764972-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/LogLimits.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:20:13.206672-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/LogRecordProcessor.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:20:10.807547-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/SdkLoggerProvider.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:20:11.11031-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/export/LogRecordExporter.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:20:12.3063-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/SdkMeterProvider.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:20:03.650649-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/View.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:20:09.004763-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/export/MetricExporter.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:20:07.498447-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/export/MetricReader.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:20:07.128256-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/SdkTracerProvider.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:19:51.223697-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/SpanLimits.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:20:00.974651-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/SpanProcessor.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:19:56.651306-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/export/SpanExporter.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:19:59.28131-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/samplers/Sampler.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:19:52.123293-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk/latest/io/opentelemetry/sdk/OpenTelemetrySdk.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-05T15:19:47.672179-05:00"
   },
   "https://www.jenkins.io": {
     "StatusCode": 206,

@@ -7,8 +7,9 @@ aliases: [/java, /java/metrics, /java/tracing]
 cascade:
   vers:
     instrumentation: 2.7.0
-    otel: 1.41.0
-    semconv: 1.26.0
+    otel: 1.42.1
+    contrib: 1.38.0
+    semconv: 1.27.0
 weight: 18
 default_lang_commit: 20c51c53
 ---
