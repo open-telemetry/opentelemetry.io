@@ -413,4 +413,8 @@ libraries.
 
 More than that, we have shown that an OTel-Arrow bridge will lower overall
 telemetry costs today. The OpenTelemetry Protocol with Apache Arrow is ready for
-production use.
+production use. We invite users and telemetry systems to adopt OpenTelemetry
+Protocol with Apache Arrow components for lower-cost telemetry transport. If you
+find this interesting and want to see more integration between OpenTelemetry and
+Apache Arrow, please join our community or post an issue in our
+[project repository](https://github.com/open-telemetry/otel-arrow).
