@@ -16,3 +16,4 @@ authors:
 urls:
   repo: https://github.com/udhos/opentelemetry-trace-sqs
 createdAt: 2023-10-25
+isFirstParty: false

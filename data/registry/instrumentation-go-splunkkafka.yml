@@ -17,3 +17,4 @@ authors:
 urls:
   repo: https://github.com/signalfx/splunk-otel-go/tree/main/instrumentation/github.com/confluentinc/confluent-kafka-go/kafka/splunkkafka
 createdAt: 2022-01-20
+isFirstParty: false
