@@ -12,27 +12,28 @@ issue: 5193
 sig: OpenTelemetry Arrow
 ---
 
+The OpenTelemetry Protocol with Apache Arrow (OTel-Arrow) project's
+[exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/otelarrowexporter)
+and
+[receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/otelarrowreceiver)
+components for the OpenTelemetry Collector are now included in OpenTelemetry
+Collector-Contrib releases. This is a case study of our experience deploying
+OpenTelemetry Collectors using OTel-Arrow components as the primary ingestion
+path for internal telemetry data at ServiceNow Cloud Observability.
 
-The OpenTelemetry Protocol with Apache Arrow (OTel-Arrow) project's [exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/otelarrowexporter) and
-[receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/otelarrowreceiver) components for the OpenTelemetry Collector are now included in
-OpenTelemetry Collector-Contrib releases. This is a case study of our experience
-deploying OpenTelemetry Collectors using OTel-Arrow components as the primary
-ingestion path for internal telemetry data at ServiceNow Cloud Observability.
-
-Since F5, Inc.’s initial contribution to the OpenTelemetry project,
-community members, including those from F5, have been collaboratively
-working to transform the OTel-Arrow exporter and receiver components
-into a reliable, high-performance solution for transporting bulk
-OpenTelemetry data across costly network links in real production
-environments.  Using these components for our internal telemetry, we
-observe compression factors in the range of 15x to 30x of uncompressed
-size (15 to 30 times smaller). In a side-by-side comparison between
-OpenTelemetry Protocol (“OTLP”) and OpenTelemetry Protocol with Apache
-Arrow for similarly configured traces pipelines, we observe 30%
-improvement in compression. Although this study specifically focused
-on traces data, we have observed results for logs and metrics signals
-in production settings too, where OTel-Arrow users can expect 50% to
-70% improvement relative to OTLP for similar pipeline configurations.
+Since F5, Inc.’s initial contribution to the OpenTelemetry project, community
+members, including those from F5, have been collaboratively working to transform
+the OTel-Arrow exporter and receiver components into a reliable,
+high-performance solution for transporting bulk OpenTelemetry data across costly
+network links in real production environments. Using these components for our
+internal telemetry, we observe compression factors in the range of 15x to 30x of
+uncompressed size (15 to 30 times smaller). In a side-by-side comparison between
+OpenTelemetry Protocol (“OTLP”) and OpenTelemetry Protocol with Apache Arrow for
+similarly configured traces pipelines, we observe 30% improvement in
+compression. Although this study specifically focused on traces data, we have
+observed results for logs and metrics signals in production settings too, where
+OTel-Arrow users can expect 50% to 70% improvement relative to OTLP for similar
+pipeline configurations.
 
 With our previous experimental results now validated in production, the
 OpenTelemetry Protocol with Apache Arrow exporter and receiver are considered
@@ -40,10 +41,11 @@ ready for general use.
 
 ## Exporter and receiver components
 
-[Apache Arrow](https://arrow.apache.org/) is a great technical dependency for OpenTelemetry because these
-projects have many aspects in common. Like OpenTelemetry, Apache Arrow features
-a shared data specification, a transport protocol, a cross-language API
-specification, and community-built SDKs for numerous runtime environments.
+[Apache Arrow](https://arrow.apache.org/) is a great technical dependency for
+OpenTelemetry because these projects have many aspects in common. Like
+OpenTelemetry, Apache Arrow features a shared data specification, a transport
+protocol, a cross-language API specification, and community-built SDKs for
+numerous runtime environments.
 
 Apache Arrow is by now a standard in the data processing industry for
 column-oriented data, popular for both interoperability and performance reasons.
@@ -101,9 +103,9 @@ infrastructure.
 
 We have been running the OpenTelemetry Collector using OTel-Arrow components in
 a production environment at ServiceNow Cloud Observability, as the primary agent
-collecting internal telemetry for over a year, and we have applied what we learned back into
-improvements in the OTel-Arrow components and the OpenTelemetry Collector
-itself.
+collecting internal telemetry for over a year, and we have applied what we
+learned back into improvements in the OTel-Arrow components and the
+OpenTelemetry Collector itself.
 
 Here, we briefly cover the ways we've tuned OpenTelemetry Collectors using
 OTel-Arrow components to provide reliable, scalable telemetry delivery.
@@ -112,9 +114,9 @@ OTel-Arrow components to provide reliable, scalable telemetry delivery.
 
 The OTel-Arrow exporter and receiver pair are designed to provide equivalent
 functionality to the core OTLP/gRPC exporter and receiver pair, so that users
-can switch between these components. OTel-Arrow components were
-initially derived from these components, and both retain support for OTLP/gRPC
-requests alongside OTel-Arrow in a combined service.
+can switch between these components. OTel-Arrow components were initially
+derived from these components, and both retain support for OTLP/gRPC requests
+alongside OTel-Arrow in a combined service.
 
 The OTel-Arrow exporter component translates OpenTelemetry data, starting with a
 synchronous export call carrying a batch of OpenTelemetry traces, logs, or
@@ -134,16 +136,16 @@ better for compression results.
 OTel-Arrow streams are gRPC streams, which map onto HTTP/2 streams. Stream
 lifetime is determined by a number of factors, including limits negotiated by
 intermediate load balancers. For its part, the OTel-Arrow exporter supports a
-maximum stream lifetime configuration, which causes it to automatically
-restart streams on an interval. Compression improves with longer stream
-lifetimes, but with diminishing returns.
+maximum stream lifetime configuration, which causes it to automatically restart
+streams on an interval. Compression improves with longer stream lifetimes, but
+with diminishing returns.
 
 The OTel-Arrow exporter uses the Collector’s built-in configuration mechanisms
 for gRPC-based exporters (for example, endpoint, headers, TLS) and it uses the
 Collector’s standard exporter supports, including queue, retry, and timeout
-behaviors. Because the components have so much in common, including endpoint configuration,
-users can replace existing OTLP exporters in their Collector configuration
-with OTel-Arrow exporters without substantial reconfiguration.
+behaviors. Because the components have so much in common, including endpoint
+configuration, users can replace existing OTLP exporters in their Collector
+configuration with OTel-Arrow exporters without substantial reconfiguration.
 
 An example configuration:
 
@@ -174,9 +176,9 @@ requirements.
 
 The second limit governs the amount of data admitted into the pipeline and
 covers both OTLP and OTel-Arrow data paths. When this limit is reached,
-individual requests or streams either block or fail immediately, determined
-by a limit on the number of concurrent waiters. Admission limits protect
-receivers from running out of memory due to pipeline stalls.
+individual requests or streams either block or fail immediately, determined by a
+limit on the number of concurrent waiters. Admission limits protect receivers
+from running out of memory due to pipeline stalls.
 
 We recommend use of these limits to control memory in an OTel-Arrow pipeline and
 not to use the standard memory-limiter processor. There are other limits
@@ -223,8 +225,8 @@ giving them an opportunity to retry on another connection, and it gives the
 service operator a chance to auto-scale the number of instances to handle the
 increase in load based on memory utilization.
 
-See the [documentation on batching and
-back-pressure](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/otelarrowexporter/README.md#batching-configuration)
+See the
+[documentation on batching and back-pressure](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/otelarrowexporter/README.md#batching-configuration)
 for the OTel-Arrow exporter.
 
 ## Performance
