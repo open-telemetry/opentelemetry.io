@@ -12,7 +12,6 @@ issue: 5193
 sig: OpenTelemetry Arrow
 ---
 
-## OpenTelemetry Protocol with Apache Arrow in production
 
 The OpenTelemetry Protocol with Apache Arrow (OTel-Arrow) project's [exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/otelarrowexporter) and
 [receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/otelarrowreceiver) components for the OpenTelemetry Collector are now included in
@@ -102,8 +101,7 @@ infrastructure.
 
 We have been running the OpenTelemetry Collector using OTel-Arrow components in
 a production environment at ServiceNow Cloud Observability, as the primary agent
-collecting internal telemetry for over a year (i.e., collecting the data we use
-to observe our own systems), and we have applied what we learned back into
+collecting internal telemetry for over a year, and we have applied what we learned back into
 improvements in the OTel-Arrow components and the OpenTelemetry Collector
 itself.
 
@@ -114,7 +112,7 @@ OTel-Arrow components to provide reliable, scalable telemetry delivery.
 
 The OTel-Arrow exporter and receiver pair are designed to provide equivalent
 functionality to the core OTLP/gRPC exporter and receiver pair, so that users
-could easily switch between these components. OTel-Arrow components were
+can switch between these components. OTel-Arrow components were
 initially derived from these components, and both retain support for OTLP/gRPC
 requests alongside OTel-Arrow in a combined service.
 
@@ -128,7 +126,7 @@ waits for either a response or the deadline to expire, then returns.
 Each OTel-Arrow stream maintains internal state, including schemas,
 dictionaries, and related data that can be referred to by future stream
 requests. Stream requests are encoded and decoded sequentially by both
-components, allowing them to maintain correct state—which limits how much data
+components, allowing them to maintain correct state, which limits how much data
 each stream can handle. Increasing the number of exporter streams improves
 throughput, but each stream has some overhead, so fewer streams are generally
 better for compression results.
@@ -136,18 +134,18 @@ better for compression results.
 OTel-Arrow streams are gRPC streams, which map onto HTTP/2 streams. Stream
 lifetime is determined by a number of factors, including limits negotiated by
 intermediate load balancers. For its part, the OTel-Arrow exporter supports a
-maximum stream lifetime configuration, which will cause it to automatically
+maximum stream lifetime configuration, which causes it to automatically
 restart streams on an interval. Compression improves with longer stream
 lifetimes, but with diminishing returns.
 
 The OTel-Arrow exporter uses the Collector’s built-in configuration mechanisms
-for gRPC-based exporters (e.g., endpoint, headers, TLS) and it uses the
+for gRPC-based exporters (for example, endpoint, headers, TLS) and it uses the
 Collector’s standard exporter supports, including queue, retry, and timeout
-behaviors. Because they have so much in common including endpoint configuration,
-users can replace an existing OTLP exporters in their Collector configuration
+behaviors. Because the components have so much in common, including endpoint configuration,
+users can replace existing OTLP exporters in their Collector configuration
 with OTel-Arrow exporters without substantial reconfiguration.
 
-As an example configuration:
+An example configuration:
 
 ```yaml
 exporters:
@@ -164,13 +162,13 @@ exporters:
 The OTel-Arrow receiver component manages incoming OTel-Arrow streams. The
 receiver coordinates an asynchronous process with per-stream reader and writer
 threads. Pipeline operations are performed using independent worker threads,
-enabling each stream to maximize throughput. receivers will process as much
+enabling each stream to maximize throughput. Receivers process as much
 concurrent work as possible, subject to several limits. There are two principal
 configuration parameters that control memory use in an OTel-Arrow receiver.
 
 The first limit governs total memory used by active streams, including schemas,
 dictionaries, and related data. When the memory limit is reached, the receiver
-will terminate the stream with a resource-exhausted status code. This protects
+terminates the stream with a resource-exhausted status code. This protects
 receivers from running out of memory due to unexpectedly large stream memory
 requirements.
 
