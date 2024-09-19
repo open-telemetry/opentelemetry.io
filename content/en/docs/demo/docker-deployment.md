@@ -2,7 +2,7 @@
 title: Docker deployment
 linkTitle: Docker
 aliases: [docker_deployment]
-cSpell:ignore: otelcollector otlphttp spanmetrics tracetest
+cSpell:ignore: otelcollector otlphttp spanmetrics tracetest tracetesting
 ---
 
 <!-- markdownlint-disable code-block-style ol-prefix -->
@@ -50,13 +50,13 @@ docker compose up --force-recreate --remove-orphans --detach
     {{< tabpane text=true >}} {{% tab Make %}}
 
 ```shell
-make start-odd
+make run-tracetesting
 ```
 
     {{% /tab %}} {{% tab Docker %}}
 
 ```shell
-docker compose --profile odd up --force-recreate --remove-orphans --detach
+docker compose -f docker-compose-tests.yml run traceBasedTests
 ```
 
     {{% /tab %}} {{< /tabpane >}}
@@ -69,7 +69,8 @@ Once the images are built and containers are started you can access:
 - Grafana: <http://localhost:8080/grafana/>
 - Load Generator UI: <http://localhost:8080/loadgen/>
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
-- Tracetest UI: <http://localhost:11633/>, only when using `make start-odd`
+- Tracetest UI: <http://localhost:11633/>, only when using
+  `make run-tracetesting`
 
 ## Changing the demo's primary port number
 
