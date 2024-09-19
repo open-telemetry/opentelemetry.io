@@ -65,15 +65,15 @@ processors are useful in a few ways.
 
 ### Recommended processors
 
-<!--- TODO: SHOULD configure recommended processors. If so, what are they? -->
+<!--- TODO: SHOULD configure recommended processors. If so, what are they? 
 
-    redaction processor (never tried myself)
-    transform processor (great for redacting PIIs and such)
+redaction processor (never tried myself)
+transform processor (great for redacting PIIs and such) -->
 
 ### Scrubbing sensitive data
 
 You can use the OpenTelemetry Collector to scrub sensitive data before exporting
-it to a back end. Configure the Collector to obfuscate or scrub sensitive data
+it to a backend. Configure the Collector to obfuscate or scrub sensitive data
 before exporting.
 
 <!--- TODO: SHOULD configure obfuscation/scrubbing of sensitive metadata. How? Give more details and/or link to an existing document -->
