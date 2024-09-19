@@ -23,8 +23,8 @@ OpenTelemetry Java agent, making it easier than ever to observe your Spring Boot
 applications.
 
 In this blog post, we will explain when you should use the Spring Starter, what it
-actually means to be stable, and what we learned along the way. In the last part,
-we will demonstrate some of the starter's features using a GraalVM native image 
+actually means to be stable, what are the main features, and which challenges we faced. 
+In the last part, we will demonstrate some of the starter's features using a GraalVM native image 
 application.
 
 If you just want to get started, check out the
@@ -68,15 +68,10 @@ with bytecode instrumentation.
 The Spring Starter is now stable, which means that it is ready for production
 use.
 
-- **Support for GraalVM**: The Spring Starter is fully compatible with GraalVM
-  native compilation.
 - **Stable API**: The API is stable and will not change in a way that breaks
   existing users.
 - **Stable Configuration**: The configuration options are stable and will not
   change in a way that breaks existing users.
-- **Compatible Configuration**: The configuration is compatible with the
-  OpenTelemetry Java agent - so you can switch between the two without any
-  issues.
 - **Mature Documentation**: The
   [documentation](/docs/zero-code/java/spring-boot-starter/) is mature and
   covers all aspects of the Spring Starter.
@@ -92,19 +87,18 @@ phase and may change in the future.
 [HTTP semantic conventions](/docs/specs/semconv/http/http-metrics/) are stable
 and will not change.
 
-## Challenges we faced
+## Main features of the Spring Starter GA release
 
-Testing across different versions of Spring Boot is not an easy task, especially
-when you add GraalVM to the mix.
+When we started the Spring Boot starter GA project in February 2024, we defined the main features we wanted to achieve,
+which we will explain in the following sections.
 
-But maybe more interesting is the fact that we learned how to create interfaces
-that bridge the Spring Boot configuration with the OpenTelemetry SDK
-configuration - for using Spring properties to configure the OpenTelemetry SDK and to use Spring beans for advanced configuration.
+### Declarative SDK auto-configuration setup
 
-### Configuring the OpenTelemetry SDK with Spring Boot configuration files
+The Spring Boot starter allows you to set all [SDK auto-configuration](/docs/languages/java/configuration/)
+properties - as the OpenTelemetry Java agent. 
 
-In the beginning, the Spring Boot starter only supported some configuration properties in the Spring Boot configuration 
-files - some properties were compatible with the OpenTelemetry Java agent, but some were not.
+In the beginning, however, the Spring Boot starter only supported some configuration properties in the Spring Boot 
+configuration files - some properties were compatible with the OpenTelemetry Java agent, but some were not.
 Other properties were not supported at all, making it very difficult to switch between the OpenTelemetry Java agent 
 and the Spring Boot starter.
 
@@ -129,7 +123,7 @@ per [spec](/docs/languages/sdk-configuration/general/#otel_resource_attributes))
 or in a
 [Spring Boot configuration file](/docs/zero-code/java/spring-boot-starter/sdk-configuration/#general-configuration).
 
-### Using Spring beans for advanced configuration
+### Programmatic SDK auto-configuration setup
 
 Spring Boot users also expect to be able to use Spring beans for advanced configuration.
 The SDK auto-configuration did not know about Spring beans, so we came up with a new interface,
@@ -176,11 +170,18 @@ public class FilterPaths {
 ```
 <!-- prettier-ignore-end -->
 
-You can also create your own exporter, to 
-[export spans to memory](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/1b5d47eadcef33405b3065ff57e9d96bb15d795a/smoke-tests-otel-starter/spring-smoke-testing/src/main/java/io/opentelemetry/spring/smoketest/SpringSmokeOtelConfiguration.java#L50-L63).
-You don't actually need to implement the exporter yourself - you can use the 
-[Telemetry testing Example](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/telemetry-testing),
-but there are probably other use cases where you want to implement your own exporter.
+todo gregor
+
+Everything...
+
+https://opentelemetry.io/docs/languages/java/configuration/#spi-service-provider-interface
+
+### Automatic instrumentation
+
+todo Jean
+
+- **Instrumentation**: Support for the most common Spring Boot components and
+  libraries.
 
 ## The OpenTelemetry Spring Boot starter in action
 
