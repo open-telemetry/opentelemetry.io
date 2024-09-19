@@ -54,14 +54,20 @@ you launch a collector it will automatically start receiving telemetry.
 
 ## Status and releases
 
-The **Collector** status is: [mixed][], since core Collector components currently have mixed [stability levels][].
+The **Collector** status is: [mixed][], since core Collector components
+currently have mixed [stability levels][].
 
-**Collector components** differ in their maturity levels. Each component has its stability documented in its `README.md`. You can find a list of all available Collector components in the [registry][].
+**Collector components** differ in their maturity levels. Each component has its
+stability documented in its `README.md`. You can find a list of all available
+Collector components in the [registry][].
 
-Support is guaranteed for Collector software artifacts for a certain time period based on the artifact's intended audience. This support includes, at minimum, fixes for critical bugs and security issues. See the [support policies](https://github.com/open-telemetry/opentelemetry-collector/blob/main/VERSIONING.md) for more details.
+Support is guaranteed for Collector software artifacts for a certain time period
+based on the artifact's intended audience. This support includes, at minimum,
+fixes for critical bugs and security issues. See the
+[support policies](https://github.com/open-telemetry/opentelemetry-collector/blob/main/VERSIONING.md)
+for more details.
 
 {{% docs/latest-release collector-releases /%}}
-
 
 [registry]: /ecosystem/registry/?language=collector
 [mixed]: /docs/specs/otel/document-status/#mixed
