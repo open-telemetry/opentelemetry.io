@@ -170,11 +170,8 @@ public class FilterPaths {
 ```
 <!-- prettier-ignore-end -->
 
-todo gregor
-
-Everything...
-
-https://opentelemetry.io/docs/languages/java/configuration/#spi-service-provider-interface
+The full list of SPI interfaces that can be implemented as Spring beans can be found in the
+[OpenTelemetry SDK auto-configuration SPI documentation](/docs/languages/java/configuration/#spi-service-provider-interface).
 
 ### Automatic instrumentation
 
