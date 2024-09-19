@@ -63,7 +63,7 @@ with bytecode instrumentation.
 The Spring Starter is now stable, which means that it is ready for production
 use.
 
-- **Support for GraalVM**: The Spring Starter is fully compatible with GraalVM
+- **Support for GraalVM**: The Spring Starter is compatible with GraalVM
   native compilation.
 - **Logs, metrics, and traces** are stable and will not change in a way that
   breaks existing users.
