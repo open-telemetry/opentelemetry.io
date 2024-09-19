@@ -91,7 +91,7 @@ and will not change.
 
 ## What did we learn along the way?
 
-Testing across different versions of Spring Boot is no easy task, especially
+Testing across different versions of Spring Boot is not an easy task, especially
 when you add GraalVM to the mix.
 
 But maybe more interesting is the fact that we learned how to create interfaces
