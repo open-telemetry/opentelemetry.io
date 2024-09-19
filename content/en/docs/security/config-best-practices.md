@@ -67,8 +67,8 @@ processors are useful in a few ways.
 
 <!--- TODO: SHOULD configure recommended processors. If so, what are they? -->
 
-    redactionprocessor (never tried myself)
-    transformprocessor (great for redacting PIIs and such)
+    redaction processor (never tried myself)
+    transform processor (great for redacting PIIs and such)
 
 ### Scrubbing sensitive data
 

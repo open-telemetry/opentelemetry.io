@@ -16,7 +16,7 @@ Collector configuration. Running a secure Collector can help you
 - Comply with data privacy and security regulations.
 - Defend against denial of service (DoS) attacks.
 
-See [Hosting best pracices](/security/otel-collector-hosting-best-practices) to
+See [Hosting best practices](/security/otel-collector-hosting-best-practices) to
 learn how to secure your Collector's infrastructure.
 
 See
