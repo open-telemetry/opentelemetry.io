@@ -4,6 +4,8 @@ description: Security in OpenTelemetry
 weight: 10
 ---
 
+<!--- TODO: Add content to introduce CVE and security response docs --->
+
 When setting up the OpenTelemetry (OTel) Collector, consider implementing
 security best practices in both your hosting infrastructure and your OTel
 Collector configuration. Running a secure Collector can help you
