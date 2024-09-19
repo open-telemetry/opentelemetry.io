@@ -10,6 +10,9 @@ sig: Java
 cSpell:ignore: Bisutti Gregor Zeitlinger
 ---
 
+<!-- markdownlint-disable blanks-around-fences -->
+<?code-excerpt path-base="examples/java/spring-starter"?>
+
 We're proud to announce that the OpenTelemetry Spring Boot starter is now
 generally available.
 
@@ -63,10 +66,8 @@ with bytecode instrumentation.
 The Spring Starter is now stable, which means that it is ready for production
 use.
 
-- **Support for GraalVM**: The Spring Starter is compatible with GraalVM
+- **Support for GraalVM**: The Spring Starter is fully compatible with GraalVM
   native compilation.
-- **Logs, metrics, and traces** are stable and will not change in a way that
-  breaks existing users.
 - **Stable API**: The API is stable and will not change in a way that breaks
   existing users.
 - **Stable Configuration**: The configuration options are stable and will not
@@ -89,20 +90,32 @@ phase and may change in the future.
 [HTTP semantic conventions](/docs/specs/semconv/http/http-metrics/) are stable
 and will not change.
 
-## What challenges did we overcome
+## Challenges we faced
 
 Testing across different versions of Spring Boot is not an easy task, especially
 when you add GraalVM to the mix.
 
 But maybe more interesting is the fact that we learned how to create interfaces
 that bridge the Spring Boot configuration with the OpenTelemetry SDK
-configuration. In the beginning, the OpenTelemetry SDK was only able to read
-configuration from system properties and environment variables.
+configuration - for using Spring properties to configure the OpenTelemetry SDK and to use Spring beans for advanced configuration.
 
-It was relatively easy to add support for Spring Boot configuration files by
-implementing the
+### Configuring the OpenTelemetry SDK with Spring Boot configuration files
+
+In the beginning, the Spring Boot starter only supported some configuration properties in the Spring Boot configuration 
+files - some properties were compatible with the OpenTelemetry Java agent, but some were not.
+Other properties were not supported at all, making it very difficult to switch between the OpenTelemetry Java agent 
+and the Spring Boot starter.
+
+As a first step, we made the Spring Boot starter use the same 
+[SDK auto-configuration](/docs/languages/java/configuration/) as the OpenTelemetry Java agent, 
+so that the same properties could be used for both. 
+
+The SDK auto-configuration did not support Spring Boot configuration files, however, so we had implement the
 [ConfigProperties](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure-spi/src/main/java/io/opentelemetry/sdk/autoconfigure/spi/ConfigProperties.java)
-interface - you just have to write a `@ConfigurationProperties` class for
+interface with the logic to look up Spring configuration values from a Spring 
+[Environment](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/env/Environment.html).
+
+Special consideration was needed for lists and maps - you have to write a `@ConfigurationProperties` class for
 [lists](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/release/v2.6.x/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/internal/properties/SpringConfigProperties.java#L104-L106)
 and
 [maps](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/release/v2.6.x/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/internal/properties/SpringConfigProperties.java#L126-L140),
@@ -114,12 +127,58 @@ per [spec](/docs/languages/sdk-configuration/general/#otel_resource_attributes))
 or in a
 [Spring Boot configuration file](/docs/zero-code/java/spring-boot-starter/sdk-configuration/#general-configuration).
 
-Allowing users to use Spring beans for configuration was a bit more challenging.
-We came up with a new interface,
+### Using Spring beans for advanced configuration
+
+Spring Boot users also expect to be able to use Spring beans for advanced configuration.
+The SDK auto-configuration did not know about Spring beans, so we came up with a new interface,
 [ComponentLoader](https://github.com/open-telemetry/opentelemetry-java/blob/release/v1.40.x/sdk-extensions/autoconfigure/src/main/java/io/opentelemetry/sdk/autoconfigure/internal/ComponentLoader.java),
 that allows users to register Spring beans that will be loaded by the
-OpenTelemetry SDK, which can be used for advanced configuration like
-[dynamic auth headers](/docs/zero-code/java/spring-boot-starter/sdk-configuration/#configure-the-exporter-programmatically).
+OpenTelemetry SDK auto-configuration.
+
+The [Spring Starter implementation of the ComponentLoader interface](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java#L162-L181) 
+uses Spring's `ApplicationContext` to find all beans of a certain type.
+
+This allows users to register their own exporters, processors, and other SDK components as Spring beans.
+
+The most common use case is to create a bean that returns an 
+[AutoConfigurationCustomizerProvider](/docs/languages/java/configuration/#autoconfigurationcustomizerprovider) 
+instance - an idiomatic Spring Boot approach to customization.
+
+This example shows how to create a bean that customizes the sampler to drop spans for paths starting with `/actuator`:
+
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/FilterPaths.java"?>
+```java
+package otel;
+
+import io.opentelemetry.api.trace.SpanKind;
+import io.opentelemetry.contrib.sampler.RuleBasedRoutingSampler;
+import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider;
+import io.opentelemetry.semconv.UrlAttributes;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class FilterPaths {
+
+  @Bean
+  public AutoConfigurationCustomizerProvider otelCustomizer() {
+    return p ->
+        p.addSamplerCustomizer(
+            (fallback, config) ->
+                RuleBasedRoutingSampler.builder(SpanKind.SERVER, fallback)
+                    .drop(UrlAttributes.URL_PATH, "^/actuator")
+                    .build());
+  }
+}
+```
+<!-- prettier-ignore-end -->
+
+You can also create your own exporter, to 
+[export spans to memory](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/1b5d47eadcef33405b3065ff57e9d96bb15d795a/smoke-tests-otel-starter/spring-smoke-testing/src/main/java/io/opentelemetry/spring/smoketest/SpringSmokeOtelConfiguration.java#L50-L63).
+You don't actually need to implement the exporter yourself - you can use the 
+[Telemetry testing Example](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/telemetry-testing),
+but there are probably other use cases where you want to implement your own exporter.
 
 ## The OpenTelemetry Spring Boot starter in action
 
@@ -135,7 +194,6 @@ In the `pom.xml` file, let's add the OpenTelemetry instrumentation BOM:
 ```xml
   <dependencyManagement>
     <dependencies>
-
         <dependency>
             <groupId>io.opentelemetry.instrumentation</groupId>
             <artifactId>opentelemetry-instrumentation-bom</artifactId>
