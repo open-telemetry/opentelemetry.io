@@ -7,14 +7,14 @@ default_lang_commit: 896255cae4fea454ffc4c559ea29b08ccebbfcb2
 
 No OpenTelemetry, Bagagem é uma informação contextual que acompanha o contexto.
 Bagagem é uma estrutura de armazenamento chave-valor, que te permite
-[propagar](docs/concepts/context-propagation/#propagation) quaisquer dados junto
-com o [contexto](docs/concepts/context-propagation/#context).
+[propagar](/docs/concepts/context-propagation/#propagation) quaisquer dados
+junto com o [contexto](/docs/concepts/context-propagation/#context).
 
 A Bagagem permite a transferência de dados entre serviços e processos,
 tornando-os acessíveis para serem adicionados a
-[rastros](docs/concepts/signals/traces/),
-[métricas](docs/concepts/signals/metrics/) ou
-[logs](docs/concepts/signals/logs/) ao longo desses serviços.
+[rastros](/docs/concepts/signals/traces/),
+[métricas](/docs/concepts/signals/metrics/) ou
+[logs](/docs/concepts/signals/logs/) ao longo desses serviços.
 
 ## Exemplo
 
@@ -28,10 +28,10 @@ rastro pode abranger vários serviços, você precisa de uma maneira de propagar
 esses dados sem copiar o `clientId` em diversos pontos do seu código.
 
 Usando a
-[Propagação de Contexto](docs/concepts/signals/traces/#context-propagation) para
-passar a bagagem entre esses serviços, o `clientId` estará disponível para ser
-adicionado a quaisquer trechos, métricas ou logs. Além disso, as instrumentações
-automaticamente propagam a Bagagem para você.
+[Propagação de Contexto](/docs/concepts/signals/traces/#context-propagation)
+para passar a bagagem entre esses serviços, o `clientId` estará disponível para
+ser adicionado a quaisquer trechos, métricas ou logs. Além disso, as
+instrumentações automaticamente propagam a Bagagem para você.
 ![OTel Baggage](/img/otel-baggage.svg)
 
 ## Para que a Bagagem do OTel deve ser usada?
@@ -76,8 +76,8 @@ explicitamente os dados da Bagagem e adicioná-los como atributos aos seus
 trechos, métricas ou logs.
 
 Como um dos casos de uso comum da Bagagem é adicionar dados aos
-[Atributos de Trecho](docs/concepts/signals/traces/#attributes) ao longo de todo
-um rastro, várias linguagens possuem Processadores de Trecho de Bagagem que
+[Atributos de Trecho](/docs/concepts/signals/traces/#attributes) ao longo de
+todo um rastro, várias linguagens possuem Processadores de Trecho de Bagagem que
 adicionam dados da Bagagem como atributos na criação de trechos.
 
 Para mais informações, consulte a [especificação da Bagagem][].
