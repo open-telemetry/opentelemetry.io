@@ -54,7 +54,7 @@ you launch a collector it will automatically start receiving telemetry.
 
 ## Status and releases
 
-The **collector** status is: [mixed][], since core collector components currently have mixed [stability levels][].
+The **Collector** status is: [mixed][], since core Collector components currently have mixed [stability levels][].
 
 **Collector components** differ in their maturity levels. Each component has its stability documented in its `README.md`. You can find a list of all available collector components in the [registry][].
 
