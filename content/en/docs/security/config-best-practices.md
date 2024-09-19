@@ -59,13 +59,13 @@ Your OTel Collector configuration should include encryption and authentication.
 
 ## Processors
 
-Processors sit between receivers and exporters. They are responsible for
-processing telemetry before it's analyzed. From a security perspective,
-processors are useful in a few ways.
+[Processors](/collector/configuration/#processors) sit between receivers and
+exporters. They are responsible for processing telemetry before it's analyzed.
+From a security perspective, processors are useful in a few ways.
 
 ### Recommended processors
 
-<!--- TODO: SHOULD configure recommended processors. If so, what are they? 
+<!--- TODO: SHOULD configure recommended processors. If so, what are they?
 
 redaction processor (never tried myself)
 transform processor (great for redacting PIIs and such) -->
@@ -85,16 +85,19 @@ Use OpenTelemetry Collector's `redaction` processor to scrub sensitive data.
 ### Safeguarding resource utilization
 
 Processors also offer safeguards for resource utilization. After implementing
-[safeguards resource utilization in your hosting infrastructure](/security/hosting-best-practices/),
-make sure your OpenTelemetry Collector configuration uses these safeguards.
+safeguards for resource utilization in your
+[hosting infrastructure](/security/hosting-best-practices/), make sure your
+OpenTelemetry Collector configuration uses these safeguards.
 
 <!-- start same page content in hosting-best-practices -->
 
-The `batch` processor helps ensure the OpenTelemetry Collector is resource
-efficient and does not run out of memory when overloaded.
+The `batch` and `memory_limiter` processors help ensure the OpenTelemetry
+Collector is resource efficient and does not run out of memory when overloaded.
+These two processors should be enabled on every defined pipeline.
 
-For more information on recommended processors and order, refer to the
-[OpenTelemetry Collector Processor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor)
+For more information on recommended processors and how to order them in your
+configuration, see the
+[Collector processor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor)
 documentation.
 
 <!-- /end same page content in hosting-best-practices -->
