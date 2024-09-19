@@ -89,7 +89,7 @@ phase and may change in the future.
 [HTTP semantic conventions](/docs/specs/semconv/http/http-metrics/) are stable
 and will not change.
 
-## What did we learn along the way?
+## What challenges did we overcome
 
 Testing across different versions of Spring Boot is not an easy task, especially
 when you add GraalVM to the mix.
