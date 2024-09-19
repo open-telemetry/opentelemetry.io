@@ -61,7 +61,7 @@ flexibilidad que necesitan en el mundo informático de hoy en día.
 Si quieres aprender más, echa un vistazo a
 [la misión, la visión y los valores](/community/mission/) de OpenTelemetry.
 
-## Main OpenTelemetry components
+## Principales componentes de OpenTelemetry
 
 OpenTelemetry consta de los siguientes componentes principales:
 
