@@ -23,7 +23,9 @@ OpenTelemetry Java agent, making it easier than ever to observe your Spring Boot
 applications.
 
 In this blog post, we will explain when you should use the Spring Starter, what it
-actually means to be stable, and what we learned along the way.
+actually means to be stable, and what we learned along the way. In the last part,
+we will demonstrate some of the starter's features using a GraalVM native image 
+application.
 
 If you just want to get started, check out the
 [Spring Starter documentation](/docs/zero-code/java/spring-boot-starter).
