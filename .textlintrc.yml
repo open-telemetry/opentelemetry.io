@@ -136,6 +136,7 @@ rules:
         - '(?<![.-])java\b(?![.])'
         - Java
       - ['java[- ]?agent', Java agent]
+      - ['java ?doc(s)?', 'Javadoc$1']
       - [mac ?os, macOS]
       - ['meta[- ]data', metadata]
       - [nd-?json, NDJSON]
