@@ -19,7 +19,7 @@ OpenTelemetry. It provides a lightweight, flexible alternative to the
 OpenTelemetry Java agent, making it easier than ever to observe your Spring Boot
 applications.
 
-In this blog post, we'll explain when you should use the Spring Starter, what it
+In this blog post, we will explain when you should use the Spring Starter, what it
 actually means to be stable, and what we learned along the way.
 
 If you just want to get started, check out the
