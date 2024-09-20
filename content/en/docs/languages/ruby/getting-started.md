@@ -62,7 +62,7 @@ file in your preferred editor and update it with the following code:
 ```ruby
 class DiceController < ApplicationController
   def roll
-    render json: (1..6).sample.to_s
+    render json: rand(1..6).to_s
   end
 end
 ```
