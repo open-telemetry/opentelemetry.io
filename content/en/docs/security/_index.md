@@ -10,9 +10,9 @@ When setting up the OpenTelemetry (OTel) Collector, consider implementing
 security best practices in both your hosting infrastructure and your OTel
 Collector configuration. Running a secure Collector can help you
 
-- Protect telemetry that might contain sensitive information, such as personally
-  identifiable information (PII), application-specific data, or network traffic
-  patterns.
+- Protect telemetry that shouldn't but might contain sensitive information, such
+  as personally identifiable information (PII), application-specific data, or
+  network traffic patterns.
 - Prevent data tampering that makes telemetry unreliable and disrupts incident
   responses.
 - Comply with data privacy and security regulations.
