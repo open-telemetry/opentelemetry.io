@@ -18,3 +18,4 @@ package:
   registry: npm
   name: '@prisma/instrumentation'
   version: 5.19.1
+isFirstParty: true
