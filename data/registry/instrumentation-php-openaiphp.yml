@@ -20,3 +20,4 @@ package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-openai-php
   version: 0.0.2
+isFirstParty: false
