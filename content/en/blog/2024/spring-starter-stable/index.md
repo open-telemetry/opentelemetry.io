@@ -1,6 +1,6 @@
 ---
 title: The OpenTelemetry Spring Boot starter is now stable
-linkTitle: Spring Starter GA
+linkTitle: Spring Starter stable
 date: 2024-
 author: >
   [Gregor Zeitlinger](https://github.com/zeitlinger) (Grafana Labs), [Jean
@@ -30,14 +30,6 @@ application.
 If you just want to get started, check out the
 [Spring Starter documentation](/docs/zero-code/java/spring-boot-starter).
 
-## Why does the Spring Starter matter?
-
-Spring users have come to expect starters as a standard method for addressing
-various aspects of application development. Unlike other configurations, a
-Spring starter simplifies the setup process without the need for additional JVM
-options or Docker files. This ease of use and integration is what makes the
-Spring starter an essential tool in the Spring ecosystem.
-
 ## When to use the Spring Starter?
 
 Here are some scenarios where you might want to use the Spring Starter:
@@ -56,12 +48,12 @@ Here are some scenarios where you might want to use the Spring Starter:
   [dynamic auth headers](/docs/zero-code/java/spring-boot-starter/sdk-configuration/#configure-the-exporter-programmatically),
   using Spring beans (the OpenTelemetry Java agent requires an
   [extension](/docs/zero-code/java/agent/extensions/) for this)
+- **Uses code dependencies**: You don't need to add any JVM options (e.g. in your Docker file) - 
+  just add a dependency and a BOM to your `pom.xml` or `build.gradle` file
 
 It may be a bit surprising, but our default recommendation for Spring Boot apps
 is still to use the [**OpenTelemetry Java agent**](/docs/zero-code/java/agent)
-with bytecode instrumentation, as it provides more out-of-the-box
-instrumentation than the Spring Starter, since some things are only possible
-with bytecode instrumentation.
+with bytecode instrumentation, as it provides more out-of-the-box instrumentation than the Spring Starter.
 
 ## What does it mean to be stable?
 
@@ -87,10 +79,26 @@ phase and may change in the future.
 [HTTP semantic conventions](/docs/specs/semconv/http/http-metrics/) are stable
 and will not change.
 
-## Main features of the Spring Starter GA release
+## Main features of the Spring Starter stable release
 
-When we started the Spring Boot starter GA project in February 2024, we defined the main features we wanted to achieve,
-which we will explain in the following sections.
+When we started the Spring Boot starter stable project in February 2024, we defined the main features we wanted to 
+achieve, which we will explain in the following sections.
+
+### Out of the box instrumentation
+
+The OpenTelemetry starter provides 
+[out of the box instrumentations for most popular usages](/docs/zero-code/java/spring-boot-starter/out-of-the-box-instrumentation/).
+
+One example we heavily improved is the Logback instrumentation.
+
+In the beginning it was not possible to ship all log lines to the OpenTelemetry collector, because the 
+OpenTelemetry bean was not available at the time when the first log lines were emitted. So, we had to cache the logs and
+send them to the OpenTelemetry collector after the OpenTelemetry bean was created. 
+
+In the past, you had to add the OpenTelemetry Logback appender to your `logback-spring.xml` file. 
+Now, the Spring Boot starter adds the appender automatically if you have not defined one in a Logback file,
+after Spring Boot has 
+[initialized the logging system](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/a3f8b1082d8835a81dffd834ec28decca066a3f2/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/internal/instrumentation/logging/LogbackAppenderApplicationListener.java#L64).
 
 ### Declarative SDK auto-configuration setup
 
@@ -118,7 +126,7 @@ and
 because the Spring Boot Environment can't handle them directly. Luckily, Spring
 Boot has a way to convert Strings to lists and
 [maps](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/release/v2.6.x/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/internal/MapConverter.java),
-so users can pass resource attributes both in a single environment variable (as
+so you can pass resource attributes both in a single environment variable (as
 per [spec](/docs/languages/sdk-configuration/general/#otel_resource_attributes))
 or in a
 [Spring Boot configuration file](/docs/zero-code/java/spring-boot-starter/sdk-configuration/#general-configuration).
@@ -128,15 +136,17 @@ or in a
 Spring Boot users also expect to be able to use Spring beans for advanced configuration.
 The SDK auto-configuration did not know about Spring beans, so we came up with a new interface,
 [ComponentLoader](https://github.com/open-telemetry/opentelemetry-java/blob/release/v1.40.x/sdk-extensions/autoconfigure/src/main/java/io/opentelemetry/sdk/autoconfigure/internal/ComponentLoader.java),
-that allows users to register Spring beans that will be loaded by the
+that allows you to register Spring beans that will be loaded by the
 OpenTelemetry SDK auto-configuration.
 
 The [Spring Starter implementation of the ComponentLoader interface](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java#L162-L181) 
 uses Spring's `ApplicationContext` to find all beans of a certain type.
 
-This allows users to register their own exporters, processors, and other SDK components as Spring beans.
+This allows you to register your own customizers, and other SDK components as Spring beans.
+You can find the available SPI interfaces implementable as Spring beans in the
+[OpenTelemetry SDK auto-configuration SPI documentation](/docs/languages/java/configuration/#spi-service-provider-interface).
 
-The most common use case is to create a bean that returns an 
+You should be able to customize most aspects of the OpenTelemetry SDK by implementing a bean that returns an 
 [AutoConfigurationCustomizerProvider](/docs/languages/java/configuration/#autoconfigurationcustomizerprovider) 
 instance - an idiomatic Spring Boot approach to customization.
 
@@ -169,17 +179,6 @@ public class FilterPaths {
 }
 ```
 <!-- prettier-ignore-end -->
-
-You can find the available SPI interfaces implementable as Spring beans in the
-[OpenTelemetry SDK auto-configuration SPI documentation](/docs/languages/java/configuration/#spi-service-provider-interface).
-
-### Out of the box instrumentation
-
-To allow you to start using the OpenTelemetry starter only by adding a dependency and the OpenTelemetry instrumentation BOM, the OpenTelemtry starter provides [out of the box instrumentations for most popular usages](/docs/zero-code/java/spring-boot-starter/out-of-the-box-instrumentation/).
-
-Some out of the box instrumentations have required some tips. For example, for the Logback instrumentation, an OpenTelemetry bean is needed but only available after the first Spring Boot logs. So, these logs are cached, and after instrumented once the OpenTelemetry bean is created. This instrumentation adds an OpenTelemetry Logback appender (if you have not defined one in a Logback file). It has to be added just after Spring Boot reinitializes the logging systems ([see](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/a3f8b1082d8835a81dffd834ec28decca066a3f2/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/internal/instrumentation/logging/LogbackAppenderApplicationListener.java#L64)).
-
-You have the possibility to complete the out of the of the box instrumentation with the [OpenTelemetry Java instrumentation libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md).
 
 ## The OpenTelemetry Spring Boot starter in action
 
@@ -684,4 +683,8 @@ collector-1  | Buckets #13, Count: 0
 collector-1  | Buckets #14, Count: 0
 ```
 
-Thanks to the Spring PetClinic application, we have shown some features of the OpenTelemetry Spring Boot starter. To know more about other features, don't hesitate to have a look a the the [OpenTelemetry Spring Boot starter documentation](/docs/zero-code/java/spring-boot-starter).
+Thanks to the Spring PetClinic application, we have shown some features of the OpenTelemetry Spring Boot starter. 
+
+To know more about other features, don't hesitate to have a look at the 
+[OpenTelemetry Spring Boot starter documentation](/docs/zero-code/java/spring-boot-starter) and ask questions on
+[slack](https://opentelemetry.io/community/).
