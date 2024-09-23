@@ -21,3 +21,4 @@ package:
   registry: gems
   name: elasticsearch
   version: 8.15.0
+isFirstParty: true
