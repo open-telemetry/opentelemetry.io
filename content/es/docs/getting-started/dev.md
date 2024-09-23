@@ -4,7 +4,7 @@ linkTitle: Dev
 default_lang_commit: ede5b715791550eccf1c0dc3d57e2713ca6350ab
 ---
 
-Esta es la página de [introducción](..) para ti si:
+Esta es tu página de [introducción](..) si:
 
 - Desarrollas software.
 - Tu objetivo es obtener observabilidad escribiendo código.
