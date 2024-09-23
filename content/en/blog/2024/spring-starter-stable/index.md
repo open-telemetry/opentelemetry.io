@@ -173,12 +173,13 @@ public class FilterPaths {
 The full list of SPI interfaces that can be implemented as Spring beans can be found in the
 [OpenTelemetry SDK auto-configuration SPI documentation](/docs/languages/java/configuration/#spi-service-provider-interface).
 
-### Automatic instrumentation
+### Out of the box instrumentation
 
-todo Jean
+To allow you to start using the OpenTelemetry starter only by adding a dependency and the OpenTelemetry instrumentation BOM, the OpenTelemtry starter provides [out of the box instrumentations for most popular usages](/docs/zero-code/java/spring-boot-starter/out-of-the-box-instrumentation/).
 
-- **Instrumentation**: Support for the most common Spring Boot components and
-  libraries.
+Some out of the box instrumentations have required some tips. For example, for the Logback instrumentation, an OpenTelemetry bean is needed but only available after the first Spring Boot logs. So, these logs are cached, and after instrumented once the OpenTelemetry bean is created. This instrumentation adds an OpenTelemetry Logback appender (if you have not defined one in a Logback file). We have to to it just after Spring Boot reinitializes the logging systems ([see](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/a3f8b1082d8835a81dffd834ec28decca066a3f2/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/internal/instrumentation/logging/LogbackAppenderApplicationListener.java#L64)).
+
+You have the possibility to complete the out of the of the box instrumentation with the [OpenTelemetry Java instrumentation libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md).
 
 ## The OpenTelemetry Spring Boot starter in action
 
@@ -227,7 +228,6 @@ public class PostgresIntegrationTests
 ```
 
 The OpenTelemetry Spring Boot starter sends the telemetry data with the [OpenTelemetry Protocol](https://opentelemetry.io/docs/specs/otlp/) (OTLP). By default, it sends the data over HTTP. You can also [switch to gRPC](https://opentelemetry.io/docs/languages/java/configuration/#otlp-exporter-span-metric-and-log-exporters).
-
 
 We are going to add an [OpenTelemetry collector](https://opentelemetry.io/docs/collector/) and display the telemetry data in the collector logs.
 
