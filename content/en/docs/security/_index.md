@@ -1,10 +1,21 @@
 ---
-title: Security in OpenTelemetry
+title: Security
 description: Security in OpenTelemetry
 weight: 10
 ---
 
-<!--- TODO: Add content to introduce CVE and security response docs --->
+## Common Vulnerabilities and Exposures (CVEs)
+
+For CVEs across all repositories, see
+[Common Vulnerabilities and Exposures](/security/cve).
+
+## Security incident response
+
+Learn how to report a vulnerability or find out how incident responses are
+handled in
+[Community incident response guidelines](/security/security-response).
+
+## Collector security
 
 When setting up the OpenTelemetry (OTel) Collector, consider implementing
 security best practices in both your hosting infrastructure and your OTel
