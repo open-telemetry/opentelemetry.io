@@ -170,7 +170,7 @@ public class FilterPaths {
 ```
 <!-- prettier-ignore-end -->
 
-The full list of SPI interfaces that can be implemented as Spring beans can be found in the
+You can find the available SPI interfaces implementable as Spring beans in the
 [OpenTelemetry SDK auto-configuration SPI documentation](/docs/languages/java/configuration/#spi-service-provider-interface).
 
 ### Out of the box instrumentation
