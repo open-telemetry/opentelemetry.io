@@ -15,7 +15,7 @@ configuration: one receiver and one exporter. Configuring only the minimum set
 of components exposes a minimum set of required ports.
 
 - Receivers and exporters can be either push- or pull-based. In either case, the
-  connection established should be over a secure and authenticated channel.
+  connection established should at least be over a secure channel, potentially authenticated as well.
 - Unused receivers and exporters should be disabled to minimize the attack
   vector of the Collector.
 - Receivers and exporters might expose buffer, queue, payload, and worker
@@ -41,7 +41,7 @@ receivers:
         endpoint: localhost:4317
 ```
 
-Use `localhost`-like addresses instead of `0.0.0.0`. For more information, see
+Try to always use specific interfaces, such as the pod's IP, or `localhost` instead of `0.0.0.0`. For more information, see
 [CWE-1327: Binding to an Unrestricted IP Address](https://cwe.mitre.org/data/definitions/1327.html).
 
 To change the default endpoint to be `localhost`-bound in all components, enable

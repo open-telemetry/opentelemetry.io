@@ -25,7 +25,7 @@ The rule of least privilege applies here. --->
 
 To limit the exposure of servers to authorized users:
 
-- Enable authentication, using bearer token authentication extensions and basic
+- Enable authentication, for instance by using bearer token authentication extensions and basic
   authentication extensions.
 - Restrict the IPs that OTel Collector runs on.
 
