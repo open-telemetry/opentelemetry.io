@@ -18,4 +18,3 @@ urls:
   docs: https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/opentelemetry.html
 createdAt: '2024-08-06'
 isNative: true
-isFirstParty: true
