@@ -1,12 +1,11 @@
 ---
 title: Collector hosting best practices
 linkTitle: Collector hosting
-description: Follow best practices to securely host OpenTelemetry Collector.
-weight: 15
+weight: 115
 ---
 
-When setting up hosting for OpenTelemetry (OTel) Collector, consider the
-following practices to better secure your hosting instance.
+When setting up hosting for OpenTelemetry (OTel) Collector, consider these best
+practices to better secure your hosting instance.
 
 ## Storing configuration information securely
 

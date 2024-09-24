@@ -1,15 +1,18 @@
 ---
 title: Security
-description: Security in OpenTelemetry
-weight: 10
+weight: 970
 ---
+
+Learn how the OpenTelemetry project discloses vulnerabilities and responds to
+incidents. Find out how to ensure your observability data is collected and
+transmitted in a secure manner.
 
 ## Common Vulnerabilities and Exposures (CVEs)
 
 For CVEs across all repositories, see
 [Common Vulnerabilities and Exposures](/docs/security/cve).
 
-## Security incident response
+## Incident response
 
 Learn how to report a vulnerability or find out how incident responses are
 handled in

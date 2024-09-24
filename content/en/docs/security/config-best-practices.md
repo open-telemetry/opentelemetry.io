@@ -1,11 +1,10 @@
 ---
 title: Collector configuration best practices
-linkTitle: Collector config
-description: Best practices to securely configure OpenTelemetry Collector.
-weight: 20
+linkTitle: Collector configuration
+weight: 112
 ---
 
-When configuring the OpenTelemetry (OTel) Collector, consider the following
+When configuring the OpenTelemetry (OTel) Collector, consider these best
 practices to better secure your Collector instance.
 
 ## Receivers and exporters
