@@ -147,7 +147,7 @@ You can find the available SPI interfaces implementable as Spring beans in the
 [OpenTelemetry SDK auto-configuration SPI documentation](/docs/languages/java/configuration/#spi-service-provider-interface).
 
 You should be able to customize most aspects of the OpenTelemetry SDK by implementing a bean that returns an 
-[AutoConfigurationCustomizerProvider](/docs/languages/java/configuration/#autoconfigurationcustomizerprovider) 
+[`AutoConfigurationCustomizerProvider`](/docs/languages/java/configuration/#autoconfigurationcustomizerprovider) 
 instance - an idiomatic Spring Boot approach to customization.
 
 This example shows how to create a bean that customizes the sampler to drop spans for paths starting with `/actuator`:
