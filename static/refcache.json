@@ -9647,6 +9647,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-06-04T17:29:59.050384645+02:00"
   },
+  "https://opentelemetry.io/api-docs": {
+    "StatusCode": 206,
+    "LastSeen": "2024-09-16T14:16:13.499994+02:00"
+  },
   "https://opentelemetry.io/blog/2022/jaeger-native-otlp/": {
     "StatusCode": 206,
     "LastSeen": "2024-04-27T13:39:35.171666-04:00"
