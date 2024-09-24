@@ -12,7 +12,7 @@ OpenTelemetry code [instrumentation][] is supported for the languages listed in
 the [Statuses and Releases](#status-and-releases) table below. Unofficial
 implementations for [other languages](/docs/languages/other) are available as
 well. You can find them in the
-[registry](http://localhost:1313/ecosystem/registry/).
+[registry](/ecosystem/registry/).
 
 For Go, .NET, PHP, Python, Java and JavaScript you can use
 [zero-code solutions](/docs/zero-code) to add instrumentation to your
@@ -51,8 +51,7 @@ references are available:
 
 {{% alert title="Tip" color="info" %}}
 
-You can find a list of available API references at
-<https://opentelemetry.io/api-docs>.
+You can find a list of available API references at </api-docs>.
 
 {{% /alert %}}
 
