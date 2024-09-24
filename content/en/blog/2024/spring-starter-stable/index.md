@@ -234,7 +234,6 @@ You can also use your favorite OTLP-compatible backend - we use collector logs f
 
 To do this, let's add the following `docker-compose-otel.yml` and `collector-spring-native-config.yaml` files in the `spring-petclinic` directory: 
 
-docker-compose-otel.yml
 ```yaml
 version: '3.8'
 services:
