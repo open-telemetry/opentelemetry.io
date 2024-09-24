@@ -20,9 +20,8 @@ is a
 that manages OTel for you in your Kubernetes cluster to make life a little
 easier. It does the following:
 
-- Manages deployment of the
-  [OpenTelemetry Collector](http://localhost:1313/docs/collector/), supported by
-  the
+- Manages deployment of the [OpenTelemetry Collector](/docs/collector/),
+  supported by the
   [`OpenTelemetryCollector`](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#getting-started)
   [custom resource (CR)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
 - Manages the configuration of a fleet of OpenTelemetry Collectors via
@@ -42,8 +41,7 @@ cool things, so I thought it might be helpful to share some little OTel Operator
 goodies that I’ve picked up along the way, in the form of a Q&A.
 
 Please note that this post assumes that you have some familiarity with
-OpenTelemetry, the
-[OpenTelemetry Collector](http://localhost:1313/docs/collector/), the
+OpenTelemetry, the [OpenTelemetry Collector](/docs/collector/), the
 [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator)
 (including the
 [Target Allocator](https://adri-v.medium.com/prometheus-opentelemetry-better-together-41dc637f2292)),
