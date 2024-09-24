@@ -105,39 +105,6 @@ amd64/arm64/i386 systems. You can find the default configuration in
 
 > Note: `systemd` is required for automatic service configuration.
 
-### APK Installation
-
-To get started on Alpine systems run the following commands:
-
-{{< tabpane text=true >}} {{% tab AMD64 %}}
-
-```sh
-apk update
-apk add wget shadow
-wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_amd64.apk
-apk add --allow-untrusted otelcol_{{% param vers %}}_linux_amd64.apk
-```
-
-{{% /tab %}} {{% tab ARM64 %}}
-
-```sh
-apk update
-apk add wget shadow
-wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_arm64.apk
-apk add --allow-untrusted otelcol_{{% param vers %}}_linux_arm64.apk
-```
-
-{{% /tab %}} {{% tab i386 %}}
-
-```sh
-apk update
-apk add wget shadow
-wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_386.apk
-apk add --allow-untrusted otelcol_{{% param vers %}}_linux_386.apk
-```
-
-{{% /tab %}} {{< /tabpane >}}
-
 ### DEB Installation
 
 To get started on Debian systems run the following commands:

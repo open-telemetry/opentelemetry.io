@@ -11,3 +11,4 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-celery
 createdAt: 2020-02-05
+isFirstParty: false

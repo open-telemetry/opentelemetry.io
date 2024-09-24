@@ -12,7 +12,9 @@ license: Apache 2.0
 description:
   Instrumentation for IBM Watsonx LLMs (prompts logging, tokens, etc.)
 authors:
-  - name: IBM Instana
+  - name: Traceloop
+    email: dev@traceloop.com
 urls:
   repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-watsonx
 createdAt: 2024-01-22
+isFirstParty: false
