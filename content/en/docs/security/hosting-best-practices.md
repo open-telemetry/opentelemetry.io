@@ -25,15 +25,15 @@ The rule of least privilege applies here. --->
 
 To limit the exposure of servers to authorized users:
 
-- Enable authentication, for instance by using bearer token authentication extensions and basic
-  authentication extensions.
+- Enable authentication, for instance by using bearer token authentication
+  extensions and basic authentication extensions.
 - Restrict the IPs that OTel Collector runs on.
 
 ## Processors
 
-[Processors](/collector/configuration/#processors) sit between receivers and
-exporters. They are responsible for processing telemetry before it's analyzed.
-From a security perspective, processors are useful in a few ways.
+[Processors](/docs/collector/configuration/#processors) sit between receivers
+and exporters. They are responsible for processing telemetry before it's
+analyzed. From a security perspective, processors are useful in a few ways.
 
 ### Safeguarding resource utilization
 
@@ -50,7 +50,7 @@ documentation.
 
 After installing resource utilization safeguards in your hosting, make sure your
 Collector configuration uses those
-[safeguards in its configuration](/security/config-best-practices/).
+[safeguards in its configuration](/docs/security/config-best-practices/).
 
 ### Another example
 

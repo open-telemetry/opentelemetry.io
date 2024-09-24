@@ -14,8 +14,9 @@ We recommend enabling a limited set of components in your Collector
 configuration. Minimizing the number of components you use minimizes the attack
 surface exposed.
 
-- Use the [OpenTelemetry Collector Builder (`ocb`)](/collector/custom-collector)
-  to create a Collector distribution that uses only the components you need.
+- Use the
+  [OpenTelemetry Collector Builder (`ocb`)](/docs/collector/custom-collector) to
+  create a Collector distribution that uses only the components you need.
 - If you find that you have unused receivers and exporters, remove them from
   your configuration.
 - Receivers and exporters can be push- or pull-based. In either case, you should
@@ -57,15 +58,15 @@ be enabled by default in the Collector in a future release.
 Your OTel Collector configuration should include encryption and authentication.
 
 - For communication encryption, see
-  [Configuring certificates](/collector/configuration/#setting-up-certificates).
+  [Configuring certificates](/docs/collector/configuration/#setting-up-certificates).
 - For authentication, use the OTel Collector's authentication mechanism, as
-  described in [Authentication](/collector/configuration/#authentication).
+  described in [Authentication](/docs/collector/configuration/#authentication).
 
 ## Processors
 
-[Processors](/collector/configuration/#processors) sit between receivers and
-exporters. They are responsible for processing telemetry before it's analyzed.
-From a security perspective, processors are useful in a few ways.
+[Processors](/docs/collector/configuration/#processors) sit between receivers
+and exporters. They are responsible for processing telemetry before it's
+analyzed. From a security perspective, processors are useful in a few ways.
 
 ### Recommended processors
 
@@ -90,7 +91,7 @@ Use OpenTelemetry Collector's `redaction` processor to scrub sensitive data.
 
 Processors also offer safeguards for resource utilization. After implementing
 safeguards for resource utilization in your
-[hosting infrastructure](/security/hosting-best-practices/), make sure your
+[hosting infrastructure](/docs/security/hosting-best-practices/), make sure your
 OpenTelemetry Collector configuration uses these safeguards.
 
 <!-- start same page content in hosting-best-practices -->
