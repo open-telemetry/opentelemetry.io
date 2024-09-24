@@ -30,28 +30,40 @@ surface exposed.
 
 ### Safeguards against denial of service attacks
 
-Bind receivers' servers to addresses that limit connections to authorized users,
-so that your Collectors aren't exposed to the public internet or to wider
-networks than necessary.
+For server-like receivers and extensions, you can protect your Collector from
+exposure to the public internet or to wider networks than necessary by binding
+these components' endpoints to addresses that limit connections to authorized
+users. Try to always use specific interfaces, such as a pod's IP, or `localhost`
+instead of `0.0.0.0`. For more information, see
+[CWE-1327: Binding to an Unrestricted IP Address](https://cwe.mitre.org/data/definitions/1327.html).
 
-For example, if the OTLP receiver OTLP/gRPC server has only local clients, bind
-the `endpoint` setting to `localhost`:
+From Collector v0.110.0, the default endpoints for all servers in Collector
+components are set to `localhost:4317` for `gRPC` ports or `localhost:4318` for
+`http` ports. For earlier versions of the Collector, change the default endpoint
+from `0.0.0.0` to `localhost` in all components by enabling the
+`component.UseLocalHostAsDefaultHost` feature gate.
+
+If `localhost` resolves to a different IP due to your DNS settings, then
+explicitly use the loopback IP instead: `127.0.0.1` for IPv4 or `::1` for IPv6.
+In IPv6 setups, make sure your system supports both IPv4 and IPv6 loopback
+addresses.
+
+For example, you can override the `localhost` default address and configure an
+OTLP receiver's gRPC server to `127.0.0.1`:
 
 ```yaml
 receivers:
   otlp:
     protocols:
       grpc:
-        endpoint: localhost:4317
+        endpoint: 127.0.0.1:4317
 ```
 
-Try to always use specific interfaces, such as the pod's IP, or `localhost`
-instead of `0.0.0.0`. For more information, see
-[CWE-1327: Binding to an Unrestricted IP Address](https://cwe.mitre.org/data/definitions/1327.html).
-
-To change the default endpoint to be `localhost`-bound in all components, enable
-the `component.UseLocalHostAsDefaultHost` feature gate. This feature gate will
-be enabled by default in the Collector in a future release.
+If you are working in environments that have nonstandard networking setups, such
+as Docker or Kubernetes, see the
+[example configurations](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md#safeguards-against-denial-of-service-attacks)
+in our component developer documentation for ideas on how to bind your component
+endpoints.
 
 ### Encryption and authentication
 
