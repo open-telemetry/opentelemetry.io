@@ -10,19 +10,22 @@ practices to better secure your Collector instance.
 
 ## Receivers and exporters
 
-We recommend enabling only the minimum required components for a Collector
-configuration: one receiver and one exporter. Configuring only the minimum set
-of components exposes a minimum set of required ports.
+We recommend enabling a limited set of components in your Collector
+configuration. Minimizing the number of components you use minimizes the attack
+surface exposed.
 
-- Receivers and exporters can be either push- or pull-based. In either case, the
-  connection established should at least be over a secure channel, potentially authenticated as well.
-- Unused receivers and exporters should be disabled to minimize the attack
-  vector of the Collector.
+- Use the [OpenTelemetry Collector Builder (`ocb`)](/collector/custom-collector)
+  to create a Collector distribution that uses only the components you need.
+- If you find that you have unused receivers and exporters, remove them from
+  your configuration.
+- Receivers and exporters can be push- or pull-based. In either case, you should
+  establish the connection at least over a secure channel, potentially
+  authenticated as well.
 - Receivers and exporters might expose buffer, queue, payload, and worker
   settings using configuration parameters. If these settings are available, you
   should proceed with caution before modifying the default configuration values.
   Improperly setting these values might expose the OpenTelemetry Collector to
-  additional attack vectors including resource exhaustion.
+  additional attack vectors.
 
 ### Safeguards against denial of service attacks
 
@@ -41,7 +44,8 @@ receivers:
         endpoint: localhost:4317
 ```
 
-Try to always use specific interfaces, such as the pod's IP, or `localhost` instead of `0.0.0.0`. For more information, see
+Try to always use specific interfaces, such as the pod's IP, or `localhost`
+instead of `0.0.0.0`. For more information, see
 [CWE-1327: Binding to an Unrestricted IP Address](https://cwe.mitre.org/data/definitions/1327.html).
 
 To change the default endpoint to be `localhost`-bound in all components, enable
