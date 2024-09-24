@@ -23,18 +23,24 @@ By default, the Collector exposes its own telemetry in two ways:
 
 You can configure how internal metrics are generated and exposed by the
 Collector. By default, the Collector generates basic metrics about itself and
-exposes them for scraping at `http://127.0.0.1:8888/metrics`. You can expose the
-endpoint to one specific or all network interfaces when needed. For
-containerized environments, you might want to expose this port on a public
-interface.
+exposes them using the OpenTelemetry Go
+[Prometheus exporter](https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/prometheus)
+for scraping at `http://127.0.0.1:8888/metrics`. You can expose the endpoint to
+one specific or all network interfaces when needed. For containerized
+environments, you might want to expose this port on a public interface.
 
-Set the address in the config `service::telemetry::metrics`:
+Set the Prometheus config under `service::telemetry::metrics`:
 
 ```yaml
 service:
   telemetry:
     metrics:
-      address: 0.0.0.0:8888
+      readers:
+        pull:
+          exporter:
+            prometheus:
+              host: '0.0.0.0'
+              port: 8888
 ```
 
 You can adjust the verbosity of the Collector metrics output by setting the
@@ -59,30 +65,34 @@ service:
       level: detailed
 ```
 
-The Collector can also be configured to scrape its own metrics using a
-[Prometheus receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver)
-and send them through configured pipelines. For example:
+The Collector can also be configured to push its own metrics to an
+[OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
+and send them through configured pipelines. In the following example, the
+Collector is configured to push metrics every 10s using OTLP gRPC to
+`localhost:14317`:
 
 ```yaml
 receivers:
-  prometheus:
-    config:
-      scrape_configs:
-        - job_name: 'otelcol'
-          scrape_interval: 10s
-          static_configs:
-            - targets: ['0.0.0.0:8888']
-          metric_relabel_configs:
-            - source_labels: [__name__]
-              regex: '.*grpc_io.*'
-              action: drop
+  otlp/internal_metrics:
+    protocols:
+      grpc:
+        endpoint: localhost:14317
 exporters:
   debug:
 service:
   pipelines:
     metrics:
-      receivers: [prometheus]
+      receivers: [otlp/internal_metrics]
       exporters: [debug]
+  telemetry:
+    metrics:
+      readers:
+        - periodic:
+            interval: 10000
+            exporter:
+              otlp:
+                protocol: grpc/protobuf
+                endpoint: localhost:14317
 ```
 
 {{% alert title="Caution" color="warning" %}}
@@ -186,6 +196,18 @@ The Collector also emits internal metrics for these **cumulative values**:
 The following tables group each internal metric by level of verbosity: `basic`,
 `normal`, and `detailed`. Each metric is identified by name and description and
 categorized by instrumentation type.
+
+{{% alert title="Note" color="info" %}} As of Collector v0.106.1, internal
+metric names are handled differently based on their source:
+
+- Metrics generated from Collector components are prefixed with `otelcol_`.
+- Metrics generated from instrumentation libraries do not use the `otelcol_`
+  prefix by default, unless their metric names are explicitly prefixed.
+
+For Collector versions prior to v0.106.1, all internal metrics emitted using the
+Prometheus exporter, regardless of their origin, are prefixed with `otelcol_`.
+This includes metrics from both Collector components and instrumentation
+libraries. {{% /alert %}}
 
 <!---To compile this list, configure a Collector instance to emit its own metrics to the localhost:8888/metrics endpoint. Select a metric and grep for it in the Collector core repository. For example, the `otelcol_process_memory_rss` can be found using:`grep -Hrn "memory_rss" .` Make sure to eliminate from your search string any words that might be prefixes. Look through the results until you find the .go file that contains the list of metrics. In the case of `otelcol_process_memory_rss`, it and other process metrics can be found in https://github.com/open-telemetry/opentelemetry-collector/blob/31528ce81d44e9265e1a3bbbd27dc86d09ba1354/service/internal/proctelemetry/process_telemetry.go#L92. Note that the Collector's internal metrics are defined in several different files in the repository.--->
 
