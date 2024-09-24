@@ -2469,7 +2469,7 @@
   },
   "https://docs.bugsnag.com/performance/distributed-tracing": {
     "StatusCode": 206,
-    "LastSeen": "2024-09-24T06:19:31.410753499Z"
+    "LastSeen": "2024-09-24T06:18:58.718106443Z"
   },
   "https://docs.centreon.com/pp/integrations/plugin-packs/getting-started/how-to-guides/telegraf/": {
     "StatusCode": 206,
@@ -9646,6 +9646,10 @@
   "https://opentelemetry.io/": {
     "StatusCode": 206,
     "LastSeen": "2024-06-04T17:29:59.050384645+02:00"
+  },
+  "https://opentelemetry.io/api-docs": {
+    "StatusCode": 206,
+    "LastSeen": "2024-09-16T14:16:13.499994+02:00"
   },
   "https://opentelemetry.io/blog/2022/jaeger-native-otlp/": {
     "StatusCode": 206,
