@@ -16,3 +16,4 @@ package:
   registry: crates
   name: opentelemetry-trillium-opentelemetry
   version: 0.2.16
+isFirstParty: true
