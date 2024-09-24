@@ -264,19 +264,19 @@ receivers:
       http:
         endpoint: "0.0.0.0:4318"
 exporters:
-  logging:
+  debug:
     verbosity: detailed
 service:
   pipelines:
     metrics:
       receivers: [otlp]
-      exporters: [logging]
+      exporters: [debug]
     traces:
       receivers: [otlp]
-      exporters: [logging]
+      exporters: [debug]
     logs:
       receivers: [otlp]
-      exporters: [logging]
+      exporters: [debug]
 
 ```
 
