@@ -7,6 +7,7 @@
 !/layouts/shortcodes
 /layouts/shortcodes/*
 !/layouts/shortcodes/docs
+/layouts/shortcodes/pt
 
 /content/ja
 /content/zh

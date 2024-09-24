@@ -16,3 +16,4 @@ package:
   registry: crates
   name: opentelemetry-tide
   version: 0.12.0
+isFirstParty: false

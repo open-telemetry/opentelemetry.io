@@ -1,3 +1,5 @@
 desserializa
 autoinstrumentação
 autoconsistentes
+serialização
+verbosidade

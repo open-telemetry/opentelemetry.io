@@ -16,10 +16,10 @@ status from the right component page. For example, the status of a signal in the
 specification may not be the same as the signal status in a particular language
 SDK.
 
-## Language SDKs
+## Language APIs & SDKs
 
 For the development status, or maturity level, of a
-[language SDK](/docs/languages/), see the following table:
+[language API or SDK](/docs/languages/), see the following table:
 
 {{% telemetry-support-table " " %}}
 

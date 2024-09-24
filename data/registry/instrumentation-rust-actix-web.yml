@@ -16,3 +16,4 @@ package:
   registry: crates
   name: actix-web-opentelemetry
   version: 0.16.0
+isFirstParty: false

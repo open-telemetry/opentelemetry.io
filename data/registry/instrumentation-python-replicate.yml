@@ -13,3 +13,4 @@ authors:
 urls:
   repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-replicate
 createdAt: 2024-05-27
+isFirstParty: false
