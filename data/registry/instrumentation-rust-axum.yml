@@ -17,3 +17,4 @@ package:
   registry: crates
   name: axum-tracing-opentelemetry
   version: 0.16.0
+isFirstParty: false

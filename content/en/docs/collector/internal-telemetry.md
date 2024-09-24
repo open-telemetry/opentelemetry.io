@@ -282,6 +282,64 @@ libraries. {{% /alert %}}
 | `rpc_server_response_size`        | Measures the size of RPC response messages (uncompressed).                                | Histogram |
 | `rpc_server_responses_per_rpc`    | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram |
 
+### Telemetry maturity levels
+
+#### Traces
+
+Tracing instrumentation is still under active development, and changes might be
+made to span names, attached attributes, instrumented endpoints, or other
+aspects of the telemetry. Until this feature graduates to stable, there are no
+guarantees of backwards compatibility for tracing instrumentation.
+
+#### Metrics
+
+The Collector's metrics follow a four-stage lifecycle:
+
+> Alpha metric → Stable metric → Deprecated metric → Deleted metric
+
+##### Alpha
+
+Alpha metrics have no stability guarantees. These metrics can be modified or
+deleted at any time.
+
+##### Stable
+
+Stable metrics are guaranteed to not change. This means:
+
+- A stable metric without a deprecated signature will not be deleted or renamed.
+- A stable metric's type and attributes will not be modified.
+
+##### Deprecated
+
+Deprecated metrics are slated for deletion but are still available for use. The
+description of these metrics include an annotation about the version in which
+they became deprecated. For example:
+
+Before deprecation:
+
+```sh
+# HELP otelcol_exporter_queue_size this counts things
+# TYPE otelcol_exporter_queue_size counter
+otelcol_exporter_queue_size 0
+```
+
+After deprecation:
+
+```sh
+# HELP otelcol_exporter_queue_size (Deprecated since 1.15.0) this counts things
+# TYPE otelcol_exporter_queue_size counter
+otelcol_exporter_queue_size 0
+```
+
+##### Deleted
+
+Deleted metrics are no longer published and cannot be used.
+
+#### Logs
+
+Individual log entries and their formatting might change from one release to the
+next. There are no stability guarantees at this time.
+
 ### Events observable with internal logs
 
 The Collector logs the following internal events:

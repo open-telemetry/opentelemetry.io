@@ -13,3 +13,4 @@ authors:
 urls:
   repo: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/core/azure-core-tracing-opentelemetry
 createdAt: 2021-12-16
+isFirstParty: true
