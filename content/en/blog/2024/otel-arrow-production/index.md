@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry Protocol with Apache Arrow in Production
 linkTitle: OpenTelemetry Arrow in Production
-date: 2024-09-13
+date: 2024-09-24
 author:
   >- # If you have only one author, then add the single name on this line in quotes.
   [Joshua MacDonald](https://github.com/jmacd) (ServiceNow, Inc), [Laurent
