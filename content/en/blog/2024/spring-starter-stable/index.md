@@ -153,7 +153,6 @@ instance - an idiomatic Spring Boot approach to customization.
 This example shows how to create a bean that customizes the sampler to drop spans for paths starting with `/actuator`:
 
 <!-- prettier-ignore-start -->
-<?code-excerpt "src/main/java/otel/FilterPaths.java"?>
 ```java
 package otel;
 
