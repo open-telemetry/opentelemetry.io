@@ -1,0 +1,6 @@
+{{- $code := .Get "code" -}}
+{{- $pageName := (printf "%s/%s" .Page.Path $code) -}}
+{{- $codePage := .Site.GetPage $pageName -}}
+
+
+<div class="container-fluid gx-0"><div class="row"><div class="col">{{ .Inner }}</div><div class="col">{{ $codePage.Content }}</div></div></div>
