@@ -50,8 +50,7 @@ references are available:
 
 {{% alert title="Tip" color="info" %}}
 
-You can find a list of available API references at
-<https://opentelemetry.io/api-docs>.
+You can find a list of available API references at </api-docs>.
 
 {{% /alert %}}
 
