@@ -7,7 +7,6 @@ author:
   [Joshua MacDonald](https://github.com/jmacd) (ServiceNow, Inc), [Laurent
   Querel](https://github.com/lquerel) (F5, Inc)
 cSpell:ignore: Querel Zstd
-draft: true
 issue: 5193
 sig: OpenTelemetry Arrow
 ---
