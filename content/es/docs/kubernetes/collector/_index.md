@@ -4,9 +4,9 @@ linkTitle: Colector
 default_lang_commit: f7cb8b65a478450d80d703b34c8473c579702108
 ---
 
-El [Colector OpenTelemetry](/docs/collector/) es una forma agnóstica al
-proveedor de recibir, procesar y exportar datos de telemetría. Si bien el
-Colector puede ser usado en muchos lugares, esta documentación se enfocará en
-cómo utilizar el Colector para supervisar Kubernetes y los servicios que se
-ejecutan en Kubernetes. Para documentación más general del Colector, como
-configuracion y solución de problemas, vea [Colector](/docs/collector/).
+El [OpenTelemetry Collector](/docs/collector/) es una forma de recibir, procesar
+y exportar datos de telemetría sin importar el proveedor. Si bien el colector
+puede ser usado en muchos lugares, esta documentación se enfoca en
+cómo utilizar el colector para supervisar Kubernetes y los servicios que se
+ejecutan en Kubernetes. Para documentación más general del colector, como
+configuracion y solución de problemas, consulta [Colector](/docs/collector/).
