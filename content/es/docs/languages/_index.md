@@ -53,8 +53,7 @@ desarrolladores. Las siguientes referencias están disponibles:
 
 {{% alert title="Consejo" color="info" %}}
 
-Puedes encontrar una lista de referencias de API disponibles en
-</api-docs>.
+Puedes encontrar una lista de referencias de API disponibles en </api-docs>.
 
 {{% /alert %}}
 
