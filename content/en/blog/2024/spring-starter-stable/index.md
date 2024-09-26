@@ -480,7 +480,8 @@ collector-1  |  {"kind": "exporter", "data_type": "traces", "name": "logging"}
 ```
 
 
-Now, let's see what happens if we select the `http://localhost:8080/oups` URL in our web browser or execute the following curl command:
+Now, let's see what happens if we select the <http://localhost:8080/oups> URL in our web browser or execute the following curl command:
+
 ```shell
 curl http://localhost:8080/oups
 ```
