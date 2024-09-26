@@ -1,30 +1,28 @@
 ---
-title: APIs y SDKs de Lenguaje
+title: APIs y SDKs para lenguajes
 description:
   La instrumentación de código de OpenTelemetry es compatible con muchos
   lenguajes de programación populares.
 weight: 250
-aliases: [/docs/instrumentation]
-redirects: [{ from: /docs/instrumentation/*, to: ':splat' }]
-default_lang_commit: f7cb8b65a478450d80d703b34c8473c579702108
+default_lang_commit: 3815d1481fe753df10ea3dc26cbe64dba0230579
 ---
 
 La [instrumentación][] de código de OpenTelemetry es compatible con los
 lenguajes enumerados en la tabla de
-[Estados y Lanzamientos](#status-and-releases) a continuación. También están
-disponibles implementaciones no oficiales para
+[estados y lanzamientos](#status-and-releases) presentada a continuación.
+También están disponibles implementaciones no oficiales para
 [otros lenguajes](/docs/languages/other). Puedes encontrarlas en el
 [registro](/ecosystem/registry/).
 
 Para Go, .NET, PHP, Python, Java y JavaScript puedes utilizar
-[soluciones sin código](/docs/zero-code) para agregar instrumentación a tu
+[instrumentación zero-code](/docs/zero-code) para agregar instrumentación a tu
 aplicación sin hacer cambios en el código.
 
 Si estás utilizando Kubernetes, puedes usar el [Operador de OpenTelemetry para
-Kubernetes][otel-op] para [inyectar estas soluciones sin código][zero-code] en
-tu aplicación.
+Kubernetes][otel-op] para [inyectar estas soluciones zero-code][zero-code] en tu
+aplicación.
 
-## Estados y Lanzamientos
+## Estados y lanzamientos
 
 El estado actual de los principales componentes funcionales de OpenTelemetry es
 el siguiente:
@@ -32,7 +30,7 @@ el siguiente:
 {{% alert title="Importante" color="warning" %}}
 
 Independientemente del estado de un API/SDK, si tu instrumentación depende de
-[convenciones semánticas] que estén marcadas como [Experimentales] en la [especificación
+[convenciones semánticas] que estén marcadas como [Experimental] en la [especificación
 de
 convenciones semánticas], tu flujo de datos podría estar sujeto a **cambios
 importantes**.
