@@ -18,3 +18,4 @@ package:
   name: '@jenniferplusplus/opentelemetry-instrumentation-bullmq'
   registry: npm
   version: 0.5.1
+isFirstParty: false

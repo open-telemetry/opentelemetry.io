@@ -15,3 +15,4 @@ package:
   registry: npm
   name: '@opentelemetry/instrumentation-mongodb'
   version: 0.47.0
+isFirstParty: false
