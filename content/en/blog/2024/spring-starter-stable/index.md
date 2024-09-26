@@ -61,7 +61,7 @@ The Spring Starter is now stable, which means that it is ready for production
 use.
 
 - **Stable API**: The API is stable and will not change in a way that breaks
-  existing users.
+  users.
 - **Stable Configuration**: The configuration options are stable and will not
   change in a way that breaks existing users.
 - **Mature Documentation**: The
