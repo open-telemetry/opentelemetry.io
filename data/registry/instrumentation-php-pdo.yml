@@ -16,3 +16,4 @@ package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-pdo
   version: 0.0.15
+isFirstParty: false

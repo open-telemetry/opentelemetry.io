@@ -16,3 +16,4 @@ package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-slim
   version: 1.0.7
+isFirstParty: false

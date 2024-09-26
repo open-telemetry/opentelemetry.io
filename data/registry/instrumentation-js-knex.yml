@@ -18,3 +18,4 @@ package:
   registry: npm
   name: '@opentelemetry/instrumentation-knex'
   version: 0.40.0
+isFirstParty: false

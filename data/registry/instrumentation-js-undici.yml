@@ -20,3 +20,4 @@ package:
   registry: npm
   name: '@opentelemetry/instrumentation-undici'
   version: 0.6.0
+isFirstParty: false

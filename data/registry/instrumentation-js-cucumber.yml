@@ -18,3 +18,4 @@ package:
   registry: npm
   name: '@opentelemetry/instrumentation-cucumber'
   version: 0.9.0
+isFirstParty: false

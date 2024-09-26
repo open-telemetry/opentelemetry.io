@@ -17,3 +17,4 @@ package:
   name: '@opentelemetry/instrumentation-cassandra-driver'
   registry: npm
   version: 0.41.0
+isFirstParty: false
