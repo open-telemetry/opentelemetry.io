@@ -14,7 +14,7 @@ También están disponibles implementaciones no oficiales para
 [otros lenguajes](/docs/languages/other). Puedes encontrarlas en el
 [registro](/ecosystem/registry/).
 
-Para Go, .NET, PHP, Python, Java y JavaScript puedes utilizar
+Para Go, .NET, PHP, Python, Java y JavaScript puedes usar
 [instrumentación zero-code](/docs/zero-code) para agregar instrumentación a tu
 aplicación sin hacer cambios en el código.
 
