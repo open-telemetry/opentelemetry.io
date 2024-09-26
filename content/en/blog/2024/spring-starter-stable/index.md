@@ -38,7 +38,7 @@ Here are some scenarios where you might want to use the Spring Starter:
   agent does not work
 - **Startup overhead** of the OpenTelemetry Java agent exceeding your
   requirements
-- A Java monitoring agent already used because the OpenTelemetry Java agent
+- A Java agent is already used because the OpenTelemetry Java agent
   might not work with the other agent
 - **Spring Boot configuration files** (`application.properties`,
   `application.yml`) to configure the OpenTelemetry Spring Boot starter which
