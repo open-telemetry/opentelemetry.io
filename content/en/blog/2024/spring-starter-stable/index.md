@@ -63,7 +63,7 @@ use.
 - **Stable API**: The API is stable and will not change in a way that breaks
   users.
 - **Stable Configuration**: The configuration options are stable and will not
-  change in a way that breaks existing users.
+  change in a way that breaks users.
 - **Mature Documentation**: The
   [documentation](/docs/zero-code/java/spring-boot-starter/) is mature and
   covers all aspects of the Spring Starter.
