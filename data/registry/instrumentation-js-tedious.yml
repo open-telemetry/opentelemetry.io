@@ -17,3 +17,4 @@ package:
   registry: npm
   name: '@opentelemetry/instrumentation-tedious'
   version: 0.14.0
+isFirstParty: false

@@ -15,3 +15,4 @@ package:
   registry: npm
   name: '@opentelemetry/instrumentation-dns'
   version: 0.39.0
+isFirstParty: false

@@ -15,3 +15,4 @@ package:
   registry: npm
   name: '@opentelemetry/instrumentation-long-task'
   version: 0.40.0
+isFirstParty: false
