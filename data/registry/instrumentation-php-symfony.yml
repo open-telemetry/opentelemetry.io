@@ -16,3 +16,4 @@ package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-symfony
   version: 1.0.0beta28
+isFirstParty: false
