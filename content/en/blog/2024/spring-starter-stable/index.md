@@ -88,8 +88,8 @@ achieve, which we will explain in the following sections.
 
 The OpenTelemetry starter provides 
 [out of the box instrumentations for most popular usages](/docs/zero-code/java/spring-boot-starter/out-of-the-box-instrumentation/).
-The OpenTelemetry Java agent includes more [out of the box instrumentations](/docs/zero-code/java/agent/disable/#suppressing-specific-agent-instrumentation),
-but you can enable more instrumentations in the Spring Starter by 
+The OpenTelemetry Java agent includes many more [out of the box instrumentations](/docs/zero-code/java/agent/disable/#suppressing-specific-agent-instrumentation),
+but you can opt-in to additional instrumentations in the Spring Starter by 
 [adding a bit of configuration](/docs/zero-code/java/spring-boot-starter/additional-instrumentations/).
 
 One example we heavily improved is the Logback instrumentation.
