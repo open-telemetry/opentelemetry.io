@@ -2,15 +2,13 @@
 title: Documentación
 linkTitle: Docs
 menu: { main: { weight: 10 } }
-aliases: [/docs/workshop/*]
 default_lang_commit: f7cb8b65a478450d80d703b34c8473c579702108
 ---
 
-OpenTelemetry, también conocido como OTel, es un framework de código
-abierto neutral para proveedores de
-[Observabilidad](concepts/observability-primer/#what-is-observability) de código
-abierto y neutral para proveedores, diseñado para instrumentar, generar,
-recopilar y exportar datos de telemetría como
+OpenTelemetry, también conocido como OTel, es un framework de código abierto
+neutral para proveedores de
+[Observabilidad](concepts/observability-primer/#what-is-observability), diseñado
+para instrumentar, generar, recopilar y exportar datos de telemetría como
 [trazas](concepts/signals/traces/), [métricas](concepts/signals/metrics/) y
 [logs](concepts/signals/logs/).
 
