@@ -1,7 +1,7 @@
 ---
 title: The OpenTelemetry Spring Boot starter is now stable
 linkTitle: Spring Starter stable
-date: 2024-
+date: 2024-09-30
 author: >
   [Gregor Zeitlinger](https://github.com/zeitlinger) (Grafana Labs), [Jean
   Bisutti](https://github.com/jeanbisutti) (Microsoft)
