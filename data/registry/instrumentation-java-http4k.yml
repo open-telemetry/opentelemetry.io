@@ -13,3 +13,4 @@ authors:
 urls:
   repo: https://github.com/http4k/http4k/tree/master/http4k-opentelemetry
 createdAt: 2022-10-27
+isFirstParty: true
