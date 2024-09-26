@@ -36,7 +36,7 @@ convenciones semánticas], tu flujo de datos podría estar sujeto a **cambios
 importantes**.
 
 [convenciones semánticas]: /docs/concepts/semantic-conventions/
-[Experimentales]: /docs/specs/otel/document-status/
+[Experimental]: /docs/specs/otel/document-status/
 [especificación de convenciones semánticas]: /docs/specs/semconv/
 
 {{% /alert %}}
