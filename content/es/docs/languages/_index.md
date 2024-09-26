@@ -9,7 +9,7 @@ default_lang_commit: 3815d1481fe753df10ea3dc26cbe64dba0230579
 
 La [instrumentación][] de código de OpenTelemetry es compatible con los
 lenguajes enumerados en la tabla de
-[estados y lanzamientos](#status-and-releases) presentada a continuación.
+estados y lanzamientos presentada a continuación.
 También están disponibles implementaciones no oficiales para
 [otros lenguajes](/docs/languages/other). Puedes encontrarlas en el
 [registro](/ecosystem/registry/).
