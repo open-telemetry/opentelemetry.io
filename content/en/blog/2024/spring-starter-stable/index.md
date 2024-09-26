@@ -305,7 +305,8 @@ We can spot one log record about the Spring PetClinic application startup:
 
 The OpenTelemetry Spring Boot starter has instrumented Logback and has sent the 'Started PetClinicApplication in 0.489 seconds (process running for 0.493)' telemetry log record to the OpenTelemetry collector.
 
-Let's open the `http://localhost:8080/vets.html` in our web browser or execute the following curl command:
+Let's open the <http://localhost:8080/vets.html> in our web browser or execute the following curl command:
+
 ```shell
 curl http://localhost:8080/vets.html
 ```
