@@ -51,9 +51,10 @@ Here are some scenarios where you might want to use the Spring Starter:
 - **Uses code dependencies**: You don't need to add any JVM options (e.g. in your Docker file) - 
   just add a dependency and a BOM to your `pom.xml` or `build.gradle` file
 
-It may be a bit surprising, but our default recommendation for Spring Boot apps
-is still to use the [**OpenTelemetry Java agent**](/docs/zero-code/java/agent)
-with bytecode instrumentation, as it provides more out-of-the-box instrumentation than the Spring Starter.
+It may be a bit surprising, but if you don't build a Spring native image application
+our default recommendation is to use the [**OpenTelemetry Java agent**](/docs/zero-code/java/agent)
+with bytecode instrumentation, as it provides more out of the box instrumentation than the 
+Spring Starter instrumentations - as we will see later.
 
 ## What does it mean to be stable?
 
@@ -73,11 +74,11 @@ use.
 - **Regular Updates**: The Spring Starter is actively maintained and updated
   with new features and bug fixes.
 
-A notable exemption are semantic conventions, which are still evolving and may
-change in the future. Some of the conventions are still in the experimental
-phase and may change in the future.
-[HTTP semantic conventions](/docs/specs/semconv/http/http-metrics/) are stable
-and will not change.
+Note that the Spring Starter uses some semantic conventions that are not stable, 
+which are still evolving and may change in the future. 
+[HTTP semantic conventions](/docs/specs/semconv/http/http-metrics/) are stable and will not change.
+[Database semantic conventions](/docs/specs/semconv/database/database-metrics/) are still experimental and may change.
+However, they are expected to become stable at the end of 2024.
 
 ## Main features of the Spring Starter stable release
 
@@ -88,6 +89,9 @@ achieve, which we will explain in the following sections.
 
 The OpenTelemetry starter provides 
 [out of the box instrumentations for most popular usages](/docs/zero-code/java/spring-boot-starter/out-of-the-box-instrumentation/).
+The OpenTelemetry Java agent includes more [out of the box instrumentations](/docs/zero-code/java/agent/disable/#suppressing-specific-agent-instrumentation),
+but you can enable more instrumentations in the Spring Starter by 
+[adding a bit of configuration](/docs/zero-code/java/spring-boot-starter/additional-instrumentations/).
 
 One example we heavily improved is the Logback instrumentation.
 
