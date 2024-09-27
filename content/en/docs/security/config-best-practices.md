@@ -75,19 +75,43 @@ endpoints.
 
 ## Scrub sensitive data
 
-[Processors](/docs/collector/configuration/#processors) sit between receivers
-and exporters. They are responsible for processing telemetry before it's
-analyzed. From a security perspective, processors are useful in a few ways.
+[Processors](/docs/collector/configuration/#processors) are the Collector
+components that sit between receivers and exporters. They are responsible for
+processing telemetry before it's analyzed. You can use the OpenTelemetry
+Collector's `redaction` processor to obfuscate or scrub sensitive data before
+exporting it to a backend.
 
-You can use the OpenTelemetry Collector to scrub sensitive data before exporting
-it to a backend. Configure the Collector to obfuscate or scrub sensitive data
-before exporting.
+The
+[`redaction` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor)
+deletes span, log, and metric datapoint attributes that don't match a list of
+allowed attributes. It also masks attribute values that match a blocked value
+list. Attributes that aren't on the allowed list are removed before any value
+checks are done.
 
-<!--- TODO: SHOULD configure obfuscation/scrubbing of sensitive metadata. How? Give more details and/or link to an existing document -->
+For example, here is a configuration that masks values containing credit card
+numbers:
 
-Use OpenTelemetry Collector's `redaction` processor to scrub sensitive data.
+```yaml
+processors:
+  redaction:
+    allow_all_keys: false
+    allowed_keys:
+      - description
+      - group
+      - id
+      - name
+    ignored_keys:
+      - safe_attribute
+    blocked_values: # Regular expressions for blocking values of allowed span attributes
+      - '4[0-9]{12}(?:[0-9]{3})?' # Visa credit card number
+      - '(5[1-5][0-9]{14})' # MasterCard number
+    summary: debug
+```
 
-<!--- TODO: Give example config for the redaction processor or remove this line. --->
+See the
+[README](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor)
+for more details on adding the `redaction` processor to your Collector
+configuration.
 
 ## Safeguard resource utilization
 
