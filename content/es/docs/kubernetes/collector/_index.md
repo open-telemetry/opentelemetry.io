@@ -1,5 +1,5 @@
 ---
-title: Colector OpenTelemetry y Kubernetes
+title: OpenTelemetry Collector y Kubernetes
 linkTitle: Colector
 default_lang_commit: f7cb8b65a478450d80d703b34c8473c579702108
 ---
