@@ -7,7 +7,7 @@ weight: 112
 When configuring the OpenTelemetry (OTel) Collector, consider these best
 practices to better secure your Collector instance.
 
-## Receivers and exporters
+## Minimize your configuration
 
 We recommend enabling a limited set of components in your Collector
 configuration. Minimizing the number of components you use minimizes the attack
@@ -27,7 +27,16 @@ surface exposed.
   Improperly setting these values might expose the OpenTelemetry Collector to
   additional attack vectors.
 
-### Safeguards against denial of service attacks
+## Use encryption and authentication
+
+Your OTel Collector configuration should include encryption and authentication.
+
+- For communication encryption, see
+  [Configuring certificates](/docs/collector/configuration/#setting-up-certificates).
+- For authentication, use the OTel Collector's authentication mechanism, as
+  described in [Authentication](/docs/collector/configuration/#authentication).
+
+## Protect against denial of service attacks
 
 For server-like receivers and extensions, you can protect your Collector from
 exposure to the public internet or to wider networks than necessary by binding
@@ -64,29 +73,11 @@ as Docker or Kubernetes, see the
 in our component developer documentation for ideas on how to bind your component
 endpoints.
 
-### Encryption and authentication
-
-Your OTel Collector configuration should include encryption and authentication.
-
-- For communication encryption, see
-  [Configuring certificates](/docs/collector/configuration/#setting-up-certificates).
-- For authentication, use the OTel Collector's authentication mechanism, as
-  described in [Authentication](/docs/collector/configuration/#authentication).
-
-## Processors
+## Scrub sensitive data
 
 [Processors](/docs/collector/configuration/#processors) sit between receivers
 and exporters. They are responsible for processing telemetry before it's
 analyzed. From a security perspective, processors are useful in a few ways.
-
-### Recommended processors
-
-<!--- TODO: SHOULD configure recommended processors. If so, what are they?
-
-redaction processor (never tried myself)
-transform processor (great for redacting PIIs and such) -->
-
-### Scrubbing sensitive data
 
 You can use the OpenTelemetry Collector to scrub sensitive data before exporting
 it to a backend. Configure the Collector to obfuscate or scrub sensitive data
@@ -98,7 +89,7 @@ Use OpenTelemetry Collector's `redaction` processor to scrub sensitive data.
 
 <!--- TODO: Give example config for the redaction processor or remove this line. --->
 
-### Safeguarding resource utilization
+## Safeguard resource utilization
 
 Processors also offer safeguards for resource utilization. After implementing
 safeguards for resource utilization in your
