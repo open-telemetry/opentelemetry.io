@@ -18,3 +18,4 @@ package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-psr16
   version: 0.0.3
+isFirstParty: false

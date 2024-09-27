@@ -3,15 +3,6 @@ title: Zero-code Instrumentation
 weight: 260
 ---
 
-{{% pageinfo color="warning" %}}
-
-🚧 The content of this section is under active development. To track progress,
-see [Issue #4427]
-
-[Issue #4427]: https://github.com/open-telemetry/opentelemetry.io/issues/4427
-
-{{% /pageinfo %}}
-
 OpenTelemetry [zero-code instrumentation][] is supported for the languages listed
 below in the section index.
 

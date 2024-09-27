@@ -16,3 +16,4 @@ package:
   registry: npm
   name: '@opentelemetry/instrumentation-restify'
   version: 0.41.0
+isFirstParty: false

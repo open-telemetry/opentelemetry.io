@@ -16,3 +16,4 @@ package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-guzzle
   version: 1.0.0
+isFirstParty: false

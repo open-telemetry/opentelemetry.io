@@ -7,9 +7,10 @@ tags:
   - connect
   - grpc
 license: Apache 2.0
-description: Go contrib plugin for Connect RPC.
+description: Go contrib plugin for Connect RPC
 authors:
-  - name: Buf
+  - name: Connect Authors
 urls:
-  repo: https://github.com/bufbuild/connect-opentelemetry-go
+  repo: https://github.com/connectrpc/otelconnect-go
 createdAt: 2023-01-19
+isFirstParty: true

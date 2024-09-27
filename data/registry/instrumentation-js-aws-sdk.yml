@@ -22,3 +22,4 @@ package:
   name: '@opentelemetry/instrumentation-aws-sdk'
   registry: npm
   version: 0.44.0
+isFirstParty: false
