@@ -16,3 +16,4 @@ package:
   registry: npm
   name: '@opentelemetry/instrumentation-ioredis'
   version: 0.43.0
+isFirstParty: false

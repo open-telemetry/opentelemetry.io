@@ -17,3 +17,4 @@ package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-ext-amqp
   version: 0.0.4
+isFirstParty: false

@@ -19,3 +19,4 @@ package:
   name: '@jufab/opentelemetry-angular-interceptor'
   registry: npm
   version: 1.9.0
+isFirstParty: false

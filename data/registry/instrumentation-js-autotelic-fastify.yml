@@ -19,3 +19,4 @@ package:
   name: '@autotelic/fastify-opentelemetry'
   registry: npm
   version: 0.22.0
+isFirstParty: false

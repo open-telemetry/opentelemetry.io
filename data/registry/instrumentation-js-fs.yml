@@ -16,3 +16,4 @@ package:
   registry: npm
   name: '@opentelemetry/instrumentation-fs'
   version: 0.15.0
+isFirstParty: false

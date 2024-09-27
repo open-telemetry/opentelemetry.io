@@ -19,3 +19,4 @@ package:
   registry: npm
   name: '@opentelemetry/instrumentation-mysql2'
   version: 0.41.0
+isFirstParty: false
