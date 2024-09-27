@@ -62,8 +62,8 @@ if given setting supports it, then:
 
 ## Global settings
 
-| Environment variable                 | Description                                                                                                                                                                                                                             | Default value | Status                                                                                                                            |
-|--------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------------------------------------------------- |
+| Environment variable                 | Description                                                                                                                                                                                                                             | Default value | Status                                                    |
+| ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | --------------------------------------------------------- |
 | `OTEL_DOTNET_AUTO_HOME`              | Installation location.                                                                                                                                                                                                                  |               | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_EXCLUDE_PROCESSES` | Names of the executable files that the profiler cannot instrument. Supports multiple comma-separated values, for example: `ReservedProcess.exe,powershell.exe`. If unset, the profiler attaches to all processes by default. \[1\]\[2\] |               | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_FAIL_FAST_ENABLED` | Enables possibility to fail process when automatic instrumentation cannot be executed. It is designed for debugging purposes. It should not be used in production environment. \[1\]                                                    | `false`       | [Experimental](/docs/specs/otel/versioning-and-stability) |
@@ -74,8 +74,8 @@ if given setting supports it, then:
 excluded from instrumentation by `OTEL_DOTNET_AUTO_EXCLUDE_PROCESSES` will fail
 instead of silently continue.
 
-\[2\] Notice that applications launched via `dotnet MyApp.dll` have process
-name `dotnet` or `dotnet.exe`.
+\[2\] Notice that applications launched via `dotnet MyApp.dll` have process name
+`dotnet` or `dotnet.exe`.
 
 ## Resources
 
@@ -99,8 +99,8 @@ for more details.
 
 The following resource detectors are included and enabled by default:
 
-| ID                | Description                | Documentation                                                                                                                                                                                                                         | Status                                                                                                                            |
-|-------------------|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| ID                | Description                | Documentation                                                                                                                                                                                                                         | Status                                                    |
+| ----------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
 | `AZUREAPPSERVICE` | Azure App Service detector | [Azure resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Azure-1.0.0-beta.9/src/OpenTelemetry.Resources.Azure/README.md)                                                 | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `CONTAINER`       | Container detector         | [Container resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Container-1.0.0-beta.9/src/OpenTelemetry.Resources.Container/README.md) **Not supported on .NET Framework** | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `HOST`            | Host detector              | [Host resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Host-0.1.0-beta.3/src/OpenTelemetry.Resources.Host/README.md)                                                    | [Experimental](/docs/specs/otel/versioning-and-stability) |
@@ -147,11 +147,11 @@ probability, a number in the [0..1] range, e.g. "0.25". Default is 1.0.
 
 Exporters output the telemetry.
 
-| Environment variable    | Description                                                                                                                                                                                                                                                                                                      | Default value | Status                                                                                                                      |
-|-------------------------|--------------------------------------------------------------------|---------------|---------------------------------------------------- |
-| `OTEL_TRACES_EXPORTER`  | Comma-separated list of propagators. Supported options: `otlp`, `zipkin`, `console`, `none`. | `otlp`        | [Stable](/docs/specs/otel/versioning-and-stability) |
+| Environment variable    | Description                                                                                      | Default value | Status                                              |
+| ----------------------- | ------------------------------------------------------------------------------------------------ | ------------- | --------------------------------------------------- |
+| `OTEL_TRACES_EXPORTER`  | Comma-separated list of propagators. Supported options: `otlp`, `zipkin`, `console`, `none`.     | `otlp`        | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_METRICS_EXPORTER` | Comma-separated list of propagators. Supported options: `otlp`, `prometheus`, `console`, `none`. | `otlp`        | [Stable](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_LOGS_EXPORTER`    | Comma-separated list of propagators. Supported options: `otlp`, `console`, `none`. | `otlp`        | [Stable](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_LOGS_EXPORTER`    | Comma-separated list of propagators. Supported options: `otlp`, `console`, `none`.               | `otlp`        | [Stable](/docs/specs/otel/versioning-and-stability) |
 
 ### Traces exporter
 
@@ -187,8 +187,8 @@ To customize the OTLP exporter using environment variables, see the
 [OTLP exporter documentation](https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.5.1/src/OpenTelemetry.Exporter.OpenTelemetryProtocol#environment-variables).
 Important environment variables include:
 
-| Environment variable                                | Description                                                                                                                                                                                                | Default value                                                                        | Status                                                                                                                      |
-|-----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|---------------------------------------------------- |
+| Environment variable                                | Description                                                                                                                                                                                                | Default value                                                                        | Status                                              |
+| --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------- |
 | `OTEL_EXPORTER_OTLP_ENDPOINT`                       | Target endpoint for the OTLP exporter. See [the OpenTelemetry specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/exporter.md) for more details. | `http/protobuf`: `http://localhost:4318`, `grpc`: `http://localhost:4317`            | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`                | Equivalent to `OTEL_EXPORTER_OTLP_ENDPOINT`, but applies only to traces.                                                                                                                                   | `http/protobuf`: `http://localhost:4318/v1/traces`, `grpc`: `http://localhost:4317`  | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT`               | Equivalent to `OTEL_EXPORTER_OTLP_ENDPOINT`, but applies only to metrics.                                                                                                                                  | `http/protobuf`: `http://localhost:4318/v1/metrics`, `grpc`: `http://localhost:4317` | [Stable](/docs/specs/otel/versioning-and-stability) |
@@ -219,15 +219,18 @@ Important environment variables include:
 
 - The OpenTelemetry .NET Automatic Instrumentation defaults to `http/protobuf`,
   which differs from the OpenTelemetry .NET SDK default value of `grpc`.
-- On .NET 6 and higher, the application must reference [`Grpc.Net.Client`](https://www.nuget.org/packages/Grpc.Net.Client/)
-  to use the `grpc` OTLP exporter protocol. For example, by adding
+- On .NET 6 and higher, the application must reference
+  [`Grpc.Net.Client`](https://www.nuget.org/packages/Grpc.Net.Client/) to use
+  the `grpc` OTLP exporter protocol. For example, by adding
   `<PackageReference Include="Grpc.Net.Client" Version="2.65.0" />` to the
   `.csproj` file.
 - On .NET Framework, the `grpc` OTLP exporter protocol is not supported.
 
-**[2]**: The recognized (case-insensitive) values for `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` are:
+**[2]**: The recognized (case-insensitive) values for
+`OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` are:
 
-- `Cumulative`: Choose cumulative aggregation temporality for all instrument kinds.
+- `Cumulative`: Choose cumulative aggregation temporality for all instrument
+  kinds.
 - `Delta`: Choose Delta aggregation temporality for Counter, Asynchronous
   Counter and Histogram instrument kinds, choose Cumulative aggregation for
   UpDownCounter and Asynchronous UpDownCounter instrument kinds.
@@ -235,7 +238,8 @@ Important environment variables include:
   Synchronous Counter and Histogram and uses Cumulative aggregation temporality
   for Synchronous UpDownCounter, Asynchronous Counter, and Asynchronous
   UpDownCounter instrument kinds.
-  - ⚠️ This value known from [specification](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.35.0/specification/metrics/sdk_exporters/otlp.md?plain=1#L48)
+  - ⚠️ This value known from
+    [specification](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.35.0/specification/metrics/sdk_exporters/otlp.md?plain=1#L48)
     is not supported.
 
 ### Prometheus

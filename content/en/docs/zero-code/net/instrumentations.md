@@ -41,8 +41,8 @@ is the case-sensitive name of the instrumentation.
 stable, but particular instrumentation libraries are in Experimental status due
 to lack of stable semantic convention.
 
-| ID                    | Instrumented library                                                                                                                                                                                               | Supported versions     | Instrumentation type | Status                                                                                                                            |
-|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|----------------------|---------------------------------------------------------- |
+| ID                    | Instrumented library                                                                                                                                                                                               | Supported versions     | Instrumentation type | Status                                                    |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------- | -------------------- | --------------------------------------------------------- |
 | `ASPNET`              | ASP.NET (.NET Framework) MVC / WebApi \[1\] **Not supported on .NET**                                                                                                                                              | \* \[2\]               | source & bytecode    | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `ASPNETCORE`          | ASP.NET Core **Not supported on .NET Framework**                                                                                                                                                                   | \*                     | source               | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `AZURE`               | [Azure SDK](https://azure.github.io/azure-sdk/releases/latest/index.html)                                                                                                                                          | \[3\]                  | source               | [Experimental](/docs/specs/otel/versioning-and-stability) |
@@ -73,14 +73,14 @@ to lack of stable semantic convention.
 
 \[3\]: `Azure.` prefixed packages, released after October 1, 2021.
 
-\[4\]: `Elastic.Clients.Elasticsearch` version ≥8.0.0 and <8.10.0.
-        Version ≥8.10.0 is supported by `Elastic.Transport` instrumentation.
+\[4\]: `Elastic.Clients.Elasticsearch` version ≥8.0.0 and <8.10.0. Version
+≥8.10.0 is supported by `Elastic.Transport` instrumentation.
 
 \[5\]: `Confluent.Kafka` is supported from version ≥1.8.2 on ARM64.
 
-\[6\]: `Microsoft.Data.SqlClient` v3.* is not supported on .NET Framework,
-        due to [issue](https://github.com/open-telemetry/opentelemetry-dotnet/issues/4243).
-       `System.Data.SqlClient` is supported from version 4.8.5.
+\[6\]: `Microsoft.Data.SqlClient` v3.\* is not supported on .NET Framework, due
+to [issue](https://github.com/open-telemetry/opentelemetry-dotnet/issues/4243).
+`System.Data.SqlClient` is supported from version 4.8.5.
 
 ## Metrics instrumentations
 

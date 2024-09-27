@@ -13119,6 +13119,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:26:32.105686-05:00"
   },
+  "https://www.nuget.org/packages/RabbitMQ.Client/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-27T11:24:36.621768676Z"
+  },
   "https://www.nuget.org/packages/StackExchange.Redis": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:26:49.163589-05:00"
