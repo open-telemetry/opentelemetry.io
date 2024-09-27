@@ -174,7 +174,7 @@ qualifiers, for example, `Log record`. See [more][log]
 
 ### **Log record**
 
-A recording of an [Event](#event). Typically. the record includes a timestamp
+A recording of an [Event](#event). Typically, the record includes a timestamp
 indicating when the [Event](#event) happened as well as other data that
 describes what happened, where it happened, and so on. See [more][log record].
 

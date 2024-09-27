@@ -16,3 +16,4 @@ package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-psr15
   version: 1.0.6
+isFirstParty: false

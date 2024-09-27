@@ -62,8 +62,8 @@ Consider sampling if you meet any of the following criteria:
   beyond errors and latency.
 - You can describe some common rules that determine if data should be sampled or
   dropped.
-- You have a tell your services apart, so that high- and low-volume services are
-  sampled differently.
+- You have a way to tell your services apart, so that high- and low-volume
+  services are sampled differently.
 - You have the ability to route unsampled data (for "just in case" scenarios) to
   low-cost storage systems.
 
@@ -103,7 +103,7 @@ as possible. A decision to sample or drop a span or trace is not made by
 inspecting the trace as a whole.
 
 For example, the most common form of head sampling is
-[Consistent Probability Sampling](/docs/specs/otel/trace/tracestate-probability-sampling/#consistent-probability-sampling).
+[Consistent Probability Sampling](/docs/specs/otel/trace/tracestate-probability-sampling-experimental/#consistent-probability-sampling).
 This is also be referred to as Deterministic Sampling. In this case, a sampling
 decision is made based on the trace ID and the desired percentage of traces to
 sample. This ensures that whole traces are sampled - no missing spans - at a

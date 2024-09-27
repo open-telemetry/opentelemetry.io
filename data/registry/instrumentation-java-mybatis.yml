@@ -13,3 +13,4 @@ description: Instrumentation for MyBatis
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2024-04-18
+isFirstParty: false

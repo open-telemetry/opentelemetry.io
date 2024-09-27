@@ -12,3 +12,4 @@ description: Instrumentation for XXL-JOB
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2024-04-18
+isFirstParty: false

@@ -15,3 +15,4 @@ authors:
 urls:
   repo: https://github.com/signalfx/splunk-otel-go/tree/main/instrumentation/github.com/julienschmidt/httprouter/splunkhttprouter
 createdAt: 2022-01-20
+isFirstParty: false

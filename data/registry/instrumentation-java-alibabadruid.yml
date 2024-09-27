@@ -15,3 +15,4 @@ description:
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2024-01-19
+isFirstParty: false

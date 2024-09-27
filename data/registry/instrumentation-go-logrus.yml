@@ -14,3 +14,4 @@ authors:
 urls:
   repo: https://github.com/uptrace/opentelemetry-go-extra/tree/main/otellogrus
 createdAt: 2021-10-25
+isFirstParty: false

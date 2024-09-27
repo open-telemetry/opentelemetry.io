@@ -16,3 +16,4 @@ package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-wordpress
   version: 0.0.16
+isFirstParty: false
