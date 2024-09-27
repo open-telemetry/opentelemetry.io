@@ -44,11 +44,7 @@ from `0.0.0.0` to `localhost` in all components by enabling the
 
 If `localhost` resolves to a different IP due to your DNS settings, then
 explicitly use the loopback IP instead: `127.0.0.1` for IPv4 or `::1` for IPv6.
-In IPv6 setups, make sure your system supports both IPv4 and IPv6 loopback
-addresses.
-
-For example, you can override the `localhost` default address and configure an
-OTLP receiver's gRPC server to `127.0.0.1`:
+For example, here's an IPv4 configuration using a `gRPC` port:
 
 ```yaml
 receivers:
@@ -57,6 +53,10 @@ receivers:
       grpc:
         endpoint: 127.0.0.1:4317
 ```
+
+In IPv6 setups, make sure your system supports both IPv4 and IPv6 loopback
+addresses so the network functions properly in dual-stack environments and
+applications, where both protocol versions are used.
 
 If you are working in environments that have nonstandard networking setups, such
 as Docker or Kubernetes, see the
