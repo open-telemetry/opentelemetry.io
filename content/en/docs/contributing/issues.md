@@ -1,7 +1,7 @@
 ---
 title: Issues
 description:
-  How to fix an existing issue, or report a bug, a security risk, or a potential
+  How to fix an existing issue, or report a bug, security risk, or potential
   improvement.
 weight: 10
 cSpell:ignore: prepopulated
