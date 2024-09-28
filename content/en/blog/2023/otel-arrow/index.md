@@ -24,8 +24,8 @@ repository that supports this protocol. This protocol, designed to complement
 the OTLP protocol in situations with substantial telemetry data volumes, has
 been under discussion and development for two years. It represents a
 collaborative effort between [F5](https://f5.com),
-[ServiceNow Cloud Observability](https://www.servicenow.com/products/observability.html)
-, and numerous technical leaders from the OpenTelemetry community (see
+[ServiceNow Cloud Observability](https://www.servicenow.com/products/observability.html),
+and numerous technical leaders from the OpenTelemetry community (see
 [donation](https://github.com/open-telemetry/community/issues/1332)). The
 compression benefits are significant, demonstrating a **40% improvement
 compression efficiency** for the majority of workloads and even greater
