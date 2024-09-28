@@ -15,7 +15,7 @@ techs and tools:
 - YAML
 
 For technical details concerning how the documentation is built and tested
-locally, see [Development](/docs/contributing/development).
+locally, see [Development](../development).
 
 ## Sign the CNCF CLA {#cla}
 

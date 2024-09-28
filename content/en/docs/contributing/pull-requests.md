@@ -344,8 +344,7 @@ using [Netlify](https://www.netlify.com/).
   the OpenTelemetry website with your changes applied. This is how reviewers
   check your changes.
 
-Other checks might also fail. See the
-[list of all PR checks](/docs/contributing/pr-checks).
+Other checks might also fail. See the [list of all PR checks](../pr-checks).
 
 ### Fix content issues automatically
 
@@ -363,9 +362,8 @@ npm run test    # Checks but does not update any files
 npm run fix:all # May update files
 ```
 
-To list available NPM scripts, run `npm run`. See
-[PR checks](/docs/contributing/pr-checks) for more information on pull request
-checks and how to fix errors automatically.
+To list available NPM scripts, run `npm run`. See [PR checks](../pr-checks) for
+more information on pull request checks and how to fix errors automatically.
 
 ### Preview your changes locally {#preview-locally}
 

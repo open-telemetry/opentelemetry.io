@@ -17,6 +17,7 @@ One of the best ways to help make OTel docs better is to fix an existing issue.
 2. Select an issue that you would like to work on, ideally one that you can fix
    in a short amount of time.
 
+   <!-- prettier-ignore -->
    <a name="first-issue"></a>
    {{% alert title="First time contributing? " %}}
 

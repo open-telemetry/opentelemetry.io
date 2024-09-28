@@ -35,7 +35,7 @@ guidance.
 OpenTelemetry documentation contributors:
 
 - Improve existing or create new content
-- [Submit a blog post](/docs/contributing/blog/) or case study
+- [Submit a blog post](blog/) or case study
 - Add to or update the [OpenTelemetry Registry](/ecosystem/registry/)
 - Improve the code that builds the site
 

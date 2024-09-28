@@ -22,8 +22,8 @@ before submitting a
 [pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)
 (PR), run `npm run fix:all` on your local machine and commit the changes.
 
-If you run into errors or [failed PR checks](/docs/contributing/pr-checks), read
-about our style guide and learn what you can do to fix certain common issues.
+If you run into errors or [failed PR checks](../pr-checks), read about our style
+guide and learn what you can do to fix certain common issues.
 
 {{% /alert %}}
 
