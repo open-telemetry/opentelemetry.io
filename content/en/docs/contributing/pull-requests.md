@@ -50,7 +50,17 @@ _Figure 1. Contributing new content._
 ## Changes using GitHub {#changes-using-github}
 
 If you're less experienced with Git workflows, here's an easier method of
-opening a pull request. Figure 2 outlines the steps and the details follow.
+creating and submitting a pull request. Figure 2 outlines the steps and the
+details follow.
+
+{{% alert title="Contributor License Agreement (CLA)" color=warning %}}
+
+All contributors are required to [sign a Contributor License Agreement
+(CLA)][CLA] before changes can be approved and merged.
+
+[CLA]: ../prerequisites/#cla
+
+{{% /alert %}}
 
 ```mermaid
 flowchart LR

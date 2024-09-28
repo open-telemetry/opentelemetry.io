@@ -10,10 +10,13 @@ Thanks for your interest in contributing to the OpenTelemetry docs and website.
 
 What do you want to do?
 
-- Correct a typo or other quick fixes, see
+- Correct a **typo or other quick fixes**, see
   [Submitting content using GitHub](pull-requests/#changes-using-github)
-- For any more significant contribution, read the pages in this section starting
-  with [Prerequisites], [Issues], and [Submitting content].
+- For more significant contributions, read the pages in this section starting
+  with:
+  - [Prerequisites]
+  - [Issues]
+  - [Submitting content]
 
 [Prerequisites]: prerequisites/
 [Issues]: issues/
