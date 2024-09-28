@@ -1,9 +1,52 @@
 ---
-title: Reporting an issue
-description: How to report a bug, a security issue, or a potential improvement.
-weight: 50
+title: Issues
+description:
+  How to fix an existing issue, or report a bug, a security risk, or a potential
+  improvement.
+weight: 10
 cSpell:ignore: prepopulated
+_issues: https://github.com/open-telemetry/opentelemetry.io/issues
+_issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A
 ---
+
+## Fixing an existing issue
+
+One of the best ways to help make OTel docs better is to fix an existing issue.
+
+1. Browse through the list of [issues]({{% param _issues %}}).
+2. Select an issue that you would like to work on, ideally one that you can fix
+   in a short amount of time.
+
+   <a name="first-issue"></a>
+   {{% alert title="First time contributing? " %}}
+
+   Select an issue with the following labels:
+
+   - [Good first issue]
+   - [Help wanted]
+
+   <!-- prettier-ignore -->
+   > **NOTE**: we **_do not_ assign issues** to those who
+   > have not already made contributions to the [OpenTelemetry
+   > organization][org].
+   {.mt-3}
+
+   <!-- prettier-ignore -->
+   [good first issue]: {{% param _issue %}}%22good+first+issue%22
+   [help wanted]: {{% param _issue %}}%3A%22help+wanted%22
+   [org]: https://github.com/open-telemetry
+
+   {{% /alert %}}
+
+3. Read through the issue comments, if any.
+4. Ask maintainers if this issue is still relevant, and ask any questions you
+   need for clarification by posting comments over the issue.
+5. Share your intention to work on the issue by adding add a comment to this
+   effect.
+6. Work on fixing the issue. Let maintainers now if you run into any problems.
+7. When ready, [submit your work through a pull request](../pull-requests) (PR).
+
+## Reporting an issue
 
 If you notice an error or want to suggest improvements to existing content, open
 an issue.
