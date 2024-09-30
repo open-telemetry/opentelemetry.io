@@ -8,6 +8,7 @@ adservice
 alibaba
 Alolita
 APAC
+apidocs
 appdynamics
 appender
 appenders
@@ -52,6 +53,7 @@ jaeger
 jaegertracing
 javaagent
 javadoc
+javadocs
 jboss
 jdbc
 julia

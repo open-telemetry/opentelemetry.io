@@ -13,3 +13,4 @@ authors:
 urls:
   repo: https://github.com/gofiber/contrib/tree/main/otelfiber
 createdAt: 2022-01-14
+isFirstParty: True

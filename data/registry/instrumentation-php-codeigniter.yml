@@ -17,3 +17,4 @@ package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-codeigniter
   version: 0.0.8
+isFirstParty: false

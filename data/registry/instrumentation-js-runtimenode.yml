@@ -20,3 +20,4 @@ package:
   registry: npm
   name: '@opentelemetry/instrumentation-runtime-node'
   version: 0.7.0
+isFirstParty: false

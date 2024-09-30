@@ -8,9 +8,11 @@ CheckMailto: false
 TestFilesConcurrently: true
 IgnoreDirs:
   - ^blog/(\d+/)?page/\d+
+  # TODO drop after https://github.com/open-telemetry/opentelemetry.io/issues/5267 is fixed:
+  - zh/docs/contributing/pr-checks
 IgnoreInternalURLs: # list of paths
 IgnoreURLs: # list of regexs of paths or URLs to be ignored
-  - ^(/..)?/docs/languages/\w+/(api|examples|registry)/$
+  - ^((/..)?/docs/languages/\w+|\.\.)/(api|examples|registry)/$
   - ^(/..)?/docs/collector/registry/$
   - ^(/..)?/docs/languages/net/(metrics-api|traces-api)/
   - ^((/..)?/docs/migration/)?opencensus/$
