@@ -44,7 +44,7 @@ One of the best ways to help make OTel docs better is to fix an existing issue.
    need for clarification by posting comments over the issue.
 5. Share your intention to work on the issue by adding add a comment to this
    effect.
-6. Work on fixing the issue. Let maintainers now if you run into any problems.
+6. Work on fixing the issue. Let maintainers know if you run into any problems.
 7. When ready, [submit your work through a pull request](../pull-requests) (PR).
 
 ## Reporting an issue
