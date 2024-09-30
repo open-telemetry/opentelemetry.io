@@ -256,7 +256,7 @@ public class PostgresIntegrationTests
 The OpenTelemetry Spring Boot starter sends the telemetry data with the
 [OpenTelemetry Protocol](/docs/specs/otlp/) (OTLP). By default, it sends the
 data over HTTP. You can also
-[switch to gRPC](/docs/languages/java/configuration/#otlp-exporter-span-metric-and-log-exporters).
+[switch to gRPC](/docs/languages/java/configuration/#properties-exporters).
 
 We are going to add an [OpenTelemetry Collector](/docs/collector/) and display
 the telemetry data in the Collector logs.
