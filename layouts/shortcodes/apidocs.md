@@ -15,5 +15,15 @@
 {{ end -}}
 
 {{ range $pages }}
-* [{{ .lang.name }} &mdash; {{ .page.Title }}]({{ .page.Permalink }})
-{{ end -}}
+{{ $title := replaceRE `API reference` "" .page.Title -}}
+
+- [
+    {{- .lang.name }}
+    {{ with $title -}}
+      &mdash; {{ . }}
+    {{ end -}}
+  ](
+    {{- .page.Permalink -}}
+  )
+
+{{- end -}}
