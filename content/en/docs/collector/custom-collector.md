@@ -168,7 +168,10 @@ receivers:
 
 {{% alert color="primary" title="Tip" %}}
 
-For a list of components that you can add to your custom collector, see the [OpenTelemetry Registry](/ecosystem/registry/?language=collector). Note that registry entries provide the full name and version you need to add to your `builder-config.yaml`.
+For a list of components that you can add to your custom collector, see the
+[OpenTelemetry Registry](/ecosystem/registry/?language=collector). Note that
+registry entries provide the full name and version you need to add to your
+`builder-config.yaml`.
 
 {{% /alert %}}
 
