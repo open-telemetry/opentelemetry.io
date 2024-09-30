@@ -2591,6 +2591,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-06-12T11:21:07.765039+02:00"
   },
+  "https://docs.github.com/en/pull-requests": {
+    "StatusCode": 206,
+    "LastSeen": "2024-09-28T12:02:48.071874-04:00"
+  },
   "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T15:25:17.633498-05:00"
