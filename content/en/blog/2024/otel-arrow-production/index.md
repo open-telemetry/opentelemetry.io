@@ -2,10 +2,9 @@
 title: OpenTelemetry Protocol with Apache Arrow in Production
 linkTitle: OpenTelemetry Arrow in Production
 date: 2024-09-25
-author:
-  >- # If you have only one author, then add the single name on this line in quotes.
-  [Joshua MacDonald](https://github.com/jmacd) (ServiceNow, Inc), [Laurent
-  Querel](https://github.com/lquerel) (F5, Inc)
+author: >-
+  [Joshua MacDonald](https://github.com/jmacd) (ServiceNow), [Laurent
+  Querel](https://github.com/lquerel) (F5)
 cSpell:ignore: Querel Zstd
 issue: 5193
 sig: OpenTelemetry Arrow
@@ -54,8 +53,8 @@ OpenTelemetry Collectors.
 The compression bridge consists of two OpenTelemetry Collectors labeled exporter
 and receiver, or they could equally be two pools of load-balanced collectors.
 
-As described in this
-["OTEP" design document](https://github.com/open-telemetry/oteps/blob/main/text/0156-columnar-encoding.md#mapping-otel-entities-to-arrow-records),
+As described in the
+[OTEP 0156 design document](https://github.com/open-telemetry/oteps/blob/main/text/0156-columnar-encoding.md#mapping-otel-entities-to-arrow-records),
 the exporter converts arbitrary OpenTelemetry data into an Arrow record batch.
 The Arrow record batch is a block of memory, with a standardized layout, making
 it possible to exchange data across address spaces and virtual process
@@ -224,7 +223,7 @@ giving them an opportunity to retry on another connection, and it gives the
 service operator a chance to auto-scale the number of instances to handle the
 increase in load based on memory utilization.
 
-See the
+For details, see the
 [documentation on batching and back-pressure](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/otelarrowexporter/README.md#batching-configuration)
 for the OTel-Arrow exporter.
 
@@ -246,7 +245,7 @@ the OpenTelemetry standard OTLP over gRPC, with round-robin load balancing. The
 gateway collectors apply a variety of processors, including the concurrent batch
 processor described above, followed by the OTel-Arrow exporter.
 
-![A pool of gateway collectors sends to a load balancer, then to a backend service.](./setup.png)
+![A pool of gateway collectors sends to a load balancer, then to a backend service.](setup.png)
 
 On the other side of the bridge, a pool of Envoy load balancers distributes the
 streams across a pool of collectors running the OTel-Arrow receiver, after
