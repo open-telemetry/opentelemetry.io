@@ -74,8 +74,8 @@ direction TB
 end
 subgraph tasks2[ ]
 direction TB
-4[select Propose file change] --> 5[select Create pull request] --> 6[fill in Open a pull request]
-6 --> 7[select Create pull request]
+    4[select Propose file change] --> 5[select Create pull request] --> 6[fill in Open a pull request]
+    6 --> 7[select Create pull request]
 end
 
 id1 --> tasks --> tasks2
