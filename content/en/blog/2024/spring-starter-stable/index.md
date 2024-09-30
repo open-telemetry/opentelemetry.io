@@ -10,7 +10,8 @@ sig: Java
 cSpell:ignore: Bisutti Gregor Zeitlinger
 ---
 
-We're proud to announce that the OpenTelemetry Spring Boot starter is now stable.
+We're proud to announce that the OpenTelemetry Spring Boot starter is now
+stable.
 
 The [Spring Boot](https://spring.io/projects/spring-boot) starter is a powerful
 tool that simplifies the process of instrumenting Spring Boot applications with
@@ -18,9 +19,11 @@ OpenTelemetry. It provides a lightweight, flexible alternative to the
 OpenTelemetry Java agent, making it easier than ever to observe your Spring Boot
 applications.
 
-In this blog post, we will explain when you should use the Spring Starter, what it
-actually means to be stable, what are the main features, and which challenges we faced. 
-In the last part, we will demonstrate some of the starter's features using a [GraalVM native image](https://www.graalvm.org/latest/reference-manual/native-image/) 
+In this blog post, we will explain when you should use the Spring Starter, what
+it actually means to be stable, what are the main features, and which challenges
+we faced. In the last part, we will demonstrate some of the starter's features
+using a
+[GraalVM native image](https://www.graalvm.org/latest/reference-manual/native-image/)
 application.
 
 If you just want to get started, check out the
@@ -32,9 +35,9 @@ Here are some scenarios where you might want to use the Spring Starter:
 
 - **Spring Boot Native image** applications for which the OpenTelemetry Java
   agent does not work
-- **Startup overhead** of the OpenTelemetry Java agent exceeds your
-  requirements
-- Another monitoring Java agent is already used and it is causing compatibility issues with the OpenTelemetry Java agent
+- **Startup overhead** of the OpenTelemetry Java agent exceeds your requirements
+- Another monitoring Java agent is already used and it is causing compatibility
+  issues with the OpenTelemetry Java agent
 - **Spring Boot configuration files** (`application.properties`,
   `application.yml`) to configure the OpenTelemetry Spring Boot starter which
   doesn't work with the OpenTelemetry Java agent
@@ -43,12 +46,14 @@ Here are some scenarios where you might want to use the Spring Starter:
   [dynamic auth headers](/docs/zero-code/java/spring-boot-starter/sdk-configuration/#configure-the-exporter-programmatically),
   using Spring beans (the OpenTelemetry Java agent requires an
   [extension](/docs/zero-code/java/agent/extensions/) for this)
-- **Uses code dependencies**: You don't need to add any JVM options (e.g. in your Docker file) - 
-  just add a dependency and a BOM to your `pom.xml` or `build.gradle` file
+- **Uses code dependencies**: You don't need to add any JVM options (e.g. in
+  your Docker file) - just add a dependency and a BOM to your `pom.xml` or
+  `build.gradle` file
 
-It may be a bit surprising, but if you don't build a Spring native image application
-our default recommendation is to use the [**OpenTelemetry Java agent**](/docs/zero-code/java/agent)
-with bytecode instrumentation, as it provides more out of the box instrumentation than the 
+It may be a bit surprising, but if you don't build a Spring native image
+application our default recommendation is to use the
+[**OpenTelemetry Java agent**](/docs/zero-code/java/agent) with bytecode
+instrumentation, as it provides more out of the box instrumentation than the
 Spring Starter instrumentations - as we will see later.
 
 ## What does it mean to be stable?
@@ -69,56 +74,66 @@ use.
 - **Regular Updates**: The Spring Starter is actively maintained and updated
   with new features and bug fixes.
 
-Note that the Spring Starter uses some semantic conventions that are not stable, 
-which are still evolving and may change in the future. 
-[HTTP semantic conventions](/docs/specs/semconv/http/http-metrics/) are stable and will not change.
-[Database semantic conventions](/docs/specs/semconv/database/database-metrics/) are still experimental and may change.
-However, they are expected to become stable at the end of 2024.
+Note that the Spring Starter uses some semantic conventions that are not stable,
+which are still evolving and may change in the future.
+[HTTP semantic conventions](/docs/specs/semconv/http/http-metrics/) are stable
+and will not change.
+[Database semantic conventions](/docs/specs/semconv/database/database-metrics/)
+are still experimental and may change. However, they are expected to become
+stable at the end of 2024.
 
 ## Main features of the Spring Starter stable release
 
-When we started the Spring Boot starter stable project in February 2024, we defined the main features we wanted to 
-achieve, which we will explain in the following sections.
+When we started the Spring Boot starter stable project in February 2024, we
+defined the main features we wanted to achieve, which we will explain in the
+following sections.
 
 ### Out of the box instrumentation
 
-The OpenTelemetry starter provides 
+The OpenTelemetry starter provides
 [out of the box instrumentations for most popular usages](/docs/zero-code/java/spring-boot-starter/out-of-the-box-instrumentation/).
-The OpenTelemetry Java agent includes many more [out of the box instrumentations](/docs/zero-code/java/agent/disable/#suppressing-specific-agent-instrumentation),
-but you can opt-in to additional instrumentations in the Spring Starter by 
+The OpenTelemetry Java agent includes many more
+[out of the box instrumentations](/docs/zero-code/java/agent/disable/#suppressing-specific-agent-instrumentation),
+but you can opt-in to additional instrumentations in the Spring Starter by
 [adding a bit of configuration](/docs/zero-code/java/spring-boot-starter/additional-instrumentations/).
 
 One example we heavily improved is the Logback instrumentation.
 
-In the beginning it was not possible to ship all log lines to the OpenTelemetry collector, because the 
-OpenTelemetry bean was not available at the time when the first log lines were emitted. So, we had to cache the logs and
-send them to the OpenTelemetry collector after the OpenTelemetry bean was created. 
+In the beginning it was not possible to ship all log lines to the OpenTelemetry
+Collector, because the OpenTelemetry bean was not available at the time when the
+first log lines were emitted. So, we had to cache the logs and send them to the
+OpenTelemetry Collector after the OpenTelemetry bean was created.
 
-In the past, you had to add the OpenTelemetry Logback appender to your `logback-spring.xml` file. 
-Now, the Spring Boot starter adds the appender automatically if you have not defined one in a Logback file,
-after Spring Boot has 
+In the past, you had to add the OpenTelemetry Logback appender to your
+`logback-spring.xml` file. Now, the Spring Boot starter adds the appender
+automatically if you have not defined one in a Logback file, after Spring Boot
+has
 [initialized the logging system](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/a3f8b1082d8835a81dffd834ec28decca066a3f2/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/internal/instrumentation/logging/LogbackAppenderApplicationListener.java#L64).
 
-### Declarative SDK auto-configuration setup
+### Declarative SDK autoconfiguration setup
 
-The Spring Boot starter allows you to set all [SDK auto-configuration](/docs/languages/java/configuration/)
-properties - as the OpenTelemetry Java agent. 
+The Spring Boot starter allows you to set all
+[SDK autoconfiguration](/docs/languages/java/configuration/) properties - as the
+OpenTelemetry Java agent.
 
-In the beginning, however, the Spring Boot starter only supported some configuration properties in the Spring Boot 
-configuration files - some properties were compatible with the OpenTelemetry Java agent, but some were not.
-Other properties were not supported at all, making it very difficult to switch between the OpenTelemetry Java agent 
-and the Spring Boot starter.
+In the beginning, however, the Spring Boot starter only supported some
+configuration properties in the Spring Boot configuration files - some
+properties were compatible with the OpenTelemetry Java agent, but some were not.
+Other properties were not supported at all, making it very difficult to switch
+between the OpenTelemetry Java agent and the Spring Boot starter.
 
-As a first step, we made the Spring Boot starter use the same 
-[SDK auto-configuration](/docs/languages/java/configuration/) as the OpenTelemetry Java agent, 
-so that the same properties could be used for both. 
+As a first step, we made the Spring Boot starter use the same
+[SDK autoconfiguration](/docs/languages/java/configuration/) as the
+OpenTelemetry Java agent, so that the same properties could be used for both.
 
-The SDK auto-configuration did not support Spring Boot configuration files, however, so we had implement the
+The SDK autoconfiguration did not support Spring Boot configuration files,
+however, so we had implement the
 [ConfigProperties](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure-spi/src/main/java/io/opentelemetry/sdk/autoconfigure/spi/ConfigProperties.java)
-interface with the logic to look up Spring configuration values from a Spring 
+interface with the logic to look up Spring configuration values from a Spring
 [Environment](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/env/Environment.html).
 
-Special consideration was needed for lists and maps - you have to write a `@ConfigurationProperties` class for
+Special consideration was needed for lists and maps - you have to write a
+`@ConfigurationProperties` class for
 [lists](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/release/v2.6.x/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/internal/properties/SpringConfigProperties.java#L104-L106)
 and
 [maps](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/release/v2.6.x/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/internal/properties/SpringConfigProperties.java#L126-L140),
@@ -130,26 +145,31 @@ per [spec](/docs/languages/sdk-configuration/general/#otel_resource_attributes))
 or in a
 [Spring Boot configuration file](/docs/zero-code/java/spring-boot-starter/sdk-configuration/#general-configuration).
 
-### Programmatic SDK auto-configuration setup
+### Programmatic SDK autoconfiguration setup
 
-Spring Boot users also expect to be able to use Spring beans for advanced configuration.
-The SDK auto-configuration did not know about Spring beans, so we came up with a new interface,
+Spring Boot users also expect to be able to use Spring beans for advanced
+configuration. The SDK autoconfiguration did not know about Spring beans, so we
+came up with a new interface,
 [ComponentLoader](https://github.com/open-telemetry/opentelemetry-java/blob/release/v1.40.x/sdk-extensions/autoconfigure/src/main/java/io/opentelemetry/sdk/autoconfigure/internal/ComponentLoader.java),
 that allows you to register Spring beans that will be loaded by the
-OpenTelemetry SDK auto-configuration.
+OpenTelemetry SDK autoconfiguration.
 
-The [Spring Starter implementation of the ComponentLoader interface](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java#L162-L181) 
+The
+[Spring Starter implementation of the ComponentLoader interface](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java#L162-L181)
 uses Spring's `ApplicationContext` to find all beans of a certain type.
 
-This allows you to register your own customizers, and other SDK components as Spring beans.
-You can find the available SPI interfaces implementable as Spring beans in the
-[OpenTelemetry SDK auto-configuration SPI documentation](/docs/languages/java/configuration/#spi-service-provider-interface).
+This allows you to register your own customizers, and other SDK components as
+Spring beans. You can find the available SPI interfaces implementable as Spring
+beans in the
+[OpenTelemetry SDK autoconfiguration SPI documentation](/docs/languages/java/configuration/#spi-service-provider-interface).
 
-You should be able to customize most aspects of the OpenTelemetry SDK by implementing a bean that returns an 
-[`AutoConfigurationCustomizerProvider`](/docs/languages/java/configuration/#autoconfigurationcustomizerprovider) 
+You should be able to customize most aspects of the OpenTelemetry SDK by
+implementing a bean that returns an
+[`AutoConfigurationCustomizerProvider`](/docs/languages/java/configuration/#autoconfigurationcustomizerprovider)
 instance - an idiomatic Spring Boot approach to customization.
 
-This example shows how to create a bean that customizes the sampler to drop spans for paths starting with `/actuator`:
+This example shows how to create a bean that customizes the sampler to drop
+spans for paths starting with `/actuator`:
 
 <!-- prettier-ignore-start -->
 ```java
@@ -180,7 +200,8 @@ public class FilterPaths {
 
 ## The OpenTelemetry Spring Boot starter in action
 
-We will demonstrate some features of the OpenTelemetry Spring Boot starter for OpenTelemetry with the popular Spring PetClinic application.
+We will demonstrate some features of the OpenTelemetry Spring Boot starter for
+OpenTelemetry with the popular Spring PetClinic application.
 
 First, we clone the Spring PetClinic application from GitHub:
 
@@ -189,6 +210,7 @@ git clone https://github.com/spring-projects/spring-petclinic.git
 ```
 
 In the `pom.xml` file, let's add the OpenTelemetry instrumentation BOM:
+
 ```xml
   <dependencyManagement>
     <dependencies>
@@ -203,7 +225,8 @@ In the `pom.xml` file, let's add the OpenTelemetry instrumentation BOM:
 </dependencyManagement>
 ```
 
-Now, we can include the OpenTelemetry Spring Boot starter dependency to the Spring PetClinic application:
+Now, we can include the OpenTelemetry Spring Boot starter dependency to the
+Spring PetClinic application:
 
 ```xml
   <dependency>
@@ -212,25 +235,37 @@ Now, we can include the OpenTelemetry Spring Boot starter dependency to the Spri
   </dependency>
 ```
 
-Navigate to the project directory and build a Spring Boot native image application:
+Navigate to the project directory and build a Spring Boot native image
+application:
+
 ```bash
 cd spring-petclinic
 mvn -Pnative spring-boot:build-image -Dspring-boot.build-image.imageName=spring-petclinic-native
 ```
 
-You may have to disable the `PostgresIntegrationTests` test class to get this command line working ([see](https://github.com/spring-projects/spring-petclinic/issues/1522)):
+You may have to disable the `PostgresIntegrationTests` test class to get this
+command line working
+([see](https://github.com/spring-projects/spring-petclinic/issues/1522)):
+
 ```java
 @Disabled
-public class PostgresIntegrationTests 
+public class PostgresIntegrationTests
 ```
 
-The OpenTelemetry Spring Boot starter sends the telemetry data with the [OpenTelemetry Protocol](https://opentelemetry.io/docs/specs/otlp/) (OTLP). By default, it sends the data over HTTP. You can also [switch to gRPC](https://opentelemetry.io/docs/languages/java/configuration/#otlp-exporter-span-metric-and-log-exporters).
+The OpenTelemetry Spring Boot starter sends the telemetry data with the
+[OpenTelemetry Protocol](https://opentelemetry.io/docs/specs/otlp/) (OTLP). By
+default, it sends the data over HTTP. You can also
+[switch to gRPC](https://opentelemetry.io/docs/languages/java/configuration/#otlp-exporter-span-metric-and-log-exporters).
 
-We are going to add an [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) and display the telemetry data in the Collector logs.
+We are going to add an
+[OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) and display
+the telemetry data in the Collector logs.
 
-You can also use your favorite OTLP-compatible backend - we use Collector logs for simplicity here.
+You can also use your favorite OTLP-compatible backend - we use Collector logs
+for simplicity here.
 
-To do this, let's begin with adding the following `docker-compose-otel.yml` file in the `spring-petclinic` directory: 
+To do this, let's begin with adding the following `docker-compose-otel.yml` file
+in the `spring-petclinic` directory:
 
 ```yaml
 version: '3.8'
@@ -238,31 +273,31 @@ services:
   app:
     image: spring-petclinic-native
     environment:
-      OTEL_SERVICE_NAME: "graal-native-example-app"
-      OTEL_EXPORTER_OTLP_ENDPOINT: "http://collector:4318"
+      OTEL_SERVICE_NAME: 'graal-native-example-app'
+      OTEL_EXPORTER_OTLP_ENDPOINT: 'http://collector:4318'
     ports:
-      - "8080:8080"
+      - '8080:8080'
     depends_on:
       - collector
   collector:
     image: otel/opentelemetry-collector-contrib:0.109.0
     volumes:
       - ./collector-spring-native-config.yaml:/collector-spring-native-config.yaml
-    command: ["--config=/collector-spring-native-config.yaml"]
+    command: ['--config=/collector-spring-native-config.yaml']
     expose:
-      - "4317"
+      - '4317'
     ports:
-      - "4317:4317"
+      - '4317:4317'
 ```
 
 Next, also add a file called `collector-spring-native-config.yaml`:
 
-```yaml 
+```yaml
 receivers:
   otlp:
     protocols:
       http:
-        endpoint: "0.0.0.0:4318"
+        endpoint: '0.0.0.0:4318'
 exporters:
   debug:
     verbosity: detailed
@@ -279,7 +314,8 @@ service:
       exporters: [debug]
 ```
 
-Now, we can run the Spring PetClinic application and the OpenTelemetry collector:
+Now, we can run the Spring PetClinic application and the OpenTelemetry
+Collector:
 
 ```bash
 docker-compose -f docker-compose-otel.yml up
@@ -298,15 +334,20 @@ We can spot one log record about the Spring PetClinic application startup:
 2024-09-16 14:19:11 collector-1  | Body: Str(Started PetClinicApplication in 0.489 seconds (process running for 0.493))
 ```
 
-The OpenTelemetry Spring Boot starter has instrumented Logback and has sent the 'Started PetClinicApplication in 0.489 seconds (process running for 0.493)' telemetry log record to the OpenTelemetry collector.
+The OpenTelemetry Spring Boot starter has instrumented Logback and has sent the
+'Started PetClinicApplication in 0.489 seconds (process running for 0.493)'
+telemetry log record to the OpenTelemetry Collector.
 
-Let's open the <http://localhost:8080/vets.html> in our web browser or execute the following curl command:
+Let's open the <http://localhost:8080/vets.html> in our web browser or execute
+the following curl command:
 
 ```shell
 curl http://localhost:8080/vets.html
 ```
 
-If we look at the Collector logs, we can see that one span has been created for the HTTP request with the Trace ID `16a0a5be5127309858c7c63a76b3f471` (it will be a different Trace ID in your case):
+If we look at the Collector logs, we can see that one span has been created for
+the HTTP request with the Trace ID `16a0a5be5127309858c7c63a76b3f471` (it will
+be a different Trace ID in your case):
 
 ```
 collector-1  | InstrumentationScope io.opentelemetry.spring-webmvc-6.0 2.8.0-alpha
@@ -335,7 +376,8 @@ collector-1  |      -> http.request.method: Str(GET)
 collector-1  |      -> url.scheme: Str(http)
 ```
 
-For the same Trace ID, we can notice telemetry data emitted by the database instrumentation:
+For the same Trace ID, we can notice telemetry data emitted by the database
+instrumentation:
 
 ```
 collector-1  | ScopeSpans #1
@@ -474,14 +516,15 @@ collector-1  |      -> db.name: Str(cb22066d-b4b2-4891-ae1e-242db88156e7)
 collector-1  |  {"kind": "exporter", "data_type": "traces", "name": "logging"}
 ```
 
-
-Now, let's see what happens if we select the <http://localhost:8080/oups> URL in our web browser or execute the following curl command:
+Now, let's see what happens if we select the <http://localhost:8080/oups> URL in
+our web browser or execute the following curl command:
 
 ```shell
 curl http://localhost:8080/oups
 ```
 
-We can see a span related to the HTTP call, but also an `exception` span event attached to this span:
+We can see a span related to the HTTP call, but also an `exception` span event
+attached to this span:
 
 ```
 collector-1  | InstrumentationScope io.opentelemetry.spring-webmvc-6.0 2.8.0-alpha
@@ -583,9 +626,11 @@ collector-1  |           -> exception.type: Str(jakarta.servlet.ServletException
 collector-1  |  {"kind": "exporter", "data_type": "traces", "name": "logging"}
 ```
 
-This span event has `exception.message` and `exception.stacktrace` attributes that contain the exception message and the stack trace.
+This span event has `exception.message` and `exception.stacktrace` attributes
+that contain the exception message and the stack trace.
 
-The OpenTelemetry starter also creates metrics every minute. We can see below a metric on the HTTP request duration:
+The OpenTelemetry starter also creates metrics every minute. We can see below a
+metric on the HTTP request duration:
 
 ```
 collector-1  | Metric #0
@@ -682,8 +727,9 @@ collector-1  | Buckets #13, Count: 0
 collector-1  | Buckets #14, Count: 0
 ```
 
-Thanks to the Spring PetClinic application, we have shown some features of the OpenTelemetry Spring Boot starter. 
+Thanks to the Spring PetClinic application, we have shown some features of the
+OpenTelemetry Spring Boot starter.
 
-To know more about other features, don't hesitate to have a look at the 
-[OpenTelemetry Spring Boot starter documentation](/docs/zero-code/java/spring-boot-starter) and ask questions on
-[slack](https://opentelemetry.io/community/).
+To know more about other features, don't hesitate to have a look at the
+[OpenTelemetry Spring Boot starter documentation](/docs/zero-code/java/spring-boot-starter)
+and ask questions on [slack](https://opentelemetry.io/community/).
