@@ -258,7 +258,8 @@ services:
       - "4317:4317"
 ```
 
-collector-spring-native-config.yaml
+Next, also add a file called `collector-spring-native-config.yaml`:
+
 ```yaml 
 receivers:
   otlp:
