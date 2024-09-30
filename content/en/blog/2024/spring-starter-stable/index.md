@@ -279,7 +279,6 @@ service:
     logs:
       receivers: [otlp]
       exporters: [debug]
-
 ```
 
 Now, we can run the Spring PetClinic application and the OpenTelemetry collector:
