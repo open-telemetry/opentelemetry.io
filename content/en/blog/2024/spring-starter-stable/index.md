@@ -233,7 +233,7 @@ We are going to add an [OpenTelemetry Collector](https://opentelemetry.io/docs/c
 
 You can also use your favorite OTLP-compatible backend - we use Collector logs for simplicity here.
 
-To do this, let's add the following `docker-compose-otel.yml` and `collector-spring-native-config.yaml` files in the `spring-petclinic` directory: 
+To do this, let's begin with adding the following `docker-compose-otel.yml` file in the `spring-petclinic` directory: 
 
 ```yaml
 version: '3.8'
