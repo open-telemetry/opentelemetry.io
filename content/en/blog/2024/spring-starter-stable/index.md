@@ -23,7 +23,7 @@ applications.
 
 In this blog post, we will explain when you should use the Spring Starter, what it
 actually means to be stable, what are the main features, and which challenges we faced. 
-In the last part, we will demonstrate some of the starter's features using a GraalVM native image 
+In the last part, we will demonstrate some of the starter's features using a [GraalVM native image](https://www.graalvm.org/latest/reference-manual/native-image/) 
 application.
 
 If you just want to get started, check out the
