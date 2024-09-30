@@ -8,18 +8,18 @@ default_lang_commit: f724c15be360e5059fb89e696d9a5cc8d00496f6
 ---
 
 Para contribuir con nuevas páginas de contenido o mejorar las páginas de
-contenido existentes, abra un Pull Request (PR):
+contenido existentes, abre un Pull Request (PR):
 
 - Si tu cambio es pequeño, o ya estás familiarizado con Git, lee
-  [Realizando cambios con Github](#changes-using-github) para aprender a editar
+  [Editar con Github](#changes-using-github) para aprender a editar
   la página desde la interfaz de Github.
-- Si tus cambio es mayor, lee [trabajando desde una rama local](#fork-the-repo)
+- Si tus cambio es mayor, lee [Editar desde una rama local](#fork-the-repo)
   para aprender cómo realizar cambios localmente desde tu computadora.
 
 {{% alert title="Tip" %}}
 
 Convierte tu Pull Request en borrador para indicar que el contenido aún no está
-listo para su revisión. Los encargados aún pueden comentar o realizar revisiones
+listo para su revisión. Los miembros aún pueden comentar o realizar revisiones
 de alto nivel, aunque no revisarán el contenido en su totalidad hasta que
 indiques que ya no es un borrador.
 
@@ -48,9 +48,9 @@ class first,second white
 
 _Figure 1. Contribuyendo con nuevo contenido._
 
-## Realizando cambios con Github {#changes-using-github}
+## Editar con Github {#changes-using-github}
 
-Si no tienes tanta experiencia con Git, aquí tienes un método más sencillo para
+Si no tienes mucha experiencia con Git, aquí tienes un método más sencillo para
 abrir un Pull Request. La Figura 2 describe los pasos y los detalles a
 continuación.
 
@@ -84,24 +84,24 @@ class id1 k8s
 
 _Figure 2. Pasos para abrir un Pull Request desde Github._
 
-1. En la página de la tarea en Github, haz click **Editar esta página** en el
+1. En la página de la tarea en Github, selecciona **Editar esta página** en el
    panel de navegación en la derecha.
 
 1. Si no eres miembro de este proyecto, puedes hacer fork al repositorio de
-   Github. Dando click en **Fork**.
+   Github. Selecciona **Fork**.
 
 1. Haz tus cambios desde el editor de Github.
 
 1. Llena el formulario de **Subir cambios**.
 
-1. Haz click en **Proponer cambios**.
+1. Selecciona en **Proponer cambios**.
 
-1. Haz click en **Crear pull request**.
+1. Selecciona en **Crear pull request**.
 
 1. Cuando la pantalla de **Abrir un pull request** aparezca. Agrega una
    descripción para que los supervisores puedan comprender tus cambios.
 
-1. Haz click en **Crear pull request**.
+1.Selecciona en **Crear pull request**.
 
 Antes de hacer merge de tus cambios, Los miembros de la comunidad de
 OpenTelemetry harán revisión de tus cambios y los aprobarán.
@@ -109,12 +109,12 @@ OpenTelemetry harán revisión de tus cambios y los aprobarán.
 Si un miembro te pide hacer cambios:
 
 1. Ve a la pestaña de **Archivos cambiados**.
-1. Haz click en el ícono del lápiz (Editar) en cualquiera de los archivos
+1. Selecciona el icono del lápiz (Editar) en cualquiera de los archivos
    cambiados en tu pull request.
 1. Haz los cambios solicitados. Si hay alguna sugerencia de código, aplícala.
 1. Haz commit de tus cambios.
 
-Cuando la revisión a terminado, un miemrbo de la comunidad hará merge de tu pull
+Cuando la revisión a terminado, un miembro de la comunidad hará merge de tu pull
 request y tus cambios estarán disponibles al público en algunos minutos.
 
 {{% alert title="Tip" %}}
@@ -124,12 +124,12 @@ revisión automática de formateo de tus cambios.
 
 {{% /alert %}}
 
-## Trabajar desde una rama local {#fork-the-repo}
+## Editar desde una rama local {#fork-the-repo}
 
-Si eres un usuario más experimentado con Git, o tus cambios ameritan varios
-archivos a la vez, preferirás trabajar desde una rama local.
+Si eres un usuario más experimentado con Git, o tus cambios afectan varios
+archivos a la vez, trabaja desde una rama local.
 
-Asegurate de que tienes
+Asegúrate de que tienes
 [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) instalado
 en tu computadora. También puedes usar una interfáz gráfica de Git.
 
@@ -161,13 +161,13 @@ class S,T spacewhite
 class changes,changes2 white
 ```
 
-_Figure 3. Trabajando desde una rama local para hacer cambios._
+_Figura 3. Trabajando desde una rama local para hacer cambios._
 
 ### Haz fork al repositorio de opentelemetry.io
 
 1. Navega al repositorio
    [`opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io/) .
-1. Haz click en **Fork**.
+1. Selecciona  **Fork**.
 
 ### Crea un clon local y agrega el upstream
 
@@ -224,14 +224,14 @@ mantener tu copia local sincronizada con la versión en el repositorio original.
 
 1. Haz tus cambios en tu editor de código favorito.
 
-Regularmente, utiliza el comando `git status` para visualizar los archivos que
-haz cambiado.
+Usa el comando `git status` con regularidad para visualizar los archivos que
+has cambiado.
 
 ### Haz commit de tus cambios
 
 Cuando estás listo para subir tu pull request, haz commit de tus cambios.
 
-1. En tu repositorio local, revisa los cambios que necesitas hacer commit:
+1. En tu repositorio local, revisa los cambios que quieres subir a GitHub:
 
    ```shell
    git status
@@ -304,17 +304,17 @@ class 1,2,3,4,5,6,7,8 grey
 class first,second white
 ```
 
-\_Figure 4. Pasos para abrir un PR desde tu fork a
+\_Figura 4. Pasos para abrir un PR desde tu fork a
 [opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io).
 
-1. En un navegador web, vaya al repositorio
+1. En un navegador web, ve al repositorio
    [`opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io) .
-1. Seleccione **Nuevo Pull Request**.
-1. Seleccione **Comparar ramas**.
-1. En el menú desplegable **repositorio principal**, seleccione su rama.
-1. En el menú desplegable **Comparar**, seleccione tu rama.
-1. Seleccione **Crear Pull Request**.
-1. Agregue una descripción para tu pull request:
+1. Selecciona **Nuevo Pull Request**.
+1. Selecciona **Comparar ramas**.
+1. En el menú desplegable **repositorio principal**, selecciona su rama.
+1. En el menú desplegable **Comparar**, selecciona tu rama.
+1. Selecciona **Crear Pull Request**.
+1. Agrega una descripción para tu pull request:
 
    - **Título** (50 caracteres o menos): Resume la intención del cambio.
    - **Descripción**: Describe el cambio con más detalle.
@@ -334,13 +334,13 @@ Tu pull request estará disponible en
 Después de abrir un PR, GitHub ejecuta pruebas automatizadas e intenta
 implementar una vista previa usando [Netlify](https://www.netlify.com/).
 
-- Si la compilación de Netlify falla, seleccione **Detalles** para obtener más
+- Si la compilación de Netlify falla, selecciona **Detalles** para obtener más
   información.
-- Si la compilación de Netlify se realiza correctamente, seleccione **Detalles**
+- Si la compilación de Netlify se realiza correctamente, selecciona **Detalles**
   para abrir una versión preparada del sitio web de OpenTelemetry con los
   cambios aplicados. Así es como los revisores verifican sus cambios.
 
-También pueden fallar otras comprobaciones. Consulte la
+También pueden fallar otras comprobaciones. Consulta la
 [lista de todas las comprobaciones de PR](/docs/contributing/pr-checks).
 
 ### Soluciona problemas de contenido automáticamente
@@ -362,7 +362,7 @@ npm run fix:all # May update files
 ```
 
 Para enumerar los scripts NPM disponibles, ejecuta `npm run`. Consulta
-[Los pre-requisitos de PR](/docs/contributing/pr-checks) para obtener más
+los [Pre-requisitos de PR](/docs/contributing/pr-checks) para obtener más
 información sobre las verificaciones de los Pull Request y cómo solucionar
 errores automáticamente.
 
@@ -372,42 +372,42 @@ Obtén una vista previa de tus cambios localmente antes de enviarlos o abrir un
 pull request. Una vista previa te permite detectar errores de compilación o
 problemas de formato de Markdown.
 
-Para crear y servir el sitio localmente con Hugo, ejecute el siguiente comando:
+Para crear y servir el sitio localmente con Hugo, ejecuta el siguiente comando:
 
 ```shell
 npm run serve
 ```
 
-Navegue a `http://localhost:1313` en su navegador web para ver la vista previa
+Navega a `http://localhost:1313` en su navegador web para ver la vista previa
 local. Hugo observa los cambios y reconstruye el sitio según sea necesario.
 
-Para detener la instancia local de Hugo, vuelva a la terminal y escriba
+Para detener la instancia local de Hugo, vuelve a la terminal y escriba
 `Ctrl+C`, o cierre la ventana de la terminal.
 
 ### Implementaciones del sitio y vistas previas de PR
 
-Si envía una PR, Netlify crea una [Vista Previa de Implementación][] para que pueda
+Si envías una PR, Netlify crea una [Vista Previa de Implementación][] para que puedas
 revisar sus cambios. Una vez que se fusiona su PR, Netlify implementa el sitio actualizado
 en el servidor de producción.
 
 > **Nota**: Las vistas previas de PR incluyen _páginas de borrador_, pero las
 > compilaciones de producción no.
 
-Para ver los registros de implementación y más, visite el [Panel de Control][]
-del proyecto -- Se requiere inicio de sesión en Netlify.
+Para ver los registros de implementación y más, visita el [Panel de Control][]
+del proyecto. Se requiere inicio de sesión en Netlify.
 
 ### Pautas de PR
 
 Antes de fusionar un PR, a veces se requieren algunas iteraciones de revisión y
-edición. Para ayudarnos a nosotros y a usted mismo a hacer que este proceso sea
-lo más sencillo posible, le pedimos que respete lo siguiente:
+edición. Para ayudarnos a nosotros y a ti mismo a hacer que este proceso sea
+lo más sencillo posible, te pedimos que respetes lo siguiente:
 
-- Si su PR no es una solución rápida, entonces **trabaje desde una copia**: haga
-  clic en el botón
+- Si su PR no es una solución rápida, entonces **trabaja desde una copia**: 
+  selecciona el botón
   [Fork](https://github.com/open-telemetry/opentelemetry.io/fork) en la parte
   superior del repositorio y clone el repositorio localmente. Cuando esté listo,
   genere un PR al repositorio original.
-- **No trabaje desde la rama `main`** de su fork, sino que cree una rama
+- **No trabajes desde la rama `main`** de su fork: crea una rama
   específica para el PR.
 - Asegúrate de que los mantenedores tengan permiso para aplicar cambios a tu
   solicitud de incorporación de cambios
@@ -415,7 +415,7 @@ lo más sencillo posible, le pedimos que respete lo siguiente:
 
 ### Cambios de los revisores
 
-A veces, los revisores se suben cambios en tu pull request. Antes de realizar
+A veces, los revisores suben cambios en tu pull request. Antes de realizar
 cualquier otro cambio, actualiza tu rama.
 
 1. Actualiza los commits de tu fork y haz rebase de tu rama actual:
@@ -437,7 +437,7 @@ GitHub.
 ### Conflictos en ramas y git rebase
 
 Si otro colaborador realiza cambios en el mismo archivo en otro pull request,
-puede crear un merge. Es tu responsabilidad resolver todos los conflictos en tu
+puedes crear un merge. Es tu responsabilidad resolver todos los conflictos en tu
 Pull Request.
 
 1. Actualiza tu fork y haz git rebase de tu rama local:
@@ -472,25 +472,13 @@ Pull Request.
 1. Abra cada archivo en conflicto y busque los marcadores de conflicto: `>>>`,
    `<<<`, y `===`. Resuelva el conflicto y elimine el marcador de conflicto.
 
-Para obtener más información, consulte
+Para obtener más información, consulta
 [Cómo se presentan los conflictos](https://git-scm.com/docs/git-merge#_how_conflicts_are_presented).
 
-1. Agregue los archivos al conjunto de cambios:
+1. Agrega los archivos al conjunto de cambios:
 
    ```shell
    git add <filename>
-   ```
-
-1. Continúe con el rebase:
-
-   ```shell
-   git rebase --continue
-   ```
-
-1. Repita los pasos 2 a 5 según sea necesario.
-
-   Después de aplicar todas las confirmaciones, el comando `git status` muestra
-   que el rebase está completo.
 
 1. Haz force push de los cambios en tu rama a tu fork:
 
