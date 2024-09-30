@@ -386,14 +386,14 @@ Para detener la instancia local de Hugo, vuelva a la terminal y escriba
 
 ### Implementaciones del sitio y vistas previas de PR
 
-Si envía una PR, Netlify crea una vista previa de implementación para que pueda
-revisar sus cambios. Una vez que se fusiona su PR, Netlify implementa el sitio
-actualizado en el servidor de producción.
+Si envía una PR, Netlify crea una [Vista Previa de Implementación][] para que pueda
+revisar sus cambios. Una vez que se fusiona su PR, Netlify implementa el sitio actualizado
+en el servidor de producción.
 
 > **Nota**: Las vistas previas de PR incluyen _páginas de borrador_, pero las
 > compilaciones de producción no.
 
-Para ver los registros de implementación y más, visite el [panel de control][]
+Para ver los registros de implementación y más, visite el [Panel de Control][]
 del proyecto -- Se requiere inicio de sesión en Netlify.
 
 ### Pautas de PR
@@ -518,5 +518,5 @@ Los pull request se hacen merge cuando cumplen con los siguientes criterios:
 > instrucciones sobre cómo solucionarlas o solucionándolas en tu nombre.
 
 [Panel de Control]: https://app.netlify.com/sites/opentelemetry/overview
-[Vista previa]:
+[Vista Previa de Implementación]:
   https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/
