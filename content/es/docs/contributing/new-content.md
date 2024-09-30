@@ -32,7 +32,7 @@ flowchart LR
     subgraph first[Cómo contribuir]
     direction TB
        T[ ] -.-
-       B[Haz un fork al repo de Github] --- C[Escribe el nuevo contenido utilizando Markdown<br>y empaqueta la página web en Hugo]
+       B[Haz un fork al repo de Github] --- C[Escribe el nuevo contenido utilizando Markdown<br>y compila la página web en Hugo]
        C --- D[Sube tus cambios locales al Fork]
        D --- E[Abre un Pull Request]
        E --- F[Firma el CNCF CLA]
