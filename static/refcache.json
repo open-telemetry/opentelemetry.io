@@ -3239,6 +3239,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-04-03T12:51:54.758528517+02:00"
   },
+  "https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/env/Environment.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-09-30T11:46:05.626745451+02:00"
+  },
   "https://docs.spring.io/spring-framework/reference/core/aop/proxying.html": {
     "StatusCode": 206,
     "LastSeen": "2024-07-09T08:58:07.531333949Z"
@@ -7691,6 +7695,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:09.784881-05:00"
   },
+  "https://github.com/spring-projects/spring-petclinic/issues/1522": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T11:46:08.45838184+02:00"
+  },
   "https://github.com/srikanthccv": {
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:14:34.303435+02:00"
@@ -9766,6 +9774,10 @@
   "https://opentelemetry.io/docs/languages/cpp/instrumentation/": {
     "StatusCode": 206,
     "LastSeen": "2024-04-30T09:31:38.379400427Z"
+  },
+  "https://opentelemetry.io/docs/languages/java/configuration/#otlp-exporter-span-metric-and-log-exporters": {
+    "StatusCode": 206,
+    "LastSeen": "2024-09-30T11:46:09.63842153+02:00"
   },
   "https://opentelemetry.io/docs/languages/sdk-configuration/general/#otel_resource_attributes": {
     "StatusCode": 206,
@@ -12494,6 +12506,10 @@
   "https://www.gnupg.org/gph/en/manual/x135.html#AEN160": {
     "StatusCode": 206,
     "LastSeen": "2024-08-09T10:46:30.160571-04:00"
+  },
+  "https://www.graalvm.org/latest/reference-manual/native-image/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-09-30T11:46:04.441837921+02:00"
   },
   "https://www.gsse.biz/pdfs/papers/DASIA2018-abstract.pdf": {
     "StatusCode": 206,
