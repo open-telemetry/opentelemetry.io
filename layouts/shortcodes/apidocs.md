@@ -18,10 +18,8 @@
 {{ $title := replaceRE `API reference` "" .page.Title -}}
 
 - [
-    {{- .lang.name }}
-    {{ with $title -}}
-      &mdash; {{ . }}
-    {{ end -}}
+    {{- .lang.name -}}
+    {{ with $title }} &mdash; {{ . }} {{- end -}}
   ](
     {{- .page.Permalink -}}
   )
