@@ -94,14 +94,14 @@ _Figure 2. Pasos para abrir un Pull Request desde Github._
 
 1. Llena el formulario de **Subir cambios**.
 
-1. Selecciona en **Proponer cambios**.
+1. Selecciona **Proponer cambios**.
 
-1. Selecciona en **Crear pull request**.
+1. Selecciona **Crear pull request**.
 
 1. Cuando la pantalla de **Abrir un pull request** aparezca. Agrega una
    descripción para que los supervisores puedan comprender tus cambios.
 
-1.Selecciona en **Crear pull request**.
+1.Selecciona **Crear pull request**.
 
 Antes de hacer merge de tus cambios, Los miembros de la comunidad de
 OpenTelemetry harán revisión de tus cambios y los aprobarán.
