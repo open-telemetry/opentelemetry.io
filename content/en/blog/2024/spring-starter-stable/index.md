@@ -213,7 +213,7 @@ git clone https://github.com/spring-projects/spring-petclinic.git
 In the `pom.xml` file, let's add the OpenTelemetry instrumentation BOM:
 
 ```xml
-  <dependencyManagement>
+<dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>io.opentelemetry.instrumentation</groupId>
@@ -230,10 +230,10 @@ Now, we can include the OpenTelemetry Spring Boot starter dependency to the
 Spring PetClinic application:
 
 ```xml
-  <dependency>
-    <groupId>io.opentelemetry.instrumentation</groupId>
-    <artifactId>opentelemetry-spring-boot-starter</artifactId>
-  </dependency>
+<dependency>
+  <groupId>io.opentelemetry.instrumentation</groupId>
+  <artifactId>opentelemetry-spring-boot-starter</artifactId>
+</dependency>
 ```
 
 Navigate to the project directory and build a Spring Boot native image
@@ -325,7 +325,7 @@ Let's check the Collector logs to see the telemetry data.
 
 We can spot one log record about the Spring PetClinic application startup:
 
-```
+```ignorelang
 2024-09-16 14:19:11 collector-1  | LogRecord #2
 2024-09-16 14:19:11 collector-1  | ObservedTimestamp: 2024-09-16 12:19:10.38137 +0000 UTC
 2024-09-16 14:19:11 collector-1  | Timestamp: 2024-09-16 12:19:10.379 +0000 UTC
@@ -349,7 +349,7 @@ If we look at the Collector logs, we can see that one span has been created for
 the HTTP request with the Trace ID `16a0a5be5127309858c7c63a76b3f471` (it will
 be a different Trace ID in your case):
 
-```
+```ignorelang
 collector-1  | InstrumentationScope io.opentelemetry.spring-webmvc-6.0 2.8.0-alpha
 collector-1  | Span #0
 collector-1  |     Trace ID       : 16a0a5be5127309858c7c63a76b3f471
@@ -379,7 +379,7 @@ collector-1  |      -> url.scheme: Str(http)
 For the same Trace ID, we can notice telemetry data emitted by the database
 instrumentation:
 
-```
+```ignorelang
 collector-1  | ScopeSpans #1
 collector-1  | ScopeSpans SchemaURL:
 collector-1  | InstrumentationScope io.opentelemetry.jdbc 2.8.0-alpha
@@ -526,7 +526,7 @@ curl http://localhost:8080/oups
 We can see a span related to the HTTP call, but also an `exception` span event
 attached to this span:
 
-```
+```ignorelang
 collector-1  | InstrumentationScope io.opentelemetry.spring-webmvc-6.0 2.8.0-alpha
 collector-1  | Span #0
 collector-1  |     Trace ID       : 9e2b052cb84907fc3f648a4131638138
@@ -632,7 +632,7 @@ that contain the exception message and the stack trace.
 The OpenTelemetry starter also creates metrics every minute. We can see below a
 metric on the HTTP request duration:
 
-```
+```ignorelang
 collector-1  | Metric #0
 collector-1  | Descriptor:
 collector-1  |      -> Name: http.server.request.duration
