@@ -10,9 +10,6 @@ sig: Java
 cSpell:ignore: Bisutti Gregor Zeitlinger
 ---
 
-<!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/java/spring-starter"?>
-
 We're proud to announce that the OpenTelemetry Spring Boot starter is now stable.
 
 The [Spring Boot](https://spring.io/projects/spring-boot) starter is a powerful
