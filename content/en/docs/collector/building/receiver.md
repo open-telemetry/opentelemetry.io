@@ -521,7 +521,7 @@ func createTracesReceiver(_ context.Context, params receiver.CreateSettings, bas
 
 You now have all the necessary components to successfully instantiate your
 receiver factory using the `receiver.NewFactory` function. Go ahead and update
-your `NewFactory()` function in your `factory.go` file as follow:
+your `NewFactory()` function in your `factory.go` file as follows:
 
 ```go
 // NewFactory creates a factory for tailtracer receiver.
