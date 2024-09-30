@@ -1,5 +1,6 @@
 ---
-title: Development
+title: Development setup and commands to build, serve, and more
+linkTitle: Dev setup and more
 description:
   Learn how to set up a development environment for the opentelemetry.io site.
 weight: 60
