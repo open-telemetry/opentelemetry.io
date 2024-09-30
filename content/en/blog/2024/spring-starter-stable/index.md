@@ -288,7 +288,7 @@ Now, we can run the Spring PetClinic application and the OpenTelemetry collector
 docker-compose -f docker-compose-otel.yml up
 ```
 
-Let's check the collector logs to see the telemetry data.
+Let's check the Collector logs to see the telemetry data.
 
 We can spot one log record about the Spring PetClinic application startup:
 
