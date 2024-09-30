@@ -16,3 +16,4 @@ package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-laravel
   version: 0.0.28
+isFirstParty: false
