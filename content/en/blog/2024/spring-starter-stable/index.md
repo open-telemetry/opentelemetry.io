@@ -7,7 +7,8 @@ author: >
   Bisutti](https://github.com/jeanbisutti) (Microsoft)
 issue: https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/11581
 sig: Java
-cSpell:ignore: Bisutti Gregor Zeitlinger
+# prettier-ignore
+cSpell:ignore: Bisutti Customizer customizers Gregor Logback petclinic Zeitlinger
 ---
 
 We're proud to announce that the OpenTelemetry Spring Boot starter is now
@@ -253,12 +254,11 @@ public class PostgresIntegrationTests
 ```
 
 The OpenTelemetry Spring Boot starter sends the telemetry data with the
-[OpenTelemetry Protocol](https://opentelemetry.io/docs/specs/otlp/) (OTLP). By
-default, it sends the data over HTTP. You can also
-[switch to gRPC](https://opentelemetry.io/docs/languages/java/configuration/#otlp-exporter-span-metric-and-log-exporters).
+[OpenTelemetry Protocol](/docs/specs/otlp/) (OTLP). By default, it sends the
+data over HTTP. You can also
+[switch to gRPC](/docs/languages/java/configuration/#otlp-exporter-span-metric-and-log-exporters).
 
-We are going to add an
-[OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) and display
+We are going to add an [OpenTelemetry Collector](/docs/collector/) and display
 the telemetry data in the Collector logs.
 
 You can also use your favorite OTLP-compatible backend - we use Collector logs
@@ -732,4 +732,4 @@ OpenTelemetry Spring Boot starter.
 
 To know more about other features, don't hesitate to have a look at the
 [OpenTelemetry Spring Boot starter documentation](/docs/zero-code/java/spring-boot-starter)
-and ask questions on [slack](https://opentelemetry.io/community/).
+and ask questions on [slack](/community/).
