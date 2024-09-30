@@ -11,10 +11,10 @@ Para contribuir con nuevas páginas de contenido o mejorar las páginas de
 contenido existentes, abre un Pull Request (PR):
 
 - Si tu cambio es pequeño, o ya estás familiarizado con Git, lee
-  [Editar con Github](#changes-using-github) para aprender a editar
-  la página desde la interfaz de Github.
-- Si tus cambio es mayor, lee [Editar desde una rama local](#fork-the-repo)
-  para aprender cómo realizar cambios localmente desde tu computadora.
+  [Editar con GitHub](#changes-using-github) para aprender a editar la página
+  desde la interfaz de GitHub.
+- Si tus cambio es mayor, lee [Editar desde una rama local](#fork-the-repo) para
+  aprender cómo realizar cambios localmente desde tu computadora.
 
 {{% alert title="Tip" %}}
 
@@ -32,7 +32,7 @@ flowchart LR
     subgraph first[Cómo contribuir]
     direction TB
        T[ ] -.-
-       B[Haz un fork al repo de Github] --- C[Escribe el nuevo contenido utilizando Markdown<br>y compila la página web en Hugo]
+       B[Haz un fork al repo de GitHub] --- C[Escribe el nuevo contenido utilizando Markdown<br>y compila la página web en Hugo]
        C --- D[Sube tus cambios locales al Fork]
        D --- E[Abre un Pull Request]
        E --- F[Firma el CNCF CLA]
@@ -48,7 +48,7 @@ class first,second white
 
 _Figure 1. Contribuyendo con nuevo contenido._
 
-## Editar con Github {#changes-using-github}
+## Editar con GitHub {#changes-using-github}
 
 Si no tienes mucha experiencia con Git, aquí tienes un método más sencillo para
 abrir un Pull Request. La Figura 2 describe los pasos y los detalles a
@@ -57,10 +57,10 @@ continuación.
 ```mermaid
 flowchart LR
 A([fa:fa-user Nuevo<br>Contribuyente]) --- id1[(open-telemetry/opentelemetry.io<br>GitHub)]
-subgraph tasks[Editando en Github]
+subgraph tasks[Editando en GitHub]
 direction TB
     0[ ] -.-
-    1[Edita esta página] --> 2[Usa el editor de markdown en Github<br>para hacer tus cambios]
+    1[Edita esta página] --> 2[Usa el editor de markdown en GitHub<br>para hacer tus cambios]
     2 --> 3[agrega tus propuesta de cambios]
 
 end
@@ -82,15 +82,15 @@ class tasks,tasks2 white
 class id1 k8s
 ```
 
-_Figure 2. Pasos para abrir un Pull Request desde Github._
+_Figure 2. Pasos para abrir un Pull Request desde GitHub._
 
-1. En la página de la tarea en Github, selecciona **Editar esta página** en el
+1. En la página de la tarea en GitHub, selecciona **Editar esta página** en el
    panel de navegación en la derecha.
 
 1. Si no eres miembro de este proyecto, puedes hacer fork al repositorio de
-   Github. Selecciona **Fork**.
+   GitHub. Selecciona **Fork**.
 
-1. Haz tus cambios desde el editor de Github.
+1. Haz tus cambios desde el editor de GitHub.
 
 1. Llena el formulario de **Subir cambios**.
 
@@ -167,7 +167,7 @@ _Figura 3. Trabajando desde una rama local para hacer cambios._
 
 1. Navega al repositorio
    [`opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io/) .
-1. Selecciona  **Fork**.
+1. Selecciona **Fork**.
 
 ### Crea un clon local y agrega el upstream
 
@@ -224,8 +224,8 @@ mantener tu copia local sincronizada con la versión en el repositorio original.
 
 1. Haz tus cambios en tu editor de código favorito.
 
-Usa el comando `git status` con regularidad para visualizar los archivos que
-has cambiado.
+Usa el comando `git status` con regularidad para visualizar los archivos que has
+cambiado.
 
 ### Haz commit de tus cambios
 
@@ -361,8 +361,8 @@ npm run test    # Checks but does not update any files
 npm run fix:all # May update files
 ```
 
-Para enumerar los scripts NPM disponibles, ejecuta `npm run`. Consulta
-los [Pre-requisitos de PR](/docs/contributing/pr-checks) para obtener más
+Para enumerar los scripts NPM disponibles, ejecuta `npm run`. Consulta los
+[Pre-requisitos de PR](/docs/contributing/pr-checks) para obtener más
 información sobre las verificaciones de los Pull Request y cómo solucionar
 errores automáticamente.
 
@@ -399,16 +399,16 @@ del proyecto. Se requiere inicio de sesión en Netlify.
 ### Pautas de PR
 
 Antes de fusionar un PR, a veces se requieren algunas iteraciones de revisión y
-edición. Para ayudarnos a nosotros y a ti mismo a hacer que este proceso sea
-lo más sencillo posible, te pedimos que respetes lo siguiente:
+edición. Para ayudarnos a nosotros y a ti mismo a hacer que este proceso sea lo
+más sencillo posible, te pedimos que respetes lo siguiente:
 
-- Si su PR no es una solución rápida, entonces **trabaja desde una copia**: 
+- Si su PR no es una solución rápida, entonces **trabaja desde una copia**:
   selecciona el botón
   [Fork](https://github.com/open-telemetry/opentelemetry.io/fork) en la parte
   superior del repositorio y clone el repositorio localmente. Cuando esté listo,
   genere un PR al repositorio original.
-- **No trabajes desde la rama `main`** de su fork: crea una rama
-  específica para el PR.
+- **No trabajes desde la rama `main`** de su fork: crea una rama específica para
+  el PR.
 - Asegúrate de que los mantenedores tengan permiso para aplicar cambios a tu
   solicitud de incorporación de cambios
   (https://docs.github.com/es/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork).
@@ -479,6 +479,8 @@ Para obtener más información, consulta
 
    ```shell
    git add <filename>
+
+   ```
 
 1. Haz force push de los cambios en tu rama a tu fork:
 
