@@ -187,7 +187,7 @@ roleRef:
 ## Receptor de Kubeletstats
 
 | Patrón de implementación | Utilizable                                                             |
-| ------------------------ | ---------------------------------------------------------------------- | 
+| ------------------------ | ---------------------------------------------------------------------- |
 | DaemonSet (agente)       | Preferido                                                              |
 | Deployment (gateway)     | Sí, pero solo recopilará métricas del nodo en el que está implementado |
 | Sidecar                  | No                                                                     |
