@@ -371,9 +371,14 @@ Tracer.set_status(:error, "this is not ok")
 
 ## Metrics
 
-The metrics API, found in `apps/opentelemetry_experimental_api` of the
-[opentelemetry-erlang](https://github.com/open-telemetry/opentelemetry-erlang)
-repository, is currently unstable, documentation TBA.
+The metrics API, found in the hex package `apps/opentelemetry_experimental_api`.
+
+### Initialize Metrics
+
+
+### Acquiring a Meter
+
+### Create Instruments
 
 ## Logs
 
@@ -388,3 +393,4 @@ You’ll also want to configure an appropriate exporter to
 telemetry backends.
 
 [opentelemetry specification]: /docs/specs/otel/
+
