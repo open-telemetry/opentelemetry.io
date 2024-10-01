@@ -410,8 +410,8 @@ más sencillo posible, te pedimos que respetes lo siguiente:
   genere un PR al repositorio original.
 - **No trabajes desde la rama `main`** de su fork: crea una rama específica para
   el PR.
-- Asegúrate de que los mantenedores tengan permiso para [aplicar cambios a tu
-  solicitud de incorporación de cambios](https://docs.github.com/es/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork).
+- Asegúrate de que los mantenedores tengan permiso para
+  [aplicar cambios a tu solicitud de incorporación de cambios](https://docs.github.com/es/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork).
 
 ### Cambios de los revisores
 
