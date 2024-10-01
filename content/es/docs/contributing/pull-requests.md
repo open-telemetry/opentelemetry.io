@@ -5,6 +5,7 @@ description:
   localmente.
 weight: 2
 default_lang_commit: f724c15be360e5059fb89e696d9a5cc8d00496f6
+cSpell:ignore: aplícala vincúlalos solucionándolas
 ---
 
 Para contribuir con nuevas páginas de contenido o mejorar las páginas de
@@ -131,7 +132,7 @@ archivos a la vez, trabaja desde una rama local.
 
 Asegúrate de que tienes
 [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) instalado
-en tu computadora. También puedes usar una interfáz gráfica de Git.
+en tu computadora. También puedes usar una interfaz gráfica de Git.
 
 La figura 3 muestra los pasos a seguir cuando se trabaja desde una rama local. A
 continuación se detallan los pasos.
