@@ -480,7 +480,6 @@ Para obtener más información, consulta
 
    ```shell
    git add <filename>
-
    ```
 
 1. Haz force push de los cambios en tu rama a tu fork:
