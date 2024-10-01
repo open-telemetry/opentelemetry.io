@@ -8,7 +8,7 @@ default_lang_commit: 9b5e318036fb92e4a1896259cc3bbdad2843e1de
 cSpell:ignore: OLJCESPC preconfigurados diagnostícala
 ---
 
-Bienvenido a la documentación de la [Demo de OpenTelemetry](/ecosystem/demo/),
+Aquí tienes la documentación de la [Demo de OpenTelemetry](/ecosystem/demo/),
 que describe cómo instalar y ejecutar la demostración, además de algunos
 escenarios que puedes usar para ver OpenTelemetry en acción.
 
