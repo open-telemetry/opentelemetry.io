@@ -34,8 +34,8 @@ processing (or modification), and finally to export.
 Pipelines can operate on three telemetry data types: traces, metrics, and logs.
 The data type is a property of the pipeline defined by its configuration.
 Receivers, processors, and exporters used in a pipeline must support the
-particular data type, otherwise the `pipeline.ErrSignalNotSupported` exception is
-reported when the configuration loads.
+particular data type, otherwise the `pipeline.ErrSignalNotSupported` exception
+is reported when the configuration loads.
 
 The following diagram represents a typical pipeline:
 
