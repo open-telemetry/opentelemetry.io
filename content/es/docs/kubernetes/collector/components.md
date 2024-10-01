@@ -187,8 +187,8 @@ roleRef:
 ## Receptor de Kubeletstats
 
 | Patrón de implementación | Utilizable                                                             |
-| ------------------------ | ---------------------------------------------------------------------- | --- |
-| DaemonSet (agente)       | Preferido                                                              |     |
+| ------------------------ | ---------------------------------------------------------------------- | 
+| DaemonSet (agente)       | Preferido                                                              |
 | Deployment (gateway)     | Sí, pero solo recopilará métricas del nodo en el que está implementado |
 | Sidecar                  | No                                                                     |
 
@@ -225,7 +225,8 @@ receivers:
 
 Para obtener detalles específicos sobre qué métricas se recopilan, consulta
 [Métricas predeterminadas] (https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/kubeletsstatsreceiver/documentation.md).
-Para obtener detalles de configuración específicos, consulta [Receptor de Kubeletstats](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/kubeletstatsreceiver).
+Para obtener detalles de configuración específicos, consulta
+[Receptor de Kubeletstats](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/kubeletstatsreceiver).
 
 Dado que el procesador usa la API de Kubernetes, necesitas el permiso correcto
 para funcionar correctamente. Para la mayoría de los casos de uso, debes otorgar
