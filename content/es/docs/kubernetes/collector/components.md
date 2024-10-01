@@ -184,7 +184,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-## Receptor de Kubeletstats  {#kubeletstats-receiver}
+## Receptor de Kubeletstats {#kubeletstats-receiver}
 
 | Patrón de implementación | Utilizable                                                             |
 | ------------------------ | ---------------------------------------------------------------------- |
@@ -684,7 +684,7 @@ subjects:
     namespace: default
 ```
 
-## Prometheus Receiver  {#prometheus-receiver}
+## Prometheus Receiver {#prometheus-receiver}
 
 | Patrón de implementación | Utilizable |
 | ------------------------ | ---------- |
