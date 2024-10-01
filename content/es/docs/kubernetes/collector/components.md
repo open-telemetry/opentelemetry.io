@@ -732,7 +732,7 @@ debe rastrear.
 Para obtener más información sobre el diseño del receptor, consulta
 [Diseño](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/DESIGN.md).
 
-## Receptor de métricas del host {#hostmetrics-receiver}
+## Receptor de métricas del host {#host-metrics-receiver}
 
 | Patrón de implementación | Utilizable                                                       |
 | ------------------------ | ---------------------------------------------------------------- |
