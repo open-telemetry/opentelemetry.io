@@ -65,7 +65,7 @@ reenvía los datos a una amplia variedad de herramientas de análisis.
 
 {{% blocks/feature icon="fas fa-magic" title="Instrumentación fácil de desplegar"%}}
 
-OpenTelemetry se integra con librerías y frameworks populares, tales como
+OpenTelemetry se integra con librerías y frameworks populares, como
 [Spring](https://spring.io),
 [ASP.NET Core](https://docs.microsoft.com/aspnet/core),
 [Express](https://expressjs.com), [Quarkus](https://quarkus.io) y muchos más.
