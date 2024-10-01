@@ -344,7 +344,7 @@ implementar una vista previa usando [Netlify](https://www.netlify.com/).
 También pueden fallar otras comprobaciones. Consulta la
 [lista de todas las comprobaciones de PR](/docs/contributing/pr-checks).
 
-### Soluciona problemas de contenido automáticamente
+### Soluciona problemas de contenido automáticamente {#fix-content-issues-automatically}
 
 Antes de enviar un cambio al repositorio, ejecuta el siguiente comando y (i)
 aborda los problemas informados, (ii) confirma los archivos modificados por el
