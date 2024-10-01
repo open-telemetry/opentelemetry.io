@@ -32,7 +32,7 @@ Para los logs, las métricas o los rastros de aplicaciones, recomendamos el
 [receptor OTLP](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver),
 pero cualquier receptor que se ajuste a sus datos es adecuado.
 
-## Procesador de atributos de Kubernetes
+## Procesador de atributos de Kubernetes {#kubernetes-attributes-processor}
 
 | Patrón de implementación | Utilizable |
 | ------------------------ | ---------- |
@@ -184,7 +184,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-## Receptor de Kubeletstats
+## Receptor de Kubeletstats  {#kubeletstats-receiver}
 
 | Patrón de implementación | Utilizable                                                             |
 | ------------------------ | ---------------------------------------------------------------------- |
@@ -263,7 +263,7 @@ subjects:
     namespace: default
 ```
 
-## Receptor de logs de archivos
+## Receptor de logs de archivos {#filelog-receiver}
 
 | Patrón de implementación | Utilizable                                                     |
 | ------------------------ | -------------------------------------------------------------- |
@@ -412,7 +412,7 @@ spec:
         ...
 ```
 
-## Receptor de clúster de Kubernetes
+## Receptor de clúster de Kubernetes {#kubernetes-cluster-receiver}
 
 | Patrón de implementación | Utilizable                                            |
 | ------------------------ | ----------------------------------------------------- |
@@ -543,7 +543,7 @@ subjects:
     namespace: default
 ```
 
-## Receptor de objetos de Kubernetes
+## Receptor de objetos de Kubernetes {#kubernetes-objects-receiver}
 
 | Patrón de implementación | Utilizable                                            |
 | ------------------------ | ----------------------------------------------------- |
@@ -684,7 +684,7 @@ subjects:
     namespace: default
 ```
 
-## Prometheus Receiver
+## Prometheus Receiver  {#prometheus-receiver}
 
 | Patrón de implementación | Utilizable |
 | ------------------------ | ---------- |
@@ -732,7 +732,7 @@ debe rastrear.
 Para obtener más información sobre el diseño del receptor, consulta
 [Diseño](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/DESIGN.md).
 
-## Receptor de métricas del host
+## Receptor de métricas del host {#hostmetrics-receiver}
 
 | Patrón de implementación | Utilizable                                                       |
 | ------------------------ | ---------------------------------------------------------------- |
