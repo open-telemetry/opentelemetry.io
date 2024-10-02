@@ -240,7 +240,7 @@ propagação de contexto][context propagation].
 
 ### **Propagators**
 
-Usado para serializar e deserializar partes específicas de dados telemétricos,
+Usado para serializar e desserializar partes específicas de dados telemétricos,
 como contexto de span e [bagagem](#baggage) em [Spans](#span). Consulte [mais
 informações][propagators].
 
