@@ -8,13 +8,13 @@ cSpell:ignore: autoconfigured FQCNs Interceptable Logback okhttp
 <?code-excerpt path-base="examples/java/configuration"?>
 
 The SDK is the built-in reference implementation of the
-[API](../instrumentation/), processing and exporting telemetry produced by
-instrumentation API calls. This page is a conceptual overview of the SDK,
-including descriptions, links to relevant Javadocs, artifact coordinates, sample
-programmatic configurations and more. See
-**[Configure the SDK](../configuration/)** for details on SDK configuration,
-including
-[zero-code SDK autoconfigure](../configuration/#zero-code-sdk-autoconfigure).
+[API](/docs/languages/java/instrumentation/), processing and exporting telemetry
+produced by instrumentation API calls. This page is a conceptual overview of the
+SDK, including descriptions, links to relevant Javadocs, artifact coordinates,
+sample programmatic configurations and more. See
+**[Configure the SDK](/docs/languages/java/configuration/)** for details on SDK
+configuration, including
+[zero-code SDK autoconfigure](/docs/languages/java/configuration/#zero-code-sdk-autoconfigure).
 
 The SDK consists of the following top level components:
 
@@ -63,7 +63,7 @@ component section includes:
   [plugin extension interface](#sdk-plugin-extension-interfaces), a table of
   available built-in and `opentelemetry-java-contrib` implementations.
 - A simple demonstration of
-  [programmatic-configuration](../configuration/#programmatic-configuration).
+  [programmatic-configuration](/docs/languages/java/configuration/#programmatic-configuration).
 - If the component is a
   [plugin extension interface](#sdk-plugin-extension-interfaces), a simple
   demonstration of a custom implementation.
@@ -120,11 +120,11 @@ associate the same resource with [SdkTracerProvider](#sdktracerprovider),
 [SdkMeterProvider](#sdkmeterprovider), [SdkLoggerProvider](#sdkloggerprovider).
 
 {{% alert color="info" %}}
-[ResourceProviders](../configuration/#resourceprovider) contribute contextual
-information to the
-[autoconfigured](../configuration/#zero-code-sdk-autoconfigure) resource based
-on the environment. See documentation for list of available `ResourceProvider`s.
-{{% /alert %}}
+[ResourceProviders](/docs/languages/java/configuration/#resourceprovider)
+contribute contextual information to the
+[autoconfigured](/docs/languages/java/configuration/#zero-code-sdk-autoconfigure)
+resource based on the environment. See documentation for list of available
+`ResourceProvider`s. {{% /alert %}}
 
 The following code snippet demonstrates `Resource` programmatic configuration:
 
