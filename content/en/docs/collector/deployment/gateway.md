@@ -39,8 +39,9 @@ Let's have a look at such a case where we are using the load-balancing exporter:
 
 ### NGINX as an "out-of-the-box" load balancer
 
-Assuming you have two collectors (`collector1` and `collector2`) configured and you want to load balance traffic across them using
-NGINX, you can use the following configuration:
+Assuming you have two collectors (`collector1` and `collector2`) configured and
+you want to load balance traffic across them using NGINX, you can use the
+following configuration:
 
 ```nginx
 server {
