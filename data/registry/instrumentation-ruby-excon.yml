@@ -17,3 +17,4 @@ package:
   registry: gems
   name: opentelemetry-instrumentation-excon
   version: 0.22.4
+isFirstParty: false

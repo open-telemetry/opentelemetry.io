@@ -2591,6 +2591,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-06-12T11:21:07.765039+02:00"
   },
+  "https://docs.github.com/en/pull-requests": {
+    "StatusCode": 206,
+    "LastSeen": "2024-09-28T12:02:48.071874-04:00"
+  },
   "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T15:25:17.633498-05:00"
@@ -3234,6 +3238,10 @@
   "https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/expressions.html": {
     "StatusCode": 206,
     "LastSeen": "2024-04-03T12:51:54.758528517+02:00"
+  },
+  "https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/env/Environment.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-09-30T11:46:05.626745451+02:00"
   },
   "https://docs.spring.io/spring-framework/reference/core/aop/proxying.html": {
     "StatusCode": 206,
@@ -7687,6 +7695,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:09.784881-05:00"
   },
+  "https://github.com/spring-projects/spring-petclinic/issues/1522": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T11:46:08.45838184+02:00"
+  },
   "https://github.com/srikanthccv": {
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:14:34.303435+02:00"
@@ -9679,6 +9691,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-05-06T07:53:28.903161-07:00"
   },
+  "https://opentelemetry.io/community/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-08-02T14:12:40.876027062Z"
+  },
   "https://opentelemetry.io/community/end-user/": {
     "StatusCode": 206,
     "LastSeen": "2024-06-12T10:03:19.48038-07:00"
@@ -9759,6 +9775,14 @@
     "StatusCode": 206,
     "LastSeen": "2024-04-30T09:31:38.379400427Z"
   },
+  "https://opentelemetry.io/docs/languages/java/configuration/#otlp-exporter-span-metric-and-log-exporters": {
+    "StatusCode": 206,
+    "LastSeen": "2024-09-30T11:46:09.63842153+02:00"
+  },
+  "https://opentelemetry.io/docs/languages/sdk-configuration/general/#otel_resource_attributes": {
+    "StatusCode": 206,
+    "LastSeen": "2024-08-02T14:12:47.8147781Z"
+  },
   "https://opentelemetry.io/docs/migration/opentracing/": {
     "StatusCode": 206,
     "LastSeen": "2024-06-04T17:29:58.687939269+02:00"
@@ -9807,6 +9831,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-06-04T17:29:59.855130203+02:00"
   },
+  "https://opentelemetry.io/docs/specs/semconv/http/http-metrics/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-08-02T14:12:43.42038055Z"
+  },
   "https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpclientrequestbodysize": {
     "StatusCode": 206,
     "LastSeen": "2024-07-09T06:50:49.55383228Z"
@@ -9835,6 +9863,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-05-15T19:23:47.920456821+03:00"
   },
+  "https://opentelemetry.io/docs/zero-code/java/agent/extensions/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-08-02T14:12:34.923633377Z"
+  },
   "https://opentelemetry.io/docs/zero-code/java/agent/instrumentation/http/#capturing-http-request-and-response-headers": {
     "StatusCode": 206,
     "LastSeen": "2024-07-18T12:15:23.404682814Z"
@@ -9846,6 +9878,18 @@
   "https://opentelemetry.io/docs/zero-code/java/agent/instrumentation/http/#enabling-experimental-http-telemetry": {
     "StatusCode": 206,
     "LastSeen": "2024-07-18T12:15:30.126385341Z"
+  },
+  "https://opentelemetry.io/docs/zero-code/java/spring-boot-starter/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-08-02T14:12:38.088918593Z"
+  },
+  "https://opentelemetry.io/docs/zero-code/java/spring-boot-starter/sdk-configuration/#configure-the-exporter-programmatically": {
+    "StatusCode": 206,
+    "LastSeen": "2024-08-02T14:12:31.827510979Z"
+  },
+  "https://opentelemetry.io/docs/zero-code/java/spring-boot-starter/sdk-configuration/#general-configuration": {
+    "StatusCode": 206,
+    "LastSeen": "2024-08-02T14:12:50.847636232Z"
   },
   "https://opentelemetry.io/ecosystem/integrations/": {
     "StatusCode": 206,
@@ -10794,6 +10838,10 @@
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/zookeeperreceiver": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:01:13.220618-04:00"
+  },
+  "https://pkg.go.dev/github.com/openclarity/apiclarity/plugins/otel-collector/apiclarityexporter": {
+    "StatusCode": 200,
+    "LastSeen": "2024-08-12T17:56:07.964057+02:00"
   },
   "https://pkg.go.dev/go.opentelemetry.io/collector/cmd/builder": {
     "StatusCode": 200,
@@ -12459,6 +12507,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-08-09T10:46:30.160571-04:00"
   },
+  "https://www.graalvm.org/latest/reference-manual/native-image/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-09-30T11:46:04.441837921+02:00"
+  },
   "https://www.gsse.biz/pdfs/papers/DASIA2018-abstract.pdf": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T05:18:48.040371-05:00"
@@ -13118,6 +13170,10 @@
   "https://www.nuget.org/packages/Quartz": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:26:32.105686-05:00"
+  },
+  "https://www.nuget.org/packages/RabbitMQ.Client/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-27T11:24:36.621768676Z"
   },
   "https://www.nuget.org/packages/StackExchange.Redis": {
     "StatusCode": 200,
