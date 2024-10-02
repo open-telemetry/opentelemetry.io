@@ -106,7 +106,7 @@ A relatively new process in the OpenTelemetry community is the
 [GC monthly check-in](https://github.com/open-telemetry/community/blob/main/gc-check-ins.md)
 with SIG maintainers. Each GC member was asked to pick about 4 SIGs, and then
 act as a liaison between those SIGs and the GC. Once a month, I ask SIG
-maintainers from Collector, Operator, Security, and Go Auto-Instrumentation
+maintainers from Collector, Operator, Security, and Go Autoinstrumentation
 questions, such as:
 
 1\. Do you have any specific issues within your SIG that would require GC

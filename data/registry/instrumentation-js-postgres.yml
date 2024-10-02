@@ -18,3 +18,4 @@ package:
   registry: npm
   name: '@opentelemetry/instrumentation-pg'
   version: 0.44.0
+isFirstParty: false

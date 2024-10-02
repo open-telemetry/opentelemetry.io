@@ -17,3 +17,4 @@ package:
   registry: npm
   name: '@opentelemetry/instrumentation-generic-pool'
   version: 0.39.0
+isFirstParty: false

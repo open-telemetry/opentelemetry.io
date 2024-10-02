@@ -15,3 +15,4 @@ package:
   registry: gems
   name: opentelemetry-instrumentation-mysql2
   version: 0.28.0
+isFirstParty: false

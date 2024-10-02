@@ -16,3 +16,4 @@ package:
   registry: gems
   name: opentelemetry-instrumentation-faraday
   version: 0.24.6
+isFirstParty: false

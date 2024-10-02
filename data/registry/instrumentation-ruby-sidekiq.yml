@@ -16,3 +16,4 @@ package:
   registry: gems
   name: opentelemetry-instrumentation-sidekiq
   version: 0.25.7
+isFirstParty: false
