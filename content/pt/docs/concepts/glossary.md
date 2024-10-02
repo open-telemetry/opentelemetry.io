@@ -52,7 +52,7 @@ Refere-se a métodos de coleta de telemetria que não exigem que o usuário fina
 modifique o código-fonte da aplicação. Os métodos variam conforme a linguagem de
 programação e os exemplos incluem injeção de _bytecode_ ou _monkey patching_.
 
-### **Baggage**
+### **Bagagem**
 
 Um mecanismo para propagar [Metadados](#metadata) para ajudar a estabelecer uma
 relação casual entre eventos e serviços. Consulte as [especificações de
