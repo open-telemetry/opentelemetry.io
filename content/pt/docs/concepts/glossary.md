@@ -86,10 +86,10 @@ incorporada. Consulte [a especificação da biblioteca][spec-instrumentation-lib
 ### **Biblioteca instrumentada** {#instrumented-library}
 
 Denota a [Biblioteca](#library) para a qual os sinais telemétricos
-([Rastros](#traces), [Métricas](#metric), [Logs](#log)) são coletados. Consulte
+([Rastros](#trace), [Métricas](#metric), [Logs](#log)) são coletados. Consulte
 [mais informações][spec-instrumented-lib].
 
-### **Campo**
+### **Campo** {#field}
 
 Um termo utilizado especificamente por [Registros de Log](#log-record).
 [Metadados](#metadata) podem ser adicionados por meio de campos definidos,
@@ -296,7 +296,7 @@ Abreviação para [Representational State Transfer][rest].
 
 Veja [Rastro distribuído](#distributed-tracing).
 
-### **Rótulo**
+### **Rótulo** {#label}
 
 Um termo utilizado especificamente por [Métricas](#metric). Veja
 [Metadados](#metadata).
