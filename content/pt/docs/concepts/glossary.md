@@ -63,7 +63,7 @@ atributos][attribute].
 
 Um mecanismo para propagar [Metadados](#metadata) para ajudar a estabelecer uma
 relação casual entre eventos e serviços. Consulte as [especificações de
-Baggagge][baggage].
+Bagagem][baggage].
 
 ### **Biblioteca** {#library}
 
