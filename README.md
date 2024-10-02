@@ -4,7 +4,6 @@ This is the source repository for the [OpenTelemetry][] website, project
 documentation, and blog. The site is [built][contributing.md] using [Hugo][] and
 is hosted on [Netlify][].
 
-## Get involved
 
 To learn how to contribute fixes and new content to this project, read the
 [Contributor's guide](https://opentelemetry.io/docs/contributing/), which
