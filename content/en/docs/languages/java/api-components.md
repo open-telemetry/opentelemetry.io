@@ -509,7 +509,7 @@ public class AttributesUsage {
             .put(SHOP_NAME, "opentelemetry-demo")
             .put(CUSTOMER_ID, 123)
             .put(CUSTOMER_NAME, "Jack")
-            // optionally initialize attribute keys on the fly
+            // Optionally initialize attribute keys on the fly
             .put(AttributeKey.stringKey("com.acme.string-key"), "value")
             .put(AttributeKey.booleanKey("com.acme.bool-key"), true)
             .put(AttributeKey.longKey("com.acme.long-key"), 1L)
@@ -518,7 +518,7 @@ public class AttributesUsage {
             .put(AttributeKey.booleanArrayKey("come.acme.bool-array-key"), true, false)
             .put(AttributeKey.longArrayKey("come.acme.long-array-key"), 1L, 2L)
             .put(AttributeKey.doubleArrayKey("come.acme.double-array-key"), 1.1, 2.2)
-            // optionally omit initializing AttributeKey
+            // Optionally omit initializing AttributeKey
             .put("com.acme.string-key", "value")
             .put("com.acme.bool-key", true)
             .put("come.acme.long-key", 1L)
@@ -719,23 +719,23 @@ public class SpanUsage {
                 AttributeKey.longArrayKey("come.acme.long-array-key"), Arrays.asList(1L, 2L))
             .setAttribute(
                 AttributeKey.doubleArrayKey("come.acme.double-array-key"), Arrays.asList(1.1, 2.2))
-            // optionally omit initializing AttributeKey
+            // Optionally omit initializing AttributeKey
             .setAttribute("com.acme.string-key", "value")
             .setAttribute("com.acme.bool-key", true)
             .setAttribute("come.acme.long-key", 1L)
             .setAttribute("come.acme.double-key", 1.1)
             .setAllAttributes(WIDGET_RED_CIRCLE)
-            // Optionally explicitly set the parent span context. If omitted, the span's parent will
-            // be set using Context.current()
+            // Uncomment to optionally explicitly set the parent span context. If omitted, the
+            // span's parent will be set using Context.current().
             // .setParent(parentContext)
-            // Optionally add links
+            // Uncomment to optionally add links.
             // .addLink(linkContext, linkAttributes)
             // Start the span
             .startSpan();
 
     // Check if span is recording before computing additional data
     if (span.isRecording()) {
-      // Update the span name with information not avilable when starting
+      // Update the span name with information not available when starting
       span.updateName("new span name");
 
       // Add additional attributes not available when starting
@@ -993,10 +993,10 @@ public class AsyncCounterUsage {
             .counterBuilder("fully.qualified.counter")
             .setDescription("A count of produced widgets")
             .setUnit("{widget}")
-            // optionally change the type to double
+            // Uncomment to optionally change the type to double
             // .ofDoubles()
-            // the callback is invoked a MetricReader reads metrics
             .buildWithCallback(
+                // the callback is invoked a MetricReader reads metrics
                 observableMeasurement -> {
                   long currentWidgetCount = widgetCount.get();
 
@@ -1056,7 +1056,7 @@ public class UpDownCounterUsage {
             .upDownCounterBuilder("fully.qualified.updowncounter")
             .setDescription("Current length of widget processing queue")
             .setUnit("{widget}")
-            // optionally change the type to double
+            // Uncomment to optionally change the type to double
             // .ofDoubles()
             .build();
 
@@ -1114,10 +1114,10 @@ public class AsyncUpDownCounterUsage {
             .upDownCounterBuilder("fully.qualified.updowncounter")
             .setDescription("Current length of widget processing queue")
             .setUnit("{widget}")
-            // optionally change the type to double
+            // Uncomment to optionally change the type to double
             // .ofDoubles()
-            // the callback is invoked a MetricReader reads metrics
             .buildWithCallback(
+                // the callback is invoked a MetricReader reads metrics
                 observableMeasurement -> {
                   long currentWidgetCount = queueLength.get();
 
@@ -1177,9 +1177,9 @@ public class HistogramUsage {
             .histogramBuilder("fully.qualified.histogram")
             .setDescription("Length of time to process a widget")
             .setUnit("s")
-            // optionally provide advice on useful default explicit bucket boundaries
+            // Uncomment to optionally provide advice on useful default explicit bucket boundaries
             // .setExplicitBucketBoundariesAdvice(Arrays.asList(1.0, 2.0, 3.0))
-            // optionally change the type to long
+            // Uncomment to optionally change the type to long
             // .ofLongs()
             .build();
 
@@ -1237,7 +1237,7 @@ public class GaugeUsage {
             .gaugeBuilder("fully.qualified.gauge")
             .setDescription("The current temperature of the widget processing line")
             .setUnit("K")
-            // optionally change the type to long
+            // Uncomment to optionally change the type to long
             // .ofLongs()
             .build();
 
@@ -1297,10 +1297,10 @@ public class AsyncGaugeUsage {
             .gaugeBuilder("fully.qualified.gauge")
             .setDescription("The current temperature of the widget processing line")
             .setUnit("K")
-            // optionally change the type to long
+            // Uncomment to optionally change the type to long
             // .ofLongs()
-            // the callback is invoked a MetricReader reads metrics
             .buildWithCallback(
+                // the callback is invoked a MetricReader reads metrics
                 observableMeasurement -> {
                   double currentWidgetCount = processingLineTemp.get();
 
@@ -1408,8 +1408,8 @@ public class LogRecordUsage {
         .setAttribute(
             AttributeKey.doubleArrayKey("come.acme.double-array-key"), Arrays.asList(1.1, 2.2))
         .setAllAttributes(WIDGET_RED_CIRCLE)
-        // Optionally explicitly set the context used to correlate with spans. If omitted,
-        // Context.current() is used.
+        // Uncomment to optionally explicitly set the context used to correlate with spans. If
+        // omitted, Context.current() is used.
         // .setContext(context)
         // Emit the log record
         .emit();
@@ -1553,7 +1553,7 @@ import io.opentelemetry.semconv.incubating.HttpIncubatingAttributes;
 
 public class SemanticAttributesUsage {
   public static void semanticAttributesUsage() {
-    // Semantic attributes are organized by top level domain and whether they are stable or
+    // Semantic attributes are organized by top-level domain and whether they are stable or
     // incubating.
     // For example:
     // - stable attributes starting with http.* are in the HttpAttributes class.
@@ -1627,7 +1627,7 @@ public class BaggageUsage {
             .put("shopId", "abc123")
             .put("shopName", "opentelemetry-demo", BaggageEntryMetadata.create("metadata"))
             .build();
-    // ...or start from empty
+    // ...or uncomment to start from empty
     // newBaggage = Baggage.empty().toBuilder().put("shopId", "abc123").build();
     // output => new baggage: {shopId=abc123(), shopName=opentelemetry-demo(metadata)}
     System.out.println("new baggage: " + asString(newBaggage));
