@@ -1,0 +1,8 @@
+{{ $name := .Get 0 }}
+{{ $varOrdinal := .Ordinal -}}
+
+{{- range $index, $element := .Page.Resources -}}
+    {{ $entryid := printf "code-vars-%v-%v-%v" $varOrdinal $index $element.Title | anchorize -}}
+    {{ $classname := printf "code-vars-%v" $element.Title | anchorize -}}
+    <code id="{{ $entryid }}" class="code-vars {{ $classname }}" style="display: none;">{{ index $element.Params $name }} </code>
+{{- end -}}

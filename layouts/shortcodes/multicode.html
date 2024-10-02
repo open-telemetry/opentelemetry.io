@@ -1,0 +1,48 @@
+{{- $code := default "none" (.Get 0) -}}
+{{ $tabPaneOrdinal := .Ordinal -}}
+
+{{ $activeSet := false -}}
+
+<ul class="nav nav-tabs justify-content-end" id="tabs-{{ $tabPaneOrdinal }}" role="tablist">
+    <form>
+        <div class="input-group">
+        <div class="input-group-text">
+            Language: 
+        </div>
+        <select class="form-select">
+            {{- range $index, $element := where .Page.Resources "Title" "ne" "" -}}
+                {{ $isActive := (not $activeSet) -}}
+                {{ $entryid := printf "tabs-%02v-%v" $tabPaneOrdinal $index | anchorize -}}
+                {{ $tabid := printf "tabs-%02v-%v-tab" $tabPaneOrdinal $index | anchorize -}}
+                <option class="
+                {{- if $isActive -}}
+                  {{ $activeSet = true }} active
+                {{- end -}}"
+                    data-td-tp-persist="{{ .Title | lower }}" data-bs-toggle="tab" id="{{ $tabid }}" data-bs-target="#{{ $entryid }}" value="tabs-{{ $tabPaneOrdinal }}-00">{{ .Title }}</option>
+            {{- end -}}
+        </select>
+    </div>
+    </form>
+</ul>
+
+
+{{ $activeSet = false -}}
+
+<div class="tab-content" id="tabs-{{ $tabPaneOrdinal }}-content">
+    {{- range $index, $element := where .Page.Resources "Title" "ne" "" -}}
+        {{ $isActive := (not $activeSet) -}}
+        {{ $entryid := printf "tabs-%02v-%v" $tabPaneOrdinal $index | anchorize -}}
+        {{ $tabid := printf "tabs-%02v-%v-tab" $tabPaneOrdinal $index | anchorize -}}
+        <div class="tab-body tab-pane fade
+        {{- if $isActive -}}
+          {{ $activeSet = true }} show active
+        {{- end }}" id="{{ $entryid }}" role="tabpanel" aria-labelled-by="{{ $tabid }}" tabindex="2"
+            aria-labelledby="tabs-{{ $tabPaneOrdinal }}-01-tab">
+            {{- $noop := .Content -}}
+            {{- .Store.Get $code -}}
+        </div>
+    {{- end -}}
+</div>
+
+
+
