@@ -19,11 +19,11 @@ cSpell:ignore: Dotel kotlint Logback updowncounter
 The API is a set of classes and interfaces for recording telemetry across key
 observability signals. The [SDK](../sdk/) is the built-in reference
 implementation of the API, [configured](../configuration/) to process and export
-telemetry . This page is a conceptual overview of the API, including
+telemetry. This page is a conceptual overview of the API, including
 descriptions, links to relevant Javadocs, artifact coordinates, sample API
 usage.
 
-The API consists of the following top level components:
+The API consists of the following top-level components:
 
 - [Context](#context-api): A standalone API for propagating context throughout
   an application and across application boundaries, including trace context and
@@ -31,7 +31,7 @@ The API consists of the following top level components:
 - [TracerProvider](#tracerprovider): The API entry point for traces.
 - [MeterProvider](#meterprovider): The API entry point for metrics.
 - [LoggerProvider](#loggerprovider): The API entry point for logs.
-- [OpenTelemetry](#opentelemetry): A holder for top level API components (i.e.
+- [OpenTelemetry](#opentelemetry): A holder for top-level API components (i.e.
   `TracerProvider`, `MeterProvider`, `LoggerProvider`, `ContextPropagators`)
   which is convenient to pass to instrumentation.
 
@@ -40,7 +40,7 @@ provided by OpenTelemetry:
 
 - [SDK](../sdk/) reference implementation. This is the right choice for most
   users.
-- [Noop](#noop-implementation) implementation. A minimalist, zero dependency
+- [Noop](#noop-implementation) implementation. A minimalist, zero-dependency
   implementation for instrumentations to use by default when the user doesn't
   install an instance.
 
@@ -781,7 +781,7 @@ context is explicitly overridden.
 Most of the context API usage guidance applies to span. Span context is
 propagated across application boundaries with the
 [W3CTraceContextPropagator](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/propagation/W3CTraceContextPropagator.html)
-and other [TextMapPropagators](/docs/languages/java/sdk/#textmappropagator).
+and other [TextMapPropagators](../sdk/#textmappropagator).
 
 The following code snippet explores `Span` API context propagation:
 
@@ -1427,7 +1427,7 @@ no impact on performance. Instrumentation may see impact on performance even
 when the noop is used if it is computing / allocating attribute values and other
 data required to record the telemetry. The noop is a useful default instance of
 `OpenTelemetry` when a user has not configured and installed a concrete
-implementation such as the [SDK](/docs/languages/java/sdk/).
+implementation such as the [SDK](../sdk/).
 
 The following code snippet explores `OpenTelemetry#noop()` API usage:
 
@@ -1582,16 +1582,15 @@ public class SemanticAttributesUsage {
 is a bundle of application defined key-value pairs associated with a distributed
 request or workflow execution. Baggage keys and values are strings, and values
 have optional string metadata. Telemetry can be enriched with data from baggage
-by configuring the [SDK](/docs/languages/java/sdk/) to add entries as attributes
-to spans, metrics, and log records. The baggage API is built on top of
+by configuring the [SDK](../sdk/) to add entries as attributes to spans,
+metrics, and log records. The baggage API is built on top of
 [context](#context), which allows span context to be implicitly passed around an
 application and across threads. Most of the context API usage guidance applies
 to baggage.
 
 Baggage is propagated across application boundaries with the
 [W3CBaggagePropagator](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/baggage/propagation/W3CBaggagePropagator.html)
-(see [TextMapPropagator](/docs/languages/java/sdk/#textmappropagator) for
-details).
+(see [TextMapPropagator](../sdk/#textmappropagator) for details).
 
 The following code snippet explores `Baggage` API usage:
 
