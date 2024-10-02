@@ -52,7 +52,7 @@ Refere-se a métodos de coleta de telemetria que não exigem que o usuário fina
 modifique o código-fonte da aplicação. Os métodos variam conforme a linguagem de
 programação e os exemplos incluem injeção de _bytecode_ ou _monkey patching_.
 
-### **Bagagem**
+### **Bagagem** {#baggage}
 
 Um mecanismo para propagar [Metadados](#metadata) para ajudar a estabelecer uma
 relação casual entre eventos e serviços. Consulte as [especificações de
@@ -60,280 +60,221 @@ Baggagge][baggage].
 
 ### **Biblioteca de cliente** {#client-library}
 
-Veja [Biblioteca instrumentada](#instrumented-library).
+Consulte a seção [Biblioteca instrumentada](#instrumented-library).
 
-### **Client-side app**
+### **Aplicação client-side** {#client-side-app}
 
-A component of an [Application](#application) that is not running inside a
-private infrastructure and is typically used directly by end-users. Examples of
-client-side apps are browser apps, mobile apps, and apps running on IoT devices.
+Um componente de uma [Aplicação](#application) que não está sendo executado dentro de uma infraestrutura privada e é normalmente usado diretamente por usuários finais. Exemplos de aplicações client-side incluem aplicativos de navegador, aplicativos móveis e aplicativos executados em dispositivos IoT.
 
 ### **Collector**
 
-A vendor-agnostic implementation on how to receive, process, and export
-telemetry data. A single binary that can be deployed as an agent or gateway.
+Uma implementação neutra em relação a fornecedores sobre como receber, processar e exportar dados de telemetria. Um único binário que pode ser implementado como um agente ou gateway.
 
-Also known as the OpenTelemetry Collector. More on the Collector
-[here][collector].
+Também conhecido como OpenTelemetry Collector. Mais detalhes sobre o Collector podem ser encontrados
+[aqui][collector].
 
 ### **Contrib**
 
-Several [Instrumentation Libraries](#instrumentation-library) and the
-[Collector](#collector) offer a set of core capabilities as well as a dedicated
-contrib repository for non-core capabilities including vendor `Exporters`.
+Diversas [Bibliotecas Instrumentadas](#instrumentation-library) e o [Collector](#collector) oferecem um conjunto de funcionalidades principais, assim como um repositório contrib dedicado para funcionalidades não essenciais, incluindo `Exporters` de fornecedores.
 
-### **Context propagation**
+### **Propagação de Contexto** {#context-propagation}
 
-Allows all [Data sources](#data-source) to share an underlying context mechanism
-for storing state and accessing data across the lifespan of a
-[Transaction](#transaction). See [context propagation
-spec][context propagation].
+Permite que todas as [Fontes de dados](#data-source) compartilhem um mecanismo subjacente de contexto para armazenar um estado e acessar dados ao longo do ciclo de vida de uma [Transação](#transaction). Consulte a [especificação de propagação de contexto][context propagation].
 
 ### **DAG**
 
 [Directed Acyclic Graph][dag].
 
-### **Data source**
+### **Fonte de dados** {#data-source}
 
-See [Signal](#signal)
+Veja [Sinal](#signal)
 
-### **Dimension**
+### **Dimensão** {#dimension}
 
-A term used specifically by [Metrics](#metric). See [Attribute](#attribute).
+Termo utilizado especialmente por [Métricas](#metric). Consulte [Atributo](#attribute).
 
-### **Distributed tracing**
+### **Rastro distribuído** {#distributed-tracing}
 
-Tracks the progression of a single [Request](#request), called a
-[Trace](#trace), as it is handled by [Services](#service) that make up an
-[Application](#application). A [Distributed trace](#distributed-tracing)
-transverses process, network and security boundaries.
+Acompanha a progressão de uma única [Requisição](#request), chamada de [Rastro](#trace), conforme é processada pelos [Serviços](#service) que compõem uma [Aplicação](#application). Um [Rastro distribuído](#distributed-tracing) atravessa limites de processo, rede e segurança.
 
-See [Distributed tracing][distributed tracing].
+Consulte [Rastreamento distribuído][distributed tracing].
 
-### **Distribution**
+### **Distribuição** {#distribution}
 
-A distribution is a wrapper around an upstream OpenTelemetry repository with
-some customizations. See [more][distribution].
+Uma distribuição é um encapsulamento em torno de um repositório upstream do OpenTelemetry com algumas personalizações. Consulte [mais detalhes][distribution].
 
-### **Event**
+### **Evento** {#event}
 
-Something that happened where representation depends on the
-[Data source](#data-source). For example, [Spans](#span).
+Algo que aconteceu cuja representação depende da [Fonte de dados](#data-source). Por exemplo, [Spans](#span).
 
 ### **Exporter**
 
-Provides functionality to emit telemetry to consumers. Exporters can be push- or
-pull-based.
+Fornece funcionalidades para emitir dados telemétricos aos consumidores. Exporters podem ser push-based ou pull-based.
 
-### **Field**
+### **Campo**
 
-A term used specifically by [Log Records](#log-record). [Metadata](#metadata)
-can be added through defined fields, including [Attributes](#attribute) and
-[Resource](#resource). Other fields may also be considered `Metadata`, including
-severity and trace information. See the [field spec][field].
+Um termo utilizado especificamente por [Registros de Log](#log-record). [Metadados](#metadata) podem ser adicionados por meio de campos definidos, incluindo [Atributos](#attribute) e [Recursos](#resource). Outros campos também podem ser considerados `Metadados`, incluindo severidade e informações de rastreamento. Consulte a [especificação de campos][field].
 
 ### **gRPC**
 
-A high-performance, open source universal [RPC](#rpc) framework. More on gRPC
-[here](https://grpc.io).
+Um framework [RPC](#rpc) de alta performance e open source. Mais sobre gRPC [aqui](https://grpc.io).
 
 ### **HTTP**
 
-Short for [Hypertext Transfer Protocol][http].
+Abreviação para [Hypertext Transfer Protocol][http].
 
-### **Instrumented library**
+### **Biblioteca instrumentada** {#instrumented-library}
 
-Denotes the [Library](#library) for which the telemetry signals
-([Traces](#trace), [Metrics](#metric), [Logs](#log)) are gathered. See
-[more][spec-instrumented-lib].
+Denota a [Biblioteca](#library) para a qual os sinais telemétricos ([Rastros](#traces), [Métricas](#metric), [Logs](#log)) são coletados. Consulte [mais informações][spec-instrumented-lib].
 
-### **Instrumentation library**
+### **Biblioteca de instrumentação** {#instrumentation-library}
 
-Denotes the [Library](#library) that provides the instrumentation for a given
-[Instrumented library](#instrumented-library).
-[Instrumented library](#instrumented-library) and
-[Instrumentation library](#instrumentation-library) can be the same
-[Library](#library) if it has built-in OpenTelemetry instrumentation. See [the
-lib specification][spec-instrumentation-lib].
+Denota a [Biblioteca](#library) que fornece a instrumentação para uma determinada [Biblioteca instrumentada](#instrumented-library). A [Biblioteca instrumentada](#instrumented-library) e a [Biblioteca de instrumentação](#instrumentation-library) podem ser a mesma [Biblioteca](#library) caso esta possua instrumentação OpenTelemetry incorporada. Consulte [a especificação da biblioteca][spec-instrumentation-lib].
 
 ### **JSON**
 
-Short for [JavaScript Object Notation][json].
+Abreviação para [JavaScript Object Notation][json].
 
-### **Label**
+### **Rótulo**
 
-A term used specifically by [Metrics](#metric). See [Metadata](#metadata).
+Um termo utilizado especificamente por [Métricas](#metric). Veja [Metadados](#metadata).
 
-### **Language**
+### **Linguagem**
 
-Programming Language.
+Linguagem de programação.
 
-### **Library**
+### **Biblioteca** {#library}
 
-A language-specific collection of behavior invoked by an interface.
+Uma coleção específica da linguagem com comportamento invocado por uma interface.
 
 ### **Log**
 
-Sometimes used to refer to a collection of [Log records](#log-record). Can be
-ambiguous since people also sometimes use [Log](#log) to refer to a single
-[Log record](#log-record). Where ambiguity is possible, use additional
-qualifiers, for example, `Log record`. See [more][log]
+Às vezes usado para se referir a uma coleção de [Registros de Log](#log-record). Pode ser ambíguo, uma vez que as pessoas também costumam usar [Log](#log) para se referir a um único [Registro de Log](#log-record). Quando a ambiguidade é possível, utilize qualificadores adicionais, por exemplo, `Registro de Log`. Consulte [mais informações][log].
 
-### **Log record**
+### **Registro de log** {#log-record}
 
-A recording of an [Event](#event). Typically, the record includes a timestamp
-indicating when the [Event](#event) happened as well as other data that
-describes what happened, where it happened, and so on. See [more][log record].
+Uma gravação de um [Evento](#event). Normalmente, o registro inclui um carimbo de data/hora indicando quando o [Evento](#event) ocorreu, além de outros dados que descrevem o que aconteceu, onde aconteceu, e assim por diante. Consulte [mais informações][log record].
 
-### **Metadata**
+### **Metadados** {#metadata}
 
-A key-value pair, for example `foo="bar"`, added to an entity producing
-telemetry. OpenTelemetry calls these pairs [Attributes](#attribute). In
-addition, [Metrics](#metric) have [Dimensions](#dimension) an [Labels](#label),
-while [Logs](#log) have [Fields](#field).
+Um par de chave-valor, por exemplo, `foo="bar"`, adicionado a uma entidade que produz dados telemétricos. O OpenTelemetry chama esses pares de [Atributos](#attribute). Além disso, as [Métricas](#metric) têm [Dimensões](#dimension) e [Rótulos](#label), enquanto os [Logs](#log) têm [Campos](#field).
 
-### **Metric**
+### **Métrica** {#metric}
 
-Records a data point, either raw measurements or predefined aggregation, as time
-series with [Metadata](#metadata). See [more][metric].
+Registra um ponto de dados, seja medições brutas ou agregações pré-definidas, como séries temporais com [Metadados](#metadata). Consulte [mais informações][metric].
 
 ### **OC**
 
-Short form for [OpenCensus](#opencensus).
+Abreviação  para [OpenCensus](#opencensus).
 
 ### **OpenCensus**
 
-A set of libraries for various languages that allow you to collect application
-metrics and distributed traces, then transfer the data to a backend of your
-choice in real time.
-[Precursor to OpenTelemetry](/docs/what-is-opentelemetry/#history). See
-[more][opencensus].
+Um conjunto de bibliotecas para várias linguagens que permite coletar métricas de aplicações e rastreamentos distribuídos, transferindo os dados para um backend de sua preferência em tempo real. [Precursor do OpenTelemetry](/docs/what-is-opentelemetry/#history). Consulte [mais informações][opencensus].
 
 ### **OpenTracing**
 
-Vendor-neutral APIs and instrumentation for distributed tracing.
-[Precursor to OpenTelemetry](/docs/what-is-opentelemetry/#history). See
-[more][opentracing].
+APIs e instrumentações neutras em relação a fornecedores de rastreamento distribuído. [Precursor do OpenTelemetry](/docs/what-is-opentelemetry/#history). Consulte [mais informações][opentracing].
 
 ### **OT**
 
-Short form for [OpenTracing](#opentracing).
+Abreviação para [OpenTracing](#opentracing).
 
 ### **OTel**
 
-Short form for [OpenTelemetry](/docs/what-is-opentelemetry/).
+Abreviação para [OpenTelemetry](/docs/what-is-opentelemetry/).
 
 ### **OTelCol**
 
-Short form for [OpenTelemetry Collector](#collector).
+Abreviação para [OpenTelemetry Collector](#collector).
 
 ### **OTLP**
 
-Short for [OpenTelemetry Protocol](/docs/specs/otlp/).
+Abreviação para [OpenTelemetry Protocol](/docs/specs/otlp/).
 
 ### **Propagators**
 
-Used to serialize and deserialize specific parts of telemetry data such as span
-context and [Baggage](#baggage) in [Spans](#span). See [more][propagators].
+Usado para serializar e desserializar partes específicas de dados telemétricos, como contexto de span e [bagagem](#baggage) em [Spans](#span). Consulte [mais informações][propagators].
 
 ### **Proto**
 
-Language independent interface types. See [more][proto].
+Tipos de interface independentes de linguagem. Consulte [mais informações][proto].
 
 ### **Receiver**
 
-The term used by the [Collector](/docs/collector/configuration/#receivers) to
-define how telemetry data is received. Receivers can be push- or pull-based. See
-[more][receiver].
+Termo utilizado pelo [Collector](/docs/collector/configuration/#receivers) para definir como os dados telemétricos são recebidos. Receivers podem ser push-based ou pull-based. Consulte [mais informações][receiver].
 
-### **Request**
+### **Requisição** {#request}
 
-See [Distributed Tracing](#distributed-tracing).
+Veja [Rastro distribuído](#distributed-tracing).
 
 ### **Resource**
 
-Captures information about the entity producing telemetry as
-[Attributes](#attribute). For example, a process producing telemetry that is
-running in a container on Kubernetes has a process name, a pod name, a
-namespace, and possibly a deployment name. All these attributes can be included
-in the `Resource`.
+Captura informações sobre a entidade que produz dados telemétricos como [Atributos](#attribute). Por exemplo, um processo que gera telemetria e está sendo executado em um contêiner no Kubernetes possui um nome de processo, um nome de pod, um namespace e, possivelmente, um nome de deployment. Todos esses atributos podem ser incluídos no `Recurso`.
 
 ### **REST**
 
-Short for [Representational State Transfer][rest].
+Abreviação para [Representational State Transfer][rest].
 
 ### **RPC**
 
-Short for [Remote Procedure Call][rpc].
+Abreviação para [Remote Procedure Call][rpc].
 
-### **Sampling**
+### **Amostragem** {#sampling}
 
-A mechanism to control the amount of data exported. Most commonly used with the
-[Tracing](#trace) [Data Source](#data-source). See [more][sampling].
+Um mecanismo para controlar a quantidade de dados exportados. Usado mais comumente com a [Fonte de Dados](#data-source) de [Rastros](#trace). Consulte [mais informações][sampling].
 
 ### **SDK**
 
-Short for Software Development Kit. Refers to a telemetry SDK that denotes a
-[Library](#library) that implement the OpenTelemetry [API](#api).
+Abreviação para Software Development Kit. Refere-se a um SDK de telemetria que denota uma [Biblioteca](#library) que implementa a [API](#api) do OpenTelemetry.
 
-### **Semantic conventions**
+### **Convenções semânticas** {#semantic-conventions}
 
-Defines standard names and values of [Metadata](#metadata) in order to provide
-vendor-agnostic telemetry data.
+Define nomes e valores padrão de [Metadados](#metadata) para fornecer dados telemétricos neutros em relação a fornecedores.
 
-### **Service**
+### **Serviço** {#service}
 
-A component of an [Application](#application). Multiple instances of a
-[Service](#service) are typically deployed for high availability and
-scalability. A [Service](#service) can be deployed in multiple locations.
+Um componente de uma [Aplicação](#application). Múltiplas instâncias de um [Serviço](#service) são tipicamente implantadas para que tenham alta disponibilidade e escalabilidade. Um [Serviço](#service) pode ser implantado em múltiplas localizações.
 
-### **Signal**
+### **Sinal** {#signal}
 
-One of [Traces](#trace), [Metrics](#metric) or [Logs](#log). More on Signals
-[here][signals].
+Um dos [Rastros](#trace), [Métricas](#metric) ou [Logs](#log). Mais sobre Sinais [aqui][signals].
 
 ### **Span**
 
-Represents a single operation within a [Trace](#trace). See [more][span].
+Representa uma única operação dentro de um [Rastro](#trace). Consulte mais detalhes [aqui][span].
 
 ### **Span link**
 
-A span link is a link between causally-related spans. For details see
-[Links between spans](/docs/specs/otel/overview#links-between-spans) and
-[Specifying Links](/docs/specs/otel/trace/api#specifying-links).
+Um span link é uma conexão entre spans relacionados casualmente. Para detalhes, consulte [Links entre spans](/docs/specs/otel/overview#links-between-spans) e [Especificando Links](/docs/specs/otel/trace/api#specifying-links).
 
-### **Specification**
+### **Especificação** {#specification}
 
-Describes the cross-language requirements and expectations for all
-implementations. See [more][specification].
+Descreve os requisitos e expectativas para implementações em todas as linguagens. Consulte [mais informações][specification].
 
 ### **Status**
 
-The result of the operation. Typically used to indicate whether an error
-occurred. See [more][status].
+O resultado de uma operação. Normalmente usado para indicar se ocorreu um erro. Consulte [mais informações][status].
 
 ### **Tag**
 
-See [Metadata](#metadata).
+Consulte [Metadados](#metadata).
 
-### **Trace**
+### **Rastro** {#trace}
 
-A [DAG](#dag) of [Spans](#span), where the edges between [Spans](#span) are
-defined as parent-child relationship. See [more][trace].
+Um [DAG](#dag) de [Spans](#span), onde os limites entre os [Spans](#span) são
+definidos como uma relação de pai-filho. Consulte [mais informações][trace].
 
-### **Tracer**
+### **Rastreador** {#tracer}
 
-Responsible for creating [Spans](#span). See [more][tracer].
+Responsável pela criação de [Spans](#span). Consulte [mais informações][tracer].
 
-### **Transaction**
+### **Transação** {#transaction}
 
-See [Distributed Tracing](#distributed-tracing).
+Consulte [Rastro distribuído](#distributed-tracing).
 
 ### **zPages**
 
-An in-process alternative to external exporters. When included, they collect and
-aggregate tracing and metrics information in the background; this data is served
-on web pages when requested. See [more][zpages].
+Uma alternativa interna aos exportadores externos. Quando incluídos, eles coletam e agregam informações de rastros e métricas em segundo plano; estes dados são exibidos em páginas da web quando solicitados. Consulte [mais informações][zpages].
 
 [baggage]: /docs/specs/otel/baggage/api/
 [attribute]: /docs/specs/otel/common/#attributes
