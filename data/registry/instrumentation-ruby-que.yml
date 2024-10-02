@@ -16,3 +16,4 @@ package:
   registry: gems
   name: opentelemetry-instrumentation-que
   version: 0.8.3
+isFirstParty: false
