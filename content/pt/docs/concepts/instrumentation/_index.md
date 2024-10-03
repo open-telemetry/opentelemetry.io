@@ -20,13 +20,13 @@ Com o OpenTelemetry, você pode instrumentar seu código de duas maneiras:
 As **soluções manuais** permitem obter uma visão mais aprofundada e telemetria
 rica diretamente da sua aplicação. Possibilitando o uso do OpenTelemetry API
 para gerar telemetria a partir da sua aplicação, atuando como um complemento
-essencial para telemetria gerada pelas soluções manuais.
+essencial para telemetria gerada pelas soluções sem código.
 
 As **soluções sem código** são ótimas para começar ou quando você não pode
 modificar a aplicação da qual precisa extrair telemetria. Provendo telemetria
 rica das bibliotecas que você utiliza e/ou do ambiente em que sua aplicação está
-executando. Outra forma de pensar nisso é que elas oferecem informações sobre o
-que está acontecendo nas bordas da sua aplicação.
+sendo executada. Outra forma de pensar nisso é que elas oferecem informações sobre o
+que está acontecendo *nas bordas* da sua aplicação.
 
 Você pode utilizar ambas as soluções simultaneamente.
 
