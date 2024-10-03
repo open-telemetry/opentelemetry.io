@@ -22,7 +22,7 @@ pip install opentelemetry-sdk
 
 ## Trazas
 
-### Adquirir el Tracer
+### Adquirir el trazador
 
 Para comenzar a realizar trazas, necesitarás inicializar un
 [`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider) y
@@ -164,7 +164,7 @@ current_span.set_attribute(SpanAttributes.HTTP_URL, "https://opentelemetry.io/")
 
 Un [evento](/docs/concepts/signals/traces/#span-events) es un mensaje legible en
 un [span](/docs/concepts/signals/traces/#spans) que representa "algo que sucede"
-durante su vida útil. Puedes pensarlo como un registro primitivo.
+durante su vida útil. Puedes pensarlo como un registro o log primitivo.
 
 ```python
 from opentelemetry import trace
@@ -239,15 +239,15 @@ except Exception as ex:
 
 ### Cambiar el formato de propagación predeterminado
 
-Por defecto, OpenTelemetry Python usará los siguientes formatos de propagación:
+Por defecto, OpenTelemetry Python usa los siguientes formatos de propagación:
 
 - W3C Trace Context
 - W3C Baggage
 
 Si necesitas cambiar los valores predeterminados, puedes hacerlo a través de
-variables de entorno o en el código:
+variables de entorno o en el código.
 
-#### Usando Variables de Entorno
+#### Usando variables de entorno
 
 Puedes establecer la variable de entorno `OTEL_PROPAGATORS` con una lista
 separada por comas. Los valores aceptados son:
@@ -326,7 +326,7 @@ cuando se maneja una solicitud o se llama a otro servicio.
 
 Primero, crea tu instrumento. Los instrumentos generalmente se crean una vez al
 nivel del módulo o clase y luego se utilizan en línea con la lógica del negocio.
-Este ejemplo utiliza un [Contador](/docs/specs/otel/metrics/api/#counter) para
+Este ejemplo utiliza un [contador](/docs/specs/otel/metrics/api/#counter) para
 contar la cantidad de tareas de trabajo completadas:
 
 ```python
@@ -336,7 +336,7 @@ work_counter = meter.create_counter(
 ```
 
 Usando la [operación de agregado](/docs/specs/otel/metrics/api/#add) del
-Contador, el código a continuación incrementa el conteo en uno, utilizando el
+contador, el código a continuación incrementa el conteo en uno, utilizando el
 tipo de elemento de trabajo como un atributo.
 
 ```python
@@ -349,18 +349,18 @@ def do_work(work_item):
 ### Crear y usar instrumentos asíncronos
 
 [Los instrumentos asíncronos](/docs/specs/otel/metrics/api/#synchronous-and-asynchronous-instruments)
-permiten al usuario registrar funciones de devolución de llamada (callbacks),
+permiten al usuario registrar funciones de devolución de llamada (_callbacks_),
 que se invocan cuando sea necesario para realizar mediciones. Esto es útil para
 medir periódicamente un valor que no se puede instrumentar directamente. Los
-instrumentos asíncronos se crean con una o más _callbacks_ que serán invocadas
-durante la recopilación de métricas. Cada _callback_ acepta opciones del SDK y
+instrumentos asíncronos se crean con una o más callbacks que serán invocadas
+durante la recopilación de métricas. Cada callback acepta opciones del SDK y
 devuelve sus observaciones.
 
 Este ejemplo usa un
-[Medidor Asíncrono (Gauge)](/docs/specs/otel/metrics/api/#asynchronous-gauge)
+[medidor asíncrono (_gauge_)](/docs/specs/otel/metrics/api/#asynchronous-gauge)
 para reportar la versión actual de la configuración proporcionada por un
 servidor de configuración al hacer scraping de un endpoint HTTP. Primero,
-escribe una _callback_ para hacer observaciones:
+escribe una callback para hacer observaciones:
 
 ```python
 from typing import Iterable
@@ -377,9 +377,9 @@ def scrape_config_versions(options: CallbackOptions) -> Iterable[Observation]:
         )
 ```
 
-Nota que OpenTelemetry pasará opciones a tu _callback_ que contienen un tiempo
-de espera. Las _callbacks_ deben respetar este tiempo de espera para evitar
-bloquearse indefinidamente. Finalmente, crea el instrumento con la _callback_
+Nota que OpenTelemetry pasará opciones a tu callback que contienen un tiempo
+de espera. Las callbacks deben respetar este tiempo de espera para evitar
+bloquearse indefinidamente. Finalmente, crea el instrumento con la callback
 para registrarlo:
 
 ```python
@@ -392,17 +392,17 @@ meter.create_observable_gauge(
 
 ### Lectura adicional
 
-- [Conceptos de Métricas](/docs/concepts/signals/metrics/)
-- [Especificación de Métricas](/docs/specs/otel/metrics/)
-- [Documentación de la API de Métricas en Python](https://opentelemetry-python.readthedocs.io/en/latest/api/metrics.html)
-- [Documentación del SDK de Métricas en Python](https://opentelemetry-python.readthedocs.io/en/latest/sdk/metrics.html)
+- [Conceptos de métricas](/docs/concepts/signals/metrics/)
+- [Especificación de métricas](/docs/specs/otel/metrics/)
+- [Documentación de la API de métricas en Python](https://opentelemetry-python.readthedocs.io/en/latest/api/metrics.html)
+- [Documentación del SDK de métricas en Python](https://opentelemetry-python.readthedocs.io/en/latest/sdk/metrics.html)
 
 ## Logs
 
 La API y SDK de logs están actualmente en desarrollo.
 
-## Próximos Pasos
+## Próximos pasos
 
-También querrás configurar un exportador adecuado para
+Tal vez quieras configurar un exportador adecuado para
 [exportar tus datos de telemetría](/docs/languages/python/exporters) a uno o más
 backends de telemetría.
