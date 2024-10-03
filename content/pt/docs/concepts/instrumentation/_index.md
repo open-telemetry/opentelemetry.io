@@ -18,15 +18,15 @@ Com o OpenTelemetry, você pode instrumentar seu código de duas maneiras:
 2. [Soluções sem código](/docs/concepts/instrumentation/zero-code/)
 
 As **soluções manuais** permitem obter uma visão mais aprofundada e telemetria
-rica diretamente da sua aplicação. Possibilitando o uso do OpenTelemetry API
+rica diretamente da sua aplicação. Possibilitando o uso do API OpenTelemetry
 para gerar telemetria a partir da sua aplicação, atuando como um complemento
 essencial para telemetria gerada pelas soluções sem código.
 
 As **soluções sem código** são ótimas para começar ou quando você não pode
 modificar a aplicação da qual precisa extrair telemetria. Provendo telemetria
 rica das bibliotecas que você utiliza e/ou do ambiente em que sua aplicação está
-sendo executada. Outra forma de pensar nisso é que elas oferecem informações sobre o
-que está acontecendo *nas bordas* da sua aplicação.
+sendo executada. Outra forma de pensar nisso é que elas oferecem informações
+sobre o que está acontecendo _nas bordas_ da sua aplicação.
 
 Você pode utilizar ambas as soluções simultaneamente.
 
@@ -43,7 +43,7 @@ código. Os seguintes recursos também fazem parte do OpenTelemetry:
 - Com a [propagação de contexto](/docs/concepts/context-propagation) integrada
   nas implementações, você pode correlacionar sinais, independentemente de onde
   eles são gerados.
-- [Resources](/docs/concepts/resources) e
+- [Recursos](/docs/concepts/resources) e
   [Escopo de instrumentação](/docs/concepts/instrumentation-scope) permitem
   agrupar sinais por diferentes entidades, como
   [host](/docs/specs/semconv/resource/host/),
