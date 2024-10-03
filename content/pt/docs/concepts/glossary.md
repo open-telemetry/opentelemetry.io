@@ -383,4 +383,4 @@ informações][zpages].
 [trace]: /docs/specs/otel/overview#traces
 [tracer]: /docs/specs/otel/trace/api#tracer
 [zpages]:
-  https://github.com/open-telemetry/opentelemetry-specification/blob/main/experimental/trace/zpages.md
+  https://github.com/open-telemetry/opentelemetry-specification/blob/main/development/trace/zpages.md
