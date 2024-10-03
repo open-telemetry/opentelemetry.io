@@ -271,3 +271,102 @@ Nota que las variables de entorno anularán lo que esté configurado en el códi
 - [Documentación del SDK de Trazas de Python](https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.html)
 
 ## Métricas
+
+Para comenzar a recopilar métricas, necesitarás inicializar un
+[`MeterProvider`](/docs/specs/otel/metrics/api/#meterprovider) y opcionalmente
+configurarlo como el proveedor global predeterminado.
+
+```python
+from opentelemetry import metrics
+from opentelemetry.sdk.metrics import MeterProvider
+from opentelemetry.sdk.metrics.export import (
+    ConsoleMetricExporter,
+    PeriodicExportingMetricReader,
+)
+
+metric_reader = PeriodicExportingMetricReader(ConsoleMetricExporter())
+provider = MeterProvider(metric_readers=[metric_reader])
+
+# Establece el proveedor de medidores global predeterminado
+metrics.set_meter_provider(provider)
+
+# Crea un medidor a partir del proveedor de medidores global
+meter = metrics.get_meter("my.meter.name")
+```
+
+### Crear y usar instrumentos síncronos
+
+Los instrumentos se utilizan para realizar mediciones de tu aplicación.
+[Los instrumentos síncronos](/docs/specs/otel/metrics/api/#synchronous-and-asynchronous-instruments)
+se usan en línea con la lógica de procesamiento de aplicaciones/negocios, como
+cuando se maneja una solicitud o se llama a otro servicio.
+
+Primero, crea tu instrumento. Los instrumentos generalmente se crean una vez al
+nivel del módulo o clase y luego se utilizan en línea con la lógica del negocio.
+Este ejemplo utiliza un [Contador](/docs/specs/otel/metrics/api/#counter) para contar la cantidad de tareas de trabajo completadas:
+
+```python
+work_counter = meter.create_counter(
+    "work.counter", unit="1", description="Cuenta la cantidad de trabajo realizado"
+)
+```
+
+Usando la [operación de agregado](/docs/specs/otel/metrics/api/#add) del Contador, el código a continuación incrementa el conteo en uno, utilizando el tipo de elemento de trabajo como un atributo.
+
+```python
+def do_work(work_item):
+    # contar el trabajo que se está realizando
+    work_counter.add(1, {"work.type": work_item.work_type})
+    print("haciendo algún trabajo...")
+```
+
+### Crear y usar instrumentos asíncronos
+
+[Los instrumentos asíncronos](/docs/specs/otel/metrics/api/#synchronous-and-asynchronous-instruments)
+permiten al usuario registrar funciones de devolución de llamada (callbacks), que se invocan cuando sea necesario para realizar mediciones. Esto es útil para medir periódicamente un valor que no se puede instrumentar directamente. Los instrumentos asíncronos se crean con una o más _callbacks_ que serán invocadas durante la recopilación de métricas. Cada _callback_ acepta opciones del SDK y devuelve sus observaciones.
+
+Este ejemplo usa un
+[Medidor Asíncrono (Gauge)](/docs/specs/otel/metrics/api/#asynchronous-gauge)
+para reportar la versión actual de la configuración proporcionada por un servidor de configuración al hacer scraping de un endpoint HTTP. Primero, escribe una _callback_ para hacer observaciones:
+
+```python
+from typing import Iterable
+from opentelemetry.metrics import CallbackOptions, Observation
+
+
+def scrape_config_versions(options: CallbackOptions) -> Iterable[Observation]:
+    r = requests.get(
+        "http://configserver/version_metadata", timeout=options.timeout_millis / 10**3
+    )
+    for metadata in r.json():
+        yield Observation(
+            metadata["version_num"], {"config.name": metadata["version_num"]}
+        )
+```
+
+Nota que OpenTelemetry pasará opciones a tu _callback_ que contienen un tiempo de espera. Las _callbacks_ deben respetar este tiempo de espera para evitar bloquearse indefinidamente. Finalmente, crea el instrumento con la _callback_ para registrarlo:
+
+```python
+meter.create_observable_gauge(
+    "config.version",
+    callbacks=[scrape_config_versions],
+    description="La versión activa de la configuración para cada configuración",
+)
+```
+
+### Lectura adicional
+
+- [Conceptos de Métricas](/docs/concepts/signals/metrics/)
+- [Especificación de Métricas](/docs/specs/otel/metrics/)
+- [Documentación de la API de Métricas en Python](https://opentelemetry-python.readthedocs.io/en/latest/api/metrics.html)
+- [Documentación del SDK de Métricas en Python](https://opentelemetry-python.readthedocs.io/en/latest/sdk/metrics.html)
+
+## Logs
+
+La API y SDK de logs están actualmente en desarrollo.
+
+## Próximos Pasos
+
+También querrás configurar un exportador adecuado para
+[exportar tus datos de telemetría](/docs/languages/python/exporters) a uno o más
+backends de telemetría.
