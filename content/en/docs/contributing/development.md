@@ -26,6 +26,47 @@ cloud IDE:
 
 Gitpod automatically installs the repo-specific packages for you.
 
+## Cloning the Repository
+
+For first-time contributors, it is recommended to clone the repository using SSH instead of HTTPS to avoid common errors related to authentication.
+
+### Cloning with SSH
+
+To clone the repository using SSH, follow these steps:
+
+1. **Generate an SSH Key (if you don't have one):**
+   - Open a terminal and run:
+     ```bash
+     ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+     ```
+   - Follow the prompts to save the key to the default location.
+
+2. **Add your SSH key to the SSH agent:**
+   - Start the SSH agent:
+     ```bash
+     eval "$(ssh-agent -s)"
+     ```
+   - Add your SSH key:
+     ```bash
+     ssh-add ~/.ssh/id_rsa
+     ```
+
+3. **Add your SSH key to your GitHub account:**
+   - Copy the SSH key to your clipboard:
+     ```bash
+     cat ~/.ssh/id_rsa.pub
+     ```
+   - Go to your GitHub settings, navigate to "SSH and GPG keys," and click "New SSH key." Paste your key and save.
+
+4. **Clone the repository using SSH:**
+   - Use the following command to clone:
+     ```bash
+     git clone git@github.com:open-telemetry/opentelemetry-js.git
+     ```
+
+By following these steps, you will be able to clone the repository without encountering HTTPS-related issues.
+
+
 You're now ready to [build](#build), [serve](#serve) or make updates to the
 website files.
 
