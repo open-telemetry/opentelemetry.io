@@ -85,7 +85,7 @@ incorporada. Consulte [a especificação da biblioteca][spec-instrumentation-lib
 
 ### **Biblioteca instrumentada** {#instrumented-library}
 
-Denota a [Biblioteca](#library) para a qual os sinais telemétricos
+Indica a [Biblioteca](#library) para a qual os sinais telemétricos
 ([Rastros](#trace), [Métricas](#metric), [Logs](#log)) são coletados. Consulte
 [mais informações][spec-instrumented-lib].
 
@@ -308,7 +308,7 @@ Abreviação para [Remote Procedure Call][rpc].
 ### **SDK**
 
 Abreviação para Software Development Kit. Refere-se a um SDK de telemetria que
-denota uma [Biblioteca](#library) que implementa a [API](#api) do OpenTelemetry.
+indica uma [Biblioteca](#library) que implementa a [API](#api) do OpenTelemetry.
 
 ### **Serviço** {#service}
 
