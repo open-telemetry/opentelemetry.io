@@ -76,7 +76,7 @@ Consulte a seção [Biblioteca instrumentada](#instrumented-library).
 
 ### **Biblioteca de instrumentação** {#instrumentation-library}
 
-Denota a [Biblioteca](#library) que fornece a instrumentação para uma
+Indica a [Biblioteca](#library) que fornece a instrumentação para uma
 determinada [Biblioteca instrumentada](#instrumented-library). A
 [Biblioteca instrumentada](#instrumented-library) e a
 [Biblioteca de instrumentação](#instrumentation-library) podem ser a mesma
