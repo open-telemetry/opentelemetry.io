@@ -164,7 +164,12 @@ processors:
 receivers:
   - gomod:
       go.opentelemetry.io/collector/receiver/otlpreceiver {{% version-from-registry collector-receiver-otlp %}}
-```
+```providers:
+  - gomod: go.opentelemetry.io/collector/confmap/provider/envprovider v1.16.0
+  - gomod: go.opentelemetry.io/collector/confmap/provider/fileprovider v1.16.0
+  - gomod: go.opentelemetry.io/collector/confmap/provider/httpprovider v0.110.0
+  - gomod: go.opentelemetry.io/collector/confmap/provider/httpsprovider v0.110.0
+  - gomod: go.opentelemetry.io/collector/confmap/provider/yamlprovider v0.110.0
 
 {{% alert color="primary" title="Tip" %}}
 
