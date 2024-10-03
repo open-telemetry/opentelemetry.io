@@ -1,5 +1,4 @@
 ---
-
 title: Instrumentación
 aliases: [manual]
 weight: 20
@@ -60,12 +59,14 @@ def do_work():
         # Cuando el bloque 'with' sale del contexto, 'span' se cierra automáticamente
 ```
 
-También puedes usar `start_span` para crear un span sin hacerlo el span actual. Esto se suele hacer para rastrear operaciones concurrentes o asíncronas.
+También puedes usar `start_span` para crear un span sin hacerlo el span actual.
+Esto se suele hacer para rastrear operaciones concurrentes o asíncronas.
 
 ### Crear spans anidados
 
 Si tienes una sub-operación distinta que deseas rastrear como parte de otra,
-puedes crear [spans](/docs/concepts/signals/traces/#spans) para representar la relación:
+puedes crear [spans](/docs/concepts/signals/traces/#spans) para representar la
+relación:
 
 ```python
 def do_work():
@@ -81,11 +82,14 @@ def do_work():
         # Este span también se cierra cuando sale del contexto
 ```
 
-Cuando veas spans en una herramienta de visualización de trazas, `child` se rastreará como un span anidado bajo `parent`.
+Cuando veas spans en una herramienta de visualización de trazas, `child` se
+rastreará como un span anidado bajo `parent`.
 
 ### Crear spans con decoradores
 
-Es común que un único [span](/docs/concepts/signals/traces/#spans) rastree la ejecución de una función completa. En ese caso, hay un decorador que puedes usar para reducir el código:
+Es común que un único [span](/docs/concepts/signals/traces/#spans) rastree la
+ejecución de una función completa. En ese caso, hay un decorador que puedes usar
+para reducir el código:
 
 ```python
 @tracer.start_as_current_span("do_work")
@@ -93,14 +97,16 @@ def do_work():
     print("haciendo algún trabajo...")
 ```
 
-El uso del decorador es equivalente a crear el span dentro de `do_work()` y finalizarlo cuando `do_work()` termine.
+El uso del decorador es equivalente a crear el span dentro de `do_work()` y
+finalizarlo cuando `do_work()` termine.
 
-Para usar el decorador, debes tener una instancia de `tracer` disponible globalmente para la declaración de tu función.
+Para usar el decorador, debes tener una instancia de `tracer` disponible
+globalmente para la declaración de tu función.
 
 ### Obtener el span actual
 
-A veces es útil acceder al span actual
-en un momento dado para poder enriquecerlo con más información.
+A veces es útil acceder al span actual en un momento dado para poder
+enriquecerlo con más información.
 
 ```python
 from opentelemetry import trace
@@ -111,7 +117,9 @@ current_span = trace.get_current_span()
 
 ### Agregar atributos a un span
 
-Los [atributos](/docs/concepts/signals/traces/#attributes) te permiten adjuntar pares clave/valor a un [span](/docs/concepts/signals/traces/#spans) para que contenga más información sobre la operación actual que está rastreando.
+Los [atributos](/docs/concepts/signals/traces/#attributes) te permiten adjuntar
+pares clave/valor a un [span](/docs/concepts/signals/traces/#spans) para que
+contenga más información sobre la operación actual que está rastreando.
 
 ```python
 from opentelemetry import trace
@@ -125,9 +133,14 @@ current_span.set_attribute("operation.other-stuff", [1, 2, 3])
 
 ### Agregar atributos semánticos
 
-Los [Atributos Semánticos](/docs/specs/semconv/general/trace/) son [atributos](/docs/concepts/signals/traces/#attributes) predefinidos que son convenciones de nombres bien conocidas para tipos comunes de datos. Usar Atributos Semánticos te permite normalizar este tipo de información en tus sistemas.
+Los [Atributos Semánticos](/docs/specs/semconv/general/trace/) son
+[atributos](/docs/concepts/signals/traces/#attributes) predefinidos que son
+convenciones de nombres bien conocidas para tipos comunes de datos. Usar
+Atributos Semánticos te permite normalizar este tipo de información en tus
+sistemas.
 
-Para usar los Atributos Semánticos en Python, asegúrate de tener instalado el paquete de convenciones semánticas:
+Para usar los Atributos Semánticos en Python, asegúrate de tener instalado el
+paquete de convenciones semánticas:
 
 ```shell
 pip install opentelemetry-semantic-conventions
@@ -148,7 +161,9 @@ current_span.set_attribute(SpanAttributes.HTTP_URL, "https://opentelemetry.io/")
 
 ### Agregar eventos
 
-Un [evento](/docs/concepts/signals/traces/#span-events) es un mensaje legible en un [span](/docs/concepts/signals/traces/#spans) que representa "algo que sucede" durante su vida útil. Puedes pensarlo como un registro primitivo.
+Un [evento](/docs/concepts/signals/traces/#span-events) es un mensaje legible en
+un [span](/docs/concepts/signals/traces/#spans) que representa "algo que sucede"
+durante su vida útil. Puedes pensarlo como un registro primitivo.
 
 ```python
 from opentelemetry import trace
@@ -164,7 +179,9 @@ current_span.add_event("¡Lo hice!")
 
 ### Agregar enlaces
 
-Un [span](/docs/concepts/signals/traces/#spans) se puede crear con uno o más [enlaces](/docs/concepts/signals/traces/#span-links) que lo vinculen causalmente con otro span. Un enlace necesita un contexto de span para ser creado.
+Un [span](/docs/concepts/signals/traces/#spans) se puede crear con uno o más
+[enlaces](/docs/concepts/signals/traces/#span-links) que lo vinculen causalmente
+con otro span. Un enlace necesita un contexto de span para ser creado.
 
 ```python
 from opentelemetry import trace
@@ -201,7 +218,8 @@ except:
 
 ### Registrar excepciones en spans
 
-Puede ser una buena idea registrar excepciones cuando ocurren. Se recomienda hacerlo a la vez que se establece el [estado del span](#set-span-status).
+Puede ser una buena idea registrar excepciones cuando ocurren. Se recomienda
+hacerlo a la vez que se establece el [estado del span](#set-span-status).
 
 ```python
 from opentelemetry import trace
@@ -225,11 +243,13 @@ Por defecto, OpenTelemetry Python usará los siguientes formatos de propagación
 - W3C Trace Context
 - W3C Baggage
 
-Si necesitas cambiar los valores predeterminados, puedes hacerlo a través de variables de entorno o en el código:
+Si necesitas cambiar los valores predeterminados, puedes hacerlo a través de
+variables de entorno o en el código:
 
 #### Usando Variables de Entorno
 
-Puedes establecer la variable de entorno `OTEL_PROPAGATORS` con una lista separada por comas. Los valores aceptados son:
+Puedes establecer la variable de entorno `OTEL_PROPAGATORS` con una lista
+separada por comas. Los valores aceptados son:
 
 - `"tracecontext"`: W3C Trace Context
 - `"baggage"`: W3C Baggage
@@ -240,13 +260,15 @@ Puedes establecer la variable de entorno `OTEL_PROPAGATORS` con una lista separa
 - `"ottrace"`: OT Trace (tercero)
 - `"none"`: Sin propagador configurado automáticamente.
 
-La configuración predeterminada es equivalente a `OTEL_PROPAGATORS="tracecontext,baggage"`.
+La configuración predeterminada es equivalente a
+`OTEL_PROPAGATORS="tracecontext,baggage"`.
 
 #### Usando APIs del SDK
 
 Alternativamente, puedes cambiar el formato en el código.
 
-Por ejemplo, si necesitas usar el formato de propagación B3 de Zipkin, puedes instalar el paquete B3:
+Por ejemplo, si necesitas usar el formato de propagación B3 de Zipkin, puedes
+instalar el paquete B3:
 
 ```shell
 pip install opentelemetry-propagator-b3
@@ -303,7 +325,8 @@ cuando se maneja una solicitud o se llama a otro servicio.
 
 Primero, crea tu instrumento. Los instrumentos generalmente se crean una vez al
 nivel del módulo o clase y luego se utilizan en línea con la lógica del negocio.
-Este ejemplo utiliza un [Contador](/docs/specs/otel/metrics/api/#counter) para contar la cantidad de tareas de trabajo completadas:
+Este ejemplo utiliza un [Contador](/docs/specs/otel/metrics/api/#counter) para
+contar la cantidad de tareas de trabajo completadas:
 
 ```python
 work_counter = meter.create_counter(
@@ -311,7 +334,9 @@ work_counter = meter.create_counter(
 )
 ```
 
-Usando la [operación de agregado](/docs/specs/otel/metrics/api/#add) del Contador, el código a continuación incrementa el conteo en uno, utilizando el tipo de elemento de trabajo como un atributo.
+Usando la [operación de agregado](/docs/specs/otel/metrics/api/#add) del
+Contador, el código a continuación incrementa el conteo en uno, utilizando el
+tipo de elemento de trabajo como un atributo.
 
 ```python
 def do_work(work_item):
@@ -323,11 +348,18 @@ def do_work(work_item):
 ### Crear y usar instrumentos asíncronos
 
 [Los instrumentos asíncronos](/docs/specs/otel/metrics/api/#synchronous-and-asynchronous-instruments)
-permiten al usuario registrar funciones de devolución de llamada (callbacks), que se invocan cuando sea necesario para realizar mediciones. Esto es útil para medir periódicamente un valor que no se puede instrumentar directamente. Los instrumentos asíncronos se crean con una o más _callbacks_ que serán invocadas durante la recopilación de métricas. Cada _callback_ acepta opciones del SDK y devuelve sus observaciones.
+permiten al usuario registrar funciones de devolución de llamada (callbacks),
+que se invocan cuando sea necesario para realizar mediciones. Esto es útil para
+medir periódicamente un valor que no se puede instrumentar directamente. Los
+instrumentos asíncronos se crean con una o más _callbacks_ que serán invocadas
+durante la recopilación de métricas. Cada _callback_ acepta opciones del SDK y
+devuelve sus observaciones.
 
 Este ejemplo usa un
 [Medidor Asíncrono (Gauge)](/docs/specs/otel/metrics/api/#asynchronous-gauge)
-para reportar la versión actual de la configuración proporcionada por un servidor de configuración al hacer scraping de un endpoint HTTP. Primero, escribe una _callback_ para hacer observaciones:
+para reportar la versión actual de la configuración proporcionada por un
+servidor de configuración al hacer scraping de un endpoint HTTP. Primero,
+escribe una _callback_ para hacer observaciones:
 
 ```python
 from typing import Iterable
@@ -344,7 +376,10 @@ def scrape_config_versions(options: CallbackOptions) -> Iterable[Observation]:
         )
 ```
 
-Nota que OpenTelemetry pasará opciones a tu _callback_ que contienen un tiempo de espera. Las _callbacks_ deben respetar este tiempo de espera para evitar bloquearse indefinidamente. Finalmente, crea el instrumento con la _callback_ para registrarlo:
+Nota que OpenTelemetry pasará opciones a tu _callback_ que contienen un tiempo
+de espera. Las _callbacks_ deben respetar este tiempo de espera para evitar
+bloquearse indefinidamente. Finalmente, crea el instrumento con la _callback_
+para registrarlo:
 
 ```python
 meter.create_observable_gauge(
