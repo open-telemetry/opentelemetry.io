@@ -141,7 +141,7 @@ linguagens. Consulte [mais informações][specification].
 ### **Evento** {#event}
 
 Algo que aconteceu cuja representação depende da [Fonte de dados](#data-source).
-Por exemplo, [Spans](#span).
+Por exemplo, [Trecho](#span).
 
 ### **Exporter**
 
