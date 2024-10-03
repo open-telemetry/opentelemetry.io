@@ -251,12 +251,13 @@ informações][proto].
 
 ### **Rastreador** {#tracer}
 
-Responsável pela criação de [Trecho](#span). Consulte [mais informações][tracer].
+Responsável pela criação de [Trecho](#span). Consulte [mais
+informações][tracer].
 
 ### **Rastro** {#trace}
 
-Um [DAG](#dag) de [Trechos](#span), onde os limites entre os [Trechos](#span) são
-definidos como uma relação de pai-filho. Consulte [mais informações][trace].
+Um [DAG](#dag) de [Trechos](#span), onde os limites entre os [Trechos](#span)
+são definidos como uma relação de pai-filho. Consulte [mais informações][trace].
 
 ### **Rastro distribuído** {#distributed-tracing}
 
