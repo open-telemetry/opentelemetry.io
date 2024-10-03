@@ -38,7 +38,7 @@ gerados pela [Fonte de Dados](#data-source).
 Um ou mais [Serviços](#service) destinados a usuários finais ou outras
 aplicações.
 
-### **Aplicação client-side** {#client-side-app}
+### **Aplicação lado do cliente** {#client-side-app}
 
 Um componente de uma [Aplicação](#application) que não está sendo executado
 dentro de uma infraestrutura privada e é normalmente usado diretamente por
