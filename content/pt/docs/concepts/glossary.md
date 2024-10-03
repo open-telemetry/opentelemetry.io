@@ -251,7 +251,7 @@ informações][proto].
 
 ### **Rastreador** {#tracer}
 
-Responsável pela criação de [Spans](#span). Consulte [mais informações][tracer].
+Responsável pela criação de [Trecho](#span). Consulte [mais informações][tracer].
 
 ### **Rastro** {#trace}
 
