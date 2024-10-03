@@ -134,13 +134,13 @@ current_span.set_attribute("operation.other-stuff", [1, 2, 3])
 
 ### Agregar atributos semánticos
 
-Los [Atributos Semánticos](/docs/specs/semconv/general/trace/) son
+Los [atributos semánticos](/docs/specs/semconv/general/trace/) son
 [atributos](/docs/concepts/signals/traces/#attributes) predefinidos que son
 convenciones de nombres bien conocidas para tipos comunes de datos. Usar
-Atributos Semánticos te permite normalizar este tipo de información en tus
+atributos semánticos te permite normalizar este tipo de información en tus
 sistemas.
 
-Para usar los Atributos Semánticos en Python, asegúrate de tener instalado el
+Para usar los atributos semánticos en Python, asegúrate de tener instalado el
 paquete de convenciones semánticas:
 
 ```shell
