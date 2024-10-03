@@ -255,7 +255,7 @@ Responsável pela criação de [Spans](#span). Consulte [mais informações][tra
 
 ### **Rastro** {#trace}
 
-Um [DAG](#dag) de [Spans](#span), onde os limites entre os [Spans](#span) são
+Um [DAG](#dag) de [Trechos](#span), onde os limites entre os [Trechos](#span) são
 definidos como uma relação de pai-filho. Consulte [mais informações][trace].
 
 ### **Rastro distribuído** {#distributed-tracing}
