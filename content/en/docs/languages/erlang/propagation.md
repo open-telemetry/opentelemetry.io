@@ -25,7 +25,7 @@ propagators. By default the global propagators used are the W3C
 [Trace Context](https://w3c.github.io/trace-context/) and
 [Baggage](https://www.w3.org/TR/baggage/) formats.
 
-You can configure global propagators using the the OTP application environment
+You can configure global propagators using the OTP application environment
 variable `text_map_propagators`:
 
 {{< tabpane text=true >}} {{% tab Erlang %}}
