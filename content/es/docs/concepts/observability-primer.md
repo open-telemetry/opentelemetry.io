@@ -3,6 +3,8 @@ title: Introducción a la Observabilidad
 description: Conceptos básicos de observabilidad.
 weight: 9
 cSpell:ignore: webshop
+default_lang_commit: e58a252c44875b04247b53e2394b4634f5a0a84e
+
 ---
 
 ## ¿Qué es la Observabilidad?
