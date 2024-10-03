@@ -273,20 +273,20 @@ Termo utilizado pelo [Collector](/docs/collector/configuration/#receivers) para
 definir como os dados telemétricos são recebidos. Receivers podem ser push-based
 ou pull-based. Consulte [mais informações][receiver].
 
-### **Registro de log** {#log-record}
-
-Uma gravação de um [Evento](#event). Normalmente, o registro inclui um carimbo
-de data/hora indicando quando o [Evento](#event) ocorreu, além de outros dados
-que descrevem o que aconteceu, onde aconteceu, e assim por diante. Consulte
-[mais informações][log record].
-
-### **Recurso**
+### **Recurso** {#resource}
 
 Captura informações sobre a entidade que produz dados telemétricos como
 [Atributos](#attribute). Por exemplo, um processo que gera telemetria e está
 sendo executado em um contêiner no Kubernetes possui um nome de processo, um
 nome de pod, um namespace e, possivelmente, um nome de deployment. Todos esses
 atributos podem ser incluídos no `Recurso`.
+
+### **Registro de log** {#log-record}
+
+Uma gravação de um [Evento](#event). Normalmente, o registro inclui um carimbo
+de data/hora indicando quando o [Evento](#event) ocorreu, além de outros dados
+que descrevem o que aconteceu, onde aconteceu, e assim por diante. Consulte
+[mais informações][log record].
 
 ### **REST**
 
@@ -322,11 +322,6 @@ múltiplas localizações.
 Um dos [Rastros](#trace), [Métricas](#metric) ou [Logs](#log). Mais sobre Sinais
 [aqui][signals].
 
-### **Trecho**
-
-Representa uma única operação dentro de um [Rastro](#trace). Consulte mais
-detalhes [aqui][span].
-
 ### **Span link**
 
 Um span link é uma conexão entre spans relacionados casualmente. Para detalhes,
@@ -345,6 +340,11 @@ Consulte [Metadados](#metadata).
 ### **Transação** {#transaction}
 
 Consulte [Rastro distribuído](#distributed-tracing).
+
+### **Trecho** {#span}
+
+Representa uma única operação dentro de um [Rastro](#trace). Consulte mais
+detalhes [aqui][span].
 
 ### **zPages**
 
