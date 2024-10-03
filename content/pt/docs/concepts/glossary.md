@@ -280,7 +280,7 @@ de data/hora indicando quando o [Evento](#event) ocorreu, além de outros dados
 que descrevem o que aconteceu, onde aconteceu, e assim por diante. Consulte
 [mais informações][log record].
 
-### **Resource**
+### **Recurso**
 
 Captura informações sobre a entidade que produz dados telemétricos como
 [Atributos](#attribute). Por exemplo, um processo que gera telemetria e está
