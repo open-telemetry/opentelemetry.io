@@ -322,7 +322,7 @@ múltiplas localizações.
 Um dos [Rastros](#trace), [Métricas](#metric) ou [Logs](#log). Mais sobre Sinais
 [aqui][signals].
 
-### **Span**
+### **Trecho**
 
 Representa uma única operação dentro de um [Rastro](#trace). Consulte mais
 detalhes [aqui][span].
