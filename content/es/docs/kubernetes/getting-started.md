@@ -1,14 +1,11 @@
 ---
 title: Primeros pasos
 weight: 1
-# más bonito-ignorar
+# prettier-ignore
 cSpell:gnore: filelog filelogreceiver kubeletstats kubeletstatsreceiver loggingexporter otlpexporter sattributes sattributesprocessor sclusterreceiver sobjectsreceiver
 ---
 
-Esta página le guiará a través de la forma más rápida de comenzar a monitorear su
-Clúster de Kubernetes usando OpenTelemetry. Se centrará en recopilar métricas y
-registros para clústeres, nodos, pods y contenedores de Kubernetes, además de habilitar
-el clúster para admitir servicios que emiten datos OTLP.
+Esta página te guiará a través de la forma más rápida de comenzar a monitorear tu clúster de Kubernetes usando OpenTelemetry. Se centrará en recopilar métricas y registros para clústeres, nodos, pods y contenedores de Kubernetes, además de habilitar el clúster para admitir servicios que emiten datos OTLP.
 
 Si buscas ver OpenTelemetry en acción con Kubernetes, el mejor lugar
 para iniciar es [OpenTelemetry Demo](/docs/demo/kubernetes-deployment/). El

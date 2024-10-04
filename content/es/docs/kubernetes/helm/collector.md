@@ -2,7 +2,7 @@
 title: Gráfico de coleccionista de OpenTelemetry
 linkTitle: Gráfico de recopiladores
 
-#más bonito-ignorar
+# prettier-ignore
 cSpell:ignore: debugexporter filelogio filelogreceiver hostmetricsreceiver kubelet kubeletstats kubeletstatsreceiver otlphttp sattributesprocessor sclusterreceiver sobjectsreceiver statefulset
 ---
 
