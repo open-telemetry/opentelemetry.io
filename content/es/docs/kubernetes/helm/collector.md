@@ -1,24 +1,24 @@
 ---
-title: OpenTelemetry Collector Chart
-linkTitle: Collector Chart
-# prettier-ignore
-cSpell:ignore: debugexporter filelog filelogreceiver hostmetricsreceiver kubelet kubeletstats kubeletstatsreceiver otlphttp sattributesprocessor sclusterreceiver sobjectsreceiver statefulset
+title: Gráfico de coleccionista de OpenTelemetry
+linkTitle: Gráfico de recopiladores
+
+#más bonito-ignorar
+cSpell:ignore: debugexporter filelogio filelogreceiver hostmetricsreceiver kubelet kubeletstats kubeletstatsreceiver otlphttp sattributesprocessor sclusterreceiver sobjectsreceiver statefulset
 ---
 
-## Introduction
+## Introducción
 
-The [OpenTelemetry Collector](/docs/collector) is an important tool for
-monitoring a Kubernetes cluster and all the services that in within. To
-facilitate installation and management of a collector deployment in a Kubernetes
-the OpenTelemetry community created the
+El [OpenTelemetry Collector](/docs/collector) es una herramienta importante para
+supervisar un clúster de Kubernetes y todos los servicios que se encuentran en él. Para facilitar la instalación y la gestión de una implementación de recopiladores en una red Kubernetes
+la comunidad OpenTelemetry creó el
 [OpenTelemetry Collector Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-collector).
-This helm chart can be used to install a collector as a Deployment, Daemonset,
-or Statefulset.
+Este gráfico de timón se puede utilizar para instalar un recopilador como Deployment, Daemonset,
+o Statefulset.
 
-### Installing the Chart
+### Instalación del gráfico
 
-To install the chart with the release name `my-opentelemetry-collector`, run the
-following commands:
+Para instalar el gráfico con el nombre de la versión `my-opentelemetry-collector`, ejecute el
+comandos siguientes:
 
 ```sh
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
@@ -27,18 +27,18 @@ helm install my-opentelemetry-collector open-telemetry/opentelemetry-collector \
    --set mode=<daemonset|deployment|statefulset> \
 ```
 
-### Configuration
+### Configuración
 
-The OpenTelemetry Collector Chart requires that `mode` is set. `mode` can be
-either `daemonset`, `deployment`, or `statefulset` depending on which kind of
-Kubernetes deployment your use case requires.
+El gráfico de recopiladores de OpenTelemetry requiere que `mode` esté establecido. `mode` puede ser
+`daemonset`, `deployment` o `statefulset` dependiendo de qué tipo de
+La implementación de Kubernetes requiere su caso de uso.
 
-When installed, the chart provides a few default collector components to get you
-started. By default, the collector's config will look like:
+Cuando se instala, el gráfico proporciona algunos componentes de recopilador predeterminados para obtener
+Empezó. De forma predeterminada, la configuración del recopilador tendrá el siguiente aspecto:
 
 ```yaml
 exporters:
-  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
+  # NOTA: Antes de v0.86.0, use el registro(login) en lugar de la depuración(debug).
   debug: {}
 extensions:
   health_check: {}
@@ -109,15 +109,16 @@ service:
       address: ${env:MY_POD_IP}:8888
 ```
 
-The chart will also enable ports based on the default receivers. Default
-configuration can be removed by setting the value to `null` in your
-`values.yaml`. Ports can be disabled in the `values.yaml` as well.
+El gráfico también habilitará puertos basados en los receptores predeterminados. Predeterminado
+La configuración se puede eliminar estableciendo el valor en `null` en su
+`values.yaml`. Los puertos también se pueden deshabilitar en `values.yaml`.
 
-You can add/modify any part of the configuration using the `config` section in
-your `values.yaml`. When changing a pipeline, you must explicitly list all the
-components that are in the pipeline, including any default components.
+Puede agregar/modificar cualquier parte de la configuración utilizando la sección `config` en
+Tus `values.yaml`. Al cambiar una canalización, debe enumerar explícitamente todas las
+componentes que están en la canalización, incluidos los componentes predeterminados.
 
-For example, to disable metrics and logging pipelines and non-otlp receivers:
+Por ejemplo, para deshabilitar las métricas y las canalizaciones de registro y los receptores no superiores:
+
 
 ```yaml
 config:
@@ -143,48 +144,48 @@ ports:
     enabled: false
 ```
 
-All the configuration options (with comments) available in the chart can be
-viewed in its
+Todas las opciones de configuración (con comentarios) disponibles en el gráfico pueden ser
+visto en su
 [values.yaml file](https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-collector/values.yaml).
 
-### Presets
+### Ajustes preestablecidos
 
-Many of the important components the OpenTelemetry Collector uses to monitor
-Kubernetes require special setup in the Collector's own Kubernetes deployment.
-In order to make using these components easier, the OpenTelemetry Collector
-Chart comes with some presets that, when enabled, handle the complex setup for
-these important components.
+Muchos de los componentes importantes que el Colector de telemetría OpenTelemetry utiliza para monitorizar
+Kubernetes requiere una configuración especial en la propia implementación de Kubernetes del Coleccionista.
+Para facilitar el uso de estos componentes, el Colector de telemetría abierta
+El gráfico viene con algunos ajustes preestablecidos que, cuando están habilitados, manejan la configuración compleja para
+estos importantes componentes.
 
-Presets should be used as a starting point. They configure basic, but rich,
-functionality for their related components. If your use case requires extra
-configuration of these components it is recommend to NOT use the preset and
-instead manually configure the component and anything it requires (volumes,
+Los ajustes preestablecidos deben utilizarse como punto de partida. Configuran básico, pero rico,
+funcionalidad para sus componentes relacionados. Si su caso de uso requiere extra
+configuración de estos componentes se recomienda NO utilizar el ajuste preestablecido y
+en su lugar, configure manualmente el componente y cualquier cosa que requiera (volúmenes,
 RBAC, etc.).
 
-#### Logs Collection Preset
+#### Configuración preestablecida de la colección de registros
 
-The OpenTelemetry Collector can be used to collect logs sent to standard output
-by Kubernetes containers.
+El Colector de telemetría OpenTelemetry se puede utilizar para recopilar los registros enviados a la salida estándar
+por contenedores Kubernetes.
 
-This feature is disabled by default. It has the following requirements in order
-to be safely enabled:
+Esta característica está deshabilitada de forma predeterminada. Tiene los siguientes requisitos en orden
+Para habilitar de forma segura:
 
-- It requires the
-  [Filelog receiver](/docs/kubernetes/collector/components/#filelog-receiver) be
-  included in the Collector image, such as the
-  [Contrib distribution of the Collector](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib).
-- Although not a strict requirement, it is recommended this preset be used with
-  `mode=daemonset`. The `filelogreceiver` will only be able to collect logs on
-  the node the Collector is running and multiple configured Collectors on the
-  same node will produce duplicate data.
+- Requiere el
+[Filelog receiver](/docs/kubernetes/collector/components/#filelog-receiver) 
+incluidos en la imagen del Coleccionista, como el
+[Contrib distribution of the Collector](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib).
+- Aunque no es un requisito estricto, se recomienda que este ajuste preestablecido se utilice con `mode=daemonset`. El `filelogreceiver` solo podrá recopilar registros en
+el nodo en el que se ejecuta el recopilador y varios recopiladores configurados en el
+El mismo nodo producirá datos duplicados.
 
-To enable this feature, set the `presets.logsCollection.enabled` property to
-`true`. When enabled, the chart will add a `filelogreceiver` to the `logs`
-pipeline. This receiver is configured to read the files where Kubernetes
-container runtime writes all containers' console output
+Para habilitar esta característica, establezca la propiedad `presets.logsCollection.enabled` en
+`true`. Cuando está habilitado, el gráfico agregará un `filelogreceiver` a los `logs`
+tubería. Este receptor está configurado para leer los archivos donde Kubernetes
+Container Runtime escribe la salida de la consola de todos los contenedores
 (`/var/log/pods/*/*/*.log`).
 
-Here is an example `values.yaml`:
+Aquí hay un ejemplo `values.yaml`:
+
 
 ```yaml
 mode: daemonset
@@ -192,21 +193,19 @@ presets:
   logsCollection:
     enabled: true
 ```
+La canalización de registros predeterminada del gráfico utiliza el `debugexporter`. Emparejado con el
+`logsCollection` preset `filelogreceiver` es fácil alimentar accidentalmente el exportó registros de nuevo en el recopilador, lo que puede causar una "explosión de registro".
 
-The chart's default logs pipeline uses the `debugexporter`. Paired with the
-`logsCollection` preset's `filelogreceiver` it is easy to accidentally feed the
-exported logs back into the collector, which can cause a "log explosion".
+Para evitar el bucle, la configuración predeterminada del receptor excluye el
+Registros del propio coleccionista. Si desea incluir los registros del recopilador, asegúrese de
+Reemplace el exportador `debug` por un exportador que no envíe registros a
+Salida estándar del colector.
 
-To prevent the looping, the default configuration of the receiver excludes the
-collector's own logs. If you want to include the collector's logs, make sure to
-replace the `debug` exporter with an exporter that does not send logs to
-collector's standard output.
-
-Here's an example `values.yaml` that replaces the default `debug` exporter on
-the `logs` pipeline with an `otlphttp` exporter that sends the container logs to
-`https://example.com:55681` endpoint. It also uses
-`presets.logsCollection.includeCollectorLogs` to tell the preset to enable
-collection of the collector's logs.
+Aquí hay un ejemplo `values.yaml` que reemplaza el exportador `debug` predeterminado en
+La canalización `logs` con un exportador `otlphttp` que envía los registros del contenedor a
+`https://example.com:55681` punto final. También utiliza
+`presets.logsCollection.includeCollectorLogs` para indicar al preset que habilite
+Colección de los registros del coleccionista.
 
 ```yaml
 mode: daemonset
@@ -227,26 +226,26 @@ config:
           - otlphttp
 ```
 
-#### Kubernetes Attributes Preset
+#### Atributos preestablecidos de Kubernetes
 
-The OpenTelemetry Collector can be configured to add Kubernetes metadata, such
-as `k8s.pod.name`, `k8s.namespace.name`, and `k8s.node.name`, to logs, metrics
-and traces. It is highly recommended to use the preset, or enable the
-`k8sattributesprocessor` manually.
+El recopilador de OpenTelemetry se puede configurar para agregar metadatos de Kubernetes, como
+como `k8s.pod.name`, `k8s.namespace.name` y `k8s.node.name`, a los registros, métricas y rastros. Se recomienda encarecidamente utilizar el ajuste preestablecido o habilitar el
+`k8sattributesprocessor` manualmente.
 
-Due to RBAC considerations, this feature is disabled by default. It has the
-following requirements:
+Debido a consideraciones de RBAC, esta característica está deshabilitada de forma predeterminada. Tiene el
+los siguientes requisitos:
 
-- It requires the
-  [Kubernetes Attributes processor](/docs/kubernetes/collector/components/#kubernetes-attributes-processor)
-  be included in the Collector image, such as the
-  [Contrib distribution of the Collector](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib).
+- Requiere el
+[Kubernetes Attributes processor](/docs/kubernetes/collector/components/#kubernetes-attributes-processor)
+se incluirán en la imagen del Coleccionista, como el
+[Contrib distribution of the Collector](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib).
 
-To enable this feature, set the `presets.kubernetesAttributes.enabled` property
-to `true`. When enabled, the chart will add the necessary RBAC roles to the
-ClusterRole and will add a `k8sattributesprocessor` to each enabled pipeline.
 
-Here is an example `values.yaml`:
+Para habilitar esta característica, establezca la propiedad `presets.kubernetesAttributes.enabled`
+a `true`. Cuando está habilitado, el gráfico agregará los roles RBAC necesarios al
+ClusterRole y agregará un `k8sattributesprocessor` a cada canalización habilitada.
+
+Aquí hay un ejemplo `values.yaml`:
 
 ```yaml
 mode: daemonset
@@ -255,27 +254,27 @@ presets:
     enabled: true
 ```
 
-#### Kubelet Metrics Preset
+#### Métricas de Kubelet preestablecidas
 
-The OpenTelemetry Collector can be configured to collect node, pod, and
-container metrics from the API server on a kubelet.
+El Colector de telemetría abierta se puede configurar para recopilar nodos, pods y
+métricas de contenedor del servidor API en un kubelet.
 
-This feature is disabled by default. It has the following requirements:
+Esta característica está deshabilitada de forma predeterminada. Tiene los siguientes requisitos:
 
-- It requires the
-  [Kubeletstats receiver](/docs/kubernetes/collector/components/#kubeletstats-receiver)
-  be included in the Collector image, such as the
-  [Contrib distribution of the Collector](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib).
-- Although not a strict requirement, it is recommended this preset be used with
-  `mode=daemonset`. The `kubeletstatsreceiver` will only be able to collect
-  metrics on the node the Collector is running and multiple configured
-  Collectors on the same node will produce duplicate data.
+- Requiere el
+ [Kubeletstats receiver](/docs/kubernetes/collector/components/#kubeletstats-receiver)
+se incluirán en la imagen del Coleccionista, como el  [Contrib distribution of the Collector](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib).
+- Aunque no es un requisito estricto, se recomienda que este ajuste preestablecido se utilice con
+`mode=daemonset`. El `kubeletstatsreceiver` solo podrá recoger
+métricas en el nodo en el que se está ejecutando el recopilador y múltiples configuraciones
+Los recopiladores del mismo nodo producirán datos duplicados.
 
-To enable this feature, set the `presets.kubeletMetrics.enabled` property to
-`true`. When enabled, the chart will add the necessary RBAC roles to the
-ClusterRole and will add a `kubeletstatsreceiver` to the metrics pipeline.
+Para habilitar esta característica, establezca la propiedad `presets.kubeletMetrics.enabled` en
+`true`. Cuando está habilitado, el gráfico agregará los roles RBAC necesarios al
+ClusterRole y agregará un `kubeletstatsreceiver` a la canalización de métricas.
 
-Here is an example `values.yaml`:
+Aquí hay un ejemplo `values.yaml`:
+
 
 ```yaml
 mode: daemonset
@@ -284,27 +283,27 @@ presets:
     enabled: true
 ```
 
-#### Cluster Metrics Preset
+#### Métricas de clúster preestablecidas
 
-The OpenTelemetry Collector can be configured to collect cluster-level metrics
-from the Kubernetes API server. These metrics include many of the metrics
-collected by Kube State Metrics.
+El recopilador de OpenTelemetry se puede configurar para recopilar métricas de nivel de clúster
+desde el servidor API de Kubernetes. Estas métricas incluyen muchas de ellas
+recopilado por Kube State Metrics.
 
-This feature is disabled by default. It has the following requirements:
+Esta característica está deshabilitada de forma predeterminada. Tiene los siguientes requisitos:
 
-- It requires the
-  [Kubernetes Cluster receiver](/docs/kubernetes/collector/components/#kubernetes-cluster-receiver)
-  be included in the Collector image, such as the
-  [Contrib distribution of the Collector](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib).
-- Although not a strict requirement, it is recommended this preset be used with
-  `mode=deployment` or `mode=statefulset` with a single replica. Running
-  `k8sclusterreceiver` on multiple Collectors will produce duplicate data.
+- Requiere el
+[Receptor de clúster de Kubernetes](/docs/kubernetes/collector/components/#kubernetes-cluster-receiver)
+se incluirán en la imagen del Coleccionista, como el
+[Distribución de Contrib del Coleccionista](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib).
+- Aunque no es un requisito estricto, se recomienda que este ajuste preestablecido se utilice con
+`mode=deployment` o `mode=statefulset` con una única réplica. Correr
+`k8sclusterreceiver` en varios colectores producirá datos duplicados.
 
-To enable this feature, set the `presets.clusterMetrics.enabled` property to
-`true`. When enabled, the chart will add the necessary RBAC roles to the
-ClusterRole and will add a `k8sclusterreceiver` to the metrics pipeline.
+Para habilitar esta característica, establezca la propiedad `presets.clusterMetrics.enabled` en
+`verdadero`. Cuando está habilitado, el gráfico agregará los roles RBAC necesarios al
+ClusterRole y agregará un `k8sclusterreceiver` a la canalización de métricas.
 
-Here is an example `values.yaml`:
+Aquí hay un ejemplo `values.yaml`:
 
 ```yaml
 mode: deployment
@@ -314,26 +313,26 @@ presets:
     enabled: true
 ```
 
-#### Kubernetes Events Preset
+#### Eventos preestablecidos de Kubernetes
 
-The OpenTelemetry Collector can be configured to collect Kubernetes events.
+El Colector de telemetría abierta se puede configurar para recopilar eventos de Kubernetes.
 
-This feature is disabled by default. It has the following requirements:
+Esta característica está deshabilitada de forma predeterminada. Tiene los siguientes requisitos:
 
-- It requires the
-  [Kubernetes Objects receiver](/docs/kubernetes/collector/components/#kubernetes-objects-receiver)
-  be included in the Collector image, such as the
-  [Contrib distribution of the Collector](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib).
-- Although not a strict requirement, it is recommended this preset be used with
-  `mode=deployment` or `mode=statefulset` with a single replica. Running
-  `k8sclusterreceiver` on multiple Collectors will produce duplicate data.
+- Requiere el
+[Receptor de objetos Kubernetes](/docs/kubernetes/collector/components/#kubernetes-objects-receiver)
+se incluirán en la imagen del Coleccionista, como el
+[Distribución de Contrib del Coleccionista](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib).
+- Aunque no es un requisito estricto, se recomienda que este ajuste preestablecido se utilice con
+`mode=deployment` o `mode=statefulset` con una única réplica. Correr
+`k8sclusterreceiver` en varios colectores producirá datos duplicados.
 
-To enable this feature, set the `presets.kubernetesEvents.enabled` property to
-`true`. When enabled, the chart will add the necessary RBAC roles to the
-ClusterRole and will add a `k8sobjectsreceiver` to the logs pipeline configure
-to only collector events.
+Para habilitar esta característica, establezca la propiedad `presets.kubernetesEvents.enabled` en
+`true`. Cuando está habilitado, el gráfico agregará los roles RBAC necesarios al
+ClusterRole y agregará un `k8sobjectsreceiver` a la configuración de la canalización de registros
+a solo eventos de recopilador.
 
-Here is an example `values.yaml`:
+Aquí hay un ejemplo `values.yaml`:
 
 ```yaml
 mode: deployment
@@ -343,35 +342,35 @@ presets:
     enabled: true
 ```
 
-#### Host Metrics Preset
+#### Métricas de host preestablecidas
 
-The OpenTelemetry Collector can be configured to collect host metrics from
-Kubernetes nodes.
+El recopilador de telemetría abierta se puede configurar para recopilar métricas de host desde
+Nodos de Kubernetes.
 
-This feature is disabled by default. It has the following requirements:
+Esta característica está deshabilitada de forma predeterminada. Tiene los siguientes requisitos:
 
-- It requires the
-  [Host Metrics receiver](/docs/kubernetes/collector/components/#host-metrics-receiver)
-  be included in the Collector image, such as the
-  [Contrib distribution of the Collector](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib).
-- Although not a strict requirement, it is recommended this preset be used with
-  `mode=daemonset`. The `hostmetricsreceiver` will only be able to collect
-  metrics on the node the Collector is running and multiple configured
-  Collectors on the same node will produce duplicate data.
+- Requiere el
+[Host Metrics receiver](/docs/kubernetes/collector/components/#host-metrics-receiver)
+se incluirán en la imagen del Coleccionista, como el
+[Distribución de Contrib del Coleccionista](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib).
+- Aunque no es un requisito estricto, se recomienda que este ajuste preestablecido se utilice con
+`mode=daemonset`. El `hostmetricsreceiver` solo podrá recolectar
+métricas en el nodo en el que se está ejecutando el recopilador y múltiples configuraciones
+Los recopiladores del mismo nodo producirán datos duplicados.
 
-To enable this feature, set the `presets.hostMetrics.enabled` property to
-`true`. When enabled, the chart will add the necessary volumes and volumeMounts
-and will add a `hostmetricsreceiver` to the metrics pipeline. By default metrics
-will be scrapped every 10 seconds and the following scrappers are enabled:
+Para habilitar esta característica, establezca la propiedad `presets.hostMetrics.enabled` en
+`verdadero`. Cuando está habilitado, el gráfico agregará los volúmenes necesarios y volumeMounts
+y agregará un `hostmetricsReceiver` a la canalización de métricas. Métricas predeterminadas
+se desguazarán cada 10 segundos y se habilitarán los siguientes desguazadores:
 
-- cpu
-- load
-- memory
-- disk
-- filesystem[^1]
-- network
+- CPU
+- Cargar
+- memoria
+- disco
+- sistema de archivos[^1]
+- red
 
-Here is an example `values.yaml`:
+Aquí hay un ejemplo `values.yaml`:
 
 ```yaml
 mode: daemonset
@@ -380,5 +379,5 @@ presets:
     enabled: true
 ```
 
-[^1] due to some overlap with the `kubeletMetrics` preset some filesystem types
-and mount points are excluded by default.
+[^1] debido a alguna superposición con el preajuste `kubeletMetrics` de algunos tipos de sistema de archivos
+y los puntos de montaje se excluyen de forma predeterminada.

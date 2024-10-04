@@ -1,19 +1,19 @@
 ---
-título: OpenTelemetry Helm Charts
-linkTítulo: Helm Charts
+title: OpenTelemetry Helm Charts
+linkTitle: Helm Charts
 ---
 
-## Introducción
+## Introduction
 
-[Helm](https://helm.sh/) es una solución CLI para administrar aplicaciones de Kubernetes.
+[Helm](https://helm.sh/) is a CLI solution for managing Kubernetes applications.
 
-Si eligió usar Helm, puede usar
-[OpenTelemetry Helm Charts] (https://github.com/open-telemetry/opentelemetry-helm-charts)
-para gestionar las instalaciones del [OpenTelemetry Collector](/docs/collector),
-[OpenTelemetry Operator](/docs/kubernetes/operator), y
+If you chose to use Helm, you can use
+[OpenTelemetry Helm Charts](https://github.com/open-telemetry/opentelemetry-helm-charts)
+to manage installs of the [OpenTelemetry Collector](/docs/collector),
+[OpenTelemetry Operator](/docs/kubernetes/operator), and
 [OpenTelemetry Demo](/docs/demo).
 
-Agregue el repositorio OpenTelemetry Helm con:
+Add the OpenTelemetry Helm repository with:
 
 ```sh
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
