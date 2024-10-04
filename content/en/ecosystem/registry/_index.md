@@ -29,6 +29,12 @@ weight: 20
 
 {{% /blocks/lead %}}
 
+<div style="text-align: center; margin-top: 20px;">
+<button id="scrollToTopBtn" class="scroll-to-top-btn">
+    <i class="fas fa-arrow-up"></i>
+</button>
+</div>
+
 {{< blocks/section color="white" type="container-lg" >}}
 
 {{< ecosystem/registry/search-form >}}
