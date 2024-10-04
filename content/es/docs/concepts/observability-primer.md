@@ -40,7 +40,7 @@ comportamiento. Los datos pueden venir en forma de
 **Confiabilidad** responde a la pregunta: "¿Está el servicio haciendo lo que los
 usuarios esperan que haga?" Un sistema podría estar funcionando el 100% del
 tiempo, pero si, cuando un usuario hace clic en "Agregar al carrito" para añadir
-un par de zapatos negros a su carrito, si el sistema no siempre agrega los
+un par de zapatos negros a su carrito, el sistema no siempre agrega los
 zapatos negros, entonces el sistema podría ser **no** confiable.
 
 **Métricas** son agregaciones durante un período de tiempo de datos numéricos
