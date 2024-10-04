@@ -4,3 +4,6 @@ inicialización
 configurarlo
 correlacionan
 microservicios
+extensibilidad
+correlacionarse
+deserializa
