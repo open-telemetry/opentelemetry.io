@@ -44,7 +44,7 @@ un par de zapatos negros a su carrito, el sistema no siempre agrega los
 zapatos negros, entonces el sistema podría ser **no** confiable.
 
 **Métricas** son agregaciones durante un período de tiempo de datos numéricos
-sobre tu infraestructura o aplicación. Ejemplos incluyen: tasa de error del
+sobre tu infraestructura o aplicación. Por ejemplo: tasa de error del
 sistema, uso de CPU y tasa de solicitudes para un servicio determinado. Para más
 información sobre métricas y cómo se relacionan con OpenTelemetry, consulta
 [Métricas](/docs/concepts/signals/metrics/).
