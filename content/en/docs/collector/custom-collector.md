@@ -171,6 +171,7 @@ providers:
   - gomod: go.opentelemetry.io/collector/confmap/provider/httpprovider v0.110.0
   - gomod: go.opentelemetry.io/collector/confmap/provider/httpsprovider v0.110.0
   - gomod: go.opentelemetry.io/collector/confmap/provider/yamlprovider v0.110.0
+```
 
 {{% alert color="primary" title="Tip" %}}
 
