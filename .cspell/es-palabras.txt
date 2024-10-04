@@ -1,2 +1,6 @@
 observabilidad
 telemetría
+inicialización
+configurarlo
+correlacionan
+microservicios
