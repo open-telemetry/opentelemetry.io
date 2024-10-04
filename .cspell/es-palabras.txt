@@ -1,2 +1,4 @@
 observabilidad
 telemetría
+inicialización
+configurarlo
