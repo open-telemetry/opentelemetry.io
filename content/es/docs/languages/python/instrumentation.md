@@ -220,7 +220,8 @@ except:
 ### Registrar excepciones en spans
 
 Puede ser una buena idea registrar excepciones cuando ocurren. Se recomienda
-hacerlo a la vez que se establece el [estado del span](#set-span-status).
+hacerlo a la vez que se establece el
+[estado del span](#establecer-el-estado-del-span).
 
 ```python
 from opentelemetry import trace
@@ -377,10 +378,10 @@ def scrape_config_versions(options: CallbackOptions) -> Iterable[Observation]:
         )
 ```
 
-Nota que OpenTelemetry pasará opciones a tu callback que contienen un tiempo
-de espera. Las callbacks deben respetar este tiempo de espera para evitar
-bloquearse indefinidamente. Finalmente, crea el instrumento con la callback
-para registrarlo:
+Nota que OpenTelemetry pasará opciones a tu callback que contienen un tiempo de
+espera. Las callbacks deben respetar este tiempo de espera para evitar
+bloquearse indefinidamente. Finalmente, crea el instrumento con la callback para
+registrarlo:
 
 ```python
 meter.create_observable_gauge(
