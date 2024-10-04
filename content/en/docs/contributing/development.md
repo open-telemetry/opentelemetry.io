@@ -26,46 +26,6 @@ cloud IDE:
 
 Gitpod automatically installs the repo-specific packages for you.
 
-## Cloning the Repository
-
-For first-time contributors, it is recommended to clone the repository using SSH instead of HTTPS to avoid common errors related to authentication.
-
-### Cloning with SSH
-
-To clone the repository using SSH, follow these steps:
-
-1. **Generate an SSH Key (if you don't have one):**
-   - Open a terminal and run:
-     ```bash
-     ssh-keygen -C "your_email@example.com"
-     ```
-   - Follow the prompts to save the key to the default location.
-
-2. **Add your SSH key to the SSH agent:**
-   - Start the SSH agent:
-     ```bash
-     eval "$(ssh-agent -s)"
-     ```
-   - Add your SSH key:
-     ```bash
-     ssh-add ~/.ssh/id_rsa
-     ```
-
-3. **Add your SSH key to your GitHub account:**
-   - Copy the SSH key to your clipboard:
-     ```bash
-     cat ~/.ssh/id_rsa.pub
-     ```
-   - Go to your GitHub settings, navigate to "SSH and GPG keys," and click "New SSH key." Paste your key and save.
-
-4. **Clone the repository using SSH:**
-   - Use the following command to clone:
-     ```bash
-     git clone git@github.com:open-telemetry/opentelemetry-js.git
-     ```
-
-By following these steps, you will be able to clone the repository without encountering HTTPS-related issues.
-
 
 You're now ready to [build](#build), [serve](#serve) or make updates to the
 website files.
@@ -130,6 +90,47 @@ The serve command serves files from memory, not from disk.
 If you see an error like `too many open files` or `pipe failed` under macOS, you
 might need to increase the file descriptor limit. See
 [Hugo issue #6109](https://github.com/gohugoio/hugo/issues/6109).
+
+## Advanced Setup Instructions: Cloning the Repository with SSH
+
+For contributors intersted in cloning the repository using SSH instead of HTTPS
+
+### Cloning with SSH
+
+Follow these steps to clone the repository using SSH:
+
+1. **Generate an SSH Key (if you don't have one):**
+   - Open a terminal and run:
+     ```bash
+     ssh-keygen -C "your_email@example.com"
+     ```
+   - Follow the prompts to save the key to the default location.
+
+2. **Add your SSH key to the SSH agent:** >
+   **Optional**: You can add the SSH agent setup to your `~/.bashrc` or `~/.zshrc` file to automatically load your SSH key 
+    when starting a new terminal session. However, this is not mandatory. If you prefer, you can skip this step and be 
+    prompted to enter your SSH key passphrase manually each time you use SSH.
+
+   - Start the SSH agent:
+     ```bash
+     eval "$(ssh-agent -s)"
+     ```
+   - Add your SSH key
+
+4. **Add your SSH key to your GitHub account:**
+   - Copy the SSH key to your clipboard:
+     ```bash
+     cat ~/.ssh/id_rsa.pub
+     ```
+   - Navigate to GitHub's [SSH and GPG keys settings](https://github.com/settings/keys), click "New SSH key," paste your key, and save it.
+  
+5. **Fork the repository:** Before you can contribute, you'll need to fork the repository to your own GitHub account. For help, see [Fork a repository][fork]
+  
+6. **Clone the repository using SSH:**
+   - Use the following command to clone:
+     ```bash
+     git clone git@github.com:open-telemetry/opentelemetry.io.git
+     ```
 
 ### Content and submodules
 
