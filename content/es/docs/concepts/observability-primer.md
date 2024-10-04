@@ -102,7 +102,7 @@ el tiempo en que se ejecutó esa operación.
 
 Un span contiene nombre, datos relacionados con el tiempo,
 [mensajes de log estructurados](/docs/concepts/signals/traces/#span-events) y
-[otros metadatos (es decir, Atributos)](/docs/concepts/signals/traces/#attributes)
+[otros metadatos (es decir, atributos)](/docs/concepts/signals/traces/#attributes)
 para proporcionar información sobre la operación que rastrea.
 
 #### Atributos de Span
