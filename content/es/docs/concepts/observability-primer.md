@@ -7,7 +7,7 @@ default_lang_commit: e58a252c44875b04247b53e2394b4634f5a0a84e
 
 ---
 
-## ¿Qué es la Observabilidad?
+## ¿Qué es la observabilidad?
 
 La observabilidad te permite entender un sistema desde el exterior al permitirte
 hacer preguntas sobre ese sistema sin conocer su funcionamiento interno. Además,
