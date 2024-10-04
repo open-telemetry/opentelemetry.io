@@ -37,7 +37,7 @@ To clone the repository using SSH, follow these steps:
 1. **Generate an SSH Key (if you don't have one):**
    - Open a terminal and run:
      ```bash
-     ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+     ssh-keygen -C "your_email@example.com"
      ```
    - Follow the prompts to save the key to the default location.
 
