@@ -7,7 +7,7 @@ default_lang_commit: e58a252c44875b04247b53e2394b4634f5a0a84e
 
 ---
 
-## ¿Qué es la observabilidad?
+## ¿Qué es la observabilidad? {#what-is-observability}
 
 La observabilidad te permite entender un sistema desde el exterior al permitirte
 hacer preguntas sobre ese sistema sin conocer su funcionamiento interno. Además,
@@ -105,7 +105,7 @@ Un span contiene nombre, datos relacionados con el tiempo,
 [otros metadatos (es decir, atributos)](/docs/concepts/signals/traces/#attributes)
 para proporcionar información sobre la operación que rastrea.
 
-#### Atributos de Span
+#### Atributos de span
 
 Los atributos de span son metadatos adjuntos a un span.
 
@@ -129,7 +129,7 @@ La siguiente tabla contiene ejemplos de atributos de span:
 Para más información sobre los spans y cómo se relacionan con OpenTelemetry,
 consulta [Spans](/docs/concepts/signals/traces/#spans).
 
-### Trazas distribuidas
+### Trazas distribuidas {#distributed-traces}
 
 Una **traza distribuida**, más comúnmente conocida como **traza**, registra los
 caminos tomados por las solicitudes (realizadas por una aplicación o un usuario
