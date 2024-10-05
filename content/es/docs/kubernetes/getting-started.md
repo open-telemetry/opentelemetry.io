@@ -2,7 +2,7 @@
 title: Primeros pasos
 weight: 1
 # prettier-ignore
-cSpell:gnore: filelog filelogreceiver kubeletstats kubeletstatsreceiver loggingexporter otlpexporter sattributes sattributesprocessor sclusterreceiver sobjectsreceiver
+cSpell:ignore: filelog filelogreceiver kubeletstats kubeletstatsreceiver loggingexporter otlpexporter sattributes sattributesprocessor sclusterreceiver sobjectsreceiver
 ---
 
 Esta página te guiará a través de la forma más rápida de comenzar a monitorear tu clúster de Kubernetes usando OpenTelemetry. Se centrará en recopilar métricas y registros para clústeres, nodos, pods y contenedores de Kubernetes, además de habilitar el clúster para admitir servicios que emiten datos OTLP.
@@ -125,7 +125,7 @@ El gráfico del timón del colector de OpenTelemetry hace que se configuren todo
 En un daemonset la instalación del colector es fácil. También se encargará de todo
 de los detalles específicos de Kubernetes, como RBAC, montajes y puertos host.
 
-Una advertencia: el gráfico no envía los datos a ningún back-end de forma predeterminada. Si usted
+Una advertencia: el gráfico no envía los datos a ningún backend de forma predeterminada. Si usted
 Si realmente quieres usar tus datos en tu backend favorito, tendrás que configurarlo
 un exportador.
 
@@ -220,7 +220,7 @@ El gráfico de timón de OpenTelemetry Collector optimiza la configuración de t
 estos componentes en una instalación de implementación del Collector. También
 Cuide todos los detalles específicos de Kubernetes, como RBAC y montajes.
 
-Una advertencia: el gráfico no envía los datos a ningún back-end de forma predeterminada. Si usted
+Una advertencia: el gráfico no envía los datos a ningún backend de forma predeterminada. Si usted
 Si realmente quieres usar tus datos en tu backend preferido, tendrás que
 Configure un exportador usted mismo.
 
