@@ -85,7 +85,17 @@
     {{ errorf "The %q registry entry requires a repo or website URL." .title }}
     {{ end -}}
     {{ $primaryHref := printf "href=%q" $primaryUrl | safeHTMLAttr -}}
-    <li class="card my-3 registry-entry {{ $highlightStyle }}" data-registry-id="{{ ._key }}" data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
+    {{ $flags := slice -}} <!-- Initialize flags slice -->
+    {{ if $isNative -}}
+        {{ $flags = $flags | append "native" -}}
+    {{ end -}}
+    {{ if $isFirstParty -}}
+        {{ $flags = $flags | append "first party" -}}
+    {{ end -}}
+    {{ if $deprecated -}}
+        {{ $flags = $flags | append "deprecated" -}}
+    {{ end -}}
+    <li class="card my-3 registry-entry {{ $highlightStyle }}" data-registry-id="{{ ._key }}" data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}"   data-registryflags="{{- range $index, $flag := $flags -}}{{ if $index }} {{ end }}{{ $flag }}{{- end }}">
         <div class="card-body container">
         <h4 class="card-title mb-0 d-flex flex-row">
             <a {{ $primaryHref }} target="_blank" rel="noopener" class="me-auto">
