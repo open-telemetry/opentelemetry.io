@@ -7,7 +7,10 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The Splunk Enterprise Receiver is a pull based tool which enables the ingestion of performance metrics describing the operational status of a user's Splunk Enterprise deployment to an appropriate observability tool.
+description:
+  The Splunk Enterprise Receiver is a pull based tool which enables the
+  ingestion of performance metrics describing the operational status of a user's
+  Splunk Enterprise deployment to an appropriate observability tool.
 authors:
   - name: OpenTelemetry Authors
 urls:
