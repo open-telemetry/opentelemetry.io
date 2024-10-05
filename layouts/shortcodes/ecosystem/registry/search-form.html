@@ -43,7 +43,7 @@ ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry
 <div class="pb-4">
   <form action="/ecosystem/registry" id="searchForm">
     <div class="input-group">
-      <span class="input-group-text" id="basic-addon1" title="{{ len $registry }} entries">Search {{ len $registry }} entries</span>
+      <span class="input-group-text" id="basic-addon1" title="{{ len $registry }} entries">Search Our {{ len $registry }} entries</span>
       <input class="form-control w-auto" list="search-suggestions" id="input-s" type="text" name="s" placeholder="Type to search…"
         aria-label="Registry search input field">
         <datalist id="search-suggestions"></datalist>
@@ -92,7 +92,7 @@ ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry
   </form>
 </div>
 
-<div class="mx-auto">
+<!-- <div class="mx-auto">
   <div class="text-center text-primary" style="display: none" id="search-loading">
     <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
     <span role="status">Loading results…</span>
@@ -107,4 +107,16 @@ ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/minisearch@7.1.0/dist/umd/index.min.js" integrity="sha384-58p1D2xuw/76VRFUgDMRcrtnJAW5LWLE02ihn8aITu65c4vgo+BLy7raRKNC7KaL" crossorigin="anonymous"></script>
-{{ partial "script.html" (dict "src" "js/registrySearch.js") -}}
+{{ partial "script.html" (dict "src" "js/registrySearch.js") -}} -->
+
+
+
+<div class="section">
+  <h2>Libraries</h2>
+  <a href="/ecosystem/registry?type=library" class="see-all">See All</a>
+  <div class="card-grid">
+    {{ range first 4 (where $registry "registryType" "library") }}
+      {{ partial "ecosystem/registry/entry" . }}
+    {{ end }}
+  </div>
+</div>
