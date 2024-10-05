@@ -16,3 +16,4 @@ package:
   registry: gems
   name: opentelemetry-instrumentation-restclient
   version: 0.22.7
+isFirstParty: false

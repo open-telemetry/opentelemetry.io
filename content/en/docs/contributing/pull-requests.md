@@ -1,22 +1,26 @@
 ---
-title: Add new content
-description: Learn how to add new content using GitHub UI or a local fork.
-weight: 2
+title: Submitting content
+description:
+  Learn how to submit new or changed content using the GitHub UI or a local
+  fork.
+aliases: [new-content]
+weight: 15
 ---
 
-To contribute new content pages or improve existing content pages, open a pull
-request (PR):
+To contribute new or improve existing documentation content, submit a [pull
+request][PR] (PR):
 
-- If your change is small, or you're unfamiliar with Git, read
+- If your change is small, or you're unfamiliar with Git, see
   [Changes using GitHub](#changes-using-github) to learn how to edit a page.
-- If your changes are large, read [Work from a local fork](#fork-the-repo) to
+- If your changes are large, see [Work from a local fork](#fork-the-repo) to
   learn how to make changes locally on your computer.
 
-{{% alert title="Tip" %}}
+{{% alert title="Tip: Draft status" %}}
 
-Turn your pull request into a draft to signal that the content still isn't ready
-for review. Maintainers may still comment or do high-level reviews, though they
-won't review the content in full until you remove the draft status.
+Set the status of your pull request to **Draft** to let maintainers know that
+the content isn't ready for review yet. Maintainers may still comment or do
+high-level reviews, though they won't review the content in full until you
+remove the draft status.
 
 {{% /alert %}}
 
@@ -46,7 +50,17 @@ _Figure 1. Contributing new content._
 ## Changes using GitHub {#changes-using-github}
 
 If you're less experienced with Git workflows, here's an easier method of
-opening a pull request. Figure 2 outlines the steps and the details follow.
+creating and submitting a pull request. Figure 2 outlines the steps and the
+details follow.
+
+{{% alert title="Contributor License Agreement (CLA)" color=warning %}}
+
+All contributors are required to [sign a Contributor License Agreement
+(CLA)][CLA] before changes can be approved and merged.
+
+[CLA]: ../prerequisites/#cla
+
+{{% /alert %}}
 
 ```mermaid
 flowchart LR
@@ -330,8 +344,7 @@ using [Netlify](https://www.netlify.com/).
   the OpenTelemetry website with your changes applied. This is how reviewers
   check your changes.
 
-Other checks might also fail. See the
-[list of all PR checks](/docs/contributing/pr-checks).
+Other checks might also fail. See the [list of all PR checks](../pr-checks).
 
 ### Fix content issues automatically
 
@@ -349,9 +362,8 @@ npm run test    # Checks but does not update any files
 npm run fix:all # May update files
 ```
 
-To list available NPM scripts, run `npm run`. See
-[PR checks](/docs/contributing/pr-checks) for more information on pull request
-checks and how to fix errors automatically.
+To list available NPM scripts, run `npm run`. See [PR checks](../pr-checks) for
+more information on pull request checks and how to fix errors automatically.
 
 ### Preview your changes locally {#preview-locally}
 
@@ -501,3 +513,4 @@ Pull requests are merged when they comply with the following criteria:
 [dashboard]: https://app.netlify.com/sites/opentelemetry/overview
 [deploy preview]:
   https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/
+[PR]: https://docs.github.com/en/pull-requests

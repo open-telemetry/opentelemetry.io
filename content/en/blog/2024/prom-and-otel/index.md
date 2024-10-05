@@ -189,7 +189,7 @@ that:
 
 - Manages the [OpenTelemetry Collector](/docs/collector/)
 - Injects and configures
-  [auto-instrumentation](https://www.honeycomb.io/blog/what-is-auto-instrumentation)
+  [autoinstrumentation](https://www.honeycomb.io/blog/what-is-auto-instrumentation)
   into your pods
 
 In fact, the Operator creates two new
@@ -197,7 +197,7 @@ In fact, the Operator creates two new
 (CR) types in Kubernetes to support this functionality: the
 [OpenTelemetry Collector CR](https://github.com/open-telemetry/opentelemetry-operator#getting-started),
 and the
-[Auto-Instrumentation CR](https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection).
+[Autoinstrumentation CR](https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection).
 
 Today, we will be focusing on the Target Allocator. The TA is an optional
 component of the Operator’s OTel Collector management capabilities.

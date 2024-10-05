@@ -554,7 +554,7 @@ started.
 
 For objects configuring for pulling, the receiver will use the Kubernetes API to
 periodically list all the objects in the Cluster. Each object will be converted
-to its own log. For objects configured for watching, the receiver creates a a
+to its own log. For objects configured for watching, the receiver creates a
 stream with the Kubernetes API and which receives updates as the objects change.
 
 To see which objects are available for collection run in your cluster run

@@ -147,11 +147,11 @@ probability, a number in the [0..1] range, e.g. "0.25". Default is 1.0.
 
 Exporters output the telemetry.
 
-| Environment variable    | Description                                                                                      | Default value | Status                                              |
-| ----------------------- | ------------------------------------------------------------------------------------------------ | ------------- | --------------------------------------------------- |
-| `OTEL_TRACES_EXPORTER`  | Comma-separated list of propagators. Supported options: `otlp`, `zipkin`, `console`, `none`.     | `otlp`        | [Stable](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_METRICS_EXPORTER` | Comma-separated list of propagators. Supported options: `otlp`, `prometheus`, `console`, `none`. | `otlp`        | [Stable](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_LOGS_EXPORTER`    | Comma-separated list of propagators. Supported options: `otlp`, `console`, `none`.               | `otlp`        | [Stable](/docs/specs/otel/versioning-and-stability) |
+| Environment variable    | Description                                                                                    | Default value | Status                                              |
+| ----------------------- | ---------------------------------------------------------------------------------------------- | ------------- | --------------------------------------------------- |
+| `OTEL_TRACES_EXPORTER`  | Comma-separated list of exporters. Supported options: `otlp`, `zipkin`, `console`, `none`.     | `otlp`        | [Stable](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_METRICS_EXPORTER` | Comma-separated list of exporters. Supported options: `otlp`, `prometheus`, `console`, `none`. | `otlp`        | [Stable](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_LOGS_EXPORTER`    | Comma-separated list of exporters. Supported options: `otlp`, `console`, `none`.               | `otlp`        | [Stable](/docs/specs/otel/versioning-and-stability) |
 
 ### Traces exporter
 

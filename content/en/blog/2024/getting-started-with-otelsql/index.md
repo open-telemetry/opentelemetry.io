@@ -364,7 +364,7 @@ the other cool features `otelsql` provides.
 ### Sqlcommenter support
 
 otelsql integrates [Sqlcommenter](https://google.github.io/sqlcommenter), an
-open source ORM auto-instrumentation library that merges with OpenTelemetry by
+open source ORM autoinstrumentation library that merges with OpenTelemetry by
 injecting a comment into SQL statements to enable context propagation for the
 database.
 

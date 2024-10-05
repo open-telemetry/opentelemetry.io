@@ -15,3 +15,4 @@ package:
   registry: gems
   name: opentelemetry-instrumentation-http
   version: 0.23.4
+isFirstParty: false

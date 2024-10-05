@@ -36,7 +36,7 @@ First, on the sending service, inject the current `context`:
 ```python
 from flask import Flask
 import requests
-from opentelemetry import trace, propagators, baggage
+from opentelemetry import trace, baggage
 from opentelemetry.trace.propagation.tracecontext import TraceContextTextMapPropagator
 from opentelemetry.baggage.propagation import W3CBaggagePropagator
 from opentelemetry.sdk.trace import TracerProvider

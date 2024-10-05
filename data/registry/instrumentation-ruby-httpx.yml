@@ -19,3 +19,4 @@ package:
   registry: gems
   name: opentelemetry-instrumentation-httpx
   version: 0.1.2
+isFirstParty: false

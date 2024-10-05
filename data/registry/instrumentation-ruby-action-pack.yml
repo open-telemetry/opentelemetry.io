@@ -16,3 +16,4 @@ package:
   registry: gems
   name: opentelemetry-instrumentation-action_pack
   version: 0.9.0
+isFirstParty: false

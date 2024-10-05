@@ -129,7 +129,7 @@ subgraph tdf[Telemetry Data Flow]
         subgraph oc[OTel Collector]
             style oc fill:#97aef3,color:black;
             oc-grpc[/"OTLP Receiver<br/>listening on<br/>grpc://localhost:4317"/]
-            oc-http[/"OTLP Receiver<br/>listening on <br/>localhost:4318<br/>localhost:4318"/]
+            oc-http[/"OTLP Receiver<br/>listening on <br/>localhost:4318<br/>"/]
             oc-proc(Processors)
             oc-prom[/"OTLP HTTP Exporter"/]
             oc-otlp[/"OTLP Exporter"/]

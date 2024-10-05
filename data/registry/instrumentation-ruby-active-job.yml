@@ -16,3 +16,4 @@ package:
   registry: gems
   name: opentelemetry-instrumentation-active_job
   version: 0.7.7
+isFirstParty: false

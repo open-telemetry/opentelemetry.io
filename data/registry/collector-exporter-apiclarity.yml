@@ -1,4 +1,4 @@
-# cSpell:ignore apiclarity
+# cSpell:ignore apiclarity apiclarityexporter openclarity
 title: APIClarity HTTP Exporter
 registryType: exporter
 language: collector
@@ -15,3 +15,7 @@ authors:
 urls:
   repo: https://github.com/openclarity/apiclarity/tree/master/plugins/otel-collector
 createdAt: 2022-11-28
+package:
+  name: github.com/openclarity/apiclarity/plugins/otel-collector/apiclarityexporter
+  registry: go-collector
+  version: v0.0.0

@@ -43,8 +43,8 @@ For example, if set to the following:
 ```
 
 Then, requests to `1.2.3.4` will have no override for `peer.service` attribute,
-while `1.2.3.4:443` will have have `peer.service` of `cats-service` and requests
-to `dogs-abcdef123.serverlessapis.com:80/api/v1` will have an attribute of
+while `1.2.3.4:443` will have `peer.service` of `cats-service` and requests to
+`dogs-abcdef123.serverlessapis.com:80/api/v1` will have an attribute of
 `dogs-api`.
 
 {{% /config_option %}}
