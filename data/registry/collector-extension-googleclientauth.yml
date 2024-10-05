@@ -11,13 +11,11 @@ tags:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/googleclientauthextension
 license: Apache 2.0
-description:
-  This extension provides Google OAuth2 Client Credentials and Metadata for gRPC
-  and HTTP based exporters.
+description: This extension provides Google OAuth2 Client Credentials and Metadata for gRPC and HTTP based exporters.
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2024-04-18
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/googleclientauthextension
-  version: v0.110.0
+  version: v0.111.0
