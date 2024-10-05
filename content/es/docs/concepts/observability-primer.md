@@ -4,7 +4,6 @@ description: Conceptos básicos de observabilidad.
 weight: 9
 cSpell:ignore: webshop
 default_lang_commit: e58a252c44875b04247b53e2394b4634f5a0a84e
-
 ---
 
 ## ¿Qué es la observabilidad? {#what-is-observability}
@@ -40,12 +39,12 @@ comportamiento. Los datos pueden venir en forma de
 **Confiabilidad** responde a la pregunta: "¿Está el servicio haciendo lo que los
 usuarios esperan que haga?" Un sistema podría estar funcionando el 100% del
 tiempo, pero si, cuando un usuario hace clic en "Agregar al carrito" para añadir
-un par de zapatos negros a su carrito, el sistema no siempre agrega los
-zapatos negros, entonces el sistema podría ser **no** confiable.
+un par de zapatos negros a su carrito, el sistema no siempre agrega los zapatos
+negros, entonces el sistema podría ser **no** confiable.
 
 **Métricas** son agregaciones durante un período de tiempo de datos numéricos
-sobre tu infraestructura o aplicación. Por ejemplo: tasa de error del
-sistema, uso de CPU y tasa de solicitudes para un servicio determinado. Para más
+sobre tu infraestructura o aplicación. Por ejemplo: tasa de error del sistema,
+uso de CPU y tasa de solicitudes para un servicio determinado. Para más
 información sobre métricas y cómo se relacionan con OpenTelemetry, consulta
 [Métricas](/docs/concepts/signals/metrics/).
 
