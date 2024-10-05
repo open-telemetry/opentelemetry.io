@@ -13,4 +13,8 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/okhttp
 createdAt: 2020-11-05
+package:
+  registry: maven
+  name: opentelemetry-instrumentation-okhttp
+  version: 2.8.0-alpha
 isFirstParty: false
