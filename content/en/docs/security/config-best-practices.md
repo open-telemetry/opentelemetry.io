@@ -7,17 +7,47 @@ weight: 112
 When configuring the OpenTelemetry (OTel) Collector, consider these best
 practices to better secure your Collector instance.
 
-## Minimize your configuration
+## Create secure pipelines
 
-We recommend enabling a limited set of components in your Collector
-configuration. Minimizing the number of components you use minimizes the attack
-surface exposed.
+Follow these guidelines to secure your Collector's configuration pipelines.
+
+### Store your configuration securely
+
+The Collector's configuration might contain sensitive information including:
+
+- Authentication information such as API tokens.
+- TLS certificates including private keys.
+
+You should store sensitive information securely such as on an encrypted
+filesystem or secret store. You can use environment variables to handle
+sensitive and non-sensitive data as the Collector supports
+[environment variable expansion](/docs/collector/configuration/#environment-variables).
+
+### Use encryption and authentication
+
+Your OTel Collector configuration should include encryption and authentication.
+
+- For communication encryption, see
+  [Configuring certificates](/docs/collector/configuration/#setting-up-certificates).
+- For authentication, use the OTel Collector's authentication mechanism, as
+  described in [Authentication](/docs/collector/configuration/#authentication).
+
+### Minimize the components in your configuration
+
+We recommend limiting the set of components in your Collector configuration to
+only those you need. Minimizing the number of components you use minimizes the
+attack surface exposed.
 
 - Use the
   [OpenTelemetry Collector Builder (`ocb`)](/docs/collector/custom-collector) to
   create a Collector distribution that uses only the components you need.
 - If you find that you have unused receivers and exporters, remove them from
   your configuration.
+
+### Configure with care
+
+Some components can increase the security risk of your Collector pipelines.
+
 - Receivers and exporters can be push- or pull-based. In either case, you should
   establish the connection at least over a secure channel, potentially
   authenticated as well.
@@ -26,15 +56,6 @@ surface exposed.
   should proceed with caution before modifying the default configuration values.
   Improperly setting these values might expose the OpenTelemetry Collector to
   additional attack vectors.
-
-## Use encryption and authentication
-
-Your OTel Collector configuration should include encryption and authentication.
-
-- For communication encryption, see
-  [Configuring certificates](/docs/collector/configuration/#setting-up-certificates).
-- For authentication, use the OTel Collector's authentication mechanism, as
-  described in [Authentication](/docs/collector/configuration/#authentication).
 
 ## Protect against denial of service attacks
 
