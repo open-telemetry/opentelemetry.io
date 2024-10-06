@@ -175,13 +175,6 @@ are accessible only locally to the OpenTelemetry Collector. Take care to protect
 sensitive information when configuring these extensions for remote access, as
 they might expose it accidentally.
 
-### Forwarding
-
-A forwarding extension is used when you need to collect telemetry that's not
-natively supported by the Collector. For example, the `http_forwarder` extension
-can receive and forward HTTP payloads. Forwarding extensions are similar to
-receivers and exporters so the same security considerations apply.
-
 ### Collector's internal telemetry
 
 <!--- INSERT RECOMMENDATIONS HERE. For example:
