@@ -17,3 +17,4 @@ package:
   registry: gems
   name: opentelemetry-instrumentation-pg
   version: 0.29.0
+isFirstParty: false
