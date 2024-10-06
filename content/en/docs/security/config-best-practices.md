@@ -7,9 +7,10 @@ weight: 112
 When configuring the OpenTelemetry (OTel) Collector, consider these best
 practices to better secure your Collector instance.
 
-## Create secure pipelines
+## Create secure configurations
 
-Follow these guidelines to secure your Collector's configuration pipelines.
+Follow these guidelines to secure your Collector's configuration and its
+pipelines.
 
 ### Store your configuration securely
 
@@ -57,7 +58,11 @@ Some components can increase the security risk of your Collector pipelines.
   Improperly setting these values might expose the OpenTelemetry Collector to
   additional attack vectors.
 
-## Protect against denial of service attacks
+## Manage specific security risks
+
+Configure your Collector to block these threats to security.
+
+### Protect against denial of service attacks
 
 For server-like receivers and extensions, you can protect your Collector from
 exposure to the public internet or to wider networks than necessary by binding
@@ -94,7 +99,7 @@ as Docker or Kubernetes, see the
 in our component developer documentation for ideas on how to bind your component
 endpoints.
 
-## Scrub sensitive data
+### Scrub sensitive data
 
 [Processors](/docs/collector/configuration/#processors) are the Collector
 components that sit between receivers and exporters. They are responsible for
@@ -134,7 +139,7 @@ See the
 for more details on adding the `redaction` processor to your Collector
 configuration.
 
-## Safeguard resource utilization
+### Safeguard resource utilization
 
 Processors also offer safeguards for resource utilization. After implementing
 safeguards for resource utilization in your
