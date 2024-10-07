@@ -3,7 +3,7 @@ title: Using the OpenTelemetry Operator to Inject Auto-Instrumentation
 linkTitle: Operator
 aliases: [/docs/languages/python/automatic/operator]
 weight: 30
-cSpell:ignore: distro mkdir uninstrumented virtualenv
+cSpell:ignore: distro mkdir psutil uninstrumented virtualenv
 ---
 
 If you run your Python service in Kubernetes, you can take advantage of the
@@ -23,4 +23,4 @@ some binary code. This binary code usually is tied to a specific C library versi
 The [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator)
 currently provides images for a single Python version based on the glibc C library so
 if you want to use it you'll probably need to build your own image operator docker image
-for python auto-instrumentation.
+for Python auto-instrumentation.
