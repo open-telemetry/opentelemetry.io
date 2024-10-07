@@ -428,9 +428,13 @@ spec:
           instrumentation>
 ```
 
+See the [Python agent Configuration docs](/docs/zero-code/python/configuration/#disabling-specific-instrumentations) for more details.
+
 #### Learn more {#python-learn-more}
 
-[See the Python agent Configuration docs for more details.](/docs/zero-code/python/configuration/#disabling-specific-instrumentations)
+For Python specific quirks please take a look at
+[Python OpenTelemetry Operator Things to know](/docs/zero-code/python/operator/#things-to-know)
+and the [Python agent Configuration docs](/docs/zero-code/python/configuration/).
 
 ### Go
 
