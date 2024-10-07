@@ -434,7 +434,7 @@ for more details.
 
 #### Learn more {#python-learn-more}
 
-For Python specific quirks please take a look at
+For Python specific quirks, see
 [Python OpenTelemetry Operator Things to know](/docs/zero-code/python/operator/#things-to-know)
 and the
 [Python agent Configuration docs](/docs/zero-code/python/configuration/).
