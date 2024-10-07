@@ -2,3 +2,5 @@
   {{ partial "script.html" (dict "src" "js/tracing.js") -}}
 {{ end -}}
 {{ partial "script.html" (dict "src" "js/navScroll.js") -}}
+{{ $js := resources.Get "js/scroll-to-top.js" | minify | fingerprint }}
+<script src="{{ $js.Permalink }}"></script>

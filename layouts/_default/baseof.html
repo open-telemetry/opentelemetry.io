@@ -19,6 +19,3 @@
     {{ partialCached "scripts.html" . }}
   </body>
 </html>
-
-{{ $js := resources.Get "js/scroll-to-top.js" | minify | fingerprint }}
-<script src="{{ $js.Permalink }}"></script>
