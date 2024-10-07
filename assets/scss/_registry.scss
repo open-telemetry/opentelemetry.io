@@ -45,7 +45,7 @@
   position: fixed;
   bottom: 40px;
   right: 40px;
-  background-color: #007bff; 
+  background-color: #007bff;
   color: white;
   border: none;
   padding: 12px;
@@ -53,16 +53,16 @@
   cursor: pointer;
   display: none; // Initially hidden
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1000; 
+  z-index: 1000;
 
   &:hover {
-    background-color: #0056b3; 
+    background-color: #0056b3;
   }
 }
 
 @media screen and (max-width: 768px) {
   .scroll-to-top-btn {
-    bottom: 20px; 
+    bottom: 20px;
     right: 20px;
     padding: 10px;
   }
