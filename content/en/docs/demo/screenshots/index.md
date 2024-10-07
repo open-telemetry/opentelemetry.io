@@ -34,7 +34,7 @@ aliases: [demo_screenshots]
 
 ![load-generator-ui](load-generator-ui.png)
 
-## Flagd Configuration UI
+## Flagd Configurator
 
 | Basic view                                           | Advanced view                                              |
 | ---------------------------------------------------- | ---------------------------------------------------------- |

@@ -34,7 +34,7 @@ how flagd works, and the [OpenFeature](https://openfeature.dev) website for more
 information on how OpenFeature works, along with documentation for the
 OpenFeature API.
 
-## Flagd configuration UI
+## Flagd configurator
 
 Flag values can be changed through the ui provided at <http://localhost:8080/feature> when running the demo. Changing the
 values through this ui will be reflected in the flagd service.
