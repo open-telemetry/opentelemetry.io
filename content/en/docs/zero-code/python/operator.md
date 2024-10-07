@@ -16,11 +16,12 @@ directly.
 
 #### Libraries with binary wheels
 
-Some Python packages we instrument (e.g. `grpcio`) or need in our instrumentation
-libraries (e.g. `psutil` for `opentelemetry-instrumentation-system-metrics`) may ship with
-some binary code. This binary code usually is tied to a specific C library version
-(glibc or musl) and to a specific Python version.
-The [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator)
-currently provides images for a single Python version based on the glibc C library so
-if you want to use it you'll probably need to build your own image operator docker image
-for Python auto-instrumentation.
+Some Python packages we instrument (e.g. `grpcio`) or need in our
+instrumentation libraries (e.g. `psutil` for
+`opentelemetry-instrumentation-system-metrics`) may ship with some binary code.
+This binary code usually is tied to a specific C library version (glibc or musl)
+and to a specific Python version. The
+[OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator)
+currently provides images for a single Python version based on the glibc C
+library so if you want to use it you'll probably need to build your own image
+operator docker image for Python auto-instrumentation.
