@@ -44,6 +44,12 @@
   {{ if .isFirstParty -}}
     {{ $flags = $flags | append "first party" -}}
   {{ end -}}
+  {{ if .isNew -}}
+    {{ $flags = $flags | append "new" -}}
+  {{ end -}}
+  {{ if .usedInDemo -}}
+    {{ $flags = $flags | append "used in demo" -}}
+  {{ end -}}
   {{ if .deprecated -}}
     {{ $flags = $flags | append "deprecated" -}}
   {{ end -}}
@@ -51,8 +57,6 @@
   {{ $entries = $entries | append $entry -}}
   {{ $counter = add $counter 1 }}
 {{ end -}}
-
-
 
 {{ $allFlags := slice -}}
 {{ range $entry := $entries -}}

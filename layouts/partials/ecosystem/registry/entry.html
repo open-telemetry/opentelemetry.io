@@ -86,11 +86,17 @@
     {{ end -}}
     {{ $primaryHref := printf "href=%q" $primaryUrl | safeHTMLAttr -}}
     {{ $flags := slice -}} <!-- Initialize flags slice -->
+    {{ if $isNew -}}  <!-- Check if the entry is new -->
+    {{ $flags = $flags | append "new" -}}
+    {{ end -}}
     {{ if $isNative -}}
         {{ $flags = $flags | append "native" -}}
     {{ end -}}
     {{ if $isFirstParty -}}
         {{ $flags = $flags | append "first party" -}}
+    {{ end -}}
+    {{ if $usedInDemo -}}  <!-- Check if the entry was used in a demo -->
+    {{ $flags = $flags | append "used in demo" -}}
     {{ end -}}
     {{ if $deprecated -}}
         {{ $flags = $flags | append "deprecated" -}}
