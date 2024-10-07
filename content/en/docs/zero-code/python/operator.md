@@ -17,7 +17,7 @@ directly.
 #### Libraries with binary wheels
 
 Some Python packages we instrument (e.g. `grpcio`) or need in our instrumentation
-libraries (e.g. `psutil` for `opentelementry-instrumentation-system-metrics`) may ship with
+libraries (e.g. `psutil` for `opentelemetry-instrumentation-system-metrics`) may ship with
 some binary code. This binary code usually is tied to a specific C library version
 (glibc or musl) and to a specific Python version.
 The [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator)
