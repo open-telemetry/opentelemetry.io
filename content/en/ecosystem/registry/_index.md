@@ -30,7 +30,11 @@ weight: 20
 {{% /blocks/lead %}}
 
 <div style="text-align: center; margin-top: 20px;">
-<button id="scrollToTopBtn" class="scroll-to-top-btn">
+<button 
+    id="scrollToTopBtn" 
+    class="btn rounded-circle position-fixed" 
+    style="background-color: #007bff; color: white; bottom: 40px; right: 40px; display: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 1000;" 
+    aria-label="Scroll to top">
     <i class="fas fa-arrow-up"></i>
 </button>
 </div>
