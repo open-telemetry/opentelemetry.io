@@ -1,6 +1,7 @@
 ---
 title: OpenTelemetry Demo Chart
 linkTitle: Demo Chart
+default_lang_commit: 737d66aba66ab76da5edf2573eee225a14bf7579
 ---
 
 The [OpenTelemetry Demo](/docs/demo/) is a microservice-based distributed system

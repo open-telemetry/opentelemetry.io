@@ -1,7 +1,7 @@
 ---
 title: Gráfico de coleccionista de OpenTelemetry
 linkTitle: Gráfico de recopiladores
-
+default_lang_commit: 737d66aba66ab76da5edf2573eee225a14bf7579
 # prettier-ignore
 cSpell:ignore: debugexporter filelogio filelogreceiver hostmetricsreceiver kubelet kubeletstats kubeletstatsreceiver otlphttp sattributesprocessor sclusterreceiver sobjectsreceiver statefulset
 ---
