@@ -6,7 +6,7 @@ description: >-
 weight: 28
 ---
 
-{{% docs/languages/index-intro swift /%}}
+{{% docs/languages/index-intro swift en /%}}
 
 ## Further Reading
 

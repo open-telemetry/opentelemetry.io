@@ -1,0 +1,16 @@
+introPage:
+  description:
+    'Esta es la documentación de OpenTelemetry con {{ $name }}. OpenTelemetry es
+    un marco de observabilidad: una API, un SDK y herramientas diseñadas para
+    facilitar la generación y recolección de datos de telemetría de
+    aplicaciones, como métricas, logs y trazas. Esta documentación está diseñada
+    para ayudarte a comprender cómo comenzar a usar OpenTelemetry con {{ $name
+    }}.'
+  releases:
+    title: 'Estados y lanzamientos'
+    description:
+      'El estado actual de los principales componentes funcionales de
+      OpenTelemetry {{ $name }} es el siguiente:'
+    traces: 'Trazas'
+    metrics: 'Metricas'
+    logs: 'Registros'

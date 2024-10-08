@@ -13,4 +13,4 @@ cascade:
 weight: 18
 ---
 
-{{% docs/languages/index-intro java /%}}
+{{% docs/languages/index-intro java en /%}}
