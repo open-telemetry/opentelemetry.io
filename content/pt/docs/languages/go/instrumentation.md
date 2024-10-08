@@ -113,6 +113,7 @@ func httpHandler(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
+<<<<<<< Updated upstream
 In Go, the `context` package is used to store the active span. When you start a
 span, you'll get a handle on not only the span that's created, but the modified
 context that contains it.
@@ -123,6 +124,15 @@ Once a span has completed, it is immutable and can no longer be modified.
 
 To get the current span, you'll need to pull it out of a `context.Context` you
 have a handle on:
+=======
+Em Go, o pacote `context` é utilizado para armazenar o trecho ativo. Ao iniciar um trecho, você terá acesso não apenas ao trecho criado, mas também ao contexto modificado que o contém.
+
+Uma vez que um trecho é concluído, ele se torna imutável e não pode mais ser modificado.
+
+### Obter o trecho atual {#get-the-current-span}
+
+Para obter o trecho atual, você precisará extraí-lo de um `context.Context` ao qual você tenha acesso:
+>>>>>>> Stashed changes
 
 ```go
 // This context needs contain the active span you plan to extract.
@@ -132,6 +142,7 @@ span := trace.SpanFromContext(ctx)
 // Do something with the current span, optionally calling `span.End()` if you want it to end
 ```
 
+<<<<<<< Updated upstream
 This can be helpful if you'd like to add information to the current span at a
 point in time.
 
@@ -141,6 +152,15 @@ You can create a nested span to track work in a nested operation.
 
 If the current `context.Context` you have a handle on already contains a span
 inside of it, creating a new span makes it a nested span. For example:
+=======
+Isso pode ser útil se você quiser adicionar informações ao trecho atual em um determinado momento.
+
+### Criar trechos aninhados {#create-nested-spans}
+
+Você pode criar um trecho aninhado para rastrear a operação de maneira aninhada.
+
+Se o `context.Context` atual que você possui já contiver um trecho, a criação de um novo trecho resultará em um aninhamento. Por exemplo:
+>>>>>>> Stashed changes
 
 ```go
 func parentFunction(ctx context.Context) {
@@ -162,6 +182,7 @@ func childFunction(ctx context.Context) {
 }
 ```
 
+<<<<<<< Updated upstream
 Once a span has completed, it is immutable and can no longer be modified.
 
 ### Span Attributes
@@ -170,6 +191,13 @@ Attributes are keys and values that are applied as metadata to your spans and
 are useful for aggregating, filtering, and grouping traces. Attributes can be
 added at span creation, or at any other time during the lifecycle of a span
 before it has completed.
+=======
+Uma vez que o trecho é finalizado, ele se torna imutável e não pode mais ser modificado.
+
+### Atributos de Trecho {#span-attributes}
+
+Os atributos são pares de chaves e valor aplicados como metadados aos seus trechos e são úteis para agregar, filtrar e agrupar rastros. Os atributos podem ser adicionados durante a criação de um trecho ou a qualquer momento durante seu ciclo de vida, antes que ele seja concluído.
+>>>>>>> Stashed changes
 
 ```go
 // setting attributes at creation...
@@ -178,7 +206,11 @@ ctx, span = tracer.Start(ctx, "attributesAtCreation", trace.WithAttributes(attri
 span.SetAttributes(attribute.Bool("isTrue", true), attribute.String("stringAttr", "hi!"))
 ```
 
+<<<<<<< Updated upstream
 Attribute keys can be precomputed, as well:
+=======
+As chaves dos atributos também podem ser pré-computadas:
+>>>>>>> Stashed changes
 
 ```go
 var myKey = attribute.Key("myCoolAttribute")
