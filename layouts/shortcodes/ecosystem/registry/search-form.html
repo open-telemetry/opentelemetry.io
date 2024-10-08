@@ -48,7 +48,7 @@
     {{ $flags = $flags | append "new" -}}
   {{ end -}}
   {{ if .usedInDemo -}}
-    {{ $flags = $flags | append "used in demo" -}}
+    {{ $flags = $flags | append "used_in_demo" -}}
   {{ end -}}
   {{ if .deprecated -}}
     {{ $flags = $flags | append "deprecated" -}}
@@ -65,7 +65,6 @@
   {{ end -}}
 {{ end -}}
 {{ $uniqueFlags := $allFlags | uniq | sort }}
-
 
 <div class="alert alert-info">
 The OpenTelemetry Registry allows you to search for instrumentation libraries,

@@ -96,7 +96,7 @@
         {{ $flags = $flags | append "first_party" -}}
     {{ end -}}
     {{ if $usedInDemo -}}  <!-- Check if the entry was used in a demo -->
-    {{ $flags = $flags | append "used in demo" -}}
+    {{ $flags = $flags | append "used_in_demo" -}}
     {{ end -}}
     {{ if $deprecated -}}
         {{ $flags = $flags | append "deprecated" -}}

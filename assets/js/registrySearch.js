@@ -40,7 +40,6 @@ let selectedLanguage = 'all';
 let selectedComponent = 'all';
 let selectedFlag = 'all'; // Added selectedFlag 
 
-
 parseUrlParams();
 
 if (pathName.includes('registry')) {
@@ -67,8 +66,7 @@ if (pathName.includes('registry')) {
     }
     updateFilters();
   }
-
-   
+ 
   document.addEventListener('DOMContentLoaded', (event) => {
     let searchForm = document.getElementById('searchForm');
     searchForm.addEventListener('submit', function (evt) {
@@ -125,7 +123,6 @@ if (pathName.includes('registry')) {
       updateFilters();
     })
     );
-
 
   });
 }
@@ -229,7 +226,7 @@ function setInput(key, value) {
   history.replaceState(null, null, '?' + queryParams.toString());
 }
 
-// Filters items based on language, component, and flags
+// Filters items based on language, component and flags
 function updateFilters() {
   let allItems = [...document.getElementsByClassName('registry-entry')];
   if (selectedComponent === 'all' && selectedLanguage === 'all' && selectedFlag === 'all') {
@@ -246,11 +243,9 @@ function updateFilters() {
       const languageMatches = (dl === selectedLanguage || selectedLanguage === 'all');
       const flagMatches = (selectedFlag === 'all' || df.includes(selectedFlag.toLowerCase()));
 
-      
       if (flagMatches) {
         console.log('Flag matches:', df);
       }
-
 
       if (componentMatches && languageMatches && flagMatches) { // Changed
         element.classList.remove('d-none');
@@ -260,7 +255,6 @@ function updateFilters() {
     });
   }
 }
-
 
 // Parse URL parameters and update variables
 function parseUrlParams() {
