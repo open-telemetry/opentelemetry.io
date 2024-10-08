@@ -225,7 +225,7 @@
 - name: MetricsHub
   nativeOTLP: true
   url: https://www.metricshub.com/docs/latest/
-  contact: iguitton
+  contact: https://github.com/iguitton
   oss: true
   commercial: true
 - name: Middleware
