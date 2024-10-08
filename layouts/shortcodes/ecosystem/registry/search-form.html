@@ -124,39 +124,27 @@
 
 
   <!-- total pages -->
-  <div class="pagination-container text-center">
-  <ul class="pagination justify-content-center">
-    <li class="page-item {{ $currentPage === 1 ? 'disabled' : '' }}">
-      <button class="page-link" id="prev-page" href="#">Previous</button>
-    </li>
-    <li class="page-item active"><a class="page-link" href="#">{{ $currentPage }}</a></li>
-    <li class="page-item"><a class="page-link" href="#">...</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">4</a></li>
-    <li class="page-item"><a class="page-link" href="#">5</a></li>
-    <li class="page-item"><a class="page-link" href="#">...</a></li>
-    <li class="page-item {{ $currentPage === $totalPages ? 'disabled' : '' }}">
-      <button class="page-link" id="next-page" href="#">Next</button>
-    </li>
-  </ul>
-</div>
+  <div id="pagination" class="text-center">
+    <div id="pagination-numbers" class="d-inline-block"></div>
+  </div>
 
-<div class="text-center mt-3">
-  <input id="page-input" type="number" class="form-control d-inline-block w-auto" placeholder="Go to page" min="1"
-    max="${totalPages}">
-  <button class="btn btn-outline-primary" onclick="goToPage()">Go</button>
-  <p id="page-error" class="text-danger"></p>
-</div>
+  <!-- Go to Page Section -->
+  <div class="text-center mt-3">
+    <input id="page-input" type="number" class="form-control d-inline-block w-auto" placeholder="Go to page" min="1"
+      max="${totalPages}">
+    <button class="btn btn-outline-primary" onclick="goToPage()">Go</button>
+    <p id="page-error" class="text-danger"></p>
+  </div>
 
-<div class="text-center mt-3">
-  <select id="results-per-page" class="form-select d-inline-block w-auto" onchange="changeResultsPerPage()">
-    <option value="10">10</option>
-    <option value="20" selected>20</option>
-    <option value="30">30</option>
-    <option value="50">50</option>
-  </select>
-</div>
+  <!-- Results per Page Selection -->
+  <div class="text-center mt-3">
+    <select id="results-per-page" class="form-select d-inline-block w-auto" onchange="changeResultsPerPage()">
+      <option value="10">10</option>
+      <option value="20" selected>20</option>
+      <option value="30">30</option>
+      <option value="50">50</option>
+    </select>
+  </div>
 
 </div>
 <script>
