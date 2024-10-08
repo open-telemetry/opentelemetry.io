@@ -154,10 +154,10 @@ public class ContextUsage {
     ExecutorService executorService = Executors.newSingleThreadExecutor();
     ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
 
-    // Context instances can be explicitly passed around application code, but its more convenient
+    // Context instances can be explicitly passed around application code, but it's more convenient
     // to use implicit context, calling Context.makeCurrent() and accessing via Context.current().
     // Context provides a number of utilities for implicit context propagation. These utilities wrap
-    // utility classes like Scheduler, and ExecutorService, ScheduledExecutorService, Runnable,
+    // utility classes like Scheduler, ExecutorService, ScheduledExecutorService, Runnable,
     // Callable, Consumer, Supplier, Function, etc and modify their behavior to call
     // Context.makeCurrent() before running.
     context.wrap(ContextUsage::callable).call();
@@ -995,7 +995,7 @@ public class AsyncCounterUsage {
             // Uncomment to optionally change the type to double
             // .ofDoubles()
             .buildWithCallback(
-                // the callback is invoked a MetricReader reads metrics
+                // the callback is invoked when a MetricReader reads metrics
                 observableMeasurement -> {
                   long currentWidgetCount = widgetCount.get();
 
@@ -1116,7 +1116,7 @@ public class AsyncUpDownCounterUsage {
             // Uncomment to optionally change the type to double
             // .ofDoubles()
             .buildWithCallback(
-                // the callback is invoked a MetricReader reads metrics
+                // the callback is invoked when a MetricReader reads metrics
                 observableMeasurement -> {
                   long currentWidgetCount = queueLength.get();
 
@@ -1229,7 +1229,7 @@ public class GaugeUsage {
   private static final Attributes WIDGET_RED_CIRCLE = Util.WIDGET_RED_CIRCLE;
 
   public static void gaugeUsage(Meter meter) {
-    // Construct a gauge to record measurements as they occur when cannot be spatially
+    // Construct a gauge to record measurements as they occur, which cannot be spatially
     // re-aggregated.
     DoubleGauge gauge =
         meter
@@ -1299,7 +1299,7 @@ public class AsyncGaugeUsage {
             // Uncomment to optionally change the type to long
             // .ofLongs()
             .buildWithCallback(
-                // the callback is invoked a MetricReader reads metrics
+                // the callback is invoked when a MetricReader reads metrics
                 observableMeasurement -> {
                   double currentWidgetCount = processingLineTemp.get();
 
