@@ -2,7 +2,7 @@
 
 {{ with .value -}}
     {{ 
-        $remoteRegistries := dict
+        $remoteRegistries := dict 
             "npm" (dict 
                 "urlPattern" "https://npmjs.com/package/%s"
                 "installTemplate" "ecosystem/registry/quickinstall/default.md"

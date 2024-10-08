@@ -31,7 +31,13 @@ weight: 20
 
 {{< blocks/section color="white" type="container-lg" >}}
 
-<!-- {{< ecosystem/registry/search-form >}} -->
 {{< ecosystem/registry/search-form >}}
 
+{{< ecosystem/registry/categories>}}
+
 {{< /blocks/section >}}
+
+
+
+
+

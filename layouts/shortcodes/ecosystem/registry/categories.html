@@ -1,0 +1,11 @@
+{{ $registry := .Site.Data.registry }}
+<div class="d-flex flex-column gap-4" id="categories-section">
+    {{ partial "ecosystem/registry/category.html" (dict "Title" "Libraries" "SearchTerm" "library" "SearchTerms" (slice "library" "libraries") "registry" $registry) }}
+    {{ partial "ecosystem/registry/category.html" (dict "Title" "Plugins" "SearchTerm" "plugin" "SearchTerms" (slice "plugin" "plugins") "registry" $registry) }}
+    {{ partial "ecosystem/registry/category.html" (dict "Title" "Instrumentations" "SearchTerm" "instrumentation" "SearchTerms" (slice "instrumentation" "instrumentations") "registry" $registry) }}
+</div>
+
+
+
+ <script src="https://cdn.jsdelivr.net/npm/minisearch@7.1.0/dist/umd/index.min.js" integrity="sha384-58p1D2xuw/76VRFUgDMRcrtnJAW5LWLE02ihn8aITu65c4vgo+BLy7raRKNC7KaL" crossorigin="anonymous"></script>
+ {{ partial "script.html" (dict "src" "js/registrySearch.js") -}}
