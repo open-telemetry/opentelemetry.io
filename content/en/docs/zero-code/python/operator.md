@@ -18,7 +18,7 @@ directly.
 
 Some Python packages we instrument or need in our
 instrumentation libraries, might ship with some binary code. This is
-the case, for example, of `grpcio` and `psutil`.
+the case, for example, of `grpcio` and `psutil` (used in `opentelemetry-instrumentation-system-metrics`).
 
 The binary code is tied to a specific C library version (glibc or musl)
 and to a specific Python version. The
