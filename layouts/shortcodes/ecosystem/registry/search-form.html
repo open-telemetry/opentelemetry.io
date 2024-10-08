@@ -6,47 +6,52 @@
 {{ $languageNames.Set "js" "JavaScript" -}}
 {{ $languageNames.Set "php" "PHP" -}}
 
-{{ $officialLanguages := slice "collector" "cpp" "erlang" "elixir" "dotnet" "go" "java" "js" "php" "python" "ruby" "rust" "swift" -}}
+{{ $officialLanguages := slice "collector" "cpp" "erlang" "elixir" "dotnet" "go" "java" "js" "php" "python" "ruby"
+"rust" "swift" -}}
 
 
 {{ $langs := slice -}}
 {{ range $registry -}}
-  {{ $language := .language -}}
-  {{- $val := (dict
-    "name" .language
-    "isOfficial" (in $officialLanguages .language)
-    ) 
-  -}}
-  {{ $langs = $langs | append $val -}}
-  {{ if ne $language (lower $language) -}}
-    {{ errorf "Language keys must be in lowercase. Registry entry '%s' has the following invalid key: %s" .title $language -}}
-  {{ end -}}
+{{ $language := .language -}}
+{{- $val := (dict
+"name" .language
+"isOfficial" (in $officialLanguages .language)
+)
+-}}
+{{ $langs = $langs | append $val -}}
+{{ if ne $language (lower $language) -}}
+{{ errorf "Language keys must be in lowercase. Registry entry '%s' has the following invalid key: %s" .title $language
+-}}
+{{ end -}}
 {{ end -}}
 {{ $langs = sort ($langs | uniq) "name" -}}
 
 {{ $types := slice -}}
 {{ range $registry -}}
-  {{ $type := .registryType -}}
-  {{ $types = $types | append $type -}}
-  {{ if ne $type (lower $type) -}}
-    {{ errorf "Component-type keys must be in lowercase. Registry entry '%s' has the following invalid key: %s" .title $type -}}
-  {{ end -}}
+{{ $type := .registryType -}}
+{{ $types = $types | append $type -}}
+{{ if ne $type (lower $type) -}}
+{{ errorf "Component-type keys must be in lowercase. Registry entry '%s' has the following invalid key: %s" .title $type
+-}}
+{{ end -}}
 {{ end -}}
 {{ $types = $types | uniq | sort -}}
 
 <div class="alert alert-info">
-The OpenTelemetry Registry allows you to search for instrumentation libraries,
-collector components, utilities, and other useful projects in the OpenTelemetry
-ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry/adding/">add your project to the OpenTelemetry Registry</a>
+  The OpenTelemetry Registry allows you to search for instrumentation libraries,
+  collector components, utilities, and other useful projects in the OpenTelemetry
+  ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry/adding/">add your project to the
+    OpenTelemetry Registry</a>
 </div>
 
 <div class="pb-4">
   <form action="/ecosystem/registry" id="searchForm">
     <div class="input-group">
-      <span class="input-group-text" id="basic-addon1" title="{{ len $registry }} entries">Search {{ len $registry }} entries</span>
-      <input class="form-control w-auto" list="search-suggestions" id="input-s" type="text" name="s" placeholder="Type to search…"
-        aria-label="Registry search input field">
-        <datalist id="search-suggestions"></datalist>
+      <span class="input-group-text" id="basic-addon1" title="{{ len $registry }} entries">Search {{ len $registry }}
+        entries</span>
+      <input class="form-control w-auto" list="search-suggestions" id="input-s" type="text" name="s"
+        placeholder="Type to search…" aria-label="Registry search input field">
+      <datalist id="search-suggestions"></datalist>
 
 
       <input type="hidden" name="component" id="input-component" value="" />
@@ -61,7 +66,9 @@ ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry
         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
       <div class="dropdown-menu" id="languageFilter">
         <li><a value="all" class="dropdown-item">Any Language</a></li>
-        <li><hr class="dropdown-divider"></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
         {{ range (where $langs "isOfficial" true) -}}
         <li>
           <a value="{{ .name }}" id="language-item-{{ .name }}" class="dropdown-item">
@@ -69,7 +76,9 @@ ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry
           </a>
         </li>
         {{ end -}}
-        <li><hr class="dropdown-divider"></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
         {{ range (where $langs "isOfficial" false) -}}
         <li>
           <a value="{{ .name }}" id="language-item-{{ .name }}" class="dropdown-item">
@@ -92,6 +101,8 @@ ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry
   </form>
 </div>
 
+
+
 <div class="mx-auto">
   <div class="text-center text-primary" style="display: none" id="search-loading">
     <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
@@ -100,11 +111,156 @@ ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry
   <ul class="list-unstyled" id="search-results"></ul>
   <ul class="list-unstyled" id="default-body">
     {{ range $key, $value := $registry -}}
-      {{ $value = merge $value (dict "_key" $key) -}}
-      {{ partial "ecosystem/registry/entry" (dict "value" $value "languageNames" $languageNames) }}
+    {{ $value = merge $value (dict "_key" $key) -}}
+    {{ partial "ecosystem/registry/entry" (dict "value" $value "languageNames" $languageNames) }}
     {{ end -}}
   </ul>
-</div>
+  <!-- Pagination Controls -->
+  <div id="pagination" class="text-center">
+    <button id="prev-page" class="btn btn-outline-secondary">Previous</button>
+    <div id="pagination-numbers" class="d-inline-block"></div>
+    <button id="next-page" class="btn btn-outline-secondary">Next</button>
+  </div>
 
-<script src="https://cdn.jsdelivr.net/npm/minisearch@7.1.0/dist/umd/index.min.js" integrity="sha384-58p1D2xuw/76VRFUgDMRcrtnJAW5LWLE02ihn8aITu65c4vgo+BLy7raRKNC7KaL" crossorigin="anonymous"></script>
+  <!-- Go to Page Section -->
+  <div class="text-center mt-3">
+    <input id="page-input" type="number" class="form-control d-inline-block w-auto" placeholder="Go to page" min="1"
+      max="${totalPages}">
+    <button class="btn btn-outline-primary" onclick="goToPage()">Go</button>
+    <p id="page-error" class="text-danger"></p>
+  </div>
+
+  <!-- Results per Page Selection -->
+  <div class="text-center mt-3">
+    <select id="results-per-page" class="form-select d-inline-block w-auto" onchange="changeResultsPerPage()">
+      <option value="10">10</option>
+      <option value="20" selected>20</option>
+      <option value="30">30</option>
+      <option value="50">50</option>
+    </select>
+  </div>
+
+</div>
+<script>
+  // Initialize pagination
+  let currentPage = 1;
+  let resultsPerPage = 20; // Default number of results per page
+  const results = document.querySelectorAll('#default-body li');
+  let totalPages = Math.ceil(results.length / resultsPerPage);
+  const pagesToShow = 5;
+
+  // Function to update total pages and re-render based on resultsPerPage
+  function updateTotalPages() {
+    totalPages = Math.ceil(results.length / resultsPerPage);
+    if (totalPages === 0) totalPages = 1;  // Ensure at least 1 page
+    showPage(currentPage);
+  }
+
+  // Function to display results for the current page
+  function showPage(page) {
+    if (page < 1 || page > totalPages) {
+      document.getElementById('page-error').textContent = 'Page not found';
+      return;
+    }
+
+    // Hide all results and clear any error message
+    results.forEach((result) => result.style.display = 'none');
+    document.getElementById('page-error').textContent = '';
+
+    // Show only the results for the current page
+    const start = (page - 1) * resultsPerPage;
+    const end = start + resultsPerPage;
+    for (let i = start; i < end; i++) {
+      if (results[i]) {
+        results[i].style.display = 'block';
+      }
+    }
+    // Function to update the visible pagination numbers
+    function updateVisiblePages(currentPage) {
+      const paginationNumbers = document.getElementById('pagination-numbers');
+      paginationNumbers.innerHTML = ''; // Clear the existing numbers
+
+      const halfPagesToShow = Math.floor(pagesToShow / 2);
+      let startPage = Math.max(1, currentPage - halfPagesToShow);
+      let endPage = Math.min(totalPages, currentPage + halfPagesToShow);
+
+      // Adjust the start and end if there aren't enough pages to show
+      if (currentPage <= halfPagesToShow) {
+        endPage = Math.min(totalPages, pagesToShow);
+      } else if (currentPage + halfPagesToShow >= totalPages) {
+        startPage = Math.max(1, totalPages - pagesToShow + 1);
+      }
+
+      // Create page number buttons
+      for (let i = startPage; i <= endPage; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.classList.add('btn', 'btn-outline-secondary', 'mx-1');
+        pageButton.textContent = i;
+        pageButton.addEventListener('click', () => {
+          currentPage = i;
+          showPage(currentPage);
+        });
+
+        // Highlight the current page button
+        if (i === currentPage) {
+          pageButton.classList.add('active');
+        }
+
+        paginationNumbers.appendChild(pageButton);
+      }
+    }
+
+    // Update pagination buttons
+    updateVisiblePages(page);
+
+    // Disable/enable prev/next buttons
+    document.getElementById('prev-page').disabled = page === 1;
+    document.getElementById('next-page').disabled = page === totalPages;
+
+    // Update total entries displayed
+    document.getElementById('pagination-numbers').textContent = `Page ${page} of ${totalPages}`;
+  }
+
+  // Initialize and show first page
+  updateTotalPages(); // Call this to update the total pages count
+  showPage(currentPage);
+
+  // Add event listeners for pagination buttons
+  document.getElementById('prev-page').addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage--;
+      showPage(currentPage);
+    }
+  });
+
+  document.getElementById('next-page').addEventListener('click', () => {
+    if (currentPage < totalPages) {
+      currentPage++;
+      showPage(currentPage);
+    }
+  });
+
+  // Function to handle "Go to Page" input
+  function goToPage() {
+    const pageInput = document.getElementById('page-input').value;
+    const page = parseInt(pageInput);
+    if (!isNaN(page) && page >= 1 && page <= totalPages) {
+      currentPage = page;
+      showPage(currentPage);
+    } else {
+      document.getElementById('page-error').textContent = 'Invalid page number';
+    }
+  }
+
+  // Function to handle results per page selection
+  function changeResultsPerPage() {
+    const selectedValue = document.getElementById('results-per-page').value;
+    resultsPerPage = parseInt(selectedValue);
+    currentPage = 1; // Reset to first page when changing results per page
+    updateTotalPages(); // Update total pages and show first page
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/minisearch@7.1.0/dist/umd/index.min.js"
+  integrity="sha384-58p1D2xuw/76VRFUgDMRcrtnJAW5LWLE02ihn8aITu65c4vgo+BLy7raRKNC7KaL" crossorigin="anonymous"></script>
 {{ partial "script.html" (dict "src" "js/registrySearch.js") -}}
