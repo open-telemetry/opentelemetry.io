@@ -16,3 +16,4 @@ package:
   registry: gems
   name: opentelemetry-instrumentation-active_record
   version: 0.7.4
+isFirstParty: false

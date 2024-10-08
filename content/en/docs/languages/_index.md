@@ -48,9 +48,9 @@ references are available:
 
 {{% apidocs %}}
 
-{{% alert title="Tip" color="info" %}}
+{{% alert title="Note" color="info" %}}
 
-You can find a list of available API references at </api-docs>.
+The list above is aliased to [`/api`](/api).
 
 {{% /alert %}}
 

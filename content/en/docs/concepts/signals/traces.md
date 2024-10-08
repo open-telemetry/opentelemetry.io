@@ -26,8 +26,8 @@ verbose.
 {
   "name": "hello",
   "context": {
-    "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-    "span_id": "0x051581bf3cb55c13"
+    "trace_id": "5b8aa5a2d2c872e8321cf37308d69df2",
+    "span_id": "051581bf3cb55c13"
   },
   "parent_id": null,
   "start_time": "2022-04-29T18:52:58.114201Z",
@@ -57,10 +57,10 @@ Note that it has a `trace_id` field indicating the trace, but has no
 {
   "name": "hello-greetings",
   "context": {
-    "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-    "span_id": "0x5fb397be34d26b51"
+    "trace_id": "5b8aa5a2d2c872e8321cf37308d69df2",
+    "span_id": "5fb397be34d26b51"
   },
-  "parent_id": "0x051581bf3cb55c13",
+  "parent_id": "051581bf3cb55c13",
   "start_time": "2022-04-29T18:52:58.114304Z",
   "end_time": "2022-04-29T22:52:58.114561Z",
   "attributes": {
@@ -96,10 +96,10 @@ that matches the `span_id` of the `hello` span.
 {
   "name": "hello-salutations",
   "context": {
-    "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-    "span_id": "0x93564f51e1abe1c2"
+    "trace_id": "5b8aa5a2d2c872e8321cf37308d69df2",
+    "span_id": "93564f51e1abe1c2"
   },
-  "parent_id": "0x051581bf3cb55c13",
+  "parent_id": "051581bf3cb55c13",
   "start_time": "2022-04-29T18:52:58.114492Z",
   "end_time": "2022-04-29T18:52:58.114631Z",
   "attributes": {

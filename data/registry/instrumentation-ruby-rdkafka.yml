@@ -19,3 +19,4 @@ package:
   registry: gems
   name: opentelemetry-instrumentation-rdkafka
   version: 0.4.8
+isFirstParty: false

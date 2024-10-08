@@ -15,3 +15,4 @@ package:
   registry: gems
   name: opentelemetry-instrumentation-graphql
   version: 0.28.4
+isFirstParty: false

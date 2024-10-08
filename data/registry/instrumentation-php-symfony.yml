@@ -15,5 +15,5 @@ createdAt: 2023-05-22
 package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-symfony
-  version: 1.0.0beta28
+  version: 1.0.0beta29
 isFirstParty: false

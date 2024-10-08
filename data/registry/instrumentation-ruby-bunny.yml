@@ -16,3 +16,4 @@ package:
   registry: gems
   name: opentelemetry-instrumentation-bunny
   version: 0.21.4
+isFirstParty: false

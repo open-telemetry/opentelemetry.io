@@ -15,3 +15,4 @@ package:
   registry: gems
   name: opentelemetry-instrumentation-concurrent_ruby
   version: 0.21.4
+isFirstParty: false
