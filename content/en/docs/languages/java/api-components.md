@@ -20,7 +20,7 @@ The API is a set of classes and interfaces for recording telemetry across key
 observability signals. The [SDK](../sdk/) is the built-in reference
 implementation of the API, [configured](../configuration/) to process and export
 telemetry. This page is a conceptual overview of the API, including
-descriptions, links to relevant Javadocs, artifact coordinates, sample API
+descriptions, links to relevant Javadocs, artifact coordinates, and sample API
 usage.
 
 The API consists of the following top-level components:
@@ -79,7 +79,7 @@ It consists of:
   propagating `Context` across application boundaries.
 
 The `io.opentelemetry:opentelemetry-extension-kotlint:{{% param vers.otel %}}`
-is an extension with tool for propagating context into coroutines.
+is an extension with tools for propagating context into coroutines.
 
 ### Context
 
@@ -96,7 +96,7 @@ argument. Context is a recurring concept in the OpenTelemetry API:
   [exemplars](/docs/specs/otel/metrics/data-model/#exemplars) and defaulting to
   whatever span is currently in context.
 - [LogRecords](#logrecordbuilder) accept a context argument, used to link log
-  records spans and defaulting to whatever span is currently in context.
+  record spans and defaulting to whatever span is currently in context.
 
 The following code snippet explores `Context` API usage:
 
@@ -383,8 +383,8 @@ scope:
 {{% alert %}} {{% param logBridgeWarning %}} {{% /alert %}}
 
 A scope is identified by the triplet (name, version, schemaUrl). Care must be
-taken to ensure to the scope identity is unique. A typical approach is to set
-the scope name to the package name or fully qualified class name, and to set the
+taken to ensure the scope identity is unique. A typical approach is to set the
+scope name to the package name or fully qualified class name, and to set the
 scope version to the library version. If emitting telemetry for multiple signals
 (i.e. metrics and traces), the same scope should be used. See
 [instrumentation scope](/docs/concepts/instrumentation-scope/) for details.
@@ -455,10 +455,9 @@ is a bundle of key value pairs representing the
 [standard attribute definition](/docs/specs/otel/common/#standard-attribute).
 `Attributes` are a recurring concept in the OpenTelemetry API:
 
-- [Spans](#span), span events, and span links have attributes
-- The measurements recorded to [metric instruments](#meter) have attributes
-- [LogRecords](#logrecordbuilder) have attributes
-- and more
+- [Spans](#span), span events, and span links have attributes.
+- The measurements recorded to [metric instruments](#meter) have attributes.
+- [LogRecords](#logrecordbuilder) have attributes.
 
 See [semantic attributes](#semantic-attributes) for attribute constants
 generated from the semantic conventions.
@@ -653,7 +652,7 @@ public class GlobalOpenTelemetryUsage {
 ### TracerProvider
 
 [TracerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/TracerProvider.html)
-is the API entry point for traces, and provides [Tracers](#tracer). See
+is the API entry point for traces and provides [Tracers](#tracer). See
 [providers and scopes](#providers-and-scopes) for information on providers and
 scopes.
 
@@ -772,13 +771,13 @@ public class SpanUsage {
 
 Span parenting is an important aspect of tracing. Each span has an optional
 parent. By collecting all the spans in a trace and following each span's parent,
-we can construct a hierarchy. The span APIs are build on top of
+we can construct a hierarchy. The span APIs are built on top of
 [context](#context), which allows span context to be implicitly passed around an
 application and across threads. When a span is created, its parent is set to the
 whatever span is present in `Context.current()` unless there is no span or the
 context is explicitly overridden.
 
-Most of the context API usage guidance applies to span. Span context is
+Most of the context API usage guidance applies to spans. Span context is
 propagated across application boundaries with the
 [W3CTraceContextPropagator](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/propagation/W3CTraceContextPropagator.html)
 and other [TextMapPropagators](../sdk/#textmappropagator).
@@ -847,7 +846,7 @@ public class SpanAndContextUsage {
 ### MeterProvider
 
 [MeterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/MeterProvider.html)
-is the API entry point for metrics, and provides [Meters](#meter). See
+is the API entry point for metrics and provides [Meters](#meter). See
 [providers and scopes](#providers-and-scopes) for information on providers and
 scopes.
 
@@ -858,7 +857,7 @@ is used to obtain instruments for a particular
 [instrumentation scope](#providers-and-scopes). See
 [providers and scopes](#providers-and-scopes) for information on providers and
 scopes. There are a variety of instruments, each with different semantics and
-default behavior in the SDK. Its important to choose the right instrument for
+default behavior in the SDK. It's important to choose the right instrument for
 each particular use case:
 
 | Instrument                                  | Sync or Async | Description                                                                        | Example                                                 | Default SDK Aggregation                                                                        |
@@ -1328,7 +1327,7 @@ public class AsyncGaugeUsage {
 ### LoggerProvider
 
 [LoggerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/logs/LoggerProvider.html)
-is the API entry point for logs, and provides [Loggers](#logger). See
+is the API entry point for logs and provides [Loggers](#logger). See
 [providers and scopes](#providers-and-scopes) for information on providers and
 scopes.
 
