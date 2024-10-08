@@ -2,15 +2,15 @@
 title: JavaScript
 description: >-
   <img width="35" class="img-initial" src="/img/logos/32x32/JS_SDK.svg"
-  alt="JavaScript"> A language-specific implementation of OpenTelemetry in
-  JavaScript (for Node.js & the browser).
+  alt="JavaScript"> Una implementación específica de OpenTelemetry en el
+  lenguaje de JavaScript (para Node.js y el navegador).
 aliases: [/js, /js/metrics, /js/tracing]
 cSpell:ignore: Roadmap
 weight: 20
-default_lang_commit: f724c15be360e5059fb89e696d9a5cc8d00496f6
+default_lang_commit: e15cf93296361a07d8b016a93df02f0c483ed462
 ---
 
-{{% docs/languages/index-intro js /%}}
+{{% docs/languages/index-intro js es /%}}
 
 {{% alert title="Warning" color="warning" %}}
 {{% _param notes.browser-instrumentation %}} {{% /alert %}}
