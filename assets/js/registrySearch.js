@@ -246,12 +246,10 @@ function updateFilters() {
       const languageMatches = (dl === selectedLanguage || selectedLanguage === 'all');
       const flagMatches = (selectedFlag === 'all' || df.includes(selectedFlag.toLowerCase()));
 
-      console.log('Selected Flag:', selectedFlag);
-console.log('Registry Flags:', df);
-
-if (flagMatches) {
-  console.log('Flag matches:', df);
-}
+      
+      if (flagMatches) {
+        console.log('Flag matches:', df);
+      }
 
 
       if (componentMatches && languageMatches && flagMatches) { // Changed
