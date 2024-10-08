@@ -93,7 +93,7 @@
         {{ $flags = $flags | append "native" -}}
     {{ end -}}
     {{ if $isFirstParty -}}
-        {{ $flags = $flags | append "first party" -}}
+        {{ $flags = $flags | append "firstparty" -}}
     {{ end -}}
     {{ if $usedInDemo -}}  <!-- Check if the entry was used in a demo -->
     {{ $flags = $flags | append "used in demo" -}}

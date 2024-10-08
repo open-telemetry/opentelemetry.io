@@ -42,7 +42,7 @@
     {{ $flags = $flags | append "native" -}}
   {{ end -}}
   {{ if .isFirstParty -}}
-    {{ $flags = $flags | append "first party" -}}
+    {{ $flags = $flags | append "firstparty" -}}
   {{ end -}}
   {{ if .isNew -}}
     {{ $flags = $flags | append "new" -}}
@@ -66,6 +66,7 @@
 {{ end -}}
 {{ $uniqueFlags := $allFlags | uniq | sort }}
 
+{{ printf "Unique Flags: %v" $uniqueFlags }}
 
 <div class="alert alert-info">
 The OpenTelemetry Registry allows you to search for instrumentation libraries,
