@@ -444,7 +444,7 @@ func rolldice(w http.ResponseWriter, r *http.Request) {
 ```
 <!-- prettier-ignore-end -->
 
-Observe que caso você esteja utilizando apenas arstros ou métricas, poderá
+Observe que caso você esteja utilizando apenas rastros ou métricas, poderá
 omitir o código de instrumentação correspondente ao componente que não está
 sendo utilizado.
 
