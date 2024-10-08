@@ -71,7 +71,7 @@ application written in Swift.
 Feature flagging is a crucial part of cloud native application development. The
 demo uses OpenFeature, a CNCF incubating project, to manage feature flags.
 
-Feature flags can be set through the Flagd configurator user interface.
+Feature flags can be set through the flagd configurator user interface.
 
 ## Orchestration and Deployment
 
