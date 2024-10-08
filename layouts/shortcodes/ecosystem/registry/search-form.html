@@ -122,23 +122,41 @@
     <button id="next-page" class="btn btn-outline-secondary">Next</button>
   </div>
 
-  <!-- Go to Page Section -->
-  <div class="text-center mt-3">
-    <input id="page-input" type="number" class="form-control d-inline-block w-auto" placeholder="Go to page" min="1"
-      max="${totalPages}">
-    <button class="btn btn-outline-primary" onclick="goToPage()">Go</button>
-    <p id="page-error" class="text-danger"></p>
-  </div>
 
-  <!-- Results per Page Selection -->
-  <div class="text-center mt-3">
-    <select id="results-per-page" class="form-select d-inline-block w-auto" onchange="changeResultsPerPage()">
-      <option value="10">10</option>
-      <option value="20" selected>20</option>
-      <option value="30">30</option>
-      <option value="50">50</option>
-    </select>
-  </div>
+  <!-- total pages -->
+  <div class="pagination-container text-center">
+  <ul class="pagination justify-content-center">
+    <li class="page-item {{ $currentPage === 1 ? 'disabled' : '' }}">
+      <button class="page-link" id="prev-page" href="#">Previous</button>
+    </li>
+    <li class="page-item active"><a class="page-link" href="#">{{ $currentPage }}</a></li>
+    <li class="page-item"><a class="page-link" href="#">...</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">4</a></li>
+    <li class="page-item"><a class="page-link" href="#">5</a></li>
+    <li class="page-item"><a class="page-link" href="#">...</a></li>
+    <li class="page-item {{ $currentPage === $totalPages ? 'disabled' : '' }}">
+      <button class="page-link" id="next-page" href="#">Next</button>
+    </li>
+  </ul>
+</div>
+
+<div class="text-center mt-3">
+  <input id="page-input" type="number" class="form-control d-inline-block w-auto" placeholder="Go to page" min="1"
+    max="${totalPages}">
+  <button class="btn btn-outline-primary" onclick="goToPage()">Go</button>
+  <p id="page-error" class="text-danger"></p>
+</div>
+
+<div class="text-center mt-3">
+  <select id="results-per-page" class="form-select d-inline-block w-auto" onchange="changeResultsPerPage()">
+    <option value="10">10</option>
+    <option value="20" selected>20</option>
+    <option value="30">30</option>
+    <option value="50">50</option>
+  </select>
+</div>
 
 </div>
 <script>
@@ -154,6 +172,7 @@
     totalPages = Math.ceil(results.length / resultsPerPage);
     if (totalPages === 0) totalPages = 1;  // Ensure at least 1 page
     showPage(currentPage);
+
   }
 
   // Function to display results for the current page
@@ -176,19 +195,25 @@
       }
     }
     // Function to update the visible pagination numbers
+    // Update the visible pagination numbers
     function updateVisiblePages(currentPage) {
       const paginationNumbers = document.getElementById('pagination-numbers');
       paginationNumbers.innerHTML = ''; // Clear the existing numbers
 
-      const halfPagesToShow = Math.floor(pagesToShow / 2);
-      let startPage = Math.max(1, currentPage - halfPagesToShow);
-      let endPage = Math.min(totalPages, currentPage + halfPagesToShow);
+      const pagesToShow = 6; // Show current page + 5 more
 
-      // Adjust the start and end if there aren't enough pages to show
-      if (currentPage <= halfPagesToShow) {
-        endPage = Math.min(totalPages, pagesToShow);
-      } else if (currentPage + halfPagesToShow >= totalPages) {
-        startPage = Math.max(1, totalPages - pagesToShow + 1);
+      // Calculate starting and ending page numbers
+      let startPage = Math.max(1, currentPage - Math.floor(pagesToShow / 2));
+      let endPage = Math.min(totalPages, startPage + pagesToShow - 1);
+
+      // Adjust if there are not enough pages before the current page
+      if (startPage > 1) {
+        const diff = currentPage - startPage;
+        if (endPage + diff < totalPages) {
+          endPage += diff; // Expand the end if space allows
+        } else {
+          startPage = Math.max(1, totalPages - pagesToShow + 1); // Adjust start if needed
+        }
       }
 
       // Create page number buttons
@@ -252,6 +277,11 @@
     }
   }
 
+
+  function updateCurrentPageDisplay(currentPage, totalPages) {
+    const pageDisplay = document.getElementById('page-display');
+    pageDisplay.textContent = `Page ${currentPage} of ${totalPages}`;
+  }
   // Function to handle results per page selection
   function changeResultsPerPage() {
     const selectedValue = document.getElementById('results-per-page').value;
