@@ -25,4 +25,4 @@ O status atual dos principais componentes funcionais do OpenTelemetry para {{ $n
 | ------------------- | -------------------- | ----------------- |
 | {{ $tracesStatus }} | {{ $metricsStatus }} | {{ $logsStatus }} |
 
-{{ partial "docs/latest-release.md" (dict "lang" $lang "Inner" .Inner) -}}
+{{ partial "pt/docs/latest-release.md" (dict "lang" $lang "Inner" .Inner) -}}
