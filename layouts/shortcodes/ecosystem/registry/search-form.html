@@ -156,9 +156,9 @@
   // Function to update total pages and re-render based on resultsPerPage
   function updateTotalPages() {
     totalPages = Math.ceil(results.length / resultsPerPage);
-    if (totalPages === 0) totalPages = 1;  
+    if (totalPages === 0) totalPages = 1;
     showPage(currentPage);
-}
+  }
 
 
   // Function to display results for the current page
@@ -219,6 +219,8 @@
 
         paginationNumbers.appendChild(pageButton);
       }
+      updateVisiblePages(page);
+
     }
 
     // Update pagination buttons
@@ -262,6 +264,8 @@
       document.getElementById('page-error').textContent = 'Invalid page number';
     }
   }
+
+
 
 
   function updateCurrentPageDisplay(currentPage, totalPages) {
