@@ -9663,10 +9663,6 @@
     "StatusCode": 200,
     "LastSeen": "2024-02-26T15:05:23.506868-05:00"
   },
-  "https://openai.com/": {
-    "StatusCode": 403,
-    "LastSeen": "2024-10-09T10:19:28.581489+02:00"
-  },
   "https://opencensus.io": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:07:33.722102-05:00"
