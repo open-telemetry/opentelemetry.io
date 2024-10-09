@@ -2,9 +2,10 @@
 headless: true
 title: Typescript
 params:
-    app-file: app.ts
-    lib-file: dice.ts
+  app-file: app.ts
+  lib-file: dice.ts
 ---
+
 {{% code-block "init" %}}
 
 ```bash
@@ -19,8 +20,7 @@ npm install typescript \
 npx tsc --init
 ```
 
-{{% /code-block %}}
-{{% code-block "app-file" %}}
+{{% /code-block %}} {{% code-block "app-file" %}}
 
 ```javascript
 /*app.ts*/
@@ -44,7 +44,6 @@ app.get('/rolldice', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Listening for requests on http://localhost:${PORT}`);
 });
-
 ```
 
 {{% /code-block %}}

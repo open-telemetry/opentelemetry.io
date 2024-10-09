@@ -1,7 +1,8 @@
 ---
 title: Visualize Telemetry
-description: 
+description:
 weight: 60
 ---
 
-You will see different open source solutions that allow you to visualize your telemetry.
+You will see different open source solutions that allow you to visualize your
+telemetry.

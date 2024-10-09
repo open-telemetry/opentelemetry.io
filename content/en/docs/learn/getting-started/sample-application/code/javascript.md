@@ -2,9 +2,10 @@
 headless: true
 title: JavaScript
 params:
-    app-file: app.js
-    lib-file: dice.js
+  app-file: app.js
+  lib-file: dice.js
 ---
+
 {{% code-block "init" %}}
 
 ```bash
@@ -12,8 +13,7 @@ npm init -y
 npm install express
 ```
 
-{{% /code-block %}}
-{{% code-block "app-file" %}}
+{{% /code-block %}} {{% code-block "app-file" %}}
 
 ```javascript
 /*app.js*/

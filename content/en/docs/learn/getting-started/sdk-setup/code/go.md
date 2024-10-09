@@ -2,8 +2,9 @@
 headless: true
 title: Go
 params:
-    otel-file: otel.go
+  otel-file: otel.go
 ---
+
 {{% code-block "add-dependencies" %}}
 
 ```bash
@@ -24,7 +25,9 @@ go get "go.opentelemetry.io/otel" \
 {{% /code-block  %}}
 
 {{% code-block "init-sdk" %}}
-> If you’re only using tracing or metrics, you can omit the corresponding TracerProvider or MeterProvider initialization code.
+
+> If you’re only using tracing or metrics, you can omit the corresponding
+> TracerProvider or MeterProvider initialization code.
 
 ```go
 package main

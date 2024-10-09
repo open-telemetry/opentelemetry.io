@@ -2,17 +2,17 @@
 headless: true
 title: Go
 params:
-    app-file: main.go
-    lib-file: rolldice.go
+  app-file: main.go
+  lib-file: rolldice.go
 ---
+
 {{% code-block "init" %}}
 
 ```bash
 go mod init dice
 ```
 
-{{% /code-block %}}
-{{% code-block "app-file" %}}
+{{% /code-block %}} {{% code-block "app-file" %}}
 
 ```go
 /* main.go */
@@ -28,7 +28,6 @@ func main() {
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
-
 ```
 
 {{% /code-block %}}
@@ -54,7 +53,6 @@ func rolldice(w http.ResponseWriter, r *http.Request) {
 		log.Printf("Write failed: %v\n", err)
 	}
 }
-
 ```
 
 {{% /code-block %}}
