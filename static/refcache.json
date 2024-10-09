@@ -1623,6 +1623,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-02T13:55:36.648992-04:00"
   },
+  "https://bosh.io/docs/jobs/#properties-spec": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-09T10:19:28.581354+02:00"
+  },
   "https://brew.sh/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T15:25:24.128818-05:00"
@@ -2163,6 +2167,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:03:30.031133-05:00"
   },
+  "https://dev.mysql.com/doc/mysql-errors/9.0/en/error-reference-introduction.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-09T10:19:24.5322+02:00"
+  },
   "https://dev.mysql.com/doc/refman/8.1/en/telemetry-trace.html": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:07:28.613756-05:00"
@@ -2483,6 +2491,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-03-19T05:23:55.741827909Z"
   },
+  "https://docs.cloudfoundry.org/devguide/deploy-apps/environment-variable.html#VCAP-APPLICATION": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-09T10:19:28.623306+02:00"
+  },
+  "https://docs.cloudfoundry.org/devguide/deploy-apps/streaming-logs.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-09T10:19:31.97224+02:00"
+  },
   "https://docs.confluent.io/platform/current/clients/consumer.html": {
     "StatusCode": 206,
     "LastSeen": "2024-08-02T13:14:48.85324-04:00"
@@ -2566,6 +2582,10 @@
   "https://docs.docker.com/engine/api/v1.43/#tag/Image/operation/ImageInspect": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:03:49.19576-05:00"
+  },
+  "https://docs.docker.com/engine/containers/run/#container-identification": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-09T10:19:29.35586+02:00"
   },
   "https://docs.docker.com/engine/reference/run/#container-identification": {
     "StatusCode": 206,
@@ -2891,6 +2911,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:19.755465-05:00"
   },
+  "https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:36.80293+02:00"
+  },
   "https://docs.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getifentry2": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:42.022025-05:00"
@@ -2946,6 +2970,10 @@
   "https://docs.openshift.com/container-platform/4.14/otel/otel-release-notes.html": {
     "StatusCode": 206,
     "LastSeen": "2024-02-02T12:42:05.756504535Z"
+  },
+  "https://docs.oracle.com/cd/B28359_01/server.111/b28278/toc.htm": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:37.70562+02:00"
   },
   "https://docs.oracle.com/cd/E12058_01/doc/doc.1014/e12030/cron_expressions.htm": {
     "StatusCode": 200,
@@ -3078,6 +3106,10 @@
   "https://docs.oracle.com/javase/8/docs/api/java/sql/Connection.html#getCatalog--": {
     "StatusCode": 200,
     "LastSeen": "2024-05-22T16:32:49.714908+02:00"
+  },
+  "https://docs.oracle.com/javase/8/docs/api/java/sql/SQLException.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:29.111115+02:00"
   },
   "https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html": {
     "StatusCode": 200,
@@ -4507,6 +4539,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:05:14.62923-05:00"
   },
+  "https://github.com/cloudfoundry/loggregator-api#v2-envelope": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:27.445861+02:00"
+  },
   "https://github.com/cloudwego": {
     "StatusCode": 200,
     "LastSeen": "2024-08-07T15:44:41.772995+02:00"
@@ -4534,6 +4570,10 @@
   "https://github.com/connectrpc/otelconnect-go": {
     "StatusCode": 200,
     "LastSeen": "2024-09-14T20:07:37.505555711Z"
+  },
+  "https://github.com/container-storage-interface/spec": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:28.231645+02:00"
   },
   "https://github.com/containerd": {
     "StatusCode": 200,
@@ -7235,6 +7275,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:04:52.840828-05:00"
   },
+  "https://github.com/open-telemetry/semantic-conventions/issues/1309": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:24.558756+02:00"
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues/new": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:05:52.89447-05:00"
@@ -8467,6 +8511,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:54:23.510257-05:00"
   },
+  "https://javadoc.io/doc/com.azure/azure-cosmos/latest/com/azure/cosmos/CosmosAsyncContainer.html#executeBulkOperations": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:30.617798+02:00"
+  },
   "https://javadoc.io/doc/io.opentelemetry/opentelemetry-exporter-prometheus/latest": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:53.216459-05:00"
@@ -8751,6 +8799,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-02T13:14:41.536502-04:00"
   },
+  "https://learn.microsoft.com/azure/azure-resource-manager/management/azure-services-resource-providers": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:29.153249+02:00"
+  },
   "https://learn.microsoft.com/azure/event-hubs/event-hubs-about": {
     "StatusCode": 200,
     "LastSeen": "2024-04-04T20:00:42.394166-04:00"
@@ -8775,9 +8827,57 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:24.003181-05:00"
   },
+  "https://learn.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.allowbulkexecution": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:31.970458+02:00"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.appdomain.firstchanceexception": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:20:15.350214+02:00"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.appdomain.getassemblies": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:20:12.548564+02:00"
+  },
   "https://learn.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.database": {
     "StatusCode": 200,
     "LastSeen": "2024-05-22T16:32:51.167939+02:00"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.diagnostics.process": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:30.476004+02:00"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.environment.processorcount": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:29.596609+02:00"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.environment.workingset": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:33.674204+02:00"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.gc.collectioncount": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:36.491669+02:00"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.gc.gettotalallocatedbytes": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:38.164854+02:00"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.gc.gettotalpauseduration": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:46.978376+02:00"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.gcgenerationinfo.fragmentationafterbytes": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:42.937768+02:00"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.gcgenerationinfo.sizeafterbytes": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:40.942631+02:00"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.gcmemoryinfo.totalcommittedbytes": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:38.949924+02:00"
   },
   "https://learn.microsoft.com/dotnet/api/system.net.endpoint": {
     "StatusCode": 200,
@@ -8790,6 +8890,38 @@
   "https://learn.microsoft.com/dotnet/api/system.net.sockets.socketerror": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:18.196332-05:00"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.runtime.jitinfo.getcompilationtime": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:52.694968+02:00"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.runtime.jitinfo.getcompiledilbytes": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:48.320504+02:00"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.runtime.jitinfo.getcompiledmethodcount": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:51.046767+02:00"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.threading.monitor.lockcontentioncount": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:20:03.969807+02:00"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.threading.threadpool.completedworkitemcount": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:57.554277+02:00"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.threading.threadpool.pendingworkitemcount": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:59.250728+02:00"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.threading.threadpool.threadcount": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:54.846498+02:00"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.threading.timer.activecount": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:20:06.931205+02:00"
   },
   "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable": {
     "StatusCode": 200,
@@ -8830,6 +8962,10 @@
   "https://learn.microsoft.com/sql/connect/jdbc/building-the-connection-url#named-and-multiple-sql-server-instances": {
     "StatusCode": 200,
     "LastSeen": "2024-05-22T16:32:51.974599+02:00"
+  },
+  "https://learn.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:29.705755+02:00"
   },
   "https://learn.microsoft.com/windows/win32/api/ws2tcpip/nf-ws2tcpip-getaddrinfo": {
     "StatusCode": 200,
@@ -8914,6 +9050,10 @@
   "https://man7.org/linux/man-pages/man5/proc.5.html": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:04:48.740728-05:00"
+  },
+  "https://mariadb.com/kb/en/mariadb-error-code-reference/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:22.001923+02:00"
   },
   "https://martinfowler.com/bliki/CanaryRelease.html": {
     "StatusCode": 206,
@@ -11323,6 +11463,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:06:26.238753-05:00"
   },
+  "https://redis.io/docs/latest/develop/reference/protocol-spec/#simple-errors": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-09T10:19:24.082944+02:00"
+  },
   "https://ref.otel.help/otel-collector-ops/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T05:18:29.467241-05:00"
@@ -12147,6 +12291,30 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:10:51.851957-05:00"
   },
+  "https://v1-29.docs.kubernetes.io/docs/concepts/storage/volumes/#configmap": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-09T10:19:27.460499+02:00"
+  },
+  "https://v1-29.docs.kubernetes.io/docs/concepts/storage/volumes/#downwardapi": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-09T10:19:28.408253+02:00"
+  },
+  "https://v1-29.docs.kubernetes.io/docs/concepts/storage/volumes/#emptydir": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-09T10:19:29.450241+02:00"
+  },
+  "https://v1-29.docs.kubernetes.io/docs/concepts/storage/volumes/#local": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-09T10:19:31.225176+02:00"
+  },
+  "https://v1-29.docs.kubernetes.io/docs/concepts/storage/volumes/#persistentvolumeclaim": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-09T10:19:32.848706+02:00"
+  },
+  "https://v1-29.docs.kubernetes.io/docs/concepts/storage/volumes/#secret": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-09T10:19:33.566697+02:00"
+  },
   "https://v8.dev/docs/stack-trace-api": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:06:31.460172-05:00"
@@ -12211,9 +12379,21 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:36:55.951745-05:00"
   },
+  "https://wikipedia.org/wiki/.NET": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:25.592015+02:00"
+  },
+  "https://wikipedia.org/wiki/C%2B%2B": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:33.946107+02:00"
+  },
   "https://wikipedia.org/wiki/CPU_time": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:31.785517-05:00"
+  },
+  "https://wikipedia.org/wiki/C_%28programming_language%29": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:31.225295+02:00"
   },
   "https://wikipedia.org/wiki/Count_noun": {
     "StatusCode": 200,
@@ -12227,17 +12407,57 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:31.894871-05:00"
   },
+  "https://wikipedia.org/wiki/Go_%28programming_language%29": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:36.225127+02:00"
+  },
   "https://wikipedia.org/wiki/Inter-process_communication": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:37.279155-05:00"
+  },
+  "https://wikipedia.org/wiki/Java_virtual_machine": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:27.524185+02:00"
+  },
+  "https://wikipedia.org/wiki/Kernel_%28operating_system%29": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:32.04199+02:00"
   },
   "https://wikipedia.org/wiki/Load_%28computing%29": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:53.630494-05:00"
   },
+  "https://wikipedia.org/wiki/PHP": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:39.278397+02:00"
+  },
   "https://wikipedia.org/wiki/Page_fault": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:36.964981-05:00"
+  },
+  "https://wikipedia.org/wiki/Perl": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:38.142481+02:00"
+  },
+  "https://wikipedia.org/wiki/Python_%28programming_language%29": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:24.318054+02:00"
+  },
+  "https://wikipedia.org/wiki/Ruby_%28programming_language%29": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:40.841239+02:00"
+  },
+  "https://wikipedia.org/wiki/Rust_%28programming_language%29": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:39.738709+02:00"
+  },
+  "https://wikipedia.org/wiki/SQLSTATE": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:24.765198+02:00"
+  },
+  "https://wikipedia.org/wiki/V8_%28JavaScript_engine%29": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:42.242584+02:00"
   },
   "https://wukongdoc.tingyun.com/apm/userguide/deploy_manage/opentelemetry.html": {
     "StatusCode": 206,
@@ -12563,6 +12783,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-08-09T10:46:17.876148-04:00"
   },
+  "https://www.ibm.com/docs/db2-for-zos/12": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-09T10:19:38.749703+02:00"
+  },
   "https://www.ibm.com/docs/en/ibm-mq/9.1": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:55:40.837045-05:00"
@@ -12858,6 +13082,10 @@
   "https://www.mongodb.com/docs/manual/reference/command/": {
     "StatusCode": 206,
     "LastSeen": "2024-05-22T16:32:48.330708+02:00"
+  },
+  "https://www.mongodb.com/docs/manual/reference/error-codes/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-09T10:19:23.666776+02:00"
   },
   "https://www.mysql.com/": {
     "StatusCode": 206,
@@ -13291,6 +13519,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:56:36.773243-05:00"
   },
+  "https://www.postgresql.org/docs/current/errcodes-appendix.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:27.445768+02:00"
+  },
   "https://www.python.org/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:01:17.024465-05:00"
@@ -13422,6 +13654,10 @@
   "https://www.slimframework.com/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:01:39.889326-05:00"
+  },
+  "https://www.sqlite.org/rescode.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-09T10:19:40.728167+02:00"
   },
   "https://www.swift.org/": {
     "StatusCode": 206,
