@@ -133,16 +133,18 @@
 
   <!-- Results per Page Selection -->
   <div class="text-center mt-3">
-    <label for="results-per-page">Results per page:</label>
+    <label for="results-per-page" class="form-label">Results per page:</label>
+    <div class="d-flex justify-content-center align-items-center">
+        <select id="results-per-page" class="form-select me-2" onchange="changeResultsPerPage()">
+            <option value="25">25</option>
+            <option value="50" selected>50</option>
+            <option value="100">100</option>
+            <option value="200">200</option>
+        </select>
+        <button class="btn btn-primary" onclick="changeResultsPerPage()">Apply</button>
+    </div>
+</div>
 
-    <select id="results-per-page" class="form-select d-inline-block w-auto" onchange="changeResultsPerPage()">
-
-      <option value="25">25</option>
-      <option value="50" selected>50</option>
-      <option value="100">100</option>
-      <option value="200">200</option>
-    </select>
-  </div>
 
 </div>
 <script>
