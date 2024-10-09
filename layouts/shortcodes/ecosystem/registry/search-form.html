@@ -123,11 +123,6 @@
   </div>
 
 
-  <!-- total pages -->
-  <div id="pagination" class="text-center">
-    <div id="pagination-numbers" class="d-inline-block"></div>
-  </div>
-
   <!-- Go to Page Section -->
   <div class="text-center mt-3">
     <input id="page-input" type="number" class="form-control d-inline-block w-auto" placeholder="Go to page" min="1"
@@ -138,11 +133,14 @@
 
   <!-- Results per Page Selection -->
   <div class="text-center mt-3">
+    <label for="results-per-page">Results per page:</label>
+
     <select id="results-per-page" class="form-select d-inline-block w-auto" onchange="changeResultsPerPage()">
-      <option value="10">10</option>
-      <option value="20" selected>20</option>
-      <option value="30">30</option>
-      <option value="50">50</option>
+
+      <option value="25">25</option>
+      <option value="50" selected>50</option>
+      <option value="100">100</option>
+      <option value="200">200</option>
     </select>
   </div>
 
@@ -150,7 +148,7 @@
 <script>
   // Initialize pagination
   let currentPage = 1;
-  let resultsPerPage = 20; // Default number of results per page
+  let resultsPerPage = 50;
   const results = document.querySelectorAll('#default-body li');
   let totalPages = Math.ceil(results.length / resultsPerPage);
   const pagesToShow = 5;
@@ -158,10 +156,10 @@
   // Function to update total pages and re-render based on resultsPerPage
   function updateTotalPages() {
     totalPages = Math.ceil(results.length / resultsPerPage);
-    if (totalPages === 0) totalPages = 1;  // Ensure at least 1 page
+    if (totalPages === 0) totalPages = 1;  
     showPage(currentPage);
+}
 
-  }
 
   // Function to display results for the current page
   function showPage(page) {

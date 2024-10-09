@@ -243,7 +243,7 @@ function parseUrlParams() {
 
 // Initialize pagination
 let currentPage = 1;
-let resultsPerPage = 20;
+let resultsPerPage = 50;
 const results = document.querySelectorAll('#default-body li');
 let totalPages = Math.ceil(results.length / resultsPerPage);
 const pagesToShow = 5;
@@ -255,9 +255,8 @@ console.log("Total Pages:", totalPages);
 // Function to update total pages and re-render based on resultsPerPage
 function updateTotalPages() {
   totalPages = Math.ceil(results.length / resultsPerPage);
-  if (totalPages === 0) totalPages = 1;
+  if (totalPages === 0) totalPages = 1;  // Ensure at least 1 page is displayed
   showPage(currentPage);
-
 }
 
 // Function to display results for the current page
