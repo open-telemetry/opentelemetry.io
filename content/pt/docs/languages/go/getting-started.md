@@ -162,14 +162,14 @@ import (
 	"go.opentelemetry.io/otel/sdk/trace"
 )
 
-// setupOTelSDK bootstraps the OpenTelemetry pipeline.
-// If it does not return an error, make sure to call shutdown for proper cleanup.
+// setupOTelSDK inicializa o pipeline do OpenTelemetry.
+// Caso não retorne um erro, certifique-se de executar o método shutdown para realizar a finalização adequada.
 func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, err error) {
 	var shutdownFuncs []func(context.Context) error
 
-	// shutdown calls cleanup functions registered via shutdownFuncs.
-	// The errors from the calls are joined.
-	// Each registered cleanup will be invoked once.
+	// shutdown chama as funções de finalização registradas via shutdownFuncs.
+	// Os erros das chamadas são concatenados.
+	// Cada função de finalização será invocada uma única vez.
 	shutdown = func(ctx context.Context) error {
 		var err error
 		for _, fn := range shutdownFuncs {
@@ -179,16 +179,16 @@ func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, er
 		return err
 	}
 
-	// handleErr calls shutdown for cleanup and makes sure that all errors are returned.
+	// handleErr chama a função shutdown para finalizar corretamente e garante que todos os erros serão retornados.
 	handleErr := func(inErr error) {
 		err = errors.Join(inErr, shutdown(ctx))
 	}
 
-	// Set up propagator.
+	// Inicializa o Propagator.
 	prop := newPropagator()
 	otel.SetTextMapPropagator(prop)
 
-	// Set up trace provider.
+	// Inicializa o Trace Provider.
 	tracerProvider, err := newTraceProvider()
 	if err != nil {
 		handleErr(err)
@@ -197,7 +197,7 @@ func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, er
 	shutdownFuncs = append(shutdownFuncs, tracerProvider.Shutdown)
 	otel.SetTracerProvider(tracerProvider)
 
-	// Set up meter provider.
+	// Inicializa o Meter Provider.
 	meterProvider, err := newMeterProvider()
 	if err != nil {
 		handleErr(err)
@@ -206,7 +206,7 @@ func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, er
 	shutdownFuncs = append(shutdownFuncs, meterProvider.Shutdown)
 	otel.SetMeterProvider(meterProvider)
 
-	// Set up logger provider.
+	// Inicializa o Logger Provider.
 	loggerProvider, err := newLoggerProvider()
 	if err != nil {
 		handleErr(err)
@@ -234,7 +234,7 @@ func newTraceProvider() (*trace.TracerProvider, error) {
 
 	traceProvider := trace.NewTracerProvider(
 		trace.WithBatcher(traceExporter,
-			// Default is 5s. Set to 1s for demonstrative purposes.
+			// O valor padrão é 5s. Definimos em 1s para propósito de demonstração.
 			trace.WithBatchTimeout(time.Second)),
 	)
 	return traceProvider, nil
@@ -248,7 +248,7 @@ func newMeterProvider() (*metric.MeterProvider, error) {
 
 	meterProvider := metric.NewMeterProvider(
 		metric.WithReader(metric.NewPeriodicReader(metricExporter,
-			// Default is 1m. Set to 3s for demonstrative purposes.
+			// O valor padrão é 1m. Definimos em 3s para propósito de demonstração.
 			metric.WithInterval(3*time.Second))),
 	)
 	return meterProvider, nil
@@ -305,21 +305,21 @@ func main() {
 }
 
 func run() (err error) {
-	// Handle SIGINT (CTRL+C) gracefully.
+	// Lidamos com o SIGINT (CTRL+C) de maneira segura.
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer stop()
 
-	// Set up OpenTelemetry.
+	// Inicializamos o OpenTelemetry.
 	otelShutdown, err := setupOTelSDK(ctx)
 	if err != nil {
 		return
 	}
-	// Handle shutdown properly so nothing leaks.
+	// Lidamos com a finalização corretamente, evitando leaks.
 	defer func() {
 		err = errors.Join(err, otelShutdown(context.Background()))
 	}()
 
-	// Start HTTP server.
+	// Inicializamos o servidor HTTP.
 	srv := &http.Server{
 		Addr:         ":8080",
 		BaseContext:  func(_ net.Listener) context.Context { return ctx },
@@ -332,18 +332,18 @@ func run() (err error) {
 		srvErr <- srv.ListenAndServe()
 	}()
 
-	// Wait for interruption.
+	// Aguardamos por uma interrupção.
 	select {
 	case err = <-srvErr:
-		// Error when starting HTTP server.
+		// Erro ao inicializar o servidor HTTP.
 		return
 	case <-ctx.Done():
-		// Wait for first CTRL+C.
-		// Stop receiving signal notifications as soon as possible.
+		// Aguardamos o primeiro CTRL+C.
+		// Para de receber sinais o mais rápido possível.
 		stop()
 	}
 
-	// When Shutdown is called, ListenAndServe immediately returns ErrServerClosed.
+	// Quando o método Shutdown é chamado, ListenAndServe retornará imediatamente ErrServerClosed.
 	err = srv.Shutdown(context.Background())
 	return
 }
@@ -351,19 +351,19 @@ func run() (err error) {
 func newHTTPHandler() http.Handler {
 	mux := http.NewServeMux()
 
-	// handleFunc is a replacement for mux.HandleFunc
-	// which enriches the handler's HTTP instrumentation with the pattern as the http.route.
+	// handleFunc é uma substituição para mux.HandleFunc
+	// enriquecendo ainda mais a instrumentação HTTP utilizando padrões como http.route.
 	handleFunc := func(pattern string, handlerFunc func(http.ResponseWriter, *http.Request)) {
-		// Configure the "http.route" for the HTTP instrumentation.
+		// Configura o "http.route" para a instrumentação HTTP.
 		handler := otelhttp.WithRouteTag(pattern, http.HandlerFunc(handlerFunc))
 		mux.Handle(pattern, handler)
 	}
 
-	// Register handlers.
+	// Registra os handlers.
 	handleFunc("/rolldice/", rolldice)
 	handleFunc("/rolldice/{player}", rolldice)
 
-	// Add HTTP instrumentation for the whole server.
+	// Adiciona a instrumentação HTTP para todo o servidor.
 	handler := otelhttp.NewHandler(mux, "/")
 	return handler
 }
@@ -411,7 +411,7 @@ var (
 func init() {
 	var err error
 	rollCnt, err = meter.Int64Counter("dice.rolls",
-		metric.WithDescription("The number of rolls by roll value"),
+		metric.WithDescription("O número de lançamentos por valor obtido"),
 		metric.WithUnit("{roll}"))
 	if err != nil {
 		panic(err)
@@ -426,9 +426,9 @@ func rolldice(w http.ResponseWriter, r *http.Request) {
 
 	var msg string
 	if player := r.PathValue("player"); player != "" {
-		msg = fmt.Sprintf("%s is rolling the dice", player)
+		msg = fmt.Sprintf("%s está lançando os dados", player)
 	} else {
-		msg = "Anonymous player is rolling the dice"
+		msg = "Jogador anônimo está lançando os dados"
 	}
 	logger.InfoContext(ctx, msg, "result", roll)
 
@@ -717,7 +717,7 @@ Junto com o rastro, mensagens de log são emitidas no console.
   "SeverityText": "",
   "Body": {
     "Type": "String",
-    "Value": "Alice is rolling the dice"
+    "Value": "Alice está lançando os dados"
   },
   "Attributes": [
     {
@@ -837,7 +837,7 @@ métricas HTTP geradas pela biblioteca de instrumentação.
       "Metrics": [
         {
           "Name": "dice.rolls",
-          "Description": "The number of rolls by roll value",
+          "Description": "Número de lançamentos por valor obtido",
           "Unit": "{roll}",
           "Data": {
             "DataPoints": [
