@@ -30,6 +30,12 @@ instrumentation topics:
 - [Log instrumentation](#log-instrumentation): The semantic conventions define
   how to produce telemetry for standard operations.
 
+{{% alert %}} While [instrumentation categories](#instrumentation-categories)
+enumerates several options for instrumenting an application, we recommend users
+start with the [Java agent](#zero-code-java-agent). The Java agent has a simple
+installation process, and automatically detects and installs instrumentation
+from a large library. {{% /alert %}}
+
 ## Instrumentation categories
 
 There are several categories of instrumentation:
