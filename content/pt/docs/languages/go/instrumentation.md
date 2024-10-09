@@ -113,18 +113,6 @@ func httpHandler(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-<<<<<<< Updated upstream
-In Go, the `context` package is used to store the active span. When you start a
-span, you'll get a handle on not only the span that's created, but the modified
-context that contains it.
-
-Once a span has completed, it is immutable and can no longer be modified.
-
-### Get the current span
-
-To get the current span, you'll need to pull it out of a `context.Context` you
-have a handle on:
-=======
 Em Go, o pacote `context` é utilizado para armazenar o trecho ativo. Ao iniciar um trecho, você terá acesso não apenas ao trecho criado, mas também ao contexto modificado que o contém.
 
 Uma vez que um trecho é concluído, ele se torna imutável e não pode mais ser modificado.
@@ -132,7 +120,6 @@ Uma vez que um trecho é concluído, ele se torna imutável e não pode mais ser
 ### Obter o trecho atual {#get-the-current-span}
 
 Para obter o trecho atual, você precisará extraí-lo de um `context.Context` ao qual você tenha acesso:
->>>>>>> Stashed changes
 
 ```go
 // This context needs contain the active span you plan to extract.
@@ -142,17 +129,6 @@ span := trace.SpanFromContext(ctx)
 // Do something with the current span, optionally calling `span.End()` if you want it to end
 ```
 
-<<<<<<< Updated upstream
-This can be helpful if you'd like to add information to the current span at a
-point in time.
-
-### Create nested spans
-
-You can create a nested span to track work in a nested operation.
-
-If the current `context.Context` you have a handle on already contains a span
-inside of it, creating a new span makes it a nested span. For example:
-=======
 Isso pode ser útil se você quiser adicionar informações ao trecho atual em um determinado momento.
 
 ### Criar trechos aninhados {#create-nested-spans}
@@ -160,7 +136,6 @@ Isso pode ser útil se você quiser adicionar informações ao trecho atual em u
 Você pode criar um trecho aninhado para rastrear a operação de maneira aninhada.
 
 Se o `context.Context` atual que você possui já contiver um trecho, a criação de um novo trecho resultará em um aninhamento. Por exemplo:
->>>>>>> Stashed changes
 
 ```go
 func parentFunction(ctx context.Context) {
@@ -182,22 +157,11 @@ func childFunction(ctx context.Context) {
 }
 ```
 
-<<<<<<< Updated upstream
-Once a span has completed, it is immutable and can no longer be modified.
-
-### Span Attributes
-
-Attributes are keys and values that are applied as metadata to your spans and
-are useful for aggregating, filtering, and grouping traces. Attributes can be
-added at span creation, or at any other time during the lifecycle of a span
-before it has completed.
-=======
 Uma vez que o trecho é finalizado, ele se torna imutável e não pode mais ser modificado.
 
 ### Atributos de Trecho {#span-attributes}
 
 Os atributos são pares de chaves e valor aplicados como metadados aos seus trechos e são úteis para agregar, filtrar e agrupar rastros. Os atributos podem ser adicionados durante a criação de um trecho ou a qualquer momento durante seu ciclo de vida, antes que ele seja concluído.
->>>>>>> Stashed changes
 
 ```go
 // setting attributes at creation...
@@ -206,34 +170,22 @@ ctx, span = tracer.Start(ctx, "attributesAtCreation", trace.WithAttributes(attri
 span.SetAttributes(attribute.Bool("isTrue", true), attribute.String("stringAttr", "hi!"))
 ```
 
-<<<<<<< Updated upstream
-Attribute keys can be precomputed, as well:
-=======
 As chaves dos atributos também podem ser pré-computadas:
->>>>>>> Stashed changes
 
 ```go
 var myKey = attribute.Key("myCoolAttribute")
 span.SetAttributes(myKey.String("a value"))
 ```
 
-#### Semantic Attributes
+#### Atributos Semânticos {#semantic-attributes}
 
-Semantic Attributes are attributes that are defined by the [OpenTelemetry
-Specification][] in order to provide a shared set of attribute keys across multiple
-languages, frameworks, and runtimes for common concepts like HTTP methods, status
-codes, user agents, and more. These attributes are available in the `go.opentelemetry.io/otel/semconv/v1.26.0`
-package.
+Os Atributos Semânticos são atributos definidos pela [Especificação do OpenTelemetry][OpenTelemetry Specification] para fornecer um conjunto comum de chaves de atributos entre várias linguagens, frameworks e ambientes de execução. Eles representam conceitos como métodos HTTP, códigos de staus, user agents e outros. Estes atributos estão disponíveis no pacote  `go.opentelemetry.io/otel/semconv/v1.26.0`.
 
-For details, see [Trace semantic conventions][].
+Para mais detalhes, consulte as [Convenções Semânticas de Rastros][Trace semantic conventions].
 
-### Events
+### Eventos {#events}
 
-An event is a human-readable message on a span that represents "something
-happening" during it's lifetime. For example, imagine a function that requires
-exclusive access to a resource that is under a mutex. An event could be created
-at two points - once, when we try to gain access to the resource, and another
-when we acquire the mutex.
+Um evento é uma mensagem legível para humanos em um trecho que representa "algo acontecendo" durante a sua duração. Por exemplo, imagine uma função que requer acesso exclusivo a um recurso que está sob um mutex. Um evento poderia ser criado em dois pontos: um quando tentamos obter acesso ao recurso e outro quando adquirimos o mutex.
 
 ```go
 span.AddEvent("Acquiring lock")
@@ -244,19 +196,17 @@ span.AddEvent("Unlocking")
 mutex.Unlock()
 ```
 
-A useful characteristic of events is that their timestamps are displayed as
-offsets from the beginning of the span, allowing you to easily see how much time
-elapsed between them.
+Uma característica útil dos eventos é que seus timestamps são exibidos como offsets a partir do início do span, permitindo ver facilmente quanto tempo se passou entre cada um.
 
-Events can also have attributes of their own -
+Os Eventos também podem incluir seus próprios atributos -
 
 ```go
 span.AddEvent("Cancelled wait due to external signal", trace.WithAttributes(attribute.Int("pid", 4328), attribute.String("signal", "SIGHUP")))
 ```
 
-### Set span status
+### Definir status do Trecho {#set-span-status}
 
-{{% docs/languages/span-status-preamble %}}
+{{% pt/docs/languages/span-status-preamble %}}
 
 ```go
 import (
@@ -273,10 +223,9 @@ if err != nil {
 }
 ```
 
-### Record errors
+### Capturar erros {#record-errors}
 
-If you have an operation that failed and you wish to capture the error it
-produced, you can record that error.
+Caso você tenha uma operação que falhou e deseja capturar o erro que foi produzido, você pode registrar este erro.
 
 ```go
 import (
@@ -294,18 +243,13 @@ if err != nil {
 }
 ```
 
-It is highly recommended that you also set a span's status to `Error` when using
-`RecordError`, unless you do not wish to consider the span tracking a failed
-operation as an error span. The `RecordError` function does **not**
-automatically set a span status when called.
+É altamente recomendável que você também defina o estado de um trecho como `Error` ao utilizar `RecordError`, a menos que você não queira considerar o trecho que faz rastreamento de uma operação que falhou como um trecho de erro. O método `RecordError` **não** define automaticamente o estado de um trecho ao ser invocado.
 
-### Propagators and Context
+### Context e Propagators {#propagators-and-context}
 
-Traces can extend beyond a single process. This requires _context propagation_,
-a mechanism where identifiers for a trace are sent to remote processes.
+Os Rastros podem se estender além de um único processo. Isso requer a _propagação de contexto_, um mecanismo onde os identificadores de um rastro são enviados para processos remotos.
 
-In order to propagate trace context over the wire, a propagator must be
-registered with the OpenTelemetry API.
+Para propagar o contexto de um rastro pela rede, um propagador deve ser registrado com a API do OpenTelemetry.
 
 ```go
 import (
@@ -316,69 +260,48 @@ import (
 otel.SetTextMapPropagator(propagation.TraceContext{})
 ```
 
-> OpenTelemetry also supports the B3 header format, for compatibility with
-> existing tracing systems (`go.opentelemetry.io/contrib/propagators/b3`) that
-> do not support the W3C TraceContext standard.
+> O OpenTelemetry também suporta headers no formato B3, para compatibilidade com
+> sistemas de rastreamento (`go.opentelemetry.io/contrib/propagators/b3`) que
+> não suportam o padrão W3C TraceContext.
 
-After configuring context propagation, you'll most likely want to use automatic
-instrumentation to handle the behind-the-scenes work of actually managing
-serializing the context.
+Após configurar a propagação de contexto, você provavelmente vai querer utilizar a instrumentação automática para lidar com todo o trabalho que acontece debaixo dos panos e gerenciar a serialização de contexto.
 
-## Metrics
+## Métricas {#metrics}
 
-To start producing [metrics](/docs/concepts/signals/metrics), you'll need to
-have an initialized `MeterProvider` that lets you create a `Meter`. Meters let
-you create instruments that you can use to create different kinds of metrics.
-OpenTelemetry Go currently supports the following instruments:
+Para começar a produzir [métricas](/docs/concepts/signals/metrics), você precisará ter um `MeterProvider` inicializado que permita a criação de um `Meter`. Os Meters permitem que você crie instrumentos que podem ser utilizados para gerar diferentes tipos de métricas. O OpenTelemetry Go atualmente suporta os seguintes instrumentos:
 
-- Counter, a synchronous instrument that supports non-negative increments
-- Asynchronous Counter, an asynchronous instrument which supports non-negative
-  increments
-- Histogram, a synchronous instrument that supports arbitrary values that are
-  statistically meaningful, such as histograms, summaries, or percentile
-- Synchronous Gauge, a synchronous instrument that supports non-additive values,
-  such as room temperature.
-- Asynchronous Gauge, an asynchronous instrument that supports non-additive
-  values, such as room temperature
-- UpDownCounter, a synchronous instrument that supports increments and
-  decrements, such as the number of active requests
-- Asynchronous UpDownCounter, an asynchronous instrument that supports
-  increments and decrements
+- Counter, um instrumento síncrono que suporta ingrementos não-negativos
+- Asynchronous Counter, um instrumento assíncrono que suporta incrementos não-negativos
+- Histogram, um instrumento síncrono que suporta valores arbitrários e que são estatísticamente significativos, como histogramas, resumos ou percentis
+- Synchronous Gauge, um instrumento síncrono que suporta valores não-aditivos, como a temperatura ambiente
+- Asynchronous Gauge, um instrumento assíncrono que suporta valores não-aditivos, como a temperatura ambiente
+- UpDownCounter, um instrumento síncrono que suporta incrementos e decrementos, como o número de requisições ativas
+- Asynchronous UpDownCounter, um instrumento assíncrono que suporta incrementos e decrementos
 
-For more on synchronous and asynchronous instruments, and which kind is best
-suited for your use case, see
-[Supplementary Guidelines](/docs/specs/otel/metrics/supplementary-guidelines/).
+Para mais informações sobre instrumentos síncronos e assíncronos, e qual tipo é mais adequado para o seu caso de uso, consulte as [Diretrizes Suplementares](/docs/specs/otel/metrics/supplementary-guidelines/).
 
-If a `MeterProvider` is not created either by an instrumentation library or
-manually, the OpenTelemetry Metrics API will use a no-op implementation and fail
-to generate data.
+Caso um `MeterProvider` não seja criado, tanto por uma biblioteca de instrumentação ou manualmente, a API de Métricas do OpenTelemetry usará uma implementação no-op e não irá gerar dados.
 
-Here you can find more detailed package documentation for:
+Aqui, você poderá encontrar uma documentação mais detalhada para os pacotes:
 
 - Metrics API: [`go.opentelemetry.io/otel/metric`][]
 - Metrics SDK: [`go.opentelemetry.io/otel/sdk/metric`][]
 
-### Initialize Metrics
+### Inicializar Métricas {#initialize-metrics}
 
-{{% alert color="info" %}} If you’re instrumenting a library, skip this step.
+{{% alert color="info" %}} Caso você esteja instrumentando uma biblioteca, pule esta etapa.
 {{% /alert %}}
 
-To enable [metrics](/docs/concepts/signals/metrics/) in your app, you'll need to
-have an initialized
-[`MeterProvider`](/docs/concepts/signals/metrics/#meter-provider) that will let
-you create a [`Meter`](/docs/concepts/signals/metrics/#meter).
+Para habilitar [métricas](/docs/concepts/signals/metrics/) em sua apicação, você precisará ter um [`MeterProvider`](/docs/concepts/signals/metrics/#meter-provider) inicializado, que permitirá que você crie um [`Meter`](/docs/concepts/signals/metrics/#meter).
 
-If a `MeterProvider` is not created, the OpenTelemetry APIs for metrics will use
-a no-op implementation and fail to generate data. Therefore, you have to modify
-the source code to include the SDK initialization code using the following
-packages:
+Caso um `MeterProvider` não seja criado, as APIs de métricas do OpenTelemetry irão utilizar uma implementação no-op e falhará em gerar dados de métricas. Sendo assim, é necessário que o código fonte seja modificado para incluir a inicialização do SDK utilizando os seguintes pacotes:
 
 - [`go.opentelemetry.io/otel`][]
 - [`go.opentelemetry.io/otel/sdk/metric`][]
 - [`go.opentelemetry.io/otel/sdk/resource`][]
 - [`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`][]
 
-Ensure you have the right Go modules installed:
+Certifique-se de haver instalado corretamente os seguintes módulos Go:
 
 ```sh
 go get go.opentelemetry.io/otel \
@@ -387,7 +310,7 @@ go get go.opentelemetry.io/otel \
   go.opentelemetry.io/otel/sdk/metric
 ```
 
-Then initialize a resources, metrics exporter, and metrics provider:
+Em seguida, inicialize um `Resource`, `Metrics Exporter` e um `Meter Provider`:
 
 ```go
 package main
@@ -405,32 +328,32 @@ import (
 )
 
 func main() {
-	// Create resource.
+	// Crie um 'Resource'.
 	res, err := newResource()
 	if err != nil {
 		panic(err)
 	}
 
-	// Create a meter provider.
-	// You can pass this instance directly to your instrumented code if it
-	// accepts a MeterProvider instance.
+	// Inicialize um Meter Provider.
+	// Você poderá passar a instância diretamente para o seu código instrumentado, caso
+	// o mesmo aceite uma instância do MeterProvider.
 	meterProvider, err := newMeterProvider(res)
 	if err != nil {
 		panic(err)
 	}
 
-	// Handle shutdown properly so nothing leaks.
+	// Lidamos com a finalização corretamente, evitando leaks.
 	defer func() {
 		if err := meterProvider.Shutdown(context.Background()); err != nil {
 			log.Println(err)
 		}
 	}()
 
-	// Register as global meter provider so that it can be used via otel.Meter
-	// and accessed using otel.GetMeterProvider.
-	// Most instrumentation libraries use the global meter provider as default.
-	// If the global meter provider is not set then a no-op implementation
-	// is used, which fails to generate data.
+	// Registre o MeterProvider globalmente, permitindo a utilização via otel.Meter
+	// e acessando utilizando otel.GetMeterProvider.
+	// A maioria das bibliotecas de instrumentação utilizam o MeterProvider global como padrão.
+	// Caso o MeterProvider global não esteja definido, será utilizada uma implementação no-op
+	// e não irá gerar dados de métricas.
 	otel.SetMeterProvider(meterProvider)
 }
 
@@ -451,20 +374,19 @@ func newMeterProvider(res *resource.Resource) (*metric.MeterProvider, error) {
 	meterProvider := metric.NewMeterProvider(
 		metric.WithResource(res),
 		metric.WithReader(metric.NewPeriodicReader(metricExporter,
-			// Default is 1m. Set to 3s for demonstrative purposes.
+			// O valor padrão é 1m. Definimos em 3s para propósitos de demonstração.
 			metric.WithInterval(3*time.Second))),
 	)
 	return meterProvider, nil
 }
 ```
 
-Now that a `MeterProvider` is configured, you can acquire a `Meter`.
+Agora que o `MeterProvider` está configurado, podemos obter um `Meter`.
 
-### Acquiring a Meter
+### Obtendo um Meter {#acquiring-a-meter}
 
-Anywhere in your application where you have manually instrumented code you can
-call [`otel.Meter`](https://pkg.go.dev/go.opentelemetry.io/otel#Meter) to
-acquire a meter. For example:
+Qualquer ponto da sua aplicação que possua código instrumentado poderá invocar o método  [`otel.Meter`](https://pkg.go.dev/go.opentelemetry.io/otel#Meter) to
+para obter um `Meter`. Por exemplo:
 
 ```go
 import "go.opentelemetry.io/otel"
@@ -472,39 +394,27 @@ import "go.opentelemetry.io/otel"
 var meter = otel.Meter("example.io/package/name")
 ```
 
-### Synchronous and asynchronous instruments
+### Instrumentos síncronos e assíncronos {#synchronous-and-asynchronous-instruments}
 
-OpenTelemetry instruments are either synchronous or asynchronous (observable).
+Os instrumentos do OpenTelemetry podem ser síncronos ou assíncronos (observáveis).
 
-Synchronous instruments take a measurement when they are called. The measurement
-is done as another call during program execution, just like any other function
-call. Periodically, the aggregation of these measurements is exported by a
-configured exporter. Because measurements are decoupled from exporting values,
-an export cycle may contain zero or multiple aggregated measurements.
+Os instrumentos síncronos fazem uma medição quando são chamados. A medição é realizada como uma outra chamada durante a execução da aplicação, assim como qualquer outra chamada de função. Periodicamente, a agregação dessas medições é exportada por um `Exporter` configurado. Como as medições são desacopladas da exportação de valores, um ciclo de exportação pode conter zero ou várias medições agregadas.
 
-Asynchronous instruments, on the other hand, provide a measurement at the
-request of the SDK. When the SDK exports, a callback that was provided to the
-instrument on creation is invoked. This callback provides the SDK with a
-measurement that is immediately exported. All measurements on asynchronous
-instruments are performed once per export cycle.
+Os instrumentos assíncronos, por outro lado, fornecem uma medição a partir de uma solicitação do SDK. Quando o SDK realiza a exportação, um callback que foi fornecido ao instrumento no momento de sua criação é invocado. Este callback fornece ao SDK uma medição, que é imediatamente exportada. Todas as medições em instrumentos assíncronos são realizadas uma vez por cada ciclo de exportação.
 
-Asynchronous instruments are useful in several circumstances, such as:
+Os instrumentos assíncronos podem ser úteis em diversas circunstâncias, como:
 
-- When updating a counter is not computationally cheap, and you don't want the
-  current executing thread to wait for the measurement
-- Observations need to happen at frequencies unrelated to program execution
-  (i.e., they cannot be accurately measured when tied to a request lifecycle)
-- There is no known timestamp for a measurement value
+- Quando a atualização de um computador não é computacionalmente barata e você não deseja que o thread em execução aguarde pela medição
+- Quando observações precisam acontecer em ferquências não relacionadas à execução da aplicação (ou seja, não podem ser medidas com precisão quando vinculadas ao ciclo de vida de uma solicitação)
+- Quando não há um timestamp conhecido para um valor de medição
 
-In cases like these, it's often better to observe a cumulative value directly,
-rather than aggregate a series of deltas in post-processing (the synchronous
-example).
+Em casos como estes, muitas vezes é melhor observar um valor cumulativo diretamente, em vez de agregar uma série de deltas em um pós-processamento (da maneira em que ocorre no exemplo síncrono).
 
-### Using Counters
+### Utilizando Counters {#using-counters}
 
-Counters can be used to measure a non-negative, increasing value.
+Counters podem ser utilizados para medir valores incrementais e não-negativos.
 
-For example, here's how you report the number of calls for an HTTP handler:
+Por exemplo, aqui está como seria possível reportar o número de chamadas HTTP em um handler:
 
 ```go
 import (
@@ -516,7 +426,7 @@ import (
 func init() {
 	apiCounter, err := meter.Int64Counter(
 		"api.counter",
-		metric.WithDescription("Number of API calls."),
+		metric.WithDescription("Número de chamadas na API."),
 		metric.WithUnit("{call}"),
 	)
 	if err != nil {
@@ -525,7 +435,7 @@ func init() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		apiCounter.Add(r.Context(), 1)
 
-		// do some work in an API call
+		// implementação da chamada da API
 	})
 }
 ```
