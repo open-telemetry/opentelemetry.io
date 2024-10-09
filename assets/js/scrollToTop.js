@@ -1,7 +1,22 @@
-// Get the button
 let scrollToTopBtn = document.getElementById('scrollToTopBtn');
+let footer = document.querySelector('.td-footer');
 
-// When the user scrolls down 200px from the top of the document, show the button
+// Function to check if the button is about to overlap the footer
+function adjustButtonPosition() {
+  let footerTop = footer.getBoundingClientRect().top;
+  let windowHeight = window.innerHeight;
+
+  // Calculate when the button would overlap the footer
+  if (footerTop < windowHeight + 40) {
+    // Stop the button above the footer
+    scrollToTopBtn.style.bottom = windowHeight - footerTop + 40 + 'px';
+  } else {
+    // Reset the button's position if no overlap
+    scrollToTopBtn.style.bottom = '40px';
+  }
+}
+
+// Show or hide the button based on scroll position
 window.onscroll = function () {
   if (
     document.body.scrollTop > 200 ||
@@ -11,6 +26,9 @@ window.onscroll = function () {
   } else {
     scrollToTopBtn.style.display = 'none';
   }
+
+  // Check button position on scroll
+  adjustButtonPosition();
 };
 
 // Scroll to the top when the button is clicked
