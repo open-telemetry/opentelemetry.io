@@ -1,7 +1,7 @@
 title: Cortex
 registryType: application integration
 language: go
-tags:
+tags: Distributed Tracing
   - go
   - cortex
   - incubating

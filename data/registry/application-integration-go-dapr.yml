@@ -2,7 +2,7 @@
 title: Dapr
 registryType: application integration
 language: go
-tags:
+tags: Tracing
   - go
   - incubating
   - dapr
