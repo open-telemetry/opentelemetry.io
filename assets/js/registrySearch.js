@@ -38,7 +38,7 @@ let pathName = window.location.pathname;
 let searchQuery = '';
 let selectedLanguage = 'all';
 let selectedComponent = 'all';
-let selectedFlag = 'all'; // Added selectedFlag 
+let selectedFlag = 'all'; // Added selectedFlag
 
 parseUrlParams();
 
@@ -51,14 +51,22 @@ if (pathName.includes('registry')) {
   }
 
   // Set the dropdown values from query params
-  if (selectedLanguage !== 'all' || selectedComponent !== 'all' || selectedFlag !== 'all') {
+  if (
+    selectedLanguage !== 'all' ||
+    selectedComponent !== 'all' ||
+    selectedFlag !== 'all'
+  ) {
     if (selectedLanguage !== 'all') {
       document.getElementById('languageDropdown').textContent =
-        document.getElementById(`language-item-${selectedLanguage}`).textContent;
+        document.getElementById(
+          `language-item-${selectedLanguage}`,
+        ).textContent;
     }
     if (selectedComponent !== 'all') {
       document.getElementById('componentDropdown').textContent =
-        document.getElementById(`component-item-${selectedComponent}`).textContent;
+        document.getElementById(
+          `component-item-${selectedComponent}`,
+        ).textContent;
     }
     if (selectedFlag !== 'all') {
       document.getElementById('flagsDropdown').textContent =
@@ -66,7 +74,7 @@ if (pathName.includes('registry')) {
     }
     updateFilters();
   }
- 
+
   document.addEventListener('DOMContentLoaded', (event) => {
     let searchForm = document.getElementById('searchForm');
     searchForm.addEventListener('submit', function (evt) {
@@ -108,22 +116,22 @@ if (pathName.includes('registry')) {
         updateFilters();
       }),
     );
-     // Flags dropdown event listener
-  
+    // Flags dropdown event listener
+
     let flagList = document
-    .getElementById('flagsFilter')
-    .querySelectorAll('.dropdown-item');
+      .getElementById('flagsFilter')
+      .querySelectorAll('.dropdown-item');
 
     flagList.forEach((element) =>
-    element.addEventListener('click', function (evt) {
-      let val = evt.target.getAttribute('value');
-      selectedFlag = val;
-      document.getElementById('flagsDropdown').textContent = evt.target.textContent;
-      setInput('flag', val);
-      updateFilters();
-    })
+      element.addEventListener('click', function (evt) {
+        let val = evt.target.getAttribute('value');
+        selectedFlag = val;
+        document.getElementById('flagsDropdown').textContent =
+          evt.target.textContent;
+        setInput('flag', val);
+        updateFilters();
+      }),
     );
-
   });
 }
 
@@ -229,7 +237,11 @@ function setInput(key, value) {
 // Filters items based on language, component and flags
 function updateFilters() {
   let allItems = [...document.getElementsByClassName('registry-entry')];
-  if (selectedComponent === 'all' && selectedLanguage === 'all' && selectedFlag === 'all') {
+  if (
+    selectedComponent === 'all' &&
+    selectedLanguage === 'all' &&
+    selectedFlag === 'all'
+  ) {
     // Show all items if all filters are set to 'all'
     allItems.forEach((element) => element.classList.remove('d-none'));
   } else {
@@ -237,17 +249,23 @@ function updateFilters() {
     allItems.forEach((element) => {
       const dc = element.dataset.registrytype;
       const dl = element.dataset.registrylanguage;
-      const df = element.dataset.registryflags ? element.dataset.registryflags.split(' ').map(f => f.toLowerCase()) : [];
+      const df = element.dataset.registryflags
+        ? element.dataset.registryflags.split(' ').map((f) => f.toLowerCase())
+        : [];
 
-      const componentMatches = (dc === selectedComponent || selectedComponent === 'all');
-      const languageMatches = (dl === selectedLanguage || selectedLanguage === 'all');
-      const flagMatches = (selectedFlag === 'all' || df.includes(selectedFlag.toLowerCase()));
+      const componentMatches =
+        dc === selectedComponent || selectedComponent === 'all';
+      const languageMatches =
+        dl === selectedLanguage || selectedLanguage === 'all';
+      const flagMatches =
+        selectedFlag === 'all' || df.includes(selectedFlag.toLowerCase());
 
       if (flagMatches) {
         console.log('Flag matches:', df);
       }
 
-      if (componentMatches && languageMatches && flagMatches) { // Changed
+      if (componentMatches && languageMatches && flagMatches) {
+        // Changed
         element.classList.remove('d-none');
       } else {
         element.classList.add('d-none');
