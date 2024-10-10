@@ -15,7 +15,7 @@ default_lang_commit: 2e21274a01a24a62c67595591d8f4255bef640fc
 
 Esta é a documentação do OpenTelemetry para a linguagem {{ $name }}. O OpenTelemetry é um
 framework de observabilidade -- API, SDKs, e ferramentas que são desenvolvidas para auxiliar na
-geração e coleta de dados telemétricos de aplicações, como métricas, logs e rastros. Esta documentação foi criada para auxiliá-lo a entender como começar a utilizar o OpenTelemetry em {{ $name }}.
+geração e coleta de dados de telemetria de aplicações, como métricas, logs e rastros. Esta documentação foi criada para te auxiliar a entender como começar a utilizar o OpenTelemetry em {{ $name }}.
 
 ## Estado e Lançamentos
 
