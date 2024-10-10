@@ -34,7 +34,7 @@ O seguinte exemplo usa uma aplicação
 [`net/http`](https://pkg.go.dev/net/http) básica. Caso você não esteja usando
 `net/http`, não há problema — você pode utilizar OpenTelemetry Go
 com outros frameworks da web, como Gin e Echo. Para uma lista completa de
-bibliotecas para frameworks suportados, consulte a seção
+bibliotecas para frameworks suportados, consulte o
 [registro](/ecosystem/registry/?component=instrumentation&language=go).
 
 Para exemplos mais elaborados, consulte
