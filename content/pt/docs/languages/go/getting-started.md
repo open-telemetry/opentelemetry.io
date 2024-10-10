@@ -32,7 +32,7 @@ Certifique-se de que você tenha a seguinte instalação localmente:
 
 O seguinte exemplo usa uma aplicação
 [`net/http`](https://pkg.go.dev/net/http) básica. Caso você não esteja usando
-`net/http`, não há problema — você pode utilizar OpenTelemetry Go OpenTelemetry
+`net/http`, não há problema — você pode utilizar OpenTelemetry Go
 Go com outros frameworks da web, como Gin e Echo. Para uma lista completa de
 bibliotecas para frameworks suportados, consulte a seção
 [registry](/ecosystem/registry/?component=instrumentation&language=go).
