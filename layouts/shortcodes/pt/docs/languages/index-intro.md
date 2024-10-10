@@ -17,7 +17,7 @@ Esta é a documentação do OpenTelemetry para a linguagem {{ $name }}. O OpenTe
 framework de observabilidade -- API, SDKs, e ferramentas que são desenvolvidas para auxiliar na
 geração e coleta de dados telemétricos de aplicações, como métricas, logs e rastros. Esta documentação foi criada para auxiliá-lo a entender como começar a utilizar o OpenTelemetry em {{ $name }}.
 
-## Status e Lançamentos
+## Estado e Lançamentos
 
 O estado atual dos principais componentes funcionais do OpenTelemetry para {{ $name }} é o seguinte:
 
