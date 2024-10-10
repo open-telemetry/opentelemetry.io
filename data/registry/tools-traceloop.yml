@@ -1,7 +1,7 @@
 title: Traceloop Jest Test Engine
 registryType: utilities
 language: js
-tags:
+tags: Test Machine
   - js
   - ts
   - testing

@@ -1,7 +1,7 @@
 title: MySQL Enterprise Server
 registryType: application integration
 language: cpp
-tags:
+tags: Tracing
   - mysql
   - enterprise
   - database

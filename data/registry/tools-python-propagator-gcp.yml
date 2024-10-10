@@ -1,7 +1,7 @@
 title: Google Cloud Tools
 registryType: utilities
-language: python
-tags:
+language:  python
+tags: Tracing
   - python
   - google
   - utilities
