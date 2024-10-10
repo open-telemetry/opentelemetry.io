@@ -717,7 +717,7 @@ Junto com o rastro, mensagens de log são emitidas no console.
   "SeverityText": "",
   "Body": {
     "Type": "String",
-    "Value": "Alice está lançando os dados"
+    "Value": "Alice está lançando o dado"
   },
   "Attributes": [
     {
