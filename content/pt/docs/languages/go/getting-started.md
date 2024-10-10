@@ -780,7 +780,7 @@ Junto com o rastro, mensagens de log são emitidas no console.
 </details>
 
 Atualize a página <http://localhost:8080/rolldice/Alice> algumas vezes, e então
-você pode esperar um pouco ou encerrar a execução do aplicativo e verá as
+você pode esperar um pouco ou encerrar a execução da aplicação e verá as
 métricas como na saída do console. Você verá a métrica `dice.rolls` emitida no
 console, com contagens separadas para cada valor de rolagem, bem como as
 métricas HTTP geradas pela biblioteca de instrumentação.
