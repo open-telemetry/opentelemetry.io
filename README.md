@@ -4,6 +4,8 @@ This is the source repository for the [OpenTelemetry][] website, project
 documentation, and blog. The site is [built][contributing.md] using [Hugo][] and
 is hosted on [Netlify][].
 
+Public analytics for the website is [available here][].
+
 ## Get involved
 
 To learn how to contribute fixes and new content to this project, read the
@@ -101,3 +103,4 @@ contributed][contributors]!
 [slack]: https://slack.cncf.io/
 [hugo]: https://gohugo.io
 [netlify]: https://netlify.com
+[available here]: https://lookerstudio.google.com/reporting/34c2a65a-39e8-44aa-afa0-094975fee55d/page/4VDGB
