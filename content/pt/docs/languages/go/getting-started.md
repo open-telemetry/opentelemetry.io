@@ -428,7 +428,7 @@ func rolldice(w http.ResponseWriter, r *http.Request) {
 	if player := r.PathValue("player"); player != "" {
 		msg = fmt.Sprintf("%s está lançando os dados", player)
 	} else {
-		msg = "Jogador anônimo está lançando os dados"
+		msg = "Jogador anônimo está lançando o dado"
 	}
 	logger.InfoContext(ctx, msg, "result", roll)
 
