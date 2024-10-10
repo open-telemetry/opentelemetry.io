@@ -11,9 +11,8 @@ cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace 
 
 Esta página mostrará como começar a utilizar o OpenTelemetry em Go.
 
-Você aprenderá como instrumentar manualmente uma aplicação simples, de modo
-que os [rastros][traces], [métricas][metrics] e [logs][] sejam emitidos no
-console.
+Você aprenderá como instrumentar manualmente uma aplicação simples, de modo que
+os [rastros][traces], [métricas][metrics] e [logs][] sejam emitidos no console.
 
 {{% alert title="Note" %}}
 
@@ -30,11 +29,10 @@ Certifique-se de que você tenha a seguinte instalação localmente:
 
 ## Aplicação de exemplo {#example-application}
 
-O seguinte exemplo usa uma aplicação
-[`net/http`](https://pkg.go.dev/net/http) básica. Caso você não esteja usando
-`net/http`, não há problema — você pode utilizar OpenTelemetry Go
-com outros frameworks da web, como Gin e Echo. Para uma lista completa de
-bibliotecas para frameworks suportados, consulte o
+O seguinte exemplo usa uma aplicação [`net/http`](https://pkg.go.dev/net/http)
+básica. Caso você não esteja usando `net/http`, não há problema — você pode
+utilizar OpenTelemetry Go com outros frameworks da web, como Gin e Echo. Para
+uma lista completa de bibliotecas para frameworks suportados, consulte o
 [registro](/ecosystem/registry/?component=instrumentation&language=go).
 
 Para exemplos mais elaborados, consulte
@@ -103,10 +101,10 @@ funcionando.
 
 ## Adicionar instrumentação do OpenTelemetry {#add-open-telemetry-instrumentation}
 
-Agora, vamos mostrar como adicionar instrumentação do OpenTelemetry à
-aplicação de exemplo. Se você estiver usando sua própria aplicação, também pode
-acompanhar os passos a seguir. Apenas note que seu código pode ser um pouco
-diferente do exemplo.
+Agora, vamos mostrar como adicionar instrumentação do OpenTelemetry à aplicação
+de exemplo. Se você estiver usando sua própria aplicação, também pode acompanhar
+os passos a seguir. Apenas note que seu código pode ser um pouco diferente do
+exemplo.
 
 ### Adicionar Dependências {#add-dependencies}
 
@@ -268,8 +266,8 @@ func newLoggerProvider() (*log.LoggerProvider, error) {
 ```
 <!-- prettier-ignore-end -->
 
-Caso você esteja utilizando apenas rastros ou métricas, você pode omitir o código de
-inicialização do TracerProvider ou MeterProvider correspondente.
+Caso você esteja utilizando apenas rastros ou métricas, você pode omitir o
+código de inicialização do TracerProvider ou MeterProvider correspondente.
 
 ### Instrumentação do servidor HTTP {#instrument-the-http-server}
 
@@ -378,7 +376,8 @@ capturam o que está acontecendo dentro da sua aplicação. Para isso, você
 precisará implementar uma [instrumentação manual](../instrumentation/)
 personalizada.
 
-Modifique o arquivo `rolldice.go` para incluir instrumentação personalizada usando a API do OpenTelemetry:
+Modifique o arquivo `rolldice.go` para incluir instrumentação personalizada
+usando a API do OpenTelemetry:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "rolldice.go" from="package main"?>
@@ -782,8 +781,8 @@ Junto com o rastro, mensagens de log são emitidas no console.
 Atualize a página <http://localhost:8080/rolldice/Alice> algumas vezes, e então
 você pode esperar um pouco ou encerrar a execução da aplicação e verá as
 métricas como na saída do console. Você verá a métrica `dice.rolls` emitida no
-console, com contagens distintas para cada valor obtido, bem como as
-métricas HTTP geradas pela biblioteca de instrumentação.
+console, com contagens distintas para cada valor obtido, bem como as métricas
+HTTP geradas pela biblioteca de instrumentação.
 
 <details>
 <summary>Visualizar exemplo de saída</summary>
