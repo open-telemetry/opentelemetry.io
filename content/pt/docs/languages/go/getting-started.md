@@ -104,7 +104,7 @@ funcionando.
 ## Adicionar instrumentação do OpenTelemetry {#add-open-telemetry-instrumentation}
 
 Agora, vamos mostrar como adicionar instrumentação do OpenTelemetry à
-aplicativo de exemplo. Se você estiver usando sua própria aplicação, também pode
+aplicação de exemplo. Se você estiver usando sua própria aplicação, também pode
 acompanhar os passos a seguir. Apenas note que seu código pode ser um pouco
 diferente do exemplo.
 
