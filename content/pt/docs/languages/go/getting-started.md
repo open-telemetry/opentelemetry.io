@@ -378,7 +378,7 @@ capturam o que está acontecendo dentro da sua aplicação. Para isso, você
 precisará implementar uma [instrumentação manual](../instrumentation/)
 personalizada.
 
-Modify `rolldice.go` to include custom instrumentation using OpenTelemetry API:
+Modifique o arquivo `rolldice.go` para incluir instrumentação personalizada usando a API do OpenTelemetry:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "rolldice.go" from="package main"?>
