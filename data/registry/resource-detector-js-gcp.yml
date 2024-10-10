@@ -1,7 +1,7 @@
 title: OpenTelemetry Resource Detector for GCP
 registryType: resource-detector
 language: js
-tags:
+tags: GCP
   - gcp
   - resource-detector
   - js

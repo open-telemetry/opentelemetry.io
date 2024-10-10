@@ -2,7 +2,7 @@
 title: OpenTelemetry Browser Extension Autoinjection
 registryType: utilities
 language: js
-tags:
+tags: Zipkin
   - js
   - browser
   - web-ext

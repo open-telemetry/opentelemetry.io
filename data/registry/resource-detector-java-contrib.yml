@@ -1,7 +1,7 @@
 title: OpenTelemetry Contributed Resource Detectors
 registryType: resource-detector
 language: java
-tags:
+tags: Contributor
   - contrib
   - glassFish
   - jetty

@@ -1,7 +1,7 @@
 title: OTelBin
 registryType: utilities
 language: collector
-tags:
+tags: Collector
   - collector
   - configuration-validation
   - dash0

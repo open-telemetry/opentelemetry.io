@@ -2,7 +2,7 @@
 title: opentelemetry-lua
 registryType: instrumentation
 language: lua
-tags:
+tags: Unofficial
   - lua
   - instrumentation
 license: Apache 2.0

@@ -2,7 +2,7 @@
 title: Conan Package for OpenTelemetry C++
 registryType: core
 language: cpp
-tags:
+tags: Official
   - cpp
   - conan
   - package

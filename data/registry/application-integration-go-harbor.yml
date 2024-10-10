@@ -1,7 +1,7 @@
 title: Harbor
 registryType: application integration
 language: go
-tags:
+tags: Distributed Tracing
   - go
   - harbor
   - graduated

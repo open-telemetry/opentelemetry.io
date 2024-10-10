@@ -1,7 +1,7 @@
 title: Rust SDK
 registryType: core
 language: rust
-tags:
+tags: SDK
   - rust
 license: Apache 2.0
 description: The OpenTelemetry SDK for Rust.

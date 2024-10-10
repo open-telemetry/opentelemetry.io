@@ -2,7 +2,7 @@
 title: AWS CloudWatch EMF Collector Exporter
 registryType: exporter
 language: collector
-tags:
+tags: AWS
   - go
   - exporter
   - collector

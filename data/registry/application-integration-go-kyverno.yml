@@ -2,7 +2,7 @@
 title: Kyverno
 registryType: application integration
 language: go
-tags:
+tags: Integration
   - go
   - kyverno
   - incubating

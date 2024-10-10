@@ -1,7 +1,7 @@
 title: PHP Context
 registryType: core
 language: php
-tags:
+tags: Context
   - php
 license: Apache 2.0
 description: OpenTelemetry Context for PHP.

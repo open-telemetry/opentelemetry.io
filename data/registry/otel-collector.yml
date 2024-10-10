@@ -1,7 +1,7 @@
 title: Collector
 registryType: core
 language: collector
-tags:
+tags: Otel collector
   - collector
   - agent
 license: Apache 2.0

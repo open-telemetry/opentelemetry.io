@@ -2,7 +2,7 @@
 title: OpenTelemetry Resource Detector for Alibaba Cloud
 registryType: resource-detector
 language: js
-tags:
+tags: Cloud provider
   - alibabacloud
   - resource-detector
   - js

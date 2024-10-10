@@ -2,7 +2,7 @@
 title: Google Cloud Operations Collector Exporter
 registryType: exporter
 language: collector
-tags:
+tags: GCP 
   - go
   - exporter
   - collector

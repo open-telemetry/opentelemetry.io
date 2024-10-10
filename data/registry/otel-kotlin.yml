@@ -1,7 +1,7 @@
 title: Kotlin
 registryType: core
 language: kotlin
-tags:
+tags: API
   - Kotlin
   - Js
   - Jvm

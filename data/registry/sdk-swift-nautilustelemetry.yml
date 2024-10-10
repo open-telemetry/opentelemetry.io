@@ -2,7 +2,7 @@
 title: NautilusTelemetry
 registryType: instrumentation
 language: swift
-tags:
+tags: Collector
   - swift
   - instrumentation
   - ios

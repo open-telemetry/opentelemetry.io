@@ -1,7 +1,7 @@
 title: Traefik Hub API Management
 registryType: application integration
 language: go
-tags:
+tags: Performance Monitoring
   - go
   - traefik
   - hub

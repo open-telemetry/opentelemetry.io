@@ -2,7 +2,7 @@
 title: Dataset Collector Exporter
 registryType: exporter
 language: collector
-tags:
+tags: Dataset
   - go
   - exporter
   - collector
