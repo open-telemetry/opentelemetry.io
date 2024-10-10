@@ -29,7 +29,8 @@ One of the best ways to help make OTel docs better is to fix an existing issue.
    <!-- prettier-ignore -->
    > **NOTE**: we **_do not_ assign issues** to those who
    > have not already made contributions to the [OpenTelemetry
-   > organization][org].
+   > organization][org], unless part of a mentorship or onboarding
+   > process.
    {.mt-3}
 
    <!-- prettier-ignore -->
