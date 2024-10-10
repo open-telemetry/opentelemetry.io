@@ -35,7 +35,7 @@ O seguinte exemplo usa uma aplicação
 `net/http`, não há problema — você pode utilizar OpenTelemetry Go
 com outros frameworks da web, como Gin e Echo. Para uma lista completa de
 bibliotecas para frameworks suportados, consulte a seção
-[registry](/ecosystem/registry/?component=instrumentation&language=go).
+[registro](/ecosystem/registry/?component=instrumentation&language=go).
 
 Para exemplos mais elaborados, consulte
 [exemplos](/docs/languages/go/examples/).
