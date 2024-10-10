@@ -372,7 +372,7 @@ func newHTTPHandler() http.Handler {
 
 ### Adicionar instrumentação personalizada {#add-custom-instrumentation}
 
-As bibliotecas de instrumentação capturam dados telemétricos nas bordas de seus
+As bibliotecas de instrumentação capturam telemetria nas bordas de seus
 sistemas, como por exemplo requisições HTTP de entrada e saída, porém não
 capturam o que está acontecendo dentro da sua aplicação. Para isso, você
 precisará implementar uma [instrumentação manual](../instrumentation/)
