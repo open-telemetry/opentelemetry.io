@@ -14,7 +14,7 @@ default_lang_commit: 2e21274a01a24a62c67595591d8f4255bef640fc
 {{ $logsStatus := partial "docs/get-signal-status.html" (dict "lang" $lang "signal" "logs") -}}
 
 Esta é a documentação do OpenTelemetry para a linguagem {{ $name }}. O OpenTelemetry é um
-framework de observabilidade -- uma API, SDK, e ferramentas que são projetadas para auxiliar na
+framework de observabilidade -- API, SDKs, e ferramentas que são desenvolvidas para auxiliar na
 geração e coleta de dados telemétricos de aplicações, como métricas, logs e rastros. Esta documentação foi criada para auxiliá-lo a entender como começar a utilizar o OpenTelemetry em {{ $name }}.
 
 ## Status e Lançamentos
