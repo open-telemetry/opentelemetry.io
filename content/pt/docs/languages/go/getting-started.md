@@ -137,7 +137,7 @@ seção [bibliotecas](/docs/languages/go/libraries/) para mais informações.
 ### Inicializar o SDK OpenTelemetry {#initialize-the-opentelemetry-sdk}
 
 Primeiro, vamos inicializar o SDK OpenTelemetry. Isso é _obrigatório_ para
-qualquer aplicação que exporte sinais telemétricos.
+qualquer aplicação que exporte telemetria.
 
 Crie um arquivo `otel.go` com o código de inicialização do SDK OpenTelemetry:
 
