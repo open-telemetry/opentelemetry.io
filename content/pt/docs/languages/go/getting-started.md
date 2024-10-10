@@ -24,7 +24,7 @@ compatibilidade podem ser introduzidas em versões futuras.
 
 ## Pré-requisitos {#prerequisites}
 
-Certifique-se de que você tenha o seguinte instalado localmente:
+Certifique-se de que você tenha a seguinte instalação localmente:
 
 - [Go](https://go.dev/) versão 1.22 ou superior
 
