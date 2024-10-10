@@ -19,7 +19,7 @@ geração e coleta de dados telemétricos de aplicações, como métricas, logs 
 
 ## Status e Lançamentos
 
-O status atual dos principais componentes funcionais do OpenTelemetry para {{ $name }} é o seguinte:
+O estado atual dos principais componentes funcionais do OpenTelemetry para {{ $name }} é o seguinte:
 
 | Rastros              | Métricas              | Logs              |
 | ------------------- | -------------------- | ----------------- |
