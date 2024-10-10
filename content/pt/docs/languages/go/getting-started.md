@@ -169,7 +169,7 @@ func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, er
 
 	// shutdown chama as funções de finalização registradas via shutdownFuncs.
 	// Os erros das chamadas são concatenados.
-	// Cada função de finalização será invocada uma única vez.
+	// Cada função de finalização registrada será invocada uma única vez.
 	shutdown = func(ctx context.Context) error {
 		var err error
 		for _, fn := range shutdownFuncs {
