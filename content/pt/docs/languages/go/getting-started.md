@@ -268,7 +268,7 @@ func newLoggerProvider() (*log.LoggerProvider, error) {
 ```
 <!-- prettier-ignore-end -->
 
-Caso queira utilizar apenas rastros ou métricas, você pode omitir o código de
+Caso você esteja utilizando apenas rastros ou métricas, você pode omitir o código de
 inicialização correspondente ao TracerProvider ou MeterProvider.
 
 ### Instrumentação do servidor HTTP {#instrument-the-http-server}
