@@ -1,4 +1,4 @@
-# cspell:ignore checkmk
+# cspell:ignore okhttp
 title: okHTTP Instrumentation
 registryType: instrumentation
 language: java
