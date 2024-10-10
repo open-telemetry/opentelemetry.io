@@ -309,7 +309,7 @@ func run() (err error) {
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer stop()
 
-	// Inicializamos o OpenTelemetry.
+	// Configura o OpenTelemetry.
 	otelShutdown, err := setupOTelSDK(ctx)
 	if err != nil {
 		return
