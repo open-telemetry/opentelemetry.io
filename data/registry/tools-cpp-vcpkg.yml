@@ -2,7 +2,7 @@
 title: vcpkg package for OpenTelemetry C++
 registryType: core
 language: cpp
-tags:
+tags: Official
   - cpp
   - vcpkg
   - package

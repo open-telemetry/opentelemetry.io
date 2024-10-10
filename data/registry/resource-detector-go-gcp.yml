@@ -1,7 +1,7 @@
 title: GCP Resource detector
 registryType: resource-detector
 language: go
-tags:
+tags: Cloud provider
   - gcp
   - resource-detector
   - go

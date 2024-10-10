@@ -1,7 +1,7 @@
 title: Ruby
 registryType: core
 language: ruby
-tags:
+tags: SDK
   - ruby
 license: Apache 2.0
 description: The OpenTelemetry API and SDK for Ruby.

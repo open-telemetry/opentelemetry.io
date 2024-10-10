@@ -2,7 +2,7 @@
 title: Distributed tracing of Checkmk with OpenTelemetry
 registryType: application integration
 language: python
-tags:
+tags: Integration
   - Python
   - Checkmk
 urls:

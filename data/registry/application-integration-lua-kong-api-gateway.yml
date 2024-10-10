@@ -2,7 +2,7 @@
 title: Kong API Gateway
 registryType: application integration
 language: lua
-tags:
+tags: API
   - kong
   - api
   - gateway

@@ -2,7 +2,7 @@
 title: OpenTelemetry SDK for Perl
 registryType: instrumentation
 language: perl
-tags:
+tags: SDK
   - perl
   - instrumentation
 license: Artistic-1.0-Perl

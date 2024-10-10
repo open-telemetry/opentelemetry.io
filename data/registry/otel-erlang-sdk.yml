@@ -1,7 +1,7 @@
 title: Erlang/Elixir
 registryType: core
 language: erlang
-tags:
+tags: SDK
   - erlang
   - elixir
 license: Apache 2.0

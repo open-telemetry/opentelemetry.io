@@ -2,7 +2,7 @@
 title: Strimzi
 registryType: application integration
 language: java
-tags:
+tags: Tracing
   - incubating
   - java
   - strimzi

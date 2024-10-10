@@ -1,7 +1,7 @@
 title: Go Automatic Instrumentation
 registryType: instrumentation
 language: go
-tags:
+tags: Automatic
   - go
   - instrumentation
 license: Apache 2.0

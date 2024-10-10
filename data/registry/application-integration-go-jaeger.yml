@@ -2,7 +2,7 @@
 title: Jaeger
 registryType: application integration
 language: go
-tags:
+tags: Tracing
   - jaeger
   - go
   - tracing

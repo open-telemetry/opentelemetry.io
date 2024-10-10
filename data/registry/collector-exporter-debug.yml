@@ -2,7 +2,7 @@
 title: Debug Exporter
 registryType: exporter
 language: collector
-tags:
+tags: Exporter
   - debug
   - exporter
   - collector

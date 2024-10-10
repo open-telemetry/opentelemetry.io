@@ -1,7 +1,7 @@
 title: redact
 registryType: utilities
 language: go
-tags:
+tags: Collector
   - go
   - utilities
 license: Apache 2.0

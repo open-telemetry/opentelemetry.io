@@ -1,7 +1,7 @@
 title: flow - tracing flow metrics
 registryType: processor
 language: go
-tags:
+tags: Monitoring
   - go
   - processor
   - prometheus

@@ -1,7 +1,7 @@
 title: OpenTelemetry Resource Detector for AWS
 registryType: resource-detector
 language: js
-tags:
+tags: Cloud provider
   - aws
   - resource-detector
   - js

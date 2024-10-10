@@ -1,7 +1,7 @@
 title: OpenTelemetry.jl
 registryType: instrumentation
 language: julia
-tags:
+tags: Instrumentation
   - julia
   - instrumentation
 license: Apache 2.0

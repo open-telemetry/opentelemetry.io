@@ -2,7 +2,7 @@
 title: otel4s
 registryType: instrumentation
 language: scala
-tags:
+tags: Instrumentation
   - scala
   - typelevel
   - cats-effect

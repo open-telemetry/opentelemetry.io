@@ -1,7 +1,7 @@
 title: Open Policy Agent
 registryType: application integration
 language: go
-tags:
+tags: Otel collector
   - go
   - opa
   - open

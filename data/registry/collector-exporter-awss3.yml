@@ -2,7 +2,7 @@
 title: AWS S3 Exporter for OpenTelemetry Collector
 registryType: exporter
 language: collector
-tags:
+tags: Exporter
   - aws
   - s3
   - exporter

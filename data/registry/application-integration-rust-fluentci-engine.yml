@@ -2,7 +2,7 @@
 title: Fluent CI Engine
 registryType: application integration
 language: rust
-tags:
+tags: Tracing
   - fluentci
   - engine
   - rust

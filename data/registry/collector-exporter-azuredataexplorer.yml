@@ -2,7 +2,7 @@
 title: Azure Data Explorer Exporter
 registryType: exporter
 language: collector
-tags:
+tags: Azure
   - go
   - exporter
   - collector

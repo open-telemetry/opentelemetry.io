@@ -2,7 +2,7 @@
 title: Kubewarden
 registryType: application integration
 language: rust # go
-tags:
+tags: Instrumentation
   - sandbox
   - rust
   - kubewarden
