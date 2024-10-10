@@ -1,3 +1,4 @@
+# cspell:ignore checkmk
 title: okHTTP Instrumentation
 registryType: instrumentation
 language: java
