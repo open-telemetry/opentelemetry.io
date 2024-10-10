@@ -438,7 +438,7 @@ func rolldice(w http.ResponseWriter, r *http.Request) {
 
 	resp := strconv.Itoa(roll) + "\n"
 	if _, err := io.WriteString(w, resp); err != nil {
-		log.Printf("Write failed: %v\n", err)
+		log.Printf("Falha na escrita: %v\n", err)
 	}
 }
 ```
