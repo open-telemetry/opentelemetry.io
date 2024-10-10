@@ -1163,7 +1163,7 @@ Para mais informações sobre como instrumentar seu código, consulte a
 documentação de [instrumentação manual](/docs/languages/go/instrumentation/).
 
 Você também vai querer configurar um Exporter apropriado para
-[exportar os seus dados telemétricos](/docs/languages/go/exporters/) para um ou
+[exportar os seus dados de telemetria](/docs/languages/go/exporters/) para um ou
 mais backends de telemetria.
 
 Caso queira explorar um exemplo mais complexo, dê uma olhada na
