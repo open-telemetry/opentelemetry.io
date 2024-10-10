@@ -127,7 +127,7 @@ go get "go.opentelemetry.io/otel" \
   "go.opentelemetry.io/contrib/bridges/otelslog"
 ```
 
-Isso instala os componentes do SDK OpenTelemetry e a instrumentação do
+Este comando instala os componentes do SDK OpenTelemetry e a instrumentação do
 `net/http`.
 
 Se você estiver instrumentando uma biblioteca diferente para solicitações de
