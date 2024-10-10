@@ -200,7 +200,7 @@ func newExporter(ctx context.Context) (metric.Reader, error) {
 ```
 
 To learn more on how to use the Prometheus exporter, try the
-[prometheus example](https://github.com/open-telemetry/opentelemetry-go/tree/main/example/prometheus)
+[prometheus example](https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/examples/prometheus)
 
 ### OTLP logs over HTTP (Experimental)
 
