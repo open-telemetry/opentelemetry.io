@@ -12,7 +12,7 @@ cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace 
 Esta página mostrará como começar a utilizar o OpenTelemetry em Go.
 
 Você aprenderá como instrumentar manualmente uma aplicação simples, de modo que
-os [rastros][traces], [métricas][metrics] e [logs][] sejam emitidos no console.
+os [rastros][traces], [métricas][metrics] e [logs][logs] sejam emitidos no console.
 
 {{% alert title="Note" %}}
 
