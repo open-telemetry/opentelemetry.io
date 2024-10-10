@@ -1170,7 +1170,7 @@ Caso queira explorar um exemplo mais complexo, dê uma olhada na
 [demonstração do OpenTelemetry](/docs/demo/), que inclui o
 [Serviço de Checkout](/docs/demo/services/checkout/) baseado em Go, o
 [Serviço de Catálogo de Produtos](/docs/demo/services/product-catalog/), e o
-[Serviço de Contabilidade](/docs/demo/services/accounting/)
+[Serviço de Contabilidade](/docs/demo/services/accounting/), baseados em Go
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/
