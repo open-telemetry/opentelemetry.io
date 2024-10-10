@@ -120,7 +120,7 @@ telemétricos neutros em relação a fornecedores.
 
 ### **DAG**
 
-[Directed Acyclic Graph][dag].
+[Grafos acíclicos dirigidos][dag].
 
 ### **Dimensão** {#dimension}
 
