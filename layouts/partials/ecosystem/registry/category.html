@@ -1,28 +1,23 @@
-
-
-<div class="">
+<div>
     <div class="d-flex justify-content-between my-3">
         <h4>{{ .Title }}</h4>
         <a href="?s={{ .SearchTerm }}&component=&language=">View All</a>
     </div>
-     <div class="d-flex flex-column flex-sm-row justify-content-between" style="gap:12px">
+    <div class="d-flex flex-column flex-lg-row justify-content-between" style="gap:12px">
         {{ $searchTerms := .SearchTerms }}
         {{ $resultCount := 0 }}
         
-        {{ range .registry }}
-            {{ $entry := . }}
-            {{ $matched := false }}
-        
-            {{ range $searchTerms }}
-                {{ if or (in $entry.title .) (in $entry.description .) (in $entry._key .) (in $entry.tags .) (in $entry.package.name .) (in $entry.flags .) (in $entry.license .) (in $entry.language .) (in $entry.registryType .) }}
-                    {{ $matched = true }}
-                {{ end }}
+        {{ range $key, $entry := .registry }}
+        {{ $matched := false }}
+        {{ range $searchTerms }}
+            {{ if or (in $entry.title .) (in $entry.description .) (in $entry._key .) (in $entry.tags .) }}
+                {{ $matched = true }}
             {{ end }}
-        
-            {{ if and $matched (lt $resultCount 3) }}
-                {{ $resultCount = add $resultCount 1 }}
-                {{/* Define variables */}}
-                {{ $remoteRegistries := dict 
+        {{ end }}
+    
+        {{ if and $matched (lt $resultCount 3) }}
+            {{ $resultCount = add $resultCount 1 }} 
+            {{ $remoteRegistries := dict 
                     "npm" (dict 
                         "urlPattern" "https://npmjs.com/package/%s"
                         "installTemplate" "ecosystem/registry/quickinstall/default.md"
@@ -43,6 +38,10 @@
                         "installLine" "go get %s"
                         "installTemplate" "ecosystem/registry/quickinstall/default.md"
                         "icon" "fa-brands fa-golang")
+                        "go-collector" (dict
+                        "urlPattern" "https://pkg.go.dev/%s"
+                        "installTemplate" "ecosystem/registry/quickinstall/collector.md"
+                        "icon" "fa-solid fa-box-open")            
                     "nuget" (dict
                         "urlPattern" "https://www.nuget.org/packages/%s"
                         "installLine" "dotnet add package %s"
@@ -64,7 +63,6 @@
                         "icon" "fab fa-rust")
                 -}}
         
-                {{/* Initialize variables */}}
                 {{ $isNative := and (or (eq $entry.registryType "instrumentation") (eq $entry.registryType "application integration")) ($entry.isNative) }}
                 {{ $isFirstParty := and (or (eq $entry.registryType "instrumentation") (eq $entry.registryType "application integration")) ($entry.isFirstParty) }}
                 {{ $currentTime := time.Now }}
@@ -72,11 +70,12 @@
                 {{ $isNew := lt $delta.Hours 730 }}
                 {{ $usedInDemo := and (isset $entry "urls") (isset $entry.urls "demo") }}
                 {{ $deprecated := and (isset $entry "deprecated") (isset $entry.deprecated "reason") }}
-                {{ $package := "" }}
-                {{ if and ($entry.package) (isset $remoteRegistries $entry.package.registry) }}
-                    {{ $package = merge $entry.package (index $remoteRegistries $entry.package.registry) }}
-                    {{ $package = merge $package (dict "type" $entry.registryType) }}
-                {{ end }}
+                {{ $package := "" -}}
+                {{ if and (.package) (isset $remoteRegistries .package.registry) -}}
+                    {{ $package = merge $entry.package (index $remoteRegistries $entry.package.registry) -}}
+                    {{ $package = merge $package (dict "type" $entry.registryType) -}}
+                {{ end -}}
+                
                 {{ $highlightStyle := "" }}
                 {{ if $isNew }}
                     {{ $highlightStyle = "border-info" }}
@@ -93,7 +92,6 @@
                 {{ if $deprecated }}
                     {{ $highlightStyle = "border-danger" }}
                 {{ end }}
-                {{/* Define $primaryHref */}}
                 {{ $primaryUrl := "" }}
                 {{ if $entry.urls.repo }}
                     {{ $primaryUrl = $entry.urls.repo }}
@@ -103,9 +101,8 @@
                     {{ errorf "The %q registry entry requires a repo or website URL." $entry.title }}
                 {{ end }}
                 {{ $primaryHref := printf "href=%q" $primaryUrl | safeHTMLAttr }}
-           
                 <li class="card registry-entry {{ $highlightStyle }}" data-registry-id="{{ $entry._key }}" data-registrytype="{{ $entry.registryType }}" data-registrylanguage="{{ $entry.language }}" style="flex:1">
-                    <div class="card-body container">
+                    <div class="card-body container d-flex flex-column">
                         <h4 class="card-title mb-0 d-flex flex-row">
                             <a {{ $primaryHref }} target="_blank" rel="noopener" class="me-auto">
                                 {{- $entry.title | markdownify -}}
@@ -124,11 +121,11 @@
                                     <a {{ $href }} target="_blank" rel="noopener" class="card-link external-link p-2">{{ $author.name }}</a>
                                 {{ else -}}
                                     {{ $author.name -}}
-                                {{ end -}}
-                            {{ end -}}
+                                {{ end }}
+                            {{ end }}
                             </small>
                         </p>
-                        <div class="ms-auto">
+                        <div class="">
                             {{ if $isNew -}}
                                 <span class="badge rounded-pill text-bg-info"><i class="fa-regular fa-star"></i> new</span>
                             {{ end -}}
@@ -161,17 +158,17 @@
                                     {{ end -}}
                                     {{- $entry.description | markdownify -}}
                                 </div>
-                                
                                 {{ with $package -}}
                                     {{ if not (eq .quickInstall false) }}
-                                        <h6><i class="fa-solid fa-forward"></i> Quick Install</h6>
-                                        <p>{{ (partial .installTemplate .) | markdownify -}}</p>
+                                    <h6><i class="fa-solid fa-forward"></i> Quick Install</h6>
+                                    <p>{{ (partial .installTemplate .) | markdownify -}}
+                                    </p>
                                     {{ end -}}
-                                {{ end -}}
+                                {{- end -}}
                             </div>
                             
                             <div class="">
-                                <ul class="list-group list-group-flush">
+                                 <ul class="list-group list-group-flush">
                                     {{ if $entry.package.version -}}
                                         <li class="list-group-item p-0">
                                             <div class="me-auto">
@@ -188,6 +185,16 @@
                                             </div>
                                         </li>
                                     {{ end }}
+                                    {{ if $entry.registryType -}}
+                                    <li class="list-group-item p-0">
+                                        <div class="me-auto">
+                                        <div class="fw-bold">
+                                            {{ $entry.registryType }}
+                                        </div>
+                                        <small>Component</small>
+                                        </div>      
+                                    </li>
+                                    {{- end -}}
                                     {{ if $entry.license -}}
                                         <li class="list-group-item p-0">
                                             <div class="me-auto">
@@ -199,31 +206,39 @@
                                 </ul>
                             </div>
                         </div>
+                        <div class="d-flex flex-column flex-sm-row justify-self-end flex-wrap" style="gap:12px">
+                            {{ with $entry.urls.website -}}
+                                {{ $websiteHref := printf "href=%q" . | safeHTMLAttr -}}
+                                <a {{ $websiteHref }} target="_blank" rel="noopener" class="card-link"><i class="fas fa-house" aria-hidden="true"></i>&nbsp;Website</a>
+                            {{- end -}}
+                            {{ with $entry.urls.docs -}}
+                                {{ $docsHref := printf "href=%q" . | safeHTMLAttr -}}
+                                <a {{ $docsHref }} target="_blank" rel="noopener" class="card-link m-0"><i class="fas fa-book" aria-hidden="true"></i>&nbsp;Documentation</a>
+                            {{- end -}}
+                            {{ with $package -}}
+                                {{ $packageUrl := printf "href=%q" (printf .urlPattern .name) | safeHTMLAttr -}}
+                                <a {{ $packageUrl }} target="_blank" rel="noopener" class="card-link m-0"><i class="{{ .icon }}" aria-hidden="true"></i>&nbsp;Package Details ({{ .registry }})</a>
+                            {{- end -}}
+                            {{ with $entry.urls.repo -}}
+                                {{ $icon := cond (hasPrefix . "https://github.com/") "fa-brands fa-github" "fab fa-git-alt" -}}
+                                {{ $repoHref := printf "href=%q" . | safeHTMLAttr -}}
+                                <a {{ $repoHref }} target="_blank" rel="noopener" class="card-link m-0"><i class="{{ $icon }}" aria-hidden="true"></i>&nbsp;Repository</a>
+                            {{- end -}}
+                            {{ with $entry.urls.demo -}}
+                                {{ $demoUrl := printf "href=%q" . | safeHTMLAttr -}}
+                                <a {{ $demoUrl }} target="_blank" rel="noopener" class="card-link m-0"><i class="fa-solid fa-shapes" aria-hidden="true"></i>&nbsp;Demo Service</a>
+                            {{- end -}}
+                            </div>
+                    
                     </div>
-                    {{ with $entry.urls.website -}}
-                        {{ $websiteHref := printf "href=%q" . | safeHTMLAttr -}}
-                        <a {{ $websiteHref }} target="_blank" rel="noopener" class="card-link"><i class="fas fa-house" aria-hidden="true"></i>&nbsp;Website</a>
-                    {{- end -}}
-                    {{ with $entry.urls.docs -}}
-                        {{ $docsHref := printf "href=%q" . | safeHTMLAttr -}}
-                        <a {{ $docsHref }} target="_blank" rel="noopener" class="card-link"><i class="fas fa-book" aria-hidden="true"></i>&nbsp;Documentation</a>
-                    {{- end -}}
-                    {{ with $package -}}
-                        {{ $packageUrl := printf "href=%q" (printf .urlPattern .name) | safeHTMLAttr -}}
-                        <a {{ $packageUrl }} target="_blank" rel="noopener" class="card-link"><i class="{{ .icon }}" aria-hidden="true"></i>&nbsp;Package Details ({{ .registry }})</a>
-                    {{- end -}}
-                    {{ with $entry.urls.repo -}}
-                        {{ $icon := cond (hasPrefix . "https://github.com/") "fa-brands fa-github" "fab fa-git-alt" -}}
-                        {{ $repoHref := printf "href=%q" . | safeHTMLAttr -}}
-                        <a {{ $repoHref }} target="_blank" rel="noopener" class="card-link"><i class="{{ $icon }}" aria-hidden="true"></i>&nbsp;Repository</a>
-                    {{- end -}}
-                    {{ with $entry.urls.demo -}}
-                        {{ $demoUrl := printf "href=%q" . | safeHTMLAttr -}}
-                        <a {{ $demoUrl }} target="_blank" rel="noopener" class="card-link"><i class="fa-solid fa-shapes" aria-hidden="true"></i>&nbsp;Demo Service</a>
-                    {{- end -}}
+                    
                 </li>
             {{ end }}
         {{ end }}
     </div>
 
-</div>
+</div> 
+
+
+
+

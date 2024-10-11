@@ -36,8 +36,3 @@ weight: 20
 {{< ecosystem/registry/categories>}}
 
 {{< /blocks/section >}}
-
-
-
-
-

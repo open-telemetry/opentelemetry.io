@@ -129,8 +129,10 @@ function executeSearch(searchQuery) {
   document.querySelector('#input-s').value = searchQuery;
   document.querySelector('#default-body').style.display = 'none';
   document.querySelector('#search-results').innerHTML = '';
-  let categoryElement = document.getElementById("categories-section");
-  categoryElement.classList.add("d-none");
+  let categoryElement = document.getElementById('categories-section');
+  if (categoryElement) {
+    categoryElement.classList.add('d-none');
+  }
   document.getElementById('search-loading').style.display = 'block';
 
   const run = function (searchQuery) {
@@ -212,11 +214,10 @@ function setInput(key, value) {
 
 // Filters items based on language and component filters
 function updateFilters() {
- 
-  let element = document.getElementById("default-body");
-  element.classList.remove("d-none");
-  let categoryElement = document.getElementById("categories-section");
-  categoryElement.classList.add("d-none");
+  let element = document.getElementById('default-body');
+  element.classList.remove('d-none');
+  let categoryElement = document.getElementById('categories-section');
+  categoryElement.classList.add('d-none');
 
   let allItems = [...document.getElementsByClassName('registry-entry')];
   if (selectedComponent === 'all' && selectedLanguage === 'all') {
@@ -247,4 +248,3 @@ function parseUrlParams() {
   selectedLanguage = urlParams.get('language') || 'all';
   selectedComponent = urlParams.get('component') || 'all';
 }
-
