@@ -13,7 +13,7 @@ oficiais para [outras linguagens](/docs/languages/other) também estão disponí
 Você pode encontrá-las no [registry](/ecosystem/registry/).
 
 Para Go, .NET, PHP, Python, Java e JavaScript, você pode usar 
-[soluções de intrumentação automática](/docs/zero-code) para instrumentar suas
+[soluções de instrumentação automática](/docs/zero-code) para instrumentar suas
 aplicações sem alterações de código.
 
 Se você estiver usando Kubernetes, você pode usar o [OpenTelemetry Operator 
