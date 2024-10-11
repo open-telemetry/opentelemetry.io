@@ -2,7 +2,7 @@
 title: MATLAB Interface to OpenTelemetry
 registryType: application integration
 language: cpp
-tags: Official
+tags:
   - c++
   - matlab
 license: Commercial

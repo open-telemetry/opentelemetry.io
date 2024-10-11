@@ -1,7 +1,7 @@
 title: PHP
 registryType: core
 language: php
-tags: Maintained
+tags:
   - php
 license: Apache 2.0
 description: The OpenTelemetry Core repository for PHP.

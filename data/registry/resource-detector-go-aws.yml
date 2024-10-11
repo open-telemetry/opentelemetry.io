@@ -1,7 +1,7 @@
 title: AWS Resource Detectors
 registryType: resource-detector
 language: go
-tags: Cloud provider
+tags:
   - aws
   - ec2
   - ecs

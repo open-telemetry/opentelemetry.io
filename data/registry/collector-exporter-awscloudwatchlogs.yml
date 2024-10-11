@@ -2,7 +2,7 @@
 title: AWS CloudWatch Logs Exporter
 registryType: exporter
 language: collector
-tags: AWS
+tags:
   - go
   - exporter
   - collector

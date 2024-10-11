@@ -2,7 +2,7 @@
 title: buildx
 registryType: application integration
 language: go
-tags: Open Source
+tags:
   - go
   - docker
   - buildx

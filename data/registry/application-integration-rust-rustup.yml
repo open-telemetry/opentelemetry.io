@@ -2,7 +2,7 @@
 title: rustup
 registryType: application integration
 language: rust
-tags: Exporter
+tags:
   - rust
   - rustup
 license: Apache-2.0 OR MIT

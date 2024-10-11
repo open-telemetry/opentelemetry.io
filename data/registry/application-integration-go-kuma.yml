@@ -2,7 +2,7 @@
 title: Kuma
 registryType: application integration
 language: go
-tags: Integration
+tags:
   - go
   - kuma
   - sandbox

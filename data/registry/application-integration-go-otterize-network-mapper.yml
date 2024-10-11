@@ -2,7 +2,7 @@
 title: Otterize network mapper
 registryType: application integration
 language: go
-tags: Network Mapper
+tags:
   - go
   - otterize
   - network

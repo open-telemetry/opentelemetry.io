@@ -2,7 +2,7 @@
 title: OpenTelemetry-Matlab
 registryType: instrumentation
 language: matlab
-tags: Unofficial
+tags:
   - matlab
   - simulink
 license: Apache 2.0

@@ -1,7 +1,7 @@
 title: Tyk API Gateway
 registryType: application integration
 language: go
-tags: Distributed Tracing
+tags:
   - go
   - tyk
   - api

@@ -1,7 +1,7 @@
 title: JavaScript
 registryType: core
 language: js
-tags: SDK
+tags:
   - javascript
   - node.js
   - browser

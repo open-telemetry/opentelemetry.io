@@ -2,7 +2,7 @@
 title: opentelemetry-api.cr
 registryType: instrumentation
 language: crystal
-tags: Unofficial
+tags:
   - crystal
   - instrumentation
 license: Apache 2.0

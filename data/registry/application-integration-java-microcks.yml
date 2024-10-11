@@ -2,7 +2,7 @@
 title: Microcks
 registryType: application integration
 language: java
-tags: Metrics
+tags:
   - microcks
   - java
   - sandbox

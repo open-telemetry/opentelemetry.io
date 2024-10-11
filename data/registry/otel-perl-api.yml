@@ -2,7 +2,7 @@
 title: OpenTelemetry for Perl
 registryType: instrumentation
 language: perl
-tags: Unofficial
+tags:
   - perl
   - instrumentation
 license: Artistic-1.0-Perl

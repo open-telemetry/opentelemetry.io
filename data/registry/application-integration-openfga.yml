@@ -2,7 +2,7 @@
 title: OpenFGA
 registryType: application integration
 language: go
-tags: Tracing
+tags:
   - openfga
   - authorization
   - permission

@@ -2,7 +2,7 @@
 title: Alibaba Cloud Log Service Collector Exporter
 registryType: exporter
 language: collector
-tags: Cloud Log Service
+tags:
   - go
   - exporter
   - collector

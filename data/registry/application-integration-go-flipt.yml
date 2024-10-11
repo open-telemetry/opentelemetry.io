@@ -2,7 +2,7 @@
 title: Flipt
 registryType: application integration
 language: go
-tags: Distributed Tracing
+tags:
   - go
   - flipt
 license: Apache-2.0

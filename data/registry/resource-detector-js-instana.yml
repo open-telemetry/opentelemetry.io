@@ -1,7 +1,7 @@
 title: OpenTelemetry Resource Detector for Instana
 registryType: resource-detector
 language: js
-tags: Host
+tags:
   - instana
   - resource-detector
   - js

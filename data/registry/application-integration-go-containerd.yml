@@ -2,7 +2,7 @@
 title: containerd
 registryType: application integration
 language: go
-tags: Official
+tags:
   - go
   - containerd
   - graduated

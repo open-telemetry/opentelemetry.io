@@ -1,7 +1,7 @@
 title: OpenTelemetry Resource Detector for Container
 registryType: resource-detector
 language: js
-tags: SDK
+tags:
   - container
   - resource-detector
   - js

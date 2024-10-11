@@ -1,7 +1,7 @@
 title: OpenTelemetry Resource Detector for AWS
 registryType: resource-detector
 language: java
-tags: Cloud provider
+tags:
   - aws
   - ec2
   - ecs

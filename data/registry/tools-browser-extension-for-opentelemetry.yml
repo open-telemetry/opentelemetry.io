@@ -2,7 +2,7 @@
 title: Browser Extension for OpenTelemetry
 registryType: utilities
 language: js
-tags: Instrumentation
+tags:
   - js
   - browser
   - web-ext

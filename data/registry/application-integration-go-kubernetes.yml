@@ -1,7 +1,7 @@
 title: Traces For Kubernetes System Components
 registryType: application integration
 language: go
-tags: Tracing
+tags:
   - go
   - kubernetes
   - graduated

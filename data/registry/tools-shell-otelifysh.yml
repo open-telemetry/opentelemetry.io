@@ -2,7 +2,7 @@
 title: otelify.sh
 registryType: utilities
 language: shell
-tags: Otel Instrumentation
+tags:
   - otelify
   - shell
   - instrumentation

@@ -1,7 +1,7 @@
 title: RoadRunner PHP application server
 registryType: application integration
 language: go # written in go but provides a PHP runtime
-tags: Logging
+tags:
   - go
   - php
   - roadrunner

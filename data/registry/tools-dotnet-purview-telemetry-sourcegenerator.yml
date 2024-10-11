@@ -2,7 +2,7 @@
 title: Purview Telemetry Source Generator
 registryType: utilities
 language: dotnet
-tags: High throughput
+tags:
   - c#
   - .net
   - dotnet

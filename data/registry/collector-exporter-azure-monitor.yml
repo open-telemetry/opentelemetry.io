@@ -2,7 +2,7 @@
 title: Azure Monitor Collector Exporter
 registryType: exporter
 language: collector
-tags: Azure
+tags:
   - go
   - exporter
   - collector

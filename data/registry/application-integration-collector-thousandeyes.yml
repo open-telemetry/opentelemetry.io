@@ -2,7 +2,7 @@
 title: ThousandEyes for OpenTelemetry
 registryType: application integration
 language: collector
-tags: Exporter
+tags:
   - collector
   - thousandeyes
   - cisco

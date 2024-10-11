@@ -1,7 +1,7 @@
 title: AWS SDK Extension
 registryType: utilities
 language: python
-tags: AWS
+tags:
   - python
   - sdk-extension
 license: Apache 2.0

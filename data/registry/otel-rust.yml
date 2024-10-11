@@ -1,7 +1,7 @@
 title: Rust
 registryType: core
 language: rust
-tags: API
+tags:
   - rust
 license: Apache 2.0
 description: The OpenTelemetry API for Rust.
