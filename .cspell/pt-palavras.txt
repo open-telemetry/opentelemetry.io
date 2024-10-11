@@ -1,4 +1,5 @@
 desserializa
+desserializar
 autoinstrumentação
 autoconsistentes
 serialização

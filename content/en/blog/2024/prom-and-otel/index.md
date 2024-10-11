@@ -130,7 +130,7 @@ endpoint. Note that
 The Prometheus exporter allows you to ship data in the Prometheus format, which
 is then scraped by a Prometheus server. It's used to report metrics via the
 Prometheus scrape HTTP endpoint. You can learn more by trying out this
-[example](https://github.com/open-telemetry/opentelemetry-go/tree/main/example/prometheus).
+[example](https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/examples/prometheus).
 However, the scraping won't really scale, as all the metrics are sent in a
 single scrape.
 
