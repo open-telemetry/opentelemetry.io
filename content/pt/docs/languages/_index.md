@@ -1,0 +1,57 @@
+---
+title: APIs e SDKs de Linguagens
+description:
+  A instrumentação de código do OpenTelemetry é suportada para muitas linguagens de programação populares.
+weight: 250
+redirects: [{ from: /docs/instrumentation/*, to: ':splat' }]
+default_lang_commit: b3a087c468094eb144ab3114aff06838c8fb06ca
+---
+
+A instrumentação de código do OpenTelemetry é suportada para as linguagens listadas 
+na tabela de [Status e Lançamentos](#status-e-lançamentos) abaixo. Implementações não 
+oficiais para [outras linguagens](/docs/languages/other) também estão disponíveis. 
+Você pode encontrá-las no [registry](/ecosystem/registry/).
+
+Para Go, .NET, PHP, Python, Java e JavaScript, você pode usar 
+[soluções de intrumentação automática](/docs/zero-code) para instrumentar suas
+aplicações sem alterações de código.
+
+Se você estiver usando Kubernetes, você pode usar o [OpenTelemetry Operator 
+para Kubernetes][otel-op] para [injetar soluções de implementação automática][implementação automática]
+em suas aplicações.
+
+## Status e Lançamentos
+
+O status atual dos principais componentes funcionais do OpenTelemetry estão a seguir:
+
+{{% alert title="Importante" color="warning" %}}
+
+Sem considerar o status de um API/SDK, se a sua instrumentação depende de [convenções
+semânticas] que são marcadas como [Experimental] na [especificação de convenções 
+semânticas], seu fluxo de dados pode estar sujeito a **quebra de compatibilidade**
+
+[convenções semânticas]: /docs/concepts/semantic-conventions/
+[Experimental]: /docs/specs/otel/document-status/
+[especificação de convenções semânticas]: /docs/specs/semconv/
+
+{{% /alert %}}
+
+{{% telemetry-support-table " " %}}
+
+## Referências da API
+
+Os Grupos de Interesse Especial (SIGs), são os responsáveis pela implementação da API 
+e do SDK do OpenTelemetry em diferentes linguagens, também disponibilizam referências 
+de API para desenvolvedores. As referências a seguir estão disponíveis: 
+
+{{% apidocs %}}
+
+{{% alert title="Nota" color="info" %}}
+
+A lista acima é um alias para [`/api`](/api).
+
+{{% /alert %}}
+
+[implementação automática]: /docs/kubernetes/operator/automatic/
+[instrumentação]: /docs/concepts/instrumentation/
+[otel-op]: /docs/kubernetes/operator/
