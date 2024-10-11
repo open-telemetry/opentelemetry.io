@@ -2,7 +2,7 @@
 title: File Collector Exporter
 registryType: exporter
 language: collector
-tags: File Exporter
+tags:
   - go
   - exporter
   - collector

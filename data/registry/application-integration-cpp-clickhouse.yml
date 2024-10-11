@@ -2,7 +2,7 @@
 title: Tracing ClickHouse with OpenTelemetry
 registryType: application integration
 language: cpp
-tags: Tracing
+tags:
   - clickhouse
   - database
   - c++

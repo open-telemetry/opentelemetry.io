@@ -2,7 +2,7 @@
 title: OpenTelemetry for Dart
 registryType: instrumentation
 language: dart
-tags: Unofficial
+tags:
   - dart
   - instrumentation
 license: Apache 2.0

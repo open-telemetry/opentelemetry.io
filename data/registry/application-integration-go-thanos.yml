@@ -1,7 +1,7 @@
 title: Thanos
 registryType: application integration
 language: go
-tags: Exporter
+tags:
   - go
   - incubating
   - thanos

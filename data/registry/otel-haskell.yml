@@ -2,7 +2,7 @@
 title: OpenTelemetry for Haskell
 registryType: instrumentation
 language: haskell
-tags: Unofficial
+tags:
   - haskell
   - instrumentation
 license: Apache 2.0

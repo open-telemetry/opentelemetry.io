@@ -2,7 +2,7 @@
 title: OpenFeature flagd
 registryType: application integration
 language: go
-tags: Integration
+tags:
   - go
   - incubating
   - openfeature

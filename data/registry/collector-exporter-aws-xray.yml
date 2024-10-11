@@ -2,7 +2,7 @@
 title: AWS X-Ray Tracing Exporter
 registryType: exporter
 language: collector
-tags: AWS
+tags:
   - go
   - exporter
   - collector

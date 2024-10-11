@@ -2,7 +2,7 @@
 title: Kinesis Exporter
 registryType: exporter
 language: go
-tags: Exporter
+tags:
   - go
   - exporter
   - collector

@@ -2,7 +2,7 @@
 title: Cassandra Exporter
 registryType: exporter
 language: collector
-tags: Exporter
+tags:
   - cassandra
   - exporter
   - collector

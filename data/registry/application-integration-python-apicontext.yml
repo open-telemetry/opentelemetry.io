@@ -2,7 +2,7 @@
 title: APIContext
 registryType: application integration
 language: python
-tags: Database
+tags:
   - python
   - apimetrics
 license: Commercial

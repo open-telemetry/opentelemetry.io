@@ -2,7 +2,7 @@
 title: Ansible role for OpenTelemetry Collector
 registryType: utilities
 language: yaml
-tags: Grafana
+tags:
   - collector
   - ansible
   - ansible-role

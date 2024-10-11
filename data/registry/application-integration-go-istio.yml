@@ -1,7 +1,7 @@
 title: Istio
 registryType: application integration
 language: go
-tags: Open Source
+tags:
   - go
   - istio
   - graduated

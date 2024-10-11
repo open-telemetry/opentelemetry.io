@@ -2,7 +2,7 @@
 title: OpenTelemetry exporters and instrumentation for OCaml
 registryType: instrumentation
 language: ocaml
-tags: Exporters
+tags:
   - OCaml
   - instrumentation
 license: MIT

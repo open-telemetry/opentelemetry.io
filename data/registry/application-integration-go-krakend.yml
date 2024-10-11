@@ -2,7 +2,7 @@
 title: KrakenD API Gateway
 registryType: instrumentation
 language: go
-tags: Collector
+tags:
   - go
   - krakend
   - api

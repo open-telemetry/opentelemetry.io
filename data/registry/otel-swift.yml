@@ -1,7 +1,7 @@
 title: Swift
 registryType: core
 language: swift
-tags: API
+tags:
   - swift
   - ios
   - macOS

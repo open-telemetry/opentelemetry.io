@@ -2,7 +2,7 @@
 title: Datadog Collector Exporter
 registryType: exporter
 language: collector
-tags: Datadog
+tags:
   - go
   - exporter
   - collector

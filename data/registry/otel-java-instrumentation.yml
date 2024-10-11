@@ -1,7 +1,7 @@
 title: Java Instrumentation
 registryType: instrumentation
 language: java
-tags: Hybrid
+tags:
   - java
   - instrumentation
 license: Apache 2.0

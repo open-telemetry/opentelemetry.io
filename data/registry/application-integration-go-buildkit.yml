@@ -2,7 +2,7 @@
 title: BuildKit
 registryType: application integration
 language: go
-tags: Frameworks
+tags:
   - go
   - docker
   - moby

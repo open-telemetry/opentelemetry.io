@@ -1,7 +1,7 @@
 title: Kubernetes Operator
 registryType: core
 language: collector
-tags: Kubernetes
+tags:
   - kubernetes
 license: Apache 2.0
 description: A Kubernetes Operator for the OpenTelemetry Collector.

@@ -2,7 +2,7 @@
 title: Alertmanager Exporter
 registryType: exporter
 language: collector
-tags: Exporter
+tags:
   - alertmanager
   - prometheus
   - exporter

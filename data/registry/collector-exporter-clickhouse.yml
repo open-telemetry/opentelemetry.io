@@ -2,7 +2,7 @@
 title: ClickHouse Exporter
 registryType: exporter
 language: collector
-tags: Logging
+tags:
   - go
   - exporter
   - collector

@@ -2,7 +2,7 @@
 title: RSpec matchers
 registryType: utilities
 language: ruby
-tags: Unit Tester
+tags:
   - ruby
   - rspec
 license: MIT

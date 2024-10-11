@@ -1,7 +1,7 @@
 title: OpenTelemetry Resource Detector for Azure
 registryType: resource-detector
 language: js
-tags: Azure
+tags:
   - azure
   - resource-detector
   - js

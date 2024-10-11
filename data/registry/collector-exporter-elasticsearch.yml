@@ -2,7 +2,7 @@
 title: Elasticsearch Exporter
 registryType: exporter
 language: collector
-tags: Exporter
+tags:
   - go
   - exporter
   - collector

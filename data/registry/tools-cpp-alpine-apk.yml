@@ -1,7 +1,7 @@
 title: Alpine Linux Packages for OpenTelemetry C++
 registryType: core
 language: cpp
-tags: Official
+tags:
   - cpp
   - alpine linux
   - apk

@@ -2,7 +2,7 @@
 title: clj-otel - Idiomatic Clojure API for OpenTelemetry
 registryType: extension
 language: java
-tags: API
+tags:
   - clojure
   - instrumentation
 license: Apache 2.0
