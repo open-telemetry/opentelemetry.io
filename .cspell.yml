@@ -5,6 +5,7 @@ version: '0.2'
 language: en-US
 import:
   - '@cspell/dict-es-es/cspell-ext.json'
+  - '@cspell/dict-fr-fr/cspell-ext.json'
   - '@cspell/dict-pt-br/cspell-ext.json'
 caseSensitive: true
 ignorePaths:

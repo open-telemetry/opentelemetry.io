@@ -20,6 +20,10 @@ languages:
     languageName: Español
     params:
       description: Sitio del proyecto OpenTelemetry
+  fr:
+    languageName: Français
+    params:
+      description: Site du project OpenTelemetry
   ja:
     languageName: 日本語 (Japanese)
     params:
