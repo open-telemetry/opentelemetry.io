@@ -2,7 +2,7 @@
 title: OpenTelemetry Collector Builder
 registryType: core
 language: collector
-tags: v0.111.0
+tags:
   - collector
 license: Apache 2.0
 description:
