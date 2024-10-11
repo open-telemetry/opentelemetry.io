@@ -6,8 +6,7 @@ outputs:
   - HTML
   - REDIRECTS # Include this `content/fr` ONLY
 developer_note:
-  The blocks/cover shortcode (used below) will use as a background image any
-  image file containing "background" in its name.
+  La macro "blocks/cover" définie ci-dessous permet d'utiliser comme image de fond tout visuel contenant "background" dans son nom. 
 show_banner: true
 ---
 
@@ -36,7 +35,7 @@ show_banner: true
 <div class="l-get-started-buttons">
 
 - [Dev](docs/getting-started/dev/)
-- [Ops](docs/getting-started/ops/)
+- [Sys Admin](docs/getting-started/ops/)
 
 </div>
 {{< /blocks/cover >}}
@@ -57,7 +56,7 @@ Créez et collectez des données de télémétrie pour vos services et vos logic
 
 {{% /blocks/feature %}}
 
-{{% blocks/feature icon="fas fa-magic" title="Drop-in Instrumentation & Integrations" %}}
+{{% blocks/feature icon="fas fa-magic" title=" Instrumentation & Intégrations clé en main" %}}
 
 OpenTelemetry [s'intègre] avec de nombreux librairies et frameworks et propose une [instrumentation] _code et no-code_ .
 
@@ -66,7 +65,7 @@ OpenTelemetry [s'intègre] avec de nombreux librairies et frameworks et propose 
 
 {{% /blocks/feature %}}
 
-{{% blocks/feature icon="fab fa-github" title="Open Source, Vendor Neutral" %}}
+{{% blocks/feature icon="fab fa-github" title="Open Source, Indépendant" %}}
 
 Entièrement gratuit et open source, OpenTelemetry est [utilisé] et supporté par les [leaders] sur le marché de l'observabilité.
 
