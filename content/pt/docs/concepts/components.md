@@ -1,0 +1,98 @@
+---
+title: Componentes
+description: Os principais componentes que compõem o OpenTelemetry
+aliases: [coleta de dados]
+weight: 20
+default_lang_commit: 
+---
+
+O OpenTelemetry é atualmente composto por vários componentes principais:
+
+- [Especificação](#especificação)
+- [Coletor](#coletor)
+- [Implementações de API e SDK específicas](#implementações-de-api--sdk-específicas)
+  - [Bibliotecas de Instrumentação](#bibliotecas-de-instrumentação)
+  - [Exportadores](#exportadores)
+  - [Auto-Instrumentação](#auto-instrumentação)
+  - [Detectores de Recursos](#detectores-de-recursos)
+  - [Propagadores entre Serviços](#propagadores-entre-serviços)
+  - [Amostragen](#amostragem)
+- [Operador Kubernetes](#operador-kubernetes)
+- [Função como Serviço](#função-como-serviço)
+
+O OpenTelemetry permite que você substitua o uso de SDKs ou ferramentas específicas para gerar e exportar dados de telemetria.
+
+## Especificação
+
+"Descreve os requisitos e expectativas entre diferentes linguagens para todas as implementações. Além de uma definição de termos, a especificação define o seguinte:
+
+- **API:** Define os tipos dos dados e das operações que são feitas para correlacionar com os dados de rastreamento, métricas e logs..
+- **SDK:** Define os requisitos para implementação em uma linguagem especifica. O onceitos de configuração, processamento de dados e exportação também são definidos aqui.
+- **Data:** Define o Protocolo OpenTelemetry (OTLP) para qualquer sistema de telemetria, independentemente do fornecedor ou tecnologia específica que você está utilizando.
+
+Para mais informações, consulte [especificação](/docs/specs/).
+
+## Coletor
+
+O Coletor é um proxy para qualquer sistema de telemetria que pode receber...,
+processar e exportar dados de telemetria. Ele suporta o recebimento de dados de telemetria em vários formatos. (Por exemplo, OTLP, Jaeger, Prometheus, bem como muitas outras ferramentas ) .e enviar dados para um ou mais sistema de telemetria. Ele também suporta o processamento e a filtragem de dados de telemetria antes de serem exportados.
+
+Para mais informações, consulte [Coletor](/docs/collector/).
+
+## Implementações de API e SDK específicas.
+
+O OpenTelemetry também possui SDKs para as linguagens mais populares do mercado e permitem usar a API do OpenTelemetry para gerar dados de telemetria e exportar esses dados para qualquer sistema de telemetria. Esses SDKs também permitem que você utilize qualquer biblioteca e ou frameworks dessas linguagens da instrumentação manual.
+
+Para mais informações, consulte [Instrumentando](/docs/concepts/instrumentation/).
+
+### Bibliotecas de instrumentação
+
+O OpenTelemetry suporta um grande número de componentes que geram dados de telemetria relevantes a partir de bibliotecas e frameworks populares para as linguagens suportadas. Por exemplo, Solicitações HTTP de entrada e saída de uma biblioteca HTTP geram dados sobre essas solicitações. Um objetivo Aspiracional do OpenTelemetry é que todas as bibliotecas populares sejam construídas para serem observáveis por padrão, de modo que dependências separadas não sejam necessárias.
+
+
+
+Para mais informações, consulte
+[Bibliotecas de instrumentação](/docs/concepts/instrumentation/libraries/).
+
+### Exportadores
+
+{{% docs/languages/exporters/intro %}}
+
+### Auto-Instrumentação
+
+OpenTelemetry possibilita essa forma de instrumentar sua aplicação sem alterar seu código-fonte. Embora o mecanismo dependa da linguagem, a instrumentação sem código-fonte adiciona as capacidades da API e do SDK do OpenTelemetry à sua aplicação. Além disso, pode adicionar um conjunto de bibliotecas de instrumentação e dependências do exportador.
+
+Para mais informações, consulte
+[Auto-Instrumentação](/docs/concepts/instrumentation/zero-code/).
+
+### Detectores de recursos
+
+Um [recurso](/docs/concepts/resources/) representa a entidade que produz telemetria como atributos de recurso. Por exemplo, um processo que produz telemetria que está sendo executado em um contêiner no Kubernetes tem um nome de Pod, um namespace e possivelmente um nome de implantação. Você pode incluir todos esses atributos no recurso. As implementações específicas de linguagem do OpenTelemetry fornecem detecção de recursos a partir da variável de ambiente OTEL_RESOURCE_ATTRIBUTES e para muitas entidades comuns, como tempo de execução do processo, serviço, host ou sistema operacional.
+
+Para mais informações, consulte [Recursos](/docs/concepts/resources/).
+
+### Propagadores entre serviços
+
+A propagação é o mecanismo que move dados entre serviços e processos.
+Embora não se limite ao rastreamento, a propagação permite que os rastros construam informações sobre um sistema através de serviços que estão distribuídos arbitrariamente entre limites de processos e redes.
+
+Na grande maioria dos casos de uso, a propagação de contexto ocorre por meio de bibliotecas de instrumentação. Se for necessário, você pode usar propagadores manualmente para serializar e desserializar preocupações transversais, como o contexto de um span. [metadados](/docs/concepts/signals/baggage/).
+
+### Amostragem
+
+A amostragem é um processo que restringe a quantidade de rastros que são gerados por um sistema. OpenTelemetry oferece várias formas de fazer essa para linguagens mais populares do mercado.
+[Amostragem](/docs/concepts/sampling/#head-sampling).
+
+Para mais informações, consulte [Amostragem](/docs/concepts/sampling).
+
+## Operador Kubernetes
+
+O OpenTelemetry Operator é a implementação de um Operador Kubernetes. O operador gerencia o OpenTelemetry Collector e a auto-instrumentação das cargas de trabalho usando OpenTelemetry.
+
+Para mais informações, consulte [K8s Operador](/docs/kubernetes/operator/).
+
+## Função como Serviço
+
+O OpenTelemetry suporta vários métodos de monitoramento da Função como Serviço fornecidos por diferentes sistema de telemetria. A comunidade do OpenTelemetry atualmente fornece camadas Lambda pré-construídas capazes de auto-instrumentar sua aplicação, bem como a opção de uma camada Lambda de Collector independente que pode ser usada ao instrumentar aplicações manualmente ou automaticamente.
+
+Para mais informações, consulte [Função como Serviço](/docs/faas/).
