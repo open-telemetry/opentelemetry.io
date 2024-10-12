@@ -39,3 +39,40 @@
 .registry-entry {
   @extend .shadow;
 }
+
+
+// Optimize styles and responsiveness for dark and light mode, see https://getbootstrap.com/docs/5.3/customize/color-modes/    
+.btn {
+  color: var(--bs-emphasis-color);
+
+  &:hover,
+  &:focus,
+  &:active
+  {
+    color: var(--bs-white); 
+  }
+}
+
+.badge{
+  font-weight: $font-weight-bold;
+}
+
+
+// override search box entry border styling in dark mode for mobile devices
+$color-mode-type: data; 
+
+@include color-mode(dark) {
+  @media (max-width: 767.98px) {
+    .form-control {
+      border: 1px solid rgba(var(--bs-body-color-rgb), 0.6); 
+    }
+    .ms-auto > .badge{
+      font-size: $font-size-sm;
+    }
+    
+  }
+}
+
+
+
+
