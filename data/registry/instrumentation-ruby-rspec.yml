@@ -16,3 +16,4 @@ package:
   registry: gems
   name: opentelemetry-instrumentation-rspec
   version: 0.3.3
+isFirstParty: false
