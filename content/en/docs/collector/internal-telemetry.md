@@ -36,8 +36,8 @@ service:
   telemetry:
     metrics:
       readers:
-        pull:
-          exporter:
+        - pull:
+           exporter:
             prometheus:
               host: '0.0.0.0'
               port: 8888
