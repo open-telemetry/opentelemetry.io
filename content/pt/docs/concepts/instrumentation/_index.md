@@ -18,7 +18,7 @@ Com o OpenTelemetry, você pode instrumentar seu código de duas maneiras:
 2. [Soluções sem código](/docs/concepts/instrumentation/zero-code/)
 
 As **soluções manuais** permitem obter uma visão mais aprofundada e telemetria
-rica diretamente da sua aplicação. Possibilitando o uso do API OpenTelemetry
+rica diretamente da sua aplicação. Possibilitando o uso da API OpenTelemetry
 para gerar telemetria a partir da sua aplicação, atuando como um complemento
 essencial para telemetria gerada pelas soluções sem código.
 
