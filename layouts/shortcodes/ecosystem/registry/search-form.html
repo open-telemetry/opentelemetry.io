@@ -116,43 +116,35 @@
     {{ end -}}
   </ul>
   <!-- Pagination Controls -->
-  <div class="container">
-    <!-- Pagination Section -->
-    <div class="row align-items-center justify-content-between text-center text-md-start">
-      <div class="col-md-6 mb-2 mb-md-0">
-        <!-- Pagination controls -->
-        <div id="pagination">
-          <button id="prev-page" class="btn btn-outline-secondary">Previous</button>
-          <div id="pagination-numbers" class="d-inline-block mx-2"></div>
-          <button id="next-page" class="btn btn-outline-secondary">Next</button>
-        </div>
-      </div>
-
-      <!-- Go to Page Section -->
-      <div class="col-md-6 text-md-end">
-        <div class="input-group justify-content-center justify-content-md-end">
-          <input id="page-input" type="number" class="form-control w-auto" placeholder="Go to page" min="1"
-            max="${totalPages}">
-          <button class="btn btn-outline-primary ms-2" onclick="goToPage()">Go</button>
-        </div>
-        <p id="page-error" class="text-danger mt-1"></p>
-      </div>
+  <div class="container my-3">
+    <div id="pagination" class="d-flex  align-items-right flex-wrap">
+      <button id="prev-page" class="btn btn-outline-secondary mx-2 mb-2">
+        <i class="bi bi-chevron-compact-left"></i>Previous
+      </button>
+      <div id="pagination-numbers" class="d-flex mx-2 mb-2"></div>
+      <button id="next-page" class="btn btn-outline-secondary mx-2 mb-2">
+        Next<i class="bi bi-chevron-compact-right"></i>
+      </button>
     </div>
 
-    <!-- Results per Page Section -->
-    <div class="row mt-3 text-center">
-      <div class="col">
-        <label for="results-per-page" class="form-label me-2">Results per page:</label>
-        <div class="d-inline-flex justify-content-center align-items-center">
-          <select id="results-per-page" class="form-select w-auto me-2" onchange="changeResultsPerPage()">
-            <option value="25">25</option>
-            <option value="50" selected>50</option>
-            <option value="100">100</option>
-            <option value="200">200</option>
-          </select>
-          <button class="btn btn-primary" onclick="changeResultsPerPage()">Apply</button>
-        </div>
-      </div>
+    <input id="page-input" type="number" class="form-control w-auto mx-2 mb-2" placeholder="Go to page" min="1">
+    <button class="btn btn-outline-primary mx-2 mb-2" onclick="goToPage()">Go</button>
+    <p id="page-error" class="text-danger mx-2 mb-2"></p>
+    <div class="d-flex justify-content-center align-items-center flex-wrap mt-3">
+      <p id="page-info"></p>
+
+    </div>
+
+
+    <div class="d-flex justify-content-center align-items-center flex-wrap mt-3">
+      <label for="results-per-page" class="form-label mx-2 mb-2">Results per page:</label>
+      <select id="results-per-page" class="form-select w-auto me-2" onchange="changeResultsPerPage()">
+        <option value="25">25</option>
+        <option value="50" selected>50</option>
+        <option value="100">100</option>
+        <option value="200">200</option>
+        <button class="btn btn-primary" onclick="changeResultsPerPage()">Apply</button>
+      </select>
     </div>
   </div>
 
@@ -160,119 +152,114 @@
 </div>
 
 <script>
-  // Initialize pagination
+                            
   let currentPage = 1;
-  let resultsPerPage = 50;
+  let resultsPerPage = 50; 
   const results = document.querySelectorAll('#default-body li');
   let totalPages = Math.ceil(results.length / resultsPerPage);
-  const pagesToShow = 5;
+  const pagesToShow = 5; 
 
-  // Function to update total pages and re-render based on resultsPerPage
+  
   function updateTotalPages() {
-    totalPages = Math.ceil(results.length / resultsPerPage);
-    if (totalPages === 0) totalPages = 1;
-    showPage(currentPage);
+      totalPages = Math.ceil(results.length / resultsPerPage);
+      showPage(currentPage);
   }
 
+  
   function showPage(page) {
-    if (page < 1 || page > totalPages) {
-      document.getElementById('page-error').textContent = 'Page not found';
-      return;
-    }
-
-    results.forEach((result) => result.style.display = 'none');
-    document.getElementById('page-error').textContent = '';
-
-    const start = (page - 1) * resultsPerPage;
-    const end = start + resultsPerPage;
-
-    for (let i = start; i < end; i++) {
-      if (results[i]) {
-        results[i].style.display = 'block'; // Show the result
+      
+      if (page < 1 || page > totalPages) {
+          document.getElementById('page-error').textContent = 'Page not found';
+          return;
       }
-    }
 
-    updateVisiblePages(page); // Update pagination buttons based on current page
-    document.getElementById('prev-page').disabled = page === 1; // Disable if on first page
-    document.getElementById('next-page').disabled = page === totalPages; // Disable if on last page
+      
+      results.forEach((result) => result.style.display = 'none');
+      document.getElementById('page-error').textContent = '';
 
-    document.getElementById('pagination-numbers').textContent = `Page ${page} of ${totalPages}`;
+      
+      const start = (page - 1) * resultsPerPage;
+      const end = start + resultsPerPage;
+      for (let i = start; i < end; i++) {
+          if (results[i]) {
+              results[i].style.display = 'block';
+          }
+      }
+
+      
+      updateVisiblePages(page);
+
+      
+      document.getElementById('prev-page').disabled = page === 1;
+      document.getElementById('next-page').disabled = page === totalPages;
+      document.getElementById('page-info').textContent = `Total Number of Pages: ${totalPages}`;
+
   }
 
-
-
+  
   function updateVisiblePages(currentPage) {
-    const paginationNumbers = document.getElementById('pagination-numbers');
-    paginationNumbers.innerHTML = '';
+      const paginationContainer = document.getElementById('pagination-numbers');
+      paginationContainer.innerHTML = ''; 
 
-    let startPage = Math.max(1, currentPage - Math.floor(pagesToShow / 2));
-    let endPage = Math.min(totalPages, startPage + pagesToShow - 1);
+      
+      const startPage = Math.max(1, currentPage);
+      const endPage = Math.min(totalPages, startPage + pagesToShow - 1);
 
-    if (endPage - startPage < pagesToShow - 1) {
-      startPage = Math.max(1, endPage - pagesToShow + 1);
-    }
-
-    // Create buttons for each visible page
-    for (let i = startPage; i <= endPage; i++) {
-      const pageButton = document.createElement('button');
-      pageButton.classList.add('btn', 'btn-outline-secondary', 'mx-1');
-      pageButton.textContent = i;
-      pageButton.addEventListener('click', () => {
-        currentPage = i;
-        showPage(currentPage);
-      });
-
-      // Highlight the current page button
-      if (i === currentPage) {
-        pageButton.classList.add('active');
+      
+      for (let i = startPage; i <= endPage; i++) {
+          const pageButton = document.createElement('button');
+          pageButton.textContent = i;
+          pageButton.classList.add('btn', 'btn-outline-secondary', 'mx-1');
+          if (i === currentPage) {
+              pageButton.classList.add('active');
+          }
+          pageButton.addEventListener('click', () => {
+              currentPage = i;
+              showPage(currentPage);
+          });
+          paginationContainer.appendChild(pageButton);
       }
-
-      paginationNumbers.appendChild(pageButton);
-    }
   }
 
-  updateTotalPages();
-  showPage(currentPage);
-
-  document.getElementById('prev-page').addEventListener('click', function () {
-    if (currentPage > 1) {
-      currentPage--;
-      showPage(currentPage);
-    }
-  });
-
-
-  document.getElementById('next-page').addEventListener('click', function () {
-    if (currentPage < totalPages) {
-      currentPage++;
-      showPage(currentPage);
-    }
-  });
-
+  
   function goToPage() {
-    const pageNumber = parseInt(document.getElementById('page-input').value);
-    if (pageNumber > 0 && pageNumber <= totalPages) {
-        currentPage = pageNumber;
-        showPage(currentPage);  // Updated this line
-        console.log("Going to page:", pageNumber);
-    } else {
-        document.getElementById('page-error').textContent = 'Invalid page number';
-    }
-}
+      const pageInput = document.getElementById('page-input').value;
+      const page = parseInt(pageInput);
 
-  function updateCurrentPageDisplay(currentPage, totalPages) {
-    const pageDisplay = document.getElementById('page-display');
-    pageDisplay.textContent = `Page ${currentPage} of ${totalPages}`;
+      if (!isNaN(page)) {
+          showPage(page);
+      } else {
+          document.getElementById('page-error').textContent = 'Invalid page number';
+      }
   }
-  // Function to handle results per page selection
+
+  
   function changeResultsPerPage() {
-    const selectedValue = document.getElementById('results-per-page').value;
-    resultsPerPage = parseInt(selectedValue);
-    currentPage = 1;
-    updateTotalPages();
+      const selectedValue = document.getElementById('results-per-page').value;
+      resultsPerPage = parseInt(selectedValue);
+      currentPage = 1; 
+      updateTotalPages();
   }
 
+  
+  document.getElementById('prev-page').addEventListener('click', () => {
+      if (currentPage > 1) {
+          currentPage--;
+          showPage(currentPage);
+      }
+  });
+
+  document.getElementById('next-page').addEventListener('click', () => {
+      if (currentPage < totalPages) {
+          currentPage++;
+          showPage(currentPage);
+      }
+  });
+
+  
+  showPage(currentPage);
 </script>
+
 <script src="https://cdn.jsdelivr.net/npm/minisearch@7.1.0/dist/umd/index.min.js"
   integrity="sha384-58p1D2xuw/76VRFUgDMRcrtnJAW5LWLE02ihn8aITu65c4vgo+BLy7raRKNC7KaL" crossorigin="anonymous"></script>
 {{ partial "script.html" (dict "src" "/js/registrySearch.js") -}}
