@@ -242,149 +242,149 @@ function parseUrlParams() {
 
 
 // Initialize pagination
-let currentPage = 1;
-let resultsPerPage = 50;
-const results = document.querySelectorAll('#default-body li');
-let totalPages = Math.ceil(results.length / resultsPerPage);
-const pagesToShow = 5;
+// let currentPage = 1;
+// let resultsPerPage = 50;
+// const results = document.querySelectorAll('#default-body li');
+// let totalPages = Math.ceil(results.length / resultsPerPage);
+// const pagesToShow = 5;
 
-console.log("Results Length:", results.length);
-console.log("Current Page:", currentPage);
-console.log("Total Pages:", totalPages);
+// console.log("Results Length:", results.length);
+// console.log("Current Page:", currentPage);
+// console.log("Total Pages:", totalPages);
 
-// Function to update total pages and re-render based on resultsPerPage
-function updateTotalPages() {
-  totalPages = Math.ceil(results.length / resultsPerPage);
-  if (totalPages === 0) totalPages = 1;  // Ensure at least 1 page is displayed
-  showPage(currentPage);
-}
+// // Function to update total pages and re-render based on resultsPerPage
+// function updateTotalPages() {
+//   totalPages = Math.ceil(results.length / resultsPerPage);
+//   if (totalPages === 0) totalPages = 1;  // Ensure at least 1 page is displayed
+//   showPage(currentPage);
+// }
 
-// Function to display results for the current page
-function showPage(page) {
-  if (page < 1 || page > totalPages) {
-    document.getElementById('page-error').textContent = 'Page not found';
-    return;
-  }
+// // Function to display results for the current page
+// function showPage(page) {
+//   if (page < 1 || page > totalPages) {
+//     document.getElementById('page-error').textContent = 'Page not found';
+//     return;
+//   }
 
-  // Hide all results and clear any error message
-  results.forEach((result) => result.style.display = 'none');
-  document.getElementById('page-error').textContent = '';
+//   // Hide all results and clear any error message
+//   results.forEach((result) => result.style.display = 'none');
+//   document.getElementById('page-error').textContent = '';
 
-  // Show only the results for the current page
-  const start = (page - 1) * resultsPerPage;
-  const end = start + resultsPerPage;
-  for (let i = start; i < end; i++) {
-    if (results[i]) {
-      results[i].style.display = 'block';
-    }
-  }
-
-
-  // Update pagination buttons
-  updateVisiblePages(page);
-  // Disable/enable prev/next buttons
-  document.getElementById('prev-page').disabled = page === 1;
-  document.getElementById('next-page').disabled = page === totalPages;
-
-  // Update total entries displayed
-  document.getElementById('pagination-numbers').textContent = `Page ${page} of ${totalPages}`;
-}
-
-// Function to update visible pages in pagination
-// Function to update visible pages in pagination
-function updateVisiblePages(currentPage) {
-  const paginationNumbers = document.getElementById('pagination-numbers');
-  paginationNumbers.innerHTML = ''; // Clear the current page numbers
-
-  const pagesToShow = 5; // Number of pages to display at a time
-  let startPage = Math.max(1, currentPage - Math.floor(pagesToShow / 2)); // Calculate start page
-  let endPage = Math.min(totalPages, startPage + pagesToShow - 1); // Calculate end page
-
-  // Adjust the start and end page to maintain 5 pages if we're at the start or end
-  if (endPage - startPage < pagesToShow - 1) {
-    startPage = Math.max(1, endPage - pagesToShow + 1);
-  }
-
-  // Loop through the calculated page range and create buttons
-  for (let i = startPage; i <= endPage; i++) {
-    const pageButton = document.createElement('button');
-    pageButton.textContent = i;
-    pageButton.classList.add('btn', 'btn-outline-secondary', 'mx-1');
-
-    // Add a click event listener to navigate to the clicked page
-    pageButton.addEventListener('click', () => {
-      currentPage = i;
-      showPage(currentPage);
-    });
-
-    // Highlight the current page button
-    if (i === currentPage) {
-      pageButton.classList.add('active');
-    }
-
-    paginationNumbers.appendChild(pageButton);
-  }
-}
+//   // Show only the results for the current page
+//   const start = (page - 1) * resultsPerPage;
+//   const end = start + resultsPerPage;
+//   for (let i = start; i < end; i++) {
+//     if (results[i]) {
+//       results[i].style.display = 'block';
+//     }
+//   }
 
 
+//   // Update pagination buttons
+//   updateVisiblePages(page);
+//   // Disable/enable prev/next buttons
+//   document.getElementById('prev-page').disabled = page === 1;
+//   document.getElementById('next-page').disabled = page === totalPages;
 
-// Add event listeners for pagination buttons
-document.getElementById('prev-page').addEventListener('click', () => {
-  if (currentPage > 1) {
-    currentPage--;
-    showPage(currentPage);
-  }
-});
+//   // Update total entries displayed
+//   document.getElementById('pagination-numbers').textContent = `Page ${page} of ${totalPages}`;
+// }
 
-document.getElementById('next-page').addEventListener('click', () => {
-  if (currentPage < totalPages) {
-    currentPage++;
-    showPage(currentPage);
-  }
-});
+// // Function to update visible pages in pagination
+// // Function to update visible pages in pagination
+// function updateVisiblePages(currentPage) {
+//   const paginationNumbers = document.getElementById('pagination-numbers');
+//   paginationNumbers.innerHTML = ''; // Clear the current page numbers
 
-// Function to handle "Go to Page" input
-function goToPage() {
-  const pageInput = document.getElementById('page-input').value;
-  const page = parseInt(pageInput);
-  if (!isNaN(page) && page >= 1 && page <= totalPages) {
-    currentPage = page;
-    showPage(currentPage);
-  } else {
-    document.getElementById('page-error').textContent = 'Invalid page number';
-  }
-}
+//   const pagesToShow = 5; // Number of pages to display at a time
+//   let startPage = Math.max(1, currentPage - Math.floor(pagesToShow / 2)); // Calculate start page
+//   let endPage = Math.min(totalPages, startPage + pagesToShow - 1); // Calculate end page
+
+//   // Adjust the start and end page to maintain 5 pages if we're at the start or end
+//   if (endPage - startPage < pagesToShow - 1) {
+//     startPage = Math.max(1, endPage - pagesToShow + 1);
+//   }
+
+//   // Loop through the calculated page range and create buttons
+//   for (let i = startPage; i <= endPage; i++) {
+//     const pageButton = document.createElement('button');
+//     pageButton.textContent = i;
+//     pageButton.classList.add('btn', 'btn-outline-secondary', 'mx-1');
+
+//     // Add a click event listener to navigate to the clicked page
+//     pageButton.addEventListener('click', () => {
+//       currentPage = i;
+//       showPage(currentPage);
+//     });
+
+//     // Highlight the current page button
+//     if (i === currentPage) {
+//       pageButton.classList.add('active');
+//     }
+
+//     paginationNumbers.appendChild(pageButton);
+//   }
+// }
 
 
-function updateCurrentPageDisplay(currentPage, totalPages) {
-  const pageDisplay = document.getElementById('page-display');
-  pageDisplay.textContent = `Page ${currentPage} of ${totalPages}`;
-}
-// Function to handle results per page selection
-function changeResultsPerPage() {
-  const selectedValue = document.getElementById('results-per-page').value;
-  resultsPerPage = parseInt(selectedValue);
-  currentPage = 1;
-  updateTotalPages();
-}
 
-// Event listeners for previous/next buttons
-document.getElementById('prev-page').addEventListener('click', () => {
-  if (currentPage > 1) {
-    currentPage--;
-    showPage(currentPage);
-  }
-});
+// // Add event listeners for pagination buttons
+// document.getElementById('prev-page').addEventListener('click', () => {
+//   if (currentPage > 1) {
+//     currentPage--;
+//     showPage(currentPage);
+//   }
+// });
 
-document.getElementById('next-page').addEventListener('click', () => {
-  if (currentPage < totalPages) {
-    currentPage++;
-    showPage(currentPage);
-  }
-});
+// document.getElementById('next-page').addEventListener('click', () => {
+//   if (currentPage < totalPages) {
+//     currentPage++;
+//     showPage(currentPage);
+//   }
+// });
 
-// Initialize and show first page
-updateTotalPages();
-showPage(currentPage);
+// // Function to handle "Go to Page" input
+// function goToPage() {
+//   const pageInput = document.getElementById('page-input').value;
+//   const page = parseInt(pageInput);
+//   if (!isNaN(page) && page >= 1 && page <= totalPages) {
+//     currentPage = page;
+//     showPage(currentPage);
+//   } else {
+//     document.getElementById('page-error').textContent = 'Invalid page number';
+//   }
+// }
+
+
+// function updateCurrentPageDisplay(currentPage, totalPages) {
+//   const pageDisplay = document.getElementById('page-display');
+//   pageDisplay.textContent = `Page ${currentPage} of ${totalPages}`;
+// }
+// // Function to handle results per page selection
+// function changeResultsPerPage() {
+//   const selectedValue = document.getElementById('results-per-page').value;
+//   resultsPerPage = parseInt(selectedValue);
+//   currentPage = 1;
+//   updateTotalPages();
+// }
+
+// // Event listeners for previous/next buttons
+// document.getElementById('prev-page').addEventListener('click', () => {
+//   if (currentPage > 1) {
+//     currentPage--;
+//     showPage(currentPage);
+//   }
+// });
+
+// document.getElementById('next-page').addEventListener('click', () => {
+//   if (currentPage < totalPages) {
+//     currentPage++;
+//     showPage(currentPage);
+//   }
+// });
+
+// // Initialize and show first page
+// updateTotalPages();
+// showPage(currentPage);
 
 
