@@ -9169,7 +9169,7 @@
   },
   "https://metricshub.com": {
     "StatusCode": 200,
-    "LastSeen": "2024-10-07T14:48:00.1728308939Z"
+    "LastSeen": "2024-10-07T14:48:00.172830893Z"
   },
   "https://microcks.io/": {
     "StatusCode": 206,
@@ -13078,6 +13078,10 @@
   "https://www.merriam-webster.com/dictionary/revision": {
     "StatusCode": 206,
     "LastSeen": "2024-08-02T13:14:58.134837-04:00"
+  },
+  "https://www.metricshub.com/docs/latest/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-11T10:12:52.474776+02:00"
   },
   "https://www.mongodb.com/": {
     "StatusCode": 206,
