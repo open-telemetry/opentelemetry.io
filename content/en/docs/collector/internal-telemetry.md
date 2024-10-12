@@ -37,10 +37,10 @@ service:
     metrics:
       readers:
         - pull:
-           exporter:
-            prometheus:
-              host: '0.0.0.0'
-              port: 8888
+            exporter:
+              prometheus:
+                host: '0.0.0.0'
+                port: 8888
 ```
 
 You can adjust the verbosity of the Collector metrics output by setting the
