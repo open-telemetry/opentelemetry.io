@@ -198,24 +198,42 @@
         </div>
         {{ with .urls.website -}}
         {{ $websiteHref := printf "href=%q" . | safeHTMLAttr -}}
-        <a {{ $websiteHref }} target="_blank" rel="noopener" class="card-link"><i class="fas fa-house" aria-hidden="true"></i>&nbsp;Website</a>
+        <!-- <a {{ $websiteHref }} target="_blank" rel="noopener" class="card-link website-link"><i class="fas fa-house" aria-hidden="true"></i> <span class="website-text">&nbsp;Website</span></a> -->
+        <a {{ $websiteHref }} target="_blank" rel="noopener" class="card-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Website">
+            <i class="fas fa-house" aria-hidden="true"></i>
+        </a>
         {{- end -}}
         {{ with .urls.docs -}}
         {{ $docsHref := printf "href=%q" . | safeHTMLAttr -}}
-        <a {{ $docsHref }} target="_blank" rel="noopener" class="card-link"><i class="fas fa-book" aria-hidden="true"></i>&nbsp;Documentation</a>
+        <!-- <a {{ $docsHref }} target="_blank" rel="noopener" class="card-link"><i class="fas fa-book" aria-hidden="true"></i>&nbsp;Documentation</a> -->
+        <a {{ $docsHref }} target="_blank" rel="noopener" class="card-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Documentation">
+            <i class="fas fa-book" aria-hidden="true"></i>
+        </a>
+          
         {{- end -}}
         {{ with $package -}}
         {{ $packageUrl := printf "href=%q" (printf .urlPattern .name) | safeHTMLAttr -}}
-        <a {{ $packageUrl }} target="_blank" rel="noopener" class="card-link"><i class="{{ .icon }}" aria-hidden="true"></i>&nbspPackage Details ({{ .registry }})</a>
+        <!-- <a {{ $packageUrl }} target="_blank" rel="noopener" class="card-link"><i class="{{ .icon }}" aria-hidden="true"></i>&nbspPackage Details ({{ .registry }})</a> -->
+        <a {{ $packageUrl }} target="_blank" rel="noopener" class="card-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Package Details">
+            <i class="{{ .icon }}" aria-hidden="true"></i>
+        </a>
         {{- end -}}
         {{ with .urls.repo -}}
         {{ $icon := cond ( hasPrefix . "https://github.com/" ) "fa-brands fa-github" "fab fa-git-alt" -}}
         {{ $repoHref := printf "href=%q" . | safeHTMLAttr -}}
-        <a {{ $repoHref }} target="_blank" rel="noopener" class="card-link"><i class="{{ $icon }}" aria-hidden="true"></i>&nbsp;Repository</a>
+        <!-- <a {{ $repoHref }} target="_blank" rel="noopener" class="card-link"><i class="{{ $icon }}" aria-hidden="true"></i>&nbsp;Repository</a> -->
+        <a {{ $repoHref }} target="_blank" rel="noopener" class="card-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Repository">
+            <i class="{{ $icon }}" aria-hidden="true"></i>
+        </a>
+          
         {{- end -}}
         {{ with .urls.demo -}}
         {{ $demoUrl := printf "href=%q" (printf .) | safeHTMLAttr -}}
-        <a {{ $demoUrl }} target="_blank" rel="noopener" class="card-link"><i class="fa-solid fa-shapes" aria-hidden="true"></i>&nbsp;Demo Service</a>
+        <!-- <a {{ $demoUrl }} target="_blank" rel="noopener" class="card-link"><i class="fa-solid fa-shapes" aria-hidden="true"></i>&nbsp;Demo Service</a> -->
+        <a {{ $demoUrl }} target="_blank" rel="noopener" class="card-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Demo Service">
+            <i class="fa-solid fa-shapes" aria-hidden="true"></i>
+        </a>
+          
         {{- end -}}
         </div>
     </li>
