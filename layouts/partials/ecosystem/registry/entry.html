@@ -97,14 +97,13 @@
           {{ end -}}
 
           {{ if $isNative -}}
-          <button type="button" class="badge rounded-pill text-bg-success text-white"
-          onclick="document.getElementById('input-s').value = 'native'; document.getElementById('input-language').value = 'all';document.getElementById('input-component').value = 'all';document.getElementById('searchForm').submit();">
-          <i class="fa-solid fa-puzzle-piece"></i> native</button>
+          <button type="button" data-filter-value = "native" class="badge rounded-pill text-bg-success text-white" title="Click to filter by native tag">
+            <i class="fa-solid fa-puzzle-piece">
+          </i> native</button>
           {{ end -}}
 
           {{ if $isFirstParty -}}
-          <button type="button" class="badge rounded-pill text-bg-success text-white"
-            onclick="document.getElementById('input-s').value = 'first party integration'; document.getElementById('input-language').value = 'all';document.getElementById('input-component').value = 'all';document.getElementById('searchForm').submit();">
+          <button type="button" data-filter-value = "first party integration" class="badge rounded-pill text-bg-success text-white" title="Click to filter by first party tag">
             <i class="fa-solid fa-heart"></i> first party integration</button>
           {{ end -}}
 
@@ -113,14 +112,12 @@
           {{ end -}}
 
           {{ if $deprecated -}}
-          <button type="button" class="badge rounded-pill text-bg-danger text-white" title=""
-            onclick="document.getElementById('input-s').value = 'deprecated'; document.getElementById('input-language').value = 'all';document.getElementById('input-component').value = 'all';document.getElementById('searchForm').submit();">
+          <button type="button" data-filter-value = "deprecated" class="badge rounded-pill text-bg-danger text-white" title="Click to filter by deprecated tag">
             <i class="fa-solid fa-ban"></i> deprecated</button>
           {{ end -}}
 
           {{ if .cncfProjectLevel -}}
-          <button type="button" class="badge rounded-pill text-bg-primary text-white" title="CNCF {{ .cncfProjectLevel}} Project"
-            onclick="document.getElementById('input-s').value = {{ .cncfProjectLevel }}; document.getElementById('input-language').value = 'all';document.getElementById('input-component').value = 'all';document.getElementById('searchForm').submit();">
+          <button type="button" data-filter-value = "{{ .cncfProjectLevel }}" class="badge rounded-pill text-bg-primary text-white" title="Click to filter by CNCF {{ .cncfProjectLevel}} Project">
             <img alt="CNCF" style="display: inline-block; width: 14px; height: 14px; border: none; margin:0px; padding: 0; vertical-align:middle" src="/img/cncf-icon-white.svg"> {{ .cncfProjectLevel }}</button>
           {{ end -}}
           </div>

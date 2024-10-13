@@ -75,6 +75,7 @@ if (pathName.includes('registry')) {
       executeSearch(searchQuery);
     });
 
+
     let searchInput = document.getElementById('input-s');
     searchInput.addEventListener('keyup', function (evt) {
       autoSuggest(evt.target.value);
@@ -107,6 +108,21 @@ if (pathName.includes('registry')) {
       }),
     );
   });
+  
+  // Filter by clicking tags
+  function applyTagFilter(filterValue) {
+    document.getElementById('input-s').value = filterValue;
+    document.getElementById('input-language').value = 'all';
+    document.getElementById('input-component').value = 'all';
+
+    document.getElementById('searchForm').dispatchEvent(new Event('submit'));
+  }
+  document.querySelectorAll('[data-filter-value]').forEach((element) => {
+    element.addEventListener('click', (evt) => {
+      let filterValue = evt.currentTarget.getAttribute('data-filter-value');
+      applyTagFilter(filterValue);
+    });
+  });
 }
 
 function showBody() {
@@ -124,7 +140,6 @@ function executeSearch(searchQuery) {
     showBody();
     return;
   }
-
   document.title = searchQuery + ' at ' + originalDocumentTitle;
   document.querySelector('#input-s').value = searchQuery;
   document.querySelector('#default-body').style.display = 'none';
