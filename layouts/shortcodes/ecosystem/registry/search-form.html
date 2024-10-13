@@ -98,12 +98,20 @@ ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry
     <span role="status">Loading results…</span>
   </div>
   <ul class="list-unstyled" id="search-results"></ul>
-  <ul class="list-unstyled" id="default-body" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+  <!-- <ul class="list-unstyled" id="default-body" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
     {{ range $key, $value := $registry -}}
       {{ $value = merge $value (dict "_key" $key) -}}
       {{ partial "ecosystem/registry/entry" (dict "value" $value "languageNames" $languageNames) }}
     {{ end -}}
-  </ul>
+  </ul> -->
+  <div class="container">
+    <div class="row row-cols-1 row-cols-3 ">
+      {{ range $key, $value := $registry -}}
+      {{ $value = merge $value (dict "_key" $key) -}}
+      {{ partial "ecosystem/registry/entry" (dict "value" $value "languageNames" $languageNames) }}
+    {{ end -}}  <!-- Cards will go here -->
+    </div>
+</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/minisearch@7.1.0/dist/umd/index.min.js" integrity="sha384-58p1D2xuw/76VRFUgDMRcrtnJAW5LWLE02ihn8aITu65c4vgo+BLy7raRKNC7KaL" crossorigin="anonymous"></script>
