@@ -43,14 +43,14 @@ ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry
 <div class="pb-4">
   <form action="/ecosystem/registry" id="searchForm">
     <div class="input-group">
-      <span class="input-group-text" id="basic-addon1" title="{{ len $registry }} entries">Search {{ len $registry }} entries</span>
-      <input class="form-control w-auto" list="search-suggestions" id="input-s" type="text" name="s" placeholder="Type to search…"
+      <span class="input-group-text mb-3" id="basic-addon1" title="{{ len $registry }} entries">Search {{ len $registry }} entries</span>
+      <input class="form-control mb-3 w-auto" list="search-suggestions" id="input-s" type="text" name="s" placeholder="Type to search…"
         aria-label="Registry search input field">
         <datalist id="search-suggestions"></datalist>
 
 
       <input type="hidden" name="component" id="input-component" value="" />
-      <input type="hidden" name="language" id="input-language" value="" />
+      <input type="hidden" name="language" id="input-language" value="" /> 
 
       <button type="button" class="btn btn-outline-success"
         onclick="document.getElementById('searchForm').submit();">Submit</button>

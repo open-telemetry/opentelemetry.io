@@ -9,9 +9,9 @@
 
 $nbsp: \00A0;
 
-@mixin external-link-icon() {
+@mixin external-link-icon() {   
   @extend .fas;
-  display: inline;
+  display: inline; 
   @include font-size(60%);
   opacity: 0.8;
   vertical-align: text-top;
@@ -21,7 +21,7 @@ $nbsp: \00A0;
 .td-sidebar-nav a[target='_blank']:after,
 a.external-link:after {
   @include external-link-icon();
-}
+} 
 
 .td-footer a.external-link:after {
   display: none !important;

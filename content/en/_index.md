@@ -59,7 +59,7 @@ you analyze your software's performance and behavior.
 
 Create and collect telemetry from your services and software, then forward it to
 a variety of analysis tools.
-
+ 
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fas fa-magic" title="Drop-in Instrumentation & Integrations" %}}

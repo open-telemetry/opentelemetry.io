@@ -39,3 +39,21 @@
 .registry-entry {
   @extend .shadow;
 }
+
+// New styles for mobile search component
+.input-group {
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    .input-group-text,
+    .form-control,
+    .btn,
+    .dropdown-toggle {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+}
