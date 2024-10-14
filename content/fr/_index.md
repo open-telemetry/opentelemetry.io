@@ -8,6 +8,7 @@ outputs:
 developer_note:
   La macro "blocks/cover" définie ci-dessous permet d'utiliser comme image de fond tout visuel contenant "background" dans son nom. 
 show_banner: true
+default_lang_commit:
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
@@ -35,7 +36,7 @@ show_banner: true
 <div class="l-get-started-buttons">
 
 - [Dev](docs/getting-started/dev/)
-- [Sys Admin](docs/getting-started/ops/)
+- [Ops](docs/getting-started/ops/)
 
 </div>
 {{< /blocks/cover >}}

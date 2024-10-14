@@ -263,6 +263,19 @@ module:
       target: content/docs
       lang: es
 
+    ## fr
+    - source: content/fr
+      target: content
+      lang: fr
+    # fallback pages
+    - source: content/en/announcements
+      target: content/announcements
+      lang: fr
+    - excludeFiles: specs/*
+      source: content/en/docs
+      target: content/docs
+      lang: fr
+
     ## ja
     - source: content/ja
       target: content
