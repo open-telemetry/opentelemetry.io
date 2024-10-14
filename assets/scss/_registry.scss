@@ -42,7 +42,7 @@
 
 
 // Optimize styles and responsiveness for dark and light mode, see https://getbootstrap.com/docs/5.3/customize/color-modes/    
-.btn {
+.btn.btn-outline-success {
   color: var(--bs-emphasis-color);
 
   &:hover,
@@ -53,7 +53,7 @@
   }
 }
 
-.badge{
+.badge.rounded-pill.text-bg-primary{
   font-weight: $font-weight-bold;
 }
 
