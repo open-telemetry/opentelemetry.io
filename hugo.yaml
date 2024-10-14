@@ -23,7 +23,7 @@ languages:
   fr:
     languageName: Français
     params:
-      description: Site du project OpenTelemetry
+      description: Site du projet OpenTelemetry
   ja:
     languageName: 日本語 (Japanese)
     params:
