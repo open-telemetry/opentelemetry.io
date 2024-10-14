@@ -64,7 +64,7 @@ transmettez-les à une multitude d'outils d'analyse.
 
 {{% /blocks/feature %}}
 
-{{% blocks/feature icon="fas fa-magic" title=" Instrumentation & Intégrations clé en main" %}}
+{{% blocks/feature icon="fas fa-magic" title="Instrumentation & Intégrations clé en main" %}}
 
 OpenTelemetry [s'intègre] avec de nombreux librairies et frameworks et propose
 une [instrumentation] _code et no-code_.
