@@ -9,7 +9,7 @@
   @each $component, $color in $otel-registry-license-colors {
     &.badge-#{$component} {
       color: white;
-      background-color: $color;
+      background-color: $color; 
     }
   }
 
@@ -38,4 +38,126 @@
 
 .registry-entry {
   @extend .shadow;
+
+  .card-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .badge-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .badge {
+    display: inline-block;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0.25em 0.5em;
+    font-size: 0.75em;
+    line-height: 1;
+    border-radius: 0.25rem;
+  }
 }
+
+// Mobile styles
+@media screen and (max-width: 768px) {
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    .input-group-text,
+    .form-control,
+    .btn,
+    .dropdown-toggle {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+
+  .registry-entry {
+    .card-body {
+      padding: 1rem;
+    }
+
+    .card-title {
+      margin-bottom: 0.5rem;
+    }
+
+    .badge-container {
+      margin-top: 0.5rem;
+    }
+
+    .badge {
+      margin-bottom: 0.25rem;
+    }
+
+    .row {
+      margin: 0;
+    }
+
+    .col, .col-md-9, .col-lg-10, .col-md-3, .col-lg-2 {
+      padding: 0;
+    }
+
+    .list-group {
+      margin-top: 1rem;
+    }
+
+    .card-link {
+     
+        display: inline-block;
+        margin-bottom: 0.5rem;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+  
+  // Additional responsive adjustments
+  @media screen and (max-width: 576px) {
+    .registry-entry {
+      .card-body {
+        padding: 0.75rem;
+      }
+  
+      .badge-container {
+        margin-top: 0.75rem;
+      }
+  
+      .badge {
+        font-size: 0.7em;
+        padding: 0.2em 0.4em;
+      }
+  
+      .card-link {
+        font-size: 0.9em;
+        margin-right: 0.4rem;
+      }
+    }
+  }
+  
+  // Ensure proper spacing for the last badge in a row
+  .badge-container .badge:last-child {
+    margin-right: 0;
+  }
+  
+  // Improve readability of badge text
+  .badge {
+    font-weight: 500;
+    letter-spacing: 0.025em;
+  }
+  
+  // Enhance hover effect for card links
+  .card-link {
+    transition: color 0.2s ease-in-out;
+  
+    &:hover {
+      text-decoration: none;
+      color: darken($link-color, 15%);
+    }
+  }
