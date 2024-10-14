@@ -1530,8 +1530,8 @@ to breaking changes, the intent is to stabilize `opentelemetry-semconv` and
 leave the `-alpha` suffix on `opentelemetry-semconv-incubating` permanently.
 Libraries can use `opentelemetry-semconv-incubating` for testing, but should not
 include it as a dependency: since attributes may come and go from version to
-version, including as a dependency may expose end users to runtime errors when
-transitive version conflicts occur. {{% /alert %}}
+version, including it as a dependency may expose end users to runtime errors
+when transitive version conflicts occur. {{% /alert %}}
 
 The attribute constants generated from semantic conventions are instances of
 `AttributeKey<T>`, and can be used anywhere the OpenTelemetry API accepts

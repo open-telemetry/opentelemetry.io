@@ -66,7 +66,7 @@ Library instrumentation.
 
 The Java agent is a form of zero-code
 [automatic instrumentation](/docs/specs/otel/glossary/#automatic-instrumentation)
-that dynamically manipulations application bytecode.
+that dynamically manipulates application bytecode.
 
 For a list of libraries instrumented by the Java agent, see the
 "Auto-instrumented versions" column on
