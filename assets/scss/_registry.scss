@@ -41,11 +41,28 @@
 }
 
 // Scroll-to-top button styling
-
 @media screen and (max-width: 768px) {
   .scroll-to-top-btn {
     bottom: 20px;
     right: 20px;
-    padding: 10px;
   }
+}
+
+/* Sticky search form */
+#searchForm {
+  position: relative; /* Default position */
+  z-index: 1000; 
+  transition: all 0.3s ease;
+  width: auto; 
+  margin: 0 auto; 
+}
+
+/* Sticky state when scrolled */
+#searchForm.sticky {
+  position: fixed; 
+  top: 100px; 
+  left: 50%; 
+  transform: translateX(-50%);
+  width: auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
