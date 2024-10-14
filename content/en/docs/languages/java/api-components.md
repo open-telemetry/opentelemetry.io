@@ -1,6 +1,5 @@
 ---
 title: Record Telemetry with API
-linkTitle: Record Telemetry with API
 weight: 11
 logBridgeWarning: >
   While the `LoggerProvider` / `Logger` APIs are structurally similar to the
