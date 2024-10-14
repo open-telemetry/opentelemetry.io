@@ -26,6 +26,7 @@ librairies
 logiciels
 métriques
 nombreux
+nombreuses
 observabilité
 outils
 permet
