@@ -75,7 +75,8 @@ From Collector v0.110.0, the default endpoints for all servers in Collector
 components are set to `localhost:4317` for `gRPC` ports or `localhost:4318` for
 `http` ports. For earlier versions of the Collector, change the default endpoint
 from `0.0.0.0` to `localhost` in all components by enabling the
-`component.UseLocalHostAsDefaultHost` feature gate.
+`component.UseLocalHostAsDefaultHost`
+[feature gate](https://github.com/open-telemetry/opentelemetry-collector/tree/main/featuregate).
 
 If `localhost` resolves to a different IP due to your DNS settings, then
 explicitly use the loopback IP instead: `127.0.0.1` for IPv4 or `::1` for IPv6.
@@ -141,23 +142,51 @@ configuration.
 
 ### Safeguard resource utilization
 
-Processors also offer safeguards for resource utilization. After implementing
-safeguards for resource utilization in your
-[hosting infrastructure](/docs/security/hosting-best-practices/), make sure your
-OpenTelemetry Collector configuration uses these safeguards.
+After implementing safeguards for resource utilization in your
+[hosting infrastructure](/docs/security/hosting-best-practices/), consider
+adding these safeguards to your OpenTelemetry Collector configuration.
 
-<!-- start same page content in hosting-best-practices -->
+Batching your telemetry and limiting the memory available to your Collector can
+prevent out-of-memory errors and usage spikes. You can also handle traffic
+spikes by adjusting queue sizes to manage memory usage while avoiding data loss.
+For example, use the
+[`exporterhelper`](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/exporterhelper/README.md)
+to manage queue size for your `otlp` exporter:
 
-The `batch` and `memory_limiter` processors help ensure the OpenTelemetry
-Collector is resource efficient and does not run out of memory when overloaded.
-These two processors should be enabled on every defined pipeline.
+```yaml
+exporters:
+  otlp:
+    endpoint: <ENDPOINT>
+    sending_queue:
+      queue_size: 800
+```
 
-For more information on recommended processors and how to order them in your
-configuration, see the
-[Collector processor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor)
-documentation.
+Filtering unwanted telemetry is another way you can protect your Collector's
+resources. Not only does filtering protect your Collector instance, but it also
+reduces the load on your backend. You can use the
+[`filter` processor](/docs/collector/transforming-telemetry/#basic-filtering) to
+drop logs, metrics, and spans you don't need. For example, here's a
+configuration that drops non-HTTP spans:
 
-<!-- /end same page content in hosting-best-practices -->
+```yaml
+processors:
+  filter:
+    error_mode: ignore
+    traces:
+      span:
+        - attributes["http.request.method"] == nil
+```
+
+You can also configure your components with appropriate timeout and retry
+limits. These limits should allow your Collector to handle failures without
+accumulating too much data in memory. See the
+[`exporterhelper` documentation](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/exporterhelper/README.md)
+for more information.
+
+Finally, consider using compression with your exporters to reduce the send size
+of your data and conserve network and CPU resources. By default, the
+[`otlp` exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter)
+uses `gzip` compression.
 
 ## Extensions
 
