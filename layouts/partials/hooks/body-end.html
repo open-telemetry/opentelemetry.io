@@ -2,5 +2,7 @@
   {{ partial "script.html" (dict "src" "js/tracing.js") -}}
 {{ end -}}
 {{ partial "script.html" (dict "src" "js/navScroll.js") -}}
-{{ $js := resources.Get "js/scrollToTop.js" | minify | fingerprint }}
-<script src="{{ $js.Permalink }}"></script>
+{{ $scrollToTopJs := resources.Get "js/scrollToTop.js" | minify | fingerprint }}
+<script src="{{ $scrollToTopJs.Permalink }}"></script>
+{{ $stickySearchJs := resources.Get "js/stickySearch.js" | minify | fingerprint }}
+<script src="{{ $stickySearchJs.Permalink }}"></script>
