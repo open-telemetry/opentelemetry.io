@@ -77,7 +77,7 @@ une [instrumentation] _code et no-code_.
 {{% blocks/feature icon="fab fa-github" title="Open Source, Indépendant" %}}
 
 Entièrement gratuit et open source, OpenTelemetry est [utilisé] et supporté par
-les [leaders] sur le marché de l'observabilité.
+des [leaders] du marché de l'observabilité.
 
 [utilisé]: /ecosystem/adopters/
 [leaders]: /ecosystem/vendors/
