@@ -5,6 +5,7 @@ aliases:
   - /docs/java/manual_instrumentation
   - manual
   - manual_instrumentation
+  - /docs/languages/java/libraries/
 weight: 10
 description: Instrumentation ecosystem in OpenTelemetry Java
 cSpell:ignore: Logback logback
@@ -63,8 +64,9 @@ Library instrumentation.
 
 ### Zero-code: Java agent
 
-The Java agent is a form of zero-code instrumentation that dynamically
-manipulations application bytecode.
+The Java agent is a form of zero-code
+[automatic instrumentation](/docs/specs/otel/glossary/#automatic-instrumentation)
+that dynamically manipulations application bytecode.
 
 For a list of libraries instrumented by the Java agent, see the
 "Auto-instrumented versions" column on
@@ -74,8 +76,9 @@ See [Java agent](/docs/zero-code/java/agent/) for more details.
 
 ### Zero-code: Spring Boot starter
 
-The Spring Boot starter is a form of zero-code instrumentation that leverages
-spring autoconfigure to install
+The Spring Boot starter is a form of zero-code
+[automatic instrumentation](/docs/specs/otel/glossary/#automatic-instrumentation)
+that leverages spring autoconfigure to install
 [library instrumentation](#library-instrumentation).
 
 See [Spring Boot starter](/docs/zero-code/java/spring-boot-starter/) for
@@ -83,8 +86,9 @@ details.
 
 ### Library instrumentation
 
-Library instrumentation wraps or uses extension points to instrument a library,
-requiring users to install and/or adapt library usage.
+[Library instrumentation](/docs/specs/otel/glossary/#instrumentation-library)
+wraps or uses extension points to instrument a library, requiring users to
+install and/or adapt library usage.
 
 For a list of instrumentation libraries, see the "Standalone Library
 Instrumentation" column on
@@ -92,20 +96,21 @@ Instrumentation" column on
 
 ### Native instrumentation
 
-Native instrumentation is built directly into libraries or frameworks.
-OpenTelemetry encourages library authors to add native instrumentation using the
-[API](../api-components/). In the long term, we hope the native instrumentation
-becomes the norm, and view the instrumentation maintained by OpenTelemetry in
+[Native instrumentation](/docs/specs/otel/glossary/#natively-instrumented) is
+built directly into libraries or frameworks. OpenTelemetry encourages library
+authors to add native instrumentation using the [API](../api-components/). In
+the long term, we hope the native instrumentation becomes the norm, and view the
+instrumentation maintained by OpenTelemetry in
 [opentelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
 as a temporary means of filling the gap.
 
-For a list of libraries with native instrumentation, look for entries with the
-"native" badge in the [registry](/ecosystem/registry/?language=java).
+{{% docs/languages/native-libraries "java" %}}
 
 ### Manual instrumentation
 
-Manual instrumentation is written by application authors, and typically specific
-to the application domain.
+[Manual instrumentation](/docs/specs/otel/glossary/#manual-instrumentation) is
+written by application authors, and typically specific to the application
+domain.
 
 ### Shims
 
