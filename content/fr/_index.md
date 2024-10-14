@@ -57,7 +57,7 @@ performance et le comportement de vos logiciels.
 
 {{% blocks/section color="dark" type="row" %}}
 
-{{% blocks/feature icon="fas fa-chart-line" title="Traces, Metrics, Logs" url="docs/concepts/observability-primer/" %}}
+{{% blocks/feature icon="fas fa-chart-line" title="Traces, Métriques, Logs" url="docs/concepts/observability-primer/" %}}
 
 Créez et collectez des données de télémétrie pour vos services et vos logiciels,
 transmettez-les à une multitude d'outils d'analyse.
@@ -67,7 +67,7 @@ transmettez-les à une multitude d'outils d'analyse.
 {{% blocks/feature icon="fas fa-magic" title=" Instrumentation & Intégrations clé en main" %}}
 
 OpenTelemetry [s'intègre] avec de nombreux librairies et frameworks et propose
-une [instrumentation] _code et no-code_ .
+une [instrumentation] _code et no-code_.
 
 [instrumentation]: /docs/concepts/instrumentation/
 [s'intègre]: /ecosystem/integrations/
