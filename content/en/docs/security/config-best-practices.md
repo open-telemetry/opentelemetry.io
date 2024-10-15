@@ -2,6 +2,7 @@
 title: Collector configuration best practices
 linkTitle: Collector configuration
 weight: 112
+cSpell:ignore: exporterhelper
 ---
 
 When configuring the OpenTelemetry (OTel) Collector, consider these best
