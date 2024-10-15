@@ -92,6 +92,7 @@
             {{- .title | markdownify -}}
             </a>
             <div class="ms-auto">
+                <!-- Existing badge code -->
             {{ if $isNew -}}
             <span class="badge rounded-pill text-bg-info"><i class="fa-regular fa-star"></i> new</span>
             {{ end -}}
@@ -113,44 +114,6 @@
             </span>
             {{ end -}}
             </div>
-              <ul class="tags">
-                 <li>
-                     <a href="/search?q=keywords:opentelemetry" class="_69ac86b8 f6 link fl dib fw4 black-90 bg-black-05 hover-bg-black-10 br2 hover-black ph2 pv1">opentelemetry</a>
-                 </li>
-                 <li>
-                    <a href="/search?q=keywords:nodejs" class="_69ac86b8 f6 link fl dib fw4 black-90 bg-black-05 hover-bg-black-10 br2 hover-black ph2 pv1">nodejs</a>
-                 </li>
-                 <li>
-                    <a href="/search?q=keywords:tracing" class="_69ac86b8 f6 link fl dib fw4 black-90 bg-black-05 hover-bg-black-10 br2 hover-black ph2 pv1">tracing</a>
-                 </li>
-                 <li>
-                    <a href="/search?q=keywords:exporter" class="_69ac86b8 f6 link fl dib fw4 black-90 bg-black-05 hover-bg-black-10 br2 hover-black ph2 pv1">exporter</a>
-                 </li>
-                 <li>
-                    <a href="/search?q=keywords:go-collector" class="_69ac86b8 f6 link fl dib fw4 black-90 bg-black-05 hover-bg-black-10 br2 hover-black ph2 pv1">collector</a>
-                 </li>
-                 <li>
-                    <a href="/search?q=keywords:javascript" class="_69ac86b8 f6 link fl dib fw4 black-90 bg-black-05 hover-bg-black-10 br2 hover-black ph2 pv1">javascript</a>
-                 </li>
-                 <li>
-                    <a href="/search?q=keywords:java" class="_69ac86b8 f6 link fl dib fw4 black-90 bg-black-05 hover-bg-black-10 br2 hover-black ph2 pv1">java</a>
-                 </li>
-                 <li>
-                    <a href="/search?q=keywords:rust" class="_69ac86b8 f6 link fl dib fw4 black-90 bg-black-05 hover-bg-black-10 br2 hover-black ph2 pv1">rust</a>
-                 </li>
-                 <li>
-                    <a href="/search?q=keywords:go" class="_69ac86b8 f6 link fl dib fw4 black-90 bg-black-05 hover-bg-black-10 br2 hover-black ph2 pv1">go</a>
-                 </li>
-                 <li>
-                    <a href="/search?q=keywords:python" class="_69ac86b8 f6 link fl dib fw4 black-90 bg-black-05 hover-bg-black-10 br2 hover-black ph2 pv1">python</a>
-                 </li>
-                 <li>
-                    <a href="/search?q=keywords:ruby" class="_69ac86b8 f6 link fl dib fw4 black-90 bg-black-05 hover-bg-black-10 br2 hover-black ph2 pv1">ruby</a>
-                 </li>
-                 <li>
-                    <a href="/search?q=keywords:instrumentation" class="_69ac86b8 f6 link fl dib fw4 black-90 bg-black-05 hover-bg-black-10 br2 hover-black ph2 pv1">instrumentation</a>
-                 </li>
-            </ul>
         </h4>
         <p class="card-text">
             <small class="text-body-secondary">
@@ -179,6 +142,26 @@
                     {{ end -}}
                     {{- .description | markdownify -}}
                 </div>
+
+                <!-- New Tags section -->
+                <div class="tags mb-2">
+                    {{ if .tags }}
+                        <div>
+                            {{ range .tags }}
+                                <span class="badge bg-primary me-1">{{ . }}</span>
+                            {{ end }}
+                <!-- Predefined tags-->
+                            <span class="badge bg-primary me-1">opentelemetry</span>
+                            <span class="badge bg-primary">javascript</span>
+                            <span class="badge bg-secondary">instrumentation</span>
+                            <span class="badge bg-success">nodejs</span>
+                            <span class="badge bg-info">tracing</span>
+                            <span class="badge bg-warning text-dark">exporter</span>
+                            <span class="badge bg-warning">collector</span>
+                        </div>
+                    {{ end }}
+                </div>
+
                 {{ with $package -}}
                     {{ if not (eq .quickInstall false) }}
                     <h6><i class="fa-solid fa-forward"></i> Quick Install</h6>
@@ -230,6 +213,7 @@
             </li>
             {{- end -}}
             </div>
+            <!-- Existing URL links -->
         </div>
         <div>
 
