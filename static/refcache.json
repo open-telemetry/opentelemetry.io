@@ -5899,6 +5899,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-23T20:33:47.852068252Z"
   },
+  "https://github.com/open-telemetry/community/issues/2329": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-15T15:52:36.027937+01:00"
+  },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:16.771654-05:00"
