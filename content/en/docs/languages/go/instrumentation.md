@@ -210,7 +210,7 @@ mutex.Unlock()
 ```
 
 A useful characteristic of events is that their timestamps are displayed as
-offsets from the beginning of the span, allowing you to easily see how much time
+offsets from the beginning of the span, allowing you to see how much time
 elapsed between them.
 
 Events can also have attributes of their own -

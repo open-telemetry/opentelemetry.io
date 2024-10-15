@@ -229,7 +229,7 @@ spec:
 Some receivers are actively obtaining telemetry data to place in the pipeline,
 like the hostmetrics and prometheus receivers. While getting host metrics isn’t
 something we’d typically scale up, we might need to split the job of scraping
-thousands of endpoints for the Prometheus receiver. And we can’t simply add more
+thousands of endpoints for the Prometheus receiver. And we can’t add more
 instances with the same configuration, as each Collector would try to scrape the
 same endpoints as every other Collector in the cluster, causing even more
 problems, like out-of-order samples.
