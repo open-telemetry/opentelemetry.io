@@ -12,7 +12,7 @@ to inject auto-instrumentation without having to modify each of your services
 directly.
 [See the OpenTelemetry Operator Auto-instrumentation docs for more details.](/docs/kubernetes/operator/automatic/)
 
-### Python specific topics
+### Python-specific topics
 
 #### Libraries with binary wheels
 
