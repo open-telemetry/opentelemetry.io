@@ -33,7 +33,7 @@ Your OTel Collector configuration should include encryption and authentication.
 - For authentication, use the OTel Collector's authentication mechanism, as
   described in [Authentication](/docs/collector/configuration/#authentication).
 
-### Minimize the components in your configuration
+### Minimize the number of components
 
 We recommend limiting the set of components in your Collector configuration to
 only those you need. Minimizing the number of components you use minimizes the
@@ -60,7 +60,7 @@ Some components can increase the security risk of your Collector pipelines.
 
 ## Manage specific security risks
 
-Configure your Collector to block these threats to security.
+Configure your Collector to block these security threats.
 
 ### Protect against denial of service attacks
 
@@ -136,14 +136,13 @@ processors:
 ```
 
 See the
-[README](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor)
-for more details on adding the `redaction` processor to your Collector
-configuration.
+[documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor)
+to learn how to add the `redaction` processor to your Collector configuration.
 
 ### Safeguard resource utilization
 
 After implementing safeguards for resource utilization in your
-[hosting infrastructure](/docs/security/hosting-best-practices/), consider
+[hosting infrastructure](/docs/security/hosting-best-practices/), consider also
 adding these safeguards to your OpenTelemetry Collector configuration.
 
 Batching your telemetry and limiting the memory available to your Collector can
