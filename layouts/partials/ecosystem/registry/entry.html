@@ -148,7 +148,8 @@
                     {{ if .tags }}
                         <div>
                             {{ range .tags }}
-                                <span class="badge bg-light me-1">{{ . }}</span>
+                                {{ $tag := . }} <!-- Store the tag in a variable -->
+                                <a href="/search?query={{ $tag | urlQuery }}" class="badge bg-light me-1">{{ $tag }}</a>
                             {{ end }}
                         </div>
                     {{ end }}
