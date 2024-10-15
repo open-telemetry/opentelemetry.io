@@ -130,7 +130,7 @@
                 {{ end -}}
                 </small>
             </p>
-            <div class="row p-2">
+            <div class="row p-2"> 
                 <div class="col col-md-9 col-lg-10"> 
                     <div class="mb-3">
                         {{ if $deprecated -}}
@@ -139,7 +139,7 @@
                                 {{ .deprecated.reason | markdownify }}
                             </div>
                         {{ end -}} 
-                        {{- .description | markdownify -}}
+                        {{- .description | markdownify -}} 
                     </div>
                     {{ with $package -}} 
                         {{ if not (eq .quickInstall false) }} 
@@ -209,13 +209,13 @@
             {{ with .urls.repo -}}
             {{ $icon := cond ( hasPrefix . "https://github.com/" ) "fa-brands fa-github" "fab fa-git-alt" -}}
             {{ $repoHref := printf "href=%q" . | safeHTMLAttr -}}
-            <a {{ $repoHref }} target="_blank" rel="noopener" class="card-link"><i class="{{ $icon }}" aria-hidden="true"></i>&nbsp;Repository</a>
+            <a {{ $repoHref }} target="_blank" rel="noopener" class="card-link github-link"><i class="{{ $icon }}" aria-hidden="true"></i>&nbsp;Repository</a>
             {{- end -}}
             {{ with .urls.demo -}}
             {{ $demoUrl := printf "href=%q" (printf .) | safeHTMLAttr -}}
             <a {{ $demoUrl }} target="_blank" rel="noopener" class="card-link"><i class="fa-solid fa-shapes" aria-hidden="true"></i>&nbsp;Demo Service</a>
             {{- end -}}
             </div>
-        </div>
+        </div> 
     </li>
-{{ end -}} 
+{{ end -}}  
