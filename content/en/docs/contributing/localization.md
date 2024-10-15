@@ -211,12 +211,14 @@ to write and review translations in the language you want to add. You need at
 least two potential contributors, three would be ideal. Include the following
 task list in your issue as well:
 
-- List at least 2 contributors for the new language: `<@gitHubHandle1>`,
+```
+- [ ] List at least 2 contributors for the new language: `<@gitHubHandle1>`,
   `<@gitHubHandle2>`, ...
-- Localize index page to `<your language>`
-- Create an issue label for `lang:<shortcode>`
-- Create org-level group for `<shortcode>` approvers
-- Update components owners for `content/<shortcode>`
+- [ ] Localize index page to `<your language>`
+- [ ] Create an issue label for `lang:<shortcode>`
+- [ ] Create org-level group for `<shortcode>` approvers
+- [ ] Update components owners for `content/<shortcode>`
+```
 
 For the `<shortcode>` use the
 [ISO 639-1 code](https://en.wikipedia.org/wiki/ISO_639-1) for the language you
