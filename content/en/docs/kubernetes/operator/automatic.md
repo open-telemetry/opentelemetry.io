@@ -429,7 +429,7 @@ spec:
 ```
 
 See the
-[Python agent Configuration docs](/docs/zero-code/python/configuration/#disabling-specific-instrumentations)
+[Python agent configuration docs](/docs/zero-code/python/configuration/#disabling-specific-instrumentations)
 for more details.
 
 #### Learn more {#python-learn-more}
