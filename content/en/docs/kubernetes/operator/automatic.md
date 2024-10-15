@@ -434,10 +434,10 @@ for more details.
 
 #### Learn more {#python-learn-more}
 
-For Python specific quirks, see
-[Python OpenTelemetry Operator specific topics](/docs/zero-code/python/operator/#python-specific-topics)
+For Python-specific quirks, see
+[Python OpenTelemetry Operator docs](/docs/zero-code/python/operator/#python-specific-topics)
 and the
-[Python agent Configuration docs](/docs/zero-code/python/configuration/).
+[Python agent configuration docs](/docs/zero-code/python/configuration/).
 
 ### Go
 
