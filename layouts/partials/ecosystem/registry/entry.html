@@ -270,9 +270,9 @@ $remoteRegistries := dict
 
 
 <!-- Individual card structure -->
-<div class="card  registry-entry {{ $highlightStyle }}" data-registry-id="{{ ._key }}"
+<div class="card m-2 registry-entry p-0 {{ $highlightStyle }}" style="max-width: 340px; min-width:200px;" data-registry-id="{{ ._key }}"
     data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
-    <div class=" card-header p-0">
+    <div class="card-header p-2 d-flex w-100">
         <div class="col-8">
             <a {{ $primaryHref }} target="_blank" rel="noopener" class="me-auto">
                 {{- .title | markdownify -}}
@@ -342,49 +342,60 @@ $remoteRegistries := dict
             </div>
         </div>
     </div>
-    <div class="row p-0 card-body">
-        <div class="col-1 card-text">
-            {{ with .urls.website -}}
-            {{ $websiteHref := printf "href=%q" . | safeHTMLAttr -}}
-            <a {{ $websiteHref }} target="_blank" rel="noopener" class="card-link" data-bs-toggle="tooltip"
-                data-bs-placement="top" title="Website">
-                <i class="fas fa-house" aria-hidden="true"></i>
-            </a>
-            {{- end -}}
-            {{ with .urls.docs -}}
-            {{ $docsHref := printf "href=%q" . | safeHTMLAttr -}}
-            <a {{ $docsHref }} target="_blank" rel="noopener" class="card-link" data-bs-toggle="tooltip"
-                data-bs-placement="top" title="Documentation">
-                <i class="fas fa-book" aria-hidden="true"></i>
-            </a>
+    <div class="row p-2 card-body w-100">
+        <div class="col-1 ">
+            <div>
+                {{ with .urls.website -}}
+                {{ $websiteHref := printf "href=%q" . | safeHTMLAttr -}}
+                <a {{ $websiteHref }} target="_blank" rel="noopener" class="card-link" data-bs-toggle="tooltip"
+                    data-bs-placement="top" title="Website">
+                    <i class="fas fa-house" aria-hidden="true"></i>
+                </a>
+                {{- end -}}
+            </div>
+            <div>
+                {{ with .urls.docs -}}
+                {{ $docsHref := printf "href=%q" . | safeHTMLAttr -}}
+                <a {{ $docsHref }} target="_blank" rel="noopener" class="card-link" data-bs-toggle="tooltip"
+                    data-bs-placement="top" title="Documentation">
+                    <i class="fas fa-book" aria-hidden="true"></i>
+                </a>
 
-            {{- end -}}
-            {{ with $package -}}
-            {{ $packageUrl := printf "href=%q" (printf .urlPattern .name) | safeHTMLAttr -}}
-            <a {{ $packageUrl }} target="_blank" rel="noopener" class="card-link" data-bs-toggle="tooltip"
-                data-bs-placement="top" title="Package Details">
-                <i class="{{ .icon }}" aria-hidden="true"></i>
-            </a>
-            {{- end -}}
-            {{ with .urls.repo -}}
-            {{ $icon := cond ( hasPrefix . "https://github.com/" ) "fa-brands fa-github" "fab fa-git-alt" -}}
-            {{ $repoHref := printf "href=%q" . | safeHTMLAttr -}}
-            <a {{ $repoHref }} target="_blank" rel="noopener" class="card-link" data-bs-toggle="tooltip"
-                data-bs-placement="top" title="Repository">
-                <i class="{{ $icon }}" aria-hidden="true"></i>
-            </a>
+                {{- end -}}
+            </div>
+            <div>
+                {{ with $package -}}
+                {{ $packageUrl := printf "href=%q" (printf .urlPattern .name) | safeHTMLAttr -}}
+                <a {{ $packageUrl }} target="_blank" rel="noopener" class="card-link" data-bs-toggle="tooltip"
+                    data-bs-placement="top" title="Package Details">
+                    <i class="{{ .icon }}" aria-hidden="true"></i>
+                </a>
+                {{- end -}}
+            </div>
+            <div>
+                {{ with .urls.repo -}}
+                {{ $icon := cond ( hasPrefix . "https://github.com/" ) "fa-brands fa-github" "fab fa-git-alt" -}}
+                {{ $repoHref := printf "href=%q" . | safeHTMLAttr -}}
+                <a {{ $repoHref }} target="_blank" rel="noopener" class="card-link" data-bs-toggle="tooltip"
+                    data-bs-placement="top" title="Repository">
+                    <i class="{{ $icon }}" aria-hidden="true"></i>
+                </a>
 
-            {{- end -}}
-            {{ with .urls.demo -}}
-            {{ $demoUrl := printf "href=%q" (printf .) | safeHTMLAttr -}}
-            <a {{ $demoUrl }} target="_blank" rel="noopener" class="card-link" data-bs-toggle="tooltip"
-                data-bs-placement="top" title="Demo Service">
-                <i class="fa-solid fa-shapes" aria-hidden="true"></i>
-            </a>
+                {{- end -}}
+            </div>
+            <div>
+                {{ with .urls.demo -}}
+                {{ $demoUrl := printf "href=%q" (printf .) | safeHTMLAttr -}}
+                <a {{ $demoUrl }} target="_blank" rel="noopener" class="card-link" data-bs-toggle="tooltip"
+                    data-bs-placement="top" title="Demo Service">
+                    <i class="fa-solid fa-shapes" aria-hidden="true"></i>
+                </a>
 
-            {{- end -}}
+                {{- end -}}
+            </div>
+
         </div>
-        <div class="col-6 card-text">
+        <div class="col-6 fs-sm-1">
             <div class="mb-3">
                 {{ if $deprecated -}}
                 <div class="alert alert-danger" role="alert">
@@ -392,22 +403,24 @@ $remoteRegistries := dict
                     {{ .deprecated.reason | markdownify }}
                 </div>
                 {{ end -}}
-                {{- .description | markdownify -}}
+                <p class="" >
+                    {{- .description | markdownify -}}
+                </p>
             </div>
             {{ with $package -}}
             {{ if not (eq .quickInstall false) }}
             <h6><i class="fa-solid fa-forward"></i> Quick Install</h6>
-            <p>{{ (partial .installTemplate .) | markdownify -}}
+            <p >{{ (partial .installTemplate .) | markdownify -}}
             </p>
             {{ end -}}
             {{- end -}}
         </div>
         <div class="col-5 card-text">
-            <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush" >
                 {{ if .package.version -}}
-                <li class="list-group-item">
+                <li class="list-group-item" style="padding-left: 8px; padding-right: 8px;" >
                     <div class="ms-2 me-auto">
-                        <div class="fw-bold">
+                        <div class="fw-bold" >
                             {{ .package.version }}
                         </div>
                         <small>Version</small>
