@@ -206,7 +206,7 @@ For more details about the script, run `npm run check:i18n -- -h`.
 
 To start a new localization for the OpenTelemetry website,
 [raise an issue](https://github.com/open-telemetry/opentelemetry.io/issues/) to
-share your interest to contribute. Tag all other individuals, that are willing
+share your interest to contribute. Tag all other individuals that are willing
 to write and review translations in the language you want to add. You need at
 least two potential contributors, three would be ideal. Include the following
 task list in your issue as well:
@@ -226,7 +226,7 @@ After you created that issue and have the required amount of contributors,
 maintainers will ask you to provide a pull request with a translation of the
 [index page](https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md).
 Make sure that maintainers are allowed to edit your PR, since they will add
-additional changes to your PR, that are required to get your localization
+additional changes to your PR that are required to get your localization
 project started.
 
 With your first PR merged maintainers will take care of setting up the issue
@@ -235,14 +235,14 @@ label, the org-level group and the component owners.
 {{% alert title="Important" color="warning" %}}
 
 You don't have to be an existing contributor to the OpenTelemetry project, to
-start a new localization. However you will not be added as an member of the
-[OpenTelemetry GitHub organization](https://github.com/open-telemetry/) and as a
+start a new localization. However you will not be added as a member of the
+[OpenTelemetry GitHub organization](https://github.com/open-telemetry/) or as a
 member of the approvers group for your localization. You will need to satisfy
 the requirements for becoming an established member and approver as outlined in
 the
 [membership guidelines](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md).
 
-While bootstraping the localization project, maintainers will treat your reviews
+When starting the localization project, maintainers will treat your reviews
 as if you are an approver already.
 
 {{% /alert %}}
