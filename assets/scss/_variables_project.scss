@@ -7,6 +7,7 @@ $otel-colors: (
   'blue-light': #cee1ff,
   'purple': #425cc7,
   'light-green': #c0f587,
+  'dark-background': #262D2C,
 );
 
 $otel-component-colors: (
@@ -43,3 +44,4 @@ $otel-registry-license-colors: (
 $primary: map-get($otel-colors, 'blue');
 $secondary: map-get($otel-colors, 'orange');
 $td-enable-google-fonts: false;
+$box-shadow-large: 0 20px 50px rgba(0, 0, 0, 0.8);

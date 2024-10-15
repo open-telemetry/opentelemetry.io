@@ -60,7 +60,7 @@
         {{ $package = merge .package (index $remoteRegistries .package.registry) -}}
         {{ $package = merge $package (dict "type" .registryType) -}}
     {{ end -}}
-    {{ $highlightStyle := "" -}}
+    {{ $highlightStyle := "border-bolded" -}}
     {{ if $isNew -}}
         {{ $highlightStyle = "border-info" -}}
     {{ end -}}
