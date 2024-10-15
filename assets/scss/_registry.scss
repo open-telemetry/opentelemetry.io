@@ -12,7 +12,7 @@
       background-color: $color; 
     }
   }
-
+ 
   &.badge-elixir {
     color: map-get($otel-component-colors, erlang);
     background-color: inherit;
