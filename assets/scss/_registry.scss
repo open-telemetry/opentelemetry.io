@@ -9,10 +9,10 @@
   @each $component, $color in $otel-registry-license-colors {
     &.badge-#{$component} {
       color: white;
-      background-color: $color; 
+      background-color: $color;
     }
   }
- 
+
   &.badge-elixir {
     color: map-get($otel-component-colors, erlang);
     background-color: inherit;
@@ -93,15 +93,19 @@
       margin-top: 0.5rem;
     }
 
-    .badge { 
+    .badge {
       margin-bottom: 0.25rem;
     }
 
-    .row { 
+    .row {
       margin: 0;
     }
 
-    .col, .col-md-9, .col-lg-10, .col-md-3, .col-lg-2 {
+    .col,
+    .col-md-9,
+    .col-lg-10,
+    .col-md-3,
+    .col-lg-2 {
       padding: 0;
     }
 
@@ -109,78 +113,76 @@
       margin-top: 1rem;
     }
 
-    .card-link { 
+    .card-link {
       width: 100%;
       padding: 0;
       margin-bottom: 0.5rem;
       transition: background-color 0.2s ease-in-out;
-      
+
       i {
         margin-right: 0.5rem;
         width: 20px;
         text-align: center;
-      } 
+      }
     }
     .github-link {
       display: flex;
-       align-items: center;
-       justify-items: center;
-       align-content: center;
-       margin: 1rem  0.5rem 0.5rem 0; 
-    }
-      
+      align-items: center;
+      justify-items: center;
+      align-content: center;
+      margin: 1rem 0.5rem 0.5rem 0;
     }
   }
-  
-  // Additional responsive adjustments
-  @media screen and (max-width: 576px) {
-    .registry-entry {
-      .card-body {
-        padding: 0.75rem;
-      }
-      .card-link {
-        font-size: 0.9em;
-        padding: 0.4rem;
-  
-        i {
-          margin-right: 0.4rem;
-        }
-      }
-  
-      .badge-container {
-        margin-top: 0.75rem;
-      }
-  
-      .badge {
-        font-size: 0.7em;
-        padding: 0.2em 0.4em;
-      }
-  
-      .card-link {
+}
 
-        font-size: 0.9em;
+// Additional responsive adjustments
+@media screen and (max-width: 576px) {
+  .registry-entry {
+    .card-body {
+      padding: 0.75rem;
+    }
+    .card-link {
+      font-size: 0.9em;
+      padding: 0.4rem;
+
+      i {
         margin-right: 0.4rem;
       }
     }
-  }
-  
-  // Ensure proper spacing for the last badge in a row
-  .badge-container .badge:last-child {
-    margin-right: 0;
-  }
-  
-  // Improve readability of badge text
-  .badge {
-    font-weight: 500;
-    letter-spacing: 0.025em;
-  }
-  
-  // Enhance hover effect for card links
-  .card-link {
-    transition: color 0.2s ease-in-out;
-  
-    &:hover {
-      text-decoration: none;
-      color: darken($link-color, 15%);
+
+    .badge-container {
+      margin-top: 0.75rem;
+    }
+
+    .badge {
+      font-size: 0.7em;
+      padding: 0.2em 0.4em;
+    }
+
+    .card-link {
+      font-size: 0.9em;
+      margin-right: 0.4rem;
     }
   }
+}
+
+// Ensure proper spacing for the last badge in a row
+.badge-container .badge:last-child {
+  margin-right: 0;
+}
+
+// Improve readability of badge text
+.badge {
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
+// Enhance hover effect for card links
+.card-link {
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    text-decoration: none;
+    color: darken($link-color, 15%);
+  }
+}
