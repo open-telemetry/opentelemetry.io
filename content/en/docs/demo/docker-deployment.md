@@ -71,6 +71,7 @@ Once the images are built and containers are started you can access:
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
 - Tracetest UI: <http://localhost:11633/>, only when using
   `make run-tracetesting`
+- Flagd configurator UI: <http://localhost:8080/feature>
 
 ## Changing the demo's primary port number
 
