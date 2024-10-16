@@ -126,11 +126,11 @@ Para obter o trecho atual, você precisará extraí-lo de um `context.Context` a
 qual você tenha acesso:
 
 ```go
-// This context needs contain the active span you plan to extract.
+// O Trecho deve estar ativo no Contexto onde você deseja extrair.
 ctx := context.TODO()
 span := trace.SpanFromContext(ctx)
 
-// Do something with the current span, optionally calling `span.End()` if you want it to end
+// Insira o código para fazer algo com o Trecho atual, chamando opcionalmente o método `span.End()` caso deseje finalizá-lo.
 ```
 
 Isso pode ser útil se você quiser adicionar informações ao trecho atual em um
@@ -148,18 +148,19 @@ func parentFunction(ctx context.Context) {
 	ctx, parentSpan := tracer.Start(ctx, "parent")
 	defer parentSpan.End()
 
-	// call the child function and start a nested span in there
+	// invoque a função filha e inicie um trecho aninhado dentro dela
 	childFunction(ctx)
 
-	// do more work - when this function ends, parentSpan will complete.
+	// insira mais coisas no código - ao finalizar esta função, o trecho declarado em 'parentSpan' será finalizado.
 }
 
 func childFunction(ctx context.Context) {
-	// Create a span to track `childFunction()` - this is a nested span whose parent is `parentSpan`
+	// Inicialize um trecho para rastrear a chamada `childFunction()`
+	// este é um trecho aninhado, cujo parente foi declarado no método anterior em `parentSpan`
 	ctx, childSpan := tracer.Start(ctx, "child")
 	defer childSpan.End()
 
-	// do work here, when this function returns, childSpan will complete.
+	// insira algum código aqui - ao finalizar esta função, o trecho declarado em 'childSpan' será finalizado.
 }
 ```
 
@@ -174,17 +175,17 @@ ser adicionados durante a criação de um trecho ou a qualquer momento durante s
 ciclo de vida, antes que ele seja concluído.
 
 ```go
-// setting attributes at creation...
-ctx, span = tracer.Start(ctx, "attributesAtCreation", trace.WithAttributes(attribute.String("hello", "world")))
-// ... and after creation
-span.SetAttributes(attribute.Bool("isTrue", true), attribute.String("stringAttr", "hi!"))
+// definindo atributos na criação...
+ctx, span = tracer.Start(ctx, "atributosNaCriacao", trace.WithAttributes(attribute.String("hello", "world")))
+// ... e após a criação
+span.SetAttributes(attribute.Bool("ehVerdadeiro", true), attribute.String("atributoDeTexto", "oi!"))
 ```
 
 As chaves dos atributos também podem ser pré-computadas:
 
 ```go
-var myKey = attribute.Key("myCoolAttribute")
-span.SetAttributes(myKey.String("a value"))
+var myKey = attribute.Key("meuAtributoLegal")
+span.SetAttributes(myKey.String("um valor em texto"))
 ```
 
 #### Atributos Semânticos {#semantic-attributes}
@@ -192,7 +193,7 @@ span.SetAttributes(myKey.String("a value"))
 Os Atributos Semânticos são atributos definidos pela [Especificação do
 OpenTelemetry][OpenTelemetry Specification] para fornecer um conjunto comum de
 chaves de atributos entre várias linguagens, frameworks e ambientes de execução.
-Eles representam conceitos como métodos HTTP, códigos de staus, user agents e
+Eles representam conceitos como métodos HTTP, códigos de estado, user agents e
 outros. Estes atributos estão disponíveis no pacote
 `go.opentelemetry.io/otel/semconv/v1.26.0`.
 
@@ -208,11 +209,11 @@ criado em dois pontos: um quando tentamos obter acesso ao recurso e outro quando
 adquirimos o mutex.
 
 ```go
-span.AddEvent("Acquiring lock")
+span.AddEvent("Obtendo o lock")
 mutex.Lock()
-span.AddEvent("Got lock, doing work...")
+span.AddEvent("Lock efetuado, realizando o trabalho...")
 // do stuff
-span.AddEvent("Unlocking")
+span.AddEvent("Realizando unlocking")
 mutex.Unlock()
 ```
 
@@ -223,7 +224,7 @@ passou entre cada um.
 Os Eventos também podem incluir seus próprios atributos -
 
 ```go
-span.AddEvent("Cancelled wait due to external signal", trace.WithAttributes(attribute.Int("pid", 4328), attribute.String("signal", "SIGHUP")))
+span.AddEvent("Espera cancelada devido sinal externo", trace.WithAttributes(attribute.Int("pid", 4328), attribute.String("signal", "SIGHUP")))
 ```
 
 ### Definir status do Trecho {#set-span-status}
@@ -239,16 +240,15 @@ import (
 
 // ...
 
-result, err := operationThatCouldFail()
+result, err := operacaoQueDeveriaFalhar()
 if err != nil {
-	span.SetStatus(codes.Error, "operationThatCouldFail failed")
+	span.SetStatus(codes.Error, "operacaoQueDeveriaFalhar falhou")
 }
 ```
 
 ### Capturar erros {#record-errors}
 
-Caso você tenha uma operação que falhou e deseja capturar o erro que foi
-produzido, você pode registrar este erro.
+Caso você tenha uma operação que falhou e deseja capturar o erro produzido, você pode registrar este erro.
 
 ```go
 import (
@@ -259,9 +259,9 @@ import (
 
 // ...
 
-result, err := operationThatCouldFail()
+result, err := operacaoQueDeveriaFalhar()
 if err != nil {
-	span.SetStatus(codes.Error, "operationThatCouldFail failed")
+	span.SetStatus(codes.Error, "operacaoQueDeveriaFalhar falhou")
 	span.RecordError(err)
 }
 ```
@@ -290,7 +290,7 @@ import (
 otel.SetTextMapPropagator(propagation.TraceContext{})
 ```
 
-> O OpenTelemetry também suporta headers no formato B3, para compatibilidade com
+> O OpenTelemetry também suporta cabeçalhos no formato B3, para compatibilidade com
 > sistemas de rastreamento (`go.opentelemetry.io/contrib/propagators/b3`) que
 > não suportam o padrão W3C TraceContext.
 
@@ -303,32 +303,34 @@ dos panos e gerenciar a serialização de contexto.
 Para começar a produzir [métricas](/docs/concepts/signals/metrics), você
 precisará ter um `MeterProvider` inicializado que permita a criação de um
 `Meter`. Os Meters permitem que você crie instrumentos que podem ser utilizados
-para gerar diferentes tipos de métricas. O OpenTelemetry Go atualmente suporta
+para gerar diferentes tipos de métricas. O OpenTelemetry Go suporta atualmente
 os seguintes instrumentos:
 
-- Counter, um instrumento síncrono que suporta ingrementos não-negativos
-- Asynchronous Counter, um instrumento assíncrono que suporta incrementos
-  não-negativos
-- Histogram, um instrumento síncrono que suporta valores arbitrários e que são
-  estatísticamente significativos, como histogramas, resumos ou percentis
-- Synchronous Gauge, um instrumento síncrono que suporta valores não-aditivos,
-  como a temperatura ambiente
-- Asynchronous Gauge, um instrumento assíncrono que suporta valores
-  não-aditivos, como a temperatura ambiente
-- UpDownCounter, um instrumento síncrono que suporta incrementos e decrementos,
-  como o número de requisições ativas
-- Asynchronous UpDownCounter, um instrumento assíncrono que suporta incrementos
-  e decrementos
+- **Counter**: Um valor que acumula com o tempo -- você pode imaginar isso como
+  um odômetro de um carro; é um valor que só cresce.
+- **Asynchronous Counter**: Assim como o **Counter**, porém é coletado uma vez a
+  cada exportação. Pode ser usado em casos onde você não tenha acesso aos
+  incrementos contínuos, mas apenas ao valor agregado.
+- **Histogram**: Uma agregação de valores, tal como latências de requisições. Um
+  histograma é uma boa escolha se você está interessado em valores de
+  estatísticas. Por exemplo: Quantas requisições estão levando menos de 1s?
+- **Gauge**: Mede o valor atual no momento da leitura. Um exemplo seria um
+  medidor de tanque de combustível de um veículo. Gauges são assíncronos.
+- **UpDownCounter**: Um valor que acumula com o tempo, mas também pode cair. Um
+  exemplo seria o tamanho de uma fila, este valor irá aumentar e diminuir conforme o número de itens que estão entrando ou saindo desta fila.
+- **Asynchronous UpDownCounter**: Assim como o **UpDownCounter**, porém é
+  coletado uma vez a cada exportação. Pode ser usado em casos onde você não
+  tenha acesso às mudanças contínuas, mas apenas ao valor agregado (ex., atual
+  tamanho da fila).
 
-Para mais informações sobre instrumentos síncronos e assíncronos, e qual tipo é
-mais adequado para o seu caso de uso, consulte as
+Para mais informações sobre instrumentos síncronos, assíncronos, e entender qual dos tipos melhor se encaixa no seu caso de uso, consulte as
 [Diretrizes Suplementares](/docs/specs/otel/metrics/supplementary-guidelines/).
 
 Caso um `MeterProvider` não seja criado, tanto por uma biblioteca de
 instrumentação ou manualmente, a API de Métricas do OpenTelemetry usará uma
 implementação no-op e não irá gerar dados.
 
-Aqui, você poderá encontrar uma documentação mais detalhada para os pacotes:
+A seguir, você poderá encontrar uma documentação mais detalhada para os pacotes:
 
 - Metrics API: [`go.opentelemetry.io/otel/metric`][]
 - Metrics SDK: [`go.opentelemetry.io/otel/sdk/metric`][]
@@ -338,14 +340,14 @@ Aqui, você poderá encontrar uma documentação mais detalhada para os pacotes:
 {{% alert color="info" %}} Caso você esteja instrumentando uma biblioteca, pule
 esta etapa. {{% /alert %}}
 
-Para habilitar [métricas](/docs/concepts/signals/metrics/) em sua apicação, você
-precisará ter um
+Para habilitar [métricas](/docs/concepts/signals/metrics/) em sua aplicação, você
+precisará de um
 [`MeterProvider`](/docs/concepts/signals/metrics/#meter-provider) inicializado,
 que permitirá que você crie um [`Meter`](/docs/concepts/signals/metrics/#meter).
 
-Caso um `MeterProvider` não seja criado, as APIs de métricas do OpenTelemetry
-irão utilizar uma implementação no-op e falhará em gerar dados de métricas.
-Sendo assim, é necessário que o código fonte seja modificado para incluir a
+Caso um `MeterProvider` não seja inicializado, a API de métricas do OpenTelemetry
+irá utilizar uma implementação no-op e não irá gerar dados de métricas.
+Sendo assim, é necessário que o código-fonte da aplicação seja modificado para incluir a
 inicialização do SDK utilizando os seguintes pacotes:
 
 - [`go.opentelemetry.io/otel`][]
@@ -412,7 +414,7 @@ func main() {
 func newResource() (*resource.Resource, error) {
 	return resource.Merge(resource.Default(),
 		resource.NewWithAttributes(semconv.SchemaURL,
-			semconv.ServiceName("my-service"),
+			semconv.ServiceName("meu-servico"),
 			semconv.ServiceVersion("0.1.0"),
 		))
 }
@@ -438,7 +440,7 @@ Agora que o `MeterProvider` está configurado, podemos obter um `Meter`.
 ### Obtendo um Meter {#acquiring-a-meter}
 
 Qualquer ponto da sua aplicação que possua código instrumentado poderá invocar o
-método [`otel.Meter`](https://pkg.go.dev/go.opentelemetry.io/otel#Meter) to para
+método [`otel.Meter`](https://pkg.go.dev/go.opentelemetry.io/otel#Meter) para
 obter um `Meter`. Por exemplo:
 
 ```go
@@ -453,37 +455,34 @@ Os instrumentos do OpenTelemetry podem ser síncronos ou assíncronos
 (observáveis).
 
 Os instrumentos síncronos fazem uma medição quando são chamados. A medição é
-realizada como uma outra chamada durante a execução da aplicação, assim como
-qualquer outra chamada de função. Periodicamente, a agregação dessas medições é
+realizada como uma chamada de método durante a execução da aplicação, assim como
+qualquer outra chamada de método. Periodicamente, a agregação dessas medições é
 exportada por um `Exporter` configurado. Como as medições são desacopladas da
-exportação de valores, um ciclo de exportação pode conter zero ou várias
+exportação dos valores medidos, um ciclo de exportação pode conter zero ou várias
 medições agregadas.
 
 Os instrumentos assíncronos, por outro lado, fornecem uma medição a partir de
-uma solicitação do SDK. Quando o SDK realiza a exportação, um callback que foi
-fornecido ao instrumento no momento de sua criação é invocado. Este callback
+uma solicitação do SDK. Quando o SDK realiza a exportação, uma função de retorno fornecida ao instrumento de medição no momento de sua criação é invocada. Esta função de retorno
 fornece ao SDK uma medição, que é imediatamente exportada. Todas as medições em
 instrumentos assíncronos são realizadas uma vez por cada ciclo de exportação.
 
 Os instrumentos assíncronos podem ser úteis em diversas circunstâncias, como:
 
-- Quando a atualização de um computador não é computacionalmente barata e você
-  não deseja que o thread em execução aguarde pela medição
-- Quando medições precisam acontecer em frequências não relacionadas à execução
-  da aplicação (ou seja, não podem ser medidas com precisão quando vinculadas ao
-  ciclo de vida de uma solicitação)
-- Quando não há um timestamp conhecido para um valor de medição
+- Quando a atualização de um contador não é computacionalmente barata e você
+  não deseja que o processo em execução aguarde pela medição.
+- Quando medições precisam acontecer em frequências não-relacionadas ao tempo de execução
+  da aplicação (ou seja, não podem ser medidas com precisão ao serem vinculadas ao
+  ciclo de vida de uma operação).
+- Quando não há um registro de data/hora conhecidos para um valor de medição.
 
-Em casos como estes, muitas vezes é melhor medir um valor cumulativo
-diretamente, em vez de agregar uma série de deltas em um pós-processamento (da
-maneira em que ocorre no exemplo síncrono).
+Em casos como estes, muitas vezes é melhor realizar a medição de um valor diretamente,
+em vez de agregar uma série de deltas em um pós-processamento (como ocorre no exemplo síncrono).
 
 ### Utilizando Counters {#using-counters}
 
 Counters podem ser utilizados para medir valores incrementais e não-negativos.
 
-Por exemplo, aqui está como seria possível reportar o número de chamadas HTTP em
-um handler:
+Por exemplo, aqui está como seria possível reportar o número de chamadas em um servidor HTTP:
 
 ```go
 import (
@@ -530,7 +529,7 @@ func init() {
 	var err error
 	itemsCounter, err = meter.Int64UpDownCounter(
 		"items.counter",
-		metric.WithDescription("Number of items."),
+		metric.WithDescription("Número de itens."),
 		metric.WithUnit("{item}"),
 	)
 	if err != nil {
@@ -539,13 +538,13 @@ func init() {
 }
 
 func addItem() {
-	// code that adds an item to the collection
+	// código que insere um item na coleção
 
 	itemsCounter.Add(context.Background(), 1)
 }
 
 func removeItem() {
-	// code that removes an item from the collection
+	// código que remove um item da coleção
 
 	itemsCounter.Add(context.Background(), -1)
 }
@@ -553,7 +552,7 @@ func removeItem() {
 
 ### Utilizando Gauges {#using-gauges}
 
-Gauges são utilizados para medir valores não-aditivos quando ocorrem mudanças.
+Gauges são utilizados para medir quando ocorrem mudanças em valores não-aditivos.
 
 Por exemplo, veja como é possível relatar a velocidade atual de um ventilador de
 CPU:
@@ -570,7 +569,7 @@ var fanSpeedSubscription chan int64
 func init() {
 	speedGauge, err := meter.Int64Gauge(
 		"cpu.fan.speed",
-		metric.WithDescription("Speed of CPU fan"),
+		metric.WithDescription("Velocidade atual de um ventilador de CPU"),
 		metric.WithUnit("RPM"),
 	)
 	if err != nil {
@@ -578,8 +577,8 @@ func init() {
 	}
 
 	getCPUFanSpeed := func() int64 {
-		// Generates a random fan speed for demonstration purpose.
-		// In real world applications, replace this to get the actual fan speed.
+		// Vamos gerar um valor aleatório para propósito de demonstração.
+		// Em uma aplicação do mundo real, substitua esta implementação para obter o real valor do ventilador de CPU.
 		return int64(1500 + rand.Intn(1000))
 	}
 
@@ -588,8 +587,8 @@ func init() {
 		defer close(fanSpeedSubscription)
 
 		for idx := 0; idx < 5; idx++ {
-			// Synchronous gauges are used when the measurement cycle is
-			// synchronous to an external change.
+			// Gauges síncronos são utilizados quando o ciclo de medição está
+			// relacionado a uma mudança externa.
 			time.Sleep(time.Duration(rand.Intn(3)) * time.Second)
 			fanSpeed := getCPUFanSpeed()
 			fanSpeedSubscription <- fanSpeed
@@ -624,7 +623,7 @@ import (
 func init() {
 	histogram, err := meter.Float64Histogram(
 		"task.duration",
-		metric.WithDescription("The duration of task execution."),
+		metric.WithDescription("Tempo de duração da execução da tarefa."),
 		metric.WithUnit("s"),
 	)
 	if err != nil {
@@ -633,7 +632,7 @@ func init() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		start := time.Now()
 
-		// do some work in an API call
+		// insira algum código na chamada da API
 
 		duration := time.Since(start)
 		histogram.Record(r.Context(), duration.Seconds())
@@ -661,7 +660,7 @@ func init() {
 	start := time.Now()
 	if _, err := meter.Float64ObservableCounter(
 		"uptime",
-		metric.WithDescription("The duration since the application started."),
+		metric.WithDescription("Tempo de duração desde o início da aplicação."),
 		metric.WithUnit("s"),
 		metric.WithFloat64Callback(func(_ context.Context, o metric.Float64Observer) error {
 			o.Observe(float64(time.Since(start).Seconds()))
@@ -688,12 +687,12 @@ import (
 	"go.opentelemetry.io/otel/metric"
 )
 
-// registerDBMetrics registers asynchronous metrics for the provided db.
-// Make sure to unregister metric.Registration before closing the provided db.
+// registerDBMetrics registra métricas assíncronas para a base de dados fornecida.
+// Certifique-se de desfazer o registro da métrica `metric.Registration` antes de encerrar a conexão com o banco de dados.
 func registerDBMetrics(db *sql.DB, meter metric.Meter, poolName string) (metric.Registration, error) {
 	max, err := meter.Int64ObservableUpDownCounter(
 		"db.client.connections.max",
-		metric.WithDescription("The maximum number of open connections allowed."),
+		metric.WithDescription("O número máximo de conexões abertas permitidas."),
 		metric.WithUnit("{connection}"),
 	)
 	if err != nil {
@@ -702,7 +701,7 @@ func registerDBMetrics(db *sql.DB, meter metric.Meter, poolName string) (metric.
 
 	waitTime, err := meter.Int64ObservableUpDownCounter(
 		"db.client.connections.wait_time",
-		metric.WithDescription("The time it took to obtain an open connection from the pool."),
+		metric.WithDescription("O tempo que levou para obter uma conexão aberta no pool."),
 		metric.WithUnit("ms"),
 	)
 	if err != nil {
@@ -729,7 +728,6 @@ func registerDBMetrics(db *sql.DB, meter metric.Meter, poolName string) (metric.
 ### Utilizando Gauges Observáveis (Async) {#using-observable-async-gauges}
 
 Gauges observáveis devem ser utilizados para medir valores não-aditivos.
-Observable Gauges should be used to measure non-additive values.
 
 Por exemplo, veja como é possível reportar o uso de memória dos objetos do heap
 utilizados na aplicação:
@@ -746,7 +744,7 @@ func init() {
 	if _, err := meter.Int64ObservableGauge(
 		"memory.heap",
 		metric.WithDescription(
-			"Memory usage of the allocated heap objects.",
+			"Uso de memória dos objetos alocados no heap.",
 		),
 		metric.WithUnit("By"),
 		metric.WithInt64Callback(func(_ context.Context, o metric.Int64Observer) error {
@@ -779,14 +777,14 @@ import (
 func init() {
 	apiCounter, err := meter.Int64UpDownCounter(
 		"api.finished.counter",
-		metric.WithDescription("Number of finished API calls."),
+		metric.WithDescription("Número de chamadas finalizadas na API."),
 		metric.WithUnit("{call}"),
 	)
 	if err != nil {
 		panic(err)
 	}
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		// do some work in an API call and set the response HTTP status code
+		// insira algum código na chamada da API e defina o status HTTP de resposta
 
 		apiCounter.Add(r.Context(), 1,
 			metric.WithAttributes(semconv.HTTPResponseStatusCode(statusCode)))
@@ -797,7 +795,7 @@ func init() {
 ### Registering Views {#registering-views}
 
 Uma _view_ oferece aos usuários a flexibilidade de personalizar a emissão das
-métrticas fornecidas pelo SDK. Você pode personalizar quais instrumentos de
+métricas fornecidas pelo SDK. Você pode personalizar quais instrumentos de
 métricas devem ser processados ou ignorados. Você também pode personalizar a
 agregação e quais atributos você deseja relatar nas métricas.
 
@@ -831,7 +829,7 @@ meterProvider := metric.NewMeterProvider(
 )
 ```
 
-Por exemplo, veja como é possível criar uma _view_ que faz com que o instrumento
+Em outro exemplo, veja como é possível criar uma _view_ que faz com que o instrumento
 `latency` da biblioteca de instrumentação `http` seja reportado como um
 histograma exponencial:
 
@@ -854,11 +852,10 @@ meterProvider := metric.NewMeterProvider(
 )
 ```
 
-A SDK filtra métricas e atributos antes de exportar as métricas. Por exemplo,
-você pode utilizar _views_ para reduzir o uso de memória de métricas de alta
+A SDK filtra métricas e atributos antes de exportar as métricas. Você pode utilizar _views_ para reduzir o uso de memória de métricas de alta
 cardinalidade ou descartar atributos que possam conter dados sensíveis.
 
-Aqui está um exemplo de como criar uma _view_ que descarta o instrumento
+No exemplo a seguir, criamos uma _view_ que descarta o instrumento
 `latency` da biblioteca de instrumentação `http`:
 
 ```go
@@ -875,7 +872,7 @@ meterProvider := metric.NewMeterProvider(
 )
 ```
 
-Aqui está um exemplo de como criar uma _view_ que remove o atributo
+No exemplo a seguir, criamos uma _view_ que remove o atributo
 `http.request.method` registrado pelo instrumento `latency` da biblioteca de
 instrumentação `http`:
 
@@ -894,11 +891,11 @@ meterProvider := metric.NewMeterProvider(
 ```
 
 O atributo `Name` suporta correspondência de padrão _wildcard_. O _wildcard_ `*`
-é reconhecido como correspondendo a zero ou mais caracteres, e `?` é reconhecido
+é reconhecido como correspondendo a zero ou mais caracteres, e o _wildcard_ `?` é reconhecido
 como correspondendo exatamente a um caractere. Por exemplo, um padrão de `*`
 corresponde a todos os nomes de instrumentos.
 
-O exemplo a seguir mostra como criar uma _view_ que define a unidade como
+No exemplo a seguir, mostramos como criar uma _view_ que define a unidade como
 milissegundos para qualquer instrumento com um sufixo de nome `.ms`:
 
 ```go
@@ -913,23 +910,21 @@ meterProvider := metric.NewMeterProvider(
 ```
 
 O método `NewView` fornece uma maneira conveniente de criar _views_. Caso o
-método `NewView` não possa fornecer as funcionalidades que você precisa, você
-pode criar uma
+método `NewView` não forneça as funcionalidades que você precisa, é possível criar uma
 _[View](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#View)_
-personalizada diretamente.
+personalizada.
 
-Por exemplo, veja como é possível criar uma _view_ que utiliza a correspondência
-de expressões regulares para garantir que todos os nomes de fluxo de dados
+No exemplo a seguir, veja como criar uma _view_ que faz o uso de expressões regulares para garantir que todos os nomes de fluxo de dados
 tenham um sufixo das unidades que utiliza:
 
 ```go
 re := regexp.MustCompile(`[._](ms|byte)$`)
 var view metric.View = func(i metric.Instrument) (metric.Stream, bool) {
-	// In a custom View function, you need to explicitly copy
-	// the name, description, and unit.
+	// Em uma função de View personalizada, é necessário copiar de maneira explícita 
+	// o nome, descrição e unidade.
 	s := metric.Stream{Name: i.Name, Description: i.Description, Unit: i.Unit}
-	// Any instrument that does not have a unit suffix defined, but has a
-	// dimensional unit defined, update the name with a unit suffix.
+	// Qualquer instrumento que não tenha um sufixo de unidade de medida definido, mas tenha
+	// uma unidade dimensional definida, terá seu nome atualizado com um sufixo de unidade de medida.
 	if re.MatchString(i.Name) {
 		return s, false
 	}
@@ -957,35 +952,34 @@ integram pacotes de logs populares existentes (como slog, logrus, zap, logr) aos
 logs do ecossistema OpenTelemetry. Para a justificativa por trás dessa decisão
 de design, consulte a [Especificação de Logs](/docs/specs/otel/logs/).
 
-Os dois fluxos de trabalho típicos discutidos abaixo atendem a diferentes
+Os dois _workflows_ discutidos abaixo atendem a diferentes
 requisitos de aplicação.
 
 ### Direct-to-Collector
 
 **Estado**: [Experimental](/docs/specs/otel/document-status/)
 
-Dentro do _workflow_ Direct-to-collector, os logs são emitidos diretamente de
-uma aplicação para um coletor usando um protocolo de rede (por exemplo, OTLP).
+Dentro do _workflow_ Direct-to-collector, os logs são emitidos diretamente da aplicação para o Collector utilizando um protocolo de rede (por exemplo, OTLP).
 Este _workflow_ é simples de configurar, pois não requer componentes adicionais
-de encaminhamento de logs, e permite que uma aplicação emita logs estruturados
-que estejam nos conformes do [modelo de dados de logs][log data model]. No
+de encaminhamento de logs, permitindo que uma aplicação emita logs estruturados
+e que estejam nos conformes do [modelo de dados de logs][log data model]. No
 entanto, o _overhead_ necessário para que as aplicações enfileirem e exportem
 logs para um local de rede pode não ser adequado para todas as aplicações.
 
 Para utilizar este _workflow_:
 
 - Configurar o [SDK de Logs](#logs-sdk) do OpenTelemetry para exportar registros
-  de logs para o destino desejado (o [coletor][opentelemetry collector] ou
+  de logs para o destino desejado (o [OpenTelemetry Collector][opentelemetry collector] ou
   outro).
 - Utilizar uma [Ponte de Logs](#log-bridge) apropriada.
 
 #### SDK de Logs {#logs-sdk}
 
-A SDK de Logs dita como os logs são processados ao utilizar o _workflow_
+A SDK de Logs define como os logs são processados ao utilizar o _workflow_
 [Direct-to-Collector](#direct-to-collector). Nenhuma SDK de logs é necessária ao
 utilizar o _workflow_ de [encaminhamento de logs](#via-file-or-stdout).
 
-A configuração típica da SDK de logs instala um Processor de logs em lote com um
+Uma configuração típica da SDK de logs instala um Processor de logs em lote com um
 Exporter OTLP.
 
 Para habilitar [logs](/docs/concepts/signals/logs/) em sua aplicação, você
@@ -994,9 +988,8 @@ precisará ter um
 que permitirá que você utilize uma [Ponte de Logs](#log-bridge).
 
 Caso um `LoggerProvider` não seja criado, a API de Logs do OpenTelemetry irá
-utilizar uma implementação no-op e não irá gerar dados. Sendo assim, é
-necessário que o código-fonte seja modificado para incluir a inicialização do
-SDK utilizando os seguintes pacotes:
+utilizar uma implementação no-op e dados de logs não serão gerados. Sendo assim, é necessário que o código-fonte da aplicação seja modificado para incluir a
+inicialização do SDK utilizando os seguintes pacotes:
 
 - [`go.opentelemetry.io/otel`][]
 - [`go.opentelemetry.io/otel/sdk/log`][]
@@ -1031,37 +1024,37 @@ import (
 func main() {
 	ctx := context.Background()
 
-	// Create resource.
+	// Crie um 'Resource'.
 	res, err := newResource()
 	if err != nil {
 		panic(err)
 	}
 
-	// Create a logger provider.
-	// You can pass this instance directly when creating bridges.
+	// Crie um 'LoggerProvider'.
+	// Você pode passar essa instância diretamente ao criar pontes.
 	loggerProvider, err := newLoggerProvider(ctx, res)
 	if err != nil {
 		panic(err)
 	}
 
-	// Handle shutdown properly so nothing leaks.
+	// Lidamos com a finalização corretamente, evitando leaks.
 	defer func() {
 		if err := loggerProvider.Shutdown(ctx); err != nil {
 			fmt.Println(err)
 		}
 	}()
 
-	// Register as global logger provider so that it can be accessed global.LoggerProvider.
-	// Most log bridges use the global logger provider as default.
-	// If the global logger provider is not set then a no-op implementation
-	// is used, which fails to generate data.
+	// Registre o LoggerProvider globalmente, permitindo que seja acessado via global.LoggerProvider.
+	// A maioria das pontes de logs utilizam o LoggerProvider global como padrão.
+	// Caso o LoggerProvider global não esteja definido, será utilizada uma implementação no-op
+	// e dados de logs não serão gerados.
 	global.SetLoggerProvider(loggerProvider)
 }
 
 func newResource() (*resource.Resource, error) {
 	return resource.Merge(resource.Default(),
 		resource.NewWithAttributes(semconv.SchemaURL,
-			semconv.ServiceName("my-service"),
+			semconv.ServiceName("meu-servico"),
 			semconv.ServiceVersion("0.1.0"),
 		))
 }
@@ -1080,31 +1073,29 @@ func newLoggerProvider(ctx context.Context, res *resource.Resource) (*log.Logger
 }
 ```
 
-Agora que o `LoggerProvider` está configurado, você pode utilizá-lo para
+Agora que o `LoggerProvider` está configurado, é possível utilizá-lo para
 configurar uma [Ponte de Logs](#log-bridge).
 
 #### Ponte de Logs (#log-bridge)
 
-Uma ponte de logs é um componente que conecta logs de um pacote de logs
-existente ao [SDK de Logs](#logs-sdk) do OpenTelemetry, utilizando a [API de
+Uma ponte de logs é um componente que conecta logs de um pacote existente ao [SDK de Logs](#logs-sdk) do OpenTelemetry, utilizando a [API de
 Ponte de Logs][logs bridge api].
 
 Uma lista completa contendo as pontes de logs disponíveis pode ser encontrada no
 [registro do OpenTelemetry](/ecosystem/registry/?language=go&component=log-bridge).
 
-Cada pacote de ponte de logs deve ter uma documentação de pacote que descreve
-como instalar e configurar a ponte de logs.
+Cada pacote de ponte de logs deve possuir uma documentação contendo as suas instruções de instalação e configuração.
 
 ### Através de arquivos ou stdout (#via-file-or-stdout)
 
-No _workflow_ de arquivos ou _stdout_, os logs são gravados em arquivos ou na
+No _workflow_ utilizado em arquivos ou _stdout_, os logs são gravados em arquivos ou na
 saída padrão da aplicação. Outro componente (por exemplo, FluentBit) é
 responsável por ler/seguir os logs, convertê-los para um formato mais
 estruturado e encaminhá-los para um destino, como o Collector. Este _workflow_
 pode ser preferível em situações onde os requisitos da aplicação não permitem a
 sobrecarga adicional do [Direct-to-Collector](#direct-to-collector). No entanto,
 é requisito que todos os campos de log necessários sejam codificados nos logs, e
-que o componente responsável pela leitura dos logs realize a conversão para o
+que o componente responsável pela leitura realize a conversão para o
 [modelo de dados de logs][log data model]. A instalação e configuração dos
 componentes de encaminhamento de logs está fora do escopo deste documento.
 
