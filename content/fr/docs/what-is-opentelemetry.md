@@ -12,19 +12,19 @@ OpenTelemetry, c'est :
   d'[observabilité](/docs/concepts/observability-primer/#what-is-observability)
   et des outils conçus pour créer et gérer des données de télémétrie telles que
   des [traces](/docs/concepts/signals/traces/),
-  des [métriques](/docs/concepts/signals/metrics/), et des
-  [logs](/docs/concepts/signals/logs/).
+  des [metriques](/docs/concepts/signals/metrics/), et des
+  [logs](/docs/concepts/signals/logs/)
 - Indépendant d'un fournisseur et d'un outil, ce qui signifie qu'il peut être
   utilisé avec une grande variété de backends d'observabilité, y compris des
   outils open source tels que [Jaeger](https://www.jaegertracing.io/) et
-  [Prometheus](https://prometheus.io/), ainsi que des outils commerciaux.
+  [Prometheus](https://prometheus.io/), ainsi que des outils commerciaux
 - Pas un backend d'observabilité tel que Jaeger, Prometheus ou d'autres outils
-  commerciaux.
+  commerciaux
 - Axé sur la génération, la collecte, la gestion et l'export de données de
   télémétrie. L'un des objectifs principaux d'OpenTelemetry est de pouvoir
   aisément instrumenter vos applications ou systèmes, quelque soit leur langage,
   infrastructure, ou environnement d'exécution. Le stockage et la visualisation
-  des données sont intentionnellement laissés à d'autres outils.
+  des données sont intentionnellement laissés à d'autres outils
 
 ## Qu'est-ce que l'observabilité ?
 
@@ -52,8 +52,8 @@ OpenTelemetry répond au besoin d'observabilité tout en suivant deux principes
 clés :
 
 1. Vous êtes propriétaire des données que vous générez. Il n'y a pas de
-   dépendance vis-à-vis d'un fournisseur.
-2. Vous n'avez besoin d'apprendre qu'un seul ensemble d'APIs et de conventions.
+   dépendance vis-à-vis d'un fournisseur
+2. Vous n'avez besoin d'apprendre qu'un seul ensemble d'APIs et de conventions
 
 Ces deux principes combinés offrent aux équipes et aux organisations la
 flexibilité dont elles ont besoin dans le monde informatique moderne
@@ -75,9 +75,9 @@ OpenTelemetry se compose des principaux composants suivants :
 - Des [SDKs par langage](/docs/languages) qui implémentent les spécifications,
   les APIs et l'export des données de télémétrie
 - Un [écosystème de bibliothèques](/ecosystem/registry) qui instrumentent des
-  bibliothèques et frameworks.
+  bibliothèques et frameworks
 - Des composants d'instrumentation automatique qui génèrent des données de
-  télémétrie sans requérir de modifications de code.
+  télémétrie sans requérir de modifications de code
 - Le [Collector OpenTelemetry](/docs/collector), un proxy qui reçoit, modifie et
   exporte les données de télémétrie
 - Divers autres outils, tels que
@@ -130,4 +130,4 @@ comment migrer vers OpenTelemetry dans le
 ## Et ensuite ?
 
 - [Pour commencer](/docs/getting-started/) &mdash; Lancez-vous directement !
-- Découvrez les [concepts d'OpenTelemetry](/docs/concepts/).
+- Découvrez les [concepts d'OpenTelemetry](/docs/concepts/)
