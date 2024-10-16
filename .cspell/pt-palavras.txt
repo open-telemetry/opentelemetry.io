@@ -4,4 +4,3 @@ autoinstrumentação
 autoconsistentes
 serialização
 verbosidade
-updown
