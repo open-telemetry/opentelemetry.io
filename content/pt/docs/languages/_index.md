@@ -1,34 +1,39 @@
 ---
 title: APIs e SDKs de Linguagens
 description:
-  A instrumentação de código do OpenTelemetry é suportada para muitas linguagens populares de programação.
+  A instrumentação de código do OpenTelemetry é suportada para muitas linguagens
+  populares de programação.
 weight: 250
 redirects: [{ from: /docs/instrumentation/*, to: ':splat' }]
 default_lang_commit: b3a087c468094eb144ab3114aff06838c8fb06ca
 ---
 
-A [instrumentação][] de código do OpenTelemetry é suportada para as linguagens listadas 
-na tabela de [Estado e Lançamentos](#estado-e-lançamentos) abaixo. Implementações não 
-oficiais para [outras linguagens](/docs/languages/other) também estão disponíveis. 
-Você pode encontrá-las no [registro](/ecosystem/registry/).
+A [instrumentação][] de código do OpenTelemetry é suportada para as linguagens
+listadas na tabela de [Estado e Lançamentos](#estado-e-lançamentos) abaixo.
+Implementações não oficiais para [outras linguagens](/docs/languages/other)
+também estão disponíveis. Você pode encontrá-las no
+[registro](/ecosystem/registry/).
 
-Para Go, .NET, PHP, Python, Java e JavaScript, você pode usar 
+Para Go, .NET, PHP, Python, Java e JavaScript, você pode usar
 [soluções de instrumentação automática](/docs/zero-code) para instrumentar suas
 aplicações sem alterações de código.
 
-Se você estiver usando Kubernetes, você pode usar o [OpenTelemetry Operator 
-para Kubernetes][otel-op] para [injetar soluções de implementação automática][implementação automática]
-em suas aplicações.
+Se você estiver usando Kubernetes, você pode usar o [OpenTelemetry Operator para
+Kubernetes][otel-op] para [injetar soluções de implementação
+automática][implementação automática] em suas aplicações.
 
 ## Estado e Lançamentos
 
-O estado atual dos principais componentes funcionais do OpenTelemetry estão a seguir:
+O estado atual dos principais componentes funcionais do OpenTelemetry estão a
+seguir:
 
 {{% alert title="Importante" color="warning" %}}
 
-Independente do estado de um API/SDK, se a sua instrumentação depende de [convenções
-semânticas] que são marcadas como [Experimental] na [especificação de convenções 
-semânticas], seu fluxo de dados pode estar sujeito à **quebra de compatibilidade**
+Independente do estado de um API/SDK, se a sua instrumentação depende de
+[convenções semânticas] que são marcadas como [Experimental] na [especificação
+de
+convenções semânticas], seu fluxo de dados pode estar sujeito à **quebra de
+compatibilidade**
 
 [convenções semânticas]: /docs/concepts/semantic-conventions/
 [Experimental]: /docs/specs/otel/document-status/
@@ -40,9 +45,9 @@ semânticas], seu fluxo de dados pode estar sujeito à **quebra de compatibilida
 
 ## Referências da API
 
-Os Grupos de Interesse Especial (SIGs), que implementam a API e o SDK do 
-OpenTelemetry em diferentes linguagens e também disponibilizam referências 
-da API para desenvolvedores. As referências a seguir estão disponíveis: 
+Os Grupos de Interesse Especial (SIGs), que implementam a API e o SDK do
+OpenTelemetry em diferentes linguagens e também disponibilizam referências da
+API para desenvolvedores. As referências a seguir estão disponíveis:
 
 {{% apidocs %}}
 
