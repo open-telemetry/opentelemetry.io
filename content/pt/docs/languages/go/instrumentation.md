@@ -1077,7 +1077,7 @@ func newLoggerProvider(ctx context.Context, res *resource.Resource) (*log.Logger
 Agora que o `LoggerProvider` está configurado, é possível utilizá-lo para
 configurar uma [Ponte de Logs](#log-bridge).
 
-#### Ponte de Logs (#log-bridge)
+#### Ponte de Logs {#log-bridge}
 
 Uma ponte de logs é um componente que conecta logs de um pacote existente ao [SDK de Logs](#logs-sdk) do OpenTelemetry, utilizando a [API de
 Ponte de Logs][logs bridge API].
@@ -1087,7 +1087,7 @@ Uma lista completa contendo as pontes de logs disponíveis pode ser encontrada n
 
 Cada pacote de ponte de logs deve possuir uma documentação contendo as suas instruções de instalação e configuração.
 
-### Através de arquivos ou stdout (#via-file-or-stdout)
+### Através de arquivos ou stdout {#via-file-or-stdout}
 
 No _workflow_ utilizado em arquivos ou _stdout_, os logs são gravados em arquivos ou na
 saída padrão da aplicação. Outro componente (por exemplo, FluentBit) é
