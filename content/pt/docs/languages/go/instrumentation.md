@@ -405,10 +405,10 @@ Os instrumentos assíncronos, por outro lado, fornecem uma medição a partir de
 Os instrumentos assíncronos podem ser úteis em diversas circunstâncias, como:
 
 - Quando a atualização de um computador não é computacionalmente barata e você não deseja que o thread em execução aguarde pela medição
-- Quando observações precisam acontecer em ferquências não relacionadas à execução da aplicação (ou seja, não podem ser medidas com precisão quando vinculadas ao ciclo de vida de uma solicitação)
+- Quando medições precisam acontecer em frequências não relacionadas à execução da aplicação (ou seja, não podem ser medidas com precisão quando vinculadas ao ciclo de vida de uma solicitação)
 - Quando não há um timestamp conhecido para um valor de medição
 
-Em casos como estes, muitas vezes é melhor observar um valor cumulativo diretamente, em vez de agregar uma série de deltas em um pós-processamento (da maneira em que ocorre no exemplo síncrono).
+Em casos como estes, muitas vezes é melhor medir um valor cumulativo diretamente, em vez de agregar uma série de deltas em um pós-processamento (da maneira em que ocorre no exemplo síncrono).
 
 ### Utilizando Counters {#using-counters}
 
@@ -440,12 +440,11 @@ func init() {
 }
 ```
 
-### Using UpDown Counters
+### Utilizando UpDown Counters {#using-updown-counters}
 
-UpDown counters can increment and decrement, allowing you to observe a
-cumulative value that goes up or down.
+Os UpDown Counters podem incrementar e decrementar, permitindo que você meça um valor cumulativo que aumenta ou diminui.
 
-For example, here's how you report the number of items of some collection:
+Por exemplo, aqui está como é possível reportar o número de itens de uma coleção:
 
 ```go
 import (
@@ -481,11 +480,11 @@ func removeItem() {
 }
 ```
 
-### Using Gauges
+### Utilizando Gauges {#using-gauges}
 
-Gauges are used to measure non-additive values when changes occur.
+Gauges são utilizados para medir valores não-aditivos quando ocorrem mudanças.
 
-For example, here's how you might report the current speed of a CPU fan:
+Por exemplo, veja como é possível relatar a velocidade atual de um ventilador de CPU:
 
 ```go
 import (
@@ -534,12 +533,11 @@ func recordFanSpeed() {
 }
 ```
 
-### Using Histograms
+### Using Histograms {#using-histograms}
 
-Histograms are used to measure a distribution of values over time.
+Histogramas são utilizados para medir a distribuição de valores ao longo do tempo.
 
-For example, here's how you report a distribution of response times for an HTTP
-handler:
+Por exemplo, veja como é possível reportar a distribuição de tempos de resposta para um servidor HTTP:
 
 ```go
 import (
@@ -569,12 +567,11 @@ func init() {
 }
 ```
 
-### Using Observable (Async) Counters
+### Utilizando Counters Observáveis (Async) {#using-observable-async-counters}
 
-Observable counters can be used to measure an additive, non-negative,
-monotonically increasing value.
+Counters observáveis podem ser utilizados para medir um valor aditivo, não-negativo e monotonamente crescente.
 
-For example, here's how you report time since the application started:
+Por exemplo, veja como é possível reportar o tempo de duração desde que a aplicação foi iniciada:
 
 ```go
 import (
@@ -600,12 +597,11 @@ func init() {
 }
 ```
 
-### Using Observable (Async) UpDown Counters
+### Utilizando Counters Observáveis UpDown (Async) {#using-observable-async-updown-counters}
 
-Observable UpDown counters can increment and decrement, allowing you to measure
-an additive, non-negative, non-monotonically increasing cumulative value.
+Counters observáveis UpDown podem incrementar e decrementar, permitindo que você meça um valor cumulativo aditivo, não-negativo e não-monotonamente crescente.
 
-For example, here's how you report some database metrics:
+Por exemplo, veja como é possível reportar algumas métricas de banco de dados:
 
 ```go
 import (
@@ -653,12 +649,12 @@ func registerDBMetrics(db *sql.DB, meter metric.Meter, poolName string) (metric.
 }
 ```
 
-### Using Observable (Async) Gauges
+### Utilizando Gauges Observáveis (Async) {#using-observable-async-gauges}
 
+Gauges observáveis devem ser utilizados para medir valores não-aditivos.
 Observable Gauges should be used to measure non-additive values.
 
-For example, here's how you report memory usage of the heap objects used in
-application:
+Por exemplo, veja como é possível reportar o uso de memória dos objetos do heap utilizados na aplicação:
 
 ```go
 import (
@@ -687,13 +683,12 @@ func init() {
 }
 ```
 
-### Adding attributes
+### Adicionando atributos {#adding-attributes}
 
-You can add Attributes by using the
+É possível adicionar atributos utilizando as opções 
 [`WithAttributeSet`](https://pkg.go.dev/go.opentelemetry.io/otel/metric#WithAttributeSet)
-or
-[`WithAttributes`](https://pkg.go.dev/go.opentelemetry.io/otel/metric#WithAttributes)
-options.
+ou
+[`WithAttributes`](https://pkg.go.dev/go.opentelemetry.io/otel/metric#WithAttributes).
 
 ```go
 import (
@@ -721,29 +716,18 @@ func init() {
 }
 ```
 
-### Registering Views
+### Registering Views {#registering-views}
 
-A view provides SDK users with the flexibility to customize the metrics output
-by the SDK. You can customize which metric instruments are to be processed or
-ignored. You can also customize aggregation and what attributes you want to
-report on metrics.
+Uma _view_ oferece aos usuários a flexibilidade de personalizar a emissão das métrticas fornecidas pelo SDK. Você pode personalizar quais instrumentos de métricas devem ser processados ou ignorados. Você também pode personalizar a agregação e quais atributos você deseja relatar nas métricas.
 
-Every instrument has a default view, which retains the original name,
-description, and attributes, and has a default aggregation that is based on the
-type of instrument. When a registered view matches an instrument, the default
-view is replaced by the registered view. Additional registered views that match
-the instrument are additive, and result in multiple exported metrics for the
-instrument.
+Cada instrumento possui sua _view_ padrão, que mantém o nome, descrição e atributos originais, e tem uma agregação padrão baseada no tipo do instrumento. Quando uma _view_ registrada corresponde a um instrumento, a _view_ padrão é substituída pela _view_ registrada. _Views_ registradas adicionais que correspondem ao instrumento são adicionadas, resultando em múltiplas métricas exportadas para o instrumento.
 
-You can use the
+É possível utilizar o método 
 [`NewView`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#NewView)
-function to create a view and register it using the
-[`WithView`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#WithView)
-option.
+para criar uma _view_ e registrá-la utilizando a opção
+[`WithView`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#WithView).
 
-For example, here's how you create a view that renames the `latency` instrument
-from the `v0.34.0` version of the `http` instrumentation library to
-`request.latency`:
+Por exemplo, veja como é possível criar uma _view_ que renomeia o instrumento `latency` da versão `v0.34.0` da biblioteca de instrumentação `http` para `request.latency`:
 
 ```go
 view := metric.NewView(metric.Instrument{
@@ -759,9 +743,7 @@ meterProvider := metric.NewMeterProvider(
 )
 ```
 
-For example, here's how you create a view that makes the `latency` instrument
-from the `http` instrumentation library to be reported as an exponential
-histogram:
+Por exemplo, veja como é possível criar uma _view_ que faz com que o instrumento `latency` da biblioteca de instrumentação `http` seja reportado como um histograma exponencial:
 
 ```go
 view := metric.NewView(
@@ -782,12 +764,9 @@ meterProvider := metric.NewMeterProvider(
 )
 ```
 
-The SDK filters metrics and attributes before exporting metrics. For example,
-you can use views to reduce memory usage of high cardinality metrics or drop
-attributes that might contain sensitive data.
+A SDK filtra métricas e atributos antes de exportar as métricas. Por exemplo, você pode utilizar _views_ para reduzir o uso de memória de métricas de alta cardinalidade ou descartar atributos que possam conter dados sensíveis.
 
-Here's how you create a view that drops the `latency` instrument from the `http`
-instrumentation library:
+Aqui está um exemplo de como criar uma _view_ que descarta o instrumento `latency` da biblioteca de instrumentação `http`:
 
 ```go
 view := metric.NewView(
@@ -803,8 +782,7 @@ meterProvider := metric.NewMeterProvider(
 )
 ```
 
-Here's how you create a view that removes the `http.request.method` attribute
-recorded by the `latency` instrument from the `http` instrumentation library:
+Aqui está um exemplo de como criar uma _view_ que remove o atributo `http.request.method` registrado pelo instrumento `latency` da biblioteca de instrumentação `http`:
 
 ```go
 view := metric.NewView(
@@ -820,13 +798,9 @@ meterProvider := metric.NewMeterProvider(
 )
 ```
 
-The `Name` field of criteria supports wildcard pattern matching. The `*`
-wildcard is recognized as matching zero or more characters, and `?` is
-recognized as matching exactly one character. For example, a pattern of `*`
-matches all instrument names.
+O atributo `Name` suporta correspondência de padrão _wildcard_. O _wildcard_ `*` é reconhecido como correspondendo a zero ou mais caracteres, e `?` é reconhecido como correspondendo exatamente a um caractere. Por exemplo, um padrão de `*` corresponde a todos os nomes de instrumentos.
 
-The following example shows how you create a view that sets unit to milliseconds
-for any instrument with a name suffix of `.ms`:
+O exemplo a seguir mostra como criar uma _view_ que define a unidade como milissegundos para qualquer instrumento com um sufixo de nome `.ms`:
 
 ```go
 view := metric.NewView(
@@ -839,12 +813,9 @@ meterProvider := metric.NewMeterProvider(
 )
 ```
 
-The `NewView` function provides a convenient way of creating views. If `NewView`
-can't provide the functionalities you need, you can create a custom
-[`View`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#View) directly.
+O método `NewView` fornece uma maneira conveniente de criar _views_. Caso o método `NewView` não possa fornecer as funcionalidades que você precisa, você pode criar uma _[View](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#View)_ personalizada diretamente.
 
-For example, here's how you create a view that uses regular expression matching
-to ensure all data stream names have a suffix of the units it uses:
+Por exemplo, veja como é possível criar uma _view_ que utiliza a correspondência de expressões regulares para garantir que todos os nomes de fluxo de dados tenham um sufixo das unidades que utiliza:
 
 ```go
 re := regexp.MustCompile(`[._](ms|byte)$`)
@@ -875,58 +846,37 @@ meterProvider := metric.NewMeterProvider(
 
 ## Logs
 
-Logs are distinct from metrics and traces in that **there is no user-facing
-OpenTelemetry logs API**. Instead, there is tooling to bridge logs from existing
-popular log packages (such as slog, logrus, zap, logr) into the OpenTelemetry
-ecosystem. For rationale behind this design decision, see
-[Logging specification](/docs/specs/otel/logs/).
+Logs são distintos de métricas e rastros, pois **não há uma API de logs do OpenTelemetry voltada para o usuário**. Em vez disso, existem ferramentas que integram pacotes de logs populares existentes (como slog, logrus, zap, logr) aos logs do ecossistema OpenTelemetry. Para a justificativa por trás dessa decisão de design, consulte a [Especificação de Logs](/docs/specs/otel/logs/).
 
-The two typical workflows discussed below each cater to different application
-requirements.
+Os dois fluxos de trabalho típicos discutidos abaixo atendem a diferentes requisitos de aplicação.
 
 ### Direct-to-Collector
 
-**Status**: [Experimental](/docs/specs/otel/document-status/)
+**Estado**: [Experimental](/docs/specs/otel/document-status/)
 
-In the direct-to-Collector workflow, logs are emitted directly from an
-application to a collector using a network protocol (e.g. OTLP). This workflow
-is simple to set up as it doesn't require any additional log forwarding
-components, and allows an application to easily emit structured logs that
-conform to the [log data model][log data model]. However, the overhead required
-for applications to queue and export logs to a network location may not be
-suitable for all applications.
+Dentro do _workflow_ Direct-to-collector, os logs são emitidos diretamente de uma aplicação para um coletor usando um protocolo de rede (por exemplo, OTLP). Este _workflow_ é simples de configurar, pois não requer componentes adicionais de encaminhamento de logs, e permite que uma aplicação emita logs estruturados que estejam nos conformes do [modelo de dados de logs][log data model]. No entanto, o _overhead_ necessário para que as aplicações enfileirem e exportem logs para um local de rede pode não ser adequado para todas as aplicações.
 
-To use this workflow:
+Para utilizar este _workflow_:
 
-- Configure the OpenTelemetry [Log SDK](#logs-sdk) to export log records to
-  desired target destination (the [collector][opentelemetry collector] or
-  other).
-- Use an appropriate [Log Bridge](#log-bridge).
+- Configurar o [SDK de Logs](#logs-sdk) do OpenTelemetry para exportar registros de logs para o destino desejado (o [coletor][opentelemetry collector] ou outro).
+- Utilizar uma [Ponte de Logs](#log-bridge) apropriada.
 
-#### Logs SDK
+#### SDK de Logs {#logs-sdk}
 
-The logs SDK dictates how logs are processed when using the
-[direct-to-Collector](#direct-to-collector) workflow. No log SDK is needed when
-using the [log forwarding](#via-file-or-stdout) workflow.
+A SDK de Logs dita como os logs são processados ao utilizar o _workflow_ [Direct-to-Collector](#direct-to-collector). Nenhuma SDK de logs é necessária ao utilizar o _workflow_ de [encaminhamento de logs](#via-file-or-stdout).
 
-The typical log SDK configuration installs a batching log record processor with
-an OTLP exporter.
+A configuração típica da SDK de logs instala um Processor de logs em lote com um Exporter OTLP.
 
-To enable [logs](/docs/concepts/signals/logs/) in your app, you'll need to have
-an initialized [`LoggerProvider`](/docs/concepts/signals/logs/#logger-provider)
-that will let you use a [Log Bridge](#log-bridge).
+Para habilitar [logs](/docs/concepts/signals/logs/) em sua aplicação, você precisará ter um [`LoggerProvider`](/docs/concepts/signals/logs/#logger-provider) inicializado, que permitirá que você utilize uma [Ponte de Logs](#log-bridge).
 
-If a `LoggerProvider` is not created, the OpenTelemetry APIs for logs will use a
-no-op implementation and fail to generate data. Therefore, you have to modify
-the source code to include the SDK initialization code using the following
-packages:
+Caso um `LoggerProvider` não seja criado, a API de Logs do OpenTelemetry irá utilizar uma implementação no-op e não irá gerar dados. Sendo assim, é necessário que o código-fonte seja modificado para incluir a inicialização do SDK utilizando os seguintes pacotes:
 
 - [`go.opentelemetry.io/otel`][]
 - [`go.opentelemetry.io/otel/sdk/log`][]
 - [`go.opentelemetry.io/otel/sdk/resource`][]
 - [`go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp`][]
 
-Ensure you have the right Go modules installed:
+Certifique-se de haver instalado corretamente os seguintes módulos Go:
 
 ```sh
 go get go.opentelemetry.io/otel \
@@ -935,7 +885,7 @@ go get go.opentelemetry.io/otel \
   go.opentelemetry.io/otel/sdk/log
 ```
 
-Then initialize a logger provider:
+Em seguida, inicialize o `LoggerProvider`:
 
 ```go
 package main
@@ -1003,38 +953,25 @@ func newLoggerProvider(ctx context.Context, res *resource.Resource) (*log.Logger
 }
 ```
 
-Now that a `LoggerProvider` is configured, you can use it to set up a
-[Log Bridge](#log-bridge).
+Agora que o `LoggerProvider` está configurado, você pode utilizá-lo para configurar uma [Ponte de Logs](#log-bridge).
 
-#### Log Bridge
+#### Ponte de Logs (#log-bridge)
 
-A log bridge is a component that bridges logs from an existing log package into
-the OpenTelemetry [Log SDK](#logs-sdk) using the [Logs Bridge
-API][logs bridge API].
+Uma ponte de logs é um componente que conecta logs de um pacote de logs existente ao [SDK de Logs](#logs-sdk) do OpenTelemetry, utilizando a [API de Ponte de Logs][logs bridge api].
 
-A full list of log bridges available can be found in the
-[OpenTelemetry registry](/ecosystem/registry/?language=go&component=log-bridge).
+Uma lista completa contendo as pontes de logs disponíveis pode ser encontrada no [registro do OpenTelemetry](/ecosystem/registry/?language=go&component=log-bridge).
 
-Each log bridge package documentation should have a usage example.
+Cada pacote de ponte de logs deve ter uma documentação de pacote que descreve como instalar e configurar a ponte de logs.
 
-### Via file or stdout
+### Através de arquivos ou stdout (#via-file-or-stdout)
 
-In the file or stdout workflow, logs are written to files or standout output.
-Another component (e.g. FluentBit) is responsible for reading / tailing the
-logs, parsing them to more structured format, and forwarding them a target, such
-as the collector. This workflow may be preferable in situations where
-application requirements do not permit additional overhead from
-[direct-to-Collector](#direct-to-collector). However, it requires that all log
-fields required down stream are encoded into the logs, and that the component
-reading the logs parse the data into the [log data model][log data model]. The
-installation and configuration of log forwarding components is outside the scope
-of this document.
+No _workflow_ de arquivos ou _stdout_, os logs são gravados em arquivos ou na saída padrão da aplicação. Outro componente (por exemplo, FluentBit) é responsável por ler/seguir os logs, convertê-los para um formato mais estruturado e encaminhá-los para um destino, como o Collector. Este _workflow_ pode ser preferível em situações onde os requisitos da aplicação não permitem a sobrecarga adicional do [Direct-to-Collector](#direct-to-collector). No entanto, é requisito que todos os campos de log necessários sejam codificados nos logs, e que o componente responsável pela leitura dos logs realize a conversão para o [modelo de dados de logs][log data model]. A instalação e configuração dos componentes de encaminhamento de logs está fora do escopo deste documento.
 
-## Next Steps
+## Próximas Etapas (#next-steps)
 
-You’ll also want to configure an appropriate exporter to
-[export your telemetry data](/docs/languages/go/exporters) to one or more
-telemetry backends.
+Você também vai querer configurar um Exporter apropriado para
+[exportar seus dados de telemetria](/docs/languages/go/exporters) para um ou mais
+backends de telemetria.
 
 [opentelemetry specification]: /docs/specs/otel/
 [trace semantic conventions]: /docs/specs/semconv/general/trace/
