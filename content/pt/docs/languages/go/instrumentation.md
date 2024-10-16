@@ -191,14 +191,14 @@ span.SetAttributes(myKey.String("um valor em texto"))
 #### Atributos Semânticos {#semantic-attributes}
 
 Os Atributos Semânticos são atributos definidos pela [Especificação do
-OpenTelemetry][OpenTelemetry Specification] para fornecer um conjunto comum de
+OpenTelemetry][opentelemetry specification] para fornecer um conjunto comum de
 chaves de atributos entre várias linguagens, frameworks e ambientes de execução.
 Eles representam conceitos como métodos HTTP, códigos de estado, user agents e
 outros. Estes atributos estão disponíveis no pacote
 `go.opentelemetry.io/otel/semconv/v1.26.0`.
 
 Para mais detalhes, consulte as [Convenções Semânticas de
-Rastros][Trace semantic conventions].
+Rastros][trace semantic conventions].
 
 ### Eventos {#events}
 
@@ -1079,7 +1079,7 @@ configurar uma [Ponte de Logs](#log-bridge).
 #### Ponte de Logs (#log-bridge)
 
 Uma ponte de logs é um componente que conecta logs de um pacote existente ao [SDK de Logs](#logs-sdk) do OpenTelemetry, utilizando a [API de
-Ponte de Logs][logs bridge api].
+Ponte de Logs][logs bridge API].
 
 Uma lista completa contendo as pontes de logs disponíveis pode ser encontrada no
 [registro do OpenTelemetry](/ecosystem/registry/?language=go&component=log-bridge).
