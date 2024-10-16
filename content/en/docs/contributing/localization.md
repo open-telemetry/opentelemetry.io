@@ -206,12 +206,12 @@ For more details about the script, run `npm run check:i18n -- -h`.
 
 To start a new localization for the OpenTelemetry website,
 [raise an issue](https://github.com/open-telemetry/opentelemetry.io/issues/) to
-share your interest to contribute. Tag all other individuals that are willing
-to write and review translations in the language you want to add. You need at
-least two potential contributors, three would be ideal. Include the following
-task list in your issue as well:
+share your interest to contribute. Tag all other individuals that are willing to
+write and review translations in the language you want to add. You need at least
+two potential contributors, three would be ideal. Include the following task
+list in your issue as well:
 
-```
+```markdown
 - [ ] List at least 2 contributors for the new language: `<@gitHubHandle1>`,
   `<@gitHubHandle2>`, ...
 - [ ] Localize index page to `<your language>`
@@ -228,8 +228,8 @@ After you created that issue and have the required amount of contributors,
 maintainers will ask you to provide a pull request with a translation of the
 [index page](https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md).
 Make sure that maintainers are allowed to edit your PR, since they will add
-additional changes to your PR that are required to get your localization
-project started.
+additional changes to your PR that are required to get your localization project
+started.
 
 With your first PR merged maintainers will take care of setting up the issue
 label, the org-level group and the component owners.
@@ -244,8 +244,8 @@ the requirements for becoming an established member and approver as outlined in
 the
 [membership guidelines](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md).
 
-When starting the localization project, maintainers will treat your reviews
-as if you are an approver already.
+When starting the localization project, maintainers will treat your reviews as
+if you are an approver already.
 
 {{% /alert %}}
 
