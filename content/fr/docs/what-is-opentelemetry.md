@@ -89,7 +89,7 @@ OpenTelemetry est utilisé par une grande variété de
 [bibliothèques, services et applications](/ecosystem/integrations/) qui
 intègrent OpenTelemetry afin de fournir de l'observabilité par défaut.
 
-OpenTelemetry is pris en charge par de nombreux
+OpenTelemetry est pris en charge par de nombreux
 [fournisseurs](/ecosystem/vendors/), dont beaucoup fournissent un support
 commercial à OpenTelemetry et contribuent au projet directement.
 
