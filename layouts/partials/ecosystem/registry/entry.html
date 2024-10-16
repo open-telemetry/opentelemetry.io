@@ -270,8 +270,8 @@ $remoteRegistries := dict
 
 
 <!-- Individual card structure -->
-<div class="card m-2 registry-entry p-0 {{ $highlightStyle }}" style="max-width: 340px; min-width:200px;" data-registry-id="{{ ._key }}"
-    data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
+<div class="card  m-2 registry-entry p-0 {{ $highlightStyle }}" style="max-width: 340px; min-width:200px;"
+    data-registry-id="{{ ._key }}" data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
     <div class="card-header p-2 d-flex w-100">
         <div class="col-8">
             <a {{ $primaryHref }} target="_blank" rel="noopener" class="me-auto">
@@ -342,7 +342,7 @@ $remoteRegistries := dict
             </div>
         </div>
     </div>
-    <div class="row p-2 card-body w-100">
+    <div class="row p-3 card-body w-100">
         <div class="col-1 ">
             <div>
                 {{ with .urls.website -}}
@@ -395,7 +395,7 @@ $remoteRegistries := dict
             </div>
 
         </div>
-        <div class="col-6 fs-sm-1">
+        <div class="col-6  fs-sm-1">
             <div class="mb-3">
                 {{ if $deprecated -}}
                 <div class="alert alert-danger" role="alert">
@@ -403,24 +403,19 @@ $remoteRegistries := dict
                     {{ .deprecated.reason | markdownify }}
                 </div>
                 {{ end -}}
-                <p class="" >
+                <p class="">
                     {{- .description | markdownify -}}
                 </p>
             </div>
-            {{ with $package -}}
-            {{ if not (eq .quickInstall false) }}
-            <h6><i class="fa-solid fa-forward"></i> Quick Install</h6>
-            <p >{{ (partial .installTemplate .) | markdownify -}}
-            </p>
-            {{ end -}}
-            {{- end -}}
+
+
         </div>
         <div class="col-5 card-text">
-            <ul class="list-group list-group-flush" >
+            <ul class="list-group list-group-flush">
                 {{ if .package.version -}}
-                <li class="list-group-item" style="padding-left: 8px; padding-right: 8px;" >
+                <li class="list-group-item" style="padding-left: 0px; padding-right: 0px;">
                     <div class="ms-2 me-auto">
-                        <div class="fw-bold" >
+                        <div class="fw-bold">
                             {{ .package.version }}
                         </div>
                         <small>Version</small>
@@ -428,7 +423,7 @@ $remoteRegistries := dict
                 </li>
                 {{- end -}}
                 {{ with .language -}}
-                <li class="list-group-item">
+                <li class="list-group-item" style="padding-left: 0px; padding-right: 0px;">
                     <div class="ms-2 me-auto">
                         <div class="fw-bold">
                             {{ $languageNames.Get . | default (humanize .) }}
@@ -438,7 +433,7 @@ $remoteRegistries := dict
                 </li>
                 {{- end }}
                 {{ with .registryType -}}
-                <li class="list-group-item">
+                <li class="list-group-item" style="padding-left: 0px; padding-right: 0px;">
                     <div class="ms-2 me-auto">
                         <div class="fw-bold">
                             {{ . | humanize }}
@@ -448,7 +443,7 @@ $remoteRegistries := dict
                 </li>
                 {{- end -}}
                 {{ with .license -}}
-                <li class="list-group-item">
+                <li class="list-group-item" style="padding-left: 0px; padding-right: 0px;">
                     <div class="ms-2 me-auto">
                         <div class="fw-bold">
                             {{ . }}
@@ -459,6 +454,17 @@ $remoteRegistries := dict
                 {{- end -}}
             </ul>
         </div>
+
+    </div>
+    <div class="row w-100 p-1" style="margin-left: 1%;">
+        <div> {{ with $package -}}
+            {{ if not (eq .quickInstall false) }}
+            <h6 class="mb-0"><i class="fa-solid fa-forward"></i> Quick Install</h6>
+            <p>{{ (partial .installTemplate .) | markdownify -}}</p>
+            {{ end -}}
+            {{- end -}}
+        </div>
+
     </div>
 </div>
 
