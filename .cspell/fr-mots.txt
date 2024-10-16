@@ -209,3 +209,5 @@ spécification
 communautaires
 brève
 êtes
+standardisée
+autres
