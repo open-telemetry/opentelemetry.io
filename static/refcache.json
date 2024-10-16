@@ -9207,6 +9207,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:19.249572-05:00"
   },
+  "https://nais.io/blog/posts/otel-from-0-to-100/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-16T06:19:11.246616643Z"
+  },
   "https://netlify.com": {
     "StatusCode": 206,
     "LastSeen": "2024-06-12T11:21:36.089536+02:00"
