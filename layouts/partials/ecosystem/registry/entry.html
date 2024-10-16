@@ -89,192 +89,12 @@ $remoteRegistries := dict
 {{ $primaryHref := printf "href=%q" $primaryUrl | safeHTMLAttr -}}
 
 
-
-<!-- <li class="card my-3 registry-entry {{ $highlightStyle }}" data-registry-id="{{ ._key }}"
-    data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
-    <div class="card-body container">
-        <h4 class="card-title mb-0 d-flex flex-row">
-            <a {{ $primaryHref }} target="_blank" rel="noopener" class="me-auto">
-                {{- .title | markdownify -}}
-            </a>
-            <div class="ms-auto">
-                {{ if $isNew }}
-                <span class="badge rounded-pill text-bg-info" data-bs-toggle="tooltip" data-bs-placement="top"
-                    title="New package">
-                    <i class="fa-regular fa-star"></i>
-                </span>
-                {{ end }}
-
-                {{ if $isNative }}
-                <span class="badge rounded-pill text-bg-success text-white" data-bs-toggle="tooltip"
-                    data-bs-placement="top" title="Native integration">
-                    <i class="fa-solid fa-puzzle-piece"></i>
-                </span>
-                {{ end }}
-
-                {{ if $isFirstParty }}
-                <span class="badge rounded-pill text-bg-success text-white" data-bs-toggle="tooltip"
-                    data-bs-placement="top" title="First-party integration">
-                    <i class="fa-solid fa-heart"></i>
-                </span>
-                {{ end }}
-
-                {{ if $usedInDemo }}
-                <span class="badge rounded-pill text-bg-secondary text-white" data-bs-toggle="tooltip"
-                    data-bs-placement="top" title="Used in OpenTelemetry Demo">
-                    <i class="fa-solid fa-shapes"></i>
-                </span>
-                {{ end }}
-
-                {{ if $deprecated }}
-                <span class="badge rounded-pill text-bg-danger text-white" data-bs-toggle="tooltip"
-                    data-bs-placement="top" title="Deprecated package">
-                    <i class="fa-solid fa-ban"></i>
-                </span>
-                {{ end }}
-
-                {{ if .cncfProjectLevel }}
-                <span class="badge rounded-pill text-bg-primary text-white" data-bs-toggle="tooltip"
-                    data-bs-placement="top" title="CNCF {{ .cncfProjectLevel}} Project">
-                    <img alt="CNCF"
-                        style="display: inline-block; width: 14px; height: 14px; border: none; margin:0px; padding: 0; vertical-align:middle"
-                        src="/img/cncf-icon-white.svg">
-                </span>
-                {{ end }}
-            </div>
-        </h4>
-        <p class="card-text">
-            <small class="text-body-secondary">
-                by
-                {{ range $index, $author := .authors -}}
-                {{ if $index }}, {{ end }}
-                {{ if eq $author.name "OpenTelemetry Authors" -}}
-                <a href="/" class="badge rounded-pill text-bg-primary">🔭 {{ $author.name }} 🔭</a>
-                {{ else if isset $author "url" }}
-                {{ $href := printf "href=%q" $author.url | safeHTMLAttr -}}
-                <a {{ $href }} target="_blank" rel="noopener" class="card-link external-link">{{ $author.name }}</a>
-                {{ else -}}
-                {{ $author.name -}}
-                {{ end -}}
-                {{ end -}}
-            </small>
-        </p>
-        <div class="row p-2">
-            <div class="col col-md-9 col-lg-10">
-                <div class="mb-3">
-                    {{ if $deprecated -}}
-                    <div class="alert alert-danger" role="alert">
-                        <h4 class="alert-heading">Deprecated</h4>
-                        {{ .deprecated.reason | markdownify }}
-                    </div>
-                    {{ end -}}
-                    {{- .description | markdownify -}}
-                </div>
-                {{ with $package -}}
-                {{ if not (eq .quickInstall false) }}
-                <h6><i class="fa-solid fa-forward"></i> Quick Install</h6>
-                <p>{{ (partial .installTemplate .) | markdownify -}}
-                </p>
-                {{ end -}}
-                {{- end -}}
-            </div>
-            <div class="col col-md-3 col-lg-2">
-                <ul class="list-group list-group-flush">
-                    {{ if .package.version -}}
-                    <li class="list-group-item">
-                        <div class="ms-2 me-auto">
-                            <div class="fw-bold">
-                                {{ .package.version }}
-                            </div>
-                            <small>Version</small>
-                        </div>
-                    </li>
-                    {{- end -}}
-                    {{ with .language -}}
-                    <li class="list-group-item">
-                        <div class="ms-2 me-auto">
-                            <div class="fw-bold">
-                                {{ $languageNames.Get . | default (humanize .) }}
-                            </div>
-                            <small>Language</small>
-                        </div>
-                    </li>
-                    {{- end }}
-                    {{ with .registryType -}}
-                    <li class="list-group-item">
-                        <div class="ms-2 me-auto">
-                            <div class="fw-bold">
-                                {{ . | humanize }}
-                            </div>
-                            <small>Component</small>
-                        </div>
-                    </li>
-                    {{- end -}}
-                    {{ with .license -}}
-                    <li class="list-group-item">
-                        <div class="ms-2 me-auto">
-                            <div class="fw-bold">
-                                {{ . }}
-                            </div>
-                            <small>License</small>
-                        </div>
-                    </li>
-                    {{- end -}}
-                </ul>
-            </div>
-        </div>
-        <div>
-
-        </div>
-        {{ with .urls.website -}}
-        {{ $websiteHref := printf "href=%q" . | safeHTMLAttr -}}
-        <a {{ $websiteHref }} target="_blank" rel="noopener" class="card-link" data-bs-toggle="tooltip"
-            data-bs-placement="top" title="Website">
-            <i class="fas fa-house" aria-hidden="true"></i>
-        </a>
-        {{- end -}}
-        {{ with .urls.docs -}}
-        {{ $docsHref := printf "href=%q" . | safeHTMLAttr -}}
-        <a {{ $docsHref }} target="_blank" rel="noopener" class="card-link" data-bs-toggle="tooltip"
-            data-bs-placement="top" title="Documentation">
-            <i class="fas fa-book" aria-hidden="true"></i>
-        </a>
-
-        {{- end -}}
-        {{ with $package -}}
-        {{ $packageUrl := printf "href=%q" (printf .urlPattern .name) | safeHTMLAttr -}}
-        <a {{ $packageUrl }} target="_blank" rel="noopener" class="card-link" data-bs-toggle="tooltip"
-            data-bs-placement="top" title="Package Details">
-            <i class="{{ .icon }}" aria-hidden="true"></i>
-        </a>
-        {{- end -}}
-        {{ with .urls.repo -}}
-        {{ $icon := cond ( hasPrefix . "https://github.com/" ) "fa-brands fa-github" "fab fa-git-alt" -}}
-        {{ $repoHref := printf "href=%q" . | safeHTMLAttr -}}
-        <a {{ $repoHref }} target="_blank" rel="noopener" class="card-link" data-bs-toggle="tooltip"
-            data-bs-placement="top" title="Repository">
-            <i class="{{ $icon }}" aria-hidden="true"></i>
-        </a>
-
-        {{- end -}}
-        {{ with .urls.demo -}}
-        {{ $demoUrl := printf "href=%q" (printf .) | safeHTMLAttr -}}
-        <a {{ $demoUrl }} target="_blank" rel="noopener" class="card-link" data-bs-toggle="tooltip"
-            data-bs-placement="top" title="Demo Service">
-            <i class="fa-solid fa-shapes" aria-hidden="true"></i>
-        </a>
-
-        {{- end -}}
-    </div>
-</li> -->
-
-
 <!-- Individual card structure -->
-<div class="card  m-2 registry-entry p-0 {{ $highlightStyle }}" style="max-width: 340px; min-width:200px;"
-    data-registry-id="{{ ._key }}" data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
-    <div class="card-header p-2 d-flex w-100">
+<div class="card  m-2 registry-entry p-0 {{ $highlightStyle }}" data-registry-id="{{ ._key }}"
+    data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
+    <div class="card-header p-3 d-flex w-100">
         <div class="col-8">
-            <a {{ $primaryHref }} target="_blank" rel="noopener" class="me-auto">
+            <a {{ $primaryHref }} target="_blank" rel="noopener" class="me-auto text-decoration-none link-success">
                 {{- .title | markdownify -}}
             </a>
             <p class="card-text">
@@ -283,10 +103,12 @@ $remoteRegistries := dict
                     {{ range $index, $author := .authors -}}
                     {{ if $index }}, {{ end }}
                     {{ if eq $author.name "OpenTelemetry Authors" -}}
-                    <a href="/" class="badge rounded-pill text-bg-primary">🔭 {{ $author.name }} 🔭</a>
+                    <a href="/" class="badge rounded-pill text-bg-primary text-decoration-none">🔭 {{ $author.name }}
+                        🔭</a>
                     {{ else if isset $author "url" }}
                     {{ $href := printf "href=%q" $author.url | safeHTMLAttr -}}
-                    <a {{ $href }} target="_blank" rel="noopener" class="card-link external-link">{{ $author.name }}</a>
+                    <a {{ $href }} target="_blank" rel="noopener"
+                        class="card-link external-link text-decoration-none link-secondary">{{ $author.name }}</a>
                     {{ else -}}
                     {{ $author.name -}}
                     {{ end -}}
@@ -294,51 +116,58 @@ $remoteRegistries := dict
                 </small>
             </p>
         </div>
-        <div class="col-4">
-            <div class="d-flex">
-                {{ if $isNew }}
-                <span class="badge rounded-pill text-bg-info" data-bs-toggle="tooltip" data-bs-placement="top"
-                    title="New package">
-                    <i class="fa-regular fa-star"></i>
-                </span>
-                {{ end }}
-
-                {{ if $isNative }}
-                <span class="badge rounded-pill text-bg-success text-white" data-bs-toggle="tooltip"
-                    data-bs-placement="top" title="Native integration">
-                    <i class="fa-solid fa-puzzle-piece"></i>
-                </span>
-                {{ end }}
-
-                {{ if $isFirstParty }}
-                <span class="badge rounded-pill text-bg-success text-white" data-bs-toggle="tooltip"
-                    data-bs-placement="top" title="First-party integration">
-                    <i class="fa-solid fa-heart"></i>
-                </span>
-                {{ end }}
-
-                {{ if $usedInDemo }}
-                <span class="badge rounded-pill text-bg-secondary text-white" data-bs-toggle="tooltip"
-                    data-bs-placement="top" title="Used in OpenTelemetry Demo">
-                    <i class="fa-solid fa-shapes"></i>
-                </span>
-                {{ end }}
-
-                {{ if $deprecated }}
-                <span class="badge rounded-pill text-bg-danger text-white" data-bs-toggle="tooltip"
-                    data-bs-placement="top" title="Deprecated package">
-                    <i class="fa-solid fa-ban"></i>
-                </span>
-                {{ end }}
-
-                {{ if .cncfProjectLevel }}
-                <span class="badge rounded-pill text-bg-primary text-white" data-bs-toggle="tooltip"
-                    data-bs-placement="top" title="CNCF {{ .cncfProjectLevel}} Project">
-                    <img alt="CNCF"
-                        style="display: inline-block; width: 14px; height: 14px; border: none; margin:0px; padding: 0; vertical-align:middle"
-                        src="/img/cncf-icon-white.svg">
-                </span>
-                {{ end }}
+        <div class="col-4 ">
+            <div class="d-flex gap-1 ">
+                <div>
+                    {{ if $isNew }}
+                    <span class="badge rounded-pill" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="New package">
+                        <i class="fa-regular fa-star"></i>
+                    </span>
+                    {{ end }}
+                </div>
+                <div>
+                    {{ if $isNative }}
+                    <span class="badge rounded-pill text-bg-success text-white" data-bs-toggle="tooltip"
+                        data-bs-placement="top" title="Native integration">
+                        <i class="fa-solid fa-puzzle-piece"></i>
+                    </span>
+                    {{ end }}
+                </div>
+                <div>
+                    {{ if $isFirstParty }}
+                    <span class="badge rounded-pill text-bg-success text-white" data-bs-toggle="tooltip"
+                        data-bs-placement="top" title="First-party integration">
+                        <i class="fa-solid fa-heart"></i>
+                    </span>
+                    {{ end }}
+                </div>
+                <div>
+                    {{ if $usedInDemo }}
+                    <span class="badge rounded-pill text-bg-secondary text-white" data-bs-toggle="tooltip"
+                        data-bs-placement="top" title="Used in OpenTelemetry Demo">
+                        <i class="fa-solid fa-shapes"></i>
+                    </span>
+                    {{ end }}
+                </div>
+                <div>
+                    {{ if $deprecated }}
+                    <span class="badge rounded-pill text-bg-danger text-white" data-bs-toggle="tooltip"
+                        data-bs-placement="top" title="Deprecated package">
+                        <i class="fa-solid fa-ban"></i>
+                    </span>
+                    {{ end }}
+                </div>
+                <div>
+                    {{ if .cncfProjectLevel }}
+                    <span class="badge rounded-pill text-bg-primary text-white" data-bs-toggle="tooltip"
+                        data-bs-placement="top" title="CNCF {{ .cncfProjectLevel}} Project">
+                        <img alt="CNCF"
+                            style="display: inline-block; width: 14px; height: 14px; border: none; margin:0px; padding: 0; vertical-align:middle"
+                            src="/img/cncf-icon-white.svg">
+                    </span>
+                    {{ end }}
+                </div>
             </div>
         </div>
     </div>
@@ -395,8 +224,8 @@ $remoteRegistries := dict
             </div>
 
         </div>
-        <div class="col-6  fs-sm-1">
-            <div class="mb-3">
+        <div class="col-6 ">
+            <div class="mb-3 description">
                 {{ if $deprecated -}}
                 <div class="alert alert-danger" role="alert">
                     <h4 class="alert-heading">Deprecated</h4>
@@ -407,13 +236,11 @@ $remoteRegistries := dict
                     {{- .description | markdownify -}}
                 </p>
             </div>
-
-
         </div>
-        <div class="col-5 card-text">
+        <div class="col-5 card-text description">
             <ul class="list-group list-group-flush">
                 {{ if .package.version -}}
-                <li class="list-group-item" style="padding-left: 0px; padding-right: 0px;">
+                <li class="list-group-item" >
                     <div class="ms-2 me-auto">
                         <div class="fw-bold">
                             {{ .package.version }}
@@ -423,7 +250,7 @@ $remoteRegistries := dict
                 </li>
                 {{- end -}}
                 {{ with .language -}}
-                <li class="list-group-item" style="padding-left: 0px; padding-right: 0px;">
+                <li class="list-group-item" >
                     <div class="ms-2 me-auto">
                         <div class="fw-bold">
                             {{ $languageNames.Get . | default (humanize .) }}
@@ -433,7 +260,7 @@ $remoteRegistries := dict
                 </li>
                 {{- end }}
                 {{ with .registryType -}}
-                <li class="list-group-item" style="padding-left: 0px; padding-right: 0px;">
+                <li class="list-group-item" >
                     <div class="ms-2 me-auto">
                         <div class="fw-bold">
                             {{ . | humanize }}
@@ -443,7 +270,7 @@ $remoteRegistries := dict
                 </li>
                 {{- end -}}
                 {{ with .license -}}
-                <li class="list-group-item" style="padding-left: 0px; padding-right: 0px;">
+                <li class="list-group-item" >
                     <div class="ms-2 me-auto">
                         <div class="fw-bold">
                             {{ . }}
@@ -456,7 +283,7 @@ $remoteRegistries := dict
         </div>
 
     </div>
-    <div class="row w-100 p-1" style="margin-left: 1%;">
+    <div class="row w-100 p-1 quickInstall">
         <div> {{ with $package -}}
             {{ if not (eq .quickInstall false) }}
             <h6 class="mb-0"><i class="fa-solid fa-forward"></i> Quick Install</h6>
@@ -467,7 +294,5 @@ $remoteRegistries := dict
 
     </div>
 </div>
-
-
 
 {{ end -}}
