@@ -204,22 +204,50 @@ For more details about the script, run `npm run check:i18n -- -h`.
 
 ## New localizations
 
-(Section To Be Completed soon with information about how to propose a new
-localization.)
+To start a new localization for the OpenTelemetry website,
+[raise an issue](https://github.com/open-telemetry/opentelemetry.io/issues/) to
+share your interest to contribute. Tag all other individuals that are willing to
+write and review translations in the language you want to add. You need at least
+two potential contributors, three would be ideal. Include the following task
+list in your issue as well:
 
-<!--
+```markdown
+- [ ] List at least 2 contributors for the new language: `<@gitHubHandle1>`,
+  `<@gitHubHandle2>`, ...
+- [ ] Localize index page to `<your language>`
+- [ ] Create an issue label for `lang:<shortcode>`
+- [ ] Create org-level group for `<shortcode>` approvers
+- [ ] Update components owners for `content/<shortcode>`
+```
 
-cSpell:ignore: CODEOWNERSHIP Comms
+For the `<shortcode>` use the
+[ISO 639-1 code](https://en.wikipedia.org/wiki/ISO_639-1) for the language you
+want to add.
 
-* Our website supports multiple languages already, so the translated content should live under main/content/<two_letter_code>
-* Our point of reference is how kubernetes is doing their localization, see https://github.com/kubernetes/website
-* We need at least 2 ppl owning that content, so that changes can be approved (CODEOWNERSHIP will help with that)
-* We can start with the translation been hidden until we reach a point where enough material is translated to go live (with maybe some blog post & announcements around it)
-* (Please anticipate that this is guidance on not a fixed set of rules)
+After you created that issue and have the required amount of contributors,
+maintainers will ask you to provide a pull request with a translation of the
+[index page](https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md).
+Make sure that maintainers are allowed to edit your PR, since they will add
+additional changes to your PR that are required to get your localization project
+started.
 
-As stated above this project requires a set of individuals that are happy to take on ownership for their language and work with SIG Comms on implementing this. So any discussion on this page "how to do it" needs to be preceded by a "I volunteer to co-own `<language>`"
+With your first PR merged maintainers will take care of setting up the issue
+label, the org-level group and the component owners.
 
--->
+{{% alert title="Important" color="warning" %}}
+
+You don't have to be an existing contributor to the OpenTelemetry project, to
+start a new localization. However you will not be added as a member of the
+[OpenTelemetry GitHub organization](https://github.com/open-telemetry/) or as a
+member of the approvers group for your localization. You will need to satisfy
+the requirements for becoming an established member and approver as outlined in
+the
+[membership guidelines](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md).
+
+When starting the localization project, maintainers will treat your reviews as
+if you are an approver already.
+
+{{% /alert %}}
 
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
 [multilingual framework]: https://gohugo.io/content-management/multilingual/
