@@ -11,8 +11,8 @@ OpenTelemetry, c'est :
 - Un framework
   d'[observabilité](/docs/concepts/observability-primer/#what-is-observability)
   et des outils conçus pour créer et gérer des données de télémétrie telles que
-  des [traces](/docs/concepts/signals/traces/),
-  des [metriques](/docs/concepts/signals/metrics/), et des
+  des [traces](/docs/concepts/signals/traces/), des
+  [metriques](/docs/concepts/signals/metrics/), et des
   [logs](/docs/concepts/signals/logs/)
 - Indépendant d'un fournisseur et d'un outil, ce qui signifie qu'il peut être
   utilisé avec une grande variété de backends d'observabilité, y compris des
@@ -36,8 +36,8 @@ qui incluent les traces, métriques et logs.
 
 Pour rendre un système observable, il doit être
 [instrumenté](/docs/concepts/instrumentation). Cela signifie que le code doit
-émettre des [traces](/docs/concepts/signals/traces/),
-des [métriques](/docs/concepts/signals/metrics/), et/ou des
+émettre des [traces](/docs/concepts/signals/traces/), des
+[métriques](/docs/concepts/signals/metrics/), et/ou des
 [logs](/docs/concepts/signals/logs/). Les données produites doivent être
 transmises à un backend d'observabilité.
 
