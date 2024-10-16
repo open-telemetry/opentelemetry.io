@@ -6,7 +6,8 @@ aliases:
 weight: 30
 description: Instrumentação manual para OpenTelemetry Go
 default_lang_commit: 1c6697de9c4d67fb72231354d5d9c6cdcfdfa64b
-cSpell:ignore: fatalf logr logrus otelslog otlplog otlploghttp sdktrace sighup updown
+cSpell:ignore:
+  fatalf logr logrus otelslog otlplog otlploghttp sdktrace sighup updown
 ---
 
 {{% docs/languages/instrumentation-intro %}}
@@ -249,7 +250,8 @@ if err != nil {
 
 ### Capturar erros {#record-errors}
 
-Caso você tenha uma operação que falhou e deseja capturar o erro produzido, você pode registrar este erro.
+Caso você tenha uma operação que falhou e deseja capturar o erro produzido, você
+pode registrar este erro.
 
 ```go
 import (
@@ -291,9 +293,9 @@ import (
 otel.SetTextMapPropagator(propagation.TraceContext{})
 ```
 
-> O OpenTelemetry também suporta cabeçalhos no formato B3, para compatibilidade com
-> sistemas de rastreamento (`go.opentelemetry.io/contrib/propagators/b3`) que
-> não suportam o padrão W3C TraceContext.
+> O OpenTelemetry também suporta cabeçalhos no formato B3, para compatibilidade
+> com sistemas de rastreamento (`go.opentelemetry.io/contrib/propagators/b3`)
+> que não suportam o padrão W3C TraceContext.
 
 Após configurar a propagação de contexto, você provavelmente vai querer utilizar
 a instrumentação automática para lidar com todo o trabalho que acontece debaixo
@@ -318,13 +320,15 @@ os seguintes instrumentos:
 - **Gauge**: Mede o valor atual no momento da leitura. Um exemplo seria um
   medidor de tanque de combustível de um veículo. Gauges são assíncronos.
 - **UpDownCounter**: Um valor que acumula com o tempo, mas também pode cair. Um
-  exemplo seria o tamanho de uma fila, este valor irá aumentar e diminuir conforme o número de itens que estão entrando ou saindo desta fila.
+  exemplo seria o tamanho de uma fila, este valor irá aumentar e diminuir
+  conforme o número de itens que estão entrando ou saindo desta fila.
 - **Asynchronous UpDownCounter**: Assim como o **UpDownCounter**, porém é
   coletado uma vez a cada exportação. Pode ser usado em casos onde você não
   tenha acesso às mudanças contínuas, mas apenas ao valor agregado (ex., atual
   tamanho da fila).
 
-Para mais informações sobre instrumentos síncronos, assíncronos, e entender qual dos tipos melhor se encaixa no seu caso de uso, consulte as
+Para mais informações sobre instrumentos síncronos, assíncronos, e entender qual
+dos tipos melhor se encaixa no seu caso de uso, consulte as
 [Diretrizes Suplementares](/docs/specs/otel/metrics/supplementary-guidelines/).
 
 Caso um `MeterProvider` não seja criado, tanto por uma biblioteca de
@@ -341,15 +345,15 @@ A seguir, você poderá encontrar uma documentação mais detalhada para os paco
 {{% alert color="info" %}} Caso você esteja instrumentando uma biblioteca, pule
 esta etapa. {{% /alert %}}
 
-Para habilitar [métricas](/docs/concepts/signals/metrics/) em sua aplicação, você
-precisará de um
+Para habilitar [métricas](/docs/concepts/signals/metrics/) em sua aplicação,
+você precisará de um
 [`MeterProvider`](/docs/concepts/signals/metrics/#meter-provider) inicializado,
 que permitirá que você crie um [`Meter`](/docs/concepts/signals/metrics/#meter).
 
-Caso um `MeterProvider` não seja inicializado, a API de métricas do OpenTelemetry
-irá utilizar uma implementação no-op e não irá gerar dados de métricas.
-Sendo assim, é necessário que o código-fonte da aplicação seja modificado para incluir a
-inicialização do SDK utilizando os seguintes pacotes:
+Caso um `MeterProvider` não seja inicializado, a API de métricas do
+OpenTelemetry irá utilizar uma implementação no-op e não irá gerar dados de
+métricas. Sendo assim, é necessário que o código-fonte da aplicação seja
+modificado para incluir a inicialização do SDK utilizando os seguintes pacotes:
 
 - [`go.opentelemetry.io/otel`][]
 - [`go.opentelemetry.io/otel/sdk/metric`][]
@@ -459,31 +463,35 @@ Os instrumentos síncronos fazem uma medição quando são chamados. A medição
 realizada como uma chamada de método durante a execução da aplicação, assim como
 qualquer outra chamada de método. Periodicamente, a agregação dessas medições é
 exportada por um `Exporter` configurado. Como as medições são desacopladas da
-exportação dos valores medidos, um ciclo de exportação pode conter zero ou várias
-medições agregadas.
+exportação dos valores medidos, um ciclo de exportação pode conter zero ou
+várias medições agregadas.
 
 Os instrumentos assíncronos, por outro lado, fornecem uma medição a partir de
-uma solicitação do SDK. Quando o SDK realiza a exportação, uma função de retorno fornecida ao instrumento de medição no momento de sua criação é invocada. Esta função de retorno
-fornece ao SDK uma medição, que é imediatamente exportada. Todas as medições em
-instrumentos assíncronos são realizadas uma vez por cada ciclo de exportação.
+uma solicitação do SDK. Quando o SDK realiza a exportação, uma função de retorno
+fornecida ao instrumento de medição no momento de sua criação é invocada. Esta
+função de retorno fornece ao SDK uma medição, que é imediatamente exportada.
+Todas as medições em instrumentos assíncronos são realizadas uma vez por cada
+ciclo de exportação.
 
 Os instrumentos assíncronos podem ser úteis em diversas circunstâncias, como:
 
-- Quando a atualização de um contador não é computacionalmente barata e você
-  não deseja que o processo em execução aguarde pela medição.
-- Quando medições precisam acontecer em frequências não-relacionadas ao tempo de execução
-  da aplicação (ou seja, não podem ser medidas com precisão ao serem vinculadas ao
-  ciclo de vida de uma operação).
+- Quando a atualização de um contador não é computacionalmente barata e você não
+  deseja que o processo em execução aguarde pela medição.
+- Quando medições precisam acontecer em frequências não-relacionadas ao tempo de
+  execução da aplicação (ou seja, não podem ser medidas com precisão ao serem
+  vinculadas ao ciclo de vida de uma operação).
 - Quando não há um registro de data/hora conhecidos para um valor de medição.
 
-Em casos como estes, muitas vezes é melhor realizar a medição de um valor diretamente,
-em vez de agregar uma série de deltas em um pós-processamento (como ocorre no exemplo síncrono).
+Em casos como estes, muitas vezes é melhor realizar a medição de um valor
+diretamente, em vez de agregar uma série de deltas em um pós-processamento (como
+ocorre no exemplo síncrono).
 
 ### Utilizando Counters {#using-counters}
 
 Counters podem ser utilizados para medir valores incrementais e não-negativos.
 
-Por exemplo, aqui está como seria possível reportar o número de chamadas em um servidor HTTP:
+Por exemplo, aqui está como seria possível reportar o número de chamadas em um
+servidor HTTP:
 
 ```go
 import (
@@ -553,7 +561,8 @@ func removeItem() {
 
 ### Utilizando Gauges {#using-gauges}
 
-Gauges são utilizados para medir quando ocorrem mudanças em valores não-aditivos.
+Gauges são utilizados para medir quando ocorrem mudanças em valores
+não-aditivos.
 
 Por exemplo, veja como é possível relatar a velocidade atual de um ventilador de
 CPU:
@@ -830,9 +839,9 @@ meterProvider := metric.NewMeterProvider(
 )
 ```
 
-Em outro exemplo, veja como é possível criar uma _view_ que faz com que o instrumento
-`latency` da biblioteca de instrumentação `http` seja reportado como um
-histograma exponencial:
+Em outro exemplo, veja como é possível criar uma _view_ que faz com que o
+instrumento `latency` da biblioteca de instrumentação `http` seja reportado como
+um histograma exponencial:
 
 ```go
 view := metric.NewView(
@@ -853,11 +862,12 @@ meterProvider := metric.NewMeterProvider(
 )
 ```
 
-A SDK filtra métricas e atributos antes de exportar as métricas. Você pode utilizar _views_ para reduzir o uso de memória de métricas de alta
-cardinalidade ou descartar atributos que possam conter dados sensíveis.
+A SDK filtra métricas e atributos antes de exportar as métricas. Você pode
+utilizar _views_ para reduzir o uso de memória de métricas de alta cardinalidade
+ou descartar atributos que possam conter dados sensíveis.
 
-No exemplo a seguir, criamos uma _view_ que descarta o instrumento
-`latency` da biblioteca de instrumentação `http`:
+No exemplo a seguir, criamos uma _view_ que descarta o instrumento `latency` da
+biblioteca de instrumentação `http`:
 
 ```go
 view := metric.NewView(
@@ -892,9 +902,9 @@ meterProvider := metric.NewMeterProvider(
 ```
 
 O atributo `Name` suporta correspondência de padrão _wildcard_. O _wildcard_ `*`
-é reconhecido como correspondendo a zero ou mais caracteres, e o _wildcard_ `?` é reconhecido
-como correspondendo exatamente a um caractere. Por exemplo, um padrão de `*`
-corresponde a todos os nomes de instrumentos.
+é reconhecido como correspondendo a zero ou mais caracteres, e o _wildcard_ `?`
+é reconhecido como correspondendo exatamente a um caractere. Por exemplo, um
+padrão de `*` corresponde a todos os nomes de instrumentos.
 
 No exemplo a seguir, mostramos como criar uma _view_ que define a unidade como
 milissegundos para qualquer instrumento com um sufixo de nome `.ms`:
@@ -911,17 +921,18 @@ meterProvider := metric.NewMeterProvider(
 ```
 
 O método `NewView` fornece uma maneira conveniente de criar _views_. Caso o
-método `NewView` não forneça as funcionalidades que você precisa, é possível criar uma
-_[View](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#View)_
+método `NewView` não forneça as funcionalidades que você precisa, é possível
+criar uma _[View](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#View)_
 personalizada.
 
-No exemplo a seguir, veja como criar uma _view_ que faz o uso de expressões regulares para garantir que todos os nomes de fluxo de dados
-tenham um sufixo das unidades que utiliza:
+No exemplo a seguir, veja como criar uma _view_ que faz o uso de expressões
+regulares para garantir que todos os nomes de fluxo de dados tenham um sufixo
+das unidades que utiliza:
 
 ```go
 re := regexp.MustCompile(`[._](ms|byte)$`)
 var view metric.View = func(i metric.Instrument) (metric.Stream, bool) {
-	// Em uma função de View personalizada, é necessário copiar de maneira explícita 
+	// Em uma função de View personalizada, é necessário copiar de maneira explícita
 	// o nome, descrição e unidade.
 	s := metric.Stream{Name: i.Name, Description: i.Description, Unit: i.Unit}
 	// Qualquer instrumento que não tenha um sufixo de unidade de medida definido, mas tenha
@@ -953,14 +964,15 @@ integram pacotes de logs populares existentes (como slog, logrus, zap, logr) aos
 logs do ecossistema OpenTelemetry. Para a justificativa por trás dessa decisão
 de design, consulte a [Especificação de Logs](/docs/specs/otel/logs/).
 
-Os dois _workflows_ discutidos abaixo atendem a diferentes
-requisitos de aplicação.
+Os dois _workflows_ discutidos abaixo atendem a diferentes requisitos de
+aplicação.
 
 ### Direct-to-Collector
 
 **Estado**: [Experimental](/docs/specs/otel/document-status/)
 
-Dentro do _workflow_ Direct-to-collector, os logs são emitidos diretamente da aplicação para o Collector utilizando um protocolo de rede (por exemplo, OTLP).
+Dentro do _workflow_ Direct-to-collector, os logs são emitidos diretamente da
+aplicação para o Collector utilizando um protocolo de rede (por exemplo, OTLP).
 Este _workflow_ é simples de configurar, pois não requer componentes adicionais
 de encaminhamento de logs, permitindo que uma aplicação emita logs estruturados
 e que estejam nos conformes do [modelo de dados de logs][log data model]. No
@@ -970,8 +982,8 @@ logs para um local de rede pode não ser adequado para todas as aplicações.
 Para utilizar este _workflow_:
 
 - Configurar o [SDK de Logs](#logs-sdk) do OpenTelemetry para exportar registros
-  de logs para o destino desejado (o [OpenTelemetry Collector][opentelemetry collector] ou
-  outro).
+  de logs para o destino desejado (o [OpenTelemetry
+  Collector][opentelemetry collector] ou outro).
 - Utilizar uma [Ponte de Logs](#log-bridge) apropriada.
 
 #### SDK de Logs {#logs-sdk}
@@ -980,8 +992,8 @@ A SDK de Logs define como os logs são processados ao utilizar o _workflow_
 [Direct-to-Collector](#direct-to-collector). Nenhuma SDK de logs é necessária ao
 utilizar o _workflow_ de [encaminhamento de logs](#via-file-or-stdout).
 
-Uma configuração típica da SDK de logs instala um Processor de logs em lote com um
-Exporter OTLP.
+Uma configuração típica da SDK de logs instala um Processor de logs em lote com
+um Exporter OTLP.
 
 Para habilitar [logs](/docs/concepts/signals/logs/) em sua aplicação, você
 precisará ter um
@@ -989,7 +1001,8 @@ precisará ter um
 que permitirá que você utilize uma [Ponte de Logs](#log-bridge).
 
 Caso um `LoggerProvider` não seja criado, a API de Logs do OpenTelemetry irá
-utilizar uma implementação no-op e dados de logs não serão gerados. Sendo assim, é necessário que o código-fonte da aplicação seja modificado para incluir a
+utilizar uma implementação no-op e dados de logs não serão gerados. Sendo assim,
+é necessário que o código-fonte da aplicação seja modificado para incluir a
 inicialização do SDK utilizando os seguintes pacotes:
 
 - [`go.opentelemetry.io/otel`][]
@@ -1079,24 +1092,26 @@ configurar uma [Ponte de Logs](#log-bridge).
 
 #### Ponte de Logs {#log-bridge}
 
-Uma ponte de logs é um componente que conecta logs de um pacote existente ao [SDK de Logs](#logs-sdk) do OpenTelemetry, utilizando a [API de
-Ponte de Logs][logs bridge API].
+Uma ponte de logs é um componente que conecta logs de um pacote existente ao
+[SDK de Logs](#logs-sdk) do OpenTelemetry, utilizando a [API de Ponte de
+Logs][logs bridge API].
 
 Uma lista completa contendo as pontes de logs disponíveis pode ser encontrada no
 [registro do OpenTelemetry](/ecosystem/registry/?language=go&component=log-bridge).
 
-Cada pacote de ponte de logs deve possuir uma documentação contendo as suas instruções de instalação e configuração.
+Cada pacote de ponte de logs deve possuir uma documentação contendo as suas
+instruções de instalação e configuração.
 
 ### Através de arquivos ou stdout {#via-file-or-stdout}
 
-No _workflow_ utilizado em arquivos ou _stdout_, os logs são gravados em arquivos ou na
-saída padrão da aplicação. Outro componente (por exemplo, FluentBit) é
-responsável por ler/seguir os logs, convertê-los para um formato mais
-estruturado e encaminhá-los para um destino, como o Collector. Este _workflow_
-pode ser preferível em situações onde os requisitos da aplicação não permitem a
-sobrecarga adicional do [Direct-to-Collector](#direct-to-collector). No entanto,
-é requisito que todos os campos de log necessários sejam codificados nos logs, e
-que o componente responsável pela leitura realize a conversão para o
+No _workflow_ utilizado em arquivos ou _stdout_, os logs são gravados em
+arquivos ou na saída padrão da aplicação. Outro componente (por exemplo,
+FluentBit) é responsável por ler/seguir os logs, convertê-los para um formato
+mais estruturado e encaminhá-los para um destino, como o Collector. Este
+_workflow_ pode ser preferível em situações onde os requisitos da aplicação não
+permitem a sobrecarga adicional do [Direct-to-Collector](#direct-to-collector).
+No entanto, é requisito que todos os campos de log necessários sejam codificados
+nos logs, e que o componente responsável pela leitura realize a conversão para o
 [modelo de dados de logs][log data model]. A instalação e configuração dos
 componentes de encaminhamento de logs está fora do escopo deste documento.
 
