@@ -1508,7 +1508,7 @@ Now that you have [meters](/docs/concepts/signals/metrics/#meter) initialized.
 you can create
 [metric instruments](/docs/concepts/signals/metrics/#metric-instruments).
 
-### Create counters
+### Using counters
 
 Counters can be used to measure a non-negative, increasing value.
 
