@@ -7,7 +7,11 @@ aliases:
 cSpell:ignore: flagd loadgenerator OLJCESPC7Z
 ---
 
-## Flagd configurator
+## Feature Flags
+
+The demo provides several feature flags that you can use to simulate different
+scenarios. These flags are managed by [`flagd`](https://flagd.dev), a simple
+feature flag service that supports [OpenFeature](https://openfeature.dev).
 
 Flag values can be changed through the user interface provided at <http://localhost:8080/feature> when running the demo. Changing the
 values through this user interface will be reflected in the flagd service.
@@ -20,12 +24,6 @@ raw file) can be selected and saved for each feature flag. Currently, the basic 
 - **Advanced View**: A view in which the raw configuration JSON file is loaded and can be edited within the browser. The view provides the
 flexibility that comes with editing a raw JSON file, however it also provides schema checking to ensure that the JSON is valid and that the
 provided configuration values are correct.
-
-## Flagd
-
-The demo provides several feature flags that you can use to simulate different
-scenarios. These flags are managed by [`flagd`](https://flagd.dev), a simple
-feature flag service that supports [OpenFeature](https://openfeature.dev).
 
 ## Implemented feature flags
 
