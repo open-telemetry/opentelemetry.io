@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-SCRIPT_DIR="$(cd `dirname $0`; pwd)"
-DEST_BASE="$(cd $SCRIPT_DIR; cd ../../; pwd)/tmp"
+SCRIPT_DIR=$(dirname $0)
+DEST_BASE=tmp
 
 ## OTel specification
 
