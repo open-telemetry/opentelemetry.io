@@ -30,8 +30,34 @@
     "language": {
       "type": "string",
       "description": "The programming language of the entry",
-      "examples": ["collector"],
-      "pattern": "^[a-z0-9]+$"
+      "enum": [
+        "collector",
+        "cpp",
+        "crystal",
+        "dart",
+        "dotnet",
+        "elixir",
+        "erlang",
+        "go",
+        "haskell",
+        "java",
+        "javascript",
+        "js",
+        "julia",
+        "kotlin",
+        "lua",
+        "matlab",
+        "ocaml",
+        "perl",
+        "php",
+        "python",
+        "ruby",
+        "rust",
+        "scala",
+        "shell",
+        "swift",
+        "yaml"
+      ]
     },
     "description": {
       "type": "string",
