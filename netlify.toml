@@ -16,12 +16,6 @@ to = "https://opentelemetry.io/blog/:splat"
 force = true
 
 [[redirects]]
-from = "/api/php"
-to = "/api/php/"
-force = true
-status = 301
-
-[[redirects]]
 from = "/api/php/*"
 to = "https://main--opentelemetry-php.netlify.app/:splat"
 force = true
