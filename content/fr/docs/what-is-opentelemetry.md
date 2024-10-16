@@ -37,7 +37,7 @@ qui incluent les traces, métriques et logs.
 Pour rendre un système observable, il doit être
 [instrumenté](/docs/concepts/instrumentation). Cela signifie que le code doit
 émettre des [traces](/docs/concepts/signals/traces/),
-[metriques](/docs/concepts/signals/metrics/), et/ou des
+des [métriques](/docs/concepts/signals/metrics/), et/ou des
 [logs](/docs/concepts/signals/logs/). Les données produites doivent être
 transmises à un backend d'observabilité.
 
