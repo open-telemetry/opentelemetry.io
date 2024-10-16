@@ -239,3 +239,102 @@ function parseUrlParams() {
   selectedLanguage = urlParams.get('language') || 'all';
   selectedComponent = urlParams.get('component') || 'all';
 }
+
+
+// Pagination Logic
+
+document.addEventListener('DOMContentLoaded', function() {
+  let currentPage = 1;
+  let resultsPerPage = 50;
+  const results = document.querySelectorAll('#default-body li');
+  let totalPages = Math.ceil(results.length / resultsPerPage);
+  const pagesToShow = 5;
+
+  function updateTotalPages() {
+    totalPages = Math.ceil(results.length / resultsPerPage);
+    showPage(currentPage);
+  }
+
+  function showPage(page) {
+    if (page < 1 || page > totalPages) {
+      document.getElementById('page-error').textContent = 'Page not found';
+      return;
+    }
+
+    results.forEach((result) => result.style.display = 'none');
+    document.getElementById('page-error').textContent = '';
+
+    const start = (page - 1) * resultsPerPage;
+    const end = start + resultsPerPage;
+    for (let i = start; i < end; i++) {
+      if (results[i]) {
+        results[i].style.display = 'block';
+      }
+    }
+
+    updateVisiblePages(page);
+
+    document.getElementById('prev-page').disabled = page === 1;
+    document.getElementById('next-page').disabled = page === totalPages;
+    document.getElementById('page-info').textContent = `Total Number of Pages: ${totalPages}`;
+  }
+
+  function updateVisiblePages(currentPage) {
+    const paginationContainer = document.getElementById('pagination-numbers');
+    paginationContainer.innerHTML = '';
+
+    const startPage = Math.max(1, currentPage);
+    const endPage = Math.min(totalPages, startPage + pagesToShow - 1);
+
+    for (let i = startPage; i <= endPage; i++) {
+      const pageButton = document.createElement('button');
+      pageButton.textContent = i;
+      pageButton.classList.add('btn', 'btn-outline-secondary', 'mx-1');
+      if (i === currentPage) {
+        pageButton.classList.add('active');
+      }
+      pageButton.addEventListener('click', () => {
+        currentPage = i;
+        showPage(currentPage);
+      });
+      paginationContainer.appendChild(pageButton);
+    }
+  }
+
+  function goToPage() {
+    const pageInput = document.getElementById('page-input').value;
+    const page = parseInt(pageInput);
+
+    if (!isNaN(page)) {
+      showPage(page);
+    } else {
+      document.getElementById('page-error').textContent = 'Invalid page number';
+    }
+  }
+
+  function changeResultsPerPage() {
+    const selectedValue = document.getElementById('results-per-page').value;
+    resultsPerPage = parseInt(selectedValue);
+    currentPage = 1;
+    updateTotalPages();
+  }
+
+  document.getElementById('prev-page').addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage--;
+      showPage(currentPage);
+    }
+  });
+
+  document.getElementById('next-page').addEventListener('click', () => {
+    if (currentPage < totalPages) {
+      currentPage++;
+      showPage(currentPage);
+    }
+  });
+
+  document.getElementById('go-page-btn').addEventListener('click', goToPage);
+  document.getElementById('results-per-page').addEventListener('change', changeResultsPerPage);
+
+  showPage(currentPage);
+});
