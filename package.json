@@ -112,6 +112,7 @@
   },
   "devDependencies": {
     "@cspell/dict-es-es": "^3.0.0",
+    "@cspell/dict-fr-fr": "^2.2.2",
     "@cspell/dict-pt-br": "^2.3.0",
     "ajv": "^8.17.1",
     "ajv-errors": "^3.0.0",
