@@ -102,7 +102,7 @@ il peut être étendu incluent :
   données de télémétrie venant d'une source de données personnalisée
 - Charger des bibliothèques d'instrumentation personnalisées dans un SDK
 - Créer une [distribution](/docs/concepts/distributions/) d'un SDK, ou du
-  collecteur adaptée à une utilisation spécifique
+  collecteur adapté à une utilisation spécifique
 - Créer un nouvel exportateur pour un backend personnalisé qui ne prend pas
   encore en charge le protocole OpenTelemetry (OTLP)
 - Créer un propagateur personnalisé pour un format de propagation de contexte
