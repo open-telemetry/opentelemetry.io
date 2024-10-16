@@ -3435,6 +3435,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:13.980094-05:00"
   },
+  "https://en.wikipedia.org/wiki/ISO_639-1": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-11T11:10:12.725968+02:00"
+  },
   "https://en.wikipedia.org/wiki/In-band_signaling": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:01:54.201621-05:00"
@@ -7179,6 +7183,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-06-13T15:48:00.42543+02:00"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/issues/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-11T11:10:11.918895+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/issues/4427": {
     "StatusCode": 200,
     "LastSeen": "2024-05-06T15:32:24.49099-04:00"
@@ -9198,6 +9206,10 @@
   "https://mypy.readthedocs.io/en/stable/command_line.html#cmdoption-mypy-namespace-packages": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:19.249572-05:00"
+  },
+  "https://nais.io/blog/posts/otel-from-0-to-100/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-16T06:19:11.246616643Z"
   },
   "https://netlify.com": {
     "StatusCode": 206,
