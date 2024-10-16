@@ -73,7 +73,7 @@ OpenTelemetry se compose des principaux composants suivants :
   nomenclature standardisée pour décrire les données de télémétrie
 - Des APIs décrivant comment générer des données de télémétrie
 - Des [SDKs par langage](/docs/languages) qui implémentent les spécifications,
-  APIs et l'export des données de télémétrie
+  les APIs et l'export des données de télémétrie
 - Un [écosystème de bibliothèques](/ecosystem/registry) qui instrumentent des
   bibliothèques et frameworks.
 - Des composants d'instrumentation automatique qui génèrent des données de
