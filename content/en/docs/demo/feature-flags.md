@@ -7,8 +7,6 @@ aliases:
 cSpell:ignore: flagd loadgenerator OLJCESPC7Z
 ---
 
-## Feature Flags
-
 The demo provides several feature flags that you can use to simulate different
 scenarios. These flags are managed by [`flagd`](https://flagd.dev), a simple
 feature flag service that supports [OpenFeature](https://openfeature.dev).
