@@ -1,4 +1,3 @@
-// Get the search form element and the alert box
 var searchForm = document.getElementById('searchForm');
 var alertBox = document.querySelector('.alert.alert-info');
 var scrollThreshold = 150;

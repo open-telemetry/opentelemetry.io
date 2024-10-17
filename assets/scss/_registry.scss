@@ -40,16 +40,14 @@
   @extend .shadow;
 }
 
-/* Sticky search form */
 #searchForm {
-  position: relative; /* Default position */
+  position: relative; 
   z-index: 1000;
   transition: all 0.3s ease;
   width: auto;
   margin: 0 auto;
 }
 
-/* Sticky state when scrolled */
 #searchForm.sticky {
   position: fixed;
   top: 100px;
