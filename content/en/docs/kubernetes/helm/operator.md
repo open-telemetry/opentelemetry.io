@@ -63,8 +63,7 @@ generate/configure the required TLS certificate.
   `.Values.admissionWebhooks.create` and `admissionWebhooks.certManager.enabled`
   while setting your custom cert secret name in `admissionWebhooks.secretName`
 - You can disable webhooks all together by disabling
-  `.Values.admissionWebhooks.create` and setting env var to
-  `ENABLE_WEBHOOKS: "false"`
+  `.Values.admissionWebhooks.create` and setting env var `.Values.manager.env.ENABLE_WEBHOOKS` to `false`
 
 All the configuration options (with comments) available in the chart can be
 viewed in its
