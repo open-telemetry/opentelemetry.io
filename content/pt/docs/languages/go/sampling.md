@@ -11,7 +11,7 @@ você deve tomar uma decisão no início de um rastro e permitir que a decisão 
 amostragem se propague para outros serviços.
 
 Um [`Sampler`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#Sampler)
-ppode ser definido no `TracerProvider` utilizando o método
+pode ser definido no `TracerProvider` utilizando o método
 [`WithSampler`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#WithSampler),
 conforme o exemplo a seguir:
 
