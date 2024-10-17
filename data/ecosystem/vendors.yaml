@@ -234,6 +234,12 @@
   contact: hello@middleware.io
   oss: false
   commercial: true
+- name: mishmash io
+  nativeOTLP: true
+  url: https://github.com/mishmash-io/opentelemetry-server-embedded
+  contact: https://github.com/mishmash-io
+  oss: true
+  commercial: false
 - name: New Relic
   nativeOTLP: true
   url: https://newrelic.com/solutions/opentelemetry
