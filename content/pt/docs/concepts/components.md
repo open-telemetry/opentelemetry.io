@@ -13,7 +13,7 @@ O OpenTelemetry é atualmente composto por vários componentes principais:
 - [Implementações de API e SDK específicas](#language-specific-api--sdk-implementations)
   - [Bibliotecas de Instrumentação](#instrumentation-libraries)
   - [Exporters](#exporters)
-  - [Auto-Instrumentação](#zero-code-instrumentation)
+  - [Instrumentação sem código](#zero-code-instrumentation)
   - [Detectores de Recursos](#resource-detectors)
   - [Propagadores entre Serviços](#cross-service-propagators)
   - [Amostragen](#samplers)
@@ -58,12 +58,12 @@ Para mais informações, consulte
 
 {{% docs/languages/exporters/intro %}}
 
-### Auto-Instrumentação
+### Instrumentação sem código
 
 OpenTelemetry possibilita essa forma de instrumentar sua aplicação sem alterar seu código-fonte. Embora o mecanismo dependa da linguagem, a instrumentação sem código-fonte adiciona as capacidades da API e do SDK do OpenTelemetry à sua aplicação. Além disso, pode adicionar um conjunto de bibliotecas de instrumentação e dependências do exportador.
 
 Para mais informações, consulte
-[Auto-Instrumentação](/docs/concepts/instrumentation/zero-code/).
+[Instrumentação sem código](/docs/concepts/instrumentation/zero-code/).
 
 ### Detectores de recursos
 
@@ -89,7 +89,7 @@ Para mais informações, consulte [Amostragem](/docs/concepts/sampling).
 
 O OpenTelemetry Operator é a implementação de um Operador Kubernetes. O operador gerencia o OpenTelemetry Collector e a auto-instrumentação das cargas de trabalho usando OpenTelemetry.
 
-Para mais informações, consulte [K8s Operador](/docs/kubernetes/operator/).
+Para mais informações, consulte [Kubernetes Operator](/docs/kubernetes/operator/).
 
 ## Função como Serviço
 
