@@ -9,7 +9,7 @@ default_lang_commit: b3a087c468094eb144ab3114aff06838c8fb06ca
 ---
 
 A [instrumentação][] de código do OpenTelemetry é suportada para as linguagens
-listadas na tabela de [Estado e Lançamentos](#estado-e-lançamentos) abaixo.
+listadas na tabela de [Estado e Lançamentos](#status-and-releases) abaixo.
 Implementações não oficiais para [outras linguagens](/docs/languages/other)
 também estão disponíveis. Você pode encontrá-las no
 [registro](/ecosystem/registry/).
@@ -22,7 +22,7 @@ Se você estiver usando Kubernetes, você pode usar o [OpenTelemetry Operator pa
 Kubernetes][otel-op] para [injetar soluções de implementação
 automática][implementação automática] em suas aplicações.
 
-## Estado e Lançamentos
+## Estado e Lançamentos (#status-and-releases)
 
 O estado atual dos principais componentes funcionais do OpenTelemetry estão a
 seguir:
