@@ -12,7 +12,7 @@ O OpenTelemetry é atualmente composto por vários componentes principais:
 - [Collector](#collector)
 - [Implementações de API e SDK específicas](#implementações-de-api--sdk-específicas)
   - [Bibliotecas de Instrumentação](#bibliotecas-de-instrumentação)
-  - [Exportadores](#exportadores)
+  - [Exporters](#exporters)
   - [Auto-Instrumentação](#auto-instrumentação)
   - [Detectores de Recursos](#detectores-de-recursos)
   - [Propagadores entre Serviços](#propagadores-entre-serviços)
