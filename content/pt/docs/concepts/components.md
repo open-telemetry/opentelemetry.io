@@ -17,7 +17,7 @@ O OpenTelemetry é atualmente composto por vários componentes principais:
   - [Detectores de Recursos](#detectores-de-recursos)
   - [Propagadores entre Serviços](#propagadores-entre-serviços)
   - [Amostragen](#amostragem)
-- [Operador Kubernetes](#operador-kubernetes)
+- [Kubernetes Operator](#kubernetes-operator)
 - [Função como Serviço](#função-como-serviço)
 
 O OpenTelemetry permite que você substitua o uso de SDKs ou ferramentas específicas para gerar e exportar dados de telemetria.
