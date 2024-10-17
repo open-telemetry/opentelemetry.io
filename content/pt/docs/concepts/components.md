@@ -27,7 +27,7 @@ O OpenTelemetry permite que você substitua o uso de SDKs ou ferramentas especí
 "Descreve os requisitos e expectativas entre diferentes linguagens para todas as implementações. Além de uma definição de termos, a especificação define o seguinte:
 
 - **API:** Define tipos de dados e operações para gerar e correlacionar dados de rastreamento, métricas e logs.
-- **SDK:** Define os requisitos para implementação em uma linguagem especifica. O onceitos de configuração, processamento de dados e exportação também são definidos aqui.
+- **SDK:** Define os requisitos para implementação específica de linguagem da API. São definidos aqui também os conceitos de configuração, processamento e exportação de dados.
 - **Data:** Define o Protocolo OpenTelemetry (OTLP) para qualquer sistema de telemetria, independentemente do fornecedor ou tecnologia específica que você está utilizando.
 
 Para mais informações, consulte [especificação](/docs/specs/).
