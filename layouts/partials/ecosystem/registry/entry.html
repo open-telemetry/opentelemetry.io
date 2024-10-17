@@ -49,6 +49,10 @@
     -}}
 
     {{ $isNative := and (or (eq .registryType "instrumentation") (eq .registryType "application integration")) (.isNative) }}
+    <span class="badge rounded-pill text-bg-success text-white" 
+          title="This is a native integration">
+        <i class="fa-solid fa-puzzle-piece"></i> native
+    </span>
     {{ $isFirstParty := and (or (eq .registryType "instrumentation") (eq .registryType "application integration")) (.isFirstParty) }}
     {{ $currentTime := (time now) -}}
     {{ $delta := $currentTime.Sub (time.AsTime .createdAt) -}}
@@ -105,7 +109,7 @@
             <span class="badge rounded-pill text-bg-secondary text-white" title="This package is used in the OpenTelemetry Demo!"><i class="fa-solid fa-shapes"></i> OTel Demo</span>
             {{ end -}}
             {{ if $deprecated -}}
-            <span class="badge rounded-pill text-bg-danger text-white" title=""><i class="fa-solid fa-ban"></i> deprecated</span>
+            <span class="badge rounded-pill text-bg-danger text-white" title="This package is deprecated."><i class="fa-solid fa-ban"></i> deprecated</span>
             {{ end -}}
             {{ if .cncfProjectLevel -}}
             <span class="badge rounded-pill text-bg-primary text-white" title="CNCF {{ .cncfProjectLevel}} Project">
@@ -167,7 +171,7 @@
                 <div class="fw-bold">
                     {{ $languageNames.Get . | default (humanize .) }}
                 </div>
-                <small>Language</small>
+                <small data-bs-toggle="tooltip" title="This indicates the programming language used.">Language</small>
                 </div>      
             </li>
             {{- end }}
@@ -177,7 +181,7 @@
                 <div class="fw-bold">
                     {{ . | humanize }}
                 </div>
-                <small>Component</small>
+                <small data-bs-toggle="tooltip" title="This refers to the type of registry component.">Component</small>
                 </div>      
             </li>
             {{- end -}}
@@ -187,7 +191,7 @@
                 <div class="fw-bold">
                     {{ . }}
                 </div>
-                <small>License</small>
+                <small data-bs-toggle="tooltip" title="This is the type of license for the project.">License</small>
                 </div>      
             </li>
             {{- end -}}
@@ -202,7 +206,7 @@
         {{- end -}}
         {{ with .urls.docs -}}
         {{ $docsHref := printf "href=%q" . | safeHTMLAttr -}}
-        <a {{ $docsHref }} target="_blank" rel="noopener" class="card-link"><i class="fas fa-book" aria-hidden="true"></i>&nbsp;Documentation</a>
+        <a {{ $docsHref }} target="_blank" rel="noopener" class="card-link" ><i class="fas fa-book" aria-hidden="true"></i>&nbsp;Documentation</a>
         {{- end -}}
         {{ with $package -}}
         {{ $packageUrl := printf "href=%q" (printf .urlPattern .name) | safeHTMLAttr -}}
