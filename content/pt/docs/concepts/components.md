@@ -9,7 +9,7 @@ default_lang_commit: 3386fa71833d0c25dac410a5db66ae93dc61afcb
 O OpenTelemetry é atualmente composto por vários componentes principais:
 
 - [Especificação](#especificação)
-- [Coletor](#coletor)
+- [Collector](#collector)
 - [Implementações de API e SDK específicas](#implementações-de-api--sdk-específicas)
   - [Bibliotecas de Instrumentação](#bibliotecas-de-instrumentação)
   - [Exportadores](#exportadores)
