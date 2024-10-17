@@ -5,7 +5,7 @@ aliases:
   - /docs/java/manual_instrumentation
   - manual
   - manual_instrumentation
-  - /docs/languages/java/libraries/
+  - libraries
 weight: 10
 description: Instrumentation ecosystem in OpenTelemetry Java
 cSpell:ignore: Logback logback
