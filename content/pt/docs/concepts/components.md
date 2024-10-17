@@ -8,17 +8,17 @@ default_lang_commit: 3386fa71833d0c25dac410a5db66ae93dc61afcb
 
 O OpenTelemetry é atualmente composto por vários componentes principais:
 
-- [Especificação](#especificação)
+- [Especificação](#specification)
 - [Collector](#collector)
-- [Implementações de API e SDK específicas](#implementações-de-api--sdk-específicas)
-  - [Bibliotecas de Instrumentação](#bibliotecas-de-instrumentação)
+- [Implementações de API e SDK específicas](#language-specific-api--sdk-implementations)
+  - [Bibliotecas de Instrumentação](#instrumentation-libraries)
   - [Exporters](#exporters)
-  - [Auto-Instrumentação](#auto-instrumentação)
-  - [Detectores de Recursos](#detectores-de-recursos)
-  - [Propagadores entre Serviços](#propagadores-entre-serviços)
-  - [Amostragen](#amostragem)
+  - [Auto-Instrumentação](#zero-code-instrumentation)
+  - [Detectores de Recursos](#resource-detectors)
+  - [Propagadores entre Serviços](#cross-service-propagators)
+  - [Amostragen](#samplers)
 - [Kubernetes Operator](#kubernetes-operator)
-- [Função como Serviço](#função-como-serviço)
+- [Função como Serviço](#function-as-a-service-assets)
 
 O OpenTelemetry permite que você substitua o uso de SDKs ou ferramentas específicas para gerar e exportar dados de telemetria.
 
