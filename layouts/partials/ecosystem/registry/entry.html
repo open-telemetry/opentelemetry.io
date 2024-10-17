@@ -164,7 +164,7 @@
                         <div>
                             {{ range .tags }}
                                 {{ $tag := . }} <!-- Store the tag in a variable -->
-                                <a href="/search?query={{ $tag | urlize }}" class="badge bg-light me-1">{{ $tag }}</a>
+                                <a href="/ecosystem/registry/?s={{ $tag | urlize }}" class="badge bg-light me-1">{{ $tag }}</a>
                             {{ end }}
                         </div>
                     {{ end }}
