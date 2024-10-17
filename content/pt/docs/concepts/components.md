@@ -32,7 +32,7 @@ O OpenTelemetry permite que você substitua o uso de SDKs ou ferramentas especí
 
 Para mais informações, consulte [especificação](/docs/specs/).
 
-## Coletor
+## Collector
 
 O Coletor é um proxy para qualquer sistema de telemetria que pode receber...,
 processar e exportar dados de telemetria. Ele suporta o recebimento de dados de telemetria em vários formatos. (Por exemplo, OTLP, Jaeger, Prometheus, bem como muitas outras ferramentas ) .e enviar dados para um ou mais sistema de telemetria. Ele também suporta o processamento e a filtragem de dados de telemetria antes de serem exportados.
