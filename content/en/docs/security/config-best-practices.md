@@ -49,9 +49,8 @@ attack surface exposed.
 
 Some components can increase the security risk of your Collector pipelines.
 
-- Receivers, exporters and other components should establish
-  network connections over a secure channel, potentially
-  authenticated as well.
+- Receivers, exporters, and other components should establish network
+  connections over a secure channel, potentially authenticated as well.
 - Receivers and exporters might expose buffer, queue, payload, and worker
   settings using configuration parameters. If these settings are available, you
   should proceed with caution before modifying the default configuration values.
@@ -71,9 +70,9 @@ users. Try to always use specific interfaces, such as a pod's IP, or `localhost`
 instead of `0.0.0.0`. For more information, see
 [CWE-1327: Binding to an Unrestricted IP Address](https://cwe.mitre.org/data/definitions/1327.html).
 
-From Collector v0.110.0, the default host for all servers in Collector components is `localhost`. 
-For earlier versions of the Collector, change the default endpoint
-from `0.0.0.0` to `localhost` in all components by enabling the
+From Collector v0.110.0, the default host for all servers in Collector
+components is `localhost`. For earlier versions of the Collector, change the
+default endpoint from `0.0.0.0` to `localhost` in all components by enabling the
 `component.UseLocalHostAsDefaultHost`
 [feature gate](https://github.com/open-telemetry/opentelemetry-collector/tree/main/featuregate).
 
@@ -193,23 +192,6 @@ serve different needs.
 
 <!--- TODO: Extensions SHOULD NOT expose sensitive health or telemetry data. How? What can you do? -->
 
-### Health and telemetry
-
-Extensions are available for health check information, Collector metrics and
-traces, and generating and collecting profiling data. When enabled with their
-default settings, all of these extensions, except the health check extension,
-are accessible only locally to the OpenTelemetry Collector. Take care to protect
-sensitive information when configuring these extensions for remote access, as
-they might expose it accidentally.
-
-### Collector's internal telemetry
-
-<!--- INSERT RECOMMENDATIONS HERE. For example:
-
-1. Remove zPages.
-1. Remove configuration endpoints.
--->
-
 ### Observers
 
 An observer is a component that discovers services in endpoints. Other
@@ -222,11 +204,3 @@ while the `host_observer` requires the OpenTelemetry Collector to run in
 privileged mode.
 
 <!--- But what about Juraci's comment here: https://github.com/open-telemetry/opentelemetry.io/pull/3652/files?diff=unified&w=0#r1417409370 --->
-
-### Subprocesses
-
-Extensions can also be used to run subprocesses when the Collector can't
-natively run the collection mechanisms (for example, FluentBit). Subprocesses
-expose a completely separate attack vector that depends on the subprocess
-itself. In general, take care before running any subprocesses alongside the
-Collector.
