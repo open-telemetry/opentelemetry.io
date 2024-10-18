@@ -57,6 +57,28 @@ Some components can increase the security risk of your Collector pipelines.
   Improperly setting these values might expose the OpenTelemetry Collector to
   additional attack vectors.
 
+## Set permissions carefully
+
+Avoid running the Collector as a root user. Some components might require
+special permissions, however. In those cases, follow the principle of least
+privilege and make sure your components only have the access they need to do
+their job.
+
+### Observers
+
+Observers are implemented as extensions. Extensions are a type of component that
+adds capabilities on top of the primary functions of the Collector. Extensions
+don't require direct access to telemetry and aren't part of pipelines, but they
+can still pose security risks if they require special permissions.
+
+An observer discovers networked endpoints such as a Kubernetes pod, Docker
+container, or local listening port on behalf of the
+[receiver creator](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/receivercreator/README.md).
+In order to discover services, observers might require greater access. For
+example, the `k8s_observer` requires
+[role-based access control (RBAC) permissions](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/k8sobserver#setting-up-rbac-permissions)
+in Kubernetes.
+
 ## Manage specific security risks
 
 Configure your Collector to block these security threats.
@@ -184,23 +206,3 @@ Finally, consider using compression with your exporters to reduce the send size
 of your data and conserve network and CPU resources. By default, the
 [`otlp` exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter)
 uses `gzip` compression.
-
-## Extensions
-
-While receivers, processors, and exporters handle telemetry directly, extensions
-serve different needs.
-
-<!--- TODO: Extensions SHOULD NOT expose sensitive health or telemetry data. How? What can you do? -->
-
-### Observers
-
-An observer is a component that discovers services in endpoints. Other
-components of the OpenTelemetry Collector, such as receivers, can subscribe to
-these extensions to be notified of endpoints coming or going.
-
-Observers might require certain permissions in order to discover services. For
-example, the `k8s_observer` requires certain RBAC permissions in Kubernetes,
-while the `host_observer` requires the OpenTelemetry Collector to run in
-privileged mode.
-
-<!--- But what about Juraci's comment here: https://github.com/open-telemetry/opentelemetry.io/pull/3652/files?diff=unified&w=0#r1417409370 --->
