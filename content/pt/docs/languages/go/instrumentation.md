@@ -195,7 +195,7 @@ span.SetAttributes(myKey.String("um valor em texto"))
 Os Atributos Semânticos são atributos definidos pela [Especificação do
 OpenTelemetry][opentelemetry specification] para fornecer um conjunto comum de
 chaves de atributos entre várias linguagens, frameworks e ambientes de execução.
-Eles representam conceitos como métodos HTTP, códigos de estado, user agents e
+Esses atributos representam conceitos como métodos HTTP, códigos de estado, user agents e
 outros. Estes atributos estão disponíveis no pacote
 `go.opentelemetry.io/otel/semconv/v1.26.0`.
 
