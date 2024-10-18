@@ -92,27 +92,27 @@
             {{- .title | markdownify -}}
             </a>
             <div class="ms-auto">
-            {{ if $isNew -}}
-            <span class="badge rounded-pill text-bg-info"><i class="fa-regular fa-star"></i> new</span>
-            {{ end -}}
-            {{ if $isNative -}}
-            <span class="badge rounded-pill text-bg-success text-white"><i class="fa-solid fa-puzzle-piece"></i> native</span>
-            {{ end -}}
-            {{ if $isFirstParty -}}
-            <span class="badge rounded-pill text-bg-success text-white"><i class="fa-solid fa-heart"></i> first party integration</span>
-            {{ end -}}
-            {{ if $usedInDemo -}}
-            <span class="badge rounded-pill text-bg-secondary text-white" title="This package is used in the OpenTelemetry Demo!"><i class="fa-solid fa-shapes"></i> OTel Demo</span>
-            {{ end -}}
-            {{ if $deprecated -}}
-            <span class="badge rounded-pill text-bg-danger text-white" title=""><i class="fa-solid fa-ban"></i> deprecated</span>
-            {{ end -}}
-            {{ if .cncfProjectLevel -}}
-            <span class="badge rounded-pill text-bg-primary text-white" title="CNCF {{ .cncfProjectLevel}} Project">
-                <img alt="CNCF" style="display: inline-block; width: 14px; height: 14px; border: none; margin:0px; padding: 0; vertical-align:middle" src="/img/cncf-icon-white.svg"> {{ .cncfProjectLevel }}
-            </span>
-            {{ end -}}
-            </div>
+                {{ if $isNew -}}
+                <span class="badge rounded-pill text-info"><i class="fa-regular fa-star"></i> new</span>
+                {{ end -}}
+                {{ if $isNative -}}
+                <span class="badge rounded-pill text-success"><i class="fa-solid fa-puzzle-piece"></i> native</span>
+                {{ end -}}
+                {{ if $isFirstParty -}}
+                <span class="badge rounded-pill text-success"><i class="fa-solid fa-heart"></i> first party integration</span>
+                {{ end -}}
+                {{ if $usedInDemo -}}
+                <span class="badge rounded-pill text-secondary" title="This package is used in the OpenTelemetry Demo!"><i class="fa-solid fa-shapes"></i> OTel Demo</span>
+                {{ end -}}
+                {{ if $deprecated -}}
+                <span class="badge rounded-pill text-danger" title=""><i class="fa-solid fa-ban"></i> deprecated</span>
+                {{ end -}}
+                {{ if .cncfProjectLevel -}}
+                <span class="badge rounded-pill text-primary" title="CNCF {{ .cncfProjectLevel}} Project">
+                    <img alt="CNCF" style="display: inline-block; width: 14px; height: 14px; border: none; margin:0px; padding: 0; vertical-align:middle; background-color: #30638e;" src="/img/cncf-icon-white.svg"> {{ .cncfProjectLevel }}
+                </span>
+                {{ end -}}
+                </div>    
         </h4>
         <p class="card-text">
             <small class="text-body-secondary">
