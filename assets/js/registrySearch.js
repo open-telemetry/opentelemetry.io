@@ -75,6 +75,7 @@ if (pathName.includes('registry')) {
       executeSearch(searchQuery);
     });
 
+
     let searchInput = document.getElementById('input-s');
     searchInput.addEventListener('keyup', function (evt) {
       autoSuggest(evt.target.value);
@@ -106,7 +107,36 @@ if (pathName.includes('registry')) {
         updateFilters();
       }),
     );
+    let filterLabel = document.querySelectorAll('[data-filter-value]');
+
+    filterLabel.forEach((element) => {
+      element.addEventListener('click', (evt) => {
+        let filterValue = evt.target.getAttribute('data-filter-value');
+        let searchInput = document.getElementById('input-s');
+        let currentSearchValue = searchInput.value.trim();
+
+
+        if (!currentSearchValue.includes(filterValue)) {
+
+          if (currentSearchValue.length > 0) {
+            currentSearchValue += ' ' + filterValue;
+          } else {
+            currentSearchValue = filterValue;
+          }
+
+          searchInput.value = currentSearchValue;
+
+          setInput('s', currentSearchValue);
+
+          parseUrlParams();
+
+          executeSearch(currentSearchValue);
+        }
+      });
+    });
   });
+
+
 }
 
 function showBody() {
@@ -124,7 +154,6 @@ function executeSearch(searchQuery) {
     showBody();
     return;
   }
-
   document.title = searchQuery + ' at ' + originalDocumentTitle;
   document.querySelector('#input-s').value = searchQuery;
   document.querySelector('#default-body').style.display = 'none';
