@@ -7,54 +7,52 @@ weight: 115
 When setting up hosting for OpenTelemetry (OTel) Collector, consider these best
 practices to better secure your hosting instance.
 
-## Storing configuration information securely
+## Store data securely
 
-<!--- TODO: SHOULD ensure sensitive configuration information is stored securely. How? -->
+Your Collector configuration file might contain sensitive data, including
+authentication tokens or TLS certificates. See the best practices for
+[securing your configuration](/docs/security/config-best-practices/#create-secure-configurations).
 
-## Permissions
+If you are storing telemetry for processing, make sure to restrict access to
+those directories to prevent tampering with raw data.
 
-<!--- TODO: SHOULD not run the OpenTelemetry Collector as root/admin user. Why? (Give the reader motivation.) How do you do that?
-- NOTE: MAY require privileged access for some components
+## Keep your secrets secret
 
-The Collector SHOULD NOT require privileged access, except where the data it's obtaining is in a privileged location. For instance, in order to get pod logs by mounting a node volume, the Collector daemonset needs enough privileges to get that data.
+Kubernetes [secrets](https://kubernetes.io/docs/concepts/configuration/secret/)
+are credentials that hold confidential data. They authenticate and authorize
+privileged access. If you're using a Kubernetes deployment for your Collector,
+make sure to follow these
+[recommended practices](https://kubernetes.io/docs/concepts/security/secrets-good-practices/)
+to improve security for your clusters.
 
-The rule of least privilege applies here. --->
+## Apply the rule of least privilege
 
-## Receivers and exporters
+The Collector should not require privileged access, except where the data it's
+collecting is in a privileged location. For example, in order to get pod logs by
+mounting a node volume, the Collector daemonset needs enough privileges to get
+that data.
 
-To limit the exposure of servers to authorized users:
+## Control access to server-like components
 
-- Enable authentication, for instance by using bearer token authentication
-  extensions and basic authentication extensions.
-- Restrict the IPs that OTel Collector runs on.
+Some Collector components such as receivers and exporters can function like
+servers. To limit access to authorized users, you should
 
-## Processors
+- Enable authentication by using bearer token authentication extensions and
+  basic authentication extensions, for example.
+- Restrict the IPs that your Collector runs on.
 
-[Processors](/docs/collector/configuration/#processors) sit between receivers
-and exporters. They are responsible for processing telemetry before it's
-analyzed. From a security perspective, processors are useful in a few ways.
+## Safeguard resource utilization
 
-### Safeguarding resource utilization
+Use the Collector's own
+[internal telemetry](/docs/collector/internal-telemetry/) to monitor its
+performance. Scrape metrics from the Collector about its CPU, memory, and
+throughput usage and set alerts for resource exhaustion.
 
-In addition, processors offer safeguards around resource utilization.
+If resource limits are reached, consider horizontally
+[scaling the Collector](/docs/collector/scaling/) by deploying multiple
+instances in a load-balanced configuration. Scaling your Collector distributes
+the resource demands and prevents bottlenecks.
 
-The `batch` and `memory_limiter` processors help ensure that the OpenTelemetry
-Collector is resource efficient and does not run out memory when overloaded.
-These two processors should be enabled on every defined pipeline.
-
-For more information on recommended processors and how to order them in your
-configuration, see the
-[Collector processor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor)
-documentation.
-
-After installing resource utilization safeguards in your hosting, make sure your
-Collector configuration uses those
-[safeguards in its configuration](/docs/security/config-best-practices/).
-
-### Another example
-
-<!--- TODO: INSERT ADDITIONAL EXAMPLES HERE. -->
-
-## Extensions
-
-<!--- TODO: Extensions SHOULD NOT expose sensitive health or telemetry data. How? What can you do? -->
+Once you secure resource utilization in your deployment, make sure your
+Collector instance also uses
+[safeguards in its configuration](/docs/security/config-best-practices/#safeguard-resource-utilization).
