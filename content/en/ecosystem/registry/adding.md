@@ -4,6 +4,8 @@ linkTitle: Adding
 description: How to add entries to the registry.
 ---
 
+{{< ecosystem/registry/add-to-registry-form >}}
+
 Do you maintain or contribute to an integration for OpenTelemetry? We'd love to
 feature your project in the [registry](../)!
 
