@@ -38,4 +38,24 @@
 
 .registry-entry {
   @extend .shadow;
+  max-width: 340px;
+  min-width: 200px;
+}
+
+.registry-entry:hover {
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+.narrative {
+  font-size: 0.9rem;
+}
+
+.quick-setup {
+  margin-left: 1%;
+}
+
+.item-specs {
+  padding-left: 0px;
+  padding-right: 0px;
 }
