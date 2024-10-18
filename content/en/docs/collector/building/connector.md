@@ -59,7 +59,6 @@ following links:
 ### New Architecture Using a Connector:
 
 ![How the pipeline should work using the connector component](../../img/otel-collector-after-connector.svg)
-![How the pipeline should work using the connector component](../../img/otel-collector-after-connector-2.svg)
 
 ## Building Example Connector
 
