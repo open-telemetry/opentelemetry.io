@@ -42,21 +42,20 @@
   min-width: 200px;
 }
 
-.registry-entry:hover{
+.registry-entry:hover {
   transform: scale(1.05);
   transition: all 0.3s ease;
-  
 }
 
-.description{
+.narrative {
   font-size: 0.9rem;
 }
 
-.quickInstall{
+.quick-setup {
   margin-left: 1%;
 }
 
-.list-group-item{
+.item-specs {
   padding-left: 0px;
   padding-right: 0px;
 }

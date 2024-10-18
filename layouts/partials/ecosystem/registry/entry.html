@@ -225,7 +225,7 @@ $remoteRegistries := dict
 
         </div>
         <div class="col-6 ">
-            <div class="mb-3 description">
+            <div class="mb-3 narrative">
                 {{ if $deprecated -}}
                 <div class="alert alert-danger" role="alert">
                     <h4 class="alert-heading">Deprecated</h4>
@@ -237,10 +237,10 @@ $remoteRegistries := dict
                 </p>
             </div>
         </div>
-        <div class="col-5 card-text description">
+        <div class="col-5 card-text narrative">
             <ul class="list-group list-group-flush">
                 {{ if .package.version -}}
-                <li class="list-group-item" >
+                <li class="list-group-item item-specs" >
                     <div class="ms-2 me-auto">
                         <div class="fw-bold">
                             {{ .package.version }}
@@ -250,7 +250,7 @@ $remoteRegistries := dict
                 </li>
                 {{- end -}}
                 {{ with .language -}}
-                <li class="list-group-item" >
+                <li class="list-group-item item-specs" >
                     <div class="ms-2 me-auto">
                         <div class="fw-bold">
                             {{ $languageNames.Get . | default (humanize .) }}
@@ -260,7 +260,7 @@ $remoteRegistries := dict
                 </li>
                 {{- end }}
                 {{ with .registryType -}}
-                <li class="list-group-item" >
+                <li class="list-group-item item-specs" >
                     <div class="ms-2 me-auto">
                         <div class="fw-bold">
                             {{ . | humanize }}
@@ -270,7 +270,7 @@ $remoteRegistries := dict
                 </li>
                 {{- end -}}
                 {{ with .license -}}
-                <li class="list-group-item" >
+                <li class="list-group-item item-specs" >
                     <div class="ms-2 me-auto">
                         <div class="fw-bold">
                             {{ . }}
@@ -283,7 +283,7 @@ $remoteRegistries := dict
         </div>
 
     </div>
-    <div class="row w-100 p-1 quickInstall">
+    <div class="row w-100 p-1 quick-setup">
         <div> {{ with $package -}}
             {{ if not (eq .quickInstall false) }}
             <h6 class="mb-0"><i class="fa-solid fa-forward"></i> Quick Install</h6>
