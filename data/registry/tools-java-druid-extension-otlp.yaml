@@ -1,0 +1,28 @@
+title: Apache Druid extension for OTLP
+registryType: utilities
+language: java
+tags:
+  - java
+  - druid
+  - utilities
+  - analytics
+  - dashboards
+  - monitoring
+license: Apache 2.0
+description: This extension allows [Apache Druid](https://druid.apache.org/) to
+  ingest OpenTelemetry signals.
+
+  An example setup would be to use the [Kafka
+  Exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/kafkaexporter/README.md)
+  to publish OTLP data into Kafka topics, and then setup Druid ingestion jobs,
+  using this extension, to populate tables.
+authors:
+  - name: mishmash io
+    email: opensourcemaintainers@mishmash.io
+    url: https://mishmash.io
+urls:
+  repo: https://github.com/mishmash-io/opentelemetry-server-embedded
+  docs: https://github.com/mishmash-io/opentelemetry-server-embedded/tree/main/druid-otlp-format
+createdAt: 2024-10-17
+isNative: false
+isFirstParty: false
