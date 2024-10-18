@@ -360,7 +360,7 @@ modificado para incluir a inicialização do SDK utilizando os seguintes pacotes
 - [`go.opentelemetry.io/otel/sdk/resource`][]
 - [`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`][]
 
-Certifique-se de haver instalado corretamente os seguintes pacotes Go:
+Certifique-se que os seguintes pacotes Go foram instalados corretamente:
 
 ```sh
 go get go.opentelemetry.io/otel \
@@ -1010,7 +1010,7 @@ inicialização do SDK utilizando os seguintes pacotes:
 - [`go.opentelemetry.io/otel/sdk/resource`][]
 - [`go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp`][]
 
-Certifique-se de haver instalado corretamente os seguintes pacotes Go:
+Certifique-se que os seguintes pacotes Go foram instalados corretamente:
 
 ```sh
 go get go.opentelemetry.io/otel \
