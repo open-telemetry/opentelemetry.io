@@ -107,22 +107,36 @@ if (pathName.includes('registry')) {
         updateFilters();
       }),
     );
-  });
-  
-  // Filter by clicking tags
-  function applyTagFilter(filterValue) {
-    document.getElementById('input-s').value = filterValue;
-    document.getElementById('input-language').value = 'all';
-    document.getElementById('input-component').value = 'all';
+    let filterLabel = document.querySelectorAll('[data-filter-value]');
 
-    document.getElementById('searchForm').dispatchEvent(new Event('submit'));
-  }
-  document.querySelectorAll('[data-filter-value]').forEach((element) => {
-    element.addEventListener('click', (evt) => {
-      let filterValue = evt.currentTarget.getAttribute('data-filter-value');
-      applyTagFilter(filterValue);
+    filterLabel.forEach((element) => {
+      element.addEventListener('click', (evt) => {
+        let filterValue = evt.target.getAttribute('data-filter-value');
+        let searchInput = document.getElementById('input-s');
+        let currentSearchValue = searchInput.value.trim();
+
+
+        if (!currentSearchValue.includes(filterValue)) {
+
+          if (currentSearchValue.length > 0) {
+            currentSearchValue += ' ' + filterValue;
+          } else {
+            currentSearchValue = filterValue;
+          }
+
+          searchInput.value = currentSearchValue;
+
+          setInput('s', currentSearchValue);
+
+          parseUrlParams();
+
+          executeSearch(currentSearchValue);
+        }
+      });
     });
   });
+
+
 }
 
 function showBody() {
