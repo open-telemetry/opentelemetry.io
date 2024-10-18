@@ -8,8 +8,6 @@ CheckMailto: false
 TestFilesConcurrently: true
 IgnoreDirs:
   - ^blog/(\d+/)?page/\d+
-  # TODO drop after https://github.com/open-telemetry/opentelemetry.io/issues/5267 is fixed:
-  - zh/docs/contributing/pr-checks
   # TODO drop after https://github.com/open-telemetry/opentelemetry.io/issues/5423 is fixed:
   - (ja|pt)/docs/concepts/instrumentation/libraries/
 IgnoreInternalURLs: # list of paths
