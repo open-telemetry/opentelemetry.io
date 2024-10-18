@@ -14,7 +14,7 @@ weight: 18
 default_lang_commit: 20c51c53
 ---
 
-{{% docs/languages/index-intro java /%}}
+{{% docs/languages/index-intro java en /%}}
 
 ### 仓库
 

@@ -9,7 +9,7 @@ cSpell:ignore: Roadmap
 weight: 20
 ---
 
-{{% docs/languages/index-intro js /%}}
+{{% docs/languages/index-intro js en /%}}
 
 {{% alert title="Warning" color="warning" %}}
 {{% _param notes.browser-instrumentation %}} {{% /alert %}}
