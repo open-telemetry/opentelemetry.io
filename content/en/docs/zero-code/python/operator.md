@@ -26,3 +26,13 @@ specific Python version. The
 provides images for a single Python version based on the glibc C library. If you
 want to use it you might need to build your own image operator Docker image for
 Python auto-instrumentation.
+
+#### Django applications
+
+Applications that run from their own executable like Django requires to set in
+your deployment file two environment variables:
+
+- `PYTHONPATH`, with the path to the Django application root directory, e.g.
+  "/app"
+- `DJANGO_SETTINGS_MODULE`, with the name of the Django settings module, e.g.
+  "myapp.settings"
