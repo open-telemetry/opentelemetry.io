@@ -13,6 +13,13 @@ show_banner: true
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
+<!--css for tooltip implementation-->
+<style>
+  .telemetry, .observability {
+    border-bottom: 1px dotted #007bff; 
+    cursor: pointer;
+  }
+</style>
 
 {{< blocks/cover image_anchor="top" height="max" color="primary" >}}
 
@@ -21,8 +28,17 @@ show_banner: true
 {.otel-logo}
 
 <!-- prettier-ignore -->
+<!--Hard coded the description to implement the tooltips to the HTML
 {{% param description %}}
 {.display-6}
+-->
+<p class="display-6">
+    High-quality, ubiquitous, and portable 
+    <span class="telemetry" data-toggle="tooltip" title="Telemetry refers to data emitted from a system and its behavior. The data can come in the form of traces, metrics, and logs.">telemetry</span> 
+    to enable effective 
+    <span class="observability" data-toggle="tooltip" title="Observability lets you understand a system from the outside by letting you ask questions about that system without knowing its inner workings.">observability</span>.
+</p>
+
 
 <div class="l-primary-buttons mt-5">
 
