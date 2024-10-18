@@ -61,7 +61,8 @@ preferred shell.
 
    ```sh
    docker run \
-     -p 127.0.0.1:4317:4317 \
+     -p 127.0.0.1:4317:4317 \ # for gRPC
+     -p 127.0.0.1:4318:4318 \ # for HTTP
      -p 127.0.0.1:55679:55679 \
      otel/opentelemetry-collector-contrib:{{% param vers %}} \
      2>&1 | tee collector-output.txt # Optionally tee output for easier search later
