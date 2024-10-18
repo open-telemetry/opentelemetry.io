@@ -43,15 +43,14 @@ attack surface exposed.
 - Use the
   [OpenTelemetry Collector Builder (`ocb`)](/docs/collector/custom-collector) to
   create a Collector distribution that uses only the components you need.
-- If you find that you have unused receivers and exporters, remove them from
-  your configuration.
+- Remove unused components from your configuration.
 
 ### Configure with care
 
 Some components can increase the security risk of your Collector pipelines.
 
-- Receivers and exporters can be push- or pull-based. In either case, you should
-  establish the connection at least over a secure channel, potentially
+- Receivers, exporters and other components should establish
+  network connections over a secure channel, potentially
   authenticated as well.
 - Receivers and exporters might expose buffer, queue, payload, and worker
   settings using configuration parameters. If these settings are available, you
@@ -72,9 +71,8 @@ users. Try to always use specific interfaces, such as a pod's IP, or `localhost`
 instead of `0.0.0.0`. For more information, see
 [CWE-1327: Binding to an Unrestricted IP Address](https://cwe.mitre.org/data/definitions/1327.html).
 
-From Collector v0.110.0, the default endpoints for all servers in Collector
-components are set to `localhost:4317` for `gRPC` ports or `localhost:4318` for
-`http` ports. For earlier versions of the Collector, change the default endpoint
+From Collector v0.110.0, the default host for all servers in Collector components is `localhost`. 
+For earlier versions of the Collector, change the default endpoint
 from `0.0.0.0` to `localhost` in all components by enabling the
 `component.UseLocalHostAsDefaultHost`
 [feature gate](https://github.com/open-telemetry/opentelemetry-collector/tree/main/featuregate).
