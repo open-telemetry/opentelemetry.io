@@ -20,7 +20,7 @@ cSpell:ignore: fatalf logr logrus otelslog otlplog otlploghttp sdktrace sighup u
 
 Para criar trechos, você precisará obter ou inicializar um Tracer primeiro.
 
-Certifique-se de haver instalado corretamente os seguintes pacotes Go:
+Certifique-se que os seguintes pacotes Go foram instalados corretamente:
 
 ```sh
 go get go.opentelemetry.io/otel \
