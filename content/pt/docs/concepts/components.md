@@ -16,7 +16,7 @@ O OpenTelemetry é atualmente composto por vários componentes principais:
   - [Instrumentação sem código](#zero-code-instrumentation)
   - [Detectores de Recursos](#resource-detectors)
   - [Propagadores entre Serviços](#cross-service-propagators)
-  - [Amostragen](#samplers)
+  - [Amostragens](#samplers)
 - [Kubernetes Operator](#kubernetes-operator)
 - [Função como Serviço](#function-as-a-service-assets)
 
