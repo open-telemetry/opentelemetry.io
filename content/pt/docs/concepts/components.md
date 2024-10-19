@@ -91,7 +91,7 @@ O OpenTelemetry Operator é a implementação de um Operador Kubernetes. O opera
 
 Para mais informações, consulte [Kubernetes Operator](/docs/kubernetes/operator/).
 
-## Função como Serviço
+## Função como Serviço {#function-as-a-service-assets}
 
 O OpenTelemetry oferece vários métodos de monitoramento de Function-as-a-Service fornecidos por diferentes provedores de nuvem. A comunidade OpenTelemetry atualmente disponibiliza camadas Lambda pré-construídas, capazes de realizar instrumentação sem código na sua aplicação, bem como a opção de uma camada Lambda do Coletor independente, que pode ser usada ao instrumentar aplicações manualmente ou automaticamente.
 
