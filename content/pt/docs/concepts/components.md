@@ -71,7 +71,7 @@ Um [recurso](/docs/concepts/resources/) representa a entidade que produz telemet
 
 Para mais informações, consulte [Recursos](/docs/concepts/resources/).
 
-### Propagadores entre serviços
+### Propagadores entre serviços {#cross-service-propagators}
 
 A propagação é o mecanismo que move dados entre serviços e processos.
 Embora não se limite ao rastreamento, a propagação permite que os rastros construam informações sobre um sistema através de serviços que estão distribuídos arbitrariamente entre limites de processos e redes.
