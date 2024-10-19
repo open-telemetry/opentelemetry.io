@@ -16,7 +16,7 @@ authentication tokens or TLS certificates. See the best practices for
 If you are storing telemetry for processing, make sure to restrict access to
 those directories to prevent tampering with raw data.
 
-## Keep your secrets secret
+## Keep your secrets safe
 
 Kubernetes [secrets](https://kubernetes.io/docs/concepts/configuration/secret/)
 are credentials that hold confidential data. They authenticate and authorize
@@ -45,7 +45,7 @@ servers. To limit access to authorized users, you should
 
 Use the Collector's own
 [internal telemetry](/docs/collector/internal-telemetry/) to monitor its
-performance. Scrape metrics from the Collector about its CPU, memory, and
+performance. Collect metrics from the Collector about its CPU, memory, and
 throughput usage and set alerts for resource exhaustion.
 
 If resource limits are reached, consider horizontally
