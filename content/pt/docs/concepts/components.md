@@ -45,7 +45,7 @@ O OpenTelemetry também possui SDKs para as linguagens mais populares do mercado
 
 Para mais informações, consulte [Instrumentando](/docs/concepts/instrumentation/).
 
-### Bibliotecas de instrumentação
+### Bibliotecas de instrumentação {#instrumentation-libraries}
 
 O OpenTelemetry suporta um grande número de componentes que geram dados de telemetria relevantes a partir de bibliotecas e frameworks populares para as linguagens suportadas. Por exemplo, Solicitações HTTP de entrada e saída de uma biblioteca HTTP geram dados sobre essas solicitações. Um objetivo Aspiracional do OpenTelemetry é que todas as bibliotecas populares sejam construídas para serem observáveis por padrão, de modo que dependências separadas não sejam necessárias.
 
