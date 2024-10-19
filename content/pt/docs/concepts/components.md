@@ -85,7 +85,7 @@ A amostragem é um processo que restringe a quantidade de rastros que são gerad
 
 Para mais informações, consulte [Amostragem](/docs/concepts/sampling).
 
-## Operador Kubernetes
+## Operador Kubernetes {#kubernetes-operator}
 
 O OpenTelemetry Operator é a implementação de um Operador Kubernetes. O operador gerencia o OpenTelemetry Collector e a auto-instrumentação das cargas de trabalho usando OpenTelemetry.
 
