@@ -87,7 +87,7 @@ Para mais informações, consulte [Amostragem](/docs/concepts/sampling).
 
 ## Operador Kubernetes {#kubernetes-operator}
 
-O OpenTelemetry Operator é a implementação de um Operador Kubernetes. O operador gerencia o OpenTelemetry Collector e a auto-instrumentação das cargas de trabalho usando OpenTelemetry.
+O OpenTelemetry Operator é a implementação de um Operador Kubernetes. O operador gerencia o OpenTelemetry Collector e a instrumentação sem código das cargas de trabalho que utilizam OpenTelemetry.
 
 Para mais informações, consulte [Kubernetes Operator](/docs/kubernetes/operator/).
 
