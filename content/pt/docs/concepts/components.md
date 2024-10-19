@@ -54,7 +54,7 @@ O OpenTelemetry suporta um grande número de componentes que geram dados de tele
 Para mais informações, consulte
 [Bibliotecas de instrumentação](/docs/concepts/instrumentation/libraries/).
 
-### Exportadores
+### Exporters
 
 {{% docs/languages/exporters/intro %}}
 
