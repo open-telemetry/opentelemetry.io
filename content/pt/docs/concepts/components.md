@@ -93,6 +93,6 @@ Para mais informações, consulte [Kubernetes Operator](/docs/kubernetes/operato
 
 ## Função como Serviço
 
-O OpenTelemetry suporta vários métodos de monitoramento da Função como Serviço fornecidos por diferentes sistema de telemetria. A comunidade do OpenTelemetry atualmente fornece camadas Lambda pré-construídas capazes de auto-instrumentar sua aplicação, bem como a opção de uma camada Lambda de Collector independente que pode ser usada ao instrumentar aplicações manualmente ou automaticamente.
+O OpenTelemetry oferece vários métodos de monitoramento de Function-as-a-Service fornecidos por diferentes provedores de nuvem. A comunidade OpenTelemetry atualmente disponibiliza camadas Lambda pré-construídas, capazes de realizar instrumentação sem código na sua aplicação, bem como a opção de uma camada Lambda do Coletor independente, que pode ser usada ao instrumentar aplicações manualmente ou automaticamente.
 
 Para mais informações, consulte [Função como Serviço](/docs/faas/).
