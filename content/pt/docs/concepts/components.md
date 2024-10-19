@@ -78,7 +78,7 @@ Embora não se limite ao rastreamento, a propagação permite que os rastros con
 
 Na grande maioria dos casos de uso, a propagação de contexto ocorre por meio de bibliotecas de instrumentação. Se for necessário, você pode usar propagadores manualmente para serializar e desserializar aspectos como o contexto de um trecho e a [bagagem](/docs/concepts/signals/baggage/).
 
-### Amostragem
+### Amostragem {#samplers}
 
 A amostragem é um processo que restringe a quantidade de rastros que são gerados por um sistema. OpenTelemetry oferece várias formas de fazer essa para linguagens mais populares do mercado.
 [Amostragem](/docs/concepts/sampling/#head-sampling).
