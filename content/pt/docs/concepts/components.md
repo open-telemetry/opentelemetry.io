@@ -80,7 +80,7 @@ Na grande maioria dos casos de uso, a propagação de contexto ocorre por meio d
 
 ### Amostragem {#samplers}
 
-A amostragem é um processo que restringe a quantidade de rastros que são gerados por um sistema. OpenTelemetry oferece várias formas de fazer essa para linguagens mais populares do mercado.
+A amostragem é um processo que restringe a quantidade de rastros que são gerados por um sistema. Cada implementação específica de linguagem do OpenTelemetry oferece [amostradores pela cabeça](/docs/concepts/sampling/#head-sampling).
 [Amostragem](/docs/concepts/sampling/#head-sampling).
 
 Para mais informações, consulte [Amostragem](/docs/concepts/sampling).
