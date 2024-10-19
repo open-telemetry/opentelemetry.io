@@ -76,7 +76,7 @@ Para mais informações, consulte [Recursos](/docs/concepts/resources/).
 A propagação é o mecanismo que move dados entre serviços e processos.
 Embora não se limite ao rastreamento, a propagação permite que os rastros construam informações sobre um sistema através de serviços que estão distribuídos arbitrariamente entre limites de processos e redes.
 
-Na grande maioria dos casos de uso, a propagação de contexto ocorre por meio de bibliotecas de instrumentação. Se for necessário, você pode usar propagadores manualmente para serializar e desserializar preocupações transversais, como o contexto de um span. [metadados](/docs/concepts/signals/baggage/).
+Na grande maioria dos casos de uso, a propagação de contexto ocorre por meio de bibliotecas de instrumentação. Se for necessário, você pode usar propagadores manualmente para serializar e desserializar aspectos como o contexto de um trecho e a [bagagem](/docs/concepts/signals/baggage/).
 
 ### Amostragem
 
