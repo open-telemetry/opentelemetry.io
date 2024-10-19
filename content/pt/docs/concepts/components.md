@@ -65,7 +65,7 @@ OpenTelemetry possibilita essa forma de instrumentar sua aplicação sem alterar
 Para mais informações, consulte
 [Instrumentação sem código](/docs/concepts/instrumentation/zero-code/).
 
-### Detectores de recursos
+### Detectores de recursos {#resource-detectors}
 
 Um [recurso](/docs/concepts/resources/) representa a entidade que produz telemetria como atributos de recurso. Por exemplo, um processo que produz telemetria que está sendo executado em um contêiner no Kubernetes tem um nome de Pod, um namespace e possivelmente um nome de implantação. Você pode incluir todos esses atributos no recurso. As implementações específicas de linguagem do OpenTelemetry fornecem detecção de recursos a partir da variável de ambiente OTEL_RESOURCE_ATTRIBUTES e para muitas entidades comuns, como tempo de execução do processo, serviço, host ou sistema operacional.
 
