@@ -39,7 +39,7 @@ processar e exportar dados de telemetria. Ele suporta o recebimento de dados de 
 
 Para mais informações, consulte [Coletor](/docs/collector/).
 
-## Implementações de API e SDK específicas.
+## Implementações de API e SDK específicas {#language-specific-api--sdk-implementations}
 
 O OpenTelemetry também possui SDKs para as linguagens mais populares do mercado e permitem usar a API do OpenTelemetry para gerar dados de telemetria e exportar esses dados para qualquer sistema de telemetria. Esses SDKs também permitem que você utilize qualquer biblioteca e ou frameworks dessas linguagens da instrumentação manual.
 
