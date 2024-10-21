@@ -34,10 +34,54 @@
 {{ end -}}
 {{ $types = $types | uniq | sort -}}
 
+<!--Custom css for the inline help-->
+<style>
+  .btn-hint:hover::after {
+    position: absolute;
+    background-color: #0b5394;
+    border-radius: 3px;
+    color: white;
+    font-size: 0.85rem;
+    bottom: 120%;
+    left: 0;
+    white-space: break-spaces;
+}
+
+.btn-outline-success:hover::after {
+    content: "Submit your search query.";
+}
+
+.btn-outline-danger:hover::after {
+    content: "Clear search and reset filters.";
+}
+
+#languageDropdown:hover::after {
+    content: "Select the programming language.";
+}
+
+#componentDropdown:hover::after {
+    content: "Choose the component type.";
+}
+.hover-hint {
+    position: relative; 
+    cursor: pointer;
+    text-decoration: underline dotted #0b5394;
+}
+
+.hover-hint:hover::after {
+    content: attr(title); 
+    background-color: #0b5394;
+    color: white;
+    position: absolute;
+    bottom: 120%; 
+    white-space: nowrap;
+    border-radius: 4px;
+}
+</style>
 <div class="alert alert-info">
-The OpenTelemetry Registry allows you to search for instrumentation libraries,
-collector components, utilities, and other useful projects in the OpenTelemetry
-ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry/adding/">add your project to the OpenTelemetry Registry</a>
+  The <span class="hover-hint" title="An Observability framework and toolkit designed to create and manage telemetry data such as traces, metrics, and logs.">OpenTelemetry</span> Registry allows you to search for instrumentation libraries,
+  collector components, utilities, and other useful projects in the OpenTelemetry
+  ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry/adding/">add your project to the OpenTelemetry Registry</a>
 </div>
 
 <div class="pb-4">
@@ -52,12 +96,12 @@ ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry
       <input type="hidden" name="component" id="input-component" value="" />
       <input type="hidden" name="language" id="input-language" value="" />
 
-      <button type="button" class="btn btn-outline-success"
+      <button type="button" class="btn btn-outline-success btn-hint"
         onclick="document.getElementById('searchForm').submit();">Submit</button>
-      <button type="button" class="btn btn-outline-danger"
+      <button type="button" class="btn btn-outline-danger btn-hint"
         onclick="document.getElementById('input-s').value = ''; document.getElementById('input-language').value = 'all';document.getElementById('input-component').value = 'all';document.getElementById('searchForm').submit();">Reset</button>
 
-      <button class="btn btn-outline-secondary dropdown-toggle" id="languageDropdown" type="button"
+      <button class="btn btn-outline-secondary dropdown-toggle btn-hint" id="languageDropdown" type="button"
         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
       <div class="dropdown-menu" id="languageFilter">
         <li><a value="all" class="dropdown-item">Any Language</a></li>
@@ -79,7 +123,7 @@ ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry
         {{ end -}}
       </div>
 
-      <button class="btn btn-outline-secondary dropdown-toggle" id="componentDropdown" type="button"
+      <button class="btn btn-outline-secondary dropdown-toggle btn-hint" id="componentDropdown" type="button"
         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type</button>
       <div class="dropdown-menu" id="componentFilter">
         <a value="all" class="dropdown-item">Any Component</a>
