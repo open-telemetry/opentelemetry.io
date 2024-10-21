@@ -11,6 +11,28 @@ English is the default language, with US English as the default (implicit) local
 A growing number of other localizations are supported, as can be seen from the languages
 dropdown menu in the top nav.
 
+## English language maintainer guidance
+
+### When link checking fails for non-English pages
+
+English is the default language of the OpenTelemetry website. After you add,
+edit, or reorganized English language documentation, link checking may fail for
+non-English pages. When this happens:
+
+- Do **not** fix the broken links. Each non-English page is associated with a
+  specific commit of the corresponding English page, as identified by the git
+  commit hash value of the `default_lang_commit` front matter key.
+- Configure the link checker to ignore the non-English pages by adding the
+  following to the page's front matter, or to the closest common ancestor file,
+  when more than one page has link errors:
+  ```yaml
+  htmltest:
+    # TODO: remove the IgnoreDirs once broken links are fixed
+    IgnoreDirs:
+      - path-regex/to/non-en/directory/contain/files/to/ignore
+      - path-2-etc
+  ```
+
 ## Translation guidance
 
 We recommend that you follow the guidance offered in this section when
