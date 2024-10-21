@@ -103,7 +103,7 @@ fazer isso.
 Para criar um evento com um rastreador, você também precisará de um manipulador para a
 instância do `context.Context`. Estes manipuladores vêm geralmente de
 um objeto de requisição e podem já conter um
-trecho parente inicializado por uma [biblioteca de
+trecho pai inicializado por uma [biblioteca de
 instrumentação][instrumentation library].
 
 ```go
