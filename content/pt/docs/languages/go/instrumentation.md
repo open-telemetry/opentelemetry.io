@@ -140,7 +140,7 @@ determinado momento.
 
 ### Criar trechos aninhados {#create-nested-spans}
 
-Você pode criar um trecho aninhado para rastrear a operação de maneira aninhada.
+Você pode criar um trecho aninhado para rastrear a operação aninhada.
 
 Se o `context.Context` atual que você possui já contiver um trecho, a criação de
 um novo trecho resultará em um aninhamento. Por exemplo:
