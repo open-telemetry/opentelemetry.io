@@ -180,7 +180,7 @@ ciclo de vida, antes que ele seja concluído.
 // definindo atributos na criação...
 ctx, span = tracer.Start(ctx, "atributosNaCriacao", trace.WithAttributes(attribute.String("hello", "world")))
 // ... e após a criação
-span.SetAttributes(attribute.Bool("ehVerdadeiro", true), attribute.String("atributoDeTexto", "oi!"))
+span.SetAttributes(attribute.Bool("isTrue", true), attribute.String("atributoDeTexto", "oi!"))
 ```
 
 As chaves dos atributos também podem ser pré-computadas:
