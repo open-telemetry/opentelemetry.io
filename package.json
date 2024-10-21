@@ -1,5 +1,4 @@
 {
-  "spelling": "cSpell:ignore docsy elemetry htmltest hugo loglevel netlify nowrap prebuild precheck preinstall postbuild postget refcache textlint -",
   "Notes": [
     "The 'all' runs _all_ named scripts in sequence, even if one fails; and exits with failure in that case."
   ],
@@ -86,8 +85,8 @@
     "prebuild:preview": "npm run _prebuild",
     "prebuild:production": "npm run _prebuild",
     "prebuild": "npm run _prebuild",
-    "precheck:links:internal": "npm run build",
-    "precheck:links": "npm run build",
+    "precheck:links:internal": "npm run build && npm run update:htmltest-config",
+    "precheck:links": "npm run build && npm run update:htmltest-config",
     "prefix:submodules": "npm run update:submodule",
     "prenetlify-build:production": "echo 'IgnoreTagAttribute: rel' >> .htmltest.yml",
     "prepare": "npm run seq -- get:submodule _prepare:docsy",
@@ -102,6 +101,7 @@
     "test-and-fix": "npm run seq -- check fix:dict fix:filenames",
     "test": "npm run check",
     "update:docsy-dep": "npm install --save-dev autoprefixer@latest postcss-cli@latest",
+    "update:htmltest-config": "scripts/htmltest-config.sh",
     "update:hugo": "npm install --save-dev --save-exact hugo-extended@latest",
     "update:hugo+": "npm run update:hugo && npm run update:docsy-dep",
     "update:netlify": "npm install --save-optional netlify-cli@latest",
@@ -160,5 +160,6 @@
   "prettier": {
     "proseWrap": "always",
     "singleQuote": true
-  }
+  },
+  "spelling": "cSpell:ignore docsy elemetry htmltest hugo loglevel netlify nowrap postnetlify prebuild precheck preinstall postbuild postget refcache textlint -"
 }
