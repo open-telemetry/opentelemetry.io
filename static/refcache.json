@@ -3335,6 +3335,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:24:54.677789-05:00"
   },
+  "https://druid.apache.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-18T16:50:18.107656338+03:00"
+  },
   "https://dyladan.me/histograms/2023/05/02/why-histograms/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:01:18.587594-05:00"
@@ -5654,6 +5658,10 @@
   "https://github.com/microsoft/ApplicationInsights-Java": {
     "StatusCode": 200,
     "LastSeen": "2024-04-19T17:43:49.897716918Z"
+  },
+  "https://github.com/mishmash-io/opentelemetry-server-embedded": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-18T16:50:17.016614951+03:00"
   },
   "https://github.com/mjwolf": {
     "StatusCode": 200,
@@ -9215,6 +9223,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:02:08.769984-05:00"
   },
+  "https://mishmash.io": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-18T16:50:17.995881058+03:00"
+  },
   "https://mobyproject.org/": {
     "StatusCode": 206,
     "LastSeen": "2024-08-07T15:43:31.13946+02:00"
@@ -9931,6 +9943,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-02-23T22:55:04.014798-05:00"
   },
+  "https://opentelemetry.io/docs/concepts/glossary/#instrumentation-library": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-18T16:49:48.155152358+03:00"
+  },
   "https://opentelemetry.io/docs/concepts/instrumentation/libraries/": {
     "StatusCode": 206,
     "LastSeen": "2024-04-30T09:31:37.735092936Z"
@@ -9974,6 +9990,10 @@
   "https://opentelemetry.io/docs/specs/otel/compatibility/prometheus_and_openmetrics/": {
     "StatusCode": 206,
     "LastSeen": "2024-09-04T09:48:32.91926+02:00"
+  },
+  "https://opentelemetry.io/docs/specs/otel/document-status": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-18T16:49:48.125677461+03:00"
   },
   "https://opentelemetry.io/docs/specs/otel/glossary/#instrumentation-library": {
     "StatusCode": 206,
