@@ -19,6 +19,8 @@ English is the default language of the OpenTelemetry website. After you add,
 edit, or reorganized English language documentation, link checking may fail for
 non-English pages. When this happens:
 
+<!-- markdownlint-disable blanks-around-fences -->
+
 - Do **not** fix the broken links. Each non-English page is associated with a
   specific commit of the corresponding English page, as identified by the git
   commit hash value of the `default_lang_commit` front matter key.
@@ -32,6 +34,10 @@ non-English pages. When this happens:
       - path-regex/to/non-en/directory/contain/files/to/ignore
       - path-2-etc
   ```
+- Run `npm run check:links` and include any updates to the `.htmltest.yml`
+  config file with your PR.
+
+<!-- markdownlint-enable blanks-around-fences -->
 
 ## Translation guidance
 
