@@ -97,7 +97,7 @@ Agora você pode acessar `tracer` para instrumentar manualmente o seu código.
 
 ### Criando Trechos {#creating-spans}
 
-Os trechos são criados por Tracers. Se você não tiver um inicializado, precisará
+Os trechos são criados por rastreadores. Se você não tiver um inicializado, precisará
 fazer isso.
 
 Para criar um evento com um Tracer, você também precisará de um _handler_ para a
