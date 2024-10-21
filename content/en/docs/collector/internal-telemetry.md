@@ -144,10 +144,9 @@ journalctl | grep otelcol | grep Error
 
 {{% /tab %}} {{< /tabpane >}}
 
-## Configure internal traces
+### Configure internal traces
 
-The Collector does not expose traces by default, but can be configured to. The
-Collector's internal telemetry uses the OpenTelemetry SDK.
+The Collector does not expose traces by default, but can be configured to.
 
 {{% alert title="Caution" color="warning" %}}
 
@@ -156,8 +155,8 @@ the stability of the emitted span names and attributes.
 
 {{% /alert %}}
 
-The following configuration can be used to emit internal metrics and traces from
-the Collector to an OTLP backend:
+The following configuration can be used to emit internal traces from the
+Collector to an OTLP backend:
 
 ```yaml
 service:
@@ -171,10 +170,11 @@ service:
                 endpoint: https://backend:4317
 ```
 
-See the [example
-configuration][https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml]
-for additional options (the `tracer_provider` section corresponds to `traces`
-here).
+See the [example configuration][kitchen-sink-config] for additional options (the
+`tracer_provider` section there corresponds to `traces` here).
+
+[kitchen-sink-config]:
+  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml
 
 You can also configure the Collector to send its own traces using the OTLP
 exporter. Send the traces to an OTLP server running on the same Collector, so it
@@ -195,8 +195,8 @@ service:
 {{% alert title="Caution" color="warning" %}}
 
 Sending internal traces through the Collector's pipeline as above creates a
-continuous loop of spans which may be unnecessary. This setup should probably
-not be used in production.
+continuous loop of spans which may be unnecessary. This setup should not be used
+in production.
 
 {{% /alert %}}
 
