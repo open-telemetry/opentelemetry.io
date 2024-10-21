@@ -132,7 +132,7 @@ qual você tenha acesso:
 ctx := context.TODO()
 span := trace.SpanFromContext(ctx)
 
-// Insira o código para fazer algo com o Trecho atual, chamando opcionalmente o método `span.End()` caso deseje finalizá-lo.
+// Insira o código para fazer algo com o trecho atual, chamando opcionalmente o método `span.End()` caso deseje finalizá-lo.
 ```
 
 Isso pode ser útil se você quiser adicionar informações ao trecho atual em um
