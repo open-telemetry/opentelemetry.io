@@ -159,7 +159,7 @@ func parentFunction(ctx context.Context) {
 func childFunction(ctx context.Context) {
 	// Inicialize um trecho para rastrear a chamada `childFunction()`
 	// este é um trecho aninhado, cujo pai foi declarado no método anterior em `parentSpan`
-	ctx, childSpan := tracer.Start(ctx, "child")
+	ctx, childSpan := tracer.Start(ctx, "filho")
 	defer childSpan.End()
 
 	// insira algum código aqui - ao finalizar esta função, o trecho declarado em 'childSpan' será finalizado.
