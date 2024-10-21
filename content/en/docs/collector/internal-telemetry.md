@@ -144,6 +144,62 @@ journalctl | grep otelcol | grep Error
 
 {{% /tab %}} {{< /tabpane >}}
 
+## Configure internal traces
+
+The Collector does not expose traces by default, but can be configured to. The
+Collector's internal telemetry uses the OpenTelemetry SDK.
+
+{{% alert title="Caution" color="warning" %}}
+
+Internal tracing is an experimental feature, and no guarantees are made as to
+the stability of the emitted span names and attributes.
+
+{{% /alert %}}
+
+The following configuration can be used to emit internal metrics and traces from
+the Collector to an OTLP backend:
+
+```yaml
+service:
+  telemetry:
+    traces:
+      processors:
+        - batch:
+            exporter:
+              otlp:
+                protocol: grpc/protobuf
+                endpoint: https://backend:4317
+```
+
+See the [example
+configuration][https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml]
+for additional options (the `tracer_provider` section corresponds to `traces`
+here).
+
+You can also configure the Collector to send its own traces using the OTLP
+exporter. Send the traces to an OTLP server running on the same Collector, so it
+goes through configured pipelines. For example:
+
+```yaml
+service:
+  telemetry:
+    traces:
+      processors:
+        batch:
+          exporter:
+            otlp:
+              protocol: grpc/protobuf
+              endpoint: ${MY_POD_IP}:4317
+```
+
+{{% alert title="Caution" color="warning" %}}
+
+Sending internal traces through the Collector's pipeline as above creates a
+continuous loop of spans which may be unnecessary. This setup should probably
+not be used in production.
+
+{{% /alert %}}
+
 ## Types of internal telemetry
 
 The OpenTelemetry Collector aims to be a model of observable service by clearly
