@@ -111,7 +111,7 @@ func httpHandler(w http.ResponseWriter, r *http.Request) {
 	ctx, span := tracer.Start(r.Context(), "hello-span")
 	defer span.End()
 
-	// insira algum código a ser rastreado por hello-span
+	// insira algum código para rastrear com o hello-span
 }
 ```
 
