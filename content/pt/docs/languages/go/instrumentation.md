@@ -29,7 +29,7 @@ go get go.opentelemetry.io/otel \
 ```
 
 Em seguida, inicialize um exporter, recursos, tracer provider e finalmente o
-Tracer.
+rastreador.
 
 ```go
 package app
