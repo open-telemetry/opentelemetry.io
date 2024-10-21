@@ -28,7 +28,7 @@ go get go.opentelemetry.io/otel \
   go.opentelemetry.io/otel/sdk \
 ```
 
-Em seguida, inicialize um Exporter, Resources, Tracer Provider e finalmente o
+Em seguida, inicialize um exporter, recursos, tracer provider e finalmente o
 Tracer.
 
 ```go
