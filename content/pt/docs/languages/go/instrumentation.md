@@ -53,7 +53,7 @@ func newExporter(ctx context.Context)  /* (someExporter.Exporter, error) */ {
 }
 
 func newTraceProvider(exp sdktrace.SpanExporter) *sdktrace.TracerProvider {
-	// Certifique-se de que os recursos padrão da SDK e o nome do serviço estão definidos.
+	// Certifique-se de que os recursos padrão do SDK e o nome do serviço estão definidos.
 	r, err := resource.Merge(
 		resource.Default(),
 		resource.NewWithAttributes(
