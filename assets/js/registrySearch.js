@@ -240,10 +240,9 @@ function parseUrlParams() {
   selectedComponent = urlParams.get('component') || 'all';
 }
 
-
 // Pagination Logic
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   let currentPage = 1;
   let resultsPerPage = 50;
   const results = document.querySelectorAll('#default-body li');
@@ -261,7 +260,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
-    results.forEach((result) => result.style.display = 'none');
+    results.forEach((result) => (result.style.display = 'none'));
     document.getElementById('page-error').textContent = '';
 
     const start = (page - 1) * resultsPerPage;
@@ -276,7 +275,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('prev-page').disabled = page === 1;
     document.getElementById('next-page').disabled = page === totalPages;
-    document.getElementById('page-info').textContent = `Total Number of Pages: ${totalPages}`;
+    document.getElementById('page-info').textContent =
+      `Total Number of Pages: ${totalPages}`;
   }
 
   function updateVisiblePages(currentPage) {
@@ -334,7 +334,9 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   document.getElementById('go-page-btn').addEventListener('click', goToPage);
-  document.getElementById('results-per-page').addEventListener('change', changeResultsPerPage);
+  document
+    .getElementById('results-per-page')
+    .addEventListener('change', changeResultsPerPage);
 
   showPage(currentPage);
 });
