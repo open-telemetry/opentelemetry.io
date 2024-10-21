@@ -128,7 +128,7 @@ Para obter o trecho atual, você precisará extraí-lo de um `context.Context` a
 qual você tenha acesso:
 
 ```go
-// O Trecho deve estar ativo no Contexto onde você deseja extrair.
+// Este contexto precisa conter o trecho ativo que você pretende extrair.
 ctx := context.TODO()
 span := trace.SpanFromContext(ctx)
 
