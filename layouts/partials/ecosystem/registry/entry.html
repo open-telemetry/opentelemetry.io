@@ -46,6 +46,10 @@
                 "installLine" "cargo add %s"
                 "installTemplate" "ecosystem/registry/quickinstall/default.md"
                 "icon" "fab fa-rust")
+            "maven" (dict
+                "urlPattern" "https://maven.org/artifact/%s"
+                "installTemplate" "ecosystem/registry/quickinstall/maven.md"
+                "icon" "fa-solid fa-feather")
     -}}
 
     {{ $isNative := and (or (eq .registryType "instrumentation") (eq .registryType "application integration")) (.isNative) }}
