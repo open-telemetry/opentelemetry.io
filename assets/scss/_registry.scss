@@ -39,3 +39,13 @@
 .registry-entry {
   @extend .shadow;
 }
+
+// Scroll-to-top button styling
+
+@media screen and (max-width: 768px) {
+  .scroll-to-top-btn {
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+  }
+}
