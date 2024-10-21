@@ -97,14 +97,13 @@ Agora você pode acessar `tracer` para instrumentar manualmente o seu código.
 
 ### Criando Trechos {#creating-spans}
 
-Os trechos são criados por rastreadores. Se você não tiver um inicializado, precisará
-fazer isso.
+Os trechos são criados por rastreadores. Se você não tiver um inicializado,
+precisará fazer isso.
 
-Para criar um evento com um rastreador, você também precisará de um manipulador para a
-instância do `context.Context`. Estes manipuladores vêm geralmente de
-um objeto de requisição e podem já conter um
-trecho pai inicializado por uma [biblioteca de
-instrumentação][instrumentation library].
+Para criar um evento com um rastreador, você também precisará de um manipulador
+para a instância do `context.Context`. Estes manipuladores vêm geralmente de um
+objeto de requisição e podem já conter um trecho pai inicializado por uma
+[biblioteca de instrumentação][instrumentation library].
 
 ```go
 func httpHandler(w http.ResponseWriter, r *http.Request) {
