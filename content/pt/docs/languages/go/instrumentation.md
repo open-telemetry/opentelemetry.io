@@ -171,7 +171,7 @@ modificado.
 
 ### Atributos de Trecho {#span-attributes}
 
-Os atributos são pares de chaves e valor aplicados como metadados aos seus
+Os atributos são pares de chave e valor aplicados como metadados aos seus
 trechos e são úteis para agregar, filtrar e agrupar rastros. Os atributos podem
 ser adicionados durante a criação de um trecho ou a qualquer momento durante seu
 ciclo de vida, antes que ele seja concluído.
