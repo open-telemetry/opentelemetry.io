@@ -147,7 +147,7 @@ um novo trecho resultará em um aninhamento. Por exemplo:
 
 ```go
 func parentFunction(ctx context.Context) {
-	ctx, parentSpan := tracer.Start(ctx, "parent")
+	ctx, parentSpan := tracer.Start(ctx, "pai")
 	defer parentSpan.End()
 
 	// invoque a função filha e inicie um trecho aninhado dentro dela
