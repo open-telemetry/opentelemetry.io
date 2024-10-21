@@ -217,6 +217,13 @@
         {{ $demoUrl := printf "href=%q" (printf .) | safeHTMLAttr -}}
         <a {{ $demoUrl }} target="_blank" rel="noopener" class="card-link"><i class="fa-solid fa-shapes" aria-hidden="true"></i>&nbsp;Demo Service</a>
         {{- end -}}
+        <!-- Add to Favorites Button -->
+        <div class="text-end">
+            <button class="btn btn-link p-0 favorite-btn" data-registry-id="{{ ._key }}">
+                <i class="fa-regular fa-star"></i> Add to favorites
+            </button>
+        </div>
         </div>
     </li>
   {{ end -}}
+{{ partial "script.html" (dict "src" "js/addToFavorites.js") -}}
