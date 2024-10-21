@@ -100,7 +100,7 @@ Agora você pode acessar `tracer` para instrumentar manualmente o seu código.
 Os trechos são criados por rastreadores. Se você não tiver um inicializado, precisará
 fazer isso.
 
-Para criar um evento com um Tracer, você também precisará de um _handler_ para a
+Para criar um evento com um rastreador, você também precisará de um manipulador para a
 instância do `context.Context`. Estes manipuladores vêm geralmente de
 implementações como, por exemplo, um objeto de requisição e podem já conter um
 trecho parente inicializado por uma [biblioteca de
