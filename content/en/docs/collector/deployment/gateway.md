@@ -198,6 +198,28 @@ The load-balancing exporter emits metrics including
 that you can use for health and performance monitoring of the OTLP endpoint
 collector.
 
+## Typical Gateway deployment architecture
+
+The following diagram shows a typical deployment architecture for a gateway
+![gateway](../img/otel-gateway-arch.svg)
+
+There are a few limitations in running the OTel collector in gateway mode.
+
+- We can't use receivers that need to be unique per host instance. Using these
+  receivers in gateway mode will result in Duplicate data, especially if the
+  collector runs in multiple instances. Examples include, but are not limited
+  to:
+
+  - [hostmetricsreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver),
+    may result in dupicate host metrics.
+  - [filelogreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver),
+    may result in duplicate logs.
+
+- Using a `resourcedetection` processor in gateway mode is not recommended. This
+  processor is used to detect the resources of the host where the collector is
+  running. Use `resourcedetection` processor in the pipeline of Daemonset
+  collector deployment.
+
 ## Tradeoffs
 
 Pros:
