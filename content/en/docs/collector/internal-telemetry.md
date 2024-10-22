@@ -156,7 +156,7 @@ the stability of the emitted span names and attributes.
 {{% /alert %}}
 
 The following configuration can be used to emit internal traces from the
-Collector to an OTLP backend:
+Collector to an OTLP/gRPC backend:
 
 ```yaml
 service:
@@ -177,7 +177,7 @@ See the [example configuration][kitchen-sink-config] for additional options (the
   https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml
 
 You can also configure the Collector to send its own traces using the OTLP
-exporter. Send the traces to an OTLP server running on the same Collector, so it
+exporter. Send the traces to an OTLP receiver running on the same Collector, so it
 goes through configured pipelines. For example:
 
 ```yaml
@@ -189,7 +189,7 @@ service:
           exporter:
             otlp:
               protocol: grpc/protobuf
-              endpoint: ${MY_POD_IP}:4317
+              endpoint: localhost:4317
 ```
 
 {{% alert title="Caution" color="warning" %}}
