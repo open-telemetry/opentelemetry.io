@@ -177,8 +177,8 @@ See the [example configuration][kitchen-sink-config] for additional options (the
   https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml
 
 You can also configure the Collector to send its own traces using the OTLP
-exporter. Send the traces to an OTLP receiver running on the same Collector, so it
-goes through configured pipelines. For example:
+exporter. Send the traces to an OTLP receiver running on the same Collector, so
+it goes through configured pipelines. For example:
 
 ```yaml
 service:
