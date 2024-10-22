@@ -4,7 +4,7 @@ linkTitle: Operator
 aliases: [/docs/languages/python/automatic/operator]
 weight: 30
 # prettier-ignore
-cSpell:ignore: PYTHONPATH distro grpcio mkdir myapp psutil uninstrumented virtualenv
+cSpell:ignore: distro grpcio mkdir myapp psutil PYTHONPATH uninstrumented virtualenv
 ---
 
 If you run your Python service in Kubernetes, you can take advantage of the
