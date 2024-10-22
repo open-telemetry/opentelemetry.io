@@ -3,8 +3,8 @@ title: Using the OpenTelemetry Operator to Inject Auto-Instrumentation
 linkTitle: Operator
 aliases: [/docs/languages/python/automatic/operator]
 weight: 30
-cSpell:ignore:
-  PYTHONPATH distro grpcio mkdir myapp psutil uninstrumented virtualenv
+# prettier-ignore
+cSpell:ignore: PYTHONPATH distro grpcio mkdir myapp psutil uninstrumented virtualenv
 ---
 
 If you run your Python service in Kubernetes, you can take advantage of the
