@@ -34,6 +34,19 @@
   $default-otel-badge-bg: $yellow;
   color: color-contrast($default-otel-badge-bg);
   background-color: $default-otel-badge-bg;
+
+  background-color: var(--bs-body-bg) !important;
+}
+
+[data-bs-theme='light'] .registry-entry .badge {
+  background-color: var(--bs-body-bg) !important;
+  color: inherit;
+}
+
+[data-bs-theme='dark'] .registry-entry .badge {
+  background-color: var(--bs-body-bg) !important;
+  color: inherit;
+  background-image: none !important;
 }
 
 .registry-entry {
