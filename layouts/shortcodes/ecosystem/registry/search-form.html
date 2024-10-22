@@ -106,8 +106,10 @@
     <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
     <span role="status">Loading results…</span>
   </div>
-  <ul class="list-unstyled" id="search-results"></ul>
   <div class="container">
+    <div class="row d-flex justify-content-center  p-0" id="search-results"></div>
+  </div>
+  <div class="container" id="default-body">
     <div class="row d-flex justify-content-center  p-0">
       {{ range $key, $value := $registry -}}
       {{ $value = merge $value (dict "_key" $key) -}}
