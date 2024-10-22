@@ -4,7 +4,9 @@ description:
   Why and how to send signals to a single OTLP end-point and from there to
   backends
 weight: 3
-cSpell:ignore: hostnames loadbalancer loadbalancing hostmetricsreceiver filelogreceiver resourcedetection
+cSpell:ignore:
+  hostnames loadbalancer loadbalancing hostmetricsreceiver filelogreceiver
+  resourcedetection
 ---
 
 The gateway collector deployment pattern consists of applications (or other
