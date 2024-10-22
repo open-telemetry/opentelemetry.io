@@ -19,6 +19,7 @@ cartservice(Cart Service):::dotnet
 checkoutservice(Checkout Service):::golang
 currencyservice(Currency Service):::cpp
 emailservice(Email Service):::ruby
+flagd(Flagd-ui):::typescript
 frauddetectionservice(Fraud Detection Service):::kotlin
 frontend(Frontend):::typescript
 frontendproxy(Frontend Proxy <br/>&#40Envoy&#41):::cpp
@@ -33,6 +34,7 @@ queue[(queue<br/>&#40Kafka&#41)]
 
 Internet -->|HTTP| frontendproxy
 frontendproxy -->|HTTP| frontend
+frontendproxy -->|HTTP| flagd
 loadgenerator -->|HTTP| frontendproxy
 frontendproxy -->|HTTP| imageprovider
 
