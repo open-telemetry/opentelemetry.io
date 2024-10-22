@@ -17,7 +17,7 @@ below. Look [here](/docs/languages/js) for more info about the status of
 OpenTelemetry in JavaScript. {{% /alert %}}
 
 ## Prerequisites
-
+ 
 Ensure that you have the following installed locally:
 
 - [Node.js](https://nodejs.org/en/download/)
@@ -467,7 +467,7 @@ the console output, such as the following:
 ```
 
 </details>
-
+ 
 ## Next Steps
 
 Enrich your instrumentation generated automatically with

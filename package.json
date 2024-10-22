@@ -2,12 +2,12 @@
   "Notes": [
     "The 'all' runs _all_ named scripts in sequence, even if one fails; and exits with failure in that case."
   ],
-  "scripts": {
+   "scripts": { 
     "__check:links": "make --keep-going check-links",
     "_build": "npm run _hugo -- -e dev --buildDrafts --baseURL \"${DEPLOY_PRIME_URL:-http://localhost}\"",
     "_check:format:any": "npx prettier --check --ignore-path ''",
     "_check:format:ja+zh": "npm run _check:format:nowrap -- content/ja content/zh",
-    "_check:format:nowrap": "npm run _check:format:any -- --prose-wrap preserve",
+    "_check:format:nowrap": "npm run _check:format:any -- --prose-wrap preserve", 
     "_check:format": "npx prettier --check .",
     "_check:links--md": "npx markdown-link-check --config .markdown-link-check.json *.md",
     "_check:links--warn": "npm run _check:links || (echo; echo 'WARNING: see link-checker output for issues.'; echo)",
@@ -156,7 +156,7 @@
     "node": "20.x"
   },
   "gitHubActionCacheKey": "2023-07-13 - change this key to force cache refresh",
-  "private": true,
+  "private": true, 
   "prettier": {
     "proseWrap": "always",
     "singleQuote": true
