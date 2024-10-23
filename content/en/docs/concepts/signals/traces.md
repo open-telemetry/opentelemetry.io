@@ -282,7 +282,7 @@ meaningful, singular point in time.
 #### When to use span events versus span attributes
 
 Since span events also contain attributes, the question of when to use events
-instead of attributes might not always have an obvious answer. To inform your
+instead of attributes might not always have a clear answer. To inform your
 decision, consider whether a specific timestamp is meaningful.
 
 For example, when you're tracking an operation with a span and the operation

@@ -24,7 +24,7 @@ customization by end-users, vendors, and other stakeholders.
 - Provide developers with a robust sample application they can use in learning
   OpenTelemetry instrumentation.
 - Provide observability vendors with a single, well-supported, demo platform
-  that they can further customize (or simply use OOB).
+  that they can further customize (or use OOB).
 - Provide the OpenTelemetry community with a living artifact that demonstrates
   the features and capabilities of OTel APIs, SDKs, and tools.
 - Provide OpenTelemetry maintainers and WGs a platform to demonstrate new
