@@ -135,6 +135,20 @@
     <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
     <span role="status">Loading results…</span>
   </div>
+
+  <!-- When search hs no result -->
+      <div style="display: none; padding:20px; text-align: center;" id="no-search-result">
+        <div style="margin-left: auto; margin-right: auto; width: fit-content;">
+          {{ with resources.Get "icons/search-not-found.png" }}
+            <img style="border: none;" src="{{ .RelPermalink }}" width="250" alt="no result found">
+          {{ end }}
+        </div>
+          <p style="color: #4f62ad; font-size: 28px; margin-bottom: 0;">Oops no results found</p>
+          <p>No results match the filter criteria. Remove filter or clear all filters to show results</p>
+          <button type="button" class="btn btn-outline-danger"
+          onclick="document.getElementById('input-s').value = ''; document.getElementById('input-language').value = 'all';document.getElementById('input-component').value = 'all';document.getElementById('searchForm').submit();">Reset filters</button>
+      </div>
+
   <ul class="list-unstyled" id="search-results"></ul>
   <ul class="list-unstyled" id="default-body">
     {{ range $key, $value := $registry -}}
