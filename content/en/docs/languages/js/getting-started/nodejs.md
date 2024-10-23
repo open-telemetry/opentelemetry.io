@@ -11,7 +11,7 @@ This page will show you how to get started with OpenTelemetry in Node.js.
 You will learn how to instrument both [traces][] and [metrics][] and log them to
 the console.
 
-{{% alert title="Note" color="info" %}} The logging library for OpenTelemetry
+{{% alert title="Note" color="info" %}} The logging library for OpenTelemetry 
 for Node.js is still under development hence an example for it is not provided
 below. Look [here](/docs/languages/js) for more info about the status of
 OpenTelemetry in JavaScript. {{% /alert %}}
@@ -482,7 +482,7 @@ codebase. This gets you customized observability data.
 You'll also want to configure an appropriate exporter to
 [export your telemetry data](/docs/languages/js/exporters) to one or more
 telemetry backends.
-
+ 
 If you'd like to explore a more complex example, take a look at the
 [OpenTelemetry Demo](/docs/demo/), which includes the JavaScript based
 [Payment Service](/docs/demo/services/payment/) and the TypeScript based

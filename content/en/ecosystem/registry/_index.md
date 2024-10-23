@@ -11,7 +11,7 @@ description: >-
 # redirect rule to avoid the loop, as suggested by Netlify support
 # (email support ID 159489):
 redirects: [{ from: /ecosystem/registry*, to: '/ecosystem/registry?' }]
-aliases: [/registry/*]
+aliases: [/registry/*] 
 type: default
 layout: registry
 outputs: [html, json]
