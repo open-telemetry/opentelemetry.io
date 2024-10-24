@@ -31,8 +31,9 @@ Profiles were added as a new signal type to OTLP in
 though this area is still marked as unstable as we continue to make changes to
 it.
 
-While our original intent was to keep wire compatibility with [pprof](https://github.com/google/pprof), that goal
-proved impractical, so the Profiling SIG
+While our original intent was to keep wire compatibility with
+[pprof](https://github.com/google/pprof), that goal proved impractical, so the
+Profiling SIG
 [has decided](https://github.com/open-telemetry/opentelemetry-proto/issues/567#issuecomment-2286565449)
 to refactor the protocol and not aim for strict compatibility with pprof.
 Instead, we will aim for convertibility, similarly to what we already do for
