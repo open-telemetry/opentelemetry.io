@@ -1,7 +1,7 @@
 ---
 title: The State of Profiling
 linkTitle: Profiling state
-date: 2024-10-24
+date: 2024-10-25
 cSpell:ignore: Baeyens Florian Geisendörfer Kalkanis Lehner Mathieu Rühsen
 author: >-
   [Damien Mathieu](https://github.com/dmathieu) (Elastic), [Pablo
