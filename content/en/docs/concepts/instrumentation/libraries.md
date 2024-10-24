@@ -265,7 +265,7 @@ After you create a span, pass new trace context to the application code
 (callback or handler), by making the span active; if possible, do this
 explicitly. The following Java example shows how to add trace context and
 activate a span. See the
-[Context extraction in Java](/docs/languages/java/instrumentation/#context-propagation),
+[Context extraction in Java](/docs/languages/java/api-components/#contextpropagators),
 for more examples.
 
 ```java
@@ -289,9 +289,7 @@ try (Scope unused = span.makeCurrent()) {
 ```
 
 In the case of a messaging system, you might receive more than one message at
-once. Received messages become
-[links](/docs/languages/java/instrumentation/#create-spans-with-links) on the
-span you create. Refer to
+once. Received messages become links on the span you create. Refer to
 [messaging conventions](/docs/specs/semconv/messaging/messaging-spans/) for
 details.
 
