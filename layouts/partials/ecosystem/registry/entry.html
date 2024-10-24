@@ -141,7 +141,6 @@
                     {{ end -}}
                     {{- .description | markdownify -}}
                 </div>
-
                 {{ with $package -}}
                     {{ if not (eq .quickInstall false) }}
                     <h6><i class="fa-solid fa-forward"></i> Quick Install</h6>
