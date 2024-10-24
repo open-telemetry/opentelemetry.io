@@ -39,7 +39,7 @@ Instead, we will aim for convertibility, similarly to what we already do for
 other signals. This shift is still a work in progress, and is causing several
 breaking changes to the profiling section of the protocol. Note that this has no
 impact on the stable sections that make up the majority of the OTLP protocol,
-like metrics, spans, logs, resources, etc..
+like metrics, spans, logs, resources, etc.
 
 ## eBPF Agent Improvements
 
