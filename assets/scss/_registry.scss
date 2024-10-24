@@ -39,3 +39,20 @@
 .registry-entry {
   @extend .shadow;
 }
+
+#searchForm {
+  position: relative;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  width: auto;
+  margin: 0 auto;
+}
+
+#searchForm.sticky {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
