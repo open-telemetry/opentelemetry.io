@@ -7,7 +7,7 @@ weight: 21
 cSpell:ignore: mbstring opcache
 ---
 
-{{% docs/languages/index-intro php /%}}
+{{% docs/languages/index-intro php en /%}}
 
 ## Further Reading
 
