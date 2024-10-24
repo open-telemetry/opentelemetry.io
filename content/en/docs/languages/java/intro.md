@@ -83,10 +83,10 @@ consult repositories for details, or see the "Managed Dependencies" column in
 the [Bill of Materials](#dependencies-and-boms) table to see a full list of
 managed dependencies.
 
-As a general rule, artifacts published the same repository have the same
+As a general rule, artifacts published from the same repository have the same
 version. The exception to this is `opentelemetry-java-contrib`, which can be
 thought of as a group of independent projects that are co-located in the same
-project to take advantage of shared tooling. For now, the artifacts of
+repository to take advantage of shared tooling. For now, the artifacts of
 `opentelemetry-java-contrib` are aligned but this is a coincidence and will
 change in the future.
 
@@ -123,7 +123,21 @@ artifacts managed by the BOM.
 | Stable instrumentation artifacts, including all of `opentelemetry-bom`                       | `opentelemetry-java-instrumentation` | `io.opentelemetry.instrumentation` | `opentelemetry-instrumentation-bom`       | `{{% param vers.instrumentation %}}`       | [latest pom.xml][opentelemetry-instrumentation-bom]       |
 | Experimental instrumentation artifacts, including all of `opentelemetry-instrumentation-bom` | `opentelemetry-java-instrumentation` | `io.opentelemetry.instrumentation` | `opentelemetry-instrumentation-bom-alpha` | `{{% param vers.instrumentation %}}-alpha` | [latest pom.xml][opentelemetry-instrumentation-alpha-bom] |
 
-Add a BOM dependency with Maven:
+The following code snippet demonstrates adding a BOM dependency,
+with`{{bomGroupId}}`, `{{bomArtifactId}}`, and `{{bomVersion}}` referring to the
+"Group ID", "Artifact ID", and "Current Version" table columns, respectively.
+
+{{< tabpane text=true >}} {{% tab "Gradle" %}}
+
+```kotlin
+dependencies {
+  implementation(platform("{{bomGroupId}}:{{bomArtifactId}}:{{bomVersion}}"))
+  // Add a dependency on an artifact whose version is managed by the bom
+  implementation("io.opentelemetry:opentelemetry-api")
+}
+```
+
+{{% /tab %}} {{% tab Maven %}}
 
 ```xml
 <project>
@@ -148,15 +162,7 @@ Add a BOM dependency with Maven:
 </project>
 ```
 
-Add a BOM dependency with Gradle:
-
-```kotlin
-dependencies {
-  implementation(platform("{{bomGroupId}}:{{bomArtifactId}}:{{bomVersion}}"))
-  // Add a dependency on an artifact whose version is managed by the bom
-  implementation("io.opentelemetry:opentelemetry-api")
-}
-```
+{{% /tab %}} {{< /tabpane >}}
 
 [opentelemetry-bom]:
 https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/{{% param
