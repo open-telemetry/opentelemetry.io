@@ -4,7 +4,8 @@ description:
   Why and how to send signals to a single OTLP end-point and from there to
   backends
 weight: 3
-cSpell:ignore: hostnames loadbalancer loadbalancing
+# prettier-ignore
+cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadbalancing resourcedetection
 ---
 
 The gateway collector deployment pattern consists of applications (or other
@@ -197,6 +198,30 @@ The load-balancing exporter emits metrics including
 `otelcol_loadbalancer_num_backends` and `otelcol_loadbalancer_backend_latency`
 that you can use for health and performance monitoring of the OTLP endpoint
 collector.
+
+## Typical Gateway deployment architecture
+
+The following diagram shows a typical deployment architecture for a gateway
+![gateway](otel-gateway-arch.svg)
+
+There are a few limitations in running the OTel collector in gateway mode.
+
+- Few receivers need to be unique per host instance. Running multiple instances
+  of these receivers will result in Duplicate data. It is recommended not to use
+  them in the Gateway collector but only for the collector running in Daemonset
+  mode. Examples include, but are not limited to:
+
+  - [`hostmetricsreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver),
+    may result in duplicate host metrics.
+  - [`filelogreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver),
+    may result in duplicate logs.
+
+- Using a
+  [`resourcedetection`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor)
+  processor in gateway mode is not recommended. This processor is used to detect
+  the resources of the host where the collector is running. Use
+  `resourcedetection` processor in the pipeline of Daemonset collector
+  deployment.
 
 ## Tradeoffs
 
