@@ -202,7 +202,7 @@ collector.
 ## Typical Gateway deployment architecture
 
 The following diagram shows a typical deployment architecture for a gateway
-![gateway](../img/otel-gateway-arch.svg)
+![gateway](otel-gateway-arch.svg)
 
 There are a few limitations in running the OTel collector in gateway mode.
 
