@@ -90,7 +90,8 @@ have breaking changes, such as the ones mentioned above with OTLP.
 However, this support in the Collector means that any receiver, processor or
 exporter of the Collector can now start adding profiles support, which we highly
 encourage to do, as a way to allow a smoother integration in the future, as well
-as to find potential issues early. If you wish to report a bug or contribute on this effort, you can
+as to find potential issues early. If you wish to report a bug or contribute on
+this effort, you can
 [view them on the contrib repository](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22+label%3Adata%3Aprofiles).
 
 ## Semantic Conventions and Specification
