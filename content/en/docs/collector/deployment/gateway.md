@@ -206,10 +206,10 @@ The following diagram shows a typical deployment architecture for a gateway
 
 There are a few limitations in running the OTel collector in gateway mode.
 
-- We can't use receivers that need to be unique per host instance. Using these
-  receivers in gateway mode will result in Duplicate data, especially if the
-  collector runs in multiple instances. Examples include, but are not limited
-  to:
+- Few receivers need to be unique per host instance. Running multiple instances
+  of these receivers will result in Duplicate data. It is recommended not to use
+  them in the Gateway collector but only for the collector running in Daemonset
+  mode. Examples include, but are not limited to:
 
   - [`hostmetricsreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver),
     may result in duplicate host metrics.
