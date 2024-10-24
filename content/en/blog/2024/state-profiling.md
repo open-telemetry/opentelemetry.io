@@ -23,7 +23,7 @@ SIG has made substantial progress on many fronts.
 This post provides a summary of the progress the Profiling SIG has made over the
 past six months.
 
-## OTLP Improvements
+## OTLP improvements
 
 Profiles were added as a new signal type to OTLP in
 [v1.3.0](https://github.com/open-telemetry/opentelemetry-proto/releases/tag/v1.3.0),
