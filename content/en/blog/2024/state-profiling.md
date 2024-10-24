@@ -11,7 +11,6 @@ author: >-
   McLean](https://github.com/mtwo) (Splunk), [Florian
   Lehner](https://github.com/florianl) (Elastic), [Tim
   Rühsen](https://github.com/rockdaboot) (Elastic)
-draft: true
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/5477
 sig: Profiling SIG
 ---
