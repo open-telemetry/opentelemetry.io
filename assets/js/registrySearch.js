@@ -239,3 +239,10 @@ function parseUrlParams() {
   selectedLanguage = urlParams.get('language') || 'all';
   selectedComponent = urlParams.get('component') || 'all';
 }
+
+var tooltipTriggerList = [].slice.call(
+  document.querySelectorAll('[data-bs-toggle="tooltip"]'),
+);
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl);
+});
