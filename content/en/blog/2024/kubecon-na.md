@@ -3,7 +3,7 @@ title: Join us for OpenTelemetry Talks and Activities at KubeCon NA 2024
 linkTitle: KubeCon NA '24
 date: 2024-10-15
 # prettier-ignore
-cSpell:ignore: Contribfest Kats Ashok Chandrasekar Liudmila Molkova Kruthika Prasanna simha Mclean Shivanshu Shrivastava Ekansh Kowall Helmuth Arnell Woerner Clario Grabner Kalkanis Haeussler Novatec Jernigan
+cSpell:ignore: Arnell Ashok Chandrasekar Clario Contribfest Ekansh Grabner Haeussler Helmuth Jernigan Kalkanis Kats Kowall Kruthika Liudmila Mclean Molkova Novatec Prasanna Shivanshu Shrivastava simha Woerner
 author: '[Severin Neumann](https://github.com/svrnm) (Cisco)'
 ---
 
