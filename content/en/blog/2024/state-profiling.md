@@ -56,7 +56,7 @@ will allow us to extract some specific parts of the agent that aren’t strictly
 profiling, such as retrieving host metadata and system metrics, and move them to
 processors, making the agent lighter and more modular.
 
-## Collector Support
+## Collector support
 
 Since
 [v0.112.0](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.112.0),
