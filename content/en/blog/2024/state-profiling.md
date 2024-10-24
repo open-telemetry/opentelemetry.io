@@ -41,7 +41,7 @@ breaking changes to the profiling section of the protocol. Note that this has no
 impact on the stable sections that make up the majority of the OTLP protocol,
 like metrics, spans, logs, resources, etc.
 
-## eBPF Agent Improvements
+## eBPF agent improvements
 
 Back in June, the
 [donation of the Elastic Continuous Profiling Agent](/blog/2024/elastic-contributes-continuous-profiling-agent/)
