@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const registryId = button.getAttribute('data-registry-id');
 
     if (favorites.includes(registryId)) {
-      button.innerHTML = '<i class="fa-solid fa-star"></i>';
+      button.innerHTML = '<i class="fa-solid fa-star"></i> Remove from Favorites';
       button.classList.add('btn-success');
       button.classList.remove('btn-outline-primary');
     }
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
       } else {
         favorites.push(registryId);
         localStorage.setItem('favorites', JSON.stringify(favorites));
-        button.innerHTML = '<i class="fa-solid fa-star"></i>';
+        button.innerHTML = '<i class="fa-solid fa-star"></i> Remove from Favorites';
         button.classList.add('btn-success');
         button.classList.remove('btn-outline-primary');
       }
