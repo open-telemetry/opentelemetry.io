@@ -59,18 +59,18 @@ shippingservice -->|HTTP| quoteservice
 
 end
 
-classDef dotnet fill:#178600,color:white;
-classDef cpp fill:#f34b7d,color:white;
-classDef erlang fill:#b83998,color:white;
-classDef golang fill:#00add8,color:black;
-classDef java fill:#b07219,color:white;
-classDef javascript fill:#f1e05a,color:black;
-classDef kotlin fill:#560ba1,color:white;
-classDef php fill:#4f5d95,color:white;
-classDef python fill:#3572A5,color:white;
-classDef ruby fill:#701516,color:white;
-classDef rust fill:#dea584,color:black;
-classDef typescript fill:#e98516,color:black;
+classDef dotnet fill:#1E1E1E,color:#61AFEF;
+classDef cpp fill:#1E1E1E,color:#C678DD;
+classDef erlang fill:#1E1E1E,color:#E06C75;
+classDef golang fill:#1E1E1E,color:#98C379;
+classDef java fill:#1E1E1E,color:#E5C07B;
+classDef javascript fill:#1E1E1E,color:#E5C07B;
+classDef kotlin fill:#1E1E1E,color:#C678DD;
+classDef php fill:#1E1E1E,color:#61AFEF;
+classDef python fill:#1E1E1E,color:#FFB86C;
+classDef ruby fill:#1E1E1E,color:#E06C75;
+classDef rust fill:#1E1E1E,color:#F8F8F2;
+classDef typescript fill:#1E1E1E,color:#61AFEF;
 ```
 
 ```mermaid
@@ -90,18 +90,18 @@ subgraph Service Legend
   typescriptsvc(TypeScript):::typescript
 end
 
-classDef dotnet fill:#178600,color:white;
-classDef cpp fill:#f34b7d,color:white;
-classDef erlang fill:#b83998,color:white;
-classDef golang fill:#00add8,color:black;
-classDef java fill:#b07219,color:white;
-classDef javascript fill:#f1e05a,color:black;
-classDef kotlin fill:#560ba1,color:white;
-classDef php fill:#4f5d95,color:white;
-classDef python fill:#3572A5,color:white;
-classDef ruby fill:#701516,color:white;
-classDef rust fill:#dea584,color:black;
-classDef typescript fill:#e98516,color:black;
+classDef dotnet fill:#1E1E1E,color:#61AFEF;
+classDef cpp fill:#1E1E1E,color:#C678DD;
+classDef erlang fill:#1E1E1E,color:#E06C75;
+classDef golang fill:#1E1E1E,color:#98C379;
+classDef java fill:#1E1E1E,color:#E5C07B;
+classDef javascript fill:#1E1E1E,color:#E5C07B;
+classDef kotlin fill:#1E1E1E,color:#C678DD;
+classDef php fill:#1E1E1E,color:#61AFEF;
+classDef python fill:#1E1E1E,color:#FFB86C;
+classDef ruby fill:#1E1E1E,color:#E06C75;
+classDef rust fill:#1E1E1E,color:#F8F8F2;
+classDef typescript fill:#1E1E1E,color:#61AFEF;
 ```
 
 Follow these links for the current state of
