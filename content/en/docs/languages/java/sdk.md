@@ -1,6 +1,6 @@
 ---
 title: Manage Telemetry with SDK
-weight: 11
+weight: 12
 cSpell:ignore: autoconfigured FQCNs Interceptable Logback okhttp
 ---
 
@@ -8,7 +8,7 @@ cSpell:ignore: autoconfigured FQCNs Interceptable Logback okhttp
 <?code-excerpt path-base="examples/java/configuration"?>
 
 The SDK is the built-in reference implementation of the
-[API](../instrumentation/), processing and exporting telemetry produced by
+[API](../api-components/), processing and exporting telemetry produced by
 instrumentation API calls. This page is a conceptual overview of the SDK,
 including descriptions, links to relevant Javadocs, artifact coordinates, sample
 programmatic configurations and more. See
@@ -55,6 +55,9 @@ implementing various plugin extension interfaces:
 
 ## SDK components
 
+The `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}` artifact
+contains the OpenTelemetry SDK.
+
 The following sections describe the core user-facing components of the SDK. Each
 component section includes:
 
@@ -71,8 +74,7 @@ component section includes:
 ### OpenTelemetrySdk
 
 [OpenTelemetrySdk](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk/latest/io/opentelemetry/sdk/OpenTelemetrySdk.html)
-is the SDK implementation of
-[OpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/OpenTelemetry.html).
+is the SDK implementation of [OpenTelemetry](../api-components/#opentelemetry).
 It is a holder for top-level SDK components which makes it convenient to pass
 fully-configured SDK components to instrumentation.
 
@@ -150,8 +152,8 @@ public class ResourceConfig {
 
 [SdkTracerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/SdkTracerProvider.html)
 is the SDK implementation of
-[TracerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/TracerProvider.html),
-and is responsible for handling trace telemetry produced by the API.
+[TracerProvider](../api-components/#tracerprovider), and is responsible for
+handling trace telemetry produced by the API.
 
 `SdkTracerProvider` is configured by the application owner, and consists of:
 
@@ -557,8 +559,7 @@ public class SpanLimitsConfig {
 ### SdkMeterProvider
 
 [SdkMeterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/SdkMeterProvider.html)
-is the SDK implementation of
-[MeterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/MeterProvider.html),
+is the SDK implementation of [MeterProvider](../api-components/#meterprovider),
 and is responsible for handling metric telemetry produced by the API.
 
 `SdkMeterProvider` is configured by the application owner, and consists of:
@@ -927,8 +928,8 @@ public class ViewConfig {
 
 [SdkLoggerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/SdkLoggerProvider.html)
 is the SDK implementation of
-[LoggerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/logs/LoggerProvider.html),
-and is responsible for handling log telemetry produced by the log bridge API.
+[LoggerProvider](../api-components/#loggerprovider), and is responsible for
+handling log telemetry produced by the log bridge API.
 
 `SdkLoggerProvider` is configured by the application owner, and consists of:
 
@@ -1197,6 +1198,9 @@ public class LogLimitsConfig {
 [TextMapPropagator](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/propagation/TextMapPropagator.html)
 is a [plugin extension interface](#sdk-plugin-extension-interfaces) responsible
 for propagating context across process boundaries in a text format.
+
+TextMapPropagators built-in to the SDK and maintained by the community in
+`opentelemetry-java-contrib`:
 
 | Class                       | Artifact                                                                                      | Description                                                                             |
 | --------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |

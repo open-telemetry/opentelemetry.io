@@ -1,6 +1,6 @@
 <svg width="1500" height="996" viewBox="0 0 1500 996" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_452_1024)">
-<rect width="1500" height="996" fill="white"/>
+<rect width="1500" height="996"/>
 <g filter="url(#filter0_d_452_1024)">
 <path d="M675 380C675 374.477 679.477 370 685 370H755V534H686C679.925 534 675 529.075 675 523V380Z" fill="#8EA9EC"/>
 <path d="M706.3 458.9V470.9C706.3 471.65 706.9 472.4 707.8 472.4H730.6C731.35 472.4 732.1 471.8 732.1 470.9V458.9" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>

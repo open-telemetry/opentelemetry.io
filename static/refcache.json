@@ -3047,6 +3047,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:45:54.649845-04:00"
   },
+  "https://docs.oracle.com/javase/7/docs/technotes/guides/management/agent.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:17.488566-05:00"
+  },
   "https://docs.oracle.com/javase/8/docs/api/java/lang/Runtime.html#availableProcessors--": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:04:00.071297-05:00"
@@ -3331,6 +3335,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:24:54.677789-05:00"
   },
+  "https://druid.apache.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-18T16:50:18.107656338+03:00"
+  },
   "https://dyladan.me/histograms/2023/05/02/why-histograms/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:01:18.587594-05:00"
@@ -3434,6 +3442,10 @@
   "https://en.wikipedia.org/wiki/IEEE_754": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:13.980094-05:00"
+  },
+  "https://en.wikipedia.org/wiki/ISO_639-1": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-11T11:10:12.725968+02:00"
   },
   "https://en.wikipedia.org/wiki/In-band_signaling": {
     "StatusCode": 200,
@@ -5647,6 +5659,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-04-19T17:43:49.897716918Z"
   },
+  "https://github.com/mishmash-io/opentelemetry-server-embedded": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-18T16:50:17.016614951+03:00"
+  },
   "https://github.com/mjwolf": {
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:18:44.682117+02:00"
@@ -5654,6 +5670,14 @@
   "https://github.com/mkocher": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:04:58.425652-05:00"
+  },
+  "https://github.com/mlflow": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-24T09:04:39.209525077Z"
+  },
+  "https://github.com/mlflow/mlflow/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-24T09:04:36.357311431Z"
   },
   "https://github.com/mlocati/docker-php-extension-installer": {
     "StatusCode": 200,
@@ -5898,6 +5922,10 @@
   "https://github.com/open-telemetry/community/issues/2260": {
     "StatusCode": 200,
     "LastSeen": "2024-08-23T20:33:47.852068252Z"
+  },
+  "https://github.com/open-telemetry/community/issues/2329": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-15T15:52:36.027937+01:00"
   },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 200,
@@ -7175,6 +7203,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-06-13T15:48:00.42543+02:00"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/issues/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-11T11:10:11.918895+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/issues/4427": {
     "StatusCode": 200,
     "LastSeen": "2024-05-06T15:32:24.49099-04:00"
@@ -7506,6 +7538,10 @@
   "https://github.com/prometheus-operator/prometheus-operator/releases": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:06:25.505322-05:00"
+  },
+  "https://github.com/prometheus/client_java": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:19.363961-05:00"
   },
   "https://github.com/prometheus/prometheus/commit/d9d51c565c622cdc7d626d3e7569652bc28abe15#diff-bdaf80ebc5fa26365f45db53435b960ce623ea6f86747fb8870ad1abc355f64fR76-R83": {
     "StatusCode": 200,
@@ -9007,6 +9043,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:43:55.405438-04:00"
   },
+  "https://logback.qos.ch/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-09-30T10:42:23.585047-05:00"
+  },
+  "https://logging.apache.org/log4j/2.x/index.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-09-30T10:42:20.642504-05:00"
+  },
   "https://lookerstudio.google.com/s/tSTKxK1ECeU": {
     "StatusCode": 200,
     "LastSeen": "2024-03-06T14:56:05.033361-05:00"
@@ -9187,6 +9231,18 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:02:08.769984-05:00"
   },
+  "https://mishmash.io": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-18T16:50:17.995881058+03:00"
+  },
+  "https://mlflow.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-24T09:04:26.938953245Z"
+  },
+  "https://mlflow.org/docs/latest/llms/tracing/index.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-24T09:04:29.562895157Z"
+  },
   "https://mobyproject.org/": {
     "StatusCode": 206,
     "LastSeen": "2024-08-07T15:43:31.13946+02:00"
@@ -9194,6 +9250,10 @@
   "https://mypy.readthedocs.io/en/stable/command_line.html#cmdoption-mypy-namespace-packages": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:02:19.249572-05:00"
+  },
+  "https://nais.io/blog/posts/otel-from-0-to-100/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-16T06:19:11.246616643Z"
   },
   "https://netlify.com": {
     "StatusCode": 206,
@@ -9899,6 +9959,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-02-23T22:55:04.014798-05:00"
   },
+  "https://opentelemetry.io/docs/concepts/glossary/#instrumentation-library": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-18T16:49:48.155152358+03:00"
+  },
   "https://opentelemetry.io/docs/concepts/instrumentation/libraries/": {
     "StatusCode": 206,
     "LastSeen": "2024-04-30T09:31:37.735092936Z"
@@ -9942,6 +10006,10 @@
   "https://opentelemetry.io/docs/specs/otel/compatibility/prometheus_and_openmetrics/": {
     "StatusCode": 206,
     "LastSeen": "2024-09-04T09:48:32.91926+02:00"
+  },
+  "https://opentelemetry.io/docs/specs/otel/document-status": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-18T16:49:48.125677461+03:00"
   },
   "https://opentelemetry.io/docs/specs/otel/glossary/#instrumentation-library": {
     "StatusCode": 206,
@@ -10046,6 +10114,10 @@
   "https://opentracing.io": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:07:33.813401-05:00"
+  },
+  "https://opentracing.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-09-30T10:42:13.94789-05:00"
   },
   "https://operatorhub.io/operator/opentelemetry-operator": {
     "StatusCode": 206,
@@ -12907,21 +12979,133 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:55:46.525923-05:00"
   },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/GlobalOpenTelemetry.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:23.12239-05:00"
+  },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/OpenTelemetry.html": {
     "StatusCode": 200,
     "LastSeen": "2024-08-05T15:19:48.24217-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/baggage/Baggage.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:43:07.738549-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/baggage/propagation/W3CBaggagePropagator.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:43:07.651421-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/common/Attributes.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:20.917364-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/logs/LogRecordBuilder.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:43:04.945711-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/logs/Logger.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:43:01.318503-05:00"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/logs/LoggerProvider.html": {
     "StatusCode": 200,
     "LastSeen": "2024-08-05T15:59:36.584528-05:00"
   },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/DoubleCounter.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T11:26:12.546964-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/DoubleGauge.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:56.762156-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/DoubleHistogram.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:51.433911-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/DoubleUpDownCounter.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:39.724087-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/LongCounter.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T11:26:11.401131-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/LongGauge.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:57.12662-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/LongHistogram.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:52.311487-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/LongUpDownCounter.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:37.428847-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/Meter.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:27.180222-05:00"
+  },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/MeterProvider.html": {
     "StatusCode": 200,
     "LastSeen": "2024-08-05T15:59:35.353354-05:00"
   },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableDoubleCounter.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:35.879775-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableDoubleGauge.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:57.769016-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableDoubleUpDownCounter.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:49.469015-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableLongCounter.htmll": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:34.290165-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableLongGauge.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:43:02.724791-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableLongUpDownCounter.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:45.458127-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/Span.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:25.46897-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/SpanBuilder.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:25.000171-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/Tracer.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:23.509988-05:00"
+  },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/TracerProvider.html": {
     "StatusCode": 200,
     "LastSeen": "2024-08-05T15:19:51.603241-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/propagation/W3CTraceContextPropagator.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:26.645518-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/Context.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:14.126006-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/ContextStorage.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T11:26:04.981525-05:00"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/propagation/ContextPropagators.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:19.966187-05:00"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/propagation/TextMapPropagator.html": {
     "StatusCode": 200,
@@ -13014,6 +13198,10 @@
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk/latest/io/opentelemetry/sdk/OpenTelemetrySdk.html": {
     "StatusCode": 200,
     "LastSeen": "2024-08-05T15:19:47.672179-05:00"
+  },
+  "https://www.javadoc.io/static/io.opentelemetry/opentelemetry-context/1.41.0/io/opentelemetry/context/ContextStorage.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-09-30T10:42:16.987832-05:00"
   },
   "https://www.jenkins.io": {
     "StatusCode": 206,

@@ -3,6 +3,10 @@ title: ライブラリ
 description: ライブラリにネイティブ計装を追加する方法を紹介します。
 weight: 40
 default_lang_commit: d8c5612
+htmltest:
+  IgnoreDirs:
+    # TODO drop next line after https://github.com/open-telemetry/opentelemetry.io/issues/5423 is fixed for ja pages:
+    - ^ja/docs/concepts/instrumentation/libraries/
 ---
 
 OpenTelemetryは、多くのライブラリに[計装ライブラリ][instrumentation libraries]を提供していて、これは通常、ライブラリフックやモンキーパッチライブラリコードを通して行われます。

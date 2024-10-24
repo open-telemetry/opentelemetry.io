@@ -69,6 +69,12 @@
   reference: 'https://medium.com/mercadolibre-tech/building-a-large-scale-observability-ecosystem-1edf654b249e'
   referenceTitle: blog post
   contact: 'https://github.com/mercadolibre'
+- name: NAV - Norwegian Government
+  url: https://nav.no
+  components: [Collector, Go, Java, JavaScript, Python]
+  reference: 'https://nais.io/blog/posts/otel-from-0-to-100/'
+  referenceTitle: blog post
+  contact: 'https://github.com/Starefossen'
 - name: OrderMyGear
   url: https://www.ordermygear.com/
   components: []
