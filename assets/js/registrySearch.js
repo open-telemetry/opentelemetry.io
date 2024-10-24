@@ -239,3 +239,27 @@ function parseUrlParams() {
   selectedLanguage = urlParams.get('language') || 'all';
   selectedComponent = urlParams.get('component') || 'all';
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  const filterBtn = document.getElementById('filter-favorites-btn');
+  const registryItems = document.querySelectorAll('.registry-entry');
+
+  filterBtn.addEventListener('click', function () {
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+    if (filterBtn.textContent.includes('Show Favorites')) {
+      registryItems.forEach(function (item) {
+        const registryId = item.getAttribute('data-registry-id');
+        if (!favorites.includes(registryId)) {
+          item.style.display = 'none';
+        }
+      });
+      filterBtn.textContent = 'Show All';
+    } else {
+      registryItems.forEach(function (item) {
+        item.style.display = '';
+      });
+      filterBtn.textContent = 'Show Favorites';
+    }
+  });
+});
