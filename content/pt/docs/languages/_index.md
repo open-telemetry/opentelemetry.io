@@ -22,7 +22,7 @@ Se você estiver usando Kubernetes, você pode usar o [OpenTelemetry Operator pa
 Kubernetes][otel-op] para [injetar soluções de implementação
 automática][implementação automática] em suas aplicações.
 
-## Estado e Lançamentos (#status-and-releases)
+## Estado e Lançamentos {#status-and-releases}
 
 O estado atual dos principais componentes funcionais do OpenTelemetry estão a
 seguir:
