@@ -2,25 +2,26 @@
 title: The State of Profiling
 linkTitle: Profiling state
 date: 2024-10-24
+cSpell:ignore: Baeyens Florian Geisendörfer Kalkanis Lehner Rühsen
 author: >-
-  [Damien Mathieu](https://github.com/dmathieu) (Elastic),
-  [Pablo Baeyens](https://github.com/mx-psi) (Datadog),
-  [Felix Geisendörfer](https://github.com/felixge) (Datadog),
-  [Christos Kalkanis](https://github.com/christos68k) (Elastic),
-  [Morgan McLean](https://github.com/mtwo) (Splunk),
-  [Florian Lehner](https://github.com/florianl) (Elastic),
-  [Tim Rühsen](https://github.com/rockdaboot) (Elastic)
+  [Damien Mathieu](https://github.com/dmathieu) (Elastic), [Pablo
+  Baeyens](https://github.com/mx-psi) (Datadog), [Felix
+  Geisendörfer](https://github.com/felixge) (Datadog), [Christos
+  Kalkanis](https://github.com/christos68k) (Elastic), [Morgan
+  McLean](https://github.com/mtwo) (Splunk), [Florian
+  Lehner](https://github.com/florianl) (Elastic), [Tim
+  Rühsen](https://github.com/rockdaboot) (Elastic)
 draft: true
 sig: Profiling SIG
 ---
 
-A little over six months ago, OpenTelemetry announced [support for the
-profiling signal](/blog/2024/profiling/).
-While the signal is still in development and isn’t yet recommended for
-production use, the Profiling SIG has made substantial progress on many fronts.
+A little over six months ago, OpenTelemetry announced
+[support for the profiling signal](/blog/2024/profiling/). While the signal is
+still in development and isn’t yet recommended for production use, the Profiling
+SIG has made substantial progress on many fronts.
 
-This post provides a summary of the progress the Profiling SIG has made over
-the past six months.
+This post provides a summary of the progress the Profiling SIG has made over the
+past six months.
 
 ## OTLP Improvements
 
@@ -30,31 +31,29 @@ though this area is still marked as unstable as we continue to make changes to
 it.
 
 While our original intent was to keep wire compatibility with pprof, that goal
-proved impractical, so the Profiling SIG [has
-decided](https://github.com/open-telemetry/opentelemetry-proto/issues/567#issuecomment-2286565449)
+proved impractical, so the Profiling SIG
+[has decided](https://github.com/open-telemetry/opentelemetry-proto/issues/567#issuecomment-2286565449)
 to refactor the protocol and not aim for strict compatibility with pprof.
 Instead, we will aim for convertibility, similarly to what we already do for
 other signals. This shift is still a work in progress, and is causing several
-breaking changes to the profiling section of the protocol.
-Note that this has no impact on the stable sections that make up the majority
-of the OTLP protocol, like metrics, spans, logs, resources, etc..
+breaking changes to the profiling section of the protocol. Note that this has no
+impact on the stable sections that make up the majority of the OTLP protocol,
+like metrics, spans, logs, resources, etc..
 
 ## eBPF Agent Improvements
 
-Back in June, the [donation of the Elastic Continuous Profiling
-Agent](/blog/2024/elastic-contributes-continuous-profiling-agent/)
-was finalized.
-Since then, the
+Back in June, the
+[donation of the Elastic Continuous Profiling Agent](/blog/2024/elastic-contributes-continuous-profiling-agent/)
+was finalized. Since then, the
 [opentelemetry-ebpf-profiler](https://github.com/open-telemetry/opentelemetry-ebpf-profiler)
 repository has been buzzing with improvements.
 
-Our next goal for the eBPF agent is for it to run as a Collector receiver.
-Once this is complete, the Collector can be run on every node as an agent,
-which collects profiles for that host and forwards them using OTLP.
-This architecture will allow us to extract some specific parts of the agent
-that aren’t strictly profiling, such as retrieving host metadata and system
-metrics, and move them to processors, making the agent lighter and more
-modular.
+Our next goal for the eBPF agent is for it to run as a Collector receiver. Once
+this is complete, the Collector can be run on every node as an agent, which
+collects profiles for that host and forwards them using OTLP. This architecture
+will allow us to extract some specific parts of the agent that aren’t strictly
+profiling, such as retrieving host metadata and system metrics, and move them to
+processors, making the agent lighter and more modular.
 
 ## Collector Support
 
@@ -63,8 +62,8 @@ Since
 the OpenTelemetry Collector is able to receive, process and export profiling
 data, and has support for profile ingestion and export using OTLP.
 
-You can try it out by enabling the `service.profilesSupport` [feature
-gate](https://github.com/open-telemetry/opentelemetry-collector/blob/main/featuregate/README.md#controlling-gates)
+You can try it out by enabling the `service.profilesSupport`
+[feature gate](https://github.com/open-telemetry/opentelemetry-collector/blob/main/featuregate/README.md#controlling-gates)
 in your collector, followed by a configuration similar to the following, which
 ingests and exports data using OTLP:
 
@@ -75,7 +74,7 @@ receivers:
       grpc:
 exporters:
   otlp:
-    endpoint: "localhost:4317"
+    endpoint: 'localhost:4317'
 service:
   pipelines:
     profiles:
@@ -88,20 +87,18 @@ doing so in production: it is still under heavy development and is expected to
 have breaking changes, such as the ones mentioned above with OTLP.
 
 However, this support in the Collector means that any receiver, processor or
-exporter of the Collector can now start adding profiles support, which we
-highly encourage to do, as a way to allow a smoother integration in the future,
-as well as to find potential issues early.
-If you wish to report a bug or view the existing ones, you can [view them on
-the contrib
-repository](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22+label%3Adata%3Aprofiles).
+exporter of the Collector can now start adding profiles support, which we highly
+encourage to do, as a way to allow a smoother integration in the future, as well
+as to find potential issues early. If you wish to report a bug or view the
+existing ones, you can
+[view them on the contrib repository](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22+label%3Adata%3Aprofiles).
 
 ## Semantic Conventions and Specification
 
-To improve interoperability, the Profiling SIG worked also on [OpenTelemetry
-Semantic Conventions for
-profiling](/docs/specs/semconv/attributes-registry/profile/).
-There is also ongoing work to introduce a [profiling OpenTelemetry
-specification](https://github.com/open-telemetry/opentelemetry-specification/pull/4197).
+To improve interoperability, the Profiling SIG worked also on
+[OpenTelemetry Semantic Conventions for profiling](/docs/specs/semconv/attributes-registry/profile/).
+There is also ongoing work to introduce a
+[profiling OpenTelemetry specification](https://github.com/open-telemetry/opentelemetry-specification/pull/4197).
 This work will continue and should enable wide adoption across different
 platforms, tools and other OTel signals.
 
