@@ -113,7 +113,6 @@ if (pathName.includes('registry')) {
     applyFilterTag();
 >>>>>>> 1e42a0f0 (Add the applyFilterTag func and updated the executeSearch func to call applyFilterTag.)
   });
-
 }
 
 function showBody() {
@@ -134,7 +133,7 @@ function applyFilterTag() {
       // Remove any existing search input and add the new clicked value
       searchInput.value = filterValue;
 
-      // Set the new input value as the search query and update URL parameters
+      // Set the new input value as the search query and the update URL parameters
       setInput('s', filterValue);
       parseUrlParams();
       executeSearch(filterValue);
