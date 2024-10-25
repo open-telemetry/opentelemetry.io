@@ -250,6 +250,11 @@
     align-items: flex-start;
     padding-bottom: 0.5rem;
 
+    .alert-heading {
+      color: darken($danger, 15%);
+      font-weight: bolder;
+    }
+
     .h5 {
       margin-bottom: 0.2rem;
     }
