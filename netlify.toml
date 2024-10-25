@@ -4,7 +4,7 @@ command = "npm run netlify-build:preview"
 
 [context.production]
 command = "npm run netlify-build:production"
-
+ 
 [[redirects]]
 from = "https://docs.opentelemetry.io/*"
 to = "https://opentelemetry.io/docs/:splat"
@@ -19,3 +19,5 @@ force = true
   for = "/schemas/:version"
   [headers.values]
     content-type = "application/yaml"
+
+    
