@@ -35,9 +35,9 @@
 {{ $types = $types | uniq | sort -}}
 
 <div class="alert alert-info">
-The OpenTelemetry Registry allows you to search for instrumentation libraries,
-collector components, utilities, and other useful projects in the OpenTelemetry
-ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry/adding/">add your project to the OpenTelemetry Registry</a>
+  The <span class="hover-hint" title="An Observability framework and toolkit designed to create and manage telemetry data such as traces, metrics, and logs.">OpenTelemetry</span> Registry allows you to search for instrumentation libraries,
+  collector components, utilities, and other useful projects in the OpenTelemetry
+  ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry/adding/">add your project to the OpenTelemetry Registry</a>
 </div>
 
 <div class="pb-4">
@@ -52,9 +52,9 @@ ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry
       <input type="hidden" name="component" id="input-component" value="" />
       <input type="hidden" name="language" id="input-language" value="" />
 
-      <button type="button" class="btn btn-outline-success"
+      <button type="button" class="btn btn-outline-success btn-submit-hover"
         onclick="document.getElementById('searchForm').submit();">Submit</button>
-      <button type="button" class="btn btn-outline-danger"
+      <button type="button" class="btn btn-outline-danger btn-clear-hover"
         onclick="document.getElementById('input-s').value = ''; document.getElementById('input-language').value = 'all';document.getElementById('input-component').value = 'all';document.getElementById('searchForm').submit();">Reset</button>
 
       <button class="btn btn-outline-secondary dropdown-toggle" id="languageDropdown" type="button"
