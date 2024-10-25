@@ -54,11 +54,11 @@ following links:
 
 ### The Old Architecture:
 
-![Before picture of how processors emitted data directly to another pipelines exporter](../../img/otel-collector-before-connector.svg)
+![Before picture of how processors emitted data directly to another pipelines exporter](./otel-collector-before-connector.svg)
 
 ### New Architecture Using a Connector:
 
-![How the pipeline should work using the connector component](../../img/otel-collector-after-connector.svg)
+![How the pipeline should work using the connector component](./otel-collector-after-connector.svg)
 
 ## Building Example Connector
 
