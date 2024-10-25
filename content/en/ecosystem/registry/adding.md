@@ -1,21 +1,12 @@
 ---
 title: Adding to the registry
 linkTitle: Adding
-description: How to add entries to the registry.
+
 ---
 
 {{< ecosystem/registry/add-to-registry-form >}}
 
-Do you maintain or contribute to an integration for OpenTelemetry? We'd love to
-feature your project in the [registry](../)!
 
-To add your project, submit a [pull request][]. You'll need to create a data file
-in [data/registry][] for your project, by using the following template: [registry-entry.yml][].
-
-Make sure that your project names and descriptions follow our [marketing
-guidelines][] and are in line with the Linux Foundation’s branding and [trademark
-usage
-guidelines][].
 
 [data/registry]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/registry

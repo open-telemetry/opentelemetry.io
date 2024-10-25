@@ -34,14 +34,16 @@
 {{ end -}}
 {{ $types = $types | uniq | sort -}}
 
-<div class="alert alert-info">
+<div class="alert alert-info text-center">
 The OpenTelemetry Registry allows you to search for instrumentation libraries,
 collector components, utilities, and other useful projects in the OpenTelemetry
-ecosystem. If you are a project maintainer, you can add your project to the OpenTelemetry Registry below</div>
+ecosystem. If you are a project maintainer, Make your project discoverable—add it to the OpenTelemetry Registry.
 
-<div>
-  <a class="btn btn-primary mb-3" href="/ecosystem/registry/adding/">Add your project</a>
+    <a class="btn btn-primary mb-3 mt-3 justify-content-center" href="/ecosystem/registry/adding/">Add your project</a>
+
 </div>
+
+
 
 <div class="pb-4">
   <form action="/ecosystem/registry" id="searchForm">
