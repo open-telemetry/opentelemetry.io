@@ -6,47 +6,52 @@
 {{ $languageNames.Set "js" "JavaScript" -}}
 {{ $languageNames.Set "php" "PHP" -}}
 
-{{ $officialLanguages := slice "collector" "cpp" "erlang" "elixir" "dotnet" "go" "java" "js" "php" "python" "ruby" "rust" "swift" -}}
+{{ $officialLanguages := slice "collector" "cpp" "erlang" "elixir" "dotnet" "go" "java" "js" "php" "python" "ruby"
+"rust" "swift" -}}
 
 
 {{ $langs := slice -}}
 {{ range $registry -}}
-  {{ $language := .language -}}
-  {{- $val := (dict
-    "name" .language
-    "isOfficial" (in $officialLanguages .language)
-    ) 
-  -}}
-  {{ $langs = $langs | append $val -}}
-  {{ if ne $language (lower $language) -}}
-    {{ errorf "Language keys must be in lowercase. Registry entry '%s' has the following invalid key: %s" .title $language -}}
-  {{ end -}}
+{{ $language := .language -}}
+{{- $val := (dict
+"name" .language
+"isOfficial" (in $officialLanguages .language)
+)
+-}}
+{{ $langs = $langs | append $val -}}
+{{ if ne $language (lower $language) -}}
+{{ errorf "Language keys must be in lowercase. Registry entry '%s' has the following invalid key: %s" .title $language
+-}}
+{{ end -}}
 {{ end -}}
 {{ $langs = sort ($langs | uniq) "name" -}}
 
 {{ $types := slice -}}
 {{ range $registry -}}
-  {{ $type := .registryType -}}
-  {{ $types = $types | append $type -}}
-  {{ if ne $type (lower $type) -}}
-    {{ errorf "Component-type keys must be in lowercase. Registry entry '%s' has the following invalid key: %s" .title $type -}}
-  {{ end -}}
+{{ $type := .registryType -}}
+{{ $types = $types | append $type -}}
+{{ if ne $type (lower $type) -}}
+{{ errorf "Component-type keys must be in lowercase. Registry entry '%s' has the following invalid key: %s" .title $type
+-}}
+{{ end -}}
 {{ end -}}
 {{ $types = $types | uniq | sort -}}
 
 <div class="alert alert-info">
-The OpenTelemetry Registry allows you to search for instrumentation libraries,
-collector components, utilities, and other useful projects in the OpenTelemetry
-ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry/adding/">add your project to the OpenTelemetry Registry</a>
+  The OpenTelemetry Registry allows you to search for instrumentation libraries,
+  collector components, utilities, and other useful projects in the OpenTelemetry
+  ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry/adding/">add your project to the
+    OpenTelemetry Registry</a>
 </div>
 
 <div class="pb-4">
   <form action="/ecosystem/registry" id="searchForm">
     <div class="input-group">
-      <span class="input-group-text" id="basic-addon1" title="{{ len $registry }} entries">Search {{ len $registry }} entries</span>
-      <input class="form-control w-auto" list="search-suggestions" id="input-s" type="text" name="s" placeholder="Type to search…"
-        aria-label="Registry search input field">
-        <datalist id="search-suggestions"></datalist>
+      <span class="input-group-text" id="basic-addon1" title="{{ len $registry }} entries">Search {{ len $registry }}
+        entries</span>
+      <input class="form-control w-auto" list="search-suggestions" id="input-s" type="text" name="s"
+        placeholder="Type to search…" aria-label="Registry search input field">
+      <datalist id="search-suggestions"></datalist>
 
 
       <input type="hidden" name="component" id="input-component" value="" />
@@ -61,7 +66,9 @@ ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry
         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
       <div class="dropdown-menu" id="languageFilter">
         <li><a value="all" class="dropdown-item">Any Language</a></li>
-        <li><hr class="dropdown-divider"></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
         {{ range (where $langs "isOfficial" true) -}}
         <li>
           <a value="{{ .name }}" id="language-item-{{ .name }}" class="dropdown-item">
@@ -69,7 +76,9 @@ ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry
           </a>
         </li>
         {{ end -}}
-        <li><hr class="dropdown-divider"></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
         {{ range (where $langs "isOfficial" false) -}}
         <li>
           <a value="{{ .name }}" id="language-item-{{ .name }}" class="dropdown-item">
@@ -97,14 +106,19 @@ ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry
     <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
     <span role="status">Loading results…</span>
   </div>
-  <ul class="list-unstyled" id="search-results"></ul>
-  <ul class="list-unstyled" id="default-body">
-    {{ range $key, $value := $registry -}}
+  <div class="container">
+    <div class="row d-flex justify-content-center  p-0" id="search-results"></div>
+  </div>
+  <div class="container" id="default-body">
+    <div class="row d-flex justify-content-center  p-0">
+      {{ range $key, $value := $registry -}}
       {{ $value = merge $value (dict "_key" $key) -}}
       {{ partial "ecosystem/registry/entry" (dict "value" $value "languageNames" $languageNames) }}
-    {{ end -}}
-  </ul>
+      {{ end -}}
+    </div>
+  </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/minisearch@7.1.0/dist/umd/index.min.js" integrity="sha384-58p1D2xuw/76VRFUgDMRcrtnJAW5LWLE02ihn8aITu65c4vgo+BLy7raRKNC7KaL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/minisearch@7.1.0/dist/umd/index.min.js"
+  integrity="sha384-58p1D2xuw/76VRFUgDMRcrtnJAW5LWLE02ihn8aITu65c4vgo+BLy7raRKNC7KaL" crossorigin="anonymous"></script>
 {{ partial "script.html" (dict "src" "js/registrySearch.js") -}}
