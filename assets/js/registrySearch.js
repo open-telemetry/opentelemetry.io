@@ -133,7 +133,7 @@ function applyFilterTag() {
       // Remove any existing search input and add the new clicked value
       searchInput.value = filterValue;
 
-      // Set the new input value as the search query and the update URL parameters
+      // Set the new input value as the search query and update URL parameters
       setInput('s', filterValue);
       parseUrlParams();
       executeSearch(filterValue);
