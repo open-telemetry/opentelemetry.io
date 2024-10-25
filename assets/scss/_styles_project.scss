@@ -103,7 +103,7 @@
       text-decoration: underline;
     }
   }
-}
+
   .navbar-brand {
     @include media-breakpoint-up(md) {
       padding: 0;
@@ -115,7 +115,7 @@
       display: none;
     }
   }
-
+}
 
 // Adjust the spacing of page-meta and page-TOC (https://github.com/open-telemetry/opentelemetry.io/pull/354)
 // TODO: upstream
