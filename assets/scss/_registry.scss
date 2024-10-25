@@ -39,3 +39,7 @@
 .registry-entry {
   @extend .shadow;
 }
+
+a {
+  color: darken($link-color, 15%);
+}
