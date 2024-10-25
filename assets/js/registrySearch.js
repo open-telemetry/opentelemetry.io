@@ -113,6 +113,7 @@ if (pathName.includes('registry')) {
     applyFilterTag();
 >>>>>>> 1e42a0f0 (Add the applyFilterTag func and updated the executeSearch func to call applyFilterTag.)
   });
+  
 }
 
 function showBody() {
