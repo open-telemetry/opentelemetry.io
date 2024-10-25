@@ -22,6 +22,10 @@ lang:es:
   - changed-files:
       - any-glob-to-any-file:
           - content/es/**
+lang:fr:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/fr/**
 sig:cpp:
   - changed-files:
       - any-glob-to-any-file:
