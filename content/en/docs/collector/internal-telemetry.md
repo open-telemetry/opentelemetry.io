@@ -65,46 +65,6 @@ service:
       level: detailed
 ```
 
-The Collector can also be configured to push its own metrics to an
-[OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
-and send them through configured pipelines. In the following example, the
-Collector is configured to push metrics every 10s using OTLP gRPC to
-`localhost:14317`:
-
-```yaml
-receivers:
-  otlp/internal_metrics:
-    protocols:
-      grpc:
-        endpoint: localhost:14317
-exporters:
-  debug:
-service:
-  pipelines:
-    metrics:
-      receivers: [otlp/internal_metrics]
-      exporters: [debug]
-  telemetry:
-    metrics:
-      readers:
-        - periodic:
-            interval: 10000
-            exporter:
-              otlp:
-                protocol: grpc/protobuf
-                endpoint: localhost:14317
-```
-
-{{% alert title="Caution" color="warning" %}}
-
-When self-monitoring, the Collector collects its own telemetry and sends it to
-the desired backend for analysis. This can be a risky practice. If the Collector
-is underperforming, its self-monitoring capability could be impacted. As a
-result, the self-monitored telemetry might not reach the backend in time for
-critical analysis.
-
-{{% /alert %}}
-
 ### Configure internal logs
 
 Log output is found in `stderr`. You can configure logs in the config
@@ -176,27 +136,59 @@ See the [example configuration][kitchen-sink-config] for additional options (the
 [kitchen-sink-config]:
   https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml
 
-You can also configure the Collector to send its own traces using the OTLP
-exporter. Send the traces to an OTLP receiver running on the same Collector, so
-it goes through configured pipelines. For example:
+### Self-monitoring
+
+The Collector can be configured to push its own telemetry to an
+[OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
+and send them through configured pipelines. In the following example, the
+Collector is configured to push metrics and traces every 10s using OTLP gRPC to
+`localhost:14317`:
 
 ```yaml
+receivers:
+  otlp/internal:
+    protocols:
+      grpc:
+        endpoint: localhost:14317
+exporters:
+  debug:
 service:
+  pipelines:
+    metrics:
+      receivers: [otlp/internal]
+      exporters: [debug]
+    traces:
+      receivers: [otlp/internal]
+      exporters: [debug]
   telemetry:
+    metrics:
+      readers:
+        - periodic:
+            interval: 10000
+            exporter:
+              otlp:
+                protocol: grpc/protobuf
+                endpoint: localhost:14317
     traces:
       processors:
         batch:
           exporter:
             otlp:
               protocol: grpc/protobuf
-              endpoint: localhost:4317
+              endpoint: localhost:14317
 ```
 
 {{% alert title="Caution" color="warning" %}}
 
-Sending internal traces through the Collector's pipeline as above creates a
-continuous loop of spans which may be unnecessary. This setup should not be used
-in production.
+When self-monitoring, the Collector collects its own telemetry and sends it to
+the desired backend for analysis. This can be a risky practice. If the Collector
+is underperforming, its self-monitoring capability could be impacted. As a
+result, the self-monitored telemetry might not reach the backend in time for
+critical analysis.
+
+Moreover, sending internal traces through the Collector's own pipelines as above
+creates a continuous loop of spans, causing undue strain on the Collector's
+performance. This setup should not be used in production.
 
 {{% /alert %}}
 
