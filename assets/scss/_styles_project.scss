@@ -250,9 +250,14 @@
     align-items: flex-start;
     padding-bottom: 0.5rem;
 
+    .text-body-secondary{
+        font-size: 1rem;
+        font-weight: $font-weight-medium;
+      }
+  
     .alert-heading {
       color: darken($danger, 15%);
-      font-weight: bolder;
+      font-weight: $font-weight-bold;
     }
 
     .h5 {
