@@ -6,7 +6,7 @@ author: OpenTelemetry Governance Committee
 ---
 
 OpenTelemetry is a community-driven project. A community of awesome humans who
-are actively revolutionising the field of observability with their
+are actively revolutionizing the field of observability with their
 contributions. Whether it's through code, documentation, project management,
 outreach, adoption, or simply helping others answer technical questions on our
 [CNCF Slack](https://slack.cncf.io/). We want to **recognize these contributions
