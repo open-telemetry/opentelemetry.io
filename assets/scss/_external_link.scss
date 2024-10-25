@@ -27,6 +27,37 @@ a.external-link:after {
   display: none !important;
 }
 
+.td-search {
+  background-color: white;
+  border-radius: .5rem;
+}
+
+.td-search__input {
+  &::placeholder {
+    color: $dark !important;
+  }
+}
+
+.td-search__icon {
+  color: $dark !important;
+}
+
+.td-search {
+  background-color: white;
+  border-radius: .5rem;
+}
+
+.td-search__input {
+  &::placeholder {
+    color: #000;
+  }
+}
+
+.td-search__icon {
+  color: #000;
+}
+
+
 // Can't quite use this yet since (1) breadcrumbs currently use external links,
 // (2) we can't currently easily turn this off for footer icons.
 //
