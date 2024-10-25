@@ -92,6 +92,8 @@
 .td-navbar {
   .nav-link {
     color: white;
+    background-color: darken($primary, 15%);
+    border-radius: .5rem;
     
     &:hover {
       color: white;
