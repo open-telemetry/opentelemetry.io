@@ -107,35 +107,8 @@ if (pathName.includes('registry')) {
         updateFilters();
       }),
     );
-    let filterLabel = document.querySelectorAll('[data-filter-value]');
-
-    filterLabel.forEach((element) => {
-      element.addEventListener('click', (evt) => {
-        let filterValue = evt.target.getAttribute('data-filter-value');
-        let searchInput = document.getElementById('input-s');
-        let currentSearchValue = searchInput.value.trim();
-
-
-        if (!currentSearchValue.includes(filterValue)) {
-
-          if (currentSearchValue.length > 0) {
-            currentSearchValue += ' ' + filterValue;
-          } else {
-            currentSearchValue = filterValue;
-          }
-
-          searchInput.value = currentSearchValue;
-
-          setInput('s', currentSearchValue);
-
-          parseUrlParams();
-
-          executeSearch(currentSearchValue);
-        }
-      });
-    });
+    applyFilterTag()
   });
-
 
 }
 
@@ -146,6 +119,23 @@ function showBody() {
   if (defaultBody.style.display === 'none') {
     defaultBody.style.display = 'block';
   }
+}
+
+function applyFilterTag() {
+  document.querySelectorAll('[data-filter-value]').forEach((element) => {
+    element.addEventListener('click', (evt) => {
+      let filterValue = evt.target.getAttribute('data-filter-value');
+      let searchInput = document.getElementById('input-s');
+
+      // Remove any existing search input and add the new clicked value
+      searchInput.value = filterValue;
+
+      // Set the new input value as the search query and update URL parameters
+      setInput('s', filterValue);
+      parseUrlParams();
+      executeSearch(filterValue);
+      });
+  });
 }
 
 // Runs search through Fuse for fuzzy search
@@ -168,6 +158,8 @@ function executeSearch(searchQuery) {
 
       if (results.length > 0) {
         populateResults(results);
+        applyFilterTag()
+
       } else {
         document.querySelector('#search-results').innerHTML +=
           '<p>No matches found</p>';
