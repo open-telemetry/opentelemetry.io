@@ -107,11 +107,7 @@ if (pathName.includes('registry')) {
         updateFilters();
       }),
     );
-<<<<<<< HEAD
-    applyFilterTag()
-=======
     applyFilterTag();
->>>>>>> 1e42a0f0 (Add the applyFilterTag func and updated the executeSearch func to call applyFilterTag.)
   });
 }
 
@@ -161,11 +157,7 @@ function executeSearch(searchQuery) {
 
       if (results.length > 0) {
         populateResults(results);
-<<<<<<< HEAD
-        applyFilterTag()
-=======
         applyFilterTag();
->>>>>>> 1e42a0f0 (Add the applyFilterTag func and updated the executeSearch func to call applyFilterTag.)
 
       } else {
         document.querySelector('#search-results').innerHTML +=
