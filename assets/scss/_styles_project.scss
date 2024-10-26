@@ -93,14 +93,14 @@
   .nav-link {
     color: white;
     background-color: darken($primary, 15%);
-    border-radius: .5rem;
-    
+    border-radius: 0.5rem;
+
     &:hover {
       color: white;
       opacity: 0.7;
       text-decoration: underline;
     }
-    
+
     &.active {
       text-decoration: underline;
     }
@@ -265,11 +265,11 @@
     align-items: flex-start;
     padding-bottom: 0.5rem;
 
-    .text-body-secondary{
-        font-size: 1rem;
-        font-weight: $font-weight-medium;
-      }
-  
+    .text-body-secondary {
+      font-size: 1rem;
+      font-weight: $font-weight-medium;
+    }
+
     .alert-heading {
       color: darken($danger, 15%);
       font-weight: $font-weight-bold;

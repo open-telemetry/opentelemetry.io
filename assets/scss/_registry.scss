@@ -44,7 +44,7 @@ a {
   color: darken($link-color, 15%);
 }
 
-[data-bs-theme="dark"] {
+[data-bs-theme='dark'] {
   a {
     color: lighten($link-color, 30%);
   }
