@@ -110,7 +110,7 @@ $remoteRegistries := dict
             <span class="badge rounded-pill text-bg-secondary text-white" title="This package is used in the OpenTelemetry Demo!"><i class="fa-solid fa-shapes"></i> OTel Demo</span>
             {{ end -}}
             {{ if $deprecated -}}
-            <span class="badge rounded-pill text-bg-danger text-white" title="This package is deprecated."><i class="fa-solid fa-ban"></i> deprecated</span>
+            <span class="badge rounded-pill text-bg-danger text-white" title="This package is deprecated. It is recommended to no longer use it and to look for a replacement if it is in use."><i class="fa-solid fa-ban"></i> deprecated</span>
             {{ end -}}
             {{ if .cncfProjectLevel -}}
             <span class="badge rounded-pill text-bg-primary text-white" title="CNCF {{ .cncfProjectLevel}} Project">
@@ -173,7 +173,17 @@ $remoteRegistries := dict
                 <div class="fw-bold">
                     {{ $languageNames.Get . | default (humanize .) }}
                 </div>
-                <small data-bs-toggle="tooltip" title="This indicates the programming language used.">Language</small>
+                {{ if eq (replace (lower .) " " "") "collector" }}
+                    <small data-bs-toggle="tooltip" 
+                        title="Collector: This is an extension for the OpenTelemetry Collector.">
+                        <a href="https://opentelemetry.io/docs/collector/" target="_blank" class="text-muted">Collector</a>
+                        
+                    </small>
+                {{ else }}
+                    <small data-bs-toggle="tooltip" title="This indicates the programming language used.">
+                        {{ . }}
+                    </small>
+                {{ end }}
                 </div>      
             </li>
             {{- end }}
@@ -183,7 +193,9 @@ $remoteRegistries := dict
                 <div class="fw-bold">
                     {{ . | humanize }}
                 </div>
-                <small data-bs-toggle="tooltip" title="This refers to the type of registry component.">Component</small>
+                <small data-bs-toggle="tooltip" title="This refers to the type of registry component. For more details, visit our Help page.">
+                    <a href="https://github.com/open-telemetry/opentelemetry.io/tree/main/content/en/ecosystem/registry/help.md" target="_blank" class="text-muted">Component</a>
+                </small>
                 </div>      
             </li>
             {{- end -}}
@@ -193,7 +205,17 @@ $remoteRegistries := dict
                 <div class="fw-bold">
                     {{ . }}
                 </div>
-                <small data-bs-toggle="tooltip" title="This is the type of license for the project.">License</small>
+                {{ if eq . "Commercial" }}
+                <small data-bs-toggle="tooltip" 
+                    title="Commercial License: This project has a commercial license. End users may need to check with the provider for specific usage rights and restrictions. For more details on common license types, visit the Open Source Initiative at opensource.org/licenses.">
+                    <a href="https://opensource.org/licenses" target="_blank" class="text-muted">License</a>
+                </small>
+            {{ else }}
+                <small data-bs-toggle="tooltip" 
+                    title="Open-Source License: This project is distributed under an open-source license. End users are encouraged to review the license terms to ensure compatibility with their usage. Visit the Open Source Initiative for more details.">
+                    <a href="https://opensource.org/licenses" target="_blank" class="text-muted">License</a>
+                </small>
+            {{ end }}
                 </div>      
             </li>
             {{- end -}}
@@ -204,12 +226,11 @@ $remoteRegistries := dict
         </div>
         {{ with .urls.website -}}
         {{ $websiteHref := printf "href=%q" . | safeHTMLAttr -}}
-        <a {{ $websiteHref }} target="_blank" rel="noopener" class="card-link"><i class="fas fa-house"
-                aria-hidden="true"></i>&nbsp;Website</a>
+        <a {{ $websiteHref }} target="_blank" rel="noopener" class="card-link"><i class="fas fa-house" aria-hidden="true"></i>&nbsp;Website</a>
         {{- end -}}
         {{ with .urls.docs -}}
         {{ $docsHref := printf "href=%q" . | safeHTMLAttr -}}
-        <a {{ $docsHref }} target="_blank" rel="noopener" class="card-link" ><i class="fas fa-book" aria-hidden="true"></i>&nbsp;Documentation</a>
+        <a {{ $docsHref }} target="_blank" rel="noopener" class="card-link"><i class="fas fa-book" aria-hidden="true"></i>&nbsp;Documentation</a>
         {{- end -}}
         {{ with $package -}}
         {{ $packageUrl := printf "href=%q" (printf .urlPattern .name) | safeHTMLAttr -}}
