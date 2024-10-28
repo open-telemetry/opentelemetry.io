@@ -108,6 +108,7 @@ quarkus
 quoteservice
 recommendationservice
 redis
+refcache
 relref
 Rexed
 runbook

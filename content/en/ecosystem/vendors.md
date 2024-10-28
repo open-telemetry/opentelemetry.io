@@ -32,6 +32,9 @@ The entry should include the following:
   source distribution does not qualify your offering to be marked "open source".
 - GitHub handle or email address as a point of contact so that we can reach out
   in case we have questions
+- make sure you have [set up](/docs/contributing/development/) your local clone
+  for development (`nvm install`/`nvm use` & `npm install`) and run
+  `npm run log:check:links` to update the file `static/refcache.json`
 
 Note that this list is for organizations that consume OpenTelemetry and offer
 Observability to [end users](https://community.cncf.io/end-user-community/).
