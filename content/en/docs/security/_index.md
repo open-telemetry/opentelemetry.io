@@ -3,9 +3,9 @@ title: Security
 weight: 970
 ---
 
-Learn how the OpenTelemetry project discloses vulnerabilities and responds to
-incidents. Find out how to ensure your observability data is collected and
-transmitted in a secure manner.
+In this section, learn how the OpenTelemetry project discloses vulnerabilities
+and responds to incidents and discover what you can do to securely collect and
+transmit your observability data.
 
 ## Common Vulnerabilities and Exposures (CVEs)
 
@@ -20,9 +20,9 @@ handled in
 
 ## Collector security
 
-When setting up the OpenTelemetry (OTel) Collector, consider implementing
-security best practices in both your hosting infrastructure and your OTel
-Collector configuration. Running a secure Collector can help you
+When setting up the OpenTelemetry Collector, consider implementing security best
+practices in both your hosting infrastructure and your Collector configuration.
+Running a secure Collector can help you
 
 - Protect telemetry that shouldn't but might contain sensitive information, such
   as personally identifiable information (PII), application-specific data, or
