@@ -8747,6 +8747,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-08-09T10:45:22.265624-04:00"
   },
+  "https://kubernetes.io/docs/concepts/security/rbac-good-practices/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-28T23:48:13.923440181Z"
+  },
   "https://kubernetes.io/docs/concepts/security/secrets-good-practices/": {
     "StatusCode": 206,
     "LastSeen": "2024-10-17T20:41:39.602462106-07:00"
