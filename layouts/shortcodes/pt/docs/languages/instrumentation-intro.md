@@ -2,7 +2,7 @@
 default_lang_commit: 080527543eae90112f01c89342891aabd6258173
 */ -}}
 
-A [Instrumentação](/docs/concepts/instrumentation/) é o ato de adicionar código de observabilidade a um aplicativo por conta própria.
+[Instrumentação](/docs/concepts/instrumentation/) é o ato de adicionar código de observabilidade a uma aplicação por conta própria.
 
 Se você estiver instrumentando uma aplicação, será necessário utilizar o SDK do OpenTelemetry para sua linguagem. Você irá utilizar o SDK para inicializar OpenTelemetry e a API para instrumentar seu código. Isso passará a emitir dados de telemetria da sua aplicação e de qualquer biblioteca que você tenha instalado que também possua instrumentação.
 
