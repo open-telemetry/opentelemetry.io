@@ -53,3 +53,5 @@ dictionaries:
   - softwareTerms
   # Other
   - companies
+words: # Valid words across all locales
+  - htmltest
