@@ -25,12 +25,17 @@ make sure to follow these
 [recommended practices](https://kubernetes.io/docs/concepts/security/secrets-good-practices/)
 to improve security for your clusters.
 
-## Apply the rule of least privilege
+## Apply the principle of least privilege
 
 The Collector should not require privileged access, except where the data it's
-collecting is in a privileged location. For example, in order to get pod logs by
-mounting a node volume, the Collector daemonset needs enough privileges to get
-that data.
+collecting is in a privileged location. For example, in a Kubernetes deployment,
+system logs, application logs, and container runtime logs are often stored in a
+node volume that requires special permission to access. If your Collector is
+running as a daemonset on the node, make sure to grant only the specific volume
+mount permissions it needs to access these logs and no more. You can configure
+privilege access with role-based access control (RBAC). See
+[RBAC good practices](https://kubernetes.io/docs/concepts/security/rbac-good-practices/)
+for more information.
 
 ## Control access to server-like components
 
