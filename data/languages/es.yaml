@@ -12,5 +12,5 @@ introPage:
       'El estado actual de los principales componentes funcionales de
       OpenTelemetry {{ $name }} es el siguiente:'
     traces: 'Trazas'
-    metrics: 'Metricas'
+    metrics: 'Métricas'
     logs: 'Registros'
