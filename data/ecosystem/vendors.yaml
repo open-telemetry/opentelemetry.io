@@ -380,7 +380,7 @@
   commercial: true
 - name: GreptimeDB
   nativeOTLP: true
-  url: https://docs.greptime.com/user-guide/clients/otlp
+  url: https://docs.greptime.com/user-guide/ingest-data/for-observerbility/opentelemetry
   contact: info@greptime.com
   oss: true
   commercial: true
