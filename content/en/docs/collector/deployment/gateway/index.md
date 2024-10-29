@@ -215,7 +215,7 @@ deployment. Here
 
 ![gateway](otel-gateway-arch.svg)
 
-There are a few limitations in running the OpenTelemetry collector in gateway
+There are a few limitations in running the OpenTelemetry Collector in gateway
 mode.
 
 - There are few receivers in OpenTelemetry Collector that need to be unique per
