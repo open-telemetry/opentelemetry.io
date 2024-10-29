@@ -130,8 +130,8 @@ service:
                 endpoint: https://backend:4317
 ```
 
-See the [example configuration][kitchen-sink-config] for additional options. Note that the
-`tracer_provider` section there corresponds to `traces` here.
+See the [example configuration][kitchen-sink-config] for additional options.
+Note that the `tracer_provider` section there corresponds to `traces` here.
 
 [kitchen-sink-config]:
   https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml
@@ -186,9 +186,9 @@ is underperforming, its self-monitoring capability could be impacted. As a
 result, the self-monitored telemetry might not reach the backend in time for
 critical analysis.
 
-Moreover, sending internal traces through the Collector's own pipelines
-creates a continuous loop of spans, causing undue strain on the Collector's
-performance. This setup should not be used in production.
+Moreover, sending internal traces through the Collector's own pipelines creates
+a continuous loop of spans, causing undue strain on the Collector's performance.
+This setup should not be used in production.
 
 {{% /alert %}}
 
