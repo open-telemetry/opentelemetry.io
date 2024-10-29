@@ -66,9 +66,9 @@ Para mais informações, consulte
 O OpenTelemetry suporta um grande número de componentes que geram dados de
 telemetria relevantes a partir de bibliotecas e frameworks populares para as
 linguagens suportadas. Por exemplo, requisições HTTP de entrada e saída de uma
-biblioteca HTTP geram dados sobre essas requisições. Um objetivo aspiracional
-do OpenTelemetry é que todas as bibliotecas populares sejam construídas para
-serem observáveis por padrão, de modo que dependências separadas não sejam
+biblioteca HTTP geram dados sobre essas requisições. Um objetivo aspiracional do
+OpenTelemetry é que todas as bibliotecas populares sejam construídas para serem
+observáveis por padrão, de modo que dependências separadas não sejam
 necessárias.
 
 Para mais informações, consulte
@@ -82,9 +82,9 @@ Para mais informações, consulte
 
 O OpenTelemetry possibilita essa forma de instrumentar sua aplicação sem alterar
 seu código-fonte. Embora o mecanismo dependa da linguagem, a instrumentação sem
-código adiciona as capacidades da API e do SDK do OpenTelemetry à sua
-aplicação. Além disso, pode adicionar um conjunto de bibliotecas de
-instrumentação e dependências do exportador.
+código adiciona as capacidades da API e do SDK do OpenTelemetry à sua aplicação.
+Além disso, pode adicionar um conjunto de bibliotecas de instrumentação e
+dependências do exportador.
 
 Para mais informações, consulte
 [Instrumentação sem código](/docs/concepts/instrumentation/zero-code/).
@@ -97,8 +97,8 @@ telemetria que está sendo executado em um contêiner no Kubernetes tem um nome 
 Pod, um namespace e possivelmente um nome de implantação. Você pode incluir
 todos esses atributos no recurso. As implementações específicas de linguagem do
 OpenTelemetry fornecem detecção de recursos a partir da variável de ambiente
-`OTEL_RESOURCE_ATTRIBUTES` e para muitas entidades comuns, como tempo de execução
-do processo, serviço, host ou sistema operacional.
+`OTEL_RESOURCE_ATTRIBUTES` e para muitas entidades comuns, como tempo de
+execução do processo, serviço, host ou sistema operacional.
 
 Para mais informações, consulte [Recursos](/docs/concepts/resources/).
 
