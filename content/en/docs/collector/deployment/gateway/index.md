@@ -221,8 +221,8 @@ mode.
 - There are few receivers in OpenTelmetry Collector that need to be unique per
   host instance. Running multiple instances of these receivers will result in
   duplicate data. It is recommended not to use them in the Gateway Collector but
-  only for the collector running in Daemonset mode. Examples include, but are
-  not limited to:
+  only for the collector running in Agent mode. Examples include, but are not
+  limited to:
 
   - [`hostmetricsreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver),
     may result in duplicate host metrics.
@@ -233,8 +233,7 @@ mode.
   [`resourcedetection`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor)
   processor in gateway mode is not recommended. This processor is used to detect
   the resources of the host where the Collector is running. Use
-  `resourcedetection` processor in the pipeline of Daemonset collector
-  deployment.
+  `resourcedetection` processor in the pipeline of Agent collector deployment.
 
 ## Tradeoffs
 
