@@ -10,7 +10,7 @@ who are actively revolutionizing the field of observability with their
 contributions. Whether it's through code, documentation, project management,
 outreach, adoption, or simply helping others answer technical questions on our
 [CNCF Slack](https://slack.cncf.io/), we want to recognize these contributions
-and the people behind them. Because we're all human, and we all like that warm
+and the people behind them -- because we're all human, and we all like that warm
 fuzzy feeling of appreciation.
 
 We are thrilled to announce the first-ever **OpenTelemetry Community Awards**!
