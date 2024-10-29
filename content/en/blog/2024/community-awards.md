@@ -18,8 +18,8 @@ This is your chance to nominate individuals who have made a notable impact to
 OpenTelemetry over the past year. _Everyone_ can nominate _anyone_ in the
 community, be they a contributor, end-user, or community member.
 
-Please submit nominations using this
-[Google Form](https://forms.gle/ioqFNmDhKNYYAtRs7).
+Submit nominations using
+[this Google Form](https://forms.gle/ioqFNmDhKNYYAtRs7).
 
 Although we require sign-in to ensure only one form submission per person,
 nominations are completely anonymous. You can nominate up to five people per
