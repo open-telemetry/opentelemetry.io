@@ -1,0 +1,22 @@
+# cSpell:ignore keycloak
+title: Keycloak
+registryType: application integration
+language: java
+tags:
+  - keycloak
+  - iam
+  - sso
+urls:
+  website: https://www.keycloak.org
+  repo: https://github.com/keycloak/keycloak
+  docs: https://www.keycloak.org/server/tracing
+license: Apache 2.0
+description:
+  Keycloak utilizes OpenTelemetry for distributed tracing provided by the
+  Quarkus OpenTelemetry extension.
+authors:
+  - name: Keycloak Contributors
+    url: https://github.com/keycloak
+createdAt: '2024-10-29'
+isNative: false
+cncfProjectLevel: incubating
