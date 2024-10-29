@@ -34,6 +34,7 @@ discoverability
 dotnet
 Dyla
 dynatrace
+ebpf
 emailservice
 EMEA
 erlang
