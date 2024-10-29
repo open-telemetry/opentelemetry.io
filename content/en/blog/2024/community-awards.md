@@ -5,8 +5,8 @@ date: 2024-10-29
 author: OpenTelemetry Governance Committee
 ---
 
-OpenTelemetry is a community-driven project, fueled by a group of awesome humans who
-are actively revolutionizing the field of observability with their
+OpenTelemetry is a community-driven project, fueled by a group of awesome humans
+who are actively revolutionizing the field of observability with their
 contributions. Whether it's through code, documentation, project management,
 outreach, adoption, or simply helping others answer technical questions on our
 [CNCF Slack](https://slack.cncf.io/), we want to recognize these contributions
@@ -22,6 +22,7 @@ Please submit nominations using this
 [Google Form](https://forms.gle/ioqFNmDhKNYYAtRs7).
 
 Although we require sign-in to ensure only one form submission per person,
-nominations are completely anonymous. You can nominate up to five people per submission, and
-nominations will be open **until midnight UTC on November 8th, 2024**. Winners
-will be announced at KubeCon + CloudNativeCon North America 2024.
+nominations are completely anonymous. You can nominate up to five people per
+submission, and nominations will be open **until midnight UTC on November 8th,
+2024**. Winners will be announced at KubeCon + CloudNativeCon North
+America 2024.
