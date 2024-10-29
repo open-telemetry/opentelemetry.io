@@ -40,7 +40,7 @@ for more information.
 ## Control access to server-like components
 
 Some Collector components such as receivers and exporters can function like
-servers. To limit access to authorized users, you should
+servers. To limit access to authorized users, you should:
 
 - Enable authentication by using bearer token authentication extensions and
   basic authentication extensions, for example.
