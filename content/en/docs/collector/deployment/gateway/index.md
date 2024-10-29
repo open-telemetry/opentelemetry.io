@@ -204,13 +204,13 @@ collector.
 A typical Gateway architecture involves running both Collector in Gateway mode
 and Agent mode.
 
-The following diagram shows a typical deployment architecture for a gateway.
-Here
+The following diagram shows a typical deployment architecture for a gateway
+deployment. Here
 
-- We use Agent Collectors (running on each host, similar to kubernetes
+- We use Agent Collectors (running on each host, similar to Kubernetes
   daeomonsets) to collect telemetry from services running on the host and host
   telemetry, such as host metrics and scrap logs.
-- We use Gateway Collector to process OTLP data, such as filtering, sampling,
+- We use Gateway Collectors to process OTLP data, such as filtering, sampling,
   and exporting to backends etc.
 
 ![gateway](otel-gateway-arch.svg)
@@ -218,10 +218,11 @@ Here
 There are a few limitations in running the OpenTelmetry collector in gateway
 mode.
 
-- Few receivers need to be unique per host instance. Running multiple instances
-  of these receivers will result in duplicate data. It is recommended not to use
-  them in the Gateway Collector but only for the collector running in Daemonset
-  mode. Examples include, but are not limited to:
+- There are few receivers in OpenTelmetry Collector that need to be unique per
+  host instance. Running multiple instances of these receivers will result in
+  duplicate data. It is recommended not to use them in the Gateway Collector but
+  only for the collector running in Daemonset mode. Examples include, but are
+  not limited to:
 
   - [`hostmetricsreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver),
     may result in duplicate host metrics.
