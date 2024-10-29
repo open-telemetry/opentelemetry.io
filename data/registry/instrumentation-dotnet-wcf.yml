@@ -6,7 +6,9 @@ tags:
   - instrumentation
   - dotnet
 license: Apache 2.0
-description: Instruments WCF clients and/or services using implementations of IClientMessageInspector and IDispatchMessageInspector respectively.
+description:
+  Instruments WCF clients and/or services using implementations of
+  IClientMessageInspector and IDispatchMessageInspector respectively.
 authors:
   - name: OpenTelemetry Authors
 urls:
