@@ -66,7 +66,7 @@ Para mais informações, consulte
 O OpenTelemetry suporta um grande número de componentes que geram dados de
 telemetria relevantes a partir de bibliotecas e frameworks populares para as
 linguagens suportadas. Por exemplo, requisições HTTP de entrada e saída de uma
-biblioteca HTTP geram dados sobre essas requisições. Um objetivo Aspiracional
+biblioteca HTTP geram dados sobre essas requisições. Um objetivo aspiracional
 do OpenTelemetry é que todas as bibliotecas populares sejam construídas para
 serem observáveis por padrão, de modo que dependências separadas não sejam
 necessárias.
