@@ -106,7 +106,7 @@ journalctl | grep otelcol | grep Error
 
 ### Configure internal traces
 
-The Collector does not expose traces by default, but can be configured to.
+The Collector does not expose traces by default, but it can be configured to.
 
 {{% alert title="Caution" color="warning" %}}
 
@@ -130,8 +130,8 @@ service:
                 endpoint: https://backend:4317
 ```
 
-See the [example configuration][kitchen-sink-config] for additional options (the
-`tracer_provider` section there corresponds to `traces` here).
+See the [example configuration][kitchen-sink-config] for additional options. Note that the
+`tracer_provider` section there corresponds to `traces` here.
 
 [kitchen-sink-config]:
   https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml
@@ -140,7 +140,7 @@ See the [example configuration][kitchen-sink-config] for additional options (the
 
 The Collector can be configured to push its own telemetry to an
 [OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
-and send them through configured pipelines. In the following example, the
+and send the data through configured pipelines. In the following example, the
 Collector is configured to push metrics and traces every 10s using OTLP gRPC to
 `localhost:14317`:
 
@@ -186,7 +186,7 @@ is underperforming, its self-monitoring capability could be impacted. As a
 result, the self-monitored telemetry might not reach the backend in time for
 critical analysis.
 
-Moreover, sending internal traces through the Collector's own pipelines as above
+Moreover, sending internal traces through the Collector's own pipelines
 creates a continuous loop of spans, causing undue strain on the Collector's
 performance. This setup should not be used in production.
 
