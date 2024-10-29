@@ -82,7 +82,7 @@ Para mais informações, consulte
 
 O OpenTelemetry possibilita essa forma de instrumentar sua aplicação sem alterar
 seu código-fonte. Embora o mecanismo dependa da linguagem, a instrumentação sem
-código-fonte adiciona as capacidades da API e do SDK do OpenTelemetry à sua
+código adiciona as capacidades da API e do SDK do OpenTelemetry à sua
 aplicação. Além disso, pode adicionar um conjunto de bibliotecas de
 instrumentação e dependências do exportador.
 
