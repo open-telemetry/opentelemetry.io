@@ -25,7 +25,7 @@ específicas para gerar e exportar dados de telemetria.
 
 ## Especificação {#specification}
 
-"Descreve os requisitos e expectativas entre diferentes linguagens para todas as
+Descreve os requisitos e expectativas entre diferentes linguagens para todas as
 implementações. Além de uma definição de termos, a especificação define o
 seguinte:
 
@@ -41,7 +41,7 @@ Para mais informações, consulte [especificação](/docs/specs/).
 
 ## Collector
 
-O Coletor é um proxy para qualquer sistema de telemetria que pode receber...,
+O Colletor é um proxy para qualquer sistema de telemetria que pode receber...,
 processar e exportar dados de telemetria. Ele suporta o recebimento de dados de
 telemetria em vários formatos. (Por exemplo, OTLP, Jaeger, Prometheus, bem como
 muitas outras ferramentas ) .e enviar dados para um ou mais sistema de
