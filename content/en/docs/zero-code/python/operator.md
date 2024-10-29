@@ -3,7 +3,8 @@ title: Using the OpenTelemetry Operator to Inject Auto-Instrumentation
 linkTitle: Operator
 aliases: [/docs/languages/python/automatic/operator]
 weight: 30
-cSpell:ignore: distro grpcio mkdir psutil uninstrumented virtualenv
+# prettier-ignore
+cSpell:ignore: distro grpcio mkdir myapp psutil PYTHONPATH uninstrumented virtualenv
 ---
 
 If you run your Python service in Kubernetes, you can take advantage of the
@@ -26,3 +27,13 @@ specific Python version. The
 provides images for a single Python version based on the glibc C library. If you
 want to use it you might need to build your own image operator Docker image for
 Python auto-instrumentation.
+
+#### Django applications
+
+Applications that run from their own executable like Django requires to set in
+your deployment file two environment variables:
+
+- `PYTHONPATH`, with the path to the Django application root directory, e.g.
+  "/app"
+- `DJANGO_SETTINGS_MODULE`, with the name of the Django settings module, e.g.
+  "myapp.settings"
