@@ -97,7 +97,7 @@ telemetria que está sendo executado em um contêiner no Kubernetes tem um nome 
 Pod, um namespace e possivelmente um nome de implantação. Você pode incluir
 todos esses atributos no recurso. As implementações específicas de linguagem do
 OpenTelemetry fornecem detecção de recursos a partir da variável de ambiente
-OTEL_RESOURCE_ATTRIBUTES e para muitas entidades comuns, como tempo de execução
+`OTEL_RESOURCE_ATTRIBUTES` e para muitas entidades comuns, como tempo de execução
 do processo, serviço, host ou sistema operacional.
 
 Para mais informações, consulte [Recursos](/docs/concepts/resources/).
