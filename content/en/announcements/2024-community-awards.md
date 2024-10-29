@@ -1,6 +1,6 @@
 ---
 title: OpenTelemetry Community Awards
-date: 2024-10-25
+date: 2024-10-29
 expiryDate: 2024-11-08
 ---
 
