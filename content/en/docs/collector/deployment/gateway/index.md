@@ -201,14 +201,26 @@ collector.
 
 ## Typical Gateway deployment architecture
 
-The following diagram shows a typical deployment architecture for a gateway
+A typical Gateway architecture involves running both Collector in Gateway mode
+and Agent mode.
+
+The following diagram shows a typical deployment architecture for a gateway.
+Here
+
+- We use Agent Collectors (running on each host, similar to kubernetes
+  daeomonsets) to collect telemetry from services running on the host and host
+  telemetry, such as host metrics and scrap logs.
+- We use Gateway Collector to process OTLP data, such as filtering, sampling,
+  and exporting to backends etc.
+
 ![gateway](otel-gateway-arch.svg)
 
-There are a few limitations in running the OTel collector in gateway mode.
+There are a few limitations in running the OpenTelmetry collector in gateway
+mode.
 
 - Few receivers need to be unique per host instance. Running multiple instances
-  of these receivers will result in Duplicate data. It is recommended not to use
-  them in the Gateway collector but only for the collector running in Daemonset
+  of these receivers will result in duplicate data. It is recommended not to use
+  them in the Gateway Collector but only for the collector running in Daemonset
   mode. Examples include, but are not limited to:
 
   - [`hostmetricsreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver),
@@ -219,7 +231,7 @@ There are a few limitations in running the OTel collector in gateway mode.
 - Using a
   [`resourcedetection`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor)
   processor in gateway mode is not recommended. This processor is used to detect
-  the resources of the host where the collector is running. Use
+  the resources of the host where the Collector is running. Use
   `resourcedetection` processor in the pipeline of Daemonset collector
   deployment.
 
