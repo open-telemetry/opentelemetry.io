@@ -1,6 +1,6 @@
 ---
 title: 2024 OpenTelemetry Community Awards
-linkTitle: 2024 OpenTelemetry Community Awards
+linkTitle: OpenTelemetry Community Awards
 date: 2024-10-29
 author: OpenTelemetry Governance Committee
 ---
