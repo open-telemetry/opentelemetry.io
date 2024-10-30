@@ -13,6 +13,7 @@ authors:
   - name: ThrottlingTroll Project
     url: https://github.com/ThrottlingTroll
 urls:
+  website: https://github.com/ThrottlingTroll
   repo: https://github.com/ThrottlingTroll/ThrottlingTroll
   docs: https://github.com/ThrottlingTroll/ThrottlingTroll/wiki#telemetry
 createdAt: '2024-10-28'
