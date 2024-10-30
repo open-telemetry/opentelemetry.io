@@ -91,7 +91,7 @@ dependencias de exportador.
 Para más información, consulta
 [Instrumentación sin código](/docs/concepts/instrumentation/zero-code/).
 
-### Detectores de Recursos
+### Detectores de recursos
 
 Un [recurso](/docs/concepts/resources/) representa la entidad que produce
 telemetría como atributos de tipo recurso. Por ejemplo, un proceso que produce
