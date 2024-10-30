@@ -137,8 +137,8 @@ Para más información, consulta el [Operador K8s](/docs/kubernetes/operator/).
 ## Elementos de Función como Servicio
 
 OpenTelemetry soporta varios métodos de monitoreo para Function-as-a-Service
-proporcionados por diferentes proveedores de cloud. La comunidad de
-OpenTelemetry actualmente proporciona capas Lambda prefabricadas capaces de
+proporcionados por diferentes proveedores de servicios en la nube. La comunidad
+de OpenTelemetry proporciona capas Lambda prefabricadas capaces de
 auto-instrumentar tu aplicación, así como la opción de una capa Lambda de
 Collector independiente que puede usarse al instrumentar aplicaciones manual o
 automáticamente.
