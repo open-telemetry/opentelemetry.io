@@ -25,7 +25,7 @@ específicas de proveedores para generar y exportar datos de telemetría.
 
 ## Especificación
 
-Describe los requisitos y expectativas multilingües para todas las
+Describe los requisitos y expectativas multilenguaje para todas las
 implementaciones. Más allá de la definición de términos, la especificación
 define lo siguiente:
 
