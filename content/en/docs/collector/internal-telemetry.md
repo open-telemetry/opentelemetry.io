@@ -186,9 +186,9 @@ is underperforming, its self-monitoring capability could be impacted. As a
 result, the self-monitored telemetry might not reach the backend in time for
 critical analysis.
 
-Moreover, sending internal traces through the Collector's own pipelines creates
-a continuous loop of spans, causing undue strain on the Collector's performance.
-This setup should not be used in production.
+Moreover, sending internal telemetry through the Collector's own pipelines can
+create a continuous loop of spans, metric points, or logs, putting undue strain
+on the Collector's performance. This setup should not be used in production.
 
 {{% /alert %}}
 
