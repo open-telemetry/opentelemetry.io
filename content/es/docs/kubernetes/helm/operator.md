@@ -4,21 +4,21 @@ linkTitle: Operator Chart
 default_lang_commit: 737d66aba66ab76da5edf2573eee225a14bf7579
 ---
 
-## Introduction
+## Introducción
 
-The [OpenTelemetry Operator](/docs/kubernetes/operator) is a Kubernetes operator
-that manages [OpenTelemetry Collectors](/docs/collector) and
-auto-instrumentation of workloads. One of the ways to install the OpenTelemetry
-Operator is via the
+El [OpenTelemetry Operator](/docs/kubernetes/operator) es un operador de Kubernetes
+que gestiona [OpenTelemetry Collectors](/docs/collector) y
+la auto-instrumentación de cargas de trabajo. Una de las formas de instalar el OpenTelemetry
+Operator es a través del
 [OpenTelemetry Operator Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator).
 
-For detailed use of the OpenTelemetry Operator visit its
-[docs](/docs/kubernetes/operator).
+Para un uso detallado del OpenTelemetry Operator, visita su
+[documentación](/docs/kubernetes/operator).
 
-### Installing the Chart
+### Instalación del Chart
 
-To install the chart with the release name `my-opentelemetry-operator`, run the
-following commands:
+Para instalar el chart con el nombre de lanzamiento `my-opentelemetry-operator`, ejecuta los
+siguientes comandos:
 
 ```console
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
@@ -28,45 +28,18 @@ helm install my-opentelemetry-operator open-telemetry/opentelemetry-operator \
   --set admissionWebhooks.autoGenerateCert.enabled=true
 ```
 
-This will install an OpenTelemetry Operator with a self-signed certificate and
-secret.
+Esto instalará un OpenTelemetry Operator con un certificado autofirmado y un secreto.
 
-### Configuration
+Configuración
+El values.yaml predeterminado del chart del Operator está listo para ser instalado, pero se espera que Cert Manager ya esté presente en el clúster.
 
-The Operator helm chart's default `values.yaml` is ready to be installed, but it
-expects that Cert Manager is already present on the Cluster.
+En Kubernetes, para que el servidor API se comunique con el componente webhook, el webhook requiere un certificado TLS que el servidor API esté configurado para confiar. Hay varias formas diferentes que puedes usar para generar/configurar el certificado TLS requerido.
 
-In Kubernetes, in order for the API server to communicate with the webhook
-component, the webhook requires a TLS certificate that the API server is
-configured to trust. There are a few different ways you can use to
-generate/configure the required TLS certificate.
-
-- The easiest and default method is to install the
-  [cert-manager](https://cert-manager.io/docs/) and set
-  `admissionWebhooks.certManager.create` to `true`. In this way, cert-manager
-  will generate a self-signed certificate. See
-  [cert-manager installation](https://cert-manager.io/docs/installation/kubernetes/)
-  for more details.
-- You can provide your own Issuer by configuring the
-  `admissionWebhooks.certManager.issuerRef` value. You will need to specify the
-  `kind` (Issuer or ClusterIssuer) and the `name`. Note that this method also
-  requires the installation of cert-manager.
-- You can use an automatically generated self-signed certificate by setting
-  `admissionWebhooks.certManager.enabled` to `false` and
-  `admissionWebhooks.autoGenerateCert.enabled` to `true`. Helm will create a
-  self-signed cert and a secret for you.
-- You can use your own generated self-signed certificate by setting both
-  `admissionWebhooks.certManager.enabled` and
-  `admissionWebhooks.autoGenerateCert.enabled` to `false`. You should provide
-  the necessary values to `admissionWebhooks.cert_file`,
-  `admissionWebhooks.key_file`, and `admissionWebhooks.ca_file`.
-- You can side-load custom webhooks and certificate by disabling
-  `.Values.admissionWebhooks.create` and `admissionWebhooks.certManager.enabled`
-  while setting your custom cert secret name in `admissionWebhooks.secretName`
-- You can disable webhooks all together by disabling
-  `.Values.admissionWebhooks.create` and setting env var to
-  `ENABLE_WEBHOOKS: "false"`
-
-All the configuration options (with comments) available in the chart can be
-viewed in its
+- El método más fácil y predeterminado es instalar el cert-manager y establecer admissionWebhooks.certManager.create en true. De esta manera, cert-manager generará un certificado autofirmado. Consulta instalación de cert-manager para más detalles.
+- Puedes proporcionar tu propio Emisor configurando el valor admissionWebhooks.certManager.issuerRef. Necesitarás especificar el kind (Issuer o ClusterIssuer) y el name. Ten en cuenta que este método también requiere la instalación de cert-manager.
+- Puedes usar un certificado autofirmado generado automáticamente estableciendo admissionWebhooks.certManager.enabled en false y admissionWebhooks.autoGenerateCert.enabled en true. Helm creará un certificado autofirmado y un secreto para ti.
+- Puedes usar tu propio certificado autofirmado generado estableciendo ambos admissionWebhooks.certManager.enabled y admissionWebhooks.autoGenerateCert.enabled en false. Debes proporcionar los valores necesarios a admissionWebhooks.cert_file, admissionWebhooks.key_file y admissionWebhooks.ca_file.
+- Puedes cargar webhooks y certificados personalizados desactivando .Values.admissionWebhooks.create y admissionWebhooks.certManager.enabled mientras estableces el nombre de tu secreto de certificado personalizado en admissionWebhooks.secretName.
+- Puedes desactivar los webhooks por completo desactivando .Values.admissionWebhooks.create y estableciendo la variable de entorno .Values.manager.env.ENABLE_WEBHOOKS en false.
+Todas las opciones de configuración (con comentarios) disponibles en el chart se pueden ver en su
 [values.yaml file](https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-operator/values.yaml).
