@@ -274,7 +274,7 @@ trecho que faz rastreamento de uma operação que falhou como um trecho de erro.
 método `RecordError` **não** define automaticamente o estado de um trecho ao ser
 invocado.
 
-### Context e Propagators {#propagators-and-context}
+### Contexto e Propagadores {#propagators-and-context}
 
 Os Rastros podem se estender além de um único processo. Isso requer a
 _propagação de contexto_, um mecanismo onde os identificadores de um rastro são
