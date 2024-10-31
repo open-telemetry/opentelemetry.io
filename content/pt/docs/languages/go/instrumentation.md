@@ -219,7 +219,7 @@ mutex.Unlock()
 ```
 
 Uma característica útil dos eventos é que seus timestamps são exibidos como
-deslocamentos a partir do início do trecho, permitindo ver facilmente quanto tempo se
+intervalos a partir do início do trecho, permitindo ver facilmente quanto tempo se
 passou entre cada um.
 
 Os Eventos também podem incluir seus próprios atributos -
