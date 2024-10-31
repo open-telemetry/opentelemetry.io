@@ -332,7 +332,7 @@ dos tipos melhor se encaixa no seu caso de uso, consulte as
 
 Caso um `MeterProvider` não seja criado, tanto por uma biblioteca de
 instrumentação ou manualmente, a API de Métricas do OpenTelemetry usará uma
-implementação no-op e não irá gerar dados.
+implementação sem operação e não irá gerar dados.
 
 A seguir, você poderá encontrar uma documentação mais detalhada para os pacotes:
 
