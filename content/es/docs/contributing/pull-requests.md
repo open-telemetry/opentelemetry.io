@@ -11,13 +11,13 @@ cSpell:ignore: aplícala vincúlalos solucionándolas
 Para contribuir con nuevas páginas de contenido o mejorar las páginas de
 contenido existentes, abre un Pull Request (PR):
 
-- Si tu cambio es pequeño, o ya estás familiarizado con Git, lee
+- Si tu cambio es pequeño, o no estás familiarizado con Git, lee
   [Editar con GitHub](#changes-using-github) para aprender a editar la página
   desde la interfaz de GitHub.
-- Si tus cambio es mayor, lee [Editar desde una rama local](#fork-the-repo) para
+- Si tu cambio es más complejo, lee [Editar desde una rama local](#fork-the-repo) para
   aprender cómo realizar cambios desde tu editor de código.
 
-{{% alert title="Tip" %}}
+{{% alert title="Consejo" %}}
 
 Convierte tu Pull Request en borrador para indicar que el contenido aún no está
 listo para su revisión. Los miembros aún pueden comentar o realizar revisiones
@@ -47,7 +47,7 @@ class S,T spacewhite
 class first,second white
 ```
 
-_Figure 1. Contribuyendo con nuevo contenido._
+_Figura 1. Contribuyendo con nuevo contenido._
 
 ## Editar con GitHub {#changes-using-github}
 
@@ -62,12 +62,12 @@ subgraph tasks[Editando en GitHub]
 direction TB
     0[ ] -.-
     1[Edita esta página] --> 2[Usa el editor de markdown en GitHub<br>para hacer tus cambios]
-    2 --> 3[agrega tus propuesta de cambios]
+    2 --> 3[Agrega tus propuesta de cambios]
 
 end
 subgraph tasks2[ ]
 direction TB
-4[Selecciona tus archivos a cambiar] --> 5[Haz click en Crear Pull Request] --> 6[Llena los cambios en Abriendo un Pull Request]
+4[Selecciona los archivos a cambiar] --> 5[Haz click en Crear Pull Request] --> 6[Llena los cambios en Abriendo un Pull Request]
 6 --> 7[Haz click en Crear pull request]
 end
 
@@ -83,7 +83,7 @@ class tasks,tasks2 white
 class id1 k8s
 ```
 
-_Figure 2. Pasos para abrir un Pull Request desde GitHub._
+_Figura 2. Pasos para abrir un Pull Request desde GitHub._
 
 1. En la página de la tarea en GitHub, selecciona **Editar esta página** en el
    panel de navegación en la derecha.
