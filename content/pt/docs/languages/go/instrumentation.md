@@ -213,7 +213,7 @@ adquirimos o mutex.
 span.AddEvent("Obtendo o lock")
 mutex.Lock()
 span.AddEvent("Lock efetuado, realizando o trabalho...")
-// do stuff
+// fazendo algo
 span.AddEvent("Realizando unlocking")
 mutex.Unlock()
 ```
