@@ -2747,6 +2747,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:24:43.194115-05:00"
   },
+  "https://docs.greptime.com/user-guide/ingest-data/for-observerbility/opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-29T16:21:59.273877+08:00"
+  },
   "https://docs.groundcover.com/integrations/data-sources/opentelemetry/traces-and-logs": {
     "StatusCode": 200,
     "LastSeen": "2024-08-18T14:44:07.000049769Z"
@@ -3726,6 +3730,10 @@
   "https://forms.gle/bZAG9f7udoJsjZUG9": {
     "StatusCode": 200,
     "LastSeen": "2024-05-01T16:48:59.737619-04:00"
+  },
+  "https://forms.gle/ioqFNmDhKNYYAtRs7": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-25T10:27:00.363272+01:00"
   },
   "https://forms.gle/mEDWyn6G7iCe4bvJ7": {
     "StatusCode": 200,
@@ -12694,6 +12702,10 @@
   "https://www.cypress.io/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:06:23.804112-05:00"
+  },
+  "https://www.dash0.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-28T11:30:33.016936+01:00"
   },
   "https://www.datadoghq.com/blog/engineering/php-8-observability-baked-right-in/": {
     "StatusCode": 206,
