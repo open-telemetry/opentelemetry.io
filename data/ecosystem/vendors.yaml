@@ -90,6 +90,12 @@
   contact: hello@cribl.io
   oss: false
   commercial: true
+- name: Dash0
+  nativeOTLP: true
+  url: https://www.dash0.com/
+  contact: hi@dash0.com
+  oss: false
+  commercial: true
 - name: DaoCloud
   nativeOTLP: true
   url: https://docs.daocloud.io/en/insight/06UserGuide/01quickstart/otel/otel/
@@ -221,6 +227,12 @@
   url: https://docs.lumigo.io/docs/opentelemetry
   contact:
   oss: false
+  commercial: true
+- name: MetricsHub
+  nativeOTLP: true
+  url: https://www.metricshub.com/docs/latest/
+  contact: https://github.com/iguitton
+  oss: true
   commercial: true
 - name: Middleware
   nativeOTLP: true
@@ -374,7 +386,7 @@
   commercial: true
 - name: GreptimeDB
   nativeOTLP: true
-  url: https://docs.greptime.com/user-guide/clients/otlp
+  url: https://docs.greptime.com/user-guide/ingest-data/for-observerbility/opentelemetry
   contact: info@greptime.com
   oss: true
   commercial: true
