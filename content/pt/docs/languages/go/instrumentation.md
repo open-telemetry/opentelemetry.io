@@ -219,8 +219,8 @@ mutex.Unlock()
 ```
 
 Uma característica útil dos eventos é que seus timestamps são exibidos como
-intervalos a partir do início do trecho, permitindo ver facilmente quanto tempo se
-passou entre cada um.
+intervalos a partir do início do trecho, permitindo ver facilmente quanto tempo
+se passou entre cada um.
 
 Os Eventos também podem incluir seus próprios atributos -
 
@@ -318,8 +318,8 @@ os seguintes instrumentos:
   estatísticas. Por exemplo: Quantas requisições estão levando menos de 1s?
 - **Gauge**: Mede o valor atual no momento da leitura. Um exemplo seria um
   medidor de tanque de combustível de um veículo. Gauges são assíncronos.
-- **UpDownCounter**: Um valor que acumula com o tempo, mas também pode reduzir. Um
-  exemplo seria o tamanho de uma fila, este valor irá aumentar e diminuir
+- **UpDownCounter**: Um valor que acumula com o tempo, mas também pode reduzir.
+  Um exemplo seria o tamanho de uma fila, este valor irá aumentar e diminuir
   conforme o número de itens que estão entrando ou saindo desta fila.
 - **Asynchronous UpDownCounter**: Assim como o **UpDownCounter**, porém é
   coletado uma vez a cada exportação. Pode ser usado em casos onde você não
