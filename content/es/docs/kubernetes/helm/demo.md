@@ -4,57 +4,54 @@ linkTitle: Demo Chart
 default_lang_commit: 737d66aba66ab76da5edf2573eee225a14bf7579
 ---
 
-The [OpenTelemetry Demo](/docs/demo/) is a microservice-based distributed system
-intended to illustrate the implementation of OpenTelemetry in a near real-world
-environment. As part of that effort, the OpenTelemetry community create the
+La [OpenTelemetry Demo](/docs/demo/) es un sistema distribuido basado en microservicios
+destinado a ilustrar la implementación de OpenTelemetry en un entorno cercano al real.
+Como parte de ese esfuerzo, la comunidad de OpenTelemetry creó el
 [OpenTelemetry Demo Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-demo)
-so that it can be easily installed in Kubernetes.
+para que pueda ser instalado fácilmente en Kubernetes.
 
-## Configuration
+## Configuración
 
-The Demo helm chart's default `values.yaml` is ready to be installed. All
-components have had their memory limits tuned to optimize performance, which may
-cause issues if your cluster is not large enough. The entire installation is
-restricted to ~4 Gigabytes of memory, but may use less.
+El `values.yaml` predeterminado del chart de Demo está listo para ser instalado. Todos
+los componentes han tenido sus límites de memoria ajustados para optimizar el rendimiento, lo que puede
+causar problemas si tu clúster no es lo suficientemente grande. La instalación completa está
+restringida a ~4 Gigabytes de memoria, pero puede usar menos.
 
-All the configuration options (with comments) available in the chart can be
-viewed in its
+Todas las opciones de configuración (con comentarios) disponibles en el chart se pueden
+ver en su
 [`values.yaml` file](https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-demo/values.yaml),
-and detailed descriptions can be found in the
-[chart's README](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-demo#chart-parameters).
+y las descripciones detalladas se pueden encontrar en el
+[README del chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-demo#chart-parameters).
 
-## Installation
+## Instalación
 
-To install the chart with the release name `my-otel-demo`, run the following
-command:
+Para instalar el chart con el nombre de lanzamiento `my-otel-demo`, ejecuta el siguiente
+comando:
 
 ```sh
 helm install my-otel-demo open-telemetry/opentelemetry-demo
 ```
-
-Once installed, all services are made available via the Frontend proxy
-(<http://localhost:8080>) by running these commands:
+Una vez instalado, todos los servicios están disponibles a través del proxy Frontend (http://localhost:8080) ejecutando estos comandos:
 
 ```sh
 kubectl port-forward svc/my-otel-demo-frontendproxy 8080:8080
 ```
 
-Once the proxy is exposed, you can also visit the following paths
+Una vez que el proxy esté expuesto, también puedes visitar las siguientes rutas
 
-| Component         | Path                              |
+| Componente         | Ruta                              |
 | ----------------- | --------------------------------- |
-| Web store         | <http://localhost:8080>           |
+| Tienda web         | <http://localhost:8080>           |
 | Grafana           | <http://localhost:8080/grafana>   |
-| Feature Flags UI  | <http://localhost:8080/feature>   |
-| Load Generator UI | <http://localhost:8080/loadgen>   |
-| Jaeger UI         | <http://localhost:8080/jaeger/ui> |
+| Interfaz de Flags | <http://localhost:8080/feature>   |
+| Interfaz de Carga | <http://localhost:8080/loadgen>   |
+| Interfaz de Jaeger         | <http://localhost:8080/jaeger/ui> |
 
-In order for spans from the Web store to be collected you must expose the
-OpenTelemetry Collector OTLP/HTTP receiver:
+Para que los spans de la tienda web sean recolectados, debes exponer el receptor OTLP/HTTP del OpenTelemetry Collector:
 
 ```sh
 kubectl port-forward svc/my-otel-demo-otelcol 4318:4318
 ```
 
-For more details on using the demo in Kubernetes, see
+Para más detalles sobre el uso de la demo en Kubernetes, consulta 
 [Kubernetes deployment](/docs/demo/kubernetes-deployment/).
