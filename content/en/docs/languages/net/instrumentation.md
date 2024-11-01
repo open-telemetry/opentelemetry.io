@@ -636,14 +636,6 @@ var activity = MyActivitySource.StartActivity(
 
 {{% docs/languages/span-status-preamble %}}
 
-A [status](/docs/concepts/signals/traces/#span-status) can be set on a
-[span](/docs/concepts/signals/traces/#spans), typically used to specify that a
-span has not completed successfully - `SpanStatus.Error`.
-
-By default, all spans are `Unset`, which means a span completed without error.
-The `Ok` status is reserved for when you need to explicitly mark a span as
-successful rather than stick with the default of Unset (i.e., “without error”).
-
 The status can be set at any time before the span is finished.
 
 It can be a good idea to record exceptions when they happen. It's recommended to
