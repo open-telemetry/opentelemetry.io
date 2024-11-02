@@ -8755,6 +8755,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-08-09T10:44:30.895853-04:00"
   },
+  "https://kubernetes.io/docs/concepts/configuration/secret/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-17T20:41:39.419625448-07:00"
+  },
   "https://kubernetes.io/docs/concepts/configuration/secret/#using-a-secret": {
     "StatusCode": 206,
     "LastSeen": "2024-04-25T00:01:05.630302-04:00"
@@ -8782,6 +8786,14 @@
   "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/": {
     "StatusCode": 206,
     "LastSeen": "2024-08-09T10:45:22.265624-04:00"
+  },
+  "https://kubernetes.io/docs/concepts/security/rbac-good-practices/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-28T23:48:13.923440181Z"
+  },
+  "https://kubernetes.io/docs/concepts/security/secrets-good-practices/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-17T20:41:39.602462106-07:00"
   },
   "https://kubernetes.io/docs/concepts/services-networking/service/": {
     "StatusCode": 206,
