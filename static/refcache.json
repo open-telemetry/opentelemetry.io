@@ -5247,6 +5247,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:18:28.014809+02:00"
   },
+  "https://github.com/jdbi": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-02T06:14:06.865612-04:00"
+  },
+  "https://github.com/jdbi/jdbi": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-02T06:14:05.661704-04:00"
+  },
   "https://github.com/jeanbisutti": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:42.388742-05:00"
@@ -8610,6 +8618,14 @@
   "https://javadoc.io/doc/org.apache.logging.log4j/log4j-api/latest/org.apache.logging.log4j/org/apache/logging/log4j/Logger.html": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:04.309715-05:00"
+  },
+  "https://jdbi.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-11-02T06:13:48.275274-04:00"
+  },
+  "https://jdbi.org/#_opentelemetry_tracing": {
+    "StatusCode": 206,
+    "LastSeen": "2024-11-02T06:13:48.208691-04:00"
   },
   "https://jessitron.com/": {
     "StatusCode": 200,
