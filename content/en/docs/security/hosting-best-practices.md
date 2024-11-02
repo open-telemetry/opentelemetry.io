@@ -11,7 +11,7 @@ practices to better secure your hosting instance.
 
 Your Collector configuration file might contain sensitive data, including
 authentication tokens or TLS certificates. See the best practices for
-[securing your configuration](/docs/security/config-best-practices/#create-secure-configurations).
+[securing your configuration](../config-best-practices/#create-secure-configurations).
 
 If you are storing telemetry for processing, make sure to restrict access to
 those directories to prevent tampering with raw data.
@@ -60,4 +60,4 @@ the resource demands and prevents bottlenecks.
 
 Once you secure resource utilization in your deployment, make sure your
 Collector instance also uses
-[safeguards in its configuration](/docs/security/config-best-practices/#safeguard-resource-utilization).
+[safeguards in its configuration](../config-best-practices/#safeguard-resource-utilization).

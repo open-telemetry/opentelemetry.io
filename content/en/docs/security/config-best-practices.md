@@ -100,7 +100,7 @@ default endpoint from `0.0.0.0` to `localhost` in all components by enabling the
 
 If `localhost` resolves to a different IP due to your DNS settings, then
 explicitly use the loopback IP instead: `127.0.0.1` for IPv4 or `::1` for IPv6.
-For example, here's an IPv4 configuration using a `gRPC` port:
+For example, here's an IPv4 configuration using a gRPC port:
 
 ```yaml
 receivers:
@@ -162,7 +162,7 @@ to learn how to add the `redaction` processor to your Collector configuration.
 ### Safeguard resource utilization
 
 After implementing safeguards for resource utilization in your
-[hosting infrastructure](/docs/security/hosting-best-practices/), consider also
+[hosting infrastructure](../hosting-best-practices/), consider also
 adding these safeguards to your OpenTelemetry Collector configuration.
 
 Batching your telemetry and limiting the memory available to your Collector can

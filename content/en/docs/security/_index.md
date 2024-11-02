@@ -10,13 +10,13 @@ transmit your observability data.
 ## Common Vulnerabilities and Exposures (CVEs)
 
 For CVEs across all repositories, see
-[Common Vulnerabilities and Exposures](/docs/security/cve).
+[Common Vulnerabilities and Exposures](cve/).
 
 ## Incident response
 
 Learn how to report a vulnerability or find out how incident responses are
 handled in
-[Community incident response guidelines](/docs/security/security-response).
+[Community incident response guidelines](security-response/).
 
 ## Collector security
 
@@ -32,10 +32,10 @@ Running a secure Collector can help you
 - Comply with data privacy and security regulations.
 - Defend against denial of service (DoS) attacks.
 
-See [Hosting best practices](/docs/security/hosting-best-practices) to learn how
+See [Hosting best practices](hosting-best-practices/) to learn how
 to secure your Collector's infrastructure.
 
-See [Configuration best practices](/docs/security/config-best-practices) to
+See [Configuration best practices](config-best-practices/) to
 learn how to securely configure your Collector.
 
 For Collector component developers, see
