@@ -1,7 +1,7 @@
 ---
 title: Primeros pasos
 weight: 1
-default_lang_commit: 737d66aba66ab76da5edf2573eee225a14bf7579
+default_lang_commit: 3a76552c53b53409483a2ad3190ced25129e4eb8
 # prettier-ignore
 cSpell:ignore: filelog filelogreceiver kubeletstats kubeletstatsreceiver loggingexporter otlpexporter sattributes sattributesprocessor sclusterreceiver sobjectsreceiver
 ---
