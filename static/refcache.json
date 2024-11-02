@@ -6663,6 +6663,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:32.008516-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-examples": {
+    "StatusCode": 200,
+    "LastSeen": "2024-10-23T20:19:13.793874-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:10:45.254006-05:00"
@@ -11602,6 +11606,38 @@
   "https://reflectoring.io/upstream-downstream/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:35.161372-05:00"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.7.0-alpha/opentelemetry-instrumentation-bom-alpha-2.7.0-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-23T20:20:08.34491-05:00"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.9.0-alpha/opentelemetry-instrumentation-bom-alpha-2.9.0-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-23T20:19:21.596018-05:00"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.7.0/opentelemetry-instrumentation-bom-2.7.0.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-23T20:20:07.402964-05:00"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.9.0/opentelemetry-instrumentation-bom-2.9.0.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-23T20:19:19.595194-05:00"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.42.1-alpha/opentelemetry-bom-alpha-1.42.1-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-23T20:20:05.963898-05:00"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.43.0-alpha/opentelemetry-bom-alpha-1.43.0-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-23T20:19:18.147885-05:00"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.42.1/opentelemetry-bom-1.42.1.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-23T20:20:05.242921-05:00"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.43.0/opentelemetry-bom-1.43.0.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-23T20:19:16.148466-05:00"
   },
   "https://research.facebook.com/file/877841159827226/holistic-configuration-management-at-facebook.pdf": {
     "StatusCode": 206,
