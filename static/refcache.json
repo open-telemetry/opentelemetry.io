@@ -7275,6 +7275,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:26:01.154768-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/pull/5386/files": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-02T12:26:48.450866-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/pulls": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:25.833527-05:00"
@@ -7846,6 +7850,10 @@
   "https://github.com/streetsidesoftware/cspell": {
     "StatusCode": 200,
     "LastSeen": "2024-02-15T11:30:50.628118+01:00"
+  },
+  "https://github.com/streetsidesoftware/cspell-dicts": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-02T12:26:45.305184-04:00"
   },
   "https://github.com/strimzi": {
     "StatusCode": 200,
@@ -13406,6 +13414,10 @@
   "https://www.npmjs.com/package/@opentelemetry/shim-opentracing": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:55:41.775458-05:00"
+  },
+  "https://www.npmjs.com/search": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-02T12:26:46.909401-04:00"
   },
   "https://www.nuget.org/packages/": {
     "StatusCode": 200,
