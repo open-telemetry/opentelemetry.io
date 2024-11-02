@@ -1,10 +1,9 @@
 ---
 title: Componentes clave para Kubernetes
 linkTitle: Componentes
-default_lang_commit: 737d66aba66ab76da5edf2573eee225a14bf7579
+default_lang_commit: 9b53527853049b249f60f12a000c0d85b9e5f5dc
 # prettier-ignore
 cSpell:ignore: alertmanagers containerd crio filelog gotime horizontalpodautoscalers hostfs hostmetrics iostream k8sattributes kubelet kubeletstats logtag replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods asignador paginación
-default_lang_commit: 3815d1481fe753df10ea3dc26cbe64dba0230579
 ---
 
 El [OpenTelemetry Collector](/docs/collector/) admite numerosos receptores y
