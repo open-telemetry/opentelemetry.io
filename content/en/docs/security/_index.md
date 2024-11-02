@@ -15,8 +15,7 @@ For CVEs across all repositories, see
 ## Incident response
 
 Learn how to report a vulnerability or find out how incident responses are
-handled in
-[Community incident response guidelines](security-response/).
+handled in [Community incident response guidelines](security-response/).
 
 ## Collector security
 
@@ -32,11 +31,11 @@ Running a secure Collector can help you
 - Comply with data privacy and security regulations.
 - Defend against denial of service (DoS) attacks.
 
-See [Hosting best practices](hosting-best-practices/) to learn how
-to secure your Collector's infrastructure.
+See [Hosting best practices](hosting-best-practices/) to learn how to secure
+your Collector's infrastructure.
 
-See [Configuration best practices](config-best-practices/) to
-learn how to securely configure your Collector.
+See [Configuration best practices](config-best-practices/) to learn how to
+securely configure your Collector.
 
 For Collector component developers, see
 [Security best practices](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md).

@@ -162,8 +162,8 @@ to learn how to add the `redaction` processor to your Collector configuration.
 ### Safeguard resource utilization
 
 After implementing safeguards for resource utilization in your
-[hosting infrastructure](../hosting-best-practices/), consider also
-adding these safeguards to your OpenTelemetry Collector configuration.
+[hosting infrastructure](../hosting-best-practices/), consider also adding these
+safeguards to your OpenTelemetry Collector configuration.
 
 Batching your telemetry and limiting the memory available to your Collector can
 prevent out-of-memory errors and usage spikes. You can also handle traffic
