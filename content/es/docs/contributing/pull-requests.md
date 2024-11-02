@@ -14,8 +14,9 @@ contenido existentes, abre un Pull Request (PR):
 - Si tu cambio es pequeño, o no estás familiarizado con Git, lee
   [Editar con GitHub](#changes-using-github) para aprender a editar la página
   desde la interfaz de GitHub.
-- Si tu cambio es más complejo, lee [Editar desde una rama local](#fork-the-repo) para
-  aprender cómo realizar cambios desde tu editor de código.
+- Si tu cambio es más complejo, lee
+  [Editar desde una rama local](#fork-the-repo) para aprender cómo realizar
+  cambios desde tu editor de código.
 
 {{% alert title="Consejo" %}}
 
