@@ -2635,6 +2635,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-06-12T11:21:20.570863+02:00"
   },
+  "https://docs.github.com/es/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork": {
+    "StatusCode": 206,
+    "LastSeen": "2024-10-30T15:12:28.788328409Z"
+  },
   "https://docs.google.com/document/d/1-23Sf7-xZK3OL5Ogv2pK0NP9YotlSa0PKU9bvvtQwp8": {
     "StatusCode": 200,
     "LastSeen": "2024-08-15T15:44:20.868165+02:00"
@@ -7287,6 +7291,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:26:01.154768-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/pull/5386/files": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-02T12:26:48.450866-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/pulls": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:25.833527-05:00"
@@ -7858,6 +7866,10 @@
   "https://github.com/streetsidesoftware/cspell": {
     "StatusCode": 200,
     "LastSeen": "2024-02-15T11:30:50.628118+01:00"
+  },
+  "https://github.com/streetsidesoftware/cspell-dicts": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-02T12:26:45.305184-04:00"
   },
   "https://github.com/strimzi": {
     "StatusCode": 200,
@@ -13418,6 +13430,10 @@
   "https://www.npmjs.com/package/@opentelemetry/shim-opentracing": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:55:41.775458-05:00"
+  },
+  "https://www.npmjs.com/search": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-02T12:26:46.909401-04:00"
   },
   "https://www.nuget.org/packages/": {
     "StatusCode": 200,
