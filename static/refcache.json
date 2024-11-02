@@ -3187,6 +3187,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:47:09.376386-04:00"
   },
+  "https://docs.splunk.com/Documentation/Splunk/latest/Updating/Aboutdeploymentserver": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-02T23:00:07.34114093Z"
+  },
   "https://docs.splunk.com/Observability/gdi/opentelemetry/opentelemetry.html": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:06:25.583516-05:00"
@@ -3262,6 +3266,10 @@
   "https://docs.tracetest.io/configuration/connecting-to-data-stores/opentelemetry-collector": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:14:30.370824-05:00"
+  },
+  "https://docs.vmware.com/en/vRealize-Log-Insight/8.10/com.vmware.log-insight.agent.admin.doc/GUID-40C13E10-1554-4F1B-B832-69CEBF85E7A0.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-11-02T23:00:10.422732673Z"
   },
   "https://docs.vmware.com/en/vRealize-Log-Insight/8.4/com.vmware.log-insight.agent.admin.doc/GUID-40C13E10-1554-4F1B-B832-69CEBF85E7A0.html": {
     "StatusCode": 206,
@@ -12191,6 +12199,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:17.279668-05:00"
   },
+  "https://web.archive.org/web/20240223142649/https://kofo.dev/how-to-mtls-in-golang": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-02T23:00:15.805376094Z"
+  },
   "https://wicg.github.io/ua-client-hints/#interface": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:36:42.997199-05:00"
@@ -12570,6 +12582,10 @@
   "https://www.ibm.com/docs/en/obi/current": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:07:50.513752-05:00"
+  },
+  "https://www.ietf.org/archive/id/draft-ietf-uuidrev-rfc4122bis-14.html#name-uuid-version-7": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-02T23:00:01.024560709Z"
   },
   "https://www.ietf.org/rfc/rfc4122.txt": {
     "StatusCode": 206,
