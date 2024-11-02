@@ -1,5 +1,4 @@
-# cSpell:ignore JDBI
-
+# cSpell:ignore JDBI jdbi Jdbi
 title: JDBI
 registryType: instrumentation
 language: java
