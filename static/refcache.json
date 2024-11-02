@@ -3375,6 +3375,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:47.246698-05:00"
   },
+  "https://embrace.io/docs/open-telemetry/integration/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-11-02T22:02:32.429124483Z"
+  },
+  "https://embrace.io/docs/open-telemetry/integration/#apple": {
+    "StatusCode": 206,
+    "LastSeen": "2024-11-02T22:02:37.069605183Z"
+  },
   "https://embrace.io/opentelemetry-for-mobile/": {
     "StatusCode": 206,
     "LastSeen": "2024-04-25T10:29:55.539338+02:00"
@@ -4858,6 +4866,14 @@
   "https://github.com/elskwid": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:17:19.10152+02:00"
+  },
+  "https://github.com/embrace-io/embrace-android-sdk": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-02T22:02:28.968321617Z"
+  },
+  "https://github.com/embrace-io/embrace-apple-sdk": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-02T22:02:35.245741377Z"
   },
   "https://github.com/emdneto": {
     "StatusCode": 200,
