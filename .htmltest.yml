@@ -15,7 +15,6 @@ IgnoreDirs:
   - ^ja/docs/concepts/instrumentation/libraries/
   # TODO drop next line after https://github.com/open-telemetry/opentelemetry.io/issues/5423 is fixed for pt pages:
   - ^pt/docs/concepts/instrumentation/libraries/
-  - ^blog/(\d+/)?page/\d+
   # DO NOT EDIT! IgnoreDirs list is auto-generated from markdown file front matter.
 IgnoreInternalURLs: # list of paths
 IgnoreURLs: # list of regexs of paths or URLs to be ignored
