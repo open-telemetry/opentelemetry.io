@@ -350,7 +350,7 @@ você precisará de um
 que permitirá que você crie um [`Meter`](/docs/concepts/signals/metrics/#meter).
 
 Caso um `MeterProvider` não seja inicializado, a API de métricas do
-OpenTelemetry irá utilizar uma implementação no-op e não irá gerar dados de
+OpenTelemetry irá utilizar uma implementação sem operação e não irá gerar dados de
 métricas. Sendo assim, é necessário que o código-fonte da aplicação seja
 modificado para incluir a inicialização do SDK utilizando os seguintes pacotes:
 
