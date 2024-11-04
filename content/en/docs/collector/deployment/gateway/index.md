@@ -199,18 +199,16 @@ The load-balancing exporter emits metrics including
 that you can use for health and performance monitoring of the OTLP endpoint
 collector.
 
-## Typical Gateway deployment architecture
+## Combined deployment of Collectors as agents and gateways
 
-A typical Gateway architecture involves running both Collector in Gateway mode
-and Agent mode.
+Often a deployment of multiple OpenTelemetry collectors involves running both Collector as gateways and as [agents](/docs/collector/deployment/agent/).
 
-The following diagram shows a typical deployment architecture for a gateway
-deployment. Here
+The following diagram shows an architecture for such a combined deployment:
 
-- We use Agent Collectors (running on each host, similar to Kubernetes
+- We use the Collectors using the agent deployment pattern (running on each host, similar to Kubernetes
   daemonsets) to collect telemetry from services running on the host and host
   telemetry, such as host metrics and scrap logs.
-- We use Gateway Collectors to process OTLP data, such as filtering, sampling,
+- We use Collectors using the gateway deployment pattern to process data, such as filtering, sampling,
   and exporting to backends etc.
 
 ![gateway](otel-gateway-arch.svg)
