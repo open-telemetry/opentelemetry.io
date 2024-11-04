@@ -5,7 +5,7 @@ description:
   backends
 weight: 3
 # prettier-ignore
-cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadbalancing resourcedetection
+cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadbalancing resourcedetectionprocessor
 ---
 
 The gateway collector deployment pattern consists of applications (or other
