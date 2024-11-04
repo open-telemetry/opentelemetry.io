@@ -4167,6 +4167,18 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:16:18.502766+02:00"
   },
+  "https://github.com/ThrottlingTroll": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-02T22:34:34.462827399Z"
+  },
+  "https://github.com/ThrottlingTroll/ThrottlingTroll": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-02T22:34:51.310844741Z"
+  },
+  "https://github.com/ThrottlingTroll/ThrottlingTroll/wiki#telemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-02T22:32:40.313670712Z"
+  },
   "https://github.com/TomRoSystems": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:16:55.348859+02:00"
@@ -13778,6 +13790,10 @@
   "https://www.nuget.org/packages/System.Data.SqlClient": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:26:43.21023-05:00"
+  },
+  "https://www.nuget.org/packages/ThrottlingTroll": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-02T22:34:51.466534365Z"
   },
   "https://www.nuget.org/profiles/OpenTelemetry": {
     "StatusCode": 200,
