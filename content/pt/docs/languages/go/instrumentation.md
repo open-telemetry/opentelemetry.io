@@ -613,7 +613,7 @@ func recordFanSpeed() {
 }
 ```
 
-### Using Histograms {#using-histograms}
+### Utilizando Histograms {#using-histograms}
 
 Histogramas são utilizados para medir a distribuição de valores ao longo do
 tempo.
