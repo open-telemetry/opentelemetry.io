@@ -22,6 +22,8 @@ and document hooks. Other advantages provided by native instrumentation include:
   various consumption scenarios using a wide variety of well-documented
   OpenTelemetry extensibility points.
 
+![ Native Instrumentation vs instrumentation libraries](/img/libraries-instrumentation.svg)
+
 ## Semantic conventions
 
 [Semantic conventions](/docs/specs/semconv/general/trace/) are the main source
@@ -341,7 +343,7 @@ There might be some exceptions where you don't need to propagate context:
   context propagation in addition to active spans.
   - Put spans (trace context) created by library in the context explicitly,
     document how to access it.
-  - Alow users to pass trace context in your context.
+  - Allow users to pass trace context in your context.
 - Within the library, propagate trace context explicitly. Active spans might
   change during callbacks.
   - Capture active context from users on the public API surface as soon as you

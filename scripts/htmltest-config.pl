@@ -15,7 +15,7 @@ sub main {
 sub collect_htmltest_config_from_front_matter {
     my ($ignore_dirs_ref, @files) = @_;
 
-    foreach my $file_path (@files) {
+    foreach my $file_path (sort @files) {
         my @htmltest_config = extract_htmltest_config($file_path);
         next unless @htmltest_config;
         push @$ignore_dirs_ref, @htmltest_config;
