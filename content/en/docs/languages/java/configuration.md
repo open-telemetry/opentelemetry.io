@@ -1,7 +1,7 @@
 ---
 title: Configure the SDK
 linkTitle: Configure the SDK
-weight: 12
+weight: 13
 aliases: [config]
 # prettier-ignore
 cSpell:ignore: authservice autoconfigured blrp Customizer Dotel ignore LOWMEMORY myservice ottrace PKCS retryable tracepropagators
@@ -11,7 +11,7 @@ cSpell:ignore: authservice autoconfigured blrp Customizer Dotel ignore LOWMEMORY
 <?code-excerpt path-base="examples/java/configuration"?>
 
 The [SDK](../sdk/) is the built-in reference implementation of the
-[API](../instrumentation/), processing and exporting telemetry produced by
+[API](../api-components/), processing and exporting telemetry produced by
 instrumentation API calls. Configuring the SDK to process and export
 appropriately is an essential step to integrating OpenTelemetry into an
 application.
