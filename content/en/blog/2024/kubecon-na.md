@@ -3,7 +3,7 @@ title: Join us for OpenTelemetry Talks and Activities at KubeCon NA 2024
 linkTitle: KubeCon NA '24
 date: 2024-10-15
 # prettier-ignore
-cSpell:ignore: Arnell Ashok Chandrasekar Clario Contribfest Ekansh Grabner Haeussler Helmuth Jernigan Kalkanis Kats Kowall Kruthika Liudmila Mclean Molkova Novatec Prasanna Shivanshu Shrivastava simha Woerner
+cSpell:ignore: Arnell Ashok Chandrasekar Clario Contribfest Ekansh Grabner Haeussler Helmuth Jernigan Kalkanis Kats Kowall Kruthika Liudmila Mclean Molkova Novatec OTTL Prasanna Shivanshu Shrivastava simha Woerner
 author: '[Severin Neumann](https://github.com/svrnm) (Cisco)'
 ---
 
@@ -94,10 +94,25 @@ Drop by and say _"Hi!"_ at OpenTelemetry Observatory presented by Splunk in the
 Expo Hall. This will be a place for informal chats, meetups, and other
 discussions led by OpenTelemetry community members and maintainers.
 
-If you’d like to participate and lead a discussion or short presentation, reach
-out to the
-[OpenTelemetry End User Working Group](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
-to indicate your interest.
+Note, that the Observatory may show up as "Splunk Activation Booth" on the event
+map.
+
+For the activity schedule, see the
+[OTel Observatory Schedule](https://docs.google.com/spreadsheets/d/1E23Dkz1B2us71BtlQq8oG4o_QFsTeLPeh-X2uVnlubg/edit?usp=sharing).
+Note that this schedule may be updated up until the day of the event, so check
+back for the latest!
+
+New for this year!
+
+- SIG Office Hours: Come meet the people behind the project, learn about their
+  work, ask questions, share feedback, or find out how to contribute.
+- Special Topic Discussions: Come learn about two of the hottest OTEPs right
+  now, Events and Entities!
+
+If you'd like to participate by leading a discussion, or if there is a
+discussion topic you're interested in, please reach out to the
+[OpenTelemetry End User SIG](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
+to let us know, and we will see what we can do.
 
 You can help us improve the project by sharing your thoughts and feedback about
 your OpenTelemetry adoption, implementation, and usage.
