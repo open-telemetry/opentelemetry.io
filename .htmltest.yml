@@ -8,6 +8,8 @@ CheckMailto: false
 TestFilesConcurrently: true
 IgnoreDirs:
   # DO NOT EDIT! IgnoreDirs list is auto-generated from markdown file front matter.
+  # 2024-11-03 The following entry is for `en` pages only. Other locales do
+  # not currently require it.
   - ^blog/(\d+/)?page/\d+
   # TODO drop next line after https://github.com/open-telemetry/opentelemetry.io/issues/5423 is fixed for ja pages:
   - ^ja/docs/concepts/instrumentation/libraries/
