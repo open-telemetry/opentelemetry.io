@@ -1105,7 +1105,7 @@ instruções de instalação e configuração.
 
 No _workflow_ utilizado em arquivos ou _stdout_, os logs são gravados em
 arquivos ou na saída padrão da aplicação. Outro componente (por exemplo,
-FluentBit) é responsável por ler/seguir os logs, convertê-los para um formato
+FluentBit) é responsável por ler/acompanhar os logs, convertê-los para um formato
 mais estruturado e encaminhá-los para um destino, como o Collector. Este
 _workflow_ pode ser preferível em situações onde os requisitos da aplicação não
 permitem a sobrecarga adicional do [Direct-to-Collector](#direct-to-collector).
