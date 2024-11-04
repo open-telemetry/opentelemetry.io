@@ -131,4 +131,4 @@ See you in Salt Lake City!
   https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/observability-day/
 [kubecon registration]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/register/
-[#otel-user-research]: https://cloud-native.slack.com/archives/C01RT3MSWGZ
+[#otel-sig-end-user]: https://cloud-native.slack.com/archives/C01RT3MSWGZ
