@@ -350,8 +350,8 @@ você precisará de um
 que permitirá que você crie um [`Meter`](/docs/concepts/signals/metrics/#meter).
 
 Caso um `MeterProvider` não seja inicializado, a API de métricas do
-OpenTelemetry irá utilizar uma implementação sem operação e não irá gerar dados de
-métricas. Sendo assim, é necessário que o código-fonte da aplicação seja
+OpenTelemetry irá utilizar uma implementação sem operação e não irá gerar dados
+de métricas. Sendo assim, é necessário que o código-fonte da aplicação seja
 modificado para incluir a inicialização do SDK utilizando os seguintes pacotes:
 
 - [`go.opentelemetry.io/otel`][]
@@ -738,8 +738,8 @@ func registerDBMetrics(db *sql.DB, meter metric.Meter, poolName string) (metric.
 
 Gauges observáveis devem ser utilizados para medir valores não-aditivos.
 
-Por exemplo, veja como é possível reportar o uso de memória dos objetos do _heap_
-utilizados na aplicação:
+Por exemplo, veja como é possível reportar o uso de memória dos objetos do
+_heap_ utilizados na aplicação:
 
 ```go
 import (
@@ -988,8 +988,9 @@ Para utilizar este _workflow_:
 #### SDK de Logs {#logs-sdk}
 
 A SDK de Logs define como os logs são processados ao utilizar o _workflow_
-[Diretamente para o Collector](#direct-to-collector). Nenhuma SDK de logs é necessária ao
-utilizar o _workflow_ de [encaminhamento de logs](#via-file-or-stdout).
+[Diretamente para o Collector](#direct-to-collector). Nenhuma SDK de logs é
+necessária ao utilizar o _workflow_ de
+[encaminhamento de logs](#via-file-or-stdout).
 
 Uma configuração típica da SDK de logs instala um Processor de logs em lote com
 um Exporter OTLP.
@@ -1000,9 +1001,9 @@ precisará ter um
 que permitirá que você utilize uma [Ponte de Logs](#log-bridge).
 
 Caso um `LoggerProvider` não seja criado, a API de Logs do OpenTelemetry irá
-utilizar uma implementação sem operação e dados de logs não serão gerados. Sendo assim,
-é necessário que o código-fonte da aplicação seja modificado para incluir a
-inicialização do SDK utilizando os seguintes pacotes:
+utilizar uma implementação sem operação e dados de logs não serão gerados. Sendo
+assim, é necessário que o código-fonte da aplicação seja modificado para incluir
+a inicialização do SDK utilizando os seguintes pacotes:
 
 - [`go.opentelemetry.io/otel`][]
 - [`go.opentelemetry.io/otel/sdk/log`][]
@@ -1105,14 +1106,15 @@ instruções de instalação e configuração.
 
 No _workflow_ utilizado em arquivos ou _stdout_, os logs são gravados em
 arquivos ou na saída padrão da aplicação. Outro componente (por exemplo,
-FluentBit) é responsável por ler/acompanhar os logs, convertê-los para um formato
-mais estruturado e encaminhá-los para um destino, como o Collector. Este
+FluentBit) é responsável por ler/acompanhar os logs, convertê-los para um
+formato mais estruturado e encaminhá-los para um destino, como o Collector. Este
 _workflow_ pode ser preferível em situações onde os requisitos da aplicação não
-permitem a sobrecarga adicional do [Diretamente para o Collector](#direct-to-collector).
-No entanto, é requisito que todos os campos de log necessários sejam codificados
-nos logs, e que o componente responsável pela leitura realize a conversão para o
-[modelo de dados de logs][log data model]. A instalação e configuração dos
-componentes de encaminhamento de logs está fora do escopo deste documento.
+permitem a sobrecarga adicional do
+[Diretamente para o Collector](#direct-to-collector). No entanto, é requisito
+que todos os campos de log necessários sejam codificados nos logs, e que o
+componente responsável pela leitura realize a conversão para o [modelo de dados
+de logs][log data model]. A instalação e configuração dos componentes de
+encaminhamento de logs está fora do escopo deste documento.
 
 ## Próximas Etapas (#next-steps)
 
