@@ -61,7 +61,7 @@ aplicación.
 Para más información, consulta
 [Instrumentación](/docs/concepts/instrumentation/).
 
-### Librerías de Instrumentación
+### Librerías de instrumentación
 
 OpenTelemetry soporta una amplia gama de componentes que generan datos de
 telemetría relevantes desde librerías y frameworks populares para los lenguajes
