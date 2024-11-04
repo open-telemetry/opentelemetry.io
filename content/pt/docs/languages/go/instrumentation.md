@@ -1000,7 +1000,7 @@ precisará ter um
 que permitirá que você utilize uma [Ponte de Logs](#log-bridge).
 
 Caso um `LoggerProvider` não seja criado, a API de Logs do OpenTelemetry irá
-utilizar uma implementação no-op e dados de logs não serão gerados. Sendo assim,
+utilizar uma implementação sem operação e dados de logs não serão gerados. Sendo assim,
 é necessário que o código-fonte da aplicação seja modificado para incluir a
 inicialização do SDK utilizando os seguintes pacotes:
 
