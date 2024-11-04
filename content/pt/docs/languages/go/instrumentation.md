@@ -966,7 +966,7 @@ de design, consulte a [Especificação de Logs](/docs/specs/otel/logs/).
 Os dois _workflows_ discutidos abaixo atendem a diferentes requisitos de
 aplicação.
 
-### Direct-to-Collector
+### Direto para o Collector {direct-to-collector}
 
 **Estado**: [Experimental](/docs/specs/otel/document-status/)
 
