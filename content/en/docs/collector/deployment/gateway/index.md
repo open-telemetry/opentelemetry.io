@@ -201,37 +201,35 @@ collector.
 
 ## Combined deployment of Collectors as agents and gateways
 
-Often a deployment of multiple OpenTelemetry collectors involves running both Collector as gateways and as [agents](/docs/collector/deployment/agent/).
+Often a deployment of multiple OpenTelemetry collectors involves running both
+Collector as gateways and as [agents](/docs/collector/deployment/agent/).
 
 The following diagram shows an architecture for such a combined deployment:
 
-- We use the Collectors using the agent deployment pattern (running on each host, similar to Kubernetes
-  daemonsets) to collect telemetry from services running on the host and host
-  telemetry, such as host metrics and scrap logs.
-- We use Collectors using the gateway deployment pattern to process data, such as filtering, sampling,
-  and exporting to backends etc.
+- We use the Collectors running in the agent deployment pattern (running on each
+  host, similar to Kubernetes daemonsets) to collect telemetry from services
+  running on the host and host telemetry, such as host metrics and scrap logs.
+- We use Collectors running in the gateway deployment pattern to process data,
+  such as filtering, sampling, and exporting to backends etc.
 
 ![gateway](otel-gateway-arch.svg)
 
-There are a few limitations in running the OpenTelemetry Collector in gateway
-mode.
+This combined deployment pattern is necessary, when you use components in your
+Collector that either need to be unique per host or that consume information
+that is only available on the same host as the application is running:
 
-- There are few receivers in OpenTelemetry Collector that need to be unique per
-  host instance. Running multiple instances of these receivers will result in
-  duplicate data. It is recommended not to use them in the Gateway Collector but
-  only for the collector running in Agent mode. Examples include, but are not
-  limited to:
+- Receivers like the
+  [`hostmetricsreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver)
+  or
+  [`filelogreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver)
+  need to be unique per host instance. Running multiple instances of these
+  receivers will result in duplicated data.
 
-  - [`hostmetricsreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver),
-    may result in duplicate host metrics.
-  - [`filelogreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver),
-    may result in duplicate logs.
-
-- Using a
-  [`resourcedetection`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor)
-  processor in gateway mode is not recommended. This processor is used to detect
-  the resources of the host where the Collector is running. Use
-  `resourcedetection` processor in the pipeline of Agent collector deployment.
+- Processors like the
+  [`resourcedetectionprocessor`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor)
+  are used to add information about the host, the collector and the application
+  are running on. Running them within a Collector on a remote machine will
+  result in incorrect data.
 
 ## Tradeoffs
 
