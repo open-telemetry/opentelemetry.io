@@ -6,4 +6,6 @@ description:
 redirect: /ecosystem/registry/?language=java
 _build: { render: link }
 weight: 300
+aliases:
+  - /docs/java/registry
 ---

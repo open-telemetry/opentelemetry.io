@@ -61,8 +61,9 @@ The OpenTelemetry Java documentation is organized as follows:
   Most users will use this page like an encyclopedia, consulting the index of
   sections as needed, rather than reading front to back.
 - **Learn More**: Supplementary resources, including end-to-end
-  [examples](../examples/), [Javadoc](../api/), component
-  [registry](../registry/), and a [performance reference](../performance/).
+  [examples](../learn-more/examples/), [Javadoc](../learn-more/api/), component
+  [registry](../learn-more/registry/), and a
+  [performance reference](../learn-more/performance/).
 
 ## Repositories
 

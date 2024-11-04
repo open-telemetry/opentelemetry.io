@@ -5,6 +5,7 @@ manualLinkTarget: _blank
 aliases:
   - /docs/java/instrumentation_examples
   - /docs/languages/java/instrumentation_examples
+  - /docs/java/examples
 _build: { render: link }
 weight: 220
 ---
