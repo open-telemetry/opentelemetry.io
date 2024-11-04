@@ -224,7 +224,6 @@ O pacote
 possui uma implementação do Exporter de Logs OTLP utilizando o protocolo HTTP
 com payloads binários protobuf.
 
-contains an implementation of OTLP logs exporter using HTTP with binary protobuf
 payloads.
 
 Por exemplo, aqui está como é possível criar um Exporter com as configurações
