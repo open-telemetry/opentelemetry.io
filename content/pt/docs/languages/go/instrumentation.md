@@ -861,7 +861,7 @@ meterProvider := metric.NewMeterProvider(
 )
 ```
 
-A SDK filtra métricas e atributos antes de exportar as métricas. Você pode
+O SDK filtra métricas e atributos antes de exportar as métricas. Você pode
 utilizar _views_ para reduzir o uso de memória de métricas de alta cardinalidade
 ou descartar atributos que possam conter dados sensíveis.
 
