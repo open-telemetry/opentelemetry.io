@@ -5,7 +5,7 @@ aliases: [instrumenting]
 weight: 15
 ---
 
-![ Native Instrumentation vs instrumentation libraries](/img/libraries-instrumentation.svg)
+![ Native Instrumentation vs instrumentation libraries](/libraries-instrumentation.svg)
 
 In order to make a system observable, it must be **instrumented**: That is, code
 from the system's components must emit [traces](/docs/concepts/signals/traces/),

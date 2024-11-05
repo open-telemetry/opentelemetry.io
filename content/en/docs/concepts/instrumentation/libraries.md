@@ -22,8 +22,6 @@ and document hooks. Other advantages provided by native instrumentation include:
   various consumption scenarios using a wide variety of well-documented
   OpenTelemetry extensibility points.
 
-
-
 ## Semantic conventions
 
 [Semantic conventions](/docs/specs/semconv/general/trace/) are the main source
