@@ -52,6 +52,11 @@ It is also easier to [setup a collector](quick-start) than you might think: the
 default OTLP exporters in each language assume a local collector endpoint, so if
 you launch a collector it will automatically start receiving telemetry.
 
+## Collector security
+
+Follow best practices to make sure your collectors are [hosted] and [configured]
+securely.
+
 ## Status and releases
 
 The **Collector** status is: [mixed][], since core Collector components
@@ -70,6 +75,8 @@ for more details.
 {{% docs/latest-release collector-releases /%}}
 
 [registry]: /ecosystem/registry/?language=collector
+[hosted]: /docs/security/hosting-best-practices/
+[configured]: /docs/security/config-best-practices/
 [mixed]: /docs/specs/otel/document-status/#mixed
 [stability levels]:
   https://github.com/open-telemetry/opentelemetry-collector#stability-levels
