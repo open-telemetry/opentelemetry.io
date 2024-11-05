@@ -4,6 +4,7 @@ description: Obtenha telemetria para seu aplicativo em menos de 5 minutos!
 aliases: [/docs/js/getting_started/nodejs]
 cSpell:ignore: autoinstrumentations KHTML rolldice
 weight: 10
+default_lang_commit: 2bda479b6ce77f51266845ade9fe1b431dfde0d3
 ---
 
 Esta página mostrará como começar a usar o OpenTelemetry no Node.js.
@@ -28,7 +29,7 @@ TypeScript.
 
 O exemplo a seguir usa um básico [Express](https://expressjs.com/)
 aplicação. Se você não estiver usando o Express, está OK — você pode usar OpenTelemetry
-JavaScript com outras estruturas da web também, como Koa e Nest.JS. Para uma lista completa de blibliotecas para frameworks suportados, veja o
+JavaScript com outras estruturas da web também, como Koa e Nest.JS. Para uma lista completa de bibliotecas para frameworks suportados, veja o
 [registry](/ecosystem/registry/?component=instrumentation&language=js).
 
 Para exemplos mais elaborados, veja [exemplos](/docs/languages/js/examples/).

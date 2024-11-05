@@ -3,6 +3,7 @@ title: Navegador
 aliases: [/docs/js/getting_started/browser]
 description: Aprenda como adicionar OpenTelemetry para seu aplicativo de navegador
 weight: 20
+default_lang_commit: 06837fe15457a584f6a9e09579be0f0400593d57
 ---
 
 {{% alert title="Warning" color="warning" %}}
@@ -131,7 +132,7 @@ Agora crie o aplicativo com parcel:
 npx parcel index.html
 ```
 
-e abra o sevidor de desenvolvimento web (e.g. at `http://localhost:1234`) para ver o se código funciona.
+e abra o servidor de desenvolvimento web (e.g. at `http://localhost:1234`) para ver se o seu código funciona.
 
 Ainda não haverá saída de rastros, para isso precisamos adicionar um exportador.
 
