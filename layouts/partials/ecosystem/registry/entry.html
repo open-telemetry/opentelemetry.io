@@ -49,10 +49,6 @@ $remoteRegistries := dict
 -}}
 
     {{ $isNative := and (or (eq .registryType "instrumentation") (eq .registryType "application integration")) (.isNative) }}
-    <span class="badge rounded-pill text-bg-success text-white" 
-          title="This is a native integration">
-        <i class="fa-solid fa-puzzle-piece"></i> native
-    </span>
     {{ $isFirstParty := and (or (eq .registryType "instrumentation") (eq .registryType "application integration")) (.isFirstParty) }}
 {{ $currentTime := (time now) -}}
 {{ $delta := $currentTime.Sub (time.AsTime .createdAt) -}}
