@@ -13,6 +13,7 @@ let numFilesProcessed = 0,
 let debugFlag = false;
 
 const schema = require('../data/registry-schema.json');
+delete schema['cspell:ignore'];
 const ajv = new Ajv({
   allErrors: true,
 });
