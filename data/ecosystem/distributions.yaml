@@ -103,14 +103,15 @@
   url: https://github.com/elastic/elastic-otel-python
   docsUrl: https://github.com/elastic/elastic-otel-python
   components: [Python]
-<<<<<<< Updated upstream
-=======
 - name: Embrace Android Distribution for OpenTelemetry
   url: https://github.com/embrace-io/embrace-android-sdk
   docsUrl: https://embrace.io/docs/open-telemetry/integration/?android-language=java
   components: [Android]
+- name: Embrace Android Distribution for OpenTelemetry
+  url: https://github.com/embrace-io/embrace-android-sdk
+  docsUrl: https://embrace.io/docs/open-telemetry/integration/?android-language=java
+  components: [Java]
 - name: Embrace Apple Distribution for OpenTelemetry
   url: https://github.com/embrace-io/embrace-apple-sdk
   docsUrl: https://embrace.io/docs/open-telemetry/integration/#apple
   components: [Swift]
->>>>>>> Stashed changes

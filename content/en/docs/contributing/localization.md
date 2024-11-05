@@ -235,22 +235,30 @@ For more details about the script, run `npm run check:i18n -- -h`.
 To start a new localization for the OpenTelemetry website,
 [raise an issue](https://github.com/open-telemetry/opentelemetry.io/issues/) to
 share your interest to contribute. Tag all other individuals that are willing to
-write and review translations in the language you want to add. You need at least
-two potential contributors, three would be ideal. Include the following task
+write and review translations in the language you want to add. **You need at
+least two potential contributors**, ideally three. Include the following task
 list in your issue as well:
 
 ```markdown
-- [ ] List at least 2 contributors for the new language: `<@gitHubHandle1>`,
-  `<@gitHubHandle2>`, ...
-- [ ] Localize index page to `<your language>`
-- [ ] Create an issue label for `lang:<shortcode>`
-- [ ] Create org-level group for `<shortcode>` approvers
-- [ ] Update components owners for `content/<shortcode>`
+- [ ] Contributors for the new language: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
+- [ ] Localize site homepage to YOUR_LANGUAGE_NAME
+- [ ] Create an issue label for `lang:LANG_ID`
+- [ ] Create org-level group for `LANG_ID` approvers
+- [ ] Update components owners for `content/LANG_ID`
+- [ ] Set up spell checking, if a cSpell dictionary is available
 ```
 
-For the `<shortcode>` use the
-[ISO 639-1 code](https://en.wikipedia.org/wiki/ISO_639-1) for the language you
-want to add.
+Notes:
+
+- For `LANG_ID`, use an official
+  [ISO 639-1 code](https://en.wikipedia.org/wiki/ISO_639-1) for the language you
+  want to add.
+- Look for
+  [cSpell dictionaries](https://github.com/streetsidesoftware/cspell-dicts)
+  available as NPM packages
+  [@cspell/dict-LANG_ID](https://www.npmjs.com/search?q=%40cspell%2Fdict). If a
+  dictionary isn't available for your dialect or region, choose the closest
+  region. For an example of how to set this up, see [PR #5386].
 
 After you created that issue and have the required amount of contributors,
 maintainers will ask you to provide a pull request with a translation of the
@@ -279,3 +287,4 @@ if you are an approver already.
 
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
 [multilingual framework]: https://gohugo.io/content-management/multilingual/
+[PR #5386]: https://github.com/open-telemetry/opentelemetry.io/pull/5386/files
