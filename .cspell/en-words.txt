@@ -69,7 +69,6 @@ lifecycles
 lightstep
 Loffay
 Mancuso
-matlab
 microservices
 mongodb
 ndjson
