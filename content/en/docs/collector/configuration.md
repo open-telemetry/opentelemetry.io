@@ -14,7 +14,8 @@ the following content:
 
 - [Data collection concepts][dcc], to understand the repositories applicable to
   the OpenTelemetry Collector.
-- [Security guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md)
+- [Security guidance for end users](/docs/security/config-best-practices/)
+- [Security guidance for component developers](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md)
 
 ## Location {#location}
 
