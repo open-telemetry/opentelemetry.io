@@ -53,6 +53,8 @@ There are several categories of instrumentation:
   libraries and frameworks.
 - [Manual instrumentation](#manual-instrumentation) is written by application
   authors, and typically specific to the application domain.
+- [Shims](#shims) bridge data from one observability library to another,
+  typically _from_ some library into OpenTelemetry.
 
 **[1]**: Zero-code instrumentation is installed automatically based on detected
 libraries / frameworks.
