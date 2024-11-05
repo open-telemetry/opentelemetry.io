@@ -992,7 +992,7 @@ O SDK de Logs define como os logs são processados ao utilizar o _workflow_
 necessário ao utilizar o _workflow_ de
 [encaminhamento de logs](#via-file-or-stdout).
 
-Uma configuração típica da SDK de logs instala um Processor de logs em lote com
+Uma configuração típica do SDK de logs instala um Processor de logs em lote com
 um Exporter OTLP.
 
 Para habilitar [logs](/docs/concepts/signals/logs/) em sua aplicação, você
