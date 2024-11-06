@@ -7,7 +7,7 @@ description: >-
 aliases: [/js, /js/metrics, /js/tracing]
 cSpell:ignore: Roadmap
 weight: 20
-default_lang_commit: 595c94a291f649b1170dc6475b3983771e4a86df
+default_lang_commit: 24dbe7a95c8db685e410947de05a3baf96c7c349
 ---
 
 {{% docs/languages/index-intro js es /%}}
