@@ -39,4 +39,3 @@ aliases: [demo_screenshots]
 | Basic view                                           | Advanced view                                              |
 | ---------------------------------------------------- | ---------------------------------------------------------- |
 | ![flagd-ui-basic-view](flagd-configurator-basic.png) | ![flagd-ui-advanced-view](flagd-configurator-advanced.png) |
-
