@@ -57,7 +57,8 @@ preferred shell.
 
 ## Generate and collect telemetry
 
-3. Launch the Collector, listening on ports 4317 (for OTLP gRPC), 4318 (for OTLP HTTP) and 55679 (for ZPages):
+3. Launch the Collector, listening on ports 4317 (for OTLP gRPC), 4318 (for OTLP
+   HTTP) and 55679 (for ZPages):
 
    ```sh
    docker run \
