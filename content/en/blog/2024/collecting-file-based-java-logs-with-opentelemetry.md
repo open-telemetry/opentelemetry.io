@@ -20,7 +20,7 @@ And by turnkey, we really mean it:
 
 The deployment architecture looks like the following:
 
-![OTLP/JSON Architecture][collecting-file-based-java-logs-with-opentelemetry/otlpjson-architecture.png]
+![OTLP/JSON Architecture](collecting-file-based-java-logs-with-opentelemetry/otlpjson-architecture.png)
 
 ## Set by step setup
 
@@ -73,7 +73,7 @@ java -javaagent:/path/to/opentelemetry-javaagent.jar \
 
 * Configure the OpenTelemetry Collector to ingest the OTLP/JSON logs:
 
-![OpenTelemetry Collector OTLP/JSON pipeline][collecting-file-based-java-logs-with-opentelemetry/otel-collector-otlpjson-pipeline.png]
+![OpenTelemetry Collector OTLP/JSON pipeline](collecting-file-based-java-logs-with-opentelemetry/otel-collector-otlpjson-pipeline.png)
 
 Source: [https://www.otelbin.io/s/69739d790cf279c203fc8efc86ad1a876a2fc01a](https://www.otelbin.io/s/69739d790cf279c203fc8efc86ad1a876a2fc01a)
 
