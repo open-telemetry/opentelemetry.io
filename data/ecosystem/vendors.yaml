@@ -451,3 +451,9 @@
   contact: 'hello@groundcover.com'
   oss: false
   commercial: true
+- name: Better Stack
+  nativeOTLP: true
+  url: https://betterstack.com/docs/logs/open-telemetry/
+  contact: hello@betterstack.com
+  oss: false
+  commercial: true
