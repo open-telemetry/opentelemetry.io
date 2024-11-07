@@ -78,8 +78,6 @@
     "make:public": "make public ls-public",
     "netlify-build:preview": "npm run seq -- build:preview diff:check",
     "netlify-build:production": "npm run build:production",
-    "postbuild:preview": "npm run _check:links--warn",
-    "postbuild:production": "npm run _check:links--warn",
     "postget:submodule": "git submodule",
     "postnetlify-build:production": "git restore .htmltest.yml && npm run diff:check",
     "prebuild:preview": "npm run _prebuild",
