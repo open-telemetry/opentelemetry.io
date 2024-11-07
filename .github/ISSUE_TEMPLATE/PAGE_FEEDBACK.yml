@@ -1,0 +1,27 @@
+name: Page Feedback
+description: >-
+  Used for page feedback from users visiting opentelemetry.io and clicking "no"
+  if a page was helpful.
+title: '[Page Feedback]: Your feedback'
+body:
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: >-
+        The URL of the website where you are facing an issue. If not
+        auto-populated please copy the URL from the browser address bar.
+      placeholder: https://opentelemetry.io/
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description:
+        'How has the page not been helpful? What information is missing? '
+      placeholder: >-
+        Provide details on the problem. The more information you share with us
+        the easier it is to help and to provide a solution
+    validations:
+      required: true
