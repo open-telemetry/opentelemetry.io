@@ -7,7 +7,9 @@ tags:
   - exporter
   - collector
 license: Apache 2.0
-description: Pulsar exporter exports logs, metrics, and traces to Pulsar. This exporter uses a synchronous producer
+description:
+  Pulsar exporter exports logs, metrics, and traces to Pulsar. This exporter
+  uses a synchronous producer
 authors:
   - name: OpenTelemetry Authors
 urls:

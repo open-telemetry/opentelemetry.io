@@ -7,7 +7,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The Kubernetes Objects receiver collects(pull/watch) objects from the Kubernetes API server.
+description:
+  The Kubernetes Objects receiver collects(pull/watch) objects from the
+  Kubernetes API server.
 authors:
   - name: OpenTelemetry Authors
 urls:

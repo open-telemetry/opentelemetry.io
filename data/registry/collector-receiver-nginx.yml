@@ -7,7 +7,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The NGINX Receiver for the OpenTelemetry Collector can fetch stats from a NGINX instance using a mod_status endpoint.
+description:
+  The NGINX Receiver for the OpenTelemetry Collector can fetch stats from a
+  NGINX instance using a mod_status endpoint.
 authors:
   - name: OpenTelemetry Authors
 urls:

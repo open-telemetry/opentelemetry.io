@@ -7,7 +7,8 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The Solace receiver receives trace data from a Solace PubSub+ Event Broker
+description:
+  The Solace receiver receives trace data from a Solace PubSub+ Event Broker
 authors:
   - name: OpenTelemetry Authors
 urls:
