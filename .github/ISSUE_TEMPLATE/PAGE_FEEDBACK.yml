@@ -9,8 +9,8 @@ body:
     attributes:
       label: URL
       description: >-
-        The URL of the website where you are facing an issue. If not
-        auto-populated please copy the URL from the browser address bar.
+        The URL of the webpage where you are facing an issue. If not
+        auto-populated, please copy the URL from the browser address bar.
       placeholder: https://opentelemetry.io/
     validations:
       required: true
@@ -22,6 +22,6 @@ body:
         'How has the page not been helpful? What information is missing? '
       placeholder: >-
         Provide details on the problem. The more information you share with us
-        the easier it is to help and to provide a solution
+        the faster we can resolve the issue.
     validations:
       required: true
