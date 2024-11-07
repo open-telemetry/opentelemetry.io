@@ -1,0 +1,31 @@
+name: Pull Request Opened Help Message
+on:
+  pull_request_target:
+    types: [opened]
+
+jobs:
+  pr-opened-help-message:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Comment on PR
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `Hello 👋! Thanks for opening a pull request. 
+              
+              Please make sure to follow the [contribution guidelines](https://opentelemetry.io/docs/contributing/). 
+                
+              We will run some checks on your PR. If they fail, take a look in to our [guide on pr-checks](https://opentelemetry.io/docs/contributing/pr-checks/). 
+              Most issues can be resolved by running \`npm run fix:all\` locally and pushing the changes. 
+              But please note that it is not your responsibility to fix all the issues. We will help you with that. 
+                
+              If you have any questions, feel free to ask.`
+            })
