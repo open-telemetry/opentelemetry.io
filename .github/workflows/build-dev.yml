@@ -23,10 +23,7 @@ jobs:
 
       - name: Create and use reduced-dependencies package.json
         run: |
-          jq '.devDependencies |= with_entries(
-                  select(.key | test("prefix|hugo|css"))
-                )
-                | del(.dependencies, .optionalDependencies)' \
+          jq 'del(.dependencies, .optionalDependencies)' \
             package.json > tmp/package-min.json
           cp tmp/package-min.json package.json
 
@@ -38,18 +35,9 @@ jobs:
 
       - run: npm install --omit=optional
 
-      - name: Fetch all submodules at HEAD
-        run: npm run update:submodule
-
-      - name:
-          Revert to pinned versions of submodules except for
-          submodule_path_regex
-        run: npm run _sync -- ${{ inputs.submodule_path_regex }}
-
       - run: npm run log:test-and-fix
-        continue-on-error: true
         env:
-          GET: no
+          PIN_SKIP: ${{ inputs.submodule_path_regex }}
 
       - uses: actions/upload-artifact@v4
         with:
