@@ -36,11 +36,11 @@ service:
   telemetry:
     metrics:
       readers:
-        pull:
-          exporter:
-            prometheus:
-              host: '0.0.0.0'
-              port: 8888
+        - pull:
+            exporter:
+              prometheus:
+                host: '0.0.0.0'
+                port: 8888
 ```
 
 You can adjust the verbosity of the Collector metrics output by setting the
@@ -64,46 +64,6 @@ service:
     metrics:
       level: detailed
 ```
-
-The Collector can also be configured to push its own metrics to an
-[OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
-and send them through configured pipelines. In the following example, the
-Collector is configured to push metrics every 10s using OTLP gRPC to
-`localhost:14317`:
-
-```yaml
-receivers:
-  otlp/internal_metrics:
-    protocols:
-      grpc:
-        endpoint: localhost:14317
-exporters:
-  debug:
-service:
-  pipelines:
-    metrics:
-      receivers: [otlp/internal_metrics]
-      exporters: [debug]
-  telemetry:
-    metrics:
-      readers:
-        - periodic:
-            interval: 10000
-            exporter:
-              otlp:
-                protocol: grpc/protobuf
-                endpoint: localhost:14317
-```
-
-{{% alert title="Caution" color="warning" %}}
-
-When self-monitoring, the Collector collects its own telemetry and sends it to
-the desired backend for analysis. This can be a risky practice. If the Collector
-is underperforming, its self-monitoring capability could be impacted. As a
-result, the self-monitored telemetry might not reach the backend in time for
-critical analysis.
-
-{{% /alert %}}
 
 ### Configure internal logs
 
@@ -143,6 +103,94 @@ journalctl | grep otelcol | grep Error
 ```
 
 {{% /tab %}} {{< /tabpane >}}
+
+### Configure internal traces
+
+The Collector does not expose traces by default, but it can be configured to.
+
+{{% alert title="Caution" color="warning" %}}
+
+Internal tracing is an experimental feature, and no guarantees are made as to
+the stability of the emitted span names and attributes.
+
+{{% /alert %}}
+
+The following configuration can be used to emit internal traces from the
+Collector to an OTLP/gRPC backend:
+
+```yaml
+service:
+  telemetry:
+    traces:
+      processors:
+        - batch:
+            exporter:
+              otlp:
+                protocol: grpc/protobuf
+                endpoint: https://backend:4317
+```
+
+See the [example configuration][kitchen-sink-config] for additional options.
+Note that the `tracer_provider` section there corresponds to `traces` here.
+
+[kitchen-sink-config]:
+  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml
+
+### Self-monitoring
+
+The Collector can be configured to push its own telemetry to an
+[OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
+and send the data through configured pipelines. In the following example, the
+Collector is configured to push metrics and traces every 10s using OTLP gRPC to
+`localhost:14317`:
+
+```yaml
+receivers:
+  otlp/internal:
+    protocols:
+      grpc:
+        endpoint: localhost:14317
+exporters:
+  debug:
+service:
+  pipelines:
+    metrics:
+      receivers: [otlp/internal]
+      exporters: [debug]
+    traces:
+      receivers: [otlp/internal]
+      exporters: [debug]
+  telemetry:
+    metrics:
+      readers:
+        - periodic:
+            interval: 10000
+            exporter:
+              otlp:
+                protocol: grpc/protobuf
+                endpoint: localhost:14317
+    traces:
+      processors:
+        batch:
+          exporter:
+            otlp:
+              protocol: grpc/protobuf
+              endpoint: localhost:14317
+```
+
+{{% alert title="Caution" color="warning" %}}
+
+When self-monitoring, the Collector collects its own telemetry and sends it to
+the desired backend for analysis. This can be a risky practice. If the Collector
+is underperforming, its self-monitoring capability could be impacted. As a
+result, the self-monitored telemetry might not reach the backend in time for
+critical analysis.
+
+Moreover, sending internal telemetry through the Collector's own pipelines can
+create a continuous loop of spans, metric points, or logs, putting undue strain
+on the Collector's performance. This setup should not be used in production.
+
+{{% /alert %}}
 
 ## Types of internal telemetry
 

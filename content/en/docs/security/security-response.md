@@ -1,5 +1,5 @@
 ---
-title: Community Incident Response Guidelines
+title: Community incident response guidelines
 weight: 102
 ---
 
