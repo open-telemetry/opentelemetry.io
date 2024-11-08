@@ -113,11 +113,11 @@
     "ajv-errors": "^3.0.0",
     "ajv-formats": "^3.0.1",
     "autoprefixer": "^10.4.20",
-    "cspell": "^8.15.5",
+    "cspell": "^8.16.0",
     "gulp": "^5.0.0",
-    "hugo-extended": "0.136.5",
+    "hugo-extended": "0.138.0",
     "js-yaml": "^4.1.0",
-    "markdown-link-check": "^3.12.2",
+    "markdown-link-check": "^3.13.6",
     "markdownlint": "^0.36.1",
     "postcss-cli": "^11.0.0",
     "prettier": "^3.3.3",
@@ -134,8 +134,8 @@
     "@opentelemetry/auto-instrumentations-web": "^0.42.0",
     "@opentelemetry/context-zone": "^1.27.0",
     "@opentelemetry/core": "^1.27.0",
-    "@opentelemetry/exporter-trace-otlp-http": "^0.54.0",
-    "@opentelemetry/instrumentation": "^0.54.0",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.54.2",
+    "@opentelemetry/instrumentation": "^0.54.2",
     "@opentelemetry/resources": "^1.27.0",
     "@opentelemetry/sdk-trace-base": "^1.27.0",
     "@opentelemetry/sdk-trace-web": "^1.27.0",
@@ -144,7 +144,7 @@
   },
   "optionalDependencies": {
     "netlify-cli": "^17.37.2",
-    "npm-check-updates": "^17.1.9"
+    "npm-check-updates": "^17.1.10"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "engines": {
