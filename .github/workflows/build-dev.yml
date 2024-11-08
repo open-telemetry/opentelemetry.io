@@ -44,7 +44,7 @@ jobs:
       - name:
           Revert to pinned versions of submodules except for
           submodule_path_regex
-        run: npm run _sync -- ${{ inputs.submodule_path_regex }}
+        run: npm run _pin -- ${{ inputs.submodule_path_regex }}
 
       - run: npm run log:test-and-fix
         continue-on-error: true
