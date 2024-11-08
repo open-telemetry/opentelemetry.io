@@ -282,7 +282,8 @@ libraries. For a complete list, see [Instrumentations](./instrumentations).
 ## Troubleshooting
 
 To see the telemetry from your application directly on the standard output, add
-`console` to the following environment variables value before launching your application:
+`console` to the following environment variables value before launching your
+application:
 
 - `OTEL_TRACES_EXPORTER`
 - `OTEL_METRICS_EXPORTER`
