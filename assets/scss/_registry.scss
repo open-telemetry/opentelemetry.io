@@ -41,11 +41,17 @@
 }
 
 // Scroll-to-top button styling
+.scroll-container {
+  text-align: center;
+  margin-top: 20px;
+}
 
-@media screen and (max-width: 768px) {
-  .scroll-to-top-btn {
-    bottom: 20px;
-    right: 20px;
-    padding: 10px;
-  }
+.scroll-btn {
+  background-color: #007bff;
+  color: white;
+  bottom: 40px;
+  right: 40px;
+  display: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
