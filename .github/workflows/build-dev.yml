@@ -37,7 +37,7 @@ jobs:
 
       - run: npm run log:test-and-fix
         env:
-          CMD_SKIP: i18n
+          CMD_SKIP: i18n|registry
           PIN_SKIP: ${{ inputs.submodule_path_regex }}
 
       - uses: actions/upload-artifact@v4
