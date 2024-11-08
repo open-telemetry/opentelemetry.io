@@ -281,12 +281,12 @@ libraries. For a complete list, see [Instrumentations](./instrumentations).
 
 ## Troubleshooting
 
-To see the telemetry from your application directly on the standard output, set
-the following environment variables to `true` before launching your application:
+To see the telemetry from your application directly on the standard output, add
+`console` to the following environment variables value before launching your application:
 
-- `OTEL_DOTNET_AUTO_LOGS_CONSOLE_EXPORTER_ENABLED`
-- `OTEL_DOTNET_AUTO_METRICS_CONSOLE_EXPORTER_ENABLED`
-- `OTEL_DOTNET_AUTO_TRACES_CONSOLE_EXPORTER_ENABLED`
+- `OTEL_TRACES_EXPORTER`
+- `OTEL_METRICS_EXPORTER`
+- `OTEL_LOGS_EXPORTER`
 
 For general troubleshooting steps and solutions to specific issues, see
 [Troubleshooting](./troubleshooting).
