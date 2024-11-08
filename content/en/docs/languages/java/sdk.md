@@ -1387,4 +1387,4 @@ you must also add a dependency on a
 TODO: document tools available for testing the SDK
 
 [JSON file encoding]:
-  https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/file-exporter.md#json-file-serialization
+  /docs/specs/otel/protocol/file-exporter/#json-file-serialization
