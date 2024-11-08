@@ -92,7 +92,7 @@ same as the **Protocol** status.
 
 ### [Logging][]
 
-- {{% spec_status "API" "otel/logs/api" "Status" %}}
+- {{% spec_status "Bridge API" "otel/logs/api" "Status" %}}
 - {{% spec_status "SDK" "otel/logs/sdk" "Status" %}}
 - {{% spec_status "Event API" "otel/logs/event-api" "Status" %}}
 - {{% spec_status "Protocol" "otlp" "Status" %}}
