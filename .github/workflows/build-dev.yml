@@ -37,6 +37,7 @@ jobs:
 
       - run: npm run log:test-and-fix
         env:
+          FIX_MOST_SKIP: i18n|refcache|submodule
           PIN_SKIP: ${{ inputs.submodule_path_regex }}
 
       - uses: actions/upload-artifact@v4
