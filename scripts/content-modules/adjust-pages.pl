@@ -42,6 +42,12 @@ sub printTitleAndFrontMatter() {
     $frontMatterFromFile =~ s/linkTitle: .*/$& $semconvVers/;
     # $frontMatterFromFile =~ s/body_class: .*/$& td-page--draft/;
     # $frontMatterFromFile =~ s/cascade:\n/$&  draft: true\n/;
+  } elsif ($ARGV =~ /otel\/specification\/logs\/api.md$/) {
+    if ($otelSpecVers ne "1.39.0") {
+      # TODO: delete the enclosing elsif body
+      print STDOUT "WARNING: $0: remove obsolete code now that OTel spec has been updated.\n"
+    }
+    $frontMatterFromFile .= "linkTitle: API\naliases: [bridge-api]\n";
   }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
