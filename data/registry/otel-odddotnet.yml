@@ -1,0 +1,28 @@
+title: OddDotNet OTel Collector Test Harness
+registryType: utilities
+language: collector
+tags:
+  - proto
+  - protobuf
+  - testing
+  - odd
+  - observability
+  - collector
+  - test-harness
+urls:
+  repo: https://github.com/OddDotNet/OddDotNet
+  docs: https://odddotnet.github.io/OddDotDocs/
+license: Apache 2.0 
+description: 
+  OddDotNet is an OpenTelemetry Test Harness that works for any language, built in .NET.
+  It is a container image that accepts OpenTelemetry signals over gRPC (and soon HTTP),
+  and it includes a query language for verifying and validating those signals.
+
+  OddDotNet enables automated Observability Driven Development, hence where it gets its name.
+authors:
+  - name: Tyler Kenna
+    email: odddotnet@gmail.com
+    url: https://github.com/DoubleTK
+createdAt: '2024-11-08'
+isNative: true
+isFirstParty: false 
