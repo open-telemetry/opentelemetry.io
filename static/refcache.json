@@ -5075,6 +5075,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-06-12T11:21:46.656082+02:00"
   },
+  "https://github.com/golang/go/issues/68652#issuecomment-2274452424": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-07T20:32:07.730871-05:00"
+  },
   "https://github.com/google/pprof": {
     "StatusCode": 200,
     "LastSeen": "2024-10-24T15:10:16.695786+02:00"
