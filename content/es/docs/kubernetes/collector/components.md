@@ -1,7 +1,7 @@
 ---
 title: Componentes clave para Kubernetes
 linkTitle: Componentes
-default_lang_commit: 9b53527853049b249f60f12a000c0d85b9e5f5dc
+default_lang_commit: 68428d019fb85d6e53d2f983ce88c5099a6f8291
 # prettier-ignore
 cSpell:ignore: alertmanagers containerd crio filelog gotime horizontalpodautoscalers hostfs hostmetrics iostream k8sattributes kubelet kubeletstats logtag replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods asignador paginación
 ---
