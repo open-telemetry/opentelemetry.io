@@ -1,3 +1,4 @@
+# cSpell:ignore Kenna odddotnet
 title: OddDotNet OTel Collector Test Harness
 registryType: utilities
 language: collector
@@ -9,6 +10,7 @@ tags:
   - observability
   - collector
   - test-harness
+  - odddotnet
 urls:
   repo: https://github.com/OddDotNet/OddDotNet
   docs: https://odddotnet.github.io/OddDotDocs/
