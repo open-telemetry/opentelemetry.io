@@ -3,7 +3,7 @@ title: Primeros pasos
 weight: 1
 default_lang_commit: 3a76552c53b53409483a2ad3190ced25129e4eb8
 # prettier-ignore
-cSpell:ignore: filelog filelogreceiver kubeletstats kubeletstatsreceiver loggingexporter otlpexporter sattributes sattributesprocessor sclusterreceiver sobjectsreceiver
+cSpell:ignore: filelog filelogreceiver kubeletstats kubeletstatsreceiver loggingexporter otlpexporter sattributes sattributesprocessor sclusterreceiver sobjectsreceiver kubelet descomponerlos reinicios preajuste autofirmado
 ---
 
 Esta página te guiará a través de la forma más rápida de comenzar a monitorear
