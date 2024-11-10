@@ -19,9 +19,9 @@ tutorial, puede ser un experimento divertido para instalar la demo y Vea cómo
 toda la supervisión responde a una carga de trabajo activa.
 
 Si está buscando comenzar a migrar de Prometheus a OpenTelemetry, o si Estás
-interesado en usar el Coleccionista de telemetría abierta para recopilar
+interesado en usar el Collector de telemetría abierta para recopilar
 Prometheus Métricas, véase
-[Prometheus Receiver](../coleccionista/componentes/#prometheus-receiver).
+[Prometheus Receiver](../collector/componentes/#prometheus-receiver).
 
 ## Descripción general
 
@@ -30,7 +30,7 @@ diferentes. Tiene registros, eventos, métricas para muchos objetos diferentes y
 los datos generados por sus cargas de trabajo.
 
 Para recopilar todos estos datos, utilizaremos la
-[OpenTelemetry Collector](/docs/collector/). El coleccionista tiene muchos
+[OpenTelemetry Collector](/docs/collector/). El Collector tiene muchos
 diferentes herramientas a su disposición que le permitan recoger eficazmente
 todos estos datos y mejorarlo de manera significativa.
 
@@ -203,7 +203,7 @@ abierta Ejecutándose en el clúster recopilando telemetría de cada nodo.
 ## Deployment Collector
 
 El siguiente paso para recopilar la telemetría de Kubernetes es implementar una
-implementación instancia del Coleccionista para reunir telemetría relacionada
+implementación instancia del Collector para reunir telemetría relacionada
 con el cúmulo en su conjunto.
 
 Una implementación con exactamente una réplica garantiza que no se produzcan
@@ -223,7 +223,7 @@ Vamos a descomponerlos.
 
 El
 [Kubernetes Cluster Receiver](../collector/components/#kubernetes-cluster-receiver)
-es la solución del Coleccionista para recopilar métricas sobre el estado del
+es la solución del Collector para recopilar métricas sobre el estado del
 grupo en conjunto. Este receptor puede recopilar métricas sobre las condiciones
 del nodo, pod fases, reinicios de contenedores, implementaciones disponibles y
 deseadas, y más.
@@ -232,7 +232,7 @@ deseadas, y más.
 
 El
 [Kubernetes Objects Receiver](../collector/components/#kubernetes-objects-receiver)
-es la solución del Coleccionista para recolectar objetos de Kubernetes como
+es la solución del Collector para recolectar objetos de Kubernetes como
 registros. Aunque Cualquier objeto puede ser recogido, un caso de uso común e
 importante es recoger Eventos de Kubernetes.
 
