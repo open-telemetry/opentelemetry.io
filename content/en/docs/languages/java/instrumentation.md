@@ -53,6 +53,8 @@ There are several categories of instrumentation:
   libraries and frameworks.
 - [Manual instrumentation](#manual-instrumentation) is written by application
   authors, and typically specific to the application domain.
+- [Shims](#shims) bridge data from one observability library to another,
+  typically _from_ some library into OpenTelemetry.
 
 **[1]**: Zero-code instrumentation is installed automatically based on detected
 libraries / frameworks.
@@ -189,8 +191,8 @@ While the [LoggerProvider](../api-components/#loggerprovider) /
 equivalent [trace](../api-components/#tracerprovider) and
 [metric](../api-components/#meterprovider) APIs, they serve a different use
 case. As of now, `LoggerProvider` / `Logger` and associated classes represent
-the [Log Bridge API](/docs/specs/otel/logs/bridge-api/), which exists to write
-log appenders to bridge logs recorded through other log APIs / frameworks into
+the [Log Bridge API](/docs/specs/otel/logs/api/), which exists to write log
+appenders to bridge logs recorded through other log APIs / frameworks into
 OpenTelemetry. They are not intended for end user use as a replacement for Log4j
 / SLF4J / Logback / etc.
 

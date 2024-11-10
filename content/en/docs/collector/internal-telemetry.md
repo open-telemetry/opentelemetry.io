@@ -65,46 +65,6 @@ service:
       level: detailed
 ```
 
-The Collector can also be configured to push its own metrics to an
-[OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
-and send them through configured pipelines. In the following example, the
-Collector is configured to push metrics every 10s using OTLP gRPC to
-`localhost:14317`:
-
-```yaml
-receivers:
-  otlp/internal_metrics:
-    protocols:
-      grpc:
-        endpoint: localhost:14317
-exporters:
-  debug:
-service:
-  pipelines:
-    metrics:
-      receivers: [otlp/internal_metrics]
-      exporters: [debug]
-  telemetry:
-    metrics:
-      readers:
-        - periodic:
-            interval: 10000
-            exporter:
-              otlp:
-                protocol: grpc/protobuf
-                endpoint: localhost:14317
-```
-
-{{% alert title="Caution" color="warning" %}}
-
-When self-monitoring, the Collector collects its own telemetry and sends it to
-the desired backend for analysis. This can be a risky practice. If the Collector
-is underperforming, its self-monitoring capability could be impacted. As a
-result, the self-monitored telemetry might not reach the backend in time for
-critical analysis.
-
-{{% /alert %}}
-
 ### Configure internal logs
 
 Log output is found in `stderr`. You can configure logs in the config
@@ -143,6 +103,94 @@ journalctl | grep otelcol | grep Error
 ```
 
 {{% /tab %}} {{< /tabpane >}}
+
+### Configure internal traces
+
+The Collector does not expose traces by default, but it can be configured to.
+
+{{% alert title="Caution" color="warning" %}}
+
+Internal tracing is an experimental feature, and no guarantees are made as to
+the stability of the emitted span names and attributes.
+
+{{% /alert %}}
+
+The following configuration can be used to emit internal traces from the
+Collector to an OTLP/gRPC backend:
+
+```yaml
+service:
+  telemetry:
+    traces:
+      processors:
+        - batch:
+            exporter:
+              otlp:
+                protocol: grpc/protobuf
+                endpoint: https://backend:4317
+```
+
+See the [example configuration][kitchen-sink-config] for additional options.
+Note that the `tracer_provider` section there corresponds to `traces` here.
+
+[kitchen-sink-config]:
+  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml
+
+### Self-monitoring
+
+The Collector can be configured to push its own telemetry to an
+[OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
+and send the data through configured pipelines. In the following example, the
+Collector is configured to push metrics and traces every 10s using OTLP gRPC to
+`localhost:14317`:
+
+```yaml
+receivers:
+  otlp/internal:
+    protocols:
+      grpc:
+        endpoint: localhost:14317
+exporters:
+  debug:
+service:
+  pipelines:
+    metrics:
+      receivers: [otlp/internal]
+      exporters: [debug]
+    traces:
+      receivers: [otlp/internal]
+      exporters: [debug]
+  telemetry:
+    metrics:
+      readers:
+        - periodic:
+            interval: 10000
+            exporter:
+              otlp:
+                protocol: grpc/protobuf
+                endpoint: localhost:14317
+    traces:
+      processors:
+        batch:
+          exporter:
+            otlp:
+              protocol: grpc/protobuf
+              endpoint: localhost:14317
+```
+
+{{% alert title="Caution" color="warning" %}}
+
+When self-monitoring, the Collector collects its own telemetry and sends it to
+the desired backend for analysis. This can be a risky practice. If the Collector
+is underperforming, its self-monitoring capability could be impacted. As a
+result, the self-monitored telemetry might not reach the backend in time for
+critical analysis.
+
+Moreover, sending internal telemetry through the Collector's own pipelines can
+create a continuous loop of spans, metric points, or logs, putting undue strain
+on the Collector's performance. This setup should not be used in production.
+
+{{% /alert %}}
 
 ## Types of internal telemetry
 
@@ -209,7 +257,20 @@ Prometheus exporter, regardless of their origin, are prefixed with `otelcol_`.
 This includes metrics from both Collector components and instrumentation
 libraries. {{% /alert %}}
 
-<!---To compile this list, configure a Collector instance to emit its own metrics to the localhost:8888/metrics endpoint. Select a metric and grep for it in the Collector core repository. For example, the `otelcol_process_memory_rss` can be found using:`grep -Hrn "memory_rss" .` Make sure to eliminate from your search string any words that might be prefixes. Look through the results until you find the .go file that contains the list of metrics. In the case of `otelcol_process_memory_rss`, it and other process metrics can be found in https://github.com/open-telemetry/opentelemetry-collector/blob/31528ce81d44e9265e1a3bbbd27dc86d09ba1354/service/internal/proctelemetry/process_telemetry.go#L92. Note that the Collector's internal metrics are defined in several different files in the repository.--->
+{{% comment %}}
+
+To compile this list, configure a Collector instance to emit its own metrics to
+the localhost:8888/metrics endpoint. Select a metric and grep for it in the
+Collector core repository. For example, the `otelcol_process_memory_rss` can be
+found using:`grep -Hrn "memory_rss" .` Make sure to eliminate from your search
+string any words that might be prefixes. Look through the results until you find
+the .go file that contains the list of metrics. In the case of
+`otelcol_process_memory_rss`, it and other process metrics can be found in
+<https://github.com/open-telemetry/opentelemetry-collector/blob/31528ce81d44e9265e1a3bbbd27dc86d09ba1354/service/internal/proctelemetry/process_telemetry.go#L92>.
+Note that the Collector's internal metrics are defined in several different
+files in the repository.
+
+{{% /comment %}}
 
 #### `basic`-level metrics
 
