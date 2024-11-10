@@ -13,19 +13,20 @@ tags:
 urls:
   repo: https://github.com/OddDotNet/OddDotCSharp
   docs: https://odddotnet.github.io/OddDotDocs/
-license: Apache 2.0 
-description: 
-  OddDotNet is an OpenTelemetry Test Harness that works for any language, built in .NET.
-  It is a container image that accepts OpenTelemetry signals over gRPC (and soon HTTP),
-  and it includes a query language for verifying and validating those signals.
+license: Apache 2.0
+description: OddDotNet is an OpenTelemetry Test Harness that works for any
+  language, built in .NET. It is a container image that accepts OpenTelemetry
+  signals over gRPC (and soon HTTP), and it includes a query language for
+  verifying and validating those signals.
 
-  While it's possible to generate your own client using the proto files, it is often more
-  convenient to use a pre-compiled package installed from NuGet. This client library for
-  .NET also includes the opentelemetry-proto clients to allow for manually generating
-  and sending signals, and lastly it includes a query builder to ease the process of
-  building queries using the OddQueryLanguage (OQL). 
+  While it's possible to generate your own client using the proto files, it is
+  often more convenient to use a pre-compiled package installed from NuGet. This
+  client library for .NET also includes the opentelemetry-proto clients to allow
+  for manually generating and sending signals, and lastly it includes a query
+  builder to ease the process of building queries using the OddQueryLanguage
+  (OQL).
 
-  The proto files that this project depends on can be found at 
+  The proto files that this project depends on can be found at
   https://github.com/OddDotNet/OddDotProto.
 authors:
   - name: Tyler Kenna
