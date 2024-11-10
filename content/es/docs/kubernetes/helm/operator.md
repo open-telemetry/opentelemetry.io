@@ -2,6 +2,7 @@
 title: OpenTelemetry Operator Chart
 linkTitle: Operator Chart
 default_lang_commit: 737d66aba66ab76da5edf2573eee225a14bf7579
+cSpell:ignore: kubelet descomponerlos reinicios preajuste autofirmado
 ---
 
 ## Introducción
