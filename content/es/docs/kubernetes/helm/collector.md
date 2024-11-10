@@ -3,7 +3,7 @@ title: Gráfico de coleccionista de OpenTelemetry
 linkTitle: Gráfico de recopiladores
 default_lang_commit: 737d66aba66ab76da5edf2573eee225a14bf7579
 # prettier-ignore
-cSpell:ignore: debugexporter filelogio filelogreceiver hostmetricsreceiver kubelet kubeletstats kubeletstatsreceiver otlphttp sattributesprocessor sclusterreceiver sobjectsreceiver statefulset
+cSpell:ignore: debugexporter filelogio filelogreceiver hostmetricsreceiver kubelet kubeletstats kubeletstatsreceiver otlphttp sattributesprocessor sclusterreceiver sobjectsreceiver statefulset kubelet descomponerlos reinicios preajuste autofirmado
 ---
 
 ## Introducción
@@ -385,7 +385,7 @@ Para habilitar esta característica, establezca la propiedad
 `presets.hostMetrics.enabled` en `verdadero`. Cuando está habilitado, el gráfico
 agregará los volúmenes necesarios y volumeMounts y agregará un
 `hostmetricsReceiver` a la canalización de métricas. Métricas predeterminadas se
-desguazarán cada 10 segundos y se habilitarán los siguientes desguazadores:
+eliminarán cada 10 segundos y se habilitarán los siguientes eliminadores:
 
 - CPU
 - Cargar
