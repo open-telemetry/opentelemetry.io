@@ -1,4 +1,4 @@
-### Maven
+##### Maven
 
 Add the following dependency in your `pom.xml` file to install this package.
 
@@ -10,28 +10,12 @@ Add the following dependency in your `pom.xml` file to install this package.
 </dependency>
 ```
 
-### Gradle
+##### Gradle
+
 Add the following dependency in your `build.gradle` file to install this package:
 
 ```groovy
-implementation group: 'io.opentelemetry.instrumentation', name: 'opentelemetry-okhttp-3.0', version: '2.8.0-alpha'
-```
-
-**Gradle(short)**:
-Add the following dependency in your `build.gradle` file:
-
-```groovy
 dependencies {
- implementation 'io.opentelemetry.instrumentation:opentelemetry-okhttp-3.0:2.8.0-alpha'
+ implementation '{{ index (split .name "/") 0 }}:{{ index (split .name "/") 1 }}:{{ .version }}'
 }
 ```
-
-**Gradle(kotlin)**:
-Add the following dependency in your `build.gradle.kts` file:
-
-```kotlin
-dependencies {
- implementation("io.opentelemetry.instrumentation:opentelemetry-okhttp-3.0:2.8.0-alpha")
-}
-```
-    
