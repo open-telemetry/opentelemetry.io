@@ -23,7 +23,7 @@ OpenTelemetry está compuesto por varios componentes principales:
 OpenTelemetry te permite reemplazar la necesidad de SDKs y herramientas
 específicas de proveedores para generar y exportar datos de telemetría.
 
-## Especificación
+## Especificación {#specification}
 
 Describe los requisitos y expectativas multilenguaje para todas las
 implementaciones. Más allá de la definición de términos, la especificación
@@ -75,7 +75,7 @@ dependencias separadas.
 Para más información, consulta
 [Instrumentación de librerías](/docs/concepts/instrumentation/libraries/).
 
-### Exportadores
+### Exportadores {#exporters}
 
 {{% docs/languages/exporters/intro %}}
 
