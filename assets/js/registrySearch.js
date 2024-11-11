@@ -239,3 +239,30 @@ function parseUrlParams() {
   selectedLanguage = urlParams.get('language') || 'all';
   selectedComponent = urlParams.get('component') || 'all';
 }
+
+// Sticky search functionality
+document.addEventListener('DOMContentLoaded', () => {
+  const searchForm = document.getElementById('searchForm');
+  const alertBox = document.querySelector('.alert.alert-info');
+  const scrollThreshold = 150;
+  const stickyOffset = 100;
+
+  function handleStickySearch() {
+    if (!searchForm) return;
+    const rect = searchForm.getBoundingClientRect();
+    const alertRect = alertBox
+      ? alertBox.getBoundingClientRect()
+      : { bottom: 0 };
+
+    if (window.pageYOffset > scrollThreshold && rect.top <= stickyOffset) {
+      searchForm.classList.add('sticky');
+    } else if (
+      window.pageYOffset < scrollThreshold ||
+      (rect.top > stickyOffset + searchForm.offsetHeight &&
+        alertRect.bottom > 0)
+    ) {
+      searchForm.classList.remove('sticky');
+    }
+  }
+  window.addEventListener('scroll', handleStickySearch);
+});
