@@ -157,6 +157,19 @@
                     {{ end -}}
                     {{- .description | markdownify -}}
                 </div>
+
+                <!-- New Tags section -->
+                <div class="tags mb-2">
+                    {{ if .tags }}
+                        <div>
+                            {{ range .tags }}
+                                {{ $tag := . }} <!-- Store the tag in a variable -->
+                                <a href="/ecosystem/registry/?s={{ $tag | urlize }}" class="badge bg-light me-1">{{ $tag }}</a>
+                            {{ end }}
+                        </div>
+                    {{ end }}
+                </div>
+
                 {{ with $package -}}
                     {{ if not (eq .quickInstall false) }}
                     <h6><i class="fa-solid fa-forward"></i> Quick Install</h6>
