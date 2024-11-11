@@ -5075,6 +5075,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-06-12T11:21:46.656082+02:00"
   },
+  "https://github.com/golang/go/issues/68652#issuecomment-2274452424": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-07T20:32:07.730871-05:00"
+  },
   "https://github.com/google/pprof": {
     "StatusCode": 200,
     "LastSeen": "2024-10-24T15:10:16.695786+02:00"
@@ -11759,6 +11763,14 @@
     "StatusCode": 206,
     "LastSeen": "2024-10-23T20:19:18.147885-05:00"
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.44.0-alpha/opentelemetry-bom-alpha-1.44.0-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2024-11-08T22:20:21.413205506Z"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.44.1-alpha/opentelemetry-bom-alpha-1.44.1-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2024-11-10T17:00:51.60396563Z"
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.42.1/opentelemetry-bom-1.42.1.pom": {
     "StatusCode": 206,
     "LastSeen": "2024-10-23T20:20:05.242921-05:00"
@@ -11766,6 +11778,14 @@
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.43.0/opentelemetry-bom-1.43.0.pom": {
     "StatusCode": 206,
     "LastSeen": "2024-10-23T20:19:16.148466-05:00"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.44.0/opentelemetry-bom-1.44.0.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2024-11-08T22:20:19.376698992Z"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.44.1/opentelemetry-bom-1.44.1.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2024-11-10T17:00:49.274766415Z"
   },
   "https://research.facebook.com/file/877841159827226/holistic-configuration-management-at-facebook.pdf": {
     "StatusCode": 206,
