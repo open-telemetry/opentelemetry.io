@@ -12,9 +12,9 @@ Many requirements of that guide can be enforced by running `npm run fix:all` loc
 
 Note, that although those checks need to be green before we can merge your PR, do not
 worry about their status after submitting your PR. We will provide you with guidance, when and how to
-address them. 
+address them.
 
-Similarly, do not worry about your PR being out-of-date with the base branch and do not continuously 
+Similarly, do not worry about your PR being out-of-date with the base branch and do not continuously
 update or rebase your branch. We will let you know when it is necessary.
 
 If you have any questions, feel free to ask.
