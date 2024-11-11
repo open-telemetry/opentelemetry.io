@@ -61,18 +61,18 @@ shippingservice -->|HTTP| quoteservice
 
 end
 
-classDef dotnet fill:#178600,color:white;
-classDef cpp fill:#f34b7d,color:white;
-classDef erlang fill:#b83998,color:white;
-classDef golang fill:#00add8,color:black;
-classDef java fill:#b07219,color:white;
-classDef javascript fill:#f1e05a,color:black;
-classDef kotlin fill:#560ba1,color:white;
-classDef php fill:#4f5d95,color:white;
-classDef python fill:#3572A5,color:white;
-classDef ruby fill:#701516,color:white;
-classDef rust fill:#dea584,color:black;
-classDef typescript fill:#e98516,color:black;
+classDef dotnet fill:#E7ECF8,color:white;
+classDef cpp fill:#FFFAEB,color:white;
+classDef erlang fill:#A47B92,color:white;
+classDef golang fill:#E8F6FC,color:black;
+classDef java fill:#C2B280,color:white;
+classDef javascript fill:#F1E05A,color:black;
+classDef kotlin fill:#D6D9E1,color:white;
+classDef php fill:#4F5D95,color:white;
+classDef python fill:#A03B29,color:white;
+classDef ruby fill:#E84E3D,color:white;
+classDef rust fill:#DEA584,color:black;
+classDef typescript fill:#F6A600,color:black;
 ```
 
 ```mermaid
@@ -92,18 +92,18 @@ subgraph Service Legend
   typescriptsvc(TypeScript):::typescript
 end
 
-classDef dotnet fill:#178600,color:white;
-classDef cpp fill:#f34b7d,color:white;
-classDef erlang fill:#b83998,color:white;
-classDef golang fill:#00add8,color:black;
-classDef java fill:#b07219,color:white;
-classDef javascript fill:#f1e05a,color:black;
-classDef kotlin fill:#560ba1,color:white;
-classDef php fill:#4f5d95,color:white;
-classDef python fill:#3572A5,color:white;
-classDef ruby fill:#701516,color:white;
-classDef rust fill:#dea584,color:black;
-classDef typescript fill:#e98516,color:black;
+classDef dotnet fill:#E7ECF8,color:white;
+classDef cpp fill:#FFFAEB,color:white;
+classDef erlang fill:#A47B92,color:white;
+classDef golang fill:#E8F6FC,color:black;
+classDef java fill:#C2B280,color:white;
+classDef javascript fill:#F1E05A,color:black;
+classDef kotlin fill:#D6D9E1,color:white;
+classDef php fill:#4F5D95,color:white;
+classDef python fill:#A03B29,color:white;
+classDef ruby fill:#E84E3D,color:white;
+classDef rust fill:#DEA584,color:black;
+classDef typescript fill:#F6A600,color:black;
 ```
 
 Follow these links for the current state of
