@@ -15,7 +15,7 @@ Helm's [documentation](https://helm.sh/docs/) to get started.
 
 - Kubernetes 1.24+
 - 6 GB of free RAM for the application
-- Helm 3.9+ (for Helm installation method only)
+- Helm 3.14+ (for Helm installation method only)
 
 ## Install using Helm (recommended)
 
@@ -74,6 +74,7 @@ With the frontendproxy port-forward set up, you can access:
 - Grafana: <http://localhost:8080/grafana/>
 - Load Generator UI: <http://localhost:8080/loadgen/>
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
+- Flagd configurator UI: <http://localhost:8080/feature>
 
 ### Expose Demo components using service or ingress configurations
 
