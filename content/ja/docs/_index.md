@@ -1,16 +1,6 @@
 ---
 title: ドキュメント
 menu: { main: { weight: 10 } }
-htmltest:
-  IgnoreDirs:
-    # TODO drop next lines after https://github.com/open-telemetry/opentelemetry.io/issues/5555 is fixed for these pages:
-    - ^ja/docs/concepts/components/
-    - ^ja/docs/concepts/glossary/
-    - ^ja/docs/concepts/signals/baggage/
-    - ^ja/docs/languages/erlang/sampling/
-    - ^ja/docs/languages/js/sampling/
-    - ^ja/docs/languages/ruby/sampling/
-    - ^ja/docs/zero-code/php/
 default_lang_commit: c2cd5b14
 ---
 
