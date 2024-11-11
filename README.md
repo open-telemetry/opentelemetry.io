@@ -54,7 +54,7 @@ Here is a list of community roles with current and previous members:
 - Approvers: [@open-telemetry/docs-approvers][]
 
   - [Michael Hausenblas](https://github.com/mhausenblas), Amazon
-  - [Tiffany Hrabusa](https://github.com/tiffany76)
+  - [Tiffany Hrabusa](https://github.com/tiffany76), Grafana Labs
 
 - Maintainers: [@open-telemetry/docs-maintainers][]
 

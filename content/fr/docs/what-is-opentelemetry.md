@@ -3,6 +3,10 @@ title: Qu'est-ce qu'OpenTelemetry ?
 description:
   Une brève explication de ce qu'est OpenTelemetry, et de ce qu'il n'est pas.
 weight: 150
+htmltest:
+  IgnoreDirs:
+    # TODO drop next lines after https://github.com/open-telemetry/opentelemetry.io/issues/5555 is fixed for these pages:
+    - ^fr/docs/concepts/glossary/
 default_lang_commit: 71833a5f8b84110dadf1e98604b87a900724ac33
 ---
 
@@ -111,7 +115,7 @@ il peut être étendu incluent :
 Bien que la plupart des utilisateurs n’aient pas besoin d’étendre OpenTelemetry,
 le projet est conçu pour rendre cela possible presque à tous les niveaux.
 
-## Histoire
+## Histoire {#history}
 
 OpenTelemetry est un projet de la
 [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io) qui trouve son
