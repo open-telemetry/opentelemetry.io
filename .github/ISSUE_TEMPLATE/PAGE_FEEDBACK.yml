@@ -2,7 +2,7 @@ name: Page Feedback
 description: >-
   Used for page feedback from users visiting opentelemetry.io and clicking "no"
   if a page was helpful.
-title: '[Page Feedback]: Your feedback'
+title: '[Page Feedback]: summary of your feedback'
 body:
   - type: input
     id: url
