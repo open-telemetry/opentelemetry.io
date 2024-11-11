@@ -28,7 +28,7 @@ provides images for a single Python version based on the glibc C library. If you
 want to use it you might need to build your own image operator Docker image for
 Python auto-instrumentation.
 
-From version 0.113 it is possible to build an image with both glibc and musl
+Since operator v0.113.0 it is possible to build an image with both glibc and musl
 based auto-instrumentation and
 [configure it at runtime](/docs/kubernetes/operator/automatic/#annotations-python-musl).
 
