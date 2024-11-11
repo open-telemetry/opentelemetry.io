@@ -114,7 +114,7 @@ params:
         Thank you. Your feedback is appreciated!
       # prettier-ignore
       'no': >-
-        Please let us know <a class="external-link feedback-link" target="_blank" rel="noopener"
+        Please let us know <a class="external-link" target="_blank" rel="noopener"
         href="https://github.com/open-telemetry/opentelemetry.io/issues/new?template=PAGE_FEEDBACK.yml&title=[Page+Feedback]%3A+summary+of+your+feedback">how
         we can improve this page</a>. Your feedback is appreciated!
   links:
