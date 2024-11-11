@@ -18,13 +18,14 @@ my $semconvSpecRepoUrl = 'https://github.com/open-telemetry/semantic-conventions
 my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
 my $specBasePath = '/docs/specs';
 my %versions = qw(
-  spec: 1.38.0
+  spec: 1.39.0
   otlp: 1.3.2
   semconv: 1.28.0
 );
 my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
 my $semconvVers = $versions{'semconv:'};
+my $warn2 = 0; # TODO remove along with warning 002
 
 sub printTitleAndFrontMatter() {
   print "---\n";
@@ -42,6 +43,12 @@ sub printTitleAndFrontMatter() {
     $frontMatterFromFile =~ s/linkTitle: .*/$& $semconvVers/;
     # $frontMatterFromFile =~ s/body_class: .*/$& td-page--draft/;
     # $frontMatterFromFile =~ s/cascade:\n/$&  draft: true\n/;
+  } elsif ($ARGV =~ /otel\/specification\/logs\/api.md$/) {
+    if ($otelSpecVers ne "1.39.0") {
+      # TODO: delete the enclosing elsif body
+      print STDOUT "WARNING [001]: $0: remove obsolete code now that OTel spec has been updated.\n"
+    }
+    $frontMatterFromFile .= "linkTitle: API\naliases: [bridge-api]\n";
   }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
@@ -108,6 +115,15 @@ while(<>) {
 
 
   # SPECIFICATION custom processing
+
+  # TODO: drop the entire if-then-else statement patch code when OTel spec vers contains
+  # https://github.com/open-telemetry/opentelemetry-specification/pull/4287,
+  # which should be vers > 1.39.0.
+  if ($otelSpecVers eq "1.39.0") {
+    s|(/api\.md)#logs-api\b|$1|g;
+  } elsif ($ARGV =~ /otel\/spec/) {
+    print STDOUT "WARNING [002]: $0: remove obsolete code now that OTel spec has been updated.\n" unless $warn2++
+  }
 
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;
   s|(\]\()/specification/|$1$specBasePath/otel/)|;

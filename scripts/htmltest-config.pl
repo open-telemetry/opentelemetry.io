@@ -42,11 +42,12 @@ sub extract_htmltest_config {
         return;
     }
 
-    shift @htmltest_config;
+    do {
+      shift @htmltest_config;
+    } until !@htmltest_config # No more config
+       || $htmltest_config[0] !~ /^\s*#/; # Non-comment line
 
-    if (@htmltest_config >= 1 && $htmltest_config[0] =~ /^IgnoreDirs:/i) {
-      return _extract_ignore_dirs($file_path, @htmltest_config)
-    }
+    return _extract_ignore_dirs($file_path, @htmltest_config) if $htmltest_config[0] =~ /^IgnoreDirs:/i;
 
     # TODO: Add support for `IgnoreURLs`.
 
