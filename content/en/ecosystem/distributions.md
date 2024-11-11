@@ -24,7 +24,7 @@ is provided as a convenience for the community. {{% /alert %}}
 
 ## How to add your distribution {#how-to-add}
 
-To have your distribution listed, submit a PR with an entry added to the
+To have your distribution listed, [submit a PR] with an entry added to the
 [distributions list](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/distributions.yaml).
 The entry should include the following:
 
@@ -46,3 +46,5 @@ The entry should include the following:
   to end users, see [Vendors](/ecosystem/vendors).
 
 {{% /alert %}}
+
+[submit a PR]: /docs/contributing/pull-requests/
