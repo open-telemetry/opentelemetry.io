@@ -5,7 +5,7 @@ description:
   languages
 weight: 250
 aliases: [/docs/instrumentation]
-redirects: [{ from: /docs/instrumentation/*, to: ':splat' }]
+redirects: [{ from: /docs/instrumentation/*, to: ':splat' }] # Only for `en`
 ---
 
 OpenTelemetry code [instrumentation][] is supported for the languages listed in
