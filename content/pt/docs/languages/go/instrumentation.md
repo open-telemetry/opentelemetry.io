@@ -1127,7 +1127,7 @@ mais backends de telemetria.
 [instrumentation library]: ../libraries/
 [opentelemetry collector]:
   https://github.com/open-telemetry/opentelemetry-collector
-[logs bridge API]: /docs/specs/otel/logs/bridge-api
+[logs bridge API]: /docs/specs/otel/logs/api
 [log data model]: /docs/specs/otel/logs/data-model
 [`go.opentelemetry.io/otel`]: https://pkg.go.dev/go.opentelemetry.io/otel
 [`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`]:
