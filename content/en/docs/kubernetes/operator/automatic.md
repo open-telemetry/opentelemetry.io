@@ -392,7 +392,7 @@ spec:
         value: 'true'
 ```
 
-> As of operator v0.111.0 settings `OTEL_LOGS_EXPORTER` to `otlp` is not
+> As of operator v0.111.0 setting `OTEL_LOGS_EXPORTER` to `otlp` is not
 > required anymore.
 
 #### Excluding auto-instrumentation {#python-excluding-auto-instrumentation}
