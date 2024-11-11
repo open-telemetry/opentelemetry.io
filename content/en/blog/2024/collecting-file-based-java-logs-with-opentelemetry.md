@@ -1,20 +1,24 @@
-## Problem
+Sending Java logs with OpenTelemetry typically uses the OTLP protocol. However, some scenarios require logs to be output to files or stdout due to organizational or reliability needs.
 
-The currently recommended way to send Java logs with OpenTelemetry is to use the OTLP protocol. However some use cases require outputting logs to files or stdout, due to organizational constraints or reliability practices that require usage of files for logs.
+A common approach to centralize logs is to use unstructured logs, parse them with regular expressions, and add contextual attributes.
 
-A common idea to collect logs centrally is to use existing unstructured logs, parse them with regular expressions, and enrich them with a few contextual attributes.
-
-Regular expression parsing has turned out to be an anti-pattern because, even if the first steps are easy, the structuring of all the fields of log lines, including line break support for exceptions, and unplanned log format changes, proves to be very complicated and fragile. With unstructured logs and regular expressions, it's only a matter of time until parsing errors happen.
+However, regular expression parsing is problematic. While initially easy, it becomes complex and fragile when handling all log fields, line breaks in exceptions, and unexpected log format changes. Parsing errors are inevitable with this method.
 
 ## Solution
 
-Fortunately, the OpenTelemetry Java Instrumentation agent has just introduced a turnkey solution to convert logs from popular frameworks like SLF4J/Logback or Log4j2 into OTel compliant JSON logs on stdout with all the resource and logs attributes.
+The OpenTelemetry Java Instrumentation agent now offers an easy solution to convert logs from frameworks like SLF4J/Logback or Log4j2 into OTel-compliant JSON logs on stdout with all resource and log attributes.
 
-And by turnkey, we really mean it:
+This is a true turnkey solution:
 
-* No code or dependency changes in the code, just a few configurations changes that don't differ from typical of production deployment requirements  
-* No complex field mapping in the log collector, just use the [OTLP/JSON connector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/otlpjsonconnector) to ingest the payload  
-* Out of the box correlation between logs, traces, and metrics
+* No code or dependency changes, just a few configuration adjustments typical for production deployment.
+* No complex field mapping in the log collector, just use the [OTLP/JSON connector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/otlpjsonconnector) to ingest the payload.
+* Automatic correlation between logs, traces, and metrics.
+
+This blog post shows how to set up this solution step by step.
+
+* In the first part, we'll show how to configure the Java application to output logs in the OTLP/JSON format. 
+* In the second part, we'll show how to configure the OpenTelemetry Collector to ingest the logs.
+* Finally, we'll show a Kubernetes-specific setup to handle container logs.
 
 ## Reference architecture
 
@@ -22,11 +26,11 @@ The deployment architecture looks like the following:
 
 ![OTLP/JSON Architecture](collecting-file-based-java-logs-with-opentelemetry/otlpjson-architecture.png)
 
-## Set by step setup
+## Configure Java Application to Output OTLP/JSON Logs
 
 Steps
 
-* There is nothing to change in the code, continue to use your favorite logging library including getting the best of templated logs, mapped diagnostic context, and structured logging.
+* No code changes needed. Continue using your preferred logging library, including templated logs, mapped diagnostic context, and structured logging.
 
 ```java
 Logger logger = org.slf4j.LoggerFactory.getLogger(MyClass.class);
@@ -41,15 +45,8 @@ logger.atInfo().
    .log("placeOrder");
 ```
 
-* Export the logs captured by the OTel Java instrumentation to stdout using the OTel JSON format (aka [OTLP/JSON](https://opentelemetry.io/docs/specs/otlp/#json-protobuf-encoding))
-
-```bash
-# Tested with opentelemetry-javaagent v2.10.0
-
-export OTEL_LOGS_EXPORTER="experimental-otlp/stdout"
-```
-
-* Activate the auto instrumentation of the logging framework with the desired contextual attributes  by the OTel Java auto instrumentation (configuration parameters [for Logback](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-appender-1.0/javaagent), [for Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-appender-2.17/javaagent)). Note that the logging framework instrumentation configuration flags are optional but strongly recommended.
+* Export the logs captured by the OTel Java instrumentation to stdout using the OTel JSON format (aka [OTLP/JSON](https://opentelemetry.io/docs/specs/otlp/#json-protobuf-encoding)).
+  Configuration parameters for [Logback](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-appender-1.0/javaagent) and [Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-appender-2.17/javaagent) are optional but recommended.
 
 ```bash
 # Tested with opentelemetry-javaagent v2.10.0
@@ -58,6 +55,7 @@ export OTEL_LOGS_EXPORTER="experimental-otlp/stdout"
 # https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-appender-1.0/javaagent
 
 java -javaagent:/path/to/opentelemetry-javaagent.jar \
+     -Dotel.logs.exporter=experimental-otlp/stdout \
      -Dotel.instrumentation.logback-appender.experimental-log-attributes=true \
      -Dotel.instrumentation.logback-appender.experimental.capture-key-value-pair-attributes=true \
      -Dotel.instrumentation.logback-appender.experimental.capture-mdc-attributes=* \
@@ -65,13 +63,16 @@ java -javaagent:/path/to/opentelemetry-javaagent.jar \
 
 ```
 
-* Launch the Java application and verify that OTLP/JSON logs are outputted to stdout
+> **NOTE:** The logs exporter is experimental and subject to change. 
+> Check the [Specification PR](https://github.com/open-telemetry/opentelemetry-specification/pull/4183) for the latest updates.
+
+* Verify that OTLP/JSON logs are outputted to stdout. The logs are in the OTLP/JSON format, with a JSON object per line. The log records are nested in the `resourceLogs` array.
 
 ```json
 {"resourceLogs":[{"resource":{"attributes":[{"key":"deployment.environment.name","value":{"stringValue":"staging"}},{"key":"service.instance.id","value":{"stringValue":"6ad88e10-238c-4fb7-bf97-38df19053366"}},{"key":"service.name","value":{"stringValue":"checkout"}},{"key":"service.namespace","value":{"stringValue":"shop"}},{"key":"service.version","value":{"stringValue":"1.1"}}]},"scopeLogs":[{"scope":{"name":"com.mycompany.checkout.CheckoutServiceServer$CheckoutServiceImpl","attributes":[]},"logRecords":[{"timeUnixNano":"1730435085776869000","observedTimeUnixNano":"1730435085776944000","severityNumber":9,"severityText":"INFO","body":{"stringValue":"Order order-12035 successfully placed"}, "attributes":[{"key":"customerId","value":{"stringValue":"customer-49"}},{"key":"thread.id","value":{"intValue":"44"}},{"key":"thread.name","value":{"stringValue":"grpc-default-executor-1"}}],"flags":1,"traceId":"42de1f0dd124e27619a9f3c10bccac1c","spanId":"270984d03e94bb8b"}]}],"schemaUrl":"https://opentelemetry.io/schemas/1.24.0"}]}
 ```
 
-* Configure the OpenTelemetry Collector to ingest the OTLP/JSON logs:
+## Configure the OpenTelemetry Collector to ingest the OTLP/JSON logs
 
 ![OpenTelemetry Collector OTLP/JSON pipeline](collecting-file-based-java-logs-with-opentelemetry/otel-collector-otlpjson-pipeline.png)
 
@@ -152,10 +153,10 @@ Flags: 1
 	{"kind": "exporter", "data_type": "logs", "name": "debug"}
 ```
 
-* Verify the logs in the OpenTelemetry backend  
-* After this end to end ingestion pipeline works, don't forget to:
-  * Make the OTel Collector configuration production ready including removing the "debug" exporter from the "logs" pipeline  
-  * Disable the file and console exporters of the application logging framework (e.g. `logback.xml`) while continuing to use the logging configuration to filter logs: the OTel Java agent will output JSON logs in stdout, stop emitting them through the logging framework. However, keep using the logging framework config to specify the log levels
+* Verify the logs in the OpenTelemetry backend.
+* After the pipeline works end-to-end, ensure production readiness:
+  * Remove the "debug" exporter from the "logs" pipeline in the OTel Collector configuration.
+  * Disable file and console exporters in the logging framework (e.g., `logback.xml`) but keep using the logging configuration to filter logs. The OTel Java agent will output JSON logs to stdout.
 
 ```xml
 <!-- tested with logback-classic v1.5.11 -->
@@ -171,13 +172,13 @@ Flags: 1
 </configuration>
 ```
 
-## How to implement this when apps output logs to stdout on Kubernetes or Docker
+## Configure an OpenTelemetry Collector in Kubernetes to handle container logs
 
-Supporting Kubernetes and Container specifics requires a standard parsing step in the pipeline without specific mapping configuration.
+To support Kubernetes and container specifics, add a standard parsing step in the pipeline without specific mapping configuration.
 
-* Introduce the OTel Collector File Log Receiver's [`container`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/stanza/docs/operators/container.md) parser to handle containers logging specifics  
-  * Replace `<<namespace>>`, `<<pod_name>>`, and `<<container_name>>` by the desired values or use a broader [glob pattern](https://pkg.go.dev/v.io/v23/glob) like `*`
-
+* Use the OTel Collector File Log Receiver's [`container`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/stanza/docs/operators/container.md) parser to handle container logging specifics.
+  * Replace `<<namespace>>`, `<<pod_name>>`, and `<<container_name>>` with the desired values or use a broader [glob pattern](https://pkg.go.dev/v.io/v23/glob) like `*`.
+  
 ```yaml
 receivers:
   filelog/otlp-json-logs:
@@ -223,6 +224,10 @@ exporters:
     verbosity: detailed
   # Exporter to the OTLP backend like `otlphttp`
   otlphttp:
-
 ```
 
+## Conclusion
+
+This blog post showed how to collect file-based Java logs with OpenTelemetry. The solution is easy to set up and provides a turnkey solution for converting logs from frameworks like SLF4J/Logback or Log4j2 into OTel-compliant JSON logs on stdout with all resource and log attributes.
+
+Any feedback or questions? Please reach out to us on [GitHub](https://github.com/open-telemetry/opentelemetry-specification/pull/4183).
