@@ -33,8 +33,6 @@ authors:
     email: odddotnet@gmail.com
     url: https://github.com/DoubleTK
 createdAt: '2024-11-08'
-isNative: true
-isFirstParty: false
 package:
   name: OddDotNet.Client
   registry: nuget
