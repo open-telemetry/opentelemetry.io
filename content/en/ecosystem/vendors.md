@@ -21,7 +21,7 @@ source product for their customers.
 
 ## Add your organization
 
-To have your organization listed, submit a PR with an entry added to the
+To have your organization listed, [submit a PR] with an entry added to the
 [vendors list](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/vendors.yaml).
 The entry should include the following:
 
@@ -42,3 +42,5 @@ you do not provide any kind of services around OpenTelemetry, see
 
 If you provide a library, service, or app that is made observable through
 OpenTelemetry, see [Integrations](/ecosystem/integrations).
+
+[submit a PR]: /docs/contributing/pull-requests/
