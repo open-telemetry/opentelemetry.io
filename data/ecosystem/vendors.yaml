@@ -414,6 +414,12 @@
   contact: https://github.com/adnanrahic
   oss: true
   commercial: true
+- name: Alauda
+  nativeOTLP: true
+  url: https://www.alauda.io/
+  contact: info@alauda.io
+  oss: false
+  commercial: true
 - name: Alibaba Cloud
   nativeOTLP: true
   url: https://www.alibabacloud.com/help/en/arms/tracing-analysis/get-started-with-tracing-analysis
