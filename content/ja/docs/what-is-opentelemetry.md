@@ -66,7 +66,7 @@ OpenTelemetryは拡張できるように設計されています。どのよう�
 
 ほとんどのユーザーはOpenTelemetryを拡張する必要はないかもしれませんが、このプロジェクトはほぼすべてのレベルで拡張できるように設計されています。
 
-## 歴史
+## 歴史 {#history}
 
 OpenTelemetryは、[Cloud Native Computing Foundation (CNCF)](https://www.cncf.io)プロジェクトであり、[OpenTracing](https://opentracing.io)と[OpenCensus](https://opencensus.io)の2つのプロジェクトが統合された成果物です。
 これらのプロジェクトはどちらも、コードを計装し、オブザーバビリティバックエンドにテレメトリーデータを送信する方法の標準がないという問題を解決するために作られました。

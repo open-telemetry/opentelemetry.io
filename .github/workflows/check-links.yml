@@ -34,6 +34,11 @@ jobs:
       - run: npm install --omit=optional
       - run: npm run log:check:links
         continue-on-error: true
+      - name: Any files need updating?
+        run: |
+          git restore package.json
+          echo "If the following fails, then either run 'npm run fix:htmltest-config' locally or '/fix:htmltest-config' in GitHub"
+          npm run _diff:fail
       - uses: actions/upload-artifact@v4
         with:
           name: build-log-etc
