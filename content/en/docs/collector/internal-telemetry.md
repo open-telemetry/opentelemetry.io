@@ -2,7 +2,7 @@
 title: Internal telemetry
 weight: 25
 # prettier-ignore
-cSpell:ignore: alloc journalctl kube otecol pprof tracez underperforming zpages
+cSpell:ignore: alloc journalctl kube otecol pprof tracez underperforming zpages batchprocessor
 ---
 
 You can inspect the health of any OpenTelemetry Collector instance by checking
@@ -214,7 +214,7 @@ The Collector emits internal metrics for at least the following values:
 - For exporters: Queue size and capacity.
 - Count, duration, and size of HTTP/gRPC requests and responses.
 
-A more detailed list is available below.
+A more detailed list is available in the following sections.
 
 ### Lists of internal metrics
 
