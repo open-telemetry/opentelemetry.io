@@ -155,7 +155,7 @@ Flags: 1
 
 * Verify the logs in the OpenTelemetry backend.
 * After the pipeline works end-to-end, ensure production readiness:
-  * Remove the "debug" exporter from the "logs" pipeline in the OTel Collector configuration.
+  * Remove the `debug` exporter from the `logs` pipeline in the OTel Collector configuration.
   * Disable file and console exporters in the logging framework (e.g., `logback.xml`) but keep using the logging configuration to filter logs. The OTel Java agent will output JSON logs to stdout.
 
 ```xml
