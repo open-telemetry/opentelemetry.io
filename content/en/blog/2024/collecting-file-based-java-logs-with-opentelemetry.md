@@ -229,5 +229,6 @@ exporters:
 ## Conclusion
 
 This blog post showed how to collect file-based Java logs with OpenTelemetry. The solution is easy to set up and provides a turnkey solution for converting logs from frameworks like SLF4J/Logback or Log4j2 into OTel-compliant JSON logs on stdout with all resource and log attributes.
+This JSON format is certainly verbose, but it generally has minimal impact on performances and offers a solid balance by providing highly contextualized logs that can be correlated with traces and metrics.
 
 Any feedback or questions? Please reach out to us on [GitHub](https://github.com/open-telemetry/opentelemetry-specification/pull/4183).
