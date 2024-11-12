@@ -150,7 +150,7 @@ Attributes:
 Trace ID: 42de1f0dd124e27619a9f3c10bccac1c
 Span ID: 270984d03e94bb8b
 Flags: 1
-	{"kind": "exporter", "data_type": "logs", "name": "debug"}
+     {"kind": "exporter", "data_type": "logs", "name": "debug"}
 ```
 
 * Verify the logs in the OpenTelemetry backend.
