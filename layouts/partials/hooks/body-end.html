@@ -1,6 +1,5 @@
 {{ if hugo.IsProduction -}}
   {{ partial "script.html" (dict "src" "js/tracing.js") -}}
 {{ end -}}
-{{ partial "script.html" (dict "src" "js/navScroll.js") -}}
-{{ $js := resources.Get "js/scrollToTop.js" | minify | fingerprint }}
-<script src="{{ $js.Permalink }}"></script>
+{{ partial "script.html" (dict "src" "js/navScroll.js") }}
+{{ partial "script.html" (dict "src" "js/scrollToTop.js") }}
