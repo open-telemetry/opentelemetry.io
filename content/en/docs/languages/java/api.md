@@ -54,8 +54,9 @@ Libraries and frameworks should depend only on the API and only call methods
 from the API, and instruct applications / end users to add a dependency on the
 SDK and install a configured instance.
 
-{{% alert %}} For an exhuastive javadoc reference of all OpenTelemetry Java
-components, see [javadoc.io](https://javadoc.io/doc/io.opentelemetry).
+{{% alert title=Javadoc %}} For the Javadoc reference of all OpenTelemetry Java
+components, see
+[javadoc.io/doc/io.opentelemetry](https://javadoc.io/doc/io.opentelemetry).
 {{% /alert %}}
 
 ## API Components
