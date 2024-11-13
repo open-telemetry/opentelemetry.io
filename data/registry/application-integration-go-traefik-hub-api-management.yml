@@ -13,7 +13,7 @@ description:
   behavior.
 authors:
   - name: Traefik Labs
-    url: https://traefik.io
+    url: https://github.com/immanuelfodor
 urls:
   website: https://traefik.io/traefik-hub/
   docs: https://doc.traefik.io/traefik-hub/operations/metrics
