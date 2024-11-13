@@ -9,7 +9,9 @@ tags:
   - core
   - exporter
 license: Apache 2.0
-description: An OpenTelemetry Prometheus exporter for configuring an ASP.NET Core application with an endpoint for Prometheus to scrape.
+description:
+  An OpenTelemetry Prometheus exporter for configuring an ASP.NET Core
+  application with an endpoint for Prometheus to scrape.
 authors:
   - name: OpenTelemetry Authors
 urls:
