@@ -7,7 +7,7 @@ author: >
 issue: https://github.com/open-telemetry/opentelemetry-specification/pull/4183
 sig: Java, Specification
 # prettier-ignore
-cSpell:ignore: Cyrille Gregor Zeitlinger SLF4J Logback logback stdout 
+cSpell:ignore: Cyrille Clerc Gregor Zeitlinger SLF4J Logback logback stdout 
 ---
 Sending Java logs with OpenTelemetry typically uses the OTLP protocol. However, some scenarios require logs to be output to files or stdout due to organizational or reliability needs.
 
