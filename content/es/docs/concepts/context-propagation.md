@@ -15,7 +15,7 @@ límites de procesos y redes.
 Para entender la propagación de contexto, necesitas comprender dos conceptos
 separados: contexto y propagación.
 
-## Contexto
+## Contexto {#context}
 
 El contexto es un objeto que contiene la información para que el servicio emisor
 y receptor, o la
@@ -28,7 +28,7 @@ creado en el servicio B. El ID de traza que está en el contexto también se usa
 para el siguiente span creado en el servicio B, lo que significa que el span es
 parte de la misma traza que el span del servicio A.
 
-## Propagación
+## Propagación {#propagation}
 
 La propagación es el mecanismo que mueve el contexto entre servicios y procesos.
 Serializa o deserializa el objeto de contexto y proporciona la información

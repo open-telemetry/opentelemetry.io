@@ -103,7 +103,7 @@ fornecedor ou com recursos computacionais em hospedagem própria, dependendo do
 seu _backend_ de observabilidade, da natureza dos seus dados e das suas
 tentativas de realizar amostragem de forma eficaz.
 
-## Amostragem pela Cabeça
+## Amostragem pela Cabeça {#head-sampling}
 
 A amostragem pela cabeça (_head sampling_) é uma técnica de amostragem usada
 para tomar uma decisão de amostragem o mais cedo possível. A decisão de amostrar

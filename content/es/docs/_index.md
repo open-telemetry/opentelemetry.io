@@ -2,13 +2,6 @@
 title: Documentación
 linkTitle: Docs
 menu: { main: { weight: 10 } }
-htmltest:
-  IgnoreDirs:
-    # TODO drop next lines after https://github.com/open-telemetry/opentelemetry.io/issues/5555 is fixed for these pages:
-    - ^es/docs/concepts/glossary/
-    - ^es/docs/concepts/instrumentation/zero-code/
-    - ^es/docs/concepts/signals/baggage/
-    - ^es/docs/zero-code/php/
 default_lang_commit: f7cb8b65a478450d80d703b34c8473c579702108
 ---
 
