@@ -4,7 +4,7 @@ linkTitle: Collecting file-based Java logs with OpenTelemetry
 date: 
 author: >
   [Cyrille Le Clerc](https://github.com/cyrille-leclerc) (Grafana Labs), [Gregor Zeitlinger](https://github.com/zeitlinger) (Grafana Labs)
-issue: https://github.com/open-telemetry/opentelemetry-specification/pull/4183
+issue: https://github.com/open-telemetry/opentelemetry.io/issues/5606
 sig: Java, Specification
 # prettier-ignore
 cSpell:ignore: Cyrille Clerc Gregor Zeitlinger SLF4J Logback logback stdout 
