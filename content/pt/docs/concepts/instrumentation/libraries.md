@@ -313,7 +313,8 @@ consulte a documentação do OpenTelemetry no seu idioma.
 
 No caso de um sistema de mensagens, você pode receber mais de uma mensagem de
 uma vez. As mensagens recebidas se tornam _links_ no trecho que você cria.
-Consulte as [convenções de mensagens](/docs/specs/semconv/messaging/messaging-spans/) para
+Consulte as
+[convenções de mensagens](/docs/specs/semconv/messaging/messaging-spans/) para
 mais detalhes (AVISO: as convenções de mensagens estão
 [em construção](https://github.com/open-telemetry/oteps/pull/173) 🚧).
 
