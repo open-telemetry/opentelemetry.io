@@ -78,6 +78,7 @@ Run the application with the following command and open
 <http://localhost:8080/rolldice> in your web browser to ensure it is working.
 
 ```sh
+export FLASK_APP=app.py
 flask run -p 8080
 ```
 
