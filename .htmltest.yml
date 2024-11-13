@@ -12,8 +12,6 @@ IgnoreDirs:
   - ^(../)?blog/(\d+/)?page/\d+
   # TODO drop next line after https://github.com/open-telemetry/opentelemetry.io/issues/5423 is fixed for ja pages:
   - ^ja/docs/concepts/instrumentation/libraries/
-  # TODO drop next line after https://github.com/open-telemetry/opentelemetry.io/issues/5423 is fixed for pt pages:
-  - ^pt/docs/concepts/instrumentation/libraries/
   # TODO drop next lines after https://github.com/open-telemetry/opentelemetry.io/issues/5555 is fixed for these pages:
   - ^zh/docs/concepts/signals/baggage/
   - ^zh/docs/zero-code/php/
