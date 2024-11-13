@@ -15,7 +15,7 @@ sistema que é distribuído arbitrariamente entre processos e limites de rede.
 Para compreender a propagação de contexto, você precisa entender dois conceitos
 distintos: contexto e propagação.
 
-## Contexto
+## Contexto {#context}
 
 O contexto é um objeto que contém as informações necessárias para que o serviço
 emissor e receptor, ou
@@ -28,7 +28,7 @@ serviço B. O ID do rasto que está no contexto também será usado para o próx
 trecho criado no serviço B, o que significa que o trecho faz parte do mesmo
 rastro que o trecho do serviço A.
 
-## Propagação
+## Propagação {#propagation}
 
 Propagação é o mecanismo que move o contexto entre serviços e processos. Ele
 serializa ou desserializa o objeto de contexto e fornece as informações

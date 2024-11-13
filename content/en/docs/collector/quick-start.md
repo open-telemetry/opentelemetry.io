@@ -57,11 +57,13 @@ preferred shell.
 
 ## Generate and collect telemetry
 
-3. Launch the Collector:
+3. Launch the Collector, listening on ports 4317 (for OTLP gRPC), 4318 (for OTLP
+   HTTP) and 55679 (for ZPages):
 
    ```sh
    docker run \
      -p 127.0.0.1:4317:4317 \
+     -p 127.0.0.1:4318:4318 \
      -p 127.0.0.1:55679:55679 \
      otel/opentelemetry-collector-contrib:{{% param vers %}} \
      2>&1 | tee collector-output.txt # Optionally tee output for easier search later
