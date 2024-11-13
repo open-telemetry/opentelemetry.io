@@ -27,7 +27,6 @@ window.onscroll = function () {
     scrollToTopBtn.style.display = 'none';
   }
 
-  // Check button position on scroll
   adjustButtonPosition();
 };
 
