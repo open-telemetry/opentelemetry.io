@@ -74,6 +74,8 @@ java -javaagent:/path/to/opentelemetry-javaagent.jar \
 
 ```
 
+The `-Dotel.logs.exporter=experimental-otlp/stdout` JVM argument and the environment variable `OTEL_LOGS_EXPORTER="experimental-otlp/stdout"` can be used interchangeably.
+
 > **NOTE:** The logs exporter is experimental and subject to change. 
 > Check the [Specification PR](https://github.com/open-telemetry/opentelemetry-specification/pull/4183) for the latest updates.
 
