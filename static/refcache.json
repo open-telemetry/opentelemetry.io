@@ -8719,6 +8719,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-10-09T10:19:30.617798+02:00"
   },
+  "https://javadoc.io/doc/io.opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-13T15:33:58.49426-06:00"
+  },
   "https://javadoc.io/doc/io.opentelemetry/opentelemetry-exporter-prometheus/latest": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:53.216459-05:00"
