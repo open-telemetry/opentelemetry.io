@@ -1,7 +1,9 @@
 ---
 title: Performance
 description: Performance reference for the OpenTelemetry Java agent
-weight: 75
+weight: 400
+aliases:
+  - /docs/languages/java/performance/
 cSpell:ignore: Dotel
 ---
 
