@@ -108,7 +108,7 @@ pode ser estendido incluem:
 Embora a maioria dos usuários possa não precisar estender o OpenTelemetry, o
 projeto é projetado para tornar isso possível em quase todos os níveis.
 
-## História
+## História {#history}
 
 O OpenTelemetry é um projeto da
 [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io) que é resultado
