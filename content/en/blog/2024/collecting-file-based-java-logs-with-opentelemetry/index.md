@@ -1,3 +1,14 @@
+---
+title: Collecting file-based Java logs with OpenTelemetry
+linkTitle: Collecting file-based Java logs with OpenTelemetry
+date: 
+author: >
+  [Cyrille Le Clerc](https://github.com/cyrille-leclerc) (Grafana Labs), [Gregor Zeitlinger](https://github.com/zeitlinger) (Grafana Labs)
+issue: https://github.com/open-telemetry/opentelemetry-specification/pull/4183
+sig: Java, Specification
+# prettier-ignore
+cSpell:ignore: Cyrille Gregor Zeitlinger SLF4J Logback logback stdout 
+---
 Sending Java logs with OpenTelemetry typically uses the OTLP protocol. However, some scenarios require logs to be output to files or stdout due to organizational or reliability needs.
 
 A common approach to centralize logs is to use unstructured logs, parse them with regular expressions, and add contextual attributes.
@@ -24,7 +35,7 @@ This blog post shows how to set up this solution step by step.
 
 The deployment architecture looks like the following:
 
-![OTLP/JSON Architecture](collecting-file-based-java-logs-with-opentelemetry/otlpjson-architecture.png)
+![OTLP/JSON Architecture](otlpjson-architecture.png)
 
 ## Configure Java Application to Output OTLP/JSON Logs
 
@@ -74,7 +85,7 @@ java -javaagent:/path/to/opentelemetry-javaagent.jar \
 
 ## Configure the OpenTelemetry Collector to ingest the OTLP/JSON logs
 
-![OpenTelemetry Collector OTLP/JSON pipeline](collecting-file-based-java-logs-with-opentelemetry/otel-collector-otlpjson-pipeline.png)
+![OpenTelemetry Collector OTLP/JSON pipeline](otel-collector-otlpjson-pipeline.png)
 
 Source: [https://www.otelbin.io/s/69739d790cf279c203fc8efc86ad1a876a2fc01a](https://www.otelbin.io/s/69739d790cf279c203fc8efc86ad1a876a2fc01a)
 
