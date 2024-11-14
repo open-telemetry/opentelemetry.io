@@ -97,13 +97,13 @@
           {{ end -}}
 
           {{ if $isNative -}}
-          <button type="button" data-filter-value = "native" class="badge rounded-pill text-bg-success text-white" title="Click to filter by native tag">
+          <button name="flag" type="button" data-filter-value = "native" class="badge rounded-pill text-bg-success text-white" title="Click to filter by native tag">
             <i class="fa-solid fa-puzzle-piece">
           </i> native</button>
           {{ end -}}
 
           {{ if $isFirstParty -}}
-          <button type="button" data-filter-value = "first party integration" class="badge rounded-pill text-bg-success text-white" title="Click to filter by first party tag">
+          <button name="flag" type="button" data-filter-value = "first party integration" class="badge rounded-pill text-bg-success text-white" title="Click to filter by first party tag">
             <i class="fa-solid fa-heart"></i> first party integration</button>
           {{ end -}}
 
@@ -112,12 +112,12 @@
           {{ end -}}
 
           {{ if $deprecated -}}
-          <button type="button" data-filter-value = "deprecated" class="badge rounded-pill text-bg-danger text-white" title="Click to filter by deprecated tag">
+          <button name="flag" type="button" data-filter-value = "deprecated" class="badge rounded-pill text-bg-danger text-white" title="Click to filter by deprecated tag">
             <i class="fa-solid fa-ban"></i> deprecated</button>
           {{ end -}}
 
           {{ if .cncfProjectLevel -}}
-          <button type="button" data-filter-value = "{{ .cncfProjectLevel }}" class="badge rounded-pill text-bg-primary text-white" title="Click to filter by CNCF {{ .cncfProjectLevel}} Project">
+          <button name="flag" type="button" data-filter-value = "{{ .cncfProjectLevel }}" class="badge rounded-pill text-bg-primary text-white" title="Click to filter by CNCF {{ .cncfProjectLevel}} Project">
             <img alt="CNCF" style="display: inline-block; width: 14px; height: 14px; border: none; margin:0px; padding: 0; vertical-align:middle" src="/img/cncf-icon-white.svg"> {{ .cncfProjectLevel }}</button>
           {{ end -}}
           </div>
