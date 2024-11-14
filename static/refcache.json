@@ -13675,6 +13675,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-05T15:20:09.004763-05:00"
   },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/export/CardinalityLimitSelector.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-14T12:48:43.848396-06:00"
+  },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/export/MetricExporter.html": {
     "StatusCode": 200,
     "LastSeen": "2024-08-05T15:20:07.498447-05:00"
