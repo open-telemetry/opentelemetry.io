@@ -12,6 +12,7 @@ description:
   Service for Prometheus.
 authors:
   - name: Google
+    url: https://github.com/GoogleCloudPlatform/
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/googlemanagedprometheusexporter
 createdAt: 2022-10-27

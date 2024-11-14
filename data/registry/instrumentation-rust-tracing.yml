@@ -1,3 +1,4 @@
+# cSpell:ignore Tescher
 title: Tracing Instrumentation
 registryType: instrumentation
 language: rust
@@ -8,8 +9,7 @@ license: MIT
 description: Utilities for adding OpenTelemetry interoperability to tracing.
 authors:
   - name: Julian Tescher
-# cSpell:ignore Tescher
-
+    url: https://github.com/jtescher
 urls:
   repo: https://github.com/tokio-rs/tracing-opentelemetry
 createdAt: 2020-08-28
