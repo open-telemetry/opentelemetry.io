@@ -73,7 +73,7 @@ necessárias.
 Para mais informações, consulte
 [Bibliotecas de instrumentação](/docs/concepts/instrumentation/libraries/).
 
-### Exporters
+### Exporters {#exporters}
 
 {{% docs/languages/exporters/intro %}}
 

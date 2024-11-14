@@ -250,7 +250,7 @@ function main() {
   for f in $TARGETS; do
     ((FILE_COUNT++))
 
-    LASTCOMMIT_FF=$(perl -ne "print \"\$1\" if /^$I18N_DLC_KEY:\\s*(.*)/" "$f")
+    LASTCOMMIT_FF=$(perl -ne "print \"\$1\" if /^$I18N_DLC_KEY:\\s*([a-f0-9]+)/i" "$f")
     LASTCOMMIT="$LASTCOMMIT_FF"
 
     if [[ $LIST_KIND == "ALL" && -n $COMMIT_HASH_ARG ]]; then

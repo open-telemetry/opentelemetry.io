@@ -361,17 +361,16 @@ time). This means that the configured endpoint must be able to receive OTLP over
 will connect to the `http` port of the `otlpreceiver` of the Collector created
 in the previous step.
 
-> As of operator v0.67.0, the Instrumentation resource automatically sets
-> `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL` and `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL`
-> to `http/protobuf` for Python services. If you use an older version of the
-> Operator you **MUST** set these env variables to `http/protobuf`, or Python
-> auto-instrumentation will not work.
+> As of operator v0.108.0, the Instrumentation resource automatically sets
+> `OTEL_EXPORTER_OTLP_PROTOCOL` to `http/protobuf` for Python services. If you
+> use an older version of the Operator you **MUST** set this env variable to
+> `http/protobuf`, or Python auto-instrumentation will not work.
 
 #### Auto-instrumenting Python logs
 
 By default, Python logs auto-instrumentation is disabled. If you would like to
-enable this feature, you must to set the `OTEL_LOGS_EXPORTER` and
-`OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED` environment variables as
+enable this feature, you must to set
+`OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED` environment variable as
 follows:
 
 ```yaml
@@ -389,14 +388,12 @@ spec:
     - baggage
   python:
     env:
-      - name: OTEL_LOGS_EXPORTER
-        value: otlp_proto_http
       - name: OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED
         value: 'true'
 ```
 
-> Note that `OTEL_LOGS_EXPORTER` must be explicitly set to `otlp_proto_http`,
-> otherwise it defaults to gRPC.
+> As of operator v0.111.0 setting `OTEL_LOGS_EXPORTER` to `otlp` is not required
+> anymore.
 
 #### Excluding auto-instrumentation {#python-excluding-auto-instrumentation}
 
@@ -539,6 +536,18 @@ securityContext:
       - SYS_PTRACE
   privileged: true
   runAsUser: 0
+```
+
+### Auto-instrumenting a Python musl based container {#annotations-python-musl}
+
+Since operator v0.113.0 Python auto-instrumentation also honors an annotation
+that will permit it to run it on images with a different C library than glibc.
+
+```sh
+# for Linux glibc based images, this is the default value and can be omitted
+instrumentation.opentelemetry.io/otel-python-platform: "glibc"
+# for Linux musl based images
+instrumentation.opentelemetry.io/otel-python-platform: "musl"
 ```
 
 ## Troubleshooting
