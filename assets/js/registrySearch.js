@@ -45,7 +45,6 @@ parseUrlParams();
 if (pathName.includes('registry')) {
   // Run search or display default body
   if (searchQuery) {
-    alert("Executing initial search with query: " + searchQuery);
     executeSearch(searchQuery);
   } else {
     showBody();
