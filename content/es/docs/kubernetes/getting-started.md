@@ -90,7 +90,7 @@ Esta instancia del recopilador utilizará los siguientes componentes:
 - [Filelog Receiver](../collector/components/#filelog-receiver): para recopilar
   Registros de Kubernetes y registros de aplicaciones escritos en stdout/stderr.
 
-Vamos a descomponerlos.
+Vamos a ver sus partes.
 
 ### Receptor OTLP
 
