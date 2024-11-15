@@ -129,7 +129,7 @@ Cons:
 [instrumentation]: /docs/languages/
 [otlp]: /docs/specs/otel/protocol/
 [collector]: /docs/collector/
-[instrument-java-metrics]: /docs/languages/java/api-components/#meterprovider
+[instrument-java-metrics]: /docs/languages/java/api/#meterprovider
 [otlp-exporter]: /docs/specs/otel/protocol/exporter/
 [java-otlp-example]:
   https://github.com/open-telemetry/opentelemetry-java-docs/tree/main/otlp
