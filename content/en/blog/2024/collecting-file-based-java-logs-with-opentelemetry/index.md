@@ -17,7 +17,7 @@ However, regular expression parsing is problematic. They become complex and frag
 
 ## Solution
 
-The OpenTelemetry Java Instrumentation agent now offers an easy solution to convert logs from frameworks like SLF4J/Logback or Log4j2 into OTel-compliant JSON logs on stdout with all resource and log attributes.
+The OpenTelemetry Java Instrumentation agent and SDK now offer an easy solution to convert logs from frameworks like SLF4J/Logback or Log4j2 into OTel-compliant JSON logs on stdout with all resource and log attributes.
 
 This is a true turnkey solution:
 
