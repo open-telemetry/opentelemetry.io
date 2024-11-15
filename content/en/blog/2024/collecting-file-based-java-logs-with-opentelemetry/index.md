@@ -136,7 +136,7 @@ exporters:
   otlphttp:
 ```
 
-* Verify the logs collected by the OTel Collector checking the output of the OTel Collector Debug exporter
+Verify the logs collected by the OTel Collector checking the output of the OTel Collector Debug exporter
 
 ```log
 2024-11-01T10:03:31.074+0530	info	Logs	{"kind": "exporter", "data_type": "logs", "name": "debug", "resource logs": 1, "log records": 1}
@@ -167,10 +167,12 @@ Flags: 1
      {"kind": "exporter", "data_type": "logs", "name": "debug"}
 ```
 
-* Verify the logs in the OpenTelemetry backend.
-* After the pipeline works end-to-end, ensure production readiness:
-  * Remove the `debug` exporter from the `logs` pipeline in the OTel Collector configuration.
-  * Disable file and console exporters in the logging framework (e.g., `logback.xml`) but keep using the logging configuration to filter logs. The OTel Java agent will output JSON logs to stdout.
+Verify the logs in the OpenTelemetry backend.
+
+After the pipeline works end-to-end, ensure production readiness:
+
+* Remove the `debug` exporter from the `logs` pipeline in the OTel Collector configuration.
+* Disable file and console exporters in the logging framework (e.g., `logback.xml`) but keep using the logging configuration to filter logs. The OTel Java agent will output JSON logs to stdout.
 
 ```xml
 <!-- tested with logback-classic v1.5.11 -->
@@ -190,9 +192,10 @@ Flags: 1
 
 To support Kubernetes and container specifics, add a standard parsing step in the pipeline without specific mapping configuration.
 
-* Use the OTel Collector File Log Receiver's [`container`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/stanza/docs/operators/container.md) parser to handle container logging specifics.
-  * Replace `<<namespace>>`, `<<pod_name>>`, and `<<container_name>>` with the desired values or use a broader [glob pattern](https://pkg.go.dev/v.io/v23/glob) like `*`.
-  
+Use the OTel Collector File Log Receiver's [`container`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/stanza/docs/operators/container.md) parser to handle container logging specifics.
+
+Replace `<<namespace>>`, `<<pod_name>>`, and `<<container_name>>` with the desired values or use a broader [glob pattern](https://pkg.go.dev/v.io/v23/glob) like `*`.
+
 ```yaml
 receivers:
   filelog/otlp-json-logs:
@@ -245,4 +248,4 @@ exporters:
 This blog post showed how to collect file-based Java logs with OpenTelemetry. The solution is easy to set up and provides a turnkey solution for converting logs from frameworks like SLF4J/Logback or Log4j2 into OTel-compliant JSON logs on stdout with all resource and log attributes.
 This JSON format is certainly verbose, but it generally has minimal impact on performances and offers a solid balance by providing highly contextualized logs that can be correlated with traces and metrics.
 
-Any feedback or questions? Please reach out to us on [GitHub](https://github.com/open-telemetry/opentelemetry-specification/pull/4183).
+Any feedback or questions? Reach out on [GitHub](https://github.com/open-telemetry/opentelemetry-specification/pull/4183).
