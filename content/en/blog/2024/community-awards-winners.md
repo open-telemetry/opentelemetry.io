@@ -3,6 +3,7 @@ title: Announcing 2024 OpenTelemetry Community Awards Winners
 linkTitle: OpenTelemetry Community Awards Winners
 date: 2024-11-15
 author: OpenTelemetry Governance Committee
+cSpell:ignore: serkan ozal Serkan Özal anunarapureddy Anusha Narapureddy avillela codeboten emdneto
 ---
 
 We are exicted to announce the winners of the first-ever **OpenTelemetry
@@ -21,7 +22,7 @@ Let's congratulate our 2024 OpenTelemetry Community Awards winners:
 - [@codeboten](https://github.com/codeboten) (Alex Boten)
 - [@emdneto](https://github.com/emdneto) (Emídio Neto)
 
-We have collected any attached comments (some of them summarised) from all
+We have collected any attached comments (some of them summarized) from all
 received nominations. These demonstrate the great appreciation from the
 community towards all nominated individuals. You can find those comments in the
 following
