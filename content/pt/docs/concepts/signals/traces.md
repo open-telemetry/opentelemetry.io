@@ -136,7 +136,7 @@ Para compreender como o rastreamento no OpenTelemetry funciona, vamos analisar
 uma lista de componentes que terão um papel fundamental na instrumentação do
 nosso código.
 
-## Trace Provider
+## Trace Provider {#tracer-provider}
 
 Um Trace Provider (às vezes chamado de `TracerProvider`) é uma fábrica de
 `rastros`. Na maioria das aplicações, um Trace Provider é inicializado uma vez e

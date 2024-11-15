@@ -109,9 +109,9 @@
           },
           "url": {
             "type": "string",
-            "description": "The URL of the author",
-            "pattern": "^https:\\/\\/github\\.com\\/([a-zA-Z0-9](?:-?[a-zA-Z0-9]){0,38})$",
-            "errorMessage": "The URL of the author must be a valid GitHub user URL"
+            "description": "The URL of the author. This can be a website or a GitHub handle URL.",
+            "format": "uri",
+            "pattern": "^https://.*$"
           }
         },
         "if": {
