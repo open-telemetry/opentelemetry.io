@@ -13,7 +13,7 @@ If you want to get logs from your Java application ingested into a backend, the 
 
 A common approach to centralize logs is to use unstructured logs, parse them with regular expressions, and add contextual attributes.
 
-However, regular expression parsing is problematic. While initially easy, it becomes complex and fragile when handling all log fields, line breaks in exceptions, and unexpected log format changes. Parsing errors are inevitable with this method.
+However, regular expression parsing is problematic. They become complex and fragile quickly when handling all log fields, line breaks in exceptions, and unexpected log format changes. Parsing errors is inevitable with this method.
 
 ## Solution
 
