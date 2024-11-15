@@ -15,7 +15,7 @@ winners with you.
 
 Let's congratulate our 2024 OpenTelemetry Community Awards winners:
 
-- [@serkan-ozal](https://github.com/serkan-ozal) (Serkan Ozal)
+- [@serkan-ozal](https://github.com/serkan-ozal) (Serkan Özal)
 - [@anunarapureddy](https://github.com/anunarapureddy) (Anusha Narapureddy)
 - [@avillela](https://github.com/avillela) (Adriana Villela)
 - [@codeboten](https://github.com/codeboten) (Alex Boten)
