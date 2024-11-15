@@ -6,7 +6,7 @@ author: OpenTelemetry Governance Committee
 cSpell:ignore: serkan ozal Serkan Özal anunarapureddy Anusha Narapureddy avillela codeboten emdneto
 ---
 
-We are exicted to announce the winners of the first-ever **OpenTelemetry
+We are excited to announce the winners of the first-ever **OpenTelemetry
 Community Awards**! These awards recognize individuals who have made a notable
 impact to OpenTelemetry project over the past year, whether it's through code,
 documentation, project management, outreach, adoption, or simply helping others
