@@ -604,7 +604,7 @@ public class SdkMeterProviderConfig {
     // builder.registerMetricReader(
     //     MetricReaderConfig.periodicMetricReader(
     //         MetricExporterConfig.otlpHttpMetricExporter("http://localhost:4318/v1/metrics")),
-    //     unusedInstrumentType -> 100);
+    //     instrumentType -> 100);
 
     ViewConfig.dropMetricView(builder, "some.custom.metric");
     ViewConfig.histogramBucketBoundariesView(
