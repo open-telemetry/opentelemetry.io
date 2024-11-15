@@ -22,7 +22,7 @@ Si estás buscando comenzar a migrar de Prometheus a OpenTelemetry, o si
 estás interesado en usar el OpenTelemetry Collector para recolectar métricas de Prometheus,
 consulta [Prometheus Receiver](../collector/components/#prometheus-receiver).
 
-## Overview
+## Visión general
 
 Kubernetes expone mucha telemetría importante de muchas maneras diferentes. Tiene
 registros, eventos, métricas para muchos objetos diferentes y los datos generados por sus
@@ -48,7 +48,7 @@ estás interesado en usar un operador de Kubernetes, consulta
 [OpenTelemetry Operator](../operator/), pero esta guía se centrará en el Helm
 chart.
 
-## Preparation
+## Preparación
 
 Esta guía asumirá el uso de un [Kind cluster](https://kind.sigs.k8s.io/),
 pero eres libre de usar cualquier clúster de Kubernetes que consideres adecuado.
@@ -61,7 +61,7 @@ clúster tipo:
 kind create cluster
 ```
 
-Suponiendo que ya tiene [Helm instalado](https://helm.sh/docs/intro/install/),
+Asumiendo que ya tienes [Helm instalado](https://helm.sh/docs/intro/install/),
 Agregue el gráfico de timón de OpenTelemetry Collector para que pueda instalarse
 más tarde.
 
@@ -69,16 +69,16 @@ más tarde.
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
 ```
 
-## Daemonset Collector
+## Recolector Daemonset
 
 El primer paso para recopilar la telemetría de Kubernetes es implementar un
 daemonset instancia del Colector de telemetría OpenTelemetry para recopilar
 telemetría relacionada con nodos y cargas de trabajo que se ejecutan en esos
 nodos. Se utiliza un daemonset para garantizar que esto La instancia del
-recopilador está instalada en todos los nodos. Cada instancia del El recopilador
+collector está instalada en todos los nodos. Cada instancia del El collector
 en el daemonset recopilará datos solo del nodo en el que se encuentra corriendo.
 
-Esta instancia del recopilador utilizará los siguientes componentes:
+Esta instancia del collector utilizará los siguientes componentes:
 
 - [OTLP Receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver):
   para recopilar trazas, métricas y registros de aplicaciones.
@@ -90,7 +90,7 @@ Esta instancia del recopilador utilizará los siguientes componentes:
 - [Filelog Receiver](../collector/components/#filelog-receiver): para recopilar
   Registros de Kubernetes y registros de aplicaciones escritos en stdout/stderr.
 
-Vamos a descomponerlos.
+Veamos sus partes.
 
 ### Receptor OTLP
 
@@ -104,7 +104,7 @@ pero para este tutorial asumiremos que la telemetría está formateada en OTLP.
 
 Aunque no es un requisito, es una práctica común para las aplicaciones que se
 ejecutan en Un nodo para emitir sus trazas, métricas y registros a un
-recopilador que se ejecuta en el el mismo nodo. Esto mantiene las interacciones
+collector que se ejecuta en el el mismo nodo. Esto mantiene las interacciones
 de red simples y permite una fácil correlación de Metadatos de Kubernetes usando
 el atributo `k8sattribute`
 
@@ -207,7 +207,7 @@ con el cúmulo en su conjunto.
 Una implementación con exactamente una réplica garantiza que no se produzcan
 duplicados datos.
 
-Esta instancia del Recopilador utilizará los siguientes componentes:
+Esta instancia del collector utilizará los siguientes componentes:
 
 - [Kubernetes Cluster Receiver](../collector/components/#kubernetes-cluster-receiver):para
   recopilar métricas de nivel de clúster y eventos de entidad.
@@ -289,5 +289,5 @@ a continuación, ejecute el siguiente comando para instalar el gráfico:
 helm install otel-collector-cluster open-telemetry/opentelemetry-collector --values <ruta donde guardó el gráfico>
 ```
 
-Ahora debería tener una instalación de implementación del recopilador
+Ahora debería tener una instalación de implementación del collector
 ejecutándose en su clúster que recopila métricas y eventos de clúster
