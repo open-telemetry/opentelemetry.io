@@ -11,6 +11,7 @@ description:
   The Google Cloud Operations Exporter for the OpenTelemetry Collector.
 authors:
   - name: Google
+    url: https://github.com/GoogleCloudPlatform/
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/googlecloudexporter
 createdAt: 2020-06-06

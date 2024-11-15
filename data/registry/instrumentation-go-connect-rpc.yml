@@ -10,6 +10,7 @@ license: Apache 2.0
 description: Go contrib plugin for Connect RPC
 authors:
   - name: Connect Authors
+    url: https://github.com/connectrpc/
 urls:
   repo: https://github.com/connectrpc/otelconnect-go
 createdAt: 2023-01-19
