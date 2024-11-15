@@ -7,7 +7,7 @@ author: >
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/5606
 sig: Java, Specification
 # prettier-ignore
-cSpell:ignore: Clerc Cyrille Dotel Gregor Logback logback otlphttp otlpjson resourcedetection SLF4J stdout Zeitlinger
+cSpell:ignore: Clerc cust Cyrille Dotel Gregor Logback logback otlphttp otlpjson resourcedetection SLF4J stdout Zeitlinger
 ```suggestion
 ---
 If you want to get logs from your Java application ingested into a backend, the easiest and recommended way is using an exporter that uses the OpenTelemetry protocol (OTLP). However, some scenarios require logs to be output to files or stdout due to organizational or reliability needs.
