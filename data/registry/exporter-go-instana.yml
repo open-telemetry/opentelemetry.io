@@ -9,6 +9,7 @@ license: MIT
 description: The Instana Go OpenTelemetry Exporter.
 authors:
   - name: Instana Authors
+    url: https://github.com/instana/
 urls:
   repo: https://github.com/instana/go-otel-exporter
 createdAt: 2022-10-10

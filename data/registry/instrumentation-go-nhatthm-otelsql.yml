@@ -13,6 +13,7 @@ description:
   interactions with the database.
 authors:
   - name: nhatthm
+    url: https://github.com/nhatthm
 urls:
   repo: https://github.com/nhatthm/otelsql
 createdAt: 2022-01-27

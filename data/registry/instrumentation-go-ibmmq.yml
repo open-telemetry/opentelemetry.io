@@ -14,7 +14,10 @@ description:
   This package extracts metrics from an IBM MQ queue manager and forwards them
   to an OpenTelemetry environment.
 authors:
-  - name: Mark Taylor, IBM MQ Development
+  - name: Mark Taylor
+    url: https://github.com/ibmmqmet
+  - name: IBM MQ Development
+    url: https://github.com/ibm-messaging/
 createdAt: 2024-03-26
 isNative: false
 isFirstParty: true

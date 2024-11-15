@@ -9,6 +9,7 @@ license: Apache 2.0 OR MIT
 description: OpenTelemetry integration for the Tide web framework.
 authors:
   - name: Christoph Grabo
+    url: https://github.com/asaaki/
 urls:
   repo: https://github.com/asaaki/opentelemetry-tide
 createdAt: 2020-08-28

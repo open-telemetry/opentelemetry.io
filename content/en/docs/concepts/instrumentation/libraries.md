@@ -267,8 +267,8 @@ After you create a span, pass new trace context to the application code
 (callback or handler), by making the span active; if possible, do this
 explicitly. The following Java example shows how to add trace context and
 activate a span. See the
-[Context extraction in Java](/docs/languages/java/api-components/#contextpropagators),
-for more examples.
+[Context extraction in Java](/docs/languages/java/api/#contextpropagators), for
+more examples.
 
 ```java
 // extract the context

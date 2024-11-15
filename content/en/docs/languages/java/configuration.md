@@ -11,10 +11,9 @@ cSpell:ignore: authservice autoconfigured blrp Customizer Dotel ignore LOWMEMORY
 <?code-excerpt path-base="examples/java/configuration"?>
 
 The [SDK](../sdk/) is the built-in reference implementation of the
-[API](../api-components/), processing and exporting telemetry produced by
-instrumentation API calls. Configuring the SDK to process and export
-appropriately is an essential step to integrating OpenTelemetry into an
-application.
+[API](../api/), processing and exporting telemetry produced by instrumentation
+API calls. Configuring the SDK to process and export appropriately is an
+essential step to integrating OpenTelemetry into an application.
 
 All SDK components have
 [programmatic configuration APIs](#programmatic-configuration). This is the most
