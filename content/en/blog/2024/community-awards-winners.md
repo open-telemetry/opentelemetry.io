@@ -3,7 +3,8 @@ title: Announcing 2024 OpenTelemetry Community Awards Winners
 linkTitle: OpenTelemetry Community Awards Winners
 date: 2024-11-15
 author: OpenTelemetry Governance Committee
-cSpell:ignore: serkan ozal Serkan Özal anunarapureddy Anusha Narapureddy avillela codeboten emdneto
+# prettier-ignore
+cSpell:ignore: anunarapureddy Anusha avillela codeboten emdneto Narapureddy ozal serkan Serkan Özal
 ---
 
 We are excited to announce the winners of the first-ever **OpenTelemetry
