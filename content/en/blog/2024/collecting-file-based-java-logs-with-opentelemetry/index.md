@@ -45,7 +45,7 @@ No code changes needed. Continue using your preferred logging library, including
 ```java
 Logger logger = org.slf4j.LoggerFactory.getLogger(MyClass.class);
 ...
-MDC.put("customerId", cusomerId);
+MDC.put("customerId", customerId);
 
 logger.info("Order {} successfully placed", orderId);
 
