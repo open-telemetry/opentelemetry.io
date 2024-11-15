@@ -40,6 +40,7 @@ let selectedLanguage = 'all';
 let selectedComponent = 'all';
 let selectedFlag = 'all'; // Added selectedFlag
 
+
 parseUrlParams();
 
 if (pathName.includes('registry')) {
@@ -132,6 +133,8 @@ if (pathName.includes('registry')) {
         updateFilters();
       }),
     );
+    applyFlagFilter();
+
   });
 }
 
@@ -144,15 +147,33 @@ function showBody() {
   }
 }
 
+function applyFlagFilter(){
+  document.querySelectorAll('[data-filter-value]').forEach((element) => {
+   element.addEventListener('click', (evt) => {
+     selectedFlag = evt.target.getAttribute('data-filter-value');
+
+     executeSearch(selectedFlag);
+     parseUrlParams();
+   });
+ });
+}
+
 // Runs search through Fuse for fuzzy search
 function executeSearch(searchQuery) {
-  if (searchQuery === '') {
+  if (searchQuery === '' && selectedFlag === 'all') {
     showBody();
     return;
   }
 
   document.title = searchQuery + ' at ' + originalDocumentTitle;
-  document.querySelector('#input-s').value = searchQuery;
+
+//input field not updated when flag is clicked
+  if (searchQuery !== selectedFlag){
+    document.querySelector('#input-s').value = searchQuery;
+  } else {
+  document.querySelector('#input-s').value = ''; // Clear input field when selected flag is clicked
+ }
+
   document.querySelector('#default-body').style.display = 'none';
   document.querySelector('#search-results').innerHTML = '';
   document.getElementById('search-loading').style.display = 'block';
@@ -160,7 +181,17 @@ function executeSearch(searchQuery) {
   const run = function (searchQuery) {
     // The 0-timeout is here if search is blocking, such that the "search loading" is rendered properly
     setTimeout(() => {
-      let results = miniSearch.search(searchQuery);
+
+      let results = miniSearch.search(searchQuery,{
+        filter:(result) =>{
+          const matchFlag = selectedFlag ==='all' || (result.flags && result.flags.includes(selectedFlag));
+          const matchLanguage = selectedLanguage === 'all' || result.language === selectedLanguage;
+          const matchComponent = selectedComponent === 'all' || result.registryType === selectedComponent;
+
+          return matchFlag && matchLanguage && matchComponent;
+        }
+      });
+
       document.getElementById('search-loading').style.display = 'none';
 
       if (results.length > 0) {
@@ -216,6 +247,11 @@ function autoSuggest(value) {
 
 // Populate the search results and render to the page
 function populateResults(results) {
+
+  const filteredResults = results.filter(result =>{
+    return selectedFlag === 'all' || (result.flags && result.flags.includes(selectedFlag));
+  });
+
   document.querySelector('#search-results').innerHTML += results.reduce(
     (acc, result) => {
       return (
@@ -225,6 +261,7 @@ function populateResults(results) {
     },
     '',
   );
+  applyFlagFilter();
 }
 
 function setInput(key, value) {

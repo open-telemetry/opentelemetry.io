@@ -1,9 +1,9 @@
 {{ $languageNames := .languageNames -}}
 
 {{ with .value -}}
-    {{ 
+    {{
         $remoteRegistries := dict
-            "npm" (dict 
+            "npm" (dict
                 "urlPattern" "https://npmjs.com/package/%s"
                 "installTemplate" "ecosystem/registry/quickinstall/default.md"
                 "installLine" "npm install %s"
@@ -116,27 +116,29 @@
             <span class="badge rounded-pill text-bg-info"><i class="fa-regular fa-star"></i> new</span>
             {{ end -}}
             {{ if $isNative -}}
-            <span class="badge rounded-pill text-bg-success text-white"><i class="fa-solid fa-puzzle-piece"></i> native</span>
+            <button name="flag" type="button" data-filter-value = "native" class="badge rounded-pill text-bg-success text-white" title="Click to filter by native tag">
+            <i class="fa-solid fa-puzzle-piece"></i> native</button>
             {{ end -}}
             {{ if $isFirstParty -}}
-            <span class="badge rounded-pill text-bg-success text-white"><i class="fa-solid fa-heart"></i> first party integration</span>
+            <button name="flag" type="button" data-filter-value = "first party integration" class="badge rounded-pill text-bg-success text-white" title="Click to filter by first party tag">
+            <i class="fa-solid fa-heart"></i> first party integration</button>
             {{ end -}}
             {{ if $usedInDemo -}}
             <span class="badge rounded-pill text-bg-secondary text-white" title="This package is used in the OpenTelemetry Demo!"><i class="fa-solid fa-shapes"></i> OTel Demo</span>
             {{ end -}}
             {{ if $deprecated -}}
-            <span class="badge rounded-pill text-bg-danger text-white" title=""><i class="fa-solid fa-ban"></i> deprecated</span>
+            <button name="flag" type="button" data-filter-value = "deprecated" class="badge rounded-pill text-bg-danger text-white" title="Click to filter by deprecated tag">
+              <i class="fa-solid fa-ban"></i> deprecated</button>
             {{ end -}}
             {{ if .cncfProjectLevel -}}
-            <span class="badge rounded-pill text-bg-primary text-white" title="CNCF {{ .cncfProjectLevel}} Project">
-                <img alt="CNCF" style="display: inline-block; width: 14px; height: 14px; border: none; margin:0px; padding: 0; vertical-align:middle" src="/img/cncf-icon-white.svg"> {{ .cncfProjectLevel }}
-            </span>
+            <button name="flag" type="button" data-filter-value = "{{ .cncfProjectLevel }}" class="badge rounded-pill text-bg-primary text-white" title="Click to filter by CNCF {{ .cncfProjectLevel}} Project">
+            <img alt="CNCF" style="display: inline-block; width: 14px; height: 14px; border: none; margin:0px; padding: 0; vertical-align:middle" src="/img/cncf-icon-white.svg"> {{ .cncfProjectLevel }}</button>
             {{ end -}}
             </div>
         </h4>
         <p class="card-text">
             <small class="text-body-secondary">
-            by 
+            by
             {{ range $index, $author := .authors -}}
                 {{ if $index }}, {{ end }}
                 {{ if eq $author.name "OpenTelemetry Authors" -}}
@@ -191,7 +193,7 @@
                     {{ .package.version }}
                 </div>
                 <small>Version</small>
-                </div>      
+                </div>
             </li>
             {{- end -}}
             {{ with .language -}}
@@ -201,7 +203,7 @@
                     {{ $languageNames.Get . | default (humanize .) }}
                 </div>
                 <small>Language</small>
-                </div>      
+                </div>
             </li>
             {{- end }}
             {{ with .registryType -}}
@@ -211,7 +213,7 @@
                     {{ . | humanize }}
                 </div>
                 <small>Component</small>
-                </div>      
+                </div>
             </li>
             {{- end -}}
             {{ with .license -}}
@@ -221,7 +223,7 @@
                     {{ . }}
                 </div>
                 <small>License</small>
-                </div>      
+                </div>
             </li>
             {{- end -}}
             </div>
