@@ -3951,6 +3951,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:17:17.601945+02:00"
   },
+  "https://github.com/DoubleTK": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-18T07:27:46.234973166Z"
+  },
   "https://github.com/EzzioMoreira": {
     "StatusCode": 200,
     "LastSeen": "2024-09-13T09:26:18.380261046Z"
@@ -4118,6 +4122,14 @@
   "https://github.com/Oberon00": {
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:17:00.060853+02:00"
+  },
+  "https://github.com/OddDotNet/OddDotCSharp": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-18T07:27:46.874342377Z"
+  },
+  "https://github.com/OddDotNet/OddDotNet": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-18T07:27:46.059093956Z"
   },
   "https://github.com/OlivierAlbertini": {
     "StatusCode": 200,
@@ -9995,6 +10007,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:06:02.410999-05:00"
   },
+  "https://odddotnet.github.io/OddDotDocs/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-11-18T07:27:46.284157799Z"
+  },
   "https://one.bonree.com/open/document/187": {
     "StatusCode": 206,
     "LastSeen": "2024-04-02T09:45:50.142295155Z"
@@ -13942,6 +13958,10 @@
   "https://www.nuget.org/packages/Npgsql": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:26:17.426269-05:00"
+  },
+  "https://www.nuget.org/packages/OddDotNet.Client": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-18T07:27:47.086708666Z"
   },
   "https://www.nuget.org/packages/OpenTelemetry.AutoInstrumentation": {
     "StatusCode": 200,
