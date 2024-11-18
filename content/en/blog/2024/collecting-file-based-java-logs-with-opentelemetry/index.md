@@ -10,7 +10,8 @@ sig: Java, Specification
 cSpell:ignore: Clerc cust Cyrille Dotel Gregor Logback logback otlphttp otlpjson resourcedetection SLF4J stdout Zeitlinger
 ```suggestion
 ---
-If you want to get logs from your Java application ingested into a backend, the easiest and recommended way is using an exporter that uses the OpenTelemetry protocol (OTLP). However, some scenarios require logs to be output to files or stdout due to organizational or reliability needs.
+If you want to get logs from your Java application ingested into an OpenTelemetry compatible logs backend, the easiest and recommended way is using an OpenTelemetry protocol (OTLP) exporter. 
+However, some scenarios require logs to be output to files or stdout due to organizational or reliability needs.
 
 A common approach to centralize logs is to use unstructured logs, parse them with regular expressions, and add contextual attributes.
 
