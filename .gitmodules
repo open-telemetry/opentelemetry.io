@@ -31,4 +31,4 @@
 [submodule "content-modules/opentelemetry-java-examples"]
 	path = content-modules/opentelemetry-java-examples
 	url = https://github.com/open-telemetry/opentelemetry-java-examples.git
-	javaexamples-pin = 0f736ec
+	javaexamples-pin = f9553ef
