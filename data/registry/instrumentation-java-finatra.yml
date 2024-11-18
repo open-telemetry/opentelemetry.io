@@ -18,3 +18,4 @@ isFirstParty: false
 package:
   registry: maven
   name: io.opentelemetry.javaagent.instrumentation/opentelemetry-javaagent-finatra-2.9
+  version: 2.10.0-alpha
