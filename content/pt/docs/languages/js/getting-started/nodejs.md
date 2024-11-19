@@ -9,7 +9,7 @@ default_lang_commit: 2bda479b6ce77f51266845ade9fe1b431dfde0d3
 
 Esta página mostrará como começar a usar o OpenTelemetry no Node.js.
 
-Você aprenderá como instrumentar [traços][] e [métricas][] e registrá-los
+Você aprenderá como instrumentar [rastros][] e [métricas][] e registrá-los
 no console.
 
 {{% alert title="Note" color="info" %}} A biblioteca de registro para OpenTelemetry

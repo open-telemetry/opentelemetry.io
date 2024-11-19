@@ -35,11 +35,11 @@ Copie o seguinte arquivo em um diretório vazio e chame-o `index.html`.
     <base href="/" />
     <!--
       https://www.w3.org/TR/trace-context/
-      Set the `traceparent` in the server's HTML template code. It should be
-      dynamically generated server side to have the server's request trace Id,
-      a parent span Id that was set on the server's request span, and the trace
-      flags to indicate the server's sampling decision
-      (01 = sampled, 00 = not sampled).
+      Defina o `traceparent` no código do template HTML do servidor. 
+      Ele deve ser gerado dinamicamente no lado do servidor para conter o
+      trace Id da requisição do servidor, um span Id de pai que foi definido
+      no span de requisição do servidor, e as flags de rastreamento para
+      indicar a decisão de amostragem do servidor (01 = amostrado, 00 = não amostrado).
       '{version}-{traceId}-{spanId}-{sampleDecision}'
     -->
     <meta
@@ -107,7 +107,7 @@ Adicione o seguinte código ao `document-load.ts|js` para criar um provedor de r
 que traz a instrumentação para rastrear a carga do documento:
 
 ```js
-/* document-load.ts|js file - the code snippet is the same for both the languages */
+/* document-load.ts|js arquivo - o trecho de código é o mesmo para ambas as linguagens */
 import { WebTracerProvider } from "@opentelemetry/sdk-trace-web";
 import { DocumentLoadInstrumentation } from "@opentelemetry/instrumentation-document-load";
 import { ZoneContextManager } from "@opentelemetry/context-zone";
@@ -116,11 +116,11 @@ import { registerInstrumentations } from "@opentelemetry/instrumentation";
 const provider = new WebTracerProvider();
 
 provider.register({
-  // Changing default contextManager to use ZoneContextManager - supports asynchronous operations - optional
+  // Alterando o contextManager padrão para usar ZoneContextManager - oferece suporte para operações assíncronas - opcional
   contextManager: new ZoneContextManager(),
 });
 
-// Registering instrumentations
+// Registrando instrumentações
 registerInstrumentations({
   instrumentations: [new DocumentLoadInstrumentation()],
 });
@@ -132,26 +132,26 @@ Agora crie o aplicativo com parcel:
 npx parcel index.html
 ```
 
-e abra o servidor de desenvolvimento web (e.g. at `http://localhost:1234`) para ver se o seu código funciona.
+E abra o servidor de desenvolvimento web (e.g. at `http://localhost:1234`) para ver se o seu código funciona.
 
 Ainda não haverá saída de rastros, para isso precisamos adicionar um exportador.
 
 ### Criando um Exportador
 
 No exemplo a seguir, usaremos o `ConsoleSpanExporter` que imprime todos os
-spans no console.
+trechos no console.
 
 Para visualizar e analisar seus rastros, você precisará exportá-los para um
 backend de rastreamento. Seguir [estas instruções](../../exporters) para configurar um
 backend e exportador.
 
-Você também pode querer usar o `BatchSpanProcessor` para exportar trechos em lotes para usar os recursos de forma mais eficiente..
+Você também pode querer usar o `BatchSpanProcessor` para exportar trechos em lotes para usar os recursos de forma mais eficiente.
 
 Para exportar rastros para o console, modifique `document-load.ts|js` para que corresponda
 ao seguinte trecho de código:
 
 ```js
-/* document-load.ts|js file - the code is the same for both the languages */
+/* document-load.ts|js arquivo - o código é o mesmo para ambas as linguagens */
 import {
   ConsoleSpanExporter,
   SimpleSpanProcessor,
@@ -165,11 +165,11 @@ const provider = new WebTracerProvider();
 provider.addSpanProcessor(new SimpleSpanProcessor(new ConsoleSpanExporter()));
 
 provider.register({
-  // Changing default contextManager to use ZoneContextManager - supports asynchronous operations - optional
+  // Alterando o contextManager padrão para usar ZoneContextManager - oferece suporte para operações assíncronas - opcional
   contextManager: new ZoneContextManager(),
 });
 
-// Registering instrumentations
+// Registrando Instrumentações
 registerInstrumentations({
   instrumentations: [new DocumentLoadInstrumentation()],
 });
@@ -233,8 +233,7 @@ barra de ferramentas do desenvolvedor, você deve ver alguns rastros sendo expor
 
 ### Adicionar Instrumentações
 
-Se você quiser instrumentar solicitações Ajax, interações do usuário e outros, você pode
-registrar instrumentações adicionais para eles:
+Caso deseje instrumentar solicitações Ajax, interações do usuário e outros, é possível registrar instrumentações adicionais para esses elementos:
 
 ```javascript
 registerInstrumentations({
