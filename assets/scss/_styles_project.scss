@@ -25,15 +25,15 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 
-  >ul {
+  > ul {
     list-style: none;
     margin: 0;
     padding: 0;
 
-    >li {
+    > li {
       display: inline;
 
-      >a {
+      > a {
         @extend .btn;
         margin: 0.25rem;
 
@@ -50,8 +50,7 @@
 
   >ul>li>a
 
-  /*, > p > a*/
-    {
+  /*, > p > a*/ {
     @extend .btn-lg;
     @extend .btn-secondary;
   }
@@ -60,7 +59,7 @@
 .l-primary-buttons {
   @extend .l-buttons;
 
-  >ul>li>a {
+  > ul > li > a {
     @extend .btn-lg;
     @extend .btn-primary;
   }
@@ -73,8 +72,7 @@
 
   >ul>li>a
 
-  /*, > p > a*/
-    {
+  /*, > p > a*/ {
     @extend .btn-lg;
     @extend .btn-primary;
     padding: 20px;
@@ -89,8 +87,7 @@
 
   >ul>li>a
 
-  /*, > p > a*/
-    {
+  /*, > p > a*/ {
     @extend .btn-lg;
     @extend .btn-secondary;
     padding: 20px;
@@ -180,7 +177,7 @@
 .community-contribution {
   text-align: center;
 
-  &>p {
+  & > p {
     font-size: $h3-font-size;
     font-weight: $headings-font-weight;
     line-height: $headings-line-height;
@@ -337,10 +334,9 @@ details {
 // Workaround for iOS and macOS Safari 17+. For details see:
 // https://github.com/open-telemetry/opentelemetry.io/issues/3538
 
-.td-content .highlight>pre {
-
-  >.click-to-copy,
-  >code {
+.td-content .highlight > pre {
+  > .click-to-copy,
+  > code {
     overflow-y: auto;
   }
 }
