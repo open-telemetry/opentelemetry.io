@@ -17,6 +17,8 @@
       "description": "The type of the entry",
       "enum": [
         "application integration",
+        "confmap converter",
+        "confmap provider",
         "core",
         "exporter",
         "extension",
