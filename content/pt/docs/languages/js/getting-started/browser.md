@@ -82,7 +82,7 @@ Então adicione [parcel](https://parceljs.org/), que (entre outras coisas) permi
 npm install --save-dev parcel
 ```
 
-Crie um arquivo de código vazio chamado `document-load` com um `.ts` ou `.js` extensão,
+Crie um arquivo de código vazio chamado `document-load` com a extensão `.ts` ou `.js`,
 com base no idioma que você escolheu para escrever seu aplicativo. Adicione o seguinte código ao seu HTML logo antes do `</body>` fechando tag:
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
