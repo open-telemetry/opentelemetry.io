@@ -1,49 +1,6 @@
 {{ if hugo.IsProduction -}}
-  {{ partial "script.html" (dict "src" "js/tracing.js") -}}
+{{ partial "script.html" (dict "src" "js/tracing.js") -}}
 {{ end -}}
 {{ partial "script.html" (dict "src" "js/navScroll.js") -}}
-
-<!-- Scroll-to-Top Button -->
-<div class="scroll-container">
-  <button id="scrollToTopBtn" class="scroll-btn btn" aria-label="Scroll to top" title="Scroll to top">
-    <i class="fas fa-arrow-up"></i>
-  </button>
-</div>
-
-<script>
-  // Scroll-to-Top Functionality
-  document.addEventListener("DOMContentLoaded", function () {
-    let scrollToTopBtn = document.getElementById("scrollToTopBtn");
-    let footer = document.querySelector(".td-footer");
-
-    if (!scrollToTopBtn || !footer) return;
-
-    function adjustButtonPosition() {
-      let footerTop = footer.getBoundingClientRect().top;
-      let windowHeight = window.innerHeight;
-
-      if (footerTop < windowHeight + 40) {
-        scrollToTopBtn.style.bottom = windowHeight - footerTop + 40 + "px";
-      } else {
-        scrollToTopBtn.style.bottom = "40px";
-      }
-    }
-
-    window.onscroll = function () {
-      if (
-        document.body.scrollTop > 200 ||
-        document.documentElement.scrollTop > 200
-      ) {
-        scrollToTopBtn.style.display = "block";
-      } else {
-        scrollToTopBtn.style.display = "none";
-      }
-
-      adjustButtonPosition();
-    };
-
-    scrollToTopBtn.onclick = function () {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-  });
-</script>
+{{ partial "scroll-to-top.html" }}
+{{ partial "script.html" (dict "src" "js/scrollToTop.js") -}}
