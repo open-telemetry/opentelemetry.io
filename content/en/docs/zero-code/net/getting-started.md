@@ -158,12 +158,9 @@ or PowerShell scripts.
    {{< tabpane text=true >}} {{% tab Unix-shell %}}
 
    ```sh
-   export OTEL_TRACES_EXPORTER=none \
-     OTEL_METRICS_EXPORTER=none \
-     OTEL_LOGS_EXPORTER=none \
-     OTEL_DOTNET_AUTO_TRACES_CONSOLE_EXPORTER_ENABLED=true \
-     OTEL_DOTNET_AUTO_METRICS_CONSOLE_EXPORTER_ENABLED=true \
-     OTEL_DOTNET_AUTO_LOGS_CONSOLE_EXPORTER_ENABLED=true
+   export OTEL_TRACES_EXPORTER=console \
+     OTEL_METRICS_EXPORTER=console \
+     OTEL_LOGS_EXPORTER=console
      OTEL_SERVICE_NAME=RollDiceService
    . $HOME/.otel-dotnet-auto/instrument.sh
    ```
@@ -171,12 +168,9 @@ or PowerShell scripts.
    {{% /tab %}} {{% tab PowerShell - Windows %}}
 
    ```powershell
-   $env:OTEL_TRACES_EXPORTER="none"
-   $env:OTEL_METRICS_EXPORTER="none"
-   $env:OTEL_LOGS_EXPORTER="none"
-   $env:OTEL_DOTNET_AUTO_TRACES_CONSOLE_EXPORTER_ENABLED="true"
-   $env:OTEL_DOTNET_AUTO_METRICS_CONSOLE_EXPORTER_ENABLED="true"
-   $env:OTEL_DOTNET_AUTO_LOGS_CONSOLE_EXPORTER_ENABLED="true"
+   $env:OTEL_TRACES_EXPORTER="console"
+   $env:OTEL_METRICS_EXPORTER="console"
+   $env:OTEL_LOGS_EXPORTER="console"
    Register-OpenTelemetryForCurrentSession -OTelServiceName "RollDiceService"
    ```
 

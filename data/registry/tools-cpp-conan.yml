@@ -10,6 +10,7 @@ license: MIT
 description: Conan package for `opentelemetry-cpp`.
 authors:
   - name: The conan authors
+    url: https://github.com/conan-io/
 urls:
   repo: https://conan.io/center/recipes/opentelemetry-cpp
 createdAt: 2023-02-13

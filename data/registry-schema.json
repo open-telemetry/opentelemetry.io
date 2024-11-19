@@ -1,4 +1,5 @@
 {
+  "cspell:ignore": "matlab",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://opentelemetry.io/ecosystem/registry/schema.json",
   "$comment": "https://opentelemetry.io/ecosystem/registry/adding/",
@@ -30,8 +31,34 @@
     "language": {
       "type": "string",
       "description": "The programming language of the entry",
-      "examples": ["collector"],
-      "pattern": "^[a-z0-9]+$"
+      "enum": [
+        "collector",
+        "cpp",
+        "crystal",
+        "dart",
+        "dotnet",
+        "elixir",
+        "erlang",
+        "go",
+        "haskell",
+        "java",
+        "javascript",
+        "js",
+        "julia",
+        "kotlin",
+        "lua",
+        "matlab",
+        "ocaml",
+        "perl",
+        "php",
+        "python",
+        "ruby",
+        "rust",
+        "scala",
+        "shell",
+        "swift",
+        "yaml"
+      ]
     },
     "description": {
       "type": "string",
@@ -82,9 +109,9 @@
           },
           "url": {
             "type": "string",
-            "description": "The URL of the author",
-            "pattern": "^https:\\/\\/github\\.com\\/([a-zA-Z0-9](?:-?[a-zA-Z0-9]){0,38})$",
-            "errorMessage": "The URL of the author must be a valid GitHub user URL"
+            "description": "The URL of the author. This can be a website or a GitHub handle URL.",
+            "format": "uri",
+            "pattern": "^https://.*$"
           }
         },
         "if": {
