@@ -8,14 +8,13 @@ issue: https://github.com/open-telemetry/opentelemetry.io/issues/5606
 sig: Java, Specification
 # prettier-ignore
 cSpell:ignore: Clerc cust Cyrille Dotel Gregor Logback logback otlphttp otlpjson resourcedetection SLF4J stdout Zeitlinger
-```suggestion
 ---
-If you want to get logs from your Java application ingested into an OpenTelemetry compatible logs backend, the easiest and recommended way is using an OpenTelemetry protocol (OTLP) exporter. 
+If you want to get logs from your Java application ingested into an OpenTelemetry-compatible logs backend, the easiest and recommended way is using an OpenTelemetry protocol (OTLP) exporter. 
 However, some scenarios require logs to be output to files or stdout due to organizational or reliability needs.
 
 A common approach to centralize logs is to use unstructured logs, parse them with regular expressions, and add contextual attributes.
 
-However, regular expression parsing is problematic. They become complex and fragile quickly when handling all log fields, line breaks in exceptions, and unexpected log format changes. Parsing errors is inevitable with this method.
+However, regular expression parsing is problematic. They become complex and fragile quickly when handling all log fields, line breaks in exceptions, and unexpected log format changes. Parsing errors are inevitable with this method.
 
 ## Solution
 
@@ -24,7 +23,7 @@ The OpenTelemetry Java Instrumentation agent and SDK now offer an easy solution 
 This is a true turnkey solution:
 
 * No code or dependency changes, just a few configuration adjustments typical for production deployment.
-* No complex field mapping in the log collector, just use the [OTLP/JSON connector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/otlpjsonconnector) to ingest the payload.
+* No complex field mapping in the log collector. Just use the [OTLP/JSON connector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/otlpjsonconnector) to ingest the payload.
 * Automatic correlation between logs, traces, and metrics.
 
 This blog post shows how to set up this solution step by step.
@@ -39,7 +38,7 @@ The deployment architecture looks like the following:
 
 ![OTLP/JSON Architecture](otlpjson-architecture.png)
 
-## Configure Java Application to Output OTLP/JSON Logs
+## Configure Java application to output OTLP/JSON logs
 
 No code changes needed. Continue using your preferred logging library, including templated logs, mapped diagnostic context, and structured logging.
 
@@ -137,7 +136,7 @@ exporters:
   otlphttp:
 ```
 
-Verify the logs collected by the OTel Collector checking the output of the OTel Collector Debug exporter
+Verify the logs collected by the OTel Collector by checking the output of the OTel Collector Debug exporter
 
 ```log
 2024-11-01T10:03:31.074+0530	info	Logs	{"kind": "exporter", "data_type": "logs", "name": "debug", "resource logs": 1, "log records": 1}
@@ -173,7 +172,7 @@ Verify the logs in the OpenTelemetry backend.
 After the pipeline works end-to-end, ensure production readiness:
 
 * Remove the `debug` exporter from the `logs` pipeline in the OTel Collector configuration.
-* Disable file and console exporters in the logging framework (e.g., `logback.xml`) but keep using the logging configuration to filter logs. The OTel Java agent will output JSON logs to stdout.
+* Disable file and console exporters in the logging framework (for example, `logback.xml`) but keep using the logging configuration to filter logs. The OTel Java agent will output JSON logs to stdout.
 
 ```xml
 <!-- tested with logback-classic v1.5.11 -->
