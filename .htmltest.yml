@@ -10,8 +10,6 @@ IgnoreDirs:
   # DO NOT EDIT! IgnoreDirs list is auto-generated from markdown file front matter.
   # Ignore blog index pages for all locales and in all blog sections (top-level and years)
   - ^(../)?blog/(\d+/)?page/\d+
-  # TODO drop next line after https://github.com/open-telemetry/opentelemetry.io/issues/5423 is fixed for ja pages:
-  - ^ja/docs/concepts/instrumentation/libraries/
   # TODO drop next lines after https://github.com/open-telemetry/opentelemetry.io/issues/5555 is fixed for these pages:
   - ^zh/docs/concepts/signals/baggage/
   - ^zh/docs/zero-code/php/

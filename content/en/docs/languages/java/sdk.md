@@ -7,13 +7,12 @@ cSpell:ignore: autoconfigured FQCNs Interceptable Logback okhttp
 <!-- markdownlint-disable blanks-around-fences -->
 <?code-excerpt path-base="examples/java/configuration"?>
 
-The SDK is the built-in reference implementation of the
-[API](../api-components/), processing and exporting telemetry produced by
-instrumentation API calls. This page is a conceptual overview of the SDK,
-including descriptions, links to relevant Javadocs, artifact coordinates, sample
-programmatic configurations and more. See
-**[Configure the SDK](../configuration/)** for details on SDK configuration,
-including
+The SDK is the built-in reference implementation of the [API](../api/),
+processing and exporting telemetry produced by instrumentation API calls. This
+page is a conceptual overview of the SDK, including descriptions, links to
+relevant Javadocs, artifact coordinates, sample programmatic configurations and
+more. See **[Configure the SDK](../configuration/)** for details on SDK
+configuration, including
 [zero-code SDK autoconfigure](../configuration/#zero-code-sdk-autoconfigure).
 
 The SDK consists of the following top level components:
@@ -74,8 +73,8 @@ component section includes:
 ### OpenTelemetrySdk
 
 [OpenTelemetrySdk](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk/latest/io/opentelemetry/sdk/OpenTelemetrySdk.html)
-is the SDK implementation of [OpenTelemetry](../api-components/#opentelemetry).
-It is a holder for top-level SDK components which makes it convenient to pass
+is the SDK implementation of [OpenTelemetry](../api/#opentelemetry). It is a
+holder for top-level SDK components which makes it convenient to pass
 fully-configured SDK components to instrumentation.
 
 `OpenTelemetrySdk` is configured by the application owner, and consists of:
@@ -151,9 +150,8 @@ public class ResourceConfig {
 ### SdkTracerProvider
 
 [SdkTracerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/SdkTracerProvider.html)
-is the SDK implementation of
-[TracerProvider](../api-components/#tracerprovider), and is responsible for
-handling trace telemetry produced by the API.
+is the SDK implementation of [TracerProvider](../api/#tracerprovider), and is
+responsible for handling trace telemetry produced by the API.
 
 `SdkTracerProvider` is configured by the application owner, and consists of:
 
@@ -560,8 +558,8 @@ public class SpanLimitsConfig {
 ### SdkMeterProvider
 
 [SdkMeterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/SdkMeterProvider.html)
-is the SDK implementation of [MeterProvider](../api-components/#meterprovider),
-and is responsible for handling metric telemetry produced by the API.
+is the SDK implementation of [MeterProvider](../api/#meterprovider), and is
+responsible for handling metric telemetry produced by the API.
 
 `SdkMeterProvider` is configured by the application owner, and consists of:
 
@@ -929,9 +927,8 @@ public class ViewConfig {
 ### SdkLoggerProvider
 
 [SdkLoggerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/SdkLoggerProvider.html)
-is the SDK implementation of
-[LoggerProvider](../api-components/#loggerprovider), and is responsible for
-handling log telemetry produced by the log bridge API.
+is the SDK implementation of [LoggerProvider](../api/#loggerprovider), and is
+responsible for handling log telemetry produced by the log bridge API.
 
 `SdkLoggerProvider` is configured by the application owner, and consists of:
 

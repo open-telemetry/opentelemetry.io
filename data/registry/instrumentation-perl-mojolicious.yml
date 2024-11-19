@@ -9,6 +9,7 @@ license: Artistic-1.0-Perl
 description: An OpenTelemetry plugin for Perl's Mojolicious.
 authors:
   - name: jjatria
+    url: https://github.com/jjatria
 urls:
   repo: https://github.com/jjatria/mojolicious-plugin-opentelemetry
 createdAt: 2023-12-05
