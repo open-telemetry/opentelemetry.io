@@ -3347,6 +3347,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:54:02.060787-05:00"
   },
+  "https://doris.apache.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-11-18T16:19:44.875433+01:00"
+  },
   "https://dotnet.microsoft.com/download/dotnet": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:24:59.411684-05:00"
@@ -3402,6 +3406,10 @@
   "https://elastic.co/blog/ecs-elastic-common-schema-otel-opentelemetry-announcement": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:47.246698-05:00"
+  },
+  "https://elixir-broadway.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-11-18T16:20:41.311419+01:00"
   },
   "https://embrace.io/docs/open-telemetry/integration/": {
     "StatusCode": 206,
@@ -4482,6 +4490,10 @@
   "https://github.com/baronfel/otel-startup-hook": {
     "StatusCode": 200,
     "LastSeen": "2024-02-01T19:02:28.4090231Z"
+  },
+  "https://github.com/beam-telemetry/telemetry/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-18T16:20:44.467803+01:00"
   },
   "https://github.com/beniamin": {
     "StatusCode": 200,
@@ -8351,6 +8363,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:13:14.348051+02:00"
   },
+  "https://github.com/whatyouhide/xandra": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-18T16:20:47.564161+01:00"
+  },
   "https://github.com/willarmiros": {
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:19:35.212167+02:00"
@@ -8743,6 +8759,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-04-18T10:52:50.383352+02:00"
   },
+  "https://hex.pm/packages/opentelemetry_broadway": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-18T16:20:42.355679+01:00"
+  },
   "https://hex.pm/packages/opentelemetry_ecto": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:04:11.393579-04:00"
@@ -8758,6 +8778,10 @@
   "https://hex.pm/packages/opentelemetry_semantic_conventions": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:55:35.466227-05:00"
+  },
+  "https://hex.pm/packages/opentelemetry_xandra": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-18T16:20:49.462827+01:00"
   },
   "https://hex.pm/packages/opentelemetry_zipkin": {
     "StatusCode": 200,
@@ -10607,6 +10631,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-02-05T17:24:30.23375+01:00"
   },
+  "https://packagist.org/packages/opentelemetry-auto-curl": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-18T16:21:13.145885+01:00"
+  },
+  "https://packagist.org/packages/opentelemetry-auto-ext-rdkafka": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-18T16:21:13.762528+01:00"
+  },
   "https://packagist.org/providers/php-http/async-client-implementation": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:56:08.488354-05:00"
@@ -10742,6 +10774,10 @@
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/exporter/datasetexporter": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:47:12.560876-04:00"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/exporter/dorisexporter": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-18T16:19:45.988291+01:00"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/exporter/elasticsearchexporter": {
     "StatusCode": 200,
@@ -10895,6 +10931,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:50:21.577934-04:00"
   },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/extension/healthcheckv2extension": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-18T16:19:51.70751+01:00"
+  },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/extension/httpforwarderextension": {
     "StatusCode": 200,
     "LastSeen": "2024-04-20T15:42:40.997100599Z"
@@ -10939,6 +10979,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:51:06.223152-04:00"
   },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/coralogixprocessor": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-18T16:19:53.792982+01:00"
+  },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/cumulativetodeltaprocessor": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:51:11.746258-04:00"
@@ -10978,6 +11022,10 @@
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sprocessor": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:07:23.484569-05:00"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/logdedupprocessor": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-18T16:19:58.714522+01:00"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/logstransformprocessor": {
     "StatusCode": 200,
@@ -11151,9 +11199,17 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:55:29.945821-04:00"
   },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/githubreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-18T16:20:06.225532+01:00"
+  },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/gitproviderreceiver": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:55:35.431015-04:00"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/googlecloudmonitoringreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-18T16:20:07.65402+01:00"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/googlecloudpubsubreceiver": {
     "StatusCode": 200,
@@ -11251,6 +11307,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:57:45.045759-04:00"
   },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/ntpreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-18T16:20:14.124536+01:00"
+  },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/opencensusreceiver": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:57:50.660323-04:00"
@@ -11282,6 +11342,10 @@
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/prometheusreceiver": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:58:18.97402-04:00"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/prometheusremotewritereceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-18T16:20:16.052286+01:00"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/pulsarreceiver": {
     "StatusCode": 200,
@@ -11371,9 +11435,17 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:00:22.279899-04:00"
   },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/systemdreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-18T16:20:19.146223+01:00"
+  },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/tcplogreceiver": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:00:27.793558-04:00"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/tlscheckreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-18T16:20:19.910099+01:00"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/udplogreceiver": {
     "StatusCode": 200,
@@ -13338,6 +13410,10 @@
   "https://www.honeycomb.io/blog/what-is-auto-instrumentation": {
     "StatusCode": 206,
     "LastSeen": "2024-04-25T00:01:02.263794-04:00"
+  },
+  "https://www.http4k.org/ecosystem/http4k/reference/opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-11-18T17:50:29.868646+01:00"
   },
   "https://www.hyperdx.io/docs/install/opentelemetry": {
     "StatusCode": 206,

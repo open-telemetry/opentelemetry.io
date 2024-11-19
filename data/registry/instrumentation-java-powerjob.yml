@@ -1,0 +1,14 @@
+title: Settings for the PowerJob instrumentation
+registryType: instrumentation
+language: java
+tags:
+  - powerjob
+  - instrumentation
+  - java
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/powerjob-4.0
+license: Apache 2.0
+description: ''
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-11-18
