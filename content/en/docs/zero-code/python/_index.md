@@ -135,16 +135,15 @@ uv pip install opentelemetry-distro opentelemetry-exporter-otlp
 
 Now, you can install the auto instrumentation:
 
-```
+```sh
 uv run opentelemetry-bootstrap -a requirements | uv pip install --requirement -
 ```
 
 Finally, use `uv run` to start your application (see [Configuring the agent](#configuring-the-agent)):
 
-```
+```sh
 uv run opentelemetry-instrument python myapp.py
 ```
 
 Please note that you have to reinstall the auto instrumentation every time you run `uv sync` or update existing packages.
 It is therefore recommended to make the installation part of your build pipeline.
-
