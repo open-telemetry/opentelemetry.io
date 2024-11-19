@@ -120,3 +120,31 @@ export GRPC_VERBOSITY=debug
 export GRPC_TRACE=http,call_error,connectivity_state
 opentelemetry-instrument python YOUR_APP.py
 ```
+
+### Bootstrap using astral/uv
+
+When using the [uv](https://docs.astral.sh/uv/) package manager. You might face some difficulty when running `opentelemetry-bootstrap -a install`.
+
+Instead, you can generate the requirements dynamically and install them using `uv`.
+
+First, install the appropriate packages (or add them to your project file and run `uv sync`):
+
+```sh
+uv pip install opentelemetry-distro opentelemetry-exporter-otlp
+```
+
+Now, you can install the auto instrumentation:
+
+```
+uv run opentelemetry-bootstrap -a requirements | uv pip install --requirement -
+```
+
+Finally, use `uv run` to start your application (see [Configuring the agent](#configuring-the-agent)):
+
+```
+uv run opentelemetry-instrument python myapp.py
+```
+
+Please note that you have to reinstall the auto instrumentation every time you run `uv sync` or update existing packages.
+It is therefore recommended to make the installation part of your build pipeline.
+
