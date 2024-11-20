@@ -121,9 +121,9 @@ export GRPC_TRACE=http,call_error,connectivity_state
 opentelemetry-instrument python YOUR_APP.py
 ```
 
-### Bootstrap using astral/uv
+### Bootstrap using uv
 
-When using the [uv](https://docs.astral.sh/uv/) package manager. You might face some difficulty when running `opentelemetry-bootstrap -a install`.
+When using the [uv](https://docs.astral.sh/uv/) package manager, you might face some difficulty when running `opentelemetry-bootstrap -a install`.
 
 Instead, you can generate the requirements dynamically and install them using `uv`.
 
