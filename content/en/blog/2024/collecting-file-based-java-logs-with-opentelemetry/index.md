@@ -120,7 +120,7 @@ OTLP/JSON format, with a JSON object per line. The log records are nested in the
 
 ![OpenTelemetry Collector OTLP/JSON pipeline](otel-collector-otlpjson-pipeline.png)
 
-[View OTel Collector pipeline with <img src="https://www.otelbin.io/favicon.ico" height="20px"/> OTelBin](https://www.otelbin.io/s/69739d790cf279c203fc8efc86ad1a876a2fc01a)
+[View OTel Collector pipeline with <img src="https://www.otelbin.io/favicon.ico" height="20px" alt="OTelBin icon"/> OTelBin](https://www.otelbin.io/s/69739d790cf279c203fc8efc86ad1a876a2fc01a)
 
 ```yaml
 # tested with otelcol-contrib v0.112.0
