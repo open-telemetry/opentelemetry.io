@@ -25,15 +25,15 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 
-  > ul {
+  >ul {
     list-style: none;
     margin: 0;
     padding: 0;
 
-    > li {
+    >li {
       display: inline;
 
-      > a {
+      >a {
         @extend .btn;
         margin: 0.25rem;
 
@@ -50,7 +50,8 @@
 
   >ul>li>a
 
-  /*, > p > a*/ {
+  /*, > p > a*/
+    {
     @extend .btn-lg;
     @extend .btn-secondary;
   }
@@ -59,7 +60,7 @@
 .l-primary-buttons {
   @extend .l-buttons;
 
-  > ul > li > a {
+  >ul>li>a {
     @extend .btn-lg;
     @extend .btn-primary;
   }
@@ -72,7 +73,8 @@
 
   >ul>li>a
 
-  /*, > p > a*/ {
+  /*, > p > a*/
+    {
     @extend .btn-lg;
     @extend .btn-primary;
     padding: 20px;
@@ -87,7 +89,8 @@
 
   >ul>li>a
 
-  /*, > p > a*/ {
+  /*, > p > a*/
+    {
     @extend .btn-lg;
     @extend .btn-secondary;
     padding: 20px;
@@ -177,7 +180,7 @@
 .community-contribution {
   text-align: center;
 
-  & > p {
+  &>p {
     font-size: $h3-font-size;
     font-weight: $headings-font-weight;
     line-height: $headings-line-height;
@@ -334,27 +337,74 @@ details {
 // Workaround for iOS and macOS Safari 17+. For details see:
 // https://github.com/open-telemetry/opentelemetry.io/issues/3538
 
-.td-content .highlight > pre {
-  > .click-to-copy,
-  > code {
+.td-content .highlight>pre {
+
+  >.click-to-copy,
+  >code {
     overflow-y: auto;
   }
 }
 
 // Scroll-to-top button styling
-.scroll-container {
-  text-align: center;
-  margin-top: 20px;
+.scroll-btn {
+  position: fixed;
+  bottom: 40px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f1f1;
+  border: none;
+  border-radius: 50%;
+  width: 60px; 
+  height: 60px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  opacity: 0; 
+  visibility: hidden; 
+  transition: all 0.3s ease-in-out;
 }
 
-.scroll-btn {
+.scroll-btn i {
+  font-size: 24px; 
+  color: #333;
+  margin-bottom: 4px; 
+  transition: transform 0.3s ease-in-out;
+}
+
+.scroll-btn:hover {
   background-color: #007bff;
-  color: white;
-  bottom: 40px;
-  right: 40px;
-  display: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  border-radius: 50%;
-  position: fixed;
+}
+
+.scroll-btn:hover i {
+  color: #fff;
+  transform: scale(1.2);
+}
+
+.scroll-btn.visible {
+  opacity: 1; 
+  visibility: visible; 
+}
+
+.scroll-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  opacity: 0; 
+  transform: translateY(10px); 
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  text-align: center;
+}
+
+.scroll-btn.show-label .scroll-label {
+  opacity: 1; 
+  transform: translateY(0); 
+}
+
+@media (max-width: 768px) {
+  .scroll-label {
+    display: none;
+  }
 }
