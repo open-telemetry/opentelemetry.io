@@ -40,7 +40,6 @@ let selectedLanguage = 'all';
 let selectedComponent = 'all';
 let selectedFlag = 'all'; // Added selectedFlag
 
-
 parseUrlParams();
 
 if (pathName.includes('registry')) {
