@@ -451,3 +451,9 @@
   contact: 'hello@groundcover.com'
   oss: false
   commercial: true
+- name: YottaByte
+  nativeOTLP: true
+  url: https://rizhiyi.com/lunaxee/
+  contact: contact@yottabyte.com
+  oss: false
+  commercial: true
