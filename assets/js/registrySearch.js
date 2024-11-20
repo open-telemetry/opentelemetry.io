@@ -160,7 +160,6 @@ function executeSearch(searchQuery) {
   const run = function (searchQuery) {
     // The 0-timeout is here if search is blocking, such that the "search loading" is rendered properly
     setTimeout(() => {
-
       let results = miniSearch.search(searchQuery);
 
       document.getElementById('search-loading').style.display = 'none';
