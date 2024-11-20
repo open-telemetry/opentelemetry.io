@@ -108,16 +108,19 @@ Verify that OTLP/JSON logs are outputted to stdout. The logs are in the
 OTLP/JSON format, with a JSON object per line. The log records are nested in the
 `resourceLogs` array.
 
+<!-- prettier-ignore-start -->
+
 ```json
 {"resourceLogs":[{"resource":{"attributes":[{"key":"deployment.environment.name","value":{"stringValue":"staging"}},{"key":"service.instance.id","value":{"stringValue":"6ad88e10-238c-4fb7-bf97-38df19053366"}},{"key":"service.name","value":{"stringValue":"checkout"}},{"key":"service.namespace","value":{"stringValue":"shop"}},{"key":"service.version","value":{"stringValue":"1.1"}}]},"scopeLogs":[{"scope":{"name":"com.mycompany.checkout.CheckoutServiceServer$CheckoutServiceImpl","attributes":[]},"logRecords":[{"timeUnixNano":"1730435085776869000","observedTimeUnixNano":"1730435085776944000","severityNumber":9,"severityText":"INFO","body":{"stringValue":"Order order-12035 successfully placed"}, "attributes":[{"key":"customerId","value":{"stringValue":"customer-49"}},{"key":"thread.id","value":{"intValue":"44"}},{"key":"thread.name","value":{"stringValue":"grpc-default-executor-1"}}],"flags":1,"traceId":"42de1f0dd124e27619a9f3c10bccac1c","spanId":"270984d03e94bb8b"}]}],"schemaUrl":"https://opentelemetry.io/schemas/1.24.0"}]}
 ```
+
+<!-- prettier-ignore-end -->
 
 ## Configure the OpenTelemetry Collector to ingest the OTLP/JSON logs
 
 ![OpenTelemetry Collector OTLP/JSON pipeline](otel-collector-otlpjson-pipeline.png)
 
-Source:
-[https://www.otelbin.io/s/69739d790cf279c203fc8efc86ad1a876a2fc01a](https://www.otelbin.io/s/69739d790cf279c203fc8efc86ad1a876a2fc01a)
+[View OTel Collector pipeline with <img src="https://www.otelbin.io/favicon.ico" height="20px"/> OTelBin](https://www.otelbin.io/s/69739d790cf279c203fc8efc86ad1a876a2fc01a)
 
 ```yaml
 # tested with otelcol-contrib v0.112.0
