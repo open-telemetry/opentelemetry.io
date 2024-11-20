@@ -7459,6 +7459,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:26.46768-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/pull/4183": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-20T10:58:53.525737396Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/pull/4197": {
     "StatusCode": 200,
     "LastSeen": "2024-10-24T15:10:29.718998+02:00"
@@ -11859,6 +11863,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-02T13:14:36.816743-04:00"
   },
+  "https://pkg.go.dev/v.io/v23/glob": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-20T10:59:02.306122595Z"
+  },
   "https://pkgs.alpinelinux.org/packages": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:07:29.294901-05:00"
@@ -14442,6 +14450,14 @@
   "https://www.otelbin.io/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:44.039011-05:00"
+  },
+  "https://www.otelbin.io/favicon.ico": {
+    "StatusCode": 206,
+    "LastSeen": "2024-11-20T10:59:00.492890749Z"
+  },
+  "https://www.otelbin.io/s/69739d790cf279c203fc8efc86ad1a876a2fc01a": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-20T10:58:58.366517284Z"
   },
   "https://www.outreachy.org/": {
     "StatusCode": 200,
