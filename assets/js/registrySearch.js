@@ -144,7 +144,6 @@ function showBody() {
   }
 }
 
-
 // Runs search through Fuse for fuzzy search
 function executeSearch(searchQuery) {
   if (searchQuery === '') {
