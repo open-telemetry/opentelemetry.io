@@ -75,12 +75,12 @@ java -javaagent:/path/to/opentelemetry-javaagent.jar \
 
 The `-Dotel.logs.exporter=experimental-otlp/stdout` JVM argument and the environment variable `OTEL_LOGS_EXPORTER="experimental-otlp/stdout"` can be used interchangeably.
 
-{{% alert title="Note" color="info" %}
+{{% alert title="Note" color="info" %}}
 
 The OTLP logs exporter is experimental and subject to change. 
 Check the [Specification PR](https://github.com/open-telemetry/opentelemetry-specification/pull/4183) for the latest updates.
 
-{{% /alert %}
+{{% /alert %}}
 
 Verify that OTLP/JSON logs are outputted to stdout. The logs are in the OTLP/JSON format, with a JSON object per line. The log records are nested in the `resourceLogs` array.
 
