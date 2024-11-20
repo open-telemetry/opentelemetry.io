@@ -565,6 +565,14 @@ responsible for handling metric telemetry produced by the API.
 
 - [Resource](#resource): The resource metrics are associated with.
 - [MetricReader](#metricreader): Reads the aggregated state of metrics.
+  - Optionally, with
+    [CardinalityLimitSelector](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/export/CardinalityLimitSelector.html)
+    for overriding cardinality limit by instrument kind. If unset, each
+    instrument is limited to 2000 unique combinations of attributes per
+    collection cycle. Cardinality limits are also configurable for individual
+    instruments via [views](#views). See
+    [cardinality limits](/docs/specs/otel/metrics/sdk/#cardinality-limits) for
+    more details.
 - [MetricExporter](#metricexporter): Exports metrics out of process (in
   conjunction with associated `MetricReader`).
 - [Views](#views): Configures metric streams, including dropping unused metrics.
@@ -592,11 +600,18 @@ public class SdkMeterProviderConfig {
                 MetricReaderConfig.periodicMetricReader(
                     MetricExporterConfig.otlpHttpMetricExporter(
                         "http://localhost:4318/v1/metrics")));
+    // Uncomment to optionally register metric reader with cardinality limits
+    // builder.registerMetricReader(
+    //     MetricReaderConfig.periodicMetricReader(
+    //         MetricExporterConfig.otlpHttpMetricExporter("http://localhost:4318/v1/metrics")),
+    //     instrumentType -> 100);
+
     ViewConfig.dropMetricView(builder, "some.custom.metric");
     ViewConfig.histogramBucketBoundariesView(
         builder, "http.server.request.duration", List.of(1.0, 5.0, 10.0));
     ViewConfig.attributeFilterView(
         builder, "http.client.request.duration", Set.of("http.request.method"));
+    ViewConfig.cardinalityLimitsView(builder, "http.server.active_requests", 100);
     return builder.build();
   }
 }
@@ -872,7 +887,7 @@ public class CustomMetricExporter implements MetricExporter {
 [Views](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/View.html)
 allow metric streams to be customized, including changing metric names, metric
 descriptions, metric aggregations (i.e. histogram bucket boundaries), the set of
-attribute keys to retain, etc.
+attribute keys to retain, cardinality limit, etc.
 
 {{% alert %}} Views have somewhat unintuitive behavior when multiple match a
 particular instrument. If one matching view changes the metric name and another
@@ -919,6 +934,13 @@ public class ViewConfig {
     return builder.registerView(
         InstrumentSelector.builder().setName(metricName).build(),
         View.builder().setAttributeFilter(keysToRetain).build());
+  }
+
+  public static SdkMeterProviderBuilder cardinalityLimitsView(
+      SdkMeterProviderBuilder builder, String metricName, int cardinalityLimit) {
+    return builder.registerView(
+        InstrumentSelector.builder().setName(metricName).build(),
+        View.builder().setCardinalityLimit(cardinalityLimit).build());
   }
 }
 ```
