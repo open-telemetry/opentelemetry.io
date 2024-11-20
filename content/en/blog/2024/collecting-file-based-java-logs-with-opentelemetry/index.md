@@ -70,7 +70,6 @@ java -javaagent:/path/to/opentelemetry-javaagent.jar \
      -Dotel.instrumentation.logback-appender.experimental.capture-key-value-pair-attributes=true \
      -Dotel.instrumentation.logback-appender.experimental.capture-mdc-attributes=* \
      -jar /path/to/my-app.jar
-
 ```
 
 The `-Dotel.logs.exporter=experimental-otlp/stdout` JVM argument and the environment variable `OTEL_LOGS_EXPORTER="experimental-otlp/stdout"` can be used interchangeably.
