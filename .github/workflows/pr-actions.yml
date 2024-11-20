@@ -72,7 +72,7 @@ jobs:
             all|refcache)
               npm install --omit=optional
               ;&
-            dict|filenames|format|htmltest-config|markdown|submodule*)
+            *)
               npm run fix:$PR_ACTION
               ;;
           esac
