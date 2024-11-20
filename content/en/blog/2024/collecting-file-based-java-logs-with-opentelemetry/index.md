@@ -71,8 +71,7 @@ logger.atInfo().
 ```
 
 Export the logs captured by the OTel Java instrumentation to stdout using the
-OTel JSON format (aka
-[OTLP/JSON](https://opentelemetry.io/docs/specs/otlp/#json-protobuf-encoding)).
+OTel JSON format (aka [OTLP/JSON](/docs/specs/otlp/#json-protobuf-encoding)).
 Configuration parameters for
 [Logback](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-appender-1.0/javaagent)
 and
