@@ -19,7 +19,7 @@ my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
 my $specBasePath = '/docs/specs';
 my %versions = qw(
   spec: 1.39.0
-  otlp: 1.3.2
+  otlp: 1.4.0
   semconv: 1.28.0
 );
 my $otelSpecVers = $versions{'spec:'};
