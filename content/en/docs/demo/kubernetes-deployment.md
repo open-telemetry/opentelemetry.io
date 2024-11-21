@@ -49,7 +49,7 @@ kubectl apply --namespace otel-demo -f https://raw.githubusercontent.com/open-te
 ```
 
 > **Note** The OpenTelemetry Demo Kubernetes manifests do not support being
-> upgraded from one version to another. If you need to upgrade the chart, you
+> upgraded from one version to another. If you need to upgrade the demo, you
 > must first delete the existing resources and then install the new version.
 
 > **Note** These manifests are generated from the Helm chart and are provided
