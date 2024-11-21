@@ -115,7 +115,7 @@ params:
       # prettier-ignore
       'no': >-
         Please let us know <a class="external-link" target="_blank" rel="noopener"
-        href="https://github.com/open-telemetry/opentelemetry.io/issues/new?title=Page%20feedback&body=Suggested%20improvements%20for%20page:%20ADD%20PAGE-URL-HERE">how
+        href="https://github.com/open-telemetry/opentelemetry.io/issues/new?template=PAGE_FEEDBACK.yml&title=[Page+feedback]%3A+ADD+A+SUMMARY+OF+YOUR+FEEDBACK+HERE">how
         we can improve this page</a>. Your feedback is appreciated!
   links:
     user:
