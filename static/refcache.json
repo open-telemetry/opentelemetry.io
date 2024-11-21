@@ -2339,6 +2339,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-30T17:38:37.903633988Z"
   },
+  "https://docs.astral.sh/uv/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-21T10:24:48.633652602+01:00"
+  },
   "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-system-attributes": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:53:50.0122-05:00"
