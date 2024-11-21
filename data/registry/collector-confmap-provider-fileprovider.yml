@@ -9,7 +9,7 @@ tags:
   - collector
   - file
 license: Apache 2.0
-description: File provider for OpenTelemetry Collector confmaps.
+description: File provider for OpenTelemetry Collector configuration maps.
 authors:
   - name: OpenTelemetry Authors
 urls:
