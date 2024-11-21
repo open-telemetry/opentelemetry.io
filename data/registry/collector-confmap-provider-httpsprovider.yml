@@ -9,7 +9,7 @@ tags:
   - collector
   - https
 license: Apache 2.0
-description: HTTPS provider for OpenTelemetry Collector confmaps.
+description: HTTPS provider for OpenTelemetry Collector configuration maps.
 authors:
   - name: OpenTelemetry Authors
 urls:
