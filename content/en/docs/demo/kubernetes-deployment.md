@@ -90,9 +90,10 @@ kubectl port-forward svc/my-otel-demo-frontendproxy 8080:8080
 {{% alert title="Note" color="info" %}}
 
 `kubectl port-forward` will proxy the port until the process terminates. You may
-need to create separate terminal sessions for each use of `kubectl port-forward`,
-and use <kbd>Ctrl-C</kbd> to terminate the process when done.
- 
+need to create separate terminal sessions for each use of
+`kubectl port-forward`, and use <kbd>Ctrl-C</kbd> to terminate the process when
+done.
+
 {{% /alert %}}
 
 With the frontendproxy port-forward set up, you can access:
