@@ -22,7 +22,7 @@ However, regular expression parsing is problematic. They become complex and
 fragile quickly when handling all log fields, line breaks in exceptions, and
 unexpected log format changes. Parsing errors are inevitable with this method.
 
-## Solution
+## Native solution for Java logs
 
 The OpenTelemetry Java Instrumentation agent and SDK now offer an easy solution
 to convert logs from frameworks like SLF4J/Logback or Log4j2 into OTel-compliant
@@ -115,7 +115,7 @@ OTLP/JSON format, with a JSON object per line. The log records are nested in the
 
 <!-- prettier-ignore-end -->
 
-## Configure the OpenTelemetry Collector to ingest the OTLP/JSON logs
+## Configure the Collector to ingest the OTLP/JSON logs
 
 ![OpenTelemetry Collector OTLP/JSON pipeline](otel-collector-otlpjson-pipeline.png)
 
