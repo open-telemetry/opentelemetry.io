@@ -734,7 +734,7 @@ func registerDBMetrics(db *sql.DB, meter metric.Meter, poolName string) (metric.
 }
 ```
 
-### Utilizando Gauges Observáveis (Async) {#using-observable-async-gauges}
+### Utilizando Gauges (Assíncronos) Observáveis {#using-observable-async-gauges}
 
 Gauges observáveis devem ser utilizados para medir valores não-aditivos.
 
