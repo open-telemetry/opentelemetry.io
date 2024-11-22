@@ -222,7 +222,7 @@ Uma característica útil dos eventos é que seus timestamps são exibidos como
 intervalos a partir do início do trecho, permitindo ver facilmente quanto tempo
 se passou entre cada um.
 
-Os Eventos também podem incluir seus próprios atributos -
+Os eventos também podem incluir seus próprios atributos -
 
 ```go
 span.AddEvent("Espera cancelada devido sinal externo", trace.WithAttributes(attribute.Int("pid", 4328), attribute.String("signal", "SIGHUP")))
