@@ -683,7 +683,7 @@ func init() {
 
 ### Utilizando Counters Observáveis UpDown (Async) {#using-observable-async-updown-counters}
 
-Counters observáveis UpDown podem incrementar e decrementar, permitindo que você
+Counters UpDown observáveis podem incrementar e decrementar, permitindo que você
 meça um valor cumulativo aditivo, não-negativo e não-monotonamente crescente.
 
 Por exemplo, veja como é possível reportar algumas métricas de banco de dados:
