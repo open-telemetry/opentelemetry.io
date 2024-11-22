@@ -25,7 +25,7 @@ serão então associados ao escopo de instrumentação fornecido.
 
 No seu backend de observabilidade, a utilização de escopos permite que os dados
 de telemetria sejam analisados de maneira agrupada, por exemplo, para ver quais
-de seus usuários estão utilizando uma versão específica de uma biblioteca, ou
+de seus usuários estão utilizando quais versões de uma biblioteca e qual a performance destas versões, ou
 até mesmo para identificar um determinado problema em um módulo específico da
 sua aplicação.
 
