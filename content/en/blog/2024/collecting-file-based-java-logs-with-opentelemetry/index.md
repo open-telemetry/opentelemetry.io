@@ -53,6 +53,15 @@ The deployment architecture looks like the following:
 
 ## Configure Java application to output OTLP/JSON logs
 
+{{% alert title="Note" color="info" %}}
+
+Blog post instructions can easily get outdated.
+In case of issues, check the
+[reference Kubernetes setup](https://github.com/grafana/docker-otel-lgtm/tree/main/examples/java/json-logging-otlp),
+which is continuously updated and tested against the latest versions.
+
+{{% /alert %}}
+
 No code changes needed. Continue using your preferred logging library, including
 templated logs, mapped diagnostic context, and structured logging.
 
@@ -290,6 +299,10 @@ on stdout with all resource and log attributes. This JSON format is certainly
 verbose, but it generally has minimal impact on performances and offers a solid
 balance by providing highly contextualized logs that can be correlated with
 traces and metrics.
+        
+If any of the steps are unclear or you encounter issues, check the
+[reference Kubernetes setup](https://github.com/grafana/docker-otel-lgtm/tree/main/examples/java/json-logging-otlp),
+which is continuously updated and tested against the latest versions.
 
 Any feedback or questions? Reach out on
 [GitHub](https://github.com/open-telemetry/opentelemetry-specification/pull/4183).
