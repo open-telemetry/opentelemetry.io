@@ -1100,7 +1100,7 @@ Uma lista completa contendo as pontes de logs disponíveis pode ser encontrada n
 [registro do OpenTelemetry](/ecosystem/registry/?language=go&component=log-bridge).
 
 Cada pacote de ponte de logs deve possuir uma documentação contendo as suas
-instruções de instalação e configuração.
+instruções de instalação e configuração, e um exemplo.
 
 ### Através de arquivos ou stdout {#via-file-or-stdout}
 
