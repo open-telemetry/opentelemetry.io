@@ -20,7 +20,7 @@ como o escopo de instrumentação.
 
 O escopo de instrumentação é definido por uma combinação do par entre nome e
 versão quando uma instância do _tracer_, _meter_ ou _logger_ são obtidos de um
-_Provider_. Cada registro de Trecho, Métrica ou Log criados por esta instância
+_provider_. Cada registro de trecho, métrica ou log criados por esta instância
 serão então associados ao escopo de instrumentação fornecido.
 
 No seu backend de observabilidade, a utilização de escopos permite que os dados
