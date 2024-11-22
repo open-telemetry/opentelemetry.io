@@ -32,8 +32,20 @@ command:
 helm install my-otel-demo open-telemetry/opentelemetry-demo
 ```
 
-> **Note** The OpenTelemetry Demo Helm chart version 0.11.0 or greater is
-> required to perform all usage methods mentioned below.
+{{% alert title="Note" color="info" %}}
+
+The OpenTelemetry Demo Helm chart does not support being upgraded from one
+version to another. If you need to upgrade the chart, you must first delete the
+existing release and then install the new version.
+
+{{% /alert %}}
+
+{{% alert title="Note" color="info" %}}
+
+The OpenTelemetry Demo Helm chart version 0.11.0 or greater is required to
+perform all usage methods mentioned below.
+
+{{% /alert %}}
 
 ## Install using kubectl
 
@@ -44,8 +56,20 @@ cluster.
 kubectl apply --namespace otel-demo -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-demo/main/kubernetes/opentelemetry-demo.yaml
 ```
 
-> **Note** These manifests are generated from the Helm chart and are provided
-> for convenience. It is recommended to use the Helm chart for installation.
+{{% alert title="Note" color="info" %}}
+
+The OpenTelemetry Demo Kubernetes manifests do not support being upgraded from
+one version to another. If you need to upgrade the demo, you must first delete
+the existing resources and then install the new version.
+
+{{% /alert %}}
+
+{{% alert title="Note" color="info" %}}
+
+These manifests are generated from the Helm chart and are provided for
+convenience. It is recommended to use the Helm chart for installation.
+
+{{% /alert %}}
 
 ## Use the Demo
 
@@ -63,10 +87,14 @@ To expose the frontendproxy service use the following command (replace
 kubectl port-forward svc/my-otel-demo-frontendproxy 8080:8080
 ```
 
-> **Note**: `kubectl port-forward` will proxy the port until the process
-> terminates. You may need to create separate terminal sessions for each use of
-> `kubectl port-forward`, and use <kbd>Ctrl-C</kbd> to terminate the process
-> when done.
+{{% alert title="Note" color="info" %}}
+
+`kubectl port-forward` proxies the port until the process terminates. You might
+need to create separate terminal sessions for each use of
+`kubectl port-forward`, and use <kbd>Ctrl-C</kbd> to terminate the process when
+done.
+
+{{% /alert %}}
 
 With the frontendproxy port-forward set up, you can access:
 
@@ -84,9 +112,13 @@ options. {{% /alert %}}
 
 #### Configure ingress resources
 
-> **Note** Kubernetes clusters may not have the proper infrastructure components
-> to enable LoadBalancer service types or ingress resources. Verify your cluster
-> has the proper support before using these configuration options.
+{{% alert title="Note" color="info" %}}
+
+Kubernetes clusters might not have the proper infrastructure components to
+enable LoadBalancer service types or ingress resources. Verify your cluster has
+the proper support before using these configuration options.
+
+{{% /alert %}}
 
 Each demo component (ie: frontendproxy) offers a way to have its Kubernetes
 service type configured. By default, these will not be created, but you can
@@ -143,23 +175,6 @@ components:
       - name: PUBLIC_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
         value: http://otel-demo.my-domain.com/otlp-http/v1/traces
 ```
-
-#### Installation with a values file
-
-To install the Helm chart with a custom `my-values-file.yaml` values file use:
-
-```shell
-helm install my-otel-demo open-telemetry/opentelemetry-demo --values my-values-file.yaml
-```
-
-With the frontendproxy and Collector exposed, you can access the demo UI at the
-base path for the frontendproxy. Other demo components can be accessed at the
-following sub-paths:
-
-- Web store: `/` (base)
-- Grafana: `/grafana`
-- Load Generator UI: `/loadgen/` (must include trailing slash)
-- Jaeger UI: `/jaeger/ui`
 
 ## Bring your own backend
 
