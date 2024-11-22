@@ -19,7 +19,7 @@ lugar, utilize a combinação do nome e a versão da biblioteca de instrumentaç
 como o escopo de instrumentação.
 
 O escopo de instrumentação é definido por uma combinação do par entre nome e
-versão quando uma instância do _Tracer_, _Meter_ ou _Logger_ são obtidos de um
+versão quando uma instância do _tracer_, _meter_ ou _logger_ são obtidos de um
 _Provider_. Cada registro de Trecho, Métrica ou Log criados por esta instância
 serão então associados ao escopo de instrumentação fornecido.
 
