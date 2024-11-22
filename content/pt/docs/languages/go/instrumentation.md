@@ -218,7 +218,7 @@ span.AddEvent("Realizando o desbloqueio")
 mutex.Unlock()
 ```
 
-Uma característica útil dos eventos é que seus timestamps são exibidos como
+Uma característica útil dos eventos é que seus registros de data e hora são exibidos como
 intervalos a partir do início do trecho, permitindo ver facilmente quanto tempo
 se passou entre cada um.
 
