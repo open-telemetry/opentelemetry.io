@@ -970,7 +970,7 @@ aplicação.
 
 **Estado**: [Experimental](/docs/specs/otel/document-status/)
 
-Dentro do _workflow_ Direct-to-collector, os logs são emitidos diretamente da
+No _workflow_ direto para o collector, os logs são emitidos diretamente da
 aplicação para o Collector utilizando um protocolo de rede (por exemplo, OTLP).
 Este _workflow_ é simples de configurar, pois não requer componentes adicionais
 de encaminhamento de logs, permitindo que uma aplicação emita logs estruturados
