@@ -250,7 +250,7 @@ if err != nil {
 ### Capturar erros {#record-errors}
 
 Caso você tenha uma operação que falhou e deseja capturar o erro produzido, você
-pode registrar este erro.
+pode salvar este erro.
 
 ```go
 import (
