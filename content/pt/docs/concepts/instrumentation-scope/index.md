@@ -4,7 +4,7 @@ weight: 80
 default_lang_commit: 2f34c456ab38b4d3502cd07bc36fa1455d4ef875
 ---
 
-O [Escopo de instrumentação](/docs/specs/otel/glossary/#instrumentation-scope)
+O [escopo de instrumentação](/docs/specs/otel/glossary/#instrumentation-scope)
 representa uma unidade lógica dentro do código da aplicação com a qual a
 telemetria emitida pode ser associada.
 
