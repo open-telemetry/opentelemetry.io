@@ -1,4 +1,4 @@
-{{/* cSpell:ignore cond */ -}} Envie dados de telemetria para o [OpenTelemetry Collector](/docs/collector/) para garantir que estes dados serão exportados corretamente. A utilização de um Collector em ambientes produtivos é a melhor prática. Para visualizar os dados de telemetria que foram gerados, realize a exportação para um ou mais _backends_ como [Jaeger](https://jaegertracing.io/), [Zipkin](https://zipkin.io/),
+{{/* cSpell:ignore cond */ -}} Envie dados de telemetria para o [OpenTelemetry Collector](/docs/collector/) para garantir que estes dados sejam exportados corretamente. A utilização de um Collector em ambientes de produção é a melhor prática. Para visualizar os dados de telemetria que foram gerados, exporte-os para um _backend_ como [Jaeger](https://jaegertracing.io/), [Zipkin](https://zipkin.io/),
 [Prometheus](https://prometheus.io/), ou um backend 
 [específico de um fornecedor](/ecosystem/vendors/).
 
