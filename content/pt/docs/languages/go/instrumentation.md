@@ -481,7 +481,7 @@ Os instrumentos assíncronos podem ser úteis em diversas circunstâncias, como:
   vinculadas ao ciclo de vida de uma operação).
 - Quando não há um registro de data/hora conhecidos para um valor de medição.
 
-Em casos como estes, muitas vezes é melhor realizar a medição de um valor
+Em casos como estes, muitas vezes é melhor realizar a medição de um valor cumulativo
 diretamente, em vez de agregar uma série de deltas no pós-processamento (como
 ocorre no exemplo síncrono).
 
