@@ -975,7 +975,7 @@ aplicação para o Collector utilizando um protocolo de rede (por exemplo, OTLP)
 Este _workflow_ é simples de configurar, pois não requer componentes adicionais
 de encaminhamento de logs, permitindo que uma aplicação emita logs estruturados
 e que estejam nos conformes do [modelo de dados de logs][log data model]. No
-entanto, o _overhead_ necessário para que as aplicações enfileirem e exportem
+entanto, a sobrecarga necessária para que as aplicações enfileirem e exportem
 logs para um local de rede pode não ser adequada para todas as aplicações.
 
 Para utilizar este _workflow_:
