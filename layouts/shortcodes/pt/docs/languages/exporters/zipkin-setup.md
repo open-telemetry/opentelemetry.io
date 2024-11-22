@@ -4,7 +4,7 @@
 
 <div class="alert alert-info" role="alert"><h4 class="alert-heading">Nota</h4>
 
-Caso já possua o Zipkin ou um backend compatível com Zipkin configurado, poderá pular esta seção e configurar as [dependências do exportador Zipkin](#zipkin-dependencies) para a sua aplicação.
+Caso já possua o Zipkin ou um _backend_ compatível com Zipkin configurado, poderá pular esta seção e configurar as [dependências do exportador Zipkin](#zipkin-dependencies) para a sua aplicação.
 
 </div>
 
