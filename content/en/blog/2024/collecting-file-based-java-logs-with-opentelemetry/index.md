@@ -305,4 +305,4 @@ If any of the steps are unclear or you encounter issues, check the
 which is continuously updated and tested against the latest versions.
 
 Any feedback or questions? Reach out on
-[GitHub](https://github.com/open-telemetry/opentelemetry-specification/pull/4183).
+[GitHub](https://github.com/open-telemetry/opentelemetry-specification/pull/4183) or on [Slack](https://opentelemetry.io/community/#develop-and-contribute).
