@@ -988,7 +988,7 @@ Para utilizar este _workflow_:
 #### SDK de Logs {#logs-sdk}
 
 O SDK de Logs define como os logs são processados ao utilizar o _workflow_
-[Diretamente para o Collector](#direct-to-collector). Nenhum SDK de logs é
+[Direto para o Collector](#direct-to-collector). Nenhum SDK de logs é
 necessário ao utilizar o _workflow_ de
 [encaminhamento de logs](#via-file-or-stdout).
 
