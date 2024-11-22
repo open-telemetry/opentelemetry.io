@@ -29,7 +29,7 @@ de seus usuários estão utilizando quais versões de uma biblioteca e qual a pe
 até mesmo para identificar um determinado problema em um módulo específico da
 sua aplicação.
 
-O diagrama a seguir ilustra um Rastro com múltiplos escopos de instrumentação.
+O diagrama a seguir ilustra um rastro com múltiplos escopos de instrumentação.
 Os diferentes escopos são representados por diferentes cores:
 
 - No topo, o trecho `/api/placeOrder` é criado através do _framework_ do
