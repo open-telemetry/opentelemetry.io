@@ -225,7 +225,7 @@ se passou entre cada um.
 Os eventos também podem incluir seus próprios atributos -
 
 ```go
-span.AddEvent("Espera cancelada devido sinal externo", trace.WithAttributes(attribute.Int("pid", 4328), attribute.String("signal", "SIGHUP")))
+span.AddEvent("Espera cancelada devido a um sinal externo", trace.WithAttributes(attribute.Int("pid", 4328), attribute.String("signal", "SIGHUP")))
 ```
 
 ### Definir status do trecho {#set-span-status}
