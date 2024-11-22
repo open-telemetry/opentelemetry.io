@@ -114,9 +114,9 @@ options. {{% /alert %}}
 
 {{% alert title="Note" color="info" %}}
 
-Kubernetes clusters might not have the proper infrastructure components to enable
-LoadBalancer service types or ingress resources. Verify your cluster has the
-proper support before using these configuration options.
+Kubernetes clusters might not have the proper infrastructure components to
+enable LoadBalancer service types or ingress resources. Verify your cluster has
+the proper support before using these configuration options.
 
 {{% /alert %}}
 
