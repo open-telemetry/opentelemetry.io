@@ -12,7 +12,7 @@ Os desenvolvedores podem decidir o que denota um escopo de instrumentação
 razoável. Por exemplo, é possível selecionar um módulo, um pacote ou uma classe
 como o escopo de instrumentação. No caso de uma biblioteca ou um _framework_,
 uma abordagem comum é utilizar como escopo um identificador que seja
-exclusivo para aquela biblioteca ou _framework_, como seus respectivos nomes ou
+exclusivo para aquela biblioteca ou _framework_, como seu respectivo nome e versão.
 versões. Caso a própria biblioteca não possua instrumentação OpenTelemetry
 incorporada, e uma biblioteca de instrumentação esteja sendo utilizada em seu
 lugar, utilize a combinação do nome e a versão da biblioteca de instrumentação
