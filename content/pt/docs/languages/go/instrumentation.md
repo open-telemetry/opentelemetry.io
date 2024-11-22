@@ -1110,7 +1110,7 @@ FluentBit) é responsável por ler/acompanhar os logs, convertê-los para um
 formato mais estruturado e encaminhá-los para um destino, como o Collector. Este
 _workflow_ pode ser preferível em situações onde os requisitos da aplicação não
 permitem a sobrecarga adicional do
-[Diretamente para o Collector](#direct-to-collector). No entanto, é requisito
+[Direto para o Collector](#direct-to-collector). No entanto, é requisito
 que todos os campos de log necessários sejam codificados nos logs, e que o
 componente responsável pela leitura realize a conversão para o [modelo de dados
 de logs][log data model]. A instalação e configuração dos componentes de
