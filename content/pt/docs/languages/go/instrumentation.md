@@ -1060,7 +1060,7 @@ func main() {
 
 	// Registre o LoggerProvider globalmente, permitindo que seja acessado via global.LoggerProvider.
 	// A maioria das pontes de logs utilizam o LoggerProvider global como padrão.
-	// Caso o LoggerProvider global não esteja definido, será utilizada uma implementação no-op
+	// Caso o LoggerProvider global não esteja definido, será utilizada uma implementação sem operação
 	// e dados de logs não serão gerados.
 	global.SetLoggerProvider(loggerProvider)
 }
