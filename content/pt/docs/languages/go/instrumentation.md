@@ -710,7 +710,7 @@ func registerDBMetrics(db *sql.DB, meter metric.Meter, poolName string) (metric.
 
 	waitTime, err := meter.Int64ObservableUpDownCounter(
 		"db.client.connections.wait_time",
-		metric.WithDescription("O tempo que levou para obter uma conexão aberta no pool."),
+		metric.WithDescription("O tempo que levou para obter uma conexão aberta da pool."),
 		metric.WithUnit("ms"),
 	)
 	if err != nil {
