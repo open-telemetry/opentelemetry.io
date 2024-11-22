@@ -801,7 +801,7 @@ func init() {
 }
 ```
 
-### Registering Views {#registering-views}
+### Registrando Views {#registering-views}
 
 Uma _view_ oferece aos usuários a flexibilidade de personalizar a emissão das
 métricas fornecidas pelo SDK. Você pode personalizar quais instrumentos de
