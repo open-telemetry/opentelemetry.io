@@ -786,7 +786,7 @@ import (
 func init() {
 	apiCounter, err := meter.Int64UpDownCounter(
 		"api.finished.counter",
-		metric.WithDescription("Número de chamadas finalizadas na API."),
+		metric.WithDescription("Número de chamadas da API finalizadas."),
 		metric.WithUnit("{call}"),
 	)
 	if err != nil {
