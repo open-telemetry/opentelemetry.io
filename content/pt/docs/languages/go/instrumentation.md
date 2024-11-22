@@ -400,7 +400,7 @@ func main() {
 		panic(err)
 	}
 
-	// Lidamos com a finalização corretamente, evitando leaks.
+	// Lidamos com a finalização corretamente, evitando vazamentos.
 	defer func() {
 		if err := meterProvider.Shutdown(context.Background()); err != nil {
 			log.Println(err)
