@@ -753,7 +753,7 @@ func init() {
 	if _, err := meter.Int64ObservableGauge(
 		"memory.heap",
 		metric.WithDescription(
-			"Uso de memória dos objetos alocados no heap.",
+			"Uso de memória dos objetos heap alocados.",
 		),
 		metric.WithUnit("By"),
 		metric.WithInt64Callback(func(_ context.Context, o metric.Int64Observer) error {
