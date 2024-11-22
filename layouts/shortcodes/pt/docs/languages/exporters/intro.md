@@ -97,5 +97,5 @@ Em seguida, execute o Collector em um contêiner Docker através do seguinte com
 docker run -p 4317:4317 -p 4318:4318 --rm -v $(pwd)/collector-config.yaml:/etc/otelcol/config.yaml otel/opentelemetry-collector
 ```
 
-Em alguns instantes, o Collector estará disponível para receber dados de telemetria via OTLP. Mais tarde, você também poderá querer [configurar o Collector](/docs/collector/configuration) para enviar os seus dados de telemetria para o seu _backend_ de observabilidade.
+Este Collector agora é capaz receber dados de telemetria via OTLP. Mais tarde, você também poderá [configurar o Collector](/docs/collector/configuration) para enviar os seus dados de telemetria para o seu _backend_ de observabilidade.
 {{ end -}}
