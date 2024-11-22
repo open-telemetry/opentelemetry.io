@@ -276,7 +276,7 @@ invocado.
 
 ### Contexto e Propagadores {#propagators-and-context}
 
-Os Rastros podem se estender além de um único processo. Isso requer a
+Os rastros podem se estender além de um único processo. Isso requer a
 _propagação de contexto_, um mecanismo onde os identificadores de um rastro são
 enviados para processos remotos.
 
