@@ -48,7 +48,7 @@ Caso você esteja utilizando [instrumentação sem código](/docs/zero-code/{{ $
 {{ end -}}
 
 {{/*
- below list needs to grow until all languages are updated to a consistent structure.
+ a lista a seguir precisa crescer até que todas as línguas sejam atualizadas para uma estrutura consistente.
  */ -}}
 
 {{ if in (slice "python" "js" "java" "cpp" "dotnet") $lang -}}
