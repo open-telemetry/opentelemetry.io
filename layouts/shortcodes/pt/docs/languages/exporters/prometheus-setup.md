@@ -8,7 +8,7 @@ e utilizar o [exportador OTLP](#otlp) ou utilizar o exportador do Prometheus, um
 
 <div class="alert alert-info" role="alert"><h4 class="alert-heading">Nota</h4>
 
-Caso já possua o Prometheus ou um backend compatível com Prometheus configurado, poderá pular esta seção e configurar as dependências do exportador [Prometheus](#prometheus-dependencies) ou [OTLP](#otlp-dependencies) para a sua aplicação.
+Caso já possua o Prometheus ou um _backend_ compatível com Prometheus configurado, poderá pular esta seção e configurar as dependências do exportador [Prometheus](#prometheus-dependencies) ou [OTLP](#otlp-dependencies) para a sua aplicação.
 
 </div>
 
