@@ -228,7 +228,7 @@ Os eventos também podem incluir seus próprios atributos -
 span.AddEvent("Espera cancelada devido sinal externo", trace.WithAttributes(attribute.Int("pid", 4328), attribute.String("signal", "SIGHUP")))
 ```
 
-### Definir status do Trecho {#set-span-status}
+### Definir status do trecho {#set-span-status}
 
 {{% pt/docs/languages/span-status-preamble %}}
 
