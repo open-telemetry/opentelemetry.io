@@ -11,12 +11,12 @@ telemetria emitida pode ser associada.
 Os desenvolvedores podem decidir o que denota um escopo de instrumentação
 razoável. Por exemplo, é possível selecionar um módulo, um pacote ou uma classe
 como o escopo de instrumentação. No caso de uma biblioteca ou um _framework_,
-uma abordagem comum é utilizar como escopo um identificador que seja
-exclusivo para aquela biblioteca ou _framework_, como seu respectivo nome e versão.
-Caso a biblioteca em si não possua instrumentação OpenTelemetry
-incorporada, e uma biblioteca de instrumentação esteja sendo utilizada em seu
-lugar, utilize a combinação do nome e a versão da biblioteca de instrumentação
-como o escopo de instrumentação.
+uma abordagem comum é utilizar como escopo um identificador que seja exclusivo
+para aquela biblioteca ou _framework_, como seu respectivo nome e versão. Caso a
+biblioteca em si não possua instrumentação OpenTelemetry incorporada, e uma
+biblioteca de instrumentação esteja sendo utilizada em seu lugar, utilize a
+combinação do nome e a versão da biblioteca de instrumentação como o escopo de
+instrumentação.
 
 O escopo de instrumentação é definido por uma combinação do par entre nome e
 versão quando uma instância do _tracer_, _meter_ ou _logger_ são obtidos de um
@@ -25,9 +25,9 @@ serão então associados ao escopo de instrumentação fornecido.
 
 No seu backend de observabilidade, a utilização de escopos permite que os dados
 de telemetria sejam analisados de maneira agrupada, por exemplo, para ver quais
-de seus usuários estão utilizando quais versões de uma biblioteca e qual a performance destas versões, ou
-até mesmo para identificar um determinado problema em um módulo específico da
-sua aplicação.
+de seus usuários estão utilizando quais versões de uma biblioteca e qual a
+performance destas versões, ou até mesmo para identificar um determinado
+problema em um módulo específico da sua aplicação.
 
 O diagrama a seguir ilustra um rastro com múltiplos escopos de instrumentação.
 Os diferentes escopos são representados por diferentes cores:
