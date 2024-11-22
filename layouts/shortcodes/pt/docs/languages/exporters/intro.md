@@ -16,7 +16,7 @@ O registro oferece uma [lista de exportadores para {{ $name }}][reg].
 
 {{ else -}}
 
-O registro oferece uma [lista de exportadores específicos para a linguagem][reg].
+O registro oferece uma [lista de exportadores específicos de linguagem][reg].
 
 {{ end -}}
 
