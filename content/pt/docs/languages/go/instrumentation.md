@@ -304,7 +304,7 @@ dos panos e gerenciar a serialização de contexto.
 
 Para começar a produzir [métricas](/docs/concepts/signals/metrics), você
 precisará ter um `MeterProvider` inicializado que permita a criação de um
-`Meter`. Os Meters permitem que você crie instrumentos que podem ser utilizados
+`Meter`. Os _Meters_ permitem que você crie instrumentos que podem ser utilizados
 para gerar diferentes tipos de métricas. O OpenTelemetry Go suporta atualmente
 os seguintes instrumentos:
 
