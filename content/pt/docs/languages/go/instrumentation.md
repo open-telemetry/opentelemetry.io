@@ -649,7 +649,7 @@ func init() {
 }
 ```
 
-### Utilizando Counters Observáveis (Async) {#using-observable-async-counters}
+### Utilizando Counters (Assíncronos) Observáveis {#using-observable-async-counters}
 
 Counters observáveis podem ser utilizados para medir um valor aditivo,
 não-negativo e monotonamente crescente.
