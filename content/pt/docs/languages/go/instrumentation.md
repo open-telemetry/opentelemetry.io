@@ -482,7 +482,7 @@ Os instrumentos assíncronos podem ser úteis em diversas circunstâncias, como:
 - Quando não há um registro de data/hora conhecidos para um valor de medição.
 
 Em casos como estes, muitas vezes é melhor realizar a medição de um valor
-diretamente, em vez de agregar uma série de deltas em um pós-processamento (como
+diretamente, em vez de agregar uma série de deltas no pós-processamento (como
 ocorre no exemplo síncrono).
 
 ### Utilizando Counters {#using-counters}
