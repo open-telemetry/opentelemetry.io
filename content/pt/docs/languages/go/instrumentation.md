@@ -738,7 +738,7 @@ func registerDBMetrics(db *sql.DB, meter metric.Meter, poolName string) (metric.
 
 Gauges observáveis devem ser utilizados para medir valores não-aditivos.
 
-Por exemplo, veja como é possível reportar o uso de memória dos objetos do
+Por exemplo, veja como é possível reportar o uso de memória dos objetos
 _heap_ utilizados na aplicação:
 
 ```go
