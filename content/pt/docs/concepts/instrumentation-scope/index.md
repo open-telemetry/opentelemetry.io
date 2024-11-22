@@ -43,4 +43,4 @@ Os diferentes escopos são representados por diferentes cores:
 - Os trechos em laranja (`Cache::find`) e azul claro (`DB::query`) são códigos
   de biblioteca, agrupados através dos respectivos nomes e versões de cada.
 
-![This image illustrates a trace with multiple instrumentation scopes](spans-with-instrumentation-scope.svg)
+![Esta imagem ilustra um rastro com múltiplos escopos de instrumentação](spans-with-instrumentation-scope.svg)
