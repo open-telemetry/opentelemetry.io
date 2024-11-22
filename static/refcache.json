@@ -11531,6 +11531,26 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:07:49.734386-05:00"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/collector/confmap/provider/envprovider": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-19T13:34:41.905691-05:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/collector/confmap/provider/fileprovider": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-19T13:34:42.093539-05:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/collector/confmap/provider/httpprovider": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-19T13:34:42.280695-05:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/collector/confmap/provider/httpsprovider": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-19T13:34:42.965663-05:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/collector/confmap/provider/yamlprovider": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-19T13:34:43.403526-05:00"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/collector/exporter/debugexporter": {
     "StatusCode": 200,
     "LastSeen": "2024-03-01T16:49:31.744795+01:00"
