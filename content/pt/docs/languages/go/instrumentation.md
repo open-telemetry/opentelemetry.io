@@ -298,7 +298,7 @@ otel.SetTextMapPropagator(propagation.TraceContext{})
 
 Após configurar a propagação de contexto, você provavelmente vai querer utilizar
 a instrumentação automática para lidar com todo o trabalho que acontece debaixo
-dos panos e gerenciar a serialização de contexto.
+dos panos para gerenciar a serialização de contexto.
 
 ## Métricas {#metrics}
 
