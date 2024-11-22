@@ -410,7 +410,7 @@ func main() {
 	// Registre o MeterProvider globalmente, permitindo a utilização via otel.Meter
 	// e acessando utilizando otel.GetMeterProvider.
 	// A maioria das bibliotecas de instrumentação utilizam o MeterProvider global como padrão.
-	// Caso o MeterProvider global não esteja definido, será utilizada uma implementação no-op
+	// Caso o MeterProvider global não esteja definido, será utilizada uma implementação sem oepração
 	// e não irá gerar dados de métricas.
 	otel.SetMeterProvider(meterProvider)
 }
