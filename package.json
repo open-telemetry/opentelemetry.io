@@ -23,6 +23,7 @@
     "_filename-error": "echo 'ERROR: the following files violate naming conventions; fix using: `npm run fix:filenames`'; echo; npm run -s _ls-bad-filenames; exit 1",
     "_get:no": "echo SKIPPING get operation",
     "_get:submodule": "set -x && git submodule update --init ${DEPTH:- --depth 999}",
+    "_hugo-0_139_0_gcse-patch": "perl -i -pe 's/gcse :/gcse:/' public/search/index.html",
     "_hugo": "hugo --cleanDestinationDir",
     "_install:dict": "npm install -D $(npm run -s _list:dict)",
     "_install:netlify-cli": "npm list netlify-cli || npm install -O netlify-cli",
@@ -94,6 +95,8 @@
     "prepare": "npm run seq -- get:submodule _prepare:docsy",
     "preserve:hugo": "npm run _prebuild",
     "preserve:netlify": "npm run seq -- _prebuild _install:netlify-cli",
+    "postbuild:preview": "npm run _hugo-0_139_0_gcse-patch",
+    "postbuild:production": "npm run _hugo-0_139_0_gcse-patch",
     "schemas:update": "npm run update:submodule content-modules/opentelemetry-specification",
     "seq": "bash -c 'for cmd in \"$@\"; do npm run $cmd || exit 1; done' - ",
     "serve:hugo": "npm run _serve:hugo -- --renderToMemory",
@@ -139,7 +142,7 @@
     "@opentelemetry/resources": "^1.28.0",
     "@opentelemetry/sdk-trace-base": "^1.28.0",
     "@opentelemetry/sdk-trace-web": "^1.28.0",
-    "@opentelemetry/semantic-conventions": "^1.27.0",
+    "@opentelemetry/semantic-conventions": "^1.28.0",
     "path": "^0.12.7"
   },
   "optionalDependencies": {
