@@ -10355,6 +10355,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-08-02T14:12:40.876027062Z"
   },
+  "https://opentelemetry.io/community/#develop-and-contribute": {
+    "StatusCode": 206,
+    "LastSeen": "2024-11-23T12:10:56.007141324Z"
+  },
   "https://opentelemetry.io/community/end-user/": {
     "StatusCode": 206,
     "LastSeen": "2024-06-12T10:03:19.48038-07:00"
