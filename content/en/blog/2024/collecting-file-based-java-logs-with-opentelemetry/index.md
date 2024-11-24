@@ -45,9 +45,6 @@ This blog post shows how to set up this solution step by step.
   ingest the logs.
 - Finally, we'll show a Kubernetes-specific setup to handle container logs.
 
-## Reference architecture
-
-The deployment architecture looks like the following:
 
 ![OTLP/JSON Architecture](otlpjson-architecture.png)
 
