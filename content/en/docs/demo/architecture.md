@@ -35,7 +35,7 @@ queue[(queue<br/>&#40Kafka&#41)]:::java
 
 adservice ---->|gRPC| flagd
 
-checkoutservice -->|gRPC| cartservice 
+checkoutservice -->|gRPC| cartservice
 checkoutservice --->|TCP| queue
 cartservice --> cache
 cartservice -->|gRPC| flagd
