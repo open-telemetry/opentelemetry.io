@@ -85,7 +85,7 @@ classDef php fill:#4f5d95,color:white;
 classDef python fill:#3572A5,color:white;
 classDef ruby fill:#701516,color:white;
 classDef rust fill:#dea584,color:black;
-classDef typescript fill:#e98516,color:black; 
+classDef typescript fill:#e98516,color:black;
 ```
 
 ```mermaid
