@@ -357,11 +357,9 @@ service:
       exporters: [otlpjson]
     logs:
       receivers: [otlp, otlpjson]
-      # TODO change processors if needed
       processors: [resourcedetection, batch]
-      # TODO remove "debug" for production deployments
+      # remove "debug" for production deployments
       exporters: [otlphttp, debug]
-    # TODO add "traces" and "metrics" pipelines
 
 exporters:
   debug:
