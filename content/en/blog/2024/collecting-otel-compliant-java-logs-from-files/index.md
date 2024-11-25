@@ -1,6 +1,6 @@
 ---
 title: Collecting OpenTelemetry-compliant Java logs from files
-linkTitle: Collecting OTel-compliant Java logs from files
+linkTitle: OTel-compliant Java logs from files
 date:
 author: >
   [Cyrille Le Clerc](https://github.com/cyrille-leclerc) (Grafana Labs), [Gregor
