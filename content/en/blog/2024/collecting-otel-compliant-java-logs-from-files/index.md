@@ -313,12 +313,9 @@ After the pipeline works end-to-end, ensure production readiness:
 
 ## Configure an OpenTelemetry Collector in Kubernetes to handle container logs
 
-To support Kubernetes and container specifics, add a standard parsing step in
-the pipeline without specific mapping configuration.
-
-Use the OTel Collector File Log Receiver's
-[`container`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/stanza/docs/operators/container.md)
-parser to handle container logging specifics.
+To support Kubernetes and container specifics, add the built-in 
+[`container`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/stanza/docs/operators/container.md) 
+parsing step in the pipeline without needing specific mapping configuration.
 
 Replace `<<namespace>>`, `<<pod_name>>`, and `<<container_name>>` with the
 desired values or use a broader [glob pattern](https://pkg.go.dev/v.io/v23/glob)
