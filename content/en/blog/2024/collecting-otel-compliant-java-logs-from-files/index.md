@@ -53,8 +53,8 @@ This blog post shows how to set up this solution step by step.
 
 {{% alert title="Note" color="info" %}}
 
-Blog post instructions can easily get outdated. In case of issues, check the
-[reference Kubernetes setup](https://github.com/grafana/docker-otel-lgtm/tree/main/examples/java/json-logging-otlp),
+Blog post instructions can easily get outdated. In case of issues, check this
+[sample application deployed on Kubernetes](https://github.com/grafana/docker-otel-lgtm/tree/main/examples/java/json-logging-otlp),
 which is continuously updated and tested against the latest versions.
 
 {{% /alert %}}
