@@ -379,8 +379,8 @@ verbose, but it generally has minimal impact on performances and offers a solid
 balance by providing highly contextualized logs that can be correlated with
 traces and metrics.
 
-If any of the steps are unclear or you encounter issues, check the
-[reference Kubernetes setup](https://github.com/grafana/docker-otel-lgtm/tree/main/examples/java/json-logging-otlp),
+If any of the steps are unclear or you encounter issues, check this
+[sample application deployed on Kubernetes](https://github.com/grafana/docker-otel-lgtm/tree/main/examples/java/json-logging-otlp),
 which is continuously updated and tested against the latest versions.
 
 Any feedback or questions? Reach out on
