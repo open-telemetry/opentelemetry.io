@@ -1,6 +1,6 @@
 # cSpell:ignore confmap, fileprovider
 title: Collector File Provider
-registryType: confmap provider
+registryType: provider
 language: collector
 tags:
   - go

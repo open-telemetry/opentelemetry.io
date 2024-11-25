@@ -17,13 +17,13 @@
       "description": "The type of the entry",
       "enum": [
         "application integration",
-        "confmap provider",
         "core",
         "exporter",
         "extension",
         "instrumentation",
         "log-bridge",
         "processor",
+        "provider",
         "receiver",
         "resource-detector",
         "utilities"
