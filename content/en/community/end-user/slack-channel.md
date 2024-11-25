@@ -7,7 +7,7 @@ weight: 40
 ---
 
 Join our Slack channel to connect with other OpenTelemetry end users! First, 
-[request an invitation](https://communityinviter.com/apps/cloud-native/cncf) 
+[request an invitation](https://slack.cncf.io/) 
 to CNCF's Slack instance.
 
 Next, join [`#otel-sig-end-user`](https://cloud-native.slack.com/archives/C01RT3MSWGZ),
