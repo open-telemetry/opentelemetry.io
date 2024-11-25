@@ -14,8 +14,8 @@ Next, join [`#otel-sig-end-user`](https://cloud-native.slack.com/archives/C01RT3
 and introduce yourself if you would like. 
 
 We encourage questions and discussions about adoption and implementation. 
-You can also hear about upcoming events, and get a chance to contribute
-to the project by participating in surveys and/or user feedback sessions. 
+You can also hear about upcoming events and get a chance to contribute
+to the project by participating in surveys and user feedback sessions. 
 Note the following:
 
 - Troubleshooting or tactical SDK specific questions are still best directed to
