@@ -14,7 +14,7 @@ graph TD
 subgraph Service Diagram
 accountingservice(Accounting Service):::dotnet
 adservice(Ad Service):::java
-cache[(Cache<br/>&#40ValKey&#41)]
+cache[(Cache<br/>&#40Valkey&#41)]
 cartservice(Cart Service):::dotnet
 checkoutservice(Checkout Service):::golang
 currencyservice(Currency Service):::cpp
