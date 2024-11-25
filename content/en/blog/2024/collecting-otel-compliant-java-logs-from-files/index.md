@@ -380,4 +380,4 @@ which is continuously updated and tested against the latest versions.
 
 Any feedback or questions? Reach out on
 [GitHub](https://github.com/open-telemetry/opentelemetry-specification/pull/4183)
-or on [Slack](https://opentelemetry.io/community/#develop-and-contribute).
+or on [Slack](/community/#develop-and-contribute).
