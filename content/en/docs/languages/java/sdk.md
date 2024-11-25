@@ -325,6 +325,7 @@ Span processors built-in to the SDK and maintained by the community in
 | `BaggageSpanProcessor`    | `io.opentelemetry.contrib:opentelemetry-baggage-processor:{{% param vers.contrib %}}-alpha` | Enriches spans with baggage.                                              |
 | `JfrSpanProcessor`        | `io.opentelemetry.contrib:opentelemetry-jfr-events:{{% param vers.contrib %}}-alpha`        | Creates JFR events from spans.                                            |
 | `StackTraceSpanProcessor` | `io.opentelemetry.contrib:opentelemetry-span-stacktrace:{{% param vers.contrib %}}-alpha`   | Enriches select spans with stack trace data.                              |
+| `InferredSpansProcessor`  | `io.opentelemetry.contrib:opentelemetry-inferred-spans:{{% param vers.contrib %}}-alpha`    | Generates spans from async profiler instead of instrumentation.           |
 
 The following code snippet demonstrates `SpanProcessor` programmatic
 configuration:
@@ -998,10 +999,11 @@ other applications such as data enrichment.
 Log record processors built-in to the SDK and maintained by the community in
 `opentelemetry-java-contrib`:
 
-| Class                      | Artifact                                                     | Description                                                                  |
-| -------------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------- |
-| `BatchLogRecordProcessor`  | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}` | Batches log records and exports them via a configurable `LogRecordExporter`. |
-| `SimpleLogRecordProcessor` | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}` | Exports each log record a via a configurable `LogRecordExporter`.            |
+| Class                      | Artifact                                                                             | Description                                                                  |
+| -------------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| `BatchLogRecordProcessor`  | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                         | Batches log records and exports them via a configurable `LogRecordExporter`. |
+| `SimpleLogRecordProcessor` | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                         | Exports each log record a via a configurable `LogRecordExporter`.            |
+| `EventToSpanEventBridge`   | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Records event log records as span events on the current span.                |
 
 The following code snippet demonstrates `LogRecordProcessor` programmatic
 configuration:
