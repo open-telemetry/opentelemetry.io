@@ -1,0 +1,174 @@
+{{ $registry := .Site.Data.registry -}}
+
+{{ $languageNames := newScratch -}}
+{{ $languageNames.Set "cpp" "C++" -}}
+{{ $languageNames.Set "dotnet" ".NET" -}}
+{{ $languageNames.Set "js" "JavaScript" -}}
+{{ $languageNames.Set "php" "PHP" -}}
+
+{{ $officialLanguages := slice "collector" "cpp" "erlang" "elixir" "dotnet" "go" "java" "js" "php" "python" "ruby" "rust" "swift" -}}
+
+
+{{ $langs := slice -}}
+{{ range $registry -}}
+  {{ $language := .language -}}
+  {{- $val := (dict
+    "name" .language
+    "isOfficial" (in $officialLanguages .language)
+    ) 
+  -}}
+  {{ $langs = $langs | append $val -}}
+  {{ if ne $language (lower $language) -}}
+    {{ errorf "Language keys must be in lowercase. Registry entry '%s' has the following invalid key: %s" .title $language -}}
+  {{ end -}}
+{{ end -}}
+{{ $langs = sort ($langs | uniq) "name" -}}
+
+{{ $types := slice -}}
+{{ range $registry -}}
+  {{ $type := .registryType -}}
+  {{ $types = $types | append $type -}}
+  {{ if ne $type (lower $type) -}}
+    {{ errorf "Component-type keys must be in lowercase. Registry entry '%s' has the following invalid key: %s" .title $type -}}
+  {{ end -}}
+{{ end -}}
+{{ $types = $types | uniq | sort -}}
+
+<div class="alert alert-info">
+The OpenTelemetry Registry allows you to search for instrumentation libraries,
+collector components, utilities, and other useful projects in the OpenTelemetry
+ecosystem. If you are a project maintainer, you can add your project to the OpenTelemetry Registry by filling correctly the form below</div>
+
+
+
+  <form id="registryForm">
+    <div class="py-4 pe-5 me-5">
+    <label for="title">Title of Project:</label>
+    <input type="text" id="title" name="title" required placeholder="My open telemetry integration" class="mb-4 mt-1 form-control p-2 bg-light-subtle">
+
+    <label for="integrationType">Type of Integration:</label>
+    <input type="text" id="integrationType" name="integrationType" 
+     placeholder="Is this an exporter, plugin, API package, or something else?" class="mb-4 mt-1 form-control p-2 bg-light-subtle">
+
+    <label for="language">Language:</label>
+    <input type="text" id="language" name="language" 
+     placeholder="js/go/dotnet/etc. or collector for collector plugins" class="mb-4 mt-1 form-control p-2 bg-light-subtle">
+
+    <label for="tags">Tags:</label>
+    <input type="text" id="tags" name="tags" 
+     placeholder="Other useful search terms" class="mb-4 mt-1 form-control p-2 bg-light-subtle">
+
+    <label for="repoURL">Repo URL:</label>
+    <input type="text" id="repoURL" name="repoURL" required 
+     placeholder="https://github.com/your-organization/your-repo" class="mb-4 mt-1 form-control p-2 bg-light-subtle">
+
+    <label for="documentation">Project Documentation (Optional):</label>
+    <input type="text" id="documentation" name="documentation" Placeholder="link to project documentation or user instruction" class="mb-4 mt-1 form-control p-2 bg-light-subtle">
+
+    <label for="license">License:</label>
+    <input type="text" id="license" name="license" required 
+     placeholder="Apache 2.0" class="mb-4 mt-1 form-control p-2 bg-light-subtle">
+
+    <label for="description">Description of Integration/Plugin:</label><br>
+    <textarea id="description" name="description" rows="5" placeholder="A friendly description of your integration or plugin" style="resize:none" class="mb-4 mt-1 form-control p-2 bg-light-subtle"></textarea>
+
+    <h3>Authors</h3>
+    <label for="authorName">Name:</label>
+    <input type="text" id="authorName" name="authorName" required placeholder="First author name" class="mb-4 mt-1 form-control p-2 bg-light-subtle">
+
+    <label for="authorEmail">Email:</label>
+    <input type="email" id="authorEmail" name="authorEmail" placeholder="First author email" class="mb-4 mt-1 form-control p-2 bg-light-subtle">
+
+    <label for="authorUrl">Author URL:</label>
+    <input type="text" id="authorUrl" name="authorUrl" placeholder="Github handle" class="mb-4 mt-1 form-control p-2 bg-light-subtle">
+
+    <label for="createdAt">Created At:</label>
+    <input type="date" id="createdAt" name="createdAt" class="mb-4 mt-1 form-control p-2 bg-light-subtle">
+
+    <label>Is this a Native integration? : set this to true only if OpenTelemetry is directly integrated into your software (no plugin, no instrumentation library)</label><br>
+    <label for="nativeTrue" class="form-label mb-1"><input type="radio" id="nativeTrue" name="isNative" value="true" class="me-1">
+    True</label><br>
+    <label for="nativeFalse" class="form-label mb-4"><input type="radio" id="nativeFalse" name="isNative" value="false" class="me-1">
+    False</label><br>
+
+    <label>Is this a First-Party Software? : set this to true if "isNative" is set to false, but the plugin / instrumentation library is from the same vendor/project as the instrumented software</label><br>
+    <label for="firstPartyTrue" class="form-label mb-1"><input type="radio" id="firstPartyTrue" name="isFirstParty" value="true" class="me-1">
+    True</label><br>
+    <label for="firstPartyFalse" class="form-label mb-1"><input type="radio" id="firstPartyFalse" name="isFirstParty" value="false" class="me-1">
+    False</label><br>
+
+    <button type="submit" class="btn btn-primary my-3">Generate Template</button>
+    </div>
+  </form>
+  <div class="py-4 pe-5 me-5">
+    <textarea id="template" name="template" rows="20" style="resize:none" class="mb-4 mt-1 form-control p-2 bg-light-subtle"></textarea>
+    <button type="submit" class="btn btn-primary my-3" onclick="copyToClipboard()">Copy to clipboard</button>
+    <button type="submit" class="btn btn-primary my-3 ms-3" onclick="openInVSCode()">Open in web editor</button>
+  </div>
+</div>
+<script>
+document.querySelector("#registryForm").addEventListener('submit', generateTemplate)
+
+
+  function generateTemplate(e) {
+    e.preventDefault();
+    console.log('in the form')
+// get form fields
+const title = document.querySelector("#title");
+const registryType = document.querySelector("#integrationType")
+const language = document.querySelector("#language")
+const tags = document.querySelector("#tags")// array[]
+const repourl = document.querySelector("#repoURL")// {repo, docs}
+const documentation = document.querySelector("#documentation")
+const license = document.querySelector("#license")
+const description = document.querySelector("#description")
+const authorName = document.querySelector("#authorName") // [{name, email?, url?}]
+const authorEmail = document.querySelector("#authorEmail")
+const authorUrl = document.querySelector("#authorUrl")
+const createdAt = document.querySelector("#createdAt")
+const isNative = document.querySelector('input[name="isNative"]:checked');
+const isFirstParty = document.querySelector('input[name="isFirstParty"]:checked');
+
+// populate yaml template with values
+const yamlTemplate = `
+title: ${title.value}
+registryType: ${integrationType.value}
+language: ${language.value}
+tags: ${tags.value}
+repo: ${repoURL.value}
+docs: ${documentation.value}
+license: ${license.value}
+description: ${description.value}
+authors:\n\t- name: ${authorName.value}${authorEmail.value ? `\n\t- email: ${authorEmail.value}`: ''}${authorUrl.value ? `\n\t- url: ${authorUrl.value}`: ''}
+createdAt: ${createdAt.value}
+isNative: ${isNative.value == 'true'}
+isFirstParty: ${isFirstParty.value == 'true'}
+`;
+// Output the YAML into a textarea
+const templateContainer = document.querySelector("#template")
+templateContainer.value = yamlTemplate;
+templateContainer.scrollIntoView({ behavior: 'smooth' });
+}
+
+
+function copyToClipboard() {
+const yamlOutput =  document.querySelector("#template").value 
+navigator.clipboard.writeText(yamlOutput).then(() => {
+  alert('YAML copied to clipboard!');
+}).catch(err => {
+  alert('Failed to copy to clipboard: ', err);
+});
+}
+
+
+function openInVSCode() {
+const yamlOutput =  document.querySelector("#template").value
+const vscodeLink = `https://vscode.dev/?data=${encodeURIComponent(yamlOutput)}`;
+
+// Open the prefilled content in the VSCode web editor
+window.open(vscodeLink, '_blank');
+}
+</script>
+
+
+
