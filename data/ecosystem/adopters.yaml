@@ -8,6 +8,7 @@
   url: https://bureau.id/
   components: [Collector, Python, Go, Lambda]
   reference: 'https://tech.bureau.id/connecting-the-dots-with-opentelemetry-part-ii-5ea5f6b06c29'
+  referenceTitle: blog post
   contact: https://github.com/ethicalmohit
 - name: Care.com
   url: https://www.care.com
@@ -28,6 +29,7 @@
   url: https://dyte.io
   components: [Go, Javascript]
   reference: 'https://dyte.io/blog/opentelemetry-at-dyte-part-i/'
+  referenceTitle: blog post
   contact: https://github.com/ethicalmohit
 - name: eBay
   url: https://www.ebay.com
@@ -127,6 +129,7 @@
   url: https://www.vtex.com/
   components: [Collector, Go, JavaScript, .NET]
   reference: 'https://colocatedeventseu2023.sched.com/event/1Jo8E/ingesting-65-tb-of-telemetry-data-daily-through-open-telemetry-protocol-and-collectors-gustavo-pantuza-vtex'
+  referenceTitle: presentation
   contact: 'sre-observability@vtex.com'
 - name: Wandera
   url: https://www.wandera.com/
