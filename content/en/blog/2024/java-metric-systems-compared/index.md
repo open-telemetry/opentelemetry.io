@@ -13,7 +13,8 @@ across many popular languages, OpenTelemetry reduces the cognitive load of
 polyglot teams by providing one vocabulary and one toolkit.
 
 While that’s all true, today I’d like to zoom in on a specific signal and
-language, and talk about the performance of the [OpenTelemetry Java][] metrics SDK.
+language, and talk about the performance of the [OpenTelemetry Java][] metrics
+SDK.
 
 ## Metrics Primer
 
@@ -472,9 +473,11 @@ benefit every application, but are especially important to applications with
 high cardinality and with strict performance SLAs.
 
 If you’re reading this and considering Java metric systems, I hope you chose
-[OpenTelemetry Java][]. It’s a powerful and highly performant tool on its own, but
-comes with APIs for other key observability signals, a [rich instrumentation ecosystem](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md),
-[implementations in a variety of other languages](/docs/languages/), and a well-supported
+[OpenTelemetry Java][]. It’s a powerful and highly performant tool on its own,
+but comes with APIs for other key observability signals, a
+[rich instrumentation ecosystem](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md),
+[implementations in a variety of other languages](/docs/languages/), and a
+well-supported
 [open governance structure](https://github.com/open-telemetry/community).
 
 ## Acknowledgements

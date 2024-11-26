@@ -13,6 +13,7 @@ description:
   The NSO Observability Exporter supports export of progress traces using OTLP.
 authors:
   - name: Cisco
+    url: https://www.cisco.com/
 urls:
   website: https://www.cisco.com/c/en/us/products/cloud-systems-management/network-services-orchestrator/index.html
   docs: https://developer.cisco.com/docs/nso/#!observability-exporter/

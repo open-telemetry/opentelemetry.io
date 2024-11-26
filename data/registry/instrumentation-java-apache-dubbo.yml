@@ -10,6 +10,7 @@ license: Apache-2.0
 description: ''
 authors:
   - name: Apache Dubbo Authors
+    url: https://dubbo.apache.org/
 urls:
   website: https://github.com/apache/dubbo
   docs: https://cn.dubbo.apache.org/en/blog/2024/01/31/tracing-dubbo-with-opentelemetry/

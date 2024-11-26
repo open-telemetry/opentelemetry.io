@@ -1,0 +1,21 @@
+# cSpell:ignore JDBI jdbi Jdbi
+title: JDBI
+registryType: instrumentation
+language: java
+tags:
+  - java
+  - jdbi
+urls:
+  repo: https://github.com/jdbi/jdbi
+  docs: https://jdbi.org/#_opentelemetry_tracing
+  website: https://jdbi.org/
+license: Apache-2.0
+description:
+  Installing the JdbiOpenTelemetryPlugin enables Jdbi statements to emit trace
+  spans recording metadata like SQL, parameters, and execution time.
+authors:
+  - name: JDBI Authors
+    url: https://github.com/jdbi
+createdAt: '2024-11-02'
+isNative: false
+isFirstParty: true

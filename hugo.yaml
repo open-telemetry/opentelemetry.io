@@ -20,6 +20,10 @@ languages:
     languageName: Español
     params:
       description: Sitio del proyecto OpenTelemetry
+  fr:
+    languageName: Français
+    params:
+      description: Site du projet OpenTelemetry
   ja:
     languageName: 日本語 (Japanese)
     params:
@@ -111,7 +115,7 @@ params:
       # prettier-ignore
       'no': >-
         Please let us know <a class="external-link" target="_blank" rel="noopener"
-        href="https://github.com/open-telemetry/opentelemetry.io/issues/new?title=Page%20feedback&body=Suggested%20improvements%20for%20page:%20ADD%20PAGE-URL-HERE">how
+        href="https://github.com/open-telemetry/opentelemetry.io/issues/new?template=PAGE_FEEDBACK.yml&title=[Page+feedback]%3A+ADD+A+SUMMARY+OF+YOUR+FEEDBACK+HERE">how
         we can improve this page</a>. Your feedback is appreciated!
   links:
     user:
@@ -258,6 +262,19 @@ module:
       source: content/en/docs
       target: content/docs
       lang: es
+
+    ## fr
+    - source: content/fr
+      target: content
+      lang: fr
+    # fallback pages
+    - source: content/en/announcements
+      target: content/announcements
+      lang: fr
+    - excludeFiles: specs/*
+      source: content/en/docs
+      target: content/docs
+      lang: fr
 
     ## ja
     - source: content/ja

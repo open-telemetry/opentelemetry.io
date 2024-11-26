@@ -8,6 +8,7 @@ license: Apache 2.0
 description: The OpenTelemetry Google Cloud Trace Exporter for Node.js.
 authors:
   - name: Google Authors
+    url: https://github.com/GoogleCloudPlatform/
 urls:
   repo: https://github.com/GoogleCloudPlatform/opentelemetry-operations-js/tree/main/packages/opentelemetry-cloud-trace-exporter
 createdAt: 2020-04-01

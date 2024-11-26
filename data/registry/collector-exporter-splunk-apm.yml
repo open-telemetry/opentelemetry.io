@@ -9,7 +9,7 @@ tags:
 license: Apache 2.0
 description: The OpenTelemetry Splunk APM Exporter for Go.
 authors:
-  - name: Splunk Authors
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/sapmexporter
 createdAt: 2020-06-06

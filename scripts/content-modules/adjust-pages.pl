@@ -18,13 +18,14 @@ my $semconvSpecRepoUrl = 'https://github.com/open-telemetry/semantic-conventions
 my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
 my $specBasePath = '/docs/specs';
 my %versions = qw(
-  spec: 1.38.0
-  otlp: 1.3.2
+  spec: 1.39.0
+  otlp: 1.4.0
   semconv: 1.28.0
 );
 my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
 my $semconvVers = $versions{'semconv:'};
+my $patchMsg2 = 0; # TODO remove along with patch-message 002
 
 sub printTitleAndFrontMatter() {
   print "---\n";
@@ -42,6 +43,12 @@ sub printTitleAndFrontMatter() {
     $frontMatterFromFile =~ s/linkTitle: .*/$& $semconvVers/;
     # $frontMatterFromFile =~ s/body_class: .*/$& td-page--draft/;
     # $frontMatterFromFile =~ s/cascade:\n/$&  draft: true\n/;
+  } elsif ($ARGV =~ /otel\/specification\/logs\/api.md$/) {
+    if ($otelSpecVers ne "1.39.0") {
+      # TODO: delete the enclosing elsif body
+      print STDOUT "INFO [001]: $0: remove obsolete code now that OTel spec has been updated.\n"
+    }
+    $frontMatterFromFile .= "linkTitle: API\naliases: [bridge-api]\n";
   }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
@@ -109,6 +116,15 @@ while(<>) {
 
   # SPECIFICATION custom processing
 
+  # TODO: drop the entire if statement patch code when OTel spec vers contains
+  # https://github.com/open-telemetry/opentelemetry-specification/pull/4287,
+  # which should be vers > 1.39.0.
+  if ($ARGV =~ /otel\/spec/) {
+    s|(/api\.md)#logs-api\b|$1|g;
+    print STDOUT "INFO [002]: $0: remove obsolete patch code now that OTel spec has been updated.\n"
+      if $otelSpecVers ne "1.39.0" && !$patchMsg2++
+  }
+
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;
   s|(\]\()/specification/|$1$specBasePath/otel/)|;
   s|\.\./semantic_conventions/README.md|$semConvRef| if $ARGV =~ /overview/;
@@ -127,15 +143,15 @@ while(<>) {
   # Images
   s|(\.\./)?internal(/img/[-\w]+\.png)|$2|g;
   s|(\]\()(img/.*?\))|$1../$2|g if $ARGV !~ /(logs|schemas)._index/ && $ARGV !~ /otlp\/docs/;
-  s|(\]\()([^)]+\.png\))|$1../$2|g if $ARGV =~ /\/tmp\/semconv\/docs\/general\/attributes/;
-  s|(\]\()([^)]+\.png\))|$1../$2|g if $ARGV =~ /\/tmp\/semconv\/docs\/http\/http-spans/;
+  s|(\]\()([^)]+\.png\))|$1../$2|g if $ARGV =~ /\btmp\/semconv\/docs\/general\/attributes/;
+  s|(\]\()([^)]+\.png\))|$1../$2|g if $ARGV =~ /\btmp\/semconv\/docs\/http\/http-spans/;
 
   s|\.\.\/README.md\b|$otelSpecRepoUrl/|g if $ARGV =~ /specification._index/;
   s|\.\.\/README.md\b|..| if $ARGV =~ /specification.library-guidelines.md/;
 
-  s|\.\./(opentelemetry/proto/?.*)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /\/tmp\/otlp/;
-  s|\.\./README.md\b|$otlpSpecRepoUrl/|g if $ARGV =~ /\/tmp\/otlp/;
-  s|\.\./examples/README.md\b|$otlpSpecRepoUrl/tree/v$otlpSpecVers/examples/|g if $ARGV =~ /\/tmp\/otlp/;
+  s|\.\./(opentelemetry/proto/?.*)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /\btmp\/otlp/;
+  s|\.\./README.md\b|$otlpSpecRepoUrl/|g if $ARGV =~ /\btmp\/otlp/;
+  s|\.\./examples/README.md\b|$otlpSpecRepoUrl/tree/v$otlpSpecVers/examples/|g if $ARGV =~ /\btmp\/otlp/;
 
   s|\bREADME.md\b|_index.md|g if $ARGV !~ /otel\/specification\/protocol\/_index.md/;
 
@@ -144,7 +160,7 @@ while(<>) {
   s|(\.\.\/)+(supplementary-guidelines\/compatibility\/[^)]+)|$otelSpecRepoUrl/tree/v$otelSpecVers/$2|g;
 
   # Rewrite inline links
-  if ($ARGV =~ /\/tmp\/opamp/) {
+  if ($ARGV =~ /\btmp\/opamp/) {
     s|\]\(([^:\)]*?)\.md((#.*?)?)\)|]($1/$2)|g;
   } else {
     s|\]\(([^:\)]*?\.md(#.*?)?)\)|]({{% relref "$1" %}})|g;

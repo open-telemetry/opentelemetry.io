@@ -6,10 +6,38 @@ weight: 25
 cSpell:ignore: shortcodes
 ---
 
-The OTel website uses Hugo's [multilingual framework] to support page localizations.
-English is the default language, with US English as the default (implicit) localization.
-A growing number of other localizations are supported, as can be seen from the languages
-dropdown menu in the top nav.
+The OTel website uses Hugo's [multilingual framework] to support page
+localizations. English is the default language, with US English as the default
+(implicit) localization. A growing number of other localizations are supported,
+as can be seen from the languages dropdown menu in the top nav.
+
+## English language maintainer guidance
+
+### When link checking fails for non-English pages
+
+English is the default language of the OpenTelemetry website. After you add,
+edit, or reorganized English language documentation, link checking may fail for
+non-English pages. When this happens:
+
+<!-- markdownlint-disable blanks-around-fences -->
+
+- Do **not** fix the broken links. Each non-English page is associated with a
+  specific commit of the corresponding English page, as identified by the git
+  commit hash value of the `default_lang_commit` front matter key.
+- Configure the link checker to ignore the non-English pages by adding the
+  following to the page's front matter, or to the closest common ancestor file,
+  when more than one page has link errors:
+  ```yaml
+  htmltest:
+    # TODO: remove the IgnoreDirs once broken links are fixed
+    IgnoreDirs:
+      - path-regex/to/non-en/directory/contain/files/to/ignore
+      - path-2-etc
+  ```
+- Run `npm run check:links` and include any updates to the `.htmltest.yml`
+  config file with your PR.
+
+<!-- markdownlint-enable blanks-around-fences -->
 
 ## Translation guidance
 
@@ -204,22 +232,59 @@ For more details about the script, run `npm run check:i18n -- -h`.
 
 ## New localizations
 
-(Section To Be Completed soon with information about how to propose a new
-localization.)
+To start a new localization for the OpenTelemetry website,
+[raise an issue](https://github.com/open-telemetry/opentelemetry.io/issues/) to
+share your interest to contribute. Tag all other individuals that are willing to
+write and review translations in the language you want to add. **You need at
+least two potential contributors**, ideally three. Include the following task
+list in your issue as well:
 
-<!--
+```markdown
+- [ ] Contributors for the new language: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
+- [ ] Localize site homepage to YOUR_LANGUAGE_NAME
+- [ ] Create an issue label for `lang:LANG_ID`
+- [ ] Create org-level group for `LANG_ID` approvers
+- [ ] Update components owners for `content/LANG_ID`
+- [ ] Set up spell checking, if a cSpell dictionary is available
+```
 
-cSpell:ignore: CODEOWNERSHIP Comms
+Notes:
 
-* Our website supports multiple languages already, so the translated content should live under main/content/<two_letter_code>
-* Our point of reference is how kubernetes is doing their localization, see https://github.com/kubernetes/website
-* We need at least 2 ppl owning that content, so that changes can be approved (CODEOWNERSHIP will help with that)
-* We can start with the translation been hidden until we reach a point where enough material is translated to go live (with maybe some blog post & announcements around it)
-* (Please anticipate that this is guidance on not a fixed set of rules)
+- For `LANG_ID`, use an official
+  [ISO 639-1 code](https://en.wikipedia.org/wiki/ISO_639-1) for the language you
+  want to add.
+- Look for
+  [cSpell dictionaries](https://github.com/streetsidesoftware/cspell-dicts)
+  available as NPM packages
+  [@cspell/dict-LANG_ID](https://www.npmjs.com/search?q=%40cspell%2Fdict). If a
+  dictionary isn't available for your dialect or region, choose the closest
+  region. For an example of how to set this up, see [PR #5386].
 
-As stated above this project requires a set of individuals that are happy to take on ownership for their language and work with SIG Comms on implementing this. So any discussion on this page "how to do it" needs to be preceded by a "I volunteer to co-own `<language>`"
+After you created that issue and have the required amount of contributors,
+maintainers will ask you to provide a pull request with a translation of the
+[index page](https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md).
+Make sure that maintainers are allowed to edit your PR, since they will add
+additional changes to your PR that are required to get your localization project
+started.
 
--->
+With your first PR merged maintainers will take care of setting up the issue
+label, the org-level group and the component owners.
+
+{{% alert title="Important" color="warning" %}}
+
+You don't have to be an existing contributor to the OpenTelemetry project, to
+start a new localization. However you will not be added as a member of the
+[OpenTelemetry GitHub organization](https://github.com/open-telemetry/) or as a
+member of the approvers group for your localization. You will need to satisfy
+the requirements for becoming an established member and approver as outlined in
+the
+[membership guidelines](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md).
+
+When starting the localization project, maintainers will treat your reviews as
+if you are an approver already.
+
+{{% /alert %}}
 
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
 [multilingual framework]: https://gohugo.io/content-management/multilingual/
+[PR #5386]: https://github.com/open-telemetry/opentelemetry.io/pull/5386/files
