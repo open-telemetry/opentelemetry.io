@@ -172,10 +172,11 @@ reducing the scope of the collector service account to a single namespace.
 
 ## Using Resource detector processor
 
-As of [recently][pr#832], the [OpenTelemetry operator][] sets the `OTEL_RESOURCE_ATTRIBUTES`
-environment variable on the collector container with the K8s pod attributes. This
-lets you to use the resource detector processor, which attaches the environment variable
-values to the spans. This only works when the collector is deployed in sidecar mode.
+As of [recently][pr#832], the [OpenTelemetry operator][] sets the
+`OTEL_RESOURCE_ATTRIBUTES` environment variable on the collector container with
+the K8s pod attributes. This lets you to use the resource detector processor,
+which attaches the environment variable values to the spans. This only works
+when the collector is deployed in sidecar mode.
 
 For example, if you deploy the following manifest:
 
