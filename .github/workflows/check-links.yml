@@ -31,13 +31,22 @@ jobs:
           cache: npm
           cache-dependency-path: tmp/package-ci.json
 
-      - run: npm install --omit=optional
+      - run: |
+          npm install --omit=optional
+          git restore package.json
+
+      - name: Git submodules properly pinned?
+        run: |
+          npm run seq pin:submodule
+          echo "If the diff check below fails, then update .gitmodules by pinning the named git"
+          echo "submodule(s); or undo the submodule update(s) if it happened by mistake."
+          npm run _diff:fail
+
       - run: npm run log:check:links
         continue-on-error: true
       - name: Any files need updating?
         run: |
-          git restore package.json
-          echo "If the following fails, then either run 'npm run fix:htmltest-config' locally or '/fix:htmltest-config' in GitHub"
+          echo "If the diff fails due to .htmltest, then either run 'npm run fix:htmltest-config' locally or '/fix:htmltest-config' in GitHub"
           npm run _diff:fail
       - uses: actions/upload-artifact@v4
         with:
