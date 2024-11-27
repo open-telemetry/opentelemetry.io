@@ -308,25 +308,15 @@ precisará ter um `MeterProvider` inicializado que permita a criação de um
 utilizados para gerar diferentes tipos de métricas. O OpenTelemetry Go suporta
 atualmente os seguintes instrumentos:
 
-- **Counter**: Um valor que acumula com o tempo -- você pode imaginar isso como
-  um odômetro de um carro; é um valor que só cresce.
-- **Asynchronous Counter**: Assim como o **Counter**, porém é coletado uma vez a
-  cada exportação. Pode ser usado em casos onde você não tenha acesso aos
-  incrementos contínuos, mas apenas ao valor agregado.
-- **Histogram**: Uma agregação de valores, tal como latências de requisições. Um
-  histograma é uma boa escolha se você está interessado em valores de
-  estatísticas. Por exemplo: Quantas requisições estão levando menos de 1s?
-- **Gauge**: Mede o valor atual no momento da leitura. Um exemplo seria um
-  medidor de tanque de combustível de um veículo. Gauges são assíncronos.
-- **UpDownCounter**: Um valor que acumula com o tempo, mas também pode reduzir.
-  Um exemplo seria o tamanho de uma fila, este valor irá aumentar e diminuir
-  conforme o número de itens que estão entrando ou saindo desta fila.
-- **Asynchronous UpDownCounter**: Assim como o **UpDownCounter**, porém é
-  coletado uma vez a cada exportação. Pode ser usado em casos onde você não
-  tenha acesso às mudanças contínuas, mas apenas ao valor agregado (ex., atual
-  tamanho da fila).
+- Contador (Counter), um instrumento síncrono que suporta incrementos não-negativos.
+- Contador Assíncrono (Asynchronous Counter), um instrumento assíncrono que suporta incrementos não-negativos.
+- Histograma (Histogram), um instrumento síncrono que suporta valores arbitrários que são estatisticamente significativos, como histogramas, resumos ou percentis.
+- Medidor Síncrono (Synchronous Gauge), um instrumento síncrono que suporta valores não-aditivos, como a medição de temperatura de um ambiente.
+- Medidor Assíncrono (Asynchronous Gauge), um instrumento assíncrono que suporta valores não-aditivos, como a medição de temperatura de um ambiente.
+- Contador UpDown (UpDownCounter), um instrumento síncrono que suporta incrementos e decrementos, como o número de requisições ativas.
+- Contador UpDown Assíncrono (Asynchronous UpDownCounter), um instrumento assíncrono que suporta incrementos e decrementos.
 
-Para mais informações sobre instrumentos síncronos, assíncronos, e entender qual
+- Para mais informações sobre instrumentos síncronos, assíncronos, e entender qual
 dos tipos melhor se encaixa no seu caso de uso, consulte as
 [Diretrizes Suplementares](/docs/specs/otel/metrics/supplementary-guidelines/).
 
