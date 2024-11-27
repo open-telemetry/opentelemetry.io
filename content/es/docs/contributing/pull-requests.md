@@ -388,9 +388,9 @@ Para detener la instancia local de Hugo, vuelve a la terminal y escriba
 
 ### Implementaciones del sitio y vistas previas de PR
 
-Si envías una PR, Netlify crea una [Vista Previa de Implementación][] para que puedas
-revisar sus cambios. Una vez que se fusiona su PR, Netlify implementa el sitio actualizado
-en el servidor de producción.
+Si envías una PR, Netlify crea una [Vista Previa de Implementación][] para que
+puedas revisar sus cambios. Una vez que se fusiona su PR, Netlify implementa el
+sitio actualizado en el servidor de producción.
 
 > **Nota**: Las vistas previas de PR incluyen _páginas de borrador_, pero las
 > compilaciones de producción no.

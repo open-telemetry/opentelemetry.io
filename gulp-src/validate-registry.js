@@ -114,14 +114,7 @@ function validateRegistryEntry(file, enc, cb) {
 
       let logLevel = 'error';
 
-      if (error.message === 'An author must have an email or a URL') {
-        logLevel = 'warning';
-      } else if (error.message === 'must match "else" schema') {
-        logLevel = 'notice';
-      } else {
-        // Real error, this counts!
-        hasErrors = true;
-      }
+      hasErrors = true;
 
       if (process.env.GITHUB_ACTIONS) {
         console.log(

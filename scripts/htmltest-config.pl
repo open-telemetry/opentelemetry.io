@@ -38,7 +38,7 @@ sub extract_htmltest_config {
     return unless @htmltest_config;
 
     if (@htmltest_config == 1) {
-        warn "Warning: Failed to extract htmltest config from front matter in file '$file_path'.\n";
+        warn "WARNING: Failed to extract htmltest config from front matter in file '$file_path'.\n";
         return;
     }
 
@@ -51,7 +51,7 @@ sub extract_htmltest_config {
 
     # TODO: Add support for `IgnoreURLs`.
 
-    warn "Warning: Unrecognized htmltest config from front matter in file '$file_path'.\n";
+    warn "WARNING: Unrecognized htmltest config from front matter in file '$file_path'.\n";
 }
 
 sub _extract_ignore_dirs {
@@ -67,7 +67,7 @@ sub _extract_ignore_dirs {
       } elsif ($line =~ /^IgnoreDirs:\s*\[\s*(.*?)\s*\]/i || $line =~ /^\s*-\s*(.*?)$/) {
         push @config, (split /\s*,\s*/, $1);
       } else {
-        warn "Warning: Unrecognized htmltest IgnoreDirs config from front matter in file '$file_path': $line\n";
+        warn "WARNING: Unrecognized htmltest IgnoreDirs config from front matter in file '$file_path': $line\n";
       }
     }
     return @config;

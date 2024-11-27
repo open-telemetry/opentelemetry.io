@@ -9,6 +9,7 @@ license: BSD-2-Clause
 description: Instrumentation for go-pg PostgreSQL client.
 authors:
   - name: go-pg Authors
+    url: https://github.com/go-pg/
 urls:
   repo: https://github.com/go-pg/pg/tree/v10/extra/pgotel
 createdAt: 2021-04-19

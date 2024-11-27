@@ -13,6 +13,7 @@ Out of the box instrumentation is available for several frameworks:
 | --------------------- | ----------------------------------------------- | ------------- |
 | JDBC                  | `otel.instrumentation.jdbc.enabled`             | true          |
 | Logback               | `otel.instrumentation.logback-appender.enabled` | true          |
+| Logback MDC           | `otel.instrumentation.logback-mdc.enabled`      | true          |
 | Spring Web            | `otel.instrumentation.spring-web.enabled`       | true          |
 | Spring Web MVC        | `otel.instrumentation.spring-webmvc.enabled`    | true          |
 | Spring WebFlux        | `otel.instrumentation.spring-webflux.enabled`   | true          |

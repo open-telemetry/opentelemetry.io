@@ -457,3 +457,9 @@
   contact: 'hello@groundcover.com'
   oss: false
   commercial: true
+- name: rizhiyi lunaxee by Yottabyte
+  nativeOTLP: true
+  url: https://rizhiyi.com/lunaxee/
+  contact: contact@rizhiyi.cn
+  oss: false
+  commercial: true

@@ -15,7 +15,7 @@
 [submodule "content-modules/opentelemetry-proto"]
 	path = content-modules/opentelemetry-proto
 	url = https://github.com/open-telemetry/opentelemetry-proto
-	otlp-pin = v1.3.2
+	otlp-pin = v1.4.0
 [submodule "content-modules/semantic-conventions"]
 	path = content-modules/semantic-conventions
 	url = https://github.com/open-telemetry/semantic-conventions
@@ -31,4 +31,4 @@
 [submodule "content-modules/opentelemetry-java-examples"]
 	path = content-modules/opentelemetry-java-examples
 	url = https://github.com/open-telemetry/opentelemetry-java-examples.git
-	javaexamples-pin = 0f736ec
+	javaexamples-pin = f9553ef

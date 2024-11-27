@@ -2,11 +2,7 @@
 title: ライブラリ
 description: ライブラリにネイティブ計装を追加する方法を紹介します。
 weight: 40
-default_lang_commit: d8c5612
-htmltest:
-  IgnoreDirs:
-    # TODO drop next line after https://github.com/open-telemetry/opentelemetry.io/issues/5423 is fixed for ja pages:
-    - ^ja/docs/concepts/instrumentation/libraries/
+default_lang_commit: d8c5612 # + link-fix patch
 ---
 
 OpenTelemetryは、多くのライブラリに[計装ライブラリ][instrumentation libraries]を提供していて、これは通常、ライブラリフックやモンキーパッチライブラリコードを通して行われます。
@@ -235,7 +231,7 @@ try (Scope unused = span.makeCurrent()) {
 ここに[Java でのコンテキスト抽出の例](/docs/languages/java/instrumentation/#context-propagation) の完全なものがあります。
 
 メッセージングシステムの場合、一度に複数のメッセージを受け取ることがあります。
-受信したメッセージは、作成したスパンの[_リンク_](/docs/languages/java/instrumentation/#create-spans-with-links)になります。
+受信したメッセージは、作成したスパンの _リンク_ になります。
 詳しくは[メッセージング規約](/docs/specs/semconv/messaging/messaging-spans/)を参照してください（警告：メッセージング規約は[策定中](https://github.com/open-telemetry/oteps/pull/173) 🚧 です）。
 
 ### コンテキストを注入する {#injecting-context}

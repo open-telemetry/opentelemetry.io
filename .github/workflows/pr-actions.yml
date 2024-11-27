@@ -69,10 +69,10 @@ jobs:
 
       - run: |
           case $PR_ACTION in
-            all|refcache)
+            all|refcache|text)
               npm install --omit=optional
               ;&
-            dict|filenames|format|htmltest-config|markdown|submodule*)
+            *)
               npm run fix:$PR_ACTION
               ;;
           esac

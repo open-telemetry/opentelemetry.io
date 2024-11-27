@@ -11,6 +11,7 @@ description:
   standard, and sends it to OpenTelemetry Collector through HTTP protocol.
 authors:
   - name: Apache APISIX Authors
+    url: https://apisix.apache.org/
 urls:
   repo: https://github.com/apache/apisix/blob/master/apisix/plugins/opentelemetry.lua
 createdAt: 2022-03-27
