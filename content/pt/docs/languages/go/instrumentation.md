@@ -308,17 +308,25 @@ precisará ter um `MeterProvider` inicializado que permita a criação de um
 utilizados para gerar diferentes tipos de métricas. O OpenTelemetry Go suporta
 atualmente os seguintes instrumentos:
 
-- Contador (Counter), um instrumento síncrono que suporta incrementos não-negativos.
-- Contador Assíncrono (Asynchronous Counter), um instrumento assíncrono que suporta incrementos não-negativos.
-- Histograma (Histogram), um instrumento síncrono que suporta valores arbitrários que são estatisticamente significativos, como histogramas, resumos ou percentis.
-- Medidor Síncrono (Synchronous Gauge), um instrumento síncrono que suporta valores não-aditivos, como a medição de temperatura de um ambiente.
-- Medidor Assíncrono (Asynchronous Gauge), um instrumento assíncrono que suporta valores não-aditivos, como a medição de temperatura de um ambiente.
-- Contador UpDown (UpDownCounter), um instrumento síncrono que suporta incrementos e decrementos, como o número de requisições ativas.
-- Contador UpDown Assíncrono (Asynchronous UpDownCounter), um instrumento assíncrono que suporta incrementos e decrementos.
+- Contador (Counter), um instrumento síncrono que suporta incrementos
+  não-negativos.
+- Contador Assíncrono (Asynchronous Counter), um instrumento assíncrono que
+  suporta incrementos não-negativos.
+- Histograma (Histogram), um instrumento síncrono que suporta valores
+  arbitrários que são estatisticamente significativos, como histogramas, resumos
+  ou percentis.
+- Medidor Síncrono (Synchronous Gauge), um instrumento síncrono que suporta
+  valores não-aditivos, como a medição de temperatura de um ambiente.
+- Medidor Assíncrono (Asynchronous Gauge), um instrumento assíncrono que suporta
+  valores não-aditivos, como a medição de temperatura de um ambiente.
+- Contador UpDown (UpDownCounter), um instrumento síncrono que suporta
+  incrementos e decrementos, como o número de requisições ativas.
+- Contador UpDown Assíncrono (Asynchronous UpDownCounter), um instrumento
+  assíncrono que suporta incrementos e decrementos.
 
-- Para mais informações sobre instrumentos síncronos, assíncronos, e entender qual
-dos tipos melhor se encaixa no seu caso de uso, consulte as
-[Diretrizes Suplementares](/docs/specs/otel/metrics/supplementary-guidelines/).
+- Para mais informações sobre instrumentos síncronos, assíncronos, e entender
+  qual dos tipos melhor se encaixa no seu caso de uso, consulte as
+  [Diretrizes Suplementares](/docs/specs/otel/metrics/supplementary-guidelines/).
 
 Caso um `MeterProvider` não seja criado, tanto por uma biblioteca de
 instrumentação ou manualmente, a API de Métricas do OpenTelemetry usará uma
