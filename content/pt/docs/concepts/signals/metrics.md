@@ -73,7 +73,7 @@ O tipo de instrumento deve ser um dos seguintes:
 - **Gauge**: Mede o valor atual no momento da leitura. Um exemplo seria um
   medidor de tanque de combustível de um veículo. Gauges são assíncronos.
 - **Asynchronous Gauge**: Assim como o **Gauge**, porém é coletado uma vez a
-  cada exportação. Pode ser usado em casos onde você não tenha acesso às 
+  cada exportação. Pode ser usado em casos onde você não tenha acesso às
   mudanças contínuas, mas apenas ao valor agregado.
 - **Histogram**: Uma agregação de valores, tal como latências de requisições. Um
   histograma é uma boa escolha se você está interessado em valores de
