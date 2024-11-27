@@ -903,9 +903,9 @@ meterProvider := metric.NewMeterProvider(
 )
 ```
 
-O atributo `Name` suporta correspondência de padrão curinga. O curinga `*`
-é reconhecido como correspondendo a zero ou mais caracteres, e o curinga `?`
-é reconhecido como correspondendo exatamente a um caractere. Por exemplo, um
+O atributo `Name` suporta correspondência de padrão curinga. O curinga `*` é
+reconhecido como correspondendo a zero ou mais caracteres, e o curinga `?` é
+reconhecido como correspondendo exatamente a um caractere. Por exemplo, um
 padrão de `*` corresponde a todos os nomes de instrumentos.
 
 No exemplo a seguir, mostramos como criar uma _view_ que define a unidade como
@@ -964,7 +964,7 @@ Logs são distintos de métricas e rastros, pois **não há uma API de logs do
 OpenTelemetry voltada para o usuário**. Em vez disso, existem ferramentas que
 integram pacotes de logs populares existentes (como slog, logrus, zap, logr) aos
 logs do ecossistema OpenTelemetry. Para a justificativa por trás dessa decisão
-de design, consulte a [Especificação de Logs](/docs/specs/otel/logs/).
+de design, consulte a [especificação de Logs](/docs/specs/otel/logs/).
 
 Os dois _workflows_ discutidos abaixo atendem a diferentes requisitos de
 aplicação.
