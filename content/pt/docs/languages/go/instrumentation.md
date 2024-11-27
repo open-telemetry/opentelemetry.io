@@ -815,7 +815,7 @@ Cada instrumento possui sua _view_ padrão, que mantém o nome, descrição e
 atributos originais, e tem uma agregação padrão baseada no tipo do instrumento.
 Quando uma _view_ registrada corresponde a um instrumento, a _view_ padrão é
 substituída pela _view_ registrada. _Views_ registradas adicionais que
-correspondem ao instrumento são adicionadas, resultando em múltiplas métricas
+correspondem ao instrumento são aditivas, resultando em múltiplas métricas
 exportadas para o instrumento.
 
 É possível utilizar o método
