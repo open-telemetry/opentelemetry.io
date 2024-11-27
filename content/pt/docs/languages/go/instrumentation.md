@@ -515,7 +515,7 @@ func init() {
 }
 ```
 
-### Utilizando Contadores UpDown (Updown Counters) {#using-updown-counters}
+### Utilizando Contadores UpDown (UpDown Counters) {#using-updown-counters}
 
 Os Contadores UpDown (UpDown Counters) podem incrementar e decrementar,
 permitindo que você meça um valor cumulativo que aumenta ou diminui.
