@@ -210,17 +210,17 @@ criado em dois pontos: um quando tentamos obter acesso ao recurso e outro quando
 adquirimos o mutex.
 
 ```go
-span.AddEvent("Obtendo o lock")
+span.AddEvent("Obtendo o bloqueio")
 mutex.Lock()
-span.AddEvent("Lock efetuado, realizando o trabalho...")
+span.AddEvent("Bloqueio efetuado, realizando ações...")
 // fazendo algo
 span.AddEvent("Realizando o desbloqueio")
 mutex.Unlock()
 ```
 
-Uma característica útil dos eventos é que seus registros de data e hora são exibidos como
-intervalos a partir do início do trecho, permitindo ver facilmente quanto tempo
-se passou entre cada um.
+Uma característica útil dos eventos é que seus registros de data e hora são
+exibidos como intervalos a partir do início do trecho, permitindo ver facilmente
+quanto tempo se passou entre cada um.
 
 Os eventos também podem incluir seus próprios atributos -
 
@@ -304,9 +304,9 @@ dos panos para gerenciar a serialização de contexto.
 
 Para começar a produzir [métricas](/docs/concepts/signals/metrics), você
 precisará ter um `MeterProvider` inicializado que permita a criação de um
-`Meter`. Os _Meters_ permitem que você crie instrumentos que podem ser utilizados
-para gerar diferentes tipos de métricas. O OpenTelemetry Go suporta atualmente
-os seguintes instrumentos:
+`Meter`. Os _Meters_ permitem que você crie instrumentos que podem ser
+utilizados para gerar diferentes tipos de métricas. O OpenTelemetry Go suporta
+atualmente os seguintes instrumentos:
 
 - **Counter**: Um valor que acumula com o tempo -- você pode imaginar isso como
   um odômetro de um carro; é um valor que só cresce.
@@ -481,13 +481,14 @@ Os instrumentos assíncronos podem ser úteis em diversas circunstâncias, como:
   vinculadas ao ciclo de vida de uma operação).
 - Quando não há um registro de data/hora conhecidos para um valor de medição.
 
-Em casos como estes, muitas vezes é melhor realizar a medição de um valor cumulativo
-diretamente, em vez de agregar uma série de deltas no pós-processamento (como
-ocorre no exemplo síncrono).
+Em casos como estes, muitas vezes é melhor realizar a medição de um valor
+cumulativo diretamente, em vez de agregar uma série de deltas no
+pós-processamento (como ocorre no exemplo síncrono).
 
-### Utilizando Counters {#using-counters}
+### Utilizando Contadores (Counters) {#using-counters}
 
-Counters podem ser utilizados para medir valores incrementais e não-negativos.
+Contadores (Counters) podem ser utilizados para medir valores incrementais e
+não-negativos.
 
 Por exemplo, aqui está como seria possível reportar o número de chamadas em um
 servidor HTTP:
@@ -516,10 +517,10 @@ func init() {
 }
 ```
 
-### Utilizando UpDown Counters {#using-updown-counters}
+### Utilizando Contadores UpDown (Updown Counters) {#using-updown-counters}
 
-Os UpDown Counters podem incrementar e decrementar, permitindo que você meça um
-valor cumulativo que aumenta ou diminui.
+Os Contadores UpDown (UpDown Counters) podem incrementar e decrementar,
+permitindo que você meça um valor cumulativo que aumenta ou diminui.
 
 Por exemplo, aqui está como é possível reportar o número de itens de uma
 coleção:
@@ -558,9 +559,9 @@ func removeItem() {
 }
 ```
 
-### Utilizando Gauges {#using-gauges}
+### Utilizando Medidores (Gauges) {#using-gauges}
 
-Gauges são utilizados para medir quando ocorrem mudanças em valores
+Medidores (Gauges) são utilizados para medir quando ocorrem mudanças em valores
 não-aditivos.
 
 Por exemplo, veja como é possível relatar a velocidade atual de um ventilador de
@@ -613,10 +614,10 @@ func recordFanSpeed() {
 }
 ```
 
-### Utilizando Histograms {#using-histograms}
+### Utilizando Histogramas (Histograms) {#using-histograms}
 
-Histogramas são utilizados para medir a distribuição de valores ao longo do
-tempo.
+Histogramas (Histograms) são utilizados para medir a distribuição de valores ao
+longo do tempo.
 
 Por exemplo, veja como é possível reportar a distribuição de tempos de resposta
 para um servidor HTTP:
@@ -649,10 +650,10 @@ func init() {
 }
 ```
 
-### Utilizando Counters (Assíncronos) Observáveis {#using-observable-async-counters}
+### Utilizando Contadores (Assíncronos) Observáveis {#using-observable-async-counters}
 
-Counters observáveis podem ser utilizados para medir um valor aditivo,
-não-negativo e monotonamente crescente.
+Counters observáveis (Observable counters) podem ser utilizados para medir um
+valor aditivo, não-negativo e monotonamente crescente.
 
 Por exemplo, veja como é possível reportar o tempo de duração desde que a
 aplicação foi iniciada:
@@ -681,10 +682,11 @@ func init() {
 }
 ```
 
-### Utilizando Counters UpDown (Assíncronos) Observáveis {#using-observable-async-updown-counters}
+### Utilizando Contadores UpDown (Assíncronos) Observáveis {#using-observable-async-updown-counters}
 
-Counters UpDown observáveis podem incrementar e decrementar, permitindo que você
-meça um valor cumulativo aditivo, não-negativo e não-monotonamente crescente.
+Contadores UpDown (Counters UpDown) observáveis podem incrementar e decrementar,
+permitindo que você meça um valor cumulativo aditivo, não-negativo e
+não-monotonamente crescente.
 
 Por exemplo, veja como é possível reportar algumas métricas de banco de dados:
 
@@ -734,12 +736,13 @@ func registerDBMetrics(db *sql.DB, meter metric.Meter, poolName string) (metric.
 }
 ```
 
-### Utilizando Gauges (Assíncronos) Observáveis {#using-observable-async-gauges}
+### Utilizando Medidores (Assíncronos) Observáveis {#using-observable-async-gauges}
 
-Gauges observáveis devem ser utilizados para medir valores não-aditivos.
+Medidores (Gauges) observáveis devem ser utilizados para medir valores
+não-aditivos.
 
-Por exemplo, veja como é possível reportar o uso de memória dos objetos
-_heap_ utilizados na aplicação:
+Por exemplo, veja como é possível reportar o uso de memória dos objetos _heap_
+utilizados na aplicação:
 
 ```go
 import (
@@ -803,10 +806,10 @@ func init() {
 
 ### Registrando Views {#registering-views}
 
-Uma _view_ oferece aos usuários do SDK a flexibilidade de personalizar a emissão das
-métricas pelo SDK. Você pode personalizar quais instrumentos de
-métricas devem ser processados ou ignorados. Você também pode personalizar a
-agregação e quais atributos você deseja relatar nas métricas.
+Uma _view_ oferece aos usuários do SDK a flexibilidade de personalizar a emissão
+das métricas pelo SDK. Você pode personalizar quais instrumentos de métricas
+devem ser processados ou ignorados. Você também pode personalizar a agregação e
+quais atributos você deseja relatar nas métricas.
 
 Cada instrumento possui sua _view_ padrão, que mantém o nome, descrição e
 atributos originais, e tem uma agregação padrão baseada no tipo do instrumento.
@@ -983,14 +986,13 @@ Para utilizar este _workflow_:
 - Configurar o [SDK de Logs](#logs-sdk) do OpenTelemetry para exportar registros
   de logs para o destino desejado (o [OpenTelemetry
   Collector][opentelemetry collector] ou outro).
-- Utilizar uma [Ponte de Logs](#log-bridge) apropriada.
+- Utilizar um [Log Bridge](#log-bridge) apropriado.
 
 #### SDK de Logs {#logs-sdk}
 
 O SDK de Logs define como os logs são processados ao utilizar o _workflow_
-[Direto para o Collector](#direct-to-collector). Nenhum SDK de logs é
-necessário ao utilizar o _workflow_ de
-[encaminhamento de logs](#via-file-or-stdout).
+[Direto para o Collector](#direct-to-collector). Nenhum SDK de logs é necessário
+ao utilizar o _workflow_ de [encaminhamento de logs](#via-file-or-stdout).
 
 Uma configuração típica do SDK de logs instala um Processor de logs em lote com
 um Exporter OTLP.
@@ -998,7 +1000,7 @@ um Exporter OTLP.
 Para habilitar [logs](/docs/concepts/signals/logs/) em sua aplicação, você
 precisará ter um
 [`LoggerProvider`](/docs/concepts/signals/logs/#logger-provider) inicializado,
-que permitirá que você utilize uma [Ponte de Logs](#log-bridge).
+que permitirá que você utilize um [Log Bridge](#log-bridge).
 
 Caso um `LoggerProvider` não seja criado, a API de Logs do OpenTelemetry irá
 utilizar uma implementação sem operação e dados de logs não serão gerados. Sendo
@@ -1045,7 +1047,7 @@ func main() {
 	}
 
 	// Crie um 'LoggerProvider'.
-	// Você pode passar essa instância diretamente ao criar pontes.
+	// Você pode passar essa instância diretamente ao criar um Log Bridge.
 	loggerProvider, err := newLoggerProvider(ctx, res)
 	if err != nil {
 		panic(err)
@@ -1059,7 +1061,7 @@ func main() {
 	}()
 
 	// Registre o LoggerProvider globalmente, permitindo que seja acessado via global.LoggerProvider.
-	// A maioria das pontes de logs utilizam o LoggerProvider global como padrão.
+	// A maioria dos Log Bridges utilizam o LoggerProvider global como padrão.
 	// Caso o LoggerProvider global não esteja definido, será utilizada uma implementação sem operação
 	// e dados de logs não serão gerados.
 	global.SetLoggerProvider(loggerProvider)
@@ -1088,18 +1090,18 @@ func newLoggerProvider(ctx context.Context, res *resource.Resource) (*log.Logger
 ```
 
 Agora que o `LoggerProvider` está configurado, é possível utilizá-lo para
-configurar uma [Ponte de Logs](#log-bridge).
+configurar um [Log Bridge](#log-bridge).
 
-#### Ponte de Logs {#log-bridge}
+#### Log Bridge {#log-bridge}
 
-Uma ponte de logs é um componente que conecta logs de um pacote existente ao
-[SDK de Logs](#logs-sdk) do OpenTelemetry, utilizando a [API de Ponte de
-Logs][logs bridge API].
+Um Log Bridge é um componente que conecta logs de um pacote existente ao
+[SDK de Logs](#logs-sdk) do OpenTelemetry, utilizando a [Logs Bridge
+API][logs bridge API].
 
-Uma lista completa contendo as pontes de logs disponíveis pode ser encontrada no
+Uma lista completa contendo os _log bridges_ disponíveis pode ser encontrada no
 [registro do OpenTelemetry](/ecosystem/registry/?language=go&component=log-bridge).
 
-Cada pacote de ponte de logs deve possuir uma documentação contendo as suas
+Cada pacote do Log Bridge deve possuir uma documentação contendo as suas
 instruções de instalação e configuração, e um exemplo.
 
 ### Através de arquivos ou stdout {#via-file-or-stdout}
@@ -1110,8 +1112,8 @@ FluentBit) é responsável por ler/acompanhar os logs, convertê-los para um
 formato mais estruturado e encaminhá-los para um destino, como o Collector. Este
 _workflow_ pode ser preferível em situações onde os requisitos da aplicação não
 permitem a sobrecarga adicional do
-[Direto para o Collector](#direct-to-collector). No entanto, é requisito
-que todos os campos de log necessários sejam codificados nos logs, e que o
+[Direto para o Collector](#direct-to-collector). No entanto, é requisito que
+todos os campos de log necessários sejam codificados nos logs, e que o
 componente responsável pela leitura realize a conversão para o [modelo de dados
 de logs][log data model]. A instalação e configuração dos componentes de
 encaminhamento de logs está fora do escopo deste documento.
