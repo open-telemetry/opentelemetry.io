@@ -903,8 +903,8 @@ meterProvider := metric.NewMeterProvider(
 )
 ```
 
-O atributo `Name` suporta correspondência de padrão _wildcard_. O _wildcard_ `*`
-é reconhecido como correspondendo a zero ou mais caracteres, e o _wildcard_ `?`
+O atributo `Name` suporta correspondência de padrão curinga. O curinga `*`
+é reconhecido como correspondendo a zero ou mais caracteres, e o curinga `?`
 é reconhecido como correspondendo exatamente a um caractere. Por exemplo, um
 padrão de `*` corresponde a todos os nomes de instrumentos.
 
