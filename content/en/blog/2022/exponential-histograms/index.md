@@ -40,12 +40,13 @@ The SDK is used to configure what happens with the data collected by the API.
 This typically includes processing it and exporting it out of process for
 analysis, often to an observability platform.
 
-The API entry point for metrics is the [meter provider][]. It provides meters for
-different scopes, where a scope is just a logical unit of application code. For example,
-instrumentation for an HTTP client library would have a different scope and therefore
-a different meter than instrumentation for a database client library. You use meters
-to obtain instruments. You use instruments to report measurements, which consist
-of a value and set of attributes. This Java code snippet demonstrates the workflow:
+The API entry point for metrics is the [meter provider][]. It provides meters
+for different scopes, where a scope is just a logical unit of application code.
+For example, instrumentation for an HTTP client library would have a different
+scope and therefore a different meter than instrumentation for a database client
+library. You use meters to obtain instruments. You use instruments to report
+measurements, which consist of a value and set of attributes. This Java code
+snippet demonstrates the workflow:
 
 ```java
 OpenTelemetry openTelemetry = // declare OpenTelemetry instance
@@ -73,7 +74,8 @@ and when the sum of the things is more important than their individual values
 the distribution of measurements is relevant for analysis. For example, a
 histogram is a natural choice for tracking response times for HTTP servers,
 because it's useful to analyze the distribution of response times to evaluate
-SLAs and identify trends. To learn more, see the guidelines for [instrument selection][].
+SLAs and identify trends. To learn more, see the guidelines for [instrument
+selection][].
 
 I mentioned earlier that the SDK aggregates measurements from instruments. Each
 instrument type has a default aggregation strategy (or simply [aggregation][])
@@ -125,10 +127,10 @@ request, you can determine:
   requests resolve quickly but a small number of requests take a long time and
   bring down the average.
 
-The second type of OpenTelemetry histogram is the [exponential
-bucket histogram][]. Exponential bucket histograms have buckets and bucket
-counts, but instead of explicitly defining the bucket boundaries, the boundaries
-are computed based on an exponential scale. More specifically, each bucket is
+The second type of OpenTelemetry histogram is the [exponential bucket
+histogram][]. Exponential bucket histograms have buckets and bucket counts, but
+instead of explicitly defining the bucket boundaries, the boundaries are
+computed based on an exponential scale. More specifically, each bucket is
 defined by an index _i_ and has bucket boundaries _(base\*\*i, base\*\*(i+1)]_,
 where _base\*\*i_ means that _base_ is raised to the power of _i_. The base is
 derived from a scale factor that is adjustable to reflect the range of reported
@@ -197,13 +199,14 @@ large range of measurement values.
 
 Let's bring everything together with a proper demonstration comparing explicit
 bucket histograms to exponential bucket histograms. I've put together some
-[example code][] that simulates tracking response time to an HTTP server in milliseconds.
-It records one million samples to an explicit bucket histogram with the default buckets,
-and to an exponential bucket histogram with a number of buckets that produces roughly
-the same size of [OTLP][] -encoded, Gzip-compressed payload as the explicit bucket
-defaults. Through trial and error, I determined that ~40 exponential buckets produce
-an equivalent payload size to the default explicit bucket histogram with 11 buckets.
-(Your results may vary.)
+[example code][] that simulates tracking response time to an HTTP server in
+milliseconds. It records one million samples to an explicit bucket histogram
+with the default buckets, and to an exponential bucket histogram with a number
+of buckets that produces roughly the same size of [OTLP][] -encoded,
+Gzip-compressed payload as the explicit bucket defaults. Through trial and
+error, I determined that ~40 exponential buckets produce an equivalent payload
+size to the default explicit bucket histogram with 11 buckets. (Your results may
+vary.)
 
 I wanted the distribution of samples to reflect what we might see in an actual
 HTTP server, with bands of response times corresponding to different operations.

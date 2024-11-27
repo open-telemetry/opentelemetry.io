@@ -3,8 +3,8 @@ title: Zero-code Instrumentation
 weight: 260
 ---
 
-OpenTelemetry [zero-code instrumentation][] is supported for the languages listed
-below in the section index.
+OpenTelemetry [zero-code instrumentation][] is supported for the languages
+listed below in the section index.
 
 If you are using Kubernetes, you can use the [OpenTelemetry Operator for
 Kubernetes][otel-op] to [inject zero-code instrumentation] for .NET, Java,

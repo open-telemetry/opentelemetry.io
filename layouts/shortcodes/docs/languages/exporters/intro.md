@@ -51,8 +51,8 @@ them up.
 
 <div class="alert alert-info" role="alert"><h4 class="alert-heading">Note</h4>
 
-If you use [zero-code instrumentation](/docs/zero-code/{{ $l }}), you can learn how
-to set up exporters by following the [Configuration
+If you use [zero-code instrumentation](/docs/zero-code/{{ $l }}), you can learn
+how to set up exporters by following the [Configuration
 Guide](/docs/zero-code/{{ $l }}/configuration/).
 
 </div>
