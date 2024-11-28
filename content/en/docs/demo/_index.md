@@ -54,6 +54,7 @@ found here:
 - [Recommendation Service](services/recommendation/)
 - [Shipping Service](services/shipping/)
 - [Image Provider Service](services/imageprovider/)
+- [React Native App](services/reactnativeapp/)
 
 ## Scenarios
 
