@@ -2,7 +2,7 @@
 title: Rastros
 weight: 1
 description: O caminho de uma solicitação através do seu aplicativo.
-default_lang_commit: 57cd4f78d61cc1642ce56089aeec7ae278544194
+default_lang_commit: eb19d1dd5ab2f66343ec76adbfb31f81024da3a1
 ---
 
 Os **rastros** nos fornecem uma visão geral do que acontece quando uma
