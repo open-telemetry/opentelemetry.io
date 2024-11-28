@@ -168,14 +168,14 @@ service:
             exporter:
               otlp:
                 protocol: grpc/protobuf
-                endpoint: localhost:14317
+                endpoint: http://localhost:14317
     traces:
       processors:
-        batch:
-          exporter:
-            otlp:
-              protocol: grpc/protobuf
-              endpoint: localhost:14317
+        - batch:
+            exporter:
+              otlp:
+                protocol: grpc/protobuf
+                endpoint: http://localhost:14317
 ```
 
 {{% alert title="Caution" color="warning" %}}
