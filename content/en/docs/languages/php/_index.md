@@ -18,8 +18,10 @@ cSpell:ignore: mbstring opcache
 ## Requirements
 
 OpenTelemetry SDK for PHP aims to support all officially supported PHP versions
-according to [www.php.net/supported-versions](https://www.php.net/supported-versions.php),
-and support will be dropped for PHP versions within 12 months of that version going End of Life.
+according to
+[www.php.net/supported-versions](https://www.php.net/supported-versions.php),
+and support will be dropped for PHP versions within 12 months of that version
+going End of Life.
 
 Auto-instrumentation requires PHP version 8.0+.
 
