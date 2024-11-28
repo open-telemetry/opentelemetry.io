@@ -3,6 +3,7 @@
 UPDATE_YAML="yq eval -i"
 GIT=git
 GH=gh
+NPM=npm
 FILES="${FILES:-./data/registry/*.yml}"
 
 
@@ -16,6 +17,7 @@ elif [[ "$1" != "-f" ]]; then
   UPDATE_YAML="yq eval"
   GIT="echo > DRY RUN: git "
   GH="echo > DRY RUN: gh "
+  NPM="echo > DRY RUN: npm "
 else
   # Local execution with -f flag (force real vs. dry run)
   shift
@@ -58,6 +60,12 @@ for yaml_file in ${FILES}; do
                 ;;
             hex)
                 curl -s "https://hex.pm/api/packages/$package_name" | jq -r '.releases | max_by(.inserted_at) | .version'
+                ;;
+            maven)
+                groupid=$(echo "${package_name}" | cut -d/ -f1)
+                artifactid=$(echo "${package_name}" | cut -d/ -f2)
+                #curl -s "https://search.maven.org/solrsearch/select?q=g:com.google.inject+AND+a:guice&core=gav&rows=20&wt=json" | jq -r '.response.docs[0].v'
+                curl -s "https://search.maven.org/solrsearch/select?q=g:${groupid}+AND+a:${artifactid}&core=gav&rows=20&wt=json" | jq -r '.response.docs[0].v'
                 ;;
             *)
                 echo "Registry not supported."
@@ -109,6 +117,8 @@ if [ "$existing_pr_count" -gt 0 ]; then
     echo "So we won't create another. Exiting."
     exit 0
 fi
+
+$NPM run fix:format
 
 $GIT checkout -b "$branch"
 $GIT commit -a -m "$message"

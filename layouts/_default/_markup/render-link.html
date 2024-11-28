@@ -4,37 +4,44 @@
 
   Localization link processing
 
-  The following code block will prefix the page language code to an
-  absolute path when:
+  The following code will prefix $url with the language code of this page when:
 
   - This page's localization isn't the default localization (English)
-  - The URL is an absolute path that doesn't start with any of the following:
-    - A language code, such as `ja`
-    - A path segment other than `docs`, since current OTel localizations only
-      offer translations for at most doc pages.
+  - $url is an absolute path -- that is, it starts with /
+  - The $url target page exists in this locale
 
   */ -}}
 
-{{ $defaultLang := "en" -}} {{/* TODO: can we avoid hard coding this value? */ -}}
-{{ $lang := .Page.Language.Lang -}}
-{{ if ne $lang $defaultLang -}}
-  {{ $langPathPrefix := add "/" $lang "/" -}}
-  {{ if and (hasPrefix $url $langPathPrefix) .Page.File -}}
-    {{ warnf "File %s: avoid prefixing the following link path with '%s': %s"
-             .Page.File.Filename $langPathPrefix $url -}}
-  {{ else if and (hasPrefix $url "/")
-            (not (findRE "^/(blog|community|docs/specs|ecosystem|status)/?" $url))
-  -}}
-    {{ if and false (not (findRE "^/[a-z][a-z](-[a-zA-Z]{2})?/" $url)) -}}
-      {{ $url = add $langPathPrefix (strings.TrimPrefix "/" $url) -}}
+{{ if hasPrefix $url "/" -}}
+  {{/* Hard-coded default lang since it's what's most efficient and won't change :) */ -}}
+  {{ $defaultLang := "en" -}}
+  {{ $lang := .Page.Language.Lang -}}
+  {{ if ne $lang $defaultLang -}}
+    {{ $langPathPrefix := add "/" $lang "/" -}}
+    {{ if and (hasPrefix $url $langPathPrefix) .Page.File -}}
+      {{ warnf "File %s: drop unnecessary '%s' prefix from %s"
+              .Page.File.Filename $langPathPrefix $url -}}
+    {{ else -}}
+      {{ $u := urls.Parse $url -}}
+      {{ $localizedPagePath := add $langPathPrefix (strings.TrimPrefix "/" $url) -}}
+      {{/*
+        Look for the page (referenced by $url) in this page's locale's site.
+        Note that .Page.GetPage exclusively looks for the given path in the same locale as .Page.
+      */ -}}
+      {{ with .Page.GetPage $u.Path -}}
+        {{/* warnf "Found url %s -> page %s. -- relRef %s" $localizedPagePath . (.RelRef (dict "path" $url))*/ -}}
+        {{/* Assert (eq $localizedPagePath (.RelRef (dict "path" $url))) */ -}}
+        {{ $url = $localizedPagePath -}}
+      {{ else -}}
+        {{/* Use $url as is, letting the link checker report any issues. */ -}}
+        {{/* warnf "Render-link: locale %s doesn't have the page %s (%s)" $lang $url $localizedPagePath */ -}}
+      {{ end -}}
     {{ end -}}
   {{ end -}}
 {{ end -}}
 
-
 {{/* General link-render processing */ -}}
 
-{{ $url := .Destination -}}
 {{ $isExternal := hasPrefix $url "http" -}}
 {{ if $isExternal -}}
   {{ if findRE "^https://opentelemetry.io/\\w" $url -}}
@@ -61,4 +68,8 @@
 >
   {{- .Text | safeHTML -}}
 </a>
-{{- /* This comment ensures that all trailing whitespace is trimmed. */ -}}
+
+{{- /*
+  cSpell:ignore warnf
+  This comment ensures that all trailing whitespace is trimmed.
+*/ -}}

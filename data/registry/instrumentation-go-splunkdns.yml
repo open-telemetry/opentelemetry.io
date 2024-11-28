@@ -10,6 +10,7 @@ license: Apache 2.0
 description: Instrumentation for the `github.com/miekg/dns` package.
 authors:
   - name: Splunk Inc.
+    url: https://www.splunk.com/
 urls:
   repo: https://github.com/signalfx/splunk-otel-go/tree/main/instrumentation/github.com/miekg/dns/splunkdns
 createdAt: 2022-01-20

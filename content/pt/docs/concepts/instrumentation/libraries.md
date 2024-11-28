@@ -2,11 +2,7 @@
 title: Bibliotecas
 description: Aprenda como adicionar instrumentação nativa à sua biblioteca.
 weight: 40
-default_lang_commit: a570a00c7a238ffe26528d7bfb20efdbaf939c39
-htmltest:
-  IgnoreDirs:
-    # TODO drop next line after https://github.com/open-telemetry/opentelemetry.io/issues/5423 is fixed for pt pages:
-    - ^pt/docs/concepts/instrumentation/libraries/
+default_lang_commit: a570a00c7a238ffe26528d7bfb20efdbaf939c39 # + link-fix patch
 ---
 
 O OpenTelemetry fornece [bibliotecas de instrumentação][] para várias
@@ -314,9 +310,8 @@ Aqui estão os
 consulte a documentação do OpenTelemetry no seu idioma.
 
 No caso de um sistema de mensagens, você pode receber mais de uma mensagem de
-uma vez. As mensagens recebidas se tornam
-[_links_](/docs/languages/java/instrumentation/#create-spans-with-links) no
-trecho que você cria. Consulte as
+uma vez. As mensagens recebidas se tornam _links_ no trecho que você cria.
+Consulte as
 [convenções de mensagens](/docs/specs/semconv/messaging/messaging-spans/) para
 mais detalhes (AVISO: as convenções de mensagens estão
 [em construção](https://github.com/open-telemetry/oteps/pull/173) 🚧).

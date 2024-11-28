@@ -1,0 +1,17 @@
+# cSpell:ignore: aiokafka
+title: OpenTelemetry aiokafka instrumentation
+registryType: instrumentation
+language: python
+tags:
+  - aiokafka
+  - instrumentation
+  - python
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-aiokafka
+license: Apache 2.0
+description:
+  Instrument aiokafka to report instrumentation-kafka produced and consumed
+  messages
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-11-18

@@ -11,6 +11,7 @@ description:
   applications using OpenTelemetry.
 authors:
   - name: Steffan Westcott
+    url: https://github.com/steffan-westcott/
 urls:
   repo: https://github.com/steffan-westcott/clj-otel
 createdAt: 2022-03-04

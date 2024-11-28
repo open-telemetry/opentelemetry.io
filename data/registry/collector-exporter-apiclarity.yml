@@ -11,7 +11,8 @@ license: Apache 2.0
 description:
   Exports traces and/or metrics via HTTP to an APIClarity endpoint for analysis.
 authors:
-  - name: Cisco Systems
+  - name: Cisco
+    url: https://www.cisco.com
 urls:
   repo: https://github.com/openclarity/apiclarity/tree/master/plugins/otel-collector
 createdAt: 2022-11-28
