@@ -302,7 +302,7 @@ OpenTelemetry Go currently supports the following instruments:
 - Histogram, a synchronous instrument that supports arbitrary values that are
   statistically meaningful, such as histograms, summaries, or percentile
 - Synchronous Gauge, a synchronous instrument that supports non-additive values,
-  such as room temperature.
+  such as room temperature
 - Asynchronous Gauge, an asynchronous instrument that supports non-additive
   values, such as room temperature
 - UpDownCounter, a synchronous instrument that supports increments and
