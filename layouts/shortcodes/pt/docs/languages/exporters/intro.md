@@ -1,6 +1,10 @@
-{{/* cSpell:ignore cond */ -}} Envie dados de telemetria para o [OpenTelemetry Collector](/docs/collector/) para garantir que estes dados sejam exportados corretamente. A utilização de um Collector em ambientes de produção é a melhor prática. Para visualizar os dados de telemetria que foram gerados, exporte-os para um _backend_ como [Jaeger](https://jaegertracing.io/), [Zipkin](https://zipkin.io/),
-[Prometheus](https://prometheus.io/), ou um _backend_ 
-[específico de um fornecedor](/ecosystem/vendors/).
+{{/* cSpell:ignore cond */ -}} Envie dados de telemetria para o
+[OpenTelemetry Collector](/docs/collector/) para garantir que estes dados sejam
+exportados corretamente. A utilização de um Collector em ambientes de produção é
+a melhor prática. Para visualizar os dados de telemetria que foram gerados,
+exporte-os para um _backend_ como [Jaeger](https://jaegertracing.io/),
+[Zipkin](https://zipkin.io/), [Prometheus](https://prometheus.io/), ou um
+_backend_ [específico de um fornecedor](/ecosystem/vendors/).
 
 {{ $lang := .Get 0 | default "" -}}
 
@@ -20,7 +24,13 @@ O registro oferece uma [lista de exportadores específicos de linguagem][reg].
 
 {{ end -}}
 
-Entre os exportadores, os exportadores do [OpenTelemetry Protocol (OTLP)][OTLP] são projetados tendo em mente o modelo de dados do OpenTelemetry, emitindo dados OTel sem qualquer perda de informação. Além disso, muitas ferramentas que operam com dados de telemetria suportam o formato OTLP (como [Prometheus][Prometheus], [Jaeger][Jaeger] e a maioria dos [fornecedores][vendors]), proporcionando um alto grau de flexibilidade quando necessário. Para saber mais sobre o OTLP, consulte a [Especificação do OTLP][OTLP].
+Entre os exportadores, os exportadores do [OpenTelemetry Protocol (OTLP)][OTLP]
+são projetados tendo em mente o modelo de dados do OpenTelemetry, emitindo dados
+OTel sem qualquer perda de informação. Além disso, muitas ferramentas que operam
+com dados de telemetria suportam o formato OTLP (como [Prometheus][Prometheus],
+[Jaeger][Jaeger] e a maioria dos [fornecedores][vendors]), proporcionando um
+alto grau de flexibilidade quando necessário. Para saber mais sobre o OTLP,
+consulte a [Especificação do OTLP][OTLP].
 
 [Jaeger]: /blog/2022/jaeger-native-otlp/
 [OTLP]: /docs/specs/otlp/
@@ -32,7 +42,8 @@ Entre os exportadores, os exportadores do [OpenTelemetry Protocol (OTLP)][OTLP] 
 
 {{ if $name -}}
 
-Esta página reúne informações sobre os principais exportadores do OpenTelemetry {{ $name }} e como configurá-los.
+Esta página reúne informações sobre os principais exportadores do OpenTelemetry
+{{ $name }} e como configurá-los.
 
 {{ end -}}
 
@@ -41,7 +52,10 @@ Esta página reúne informações sobre os principais exportadores do OpenTeleme
 
 <div class="alert alert-info" role="alert"><h4 class="alert-heading">Nota</h4>
 
-Caso você esteja utilizando [instrumentação sem código](/docs/zero-code/{{ $l }}), você poderá aprender a configurar os exporters através do [Guia de Configurações](/docs/zero-code/{{ $l }}/configuration/).
+Caso você esteja utilizando [instrumentação sem
+código](/docs/zero-code/{{ $l }}), você poderá aprender a configurar os
+exporters através do [Guia de
+Configurações](/docs/zero-code/{{ $l }}/configuration/).
 
 </div>
 
@@ -59,13 +73,17 @@ Caso você esteja utilizando [instrumentação sem código](/docs/zero-code/{{ $
 
 <div class="alert alert-info" role="alert"><h4 class="alert-heading">Nota</h4>
 
-Caso já possua um coletor ou _backend_ OTLP configurado, poderá pular para [configurar as dependências do exportador OTLP](#otlp-dependencies) para a sua aplicação.
+Caso já possua um coletor ou _backend_ OTLP configurado, poderá pular para
+[configurar as dependências do exportador OTLP](#otlp-dependencies) para a sua
+aplicação.
 
 </div>
 
-Para testar e validar os seus exportadores OTLP, é possível executar o Collector em um contêiner Docker que escreve os dados diretamente no console.
+Para testar e validar os seus exportadores OTLP, é possível executar o Collector
+em um contêiner Docker que escreve os dados diretamente no console.
 
-Em uma pasta vazia, crie um arquivo chamado `collector-config.yaml` e adicione o seguinte conteúdo:
+Em uma pasta vazia, crie um arquivo chamado `collector-config.yaml` e adicione o
+seguinte conteúdo:
 
 ```yaml
 receivers:
@@ -91,11 +109,14 @@ service:
       exporters: [debug]
 ```
 
-Em seguida, execute o Collector em um contêiner Docker através do seguinte comando:
+Em seguida, execute o Collector em um contêiner Docker através do seguinte
+comando:
 
 ```shell
 docker run -p 4317:4317 -p 4318:4318 --rm -v $(pwd)/collector-config.yaml:/etc/otelcol/config.yaml otel/opentelemetry-collector
 ```
 
-Este Collector agora é capaz receber dados de telemetria via OTLP. Mais tarde, você também poderá [configurar o Collector](/docs/collector/configuration) para enviar os seus dados de telemetria para o seu _backend_ de observabilidade.
+Este Collector agora é capaz receber dados de telemetria via OTLP. Mais tarde,
+você também poderá [configurar o Collector](/docs/collector/configuration) para
+enviar os seus dados de telemetria para o seu _backend_ de observabilidade.
 {{ end -}}
