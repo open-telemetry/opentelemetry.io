@@ -2,7 +2,7 @@
 title: ログ
 weight: 3
 description: イベントの記録
-default_lang_commit: 9b5e318
+default_lang_commit: eb19d1dd5ab2f66343ec76adbfb31f81024da3a1
 ---
 
 **ログ**は、構造化（推奨）または非構造化された、メタデータを含む、タイムスタンプ付きのテキストレコードです。
