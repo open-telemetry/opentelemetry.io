@@ -51,7 +51,7 @@
 
 $color-mode-type: data;
 // Define dark mode colors for data container
-$dark-border-color: darken(#cccccc, 20%);
+@use 'variables_project' as *;
 
 @include color-mode(dark) {
   @media (prefers-color-scheme: dark) {
@@ -59,11 +59,11 @@ $dark-border-color: darken(#cccccc, 20%);
       border-color: $dark-border-color;
     }
     .card.registry-entry {
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8) !important;
+      box-shadow: $box-shadow-large !important;
     }
     .card.registry-entry,
     .list-group > .list-group-item {
-      $dark-background: #262d2c;
+      background-color: $dark-background;
     }
   }
 }
