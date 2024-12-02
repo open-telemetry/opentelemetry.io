@@ -4,7 +4,8 @@ cSpell:ignore: typeof
 ---
 
 The React Native app provides a mobile UI for users on Android and iOS devices
-to interact with the demo's services. It is built with Expo and uses Expo's
+to interact with the demo's services. It is built with
+[Expo](https://docs.expo.dev/get-started/introduction/) and uses Expo's
 file-based routing to layout the screens for the app.
 
 [React Native app source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/reactnativeapp/)
