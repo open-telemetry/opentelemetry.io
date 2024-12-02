@@ -5,15 +5,14 @@ date: 2024-12-01
 author: >- 
   [Dotan Horovits](https://github.com/horovits/) (CNCF Ambassador),
   [Adriel Perkins](https://github.com/adrielp) (Liatrio)
-draft: true # TODO: remove this line once your post is ready to be published
 canonical_url: https://www.cncf.io/blog/2024/11/04/opentelemetry-is-expanding-into-ci-cd-observability/ 
-issue: the issue ID for this blog post # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details
+issue: 5546
 sig: CI/CD Observability 
 ---
 
 ## OpenTelemetry Is Expanding Into CI/CD Observability
 
-SIG post by [Dotan Horovits](https://www.linkedin.com/in/horovits/) and [Adriel Perkins](https://www.linkedin.com/in/aqperkins/), Project Leads, SIG CI/CD Observability, OpenTelemetry
+*SIG post by [Dotan Horovits](https://www.linkedin.com/in/horovits/) and [Adriel Perkins](https://www.linkedin.com/in/aqperkins/), Project Leads, SIG CI/CD Observability, OpenTelemetry*
 
 We’ve been talking about the need for a common “language” for reporting and observing CI/CD pipelines for years, and finally, we see the first “words” of this language entering the “dictionary” of observability – the OpenTelemetry open specification. With the recent release of OpenTelemetry’s Semantic Conventions, v1.27.0, you can find [designated attributes for reporting CI/CD pipelines](https://opentelemetry.io/docs/specs/semconv/attributes-registry/cicd/). 
 
@@ -104,6 +103,7 @@ All that has been mentioned thus far is just the beginning! We have lots of work
     * Kristof Kowalski – Anz Bank
     * Mike Sarahan – Nvidia
 * A corresponding version of the GitHub Receiver Component but implemented in GitLab
+
 And much more!
 
 ## It takes a village to extend OpenTelemetry
