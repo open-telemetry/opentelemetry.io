@@ -15,11 +15,15 @@ file-based routing to layout the screens for the app.
 The application uses the OpenTelemetry packages to instrument the application at
 the JS layer
 
-> **NOTE:** The JS OTel packages are supported for node and web environments.
-> While they work for React Native as well they are not currently explicitly
-> supported for that environment and may break compatibility with minor version
-> updates or require workarounds. Building more support for React Native is an
-> area of active development.
+{{% alert title="Important" color="warning" %}}
+
+The JS OTel packages are supported for node and web environments.
+While they work for React Native as well they are not currently explicitly
+supported for that environment and may break compatibility with minor version
+updates or require workarounds. Building more support for React Native is an
+area of active development.
+
+{{% /alert %}}
 
 The main entry point for the application is `app/_layout.tsx` where a hook is
 used to initialize the instrumentation and make sure it is loaded before
