@@ -1,42 +1,45 @@
-name: Test Org Membership
+name: Survey on Merged PR by Non-Member
 
 on:
-  workflow_dispatch:
-    inputs:
-      username:
-        description: "GitHub username to check"
-        required: true
-        type: string
-      org:
-        description: "GitHub organization name"
-        required: true
-        type: string
+  pull_request:
+    types: [closed]
 
 jobs:
-  test-membership:
+  comment-on-pr:
     runs-on: ubuntu-latest
-
+    if: github.event.pull_request.merged == true
     steps:
-      - name: Install GitHub CLI
-        run: sudo apt-get install gh -y
+      - name: Check if PR author is a member of the org
+        id: check-membership
+        run: |
+          PR_AUTHOR=$(jq -r '.pull_request.user.login' "$GITHUB_EVENT_PATH")
+          ORG_NAME="${{ github.repository_owner }}"
+          ORG_MEMBERS=$(gh api "orgs/$ORG_NAME/members" --jq '.[].login')
+          echo "PR_AUTHOR=${PR_AUTHOR}" >> $GITHUB_ENV
+          echo "MEMBER_FOUND=false" >> $GITHUB_ENV
+          for MEMBER in $ORG_MEMBERS; do
+            if [[ "$PR_AUTHOR" == "$MEMBER" ]]; then
+              echo "MEMBER_FOUND=true" >> $GITHUB_ENV
+              break
+            fi
+          done
 
       - name: Check if user is a member of the org
         id: check-membership
         run: |
-          USERNAME="${{ inputs.username }}"
-          ORG="${{ inputs.org }}"
-          STATUS=$(gh api "orgs/$ORG/members/$USERNAME" -q '.login' || true)
-          
-          if [[ "$STATUS" == "$USERNAME" ]]; then
+          USERNAME=$(jq -r '.pull_request.user.login' "$GITHUB_EVENT_PATH")
+          ORG="${{ github.repository_owner }}"
+          STATUS=$(gh api "orgs/$ORG/members/$USERNAME" --silent && echo "true" || echo "false")
+          if [[ "$STATUS" == "true" ]]; then
             echo "MEMBER_FOUND=true" >> $GITHUB_ENV
           else
             echo "MEMBER_FOUND=false" >> $GITHUB_ENV
           fi
+        env:
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
-      - name: Comment on the check result
+      - name: Add comment to PR if author is not a member
+        if: env.MEMBER_FOUND == 'false'
         run: |
-          if [[ "$MEMBER_FOUND" == "true" ]]; then
-            echo "✅ $USERNAME is a member of the $ORG organization."
-          else
-            echo "❌ $USERNAME is NOT a member of the $ORG organization."
-          fi
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          gh pr comment $PR_NUMBER --body "Thank you for your contribution! 🎉 We would like to hear from you about your experience contributing to OpenTelemetry by filling out this survey: https://forms.gle/WV58koUBGSG9HBY66"
