@@ -1,3 +1,4 @@
+# cSpell:ignore cakephp
 title: OpenTelemetry CakePHP instrumentation library
 registryType: instrumentation
 language: php
