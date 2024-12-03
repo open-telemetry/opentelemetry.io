@@ -1,7 +1,7 @@
 ---
 title: Collecting OpenTelemetry-compliant Java logs from files
 linkTitle: OTel-compliant Java logs from files
-date:
+date: 2024-12-03
 author: >
   [Cyrille Le Clerc](https://github.com/cyrille-leclerc) (Grafana Labs), [Gregor
   Zeitlinger](https://github.com/zeitlinger) (Grafana Labs)
@@ -205,11 +205,7 @@ OTLP/JSON format, with a JSON object per line. The log records are nested in the
 
 ## Configure the Collector to ingest the OTLP/JSON logs
 
-![OpenTelemetry Collector OTLP/JSON pipeline](otel-collector-otlpjson-pipeline.png)
-
-You can also
-[view OTel Collector pipeline](https://www.otelbin.io/s/69739d790cf279c203fc8efc86ad1a876a2fc01a)
-with OTelBin.
+{{< figure class="figure" src="otel-collector-otlpjson-pipeline.png" attr="View OTel Collector pipeline with OTelBin" attrlink="https://www.otelbin.io/s/69739d790cf279c203fc8efc86ad1a876a2fc01a" >}}
 
 ```yaml
 # tested with otelcol-contrib v0.112.0
