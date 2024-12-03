@@ -1,0 +1,42 @@
+name: Test Org Membership
+
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        description: "GitHub username to check"
+        required: true
+        type: string
+      org:
+        description: "GitHub organization name"
+        required: true
+        type: string
+
+jobs:
+  test-membership:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install GitHub CLI
+        run: sudo apt-get install gh -y
+
+      - name: Check if user is a member of the org
+        id: check-membership
+        run: |
+          USERNAME="${{ inputs.username }}"
+          ORG="${{ inputs.org }}"
+          STATUS=$(gh api "orgs/$ORG/members/$USERNAME" -q '.login' || true)
+          
+          if [[ "$STATUS" == "$USERNAME" ]]; then
+            echo "MEMBER_FOUND=true" >> $GITHUB_ENV
+          else
+            echo "MEMBER_FOUND=false" >> $GITHUB_ENV
+          fi
+
+      - name: Comment on the check result
+        run: |
+          if [[ "$MEMBER_FOUND" == "true" ]]; then
+            echo "✅ $USERNAME is a member of the $ORG organization."
+          else
+            echo "❌ $USERNAME is NOT a member of the $ORG organization."
+          fi
