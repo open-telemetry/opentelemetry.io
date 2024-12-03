@@ -25,9 +25,9 @@ jobs:
         run: |
           USERNAME="${{ inputs.username }}"
           ORG="${{ inputs.org }}"
-          STATUS=$(gh api "orgs/$ORG/members/$USERNAME" -q '.login' || true)
+          STATUS=$(gh api "orgs/$ORG/members/$USERNAME" --silent && echo "true" || echo "false")
           
-          if [[ "$STATUS" == "$USERNAME" ]]; then
+          if [[ "$STATUS" == "true" ]]; then
             echo "MEMBER_FOUND=true" >> $GITHUB_ENV
           else
             echo "MEMBER_FOUND=false" >> $GITHUB_ENV
