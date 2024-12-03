@@ -2339,6 +2339,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-30T17:38:37.903633988Z"
   },
+  "https://docs.astral.sh/uv/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-21T10:24:48.633652602+01:00"
+  },
   "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-system-attributes": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:53:50.0122-05:00"
@@ -11527,6 +11531,26 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:07:49.734386-05:00"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/collector/confmap/provider/envprovider": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-19T13:34:41.905691-05:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/collector/confmap/provider/fileprovider": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-19T13:34:42.093539-05:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/collector/confmap/provider/httpprovider": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-19T13:34:42.280695-05:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/collector/confmap/provider/httpsprovider": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-19T13:34:42.965663-05:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/collector/confmap/provider/yamlprovider": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-19T13:34:43.403526-05:00"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/collector/exporter/debugexporter": {
     "StatusCode": 200,
     "LastSeen": "2024-03-01T16:49:31.744795+01:00"
@@ -12050,6 +12074,10 @@
   "https://research.facebook.com/file/877841159827226/holistic-configuration-management-at-facebook.pdf": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:14:42.741857-05:00"
+  },
+  "https://rizhiyi.com/lunaxee/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-21T17:49:04.913463719+08:00"
   },
   "https://roadrunner.dev/": {
     "StatusCode": 200,
@@ -13118,6 +13146,10 @@
   "https://wukongdoc.tingyun.com/apm/userguide/deploy_manage/opentelemetry.html": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:14:59.93877-05:00"
+  },
+  "https://www.alauda.io/community/143237": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-28T11:47:57.828593+01:00"
   },
   "https://www.alibabacloud.com/": {
     "StatusCode": 200,
@@ -14346,6 +14378,10 @@
   "https://www.php.net/manual/en/opcache.preloading.php": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:56:36.773243-05:00"
+  },
+  "https://www.php.net/supported-versions.php": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-28T12:19:39.104666932Z"
   },
   "https://www.postgresql.org/docs/current/errcodes-appendix.html": {
     "StatusCode": 200,

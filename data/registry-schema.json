@@ -23,6 +23,7 @@
         "instrumentation",
         "log-bridge",
         "processor",
+        "provider",
         "receiver",
         "resource-detector",
         "utilities"

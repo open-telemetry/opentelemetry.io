@@ -414,6 +414,12 @@
   contact: https://github.com/adnanrahic
   oss: true
   commercial: true
+- name: Alauda
+  nativeOTLP: true
+  url: https://www.alauda.io/community/143237
+  contact: info@alauda.io
+  oss: false
+  commercial: true
 - name: Alibaba Cloud
   nativeOTLP: true
   url: https://www.alibabacloud.com/help/en/arms/tracing-analysis/get-started-with-tracing-analysis
@@ -449,5 +455,11 @@
   nativeOTLP: true
   url: 'https://docs.groundcover.com/integrations/data-sources/opentelemetry/traces-and-logs'
   contact: 'hello@groundcover.com'
+  oss: false
+  commercial: true
+- name: rizhiyi lunaxee by Yottabyte
+  nativeOTLP: true
+  url: https://rizhiyi.com/lunaxee/
+  contact: contact@rizhiyi.cn
   oss: false
   commercial: true

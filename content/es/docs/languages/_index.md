@@ -29,10 +29,9 @@ el siguiente:
 {{% alert title="Importante" color="warning" %}}
 
 Independientemente del estado de un API/SDK, si tu instrumentación depende de
-[convenciones semánticas] que estén marcadas como [Experimental] en la [especificación
-de
-convenciones semánticas], tu flujo de datos podría estar sujeto a **cambios
-importantes**.
+[convenciones semánticas] que estén marcadas como [Experimental] en la
+[especificación de convenciones semánticas], tu flujo de datos podría estar
+sujeto a **cambios importantes**.
 
 [convenciones semánticas]: /docs/concepts/semantic-conventions/
 [Experimental]: /docs/specs/otel/document-status/
