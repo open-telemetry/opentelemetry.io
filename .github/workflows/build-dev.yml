@@ -1,4 +1,4 @@
-name: Test Org Membership
+name: Build Dev
 
 on:
   workflow_dispatch:
@@ -33,7 +33,7 @@ jobs:
             echo "MEMBER_FOUND=false" >> $GITHUB_ENV
           fi
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
       - name: Comment on the check result
         run: |
