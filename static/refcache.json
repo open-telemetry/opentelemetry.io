@@ -10615,13 +10615,25 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:02:21.246316-04:00"
   },
+  "https://packagist.org/packages/open-telemetry/opentelemetry-auto-cakephp": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-03T11:06:06.86216+01:00"
+  },
   "https://packagist.org/packages/open-telemetry/opentelemetry-auto-codeigniter": {
     "StatusCode": 200,
     "LastSeen": "2024-01-19T13:15:35.481102+01:00"
   },
+  "https://packagist.org/packages/open-telemetry/opentelemetry-auto-curl": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-03T10:13:27.914323+01:00"
+  },
   "https://packagist.org/packages/open-telemetry/opentelemetry-auto-ext-amqp": {
     "StatusCode": 200,
     "LastSeen": "2024-01-19T13:15:35.677617+01:00"
+  },
+  "https://packagist.org/packages/open-telemetry/opentelemetry-auto-ext-rdkafka": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-03T10:13:28.648777+01:00"
   },
   "https://packagist.org/packages/open-telemetry/opentelemetry-auto-guzzle": {
     "StatusCode": 200,
@@ -10670,6 +10682,10 @@
   "https://packagist.org/packages/open-telemetry/opentelemetry-auto-psr3": {
     "StatusCode": 200,
     "LastSeen": "2024-01-19T13:15:37.331332+01:00"
+  },
+  "https://packagist.org/packages/open-telemetry/opentelemetry-auto-psr6": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-03T10:13:31.800557+01:00"
   },
   "https://packagist.org/packages/open-telemetry/opentelemetry-auto-slim": {
     "StatusCode": 200,
@@ -14490,6 +14506,10 @@
   "https://www.php.net/manual/en/opcache.preloading.php": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:56:36.773243-05:00"
+  },
+  "https://www.php.net/supported-versions.php": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-28T12:19:39.104666932Z"
   },
   "https://www.postgresql.org/docs/current/errcodes-appendix.html": {
     "StatusCode": 200,

@@ -104,6 +104,21 @@ journalctl | grep otelcol | grep Error
 
 {{% /tab %}} {{< /tabpane >}}
 
+The following configuration can be used to emit internal logs from the Collector
+to an OTLP/gRPC backend:
+
+```yaml
+service:
+  telemetry:
+    logs:
+      processors:
+        - batch:
+            exporter:
+              otlp:
+                protocol: grpc/protobuf
+                endpoint: https://backend:4317
+```
+
 ### Configure internal traces
 
 The Collector does not expose traces by default, but it can be configured to.
@@ -141,8 +156,8 @@ Note that the `tracer_provider` section there corresponds to `traces` here.
 The Collector can be configured to push its own telemetry to an
 [OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
 and send the data through configured pipelines. In the following example, the
-Collector is configured to push metrics and traces every 10s using OTLP gRPC to
-`localhost:14317`:
+Collector is configured to push metrics, traces, and logs every 10s using OTLP
+gRPC to `localhost:14317`:
 
 ```yaml
 receivers:
@@ -170,6 +185,13 @@ service:
                 protocol: grpc/protobuf
                 endpoint: http://localhost:14317
     traces:
+      processors:
+        - batch:
+            exporter:
+              otlp:
+                protocol: grpc/protobuf
+                endpoint: http://localhost:14317
+    logs:
       processors:
         - batch:
             exporter:
