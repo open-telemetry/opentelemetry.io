@@ -1,8 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
   const scrollToTopBtn = document.getElementById("scrollToTopBtn");
   const footer = document.querySelector(".td-footer");
-  const scrollLabel = scrollToTopBtn.querySelector(".scroll-label");
+  const scrollLabel = scrollToTopBtn?.querySelector(".scroll-label");
   let hideTimeout;
+
+  // Check if the current page is the homepage
+  if (window.location.pathname === "/") {
+    if (scrollToTopBtn) scrollToTopBtn.style.display = "none";
+    return; // Exit early to prevent further execution on the homepage
+  }
 
   if (!scrollToTopBtn || !footer) return;
 
@@ -40,13 +46,13 @@ document.addEventListener("DOMContentLoaded", function () {
       // Hide the button after 2-3 seconds of inactivity
       hideTimeout = setTimeout(() => {
         scrollToTopBtn.classList.remove("visible");
-      }, 2500); 
+      }, 2500);
     } else {
       scrollToTopBtn.classList.remove("visible");
       scrollToTopBtn.classList.remove("show-label");
     }
 
-    adjustButtonPosition(); 
+    adjustButtonPosition();
   }
 
   scrollToTopBtn.onclick = function () {
