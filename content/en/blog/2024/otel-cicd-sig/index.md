@@ -48,7 +48,7 @@ Since November of 2023, the SIG has been actively working to develop the standar
 
 * An initial set of common attributes across CI/CD systems.
 * Develop prototype(s) to include both holistic and signal-specific attributes.
-* Carry forward the proposal to add environment variables as context propagators to the OpenTelemetry specification (OTEP #258)
+* Carry forward the proposal to add environment variables as context propagators to the OpenTelemetry specification (OTEP #258).
 * A strategy for bridging OpenTelemetry conventions with [CDEvents](https://cdevents.dev/docs/) and [Eiffel](https://eiffel-community.github.io/).
 
 At first, our SIG met during the larger Semantic Conventions Working Group meetings every Monday. This provided a good opportunity for us to get our bearings as we researched and discussed how we would accomplish the goals on our roadmap. This also enabled us to get to know many members of the larger OpenTelemetry community, solicit feedback on our designs, and get direction on how to proceed. The OpenTelemetry Semantic Convention Working Group has been extraordinarily supportive of the CI/CD initiative.
