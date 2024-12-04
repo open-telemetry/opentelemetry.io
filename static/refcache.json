@@ -2987,6 +2987,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:02:23.618857-05:00"
   },
+  "https://docs.nxlog.co/agent/current/im/otel.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-04T08:47:08.501353757Z"
+  },
   "https://docs.observeinc.com/en/latest/content/integrations/otel/opentelemetry.html": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:02.263475-05:00"
