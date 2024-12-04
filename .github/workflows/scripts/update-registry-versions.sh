@@ -82,9 +82,11 @@ for yaml_file in ${FILES}; do
         echo "${yaml_file}: Package name and/or registry are missing in the YAML file."
     else
         # Get latest version
-        latest_version=$(get_latest_version "$name" "$registry")
+        latest_version=$(get_latest_version "$name" "$registry" || echo "Could not fetch version.")
 
-        if [ "$latest_version" == "Registry not supported." ]; then
+        if [ "$latest_version" == "Could not fetch version." ]; then
+            echo "${yaml_file} ($registry): Registry not supported.";
+        elif [ "$latest_version" == "Registry not supported." ]; then
             echo "${yaml_file} ($registry): Registry not supported.";
         elif [ -z "$latest_version" ]; then
             echo "${yaml_file} ($registry): Could not get latest version from registry."
@@ -118,14 +120,22 @@ if [ "$existing_pr_count" -gt 0 ]; then
     exit 0
 fi
 
-$NPM run fix:format
+if [[ -n $(git status --porcelain) ]]; then
+    echo "Versions have been updated, formatting and pushing changes."
 
-$GIT checkout -b "$branch"
-$GIT commit -a -m "$message"
-$GIT push --set-upstream origin "$branch"
+    $NPM run fix:format
 
-body_file=$(mktemp)
-echo -en "${body}" >> "${body_file}"
+    $GIT checkout -b "$branch"
+    $GIT commit -a -m "$message"
+    $GIT push --set-upstream origin "$branch"
 
-echo "Submitting auto-update PR '$message'."
-$GH pr create --title "$message" --body-file "${body_file}"
+    body_file=$(mktemp)
+    echo -en "${body}" >> "${body_file}"
+
+    echo "Submitting auto-update PR '$message'."
+    $GH pr create --title "$message" --body-file "${body_file}"
+
+else
+    echo "No changes detected."
+    exit 0
+fi
