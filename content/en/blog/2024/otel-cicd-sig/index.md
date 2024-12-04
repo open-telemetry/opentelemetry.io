@@ -8,13 +8,13 @@ author: >-
 canonical_url: https://www.cncf.io/blog/2024/11/04/opentelemetry-is-expanding-into-ci-cd-observability/ 
 issue: 5546
 sig: CI/CD Observability 
+cSpell:ignore: horovits liatrio 
 ---
 
 ## OpenTelemetry Is Expanding Into CI/CD Observability
 
-*SIG post by [Dotan Horovits](https://www.linkedin.com/in/horovits/) and [Adriel Perkins](https://www.linkedin.com/in/aqperkins/), Project Leads, SIG CI/CD Observability, OpenTelemetry*
 
-We’ve been talking about the need for a common “language” for reporting and observing CI/CD pipelines for years, and finally, we see the first “words” of this language entering the “dictionary” of observability – the OpenTelemetry open specification. With the recent release of OpenTelemetry’s Semantic Conventions, v1.27.0, you can find [designated attributes for reporting CI/CD pipelines](https://opentelemetry.io/docs/specs/semconv/attributes-registry/cicd/). 
+We’ve been talking about the need for a common “language” for reporting and observing CI/CD pipelines for years, and finally, we see the first “words” of this language entering the “dictionary” of observability—the OpenTelemetry open specification. With the recent release of OpenTelemetry’s Semantic Conventions, v1.27.0, you can find [designated attributes for reporting CI/CD pipelines](https://opentelemetry.io/docs/specs/semconv/attributes-registry/cicd/). 
 
 This is the result of the hard work of the [CI/CD Observability Special Interest Group (SIG) within OpenTelemetry](https://github.com/open-telemetry/community/blob/main/projects/ci-cd.md). As we accomplish the core milestone for the first phase, we thought it’d be a good time to share it with the world.
 
@@ -22,13 +22,13 @@ This is the result of the hard work of the [CI/CD Observability Special Interest
 
 ## Engineers need observability into their CI/CD pipelines 
 
-[CI/CD observability](https://medium.com/@horovits/fcc6c10c4987) is essential for ensuring that software is released to production efficiently and reliably. Well-functioning CI/CD pipelines directly impact business outcomes by shortening [Lead Time for Changes DORA metric](https://horovits.medium.com/improving-devops-performance-with-dora-metrics-918b9604f8e2), and enabling fast identification and resolution of broken or flaky processes. By integrating observability into CI/CD workflows, teams can monitor the health and performance of their pipelines in real-time, gaining insights into bottlenecks and areas that require improvement. 
+[CI/CD observability](https://medium.com/@horovits/fcc6c10c4987) is essential for ensuring that software is released to production efficiently and reliably. Well-functioning CI/CD pipelines directly impact business outcomes by shortening [Lead Time for Changes DORA metrics](https://horovits.medium.com/improving-devops-performance-with-dora-metrics-918b9604f8e2) and enabling fast identification and resolution of broken or flaky processes. By integrating observability into CI/CD workflows, teams can monitor the health and performance of their pipelines in real time, gaining insights into bottlenecks and areas that require improvement. 
 
 Leveraging the same well-established tools used for monitoring production environments, organizations can extend their observability capabilities to include the release cycle, fostering a holistic approach to software delivery. Whether open source or proprietary tools, there’s no need to reinvent the wheel when choosing the observability toolchain for CI/CD pipelines.
 
 ## The need for standardization
 
-However, the diverse landscape of CI/CD tools creates challenges in achieving consistent end-to-end observability. With each tool having its own means, format and semantic conventions for reporting the pipeline execution status, fragmentation within the toolchain can hinder seamless monitoring. Migrating between tools becomes painful, as it requires reimplementing existing dashboards, reports and alerts.
+However, the diverse landscape of CI/CD tools creates challenges in achieving consistent end-to-end observability. With each tool having its own means, format, and semantic conventions for reporting the pipeline execution status, fragmentation within the toolchain can hinder seamless monitoring. Migrating between tools becomes painful, as it requires reimplementing existing dashboards, reports, and alerts.
 
 Things become even more challenging, when needing to monitor multiple tools involved in the release pipeline in a uniform manner. This is where [open standards and specifications become critical](https://horovits.medium.com/the-rise-of-open-standards-in-observability-highlights-from-kubecon-13694e732c97). They create a common uniform language, one which is tool- and vendor-agnostic, enabling cohesive observability across different tools and allowing teams to maintain a clear and comprehensive view of their CI/CD pipeline performance.
 
@@ -44,26 +44,26 @@ With the feedback from the Technical Oversight Committee and others within the C
 
 ## OpenTelemetry’s CI/CD Observability SIG
 
-Since November of 2023, the SIG has been actively working to develop the standard for semantics around CI/CD observability in collaboration with experts from multiple companies and Open-Source projects. At its inception, we decided to focus on a few key areas for 2024:
+Since November of 2023, the SIG has been actively working to develop the standard for semantics around CI/CD observability in collaboration with experts from multiple companies and open source projects. At its inception, we decided to focus on a few key areas for 2024:
 
-* An initial set of common attributes across CI/CD Systems.
-* Develop prototype(s) to include both holistic and signal specific attributes.
+* An initial set of common attributes across CI/CD systems.
+* Develop prototype(s) to include both holistic and signal-specific attributes.
 * Carry forward the proposal to add environment variables as context propagators to the OpenTelemetry specification (OTEP #258)
 * A strategy for bridging OpenTelemetry conventions with [CDEvents](https://cdevents.dev/docs/) and [Eiffel](https://eiffel-community.github.io/).
 
 At first, our SIG met during the larger Semantic Conventions Working Group meetings every Monday. This provided a good opportunity for us to get our bearings as we researched and discussed how we would accomplish the goals on our roadmap. This also enabled us to get to know many members of the larger OpenTelemetry community, solicit feedback on our designs, and get direction on how to proceed. The OpenTelemetry Semantic Convention Working Group has been extraordinarily supportive of the CI/CD initiative.
 
-Upon completion and release of its initial milestone (see below), our SIG was granted its own [dedicated meeting slot](https://github.com/open-telemetry/community/pull/2293) on the [OpenTelemetry calendar](https://github.com/open-telemetry/community?tab=readme-ov-file#calendar), every Thursday at 0600 PT. The group gets together here to discuss current and future work prior to bringing to the larger Semantic Conventions meetings on Monday. We greatly look forward to the continued support and participation of the community as we continue to drive forward this critical area of standardization.
+Upon completion and release of its initial milestone (see below), our SIG was granted its own [dedicated meeting slot](https://github.com/open-telemetry/community/pull/2293) on the [OpenTelemetry calendar](https://github.com/open-telemetry/community#calendar), every Thursday at 0600 PT. The group gets together here to discuss current and future work prior to bringing to the larger Semantic Conventions meetings on Monday. We greatly look forward to the continued support and participation of the community as we continue to drive forward this critical area of standardization.
 
-## CI/CD Is part of the latest OpenTelemetry Semantic Conventions
+## CI/CD is part of the latest OpenTelemetry Semantic Conventions
 
 Over the course of months of iteration and feedback, the [first set of Semantic Conventions was merged](https://github.com/open-telemetry/semantic-conventions/pull/1075) in for the v1.27.0 release. This change brought forth the first set of foundational semantics for CI/CD under the `CICD`, `artifacts`, `VCS`, `test`, and `deployment` namespaces. This was a significant milestone for the CI/CD Observability SIG and industry as a whole. This creates the foundation for which all of our group’s other goals can begin to take form, and reach implementation.
 
-But what does that actually mean? What value does it provide? Let’s consider real world examples for two of the namespaces
+But what does that actually mean? What value does it provide? Let’s consider real world examples for two of the namespaces.
 
 ### Tracking release revisions from Version Control Systems (VCS)
 
-[Version Control System (VCS) attributes](https://opentelemetry.io/docs/specs/semconv/attributes-registry/vcs/) cover multiple areas common in a VCS like refs and changes (pull/merge requests). The `vcs.repository.ref.revision` attribute is a key piece of metadata. As Version Control Systems like GitHub and GitLab emit events, they can now have this semantically compliant attribute. That means when integrating code, releasing it, and deploying it to environments, systems can include this attribute and trace the code revision across bounds more easily. In the event a deployment fails, you can quickly look at the revision of code and track it back to the buggy release. This attribute is actually a key piece of metadata for [DORA metrics](https://dora.dev/guides/dora-metrics-four-keys/) too as you calculate Change lead time and Failed deployment recovery time.
+[Version Control System (VCS) attributes](https://opentelemetry.io/docs/specs/semconv/attributes-registry/vcs/) cover multiple areas common in a VCS like refs and changes (pull/merge requests). The `vcs.repository.ref.revision` attribute is a key piece of metadata. As Version Control Systems like GitHub and GitLab emit events, they can now have this semantically compliant attribute. That means when integrating code, releasing it, and deploying it to environments, systems can include this attribute and trace the code revision across bounds more easily. In the event a deployment fails, you can quickly look at the revision of code and track it back to the buggy release. This attribute is actually a key piece of metadata for [DORA metrics](https://dora.dev/guides/dora-metrics-four-keys/) too, as you calculate Change lead time and Failed deployment recovery time.
 
 ### Artifacts for supply chain security, aligned with the SLSA specification
 
@@ -72,7 +72,7 @@ The [artifact attribute namespace](https://opentelemetry.io/docs/specs/semconv/a
 
 These new attributes for artifacts and attestations help observe the sequence of events modeled in the above diagram in real time. Really, the conventions that exist today and those that will be added in the future enable interoperability between core software delivery capabilities like security and platform engineering via observability semantics.
 
-## What’s Next for CI/CD Observability Working Group
+## What’s next for CI/CD Observability Working Group
 
 The first major milestone we shared above, was the merge of the OTEP for extending the semantic conventions with the new attributes, which is now part of the OpenTelemetry Semantic Conventions latest release.
 
@@ -81,19 +81,19 @@ The other important milestone was [OTEP #258](https://github.com/open-telemetry/
 Since we’ve made progress on our initial milestones, we’ve updated the [CI/CD Observability SIG milestones for the remainder of 2024](https://github.com/open-telemetry/community/blob/main/projects/ci-cd.md). Our goal is to finish out as many of the defined milestones as possible by the end of the year. Notably, we’re focused on: 
 
 * Adding [metric conventions for version control systems](https://github.com/open-telemetry/semantic-conventions/pull/1383).
-* Building tracing prototypes in CICD systems. (eg. ArgoCD, GitHub, GitLab, Jenkins)
+* Building tracing prototypes in CICD systems (for example, ArgoCD, GitHub, GitLab, Jenkins).
 * Getting [OTEP #258](https://github.com/open-telemetry/oteps/pull/258) ready for implementation for the addition to the specification.
 * Adding additional attributes to the registry covering more domains like:
   * [Software outage incidents](https://github.com/open-telemetry/semantic-conventions/issues/1185)
   * [System attributes around CI/CD runners](https://github.com/open-telemetry/semantic-conventions/issues/1184)
 * Beginning work on Trace and Event (log) signal specifics. (Building the bridge for interoperability between other specifications)
 * Adopting the changes from the [Entity and Resource OTEP](https://github.com/open-telemetry/oteps/pull/264).
-* [Enabling vendor specific extension(s)](https://github.com/open-telemetry/semantic-conventions/issues/1193).
-* Open-source community reachout strategy for semantic adoption.
+* [Enabling vendor-specific extension(s)](https://github.com/open-telemetry/semantic-conventions/issues/1193).
+* Open source community outreach strategy for semantic adoption.
 
 All that has been mentioned thus far is just the beginning! We have lots of work defined on our [CICD Project Board](https://github.com/orgs/open-telemetry/projects/79), and we have work in progress! We’ll continue to iterate on the above milestones that we’ve set out for the remainder of 2024. Here’s a couple things to look out for.
 
-* Version Control System metrics – leading indicators for DORA.
+* Version Control System metrics—leading indicators for DORA
 * Traces from GitHub Actions and Audit Logs
   * Special thanks to the following people who are making this component possible:
     * Tyler Helmuth – Honeycomb
@@ -142,4 +142,4 @@ That was a lot of names to name! We greatly appreciate everyone who has supporte
 
 Want to learn more? Want to get involved in shaping CI/CD Observability? 
 
-We invite developers and practitioners to participate in the discussions, contribute ideas, and help shape the future of CI/CD observability and the OpenTelemetry semantic conventions. Discussion takes place in the CNCF slack workspace under the #cicd-o11y channel, and you can chime in on GitHub and join the CICD SIG weekly calls every Thursday at 0600 PT. 
+We invite developers and practitioners to participate in the discussions, contribute ideas, and help shape the future of CI/CD observability and the OpenTelemetry semantic conventions. Discussion takes place in the CNCF Slack workspace under the #cicd-o11y channel, and you can chime in on GitHub and join the CICD SIG weekly calls every Thursday at 0600 PT. 
