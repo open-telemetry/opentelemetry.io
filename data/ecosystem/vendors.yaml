@@ -272,7 +272,7 @@
   commercial: true
 - name: OpenText
   nativeOTLP: true
-  url: https://docs.microfocus.com/doc/OBS/SaaS/ConfigureOTELCollector
+  url: https://www.opentext.com/products/core-application-observability
   contact: skotagiri@opentext.com
   oss: false
   commercial: true
