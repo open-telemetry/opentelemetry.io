@@ -18,8 +18,6 @@ We’ve been talking about the need for a common “language” for reporting an
 
 This is the result of the hard work of the [CI/CD Observability Special Interest Group (SIG) within OpenTelemetry](https://github.com/open-telemetry/community/blob/main/projects/ci-cd.md). As we accomplish the core milestone for the first phase, we thought it’d be a good time to share it with the world.
 
-
-
 ## Engineers need observability into their CI/CD pipelines 
 
 [CI/CD observability](https://medium.com/@horovits/fcc6c10c4987) is essential for ensuring that software is released to production efficiently and reliably. Well-functioning CI/CD pipelines directly impact business outcomes by shortening [Lead Time for Changes DORA metrics](https://horovits.medium.com/improving-devops-performance-with-dora-metrics-918b9604f8e2) and enabling fast identification and resolution of broken or flaky processes. By integrating observability into CI/CD workflows, teams can monitor the health and performance of their pipelines in real time, gaining insights into bottlenecks and areas that require improvement. 
