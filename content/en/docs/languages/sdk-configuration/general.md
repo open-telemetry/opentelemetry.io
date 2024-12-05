@@ -133,7 +133,7 @@ Accepted values for `OTEL_PROPAGATORS` are:
 
 ## `OTEL_TRACES_EXPORTER`
 
-Specifies which exporter is used for traces.
+Specifies which exporter is used for traces. Depending on the implementation it may be a comma-separated list.
 
 **Default value:** `"otlp"`
 
@@ -151,7 +151,7 @@ Accepted values for are:
 
 ## `OTEL_METRICS_EXPORTER`
 
-Specifies which exporter is used for metrics.
+Specifies which exporter is used for metrics. Depending on the implementation it may be a comma-separated list.
 
 **Default value:** `"otlp"`
 
@@ -169,7 +169,7 @@ Accepted values for `OTEL_METRICS_EXPORTER` are:
 
 ## `OTEL_LOGS_EXPORTER`
 
-Specifies which exporter is used for logs.
+Specifies which exporter is used for logs. Depending on the implementation it may be a comma-separated list.
 
 **Default value:** `"otlp"`
 
