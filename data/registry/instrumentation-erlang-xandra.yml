@@ -19,3 +19,4 @@ createdAt: 2024-11-18
 package:
   registry: hex
   name: opentelemetry_xandra
+  version: 0.2.0
