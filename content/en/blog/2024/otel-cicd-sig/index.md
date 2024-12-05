@@ -86,7 +86,7 @@ Since we’ve made progress on our initial milestones, we’ve updated the [CI/C
 * Adding additional attributes to the registry covering more domains like:
   * [Software outage incidents](https://github.com/open-telemetry/semantic-conventions/issues/1185)
   * [System attributes around CI/CD runners](https://github.com/open-telemetry/semantic-conventions/issues/1184)
-* Beginning work on Trace and Event (log) signal specifics. (Building the bridge for interoperability between other specifications)
+* Beginning work on trace and event (log) signal specifics to build the bridge for interoperability between other specifications.
 * Adopting the changes from the [Entity and Resource OTEP](https://github.com/open-telemetry/oteps/pull/264).
 * [Enabling vendor-specific extension(s)](https://github.com/open-telemetry/semantic-conventions/issues/1193).
 * Open source community outreach strategy for semantic adoption.
