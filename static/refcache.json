@@ -9391,6 +9391,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-10-09T10:20:06.931205+02:00"
   },
+  "https://learn.microsoft.com/dotnet/aspire/fundamentals/dashboard/standalone": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-05T10:36:06.35615+01:00"
+  },
   "https://learn.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed#query-the-registry-using-code": {
     "StatusCode": 200,
     "LastSeen": "2024-12-04T08:46:58.531297473Z"
@@ -10210,6 +10214,10 @@
   "https://openid.net/specs/openid-connect-core-1_0.html#IDToken": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:08:05.648675-05:00"
+  },
+  "https://openlit.io/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-05T10:36:14.926178+01:00"
   },
   "https://openmetrics.io/": {
     "StatusCode": 206,
@@ -12007,6 +12015,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-08-09T11:02:26.926617-04:00"
   },
+  "https://pypi.org/project/openai/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-05T10:36:04.457935+01:00"
+  },
   "https://pypi.org/project/opentelemetry-api/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:01:19.327156-05:00"
@@ -13559,6 +13571,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-08-09T10:46:30.160571-04:00"
   },
+  "https://www.google.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-05T10:36:10.643508+01:00"
+  },
   "https://www.graalvm.org/latest/reference-manual/native-image/": {
     "StatusCode": 206,
     "LastSeen": "2024-09-30T11:46:04.441837921+02:00"
@@ -13606,6 +13622,10 @@
   "https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#table-tls-parameters-4": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:04.543149-05:00"
+  },
+  "https://www.ibm.com": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-05T10:36:11.479738+01:00"
   },
   "https://www.ibm.com/docs/api/v1/content/SSYKE2_8.0.0/openj9/api/jdk8/jre/management/extension/com/ibm/lang/management/OperatingSystemMXBean.html": {
     "StatusCode": 206,
@@ -13718,6 +13738,10 @@
   "https://www.jaegertracing.io/docs/1.60/monitoring/#traces": {
     "StatusCode": 206,
     "LastSeen": "2024-08-09T09:42:46.824519+02:00"
+  },
+  "https://www.jaegertracing.io/docs/1.63/getting-started/#all-in-one": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-05T10:36:07.90645+01:00"
   },
   "https://www.jaegertracing.io/docs/latest/apis/": {
     "StatusCode": 206,
@@ -14010,6 +14034,10 @@
   "https://www.krakend.io/docs/telemetry/opentelemetry/": {
     "StatusCode": 206,
     "LastSeen": "2024-04-19T07:13:43.941227206Z"
+  },
+  "https://www.langtrace.ai/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-05T10:36:13.494149+01:00"
   },
   "https://www.linuxfoundation.org/legal/privacy-policy": {
     "StatusCode": 200,
@@ -14619,6 +14647,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T15:25:04.905602-05:00"
   },
+  "https://www.scorecard.io/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-05T10:36:16.128367+01:00"
+  },
   "https://www.selenium.dev/documentation/grid/advanced_features/observability/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:05:03.991313-05:00"
@@ -14706,6 +14738,10 @@
   "https://www.traceloop.com": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T05:18:08.486678-05:00"
+  },
+  "https://www.traceloop.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-05T10:36:17.176601+01:00"
   },
   "https://www.typescriptlang.org/download": {
     "StatusCode": 206,
