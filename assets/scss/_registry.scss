@@ -40,7 +40,6 @@
   @extend .shadow;
 }
 
-// Optimize styles and responsiveness for dark and light mode, see https://getbootstrap.com/docs/5.3/customize/color-modes/
 #searchForm .btn.btn-outline-success,
 .btn-outline-danger,
 .btn-outline-secondary {
@@ -49,21 +48,17 @@
   }
 }
 
-$color-mode-type: data;
-// Define dark mode colors for data container
-@use 'variables_project' as *;
-
 @include color-mode(dark) {
   @media (prefers-color-scheme: dark) {
     .border-default {
-      border-color: $dark-border-color;
+      border-color: #a3a3a3;
     }
     .card.registry-entry {
       box-shadow: $box-shadow-large !important;
     }
     .card.registry-entry,
     .list-group > .list-group-item {
-      background-color: $dark-background;
+      background-color: #262d2c;
     }
   }
 }
