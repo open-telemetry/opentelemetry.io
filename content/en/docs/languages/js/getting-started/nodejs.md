@@ -89,7 +89,7 @@ app.get('/rolldice', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Listening for requests on http://localhost:${PORT}`);
-});
+}); 
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
@@ -251,8 +251,10 @@ Open <http://localhost:8080/rolldice> in your web browser and reload the page a
 few times. After a while you should see the spans printed in the console by the
 `ConsoleSpanExporter`.
 
-<details>
-<summary>View example output</summary>
+<!-- <details>
+<summary>View example output</summary> -->
+
+{{% preview-fade %}}
 
 ```json
 {
@@ -333,15 +335,19 @@ few times. After a while you should see the spans printed in the console by the
 }
 ```
 
-</details>
+{{% /preview-fade %}}
+
+<!-- </details> -->
 
 The generated span tracks the lifetime of a request to the `/rolldice` route.
 
 Send a few more requests to the endpoint. After a moment, you'll see metrics in
 the console output, such as the following:
 
-<details>
-<summary>View example output</summary>
+<!-- <details>
+<summary>View example output</summary> -->
+
+{{% preview-fade %}}
 
 ```yaml
 {
@@ -466,7 +472,9 @@ the console output, such as the following:
 }
 ```
 
-</details>
+{{% /preview-fade %}}
+
+<!-- </details> -->
 
 ## Next Steps
 
