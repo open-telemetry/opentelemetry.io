@@ -24,7 +24,7 @@
   url: https://www.deliveryhero.com/
   components: [Collector, Go, Java]
   reference: ''
-  contact: 'https://github.com/ekovalenk0'
+  contact: https://github.com/ekovalenk0
 - name: Dropbox DocSend
   url: https://www.docsend.com/
   components: [Ruby]
