@@ -16,7 +16,7 @@ cascade:
     otelEcto: 1.2
 ---
 
-{{% docs/languages/index-intro erlang %}}
+{{% docs/languages/index-intro erlang en %}}
 
 Packages of the API, SDK and OTLP exporter are published to
 [`hex.pm`](https://hex.pm) as
