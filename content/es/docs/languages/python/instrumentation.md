@@ -9,7 +9,7 @@ default_lang_commit: 9b53527853049b249f60f12a000c0d85b9e5f5dc
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% docs/languages/instrumentation-intro %}}
+{{% es/docs/languages/instrumentation-intro %}}
 
 ## Configuración
 
