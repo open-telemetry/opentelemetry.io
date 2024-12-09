@@ -43,11 +43,10 @@ service:
                 port: 8888
 ```
 
-Alternatively, the Collector can push its internal metrics via
-to an OTLP backend via the following configuration:
+Alternatively, the Collector can push its internal metrics via to an OTLP
+backend via the following configuration:
 
 ```yaml
-
 service:
   telemetry:
     metrics:
