@@ -8,8 +8,8 @@ cSpell:ignore: myhost pcarter uuidgen
 
 ## Setup
 
-Follow the instructions in the [Getting Started][], so that you have a running .NET
-app exporting data to the console.
+Follow the instructions in the [Getting Started][], so that you have a running
+.NET app exporting data to the console.
 
 ## Adding resources with environment variables
 

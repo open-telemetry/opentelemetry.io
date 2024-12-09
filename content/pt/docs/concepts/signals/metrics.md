@@ -2,7 +2,7 @@
 title: Métricas
 weight: 2
 description: Uma medição capturada em tempo de execução.
-default_lang_commit: 3446c7ce49a17975b012c302bdd1c89d4902267c
+default_lang_commit: eb19d1dd5ab2f66343ec76adbfb31f81024da3a1
 ---
 
 Uma métrica é uma medição de um serviço capturada em tempo de execução. O
@@ -72,6 +72,9 @@ O tipo de instrumento deve ser um dos seguintes:
   tamanho da fila).
 - **Gauge**: Mede o valor atual no momento da leitura. Um exemplo seria um
   medidor de tanque de combustível de um veículo. Gauges são assíncronos.
+- **Asynchronous Gauge**: Assim como o **Gauge**, porém é coletado uma vez a
+  cada exportação. Pode ser usado em casos onde você não tenha acesso às
+  mudanças contínuas, mas apenas ao valor agregado.
 - **Histogram**: Uma agregação de valores, tal como latências de requisições. Um
   histograma é uma boa escolha se você está interessado em valores de
   estatísticas. Por exemplo: Quantas requisições estão levando menos de 1s?

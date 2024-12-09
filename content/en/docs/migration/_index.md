@@ -7,9 +7,9 @@ weight: 950
 ## OpenTracing and OpenCensus
 
 OpenTelemetry was created as a merger of OpenTracing and OpenCensus. From the
-start, OpenTelemetry was considered [to be the next major version of
-both OpenTracing and OpenCensus][]. Because of that, one of the [key goals][] of
-the OpenTelemetry project is to provide backward compatibility with both projects
+start, OpenTelemetry was considered [to be the next major version of both
+OpenTracing and OpenCensus][]. Because of that, one of the [key goals][] of the
+OpenTelemetry project is to provide backward compatibility with both projects
 and a migration story for existing users.
 
 If you come from one of these projects, you can follow the migration guides for

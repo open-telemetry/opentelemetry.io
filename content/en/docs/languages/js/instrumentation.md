@@ -115,7 +115,7 @@ add the following code to it:
 
 ```ts
 /*app.ts*/
-import express, { Request, Express } from 'express';
+import express, { Express } from 'express';
 import { rollTheDice } from './dice';
 
 const PORT: number = parseInt(process.env.PORT || '8080');
