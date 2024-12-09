@@ -1,0 +1,14 @@
+{
+    "require": {
+        "slim/slim": "4.14",
+        "slim/psr7": "^1.7",
+        "nyholm/psr7": "^1.8",
+        "nyholm/psr7-server": "^1.1",
+        "laminas/laminas-diactoros": "^3.5",
+        "open-telemetry/sdk": "^1.1",
+        "open-telemetry/opentelemetry-auto-slim": "^1.0",
+        "open-telemetry/opentelemetry-auto-psr18": "^1.0",
+        "open-telemetry/exporter-otlp": "^1.1",
+        "open-telemetry/transport-grpc": "^1.1"
+    }
+}
