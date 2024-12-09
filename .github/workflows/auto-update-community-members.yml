@@ -1,0 +1,41 @@
+name: Auto-update community members page
+
+on:
+  workflow_dispatch:
+  schedule:
+    # At 03:41, every day
+    - cron: 41 3 * * *
+
+jobs:
+  auto-update-versions:
+    name: Auto-update community members page
+    runs-on: ubuntu-24.04
+    # Remove the if statement below when testing againt a fork
+    # if: github.repository == 'open-telemetry/opentelemetry.io'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        working-directory: ./scripts/generate-community-data
+        run: npm install
+
+      - name: Run script
+        working-directory: ./scripts/generate-community-data
+        run: node generate.js ../../data/community/members.yaml
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          add-paths: 'data/community/members.yaml'
+          committer: opentelemetrybot <107717825+opentelemetrybot@users.noreply.github.com>
+          token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          branch: update-community-members
+          title: Update community members
+          body: |
+            This pull request contains automated updates to files by the GitHub Action.
