@@ -35,7 +35,9 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           add-paths: 'data/community/members.yaml'
-          committer: opentelemetrybot <107717825+opentelemetrybot@users.noreply.github.com>
+          committer:
+            opentelemetrybot
+            <107717825+opentelemetrybot@users.noreply.github.com>
           token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
           branch: update-community-members
           title: Update community members
