@@ -7459,6 +7459,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:26.46768-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/pull/4183": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-20T10:58:53.525737396Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/pull/4197": {
     "StatusCode": 200,
     "LastSeen": "2024-10-24T15:10:29.718998+02:00"
@@ -10359,6 +10363,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-08-02T14:12:40.876027062Z"
   },
+  "https://opentelemetry.io/community/#develop-and-contribute": {
+    "StatusCode": 206,
+    "LastSeen": "2024-11-23T12:10:56.007141324Z"
+  },
   "https://opentelemetry.io/community/end-user/": {
     "StatusCode": 206,
     "LastSeen": "2024-06-12T10:03:19.48038-07:00"
@@ -11867,6 +11875,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-02T13:14:36.816743-04:00"
   },
+  "https://pkg.go.dev/v.io/v23/glob": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-20T10:59:02.306122595Z"
+  },
   "https://pkgs.alpinelinux.org/packages": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:07:29.294901-05:00"
@@ -12139,6 +12151,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-11-10T17:00:51.60396563Z"
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.45.0-alpha/opentelemetry-bom-alpha-1.45.0-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-07T00:15:11.593236524Z"
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.42.1/opentelemetry-bom-1.42.1.pom": {
     "StatusCode": 206,
     "LastSeen": "2024-10-23T20:20:05.242921-05:00"
@@ -12154,6 +12170,10 @@
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.44.1/opentelemetry-bom-1.44.1.pom": {
     "StatusCode": 206,
     "LastSeen": "2024-11-10T17:00:49.274766415Z"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.45.0/opentelemetry-bom-1.45.0.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-07T00:15:09.752803166Z"
   },
   "https://research.facebook.com/file/877841159827226/holistic-configuration-management-at-facebook.pdf": {
     "StatusCode": 206,
@@ -14470,6 +14490,14 @@
   "https://www.otelbin.io/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:44.039011-05:00"
+  },
+  "https://www.otelbin.io/favicon.ico": {
+    "StatusCode": 206,
+    "LastSeen": "2024-11-20T10:59:00.492890749Z"
+  },
+  "https://www.otelbin.io/s/69739d790cf279c203fc8efc86ad1a876a2fc01a": {
+    "StatusCode": 200,
+    "LastSeen": "2024-11-20T10:58:58.366517284Z"
   },
   "https://www.outreachy.org/": {
     "StatusCode": 200,
