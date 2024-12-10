@@ -25,7 +25,24 @@ You can configure how internal metrics are generated and exposed by the
 Collector. By default, the Collector generates basic metrics about itself and
 exposes them using the OpenTelemetry Go
 [Prometheus exporter](https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/prometheus)
-for scraping at `http://127.0.0.1:8888/metrics`. You can expose the endpoint to
+for scraping at `http://127.0.0.1:8888/metrics`.
+
+The Collector can push its internal metrics to an OTLP
+backend via the following configuration:
+
+```yaml
+service:
+  telemetry:
+    metrics:
+      readers:
+        - periodic:
+            exporter:
+              otlp:
+                protocol: grpc/protobuf
+                endpoint: http://localhost:14317
+```
+
+Alternatively, you can expose the Prometheus endpoint to
 one specific or all network interfaces when needed. For containerized
 environments, you might want to expose this port on a public interface.
 
@@ -43,20 +60,6 @@ service:
                 port: 8888
 ```
 
-Alternatively, the Collector can push its internal metrics via to an OTLP
-backend via the following configuration:
-
-```yaml
-service:
-  telemetry:
-    metrics:
-      readers:
-        - periodic:
-            exporter:
-              otlp:
-                protocol: grpc/protobuf
-                endpoint: http://localhost:14317
-```
 
 You can adjust the verbosity of the Collector metrics output by setting the
 `level` field to one of the following values:
