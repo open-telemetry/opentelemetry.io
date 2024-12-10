@@ -27,8 +27,8 @@ exposes them using the OpenTelemetry Go
 [Prometheus exporter](https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/prometheus)
 for scraping at `http://127.0.0.1:8888/metrics`.
 
-The Collector can push its internal metrics to an OTLP
-backend via the following configuration:
+The Collector can push its internal metrics to an OTLP backend via the following
+configuration:
 
 ```yaml
 service:
@@ -42,9 +42,9 @@ service:
                 endpoint: http://localhost:14317
 ```
 
-Alternatively, you can expose the Prometheus endpoint to
-one specific or all network interfaces when needed. For containerized
-environments, you might want to expose this port on a public interface.
+Alternatively, you can expose the Prometheus endpoint to one specific or all
+network interfaces when needed. For containerized environments, you might want
+to expose this port on a public interface.
 
 Set the Prometheus config under `service::telemetry::metrics`:
 
@@ -59,7 +59,6 @@ service:
                 host: '0.0.0.0'
                 port: 8888
 ```
-
 
 You can adjust the verbosity of the Collector metrics output by setting the
 `level` field to one of the following values:
