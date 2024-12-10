@@ -11,7 +11,7 @@ jobs:
     name: Auto-update community members page
     runs-on: ubuntu-24.04
     # Remove the if statement below when testing againt a fork
-    # if: github.repository == 'open-telemetry/opentelemetry.io'
+    if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
