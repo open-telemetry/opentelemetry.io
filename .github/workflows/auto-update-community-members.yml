@@ -31,19 +31,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
+      - name: Use CLA approved github bot
+        run: |
+          git config user.name opentelemetrybot
+          git config user.email 107717825+opentelemetrybot@users.noreply.github.com
+
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
         with:
           add-paths: 'data/community/members.yaml'
-          author:
-            opentelemetrybot
-            <107717825+opentelemetrybot@users.noreply.github.com>          
-          committer:
-            opentelemetrybot
-            <107717825+opentelemetrybot@users.noreply.github.com>
+          author: opentelemetrybot <107717825+opentelemetrybot@users.noreply.github.com>          
+          committer: opentelemetrybot <107717825+opentelemetrybot@users.noreply.github.com>
           token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
           branch: opentelemetrybot/update-community-members
           title: Update community members
-          push-to-fork: opentelemetrybot/opentelemetry.io
           body: |
             This pull request contains automated updates to files by the GitHub Action.
