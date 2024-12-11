@@ -4,8 +4,8 @@ aliases:
   - /docs/languages/js/api/tracing
   - manual
 weight: 30
-cSpell:ignore: dicelib Millis rolldice
 description: Instrumentation for OpenTelemetry JavaScript
+cSpell:ignore: dicelib Millis rolldice
 ---
 
 {{% docs/languages/instrumentation-intro %}}

@@ -2,8 +2,8 @@
 title: Exponential Histograms
 date: 2023-05-22
 author: '[Daniel Dyla](https://github.com/dyladan)'
-cSpell:ignore: Ganesh Ruslan subsetting Vernekar Vovalov
 canonical_url: https://dyladan.me/histograms/2023/05/04/exponential-histograms/
+cSpell:ignore: Ganesh Ruslan subsetting Vernekar Vovalov
 ---
 
 Previously, in [Why Histograms?][] and [Histograms vs Summaries][], I went over
