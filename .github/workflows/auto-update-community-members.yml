@@ -42,7 +42,7 @@ jobs:
             opentelemetrybot
             <107717825+opentelemetrybot@users.noreply.github.com>
           token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
-          branch: update-community-members
+          branch: opentelemetrybot/update-community-members
           title: Update community members
           body: |
             This pull request contains automated updates to files by the GitHub Action.
