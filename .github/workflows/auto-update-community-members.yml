@@ -38,6 +38,9 @@ jobs:
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
+        env:
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
         with:
           add-paths: 'data/community/members.yaml'
           author: opentelemetrybot <107717825+opentelemetrybot@users.noreply.github.com>          
