@@ -7,7 +7,7 @@ default_lang_commit: 5e2a0b43c1f9f42824a024206e797cf7041ed9db
 cSpell:ignore: otlplog otlploggrpc otlploghttp otlpmetric otlpmetricgrpc otlpmetrichttp otlptrace otlptracegrpc otlptracehttp promhttp stdoutlog stdouttrace
 ---
 
-{{% docs/languages/exporters/intro go %}}
+{{% pt/docs/languages/exporters/intro go %}}
 
 ## Console
 

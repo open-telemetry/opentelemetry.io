@@ -1,6 +1,6 @@
 # cSpell:ignore confmap, envprovider
 title: Collector Environment Variable Provider
-registryType: confmap provider
+registryType: provider
 language: collector
 tags:
   - go
@@ -19,4 +19,4 @@ createdAt: 2024-11-20
 package:
   registry: go-collector
   name: go.opentelemetry.io/collector/confmap/provider/envprovider
-  version: v1.20.0
+  version: v1.21.0
