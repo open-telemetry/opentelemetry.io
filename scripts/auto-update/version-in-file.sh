@@ -62,15 +62,15 @@ else
   echo
 fi
 
-message="Update $repo version to $latest_version"
-body="Update $repo version to \`$latest_version\`.
+message="Update $repo to $latest_version"
+body="Update $repo to \`$latest_version\`.
 
 See https://github.com/open-telemetry/$repo/releases/tag/$latest_version."
 
-existing_pr_count=$(gh pr list --state all --search "in:title $message" | wc -l)
-if [ "$existing_pr_count" -gt 0 ]; then
+existing_prs=$(gh pr list --state all --search "in:title $message")
+if [ -n "$existing_pr" ]; then
     echo "PR(s) already exist for '$message'"
-    gh pr list --state all --search "\"$message\" in:title"
+    echo "$existing_prs"
     echo "So we won't create another. Exiting."
     exit 0
 fi

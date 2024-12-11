@@ -139,7 +139,7 @@ host) by connecting to `127.0.0.1:4567`. Here is an example `docker run`
 command:
 
 ```shell
-docker run --hostname my-hostname --name container-name -p 127.0.0.1:4567:4317 otel/opentelemetry-collector:{{% param collector_vers %}}
+docker run --hostname my-hostname --name container-name -p 127.0.0.1:4567:4317 otel/opentelemetry-collector:{{% param vers.collector %}}
 ```
 
 #### Docker Compose
@@ -152,7 +152,7 @@ The Docker `compose.yaml` file:
 ```yaml
 services:
   otel-collector:
-    image: otel/opentelemetry-collector-contrib:{{% param collector_vers %}}
+    image: otel/opentelemetry-collector-contrib:{{% param vers.collector %}}
     ports:
       - '4567:4317'
 ```
@@ -193,7 +193,7 @@ spec:
     spec:
       containers:
         - name: collector
-          image: otel/opentelemetry-collector:{{% param collector_vers %}}
+          image: otel/opentelemetry-collector:{{% param vers.collector %}}
           ports:
             - containerPort: 4317
               hostPort: 4317
