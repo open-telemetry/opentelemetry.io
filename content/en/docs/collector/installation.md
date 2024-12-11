@@ -85,10 +85,10 @@ The previous example is meant to serve as a starting point, to be extended and
 customized before actual production usage. For production-ready customization
 and installation, see [OpenTelemetry Helm Charts][].
 
-You can also use the [OpenTelemetry Operator][] to provision and maintain an
-OpenTelemetry Collector instance, with features such as automatic upgrade
-handling, `Service` configuration based on the OpenTelemetry configuration,
-automatic sidecar injection into deployments, and more.
+You can also use the [OpenTelemetry Operator][] to provision and maintain an OpenTelemetry
+Collector instance, with features such as automatic upgrade handling, `Service` configuration
+based on the OpenTelemetry configuration, automatic sidecar injection into deployments,
+and more.
 
 For guidance on how to use the Collector with Kubernetes, see
 [Kubernetes Getting Started](/docs/kubernetes/getting-started/).
