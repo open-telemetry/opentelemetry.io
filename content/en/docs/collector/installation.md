@@ -10,13 +10,14 @@ systems and architectures. The following instructions show how to download and
 install the latest stable version of the Collector.
 
 If you aren't familiar with the deployment models, components, and repositories
-applicable to the OpenTelemetry Collector, first review the [Data Collection][]
-and [Deployment Methods][] page.
+applicable to the OpenTelemetry Collector, first review the [Data Collection][] and
+[Deployment Methods][] page.
 
 ## Docker
 
 The following commands pull a Docker image and run the Collector in a container.
-Replace `{{% param vers.collector %}}` with the version of the Collector you want to run.
+Replace `{{% param vers.collector %}}` with the version of the Collector you
+want to run.
 
 {{< tabpane text=true >}} {{% tab DockerHub %}}
 
