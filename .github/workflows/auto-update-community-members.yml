@@ -44,5 +44,6 @@ jobs:
           token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
           branch: opentelemetrybot/update-community-members
           title: Update community members
+          push-to-fork: opentelemetrybot/opentelemetry.io
           body: |
             This pull request contains automated updates to files by the GitHub Action.
