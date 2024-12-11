@@ -85,8 +85,8 @@ líneas de código.
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**OpenTelemetry es un proyecto [CNCF][] [en incubación][]**.<br> Se formó a partir
-de la fusión de los proyectos OpenTracing y OpenCensus.
+**OpenTelemetry es un proyecto [CNCF][] [en incubación][]**.<br> Se formó a
+partir de la fusión de los proyectos OpenTracing y OpenCensus.
 
 [![CNCF logo][]][cncf]
 

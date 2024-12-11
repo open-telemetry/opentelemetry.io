@@ -350,8 +350,8 @@ Before I wrap this up, I do want to give a HUGE shoutout to
 [Luiz Aoqui](https://www.linkedin.com/in/luizaoqui/) of HashiCorp, who helped me
 tweak my Nomad jobspecs, and to
 [Riaan Nolan](https://www.linkedin.com/in/riaannolan/), for his continued work
-on HashiQube. (Aside, both [Luiz] and [Riaan] were my guests on the [On-Call
-Me Maybe Podcast]!)
+on HashiQube. (Aside, both [Luiz] and [Riaan] were my guests on the [On-Call Me
+Maybe Podcast]!)
 
 I will now leave you with a picture of Phoebe the rat, peering out of a pink
 basket. Doesn’t she look cute? 🥰
