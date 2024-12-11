@@ -1,5 +1,7 @@
 ---
 title: Security
+cascade:
+  collector_vers: 0.115.1
 weight: 970
 ---
 
