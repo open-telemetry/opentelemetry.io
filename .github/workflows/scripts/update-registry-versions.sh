@@ -67,6 +67,9 @@ for yaml_file in ${FILES}; do
                 #curl -s "https://search.maven.org/solrsearch/select?q=g:com.google.inject+AND+a:guice&core=gav&rows=20&wt=json" | jq -r '.response.docs[0].v'
                 curl -s "https://search.maven.org/solrsearch/select?q=g:${groupid}+AND+a:${artifactid}&core=gav&rows=20&wt=json" | jq -r '.response.docs[0].v'
                 ;;
+            crates)
+                curl -s "https://crates.io/api/v1/crates/${package_name}" | jq -r '.crate.max_stable_version'
+                ;;
             *)
                 echo "Registry not supported."
                 ;;
