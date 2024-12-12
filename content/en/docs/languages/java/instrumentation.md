@@ -236,3 +236,11 @@ document.
 Log correlation with traces is available by installing a [shim](#shims) to
 bridge OpenTelemetry context into the log framework. See "Bridge OpenTelemetry
 context into Log4j", "Bridge OpenTelemetry context into Logback" entries.
+
+{{% alert title="Note" color="info" %}}
+
+An end-to-end example of log instrumentation using stdout is available in the
+[Collecting OpenTelemetry-compliant Java logs from files](/blog/2024/collecting-otel-compliant-java-logs-from-files/)
+blog post.
+
+{{% /alert %}}
