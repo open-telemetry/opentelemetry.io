@@ -2,8 +2,8 @@
 title: Histograms vs Summaries
 date: 2023-05-15
 author: '[Daniel Dyla](https://github.com/dyladan)'
-cSpell:ignore: aggregatable Björn Ganesh Kovalov Rabenstein Ruslan Vernekar
 canonical_url: https://dyladan.me/histograms/2023/05/03/histograms-vs-summaries/
+cSpell:ignore: aggregatable Björn Ganesh Kovalov Rabenstein Ruslan Vernekar
 ---
 
 In many ways, histograms and summaries appear quite similar. They both roll up

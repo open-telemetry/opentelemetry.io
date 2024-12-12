@@ -1,7 +1,7 @@
 ---
 title: Other Spring autoconfiguration
-cSpell:ignore: autoconfigurations
 weight: 70
+cSpell:ignore: autoconfigurations
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->

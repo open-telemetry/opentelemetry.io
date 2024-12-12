@@ -2,9 +2,9 @@
 title: Configuration and settings
 linkTitle: Configuration
 aliases: [/docs/languages/net/automatic/config]
+weight: 20
 # prettier-ignore
 cSpell:ignore: AZUREAPPSERVICE Bitness CLSID CORECLR dylib NETFX OPERATINGSYSTEM PROCESSRUNTIME UNHANDLEDEXCEPTION
-weight: 20
 ---
 
 ## Configuration methods

@@ -1,4 +1,6 @@
 #!/usr/bin/perl -w -i
+#
+# cSpell:ignore textlintrc
 
 use strict;
 use warnings;
@@ -6,19 +8,46 @@ use FileHandle;
 
 my @words;
 my $lineLenLimit = 79;
-my $last_file = '';
-my $last_line = '';
+my $current_file = '';
+my $has_front_matter = 0;
+my $in_front_matter = 0;
+my $last_line_contained_dict_words = 0;
 my %dictionary = getSiteWideDictWords('.cspell/en-words.txt', '.textlintrc.yml');
 
 while (<>) {
-  if (/^\s*(spelling: |-\s*)?cSpell:ignore:?\s*(.*)$/
-      || (/^(\s+)(\S.*)$/ && @words)
-  ) {
-    push @words, split /[,\s]+/, $2;
-    next;
+  # Starting a new file?
+  if ($current_file ne $ARGV) {
+    $current_file = $ARGV;
+    if(/^---$/) {
+      $has_front_matter = 1;
+      $in_front_matter = 1;
+      print;
+      next;
+    } else {
+      $has_front_matter = 0;
+      $in_front_matter = 0;
+    }
   }
 
-  if (@words && ($ARGV ne $last_file || eof)) {
+  if ($has_front_matter && !$in_front_matter) {
+    print; next;
+  }
+
+  $in_front_matter = 0 if $has_front_matter && $in_front_matter && /^---$/;
+
+  # Process cSpell words
+
+  if (/^\s*(spelling: |-\s*)?cSpell:ignore:?\s*(.*)$/
+      || (/^(\s+)(\S.*)$/ && $last_line_contained_dict_words)
+  ) {
+    push @words, split /[,\s]+/, $2;
+    $last_line_contained_dict_words = 1;
+    next;
+  } else {
+    $last_line_contained_dict_words = 0;
+  }
+
+  if (@words && (!$has_front_matter || !$in_front_matter)) {
     @words = grep { !/^\s*(cSpell:ignore|spelling):?\s*$/ && !$dictionary{$_} } @words;
     # Ensure all words are unique.
     my %duplicates;
@@ -29,29 +58,27 @@ while (<>) {
       # Only add `# prettier-ignore` if line is too long
       print "# prettier-ignore\n" if length($line) > $lineLenLimit;
       print $line;
+      # print STDOUT "> printing line: $line";
       @words = ();
     }
   }
 
   print unless /^# prettier-ignore$/ || /^spelling:\s*[|>-]*$/;
-
-  $last_line = $_;
-  $last_file = $ARGV if eof;
 }
 
 sub getSiteWideDictWords {
   my $dictionary_file = shift;
   my $textlintrc_file = shift;
 
-  my %dictionary = readYmOrPlainlListOfWords('', $dictionary_file);
-  my %textlintDictionary = readYmOrPlainlListOfWords('terms', $textlintrc_file);
+  my %dictionary = readYmlOrPlainListOfWords('', $dictionary_file);
+  my %textlintDictionary = readYmlOrPlainListOfWords('terms', $textlintrc_file);
   # Merge dictionaries
   @dictionary{keys %textlintDictionary} = values %textlintDictionary;
 
   return %dictionary;
 }
 
-sub readYmOrPlainlListOfWords {
+sub readYmlOrPlainListOfWords {
   # Read plain list of words if $wordsFieldName is empty
   my $wordsFieldName = shift;
   my $file_path = shift;
@@ -76,7 +103,7 @@ sub readYmOrPlainlListOfWords {
       $dictionary{$term} = 1 if $term;
     } elsif ($wordsFieldName && $line !~ /^ / && $in_terms) {
       $in_terms = 0;
-      # print "FINISHE word list\n" if $in_terms;
+      # print "FINISH word list\n" if $in_terms;
     } else {
       # print "OOPS LINE DID NOT MATCH\n" if $in_terms;
     }
