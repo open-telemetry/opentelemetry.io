@@ -363,16 +363,15 @@ processors:
         - 'IsMatch(name, ".*grpc.*")'
     metrics:
       metric:
-          - 'name == "my.metric" and resource.attributes["my_label"] == "abc123"'
-          - 'type == METRIC_DATA_TYPE_HISTOGRAM'
+        - 'name == "my.metric" and resource.attributes["my_label"] == "abc123"'
+        - 'type == METRIC_DATA_TYPE_HISTOGRAM'
       datapoint:
-          - 'metric.type == METRIC_DATA_TYPE_SUMMARY'
-          - 'resource.attributes["service.name"] == "my_service_name"'
+        - 'metric.type == METRIC_DATA_TYPE_SUMMARY'
+        - 'resource.attributes["service.name"] == "my_service_name"'
     logs:
       log_record:
         - 'IsMatch(body, ".*password.*")'
         - 'severity_number < SEVERITY_NUMBER_WARN'
-
 
   # Data sources: traces, metrics, logs
   memory_limiter:
