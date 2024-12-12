@@ -3947,6 +3947,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:11:42.413458+02:00"
   },
+  "https://github.com/CtrlSpice": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-12T21:04:03.332366+01:00"
+  },
+  "https://github.com/CtrlSpice/otel-desktop-viewer": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-12T21:04:02.649222+01:00"
+  },
   "https://github.com/Cyprinus12138": {
     "StatusCode": 200,
     "LastSeen": "2024-03-28T22:25:37.072281206+08:00"
@@ -5491,6 +5499,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:05:03.376611-05:00"
   },
+  "https://github.com/jaronoff97/tails": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-12T21:09:59.474765+01:00"
+  },
   "https://github.com/jaydeluca": {
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:22:00.700062+02:00"
@@ -5979,6 +5991,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-07T15:44:51.574765+02:00"
   },
+  "https://github.com/microsft": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-12T21:04:04.691776+01:00"
+  },
   "https://github.com/microsoft/ApplicationInsights-Java": {
     "StatusCode": 200,
     "LastSeen": "2024-04-19T17:43:49.897716918Z"
@@ -6274,6 +6290,10 @@
   "https://github.com/open-telemetry/community/pull/1431": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:02:13.813584-05:00"
+  },
+  "https://github.com/open-telemetry/community/pull/2427/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-12T12:41:23.581154+01:00"
   },
   "https://github.com/open-telemetry/opamp-go": {
     "StatusCode": 200,
@@ -7559,6 +7579,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-06-06T14:51:54.994687-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/compare/2022.12...2023.11": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-12T12:41:17.513091+01:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/compare/2023.12...2024.11": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-12T12:41:19.57618+01:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/fork": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:47.00387-05:00"
@@ -7595,13 +7623,25 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:26:01.154768-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/pull/5380": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-12T12:41:30.400172+01:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/pull/5386/files": {
     "StatusCode": 200,
     "LastSeen": "2024-11-02T12:26:48.450866-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/pull/5575": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-12T12:41:27.869483+01:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/pulls": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:25.833527-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/releases/tag/2022.12": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-12T12:41:14.802192+01:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/security/policy": {
     "StatusCode": 200,
@@ -7718,6 +7758,10 @@
   "https://github.com/openlit/openlit": {
     "StatusCode": 200,
     "LastSeen": "2024-05-21T06:04:44.356932911Z"
+  },
+  "https://github.com/opentelemetrybot": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-12T12:41:24.59683+01:00"
   },
   "https://github.com/opentracing": {
     "StatusCode": 200,
@@ -8474,6 +8518,14 @@
   "https://github.com/ymotongpoo": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:17:02.743197+02:00"
+  },
+  "https://github.com/ymtdzzz": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-12T21:04:04.407598+01:00"
+  },
+  "https://github.com/ymtdzzz/otel-tui": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-12T21:04:03.94903+01:00"
   },
   "https://github.com/yonch": {
     "StatusCode": 200,
@@ -9434,6 +9486,10 @@
   "https://learn.microsoft.com/en-us/dotnet/api/system.reflection.assembly.getentryassembly": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:24:54.805878-05:00"
+  },
+  "https://learn.microsoft.com/en-us/dotnet/aspire/fundamentals/dashboard/standalone": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-12T21:04:05.120038+01:00"
   },
   "https://learn.microsoft.com/en-us/dotnet/core/deploying/": {
     "StatusCode": 200,
