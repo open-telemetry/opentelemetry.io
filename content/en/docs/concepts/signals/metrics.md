@@ -68,7 +68,7 @@ The instrument kind is one of the following:
   continuous changes, but only to the aggregated value (e.g., current queue
   size).
 - **Gauge**: Measures a current value at the time it is read. An example would
-  be the fuel gauge in a vehicle. Gauges are asynchronous.
+  be the fuel gauge in a vehicle. Gauges are synchronous.
 - **Asynchronous Gauge**: Same as the **Gauge**, but is collected once for each
   export. Could be used if you don't have access to the continuous changes, but
   only to the aggregated value.
