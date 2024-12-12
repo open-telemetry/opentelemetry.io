@@ -401,8 +401,11 @@ Exporters send data to one or more backends or destinations. Exporters can be
 pull or push based, and may support one or more
 [data sources](/docs/concepts/signals/).
 
-The `exporters` section contains exporters configuration. Most exporters require
-configuration to specify at least the destination, as well as security settings,
+Each key within the `exporters` section defines an exporter instance, The key follows the `type/name` format,
+where `type` specifies the exporter type (e.g., `otlp`, `kafka`, `prometheus`), and `name` (optional) can be
+appended to provide a unique name for multiple instance of the same type.
+
+Most exporters require configuration to specify at least the destination, as well as security settings,
 like authentication tokens or TLS certificates. Any setting you specify
 overrides the default values, if present.
 
