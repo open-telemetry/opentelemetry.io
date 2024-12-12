@@ -35,6 +35,9 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           add-paths: 'data/community/members.yaml'
+          author:
+            opentelemetrybot
+            <107717825+opentelemetrybot@users.noreply.github.com>
           committer:
             opentelemetrybot
             <107717825+opentelemetrybot@users.noreply.github.com>
