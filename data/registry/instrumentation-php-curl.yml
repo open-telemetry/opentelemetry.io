@@ -18,6 +18,6 @@ authors:
 createdAt: 2024-11-18
 package:
   registry: packagist
-  name: opentelemetry-auto-curl
-  version: 0.0.1
+  name: open-telemetry/opentelemetry-auto-curl
+  version: 0.0.2
 isFirstParty: false
