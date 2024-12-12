@@ -4443,6 +4443,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-05-24T10:11:32.920051-05:00"
   },
+  "https://github.com/asaharn": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-12T08:46:36.004182576Z"
+  },
   "https://github.com/ashu658": {
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:20:06.94615+02:00"
@@ -5103,6 +5107,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-09-09T16:57:44.623571822Z"
   },
+  "https://github.com/facostaembrace": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-12T08:46:36.556327553Z"
+  },
   "https://github.com/fatsheep9146": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:16:50.08101+02:00"
@@ -5126,6 +5134,10 @@
   "https://github.com/ferd": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:16:42.973317+02:00"
+  },
+  "https://github.com/flc1125": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-12T08:46:37.058373032Z"
   },
   "https://github.com/flipt-io": {
     "StatusCode": 200,
@@ -5446,6 +5458,10 @@
   "https://github.com/jack-berg/newrelic-opentelemetry-examples/commit/2681bf25518c02f4e5830f89254c736e0959d306": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:19.732009-05:00"
+  },
+  "https://github.com/jade-guiton-dd": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-12T08:46:34.109808779Z"
   },
   "https://github.com/jaegertracing": {
     "StatusCode": 200,
@@ -5838,6 +5854,10 @@
   "https://github.com/lmolkova": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:15.341223-05:00"
+  },
+  "https://github.com/lopes-felipe": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-12T08:46:37.510922341Z"
   },
   "https://github.com/lquerel": {
     "StatusCode": 200,
