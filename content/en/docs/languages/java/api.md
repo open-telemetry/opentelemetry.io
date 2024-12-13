@@ -655,7 +655,7 @@ public class GlobalOpenTelemetryUsage {
 ```
 <!-- prettier-ignore-end -->
 
-#### OpenTelemetry in Java Agent
+#### OpenTelemetry in Java agent
 
 The Java agent is a special case where `GlobalOpenTelemetry` is set by the
 agent. Simply call `GlobalOpenTelemetry.get()` to access the `OpenTelemetry`
