@@ -5,7 +5,7 @@ on:
     inputs:
       submodule_path_regex:
         description:
-          Regex of submodule paths to updated to HEAD before building.
+          Regex of submodule paths to update to HEAD before building.
         default: content-modules
         type: string
 
