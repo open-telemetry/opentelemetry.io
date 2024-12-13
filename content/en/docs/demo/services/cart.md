@@ -98,16 +98,16 @@ builder.Services.AddOpenTelemetry()
 ### Exemplars
 
 [Exemplars](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#exemplars)
-are configured in the Cart service with trace-based exemplar filter, which enables
-the OpenTelemetry SDK to attach exemplars to metrics.
+are configured in the Cart service with trace-based exemplar filter, which
+enables the OpenTelemetry SDK to attach exemplars to metrics.
 
-First it is created a `CartActivitySource`, `Meter` and two `Histograms`. The histogram
-keeps track from the latency of the methods `AddItem` and `GetCart`, as those are
-two important methods in the Cart service.
+First it is created a `CartActivitySource`, `Meter` and two `Histograms`. The
+histogram keeps track from the latency of the methods `AddItem` and `GetCart`,
+as those are two important methods in the Cart service.
 
-Those two methods are critical to the Cart service as users shouldn't wait too long
-when adding an item to the cart, or when viewing their cart before moving to the checkout
-process.
+Those two methods are critical to the Cart service as users shouldn't wait too
+long when adding an item to the cart, or when viewing their cart before moving
+to the checkout process.
 
 ```cs
 private static readonly ActivitySource CartActivitySource = new("OpenTelemetry.Demo.Cart");
@@ -126,11 +126,11 @@ private static readonly Histogram<long> getCartHistogram = CartMeter.CreateHisto
     });
 ```
 
-Note that a custom bucket boundary is also defined, as the default values don't fit the
-microseconds results Cart service has.
+Note that a custom bucket boundary is also defined, as the default values don't
+fit the microseconds results Cart service has.
 
-Once the variables are defined, the latency of the execution of each method is tracked with
-a `StopWatch` as follows:
+Once the variables are defined, the latency of the execution of each method is
+tracked with a `StopWatch` as follows:
 
 ```cs
 var stopwatch = Stopwatch.StartNew();
@@ -140,8 +140,9 @@ var stopwatch = Stopwatch.StartNew();
 addItemHistogram.Record(stopwatch.ElapsedTicks);
 ```
 
-To connect it all together, in the Traces pipeline, it is required to add the created source.
-(Already present in the snippet above, but added here to reference):
+To connect it all together, in the Traces pipeline, it is required to add the
+created source. (Already present in the snippet above, but added here to
+reference):
 
 ```cs
 .AddSource("OpenTelemetry.Demo.Cart")
@@ -154,13 +155,14 @@ And, in the Metrics pipeline, the `Meter` and the `ExemplarFilter`:
 .SetExemplarFilter(ExemplarFilterType.TraceBased)
 ```
 
-To visualize the Exemplars, navigate to Grafana <http://localhost:8080/grafana> > Dashboards >
-Demo > Cart Service Exemplars.
+To visualize the Exemplars, navigate to Grafana
+<http://localhost:8080/grafana> > Dashboards > Demo > Cart Service Exemplars.
 
-The Exemplars appear as special "diamond shaped dots" along with the metric charts in the UI.
-Select any exemplar to see the exemplar data, which includes the timestamp when the measurement
-was recorded, the raw value, and trace context when the recording was done. The `trace_id`
-enables jumping to the tracing backed (Jaeger in this case).
+The Exemplars appear as special "diamond shaped dots" along with the metric
+charts in the UI. Select any exemplar to see the exemplar data, which includes
+the timestamp when the measurement was recorded, the raw value, and trace
+context when the recording was done. The `trace_id` enables jumping to the
+tracing backed (Jaeger in this case).
 
 ![Cart Service Exemplars](../screenshots/cart-service-exemplars.png)
 
