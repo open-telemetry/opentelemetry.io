@@ -34,6 +34,6 @@ jobs:
           PRETTIER_AT_VERS=@$(npm pkg get devDependencies.prettier | tr -d '^"')
           echo "PRETTIER_AT_VERS=$PRETTIER_AT_VERS" | tee -a $GITHUB_ENV
           npm install prettier$PRETTIER_AT_VERS --no-save
-          npx prettier --version
+          set -x && npx prettier --version
 
       - run: npm run check:format
