@@ -13803,6 +13803,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:55:40.781807-05:00"
   },
+  "https://www.jaegertracing.io/sdk-migration/#propagation-format": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-13T05:25:28.899615-05:00"
+  },
   "https://www.java.com/en/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:55:46.525923-05:00"
