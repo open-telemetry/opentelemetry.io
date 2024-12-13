@@ -6,10 +6,11 @@
   "scripts": {
     "__check:links": "make --keep-going check-links",
     "_build": "npm run _hugo -- -e dev --buildDrafts --baseURL \"${DEPLOY_PRIME_URL:-http://localhost}\"",
-    "_check:format:any": "npx prettier --check --ignore-path ''",
+    "__check:format": "npx prettier@$(npm pkg get devDependencies.prettier | tr -d '^\"')",
+    "_check:format:any": "npm run __check:format -- --check --ignore-path ''",
     "_check:format:ja+zh": "npm run _check:format:nowrap -- content/ja content/zh",
     "_check:format:nowrap": "npm run _check:format:any -- --prose-wrap preserve",
-    "_check:format": "npx prettier --check .",
+    "_check:format": "npm run __check:format -- --check .",
     "_check:links--md": "npx markdown-link-check --config .markdown-link-check.json *.md",
     "_check:links--warn": "npm run _check:links || (echo; echo 'WARNING: see link-checker output for issues.'; echo)",
     "_check:links:internal": "npm run __check:links",

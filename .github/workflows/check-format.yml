@@ -21,7 +21,7 @@ jobs:
       - name: Create NPM cache-hash input file
         run: |
           mkdir -p tmp
-          jq '{devDependencies, dependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
+          jq '{devDependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
 
       - uses: actions/setup-node@v4
         with:
@@ -29,5 +29,5 @@ jobs:
           cache: npm
           cache-dependency-path: tmp/package-ci.json
 
-      - name: Check file format
-        run: npm run check:format --ignore-scripts
+      - run: npm install prettier@$(npm pkg get devDependencies.prettier | tr -d '^\"') --no-save
+      - run: npm run check:format
