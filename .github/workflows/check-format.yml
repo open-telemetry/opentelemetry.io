@@ -29,5 +29,11 @@ jobs:
           cache: npm
           cache-dependency-path: tmp/package-ci.json
 
-      - run: npm install prettier@$(npm pkg get devDependencies.prettier | tr -d '^\"') --no-save
+      - name: Install package(s)
+        run: |
+          PRETTIER_AT_VERS=@$(npm pkg get devDependencies.prettier | tr -d '^"')
+          echo "PRETTIER_AT_VERS=$PRETTIER_AT_VERS" >> $GITHUB_ENV
+          npm install prettier$PRETTIER_AT_VERS --no-save
+          npx prettier --version
+
       - run: npm run check:format

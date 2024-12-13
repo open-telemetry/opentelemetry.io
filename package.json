@@ -6,7 +6,7 @@
   "scripts": {
     "__check:links": "make --keep-going check-links",
     "_build": "npm run _hugo -- -e dev --buildDrafts --baseURL \"${DEPLOY_PRIME_URL:-http://localhost}\"",
-    "__check:format": "npx prettier@$(npm pkg get devDependencies.prettier | tr -d '^\"')",
+    "__check:format": "npx prettier${PRETTIER_AT_VERS}",
     "_check:format:any": "npm run __check:format -- --check --ignore-path ''",
     "_check:format:ja+zh": "npm run _check:format:nowrap -- content/ja content/zh",
     "_check:format:nowrap": "npm run _check:format:any -- --prose-wrap preserve",
@@ -121,7 +121,7 @@
     "markdown-link-check": "^3.13.6",
     "markdownlint": "^0.36.1",
     "postcss-cli": "^11.0.0",
-    "prettier": "^3.4.2",
+    "prettier": "3.4.2",
     "require-dir": "^1.2.0",
     "textlint": "^14.4.0",
     "textlint-filter-rule-allowlist": "^4.0.0",
