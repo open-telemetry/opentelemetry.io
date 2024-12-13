@@ -55,3 +55,4 @@ dictionaries:
   - companies
 words: # Valid words across all locales
   - htmltest
+  - nvmrc
