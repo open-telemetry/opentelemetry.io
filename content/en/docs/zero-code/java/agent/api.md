@@ -1,15 +1,16 @@
 ---
 title: Manual instrumentation
-description:
-  Extending a Java agent with custom manual instrumentation.
+description: Extending a Java agent with custom manual instrumentation.
 weight: 21
 ---
 
 ## Introduction
 
-In addition to the out-of-the-box instrumentation, you can extend the Java agent with custom manual instrumentation. 
-This allows you to create [spans](/docs/concepts/signals/traces/#spans) and [metrics](/docs/concepts/signals/metrics) 
-for your own code without doing too many code changes.
+In addition to the out-of-the-box instrumentation, you can extend the Java agent
+with custom manual instrumentation. This allows you to create
+[spans](/docs/concepts/signals/traces/#spans) and
+[metrics](/docs/concepts/signals/metrics) for your own code without doing too
+many code changes.
 
 ## Dependencies
 
@@ -37,15 +38,16 @@ dependencies {
 
 ## OpenTelemetry
 
-The Java agent is a special case where `GlobalOpenTelemetry` is set by the agent.
-Simply call `GlobalOpenTelemetry.get()` to access the `OpenTelemetry` instance.
+The Java agent is a special case where `GlobalOpenTelemetry` is set by the
+agent. Simply call `GlobalOpenTelemetry.get()` to access the `OpenTelemetry`
+instance.
 
 ## Span
 
 {{% alert title="Note" color="info" %}}
 
-For the most common use cases, use the `@WithSpan` annotation instead of manual instrumentation.
-See [Annotations](../annotations) for more information.
+For the most common use cases, use the `@WithSpan` annotation instead of manual
+instrumentation. See [Annotations](../annotations) for more information.
 
 {{% /alert %}}
 
@@ -56,7 +58,8 @@ import io.opentelemetry.api.trace.Tracer;
 Tracer tracer = GlobalOpenTelemetry.getTracer("application");
 ```
 
-Use the `Tracer` to create a span as explained in the [Span](/docs/languages/java/api/#span) section.
+Use the `Tracer` to create a span as explained in the
+[Span](/docs/languages/java/api/#span) section.
 
 A full example can be found [example repository].
 
@@ -69,8 +72,10 @@ import io.opentelemetry.api.metrics.Meter;
 Meter meter = GlobalOpenTelemetry.getMeter("application");
 ```
 
-Use the `Meter` to create a counter, gauge or histogram as explained in the [Meter](/docs/languages/java/api/#meter) section.
+Use the `Meter` to create a counter, gauge or histogram as explained in the
+[Meter](/docs/languages/java/api/#meter) section.
 
 A full example can be found [example repository].
 
-[example repository]: https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent
+[example repository]:
+  https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent

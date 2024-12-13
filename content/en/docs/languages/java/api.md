@@ -657,17 +657,20 @@ public class GlobalOpenTelemetryUsage {
 
 #### OpenTelemetry in Java Agent
 
-The Java agent is a special case where `GlobalOpenTelemetry` is set by the agent.
-Simply call `GlobalOpenTelemetry.get()` to access the `OpenTelemetry` instance.
+The Java agent is a special case where `GlobalOpenTelemetry` is set by the
+agent. Simply call `GlobalOpenTelemetry.get()` to access the `OpenTelemetry`
+instance.
 
-Read more about [extending the Java agent with custom manual instrumentation](/docs/zero-code/java/agent/api/).
+Read more about
+[extending the Java agent with custom manual instrumentation](/docs/zero-code/java/agent/api/).
 
 #### OpenTelemetry in Spring Boot starter
 
-The Spring Boot starter is a special case where `OpenTelemetry` is available as a
-Spring bean. Simply inject `OpenTelemetry` into your Spring components.
+The Spring Boot starter is a special case where `OpenTelemetry` is available as
+a Spring bean. Simply inject `OpenTelemetry` into your Spring components.
 
-Read more about [extending the Spring Boot starter with custom manual instrumentation](/docs/zero-code/java/spring-boot-starter/api/).
+Read more about
+[extending the Spring Boot starter with custom manual instrumentation](/docs/zero-code/java/spring-boot-starter/api/).
 
 ### TracerProvider
 
