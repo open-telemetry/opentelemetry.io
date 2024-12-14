@@ -6,7 +6,7 @@ author: '[Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)'
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/5793
 sig: Communications, End-User
 # prettier-ignore
-cSpell:ignore:
+cSpell:ignore: Hrabusa
 ---
 
 The OpenTelemetry End-User SIG recently surveyed the community to find out how
@@ -30,8 +30,8 @@ Check out the results!
   top answers were more examples and more coverage, both in depth and breadth.
 - The Collector docs were the most consulted docs set based on number of
   ratings.
-- The Java docs were the overall highest rated docs, after normalization and
-  weighting, while the Swift docs received the overall lowest rating
+- The Java documentation was the overall highest rated docs, after normalization
+  and weighting, while the Swift docs received the overall lowest rating
 - Among the six most popular docs sets, the JavaScript docs received the lowest
   rating.
 
@@ -131,7 +131,7 @@ people and needing the most work is the JavaScript documentation.
 ## Learn more
 
 For a more detailed look at the survey, you can see the
-[full results](<(https://docs.google.com/spreadsheets/d/1kpJQYiEGtpZorICbl-QfYL3mKfeoRLiUywvKcV8fcNA/edit?resourcekey=&gid=439437959#gid=439437959)>).
+[full results](https://docs.google.com/spreadsheets/d/1kpJQYiEGtpZorICbl-QfYL3mKfeoRLiUywvKcV8fcNA/edit?resourcekey=&gid=439437959#gid=439437959).
 
 ## Keep in touch
 
@@ -142,4 +142,4 @@ in the following places:
 
 - [#otel-sig-end-user Slack channel](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
 - [#otel-comms Slack channel](https://cloud-native.slack.com/archives/C02UN96HZH6)
-- [End user resources page](https://opentelemetry.io/community/end-user/)
+- [End user resources page](/community/end-user/)
