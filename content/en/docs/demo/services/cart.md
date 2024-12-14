@@ -101,7 +101,7 @@ builder.Services.AddOpenTelemetry()
 are configured in the Cart service with trace-based exemplar filter, which
 enables the OpenTelemetry SDK to attach exemplars to metrics.
 
-First it is created a `CartActivitySource`, `Meter` and two `Histograms`. The
+First it creates a `CartActivitySource`, `Meter` and two `Histograms`. The
 histogram keeps track from the latency of the methods `AddItem` and `GetCart`,
 as those are two important methods in the Cart service.
 
