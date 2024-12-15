@@ -30,5 +30,5 @@
 	go-pin = v1.27.0
 [submodule "content-modules/opentelemetry-java-examples"]
 	path = content-modules/opentelemetry-java-examples
-	url = https://github.com/open-telemetry/opentelemetry-java-examples.git
+	url = https://github.com/bintus-ux/opentelemetry.io/
 	javaexamples-pin = f9553ef
