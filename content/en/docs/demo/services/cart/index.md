@@ -165,7 +165,7 @@ the measurement was recorded, the raw value, and trace context when the
 recording was done. The `trace_id` enables jumping to the tracing backed (Jaeger
 in this case).
 
-![Cart Service Exemplars](../screenshots/cart-service-exemplars.png)
+![Cart Service Exemplars](exemplars.png)
 
 ## Logs
 
