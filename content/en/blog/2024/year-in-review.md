@@ -90,7 +90,6 @@ Here are some of the most interesting statistics about the OpenTelemetry website
   with 150 comments. Close 2nd place goes to
   [[pt] Translate /pt/docs/languages/go/instrumentation](https://github.com/open-telemetry/opentelemetry.io/pull/5380)
   with 146 comments.
--
 
 ## People
 
