@@ -14,12 +14,12 @@ As 2024 draws to a close, we reflect on the year and share some insights and
 accomplishments from [SIG Communications][Comms meetings], the team responsible
 for managing this website, blog, and documentation.
 
-## Highlights
+## Key Achievements of 2024
 
 Several key accomplishments stand out in our efforts to make OpenTelemetry more
 accessible, user-friendly, and impactful for our global community.
 
-### Multilingual documentation
+### Multilingual documentation <i class="fa-solid fa-language"></i> {#multilingual-documentation}
 
 A major accomplishment this year was achieving multilingual support with the
 launch of our [localized documentation](/blog/2024/docs-localized/). Thanks to
@@ -36,7 +36,7 @@ A big thank you to everyone who contributed to this initiative. These
 translations make OpenTelemetry more accessible, enhancing the user experience
 for a global audience.
 
-### Information Architecture (IA) improvements
+### Information Architecture (IA) improvements <i class="fa-solid fa-sitemap"></i> {#ia-improvements}
 
 To **improve the end-user experience** and make OpenTelemetry **documentation
 more intuitive and accessible**, we undertook important updates to our
@@ -82,7 +82,7 @@ your contributions &mdash; [join us][#2427] in this collaborative effort.
 [java-reorg]:
   https://github.com/open-telemetry/opentelemetry.io/pulls?q=is%3Apr+java+is%3Aclosed+label%3Asig%3Ajava+merged%3A2024-01-01..2024-12-31+author%3Ajack-berg
 
-## The year in numbers
+## Year in numbers <i class="fa-solid fa-chart-pie"></i> {#year-in-numbers}
 
 ### Contributions
 
@@ -139,7 +139,7 @@ The most popular pages and sections of the documentation were:
 [Ecosystem]: /ecosystem/
 [What is OpenTelemetry?]: /docs/what-is-opentelemetry/
 
-### Fun Trivia
+### Fun Trivia <i class="fa-solid fa-lightbulb"></i> {#trivia}
 
 Did you know that:
 
@@ -166,20 +166,20 @@ Did you know that:
 [Collector landing page]: /docs/collector/
 [opentelemetrybot]: https://github.com/opentelemetrybot
 
-## Community
+## Amazing Community <i class="fa-regular fa-heart"></i> {#amazing-community}
 
-### People
+Having 1000+ commits per year means that there have been proportionally as many
+PRs. For each PR, we need reviews to ensure that the added content is accurate,
+fits into our project, and is well written in plain language. We are lucky to
+have many contributors who take on that responsibility: approvers and
+maintainers of other SIGs that co-own parts of our website, approvers for the
+different localization websites, and approvers and maintainers in SIG
+Communications.
 
-Having 1000+ commits per year means that there have been equally as many PRs.
-For each PR, we need reviews to ensure that the added content is accurate, fits
-into our project, and is well written in plain language. We are lucky to have
-many contributors who take on that responsibility: approvers and maintainers of
-other SIGs that co-own parts of our website, approvers for the different
-localization websites, and approvers and maintainers in SIG Communications. A
-big shout out to all of you for making 2024 a successful year, and we look
+## Join us in 2025
+
+A big shout out to all of you for making 2024 a successful year, and we look
 forward to working together in 2025!
-
-## Join us
 
 If you're an end user, a contributor, or just enthusiastic about OpenTelemetry,
 we welcome your contributions to the website. You can contribute by raising
