@@ -74,8 +74,7 @@ beginners. If you are interested in helping, [join us here](https://github.com/o
 
 ## Intriguing insights
 
-There are many statistics we can create about our project, but only some of them
-are worth sharing, because they are curious:
+Here are some of the most interesting statistics about the OpenTelemetry website:
 
 - The most changed content file is `content/en/docs/collector/_index.md` with 91
   updates since the file was created.
