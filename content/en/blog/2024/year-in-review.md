@@ -86,19 +86,27 @@ your contributions &mdash; [join us][#2427] in this collaborative effort.
 
 ### Contributions
 
-In [December 2022], we began publishing [monthly releases] of the website to
-provide regular summaries of contributions. Using this data, we can perform
-long-term comparisons of contributions. For example, when comparing the period
-from [December 2022 to November 2023] with [December 2023 to November 2024], we
-see an upward trend: commits increased from 1,011 to 1,340, and contributors
-grew from 92 to 106. The only metric that decreased was the number of files
-changed, which dropped from 1,864 to 1,624.
+In [December 2022], we started [monthly releases] of the website so that we
+could regularly summarize activities and highlight significant contributions.
+These releases allow us to track progress over time and perform long-term
+comparisons.
 
-Since the repository's creation in April 2019, there have been 768 contributors
-and 3,982 commits across 3,824 merged pull requests.
+For instance, comparing the periods [December 2022 to November 2023] and
+[December 2023 to November 2024], we observed an upward trend in contributions:
 
-We extend our heartfelt thanks to every contributor for helping build and
-improve the OpenTelemetry website!
+- **Commits** increased from 1,011 to 1,340.
+- **Contributors** grew from 92 to 106.
+- The only metric that declined was the **number of files changed**, which
+  decreased from 1,864 to 1,624.
+
+Since the repository’s inception in April 2019, the community has seen
+remarkable growth, with:
+
+- 3,982 commits and 3,824 merged pull requests by
+- 768 contributors
+
+Thank you to every contributor who has helped build and improve the
+OpenTelemetry website. Your efforts make a difference!
 
 [December 2022]:
   https://github.com/open-telemetry/opentelemetry.io/releases/tag/2022.12
