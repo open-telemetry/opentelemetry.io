@@ -168,12 +168,12 @@ Did you know that:
 
 ## Amazing Community <i class="fa-regular fa-heart"></i> {#amazing-community}
 
-With [1.3K PRs merged in 2024][PRs], the community contributed an equally
-impressive number of reviews to ensure that content is accurate, valuable,
-aligned with our documentation goals, and easy to read and understand.
+With [1.3K PRs], the community contributed an equally impressive number of
+reviews to ensure that content is accurate, valuable, aligned with our
+documentation goals, and easy to read and understand.
 
-In addition to PRs, contributors created [nearly 500 issues][issues] and engaged
-in many [discussions], reporting bugs, suggesting improvements, and driving
+In addition to PRs, contributors created nearly [500 issues] and engaged in many
+[discussions], reporting bugs, suggesting improvements, and driving
 collaboration. Each of these efforts reflects the thoughtfulness and dedication
 of our community to maintaining the quality of OpenTelemetry’s documentation and
 website.
@@ -181,33 +181,37 @@ website.
 We are fortunate to have many contributors who take on these responsibilities,
 including:
 
-- **Approvers and maintainers** from other SIGs that co-own parts of the website
-- **Localization teams** who oversee translations for various languages
-- **OpenTelemetry community**, whose contributions make all the
-  difference! Every drive-by edit and typo fixed counts
-- **SIG Communications team members** dedicated to improving documentation
+- **Approvers and maintainers** from other SIGs who co-own parts of the docs
+- **Localization teams** who oversee translations into various languages
+- **The OpenTelemetry community**, whose contributions make all the difference
+  &mdash; every drive-by edit and typo fix counts!
+- **SIG Communications team members**, for their contributions and for
+  orchestrating it all
 
 Thank you to everyone who contributed their time and expertise to OpenTelemetry
 docs this year!
 
-[discussions]: https://github.com/open-telemetry/opentelemetry.io/discussions
-[issues]:
+[500 issues]:
   https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+created%3A2024-01-01..2024-12-31
-[PRs]:
+[1.3K PRs]:
   https://github.com/open-telemetry/opentelemetry.io/pulls?q=is%3Apr+is%3Amerged+merged%3A2024-01-01..2024-12-31
 
 ## Join us in 2025
 
-A big shout out to all of you for making 2024 a successful year, and we look
-forward to working together in 2025!
+A big shout out to all for making 2024 a successful year, and we look forward to
+continued collaboration in 2025!
 
 If you're an end user, a contributor, or just enthusiastic about OpenTelemetry,
-we welcome your contributions to the website. You can contribute by raising
-issues, joining discussions, or making PRs. Join our
-[channel](https://cloud-native.slack.com/archives/C02UN96HZH6) at the
-[CNCF Slack](https://slack.cncf.io/) and come to our [Comms meetings], every
-other Monday at 10:00 a.m. Pacific time. With your help, we can make 2025
+we welcome your contributions. You can participate by raising [issues], joining
+[discussions], and [submitting PRs].
+
+You can also join one of the many `#otel` channels of the
+[CNCF Slack](https://slack.cncf.io/) and participate in our [Comms meetings], every
+other Monday at 10:00 AM Pacific time. With your help, we can make 2025
 another successful year for [opentelemetry.io](https://opentelemetry.io/)!
 
+[discussions]: https://github.com/open-telemetry/opentelemetry.io/discussions
+[issues]: https://github.com/open-telemetry/opentelemetry.io/issues
+[submitting PRs]: https://opentelemetry.io/docs/contributing/pull-requests/
 [Comms meetings]:
   https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY
