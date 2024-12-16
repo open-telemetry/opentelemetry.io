@@ -1,5 +1,5 @@
 ---
-title: Extending with custom manual instrumenation
+title: Extending with custom manual instrumentation
 linkTitle: Extending instrumentation
 description: Extending a Java agent with custom manual instrumentation.
 weight: 21
