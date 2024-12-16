@@ -16,8 +16,9 @@ for managing this website, blog, and documentation.
 
 ## Key achievements of 2024
 
-Several key accomplishments stand out in our efforts to make OpenTelemetry more
-accessible, user-friendly, and impactful for our global community.
+Several key accomplishments stand out in our efforts to make OpenTelemetry
+documentation more accessible, user-friendly, and impactful for our global
+community.
 
 ### Multilingual documentation <i class="fa-solid fa-language"></i> {#multilingual-documentation}
 
@@ -34,28 +35,29 @@ into other languages. The available translations include:
 
 A big thank you to everyone who contributed to this initiative. These
 translations make OpenTelemetry more accessible, enhancing the user experience
-for a global audience.
+for our global audience.
 
 ### Information Architecture (IA) improvements <i class="fa-solid fa-sitemap"></i> {#ia-improvements}
 
-To **improve the end-user experience** and make OpenTelemetry **documentation
-more intuitive and accessible**, we undertook important updates to our
-Information Architecture (IA) this year. These changes were driven by the need
-to better organize content, clarify the purpose of key sections, and provide a
-more structured and user-friendly experience for developers and contributors
-alike.
+To **improve readership experience** and make OpenTelemetry **documentation more
+intuitive and accessible**, we undertook important updates to our Information
+Architecture (IA) this year. These changes were driven by the need to better
+organize content, clarify the purpose of key sections, and provide a more
+structured and user-friendly experience for end-users and developers.
 
-Key updates include:
+Key IA updates include:
 
-- Renaming the `Instrumentation` docs section to `Language APIs & SDKs` to
-  better reflect its purpose and set clearer expectations for users.
-- Moving `Automatic Instrumentation` into the new `Zero-code Instrumentation`
-  section to more clearly distinguish between instrumentation APIs & SDKs and
-  tools like the Java agent, which injects OpenTelemetry externally.
+- Renaming the `Instrumentation` section to
+  [Language APIs & SDKs](/docs/languages/) to better reflect its purpose and set
+  clearer expectations for users.
+- Moving `Automatic Instrumentation` into the new
+  [Zero-code Instrumentation](/docs/zero-code/) section to more clearly
+  distinguish between instrumentation APIs & SDKs and tools like the Java agent,
+  used inject telemetry.
 - Following these updates, the Java SIG [proposed] and [reorganized their
   documentation][java-reorg], introducing substantial improvements to the
-  structure and clarity of their content. This effort is reflected in the
-  following PRs:
+  structure and clarity of the content. This bulk of this effort is reflected in
+  these PRs:
 
   - [Refactor Java SDK and configuration #4966][#4966]
   - [Refactor Java instrumentation #5276][#5276]
@@ -94,18 +96,18 @@ comparisons.
 For instance, comparing the periods [December 2022 to November 2023] and
 [December 2023 to November 2024], we observed an upward trend in contributions:
 
-- **Commits** increased from 1,011 to 1,340.
-- **Contributors** grew from 92 to 106.
+- **Commits** increased 33% from 1,011 to 1,340
+- **Contributors** grew 15% from 92 to 106
 - The only metric that declined was the **number of files changed**, which
-  decreased from 1,864 to 1,624.
+  decreased from 1,864 to 1,624 (13%)
 
 Since the repository’s inception in April 2019, the community has seen
 remarkable growth, with:
 
-- 3,982 commits and 3,824 merged pull requests by
+- 3,824 merged pull requests (3,982 commits) by
 - 768 contributors
 
-Thank you to every contributor who has helped build and improve the
+Thank you to every contributor for helping to build and improve the
 OpenTelemetry website. Your efforts make a difference!
 
 [December 2022]:
@@ -118,19 +120,20 @@ OpenTelemetry website. Your efforts make a difference!
 
 ### Which pages were the most popular?
 
-According to our publicly available [analytics], [opentelemetry.io](/) was
-viewed 12 million times across 4 million sessions this year. This marks a 16%
-increase from last year's nearly 10 million views and over 3 million sessions.
+According to our publicly available [analytics] data, [opentelemetry.io](/) was
+viewed **12 million** times across 4 million sessions this year. This marks a
+**16% increase** over last year's nearly 10 million views and over 3 million
+sessions.
 
 The most popular pages and sections of the documentation were:
 
-| Page/Section             | Views | % of Site Total |
-| ------------------------ | ----: | --------------: |
-| [What is OpenTelemetry?] |  290K |            2.4% |
-| [Collector]              |  1.3M |           10.5% |
-| [Concepts]               |  1.2M |            9.8% |
-| [Demo]                   |  829K |            6.7% |
-| [Ecosystem]              |  500K |            4.0% |
+| Page/Section             | Views | % [^1] |
+| ------------------------ | ----: | -----: |
+| [What is OpenTelemetry?] |  290K |   2.4% |
+| [Collector]              |  1.3M |  10.5% |
+| [Concepts]               |  1.2M |   9.8% |
+| [Demo]                   |  829K |   6.7% |
+| [Ecosystem]              |  500K |   4.0% |
 
 [analytics]: https://lookerstudio.google.com/s/tSTKxK1ECeU
 [Collector]: /docs/collector
@@ -139,21 +142,23 @@ The most popular pages and sections of the documentation were:
 [Ecosystem]: /ecosystem/
 [What is OpenTelemetry?]: /docs/what-is-opentelemetry/
 
+[^1]: Percentage of the site-total 12M views.
+
 ### Fun Trivia <i class="fa-solid fa-lightbulb"></i> {#trivia}
 
 Did you know that:
 
-- "OpenTelemetry" occurs 7,313 times in the English website pages, making it the
-  3rd most frequent word after "the" and "to." The word "collector" is used
-  3,186 times, putting it in 11th place!
+- "OpenTelemetry" occurs 7.3K times in the English website pages, making it the
+  3rd most frequent word after "the" and "to." The word "collector" is used 3.2K
+  times, putting it in 11th place!
 - The [Collector landing page] has been the most updated file since its
   creation, with 91 changes.
-- With 511 commits (26,765 additions, and 9,734 deletions) the
-  [opentelemetrybot] is the fourth most active contributor. Go bots!
+- With 511 commits (27K additions, and 10K deletions) the [opentelemetrybot] is
+  the fourth most active contributor. Go bots!
 - The record for the PR with the most comments this year—and of all time is held
   by:
 
-  - [Generative AI updates blog post (#5575)][#5575], with 150 comments
+  - [Generative AI updates blog post (#5575)][#5575], with 150 comments!
 
   <!-- prettier-ignore -->
   A close second goes to:
@@ -168,17 +173,16 @@ Did you know that:
 
 ## Amazing Community <i class="fa-regular fa-heart"></i> {#amazing-community}
 
-With [1.3K PRs], the community contributed an equally impressive number of
+With [1.3K PRs], we collectively contributed an equally impressive number of
 reviews to ensure that content is accurate, valuable, aligned with our
 documentation goals, and easy to read and understand.
 
 In addition to PRs, contributors created nearly [500 issues] and engaged in many
 [discussions], reporting bugs, suggesting improvements, and driving
-collaboration. Each of these efforts reflects the thoughtfulness and dedication
-of our community to maintaining the quality of OpenTelemetry’s documentation and
-website.
+collaboration. Each of these efforts reflects our community's dedication to
+maintaining the quality of OpenTelemetry docs.
 
-We are fortunate to have many contributors who take on these responsibilities,
+We are fortunate to have many contributors who take on responsibilities,
 including:
 
 - **Approvers and maintainers** from other SIGs who co-own parts of the docs
@@ -186,7 +190,7 @@ including:
 - **The OpenTelemetry community**, whose contributions make all the difference
   &mdash; every drive-by edit and typo fix counts!
 - **SIG Communications team members**, for their contributions and for
-  orchestrating it all
+  orchestrating it all!
 
 Thank you to everyone who contributed their time and expertise to OpenTelemetry
 docs this year!
@@ -205,11 +209,11 @@ Whether you're an end user, a contributor, or simply enthusiastic about
 OpenTelemetry, we welcome your participation. You can [get involved] by raising
 [issues], participating in [discussions], or [submitting PRs].
 
-You can also:
+You can also join us:
 
-- Join us at one of the many `#otel` channels in the
-  [CNCF Slack](https://slack.cncf.io/).
-- Attend our [Comms meetings], held every other Monday at 10:00 AM Pacific time.
+- On the [CNCF Slack](https://slack.cncf.io/) at any one of the many
+  `#otel`-prefixed channels.
+- In [Comms meetings], held every other Monday at 10:00 AM Pacific time.
 
 Together, we can make 2025 another amazing year for [opentelemetry.io](/)!
 
