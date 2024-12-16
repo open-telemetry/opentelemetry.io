@@ -1,79 +1,78 @@
 ---
-title: '2024: The Year in Review for opentelemetry.io'
-linkTitle: 'Year in Review'
+title: Opentelemetry.io 2024 review
+linkTitle: Year in review
 date: 2024-12-12 # Put the current date, we will keep the date updated until your PR is merged
 author:
   >- # If you have only one author, then add the single name on this line in quotes.
-  [Severin Neumann](https://github.com/svrnm) (Cisco),
+  [Severin Neumann](https://github.com/svrnm) (Cisco)
 sig: SIG Comms
+cSpell:ignore: opentelemetrybot
 ---
 
-As 2024 comes to a close, we'd like to take the time to take a look back at it,
-and share some insights and accomplishments of SIG Communcation, which is
-responsible for running this website, blog and documentation.
+As 2024 draws to a close, we’d like to reflect on the year and share some
+insights and accomplishments from SIG Communications, the team responsible for
+managing this website, blog, and documentation.
 
 ## Contributions
 
 In
-[December 2022](https://github.com/open-telemetry/opentelemetry.io/releases/tag/2022.12)
-we started publishing monthly releases of our website on GitHub, to have a
-regular summary of contributions. Based on this data we can do a long time
-comparison on contributions, and if we look at the time between
-[December, 2022 and November, 2023](https://github.com/open-telemetry/opentelemetry.io/compare/2022.12...2023.11)
-and compare it with
-[December, 2023 to November, 2024](https://github.com/open-telemetry/opentelemetry.io/compare/2023.12...2024.11),
-we see an upwards trend in commits from 1,011 to 1,340, and contributors from 92
-to 106. The only metric which has gone down is the number of files changed,
-which was 1,864 previously and went down to 1,624.
+[December 2022](https://github.com/open-telemetry/opentelemetry.io/releases/tag/2022.12),
+we began publishing monthly releases of our website on GitHub to provide regular
+summaries of contributions. Using this data, we can perform long-term
+comparisons of contributions. For example, when comparing the period from
+[December 2022 to November 2023](https://github.com/open-telemetry/opentelemetry.io/compare/2022.12...2023.11)
+with
+[December 2023 to November 2024](https://github.com/open-telemetry/opentelemetry.io/compare/2023.12...2024.11),
+we see an upward trend: commits increased from 1,011 to 1,340, and contributors
+grew from 92 to 106. The only metric that decreased was the number of files
+changed, which dropped from 1,864 to 1,624.
 
-Overall there have been 768 contributors and 3,982 commits across 3,824 merged
-pull requests since the repository was created in April, 2019.
+Since the repository's creation in April 2019, there have been 768 contributors
+and 3,982 commits across 3,824 merged pull requests.
 
-We thank every contributor for helping to build and improve the OpenTelemetry
-website!
+We extend our heartfelt thanks to every contributor for helping build and
+improve the OpenTelemetry website!
 
 ## User analytics
 
 Based on
 [data collected with Google Analytics](https://lookerstudio.google.com/s/tSTKxK1ECeU)
 the [opentelemetry.io](/) website had over 12 million views across 4 million
-sessions this year. The year before it was visited with almost 10 million viewes
-across over 3 million sessions, which means there have been ~16% more views
+sessions this year. The year before it was visited with almost 10 million views
+across more than 3 million sessions, which means there have been ~16% more views
 year-over-year.
 
-With almost 2,9 million views the [landing page](/) is the most popular page,
+With almost 2.9 million views, the [landing page](/) was the most popular page,
 followed by the [Collector page](/docs/collector) with over 400,000 views.
 
 ## Localizations
 
-A major accomplishment this year was, that
-[we went multilingual](/blog/2024/docs-localized/). Localization teams are
-translating pages from English to [Chinese](/zh), [French](/fr),
-[Japanese](/ja), [Portuguese](/pt) and [Spanish](/es), with a total sum of 122
-pages translated so far!
+A major accomplishment this year was that [we went multilingual](/blog/2024/docs-localized/). Localization teams have been translating pages from English into several languages, with a total of 122 pages translated so far! The available languages include:
 
-We thank everyone who has contributed translations, and we are excited to be
-able to provide these language options that improve the OpenTelemetry user
-experience.
+- [Chinese](/zh)  
+- [French](/fr)  
+- [Japanese](/ja)  
+- [Portuguese](/pt)  
+- [Spanish](/es)  
+
+We thank everyone who contributed to the translations and are excited to offer these language options, enhancing the OpenTelemetry user experience.
 
 ## Information architecture changes
 
-Another big change this year was a change in our information architecture: we
-renamed the documentation section `Instrumentations` to `Languages APIs & SDKs`
-to make it clearer to end-users what to expect in that section. We also moved
-out the pages around `Automatic Instrumentation` into a section called
-`Zero-code instrumentation`, to provide a clearer separation of using the APIs
-and SDKs for instrumentation, and using instrumentation tools like a Java agent,
-that add OpenTelemetry from the outside.
+We made big changes in our information architecture this year. We
+renamed the documentation section `Instrumentations` to `Language APIs & SDKs`
+to make it clearer to end users what to expect in that section. We also moved the `Automatic Instrumentation` content into a section called
+`Zero-code instrumentation` to provide a clearer separation between API
+and SDK instrumentation and instrumentation tools like a Java agent
+that inject OpenTelemetry from the outside.
 
-As a follow up to that change, the Java SIG updated the overall structure of
-their API and SDK documentation, to fit better into this new architecture.
+As a follow up to the instrumentation page changes, the Java SIG updated the overall structure of
+their API and SDK documentation to fit better into this new architecture.
 
-For the next year, we plan to rework the way how we introduce OpenTelemetry to
-new starters, if you are interested in helping, you can
-[join us here](https://github.com/open-telemetry/community/pull/2427/).
+For the next year, we plan to rework the way we introduce OpenTelemetry to
+beginners. If you are interested in helping, [join us here](https://github.com/open-telemetry/community/pull/2427/).
 
-## Curious facts
+## Intriguing insights
 
 There are many statistics we can create about our project, but only some of them
 are worth sharing, because they are curious:
@@ -95,19 +94,15 @@ are worth sharing, because they are curious:
 
 ## People
 
-Having 1000+ commits per year, means that there have been equally many PRs. For
-each PR we need reviews, that ensure, that the added content fits into our
-project, is correct and written in good and plain language. We are lucky to have
-many contributors, who are taking on that responsibility: there are approvers
-and maintainers of SIGs, that co-own parts of our website, there are approvers
-for the different localizations, and there are approvers and maintainers in SIG
-Communications. A big shout out to all of them for making 2024 a successful
-year, and we are looking forward to work with you all in 2025!
+Having 1000+ commits per year means that there have been equally as many PRs. For
+each PR, we need reviews to ensure that the added content is accurate, fits into our
+project, and is well written in plain language. We are lucky to have
+many contributors who take on that responsibility: approvers
+and maintainers of other SIGs that co-own parts of our website, approvers
+for the different localization websites, and approvers and maintainers in SIG
+Communications. A big shout out to all of you for making 2024 a successful
+year, and we look forward to working together in 2025!
 
-## Call to action
+## Join us
 
-If you are an OpenTelemetry end-user or contributor, or if you are just
-enthusiastic about our project, we would be excited to welcome you as a
-contributor to the website! You can help by raising issues and providing PRs! To
-get started, come by in our channel at the CNCF slack or join one of our SIG
-meetings, every other Monday at 10 PST.
+If you're an end user, a contributor, or just enthusiastic about OpenTelemetry, we welcome your contributions to the website. You can contribute by raising issues, joining discussions, or making PRs. Join our [channel](https://cloud-native.slack.com/archives/C02UN96HZH6) at the [CNCF Slack](https://slack.cncf.io/) and come to our [SIG meetings](https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY), every other Monday at 10:00 a.m. Pacific time. With your help, we can make 2025 another successful year for [opentelemetry.io](https://opentelemetry.io/)!
