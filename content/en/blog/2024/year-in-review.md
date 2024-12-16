@@ -1,13 +1,13 @@
 ---
 title: Opentelemetry.io 2024 review
 linkTitle: Year in review
-date: 2024-12-12 # Put the current date, we will keep the date updated until your PR is merged
-author:
+date: 2024-12-18
+author: >-
   [Severin Neumann](https://github.com/svrnm) (Cisco),
   [Patrice Chalin](https://github.com/chalin/) (CNCF),
   [Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)
-sig: SIG Comms
-cSpell:ignore: opentelemetrybot
+sig: Comms
+cSpell:ignore: Chalin Hrabusa opentelemetrybot
 ---
 
 As 2024 draws to a close, we’d like to reflect on the year and share some
