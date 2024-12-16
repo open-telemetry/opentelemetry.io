@@ -168,13 +168,29 @@ Did you know that:
 
 ## Amazing Community <i class="fa-regular fa-heart"></i> {#amazing-community}
 
-Having 1000+ commits per year means that there have been proportionally as many
-PRs. For each PR, we need reviews to ensure that the added content is accurate,
-fits into our project, and is well written in plain language. We are lucky to
-have many contributors who take on that responsibility: approvers and
-maintainers of other SIGs that co-own parts of our website, approvers for the
-different localization websites, and approvers and maintainers in SIG
-Communications.
+With [1.3K PRs merged in 2024][PRs], the community has contributed an equally
+impressive number of reviews to ensure the content is accurate, valuable,
+aligned with our documentation goals, and easy to read and understand.
+
+In addition to PRs, contributors created [almost 500 issues][issues],
+facilitated many valuable [discussions], reporting bugs and suggesting
+improvements. Each of these efforts requires collaboration, thoughtfulness, and
+a shared commitment to the quality of the OpenTelemetry documentation and
+website.
+
+We are lucky to have many contributors who take on these responsibilities,
+including: approvers and maintainers of other SIGs that co-own parts of our
+website, approvers for the different localization websites, approvers and
+maintainers in SIG Communications, as well as our community at large.
+
+Thank you to everyone who contributed their time and expertise to OpenTelemetry
+docs this year!
+
+[discussions]: https://github.com/open-telemetry/opentelemetry.io/discussions
+[issues]:
+  https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+created%3A2024-01-01..2024-12-31
+[PRs]:
+  https://github.com/open-telemetry/opentelemetry.io/pulls?q=is%3Apr+is%3Amerged+merged%3A2024-01-01..2024-12-31
 
 ## Join us in 2025
 
