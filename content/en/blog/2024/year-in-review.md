@@ -18,10 +18,10 @@ managing this website, blog, and documentation.
 
 ### Localizations
 
-A major accomplishment this year was that
-[we went multilingual](/blog/2024/docs-localized/). Localization teams have been
-translating pages from English into several other languages, with a total of 122 pages
-translated so far! The available languages include:
+A major accomplishment this year was achieving multilingual support with the
+launch of our [localized documentation](/blog/2024/docs-localized/). Thanks to
+the efforts of localization teams, over 120 pages were translated from English
+into other languages. The available translations include:
 
 - [Chinese](/zh)
 - [French](/fr)
@@ -29,12 +29,14 @@ translated so far! The available languages include:
 - [Portuguese](/pt)
 - [Spanish](/es)
 
-We thank everyone who contributed to the translations and are excited to offer
-these language options, enhancing the OpenTelemetry user experience.
+A big thank you to everyone who contributed to this initiative. These
+translations make OpenTelemetry more accessible, enhancing the user experience
+for a global audience.
 
 ### Information architecture changes
 
-We made significant changes in our Information Architecture (IA) this year, including:
+We made significant changes in our Information Architecture (IA) this year,
+including:
 
 - Renamed the documentation section `Instrumentations` to `Language APIs & SDKs`
   to make it clearer to end users what to expect in that section.
