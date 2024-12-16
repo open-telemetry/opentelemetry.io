@@ -143,22 +143,28 @@ The most popular pages and sections of the documentation were:
 
 Did you know that:
 
-- 'OpenTelemetry' occurs 7313 times in the English website pages, which makes it
-  the 3rd most frequent word after 'the' and 'to'. The world 'collector' is used
-  3186 times, putting it in 11th place!
-- [Collector landing page] has been the most updated file since it's creation,
-  with 91 changes.
-- With 511 commits, 26,765 additions, and 9,734 deletions the
-  [opentelemetrybot](https://github.com/opentelemetrybot) is the fourth most
-  active contributor. Go bots!
-- The record for the PR with the most comments this year and also for all time
-  is
-  [Blog post for OpenTelemetry Generative AI updates](https://github.com/open-telemetry/opentelemetry.io/pull/5575),
-  with 150 comments. Close 2nd place goes to
-  [[pt] Translate /pt/docs/languages/go/instrumentation](https://github.com/open-telemetry/opentelemetry.io/pull/5380)
-  with 146 comments.
+- "OpenTelemetry" occurs 7,313 times in the English website pages, making it the
+  3rd most frequent word after "the" and "to." The word "collector" is used
+  3,186 times, putting it in 11th place!
+- The [Collector landing page] has been the most updated file since its
+  creation, with 91 changes.
+- With 511 commits (26,765 additions, and 9,734 deletions) the
+  [opentelemetrybot] is the fourth most active contributor. Go bots!
+- The record for the PR with the most comments this year—and of all time is held
+  by:
 
+  - [Generative AI updates blog post (#5575)][#5575], with 150 comments
+
+  <!-- prettier-ignore -->
+  A close second goes to:
+  {.mt-3}
+
+  - [Portuguese translation of Go instrumentation][#5380], with 146 comments
+
+[#5380]: https://github.com/open-telemetry/opentelemetry.io/pull/5380
+[#5575]: https://github.com/open-telemetry/opentelemetry.io/pull/5575
 [Collector landing page]: /docs/collector/
+[opentelemetrybot]: https://github.com/opentelemetrybot
 
 ## Community
 
