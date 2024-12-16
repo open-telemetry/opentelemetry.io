@@ -158,12 +158,11 @@ And, in the Metrics pipeline, the `Meter` and the `ExemplarFilter`:
 To visualize the Exemplars, navigate to Grafana
 <http://localhost:8080/grafana> > Dashboards > Demo > Cart Service Exemplars.
 
-The Exemplars appear as special "diamond shaped dots" along with the metric
-charts in the 95th percentile chart, or as small squares in the heatmap chart.
-Select any exemplar to see the exemplar data, which includes the timestamp when
-the measurement was recorded, the raw value, and trace context when the
-recording was done. The `trace_id` enables jumping to the tracing backed (Jaeger
-in this case).
+Exemplars appear as special "diamond-shaped dots" on the 95th percentile chart
+or as small squares on the heatmap chart. Select any exemplar to view its data,
+which includes the timestamp of the measurement, the raw value, and the trace
+context at the time of recording. The `trace_id` enables navigation to the
+tracing backend (Jaeger, in this case).
 
 ![Cart Service Exemplars](exemplars.png)
 
