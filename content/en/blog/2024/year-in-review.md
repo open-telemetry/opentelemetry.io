@@ -125,12 +125,12 @@ increase from last year's nearly 10 million views and over 3 million sessions.
 The most popular pages and sections of the documentation were:
 
 | Page/Section             | Views | % of Site Total |
-| ------------------------ | -----:| ---------------:|
-| [What is OpenTelemetry?] | 290K  | 2.4%            |
-| [Collector]              | 1.3M  | 10.5%           |
-| [Concepts]               | 1.2M  | 9.8%            |
-| [Demo]                   | 829K  | 6.7%            |
-| [Ecosystem]              | 500K  | 4.0%            |
+| ------------------------ | ----: | --------------: |
+| [What is OpenTelemetry?] |  290K |            2.4% |
+| [Collector]              |  1.3M |           10.5% |
+| [Concepts]               |  1.2M |            9.8% |
+| [Demo]                   |  829K |            6.7% |
+| [Ecosystem]              |  500K |            4.0% |
 
 [analytics]: https://lookerstudio.google.com/s/tSTKxK1ECeU
 [Collector]: /docs/collector
@@ -139,24 +139,26 @@ The most popular pages and sections of the documentation were:
 [Ecosystem]: /ecosystem/
 [What is OpenTelemetry?]: /docs/what-is-opentelemetry/
 
-### Intriguing insights
+### Fun Trivia
 
-Here are some of the most interesting statistics about the OpenTelemetry
-website:
+Did you know that:
 
-- The most changed content file is `content/en/docs/collector/_index.md`, with
-  91 updates since the file was created.
+- 'OpenTelemetry' occurs 7313 times in the English website pages, which makes it
+  the 3rd most frequent word after 'the' and 'to'. The world 'collector' is used
+  3186 times, putting it in 11th place!
+- [Collector landing page] has been the most updated file since it's creation,
+  with 91 changes.
 - With 511 commits, 26,765 additions, and 9,734 deletions the
   [opentelemetrybot](https://github.com/opentelemetrybot) is the fourth most
-  active contributor.
-- The word 'OpenTelemetry' occurs 7313 times in the source files of the English
-  website, which makes it the 3rd most frequent word after 'the' and 'to'. The
-  world 'collector' is used 3186 times, putting it in 11th place!
-- The PR with the most comments this year and also for all time is
+  active contributor. Go bots!
+- The record for the PR with the most comments this year and also for all time
+  is
   [Blog post for OpenTelemetry Generative AI updates](https://github.com/open-telemetry/opentelemetry.io/pull/5575),
   with 150 comments. Close 2nd place goes to
   [[pt] Translate /pt/docs/languages/go/instrumentation](https://github.com/open-telemetry/opentelemetry.io/pull/5380)
   with 146 comments.
+
+[Collector landing page]: /docs/collector/
 
 ## Community
 
