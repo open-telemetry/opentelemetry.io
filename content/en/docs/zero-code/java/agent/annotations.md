@@ -135,5 +135,5 @@ instrumented.
 ## Next steps
 
 Beyond the use of annotations, the OpenTelemetry API allows you to obtain a
-tracer that can be used for [Manual Instrumentation](../api) and execute code
+tracer that can be used for [custom instrumentation](../api) and execute code
 within the scope of that span.
