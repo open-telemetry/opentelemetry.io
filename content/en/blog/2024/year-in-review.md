@@ -116,17 +116,23 @@ OpenTelemetry website. Your efforts make a difference!
   https://github.com/open-telemetry/opentelemetry.io/compare/2023.12...2024.11
 [monthly releases]: https://github.com/open-telemetry/opentelemetry.io/releases
 
-### User analytics
+### Which pages were the most popular?
 
-Based on
-[data collected with Google Analytics](https://lookerstudio.google.com/s/tSTKxK1ECeU)
-the [opentelemetry.io](/) website had over 12 million views across 4 million
-sessions this year. The year before it was visited with almost 10 million views
-across more than 3 million sessions, which means there have been ~16% more views
-year-over-year.
+According to our publicly available [website analytics], the
+[opentelemetry.io](/) was viewed 12 million times across 4 million sessions this
+year. This marks a ~16% year-over-year increase from last year's nearly 10
+million views and over 3 million sessions.
 
-With almost 2.9 million views, the [landing page](/) was the most popular page,
-followed by the [Collector page](/docs/collector) with over 400,000 views.
+The most popular pages and sections of the docs were:
+
+- [What is OpenTelemetry?] the top-most visited page with 290K views
+- [Collector](/docs/collector) section with 1.3 million views (10.5%)
+- [Concepts](/docs/what-is-opentelemetry/) section with 1.2 million views (9.8%)
+- [Demo](/docs/demo/) section with 829K views (6.7%)
+- [Ecosystem](/ecosystem/) section with 500K views (4%)
+
+[What is OpenTelemetry?]: /docs/what-is-opentelemetry/
+[website analytics]: https://lookerstudio.google.com/s/tSTKxK1ECeU
 
 ### Intriguing insights
 
