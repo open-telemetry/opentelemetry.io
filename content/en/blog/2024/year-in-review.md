@@ -86,15 +86,11 @@ your contributions &mdash; [join us][#2427] in this collaborative effort.
 
 ### Contributions
 
-In
-[December 2022](https://github.com/open-telemetry/opentelemetry.io/releases/tag/2022.12),
-we began publishing monthly releases of our website on GitHub to provide regular
-summaries of contributions. Using this data, we can perform long-term
-comparisons of contributions. For example, when comparing the period from
-[December 2022 to November 2023](https://github.com/open-telemetry/opentelemetry.io/compare/2022.12...2023.11)
-with
-[December 2023 to November 2024](https://github.com/open-telemetry/opentelemetry.io/compare/2023.12...2024.11),
-we see an upward trend: commits increased from 1,011 to 1,340, and contributors
+In [December 2022], we began publishing [monthly releases] of the website to
+provide regular summaries of contributions. Using this data, we can perform
+long-term comparisons of contributions. For example, when comparing the period
+from [December 2022 to November 2023] with [December 2023 to November 2024], we
+see an upward trend: commits increased from 1,011 to 1,340, and contributors
 grew from 92 to 106. The only metric that decreased was the number of files
 changed, which dropped from 1,864 to 1,624.
 
@@ -103,6 +99,14 @@ and 3,982 commits across 3,824 merged pull requests.
 
 We extend our heartfelt thanks to every contributor for helping build and
 improve the OpenTelemetry website!
+
+[December 2022]:
+  https://github.com/open-telemetry/opentelemetry.io/releases/tag/2022.12
+[December 2022 to November 2023]:
+  https://github.com/open-telemetry/opentelemetry.io/compare/2022.12...2023.11
+[December 2023 to November 2024]:
+  https://github.com/open-telemetry/opentelemetry.io/compare/2023.12...2024.11
+[monthly releases]: https://github.com/open-telemetry/opentelemetry.io/releases
 
 ### User analytics
 
