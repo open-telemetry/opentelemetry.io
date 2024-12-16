@@ -1,7 +1,7 @@
 ---
 title: Opentelemetry.io 2024 review
 linkTitle: Year in review
-date: 2024-12-12 # Date to be set when we actually publish
+date: 2024-12-16 # FIXME: ensure this reflects the publication date
 author: >-
   [Severin Neumann](https://github.com/svrnm) (Cisco), [Patrice
   Chalin](https://github.com/chalin/) (CNCF), [Tiffany
@@ -14,7 +14,7 @@ As 2024 draws to a close, we reflect on the year and share some insights and
 accomplishments from [SIG Communications][Comms meetings], the team responsible
 for managing this website, blog, and documentation.
 
-## Key Achievements of 2024
+## Key achievements of 2024
 
 Several key accomplishments stand out in our efforts to make OpenTelemetry more
 accessible, user-friendly, and impactful for our global community.
@@ -26,11 +26,11 @@ launch of our [localized documentation](/blog/2024/docs-localized/). Thanks to
 the efforts of localization teams, over 120 pages were translated from English
 into other languages. The available translations include:
 
-- [Chinese](/zh)
-- [French](/fr)
-- [Japanese](/ja)
-- [Portuguese](/pt)
-- [Spanish](/es)
+- [Chinese](/zh/)
+- [French](/fr/)
+- [Japanese](/ja/)
+- [Portuguese](/pt/)
+- [Spanish](/es/)
 
 A big thank you to everyone who contributed to this initiative. These
 translations make OpenTelemetry more accessible, enhancing the user experience
@@ -196,7 +196,7 @@ docs this year!
 [1.3K PRs]:
   https://github.com/open-telemetry/opentelemetry.io/pulls?q=is%3Apr+is%3Amerged+merged%3A2024-01-01..2024-12-31
 
-## Join Us in 2025
+## Join us in 2025
 
 A big shout-out to everyone for making 2024 a successful year! We look forward
 to continuing our collaboration in 2025.
@@ -209,15 +209,13 @@ You can also:
 
 - Join us at one of the many `#otel` channels in the
   [CNCF Slack](https://slack.cncf.io/).
-- Attend our [Comms meetings], held every other Monday at 10:00 AM Pacific
-  time.
+- Attend our [Comms meetings], held every other Monday at 10:00 AM Pacific time.
 
-Together, we can make 2025 another amazing year for
-[opentelemetry.io](https://opentelemetry.io/)!
+Together, we can make 2025 another amazing year for [opentelemetry.io](/)!
 
 [Comms meetings]:
   https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY
 [discussions]: https://github.com/open-telemetry/opentelemetry.io/discussions
-[get involved]: https://opentelemetry.io/docs/contributing/
+[get involved]: /docs/contributing/
 [issues]: https://github.com/open-telemetry/opentelemetry.io/issues
-[submitting PRs]: https://opentelemetry.io/docs/contributing/pull-requests/
+[submitting PRs]: /docs/contributing/pull-requests/
