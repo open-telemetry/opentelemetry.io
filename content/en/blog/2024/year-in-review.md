@@ -3,8 +3,9 @@ title: Opentelemetry.io 2024 review
 linkTitle: Year in review
 date: 2024-12-12 # Put the current date, we will keep the date updated until your PR is merged
 author:
-  >- # If you have only one author, then add the single name on this line in quotes.
-  [Severin Neumann](https://github.com/svrnm) (Cisco)
+  [Severin Neumann](https://github.com/svrnm) (Cisco),
+  [Patrice Chalin](https://github.com/chalin/) (CNCF),
+  [Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)
 sig: SIG Comms
 cSpell:ignore: opentelemetrybot
 ---
