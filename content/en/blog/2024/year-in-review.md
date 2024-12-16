@@ -1,7 +1,7 @@
 ---
 title: Opentelemetry.io 2024 review
 linkTitle: Year in review
-date: 2024-12-18
+date: 2024-12-12 # Date to be set when we actually publish
 author: >-
   [Severin Neumann](https://github.com/svrnm) (Cisco),
   [Patrice Chalin](https://github.com/chalin/) (CNCF),
