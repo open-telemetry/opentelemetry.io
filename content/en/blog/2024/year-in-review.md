@@ -77,14 +77,14 @@ beginners. If you are interested in helping, [join us here](https://github.com/o
 
 Here are some of the most interesting statistics about the OpenTelemetry website:
 
-- The most changed content file is `content/en/docs/collector/_index.md` with 91
+- The most changed content file is `content/en/docs/collector/_index.md`, with 91
   updates since the file was created.
-- With 511 commits, 26,765 additions and 9,734 deletions the
-  [opentelemetrybot](https://github.com/opentelemetrybot) is our top-4
-  contributor.
-- The word OpenTelemetry occurs 7313 times in the source files of the English
-  website. With that it is the 3rd most frequent word right after 'the' and
-  'to'. The world 'collector' is used 3186 times and at the 11th place!
+- With 511 commits, 26,765 additions, and 9,734 deletions the
+  [opentelemetrybot](https://github.com/opentelemetrybot) is the fourth most
+  active contributor.
+- The word 'OpenTelemetry' occurs 7313 times in the source files of the English
+  website, which makes it the 3rd most frequent word after 'the' and
+  'to'. The world 'collector' is used 3186 times, putting it in 11th place!
 - The PR with the most comments this year and also for all time is
   [Blog post for OpenTelemetry Generative AI updates](https://github.com/open-telemetry/opentelemetry.io/pull/5575),
   with 150 comments. Close 2nd place goes to
