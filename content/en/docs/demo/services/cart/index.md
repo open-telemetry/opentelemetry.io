@@ -97,9 +97,9 @@ builder.Services.AddOpenTelemetry()
 
 ### Exemplars
 
-[Exemplars](/docs/specs/otel/metrics/data-model/#exemplars)
-are configured in the Cart service with trace-based exemplar filter, which
-enables the OpenTelemetry SDK to attach exemplars to metrics.
+[Exemplars](/docs/specs/otel/metrics/data-model/#exemplars) are configured in
+the Cart service with trace-based exemplar filter, which enables the
+OpenTelemetry SDK to attach exemplars to metrics.
 
 First it creates a `CartActivitySource`, `Meter` and two `Histograms`. The
 histogram keeps track from the latency of the methods `AddItem` and `GetCart`,
