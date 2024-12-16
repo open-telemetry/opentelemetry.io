@@ -10507,6 +10507,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-04-30T09:31:37.929550219Z"
   },
+  "https://opentelemetry.io/docs/specs/otel/metrics/data-model/#exemplars": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-16T13:23:57.41761569Z"
+  },
   "https://opentelemetry.io/docs/specs/otel/protocol": {
     "StatusCode": 206,
     "LastSeen": "2024-02-24T14:33:05.630341-08:00"
