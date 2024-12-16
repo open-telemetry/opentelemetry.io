@@ -168,20 +168,24 @@ Did you know that:
 
 ## Amazing Community <i class="fa-regular fa-heart"></i> {#amazing-community}
 
-With [1.3K PRs merged in 2024][PRs], the community has contributed an equally
-impressive number of reviews to ensure the content is accurate, valuable,
+With [1.3K PRs merged in 2024][PRs], the community contributed an equally
+impressive number of reviews to ensure that content is accurate, valuable,
 aligned with our documentation goals, and easy to read and understand.
 
-In addition to PRs, contributors created [almost 500 issues][issues],
-facilitated many valuable [discussions], reporting bugs and suggesting
-improvements. Each of these efforts requires collaboration, thoughtfulness, and
-a shared commitment to the quality of the OpenTelemetry documentation and
+In addition to PRs, contributors created [nearly 500 issues][issues] and engaged
+in many [discussions], reporting bugs, suggesting improvements, and driving
+collaboration. Each of these efforts reflects the thoughtfulness and dedication
+of our community to maintaining the quality of OpenTelemetry’s documentation and
 website.
 
-We are lucky to have many contributors who take on these responsibilities,
-including: approvers and maintainers of other SIGs that co-own parts of our
-website, approvers for the different localization websites, approvers and
-maintainers in SIG Communications, as well as our community at large.
+We are fortunate to have many contributors who take on these responsibilities,
+including:
+
+- **Approvers and maintainers** from other SIGs that co-own parts of the website
+- **Localization teams** who oversee translations for various languages
+- **OpenTelemetry community**, whose contributions make all the
+  difference! Every drive-by edit and typo fixed counts
+- **SIG Communications team members** dedicated to improving documentation
 
 Thank you to everyone who contributed their time and expertise to OpenTelemetry
 docs this year!
