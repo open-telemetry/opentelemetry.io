@@ -33,25 +33,39 @@ A big thank you to everyone who contributed to this initiative. These
 translations make OpenTelemetry more accessible, enhancing the user experience
 for a global audience.
 
-### Information architecture changes
+### Information Architecture (IA) updates
 
-We made significant changes in our Information Architecture (IA) this year,
+This year, we implemented major changes to our Information Architecture (IA),
 including:
 
-- Renamed the documentation section `Instrumentations` to `Language APIs & SDKs`
-  to make it clearer to end users what to expect in that section.
-- Moved `Automatic Instrumentation` into a the `Zero-code instrumentation`
-  section to provide a clearer separation between API and SDK instrumentation
-  and instrumentation tools like a Java agent that inject OpenTelemetry from the
-  outside.
+- Renaming the `Instrumentation` docs section to `Language APIs & SDKs` to
+  better reflect its purpose.
+- Moving `Automatic Instrumentation` into the new `Zero-code Instrumentation`
+  section to more clearly distinguish between instrumentation API & SDK and
+  tools like the Java agent that injects OpenTelemetry externally.
+- More significantly, following the above, the Java SIG [proposed] and
+  [reorganized their documentation][java-reorg], most notably
+  through PRs listed below.
 
-As a follow up to the instrumentation page changes, the Java SIG updated the
-overall structure of their API and SDK documentation to fit better into this new
-architecture.
+  Kudos to [Jack Berg] and the [Java SIG] for this
+  exemplar leadership in improving the language-SIG documentation!
+  - [Refactor Java SDK and configuration #4966][#4966]
+  - [Refactor Java instrumentation #5276][#5276]
+  - [Move performance to Java agent, merge Javadoc into API page #5590][#5590]
 
-For the next year, we plan to rework the way we introduce OpenTelemetry to
-beginners. If you are interested in helping,
-[join us here](https://github.com/open-telemetry/community/pull/2427/).
+For the next year, we plan to rework how we introduce OpenTelemetry to
+beginners. We'd be glad for you to [join us][#2427] in this collective effort.
+
+[#2427]: https://github.com/open-telemetry/community/pull/2427
+[#4966]: https://github.com/open-telemetry/opentelemetry.io/pull/4966
+[#5276]: https://github.com/open-telemetry/opentelemetry.io/pull/5276
+[#5590]: https://github.com/open-telemetry/opentelemetry.io/pull/5590
+[Jack Berg]: https://github.com/jack-berg
+[Java SIG]:
+  https://docs.google.com/document/d/1D7ZD93LxSWexHeztHohRp5yeoTzsi9Dj1HRm7Tad-hM
+[proposed]: https://github.com/open-telemetry/opentelemetry.io/discussions/4853
+[java-reorg]:
+  https://github.com/open-telemetry/opentelemetry.io/pulls?q=is%3Apr+java+is%3Aclosed+label%3Asig%3Ajava+merged%3A2024-01-01..2024-12-31+author%3Ajack-berg
 
 ## Stats
 
