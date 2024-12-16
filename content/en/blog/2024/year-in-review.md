@@ -196,22 +196,28 @@ docs this year!
 [1.3K PRs]:
   https://github.com/open-telemetry/opentelemetry.io/pulls?q=is%3Apr+is%3Amerged+merged%3A2024-01-01..2024-12-31
 
-## Join us in 2025
+## Join Us in 2025
 
-A big shout out to all for making 2024 a successful year, and we look forward to
-continued collaboration in 2025!
+A big shout-out to everyone for making 2024 a successful year! We look forward
+to continuing our collaboration in 2025.
 
-If you're an end user, a contributor, or just enthusiastic about OpenTelemetry,
-we welcome your contributions. You can participate by raising [issues], joining
-[discussions], and [submitting PRs].
+Whether you're an end user, a contributor, or simply enthusiastic about
+OpenTelemetry, we welcome your participation. You can [get involved] by raising
+[issues], participating in [discussions], or [submitting PRs].
 
-You can also join one of the many `#otel` channels of the
-[CNCF Slack](https://slack.cncf.io/) and participate in our [Comms meetings], every
-other Monday at 10:00 AM Pacific time. With your help, we can make 2025
-another successful year for [opentelemetry.io](https://opentelemetry.io/)!
+You can also:
 
-[discussions]: https://github.com/open-telemetry/opentelemetry.io/discussions
-[issues]: https://github.com/open-telemetry/opentelemetry.io/issues
-[submitting PRs]: https://opentelemetry.io/docs/contributing/pull-requests/
+- Join us at one of the many `#otel` channels in the
+  [CNCF Slack](https://slack.cncf.io/).
+- Attend our [Comms meetings], held every other Monday at 10:00 AM Pacific
+  time.
+
+Together, we can make 2025 another amazing year for
+[opentelemetry.io](https://opentelemetry.io/)!
+
 [Comms meetings]:
   https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY
+[discussions]: https://github.com/open-telemetry/opentelemetry.io/discussions
+[get involved]: https://opentelemetry.io/docs/contributing/
+[issues]: https://github.com/open-telemetry/opentelemetry.io/issues
+[submitting PRs]: https://opentelemetry.io/docs/contributing/pull-requests/
