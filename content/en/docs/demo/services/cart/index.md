@@ -97,7 +97,7 @@ builder.Services.AddOpenTelemetry()
 
 ### Exemplars
 
-[Exemplars](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#exemplars)
+[Exemplars](/docs/specs/otel/metrics/data-model/#exemplars)
 are configured in the Cart service with trace-based exemplar filter, which
 enables the OpenTelemetry SDK to attach exemplars to metrics.
 
