@@ -1,5 +1,5 @@
 ---
-title: Extending with custom manual instrumenation
+title: Extending with custom manual instrumentation
 linkTitle: Extending instrumentation
 description:
   Extending the Spring Boot starter with custom manual instrumentation.
