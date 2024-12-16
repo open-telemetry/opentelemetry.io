@@ -413,7 +413,6 @@ maintainers:
       - helm-approvers
       - helm-maintainers
       - helm-triagers
-      - operator-approvers
       - semconv-container-approvers
       - semconv-k8s-approvers
       - semconv-system-approvers
@@ -487,6 +486,16 @@ maintainers:
       - profiling-triagers
     html_url: https://github.com/felixge
     avatar_url: https://avatars.githubusercontent.com/u/15000?v=4
+  - name: frzifus
+    teams:
+      - collector-contrib-triagers
+      - operator-approvers
+      - operator-maintainers
+      - semconv-container-approvers
+      - semconv-k8s-approvers
+      - semconv-system-approvers
+    html_url: https://github.com/frzifus
+    avatar_url: https://avatars.githubusercontent.com/u/10403402?v=4
   - name: hauleth
     teams:
       - erlang-approvers
@@ -605,6 +614,7 @@ maintainers:
       - specs-semconv-maintainers
       - specs-triagers
       - sqlcommenter-approvers
+      - weaver-approvers
       - weaver-maintainers
     html_url: https://github.com/jsuereth
     avatar_url: https://avatars.githubusercontent.com/u/29006?v=4
@@ -700,6 +710,7 @@ maintainers:
     teams:
       - arrow-approvers
       - arrow-maintainers
+      - weaver-approvers
       - weaver-maintainers
     html_url: https://github.com/lquerel
     avatar_url: https://avatars.githubusercontent.com/u/657994?v=4
@@ -1404,15 +1415,6 @@ approvers:
       - ebpf-profiler-approvers
     html_url: https://github.com/florianl
     avatar_url: https://avatars.githubusercontent.com/u/1132494?v=4
-  - name: frzifus
-    teams:
-      - collector-contrib-triagers
-      - operator-approvers
-      - semconv-container-approvers
-      - semconv-k8s-approvers
-      - semconv-system-approvers
-    html_url: https://github.com/frzifus
-    avatar_url: https://avatars.githubusercontent.com/u/10403402?v=4
   - name: grcevski
     teams:
       - go-instrumentation-approvers
@@ -1472,6 +1474,11 @@ approvers:
       - java-instrumentation-triagers
     html_url: https://github.com/jeanbisutti
     avatar_url: https://avatars.githubusercontent.com/u/14811066?v=4
+  - name: jerbly
+    teams:
+      - weaver-approvers
+    html_url: https://github.com/jerbly
+    avatar_url: https://avatars.githubusercontent.com/u/1909032?v=4
   - name: jeremydvoss
     teams:
       - opentelemetry-python-contrib-approvers
