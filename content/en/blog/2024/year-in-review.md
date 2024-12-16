@@ -118,21 +118,26 @@ OpenTelemetry website. Your efforts make a difference!
 
 ### Which pages were the most popular?
 
-According to our publicly available [website analytics], the
-[opentelemetry.io](/) was viewed 12 million times across 4 million sessions this
-year. This marks a ~16% year-over-year increase from last year's nearly 10
-million views and over 3 million sessions.
+According to our publicly available [analytics], [opentelemetry.io](/) was
+viewed 12 million times across 4 million sessions this year. This marks a 16%
+increase from last year's nearly 10 million views and over 3 million sessions.
 
-The most popular pages and sections of the docs were:
+The most popular pages and sections of the documentation were:
 
-- [What is OpenTelemetry?] the top-most visited page with 290K views
-- [Collector](/docs/collector) section with 1.3 million views (10.5%)
-- [Concepts](/docs/what-is-opentelemetry/) section with 1.2 million views (9.8%)
-- [Demo](/docs/demo/) section with 829K views (6.7%)
-- [Ecosystem](/ecosystem/) section with 500K views (4%)
+| Page/Section             | Views | % of Site Total |
+| ------------------------ | -----:| ---------------:|
+| [What is OpenTelemetry?] | 290K  | 2.4%            |
+| [Collector]              | 1.3M  | 10.5%           |
+| [Concepts]               | 1.2M  | 9.8%            |
+| [Demo]                   | 829K  | 6.7%            |
+| [Ecosystem]              | 500K  | 4.0%            |
 
+[analytics]: https://lookerstudio.google.com/s/tSTKxK1ECeU
+[Collector]: /docs/collector
+[Concepts]: /docs/what-is-opentelemetry/
+[Demo]: /docs/demo/
+[Ecosystem]: /ecosystem/
 [What is OpenTelemetry?]: /docs/what-is-opentelemetry/
-[website analytics]: https://lookerstudio.google.com/s/tSTKxK1ECeU
 
 ### Intriguing insights
 
