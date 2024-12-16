@@ -14,7 +14,46 @@ As 2024 draws to a close, we’d like to reflect on the year and share some
 insights and accomplishments from SIG Communications, the team responsible for
 managing this website, blog, and documentation.
 
-## Contributions
+## Highlights
+
+### Localizations
+
+A major accomplishment this year was that
+[we went multilingual](/blog/2024/docs-localized/). Localization teams have been
+translating pages from English into several other languages, with a total of 122 pages
+translated so far! The available languages include:
+
+- [Chinese](/zh)
+- [French](/fr)
+- [Japanese](/ja)
+- [Portuguese](/pt)
+- [Spanish](/es)
+
+We thank everyone who contributed to the translations and are excited to offer
+these language options, enhancing the OpenTelemetry user experience.
+
+### Information architecture changes
+
+We made significant changes in our Information Architecture (IA) this year, including:
+
+- Renamed the documentation section `Instrumentations` to `Language APIs & SDKs`
+  to make it clearer to end users what to expect in that section.
+- Moved `Automatic Instrumentation` into a the `Zero-code instrumentation`
+  section to provide a clearer separation between API and SDK instrumentation
+  and instrumentation tools like a Java agent that inject OpenTelemetry from the
+  outside.
+
+As a follow up to the instrumentation page changes, the Java SIG updated the
+overall structure of their API and SDK documentation to fit better into this new
+architecture.
+
+For the next year, we plan to rework the way we introduce OpenTelemetry to
+beginners. If you are interested in helping,
+[join us here](https://github.com/open-telemetry/community/pull/2427/).
+
+## Stats
+
+### Contributions
 
 In
 [December 2022](https://github.com/open-telemetry/opentelemetry.io/releases/tag/2022.12),
@@ -34,7 +73,7 @@ and 3,982 commits across 3,824 merged pull requests.
 We extend our heartfelt thanks to every contributor for helping build and
 improve the OpenTelemetry website!
 
-## User analytics
+### User analytics
 
 Based on
 [data collected with Google Analytics](https://lookerstudio.google.com/s/tSTKxK1ECeU)
@@ -46,41 +85,7 @@ year-over-year.
 With almost 2.9 million views, the [landing page](/) was the most popular page,
 followed by the [Collector page](/docs/collector) with over 400,000 views.
 
-## Localizations
-
-A major accomplishment this year was that
-[we went multilingual](/blog/2024/docs-localized/). Localization teams have been
-translating pages from English into several languages, with a total of 122 pages
-translated so far! The available languages include:
-
-- [Chinese](/zh)
-- [French](/fr)
-- [Japanese](/ja)
-- [Portuguese](/pt)
-- [Spanish](/es)
-
-We thank everyone who contributed to the translations and are excited to offer
-these language options, enhancing the OpenTelemetry user experience.
-
-## Information architecture changes
-
-We made big changes in our information architecture this year. We renamed the
-documentation section `Instrumentations` to `Language APIs & SDKs` to make it
-clearer to end users what to expect in that section. We also moved the
-`Automatic Instrumentation` content into a section called
-`Zero-code instrumentation` to provide a clearer separation between API and SDK
-instrumentation and instrumentation tools like a Java agent that inject
-OpenTelemetry from the outside.
-
-As a follow up to the instrumentation page changes, the Java SIG updated the
-overall structure of their API and SDK documentation to fit better into this new
-architecture.
-
-For the next year, we plan to rework the way we introduce OpenTelemetry to
-beginners. If you are interested in helping,
-[join us here](https://github.com/open-telemetry/community/pull/2427/).
-
-## Intriguing insights
+### Intriguing insights
 
 Here are some of the most interesting statistics about the OpenTelemetry
 website:
@@ -99,7 +104,9 @@ website:
   [[pt] Translate /pt/docs/languages/go/instrumentation](https://github.com/open-telemetry/opentelemetry.io/pull/5380)
   with 146 comments.
 
-## People
+## Community
+
+### People
 
 Having 1000+ commits per year means that there have been equally as many PRs.
 For each PR, we need reviews to ensure that the added content is accurate, fits
