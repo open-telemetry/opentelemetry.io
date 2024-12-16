@@ -10,13 +10,16 @@ sig: Comms
 cSpell:ignore: Chalin Hrabusa opentelemetrybot
 ---
 
-As 2024 draws to a close, we’d like to reflect on the year and share some
-insights and accomplishments from SIG Communications, the team responsible for
-managing this website, blog, and documentation.
+As 2024 draws to a close, we reflect on the year and share some insights and
+accomplishments from [SIG Communications][Comms meetings], the team responsible
+for managing this website, blog, and documentation.
 
 ## Highlights
 
-### Localizations
+Several key accomplishments stand out in our efforts to make OpenTelemetry more
+accessible, user-friendly, and impactful for our global community.
+
+### Multilingual documentation
 
 A major accomplishment this year was achieving multilingual support with the
 launch of our [localized documentation](/blog/2024/docs-localized/). Thanks to
@@ -33,28 +36,40 @@ A big thank you to everyone who contributed to this initiative. These
 translations make OpenTelemetry more accessible, enhancing the user experience
 for a global audience.
 
-### Information Architecture (IA) updates
+### Information Architecture (IA) improvements
 
-This year, we implemented major changes to our Information Architecture (IA),
-including:
+To **improve the end-user experience** and make OpenTelemetry **documentation
+more intuitive and accessible**, we undertook important updates to our
+Information Architecture (IA) this year. These changes were driven by the need
+to better organize content, clarify the purpose of key sections, and provide a
+more structured and user-friendly experience for developers and contributors
+alike.
+
+Key updates include:
 
 - Renaming the `Instrumentation` docs section to `Language APIs & SDKs` to
-  better reflect its purpose.
+  better reflect its purpose and set clearer expectations for users.
 - Moving `Automatic Instrumentation` into the new `Zero-code Instrumentation`
-  section to more clearly distinguish between instrumentation API & SDK and
-  tools like the Java agent that injects OpenTelemetry externally.
-- More significantly, following the above, the Java SIG [proposed] and
-  [reorganized their documentation][java-reorg], most notably
-  through PRs listed below.
+  section to more clearly distinguish between instrumentation APIs & SDKs and
+  tools like the Java agent, which injects OpenTelemetry externally.
+- Following these updates, the Java SIG [proposed] and [reorganized their
+  documentation][java-reorg], introducing substantial improvements to the
+  structure and clarity of their content. This effort is reflected in the
+  following PRs:
 
-  Kudos to [Jack Berg] and the [Java SIG] for this
-  exemplar leadership in improving the language-SIG documentation!
   - [Refactor Java SDK and configuration #4966][#4966]
   - [Refactor Java instrumentation #5276][#5276]
   - [Move performance to Java agent, merge Javadoc into API page #5590][#5590]
 
-For the next year, we plan to rework how we introduce OpenTelemetry to
-beginners. We'd be glad for you to [join us][#2427] in this collective effort.
+  <!-- prettier-ignore -->
+  Kudos to [Jack Berg] and the [Java SIG] for their exemplary leadership in
+  improving language-SIG documentation!
+  {.mt-4}
+
+Next year, we aim to redesign how OpenTelemetry is introduced to beginners,
+ensuring a smoother and more accessible learning experience. If you're
+passionate about making OpenTelemetry easier to understand and use, we’d love
+your contributions &mdash; [join us][#2427] in this collaborative effort.
 
 [#2427]: https://github.com/open-telemetry/community/pull/2427
 [#4966]: https://github.com/open-telemetry/opentelemetry.io/pull/4966
@@ -67,7 +82,7 @@ beginners. We'd be glad for you to [join us][#2427] in this collective effort.
 [java-reorg]:
   https://github.com/open-telemetry/opentelemetry.io/pulls?q=is%3Apr+java+is%3Aclosed+label%3Asig%3Ajava+merged%3A2024-01-01..2024-12-31+author%3Ajack-berg
 
-## Stats
+## The year in numbers
 
 ### Contributions
 
@@ -139,7 +154,9 @@ If you're an end user, a contributor, or just enthusiastic about OpenTelemetry,
 we welcome your contributions to the website. You can contribute by raising
 issues, joining discussions, or making PRs. Join our
 [channel](https://cloud-native.slack.com/archives/C02UN96HZH6) at the
-[CNCF Slack](https://slack.cncf.io/) and come to our
-[SIG meetings](https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY),
-every other Monday at 10:00 a.m. Pacific time. With your help, we can make 2025
+[CNCF Slack](https://slack.cncf.io/) and come to our [Comms meetings], every
+other Monday at 10:00 a.m. Pacific time. With your help, we can make 2025
 another successful year for [opentelemetry.io](https://opentelemetry.io/)!
+
+[Comms meetings]:
+  https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY
