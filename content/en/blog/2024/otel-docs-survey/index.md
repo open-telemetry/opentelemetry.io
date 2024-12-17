@@ -9,8 +9,8 @@ sig: Communications, End-User
 cSpell:ignore: Hrabusa
 ---
 
-The OpenTelemetry End-User SIG recently surveyed the community to find out how
-user-friendly OpenTelemetry’s documentation is. In an earlier survey, two-thirds
+[The OpenTelemetry End-User SIG](/community/end-user/) recently surveyed the community to find out how
+user-friendly [OpenTelemetry’s documentation](/docs/) is. In an earlier survey, two-thirds
 of respondents named comprehensive documentation as a top resource they wished
 they’d had when getting started with OpenTelemetry. So we decided to dig a
 little deeper. The Docs Usability Survey asked users where they go for OTel
@@ -30,9 +30,9 @@ Check out the results!
   top answers were more examples and more coverage, both in depth and breadth.
 - The Collector docs were the most consulted docs set based on number of
   ratings.
-- The Java documentation was the overall highest rated docs, after normalization
-  and weighting, while the Swift docs received the overall lowest rating
-- Among the six most popular docs sets, the JavaScript docs received the lowest
+- The [Java documentation](/docs/languages/java/) was the overall highest rated docs, after normalization
+  and weighting, while the [Swift](/docs/languages/swift/) docs received the overall lowest rating
+- Among the six most popular docs sets, the [JavaScript](/docs/languages/js/) docs received the lowest
   rating.
 
 ## Detailed insights
