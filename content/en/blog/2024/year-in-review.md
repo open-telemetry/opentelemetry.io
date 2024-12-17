@@ -1,5 +1,5 @@
 ---
-title: Opentelemetry.io 2024 review
+title: OpenTelemetry.io 2024 review
 linkTitle: Year in review
 date: 2024-12-17
 author: >-
@@ -66,7 +66,7 @@ Key IA updates include:
   <!-- prettier-ignore -->
   Kudos to [Jack Berg] and the [Java SIG] for their exemplary leadership in
   improving language-SIG documentation!
-  {.mt-4}
+  {.mt-3}
 
 Next year, we aim to redesign how OpenTelemetry is introduced to beginners,
 ensuring a smoother and more accessible learning experience. If you're
