@@ -53,10 +53,10 @@ Key IA updates include:
 - Moving `Automatic Instrumentation` into the new
   [Zero-code Instrumentation](/docs/zero-code/) section to more clearly
   distinguish between instrumentation APIs & SDKs and tools like the Java agent,
-  used inject telemetry.
+  used to inject telemetry.
 - Following these updates, the Java SIG [proposed] and [reorganized their
   documentation][java-reorg], introducing substantial improvements to the
-  structure and clarity of the content. This bulk of this effort is reflected in
+  structure and clarity of the content. The bulk of this effort is reflected in
   these PRs:
 
   - [Refactor Java SDK and configuration #4966][#4966]
@@ -144,7 +144,7 @@ The most popular pages and sections of the documentation were:
 
 [^1]: Percentage of the site-total 12M views.
 
-### Fun Trivia <i class="fa-solid fa-lightbulb"></i> {#trivia}
+### Fun trivia <i class="fa-solid fa-lightbulb"></i> {#trivia}
 
 Did you know that:
 
