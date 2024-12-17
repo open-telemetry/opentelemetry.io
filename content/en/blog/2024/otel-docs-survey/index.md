@@ -8,14 +8,15 @@ sig: Communications, End-User
 cSpell:ignore: Hrabusa
 ---
 
-[The OpenTelemetry End-User SIG](/community/end-user/) recently surveyed the community to find out how
-user-friendly [OpenTelemetry’s documentation](/docs/) is. In an earlier survey, two-thirds
-of respondents named comprehensive documentation as a top resource they wished
-they’d had when getting started with OpenTelemetry. So we decided to dig a
-little deeper. The Docs Usability Survey asked users where they go for OTel
-documentation, what they’d like to see more of in the docs, and how they rate
-the current state of the docs. We received 48 responses, which we'll use to
-focus our documentation efforts and help us improve in key areas.
+[The OpenTelemetry End-User SIG](/community/end-user/) recently surveyed the
+community to find out how user-friendly [OpenTelemetry's documentation](/docs/)
+is. In an earlier survey, two-thirds of respondents named comprehensive
+documentation as a top resource they wished they'd had when getting started with
+OpenTelemetry. So we decided to dig a little deeper. The Docs Usability Survey
+asked users where they go for OTel documentation, what they'd like to see more
+of in the docs, and how they rate the current state of the docs. We received 48
+responses, which we'll use to focus our documentation efforts and help us
+improve in key areas.
 
 Check out the results!
 
@@ -25,14 +26,18 @@ Check out the results!
 - Of the three types of documentation we asked about (component concepts,
   installation instructions, and troubleshooting), the troubleshooting docs need
   the most work.
-- When asked what information they’d most like to see added to OTel’s docs, the
-  top answers were more examples and more coverage, both in depth and breadth.
+- When asked what information they'd most like to see added to OTel's docs, the
+  top answers were **more examples** and **more coverage**, both in depth and
+  breadth.
 - The Collector docs were the most consulted docs set based on number of
-  ratings.
-- The [Java documentation](/docs/languages/java/) was the overall highest rated docs, after normalization
-  and weighting, while the [Swift](/docs/languages/swift/) docs received the overall lowest rating
-- Among the six most popular docs sets, the [JavaScript](/docs/languages/js/) docs received the lowest
-  rating.
+  ratings. This result tallies with the page view analysis in the SIG
+  Communications'
+  [year-end review](../year-in-review/#which-pages-were-the-most-popular).
+- The [Java documentation](/docs/languages/java/) was the overall highest rated
+  docs set, after normalization and weighting, while the
+  [Swift](/docs/languages/swift/) docs received the overall lowest rating.
+- Among the six most popular docs sets, the [JavaScript](/docs/languages/js/)
+  docs received the lowest rating.
 
 ## Detailed insights
 
@@ -57,7 +62,7 @@ Check out the results!
 
 #### Q: What features or information would you like to see added to opentelemetry.io that aren't currently available?
 
-We asked respondents to describe in their own words what they’d like to see
+We asked respondents to describe in their own words what they'd like to see
 added to the opentelemetry.io documentation. We loosely grouped their responses
 into six categories. Some answers fell in more than one category. You can also
 read the
@@ -112,7 +117,7 @@ we can infer based on their responses which docs sets are the most used.
 - The next five documentation sets are close in popularity, with 50 to 67% of
   respondents rating them.
 
-![Horizontal bar graph showing the number of ratings per OTel component](usage-by-ratings-numbers.png)
+![Horizontal bar graph showing the number of ratings per OTel component](top-six-bar.png)
 
 Here are the tabulated ratings for all languages and components. When the
 results are normalized and weighted, we can see additional insights:
@@ -123,7 +128,7 @@ results are normalized and weighted, we can see additional insights:
 ![Table showing the number of ratings (poor, okay, great) by OpenTelemetry documentation set](ratings-table.png)
 
 If we combine these insights, we can see that the documentation used by the most
-people and needing the most work is the JavaScript documentation.
+people that needs the most work is the JavaScript documentation.
 
 ![Subset of the previous table showing the ratings for the six most popular documentation sets](javascript-table.png)
 
