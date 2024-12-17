@@ -30,7 +30,7 @@ here.
 | Go         |                                                    | [Checkout Service](services/checkout/), [Product Catalog Service](services/product-catalog/) | [Checkout Service](services/checkout/), [Product Catalog Service](services/product-catalog/) |
 | Java       | [Ad Service](services/ad/)                         |                                                                                              | [Ad Service](services/ad/)                                                                   |
 | JavaScript |                                                    |                                                                                              | [Payment Service](services/payment/)                                                         |
-| TypeScript |                                                    | [Frontend](services/frontend/), [React Native App](services/reactnativeapp/)                 | [Frontend](services/frontend/)                                                               |
+| TypeScript |                                                    | [Frontend](services/frontend/), [React Native App](services/react-native-app/)                 | [Frontend](services/frontend/)                                                               |
 | Kotlin     |                                                    | [Fraud Detection Service](services/fraud-detection/)                                         |                                                                                              |
 | PHP        |                                                    | [Quote Service](services/quote/)                                                             | [Quote Service](services/quote/)                                                             |
 | Python     | [Recommendation Service](services/recommendation/) |                                                                                              | [Recommendation Service](services/recommendation/)                                           |
@@ -55,7 +55,7 @@ found here:
 - [Recommendation Service](services/recommendation/)
 - [Shipping Service](services/shipping/)
 - [Image Provider Service](services/imageprovider/)
-- [React Native App](services/reactnativeapp/)
+- [React Native App](services/react-native-app/)
 
 ## Scenarios
 

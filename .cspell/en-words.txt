@@ -108,7 +108,7 @@ quantile
 quantiles
 quarkus
 quoteservice
-reactnativeapp
+react-native-app
 recommendationservice
 redis
 relref

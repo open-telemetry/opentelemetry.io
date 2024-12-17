@@ -32,7 +32,7 @@ quoteservice(Quote Service):::php
 recommendationservice(Recommendation Service):::python
 shippingservice(Shipping Service):::rust
 queue[(queue<br/>&#40Kafka&#41)]:::java
-reactnativeapp(React Native App):::typescript
+react-native-app(React Native App):::typescript
 
 adservice ---->|gRPC| flagd
 
@@ -75,7 +75,7 @@ recommendationservice -->|gRPC| flagd
 
 shippingservice -->|HTTP| quoteservice
 
-reactnativeapp -->|HTTP| frontendproxy
+react-native-app -->|HTTP| frontendproxy
 end
 
 classDef dotnet fill:#178600,color:white;

@@ -22,4 +22,4 @@ To visualize request flows, see the [Service Diagram](../architecture/).
 | [quoteservice](quote/)                    | PHP           | Calculates the shipping costs, based on the number of items to be shipped.                                                           |
 | [recommendationservice](recommendation/)  | Python        | Recommends other products based on what's given in the cart.                                                                         |
 | [shippingservice](shipping/)              | Rust          | Gives shipping cost estimates based on the shopping cart. Ships items to the given address (mock/).                                  |
-| [reactnativeapp](reactnativeapp/)         | TypeScript    | React Native mobile application that provides a UI on top of the shopping services.                                                  |
+| [react-native-app](react-native-app/)         | TypeScript    | React Native mobile application that provides a UI on top of the shopping services.                                                  |
