@@ -33,9 +33,12 @@ Check out the results!
   ratings. This result tallies with the page view analysis in the SIG
   Communications'
   [year-end review](../year-in-review/#which-pages-were-the-most-popular).
-- The [Java documentation](/docs/languages/java/) was the overall highest rated
-  docs set, after normalization and weighting, while the
-  [Swift](/docs/languages/swift/) docs received the overall lowest rating.
+- After normalization and weighting, the
+  [Java documentation](/docs/languages/java/) was the overall highest rated docs
+  set, suggesting that the efforts made to
+  [improve its information architecture](../year-in-review/#ia-improvements)
+  have paid off. Meanwhile, the [Swift](/docs/languages/swift/) docs received
+  the overall lowest rating.
 - Among the six most popular docs sets, the [JavaScript](/docs/languages/js/)
   docs received the lowest rating.
 
