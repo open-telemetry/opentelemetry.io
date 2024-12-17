@@ -1,5 +1,5 @@
 ---
-title: Extending with custom manual instrumentation
+title: Extending with custom manual instrumentation using the OpenTelemetry API
 linkTitle: Extending instrumentation
 description: Extending a Java agent with custom manual instrumentation.
 weight: 21
@@ -8,7 +8,7 @@ weight: 21
 ## Introduction
 
 In addition to the out-of-the-box instrumentation, you can extend the Java agent
-with custom manual instrumentation. This allows you to create
+with custom manual instrumentation using the OpenTelemetry API. This allows you to create
 [spans](/docs/concepts/signals/traces/#spans) and
 [metrics](/docs/concepts/signals/metrics) for your own code without doing too
 many code changes.

@@ -1,5 +1,5 @@
 ---
-title: Extending with custom manual instrumentation
+title: Extending with custom manual instrumentation using the OpenTelemetry API
 linkTitle: Extending instrumentation
 description:
   Extending the Spring Boot starter with custom manual instrumentation.
@@ -9,8 +9,8 @@ weight: 21
 ## Introduction
 
 In addition to the out-of-the-box instrumentation, you can extend the Spring
-starter with custom manual instrumentation. This allows you to create
-[spans](/docs/concepts/signals/traces/#spans) and
+starter with custom manual instrumentation using the OpenTelemetry API. 
+This allows you to create [spans](/docs/concepts/signals/traces/#spans) and
 [metrics](/docs/concepts/signals/metrics) for your own code without doing too
 many code changes.
 
