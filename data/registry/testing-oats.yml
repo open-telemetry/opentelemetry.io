@@ -17,6 +17,8 @@ description: |
 authors:
   - name: Gregor Zeitlinger
     email: gregor.zeitlinger@grafana.com
+  - name: Matthew Hensley
+    email: matthew.hensley@grafana.com
 urls:
   repo: https://github.com/grafana/oats
 createdAt: 2024-12-18
