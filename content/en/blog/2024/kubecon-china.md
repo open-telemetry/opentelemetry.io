@@ -2,10 +2,10 @@
 title: OpenTelemetry Talks at KubeCon China 2024
 linkTitle: KubeCon China 2024
 date: 2024-07-10
-# prettier-ignore
-cSpell:ignore: Alhamdani Censhare EBPF Hrabusa Husni Huxing Jiahang Krom Sianturi Wanqi Zhang Zihao Ziyi
 author: '[Tiffany Hrabusa](https://github.com/tiffany76)'
 sig: Communications SIG
+# prettier-ignore
+cSpell:ignore: Alhamdani Censhare EBPF Hrabusa Husni Huxing Jiahang Krom Sianturi Wanqi Zhang Zihao Ziyi
 ---
 
 Join members of the OpenTelemetry community at

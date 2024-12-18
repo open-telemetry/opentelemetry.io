@@ -18,14 +18,14 @@ my $semconvSpecRepoUrl = 'https://github.com/open-telemetry/semantic-conventions
 my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
 my $specBasePath = '/docs/specs';
 my %versions = qw(
-  spec: 1.39.0
-  otlp: 1.4.0
+  spec: 1.40.0
+  otlp: 1.5.0
   semconv: 1.29.0
 );
 my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
 my $semconvVers = $versions{'semconv:'};
-my $patchMsg2 = 0; # TODO remove along with patch-message 002
+my %patchMsgCount;
 
 sub printTitleAndFrontMatter() {
   print "---\n";
@@ -43,13 +43,14 @@ sub printTitleAndFrontMatter() {
     $frontMatterFromFile =~ s/linkTitle: .*/$& $semconvVers/;
     # $frontMatterFromFile =~ s/body_class: .*/$& td-page--draft/;
     # $frontMatterFromFile =~ s/cascade:\n/$&  draft: true\n/;
-  } elsif ($ARGV =~ /otel\/specification\/logs\/api.md$/) {
-    if ($otelSpecVers ne "1.39.0") {
-      # TODO: delete the enclosing elsif body
-      print STDOUT "INFO [001]: $0: remove obsolete code now that OTel spec has been updated.\n"
-    }
-    $frontMatterFromFile .= "linkTitle: API\naliases: [bridge-api]\n";
   }
+  # Sample front-matter patch:
+  #
+  # } elsif ($ARGV =~ /otel\/specification\/logs\/api.md$/) {
+  #   $frontMatterFromFile .= "linkTitle: API\naliases: [bridge-api]\n";
+  #   printPatchInfoIf("2024-12-01-bridge-api", $otelSpecVers ne "1.39.0");
+  # }
+
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
   if ($title =~ /^OpenTelemetry (Protocol )?(.*)/) {
@@ -62,6 +63,12 @@ sub printTitleAndFrontMatter() {
   print "linkTitle: $linkTitle\n" if $linkTitle and $frontMatterFromFile !~ /linkTitle: /;
   print "$frontMatterFromFile" if $frontMatterFromFile;
   print "---\n";
+}
+
+sub printPatchInfoIf($$) {
+  my ($patchID, $specVersTest) = @_;
+  print STDOUT "INFO [$patchID]: $0: remove obsolete patch code now that OTel spec has been updated.\n"
+    if $specVersTest && !$patchMsgCount{$patchID}++;
 }
 
 # main
@@ -117,12 +124,11 @@ while(<>) {
   # SPECIFICATION custom processing
 
   # TODO: drop the entire if statement patch code when OTel spec vers contains
-  # https://github.com/open-telemetry/opentelemetry-specification/pull/4287,
-  # which should be vers > 1.39.0.
-  if ($ARGV =~ /otel\/spec/) {
-    s|(/api\.md)#logs-api\b|$1|g;
-    print STDOUT "INFO [002]: $0: remove obsolete patch code now that OTel spec has been updated.\n"
-      if $otelSpecVers ne "1.39.0" && !$patchMsg2++
+  # https://github.com/open-telemetry/opentelemetry-specification/issues/4338,
+  # which should be vers > 1.40.0.
+  if ($ARGV =~ /otel\/specification\/logs/) {
+    s|(/data-model.md/?)#event-name\b|$1#field-eventname|g;
+    printPatchInfoIf("2024-12-13-event-name", $otelSpecVers ne "1.40.0");
   }
 
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;

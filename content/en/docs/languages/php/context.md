@@ -1,8 +1,8 @@
 ---
 title: Context
 weight: 55
-cSpell:ignore: Swoole
 description: Learn how the context API works in instrumented applications.
+cSpell:ignore: Swoole
 ---
 
 OpenTelemetry works by storing and propagating telemetry data. For example, when

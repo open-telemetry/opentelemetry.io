@@ -22,7 +22,7 @@ and document hooks. Other advantages provided by native instrumentation include:
   various consumption scenarios using a wide variety of well-documented
   OpenTelemetry extensibility points.
 
-![ Native Instrumentation vs instrumentation libraries](/img/libraries-instrumentation.svg)
+![ Native Instrumentation vs instrumentation libraries](../native-vs-libraries.svg)
 
 ## Semantic conventions
 
