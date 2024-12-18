@@ -139,25 +139,26 @@ results are normalized and weighted, we can see additional insights:
 - The Java documentation has the highest overall rating.
 - The Swift documentation has the lowest overall rating.
 
-> **How would you rate your experience using the current OTel documentation for the following languages and components?**
+> **How would you rate your experience using the current OTel documentation for
+> the following languages and components?**
 >
 > | Language or component | Poor | Okay | Great | Total responses | Normalized & weighted |
-> |:-----------------------|:----:|:----:|:-----:|:---------------:|:----------------------:|
-> | Java                  | 3    | 16   | 8     | 27              | 7.3333                |
-> | PHP                   | 1    | 4    | 2     | 7               | 7.1429                |
-> | GO                    | 6    | 12   | 9     | 27              | 7.1111                |
-> | Collector             | 9    | 17   | 11    | 37              | 6.8108                |
-> | Python                | 6    | 17   | 8     | 31              | 6.7742                |
-> | Kubernetes            | 6    | 20   | 6     | 32              | 6.3750                |
-> | C++                   | 0    | 7    | 0     | 7               | 6.0000                |
-> | JavaScript            | 3    | 19   | 2     | 24              | 6.0000                |
-> | Ruby                  | 1    | 5    | 1     | 7               | 6.2857                |
-> | Rust                  | 4    | 4    | 2     | 10              | 5.6000                |
-> | .NET                  | 4    | 8    | 2     | 14              | 5.7143                |
-> | Erlang                | 1    | 6    | 0     | 7               | 5.4286                |
-> | FaaS                  | 5    | 7    | 0     | 12              | 4.3333                |
-> | Swift                 | 3    | 3    | 0     | 6               | 4.0000                |
-> | **Total**             | 52   | 145  | 51    |                 |                      |
+> | :-------------------- | :--: | :--: | :---: | :-------------: | :-------------------: |
+> | Java                  |  3   |  16  |   8   |       27        |        7.3333         |
+> | PHP                   |  1   |  4   |   2   |        7        |        7.1429         |
+> | GO                    |  6   |  12  |   9   |       27        |        7.1111         |
+> | Collector             |  9   |  17  |  11   |       37        |        6.8108         |
+> | Python                |  6   |  17  |   8   |       31        |        6.7742         |
+> | Kubernetes            |  6   |  20  |   6   |       32        |        6.3750         |
+> | C++                   |  0   |  7   |   0   |        7        |        6.0000         |
+> | JavaScript            |  3   |  19  |   2   |       24        |        6.0000         |
+> | Ruby                  |  1   |  5   |   1   |        7        |        6.2857         |
+> | Rust                  |  4   |  4   |   2   |       10        |        5.6000         |
+> | .NET                  |  4   |  8   |   2   |       14        |        5.7143         |
+> | Erlang                |  1   |  6   |   0   |        7        |        5.4286         |
+> | FaaS                  |  5   |  7   |   0   |       12        |        4.3333         |
+> | Swift                 |  3   |  3   |   0   |        6        |        4.0000         |
+> | **Total**             |  52  | 145  |  51   |                 |                       |
 
 If we combine these insights, we can see that the documentation used by the most
 people that needs the most work is the JavaScript documentation.
