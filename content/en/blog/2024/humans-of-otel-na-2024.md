@@ -34,6 +34,8 @@ Also, special thanks to:
 - [Henrik Rexed](https://github.com/henrikrexed) for providing the audio and
   video recording equipment, and doing the initial edits of the raw footage
 
+## Video
+
 You can watch the full recording here:
 
 {{<youtube TIMgKXCeiyQ>}}
