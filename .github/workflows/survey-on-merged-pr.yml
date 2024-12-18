@@ -9,21 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
     steps:
-      - name: Check if PR author is a member of the org
-        id: check-membership
-        run: |
-          PR_AUTHOR=$(jq -r '.pull_request.user.login' "$GITHUB_EVENT_PATH")
-          ORG_NAME="${{ github.repository_owner }}"
-          ORG_MEMBERS=$(gh api "orgs/$ORG_NAME/members" --jq '.[].login')
-          echo "PR_AUTHOR=${PR_AUTHOR}" >> $GITHUB_ENV
-          echo "MEMBER_FOUND=false" >> $GITHUB_ENV
-          for MEMBER in $ORG_MEMBERS; do
-            if [[ "$PR_AUTHOR" == "$MEMBER" ]]; then
-              echo "MEMBER_FOUND=true" >> $GITHUB_ENV
-              break
-            fi
-          done
-
       - name: Check if user is a member of the org
         id: check-membership
         run: |
