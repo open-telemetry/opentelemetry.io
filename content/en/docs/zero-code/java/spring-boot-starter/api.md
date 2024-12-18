@@ -1,8 +1,7 @@
 ---
-title: Extending with custom manual instrumentation using the OpenTelemetry API
-linkTitle: Extending instrumentation
-description:
-  Extending the Spring Boot starter with custom manual instrumentation.
+title: Extending instrumentations with the API
+linkTitle: Extend with the API
+description: Use the OpenTelemetry API in combination with the Spring Boot starter to extend the automatically generated telemetry with custom spans and metrics
 weight: 21
 ---
 
