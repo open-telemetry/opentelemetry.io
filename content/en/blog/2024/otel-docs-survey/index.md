@@ -1,7 +1,7 @@
 ---
 title: Insights from the OpenTelemetry Docs Usability Survey
 linkTitle: OTel-docs Survey
-date: 2024-12-13
+date: 2024-12-18
 author: '[Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)'
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/5793
 sig: Communications, End-User
