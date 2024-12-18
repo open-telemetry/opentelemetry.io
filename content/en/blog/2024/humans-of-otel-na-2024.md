@@ -43,8 +43,7 @@ look forward to your continued contributions in 2025 and beyond! 🎉
 
 ## Transcript
 
-If reading is more your thing, check out the transcript of our conversations
-below.
+If reading is more your thing, the transcript of our conversations are below.
 
 ### 1- Meet the Humans of OTel
 
