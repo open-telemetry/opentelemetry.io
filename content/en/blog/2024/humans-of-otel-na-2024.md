@@ -3,7 +3,7 @@ title: The Humans OpenTelemetry - KubeCon NA 2024
 linkTitle: Humans of OTel NA 2024
 date: 2024-12-17
 author: >-
-  [Adriana Villela](https://github.com/avillela) (Dynatrace),
+  [Adriana Villela](https://github.com/avillela) (Dynatrace)
 issue: 5812
 sig: End User SIG
 # prettier-ignore
