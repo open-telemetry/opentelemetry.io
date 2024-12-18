@@ -1,7 +1,7 @@
 ---
-title: Extending with custom manual instrumentation using the OpenTelemetry API
-linkTitle: Extending instrumentation
-description: Extending a Java agent with custom manual instrumentation.
+title: Extending instrumentations with the API
+linkTitle: Extend with the API
+description: Use the OpenTelemetry API in combination with the Java agent to extend the automatically generated telemetry with custom instrumentations
 weight: 21
 ---
 
