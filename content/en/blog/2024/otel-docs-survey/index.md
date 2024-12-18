@@ -12,35 +12,37 @@ cSpell:ignore: Hrabusa
 community to find out how user-friendly [OpenTelemetry's documentation](/docs/)
 is. In an earlier survey, two-thirds of respondents named comprehensive
 documentation as a top resource they wished they'd had when getting started with
-OpenTelemetry. So we decided to dig a little deeper. The Docs Usability Survey
-asked users where they go for OTel documentation, what they'd like to see more
-of in the docs, and how they rate the current state of the docs. We received 48
-responses, which we'll use to focus our documentation efforts and help us
-improve in key areas.
+OpenTelemetry. So we decided to dig a little deeper.
 
-Check out the results!
+The Docs Usability Survey asked users where they go for OTel documentation, what
+they'd like to see more of in the docs, and how they rate the current state of
+the docs. We received 48 responses, which we'll use to focus our documentation
+efforts and help us improve in key areas.
+
+A big thank you to everyone who participated in the survey! Let's review the
+results.
 
 ## Key takeaways
 
-- Folks want more visual aids like diagrams and screenshots.
+- Respondents expressed a desire for **more visual aids**, such as diagrams and
+  screenshots.
 - Of the three types of documentation we asked about (component concepts,
-  installation instructions, and troubleshooting), the troubleshooting docs need
-  the most work.
-- When asked what information they'd most like to see added to OTel's docs, the
-  top answers were **more examples** and **more coverage**, both in depth and
-  breadth.
-- The Collector docs were the most consulted docs set based on number of
-  ratings. This result tallies with the page view analysis in the SIG
-  Communications'
+  installation instructions, and troubleshooting), the **troubleshooting docs**
+  were identified as needing the most improvement.
+- When asked about the information they’d most like to see added to OTel's docs,
+  the top responses were **more examples** and **expanded coverage**, both in
+  depth and breadth.
+- The [Collector](/docs/collector/) docs emerged as the most frequently
+  consulted resource, a finding that aligns with the page view analysis in the
+  SIG Communications'
   [year-end review](../year-in-review/#which-pages-were-the-most-popular).
-- After normalization and weighting, the
-  [Java documentation](/docs/languages/java/) was the overall highest rated docs
-  set, suggesting that the efforts made to
-  [improve its information architecture](../year-in-review/#ia-improvements)
-  have paid off. Meanwhile, the [Swift](/docs/languages/swift/) docs received
-  the overall lowest rating.
-- Among the six most popular docs sets, the [JavaScript](/docs/languages/js/)
-  docs received the lowest rating.
+- After normalization and weighting, the [Java](/docs/languages/java/)
+  documentation received the **highest overall rating**, reflecting the positive
+  impact of recent improvements to its
+  [organization](../year-in-review/#ia-improvements). Conversely, the
+  [Swift](/docs/languages/swift/) docs received the lowest overall rating.
+- Among the six most popular documentation sets, the
+  [JavaScript](/docs/languages/js/) docs received the **lowest rating**.
 
 ## Detailed insights
 
@@ -53,23 +55,32 @@ Check out the results!
 
 #### Q: What source do you primarily rely on when you're looking for information about OpenTelemetry?
 
-- Overall, the majority of respondents (52%) rely on the opentelemetry.io
+- Overall, the majority of respondents (52%) rely on the [opentelemetry.io]
   documentation.
 - Respondents early in their observability practice (beginner and intermediate)
-  are more likely to use the opentelemetry.io documentation.
+  are more likely to use the [opentelemetry.io] documentation.
 - Expert observability practitioners prefer the code repository documentation.
 
-![Percentage of website users by observability knowledge level](website-usage.png)
+[opentelemetry.io]: /docs/
+
+> **Respondents who use [opentelemetry.io] as their primary information**
+> source<br>_By level of observability knowledge_
+>
+> | Beginners | Intermediates | Experts |
+> | :-------: | :-----------: | :-----: |
+> |   100%    |      62%      |   44%   |
 
 ### Documentation wish list
 
 #### Q: What features or information would you like to see added to opentelemetry.io that aren't currently available?
 
 We asked respondents to describe in their own words what they'd like to see
-added to the opentelemetry.io documentation. We loosely grouped their responses
-into six categories. Some answers fell in more than one category. You can also
-read the
-[full responses](https://docs.google.com/spreadsheets/d/1kpJQYiEGtpZorICbl-QfYL3mKfeoRLiUywvKcV8fcNA/edit?resourcekey=&gid=439437959#gid=439437959).
+added to the [opentelemetry.io] documentation. We loosely grouped their
+responses into six categories. Some answers fell in more than one category. For
+full responses, see [Docs Usability Survey Responses].
+
+[Docs Usability Survey Responses]:
+  https://docs.google.com/spreadsheets/d/1kpJQYiEGtpZorICbl-QfYL3mKfeoRLiUywvKcV8fcNA
 
 - More examples: 17 (35%)
 - Deeper or broader coverage: 13 (27%)
@@ -128,24 +139,51 @@ results are normalized and weighted, we can see additional insights:
 - The Java documentation has the highest overall rating.
 - The Swift documentation has the lowest overall rating.
 
-![Table showing the number of ratings (poor, okay, great) by OpenTelemetry documentation set](ratings-table.png)
+> **How would you rate your experience using the current OTel documentation for the following languages and components?**
+>
+> | Language or component | Poor | Okay | Great | Total responses | Normalized & weighted |
+> |:-----------------------|:----:|:----:|:-----:|:---------------:|:----------------------:|
+> | Java                  | 3    | 16   | 8     | 27              | 7.3333                |
+> | PHP                   | 1    | 4    | 2     | 7               | 7.1429                |
+> | GO                    | 6    | 12   | 9     | 27              | 7.1111                |
+> | Collector             | 9    | 17   | 11    | 37              | 6.8108                |
+> | Python                | 6    | 17   | 8     | 31              | 6.7742                |
+> | Kubernetes            | 6    | 20   | 6     | 32              | 6.3750                |
+> | C++                   | 0    | 7    | 0     | 7               | 6.0000                |
+> | JavaScript            | 3    | 19   | 2     | 24              | 6.0000                |
+> | Ruby                  | 1    | 5    | 1     | 7               | 6.2857                |
+> | Rust                  | 4    | 4    | 2     | 10              | 5.6000                |
+> | .NET                  | 4    | 8    | 2     | 14              | 5.7143                |
+> | Erlang                | 1    | 6    | 0     | 7               | 5.4286                |
+> | FaaS                  | 5    | 7    | 0     | 12              | 4.3333                |
+> | Swift                 | 3    | 3    | 0     | 6               | 4.0000                |
+> | **Total**             | 52   | 145  | 51    |                 |                      |
 
 If we combine these insights, we can see that the documentation used by the most
 people that needs the most work is the JavaScript documentation.
 
-![Subset of the previous table showing the ratings for the six most popular documentation sets](javascript-table.png)
+> **Where should we focus our improvement efforts?**<br> _JavaScript is one of
+> the six most-used docs sets, but its rating is the lowest._
+>
+> | Language or component | Poor | Okay | Great | Total responses | Normalized & weighted |
+> | :-------------------- | :--: | :--: | :---: | :-------------: | :-------------------: |
+> | GO                    |  6   |  12  |   9   |       27        |        7.1111         |
+> | Java                  |  3   |  16  |   8   |       27        |        7.3333         |
+> | JavaScript            |  3   |  19  |   2   |       24        |        6.0000         |
+> | Python                |  6   |  17  |   8   |       31        |        6.7742         |
+> | Collector             |  9   |  17  |  11   |       37        |        6.8108         |
+> | Kubernetes            |  6   |  20  |   6   |       32        |        6.3750         |
 
 ## Learn more
 
-For a more detailed look at the survey, you can see the
-[full results](https://docs.google.com/spreadsheets/d/1kpJQYiEGtpZorICbl-QfYL3mKfeoRLiUywvKcV8fcNA/edit?resourcekey=&gid=439437959#gid=439437959).
+For detailed survey results, see [Docs Usability Survey Responses].
 
-## Keep in touch
+## Your feedback is essential
 
-Thanks to everyone who participated in the survey! We rely on your feedback to
-help guide the future development of OpenTelemetry and to ensure it continues to
-meet your evolving needs. You can keep in touch and learn about upcoming surveys
-in the following places:
+Thanks again to everyone who participated in the survey! Your feedback is
+crucial for guiding the future development of OpenTelemetry and ensuring it
+continues to meet your evolving needs. Stay connected and learn about upcoming
+surveys through the following channels:
 
 - [#otel-sig-end-user Slack channel](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
 - [#otel-comms Slack channel](https://cloud-native.slack.com/archives/C02UN96HZH6)
