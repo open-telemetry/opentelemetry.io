@@ -1,7 +1,9 @@
 ---
 title: Extending instrumentations with the API
 linkTitle: Extend with the API
-description: Use the OpenTelemetry API in combination with the Spring Boot starter to extend the automatically generated telemetry with custom spans and metrics
+description:
+  Use the OpenTelemetry API in combination with the Spring Boot starter to
+  extend the automatically generated telemetry with custom spans and metrics
 weight: 21
 ---
 
