@@ -11,8 +11,8 @@ tags:
   - utilities
 license: Apache 2.0
 description: |
-    OATs (OpenTelemetry Application Testing Suite) is a testing suite for OpenTelemetry applications.  
-    Tests are written in YAML and validate traces using TraceQL, logs using LogQL, and metrics using PromQL.
+  OATs is a testing suite for OpenTelemetry applications.
+  Tests are written in YAML and validate traces with TraceQL, logs with LogQL, and metrics with PromQL.
 
 authors:
   - name: Gregor Zeitlinger
