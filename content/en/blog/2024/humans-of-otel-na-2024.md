@@ -1,5 +1,5 @@
 ---
-title: The Humans OpenTelemetry - KubeCon NA 2024
+title: The Humans of OpenTelemetry - KubeCon NA 2024
 linkTitle: Humans of OTel NA 2024
 date: 2024-12-19
 author: >-
