@@ -17,11 +17,11 @@ the JS layer
 
 {{% alert title="Important" color="warning" %}}
 
-The JS OTel packages are supported for node and web environments.
-While they work for React Native as well they are not currently explicitly
-supported for that environment and may break compatibility with minor version
-updates or require workarounds. Building more support for React Native is an
-area of active development.
+The JS OTel packages are supported for node and web environments. While they
+work for React Native as well they are not currently explicitly supported for
+that environment and may break compatibility with minor version updates or
+require workarounds. Building more support for React Native is an area of active
+development.
 
 {{% /alert %}}
 
