@@ -1,4 +1,4 @@
-# cSpell:ignore Grcevski Zeitlinger
+# cSpell:ignore Grcevski Nikola Zeitlinger
 title: OpenTelemetry Acceptance Tests (OATs)
 registryType: utilities
 language: go
