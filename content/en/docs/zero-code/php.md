@@ -267,3 +267,5 @@ to collect custom telemetry data.
 
 For more examples, see
 [opentelemetry-php-contrib/examples](https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/examples).
+
+A full working example of this can be found [here](/content/en/docs/zero-code/php)
