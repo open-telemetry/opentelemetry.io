@@ -5,9 +5,9 @@ date: 2024-09-25
 author: >-
   [Joshua MacDonald](https://github.com/jmacd) (ServiceNow), [Laurent
   Querel](https://github.com/lquerel) (F5)
-cSpell:ignore: Querel Zstd
 issue: 5193
 sig: OpenTelemetry Arrow
+cSpell:ignore: Querel Zstd
 ---
 
 The OpenTelemetry Protocol with Apache Arrow (OTel-Arrow) project's

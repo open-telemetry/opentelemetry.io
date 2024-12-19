@@ -45,7 +45,7 @@ async function pruneTask() {
     },
     list: {
       type: 'boolean',
-      description: 'List the <num> + 1 oldest entries. No entries are pruned.',
+      description: 'List entry prune candidates. No entries are pruned.',
     },
   }).argv;
 
@@ -85,11 +85,6 @@ async function pruneTask() {
     const json = await fs.readFile(refcacheFile, 'utf8');
     const entries = JSON.parse(json);
 
-    if (list) {
-      listOldest(entries, n + 1);
-      return;
-    }
-
     const numEntriesWith4xxStatus = prune4xxEntriesAndReturnCount(entries);
 
     // Create array of entries of prune candidates by date, sorted by LastSeen:
@@ -111,20 +106,21 @@ async function pruneTask() {
       );
     }
 
-    if (n == 0) {
+    var keysToPrune = pruneCandidatesByDate__sorted.map((item) => item[0]);
+    if (n > 0) keysToPrune = keysToPrune.slice(0, n);
+
+    if (list) {
+      listEntries(keysToPrune, entries);
+      return;
+    } else if (n == 0) {
       console.log(
         `WARN: num is ${n} so no entries will be pruned by date. Specify number of entries to prune as --num <n>.`,
       );
       if (numEntriesWith4xxStatus == 0) return;
     }
 
-    // Get keys of at most n entries to prune
-    const keysToPrune = pruneCandidatesByDate__sorted
-      .slice(0, n)
-      .map((item) => item[0]);
     keysToPrune.forEach((key) => delete entries[key]);
     console.log(`INFO: ${keysToPrune.length} entries pruned.`);
-
     const prettyJson = JSON.stringify(entries, null, 2) + '\n';
     await fs.writeFile(refcacheFile, prettyJson, 'utf8');
   } catch (err) {
@@ -132,18 +128,10 @@ async function pruneTask() {
   }
 }
 
-function listOldest(entries, numberOfEntries) {
-  const entriesArray = Object.keys(entries)
-    .map((url) => [url, entries[url].LastSeen, entries[url].StatusCode])
-    .sort((a, b) => new Date(a[1]) - new Date(b[1]));
-  const oldestEntries = entriesArray.slice(0, numberOfEntries);
-
-  if (oldestEntries.length > 0)
-    console.log(`Listing oldest ${numberOfEntries} entries:`);
-
-  oldestEntries.forEach((e) => {
-    const date = new Date(e[1]);
-    console.log(`  ${formattedDate(date)} ${formattedTime(date)} for ${e[0]}`);
+function listEntries(keys, entries) {
+  keys.forEach((key) => {
+    const date = new Date(entries[key].LastSeen);
+    console.log(`  ${formattedDate(date)} ${formattedTime(date)} for ${key}`);
   });
 }
 

@@ -5,8 +5,8 @@ date: 2024-09-04
 author: >-
   [Reese Lee](https://github.com/reese-lee) (New Relic), [Adriana
   Villela](https://github.com/avillela) (ServiceNow)
-cSpell:ignore: hashmod kubelet sharded targetallocator
 canonical_url: https://newrelic.com/blog/how-to-relic/prometheus-and-opentelemetry-better-together
+cSpell:ignore: hashmod kubelet sharded targetallocator
 ---
 
 ![Image of a Greek god holding a torch with the Prometheus logo, and OTel logo](Prom-and-otel-logos.png)

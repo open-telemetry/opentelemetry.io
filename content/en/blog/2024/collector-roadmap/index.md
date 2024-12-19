@@ -2,9 +2,9 @@
 title: The roadmap to v1 for the OpenTelemetry Collector
 linkTitle: Collector Roadmap
 date: 2024-05-06
+author: '[Alex Boten](https://github.com/codeboten) (Honeycomb)'
 # prettier-ignore
 cSpell:ignore: Antipatterns Boten Broadbridge Helmuth Hrabovcak Ishan Jaglowski OTTL Pantuza pushback Shishi Vijay
-author: '[Alex Boten](https://github.com/codeboten) (Honeycomb)'
 ---
 
 The [OpenTelemetry Collector](/docs/collector/) is a very popular component in

@@ -19,6 +19,6 @@ authors:
 createdAt: 2024-11-18
 package:
   registry: packagist
-  name: opentelemetry-auto-ext-rdkafka
+  name: open-telemetry/opentelemetry-auto-ext-rdkafka
   version: 0.0.1
 isFirstParty: false

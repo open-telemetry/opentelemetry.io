@@ -13,6 +13,8 @@ quickly gain some observability for a service without having to use the
 OpenTelemetry API & SDK for
 [code-based instrumentation](/docs/concepts/instrumentation/code-based).
 
+![Zero Code](./zero-code.svg)
+
 Zero-code instrumentation adds the OpenTelemetry API and SDK capabilities to
 your application typically as an agent or agent-like installation. The specific
 mechanisms involved may differ by language, ranging from bytecode manipulation,

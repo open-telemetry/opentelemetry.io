@@ -1,8 +1,8 @@
 ---
 title: Traces
 weight: 1
-cSpell:ignore: Guten
 description: The path of a request through your application.
+cSpell:ignore: Guten
 ---
 
 **Traces** give us the big picture of what happens when a request is made to an

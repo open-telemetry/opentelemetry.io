@@ -1,8 +1,8 @@
 ---
 title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
-cSpell:ignore: oatpp rolldice
 weight: 10
+cSpell:ignore: oatpp rolldice
 ---
 
 This page will show you how to get started with OpenTelemetry in C++.
