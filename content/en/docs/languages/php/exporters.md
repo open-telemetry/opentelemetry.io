@@ -182,6 +182,39 @@ $tracerProvider =  new TracerProvider(
 $tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
 ```
 
+## Instana
+
+To send collected trace data to an [Instana](https://www.ibm.com/products/instana) endpoint, you'll need the `open-telemetry/exporter-instana` package.
+
+```shell
+composer require open-telemetry/exporter-instana
+```
+
+This package allows for converting OpenTelemetry spans into Instana spans before sending them natively to the Instana backend.
+
+To open a transport you can do one of the following
+
+```php
+$transport = new InstanaTransport('http://127.0.0.1:42699', 10);
+$converter = new SpanConverter($transport->getUuid(), $transport->getPid());
+$instanaExporter = new SpanExporter($transport, $converter);
+$tracerProvider = new TracerProvider(
+    new SimpleSpanProcessor($instanaExporter)
+);
+$tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
+```
+
+or utilize the factory which loads the variables `OTEL_EXPORTER_INSTANA_ENDPOINT` and `OTEL_EXPORTER_INSTANA_TIMEOUT`.
+
+```php
+$tracerProvider = new TracerProvider(
+    new SimpleSpanProcessor(
+        (new SpanExporterFactory)->create()
+    )
+);
+$tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
+```
+
 ## Minimizing export delays
 
 Most PHP runtimes are synchronous and blocking. Sending telemetry data
