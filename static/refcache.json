@@ -1635,6 +1635,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T15:25:24.128818-05:00"
   },
+  "https://bsky.app/profile/opentelemetry.io": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-17T15:37:42.958638-05:00"
+  },
   "https://bugs.openjdk.java.net/browse/JDK-8161253": {
     "StatusCode": 200,
     "LastSeen": "2024-05-25T07:41:26.50757-04:00"
@@ -3895,6 +3899,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:19:48.633928+02:00"
   },
+  "https://github.com/AkhigbeEromo": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-17T15:37:25.440239-05:00"
+  },
   "https://github.com/AlchemyDing": {
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:19:53.078909+02:00"
@@ -4851,6 +4859,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:06:29.763418-05:00"
   },
+  "https://github.com/dattto": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-17T15:37:33.267299-05:00"
+  },
   "https://github.com/david-luna": {
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:15:40.097509+02:00"
@@ -5078,6 +5090,10 @@
   "https://github.com/ericmustin": {
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:13:05.291087+02:00"
+  },
+  "https://github.com/esara": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-17T15:37:35.983226-05:00"
   },
   "https://github.com/esigo": {
     "StatusCode": 200,
@@ -5335,6 +5351,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:11:55.064618+02:00"
   },
+  "https://github.com/hazelweakly": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-17T15:37:22.462683-05:00"
+  },
   "https://github.com/hdost": {
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:13:46.266332+02:00"
@@ -5346,6 +5366,10 @@
   "https://github.com/hekike": {
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:21:30.439202+02:00"
+  },
+  "https://github.com/hellobudha": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-17T15:37:26.207061-05:00"
   },
   "https://github.com/henrikrexed": {
     "StatusCode": 200,
@@ -6026,6 +6050,10 @@
   "https://github.com/mlocati/docker-php-extension-installer": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:55:35.599232-05:00"
+  },
+  "https://github.com/mlunadia": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-17T15:37:29.852904-05:00"
   },
   "https://github.com/mnadeem/opentelemetry-instrumentation-mssql": {
     "StatusCode": 200,
@@ -14694,6 +14722,10 @@
   "https://www.youtube.com/@otel-official": {
     "StatusCode": 200,
     "LastSeen": "2024-04-15T11:38:45.271323+02:00"
+  },
+  "https://www.youtube.com/embed/TIMgKXCeiyQ": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-17T15:37:39.559999-05:00"
   },
   "https://www.youtube.com/embed/bsfMECwmsm0": {
     "StatusCode": 200,
