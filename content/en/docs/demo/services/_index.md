@@ -15,10 +15,11 @@ To visualize request flows, see the [Service Diagram](../architecture/).
 | [currencyservice](currency/)              | C++           | Converts one money amount to another currency. Uses real values fetched from European Central Bank. It's the highest QPS service.    |
 | [emailservice](email/)                    | Ruby          | Sends users an order confirmation email (mock/).                                                                                     |
 | [frauddetectionservice](fraud-detection/) | Kotlin        | Analyzes incoming orders and detects fraud attempts (mock/).                                                                         |
-| [frontend](frontend/)                     | JavaScript    | Exposes an HTTP server to serve the website. Does not require sign up / login and generates session IDs for all users automatically. |
+| [frontend](frontend/)                     | TypeScript    | Exposes an HTTP server to serve the website. Does not require sign up / login and generates session IDs for all users automatically. |
 | [loadgenerator](load-generator/)          | Python/Locust | Continuously sends requests imitating realistic user shopping flows to the frontend.                                                 |
 | [paymentservice](payment/)                | JavaScript    | Charges the given credit card info (mock/) with the given amount and returns a transaction ID.                                       |
 | [productcatalogservice](product-catalog/) | Go            | Provides the list of products from a JSON file and ability to search products and get individual products.                           |
 | [quoteservice](quote/)                    | PHP           | Calculates the shipping costs, based on the number of items to be shipped.                                                           |
 | [recommendationservice](recommendation/)  | Python        | Recommends other products based on what's given in the cart.                                                                         |
 | [shippingservice](shipping/)              | Rust          | Gives shipping cost estimates based on the shopping cart. Ships items to the given address (mock/).                                  |
+| [react-native-app](react-native-app/)     | TypeScript    | React Native mobile application that provides a UI on top of the shopping services.                                                  |
