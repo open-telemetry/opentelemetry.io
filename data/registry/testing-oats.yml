@@ -1,7 +1,7 @@
 # cSpell:ignore Zeitlinger
 title: OpenTelemetry Acceptance Tests (OATs)
-registryType: testing
-language: all
+registryType: utilities
+language: go
 tags:
   - collector
   - testing
@@ -17,6 +17,7 @@ description: |
 authors:
   - name: Gregor Zeitlinger
     email: gregor.zeitlinger@grafana.com
+    url: https://github.com/zeitlinger
   - name: Matthew Hensley
     email: matthew.hensley@grafana.com
 urls:
