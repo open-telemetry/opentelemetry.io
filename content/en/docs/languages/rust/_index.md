@@ -7,7 +7,7 @@ weight: 26
 cSpell:ignore: stackdriver
 ---
 
-{{% docs/languages/index-intro rust /%}}
+{{% docs/languages/index-intro rust en /%}}
 
 ## Crates
 
