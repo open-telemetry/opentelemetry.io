@@ -5267,6 +5267,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-04-10T00:09:52.054124+02:00"
   },
+  "https://github.com/grafana/oats": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-18T17:02:27.523912263+01:00"
+  },
   "https://github.com/gramidt": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:17:22.503536+02:00"
@@ -5950,6 +5954,10 @@
   "https://github.com/mathworks/OpenTelemetry-Matlab/": {
     "StatusCode": 200,
     "LastSeen": "2024-08-07T15:52:27.50174+02:00"
+  },
+  "https://github.com/matt-hensley": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-19T08:30:32.838752977+01:00"
   },
   "https://github.com/mauriciovasquezbernal": {
     "StatusCode": 200,
