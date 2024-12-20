@@ -704,6 +704,6 @@ alone dictate SDK configuration. {{% /alert %}}
 
 For additional details, consult the following resources:
 
-- [Usage documentation](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/incubator#file-configuration)
-- [Example with Java agent](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent#file-configuration)
-- [Example without Java agent](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/file-configuration)
+- [Usage documentation](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/incubator#declarative-configuration)
+- [Example with Java agent](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent#declarative-configuration)
+- [Example without Java agent](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/declarative-configuration)
