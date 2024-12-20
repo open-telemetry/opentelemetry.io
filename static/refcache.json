@@ -5275,6 +5275,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-04-10T00:09:46.144495+02:00"
   },
+  "https://github.com/grafana/docker-otel-lgtm": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-19T14:40:49.726333554+01:00"
+  },
   "https://github.com/grafana/grafana-opentelemetry-dotnet": {
     "StatusCode": 200,
     "LastSeen": "2024-04-10T00:09:49.944628+02:00"
