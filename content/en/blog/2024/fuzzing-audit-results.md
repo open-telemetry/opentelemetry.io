@@ -9,7 +9,9 @@ sig: GC
 
 OpenTelemetry is happy to announce the completion of the Collector's fuzzing audit sponsored by [the CNCF](https://www.cncf.io/) and carried out by [Ada Logics](https://adalogics.com/). The audit marks a significant step in the OpenTelemetry project, ensuring the security and reliability of the Collector for its users. 
 
-Fuzzing is a testing technique that involves executing an API with a high amount of pseudo random inputs and observing the APIs behaviour. The technique has increased in popularity due to its empirical success in finding security vulnerabilities and reliability issues. Fuzzing initially developed with a focus on testing software implemented in memory-unsafe languages for which fuzzing has been most productive. However, in recent years, fuzzing has expanded to memory-safe languages alike for which the outcome has also been rewarding. 
+## What is fuzzing?
+
+Fuzzing is a testing technique that executes an API with a high amount of pseudo-random inputs and observes the API's behavior. The technique has increased in popularity due to its empirical success in finding security vulnerabilities and reliability issues. Fuzzing initially developed with a focus on testing software implemented in memory-unsafe languages, where it has been most productive. However, in recent years, fuzzing has expanded to memory-safe languages as well. 
 
 Over several years, the CNCF has invested in fuzzing for its ecosystem which has resulted in finding numerous security vulnerabilities in widely used projects such as Helm (CVE-2022-36055, CVE-2022-23524, CVE-2022-23526, CVE-2022-23525), the Notary project (CVE-2023-25656), containerd (CVE-2023-25153), Crossplane (CVE-2023-28494, CVE-2023-27483) and Flux (CVE-2022-36049). 
 
