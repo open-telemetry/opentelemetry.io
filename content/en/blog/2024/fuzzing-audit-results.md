@@ -15,7 +15,17 @@ Fuzzing is a testing technique that executes an API with a high amount of pseudo
 
 Over several years, the CNCF has invested in fuzzing for its ecosystem. This testing has found numerous security vulnerabilities in widely used projects such as Helm (CVE-2022-36055, CVE-2022-23524, CVE-2022-23526, CVE-2022-23525), the Notary project (CVE-2023-25656), containerd (CVE-2023-25153), Crossplane (CVE-2023-28494, CVE-2023-27483) and Flux (CVE-2022-36049). 
 
-The audit consisted of three main efforts: First, the Ada Logics auditors first integrated the Opentelemetry Collector into [OSS-Fuzz](https://github.com/google/oss-fuzz). OSS-Fuzz is a service offered by Google free of charge for critical open-source projects. Essentially, critical projects can integrate into OSS-Fuzz after which OSS-Fuzz will run the project's fuzzers with excess resources in a continuous manner multiple times per week. If OSS-Fuzz finds a crash, it notifies the project and checks if the project has fixed the crash upstream which will lead OSS-Fuzz to mark issues as fixed. The whole workflow happens continuously on Google's fuzzing infrastructure which is supported by thousands of CPU cores thereby outperforming what developers and malicious threat actors can muster. With Opentelemetry integrated into OSS-Fuzz, the fuzz tests continue to test the Collector after the audit has finished to ensure continued reliability. The second effort after the Ada Logics team integrated Opentelemetry into OSS-Fuzz was to write a series of fuzz tests for the Opentelemetry Collector. The auditors wrote 49 fuzz tests for core components of the Collector and several receivers and processors in the opentelemetry-collector-contrib repository. The third effort was to let the fuzz tests run while the audit team observed their health in production. At the completion of the fuzzing audit, the 49 fuzz tests run in a healthy manner on the OSS-Fuzz platform.
+## OSS-Fuzz
+
+To initiate the audit, Ada Logics auditors integrated the OpenTelemetry Collector into [OSS-Fuzz](https://github.com/google/oss-fuzz). OSS-Fuzz is a service offered by Google to critical open source projects, free of charge. The service runs a project's fuzzers with excess resources multiple times per week. If OSS-Fuzz finds a crash, it notifies the project. It then checks if the project has fixed the crash upstream and if so, marks the issue(s) as fixed. The whole workflow happens continuously on Google's fuzzing infrastructure, supported by thousands of CPU cores. These testing resources outperform what developers or malicious threat actors can muster. 
+
+## The tests
+
+After the Ada Logics team integrated OpenTelemetry into OSS-Fuzz, the next step was to write a series of fuzz tests for the OpenTelemetry Collector. The auditors wrote 49 fuzz tests for core components of the Collector, as well as several receivers and processors in the `opentelemetry-collector-contrib` repository. 
+
+The fuzz tests were left to run while the audit team observed their health in production. At the completion of the fuzzing audit, the 49 fuzz tests on the OSS-Fuzz platform were healthy. 
+
+To ensure continued reliability, the fuzz testing continues on the Collector even though the audit is complete. 
 
 A summary of the audit has been published [here](https://github.com/open-telemetry/community/blob/main/reports/ADA_Logics-collector-fuzzing-audit-2024.pdf).
 
