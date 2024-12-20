@@ -3,7 +3,7 @@ title: OpenTelemetry Collector Completes Fuzzing Audit
 linkTitle: Fuzzing Audit Results
 date: 2024-12-19
 author: '[Adam Korczynski](https://github.com/AdamKorcz)'
-issue:
+issue: 5798
 sig: GC
 ---
 
