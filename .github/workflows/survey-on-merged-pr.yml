@@ -1,0 +1,30 @@
+name: Survey on Merged PR by Non-Member
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  comment-on-pr:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: Check if user is a member of the org
+        id: check-membership
+        run: |
+          USERNAME=$(jq -r '.pull_request.user.login' "$GITHUB_EVENT_PATH")
+          ORG="${{ github.repository_owner }}"
+          STATUS=$(gh api "orgs/$ORG/members/$USERNAME" --silent && echo "true" || echo "false")
+          if [[ "$STATUS" == "true" ]]; then
+            echo "MEMBER_FOUND=true" >> $GITHUB_ENV
+          else
+            echo "MEMBER_FOUND=false" >> $GITHUB_ENV
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+
+      - name: Add comment to PR if author is not a member
+        if: env.MEMBER_FOUND == 'false'
+        run: |
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          gh pr comment $PR_NUMBER --body "Thank you for your contribution! 🎉 We would like to hear from you about your experience contributing to OpenTelemetry by filling out this survey: https://forms.gle/WV58koUBGSG9HBY66"
