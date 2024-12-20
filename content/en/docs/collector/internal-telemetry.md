@@ -122,7 +122,7 @@ journalctl | grep otelcol | grep Error
 {{% /tab %}} {{< /tabpane >}}
 
 The following configuration can be used to emit internal logs from the Collector
-to an OTLP/gRPC backend:
+to an OTLP/HTTP backend:
 
 ```yaml
 service:
@@ -132,7 +132,7 @@ service:
         - batch:
             exporter:
               otlp:
-                protocol: grpc/protobuf
+                protocol: http/protobuf
                 endpoint: https://backend:4317
 ```
 
