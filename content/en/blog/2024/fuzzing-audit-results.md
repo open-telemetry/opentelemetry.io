@@ -27,5 +27,11 @@ The fuzz tests were left to run while the audit team observed their health in pr
 
 To ensure continued reliability, the fuzz testing continues on the Collector even though the audit is complete. 
 
-A summary of the audit has been published [here](https://github.com/open-telemetry/community/blob/main/reports/ADA_Logics-collector-fuzzing-audit-2024.pdf).
+## The results so far
+
+Fuzz testing for the Collector is ongoing, allowing for changes to the project to be tested as well. As of the date of this post, no crashes have been detected.
+
+But the work is not done! The Ada Logics team created the Collector's fuzzing setup as a reference implementation that other OpenTelemetry subprojects can rely on to create their own fuzz testing, ensuring greater stability for the project as a whole.
+
+For more insight into the audit process, see the [published summary](https://github.com/open-telemetry/community/blob/main/reports/ADA_Logics-collector-fuzzing-audit-2024.pdf).
 
