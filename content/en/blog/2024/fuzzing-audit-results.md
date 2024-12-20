@@ -7,7 +7,7 @@ issue:
 sig: GC
 ---
 
-Opentelemetry is happy to announce the completion of the Collectors fuzzing audit sponsored by [the CNCF](https://www.cncf.io/) and carried out by [Ada Logics](https://adalogics.com/). The audit marks a significant step in the Opentelemetry project ensuring the security and reliability of the collector for its users. 
+OpenTelemetry is happy to announce the completion of the Collector's fuzzing audit sponsored by [the CNCF](https://www.cncf.io/) and carried out by [Ada Logics](https://adalogics.com/). The audit marks a significant step in the OpenTelemetry project, ensuring the security and reliability of the Collector for its users. 
 
 Fuzzing is a testing technique that involves executing an API with a high amount of pseudo random inputs and observing the APIs behaviour. The technique has increased in popularity due to its empirical success in finding security vulnerabilities and reliability issues. Fuzzing initially developed with a focus on testing software implemented in memory-unsafe languages for which fuzzing has been most productive. However, in recent years, fuzzing has expanded to memory-safe languages alike for which the outcome has also been rewarding. 
 
