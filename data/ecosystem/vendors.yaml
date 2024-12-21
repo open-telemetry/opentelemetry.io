@@ -65,6 +65,12 @@
   contact: contact@centreon.com
   oss: true
   commercial: true
+  - name: Checkly
+  nativeOTLP: true
+  url: https://www.checklyhq.com/docs/traces-open-telemetry/
+  contact: support@checklyhq.com
+  oss: false
+  commercial: true
 - name: Chronosphere
   distribution: false
   nativeOTLP: true
