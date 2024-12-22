@@ -5395,6 +5395,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-07T15:53:03.998923+02:00"
   },
+  "https://github.com/hgaol": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-22T16:09:53.208899753Z"
+  },
   "https://github.com/honeycombio/honeycomb-opentelemetry-dotnet": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:11:12.937532-05:00"
@@ -6102,6 +6106,10 @@
   "https://github.com/mowies": {
     "StatusCode": 200,
     "LastSeen": "2024-09-09T16:58:14.56501144Z"
+  },
+  "https://github.com/mterhar": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-22T16:09:53.691547941Z"
   },
   "https://github.com/mtwo": {
     "StatusCode": 200,
