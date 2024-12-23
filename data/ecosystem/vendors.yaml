@@ -264,6 +264,12 @@
   contact:
   oss: true
   commercial: true
+- name: Odigos
+  nativeOTLP: true
+  url: https://docs.odigos.io
+  contact: engineering@odigos.io
+  oss: true
+  commercial: true
 - name: OneUptime
   nativeOTLP: true
   url: https://oneuptime.com/product/apm
