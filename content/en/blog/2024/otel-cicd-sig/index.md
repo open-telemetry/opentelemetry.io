@@ -66,7 +66,7 @@ But what does that actually mean? What value does it provide? Let’s consider r
 ### Artifacts for supply chain security, aligned with the SLSA specification
 
 The [artifact attribute namespace](https://opentelemetry.io/docs/specs/semconv/attributes-registry/artifact/) had multiple attributes for its first implementation. One key set of attributes within this namespace cover [attestations](https://slsa.dev/attestation-model) that closely align with the [SLSA](https://slsa.dev/spec/v1.0/about) model. This is really the first time a direct connection is being made between Observability and Software Supply Chain Security. Consider the following [supply chain threat model](https://slsa.dev/spec/v1.0/threats) defined by SLSA:
-![SLSA supply chain threat model diagram](SLSA-supply-chain-model.png)
+{{< figure class="figure" src="SLSA-supply-chain-model.png" attr="SLSA Community Specification License 1.0" attrlink="https://github.com/slsa-framework/slsa?tab=License-1-ov-file" >}}
 
 These new attributes for artifacts and attestations help observe the sequence of events modeled in the above diagram in real time. Really, the conventions that exist today and those that will be added in the future enable interoperability between core software delivery capabilities like security and platform engineering via observability semantics.
 
