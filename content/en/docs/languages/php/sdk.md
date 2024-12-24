@@ -100,12 +100,11 @@ SDK autoloading happens as part of the composer autoloader.
 
 ### Configuration from php.ini
 
-When providing configuration through `php.ini`, be sure to protect boolean values
-by double-quoting them, eg `"true"`, `"false"` so that PHP doesn't convert them
-to numbers.
+When providing configuration through `php.ini`, be sure to protect boolean
+values by double-quoting them, eg `"true"`, `"false"` so that PHP doesn't
+convert them to numbers.
 
 `php.ini`:
-
 
 ### Excluded URLs
 
@@ -144,10 +143,9 @@ There are also a number of PHP-specific configurations:
 Configurations can be provided as environment variables, or via `php.ini` (or a
 file included by `php.ini`)
 
-{{% alert title="Boolean values in php.ini" %}}
-Boolean values in `php.ini` should be protected by double-quoting them, for
-example `"true"` or `"false"`, so that PHP doesn't convert them to numbers
-{{% /alert %}}
+{{% alert title="Boolean values in php.ini" %}} Boolean values in `php.ini`
+should be protected by double-quoting them, for example `"true"` or `"false"`,
+so that PHP doesn't convert them to numbers {{% /alert %}}
 
 ```ini
 OTEL_PHP_AUTOLOAD_ENABLED="true"
