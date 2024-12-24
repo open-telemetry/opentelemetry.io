@@ -379,17 +379,6 @@ next. There are no stability guarantees at this time.
 This section recommends best practices for monitoring the Collector using its
 own telemetry.
 
-### Critical monitoring
-
-#### Data loss
-
-Use the rate of `otelcol_processor_dropped_log_records > 0`,
-`otelcol_processor_dropped_spans > 0`, and
-`otelcol_processor_dropped_metric_points > 0` to detect data loss. Depending on
-your project's requirements, select a narrow time window before alerting begins
-to avoid notifications for small losses that are within the desired reliability
-range and not considered outages.
-
 ### Secondary monitoring
 
 #### Queue length
