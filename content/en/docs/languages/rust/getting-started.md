@@ -1,7 +1,7 @@
 ---
 title: Getting Started
-cSpell:ignore: eprintln println rolldice tokio
 weight: 10
+cSpell:ignore: eprintln println rolldice tokio
 ---
 
 This page will show you how to get started with OpenTelemetry in Rust.

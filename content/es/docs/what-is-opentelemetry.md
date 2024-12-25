@@ -3,7 +3,7 @@ title: ¿Qué es OpenTelemetry?
 description: Qué es y qué no es OpenTelemetry, una breve explicación
 weight: 150
 default_lang_commit: 13c2d415e935fac3014344e67c6c61556779fd6f
-cSpell:ignore: microservicios extensibilidad
+cSpell:ignore: extensibilidad microservicios
 ---
 
 OpenTelemetry es:

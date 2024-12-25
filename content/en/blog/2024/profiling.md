@@ -120,7 +120,7 @@ many more.
 2024 promises to be another big year for OpenTelemetry as we continue to
 implement and stabilize our existing tracing, metrics, and log signals while
 adding support for profiling, client-side RUM, and more. It’s a great time to
-get involved – check out our [website](https://opentelemetry.io) to learn more!
+get involved! To learn more, check out the rest of the [website](/).
 
 [^1]: Pending due diligence and review by the OpenTelemetry maintainers.
 

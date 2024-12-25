@@ -147,7 +147,7 @@ public class ContextUsage {
     try (Scope scope = context.makeCurrent()) {
       // The current context now contains the added value
       // output => context value: value
-      System.out.println("context value: " + context.get(exampleContextKey));
+      System.out.println("context value: " + Context.current().get(exampleContextKey));
     }
 
     // The local context var still contains the added value

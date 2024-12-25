@@ -1,8 +1,8 @@
 ---
 title: Resources
 weight: 70
-cSpell:ignore: myhost SIGINT uuidgen WORKDIR
 description: Add details about your applications' environment to your telemetry
+cSpell:ignore: myhost SIGINT uuidgen WORKDIR
 ---
 
 {{% docs/languages/resources-intro %}}

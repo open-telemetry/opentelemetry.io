@@ -2,9 +2,9 @@
 title: .NET zero-code instrumentation
 description: Send traces and metrics from .NET applications and services.
 linkTitle: .NET
-cSpell:ignore: coreutils HKLM iisreset myapp
 weight: 30
 redirects: [{ from: /docs/languages/net/automatic/*, to: ':splat' }]
+cSpell:ignore: coreutils HKLM iisreset myapp
 ---
 
 Use the OpenTelemetry .NET Automatic Instrumentation to send traces and metrics
