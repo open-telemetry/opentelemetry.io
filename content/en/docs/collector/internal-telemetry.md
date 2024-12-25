@@ -379,7 +379,7 @@ next. There are no stability guarantees at this time.
 This section recommends best practices for monitoring the Collector using its
 own telemetry.
 
-### Secondary monitoring
+### Monitoring
 
 #### Queue length
 
