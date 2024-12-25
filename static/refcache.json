@@ -3019,6 +3019,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:02.263475-05:00"
   },
+  "https://docs.odigos.io": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-23T14:51:42.30807+02:00"
+  },
   "https://docs.openfaas.com/architecture/metrics/": {
     "StatusCode": 206,
     "LastSeen": "2024-12-18T05:52:18.080718-05:00"
