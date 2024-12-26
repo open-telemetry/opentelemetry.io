@@ -48,9 +48,98 @@ languages:
       description: Site-ul proiectului OpenTelemetry
   uk:
     languageName: Українська (Ukrainian)
-    languageCode: uk-UA
+    languageCode: uk
     params:
       description: Сайт проєкту OpenTelemetry
+      copyright:
+        authors: >-
+          Автори OpenTelemetry | Документація
+          [CC&nbsp;BY&nbsp;4.0](https://creativecommons.org/licenses/by/4.0/deed.uk)
+        from_year: 2019
+      tagline: Ефективна спостережуваність вимагає високоякісної телеметрії
+      sub_tagline: >-
+        **OpenTelemetry** робить надійну, переносиму телеметрію вбудованою
+        функцією хмарного програмного забезпечення.
+      sub_description: >-
+        **OpenTelemetry** надає єдиний набір API, бібліотек, агентів та сервісів
+        колекторів для захоплення розподілених трейсів і метрик з вашого
+        застосунку. Ви можете аналізувати їх за допомогою Prometheus, Jaeger та
+        інших інструментів спостережуваності.
+      ui:
+        feedback:
+          'yes': >-
+            Дякуємо. Ми цінуємо ваші відгуки!
+          'no': >-
+            Будь ласка, дайте нам знати <a class="external-link" target="_blank"
+            rel="noopener"
+            href="https://github.com/open-telemetry/opentelemetry.io/issues/new?template=PAGE_FEEDBACK.yml&title=[Page+feedback]%3A+ADD+A+SUMMARY+OF+YOUR+FEEDBACK+HERE">як
+            ми можемо покращити цю сторінку</a>. Ми цінуємо ваші відгуки!
+      links:
+        user:
+          - name: Списки розсилки
+            url: https://github.com/open-telemetry/community#mailing-lists
+            icon: fa fa-envelope
+            desc: Списоки поштових розсилок, які використовує проект.
+          - name: Mastodon
+            url: https://fosstodon.org/@opentelemetry
+            icon: fab fa-mastodon
+            desc: Слідкуйте за нами на Mastodon, щоб отримувати останні новини!
+          - name: X
+            url: https://x.com/opentelemetry
+            icon: fab fa-x-twitter
+            desc:
+              Слідкуйте за нами в X, раніше відомому як Twitter, щоб отримувати
+              останні новини!
+          - name: Stack Overflow
+            url: https://stackoverflow.com/questions/tagged/open-telemetry
+            icon: fab fa-stack-overflow
+            desc: Практичні питання та корисні відповіді
+          - name: Логотипи OTel
+            url: https://github.com/cncf/artwork/tree/master/projects/opentelemetry
+            icon: fas fa-image
+            desc: Офіційні логотипи OpenTelemetry
+          - name: Записи зустрічей
+            url: https://docs.google.com/spreadsheets/d/1SYKfjYhZdm2Wh2Cl6KVQalKg_m4NhTPZqq-8SzEVO6s
+            icon: fas fa-video
+            desc: Дивіться наші записи зустрічей на Zoom Cloud
+          - name: Аналітика сайту
+            url: https://lookerstudio.google.com/s/tSTKxK1ECeU
+            icon: fa-solid fa-chart-line
+            desc: Google аналітика для opentelemetry.io
+        developer:
+          - name: GitHub
+            url: https://github.com/open-telemetry
+            icon: fab fa-github
+            desc: Знайдіть нас на GitHub.
+          - name: 'Slack #opentelemetry'
+            url: https://cloud-native.slack.com/archives/CJFCJHG4Q
+            icon: fab fa-slack
+            desc: >-
+              Спілкуйтеся з іншими розробниками проєкту. Зареєструйтеся у
+              [slack.cncf.io](https://slack.cncf.io). Також дивіться інші
+              канали, що починаються з префіксу `#otel-`.
+          - name: CNCF DevStats
+            url: https://opentelemetry.devstats.cncf.io/d/8/dashboards?orgId=1&refresh=15m
+            icon: fas fa-chart-area
+            desc: Дивіться нашу активність на CNCF DevStats
+          - name: Політика конфіденційності
+            url: https://www.linuxfoundation.org/legal/privacy-policy
+            icon: fa fa-book
+            desc: Політика конфіденційності CNCF та Linux Foundation.
+          - name: Використання торгових марок
+            url: https://www.linuxfoundation.org/legal/trademark-usage
+            icon: fa-solid fa-trademark
+            desc: Політика та керівництво щодо торгових марок Linux Foundation.
+          - name: Настанови з маркетингу
+            url: /uk/community/marketing-guidelines/
+            icon: fas fa-bullhorn
+            desc: >-
+              Важлива інформація про те, як представляти ваші особисті або
+              корпоративні внески або участь у проєкті OpenTelemetry.
+          - name: Інформація про збірку сайту
+            url: /uk/site/
+            icon: fa-solid fa-hammer
+            desc: Інформація про збірку сайту.
   zh:
     languageName: 中文 (Chinese)
     languageCode: zh-CN
