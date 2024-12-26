@@ -1067,6 +1067,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:38:25.294134-05:00"
   },
+  "https://creativecommons.org/licenses/by/4.0/deed.uk": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-30T14:05:49.405271+03:00"
+  },
   "https://cri-o.io/": {
     "StatusCode": 206,
     "LastSeen": "2025-10-09T18:26:38.456031136Z"
@@ -8367,6 +8371,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-05T14:08:36.056979393Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/releases/tag/Instrumentation.SqlClient-1.12.0-beta.1": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-30T14:06:02.698381+03:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/releases/tag/Instrumentation.SqlClient-1.12.0-beta.2": {
     "StatusCode": 206,
     "LastSeen": "2025-07-15T10:04:54.288728991Z"
@@ -14651,6 +14659,18 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:48:28.987968-05:00"
   },
+  "https://helm.sh/uk/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-30T14:05:50.399521+03:00"
+  },
+  "https://helm.sh/uk/docs/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-30T14:05:55.654312+03:00"
+  },
+  "https://helm.sh/uk/docs/intro/install/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-30T14:05:56.300957+03:00"
+  },
   "https://help.sumologic.com/docs/send-data/opentelemetry-collector/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:48:22.65809-05:00"
@@ -19486,6 +19506,14 @@
   "https://ucum.org/ucum.html#para-curly": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:30:12.345Z"
+  },
+  "https://uk.wikipedia.org/wiki/%d0%9c%d0%b0%d0%b2%d0%bf%d0%be%d0%bb%d0%b0%d1%82%d1%83%d0%b2%d0%b0%d0%bd%d0%bd%d1%8f": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-30T14:06:01.191005+03:00"
+  },
+  "https://uk.wikipedia.org/wiki/%d0%a1%d0%bf%d1%80%d1%8f%d0%bc%d0%be%d0%b2%d0%b0%d0%bd%d0%b8%d0%b9_%d0%b0%d1%86%d0%b8%d0%ba%d0%bb%d1%96%d1%87%d0%bd%d0%b8%d0%b9_%d0%b3%d1%80%d0%b0%d1%84": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-30T14:06:17.81294+03:00"
   },
   "https://undertow.io/": {
     "StatusCode": 206,
