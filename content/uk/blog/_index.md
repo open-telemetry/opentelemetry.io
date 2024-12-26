@@ -5,6 +5,5 @@ outputs: [HTML, RSS]
 htmltest:
   IgnoreDirs:
 description: Блог OpenTelemetry
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
-drifted_from_default: true
+default_lang_commit: 5489ba34bff91356aa2c501cd55f07eeb30cc355
 ---

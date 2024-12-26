@@ -1,0 +1,48 @@
+# Blockquote alert types
+# https://gohugo.io/render-hooks/blockquotes/#alerts
+# TODO: Upstream to Docsy
+
+caution: Застереження
+important: Важливо
+note: Примітка
+tip: Порада
+warning: Попередження
+
+# Docsy overrides
+
+ui_search: Спитати ШІ або шукати…
+
+# Community
+
+community_introduce: >-
+  {{ .Site.Title }} це проєкт з відкритим вихідним кодом, який кожен член
+  спільноти може використовувати, вдосконалювати та насолоджуватися ним. Ми
+  будемо раді, якщо ви приєднаєтеся до нас!
+
+community_contribute: >-
+  Щоб дізнатися, як зробити внесок до документації {{ .Site.Title }}, див.
+  [Внесок](/docs/contributing/). Інші корисні посилання:
+
+community_how_to:
+  Наш посібник зі стилю документації та багато іншого можна знайти тут
+community_guideline: Участь
+
+# Search AI
+ui_search_ai_modal_title: ШІ Асистент OpenTelemetry
+
+ui_search_ai_modal_disclaimer:
+  Ця **експериментальна функція** використовує ШІ для відповіді на питання на
+  основі документації сайту, OpenTelemetry GitHub, Stack Overflow та інших
+  ресурсів. ШІ може не завжди надавати точну або релевантну інформацію.
+  Поділіться своїми думками, залишивши
+  [відгук](https://github.com/open-telemetry/opentelemetry.io/discussions/6802).
+ui_search_ai_popover_content: >-
+  <a id='ask-ai-trigger' href='#'>Спитати ШІ</a> (&#x2318;-K)
+
+feedback_title: Відгук
+feedback_question: Чи це було корисним?
+feedback_positive: Так
+feedback_negative: Ні
+post_create_issue: Запропонувати зміни в документацію
+post_edit_this: Змінити сторінку
+post_view_this: Переглянути код сторінки
