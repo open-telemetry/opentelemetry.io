@@ -1175,6 +1175,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-12T09:52:41.304890962Z"
   },
+  "https://creativecommons.org/licenses/by/4.0/deed.uk": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-30T14:05:49.405271+03:00"
+  },
   "https://cri-o.io/": {
     "StatusCode": 206,
     "LastSeen": "2026-02-11T09:59:18.83545534Z"
@@ -9523,9 +9527,17 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-12T09:54:55.476701394Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/releases/tag/Instrumentation.SqlClient-1.12.0-beta.1": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-30T14:06:02.698381+03:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/releases/tag/Instrumentation.SqlClient-1.12.0-beta.2": {
     "StatusCode": 206,
     "LastSeen": "2026-02-13T09:58:04.937608465Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/releases/tag/Instrumentation.SqlClient-1.14.0-beta.2": {
+    "StatusCode": 404,
+    "LastSeen": "2026-01-03T22:34:27.150464+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/releases/tag/Instrumentation.SqlClient-1.15.0-rc.1": {
     "StatusCode": 206,
@@ -9890,6 +9902,10 @@
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/13": {
     "StatusCode": 206,
     "LastSeen": "2026-01-30T15:26:31.651498187Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues?q=is%3Aissue%20is%3Aopen%20label%3A%22goal%3A%202026%22%20label%3Aeepic": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-03T19:30:04.559168+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues?q=is%3Aissue%20is%3Aopen%20label%3A%22goal%3A%202026%22%20label%3Aepic": {
     "StatusCode": 206,
@@ -15871,6 +15887,18 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-04T09:52:43.682132264Z"
   },
+  "https://helm.sh/uk/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-30T14:05:50.399521+03:00"
+  },
+  "https://helm.sh/uk/docs/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-30T14:05:55.654312+03:00"
+  },
+  "https://helm.sh/uk/docs/intro/install/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-30T14:05:56.300957+03:00"
+  },
   "https://help.obsidian.md/callouts": {
     "StatusCode": 200,
     "LastSeen": "2026-02-13T09:52:24.555333665Z"
@@ -20302,6 +20330,14 @@
   "https://ucum.org/ucum.html#para-curly": {
     "StatusCode": 200,
     "LastSeen": "2026-02-03T09:55:30.07410969Z"
+  },
+  "https://uk.wikipedia.org/wiki/%d0%9c%d0%b0%d0%b2%d0%bf%d0%be%d0%bb%d0%b0%d1%82%d1%83%d0%b2%d0%b0%d0%bd%d0%bd%d1%8f": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-30T14:06:01.191005+03:00"
+  },
+  "https://uk.wikipedia.org/wiki/%d0%a1%d0%bf%d1%80%d1%8f%d0%bc%d0%be%d0%b2%d0%b0%d0%bd%d0%b8%d0%b9_%d0%b0%d1%86%d0%b8%d0%ba%d0%bb%d1%96%d1%87%d0%bd%d0%b8%d0%b9_%d0%b3%d1%80%d0%b0%d1%84": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-30T14:06:17.81294+03:00"
   },
   "https://undertow.io/": {
     "StatusCode": 206,
