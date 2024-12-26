@@ -48,7 +48,7 @@ languages:
       description: Site do Projeto OpenTelemetry
   uk:
     languageName: Українська (Ukrainian)
-    languageCode: uk-UA
+    languageCode: uk
     params:
       description: Сайт проєкту OpenTelemetry
   zh:
