@@ -8,7 +8,7 @@ author: >-
 canonical_url: https://www.cncf.io/blog/2024/11/04/opentelemetry-is-expanding-into-ci-cd-observability/
 issue: 5546
 sig: CI/CD Observability
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4 # patched
+default_lang_commit: edc67aafea1ead97b94ed4054d2c3248a34b0389
 # prettier-ignore
 cSpell:ignore: cicd frittoli horovits jemmic keptn liatrio opentelemetrys skyscanner slsa tekton Бекмарк Верт Воссу Кальво Камфаус Кідд Молькова Сараан Сталнекер Стенцелю Суерет Траск Фріттолі Часін
 ---
