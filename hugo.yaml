@@ -33,6 +33,11 @@ languages:
     languageCode: pt-BR
     params:
       description: Site do Projeto OpenTelemetry
+  uk:
+    languageName: Українська (Ukrainian)
+    languageCode: uk
+    params:
+      description: Сайт проєкту OpenTelemetry
   zh:
     languageName: 中文 (Chinese)
     languageCode: zh-cn
@@ -314,6 +319,19 @@ module:
       source: content/en/docs
       target: content/docs
       lang: pt
+
+    ## uk
+    - source: content/uk
+      target: content
+      lang: uk
+    # fallback pages
+    - source: content/en/announcements
+      target: content/announcements
+      lang: uk
+    - excludeFiles: specs/*
+      source: content/en/docs
+      target: content/docs
+      lang: uk
 
     ## static
     - source: static
