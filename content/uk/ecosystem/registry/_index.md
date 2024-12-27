@@ -30,6 +30,6 @@ weight: 20
 
 {{< blocks/section color="white" type="container-lg" >}}
 
-{{< ecosystem/registry/search-form >}}
+{{< uk/ecosystem/registry/search-form >}}
 
 {{< /blocks/section >}}

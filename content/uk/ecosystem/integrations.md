@@ -15,7 +15,7 @@ aliases: [/integrations]
 
 Нативна інструменталізація бібліотек з OpenTelemetry забезпечує кращу спостережуваність та досвід розробників для користувачів, усуваючи потребу в бібліотеках для надання та документування хуків. Нижче ви знайдете список бібліотек, які використовують API OpenTelemetry для забезпечення спостережуваності з коробки.
 
-{{% ecosystem/integrations-table "native libraries" %}}
+{{% uk/ecosystem/integrations-table "native libraries" %}}
 
 ## Застосунки та сервіси {#applications-and-services}
 
@@ -23,7 +23,7 @@ aliases: [/integrations]
 
 Відкриті проєкти (OSS) знаходяться на початку списку, а комерційні проєкти йдуть далі. Проєкти, які є частиною [CNCF](https://www.cncf.io/), мають логотип CNCF поруч зі своїм імʼям.
 
-{{% ecosystem/integrations-table "application integrations" %}}
+{{% uk/ecosystem/integrations-table "application integrations" %}}
 
 ## Як додати вашу інтеграцію {#how-to-add}
 
