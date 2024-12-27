@@ -8,7 +8,7 @@ cSpell:ignore: Dapr Datenrettungsdienste Farfetch Globale Logicmonitor Logz Upli
 
 Місія OpenTelemetry полягає в забезпеченні ефективної спостережуваності для всіх його кінцевих користувачів. Якщо ви думаєте про впровадження OpenTelemetry у вашій організації, вам може бути цікаво дізнатися про інші шляхи впровадження. Нижче наведена таблиця є неповним списком [організацій _кінцевих користувачів_ ](https://community.cncf.io/end-user-community/), яківпровадили OpenTelemetry для [Спостережуваності](/docs/concepts/observability-primer/).
 
-{{% ecosystem/adopters-table %}}
+{{% uk/ecosystem/adopters-table %}}
 
 Щоб ваша організація була включена до списку, подайте PR з доданим записом до [списку користувачів](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/adopters.yaml). Запис повинен включати наступне:
 
