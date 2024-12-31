@@ -117,7 +117,7 @@ The OpenTelemetry starter uses OpenTelemetry Spring Boot
 </dependency>
 ```
 
-{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
+{{% /tab %}} {{% tab header="Gradle (`build.gradle`)" lang=Gradle %}}
 
 ```kotlin
 implementation("io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter")
