@@ -40,7 +40,7 @@ Check out the implementation
 </dependencies>
 ```
 
-{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
+{{% /tab %}} {{% tab header="Gradle (`build.gradle`)" lang=Gradle %}}
 
 ```kotlin
 dependencies {

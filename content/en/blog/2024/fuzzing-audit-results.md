@@ -5,7 +5,7 @@ date: 2024-12-20
 author: '[Adam Korczynski](https://github.com/AdamKorcz)'
 issue: 5798
 sig: GC
-cSpell:ignore: Korczynski containerd
+cSpell:ignore: containerd Korczynski
 ---
 
 OpenTelemetry is happy to announce the completion of the Collector's fuzzing

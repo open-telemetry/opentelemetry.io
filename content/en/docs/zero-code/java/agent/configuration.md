@@ -21,13 +21,13 @@ The agent can consume configuration from one or more of the following sources
 
 ## Configuring with Environment Variables
 
-In some environments, configuring via Environment Variables is more preferred.
-Any setting configurable with a System Property can also be configured with an
-Environment Variable. Many settings below include both options, but where they
-don't apply the following steps to determine the correct name mapping of the
-desired System Property:
+In certain environments, configuring settings through environment variables is
+often preferred. Any setting that can be configured using a system property can
+also be set using an environment variable. While many of the settings below
+provide examples for both formats, for those that do not, use the following
+steps to determine the correct name mapping for the desired system property:
 
-- Convert the System Property to uppercase.
+- Convert the system property name to uppercase.
 - Replace all `.` and `-` characters with `_`.
 
 For example `otel.instrumentation.common.default-enabled` would convert to
@@ -35,10 +35,10 @@ For example `otel.instrumentation.common.default-enabled` would convert to
 
 ## Configuration file
 
-You can provide a path to agent configuration file by setting the following
+You can provide a path to an agent configuration file by setting the following
 property:
 
-{{% config_option name="otel.javaagent.configuration-file" %}} Path to valid
+{{% config_option name="otel.javaagent.configuration-file" %}} Path to a valid
 Java properties file which contains the agent configuration.
 {{% /config_option %}}
 
