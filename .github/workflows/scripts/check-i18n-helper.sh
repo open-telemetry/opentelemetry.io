@@ -5,7 +5,7 @@ echo "For localization docs, see https://opentelemetry.io/docs/contributing/loca
 CHANGES=`git status --porcelain`
 
 if [[ -z $CHANGES ]]; then
-  echo "All localization pages have the requisit commit hash. <3"
+  echo "All localization pages have the requisite commit hash. <3"
   exit;
 fi
 
