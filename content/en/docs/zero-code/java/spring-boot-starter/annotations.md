@@ -120,3 +120,9 @@ annotation:
 | Name    | Type     | Description    | Default Value         |
 | ------- | -------- | -------------- | --------------------- |
 | `value` | `String` | Attribute name | Method parameter name |
+
+## Next steps
+
+Beyond the use of annotations, the OpenTelemetry API allows you to obtain a
+tracer that can be used for [custom instrumentation](../api) and execute code
+within the scope of that span.
