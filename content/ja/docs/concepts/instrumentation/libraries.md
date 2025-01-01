@@ -87,7 +87,7 @@ OpenTelemetry API は、抽象化と動作しない実装のセットです。
 - OpenTelemetry Trace APIは2021年初めに安定版に達しました。このAPIは[Semantic Versioning 2.0](/docs/specs/otel/versioning-and-stability/)にしがたっていて、開発チームはAPIの安定性を真剣に受け止めています。
 - 依存する場合は、もっとも早い安定版の OpenTelemetry API (1.0.\*)を使用し、新機能を使用する必要がない限り、アップデートは避けてください。
 - あなたの計装が安定するまでの間、それを別のパッケージとしてリリースすることを検討してください。
-  あなたのレポジトリに置いておくこともできますし、[OpenTelemetryに追加](https://github.com/open-telemetry/oteps/blob/main/text/0155-external-modules.md#contrib-components) して、他の計装パッケージと一緒にリリースすることもできます。
+  あなたのレポジトリに置いておくこともできますし、[OpenTelemetryに追加](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0155-external-modules.md#contrib-components) して、他の計装パッケージと一緒にリリースすることもできます。
 - セマンティック規約は[安定していますが、徐々に発展しています][stable, but subject to evolution]。
   機能的な問題は発生しませんが、ときどき、計装をアップデートする必要があるかもしれません。
   プレビュープラグインか、OpenTelemetry contrib リポジトリにそれを置くことで、ユーザの変更を壊すことなく、規約を最新に保つことができるかもしれません。
