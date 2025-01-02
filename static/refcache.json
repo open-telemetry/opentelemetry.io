@@ -59,6 +59,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:46:17.075695-04:00"
   },
+  "https://adalogics.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-20T14:53:22.847313555Z"
+  },
   "https://adri-v.medium.com/43dca4a857a0": {
     "StatusCode": 200,
     "LastSeen": "2024-02-23T23:30:53.006527-05:00"
@@ -3015,6 +3019,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:02.263475-05:00"
   },
+  "https://docs.odigos.io": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-23T14:51:42.30807+02:00"
+  },
   "https://docs.openfaas.com/architecture/metrics/": {
     "StatusCode": 206,
     "LastSeen": "2024-12-18T05:52:18.080718-05:00"
@@ -3899,6 +3907,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:19:48.633928+02:00"
   },
+  "https://github.com/AdamKorcz": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-20T14:53:22.289195232Z"
+  },
   "https://github.com/AkhigbeEromo": {
     "StatusCode": 200,
     "LastSeen": "2024-12-17T15:37:25.440239-05:00"
@@ -3966,6 +3978,14 @@
   "https://github.com/CodeBlanch": {
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:11:42.413458+02:00"
+  },
+  "https://github.com/CtrlSpice": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-12T21:04:03.332366+01:00"
+  },
+  "https://github.com/CtrlSpice/otel-desktop-viewer": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-12T21:04:02.649222+01:00"
   },
   "https://github.com/Cyprinus12138": {
     "StatusCode": 200,
@@ -5251,6 +5271,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-11-07T20:32:07.730871-05:00"
   },
+  "https://github.com/google/oss-fuzz": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-20T14:53:23.420338032Z"
+  },
   "https://github.com/google/pprof": {
     "StatusCode": 200,
     "LastSeen": "2024-10-24T15:10:16.695786+02:00"
@@ -5382,6 +5406,10 @@
   "https://github.com/hertz-contrib/obs-opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2024-08-07T15:53:03.998923+02:00"
+  },
+  "https://github.com/hgaol": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-22T16:09:53.208899753Z"
   },
   "https://github.com/honeycombio/honeycomb-opentelemetry-dotnet": {
     "StatusCode": 200,
@@ -5534,6 +5562,10 @@
   "https://github.com/jaronoff97": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:05:03.376611-05:00"
+  },
+  "https://github.com/jaronoff97/tails": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-12T21:09:59.474765+01:00"
   },
   "https://github.com/jaydeluca": {
     "StatusCode": 200,
@@ -6027,6 +6059,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-07T15:44:51.574765+02:00"
   },
+  "https://github.com/microsft": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-12T21:04:04.691776+01:00"
+  },
+  "https://github.com/microsoft": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-26T01:30:01.335046861Z"
+  },
   "https://github.com/microsoft/ApplicationInsights-Java": {
     "StatusCode": 200,
     "LastSeen": "2024-04-19T17:43:49.897716918Z"
@@ -6090,6 +6130,10 @@
   "https://github.com/mowies": {
     "StatusCode": 200,
     "LastSeen": "2024-09-09T16:58:14.56501144Z"
+  },
+  "https://github.com/mterhar": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-22T16:09:53.691547941Z"
   },
   "https://github.com/mtwo": {
     "StatusCode": 200,
@@ -6330,10 +6374,6 @@
   "https://github.com/open-telemetry/community/pull/2427": {
     "StatusCode": 200,
     "LastSeen": "2024-12-16T14:23:06.692223-05:00"
-  },
-  "https://github.com/open-telemetry/community/pull/2427/": {
-    "StatusCode": 206,
-    "LastSeen": "2024-12-12T12:41:23.581154+01:00"
   },
   "https://github.com/open-telemetry/opamp-go": {
     "StatusCode": 200,
@@ -8579,6 +8619,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:17:02.743197+02:00"
   },
+  "https://github.com/ymtdzzz": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-12T21:04:04.407598+01:00"
+  },
+  "https://github.com/ymtdzzz/otel-tui": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-12T21:04:03.94903+01:00"
+  },
   "https://github.com/yonch": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:16:31.382961+02:00"
@@ -9538,6 +9586,10 @@
   "https://learn.microsoft.com/en-us/dotnet/api/system.reflection.assembly.getentryassembly": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:24:54.805878-05:00"
+  },
+  "https://learn.microsoft.com/en-us/dotnet/aspire/fundamentals/dashboard/standalone": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-12T21:04:05.120038+01:00"
   },
   "https://learn.microsoft.com/en-us/dotnet/core/deploying/": {
     "StatusCode": 200,
@@ -11987,6 +12039,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-11-13T10:47:55.011955709Z"
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.11.0-alpha/opentelemetry-instrumentation-bom-alpha-2.11.0-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-25T05:41:20.94516076Z"
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.7.0-alpha/opentelemetry-instrumentation-bom-alpha-2.7.0-alpha.pom": {
     "StatusCode": 206,
     "LastSeen": "2024-10-23T20:20:08.34491-05:00"
@@ -11998,6 +12054,10 @@
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.10.0/opentelemetry-instrumentation-bom-2.10.0.pom": {
     "StatusCode": 206,
     "LastSeen": "2024-11-13T10:47:53.144495226Z"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.11.0/opentelemetry-instrumentation-bom-2.11.0.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2024-12-25T05:41:17.945836701Z"
   },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.7.0/opentelemetry-instrumentation-bom-2.7.0.pom": {
     "StatusCode": 206,

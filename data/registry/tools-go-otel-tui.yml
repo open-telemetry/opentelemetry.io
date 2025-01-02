@@ -1,0 +1,19 @@
+# cSpell:ignore ymtdzzz
+title: otel-tui
+registryType: utilities
+language: go
+tags:
+  - otel
+  - terminal
+  - viewer
+  - tui
+urls:
+  repo: https://github.com/ymtdzzz/otel-tui
+license: Apache 2.0
+description:
+  A terminal OpenTelemetry viewer. This tool currently supports OpenTelemetry,
+  Zipkin (Traces) and Prometheus (Metrics) formats.
+authors:
+  - name: ymtdzzz
+    url: https://github.com/ymtdzzz
+createdAt: 2024-12-12
