@@ -13,7 +13,7 @@ Você aprenderá como instrumentalizar automaticamente uma aplicação Java simp
 de modo que [rastros][], [métricas][], e [logs][] sejam emitidos para o
 console.
 
-## Pré-requisitos
+## Pré-requisitos {#prerequisites}
 
 Certifique-se de ter instalado localmente:
 
