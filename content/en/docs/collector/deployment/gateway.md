@@ -239,8 +239,7 @@ unexplained gaps or jumps in the same series may be a clue that multiple
 collectors are sending the same samples. 
 You might also see errors in your backend. For example, with a Prometheus backend:
 
-With a Prometheus backend, an example error is:
-`Error on ingesting out-of-order samples`.
+`Error on ingesting out-of-order samples`
 
 This error could indicate that identical targets exist in two jobs, and the order of
 the timestamps is incorrect. For example:
