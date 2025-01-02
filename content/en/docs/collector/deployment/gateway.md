@@ -245,7 +245,9 @@ With a Prometheus backend, an example error is:
 This error could indicate that identical targets exist in two jobs, and the order of
 the timestamps is incorrect. For example:
 
-- Metric `M1` received at time 13:56:04 with value `100`
+- Metric `M1` received at `T1` with a timestamp 13:56:04 with value `100`
+- Metric `M1` received at `T2` with a timestamp 13:56:24 with value `120`
+- Metric `M1` received at `T3` with a timestamp 13:56:04 with value `110`
 - Metric `M1` received at time 13:56:24 with value `120`
 - Metric `M1` received at time 13:56:04 with value `110`
 
