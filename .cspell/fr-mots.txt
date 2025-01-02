@@ -1,6 +1,7 @@
 aboutissement
 actuellement
 adaptée
+afficher
 afin
 ainsi
 aisément
@@ -27,6 +28,7 @@ brève
 celui
 chacun
 Chaque
+chaque
 chaussettes
 clés
 collecte
@@ -49,6 +51,7 @@ comprendre
 compris
 conçu
 conçus
+connaître
 connu
 considéré
 contenant
@@ -56,12 +59,15 @@ contexte
 contient
 Contrairement
 contribuent
+correctement
 corrélation
+corriger
 côté
 Créer
 créer
 créés
 créez
+d'appréhender
 d’aujourd’hui
 d’étendre
 dans
@@ -94,6 +100,8 @@ Diagramme
 diagrammes
 directement
 disponibilité
+disposent
+émises
 distribué
 distribuée
 distribuées
@@ -125,6 +133,7 @@ exécution
 exportateur
 Extensibilité
 extensible
+facilement
 Faas
 façon
 fiabilité
@@ -148,11 +157,13 @@ horodaté
 imbriquée
 implémentent
 incluent
+inconnus
 indépendant
 indépendante
 indicateur
 informatique
 instrumentent
+instrumentée
 instrumenter
 intégrations
 intègrent
@@ -183,6 +194,7 @@ Lorsqu'un
 l'utilisateur
 manière
 manquent
+mécanisme
 meilleure
 même
 mémoire
@@ -194,6 +206,7 @@ modifie
 n’aient
 n'aient
 n'avez
+nécessaires
 nécessairement
 n'étant
 nettement
@@ -226,9 +239,11 @@ personnalisé
 personnalisée
 personnalisées
 peut
+peuvent
 plateformes
 plupart
 plusieurs
+pourcentage
 Pourquoi
 pourrait
 pouvez
@@ -255,10 +270,12 @@ Quelques
 quelques
 receveur
 reçoit
+référence
 référez
 rencontrons
 rendre
 répond
+répondre
 représente
 représentent
 reproduire
@@ -272,6 +289,8 @@ savoir
 sémantiques
 seul
 seuls
+seulement
+signaux
 signifie
 simplifie
 s'intègre
@@ -292,6 +311,7 @@ suivant
 suivante
 suivants
 suivre
+supplémentaire
 supporte
 supporté
 système
@@ -299,6 +319,8 @@ systèmes
 tant
 télémétrie
 telles
+terme
+toutes
 tous
 traçage
 transmettez
