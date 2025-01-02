@@ -182,7 +182,7 @@ de várias maneiras, os passos abaixo utilizam variáveis de ambiente.
 
 5. Pare o processo do servidor.
 
-No passo 4, você deve ter visto o trace e a saída de log do servidor e cliente 
+No passo 4, você deve ter visto o rastro e log na saída do console do servidor e cliente 
 que se parece com algo assim (a saída do trace está quebrada em linhas para melhor visualização):
 
 ```sh
