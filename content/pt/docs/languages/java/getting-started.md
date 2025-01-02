@@ -183,7 +183,7 @@ de várias maneiras, os passos abaixo utilizam variáveis de ambiente.
 5. Pare o processo do servidor.
 
 No passo 4, você deve ter visto o rastro e log na saída do console do servidor e cliente 
-que se parece com algo assim (a saída do trace está quebrada em linhas para melhor visualização):
+que se parece com algo assim (a saída do rastro está quebrada em linhas para melhor visualização):
 
 ```sh
 [otel.javaagent 2023-04-24 17:33:54:567 +0200] [http-nio-8080-exec-1] INFO
