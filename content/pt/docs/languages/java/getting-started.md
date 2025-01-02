@@ -10,7 +10,7 @@ weight: 10
 Esta página mostrará como começar a usar OpenTelemetry em Java.
 
 Você aprenderá como instrumentalizar automaticamente uma aplicação Java simples,
-de modo que [traces][], [métricas][], e [logs][] sejam emitidos para o
+de modo que [rastros][], [métricas][], e [logs][] sejam emitidos para o
 console.
 
 ## Pré-requisitos
