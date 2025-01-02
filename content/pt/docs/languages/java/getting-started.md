@@ -240,7 +240,7 @@ value=8192, exemplars=[]}], monotonic=false, aggregationTemporality=CUMULATIVE}}
 ...
 ```
 
-## O que vem depois?
+## O que vem depois? {#what-next}
 Para mais:
 
 - Execute este exemplo com outro [exportador][] para dados de telemetria.
