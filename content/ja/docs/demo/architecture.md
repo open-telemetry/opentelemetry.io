@@ -1,5 +1,5 @@
 ---
-title: デモのアーキテクチャ
+title: デモアーキテクチャ
 linkTitle: アーキテクチャ
 aliases: [current_architecture]
 body_class: otel-mermaid-max-width

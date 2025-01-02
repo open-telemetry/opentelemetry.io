@@ -1,5 +1,5 @@
 ---
-title: OpenTelemetryのデモ ドキュメンテーション
+title: OpenTelemetryデモ ドキュメンテーション
 linkTitle: デモ
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
@@ -8,7 +8,7 @@ cSpell:ignore: OLJCESPC
 default_lang_commit: 1e69c8f94a605ce5624c6b6657080d98f633ac7b
 ---
 
-[OpenTelemetryのデモ](/ecosystem/demo/)のドキュメンテーションへようこそ。
+[OpenTelemetryデモ](/ecosystem/demo/)のドキュメンテーションへようこそ。
 ここでは、デモのインストール方法や実行方法、そしてOpenTelemetryの動作を確認できるいくつかのシナリオについて説明しています。
 
 ## デモの実行
