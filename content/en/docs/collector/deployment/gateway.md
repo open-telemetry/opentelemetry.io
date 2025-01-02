@@ -237,7 +237,7 @@ There are patterns in the data that may provide some insight into whether this
 is happening or not. For example, upon visual inspection, a series with
 unexplained gaps or jumps in the same series may be a clue that multiple
 collectors are sending the same samples. 
-There are also more direct errors that could surface in the backend.
+You might also see errors in your backend. For example, with a Prometheus backend:
 
 With a Prometheus backend, an example error is:
 `Error on ingesting out-of-order samples`.
