@@ -117,14 +117,9 @@ classDef rust fill:#dea584,color:black;
 classDef typescript fill:#e98516,color:black;
 ```
 
-デモアプリケーションの
-[メトリック](/docs/demo/telemetry-features/metric-coverage/) と
-[トレース](/docs/demo/telemetry-features/trace-coverage/)の計装の現状については、
-リンクをご確認ください。
+デモアプリケーションの[メトリック](/docs/demo/telemetry-features/metric-coverage/) と [トレース](/docs/demo/telemetry-features/trace-coverage/) の計装の現状については、リンクをご確認ください。
 
-コレクターの設定は
-[otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otelcollector/otelcol-config.yml)
-で行われており、代替のエクスポーターをここで設定することができます。
+コレクターの設定は [otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otelcollector/otelcol-config.yml) で行われており、代替のエクスポーターをここで設定することができます。
 
 ```mermaid
 graph TB
