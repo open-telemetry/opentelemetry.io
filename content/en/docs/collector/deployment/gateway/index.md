@@ -285,6 +285,6 @@ the timestamps is incorrect. For example:
 ### Best practices
 
 - Use the [Kubernetes attributes processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)
-  to add labels to Kubernetes resources.
+  to add labels to different Kubernetes resources.
 - Use the [resource detector processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md)
   to detect resource information from the host and collect resource metadata.
