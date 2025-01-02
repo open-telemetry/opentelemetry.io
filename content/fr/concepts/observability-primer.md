@@ -15,7 +15,7 @@ Pour pouvoir poser ce type de questions à votre système, votre application doi
 [des signaux](/docs/concepts/signals/) tels que
 [des traces](/docs/concepts/signals/traces/),
 [des métriques](/docs/concepts/signals/metrics/), et
-[des logs](/docs/concepts/signals/logs/). 
+[des logs](/docs/concepts/signals/logs/).
 
 Une application est correctement instrumentée si les développeurs disposent de toutes les informations nécessaires pour corriger un problème et n'ont pas besoin d'ajouter une instrumentation supplémentaire.
 
@@ -31,13 +31,13 @@ Un système peut afficher un pourcentage de disponibilité de 100% mais s'il ne 
 
 Les **métriques** sont un ensemble de données numériques collectées pour votre infrastructure ou votre application sur une période donnée. Le nombre d'erreurs système, le nombre d'erreurs sur les requêtes ainsi que l'utilisation mémoire d'un service donné sont quelques exemples de métriques. Pour plus d'informations sur les métriques et leur rôle dans OpenTelemetry, référez-vous à la page [Métriques](/docs/concepts/signals/metrics/).
 
-L'indicateur de niveau de service, également connu sous le nom de **SLI**, est un indicateur de fonctionnement d'un service qui est évalué côté utilisateur. La vitesse à laquelle une page Web se charge est un exemple de SLI. 
+L'indicateur de niveau de service, également connu sous le nom de **SLI**, est un indicateur de fonctionnement d'un service qui est évalué côté utilisateur. La vitesse à laquelle une page Web se charge est un exemple de SLI.
 
 Les objectifs de niveau de service, communément appelé **SLO**, permettent de rendre compte à une organisation ou à d'autres équipes de la fiabilité d'un système.
 
 ## Comprendre le traçage distribué
 
-Le traçage distribué vous permet d'observer les requêtes au fur et à mesure qu'elles se propagent au travers de systèmes distribués complexes. Il vous offre une meilleure visibilité sur la santé de votre application ou de votre système et vous permet de debugger un comportement qu'il est difficile de reproduire localement. Le traçage distribué est indispensable pour les systèmes distribués pour lesquels nous rencontrons souvent des problèmes aléatoires ou difficiles à reproduire localement. 
+Le traçage distribué vous permet d'observer les requêtes au fur et à mesure qu'elles se propagent au travers de systèmes distribués complexes. Il vous offre une meilleure visibilité sur la santé de votre application ou de votre système et vous permet de debugger un comportement qu'il est difficile de reproduire localement. Le traçage distribué est indispensable pour les systèmes distribués pour lesquels nous rencontrons souvent des problèmes aléatoires ou difficiles à reproduire localement.
 
 Pour comprendre le traçage distribué, vous devez comprendre le rôle de chacun de ses composants : les logs, les spans et les traces.
 
@@ -69,7 +69,7 @@ Un span contient un nom, des données de temps,
 
 Les attributs de span sont des métadonnées attachées à un span.
 
-La table suivante liste des exemples d'attributs de span : 
+La table suivante liste des exemples d'attributs de span :
 
 | Clé                         | Valeur                                                                             |
 |:----------------------------|:-----------------------------------------------------------------------------------|
@@ -90,9 +90,9 @@ Pour plus d'informations sur les spans et leur rôle dans OpenTelemetry, référ
 
 ### Les traces distribuées
 
-Une **trace distribuée**, plus communément connu sous le nom de **trace**, enregistre les chemins pris par les requêtes (lancées par une application ou un utilisateur final) au fur et à mesure qu'elles se propagent au travers d'architectures multiservices, tels que des microservices ou des applications serverless. 
+Une **trace distribuée**, plus communément connu sous le nom de **trace**, enregistre les chemins pris par les requêtes (lancées par une application ou un utilisateur final) au fur et à mesure qu'elles se propagent au travers d'architectures multiservices, tels que des microservices ou des applications serverless.
 
-Une trace se compose d'un ou de plusieurs spans. Le premier span représente le span racine. 
+Une trace se compose d'un ou de plusieurs spans. Le premier span représente le span racine.
 
 Chaque span racine représente une requête, depuis son origine jusqu'à son aboutissement. Les spans présents sous le parent fournissent plus d'informations sur ce qui se passe pendant une requête (ou les étapes qui composent une requête).
 
