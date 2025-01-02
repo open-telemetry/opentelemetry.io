@@ -128,7 +128,7 @@ gradle assemble
 java -jar ./build/libs/java-simple.jar
 ```
 
-## Instrumentação
+## Instrumentação {#instrumentation}
 
 Em seguida, você usará um [agente Java] para instrumentalizar
 automaticamente a aplicação durante sua inicialização. Embora seja possível [configurar o agente Java][] 
