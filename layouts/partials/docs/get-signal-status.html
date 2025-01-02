@@ -20,7 +20,7 @@
     {{ $status = cond (in $statusWeCanLinkTo $status)
           (printf "[%s](/docs/specs/otel/versioning-and-stability/#%s)" $humanizedStatus $status)
           (cond (in "alpha beta" $status)
-            (printf "[%s](https://github.com/open-telemetry/oteps/blob/main/text/0232-maturity-of-otel.md#%s)" $humanizedStatus $status)
+            (printf "[%s](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0232-maturity-of-otel.md#%s)" $humanizedStatus $status)
             $humanizedStatus)
     -}}
   {{ end -}}

@@ -133,7 +133,7 @@ algumas considerações para ajudar a minimizar problemas com dependências:
 - Enquanto sua instrumentação se estabiliza, considere lançá-la como um pacote
   separado, para que isso não cause problemas para usuários que não a utilizam.
   Você pode mantê-la em seu repositório ou
-  [adicioná-la ao OpenTelemetry](https://github.com/open-telemetry/oteps/blob/main/text/0155-external-modules.md#contrib-components),
+  [adicioná-la ao OpenTelemetry](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0155-external-modules.md#contrib-components),
   para que seja distribuída junto com outras bibliotecas de instrumentação.
 - As Convenções Semânticas são [estáveis, mas sujeitas à evolução][]: embora
   isso não cause problemas funcionais, pode ser necessário atualizar sua
