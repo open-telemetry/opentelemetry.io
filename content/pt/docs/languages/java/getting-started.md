@@ -20,7 +20,7 @@ Certifique-se de ter instalado localmente:
 - Java JDK 17+ devido ao uso do Spring Boot 3; [Java 8+ para outros casos][java-vers]
 - [Gradle](https://gradle.org/)
 
-## Exemplo de Aplicação
+## Exemplo de Aplicação {#example-application}
   
 O exemplo a seguir utiliza uma aplicação básica [Spring Boot]. Você pode usar
 outros frameworks web, como Apache Wicket ou Play. Para uma lista completa das
