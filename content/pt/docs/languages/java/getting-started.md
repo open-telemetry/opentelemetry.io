@@ -59,7 +59,7 @@ dependencies {
 
 ### Criando e iniciando um servidor HTTP {#create-and-launch-an-http-server}
 
-Na mesma pasta, crie um arquivo chamado `DiceApplication.java` e adicione o
+No mesmo diretório, crie um arquivo chamado `DiceApplication.java` e adicione o
 seguinte código:
 
 <!-- prettier-ignore-start -->
