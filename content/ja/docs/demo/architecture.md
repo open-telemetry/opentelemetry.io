@@ -3,7 +3,7 @@ title: デモのアーキテクチャ
 linkTitle: アーキテクチャ
 aliases: [current_architecture]
 body_class: otel-mermaid-max-width
-#default_lang_commit: 754325757c8a72c0225b24e5bff9bde48eba3fc2
+default_lang_commit: 1e69c8f94a605ce5624c6b6657080d98f633ac7b
 ---
 
 **OpenTelemetryデモ** は、異なるプログラミング言語で書かれた複数のマイクロサービスから構成されており、gRPCとHTTPを使って相互に通信を行います。
