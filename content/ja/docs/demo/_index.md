@@ -37,7 +37,7 @@ default_lang_commit: 1e69c8f94a605ce5624c6b6657080d98f633ac7b
 
 ## サービスドキュメント
 
-各サービスのOpenTelemetryのデプロイの仕方に関する具体的な情報は、こちらで確認できます：
+各サービスのOpenTelemetryのデプロイの仕方に関する具体的な情報は、こちらで確認できます
 
 - [会計サービス](services/accounting/)
 - [広告サービス](services/ad/)
