@@ -250,7 +250,7 @@ Para mais:
 - Dê uma olhada no [OpenTelemetry Demo](/docs/demo/), que inclui o [Serviço de Anúncios](/docs/demo/services/ad/) baseado em Java
  e o [Serviço de Detecção de Fraude](/docs/demo/services/fraud-detection/) baseado em Kotlin
 
-[traces]: /docs/concepts/signals/traces/
+[rastros]: /docs/concepts/signals/traces/
 [metricas]: /docs/concepts/signals/metrics/
 [logs]: /docs/concepts/signals/logs/
 [annotations]: /docs/zero-code/java/agent/annotations/
