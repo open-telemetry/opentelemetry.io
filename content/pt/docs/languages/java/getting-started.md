@@ -244,7 +244,7 @@ value=8192, exemplars=[]}], monotonic=false, aggregationTemporality=CUMULATIVE}}
 Para mais:
 
 - Execute este exemplo com outro [exportador][] para dados de telemetria.
-- Experimente a [instrumentação zero-code](/docs/zero-code/java/agent/) em uma de suas próprias aplicações.
+- Experimente a [instrumentação sem código](/docs/zero-code/java/agent/) em uma de suas próprias aplicações.
 - Para telemetria levemente personalizada, experimente [annotations][].
 - Aprenda sobre [instrumentação manual][] e experimente mais [exemplos](../examples/).
 - Dê uma olhada no [OpenTelemetry Demo](/docs/demo/), que inclui o [Serviço de Anúncios](/docs/demo/services/ad/) baseado em Java
