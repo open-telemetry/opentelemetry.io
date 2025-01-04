@@ -9,10 +9,13 @@ cSpell:ignore: containerd Korczynski
 ---
 
 OpenTelemetry is happy to announce the completion of the Collector's fuzzing
-audit sponsored by [the CNCF](https://www.cncf.io/) and carried out by
+audit [sponsored by the CNCF] and carried out by
 [Ada Logics](https://adalogics.com/). The audit marks a significant step in the
 OpenTelemetry project, ensuring the security and reliability of the Collector
 for its users.
+
+[sponsored by the CNCF]:
+  https://contribute.cncf.io/resources/project-services/audits/
 
 ## What is fuzzing?
 
