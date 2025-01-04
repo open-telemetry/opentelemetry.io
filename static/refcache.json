@@ -2059,6 +2059,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:05:22.938822-05:00"
   },
+  "https://contribute.cncf.io/resources/project-services/audits/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-04T17:06:30.360149-05:00"
+  },
   "https://coralogix.com/docs/opentelemetry/": {
     "StatusCode": 206,
     "LastSeen": "2024-08-09T10:46:28.010241-04:00"
