@@ -14,7 +14,7 @@ OpenTelemetryデモチームは、可能な限り依存関係やツールを最�
 ## Protocol Buffers ファイルの生成 {#generate-protobuf-files}
 
 すべてのサービスに対応する protobuf ファイルを生成するための `make generate-protobuf` コマンドが提供されています。
-これにより、（Dockerを使わず）ローカルでのコードのコンパイルを行うことができ、IntelliJやVS CodeなどのIDEからのヒントを確認することができます。
+このコマンドにより、（Dockerを使用せず）ローカルでのコードのコンパイルを行うことができ、IntelliJやVS CodeなどのIDEからのヒントを確認することができます。
 ファイル生成前にフロントエンドのソースフォルダで `npm install` の実行が必要な場合があります。
 
 ## 必要な開発ツール {#development-tooling-requirements}
