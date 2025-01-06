@@ -13,6 +13,8 @@ OpenTelemetry permite que você ganhe rapidamente alguma observabilidade para um
 serviço sem ter que usar a API & SDK do OpenTelemetry para
 [instrumentação baseada em código](/docs/concepts/instrumentation/code-based).
 
+![Sem código](./zero-code.svg)
+
 A instrumentação sem código adiciona as capacidades da API e do SDK do
 OpenTelemetry à sua aplicação, que geralmente é como uma instalação de agente ou
 similar. As técnicas específicas podem variar de acordo com a linguagem,
