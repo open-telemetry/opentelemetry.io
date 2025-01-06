@@ -109,7 +109,7 @@
     "test": "npm run check",
     "update:pkg:hugo": "npm install --save-dev --save-exact hugo-extended@latest",
     "update:pkgs": "npx npm-check-updates -u",
-    "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 999} && git submodule foreach 'git fetch $(git remote | tail -1) --tags'"
+    "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 999}"
   },
   "devDependencies": {
     "@cspell/dict-es-es": "^3.0.3",
