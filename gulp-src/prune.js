@@ -114,7 +114,7 @@ async function pruneTask() {
       return;
     } else if (n == 0) {
       console.log(
-        `WARN: num is ${n} so no entries will be pruned by date. Specify number of entries to prune as --num <n>.`,
+        `WARN: num is ${n} so no entries will be pruned by date. Specify number of entries to prune as --num <n>. For more info use --info`,
       );
       if (numEntriesWith4xxStatus == 0) return;
     }
