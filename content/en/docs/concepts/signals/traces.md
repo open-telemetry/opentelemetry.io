@@ -312,6 +312,9 @@ trace. Now, they are causally associated with one another.
 Links are optional but serve as a good way to associate trace spans with one
 another.
 
+For more information regarding Span Links, see
+[Link](/docs/specs/otel/trace/api/#link).
+
 ### Span Status
 
 Each span has a status. The three possible values are:

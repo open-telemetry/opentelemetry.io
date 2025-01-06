@@ -2059,6 +2059,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:05:22.938822-05:00"
   },
+  "https://contribute.cncf.io/resources/project-services/audits/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-04T17:06:30.360149-05:00"
+  },
   "https://coralogix.com/docs/opentelemetry/": {
     "StatusCode": 206,
     "LastSeen": "2024-08-09T10:46:28.010241-04:00"
@@ -13327,6 +13331,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-06-04T17:29:48.60678168+02:00"
   },
+  "https://www.cncf.io/blog/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-04T17:12:06.182152-05:00"
+  },
   "https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T20:05:14.383107-05:00"
@@ -13342,6 +13350,10 @@
   "https://www.cncf.io/blog/2023/11/07/opentelemetry-at-kubecon-cloudnativecon-north-america-2023-update/": {
     "StatusCode": 206,
     "LastSeen": "2024-03-19T10:16:35.961700341Z"
+  },
+  "https://www.cncf.io/blog/2024/12/20/opentelemetry-io-2024-review/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-04T17:12:03.120768-05:00"
   },
   "https://www.cncf.io/projects/": {
     "StatusCode": 206,
