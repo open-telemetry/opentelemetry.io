@@ -1362,21 +1362,20 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 ### OTLP exporters
 
 The [span exporter](#spanexporter), [metric exporter](#metricexporter), and
-[log exporter](#logrecordexporter) discuss OTLP exporters of the form:
+[log exporter](#logrecordexporter) sections describe OTLP exporters of the form:
 
-- `OtlpHttp{Signal}Exporter`s export data via OTLP `http/protobuf`.
-- `OtlpGrpc{Signal}Exporter`s export data via OTLP `grpc`.
+- `OtlpHttp{Signal}Exporter`, which exports data via OTLP `http/protobuf`
+- `OtlpGrpc{Signal}Exporter`, which exports data via OTLP `grpc`
 
 The exporters for all signals are available via
 `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`, and have
 significant overlap across `grpc` and `http/protobuf` versions of the OTLP
-protocol, and between signals. The following sections elaborate on certain key
+protocol, and between signals. The following sections elaborate on these key
 concepts:
 
-- [Senders](#senders): The sender abstraction allows for a different HTTP / gRPC
-  client libraries, catering to various use cases.
-- [Authentication](#authentication): Discusses authentication options for OTLP
-  exporters.
+- [Senders](#senders): an abstraction for a different HTTP / gRPC client
+  libraries.
+- [Authentication](#authentication) options for OTLP exporters.
 
 #### Senders
 
@@ -1418,7 +1417,7 @@ authentication, and for mTLS.
 If using
 [zero-code SDK autoconfigure](../configuration/#zero-code-sdk-autoconfigure)
 with environment variables and system properties, see
-[relevant properties](../configuration/#properties-exporters):
+[relevant system properties](../configuration/#properties-exporters):
 
 - `otel.exporter.otlp.headers` for static header-based authentication.
 - `otel.exporter.otlp.client.key`, `otel.exporter.otlp.client.certificate` for
