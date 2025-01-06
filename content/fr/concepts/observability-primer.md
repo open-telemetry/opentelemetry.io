@@ -38,7 +38,7 @@ comportement. Les données peuvent prendre la forme de
 
 La **fiabilité** répond à la question : "Est-ce que le service fait ce que les
 utilisateurs attendent de lui ?" Un système peut afficher un pourcentage de
-disponibilité de 100% mais s'il ne répond pas à la demande de l'utilisateur (par
+disponibilité de 100%, mais s'il ne répond pas à la demande de l'utilisateur (par
 exemple : ajouter une paire de chaussettes noires dans le panier à chaque fois
 qu'il clique sur "Ajouter au panier"), alors le système pourrait être considéré
 comme **peu** fiable.
