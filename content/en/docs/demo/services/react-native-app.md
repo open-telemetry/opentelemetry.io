@@ -13,7 +13,7 @@ file-based routing to layout the screens for the app.
 ## Instrumentation
 
 The application uses the OpenTelemetry packages to instrument the application at
-the JS layer
+the JS layer.
 
 {{% alert title="Important" color="warning" %}}
 
