@@ -6,4 +6,4 @@ outputs: [HTML, RSS]
 
 ## Happy New Year!
 
-Amazing post are on their way for 2025 &mdash; check back soon.
+Amazing posts are on their way for 2025 &mdash; check back soon.
