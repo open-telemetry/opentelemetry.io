@@ -4,8 +4,7 @@ description:
   Why and how to send signals to a single OTLP end-point and from there to
   backends
 weight: 3
-# prettier-ignore
-cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadbalancing resourcedetectionprocessor
+cSpell:ignore: hostnames loadbalancer loadbalancing
 ---
 
 The gateway collector deployment pattern consists of applications (or other
@@ -40,9 +39,9 @@ Let's have a look at such a case where we are using the load-balancing exporter:
 
 ### NGINX as an "out-of-the-box" load balancer
 
-Assuming you have two collectors (`collector1` and `collector2`) configured and
-you want to load balance traffic across them using NGINX, you can use the
-following configuration:
+Assuming you have three collectors (`collector1`, `collector2`, and
+`collector3`) configured and you want to load balance traffic across them using
+NGINX, you can use the following configuration:
 
 ```nginx
 server {
@@ -199,38 +198,6 @@ The load-balancing exporter emits metrics including
 that you can use for health and performance monitoring of the OTLP endpoint
 collector.
 
-## Combined deployment of Collectors as agents and gateways
-
-Often a deployment of multiple OpenTelemetry collectors involves running both
-Collector as gateways and as [agents](/docs/collector/deployment/agent/).
-
-The following diagram shows an architecture for such a combined deployment:
-
-- We use the Collectors running in the agent deployment pattern (running on each
-  host, similar to Kubernetes daemonsets) to collect telemetry from services
-  running on the host and host telemetry, such as host metrics and scrap logs.
-- We use Collectors running in the gateway deployment pattern to process data,
-  such as filtering, sampling, and exporting to backends etc.
-
-![gateway](otel-gateway-arch.svg)
-
-This combined deployment pattern is necessary, when you use components in your
-Collector that either need to be unique per host or that consume information
-that is only available on the same host as the application is running:
-
-- Receivers like the
-  [`hostmetricsreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver)
-  or
-  [`filelogreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver)
-  need to be unique per host instance. Running multiple instances of these
-  receivers will result in duplicated data.
-
-- Processors like the
-  [`resourcedetectionprocessor`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor)
-  are used to add information about the host, the collector and the application
-  are running on. Running them within a Collector on a remote machine will
-  result in incorrect data.
-
 ## Tradeoffs
 
 Pros:
@@ -272,8 +239,7 @@ unexplained gaps or jumps in the same series may be a clue that multiple
 collectors are sending the same samples. 
 You might also see errors in your backend. For example, with a Prometheus backend:
 
-With a Prometheus backend, an example error is:
-`Error on ingesting out-of-order samples`.
+`Error on ingesting out-of-order samples`
 
 This error could indicate that identical targets exist in two jobs, and the order of
 the timestamps is incorrect. For example:
