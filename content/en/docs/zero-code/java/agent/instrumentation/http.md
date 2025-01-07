@@ -39,9 +39,10 @@ instrumentations.
 
 ## Capturing servlet request parameters
 
-You can configure the agent to capture predefined HTTP request parameter as span
-attributes for requests that are handled by Servlet API. Use the following
-property to define which servlet request parameters you want to capture:
+You can configure the agent to capture predefined HTTP request parameters as
+span attributes for requests that are handled by the Servlet API. Use the
+following property to define which servlet request parameters you want to
+capture:
 
 {{% config_option name="otel.instrumentation.servlet.experimental.capture-request-parameters" %}}
 A comma-separated list of request parameter names. {{% /config_option %}}

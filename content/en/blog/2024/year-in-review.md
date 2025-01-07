@@ -217,8 +217,13 @@ You can also join us:
 
 Together, we can make 2025 another amazing year for [opentelemetry.io](/)!
 
+_[Cross-posted] to the [CNCF blog]._
+
+[CNCF blog]: https://www.cncf.io/blog/
 [Comms meetings]:
   https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY
+[Cross-posted]:
+  https://www.cncf.io/blog/2024/12/20/opentelemetry-io-2024-review/
 [discussions]: https://github.com/open-telemetry/opentelemetry.io/discussions
 [get involved]: /docs/contributing/
 [issues]: https://github.com/open-telemetry/opentelemetry.io/issues
