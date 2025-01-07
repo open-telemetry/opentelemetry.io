@@ -531,9 +531,6 @@ permissions:
 
 ```yaml
 securityContext:
-  capabilities:
-    add:
-      - SYS_PTRACE
   privileged: true
   runAsUser: 0
 ```
