@@ -2475,6 +2475,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-08-09T10:44:31.007449-04:00"
   },
+  "https://docs.bmc.com/docs/helixaiops/244/enabling-bmc-helix-applications-to-collect-service-traces-from-opentelemetry-1391498839.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-12-05T17:11:24.457484-08:00"
+  },
   "https://docs.bugsnag.com/performance/distributed-tracing": {
     "StatusCode": 206,
     "LastSeen": "2024-09-24T06:18:58.718106443Z"
