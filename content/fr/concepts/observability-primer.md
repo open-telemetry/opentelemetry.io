@@ -54,7 +54,7 @@ L'indicateur de niveau de service, également connu sous le nom de **SLI**, est
 un indicateur de fonctionnement d'un service qui est évalué côté utilisateur. La
 vitesse à laquelle une page Web se charge est un exemple de SLI.
 
-Les objectifs de niveau de service, communément appelé **SLO**, permettent de
+Les objectifs de niveau de service, communément appelés **SLO**, permettent de
 rendre compte à une organisation ou à d'autres équipes de la fiabilité d'un
 système.
 
