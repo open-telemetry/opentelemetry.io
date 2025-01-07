@@ -126,7 +126,7 @@ Follow these links for the current state of
 demo applications.
 
 The collector is configured in
-[otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otelcollector/otelcol-config.yml),
+[otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config.yml),
 alternative exporters can be configured here.
 
 ```mermaid
