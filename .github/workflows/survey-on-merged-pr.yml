@@ -28,3 +28,5 @@ jobs:
         run: |
           PR_NUMBER=${{ github.event.pull_request.number }}
           gh pr comment $PR_NUMBER --body "Thank you for your contribution! 🎉 We would like to hear from you about your experience contributing to OpenTelemetry by filling out this survey: https://forms.gle/WV58koUBGSG9HBY66"
+        env:
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
