@@ -7,22 +7,16 @@ weight: 3
 cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadbalancing resourcedetectionprocessor
 ---
 
-コレクターのゲートウェイデプロイメントパターンは、
-アプリケーション（または他のコレクター）がテレメトリーシグナルを単一のOTLPエンドポイントに送信し、
-そのエンドポイントが実行されている1つ以上のコレクターインスタンスによって処理される構成です。
-このコレクターインスタンスは、通常、クラスターごと、データセンターごと、
-またはリージョンごとに単独のサービス（たとえばKubernetesのデプロイメント）として実行されます。
+コレクターのゲートウェイデプロイメントパターンは、アプリケーション（または他のコレクター）がテレメトリーシグナルを単一のOTLPエンドポイントに送信し、そのエンドポイントが実行されている1つ以上のコレクターインスタンスによって処理される構成です。
+このコレクターインスタンスは、通常、クラスターごと、データセンターごと、またはリージョンごとに単独のサービス（たとえばKubernetesのデプロイメント）として実行されます。
 
 一般的なケースでは、アウトオブボックスのロードバランサーを使用して、コレクター間で負荷を分散できます：
 
 ![ゲートウェイデプロイメント概念](../../img/otel-gateway-sdk.svg)
 
 テレメトリーデータの処理が特定のコレクターで行われる必要があるユースケースでは、2層の設定を使用します。
-1層目のコレクターは、[Trace ID/サービス名を意識したロードバランシングエクスポーター][lb-exporter]を使用して設定され、
-2層目ではスケールアウトを処理するコレクターが使用されます。
-たとえば、[Tail Samplingプロセッサ][tailsample-processor]を使用する場合、
-すべてのスパンが同じコレクターインスタンスに到達し、そこでそのサンプリングポリシーが適用されるように、
-ロードバランシングエクスポーターを使用する必要があります。
+1層目のコレクターは、[Trace ID/サービス名を意識したロードバランシングエクスポーター][lb-exporter]を使用して設定され、2層目ではスケールアウトを処理するコレクターが使用されます。
+たとえば、[Tail Samplingプロセッサ][tailsample-processor]を使用する場合、すべてのスパンが同じコレクターインスタンスに到達し、そこでそのサンプリングポリシーが適用されるように、ロードバランシングエクスポーターを使用する必要があります。
 
 ロードバランシングエクスポーターを使用する場合の例を見てみましょう：
 
@@ -36,8 +30,7 @@ cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadba
 
 ### NGINXを「アウトオブボックス」のロードバランサーとして使用
 
-2つのコレクター（`collector1`と`collector2`）が設定され、NGINXを使用してその間でトラフィックをロードバランシングしたい場合、
-次の設定を使用できます：
+2つのコレクター（`collector1`と`collector2`）が設定され、NGINXを使用してその間でトラフィックをロードバランシングしたい場合、次の設定を使用できます：
 
 ```nginx
 server {
@@ -82,20 +75,17 @@ upstream collector4318 {
 
 ### ロードバランシングエクスポーター
 
-コレクターの中央集約型デプロイメントパターンの具体的な例として、
-まずロードバランシングエクスポーターについて詳しく見ていきましょう。
+コレクターの中央集約型デプロイメントパターンの具体的な例として、まずロードバランシングエクスポーターについて詳しく見ていきましょう。
 これには2つの主な設定項目があります：
 
 - `resolver`は、下流のコレクター（またはバックエンド）をどこで見つけるかを決定します。
   ここで`static`サブキーを使用すると、コレクターのURLを手動で列挙する必要があります。
   他のサポートされているリゾルバーはDNSリゾルバーで、定期的に更新を確認し、IPアドレスを解決します。
   このリゾルバータイプでは、`hostname`サブキーがIPアドレスのリストを取得するために問い合わせるホスト名を指定します。
-- `routing_key`フィールドを使用すると
-  ロードバランシングエクスポーターがスパンを特定の下流のコレクターにルーティングするように指示します。
+- `routing_key`フィールドを使用するとロードバランシングエクスポーターがスパンを特定の下流のコレクターにルーティングするように指示します。
   このフィールドを`traceID`（デフォルト）に設定すると、ロードバランシングエクスポーターは`traceID`に基づいてスパンをエクスポートします。
   その他の場合、`routing_key`に`service`を設定すると、サービス名に基づいてスパンをエクスポートします。
-  これは、[Span Metricsコネクター][spanmetrics-connector]のようなコネクターを使用する際に有用で、
-  サービスのすべてのスパンが同じ下流のコレクターに送信され、メトリクス収集が行われ、正確な集約が保証されます。
+  これは、[Span Metricsコネクター][spanmetrics-connector]のようなコネクターを使用する際に有用で、サービスのすべてのスパンが同じ下流のコレクターに送信され、メトリクス収集が行われ、正確な集約が保証されます。
 
 OTLPエンドポイントを提供する最初の層のコレクターは次のように設定されます：
 
@@ -184,9 +174,7 @@ service:
 
 {{% /tab %}} {{< /tabpane >}}
 
-ロードバランシングエクスポーターは、
-`otelcol_loadbalancer_num_backends`や`otelcol_loadbalancer_backend_latency`などのメトリクスを出力し、
-これらを使用してOTLPエンドポイントコレクターのヘルスとパフォーマンスを監視できます。
+ロードバランシングエクスポーターは、`otelcol_loadbalancer_num_backends`や`otelcol_loadbalancer_backend_latency`などのメトリクスを出力し、これらを使用してOTLPエンドポイントコレクターのヘルスとパフォーマンスを監視できます。
 
 ## エージェントとゲートウェイのコレクターの組み合わせたデプロイメント
 
@@ -194,23 +182,17 @@ service:
 
 以下の図は、このような組み合わせたデプロイメントのアーキテクチャを示しています：
 
-- エージェントデプロイメントパターンで実行されるコレクター（各ホストで実行され、Kubernetesデーモンセットのように）を使用して、
-  ホスト上で実行されるサービスからのテレメトリーとホストのテレメトリー（ホストメトリクスやスクラップログなど）を収集します。
-- ゲートウェイデプロイメントパターンで実行されるコレクターを使用して、
-  データの処理（たとえばフィルタリング、サンプリング、バックエンドへのエクスポートなど）を行います。
+- エージェントデプロイメントパターンで実行されるコレクター（各ホストで実行され、Kubernetesデーモンセットのように）を使用して、ホスト上で実行されるサービスからのテレメトリーとホストのテレメトリー（ホストメトリクスやスクラップログなど）を収集します。
+- ゲートウェイデプロイメントパターンで実行されるコレクターを使用して、データの処理（たとえばフィルタリング、サンプリング、バックエンドへのエクスポートなど）を行います。
 
 ![ゲートウェイ](otel-gateway-arch.svg)
 
-この組み合わせたデプロイメントパターンは、コレクター内でホストごとにユニークである必要があるコンポーネントや、
-アプリケーションが実行されている同じホストにしか利用できない情報を消費するコンポーネントを使用する場合に必要です：
+この組み合わせたデプロイメントパターンは、コレクター内でホストごとにユニークである必要があるコンポーネントや、アプリケーションが実行されている同じホストにしか利用できない情報を消費するコンポーネントを使用する場合に必要です：
 
-- [`hostmetricsreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver)や
-  [`filelogreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver)のようなレシーバーは、
-  ホストインスタンスごとにユニークである必要があります。
+- [`hostmetricsreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver)や[`filelogreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver)のようなレシーバーは、ホストインスタンスごとにユニークである必要があります。
   これらのレシーバーを複数実行すると、データが重複します。
 
-- [`resourcedetectionprocessor`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor)のようなプロセッサーは、
-ホスト、コレクター、アプリケーションの情報を追加するために使用されます。
+- [`resourcedetectionprocessor`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor)のようなプロセッサーは、ホスト、コレクター、アプリケーションの情報を追加するために使用されます。
 リモートマシン上のコレクター内でこれらを実行すると、不正確なデータが生成されます。
 
 ## トレードオフ {#tradeoffs}
@@ -235,10 +217,8 @@ service:
 
 ## 複数のコレクターとシングルライター原則
 
-OTLP内のすべてのメトリクスデータストリームには、
-[シングルライター](/docs/specs/otel/metrics/data-model/#single-writer)が必要です。
-ゲートウェイ構成で複数のコレクターをデプロイする際は、
-すべてのメトリクスデータストリームに対してシングルライターとグローバルにユニークなIDを確保することが重要です。
+OTLP内のすべてのメトリクスデータストリームには、[シングルライター](/docs/specs/otel/metrics/data-model/#single-writer)が必要です。
+ゲートウェイ構成で複数のコレクターをデプロイする際は、すべてのメトリクスデータストリームに対してシングルライターとグローバルにユニークなIDを確保することが重要です。
 
 ### 潜在的な問題
 
@@ -264,7 +244,5 @@ OTLP内のすべてのメトリクスデータストリームには、
 
 ### ベストプラクティス
 
-- [Kubernetes属性プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)を使用して、
-  異なるKubernetesリソースにラベルを追加します。
-- [リソース検出プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md)を使用して、
-  ホストからリソース情報を検出し、リソースメタデータを収集します。
+- [Kubernetes属性プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)を使用して、異なるKubernetesリソースにラベルを追加します。
+- [リソース検出プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md)を使用して、ホストからリソース情報を検出し、リソースメタデータを収集します。
