@@ -1685,6 +1685,12 @@ approvers:
       - semconv-db-approvers
     html_url: https://github.com/sourabh1007
     avatar_url: https://avatars.githubusercontent.com/u/6362382?v=4
+  - name: steverao
+    teams:
+      - java-instrumentation-approvers
+      - java-instrumentation-triagers
+    html_url: https://github.com/steverao
+    avatar_url: https://avatars.githubusercontent.com/u/25423978?v=4
   - name: surbhiia
     teams:
       - semconv-mobile-approvers
@@ -1871,11 +1877,6 @@ triagers:
       - go-triagers
     html_url: https://github.com/scorpionknifes
     avatar_url: https://avatars.githubusercontent.com/u/23299540?v=4
-  - name: steverao
-    teams:
-      - java-instrumentation-triagers
-    html_url: https://github.com/steverao
-    avatar_url: https://avatars.githubusercontent.com/u/25423978?v=4
   - name: SylvainJuge
     teams:
       - java-instrumentation-triagers
