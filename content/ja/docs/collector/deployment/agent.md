@@ -6,9 +6,7 @@ weight: 2
 cSpell:ignore: prometheusremotewrite
 ---
 
-コレクターのエージェントデプロイメントパターンは、
-OpenTelemetry SDKを使用して[計装された][instrumentation]アプリケーション（[OpenTelemetryプロトコル（OTLP）][otlp]を使用）や、
-他のコレクター（OTLPエクスポーターを使用）が、テレメトリーシグナルを[コレクター][]インスタンスに送信する構成です。
+コレクターのエージェントデプロイメントパターンは、OpenTelemetry SDKを使用して[計装された][instrumentation]アプリケーション（[OpenTelemetryプロトコル（OTLP）][otlp]を使用）や、他のコレクター（OTLPエクスポーターを使用）が、テレメトリーシグナルを[コレクター][]インスタンスに送信する構成です。
 このコレクターインスタンスは、アプリケーションと同じホストまたはアプリケーションの横に配置されたサイドカーやデーモンセットとして動作します。
 
 各クライアント側SDKまたはダウンストリームコレクターは、コレクターの場所を設定します：
@@ -22,8 +20,7 @@ OpenTelemetry SDKを使用して[計装された][instrumentation]アプリケ�
 
 コレクターのエージェントデプロイメントパターンの具体例は以下のようになります。
 たとえば、[Javaアプリケーションを計装してメトリクスをエクスポート][instrument-java-metrics]するためにOpenTelemetry Java SDKを使用します。
-アプリケーションのコンテキスト内で、`OTEL_METRICS_EXPORTER`を`otlp`（デフォルト値）に設定し、
-[OTLPエクスポーター][otlp-exporter]をコレクターのアドレスで設定します。たとえば（Bashまたは`zsh`シェル）：
+アプリケーションのコンテキスト内で、`OTEL_METRICS_EXPORTER`を`otlp`（デフォルト値）に設定し、[OTLPエクスポーター][otlp-exporter]をコレクターのアドレスで設定します。たとえば（Bashまたは`zsh`シェル）：
 
 ```shell
 export OTEL_EXPORTER_OTLP_ENDPOINT=http://collector.example.com:4318
@@ -106,7 +103,7 @@ service:
 
 {{% /tab %}} {{< /tabpane >}}
 
-実際に試してみたい場合は、エンドツーエンドの[Java][java-otlp-example]または[Python][py-otlp-example]の例で確認できます。
+実際に試してみたい場合は、エンドツーエンドの[Java][java-otlp-example]や[Python][py-otlp-example]の例で確認できます。
 
 ## トレードオフ {#tradeoffs}
 
