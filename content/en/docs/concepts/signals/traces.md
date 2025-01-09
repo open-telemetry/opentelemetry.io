@@ -1,8 +1,8 @@
 ---
 title: Traces
 weight: 1
-cSpell:ignore: Guten
 description: The path of a request through your application.
+cSpell:ignore: Guten
 ---
 
 **Traces** give us the big picture of what happens when a request is made to an
@@ -311,6 +311,9 @@ trace. Now, they are causally associated with one another.
 
 Links are optional but serve as a good way to associate trace spans with one
 another.
+
+For more information regarding Span Links, see
+[Link](/docs/specs/otel/trace/api/#link).
 
 ### Span Status
 

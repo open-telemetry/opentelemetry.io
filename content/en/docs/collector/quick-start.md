@@ -1,10 +1,9 @@
 ---
 title: Quick start
-cSpell:ignore: docker dokey dpkg okey telemetrygen
 description: Setup and collect telemetry in minutes!
 aliases: [getting-started]
 weight: 1
-cSpell:ignore: gobin
+cSpell:ignore: docker dokey dpkg gobin okey telemetrygen
 ---
 
 <!-- markdownlint-disable ol-prefix blanks-around-fences -->

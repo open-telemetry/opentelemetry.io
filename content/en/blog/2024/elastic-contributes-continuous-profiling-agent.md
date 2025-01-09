@@ -2,8 +2,6 @@
 title: Elastic Contributes its Continuous Profiling Agent to OpenTelemetry
 linkTitle: Elastic Contributes Profiling Agent
 date: 2024-06-07
-# prettier-ignore
-cSpell:ignore: Bahubali Christos Dmitry Filimonov Geisendörfer Halliday Kalkanis Shetti
 author: >
   [Bahubali Shetti](https://github.com/bshetti) (Elastic), [Alexander
   Wert](https://github.com/AlexanderWert) (Elastic), [Morgan
@@ -11,6 +9,8 @@ author: >
   Perry](https://github.com/Rperry2174) (Grafana)
 issue: https://github.com/open-telemetry/community/issues/1918
 sig: Profiling SIG
+# prettier-ignore
+cSpell:ignore: Bahubali Christos Dmitry Filimonov Geisendörfer Halliday Kalkanis Shetti
 ---
 
 Following significant collaboration between

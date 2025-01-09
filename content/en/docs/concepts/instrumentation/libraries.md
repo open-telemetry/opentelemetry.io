@@ -22,7 +22,7 @@ and document hooks. Other advantages provided by native instrumentation include:
   various consumption scenarios using a wide variety of well-documented
   OpenTelemetry extensibility points.
 
-![ Native Instrumentation vs instrumentation libraries](/img/libraries-instrumentation.svg)
+![ Native Instrumentation vs instrumentation libraries](../native-vs-libraries.svg)
 
 ## Semantic conventions
 
@@ -115,7 +115,7 @@ to help you decide how to minimize dependency conflicts:
 - While your instrumentation stabilizes, consider shipping it as a separate
   package, so that it never causes issues for users who don't use it. You can
   keep it in your repository, or
-  [add it to OpenTelemetry](https://github.com/open-telemetry/oteps/blob/main/text/0155-external-modules.md#contrib-components),
+  [add it to OpenTelemetry](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0155-external-modules.md#contrib-components),
   so it ships with other instrumentation libraries.
 - Semantic conventions are [stable, but subject to evolution][]: while this does
   not cause any functional issues, you might need to update your instrumentation

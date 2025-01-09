@@ -4,7 +4,7 @@ description: >-
   Aprenda como adicionar observabilidade a uma aplicação sem precisar escrever
   código
 weight: 10
-default_lang_commit: 702cb43a65464842ebfbf5cb1ac6cf5c72c48462
+default_lang_commit: 2127d75cef0be2f2554f5b47520a108ba381b790
 ---
 
 Como [operações](/docs/getting-started/ops/), você pode querer adicionar
@@ -12,6 +12,8 @@ observabilidade a uma ou mais aplicações sem precisar editar o código-fonte. 
 OpenTelemetry permite que você ganhe rapidamente alguma observabilidade para um
 serviço sem ter que usar a API & SDK do OpenTelemetry para
 [instrumentação baseada em código](/docs/concepts/instrumentation/code-based).
+
+![Sem código](./zero-code.svg)
 
 A instrumentação sem código adiciona as capacidades da API e do SDK do
 OpenTelemetry à sua aplicação, que geralmente é como uma instalação de agente ou

@@ -6,8 +6,8 @@ aliases:
   - /docs/languages/java/automatic_instrumentation
 cascade:
   vers:
-    instrumentation: 2.6.0
-    otel: 1.40.0
+    instrumentation: 2.11.0
+    otel: 1.45.0
 ---
 
 Zero-code instrumentation with Java uses a Java agent JAR or Spring Boot

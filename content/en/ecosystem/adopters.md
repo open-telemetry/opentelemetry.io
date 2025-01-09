@@ -1,9 +1,9 @@
 ---
 title: Adopters
 description: Organizations that use OpenTelemetry
+# All spelling entries must be on a single line
 # prettier-ignore
 cSpell:ignore: Dapr Datenrettungsdienste Farfetch Globale Logicmonitor Logz Uplight Wandera Zocdoc
-# All spelling entries must be on a single line
 ---
 
 OpenTelemetry's mission is to enable effective observability for all its

@@ -2,9 +2,9 @@
 title: Join us for OpenTelemetry Talks and Activities at KubeCon EU 2023
 linkTitle: KubeCon EU '23
 date: 2023-04-03
+author: '[Severin Neumann](https://github.com/svrnm)'
 # prettier-ignore
 cSpell:ignore: Aiven Benedikt Bongartz Jaglowski Kowall observ Oliveira Pathak Vider Xiaochun
-author: '[Severin Neumann](https://github.com/svrnm)'
 ---
 
 The OpenTelemetry project maintainers, members of the governance committee, and
