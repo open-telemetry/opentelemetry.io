@@ -56,3 +56,8 @@ dictionaries:
   - companies
 words: # Valid words across all locales
   - htmltest
+  - nyholm
+  - diactoros
+  - pecl
+  - excimer
+  - phpbox

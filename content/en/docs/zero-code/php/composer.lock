@@ -1,2344 +1,2169 @@
 {
-    "_readme": [
-        "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "807e6df77e948a7e951ea3c6313f741d",
-    "packages": [
-        {
-            "name": "brick/math",
-            "version": "0.12.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/brick/math.git",
-                "reference": "f510c0a40911935b77b86859eb5223d58d660df1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/brick/math/zipball/f510c0a40911935b77b86859eb5223d58d660df1",
-                "reference": "f510c0a40911935b77b86859eb5223d58d660df1",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^8.1"
-            },
-            "require-dev": {
-                "php-coveralls/php-coveralls": "^2.2",
-                "phpunit/phpunit": "^10.1",
-                "vimeo/psalm": "5.16.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Brick\\Math\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Arbitrary-precision arithmetic library",
-            "keywords": [
-                "Arbitrary-precision",
-                "BigInteger",
-                "BigRational",
-                "arithmetic",
-                "bigdecimal",
-                "bignum",
-                "bignumber",
-                "brick",
-                "decimal",
-                "integer",
-                "math",
-                "mathematics",
-                "rational"
-            ],
-            "support": {
-                "issues": "https://github.com/brick/math/issues",
-                "source": "https://github.com/brick/math/tree/0.12.1"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/BenMorel",
-                    "type": "github"
-                }
-            ],
-            "time": "2023-11-29T23:19:16+00:00"
-        },
-        {
-            "name": "composer/semver",
-            "version": "3.4.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/composer/semver.git",
-                "reference": "4313d26ada5e0c4edfbd1dc481a92ff7bff91f12"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/composer/semver/zipball/4313d26ada5e0c4edfbd1dc481a92ff7bff91f12",
-                "reference": "4313d26ada5e0c4edfbd1dc481a92ff7bff91f12",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.3.2 || ^7.0 || ^8.0"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^1.11",
-                "symfony/phpunit-bridge": "^3 || ^7"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Composer\\Semver\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nils Adermann",
-                    "email": "naderman@naderman.de",
-                    "homepage": "http://www.naderman.de"
-                },
-                {
-                    "name": "Jordi Boggiano",
-                    "email": "j.boggiano@seld.be",
-                    "homepage": "http://seld.be"
-                },
-                {
-                    "name": "Rob Bast",
-                    "email": "rob.bast@gmail.com",
-                    "homepage": "http://robbast.nl"
-                }
-            ],
-            "description": "Semver library that offers utilities, version constraint parsing and validation.",
-            "keywords": [
-                "semantic",
-                "semver",
-                "validation",
-                "versioning"
-            ],
-            "support": {
-                "irc": "ircs://irc.libera.chat:6697/composer",
-                "issues": "https://github.com/composer/semver/issues",
-                "source": "https://github.com/composer/semver/tree/3.4.3"
-            },
-            "funding": [
-                {
-                    "url": "https://packagist.com",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/composer",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2024-09-19T14:15:21+00:00"
-        },
-        {
-            "name": "fig/http-message-util",
-            "version": "1.1.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/http-message-util.git",
-                "reference": "9d94dc0154230ac39e5bf89398b324a86f63f765"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-message-util/zipball/9d94dc0154230ac39e5bf89398b324a86f63f765",
-                "reference": "9d94dc0154230ac39e5bf89398b324a86f63f765",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.3 || ^7.0 || ^8.0"
-            },
-            "suggest": {
-                "psr/http-message": "The package containing the PSR-7 interfaces"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Fig\\Http\\Message\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "https://www.php-fig.org/"
-                }
-            ],
-            "description": "Utility classes and constants for use with PSR-7 (psr/http-message)",
-            "keywords": [
-                "http",
-                "http-message",
-                "psr",
-                "psr-7",
-                "request",
-                "response"
-            ],
-            "support": {
-                "issues": "https://github.com/php-fig/http-message-util/issues",
-                "source": "https://github.com/php-fig/http-message-util/tree/1.1.5"
-            },
-            "time": "2020-11-24T22:02:12+00:00"
-        },
-        {
-            "name": "google/protobuf",
-            "version": "v4.29.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/protocolbuffers/protobuf-php.git",
-                "reference": "6042b5483f8029e42473faeb8ef75ba266278381"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/6042b5483f8029e42473faeb8ef75ba266278381",
-                "reference": "6042b5483f8029e42473faeb8ef75ba266278381",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": ">=5.0.0"
-            },
-            "suggest": {
-                "ext-bcmath": "Need to support JSON deserialization"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Google\\Protobuf\\": "src/Google/Protobuf",
-                    "GPBMetadata\\Google\\Protobuf\\": "src/GPBMetadata/Google/Protobuf"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "proto library for PHP",
-            "homepage": "https://developers.google.com/protocol-buffers/",
-            "keywords": [
-                "proto"
-            ],
-            "support": {
-                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v4.29.1"
-            },
-            "time": "2024-12-03T22:07:45+00:00"
-        },
-        {
-            "name": "grpc/grpc",
-            "version": "1.57.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/grpc/grpc-php.git",
-                "reference": "b610c42022ed3a22f831439cb93802f2a4502fdf"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/grpc/grpc-php/zipball/b610c42022ed3a22f831439cb93802f2a4502fdf",
-                "reference": "b610c42022ed3a22f831439cb93802f2a4502fdf",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0.0"
-            },
-            "require-dev": {
-                "google/auth": "^v1.3.0"
-            },
-            "suggest": {
-                "ext-protobuf": "For better performance, install the protobuf C extension.",
-                "google/protobuf": "To get started using grpc quickly, install the native protobuf library."
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Grpc\\": "src/lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "description": "gRPC library for PHP",
-            "homepage": "https://grpc.io",
-            "keywords": [
-                "rpc"
-            ],
-            "support": {
-                "source": "https://github.com/grpc/grpc-php/tree/v1.57.0"
-            },
-            "time": "2023-08-14T23:57:54+00:00"
-        },
-        {
-            "name": "laminas/laminas-diactoros",
-            "version": "3.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laminas/laminas-diactoros.git",
-                "reference": "143a16306602ce56b8b092a7914fef03c37f9ed2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-diactoros/zipball/143a16306602ce56b8b092a7914fef03c37f9ed2",
-                "reference": "143a16306602ce56b8b092a7914fef03c37f9ed2",
-                "shasum": ""
-            },
-            "require": {
-                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
-                "psr/http-factory": "^1.1",
-                "psr/http-message": "^1.1 || ^2.0"
-            },
-            "conflict": {
-                "amphp/amp": "<2.6.4"
-            },
-            "provide": {
-                "psr/http-factory-implementation": "^1.0",
-                "psr/http-message-implementation": "^1.1 || ^2.0"
-            },
-            "require-dev": {
-                "ext-curl": "*",
-                "ext-dom": "*",
-                "ext-gd": "*",
-                "ext-libxml": "*",
-                "http-interop/http-factory-tests": "^2.2.0",
-                "laminas/laminas-coding-standard": "~2.5.0",
-                "php-http/psr7-integration-tests": "^1.4.0",
-                "phpunit/phpunit": "^10.5.36",
-                "psalm/plugin-phpunit": "^0.19.0",
-                "vimeo/psalm": "^5.26.1"
-            },
-            "type": "library",
-            "extra": {
-                "laminas": {
-                    "config-provider": "Laminas\\Diactoros\\ConfigProvider",
-                    "module": "Laminas\\Diactoros"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/functions/create_uploaded_file.php",
-                    "src/functions/marshal_headers_from_sapi.php",
-                    "src/functions/marshal_method_from_sapi.php",
-                    "src/functions/marshal_protocol_version_from_sapi.php",
-                    "src/functions/normalize_server.php",
-                    "src/functions/normalize_uploaded_files.php",
-                    "src/functions/parse_cookie_header.php"
-                ],
-                "psr-4": {
-                    "Laminas\\Diactoros\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "PSR HTTP Message implementations",
-            "homepage": "https://laminas.dev",
-            "keywords": [
-                "http",
-                "laminas",
-                "psr",
-                "psr-17",
-                "psr-7"
-            ],
-            "support": {
-                "chat": "https://laminas.dev/chat",
-                "docs": "https://docs.laminas.dev/laminas-diactoros/",
-                "forum": "https://discourse.laminas.dev",
-                "issues": "https://github.com/laminas/laminas-diactoros/issues",
-                "rss": "https://github.com/laminas/laminas-diactoros/releases.atom",
-                "source": "https://github.com/laminas/laminas-diactoros"
-            },
-            "funding": [
-                {
-                    "url": "https://funding.communitybridge.org/projects/laminas-project",
-                    "type": "community_bridge"
-                }
-            ],
-            "time": "2024-10-14T11:59:49+00:00"
-        },
-        {
-            "name": "nikic/fast-route",
-            "version": "v1.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nikic/FastRoute.git",
-                "reference": "181d480e08d9476e61381e04a71b34dc0432e812"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nikic/FastRoute/zipball/181d480e08d9476e61381e04a71b34dc0432e812",
-                "reference": "181d480e08d9476e61381e04a71b34dc0432e812",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.35|~5.7"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/functions.php"
-                ],
-                "psr-4": {
-                    "FastRoute\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Nikita Popov",
-                    "email": "nikic@php.net"
-                }
-            ],
-            "description": "Fast request router for PHP",
-            "keywords": [
-                "router",
-                "routing"
-            ],
-            "support": {
-                "issues": "https://github.com/nikic/FastRoute/issues",
-                "source": "https://github.com/nikic/FastRoute/tree/master"
-            },
-            "time": "2018-02-13T20:26:39+00:00"
-        },
-        {
-            "name": "nyholm/psr7",
-            "version": "1.8.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Nyholm/psr7.git",
-                "reference": "a71f2b11690f4b24d099d6b16690a90ae14fc6f3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Nyholm/psr7/zipball/a71f2b11690f4b24d099d6b16690a90ae14fc6f3",
-                "reference": "a71f2b11690f4b24d099d6b16690a90ae14fc6f3",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "psr/http-factory": "^1.0",
-                "psr/http-message": "^1.1 || ^2.0"
-            },
-            "provide": {
-                "php-http/message-factory-implementation": "1.0",
-                "psr/http-factory-implementation": "1.0",
-                "psr/http-message-implementation": "1.0"
-            },
-            "require-dev": {
-                "http-interop/http-factory-tests": "^0.9",
-                "php-http/message-factory": "^1.0",
-                "php-http/psr7-integration-tests": "^1.0",
-                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.4",
-                "symfony/error-handler": "^4.4"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.8-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Nyholm\\Psr7\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Tobias Nyholm",
-                    "email": "tobias.nyholm@gmail.com"
-                },
-                {
-                    "name": "Martijn van der Ven",
-                    "email": "martijn@vanderven.se"
-                }
-            ],
-            "description": "A fast PHP7 implementation of PSR-7",
-            "homepage": "https://tnyholm.se",
-            "keywords": [
-                "psr-17",
-                "psr-7"
-            ],
-            "support": {
-                "issues": "https://github.com/Nyholm/psr7/issues",
-                "source": "https://github.com/Nyholm/psr7/tree/1.8.2"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/Zegnat",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/nyholm",
-                    "type": "github"
-                }
-            ],
-            "time": "2024-09-09T07:06:30+00:00"
-        },
-        {
-            "name": "nyholm/psr7-server",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Nyholm/psr7-server.git",
-                "reference": "4335801d851f554ca43fa6e7d2602141538854dc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Nyholm/psr7-server/zipball/4335801d851f554ca43fa6e7d2602141538854dc",
-                "reference": "4335801d851f554ca43fa6e7d2602141538854dc",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1 || ^8.0",
-                "psr/http-factory": "^1.0",
-                "psr/http-message": "^1.0 || ^2.0"
-            },
-            "require-dev": {
-                "nyholm/nsa": "^1.1",
-                "nyholm/psr7": "^1.3",
-                "phpunit/phpunit": "^7.0 || ^8.5 || ^9.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Nyholm\\Psr7Server\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Tobias Nyholm",
-                    "email": "tobias.nyholm@gmail.com"
-                },
-                {
-                    "name": "Martijn van der Ven",
-                    "email": "martijn@vanderven.se"
-                }
-            ],
-            "description": "Helper classes to handle PSR-7 server requests",
-            "homepage": "http://tnyholm.se",
-            "keywords": [
-                "psr-17",
-                "psr-7"
-            ],
-            "support": {
-                "issues": "https://github.com/Nyholm/psr7-server/issues",
-                "source": "https://github.com/Nyholm/psr7-server/tree/1.1.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/Zegnat",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/nyholm",
-                    "type": "github"
-                }
-            ],
-            "time": "2023-11-08T09:30:43+00:00"
-        },
-        {
-            "name": "open-telemetry/api",
-            "version": "1.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/opentelemetry-php/api.git",
-                "reference": "542064815d38a6df55af7957cd6f1d7d967c99c6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/opentelemetry-php/api/zipball/542064815d38a6df55af7957cd6f1d7d967c99c6",
-                "reference": "542064815d38a6df55af7957cd6f1d7d967c99c6",
-                "shasum": ""
-            },
-            "require": {
-                "open-telemetry/context": "^1.0",
-                "php": "^8.1",
-                "psr/log": "^1.1|^2.0|^3.0",
-                "symfony/polyfill-php82": "^1.26"
-            },
-            "conflict": {
-                "open-telemetry/sdk": "<=1.0.8"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "1.1.x-dev"
-                },
-                "spi": {
-                    "OpenTelemetry\\API\\Instrumentation\\AutoInstrumentation\\HookManagerInterface": [
-                        "OpenTelemetry\\API\\Instrumentation\\AutoInstrumentation\\ExtensionHookManager"
-                    ]
-                }
-            },
-            "autoload": {
-                "files": [
-                    "Trace/functions.php"
-                ],
-                "psr-4": {
-                    "OpenTelemetry\\API\\": "."
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "opentelemetry-php contributors",
-                    "homepage": "https://github.com/open-telemetry/opentelemetry-php/graphs/contributors"
-                }
-            ],
-            "description": "API for OpenTelemetry PHP.",
-            "keywords": [
-                "Metrics",
-                "api",
-                "apm",
-                "logging",
-                "opentelemetry",
-                "otel",
-                "tracing"
-            ],
-            "support": {
-                "chat": "https://app.slack.com/client/T08PSQ7BQ/C01NFPCV44V",
-                "docs": "https://opentelemetry.io/docs/php",
-                "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
-                "source": "https://github.com/open-telemetry/opentelemetry-php"
-            },
-            "time": "2024-10-15T22:42:37+00:00"
-        },
-        {
-            "name": "open-telemetry/context",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/opentelemetry-php/context.git",
-                "reference": "0cba875ea1953435f78aec7f1d75afa87bdbf7f3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/opentelemetry-php/context/zipball/0cba875ea1953435f78aec7f1d75afa87bdbf7f3",
-                "reference": "0cba875ea1953435f78aec7f1d75afa87bdbf7f3",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^8.1",
-                "symfony/polyfill-php82": "^1.26"
-            },
-            "suggest": {
-                "ext-ffi": "To allow context switching in Fibers"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "fiber/initialize_fiber_handler.php"
-                ],
-                "psr-4": {
-                    "OpenTelemetry\\Context\\": "."
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "opentelemetry-php contributors",
-                    "homepage": "https://github.com/open-telemetry/opentelemetry-php/graphs/contributors"
-                }
-            ],
-            "description": "Context implementation for OpenTelemetry PHP.",
-            "keywords": [
-                "Context",
-                "opentelemetry",
-                "otel"
-            ],
-            "support": {
-                "chat": "https://app.slack.com/client/T08PSQ7BQ/C01NFPCV44V",
-                "docs": "https://opentelemetry.io/docs/php",
-                "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
-                "source": "https://github.com/open-telemetry/opentelemetry-php"
-            },
-            "time": "2024-08-21T00:29:20+00:00"
-        },
-        {
-            "name": "open-telemetry/exporter-otlp",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/opentelemetry-php/exporter-otlp.git",
-                "reference": "9b6de12204f25f8ab9540b46d6e7b5151897ce18"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/opentelemetry-php/exporter-otlp/zipball/9b6de12204f25f8ab9540b46d6e7b5151897ce18",
-                "reference": "9b6de12204f25f8ab9540b46d6e7b5151897ce18",
-                "shasum": ""
-            },
-            "require": {
-                "open-telemetry/api": "^1.0",
-                "open-telemetry/gen-otlp-protobuf": "^1.1",
-                "open-telemetry/sdk": "^1.0",
-                "php": "^8.1",
-                "php-http/discovery": "^1.14"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "_register.php"
-                ],
-                "psr-4": {
-                    "OpenTelemetry\\Contrib\\Otlp\\": "."
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "opentelemetry-php contributors",
-                    "homepage": "https://github.com/open-telemetry/opentelemetry-php/graphs/contributors"
-                }
-            ],
-            "description": "OTLP exporter for OpenTelemetry.",
-            "keywords": [
-                "Metrics",
-                "exporter",
-                "gRPC",
-                "http",
-                "opentelemetry",
-                "otel",
-                "otlp",
-                "tracing"
-            ],
-            "support": {
-                "chat": "https://app.slack.com/client/T08PSQ7BQ/C01NFPCV44V",
-                "docs": "https://opentelemetry.io/docs/php",
-                "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
-                "source": "https://github.com/open-telemetry/opentelemetry-php"
-            },
-            "time": "2024-04-30T18:28:30+00:00"
-        },
-        {
-            "name": "open-telemetry/gen-otlp-protobuf",
-            "version": "1.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/opentelemetry-php/gen-otlp-protobuf.git",
-                "reference": "66c3b98e998a726691c92e6405a82e6e7b8b169d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/opentelemetry-php/gen-otlp-protobuf/zipball/66c3b98e998a726691c92e6405a82e6e7b8b169d",
-                "reference": "66c3b98e998a726691c92e6405a82e6e7b8b169d",
-                "shasum": ""
-            },
-            "require": {
-                "google/protobuf": "^3.22 || ^4.0",
-                "php": "^8.0"
-            },
-            "suggest": {
-                "ext-protobuf": "For better performance, when dealing with the protobuf format"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Opentelemetry\\Proto\\": "Opentelemetry/Proto/",
-                    "GPBMetadata\\Opentelemetry\\": "GPBMetadata/Opentelemetry/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "opentelemetry-php contributors",
-                    "homepage": "https://github.com/open-telemetry/opentelemetry-php/graphs/contributors"
-                }
-            ],
-            "description": "PHP protobuf files for communication with OpenTelemetry OTLP collectors/servers.",
-            "keywords": [
-                "Metrics",
-                "apm",
-                "gRPC",
-                "logging",
-                "opentelemetry",
-                "otel",
-                "otlp",
-                "protobuf",
-                "tracing"
-            ],
-            "support": {
-                "chat": "https://app.slack.com/client/T08PSQ7BQ/C01NFPCV44V",
-                "docs": "https://opentelemetry.io/docs/php",
-                "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
-                "source": "https://github.com/open-telemetry/opentelemetry-php"
-            },
-            "time": "2024-10-30T11:49:49+00:00"
-        },
-        {
-            "name": "open-telemetry/opentelemetry-auto-psr18",
-            "version": "1.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/opentelemetry-php/contrib-auto-psr18.git",
-                "reference": "a714d81caec358972366d2175d0c9062012406d0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/opentelemetry-php/contrib-auto-psr18/zipball/a714d81caec358972366d2175d0c9062012406d0",
-                "reference": "a714d81caec358972366d2175d0c9062012406d0",
-                "shasum": ""
-            },
-            "require": {
-                "ext-opentelemetry": "*",
-                "open-telemetry/api": "^1.0",
-                "open-telemetry/sem-conv": "^1.24",
-                "php": "^8.0",
-                "psr/http-client": "^1"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3",
-                "nyholm/psr7": "*",
-                "open-telemetry/sdk": "^1.0",
-                "phan/phan": "^5.0",
-                "php-http/mock-client": "*",
-                "phpstan/phpstan": "^1.1",
-                "phpstan/phpstan-phpunit": "^1.0",
-                "phpunit/phpunit": "^9.5",
-                "psalm/plugin-phpunit": "^0.18.4",
-                "vimeo/psalm": "^5.0"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "_register.php"
-                ],
-                "psr-4": {
-                    "OpenTelemetry\\Contrib\\Instrumentation\\Psr18\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "description": "OpenTelemetry auto-instrumentation for PSR-18 (HTTP Client).",
-            "homepage": "https://opentelemetry.io/docs/php",
-            "keywords": [
-                "instrumentation",
-                "open-telemetry",
-                "opentelemetry",
-                "otel",
-                "psr18",
-                "tracing"
-            ],
-            "support": {
-                "source": "https://github.com/opentelemetry-php/contrib-auto-psr18/tree/1.0.4"
-            },
-            "time": "2024-06-25T01:39:13+00:00"
-        },
-        {
-            "name": "open-telemetry/opentelemetry-auto-slim",
-            "version": "1.0.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/opentelemetry-php/contrib-auto-slim.git",
-                "reference": "a4089b16add089d2233e3ff0fdc5ec8b9a1f5620"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/opentelemetry-php/contrib-auto-slim/zipball/a4089b16add089d2233e3ff0fdc5ec8b9a1f5620",
-                "reference": "a4089b16add089d2233e3ff0fdc5ec8b9a1f5620",
-                "shasum": ""
-            },
-            "require": {
-                "ext-opentelemetry": "*",
-                "ext-reflection": "*",
-                "open-telemetry/api": "^1.0",
-                "open-telemetry/sem-conv": "^1.24",
-                "php": "^8.0",
-                "slim/slim": "^4"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3",
-                "mockery/mockery": "^1.5",
-                "nyholm/psr7": "*",
-                "open-telemetry/opentelemetry-propagation-server-timing": "*",
-                "open-telemetry/opentelemetry-propagation-traceresponse": "*",
-                "open-telemetry/sdk": "^1.0",
-                "phan/phan": "^5.0",
-                "php-http/mock-client": "*",
-                "phpstan/phpstan": "^1.1",
-                "phpstan/phpstan-mockery": "^1.1.0",
-                "phpstan/phpstan-phpunit": "^1.0",
-                "phpunit/phpunit": "^9.5",
-                "psalm/plugin-phpunit": "^0.18.4",
-                "vimeo/psalm": "^5.0"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "_register.php"
-                ],
-                "psr-4": {
-                    "OpenTelemetry\\Contrib\\Instrumentation\\Slim\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "description": "OpenTelemetry auto-instrumentation for Slim Framework.",
-            "homepage": "https://opentelemetry.io/docs/php",
-            "keywords": [
-                "instrumentation",
-                "open-telemetry",
-                "opentelemetry",
-                "otel",
-                "slim",
-                "tracing"
-            ],
-            "support": {
-                "source": "https://github.com/opentelemetry-php/contrib-auto-slim/tree/1.0.7"
-            },
-            "time": "2024-06-25T01:39:13+00:00"
-        },
-        {
-            "name": "open-telemetry/sdk",
-            "version": "1.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/opentelemetry-php/sdk.git",
-                "reference": "fb0ff8d8279a3776bd604791e2531dd0cc147e8b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/opentelemetry-php/sdk/zipball/fb0ff8d8279a3776bd604791e2531dd0cc147e8b",
-                "reference": "fb0ff8d8279a3776bd604791e2531dd0cc147e8b",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "nyholm/psr7-server": "^1.1",
-                "open-telemetry/api": "~1.0 || ~1.1",
-                "open-telemetry/context": "^1.0",
-                "open-telemetry/sem-conv": "^1.0",
-                "php": "^8.1",
-                "php-http/discovery": "^1.14",
-                "psr/http-client": "^1.0",
-                "psr/http-client-implementation": "^1.0",
-                "psr/http-factory-implementation": "^1.0",
-                "psr/http-message": "^1.0.1|^2.0",
-                "psr/log": "^1.1|^2.0|^3.0",
-                "ramsey/uuid": "^3.0 || ^4.0",
-                "symfony/polyfill-mbstring": "^1.23",
-                "symfony/polyfill-php82": "^1.26",
-                "tbachert/spi": "^1.0.1"
-            },
-            "suggest": {
-                "ext-gmp": "To support unlimited number of synchronous metric readers",
-                "ext-mbstring": "To increase performance of string operations",
-                "open-telemetry/sdk-configuration": "File-based OpenTelemetry SDK configuration"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "1.0.x-dev"
-                },
-                "spi": {
-                    "OpenTelemetry\\API\\Instrumentation\\AutoInstrumentation\\HookManagerInterface": [
-                        "OpenTelemetry\\API\\Instrumentation\\AutoInstrumentation\\ExtensionHookManager"
-                    ]
-                }
-            },
-            "autoload": {
-                "files": [
-                    "Common/Util/functions.php",
-                    "Logs/Exporter/_register.php",
-                    "Metrics/MetricExporter/_register.php",
-                    "Propagation/_register.php",
-                    "Trace/SpanExporter/_register.php",
-                    "Common/Dev/Compatibility/_load.php",
-                    "_autoload.php"
-                ],
-                "psr-4": {
-                    "OpenTelemetry\\SDK\\": "."
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "opentelemetry-php contributors",
-                    "homepage": "https://github.com/open-telemetry/opentelemetry-php/graphs/contributors"
-                }
-            ],
-            "description": "SDK for OpenTelemetry PHP.",
-            "keywords": [
-                "Metrics",
-                "apm",
-                "logging",
-                "opentelemetry",
-                "otel",
-                "sdk",
-                "tracing"
-            ],
-            "support": {
-                "chat": "https://app.slack.com/client/T08PSQ7BQ/C01NFPCV44V",
-                "docs": "https://opentelemetry.io/docs/php",
-                "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
-                "source": "https://github.com/open-telemetry/opentelemetry-php"
-            },
-            "time": "2024-10-18T21:01:35+00:00"
-        },
-        {
-            "name": "open-telemetry/sem-conv",
-            "version": "1.27.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/opentelemetry-php/sem-conv.git",
-                "reference": "1dba705fea74bc0718d04be26090e3697e56f4e6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/opentelemetry-php/sem-conv/zipball/1dba705fea74bc0718d04be26090e3697e56f4e6",
-                "reference": "1dba705fea74bc0718d04be26090e3697e56f4e6",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^8.1"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "OpenTelemetry\\SemConv\\": "."
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "opentelemetry-php contributors",
-                    "homepage": "https://github.com/open-telemetry/opentelemetry-php/graphs/contributors"
-                }
-            ],
-            "description": "Semantic conventions for OpenTelemetry PHP.",
-            "keywords": [
-                "Metrics",
-                "apm",
-                "logging",
-                "opentelemetry",
-                "otel",
-                "semantic conventions",
-                "semconv",
-                "tracing"
-            ],
-            "support": {
-                "chat": "https://app.slack.com/client/T08PSQ7BQ/C01NFPCV44V",
-                "docs": "https://opentelemetry.io/docs/php",
-                "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
-                "source": "https://github.com/open-telemetry/opentelemetry-php"
-            },
-            "time": "2024-08-28T09:20:31+00:00"
-        },
-        {
-            "name": "open-telemetry/transport-grpc",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/opentelemetry-php/transport-grpc.git",
-                "reference": "f0c4e0e1acb55617c5d38239d5f5e4984ac92c52"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/opentelemetry-php/transport-grpc/zipball/f0c4e0e1acb55617c5d38239d5f5e4984ac92c52",
-                "reference": "f0c4e0e1acb55617c5d38239d5f5e4984ac92c52",
-                "shasum": ""
-            },
-            "require": {
-                "ext-grpc": "*",
-                "grpc/grpc": "*",
-                "open-telemetry/sdk": "^1.0",
-                "php": "^8.1"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "_register.php"
-                ],
-                "psr-4": {
-                    "OpenTelemetry\\Contrib\\Grpc\\": "."
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "opentelemetry-php contributors",
-                    "homepage": "https://github.com/open-telemetry/opentelemetry-php/graphs/contributors"
-                }
-            ],
-            "description": "gRPC transport for OpenTelemetry PHP.",
-            "keywords": [
-                "contrib",
-                "gRPC",
-                "opentelemetry",
-                "otel",
-                "otlp",
-                "tracing",
-                "transport"
-            ],
-            "support": {
-                "chat": "https://app.slack.com/client/T08PSQ7BQ/C01NFPCV44V",
-                "docs": "https://opentelemetry.io/docs/php",
-                "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
-                "source": "https://github.com/open-telemetry/opentelemetry-php"
-            },
-            "time": "2024-03-14T23:14:21+00:00"
-        },
-        {
-            "name": "php-http/discovery",
-            "version": "1.20.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-http/discovery.git",
-                "reference": "82fe4c73ef3363caed49ff8dd1539ba06044910d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-http/discovery/zipball/82fe4c73ef3363caed49ff8dd1539ba06044910d",
-                "reference": "82fe4c73ef3363caed49ff8dd1539ba06044910d",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0|^2.0",
-                "php": "^7.1 || ^8.0"
-            },
-            "conflict": {
-                "nyholm/psr7": "<1.0",
-                "zendframework/zend-diactoros": "*"
-            },
-            "provide": {
-                "php-http/async-client-implementation": "*",
-                "php-http/client-implementation": "*",
-                "psr/http-client-implementation": "*",
-                "psr/http-factory-implementation": "*",
-                "psr/http-message-implementation": "*"
-            },
-            "require-dev": {
-                "composer/composer": "^1.0.2|^2.0",
-                "graham-campbell/phpspec-skip-example-extension": "^5.0",
-                "php-http/httplug": "^1.0 || ^2.0",
-                "php-http/message-factory": "^1.0",
-                "phpspec/phpspec": "^5.1 || ^6.1 || ^7.3",
-                "sebastian/comparator": "^3.0.5 || ^4.0.8",
-                "symfony/phpunit-bridge": "^6.4.4 || ^7.0.1"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "Http\\Discovery\\Composer\\Plugin",
-                "plugin-optional": true
-            },
-            "autoload": {
-                "psr-4": {
-                    "Http\\Discovery\\": "src/"
-                },
-                "exclude-from-classmap": [
-                    "src/Composer/Plugin.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Márk Sági-Kazár",
-                    "email": "mark.sagikazar@gmail.com"
-                }
-            ],
-            "description": "Finds and installs PSR-7, PSR-17, PSR-18 and HTTPlug implementations",
-            "homepage": "http://php-http.org",
-            "keywords": [
-                "adapter",
-                "client",
-                "discovery",
-                "factory",
-                "http",
-                "message",
-                "psr17",
-                "psr7"
-            ],
-            "support": {
-                "issues": "https://github.com/php-http/discovery/issues",
-                "source": "https://github.com/php-http/discovery/tree/1.20.0"
-            },
-            "time": "2024-10-02T11:20:13+00:00"
-        },
-        {
-            "name": "psr/container",
-            "version": "2.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/container.git",
-                "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/container/zipball/c71ecc56dfe541dbd90c5360474fbc405f8d5963",
-                "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Container\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "https://www.php-fig.org/"
-                }
-            ],
-            "description": "Common Container Interface (PHP FIG PSR-11)",
-            "homepage": "https://github.com/php-fig/container",
-            "keywords": [
-                "PSR-11",
-                "container",
-                "container-interface",
-                "container-interop",
-                "psr"
-            ],
-            "support": {
-                "issues": "https://github.com/php-fig/container/issues",
-                "source": "https://github.com/php-fig/container/tree/2.0.2"
-            },
-            "time": "2021-11-05T16:47:00+00:00"
-        },
-        {
-            "name": "psr/http-client",
-            "version": "1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/http-client.git",
-                "reference": "bb5906edc1c324c9a05aa0873d40117941e5fa90"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-client/zipball/bb5906edc1c324c9a05aa0873d40117941e5fa90",
-                "reference": "bb5906edc1c324c9a05aa0873d40117941e5fa90",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.0 || ^8.0",
-                "psr/http-message": "^1.0 || ^2.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Http\\Client\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "https://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for HTTP clients",
-            "homepage": "https://github.com/php-fig/http-client",
-            "keywords": [
-                "http",
-                "http-client",
-                "psr",
-                "psr-18"
-            ],
-            "support": {
-                "source": "https://github.com/php-fig/http-client"
-            },
-            "time": "2023-09-23T14:17:50+00:00"
-        },
-        {
-            "name": "psr/http-factory",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/http-factory.git",
-                "reference": "2b4765fddfe3b508ac62f829e852b1501d3f6e8a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/2b4765fddfe3b508ac62f829e852b1501d3f6e8a",
-                "reference": "2b4765fddfe3b508ac62f829e852b1501d3f6e8a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "psr/http-message": "^1.0 || ^2.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Http\\Message\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "https://www.php-fig.org/"
-                }
-            ],
-            "description": "PSR-17: Common interfaces for PSR-7 HTTP message factories",
-            "keywords": [
-                "factory",
-                "http",
-                "message",
-                "psr",
-                "psr-17",
-                "psr-7",
-                "request",
-                "response"
-            ],
-            "support": {
-                "source": "https://github.com/php-fig/http-factory"
-            },
-            "time": "2024-04-15T12:06:14+00:00"
-        },
-        {
-            "name": "psr/http-message",
-            "version": "2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/http-message.git",
-                "reference": "402d35bcb92c70c026d1a6a9883f06b2ead23d71"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-message/zipball/402d35bcb92c70c026d1a6a9883f06b2ead23d71",
-                "reference": "402d35bcb92c70c026d1a6a9883f06b2ead23d71",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2 || ^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Http\\Message\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "https://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for HTTP messages",
-            "homepage": "https://github.com/php-fig/http-message",
-            "keywords": [
-                "http",
-                "http-message",
-                "psr",
-                "psr-7",
-                "request",
-                "response"
-            ],
-            "support": {
-                "source": "https://github.com/php-fig/http-message/tree/2.0"
-            },
-            "time": "2023-04-04T09:54:51+00:00"
-        },
-        {
-            "name": "psr/http-server-handler",
-            "version": "1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/http-server-handler.git",
-                "reference": "84c4fb66179be4caaf8e97bd239203245302e7d4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-server-handler/zipball/84c4fb66179be4caaf8e97bd239203245302e7d4",
-                "reference": "84c4fb66179be4caaf8e97bd239203245302e7d4",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0",
-                "psr/http-message": "^1.0 || ^2.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Http\\Server\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "https://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for HTTP server-side request handler",
-            "keywords": [
-                "handler",
-                "http",
-                "http-interop",
-                "psr",
-                "psr-15",
-                "psr-7",
-                "request",
-                "response",
-                "server"
-            ],
-            "support": {
-                "source": "https://github.com/php-fig/http-server-handler/tree/1.0.2"
-            },
-            "time": "2023-04-10T20:06:20+00:00"
-        },
-        {
-            "name": "psr/http-server-middleware",
-            "version": "1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/http-server-middleware.git",
-                "reference": "c1481f747daaa6a0782775cd6a8c26a1bf4a3829"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-server-middleware/zipball/c1481f747daaa6a0782775cd6a8c26a1bf4a3829",
-                "reference": "c1481f747daaa6a0782775cd6a8c26a1bf4a3829",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0",
-                "psr/http-message": "^1.0 || ^2.0",
-                "psr/http-server-handler": "^1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Http\\Server\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "https://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for HTTP server-side middleware",
-            "keywords": [
-                "http",
-                "http-interop",
-                "middleware",
-                "psr",
-                "psr-15",
-                "psr-7",
-                "request",
-                "response"
-            ],
-            "support": {
-                "issues": "https://github.com/php-fig/http-server-middleware/issues",
-                "source": "https://github.com/php-fig/http-server-middleware/tree/1.0.2"
-            },
-            "time": "2023-04-11T06:14:47+00:00"
-        },
-        {
-            "name": "psr/log",
-            "version": "3.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/log.git",
-                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
-                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.0.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Log\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "https://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for logging libraries",
-            "homepage": "https://github.com/php-fig/log",
-            "keywords": [
-                "log",
-                "psr",
-                "psr-3"
-            ],
-            "support": {
-                "source": "https://github.com/php-fig/log/tree/3.0.2"
-            },
-            "time": "2024-09-11T13:17:53+00:00"
-        },
-        {
-            "name": "ralouphie/getallheaders",
-            "version": "3.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ralouphie/getallheaders.git",
-                "reference": "120b605dfeb996808c31b6477290a714d356e822"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/120b605dfeb996808c31b6477290a714d356e822",
-                "reference": "120b605dfeb996808c31b6477290a714d356e822",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6"
-            },
-            "require-dev": {
-                "php-coveralls/php-coveralls": "^2.1",
-                "phpunit/phpunit": "^5 || ^6.5"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/getallheaders.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ralph Khattar",
-                    "email": "ralph.khattar@gmail.com"
-                }
-            ],
-            "description": "A polyfill for getallheaders.",
-            "support": {
-                "issues": "https://github.com/ralouphie/getallheaders/issues",
-                "source": "https://github.com/ralouphie/getallheaders/tree/develop"
-            },
-            "time": "2019-03-08T08:55:37+00:00"
-        },
-        {
-            "name": "ramsey/collection",
-            "version": "2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ramsey/collection.git",
-                "reference": "a4b48764bfbb8f3a6a4d1aeb1a35bb5e9ecac4a5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/collection/zipball/a4b48764bfbb8f3a6a4d1aeb1a35bb5e9ecac4a5",
-                "reference": "a4b48764bfbb8f3a6a4d1aeb1a35bb5e9ecac4a5",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^8.1"
-            },
-            "require-dev": {
-                "captainhook/plugin-composer": "^5.3",
-                "ergebnis/composer-normalize": "^2.28.3",
-                "fakerphp/faker": "^1.21",
-                "hamcrest/hamcrest-php": "^2.0",
-                "jangregor/phpstan-prophecy": "^1.0",
-                "mockery/mockery": "^1.5",
-                "php-parallel-lint/php-console-highlighter": "^1.0",
-                "php-parallel-lint/php-parallel-lint": "^1.3",
-                "phpcsstandards/phpcsutils": "^1.0.0-rc1",
-                "phpspec/prophecy-phpunit": "^2.0",
-                "phpstan/extension-installer": "^1.2",
-                "phpstan/phpstan": "^1.9",
-                "phpstan/phpstan-mockery": "^1.1",
-                "phpstan/phpstan-phpunit": "^1.3",
-                "phpunit/phpunit": "^9.5",
-                "psalm/plugin-mockery": "^1.1",
-                "psalm/plugin-phpunit": "^0.18.4",
-                "ramsey/coding-standard": "^2.0.3",
-                "ramsey/conventional-commits": "^1.3",
-                "vimeo/psalm": "^5.4"
-            },
-            "type": "library",
-            "extra": {
-                "captainhook": {
-                    "force-install": true
-                },
-                "ramsey/conventional-commits": {
-                    "configFile": "conventional-commits.json"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Ramsey\\Collection\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ben Ramsey",
-                    "email": "ben@benramsey.com",
-                    "homepage": "https://benramsey.com"
-                }
-            ],
-            "description": "A PHP library for representing and manipulating collections.",
-            "keywords": [
-                "array",
-                "collection",
-                "hash",
-                "map",
-                "queue",
-                "set"
-            ],
-            "support": {
-                "issues": "https://github.com/ramsey/collection/issues",
-                "source": "https://github.com/ramsey/collection/tree/2.0.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/ramsey",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/ramsey/collection",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2022-12-31T21:50:55+00:00"
-        },
-        {
-            "name": "ramsey/uuid",
-            "version": "4.7.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ramsey/uuid.git",
-                "reference": "91039bc1faa45ba123c4328958e620d382ec7088"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/91039bc1faa45ba123c4328958e620d382ec7088",
-                "reference": "91039bc1faa45ba123c4328958e620d382ec7088",
-                "shasum": ""
-            },
-            "require": {
-                "brick/math": "^0.8.8 || ^0.9 || ^0.10 || ^0.11 || ^0.12",
-                "ext-json": "*",
-                "php": "^8.0",
-                "ramsey/collection": "^1.2 || ^2.0"
-            },
-            "replace": {
-                "rhumsaa/uuid": "self.version"
-            },
-            "require-dev": {
-                "captainhook/captainhook": "^5.10",
-                "captainhook/plugin-composer": "^5.3",
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-                "doctrine/annotations": "^1.8",
-                "ergebnis/composer-normalize": "^2.15",
-                "mockery/mockery": "^1.3",
-                "paragonie/random-lib": "^2",
-                "php-mock/php-mock": "^2.2",
-                "php-mock/php-mock-mockery": "^1.3",
-                "php-parallel-lint/php-parallel-lint": "^1.1",
-                "phpbench/phpbench": "^1.0",
-                "phpstan/extension-installer": "^1.1",
-                "phpstan/phpstan": "^1.8",
-                "phpstan/phpstan-mockery": "^1.1",
-                "phpstan/phpstan-phpunit": "^1.1",
-                "phpunit/phpunit": "^8.5 || ^9",
-                "ramsey/composer-repl": "^1.4",
-                "slevomat/coding-standard": "^8.4",
-                "squizlabs/php_codesniffer": "^3.5",
-                "vimeo/psalm": "^4.9"
-            },
-            "suggest": {
-                "ext-bcmath": "Enables faster math with arbitrary-precision integers using BCMath.",
-                "ext-gmp": "Enables faster math with arbitrary-precision integers using GMP.",
-                "ext-uuid": "Enables the use of PeclUuidTimeGenerator and PeclUuidRandomGenerator.",
-                "paragonie/random-lib": "Provides RandomLib for use with the RandomLibAdapter",
-                "ramsey/uuid-doctrine": "Allows the use of Ramsey\\Uuid\\Uuid as Doctrine field type."
-            },
-            "type": "library",
-            "extra": {
-                "captainhook": {
-                    "force-install": true
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/functions.php"
-                ],
-                "psr-4": {
-                    "Ramsey\\Uuid\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A PHP library for generating and working with universally unique identifiers (UUIDs).",
-            "keywords": [
-                "guid",
-                "identifier",
-                "uuid"
-            ],
-            "support": {
-                "issues": "https://github.com/ramsey/uuid/issues",
-                "source": "https://github.com/ramsey/uuid/tree/4.7.6"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/ramsey",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/ramsey/uuid",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2024-04-27T21:32:50+00:00"
-        },
-        {
-            "name": "slim/psr7",
-            "version": "1.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/slimphp/Slim-Psr7.git",
-                "reference": "753e9646def5ff4db1a06e5cf4ef539bfd30f467"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/slimphp/Slim-Psr7/zipball/753e9646def5ff4db1a06e5cf4ef539bfd30f467",
-                "reference": "753e9646def5ff4db1a06e5cf4ef539bfd30f467",
-                "shasum": ""
-            },
-            "require": {
-                "fig/http-message-util": "^1.1.5",
-                "php": "^8.0",
-                "psr/http-factory": "^1.1",
-                "psr/http-message": "^1.0 || ^2.0",
-                "ralouphie/getallheaders": "^3.0",
-                "symfony/polyfill-php80": "^1.29"
-            },
-            "provide": {
-                "psr/http-factory-implementation": "^1.0",
-                "psr/http-message-implementation": "^1.0 || ^2.0"
-            },
-            "require-dev": {
-                "adriansuter/php-autoload-override": "^1.4",
-                "ext-json": "*",
-                "http-interop/http-factory-tests": "^1.1.0",
-                "php-http/psr7-integration-tests": "1.3.0",
-                "phpspec/prophecy": "^1.19",
-                "phpspec/prophecy-phpunit": "^2.2",
-                "phpstan/phpstan": "^1.11",
-                "phpunit/phpunit": "^9.6",
-                "squizlabs/php_codesniffer": "^3.10"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Slim\\Psr7\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Josh Lockhart",
-                    "email": "hello@joshlockhart.com",
-                    "homepage": "http://joshlockhart.com"
-                },
-                {
-                    "name": "Andrew Smith",
-                    "email": "a.smith@silentworks.co.uk",
-                    "homepage": "http://silentworks.co.uk"
-                },
-                {
-                    "name": "Rob Allen",
-                    "email": "rob@akrabat.com",
-                    "homepage": "http://akrabat.com"
-                },
-                {
-                    "name": "Pierre Berube",
-                    "email": "pierre@lgse.com",
-                    "homepage": "http://www.lgse.com"
-                }
-            ],
-            "description": "Strict PSR-7 implementation",
-            "homepage": "https://www.slimframework.com",
-            "keywords": [
-                "http",
-                "psr-7",
-                "psr7"
-            ],
-            "support": {
-                "issues": "https://github.com/slimphp/Slim-Psr7/issues",
-                "source": "https://github.com/slimphp/Slim-Psr7/tree/1.7.0"
-            },
-            "time": "2024-06-08T14:48:17+00:00"
-        },
-        {
-            "name": "slim/slim",
-            "version": "4.14.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/slimphp/Slim.git",
-                "reference": "5943393b88716eb9e82c4161caa956af63423913"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/slimphp/Slim/zipball/5943393b88716eb9e82c4161caa956af63423913",
-                "reference": "5943393b88716eb9e82c4161caa956af63423913",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "nikic/fast-route": "^1.3",
-                "php": "^7.4 || ^8.0",
-                "psr/container": "^1.0 || ^2.0",
-                "psr/http-factory": "^1.1",
-                "psr/http-message": "^1.1 || ^2.0",
-                "psr/http-server-handler": "^1.0",
-                "psr/http-server-middleware": "^1.0",
-                "psr/log": "^1.1 || ^2.0 || ^3.0"
-            },
-            "require-dev": {
-                "adriansuter/php-autoload-override": "^1.4",
-                "ext-simplexml": "*",
-                "guzzlehttp/psr7": "^2.6",
-                "httpsoft/http-message": "^1.1",
-                "httpsoft/http-server-request": "^1.1",
-                "laminas/laminas-diactoros": "^2.17 || ^3",
-                "nyholm/psr7": "^1.8",
-                "nyholm/psr7-server": "^1.1",
-                "phpspec/prophecy": "^1.19",
-                "phpspec/prophecy-phpunit": "^2.1",
-                "phpstan/phpstan": "^1.11",
-                "phpunit/phpunit": "^9.6",
-                "slim/http": "^1.3",
-                "slim/psr7": "^1.6",
-                "squizlabs/php_codesniffer": "^3.10",
-                "vimeo/psalm": "^5.24"
-            },
-            "suggest": {
-                "ext-simplexml": "Needed to support XML format in BodyParsingMiddleware",
-                "ext-xml": "Needed to support XML format in BodyParsingMiddleware",
-                "php-di/php-di": "PHP-DI is the recommended container library to be used with Slim",
-                "slim/psr7": "Slim PSR-7 implementation. See https://www.slimframework.com/docs/v4/start/installation.html for more information."
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Slim\\": "Slim"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Josh Lockhart",
-                    "email": "hello@joshlockhart.com",
-                    "homepage": "https://joshlockhart.com"
-                },
-                {
-                    "name": "Andrew Smith",
-                    "email": "a.smith@silentworks.co.uk",
-                    "homepage": "http://silentworks.co.uk"
-                },
-                {
-                    "name": "Rob Allen",
-                    "email": "rob@akrabat.com",
-                    "homepage": "http://akrabat.com"
-                },
-                {
-                    "name": "Pierre Berube",
-                    "email": "pierre@lgse.com",
-                    "homepage": "http://www.lgse.com"
-                },
-                {
-                    "name": "Gabriel Manricks",
-                    "email": "gmanricks@me.com",
-                    "homepage": "http://gabrielmanricks.com"
-                }
-            ],
-            "description": "Slim is a PHP micro framework that helps you quickly write simple yet powerful web applications and APIs",
-            "homepage": "https://www.slimframework.com",
-            "keywords": [
-                "api",
-                "framework",
-                "micro",
-                "router"
-            ],
-            "support": {
-                "docs": "https://www.slimframework.com/docs/v4/",
-                "forum": "https://discourse.slimframework.com/",
-                "irc": "irc://irc.freenode.net:6667/slimphp",
-                "issues": "https://github.com/slimphp/Slim/issues",
-                "rss": "https://www.slimframework.com/blog/feed.rss",
-                "slack": "https://slimphp.slack.com/",
-                "source": "https://github.com/slimphp/Slim",
-                "wiki": "https://github.com/slimphp/Slim/wiki"
-            },
-            "funding": [
-                {
-                    "url": "https://opencollective.com/slimphp",
-                    "type": "open_collective"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/slim/slim",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2024-06-13T08:54:48+00:00"
-        },
-        {
-            "name": "symfony/polyfill-mbstring",
-            "version": "v1.31.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "85181ba99b2345b0ef10ce42ecac37612d9fd341"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/85181ba99b2345b0ef10ce42ecac37612d9fd341",
-                "reference": "85181ba99b2345b0ef10ce42ecac37612d9fd341",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "provide": {
-                "ext-mbstring": "*"
-            },
-            "suggest": {
-                "ext-mbstring": "For best performance"
-            },
-            "type": "library",
-            "extra": {
-                "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ],
-                "psr-4": {
-                    "Symfony\\Polyfill\\Mbstring\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony polyfill for the Mbstring extension",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "compatibility",
-                "mbstring",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.31.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2024-09-09T11:45:10+00:00"
-        },
-        {
-            "name": "symfony/polyfill-php80",
-            "version": "v1.31.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "60328e362d4c2c802a54fcbf04f9d3fb892b4cf8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/60328e362d4c2c802a54fcbf04f9d3fb892b4cf8",
-                "reference": "60328e362d4c2c802a54fcbf04f9d3fb892b4cf8",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "type": "library",
-            "extra": {
-                "thanks": {
-                    "url": "https://github.com/symfony/polyfill",
-                    "name": "symfony/polyfill"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ],
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php80\\": ""
-                },
-                "classmap": [
-                    "Resources/stubs"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ion Bazan",
-                    "email": "ion.bazan@gmail.com"
-                },
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony polyfill backporting some PHP 8.0+ features to lower PHP versions",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "compatibility",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-php80/tree/v1.31.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2024-09-09T11:45:10+00:00"
-        },
-        {
-            "name": "symfony/polyfill-php82",
-            "version": "v1.31.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-php82.git",
-                "reference": "5d2ed36f7734637dacc025f179698031951b1692"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php82/zipball/5d2ed36f7734637dacc025f179698031951b1692",
-                "reference": "5d2ed36f7734637dacc025f179698031951b1692",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "type": "library",
-            "extra": {
-                "thanks": {
-                    "url": "https://github.com/symfony/polyfill",
-                    "name": "symfony/polyfill"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ],
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php82\\": ""
-                },
-                "classmap": [
-                    "Resources/stubs"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony polyfill backporting some PHP 8.2+ features to lower PHP versions",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "compatibility",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-php82/tree/v1.31.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2024-09-09T11:45:10+00:00"
-        },
-        {
-            "name": "tbachert/spi",
-            "version": "v1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Nevay/spi.git",
-                "reference": "2ddfaf815dafb45791a61b08170de8d583c16062"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Nevay/spi/zipball/2ddfaf815dafb45791a61b08170de8d583c16062",
-                "reference": "2ddfaf815dafb45791a61b08170de8d583c16062",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^2.0",
-                "composer/semver": "^1.0 || ^2.0 || ^3.0",
-                "php": "^8.1"
-            },
-            "require-dev": {
-                "composer/composer": "^2.0",
-                "infection/infection": "^0.27.9",
-                "phpunit/phpunit": "^10.5",
-                "psalm/phar": "^5.18"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "Nevay\\SPI\\Composer\\Plugin",
-                "branch-alias": {
-                    "dev-main": "0.2.x-dev"
-                },
-                "plugin-optional": true
-            },
-            "autoload": {
-                "psr-4": {
-                    "Nevay\\SPI\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "description": "Service provider loading facility",
-            "keywords": [
-                "service provider"
-            ],
-            "support": {
-                "issues": "https://github.com/Nevay/spi/issues",
-                "source": "https://github.com/Nevay/spi/tree/v1.0.2"
-            },
-            "time": "2024-10-04T16:36:12+00:00"
+  "_readme": [
+    "This file locks the dependencies of your project to a known state",
+    "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+    "This file is @generated automatically"
+  ],
+  "content-hash": "807e6df77e948a7e951ea3c6313f741d",
+  "packages": [
+    {
+      "name": "brick/math",
+      "version": "0.12.1",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/brick/math.git",
+        "reference": "f510c0a40911935b77b86859eb5223d58d660df1"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/brick/math/zipball/f510c0a40911935b77b86859eb5223d58d660df1",
+        "reference": "f510c0a40911935b77b86859eb5223d58d660df1",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^8.1"
+      },
+      "require-dev": {
+        "php-coveralls/php-coveralls": "^2.2",
+        "phpunit/phpunit": "^10.1",
+        "vimeo/psalm": "5.16.0"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "Brick\\Math\\": "src/"
         }
-    ],
-    "packages-dev": [],
-    "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": {},
-    "prefer-stable": false,
-    "prefer-lowest": false,
-    "platform": {},
-    "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["MIT"],
+      "description": "Arbitrary-precision arithmetic library",
+      "keywords": [
+        "Arbitrary-precision",
+        "BigInteger",
+        "BigRational",
+        "arithmetic",
+        "bigdecimal",
+        "bignum",
+        "bignumber",
+        "brick",
+        "decimal",
+        "integer",
+        "math",
+        "mathematics",
+        "rational"
+      ],
+      "support": {
+        "issues": "https://github.com/brick/math/issues",
+        "source": "https://github.com/brick/math/tree/0.12.1"
+      },
+      "funding": [
+        {
+          "url": "https://github.com/BenMorel",
+          "type": "github"
+        }
+      ],
+      "time": "2023-11-29T23:19:16+00:00"
+    },
+    {
+      "name": "composer/semver",
+      "version": "3.4.3",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/composer/semver.git",
+        "reference": "4313d26ada5e0c4edfbd1dc481a92ff7bff91f12"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/composer/semver/zipball/4313d26ada5e0c4edfbd1dc481a92ff7bff91f12",
+        "reference": "4313d26ada5e0c4edfbd1dc481a92ff7bff91f12",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^5.3.2 || ^7.0 || ^8.0"
+      },
+      "require-dev": {
+        "phpstan/phpstan": "^1.11",
+        "symfony/phpunit-bridge": "^3 || ^7"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-main": "3.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Composer\\Semver\\": "src"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["MIT"],
+      "authors": [
+        {
+          "name": "Nils Adermann",
+          "email": "naderman@naderman.de",
+          "homepage": "http://www.naderman.de"
+        },
+        {
+          "name": "Jordi Boggiano",
+          "email": "j.boggiano@seld.be",
+          "homepage": "http://seld.be"
+        },
+        {
+          "name": "Rob Bast",
+          "email": "rob.bast@gmail.com",
+          "homepage": "http://robbast.nl"
+        }
+      ],
+      "description": "Semver library that offers utilities, version constraint parsing and validation.",
+      "keywords": ["semantic", "semver", "validation", "versioning"],
+      "support": {
+        "irc": "ircs://irc.libera.chat:6697/composer",
+        "issues": "https://github.com/composer/semver/issues",
+        "source": "https://github.com/composer/semver/tree/3.4.3"
+      },
+      "funding": [
+        {
+          "url": "https://packagist.com",
+          "type": "custom"
+        },
+        {
+          "url": "https://github.com/composer",
+          "type": "github"
+        },
+        {
+          "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+          "type": "tidelift"
+        }
+      ],
+      "time": "2024-09-19T14:15:21+00:00"
+    },
+    {
+      "name": "fig/http-message-util",
+      "version": "1.1.5",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/php-fig/http-message-util.git",
+        "reference": "9d94dc0154230ac39e5bf89398b324a86f63f765"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/php-fig/http-message-util/zipball/9d94dc0154230ac39e5bf89398b324a86f63f765",
+        "reference": "9d94dc0154230ac39e5bf89398b324a86f63f765",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^5.3 || ^7.0 || ^8.0"
+      },
+      "suggest": {
+        "psr/http-message": "The package containing the PSR-7 interfaces"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "1.1.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Fig\\Http\\Message\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["MIT"],
+      "authors": [
+        {
+          "name": "PHP-FIG",
+          "homepage": "https://www.php-fig.org/"
+        }
+      ],
+      "description": "Utility classes and constants for use with PSR-7 (psr/http-message)",
+      "keywords": [
+        "http",
+        "http-message",
+        "psr",
+        "psr-7",
+        "request",
+        "response"
+      ],
+      "support": {
+        "issues": "https://github.com/php-fig/http-message-util/issues",
+        "source": "https://github.com/php-fig/http-message-util/tree/1.1.5"
+      },
+      "time": "2020-11-24T22:02:12+00:00"
+    },
+    {
+      "name": "google/protobuf",
+      "version": "v4.29.1",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/protocolbuffers/protobuf-php.git",
+        "reference": "6042b5483f8029e42473faeb8ef75ba266278381"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/6042b5483f8029e42473faeb8ef75ba266278381",
+        "reference": "6042b5483f8029e42473faeb8ef75ba266278381",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=7.0.0"
+      },
+      "require-dev": {
+        "phpunit/phpunit": ">=5.0.0"
+      },
+      "suggest": {
+        "ext-bcmath": "Need to support JSON deserialization"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "Google\\Protobuf\\": "src/Google/Protobuf",
+          "GPBMetadata\\Google\\Protobuf\\": "src/GPBMetadata/Google/Protobuf"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["BSD-3-Clause"],
+      "description": "proto library for PHP",
+      "homepage": "https://developers.google.com/protocol-buffers/",
+      "keywords": ["proto"],
+      "support": {
+        "source": "https://github.com/protocolbuffers/protobuf-php/tree/v4.29.1"
+      },
+      "time": "2024-12-03T22:07:45+00:00"
+    },
+    {
+      "name": "grpc/grpc",
+      "version": "1.57.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/grpc/grpc-php.git",
+        "reference": "b610c42022ed3a22f831439cb93802f2a4502fdf"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/grpc/grpc-php/zipball/b610c42022ed3a22f831439cb93802f2a4502fdf",
+        "reference": "b610c42022ed3a22f831439cb93802f2a4502fdf",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=7.0.0"
+      },
+      "require-dev": {
+        "google/auth": "^v1.3.0"
+      },
+      "suggest": {
+        "ext-protobuf": "For better performance, install the protobuf C extension.",
+        "google/protobuf": "To get started using grpc quickly, install the native protobuf library."
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "Grpc\\": "src/lib/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["Apache-2.0"],
+      "description": "gRPC library for PHP",
+      "homepage": "https://grpc.io",
+      "keywords": ["rpc"],
+      "support": {
+        "source": "https://github.com/grpc/grpc-php/tree/v1.57.0"
+      },
+      "time": "2023-08-14T23:57:54+00:00"
+    },
+    {
+      "name": "laminas/laminas-diactoros",
+      "version": "3.5.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/laminas/laminas-diactoros.git",
+        "reference": "143a16306602ce56b8b092a7914fef03c37f9ed2"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/laminas/laminas-diactoros/zipball/143a16306602ce56b8b092a7914fef03c37f9ed2",
+        "reference": "143a16306602ce56b8b092a7914fef03c37f9ed2",
+        "shasum": ""
+      },
+      "require": {
+        "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
+        "psr/http-factory": "^1.1",
+        "psr/http-message": "^1.1 || ^2.0"
+      },
+      "conflict": {
+        "amphp/amp": "<2.6.4"
+      },
+      "provide": {
+        "psr/http-factory-implementation": "^1.0",
+        "psr/http-message-implementation": "^1.1 || ^2.0"
+      },
+      "require-dev": {
+        "ext-curl": "*",
+        "ext-dom": "*",
+        "ext-gd": "*",
+        "ext-libxml": "*",
+        "http-interop/http-factory-tests": "^2.2.0",
+        "laminas/laminas-coding-standard": "~2.5.0",
+        "php-http/psr7-integration-tests": "^1.4.0",
+        "phpunit/phpunit": "^10.5.36",
+        "psalm/plugin-phpunit": "^0.19.0",
+        "vimeo/psalm": "^5.26.1"
+      },
+      "type": "library",
+      "extra": {
+        "laminas": {
+          "config-provider": "Laminas\\Diactoros\\ConfigProvider",
+          "module": "Laminas\\Diactoros"
+        }
+      },
+      "autoload": {
+        "files": [
+          "src/functions/create_uploaded_file.php",
+          "src/functions/marshal_headers_from_sapi.php",
+          "src/functions/marshal_method_from_sapi.php",
+          "src/functions/marshal_protocol_version_from_sapi.php",
+          "src/functions/normalize_server.php",
+          "src/functions/normalize_uploaded_files.php",
+          "src/functions/parse_cookie_header.php"
+        ],
+        "psr-4": {
+          "Laminas\\Diactoros\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["BSD-3-Clause"],
+      "description": "PSR HTTP Message implementations",
+      "homepage": "https://laminas.dev",
+      "keywords": ["http", "laminas", "psr", "psr-17", "psr-7"],
+      "support": {
+        "chat": "https://laminas.dev/chat",
+        "docs": "https://docs.laminas.dev/laminas-diactoros/",
+        "forum": "https://discourse.laminas.dev",
+        "issues": "https://github.com/laminas/laminas-diactoros/issues",
+        "rss": "https://github.com/laminas/laminas-diactoros/releases.atom",
+        "source": "https://github.com/laminas/laminas-diactoros"
+      },
+      "funding": [
+        {
+          "url": "https://funding.communitybridge.org/projects/laminas-project",
+          "type": "community_bridge"
+        }
+      ],
+      "time": "2024-10-14T11:59:49+00:00"
+    },
+    {
+      "name": "nikic/fast-route",
+      "version": "v1.3.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/nikic/FastRoute.git",
+        "reference": "181d480e08d9476e61381e04a71b34dc0432e812"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/nikic/FastRoute/zipball/181d480e08d9476e61381e04a71b34dc0432e812",
+        "reference": "181d480e08d9476e61381e04a71b34dc0432e812",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=5.4.0"
+      },
+      "require-dev": {
+        "phpunit/phpunit": "^4.8.35|~5.7"
+      },
+      "type": "library",
+      "autoload": {
+        "files": ["src/functions.php"],
+        "psr-4": {
+          "FastRoute\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["BSD-3-Clause"],
+      "authors": [
+        {
+          "name": "Nikita Popov",
+          "email": "nikic@php.net"
+        }
+      ],
+      "description": "Fast request router for PHP",
+      "keywords": ["router", "routing"],
+      "support": {
+        "issues": "https://github.com/nikic/FastRoute/issues",
+        "source": "https://github.com/nikic/FastRoute/tree/master"
+      },
+      "time": "2018-02-13T20:26:39+00:00"
+    },
+    {
+      "name": "nyholm/psr7",
+      "version": "1.8.2",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/Nyholm/psr7.git",
+        "reference": "a71f2b11690f4b24d099d6b16690a90ae14fc6f3"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/Nyholm/psr7/zipball/a71f2b11690f4b24d099d6b16690a90ae14fc6f3",
+        "reference": "a71f2b11690f4b24d099d6b16690a90ae14fc6f3",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=7.2",
+        "psr/http-factory": "^1.0",
+        "psr/http-message": "^1.1 || ^2.0"
+      },
+      "provide": {
+        "php-http/message-factory-implementation": "1.0",
+        "psr/http-factory-implementation": "1.0",
+        "psr/http-message-implementation": "1.0"
+      },
+      "require-dev": {
+        "http-interop/http-factory-tests": "^0.9",
+        "php-http/message-factory": "^1.0",
+        "php-http/psr7-integration-tests": "^1.0",
+        "phpunit/phpunit": "^7.5 || ^8.5 || ^9.4",
+        "symfony/error-handler": "^4.4"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "1.8-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Nyholm\\Psr7\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["MIT"],
+      "authors": [
+        {
+          "name": "Tobias Nyholm",
+          "email": "tobias.nyholm@gmail.com"
+        },
+        {
+          "name": "Martijn van der Ven",
+          "email": "martijn@vanderven.se"
+        }
+      ],
+      "description": "A fast PHP7 implementation of PSR-7",
+      "homepage": "https://tnyholm.se",
+      "keywords": ["psr-17", "psr-7"],
+      "support": {
+        "issues": "https://github.com/Nyholm/psr7/issues",
+        "source": "https://github.com/Nyholm/psr7/tree/1.8.2"
+      },
+      "funding": [
+        {
+          "url": "https://github.com/Zegnat",
+          "type": "github"
+        },
+        {
+          "url": "https://github.com/nyholm",
+          "type": "github"
+        }
+      ],
+      "time": "2024-09-09T07:06:30+00:00"
+    },
+    {
+      "name": "nyholm/psr7-server",
+      "version": "1.1.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/Nyholm/psr7-server.git",
+        "reference": "4335801d851f554ca43fa6e7d2602141538854dc"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/Nyholm/psr7-server/zipball/4335801d851f554ca43fa6e7d2602141538854dc",
+        "reference": "4335801d851f554ca43fa6e7d2602141538854dc",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^7.1 || ^8.0",
+        "psr/http-factory": "^1.0",
+        "psr/http-message": "^1.0 || ^2.0"
+      },
+      "require-dev": {
+        "nyholm/nsa": "^1.1",
+        "nyholm/psr7": "^1.3",
+        "phpunit/phpunit": "^7.0 || ^8.5 || ^9.3"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "Nyholm\\Psr7Server\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["MIT"],
+      "authors": [
+        {
+          "name": "Tobias Nyholm",
+          "email": "tobias.nyholm@gmail.com"
+        },
+        {
+          "name": "Martijn van der Ven",
+          "email": "martijn@vanderven.se"
+        }
+      ],
+      "description": "Helper classes to handle PSR-7 server requests",
+      "homepage": "http://tnyholm.se",
+      "keywords": ["psr-17", "psr-7"],
+      "support": {
+        "issues": "https://github.com/Nyholm/psr7-server/issues",
+        "source": "https://github.com/Nyholm/psr7-server/tree/1.1.0"
+      },
+      "funding": [
+        {
+          "url": "https://github.com/Zegnat",
+          "type": "github"
+        },
+        {
+          "url": "https://github.com/nyholm",
+          "type": "github"
+        }
+      ],
+      "time": "2023-11-08T09:30:43+00:00"
+    },
+    {
+      "name": "open-telemetry/api",
+      "version": "1.1.1",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/opentelemetry-php/api.git",
+        "reference": "542064815d38a6df55af7957cd6f1d7d967c99c6"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/opentelemetry-php/api/zipball/542064815d38a6df55af7957cd6f1d7d967c99c6",
+        "reference": "542064815d38a6df55af7957cd6f1d7d967c99c6",
+        "shasum": ""
+      },
+      "require": {
+        "open-telemetry/context": "^1.0",
+        "php": "^8.1",
+        "psr/log": "^1.1|^2.0|^3.0",
+        "symfony/polyfill-php82": "^1.26"
+      },
+      "conflict": {
+        "open-telemetry/sdk": "<=1.0.8"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-main": "1.1.x-dev"
+        },
+        "spi": {
+          "OpenTelemetry\\API\\Instrumentation\\AutoInstrumentation\\HookManagerInterface": [
+            "OpenTelemetry\\API\\Instrumentation\\AutoInstrumentation\\ExtensionHookManager"
+          ]
+        }
+      },
+      "autoload": {
+        "files": ["Trace/functions.php"],
+        "psr-4": {
+          "OpenTelemetry\\API\\": "."
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["Apache-2.0"],
+      "authors": [
+        {
+          "name": "opentelemetry-php contributors",
+          "homepage": "https://github.com/open-telemetry/opentelemetry-php/graphs/contributors"
+        }
+      ],
+      "description": "API for OpenTelemetry PHP.",
+      "keywords": [
+        "Metrics",
+        "api",
+        "apm",
+        "logging",
+        "opentelemetry",
+        "otel",
+        "tracing"
+      ],
+      "support": {
+        "chat": "https://app.slack.com/client/T08PSQ7BQ/C01NFPCV44V",
+        "docs": "https://opentelemetry.io/docs/php",
+        "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
+        "source": "https://github.com/open-telemetry/opentelemetry-php"
+      },
+      "time": "2024-10-15T22:42:37+00:00"
+    },
+    {
+      "name": "open-telemetry/context",
+      "version": "1.1.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/opentelemetry-php/context.git",
+        "reference": "0cba875ea1953435f78aec7f1d75afa87bdbf7f3"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/opentelemetry-php/context/zipball/0cba875ea1953435f78aec7f1d75afa87bdbf7f3",
+        "reference": "0cba875ea1953435f78aec7f1d75afa87bdbf7f3",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^8.1",
+        "symfony/polyfill-php82": "^1.26"
+      },
+      "suggest": {
+        "ext-ffi": "To allow context switching in Fibers"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-main": "1.0.x-dev"
+        }
+      },
+      "autoload": {
+        "files": ["fiber/initialize_fiber_handler.php"],
+        "psr-4": {
+          "OpenTelemetry\\Context\\": "."
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["Apache-2.0"],
+      "authors": [
+        {
+          "name": "opentelemetry-php contributors",
+          "homepage": "https://github.com/open-telemetry/opentelemetry-php/graphs/contributors"
+        }
+      ],
+      "description": "Context implementation for OpenTelemetry PHP.",
+      "keywords": ["Context", "opentelemetry", "otel"],
+      "support": {
+        "chat": "https://app.slack.com/client/T08PSQ7BQ/C01NFPCV44V",
+        "docs": "https://opentelemetry.io/docs/php",
+        "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
+        "source": "https://github.com/open-telemetry/opentelemetry-php"
+      },
+      "time": "2024-08-21T00:29:20+00:00"
+    },
+    {
+      "name": "open-telemetry/exporter-otlp",
+      "version": "1.1.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/opentelemetry-php/exporter-otlp.git",
+        "reference": "9b6de12204f25f8ab9540b46d6e7b5151897ce18"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/opentelemetry-php/exporter-otlp/zipball/9b6de12204f25f8ab9540b46d6e7b5151897ce18",
+        "reference": "9b6de12204f25f8ab9540b46d6e7b5151897ce18",
+        "shasum": ""
+      },
+      "require": {
+        "open-telemetry/api": "^1.0",
+        "open-telemetry/gen-otlp-protobuf": "^1.1",
+        "open-telemetry/sdk": "^1.0",
+        "php": "^8.1",
+        "php-http/discovery": "^1.14"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-main": "1.0.x-dev"
+        }
+      },
+      "autoload": {
+        "files": ["_register.php"],
+        "psr-4": {
+          "OpenTelemetry\\Contrib\\Otlp\\": "."
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["Apache-2.0"],
+      "authors": [
+        {
+          "name": "opentelemetry-php contributors",
+          "homepage": "https://github.com/open-telemetry/opentelemetry-php/graphs/contributors"
+        }
+      ],
+      "description": "OTLP exporter for OpenTelemetry.",
+      "keywords": [
+        "Metrics",
+        "exporter",
+        "gRPC",
+        "http",
+        "opentelemetry",
+        "otel",
+        "otlp",
+        "tracing"
+      ],
+      "support": {
+        "chat": "https://app.slack.com/client/T08PSQ7BQ/C01NFPCV44V",
+        "docs": "https://opentelemetry.io/docs/php",
+        "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
+        "source": "https://github.com/open-telemetry/opentelemetry-php"
+      },
+      "time": "2024-04-30T18:28:30+00:00"
+    },
+    {
+      "name": "open-telemetry/gen-otlp-protobuf",
+      "version": "1.2.1",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/opentelemetry-php/gen-otlp-protobuf.git",
+        "reference": "66c3b98e998a726691c92e6405a82e6e7b8b169d"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/opentelemetry-php/gen-otlp-protobuf/zipball/66c3b98e998a726691c92e6405a82e6e7b8b169d",
+        "reference": "66c3b98e998a726691c92e6405a82e6e7b8b169d",
+        "shasum": ""
+      },
+      "require": {
+        "google/protobuf": "^3.22 || ^4.0",
+        "php": "^8.0"
+      },
+      "suggest": {
+        "ext-protobuf": "For better performance, when dealing with the protobuf format"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-main": "1.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Opentelemetry\\Proto\\": "Opentelemetry/Proto/",
+          "GPBMetadata\\Opentelemetry\\": "GPBMetadata/Opentelemetry/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["Apache-2.0"],
+      "authors": [
+        {
+          "name": "opentelemetry-php contributors",
+          "homepage": "https://github.com/open-telemetry/opentelemetry-php/graphs/contributors"
+        }
+      ],
+      "description": "PHP protobuf files for communication with OpenTelemetry OTLP collectors/servers.",
+      "keywords": [
+        "Metrics",
+        "apm",
+        "gRPC",
+        "logging",
+        "opentelemetry",
+        "otel",
+        "otlp",
+        "protobuf",
+        "tracing"
+      ],
+      "support": {
+        "chat": "https://app.slack.com/client/T08PSQ7BQ/C01NFPCV44V",
+        "docs": "https://opentelemetry.io/docs/php",
+        "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
+        "source": "https://github.com/open-telemetry/opentelemetry-php"
+      },
+      "time": "2024-10-30T11:49:49+00:00"
+    },
+    {
+      "name": "open-telemetry/opentelemetry-auto-psr18",
+      "version": "1.0.4",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/opentelemetry-php/contrib-auto-psr18.git",
+        "reference": "a714d81caec358972366d2175d0c9062012406d0"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/opentelemetry-php/contrib-auto-psr18/zipball/a714d81caec358972366d2175d0c9062012406d0",
+        "reference": "a714d81caec358972366d2175d0c9062012406d0",
+        "shasum": ""
+      },
+      "require": {
+        "ext-opentelemetry": "*",
+        "open-telemetry/api": "^1.0",
+        "open-telemetry/sem-conv": "^1.24",
+        "php": "^8.0",
+        "psr/http-client": "^1"
+      },
+      "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3",
+        "nyholm/psr7": "*",
+        "open-telemetry/sdk": "^1.0",
+        "phan/phan": "^5.0",
+        "php-http/mock-client": "*",
+        "phpstan/phpstan": "^1.1",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "phpunit/phpunit": "^9.5",
+        "psalm/plugin-phpunit": "^0.18.4",
+        "vimeo/psalm": "^5.0"
+      },
+      "type": "library",
+      "autoload": {
+        "files": ["_register.php"],
+        "psr-4": {
+          "OpenTelemetry\\Contrib\\Instrumentation\\Psr18\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["Apache-2.0"],
+      "description": "OpenTelemetry auto-instrumentation for PSR-18 (HTTP Client).",
+      "homepage": "https://opentelemetry.io/docs/php",
+      "keywords": [
+        "instrumentation",
+        "open-telemetry",
+        "opentelemetry",
+        "otel",
+        "psr18",
+        "tracing"
+      ],
+      "support": {
+        "source": "https://github.com/opentelemetry-php/contrib-auto-psr18/tree/1.0.4"
+      },
+      "time": "2024-06-25T01:39:13+00:00"
+    },
+    {
+      "name": "open-telemetry/opentelemetry-auto-slim",
+      "version": "1.0.7",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/opentelemetry-php/contrib-auto-slim.git",
+        "reference": "a4089b16add089d2233e3ff0fdc5ec8b9a1f5620"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/opentelemetry-php/contrib-auto-slim/zipball/a4089b16add089d2233e3ff0fdc5ec8b9a1f5620",
+        "reference": "a4089b16add089d2233e3ff0fdc5ec8b9a1f5620",
+        "shasum": ""
+      },
+      "require": {
+        "ext-opentelemetry": "*",
+        "ext-reflection": "*",
+        "open-telemetry/api": "^1.0",
+        "open-telemetry/sem-conv": "^1.24",
+        "php": "^8.0",
+        "slim/slim": "^4"
+      },
+      "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3",
+        "mockery/mockery": "^1.5",
+        "nyholm/psr7": "*",
+        "open-telemetry/opentelemetry-propagation-server-timing": "*",
+        "open-telemetry/opentelemetry-propagation-traceresponse": "*",
+        "open-telemetry/sdk": "^1.0",
+        "phan/phan": "^5.0",
+        "php-http/mock-client": "*",
+        "phpstan/phpstan": "^1.1",
+        "phpstan/phpstan-mockery": "^1.1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "phpunit/phpunit": "^9.5",
+        "psalm/plugin-phpunit": "^0.18.4",
+        "vimeo/psalm": "^5.0"
+      },
+      "type": "library",
+      "autoload": {
+        "files": ["_register.php"],
+        "psr-4": {
+          "OpenTelemetry\\Contrib\\Instrumentation\\Slim\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["Apache-2.0"],
+      "description": "OpenTelemetry auto-instrumentation for Slim Framework.",
+      "homepage": "https://opentelemetry.io/docs/php",
+      "keywords": [
+        "instrumentation",
+        "open-telemetry",
+        "opentelemetry",
+        "otel",
+        "slim",
+        "tracing"
+      ],
+      "support": {
+        "source": "https://github.com/opentelemetry-php/contrib-auto-slim/tree/1.0.7"
+      },
+      "time": "2024-06-25T01:39:13+00:00"
+    },
+    {
+      "name": "open-telemetry/sdk",
+      "version": "1.1.2",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/opentelemetry-php/sdk.git",
+        "reference": "fb0ff8d8279a3776bd604791e2531dd0cc147e8b"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/opentelemetry-php/sdk/zipball/fb0ff8d8279a3776bd604791e2531dd0cc147e8b",
+        "reference": "fb0ff8d8279a3776bd604791e2531dd0cc147e8b",
+        "shasum": ""
+      },
+      "require": {
+        "ext-json": "*",
+        "nyholm/psr7-server": "^1.1",
+        "open-telemetry/api": "~1.0 || ~1.1",
+        "open-telemetry/context": "^1.0",
+        "open-telemetry/sem-conv": "^1.0",
+        "php": "^8.1",
+        "php-http/discovery": "^1.14",
+        "psr/http-client": "^1.0",
+        "psr/http-client-implementation": "^1.0",
+        "psr/http-factory-implementation": "^1.0",
+        "psr/http-message": "^1.0.1|^2.0",
+        "psr/log": "^1.1|^2.0|^3.0",
+        "ramsey/uuid": "^3.0 || ^4.0",
+        "symfony/polyfill-mbstring": "^1.23",
+        "symfony/polyfill-php82": "^1.26",
+        "tbachert/spi": "^1.0.1"
+      },
+      "suggest": {
+        "ext-gmp": "To support unlimited number of synchronous metric readers",
+        "ext-mbstring": "To increase performance of string operations",
+        "open-telemetry/sdk-configuration": "File-based OpenTelemetry SDK configuration"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-main": "1.0.x-dev"
+        },
+        "spi": {
+          "OpenTelemetry\\API\\Instrumentation\\AutoInstrumentation\\HookManagerInterface": [
+            "OpenTelemetry\\API\\Instrumentation\\AutoInstrumentation\\ExtensionHookManager"
+          ]
+        }
+      },
+      "autoload": {
+        "files": [
+          "Common/Util/functions.php",
+          "Logs/Exporter/_register.php",
+          "Metrics/MetricExporter/_register.php",
+          "Propagation/_register.php",
+          "Trace/SpanExporter/_register.php",
+          "Common/Dev/Compatibility/_load.php",
+          "_autoload.php"
+        ],
+        "psr-4": {
+          "OpenTelemetry\\SDK\\": "."
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["Apache-2.0"],
+      "authors": [
+        {
+          "name": "opentelemetry-php contributors",
+          "homepage": "https://github.com/open-telemetry/opentelemetry-php/graphs/contributors"
+        }
+      ],
+      "description": "SDK for OpenTelemetry PHP.",
+      "keywords": [
+        "Metrics",
+        "apm",
+        "logging",
+        "opentelemetry",
+        "otel",
+        "sdk",
+        "tracing"
+      ],
+      "support": {
+        "chat": "https://app.slack.com/client/T08PSQ7BQ/C01NFPCV44V",
+        "docs": "https://opentelemetry.io/docs/php",
+        "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
+        "source": "https://github.com/open-telemetry/opentelemetry-php"
+      },
+      "time": "2024-10-18T21:01:35+00:00"
+    },
+    {
+      "name": "open-telemetry/sem-conv",
+      "version": "1.27.1",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/opentelemetry-php/sem-conv.git",
+        "reference": "1dba705fea74bc0718d04be26090e3697e56f4e6"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/opentelemetry-php/sem-conv/zipball/1dba705fea74bc0718d04be26090e3697e56f4e6",
+        "reference": "1dba705fea74bc0718d04be26090e3697e56f4e6",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^8.1"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-main": "1.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "OpenTelemetry\\SemConv\\": "."
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["Apache-2.0"],
+      "authors": [
+        {
+          "name": "opentelemetry-php contributors",
+          "homepage": "https://github.com/open-telemetry/opentelemetry-php/graphs/contributors"
+        }
+      ],
+      "description": "Semantic conventions for OpenTelemetry PHP.",
+      "keywords": [
+        "Metrics",
+        "apm",
+        "logging",
+        "opentelemetry",
+        "otel",
+        "semantic conventions",
+        "semconv",
+        "tracing"
+      ],
+      "support": {
+        "chat": "https://app.slack.com/client/T08PSQ7BQ/C01NFPCV44V",
+        "docs": "https://opentelemetry.io/docs/php",
+        "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
+        "source": "https://github.com/open-telemetry/opentelemetry-php"
+      },
+      "time": "2024-08-28T09:20:31+00:00"
+    },
+    {
+      "name": "open-telemetry/transport-grpc",
+      "version": "1.1.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/opentelemetry-php/transport-grpc.git",
+        "reference": "f0c4e0e1acb55617c5d38239d5f5e4984ac92c52"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/opentelemetry-php/transport-grpc/zipball/f0c4e0e1acb55617c5d38239d5f5e4984ac92c52",
+        "reference": "f0c4e0e1acb55617c5d38239d5f5e4984ac92c52",
+        "shasum": ""
+      },
+      "require": {
+        "ext-grpc": "*",
+        "grpc/grpc": "*",
+        "open-telemetry/sdk": "^1.0",
+        "php": "^8.1"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-main": "1.0.x-dev"
+        }
+      },
+      "autoload": {
+        "files": ["_register.php"],
+        "psr-4": {
+          "OpenTelemetry\\Contrib\\Grpc\\": "."
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["Apache-2.0"],
+      "authors": [
+        {
+          "name": "opentelemetry-php contributors",
+          "homepage": "https://github.com/open-telemetry/opentelemetry-php/graphs/contributors"
+        }
+      ],
+      "description": "gRPC transport for OpenTelemetry PHP.",
+      "keywords": [
+        "contrib",
+        "gRPC",
+        "opentelemetry",
+        "otel",
+        "otlp",
+        "tracing",
+        "transport"
+      ],
+      "support": {
+        "chat": "https://app.slack.com/client/T08PSQ7BQ/C01NFPCV44V",
+        "docs": "https://opentelemetry.io/docs/php",
+        "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
+        "source": "https://github.com/open-telemetry/opentelemetry-php"
+      },
+      "time": "2024-03-14T23:14:21+00:00"
+    },
+    {
+      "name": "php-http/discovery",
+      "version": "1.20.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/php-http/discovery.git",
+        "reference": "82fe4c73ef3363caed49ff8dd1539ba06044910d"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/php-http/discovery/zipball/82fe4c73ef3363caed49ff8dd1539ba06044910d",
+        "reference": "82fe4c73ef3363caed49ff8dd1539ba06044910d",
+        "shasum": ""
+      },
+      "require": {
+        "composer-plugin-api": "^1.0|^2.0",
+        "php": "^7.1 || ^8.0"
+      },
+      "conflict": {
+        "nyholm/psr7": "<1.0",
+        "zendframework/zend-diactoros": "*"
+      },
+      "provide": {
+        "php-http/async-client-implementation": "*",
+        "php-http/client-implementation": "*",
+        "psr/http-client-implementation": "*",
+        "psr/http-factory-implementation": "*",
+        "psr/http-message-implementation": "*"
+      },
+      "require-dev": {
+        "composer/composer": "^1.0.2|^2.0",
+        "graham-campbell/phpspec-skip-example-extension": "^5.0",
+        "php-http/httplug": "^1.0 || ^2.0",
+        "php-http/message-factory": "^1.0",
+        "phpspec/phpspec": "^5.1 || ^6.1 || ^7.3",
+        "sebastian/comparator": "^3.0.5 || ^4.0.8",
+        "symfony/phpunit-bridge": "^6.4.4 || ^7.0.1"
+      },
+      "type": "composer-plugin",
+      "extra": {
+        "class": "Http\\Discovery\\Composer\\Plugin",
+        "plugin-optional": true
+      },
+      "autoload": {
+        "psr-4": {
+          "Http\\Discovery\\": "src/"
+        },
+        "exclude-from-classmap": ["src/Composer/Plugin.php"]
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["MIT"],
+      "authors": [
+        {
+          "name": "Márk Sági-Kazár",
+          "email": "mark.sagikazar@gmail.com"
+        }
+      ],
+      "description": "Finds and installs PSR-7, PSR-17, PSR-18 and HTTPlug implementations",
+      "homepage": "http://php-http.org",
+      "keywords": [
+        "adapter",
+        "client",
+        "discovery",
+        "factory",
+        "http",
+        "message",
+        "psr17",
+        "psr7"
+      ],
+      "support": {
+        "issues": "https://github.com/php-http/discovery/issues",
+        "source": "https://github.com/php-http/discovery/tree/1.20.0"
+      },
+      "time": "2024-10-02T11:20:13+00:00"
+    },
+    {
+      "name": "psr/container",
+      "version": "2.0.2",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/php-fig/container.git",
+        "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/php-fig/container/zipball/c71ecc56dfe541dbd90c5360474fbc405f8d5963",
+        "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=7.4.0"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "2.0.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Psr\\Container\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["MIT"],
+      "authors": [
+        {
+          "name": "PHP-FIG",
+          "homepage": "https://www.php-fig.org/"
+        }
+      ],
+      "description": "Common Container Interface (PHP FIG PSR-11)",
+      "homepage": "https://github.com/php-fig/container",
+      "keywords": [
+        "PSR-11",
+        "container",
+        "container-interface",
+        "container-interop",
+        "psr"
+      ],
+      "support": {
+        "issues": "https://github.com/php-fig/container/issues",
+        "source": "https://github.com/php-fig/container/tree/2.0.2"
+      },
+      "time": "2021-11-05T16:47:00+00:00"
+    },
+    {
+      "name": "psr/http-client",
+      "version": "1.0.3",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/php-fig/http-client.git",
+        "reference": "bb5906edc1c324c9a05aa0873d40117941e5fa90"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/php-fig/http-client/zipball/bb5906edc1c324c9a05aa0873d40117941e5fa90",
+        "reference": "bb5906edc1c324c9a05aa0873d40117941e5fa90",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^7.0 || ^8.0",
+        "psr/http-message": "^1.0 || ^2.0"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "1.0.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Psr\\Http\\Client\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["MIT"],
+      "authors": [
+        {
+          "name": "PHP-FIG",
+          "homepage": "https://www.php-fig.org/"
+        }
+      ],
+      "description": "Common interface for HTTP clients",
+      "homepage": "https://github.com/php-fig/http-client",
+      "keywords": ["http", "http-client", "psr", "psr-18"],
+      "support": {
+        "source": "https://github.com/php-fig/http-client"
+      },
+      "time": "2023-09-23T14:17:50+00:00"
+    },
+    {
+      "name": "psr/http-factory",
+      "version": "1.1.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/php-fig/http-factory.git",
+        "reference": "2b4765fddfe3b508ac62f829e852b1501d3f6e8a"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/php-fig/http-factory/zipball/2b4765fddfe3b508ac62f829e852b1501d3f6e8a",
+        "reference": "2b4765fddfe3b508ac62f829e852b1501d3f6e8a",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=7.1",
+        "psr/http-message": "^1.0 || ^2.0"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "1.0.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Psr\\Http\\Message\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["MIT"],
+      "authors": [
+        {
+          "name": "PHP-FIG",
+          "homepage": "https://www.php-fig.org/"
+        }
+      ],
+      "description": "PSR-17: Common interfaces for PSR-7 HTTP message factories",
+      "keywords": [
+        "factory",
+        "http",
+        "message",
+        "psr",
+        "psr-17",
+        "psr-7",
+        "request",
+        "response"
+      ],
+      "support": {
+        "source": "https://github.com/php-fig/http-factory"
+      },
+      "time": "2024-04-15T12:06:14+00:00"
+    },
+    {
+      "name": "psr/http-message",
+      "version": "2.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/php-fig/http-message.git",
+        "reference": "402d35bcb92c70c026d1a6a9883f06b2ead23d71"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/php-fig/http-message/zipball/402d35bcb92c70c026d1a6a9883f06b2ead23d71",
+        "reference": "402d35bcb92c70c026d1a6a9883f06b2ead23d71",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^7.2 || ^8.0"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "2.0.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Psr\\Http\\Message\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["MIT"],
+      "authors": [
+        {
+          "name": "PHP-FIG",
+          "homepage": "https://www.php-fig.org/"
+        }
+      ],
+      "description": "Common interface for HTTP messages",
+      "homepage": "https://github.com/php-fig/http-message",
+      "keywords": [
+        "http",
+        "http-message",
+        "psr",
+        "psr-7",
+        "request",
+        "response"
+      ],
+      "support": {
+        "source": "https://github.com/php-fig/http-message/tree/2.0"
+      },
+      "time": "2023-04-04T09:54:51+00:00"
+    },
+    {
+      "name": "psr/http-server-handler",
+      "version": "1.0.2",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/php-fig/http-server-handler.git",
+        "reference": "84c4fb66179be4caaf8e97bd239203245302e7d4"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/php-fig/http-server-handler/zipball/84c4fb66179be4caaf8e97bd239203245302e7d4",
+        "reference": "84c4fb66179be4caaf8e97bd239203245302e7d4",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=7.0",
+        "psr/http-message": "^1.0 || ^2.0"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "1.0.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Psr\\Http\\Server\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["MIT"],
+      "authors": [
+        {
+          "name": "PHP-FIG",
+          "homepage": "https://www.php-fig.org/"
+        }
+      ],
+      "description": "Common interface for HTTP server-side request handler",
+      "keywords": [
+        "handler",
+        "http",
+        "http-interop",
+        "psr",
+        "psr-15",
+        "psr-7",
+        "request",
+        "response",
+        "server"
+      ],
+      "support": {
+        "source": "https://github.com/php-fig/http-server-handler/tree/1.0.2"
+      },
+      "time": "2023-04-10T20:06:20+00:00"
+    },
+    {
+      "name": "psr/http-server-middleware",
+      "version": "1.0.2",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/php-fig/http-server-middleware.git",
+        "reference": "c1481f747daaa6a0782775cd6a8c26a1bf4a3829"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/php-fig/http-server-middleware/zipball/c1481f747daaa6a0782775cd6a8c26a1bf4a3829",
+        "reference": "c1481f747daaa6a0782775cd6a8c26a1bf4a3829",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=7.0",
+        "psr/http-message": "^1.0 || ^2.0",
+        "psr/http-server-handler": "^1.0"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "1.0.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Psr\\Http\\Server\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["MIT"],
+      "authors": [
+        {
+          "name": "PHP-FIG",
+          "homepage": "https://www.php-fig.org/"
+        }
+      ],
+      "description": "Common interface for HTTP server-side middleware",
+      "keywords": [
+        "http",
+        "http-interop",
+        "middleware",
+        "psr",
+        "psr-15",
+        "psr-7",
+        "request",
+        "response"
+      ],
+      "support": {
+        "issues": "https://github.com/php-fig/http-server-middleware/issues",
+        "source": "https://github.com/php-fig/http-server-middleware/tree/1.0.2"
+      },
+      "time": "2023-04-11T06:14:47+00:00"
+    },
+    {
+      "name": "psr/log",
+      "version": "3.0.2",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/php-fig/log.git",
+        "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/php-fig/log/zipball/f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
+        "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=8.0.0"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "3.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Psr\\Log\\": "src"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["MIT"],
+      "authors": [
+        {
+          "name": "PHP-FIG",
+          "homepage": "https://www.php-fig.org/"
+        }
+      ],
+      "description": "Common interface for logging libraries",
+      "homepage": "https://github.com/php-fig/log",
+      "keywords": ["log", "psr", "psr-3"],
+      "support": {
+        "source": "https://github.com/php-fig/log/tree/3.0.2"
+      },
+      "time": "2024-09-11T13:17:53+00:00"
+    },
+    {
+      "name": "ralouphie/getallheaders",
+      "version": "3.0.3",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/ralouphie/getallheaders.git",
+        "reference": "120b605dfeb996808c31b6477290a714d356e822"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/120b605dfeb996808c31b6477290a714d356e822",
+        "reference": "120b605dfeb996808c31b6477290a714d356e822",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=5.6"
+      },
+      "require-dev": {
+        "php-coveralls/php-coveralls": "^2.1",
+        "phpunit/phpunit": "^5 || ^6.5"
+      },
+      "type": "library",
+      "autoload": {
+        "files": ["src/getallheaders.php"]
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["MIT"],
+      "authors": [
+        {
+          "name": "Ralph Khattar",
+          "email": "ralph.khattar@gmail.com"
+        }
+      ],
+      "description": "A polyfill for getallheaders.",
+      "support": {
+        "issues": "https://github.com/ralouphie/getallheaders/issues",
+        "source": "https://github.com/ralouphie/getallheaders/tree/develop"
+      },
+      "time": "2019-03-08T08:55:37+00:00"
+    },
+    {
+      "name": "ramsey/collection",
+      "version": "2.0.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/ramsey/collection.git",
+        "reference": "a4b48764bfbb8f3a6a4d1aeb1a35bb5e9ecac4a5"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/ramsey/collection/zipball/a4b48764bfbb8f3a6a4d1aeb1a35bb5e9ecac4a5",
+        "reference": "a4b48764bfbb8f3a6a4d1aeb1a35bb5e9ecac4a5",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^8.1"
+      },
+      "require-dev": {
+        "captainhook/plugin-composer": "^5.3",
+        "ergebnis/composer-normalize": "^2.28.3",
+        "fakerphp/faker": "^1.21",
+        "hamcrest/hamcrest-php": "^2.0",
+        "jangregor/phpstan-prophecy": "^1.0",
+        "mockery/mockery": "^1.5",
+        "php-parallel-lint/php-console-highlighter": "^1.0",
+        "php-parallel-lint/php-parallel-lint": "^1.3",
+        "phpcsstandards/phpcsutils": "^1.0.0-rc1",
+        "phpspec/prophecy-phpunit": "^2.0",
+        "phpstan/extension-installer": "^1.2",
+        "phpstan/phpstan": "^1.9",
+        "phpstan/phpstan-mockery": "^1.1",
+        "phpstan/phpstan-phpunit": "^1.3",
+        "phpunit/phpunit": "^9.5",
+        "psalm/plugin-mockery": "^1.1",
+        "psalm/plugin-phpunit": "^0.18.4",
+        "ramsey/coding-standard": "^2.0.3",
+        "ramsey/conventional-commits": "^1.3",
+        "vimeo/psalm": "^5.4"
+      },
+      "type": "library",
+      "extra": {
+        "captainhook": {
+          "force-install": true
+        },
+        "ramsey/conventional-commits": {
+          "configFile": "conventional-commits.json"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Ramsey\\Collection\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["MIT"],
+      "authors": [
+        {
+          "name": "Ben Ramsey",
+          "email": "ben@benramsey.com",
+          "homepage": "https://benramsey.com"
+        }
+      ],
+      "description": "A PHP library for representing and manipulating collections.",
+      "keywords": ["array", "collection", "hash", "map", "queue", "set"],
+      "support": {
+        "issues": "https://github.com/ramsey/collection/issues",
+        "source": "https://github.com/ramsey/collection/tree/2.0.0"
+      },
+      "funding": [
+        {
+          "url": "https://github.com/ramsey",
+          "type": "github"
+        },
+        {
+          "url": "https://tidelift.com/funding/github/packagist/ramsey/collection",
+          "type": "tidelift"
+        }
+      ],
+      "time": "2022-12-31T21:50:55+00:00"
+    },
+    {
+      "name": "ramsey/uuid",
+      "version": "4.7.6",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/ramsey/uuid.git",
+        "reference": "91039bc1faa45ba123c4328958e620d382ec7088"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/ramsey/uuid/zipball/91039bc1faa45ba123c4328958e620d382ec7088",
+        "reference": "91039bc1faa45ba123c4328958e620d382ec7088",
+        "shasum": ""
+      },
+      "require": {
+        "brick/math": "^0.8.8 || ^0.9 || ^0.10 || ^0.11 || ^0.12",
+        "ext-json": "*",
+        "php": "^8.0",
+        "ramsey/collection": "^1.2 || ^2.0"
+      },
+      "replace": {
+        "rhumsaa/uuid": "self.version"
+      },
+      "require-dev": {
+        "captainhook/captainhook": "^5.10",
+        "captainhook/plugin-composer": "^5.3",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+        "doctrine/annotations": "^1.8",
+        "ergebnis/composer-normalize": "^2.15",
+        "mockery/mockery": "^1.3",
+        "paragonie/random-lib": "^2",
+        "php-mock/php-mock": "^2.2",
+        "php-mock/php-mock-mockery": "^1.3",
+        "php-parallel-lint/php-parallel-lint": "^1.1",
+        "phpbench/phpbench": "^1.0",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan": "^1.8",
+        "phpstan/phpstan-mockery": "^1.1",
+        "phpstan/phpstan-phpunit": "^1.1",
+        "phpunit/phpunit": "^8.5 || ^9",
+        "ramsey/composer-repl": "^1.4",
+        "slevomat/coding-standard": "^8.4",
+        "squizlabs/php_codesniffer": "^3.5",
+        "vimeo/psalm": "^4.9"
+      },
+      "suggest": {
+        "ext-bcmath": "Enables faster math with arbitrary-precision integers using BCMath.",
+        "ext-gmp": "Enables faster math with arbitrary-precision integers using GMP.",
+        "ext-uuid": "Enables the use of PeclUuidTimeGenerator and PeclUuidRandomGenerator.",
+        "paragonie/random-lib": "Provides RandomLib for use with the RandomLibAdapter",
+        "ramsey/uuid-doctrine": "Allows the use of Ramsey\\Uuid\\Uuid as Doctrine field type."
+      },
+      "type": "library",
+      "extra": {
+        "captainhook": {
+          "force-install": true
+        }
+      },
+      "autoload": {
+        "files": ["src/functions.php"],
+        "psr-4": {
+          "Ramsey\\Uuid\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["MIT"],
+      "description": "A PHP library for generating and working with universally unique identifiers (UUIDs).",
+      "keywords": ["guid", "identifier", "uuid"],
+      "support": {
+        "issues": "https://github.com/ramsey/uuid/issues",
+        "source": "https://github.com/ramsey/uuid/tree/4.7.6"
+      },
+      "funding": [
+        {
+          "url": "https://github.com/ramsey",
+          "type": "github"
+        },
+        {
+          "url": "https://tidelift.com/funding/github/packagist/ramsey/uuid",
+          "type": "tidelift"
+        }
+      ],
+      "time": "2024-04-27T21:32:50+00:00"
+    },
+    {
+      "name": "slim/psr7",
+      "version": "1.7.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/slimphp/Slim-Psr7.git",
+        "reference": "753e9646def5ff4db1a06e5cf4ef539bfd30f467"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/slimphp/Slim-Psr7/zipball/753e9646def5ff4db1a06e5cf4ef539bfd30f467",
+        "reference": "753e9646def5ff4db1a06e5cf4ef539bfd30f467",
+        "shasum": ""
+      },
+      "require": {
+        "fig/http-message-util": "^1.1.5",
+        "php": "^8.0",
+        "psr/http-factory": "^1.1",
+        "psr/http-message": "^1.0 || ^2.0",
+        "ralouphie/getallheaders": "^3.0",
+        "symfony/polyfill-php80": "^1.29"
+      },
+      "provide": {
+        "psr/http-factory-implementation": "^1.0",
+        "psr/http-message-implementation": "^1.0 || ^2.0"
+      },
+      "require-dev": {
+        "adriansuter/php-autoload-override": "^1.4",
+        "ext-json": "*",
+        "http-interop/http-factory-tests": "^1.1.0",
+        "php-http/psr7-integration-tests": "1.3.0",
+        "phpspec/prophecy": "^1.19",
+        "phpspec/prophecy-phpunit": "^2.2",
+        "phpstan/phpstan": "^1.11",
+        "phpunit/phpunit": "^9.6",
+        "squizlabs/php_codesniffer": "^3.10"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "Slim\\Psr7\\": "src"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["MIT"],
+      "authors": [
+        {
+          "name": "Josh Lockhart",
+          "email": "hello@joshlockhart.com",
+          "homepage": "http://joshlockhart.com"
+        },
+        {
+          "name": "Andrew Smith",
+          "email": "a.smith@silentworks.co.uk",
+          "homepage": "http://silentworks.co.uk"
+        },
+        {
+          "name": "Rob Allen",
+          "email": "rob@akrabat.com",
+          "homepage": "http://akrabat.com"
+        },
+        {
+          "name": "Pierre Berube",
+          "email": "pierre@lgse.com",
+          "homepage": "http://www.lgse.com"
+        }
+      ],
+      "description": "Strict PSR-7 implementation",
+      "homepage": "https://www.slimframework.com",
+      "keywords": ["http", "psr-7", "psr7"],
+      "support": {
+        "issues": "https://github.com/slimphp/Slim-Psr7/issues",
+        "source": "https://github.com/slimphp/Slim-Psr7/tree/1.7.0"
+      },
+      "time": "2024-06-08T14:48:17+00:00"
+    },
+    {
+      "name": "slim/slim",
+      "version": "4.14.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/slimphp/Slim.git",
+        "reference": "5943393b88716eb9e82c4161caa956af63423913"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/slimphp/Slim/zipball/5943393b88716eb9e82c4161caa956af63423913",
+        "reference": "5943393b88716eb9e82c4161caa956af63423913",
+        "shasum": ""
+      },
+      "require": {
+        "ext-json": "*",
+        "nikic/fast-route": "^1.3",
+        "php": "^7.4 || ^8.0",
+        "psr/container": "^1.0 || ^2.0",
+        "psr/http-factory": "^1.1",
+        "psr/http-message": "^1.1 || ^2.0",
+        "psr/http-server-handler": "^1.0",
+        "psr/http-server-middleware": "^1.0",
+        "psr/log": "^1.1 || ^2.0 || ^3.0"
+      },
+      "require-dev": {
+        "adriansuter/php-autoload-override": "^1.4",
+        "ext-simplexml": "*",
+        "guzzlehttp/psr7": "^2.6",
+        "httpsoft/http-message": "^1.1",
+        "httpsoft/http-server-request": "^1.1",
+        "laminas/laminas-diactoros": "^2.17 || ^3",
+        "nyholm/psr7": "^1.8",
+        "nyholm/psr7-server": "^1.1",
+        "phpspec/prophecy": "^1.19",
+        "phpspec/prophecy-phpunit": "^2.1",
+        "phpstan/phpstan": "^1.11",
+        "phpunit/phpunit": "^9.6",
+        "slim/http": "^1.3",
+        "slim/psr7": "^1.6",
+        "squizlabs/php_codesniffer": "^3.10",
+        "vimeo/psalm": "^5.24"
+      },
+      "suggest": {
+        "ext-simplexml": "Needed to support XML format in BodyParsingMiddleware",
+        "ext-xml": "Needed to support XML format in BodyParsingMiddleware",
+        "php-di/php-di": "PHP-DI is the recommended container library to be used with Slim",
+        "slim/psr7": "Slim PSR-7 implementation. See https://www.slimframework.com/docs/v4/start/installation.html for more information."
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "Slim\\": "Slim"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["MIT"],
+      "authors": [
+        {
+          "name": "Josh Lockhart",
+          "email": "hello@joshlockhart.com",
+          "homepage": "https://joshlockhart.com"
+        },
+        {
+          "name": "Andrew Smith",
+          "email": "a.smith@silentworks.co.uk",
+          "homepage": "http://silentworks.co.uk"
+        },
+        {
+          "name": "Rob Allen",
+          "email": "rob@akrabat.com",
+          "homepage": "http://akrabat.com"
+        },
+        {
+          "name": "Pierre Berube",
+          "email": "pierre@lgse.com",
+          "homepage": "http://www.lgse.com"
+        },
+        {
+          "name": "Gabriel Manricks",
+          "email": "gmanricks@me.com",
+          "homepage": "http://gabrielmanricks.com"
+        }
+      ],
+      "description": "Slim is a PHP micro framework that helps you quickly write simple yet powerful web applications and APIs",
+      "homepage": "https://www.slimframework.com",
+      "keywords": ["api", "framework", "micro", "router"],
+      "support": {
+        "docs": "https://www.slimframework.com/docs/v4/",
+        "forum": "https://discourse.slimframework.com/",
+        "irc": "irc://irc.freenode.net:6667/slimphp",
+        "issues": "https://github.com/slimphp/Slim/issues",
+        "rss": "https://www.slimframework.com/blog/feed.rss",
+        "slack": "https://slimphp.slack.com/",
+        "source": "https://github.com/slimphp/Slim",
+        "wiki": "https://github.com/slimphp/Slim/wiki"
+      },
+      "funding": [
+        {
+          "url": "https://opencollective.com/slimphp",
+          "type": "open_collective"
+        },
+        {
+          "url": "https://tidelift.com/funding/github/packagist/slim/slim",
+          "type": "tidelift"
+        }
+      ],
+      "time": "2024-06-13T08:54:48+00:00"
+    },
+    {
+      "name": "symfony/polyfill-mbstring",
+      "version": "v1.31.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/symfony/polyfill-mbstring.git",
+        "reference": "85181ba99b2345b0ef10ce42ecac37612d9fd341"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/85181ba99b2345b0ef10ce42ecac37612d9fd341",
+        "reference": "85181ba99b2345b0ef10ce42ecac37612d9fd341",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=7.2"
+      },
+      "provide": {
+        "ext-mbstring": "*"
+      },
+      "suggest": {
+        "ext-mbstring": "For best performance"
+      },
+      "type": "library",
+      "extra": {
+        "thanks": {
+          "name": "symfony/polyfill",
+          "url": "https://github.com/symfony/polyfill"
+        }
+      },
+      "autoload": {
+        "files": ["bootstrap.php"],
+        "psr-4": {
+          "Symfony\\Polyfill\\Mbstring\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["MIT"],
+      "authors": [
+        {
+          "name": "Nicolas Grekas",
+          "email": "p@tchwork.com"
+        },
+        {
+          "name": "Symfony Community",
+          "homepage": "https://symfony.com/contributors"
+        }
+      ],
+      "description": "Symfony polyfill for the Mbstring extension",
+      "homepage": "https://symfony.com",
+      "keywords": ["compatibility", "mbstring", "polyfill", "portable", "shim"],
+      "support": {
+        "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.31.0"
+      },
+      "funding": [
+        {
+          "url": "https://symfony.com/sponsor",
+          "type": "custom"
+        },
+        {
+          "url": "https://github.com/fabpot",
+          "type": "github"
+        },
+        {
+          "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+          "type": "tidelift"
+        }
+      ],
+      "time": "2024-09-09T11:45:10+00:00"
+    },
+    {
+      "name": "symfony/polyfill-php80",
+      "version": "v1.31.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/symfony/polyfill-php80.git",
+        "reference": "60328e362d4c2c802a54fcbf04f9d3fb892b4cf8"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/60328e362d4c2c802a54fcbf04f9d3fb892b4cf8",
+        "reference": "60328e362d4c2c802a54fcbf04f9d3fb892b4cf8",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=7.2"
+      },
+      "type": "library",
+      "extra": {
+        "thanks": {
+          "url": "https://github.com/symfony/polyfill",
+          "name": "symfony/polyfill"
+        }
+      },
+      "autoload": {
+        "files": ["bootstrap.php"],
+        "psr-4": {
+          "Symfony\\Polyfill\\Php80\\": ""
+        },
+        "classmap": ["Resources/stubs"]
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["MIT"],
+      "authors": [
+        {
+          "name": "Ion Bazan",
+          "email": "ion.bazan@gmail.com"
+        },
+        {
+          "name": "Nicolas Grekas",
+          "email": "p@tchwork.com"
+        },
+        {
+          "name": "Symfony Community",
+          "homepage": "https://symfony.com/contributors"
+        }
+      ],
+      "description": "Symfony polyfill backporting some PHP 8.0+ features to lower PHP versions",
+      "homepage": "https://symfony.com",
+      "keywords": ["compatibility", "polyfill", "portable", "shim"],
+      "support": {
+        "source": "https://github.com/symfony/polyfill-php80/tree/v1.31.0"
+      },
+      "funding": [
+        {
+          "url": "https://symfony.com/sponsor",
+          "type": "custom"
+        },
+        {
+          "url": "https://github.com/fabpot",
+          "type": "github"
+        },
+        {
+          "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+          "type": "tidelift"
+        }
+      ],
+      "time": "2024-09-09T11:45:10+00:00"
+    },
+    {
+      "name": "symfony/polyfill-php82",
+      "version": "v1.31.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/symfony/polyfill-php82.git",
+        "reference": "5d2ed36f7734637dacc025f179698031951b1692"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/symfony/polyfill-php82/zipball/5d2ed36f7734637dacc025f179698031951b1692",
+        "reference": "5d2ed36f7734637dacc025f179698031951b1692",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=7.2"
+      },
+      "type": "library",
+      "extra": {
+        "thanks": {
+          "url": "https://github.com/symfony/polyfill",
+          "name": "symfony/polyfill"
+        }
+      },
+      "autoload": {
+        "files": ["bootstrap.php"],
+        "psr-4": {
+          "Symfony\\Polyfill\\Php82\\": ""
+        },
+        "classmap": ["Resources/stubs"]
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["MIT"],
+      "authors": [
+        {
+          "name": "Nicolas Grekas",
+          "email": "p@tchwork.com"
+        },
+        {
+          "name": "Symfony Community",
+          "homepage": "https://symfony.com/contributors"
+        }
+      ],
+      "description": "Symfony polyfill backporting some PHP 8.2+ features to lower PHP versions",
+      "homepage": "https://symfony.com",
+      "keywords": ["compatibility", "polyfill", "portable", "shim"],
+      "support": {
+        "source": "https://github.com/symfony/polyfill-php82/tree/v1.31.0"
+      },
+      "funding": [
+        {
+          "url": "https://symfony.com/sponsor",
+          "type": "custom"
+        },
+        {
+          "url": "https://github.com/fabpot",
+          "type": "github"
+        },
+        {
+          "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+          "type": "tidelift"
+        }
+      ],
+      "time": "2024-09-09T11:45:10+00:00"
+    },
+    {
+      "name": "tbachert/spi",
+      "version": "v1.0.2",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/Nevay/spi.git",
+        "reference": "2ddfaf815dafb45791a61b08170de8d583c16062"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/Nevay/spi/zipball/2ddfaf815dafb45791a61b08170de8d583c16062",
+        "reference": "2ddfaf815dafb45791a61b08170de8d583c16062",
+        "shasum": ""
+      },
+      "require": {
+        "composer-plugin-api": "^2.0",
+        "composer/semver": "^1.0 || ^2.0 || ^3.0",
+        "php": "^8.1"
+      },
+      "require-dev": {
+        "composer/composer": "^2.0",
+        "infection/infection": "^0.27.9",
+        "phpunit/phpunit": "^10.5",
+        "psalm/phar": "^5.18"
+      },
+      "type": "composer-plugin",
+      "extra": {
+        "class": "Nevay\\SPI\\Composer\\Plugin",
+        "branch-alias": {
+          "dev-main": "0.2.x-dev"
+        },
+        "plugin-optional": true
+      },
+      "autoload": {
+        "psr-4": {
+          "Nevay\\SPI\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": ["Apache-2.0"],
+      "description": "Service provider loading facility",
+      "keywords": ["service provider"],
+      "support": {
+        "issues": "https://github.com/Nevay/spi/issues",
+        "source": "https://github.com/Nevay/spi/tree/v1.0.2"
+      },
+      "time": "2024-10-04T16:36:12+00:00"
+    }
+  ],
+  "packages-dev": [],
+  "aliases": [],
+  "minimum-stability": "stable",
+  "stability-flags": {},
+  "prefer-stable": false,
+  "prefer-lowest": false,
+  "platform": {},
+  "platform-dev": {},
+  "plugin-api-version": "2.6.0"
 }
