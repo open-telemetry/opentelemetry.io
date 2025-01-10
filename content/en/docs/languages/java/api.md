@@ -560,9 +560,9 @@ public class AttributesUsage {
 
 ### OpenTelemetry
 
-{{% alert title="Spring Boot Starter" %}} 
-The Spring Boot starter is a special case where `OpenTelemetry` is available as
-a Spring bean. Simply inject `OpenTelemetry` into your Spring components.
+{{% alert title="Spring Boot Starter" %}} The Spring Boot starter is a special
+case where `OpenTelemetry` is available as a Spring bean. Simply inject
+`OpenTelemetry` into your Spring components.
 
 Read more about
 [extending the Spring Boot starter with custom manual instrumentation](/docs/zero-code/java/spring-boot-starter/api/).
@@ -610,11 +610,9 @@ public class OpenTelemetryUsage {
 
 ### GlobalOpenTelemetry
 
-
-{{% alert title="Java agent" %}} 
-The Java agent is a special case where `GlobalOpenTelemetry` is set by the
-agent. Simply call `GlobalOpenTelemetry.get()` to access the `OpenTelemetry`
-instance.
+{{% alert title="Java agent" %}} The Java agent is a special case where
+`GlobalOpenTelemetry` is set by the agent. Simply call
+`GlobalOpenTelemetry.get()` to access the `OpenTelemetry` instance.
 
 Read more about
 [extending the Java agent with custom manual instrumentation](/docs/zero-code/java/agent/api/).
