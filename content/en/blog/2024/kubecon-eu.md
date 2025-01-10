@@ -4,9 +4,9 @@ title:
   Europe 2024
 linkTitle: KubeCon EU '24
 date: 2024-02-28
+author: '[Severin Neumann](https://github.com/svrnm) (Cisco)'
 # prettier-ignore
 cSpell:ignore: Aiven Alexandre Anusha Arbiv Beemer Benedikt Blanco Bongartz Chekuri Coralogix Cosmonic Dyrmishi Jiekun Joonas Kanal Kolachala Kowall Machado Magno Marcin Matej Mirabella Narapureddy Nenashev Oleg Oluwalolope Outshift Pismo Purvi Quwan Reddy Ridwan Rollouts Ryanair Skyscanner Sodkiewicz Soluções Srikanth Tecnológicas Yosef
-author: '[Severin Neumann](https://github.com/svrnm) (Cisco)'
 ---
 
 The OpenTelemetry project maintainers, members of the governance committee, and

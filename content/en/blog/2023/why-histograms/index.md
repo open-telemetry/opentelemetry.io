@@ -2,8 +2,8 @@
 title: Why Histograms?
 date: 2023-05-08
 author: '[Daniel Dyla](https://github.com/dyladan)'
-cSpell:ignore: reimplementation
 canonical_url: https://dyladan.me/histograms/2023/05/02/why-histograms/
+cSpell:ignore: reimplementation
 ---
 
 A histogram is a multi-value counter that summarizes the distribution of data

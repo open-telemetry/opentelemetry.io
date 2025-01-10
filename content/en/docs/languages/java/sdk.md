@@ -435,8 +435,7 @@ Span exporters built-in to the SDK and maintained by the community in
 | `InterceptableSpanExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha`     | Passes spans to a flexible interceptor before exporting.                      |
 | `KafkaSpanExporter`            | `io.opentelemetry.contrib:opentelemetry-kafka-exporter:{{% param vers.contrib %}}-alpha` | Exports spans by writing to a Kafka topic.                                    |
 
-**[1]**: See [OTLP exporter sender](#otlp-exporter-senders) for implementation
-details.
+**[1]**: See [OTLP exporters](#otlp-exporters) for implementation details.
 
 The following code snippet demonstrates `SpanExporter` programmatic
 configuration:
@@ -767,8 +766,7 @@ Metric exporters built-in to the SDK and maintained by the community in
 | `OtlpStdoutMetricExporter`       | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Logs metrics to `System.out` in the OTLP [JSON file encoding][] (experimental). |
 | `InterceptableMetricExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Passes metrics to a flexible interceptor before exporting.                      |
 
-**[1]**: See [OTLP exporter sender](#otlp-exporter-senders) for implementation
-details.
+**[1]**: See [OTLP exporters](#otlp-exporters) for implementation details.
 
 The following code snippet demonstrates `MetricExporter` programmatic
 configuration:
@@ -1095,8 +1093,7 @@ Span exporters built-in to the SDK and maintained by the community in
 | `OtlpStdoutLogRecordExporter`              | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Logs log records to `System.out` in the OTLP [JSON file encoding][] (experimental). |
 | `InterceptableLogRecordExporter`           | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Passes log records to a flexible interceptor before exporting.                      |
 
-**[1]**: See [OTLP exporter sender](#otlp-exporter-senders) for implementation
-details.
+**[1]**: See [OTLP exporters](#otlp-exporters) for implementation details.
 
 **[2]**: `OtlpJsonLoggingLogRecordExporter` logs to JUL, and may cause infinite
 loops (i.e. JUL -> SLF4J -> Logback -> OpenTelemetry Appender -> OpenTelemetry
@@ -1362,20 +1359,29 @@ public class IgnoreExportErrorsFilter implements java.util.logging.Filter {
 io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extension.logging.IgnoreExportErrorsFilter
 ```
 
-### OTLP exporter senders
+### OTLP exporters
 
 The [span exporter](#spanexporter), [metric exporter](#metricexporter), and
-[log exporter](#logrecordexporter) discuss OTLP exporters of the form:
+[log exporter](#logrecordexporter) sections describe OTLP exporters of the form:
 
-- `OtlpHttp{Signal}Exporter`s export data via OTLP `http/protobuf`.
-- `OtlpGrpc{Signal}Exporter`s export data via OTLP `grpc`.
+- `OtlpHttp{Signal}Exporter`, which exports data via OTLP `http/protobuf`
+- `OtlpGrpc{Signal}Exporter`, which exports data via OTLP `grpc`
 
 The exporters for all signals are available via
-`io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`.
+`io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`, and have
+significant overlap across `grpc` and `http/protobuf` versions of the OTLP
+protocol, and between signals. The following sections elaborate on these key
+concepts:
 
-Internally, these exporters depend on various client libraries to execute HTTP
-and gRPC requests. There is no single HTTP / gRPC client library which satisfies
-all use cases in the Java ecosystem:
+- [Senders](#senders): an abstraction for a different HTTP / gRPC client
+  libraries.
+- [Authentication](#authentication) options for OTLP exporters.
+
+#### Senders
+
+The OTLP exporters depend on various client libraries to execute HTTP and gRPC
+requests. There is no single HTTP / gRPC client library which satisfies all use
+cases in the Java ecosystem:
 
 - Java 11+ brings the built-in `java.net.http.HttpClient`, but
   `opentelemetry-java` needs to support Java 8+ users, and this can't be used to
@@ -1402,6 +1408,118 @@ add a dependency on the alternative.
 **[1]**: In order to use `opentelemetry-exporter-sender-grpc-managed-channel`,
 you must also add a dependency on a
 [gRPC transport implementations](https://github.com/grpc/grpc-java#transport).
+
+#### Authentication
+
+The OTLP exporters provide mechanisms for static and dynamic header-based
+authentication, and for mTLS.
+
+If using
+[zero-code SDK autoconfigure](../configuration/#zero-code-sdk-autoconfigure)
+with environment variables and system properties, see
+[relevant system properties](../configuration/#properties-exporters):
+
+- `otel.exporter.otlp.headers` for static header-based authentication.
+- `otel.exporter.otlp.client.key`, `otel.exporter.otlp.client.certificate` for
+  mTLS authentication.
+
+The following code snippet demonstrates programmatic configuration of static and
+dynamic header-based authentication:
+
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/OtlpAuthenticationConfig.java"?>
+```java
+package otel;
+
+import io.opentelemetry.exporter.otlp.http.logs.OtlpHttpLogRecordExporter;
+import io.opentelemetry.exporter.otlp.http.metrics.OtlpHttpMetricExporter;
+import io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporter;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Collections;
+import java.util.Map;
+import java.util.function.Supplier;
+
+public class OtlpAuthenticationConfig {
+  public static void staticAuthenticationHeader(String endpoint) {
+    // If the OTLP destination accepts a static, long-lived authentication header like an API key,
+    // set it as a header.
+    // This reads the API key from the OTLP_API_KEY env var to avoid hard coding the secret in
+    // source code.
+    String apiKeyHeaderName = "api-key";
+    String apiKeyHeaderValue = System.getenv("OTLP_API_KEY");
+
+    // Initialize OTLP Span, Metric, and LogRecord exporters using a similar pattern
+    OtlpHttpSpanExporter spanExporter =
+        OtlpHttpSpanExporter.builder()
+            .setEndpoint(endpoint)
+            .addHeader(apiKeyHeaderName, apiKeyHeaderValue)
+            .build();
+    OtlpHttpMetricExporter metricExporter =
+        OtlpHttpMetricExporter.builder()
+            .setEndpoint(endpoint)
+            .addHeader(apiKeyHeaderName, apiKeyHeaderValue)
+            .build();
+    OtlpHttpLogRecordExporter logRecordExporter =
+        OtlpHttpLogRecordExporter.builder()
+            .setEndpoint(endpoint)
+            .addHeader(apiKeyHeaderName, apiKeyHeaderValue)
+            .build();
+  }
+
+  public static void dynamicAuthenticationHeader(String endpoint) {
+    // If the OTLP destination requires a dynamic authentication header, such as a JWT which needs
+    // to be periodically refreshed, use a header supplier.
+    // Here we implement a simple supplier which adds a header of the form "Authorization: Bearer
+    // <token>", where <token> is fetched from refreshBearerToken every 10 minutes.
+    String username = System.getenv("OTLP_USERNAME");
+    String password = System.getenv("OTLP_PASSWORD");
+    Supplier<Map<String, String>> supplier =
+        new AuthHeaderSupplier(() -> refreshToken(username, password), Duration.ofMinutes(10));
+
+    // Initialize OTLP Span, Metric, and LogRecord exporters using a similar pattern
+    OtlpHttpSpanExporter spanExporter =
+        OtlpHttpSpanExporter.builder().setEndpoint(endpoint).setHeaders(supplier).build();
+    OtlpHttpMetricExporter metricExporter =
+        OtlpHttpMetricExporter.builder().setEndpoint(endpoint).setHeaders(supplier).build();
+    OtlpHttpLogRecordExporter logRecordExporter =
+        OtlpHttpLogRecordExporter.builder().setEndpoint(endpoint).setHeaders(supplier).build();
+  }
+
+  private static class AuthHeaderSupplier implements Supplier<Map<String, String>> {
+    private final Supplier<String> tokenRefresher;
+    private final Duration tokenRefreshInterval;
+    private Instant refreshedAt = Instant.ofEpochMilli(0);
+    private String currentTokenValue;
+
+    private AuthHeaderSupplier(Supplier<String> tokenRefresher, Duration tokenRefreshInterval) {
+      this.tokenRefresher = tokenRefresher;
+      this.tokenRefreshInterval = tokenRefreshInterval;
+    }
+
+    @Override
+    public Map<String, String> get() {
+      return Collections.singletonMap("Authorization", "Bearer " + getToken());
+    }
+
+    private synchronized String getToken() {
+      Instant now = Instant.now();
+      if (currentTokenValue == null || now.isAfter(refreshedAt.plus(tokenRefreshInterval))) {
+        currentTokenValue = tokenRefresher.get();
+        refreshedAt = now;
+      }
+      return currentTokenValue;
+    }
+  }
+
+  private static String refreshToken(String username, String password) {
+    // For a production scenario, this would be replaced with out-of-band request to exchange
+    // username / password for bearer token.
+    return "abc123";
+  }
+}
+```
+<!-- prettier-ignore-end -->
 
 ### Testing
 

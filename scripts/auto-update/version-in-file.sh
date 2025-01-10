@@ -17,18 +17,22 @@ else
   shift
 fi
 
-repo=$1
-variable_name=$2
-file_names=("${@:3}") # remaining args
-
+repo=$1; shift;
 latest_version=$(gh api -q .tag_name "repos/open-telemetry/$repo/releases/latest")
 latest_vers_no_v="${latest_version#v}" # Remove leading 'v'
 
 echo "REPO:            $repo"
 echo "LATEST VERSION:  $latest_version"
 
-for file_name in "${file_names[@]}"
-do
+function process_file() {
+  local name="$1"
+  local file_path="$2"
+
+  if [[ -z "$file_path" ]]; then
+      echo "ERROR: Missing name or file path for processing." >&2
+      return 1
+  fi
+
   # Version line regex `vers_match_regex` to match version specifier -- works under Linux and macOS.
   if [[ $file_name == ".gitmodules" ]]; then
     vers_match_regex="$variable_name-pin ="
@@ -50,6 +54,12 @@ do
   if [[ -e "$file_name".bak ]]; then
     rm "$file_name".bak
   fi
+}
+
+while [[ $# -gt 0 ]]; do
+  variable_name=$1; shift;
+  file_name=$1; shift;
+  process_file $variable_name $file_name
 done
 
 if git diff --quiet "${file_names[@]}"; then
@@ -76,8 +86,8 @@ if [ "$existing_pr_count" -gt 0 ]; then
 fi
 
 if [[ "$repo" == "opentelemetry-specification"
-   || "$repo" == "opentelemetry-proto"
-   || "$repo" == "semantic-conventions" ]]; then
+  || "$repo" == "opentelemetry-proto"
+  || "$repo" == "semantic-conventions" ]]; then
   echo "Switching to $repo at tag $latest_version"
   ( set -x;
     npm run get:submodule -- content-modules/$repo &&

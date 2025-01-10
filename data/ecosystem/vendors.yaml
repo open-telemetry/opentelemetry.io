@@ -264,6 +264,12 @@
   contact:
   oss: true
   commercial: true
+- name: Odigos
+  nativeOTLP: true
+  url: https://docs.odigos.io
+  contact: engineering@odigos.io
+  oss: true
+  commercial: true
 - name: OneUptime
   nativeOTLP: true
   url: https://oneuptime.com/product/apm
@@ -432,6 +438,12 @@
   contact: opensource@alibaba-inc.com
   oss: false
   commercial: true
+- name: BMC Helix
+  nativeOTLP: true
+  url: https://docs.bmc.com/docs/helixaiops/244/enabling-bmc-helix-applications-to-collect-service-traces-from-opentelemetry-1391498839.html
+  contact: customer_care@bmc.com
+  oss: false
+  commercial: true
 - name: Seq
   nativeOTLP: true
   url: https://docs.datalust.co/docs/opentelemetry-net-sdk-1
@@ -463,9 +475,9 @@
   contact: 'hello@groundcover.com'
   oss: false
   commercial: true
-- name: rizhiyi lunaxee by Yottabyte
+- name: GuanChaYi by LogEase
   nativeOTLP: true
-  url: https://rizhiyi.com/lunaxee/
-  contact: contact@rizhiyi.cn
+  url: https://logease.cn/en-logease-observability-platform/
+  contact: contact@yottabyte.cn
   oss: false
   commercial: true

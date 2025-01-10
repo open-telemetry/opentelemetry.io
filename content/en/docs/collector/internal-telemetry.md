@@ -25,9 +25,26 @@ You can configure how internal metrics are generated and exposed by the
 Collector. By default, the Collector generates basic metrics about itself and
 exposes them using the OpenTelemetry Go
 [Prometheus exporter](https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/prometheus)
-for scraping at `http://127.0.0.1:8888/metrics`. You can expose the endpoint to
-one specific or all network interfaces when needed. For containerized
-environments, you might want to expose this port on a public interface.
+for scraping at `http://127.0.0.1:8888/metrics`.
+
+The Collector can push its internal metrics to an OTLP backend via the following
+configuration:
+
+```yaml
+service:
+  telemetry:
+    metrics:
+      readers:
+        - periodic:
+            exporter:
+              otlp:
+                protocol: grpc/protobuf
+                endpoint: http://localhost:14317
+```
+
+Alternatively, you can expose the Prometheus endpoint to one specific or all
+network interfaces when needed. For containerized environments, you might want
+to expose this port on a public interface.
 
 Set the Prometheus config under `service::telemetry::metrics`:
 
@@ -105,7 +122,7 @@ journalctl | grep otelcol | grep Error
 {{% /tab %}} {{< /tabpane >}}
 
 The following configuration can be used to emit internal logs from the Collector
-to an OTLP/gRPC backend:
+to an OTLP/HTTP backend:
 
 ```yaml
 service:
@@ -115,7 +132,7 @@ service:
         - batch:
             exporter:
               otlp:
-                protocol: grpc/protobuf
+                protocol: http/protobuf
                 endpoint: https://backend:4317
 ```
 
@@ -150,69 +167,6 @@ Note that the `tracer_provider` section there corresponds to `traces` here.
 
 [kitchen-sink-config]:
   https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml
-
-### Self-monitoring
-
-The Collector can be configured to push its own telemetry to an
-[OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
-and send the data through configured pipelines. In the following example, the
-Collector is configured to push metrics, traces, and logs every 10s using OTLP
-gRPC to `localhost:14317`:
-
-```yaml
-receivers:
-  otlp/internal:
-    protocols:
-      grpc:
-        endpoint: localhost:14317
-exporters:
-  debug:
-service:
-  pipelines:
-    metrics:
-      receivers: [otlp/internal]
-      exporters: [debug]
-    traces:
-      receivers: [otlp/internal]
-      exporters: [debug]
-  telemetry:
-    metrics:
-      readers:
-        - periodic:
-            interval: 10000
-            exporter:
-              otlp:
-                protocol: grpc/protobuf
-                endpoint: http://localhost:14317
-    traces:
-      processors:
-        - batch:
-            exporter:
-              otlp:
-                protocol: grpc/protobuf
-                endpoint: http://localhost:14317
-    logs:
-      processors:
-        - batch:
-            exporter:
-              otlp:
-                protocol: grpc/protobuf
-                endpoint: http://localhost:14317
-```
-
-{{% alert title="Caution" color="warning" %}}
-
-When self-monitoring, the Collector collects its own telemetry and sends it to
-the desired backend for analysis. This can be a risky practice. If the Collector
-is underperforming, its self-monitoring capability could be impacted. As a
-result, the self-monitored telemetry might not reach the backend in time for
-critical analysis.
-
-Moreover, sending internal telemetry through the Collector's own pipelines can
-create a continuous loop of spans, metric points, or logs, putting undue strain
-on the Collector's performance. This setup should not be used in production.
-
-{{% /alert %}}
 
 ## Types of internal telemetry
 
@@ -425,18 +379,7 @@ next. There are no stability guarantees at this time.
 This section recommends best practices for monitoring the Collector using its
 own telemetry.
 
-### Critical monitoring
-
-#### Data loss
-
-Use the rate of `otelcol_processor_dropped_log_records > 0`,
-`otelcol_processor_dropped_spans > 0`, and
-`otelcol_processor_dropped_metric_points > 0` to detect data loss. Depending on
-your project's requirements, select a narrow time window before alerting begins
-to avoid notifications for small losses that are within the desired reliability
-range and not considered outages.
-
-### Secondary monitoring
+### Monitoring
 
 #### Queue length
 

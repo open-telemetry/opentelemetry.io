@@ -32,6 +32,7 @@ quoteservice(Quote Service):::php
 recommendationservice(Recommendation Service):::python
 shippingservice(Shipping Service):::rust
 queue[(queue<br/>&#40Kafka&#41)]:::java
+react-native-app(React Native App):::typescript
 
 adservice ---->|gRPC| flagd
 
@@ -73,6 +74,8 @@ recommendationservice -->|gRPC| productcatalogservice
 recommendationservice -->|gRPC| flagd
 
 shippingservice -->|HTTP| quoteservice
+
+react-native-app -->|HTTP| frontendproxy
 end
 
 classDef dotnet fill:#178600,color:white;
@@ -123,7 +126,7 @@ Follow these links for the current state of
 demo applications.
 
 The collector is configured in
-[otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otelcollector/otelcol-config.yml),
+[otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config.yml),
 alternative exporters can be configured here.
 
 ```mermaid

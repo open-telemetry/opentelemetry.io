@@ -121,7 +121,7 @@ should not generally be included in the metric name. Prometheus conventions
 [recommend](https://prometheus.io/docs/practices/naming/#metric-names) that the
 unit be included as a suffix of the metric name. OpenMetrics goes a step further
 and
-[requires this unit suffix](https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#unit).
+[requires this unit suffix](https://github.com/prometheus/OpenMetrics/blob/v1.0.0/specification/OpenMetrics.md#unit).
 Currently, when exporting in Prometheus format from an OpenTelemetry SDK, the
 unit is added as a suffix to the metric name.
 

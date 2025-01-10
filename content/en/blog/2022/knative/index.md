@@ -2,9 +2,9 @@
 title: Distributed tracing in Knative
 linkTitle: Tracing in Knative
 date: 2022-04-12
+author: '[Pavol Loffay](https://github.com/pavolloffay)'
 # prettier-ignore
 cSpell:ignore: apng Cloudevents datacontenttype httpbody khtml knativearrivaltime pavolloffay spanid specversion traceid webp
-author: '[Pavol Loffay](https://github.com/pavolloffay)'
 ---
 
 In this article, you will learn how distributed tracing works in Knative and we

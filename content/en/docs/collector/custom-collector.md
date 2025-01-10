@@ -125,6 +125,7 @@ dist:
   name: otelcol-dev
   description: Basic OTel Collector distribution for Developers
   output_path: ./otelcol-dev
+  otelcol_version: 0.114.0
 ```
 
 Now you need to add the modules representing the components you want to be
