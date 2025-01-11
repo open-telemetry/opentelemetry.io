@@ -1079,6 +1079,12 @@ maintainers:
       - cpp-maintainers
     html_url: https://github.com/ThomsonTan
     avatar_url: https://avatars.githubusercontent.com/u/1041795?v=4
+  - name: tiffany76
+    teams:
+      - docs-approvers
+      - docs-maintainers
+    html_url: https://github.com/tiffany76
+    avatar_url: https://avatars.githubusercontent.com/u/30397949?v=4
   - name: tigrannajaryan
     teams:
       - entities-maintainers
@@ -1714,11 +1720,6 @@ approvers:
       - php-triagers
     html_url: https://github.com/tidal
     avatar_url: https://avatars.githubusercontent.com/u/57825?v=4
-  - name: tiffany76
-    teams:
-      - docs-approvers
-    html_url: https://github.com/tiffany76
-    avatar_url: https://avatars.githubusercontent.com/u/30397949?v=4
   - name: tobiasstadler
     teams:
       - cpp-contrib-approvers
@@ -1907,6 +1908,9 @@ members:
   - name: a-feld
     html_url: https://github.com/a-feld
     avatar_url: https://avatars.githubusercontent.com/u/6374032?v=4
+  - name: aalexand
+    html_url: https://github.com/aalexand
+    avatar_url: https://avatars.githubusercontent.com/u/1519040?v=4
   - name: aaron-ai
     html_url: https://github.com/aaron-ai
     avatar_url: https://avatars.githubusercontent.com/u/19537356?v=4
