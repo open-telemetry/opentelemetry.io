@@ -6363,6 +6363,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:23:15.075273-05:00"
   },
+  "https://github.com/open-telemetry/community/blob/main/elections/2024/governance-committee-election.md#nominations": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-21T14:30:53.283875975Z"
+  },
   "https://github.com/open-telemetry/community/blob/main/elections/2024/governance-committee-election.md#voter-eligibility": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:23:15.495178-05:00"
