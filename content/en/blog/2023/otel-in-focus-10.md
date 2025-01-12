@@ -27,8 +27,8 @@ Here are the latest updates from some of our core repositories.
 Version 1.26.0 of the OpenTelemetry Specification has been released. This
 release includes several small changes, along with a new section that explains
 how OpenTelemetry handles upgrading and version management for components. For
-full details, please visit the full changelog
-[here](https://github.com/open-telemetry/opentelemetry-specification/compare/v1.25.0...v1.26.0)
+full details, see the
+[changes between v1.25.0 and v1.26.0](https://github.com/open-telemetry/opentelemetry-specification/compare/v1.25.0...v1.26.0)
 
 Semantic Conventions v1.22.0 introduces critical changes to the JVM, HTTP,
 System, and Messaging namespaces.
