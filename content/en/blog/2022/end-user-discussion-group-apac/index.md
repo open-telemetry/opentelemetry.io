@@ -61,8 +61,8 @@ Upcoming sessions:
   every third Wednesday of the month at 11AM IST (GMT +5.5)
   - March 15, 2023 ([register here](https://lu.ma/1w129wgu))
   - April 19, 2023
-- **AMER**: every third Thursday of the month at 9AM PST (GMT -8), join
-  [here](https://us06web.zoom.us/j/87037874951?pwd=WGo3eUZpeWFZTlhJQXhJeXZhQmwvUT09)
+- **[AMER](https://us06web.zoom.us/j/87037874951?pwd=WGo3eUZpeWFZTlhJQXhJeXZhQmwvUT09)**:
+  every third Thursday of the month at 9AM PST (GMT -8)
   - December 15, 2022
   - January 19, 2023
 
