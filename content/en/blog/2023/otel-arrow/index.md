@@ -141,8 +141,8 @@ increasingly pivoting towards Apache Arrow.
 
 See the specification for this protocol
 [OTEP 0156](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0156-columnar-encoding.md).
-A reference implementation of the encoding/decoding function can be accessed
-[here](https://github.com/open-telemetry/otel-arrow).
+A reference implementation of the encoding/decoding function can be seen in
+[open-telemetry/otel-arrow](https://github.com/open-telemetry/otel-arrow).
 
 ## How can I leverage the OpenTelemetry Protocol with Apache Arrow in my deployment?
 
