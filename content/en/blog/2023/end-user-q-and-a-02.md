@@ -265,8 +265,9 @@ to Jaeger.
 
 ## What's next?
 
-If you’d like to see my conversation with Doug in full, you can check out the
-video [here](https://www.youtube.com/watch?v=ptYWBF-R1Fc).
+If you’d like to see my conversation with Doug in full, there is a
+[private video](https://www.youtube.com/watch?v=ptYWBF-R1Fc) -- you’ll have to
+ask someone for permission to be able to watch it.
 
 If anyone would like to continue the conversation with Doug, please reach out to
 him in the
