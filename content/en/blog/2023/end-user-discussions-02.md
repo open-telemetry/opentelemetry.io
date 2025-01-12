@@ -195,9 +195,8 @@ endpoints via the Kubernetes API.
 Azure to collect telemetry from Azure App Services and Azure functions?
 
 **A:** Usually, the community relies on folks from Microsoft to provide best
-practices. There is some issue with the latest version of OTel and Azure
-functions. You can track it
-[here](https://github.com/Azure/azure-functions-host/issues/8938).
+practices. There was an
+[issue with the 1.4 version of OTel and Azure functions 7](https://github.com/Azure/azure-functions-host/issues/8938).
 
 ## Meeting Notes & Recordings
 
