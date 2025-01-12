@@ -53,7 +53,8 @@ don't. This usually means that I have to do a bit more digging beyond the docs,
 by seeking out external blog posts, bugging techie friends, etc. Once I'm able
 to fill that knowledge gap, I do two things:
 
-1. I blog about it. See examples [here](https://shorturl.at/vLYZ0) and [here](https://shorturl.at/czHST).
+1. I blog about it. See examples [here](https://shorturl.at/vLYZ0) and
+   [Let’s Learn About the OTel Operator’s Target Allocator!](https://adri-v.medium.com/lets-learn-about-the-otel-operator-s-target-allocator-47a2b1f07562).
 2. I contribute to the OTel docs. See examples
    [Include docs about Python logs auto-instrumentation](https://github.com/open-telemetry/opentelemetry.io/pull/3195),
    [Add troubleshooting guidance to OTel Operator auto-instrumentation docs](https://github.com/open-telemetry/opentelemetry.io/pull/3098),
