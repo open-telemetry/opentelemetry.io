@@ -65,7 +65,7 @@ The simpler and automatic approach is by adding tracing to your application with
 no changes or additions into your application code. You also don't need to add
 any dependencies to OpenTelemetry specific libraries. It is possible by using
 the OpenTelemetry agent you can download from
-[here](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases).
+[opentelemetry-java-instrumentation/releases](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases).
 This agent has to run alongside your application in order to inject the logic
 for tracing messages sent and received to/from a Kafka cluster.
 
