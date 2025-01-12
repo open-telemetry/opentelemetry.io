@@ -85,8 +85,7 @@ your blog post is most welcome!
 You can check out an example of one of my previous blog posts:
 [Running the OpenTelemetry Demo App on HashiCorp Nomad](/blog/2022/otel-demo-app-nomad/).
 
-Learn more about submitting a post to the OTel blog
-[here](https://github.com/open-telemetry/opentelemetry.io#submitting-a-blog-post).
+Learn more about [submitting a post to the OTel blog](/docs/contributing/blog/).
 
 ### Join the OTel End User Working Group
 
