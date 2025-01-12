@@ -29,9 +29,9 @@ Here is a brief synopsis of the recent activity in the Kubernetes ecosystem:
   ([KEP 2831 Kubelet Tracing](https://github.com/kubernetes/enhancements/tree/master/keps/sig-instrumentation/2831-kubelet-tracing)).
 - [etcd](https://github.com/etcd-io/etcd) (Kubernetes uses it as an internal
   datastore) started to discuss tracing in November 2020
-  ([here](https://github.com/etcd-io/etcd/issues/12460)) and had a
-  [first version merged](https://github.com/etcd-io/etcd/pull/12919) in
-  May 2021.
+  ([Add Distributed Tracing using OpenTelemetry](https://github.com/etcd-io/etcd/issues/12460))
+  and had a [first version merged](https://github.com/etcd-io/etcd/pull/12919)
+  in May 2021.
 - [containerd](https://github.com/containerd/containerd) and
   [CRI-O](https://github.com/cri-o/cri-o), two Container Runtime Interfaces for
   Kubernetes, started to implement tracing in 2021
