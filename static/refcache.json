@@ -8679,6 +8679,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:31.702442-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-21T14:28:34.626770908Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples/roll_dice": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:41.082551-05:00"
