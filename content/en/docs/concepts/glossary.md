@@ -134,8 +134,8 @@ severity and trace information. See the [field spec][field].
 
 ### gRPC
 
-A high-performance, open source universal [RPC](#rpc) framework. More on gRPC
-[here](https://grpc.io).
+A high-performance, open source universal [RPC](#rpc) framework. See
+[gRPC](https://grpc.io).
 
 ### HTTP
 
