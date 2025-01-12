@@ -149,8 +149,8 @@ viewing the metric `kafka_request_count_total` on Prometheus.
 
 ![A sample Kafka Broker metric shown on Prometheus](prometheus.png)
 
-More installation options for Prometheus can be found
-[here](https://prometheus.io/docs/prometheus/latest/installation/).
+See
+[installation options for Prometheus](https://prometheus.io/docs/prometheus/latest/installation/).
 
 ### View the metrics on a Grafana Dashboard
 
