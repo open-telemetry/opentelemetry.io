@@ -84,8 +84,8 @@ community at large. As long as your work isn't promoting a product you're
 selling or requires readers to make a purchase in order to replicate your work,
 your blog post is most welcome!
 
-You can check out an example of one of my previous blog posts
-[here](/blog/2022/otel-demo-app-nomad/).
+You can check out an example of one of my previous blog posts:
+[Running the OpenTelemetry Demo App on HashiCorp Nomad](/blog/2022/otel-demo-app-nomad/).
 
 Learn more about submitting a post to the OTel blog
 [here](https://github.com/open-telemetry/opentelemetry.io#submitting-a-blog-post).
