@@ -16271,6 +16271,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:32:21.365098-05:00"
   },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor#readme-role-based-access-control": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-21T12:21:51.779082249Z"
+  },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sprocessor": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:32:47.414799-05:00"
