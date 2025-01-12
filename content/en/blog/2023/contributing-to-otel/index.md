@@ -173,7 +173,7 @@ within OTel to be nothing but helpful and welcoming.
 You can check out an example of one of my contributions
 [here](https://github.com/open-telemetry/opentelemetry-helm-charts/pull/531).
 
-Learn more about the OTel SIGs [here](/community/#special-interest-groups).
+Learn more about the [OTel SIGs](/community/#special-interest-groups).
 
 ### Final thoughts
 
