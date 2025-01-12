@@ -340,7 +340,7 @@ for the OTel Collector in Kubernetes:
   [here](https://github.com/open-telemetry/opentelemetry-operator/blob/main/tests/e2e/smoke-statefulset/00-install.yaml)
 - [Sidecar](https://www.techtarget.com/searchapparchitecture/tip/The-reasons-to-use-or-not-use-sidecars-in-Kubernetes) -
   see example
-  [here](https://github.com/open-telemetry/opentelemetry-operator/blob/main/tests/e2e/instrumentation-python/00-install-collector.yaml)
+  [instrumentation-python/00-install-collector.yaml](https://github.com/open-telemetry/opentelemetry-operator/blob/cd1d136a539820a87bbc26fa2d8ff1fb821bbcf1/tests/e2e/instrumentation-python/00-install-collector.yaml)
 
 Which ones you should use depends on what you need to do, such as how you like
 to run applications for reliability.
