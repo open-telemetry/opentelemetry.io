@@ -55,7 +55,7 @@ to fill that knowledge gap, I do two things:
 
 1. I blog about it. See examples [here](https://shorturl.at/vLYZ0) and [here](https://shorturl.at/czHST).
 2. I contribute to the OTel docs. See examples
-   [here](https://github.com/open-telemetry/opentelemetry.io/pull/3195),
+   [Include docs about Python logs auto-instrumentation](https://github.com/open-telemetry/opentelemetry.io/pull/3195),
    [Add troubleshooting guidance to OTel Operator auto-instrumentation docs](https://github.com/open-telemetry/opentelemetry.io/pull/3098),
    and
    [here](https://github.com/open-telemetry/opentelemetry.io/pull/2130).
