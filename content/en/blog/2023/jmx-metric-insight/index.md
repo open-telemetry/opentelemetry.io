@@ -38,8 +38,8 @@ servers or frameworks, such as:
 - [WildFly](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/wildfly.md)
 
 You can also provide your own metric definitions, through one or more YAML
-files. The YAML file syntax documentation is available
-[here](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics/javaagent#configuration-files).
+files. For more information, see the
+[YAML file syntax documentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics/javaagent#configuration-files).
 
 ## Observe Kafka Broker metrics
 
