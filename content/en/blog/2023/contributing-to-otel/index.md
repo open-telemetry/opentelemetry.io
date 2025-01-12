@@ -67,8 +67,7 @@ to fill that knowledge gap, I do two things:
 > the OTel docs to be the Source of Truth for All Things OTel<sup>TM</sup> is to
 > have folks like us contributing to the docs whenever we see a gap.
 
-Learn more about contributing to the OTel docs
-[here](https://github.com/open-telemetry/opentelemetry.io/blob/main/CONTRIBUTING.md).
+Learn more about [contributing to the OTel docs](/docs/contributing/).
 
 > ✨ **NOTE:** ✨ If you find the contribution guidelines for the OTel Docs to
 > be confusing or have a mistake, improving them is a great way to contribute!
