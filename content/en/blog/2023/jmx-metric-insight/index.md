@@ -62,8 +62,8 @@ zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties
 
 Before starting the Kafka broker, attach the OpenTelemetry Java instrumentation
 agent to Kafka Broker by providing options in the KAFKA_OPTS environment
-variable. You can download the latest release of the agent from
-[here](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases).
+variable. You can
+[download the latest release of the agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases).
 
 ```shell
 export KAFKA_OPTS="-Dapplication.name=my-kafka-app
