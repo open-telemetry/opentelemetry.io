@@ -23,10 +23,8 @@ artifact and corresponding exporter autoconfiguration. Check out
 for the list of supported libraries and features.
 
 If an exporter is present in the classpath during runtime and a spring bean of
-the exporter is missing from the spring application context, an exporter bean is
-initialized and added to a simple span processor in the active tracer provider.
-Check out the implementation
-[here](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java).
+the exporter is missing from the spring application context,
+[an exporter bean is initialized and added to a simple span processor in the active tracer provider](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java).
 
 {{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
