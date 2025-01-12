@@ -71,5 +71,5 @@ EOF
 
 For more configuration options and for setting up the injection of
 auto-instrumentation of the workloads using OpenTelemetry instrumentation
-libraries, continue reading
-[here](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md).
+libraries, see
+[OpenTelemetry Operator for Kubernetes](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md).
