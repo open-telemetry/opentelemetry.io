@@ -61,7 +61,7 @@ to fill that knowledge gap, I do two things:
    [Include docs about Python logs auto-instrumentation](https://github.com/open-telemetry/opentelemetry.io/pull/3195),
    [Add troubleshooting guidance to OTel Operator auto-instrumentation docs](https://github.com/open-telemetry/opentelemetry.io/pull/3098),
    and
-   [here](https://github.com/open-telemetry/opentelemetry.io/pull/2130).
+   [Update Python auto-instrumentation docs](https://github.com/open-telemetry/opentelemetry.io/pull/2130).
 
 > ✨ **NOTE:** ✨ Number two is _especially_ important, because the best way for
 > the OTel docs to be the Source of Truth for All Things OTel<sup>TM</sup> is to
