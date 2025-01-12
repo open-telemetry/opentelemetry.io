@@ -331,7 +331,7 @@ for the OTel Collector in Kubernetes:
 
 - [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) -
   see example
-  [here](https://github.com/open-telemetry/opentelemetry-operator/blob/main/tests/e2e/ingress/00-install.yaml)
+  [ingress/00-install.yaml](https://github.com/open-telemetry/opentelemetry-operator/blob/main/tests/e2e/ingress/00-install.yaml)
 - [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) -
   see example
   [daemonset-features/01-install.yaml](https://github.com/open-telemetry/opentelemetry-operator/blob/main/tests/e2e/daemonset-features/01-install.yaml)
