@@ -9,8 +9,8 @@ cSpell:ignore: backendsystem crand debugexporter loggingexporter mapstructure pc
 <!-- markdownlint-disable heading-increment no-duplicate-heading -->
 
 If you are reading this tutorial, you probably already have an idea of the
-OpenTelemetry concepts behind distributed tracing, but if you don't you can
-quickly read through it [here](/docs/concepts/signals/traces/).
+OpenTelemetry concepts behind
+[distributed tracing](/docs/concepts/signals/traces/).
 
 Here is the definition of those concepts according to OpenTelemetry:
 
