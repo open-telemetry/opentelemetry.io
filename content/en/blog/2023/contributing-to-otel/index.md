@@ -133,7 +133,7 @@ greatest versions of things like the [OTel Collector](/docs/collector/) and
 language-specific instrumentation. In short, there's always work to be done!
 
 You can check out an example of one of my contributions
-[here](https://github.com/open-telemetry/opentelemetry-demo/pull/432).
+[Integrate with existing metrics code](https://github.com/open-telemetry/opentelemetry-demo/pull/432).
 
 Learn more about how to contribute to the OTel Demo
 [here](https://github.com/open-telemetry/opentelemetry-demo/blob/main/CONTRIBUTING.md).
