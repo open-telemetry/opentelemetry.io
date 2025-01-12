@@ -105,7 +105,7 @@ OpenTelemetry practitioners who come together a few times a month to:
 
 As an added bonus, I'm one of the co-chairs. Just sayin'… 😉
 
-Learn more about the OTel EUWG [here](/community/end-user/).
+Learn more about the [OTel EUWG](/community/end-user/).
 
 ### Contribute to the OpenTelemetry Demo
 
