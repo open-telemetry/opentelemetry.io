@@ -9539,10 +9539,6 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-13T12:42:55.526515-05:00"
   },
-  "https://npmjs.com/package/@opentelemetry/resource-detector-instana": {
-    "StatusCode": 429,
-    "LastSeen": "2025-01-13T12:42:55.947568-05:00"
-  },
   "https://npmjs.com/package/@prisma/instrumentation": {
     "StatusCode": 200,
     "LastSeen": "2025-01-13T12:42:17.580568-05:00"
