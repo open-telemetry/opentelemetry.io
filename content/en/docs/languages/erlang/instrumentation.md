@@ -200,9 +200,8 @@ _ = Task.await(task)
 ### Linking the New Span
 
 A [Span](/docs/concepts/signals/traces/#spans) can be created with zero or more
-Span Links that causally link it to another Span. A
-[Link](/docs/concepts/signals/traces/#span-links) needs a Span context to be
-created.
+[Span Links](/docs/concepts/signals/traces/#span-links) that causally link it to
+another Span. A Span Link needs a Span context to be created.
 
 {{< tabpane text=true >}} {{% tab Erlang %}}
 
