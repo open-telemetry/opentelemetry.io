@@ -121,7 +121,7 @@ outputted.
   warning)
 - `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED`: to enable
   auto-instrumentation of logs. Attaches OTLP handler to Python root logger. See
-  example [here](/docs/zero-code/python/logs-example)
+  the [Logs Auto-Instrumentation Example](/docs/zero-code/python/logs-example)
 
 Examples:
 
