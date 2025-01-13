@@ -1,5 +1,5 @@
 {{/*
-cSpell:ignore: bution cial cond distri
+cSpell:ignore: cial cond
 */ -}}
 {{ $data := sort (sort (sort $.Site.Data.ecosystem.vendors "name") "oss" "desc") "commercial" -}}
 

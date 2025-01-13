@@ -4,7 +4,7 @@ linkTitle: OTel in Focus 2023/09
 date: 2023-10-01
 author: '[Austin Parker](https://github.com/austinlparker)'
 # prettier-ignore
-cSpell:ignore: attributesprocessor Autoscaler checkapi Contribfest coreinternal gopkg jaegerthrifthttp obsreport ottl resourcedetection resourceprocessor structs tailsampling ucum unmanaged
+cSpell:ignore: attributesprocessor Autoscaler checkapi Contribfest coreinternal jaegerthrifthttp obsreport ottl resourcedetection resourceprocessor structs tailsampling ucum unmanaged
 ---
 
 Welcome back to **OpenTelemetry in Focus** for September, 2023! The autumn winds
