@@ -2,7 +2,7 @@
 title: Troubleshooting .NET automatic instrumentation issues
 linkTitle: Troubleshooting
 weight: 50
-cSpell:ignore: corehost netfx TRACEFILE
+cSpell:ignore: corehost netfx pjanotti's TRACEFILE
 ---
 
 ## General steps
@@ -167,7 +167,7 @@ If you are having problems in one of the scenarios above run again the
 ensure that the required GAC installations are updated.
 
 For more information about the GAC usage by the automatic instrumentation, see
-[here](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/1906#issuecomment-1376292814).
+[pjanotti's comment](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/1906#issuecomment-1376292814).
 
 See
 [#2269](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2269)
