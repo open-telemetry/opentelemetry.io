@@ -116,7 +116,7 @@ env:
 ```yaml
 exporters:
   otlp:
-    endpoint: '<your_backend_ndpoint_here>'
+    endpoint: '<your_backend_endpoint_here>'
     headers:
       '<token_name>': '${TOKEN_VALUE}'
 ```
