@@ -22,8 +22,8 @@ auto-instrumentation of logs. The example below is based on the logs example in
 > There is a logs bridge API; however, it is different from the Traces and
 > Metrics API, because it's not used by application developers to create logs.
 > Instead, they would use this bridge API to setup log appenders in the standard
-> language-specific logging libraries. More information can be found
-> [here](/docs/specs/otel/logs/api/).
+> language-specific logging libraries. For more information, see
+> [Logs API](/docs/specs/otel/logs/api/).
 
 Start by creating the examples directory and the example Python file:
 
