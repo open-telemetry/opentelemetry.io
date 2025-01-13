@@ -4,9 +4,9 @@ linkTitle: Instrument Nginx
 date: 2022-08-22
 author: >-
   [Debajit Das](https://github.com/debajitdas), [Kumar
-  Pratyus](https://github.com/kpratyus), [Severin
+  Pratyush](https://github.com/kpratyus), [Severin
   Neumann](https://github.com/svrnm) (Cisco)
-cSpell:ignore: Debajit Kumar Pratyus webserver
+cSpell:ignore: Debajit Kumar Pratyush webserver
 ---
 
 Apache HTTP Server and NGINX are the most popular web servers. It's most likely
