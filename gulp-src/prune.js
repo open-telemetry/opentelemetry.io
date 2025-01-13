@@ -119,7 +119,8 @@ async function pruneTask() {
     }
 
     if (n > 0) keysToPrune.forEach((key) => delete entries[key]);
-    const deleteCount = Math.min(n,keysToPrune.length) + numEntriesWith4xxStatus;
+    const deleteCount =
+      Math.min(n, keysToPrune.length) + numEntriesWith4xxStatus;
     console.log(`INFO: ${deleteCount} entries pruned.`);
     const prettyJson = JSON.stringify(entries, null, 2) + '\n';
     await fs.writeFile(refcacheFile, prettyJson, 'utf8');
