@@ -59,7 +59,8 @@ to fill that knowledge gap, I do two things:
    [Let’s Learn About the OTel Operator’s Target Allocator!](https://adri-v.medium.com/lets-learn-about-the-otel-operator-s-target-allocator-47a2b1f07562).
 2. I contribute to the OTel docs. See examples
    [Include docs about Python logs auto-instrumentation](https://github.com/open-telemetry/opentelemetry.io/pull/3195),
-   [Add troubleshooting guidance to OTel Operator auto-instruentation docs](https://github.com/open-telemetry/opentelemetry.io/pull/3098), and
+   [Add troubleshooting guidance to OTel Operator auto-instrumentation docs](https://github.com/open-telemetry/opentelemetry.io/pull/3098),
+   and
    [Update Python auto-instrumentation docs](https://github.com/open-telemetry/opentelemetry.io/pull/2130).
 
 > ✨ **NOTE:** ✨ Number two is _especially_ important, because the best way for
