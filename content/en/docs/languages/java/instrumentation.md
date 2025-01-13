@@ -240,7 +240,6 @@ context into Log4j", "Bridge OpenTelemetry context into Logback" entries.
 {{% alert title="Note" color="info" %}}
 
 An end-to-end example of log instrumentation using stdout is available in the
-[Collecting OpenTelemetry-compliant Java logs from files](/blog/2024/collecting-otel-compliant-java-logs-from-files/)
-blog post.
+[Java examples repository](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md).
 
 {{% /alert %}}
