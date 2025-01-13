@@ -50,9 +50,9 @@ with tracer.start_as_current_span("foo"):
     logging.getLogger().error("This is a log message")
 ```
 
-Grab a copy of the OTel Collector configuration from
-[here](https://github.com/open-telemetry/opentelemetry-python/blob/main/docs/examples/logs/otel-collector-config.yaml),
-and save it to `python-logs-example/otel-collector-config.yaml`
+Open and copy the
+[otel-collector-config.yaml](https://github.com/open-telemetry/opentelemetry-python/blob/main/docs/examples/logs/otel-collector-config.yaml)
+example, and save it to `python-logs-example/otel-collector-config.yaml`
 
 ## Prepare
 
