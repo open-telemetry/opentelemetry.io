@@ -12,7 +12,7 @@ busy month as we prepare for KubeCon North America in Chicago. We've got a lot
 to talk about once we're there, and we're excited to see you all in person!
 
 Are you a maintainer with something you’d like featured here? Get in touch with
-me [via email](mailto:austin+otel@ap2.io), or on the
+[Austin Parker via email](mailto:austin+otel@ap2.io), or on the
 [CNCF Slack #otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6)
 channel.
 
