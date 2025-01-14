@@ -383,6 +383,15 @@ maintainers:
       - erlang-maintainers
     html_url: https://github.com/deadtrickster
     avatar_url: https://avatars.githubusercontent.com/u/172311?v=4
+  - name: dineshg13
+    teams:
+      - go-compile-instrumentation-approvers
+      - go-compile-instrumentation-maintainers
+      - go-compile-instrumentation-triagers
+      - go-instrumentation-approvers
+      - go-instrumentation-triagers
+    html_url: https://github.com/dineshg13
+    avatar_url: https://avatars.githubusercontent.com/u/2471669?v=4
   - name: djaglowski
     teams:
       - collector-approvers
@@ -858,6 +867,9 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/5618424?v=4
   - name: pdelewski
     teams:
+      - go-compile-instrumentation-approvers
+      - go-compile-instrumentation-maintainers
+      - go-compile-instrumentation-triagers
       - go-instrumentation-approvers
       - go-instrumentation-maintainers
       - go-instrumentation-triagers
@@ -937,6 +949,13 @@ maintainers:
       - dotnet-triagers
     html_url: https://github.com/rajkumar-rangaraj
     avatar_url: https://avatars.githubusercontent.com/u/9479006?v=4
+  - name: ralf0131
+    teams:
+      - go-compile-instrumentation-approvers
+      - go-compile-instrumentation-maintainers
+      - go-compile-instrumentation-triagers
+    html_url: https://github.com/ralf0131
+    avatar_url: https://avatars.githubusercontent.com/u/4397305?v=4
   - name: rapphil
     teams:
       - lambda-extension-approvers
@@ -1349,12 +1368,6 @@ approvers:
       - cpp-contrib-approvers
     html_url: https://github.com/DebajitDas
     avatar_url: https://avatars.githubusercontent.com/u/85024550?v=4
-  - name: dineshg13
-    teams:
-      - go-instrumentation-approvers
-      - go-instrumentation-triagers
-    html_url: https://github.com/dineshg13
-    avatar_url: https://avatars.githubusercontent.com/u/2471669?v=4
   - name: dpauls
     teams:
       - semconv-messaging-approvers
