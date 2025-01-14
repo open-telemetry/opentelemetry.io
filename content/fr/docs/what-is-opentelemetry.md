@@ -9,7 +9,7 @@ default_lang_commit: 71833a5f8b84110dadf1e98604b87a900724ac33
 OpenTelemetry, c'est :
 
 - Un framework
-  d'[observabilité](/docs/concepts/observability-primer/#what-is-observability)
+  d'[observabilité](/docs/concepts/observability-primer/#qu-est-ce-que-l-observabilite)
   et des outils conçus pour créer et gérer des données de télémétrie telles que
   des [traces](/docs/concepts/signals/traces/), des
   [métriques](/docs/concepts/signals/metrics/), et des
@@ -28,7 +28,7 @@ OpenTelemetry, c'est :
 
 ## Qu'est-ce que l'observabilité ?
 
-L'[observabilité](/docs/concepts/observability-primer/#what-is-observability)
+L'[observabilité](/docs/concepts/observability-primer/#qu-est-ce-que-l-observabilite)
 est la capacité de comprendre l'état interne d'un système en examinant ses
 données sortantes. Dans un contexte logiciel, cela signifie être capable de
 comprendre l'état interne d'un système en examinant ses données de télémétrie,
@@ -45,7 +45,7 @@ transmises à un backend d'observabilité.
 
 Avec l'essor du cloud computing, des architectures en microservices, et des
 exigences commerciales de plus en plus complexes, le besoin
-d'[observabilité](/docs/concepts/observability-primer/#what-is-observability)
+d'[observabilité](/docs/concepts/observability-primer/#qu-est-ce-que-l-observabilite)
 des logiciels et de l'infrastructure est plus grand que jamais.
 
 OpenTelemetry répond au besoin d'observabilité tout en suivant deux principes
