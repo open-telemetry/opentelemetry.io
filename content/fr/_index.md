@@ -57,7 +57,7 @@ performance et le comportement de vos logiciels.
 
 {{% blocks/section color="dark" type="row" %}}
 
-{{% blocks/feature icon="fas fa-chart-line" title="Traces, Métriques, Logs" url="fr/docs/concepts/observability-primer/"%}}
+{{% blocks/feature icon="fas fa-chart-line" title="Traces, Métriques, Logs""%}}
 
 Créez et collectez des données de télémétrie pour vos services et vos logiciels,
 transmettez-les à une multitude d'outils d'analyse.
