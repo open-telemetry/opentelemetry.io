@@ -134,7 +134,7 @@ while(<>) {
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;
   s|(\]\()/specification/|$1$specBasePath/otel/)|;
   s|\.\./semantic_conventions/README.md|$semConvRef| if $ARGV =~ /overview/;
-  s|\.\./specification/(.*?\))|../otel/$1)|g if $ARGV =~ /otel\/specification/;
+  s|\.\./specification/(.*?\))|../otel/$1|g if $ARGV =~ /otel\/specification/;
 
   # Match markdown inline links or link definitions to OTel spec pages: "[...](URL)" or "[...]: URL"
   s|(\]:\s+\|\()https://github.com/open-telemetry/opentelemetry-specification/\w+/(main\|v$otelSpecVers)/specification(.*?\)?)|$1$specBasePath/otel$3|;
