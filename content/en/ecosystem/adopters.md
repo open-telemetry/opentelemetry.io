@@ -15,6 +15,8 @@ OpenTelemetry for [Observability](/docs/concepts/observability-primer/).
 
 {{% ecosystem/adopters-table %}}
 
+## Adding your organization as an adopter {#how-to-add}
+
 To have your organization listed, submit a PR with an entry added to the
 [adopters list](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/adopters.yaml).
 The entry should include the following:
@@ -32,4 +34,6 @@ If your organization provides a **library** or **service** made observable
 through OpenTelemetry, see [Integrations](/ecosystem/integrations/).
 
 If your organization provides a solution that consumes OpenTelemetry to offer
-**Observability to end users**, see [Vendors](/ecosystem/vendors/).
+**Observability to end users**, see [Vendors](/ecosystem/vendors).
+
+{{% ecosystem/keep-up-to-date adopter %}}

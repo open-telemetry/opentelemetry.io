@@ -19,7 +19,7 @@ source product for their customers.
 
 {{% ecosystem/vendor-table %}}
 
-## Add your organization
+## Adding your organization {#how-to-add}
 
 To have your organization listed, [submit a PR] with an entry added to the
 [vendors list](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/vendors.yaml).
@@ -44,3 +44,5 @@ If you provide a library, service, or app that is made observable through
 OpenTelemetry, see [Integrations](/ecosystem/integrations/).
 
 [submit a PR]: /docs/contributing/pull-requests/
+
+{{% ecosystem/keep-up-to-date vendor %}}
