@@ -254,7 +254,7 @@
   commercial: true
 - name: Observe, Inc.
   nativeOTLP: true
-  url: https://docs.observeinc.com/en/latest/content/integrations/otel/opentelemetry.html
+  url: https://docs.observeinc.com/en/latest/content/send-data/app-instrumentation/index.html#instrument-with-opentelemetry
   contact:
   oss: false
   commercial: true
