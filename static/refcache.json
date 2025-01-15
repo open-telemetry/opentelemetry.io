@@ -1979,10 +1979,6 @@
     "StatusCode": 200,
     "LastSeen": "2024-02-22T16:34:09.566865309Z"
   },
-  "https://community.cncf.io/end-user-community/": {
-    "StatusCode": 404,
-    "LastSeen": "2025-01-15T13:29:42.739978-05:00"
-  },
   "https://community.tyk.io/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:05:21.372209-05:00"
