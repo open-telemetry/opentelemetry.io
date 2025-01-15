@@ -9,9 +9,9 @@ cSpell:ignore: Dapr Datenrettungsdienste Farfetch Globale Logicmonitor Logz Upli
 OpenTelemetry's mission is to enable effective observability for all its
 end-users. If you are thinking about adopting OpenTelemetry for your
 organization, you may be curious about other adoption journeys. The table below
-is a non-exhaustive list of [end-user](/community/end-user/) organizations that
-have adopted OpenTelemetry for
-[Observability](/docs/concepts/observability-primer/).
+is a non-exhaustive list of
+[_end-user_ organizations](https://www.cncf.io/enduser/) that have adopted
+OpenTelemetry for [Observability](/docs/concepts/observability-primer/).
 
 {{% ecosystem/adopters-table %}}
 
@@ -24,8 +24,9 @@ The entry should include the following:
 - GitHub handle or email address as a point of contact so that we can reach out
   in case we have questions
 
-Note that this list is for [_end-user_ organizations](https://community.cncf.io)
-that do not provide any OpenTelemetry-related services.
+Note that this list is for
+[_end-user_ organizations](https://www.cncf.io/enduser/) that do not provide any
+OpenTelemetry-related services.
 
 If your organization provides a **library** or **service** made observable
 through OpenTelemetry, see [Integrations](/ecosystem/integrations/).
