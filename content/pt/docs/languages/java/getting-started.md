@@ -253,7 +253,7 @@ Para mais:
 [rastros]: /docs/concepts/signals/traces/
 [metricas]: /docs/concepts/signals/metrics/
 [logs]: /docs/concepts/signals/logs/
-[annotations]: /docs/zero-code/java/agent/annotations/
+[anotações]: /docs/zero-code/java/agent/annotations/
 [configurar o agente Java]: /docs/zero-code/java/agent/configuration/
 [exportador de console]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#logging-exporter
