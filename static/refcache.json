@@ -8847,6 +8847,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:06:42.1819-05:00"
   },
+  "https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api-reference/api.md#monitoring.coreos.com/v1.PodMonitor": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:13:34.822767-05:00"
+  },
+  "https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api-reference/api.md#monitoring.coreos.com/v1.ServiceMonitor": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:13:36.873312-05:00"
+  },
   "https://github.com/prometheus-operator/prometheus-operator/releases": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:06:25.505322-05:00"
