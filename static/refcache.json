@@ -6535,6 +6535,38 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:26:24.629708-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/06f020c97f78ae9625d3a4a5d1107c55045c567f/docker-compose.yml#L665-L668": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T11:53:34.783222-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T11:53:00.929329-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/ad/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T11:53:03.08475-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/frontend/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T11:53:00.941653-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/kafka/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T11:53:01.328807-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config.yml": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T11:53:13.345763-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/react-native-app/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T11:53:03.257474-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/recommendation/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T11:53:03.587225-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-demo/pull/1345": {
     "StatusCode": 200,
     "LastSeen": "2024-02-26T10:53:40.03196+01:00"
@@ -6554,6 +6586,10 @@
   "https://github.com/open-telemetry/opentelemetry-demo/pull/950": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:06:25.745017-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/tree/main/test": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T11:53:02.046047-05:00"
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet": {
     "StatusCode": 200,
