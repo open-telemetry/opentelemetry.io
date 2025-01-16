@@ -6283,6 +6283,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:19.178532-05:00"
   },
+  "https://github.com/open-telemetry/build-tools/blob/main/semantic-conventions/README.md#code-generator": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:17:37.931186-05:00"
+  },
+  "https://github.com/open-telemetry/build-tools/tree/main/semantic-conventions#code-generator": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:07:16.214406-05:00"
+  },
   "https://github.com/open-telemetry/community": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T12:11:03.156031-05:00"
