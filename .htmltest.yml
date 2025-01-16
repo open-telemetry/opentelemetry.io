@@ -15,6 +15,11 @@ IgnoreDirs:
   # TODO drop next lines after https://github.com/open-telemetry/opentelemetry.io/issues/5555 is fixed for these pages:
   - ^zh/docs/concepts/signals/baggage/
   - ^zh/docs/zero-code/php/
+  # TODO drop the following config once this page is updated to reflect the corresponding `en`
+  # page and the link 404 (detailed below) are resolved:
+  #   zh/docs/contributing/index.html
+  #     Non-OK status: 404 --> https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md
+  - ^zh/docs/contributing/
   # DO NOT EDIT! IgnoreDirs list is auto-generated from markdown file front matter.
 IgnoreInternalURLs: # list of paths
 IgnoreURLs: # list of regexs of paths or URLs to be ignored
@@ -62,7 +67,7 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https?://github\.com/open-telemetry/opentelemetry.io/tree/
 
   # Ignore some links to GH repo content for now, most 4XX
-  - ^https?://github\.com/open-telemetry/(community|opentelemetry-collector-contrib|opentelemetry-collector|opentelemetry-dotnet-instrumentation|opentelemetry-helm-charts|opentelemetry-java-instrumentation|opentelemetry-java|opentelemetry-operator|opentelemetry-proto|opentelemetry-python-contrib|opentelemetry-specification|oteps|semantic-conventions|sig-end-user)/
+  - ^https?://github\.com/open-telemetry/(opentelemetry-collector-contrib|opentelemetry-collector|opentelemetry-dotnet-instrumentation|opentelemetry-helm-charts|opentelemetry-java-instrumentation|opentelemetry-java|opentelemetry-operator|opentelemetry-proto|opentelemetry-python-contrib|opentelemetry-specification|oteps|semantic-conventions|sig-end-user)/
   - ^https?://github\.com/open-telemetry/opentelemetry-demo/blob/main/src/(imageprovider|loadgenerator|otelcollector|.*service)
   # TODO drop the following after https://github.com/open-telemetry/semantic-conventions/pull/1753 is merged and the submodule updated:
   - ^https?://github\.com/in-toto/

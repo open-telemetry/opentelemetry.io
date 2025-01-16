@@ -6307,6 +6307,110 @@
     "StatusCode": 200,
     "LastSeen": "2024-05-10T13:05:22.581509+02:00"
   },
+  "https://github.com/open-telemetry/community/blob/47813530864b9fe5a5146f466a58bd2bb94edc72/maturity-matrix.yaml#L57": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:23:07.447782-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md": {
+    "StatusCode": 404,
+    "LastSeen": "2025-01-16T14:23:26.32315-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/README.md#special-interest-groups": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:23:22.158453-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/code-of-conduct.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:22:47.823443-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/community-members.md#governance-committee": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:23:16.617649-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/community-members.md#technical-committee": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:23:17.045641-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/community-membership.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:22:47.59214-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/community-membership.md#requirements": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:23:20.244723-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/elections/2024/governance-committee-candidates.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:23:17.251564-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/elections/2024/governance-committee-election.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:23:15.075273-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/elections/2024/governance-committee-election.md#voter-eligibility": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:23:15.495178-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/gc-check-ins.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:23:24.518882-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/governance-charter.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:23:18.793405-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/governance-charter.md#elections": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:23:38.941975-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/governance-charter.md#members-of-standing": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:23:17.285485-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/guides/contributor": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:23:11.13075-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/guides/contributor/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:22:47.811861-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:22:47.985212-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/marketing-guidelines.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:22:52.070486-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/mission-vision-values.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:23:20.248736-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/project-management.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:23:21.722726-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/projects/gen-ai.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:23:17.554218-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/reports/ADA_Logics-collector-fuzzing-audit-2024.pdf": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:23:17.415384-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/social-media-guide.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:22:46.709042-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/tech-committee-charter.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:22:46.040248-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/master/governance-charter.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:23:19.568578-05:00"
+  },
   "https://github.com/open-telemetry/community/issues": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T12:11:00.776323-05:00"
@@ -6354,6 +6458,14 @@
   "https://github.com/open-telemetry/community/pull/2427": {
     "StatusCode": 200,
     "LastSeen": "2024-12-16T14:23:06.692223-05:00"
+  },
+  "https://github.com/open-telemetry/community/tree/main/mission-vision-values.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:23:39.08002-05:00"
+  },
+  "https://github.com/open-telemetry/community/tree/main/roadmap.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:23:39.490684-05:00"
   },
   "https://github.com/open-telemetry/opamp-go": {
     "StatusCode": 206,
