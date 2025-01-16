@@ -8843,6 +8843,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:39:51.88017-05:00"
   },
+  "https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/charts/crds/crds/crd-podmonitors.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:29:34.292488-05:00"
+  },
+  "https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/charts/crds/crds/crd-servicemonitors.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:29:33.459844-05:00"
+  },
   "https://github.com/prometheus-operator/prometheus-operator": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:06:42.1819-05:00"
