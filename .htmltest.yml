@@ -1,4 +1,4 @@
-CacheExpires: 9000h # ~ 12 months
+CacheExpires: 13300h # ~ 18 months
 DirectoryPath: public
 IgnoreDirectoryMissingTrailingSlash: true
 IgnoreAltMissing: true
