@@ -8895,9 +8895,45 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:06:25.505322-05:00"
   },
+  "https://github.com/prometheus/OpenMetrics/blob/v1.0.0/specification/OpenMetrics.md#unit": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:35:25.270082-05:00"
+  },
+  "https://github.com/prometheus/client_golang/blob/83d56b1144a0c2eb10d399e7abbae3333bebc463/prometheus/histogram.go#L68": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:35:16.125866-05:00"
+  },
   "https://github.com/prometheus/client_java": {
     "StatusCode": 200,
     "LastSeen": "2024-09-30T10:42:19.363961-05:00"
+  },
+  "https://github.com/prometheus/client_java/blob/6730f3e32199d6bf0e963b306ff69ef08ac5b178/simpleclient/src/main/java/io/prometheus/client/Histogram.java#L88": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:35:15.007962-05:00"
+  },
+  "https://github.com/prometheus/client_model/blob/01ca24cafc7877ed5ce091083068cde086b7c3dc/io/prometheus/client/metrics.proto": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:35:17.361251-05:00"
+  },
+  "https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:34:58.350786-05:00"
+  },
+  "https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md#text-based-format": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:35:13.651366-05:00"
+  },
+  "https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:35:16.035724-05:00"
+  },
+  "https://github.com/prometheus/prometheus/blob/main/prompb/remote.proto": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:35:14.605396-05:00"
+  },
+  "https://github.com/prometheus/prometheus/blob/v2.28.1/docs/configuration/configuration.md#scrape_config": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:35:25.248147-05:00"
   },
   "https://github.com/prometheus/prometheus/commit/d9d51c565c622cdc7d626d3e7569652bc28abe15#diff-bdaf80ebc5fa26365f45db53435b960ce623ea6f86747fb8870ad1abc355f64fR76-R83": {
     "StatusCode": 206,
