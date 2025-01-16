@@ -9,7 +9,7 @@ This service is responsible to process credit card payments for orders. It will
 return an error if the credit card is invalid or the payment can not be
 processed.
 
-[Payment service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/paymentservice/)
+[Payment service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/payment/)
 
 ## Initializing OpenTelemetry
 
