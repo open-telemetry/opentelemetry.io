@@ -4019,6 +4019,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:19:39.390251+02:00"
   },
+  "https://github.com/Prometheus/Prometheus/blob/main/prompb/remote.proto": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:32:59.446378-05:00"
+  },
+  "https://github.com/Prometheus/docs/blob/777846211d502a287ab2b304cb515dc779de3474/content/docs/instrumenting/exposition_formats.md#exposition-formats": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:32:58.508098-05:00"
+  },
   "https://github.com/RassK": {
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:17:13.584345+02:00"
