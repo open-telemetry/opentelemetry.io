@@ -9395,6 +9395,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:16:49.583224+02:00"
   },
+  "https://github.com/w3c/baggage/blob/main/baggage/HTTP_HEADER_FORMAT_RATIONALE.md#case-sensitivity-of-keys": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T12:58:30.252547-05:00"
+  },
   "https://github.com/wdalmut/opentelemetry-plugin-mongoose": {
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:33:05.399186-05:00"
