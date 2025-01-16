@@ -8747,6 +8747,22 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:36.015951-05:00"
   },
+  "https://github.com/open-telemetry/weaver/blob/main/crates/weaver_forge/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:20:32.148949-05:00"
+  },
+  "https://github.com/open-telemetry/weaver/blob/main/crates/weaver_forge/README.md#comment-filter": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:20:34.09465-05:00"
+  },
+  "https://github.com/open-telemetry/weaver/blob/main/crates/weaver_forge/README.md#configuration-file---weaveryaml": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:20:33.672615-05:00"
+  },
+  "https://github.com/open-telemetry/weaver/blob/main/schemas/semconv-syntax.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T14:20:31.233996-05:00"
+  },
   "https://github.com/openclarity/apiclarity/tree/master/plugins/otel-collector": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:45.041259-05:00"
