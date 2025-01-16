@@ -4551,6 +4551,38 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-07T15:43:37.986528+02:00"
   },
+  "https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/extensions/distributed-tracing.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:03:34.845795-05:00"
+  },
+  "https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/primer.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:03:34.094757-05:00"
+  },
+  "https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md#id": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:03:36.029532-05:00"
+  },
+  "https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md#overview": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:03:30.797788-05:00"
+  },
+  "https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md#source-1": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:03:36.320521-05:00"
+  },
+  "https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md#specversion": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:03:36.894887-05:00"
+  },
+  "https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md#subject": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:03:37.13411-05:00"
+  },
+  "https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md#type": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:03:37.493203-05:00"
+  },
   "https://github.com/cloudflare/cfssl": {
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:31:41.99725-05:00"
