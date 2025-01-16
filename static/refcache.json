@@ -5091,6 +5091,18 @@
     "StatusCode": 200,
     "LastSeen": "2024-10-24T15:10:16.695786+02:00"
   },
+  "https://github.com/googleapis/googleapis/blob/6a8c7914d1b79bd832b5157a09a9332e8cbd16d4/google/rpc/error_details.proto#L119": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:00:21.409571-05:00"
+  },
+  "https://github.com/googleapis/googleapis/blob/6a8c7914d1b79bd832b5157a09a9332e8cbd16d4/google/rpc/error_details.proto#L40": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:00:18.312597-05:00"
+  },
+  "https://github.com/googleapis/googleapis/blob/d14bf59a446c14ef16e9931ebfc8e63ab549bf07/google/rpc/error_details.proto#L166": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:00:25.510175-05:00"
+  },
   "https://github.com/gosnmp/gosnmp": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:48.041519-05:00"
