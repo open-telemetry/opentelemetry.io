@@ -10,9 +10,8 @@ OpenTelemetry's mission is to enable effective observability for all its
 end-users. If you are thinking about adopting OpenTelemetry for your
 organization, you may be curious about other adoption journeys. The table below
 is a non-exhaustive list of
-[_end-user_ organizations](https://community.cncf.io/end-user-community/) that
-have adopted OpenTelemetry for
-[Observability](/docs/concepts/observability-primer/).
+[_end-user_ organizations](https://www.cncf.io/enduser/) that have adopted
+OpenTelemetry for [Observability](/docs/concepts/observability-primer/).
 
 {{% ecosystem/adopters-table %}}
 
@@ -26,11 +25,11 @@ The entry should include the following:
   in case we have questions
 
 Note that this list is for
-[_end-user_ organizations](https://community.cncf.io/) that do not provide any
+[_end-user_ organizations](https://www.cncf.io/enduser/) that do not provide any
 OpenTelemetry-related services.
 
 If your organization provides a **library** or **service** made observable
 through OpenTelemetry, see [Integrations](/ecosystem/integrations/).
 
 If your organization provides a solution that consumes OpenTelemetry to offer
-**Observability to end users**, see [Vendors](/ecosystem/vendors).
+**Observability to end users**, see [Vendors](/ecosystem/vendors/).

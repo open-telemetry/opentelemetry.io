@@ -34,13 +34,13 @@ The entry should include the following:
   in case we have questions
 
 Note that this list is for organizations that consume OpenTelemetry and offer
-Observability to [end users](https://community.cncf.io/end-user-community/).
+Observability to [end users](/community/end-user/).
 
-If you adopt OpenTelemetry for Observability as an end-user organization, and
-you do not provide any kind of services around OpenTelemetry, see
-[Adopters](/ecosystem/adopters).
+If you adopt OpenTelemetry for Observability as an
+[end-user organization](https://www.cncf.io/enduser/), and you do not provide
+any kind of services around OpenTelemetry, see [Adopters](/ecosystem/adopters/).
 
 If you provide a library, service, or app that is made observable through
-OpenTelemetry, see [Integrations](/ecosystem/integrations).
+OpenTelemetry, see [Integrations](/ecosystem/integrations/).
 
 [submit a PR]: /docs/contributing/pull-requests/
