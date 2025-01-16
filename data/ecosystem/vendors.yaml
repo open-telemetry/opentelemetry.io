@@ -120,12 +120,6 @@
   contact:
   oss: true
   commercial: true
-- name: F5
-  nativeOTLP: true
-  url: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/f5cloudexporter
-  contact:
-  oss: false
-  commercial: true
 - name: Google Cloud Platform
   nativeOTLP: true
   url: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/googlecloudexporter
