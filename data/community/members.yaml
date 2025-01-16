@@ -1606,11 +1606,6 @@ approvers:
       - semconv-genai-approvers
     html_url: https://github.com/nirga
     avatar_url: https://avatars.githubusercontent.com/u/4224692?v=4
-  - name: nslaughter
-    teams:
-      - lambda-extension-approvers
-    html_url: https://github.com/nslaughter
-    avatar_url: https://avatars.githubusercontent.com/u/28688390?v=4
   - name: Oberon00
     teams:
       - build-tools-approvers
