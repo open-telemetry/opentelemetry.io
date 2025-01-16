@@ -6715,9 +6715,25 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:53:00.929329-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/accounting/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T18:15:55.472415571Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/ad/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:53:03.08475-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/checkout/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T18:15:55.588406336Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/currency/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T18:15:55.57774392Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/email/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T18:15:57.569765671Z"
   },
   "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/frontend/": {
     "StatusCode": 206,
@@ -6731,6 +6747,18 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:53:13.345763-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/payment/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T18:15:55.603304611Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/product-catalog/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T18:15:56.461646423Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/quote/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T18:15:56.381528642Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/react-native-app/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:53:03.257474-05:00"
@@ -6738,6 +6766,10 @@
   "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/recommendation/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:53:03.587225-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/shipping/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T18:15:55.200310605Z"
   },
   "https://github.com/open-telemetry/opentelemetry-demo/pull/1345": {
     "StatusCode": 200,
