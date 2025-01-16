@@ -8707,6 +8707,26 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:46.464393-05:00"
   },
+  "https://github.com/openzipkin/zipkin-api/blob/master/thrift/zipkinCore.thrift": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:31:28.513617-05:00"
+  },
+  "https://github.com/openzipkin/zipkin-api/blob/master/zipkin-api.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:31:30.963981-05:00"
+  },
+  "https://github.com/openzipkin/zipkin-api/blob/master/zipkin.proto": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:31:25.895072-05:00"
+  },
+  "https://github.com/openzipkin/zipkin-api/blob/master/zipkin2-api.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:31:26.965548-05:00"
+  },
+  "https://github.com/openzipkin/zipkin/blob/master/zipkin/src/main/java/zipkin2/v1/V1SpanConverter.java": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:31:33.560819-05:00"
+  },
   "https://github.com/oppegard": {
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:23:08.583121+02:00"
@@ -13778,6 +13798,10 @@
   "https://wikipedia.org/wiki/Rust_%28programming_language%29": {
     "StatusCode": 200,
     "LastSeen": "2024-10-09T10:19:39.738709+02:00"
+  },
+  "https://wikipedia.org/wiki/S.M.A.R.T.": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-16T13:31:21.02902-05:00"
   },
   "https://wikipedia.org/wiki/SQLSTATE": {
     "StatusCode": 200,
