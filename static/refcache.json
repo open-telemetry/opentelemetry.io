@@ -4371,6 +4371,26 @@
     "StatusCode": 200,
     "LastSeen": "2024-03-27T00:26:43.376792984Z"
   },
+  "https://github.com/avillela/otel-errors-talk/blob/main/src/python/server.py": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:05:44.883686-05:00"
+  },
+  "https://github.com/avillela/otel-target-allocator-talk/blob/21e9643e28165e39bd79f3beec7f2b1f989d87e9/src/resources/02-otel-collector-ls.yml#L16-L21": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:05:44.656148-05:00"
+  },
+  "https://github.com/avillela/otel-target-allocator-talk/blob/21e9643e28165e39bd79f3beec7f2b1f989d87e9/src/resources/02-otel-collector-ls.yml#L43-L47": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:05:45.39538-05:00"
+  },
+  "https://github.com/avillela/otel-target-allocator-talk/blob/main/src/resources/02-otel-collector-ls.yml": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:05:46.237037-05:00"
+  },
+  "https://github.com/avillela/otel-target-allocator-talk/tree/main": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:05:48.070495-05:00"
+  },
   "https://github.com/bacherfl": {
     "StatusCode": 200,
     "LastSeen": "2024-11-18T23:18:23.510566336Z"
@@ -4499,9 +4519,41 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:38:03.030875-05:00"
   },
+  "https://github.com/census-instrumentation/opencensus-proto/blob/v0.3.0/src/opencensus/proto/metrics/v1/metrics.proto#L195": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:07:02.730072-05:00"
+  },
   "https://github.com/census-instrumentation/opencensus-specs": {
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:32:17.841095-05:00"
+  },
+  "https://github.com/census-instrumentation/opencensus-specs/blob/master/encodings/BinaryEncoding.md#trace-context": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:07:02.730087-05:00"
+  },
+  "https://github.com/census-instrumentation/opencensus-specs/blob/master/resource/StandardResources.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:07:02.038704-05:00"
+  },
+  "https://github.com/census-instrumentation/opencensus-specs/blob/master/stats/Record.md#recording-stats": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:07:04.682317-05:00"
+  },
+  "https://github.com/census-instrumentation/opencensus-specs/blob/master/stats/gRPC.md#server": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:07:02.090317-05:00"
+  },
+  "https://github.com/census-instrumentation/opencensus-specs/blob/master/trace/Sampling.md#how-can-users-control-the-sampler-that-is-used-for-sampling": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:07:06.16179-05:00"
+  },
+  "https://github.com/census-instrumentation/opencensus-specs/blob/master/trace/Span.md#span-creation": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:07:05.353123-05:00"
+  },
+  "https://github.com/census-instrumentation/opencensus-specs/blob/master/trace/TraceConfig.md#traceparams": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:07:07.18535-05:00"
   },
   "https://github.com/cerbos": {
     "StatusCode": 200,
@@ -4550,6 +4602,38 @@
   "https://github.com/clickhouse": {
     "StatusCode": 200,
     "LastSeen": "2024-08-07T15:43:37.986528+02:00"
+  },
+  "https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/extensions/distributed-tracing.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:03:34.845795-05:00"
+  },
+  "https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/primer.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:03:34.094757-05:00"
+  },
+  "https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md#id": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:03:36.029532-05:00"
+  },
+  "https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md#overview": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:03:30.797788-05:00"
+  },
+  "https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md#source-1": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:03:36.320521-05:00"
+  },
+  "https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md#specversion": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:03:36.894887-05:00"
+  },
+  "https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md#subject": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:03:37.13411-05:00"
+  },
+  "https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md#type": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:03:37.493203-05:00"
   },
   "https://github.com/cloudflare/cfssl": {
     "StatusCode": 206,
@@ -4794,6 +4878,30 @@
   "https://github.com/dominicfraser": {
     "StatusCode": 200,
     "LastSeen": "2024-02-26T10:53:39.237712+01:00"
+  },
+  "https://github.com/dotnet/aspire/tree/main/src/Aspire.Dashboard": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:02:54.212655-05:00"
+  },
+  "https://github.com/dotnet/aspnetcore/blob/main/src/SignalR/docs/specs/TransportProtocols.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:02:12.073488-05:00"
+  },
+  "https://github.com/dotnet/runtime/blob/edd23fcb1b350cb1a53fa409200da55e9c33e99e/docs/design/features/host-tracing.md#host-tracing": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:01:54.906183-05:00"
+  },
+  "https://github.com/dotnet/runtime/blob/main/docs/design/coreclr/profiling/Profiler%20Loading.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:01:59.939978-05:00"
+  },
+  "https://github.com/dotnet/runtime/blob/main/docs/design/features/additional-deps.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:02:02.914411-05:00"
+  },
+  "https://github.com/dotnet/runtime/blob/main/docs/design/features/host-startup-hook.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:02:01.315159-05:00"
   },
   "https://github.com/dotnet/runtime/issues/93303": {
     "StatusCode": 200,
@@ -5090,6 +5198,18 @@
   "https://github.com/google/pprof": {
     "StatusCode": 200,
     "LastSeen": "2024-10-24T15:10:16.695786+02:00"
+  },
+  "https://github.com/googleapis/googleapis/blob/6a8c7914d1b79bd832b5157a09a9332e8cbd16d4/google/rpc/error_details.proto#L119": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:00:21.409571-05:00"
+  },
+  "https://github.com/googleapis/googleapis/blob/6a8c7914d1b79bd832b5157a09a9332e8cbd16d4/google/rpc/error_details.proto#L40": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:00:18.312597-05:00"
+  },
+  "https://github.com/googleapis/googleapis/blob/d14bf59a446c14ef16e9931ebfc8e63ab549bf07/google/rpc/error_details.proto#L166": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:00:25.510175-05:00"
   },
   "https://github.com/gosnmp/gosnmp": {
     "StatusCode": 206,
@@ -8727,6 +8847,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:06:42.1819-05:00"
   },
+  "https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api-reference/api.md#monitoring.coreos.com/v1.PodMonitor": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:13:34.822767-05:00"
+  },
+  "https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api-reference/api.md#monitoring.coreos.com/v1.ServiceMonitor": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:13:36.873312-05:00"
+  },
   "https://github.com/prometheus-operator/prometheus-operator/releases": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:06:25.505322-05:00"
@@ -9394,6 +9522,10 @@
   "https://github.com/vvydier": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:16:49.583224+02:00"
+  },
+  "https://github.com/w3c/baggage/blob/main/baggage/HTTP_HEADER_FORMAT_RATIONALE.md#case-sensitivity-of-keys": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T12:58:30.252547-05:00"
   },
   "https://github.com/wdalmut/opentelemetry-plugin-mongoose": {
     "StatusCode": 206,
