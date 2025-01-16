@@ -158,7 +158,7 @@ de várias maneiras, os passos abaixo utilizam variáveis de ambiente.
 
    {{% alert title="Importante" color="warning" %}}
 
-   - Substitua `PATH/TO` acima pelo caminho correto até o arquivo JAR.
+   - Substitua `PATH/TO` acima pelo caminho correto para o seu arquivo JAR.
    - Configure `OTEL_METRIC_EXPORT_INTERVAL` com um valor significativamente menor que o padrão, 
      como mostrado acima, **apenas durante testes** para verificar mais rapidamente se
      as métricas estão sendo geradas corretamente.
