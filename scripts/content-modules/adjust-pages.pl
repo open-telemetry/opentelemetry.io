@@ -159,7 +159,9 @@ while(<>) {
   s|\.\./README.md\b|$otlpSpecRepoUrl/|g if $ARGV =~ /\btmp\/otlp/;
   s|\.\./examples/README.md\b|$otlpSpecRepoUrl/tree/v$otlpSpecVers/examples/|g if $ARGV =~ /\btmp\/otlp/;
 
-  s|\bREADME.md\b|_index.md|g if $ARGV !~ /otel\/specification\/protocol\/_index.md/;
+  s|\bREADME.md\b|_index.md|g if $ARGV !~ /otel\/specification\/protocol\/_index.md/
+    # TODO drop once semconv PR is merged and module is updated in this repo
+    && $ARGV !~ /semconv\/docs\/non-normative\/code-generation.md/;
 
   # Rewrite paths that are outside of the main spec folder as external links
   s|(\.\.\/)+(experimental\/[^)]+)|$otelSpecRepoUrl/tree/v$otelSpecVers/$2|g;
