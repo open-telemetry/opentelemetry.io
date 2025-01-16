@@ -4519,9 +4519,41 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:38:03.030875-05:00"
   },
+  "https://github.com/census-instrumentation/opencensus-proto/blob/v0.3.0/src/opencensus/proto/metrics/v1/metrics.proto#L195": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:07:02.730072-05:00"
+  },
   "https://github.com/census-instrumentation/opencensus-specs": {
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:32:17.841095-05:00"
+  },
+  "https://github.com/census-instrumentation/opencensus-specs/blob/master/encodings/BinaryEncoding.md#trace-context": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:07:02.730087-05:00"
+  },
+  "https://github.com/census-instrumentation/opencensus-specs/blob/master/resource/StandardResources.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:07:02.038704-05:00"
+  },
+  "https://github.com/census-instrumentation/opencensus-specs/blob/master/stats/Record.md#recording-stats": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:07:04.682317-05:00"
+  },
+  "https://github.com/census-instrumentation/opencensus-specs/blob/master/stats/gRPC.md#server": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:07:02.090317-05:00"
+  },
+  "https://github.com/census-instrumentation/opencensus-specs/blob/master/trace/Sampling.md#how-can-users-control-the-sampler-that-is-used-for-sampling": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:07:06.16179-05:00"
+  },
+  "https://github.com/census-instrumentation/opencensus-specs/blob/master/trace/Span.md#span-creation": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:07:05.353123-05:00"
+  },
+  "https://github.com/census-instrumentation/opencensus-specs/blob/master/trace/TraceConfig.md#traceparams": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:07:07.18535-05:00"
   },
   "https://github.com/cerbos": {
     "StatusCode": 200,
