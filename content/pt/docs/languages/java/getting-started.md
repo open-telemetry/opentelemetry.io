@@ -22,7 +22,7 @@ Certifique-se de ter instalado localmente:
 
 ## Exemplo de Aplicação {#example-application}
   
-O exemplo a seguir utiliza uma aplicação básica [Spring Boot]. Você pode usar
+O exemplo a seguir utiliza uma aplicação básica [Spring Boot][]. Você pode usar
 outros frameworks web, como Apache Wicket ou Play. Para uma lista completa das
 bibliotecas e frameworks suportados, consulte o
 [registro](/ecosystem/registry/?component=instrumentation&language=java).
