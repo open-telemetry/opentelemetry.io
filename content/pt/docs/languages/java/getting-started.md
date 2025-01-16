@@ -172,7 +172,7 @@ de várias maneiras, os passos abaixo utilizam variáveis de ambiente.
    ...
    ```
 
-   Observe a saida do `otel.javaagent`.
+   Observe a saída do `otel.javaagent`.
 
 4. De _outro_ terminal, envie uma requisição utilizando `curl`:
 
