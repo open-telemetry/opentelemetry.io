@@ -4795,6 +4795,30 @@
     "StatusCode": 200,
     "LastSeen": "2024-02-26T10:53:39.237712+01:00"
   },
+  "https://github.com/dotnet/aspire/tree/main/src/Aspire.Dashboard": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:02:54.212655-05:00"
+  },
+  "https://github.com/dotnet/aspnetcore/blob/main/src/SignalR/docs/specs/TransportProtocols.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:02:12.073488-05:00"
+  },
+  "https://github.com/dotnet/runtime/blob/edd23fcb1b350cb1a53fa409200da55e9c33e99e/docs/design/features/host-tracing.md#host-tracing": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:01:54.906183-05:00"
+  },
+  "https://github.com/dotnet/runtime/blob/main/docs/design/coreclr/profiling/Profiler%20Loading.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:01:59.939978-05:00"
+  },
+  "https://github.com/dotnet/runtime/blob/main/docs/design/features/additional-deps.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:02:02.914411-05:00"
+  },
+  "https://github.com/dotnet/runtime/blob/main/docs/design/features/host-startup-hook.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:02:01.315159-05:00"
+  },
   "https://github.com/dotnet/runtime/issues/93303": {
     "StatusCode": 200,
     "LastSeen": "2024-12-04T08:47:21.844695325Z"
