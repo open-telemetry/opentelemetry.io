@@ -56,13 +56,16 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   # YouTube playlists sometimes give a 404, although they give a 200 when accessed via browser:
   - ^https://www.youtube.com/playlist\?list=
 
-  # Ignore Docsy-generated GitHub links for now
-  - ^https?://github\.com/.*?/.*?/(new|edit)/ # view-page, edit-source etc
-  # TODO: drop after fix to https://github.com/google/docsy/issues/1432
-  - ^https://github.com/open-telemetry/opentelemetry.io/commit/ # last mod
+  # Ignore Docsy-generated GitHub links for now, until
+  # https://github.com/google/docsy/issues/1432 is fixed
+  - ^https?://github\.com/.*?/.*?/(new|edit|issues/new\?title)/ # view-page, edit-source etc
+  - ^https?://github\.com/open-telemetry/opentelemetry.io/tree/
 
-  # Ignore links to GH repo content for now.
-  - ^https?://github\.com/.*?/.*?/(blob|tree)/
+  # Ignore some links to GH repo content for now, most 4XX
+  - ^https?://github\.com/(OpenObservability|opentracing|openzipkin|[pP]rometheus|prometheus-community|prometheus-operator|avillela|census-instrumentation|cloudevents|dotnet|googleapis|in-toto|w3c)/
+  - ^https?://github\.com/open-telemetry/(build-tools|community|opentelemetry-collector-contrib|opentelemetry-collector|opentelemetry-dotnet-instrumentation|opentelemetry-helm-charts|opentelemetry-java-instrumentation|opentelemetry-java|opentelemetry-operator|opentelemetry-proto|opentelemetry-python-contrib|opentelemetry-specification|oteps|semantic-conventions|sig-end-user|weaver)/
+  - ^https?://github\.com/open-telemetry/opentelemetry-demo/
+  # - ^https?://github\.com/.*?/.*?/(blob|tree)/
 
   # Too many redirects as the server tries to figure out the country and language,
   # e.g.: https://www.microsoft.com/en-ca/sql-server.
