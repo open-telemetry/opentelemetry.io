@@ -4371,6 +4371,26 @@
     "StatusCode": 200,
     "LastSeen": "2024-03-27T00:26:43.376792984Z"
   },
+  "https://github.com/avillela/otel-errors-talk/blob/main/src/python/server.py": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:05:44.883686-05:00"
+  },
+  "https://github.com/avillela/otel-target-allocator-talk/blob/21e9643e28165e39bd79f3beec7f2b1f989d87e9/src/resources/02-otel-collector-ls.yml#L16-L21": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:05:44.656148-05:00"
+  },
+  "https://github.com/avillela/otel-target-allocator-talk/blob/21e9643e28165e39bd79f3beec7f2b1f989d87e9/src/resources/02-otel-collector-ls.yml#L43-L47": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:05:45.39538-05:00"
+  },
+  "https://github.com/avillela/otel-target-allocator-talk/blob/main/src/resources/02-otel-collector-ls.yml": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:05:46.237037-05:00"
+  },
+  "https://github.com/avillela/otel-target-allocator-talk/tree/main": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:05:48.070495-05:00"
+  },
   "https://github.com/bacherfl": {
     "StatusCode": 200,
     "LastSeen": "2024-11-18T23:18:23.510566336Z"
