@@ -4007,6 +4007,50 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:23:05.985099+02:00"
   },
+  "https://github.com/OpenObservability/OpenMetrics/blob/1386544931307dff279688f332890c31b6c5de36/specification/OpenMetrics.md#protobuf-format": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:38:12.493415-05:00"
+  },
+  "https://github.com/OpenObservability/OpenMetrics/blob/1386544931307dff279688f332890c31b6c5de36/specification/OpenMetrics.md#text-format": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:38:11.671811-05:00"
+  },
+  "https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#counter-1": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:38:17.023626-05:00"
+  },
+  "https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#exemplars": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:38:17.54787-05:00"
+  },
+  "https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#gaugehistogram": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:38:15.517585-05:00"
+  },
+  "https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#info": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:38:14.464863-05:00"
+  },
+  "https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#metric": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:38:13.56257-05:00"
+  },
+  "https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#metricfamily": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:38:13.486-05:00"
+  },
+  "https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#protobuf-format": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:38:13.172618-05:00"
+  },
+  "https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#stateset": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:38:05.683992-05:00"
+  },
+  "https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#supporting-target-metadata-in-both-push-based-and-pull-based-systems": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:38:18.01428-05:00"
+  },
   "https://github.com/OutThereLabs/actix-web-opentelemetry": {
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:33:07.69982-05:00"
