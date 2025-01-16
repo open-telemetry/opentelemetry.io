@@ -8703,6 +8703,26 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:32:13.299281-05:00"
   },
+  "https://github.com/opentracing/specification/blob/master/semantic_conventions.md#log-fields-table": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:36:52.98245-05:00"
+  },
+  "https://github.com/opentracing/specification/blob/master/semantic_conventions.md#standard-span-tags-and-log-fields": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:36:52.089279-05:00"
+  },
+  "https://github.com/opentracing/specification/blob/master/specification.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:36:41.124943-05:00"
+  },
+  "https://github.com/opentracing/specification/blob/master/specification.md#extract-a-spancontext-from-a-carrier": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:36:51.380359-05:00"
+  },
+  "https://github.com/opentracing/specification/blob/master/specification.md#references-between-spans": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-16T13:36:56.184462-05:00"
+  },
   "https://github.com/openzipkin/b3-propagation": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:26.830241-05:00"
