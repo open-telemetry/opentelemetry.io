@@ -121,7 +121,7 @@ public class RollController {
 <!-- prettier-ignore-end -->
 
 Compile e execute a aplicação com o seguinte comando, e então abra
-<http://localhost:8080/rolldice> no seu navegador para ter certeza que está funcionando
+<http://localhost:8080/rolldice> no seu navegador para ter certeza que está funcionando.
 
 ```sh
 gradle assemble
