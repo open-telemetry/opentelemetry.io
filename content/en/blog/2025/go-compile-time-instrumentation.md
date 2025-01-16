@@ -19,7 +19,7 @@ you want to "build your own scales", or the OTel equivalent):
 
 - Use a separate binary that analyzes your Go process and attaches eBPF programs
   to hooks in your application (see
-  https://github.com/open-telemetry/opentelemetry-go-instrumentation/).
+  [opentelemetry-go-instrumentation](https://github.com/open-telemetry/opentelemetry-go-instrumentation/)).
 - Manually configure instrumentation libraries in your code (see an
   [example](https://opentelemetry.io/docs/languages/go/getting-started/#instrument-the-http-server)
   to instrument `net/http`).
