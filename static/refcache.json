@@ -12111,10 +12111,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T17:00:14.594326-05:00"
   },
-  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/_index.md": {
-    "StatusCode": 404,
-    "LastSeen": "2025-01-17T17:00:17.00729-05:00"
-  },
   "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/android.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T17:00:23.447463-05:00"
@@ -12579,10 +12575,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T17:00:16.241584-05:00"
   },
-  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/general/attribute-naming.md": {
-    "StatusCode": 404,
-    "LastSeen": "2025-01-17T17:00:17.226913-05:00"
-  },
   "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/general/attribute-requirement-level.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T17:00:16.073148-05:00"
@@ -12594,10 +12586,6 @@
   "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/general/events.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T17:00:16.096633-05:00"
-  },
-  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/general/group-stability.md": {
-    "StatusCode": 404,
-    "LastSeen": "2025-01-17T17:00:17.007148-05:00"
   },
   "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/general/logs.md": {
     "StatusCode": 206,
@@ -12630,10 +12618,6 @@
   "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/graphql/graphql-spans.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T17:00:25.564867-05:00"
-  },
-  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/hardware/_index.md": {
-    "StatusCode": 404,
-    "LastSeen": "2025-01-17T17:00:18.070536-05:00"
   },
   "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/hardware/common.md": {
     "StatusCode": 206,
@@ -12838,10 +12822,6 @@
   "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/rpc/rpc-spans.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T17:00:28.702482-05:00"
-  },
-  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/runtime/_index.md": {
-    "StatusCode": 404,
-    "LastSeen": "2025-01-17T17:00:15.786744-05:00"
   },
   "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/runtime/dotnet-metrics.md": {
     "StatusCode": 206,

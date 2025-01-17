@@ -69,9 +69,10 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   # FIXME: A patch until we can get Docsy to mark "View page source" links as excluded from link checking,
   # Actually, it would be better to pin the version of the OTel spec.
   - ^https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/logs/event-(api|sdk)\.md
+  # FIXME: same issue as for the OTel spec mentioned above:
+  - ^https://github.com/open-telemetry/semantic-conventions/tree/main
 
   # Ignore some links to GH repo content for now, most 4XX
-  - ^https?://github\.com/open-telemetry/(semantic-conventions)/
   - ^https?://github\.com/open-telemetry/opentelemetry-demo/blob/main/src/(imageprovider|loadgenerator|otelcollector|.*service)
   # TODO drop the following after https://github.com/open-telemetry/semantic-conventions/pull/1753 is merged and the submodule updated:
   - ^https?://github\.com/in-toto/
