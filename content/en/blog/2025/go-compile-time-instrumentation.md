@@ -62,6 +62,7 @@ the best aspects of each solution and benefits the community as a whole.
 The initial output from this SIG will soon replace
 [instrgen](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/dafdad14b7858c7f491c8cb72e4bc7deaf9378e3/instrgen/README.md),
 Go SIG's initial experimental approach to provide compile-time instrumentation.
+
 In the longer term, this SIG will focus on:
 
 - Developing compiler plugins or enhancements that inject instrumentation code
