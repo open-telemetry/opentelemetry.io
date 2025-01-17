@@ -8427,6 +8427,62 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:27.570139-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/Directory.Packages.props": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:27:47.364795-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/alpine.dockerfile": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:27:40.257146-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/debian-arm64.dockerfile": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:27:44.073405-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/debian.dockerfile": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:27:41.475727-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#exporters": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:27:41.179979-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#instrumentations": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:27:45.459782-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#internal-logs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:27:40.47018-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/plugins.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:27:43.547711-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/src/Directory.Packages.props": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:27:48.070547-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/src/OpenTelemetry.AutoInstrumentation.AdditionalDeps/Directory.Build.props": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:27:45.958017-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/src/OpenTelemetry.AutoInstrumentation.AdditionalDeps/Directory.Packages.props": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:27:50.088217-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/src/OpenTelemetry.AutoInstrumentation.Native/netfx_assembly_redirection.h": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:27:51.120351-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/src/OpenTelemetry.AutoInstrumentation/OpenTelemetry.AutoInstrumentation.csproj": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:27:43.550924-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.9.0/docker/centos-build.dockerfile": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:33:15.208069-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/1744": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:24:51.105859-05:00"
@@ -8466,6 +8522,10 @@
   "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/tag/v1.0.0": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:16.569943-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/tree/main/examples/demo": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:27:45.95485-05:00"
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Exporter.Prometheus.AspNetCore/README.md": {
     "StatusCode": 206,
@@ -8779,6 +8839,22 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:31:49.391415-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/blob/aaa70bde1bf8bf15fc411282468ac6d2d07f772d/charts/opentelemetry-collector/templates/_config.tpl#L206-L282": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:39:39.404747-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-collector/values.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:39:21.09328-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-demo/values.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:39:14.886208-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-operator/values.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:39:15.147906-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-helm-charts/pull/531": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:26:48.348347-05:00"
@@ -8786,6 +8862,30 @@
   "https://github.com/open-telemetry/opentelemetry-helm-charts/pull/760": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:46:42.700902-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-collector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:39:17.937643-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-collector#configuration-for-kubernetes-container-logs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:39:42.060502-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-demo": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:39:14.167477-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-demo#chart-parameters": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:39:15.553407-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:39:13.267258-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator#opentelemetry-operator-helm-chart": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:39:16.186918-05:00"
   },
   "https://github.com/open-telemetry/opentelemetry-java": {
     "StatusCode": 200,
