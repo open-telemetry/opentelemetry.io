@@ -5,7 +5,7 @@ date: 2025-01-17
 author: >-
   [Tyler Yahn](https://github.com/MrAlias) (Splunk)
 sig: SIG Go
-cSpell:ignore: Yahn dashpole pellared otelhttp dmathieu otelhttp codeboten
+cSpell:ignore: Yahn dashpole pellared otelhttp dmathieu otelhttp codeboten otellogr otellogrus otelslog otelzap otelzerolog
 ---
 
 As we kick off 2025, the OpenTelemetry Go team has come together to set a
