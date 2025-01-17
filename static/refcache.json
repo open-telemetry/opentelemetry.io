@@ -12907,6 +12907,22 @@
     "StatusCode": 200,
     "LastSeen": "2024-05-13T17:48:19.136757+01:00"
   },
+  "https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/otel-collector/otel-collector-survey.csv": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:02:03.773893-05:00"
+  },
+  "https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/otel-prom-interoperability/otel-prom-interoperability-survey.csv": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:02:02.426651-05:00"
+  },
+  "https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys/getting-started": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:02:00.614152-05:00"
+  },
+  "https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys/otel-prom-interoperability": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:02:00.591524-05:00"
+  },
   "https://github.com/open-telemetry/sig-security": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:36.015951-05:00"
