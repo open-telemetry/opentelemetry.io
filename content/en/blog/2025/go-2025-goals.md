@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry Go 2025 Goals
 linkTitle: Go Goals 2025
-date: 2025-01-17
+date: 2025-01-21
 author: >-
   [Tyler Yahn](https://github.com/MrAlias) (Splunk)
 sig: SIG Go
