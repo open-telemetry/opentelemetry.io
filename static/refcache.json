@@ -8963,6 +8963,70 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:31:46.601997-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/a3f8b1082d8835a81dffd834ec28decca066a3f2/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/internal/instrumentation/logging/LogbackAppenderApplicationListener.java#L64": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:15.974144-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/RELEASING.md#release-cadence": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:53.056041-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:51.031986-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:49.786923-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:55.5647-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/kafka-broker.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:53.523641-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:48.431875-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/resources/library/src/main/java/io/opentelemetry/instrumentation/resources/OsResourceProvider.java": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:51.924211-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:50.939698-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:52.100016-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java#L162-L181": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:22.691011-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-webmvc/spring-webmvc-5.3/library/src/main/java/io/opentelemetry/instrumentation/spring/webmvc/v5_3/WebMvcTelemetryProducingFilter.java": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:51.516818-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/release/v2.6.x/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/internal/MapConverter.java": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:20.246109-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/release/v2.6.x/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/internal/properties/SpringConfigProperties.java#L104-L106": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:17.992239-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/release/v2.6.x/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/internal/properties/SpringConfigProperties.java#L126-L140": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:19.013957-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/v1.0.1/instrumentation/aws-lambda-1.0/library/src/main/java/io/opentelemetry/instrumentation/awslambda/v1_0/TracingSqsMessageHandler.java": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:03.589677-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues": {
     "StatusCode": 200,
     "LastSeen": "2024-07-15T14:03:44.295338372+02:00"
@@ -8998,6 +9062,546 @@
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v1.31.0": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:15.015409-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/examples/extension": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:48.334297-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/examples/extension#readme": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:52.250502-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/akka/akka-actor-2.3/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:32.120209-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/akka/akka-actor-fork-join-2.5/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:32.844281-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/akka/akka-http-10.0/javaagent": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:34.384163-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/alibaba-druid-1.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:35.83433-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/apache-dbcp-2.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:39.215117-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/apache-dubbo-2.7": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:39.901383-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/apache-httpasyncclient-4.1": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:38.174608-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/apache-httpclient": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:38.661271-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/apache-shenyu-2.4": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:40.426661-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/armeria/armeria-1.3": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:41.011577-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/async-http-client": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:41.473718-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/aws-lambda": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:42.099353-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/aws-sdk": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:42.600849-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/azure-core": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:43.205633-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/c3p0-0.9": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:43.773468-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/camel-2.20": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:44.431955-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/cassandra": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:44.957887-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/clickhouse-client-0.5": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:45.531816-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/couchbase": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:46.493363-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/dropwizard": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:47.02688-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/elasticsearch": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:47.537471-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/executors": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:46.032665-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/finagle-http-23.11": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:48.385799-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/finatra-2.9": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:48.880856-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/geode-1.4": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:49.378933-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/google-http-client-1.19": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:49.890481-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/grails-3.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:50.333113-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/graphql-java": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:50.834975-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/grizzly-2.3": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:51.320626-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/grpc-1.6": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:51.809096-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/guava-10.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:52.350417-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/gwt-2.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:52.81752-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/hibernate": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:53.245411-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/hikaricp-3.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:53.782721-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/http-url-connection": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:54.242029-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/hystrix-1.4": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:54.80773-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/influxdb-2.4": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:55.319698-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/java-http-client": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:55.787029-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/java-util-logging": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:56.61459-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/javalin-5.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:56.193276-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jaxrs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:57.497167-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jaxrs-client": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:57.871434-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jaxws": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:57.078821-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jboss-logmanager": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:58.329458-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jdbc": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:58.799154-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jedis": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:59.335107-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jetty": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:59.757444-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jetty-httpclient": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:00.238511-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jms": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:00.627528-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:00.997465-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics/javaagent": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:51.802028-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jodd-http-4.2": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:01.463252-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jsf": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:01.975361-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jsp-2.3": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:02.488456-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/kafka/kafka-clients": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:02.885312-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/kafka/kafka-streams-0.11/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:03.30502-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/kotlinx-coroutines": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:03.7206-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/ktor": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:04.229143-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/kubernetes-client-7.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:04.693421-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/lettuce": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:05.127103-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/liberty": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:05.605149-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:06.063708-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-appender-2.17/javaagent": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:17.410175-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-appender-2.17/library": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:58.517469-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-context-data/log4j-context-data-2.17/library-autoconfigure": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:01.21932-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:06.620054-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-appender-1.0/javaagent": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:16.596699-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-appender-1.0/library": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:00.487559-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-mdc-1.0/library": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:01.962039-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/micrometer": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:07.114367-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/micrometer/micrometer-1.5/library": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:54.655814-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/mongo": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:07.643549-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/mybatis-3.2": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:08.302601-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/netty": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:08.827471-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/okhttp": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:09.742387-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/opencensus-shim": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:10.261008-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/opensearch": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:10.79116-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/opentelemetry-extension-kotlin-1.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:47.976537-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/opentelemetry-instrumentation-annotations-1.16": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:37.598804-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/oracle-ucp-11.2": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:11.309252-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/oshi": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:11.839713-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/payara": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:12.36191-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/pekko": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:12.889112-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/pekko/pekko-actor-1.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:13.313425-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/pekko/pekko-http-1.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:13.721316-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/play": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:14.263243-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/powerjob-4.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:14.721227-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/pulsar": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:15.098557-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/quarkus-resteasy-reactive": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:15.550261-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/quartz-2.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:16.006709-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/r2dbc-1.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:16.537265-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/rabbitmq-2.7": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:16.984156-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/ratpack": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:17.437021-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/reactor": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:17.894733-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/rediscala-1.8": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:18.276558-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/redisson": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:18.730193-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/resources/library": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:48.378448-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/restlet": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:19.183866-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/rmi": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:19.690813-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/rocketmq": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:20.033084-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/runtime-telemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:20.494334-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/rxjava": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:20.888677-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/scala-fork-join-2.8": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:21.31231-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/servlet": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:48.616695-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spark-2.3": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:21.776757-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:22.18496-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-boot-resources": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:29.209618-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-security-config-6.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:49.61209-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-web/spring-web-3.1/library": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:50.829696-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webflux/spring-webflux-5.3/library": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:54.371318-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webmvc/spring-webmvc-5.3/library": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:52.925913-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spymemcached-2.12": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:22.751932-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/struts/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:45:14.636418-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/tapestry-5.4": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:23.806319-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/tomcat": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:24.236702-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/twilio-6.6": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:24.707059-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/undertow-1.4": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:25.142023-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/vaadin-14.2": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:25.628485-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/vertx": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:26.14061-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/vertx/vertx-rx-java-3.5/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:26.588409-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/vibur-dbcp-11.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:27.086033-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/wicket-8.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:27.496774-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/xxl-job": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:27.915597-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/zio": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:42:28.355458-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/blob/f92e02e4caffab0d964c02a32fe305d6d6ba372e/sdk-extensions/autoconfigure-spi/src/main/java/io/opentelemetry/sdk/autoconfigure/spi/AutoConfigurationCustomizer.java#L73": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:48.629845-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/blob/main/RELEASING.md#release-cadence": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:51.212815-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#compatibility-requirements": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:51.7494-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#language-version-compatibility": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:52.122661-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure-spi/src/main/java/io/opentelemetry/sdk/autoconfigure/spi/AutoConfigurationCustomizerProvider.java": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:50.105462-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure-spi/src/main/java/io/opentelemetry/sdk/autoconfigure/spi/ConfigProperties.java": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:16.671263-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#exporters": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:55.17007-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#logging-exporter": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:53.767451-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/blob/release/v1.40.x/sdk-extensions/autoconfigure/src/main/java/io/opentelemetry/sdk/autoconfigure/internal/ComponentLoader.java": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:21.013482-05:00"
   },
   "https://github.com/open-telemetry/opentelemetry-java/discussions": {
     "StatusCode": 200,
@@ -9042,6 +9646,38 @@
   "https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.38.0": {
     "StatusCode": 200,
     "LastSeen": "2024-05-24T10:11:28.259677-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/tree/main/api/incubator": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:55.042108-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/otlp": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:20.494377-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/prometheus": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:22.324868-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/zipkin": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:48.955656-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/tree/main/opencensus-shim": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:53.02244-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:51.975472-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure#exporters": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:41:19.887128-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/incubator#declarative-configuration": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:40:56.169579-05:00"
   },
   "https://github.com/open-telemetry/opentelemetry-js": {
     "StatusCode": 200,
