@@ -15,18 +15,18 @@ Here's an overview of our goals, their expected timelines, and the key contribut
 ### New Semantic Conventions (Weaver)
 
 - Priority: First quarter goal
-- Tracking Issue: [#5668]
-- Sponsor: [@MrAlias]
+- Tracking Issue: [#5668](https://github.com/open-telemetry/opentelemetry-go/issues/5668)
+- Sponsor: [@MrAlias](https://github.com/MrAlias)
 
 Semantic conventions are foundational to OpenTelemetry and the cornerstone of data quality across the ecosystem.
-The OpenTelemetry community has recently updated the tooling used to generate these conventions into usable code by introducing the [weaver] project.
+The OpenTelemetry community has recently updated the tooling used to generate these conventions into usable code by introducing the [weaver](https://github.com/open-telemetry/weaver) project.
 We plan to integrate this new tooling into the OpenTelemetry Go project and provide updates to the latest versions of semantic conventions.
 
 ### SDK Self-Observability Signals
 
 - Priority: Yearly goal
-- Tracking Issue: [#2547]
-- Sponsor: [@dashpole]
+- Tracking Issue: [#2547](https://github.com/open-telemetry/opentelemetry-go/issues/2547)
+- Sponsor: [@dashpole](https://github.com/dashpole)
 
 This goal aims to enhance the observability of the OpenTelemetry Go SDK itself.
 We plan to add metrics about the tracing portions of the SDK as a first step, but hope to expand this with more signals measuring all areas of the SDK.
@@ -35,22 +35,21 @@ Unified semantic conventions across all OpenTelemetry languages will play a crit
 ### Go Runtime Metrics Stabilization
 
 - Priority: Yearly goal
-- Tracking Issue: [#5655]
-- Sponsor: [@dashpole]
+- Tracking Issue: [#5655](https://github.com/open-telemetry/opentelemetry-go-contrib/issues/5655)
+- Sponsor: [@dashpole](https://github.com/dashpole)
 
-
-Recently, the Go team [updated runtime metrics within the Go language].
-These updates have been [codified in OpenTelemetry semantic conventions], and are provided as opt-in metrics in the [`runtime` package].
+Recently, the Go team [updated runtime metrics within the Go language](https://github.com/golang/go/issues/67120).
+These updates have been [codified in OpenTelemetry semantic conventions](https://github.com/open-telemetry/semantic-conventions/pull/981), and are provided as opt-in metrics in the [`runtime` package](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/runtime#pkg-overview).
 The Go SIG plans to gather community feedback and transition these metrics to an opt-out model, allowing better observability of Go runtimes.
 
 ### Logs API Stability
 
 - Priority: Yearly goal
-- Tracking Project: [Go: Logs (GA)]
-- Sponsor: [@pellared]
+- Tracking Project: [Go: Logs (GA)](https://github.com/orgs/open-telemetry/projects/43)
+- Sponsor: [@pellared](https://github.com/pellared)
 
 Stabilizing the Logs API is crucial for providing a logging solution that aligns with OpenTelemetry’s overarching goals.
-Currently, a non-stable "beta" implementation of this API is provided in the [`log` package], along with many bridges[^1][^2][^3][^4][^5] to popular logging packages.
+Currently, a non-stable "beta" implementation of this API is provided in the [`log` package](https://pkg.go.dev/go.opentelemetry.io/otel/log), along with many bridges[^1](https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otellogr)[^2](https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otellogrus)[^3](https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelslog)[^4](https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelzap)[^5](https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelzerolog) to popular logging packages.
 
 The Go SIG plans to continue its effort in developing the upstream specification.
 Work to stabilize the OpenTelemetry Go implementation depends on this upstream development, including the development of the event signal.
@@ -58,10 +57,10 @@ Work to stabilize the OpenTelemetry Go implementation depends on this upstream d
 ### `otelhttp` Stabilization
 
 Priority: Yearly goal
-Tracking Project: [Go: HTTP Semconv Migration]
-Sponsor: [@dmathieu]
+Tracking Project: [Go: HTTP Semconv Migration](https://github.com/orgs/open-telemetry/projects/87)
+Sponsor: [@dmathieu](https://github.com/dmathieu)
 
-Stabilizing the [`otelhttp` instrumentation package] will ensure seamless HTTP observability and improved integration with the OpenTelemetry ecosystem.
+Stabilizing the [`otelhttp` instrumentation package](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp) will ensure seamless HTTP observability and improved integration with the OpenTelemetry ecosystem.
 Before this can be accomplished, the instrumentation needs to be upgraded to use the latest stable version of semantic conventions.
 Currently, the `otelhttp` package supports duplicating semantic conventions as we transition to the newer version.
 We plan to finish supporting this duplication in all HTTP instrumentation, and then transition to an opt-out model for the latest semantic conventions in all instrumentation packages.
@@ -69,37 +68,12 @@ We plan to finish supporting this duplication in all HTTP instrumentation, and t
 ### File-Based Configuration
 
 - Priority: Yearly goal
-- Tracking Label: [File-Based Configuration]
-- Sponsors: [@MrAlias] [@codeboten]
+- Tracking Label: [File-Based Configuration](https://github.com/open-telemetry/opentelemetry-go-contrib/labels/area%3A%20config)
+- Sponsors: [@MrAlias](https://github.com/MrAlias) [@codeboten](https://github.com/codeboten)
 
 This effort focuses on enabling configuration of the SDK with YAML and JSON files, making it easier for users to adopt and customize OpenTelemetry without relying solely on environment variables or code changes.
-Currently, the [`config` package] provides and implementation of this feature.
-As [file-based configuration is stabilized upstream in the specification], we plan to keep `config` up-to-date with these changes and provide feedback to its development.
-
-[weaver]: https://github.com/open-telemetry/weaver
-[#5668]: https://github.com/open-telemetry/opentelemetry-go/issues/5668
-[@MrAlias]: https://github.com/MrAlias
-[#2547]: https://github.com/open-telemetry/opentelemetry-go/issues/2547
-[@dashpole]: https://github.com/dashpole
-[#5655]: https://github.com/open-telemetry/opentelemetry-go-contrib/issues/5655
-[updated runtime metrics within the Go language]: https://github.com/golang/go/issues/67120
-[codified in OpenTelemetry semantic conventions]: https://github.com/open-telemetry/semantic-conventions/pull/981
-[`runtime` package]: https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/runtime#pkg-overview
-[Go: HTTP Semconv Migration]: https://github.com/orgs/open-telemetry/projects/87
-[@dmathieu]: https://github.com/dmathieu
-[`otelhttp` instrumentation package]: https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
-[Go: Logs (GA)]: https://github.com/orgs/open-telemetry/projects/43
-[@pellared]: https://github.com/pellared
-[`log` package]: https://pkg.go.dev/go.opentelemetry.io/otel/log
-[^1]: https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otellogr
-[^2]: https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otellogrus
-[^3]: https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelslog
-[^4]: https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelzap
-[^5]: https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelzerolog
-[File-Based Configuration]: https://github.com/open-telemetry/opentelemetry-go-contrib/labels/area%3A%20config
-[@codeboten]: https://github.com/codeboten
-[`config` package]: https://pkg.go.dev/go.opentelemetry.io/contrib/config
-[file-based configuration is stabilized upstream in the specification]: https://github.com/orgs/open-telemetry/projects/38
+Currently, the [`config` package](https://pkg.go.dev/go.opentelemetry.io/contrib/config) provides and implementation of this feature.
+As [file-based configuration is stabilized upstream in the specification](https://github.com/orgs/open-telemetry/projects/38), we plan to keep `config` up-to-date with these changes and provide feedback to its development.
 
 ## Conclusion
 
@@ -108,6 +82,4 @@ These initiatives will enhance the observability landscape, improve developer ex
 We’re excited to work with the community to bring these goals to fruition!
 
 We want to hear from you!
-Let us know what is missing or what you would like to see prioritized by commenting on [our tracking GitHub issue].
-
-[our tracking GitHub issue]: https://github.com/open-telemetry/opentelemetry-go/issues/6175
+Let us know what is missing or what you would like to see prioritized by commenting on [our tracking GitHub issue](https://github.com/open-telemetry/opentelemetry-go/issues/6175).
