@@ -70,9 +70,13 @@ Stabilizing the Logs API is crucial for providing a logging solution that aligns
 with OpenTelemetry’s overarching goals. Currently, a non-stable "beta"
 implementation of this API is provided in the
 [`log` package](https://pkg.go.dev/go.opentelemetry.io/otel/log), along with
-many
-bridges[^1](https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otellogr)[^2](https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otellogrus)[^3](https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelslog)[^4](https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelzap)[^5](https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelzerolog)
-to popular logging packages.
+many bridges to popular logging packages:
+
+- [`otellogr`](https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otellogr)
+- [`otellogrus`](https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otellogrus)
+- [`otelslog`](https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelslog)
+- [`otelzap`](https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelzap)
+- [`otelzerolog`](https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelzerolog)
 
 The Go SIG plans to continue its effort in developing the upstream
 specification. Work to stabilize the OpenTelemetry Go implementation depends on
