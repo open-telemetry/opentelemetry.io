@@ -180,6 +180,67 @@ spec:
 
 For more details, see [.NET Auto Instrumentation docs](/docs/zero-code/net/).
 
+### Deno
+
+The following command creates a basic Instrumentation resource that is
+configured for instrumenting Deno services.
+
+```bash
+kubectl apply -f - <<EOF
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: demo-instrumentation
+spec:
+  env:
+    - name: OTEL_DENO
+      value: 'true'
+  exporter:
+    endpoint: http://demo-collector:4318
+  propagators:
+    - tracecontext
+    - baggage
+  sampler:
+    type: parentbased_traceidratio
+    argument: '1'
+EOF
+```
+
+Deno processes automatically export telemetry data to the configured endpoint
+when they are started with the `OTEL_DENO=true` environment variable. Therefore,
+the example specifies this environment variable in the `env` field of the
+Instrumentation resource, so it is set for all services that have env vars
+injected with this Instrumentation resource.
+
+By default, the Instrumentation resource that auto-instruments Deno services
+uses `otlp` with the `http/proto` protocol. This means that the configured
+endpoint must be able to receive OTLP over `http/proto`. Therefore, the example
+uses `http://demo-collector:4318`, which connects to the `http/proto` port of
+the `otlpreceiver` of the Collector created in the previous step.
+
+{{% alert title="Note" color="info" %}}
+
+Deno's OpenTelemetry integration is not yet stable. As a result all workloads
+that want to be instrumented with Deno must have the `--unstable-otel` flag set
+when starting the Deno process.
+
+{{% /alert %}}
+
+#### Configuring console.log capturing in Deno
+
+By default, the Deno OpenTelemetry integration captures `console.log` output as
+logs, while still printing the logs to stdout / stderr. There are two other
+behaviours that can be configured:
+
+- `OTEL_DENO_CONSOLE=replace`: capture `console.log` output as logs and do not
+  print to stdout / stderr.
+- `OTEL_DENO_CONSOLE=ignore`: do not capture `console.log` output as logs.
+
+#### Learn more {#deno-learn-more}
+
+For more details, see
+[Deno's documentation on the OpenTelemetry integration](https://docs.deno.com/runtime/fundamentals/open_telemetry/).
+
 ### Java
 
 The following command creates a basic Instrumentation resource that is
@@ -483,6 +544,7 @@ done by updating your service’s `spec.template.metadata.annotations` to includ
 a language-specific annotation:
 
 - .NET: `instrumentation.opentelemetry.io/inject-dotnet: "true"`
+- Deno: `instrumentation.opentelemetry.io/inject-sdk: "true"`
 - Go: `instrumentation.opentelemetry.io/inject-go: "true"`
 - Java: `instrumentation.opentelemetry.io/inject-java: "true"`
 - Node.js: `instrumentation.opentelemetry.io/inject-nodejs: "true"`
@@ -684,12 +746,20 @@ Here are a few things to check for:
 - **Is the auto-instrumentation for the right language?** For example, when
   instrumenting a Python application, make sure that the annotation doesn't
   incorrectly say `instrumentation.opentelemetry.io/inject-java: "true"`
-  instead.
+    instead.
 - **Is the auto-instrumentation annotation in the correct location?** When
   defining a `Deployment`, annotations can be added in one of two locations:
   `spec.metadata.annotations`, and `spec.template.metadata.annotations`. The
   auto-instrumentation annotation needs to be added to
   `spec.template.metadata.annotations`, otherwise it won’t work.
+
+{{% alert title="Note" color="info" %}}
+
+Note that unlike other auto-instrumentation, the Deno auto-instrumentation uses
+the `instrumentation.opentelemetry.io/inject-sdk: "true"` annotation, not an
+annotation that contains the string `deno`.
+
+{{% /alert %}}
 
 ### Was the auto-instrumentation endpoint configured correctly?
 
