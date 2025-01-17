@@ -1631,6 +1631,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-15T13:17:28.410343-05:00"
   },
+  "https://calendar.google.com/calendar/embed": {
+    "StatusCode": 401,
+    "LastSeen": "2025-01-17T13:21:32.505559Z"
+  },
   "https://calendly.com/euwg-user-feedback-session/end-user-feedback-session": {
     "StatusCode": 200,
     "LastSeen": "2024-03-12T07:55:41.183146657Z"
@@ -1822,6 +1826,10 @@
   "https://cloud-native.slack.com/archives/C076RUAGP37": {
     "StatusCode": 200,
     "LastSeen": "2024-08-20T08:40:41.563366481Z"
+  },
+  "https://cloud-native.slack.com/archives/C088D8GSSSF": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-17T12:58:36.720595Z"
   },
   "https://cloud-native.slack.com/archives/CJFCJHG4Q": {
     "StatusCode": 200,
@@ -3347,6 +3355,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:23:54.720969-05:00"
   },
+  "https://en.wikipedia.org/wiki/International_System_of_Units": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-17T12:58:25.584113Z"
+  },
   "https://en.wikipedia.org/wiki/JSON": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:23:32.692041-05:00"
@@ -4295,6 +4307,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:18:42.027775+02:00"
   },
+  "https://github.com/alibaba/opentelemetry-go-auto-instrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T12:58:30.442533Z"
+  },
   "https://github.com/alolita": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T12:11:00.000033-05:00"
@@ -4846,6 +4862,10 @@
   "https://github.com/dashpole": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T12:41:52.17647-05:00"
+  },
+  "https://github.com/datadog/orchestrion": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T12:58:33.133351Z"
   },
   "https://github.com/dattto": {
     "StatusCode": 200,
@@ -8735,9 +8755,17 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:33:12.688711-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T12:58:34.746413Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-go-contrib": {
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:31:43.730419-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-contrib/blob/dafdad14b7858c7f491c8cb72e4bc7deaf9378e3/instrgen/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T13:21:30.685258Z"
   },
   "https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/CONTRIBUTING.md#code-owners": {
     "StatusCode": 206,
@@ -14207,6 +14235,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-06-18T10:36:39.590318+02:00"
   },
+  "https://groups.google.com/a/opentelemetry.io/g/calendar-go": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-17T12:58:38.699931Z"
+  },
   "https://groups.google.com/a/opentelemetry.io/g/calendar-maintainer-meeting": {
     "StatusCode": 200,
     "LastSeen": "2024-06-18T10:36:41.220362+02:00"
@@ -15602,6 +15634,14 @@
   "https://opentelemetry.devstats.cncf.io/d/8/dashboards": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:32:22.440332-05:00"
+  },
+  "https://opentelemetry.io/docs/languages/go/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T12:58:27.368618Z"
+  },
+  "https://opentelemetry.io/docs/languages/go/getting-started/#instrument-the-http-server": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T12:58:28.687325Z"
   },
   "https://opentracing.io": {
     "StatusCode": 206,

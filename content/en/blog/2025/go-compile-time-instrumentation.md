@@ -45,6 +45,11 @@ We are really grateful to Alibaba and Datadog for these donation proposals. This
 continues to demonstrate the convergence of the wider industry towards the
 standards defined by OpenTelemetry.
 
+Compile-time instrumentation leverages the standard Go toolchain’s `-toolexec`
+mechanism to re-write Go source code before it is passed to the Go compiler,
+adding instrumentation in all relevant places (including dependencies as well as
+the Go standard library).
+
 The most exciting part of this announcement is that it won't be Alibaba's or
 Datadog's solution that "wins". In the true spirit of open source collaboration,
 these two organisations have decided to join forces and commit the necessary
@@ -53,13 +58,28 @@ resources to bootstrap a new
 with the intention of providing a unified, vendor-neutral approach that picks
 the best aspects of each solution and benefits the community as a whole.
 
-This SIG will focus on:
+The initial output from this SIG will soon replace
+[instrgen](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/dafdad14b7858c7f491c8cb72e4bc7deaf9378e3/instrgen/README.md),
+Go SIG's initial experimental approach to provide compile-time instrumentation.
+In the longer term, this SIG will focus on:
 
 - Developing compiler plugins or enhancements that inject instrumentation code
   automatically, ensuring minimal runtime performance overhead and compatibility
   with existing Go projects.
 - Providing standardized instrumentation patterns aligned with OpenTelemetry and
   other monitoring frameworks.
+
+If you are interested in contributing, or you simply want to find out more,
+here's some useful information about the SIG:
+
+- GitHub repository:
+  [opentelemetry-go-compile-instrumentation](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation)
+- CNCF Slack:
+  [#otel-go-compt-instr-sig](https://cloud-native.slack.com/archives/C088D8GSSSF)
+- Meetings: Every other Thursday UTC: 08:00 – 09:00 (subscribe to this
+  [Google Group](https://groups.google.com/a/opentelemetry.io/g/calendar-go) for
+  calendar invites, or visit the
+  [OpenTelemetry Calendar](https://calendar.google.com/calendar/embed?src=c_2bf73e3b6b530da4babd444e72b76a6ad893a5c3f43cf40467abc7a9a897f977%40group.calendar.google.com))
 
 We look forward to seeing this new SIG in operation, and cannot wait for the
 fruits of this awesome collaboration!
