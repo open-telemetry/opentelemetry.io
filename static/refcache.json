@@ -7735,10 +7735,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:08:35.783208-05:00"
   },
-  "https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/monitoring.md": {
-    "StatusCode": 404,
-    "LastSeen": "2025-01-17T16:08:36.11129-05:00"
-  },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:08:08.739089-05:00"
