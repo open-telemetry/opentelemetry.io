@@ -3,7 +3,7 @@ title: Alibaba and Datadog Join Forces on Go Compile-Time Instrumentation
 linkTitle: Go Compile-Time Instrumentation
 date: 2025-01-17
 author: OpenTelemetry Governance Committee
-cSpell:ignore: instrgen toolexec 
+cSpell:ignore: instrgen toolexec
 ---
 
 Standards are only useful if they're widely adopted, and adoption is only
@@ -77,10 +77,10 @@ here's some useful information about the SIG:
   [opentelemetry-go-compile-instrumentation](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation)
 - CNCF Slack:
   [#otel-go-compt-instr-sig](https://cloud-native.slack.com/archives/C088D8GSSSF)
-- Meetings: Every other Thursday UTC: 08:00 – 09:00 (subscribe to this
-  [Google Group](https://groups.google.com/a/opentelemetry.io/g/calendar-go) for
-  calendar invites, or visit the
-  [OpenTelemetry Calendar](https://calendar.google.com/calendar/embed?src=c_2bf73e3b6b530da4babd444e72b76a6ad893a5c3f43cf40467abc7a9a897f977%40group.calendar.google.com))
+- Meetings: Every other Thursday UTC: 08:00 – 09:00 (subscribe to
+  [this Google Group](https://groups.google.com/a/opentelemetry.io/g/calendar-go)
+  for calendar invites, or read more about
+  [our community calendar](https://github.com/open-telemetry/community/?tab=readme-ov-file#calendar))
 
 We look forward to seeing this new SIG in operation, and cannot wait for the
 fruits of this awesome collaboration!
