@@ -10011,6 +10011,58 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:34.69753-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/aed905c2c3c0aa3fb608a79c2e4d0e7b73dff980/apis/v1beta1/collector_webhook.go#L328": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:46:22.516021-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:45:54.691595-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#opentelemetry-auto-instrumentation-injection": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:46:06.147298-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/autoinstrumentation/python/requirements.txt": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:46:05.310811-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/cmd/otel-allocator/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:45:57.929226-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/cmd/otel-allocator/README.md#discovery-of-prometheus-custom-resources": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:45:58.6701-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:46:03.863654-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opampbridge": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:46:20.662419-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:46:01.348361-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector-1": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:46:06.683122-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocator": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:46:25.573743-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:46:05.18054-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr-1": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:46:03.644751-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-operator/issues/1393": {
     "StatusCode": 200,
     "LastSeen": "2024-07-15T17:37:20.027422-04:00"
@@ -10046,6 +10098,18 @@
   "https://github.com/open-telemetry/opentelemetry-operator/releases/tag/v0.88.0": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:04.533615-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:45:54.330793-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator#rbac": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:46:20.239199-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator#target-allocator": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T16:46:19.084066-05:00"
   },
   "https://github.com/open-telemetry/opentelemetry-php": {
     "StatusCode": 200,
