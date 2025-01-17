@@ -11947,6 +11947,142 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:06.008653-05:00"
   },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.21.0/docs/general/general-attributes.md#server-and-client-attributes": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:28.578824-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.21.0/docs/system/hardware-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:24.04451-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.21.0/docs/system/process-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:19.711332-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.21.0/docs/system/system-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:24.077456-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.23.1/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:20.668821-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.23.1/docs/http/http-metrics.md#metric-httpserverrequestduration": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:30.374259-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.23.1/docs/http/http-spans.md#common-attributes": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:27.263449-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.23.1/docs/http/http-spans.md#metric-httpserverrequestduration": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:28.359963-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.24.0/docs/database/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:20.523216-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.24.0/docs/database/database-metrics.md#metric-dbclientconnectionscreate_time": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:55.584761-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.24.0/docs/database/database-metrics.md#metric-dbclientconnectionsidlemax": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:36.233665-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.24.0/docs/database/database-metrics.md#metric-dbclientconnectionsidlemin": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:41.836991-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.24.0/docs/database/database-metrics.md#metric-dbclientconnectionsmax": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:46.673856-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.24.0/docs/database/database-metrics.md#metric-dbclientconnectionspending_requests": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:49.237224-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.24.0/docs/database/database-metrics.md#metric-dbclientconnectionstimeouts": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:53.32023-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.24.0/docs/database/database-metrics.md#metric-dbclientconnectionsusage": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:33.422229-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.24.0/docs/database/database-metrics.md#metric-dbclientconnectionsuse_time": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:58.578024-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.24.0/docs/database/database-metrics.md#metric-dbclientconnectionswait_time": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:57.598107-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.24.0/docs/database/database-spans.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:16.015972-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.24.0/docs/messaging/messaging-spans.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:29.747153-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.26.0/docs/general/attributes.md#source": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:15.815024-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.28.0/docs/database/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:25.115337-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.28.0/docs/database/database-metrics.md#metric-dbclientconnectioncount": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:34.227359-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.28.0/docs/database/database-metrics.md#metric-dbclientconnectioncreate_time": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:56.323392-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.28.0/docs/database/database-metrics.md#metric-dbclientconnectionidlemax": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:38.804758-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.28.0/docs/database/database-metrics.md#metric-dbclientconnectionidlemin": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:44.090341-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.28.0/docs/database/database-metrics.md#metric-dbclientconnectionmax": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:47.427895-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.28.0/docs/database/database-metrics.md#metric-dbclientconnectionpending_requests": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:50.594897-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.28.0/docs/database/database-metrics.md#metric-dbclientconnectiontimeouts": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:55.152218-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.28.0/docs/database/database-metrics.md#metric-dbclientconnectionuse_time": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:58.79451-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.28.0/docs/database/database-metrics.md#metric-dbclientconnectionwait_time": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:58.019039-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.28.0/docs/database/database-metrics.md#metric-dbclientoperationduration": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:32.018141-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.28.0/docs/database/database-spans.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:29.09376-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.28.0/docs/database/database-spans.md#name": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:31.182634-05:00"
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:04:52.840828-05:00"
@@ -11970,6 +12106,802 @@
   "https://github.com/open-telemetry/semantic-conventions/releases/tag/v1.23.0": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:42.076218-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:14.594326-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/_index.md": {
+    "StatusCode": 404,
+    "LastSeen": "2025-01-17T17:00:17.00729-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/android.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:23.447463-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/artifact.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:27.28969-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/aspnetcore.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:19.286008-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/aws.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:22.307114-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/azure.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:24.299164-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/browser.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:20.842347-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/cicd.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:20.606688-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/client.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:20.996978-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/cloud.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:19.882797-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/cloudevents.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:18.536022-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/cloudfoundry.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:22.348419-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/code.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:21.388698-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/container.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:19.814375-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/cpu.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:25.117042-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/db.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:21.159886-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/deployment.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:22.613579-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/destination.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:18.938104-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/device.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:24.159609-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/disk.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:22.301784-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/dns.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:22.444162-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/dotnet.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:24.139079-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/enduser.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:21.205742-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/error.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:25.733787-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/event.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:27.986678-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/exception.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:21.75233-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/faas.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:20.581674-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/feature-flag.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:20.696499-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/file.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:18.539239-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/gcp.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:25.380849-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/gen-ai.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:25.972291-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/geo.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:21.261312-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/go.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:15.724496-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/graphql.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:22.297487-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/hardware.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:18.942527-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/heroku.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:23.845911-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/host.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:25.37975-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/http.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:22.272248-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/ios.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:21.925821-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/jvm.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:19.830638-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/k8s.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:19.814221-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/linux.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:23.948607-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/log.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:22.779435-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/messaging.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:21.926702-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/network.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:18.910705-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/nodejs.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:18.735205-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/oci.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:20.06255-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/opentracing.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:18.921244-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/os.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:25.972185-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/otel.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:22.119038-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/peer.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:22.986444-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/process.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:25.962051-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/profile.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:25.624385-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/rpc.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:23.465903-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/server.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:19.222932-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/service.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:23.491421-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/session.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:22.380517-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/signalr.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:15.463626-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/source.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:24.179904-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/system.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:19.961815-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/telemetry.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:24.570497-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/test.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:20.703446-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/thread.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:25.768965-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/tls.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:23.453411-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/url.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:18.565922-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/user-agent.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:18.830259-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/user.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:21.331951-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/v8js.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:27.617419-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/vcs.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:21.464903-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/attributes-registry/webengine.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:18.53532-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/azure/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:19.814469-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/azure/events.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:23.288368-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/cicd/cicd-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:17.325035-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/cli/cli-spans.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:23.648028-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/cloud-providers/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:18.196162-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/cloud-providers/aws-sdk.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:15.787096-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/cloudevents/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:14.658361-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/cloudevents/cloudevents-spans.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:17.762735-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/database/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:14.703782-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/database/cassandra.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:15.791535-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/database/cosmosdb.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:17.15306-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/database/couchdb.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:14.499571-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/database/database-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:17.457136-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/database/database-spans.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:14.647747-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/database/dynamodb.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:15.256402-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/database/elasticsearch.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:21.030782-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/database/hbase.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:20.165182-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/database/mariadb.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:14.685516-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/database/mongodb.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:15.579037-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/database/mssql.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:18.535357-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/database/mysql.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:22.298399-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/database/postgresql.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:15.572972-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/database/redis.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:14.660315-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/database/sql.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:17.408851-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/dns/dns-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:28.818928-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/dotnet/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:20.906418-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/dotnet/dotnet-aspnetcore-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:16.013868-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/dotnet/dotnet-dns-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:20.164533-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/dotnet/dotnet-http-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:24.496475-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/dotnet/dotnet-kestrel-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:16.569402-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/dotnet/dotnet-signalr-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:20.397867-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/exceptions/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:17.926598-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/exceptions/exceptions-logs.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:17.367753-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/exceptions/exceptions-spans.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:20.997294-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/faas/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:19.716389-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/faas/aws-lambda.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:20.340168-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/faas/faas-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:18.457085-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/faas/faas-spans.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:18.217561-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/feature-flags/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:17.40198-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/feature-flags/feature-flags-logs.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:14.685532-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/gen-ai/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:24.671409-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/gen-ai/azure-ai-inference.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:23.74815-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/gen-ai/gen-ai-events.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:23.623513-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/gen-ai/gen-ai-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:23.310126-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/gen-ai/gen-ai-spans.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:23.467252-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/gen-ai/openai.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:24.496529-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/general/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:16.241584-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/general/attribute-naming.md": {
+    "StatusCode": 404,
+    "LastSeen": "2025-01-17T17:00:17.226913-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/general/attribute-requirement-level.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:16.073148-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/general/attributes.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:18.509515-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/general/events.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:16.096633-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/general/group-stability.md": {
+    "StatusCode": 404,
+    "LastSeen": "2025-01-17T17:00:17.007148-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/general/logs.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:17.817603-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/general/metric-requirement-level.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:15.790836-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/general/metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:22.129182-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/general/profiles.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:14.87462-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/general/session.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:16.604507-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/general/trace-compatibility.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:15.363508-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/general/trace.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:14.625323-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/graphql/graphql-spans.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:25.564867-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/hardware/_index.md": {
+    "StatusCode": 404,
+    "LastSeen": "2025-01-17T17:00:18.070536-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/hardware/common.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:18.830192-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/http/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:26.715823-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/http/http-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:21.454487-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/http/http-spans.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:23.093945-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/messaging/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:28.28746-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/messaging/azure-messaging.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:28.06626-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/messaging/gcp-pubsub.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:28.746932-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/messaging/kafka.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:27.361151-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/messaging/messaging-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:28.797469-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/messaging/messaging-spans.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:27.629622-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/messaging/rabbitmq.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:29.545472-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/messaging/rocketmq.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:28.506232-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/mobile/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:27.402155-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/mobile/events.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:25.646588-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/non-normative/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:15.279038-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/non-normative/code-generation.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:22.380459-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/non-normative/compatibility/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:15.493309-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/non-normative/compatibility/aws.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:18.292969-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/non-normative/db-migration.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:18.043546-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/non-normative/http-migration.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:17.926662-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/object-stores/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:17.446399-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/object-stores/s3.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:14.742281-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:22.380483-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/android.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:28.109434-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/browser.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:28.725172-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/cloud-provider/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:25.877608-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/cloud-provider/aws/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:27.458482-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/cloud-provider/aws/ecs.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:27.338925-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/cloud-provider/aws/eks.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:22.272151-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/cloud-provider/aws/logs.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:27.071909-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/cloud-provider/gcp/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:25.336201-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/cloud-provider/gcp/cloud-run.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:23.398912-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/cloud-provider/gcp/gce.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:28.341326-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/cloud-provider/heroku.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:24.384774-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/cloud.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:27.651758-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/cloudfoundry.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:27.54911-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/container.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:24.972016-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/deployment-environment.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:28.57899-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/device.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:27.841407-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/faas.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:23.311669-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/host.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:25.924755-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/k8s.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:24.286256-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/os.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:28.216724-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/process.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:28.089188-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource/webengine.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:25.733795-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/rpc/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:27.208273-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/rpc/connect-rpc.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:28.321035-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/rpc/grpc.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:28.159431-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/rpc/json-rpc.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:28.033975-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/rpc/rpc-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:28.420532-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/rpc/rpc-spans.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:28.702482-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/runtime/_index.md": {
+    "StatusCode": 404,
+    "LastSeen": "2025-01-17T17:00:15.786744-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/runtime/dotnet-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:24.180076-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/runtime/go-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:20.50965-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/runtime/jvm-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:17.501525-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/runtime/nodejs-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:18.4571-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/runtime/v8js-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:20.509669-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/system/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:15.790722-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/system/container-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:17.906015-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/system/hardware-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:19.882462-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/system/k8s-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:19.507772-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/system/process-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:17.345345-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/system/system-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:19.812162-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/url/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:19.979061-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/docs/url/url.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:16.347821-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/main/model": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:29.432308-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/v1.26.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:00:28.710746-05:00"
   },
   "https://github.com/open-telemetry/sig-end-user": {
     "StatusCode": 200,
