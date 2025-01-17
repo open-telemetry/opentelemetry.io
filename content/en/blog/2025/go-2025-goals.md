@@ -75,7 +75,7 @@ This effort focuses on enabling configuration of the SDK with YAML and JSON file
 Currently, the [`config` package](https://pkg.go.dev/go.opentelemetry.io/contrib/config) provides and implementation of this feature.
 As [file-based configuration is stabilized upstream in the specification](https://github.com/orgs/open-telemetry/projects/38), we plan to keep `config` up-to-date with these changes and provide feedback to its development.
 
-## Conclusion
+## Wrapping Up
 
 The OpenTelemetry Go team has an ambitious but focused set of goals for 2025.
 These initiatives will enhance the observability landscape, improve developer experience, and strengthen the integration of OpenTelemetry within the broader ecosystem.
