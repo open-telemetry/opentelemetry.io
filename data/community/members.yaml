@@ -1031,6 +1031,15 @@ maintainers:
       - sqlcommenter-maintainers
     html_url: https://github.com/sjs994
     avatar_url: https://avatars.githubusercontent.com/u/7661510?v=4
+  - name: songy23
+    teams:
+      - collector-approvers
+      - collector-contrib-approvers
+      - collector-contrib-maintainers
+      - collector-contrib-triagers
+      - collector-triagers
+    html_url: https://github.com/songy23
+    avatar_url: https://avatars.githubusercontent.com/u/10536136?v=4
   - name: srikanthccv
     teams:
       - opamp-go-approvers
@@ -1597,11 +1606,6 @@ approvers:
       - semconv-genai-approvers
     html_url: https://github.com/nirga
     avatar_url: https://avatars.githubusercontent.com/u/4224692?v=4
-  - name: nslaughter
-    teams:
-      - lambda-extension-approvers
-    html_url: https://github.com/nslaughter
-    avatar_url: https://avatars.githubusercontent.com/u/28688390?v=4
   - name: Oberon00
     teams:
       - build-tools-approvers
@@ -1691,14 +1695,6 @@ approvers:
       - ruby-contrib-approvers
     html_url: https://github.com/simi
     avatar_url: https://avatars.githubusercontent.com/u/193936?v=4
-  - name: songy23
-    teams:
-      - collector-approvers
-      - collector-contrib-approvers
-      - collector-contrib-triagers
-      - collector-triagers
-    html_url: https://github.com/songy23
-    avatar_url: https://avatars.githubusercontent.com/u/10536136?v=4
   - name: sourabh1007
     teams:
       - semconv-db-approvers
@@ -1840,6 +1836,11 @@ triagers:
       - collector-triagers
     html_url: https://github.com/jade-guiton-dd
     avatar_url: https://avatars.githubusercontent.com/u/179536679?v=4
+  - name: jamesmoessis
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/jamesmoessis
+    avatar_url: https://avatars.githubusercontent.com/u/33504860?v=4
   - name: jodeev
     teams:
       - php-triagers

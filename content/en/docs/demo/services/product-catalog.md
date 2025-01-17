@@ -10,7 +10,7 @@ This service is responsible to return information about products. The service
 can be used to get all products, search for specific products, or return details
 about any single product.
 
-[Product Catalog service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/productcatalogservice/)
+[Product Catalog service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/product-catalog/)
 
 ## Traces
 

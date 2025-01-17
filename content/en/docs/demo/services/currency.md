@@ -8,7 +8,7 @@ cSpell:ignore: chrono decltype labelkv millis noexcept nostd
 This service provides functionality to convert amounts between different
 currencies.
 
-[Currency service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/currencyservice/)
+[Currency service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/currency/)
 
 ## Traces
 
