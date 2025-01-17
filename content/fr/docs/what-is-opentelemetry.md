@@ -25,7 +25,7 @@ OpenTelemetry, c'est :
   infrastructure, ou environnement d'exécution. Le stockage et la visualisation
   des données sont intentionnellement laissés à d'autres outils
 
-## Qu'est-ce que l'observabilité ?
+## Qu'est-ce que l'observabilité ? {#what-is-observability}
 
 L'[observabilité](/docs/concepts/observability-primer/) est la capacité de
 comprendre l'état interne d'un système en examinant ses données sortantes. Dans
