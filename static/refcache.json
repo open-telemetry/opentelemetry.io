@@ -6423,6 +6423,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:23:17.554218-05:00"
   },
+  "https://github.com/open-telemetry/community/blob/main/projects/go-compile-instrumentation.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-18T20:45:35.792292Z"
+  },
   "https://github.com/open-telemetry/community/blob/main/reports/ADA_Logics-collector-fuzzing-audit-2024.pdf": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:23:17.415384-05:00"
@@ -6470,6 +6474,14 @@
   "https://github.com/open-telemetry/community/issues/2329": {
     "StatusCode": 200,
     "LastSeen": "2024-10-15T15:52:36.027937+01:00"
+  },
+  "https://github.com/open-telemetry/community/issues/2344": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-18T20:45:29.87596Z"
+  },
+  "https://github.com/open-telemetry/community/issues/2497": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-18T20:45:32.577654Z"
   },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 206,
