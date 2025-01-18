@@ -17,7 +17,9 @@ redirects:
 
 ## Introduction
 
-The [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator) is an implementation of a
+The
+[OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator)
+is an implementation of a
 [Kubernetes Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/).
 
 The operator manages:
