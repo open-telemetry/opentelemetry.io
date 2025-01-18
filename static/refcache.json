@@ -5487,6 +5487,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-11-13T13:16:21.346606655Z"
   },
+  "https://github.com/in-toto/attestation/blob/main/spec/README.md#in-toto-attestation-framework-spec": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T17:24:29.99273-05:00"
+  },
   "https://github.com/instana": {
     "StatusCode": 200,
     "LastSeen": "2024-11-14T11:47:17.991776+01:00"
