@@ -1,4 +1,4 @@
-{{/* cSpell:ignore cond */ -}} [OpenTelemetry Collector](/docs/collector/)にテレメトリーを送信し、正しくエクスポートされることを確認してください。本番環境でコレクターを使用することはベストプラクティスです。テレメトリーを可視化するために、[Jaeger](https://jaegertracing.io/)、[Zipkin](https://zipkin.io/)、
+{{/* cSpell:ignore cond */ -}} [OpenTelemetryコレクター](/docs/collector/)にテレメトリーを送信し、正しくエクスポートされることを確認してください。本番環境でコレクターを使用することはベストプラクティスです。テレメトリーを可視化するために、[Jaeger](https://jaegertracing.io/)、[Zipkin](https://zipkin.io/)、
 [Prometheus](https://prometheus.io/)、または[ベンダー固有](/ecosystem/vendors/)のようなバックエンドにエクスポートしてください。
 
 {{ $lang := .Get 0 | default "" -}}
@@ -19,7 +19,7 @@
 
 {{ end -}}
 
-エクスポーターの中でも、[OpenTelemetry Protocol (OTLP)][OTLP]エクスポーターは、OpenTelemetryのデータモデルを考慮して設計されており、OTelデータを情報の損失なく出力します。さらに、多くのテレメトリデータを扱うツールがOTLPに対応しており（例えば、[Prometheus]、[Jaeger]やほとんどの[ベンダー]）、必要なときに高い柔軟性を提供します。OTLPについて詳細に学習したい場合は、[OTLP仕様][OTLP]を参照してください。
+エクスポーターの中でも、[OpenTelemetry Protocol (OTLP)][OTLP]エクスポーターは、OpenTelemetryのデータモデルを考慮して設計されており、OTelデータを情報の損失なく出力します。さらに、多くのテレメトリデータを扱うツールがOTLPに対応しており（たとえば、[Prometheus]、[Jaeger]やほとんどの[ベンダー]）、必要なときに高い柔軟性を提供します。OTLPについて詳細に学習したい場合は、[OTLP仕様][OTLP]を参照してください。
 
 [Jaeger]: /blog/2022/jaeger-native-otlp/
 [OTLP]: /docs/specs/otlp/
