@@ -12,18 +12,18 @@ effective if the available tooling facilitates it. I imagine
 not have been too popular when they were introduced if you had to build your own
 scales to weigh things in Kilograms!
 
-If you use [OpenTelemetry in Go](https://opentelemetry.io/docs/languages/go/),
-you'll be familiar with the challenges of configuring instrumentation libraries
-to automatically generate telemetry from well-known open source components. Due
-to the compiled nature of the language, you currently have two options (unless
-you want to "build your own scales", or the OTel equivalent):
+If you use [OpenTelemetry in Go](/docs/languages/go/), you'll be familiar with
+the challenges of configuring instrumentation libraries to automatically
+generate telemetry from well-known open source components. Due to the compiled
+nature of the language, you currently have two options (unless you want to
+"build your own scales", or the OTel equivalent):
 
 - Use a separate binary that analyzes your Go process and attaches eBPF programs
   to hooks in your application (see
   [opentelemetry-go-instrumentation](https://github.com/open-telemetry/opentelemetry-go-instrumentation/)).
 - Manually configure instrumentation libraries in your code (see an
-  [example](https://opentelemetry.io/docs/languages/go/getting-started/#instrument-the-http-server)
-  to instrument `net/http`).
+  [example](/docs/languages/go/getting-started/#instrument-the-http-server) to
+  instrument `net/http`).
 
 For different reasons, it is possible that none of those options is viable, or
 optimal, in your environment. However, things are about to change!
