@@ -226,7 +226,7 @@ result all workloads that want to be instrumented with Deno must have the
 
 {{% /alert %}}
 
-#### Configuration options  
+#### Configuration options {#deno-configuration-options}
 
 By default, the Deno OpenTelemetry integration exports `console.log()` output as  
 [logs](/docs/concepts/signals/logs/), while still printing the logs to stdout /
@@ -243,6 +243,38 @@ For more details, see Deno's [OpenTelemetry integration][deno-otel-docs]
 documentation.  
 
 [deno-otel-docs]: https://docs.deno.com/runtime/fundamentals/open_telemetry/  
+
+### Go
+
+The following command creates a basic Instrumentation resource that is
+configured specifically for instrumenting Go services.
+
+```bash
+kubectl apply -f - <<EOF
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: demo-instrumentation
+spec:
+  exporter:
+    endpoint: http://demo-collector:4318
+  propagators:
+    - tracecontext
+    - baggage
+  sampler:
+    type: parentbased_traceidratio
+    argument: "1"
+EOF
+```
+
+By default, the Instrumentation resource that auto-instruments Go services uses
+`otlp` with the `http/protobuf` protocol. This means that the configured
+endpoint must be able to receive OTLP over `http/protobuf`. Therefore, the
+example uses `http://demo-collector:4318`, which connects to the `http/protobuf`
+port of the `otlpreceiver` of the Collector created in the previous step.
+
+The Go auto-instrumentation does not support disabling any instrumentation.
+[See the Go Auto-Instrumentation repository for more details.](https://github.com/open-telemetry/opentelemetry-go-instrumentation)
 
 ### Java
 
@@ -499,38 +531,6 @@ For Python-specific quirks, see
 [Python OpenTelemetry Operator docs](/docs/zero-code/python/operator/#python-specific-topics)
 and the
 [Python agent configuration docs](/docs/zero-code/python/configuration/).
-
-### Go
-
-The following command creates a basic Instrumentation resource that is
-configured specifically for instrumenting Go services.
-
-```bash
-kubectl apply -f - <<EOF
-apiVersion: opentelemetry.io/v1alpha1
-kind: Instrumentation
-metadata:
-  name: demo-instrumentation
-spec:
-  exporter:
-    endpoint: http://demo-collector:4318
-  propagators:
-    - tracecontext
-    - baggage
-  sampler:
-    type: parentbased_traceidratio
-    argument: "1"
-EOF
-```
-
-By default, the Instrumentation resource that auto-instruments Go services uses
-`otlp` with the `http/protobuf` protocol. This means that the configured
-endpoint must be able to receive OTLP over `http/protobuf`. Therefore, the
-example uses `http://demo-collector:4318`, which connects to the `http/protobuf`
-port of the `otlpreceiver` of the Collector created in the previous step.
-
-The Go auto-instrumentation does not support disabling any instrumentation.
-[See the Go Auto-Instrumentation repository for more details.](https://github.com/open-telemetry/opentelemetry-go-instrumentation)
 
 ---
 
