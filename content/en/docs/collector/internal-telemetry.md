@@ -168,6 +168,69 @@ Note that the `tracer_provider` section there corresponds to `traces` here.
 [kitchen-sink-config]:
   https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml
 
+### Self-monitoring
+
+The Collector can be configured to push its own telemetry to an
+[OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
+and send the data through configured pipelines. In the following example, the
+Collector is configured to push metrics, traces, and logs every 10s using OTLP
+gRPC to `localhost:14317`:
+
+```yaml
+receivers:
+  otlp/internal:
+    protocols:
+      grpc:
+        endpoint: localhost:14317
+exporters:
+  debug:
+service:
+  pipelines:
+    metrics:
+      receivers: [otlp/internal]
+      exporters: [debug]
+    traces:
+      receivers: [otlp/internal]
+      exporters: [debug]
+  telemetry:
+    metrics:
+      readers:
+        - periodic:
+            interval: 10000
+            exporter:
+              otlp:
+                protocol: grpc/protobuf
+                endpoint: http://localhost:14317
+    traces:
+      processors:
+        - batch:
+            exporter:
+              otlp:
+                protocol: grpc/protobuf
+                endpoint: http://localhost:14317
+    logs:
+      processors:
+        - batch:
+            exporter:
+              otlp:
+                protocol: grpc/protobuf
+                endpoint: http://localhost:14317
+```
+
+{{% alert title="Caution" color="warning" %}}
+
+When self-monitoring, the Collector collects its own telemetry and sends it to
+the desired backend for analysis. This can be a risky practice. If the Collector
+is underperforming, its self-monitoring capability could be impacted. As a
+result, the self-monitored telemetry might not reach the backend in time for
+critical analysis.
+
+Moreover, sending internal telemetry through the Collector's own pipelines can
+create a continuous loop of spans, metric points, or logs, putting undue strain
+on the Collector's performance. This setup should not be used in production.
+
+{{% /alert %}}
+
 ## Types of internal telemetry
 
 The OpenTelemetry Collector aims to be a model of observable service by clearly
