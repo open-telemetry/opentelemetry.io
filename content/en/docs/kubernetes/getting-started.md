@@ -173,17 +173,17 @@ presets:
 ## If you want to send your data somewhere you need to
 ## configure an exporter, such as the otlpexporter
 # config:
-# exporters:
-#   otlp:
-#     endpoint: "<SOME BACKEND>"
-# service:
-#   pipelines:
-#     traces:
-#       exporters: [ otlp ]
-#     metrics:
-#       exporters: [ otlp ]
-#     logs:
-#       exporters: [ otlp ]
+#   exporters:
+#     otlp:
+#       endpoint: "<SOME BACKEND>"
+#   service:
+#     pipelines:
+#       traces:
+#         exporters: [ otlp ]
+#       metrics:
+#         exporters: [ otlp ]
+#       logs:
+#         exporters: [ otlp ]
 ```
 
 To use this `values.yaml` with the chart, save it to your preferred file
