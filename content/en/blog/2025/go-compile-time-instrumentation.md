@@ -1,5 +1,6 @@
 ---
-title: Alibaba and Datadog Join Forces on Go Compile-Time Instrumentation
+title:
+  Alibaba, Datadog and Quesma Join Forces on Go Compile-Time Instrumentation
 linkTitle: Go Compile-Time Instrumentation
 date: 2025-01-17
 author: OpenTelemetry Governance Committee
@@ -59,12 +60,13 @@ these two organisations have decided to join forces and commit the necessary
 resources to bootstrap a new
 [Go Compile-Time Instrumentation SIG](https://github.com/open-telemetry/community/blob/main/projects/go-compile-instrumentation.md),
 with the intention of providing a unified, vendor-neutral approach that picks
-the best aspects of each solution and benefits the community as a whole.
-
-The initial output from this SIG will soon replace
+the best aspects of each solution and benefits the community as a whole. They
+will be supported with further contributions from Quesma, bringing in experience
+on
 [instrgen](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/dafdad14b7858c7f491c8cb72e4bc7deaf9378e3/instrgen/README.md),
 OpenTelemetry's initial experimental approach to provide Go compile-time
-instrumentation based on `-toolexec`.
+instrumentation based on `-toolexec` and which will be superseded as part of the
+initial efforts of this SIG.
 
 In the longer term, this SIG will focus on:
 
