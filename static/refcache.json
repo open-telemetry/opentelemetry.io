@@ -2119,6 +2119,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-08-09T10:47:38.013929-04:00"
   },
+  "https://deno.com": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-20T15:58:06.919196531+01:00"
+  },
   "https://dev.mysql.com/doc/mysql-errors/9.0/en/error-reference-introduction.html": {
     "StatusCode": 206,
     "LastSeen": "2024-10-09T10:19:24.5322+02:00"
@@ -2474,6 +2478,10 @@
   "https://docs.datastax.com/en/cassandra-oss/3.0/cassandra/dml/dmlConfigConsistency.html": {
     "StatusCode": 206,
     "LastSeen": "2024-08-09T10:45:21.894859-04:00"
+  },
+  "https://docs.deno.com/runtime/fundamentals/open_telemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-20T15:58:07.635811334+01:00"
   },
   "https://docs.docker.com": {
     "StatusCode": 206,
