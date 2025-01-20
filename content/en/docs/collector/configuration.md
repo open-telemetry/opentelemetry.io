@@ -290,6 +290,9 @@ receivers:
     protocols:
       grpc:
         endpoint: 0.0.0.0:4317
+        tls:
+          cert_file: cert.pem
+          key_file: cert-key.pem
       http:
         endpoint: 0.0.0.0:4318
 

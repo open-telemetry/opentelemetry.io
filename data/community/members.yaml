@@ -383,6 +383,15 @@ maintainers:
       - erlang-maintainers
     html_url: https://github.com/deadtrickster
     avatar_url: https://avatars.githubusercontent.com/u/172311?v=4
+  - name: dineshg13
+    teams:
+      - go-compile-instrumentation-approvers
+      - go-compile-instrumentation-maintainers
+      - go-compile-instrumentation-triagers
+      - go-instrumentation-approvers
+      - go-instrumentation-triagers
+    html_url: https://github.com/dineshg13
+    avatar_url: https://avatars.githubusercontent.com/u/2471669?v=4
   - name: djaglowski
     teams:
       - collector-approvers
@@ -858,6 +867,9 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/5618424?v=4
   - name: pdelewski
     teams:
+      - go-compile-instrumentation-approvers
+      - go-compile-instrumentation-maintainers
+      - go-compile-instrumentation-triagers
       - go-instrumentation-approvers
       - go-instrumentation-maintainers
       - go-instrumentation-triagers
@@ -937,6 +949,13 @@ maintainers:
       - dotnet-triagers
     html_url: https://github.com/rajkumar-rangaraj
     avatar_url: https://avatars.githubusercontent.com/u/9479006?v=4
+  - name: ralf0131
+    teams:
+      - go-compile-instrumentation-approvers
+      - go-compile-instrumentation-maintainers
+      - go-compile-instrumentation-triagers
+    html_url: https://github.com/ralf0131
+    avatar_url: https://avatars.githubusercontent.com/u/4397305?v=4
   - name: rapphil
     teams:
       - lambda-extension-approvers
@@ -1012,6 +1031,15 @@ maintainers:
       - sqlcommenter-maintainers
     html_url: https://github.com/sjs994
     avatar_url: https://avatars.githubusercontent.com/u/7661510?v=4
+  - name: songy23
+    teams:
+      - collector-approvers
+      - collector-contrib-approvers
+      - collector-contrib-maintainers
+      - collector-contrib-triagers
+      - collector-triagers
+    html_url: https://github.com/songy23
+    avatar_url: https://avatars.githubusercontent.com/u/10536136?v=4
   - name: srikanthccv
     teams:
       - opamp-go-approvers
@@ -1079,6 +1107,12 @@ maintainers:
       - cpp-maintainers
     html_url: https://github.com/ThomsonTan
     avatar_url: https://avatars.githubusercontent.com/u/1041795?v=4
+  - name: tiffany76
+    teams:
+      - docs-approvers
+      - docs-maintainers
+    html_url: https://github.com/tiffany76
+    avatar_url: https://avatars.githubusercontent.com/u/30397949?v=4
   - name: tigrannajaryan
     teams:
       - entities-maintainers
@@ -1343,12 +1377,6 @@ approvers:
       - cpp-contrib-approvers
     html_url: https://github.com/DebajitDas
     avatar_url: https://avatars.githubusercontent.com/u/85024550?v=4
-  - name: dineshg13
-    teams:
-      - go-instrumentation-approvers
-      - go-instrumentation-triagers
-    html_url: https://github.com/dineshg13
-    avatar_url: https://avatars.githubusercontent.com/u/2471669?v=4
   - name: dpauls
     teams:
       - semconv-messaging-approvers
@@ -1578,11 +1606,6 @@ approvers:
       - semconv-genai-approvers
     html_url: https://github.com/nirga
     avatar_url: https://avatars.githubusercontent.com/u/4224692?v=4
-  - name: nslaughter
-    teams:
-      - lambda-extension-approvers
-    html_url: https://github.com/nslaughter
-    avatar_url: https://avatars.githubusercontent.com/u/28688390?v=4
   - name: Oberon00
     teams:
       - build-tools-approvers
@@ -1672,14 +1695,6 @@ approvers:
       - ruby-contrib-approvers
     html_url: https://github.com/simi
     avatar_url: https://avatars.githubusercontent.com/u/193936?v=4
-  - name: songy23
-    teams:
-      - collector-approvers
-      - collector-contrib-approvers
-      - collector-contrib-triagers
-      - collector-triagers
-    html_url: https://github.com/songy23
-    avatar_url: https://avatars.githubusercontent.com/u/10536136?v=4
   - name: sourabh1007
     teams:
       - semconv-db-approvers
@@ -1714,11 +1729,6 @@ approvers:
       - php-triagers
     html_url: https://github.com/tidal
     avatar_url: https://avatars.githubusercontent.com/u/57825?v=4
-  - name: tiffany76
-    teams:
-      - docs-approvers
-    html_url: https://github.com/tiffany76
-    avatar_url: https://avatars.githubusercontent.com/u/30397949?v=4
   - name: tobiasstadler
     teams:
       - cpp-contrib-approvers
@@ -1826,6 +1836,11 @@ triagers:
       - collector-triagers
     html_url: https://github.com/jade-guiton-dd
     avatar_url: https://avatars.githubusercontent.com/u/179536679?v=4
+  - name: jamesmoessis
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/jamesmoessis
+    avatar_url: https://avatars.githubusercontent.com/u/33504860?v=4
   - name: jodeev
     teams:
       - php-triagers
@@ -1907,6 +1922,9 @@ members:
   - name: a-feld
     html_url: https://github.com/a-feld
     avatar_url: https://avatars.githubusercontent.com/u/6374032?v=4
+  - name: aalexand
+    html_url: https://github.com/aalexand
+    avatar_url: https://avatars.githubusercontent.com/u/1519040?v=4
   - name: aaron-ai
     html_url: https://github.com/aaron-ai
     avatar_url: https://avatars.githubusercontent.com/u/19537356?v=4

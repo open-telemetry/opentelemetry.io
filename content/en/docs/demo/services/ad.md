@@ -7,7 +7,7 @@ aliases: [adservice]
 This service determines appropriate ads to serve to users based on context keys.
 The ads will be for products available in the store.
 
-[Ad service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/adservice/)
+[Ad service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/ad/)
 
 ## Auto-instrumentation
 

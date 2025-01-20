@@ -1,4 +1,4 @@
-CacheExpires: 9000h # ~ 12 months
+CacheExpires: 13300h # ~ 18 months
 DirectoryPath: public
 IgnoreDirectoryMissingTrailingSlash: true
 IgnoreAltMissing: true
@@ -15,6 +15,11 @@ IgnoreDirs:
   # TODO drop next lines after https://github.com/open-telemetry/opentelemetry.io/issues/5555 is fixed for these pages:
   - ^zh/docs/concepts/signals/baggage/
   - ^zh/docs/zero-code/php/
+  # TODO drop the following config once this page is updated to reflect the corresponding `en`
+  # page and the link 404 (detailed below) are resolved:
+  #   zh/docs/contributing/index.html
+  #     Non-OK status: 404 --> https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md
+  - ^zh/docs/contributing/
   # DO NOT EDIT! IgnoreDirs list is auto-generated from markdown file front matter.
 IgnoreInternalURLs: # list of paths
 IgnoreURLs: # list of regexs of paths or URLs to be ignored
@@ -56,13 +61,19 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   # YouTube playlists sometimes give a 404, although they give a 200 when accessed via browser:
   - ^https://www.youtube.com/playlist\?list=
 
-  # Ignore Docsy-generated GitHub links for now
-  - ^https?://github\.com/.*?/.*?/(new|edit)/ # view-page, edit-source etc
-  # TODO: drop after fix to https://github.com/google/docsy/issues/1432
-  - ^https://github.com/open-telemetry/opentelemetry.io/commit/ # last mod
+  # Ignore Docsy-generated GitHub links for now, until
+  # https://github.com/google/docsy/issues/1432 is fixed
+  - ^https?://github\.com/.*?/.*?/(new|edit|issues/new\?title)/ # view-page, edit-source etc
+  # Here's an approximate regex to avoid the "View page source" links. TODO: fix this in Docsy
+  - ^https?://github\.com/open-telemetry/opentelemetry.io/tree/
+  # FIXME: A patch until we can get Docsy to mark "View page source" links as excluded from link checking,
+  # Actually, it would be better to pin the version of the OTel spec.
+  - ^https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/logs/event-(api|sdk)\.md
+  # FIXME: same issue as for the OTel spec mentioned above:
+  - ^https://github.com/open-telemetry/semantic-conventions/tree/main
 
-  # Ignore links to GH repo content for now.
-  - ^https?://github\.com/.*?/.*?/(blob|tree)/
+  # Ignore some links to GH repo content for now, most 4XX
+  - ^https?://github\.com/open-telemetry/opentelemetry-demo/blob/main/src/(imageprovider|loadgenerator|otelcollector|.*service)
 
   # Too many redirects as the server tries to figure out the country and language,
   # e.g.: https://www.microsoft.com/en-ca/sql-server.
@@ -70,21 +81,7 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
 
   # TODO: drop after fix to https://github.com/rust-lang/crates.io/issues/788
   - ^https://crates\.io/crates
-  # TODO: drop after fix to https://github.com/micrometer-metrics/micrometer-docs/issues/239
-  - ^https://micrometer\.io/docs
-  # TODO: ensure .json isn't set as an alternate in ecosystem/registry/index.html and then drop:
-  - ^https://opentelemetry.io/ecosystem/registry/index.json
-  # TODO: drop after fix to https://github.com/open-telemetry/semantic-conventions/pull/645 lands in this repo
-  - ^http://docs.couchdb.org/en/stable/api/document/common.html#get--db-docid
-  # TODO drop after fix to https://github.com/open-telemetry/opentelemetry.io/issues/3818
-  - ^https://oncallmemaybe.com
-  # TODO drop after https://github.com/open-telemetry/opentelemetry-specification/pull/3834 is merged
-  - ^https://wikipedia\.org/wiki/Monotonic_function
-  # TODO drop after https://github.com/open-telemetry/opamp-spec/pull/179 is merged into this repo
-  - ^http://www.watersprings.org/
   # TODO move into content/en/blog/2023/humans-of-otel.md once https://github.com/open-telemetry/opentelemetry.io/issues/3889 is implemented
   - ^https://shorturl.at/osHRX$
-  # TODO drop after https://github.com/open-telemetry/semantic-conventions/pull/678 is merged:
-  - ^https://wikipedia.org/wiki/(S.M.A.R.T|Hop_)
   # TODO move into content/en/blog/2023/contributing-to-otel/index.md once https://github.com/open-telemetry/opentelemetry.io/issues/3889 is implemented
   - ^https://shorturl.at/vLYZ0$

@@ -11,6 +11,6 @@ authors:
     url: https://github.com/micrometer-metrics
 urls:
   website: https://micrometer.io/
-  docs: https://micrometer.io/docs/tracing#_micrometer_tracing_opentelemetry_setup
-createdAt: '2024-08-06'
+  docs: https://docs.micrometer.io/micrometer/reference/implementations/otlp.html
+createdAt: 2024-08-06
 isNative: true

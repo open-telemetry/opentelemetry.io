@@ -224,7 +224,7 @@ receivers:
 ```
 
 Para obtener detalles específicos sobre qué métricas se recopilan, consulta
-[Métricas predeterminadas](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/kubeletsstatsreceiver/documentation.md).
+[Métricas predeterminadas](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/kubeletstatsreceiver/documentation.md).
 Para obtener detalles de configuración específicos, consulta
 [Receptor de Kubeletstats](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/kubeletstatsreceiver).
 
