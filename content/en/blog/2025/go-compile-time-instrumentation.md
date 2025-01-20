@@ -18,8 +18,7 @@ scales to weigh things in Kilograms!
 If you use [OpenTelemetry in Go](/docs/languages/go/), you'll be familiar with
 the challenges of configuring instrumentation libraries to automatically
 generate telemetry from well-known open source components. Due to the compiled
-nature of the language, you currently have two options (unless you want to
-"build your own scales", or the OTel equivalent):
+nature of the language, you currently have two options[^1]:
 
 - Use a separate binary that analyzes your Go process and attaches eBPF programs
   to hooks in your application &mdash; see
@@ -37,9 +36,13 @@ proposals from industry leaders to provide a solution to the problem described
 above, and enable the use of zero-code, vendor-neutral, compile-time
 instrumentation in Go applications. These are:
 
-- Alibaba's [donation proposal](https://github.com/open-telemetry/community/issues/2344) of 
+- Alibaba's
+  [donation proposal](https://github.com/open-telemetry/community/issues/2344)
+  of
   [opentelemetry-go-auto-instrumentation](https://github.com/alibaba/opentelemetry-go-auto-instrumentation)
-- Datadog's [donation proposal](https://github.com/open-telemetry/community/issues/2497) of [Orchestrion](https://github.com/datadog/orchestrion)
+- Datadog's
+  [donation proposal](https://github.com/open-telemetry/community/issues/2497)
+  of [Orchestrion](https://github.com/datadog/orchestrion)
 
 We are very grateful to Alibaba and Datadog for these donation proposals. This
 continues to demonstrate the convergence of the wider industry towards the
@@ -86,3 +89,7 @@ here's some useful information about the SIG:
 
 We look forward to seeing this new SIG in operation, and cannot wait for the
 fruits of this awesome collaboration!
+
+[^1]:
+    Unless you want to "build your own scales", or the OTel equivalent, which is
+    manually instrumenting third-party libraries.
