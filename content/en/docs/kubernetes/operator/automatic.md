@@ -167,7 +167,7 @@ spec:
     - baggage
   sampler:
     type: parentbased_traceidratio
-    argument: "1"
+    argument: '1'
   dotnet:
     env:
       - name: OTEL_DOTNET_AUTO_TRACES_GRPCNETCLIENT_INSTRUMENTATION_ENABLED
@@ -333,7 +333,7 @@ spec:
     - baggage
   sampler:
     type: parentbased_traceidratio
-    argument: "1"
+    argument: '1'
   java:
     env:
       - name: OTEL_INSTRUMENTATION_KAFKA_ENABLED
@@ -486,7 +486,7 @@ spec:
   python:
     env:
       - name: OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED
-        value: "true"
+        value: 'true'
 ```
 
 > As of operator v0.111.0 setting `OTEL_LOGS_EXPORTER` to `otlp` is not required
@@ -513,7 +513,7 @@ spec:
     - baggage
   sampler:
     type: parentbased_traceidratio
-    argument: "1"
+    argument: '1'
   python:
     env:
       - name: OTEL_PYTHON_DISABLED_INSTRUMENTATIONS
@@ -581,8 +581,8 @@ You can set this environment variable via the
 `instrumentation.opentelemetry.io/otel-go-auto-target-exe` annotation.
 
 ```yaml
-instrumentation.opentelemetry.io/inject-go: "true"
-instrumentation.opentelemetry.io/otel-go-auto-target-exe: "/path/to/container/executable"
+instrumentation.opentelemetry.io/inject-go: 'true'
+instrumentation.opentelemetry.io/otel-go-auto-target-exe: '/path/to/container/executable'
 ```
 
 This environment variable can also be set via the Instrumentation resource, with
@@ -693,7 +693,7 @@ Recall the auto-instrumentation annotation:
 
 ```yaml
 annotations:
-  instrumentation.opentelemetry.io/inject-python: "true"
+  instrumentation.opentelemetry.io/inject-python: 'true'
 ```
 
 The annotation above tells the OTel Operator to look for an `Instrumentation`
