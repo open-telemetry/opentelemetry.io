@@ -74,11 +74,11 @@ ses composants : les logs, les spans et les traces.
 ### Logs {#logs}
 
 Un **log** est un message horodaté émis par des services ou d'autres composants.
-Contrairement aux [traces](#distributed-traces), ils ne sont pas
-nécessairement associés à une requête ou une transaction utilisateur en
-particulier. Presque tous les logiciels émettent des logs. Par le passé, les
-développeurs et les opérateurs se sont largement appuyés sur les logs pour
-comprendre le comportement des systèmes.
+Contrairement aux [traces](#distributed-traces), ils ne sont pas nécessairement
+associés à une requête ou une transaction utilisateur en particulier. Presque
+tous les logiciels émettent des logs. Par le passé, les développeurs et les
+opérateurs se sont largement appuyés sur les logs pour comprendre le
+comportement des systèmes.
 
 Exemple de log :
 
