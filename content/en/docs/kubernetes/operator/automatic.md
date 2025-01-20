@@ -167,7 +167,7 @@ spec:
     - baggage
   sampler:
     type: parentbased_traceidratio
-    argument: '1'
+    argument: "1"
   dotnet:
     env:
       - name: OTEL_DOTNET_AUTO_TRACES_GRPCNETCLIENT_INSTRUMENTATION_ENABLED
@@ -228,9 +228,10 @@ result all workloads that want to be instrumented with Deno must have the
 
 #### Configuration options {#deno-configuration-options}
 
-By default, the Deno OpenTelemetry integration exports `console.log()` output as  
+By default, the Deno OpenTelemetry integration exports `console.log()` output
+as\
 [logs](/docs/concepts/signals/logs/), while still printing the logs to stdout /
-stderr. You can configure these alternative behaviors:  
+stderr. You can configure these alternative behaviors:
 
 - `OTEL_DENO_CONSOLE=replace`: only export `console.log()` output as logs; do
   not print to stdout / stderr.
@@ -240,9 +241,9 @@ stderr. You can configure these alternative behaviors:
 #### Learn more {#deno-learn-more}
 
 For more details, see Deno's [OpenTelemetry integration][deno-otel-docs]
-documentation.  
+documentation.
 
-[deno-otel-docs]: https://docs.deno.com/runtime/fundamentals/open_telemetry/  
+[deno-otel-docs]: https://docs.deno.com/runtime/fundamentals/open_telemetry/
 
 ### Go
 
@@ -332,7 +333,7 @@ spec:
     - baggage
   sampler:
     type: parentbased_traceidratio
-    argument: '1'
+    argument: "1"
   java:
     env:
       - name: OTEL_INSTRUMENTATION_KAFKA_ENABLED
@@ -485,7 +486,7 @@ spec:
   python:
     env:
       - name: OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED
-        value: 'true'
+        value: "true"
 ```
 
 > As of operator v0.111.0 setting `OTEL_LOGS_EXPORTER` to `otlp` is not required
@@ -512,7 +513,7 @@ spec:
     - baggage
   sampler:
     type: parentbased_traceidratio
-    argument: '1'
+    argument: "1"
   python:
     env:
       - name: OTEL_PYTHON_DISABLED_INSTRUMENTATIONS
@@ -580,8 +581,8 @@ You can set this environment variable via the
 `instrumentation.opentelemetry.io/otel-go-auto-target-exe` annotation.
 
 ```yaml
-instrumentation.opentelemetry.io/inject-go: 'true'
-instrumentation.opentelemetry.io/otel-go-auto-target-exe: '/path/to/container/executable'
+instrumentation.opentelemetry.io/inject-go: "true"
+instrumentation.opentelemetry.io/otel-go-auto-target-exe: "/path/to/container/executable"
 ```
 
 This environment variable can also be set via the Instrumentation resource, with
@@ -692,7 +693,7 @@ Recall the auto-instrumentation annotation:
 
 ```yaml
 annotations:
-  instrumentation.opentelemetry.io/inject-python: 'true'
+  instrumentation.opentelemetry.io/inject-python: "true"
 ```
 
 The annotation above tells the OTel Operator to look for an `Instrumentation`
@@ -746,12 +747,13 @@ auto-instrumentation annotation.
 
 Here are a few things to check for:
 
-- **Is the auto-instrumentation for the right language?** For example, when
-  instrumenting a Python application, make sure that the annotation doesn't
-  incorrectly say `instrumentation.opentelemetry.io/inject-java: "true"`
-  instead. Note that Deno uses the uses the
-  `instrumentation.opentelemetry.io/inject-sdk: "true"` annotation, rather than
-  an annotation containing the string `deno`.
+- **Is the auto-instrumentation for the right language?**
+  - For example, when instrumenting a Python application, make sure that the
+    annotation doesn't incorrectly say
+    `instrumentation.opentelemetry.io/inject-java: "true"` instead.
+  - For **Deno**, make sure you are using the
+    `instrumentation.opentelemetry.io/inject-sdk: "true"` annotation, rather
+    than an annotation containing the string `deno`.
 - **Is the auto-instrumentation annotation in the correct location?** When
   defining a `Deployment`, annotations can be added in one of two locations:
   `spec.metadata.annotations`, and `spec.template.metadata.annotations`. The
