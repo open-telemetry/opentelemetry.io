@@ -22,11 +22,10 @@ nature of the language, you currently have two options (unless you want to
 "build your own scales", or the OTel equivalent):
 
 - Use a separate binary that analyzes your Go process and attaches eBPF programs
-  to hooks in your application (see
-  [opentelemetry-go-instrumentation](https://github.com/open-telemetry/opentelemetry-go-instrumentation/)).
-- Manually configure instrumentation libraries in your code (see an
-  [example](/docs/languages/go/getting-started/#instrument-the-http-server) to
-  instrument `net/http`).
+  to hooks in your application &mdash; see
+  [opentelemetry-go-instrumentation](https://github.com/open-telemetry/opentelemetry-go-instrumentation/).
+- Manually configure instrumentation libraries in your code, for example see
+  [Instrument the HTTP server](/docs/languages/go/getting-started/#instrument-the-http-server).
 
 For different reasons, it is possible that none of those options is viable, or
 optimal, in your environment. However, things are about to change!
@@ -38,14 +37,11 @@ proposals from industry leaders to provide a solution to the problem described
 above, and enable the use of zero-code, vendor-neutral, compile-time
 instrumentation in Go applications. These are:
 
-- Alibaba's
+- Alibaba's [donation proposal](https://github.com/open-telemetry/community/issues/2344) of 
   [opentelemetry-go-auto-instrumentation](https://github.com/alibaba/opentelemetry-go-auto-instrumentation)
-  (see
-  [donation proposal](https://github.com/open-telemetry/community/issues/2344)).
-- Datadog's [Orchestrion](https://github.com/datadog/orchestrion) (see
-  [donation proposal](https://github.com/open-telemetry/community/issues/2497)).
+- Datadog's [donation proposal](https://github.com/open-telemetry/community/issues/2497) of [Orchestrion](https://github.com/datadog/orchestrion)
 
-We are really grateful to Alibaba and Datadog for these donation proposals. This
+We are very grateful to Alibaba and Datadog for these donation proposals. This
 continues to demonstrate the convergence of the wider industry towards the
 standards defined by OpenTelemetry.
 
