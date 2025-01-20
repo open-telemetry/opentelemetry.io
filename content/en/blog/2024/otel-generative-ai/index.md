@@ -164,7 +164,7 @@ opentelemetry-instrument --traces_exporter console --metrics_exporter console py
 ```
 
 There is a complete example
-[available here](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-openai-v2/example).
+[available here](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-openai-v2/examples/).
 
 With this simple instrumentation, one can begin capture traces from their
 generative AI application. Here is an example from the
