@@ -55,7 +55,7 @@ the Go standard library).
 
 The most exciting part of this announcement is that it won't be Alibaba's or
 Datadog's solution that "wins". In the true spirit of open source collaboration,
-these two organisations have decided to join forces and commit the necessary
+these two organizations have decided to join forces and commit the necessary
 resources to bootstrap a new
 [Go Compile-Time Instrumentation SIG](https://github.com/open-telemetry/community/blob/main/projects/go-compile-instrumentation.md),
 with the intention of providing a unified, vendor-neutral approach that picks
