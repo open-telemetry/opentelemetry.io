@@ -224,6 +224,8 @@ the `otlpreceiver` of the Collector created in the previous step.
 result all workloads that want to be instrumented with Deno must have the
 `--unstable-otel` flag set when starting the Deno process.
 
+[deno-otel-docs]: https://docs.deno.com/runtime/fundamentals/open_telemetry/
+
 {{% /alert %}}
 
 #### Configuration options {#deno-configuration-options}
