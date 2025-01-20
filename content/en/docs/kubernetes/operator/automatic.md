@@ -220,9 +220,9 @@ the `otlpreceiver` of the Collector created in the previous step.
 
 {{% alert title="Note" color="info" %}}
 
-[Deno's OpenTelemetry integration][deno-docs] is not yet stable. As a result
-all workloads that want to be instrumented with Deno must have the
-`--unstable-otel` flag set when starting the Deno process.
+[Deno's OpenTelemetry integration][deno-docs] is not yet stable. As a result all
+workloads that want to be instrumented with Deno must have the `--unstable-otel`
+flag set when starting the Deno process.
 
 [deno-docs]: https://docs.deno.com/runtime/fundamentals/open_telemetry/
 
