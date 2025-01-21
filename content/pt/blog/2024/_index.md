@@ -1,6 +1,5 @@
 ---
 title: 2024
 weight: -2024
-outputs: [HTML, RSS]
-default_lang_commit: 48eac183a4dd74946d5a45fa436cfc6052f30532
+default_lang_commit: c0a5eea5d720b0e075efa87f99dcf58c89106268
 ---
