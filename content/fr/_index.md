@@ -3,9 +3,6 @@ title: OpenTelemetry
 description: >-
   Une télémétrie de qualité, universelle et portable pour une observabilité
   efficace
-outputs:
-  - HTML
-  - REDIRECTS # Include this `content/fr` ONLY
 developer_note:
   La macro "blocks/cover" définie ci-dessous permet d'utiliser comme image de
   fond tout visuel contenant "background" dans son nom.

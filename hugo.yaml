@@ -70,8 +70,11 @@ outputFormats:
     notAlternative: true
 
 outputs:
-  home: [HTML]
+  home: [HTML, RSS]
   section: [HTML]
+
+services:
+  rss: { limit: 20 }
 
 params:
   copyright:
