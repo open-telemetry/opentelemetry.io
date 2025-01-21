@@ -12135,6 +12135,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-15T13:17:31.33164-05:00"
   },
+  "https://github.com/open-telemetry/semantic-conventions/pull/981": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-21T20:19:53.65649882Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/releases/tag/v1.21.0": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:16.567964-05:00"

@@ -9,11 +9,12 @@ sig: SIG Go
 cSpell:ignore: Yahn dashpole pellared otelhttp dmathieu otelhttp codeboten otellogr otellogrus otelslog otelzap otelzerolog
 ---
 
-As we kick off 2025, the [OpenTelemetry Go](https://github.com/open-telemetry/opentelemetry-go) team has come together to set a
-roadmap for the year. Our focus is on driving the OpenTelemetry Go project
-forward while strengthening its integration with the broader OpenTelemetry
-ecosystem. Here's an overview of our goals, their expected timelines, and the
-key contributors supporting each initiative.
+As we kick off 2025, the
+[OpenTelemetry Go](https://github.com/open-telemetry/opentelemetry-go) team has
+come together to set a roadmap for the year. Our focus is on driving the
+OpenTelemetry Go project forward while strengthening its integration with the
+broader OpenTelemetry ecosystem. Here's an overview of our goals, their expected
+timelines, and the key contributors supporting each initiative.
 
 ## Goals
 
@@ -128,4 +129,8 @@ We want to hear from you! Let us know what is missing or what you would like to
 see prioritized by commenting on
 [our tracking GitHub issue](https://github.com/open-telemetry/opentelemetry-go/issues/6175).
 
-If you'd like to participate in any of our efforts and become a contributor to the OpenTelemetry Go SIG, join our weekly SIG meetings on Thursday alternating between 09:00 PT and 10:00 PT and our channel [#otel-go](https://cloud-native.slack.com/archives/C01NPAXACKT) on [CNCF Slack](https://slack.cncf.io).
+If you'd like to participate in any of our efforts and become a contributor to
+the OpenTelemetry Go SIG, join our weekly SIG meetings on Thursday alternating
+between 09:00 PT and 10:00 PT and our channel
+[#otel-go](https://cloud-native.slack.com/archives/C01NPAXACKT) on
+[CNCF Slack](https://slack.cncf.io).
