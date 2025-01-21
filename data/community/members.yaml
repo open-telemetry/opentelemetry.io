@@ -1346,6 +1346,11 @@ approvers:
       - php-triagers
     html_url: https://github.com/ChrisLightfootWild
     avatar_url: https://avatars.githubusercontent.com/u/106102472?v=4
+  - name: christophe-kamphaus-jemmic
+    teams:
+      - semconv-cicd-approvers
+    html_url: https://github.com/christophe-kamphaus-jemmic
+    avatar_url: https://avatars.githubusercontent.com/u/44020965?v=4
   - name: ChrsMark
     teams:
       - collector-contrib-approvers
