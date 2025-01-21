@@ -1513,7 +1513,7 @@ public class OtlpAuthenticationConfig {
   }
 
   private static String refreshToken(String username, String password) {
-    // For a production scenario, this would be replaced with out-of-band request to exchange
+    // For a production scenario, this would be replaced with an out-of-band request to exchange
     // username / password for bearer token.
     return "abc123";
   }
