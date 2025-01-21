@@ -3,7 +3,7 @@ name: Build Semantic Conventions (daily)
 on:
   schedule:
     # daily at 10:24 UTC
-    - cron: "24 10 * * *"
+    - cron: '24 10 * * *'
   workflow_dispatch:
 
 jobs:

@@ -21,7 +21,9 @@ jobs:
       - name: Open issue or add comment if issue already open
         env:
           # need to use opentelemetrybot for opening issues in other repos
-          GH_TOKEN: ${{ inputs.repo && secrets.OPENTELEMETRYBOT_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+          GH_TOKEN:
+            ${{ inputs.repo && secrets.OPENTELEMETRYBOT_GITHUB_TOKEN ||
+            secrets.GITHUB_TOKEN }}
         run: |
           if [ -z "${{ inputs.repo }}" ]; then
             repo="$GITHUB_REPOSITORY"
