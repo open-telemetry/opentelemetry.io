@@ -58,7 +58,8 @@ flowchart LR
     FO --> EN[[Exporter N]]
 
     %% The stroke color matches the website header.
-    classDef default fill:#e3e8fc,stroke:#4f62ad
+    classDef default fill:#e3e8fc,stroke:#4f62ad,color:#000000;
+
 ```
 
 Pipelines can have one or more receivers. Data from all receivers is pushed to
