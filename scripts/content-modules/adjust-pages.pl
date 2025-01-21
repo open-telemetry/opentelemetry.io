@@ -214,7 +214,7 @@ while(<>) {
         (
           # Match paths upto but excluding `.md`. The character exclusions are as follows:
           #
-          # - `:` ensures the URL is a path, not an external link, which has a protocol followe by `:`
+          # - `:` ensures the URL is a path, not an external link, which has a protocol followed by `:`
           # - `)` so we don't overrun the end of the markdown link, which ends with `)`
           # - `{` or `}` so that the path doesn't contain Hugo {{...}}
 
