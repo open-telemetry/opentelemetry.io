@@ -1346,6 +1346,11 @@ approvers:
       - php-triagers
     html_url: https://github.com/ChrisLightfootWild
     avatar_url: https://avatars.githubusercontent.com/u/106102472?v=4
+  - name: christophe-kamphaus-jemmic
+    teams:
+      - semconv-cicd-approvers
+    html_url: https://github.com/christophe-kamphaus-jemmic
+    avatar_url: https://avatars.githubusercontent.com/u/44020965?v=4
   - name: ChrsMark
     teams:
       - collector-contrib-approvers
@@ -2312,6 +2317,9 @@ members:
   - name: vishweshbankwar
     html_url: https://github.com/vishweshbankwar
     avatar_url: https://avatars.githubusercontent.com/u/17655898?v=4
+  - name: vitorvasc
+    html_url: https://github.com/vitorvasc
+    avatar_url: https://avatars.githubusercontent.com/u/12118857?v=4
   - name: vmarchaud
     html_url: https://github.com/vmarchaud
     avatar_url: https://avatars.githubusercontent.com/u/2820968?v=4

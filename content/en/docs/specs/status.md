@@ -98,7 +98,6 @@ same as the **Protocol** status.
 - [Specification][logging]
 - {{% spec_status "Bridge API" "otel/logs/api" "Status" %}}
 - {{% spec_status "SDK" "otel/logs/sdk" "Status" %}}
-- {{% spec_status "Event API" "otel/logs/event-api" "Status" %}}
 - {{% spec_status "Protocol" "otlp" "/document-status/.*for.*log" %}}
 - Notes:
   - The [logs data model][] is released as part of the OpenTelemetry Protocol.
@@ -111,10 +110,8 @@ same as the **Protocol** status.
   - The OpenTelemetry Log SDK is the standard implementation of the Log Bridge
     API. Applications configure the SDK to indicate how logs are processed and
     exported (e.g. using OTLP).
-  - The OpenTelemetry Event API allows log records to be emitted which conform
-    to the [event semantic conventions][]. In contrast to the Log Bridge API,
-    the Event API is intended to be called by end users. The Event API is under
-    active development.
+  - The OpenTelemetry Log Bridge API contains experimental support for emitting
+    log records which conform to the [event semantic conventions][].
 
 ### Profiles
 
