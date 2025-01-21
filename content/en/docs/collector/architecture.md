@@ -58,7 +58,8 @@ flowchart LR
     FO --> EN[[Exporter N]]
 
     %% The stroke color matches the website header.
-    classDef default fill:#e3e8fc,stroke:#4f62ad
+    classDef default fill:#e3e8fc,stroke:#4f62ad,color:#000000;
+
 ```
 
 Pipelines can have one or more receivers. Data from all receivers is pushed to
@@ -129,7 +130,7 @@ flowchart LR
     P1 ~~~ M1[...]
     P2 ~~~ M2[...]
 
-    classDef default fill:#e3e8fc,stroke:#4f62ad;
+    classDef default fill:#e3e8fc,stroke:#4f62ad,color:#000000;
 ```
 
 {{% alert title="Important" color="warning" %}}
@@ -196,7 +197,7 @@ flowchart LR
     P1 -->|Pipeline 'traces'|E1[["`#quot;otlp#quot; Exporter`"]]
     P2 -->|Pipeline 'traces/2'|E1
 
-    classDef default fill:#e3e8fc,stroke:#4f62ad;
+    classDef default fill:#e3e8fc,stroke:#4f62ad,color:#000000;
 ```
 
 ### Processors
@@ -250,7 +251,7 @@ flowchart LR
     R1("`zipkin Receiver`") --> P1["`#quot;batch#quot; Processor`"]
     P1 --> E1[["`#quot;otlp#quot; Exporter`"]]
 
-    classDef default fill:#e3e8fc,stroke:#4f62ad;
+    classDef default fill:#e3e8fc,stroke:#4f62ad,color:#000000;
 ```
 
 ```mermaid
@@ -261,7 +262,7 @@ flowchart LR
     R1("`otlp Receiver`") --> P1["`#quot;batch#quot; Processor`"]
     P1 --> E1[["`#quot;otlp#quot; Exporter`"]]
 
-    classDef default fill:#e3e8fc,stroke:#4f62ad;
+    classDef default fill:#e3e8fc,stroke:#4f62ad,color:#000000;
 ```
 
 Note that each `batch` processor is an independent instance, although they are
@@ -346,7 +347,7 @@ class VM,K8s-pod,K8s-node,Pod1,Pod2,Pod3,Backends withLines;
 class PR,AB,AC,AS,APP1,APP2,APP3,APP4,APP5,APP6,AD,BE,PRM,JA nodeStyle
 classDef noLines fill:#fff,stroke:#fff,stroke-width:4px;
 classDef withLines fill:#fff,stroke:#4f62ad
-classDef nodeStyle fill:#e3e8fc,stroke:#4f62ad;
+classDef nodeStyle fill:#e3e8fc,stroke:#4f62ad,color:#000000;
 ```
 
 > For developers and maintainers of other libraries: By adding specific
@@ -418,7 +419,7 @@ class PR,AC,APP1,APP2,APP3,APP4,APP5,APP6,AD,OTEL,BE,JA,PRM nodeStyle
 classDef noLines fill:#fff,stroke:#fff,stroke-width:4px;
 classDef withLines fill:#fff,stroke:#4f62ad
 classDef lightLines fill:#fff,stroke:#acaeb0
-classDef nodeStyle fill:#e3e8fc,stroke:#4f62ad;
+classDef nodeStyle fill:#e3e8fc,stroke:#4f62ad,color:#000000;
 ```
 
 The OpenTelemetry Collector can also be deployed in other configurations, such
