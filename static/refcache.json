@@ -5251,6 +5251,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-06-12T11:21:46.656082+02:00"
   },
+  "https://github.com/golang/go/issues/67120": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T20:08:36.651965124Z"
+  },
   "https://github.com/golang/go/issues/68652#issuecomment-2274452424": {
     "StatusCode": 200,
     "LastSeen": "2024-11-07T20:32:07.730871-05:00"
@@ -8779,9 +8783,17 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:38:11.841222-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-go-contrib/issues/5655": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T20:08:35.389078503Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-go-contrib/issues/new": {
     "StatusCode": 200,
     "LastSeen": "2024-05-27T10:19:47.859082+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-contrib/labels/area%3A%20config": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T20:08:42.564078807Z"
   },
   "https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/detectors/aws": {
     "StatusCode": 206,
@@ -8850,6 +8862,18 @@
   "https://github.com/open-telemetry/opentelemetry-go/compare/v1.18.0...v1.19.0": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:05:30.739686-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go/issues/2547": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T20:08:34.745075731Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go/issues/5668": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T20:08:32.250190089Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go/issues/6175": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T20:08:43.60441392Z"
   },
   "https://github.com/open-telemetry/opentelemetry-go/releases": {
     "StatusCode": 206,
@@ -12151,6 +12175,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-15T13:17:31.33164-05:00"
   },
+  "https://github.com/open-telemetry/semantic-conventions/pull/981": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-21T20:19:53.65649882Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/releases/tag/v1.21.0": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:16.567964-05:00"
@@ -12963,6 +12991,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:36.015951-05:00"
   },
+  "https://github.com/open-telemetry/weaver": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T20:08:32.827234548Z"
+  },
   "https://github.com/open-telemetry/weaver/blob/main/crates/weaver_forge/README.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:20:32.148949-05:00"
@@ -13079,9 +13111,21 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:54.102977-05:00"
   },
+  "https://github.com/orgs/open-telemetry/projects/38": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T20:08:43.090144339Z"
+  },
+  "https://github.com/orgs/open-telemetry/projects/43": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T20:08:41.237771131Z"
+  },
   "https://github.com/orgs/open-telemetry/projects/83": {
     "StatusCode": 200,
     "LastSeen": "2024-05-03T07:21:05.157831-07:00"
+  },
+  "https://github.com/orgs/open-telemetry/projects/87": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-17T20:08:42.069795164Z"
   },
   "https://github.com/orgs/open-telemetry/projects/92/views/1": {
     "StatusCode": 200,
@@ -16755,6 +16799,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-03-01T16:49:37.76693+01:00"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otellogr": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-17T20:08:41.682210373Z"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otellogrus": {
     "StatusCode": 200,
     "LastSeen": "2024-05-15T16:22:37.734630943Z"
@@ -16770,6 +16818,10 @@
   "https://pkg.go.dev/go.opentelemetry.io/contrib/bridges/otelzerolog": {
     "StatusCode": 200,
     "LastSeen": "2024-07-22T08:21:47.06167143Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/config": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-17T20:08:42.670562631Z"
   },
   "https://pkg.go.dev/go.opentelemetry.io/contrib/detectors/aws/ec2": {
     "StatusCode": 200,
@@ -16814,6 +16866,10 @@
   "https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp": {
     "StatusCode": 200,
     "LastSeen": "2025-01-13T12:41:26.801397-05:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/runtime#pkg-overview": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-17T20:08:40.835272542Z"
   },
   "https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/aws": {
     "StatusCode": 200,
@@ -16874,6 +16930,10 @@
   "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdouttrace": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:12.88079-05:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/log": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-17T20:08:41.484726965Z"
   },
   "https://pkg.go.dev/go.opentelemetry.io/otel/metric": {
     "StatusCode": 200,
