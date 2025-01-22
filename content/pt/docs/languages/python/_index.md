@@ -8,7 +8,7 @@ weight: 22
 default_lang_commit: 3fd0bb513e5d3fa6f178a73584322bcc469f15e0
 ---
 
-{{% docs/languages/index-intro python /%}}
+{{% pt/docs/languages/index-intro python /%}}
 
 ## Suporte de Versão {#status-and-releases}
 
@@ -46,7 +46,7 @@ diretórios.
 
 Para encontrar projetos relacionados como exporters, bibliotecas de
 instrumentação, implementações de rastros, etc., visite
-o[Registro](/ecosystem/registry/?s=python).
+o [Registro](/ecosystem/registry/?s=python).
 
 ### Instalando Pacotes de Ponta (#installing-cutting-edge-packages)
 
