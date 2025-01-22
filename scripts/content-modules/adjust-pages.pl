@@ -72,6 +72,17 @@ sub printPatchInfoIf($$) {
     if $specVersTest && !$patchMsgCount{$patchID}++;
 }
 
+sub patchAttrNaming($$) {
+  my ($ARGV, $__) = @_;
+  $_ = $__;
+  my $semconv_attr_naming = '(/docs/specs/semconv/general)/naming/';
+  if ($ARGV =~ /^tmp\/otel\/specification/ && /$semconv_attr_naming/) {
+    s|$semconv_attr_naming|$1/attribute-naming/|g;
+    printPatchInfoIf("2025-01-22-attribute-naming", $semconvVers ne "1.29.0");
+  }
+  return $_;
+}
+
 # main
 
 while(<>) {
@@ -84,6 +95,7 @@ while(<>) {
     if (/^<!---? Hugo/) {
         while(<>) {
           last if /^-?-->/;
+          $_ = patchAttrNaming($ARGV, $_); # TEMPORARY patch
           $frontMatterFromFile .= $_;
         }
         next;
@@ -137,11 +149,7 @@ while(<>) {
     printPatchInfoIf("2025-01-22-attribute-naming.md", $semconvVers ne "1.29.0");
   }
 
-  my $semconv_attr_naming = '(/docs/specs/semconv/general)/naming/';
-  if ($ARGV =~ /^tmp\/otel\/specification/ && /$semconv_attr_naming/) {
-    s|$semconv_attr_naming|$1/attribute-naming/|g;
-    printPatchInfoIf("2025-01-22-attribute-naming", $semconvVers ne "1.29.0");
-  }
+  $_ = patchAttrNaming($ARGV, $_); # TEMPORARY patch
 
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;
   s|(\]\()/specification/|$1$specBasePath/otel/)|;
