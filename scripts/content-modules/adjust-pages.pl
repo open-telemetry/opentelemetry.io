@@ -134,13 +134,13 @@ while(<>) {
   my $semconv_attr_naming_md = '(semantic-conventions/blob/main/docs/general)/naming.md(#\w+)?';
   if ($ARGV =~ /^tmp\/otel\/specification/ && /$semconv_attr_naming_md/) {
     s|$semconv_attr_naming_md\b|$1/attribute-naming.md|g;
-    printPatchInfoIf("2025-01-22-attribute-naming.md", $otelSpecVers ne "1.41.0");
+    printPatchInfoIf("2025-01-22-attribute-naming.md", $semconvVers ne "1.29.0");
   }
 
   my $semconv_attr_naming = '(/docs/specs/semconv/general)/naming/';
   if ($ARGV =~ /^tmp\/otel\/specification/ && /$semconv_attr_naming/) {
     s|$semconv_attr_naming|$1/attribute-naming/|g;
-    printPatchInfoIf("2025-01-22-attribute-naming", $otelSpecVers ne "1.41.0");
+    printPatchInfoIf("2025-01-22-attribute-naming", $semconvVers ne "1.29.0");
   }
 
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;
