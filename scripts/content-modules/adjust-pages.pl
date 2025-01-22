@@ -68,7 +68,7 @@ sub printTitleAndFrontMatter() {
 
 sub printPatchInfoIf($$) {
   my ($patchID, $specVersTest) = @_;
-  print STDOUT "INFO [$patchID]: $0: remove obsolete patch code now that OTel spec has been updated.\n"
+  print STDOUT "INFO [$patchID]: $0: remove obsolete patch code now that spec(s) have been updated.\n"
     if $specVersTest && !$patchMsgCount{$patchID}++;
 }
 
@@ -108,6 +108,13 @@ while(<>) {
   ## Semconv
 
   if ($ARGV =~ /\/semconv/) {
+    my $otel_spec_event_deprecation = '(opentelemetry-specification/blob/main/specification/logs)/event-(api|sdk).md';
+    if (/$otel_spec_event_deprecation/) {
+      # Cf. https://github.com/open-telemetry/opentelemetry-specification/pull/4359
+      s|$otel_spec_event_deprecation\b|$1/|g;
+      printPatchInfoIf("2025-01-22-event-(api|sdk)", $semconvVers ne "1.29.0");
+    }
+
     s|(\]\()/docs/|$1$specBasePath/semconv/|g;
     s|(\]:\s*)/docs/|$1$specBasePath/semconv/|;
 
@@ -124,12 +131,16 @@ while(<>) {
 
   # SPECIFICATION custom processing
 
-  # TODO: drop the entire if statement patch code when OTel spec vers contains
-  # https://github.com/open-telemetry/opentelemetry-specification/issues/4338,
-  # which should be vers > 1.40.0.
-  if ($ARGV =~ /otel\/specification\/logs/) {
-    s|(/data-model.md/?)#event-name\b|$1#field-eventname|g;
-    printPatchInfoIf("2024-12-13-event-name", $otelSpecVers ne "1.40.0");
+  my $semconv_attr_naming_md = '(semantic-conventions/blob/main/docs/general)/naming.md(#\w+)?';
+  if ($ARGV =~ /^tmp\/otel\/specification/ && /$semconv_attr_naming_md/) {
+    s|$semconv_attr_naming_md\b|$1/attribute-naming.md|g;
+    printPatchInfoIf("2025-01-22-attribute-naming.md", $otelSpecVers ne "1.41.0");
+  }
+
+  my $semconv_attr_naming = '(/docs/specs/semconv/general)/naming/';
+  if ($ARGV =~ /^tmp\/otel\/specification/ && /$semconv_attr_naming/) {
+    s|$semconv_attr_naming|$1/attribute-naming/|g;
+    printPatchInfoIf("2025-01-22-attribute-naming", $otelSpecVers ne "1.41.0");
   }
 
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;

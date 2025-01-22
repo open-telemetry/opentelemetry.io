@@ -11207,6 +11207,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:51:59.014871-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.40.0/specification/logs/api.md#emit-an-event": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-22T05:55:29.802398-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.40.0/specification/logs/event-api.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-22T05:55:29.317655-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/compare/v1.24.0...v1.25.0": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:04:58.243312-05:00"
@@ -13194,6 +13202,42 @@
   "https://github.com/prometheus-operator/prometheus-operator/releases": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:06:25.505322-05:00"
+  },
+  "https://github.com/prometheus/OpenMetrics/blob/v1.0.0/specification/OpenMetrics.md#counter-1": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-22T05:33:01.875313-05:00"
+  },
+  "https://github.com/prometheus/OpenMetrics/blob/v1.0.0/specification/OpenMetrics.md#exemplars": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-22T05:33:02.735655-05:00"
+  },
+  "https://github.com/prometheus/OpenMetrics/blob/v1.0.0/specification/OpenMetrics.md#gaugehistogram": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-22T05:32:59.977992-05:00"
+  },
+  "https://github.com/prometheus/OpenMetrics/blob/v1.0.0/specification/OpenMetrics.md#info": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-22T05:32:54.414042-05:00"
+  },
+  "https://github.com/prometheus/OpenMetrics/blob/v1.0.0/specification/OpenMetrics.md#metric": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-22T05:32:55.75186-05:00"
+  },
+  "https://github.com/prometheus/OpenMetrics/blob/v1.0.0/specification/OpenMetrics.md#metricfamily": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-22T05:32:52.083975-05:00"
+  },
+  "https://github.com/prometheus/OpenMetrics/blob/v1.0.0/specification/OpenMetrics.md#protobuf-format": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-22T05:32:55.492783-05:00"
+  },
+  "https://github.com/prometheus/OpenMetrics/blob/v1.0.0/specification/OpenMetrics.md#stateset": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-22T05:32:57.022487-05:00"
+  },
+  "https://github.com/prometheus/OpenMetrics/blob/v1.0.0/specification/OpenMetrics.md#supporting-target-metadata-in-both-push-based-and-pull-based-systems": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-22T05:33:04.063828-05:00"
   },
   "https://github.com/prometheus/OpenMetrics/blob/v1.0.0/specification/OpenMetrics.md#unit": {
     "StatusCode": 206,
