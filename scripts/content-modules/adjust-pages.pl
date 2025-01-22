@@ -26,7 +26,6 @@ my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
 my $semconvVers = $versions{'semconv:'};
 my %patchMsgCount;
-my $openRelref = '{{% relref';
 
 sub printTitleAndFrontMatter() {
   print "---\n";
@@ -119,7 +118,7 @@ while(<>) {
 
   ## Semconv
 
-  if ($ARGV =~ /\/semconv/) {
+  if ($ARGV =~ /^tmp\/semconv/) {
     my $otel_spec_event_deprecation = '(opentelemetry-specification/blob/main/specification/logs)/event-(api|sdk).md';
     if (/$otel_spec_event_deprecation/) {
       # Cf. https://github.com/open-telemetry/opentelemetry-specification/pull/4359
@@ -131,13 +130,6 @@ while(<>) {
     s|(\]:\s*)/docs/|$1$specBasePath/semconv/|;
 
     s|\((/model/.*?)\)|($semconvSpecRepoUrl/tree/v$semconvVers/$1)|g;
-
-    # TODO: drop after fix of https://github.com/open-telemetry/semantic-conventions/pull/1316
-    s|#instrument-advice\b|#instrument-advisory-parameters|g;
-
-    # TODO: drop after fix of https://github.com/open-telemetry/semantic-conventions/issues/1313
-    s|(/database/database-spans\.md)#batch-operations|$1|g;
-    s|(/messaging/messaging-spans\.md)#common-messaging-operations|$1|g;
   }
 
 
@@ -153,7 +145,6 @@ while(<>) {
 
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;
   s|(\]\()/specification/|$1$specBasePath/otel/)|;
-  s|\.\./semantic_conventions/README.md|$semConvRef| if $ARGV =~ /overview/;
   s|\.\./specification/(.*?\))|../otel/$1|g if $ARGV =~ /otel\/specification/;
 
   # Match markdown inline links or link definitions to OTel spec pages: "[...](URL)" or "[...]: URL"
@@ -172,92 +163,14 @@ while(<>) {
   s|(\]\()([^)]+\.png\))|$1../$2|g if $ARGV =~ /\btmp\/semconv\/docs\/general\/attributes/;
   s|(\]\()([^)]+\.png\))|$1../$2|g if $ARGV =~ /\btmp\/semconv\/docs\/http\/http-spans/;
 
-  # Handle links containing `README.md`
-
   # Rewrite paths that are outside of the spec folders as external links:
-
   s|\.\.\/README.md|$otelSpecRepoUrl/|g if $ARGV =~ /specification._index/;
-  s|\.\.\/README.md|..| if $ARGV =~ /specification\/library-guidelines.md/;
+  s|\.\.\/README.md|/docs/specs/otel/| if $ARGV =~ /specification\/library-guidelines.md/;
 
   s|(\.\.\/)+(experimental\/[^)]+)|$otelSpecRepoUrl/tree/v$otelSpecVers/$2|g;
   s|(\.\.\/)+(supplementary-guidelines\/compatibility\/[^)]+)|$otelSpecRepoUrl/tree/v$otelSpecVers/$2|g;
 
   s|\.\./((?:examples/)?README\.md)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /^tmp\/otlp/;
-
-  # Replace `README.md` by `_index.md` in markdown links:
-  s{
-      # An inline markdown link, just before the URL: `](` like in `[docs](/docs)`
-      (
-        \]\(
-      )
-
-      # Match any local path. In the `[^...]` exclude group we have:
-      # - `:` so as to exclude external links, which use `:` after a protocol specifier
-      # - `)` prevents us from gobbling up past the end of the inline link
-
-      ([^:\)]*)
-      README\.md
-      ([^)]*)  # Any anchor specifier
-      (\))     # The end of the inline link
-  }{$1$openRelref "$2_index.md$3" \%\}\}$4}gx;
-
-  # Replace `README.md` by `_index.md` in markdown link definitions:
-  s{
-      # A markdown link definition, just before the URL: `]:`, like in `[docs]: /docs`
-      (
-        \]:\s*
-      )
-
-      # Match any local path. In the `[^...]` exclude group we have:
-      # - `:` so as to exclude external links, which use `:` after a protocol specifier
-      # - A space should prevent us from gobbling up beyond the end of a link def
-
-      ([^: ]*)
-      README\.md
-      ([^)]*) # Any anchor specifier
-      (\n)$   # End of the link definition
-  }{$1$openRelref "$2_index.md$3" \%\}\}$4}gx;
-
-  # Rewrite inline links
-  if ($ARGV =~ /\btmp\/opamp/) {
-    s|\]\(([^:\)]*?)\.md((#.*?)?)\)|]($1/$2)|g;
-  } else {
-    # Generally rewrite markdown links as {{% relref "..." %}} expressions,
-    # since that gets Hugo to resolve the links. We can't use the raw path since
-    # some need a `../` prefix to resolve. We let Hugo handle that.
-    s{
-        # Match markdown link `](` just before the URL
-        (\]\()
-
-        # Match the link path:
-        (
-          # Match paths upto but excluding `.md`. The character exclusions are as follows:
-          #
-          # - `:` ensures the URL is a path, not an external link, which has a protocol followe by `:`
-          # - `)` so we don't overrun the end of the markdown link, which ends with `)`
-          # - `{` or `}` so that the path doesn't contain Hugo {{...}}
-
-          [^:\)\{\}]*?
-
-          \.md
-
-          # Match optional anchor of the form `#some-id`
-          (?:
-            \#.*?
-          )?
-        )
-        # Closing parenthesis of markdown link
-        \)
-    }{$1$openRelref "$2" \%\}\}\)}gx;
-  }
-
-  # Rewrite link defs to local pages such as the following:
-  #
-  # [specification]: overview.md
-  # [faas]: some-path/faas-spans.md (FaaS trace conventions)
-  #
-  # The subregex `[:\s]+` excludes external URLs (because they contain a colon after the protocol)
-  s|^(\[[^\]]+\]:\s*)([^:\s]+)(\s*(\(.*\))?)$|$1\{{% relref "$2" %}}$3|g;
 
   # Make website-local page references local:
   s|https://opentelemetry.io/|/|g;
