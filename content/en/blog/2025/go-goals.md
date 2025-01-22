@@ -88,9 +88,10 @@ this upstream development, including the addition of Events.
 
 ### `otelhttp` Stabilization
 
-Priority: Yearly goal Tracking Project:
-[Go: HTTP Semconv Migration](https://github.com/orgs/open-telemetry/projects/87)
-Sponsor: [@dmathieu](https://github.com/dmathieu)
+- Priority: Yearly goal
+- Tracking Project:
+  [Go: HTTP Semconv Migration](https://github.com/orgs/open-telemetry/projects/87)
+- Sponsor: [@dmathieu](https://github.com/dmathieu)
 
 Stabilizing the
 [`otelhttp` instrumentation package](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp)
