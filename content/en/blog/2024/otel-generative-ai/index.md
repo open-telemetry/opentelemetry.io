@@ -48,7 +48,7 @@ The [Semantic Conventions for Generative AI](/docs/specs/semconv/gen-ai/) focus
 on capturing insights into AI model behavior through three primary signals:
 [Traces](/docs/concepts/signals/traces/),
 [Metrics](/docs/concepts/signals/metrics/), and
-[Events](/docs/specs/otel/logs/event-api/).
+[Events](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.40.0/specification/logs/event-api.md).
 
 Together, these signals provide a comprehensive monitoring framework, enabling
 better cost management, performance tuning, and request tracing.
@@ -74,13 +74,19 @@ model responses, providing a granular view of model interactions. These insights
 are invaluable for debugging and optimizing AI applications where unexpected
 behaviors may arise.
 
-{{% alert title="Note" color="info" %}} Note that we decided to use
-[events emitted](/docs/specs/otel/logs/api/#emit-an-event) with the
+{{% alert title="Note" color="info" %}}
+
+Note that we decided to use [events emitted] with the
 [Logs API](/docs/specs/otel/logs/api/) specification in the Semantic Conventions
 for Generative AI. Events allows for us to define specific
 [semantic conventions](/docs/specs/semconv/general/events/) for the user prompts
 and model responses that we capture. This addition to the API is in development
-and considered unstable.{{% /alert %}}
+and considered unstable.
+
+[events emitted]:
+  https://github.com/open-telemetry/opentelemetry-specification/blob/v1.40.0/specification/logs/api.md#emit-an-event
+
+{{% /alert %}}
 
 ### Extending Observability with Vendor-Specific Attributes
 
