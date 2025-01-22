@@ -1,0 +1,19 @@
+# cSpell:ignore fastify
+title: Fastify OpenTelemetry
+registryType: instrumentation
+language: js
+tags:
+  - Node.js
+  - fastify
+license: MIT
+description: Fastify OpenTelemetry auto-instrumentation library.
+authors:
+  - name: Fastify
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-fastify
+createdAt: 2024-11-27
+package:
+  registry: npm
+  name: '@fastify/otel'
+  version: 0.1.0
+isFirstParty: false
