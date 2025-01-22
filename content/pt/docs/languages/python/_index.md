@@ -4,7 +4,6 @@ description: >-
   <img width="35" class="img-initial" src="/img/logos/32x32/Python_SDK.svg"
   alt="Python"> Uma implementação específica de linguagem do OpenTelemetry em
   Python.
-aliases: [/python, /python/metrics, /python/tracing]
 weight: 22
 default_lang_commit: 3fd0bb513e5d3fa6f178a73584322bcc469f15e0
 ---
