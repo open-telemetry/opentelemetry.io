@@ -21,4 +21,5 @@ jobs:
       success: ${{ needs.build-dev.result == 'success' }}
       repo: open-telemetry/semantic-conventions
     secrets:
-      opentelemetrybot_github_token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+      opentelemetrybot_github_token:
+        ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
