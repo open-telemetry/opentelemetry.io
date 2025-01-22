@@ -13,10 +13,12 @@ As we kick off 2025, the
 [OpenTelemetry Go](https://github.com/open-telemetry/opentelemetry-go) team has
 come together to set a roadmap for the year. Our focus is on driving the
 OpenTelemetry Go project forward while strengthening its integration with the
-broader OpenTelemetry ecosystem. Here's an overview of our goals, their expected
-timelines, and the key contributors supporting each initiative.
+broader OpenTelemetry ecosystem.
 
 ## Goals
+
+Here's an overview of our goals, their expected timelines, and the key
+contributors supporting each initiative.
 
 ### New Semantic Conventions (Weaver)
 
