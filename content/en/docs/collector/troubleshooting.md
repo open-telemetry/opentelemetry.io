@@ -344,8 +344,8 @@ The Collector might exit or restart due to:
 - Memory pressure from a missing or misconfigured
   [`memory_limiter` processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/memorylimiterprocessor/README.md).
 - Improper sizing for load.
-- Improper configuration. For example, a queue size configured higher than
-  available memory.
+- Improper configuration. For example, a queue sized to be larger than available
+  memory.
 - Infrastructure resource limits. For example, Kubernetes.
 
 #### Collector fails to start in Windows Docker containers
