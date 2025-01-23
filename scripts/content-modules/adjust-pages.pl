@@ -22,6 +22,7 @@ my %versions = qw(
   otlp: 1.5.0
   semconv: 1.29.0
 );
+my %versFromRepo = %versions; # Use declared versions a defaults
 my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
 my $semconvVers = $versions{'semconv:'};
@@ -47,8 +48,8 @@ sub printTitleAndFrontMatter() {
   # Sample front-matter patch:
   #
   # } elsif ($ARGV =~ /otel\/specification\/logs\/api.md$/) {
-  #   $frontMatterFromFile .= "linkTitle: API\naliases: [bridge-api]\n";
-  #   printPatchInfoIf("2024-12-01-bridge-api", $otelSpecVers ne "1.39.0");
+  #   $frontMatterFromFile .= "linkTitle: API\naliases: [bridge-api]\n" if
+  #     applyPatchOrPrintMsgIf('2024-12-01-bridge-api', 'spec', '1.39.0');
   # }
 
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
@@ -65,24 +66,52 @@ sub printTitleAndFrontMatter() {
   print "---\n";
 }
 
-sub printPatchInfoIf($$) {
-  my ($patchID, $specVersTest) = @_;
-  print STDOUT "INFO [$patchID]: $0: remove obsolete patch code now that spec(s) have been updated.\n"
-    if $specVersTest && !$patchMsgCount{$patchID}++;
+sub applyPatchOrPrintMsgIf($$$) {
+  # Returns truthy if patch should be applied, otherwise prints message (once) as to why not.
+
+  my ($patchID, $versKey_, $targetVers) = @_;
+  my $versKey = $versKey_ . ':';
+  my $vers;
+
+  return 0 if $patchMsgCount{$patchID};
+
+  if (($vers = $versions{$versKey}) ne $targetVers) {
+    print STDOUT "INFO: remove obsolete patch '$patchID' now that spec '$versKey_' is at v$vers, not v$targetVers - $0\n";
+  } elsif (($vers = $versFromRepo{$versKey}) ne $targetVers) {
+    print STDOUT "INFO [$patchID]: skipping patch '$patchID' since spec '$versKey_' submodule is at v$vers not v$targetVers - $0\n";
+  } else {
+    return 'Apply the patch';
+  }
+  $patchMsgCount{$patchID}++;
+  return 0;
 }
 
-sub patchAttrNaming($$) {
-  my ($ARGV, $__) = @_;
-  $_ = $__;
+sub patchAttrNaming() {
+  return unless $ARGV =~ /^tmp\/otel\/specification/
+    && applyPatchOrPrintMsgIf('2025-01-22-attribute-naming', 'semconv', '1.29.0');
+
   my $semconv_attr_naming = '(/docs/specs/semconv/general)/naming/';
-  if ($ARGV =~ /^tmp\/otel\/specification/ && /$semconv_attr_naming/) {
-    s|$semconv_attr_naming|$1/attribute-naming/|g;
-    printPatchInfoIf("2025-01-22-attribute-naming", $semconvVers ne "1.29.0");
+  s|$semconv_attr_naming|$1/attribute-naming/|g if /$semconv_attr_naming/;
+}
+
+sub getVersFromRepo() {
+  my $vers = qx(
+    cd content-modules/semantic-conventions;
+    git describe --tags 2>&1;
+  );
+  chomp($vers);
+
+  if ($?) {
+    warn "WARNING: semconv repo: call to 'git describe' failed: '$vers'";
+  } else {
+    $vers =~ s/v//;
+    $versFromRepo{'semconv:'} = $vers;
   }
-  return $_;
 }
 
 # main
+
+getVersFromRepo();
 
 while(<>) {
   # printf STDOUT "$ARGV Got: $_" if $gD;
@@ -94,7 +123,7 @@ while(<>) {
     if (/^<!---? Hugo/) {
         while(<>) {
           last if /^-?-->/;
-          $_ = patchAttrNaming($ARGV, $_); # TEMPORARY patch
+          patchAttrNaming(); # TEMPORARY patch
           $frontMatterFromFile .= $_;
         }
         next;
@@ -119,11 +148,10 @@ while(<>) {
   ## Semconv
 
   if ($ARGV =~ /^tmp\/semconv/) {
-    my $otel_spec_event_deprecation = '(opentelemetry-specification/blob/main/specification/logs)/event-(api|sdk).md';
-    if (/$otel_spec_event_deprecation/) {
+    if (applyPatchOrPrintMsgIf('2025-01-22-event-(api|sdk)', 'semconv', '1.29.0')) {
       # Cf. https://github.com/open-telemetry/opentelemetry-specification/pull/4359
-      s|$otel_spec_event_deprecation\b|$1/|g;
-      printPatchInfoIf("2025-01-22-event-(api|sdk)", $semconvVers ne "1.29.0");
+      my $otel_spec_event_deprecation = '(opentelemetry-specification/blob/main/specification/logs)/event-(api|sdk).md';
+      s|$otel_spec_event_deprecation\b|$1/|g if /$otel_spec_event_deprecation/;
     }
 
     s|(\]\()/docs/|$1$specBasePath/semconv/|g;
@@ -135,13 +163,12 @@ while(<>) {
 
   # SPECIFICATION custom processing
 
-  my $semconv_attr_naming_md = '(semantic-conventions/blob/main/docs/general)/naming.md(#\w+)?';
-  if ($ARGV =~ /^tmp\/otel\/specification/ && /$semconv_attr_naming_md/) {
-    s|$semconv_attr_naming_md\b|$1/attribute-naming.md|g;
-    printPatchInfoIf("2025-01-22-attribute-naming.md", $semconvVers ne "1.29.0");
+  if ($ARGV =~ /^tmp\/otel\/specification/ && applyPatchOrPrintMsgIf('2025-01-22-attribute-naming.md', 'semconv', '1.29.0')) {
+    my $semconv_attr_naming_md = '(semantic-conventions/blob/main/docs/general)/naming.md(#\w+)?';
+    s|$semconv_attr_naming_md\b|$1/attribute-naming.md|g if /$semconv_attr_naming_md/;
   }
 
-  $_ = patchAttrNaming($ARGV, $_); # TEMPORARY patch
+  patchAttrNaming(); # TEMPORARY patch
 
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;
   s|(\]\()/specification/|$1$specBasePath/otel/)|;
