@@ -2,7 +2,7 @@ const tcb_rule_name = 'trim-code-block-and-unindent';
 const trimCodeBlockRule = require('./_md-rules/' + tcb_rule_name);
 const gulp = require('gulp');
 const through2 = require('through2');
-const markdownlint = require('markdownlint');
+const markdownlint = require('markdownlint/async').lint;
 const { taskArgs, trimBlankLinesFromArray } = require('./_util');
 const fs = require('fs');
 
