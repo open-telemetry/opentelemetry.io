@@ -10,7 +10,7 @@ jobs:
   auto-update-versions:
     name: Auto-update community members page
     runs-on: ubuntu-24.04
-    # Remove the if statement below when testing againt a fork
+    # Remove the if statement below when testing against a fork
     if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
       - name: Checkout

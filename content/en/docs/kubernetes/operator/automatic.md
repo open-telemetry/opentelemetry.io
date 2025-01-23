@@ -5,7 +5,7 @@ weight: 11
 description:
   An implementation of auto-instrumentation using the OpenTelemetry Operator.
 # prettier-ignore
-cSpell:ignore: GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver PTRACE REDISCALA Werkzeug
+cSpell:ignore: GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver PTRACE REDISCALA
 ---
 
 The OpenTelemetry Operator supports injecting and configuring
@@ -179,6 +179,105 @@ spec:
 #### Learn more {#dotnet-learn-more}
 
 For more details, see [.NET Auto Instrumentation docs](/docs/zero-code/net/).
+
+### Deno
+
+The following command creates a basic Instrumentation resource that is
+configured for instrumenting [Deno](https://deno.com) services.
+
+```bash
+kubectl apply -f - <<EOF
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: demo-instrumentation
+spec:
+  env:
+    - name: OTEL_DENO
+      value: 'true'
+  exporter:
+    endpoint: http://demo-collector:4318
+  propagators:
+    - tracecontext
+    - baggage
+  sampler:
+    type: parentbased_traceidratio
+    argument: '1'
+EOF
+```
+
+Deno processes automatically export telemetry data to the configured endpoint
+when they are started with the `OTEL_DENO=true` environment variable. Therefore,
+the example specifies this environment variable in the `env` field of the
+Instrumentation resource, so it is set for all services that have env vars
+injected with this Instrumentation resource.
+
+By default, the Instrumentation resource that auto-instruments Deno services
+uses `otlp` with the `http/proto` protocol. This means that the configured
+endpoint must be able to receive OTLP over `http/proto`. Therefore, the example
+uses `http://demo-collector:4318`, which connects to the `http/proto` port of
+the `otlpreceiver` of the Collector created in the previous step.
+
+{{% alert title="Note" color="info" %}}
+
+[Deno's OpenTelemetry integration][deno-docs] is not yet stable. As a result all
+workloads that want to be instrumented with Deno must have the `--unstable-otel`
+flag set when starting the Deno process.
+
+[deno-docs]: https://docs.deno.com/runtime/fundamentals/open_telemetry/
+
+{{% /alert %}}
+
+#### Configuration options {#deno-configuration-options}
+
+By default, the Deno OpenTelemetry integration exports `console.log()` output
+as\
+[logs](/docs/concepts/signals/logs/), while still printing the logs to stdout /
+stderr. You can configure these alternative behaviors:
+
+- `OTEL_DENO_CONSOLE=replace`: only export `console.log()` output as logs; do
+  not print to stdout / stderr.
+- `OTEL_DENO_CONSOLE=ignore`: do not export `console.log()` output as logs; do
+  print to stdout / stderr.
+
+#### Learn more {#deno-learn-more}
+
+For more details, see Deno's [OpenTelemetry integration][deno-otel-docs]
+documentation.
+
+[deno-otel-docs]: https://docs.deno.com/runtime/fundamentals/open_telemetry/
+
+### Go
+
+The following command creates a basic Instrumentation resource that is
+configured specifically for instrumenting Go services.
+
+```bash
+kubectl apply -f - <<EOF
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: demo-instrumentation
+spec:
+  exporter:
+    endpoint: http://demo-collector:4318
+  propagators:
+    - tracecontext
+    - baggage
+  sampler:
+    type: parentbased_traceidratio
+    argument: "1"
+EOF
+```
+
+By default, the Instrumentation resource that auto-instruments Go services uses
+`otlp` with the `http/protobuf` protocol. This means that the configured
+endpoint must be able to receive OTLP over `http/protobuf`. Therefore, the
+example uses `http://demo-collector:4318`, which connects to the `http/protobuf`
+port of the `otlpreceiver` of the Collector created in the previous step.
+
+The Go auto-instrumentation does not support disabling any instrumentation.
+[See the Go Auto-Instrumentation repository for more details.](https://github.com/open-telemetry/opentelemetry-go-instrumentation)
 
 ### Java
 
@@ -436,38 +535,6 @@ For Python-specific quirks, see
 and the
 [Python agent configuration docs](/docs/zero-code/python/configuration/).
 
-### Go
-
-The following command creates a basic Instrumentation resource that is
-configured specifically for instrumenting Go services.
-
-```bash
-kubectl apply -f - <<EOF
-apiVersion: opentelemetry.io/v1alpha1
-kind: Instrumentation
-metadata:
-  name: demo-instrumentation
-spec:
-  exporter:
-    endpoint: http://demo-collector:4318
-  propagators:
-    - tracecontext
-    - baggage
-  sampler:
-    type: parentbased_traceidratio
-    argument: "1"
-EOF
-```
-
-By default, the Instrumentation resource that auto-instruments Go services uses
-`otlp` with the `http/protobuf` protocol. This means that the configured
-endpoint must be able to receive OTLP over `http/protobuf`. Therefore, the
-example uses `http://demo-collector:4318`, which connects to the `http/protobuf`
-port of the `otlpreceiver` of the Collector created in the previous step.
-
-The Go auto-instrumentation does not support disabling any instrumentation.
-[See the Go Auto-Instrumentation repository for more details.](https://github.com/open-telemetry/opentelemetry-go-instrumentation)
-
 ---
 
 Now that your Instrumentation object is created, your cluster has the ability to
@@ -483,6 +550,7 @@ done by updating your service’s `spec.template.metadata.annotations` to includ
 a language-specific annotation:
 
 - .NET: `instrumentation.opentelemetry.io/inject-dotnet: "true"`
+- Deno: `instrumentation.opentelemetry.io/inject-sdk: "true"`
 - Go: `instrumentation.opentelemetry.io/inject-go: "true"`
 - Java: `instrumentation.opentelemetry.io/inject-java: "true"`
 - Node.js: `instrumentation.opentelemetry.io/inject-nodejs: "true"`
@@ -681,10 +749,13 @@ auto-instrumentation annotation.
 
 Here are a few things to check for:
 
-- **Is the auto-instrumentation for the right language?** For example, when
-  instrumenting a Python application, make sure that the annotation doesn't
-  incorrectly say `instrumentation.opentelemetry.io/inject-java: "true"`
-  instead.
+- **Is the auto-instrumentation for the right language?**
+  - For example, when instrumenting a Python application, make sure that the
+    annotation doesn't incorrectly say
+    `instrumentation.opentelemetry.io/inject-java: "true"` instead.
+  - For **Deno**, make sure you are using the
+    `instrumentation.opentelemetry.io/inject-sdk: "true"` annotation, rather
+    than an annotation containing the string `deno`.
 - **Is the auto-instrumentation annotation in the correct location?** When
   defining a `Deployment`, annotations can be added in one of two locations:
   `spec.metadata.annotations`, and `spec.template.metadata.annotations`. The

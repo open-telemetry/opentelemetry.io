@@ -4,9 +4,7 @@ title:
   Operator Q&A
 linkTitle: OTel Operator Q&A
 date: 2024-05-13
-author: >-
-  [Adriana Villela](https://github.com/avillela) (ServiceNow),
-
+author: '[Adriana Villela](https://github.com/avillela) (ServiceNow)'
 canonical_url: https://adri-v.medium.com/81d63addbf92?
 cSpell:ignore: automagically mycollector
 ---

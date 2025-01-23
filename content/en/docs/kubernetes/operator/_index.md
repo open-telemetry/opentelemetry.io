@@ -17,12 +17,14 @@ redirects:
 
 ## Introduction
 
-The OpenTelemetry Operator is an implementation of a
+The
+[OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator)
+is an implementation of a
 [Kubernetes Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/).
 
 The operator manages:
 
-- OpenTelemetry Collector
+- [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector)
 - [auto-instrumentation of the workloads using OpenTelemetry instrumentation libraries](https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection)
 
 ## Getting started

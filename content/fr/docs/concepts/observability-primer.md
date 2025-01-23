@@ -6,7 +6,7 @@ default_lang_commit: 71833a5f8b84110dadf1e98604b87a900724ac33
 cSpell:ignore: webshop
 ---
 
-## Qu'est-ce que l'observabilité ?
+## Qu'est-ce que l'observabilité ? {#what-is-observability}
 
 L'observabilité est la capacité à comprendre l'état d'un système en examinant
 ses données sortantes, sans avoir besoin de connaître son fonctionnement
@@ -28,7 +28,7 @@ besoin d'ajouter une instrumentation supplémentaire.
 [OpenTelemetry](/docs/what-is-opentelemetry/) est le mécanisme permettant
 d'instrumenter le code des applications afin de rendre le système observable.
 
-## Fiabilité et métriques
+## Fiabilité et métriques {#reliability-and-metrics}
 
 Le terme **télémétrie** fait référence aux données émises par un système et son
 comportement. Les données peuvent prendre la forme de
@@ -58,7 +58,7 @@ Les objectifs de niveau de service, communément appelés **SLO**, permettent de
 rendre compte à une organisation ou à d'autres équipes de la fiabilité d'un
 système.
 
-## Comprendre le traçage distribué
+## Comprendre le traçage distribué {#understanding-distributed-tracing}
 
 Le traçage distribué vous permet d'observer les requêtes au fur et à mesure
 qu'elles se propagent au travers de systèmes distribués complexes. Il vous offre
@@ -71,14 +71,14 @@ reproduire localement.
 Pour comprendre le traçage distribué, vous devez comprendre le rôle de chacun de
 ses composants : les logs, les spans et les traces.
 
-### Logs
+### Logs {#logs}
 
 Un **log** est un message horodaté émis par des services ou d'autres composants.
-Contrairement aux [traces](#les-traces-distribuées), ils ne sont pas
-nécessairement associés à une requête ou une transaction utilisateur en
-particulier. Presque tous les logiciels émettent des logs. Par le passé, les
-développeurs et les opérateurs se sont largement appuyés sur les logs pour
-comprendre le comportement des systèmes.
+Contrairement aux [traces](#distributed-traces), ils ne sont pas nécessairement
+associés à une requête ou une transaction utilisateur en particulier. Presque
+tous les logiciels émettent des logs. Par le passé, les développeurs et les
+opérateurs se sont largement appuyés sur les logs pour comprendre le
+comportement des systèmes.
 
 Exemple de log :
 
@@ -96,7 +96,7 @@ lorsqu'ils sont mis en corrélation avec une trace ou un span.
 Pour plus d'informations sur les logs et leur rôle dans OpenTelemetry,
 référez-vous à la page [Logs](/docs/concepts/signals/logs/).
 
-### Spans
+### Spans {#spans}
 
 Un **span** représente une unité de travail ou d'opération. Il retrace les
 actions effectuées par une requête, offrant une vue détaillée des événements qui
@@ -107,7 +107,7 @@ Un span contient un nom, des données de temps,
 [autres métadonnées (les attributs)](/docs/concepts/signals/traces/#attributes)
 pour fournir des informations sur l'opération qu'il suit.
 
-#### Attributs de span
+#### Attributs de span {#span-attributes}
 
 Les attributs de span sont des métadonnées attachées à un span.
 
@@ -131,7 +131,7 @@ La table suivante liste des exemples d'attributs de span :
 Pour plus d'informations sur les spans et leur rôle dans OpenTelemetry,
 référez-vous à la page [Spans](/docs/concepts/signals/traces/#spans).
 
-### Les traces distribuées
+### Les traces distribuées {#distributed-traces}
 
 Une **trace distribuée**, plus communément connu sous le nom de **trace**,
 enregistre les chemins pris par les requêtes (lancées par une application ou un

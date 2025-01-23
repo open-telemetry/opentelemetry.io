@@ -4,7 +4,7 @@ linkTitle: Configure the SDK
 weight: 13
 aliases: [config]
 # prettier-ignore
-cSpell:ignore: authservice autoconfigured blrp Customizer Dotel ignore LOWMEMORY myservice ottrace PKCS retryable tracepropagators
+cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS retryable
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->

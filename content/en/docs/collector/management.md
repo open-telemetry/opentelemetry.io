@@ -2,7 +2,7 @@
 title: Management
 description: How to manage your OpenTelemetry collector deployment at scale
 weight: 23
-cSpell:ignore: AFVGQT backpressure distro GRRKNBJE hostmetrics loglevel
+cSpell:ignore: AFVGQT backpressure distro GRRKNBJE hostmetrics
 ---
 
 This document describes how you can manage your OpenTelemetry Collector

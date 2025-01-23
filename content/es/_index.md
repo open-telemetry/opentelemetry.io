@@ -2,8 +2,6 @@
 title: OpenTelemetry
 description: >-
   Telemetría portable, ubicua, y de alta calidad para una observabilidad eficaz
-outputs:
-  - HTML
 developer_note:
   La macro para los bloques/portada usa como imagen de fondo cualquier archivo
   de imagen que contenga la palabra "background" en su nombre.

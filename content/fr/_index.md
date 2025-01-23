@@ -3,14 +3,11 @@ title: OpenTelemetry
 description: >-
   Une télémétrie de qualité, universelle et portable pour une observabilité
   efficace
-outputs:
-  - HTML
-  - REDIRECTS # Include this `content/fr` ONLY
 developer_note:
   La macro "blocks/cover" définie ci-dessous permet d'utiliser comme image de
   fond tout visuel contenant "background" dans son nom.
 show_banner: true
-default_lang_commit: 90dcedd7f692a505eb86145734b1e323ec988820
+default_lang_commit: c0a5eea5d720b0e075efa87f99dcf58c89106268
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>

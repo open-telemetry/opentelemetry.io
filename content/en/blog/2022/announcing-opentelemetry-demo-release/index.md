@@ -14,7 +14,7 @@ announce
 With this demo, you’ll be able to quickly run a complete end-to-end distributed
 system instrumented with 100% OpenTelemetry Traces and Metrics.
 
-![The system architecture of the demo application represented as directed acyclic graph in Jaeger UI](sytem-architecture.png)
+![The system architecture of the demo application represented as directed acyclic graph in Jaeger UI](system-architecture.png)
 
 One of our primary goals of this project has been to create a robust sample
 application for developers to use in learning OpenTelemetry, and we’re proud to

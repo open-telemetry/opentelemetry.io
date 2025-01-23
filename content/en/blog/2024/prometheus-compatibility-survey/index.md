@@ -175,10 +175,10 @@ existing conventions.
 
 For the most part, this feedback aligns with the future plans in the
 OpenTelemetry and Prometheus communities. The OpenTelemetry semantic conventions
-SIG is working on stabilizing conventions for a a wide variety of
-instrumentation. The OpenTelemetry Prometheus interoperability SIG is working on
-incorporating the results of this survey into the compatibility specification.
-The Prometheus community has
+SIG is working on stabilizing conventions for a wide variety of instrumentation.
+The OpenTelemetry Prometheus interoperability SIG is working on incorporating
+the results of this survey into the compatibility specification. The Prometheus
+community has
 [ambitious plans](https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/)
 to add support for OpenTelemetry concepts.
 
