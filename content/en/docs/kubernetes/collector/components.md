@@ -680,7 +680,7 @@ The available scrapers are:
 | network    | All                   | Network interface I/O metrics & TCP connection metrics |
 | paging     | All                   | Paging/Swap space utilization and I/O metrics          |
 | processes  | Linux, macOS          | Process count metrics                                  |
-| process    | Linux, Windows, macOS | Per process CPU, Memory, and Disk I/O metrics          |
+| process    | Linux, macOS, Windows | Per process CPU, Memory, and Disk I/O metrics          |
 
 [^1]:
     Not supported on macOS when compiled without cgo, which is the default for
