@@ -21,7 +21,7 @@ had a
 and they've been available on AWS for years.
 
 You're totally correct. Rest assured, we're not reinventing the wheel. However,
-there are some pre-existing problems that may impact users:
+there are some preexisting problems that may impact users:
 
 - The OTel Lambda layers were only released as part of the
   [AWS Distribution for OTel (ADOT)](https://aws-otel.github.io/), and the
