@@ -1,6 +1,6 @@
 ---
-title: Kubernetes annotation based discovery for OpenTelemetry Collector
-linkTitle: Kubernetes annotation discovery
+title: Kubernetes annotation-based discovery for the OpenTelemetry Collector
+linkTitle: K8s annotation-based discovery
 date: 2025-01-22
 author: >
   [Dmitrii Anoshin](https://github.com/dmitryax) (Cisco/Splunk), [Christos
@@ -14,7 +14,7 @@ In the world of containers and [Kubernetes](https://kubernetes.io/),
 observability is crucial. Users need to know the status of their workloads at
 any given time. In other words, they need observability into moving objects.
 
-This is where the [OpenTelemetry Collector](/docs/collector) and its
+This is where the [OpenTelemetry Collector](/docs/collector/) and its
 [receiver creator](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.117.0/receiver/receivercreator)
 component come in handy. Users can set up fairly complex monitoring scenarios
 with a self-service approach, following the principle of least privilege at the
@@ -70,8 +70,7 @@ So, what if, as a Collector user, you could simply enable automatic discovery
 and then let your cluster users tell the Collector how their workloads should be
 monitored by annotating their pods properly? That sounds awesome, and it’s not
 actually something new. OpenTelemetry already supports auto-instrumentation
-through the Operator
-([documentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/)),
+through the [Kubernetes operator](/docs/kubernetes/operator/automatic/),
 allowing users to instrument their applications automatically just by annotating
 their pods. In addition, this is a feature that other monitoring agents in the
 observability industry already support, and users are familiar with it.
@@ -175,12 +174,13 @@ receivers:
       enabled: true
 ```
 
-## Conclusion - Wrapping up
+## Give it a try
 
-If you are an OpenTelemetry Collector user on Kubernetes and you find this new
-feature interesting, go ahead and visit the official
-[documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.117.0/receiver/receivercreator/README.md#generate-receiver-configurations-from-provided-hints)
-to learn more! And if you give it a try let us know what you think. Don't
-hesitate to reach out to us in the official CNCF
-[Slack workspace](https://slack.cncf.io/) and specifically the `#otel-collector`
-channel.
+If you are an OpenTelemetry Collector user on Kubernetes, and you find this new
+feature interesting, see [Receiver Creator configuration] section to learn more.
+
+Give it a try let us know what you think via the `#otel-collector` channel of the
+[CNCF Slack workspace](https://slack.cncf.io/).
+
+[Receiver Creator configuration]: https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.117.0/receiver/receivercreator/README.md#generate-receiver-configurations-from-provided-hints
+
