@@ -27,6 +27,7 @@ my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
 my $semconvVers = $versions{'semconv:'};
 my %patchMsgCount;
+my $lineNum;
 
 sub printTitleAndFrontMatter() {
   print "---\n";
@@ -114,14 +115,17 @@ sub getVersFromRepo() {
 getVersFromRepo();
 
 while(<>) {
-  # printf STDOUT "$ARGV Got: $_" if $gD;
+  $lineNum++;
+  # printf STDOUT "$ARGV Got:$lineNum: $_" if $gD;
 
   if ($file ne $ARGV) {
     $file = $ARGV;
     $frontMatterFromFile = '';
     $title = '';
+    $lineNum = 1;
     if (/^<!---? Hugo/) {
         while(<>) {
+          $lineNum++;
           last if /^-?-->/;
           patchAttrNaming(); # TEMPORARY patch
           $frontMatterFromFile .= $_;
@@ -137,11 +141,19 @@ while(<>) {
   }
 
   if (/<details>/) {
-    while(<>) { last if /<\/details>/; }
+    while(<>) { $lineNum++; last if /<\/details>/; }
     next;
   }
   if(/<!-- toc -->/) {
-    while(<>) { last if/<!-- tocstop -->/; }
+    my $tocstop = '<!-- tocstop -->';
+    while(<>) {
+      $lineNum++;
+      last if/$tocstop/;
+      next if /^\s*([-\+\*]\s|$)/;
+      warn "WARN $ARGV:$lineNum: missing '$tocstop' directive? Aborting toc scan at line:\n  $lineNum: $_";
+      print;
+      last;
+    }
     next;
   }
 
