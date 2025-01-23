@@ -17,17 +17,23 @@ my $opAmpSpecRepoUrl = 'https://github.com/open-telemetry/opamp-spec';
 my $semconvSpecRepoUrl = 'https://github.com/open-telemetry/semantic-conventions';
 my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
 my $specBasePath = '/docs/specs';
-my %versions = qw(
-  spec: 1.41.0
-  otlp: 1.5.0
-  semconv: 1.29.0
-);
-my %versFromRepo = %versions; # Use declared versions a defaults
-my $otelSpecVers = $versions{'spec:'};
-my $otlpSpecVers = $versions{'otlp:'};
-my $semconvVers = $versions{'semconv:'};
 my %patchMsgCount;
 my $lineNum;
+
+my %versionsRaw = # Keyname must end with colons because the auto-version update script expects one
+  qw(
+    spec: 1.41.0
+    otlp: 1.5.0
+    semconv: 1.29.0
+  );
+# Versions map without the colon in the keys
+my %versions = map { s/://r => $versionsRaw{$_} } keys %versionsRaw;
+# Shorthands
+my $otelSpecVers = $versions{'spec'};
+my $otlpSpecVers = $versions{'otlp'};
+my $semconvVers = $versions{'semconv'};
+
+my %versFromSubmod = %versions; # Actual version of submodules. Updated by getVersFromSubmodule().
 
 sub printTitleAndFrontMatter() {
   print "---\n";
@@ -70,20 +76,20 @@ sub printTitleAndFrontMatter() {
 sub applyPatchOrPrintMsgIf($$$) {
   # Returns truthy if patch should be applied, otherwise prints message (once) as to why not.
 
-  my ($patchID, $versKey_, $targetVers) = @_;
-  my $versKey = $versKey_ . ':';
+  my ($patchID, $specName, $targetVers) = @_;
   my $vers;
+  my $key = $specName . $patchID;
 
-  return 0 if $patchMsgCount{$patchID};
+  return 0 if $patchMsgCount{$key};
 
-  if (($vers = $versions{$versKey}) ne $targetVers) {
-    print STDOUT "INFO: remove obsolete patch '$patchID' now that spec '$versKey_' is at v$vers, not v$targetVers - $0\n";
-  } elsif (($vers = $versFromRepo{$versKey}) ne $targetVers) {
-    print STDOUT "INFO [$patchID]: skipping patch '$patchID' since spec '$versKey_' submodule is at v$vers not v$targetVers - $0\n";
+  if (($vers = $versions{$specName}) ne $targetVers) {
+    print STDOUT "INFO: remove obsolete patch '$patchID' now that spec '$specName' is at v$vers, not v$targetVers - $0\n";
+  } elsif (($vers = $versFromSubmod{$specName}) ne $targetVers) {
+    print STDOUT "INFO [$patchID]: skipping patch '$patchID' since spec '$specName' submodule is at v$vers not v$targetVers - $0\n";
   } else {
     return 'Apply the patch';
   }
-  $patchMsgCount{$patchID}++;
+  $patchMsgCount{$key}++;
   return 0;
 }
 
@@ -95,24 +101,49 @@ sub patchAttrNaming() {
   s|$semconv_attr_naming|$1/attribute-naming/|g if /$semconv_attr_naming/;
 }
 
-sub getVersFromRepo() {
-  my $vers = qx(
-    cd content-modules/semantic-conventions;
-    git describe --tags 2>&1;
-  );
-  chomp($vers);
+sub patchEventAliases() {
+  return unless $ARGV =~ /^tmp\/otel\/specification\/logs\//
+    && applyPatchOrPrintMsgIf('2025-01-23-event-aliases', 'spec', '1.41.0');
 
-  if ($?) {
-    warn "WARNING: semconv repo: call to 'git describe' failed: '$vers'";
-  } else {
-    $vers =~ s/v//;
-    $versFromRepo{'semconv:'} = $vers;
+  my $aliases = '^(  - )(event-(api|sdk))$';
+  s|$aliases|$1./$2|g if /$aliases/;
+}
+
+sub patchSemConvAlias() {
+  return unless $ARGV =~ /^tmp\/semconv\/docs\/general\//
+    && applyPatchOrPrintMsgIf('2025-01-23-general-aliases', 'semconv', '1.29.0');
+
+  my $aliases = '\[docs/specs/semconv/general/(trace-general)\]';
+  s|$aliases|[$1]|g if /$aliases/;
+}
+
+sub getVersFromSubmodule() {
+  my %repoNames = qw(
+    otlp    opentelemetry-proto
+    semconv semantic-conventions
+    spec    opentelemetry-specification
+  );
+
+  foreach my $spec (keys %repoNames) {
+    my $directory = $repoNames{$spec};
+    my $vers = qx(
+      cd content-modules/$directory;
+      git describe --tags 2>&1;
+    );
+    chomp($vers);
+
+    if ($?) {
+      warn "WARNING: submodule '$spec': call to 'git describe' failed: '$vers'";
+    } else {
+      $vers =~ s/v//;
+      $versFromSubmod{$spec} = $vers;
+    }
   }
 }
 
 # main
 
-getVersFromRepo();
+getVersFromSubmodule();
 
 while(<>) {
   $lineNum++;
@@ -127,7 +158,9 @@ while(<>) {
         while(<>) {
           $lineNum++;
           last if /^-?-->/;
-          patchAttrNaming(); # TEMPORARY patch
+          patchAttrNaming();
+          patchEventAliases();
+          patchSemConvAlias();
           $frontMatterFromFile .= $_;
         }
         next;
