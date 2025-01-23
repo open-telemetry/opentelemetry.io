@@ -98,8 +98,10 @@ service:
 
 Afterward, set the `OPENTELEMETRY_COLLECTOR_CONFIG_URI` environment variable to
 `/var/task/collector.yaml`. Once the function is redeployed, you’ll see your
-function logs appear!
+function logs appear! You can see this in action in the video below.
 
-<video controls>
-  <source src="./video-lambda-real-time.webm" />
-</video>
+<p>
+  <video controls style="width: 100%">
+    <source src="./video-lambda-real-time.webm" />
+  </video>
+</p>
