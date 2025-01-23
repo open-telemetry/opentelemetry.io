@@ -2119,6 +2119,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-08-09T10:47:38.013929-04:00"
   },
+  "https://datatracker.ietf.org/doc/html/rfc9293#section-3.3.2": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:32.344104-05:00"
+  },
   "https://deno.com": {
     "StatusCode": 200,
     "LastSeen": "2025-01-20T15:58:06.919196531+01:00"
@@ -3306,6 +3310,10 @@
   "https://en.wikipedia.org/wiki/Asynchronous_method_invocation": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:23:52.039559-05:00"
+  },
+  "https://en.wikipedia.org/wiki/BEAM_%28Erlang_virtual_machine%29": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-23T17:25:31.814926-05:00"
   },
   "https://en.wikipedia.org/wiki/Bat-Signal": {
     "StatusCode": 200,
@@ -5519,6 +5527,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T17:24:29.99273-05:00"
   },
+  "https://github.com/in-toto/attestation/tree/main/spec": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:37.601488-05:00"
+  },
   "https://github.com/instana": {
     "StatusCode": 200,
     "LastSeen": "2024-11-14T11:47:17.991776+01:00"
@@ -6674,6 +6686,14 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.100.0/receiver/filelogreceiver/README.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:34:28.863197-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.112.0/receiver/kubeletstatsreceiver/documentation.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:38.40797-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.115.0/receiver/k8sclusterreceiver/documentation.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:40.445067-05:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.117.0/connector/countconnector/README.md": {
     "StatusCode": 206,
@@ -11287,6 +11307,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:51:59.014871-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.40.0/spec-compliance-matrix.md#logs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:32.666832-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.40.0/specification/logs/api.md#emit-an-event": {
     "StatusCode": 206,
     "LastSeen": "2025-01-22T05:55:29.802398-05:00"
@@ -11722,6 +11746,78 @@
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.39.0/specification/trace/sdk.md#span-processor": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:52:11.607071-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.40.0/specification/common#attribute": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:30.847854-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.40.0/specification/compatibility/prometheus_and_openmetrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:29.772206-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.40.0/specification/configuration/sdk-environment-variables.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:40.833244-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.40.0/specification/context/api-propagators.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:33.364355-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.40.0/specification/document-status.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:29.460385-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.40.0/specification/logs/api.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:30.127685-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.40.0/specification/logs/api.md#emit-a-logrecord": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:31.131598-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.40.0/specification/logs/api.md#emit-an-event": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:32.241502-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.40.0/specification/logs/api.md#logger": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:32.160094-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.40.0/specification/logs/data-model.md#field-eventname": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:29.433115-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.40.0/specification/logs/data-model.md#log-and-event-record-definition": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:29.491669-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.40.0/specification/metrics/api.md#instrument-advisory-parameters": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:32.007599-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.40.0/specification/resource/sdk.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:29.463515-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.40.0/specification/resource/sdk.md#sdk-provided-resource-attributes": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:41.149034-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.40.0/specification/trace/api.md#set-status": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:32.068178-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.40.0/specification/trace/api.md#span": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:29.524165-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.40.0/specification/trace/api.md#spankind": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:50.036593-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.40.0/specification/trace/sdk.md#span-processor": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:48.63637-05:00"
   },
   "https://github.com/open-telemetry/opentelemetry-swift": {
     "StatusCode": 206,
@@ -12195,13 +12291,57 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:04:52.840828-05:00"
   },
+  "https://github.com/open-telemetry/semantic-conventions/issues/1139": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:36.585631-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/issues/1161": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:35.483346-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/issues/1255": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:54.813211-05:00"
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues/1309": {
     "StatusCode": 200,
     "LastSeen": "2024-10-09T10:19:24.558756+02:00"
   },
+  "https://github.com/open-telemetry/semantic-conventions/issues/1357": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:50.762161-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/issues/1403#issuecomment-2368815634": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:40.952493-05:00"
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues/new": {
     "StatusCode": 206,
     "LastSeen": "2025-01-15T13:17:31.33164-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/1364#discussion_r1730743509": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:53.627411-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/1364#discussion_r1852465994": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:56.553054-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/1636": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:42.327551-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/1649": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:45.082466-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/1660": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:47.216969-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/1668": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:50.233247-05:00"
   },
   "https://github.com/open-telemetry/semantic-conventions/pull/981": {
     "StatusCode": 206,
@@ -14535,9 +14675,17 @@
     "StatusCode": 200,
     "LastSeen": "2024-12-04T08:46:53.346720267Z"
   },
+  "https://img.shields.io/badge/-rc-mediumorchid": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-23T17:25:32.735709-05:00"
+  },
   "https://img.shields.io/badge/-stable-lightgreen": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:23.500512-05:00"
+  },
+  "https://img.shields.io/badge/changed-orange": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-23T17:25:39.462506-05:00"
   },
   "https://istio.io/": {
     "StatusCode": 206,
@@ -14766,6 +14914,66 @@
   "https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/": {
     "StatusCode": 206,
     "LastSeen": "2024-06-24T18:06:32.862427557Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#cronjobstatus-v1-batch": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:55.377888-05:00"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#daemonsetstatus-v1-apps": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:53.120258-05:00"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#deploymentspec-v1-apps": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:37.481568-05:00"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#deploymentstatus-v1-apps": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:37.821811-05:00"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#horizontalpodautoscalerspec-v2-autoscaling": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:52.817534-05:00"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#horizontalpodautoscalerstatus-v2-autoscaling": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:52.429227-05:00"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#jobspec-v1-batch": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:53.884638-05:00"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#jobstatus-v1-batch": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:53.273728-05:00"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#namespacestatus-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:35.155725-05:00"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#replicasetspec-v1-apps": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:41.149149-05:00"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#replicasetstatus-v1-apps": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:42.768437-05:00"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#replicationcontrollerspec-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:45.127608-05:00"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#replicationcontrollerstatus-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:48.049847-05:00"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#statefulsetspec-v1-apps": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:48.635431-05:00"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#statefulsetstatus-v1-apps": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:49.374539-05:00"
   },
   "https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/": {
     "StatusCode": 206,
@@ -15019,6 +15227,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-05-22T16:32:51.974599+02:00"
   },
+  "https://learn.microsoft.com/sql/relational-databases/errors-events/database-engine-error-severities": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-23T17:25:32.36658-05:00"
+  },
   "https://learn.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors": {
     "StatusCode": 200,
     "LastSeen": "2024-10-09T10:19:29.705755+02:00"
@@ -15026,6 +15238,14 @@
   "https://learn.microsoft.com/windows/win32/api/ws2tcpip/nf-ws2tcpip-getaddrinfo": {
     "StatusCode": 200,
     "LastSeen": "2024-04-04T20:00:38.324091-04:00"
+  },
+  "https://learn.microsoft.com/windows/win32/procthread/process-working-set": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-23T17:25:48.63608-05:00"
+  },
+  "https://learn.microsoft.com/windows/win32/sysinfo/about-handles-and-objects": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-23T17:25:44.992579-05:00"
   },
   "https://library.humio.com/falcon-logscale/log-shippers-opentelemetry.html": {
     "StatusCode": 206,
@@ -15095,6 +15315,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:04:48.740728-05:00"
   },
+  "https://man7.org/linux/man-pages/man5/proc_meminfo.5.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:42.458551-05:00"
+  },
   "https://man7.org/linux/man-pages/man7/cgroups.7.html": {
     "StatusCode": 206,
     "LastSeen": "2024-12-04T08:46:55.253298019Z"
@@ -15102,6 +15326,10 @@
   "https://mariadb.com/kb/en/mariadb-error-code-reference/": {
     "StatusCode": 200,
     "LastSeen": "2024-10-09T10:19:22.001923+02:00"
+  },
+  "https://mariadb.com/kb/en/sqlstate/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-23T17:25:29.72697-05:00"
   },
   "https://masstransit.io/documentation/configuration/observability": {
     "StatusCode": 200,
@@ -17039,6 +17267,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-07T15:44:45.415408+02:00"
   },
+  "https://pkg.go.dev/k8s.io/api@v0.31.3/core/v1#NamespacePhase": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-23T17:25:35.994205-05:00"
+  },
   "https://pkg.go.dev/net/http": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:24:51.249653-05:00"
@@ -17270,6 +17502,10 @@
   "https://redis.io/commands/hmset": {
     "StatusCode": 206,
     "LastSeen": "2025-01-06T11:32:34.775836-05:00"
+  },
+  "https://redis.io/docs/latest/commands/hmset": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:30.499608-05:00"
   },
   "https://redis.io/docs/latest/develop/reference/protocol-spec/#simple-errors": {
     "StatusCode": 206,
@@ -17999,6 +18235,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:04:05.046927-05:00"
   },
+  "https://support.google.com/webmasters/answer/10347851": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-23T17:25:44.383026-05:00"
+  },
   "https://svnbook.red-bean.com/en/1.7/svn.tour.revs.specifiers.html": {
     "StatusCode": 206,
     "LastSeen": "2024-08-02T13:15:16.763004-04:00"
@@ -18162,6 +18402,30 @@
   "https://v1-29.docs.kubernetes.io/docs/concepts/storage/volumes/#secret": {
     "StatusCode": 206,
     "LastSeen": "2024-10-09T10:19:33.566697+02:00"
+  },
+  "https://v1-30.docs.kubernetes.io/docs/concepts/storage/volumes/#configmap": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:37.880109-05:00"
+  },
+  "https://v1-30.docs.kubernetes.io/docs/concepts/storage/volumes/#downwardapi": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:38.31892-05:00"
+  },
+  "https://v1-30.docs.kubernetes.io/docs/concepts/storage/volumes/#emptydir": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:38.630501-05:00"
+  },
+  "https://v1-30.docs.kubernetes.io/docs/concepts/storage/volumes/#local": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:39.655745-05:00"
+  },
+  "https://v1-30.docs.kubernetes.io/docs/concepts/storage/volumes/#persistentvolumeclaim": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:40.399739-05:00"
+  },
+  "https://v1-30.docs.kubernetes.io/docs/concepts/storage/volumes/#secret": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T17:25:42.29891-05:00"
   },
   "https://v8.dev/docs/stack-trace-api": {
     "StatusCode": 206,
