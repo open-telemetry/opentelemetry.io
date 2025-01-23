@@ -45,8 +45,8 @@ diretórios.
 ## Extensões {#extensions}
 
 Para encontrar projetos relacionados como exporters, bibliotecas de
-instrumentação, implementações de rastros, etc., visite
-o [Registro](/ecosystem/registry/?s=python).
+instrumentação, implementações de rastros, etc., visite o
+[Registro](/ecosystem/registry/?s=python).
 
 ### Instalando Pacotes de Ponta (#installing-cutting-edge-packages)
 
