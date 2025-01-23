@@ -1,9 +1,6 @@
 ---
 title: Les signaux
 description: Catégories de télémétrie supportées par OpenTelemetry
-aliases:
-  - /docs/concepts/data-sources
-  - /docs/concepts/otel-concepts
 weight: 11
 default_lang_commit: 71833a5f8b84110dadf1e98604b87a900724ac33
 ---
