@@ -6,9 +6,9 @@ default_lang_commit: 71833a5f8b84110dadf1e98604b87a900724ac33
 ---
 
 La propagation du contexte permet de mettre en corrélation les
-[signaux](/docs/concepts/signals), quelle que soit leur origine. Bien qu'elle ne
+[signaux](../signals), quelle que soit leur origine. Bien qu'elle ne
 soit pas limitée au traçage, la propagation du contexte permet aux
-[traces](/docs/concepts/signals/traces) de créer des informations de causalité
+[traces](../signals/traces) de créer des informations de causalité
 sur un système, même lorsque les services sont distribués de façon arbitraire à
 travers des limites de processus et de réseau.
 
