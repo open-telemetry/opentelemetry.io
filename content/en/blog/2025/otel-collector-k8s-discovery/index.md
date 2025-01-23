@@ -82,7 +82,7 @@ to create a similar feature for the Collector. We are happy to share that
 autodiscovery based on Kubernetes annotations is now supported in the Collector
 ([GitHub issue](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/34427))!
 
-## The solution
+## A solution
 
 The solution is built on top of the existing functionality provided by the
 [Kubernetes observer](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.117.0/extension/observer/k8sobserver)
