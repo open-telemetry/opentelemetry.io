@@ -1,7 +1,7 @@
 ---
 title: Kubernetes annotation-based discovery for the OpenTelemetry Collector
 linkTitle: K8s annotation-based discovery
-date: 2025-01-22
+date: 2025-01-23
 author: >
   [Dmitrii Anoshin](https://github.com/dmitryax) (Cisco/Splunk), [Christos
   Markou](https://github.com/ChrsMark) (Elastic)
@@ -35,7 +35,7 @@ adjust the monitoring configuration.
 Today, the Collector—and specifically the receiver creator—can provide such an
 experience. Using the receiver creator, observability users can define
 configuration "templates" that rely on environment conditions. For example, as
-an observability engineer, I can configure my Collector to enable the
+an observability engineer, you can configure your Collectors to enable the
 [NGINX receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.117.0/receiver/nginxreceiver)
 when a NGINX pod is deployed on the cluster. The following configuration can
 achieve this:
@@ -179,8 +179,8 @@ receivers:
 If you are an OpenTelemetry Collector user on Kubernetes, and you find this new
 feature interesting, see [Receiver Creator configuration] section to learn more.
 
-Give it a try let us know what you think via the `#otel-collector` channel of the
-[CNCF Slack workspace](https://slack.cncf.io/).
+Give it a try and let us know what you think via the `#otel-collector` channel
+of the [CNCF Slack workspace](https://slack.cncf.io/).
 
-[Receiver Creator configuration]: https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.117.0/receiver/receivercreator/README.md#generate-receiver-configurations-from-provided-hints
-
+[Receiver Creator configuration]:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.117.0/receiver/receivercreator/README.md#generate-receiver-configurations-from-provided-hints
