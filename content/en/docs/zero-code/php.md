@@ -164,7 +164,7 @@ Append the following to `php.ini`, or another `ini` file that will be processed
 by PHP:
 
 ```ini
-OTEL_PHP_AUTOLOAD_ENABLED=true
+OTEL_PHP_AUTOLOAD_ENABLED="true"
 OTEL_SERVICE_NAME=your-service-name
 OTEL_TRACES_EXPORTER=otlp
 OTEL_EXPORTER_OTLP_PROTOCOL=grpc
@@ -208,7 +208,7 @@ trace the execution of that code.
 ```php
 <?php
 
-use OpenTelemetry\API\Common\Instrumentation\CachedInstrumentation;
+use OpenTelemetry\API\Instrumentation\CachedInstrumentation;
 use OpenTelemetry\API\Trace\Span;
 use OpenTelemetry\API\Trace\StatusCode;
 use OpenTelemetry\Context\Context;
