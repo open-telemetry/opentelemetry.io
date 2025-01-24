@@ -7,7 +7,7 @@ weight: 200
 
 This glossary defines terms and [concepts](/docs/concepts/) that are new to the
 OpenTelemetry project, and clarifies OpenTelemetry-specific uses of terms common
-in the telemetry field.
+in the observability field.
 
 We also comment on spelling and capitalization when helpful. For example, see
 [OpenTelemetry](#opentelemetry) and [OTel](#otel).
