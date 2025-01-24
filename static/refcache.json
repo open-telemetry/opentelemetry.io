@@ -2699,6 +2699,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-02-28T10:02:41.822426963+01:00"
   },
+  "https://docs.kloudfuse.com/platform/latest/agent-otel/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-18T05:52:07.807725-05:00"
+  },
   "https://docs.kloudmate.com/using-opentelemetry-collector": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:17.098548-05:00"
@@ -14646,10 +14650,6 @@
   "https://kind.sigs.k8s.io/#installation-and-usage": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T15:25:11.997568-05:00"
-  },
-  "https://docs.kloudfuse.com/platform/latest/agent-otel/": {
-    "StatusCode": 200,
-    "LastSeen": "2025-01-18T05:52:07.807725-05:00"
   },
   "https://knative.dev/": {
     "StatusCode": 206,
