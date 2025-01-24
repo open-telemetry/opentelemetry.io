@@ -3,6 +3,7 @@ title: Observing Lambdas using the OpenTelemetry Collector Extension Layer
 author: '[Dominik Süß](https://github.com/theSuess) (Grafana)'
 linkTitle: Observing Lambdas
 date: 2025-01-20
+cSpell:ignore: Dominik
 ---
 
 
