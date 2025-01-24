@@ -1,4 +1,4 @@
-# cSpell:ignore docsy goldmark linkify netlify wordmark
+# cSpell:ignore docsy goldmark linkify netlify wordmark noopener
 baseURL: https://opentelemetry.io
 title: OpenTelemetry
 disableKinds: [taxonomy]
@@ -33,6 +33,14 @@ languages:
     languageCode: pt-BR
     params:
       description: Site do Projeto OpenTelemetry
+      notes:
+        browser-instrumentation: |
+          A instrumentação do cliente para o navegador é **experimental** e,
+          em grande parte, **não está especificada**. Caso possua interesse em
+          auxiliar, entre em contato com o [SIG de Instrumentação do
+          Cliente][sig].
+
+          [sig]: https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w
   zh:
     languageName: 中文 (Chinese)
     languageCode: zh-cn
@@ -217,14 +225,19 @@ params:
       sizes: [300, 400, 600, 700]
       type: sans_serif
 
-  notes: # as markdown
+  notes:
+    # Syntax is markdown. This params section is the default for `en` and
+    # fallback for other languages. Add locale specific entries under the
+    # top-level `languages.XX.params` entry for your locale XX.
     docker-compose-v2: |
       `docker-compose` is deprecated. For details, see
       [Migrate to Compose V2](https://docs.docker.com/compose/migrate/).
     browser-instrumentation: |
       Client instrumentation for the browser is **experimental** and mostly **unspecified**.
       If you are interested in helping out, get in touch with the
-      [Client Instrumentation SIG](https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w).
+      [Client Instrumentation SIG][sig].
+
+      [sig]: https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w
 
 security:
   funcs: # cspell:disable-line
