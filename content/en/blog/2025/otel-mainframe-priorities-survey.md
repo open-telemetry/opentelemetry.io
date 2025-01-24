@@ -1,11 +1,10 @@
 --
 title: OpenTelemetry on Mainframe Priorities Survey
-linkTitle: Mainframe Priorities Survey # Mandatory, make sure that your short title.
-date: 2025-01-23
-author: >-
-[Ruediger Schulze](https://github.com/rrschulze) (IBM)
-canonical_url: <https://openmainframeproject.org/blog/opentelemetry-on-mainframe-priorities-survey/?utm_content=322043016&utm_medium=social&utm_source=linkedin&hss_channel=lcp-35545633>
-issue: [#6045](https://github.com/open-telemetry/opentelemetry.io/issues/6045)
+linkTitle: Mainframe Priorities Survey 
+date: 2025-01-24
+author: '[Ruediger Schulze](https://github.com/rrschulze) (IBM)'
+canonical_url: https://openmainframeproject.org/blog/opentelemetry-on-mainframe-priorities-survey/
+issue: https://github.com/open-telemetry/opentelemetry.io/issues/6045
 sig: SIG OpenTelemetry on Mainframe
 cSpell:ignore: Ruediger Schulze
 ---
