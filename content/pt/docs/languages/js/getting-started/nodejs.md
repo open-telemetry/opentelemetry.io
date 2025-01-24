@@ -170,8 +170,8 @@ Para encontrar todos os módulos de autoinstrumentação, você pode consultar o
 
 ### Configuração {#setup}
 
-A configuração e inicialização da instrumentação devem ser executadas **antes** do
-código da sua aplicação. Uma ferramenta frequentemente utilizada para essa
+A configuração e inicialização da instrumentação devem ser executadas **antes**
+do código da sua aplicação. Uma ferramenta frequentemente utilizada para essa
 tarefa é a _flag_
 [--require](https://nodejs.org/api/cli.html#-r---require-module).
 
@@ -234,9 +234,10 @@ sdk.start();
 
 Agora você poderá executar a aplicação normalmente, mas poderá usar a _flag_
 `--require` para carregar a instrumentação antes do código da aplicação.
-Certifique-se de que não haja conflitos na utilização da _flag_ `--require`, como, por exemplo,
-carregar a _flag_ `--require @opentelemetry/auto-instrumentations-node/register`
-através da variável de ambiente `NODE_OPTIONS`.
+Certifique-se de que não haja conflitos na utilização da _flag_ `--require`,
+como, por exemplo, carregar a _flag_
+`--require @opentelemetry/auto-instrumentations-node/register` através da
+variável de ambiente `NODE_OPTIONS`.
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
