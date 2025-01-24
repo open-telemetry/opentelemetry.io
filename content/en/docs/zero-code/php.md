@@ -133,8 +133,8 @@ For the full list, see
 Let's assume that your application uses Slim Framework and a PSR-18 HTTP client,
 and that we will export the traces with the OTLP protocol.
 
-You would then install the SDK, an exporter and auto-instrumentation packages for Slim Framework
-and PSR-18:
+You would then install the SDK, an exporter, and auto-instrumentation packages
+for Slim Framework and PSR-18:
 
 ```shell
 composer require \
