@@ -98,16 +98,16 @@ sub patchEventAliases() {
     && applyPatchOrPrintMsgIf('2025-01-23-event-aliases', 'spec', '1.41.0');
 
   my $aliases = '^(  - )(event-(api|sdk))$';
-  s|$aliases|$1./$2|g if /$aliases/;
+  s|$aliases|$1./$2|;
 }
 
-sub patchSemConvEmitAnEvent() {
+sub patchSemConv1_30_0() {
   return unless $ARGV =~ /^tmp\/semconv\/docs\//
     && applyPatchOrPrintMsgIf('2025-01-24-emit-an-event', 'semconv', '1.30.0');
 
   s|Emit Event API|Log API|;
-  my $path = '(docs/specs/otel/logs/api.md#emit-a)n-event';
-  s|$path|$1-logrecord|g if /$path/;
+  s|(docs/specs/otel/logs/api.md#emit-a)n-event|$1-logrecord|;
+  s|\[semantic-convention-groups\]|[group-stability]|;
 }
 
 sub getVersFromSubmodule() {
@@ -152,6 +152,7 @@ while(<>) {
           $lineNum++;
           last if /^-?-->/;
           patchEventAliases();
+          patchSemConv1_30_0();
           $frontMatterFromFile .= $_;
         }
         next;
@@ -231,7 +232,7 @@ while(<>) {
 
   s|\]\((proto/opamp.proto)\)|]($opAmpSpecRepoUrl/blob/main/$1)|;
 
-  patchSemConvEmitAnEvent();
+  patchSemConv1_30_0();
 
   print;
 }
