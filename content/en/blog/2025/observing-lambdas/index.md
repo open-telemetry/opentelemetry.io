@@ -32,7 +32,6 @@ services. With the
 extension layer, you get a local endpoint to send data to while it keeps track
 of the Lambda lifecycle and ensures your telemetry gets to the storage layer.
 
-
 ## How does it work?
 
 When your function is called for the first time, the extension layer starts an
