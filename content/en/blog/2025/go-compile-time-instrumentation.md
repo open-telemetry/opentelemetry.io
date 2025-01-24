@@ -2,7 +2,7 @@
 title:
   Alibaba, Datadog, and Quesma Join Forces on Go Compile-Time Instrumentation
 linkTitle: Go Compile-Time Instrumentation
-date: 2025-01-17
+date: 2025-01-24
 author: OpenTelemetry Governance Committee
 issue: https://github.com/open-telemetry/community/issues/2509
 sig: Governance Committee
