@@ -7,11 +7,15 @@ default_lang_commit: fe0c3f68902aeb6e7584ffc32c6c8964d7a89e6e
 
 ## Configurações de rota {#endpoint-configuration}
 
-As seguintes variáveis de ambiente permitem configurar um endpoint OTLP/gRPC ou OTLP/HTTP para seus rastros, métricas e logs.
+As seguintes variáveis de ambiente permitem configurar um endpoint OTLP/gRPC ou
+OTLP/HTTP para seus rastros, métricas e logs.
 
 ### `OTEL_EXPORTER_OTLP_ENDPOINT`
 
-A URL da rota base para qualquer tipo de sinal, com um número de porta especificado opcionalmente. Pode ser útil quando você está enviando mais de um sinal para a mesma rota e deseja que uma variável de ambiente controle este valor.
+A URL da rota base para qualquer tipo de sinal, com um número de porta
+especificado opcionalmente. Pode ser útil quando você está enviando mais de um
+sinal para a mesma rota e deseja que uma variável de ambiente controle este
+valor.
 
 **Valor padrão:**
 
@@ -23,7 +27,10 @@ A URL da rota base para qualquer tipo de sinal, com um número de porta especifi
 - gRPC: `export OTEL_EXPORTER_OTLP_ENDPOINT="https://my-api-endpoint:443"`
 - HTTP: `export OTEL_EXPORTER_OTLP_ENDPOINT="http://my-api-endpoint/"`
 
-Para OTLP/HTTP, os Exporters no SDK constroem URLs específicos de sinal quando esta variável de ambiente é definida. Isso significa que se você estiver enviando rastros, métricas e logs, as seguintes URLs são construídos a partir do exemplo acima:
+Para OTLP/HTTP, os Exporters no SDK constroem URLs específicos de sinal quando
+esta variável de ambiente é definida. Isso significa que se você estiver
+enviando rastros, métricas e logs, as seguintes URLs são construídos a partir do
+exemplo acima:
 
 - Rastros: `"http://my-api-endpoint/v1/traces"`
 - Métricas: `"http://my-api-endpoint/v1/metrics"`
@@ -31,7 +38,8 @@ Para OTLP/HTTP, os Exporters no SDK constroem URLs específicos de sinal quando 
 
 ### `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`
 
-URL da rota para dados de rastros, apenas, com um número de porta especificado opcionalmente. Normalmente termina com `v1/traces` ao utilizar OTLP/HTTP.
+URL da rota para dados de rastros, apenas, com um número de porta especificado
+opcionalmente. Normalmente termina com `v1/traces` ao utilizar OTLP/HTTP.
 
 **Valor padrão:**
 
@@ -47,7 +55,8 @@ URL da rota para dados de rastros, apenas, com um número de porta especificado 
 
 ### `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT`
 
-URL da rota para dados de métricas, apenas, com um número de porta especificado opcionalmente. Normalmente termina com `v1/metrics` ao utilizar OTLP/HTTP.
+URL da rota para dados de métricas, apenas, com um número de porta especificado
+opcionalmente. Normalmente termina com `v1/metrics` ao utilizar OTLP/HTTP.
 
 **Valor padrão:**
 
@@ -63,7 +72,8 @@ URL da rota para dados de métricas, apenas, com um número de porta especificad
 
 ### `OTEL_EXPORTER_OTLP_LOGS_ENDPOINT`
 
-URL da rota para dados de logs, apenas, com um número de porta especificado opcionalmente. Normalmente termina com `v1/logs` ao utilizar OTLP/HTTP.
+URL da rota para dados de logs, apenas, com um número de porta especificado
+opcionalmente. Normalmente termina com `v1/logs` ao utilizar OTLP/HTTP.
 
 **Valor padrão:**
 
@@ -78,11 +88,14 @@ URL da rota para dados de logs, apenas, com um número de porta especificado opc
 
 ## Configurações de cabeçalhos {#header-configuration}
 
-As seguintes variáveis de ambiente permitem configurar cabeçalhos adicionais como uma lista de pares chave-valor para adicionar em solicitações gRPC ou HTTP de saída.
+As seguintes variáveis de ambiente permitem configurar cabeçalhos adicionais
+como uma lista de pares chave-valor para adicionar em solicitações gRPC ou HTTP
+de saída.
 
 ### `OTEL_EXPORTER_OTLP_HEADERS`
 
-Uma lista de cabeçalhos para aplicar a todos os dados de saída (rastros, métricas e logs).
+Uma lista de cabeçalhos para aplicar a todos os dados de saída (rastros,
+métricas e logs).
 
 **Valor padrão:** N/A
 
@@ -118,11 +131,13 @@ Uma lista de cabeçalhos para aplicar a todos os dados de logs de saída.
 
 ## Configurações de tempo limite {#timeout-configuration}
 
-As seguintes variáveis de ambiente configuram o tempo máximo (em milissegundos) que um Exporter OTLP aguardará antes de transmitir o lote de dados.
+As seguintes variáveis de ambiente configuram o tempo máximo (em milissegundos)
+que um Exporter OTLP aguardará antes de transmitir o lote de dados.
 
 ### `OTEL_EXPORTER_OTLP_TIMEOUT`
 
-O valor de tempo limite para todos os dados de saída (rastros, métricas e logs) em milissegundos.
+O valor de tempo limite para todos os dados de saída (rastros, métricas e logs)
+em milissegundos.
 
 **Valor padrão:** `10000` (10s)
 
@@ -154,14 +169,15 @@ O tempo limite para todos os logs de saída em milissegundos.
 
 ## Configurações de protocolo {#protocol-configuration}
 
-As seguintes variáveis de ambiente configuram o protocolo de transporte OTLP que um Exporter OTLP utiliza.
+As seguintes variáveis de ambiente configuram o protocolo de transporte OTLP que
+um Exporter OTLP utiliza.
 
 ### `OTEL_EXPORTER_OTLP_PROTOCOL`
 
-Especifica o protocolo de transporte OTLP a ser utilizado para todos os dados de telemetria.
+Especifica o protocolo de transporte OTLP a ser utilizado para todos os dados de
+telemetria.
 
-**Valor padrão:** depende do SDK, porém, geralmente é `http/protobuf`
-ou `grpc`.
+**Valor padrão:** depende do SDK, porém, geralmente é `http/protobuf` ou `grpc`.
 
 **Exemplo:** `export OTEL_EXPORTER_OTLP_PROTOCOL=grpc`
 
@@ -175,8 +191,7 @@ Os valores válidos são:
 
 Especifica o protocolo de transporte OTLP a ser utilizado para dados de rastros.
 
-**Valor padrão:** depende do SDK, porém, geralmente é `http/protobuf`
-ou `grpc`.
+**Valor padrão:** depende do SDK, porém, geralmente é `http/protobuf` ou `grpc`.
 
 **Exemplo:** `export OTEL_EXPORTER_OTLP_TRACES_PROTOCOL=grpc`
 
@@ -188,10 +203,10 @@ Os valores válidos são:
 
 ### `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL`
 
-Especifica o protocolo de transporte OTLP a ser utilizado para dados de métricas.
+Especifica o protocolo de transporte OTLP a ser utilizado para dados de
+métricas.
 
-**Valor padrão:** depende do SDK, porém, geralmente é `http/protobuf`
-ou `grpc`.
+**Valor padrão:** depende do SDK, porém, geralmente é `http/protobuf` ou `grpc`.
 
 **Exemplo:** `export OTEL_EXPORTER_OTLP_METRICS_PROTOCOL=grpc`
 
@@ -205,8 +220,7 @@ Os valores válidos são:
 
 Especifica o protocolo de transporte OTLP a ser utilizado para dados de logs.
 
-**Valor padrão:** depende do SDK, porém, geralmente é `http/protobuf`
-ou `grpc`.
+**Valor padrão:** depende do SDK, porém, geralmente é `http/protobuf` ou `grpc`.
 
 **Exemplo:** `export OTEL_EXPORTER_OTLP_LOGS_PROTOCOL=grpc`
 
