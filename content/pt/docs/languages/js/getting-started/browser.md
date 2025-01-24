@@ -7,7 +7,7 @@ default_lang_commit: 1f6a173c26d1e194696ba77e95b6c3af40234952
 ---
 
 {{% alert title="Aviso" color="warning" %}}
-{{% _param notes.browser-instrumentation-pt %}} {{% /alert %}}
+{{% _param notes.browser-instrumentation %}} {{% /alert %}}
 
 Embora este guia utilize o exemplo de aplicação apresentada abaixo, as etapas
 para instrumentar a sua própria aplicação devem ser similares.

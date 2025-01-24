@@ -6,7 +6,7 @@ description: >-
 weight: 10
 default_lang_commit: 2127d75cef0be2f2554f5b47520a108ba381b790
 ---
-
+vitorvasc:ptbr_languages_js_getting_started
 Como [operações](/docs/getting-started/ops/), você pode querer adicionar
 observabilidade a uma ou mais aplicações sem precisar editar o código-fonte. O
 OpenTelemetry permite que você ganhe rapidamente alguma observabilidade para um
