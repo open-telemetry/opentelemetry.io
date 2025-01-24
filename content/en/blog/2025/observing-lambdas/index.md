@@ -54,7 +54,7 @@ Lambda to return, even if not all data has been sent. At the next invocation (or
 on shutdown) the Collector continues shipping the data while your function does
 its thing.
 
-{{< figure src="diagram-execution-timing.svg" caption="Diagram showcasing how execution timing differs with and without a collector">}}
+{{< figure src="diagram-execution-timing.svg" caption="Diagram showcasing how execution timing differs with and without a Collector">}}
 
 
 ## How can I use it?
