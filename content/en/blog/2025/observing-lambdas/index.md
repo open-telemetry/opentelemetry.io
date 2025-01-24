@@ -18,7 +18,7 @@ AWS Lambda.
 In this execution model, functions are called directly, and the environment is
 frozen afterward. You’re only billed for actual execution time and no longer
 need a server to wait for incoming requests. This is also where the term
-Serverless comes from. Keeping the function alive until metrics can be
+serverless comes from. Keeping the function alive until metrics can be
 collected isn’t really an option and even if you were willing to pay for that,
 different invocations will have a completely separate context and not
 necessarily know about all the other executions happening simultaneously. You
