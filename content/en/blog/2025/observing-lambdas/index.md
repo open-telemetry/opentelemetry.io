@@ -47,7 +47,7 @@ logline, or the execution context is about to be shut down.
 ### This is where the magic happens
 
 Up until now, this just seems like extra work for nothing. You'll still have to
-wait for the collector to ship the data, right? This is where the special
+wait for the Collector to ship the data, right? This is where the special
 `decouple` processor comes in. It separates the receiving and exporting
 components while interfacing with the Lambda lifecycle. This allows for the
 Lambda to return, even if not all data has been sent. At the next invocation (or
