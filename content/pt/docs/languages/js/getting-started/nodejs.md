@@ -12,12 +12,12 @@ Esta página mostrará como começar a usar o OpenTelemetry no Node.js.
 Você aprenderá como instrumentar [rastros][] e [métricas][] e registrá-los no
 console.
 
-{{% alert title="Note" color="info" %}} A biblioteca a para logs do
+{{% alert title="Nota" color="info" %}} A biblioteca a para logs do
 OpenTelemetry para Node.js ainda está em desenvolvimento, portanto, este exemplo
 não será fornecido a seguir. Consulte [esta página](/docs/languages/js) para
 mais informações sobre o status do OpenTelemetry para JavaScript. {{% /alert %}}
 
-## Pré-requisites {#prerequisites}
+## Pré-requisitos {#prerequisites}
 
 Certifique-se de que você tenha instalado localmente:
 
@@ -119,8 +119,8 @@ app.listen(PORT, () => {
 
 {{% /tab %}} {{% /tabpane %}}
 
-Execute a aplicação utilizando o seguinte comando e acesse
-<http://localhost:8080/rolldice> no seu navegador para garantir que está
+Execute a aplicação utilizando o comando abaixo e acesse
+<http://localhost:8080/rolldice> no seu navegador para garantir que esteja
 funcionando.
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
@@ -146,7 +146,7 @@ instrumentada com OpenTelemetry.
 
 ### Mais dependências {#more-dependencies}
 
-Primeiro, instale os pacotes do Node SDK e autoinstrumentações.
+Primeiro, instale os pacotes do Node SDK e das autoinstrumentações.
 
 O Node SDK permite que você inicialize o OpenTelemetry com diversas
 configurações padrão que são suficientes para a maioria dos casos de uso.
@@ -165,14 +165,14 @@ npm install @opentelemetry/sdk-node \
   @opentelemetry/sdk-trace-node
 ```
 
-Para encontrar todos os módulos de auto-instrumentação, você pode consultar o
+Para encontrar todos os módulos de autoinstrumentação, você pode consultar o
 [registro](/ecosystem/registry/?language=js&component=instrumentation).
 
 ### Configuração {#setup}
 
-A configuração e inicialização da instrumentação devem ser executadas _antes_ do
+A configuração e inicialização da instrumentação devem ser executadas **antes** do
 código da sua aplicação. Uma ferramenta frequentemente utilizada para essa
-tarefa é a flag
+tarefa é a _flag_
 [--require](https://nodejs.org/api/cli.html#-r---require-module).
 
 Crie um arquivo chamado `instrumentation.ts` (ou `instrumentation.js`, caso não
@@ -232,10 +232,10 @@ sdk.start();
 
 ## Execute a aplicação instrumentada {#run-the-instrumented-app}
 
-Agora você poderá executar sua aplicação normalmente, mas poderá usar a flag
+Agora você poderá executar a aplicação normalmente, mas poderá usar a _flag_
 `--require` para carregar a instrumentação antes do código da aplicação.
-Certifique-se de que não haja conflitos na flag `--require`, como por exemplo,
-carregar a flag `--require @opentelemetry/auto-instrumentations-node/register`
+Certifique-se de que não haja conflitos na utilização da _flag_ `--require`, como, por exemplo,
+carregar a _flag_ `--require @opentelemetry/auto-instrumentations-node/register`
 através da variável de ambiente `NODE_OPTIONS`.
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}

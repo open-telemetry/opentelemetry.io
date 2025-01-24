@@ -6,8 +6,8 @@ weight: 20
 default_lang_commit: 1f6a173c26d1e194696ba77e95b6c3af40234952
 ---
 
-{{% alert title="Warning" color="warning" %}}
-{{% _param notes.browser-instrumentation %}} {{% /alert %}}
+{{% alert title="Aviso" color="warning" %}}
+{{% _param notes.browser-instrumentation-pt %}} {{% /alert %}}
 
 Embora este guia utilize o exemplo de aplicação apresentada abaixo, as etapas
 para instrumentar a sua própria aplicação devem ser similares.
@@ -20,7 +20,7 @@ Certifique-se de que você tenha instalado localmente:
 - [TypeScript](https://www.typescriptlang.org/download), caso esteja utilizando
   TypeScript.
 
-## Exemplo de Aplicação {#example-application}
+## Exemplo de aplicação {#example-application}
 
 Este é um guia muito simples. Caso deseje visualizar exemplos mais complexos,
 consulte o repositório
@@ -244,7 +244,7 @@ exportados:
 }
 ```
 
-### Adicionar Instrumentações {#add-instrumentations}
+### Adicionar instrumentações {#add-instrumentations}
 
 Caso deseje instrumentar requisições Ajax, interações do usuário e outros, é
 possível registrar instrumentações adicionais para esses elementos:
