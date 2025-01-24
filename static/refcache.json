@@ -15831,6 +15831,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-06-04T17:29:49.319661335+02:00"
   },
+  "https://otelic.com/en/open-telemetry-sample-instrumentation/nodejs-simple": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-24T18:24:36.30580416Z"
+  },
   "https://otterize.com/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:04.230377-05:00"
