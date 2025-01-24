@@ -12,7 +12,7 @@ application or asks it to provide an up-to-date state of various counters. This
 happens every minute or so, and if it’s a second late or early, no one really
 bats an eye. But what if the application isn’t around for long? What if every
 second waiting for the data to be collected is billed? Then you’re most likely
-thinking of Function-as-a-Service (FaaS) environments, the most well known being
+thinking of Function-as-a-Service (FaaS) environments, the most well-known being
 AWS Lambda.
 
 In this execution model, functions are called directly, and the environment is
