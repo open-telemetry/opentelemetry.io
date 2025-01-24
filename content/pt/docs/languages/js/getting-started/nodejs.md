@@ -12,7 +12,7 @@ Esta página mostrará como começar a usar o OpenTelemetry no Node.js.
 Você aprenderá como instrumentar [rastros][] e [métricas][] e registrá-los no
 console.
 
-{{% alert title="Note" color="info" %}} A bibliote a para logs do OpenTelemetry
+{{% alert title="Note" color="info" %}} A biblioteca a para logs do OpenTelemetry
 para Node.js ainda está em desenvolvimento, portanto, este exemplo não será
 fornecido a seguir. Consulte [esta página](/docs/languages/js) para mais
 informações sobre o status do OpenTelemetry para JavaScript. {{% /alert %}}
@@ -120,7 +120,7 @@ app.listen(PORT, () => {
 {{% /tab %}} {{% /tabpane %}}
 
 Execute a aplicação utilizando o seguinte comando e acesse
-<http://localhost:8080/rolldice> no seu navegador para garantir quue está
+<http://localhost:8080/rolldice> no seu navegador para garantir que está
 funcionando.
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
@@ -151,7 +151,7 @@ Primeiro, instale os pacotes do Node SDK e autoinstrumentações.
 O Node SDK permite que você inicialize o OpenTelemetry com diversas
 configurações padrão que são suficientes para a maioria dos casos de uso.
 
-O pacote `auto-insrumentations-node` instala as bibliotecas de instrumentação
+O pacote `auto-instrumentations-node` instala as bibliotecas de instrumentação
 que irão criar automaticamente trechos correspondentes ao código chamado nas
 bibliotecas. Neste caso, ele fornece instrumentação para o Express, permitindo
 que a aplicação de exemplo crie trechos automaticamente para cada requisição
