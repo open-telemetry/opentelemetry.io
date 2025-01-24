@@ -1,0 +1,41 @@
+name: Update semconv integration branch
+
+on:
+  schedule:
+    # daily at 10:24 UTC
+    - cron: '24 10 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-semconv-integration-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: integration/semantic-conventions
+          # this is needed in order to do rebase below
+          fetch-depth: 0
+          # this is needed in order to trigger workflows on the PR
+          token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+
+      - name: Use CLA approved github bot
+        run: |
+          git config user.name opentelemetrybot
+          git config user.email 107717825+opentelemetrybot@users.noreply.github.com
+
+      - name: Rebase
+        run: |
+          previous=$(git rev-parse HEAD)
+          git fetch origin
+          git merge origin/main
+          if [ "$(git rev-parse HEAD)" != "$previous" ]; then
+            git push origin integration/semantic-conventions
+          fi
+
+      - name: Update submodule
+        run: |
+          git submodule update --init --remote content-modules/semantic-conventions
+          if ! git diff-index --quiet HEAD; then
+            git commit -am "Update submodule"
+            git push origin integration/semantic-conventions
+          fi
