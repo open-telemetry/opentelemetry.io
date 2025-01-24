@@ -1,48 +1,51 @@
 ---
 title: Node.js
-description: Get telemetry for your app in less than 5 minutes!
+description: Obtenha telemetria para sua aplicação em menos de 5 minutos!
 aliases: [/docs/js/getting_started/nodejs]
 weight: 10
 cSpell:ignore: autoinstrumentations KHTML rolldice
+default_lang_commit: 1f6a173c26d1e194696ba77e95b6c3af40234952
 ---
 
-This page will show you how to get started with OpenTelemetry in Node.js.
+Esta página mostrará como começar a usar o OpenTelemetry no Node.js.
 
-You will learn how to instrument both [traces][] and [metrics][] and log them to
-the console.
+Você aprenderá como instrumentar [rastros][] e [métricas][] e registrá-los no
+console.
 
-{{% alert title="Note" color="info" %}} The logging library for OpenTelemetry
-for Node.js is still under development hence an example for it is not provided
-below. Look [here](/docs/languages/js) for more info about the status of
-OpenTelemetry in JavaScript. {{% /alert %}}
+{{% alert title="Note" color="info" %}} A bibliote a para logs do OpenTelemetry
+para Node.js ainda está em desenvolvimento, portanto, este exemplo não será
+fornecido a seguir. Consulte [esta página](/docs/languages/js) para mais
+informações sobre o status do OpenTelemetry para JavaScript. {{% /alert %}}
 
-## Prerequisites
+## Pré-requisites {#prerequisites}
 
-Ensure that you have the following installed locally:
+Certifique-se de que você tenha instalado localmente:
 
 - [Node.js](https://nodejs.org/en/download/)
-- [TypeScript](https://www.typescriptlang.org/download), if you will be using
+- [TypeScript](https://www.typescriptlang.org/download), caso esteja utilizando
   TypeScript.
 
-## Example Application
+## Exemplo de Aplicação {#example-application}
 
-The following example uses a basic [Express](https://expressjs.com/)
-application. If you are not using Express, that's OK — you can use OpenTelemetry
-JavaScript with other web frameworks as well, such as Koa and Nest.JS. For a
-complete list of libraries for supported frameworks, see the
-[registry](/ecosystem/registry/?component=instrumentation&language=js).
+O exemplo a seguir utiliza uma aplicação básica com
+[Express](https://expressjs.com/). Caso não esteja utilizando o Express, não se
+preocupe — você pode usar o OpenTelemetry JavaScript com outros _frameworks_
+web, como Koa e Nest.JS. Para uma lista completa de bibliotecas para
+_frameworks_ suportados, consulte o
+[registro](/ecosystem/registry/?component=instrumentation&language=js).
 
-For more elaborate examples, see [examples](/docs/languages/js/examples/).
+Para exemplos mais elaborados, consulte
+[exemplos](/docs/languages/js/examples/).
 
-### Dependencies
+### Dependências {#dependencies}
 
-To begin, set up an empty `package.json` in a new directory:
+Para começar, configure um arquivo vazio `package.json` em um novo diretório:
 
 ```shell
 npm init -y
 ```
 
-Next, install Express dependencies.
+Em seguida, instale as dependências do Express.
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -53,7 +56,7 @@ npm install typescript \
   express \
   @types/express
 
-# initialize typescript
+# inicialização do typescript
 npx tsc --init
 ```
 
@@ -65,10 +68,10 @@ npm install express
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Create and launch an HTTP Server
+### Crie e inicie um servidor HTTP {#create-and-launch-an-http-server}
 
-Create a file named `app.ts` (or `app.js` if not using TypeScript) and add the
-following code to it:
+Crie um arquivo chamado `app.ts` (ou `app.js`, caso não esteja utilizando
+TypeScript) e adicione o seguinte código:
 
 {{% tabpane text=true %}} {{% tab TypeScript %}}
 
@@ -116,8 +119,9 @@ app.listen(PORT, () => {
 
 {{% /tab %}} {{% /tabpane %}}
 
-Run the application with the following command and open
-<http://localhost:8080/rolldice> in your web browser to ensure it is working.
+Execute a aplicação utilizando o seguinte comando e acesse
+<http://localhost:8080/rolldice> no seu navegador para garantir quue está
+funcionando.
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -135,22 +139,23 @@ Listening for requests on http://localhost:8080
 
 {{% /tab %}} {{< /tabpane >}}
 
-## Instrumentation
+## Instrumentação {#instrumentation}
 
-The following shows how to install, initialize, and run an application
-instrumented with OpenTelemetry.
+A seguir, mostramos como instalar, inicializar e executar uma aplicação
+instrumentada com OpenTelemetry.
 
-### More Dependencies
+### Mais dependências {#more-dependencies}
 
-First, install the Node SDK and autoinstrumentations package.
+Primeiro, instale os pacotes do Node SDK e autoinstrumentações.
 
-The Node SDK lets you initialize OpenTelemetry with several configuration
-defaults that are correct for the majority of use cases.
+O Node SDK permite que você inicialize o OpenTelemetry com diversas
+configurações padrão que são suficientes para a maioria dos casos de uso.
 
-The `auto-instrumentations-node` package installs instrumentation libraries that
-will automatically create spans corresponding to code called in libraries. In
-this case, it provides instrumentation for Express, letting the example app
-automatically create spans for each incoming request.
+O pacote `auto-insrumentations-node` instala as bibliotecas de instrumentação
+que irão criar automaticamente trechos correspondentes ao código chamado nas
+bibliotecas. Neste caso, ele fornece instrumentação para o Express, permitindo
+que a aplicação de exemplo crie trechos automaticamente para cada requisição
+recebida.
 
 ```shell
 npm install @opentelemetry/sdk-node \
@@ -160,17 +165,19 @@ npm install @opentelemetry/sdk-node \
   @opentelemetry/sdk-trace-node
 ```
 
-To find all autoinstrumentation modules, you can look at the
-[registry](/ecosystem/registry/?language=js&component=instrumentation).
+Para encontrar todos os módulos de auto-instrumentação, você pode consultar o
+[registro](/ecosystem/registry/?language=js&component=instrumentation).
 
-### Setup
+### Configuração {#setup}
 
-The instrumentation setup and configuration must be run _before_ your
-application code. One tool commonly used for this task is the
-[--require](https://nodejs.org/api/cli.html#-r---require-module) flag.
+A configuração e inicialização da instrumentação devem ser executadas _antes_ do
+código da sua aplicação. Uma ferramenta frequentemente utilizada para essa
+tarefa é a flag
+[--require](https://nodejs.org/api/cli.html#-r---require-module).
 
-Create a file named `instrumentation.ts` (or `instrumentation.js` if not using
-TypeScript) , which will contain your instrumentation setup code.
+Crie um arquivo chamado `instrumentation.ts` (ou `instrumentation.js`, caso não
+esteja utilizando TypeScript), que deverá conter o código de configuração de
+instrumentação.
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -199,7 +206,7 @@ sdk.start();
 
 ```js
 /*instrumentation.js*/
-// Require dependencies
+// Requer dependências
 const { NodeSDK } = require('@opentelemetry/sdk-node');
 const { ConsoleSpanExporter } = require('@opentelemetry/sdk-trace-node');
 const {
@@ -223,13 +230,13 @@ sdk.start();
 
 {{% /tab %}} {{< /tabpane >}}
 
-## Run the instrumented app
+## Execute a aplicação instrumentada {#run-the-instrumented-app}
 
-Now you can run your application as you normally would, but you can use the
-`--require` flag to load the instrumentation before the application code. Make
-sure you don't have other conflicting `--require` flags such as
-`--require @opentelemetry/auto-instrumentations-node/register` on your
-`NODE_OPTIONS` environment variable.
+Agora você poderá executar sua aplicação normalmente, mas poderá usar a flag
+`--require` para carregar a instrumentação antes do código da aplicação.
+Certifique-se de que não haja conflitos na flag `--require`, como por exemplo,
+carregar a flag `--require @opentelemetry/auto-instrumentations-node/register`
+através da variável de ambiente `NODE_OPTIONS`.
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -247,12 +254,12 @@ Listening for requests on http://localhost:8080
 
 {{% /tab %}} {{< /tabpane >}}
 
-Open <http://localhost:8080/rolldice> in your web browser and reload the page a
-few times. After a while you should see the spans printed in the console by the
-`ConsoleSpanExporter`.
+Acesse <http://localhost:8080/rolldice> no seu navegador e recarregue a página
+algumas vezes. Depois de um tempo, você deverá ver os trechos exibidos no
+console pelo `ConsoleSpanExporter`.
 
 <details>
-<summary>View example output</summary>
+<summary>Ver exemplo de saída</summary>
 
 ```json
 {
@@ -335,13 +342,14 @@ few times. After a while you should see the spans printed in the console by the
 
 </details>
 
-The generated span tracks the lifetime of a request to the `/rolldice` route.
+O trecho gerado rastreia o tempo de vida de uma requisição para a rota
+`/rolldice`.
 
-Send a few more requests to the endpoint. After a moment, you'll see metrics in
-the console output, such as the following:
+Envie mais algumas requisições para esta rota. Depois de um tempo, você poderá
+visualizar métricas na saída do console, como as seguintes:
 
 <details>
-<summary>View example output</summary>
+<summary>Ver exemplo de saída</summary>
 
 ```yaml
 {
@@ -468,25 +476,25 @@ the console output, such as the following:
 
 </details>
 
-## Next Steps
+## Próximos passos {#next-steps}
 
-Enrich your instrumentation generated automatically with
-[manual instrumentation](/docs/languages/js/instrumentation) of your own
-codebase. This gets you customized observability data.
+Enriqueça a instrumentação gerada automaticamente com a
+[instrumentação manual](/docs/languages/js/instrumentation) de sua base de
+código. Isso lhe proporcionará dados de observabilidade personalizados.
 
-You'll also want to configure an appropriate exporter to
-[export your telemetry data](/docs/languages/js/exporters) to one or more
-telemetry backends.
+Você também poderá configurar um exportador apropriado para
+[exportar seus dados de telemetria](/docs/languages/js/exporters) para um ou
+mais _backends_ de telemetria.
 
-If you'd like to explore a more complex example, take a look at the
-[OpenTelemetry Demo](/docs/demo/), which includes the JavaScript based
-[Payment Service](/docs/demo/services/payment/) and the TypeScript based
-[Frontend Service](/docs/demo/services/frontend/).
+Caso queira explorar um exemplo mais complexo, dê uma olhada no
+[OpenTelemetry Demo](/docs/demo/), que inclui o
+[Serviço de Pagamento](/docs/demo/services/payment/) em JavaScript e o
+[Serviço Frontend](/docs/demo/services/frontend/) em TypeScript.
 
-## Troubleshooting
+## Soluções de problemas {#troubleshooting}
 
-Did something go wrong? You can enable diagnostic logging to validate that
-OpenTelemetry is initialized correctly:
+Algo deu errado? Você pode habilitar o _logging_ de diagnóstico para validar se
+o OpenTelemetry está inicializado corretamente:
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -494,7 +502,7 @@ OpenTelemetry is initialized correctly:
 /*instrumentation.ts*/
 import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
 
-// For troubleshooting, set the log level to DiagLogLevel.DEBUG
+// Para solução de problemas, defina o nível de log como DiagLogLevel.DEBUG
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 
 // const sdk = new NodeSDK({...
@@ -504,7 +512,7 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 
 ```js
 /*instrumentation.js*/
-// Require dependencies
+// Requer dependências
 const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
 
 // For troubleshooting, set the log level to DiagLogLevel.DEBUG
@@ -515,5 +523,5 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 
 {{% /tab %}} {{< /tabpane >}}
 
-[traces]: /docs/concepts/signals/traces/
-[metrics]: /docs/concepts/signals/metrics/
+[rastros]: /docs/concepts/signals/traces/
+[métricas]: /docs/concepts/signals/metrics/

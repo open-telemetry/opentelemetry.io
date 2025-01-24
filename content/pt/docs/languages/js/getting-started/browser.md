@@ -141,7 +141,7 @@ Agora crie a aplicação com parcel:
 npx parcel index.html
 ```
 
-e abra o servidor web de desenvolvimento (por exemplo, em
+e acesse o servidor web de desenvolvimento (por exemplo, em
 `http://localhost:1234`) para validar se o código funciona.
 
 Ainda não haverá saída de rastros, para isso precisamos adicionar um exportador.
@@ -246,7 +246,7 @@ exportados:
 
 ### Adicionar Instrumentações {#add-instrumentations}
 
-Caso deseje instrumentar solicitações Ajax, interações do usuário e outros, é
+Caso deseje instrumentar requisições Ajax, interações do usuário e outros, é
 possível registrar instrumentações adicionais para esses elementos:
 
 ```javascript
