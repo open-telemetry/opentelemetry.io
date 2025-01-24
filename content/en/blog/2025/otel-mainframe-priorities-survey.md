@@ -1,16 +1,17 @@
 --
 title: OpenTelemetry on Mainframe Priorities Survey
 linkTitle: Mainframe Priorities Survey # Mandatory, make sure that your short title.
-date: 2025-01-23 
-author: >- 
+date: 2025-01-23
+author: >-
 [Ruediger Schulze](https://github.com/rrschulze) (IBM)
-canonical_url: https://openmainframeproject.org/blog/opentelemetry-on-mainframe-priorities-survey/?utm_content=322043016&utm_medium=social&utm_source=linkedin&hss_channel=lcp-35545633
+canonical_url: <https://openmainframeproject.org/blog/opentelemetry-on-mainframe-priorities-survey/?utm_content=322043016&utm_medium=social&utm_source=linkedin&hss_channel=lcp-35545633>
 issue: [#6045](https://github.com/open-telemetry/opentelemetry.io/issues/6045)
-sig: SIG OpenTelemetry on Mainframe 
+sig: SIG OpenTelemetry on Mainframe
 cSpell:ignore: Ruediger Schulze
 ---
 
-## OpenTelemetry on Mainframe Priorities Survey
+OpenTelemetry on Mainframe Priorities Survey
+============================================
 
 The [OpenTelemetry](https://opentelemetry.io/) project and
 [The Open Mainframe Project](https://openmainframeproject.org/) established the
@@ -21,7 +22,8 @@ in hybrid cloud applications. **The SIG launched a new
 [survey](https://www.surveymonkey.com/r/HGTD2KJ) that calls for your
 participation.**
 
-### Background
+Background
+----------
 
 While there are many definitions of observability, we will refer here to the
 ability to receive actionable insight about the behavior of hybrid applications
@@ -51,7 +53,8 @@ Semantic Conventions for specific aspects of the platform. Once the survey is
 complete, we will publish the results and a prioritized list of activities on
 the websites of the OpenTelemetry project and The Open Mainframe Project.
 
-### Taking the survey
+Taking the survey
+-----------------
 
 The [survey](https://www.surveymonkey.com/r/HGTD2KJ) is structured in two
 sections. The first section gathers input about your role and background. The
