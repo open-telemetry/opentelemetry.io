@@ -1,46 +1,49 @@
 ---
-title: Browser
+title: Navegador
 aliases: [/docs/js/getting_started/browser]
-description: Learn how to add OpenTelemetry to your browser app
+description: Aprenda como adicionar o OpenTelemetry à sua aplicação de navegador
 weight: 20
+default_lang_commit: 1f6a173c26d1e194696ba77e95b6c3af40234952
 ---
 
 {{% alert title="Warning" color="warning" %}}
 {{% _param notes.browser-instrumentation %}} {{% /alert %}}
 
-While this guide uses the example application presented below, the steps to
-instrument your own application should be similar.
+Embora este guia utlize o exemplo de aplicação apresentada abaixo, as etapas
+para instrumentar a sua própria aplicação devem ser similares.
 
-## Prerequisites
+## Pré-requisitos {#prerequisites}
 
-Ensure that you have the following installed locally:
+Certifique-se de que você tenha instalado localmente:
 
 - [Node.js](https://nodejs.org/en/download/)
-- [TypeScript](https://www.typescriptlang.org/download), if you will be using
+- [TypeScript](https://www.typescriptlang.org/download), caso esteja utilizando
   TypeScript.
 
-## Example Application
+## Exemplo de Aplicação {#example-application}
 
-This is a very simple guide, if you'd like to see more complex examples go to
+Este é um guia muito simples. Caso deseje visualizar exemplos mais complexos,
+consulte o repositório
 [examples/opentelemetry-web](https://github.com/open-telemetry/opentelemetry-js/tree/main/examples/opentelemetry-web).
 
-Copy the following file into an empty directory and call it `index.html`.
+Copie o conteúdo do arquivo a seguir para um diretório vazio e salve-o como
+`index.html`.
 
 ```html
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Document Load Instrumentation Example</title>
+    <title>Exemplo de Instrumentação ao Carregar Documento</title>
     <base href="/" />
     <!--
       https://www.w3.org/TR/trace-context/
-      Set the `traceparent` in the server's HTML template code. It should be
-      dynamically generated server side to have the server's request trace ID,
-      a parent span ID that was set on the server's request span, and the trace
-      flags to indicate the server's sampling decision
-      (01 = sampled, 00 = not sampled).
-      '{version}-{traceId}-{spanId}-{sampleDecision}'
+      Defina o `traceparent` no código do template HTML do servidor. Ele 
+      deve ser gerado dinamicamente pelo servidor para conter o ID do rastro
+      da requisição do servidor, um ID de trecho pai que foi definido no trecho
+      da requisição do servidor e as flags de rastro para indicar a decisão de
+      amostragem do servidor (01 = amostrado, 00 = não amostrado).
+      '{versão}-{ID do rastro}-{ID do trecho}-{decisão de amostragem}''
     -->
     <meta
       name="traceparent"
@@ -49,16 +52,17 @@ Copy the following file into an empty directory and call it `index.html`.
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
-    Example of using Web Tracer with document load instrumentation with console
-    exporter and collector exporter
+    Exemplo de utilização do Tracer Web com instrumentação do carregamento de
+    documento com Exporter de Console e Exporter de Collector
   </body>
 </html>
 ```
 
-### Installation
+### Instalação {#installation}
 
-To create traces in the browser, you will need `@opentelemetry/sdk-trace-web`,
-and the instrumentation `@opentelemetry/instrumentation-document-load`:
+Para criar rastros no navegador, você precisará do
+`@opentelemetry/sdk-trace-web` e da instrumentação
+`@opentelemetry/instrumentation-document-load`:
 
 ```shell
 npm init -y
@@ -68,24 +72,25 @@ npm install @opentelemetry/api \
   @opentelemetry/context-zone
 ```
 
-### Initialization and Configuration
+### Inicialização e configuração {#initialization-and-configuration}
 
-If you are coding in TypeScript, then run the following command:
+Caso esteja escrevendo seu código em TypeScript, execute o seguinte comando:
 
 ```shell
 tsc --init
 ```
 
-Then acquire [parcel](https://parceljs.org/), which will (among other things)
-let you work in TypeScript.
+Em seguida, adicione o [parcel](https://parceljs.org/), que permitirá (entre
+outras coisas) que você trabalhe com TypeScript.
 
 ```shell
 npm install --save-dev parcel
 ```
 
-Create an empty code file named `document-load` with a `.ts` or `.js` extension,
-as appropriate, based on the language you've chosen to write your app in. Add
-the following code to your HTML right before the `</body>` closing tag:
+Crie um arquivo de código vazio chamado `document-load` com a extensão `.ts` ou
+`.js`, conforme apropriado, com base na linguagem que você escolheu para
+escrever sua aplicação. Adicione o seguinte código ao seu HTML, logo antes da
+tag de fechamento `</body>`:
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -101,16 +106,17 @@ the following code to your HTML right before the `</body>` closing tag:
 
 {{% /tab %}} {{< /tabpane >}}
 
-We will add some code that will trace the document load timings and output those
-as OpenTelemetry Spans.
+Adicionaremos o código para rastrear os tempos de carregamento do documento e
+relatar esses dados como trechos OpenTelemetry.
 
-### Creating a Tracer Provider
+### Criando um Tracer Provider {#creating-a-tracer-provider}
 
-Add the following code to the `document-load.ts|js` to create a tracer provider,
-which brings the instrumentation to trace document load:
+Adicione o seguinte código ao arquivo `document-load.ts|js` para criar um Tracer
+Provider, que trará a instrumentação para rastrear o tempo de carregamento do
+documento:
 
 ```js
-/* document-load.ts|js file - the code snippet is the same for both the languages */
+/* arquivo document-load.ts|js - este trecho do código é o mesmo para ambas as linguagens */
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
 import { ZoneContextManager } from '@opentelemetry/context-zone';
@@ -119,44 +125,44 @@ import { registerInstrumentations } from '@opentelemetry/instrumentation';
 const provider = new WebTracerProvider();
 
 provider.register({
-  // Changing default contextManager to use ZoneContextManager - supports asynchronous operations - optional
+  // Alterando o contextManager padrão para utilizar o ZoneContextManager - oferece suporte para operações assíncronas - opcional
   contextManager: new ZoneContextManager(),
 });
 
-// Registering instrumentations
+// Registrando instrumentações
 registerInstrumentations({
   instrumentations: [new DocumentLoadInstrumentation()],
 });
 ```
 
-Now build the app with parcel:
+Agora crie a aplicação com parcel:
 
 ```shell
 npx parcel index.html
 ```
 
-and open the development web server (e.g. at `http://localhost:1234`) to see if
-your code works.
+e abra o servidor web de desenvolvimento (por exemplo, em
+`http://localhost:1234`) para validar se o código funciona.
 
-There will be no output of traces yet, for this we need to add an exporter.
+Ainda não haverá saída de rastros, para isso precisamos adicionar um exportador.
 
-### Creating an Exporter
+### Criando um Exporter {#creating-an-exporter}
 
-In the following example, we will use the `ConsoleSpanExporter` which prints all
-spans to the console.
+No exemplo a seguir, utilizaremos o `ConsoleSpanExporter` que exporta todos os
+trechos no console.
 
-In order to visualize and analyze your traces, you will need to export them to a
-tracing backend. Follow [these instructions](../../exporters) for setting up a
-backend and exporter.
+Para visualizar e analisar seus rastros, você precisará exportá-los para um
+_backend_ de rastreamento. Siga [estas instruções](../../exporters) para
+configurar um _backend_ e um exportador.
 
-You may also want to use the `BatchSpanProcessor` to export spans in batches in
-order to more efficiently use resources.
+Você também pode utilizar o `BatchSpanProcessor` para exportar trechos em lotes
+e utilizar os recursos de forma mais eficiente.
 
-To export traces to the console, modify `document-load.ts|js` so that it matches
-the following code snippet:
+Para exportar os rastros para o console, modifique o arquivo
+`document-load.ts|js` para que corresponda ao seguinte trecho de código:
 
 ```js
-/* document-load.ts|js file - the code is the same for both the languages */
+/* arquivo document-load.ts|js - o código é o mesmo para ambas as linguagens */
 import {
   ConsoleSpanExporter,
   SimpleSpanProcessor,
@@ -171,18 +177,19 @@ const provider = new WebTracerProvider({
 });
 
 provider.register({
-  // Changing default contextManager to use ZoneContextManager - supports asynchronous operations - optional
+  // Alterando o contextManager padrão para utilizar o ZoneContextManager - oferece suporte para operações assíncronas - opcional
   contextManager: new ZoneContextManager(),
 });
 
-// Registering instrumentations
+// Registrando instrumentações
 registerInstrumentations({
   instrumentations: [new DocumentLoadInstrumentation()],
 });
 ```
 
-Now, rebuild your application and open the browser again. In the console of the
-developer toolbar you should see some traces being exported:
+Agora, reconstrua sua aplicação e abra o navegador novamente. No console da
+barra de ferramentas do desenvolvedor, você verá alguns rastros sendo
+exportados:
 
 ```json
 {
@@ -237,10 +244,10 @@ developer toolbar you should see some traces being exported:
 }
 ```
 
-### Add Instrumentations
+### Adicionar Instrumentações {#add-instrumentations}
 
-If you want to instrument Ajax requests, User Interactions and others, you can
-register additional instrumentations for those:
+Caso deseje instrumentar solicitações Ajax, interações do usuário e outros, é
+possível registrar instrumentações adicionais para esses elementos:
 
 ```javascript
 registerInstrumentations({
@@ -251,7 +258,8 @@ registerInstrumentations({
 });
 ```
 
-## Meta Packages for Web
+## Pacotes Meta para Web {#meta-packages-for-web}
 
-To leverage the most common instrumentations all in one you can simply use the
-[OpenTelemetry Meta Packages for Web](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-web)
+Para aproveitar as instrumentações mais comuns em um único lugar, você pode
+simplesmente usar os
+[Pacotes Meta do OpenTelemetry para Web](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-web).
