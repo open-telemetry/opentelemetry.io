@@ -468,7 +468,7 @@ is a bundle of key value pairs representing the
 See [semantic attributes](#semantic-attributes) for attribute constants
 generated from the semantic conventions.
 
-See [attribute naming](/docs/specs/semconv/general/attribute-naming/) for
+See [attribute naming](/docs/specs/semconv/general/naming/) for
 guidance on attribute naming.
 
 The following code snippet explores `Attributes` API usage:
