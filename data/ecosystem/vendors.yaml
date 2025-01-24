@@ -252,6 +252,12 @@
   contact:
   oss: false
   commercial: true
+- name: Otelic
+  nativeOTLP: true
+  url: https://otelic.com/en/open-telemetry-sample-instrumentation/nodejs-simple
+  contact: support@otelic.com
+  oss: false
+  commercial: true
 - name: observIQ
   nativeOTLP: true
   url: https://docs.bindplane.observiq.com
