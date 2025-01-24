@@ -11239,6 +11239,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:51:50.076193-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-24T07:05:45.681053-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/0212-profiling-vision.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:51:52.507046-05:00"
@@ -11374,6 +11378,10 @@
   "https://github.com/open-telemetry/opentelemetry-specification/releases/tag/v1.24.0": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:05.874801-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/main/oteps/#readme": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-24T07:06:27.879024-05:00"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/README.md": {
     "StatusCode": 206,

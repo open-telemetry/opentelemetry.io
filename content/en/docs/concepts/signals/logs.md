@@ -16,7 +16,7 @@ OpenTelemetry does not define a bespoke API or SDK to create logs. Instead,
 OpenTelemetry logs are the existing logs you already have from a logging
 framework or infrastructure component. OpenTelemetry SDKs and
 autoinstrumentation utilize several components to automatically correlate logs
-with [traces](/docs/concepts/signals/traces).
+with [traces](../traces).
 
 OpenTelemetry's support for logs is designed to be fully compatible with what
 you already have, providing capabilities to wrap those logs with additional
@@ -25,7 +25,7 @@ across many different sources.
 
 ### OpenTelemetry logs in the OpenTelemetry Collector
 
-The [OpenTelemetry Collector](/docs/collector) provides several tools to work
+The [OpenTelemetry Collector](/docs/collector/) provides several tools to work
 with logs:
 
 - Several receivers which parse logs from specific, known sources of log data.

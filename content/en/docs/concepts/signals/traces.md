@@ -160,8 +160,7 @@ source or vendor backend of your choice.
 Context Propagation is the core concept that enables Distributed Tracing. With
 Context Propagation, Spans can be correlated with each other and assembled into
 a trace, regardless of where Spans are generated. To learn more about this
-topic, see the concept page on
-[Context Propagation](/docs/concepts/context-propagation).
+topic, see the concept page on [Context Propagation](../../context-propagation).
 
 ## Spans
 
@@ -231,8 +230,7 @@ Span context is an immutable object on every span that contains the following:
   information
 
 Span context is the part of a span that is serialized and propagated alongside
-[Distributed Context](#context-propagation) and
-[Baggage](/docs/concepts/signals/baggage).
+[Distributed Context](#context-propagation) and [Baggage](../baggage).
 
 Because Span Context contains the Trace ID, it is used when creating
 [Span Links](#span-links).

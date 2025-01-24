@@ -38,7 +38,7 @@ the site.
 | OpenTelemetry | OpenTelemetry should always be capitalized. Don't use Open-Telemetry. |
 | OTel | OTel is the accepted short form of OpenTelemetry. Don't use OTEL. |
 | Collector | When referring to the OpenTelemetry Collector, always capitalize Collector. Write "The Collector" or "The Opentelemetry Collector" if you're starting a sentence. Write "the Collector" or "the OpenTelemetry Collector" in the middle or end of a sentence. Use just "Collector" if you are using Collector as an adjective (for example, "Collector configuration").|
-| OTEP | OpenTelemetry Enhancement Proposal. Write "OTEPs" as plural form. Don't write "OTep" or "otep". |
+| OTEP | [OpenTelemetry Enhancement Proposal]. Write "OTEPs" as plural form. Don't write "OTep" or "otep". |
 | OpAMP | Open Agent Management Protocol. Don't write "OPAMP" or "opamp" in descriptions or instructions. |
 <!-- prettier-ignore-end -->
 
@@ -116,3 +116,6 @@ submitting a PR, or run it afterwards and push an additional commit.
 All file names should be in
 [kebab case](https://en.wikipedia.org/wiki/Letter_case#Kebab_case). Run
 `npm run fix:filenames` to automatically rename your files.
+
+[OpenTelemetry Enhancement Proposal]:
+  https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/README.md
