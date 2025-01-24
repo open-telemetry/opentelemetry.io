@@ -69,7 +69,6 @@ The [OpenTelemetry Collector], or Collector for short, is a vendor-agnostic
 implementation on how to receive, process, and export telemetry data. A single
 binary that can be deployed as an agent or gateway.
 
-
 > **Spelling**: When referring to the [OpenTelemetry Collector], always
 > capitalize Collector. Use just "Collector" if you are using Collector as an
 > adjective &mdash; for example, "Collector configuration".
@@ -217,9 +216,9 @@ Precursor to OpenTelemetry. For details, see
 ### OpenTelemetry
 
 Formed through a [merger] of the [OpenTracing](#opentracing) and
-[OpenCensus](#opencensus) projects, OpenTelemetry &mdash; the subject of this website
-&mdash; is a collection of [APIs](#api), [SDKs](#sdk), and tools that you can
-use to [instrument](/docs/concepts/instrumentation/), generate,
+[OpenCensus](#opencensus) projects, OpenTelemetry &mdash; the subject of this
+website &mdash; is a collection of [APIs](#api), [SDKs](#sdk), and tools that
+you can use to [instrument](/docs/concepts/instrumentation/), generate,
 [collect](/docs/concepts/components/#collector), and
 [export](/docs/concepts/components/#exporters)
 [telemetry data](/docs/concepts/signals/) such as [metrics](#metric),
