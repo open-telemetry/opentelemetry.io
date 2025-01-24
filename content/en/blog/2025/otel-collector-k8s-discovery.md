@@ -1,7 +1,7 @@
 ---
 title: Kubernetes annotation-based discovery for the OpenTelemetry Collector
 linkTitle: K8s annotation-based discovery
-date: 2025-01-23
+date: 2025-01-24
 author: >
   [Dmitrii Anoshin](https://github.com/dmitryax) (Cisco/Splunk), [Christos
   Markou](https://github.com/ChrsMark) (Elastic)
@@ -115,8 +115,8 @@ can be used to scrape metrics from it:
 io.opentelemetry.discovery.metrics/scraper: nginx
 ```
 
-Apart from that, the discovery on the pod needs to be explicitly enabled with the
-following annotation:
+Apart from that, the discovery on the pod needs to be explicitly enabled with
+the following annotation:
 
 ```yaml
 io.opentelemetry.discovery.metrics/enabled: 'true'
