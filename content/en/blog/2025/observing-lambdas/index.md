@@ -60,7 +60,7 @@ its thing.
 ## How can I use it?
 
 As of November 2024, the opentelemetry-lambda project publishes [releases of the
-collector extension layer](https://github.com/open-telemetry/opentelemetry-lambda/releases/tag/layer-collector%2F0.12.0).
+Collector extension layer](https://github.com/open-telemetry/opentelemetry-lambda/releases/tag/layer-collector%2F0.12.0).
 It can be configured through a configuration file hosted either in an S3 bucket
 or on an arbitrary HTTP server. It is also possible to bundle the configuration
 file with your Lambda code. In both cases, you have tradeoffs to consider.
