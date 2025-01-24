@@ -47,7 +47,7 @@ standard that you can use for agent management: [Open Agent Management Protocol]
 (OpAMP).
 
 The [OpAMP specification] defines how to manage a fleet of telemetry data
-agents. These agents can be [OpenTelemetry collectors](/docs/collector/), Fluent
+agents. These agents can be [OpenTelemetry Collectors](/docs/collector/), Fluent
 Bit or other agents in any arbitrary combination.
 
 > **Note** The term "agent" is used here as a catch-all term for OpenTelemetry
