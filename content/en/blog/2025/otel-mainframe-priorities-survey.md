@@ -7,6 +7,7 @@ author: >-
 canonical_url: https://openmainframeproject.org/blog/opentelemetry-on-mainframe-priorities-survey/?utm_content=322043016&utm_medium=social&utm_source=linkedin&hss_channel=lcp-35545633
 issue: [#6045](https://github.com/open-telemetry/opentelemetry.io/issues/6045)
 sig: SIG OpenTelemetry on Mainframe 
+cSpell:ignore: Ruediger Schulze
 ---
 
 ## OpenTelemetry on Mainframe Priorities Survey
@@ -27,7 +28,7 @@ ability to receive actionable insight about the behavior of hybrid applications
 spanning across multiple landing zones such as public and private cloud and
 mainframe environments.
 
-OpenTelemetry is a well-adopted open-source framework for observability that
+OpenTelemetry is a well-adopted open source framework for observability that
 aims to make high quality telemetry data such as traces, metrics and logs
 available from any source to any target. OpenTelemetry remains the second most
 active project under the Cloud Native Computing Foundation (CNCF). The community
