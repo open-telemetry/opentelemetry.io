@@ -73,7 +73,7 @@ The simplest way to get started is with an embedded configuration. For this,
 add a file called `collector.yaml` to your function. This is a regular Collector
 configuration file. To take advantage of the Lambda specific extensions, they
 need to be configured. As an example, the following configuration receives
-traces and logs from the telemetry API and sends them to another endpoint:
+traces and logs from the Telemetry API and sends them to another endpoint:
 
 ```yaml
 receivers:
