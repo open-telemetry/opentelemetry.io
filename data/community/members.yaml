@@ -139,6 +139,7 @@ maintainers:
       - collector-contrib-approvers
       - collector-contrib-maintainers
       - collector-contrib-triagers
+      - collector-releases-approvers
       - collector-triagers
     html_url: https://github.com/andrzej-stencel
     avatar_url: https://avatars.githubusercontent.com/u/70892616?v=4
@@ -222,6 +223,7 @@ maintainers:
       - collector-contrib-maintainers
       - collector-contrib-triagers
       - collector-maintainers
+      - collector-releases-approvers
       - collector-triagers
       - specs-triagers
     html_url: https://github.com/bogdandrutu
@@ -335,6 +337,7 @@ maintainers:
       - collector-contrib-maintainers
       - collector-contrib-triagers
       - collector-maintainers
+      - collector-releases-approvers
       - collector-triagers
       - configuration-approvers
       - configuration-maintainers
@@ -362,6 +365,7 @@ maintainers:
     teams:
       - collector-contrib-approvers
       - collector-contrib-triagers
+      - collector-releases-approvers
       - go-approvers
       - go-maintainers
       - go-triagers
@@ -389,8 +393,6 @@ maintainers:
       - go-compile-instrumentation-approvers
       - go-compile-instrumentation-maintainers
       - go-compile-instrumentation-triagers
-      - go-instrumentation-approvers
-      - go-instrumentation-triagers
     html_url: https://github.com/dineshg13
     avatar_url: https://avatars.githubusercontent.com/u/2471669?v=4
   - name: djaglowski
@@ -399,6 +401,7 @@ maintainers:
       - collector-contrib-approvers
       - collector-contrib-maintainers
       - collector-contrib-triagers
+      - collector-releases-approvers
       - collector-triagers
     html_url: https://github.com/djaglowski
     avatar_url: https://avatars.githubusercontent.com/u/5255616?v=4
@@ -419,6 +422,7 @@ maintainers:
       - collector-contrib-maintainers
       - collector-contrib-triagers
       - collector-maintainers
+      - collector-releases-approvers
       - collector-triagers
       - helm-approvers
       - helm-maintainers
@@ -469,6 +473,7 @@ maintainers:
       - collector-contrib-approvers
       - collector-contrib-maintainers
       - collector-contrib-triagers
+      - collector-releases-approvers
       - collector-triagers
       - opamp-go-approvers
     html_url: https://github.com/evan-bradley
@@ -579,7 +584,6 @@ maintainers:
     teams:
       - arrow-approvers
       - arrow-maintainers
-      - go-instrumentation-triagers
       - specs-triagers
     html_url: https://github.com/jmacd
     avatar_url: https://avatars.githubusercontent.com/u/3629705?v=4
@@ -604,6 +608,7 @@ maintainers:
       - collector-contrib-approvers
       - collector-contrib-maintainers
       - collector-contrib-triagers
+      - collector-releases-approvers
       - collector-triagers
       - docs-pt-approvers
       - docs-pt-maintainers
@@ -779,6 +784,7 @@ maintainers:
       - collector-contrib-approvers
       - collector-contrib-maintainers
       - collector-contrib-triagers
+      - collector-releases-approvers
     html_url: https://github.com/MovieStoreGuy
     avatar_url: https://avatars.githubusercontent.com/u/30928402?v=4
   - name: MrAlias
@@ -823,6 +829,7 @@ maintainers:
     teams:
       - collector-contrib-approvers
       - collector-contrib-triagers
+      - collector-releases-approvers
       - javascript-approvers
       - javascript-triagers
       - ruby-approvers
@@ -838,6 +845,7 @@ maintainers:
       - collector-contrib-maintainers
       - collector-contrib-triagers
       - collector-maintainers
+      - collector-releases-approvers
       - collector-triagers
       - docs-es-approvers
       - semconv-container-approvers
@@ -874,9 +882,6 @@ maintainers:
       - go-compile-instrumentation-approvers
       - go-compile-instrumentation-maintainers
       - go-compile-instrumentation-triagers
-      - go-instrumentation-approvers
-      - go-instrumentation-maintainers
-      - go-instrumentation-triagers
       - php-approvers
       - php-triagers
     html_url: https://github.com/pdelewski
@@ -1041,6 +1046,7 @@ maintainers:
       - collector-contrib-approvers
       - collector-contrib-maintainers
       - collector-contrib-triagers
+      - collector-releases-approvers
       - collector-triagers
     html_url: https://github.com/songy23
     avatar_url: https://avatars.githubusercontent.com/u/10536136?v=4
@@ -1164,6 +1170,7 @@ maintainers:
       - javascript-contrib-triagers
       - javascript-maintainers
       - javascript-triagers
+      - semconv-genai-approvers
     html_url: https://github.com/trentm
     avatar_url: https://avatars.githubusercontent.com/u/46866?v=4
   - name: tsloughter
@@ -1191,6 +1198,7 @@ maintainers:
       - collector-contrib-approvers
       - collector-contrib-maintainers
       - collector-contrib-triagers
+      - collector-releases-approvers
       - collector-triagers
       - helm-approvers
       - helm-maintainers
@@ -1217,6 +1225,7 @@ maintainers:
       - opentelemetry-python-contrib-maintainers
       - python-approvers
       - python-maintainers
+      - semconv-genai-approvers
     html_url: https://github.com/xrmx
     avatar_url: https://avatars.githubusercontent.com/u/12932?v=4
   - name: XSAM
@@ -1306,6 +1315,7 @@ approvers:
       - collector-approvers
       - collector-contrib-approvers
       - collector-contrib-triagers
+      - collector-releases-approvers
       - collector-triagers
       - network-triagers
     html_url: https://github.com/atoulme
@@ -1365,6 +1375,7 @@ approvers:
     teams:
       - collector-contrib-approvers
       - collector-contrib-triagers
+      - collector-releases-approvers
       - semconv-container-approvers
       - semconv-k8s-approvers
       - semconv-system-approvers
@@ -1379,6 +1390,7 @@ approvers:
     teams:
       - collector-contrib-approvers
       - collector-contrib-triagers
+      - collector-releases-approvers
     html_url: https://github.com/crobert-1
     avatar_url: https://avatars.githubusercontent.com/u/92119472?v=4
   - name: david-luna
@@ -1430,6 +1442,7 @@ approvers:
     teams:
       - collector-contrib-approvers
       - collector-contrib-triagers
+      - collector-releases-approvers
       - demo-approvers
     html_url: https://github.com/fatsheep9146
     avatar_url: https://avatars.githubusercontent.com/u/11855957?v=4
