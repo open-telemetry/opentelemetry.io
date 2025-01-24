@@ -176,8 +176,8 @@
   commercial: true
 - name: KloudFuse
   nativeOTLP: true
-  url: https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/753860609/APM#Sending-traces-to-Kloudfuse-data-plane%3A
-  contact:
+  url: https://docs.kloudfuse.com/platform/latest/agent-otel/
+  contact: support@kloudfuse.com
   oss: false
   commercial: true
 - name: KloudMate
