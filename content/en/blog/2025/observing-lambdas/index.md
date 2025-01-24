@@ -51,7 +51,7 @@ wait for the collector to ship the data, right? This is where the special
 `decouple` processor comes in. It separates the receiving and exporting
 components while interfacing with the Lambda lifecycle. This allows for the
 Lambda to return, even if not all data has been sent. At the next invocation (or
-on shutdown) the collector continues shipping the data while your function does
+on shutdown) the Collector continues shipping the data while your function does
 its thing.
 
 {{< figure src="diagram-execution-timing.svg" caption="Diagram showcasing how execution timing differs with and without a collector">}}
