@@ -5,8 +5,6 @@ linkTitle: Observing Lambdas
 date: 2025-01-24
 cSpell:ignore: Dominik
 ---
-
-
 Getting telemetry data out of modern applications is very straightforward (or at
 least it should be). You set up a collector which either receives data from your
 application or asks it to provide an up-to-date state of various counters. This
