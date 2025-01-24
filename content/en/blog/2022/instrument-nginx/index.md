@@ -369,7 +369,7 @@ You should now be able to apply what you have learned from this blog post to
 your own installation of NGINX. We would love to hear about your experience! If
 you run into any problems, [create an issue][].
 
-[^1]: {{% _param notes.docker-compose-v2 %}}
+[^1]: {{% param notes.docker-compose-v2 %}}
 
 [create an issue]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues
