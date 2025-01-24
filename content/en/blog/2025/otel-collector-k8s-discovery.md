@@ -52,8 +52,8 @@ receivers:
           collection_interval: '15s'
 ```
 
-The above configuration will be enabled when a pod is discovered via the
-Kubernetes API that exposes port `80` (the known port for NGINX) and it's name
+The previous configuration is enabled when a pod is discovered via the
+Kubernetes API that exposes port `80` (the known port for NGINX) and its name
 matches the `nginx` keyword.
 
 This is great, and as an SRE or Platform Engineer managing an observability
@@ -99,7 +99,7 @@ Each scraping receiver has a default configuration with only one required field:
 `endpoint`. Given that the endpoint information is provided by the Kubernetes
 observer, the only information that the user needs to provide explicitly is
 which receiver/scraper should be used to scrape data from a discovered endpoint.
-That information can be configured on the collector, but as mentioned before,
+That information can be configured on the Collector, but as mentioned before,
 this is inconvenient. A much more convenient place to define which receiver can
 be used to scrape telemetry from a particular pod is the pod itself. Pod’s
 annotations is the natural place to put that kind of detail. Given that the
@@ -115,7 +115,7 @@ can be used to scrape metrics from it:
 io.opentelemetry.discovery.metrics/scraper: nginx
 ```
 
-Apart from that, the discovery on the pod need to be explicitly enabled with the
+Apart from that, the discovery on the pod needs to be explicitly enabled with the
 following annotation:
 
 ```yaml
@@ -135,7 +135,7 @@ io.opentelemetry.discovery.metrics/config: |
 ```
 
 It’s important to mention that the configuration defined in the annotations
-cannot point the receiver creator to another pod. The collector will reject such
+cannot point the receiver creator to another pod. The Collector will reject such
 configurations.
 
 In addition to the metrics scraping, the annotation-based discovery also
@@ -164,7 +164,7 @@ including the default container parser, has to be redefined because list config
 fields are entirely replaced when merged into the default configuration struct.
 
 The discovery functionality has to be explicitly enabled in the receiver creator
-just by adding the following configuration field:
+by adding the following configuration field:
 
 ```yaml
 receivers:
