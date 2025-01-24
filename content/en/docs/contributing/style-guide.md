@@ -116,6 +116,3 @@ submitting a PR, or run it afterwards and push an additional commit.
 All file names should be in
 [kebab case](https://en.wikipedia.org/wiki/Letter_case#Kebab_case). Run
 `npm run fix:filenames` to automatically rename your files.
-
-[OpenTelemetry Enhancement Proposal]:
-  https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/README.md
