@@ -177,11 +177,19 @@ OpenTelemetryはこれらのペアを[属性](#attribute)と呼びます。
 
 [OpenCensus](#opencensus)の略称。
 
+### OpAMP
+
+[コンテンツは後日追加されます]
+
 ### **OpenCensus**
 
 アプリケーションのメトリクスと分散トレースを収集し、リアルタイムで任意のバックエンドにデータを転送することを可能にする、さまざまな言語用のライブラリのセットです。
 [OpenTelemetryの前身](/docs/what-is-opentelemetry/#history)プロジェクトです。
 詳細は[このサイト][opencensus]を参照のこと。
+
+### OpenTelemetry
+
+[コンテンツは後日追加されます]
 
 ### **OpenTracing**
 
@@ -200,6 +208,10 @@ OpenTelemetryはこれらのペアを[属性](#attribute)と呼びます。
 ### **OTelCol**
 
 [OpenTelemetryコレクター](#collector)の略称。
+
+### OTEP
+
+[コンテンツは後日追加されます]
 
 ### **OTLP**
 
