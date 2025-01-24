@@ -37,7 +37,7 @@ of the Lambda lifecycle and ensures your telemetry gets to the storage layer.
 ## How does it work?
 
 When your function is called for the first time, the extension layer starts an
-instance of the OpenTelemetry Collector. The collector build is a stripped down
+instance of the OpenTelemetry Collector. The Collector build is a stripped down
 version, providing only components necessary in the context of Lambda. It
 registers with the Lambda [extension api](https://docs.aws.amazon.com/lambda/latest/dg/runtimes-extensions-api.html)
 and [telemetry api](https://docs.aws.amazon.com/lambda/latest/dg/telemetry-api.html). By doing
