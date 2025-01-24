@@ -12,10 +12,10 @@ Esta página mostrará como começar a usar o OpenTelemetry no Node.js.
 Você aprenderá como instrumentar [rastros][] e [métricas][] e registrá-los no
 console.
 
-{{% alert title="Note" color="info" %}} A biblioteca a para logs do OpenTelemetry
-para Node.js ainda está em desenvolvimento, portanto, este exemplo não será
-fornecido a seguir. Consulte [esta página](/docs/languages/js) para mais
-informações sobre o status do OpenTelemetry para JavaScript. {{% /alert %}}
+{{% alert title="Note" color="info" %}} A biblioteca a para logs do
+OpenTelemetry para Node.js ainda está em desenvolvimento, portanto, este exemplo
+não será fornecido a seguir. Consulte [esta página](/docs/languages/js) para
+mais informações sobre o status do OpenTelemetry para JavaScript. {{% /alert %}}
 
 ## Pré-requisites {#prerequisites}
 
