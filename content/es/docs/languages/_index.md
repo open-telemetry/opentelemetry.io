@@ -4,7 +4,7 @@ description:
   La instrumentación de código de OpenTelemetry es compatible con muchos
   lenguajes de programación populares.
 weight: 250
-default_lang_commit: 3815d1481fe753df10ea3dc26cbe64dba0230579
+default_lang_commit: c0a5eea5d720b0e075efa87f99dcf58c89106268
 ---
 
 La [instrumentación][] de código de OpenTelemetry es compatible con los
