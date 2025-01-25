@@ -22,4 +22,4 @@ isFirstParty: true
 package:
   registry: go
   name: github.com/hertz-contrib/obs-opentelemetry
-  version: v0.3.0
+  version: v0.3.1
