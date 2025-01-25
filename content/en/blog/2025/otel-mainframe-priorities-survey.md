@@ -39,7 +39,7 @@ the mainframe, we as contributors to the SIG want to better understand the
 priorities for making the best use of OpenTelemetry on the mainframes. We seek
 feedback from a broad range of mainframe users and users of observability
 solutions, developers, site reliability engineers, application owners,
-architects, DevOps engineers and all other experts in the field.
+architects, DevOps engineers, and all other experts in the field.
 
 The results of the [survey](https://www.surveymonkey.com/r/HGTD2KJ) will help us
 prioritize and implement targeted activities to accelerate the adoption of
