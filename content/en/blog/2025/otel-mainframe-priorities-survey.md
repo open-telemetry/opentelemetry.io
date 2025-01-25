@@ -24,7 +24,7 @@ Background
 
 While there are many definitions of observability, we will refer here to the
 ability to receive actionable insight about the behavior of hybrid applications
-spanning across multiple landing zones such as public and private cloud and
+spanning multiple landing zones such as public and private cloud and
 mainframe environments.
 
 OpenTelemetry is a well-adopted open source framework for observability that
