@@ -24,7 +24,7 @@ my %versionsRaw = # Keyname must end with colons because the auto-version update
   qw(
     spec: 1.41.0
     otlp: 1.5.0
-    semconv: 1.29.0
+    semconv: 1.30.0
   );
 # Versions map without the colon in the keys
 my %versions = map { s/://r => $versionsRaw{$_} } keys %versionsRaw;
@@ -93,28 +93,21 @@ sub applyPatchOrPrintMsgIf($$$) {
   return 0;
 }
 
-sub patchAttrNaming() {
-  return unless $ARGV =~ /^tmp\/otel\/specification/
-    && applyPatchOrPrintMsgIf('2025-01-22-attribute-naming', 'semconv', '1.29.0');
-
-  my $semconv_attr_naming = '(/docs/specs/semconv/general)/naming/';
-  s|$semconv_attr_naming|$1/attribute-naming/|g if /$semconv_attr_naming/;
-}
-
 sub patchEventAliases() {
   return unless $ARGV =~ /^tmp\/otel\/specification\/logs\//
     && applyPatchOrPrintMsgIf('2025-01-23-event-aliases', 'spec', '1.41.0');
 
   my $aliases = '^(  - )(event-(api|sdk))$';
-  s|$aliases|$1./$2|g if /$aliases/;
+  s|$aliases|$1./$2|;
 }
 
-sub patchSemConvAlias() {
-  return unless $ARGV =~ /^tmp\/semconv\/docs\/general\//
-    && applyPatchOrPrintMsgIf('2025-01-23-general-aliases', 'semconv', '1.29.0');
+sub patchSemConv1_30_0() {
+  return unless $ARGV =~ /^tmp\/semconv\/docs\//
+    && applyPatchOrPrintMsgIf('2025-01-24-emit-an-event', 'semconv', '1.30.0');
 
-  my $aliases = '\[docs/specs/semconv/general/(trace-general)\]';
-  s|$aliases|[$1]|g if /$aliases/;
+  s|Emit Event API|Log API|;
+  s|(docs/specs/otel/logs/api.md#emit-a)n-event|$1-logrecord|;
+  s|\[semantic-convention-groups\]|[group-stability]|;
 }
 
 sub getVersFromSubmodule() {
@@ -158,9 +151,8 @@ while(<>) {
         while(<>) {
           $lineNum++;
           last if /^-?-->/;
-          patchAttrNaming();
           patchEventAliases();
-          patchSemConvAlias();
+          patchSemConv1_30_0();
           $frontMatterFromFile .= $_;
         }
         next;
@@ -193,27 +185,13 @@ while(<>) {
   ## Semconv
 
   if ($ARGV =~ /^tmp\/semconv/) {
-    if (applyPatchOrPrintMsgIf('2025-01-22-event-(api|sdk)', 'semconv', '1.29.0')) {
-      # Cf. https://github.com/open-telemetry/opentelemetry-specification/pull/4359
-      my $otel_spec_event_deprecation = '(opentelemetry-specification/blob/main/specification/logs)/event-(api|sdk).md';
-      s|$otel_spec_event_deprecation\b|$1/|g if /$otel_spec_event_deprecation/;
-    }
-
     s|(\]\()/docs/|$1$specBasePath/semconv/|g;
     s|(\]:\s*)/docs/|$1$specBasePath/semconv/|;
 
     s|\((/model/.*?)\)|($semconvSpecRepoUrl/tree/v$semconvVers/$1)|g;
   }
 
-
   # SPECIFICATION custom processing
-
-  if ($ARGV =~ /^tmp\/otel\/specification/ && applyPatchOrPrintMsgIf('2025-01-22-attribute-naming.md', 'semconv', '1.29.0')) {
-    my $semconv_attr_naming_md = '(semantic-conventions/blob/main/docs/general)/naming.md(#\w+)?';
-    s|$semconv_attr_naming_md\b|$1/attribute-naming.md|g if /$semconv_attr_naming_md/;
-  }
-
-  patchAttrNaming(); # TEMPORARY patch
 
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;
   s|(\]\()/specification/|$1$specBasePath/otel/)|;
@@ -253,6 +231,8 @@ while(<>) {
   ## OpAMP
 
   s|\]\((proto/opamp.proto)\)|]($opAmpSpecRepoUrl/blob/main/$1)|;
+
+  patchSemConv1_30_0();
 
   print;
 }
