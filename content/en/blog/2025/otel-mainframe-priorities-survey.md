@@ -1,6 +1,6 @@
 ---
 title: OpenTelemetry on Mainframe Priorities Survey
-linkTitle: Mainframe Priorities Survey 
+linkTitle: Mainframe Priorities Survey
 date: 2025-01-24
 author: '[Ruediger Schulze](https://github.com/rrschulze) (IBM)'
 canonical_url: https://openmainframeproject.org/blog/opentelemetry-on-mainframe-priorities-survey/
@@ -9,13 +9,12 @@ sig: SIG OpenTelemetry on Mainframe
 cSpell:ignore: Ruediger Schulze
 ---
 
-
 The [OpenTelemetry](https://opentelemetry.io/) project and
 [The Open Mainframe Project](https://openmainframeproject.org/) established the
 [SIG “OpenTelemetry on Mainframe”](https://github.com/open-telemetry/sig-mainframe)
 at the beginning of 2024. Our focus is to enable OpenTelemetry on the mainframe
-for improved end-to-end observability and to support mainframe participation
-in hybrid cloud applications. **The SIG launched a new
+for improved end-to-end observability and to support mainframe participation in
+hybrid cloud applications. **The SIG launched a new
 [survey](https://www.surveymonkey.com/r/HGTD2KJ) that calls for your
 participation.**
 
@@ -23,8 +22,8 @@ participation.**
 
 While there are many definitions of observability, we will refer here to the
 ability to receive actionable insight about the behavior of hybrid applications
-spanning multiple landing zones such as public and private cloud and
-mainframe environments.
+spanning multiple landing zones such as public and private cloud and mainframe
+environments.
 
 OpenTelemetry is a well-adopted open source framework for observability that
 aims to make high quality telemetry data such as traces, metrics, and logs
@@ -58,4 +57,8 @@ OpenTelemetry on mainframes. Responding to the 20 questions will take
 approximately 15 minutes. We appreciate your time spent on the survey and look
 forward to receiving your feedback!
 
-We invite you to take the [survey](https://www.surveymonkey.com/r/HGTD2KJ)! To learn more about the work of the OpenTelemetry on Mainframe SIG, join the conversation at [#otel-mainframes](https://cloud-native.slack.com/archives/C05PXDFTCPJ) on [CNCF Slack](https://slack.cncf.io/).
+We invite you to take the [survey](https://www.surveymonkey.com/r/HGTD2KJ)! To
+learn more about the work of the OpenTelemetry on Mainframe SIG, join the
+conversation at
+[#otel-mainframes](https://cloud-native.slack.com/archives/C05PXDFTCPJ) on
+[CNCF Slack](https://slack.cncf.io/).
