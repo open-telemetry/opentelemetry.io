@@ -9,8 +9,6 @@ sig: SIG OpenTelemetry on Mainframe
 cSpell:ignore: Ruediger Schulze
 ---
 
-OpenTelemetry on Mainframe Priorities Survey
-============================================
 
 The [OpenTelemetry](https://opentelemetry.io/) project and
 [The Open Mainframe Project](https://openmainframeproject.org/) established the
