@@ -49,8 +49,7 @@ Semantic Conventions for specific aspects of the platform. Once the survey is
 complete, we will publish the results and a prioritized list of activities on
 the websites of the OpenTelemetry project and The Open Mainframe Project.
 
-Taking the survey
------------------
+## Taking the survey
 
 The [survey](https://www.surveymonkey.com/r/HGTD2KJ) is structured in two
 sections. The first section gathers input about your role and background. The
