@@ -13,8 +13,8 @@ cSpell:ignore: Ruediger Schulze
 The [OpenTelemetry](https://opentelemetry.io/) project and
 [The Open Mainframe Project](https://openmainframeproject.org/) established the
 [SIG “OpenTelemetry on Mainframe”](https://github.com/open-telemetry/sig-mainframe)
-at the beginning of 2024. Our focus is to enable OpenTelemetry on the Mainframe
-for an improved end-to-end observability and to support mainframe participation
+at the beginning of 2024. Our focus is to enable OpenTelemetry on the mainframe
+for improved end-to-end observability and to support mainframe participation
 in hybrid cloud applications. **The SIG launched a new
 [survey](https://www.surveymonkey.com/r/HGTD2KJ) that calls for your
 participation.**
