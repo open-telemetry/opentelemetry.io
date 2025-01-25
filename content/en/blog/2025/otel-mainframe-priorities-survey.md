@@ -19,8 +19,7 @@ in hybrid cloud applications. **The SIG launched a new
 [survey](https://www.surveymonkey.com/r/HGTD2KJ) that calls for your
 participation.**
 
-Background
-----------
+## Background
 
 While there are many definitions of observability, we will refer here to the
 ability to receive actionable insight about the behavior of hybrid applications
