@@ -27,11 +27,11 @@ spanning multiple landing zones such as public and private cloud and
 mainframe environments.
 
 OpenTelemetry is a well-adopted open source framework for observability that
-aims to make high quality telemetry data such as traces, metrics and logs
+aims to make high quality telemetry data such as traces, metrics, and logs
 available from any source to any target. OpenTelemetry remains the second most
 active project under the Cloud Native Computing Foundation (CNCF). The community
 of the OpenTelemetry project has made major efforts to provide specifications
-and implementations that unify the collection, processing and distribution of
+and implementations that unify the collection, processing, and distribution of
 telemetry.
 
 Given the breadth of the OpenTelemetry project and sophisticated capabilities of
