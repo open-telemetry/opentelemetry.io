@@ -196,7 +196,7 @@ Please also check out
 **A:** Implementing correlation takes time and is a work in progress.
 Correlation work is more mature for some languages (e.g. Java, Go) than for
 others. The best approach is to raise this issue in one of the language-specific
-repositories that pertains to your situation. A possible work-around is to start
+repositories that pertains to your situation. A possible workaround is to start
 traces at the log level, whereby every log will have its own associated trace.
 
 #### 3- Profiling

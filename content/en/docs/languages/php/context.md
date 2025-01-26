@@ -25,7 +25,7 @@ like asynchronous or concurrent execution with `fibers`.
 
 ## Context keys
 
-Values as stored in context as key-value pairs. Context keys are used to store
+Values are stored in context as key-value pairs. Context keys are used to store
 and retrieve values from context.
 
 Keys can be created by calling `OpenTelemetry\Context\Context::createKey()`, for

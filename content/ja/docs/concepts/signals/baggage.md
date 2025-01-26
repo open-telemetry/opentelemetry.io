@@ -22,7 +22,7 @@ OpenTelemetryでは、バゲッジ（Baggage）はコンテキストの隣にあ
 [コンテキスト伝搬](/docs/concepts/signals/traces/#context-propagation)を使用して、これらのサービス間でバゲッジを渡すことで、 `clientId` を追加のスパン、メトリクス、またはログに追加できます。
 さらに、計装は自動的にバゲッジを伝搬してくれます。
 
-![OTel Baggage](/img/otel-baggage.svg)
+![OTel Baggage](../otel-baggage.svg)
 
 ## OTelバゲッジの使い道 {#what-should-otel-baggage-be-used-for}
 
@@ -33,7 +33,7 @@ OpenTelemetryでは、バゲッジ（Baggage）はコンテキストの隣にあ
 たとえば、データベース呼び出しを追跡するスパンにユーザーIDのような情報を含めると、「どのユーザーがもっとも遅いデータベース呼び出しを経験しているか」のような質問に、より簡単に答えられます。
 また、下流の操作に関する情報をログに記録し、同じユーザーIDをログデータに含めることもできます。
 
-![OTel Baggage](/img/otel-baggage-2.svg)
+![OTel Baggage](../otel-baggage-2.svg)
 
 ## バゲッジのセキュリティに関する懸念事項 {#baggage-security-considerations}
 
