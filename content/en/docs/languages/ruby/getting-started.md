@@ -16,7 +16,7 @@ You will learn how you can instrument a simple application, in such a way that
 
 Ensure that you have the following installed locally:
 
-- MRI Ruby >= `3.0`, jruby >= `9.3.2.0`, or truffleruby >= 22.1
+- CRuby >= `3.0`, jruby >= `9.3.2.0`, or truffleruby >= 22.1
 - [Bundler](https://bundler.io/)
 
 {{% alert  title="Warning" color="warning" %}} While tested, support for `jruby`
