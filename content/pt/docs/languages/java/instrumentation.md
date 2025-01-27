@@ -146,12 +146,12 @@ formam uma visão convincente de uma história de observabilidade.
 Importante, os dados de vários sinais são lincados juntos através do contexto
 de rastreamento:
 
-- Trecho são relacionas com outros spans através do span parent e links, que
-  registram os contextos de rastreamento dos spans relacionados.
-- Métricas são relacionadas a spans através de
+- Trecho são relacionas com outros trechos através do span parent e links, que
+  registram os contextos de rastreamento dos trechos relacionados.
+- Métricas são relacionadas a trechos através de
   [exemplares](/docs/specs/otel/metrics/data-model/#exemplars), que registram o
   contexto de rastreamento de uma medição específica.
-- Logs são relacionados a spans ao registrar o contexto de rastreamento nos
+- Logs são relacionados a trechos ao registrar o contexto de rastreamento nos
   registros de logs.
 
 Para essa correlação funcionar, o contexto de rastreamento precisa ser propagado
@@ -175,7 +175,7 @@ contexto:
 
 A [Convenção semântica](/docs/specs/semconv/) define como produzir telemetria
 para os padrões de operação. Entre outras coisas, a convenção semântica
-especifica nomes de spans, tipos de sans, métricas instrumentadas, unidades de
+especifica nomes de trechos, tipos de sans, métricas instrumentadas, unidades de
 métricas, tipos de métricas, e atributos chave, valor, e níveis de requisitos.
 
 Ao escrever instrumentação, consulte a convenção semântica e confirme que
