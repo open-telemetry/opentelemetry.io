@@ -48,7 +48,7 @@ tipos de recursos comuns.
 
 ## `OTEL_TRACES_SAMPLER`
 
-Especifica o Sampler utilizado pelo SDK a amostragem de rastros.
+Especifica o Sampler utilizado pelo SDK para realizar amostragem de rastros.
 
 **Valor padrão:** `"parentbased_always_on"`
 
