@@ -82,10 +82,10 @@ sub applyPatchOrPrintMsgIf($$$) {
 
   return 0 if $patchMsgCount{$key};
 
-  if (($vers = $versions{$specName}) ne $targetVers) {
-    print STDOUT "INFO: remove obsolete patch '$patchID' now that spec '$specName' is at v$vers, not v$targetVers - $0\n";
-  } elsif (($vers = $versFromSubmod{$specName}) ne $targetVers) {
-    print STDOUT "INFO [$patchID]: skipping patch '$patchID' since spec '$specName' submodule is at v$vers not v$targetVers - $0\n";
+  if (($vers = $versions{$specName}) gt $targetVers) {
+    print STDOUT "INFO: remove obsolete patch '$patchID' now that spec '$specName' is at v$vers > v$targetVers - $0\n";
+  } elsif (($vers = $versFromSubmod{$specName}) gt $targetVers) {
+    print STDOUT "INFO [$patchID]: skipping patch '$patchID' since spec '$specName' submodule is at v$vers > v$targetVers - $0\n";
   } else {
     return 'Apply the patch';
   }
@@ -103,7 +103,7 @@ sub patchEventAliases() {
 
 sub patchSemConv1_30_0() {
   return unless $ARGV =~ /^tmp\/semconv\/docs\//
-    && applyPatchOrPrintMsgIf('2025-01-24-emit-an-event', 'semconv', '1.30.0');
+    && applyPatchOrPrintMsgIf('2025-01-24-emit-an-event', 'semconv', '1.30.0-3-g');
 
   s|Emit Event API|Log API|;
   s|(docs/specs/otel/logs/api.md#emit-a)n-event|$1-logrecord|;
