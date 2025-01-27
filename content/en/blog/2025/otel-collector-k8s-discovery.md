@@ -1,7 +1,7 @@
 ---
 title: Kubernetes annotation-based discovery for the OpenTelemetry Collector
 linkTitle: K8s annotation-based discovery
-date: 2025-01-24
+date: 2025-01-27
 author: >
   [Dmitrii Anoshin](https://github.com/dmitryax) (Cisco/Splunk), [Christos
   Markou](https://github.com/ChrsMark) (Elastic)
