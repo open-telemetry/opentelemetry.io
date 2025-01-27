@@ -12,9 +12,10 @@ cSpell:ignore: Yahn Odigos rolldice Beyla's Beyla
 ---
 
 The OpenTelemetry community is excited to announce the beta release of the
-OpenTelemetry Go Auto-Instrumentation project! This milestone brings us closer
-to our mission of making observability simple, accessible, and effective for Go
-applications.
+[OpenTelemetry Go Auto-Instrumentation
+project](https://github.com/open-telemetry/opentelemetry-go-instrumentation)!
+This milestone brings us closer to our mission of making observability simple,
+accessible, and effective for Go applications.
 
 ## What is Go Auto-Instrumentation?
 
