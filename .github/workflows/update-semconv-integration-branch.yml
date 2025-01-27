@@ -9,6 +9,7 @@ on:
 jobs:
   update-semconv-integration-branch:
     runs-on: ubuntu-latest
+    if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
       - uses: actions/checkout@v4
         with:
