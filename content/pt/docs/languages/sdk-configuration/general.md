@@ -68,7 +68,7 @@ Os valores aceitos para `OTEL_TRACES_SAMPLER` são:
 - `"jaeger_remote"`: `JaegerRemoteSampler`
 - `"xray"`:
   [AWS X-Ray Centralized Sampling](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-sampling.html)
-  (_third party_)
+  (_terceiro_)
 
 ## `OTEL_TRACES_SAMPLER_ARG`
 
