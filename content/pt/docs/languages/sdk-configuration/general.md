@@ -188,6 +188,6 @@ Os valores aceitos para `OTEL_LOGS_EXPORTER` são:
 
 - `"otlp"`: [OTLP][]
 - `"console"`: [Saída Padrão](/docs/specs/otel/logs/sdk_exporters/stdout/)
-- `"none"`: Nenhum exportador de _logs_ configurado automaticamente.
+- `"none"`: Nenhum exportador de logs configurado automaticamente.
 
 [otlp]: /docs/specs/otlp/
