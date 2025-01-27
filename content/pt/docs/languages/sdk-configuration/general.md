@@ -151,7 +151,7 @@ Os valores aceitos são:
 - `"otlp"`: [OTLP][]
 - `"jaeger"`: exportar no modelo de dados Jaeger
 - `"zipkin"`: [Zipkin](https://zipkin.io/zipkin-api/)
-- `"console"`: [Standard Output](/docs/specs/otel/trace/sdk_exporters/stdout/)
+- `"console"`: [Saída Padrão](/docs/specs/otel/trace/sdk_exporters/stdout/)
 - `"none"`: Nenhum exportador de rastros configurado automaticamente.
 
 ## `OTEL_METRICS_EXPORTER`
