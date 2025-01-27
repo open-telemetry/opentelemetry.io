@@ -72,7 +72,7 @@ opcionalmente. Normalmente termina com `v1/metrics` ao utilizar OTLP/HTTP.
 
 ### `OTEL_EXPORTER_OTLP_LOGS_ENDPOINT`
 
-URL da rota para dados de logs, apenas, com um número de porta especificado
+URL da rota apenas para dados de logs, com um número de porta especificado
 opcionalmente. Normalmente termina com `v1/logs` ao utilizar OTLP/HTTP.
 
 **Valor padrão:**
