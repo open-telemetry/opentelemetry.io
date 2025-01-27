@@ -16,7 +16,7 @@ cSpell:ignore: Logback logback
 
 A instrumentação registra a telemetria usando a [API](../api/). O [SDK](../sdk/)
 é a implementação de referência embutida na API, e é
-[configurada](../configuration/) para processar e exportar a telemetrira
+[configurada](../configuration/) para processar e exportar a telemetria
 produzida pelas chamadas de instrumentação da API. Esta página discute o
 ecossistema de instrumentação no OpenTelemetry Java, incluíndo recursos para
 usuários finais e tópicos relacionados com instrumentação:
