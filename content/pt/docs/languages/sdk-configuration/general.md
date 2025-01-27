@@ -32,7 +32,7 @@ Se `service.name` também for fornecido em `OTEL_RESOURCE_ATTRIBUTES`, então
 
 Pares de chave-valor que serão utilizados como atributos de recurso. Consulte a
 página da
-[SDK de Recurso](/docs/specs/otel/resource/sdk#specifying-resource-information-via-an-environment-variable)
+[Recurso do SDK](/docs/specs/otel/resource/sdk#specifying-resource-information-via-an-environment-variable)
 para mais detalhes.
 
 **Valor padrão:** Vazio.
