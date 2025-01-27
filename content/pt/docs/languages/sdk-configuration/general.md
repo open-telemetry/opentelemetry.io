@@ -187,7 +187,7 @@ pode ser uma lista separada por vírgulas.
 Os valores aceitos para `OTEL_LOGS_EXPORTER` são:
 
 - `"otlp"`: [OTLP][]
-- `"console"`: [Standard Output](/docs/specs/otel/logs/sdk_exporters/stdout/)
+- `"console"`: [Saída Padrão](/docs/specs/otel/logs/sdk_exporters/stdout/)
 - `"none"`: Nenhum exportador de _logs_ configurado automaticamente.
 
 [otlp]: /docs/specs/otlp/
