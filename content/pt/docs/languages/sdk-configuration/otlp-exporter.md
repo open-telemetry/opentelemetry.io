@@ -90,7 +90,6 @@ opcionalmente. Normalmente termina com `v1/logs` ao utilizar OTLP/HTTP.
 
 As seguintes variáveis de ambiente permitem configurar cabeçalhos adicionais
 como uma lista de pares chave-valor para adicionar em solicitações gRPC ou HTTP
-de saída.
 
 ### `OTEL_EXPORTER_OTLP_HEADERS`
 
