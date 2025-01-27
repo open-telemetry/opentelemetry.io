@@ -6835,6 +6835,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T15:52:04.586821-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.117.0/receiver/receivercreator/README.md#generate-receiver-configurations-from-provided-hints": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T00:42:06.594567598Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.95.0/processor/spanmetricsprocessor/README.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T15:48:51.581459-05:00"
@@ -6842,6 +6846,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues": {
     "StatusCode": 200,
     "LastSeen": "2024-10-24T15:10:27.834953+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/17418": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T00:42:05.404739498Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/23611": {
     "StatusCode": 200,
@@ -6862,6 +6870,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/32080#issuecomment-2035301178": {
     "StatusCode": 200,
     "LastSeen": "2024-05-15T19:23:48.560170178+03:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/34427": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T00:42:06.061499598Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/16594": {
     "StatusCode": 200,
@@ -7774,6 +7786,18 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/master/receiver/fluentforwardreceiver": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:34:25.853743-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.117.0/extension/observer/k8sobserver": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T00:42:06.341804585Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.117.0/receiver/nginxreceiver": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T00:42:04.586714166Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.117.0/receiver/receivercreator": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-23T00:42:04.28940445Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.61.0/exporter/prometheusexporter": {
     "StatusCode": 206,

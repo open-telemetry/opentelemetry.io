@@ -18,10 +18,10 @@ Automatic instrumentation with PHP requires:
   [instrumentation libraries](/ecosystem/registry/?component=instrumentation&language=php)
 - [Configuration](#configuration)
 
+## Install the OpenTelemetry extension
+
 {{% alert title="Important" color="warning" %}}Installing the OpenTelemetry
 extension by itself does not generate traces. {{% /alert %}}
-
-## Install the OpenTelemetry extension
 
 The extension can be installed via pecl,
 [pickle](https://github.com/FriendsOfPHP/pickle) or
@@ -130,13 +130,16 @@ Automatic instrumentation is available for a number commonly used PHP libraries.
 For the full list, see
 [instrumentation libraries on packagist](https://packagist.org/search/?query=open-telemetry&tags=instrumentation).
 
-Let's assume that your application uses Slim Framework and a PSR-18 HTTP client.
-You would then install the SDK and corresponding auto-instrumentation packages
-for these:
+Let's assume that your application uses Slim Framework and a PSR-18 HTTP client,
+and that we will export the traces with the OTLP protocol.
+
+You would then install the SDK, an exporter, and auto-instrumentation packages
+for Slim Framework and PSR-18:
 
 ```shell
 composer require \
     open-telemetry/sdk \
+    open-telemetry/exporter-otlp \
     open-telemetry/opentelemetry-auto-slim \
     open-telemetry/opentelemetry-auto-psr18
 ```
@@ -152,8 +155,8 @@ variables or the `php.ini` file to configure auto-instrumentation.
 OTEL_PHP_AUTOLOAD_ENABLED=true \
 OTEL_SERVICE_NAME=your-service-name \
 OTEL_TRACES_EXPORTER=otlp \
-OTEL_EXPORTER_OTLP_PROTOCOL=grpc \
-OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317 \
+OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf \
+OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4318 \
 OTEL_PROPAGATORS=baggage,tracecontext \
 php myapp.php
 ```
@@ -167,8 +170,8 @@ by PHP:
 OTEL_PHP_AUTOLOAD_ENABLED="true"
 OTEL_SERVICE_NAME=your-service-name
 OTEL_TRACES_EXPORTER=otlp
-OTEL_EXPORTER_OTLP_PROTOCOL=grpc
-OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
+OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
+OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4318
 OTEL_PROPAGATORS=baggage,tracecontext
 ```
 
