@@ -101,7 +101,7 @@ Library Instrumentation [1]" em
 ### Instrumentação nativa
 
 [Instrumentação nativa](/docs/specs/otel/glossary/#natively-instrumented) é pré
-definido diretamente nas bibliotecas ou frameworks. OpenTelemetry encorage os
+definido diretamente nas bibliotecas ou frameworks. OpenTelemetry encoraje os
 autores de bibliotecas para adicionar instrumentação nativa usando a
 [API](../api/). No longo prazo, nós esperamos que a instrumentação nativa seja o
 padrão, e veja a instrumentação mantida pelo OpenTelemetry em
