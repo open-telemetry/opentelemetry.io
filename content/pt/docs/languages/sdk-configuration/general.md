@@ -133,7 +133,6 @@ Os valores aceitos para `OTEL_PROPAGATORS` são:
   (_terceiro_)
 - `"ottrace"`:
   [OT Trace](https://github.com/opentracing?q=basic&type=&language=) (_terceiro_)
-  party_)
 - `"none"`: Nenhum propagador configurado automaticamente.
 
 ## `OTEL_TRACES_EXPORTER`
