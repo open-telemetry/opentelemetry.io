@@ -130,7 +130,7 @@ Os valores aceitos para `OTEL_PROPAGATORS` são:
   [Jaeger](https://www.jaegertracing.io/docs/1.21/client-libraries/#propagation-format)
 - `"xray"`:
   [AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-tracingheader)
-  (_third party_)
+  (_terceiro_)
 - `"ottrace"`:
   [OT Trace](https://github.com/opentracing?q=basic&type=&language=) (_terceiro_)
   party_)
