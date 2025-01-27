@@ -1,5 +1,5 @@
 # cSpell:ignore fastify
-title: Fastify OpenTelemetry
+title: Fastify Instrumentation Library
 registryType: instrumentation
 language: js
 tags:
@@ -9,9 +9,10 @@ license: MIT
 description: Fastify OpenTelemetry auto-instrumentation library.
 authors:
   - name: Fastify
+     url: https://github.com/fastify
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-fastify
-createdAt: 2024-11-27
+  repo: https://github.com/fastify/otel
+createdAt: 2025-01-27
 package:
   registry: npm
   name: '@fastify/otel'
