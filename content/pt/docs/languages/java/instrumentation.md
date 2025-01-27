@@ -143,7 +143,7 @@ As APIs do OpenTelemetry foram desenhados para complementar, com o todos sendo
 maior que a soma das partes. Cada signal tem seus pontos fortes , e unidos
 formam uma visão convincente de uma história de observabilidade.
 
-Importante, os dados de vários sinais são _linkados_ juntos através do contecto
+Importante, os dados de vários sinais são lincados juntos através do contexto
 de rastreamento:
 
 - Spans são relacionas com outros spans através do span parent e links, que
