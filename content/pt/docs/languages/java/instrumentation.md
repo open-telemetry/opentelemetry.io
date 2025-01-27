@@ -27,9 +27,9 @@ usuários finais e tópicos relacionados com instrumentação:
 - [Propagação de Contexto](#context-propagation): Propagação de Contexto provê
   uma correlação entre rastros, métricas, e logs, permitindo que os sinais
   complementem cada um deles.
-- [Convensão semântica](#semantic-conventions): A Convensão semântica define
+- [Convenção semântica](#semantic-conventions): A Convenção semântica define
   como produzir telemetria para operações padronizadas.
-- [Log instrumentation](#log-instrumentation): A Convensão semântica define como
+- [Log instrumentation](#log-instrumentation): A Convenção semântica define como
   produzir telemetria para operações padronizadas.
 
 {{% alert %}} Enquanto
@@ -171,18 +171,18 @@ contexto:
   [context](../api/#context) através da pilha de chamadas e entre qualquer
   threads.
 
-## Convensão semântica
+## Convenção semântica
 
-A [Convensão semântica](/docs/specs/semconv/) define como produzir telemetria
-para os padrões de operação. Entre outras coisas, a convensão semântica
+A [Convenção semântica](/docs/specs/semconv/) define como produzir telemetria
+para os padrões de operação. Entre outras coisas, a convenção semântica
 especifica nomes de spans, tipos de sans, métricas instrumentadas, unidades de
 métricas, tipos de métricas, e atributos chave, valor, e níveis de requisitos.
 
-Ao escrever instrumentação, consulte a convensão semântica e confirme que
+Ao escrever instrumentação, consulte a convenção semântica e confirme que
 quaisquer convenções aplicáveis ao domínio estejam sendo seguidas.
 
 OpenTelemetry Java [publica artefatos](../api/#semantic-attributes) para
-auxiliar an conformidade com a convensão semântica, incluindo constantes geradas
+auxiliar an conformidade com a convenção semântica, incluindo constantes geradas
 para chaves e valores de atributos.
 
 TODO: Discutir instrumentação API e como isso ajuda a conformidade com a
