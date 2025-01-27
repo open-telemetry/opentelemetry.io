@@ -103,7 +103,7 @@ Dependendo do valor definido em `OTEL_TRACES_SAMPLER`, a definição de
   - `pollingIntervalMs`: em milissegundos, indicando com que frequência o
     Sampler consultará o _backend_ para atualizações na estratégia de
     amostragem.
-  - `initialSamplingRate`: no intervalo [0..1], utilizado como valor inicial da
+  - `initialSamplingRate`: no intervalo [0..1], utilizado como valor da
     probabilidade de amostragem caso não seja possível recuperar a estratégia de
     amostragem no _backend_. Este valor perde efeito assim que uma estratégia de
     amostragem é recuperada com sucesso, então a estratégia remota será
