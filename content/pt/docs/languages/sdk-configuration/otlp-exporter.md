@@ -7,7 +7,7 @@ default_lang_commit: fe0c3f68902aeb6e7584ffc32c6c8964d7a89e6e
 
 ## Configurações de rota {#endpoint-configuration}
 
-As seguintes variáveis de ambiente permitem configurar um endpoint OTLP/gRPC ou
+As seguintes variáveis de ambiente permitem configurar uma rota OTLP/gRPC ou
 OTLP/HTTP para seus rastros, métricas e logs.
 
 ### `OTEL_EXPORTER_OTLP_ENDPOINT`
