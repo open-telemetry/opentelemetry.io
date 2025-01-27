@@ -105,3 +105,13 @@ function logs appear! You can see this in action in the video below.
     <source src="./video-lambda-real-time.webm" />
   </video>
 </p>
+
+Every log line your Lambda produces will be shipped to the `external-collector`
+endpoint specified. You don't need to modify the code at all! From there,
+telemetry data flows to your backend as usual. Since the shipping of telemetry
+data might be frozen when the lambda is not active, logs can arrive delayed.
+They'll either arrive during the next execution or during the shutdown interval.
+
+If you want further insight into your applications, be sure to also check out
+the
+[language specific auto instrumentation layers](https://github.com/open-telemetry/opentelemetry-lambda/?tab=readme-ov-file#extension-layer-language-support).
