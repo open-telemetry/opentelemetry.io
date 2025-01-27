@@ -146,7 +146,7 @@ formam uma visão convincente de uma história de observabilidade.
 Importante, os dados de vários sinais são lincados juntos através do contexto
 de rastreamento:
 
-- Spans são relacionas com outros spans através do span parent e links, que
+- Trecho são relacionas com outros spans através do span parent e links, que
   registram os contextos de rastreamento dos spans relacionados.
 - Métricas são relacionadas a spans através de
   [exemplares](/docs/specs/otel/metrics/data-model/#exemplars), que registram o
