@@ -38,7 +38,7 @@ exemplo acima:
 
 ### `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`
 
-URL da rota para dados de rastros, apenas, com um número de porta especificado
+URL da rota apenas para dados de rastros, com um número de porta especificado
 opcionalmente. Normalmente termina com `v1/traces` ao utilizar OTLP/HTTP.
 
 **Valor padrão:**
