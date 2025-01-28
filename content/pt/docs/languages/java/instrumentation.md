@@ -219,7 +219,7 @@ Para usar este fluxo de trabalho:
 - Instale apropriados aplicadores de logs. **[1]**
 - Configure o OpenTelemetry [Log SDK](../sdk/#sdkloggerprovider) para exportar
   registros de logs para o destino desejado (o
-  [coletor](https://github.com/open-telemetry/opentelemetry-collector) ou
+  [Collector](https://github.com/open-telemetry/opentelemetry-collector) ou
   outro).
 
 **[1]**: Aplicadores de Logs são um tipo de [shim](#shims) que conecta logs de
