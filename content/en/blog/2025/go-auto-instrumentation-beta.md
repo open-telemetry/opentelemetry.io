@@ -12,16 +12,15 @@ cSpell:ignore: Yahn Odigos rolldice Beyla's Beyla
 ---
 
 The OpenTelemetry community is excited to announce the beta release of the
-[OpenTelemetry Go Auto-Instrumentation
-project](https://github.com/open-telemetry/opentelemetry-go-instrumentation)!
+[OpenTelemetry Go Auto-Instrumentation project](https://github.com/open-telemetry/opentelemetry-go-instrumentation)!
 This milestone brings us closer to our mission of making observability simple,
 accessible, and effective for Go applications.
 
 ## What is Go Auto-Instrumentation?
 
 OpenTelemetry Go Auto-Instrumentation allows developers to collect traces from
-their Go applications without requiring manual code modifications or rebuilding binaries. By
-dynamically instrumenting applications at runtime using
+their Go applications without requiring manual code modifications or rebuilding
+binaries. By dynamically instrumenting applications at runtime using
 [eBPF](https://ebpf.io/), this project lowers the barrier to adopting
 observability best practices and provides deep insights into your application's
 behavior.
