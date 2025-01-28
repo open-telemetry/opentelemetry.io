@@ -88,7 +88,7 @@ zero código que aproveita a autoconfiguração do spring para instalar a
 Veja [inicializador Spring Boot](/docs/zero-code/java/spring-boot-starter/) para
 detalhes.
 
-### Biblioteca de instrumentação
+### Biblioteca de instrumentação {#library-instrumentation}
 
 [Biblioteca de instrumentação](/docs/specs/otel/glossary/#instrumentation-library)
 envolve ou usa os pontos de extensão para instrumentar a biblioteca,obrigando os
