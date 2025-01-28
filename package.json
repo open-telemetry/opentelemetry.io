@@ -44,7 +44,7 @@
     "all": "bash -c 'x=0; for c in \"$@\"; do npm run $c || x=$((x+1)); done; ((!x)) || (echo \"ERROR: some scripts failed!\" && exit 1)' -",
     "build:preview": "set -x && npm run _build -- --minify",
     "build:production": "npm run _hugo -- --minify",
-    "build": "npm run _build",
+    "build": "npm run _build --",
     "cd:public": "cd public &&",
     "check:expired": "find content -name '*.md' | xargs ./scripts/list-expired.pl",
     "check:filenames": "test -z \"$(npm run -s _ls-bad-filenames)\" || npm run -s _filename-error",
