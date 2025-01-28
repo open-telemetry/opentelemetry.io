@@ -181,7 +181,7 @@ métricas, tipos de métricas, e atributos chave, valor, e níveis de requisitos
 Ao escrever instrumentação, consulte a convenção semântica e confirme que
 quaisquer convenções aplicáveis ao domínio estejam sendo seguidas.
 
-OpenTelemetry Java [publica artefatos](../api/#semantic-attributes) para
+O OpenTelemetry Java [publica artefatos](../api/#semantic-attributes) para
 auxiliar a conformidade com a convenção semântica, incluindo constantes geradas
 para chaves e valores de atributos.
 
