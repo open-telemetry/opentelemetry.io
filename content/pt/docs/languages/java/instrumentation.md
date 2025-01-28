@@ -104,7 +104,7 @@ Library Instrumentation [1]"_ (Biblioteca autônoma de instrumentação) em
 definido diretamente nas bibliotecas ou frameworks. OpenTelemetry encoraje os
 autores de bibliotecas para adicionar instrumentação nativa usando a
 [API](../api/). No longo prazo, nós esperamos que a instrumentação nativa seja o
-padrão, e veja a instrumentação mantida pelo OpenTelemetry em
+padrão, e que a instrumentação mantida pelo OpenTelemetry em
 [opentelemetry-java-instrumentação](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
 como um meio temporário de preencher a lacuna.
 
