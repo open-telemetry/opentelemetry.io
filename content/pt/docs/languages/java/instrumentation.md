@@ -63,7 +63,7 @@ bibliotecas e frameworks detectados.
 
 O projeto
 [opentelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
-contém o código fonte do Agente Java, inicializar Spring Boot, e Biblioteca de
+contém o código fonte do Agente Java, inicializador Spring Boot, e Biblioteca de
 instrumentação.
 
 ### Zero-code: Agente Java
