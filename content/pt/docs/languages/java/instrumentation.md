@@ -137,7 +137,7 @@ Shims mantidos no ecossistema OpenTelemetry Java:
 | Bridge OpenTelemetry context no [Log4j](https://logging.apache.org/log4j/2.x/index.html)                    | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-context-data/log4j-context-data-2.17/library-autoconfigure) | Context           | `io.opentelemetry.instrumentation:opentelemetry-log4j-context-data-2.17-autoconfigure:{{% param vers.instrumentation %}}-alpha` |
 | Bridge OpenTelemetry context no [Logback](https://logback.qos.ch/)                                          | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-mdc-1.0/library)                                        | Context           | `io.opentelemetry.instrumentation:opentelemetry-logback-mdc-1.0:{{% param vers.instrumentation %}}-alpha`                       |
 
-## Propagação de Contexto
+## Propagação de Contexto {#context-propagation}
 
 As APIs do OpenTelemetry foram desenhadas para serem complementares, onde o todo
 é maior que a soma das partes. Cada sinal tem seus pontos fortes e, juntos
