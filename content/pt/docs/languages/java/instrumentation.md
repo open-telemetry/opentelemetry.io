@@ -66,7 +66,7 @@ O projeto
 contém o código fonte do Agente Java, inicializador Spring Boot, e Biblioteca de
 instrumentação.
 
-### Zero-code: Agente Java
+### Sem código: Agente Java
 
 O agente do Java é uma forma de
 [instrumentação automática](/docs/specs/otel/glossary/#automatic-instrumentation)
