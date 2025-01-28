@@ -171,7 +171,7 @@ contexto:
   [context](../api/#context) através da pilha de chamadas e entre qualquer
   threads.
 
-## Convenção semântica
+## Convenção semântica {#semantic-conventions}
 
 A [Convenção semântica](/docs/specs/semconv/) define como produzir telemetria
 para os padrões de operação. Entre outras coisas, a convenção semântica
