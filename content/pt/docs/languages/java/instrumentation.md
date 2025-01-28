@@ -37,7 +37,7 @@ usuários finais e tópicos relacionados à instrumentação:
 opções para instrumentar uma aplicação, nós recomendamos que os usuários iniciem
 com o [Agente Java](#zero-code-java-agent). O agente Java possui uma
 instalação simples, e automaticamente detecta e instala instrumentação de
-uma grande variedade de bibliotecas. {{% /alert %}}
+uma vasta biblioteca. {{% /alert %}}
 
 ## Categorias de instrumentação
 
