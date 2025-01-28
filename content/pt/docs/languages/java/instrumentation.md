@@ -168,7 +168,7 @@ contexto:
   HTTP, Produtores de Mensagens, etc.) devem
   [injetar o context](../api/#contextpropagators) em mensagens de saída.
 - Bibliotecas devem passar implicitamente ou explicitamente o
-  [context](../api/#context) através da pilha de chamadas e entre qualquer
+  [contexto](../api/#context) através da pilha de chamadas e entre qualquer
   threads.
 
 ## Convenção semântica {#semantic-conventions}
