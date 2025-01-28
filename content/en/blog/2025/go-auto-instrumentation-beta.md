@@ -20,7 +20,7 @@ accessible, and effective for Go applications.
 ## What is Go Auto-Instrumentation?
 
 OpenTelemetry Go Auto-Instrumentation allows developers to collect traces from
-their Go applications without requiring manual code modifications. By
+their Go applications without requiring manual code modifications or rebuilding binaries. By
 dynamically instrumenting applications at runtime using
 [eBPF](https://ebpf.io/), this project lowers the barrier to adopting
 observability best practices and provides deep insights into your application's
