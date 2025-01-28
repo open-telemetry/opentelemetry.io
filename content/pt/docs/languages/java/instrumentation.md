@@ -196,7 +196,7 @@ APIs são estruturalmente similares ou equivalentes
 para diferentes casos de uso. A partir de agora, `LoggerProvider` / `Logger` e
 as classes associadas representam o
 [Log Bridge API](/docs/specs/otel/logs/api/), que existe para escrever
-aplicadores de logs para conectar logs registrados através de outras APIs de log
+conectores de logs para conectar logs registrados através de outras APIs de log
 / frameworks no OpenTelemetry. Eles não são destinados para usuários finais como
 um substituto para Log4j / SLF4J / Logback / etc.
 
