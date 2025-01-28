@@ -145,7 +145,7 @@ formam uma narrativa convincente de observabilidade.
 Importante, os dados de vários sinais são lincados juntos através do contexto
 de rastreamento:
 
-- Trecho são relacionas com outros trechos através do span parent e links, que
+- Trecho são relacionados com outros trechos através do trecho pai e links, que
   registram os contextos de rastreamento dos trechos relacionados.
 - Métricas são relacionadas a trechos através de
   [exemplares](/docs/specs/otel/metrics/data-model/#exemplars), que registram o
