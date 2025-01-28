@@ -203,7 +203,7 @@ um substituto para Log4j / SLF4J / Logback / etc.
 Eles são dois típicos fluxos de trabalho para consumir instrumentação de logs no
 OpenTelemetry atendendo a diferentes requisitos de aplicação:
 
-### Direto para o Coletor
+### Direto para o Collector {#direct-to-collector}
 
 No fluxo de trabalho direto para o coletor, logs são emitidos diretamente da
 aplicação para o coletor usando um protocolo de rede (ex. OTLP). Este fluxo de
