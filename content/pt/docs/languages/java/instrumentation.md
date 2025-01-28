@@ -45,7 +45,7 @@ Existem diversas categorias de instrumentação:
 
 - [Sem código: Agente Java](#zero-code-java-agent) é uma forma de instrumentação
   sem código **[1]** que manipula dinamicamente o bytecode da aplicação.
-- [Zero-code: Spring Boot starter](#zero-code-spring-boot-starter) é uma forma
+- [Sem código: Spring Boot starter](#zero-code-spring-boot-starter) é uma forma
   de instrumentação sem código **[1]** que utiliza a autoconfiguração do spring
   para instalar [biblioteca de instrumentação](#library-instrumentation).
 - [Biblioteca de instrumentação](#library-instrumentation) envolve ou utiliza
