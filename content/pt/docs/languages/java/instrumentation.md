@@ -231,7 +231,7 @@ para demonstração de uma variedade de cenários.
 ### Via arquivo ou stdout
 
 No fluxo de trabalho utilizado em arquivos ou _stdout_, os logs são gravados em arquivos ou na saída
-_standout_. Outro componente (e.g. FluentBit) é responsável por ler os logs,
+_standout_. Outro componente (ex. FluentBit) é responsável por ler / acompanhar os logs,
 interpretar para um formato estruturado, e encaminhar para um destino, como um
 coletor. Este fluxo de trabalho pode ser preferido em situações onde os
 requisitos da aplicação não permitem sobrecarga adicional da abordagem
