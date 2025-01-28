@@ -33,7 +33,7 @@ usuários finais e tópicos relacionados à instrumentação:
   produzir telemetria para operações padronizadas.
 
 {{% alert %}} Embora as
-[categorias de instrumentação](#instrumentation-categories) mostram diversas
+[categorias de instrumentação](#instrumentation-categories) enumerem diversas
 opções para instrumentar uma aplicação, nós recomendamos que os usuários iniciem
 com a página [Agente Java](#zero-code-java-agent). O agente do Java possui uma
 instalação simples, e automaticamente detecta e instala instrumentação de
