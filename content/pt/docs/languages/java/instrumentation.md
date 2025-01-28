@@ -169,7 +169,7 @@ contexto:
   [injetar o context](../api/#contextpropagators) em mensagens de saída.
 - Bibliotecas devem passar implicitamente ou explicitamente o
   [contexto](../api/#context) através da pilha de chamadas e entre qualquer
-  threads.
+  processo.
 
 ## Convenção semântica {#semantic-conventions}
 
