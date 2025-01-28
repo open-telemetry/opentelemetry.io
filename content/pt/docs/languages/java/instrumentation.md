@@ -206,7 +206,7 @@ OpenTelemetry atendendo a diferentes requisitos de aplicação:
 ### Direto para o Coletor
 
 No fluxo de trabalho direto para o coletor, logs são emitidos diretamente da
-aplicação para o coletor usando um protocolo de rede (e.g. OTLP). Este fluxo de
+aplicação para o coletor usando um protocolo de rede (ex. OTLP). Este fluxo de
 trabalho é simples para configurar e não requer nenhum componente de
 encaminhamento de log adicional, e permite que uma facilmente emita logs
 estruturados em conformidade com o
