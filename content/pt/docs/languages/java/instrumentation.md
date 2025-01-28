@@ -100,7 +100,7 @@ Library Instrumentation [1]"_ (Biblioteca autônoma de instrumentação) em
 
 ### Instrumentação nativa {#native-instrumentation}
 
-[Instrumentação nativa](/docs/specs/otel/glossary/#natively-instrumented) é pré
+[Instrumentação nativa](/docs/specs/otel/glossary/#natively-instrumented) é
 definido diretamente nas bibliotecas ou _frameworks_. O OpenTelemetry encoraja os
 autores de bibliotecas a adicionarem instrumentação nativa usando a
 [API](../api/). No longo prazo, nós esperamos que a instrumentação nativa seja o
