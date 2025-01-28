@@ -155,7 +155,7 @@ de rastreamento:
   registros de logs.
 
 Para essa correlação funcionar, o contexto de rastreamento precisa ser propagado
-através da aplicação (entre chamada de funções e threads), e entre fronteiras da
+através da aplicação (entre chamada de funções e processos), e entre limites da
 aplicação. O [context API](../api/#context-api) facilita isso.
 
 Instrumentação precisa ser escrita de uma maneira que seja reconhecida pelo
