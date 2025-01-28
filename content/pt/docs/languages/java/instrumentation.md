@@ -26,7 +26,7 @@ usuários finais e tópicos relacionados à instrumentação:
   de instalação.
 - [Propagação de Contexto](#context-propagation): Propagação de Contexto provê
   uma correlação entre rastros, métricas, e logs, permitindo que os sinais
-  complementem cada um deles.
+  se complementem.
 - [Convenção semântica](#semantic-conventions): A Convenção semântica define
   como produzir telemetria para operações padronizadas.
 - [Log instrumentation](#log-instrumentation): A Convenção semântica define como
