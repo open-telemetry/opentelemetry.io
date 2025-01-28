@@ -77,7 +77,7 @@ coluna _"Auto-instrumented versions"_ (versões auto-instrumentadas) em
 
 Veja [Agente Java](/docs/zero-code/java/agent/) para mais detalhes.
 
-### Zero-code: Spring Boot starter
+### Sem código: inicializador Spring Boot
 
 O inicializador Spring Boot é uma forma de
 [instrumentação automática](/docs/specs/otel/glossary/#automatic-instrumentation)
