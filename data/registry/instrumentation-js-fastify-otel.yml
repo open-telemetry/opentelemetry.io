@@ -9,7 +9,7 @@ license: MIT
 description: Fastify OpenTelemetry auto-instrumentation library.
 authors:
   - name: Fastify
-     url: https://github.com/fastify
+    url: https://github.com/fastify
 urls:
   repo: https://github.com/fastify/otel
 createdAt: 2025-01-27
@@ -17,4 +17,4 @@ package:
   registry: npm
   name: '@fastify/otel'
   version: 0.1.0
-isFirstParty: false
+isFirstParty: true
