@@ -158,7 +158,7 @@ Para essa correlação funcionar, o contexto de rastreamento precisa ser propaga
 através da aplicação (entre chamada de funções e processos), e entre limites da
 aplicação. A [API de contexto](../api/#context-api) facilita isso.
 
-Instrumentação precisa ser escrita de uma maneira que seja reconhecida pelo
+A instrumentação deve ser escrita de uma maneira que seja reconhecida pelo
 contexto:
 
 - Bibliotecas que representam um ponto de entrada da aplicação (i.e. Servidores
