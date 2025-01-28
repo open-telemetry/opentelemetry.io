@@ -188,7 +188,7 @@ para chaves e valores de atributos.
 TODO: Discutir instrumentação API e como isso ajuda a conformidade com a
 convenção semântica.
 
-## Instrumentação de Log
+## Instrumentação de Log {#log-instrumentation}
 
 Enquanto o [LoggerProvider](../api/#loggerprovider) / [Logger](../api/#logger)
  são estruturalmente similares ou equivalentes
