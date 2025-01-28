@@ -212,7 +212,7 @@ encaminhamento de log adicional, e permite que uma facilmente emita logs
 estruturados em conformidade com o
 [modelo de dados de log](/docs/specs/otel/logs/data-model/). No entanto, a
 sobrecarga necessária para as aplicações enfileirarem e exportarem os logs para
-um local rede pode não ser adequada para todas os aplicativos.
+um local de rede pode não ser adequada para todas as aplicações.
 
 Para usar este fluxo de trabalho:
 
