@@ -26,30 +26,30 @@ dynamically instrumenting applications at runtime using
 observability best practices and provides deep insights into your application's
 behavior.
 
-## Key Features of the Beta Release
+## Key features of the beta release
 
 The beta release offers foundational support for automatic instrumentation with
 these key features:
 
-- **HTTP Server Instrumentation**: Automatically trace incoming and outgoing
-  HTTP requests, with trace context propagation when using the
+- **HTTP server instrumentation**: Automatically trace incoming and outgoing
+  HTTP requests with trace context propagation when using the
   [`net/http` package](https://pkg.go.dev/net/http).
-- **Database Instrumentation**: Instrument database queries and connections that
+- **Database instrumentation**: Instrument database queries and connections that
   use the [`database/sql` package](https://pkg.go.dev/database/sql).
-- **gRPC Instrumentation**: Easily collect telemetry data from
+- **gRPC instrumentation**: Easily collect telemetry data from
   [gRPC clients and servers](https://pkg.go.dev/google.golang.org/grpc).
-- **Kafka-go Instrumentation**: Monitor and trace Kafka messaging using the
+- **Kafka-go instrumentation**: Monitor and trace Kafka messaging using the
   [`kafka-go` package](https://pkg.go.dev/github.com/segmentio/kafka-go).
 - **Extensible with OpenTelemetry’s Trace API**: Seamlessly extend
-  auto-instrumentation with custom spans via the
+  auto-instrumentation with custom spans using the
   [OpenTelemetry Go Trace API](https://pkg.go.dev/go.opentelemetry.io/otel).
-- **Configuration via Environment Variables**: Simplify configuration with
+- **Configuration using environment variables**: Simplify configuration with
   environment-based settings, reducing the need for code changes.
-- **Semantic Convention Compliance**: Produced telemetry complies with the
+- **Semantic convention compliance**: Produced telemetry complies with the
   latest OpenTelemetry semantic conventions ensuring compatibility with the OTel
   ecosystem.
 
-## Getting Started
+## Getting started
 
 Getting started with OpenTelemetry Go Auto-Instrumentation is straightforward!
 For detailed instructions on installation, configuration, and running your
@@ -59,20 +59,20 @@ application with auto-instrumentation, check out the
 To see a complete example, check out the
 [`rolldice` application](https://github.com/open-telemetry/opentelemetry-go-instrumentation/tree/0ebb7f21116bfdd8e29c315efdbf359cd74bddac/examples/rolldice).
 
-## The Road to Stabilization
+## The road to stabilization
 
 With the beta release now available, the project team is focused on preparing
 for a stable release. Over the coming year, we’ll concentrate on achieving the
 following goals:
 
-1. **Optimize Runtime Instrumentation with eBPF**
+1. **Optimize runtime instrumentation with eBPF**
 
    We will continue to leverage and improve eBPF for dynamic runtime
    instrumentation, ensuring that Go applications have reliable, low-overhead
    observability. This includes staying up to date with the latest developments
    in both the Go and eBPF ecosystems.
 
-2. **Expand Ecosystem Support**
+2. **Expand ecosystem support**
 
    While the beta release supports a limited number of Go packages and only a
    single telemetry processing pipeline, we plan to broaden this support. We’ll
@@ -81,7 +81,7 @@ following goals:
    easier to integrate with popular Go packages and provide flexibility for
    custom instrumentation.
 
-3. **Integrate with Beyla’s Donation to OpenTelemetry**
+3. **Integrate with Beyla’s donation to OpenTelemetry**
 
    The
    [donation of Beyla to OpenTelemetry](https://github.com/open-telemetry/community/issues/2406)
@@ -99,7 +99,7 @@ following goals:
 Keep track of our progress in the
 [2025 Goals tracking issue](https://github.com/open-telemetry/opentelemetry-go-instrumentation/issues/1659).
 
-## Join the Journey
+## Join the journey
 
 As with all OpenTelemetry projects, the success of Go Auto-Instrumentation
 depends on the community. Whether you’re a developer interested in contributing,
@@ -108,7 +108,7 @@ we’d love for you to join us.
 
 Here’s how you can get involved:
 
-- **Try the Beta**: Integrate the project into your applications and
+- **Try the beta**: Integrate the project into your applications and
   [provide feedback](https://github.com/open-telemetry/opentelemetry-go-instrumentation/discussions/1697).
 - **Contribute**: Check out
   [open issues](https://github.com/open-telemetry/opentelemetry-go-instrumentation/issues)
@@ -116,7 +116,7 @@ Here’s how you can get involved:
   [contribute](https://github.com/open-telemetry/opentelemetry-go-instrumentation/blob/0ebb7f21116bfdd8e29c315efdbf359cd74bddac/CONTRIBUTING.md)
   to the project on
   [GitHub](https://github.com/open-telemetry/opentelemetry-go-instrumentation).
-- **Join the Discussion**: Participate in our
+- **Join the discussion**: Participate in our
   [SIG meetings](https://groups.google.com/a/opentelemetry.io/g/calendar-go) and
   discussions on [Slack](https://cloud-native.slack.com/archives/C03S01YSAS0).
 
