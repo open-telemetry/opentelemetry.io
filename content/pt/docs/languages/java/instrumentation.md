@@ -139,9 +139,9 @@ Shims mantidos no ecossistema OpenTelemetry Java:
 
 ## Propagação de Contexto
 
-As APIs do OpenTelemetry foram desenhados para complementar, com o todos sendo
-maior que a soma das partes. Cada signal tem seus pontos fortes , e unidos
-formam uma visão convincente de uma história de observabilidade.
+As APIs do OpenTelemetry foram desenhadas para serem complementares, onde o todo
+é maior que a soma das partes. Cada sinal tem seus pontos fortes e, juntos
+formam uma narrativa convincente de observabilidade.
 
 Importante, os dados de vários sinais são lincados juntos através do contexto
 de rastreamento:
