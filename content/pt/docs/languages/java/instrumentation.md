@@ -222,7 +222,7 @@ Para usar este fluxo de trabalho:
   [Collector](https://github.com/open-telemetry/opentelemetry-collector) ou
   outro).
 
-**[1]**: Aplicadores de Logs são um tipo de [shim](#shims) que conecta logs de
+**[1]**: Conectores de Logs são um tipo de [shim](#shims) que conecta logs de
 um framework no OpenTelemetry log SDK. Veja "Bridge Log4j em OpenTelemetry",
 "Bridge Logback em OpenTelemetry" entradas. Veja
 [Exemplo de aplicadores de Logs](https://github.com/open-telemetry/opentelemetry-java-docs/tree/main/log-appender)
