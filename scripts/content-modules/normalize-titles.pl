@@ -49,8 +49,11 @@ sub toSentenceCase($) {
     # Capitalize the first word unless it is mixed case
     $str =~ s/^([a-z][a-z0-9]*)\b/\u$1/;
 
-    # Handle exception
-    $str =~ s/(ASP.NET) core/$1 Core/;
+    # Handle exceptions
+    $str =~ s/(.NET) (core)/$1 \u$2/;
+    $str =~ s/(AI) (inference)/$1 \u$2/;
+    $str =~ s|google cloud|Google Cloud|i;
+    $str =~ s|pub/sub|Pub/Sub|;
 
     return $str;
 }
@@ -88,20 +91,20 @@ sub computeTitleAndFrontMatter() {
     $linkTitle = $1;
   }
 
-  $linkTitle = 'Attributes' if $title eq 'General Attributes';
   $linkTitle = 'Events' if $linkTitle =~ /Mobile Events/;
   $linkTitle = 'Connect' if $title =~ /Connect RPC$/i;
   $linkTitle = 'HTTP' if $linkTitle =~ /^HTTP Client and Server/i;
   $linkTitle = 'SQL' if $title =~ /SQL Databases$/i;
   $linkTitle = 'System use cases' if $title =~ /System .*?General Use Cases/i;
-  $linkTitle = $1 if $title =~ /GenAI (\w+)$/i;
+  $linkTitle = $1 if $title =~ /Gen(?:erative) ?AI (\w+)$/i && $title !~ /Systems$/i;
+  $linkTitle = $1 if $title =~ /(OpenAI) \w+$/i;
 
   # Missing an `s` in "Semantic Convention"?
   if ($title =~ /^Semantic Convention\b/i and $title !~ /Groups$/i) {
     $title =~ s/Semantic Convention\b/$&s/ig;
     printf STDOUT "> $title -> $linkTitle - added 's' to 'Conventions'\n";
   }
-  $linkTitle =~ s/^Database Client //;
+  $linkTitle =~ s/^(Database|Messaging) Client //;
   if ($ARGV =~ /docs\/azure/) {
     $linkTitle =~ s/ Resource Logs?//i;
     $linkTitle =~ s/Azure //i;
@@ -114,6 +117,8 @@ sub computeTitleAndFrontMatter() {
     unless $ARGV =~ /gen-ai-metrics/;
   $linkTitle =~ s/ (components|guide|queries|supplementary information|systems|platform)$//i;
   $linkTitle =~ s/ \(command line interface\)//i;
+  $linkTitle =~ s/ resources$//i;
+  $linkTitle =~ s/(Process) and process runtime$/$1/i;
 
   $linkTitle = '.NET' if $linkTitle =~ /.net common language runtime/i;
   $linkTitle = 'CLI' if $linkTitle =~ /\(command line interface\) programs/i;
