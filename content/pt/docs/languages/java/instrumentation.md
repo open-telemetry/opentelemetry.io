@@ -32,7 +32,7 @@ usuários finais e tópicos relacionados à instrumentação:
 - [Log instrumentation](#log-instrumentation): A Convenção semântica define como
   produzir telemetria para operações padronizadas.
 
-{{% alert %}} Enquanto
+{{% alert %}} Embora as
 [categorias de instrumentação](#instrumentation-categories) mostram diversas
 opções para instrumentar uma aplicação, nós recomendamos que os usuários iniciem
 com a página [Agente Java](#zero-code-java-agent). O agente do Java possui uma
