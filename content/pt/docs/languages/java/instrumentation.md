@@ -113,7 +113,7 @@ seja um meio temporário de preencher a lacuna.
 ### Instrumentação manual {#manual-instrumentation}
 
 [Instrumentação manual](/docs/specs/otel/glossary/#manual-instrumentation) é
-escrito pelos autores das aplicações, e normalmente específico para o domínio da
+escrita pelos autores das aplicações, e normalmente específica para o domínio da
 aplicação.
 
 ### Shims
