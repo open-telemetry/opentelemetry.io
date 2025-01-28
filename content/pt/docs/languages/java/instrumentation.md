@@ -22,7 +22,7 @@ ecossistema de instrumentação no OpenTelemetry Java, incluindo recursos para
 usuários finais e tópicos relacionados à instrumentação:
 
 - [Categorias de instrumentação](#instrumentation-categories): Existem diversas
-  categorias de instrumentação para cada tipo de caso de uso e para cada padrão
+  categorias de instrumentação para diferentes casos de uso e padrões de instalação.
   de instalação.
 - [Propagação de Contexto](#context-propagation): Propagação de Contexto provê
   uma correlação entre rastros, métricas, e logs, permitindo que os sinais
