@@ -228,7 +228,7 @@ um framework no OpenTelemetry log SDK. Veja "Bridge Log4j em OpenTelemetry",
 [Exemplo de aplicadores de Logs](https://github.com/open-telemetry/opentelemetry-java-docs/tree/main/log-appender)
 para demonstração de uma variedade de cenários.
 
-### Via arquivo ou stdout
+### Via arquivo ou stdout {#via-file-or-stdout}
 
 No fluxo de trabalho utilizado em arquivos ou _stdout_, os logs são gravados em arquivos ou na saída
 _standout_. Outro componente (ex. FluentBit) é responsável por ler / acompanhar os logs,
