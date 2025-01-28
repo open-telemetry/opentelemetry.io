@@ -98,7 +98,7 @@ Para uma lista de bibliotecas de instrumentação, veja a coluna _"Standalone
 Library Instrumentation [1]"_ (Biblioteca autônoma de instrumentação) em
 [bibliotecas suportadas](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md).
 
-### Instrumentação nativa
+### Instrumentação nativa {#native-instrumentation}
 
 [Instrumentação nativa](/docs/specs/otel/glossary/#natively-instrumented) é pré
 definido diretamente nas bibliotecas ou _frameworks_. O OpenTelemetry encoraja os
