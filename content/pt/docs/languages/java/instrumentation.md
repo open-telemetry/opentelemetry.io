@@ -19,7 +19,7 @@ A instrumentação registra a telemetria usando a [API](../api/). O [SDK](../sdk
 [configurada](../configuration/) para processar e exportar a telemetria
 produzida pelas chamadas de instrumentação da API. Esta página discute o
 ecossistema de instrumentação no OpenTelemetry Java, incluindo recursos para
-usuários finais e tópicos relacionados com instrumentação:
+usuários finais e tópicos relacionados à instrumentação:
 
 - [Categorias de instrumentação](#instrumentation-categories): Existem diversas
   categorias de instrumentação para cada tipo de caso de uso e para cada padrão
