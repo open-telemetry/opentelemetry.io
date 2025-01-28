@@ -88,9 +88,9 @@ of their opinions on units or delimiters.
 
 ## Dots and Underscores
 
-OpenTelemetry [specifies](/docs/specs/semconv/general/attribute-naming/) that
-conventions should use dots as the namespace delimiter, and underscores as the
-delimiter between "multi-word-dot-delimited components" (for example,
+OpenTelemetry [specifies](/docs/specs/semconv/general/naming/) that conventions
+should use dots as the namespace delimiter, and underscores as the delimiter
+between "multi-word-dot-delimited components" (for example,
 `http.response.status_code`). On the other hand, Prometheus
 [uses underscores](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels)
 as its delimiter.

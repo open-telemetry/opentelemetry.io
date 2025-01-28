@@ -91,10 +91,10 @@ aggregation for each instrument which can be overridden using the Views. The
 OpenTelemetry project aims to provide default aggregations that are supported by
 visualizers and telemetry backends.
 
-Unlike [request tracing](/docs/concepts/signals/traces/), which is intended to
-capture request lifecycles and provide context to the individual pieces of a
-request, metrics are intended to provide statistical information in aggregate.
-Some examples of use cases for metrics include:
+Unlike [request tracing](../traces/), which is intended to capture request
+lifecycles and provide context to the individual pieces of a request, metrics
+are intended to provide statistical information in aggregate. Some examples of
+use cases for metrics include:
 
 - Reporting the total number of bytes read by a service, per protocol type.
 - Reporting the total number of bytes read and the bytes per request.

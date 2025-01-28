@@ -12,7 +12,7 @@ cSpell:ignore: Roadmap
 {{% docs/languages/index-intro js /%}}
 
 {{% alert title="Warning" color="warning" %}}
-{{% _param notes.browser-instrumentation %}} {{% /alert %}}
+{{% param notes.browser-instrumentation %}} {{% /alert %}}
 
 ## Version Support
 

@@ -336,7 +336,7 @@ above, you have a `TracerProvider` setup for you already. You can continue with
 #### Browser
 
 {{% alert title="Warning" color="warning" %}}
-{{% _param notes.browser-instrumentation %}} {{% /alert %}}
+{{% param notes.browser-instrumentation %}} {{% /alert %}}
 
 First, ensure you've got the right packages:
 

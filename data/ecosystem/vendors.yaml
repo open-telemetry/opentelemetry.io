@@ -176,8 +176,8 @@
   commercial: true
 - name: KloudFuse
   nativeOTLP: true
-  url: https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/753860609/APM#Sending-traces-to-Kloudfuse-data-plane%3A
-  contact:
+  url: https://docs.kloudfuse.com/platform/latest/agent-otel/
+  contact: support@kloudfuse.com
   oss: false
   commercial: true
 - name: KloudMate
@@ -250,6 +250,12 @@
   nativeOTLP: true
   url: https://docs.observeinc.com/en/latest/content/send-data/app-instrumentation/index.html#instrument-with-opentelemetry
   contact:
+  oss: false
+  commercial: true
+- name: Otelic
+  nativeOTLP: true
+  url: https://otelic.com/en/open-telemetry-sample-instrumentation/nodejs-simple
+  contact: support@otelic.com
   oss: false
   commercial: true
 - name: observIQ

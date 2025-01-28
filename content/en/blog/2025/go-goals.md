@@ -6,7 +6,7 @@ author: >-
   [Tyler Yahn](https://github.com/MrAlias) (Splunk)
 sig: SIG Go
 # prettier-ignore
-cSpell:ignore: Yahn dashpole pellared otelhttp dmathieu otelhttp codeboten otellogr otellogrus otelslog otelzap otelzerolog
+cSpell:ignore: codeboten dashpole dmathieu otelhttp otellogr otellogrus otelslog otelzap otelzerolog pellared Yahn
 ---
 
 As we kick off 2025, the

@@ -22,4 +22,4 @@ commands for each type of test[^1]:
 To learn more about these tests, see
 [Service Testing](https://github.com/open-telemetry/opentelemetry-demo/tree/main/test).
 
-[^1]: {{% _param notes.docker-compose-v2 %}}
+[^1]: {{% param notes.docker-compose-v2 %}}

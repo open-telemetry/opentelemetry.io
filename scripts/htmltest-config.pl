@@ -74,7 +74,7 @@ sub _extract_ignore_dirs {
 }
 
 sub _extract_htmltest_config {
-    # Returns a list of htmltext config lines with whitespace trimmed away.
+    # Returns a list of htmltest config lines with whitespace trimmed away.
 
     my ($front_matter) = @_;
     my @lines = split /\n/, $front_matter;

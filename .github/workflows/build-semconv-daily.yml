@@ -11,6 +11,7 @@ jobs:
     uses: ./.github/workflows/build-dev.yml
     with:
       submodule_path_regex: semantic-conventions
+      skip_ref_cache_check: true
 
   workflow-notification:
     needs:

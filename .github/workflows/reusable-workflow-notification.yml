@@ -13,7 +13,6 @@ on:
         required: false
     secrets:
       opentelemetrybot_github_token:
-        type: string
         required: false
 
 jobs:

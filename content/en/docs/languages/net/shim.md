@@ -108,9 +108,9 @@ corresponding to the service is injected during setup. This lets you get access
 to an instance in your endpoint mapping (or controllers if you're using an older
 version of .NET).
 
-It's not required to inject a service-level tracer, nor does it improve
-performance either. You will need to decide where you'll want your tracer
-instance to live, though.
+It isn't required to inject a service-level tracer and it doesn't improve
+performance. You will need to decide where you'll want your tracer instance to
+live, though.
 
 This is also where you can configure instrumentation libraries.
 
