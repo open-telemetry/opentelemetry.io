@@ -39,7 +39,7 @@ com o [Agente Java](#zero-code-java-agent). O agente Java possui uma
 instalação simples, e automaticamente detecta e instala instrumentação de
 uma vasta biblioteca. {{% /alert %}}
 
-## Categorias de instrumentação
+## Categorias de instrumentação {#instrumentation-categories}
 
 Existem diversas categorias de instrumentação:
 
