@@ -106,7 +106,7 @@ autores de bibliotecas para adicionar instrumentação nativa usando a
 [API](../api/). No longo prazo, nós esperamos que a instrumentação nativa seja o
 padrão, e que a instrumentação mantida pelo OpenTelemetry em
 [opentelemetry-java-instrumentação](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
-como um meio temporário de preencher a lacuna.
+seja um meio temporário de preencher a lacuna.
 
 {{% docs/languages/native-libraries "java" %}}
 
