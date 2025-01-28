@@ -28,6 +28,10 @@ languages:
     languageName: 日本語 (Japanese)
     params:
       description: OpenTelemetryプロジェクト公式サイト
+      notes:
+        docker-compose-v2: |
+          `docker-compose` は非推奨です. 詳細は、
+          [Migrate to Compose V2](https://docs.docker.com/compose/migrate/) を確認してください。
   pt: # cSpell:ignore Português Projeto
     languageName: Português
     languageCode: pt-BR
