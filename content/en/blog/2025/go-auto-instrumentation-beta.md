@@ -1,5 +1,6 @@
 ---
-title: Announcing the Beta Release of OpenTelemetry Go Auto-Instrumentation
+# prettier-ignore
+title: Announcing the Beta Release of OpenTelemetry Go Auto-Instrumentation using eBPF
 linkTitle: Go Auto-Instrumentation Beta
 date: 2025-01-29
 # prettier-ignore
