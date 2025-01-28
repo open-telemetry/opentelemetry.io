@@ -182,7 +182,7 @@ Ao escrever instrumentação, consulte a convenção semântica e confirme que
 quaisquer convenções aplicáveis ao domínio estejam sendo seguidas.
 
 OpenTelemetry Java [publica artefatos](../api/#semantic-attributes) para
-auxiliar an conformidade com a convenção semântica, incluindo constantes geradas
+auxiliar a conformidade com a convenção semântica, incluindo constantes geradas
 para chaves e valores de atributos.
 
 TODO: Discutir instrumentação API e como isso ajuda a conformidade com a
