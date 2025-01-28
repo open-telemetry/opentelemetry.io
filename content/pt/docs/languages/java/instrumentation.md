@@ -72,7 +72,7 @@ O agente do Java é uma forma de
 [instrumentação automática](/docs/specs/otel/glossary/#automatic-instrumentation)
 zero código que manipula dinamicamente o _bytecode_ da aplicação.
 
-Para uma lista de bibliotecas instrumentadas pelo agente do Java, observe a
+Para uma lista de bibliotecas instrumentadas pelo agente do Java, confira a
 coluna "Auto-instrumented versions" em
 [bibliotecas suportadas](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md).
 
