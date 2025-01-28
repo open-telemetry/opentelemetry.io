@@ -80,12 +80,12 @@ Veja [Agente Java](/docs/zero-code/java/agent/) para mais detalhes.
 
 ### Zero-code: Spring Boot starter
 
-O Spring Boot starter é uma forma de
+O inicializador Spring Boot é uma forma de
 [instrumentação automática](/docs/specs/otel/glossary/#automatic-instrumentation)
 zero código que aproveita a autoconfiguração do spring para instalar a
 [biblioteca de instrumentação](#library-instrumentation).
 
-Veja [Spring Boot starter](/docs/zero-code/java/spring-boot-starter/) para
+Veja [inicializador Spring Boot](/docs/zero-code/java/spring-boot-starter/) para
 detalhes.
 
 ### Biblioteca de instrumentação
