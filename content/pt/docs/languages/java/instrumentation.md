@@ -194,7 +194,7 @@ Enquanto as APIs do [LoggerProvider](../api/#loggerprovider) / [Logger](../api/#
  são estruturalmente similares ou equivalentes
 [trace](../api/#tracerprovider) e [métricas](../api/#meterprovider) APIs, servem
 para diferentes casos de uso. A partir de agora, `LoggerProvider` / `Logger` e
-as classes associadas representam o
+as classes associadas representam a
 [Log Bridge API](/docs/specs/otel/logs/api/), que existe para escrever
 conectores de logs para conectar logs registrados através de outras APIs de log
 / frameworks no OpenTelemetry. Eles não são destinados para usuários finais como
