@@ -91,7 +91,7 @@ detalhes.
 ### Biblioteca de instrumentação {#library-instrumentation}
 
 [Biblioteca de instrumentação](/docs/specs/otel/glossary/#instrumentation-library)
-envolve ou usa os pontos de extensão para instrumentar a biblioteca,obrigando os
+envolve ou usa os pontos de extensão para instrumentar a biblioteca, obrigando os
 usuários a instalar e/ou adaptar o uso da biblioteca.
 
 Para uma lista de instrumentação de bibliotecas, veja a coluna "Standalone
