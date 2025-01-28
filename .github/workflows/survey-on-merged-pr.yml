@@ -5,7 +5,7 @@ on:
     types: [closed]
 
 env:
-  PR_NUM: ${{ github.event.issue.number }}
+  PR_NUM: ${{ github.event.pull_request.number }}
   SURVEY_URL: https://forms.gle/WV58koUBGSG9HBY66
 
 jobs:
