@@ -73,7 +73,7 @@ O agente do Java é uma forma de
 zero código que manipula dinamicamente o _bytecode_ da aplicação.
 
 Para uma lista de bibliotecas instrumentadas pelo agente do Java, confira a
-coluna "Auto-instrumented versions" em
+coluna _"Auto-instrumented versions"_ (versões auto-instrumentadas) em
 [bibliotecas suportadas](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md).
 
 Veja [Agente Java](/docs/zero-code/java/agent/) para mais detalhes.
