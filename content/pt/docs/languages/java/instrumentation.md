@@ -190,7 +190,7 @@ convenção semântica.
 
 ## Instrumentação de Log {#log-instrumentation}
 
-Enquanto o [LoggerProvider](../api/#loggerprovider) / [Logger](../api/#logger)
+Enquanto as APIs do [LoggerProvider](../api/#loggerprovider) / [Logger](../api/#logger)
  são estruturalmente similares ou equivalentes
 [trace](../api/#tracerprovider) e [métricas](../api/#meterprovider) APIs, servem
 para diferentes casos de uso. A partir de agora, `LoggerProvider` / `Logger` e
