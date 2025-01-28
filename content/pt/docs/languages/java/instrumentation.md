@@ -70,7 +70,7 @@ instrumentação.
 
 O agente do Java é uma forma de
 [instrumentação automática](/docs/specs/otel/glossary/#automatic-instrumentation)
-zero código que manipula dinamicamente o bytecode da aplicação.
+zero código que manipula dinamicamente o _bytecode_ da aplicação.
 
 Para uma lista de bibliotecas instrumentadas pelo agente do Java, observe a
 coluna "Auto-instrumented versions" em
