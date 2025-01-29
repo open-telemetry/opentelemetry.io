@@ -138,31 +138,6 @@ Properties for disabling the [SDK](../sdk/#opentelemetrysdk):
 returns a minimally configured instance (for example,
 `OpenTelemetrySdk.builder().build()`).
 
-#### Properties: resource
-
-Properties for configuring [resource](../sdk/#resource):
-
-| System property                         | Description                                                                                                                             | Default                |
-| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| `otel.service.name`                     | Specify logical service name. Takes precedence over `service.name` defined with `otel.resource.attributes`.                             | `unknown_service:java` |
-| `otel.resource.attributes`              | Specify resource attributes in the following format: `key1=val1,key2=val2,key3=val3`.                                                   |                        |
-| `otel.resource.disabled.keys`           | Specify resource attribute keys to filter.                                                                                              |                        |
-| `otel.java.enabled.resource.providers`  | Comma-separated list of `ResourceProvider` fully qualified class names to enable. **[1]** If unset, all resource providers are enabled. |                        |
-| `otel.java.disabled.resource.providers` | Comma-separated list of `ResourceProvider` fully qualified class names to disable. **[1]**                                              |                        |
-
-**[1]**: For example, to disable the
-[OS resource provider](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/resources/library/src/main/java/io/opentelemetry/instrumentation/resources/OsResourceProvider.java),
-set
-`-Dotel.java.disabled.resource.providers=io.opentelemetry.instrumentation.resources.OsResourceProvider`.
-
-**NOTE**: The `otel.service.name` and `otel.resource.attributes` system
-properties / environment variables are interpreted in the
-`io.opentelemetry.sdk.autoconfigure.internal.EnvironmentResourceProvider`
-resource provider. If opting in to specify resource providers via
-`otel.java.enabled.resource-providers`, you'll likely want to include it to
-avoid surprises. See [ResourceProvider](#resourceprovider) for resource provider
-artifact coordinates.
-
 Properties for attribute limits (see [span limits](../sdk/#spanlimits),
 [log limits](../sdk/#loglimits)):
 
@@ -187,6 +162,31 @@ Properties for [context propagation](../sdk/#textmappropagator):
 - `ottrace` configures `OtTracePropagator`.
 - `xray` configures `AwsXrayPropagator`.
 - `xray-lambda` configures `AwsXrayLambdaPropagator`.
+
+#### Properties: resource
+
+Properties for configuring [resource](../sdk/#resource):
+
+| System property                         | Description                                                                                                                             | Default                |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| `otel.service.name`                     | Specify logical service name. Takes precedence over `service.name` defined with `otel.resource.attributes`.                             | `unknown_service:java` |
+| `otel.resource.attributes`              | Specify resource attributes in the following format: `key1=val1,key2=val2,key3=val3`.                                                   |                        |
+| `otel.resource.disabled.keys`           | Specify resource attribute keys to filter.                                                                                              |                        |
+| `otel.java.enabled.resource.providers`  | Comma-separated list of `ResourceProvider` fully qualified class names to enable. **[1]** If unset, all resource providers are enabled. |                        |
+| `otel.java.disabled.resource.providers` | Comma-separated list of `ResourceProvider` fully qualified class names to disable. **[1]**                                              |                        |
+
+**[1]**: For example, to disable the
+[OS resource provider](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/resources/library/src/main/java/io/opentelemetry/instrumentation/resources/OsResourceProvider.java),
+set
+`-Dotel.java.disabled.resource.providers=io.opentelemetry.instrumentation.resources.OsResourceProvider`.
+
+**NOTE**: The `otel.service.name` and `otel.resource.attributes` system
+properties / environment variables are interpreted in the
+`io.opentelemetry.sdk.autoconfigure.internal.EnvironmentResourceProvider`
+resource provider. If opting in to specify resource providers via
+`otel.java.enabled.resource-providers`, you'll likely want to include it to
+avoid surprises. See [ResourceProvider](#resourceprovider) for resource provider
+artifact coordinates.
 
 #### Properties: traces
 
