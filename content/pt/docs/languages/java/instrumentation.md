@@ -184,8 +184,6 @@ O OpenTelemetry Java [publica artefatos](../api/#semantic-attributes) para
 auxiliar a conformidade com a convenção semântica, incluindo constantes geradas
 para chaves e valores de atributos.
 
-TODO: Discutir instrumentação API e como isso ajuda a conformidade com a
-convenção semântica.
 
 ## Instrumentação de Log {#log-instrumentation}
 
