@@ -192,7 +192,7 @@ convenção semântica.
 Enquanto as APIs do [LoggerProvider](../api/#loggerprovider) / [Logger](../api/#logger)
  são estruturalmente similares ou equivalentes
 às APIs de [rastros](../api/#tracerprovider) e [métricas](../api/#meterprovider), elas possuem
-para diferentes casos de uso. A partir de agora, `LoggerProvider` / `Logger` e
+diferentes casos de uso. A partir de agora, `LoggerProvider` / `Logger` e
 as classes associadas representam a
 [Log Bridge API](/docs/specs/otel/logs/api/), que existe para escrever
 conectores de logs para conectar logs registrados através de outras APIs de log
