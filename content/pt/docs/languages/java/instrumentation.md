@@ -162,7 +162,7 @@ contexto:
 
 - Bibliotecas que representam um ponto de entrada da aplicação (i.e. servidores
   HTTP, consumidores de mensagens, etc.) devem
-  [extrair o context](../api/#contextpropagators) de mensagens recebidas.
+  [extrair o contexto](../api/#contextpropagators) de mensagens recebidas.
 - Bibliotecas que representam um ponto de saída de uma aplicação (ex. Clientes
   HTTP, Produtores de Mensagens, etc.) devem
   [injetar o contexto](../api/#contextpropagators) em mensagens de saída.
