@@ -174,7 +174,7 @@ contexto:
 
 As [convenções semânticas](/docs/specs/semconv/) definem como produzir telemetria
 para operações padrão. Entre outras coisas, as convenções semânticas
-especifica nomes e tipos de trechos, instrumentos de métrica, unidades de
+especificam nomes e tipos de trechos, instrumentos de métrica, unidades de
 métricas, tipos de métricas, e atributos chave, valor, e níveis de requisitos.
 
 Ao escrever instrumentação, consulte a convenção semântica e confirme que
