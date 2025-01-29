@@ -3971,6 +3971,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:17:25.313954+02:00"
   },
+  "https://github.com/JacksonWeber": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-29T00:38:23.228585188Z"
+  },
   "https://github.com/JamieDanielson": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:16:08.127343+02:00"
@@ -18686,6 +18690,10 @@
   "https://wikipedia.org/wiki/SQLSTATE": {
     "StatusCode": 200,
     "LastSeen": "2024-10-09T10:19:24.765198+02:00"
+  },
+  "https://wikipedia.org/wiki/SQL_syntax#Operators": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-28T16:18:59.006111-05:00"
   },
   "https://wikipedia.org/wiki/Software_testing": {
     "StatusCode": 200,

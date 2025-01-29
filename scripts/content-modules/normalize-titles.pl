@@ -40,6 +40,35 @@ sub toTitleCase($) {
     return $str;
 }
 
+my $properNames = <<'EON';
+  .NET Core
+  AI Inference
+  AWS Lambda
+  Azure
+  Cassandra
+  Cloud Run
+  Common Language Runtime
+  Compute Engine
+  Connect RPC
+  Cosmos
+  Elasticsearch
+  Go
+  Google
+  Google Cloud
+  Kafka
+  Kestrel
+  Kubernetes
+  Microsoft
+  Node.js
+  Pub/Sub
+  Redis
+EON
+
+my @properNames =
+  grep { /\S/ } # drop blank lines
+    map { s/^\s+|\s+$//gr } # trim whitespace
+      split(/\n/, $properNames);
+
 sub toSentenceCase($) {
     my ($str) = @_;
 
@@ -50,10 +79,10 @@ sub toSentenceCase($) {
     $str =~ s/^([a-z][a-z0-9]*)\b/\u$1/;
 
     # Handle exceptions
-    $str =~ s/(.NET) (core)/$1 \u$2/;
-    $str =~ s/(AI) (inference)/$1 \u$2/;
-    $str =~ s|google cloud|Google Cloud|i;
-    $str =~ s|pub/sub|Pub/Sub|;
+    for my $name (@properNames) {
+        $str =~ s/\b\Q$name\E\b/$name/gi;
+    }
+    $str =~ s/Function(.)as.a.Service/Function$1as$1a$1Service/i;
 
     return $str;
 }
@@ -70,9 +99,9 @@ sub computeTitleAndFrontMatter() {
   if ($title =~ /^OpenTelemetry (Protocol )?(.*)/) {
     $linkTitle = $2;
   } elsif ($title =~ /^(.*?) Semantic Conventions?$/i) {
-    $linkTitle = toTitleCase($1);
+    $linkTitle = $1; # toTitleCase($1);
   } elsif ($title =~ /^.*? for (.*)$/i) {
-    $linkTitle = toTitleCase($1);
+    $linkTitle = $1; # toTitleCase($1);
   }
   if ($linkTitle =~ /^Function.as.a.Service$/i) {
     $linkTitle = 'FaaS';
@@ -87,11 +116,8 @@ sub computeTitleAndFrontMatter() {
   } elsif ($linkTitle =~ /^(Exceptions|Feature Flags) .. (.*)$/i) {
     $linkTitle = $2;
   }
-  if ($linkTitle =~ /^(.*) Attributes$/i && $title ne 'General Attributes') {
-    $linkTitle = $1;
-  }
 
-  $linkTitle = 'Events' if $linkTitle =~ /Mobile Events/;
+  $linkTitle = 'Events' if $linkTitle =~ /Mobile Events/i;
   $linkTitle = 'Connect' if $title =~ /Connect RPC$/i;
   $linkTitle = 'HTTP' if $linkTitle =~ /^HTTP Client and Server/i;
   $linkTitle = 'SQL' if $title =~ /SQL Databases$/i;
@@ -99,12 +125,12 @@ sub computeTitleAndFrontMatter() {
   $linkTitle = $1 if $title =~ /Gen(?:erative) ?AI (\w+)$/i && $title !~ /Systems$/i;
   $linkTitle = $1 if $title =~ /(OpenAI) \w+$/i;
 
-  # Missing an `s` in "Semantic Convention"?
-  if ($title =~ /^Semantic Convention\b/i and $title !~ /Groups$/i) {
-    $title =~ s/Semantic Convention\b/$&s/ig;
+  # Missing an `s` in "Semantic convention"?
+  if ($title =~ /^Semantic convention\b/i and $title !~ /Groups$/i) {
+    $title =~ s/Semantic convention\b/$&s/ig;
     printf STDOUT "> $title -> $linkTitle - added 's' to 'Conventions'\n";
   }
-  $linkTitle =~ s/^(Database|Messaging) Client //;
+  $linkTitle =~ s/^(Database|Messaging) Client //i;
   if ($ARGV =~ /docs\/azure/) {
     $linkTitle =~ s/ Resource Logs?//i;
     $linkTitle =~ s/Azure //i;
@@ -117,7 +143,7 @@ sub computeTitleAndFrontMatter() {
     unless $ARGV =~ /gen-ai-metrics/;
   $linkTitle =~ s/ (components|guide|queries|supplementary information|systems|platform)$//i;
   $linkTitle =~ s/ \(command line interface\)//i;
-  $linkTitle =~ s/ resources$//i;
+  $linkTitle =~ s/ (attributes|resources)$//i;
   $linkTitle =~ s/(Process) and process runtime$/$1/i;
 
   $linkTitle = '.NET' if $linkTitle =~ /.net common language runtime/i;
@@ -129,20 +155,20 @@ sub computeTitleAndFrontMatter() {
 
   $frontMatter .= $frontMatterFromFile if $frontMatterFromFile;
 
-  if ($linkTitle && $linkTitle ne $title) {
-    $linkTitle = toSentenceCase($linkTitle); # unless $linkTitle =~ /^gRPC/;
-    if ($frontMatter !~ /linkTitle: /) {
+  $linkTitle = toSentenceCase($linkTitle);
+  if ($linkTitle) {
+    if ($frontMatter !~ /linkTitle: / && $linkTitle ne $title) {
       $frontMatter .= "linkTitle: $linkTitle\n";
     } elsif ($frontMatter !~ /^auto_gen:/m) {
       $frontMatter =~ s/^(linkTitle: ).*$/$1$linkTitle/m;
     }
   }
 
-  if ($ARGV =~ /docs\/(.*?)(README|_index).md$/) {
-    $frontMatter .= "path_base_for_github_subdir:\n";
-    $frontMatter .= "  from: tmp/semconv/docs/$1_index.md\n";
-    $frontMatter .= "  to: $1README.md\n";
-  }
+  # if ($ARGV =~ /docs\/(.*?)(README|_index).md$/) {
+  #   $frontMatter .= "path_base_for_github_subdir:\n";
+  #   $frontMatter .= "  from: tmp/semconv/docs/$1_index.md\n";
+  #   $frontMatter .= "  to: $1README.md\n";
+  # }
 
   return $frontMatter;
 }
@@ -157,7 +183,7 @@ sub printTitleAndFrontMatter() {
   }
 
   print $beforeTitle if $beforeTitle;
-  $title = toTitleCase($title);
+  $title = toSentenceCase($title);
   print "# $title\n"
 }
 
