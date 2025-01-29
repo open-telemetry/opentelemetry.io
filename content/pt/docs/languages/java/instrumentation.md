@@ -235,7 +235,7 @@ convertê-los para um formato mais estruturado, e encaminhá-los para um destino
 Collector. Este _workflow_ pode ser preferível em situações onde os
 requisitos da aplicação não permitem sobrecarga adicional da abordagem
 [direto para o Collector](#direct-to-collector). No entanto, isso requer que todos
-os campos de logs necessários para processamento posterior sejam codificados em
+os campos de logs necessários para processamento posterior sejam codificados nos
 logs, e este componente lendo os logs os interprete no
 [modelo de dados de log](/docs/specs/otel/logs/data-model). A instalação e
 configuração dos componentes de encaminhamento de log está fora do escopo deste
