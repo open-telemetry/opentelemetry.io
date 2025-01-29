@@ -242,5 +242,5 @@ configuração dos componentes de encaminhamento de log está fora do escopo des
 documento.
 
 Correlação de Logs com rastros está disponível instalando um [shim](#shims) para
-conectar o contexto do OpenTelemetry no log framework. Veja "Bridge
+conectar o contexto do OpenTelemetry no log framework. Veja os items "Bridge
 OpenTelemetry contexto em Log4j", "Bridge OpenTelemetry contexto em Logback".
