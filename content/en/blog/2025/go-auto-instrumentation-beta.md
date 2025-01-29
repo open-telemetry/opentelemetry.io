@@ -83,8 +83,8 @@ following goals:
 
 3. **Integrate with Beyla’s donation to OpenTelemetry**
 
-   The proposed [donation of Beyla to
-   OpenTelemetry](https://github.com/open-telemetry/community/issues/2406)
+   The proposed
+   [donation of Beyla to OpenTelemetry](https://github.com/open-telemetry/community/issues/2406)
    presents an opportunity to enhance OpenTelemetry’s eBPF-based
    auto-instrumentation capabilities. If accepted, this donation will help
    expand support for additional signals, protocols, and languages, creating a
