@@ -33,7 +33,7 @@
     {{ with $u.RawQuery -}}{{ $href = printf "%s?%s" $href . -}}{{ end -}}
     {{ with $u.Fragment -}}{{ $href = printf "%s#%s" $href . -}}{{ end -}}
   {{ else -}}
-    {{ warnf "File %s: cannot resolve spec link reference '%s'" .Page.File.Filename $url -}}
+    {{ warnf "File %s: cannot resolve spec link reference '%s' (%s)" .Page.File.Filename $url $path -}}
   {{ end -}}
   {{ $url = $href -}}
 {{ else if hasPrefix $url "/" -}}

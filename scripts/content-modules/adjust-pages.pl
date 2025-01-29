@@ -46,7 +46,7 @@ sub printTitleAndFrontMatter() {
     $frontMatterFromFile =~ s/(title|linkTitle): .*/$& $otlpSpecVers/g;
     # TODO: add to spec landing page
     $frontMatterFromFile .= "weight: 20\n" if $frontMatterFromFile !~ /^\s*weight/;
-  } elsif ($ARGV =~ /semconv\/docs\/_index.md$/) {
+  } elsif ($ARGV =~ /semconv\/docs\/\w+.md$/) {
     $title .= " $semconvVers";
     $frontMatterFromFile =~ s/linkTitle: .*/$& $semconvVers/;
     # $frontMatterFromFile =~ s/body_class: .*/$& td-page--draft/;
@@ -108,6 +108,7 @@ sub patchSemConv1_30_0() {
   s|Emit Event API|Log API|;
   s|(docs/specs/otel/logs/api.md#emit-a)n-event|$1-logrecord|;
   s|\[semantic-convention-groups\]|[group-stability]|;
+  s|\Q../../docs/|../|g; # https://github.com/open-telemetry/semantic-conventions/pull/1843
 }
 
 sub getVersFromSubmodule() {
@@ -147,10 +148,10 @@ while(<>) {
     $frontMatterFromFile = '';
     $title = '';
     $lineNum = 1;
-    if (/^<!---? Hugo/) {
+    if (/^(<!)?--- (# )?Hugo/) {
         while(<>) {
           $lineNum++;
-          last if /^-?-->/;
+          last if /^--->?/;
           patchEventAliases();
           patchSemConv1_30_0();
           $frontMatterFromFile .= $_;
