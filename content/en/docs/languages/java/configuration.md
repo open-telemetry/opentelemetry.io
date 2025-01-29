@@ -154,6 +154,7 @@ Properties for configuring [resource](../sdk/#resource):
 [OS resource provider](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/resources/library/src/main/java/io/opentelemetry/instrumentation/resources/OsResourceProvider.java),
 set
 `-Dotel.java.disabled.resource.providers=io.opentelemetry.instrumentation.resources.OsResourceProvider`.
+
 **NOTE**: The `otel.service.name` and `otel.resource.attributes` system
 properties / environment variables are interpreted in the
 `io.opentelemetry.sdk.autoconfigure.internal.EnvironmentResourceProvider`
