@@ -213,7 +213,7 @@ estruturados em conformidade com o
 sobrecarga necessária para as aplicações enfileirarem e exportarem os logs para
 um local de rede pode não ser adequada para todas as aplicações.
 
-Para usar este fluxo de trabalho:
+Para usar este _workflow_:
 
 - Instale o conector de log apropriado. **[1]**
 - Configure o OpenTelemetry [Log SDK](../sdk/#sdkloggerprovider) para exportar
