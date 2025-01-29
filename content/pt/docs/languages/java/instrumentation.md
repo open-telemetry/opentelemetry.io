@@ -172,7 +172,7 @@ contexto:
 
 ## Convenção semântica {#semantic-conventions}
 
-A [Convenção semântica](/docs/specs/semconv/) define como produzir telemetria
+As [convenções semânticas](/docs/specs/semconv/) definem como produzir telemetria
 para os padrões de operação. Entre outras coisas, a convenção semântica
 especifica nomes e tipos de trechos, instrumentos de métrica, unidades de
 métricas, tipos de métricas, e atributos chave, valor, e níveis de requisitos.
