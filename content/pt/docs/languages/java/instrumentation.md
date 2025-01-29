@@ -199,7 +199,7 @@ conectores de logs para conectar logs registrados através de outras APIs de log
 / frameworks no OpenTelemetry. Eles não são destinados para usuários finais como
 um substituto para Log4j / SLF4J / Logback / etc.
 
-Eles são dois típicos fluxos de trabalho para consumir instrumentação de logs no
+Eles são dois _workflows_ típicos para consumir instrumentação de logs no
 OpenTelemetry atendendo a diferentes requisitos de aplicação:
 
 ### Direto para o Collector {#direct-to-collector}
