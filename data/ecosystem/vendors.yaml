@@ -28,6 +28,12 @@
   contact:
   oss: false
   commercial: true
+- name: OpenSearch
+  nativeOTLP: true
+  url: https://opensearch-project.github.io
+  contact:
+  oss: true
+  commercial: false
 - name: Axiom
   nativeOTLP: true
   url: https://axiom.co/docs/send-data/opentelemetry
