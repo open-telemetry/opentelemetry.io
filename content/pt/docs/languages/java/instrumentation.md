@@ -229,7 +229,7 @@ para demonstração de uma variedade de cenários.
 
 ### Via arquivo ou stdout {#via-file-or-stdout}
 
-No fluxo de trabalho utilizado em arquivos ou _stdout_, os logs são gravados em arquivos ou na saída
+No _workflow_ para arquivos ou _stdout_, os logs são gravados em arquivos ou na saída
 _standout_. Outro componente (ex. FluentBit) é responsável por ler / acompanhar os logs,
 convertê-los para um formato mais estruturado, e encaminhá-los para um destino, como um
 Collector. Este _workflow_ pode ser preferível em situações onde os
