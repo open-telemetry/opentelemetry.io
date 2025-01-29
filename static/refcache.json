@@ -18691,6 +18691,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-10-09T10:19:24.765198+02:00"
   },
+  "https://wikipedia.org/wiki/SQL_syntax#Operators": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-28T16:18:59.006111-05:00"
+  },
   "https://wikipedia.org/wiki/Software_testing": {
     "StatusCode": 200,
     "LastSeen": "2024-12-04T08:47:02.68804707Z"
