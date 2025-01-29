@@ -93,5 +93,6 @@ jobs:
           prs=$(gh pr list --state open --head $BRANCH)
           if [ -z "$prs" ]; then
             gh pr create --title "Update semantic conventions to ${VERSION}" \
-                         --body "This PR updates the semantic conventions to ${VERSION}."
+                         --body "This PR updates the semantic conventions to ${VERSION}." \
+                         --draft
           fi
