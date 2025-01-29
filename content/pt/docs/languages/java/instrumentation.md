@@ -160,7 +160,7 @@ aplicação. A [API de contexto](../api/#context-api) facilita isso.
 A instrumentação deve ser escrita de uma maneira que seja ciente do
 contexto:
 
-- Bibliotecas que representam um ponto de entrada da aplicação (i.e. Servidores
+- Bibliotecas que representam um ponto de entrada da aplicação (i.e. servidores
   HTTP, Consumidores de Mensagens, etc.) deve
   [extrair o context](../api/#contextpropagators) de mensagens recebidas.
 - Bibliotecas que representam um ponto de saída de uma aplicação (ex. Clientes
