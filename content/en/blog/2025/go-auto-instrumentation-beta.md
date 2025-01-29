@@ -83,18 +83,15 @@ following goals:
 
 3. **Integrate with Beyla’s donation to OpenTelemetry**
 
-   The
-   [donation of Beyla to OpenTelemetry](https://github.com/open-telemetry/community/issues/2406)
-   brings the opportunity to unify and enhance OpenTelemetry's eBPF
-   auto-instrumentation offerings. As an eBPF-based tool for both traces and
-   metrics, this donation will help provide instrumentation for more signals,
-   protocols, and languages in open source. And because the Go instrumentation
-   in Beyla is already based on the OpenTelemetry Go Auto-Instrumentation
-   libraries, we plan to merge the projects – and their development teams –
-   under the OpenTelemetry community organization.
-
-   The integration of Beyla will significantly enhance auto-instrumentation for
-   Go!
+   The proposed [donation of Beyla to
+   OpenTelemetry](https://github.com/open-telemetry/community/issues/2406)
+   presents an opportunity to enhance OpenTelemetry’s eBPF-based
+   auto-instrumentation capabilities. If accepted, this donation will help
+   expand support for additional signals, protocols, and languages, creating a
+   more comprehensive eBPF-based observability solution. OpenTelemetry Go
+   Auto-Instrumentation will evolve alongside these developments, ensuring
+   seamless collaboration while continuing to provide robust tracing for Go
+   applications.
 
 Keep track of our progress in the
 [2025 Goals tracking issue](https://github.com/open-telemetry/opentelemetry-go-instrumentation/issues/1659).
