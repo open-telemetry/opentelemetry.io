@@ -76,6 +76,11 @@ need to be configured. As an example, the following configuration receives
 traces and logs from the Telemetry API and sends them to another endpoint:
 
 ```yaml
+# The `decouple` processor is configured by default if omitted.
+# It is explicitly added in this example to illustrate the entire pipeline
+# More information can be found at
+# https://github.com/open-telemetry/opentelemetry-lambda/tree/main/collector#auto-configuration
+
 receivers:
  telemetryapi:
 exporters:
