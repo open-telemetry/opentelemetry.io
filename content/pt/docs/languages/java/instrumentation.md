@@ -161,7 +161,7 @@ A instrumentação deve ser escrita de uma maneira que seja ciente do
 contexto:
 
 - Bibliotecas que representam um ponto de entrada da aplicação (i.e. servidores
-  HTTP, Consumidores de Mensagens, etc.) deve
+  HTTP, consumidores de mensagens, etc.) devem
   [extrair o context](../api/#contextpropagators) de mensagens recebidas.
 - Bibliotecas que representam um ponto de saída de uma aplicação (ex. Clientes
   HTTP, Produtores de Mensagens, etc.) devem
