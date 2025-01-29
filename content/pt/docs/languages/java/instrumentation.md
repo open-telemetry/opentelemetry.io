@@ -215,7 +215,7 @@ um local de rede pode não ser adequada para todas as aplicações.
 
 Para usar este _workflow_:
 
-- Instale o conector de log apropriado. **[1]**
+- Instale o anexador apropriado de log. **[1]**
 - Configure o OpenTelemetry [Log SDK](../sdk/#sdkloggerprovider) para exportar
   registros de logs para o destino desejado (o
   [Collector](https://github.com/open-telemetry/opentelemetry-collector) ou
