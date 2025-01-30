@@ -304,4 +304,4 @@ Be sure to follow OpenTelemetry on
 [Twitter](https://twitter.com/opentelemetry), and share your stories using the
 **#OpenTelemetry** hashtag!
 
-[^1]: {{% _param notes.docker-compose-v2 %}}
+[^1]: {{% param notes.docker-compose-v2 %}}

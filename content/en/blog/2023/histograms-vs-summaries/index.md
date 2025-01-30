@@ -3,7 +3,7 @@ title: Histograms vs Summaries
 date: 2023-05-15
 author: '[Daniel Dyla](https://github.com/dyladan)'
 canonical_url: https://dyladan.me/histograms/2023/05/03/histograms-vs-summaries/
-cSpell:ignore: aggregatable Björn Ganesh Kovalov Rabenstein Ruslan Vernekar
+cSpell:ignore: aggregable Björn Ganesh Kovalov Rabenstein Ruslan Vernekar
 ---
 
 In many ways, histograms and summaries appear quite similar. They both roll up
@@ -34,9 +34,9 @@ could be off by as much as 60ms (`360 - 300`), a relative error of 17%
 (`60 / 360`). This error can be mitigated by configuring more and smaller
 buckets around your SLO values, but never eliminated.
 
-One important property of histograms is that they are _aggregatable_, meaning
-that as long as the bucket boundaries line up, an arbitrary number of histograms
-can be combined into a single histogram with no loss of data or precision. This
+One important property of histograms is that they are _aggregable_, meaning that
+as long as the bucket boundaries line up, an arbitrary number of histograms can
+be combined into a single histogram with no loss of data or precision. This
 means that an arbitrary number of hosts can report histogram data structures to
 a server, which can aggregate and compute quantiles from all of them as if they
 were reported by a single host. By collecting histograms from 1 or more hosts

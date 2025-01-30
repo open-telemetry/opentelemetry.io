@@ -201,6 +201,10 @@ informações][metric].
 
 Abreviação para [OpenCensus](#opencensus).
 
+### OpAMP
+
+[Conteúdo será adicionado posteriormente]
+
 ### **OpenCensus**
 
 Um conjunto de bibliotecas para várias linguagens que permite coletar métricas
@@ -208,6 +212,10 @@ de aplicações e rastreamentos distribuídos, transferindo os dados para um
 backend de sua preferência em tempo real.
 [Precursor do OpenTelemetry](/docs/what-is-opentelemetry/#history). Consulte
 [mais informações][opencensus].
+
+### OpenTelemetry
+
+[Conteúdo será adicionado posteriormente]
 
 ### **OpenTracing**
 
@@ -226,6 +234,10 @@ Abreviação para [OpenTelemetry](/docs/what-is-opentelemetry/).
 ### **OTelCol**
 
 Abreviação para [OpenTelemetry Collector](#collector).
+
+### OTEP
+
+[Conteúdo será adicionado posteriormente]
 
 ### **OTLP**
 

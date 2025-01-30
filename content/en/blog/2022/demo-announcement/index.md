@@ -7,7 +7,7 @@ author: '[Carter Socha](https://github.com/cartersocha)'
 
 ## TL;DR
 
-The OpenTelemetry community has taken a good pre-existing demo (thanks,
+The OpenTelemetry community has taken a good preexisting demo (thanks,
 [Google](https://github.com/GoogleCloudPlatform/microservices-demo)!) and is in
 the process of making it even better. Every GA SDK (besides Swift) will be
 represented, demo support will be extended to Metrics and Logs, and canonical
@@ -66,8 +66,8 @@ backend choice, and they’re overly reliant on instrumentation libraries.
 As a starting point, we have selected a fork of the popular GCP microservices
 demo. Our first feature additions have been to simplify local deployment by
 consolidating the project onto a single docker compose file, updating the
-documentation, and replacing a pre-existing service with a Ruby example.
-Otherwise the pre-existing feature set from the GCP demo remains the same:
+documentation, and replacing a preexisting service with a Ruby example.
+Otherwise the preexisting feature set from the GCP demo remains the same:
 
 - 10 application microservice with support for 6 languages (C#, Go, Java,
   Node.js, Python, and Ruby)
@@ -155,4 +155,4 @@ from there.
 - [Demo Requirements](/docs/demo/requirements/)
 - [Get Involved](https://github.com/open-telemetry/opentelemetry-demo#contributing)
 
-[^1]: {{% _param notes.docker-compose-v2 %}}
+[^1]: {{% param notes.docker-compose-v2 %}}

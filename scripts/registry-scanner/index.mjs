@@ -281,7 +281,7 @@ async function createFilesFromScanResult(existing, found, settings) {
         current.html_url,
         parsedReadme.description,
       );
-      // collector entries are named reverse (collector-{registryTpe}) compared to languages ({registryTpe}-{language}), we fix this here.
+      // collector entries are named reverse (collector-{registryType}) compared to languages ({registryType}-{language}), we fix this here.
       const fileName = (
         language === 'collector'
           ? `${language}-${registryType}-${currentKey}.yml`

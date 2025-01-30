@@ -111,7 +111,6 @@ quoteservice
 react-native-app
 recommendationservice
 redis
-relref
 Rexed
 runbook
 runbooks

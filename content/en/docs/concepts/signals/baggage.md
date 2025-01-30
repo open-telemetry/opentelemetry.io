@@ -6,13 +6,12 @@ description: Contextual information that is passed between signals.
 
 In OpenTelemetry, Baggage is contextual information that resides next to
 context. Baggage is a key-value store, which means it lets you
-[propagate](/docs/concepts/context-propagation/#propagation) any data you like
-alongside [context](/docs/concepts/context-propagation/#context).
+[propagate](../../context-propagation/#propagation) any data you like alongside
+[context](../../context-propagation/#context).
 
 Baggage means you can pass data across services and processes, making it
-available to add to [traces](/docs/concepts/signals/traces/),
-[metrics](/docs/concepts/signals/metrics/), or
-[logs](/docs/concepts/signals/logs/) in those services.
+available to add to [traces](../traces/), [metrics](../metrics/), or
+[logs](../logs/) in those services.
 
 ## Example
 
@@ -24,13 +23,12 @@ another service, and some logs along the way. Because the trace may span
 multiple services, you need some way to propagate that data without copying the
 `clientId` across many places in your codebase.
 
-By using
-[Context Propagation](/docs/concepts/signals/traces/#context-propagation) to
-pass baggage across these services, the `clientId` is available to add to any
-additional spans, metrics, or logs. Additionally, instrumentations automatically
-propagate baggage for you.
+By using [Context Propagation](../traces/#context-propagation) to pass baggage
+across these services, the `clientId` is available to add to any additional
+spans, metrics, or logs. Additionally, instrumentations automatically propagate
+baggage for you.
 
-![OTel Baggage](/img/otel-baggage.svg)
+![OTel Baggage](../otel-baggage.svg)
 
 ## What should OTel Baggage be used for?
 
@@ -45,7 +43,7 @@ like "which users are experiencing the slowest database calls?" You can also log
 information about a downstream operation and include that same User ID in the
 log data.
 
-![OTel Baggage](/img/otel-baggage-2.svg)
+![OTel Baggage](../otel-baggage-2.svg)
 
 ## Baggage security considerations
 
@@ -70,10 +68,10 @@ To add baggage entries to attributes, you need to explicitly read the data from
 baggage and add it as attributes to your spans, metrics, or logs.
 
 Because a common use cases for Baggage is to add data to
-[Span Attributes](/docs/concepts/signals/traces/#attributes) across a whole
-trace, several languages have Baggage Span Processors that add data from baggage
-as attributes on span creation.
+[Span Attributes](../traces/#attributes) across a whole trace, several languages
+have Baggage Span Processors that add data from baggage as attributes on span
+creation.
 
-> For more information, see the [baggage specification][].
+> For more information, see the [baggage specification].
 
 [baggage specification]: /docs/specs/otel/overview/#baggage-signal

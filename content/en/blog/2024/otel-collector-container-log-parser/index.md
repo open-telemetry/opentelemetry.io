@@ -81,7 +81,7 @@ combine them into one at first place:
 
 ```text
 2024-04-06T00:17:10.113242941Z stdout P This is a very very long line th
-2024-04-06T00:17:10.113242941Z stdout P at is really really long and spa
+2024-04-06T00:17:10.113242941Z stdout P at is really, really, long and spa
 2024-04-06T00:17:10.113242941Z stdout F ns across multiple log entries
 ```
 

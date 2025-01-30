@@ -32,7 +32,7 @@ Usando a
 para passar a bagagem entre esses serviços, o `clientId` estará disponível para
 ser adicionado a quaisquer trechos, métricas ou logs. Além disso, as
 instrumentações automaticamente propagam a Bagagem para você.
-![OTel Baggage](/img/otel-baggage.svg)
+![OTel Baggage](../otel-baggage.svg)
 
 ## Para que a Bagagem do OTel deve ser usada?
 
@@ -49,7 +49,7 @@ enfrentando as chamadas de banco de dados mais lentas?". Você também pode
 registrar informações sobre uma operação posterior e incluir esse mesmo ID de
 usuário nos dados do log.
 
-![OTel Baggage](/img/otel-baggage-2.svg)
+![OTel Baggage](../otel-baggage-2.svg)
 
 ## Considerações de segurança da Bagagem
 

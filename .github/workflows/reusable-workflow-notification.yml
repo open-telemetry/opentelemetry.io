@@ -11,6 +11,9 @@ on:
       repo:
         type: string
         required: false
+    secrets:
+      opentelemetrybot_github_token:
+        required: false
 
 jobs:
   workflow-notification:
@@ -20,10 +23,9 @@ jobs:
 
       - name: Open issue or add comment if issue already open
         env:
-          # need to use opentelemetrybot for opening issues in other repos
+          # need to use opentelemetrybot token when opening issues in other repos
           GH_TOKEN:
-            ${{ inputs.repo && secrets.OPENTELEMETRYBOT_GITHUB_TOKEN ||
-            secrets.GITHUB_TOKEN }}
+            ${{ secrets.opentelemetrybot_github_token || secrets.GITHUB_TOKEN }}
         run: |
           if [ -z "${{ inputs.repo }}" ]; then
             repo="$GITHUB_REPOSITORY"

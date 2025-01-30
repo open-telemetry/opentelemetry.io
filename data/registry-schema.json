@@ -9,7 +9,7 @@
     "title": {
       "type": "string",
       "description": "The title of the entry",
-      "errorMessage": "The title of the entry must be a string and can not be empty",
+      "errorMessage": "The title of the entry must be a string and cannot be empty",
       "minLength": 1
     },
     "registryType": {
@@ -64,7 +64,7 @@
     "description": {
       "type": "string",
       "description": "A description of the entry",
-      "errorMessage": "The description of the entry must be a string and can not be empty"
+      "errorMessage": "The description of the entry must be a string and cannot be empty"
     },
     "license": {
       "type": "string",
@@ -94,7 +94,7 @@
             "oneOf": [
               {
                 "pattern": "OpenTelemetry Authors",
-                "errorMessage": "The name of the author can not contain 'OpenTelemetry' except for 'OpenTelemetry Authors'"
+                "errorMessage": "The name of the author cannot contain 'OpenTelemetry' except for 'OpenTelemetry Authors'"
               },
               {
                 "pattern": "^(?!.*OpenTelemetry).*$"
@@ -213,7 +213,7 @@
         "reason": {
           "type": "string",
           "description": "The reason for deprecation",
-          "errorMessage": "The reason for deprecation must be a string and can not be empty"
+          "errorMessage": "The reason for deprecation must be a string and cannot be empty"
         }
       },
       "required": ["reason"],

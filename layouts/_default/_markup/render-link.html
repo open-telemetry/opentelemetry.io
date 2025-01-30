@@ -1,4 +1,5 @@
-{{ $url := .Destination -}}
+{{ $url := .Destination -}} {{/* TODO: rename to $dest */ -}}
+{{ $u := urls.Parse $url -}}
 
 {{/*
 
@@ -10,9 +11,32 @@
   - $url is an absolute path -- that is, it starts with /
   - The $url target page exists in this locale
 
+  Reference to Hugo's default:
+  https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_default/_markup/render-link.html
+
   */ -}}
 
-{{ if hasPrefix $url "/" -}}
+
+{{ if and
+    (strings.HasPrefix $.PageInner.RelPermalink "/docs/specs")
+    (not $u.IsAbs)
+    (not (strings.HasPrefix $url "#"))
+-}}
+  {{ $path := replaceRE `\bREADME\.md\b` "_index.md" $u.Path -}}
+  {{ $href := $url -}}
+  {{ with or
+    ($.PageInner.GetPage $path)
+    ($.PageInner.Resources.Get $path)
+    (resources.Get $path)
+  -}}
+    {{ $href = .RelPermalink -}}
+    {{ with $u.RawQuery -}}{{ $href = printf "%s?%s" $href . -}}{{ end -}}
+    {{ with $u.Fragment -}}{{ $href = printf "%s#%s" $href . -}}{{ end -}}
+  {{ else -}}
+    {{ warnf "File %s: cannot resolve spec link reference '%s' (%s)" .Page.File.Filename $url $path -}}
+  {{ end -}}
+  {{ $url = $href -}}
+{{ else if hasPrefix $url "/" -}}
   {{/* Hard-coded default lang since it's what's most efficient and won't change :) */ -}}
   {{ $defaultLang := "en" -}}
   {{ $lang := .Page.Language.Lang -}}
@@ -22,7 +46,6 @@
       {{ warnf "File %s: drop unnecessary '%s' prefix from %s"
               .Page.File.Filename $langPathPrefix $url -}}
     {{ else -}}
-      {{ $u := urls.Parse $url -}}
       {{ $localizedPagePath := add $langPathPrefix (strings.TrimPrefix "/" $url) -}}
       {{/*
         Look for the page (referenced by $url) in this page's locale's site.

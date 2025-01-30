@@ -44,7 +44,7 @@
     "all": "bash -c 'x=0; for c in \"$@\"; do npm run $c || x=$((x+1)); done; ((!x)) || (echo \"ERROR: some scripts failed!\" && exit 1)' -",
     "build:preview": "set -x && npm run _build -- --minify",
     "build:production": "npm run _hugo -- --minify",
-    "build": "npm run _build",
+    "build": "npm run _build --",
     "cd:public": "cd public &&",
     "check:expired": "find content -name '*.md' | xargs ./scripts/list-expired.pl",
     "check:filenames": "test -z \"$(npm run -s _ls-bad-filenames)\" || npm run -s _filename-error",
@@ -121,10 +121,10 @@
     "autoprefixer": "^10.4.20",
     "cspell": "^8.17.2",
     "gulp": "^5.0.0",
-    "hugo-extended": "0.141.0",
+    "hugo-extended": "0.142.0",
     "js-yaml": "^4.1.0",
     "markdown-link-check": "^3.13.6",
-    "markdownlint": "^0.36.1",
+    "markdownlint": "^0.37.4",
     "postcss-cli": "^11.0.0",
     "prettier": "3.4.2",
     "require-dir": "^1.2.0",
@@ -149,7 +149,7 @@
     "path": "^0.12.7"
   },
   "optionalDependencies": {
-    "netlify-cli": "^18.0.1",
+    "netlify-cli": "^18.0.2",
     "npm-check-updates": "^17.1.14"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",

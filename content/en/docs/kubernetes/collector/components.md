@@ -670,21 +670,21 @@ started.
 
 The available scrapers are:
 
-| Scraper    | Supported OSs       | Description                                            |
-| ---------- | ------------------- | ------------------------------------------------------ |
-| cpu        | All except Mac[^1]  | CPU utilization metrics                                |
-| disk       | All except Mac[^1]  | Disk I/O metrics                                       |
-| load       | All                 | CPU load metrics                                       |
-| filesystem | All                 | File System utilization metrics                        |
-| memory     | All                 | Memory utilization metrics                             |
-| network    | All                 | Network interface I/O metrics & TCP connection metrics |
-| paging     | All                 | Paging/Swap space utilization and I/O metrics          |
-| processes  | Linux, Mac          | Process count metrics                                  |
-| process    | Linux, Windows, Mac | Per process CPU, Memory, and Disk I/O metrics          |
+| Scraper    | Supported OSs         | Description                                            |
+| ---------- | --------------------- | ------------------------------------------------------ |
+| cpu        | All except macOS[^1]  | CPU utilization metrics                                |
+| disk       | All except macOS[^1]  | Disk I/O metrics                                       |
+| load       | All                   | CPU load metrics                                       |
+| filesystem | All                   | File System utilization metrics                        |
+| memory     | All                   | Memory utilization metrics                             |
+| network    | All                   | Network interface I/O metrics & TCP connection metrics |
+| paging     | All                   | Paging/Swap space utilization and I/O metrics          |
+| processes  | Linux, macOS          | Process count metrics                                  |
+| process    | Linux, macOS, Windows | Per process CPU, Memory, and Disk I/O metrics          |
 
 [^1]:
-    Not supported on Mac when compiled without cgo, which is the default for the
-    images released by the Collector SIG.
+    Not supported on macOS when compiled without cgo, which is the default for
+    the images released by the Collector SIG.
 
 For specific details about which metrics are collected and specific
 configuration details, see

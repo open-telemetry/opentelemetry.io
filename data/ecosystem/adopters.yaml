@@ -32,7 +32,7 @@
   contact: ''
 - name: Dyte
   url: https://dyte.io
-  components: [Go, Javascript]
+  components: [Go, JavaScript]
   reference: 'https://dyte.io/blog/opentelemetry-at-dyte-part-i/'
   referenceTitle: blog post
   contact: https://github.com/ethicalmohit
@@ -110,7 +110,7 @@
   contact: https://github.com/igorestevanjasinski
 - name: Skyscanner
   url: https://www.skyscanner.net/
-  components: [Collector, Go, Java, Javascript, Python]
+  components: [Collector, Go, Java, JavaScript, Python]
   reference: https://www.infoq.com/presentations/opentelemetry-observability/
   referenceTitle: presentation
   contact: https://github.com/danielgblanco/
