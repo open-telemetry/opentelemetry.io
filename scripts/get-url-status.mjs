@@ -17,7 +17,10 @@ async function getUrlHeadless(url) {
     browser = await puppeteer.launch();
     const page = await browser.newPage();
 
-    const response = await page.goto(url, { waitUntil: 'networkidle2', timeout: 9000 });
+    const response = await page.goto(url, {
+      waitUntil: 'networkidle2',
+      timeout: 9000,
+    });
 
     if (!response) throw new Error('No response from server.');
 
@@ -40,7 +43,10 @@ async function getUrlInBrowser(url) {
     browser = await puppeteer.launch({ headless: false });
 
     const page = await browser.newPage();
-    const response = await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
+    const response = await page.goto(url, {
+      waitUntil: 'networkidle2',
+      timeout: 30000,
+    });
 
     if (!response) throw new Error('No response from server.');
 
