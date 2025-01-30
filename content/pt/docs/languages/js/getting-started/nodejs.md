@@ -242,7 +242,7 @@ como, por exemplo, a variável de ambiente `NODE_OPTIONS` já possuir algo como
 
 ```console
 $ npx ts-node --require ./instrumentation.ts app.ts
-Listening for requests on http://localhost:8080
+Aguardando requisições em http://localhost:8080
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
