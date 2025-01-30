@@ -45,7 +45,7 @@ jobs:
           fi
 
           echo "VERSION=$version" >> $GITHUB_ENV
-          echo "BRANCH=$branch_prefix-${version}-dev" >> $GITHUB_ENV
+          echo "BRANCH=$branch_prefix-$version-dev" >> $GITHUB_ENV
 
       - name: Checkout or create branch
         run: |
@@ -85,6 +85,8 @@ jobs:
 
           cd ../..
 
+          sed -i "s/^\tsemconv-pin = .*/\tsemconv-pin = $commit_desc/" .gitmodules
+
           if ! git diff-index --quiet HEAD; then
             git commit -am "Update semconv submodule to $commit_desc"
             git push
@@ -97,7 +99,7 @@ jobs:
         run: |
           prs=$(gh pr list --state open --head $BRANCH)
           if [ -z "$prs" ]; then
-            gh pr create --title "Update semantic conventions to ${VERSION}-dev" \
-                         --body "This PR updates the semantic conventions to ${VERSION}-dev." \
+            gh pr create --title "Update semantic conventions to $VERSION-dev" \
+                         --body "This PR updates the semantic conventions to $VERSION-dev." \
                          --draft
           fi
