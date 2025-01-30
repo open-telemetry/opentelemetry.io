@@ -148,7 +148,7 @@ Ainda não haverá saída de rastros, para isso precisamos adicionar um exportad
 
 ### Criando um Exporter {#creating-an-exporter}
 
-No exemplo a seguir, utilizaremos o `ConsoleSpanExporter` que exporta todos os
+No exemplo a seguir, utilizaremos o `ConsoleSpanExporter` que exibe todos os
 trechos no console.
 
 Para visualizar e analisar seus rastros, você precisará exportá-los para um
