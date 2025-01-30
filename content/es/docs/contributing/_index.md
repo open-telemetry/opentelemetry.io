@@ -2,7 +2,7 @@
 title: Contribuir
 description: Aprende cómo contribuir a la documentación de OpenTelemetry.
 weight: 980
-default_lang_commit: 8256a7512f0f5e677963e082d257edc443940565
+default_lang_commit: 9a838dc99f57a0e7dd71b04f70e49dfd2df9feb4
 ---
 
 Quienes colaboran para documentar OpenTelemetry:
