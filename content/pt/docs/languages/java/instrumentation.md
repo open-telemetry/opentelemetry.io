@@ -22,20 +22,21 @@ ecossistema de instrumentação no OpenTelemetry Java, incluindo recursos para
 usuários finais e tópicos relacionados à instrumentação:
 
 - [Categorias de instrumentação](#instrumentation-categories): Existem diversas
-  categorias de instrumentação para diferentes casos de uso e padrões de instalação.
+  categorias de instrumentação para diferentes casos de uso e padrões de
+  instalação.
 - [Propagação de Contexto](#context-propagation): Propagação de Contexto provê
-  uma correlação entre rastros, métricas, e logs, permitindo que os sinais
-  se complementem.
-- [Convenções semânticas](#semantic-conventions): As convenções semânticas definem
-  como produzir telemetria para operações padrão.
+  uma correlação entre rastros, métricas, e logs, permitindo que os sinais se
+  complementem.
+- [Convenções semânticas](#semantic-conventions): As convenções semânticas
+  definem como produzir telemetria para operações padrão.
 - [Log instrumentation](#log-instrumentation)
 
 {{% alert %}} Embora as
 [categorias de instrumentação](#instrumentation-categories) enumerem diversas
 opções para instrumentar uma aplicação, nós recomendamos que os usuários iniciem
-com o [Agente Java](#zero-code-java-agent). O agente Java possui uma
-instalação simples, e automaticamente detecta e instala instrumentação de
-uma vasta biblioteca. {{% /alert %}}
+com o [Agente Java](#zero-code-java-agent). O agente Java possui uma instalação
+simples, e automaticamente detecta e instala instrumentação de uma vasta
+biblioteca. {{% /alert %}}
 
 ## Categorias de instrumentação {#instrumentation-categories}
 
@@ -89,8 +90,8 @@ detalhes.
 ### Biblioteca de instrumentação {#library-instrumentation}
 
 [Biblioteca de instrumentação](/docs/specs/otel/glossary/#instrumentation-library)
-envolve ou usa os pontos de extensão para instrumentar a biblioteca, obrigando os
-usuários a instalar e/ou adaptar o uso da biblioteca.
+envolve ou usa os pontos de extensão para instrumentar a biblioteca, obrigando
+os usuários a instalar e/ou adaptar o uso da biblioteca.
 
 Para uma lista de bibliotecas de instrumentação, veja a coluna _"Standalone
 Library Instrumentation [1]"_ (Biblioteca autônoma de instrumentação) em
@@ -99,8 +100,8 @@ Library Instrumentation [1]"_ (Biblioteca autônoma de instrumentação) em
 ### Instrumentação nativa {#native-instrumentation}
 
 [Instrumentação nativa](/docs/specs/otel/glossary/#natively-instrumented) é
-definido diretamente nas bibliotecas ou _frameworks_. O OpenTelemetry encoraja os
-autores de bibliotecas a adicionarem instrumentação nativa usando a
+definido diretamente nas bibliotecas ou _frameworks_. O OpenTelemetry encoraja
+os autores de bibliotecas a adicionarem instrumentação nativa usando a
 [API](../api/). No longo prazo, nós esperamos que a instrumentação nativa seja o
 padrão, e que a instrumentação mantida pelo OpenTelemetry em
 [opentelemetry-java-instrumentação](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
@@ -138,11 +139,11 @@ Shims mantidos no ecossistema OpenTelemetry Java:
 ## Propagação de Contexto {#context-propagation}
 
 As APIs do OpenTelemetry foram desenhadas para serem complementares, onde o todo
-é maior que a soma das partes. Cada sinal tem seus pontos fortes e juntos
-formam uma narrativa convincente de observabilidade.
+é maior que a soma das partes. Cada sinal tem seus pontos fortes e juntos formam
+uma narrativa convincente de observabilidade.
 
-É importante ressaltar que os dados de vários sinais são interligados através do contexto
-de rastreamento:
+É importante ressaltar que os dados de vários sinais são interligados através do
+contexto de rastreamento:
 
 - Trecho são relacionados com outros trechos através do trecho pai e links, que
   registram os contextos de rastreamento dos trechos relacionados.
@@ -156,8 +157,7 @@ Para essa correlação funcionar, o contexto de rastreamento precisa ser propaga
 através da aplicação (entre chamada de funções e processos), e entre limites da
 aplicação. A [API de contexto](../api/#context-api) facilita isso.
 
-A instrumentação deve ser escrita de uma maneira que seja ciente do
-contexto:
+A instrumentação deve ser escrita de uma maneira que seja ciente do contexto:
 
 - Bibliotecas que representam um ponto de entrada da aplicação (i.e. servidores
   HTTP, consumidores de mensagens, etc.) devem
@@ -171,8 +171,8 @@ contexto:
 
 ## Convenção semântica {#semantic-conventions}
 
-As [convenções semânticas](/docs/specs/semconv/) definem como produzir telemetria
-para operações padrão. Entre outras coisas, as convenções semânticas
+As [convenções semânticas](/docs/specs/semconv/) definem como produzir
+telemetria para operações padrão. Entre outras coisas, as convenções semânticas
 especificam nomes e tipos de trechos, instrumentos de métrica, unidades de
 métricas, tipos de métricas, e atributos chave, valor, e níveis de requisitos.
 
@@ -183,14 +183,13 @@ O OpenTelemetry Java [publica artefatos](../api/#semantic-attributes) para
 auxiliar a conformidade com a convenção semântica, incluindo constantes geradas
 para chaves e valores de atributos.
 
-
 ## Instrumentação de Log {#log-instrumentation}
 
-Enquanto as APIs do [LoggerProvider](../api/#loggerprovider) / [Logger](../api/#logger)
- são estruturalmente similares ou equivalentes
-às APIs de [rastros](../api/#tracerprovider) e [métricas](../api/#meterprovider), elas possuem
-diferentes casos de uso. A partir de agora, `LoggerProvider` / `Logger` e
-as classes associadas representam a
+Enquanto as APIs do [LoggerProvider](../api/#loggerprovider) /
+[Logger](../api/#logger) são estruturalmente similares ou equivalentes às APIs
+de [rastros](../api/#tracerprovider) e [métricas](../api/#meterprovider), elas
+possuem diferentes casos de uso. A partir de agora, `LoggerProvider` / `Logger`
+e as classes associadas representam a
 [Log Bridge API](/docs/specs/otel/logs/api/), que existe para escrever
 anexadores de logs para conectar logs registrados através de outras APIs de log
 / frameworks no OpenTelemetry. Eles não são destinados para usuários finais como
@@ -202,10 +201,10 @@ OpenTelemetry atendendo a diferentes requisitos de aplicação:
 ### Direto para o Collector {#direct-to-collector}
 
 No _workflow_ direto para o collector, logs são emitidos diretamente da
-aplicação para o collector usando um protocolo de rede (ex. OTLP). Este _workflow_
-é simples para configurar já que não requer nenhum componente adicional de
-encaminhamento de log, e permite que uma aplicação facilmente emita logs
-estruturados em conformidade com o
+aplicação para o collector usando um protocolo de rede (ex. OTLP). Este
+_workflow_ é simples para configurar já que não requer nenhum componente
+adicional de encaminhamento de log, e permite que uma aplicação facilmente emita
+logs estruturados em conformidade com o
 [modelo de dados de log](/docs/specs/otel/logs/data-model/). No entanto, a
 sobrecarga necessária para as aplicações enfileirarem e exportarem os logs para
 um local de rede pode não ser adequada para todas as aplicações.
@@ -218,25 +217,25 @@ Para usar este _workflow_:
   [Collector](https://github.com/open-telemetry/opentelemetry-collector) ou
   outro).
 
-**[1]**: Anexadores de Logs são um tipo de [shim](#shims) que conecta logs de
-um _framework_ na SDK de Logs do OpenTelemetry. Veja os items "Bridge Log4j em OpenTelemetry",
-"Bridge Logback em OpenTelemetry". Veja
+**[1]**: Anexadores de Logs são um tipo de [shim](#shims) que conecta logs de um
+_framework_ na SDK de Logs do OpenTelemetry. Veja os items "Bridge Log4j em
+OpenTelemetry", "Bridge Logback em OpenTelemetry". Veja
 [Exemplo de Anexadores de Logs](https://github.com/open-telemetry/opentelemetry-java-docs/tree/main/log-appender)
 para demonstração de uma variedade de cenários.
 
 ### Via arquivo ou stdout {#via-file-or-stdout}
 
-No _workflow_ para arquivos ou _stdout_, os logs são gravados em arquivos ou na saída
-_standout_. Outro componente (ex. FluentBit) é responsável por ler / acompanhar os logs,
-convertê-los para um formato mais estruturado, e encaminhá-los para um destino, como um
-Collector. Este _workflow_ pode ser preferível em situações onde os
-requisitos da aplicação não permitem sobrecarga adicional da abordagem
-[direto para o Collector](#direct-to-collector). No entanto, isso requer que todos
-os campos de logs necessários para processamento posterior sejam codificados nos
-logs, e este componente lendo os logs os interprete no
-[modelo de dados de log](/docs/specs/otel/logs/data-model). A instalação e
-configuração dos componentes de encaminhamento de log está fora do escopo deste
-documento.
+No _workflow_ para arquivos ou _stdout_, os logs são gravados em arquivos ou na
+saída _standout_. Outro componente (ex. FluentBit) é responsável por ler /
+acompanhar os logs, convertê-los para um formato mais estruturado, e
+encaminhá-los para um destino, como um Collector. Este _workflow_ pode ser
+preferível em situações onde os requisitos da aplicação não permitem sobrecarga
+adicional da abordagem [direto para o Collector](#direct-to-collector). No
+entanto, isso requer que todos os campos de logs necessários para processamento
+posterior sejam codificados nos logs, e este componente lendo os logs os
+interprete no [modelo de dados de log](/docs/specs/otel/logs/data-model). A
+instalação e configuração dos componentes de encaminhamento de log está fora do
+escopo deste documento.
 
 Correlação de Logs com rastros está disponível instalando um [shim](#shims) para
 conectar o contexto do OpenTelemetry no log framework. Veja os items "Bridge
