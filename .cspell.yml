@@ -57,3 +57,8 @@ dictionaries:
 words: # Valid words across all locales
   - Docsy
   - htmltest
+  - nyholm
+  - diactoros
+  - pecl
+  - excimer
+  - phpbox
