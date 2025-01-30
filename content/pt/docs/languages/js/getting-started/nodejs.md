@@ -134,7 +134,7 @@ Aguardando requisições em http://localhost:8080
 
 ```console
 $ node app.js
-Listening for requests on http://localhost:8080
+Aguardando requisições em http://localhost:8080
 ```
 
 {{% /tab %}} {{< /tabpane >}}
