@@ -60,8 +60,8 @@ OpenTelemetry on Mainframe SIG, join the conversation at
 [#otel-mainframes](https://cloud-native.slack.com/archives/C05PXDFTCPJ) on
 [CNCF Slack](https://slack.cncf.io/).
 
-\_A version of this article was [originally posted] on the Open Mainframe
-Project blog.
+_A version of this article was [originally posted] on the Open Mainframe
+Project blog._
 
 [originally posted]: {{% param canonical_url %}}
 
