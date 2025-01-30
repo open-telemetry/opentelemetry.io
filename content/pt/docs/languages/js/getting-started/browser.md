@@ -26,7 +26,7 @@ Este é um guia muito simples. Caso deseje visualizar exemplos mais complexos,
 consulte o repositório
 [examples/opentelemetry-web](https://github.com/open-telemetry/opentelemetry-js/tree/main/examples/opentelemetry-web).
 
-Copie o conteúdo do arquivo a seguir para um diretório vazio e salve-o como
+Copie o conteúdo a seguir em um arquivo em um diretório vazio e salve-o como
 `index.html`.
 
 ```html
