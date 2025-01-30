@@ -142,7 +142,7 @@ npx parcel index.html
 ```
 
 e acesse o servidor web de desenvolvimento (por exemplo, em
-`http://localhost:1234`) para validar se o código funciona.
+`http://localhost:1234`) para validar se o seu código funciona.
 
 Ainda não haverá saída de rastros, para isso precisamos adicionar um exportador.
 
