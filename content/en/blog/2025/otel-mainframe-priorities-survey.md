@@ -15,8 +15,7 @@ The [OpenTelemetry](/) project and
 at the beginning of 2024. Our focus is to enable OpenTelemetry on the mainframe
 for improved end-to-end observability and to support mainframe participation in
 hybrid cloud applications. **The SIG launched a new
-[survey](https://www.surveymonkey.com/r/HGTD2KJ) that calls for your
-participation.**
+[survey] that calls for your participation.**
 
 ## Background
 
