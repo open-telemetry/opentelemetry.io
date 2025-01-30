@@ -56,7 +56,7 @@ OpenTelemetry on mainframes. Responding to the 20 questions will take
 approximately 15 minutes. We appreciate your time spent on the survey and look
 forward to receiving your feedback!
 
-We invite you to take the [survey](https://www.surveymonkey.com/r/HGTD2KJ)! To
+We invite you to take the [survey]. To
 learn more about the work of the OpenTelemetry on Mainframe SIG, join the
 conversation at
 [#otel-mainframes](https://cloud-native.slack.com/archives/C05PXDFTCPJ) on
