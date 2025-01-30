@@ -913,7 +913,7 @@ The instrument APIs have share a variety of features:
   builder.
 
 See
-[metric guidelines](http://localhost:1313/docs/specs/semconv/general/metrics/#general-guidelines)
+[metric guidelines](/docs/specs/semconv/general/metrics/#general-guidelines)
 for details on metric naming and units.
 
 See
