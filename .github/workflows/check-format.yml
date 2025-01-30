@@ -18,16 +18,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Create NPM cache-hash input file
-        run: |
-          mkdir -p tmp
-          jq '{devDependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
-
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
           cache: npm
-          cache-dependency-path: tmp/package-ci.json
 
       - name: Install package(s)
         run: |
