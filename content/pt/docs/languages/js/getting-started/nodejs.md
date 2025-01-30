@@ -12,10 +12,10 @@ Esta página mostrará como começar a usar o OpenTelemetry no Node.js.
 Você aprenderá como instrumentar [rastros][] e [métricas][] e exibi-los no
 console.
 
-{{% alert title="Nota" color="info" %}} A biblioteca para logs do
-OpenTelemetry para Node.js ainda está em desenvolvimento, portanto, este exemplo
-não será fornecido a seguir. Consulte [esta página](/docs/languages/js) para
-mais informações sobre o status do OpenTelemetry para JavaScript. {{% /alert %}}
+{{% alert title="Nota" color="info" %}} A biblioteca para logs do OpenTelemetry
+para Node.js ainda está em desenvolvimento, portanto, este exemplo não será
+fornecido a seguir. Consulte [esta página](/docs/languages/js) para mais
+informações sobre o status do OpenTelemetry para JavaScript. {{% /alert %}}
 
 ## Pré-requisitos {#prerequisites}
 
@@ -235,7 +235,7 @@ sdk.start();
 Agora você poderá executar a aplicação normalmente, mas poderá usar a _flag_
 `--require` para carregar a instrumentação antes do código da aplicação.
 Certifique-se de que não haja conflitos na utilização da _flag_ `--require`,
-como, por exemplo, a variável de ambiente `NODE_OPTIONS` já possuir algo como 
+como, por exemplo, a variável de ambiente `NODE_OPTIONS` já possuir algo como
 `--require @opentelemetry/auto-instrumentations-node/register`.
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
