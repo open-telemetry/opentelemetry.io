@@ -73,9 +73,6 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   # FIXME: same issue as for the OTel spec mentioned above:
   - ^https://github.com/open-telemetry/semantic-conventions/tree/main
 
-  # Ignore some links to GH repo content for now, most 4XX
-  - ^https?://github\.com/open-telemetry/opentelemetry-demo/blob/main/src/(imageprovider|loadgenerator|otelcollector|.*service)
-
   # Too many redirects as the server tries to figure out the country and language,
   # e.g.: https://www.microsoft.com/en-ca/sql-server.
   - ^https://www.microsoft.com/sql-server$
