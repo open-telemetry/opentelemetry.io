@@ -188,7 +188,7 @@ registerInstrumentations({
 ```
 
 Agora, reconstrua sua aplicação e abra o navegador novamente. No console da
-barra de ferramentas do desenvolvedor, você verá alguns rastros sendo
+barra de ferramentas do desenvolvedor, você deverá ver alguns rastros sendo
 exportados:
 
 ```json
