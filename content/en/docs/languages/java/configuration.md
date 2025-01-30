@@ -182,8 +182,8 @@ set
 
 **NOTE**: The `otel.service.name` and `otel.resource.attributes` system
 properties / environment variables are interpreted in the
-`io.opentelemetry.sdk.autoconfigure.internal.EnvironmentResourceProvider`
-resource provider. If opting in to specify resource providers via
+`io.opentelemetry.sdk.autoconfigure.EnvironmentResourceProvider` resource
+provider. If opting in to specify resource providers via
 `otel.java.enabled.resource-providers`, you'll likely want to include it to
 avoid surprises. See [ResourceProvider](#resourceprovider) for resource provider
 artifact coordinates.
