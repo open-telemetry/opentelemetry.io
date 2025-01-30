@@ -1492,6 +1492,11 @@ approvers:
       - specs-trace-approvers
     html_url: https://github.com/iNikem
     avatar_url: https://avatars.githubusercontent.com/u/3010154?v=4
+  - name: jackgopack4
+    teams:
+      - collector-releases-approvers
+    html_url: https://github.com/jackgopack4
+    avatar_url: https://avatars.githubusercontent.com/u/6229304?v=4
   - name: JaredTan95
     teams:
       - collector-contrib-triagers
@@ -1613,6 +1618,11 @@ approvers:
       - php-triagers
     html_url: https://github.com/morrisonlevi
     avatar_url: https://avatars.githubusercontent.com/u/253316?v=4
+  - name: mowies
+    teams:
+      - collector-releases-approvers
+    html_url: https://github.com/mowies
+    avatar_url: https://avatars.githubusercontent.com/u/6901203?v=4
   - name: mtwo
     teams:
       - blog-approvers
@@ -1860,6 +1870,11 @@ triagers:
       - java-contrib-triagers
     html_url: https://github.com/cyrille-leclerc
     avatar_url: https://avatars.githubusercontent.com/u/459691?v=4
+  - name: d4nyll
+    teams:
+      - javascript-contrib-triagers
+    html_url: https://github.com/d4nyll
+    avatar_url: https://avatars.githubusercontent.com/u/9997953?v=4
   - name: dehaansa
     teams:
       - java-contrib-triagers
@@ -1870,6 +1885,11 @@ triagers:
       - collector-contrib-triagers
     html_url: https://github.com/Frapschen
     avatar_url: https://avatars.githubusercontent.com/u/35491170?v=4
+  - name: JacksonWeber
+    teams:
+      - javascript-contrib-triagers
+    html_url: https://github.com/JacksonWeber
+    avatar_url: https://avatars.githubusercontent.com/u/47067795?v=4
   - name: jade-guiton-dd
     teams:
       - collector-triagers
@@ -2273,9 +2293,6 @@ members:
   - name: moonheart
     html_url: https://github.com/moonheart
     avatar_url: https://avatars.githubusercontent.com/u/15916990?v=4
-  - name: mowies
-    html_url: https://github.com/mowies
-    avatar_url: https://avatars.githubusercontent.com/u/6901203?v=4
   - name: mterhar
     html_url: https://github.com/mterhar
     avatar_url: https://avatars.githubusercontent.com/u/938684?v=4
