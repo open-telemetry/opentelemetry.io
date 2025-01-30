@@ -235,9 +235,8 @@ sdk.start();
 Agora você poderá executar a aplicação normalmente, mas poderá usar a _flag_
 `--require` para carregar a instrumentação antes do código da aplicação.
 Certifique-se de que não haja conflitos na utilização da _flag_ `--require`,
-como, por exemplo, carregar a _flag_
-`--require @opentelemetry/auto-instrumentations-node/register` através da
-variável de ambiente `NODE_OPTIONS`.
+como, por exemplo, a variável de ambiente `NODE_OPTIONS` já possuir algo como 
+`--require @opentelemetry/auto-instrumentations-node/register`.
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
