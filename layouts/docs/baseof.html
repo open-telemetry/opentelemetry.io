@@ -17,6 +17,7 @@
       <div class="td-main">
         <div class="row flex-xl-nowrap">
           <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            <div id="google_translate_element"></div>
             {{ partial "sidebar.html" . }}
           </aside>
           <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
@@ -36,5 +37,6 @@
       {{ partial "footer.html" . }}
     </div>
     {{ partial "scripts.html" . }}
+    {{ partial "translate-scripts.html" . -}}
   </body>
 </html>
