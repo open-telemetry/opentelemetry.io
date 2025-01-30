@@ -50,7 +50,7 @@ default_lang_commit: c2cd5b14
 - [报价服务](services/quote/)
 - [推荐服务](services/recommendation/)
 - [发货服务](services/shipping/)
-- [图片提供商服务](services/imageprovider/)
+- [图片提供商服务](services/image-provider/?i18n-patch)
 
 ## 应用场景
 

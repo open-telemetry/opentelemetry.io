@@ -323,3 +323,15 @@ details {
     overflow-y: auto;
   }
 }
+
+// Google translate select / dropdown
+
+.goog-te-gadget {
+  // cSpell:ignore goog
+  padding-top: 1rem;
+  margin-bottom: -0.5rem;
+
+  @include media-breakpoint-up(md) {
+    padding-left: 0.6rem;
+  }
+}

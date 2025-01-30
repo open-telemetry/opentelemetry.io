@@ -35,7 +35,7 @@ my $semconvVers = $versions{'semconv'};
 
 my %versFromSubmod = %versions; # Actual version of submodules. Updated by getVersFromSubmodule().
 
-sub printTitleAndFrontMatter() {
+sub printFrontMatter() {
   print "---\n";
   if ($title eq 'OpenTelemetry Specification') {
     $title .= " $otelSpecVers";
@@ -46,7 +46,7 @@ sub printTitleAndFrontMatter() {
     $frontMatterFromFile =~ s/(title|linkTitle): .*/$& $otlpSpecVers/g;
     # TODO: add to spec landing page
     $frontMatterFromFile .= "weight: 20\n" if $frontMatterFromFile !~ /^\s*weight/;
-  } elsif ($ARGV =~ /semconv\/docs\/\w+.md$/) {
+  } elsif ($ARGV =~ /^tmp\/semconv\/docs\/\w+.md$/) {
     $title .= " $semconvVers";
     $frontMatterFromFile =~ s/linkTitle: .*/$& $semconvVers/;
     # $frontMatterFromFile =~ s/body_class: .*/$& td-page--draft/;
@@ -58,6 +58,15 @@ sub printTitleAndFrontMatter() {
   #   $frontMatterFromFile .= "linkTitle: API\naliases: [bridge-api]\n" if
   #     applyPatchOrPrintMsgIf('2024-12-01-bridge-api', 'spec', '1.39.0');
   # }
+
+  if ($ARGV =~ m{^tmp/semconv/docs.*/(README|_index)\.md$}
+    && applyPatchOrPrintMsgIf('2025-01-29-path-base', 'semconv', '1.30.0-19-g')
+    && $frontMatterFromFile =~ /^path_base_for_github_subdir:/m
+  ) {
+    $frontMatterFromFile =~ s/\npath_base_for_github_subdir:.*?\n/\n/;
+    $frontMatterFromFile =~ s|\n  from: tmp/semconv/docs/.*?\n|\n|;
+    $frontMatterFromFile =~ s/\n  to: .*README.md($|\n)/$1/;
+  }
 
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
@@ -103,7 +112,7 @@ sub patchEventAliases() {
 
 sub patchSemConv1_30_0() {
   return unless $ARGV =~ /^tmp\/semconv\/docs\//
-    && applyPatchOrPrintMsgIf('2025-01-24-emit-an-event', 'semconv', '1.30.0-3-g');
+    && applyPatchOrPrintMsgIf('2025-01-24-emit-an-event-etc', 'semconv', '1.30.0-18-g');
 
   s|Emit Event API|Log API|;
   s|(docs/specs/otel/logs/api.md#emit-a)n-event|$1-logrecord|;
@@ -162,7 +171,7 @@ while(<>) {
   if(! $title) {
     ($title) = /^#\s+(.*)/;
     $linkTitle = '';
-    printTitleAndFrontMatter() if $title;
+    printFrontMatter() if $title;
     next;
   }
 
