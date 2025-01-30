@@ -497,7 +497,7 @@ your own OpenTelemetry Collector binary. You can add or remove components
         name: otelcol-dev-bin
         description: Basic OpenTelemetry collector distribution for Developers
         output_path: ./otelcol-dev
-        otelcol_version: 0.86.0
+        version: 0.86.0
 
 
     exporters:
