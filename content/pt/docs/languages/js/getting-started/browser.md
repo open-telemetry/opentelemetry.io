@@ -43,7 +43,7 @@ Copie o conteúdo a seguir em um arquivo em um diretório vazio e salve-o como
       da requisição do servidor, um ID de trecho pai que foi definido no trecho
       da requisição do servidor e as flags de rastro para indicar a decisão de
       amostragem do servidor (01 = amostrado, 00 = não amostrado).
-      '{versão}-{ID do rastro}-{ID do trecho}-{decisão de amostragem}''
+      '{versão}-{IDDoRastro}-{IDDoTrecho}-{decisãoDeAmostragem}''
     -->
     <meta
       name="traceparent"
