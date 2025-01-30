@@ -49,7 +49,7 @@ the websites of the OpenTelemetry project and The Open Mainframe Project.
 
 ## Taking the survey
 
-The [survey](https://www.surveymonkey.com/r/HGTD2KJ) is structured in two
+The [survey] is structured in two
 sections. The first section gathers input about your role and background. The
 second section gathers the priorities of your organization for enabling
 OpenTelemetry on mainframes. Responding to the 20 questions will take
