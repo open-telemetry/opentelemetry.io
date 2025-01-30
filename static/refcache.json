@@ -5123,6 +5123,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-12-12T08:46:36.556327553Z"
   },
+  "https://github.com/fastify": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-30T09:08:01.740037144Z"
+  },
+  "https://github.com/fastify/otel": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-30T09:08:01.439341003Z"
+  },
   "https://github.com/fatsheep9146": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:16:50.08101+02:00"
@@ -15142,6 +15150,10 @@
   "https://npmjs.com/package/@cerbos/opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:05:21.995559-04:00"
+  },
+  "https://npmjs.com/package/@fastify/otel": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-30T09:08:03.616878745Z"
   },
   "https://npmjs.com/package/@google-cloud/opentelemetry-cloud-monitoring-exporter": {
     "StatusCode": 200,
