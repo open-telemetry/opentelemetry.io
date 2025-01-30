@@ -18883,6 +18883,18 @@
     "StatusCode": 200,
     "LastSeen": "2024-12-05T10:36:13.494149+01:00"
   },
+  "https://www.linkedin.com/company/opentelemetry/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-30T22:47:23.481Z"
+  },
+  "https://www.linkedin.com/in/iris-dyrmishi-b15a9a164/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-30T22:47:29.617Z"
+  },
+  "https://www.linkedin.com/posts/santiago-lator_opentelemetry-opentelemetry-observabilidad-activity-7258132675268354050-oP1q": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-30T17:44:52.308579-05:00"
+  },
   "https://www.linuxfoundation.org/legal/privacy-policy": {
     "StatusCode": 200,
     "LastSeen": "2025-01-30T16:48:15.585419-05:00"

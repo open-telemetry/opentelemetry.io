@@ -44,7 +44,6 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://pdf.sciencedirectassets.com/280203/1-s2.0-S1877050919X0006X/1-s2.0-S1877050919303576/main.pdf\?
 
   # Sites that deny access, always yielding 401, 403 Forbidden, 406, or other:
-  - ^https://(www\.)?linkedin\.com\b # 999 Request Denied
   - ^https://platform.openai.com # Really hard to trick into giving a 200 when using a script; manually verify links
   - ^https://star-history.com # link contain ampersands in URL anchor part, which htmltest escapes, so it's not found
   - ^https://twitter.com
