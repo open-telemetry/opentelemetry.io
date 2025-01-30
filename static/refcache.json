@@ -4895,6 +4895,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-06T15:19:26.562663+02:00"
   },
+  "https://github.com/d4nyll": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-30T08:51:55.466660836Z"
+  },
   "https://github.com/damemi": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T12:11:00.338153-05:00"
@@ -5638,6 +5642,10 @@
   "https://github.com/jack-berg/metric-system-benchmarks": {
     "StatusCode": 200,
     "LastSeen": "2024-05-24T10:11:30.36484-05:00"
+  },
+  "https://github.com/jackgopack4": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-30T08:51:48.835115165Z"
   },
   "https://github.com/jade-guiton-dd": {
     "StatusCode": 200,
