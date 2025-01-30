@@ -22,16 +22,19 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          branch_prefix="opentelemetrybot/semconv-integration-"
+
           version=$(git branch -r \
-                        | grep '^ *origin/opentelemetrybot/semantic-conventions-v[0-9]+\.[0-9]+\.[0-9]+$' \
-                        | sed 's/ *origin\/opentelemetrybot\/semantic-conventions-//')
+                        | grep "^ *origin/$branch_prefix-v[0-9]+\.[0-9]+\..*-dev" \
+                        | sed "s|^ *origin/$branch_prefix-||"
+                        | sed "s|-dev$||")
 
           if [[ -z "$versions" ]]; then
             latest_version=$(gh release view \
                           --repo open-telemetry/semantic-conventions \
                           --json tagName \
                           --jq .tagName)
-            if [[ $latest_version =~ ^v([0-9]+)\.([0-9]+)\.[0-9]+ ]]; then
+            if [[ $latest_version =~ ^v([0-9]+)\.([0-9]+)\. ]]; then
               major="${BASH_REMATCH[1]}"
               minor="${BASH_REMATCH[2]}"
               version="v$major.$((minor + 1)).0"
@@ -42,7 +45,7 @@ jobs:
           fi
 
           echo "VERSION=$version" >> $GITHUB_ENV
-          echo "BRANCH=opentelemetrybot/semantic-conventions-${version}" >> $GITHUB_ENV
+          echo "BRANCH=$branch_prefix-${version}-dev" >> $GITHUB_ENV
 
       - name: Checkout or create branch
         run: |
@@ -58,7 +61,7 @@ jobs:
           git config user.name opentelemetrybot
           git config user.email 107717825+opentelemetrybot@users.noreply.github.com
 
-      - name: Rebase
+      - name: Merge from main
         run: |
           previous=$(git rev-parse HEAD)
           git fetch origin
@@ -78,10 +81,12 @@ jobs:
             git reset --hard origin/main
           fi
 
+          commit_desc=$(git describe --tags)
+
           cd ../..
 
           if ! git diff-index --quiet HEAD; then
-            git commit -am "Update submodule"
+            git commit -am "Update semconv submodule to $commit_desc"
             git push
           fi
 
@@ -92,7 +97,7 @@ jobs:
         run: |
           prs=$(gh pr list --state open --head $BRANCH)
           if [ -z "$prs" ]; then
-            gh pr create --title "Update semantic conventions to ${VERSION}" \
-                         --body "This PR updates the semantic conventions to ${VERSION}." \
+            gh pr create --title "Update semantic conventions to ${VERSION}-dev" \
+                         --body "This PR updates the semantic conventions to ${VERSION}-dev." \
                          --draft
           fi
