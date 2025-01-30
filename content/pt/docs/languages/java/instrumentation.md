@@ -222,7 +222,7 @@ Para usar este _workflow_:
 **[1]**: Conectores de Logs são um tipo de [shim](#shims) que conecta logs de
 um _framework_ na SDK de Logs do OpenTelemetry. Veja os items "Bridge Log4j em OpenTelemetry",
 "Bridge Logback em OpenTelemetry". Veja
-[Exemplo de aplicadores de Logs](https://github.com/open-telemetry/opentelemetry-java-docs/tree/main/log-appender)
+[Exemplo de Anexadores de Logs](https://github.com/open-telemetry/opentelemetry-java-docs/tree/main/log-appender)
 para demonstração de uma variedade de cenários.
 
 ### Via arquivo ou stdout {#via-file-or-stdout}
