@@ -9,7 +9,7 @@ sig: SIG OpenTelemetry on Mainframe
 cSpell:ignore: Ruediger Schulze
 ---
 
-The [OpenTelemetry](https://opentelemetry.io/) project and
+The [OpenTelemetry](/) project and
 [The Open Mainframe Project](https://openmainframeproject.org/) established the
 [SIG “OpenTelemetry on Mainframe”](https://github.com/open-telemetry/sig-mainframe)
 at the beginning of 2024. Our focus is to enable OpenTelemetry on the mainframe
