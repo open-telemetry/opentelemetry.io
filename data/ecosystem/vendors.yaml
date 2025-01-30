@@ -31,7 +31,7 @@
 - name: OpenSearch
   nativeOTLP: true
   url: https://opensearch-project.github.io
-  contact:
+  contact: https://opensearch.org/connect.html
   oss: true
   commercial: false
 - name: Axiom
