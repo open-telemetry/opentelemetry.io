@@ -156,7 +156,7 @@ _backend_ de rastreamento. Siga [estas instruções](../../exporters) para
 configurar um _backend_ e um exportador.
 
 Você também pode utilizar o `BatchSpanProcessor` para exportar trechos em lotes
-e utilizar os recursos de forma mais eficiente.
+de forma a utilizar os recursos mais eficientemente.
 
 Para exportar os rastros para o console, modifique o arquivo
 `document-load.ts|js` para que corresponda ao seguinte trecho de código:
