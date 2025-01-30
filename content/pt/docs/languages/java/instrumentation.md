@@ -28,8 +28,7 @@ usuários finais e tópicos relacionados à instrumentação:
   se complementem.
 - [Convenções semânticas](#semantic-conventions): As convenções semânticas definem
   como produzir telemetria para operações padrão.
-- [Log instrumentation](#log-instrumentation): A Convenção semântica define como
-  produzir telemetria para operações padronizadas.
+- [Log instrumentation](#log-instrumentation)
 
 {{% alert %}} Embora as
 [categorias de instrumentação](#instrumentation-categories) enumerem diversas
