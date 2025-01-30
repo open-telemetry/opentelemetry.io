@@ -16135,10 +16135,6 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:32:22.440332-05:00"
   },
-  "https://opentelemetry.io/": {
-    "StatusCode": 206,
-    "LastSeen": "2025-01-29T09:52:27.040323325Z"
-  },
   "https://opentracing.io": {
     "StatusCode": 206,
     "LastSeen": "2024-12-18T06:36:29.862015-05:00"
