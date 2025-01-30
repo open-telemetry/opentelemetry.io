@@ -22,11 +22,11 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          branch_prefix="opentelemetrybot/semconv-integration-"
+          branch_prefix="opentelemetrybot/semconv-integration"
 
           version=$(git branch -r \
                         | grep "^ *origin/$branch_prefix-v[0-9]+\.[0-9]+\..*-dev" \
-                        | sed "s|^ *origin/$branch_prefix-||"
+                        | sed "s|^ *origin/$branch_prefix-||" \
                         | sed "s|-dev$||")
 
           if [[ -z "$versions" ]]; then
@@ -82,7 +82,6 @@ jobs:
           fi
 
           commit_desc=$(git describe --tags)
-
           cd ../..
 
           sed -i "s/^\tsemconv-pin = .*/\tsemconv-pin = $commit_desc/" .gitmodules
