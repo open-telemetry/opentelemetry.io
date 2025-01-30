@@ -14,8 +14,8 @@ The [OpenTelemetry](/) project and
 [SIG “OpenTelemetry on Mainframe”](https://github.com/open-telemetry/sig-mainframe)
 at the beginning of 2024. Our focus is to enable OpenTelemetry on the mainframe
 for improved end-to-end observability and to support mainframe participation in
-hybrid cloud applications. **The SIG launched a new
-[survey] that calls for your participation.**
+hybrid cloud applications. **The SIG launched a new [survey] that calls for your
+participation.**
 
 ## Background
 
@@ -39,32 +39,30 @@ feedback from a broad range of mainframe users and users of observability
 solutions, developers, site reliability engineers, application owners,
 architects, DevOps engineers, and all other experts in the field.
 
-The results of the [survey] will help us
-prioritize and implement targeted activities to accelerate the adoption of
-OpenTelemetry on the mainframe platform. Such activities could be the expedited
-porting of selected SDKs for code instrumentation to z/OS or the definition of
-Semantic Conventions for specific aspects of the platform. Once the survey is
-complete, we will publish the results and a prioritized list of activities on
-the websites of the OpenTelemetry project and The Open Mainframe Project.
+The results of the [survey] will help us prioritize and implement targeted
+activities to accelerate the adoption of OpenTelemetry on the mainframe
+platform. Such activities could be the expedited porting of selected SDKs for
+code instrumentation to z/OS or the definition of Semantic Conventions for
+specific aspects of the platform. Once the survey is complete, we will publish
+the results and a prioritized list of activities on the websites of the
+OpenTelemetry project and The Open Mainframe Project.
 
 ## Taking the survey
 
-The [survey] is structured in two
-sections. The first section gathers input about your role and background. The
-second section gathers the priorities of your organization for enabling
-OpenTelemetry on mainframes. Responding to the 20 questions will take
-approximately 15 minutes. We appreciate your time spent on the survey and look
-forward to receiving your feedback!
+The [survey] is structured in two sections. The first section gathers input
+about your role and background. The second section gathers the priorities of
+your organization for enabling OpenTelemetry on mainframes. Responding to the 20
+questions will take approximately 15 minutes. We appreciate your time spent on
+the survey and look forward to receiving your feedback!
 
-We invite you to take the [survey]. To
-learn more about the work of the OpenTelemetry on Mainframe SIG, join the
-conversation at
+We invite you to take the [survey]. To learn more about the work of the
+OpenTelemetry on Mainframe SIG, join the conversation at
 [#otel-mainframes](https://cloud-native.slack.com/archives/C05PXDFTCPJ) on
 [CNCF Slack](https://slack.cncf.io/).
 
-_A version of this article was [originally posted] on the Open Mainframe Project blog.
+\_A version of this article was [originally posted] on the Open Mainframe
+Project blog.
 
 [originally posted]: {{% param canonical_url %}}
 
 [survey]: https://www.surveymonkey.com/r/HGTD2KJ
-
