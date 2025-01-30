@@ -1827,6 +1827,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-10-24T15:10:31.184402+02:00"
   },
+  "https://cloud-native.slack.com/archives/C03S01YSAS0": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-29T17:30:33.389601601Z"
+  },
   "https://cloud-native.slack.com/archives/C0422FSELH0": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:45:38.976435-04:00"
@@ -6559,6 +6563,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-18T20:45:29.87596Z"
   },
+  "https://github.com/open-telemetry/community/issues/2406": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-29T17:30:15.084501808Z"
+  },
   "https://github.com/open-telemetry/community/issues/2497": {
     "StatusCode": 206,
     "LastSeen": "2025-01-18T20:45:32.577654Z"
@@ -8983,9 +8991,33 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:44:15.667174-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-go-instrumentation/blob/0ebb7f21116bfdd8e29c315efdbf359cd74bddac/CONTRIBUTING.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-29T17:30:28.598163793Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-instrumentation/blob/main/docs/getting-started.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-29T17:30:06.908079743Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-go-instrumentation/blob/main/docs/how-it-works.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:46.811839-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-instrumentation/discussions/1697": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-29T17:30:21.969390623Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-instrumentation/issues": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-29T17:30:25.012053984Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-instrumentation/issues/1659": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-29T17:30:18.099406688Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-instrumentation/tree/0ebb7f21116bfdd8e29c315efdbf359cd74bddac/examples/rolldice": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-29T17:30:12.02761941Z"
   },
   "https://github.com/open-telemetry/opentelemetry-go-vanityurls": {
     "StatusCode": 200,
@@ -17075,6 +17107,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-12T17:56:07.964057+02:00"
   },
+  "https://pkg.go.dev/github.com/segmentio/kafka-go": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-29T17:30:03.308377379Z"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/collector/cmd/builder": {
     "StatusCode": 200,
     "LastSeen": "2024-03-01T16:49:30.684687+01:00"
@@ -17346,6 +17382,10 @@
   "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#WithSampler": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:12.45117-05:00"
+  },
+  "https://pkg.go.dev/google.golang.org/grpc": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-29T17:30:01.456756939Z"
   },
   "https://pkg.go.dev/google.golang.org/grpc/credentials#PerRPCCredentials": {
     "StatusCode": 200,
