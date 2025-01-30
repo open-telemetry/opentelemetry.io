@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry on Mainframe Priorities Survey
 linkTitle: Mainframe Priorities Survey
-date: 2025-01-24
+date: 2025-01-30
 author: '[Ruediger Schulze](https://github.com/rrschulze) (IBM)'
 canonical_url: https://openmainframeproject.org/blog/opentelemetry-on-mainframe-priorities-survey/
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/6045
