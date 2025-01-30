@@ -2,7 +2,7 @@
 # prettier-ignore
 title: Announcing the Beta Release of OpenTelemetry Go Auto-Instrumentation using eBPF
 linkTitle: Go Auto-Instrumentation Beta
-date: 2025-01-29
+date: 2025-01-30
 # prettier-ignore
 author: >-
   [Tyler Yahn](https://github.com/MrAlias) (Splunk)
