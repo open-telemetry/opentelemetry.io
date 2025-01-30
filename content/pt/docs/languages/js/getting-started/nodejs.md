@@ -479,7 +479,7 @@ visualizar métricas na saída do console, como as seguintes:
 ## Próximos passos {#next-steps}
 
 Enriqueça a instrumentação gerada automaticamente com a
-[instrumentação manual](/docs/languages/js/instrumentation) de sua base de
+[instrumentação manual](/docs/languages/js/instrumentation) na sua base de
 código. Isso lhe proporcionará dados de observabilidade personalizados.
 
 Você também poderá configurar um exportador apropriado para
