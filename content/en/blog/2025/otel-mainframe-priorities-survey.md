@@ -39,7 +39,7 @@ feedback from a broad range of mainframe users and users of observability
 solutions, developers, site reliability engineers, application owners,
 architects, DevOps engineers, and all other experts in the field.
 
-The results of the [survey](https://www.surveymonkey.com/r/HGTD2KJ) will help us
+The results of the [survey] will help us
 prioritize and implement targeted activities to accelerate the adoption of
 OpenTelemetry on the mainframe platform. Such activities could be the expedited
 porting of selected SDKs for code instrumentation to z/OS or the definition of
