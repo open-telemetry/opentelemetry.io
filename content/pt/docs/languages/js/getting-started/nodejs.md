@@ -515,7 +515,7 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 // Requer dependências
 const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
 
-// For troubleshooting, set the log level to DiagLogLevel.DEBUG
+// Para solução de problemas, defina o nível de log como DiagLogLevel.DEBUG
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 
 // const sdk = new NodeSDK({...
