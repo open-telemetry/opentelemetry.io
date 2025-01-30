@@ -54,7 +54,7 @@ en cada servicio aquí:
 - [Servicio de Cotizaciones](services/quote/)
 - [Servicio de Recomendaciones](services/recommendation/)
 - [Servicio de Envío](services/shipping/)
-- [Servicio Proveedor de Imágenes](services/imageprovider/)
+- [Servicio Proveedor de Imágenes](services/image-provider/?i18n-patch)
 
 ## Escenarios
 

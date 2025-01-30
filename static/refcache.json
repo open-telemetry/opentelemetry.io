@@ -8399,6 +8399,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:53:03.08475-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/cart/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-30T10:52:29.52797-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/checkout/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T18:15:55.588406336Z"
@@ -8415,6 +8419,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:53:00.941653-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/image-provider/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-30T10:37:57.975407-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/kafka/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:53:01.328807-05:00"
@@ -8422,6 +8430,10 @@
   "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/load-generator/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-21T15:24:31.221226625Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config-extras.yml": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-30T10:37:57.941533-05:00"
   },
   "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config.yml": {
     "StatusCode": 206,
