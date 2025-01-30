@@ -127,7 +127,7 @@ funcionando.
 
 ```console
 $ npx ts-node app.ts
-Listening for requests on http://localhost:8080
+Aguardando requisições em http://localhost:8080
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
