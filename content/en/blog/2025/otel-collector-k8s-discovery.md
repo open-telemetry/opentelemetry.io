@@ -7,7 +7,7 @@ author: >
   Markou](https://github.com/ChrsMark) (Elastic)
 sig: Collector
 issue: opentelemetry-collector-contrib#34427
-cSpell:ignore: Dmitrii Anoshin Markou
+cSpell:ignore: Anoshin Dmitrii Markou
 ---
 
 In the world of containers and [Kubernetes](https://kubernetes.io/),
