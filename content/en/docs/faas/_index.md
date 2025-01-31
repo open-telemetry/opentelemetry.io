@@ -19,7 +19,7 @@ also known as Lambda.
 ### Community Assets
 
 The OpenTelemetry community currently provides pre-built Lambda layers able to
-auto-instrument your application as well as a the option of standalone Collector
+auto-instrument your application as well as the option of a standalone Collector
 Lambda layer that can be used when instrumenting applications manually or
 automatically.
 

@@ -211,7 +211,7 @@ screenshot of a trace for this operation:
 In this operation, we can see inner calls to multiple services, like
 [Frontend](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/frontend),
 [CheckoutService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/checkoutservice),
-[CartService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/cartservice),
+[CartService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/cart/),
 [ProductCatalogService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/productcatalogservice),
 [CurrencyService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/currencyservice),
 and others.
@@ -233,7 +233,7 @@ triggered during the checkout:
   [ShippingService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/shippingservice)
   was called and emitted spans correctly;
 - _“The cart was emptied”_, checking if the
-  [CartService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/cartservice)
+  [CartService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/cart/)
   was called and emitted spans correctly.
 
 The final result was the following test YAML, which triggers the Checkout

@@ -10,6 +10,7 @@ jobs:
       contents: read
       issues: write
       pull-requests: write
+    if: github.repository_owner == 'open-telemetry'
     steps:
       - uses: dyladan/component-owners@v0.1.0
         with:

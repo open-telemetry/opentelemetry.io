@@ -55,7 +55,7 @@ with the following details:
   review that PR. That sponsor should ideally be from a different company.
 
 Maintainers of SIG Communication will verify, that your blog post satisfies all
-the requirements for being accepted. If you can not name a SIG/sponsor in your
+the requirements for being accepted. If you cannot name a SIG/sponsor in your
 initial issue details, they will also point you to an appropriate SIG, you can
 reach out to for sponsorship. Having a sponsor is optional, but having one
 increases the chance of having your blog post reviewed and approved more

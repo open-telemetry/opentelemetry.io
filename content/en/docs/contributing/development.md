@@ -31,7 +31,7 @@ website files.
 ## Local setup
 
 1.  [Fork][] and then [clone][] the website repository at
-    <{{% _param github_repo %}}>.
+    <{{% param github_repo %}}>.
 2.  Go to the repository directory.
 3.  Install or upgrade to the [**active LTS** release][nodejs-rel] of Node.js.
     We recommend using [nvm][] to manage your Node installation. Under Linux,

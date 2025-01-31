@@ -2,7 +2,7 @@
 title: Management
 description: How to manage your OpenTelemetry collector deployment at scale
 weight: 23
-cSpell:ignore: AFVGQT backpressure distro GRRKNBJE hostmetrics loglevel
+cSpell:ignore: AFVGQT backpressure distro GRRKNBJE hostmetrics
 ---
 
 This document describes how you can manage your OpenTelemetry Collector
@@ -13,8 +13,8 @@ the collector. These topics are covered elsewhere:
 
 - [Quick Start](/docs/collector/quick-start/) to understand how to install the
   OpenTelemetry Collector.
-- [Configuration][otel-collector-configuration] for how to configure the
-  OpenTelemetry Collector, setting up telemetry pipelines.
+- [Configuration] for how to configure the OpenTelemetry Collector, setting up
+  telemetry pipelines.
 
 ## Basics
 
@@ -24,8 +24,7 @@ Typical agent management tasks include:
 1. Querying the agent information and configuration. The agent information can
    include its version, operating system related information, or capabilities.
    The configuration of the agent refers to its telemetry collection setup, for
-   example, the OpenTelemetry Collector
-   [configuration][otel-collector-configuration].
+   example, the OpenTelemetry Collector [configuration].
 1. Upgrading/downgrading agents and management of agent-specific packages,
    including the base agent functionality and plugins.
 1. Applying new configurations to agents. This might be required because of
@@ -44,12 +43,12 @@ ideally done using OpenTelemetry.
 
 Observability vendors and cloud providers offer proprietary solutions for agent
 management. In the open source observability space, there is an emerging
-standard that you can use for agent management: Open Agent Management Protocol
+standard that you can use for agent management: [Open Agent Management Protocol]
 (OpAMP).
 
-The [OpAMP specification][opamp-spec] defines how to manage a fleet of telemetry
-data agents. These agents can be [OpenTelemetry collectors][otel-collector],
-Fluent Bit or other agents in any arbitrary combination.
+The [OpAMP specification] defines how to manage a fleet of telemetry data
+agents. These agents can be [OpenTelemetry Collectors](/docs/collector/), Fluent
+Bit or other agents in any arbitrary combination.
 
 > **Note** The term "agent" is used here as a catch-all term for OpenTelemetry
 > components that respond to OpAMP, this could be the collector but also SDK
@@ -216,9 +215,9 @@ otelcol_receiver_refused_metric_points{receiver="prometheus/own_metrics",service
     Protocol][opamp-lt]
   - [What is OpAMP & What is BindPlane][opamp-bindplane]
 
-[otel-collector]: /docs/collector/
-[otel-collector-configuration]: /docs/collector/configuration/
-[opamp-spec]:
+[configuration]: /docs/collector/configuration/
+[Open Agent Management Protocol]: https://github.com/open-telemetry/opamp-spec/
+[OpAMP specification]:
   https://github.com/open-telemetry/opamp-spec/blob/main/specification.md
 [opamp-in-otel-collector]:
   https://docs.google.com/document/d/1KtH5atZQUs9Achbce6LiOaJxLbksNJenvgvyKLsJrkc/edit#heading=h.ioikt02qpy5f

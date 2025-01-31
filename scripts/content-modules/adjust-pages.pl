@@ -17,18 +17,25 @@ my $opAmpSpecRepoUrl = 'https://github.com/open-telemetry/opamp-spec';
 my $semconvSpecRepoUrl = 'https://github.com/open-telemetry/semantic-conventions';
 my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
 my $specBasePath = '/docs/specs';
-my %versions = qw(
-  spec: 1.40.0
-  otlp: 1.5.0
-  semconv: 1.29.0
-);
-my $otelSpecVers = $versions{'spec:'};
-my $otlpSpecVers = $versions{'otlp:'};
-my $semconvVers = $versions{'semconv:'};
 my %patchMsgCount;
-my $openRelref = '{{% relref';
+my $lineNum;
 
-sub printTitleAndFrontMatter() {
+my %versionsRaw = # Keyname must end with colons because the auto-version update script expects one
+  qw(
+    spec: 1.41.0
+    otlp: 1.5.0
+    semconv: 1.30.0
+  );
+# Versions map without the colon in the keys
+my %versions = map { s/://r => $versionsRaw{$_} } keys %versionsRaw;
+# Shorthands
+my $otelSpecVers = $versions{'spec'};
+my $otlpSpecVers = $versions{'otlp'};
+my $semconvVers = $versions{'semconv'};
+
+my %versFromSubmod = %versions; # Actual version of submodules. Updated by getVersFromSubmodule().
+
+sub printFrontMatter() {
   print "---\n";
   if ($title eq 'OpenTelemetry Specification') {
     $title .= " $otelSpecVers";
@@ -39,7 +46,7 @@ sub printTitleAndFrontMatter() {
     $frontMatterFromFile =~ s/(title|linkTitle): .*/$& $otlpSpecVers/g;
     # TODO: add to spec landing page
     $frontMatterFromFile .= "weight: 20\n" if $frontMatterFromFile !~ /^\s*weight/;
-  } elsif ($ARGV =~ /semconv\/docs\/_index.md$/) {
+  } elsif ($ARGV =~ /^tmp\/semconv\/docs\/\w+.md$/) {
     $title .= " $semconvVers";
     $frontMatterFromFile =~ s/linkTitle: .*/$& $semconvVers/;
     # $frontMatterFromFile =~ s/body_class: .*/$& td-page--draft/;
@@ -48,9 +55,18 @@ sub printTitleAndFrontMatter() {
   # Sample front-matter patch:
   #
   # } elsif ($ARGV =~ /otel\/specification\/logs\/api.md$/) {
-  #   $frontMatterFromFile .= "linkTitle: API\naliases: [bridge-api]\n";
-  #   printPatchInfoIf("2024-12-01-bridge-api", $otelSpecVers ne "1.39.0");
+  #   $frontMatterFromFile .= "linkTitle: API\naliases: [bridge-api]\n" if
+  #     applyPatchOrPrintMsgIf('2024-12-01-bridge-api', 'spec', '1.39.0');
   # }
+
+  if ($ARGV =~ m{^tmp/semconv/docs.*/(README|_index)\.md$}
+    && applyPatchOrPrintMsgIf('2025-01-29-path-base', 'semconv', '1.30.0-19-g')
+    && $frontMatterFromFile =~ /^path_base_for_github_subdir:/m
+  ) {
+    $frontMatterFromFile =~ s/\npath_base_for_github_subdir:.*?\n/\n/;
+    $frontMatterFromFile =~ s|\n  from: tmp/semconv/docs/.*?\n|\n|;
+    $frontMatterFromFile =~ s/\n  to: .*README.md($|\n)/$1/;
+  }
 
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
@@ -66,24 +82,87 @@ sub printTitleAndFrontMatter() {
   print "---\n";
 }
 
-sub printPatchInfoIf($$) {
-  my ($patchID, $specVersTest) = @_;
-  print STDOUT "INFO [$patchID]: $0: remove obsolete patch code now that OTel spec has been updated.\n"
-    if $specVersTest && !$patchMsgCount{$patchID}++;
+sub applyPatchOrPrintMsgIf($$$) {
+  # Returns truthy if patch should be applied, otherwise prints message (once) as to why not.
+
+  my ($patchID, $specName, $targetVers) = @_;
+  my $vers;
+  my $key = $specName . $patchID;
+
+  return 0 if $patchMsgCount{$key};
+
+  if (($vers = $versions{$specName}) gt $targetVers) {
+    print STDOUT "INFO: remove obsolete patch '$patchID' now that spec '$specName' is at v$vers > v$targetVers - $0\n";
+  } elsif (($vers = $versFromSubmod{$specName}) gt $targetVers) {
+    print STDOUT "INFO [$patchID]: skipping patch '$patchID' since spec '$specName' submodule is at v$vers > v$targetVers - $0\n";
+  } else {
+    return 'Apply the patch';
+  }
+  $patchMsgCount{$key}++;
+  return 0;
+}
+
+sub patchEventAliases() {
+  return unless $ARGV =~ /^tmp\/otel\/specification\/logs\//
+    && applyPatchOrPrintMsgIf('2025-01-23-event-aliases', 'spec', '1.41.0');
+
+  my $aliases = '^(  - )(event-(api|sdk))$';
+  s|$aliases|$1./$2|;
+}
+
+sub patchSemConv1_30_0() {
+  return unless $ARGV =~ /^tmp\/semconv\/docs\//
+    && applyPatchOrPrintMsgIf('2025-01-24-emit-an-event-etc', 'semconv', '1.30.0-18-g');
+
+  s|Emit Event API|Log API|;
+  s|(docs/specs/otel/logs/api.md#emit-a)n-event|$1-logrecord|;
+  s|\[semantic-convention-groups\]|[group-stability]|;
+  s|\Q../../docs/|../|g; # https://github.com/open-telemetry/semantic-conventions/pull/1843
+}
+
+sub getVersFromSubmodule() {
+  my %repoNames = qw(
+    otlp    opentelemetry-proto
+    semconv semantic-conventions
+    spec    opentelemetry-specification
+  );
+
+  foreach my $spec (keys %repoNames) {
+    my $directory = $repoNames{$spec};
+    my $vers = qx(
+      cd content-modules/$directory;
+      git describe --tags 2>&1;
+    );
+    chomp($vers);
+
+    if ($?) {
+      warn "WARNING: submodule '$spec': call to 'git describe' failed: '$vers'";
+    } else {
+      $vers =~ s/v//;
+      $versFromSubmod{$spec} = $vers;
+    }
+  }
 }
 
 # main
 
+getVersFromSubmodule();
+
 while(<>) {
-  # printf STDOUT "$ARGV Got: $_" if $gD;
+  $lineNum++;
+  # printf STDOUT "$ARGV Got:$lineNum: $_" if $gD;
 
   if ($file ne $ARGV) {
     $file = $ARGV;
     $frontMatterFromFile = '';
     $title = '';
-    if (/^<!---? Hugo/) {
+    $lineNum = 1;
+    if (/^(<!)?--- (# )?Hugo/) {
         while(<>) {
-          last if /^-?-->/;
+          $lineNum++;
+          last if /^--->?/;
+          patchEventAliases();
+          patchSemConv1_30_0();
           $frontMatterFromFile .= $_;
         }
         next;
@@ -92,49 +171,40 @@ while(<>) {
   if(! $title) {
     ($title) = /^#\s+(.*)/;
     $linkTitle = '';
-    printTitleAndFrontMatter() if $title;
+    printFrontMatter() if $title;
     next;
   }
 
   if (/<details>/) {
-    while(<>) { last if /<\/details>/; }
+    while(<>) { $lineNum++; last if /<\/details>/; }
     next;
   }
   if(/<!-- toc -->/) {
-    while(<>) { last if/<!-- tocstop -->/; }
+    my $tocstop = '<!-- tocstop -->';
+    while(<>) {
+      $lineNum++;
+      last if/$tocstop/;
+      next if /^\s*([-\+\*]\s|$)/;
+      warn "WARN $ARGV:$lineNum: missing '$tocstop' directive? Aborting toc scan at line:\n  $lineNum: $_";
+      print;
+      last;
+    }
     next;
   }
 
   ## Semconv
 
-  if ($ARGV =~ /\/semconv/) {
+  if ($ARGV =~ /^tmp\/semconv/) {
     s|(\]\()/docs/|$1$specBasePath/semconv/|g;
     s|(\]:\s*)/docs/|$1$specBasePath/semconv/|;
 
     s|\((/model/.*?)\)|($semconvSpecRepoUrl/tree/v$semconvVers/$1)|g;
-
-    # TODO: drop after fix of https://github.com/open-telemetry/semantic-conventions/pull/1316
-    s|#instrument-advice\b|#instrument-advisory-parameters|g;
-
-    # TODO: drop after fix of https://github.com/open-telemetry/semantic-conventions/issues/1313
-    s|(/database/database-spans\.md)#batch-operations|$1|g;
-    s|(/messaging/messaging-spans\.md)#common-messaging-operations|$1|g;
   }
-
 
   # SPECIFICATION custom processing
 
-  # TODO: drop the entire if statement patch code when OTel spec vers contains
-  # https://github.com/open-telemetry/opentelemetry-specification/issues/4338,
-  # which should be vers > 1.40.0.
-  if ($ARGV =~ /otel\/specification\/logs/) {
-    s|(/data-model.md/?)#event-name\b|$1#field-eventname|g;
-    printPatchInfoIf("2024-12-13-event-name", $otelSpecVers ne "1.40.0");
-  }
-
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;
   s|(\]\()/specification/|$1$specBasePath/otel/)|;
-  s|\.\./semantic_conventions/README.md|$semConvRef| if $ARGV =~ /overview/;
   s|\.\./specification/(.*?\))|../otel/$1|g if $ARGV =~ /otel\/specification/;
 
   # Match markdown inline links or link definitions to OTel spec pages: "[...](URL)" or "[...]: URL"
@@ -153,92 +223,14 @@ while(<>) {
   s|(\]\()([^)]+\.png\))|$1../$2|g if $ARGV =~ /\btmp\/semconv\/docs\/general\/attributes/;
   s|(\]\()([^)]+\.png\))|$1../$2|g if $ARGV =~ /\btmp\/semconv\/docs\/http\/http-spans/;
 
-  # Handle links containing `README.md`
-
   # Rewrite paths that are outside of the spec folders as external links:
-
   s|\.\.\/README.md|$otelSpecRepoUrl/|g if $ARGV =~ /specification._index/;
-  s|\.\.\/README.md|..| if $ARGV =~ /specification\/library-guidelines.md/;
+  s|\.\.\/README.md|/docs/specs/otel/| if $ARGV =~ /specification\/library-guidelines.md/;
 
   s|(\.\.\/)+(experimental\/[^)]+)|$otelSpecRepoUrl/tree/v$otelSpecVers/$2|g;
   s|(\.\.\/)+(supplementary-guidelines\/compatibility\/[^)]+)|$otelSpecRepoUrl/tree/v$otelSpecVers/$2|g;
 
   s|\.\./((?:examples/)?README\.md)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /^tmp\/otlp/;
-
-  # Replace `README.md` by `_index.md` in markdown links:
-  s{
-      # An inline markdown link, just before the URL: `](` like in `[docs](/docs)`
-      (
-        \]\(
-      )
-
-      # Match any local path. In the `[^...]` exclude group we have:
-      # - `:` so as to exclude external links, which use `:` after a protocol specifier
-      # - `)` prevents us from gobbling up past the end of the inline link
-
-      ([^:\)]*)
-      README\.md
-      ([^)]*)  # Any anchor specifier
-      (\))     # The end of the inline link
-  }{$1$openRelref "$2_index.md$3" \%\}\}$4}gx;
-
-  # Replace `README.md` by `_index.md` in markdown link definitions:
-  s{
-      # A markdown link definition, just before the URL: `]:`, like in `[docs]: /docs`
-      (
-        \]:\s*
-      )
-
-      # Match any local path. In the `[^...]` exclude group we have:
-      # - `:` so as to exclude external links, which use `:` after a protocol specifier
-      # - A space should prevent us from gobbling up beyond the end of a link def
-
-      ([^: ]*)
-      README\.md
-      ([^)]*) # Any anchor specifier
-      (\n)$   # End of the link definition
-  }{$1$openRelref "$2_index.md$3" \%\}\}$4}gx;
-
-  # Rewrite inline links
-  if ($ARGV =~ /\btmp\/opamp/) {
-    s|\]\(([^:\)]*?)\.md((#.*?)?)\)|]($1/$2)|g;
-  } else {
-    # Generally rewrite markdown links as {{% relref "..." %}} expressions,
-    # since that gets Hugo to resolve the links. We can't use the raw path since
-    # some need a `../` prefix to resolve. We let Hugo handle that.
-    s{
-        # Match markdown link `](` just before the URL
-        (\]\()
-
-        # Match the link path:
-        (
-          # Match paths upto but excluding `.md`. The character exclusions are as follows:
-          #
-          # - `:` ensures the URL is a path, not an external link, which has a protocol followe by `:`
-          # - `)` so we don't overrun the end of the markdown link, which ends with `)`
-          # - `{` or `}` so that the path doesn't contain Hugo {{...}}
-
-          [^:\)\{\}]*?
-
-          \.md
-
-          # Match optional anchor of the form `#some-id`
-          (?:
-            \#.*?
-          )?
-        )
-        # Closing parenthesis of markdown link
-        \)
-    }{$1$openRelref "$2" \%\}\}\)}gx;
-  }
-
-  # Rewrite link defs to local pages such as the following:
-  #
-  # [specification]: overview.md
-  # [faas]: some-path/faas-spans.md (FaaS trace conventions)
-  #
-  # The subregex `[:\s]+` excludes external URLs (because they contain a colon after the protocol)
-  s|^(\[[^\]]+\]:\s*)([^:\s]+)(\s*(\(.*\))?)$|$1\{{% relref "$2" %}}$3|g;
 
   # Make website-local page references local:
   s|https://opentelemetry.io/|/|g;
@@ -249,6 +241,8 @@ while(<>) {
   ## OpAMP
 
   s|\]\((proto/opamp.proto)\)|]($opAmpSpecRepoUrl/blob/main/$1)|;
+
+  patchSemConv1_30_0();
 
   print;
 }

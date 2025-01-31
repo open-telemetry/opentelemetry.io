@@ -57,7 +57,7 @@ https://github.com/open-telemetry/opentelemetry-collector-releases/releases/down
 chmod +x ocb
 ```
 
-{{% /tab %}} {{% tab "MacOS (AMD 64)" %}}
+{{% /tab %}} {{% tab "macOS (AMD 64)" %}}
 
 ```sh
 curl --proto '=https' --tlsv1.2 -fL -o ocb \
@@ -65,7 +65,7 @@ https://github.com/open-telemetry/opentelemetry-collector-releases/releases/down
 chmod +x ocb
 ```
 
-{{% /tab %}} {{% tab "MacOS (ARM 64)" %}}
+{{% /tab %}} {{% tab "macOS (ARM 64)" %}}
 
 ```sh
 curl --proto '=https' --tlsv1.2 -fL -o ocb \
