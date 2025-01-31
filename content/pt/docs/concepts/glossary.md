@@ -218,11 +218,8 @@ Abreviação para o
 
 ### OpenCensus
 
-Um conjunto de bibliotecas para várias linguagens que permite coletar métricas
-de aplicações e rastreamentos distribuídos, transferindo os dados para um
-backend de sua preferência em tempo real.
-[Precursor do OpenTelemetry](/docs/what-is-opentelemetry/#history). Consulte
-[mais informações][opencensus].
+Precursor do OpenTelemetry. Para mais detalhes, consulte
+[História](/docs/what-is-opentelemetry/#history).
 
 ### OpenTelemetry
 
