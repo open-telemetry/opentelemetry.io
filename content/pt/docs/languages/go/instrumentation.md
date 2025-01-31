@@ -5,7 +5,7 @@ aliases:
   - manual_instrumentation
 weight: 30
 description: Instrumentação manual para OpenTelemetry Go
-default_lang_commit: 1c6697de9c4d67fb72231354d5d9c6cdcfdfa64b
+default_lang_commit: a025c25aaf1aef653caa34e49e8714472cbeddbd
 # prettier-ignore
 cSpell:ignore: fatalf logr logrus otelslog otlplog otlploghttp sdktrace sighup updown
 ---
@@ -1127,7 +1127,7 @@ mais backends de telemetria.
 [instrumentation library]: ../libraries/
 [opentelemetry collector]:
   https://github.com/open-telemetry/opentelemetry-collector
-[logs bridge API]: /docs/specs/otel/logs/api
+[logs bridge API]: /docs/specs/otel/logs/api/
 [log data model]: /docs/specs/otel/logs/data-model
 [`go.opentelemetry.io/otel`]: https://pkg.go.dev/go.opentelemetry.io/otel
 [`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`]:
