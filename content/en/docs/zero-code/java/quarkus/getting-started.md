@@ -35,6 +35,7 @@ Only the **tracing** signal will be enabled by default. To enable **metrics** an
 quarkus.otel.metrics.enabled=true
 quarkus.otel.logs.enabled=true
 ```
+OpenTelemetry logging is available after Quarkus 3.16.0.
 
 The remaining configurations are available in the [Quarkus OpenTelemetry configuration reference](https://quarkus.io/guides/opentelemetry#configuration-reference).
 
