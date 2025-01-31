@@ -4,8 +4,8 @@ linkTitle: デモ
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
-cSpell:ignore: OLJCESPC
 default_lang_commit: 1e69c8f94a605ce5624c6b6657080d98f633ac7b
+cSpell:ignore: OLJCESPC
 ---
 
 [OpenTelemetryデモ](/ecosystem/demo/)のドキュメンテーションへようこそ。
@@ -51,7 +51,7 @@ default_lang_commit: 1e69c8f94a605ce5624c6b6657080d98f633ac7b
 - [見積サービス](services/quote/)
 - [レコメンデーションサービス](services/recommendation/)
 - [配送サービス](services/shipping/)
-- [画像プロバイダーサービス](services/imageprovider/)
+- [画像プロバイダーサービス](services/image-provider/?i18n-patch)
 
 ## シナリオ {#scenarios}
 

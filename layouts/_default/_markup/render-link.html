@@ -67,9 +67,11 @@
 
 {{ $isExternal := hasPrefix $url "http" -}}
 {{ if $isExternal -}}
-  {{ if findRE "^https://opentelemetry.io/\\w" $url -}}
-    {{ warnf "%s: use a local path, not an external URL, for the following reference to a site local page: %s"
-        .Page.File.Path $url -}}
+  {{ $matches := findRESubmatch `^https?://(?:www\.)?opentelemetry.io(/?.*)$` $url -}}
+  {{ $otelIoPath := index (index $matches 0) 1 | default "/" -}}
+  {{ if $matches -}}
+    {{ warnf "%s: use a local path '%s' instead of external URL '%s' for reference to site-local page"
+        .Page.File.Path $otelIoPath $url -}}
   {{ else if or
     (findRE "^https://github.com/open-telemetry/opentelemetry-specification/(blob|tree)/main/specification/\\w" $url)
     (findRE "^https://github.com/open-telemetry/opentelemetry-proto/(blob|tree)/main/docs/specification" $url)

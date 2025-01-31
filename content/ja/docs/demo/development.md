@@ -1,8 +1,8 @@
 ---
 title: 開発環境
+default_lang_commit: a6efef05af7f854d2fcc9ec4b7433cc4ae799a40
 # prettier-ignore
 cSpell:ignore: grpcio intellij libcurl libprotobuf nlohmann openssl protoc rebar
-default_lang_commit: a6efef05af7f854d2fcc9ec4b7433cc4ae799a40
 ---
 
 [OpenTelemetry デモ GitHub リポジトリ](https://github.com/open-telemetry/opentelemetry-demo)

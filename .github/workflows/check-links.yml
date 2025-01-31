@@ -1,5 +1,6 @@
 name: Links
 
+# cSpell:ignore nvmrc opentelemetrybot
 on:
   merge_group:
   pull_request:
@@ -44,10 +45,28 @@ jobs:
 
       - run: npm run log:check:links
         continue-on-error: true
-      - name: Any files need updating?
+
+      - name: Push changes if any, and fail check
         run: |
-          echo "If the diff fails due to .htmltest, then either run 'npm run fix:htmltest-config' locally or '/fix:htmltest-config' in GitHub"
-          npm run _diff:fail
+          if [[ $(git status --porcelain) ]]; then
+            echo "Changes detected in the refcache etc:"
+            git status --short
+
+            echo "\nPushing changes to PR."
+            git config --local user.email "$USER_EMAIL"
+            git config --local user.name "$USER_NAME"
+            git add -A
+            git commit -m "Updates from build-and-check-links workflow"
+            git push
+
+            echo "Failing workflow so that changes can be reviewed, and checks rerun."
+            exit 1
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          USER_EMAIL: 107717825+opentelemetrybot@users.noreply.github.com
+          USER_NAME: opentelemetrybot
+
       - uses: actions/upload-artifact@v4
         with:
           name: build-log-etc

@@ -2,7 +2,10 @@
 {{ $lang := partial "i18n/lang.html" . -}}
 
 <!doctype html>
-<html itemscope itemtype="http://schema.org/WebPage" lang="{{ $lang }}" class="no-js">
+<html itemscope itemtype="http://schema.org/WebPage"
+    {{- with .Site.Language.LanguageDirection }} dir="{{ . }}" {{- end -}}
+    {{ with .Site.Language.Lang }} lang="{{ $lang }}" {{- end }} {{/**/ -}}
+    class="no-js">
   <head>
     {{ partial "head.html" . }}
   </head>
@@ -14,6 +17,7 @@
       <div class="td-main">
         <div class="row flex-xl-nowrap">
           <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            <div id="google_translate_element"></div>
             {{ partial "sidebar.html" . }}
           </aside>
           <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
@@ -23,7 +27,9 @@
           </aside>
           <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
             {{ partial "version-banner.html" . }}
-            {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
+            {{ if not (.Param "ui.breadcrumb_disable") -}}
+              {{ partial "breadcrumb.html" . -}}
+            {{ end -}}
             {{ block "main" . }}{{ end }}
           </main>
         </div>
@@ -31,5 +37,6 @@
       {{ partial "footer.html" . }}
     </div>
     {{ partial "scripts.html" . }}
+    {{ partial "translate-scripts.html" . -}}
   </body>
 </html>
