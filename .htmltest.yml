@@ -44,23 +44,11 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://pdf.sciencedirectassets.com/280203/1-s2.0-S1877050919X0006X/1-s2.0-S1877050919303576/main.pdf\?
 
   # Sites that deny access, always yielding 401, 403 Forbidden, 406, or other:
-  - ^https://(www\.)?linkedin\.com\b # 999 Request Denied
-  - ^https://(www\.)?mvnrepository\.com
-  - ^https://(www\.|eng\.)?uber\.com/(blog|flipr)/ # 406
-  - ^https://kofo.dev
-  - ^https://platform.openai.com
-  - ^https://openai.com
-  - ^https://star-history.com
+  - ^https://platform.openai.com # Really hard to trick into giving a 200 when using a script; manually verify links
+  - ^https://star-history.com # link contain ampersands in URL anchor part, which htmltest escapes, so it's not found
   - ^https://twitter.com
-  - ^https://www.chathamhouse.org
-  - ^https://www.farfetch.com
-  - ^https://www.zocdoc.com
+  - ^https://www.youtube.com/playlist\?list= # htmltest doesn't process query parameters
   - ^https://x.com
-  - ^https://maven.org
-  # OTel Google calendar - curl returns 200, but the link checker gets a 401:
-  - ^https://calendar.google.com/calendar/embed\?src=google.com_b79e3e90j7bbsa2n2p5an5lf60%40group.calendar.google.com
-  # YouTube playlists sometimes give a 404, although they give a 200 when accessed via browser:
-  - ^https://www.youtube.com/playlist\?list=
 
   # Ignore Docsy-generated GitHub links for now, until
   # https://github.com/google/docsy/issues/1432 is fixed
