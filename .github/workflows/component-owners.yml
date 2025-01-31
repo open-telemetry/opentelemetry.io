@@ -2,6 +2,9 @@ name: Component owners
 on:
   pull_request_target:
 
+permissions:
+  contents: read
+
 jobs:
   run_self:
     runs-on: ubuntu-latest
@@ -12,7 +15,12 @@ jobs:
       pull-requests: write
     if: github.repository_owner == 'open-telemetry'
     steps:
-      - uses: dyladan/component-owners@v0.1.0
+      - name: Harden Runner
+        uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
+        with:
+          egress-policy: audit
+
+      - uses: dyladan/component-owners@58bd86e9814d23f1525d0a970682cead459fa783 # v0.1.0
         with:
           config-file: .github/component-owners.yml
           repo-token: ${{ secrets.OPENTELEMETRYBOT_OPENTELEMETRY_IO_PAT }}

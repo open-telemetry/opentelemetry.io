@@ -11,6 +11,9 @@ env:
   USER_EMAIL: 107717825+opentelemetrybot@users.noreply.github.com
   USER_NAME: opentelemetrybot
 
+permissions:
+  contents: read
+
 jobs:
   pr-action:
     name: Run PR action
@@ -27,6 +30,11 @@ jobs:
       DEPTH: --depth 999 # submodule clone depth
 
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
+        with:
+          egress-policy: audit
+
       - name: Extract action name
         id: extract_action_name
         run: |
@@ -45,7 +53,7 @@ jobs:
           echo $PR_NUM
           echo $COMMENT
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Write start comment
         run: |
@@ -62,7 +70,7 @@ jobs:
           mkdir -p tmp
           jq '{devDependencies, dependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
         with:
           node-version-file: .nvmrc
           cache: npm

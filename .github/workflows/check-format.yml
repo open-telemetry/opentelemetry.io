@@ -4,26 +4,39 @@ on:
   merge_group:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   check-filenames:
     name: FILENAME check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Harden Runner
+        uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - run: npm run check:filenames
 
   check-formatting:
     name: FILE FORMAT
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Harden Runner
+        uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Create NPM cache-hash input file
         run: |
           mkdir -p tmp
           jq '{devDependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
         with:
           node-version-file: .nvmrc
           cache: npm

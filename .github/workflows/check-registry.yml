@@ -7,12 +7,20 @@ on:
     paths:
       - 'data/registry/**'
 
+permissions:
+  contents: read
+
 jobs:
   registry-validation:
     name: REGISTRY validation
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Harden Runner
+        uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Create and use reduced-dependencies package.json
         run: |
           mkdir -p tmp
@@ -22,7 +30,7 @@ jobs:
                 | del(.dependencies, .optionalDependencies)' \
             package.json > tmp/package-ci.json
           cp tmp/package-ci.json package.json
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
         with:
           node-version-file: .nvmrc
           cache: npm

@@ -4,17 +4,28 @@ on:
   merge_group:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   spelling-check:
+    permissions:
+      contents: read  # for streetsidesoftware/cspell-action to fetch files for commit
+      pull-requests: read  # for streetsidesoftware/cspell-action to fetch commits for PR
     name: SPELLING check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Harden Runner
+        uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
         with:
           node-version-file: .nvmrc
       - run: npm run _install:dict --ignore-scripts
-      - uses: streetsidesoftware/cspell-action@v6
+      - uses: streetsidesoftware/cspell-action@ef95dc49d631fc2a9e9ea089ae2b2127b7c4588e # v6.10.0
         with:
           # Files should be consistent with check:spelling files
           files: |
@@ -29,7 +40,12 @@ jobs:
     name: CSPELL:IGNORE check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Harden Runner
+        uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - run: npm run fix:dict
       - name: Any changed files?
         run: |
