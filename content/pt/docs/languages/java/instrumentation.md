@@ -65,7 +65,7 @@ O projeto
 contém o código fonte do Agente Java, inicializador Spring Boot, e Biblioteca de
 instrumentação.
 
-### Sem código: Agente Java
+### Sem código: Agente Java {#zero-code-java-agent}
 
 O agente do Java é uma forma de
 [instrumentação automática](/docs/specs/otel/glossary/#automatic-instrumentation)
@@ -77,7 +77,7 @@ coluna _"Auto-instrumented versions"_ (versões auto-instrumentadas) em
 
 Veja [Agente Java](/docs/zero-code/java/agent/) para mais detalhes.
 
-### Sem código: inicializador Spring Boot
+### Sem código: inicializador Spring Boot {#zero-code-spring-boot-starter}
 
 O inicializador Spring Boot é uma forma de
 [instrumentação automática](/docs/specs/otel/glossary/#automatic-instrumentation)
@@ -128,7 +128,7 @@ Shims mantidos no ecossistema OpenTelemetry Java:
 | Bridge [OpenTracing](https://opentracing.io/) no OpenTelemetry                                              | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim)                                                                                       | Rastros           | `io.opentelemetry:opentelemetry-opentracing-shim:{{% param vers.otel %}}`                                                       |
 | Bridge [Opencensus](https://opencensus.io/) no OpenTelemetry                                                | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java/tree/main/opencensus-shim)                                                                                        | Rastros, Métricas | `io.opentelemetry:opentelemetry-opencensus-shim:{{% param vers.otel %}}-alpha`                                                  |
 | Bridge [Micrometer](https://micrometer.io/) no OpenTelemetry                                                | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/micrometer/micrometer-1.5/library)                                      | Métricas          | `io.opentelemetry.instrumentation:opentelemetry-micrometer-1.5:{{% param vers.instrumentation %}}-alpha`                        |
-| Bridge [JMX](https://docs.oracle.com/javase/7/docs/technotes/guides/management/agent.html) no OpenTelemetry | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/LEIA-ME.md)                                       | Métricas          | `io.opentelemetry.instrumentation:opentelemetry-jmx-metrics:{{% param vers.instrumentation %}}-alpha`                           |
+| Bridge [JMX](https://docs.oracle.com/javase/7/docs/technotes/guides/management/agent.html) no OpenTelemetry | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/README.md)                                       | Métricas          | `io.opentelemetry.instrumentation:opentelemetry-jmx-metrics:{{% param vers.instrumentation %}}-alpha`                           |
 | Bridge OpenTelemetry no [Prometheus Java client](https://github.com/prometheus/client_java)                 | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/prometheus-client-bridge)                                                                       | Métricas          | `io.opentelemetry.contrib:opentelemetry-prometheus-client-bridge:{{% param vers.contrib %}}-alpha`                              |
 | Bridge OpenTelemetry no [Micrometer](https://micrometer.io/)                                                | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/micrometer-meter-provider)                                                                      | Métricas          | `io.opentelemetry.contrib:opentelemetry-micrometer-meter-provider:{{% param vers.contrib %}}-alpha`                             |
 | Bridge [Log4j](https://logging.apache.org/log4j/2.x/index.html) no OpenTelemetry                            | [LEIA-ME](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-appender-2.17/library)                                      | Logs              | `io.opentelemetry.instrumentation:opentelemetry-log4j-appender-2.17:{{% param vers.instrumentation %}}-alpha`                   |
