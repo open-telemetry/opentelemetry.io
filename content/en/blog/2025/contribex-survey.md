@@ -9,12 +9,14 @@ cSpell:ignore: Baeyens Outreachy
 ---
 
 Since its founding, OpenTelemetry has had [thousands of contributors][3] from
-all around the world, including end users, vendors and students. [Last
+around the world, including end users, vendors, and students. [Last
 summer][1] some members of the OpenTelemetry project came together to create
-[Contributor Experience SIG][2], a SIG focused on making sure contributors of
-all types can have a great experience with the OpenTelemetry Project. Since
-then, the SIG has been working on a number of initiatives, including an
-[Outreachy project][5] to [create up to date contributor documentation][4].
+the [Contributor Experience SIG][2], which is focused on ensuring  
+that contributors of all types have a great experience with the OpenTelemetry  
+project.  
+
+Since then, the SIG has worked on several initiatives, including an  
+[Outreachy project][5] to develop [up-to-date contributor docs][4].
 
 To inform future initiatives and help us understand the current state of the
 contributor experience, we are launching today our first official Contributor
