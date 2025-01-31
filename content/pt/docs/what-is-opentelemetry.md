@@ -9,7 +9,7 @@ O OpenTelemetry é:
 
 - Um _framework_ de
   [Observabilidade](/docs/concepts/observability-primer/#what-is-observability)
-  e um conjunto de ferramentas projetados para criar e gerenciar dados de
+  e um conjunto de ferramentas projetadas para criar e gerenciar dados de
   telemetria como [rastros](/docs/concepts/signals/traces/),
   [métricas](/docs/concepts/signals/metrics/) e
   [logs](/docs/concepts/signals/logs/).
@@ -17,9 +17,9 @@ O OpenTelemetry é:
   utilizado com uma grande variedade de _backends_ de observabilidade, incluindo
   ferramentas de código aberto como [Jaeger](https://www.jaegertracing.io/) e
   [Prometheus](https://prometheus.io/), além de soluções comerciais.
-- O OpenTelemetry não é um _backend_ de observabilidade como Jaeger, Prometheus
+- Não é um _backend_ de observabilidade como Jaeger, Prometheus
   ou outras soluções comerciais.
-- O OpenTelemetry é focado na geração, coleta, gerenciamento e exportação de
+- É focado na geração, coleta, gerenciamento e exportação de
   telemetria. Um dos principais objetivos do OpenTelemetry é permitir que você
   possa instrumentar suas aplicações ou sistemas de forma fácil,
   independentemente da linguagem, infraestrutura ou ambiente de execução. O
@@ -115,9 +115,7 @@ projeto é projetado para tornar isso possível em quase todos os níveis.
 O OpenTelemetry é um projeto da
 [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io) que é resultado
 da [fusão] entre dois projetos anteriores, [OpenTracing](https://opentracing.io)
-e [OpenCensus](https://opencensus.io).
-
-Ambos os projetos foram criados para resolver o mesmo problema: a falta de um
+e [OpenCensus](https://opencensus.io). Ambos os projetos foram criados para resolver o mesmo problema: a falta de um
 padrão de como instrumentar o código e enviar dados de telemetria para um
 _backend_ de Observabilidade. Como nenhum dos projetos conseguiu resolver o
 problema por completo de forma independente, eles se fundiram para formar o
