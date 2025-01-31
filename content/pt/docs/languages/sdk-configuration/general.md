@@ -2,8 +2,8 @@
 title: Configurações gerais de SDK
 linkTitle: Geral
 aliases: [general-sdk-configuration]
-cSpell:ignore: ottrace
 default_lang_commit: 1e4970e9193c8af1d1f9b86901b13492071aecc7
+cSpell:ignore: ottrace
 ---
 
 {{% alert title="Nota" color="info" %}}
