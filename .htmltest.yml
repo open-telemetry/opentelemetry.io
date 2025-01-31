@@ -36,7 +36,9 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://www\.googletagmanager\.com
   - ^(https:)?//translate.google.com
 
-  - ^https?://localhost\b
+  # Don't ignore `:1313` since it is often a docs link copy-paste error, e.g.:
+  # https://github.com/open-telemetry/opentelemetry.io/pull/6123
+  - ^https?://localhost(:([^1]|16*)|(/.*)?$)
   - ^https?://127\.0\.0\.1\b
   - ^https?://(otel-demo|traefik)\.localhost
 
