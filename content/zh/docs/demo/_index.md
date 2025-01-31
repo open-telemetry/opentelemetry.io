@@ -4,8 +4,8 @@ linkTitle: 演示
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
-cSpell:ignore: OLJCESPC
 default_lang_commit: c2cd5b14
+cSpell:ignore: OLJCESPC
 ---
 
 欢迎使用 [OpenTelemetry 演示](/ecosystem/demo/)文档，
