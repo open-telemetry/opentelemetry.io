@@ -7,9 +7,12 @@ weight: 200
 default_lang_commit: f37118d8489a60d73dd881645f317d866b53b418
 ---
 
-Esse glossário define termos e [conceitos](/docs/concepts/) que são novos no projeto do OpenTelemetry e esclarece os usos de termos específicos do OpenTelemetry, comuns no universo de observabilidade. 
+Esse glossário define termos e [conceitos](/docs/concepts/) que são novos no
+projeto do OpenTelemetry e esclarece os usos de termos específicos do
+OpenTelemetry, comuns no universo de observabilidade.
 
-Também comentamos sobre ortografia e capitalização quando útil. Para visualizar um exemplo, consulte [OpenTelemetry](#opentelemetry) e [OTel](#otel).
+Também comentamos sobre ortografia e capitalização, quando útil. Para visualizar
+um exemplo, consulte [OpenTelemetry](#opentelemetry) e [OTel](#otel).
 
 ## Termos {#terms}
 
@@ -98,9 +101,15 @@ rastreamento. Consulte a [especificação de campos][field].
 
 ### Collector
 
-O [OpenTelemetry Collector], ou simplesmente Collector, é uma implementação neutra em relação a fornecedores sobre como receber, processar e exportar dados de telemetria. Um único binário que pode ser implantado como um agente ou _gateway_.
+O [OpenTelemetry Collector], ou simplesmente Collector, é uma implementação
+neutra em relação a fornecedores sobre como receber, processar e exportar dados
+de telemetria. Um único binário que pode ser implementado como um agente ou
+_gateway_.
 
-> **Ortografia**: Ao referir-se ao [OpenTelemetry Collector], sempre capitalize "Collector". Utilize apenas "Collector" se estiver utilizando Collector como um adjetivo &mdash; por exemplo, "Configuração do Collector".
+> **Ortografia**: Ao referir-se ao [OpenTelemetry Collector], sempre capitalize
+> a palavra "Collector". Utilize apenas o termo "Collector" caso esteja
+> utilizando Collector como um adjetivo &mdash; por exemplo, "Configuração do
+> Collector".
 
 [OpenTelemetry Collector]: /docs/collector/
 
@@ -201,9 +210,11 @@ Abreviação para [OpenCensus](#opencensus).
 
 ### OpAMP
 
-Abreviação para o [Protocolo de Gerenciamento de Agentes Abertos _(Open Agent Management Protocol)_](/docs/collector/management/#opamp).
+Abreviação para o
+[Protocolo de Gerenciamento de Agentes Abertos _(Open Agent Management Protocol)_](/docs/collector/management/#opamp).
 
-> **Ortografia**: Escreva OpAMP, e não `OPAMP` ou `opamp` em descrições ou instruções.
+> **Ortografia**: Escreva OpAMP, e não `OPAMP` ou `opamp` em descrições ou
+> instruções.
 
 ### OpenCensus
 
@@ -215,15 +226,24 @@ backend de sua preferência em tempo real.
 
 ### OpenTelemetry
 
-Formado por meio de uma [fusão] dos projetos [OpenTracing](#opentracing) e [OpenCensus](#opencensus), o OpenTelemetry &mdash; o tema deste site &mdash; é uma coleção de [APIs](#api), [SDKs](#sdk) e ferramentas que você pode utilizar para [instrumentar](/docs/concepts/instrumentation/), gerar, [coletar](/docs/concepts/components/#collector) e [exportar](/docs/concepts/components/#exporters) [dados de telemetria](/docs/concepts/signals/), como [métricas](#metric), [logs](#log) e [rastros](#trace).
+Formado por meio de uma [fusão] dos projetos [OpenTracing](#opentracing) e
+[OpenCensus](#opencensus), o OpenTelemetry &mdash; o tema deste site &mdash; é
+uma coleção de [APIs](#api), [SDKs](#sdk) e ferramentas que você pode utilizar
+para [instrumentar](/docs/concepts/instrumentation/), gerar,
+[coletar](/docs/concepts/components/#collector) e
+[exportar](/docs/concepts/components/#exporters)
+[dados de telemetria](/docs/concepts/signals/), como [métricas](#metric),
+[logs](#log) e [rastros](#trace).
 
-> **Ortografia**: OpenTelemetry deve ser sempre uma única palavra, sem hífen, e capitalizada como mostrado.
+> **Ortografia**: OpenTelemetry deve ser sempre uma única palavra, sem hífen, e
+> capitalizada como mostrado.
 
 [fusão]: /docs/what-is-opentelemetry/#history
 
 ### OpenTracing
 
-Precursor do OpenTelemetry. Para mais detalhes, consulte [História](/docs/what-is-opentelemetry/#history).
+Precursor do OpenTelemetry. Para mais detalhes, consulte
+[História](/docs/what-is-opentelemetry/#history).
 
 ### OT
 
@@ -241,12 +261,14 @@ Abreviação para [OpenTelemetry Collector](#collector).
 
 ### OTEP
 
-Um acronimo para [Proposta de Melhoria do OpenTelemetry _(OpenTelemetry Enhancement Proposal)_].
+Um acronimo para [Proposta de Melhoria do OpenTelemetry _(OpenTelemetry
+Enhancement Proposal)_].
 
-> **Spelling**: Escreva "OTEPs" como um plural. Não escreva `OTep` ou `otep` em descrições.
+> **Spelling**: Escreva "OTEPs" como um plural. Não escreva `OTep` ou `otep` em
+> descrições.
 
 [OpenTelemetry Enhancement Proposal]:
-https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/README.md
+  https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/README.md
 
 ### OTLP
 
