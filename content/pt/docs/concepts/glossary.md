@@ -264,7 +264,8 @@ Enhancement Proposal)_].
 > **Spelling**: Escreva "OTEPs" como um plural. Não escreva `OTep` ou `otep` em
 > descrições.
 
-[OpenTelemetry Enhancement Proposal]:
+[Proposta de Melhoria do OpenTelemetry _(OpenTelemetry
+Enhancement Proposal)_]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/README.md
 
 ### OTLP
