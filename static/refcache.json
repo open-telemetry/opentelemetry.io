@@ -1835,6 +1835,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:45:38.976435-04:00"
   },
+  "https://cloud-native.slack.com/archives/C05PXDFTCPJ": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-29T09:52:40.815112084Z"
+  },
   "https://cloud-native.slack.com/archives/C076RUAGP37": {
     "StatusCode": 200,
     "LastSeen": "2024-08-20T08:40:41.563366481Z"
@@ -13267,6 +13271,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T17:02:00.591524-05:00"
   },
+  "https://github.com/open-telemetry/sig-mainframe": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-29T09:52:33.855728393Z"
+  },
   "https://github.com/open-telemetry/sig-security": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:36.015951-05:00"
@@ -16054,6 +16062,14 @@
   "https://openlit.io/": {
     "StatusCode": 200,
     "LastSeen": "2024-12-05T10:36:14.926178+01:00"
+  },
+  "https://openmainframeproject.org/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-29T09:52:30.138817065Z"
+  },
+  "https://openmainframeproject.org/blog/opentelemetry-on-mainframe-priorities-survey/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-29T09:52:21.483732385Z"
   },
   "https://openobserve.ai/docs/ingestion/logs/otlp/": {
     "StatusCode": 206,
@@ -20150,6 +20166,10 @@
   "https://www.sqlite.org/rescode.html": {
     "StatusCode": 200,
     "LastSeen": "2024-10-09T10:19:40.728167+02:00"
+  },
+  "https://www.surveymonkey.com/r/HGTD2KJ": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-29T09:52:38.143149632Z"
   },
   "https://www.swift.org/": {
     "StatusCode": 206,
