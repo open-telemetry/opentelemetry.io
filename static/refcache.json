@@ -16630,7 +16630,7 @@
   "https://pkg.go.dev/github.com/r0mdau/fluentforwardexporter": {
     "StatusCode": 200,
     "LastSeen": "2025-01-19T02:27:20.088750393Z"
-  }
+  },
   "https://pkg.go.dev/github.com/segmentio/kafka-go": {
     "StatusCode": 200,
     "LastSeen": "2025-01-29T17:30:03.308377379Z"
