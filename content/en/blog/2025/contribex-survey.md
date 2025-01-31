@@ -5,7 +5,6 @@ date: 2025-02-17
 author: >-
   [Pablo Baeyens](https://github.com/mx-psi) (Datadog)
 sig: Contributor Experience
-# prettier-ignore
 cSpell:ignore: Baeyens Outreachy
 ---
 
