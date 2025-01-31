@@ -59,7 +59,7 @@ OpenTelemetryの意欲的なゴールは、すべての一般的なライブラ�
 
 ### エクスポーター {#exporters}
 
-{{% docs/languages/exporters/intro %}}
+{{% ja/docs/languages/exporters/intro %}}
 
 ### ゼロコード計装 {#zero-code-instrumentation}
 
