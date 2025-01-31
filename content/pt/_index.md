@@ -54,10 +54,11 @@ software.
 
 {{% blocks/section color="dark" type="row" %}}
 
-{{% blocks/feature icon="fas fa-chart-line" title="Rastros, Métricas, Logs"%}}
+{{% blocks/feature icon="fas fa-chart-line" title="Rastros, Métricas, Logs" url="docs/concepts/observability-primer/" %}}
 
 Crie e colete dados de telemetria a partir de seus serviços e softwares, e
 depois encaminhe-os para uma variedade de ferramentas de análise.
+
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fas fa-magic" title="Instrumentação de Fácil Integração"%}}
@@ -65,7 +66,7 @@ depois encaminhe-os para uma variedade de ferramentas de análise.
 O OpenTelemetry é [integrável] com diversos frameworks e bibliotecas populares,
 e suporta [instrumentação] _manual e sem código_.
 
-[instrumentação]: /docs/concepts/instrumentation
+[instrumentação]: /docs/concepts/instrumentation/
 [integrável]: /ecosystem/integrations/
 
 {{% /blocks/feature %}}
