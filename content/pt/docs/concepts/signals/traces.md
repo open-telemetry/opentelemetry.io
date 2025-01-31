@@ -234,8 +234,7 @@ O contexto do trecho é um objeto imutável em cada trecho que contém o seguint
   rastro específicos do fornecedor
 
 O contexto do trecho é a parte de um trecho que é serializada e propagada junto
-com a [Propagação de Contexto](#context-propagation) e
-[Baggage](../baggage).
+com a [Propagação de Contexto](#context-propagation) e [Baggage](../baggage).
 
 Como o contexto do trecho contém o trace ID, o trace ID é usado ao criar
 [links de trechos](#span-links).
@@ -318,7 +317,8 @@ segundo rastro. Agora, eles estão causalmente associados entre si.
 Os links são opcionais, mas servem como uma boa maneira de associar trechos de
 rastro uns aos outros.
 
-Para mais informações sobre Links de Trechos, consulte [Link](/docs/specs/otel/trace/api/#link).
+Para mais informações sobre Links de Trechos, consulte
+[Link](/docs/specs/otel/trace/api/#link).
 
 ### O estado do Trecho {#span-status}
 
