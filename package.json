@@ -5,7 +5,7 @@
   ],
   "scripts": {
     "__check:links": "make --keep-going check-links",
-    "_build": "npm run _hugo -- -e dev --buildDrafts --baseURL \"${DEPLOY_PRIME_URL:-http://localhost}\"",
+    "_build": "npm run _hugo -- -e dev --buildDrafts --buildFuture --baseURL \"${DEPLOY_PRIME_URL:-http://localhost}\"",
     "__check:format": "npx prettier${PRETTIER_AT_VERS}",
     "_check:format:any": "npm run __check:format -- --check --ignore-path ''",
     "_check:format:ja+zh": "npm run _check:format:nowrap -- content/ja content/zh",
