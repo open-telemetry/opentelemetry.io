@@ -218,7 +218,7 @@ Para usar este _workflow_:
   outro).
 
 **[1]**: Anexadores de Logs são um tipo de [shim](#shims) que conecta logs de um
-_framework_ na SDK de Logs do OpenTelemetry. Veja os items "Bridge Log4j em
+_framework_ no SDK de Logs do OpenTelemetry. Veja os items "Bridge Log4j em
 OpenTelemetry", "Bridge Logback em OpenTelemetry". Veja
 [Exemplo de Anexadores de Logs](https://github.com/open-telemetry/opentelemetry-java-docs/tree/main/log-appender)
 para demonstração de uma variedade de cenários.
