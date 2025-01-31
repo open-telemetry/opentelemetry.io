@@ -53,7 +53,7 @@ spec:
               replacement: $$1
             - action: labelmap
               regex: label_(.+)
-              replacement: $$1 
+              replacement: $$1
 
     exporters:
       # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.

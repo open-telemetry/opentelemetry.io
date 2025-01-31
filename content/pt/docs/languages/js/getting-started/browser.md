@@ -38,7 +38,7 @@ Copie o conteúdo a seguir em um arquivo em um diretório vazio e salve-o como
     <base href="/" />
     <!--
       https://www.w3.org/TR/trace-context/
-      Defina o `traceparent` no código do template HTML do servidor. Ele 
+      Defina o `traceparent` no código do template HTML do servidor. Ele
       deve ser gerado dinamicamente pelo servidor para conter o ID do rastro
       da requisição do servidor, um ID de trecho pai que foi definido no trecho
       da requisição do servidor e as flags de rastro para indicar a decisão de
