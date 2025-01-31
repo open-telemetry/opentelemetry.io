@@ -1,12 +1,14 @@
 ---
-title: Announcing the Beta Release of OpenTelemetry Go Auto-Instrumentation using eBPF
+title: >-
+  Announcing the Beta Release of OpenTelemetry Go Auto-Instrumentation using
+  eBPF
 linkTitle: Go Auto-Instrumentation Beta
 date: 2025-01-30
 author: >-
-  [Tyler Yahn](https://github.com/MrAlias) (Splunk)
-  [Mike Dame](https://github.com/damemi) (Odigos)
+  [Tyler Yahn](https://github.com/MrAlias) (Splunk), [Mike
+  Dame](https://github.com/damemi) (Odigos)
 sig: SIG Go Auto-Instrumentation
-cSpell:ignore: Beyla Beyla's Odigos rolldice Yahn
+cSpell:ignore: Beyla Odigos rolldice Yahn
 ---
 
 The OpenTelemetry community is excited to announce the beta release of the
