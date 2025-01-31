@@ -261,7 +261,7 @@ Abreviação para [OpenTelemetry Collector](#collector).
 
 ### OTEP
 
-Um acronimo para [Proposta de Melhoria do OpenTelemetry _(OpenTelemetry
+Um acrônimo para [Proposta de Melhoria do OpenTelemetry _(OpenTelemetry
 Enhancement Proposal)_].
 
 > **Spelling**: Escreva "OTEPs" como um plural. Não escreva `OTep` ou `otep` em
