@@ -60,15 +60,17 @@ properly.
 ## Markdown standards
 
 To enforce standards and consistency for Markdown files, all files should follow
-certain rules, enforced by
-[markdownlint](https://github.com/DavidAnson/markdownlint). For a full list,
-check the
-[`.markdownlint.json`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.json)
-file.
+certain rules, enforced by [markdownlint]. For a full list, check the
+[.markdownlint.json] file.
 
-Run `npm run check:markdown` to verify that all files follow the standard.
+Run:
 
-Run `npm run fix:markdown` to fix Markdown related formatting issues.
+- `npm run check:markdown` to ensure that all files follow our standards
+- `npm run fix:markdown` to fix Markdown-related formatting issues
+
+We also enforce markdown [file format](#file-format) and strip files of trailing
+whitespace. This precludes the [line break syntax] of 2+ spaces; use `<br>`
+instead or reformat your text.
 
 ## Spell checking
 
@@ -107,12 +109,17 @@ run `npm run fix:dict`.
 
 ## File format
 
-To enforce a certain standard on how files are structured, all files should be
-formatted by [prettier](https://prettier.io). Run `npm run fix:format` before
-submitting a PR, or run it afterwards and push an additional commit.
+We enforce file formatting using [Prettier]. Invoke it using
+`npm run fix:format`.
 
 ## File names
 
 All file names should be in
 [kebab case](https://en.wikipedia.org/wiki/Letter_case#Kebab_case). Run
 `npm run fix:filenames` to automatically rename your files.
+
+[.markdownlint.json]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.json
+[line break syntax]: https://www.markdownguide.org/basic-syntax/#line-breaks
+[markdownlint]: https://github.com/DavidAnson/markdownlint
+[Prettier]: https://prettier.io
