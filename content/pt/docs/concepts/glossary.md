@@ -399,7 +399,6 @@ informações][zpages].
 
 [baggage]: /docs/specs/otel/baggage/api/
 [attribute]: /docs/specs/otel/common/#attributes
-[collector]: /docs/collector
 [context propagation]: /docs/specs/otel/overview#context-propagation
 [dag]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
 [distributed tracing]: /docs/concepts/signals/traces/
@@ -410,8 +409,6 @@ informações][zpages].
 [log]: /docs/specs/otel/glossary#log
 [log record]: /docs/specs/otel/glossary#log-record
 [metric]: /docs/concepts/signals/metrics/
-[opencensus]: https://opencensus.io
-[opentracing]: https://opentracing.io
 [propagators]: /docs/languages/go/instrumentation/#propagators-and-context
 [proto]: https://github.com/open-telemetry/opentelemetry-proto
 [receiver]: /docs/collector/configuration/#receivers
