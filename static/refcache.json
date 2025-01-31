@@ -13243,6 +13243,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-07T15:44:53.106127+02:00"
   },
+  "https://github.com/r0mdau": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-19T02:27:15.320730471Z"
+  },
+  "https://github.com/r0mdau/fluentforwardexporter": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-19T02:27:12.257107855Z"
+  },
   "https://github.com/raito-io/neo4j-tracing": {
     "StatusCode": 206,
     "LastSeen": "2025-01-15T11:26:10.993794-05:00"
@@ -16618,6 +16626,10 @@
   "https://pkg.go.dev/github.com/openclarity/apiclarity/plugins/otel-collector/apiclarityexporter": {
     "StatusCode": 200,
     "LastSeen": "2024-08-12T17:56:07.964057+02:00"
+  },
+  "https://pkg.go.dev/github.com/r0mdau/fluentforwardexporter": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-19T02:27:20.088750393Z"
   },
   "https://pkg.go.dev/github.com/segmentio/kafka-go": {
     "StatusCode": 200,
