@@ -20,7 +20,7 @@ async function writeRefcache(cache) {
   console.log(`Updated ${CACHE_FILE} with fixed links.`);
 }
 
-// Retry HTTP status check for refcache URLs wit non-200s and not 404
+// Retry HTTP status check for refcache URLs with non-200s and not 404
 async function retry400sAndUpdateCache() {
   const cache = await readRefcache();
   let updated = false;
