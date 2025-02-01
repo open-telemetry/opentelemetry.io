@@ -67,7 +67,7 @@ export function isHttp2XX(status) {
 }
 
 export async function getUrlStatus(url) {
-  let status = 0; // await getUrlHeadless(url);
+  let status = await getUrlHeadless(url);
   if (!isHttp2XX(status)) {
     status = await getUrlInBrowser(url);
   }
