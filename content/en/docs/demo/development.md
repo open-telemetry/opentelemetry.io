@@ -1,7 +1,6 @@
 ---
 title: Development
-# prettier-ignore
-cSpell:ignore: grpcio intellij libcurl libprotobuf nlohmann openssl protoc rebar
+cSpell:ignore: grpcio intellij libcurl libprotobuf nlohmann openssl protoc
 ---
 
 [OpenTelemetry Demo GitHub repository](https://github.com/open-telemetry/opentelemetry-demo)

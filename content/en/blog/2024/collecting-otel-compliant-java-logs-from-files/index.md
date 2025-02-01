@@ -8,7 +8,7 @@ author: >
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/5606
 sig: Java, Specification
 # prettier-ignore
-cSpell:ignore: Clerc cust Cyrille Dotel Gregor Logback logback otlphttp otlpjson resourcedetection SLF4J stdout Zeitlinger
+cSpell:ignore: Clerc cust Cyrille Dotel Gregor logback otlphttp otlpjson resourcedetection SLF4J stdout Zeitlinger
 ---
 
 If you want to get logs from your Java application ingested into an
