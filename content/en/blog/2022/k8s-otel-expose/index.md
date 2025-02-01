@@ -4,7 +4,7 @@ linkTitle: Exposing a Collector
 date: 2022-09-08
 author: '[Benedikt Bongartz](https://github.com/frzifus)'
 # prettier-ignore
-cSpell:ignore: basicauth Benedikt Bongartz dXNlci0xOjEyMzQK frzifus htpasswd k8sattributes K8sattributes k8sattributesprocessor K8sprocessor k8sprocessor Keycloak letsencrypt llczt oidc rolebinding
+cSpell:ignore: basicauth Benedikt Bongartz dXNlci0xOjEyMzQK frzifus htpasswd k8sattributes k8sattributesprocessor Keycloak letsencrypt llczt oidc rolebinding
 ---
 
 Exposing an [OpenTelemetry Collector](/docs/collector/) currently requires a

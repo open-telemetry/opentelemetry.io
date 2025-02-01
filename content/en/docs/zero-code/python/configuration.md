@@ -5,8 +5,7 @@ weight: 10
 aliases:
   - /docs/languages/python/automatic/configuration
   - /docs/languages/python/automatic/agent-config
-# prettier-ignore
-cSpell:ignore: distro healthcheck instrumentor mkdir myapp pyproject Starlette uninstrumented urllib virtualenv
+cSpell:ignore: healthcheck instrumentor myapp pyproject Starlette urllib
 ---
 
 The agent is highly configurable, either by:
