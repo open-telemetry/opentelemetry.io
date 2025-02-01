@@ -8959,6 +8959,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-10-23T20:19:13.793874-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-01T02:33:56.495897618Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/declarative-configuration": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:46.452153-05:00"
