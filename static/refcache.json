@@ -2399,9 +2399,17 @@
     "StatusCode": 206,
     "LastSeen": "2024-07-10T17:01:44.550734457Z"
   },
+  "https://docs.aws.amazon.com/lambda/latest/dg/runtimes-extensions-api.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-24T22:43:02.419614644Z"
+  },
   "https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html": {
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:54:20.250322-05:00"
+  },
+  "https://docs.aws.amazon.com/lambda/latest/dg/telemetry-api.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-24T22:43:04.492478898Z"
   },
   "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html": {
     "StatusCode": 206,
@@ -9947,9 +9955,17 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:25.504793-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-lambda/blob/main/collector/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-24T22:43:01.001644641Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-lambda/releases": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:44:10.275849-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-lambda/releases/tag/layer-collector%2F0.12.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-24T22:43:07.062401954Z"
   },
   "https://github.com/open-telemetry/opentelemetry-operator": {
     "StatusCode": 206,
@@ -13634,6 +13650,10 @@
   "https://github.com/thanos-io/thanos": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:45:45.030209-04:00"
+  },
+  "https://github.com/theSuess": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-24T22:42:58.33209764Z"
   },
   "https://github.com/thegeekyasian/go-chi-otel": {
     "StatusCode": 200,
