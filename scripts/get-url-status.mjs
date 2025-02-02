@@ -2,6 +2,7 @@
 
 import puppeteer from 'puppeteer';
 
+const cratesIoURL = 'https://crates.io/crates/';
 let verbose = false;
 
 function log(...args) {
@@ -24,8 +25,18 @@ async function getUrlHeadless(url) {
 
     if (!response) throw new Error('No response from server.');
 
-    const status = response.status();
-    log(` Headless fetch returned HTTP status code: ${status}`);
+    let status = response.status();
+    const title = await page.title();
+
+    // Handles special case of crates.io. For details, see:
+    // https://github.com/rust-lang/crates.io/issues/788
+    if (url.startsWith(cratesIoURL)) {
+      const crateName = url.split('/').pop();
+      // Crate found iff title is `${crateName} - crates.io: Rust Package Registry`
+      if (!title.startsWith(crateName)) status = 404;
+    }
+    
+    log(`Headless fetch returned HTTP status code: ${status}; page title: '${title}'`);
 
     return status;
   } catch (error) {
@@ -66,9 +77,11 @@ export function isHttp2XX(status) {
   return status && status >= 200 && status < 300;
 }
 
-export async function getUrlStatus(url) {
+export async function getUrlStatus(url, _verbose = false) {
+  verbose = _verbose;
   let status = await getUrlHeadless(url);
-  if (!isHttp2XX(status)) {
+  // If headless fetch fails, try in browser for non-404 statuses
+  if (!isHttp2XX(status) && status !== 404) {
     status = await getUrlInBrowser(url);
   }
   return status;
@@ -83,7 +96,7 @@ async function mainCLI() {
     process.exit(1);
   }
 
-  const status = await getUrlStatus(url);
+  const status = await getUrlStatus(url, verbose);
   process.exit(isHttp2XX(status) ? 0 : 1);
 }
 
