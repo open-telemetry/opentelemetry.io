@@ -18,19 +18,19 @@ cSpell:ignore: otelcollector otlphttp spanmetrics tracetest tracetesting
 
 ## デモの取得と実行
 
-1. デモリポジトリをクローン:
+1. デモリポジトリをクローンしてください。
 
    ```shell
    git clone https://github.com/open-telemetry/opentelemetry-demo.git
    ```
 
-2. デモフォルダに移動:
+2. デモフォルダに移動します。
 
    ```shell
    cd opentelemetry-demo/
    ```
 
-3. デモを起動[^1]:
+3. デモを起動[^1]します。
 
    {{< tabpane text=true >}} {{% tab Make %}}
 
@@ -46,7 +46,7 @@ docker compose up --force-recreate --remove-orphans --detach
 
     {{% /tab %}} {{< /tabpane >}}
 
-4. (オプション) API オブザーバビリティ駆動テストの有効化[^1]:
+4. (オプション) API オブザーバビリティ駆動テストの有効化[^1]します。
 
    {{< tabpane text=true >}} {{% tab Make %}}
 
@@ -64,7 +64,7 @@ docker compose -f docker-compose-tests.yml run traceBasedTests
 
 ## ウェブストアとテレメトリーの確認
 
-イメージがビルドされ、コンテナが開始されるとアクセスできるようになります:
+イメージがビルドされ、コンテナが開始されると以下にアクセスできるようになります。
 
 - Web store: <http://localhost:8080/>
 - Grafana: <http://localhost:8080/grafana/>
