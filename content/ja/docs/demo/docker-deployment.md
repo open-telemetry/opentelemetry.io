@@ -106,7 +106,7 @@ OpenTelemetry コレクターはテレメトリーデータを複数のバック
 
 あなたのバックエンドに追加するために、エディターで[src/otelcollector/otelcol-config-extras.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otelcollector/otelcol-config-extras.yml)ファイルを開いてください。
 
-- 新しいエクスポーターを追加することで始めます。例えば、もしあなたのバックエンドが OTLP over HTTP をサポートしているのであれば、以下を追加してください:
+- 新しいエクスポーターを追加することで始めます。 例えば、もしあなたのバックエンドが OTLP over HTTP をサポートしているのであれば、以下を追加してください。
 
   ```yaml
   exporters:
