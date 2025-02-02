@@ -8,16 +8,12 @@ To enable OpenTelemetry in your Quarkus application, add the
 
 {{< tabpane >}} {{< tab header="Maven (`pom.xml`)" lang=Maven >}}
 
-````xml
-
-{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
-
 ```xml
 <dependency>
     <groupId>io.quarkus</groupId>
     <artifactId>quarkus-opentelemetry</artifactId>
 </dependency>
-````
+```
 
 {{% /tab %}} {{% tab header="Gradle (`build.gradle`)" lang=Gradle %}}
 
@@ -44,7 +40,6 @@ The remaining configurations are available in the
 {{% alert title="Note" color="info" %}}
 
 You can also use the [Java agent](../../agent) to instrument your Quarkus
-application in JVM mode. For the pros and cons, see
-[Java zero-code instrumentation](..).
+application in a JVM.
 
 {{% /alert %}}
