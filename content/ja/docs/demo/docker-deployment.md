@@ -78,7 +78,7 @@ docker compose -f docker-compose-tests.yml run traceBasedTests
 デフォルトでは、デモアプリケーションは 8080 ポートにバウンドされたすべてのブラウザのトラフィックに対してプロキシを開始します。
 ポート番号を変更するには、デモを開始する前に環境変数 `ENVOY_PORT` を設定してください。
 
-- 例、8081 ポートを利用する場合[^1]:
+- 次の設定は 8081 ポートを利用する場合の例です。
 
   {{< tabpane text=true >}} {{% tab Make %}}
 
