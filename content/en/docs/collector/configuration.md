@@ -628,6 +628,26 @@ service:
       exporters: [opencensus, zipkin]
 ```
 
+When you need to create more pipelines for the same type, use `type[/name]` form as 
+described in [design doc](https://github.com/open-o11y/opentelemetry-collector-testing/blob/master/docs/design.md#receivers)
+
+```yaml
+service:
+  pipelines:
+    metrics:
+      receivers: [opencensus, prometheus]
+      processors: [batch]
+      exporters: [opencensus, prometheus]
+    traces:
+      receivers: [opencensus, jaeger]
+      processors: [batch, memory_limiter]
+      exporters: [opencensus, zipkin]
+    traces/better_pipeline:
+      receivers: [opencensus]
+      processors: [batch]
+      exporters: [zipkin]
+```
+
 ### Telemetry
 
 The `telemetry` config section is where you can set up observability for the
