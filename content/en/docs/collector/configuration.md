@@ -638,6 +638,24 @@ service:
       processors: [batch, memory_limiter]
       exporters: [opencensus, zipkin]
 ```
+As with components, use the `type[/name]` syntax to create additional pipelines for a given type.
+
+```yaml
+service:
+  pipelines:
+    metrics:
+      receivers: [opencensus, prometheus]
+      processors: [batch]
+      exporters: [opencensus, prometheus]
+    traces:
+      receivers: [opencensus, jaeger]
+      processors: [batch, memory_limiter]
+      exporters: [opencensus, zipkin]
+    traces/better_pipeline:
+      receivers: [opencensus]
+      processors: [batch]
+      exporters: [zipkin]
+```
 
 ### Telemetry
 
