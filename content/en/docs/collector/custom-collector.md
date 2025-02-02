@@ -98,15 +98,14 @@ configure the code generation and compile process. In fact, all the tags for
 
 Here are the tags for the `dist` map:
 
-| Tag              | Description                                                                                        | Optional | Default Value                                                                     |
-| ---------------- | -------------------------------------------------------------------------------------------------- | -------- | --------------------------------------------------------------------------------- |
-| module:          | The module name for the new distribution, following Go mod conventions. Optional, but recommended. | Yes      | `go.opentelemetry.io/collector/cmd/builder`                                       |
-| name:            | The binary name for your distribution                                                              | Yes      | `otelcol-custom`                                                                  |
-| description:     | A long name for the application.                                                                   | Yes      | `Custom OpenTelemetry Collector distribution`                                     |
-| otelcol_version: | The OpenTelemetry Collector version to use as base for the distribution.                           | Yes      | `{{% version-from-registry collector-builder noPrefix %}}`                        |
-| output_path:     | The path to write the output (sources and binary).                                                 | Yes      | `/var/folders/86/s7l1czb16g124tng0d7wyrtw0000gn/T/otelcol-distribution3618633831` |
-| version:         | The version for your custom OpenTelemetry Collector.                                               | Yes      | `1.0.0`                                                                           |
-| go:              | Which Go binary to use to compile the generated sources.                                           | Yes      | go from the PATH                                                                  |
+| Tag          | Description                                                                                        | Optional | Default Value                                                                     |
+| ------------ | -------------------------------------------------------------------------------------------------- | -------- | --------------------------------------------------------------------------------- |
+| module:      | The module name for the new distribution, following Go mod conventions. Optional, but recommended. | Yes      | `go.opentelemetry.io/collector/cmd/builder`                                       |
+| name:        | The binary name for your distribution                                                              | Yes      | `otelcol-custom`                                                                  |
+| description: | A long name for the application.                                                                   | Yes      | `Custom OpenTelemetry Collector distribution`                                     |
+| output_path: | The path to write the output (sources and binary).                                                 | Yes      | `/var/folders/86/s7l1czb16g124tng0d7wyrtw0000gn/T/otelcol-distribution3618633831` |
+| version:     | The version for your custom OpenTelemetry Collector.                                               | Yes      | `1.0.0`                                                                           |
+| go:          | Which Go binary to use to compile the generated sources.                                           | Yes      | go from the PATH                                                                  |
 
 As you can see on the table above, all the `dist` tags are optional, so you will
 be adding custom values for them depending if your intentions to make your
@@ -125,7 +124,6 @@ dist:
   name: otelcol-dev
   description: Basic OTel Collector distribution for Developers
   output_path: ./otelcol-dev
-  otelcol_version: 0.114.0
 ```
 
 Now you need to add the modules representing the components you want to be
@@ -149,7 +147,6 @@ dist:
   name: otelcol-dev
   description: Basic OTel Collector distribution for Developers
   output_path: ./otelcol-dev
-  otelcol_version: {{% version-from-registry collector-builder noPrefix %}}
 
 exporters:
   - gomod:

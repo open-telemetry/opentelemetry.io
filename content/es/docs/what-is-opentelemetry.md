@@ -102,7 +102,7 @@ puede extender incluyen:
 - Cargar librerías de instrumentación personalizadas en un SDK.
 - Crear una [distribución](/docs/concepts/distributions/) de un SDK o Collector
   adaptada a un caso de uso específico.
-- Crear un nuevo exportador para un backend personalizado que aún no admite el  
+- Crear un nuevo exportador para un backend personalizado que aún no admite el
   protocolo OpenTelemetry (OTLP).
 - Crear un propagador personalizado para un formato de propagación de contexto
   que no es estándar.

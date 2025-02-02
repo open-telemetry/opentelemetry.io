@@ -955,6 +955,7 @@ maintainers:
       - dotnet-instrumentation-approvers
       - dotnet-instrumentation-maintainers
       - dotnet-instrumentation-triagers
+      - dotnet-maintainers
       - dotnet-triagers
     html_url: https://github.com/rajkumar-rangaraj
     avatar_url: https://avatars.githubusercontent.com/u/9479006?v=4
@@ -1855,6 +1856,11 @@ approvers:
     html_url: https://github.com/zsistla
     avatar_url: https://avatars.githubusercontent.com/u/43715151?v=4
 triagers:
+  - name: abhee11
+    teams:
+      - javascript-contrib-triagers
+    html_url: https://github.com/abhee11
+    avatar_url: https://avatars.githubusercontent.com/u/6670495?v=4
   - name: anosek-an
     teams:
       - java-contrib-triagers
@@ -2344,6 +2350,9 @@ members:
   - name: ppittle
     html_url: https://github.com/ppittle
     avatar_url: https://avatars.githubusercontent.com/u/1190907?v=4
+  - name: raphael-theriault-swi
+    html_url: https://github.com/raphael-theriault-swi
+    avatar_url: https://avatars.githubusercontent.com/u/113933910?v=4
   - name: rauno56
     html_url: https://github.com/rauno56
     avatar_url: https://avatars.githubusercontent.com/u/1334536?v=4

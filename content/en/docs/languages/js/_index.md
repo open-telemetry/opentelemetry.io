@@ -6,7 +6,6 @@ description: >-
   JavaScript (for Node.js & the browser).
 aliases: [/js, /js/metrics, /js/tracing]
 weight: 20
-cSpell:ignore: Roadmap
 ---
 
 {{% docs/languages/index-intro js /%}}

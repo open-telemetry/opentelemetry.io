@@ -3,7 +3,7 @@ title: Navegador
 aliases: [/docs/js/getting_started/browser]
 description: Aprenda como adicionar o OpenTelemetry à sua aplicação de navegador
 weight: 20
-default_lang_commit: 1f6a173c26d1e194696ba77e95b6c3af40234952
+default_lang_commit: 7cb1bd39726fc03698164ee17fe9087afdac054c
 ---
 
 {{% alert title="Aviso" color="warning" %}}
@@ -38,7 +38,7 @@ Copie o conteúdo a seguir em um arquivo em um diretório vazio e salve-o como
     <base href="/" />
     <!--
       https://www.w3.org/TR/trace-context/
-      Defina o `traceparent` no código do template HTML do servidor. Ele 
+      Defina o `traceparent` no código do template HTML do servidor. Ele
       deve ser gerado dinamicamente pelo servidor para conter o ID do rastro
       da requisição do servidor, um ID de trecho pai que foi definido no trecho
       da requisição do servidor e as flags de rastro para indicar a decisão de

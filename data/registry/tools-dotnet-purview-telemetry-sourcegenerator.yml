@@ -38,4 +38,4 @@ createdAt: 2024-04-26
 package:
   registry: nuget
   name: Purview.Telemetry.SourceGenerator
-  version: 1.1.0
+  version: 2.0.0

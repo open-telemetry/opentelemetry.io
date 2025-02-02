@@ -1,7 +1,6 @@
 ---
 title: Manual Span Attributes
 aliases: [manual_span_attributes, ../manual-span-attributes]
-cSpell:ignore: featureflag
 ---
 
 This page lists the manual Span Attributes used throughout the demo:

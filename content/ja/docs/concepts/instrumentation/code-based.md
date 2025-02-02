@@ -3,7 +3,6 @@ title: コードベース
 description: コードベース計装のセットアップに不可欠なステップを学ぶ
 weight: 20
 default_lang_commit: d8c5612
-cSpell:ignore: proxying
 ---
 
 ## OpenTelemetry APIとSDKをインポートする {#import-the-opentelemetry-api-and-sdk}
