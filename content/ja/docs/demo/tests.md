@@ -1,7 +1,7 @@
 ---
 title: テスト
-cSpell:ignore: Tracetest
 default_lang_commit: 99b15da7137cde4a6352576768f4c9203170d569
+cSpell:ignore: Tracetest
 ---
 
 現在、このリポジトリにはフロントエンドとバックエンドの両サービスのE2Eテストが含まれています。
