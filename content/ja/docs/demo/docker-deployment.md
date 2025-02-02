@@ -99,7 +99,7 @@ ENVOY_PORT=8081 docker compose up --force-recreate --remove-orphans --detach
 おそらく、あなたがすでに所持しているオブザーバビリティバックエンド（たとえば、Jaeger、Zipkin、または[選択したベンダー](/ecosystem/vendors/)のいずれかの既存インスタンス）のデモアプリケーションとしてウェブストアを利用したいでしょう。
 
 OpenTelemetry コレクターはテレメトリーデータを複数のバックエンドに送信するのに利用可能です。
-デフォルトで、デモアプリケーションのコレクターは 2 つのファイルから設定をマージします:
+デフォルトで、デモアプリケーションのコレクターは 2 つのファイルから設定をマージします。
 
 - `otelcol-config.yml`
 - `otelcol-config-extras.yml`
