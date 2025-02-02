@@ -35,8 +35,10 @@ async function getUrlHeadless(url) {
       // Crate found iff title is `${crateName} - crates.io: Rust Package Registry`
       if (!title.startsWith(crateName)) status = 404;
     }
-    
-    log(`Headless fetch returned HTTP status code: ${status}; page title: '${title}'`);
+
+    log(
+      `Headless fetch returned HTTP status code: ${status}; page title: '${title}'`,
+    );
 
     return status;
   } catch (error) {
