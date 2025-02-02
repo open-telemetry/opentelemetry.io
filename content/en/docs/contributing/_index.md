@@ -2,7 +2,6 @@
 title: Contributing
 aliases: [/docs/contribution-guidelines]
 weight: 980
-default_lang_commit: 4c5ca8e5b0876832ced6c1b57f8099f796794462
 ---
 
 Thanks for your interest in contributing to the OpenTelemetry docs and website.
