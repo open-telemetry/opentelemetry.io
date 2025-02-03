@@ -1,0 +1,23 @@
+# cSpell:ignore fluentforwardexporter r0mdau
+title: Fluent Forward Exporter
+registryType: exporter
+language: collector
+tags:
+  - go
+  - exporter
+  - collector
+license: Apache 2.0
+description:
+  The OpenTelemetry Collector Exporter for the Fluent Forward protocol
+authors:
+  - name: Romain Dauby
+    url: https://github.com/r0mdau
+urls:
+  repo: https://github.com/r0mdau/fluentforwardexporter
+createdAt: 2023-11-19
+isNative: false
+isFirstParty: false
+package:
+  registry: go-collector
+  name: github.com/r0mdau/fluentforwardexporter
+  version: v0.3.1

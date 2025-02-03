@@ -1,7 +1,7 @@
 ---
 title: Primeiros Passos
 weight: 10
-default_lang_commit: 7fd0d2a6b87d6bbf2d5a35340c7afbd2bb33ca1c
+default_lang_commit: a025c25aaf1aef653caa34e49e8714472cbeddbd
 # prettier-ignore
 cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace strconv
 ---
@@ -141,7 +141,7 @@ qualquer aplicação que exporte telemetria.
 Crie um arquivo `otel.go` com o código de inicialização do SDK OpenTelemetry:
 
 <!-- prettier-ignore-start -->
-<?code-excerpt "otel.go" from="package main"?>
+<!-- code-excerpt "otel.go" from="package main"?-->
 ```go
 package main
 
@@ -280,7 +280,7 @@ OpenTelemetry e instrumenta o servidor HTTP utilizando a biblioteca de
 instrumentação `otelhttp`:
 
 <!-- prettier-ignore-start -->
-<?code-excerpt "main.go" from="package main"?>
+<--?code-excerpt "main.go" from="package main"?-->
 ```go
 package main
 
@@ -381,7 +381,7 @@ Modifique o arquivo `rolldice.go` para incluir instrumentação personalizada
 usando a API do OpenTelemetry:
 
 <!-- prettier-ignore-start -->
-<?code-excerpt "rolldice.go" from="package main"?>
+<!--?code-excerpt "rolldice.go" from="package main"?-->
 ```go
 package main
 
