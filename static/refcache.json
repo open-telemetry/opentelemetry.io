@@ -2891,6 +2891,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T13:05:48.070495-05:00"
   },
+  "https://github.com/aws-observability/aws-otel-js": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-03T10:28:17.890526733Z"
+  },
+  "https://github.com/aws-observability/aws-otel-python": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-03T10:28:21.284075121Z"
+  },
   "https://github.com/bacherfl": {
     "StatusCode": 200,
     "LastSeen": "2024-11-18T23:18:23.510566336Z"
