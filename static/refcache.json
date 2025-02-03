@@ -11187,6 +11187,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T17:00:28.710746-05:00"
   },
+  "https://github.com/open-telemetry/semantic-conventions/tree/v1.30.0//model/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-31T11:53:20.146597302Z"
+  },
   "https://github.com/open-telemetry/sig-end-user": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:10:56.03728-05:00"
@@ -11234,6 +11238,10 @@
   "https://github.com/open-telemetry/weaver/blob/main/schemas/semconv-syntax.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:20:31.233996-05:00"
+  },
+  "https://github.com/open-telemetry/weaver/blob/main/schemas/semconv-syntax.md#type": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-31T11:53:21.912957821Z"
   },
   "https://github.com/openclarity/apiclarity/tree/master/plugins/otel-collector": {
     "StatusCode": 206,
@@ -12150,6 +12158,10 @@
   "https://github.com/typelevel/otel4s": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:44:21.513655-05:00"
+  },
+  "https://github.com/ua-parser": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-31T11:53:39.98350708Z"
   },
   "https://github.com/udhos/opentelemetry-trace-sqs": {
     "StatusCode": 206,
