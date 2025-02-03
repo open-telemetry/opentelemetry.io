@@ -1,0 +1,12 @@
+# Community
+[community_introduce]
+other = "{{ .Site.Title }} 是一个开源项目，社区中的任何人都可以使用、改进并享受。我们诚邀您加入我们！"
+[community_contribute]
+other = """
+了解如何贡献给 {{ .Site.Title }} 文档,
+请见 [贡献指南](/docs/contributing/)。或其他有用的链接：
+"""
+[community_how_to]
+other = "有关我们的文档风格指南和更多，请见："
+[community_guideline]
+other = "作出贡献"
