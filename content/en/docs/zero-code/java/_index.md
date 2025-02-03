@@ -11,5 +11,5 @@ cascade:
 ---
 
 Zero-code instrumentation with Java uses a Java agent JAR, Spring Boot
-Starter or Quarkus. To learn how to manually instrument your service or app code, see
+Starter, or Quarkus. To learn how to manually instrument your service or app code, see
 [Manual instrumentation](/docs/languages/java/instrumentation/).
