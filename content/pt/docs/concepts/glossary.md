@@ -1,8 +1,7 @@
 ---
 title: Glossário
 description: >-
-  Terminologias utilizadas pelo projeto OpenTelemetry que você pode ou não estar
-  familiarizado.
+  Definições e convenções para termos de telemetria conforme usados no OpenTelemetry.
 weight: 200
 default_lang_commit: f37118d8489a60d73dd881645f317d866b53b418
 ---
