@@ -2,8 +2,7 @@
 title: コレクターのインストール
 weight: 2
 default_lang_commit: a570a00
-# prettier-ignore
-cSpell:ignore: darwin dpkg GOARCH journalctl kubectl otelcorecol pprof tlsv zpages
+cSpell:ignore: darwin dpkg journalctl kubectl otelcorecol pprof tlsv zpages
 ---
 
 OpenTelemetryコレクターはさまざまなオペレーティングシステムやアーキテクチャにデプロイできます。
