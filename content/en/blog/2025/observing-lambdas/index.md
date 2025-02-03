@@ -4,6 +4,8 @@ author: '[Dominik Süß](https://github.com/theSuess) (Grafana)'
 linkTitle: Observing Lambdas
 date: 2025-02-03
 cSpell:ignore: Dominik
+sig: FaaS
+issue: 5961
 ---
 
 Getting telemetry data out of modern applications is very straightforward (or at
