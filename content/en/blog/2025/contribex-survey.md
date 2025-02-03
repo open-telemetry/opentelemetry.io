@@ -18,11 +18,11 @@ Since then, the SIG has worked on several initiatives, including an [Outreachy
 project][5] to develop [up-to-date contributor docs][4].
 
 To inform future initiatives and help us understand the current state of the
-contributor experience, we are launching today our first official Contributor
+contributor experience, today we are launching our first official Contributor
 Experience Survey. If you have ever contributed to the project, be it with code,
 documentation, or in a different way, we want to hear from you! The survey
-should take between five and ten minutes, and is **open from February 17th up
-until March 17th**.
+should take between five and ten minutes, and is **open from February 17th to
+March 17th**.
 
 The survey is anonymous; only [maintainers of the Contributor Experience SIG][7]
 will see your full individual answers. We will share an aggregate analysis of
