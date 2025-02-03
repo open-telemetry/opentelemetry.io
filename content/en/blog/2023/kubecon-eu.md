@@ -42,7 +42,7 @@ Come network with OpenTelemetry maintainers and core contributors during the
 2023 from 16:00 - 17:00. You can attend with a _standard in-person pass_.
 
 [Observability Day][] _fosters collaboration, discussion, and knowledge sharing
-of cloud-native observability projects_. This event will be held on April 18,
+of cloud native observability projects_. This event will be held on April 18,
 2023 from 9:00 - 17:00. There will be several sessions on OpenTelemetry as well.
 
 > <i class="far fa-exclamation-triangle"></i> **IMPORTANT access note**: You

@@ -69,7 +69,7 @@ at the chance to work with it.
 ### What is the architecture at Farfetch like? How has OpenTelemetry helped?
 
 Farfetch currently has 2000 engineers, with a complex and varied architecture
-which includes cloud-native, Kubernetes, and virtual machines running on three
+which includes cloud native, Kubernetes, and virtual machines running on three
 different cloud providers. There is a lot of information coming from everywhere,
 with a lack of standardization on how to collect this information. For example,
 Prometheus is used mostly as a standard for collecting metrics; however, in some

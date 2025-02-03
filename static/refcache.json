@@ -12355,6 +12355,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:05.193348-05:00"
   },
+  "https://glossary.cncf.io/cloud-native-apps/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-03T05:30:54.785412-05:00"
+  },
   "https://go.dev/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-30T14:41:02.735818-05:00"
