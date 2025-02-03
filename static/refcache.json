@@ -535,6 +535,106 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-13T12:41:25.904834-05:00"
   },
+  "https://crates.io/crates/actix-web-opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T17:57:45.084Z"
+  },
+  "https://crates.io/crates/axum-tracing-opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T17:57:47.339Z"
+  },
+  "https://crates.io/crates/opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T17:57:49.61Z"
+  },
+  "https://crates.io/crates/opentelemetry-api": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T18:05:36.945Z"
+  },
+  "https://crates.io/crates/opentelemetry-application-insights": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T17:57:54.019Z"
+  },
+  "https://crates.io/crates/opentelemetry-aws": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T17:57:56.112Z"
+  },
+  "https://crates.io/crates/opentelemetry-contrib": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T17:57:58.245Z"
+  },
+  "https://crates.io/crates/opentelemetry-datadog": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T17:58:00.377Z"
+  },
+  "https://crates.io/crates/opentelemetry-dynatrace": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T17:58:02.494Z"
+  },
+  "https://crates.io/crates/opentelemetry-http": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T17:58:04.819Z"
+  },
+  "https://crates.io/crates/opentelemetry-jaeger": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T17:58:07.016Z"
+  },
+  "https://crates.io/crates/opentelemetry-jaeger-propagator": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T17:58:09.226Z"
+  },
+  "https://crates.io/crates/opentelemetry-otlp": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T17:58:11.386Z"
+  },
+  "https://crates.io/crates/opentelemetry-prometheus": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T17:58:13.549Z"
+  },
+  "https://crates.io/crates/opentelemetry-sdk": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T18:05:39.108Z"
+  },
+  "https://crates.io/crates/opentelemetry-semantic-conventions": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T17:58:17.816Z"
+  },
+  "https://crates.io/crates/opentelemetry-stackdriver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T17:58:19.861Z"
+  },
+  "https://crates.io/crates/opentelemetry-stdout": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T17:58:22.05Z"
+  },
+  "https://crates.io/crates/opentelemetry-tide": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T17:58:24.207Z"
+  },
+  "https://crates.io/crates/opentelemetry-user-events-logs": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T17:58:28.107Z"
+  },
+  "https://crates.io/crates/opentelemetry-user-events-metrics": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T17:58:30.247Z"
+  },
+  "https://crates.io/crates/opentelemetry-zipkin": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T17:58:32.438Z"
+  },
+  "https://crates.io/crates/opentelemetry_sdk": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T17:58:34.619Z"
+  },
+  "https://crates.io/crates/tracing-opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T17:58:36.89Z"
+  },
+  "https://crates.io/crates/trillium-opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-02T18:16:27.365Z"
+  },
   "https://creativecommons.org/licenses/by/4.0": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:38:25.294134-05:00"
@@ -12354,6 +12454,10 @@
   "https://gitpod.io/workspaces": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:05.193348-05:00"
+  },
+  "https://glossary.cncf.io/cloud-native-apps/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-03T05:30:54.785412-05:00"
   },
   "https://go.dev/": {
     "StatusCode": 200,
