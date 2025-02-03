@@ -11,8 +11,8 @@ Esse glossário define termos e [conceitos](/docs/concepts/) que são novos no
 projeto do OpenTelemetry e esclarece os usos de termos específicos do
 OpenTelemetry, comuns no universo de observabilidade.
 
-Também comentamos sobre ortografia e capitalização, quando útil. Para visualizar
-um exemplo, consulte [OpenTelemetry](#opentelemetry) e [OTel](#otel).
+Também comentamos sobre ortografia e capitalização, quando útil. Por
+exemplo, consulte [OpenTelemetry](#opentelemetry) e [OTel](#otel).
 
 ## Termos {#terms}
 
