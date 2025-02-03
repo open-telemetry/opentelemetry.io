@@ -58,7 +58,7 @@ async function getUrlHeadless(url) {
       const crateName = url.split('/').pop();
       // E.g. 'https://crates.io/crates/opentelemetry-sdk' -> 'opentelemetry-sdk'
       const crateNameRegex = new RegExp(crateName.replace(/-/g, '[-_]'));
-      // Crate found iff title starts with createName (in kebab or snake case)
+      // Crate found if title starts with createName (in kebab or snake case)
       if (!crateNameRegex.test(title)) status = 404;
     }
 
