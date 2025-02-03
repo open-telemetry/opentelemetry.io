@@ -5,7 +5,7 @@ cSpell:ignore: bleh targetallocator
 
 If you’ve enabled
 [Target Allocator](/docs/kubernetes/operator/target-allocator/) service
-discovery on the [OpenTelemetry Operator](/docs/kubernetes/operator), and the
+discovery on the [OpenTelemetry Operator](/docs/kubernetes/operator/), and the
 Target Allocator is failing to discover scrape targets, there are a few
 troubleshooting steps that you can take to help you understand what’s going on
 and restore normal operation.
@@ -21,9 +21,8 @@ Kubernetes cluster.
 
 After you’ve deployed all of your resources to Kubernetes, make sure that the
 Target Allocator is discovering scrape targets from your
-[`ServiceMonitor`](https://prometheus-operator.dev/docs/operator/design/#servicemonitor)(s)
-or
-[`PodMonitor`](https://prometheus-operator.dev/docs/user-guides/getting-started/#using-podmonitors)(s).
+[`ServiceMonitor`](https://prometheus-operator.dev/docs/getting-started/design/#servicemonitor)(s)
+or [PodMonitor]s.
 
 Suppose that you have this `ServiceMonitor` definition:
 
@@ -386,9 +385,7 @@ Allocator will fail to discover scrape targets from that `ServiceMonitor`.
 
 {{% alert title="Tip" %}}
 
-The same applies if you’re using a
-[PodMonitor](https://prometheus-operator.dev/docs/user-guides/getting-started/#using-podmonitors).
-In that case, you would use a
+The same applies if you’re using a [PodMonitor]. In that case, you would use a
 [`podMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr)
 instead of a `serviceMonitorSelector`.
 
@@ -513,3 +510,6 @@ If you’re using `PodMonitor`, the same applies, except that it picks up
 Kubernetes pods that match on labels, namespaces, and named ports.
 
 {{% /alert %}}
+
+[PodMonitor]:
+  https://prometheus-operator.dev/docs/developer/getting-started/#using-podmonitors

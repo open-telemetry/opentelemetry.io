@@ -5,7 +5,7 @@ date: 2022-12-19
 author: '[Vijay Samuel](https://github.com/vjsamuel) (eBay)'
 canonical_url: https://tech.ebayinc.com/engineering/why-and-how-ebay-pivoted-to-opentelemetry/
 # prettier-ignore
-cSpell:ignore: Aishwarya Aradros Ashpole Auditbeat autodiscover Bhattacharya Bogdan Charif Christos clusterlocal Dropwizard Drutu Feldmeier Filebeat filereloadreceiver Golubenco Kroh kube Markou Metricbeat metricbeat Mirabella Nigaryan Premendra Pérez Rami Ruflin Santanu Sarbu sharded Siering Soriano statefulset Steffen Teoh Tigran Vijay Yandapalli
+cSpell:ignore: Aishwarya Aradros Ashpole Auditbeat autodiscover Bhattacharya Bogdan Charif Christos clusterlocal Dropwizard Drutu Feldmeier Filebeat filereloadreceiver Golubenco Kroh kube Markou metricbeat Mirabella Nigaryan Premendra Pérez Rami Ruflin Santanu Sarbu sharded Siering Soriano statefulset Steffen Teoh Tigran Vijay Yandapalli
 ---
 
 eBay makes a crucial pivot to OpenTelemetry to better align with industry
