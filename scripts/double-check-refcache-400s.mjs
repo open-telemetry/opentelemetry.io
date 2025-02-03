@@ -34,7 +34,7 @@ async function retry400sAndUpdateCache() {
     }
 
     process.stdout.write(`Checking: ${url} (was ${StatusCode})... `);
-    const status = await getUrlStatus(url);
+    const status = await getUrlStatus(url, true);
     console.log(`${status}.`);
 
     if (!isHttp2XX(status)) continue;

@@ -10007,6 +10007,50 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:04.503997-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-02T12:11:00.765175-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/blog.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-02T12:10:58.811797-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-02T12:11:01.039226-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/content/en/docs/specs/status.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-02T12:11:42.468045-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-02T12:10:57.073038-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/adopters.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-02T12:10:58.803368-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/distributions.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-02T12:11:03.290407-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/vendors.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-02T12:11:04.640959-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/data/registry": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-02T12:10:58.178169-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/shortcodes/docs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-02T12:10:59.64214-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/templates/registry-entry.yml": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-02T12:11:00.926611-05:00"
+  },
   "https://github.com/open-telemetry/otel-arrow": {
     "StatusCode": 206,
     "LastSeen": "2025-01-30T17:00:10.089894-05:00"
