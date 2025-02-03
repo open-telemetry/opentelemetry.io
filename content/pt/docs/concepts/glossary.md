@@ -1,7 +1,8 @@
 ---
 title: Glossário
 description: >-
-  Definições e convenções para termos de telemetria conforme usados no OpenTelemetry.
+  Definições e convenções para termos de telemetria conforme usados no
+  OpenTelemetry.
 weight: 200
 default_lang_commit: f37118d8489a60d73dd881645f317d866b53b418
 ---
@@ -10,8 +11,8 @@ Esse glossário define termos e [conceitos](/docs/concepts/) que são novos no
 projeto do OpenTelemetry e esclarece os usos de termos específicos do
 OpenTelemetry, comuns no universo de observabilidade.
 
-Também comentamos sobre ortografia e capitalização, quando útil. Por
-exemplo, consulte [OpenTelemetry](#opentelemetry) e [OTel](#otel).
+Também comentamos sobre ortografia e capitalização, quando útil. Por exemplo,
+consulte [OpenTelemetry](#opentelemetry) e [OTel](#otel).
 
 ## Termos {#terms}
 
