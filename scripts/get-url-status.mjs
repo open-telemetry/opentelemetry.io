@@ -1,26 +1,50 @@
 #!/usr/bin/env node
 
-import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer'; // Consider using puppeteer-core
 
 const cratesIoURL = 'https://crates.io/crates/';
 let verbose = false;
 
 function log(...args) {
-  if (verbose) console.log(...args);
+  if (!verbose) return;
+  const lastArg = args[args.length - 1];
+  if (typeof lastArg === 'string' && lastArg.endsWith(' ')) {
+    process.stdout.write(args.join(' '));
+  } else {
+    console.log(...args);
+  }
 }
 
 async function getUrlHeadless(url) {
+  // Get the URL, headless, while trying our best to avoid triggering
+  // bot-rejection from some servers. Returns the HTTP status code.
+
+  log(`Headless fetch of ${url} ... `);
+
   let browser;
-
-  log(`Trying headless fetch of ${url}`);
-
   try {
-    browser = await puppeteer.launch();
+    // cSpell:ignore KHTML
+    const userAgent =
+      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
+      '(KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36';
+
+    browser = await puppeteer.launch({
+      headless: true,
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        `--user-agent=${userAgent}`,
+      ],
+    });
     const page = await browser.newPage();
+    await page.setUserAgent(userAgent);
+    await page.setExtraHTTPHeaders({
+      'Accept-Language': 'en-US,en;q=0.9',
+    });
 
     const response = await page.goto(url, {
       waitUntil: 'networkidle2',
-      timeout: 9000,
+      timeout: 10_000,
     });
 
     if (!response) throw new Error('No response from server.');
@@ -32,13 +56,13 @@ async function getUrlHeadless(url) {
     // https://github.com/rust-lang/crates.io/issues/788
     if (url.startsWith(cratesIoURL)) {
       const crateName = url.split('/').pop();
-      // Crate found iff title is `${crateName} - crates.io: Rust Package Registry`
-      if (!title.startsWith(crateName)) status = 404;
+      // E.g. 'https://crates.io/crates/opentelemetry-sdk' -> 'opentelemetry-sdk'
+      const crateNameRegex = new RegExp(crateName.replace(/-/g, '[-_]'));
+      // Crate found iff title starts with createName (in kebab or snake case)
+      if (!crateNameRegex.test(title)) status = 404;
     }
 
-    log(
-      `Headless fetch returned HTTP status code: ${status}; page title: '${title}'`,
-    );
+    log(`${status}; page title: '${title}'`);
 
     return status;
   } catch (error) {
@@ -91,7 +115,7 @@ export async function getUrlStatus(url, _verbose = false) {
 
 async function mainCLI() {
   const url = process.argv[2];
-  verbose = true; // process.argv.includes('--verbose');
+  verbose = !process.argv.includes('--quiet');
 
   if (!url) {
     console.error(`Usage: ${process.argv[1]} URL`);
@@ -99,6 +123,8 @@ async function mainCLI() {
   }
 
   const status = await getUrlStatus(url, verbose);
+  if (!verbose) console.log(status);
+
   process.exit(isHttp2XX(status) ? 0 : 1);
 }
 
