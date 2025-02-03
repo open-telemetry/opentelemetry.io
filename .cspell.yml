@@ -10,10 +10,11 @@ import:
 caseSensitive: true
 ignorePaths:
   - '*.svg'
-  - data/community/members.yaml
-  - vendors.yaml
   - content/ja
   - content/zh
+  - data/community/members.yaml
+  - static/refcache.json
+  - vendors.yaml
 patterns:
   - name: CodeBlock
     pattern: |
