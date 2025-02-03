@@ -32,7 +32,7 @@ automaticamente propagam a Bagagem para você.
 
 ![OTel Baggage](../otel-baggage.svg)
 
-## Para que a Bagagem do OTel deve ser usada? {##what-should-otel-baggage-be-used-for}
+## Para que a Bagagem do OTel deve ser usada? {#what-should-otel-baggage-be-used-for}
 
 A Bagagem é mais adequada para incluir informações que normalmente estão
 disponíveis apenas no início de uma requisição e que precisam ser propagadas
