@@ -2,7 +2,7 @@
 title: Observing Lambdas using the OpenTelemetry Collector Extension Layer
 author: '[Dominik Süß](https://github.com/theSuess) (Grafana)'
 linkTitle: Observing Lambdas
-date: 2025-01-24
+date: 2025-02-03
 cSpell:ignore: Dominik
 ---
 
@@ -48,11 +48,11 @@ emits a logline, or the execution context is about to be shut down.
 ### This is where the magic happens
 
 Up until now, this just seems like extra work for nothing. You'll still have to
-wait for the Collector to ship the data, right? This is where the special
+wait for the Collector to export the data, right? This is where the special
 `decouple` processor comes in. It separates the receiving and exporting
 components while interfacing with the Lambda lifecycle. This allows for the
 Lambda to return, even if not all data has been sent. At the next invocation (or
-on shutdown) the Collector continues shipping the data while your function does
+on shutdown) the Collector continues exporting the data while your function does
 its thing.
 
 {{< figure src="diagram-execution-timing.svg" caption="Diagram showcasing how execution timing differs with and without a Collector">}}
@@ -72,14 +72,10 @@ Lambdas.
 The simplest way to get started is with an embedded configuration. For this, add
 a file called `collector.yaml` to your function. This is a regular Collector
 configuration file. To take advantage of the Lambda specific extensions, they
-need to be configured. As an example, the following configuration receives
-traces and logs from the Telemetry API and sends them to another endpoint:
+need to be configured. As an example, the configuration shown next receives
+traces and logs from the Telemetry API and sends them to another endpoint.
 
 ```yaml
-# The `decouple` processor is configured by default if omitted.
-# It is explicitly added in this example to illustrate the entire pipeline
-# More information can be found at
-# https://github.com/open-telemetry/opentelemetry-lambda/tree/main/collector#auto-configuration
 
 receivers:
  telemetryapi:
@@ -101,6 +97,11 @@ service:
  	exporters: [otlphttp/external]
 ```
 
+The `decouple` processor is configured by default if omitted. It is explicitly
+added in this example to illustrate the entire pipeline. For more information,
+see
+[Auto-configuration](https://github.com/open-telemetry/opentelemetry-lambda/tree/main/collector#auto-configuration).
+
 Afterward, set the `OPENTELEMETRY_COLLECTOR_CONFIG_URI` environment variable to
 `/var/task/collector.yaml`. Once the function is redeployed, you’ll see your
 function logs appear! You can see this in action in the video below.
@@ -111,12 +112,11 @@ function logs appear! You can see this in action in the video below.
   </video>
 </p>
 
-Every log line your Lambda produces will be shipped to the `external-collector`
+Every log line your Lambda produces will be sent to the `external-collector`
 endpoint specified. You don't need to modify the code at all! From there,
-telemetry data flows to your backend as usual. Since the shipping of telemetry
+telemetry data flows to your backend as usual. Since the transmission of telemetry
 data might be frozen when the lambda is not active, logs can arrive delayed.
 They'll either arrive during the next execution or during the shutdown interval.
 
-If you want further insight into your applications, be sure to also check out
-the
+If you want further insight into your applications, also see the
 [language specific auto instrumentation layers](https://github.com/open-telemetry/opentelemetry-lambda/?tab=readme-ov-file#extension-layer-language-support).
