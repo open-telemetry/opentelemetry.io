@@ -4,6 +4,7 @@ import fs from 'fs/promises';
 import { getUrlStatus, isHttp2XX } from './get-url-status.mjs';
 
 const CACHE_FILE = 'static/refcache.json';
+const cratesIoURL = 'https://crates.io/crates/';
 
 async function readRefcache() {
   try {
@@ -28,13 +29,14 @@ async function retry400sAndUpdateCache() {
   for (const [url, details] of Object.entries(cache)) {
     const { StatusCode, LastSeen } = details;
     if (isHttp2XX(StatusCode)) continue;
-    if (StatusCode === 404) {
+    if (StatusCode === 404 && !url.startsWith(cratesIoURL)) {
       console.log(`Skipping 404: ${url} (last seen ${LastSeen}).`);
       continue;
     }
 
-    process.stdout.write(`Checking: ${url} (was ${StatusCode})... `);
-    const status = await getUrlStatus(url, true);
+    process.stdout.write(`Checking: ${url} (was ${StatusCode}) ... `);
+    const verbose = false;
+    const status = await getUrlStatus(url, verbose);
     console.log(`${status}.`);
 
     if (!isHttp2XX(status)) continue;
