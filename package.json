@@ -120,9 +120,9 @@
     "ajv-formats": "^3.0.1",
     "ajv": "^8.17.1",
     "autoprefixer": "^10.4.20",
-    "cspell": "^8.17.2",
+    "cspell": "^8.17.3",
     "gulp": "^5.0.0",
-    "hugo-extended": "0.142.0",
+    "hugo-extended": "0.143.0",
     "js-yaml": "^4.1.0",
     "markdown-link-check": "^3.13.6",
     "markdownlint": "^0.37.4",
@@ -151,7 +151,7 @@
     "path": "^0.12.7"
   },
   "optionalDependencies": {
-    "netlify-cli": "^18.0.2",
+    "netlify-cli": "^18.0.3",
     "npm-check-updates": "^17.1.14"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
