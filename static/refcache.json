@@ -1811,6 +1811,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-11-02T22:02:37.069605183Z"
   },
+  "https://embrace.io/docs/open-telemetry/integration/#react-native": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-04T15:55:54.537917328Z"
+  },
   "https://embrace.io/opentelemetry-for-mobile/": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:58:03.661155-05:00"
@@ -3506,6 +3510,10 @@
   "https://github.com/embrace-io/embrace-apple-sdk": {
     "StatusCode": 200,
     "LastSeen": "2024-11-02T22:02:35.245741377Z"
+  },
+  "https://github.com/embrace-io/embrace-react-native-sdk": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-04T15:55:51.560154052Z"
   },
   "https://github.com/emdneto": {
     "StatusCode": 206,
