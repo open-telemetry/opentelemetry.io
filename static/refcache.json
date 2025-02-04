@@ -13651,10 +13651,6 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:45:45.030209-04:00"
   },
-  "https://github.com/theSuess": {
-    "StatusCode": 206,
-    "LastSeen": "2025-01-24T22:42:58.33209764Z"
-  },
   "https://github.com/thegeekyasian/go-chi-otel": {
     "StatusCode": 200,
     "LastSeen": "2024-02-20T05:41:18.324089503Z"
