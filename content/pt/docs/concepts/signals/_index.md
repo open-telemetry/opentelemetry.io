@@ -3,7 +3,8 @@ title: Sinais
 description:
   Aprenda sobre as categorias de telemetria suportadas pelo OpenTelemetry
 weight: 11
-default_lang_commit: 7c0e4db0b6c39b0ca0e7efb17df5610d1b77b8a3
+aliases: [data-sources, otel-concepts]
+default_lang_commit: c370886c9926e6cab3738ababbf6ff5692899bbd
 ---
 
 O propósito do OpenTelemetry é coletar, processar e exportar [sinais]. Sinais
