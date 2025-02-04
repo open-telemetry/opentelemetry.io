@@ -8371,6 +8371,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:25.504793-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-lambda/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-04T12:41:09.851793718Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-lambda/blob/main/collector/README.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-24T22:43:01.001644641Z"
@@ -8382,6 +8386,10 @@
   "https://github.com/open-telemetry/opentelemetry-lambda/releases/tag/layer-collector%2F0.12.0": {
     "StatusCode": 206,
     "LastSeen": "2025-01-24T22:43:07.062401954Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-lambda/tree/main/collector#auto-configuration": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-04T12:41:05.846247381Z"
   },
   "https://github.com/open-telemetry/opentelemetry-operator": {
     "StatusCode": 206,
@@ -12098,6 +12106,10 @@
   "https://github.com/thanos-io": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:24:50.885838-05:00"
+  },
+  "https://github.com/theSuess": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-04T12:41:01.062302518Z"
   },
   "https://github.com/theletterf": {
     "StatusCode": 206,
