@@ -19,7 +19,7 @@ and spring framework starters required to setup distributed tracing. It also
 provides the
 [opentelemetry-exporters-zipkin](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/zipkin)
 artifact and corresponding exporter autoconfiguration. Check out
-[opentelemetry-spring-boot-autoconfigure](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features)
+[opentelemetry-spring-boot-autoconfigure](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features?FIXME)
 for the list of supported libraries and features.
 
 If an exporter is present in the classpath during runtime and a spring bean of
