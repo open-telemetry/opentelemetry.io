@@ -13407,6 +13407,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-01T06:58:09.358-05:00"
   },
+  "https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Bill_of_Materials_.28BOM.29_POMs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-04T01:52:41.254397285Z"
+  },
   "https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms": {
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:59:49.463144-05:00"
