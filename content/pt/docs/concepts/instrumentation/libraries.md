@@ -320,7 +320,7 @@ Quando você faz uma chamada de saída, geralmente vai querer propagar o context
 para o serviço _downstream_. Nesse caso, você deve criar um novo trecho para
 rastrear a chamada de saída e usar a API `Propagator` para injetar o contexto na
 mensagem. Podem haver outros casos em que você queira injetar o contexto, por
-exemplo, ao criar mensagens para processamento assíncrono. O exemplo aseguir em
+exemplo, ao criar mensagens para processamento assíncrono. O exemplo a seguir em
 Java mostra como propagar o contexto. Consulte
 [Injeção de contexto em Java](/docs/languages/java/instrumentation/#context-propagation)
 para mais exemplos.
