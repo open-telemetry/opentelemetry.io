@@ -262,7 +262,7 @@ encouraged, attribute `service.version`, which holds the version of the service
 API or implementation.
 
 Alternative methods exist for setting up resource attributes. For more
-information, see [Resources](/docs/languages/js/resources/).
+information, see [Resources](/docs/languages/php/resources/).
 
 #### Global Providers
 

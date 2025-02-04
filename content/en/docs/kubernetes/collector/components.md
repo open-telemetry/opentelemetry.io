@@ -2,7 +2,7 @@
 title: Important Components for Kubernetes
 linkTitle: Components
 # prettier-ignore
-cSpell:ignore: alertmanagers containerd crio filelog gotime horizontalpodautoscalers hostfs hostmetrics iostream k8sattributes kubelet kubeletstats logtag replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
+cSpell:ignore: alertmanagers filelog horizontalpodautoscalers hostfs hostmetrics k8sattributes kubelet kubeletstats replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
 ---
 
 The [OpenTelemetry Collector](/docs/collector/) supports many different
@@ -283,77 +283,13 @@ filelog:
   exclude:
     # Exclude logs from all containers named otel-collector
     - /var/log/pods/*/otel-collector/*.log
-  start_at: beginning
+  start_at: end
   include_file_path: true
   include_file_name: false
   operators:
-    # Find out which format is used by kubernetes
-    - type: router
-      id: get-format
-      routes:
-        - output: parser-docker
-          expr: 'body matches "^\\{"'
-        - output: parser-crio
-          expr: 'body matches "^[^ Z]+ "'
-        - output: parser-containerd
-          expr: 'body matches "^[^ Z]+Z"'
-    # Parse CRI-O format
-    - type: regex_parser
-      id: parser-crio
-      regex:
-        '^(?P<time>[^ Z]+) (?P<stream>stdout|stderr) (?P<logtag>[^ ]*)
-        ?(?P<log>.*)$'
-      output: extract_metadata_from_filepath
-      timestamp:
-        parse_from: attributes.time
-        layout_type: gotime
-        layout: '2006-01-02T15:04:05.999999999Z07:00'
-    # Parse CRI-Containerd format
-    - type: regex_parser
-      id: parser-containerd
-      regex:
-        '^(?P<time>[^ ^Z]+Z) (?P<stream>stdout|stderr) (?P<logtag>[^ ]*)
-        ?(?P<log>.*)$'
-      output: extract_metadata_from_filepath
-      timestamp:
-        parse_from: attributes.time
-        layout: '%Y-%m-%dT%H:%M:%S.%LZ'
-    # Parse Docker format
-    - type: json_parser
-      id: parser-docker
-      output: extract_metadata_from_filepath
-      timestamp:
-        parse_from: attributes.time
-        layout: '%Y-%m-%dT%H:%M:%S.%LZ'
-    - type: move
-      from: attributes.log
-      to: body
-    # Extract metadata from file path
-    - type: regex_parser
-      id: extract_metadata_from_filepath
-      regex: '^.*\/(?P<namespace>[^_]+)_(?P<pod_name>[^_]+)_(?P<uid>[a-f0-9\-]{36})\/(?P<container_name>[^\._]+)\/(?P<restart_count>\d+)\.log$'
-      parse_from: attributes["log.file.path"]
-      cache:
-        size: 128 # default maximum amount of Pods per Node is 110
-    # Rename attributes
-    - type: move
-      from: attributes.stream
-      to: attributes["log.iostream"]
-    - type: move
-      from: attributes.container_name
-      to: resource["k8s.container.name"]
-    - type: move
-      from: attributes.namespace
-      to: resource["k8s.namespace.name"]
-    - type: move
-      from: attributes.pod_name
-      to: resource["k8s.pod.name"]
-    - type: move
-      from: attributes.restart_count
-      to: resource["k8s.container.restart_count"]
-    - type: move
-      from: attributes.uid
-      to: resource["k8s.pod.uid"]
+    # parse container logs
+    - type: container
+      id: container-parser
 ```
 
 For Filelog Receiver configuration details, see
@@ -734,21 +670,21 @@ started.
 
 The available scrapers are:
 
-| Scraper    | Supported OSs       | Description                                            |
-| ---------- | ------------------- | ------------------------------------------------------ |
-| cpu        | All except Mac[^1]  | CPU utilization metrics                                |
-| disk       | All except Mac[^1]  | Disk I/O metrics                                       |
-| load       | All                 | CPU load metrics                                       |
-| filesystem | All                 | File System utilization metrics                        |
-| memory     | All                 | Memory utilization metrics                             |
-| network    | All                 | Network interface I/O metrics & TCP connection metrics |
-| paging     | All                 | Paging/Swap space utilization and I/O metrics          |
-| processes  | Linux, Mac          | Process count metrics                                  |
-| process    | Linux, Windows, Mac | Per process CPU, Memory, and Disk I/O metrics          |
+| Scraper    | Supported OSs         | Description                                            |
+| ---------- | --------------------- | ------------------------------------------------------ |
+| cpu        | All except macOS[^1]  | CPU utilization metrics                                |
+| disk       | All except macOS[^1]  | Disk I/O metrics                                       |
+| load       | All                   | CPU load metrics                                       |
+| filesystem | All                   | File System utilization metrics                        |
+| memory     | All                   | Memory utilization metrics                             |
+| network    | All                   | Network interface I/O metrics & TCP connection metrics |
+| paging     | All                   | Paging/Swap space utilization and I/O metrics          |
+| processes  | Linux, macOS          | Process count metrics                                  |
+| process    | Linux, macOS, Windows | Per process CPU, Memory, and Disk I/O metrics          |
 
 [^1]:
-    Not supported on Mac when compiled without cgo, which is the default for the
-    images released by the Collector SIG.
+    Not supported on macOS when compiled without cgo, which is the default for
+    the images released by the Collector SIG.
 
 For specific details about which metrics are collected and specific
 configuration details, see

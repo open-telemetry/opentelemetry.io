@@ -38,6 +38,7 @@ let pathName = window.location.pathname;
 let searchQuery = '';
 let selectedLanguage = 'all';
 let selectedComponent = 'all';
+let selectedFlag = 'all'; // Added selectedFlag
 
 parseUrlParams();
 
@@ -49,7 +50,12 @@ if (pathName.includes('registry')) {
     showBody();
   }
 
-  if (selectedLanguage !== 'all' || selectedComponent !== 'all') {
+  // Set the dropdown values from query params
+  if (
+    selectedLanguage !== 'all' ||
+    selectedComponent !== 'all' ||
+    selectedFlag !== 'all'
+  ) {
     if (selectedLanguage !== 'all') {
       document.getElementById('languageDropdown').textContent =
         document.getElementById(
@@ -61,6 +67,10 @@ if (pathName.includes('registry')) {
         document.getElementById(
           `component-item-${selectedComponent}`,
         ).textContent;
+    }
+    if (selectedFlag !== 'all') {
+      document.getElementById('flagsDropdown').textContent =
+        document.getElementById(`flag-item-${selectedFlag}`).textContent;
     }
     updateFilters();
   }
@@ -103,6 +113,22 @@ if (pathName.includes('registry')) {
         document.getElementById('componentDropdown').textContent =
           evt.target.textContent;
         setInput('component', val);
+        updateFilters();
+      }),
+    );
+    // Flags dropdown event listener
+
+    let flagList = document
+      .getElementById('flagsFilter')
+      .querySelectorAll('.dropdown-item');
+
+    flagList.forEach((element) =>
+      element.addEventListener('click', function (evt) {
+        let val = evt.target.getAttribute('value');
+        selectedFlag = val;
+        document.getElementById('flagsDropdown').textContent =
+          evt.target.textContent;
+        setInput('flag', val);
         updateFilters();
       }),
     );
@@ -208,24 +234,39 @@ function setInput(key, value) {
   history.replaceState(null, null, '?' + queryParams.toString());
 }
 
-// Filters items based on language and component filters
+// Filters items based on language, component and flags
 function updateFilters() {
   let allItems = [...document.getElementsByClassName('registry-entry')];
-  if (selectedComponent === 'all' && selectedLanguage === 'all') {
+  if (
+    selectedComponent === 'all' &&
+    selectedLanguage === 'all' &&
+    selectedFlag === 'all'
+  ) {
+    // Show all items if all filters are set to 'all'
     allItems.forEach((element) => element.classList.remove('d-none'));
   } else {
+    // Apply the filters
     allItems.forEach((element) => {
       const dc = element.dataset.registrytype;
       const dl = element.dataset.registrylanguage;
-      if (
-        (dc === selectedComponent || selectedComponent === 'all') &&
-        (dl === selectedLanguage || selectedLanguage === 'all')
-      ) {
+      const df = element.dataset.registryflags
+        ? element.dataset.registryflags.split(' ').map((f) => f.toLowerCase())
+        : [];
+
+      const componentMatches =
+        dc === selectedComponent || selectedComponent === 'all';
+      const languageMatches =
+        dl === selectedLanguage || selectedLanguage === 'all';
+      const flagMatches =
+        selectedFlag === 'all' || df.includes(selectedFlag.toLowerCase());
+
+      if (flagMatches) {
+        console.log('Flag matches:', df);
+      }
+
+      if (componentMatches && languageMatches && flagMatches) {
+        // Changed
         element.classList.remove('d-none');
-      } else if (dc === selectedComponent && dl !== selectedLanguage) {
-        element.classList.add('d-none');
-      } else if (dl === selectedLanguage && dc !== selectedComponent) {
-        element.classList.add('d-none');
       } else {
         element.classList.add('d-none');
       }
@@ -233,9 +274,11 @@ function updateFilters() {
   }
 }
 
+// Parse URL parameters and update variables
 function parseUrlParams() {
   let urlParams = new URLSearchParams(window.location.search);
   searchQuery = urlParams.get('s');
   selectedLanguage = urlParams.get('language') || 'all';
   selectedComponent = urlParams.get('component') || 'all';
+  selectedFlag = urlParams.get('flag') || 'all'; // Added
 }

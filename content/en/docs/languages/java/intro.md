@@ -45,7 +45,7 @@ The OpenTelemetry Java documentation is organized as follows:
   Java instrumentation ecosystem. This is a key resource for application authors
   looking to integrate OpenTelemetry Java into applications. Learn about the
   different categories of instrumentation, and decide which is right for you.
-- [Record Telemetry with API](../api-components/): A technical reference for the
+- [Record Telemetry with API](../api/): A technical reference for the
   OpenTelemetry API, exploring all key aspects of the API with working code
   examples. Most users will use this page like an encyclopedia, consulting the
   index of sections as needed, rather than reading front to back.
@@ -62,7 +62,8 @@ The OpenTelemetry Java documentation is organized as follows:
   sections as needed, rather than reading front to back.
 - **Learn More**: Supplementary resources, including end-to-end
   [examples](../examples/), [Javadoc](../api/), component
-  [registry](../registry/), and a [performance reference](../performance/).
+  [registry](../registry/), and a
+  [performance reference](/docs/zero-code/java/agent/performance/).
 
 ## Repositories
 
@@ -105,7 +106,7 @@ dependency structure:
 ## Dependencies and BOMs
 
 A
-[bill of materials](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms),
+[bill of materials](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Bill_of_Materials_.28BOM.29_POMs),
 or BOM for short, is an artifact that helps keep the versions of related
 dependencies aligned. OpenTelemetry Java publishes several BOMs catering to
 different use cases, listed below in order of increasing scope. We highly

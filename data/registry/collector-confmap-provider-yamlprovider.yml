@@ -1,0 +1,21 @@
+# cSpell:ignore confmap, yamlprovider
+title: Collector YAML Provider
+registryType: provider
+language: collector
+tags:
+  - go
+  - confmap
+  - provider
+  - collector
+  - yaml
+license: Apache 2.0
+description: YAML provider for OpenTelemetry Collector configuration maps.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/confmap/provider/yamlprovider
+createdAt: 2024-11-20
+package:
+  registry: go-collector
+  name: go.opentelemetry.io/collector/confmap/provider/yamlprovider
+  version: v1.25.0

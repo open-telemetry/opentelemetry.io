@@ -1,4 +1,4 @@
-title: OTLP Exporter
+title: Stdout Exporter
 registryType: exporter
 language: rust
 tags:
@@ -16,4 +16,4 @@ createdAt: 2024-01-19
 package:
   registry: crates
   name: opentelemetry-stdout
-  version: 0.3.0
+  version: 0.27.0

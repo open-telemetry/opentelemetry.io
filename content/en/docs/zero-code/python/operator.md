@@ -3,8 +3,7 @@ title: Using the OpenTelemetry Operator to Inject Auto-Instrumentation
 linkTitle: Operator
 aliases: [/docs/languages/python/automatic/operator]
 weight: 30
-# prettier-ignore
-cSpell:ignore: distro grpcio mkdir myapp psutil PYTHONPATH uninstrumented virtualenv
+cSpell:ignore: grpcio myapp psutil PYTHONPATH
 ---
 
 If you run your Python service in Kubernetes, you can take advantage of the
@@ -27,6 +26,10 @@ specific Python version. The
 provides images for a single Python version based on the glibc C library. If you
 want to use it you might need to build your own image operator Docker image for
 Python auto-instrumentation.
+
+Since operator v0.113.0 it is possible to build an image with both glibc and
+musl based auto-instrumentation and
+[configure it at runtime](/docs/kubernetes/operator/automatic/#annotations-python-musl).
 
 #### Django applications
 

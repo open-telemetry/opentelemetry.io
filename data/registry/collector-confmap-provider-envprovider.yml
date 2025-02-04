@@ -1,0 +1,22 @@
+# cSpell:ignore confmap, envprovider
+title: Collector Environment Variable Provider
+registryType: provider
+language: collector
+tags:
+  - go
+  - confmap
+  - provider
+  - collector
+  - env
+license: Apache 2.0
+description:
+  Environment variable provider for OpenTelemetry Collector configuration maps.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/confmap/provider/envprovider
+createdAt: 2024-11-20
+package:
+  registry: go-collector
+  name: go.opentelemetry.io/collector/confmap/provider/envprovider
+  version: v1.25.0

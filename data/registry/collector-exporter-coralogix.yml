@@ -9,11 +9,11 @@ tags:
 license: Apache 2.0
 description: The Coralogix Exporter for the OpenTelemetry Collector.
 authors:
-  - name: Coralogix
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/coralogixexporter
 createdAt: 2020-11-05
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/coralogixexporter
-  version: v0.112.0
+  version: v0.118.0

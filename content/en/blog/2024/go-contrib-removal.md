@@ -7,7 +7,7 @@ author: >-
 issue: 4542
 sig: SIG Go
 # prettier-ignore
-cSpell:ignore: aws Benedetti Fabrizio Ferri gopkg labstack macaron moduled otelaws otelecho otellambda otelmacaron otelmongo otelmux
+cSpell:ignore: aws Benedetti Fabrizio Ferri gopkg labstack macaron otelaws otelecho otellambda otelmacaron otelmongo otelmux
 ---
 
 The Go SIG will remove the code of contrib modules that lack code owners
@@ -30,7 +30,7 @@ Currently unowned modules include the following:
 - [`go.opentelemetry.io/contrib/samplers/aws/xray`](https://pkg.go.dev/go.opentelemetry.io/contrib/samplers/aws/xray)
 
 For a full list of modules at risk for removal, see the
-[Remove unowned moduled](https://github.com/orgs/open-telemetry/projects/92/views/1)
+[Remove unowned modules](https://github.com/orgs/open-telemetry/projects/92/views/1)
 project board.
 
 ## Why are those modules going to be removed?

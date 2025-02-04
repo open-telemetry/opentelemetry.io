@@ -39,3 +39,26 @@
 .registry-entry {
   @extend .shadow;
 }
+
+#searchForm .btn.btn-outline-success,
+.btn-outline-danger,
+.btn-outline-secondary {
+  &:hover {
+    color: var(--bs-white);
+  }
+}
+
+@include color-mode(dark) {
+  @media (prefers-color-scheme: dark) {
+    .border-default {
+      border-color: #a3a3a3;
+    }
+    .card.registry-entry {
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8) !important;
+    }
+    .card.registry-entry,
+    .list-group > .list-group-item {
+      background-color: #262d2c;
+    }
+  }
+}

@@ -11,6 +11,6 @@ OpenTelemetryの目的は、**[シグナル][signals]** を収集、処理、エ
 異なるシグナルをグループ化して、同じテクノロジーの内部動作を異なる角度から観察することもできる。
 
 OpenTelemetry は現在、[トレース](/docs/concepts/signals/traces)、[メトリクス](/docs/concepts/signals/metrics)、[ログ](/docs/concepts/signals/logs)と[バゲッジ](/docs/concepts/signals/baggage)をサポートしています。
-_イベント_ は特定の種類のログで、_プロファイル_ はProfiling Working Groupによって[現在策定中](https://github.com/open-telemetry/oteps/blob/main/text/profiles/0212-profiling-vision.md)です。
+_イベント_ は特定の種類のログで、_プロファイル_ はProfiling Working Groupによって[現在策定中](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/0212-profiling-vision.md)です。
 
 [signals]: /docs/specs/otel/glossary/#signals

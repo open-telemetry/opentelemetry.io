@@ -107,9 +107,9 @@ but also supports renaming and other metric-specific functionality.
 processors:
   metricstransform/rename:
     transforms:
-      include: system.cpu.usage
-      action: update
-      new_name: system.cpu.usage_time
+      - include: system.cpu.usage
+        action: update
+        new_name: system.cpu.usage_time
 ```
 
 The

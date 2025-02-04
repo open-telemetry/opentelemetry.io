@@ -43,9 +43,9 @@ The pages in this section describe how to contribute to OpenTelemetry
 **documentation**.
 
 For guidance on how to contribute to the OpenTelemetry project in general, see
-the community [OpenTelemetry New Contributor Guide]. Every [OTel repository][org]
-for language implementations, the Collector, and conventions have their own project-specific
-contributing guides.
+the community [OpenTelemetry New Contributor Guide]. Every [OTel
+repository][org] for language implementations, the Collector, and conventions
+have their own project-specific contributing guides.
 
 [OpenTelemetry New Contributor Guide]:
   https://github.com/open-telemetry/community/blob/main/guides/contributor

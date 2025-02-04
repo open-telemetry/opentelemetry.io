@@ -15,6 +15,7 @@ description:
   components.
 authors:
   - name: Jeff Hostetler
+    url: https://github.com/jeffhostetler
 urls:
   repo: https://github.com/git-ecosystem/trace2receiver
 createdAt: 2023-10-17

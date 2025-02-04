@@ -1,0 +1,19 @@
+# cSpell:ignore: prometheusremotewrite prometheusremotewritereceiver
+title: Prometheus Remote Write Receiver
+registryType: receiver
+language: collector
+tags:
+  - prometheusremotewrite
+  - receiver
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusremotewritereceiver
+license: Apache 2.0
+description: ''
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-11-18
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/prometheusremotewritereceiver
+  version: v0.118.0

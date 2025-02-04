@@ -2,11 +2,7 @@
 title: ライブラリ
 description: ライブラリにネイティブ計装を追加する方法を紹介します。
 weight: 40
-default_lang_commit: d8c5612
-htmltest:
-  IgnoreDirs:
-    # TODO drop next line after https://github.com/open-telemetry/opentelemetry.io/issues/5423 is fixed for ja pages:
-    - ^ja/docs/concepts/instrumentation/libraries/
+default_lang_commit: d8c5612 # + link-fix patch
 ---
 
 OpenTelemetryは、多くのライブラリに[計装ライブラリ][instrumentation libraries]を提供していて、これは通常、ライブラリフックやモンキーパッチライブラリコードを通して行われます。
@@ -91,7 +87,7 @@ OpenTelemetry API は、抽象化と動作しない実装のセットです。
 - OpenTelemetry Trace APIは2021年初めに安定版に達しました。このAPIは[Semantic Versioning 2.0](/docs/specs/otel/versioning-and-stability/)にしがたっていて、開発チームはAPIの安定性を真剣に受け止めています。
 - 依存する場合は、もっとも早い安定版の OpenTelemetry API (1.0.\*)を使用し、新機能を使用する必要がない限り、アップデートは避けてください。
 - あなたの計装が安定するまでの間、それを別のパッケージとしてリリースすることを検討してください。
-  あなたのレポジトリに置いておくこともできますし、[OpenTelemetryに追加](https://github.com/open-telemetry/oteps/blob/main/text/0155-external-modules.md#contrib-components) して、他の計装パッケージと一緒にリリースすることもできます。
+  あなたのレポジトリに置いておくこともできますし、[OpenTelemetryに追加](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0155-external-modules.md#contrib-components) して、他の計装パッケージと一緒にリリースすることもできます。
 - セマンティック規約は[安定していますが、徐々に発展しています][stable, but subject to evolution]。
   機能的な問題は発生しませんが、ときどき、計装をアップデートする必要があるかもしれません。
   プレビュープラグインか、OpenTelemetry contrib リポジトリにそれを置くことで、ユーザの変更を壊すことなく、規約を最新に保つことができるかもしれません。
@@ -235,7 +231,7 @@ try (Scope unused = span.makeCurrent()) {
 ここに[Java でのコンテキスト抽出の例](/docs/languages/java/instrumentation/#context-propagation) の完全なものがあります。
 
 メッセージングシステムの場合、一度に複数のメッセージを受け取ることがあります。
-受信したメッセージは、作成したスパンの[_リンク_](/docs/languages/java/instrumentation/#create-spans-with-links)になります。
+受信したメッセージは、作成したスパンの _リンク_ になります。
 詳しくは[メッセージング規約](/docs/specs/semconv/messaging/messaging-spans/)を参照してください（警告：メッセージング規約は[策定中](https://github.com/open-telemetry/oteps/pull/173) 🚧 です）。
 
 ### コンテキストを注入する {#injecting-context}

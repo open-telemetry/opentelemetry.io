@@ -1,0 +1,21 @@
+# cSpell:ignore doris dorisexporter
+title: Apache Doris Exporter
+registryType: exporter
+language: collector
+tags:
+  - doris
+  - exporter
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/dorisexporter
+license: Apache 2.0
+description:
+  This exporter supports sending traces, metrics, and logs data to [Apache
+  Doris](https://doris.apache.org/) (version >= 2.1).
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-11-18
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/dorisexporter
+  version: v0.118.0

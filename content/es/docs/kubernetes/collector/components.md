@@ -1,9 +1,9 @@
 ---
 title: Componentes clave para Kubernetes
 linkTitle: Componentes
-# prettier-ignore
-cSpell:ignore: alertmanagers containerd crio filelog gotime horizontalpodautoscalers hostfs hostmetrics iostream k8sattributes kubelet kubeletstats logtag replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods asignador paginación
 default_lang_commit: 3815d1481fe753df10ea3dc26cbe64dba0230579
+# prettier-ignore
+cSpell:ignore: alertmanagers asignador containerd crio filelog gotime horizontalpodautoscalers hostfs hostmetrics iostream k8sattributes kubelet kubeletstats logtag paginación replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
 ---
 
 El [OpenTelemetry Collector](/docs/collector/) admite numerosos receptores y
@@ -224,7 +224,7 @@ receivers:
 ```
 
 Para obtener detalles específicos sobre qué métricas se recopilan, consulta
-[Métricas predeterminadas](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/kubeletsstatsreceiver/documentation.md).
+[Métricas predeterminadas](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/kubeletstatsreceiver/documentation.md).
 Para obtener detalles de configuración específicos, consulta
 [Receptor de Kubeletstats](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/kubeletstatsreceiver).
 

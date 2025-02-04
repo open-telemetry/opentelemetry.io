@@ -5,14 +5,13 @@ description: >-
   alt="JavaScript"> A language-specific implementation of OpenTelemetry in
   JavaScript (for Node.js & the browser).
 aliases: [/js, /js/metrics, /js/tracing]
-cSpell:ignore: Roadmap
 weight: 20
 ---
 
 {{% docs/languages/index-intro js /%}}
 
 {{% alert title="Warning" color="warning" %}}
-{{% _param notes.browser-instrumentation %}} {{% /alert %}}
+{{% param notes.browser-instrumentation %}} {{% /alert %}}
 
 ## Version Support
 

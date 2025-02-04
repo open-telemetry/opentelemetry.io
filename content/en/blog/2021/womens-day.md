@@ -6,6 +6,7 @@ canonical_url: https://medium.com/opentelemetry/opentelemetry-observes-internati
 ---
 
 Happy International Women’s Day! The OpenTelemetry project would like to extend
-our thanks to all our women contributors. For all the details, see the [original post][].
+our thanks to all our women contributors. For all the details, see the [original
+post][].
 
 [original post]: {{% param canonical_url %}}

@@ -11,11 +11,11 @@ description:
   The SignalFx Receiver for the OpenTelemetry Collector accepts metrics in the
   SignalFx proto format and events (Logs) in the SignalFx proto format.
 authors:
-  - name: Splunk
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/signalfxreceiver
 createdAt: 2021-02-26
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/signalfxreceiver
-  version: v0.112.0
+  version: v0.118.0

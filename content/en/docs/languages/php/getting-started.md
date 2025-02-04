@@ -3,7 +3,7 @@ title: Getting Started
 description: Get up and running with OpenTelemetry for PHP.
 aliases: [getting_started]
 weight: 10
-cSpell:ignore: darwin myapp PECL pecl rolldice strval
+cSpell:ignore: darwin myapp pecl rolldice strval
 ---
 
 OpenTelemetry for PHP can be used to generate and export [traces][], [metrics][]
@@ -489,7 +489,8 @@ For more:
 
 - Run this example with another [exporter][] for telemetry data.
 - Try [zero-code instrumentation](/docs/zero-code/php/) on one of your own apps.
-- Learn more about [manual instrumentation][] and try out some [examples](/docs/languages/php/examples/).
+- Learn more about [manual instrumentation][] and try out some
+  [examples](/docs/languages/php/examples/).
 - Take a look at the [OpenTelemetry Demo](/docs/demo/), which includes the PHP
   based [Quote Service](/docs/demo/services/quote/).
 

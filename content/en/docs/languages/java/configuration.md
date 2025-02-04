@@ -4,17 +4,16 @@ linkTitle: Configure the SDK
 weight: 13
 aliases: [config]
 # prettier-ignore
-cSpell:ignore: authservice autoconfigured blrp Customizer Dotel ignore LOWMEMORY myservice ottrace PKCS retryable tracepropagators
+cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS retryable
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
 <?code-excerpt path-base="examples/java/configuration"?>
 
 The [SDK](../sdk/) is the built-in reference implementation of the
-[API](../api-components/), processing and exporting telemetry produced by
-instrumentation API calls. Configuring the SDK to process and export
-appropriately is an essential step to integrating OpenTelemetry into an
-application.
+[API](../api/), processing and exporting telemetry produced by instrumentation
+API calls. Configuring the SDK to process and export appropriately is an
+essential step to integrating OpenTelemetry into an application.
 
 All SDK components have
 [programmatic configuration APIs](#programmatic-configuration). This is the most
@@ -141,13 +140,13 @@ returns a minimally configured instance (for example,
 
 Properties for configuring [resource](../sdk/#resource):
 
-| System property                            | Description                                                                                                                             | Default                |
-| ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| `otel.service.name`                        | Specify logical service name. Takes precedence over `service.name` defined with `otel.resource.attributes`.                             | `unknown_service:java` |
-| `otel.resource.attributes`                 | Specify resource attributes in the following format: `key1=val1,key2=val2,key3=val3`.                                                   |                        |
-| `otel.experimental.resource.disabled-keys` | Specify resource attribute keys to filter. This option is experimental and subject to change or removal.                                |                        |
-| `otel.java.enabled.resource.providers`     | Comma-separated list of `ResourceProvider` fully qualified class names to enable. **[1]** If unset, all resource providers are enabled. |                        |
-| `otel.java.disabled.resource.providers`    | Comma-separated list of `ResourceProvider` fully qualified class names to disable. **[1]**                                              |                        |
+| System property                         | Description                                                                                                                             | Default                |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| `otel.service.name`                     | Specify logical service name. Takes precedence over `service.name` defined with `otel.resource.attributes`.                             | `unknown_service:java` |
+| `otel.resource.attributes`              | Specify resource attributes in the following format: `key1=val1,key2=val2,key3=val3`.                                                   |                        |
+| `otel.resource.disabled.keys`           | Specify resource attribute keys to filter.                                                                                              |                        |
+| `otel.java.enabled.resource.providers`  | Comma-separated list of `ResourceProvider` fully qualified class names to enable. **[1]** If unset, all resource providers are enabled. |                        |
+| `otel.java.disabled.resource.providers` | Comma-separated list of `ResourceProvider` fully qualified class names to disable. **[1]**                                              |                        |
 
 **[1]**: For example, to disable the
 [OS resource provider](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/resources/library/src/main/java/io/opentelemetry/instrumentation/resources/OsResourceProvider.java),
@@ -260,12 +259,12 @@ exporters via `otel.logs.exporter`:
 
 Properties for setting exporters:
 
-| System property                               | Purpose                                                                                                                                                                                                                              | Default          |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------- |
-| `otel.traces.exporter`                        | Comma-separated list of span exporters. Known values include `otlp`, `zipkin`, `console`, `logging-otlp`, `none`. **[1]**                                                                                                            | `otlp`           |
-| `otel.metrics.exporter`                       | Comma-separated list of metric exporters. Known values include `otlp`, `prometheus`, `none`. **[1]**                                                                                                                                 | `otlp`           |
-| `otel.logs.exporter`                          | Comma-separated list of log record exporters. Known values include `otlp`, `console`, `logging-otlp`, `none`. **[1]**                                                                                                                | `otlp`           |
-| `otel.java.experimental.exporter.memory_mode` | If `reusable_data`, enable reusable memory mode (on exporters which support it) to reduce allocations. Known values include `reusable_data`, `immutable_data`. This option is experimental and subject to change or removal. **[2]** | `immutable_data` |
+| System property                  | Purpose                                                                                                                                                                | Default         |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| `otel.traces.exporter`           | Comma-separated list of span exporters. Known values include `otlp`, `zipkin`, `console`, `logging-otlp`, `none`. **[1]**                                              | `otlp`          |
+| `otel.metrics.exporter`          | Comma-separated list of metric exporters. Known values include `otlp`, `prometheus`, `none`. **[1]**                                                                   | `otlp`          |
+| `otel.logs.exporter`             | Comma-separated list of log record exporters. Known values include `otlp`, `console`, `logging-otlp`, `none`. **[1]**                                                  | `otlp`          |
+| `otel.java.exporter.memory_mode` | If `reusable_data`, enable reusable memory mode (on exporters which support it) to reduce allocations. Known values include `reusable_data`, `immutable_data`. **[2]** | `reusable_data` |
 
 **[1]**: Known exporters and artifacts (see
 [span exporter](../sdk/#spanexporter),
@@ -277,10 +276,12 @@ Properties for setting exporters:
 - `console` configures `LoggingSpanExporter`, `LoggingMetricExporter`,
   `SystemOutLogRecordExporter`.
 - `logging-otlp` configures `OtlpJsonLogging{Signal}Exporter`.
+- `experimental-otlp/stdout` configures `OtlpStdout{Signal}Exporter` (this
+  option is experimental and subject to change or removal).
 
 **[2]**: Exporters which adhere to
-`otel.java.experimental.exporter.memory_mode=reusable_data` are
-`OtlpGrpc{Signal}Exporter`, `OtlpHttp{Signal}Exporter`, and
+`otel.java.exporter.memory_mode=reusable_data` are `OtlpGrpc{Signal}Exporter`,
+`OtlpHttp{Signal}Exporter`, `OtlpStdout{Signal}Exporter`, and
 `PrometheusHttpServer`.
 
 Properties for `otlp` span, metric, and log exporters:
@@ -290,8 +291,8 @@ Properties for `otlp` span, metric, and log exporters:
 | `otel.{signal}.exporter=otlp`                              | Select the OpenTelemetry exporter for {signal}.                                                                                                                                                                                                                                                                                                                                                                                      |                                                                                                                            |
 | `otel.exporter.otlp.protocol`                              | The transport protocol to use on OTLP trace, metric, and log requests. Options include `grpc` and `http/protobuf`.                                                                                                                                                                                                                                                                                                                   | `grpc` **[1]**                                                                                                             |
 | `otel.exporter.otlp.{signal}.protocol`                     | The transport protocol to use on OTLP {signal} requests. Options include `grpc` and `http/protobuf`.                                                                                                                                                                                                                                                                                                                                 | `grpc` **[1]**                                                                                                             |
-| `otel.exporter.otlp.endpoint`                              | The endpoint to send all OTLP traces, metrics, and logs to. Often the address of an OpenTelemetry Collector. Must be a URL with a scheme of either `http` or `https` based on the use of TLS. If protocol is `http/protobuf` the version and signal will be appended to the path (e.g. `v1/traces`, `v1/metrics`, or `v1/logs`).                                                                                                     | `http://localhost:4317` when protocol is `grpc`, and `http://localhost:4318/v1/{signal}` when protocol is `http/protobuf`. |
-| `otel.exporter.otlp.{signal}.endpoint`                     | The endpoint to send OTLP {signal} to. Often the address of an OpenTelemetry Collector. Must be a URL with a scheme of either `http` or `https` based on the use of TLS.                                                                                                                                                                                                                                                             | `http://localhost:4317` when protocol is `grpc`, and `http://localhost:4318/v1/{signal}` when protocol is `http/protobuf`. |
+| `otel.exporter.otlp.endpoint`                              | The endpoint to send all OTLP traces, metrics, and logs to. Often the address of an OpenTelemetry Collector. Must be a URL with a scheme of either `http` or `https` based on the use of TLS.                                                                                                                                                                                                                                        | `http://localhost:4317` when protocol is `grpc`, and `http://localhost:4318` when protocol is `http/protobuf`.             |
+| `otel.exporter.otlp.{signal}.endpoint`                     | The endpoint to send OTLP {signal} to. Often the address of an OpenTelemetry Collector. Must be a URL with a scheme of either `http` or `https` based on the use of TLS. If protocol is `http/protobuf` the version and signal must be appended to the path (e.g. `v1/traces`, `v1/metrics`, or `v1/logs`)                                                                                                                           | `http://localhost:4317` when protocol is `grpc`, and `http://localhost:4318/v1/{signal}` when protocol is `http/protobuf`. |
 | `otel.exporter.otlp.certificate`                           | The path to the file containing trusted certificates to use when verifying an OTLP trace, metric, or log server's TLS credentials. The file should contain one or more X.509 certificates in PEM format.                                                                                                                                                                                                                             | The host platform's trusted root certificates are used.                                                                    |
 | `otel.exporter.otlp.{signal}.certificate`                  | The path to the file containing trusted certificates to use when verifying an OTLP {signal} server's TLS credentials. The file should contain one or more X.509 certificates in PEM format.                                                                                                                                                                                                                                          | The host platform's trusted root certificates are used                                                                     |
 | `otel.exporter.otlp.client.key`                            | The path to the file containing private client key to use when verifying an OTLP trace, metric, or log client's TLS credentials. The file should contain one private key PKCS8 PEM format.                                                                                                                                                                                                                                           | No client key file is used.                                                                                                |
@@ -306,7 +307,7 @@ Properties for `otlp` span, metric, and log exporters:
 | `otel.exporter.otlp.{signal}.timeout`                      | The maximum waiting time, in milliseconds, allowed to send each OTLP {signal} batch.                                                                                                                                                                                                                                                                                                                                                 | `10000`                                                                                                                    |
 | `otel.exporter.otlp.metrics.temporality.preference`        | The preferred output aggregation temporality. Options include `DELTA`, `LOWMEMORY`, and `CUMULATIVE`. If `CUMULATIVE`, all instruments will have cumulative temporality. If `DELTA`, counter (sync and async) and histograms will be delta, up down counters (sync and async) will be cumulative. If `LOWMEMORY`, sync counter and histograms will be delta, async counter and up down counters (sync and async) will be cumulative. | `CUMULATIVE`                                                                                                               |
 | `otel.exporter.otlp.metrics.default.histogram.aggregation` | The preferred default histogram aggregation. Options include `BASE2_EXPONENTIAL_BUCKET_HISTOGRAM` and `EXPLICIT_BUCKET_HISTOGRAM`.                                                                                                                                                                                                                                                                                                   | `EXPLICIT_BUCKET_HISTOGRAM`                                                                                                |
-| `otel.experimental.exporter.otlp.retry.enabled`            | If `true`, retry on when transient errors occur. **[2]**                                                                                                                                                                                                                                                                                                                                                                             | `false`                                                                                                                    |
+| `otel.java.exporter.otlp.retry.enabled`                    | If `true`, retry on when transient errors occur. **[2]**                                                                                                                                                                                                                                                                                                                                                                             | `true`                                                                                                                     |
 
 **NOTE:** The text placeholder `{signal}` refers to the supported
 [OpenTelemetry Signal](/docs/concepts/signals/). Valid values include `traces`,
@@ -703,6 +704,6 @@ alone dictate SDK configuration. {{% /alert %}}
 
 For additional details, consult the following resources:
 
-- [Usage documentation](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/incubator#file-configuration)
-- [Example with Java agent](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent#file-configuration)
-- [Example without Java agent](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/file-configuration)
+- [Usage documentation](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/incubator#declarative-configuration)
+- [Example with Java agent](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent#declarative-configuration)
+- [Example without Java agent](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/declarative-configuration)

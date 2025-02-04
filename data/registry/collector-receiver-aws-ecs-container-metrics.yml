@@ -13,11 +13,11 @@ description:
   generates resource usage metrics (such as CPU, memory, network, and disk) from
   them.
 authors:
-  - name: Amazon Web Services
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/awsecscontainermetricsreceiver
 createdAt: 2021-02-26
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awsecscontainermetricsreceiver
-  version: v0.112.0
+  version: v0.118.0

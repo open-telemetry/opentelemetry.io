@@ -3,10 +3,10 @@ title: 'Hardening the Collector Episode 1: A new default bind address'
 linkTitle: A new default bind address for the Collector
 date: 2024-07-02
 author: '[Pablo Baeyens](https://github.com/mx-psi) (OpenTelemetry, Datadog)'
-# prettier-ignore
-cSpell:ignore: awsfirehose awsproxy awsxray Baeyens jaegerremotesampling loki remotetap sapm signalfx skywalking splunk
 issue: 4760
 sig: Collector SIG
+# prettier-ignore
+cSpell:ignore: awsfirehose awsproxy awsxray Baeyens jaegerremotesampling loki remotetap sapm signalfx skywalking splunk
 ---
 
 The OpenTelemetry Collector recently went through a security audit sponsored by

@@ -88,9 +88,9 @@ of their opinions on units or delimiters.
 
 ## Dots and Underscores
 
-OpenTelemetry [specifies](/docs/specs/semconv/general/attribute-naming/) that
-conventions should use dots as the namespace delimiter, and underscores as the
-delimiter between "multi-word-dot-delimited components" (for example,
+OpenTelemetry [specifies](/docs/specs/semconv/general/naming/) that conventions
+should use dots as the namespace delimiter, and underscores as the delimiter
+between "multi-word-dot-delimited components" (for example,
 `http.response.status_code`). On the other hand, Prometheus
 [uses underscores](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels)
 as its delimiter.
@@ -121,7 +121,7 @@ should not generally be included in the metric name. Prometheus conventions
 [recommend](https://prometheus.io/docs/practices/naming/#metric-names) that the
 unit be included as a suffix of the metric name. OpenMetrics goes a step further
 and
-[requires this unit suffix](https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#unit).
+[requires this unit suffix](https://github.com/prometheus/OpenMetrics/blob/v1.0.0/specification/OpenMetrics.md#unit).
 Currently, when exporting in Prometheus format from an OpenTelemetry SDK, the
 unit is added as a suffix to the metric name.
 
@@ -175,10 +175,10 @@ existing conventions.
 
 For the most part, this feedback aligns with the future plans in the
 OpenTelemetry and Prometheus communities. The OpenTelemetry semantic conventions
-SIG is working on stabilizing conventions for a a wide variety of
-instrumentation. The OpenTelemetry Prometheus interoperability SIG is working on
-incorporating the results of this survey into the compatibility specification.
-The Prometheus community has
+SIG is working on stabilizing conventions for a wide variety of instrumentation.
+The OpenTelemetry Prometheus interoperability SIG is working on incorporating
+the results of this survey into the compatibility specification. The Prometheus
+community has
 [ambitious plans](https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/)
 to add support for OpenTelemetry concepts.
 

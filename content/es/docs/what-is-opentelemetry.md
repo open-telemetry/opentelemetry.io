@@ -3,7 +3,7 @@ title: ¿Qué es OpenTelemetry?
 description: Qué es y qué no es OpenTelemetry, una breve explicación
 weight: 150
 default_lang_commit: 13c2d415e935fac3014344e67c6c61556779fd6f
-cSpell:ignore: microservicios extensibilidad
+cSpell:ignore: extensibilidad microservicios
 ---
 
 OpenTelemetry es:
@@ -102,7 +102,7 @@ puede extender incluyen:
 - Cargar librerías de instrumentación personalizadas en un SDK.
 - Crear una [distribución](/docs/concepts/distributions/) de un SDK o Collector
   adaptada a un caso de uso específico.
-- Crear un nuevo exportador para un backend personalizado que aún no admite el  
+- Crear un nuevo exportador para un backend personalizado que aún no admite el
   protocolo OpenTelemetry (OTLP).
 - Crear un propagador personalizado para un formato de propagación de contexto
   que no es estándar.
@@ -110,7 +110,7 @@ puede extender incluyen:
 Aunque la mayoría de los usuarios tal vez no necesiten extender OpenTelemetry,
 el proyecto está diseñado para hacerlo posible en casi todos los niveles.
 
-## Historia
+## Historia {#history}
 
 OpenTelemetry es un proyecto de
 [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io) que es el

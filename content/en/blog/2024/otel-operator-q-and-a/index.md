@@ -4,9 +4,7 @@ title:
   Operator Q&A
 linkTitle: OTel Operator Q&A
 date: 2024-05-13
-author: >-
-  [Adriana Villela](https://github.com/avillela) (ServiceNow),
-
+author: '[Adriana Villela](https://github.com/avillela) (ServiceNow)'
 canonical_url: https://adri-v.medium.com/81d63addbf92?
 cSpell:ignore: automagically mycollector
 ---
@@ -118,7 +116,7 @@ env:
 ```yaml
 exporters:
   otlp:
-    endpoint: '<your_backend_ndpoint_here>'
+    endpoint: '<your_backend_endpoint_here>'
     headers:
       '<token_name>': '${TOKEN_VALUE}'
 ```
@@ -132,8 +130,8 @@ along with the
 
 For every Collector release, there is an Operator release which provides support
 for that Collector version. For example, at the time of this writing, the latest
-Operator version is 0.98.0. Thus, the the default image of the Collector used by
-the Operator is version 0.98.0 of the
+Operator version is 0.98.0. Thus, the default image of the Collector used by the
+Operator is version 0.98.0 of the
 [core distribution](/blog/2024/otel-collector-anti-patterns/#3--not-using-the-right-collector-distribution-or-not-building-your-own-distribution)
 (as opposed to the contrib distribution).
 
@@ -225,9 +223,9 @@ install the Prometheus Operator just to use these two CRs with the Target
 Allocator.
 
 The easiest way to install the
-[`PodMonitor`](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#monitoring.coreos.com/v1.PodMonitor)
+[`PodMonitor`](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api-reference/api.md#monitoring.coreos.com/v1.PodMonitor)
 and
-[`ServiceMonitor`](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#monitoring.coreos.com/v1.ServiceMonitor)
+[`ServiceMonitor`](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api-reference/api.md#monitoring.coreos.com/v1.ServiceMonitor)
 CRs is to grab a copy of the individual
 [PodMonitor YAML](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/charts/crds/crds/crd-podmonitors.yaml)
 and

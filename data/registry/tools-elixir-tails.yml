@@ -1,0 +1,18 @@
+# cSpell:ignore Aronoff
+title: tails
+registryType: utilities
+language: elixir
+tags:
+  - otel
+  - webserver
+  - tailing
+urls:
+  repo: https://github.com/jaronoff97/tails
+license: Apache 2.0
+description:
+  Tails is a small webserver written in Elixir that listens on a socket and
+  streams live messages from a collector.
+authors:
+  - name: Jacob Aronoff
+    url: https://github.com/jaronoff97
+createdAt: 2024-12-12

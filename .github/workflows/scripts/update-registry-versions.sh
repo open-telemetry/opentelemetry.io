@@ -3,6 +3,7 @@
 UPDATE_YAML="yq eval -i"
 GIT=git
 GH=gh
+NPM=npm
 FILES="${FILES:-./data/registry/*.yml}"
 
 
@@ -16,6 +17,7 @@ elif [[ "$1" != "-f" ]]; then
   UPDATE_YAML="yq eval"
   GIT="echo > DRY RUN: git "
   GH="echo > DRY RUN: gh "
+  NPM="echo > DRY RUN: npm "
 else
   # Local execution with -f flag (force real vs. dry run)
   shift
@@ -59,6 +61,12 @@ for yaml_file in ${FILES}; do
             hex)
                 curl -s "https://hex.pm/api/packages/$package_name" | jq -r '.releases | max_by(.inserted_at) | .version'
                 ;;
+            maven)
+                groupid=$(echo "${package_name}" | cut -d/ -f1)
+                artifactid=$(echo "${package_name}" | cut -d/ -f2)
+                #curl -s "https://search.maven.org/solrsearch/select?q=g:com.google.inject+AND+a:guice&core=gav&rows=20&wt=json" | jq -r '.response.docs[0].v'
+                curl -s "https://search.maven.org/solrsearch/select?q=g:${groupid}+AND+a:${artifactid}&core=gav&rows=20&wt=json" | jq -r '.response.docs[0].v'
+                ;;
             *)
                 echo "Registry not supported."
                 ;;
@@ -74,9 +82,11 @@ for yaml_file in ${FILES}; do
         echo "${yaml_file}: Package name and/or registry are missing in the YAML file."
     else
         # Get latest version
-        latest_version=$(get_latest_version "$name" "$registry")
+        latest_version=$(get_latest_version "$name" "$registry" || echo "Could not fetch version.")
 
-        if [ "$latest_version" == "Registry not supported." ]; then
+        if [ "$latest_version" == "Could not fetch version." ]; then
+            echo "${yaml_file} ($registry): Registry not supported.";
+        elif [ "$latest_version" == "Registry not supported." ]; then
             echo "${yaml_file} ($registry): Registry not supported.";
         elif [ -z "$latest_version" ]; then
             echo "${yaml_file} ($registry): Could not get latest version from registry."
@@ -110,12 +120,22 @@ if [ "$existing_pr_count" -gt 0 ]; then
     exit 0
 fi
 
-$GIT checkout -b "$branch"
-$GIT commit -a -m "$message"
-$GIT push --set-upstream origin "$branch"
+if [[ -n $(git status --porcelain) ]]; then
+    echo "Versions have been updated, formatting and pushing changes."
 
-body_file=$(mktemp)
-echo -en "${body}" >> "${body_file}"
+    $NPM run fix:format
 
-echo "Submitting auto-update PR '$message'."
-$GH pr create --title "$message" --body-file "${body_file}"
+    $GIT checkout -b "$branch"
+    $GIT commit -a -m "$message"
+    $GIT push --set-upstream origin "$branch"
+
+    body_file=$(mktemp)
+    echo -en "${body}" >> "${body_file}"
+
+    echo "Submitting auto-update PR '$message'."
+    $GH pr create --title "$message" --body-file "${body_file}"
+
+else
+    echo "No changes detected."
+    exit 0
+fi

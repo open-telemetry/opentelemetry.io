@@ -8,13 +8,13 @@ aliases:
   - libraries
 weight: 10
 description: Instrumentation ecosystem in OpenTelemetry Java
-cSpell:ignore: Logback logback
+cSpell:ignore: logback
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-Instrumentation records telemetry using the [API](../api-components/). The
-[SDK](../sdk/) is the built-in reference implementation of the API, and is
+Instrumentation records telemetry using the [API](../api/). The [SDK](../sdk/)
+is the built-in reference implementation of the API, and is
 [configured](../configuration/) to process and export the telemetry produced by
 instrumentation API calls. This page discusses the OpenTelemetry ecosystem in
 OpenTelemetry Java, including resources for end users and cross-cutting
@@ -100,8 +100,8 @@ Instrumentation" column on
 
 [Native instrumentation](/docs/specs/otel/glossary/#natively-instrumented) is
 built directly into libraries or frameworks. OpenTelemetry encourages library
-authors to add native instrumentation using the [API](../api-components/). In
-the long term, we hope the native instrumentation becomes the norm, and view the
+authors to add native instrumentation using the [API](../api/). In the long
+term, we hope the native instrumentation becomes the norm, and view the
 instrumentation maintained by OpenTelemetry in
 [opentelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
 as a temporary means of filling the gap.
@@ -152,20 +152,17 @@ context:
 
 For this correlation to work, trace context must be propagated throughout an
 application (across function calls and threads), and across application
-boundaries. The [context API](../api-components/#context-api) facilitates this.
+boundaries. The [context API](../api/#context-api) facilitates this.
 Instrumentation needs to be written in a manner which is context aware:
 
 - Libraries that represent the entry point to an application (i.e. HTTP servers,
-  message consumers, etc.) should
-  [extract context](../api-components/#contextpropagators) from incoming
-  messages.
+  message consumers, etc.) should [extract context](../api/#contextpropagators)
+  from incoming messages.
 - Libraries that represent an exit point from an application (i.e. HTTP clients,
-  message producers, etc.) should
-  [inject context](../api-components/#contextpropagators) into outgoing
-  messages.
-- Libraries should implicitly or explicitly pass
-  [Context](../api-components/#context) through the callstack and across any
-  threads.
+  message producers, etc.) should [inject context](../api/#contextpropagators)
+  into outgoing messages.
+- Libraries should implicitly or explicitly pass [Context](../api/#context)
+  through the callstack and across any threads.
 
 ## Semantic conventions
 
@@ -177,22 +174,21 @@ attribute key, value, and requirement levels.
 When writing instrumentation, consult the semantic conventions and conform to
 any which are applicable to the domain.
 
-OpenTelemetry Java [publishes artifacts](../api-components/#semantic-attributes)
-to assist in conforming to the semantic conventions, including generated
-constants for attribute keys and values.
+OpenTelemetry Java [publishes artifacts](../api/#semantic-attributes) to assist
+in conforming to the semantic conventions, including generated constants for
+attribute keys and values.
 
 TODO: discuss instrumentation API and how it helps conform to semantic
 conventions
 
 ## Log instrumentation
 
-While the [LoggerProvider](../api-components/#loggerprovider) /
-[Logger](../api-components/#logger) APIs are structurally similar to the
-equivalent [trace](../api-components/#tracerprovider) and
-[metric](../api-components/#meterprovider) APIs, they serve a different use
-case. As of now, `LoggerProvider` / `Logger` and associated classes represent
-the [Log Bridge API](/docs/specs/otel/logs/bridge-api/), which exists to write
-log appenders to bridge logs recorded through other log APIs / frameworks into
+While the [LoggerProvider](../api/#loggerprovider) / [Logger](../api/#logger)
+APIs are structurally similar to the equivalent [trace](../api/#tracerprovider)
+and [metric](../api/#meterprovider) APIs, they serve a different use case. As of
+now, `LoggerProvider` / `Logger` and associated classes represent the
+[Log Bridge API](/docs/specs/otel/logs/api/), which exists to write log
+appenders to bridge logs recorded through other log APIs / frameworks into
 OpenTelemetry. They are not intended for end user use as a replacement for Log4j
 / SLF4J / Logback / etc.
 
@@ -240,3 +236,10 @@ document.
 Log correlation with traces is available by installing a [shim](#shims) to
 bridge OpenTelemetry context into the log framework. See "Bridge OpenTelemetry
 context into Log4j", "Bridge OpenTelemetry context into Logback" entries.
+
+{{% alert title="Note" color="info" %}}
+
+An end-to-end example of log instrumentation using stdout is available in the
+[Java examples repository](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md).
+
+{{% /alert %}}

@@ -6,7 +6,7 @@
 {{ end -}}
 {{ $page := .Site.GetPage $pageRef -}}
 {{ if not $page -}}
-  {{ errorf "spec_status: Can't find page at '%s'." $pageRef -}}
+  {{ warnf "spec_status: Can't find page at '%s'." $pageRef -}}
 {{ end -}}
 
 {{ $_match := .Get 2 | default "Status" -}}
@@ -17,7 +17,7 @@
   {{/* Note that content is in HTML. */ -}}
   {{ $statusLine = index . 0 -}}
 {{ else -}}
-  {{ errorf "%s: page '%s' does not contain a line matching '%s'." $err $pageRef $_match -}}
+  {{ warnf "%s: page '%s' does not contain a line matching '%s'." $err $pageRef $_match -}}
 {{ end -}}
 
 {{ $status := "" -}}
@@ -30,7 +30,8 @@
 {{ with findRE $statusRE $statusLine -}}
   {{ $status = index . 0 -}}
 {{ else -}}
-  {{ errorf "%s: '%s' value did not match one of '%s' in file '%s': matched line is '%s'" $err $_match $statusValueRE $pageRef $statusLine -}}
+  {{ warnf "%s: '%s' value did not match one of '%s' in file '%s': matched line is '%s'" $err $_match $statusValueRE $pageRef $statusLine -}}
+  {{ $status = "[STATUS ACCESS FAILURE DURING SITE BUILD]" -}}
 {{ end -}}
 
 **[{{ $label }}]({{ $page.RelPermalink }}):** {{ lower $status -}}

@@ -7,13 +7,12 @@ cSpell:ignore: autoconfigured FQCNs Interceptable Logback okhttp
 <!-- markdownlint-disable blanks-around-fences -->
 <?code-excerpt path-base="examples/java/configuration"?>
 
-The SDK is the built-in reference implementation of the
-[API](../api-components/), processing and exporting telemetry produced by
-instrumentation API calls. This page is a conceptual overview of the SDK,
-including descriptions, links to relevant Javadocs, artifact coordinates, sample
-programmatic configurations and more. See
-**[Configure the SDK](../configuration/)** for details on SDK configuration,
-including
+The SDK is the built-in reference implementation of the [API](../api/),
+processing and exporting telemetry produced by instrumentation API calls. This
+page is a conceptual overview of the SDK, including descriptions, links to
+relevant Javadocs, artifact coordinates, sample programmatic configurations and
+more. See **[Configure the SDK](../configuration/)** for details on SDK
+configuration, including
 [zero-code SDK autoconfigure](../configuration/#zero-code-sdk-autoconfigure).
 
 The SDK consists of the following top level components:
@@ -74,8 +73,8 @@ component section includes:
 ### OpenTelemetrySdk
 
 [OpenTelemetrySdk](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk/latest/io/opentelemetry/sdk/OpenTelemetrySdk.html)
-is the SDK implementation of [OpenTelemetry](../api-components/#opentelemetry).
-It is a holder for top-level SDK components which makes it convenient to pass
+is the SDK implementation of [OpenTelemetry](../api/#opentelemetry). It is a
+holder for top-level SDK components which makes it convenient to pass
 fully-configured SDK components to instrumentation.
 
 `OpenTelemetrySdk` is configured by the application owner, and consists of:
@@ -151,9 +150,8 @@ public class ResourceConfig {
 ### SdkTracerProvider
 
 [SdkTracerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/SdkTracerProvider.html)
-is the SDK implementation of
-[TracerProvider](../api-components/#tracerprovider), and is responsible for
-handling trace telemetry produced by the API.
+is the SDK implementation of [TracerProvider](../api/#tracerprovider), and is
+responsible for handling trace telemetry produced by the API.
 
 `SdkTracerProvider` is configured by the application owner, and consists of:
 
@@ -327,6 +325,7 @@ Span processors built-in to the SDK and maintained by the community in
 | `BaggageSpanProcessor`    | `io.opentelemetry.contrib:opentelemetry-baggage-processor:{{% param vers.contrib %}}-alpha` | Enriches spans with baggage.                                              |
 | `JfrSpanProcessor`        | `io.opentelemetry.contrib:opentelemetry-jfr-events:{{% param vers.contrib %}}-alpha`        | Creates JFR events from spans.                                            |
 | `StackTraceSpanProcessor` | `io.opentelemetry.contrib:opentelemetry-span-stacktrace:{{% param vers.contrib %}}-alpha`   | Enriches select spans with stack trace data.                              |
+| `InferredSpansProcessor`  | `io.opentelemetry.contrib:opentelemetry-inferred-spans:{{% param vers.contrib %}}-alpha`    | Generates spans from async profiler instead of instrumentation.           |
 
 The following code snippet demonstrates `SpanProcessor` programmatic
 configuration:
@@ -425,18 +424,18 @@ for exporting spans out of process. Rather than directly registering with
 Span exporters built-in to the SDK and maintained by the community in
 `opentelemetry-java-contrib`:
 
-| Class                          | Artifact                                                                                 | Description                                              |
-| ------------------------------ | ---------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| `OtlpHttpSpanExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`                   | Exports spans via OTLP `http/protobuf`.                  |
-| `OtlpGrpcSpanExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`                   | Exports spans via OTLP `grpc`.                           |
-| `LoggingSpanExporter`          | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`                | Logs spans to JUL in a debugging format.                 |
-| `OtlpJsonLoggingSpanExporter`  | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`           | Logs spans to JUL in the OTLP JSON encoding.             |
-| `ZipkinSpanExporter`           | `io.opentelemetry:opentelemetry-exporter-zipkin:{{% param vers.otel %}}`                 | Export spans to Zipkin.                                  |
-| `InterceptableSpanExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha`     | Passes spans to a flexible interceptor before exporting. |
-| `KafkaSpanExporter`            | `io.opentelemetry.contrib:opentelemetry-kafka-exporter:{{% param vers.contrib %}}-alpha` | Exports spans by writing to a Kafka topic.               |
+| Class                          | Artifact                                                                                 | Description                                                                   |
+| ------------------------------ | ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `OtlpHttpSpanExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`                   | Exports spans via OTLP `http/protobuf`.                                       |
+| `OtlpGrpcSpanExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`                   | Exports spans via OTLP `grpc`.                                                |
+| `LoggingSpanExporter`          | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`                | Logs spans to JUL in a debugging format.                                      |
+| `OtlpJsonLoggingSpanExporter`  | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`           | Logs spans to JUL in an OTLP JSON encoding.                                   |
+| `OtlpStdoutSpanExporter`       | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`           | Logs spans to `System.out` in the OTLP [JSON file encoding][] (experimental). |
+| `ZipkinSpanExporter`           | `io.opentelemetry:opentelemetry-exporter-zipkin:{{% param vers.otel %}}`                 | Export spans to Zipkin.                                                       |
+| `InterceptableSpanExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha`     | Passes spans to a flexible interceptor before exporting.                      |
+| `KafkaSpanExporter`            | `io.opentelemetry.contrib:opentelemetry-kafka-exporter:{{% param vers.contrib %}}-alpha` | Exports spans by writing to a Kafka topic.                                    |
 
-**[1]**: See [OTLP exporter sender](#otlp-exporter-senders) for implementation
-details.
+**[1]**: See [OTLP exporters](#otlp-exporters) for implementation details.
 
 The following code snippet demonstrates `SpanExporter` programmatic
 configuration:
@@ -559,13 +558,21 @@ public class SpanLimitsConfig {
 ### SdkMeterProvider
 
 [SdkMeterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/SdkMeterProvider.html)
-is the SDK implementation of [MeterProvider](../api-components/#meterprovider),
-and is responsible for handling metric telemetry produced by the API.
+is the SDK implementation of [MeterProvider](../api/#meterprovider), and is
+responsible for handling metric telemetry produced by the API.
 
 `SdkMeterProvider` is configured by the application owner, and consists of:
 
 - [Resource](#resource): The resource metrics are associated with.
 - [MetricReader](#metricreader): Reads the aggregated state of metrics.
+  - Optionally, with
+    [CardinalityLimitSelector](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/export/CardinalityLimitSelector.html)
+    for overriding cardinality limit by instrument kind. If unset, each
+    instrument is limited to 2000 unique combinations of attributes per
+    collection cycle. Cardinality limits are also configurable for individual
+    instruments via [views](#views). See
+    [cardinality limits](/docs/specs/otel/metrics/sdk/#cardinality-limits) for
+    more details.
 - [MetricExporter](#metricexporter): Exports metrics out of process (in
   conjunction with associated `MetricReader`).
 - [Views](#views): Configures metric streams, including dropping unused metrics.
@@ -593,11 +600,18 @@ public class SdkMeterProviderConfig {
                 MetricReaderConfig.periodicMetricReader(
                     MetricExporterConfig.otlpHttpMetricExporter(
                         "http://localhost:4318/v1/metrics")));
+    // Uncomment to optionally register metric reader with cardinality limits
+    // builder.registerMetricReader(
+    //     MetricReaderConfig.periodicMetricReader(
+    //         MetricExporterConfig.otlpHttpMetricExporter("http://localhost:4318/v1/metrics")),
+    //     instrumentType -> 100);
+
     ViewConfig.dropMetricView(builder, "some.custom.metric");
     ViewConfig.histogramBucketBoundariesView(
         builder, "http.server.request.duration", List.of(1.0, 5.0, 10.0));
     ViewConfig.attributeFilterView(
         builder, "http.client.request.duration", Set.of("http.request.method"));
+    ViewConfig.cardinalityLimitsView(builder, "http.server.active_requests", 100);
     return builder.build();
   }
 }
@@ -743,16 +757,16 @@ for exporting metrics out of process. Rather than directly registering with
 Metric exporters built-in to the SDK and maintained by the community in
 `opentelemetry-java-contrib`:
 
-| Class                            | Artifact                                                                             | Description                                                |
-| -------------------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
-| `OtlpHttpMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Exports metrics via OTLP `http/protobuf`.                  |
-| `OtlpGrpcMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Exports metrics via OTLP `grpc`.                           |
-| `LoggingMetricExporter`          | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`            | Logs metrics to JUL in a debugging format.                 |
-| `OtlpJsonLoggingMetricExporter`  | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Logs metrics to JUL in the OTLP JSON encoding.             |
-| `InterceptableMetricExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Passes metrics to a flexible interceptor before exporting. |
+| Class                            | Artifact                                                                             | Description                                                                     |
+| -------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- |
+| `OtlpHttpMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Exports metrics via OTLP `http/protobuf`.                                       |
+| `OtlpGrpcMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Exports metrics via OTLP `grpc`.                                                |
+| `LoggingMetricExporter`          | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`            | Logs metrics to JUL in a debugging format.                                      |
+| `OtlpJsonLoggingMetricExporter`  | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Logs metrics to JUL in the OTLP JSON encoding.                                  |
+| `OtlpStdoutMetricExporter`       | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Logs metrics to `System.out` in the OTLP [JSON file encoding][] (experimental). |
+| `InterceptableMetricExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Passes metrics to a flexible interceptor before exporting.                      |
 
-**[1]**: See [OTLP exporter sender](#otlp-exporter-senders) for implementation
-details.
+**[1]**: See [OTLP exporters](#otlp-exporters) for implementation details.
 
 The following code snippet demonstrates `MetricExporter` programmatic
 configuration:
@@ -872,7 +886,7 @@ public class CustomMetricExporter implements MetricExporter {
 [Views](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/View.html)
 allow metric streams to be customized, including changing metric names, metric
 descriptions, metric aggregations (i.e. histogram bucket boundaries), the set of
-attribute keys to retain, etc.
+attribute keys to retain, cardinality limit, etc.
 
 {{% alert %}} Views have somewhat unintuitive behavior when multiple match a
 particular instrument. If one matching view changes the metric name and another
@@ -920,6 +934,13 @@ public class ViewConfig {
         InstrumentSelector.builder().setName(metricName).build(),
         View.builder().setAttributeFilter(keysToRetain).build());
   }
+
+  public static SdkMeterProviderBuilder cardinalityLimitsView(
+      SdkMeterProviderBuilder builder, String metricName, int cardinalityLimit) {
+    return builder.registerView(
+        InstrumentSelector.builder().setName(metricName).build(),
+        View.builder().setCardinalityLimit(cardinalityLimit).build());
+  }
 }
 ```
 <!-- prettier-ignore-end -->
@@ -927,9 +948,8 @@ public class ViewConfig {
 ### SdkLoggerProvider
 
 [SdkLoggerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/SdkLoggerProvider.html)
-is the SDK implementation of
-[LoggerProvider](../api-components/#loggerprovider), and is responsible for
-handling log telemetry produced by the log bridge API.
+is the SDK implementation of [LoggerProvider](../api/#loggerprovider), and is
+responsible for handling log telemetry produced by the log bridge API.
 
 `SdkLoggerProvider` is configured by the application owner, and consists of:
 
@@ -977,10 +997,11 @@ other applications such as data enrichment.
 Log record processors built-in to the SDK and maintained by the community in
 `opentelemetry-java-contrib`:
 
-| Class                      | Artifact                                                     | Description                                                                  |
-| -------------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------- |
-| `BatchLogRecordProcessor`  | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}` | Batches log records and exports them via a configurable `LogRecordExporter`. |
-| `SimpleLogRecordProcessor` | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}` | Exports each log record a via a configurable `LogRecordExporter`.            |
+| Class                      | Artifact                                                                             | Description                                                                  |
+| -------------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| `BatchLogRecordProcessor`  | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                         | Batches log records and exports them via a configurable `LogRecordExporter`. |
+| `SimpleLogRecordProcessor` | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                         | Exports each log record a via a configurable `LogRecordExporter`.            |
+| `EventToSpanEventBridge`   | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Records event log records as span events on the current span.                |
 
 The following code snippet demonstrates `LogRecordProcessor` programmatic
 configuration:
@@ -1063,16 +1084,16 @@ for exporting log records out of process. Rather than directly registering with
 Span exporters built-in to the SDK and maintained by the community in
 `opentelemetry-java-contrib`:
 
-| Class                                      | Artifact                                                                             | Description                                                    |
-| ------------------------------------------ | ------------------------------------------------------------------------------------ | -------------------------------------------------------------- |
-| `OtlpHttpLogRecordExporter` **[1]**        | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Exports log records via OTLP `http/protobuf`.                  |
-| `OtlpGrpcLogRecordExporter` **[1]**        | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Exports log records via OTLP `grpc`.                           |
-| `SystemOutLogRecordExporter`               | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`            | Logs log records to system out in a debugging format.          |
-| `OtlpJsonLoggingLogRecordExporter` **[2]** | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Logs log records to JUL in the OTLP JSON encoding.             |
-| `InterceptableLogRecordExporter`           | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Passes log records to a flexible interceptor before exporting. |
+| Class                                      | Artifact                                                                             | Description                                                                         |
+| ------------------------------------------ | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- |
+| `OtlpHttpLogRecordExporter` **[1]**        | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Exports log records via OTLP `http/protobuf`.                                       |
+| `OtlpGrpcLogRecordExporter` **[1]**        | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Exports log records via OTLP `grpc`.                                                |
+| `SystemOutLogRecordExporter`               | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`            | Logs log records to system out in a debugging format.                               |
+| `OtlpJsonLoggingLogRecordExporter` **[2]** | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Logs log records to JUL in the OTLP JSON encoding.                                  |
+| `OtlpStdoutLogRecordExporter`              | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Logs log records to `System.out` in the OTLP [JSON file encoding][] (experimental). |
+| `InterceptableLogRecordExporter`           | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Passes log records to a flexible interceptor before exporting.                      |
 
-**[1]**: See [OTLP exporter sender](#otlp-exporter-senders) for implementation
-details.
+**[1]**: See [OTLP exporters](#otlp-exporters) for implementation details.
 
 **[2]**: `OtlpJsonLoggingLogRecordExporter` logs to JUL, and may cause infinite
 loops (i.e. JUL -> SLF4J -> Logback -> OpenTelemetry Appender -> OpenTelemetry
@@ -1338,20 +1359,29 @@ public class IgnoreExportErrorsFilter implements java.util.logging.Filter {
 io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extension.logging.IgnoreExportErrorsFilter
 ```
 
-### OTLP exporter senders
+### OTLP exporters
 
 The [span exporter](#spanexporter), [metric exporter](#metricexporter), and
-[log exporter](#logrecordexporter) discuss OTLP exporters of the form:
+[log exporter](#logrecordexporter) sections describe OTLP exporters of the form:
 
-- `OtlpHttp{Signal}Exporter`s export data via OTLP `http/protobuf`.
-- `OtlpGrpc{Signal}Exporter`s export data via OTLP `grpc`.
+- `OtlpHttp{Signal}Exporter`, which exports data via OTLP `http/protobuf`
+- `OtlpGrpc{Signal}Exporter`, which exports data via OTLP `grpc`
 
 The exporters for all signals are available via
-`io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`.
+`io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`, and have
+significant overlap across `grpc` and `http/protobuf` versions of the OTLP
+protocol, and between signals. The following sections elaborate on these key
+concepts:
 
-Internally, these exporters depend on various client libraries to execute HTTP
-and gRPC requests. There is no single HTTP / gRPC client library which satisfies
-all use cases in the Java ecosystem:
+- [Senders](#senders): an abstraction for a different HTTP / gRPC client
+  libraries.
+- [Authentication](#authentication) options for OTLP exporters.
+
+#### Senders
+
+The OTLP exporters depend on various client libraries to execute HTTP and gRPC
+requests. There is no single HTTP / gRPC client library which satisfies all use
+cases in the Java ecosystem:
 
 - Java 11+ brings the built-in `java.net.http.HttpClient`, but
   `opentelemetry-java` needs to support Java 8+ users, and this can't be used to
@@ -1379,6 +1409,121 @@ add a dependency on the alternative.
 you must also add a dependency on a
 [gRPC transport implementations](https://github.com/grpc/grpc-java#transport).
 
+#### Authentication
+
+The OTLP exporters provide mechanisms for static and dynamic header-based
+authentication, and for mTLS.
+
+If using
+[zero-code SDK autoconfigure](../configuration/#zero-code-sdk-autoconfigure)
+with environment variables and system properties, see
+[relevant system properties](../configuration/#properties-exporters):
+
+- `otel.exporter.otlp.headers` for static header-based authentication.
+- `otel.exporter.otlp.client.key`, `otel.exporter.otlp.client.certificate` for
+  mTLS authentication.
+
+The following code snippet demonstrates programmatic configuration of static and
+dynamic header-based authentication:
+
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/OtlpAuthenticationConfig.java"?>
+```java
+package otel;
+
+import io.opentelemetry.exporter.otlp.http.logs.OtlpHttpLogRecordExporter;
+import io.opentelemetry.exporter.otlp.http.metrics.OtlpHttpMetricExporter;
+import io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporter;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Collections;
+import java.util.Map;
+import java.util.function.Supplier;
+
+public class OtlpAuthenticationConfig {
+  public static void staticAuthenticationHeader(String endpoint) {
+    // If the OTLP destination accepts a static, long-lived authentication header like an API key,
+    // set it as a header.
+    // This reads the API key from the OTLP_API_KEY env var to avoid hard coding the secret in
+    // source code.
+    String apiKeyHeaderName = "api-key";
+    String apiKeyHeaderValue = System.getenv("OTLP_API_KEY");
+
+    // Initialize OTLP Span, Metric, and LogRecord exporters using a similar pattern
+    OtlpHttpSpanExporter spanExporter =
+        OtlpHttpSpanExporter.builder()
+            .setEndpoint(endpoint)
+            .addHeader(apiKeyHeaderName, apiKeyHeaderValue)
+            .build();
+    OtlpHttpMetricExporter metricExporter =
+        OtlpHttpMetricExporter.builder()
+            .setEndpoint(endpoint)
+            .addHeader(apiKeyHeaderName, apiKeyHeaderValue)
+            .build();
+    OtlpHttpLogRecordExporter logRecordExporter =
+        OtlpHttpLogRecordExporter.builder()
+            .setEndpoint(endpoint)
+            .addHeader(apiKeyHeaderName, apiKeyHeaderValue)
+            .build();
+  }
+
+  public static void dynamicAuthenticationHeader(String endpoint) {
+    // If the OTLP destination requires a dynamic authentication header, such as a JWT which needs
+    // to be periodically refreshed, use a header supplier.
+    // Here we implement a simple supplier which adds a header of the form "Authorization: Bearer
+    // <token>", where <token> is fetched from refreshBearerToken every 10 minutes.
+    String username = System.getenv("OTLP_USERNAME");
+    String password = System.getenv("OTLP_PASSWORD");
+    Supplier<Map<String, String>> supplier =
+        new AuthHeaderSupplier(() -> refreshToken(username, password), Duration.ofMinutes(10));
+
+    // Initialize OTLP Span, Metric, and LogRecord exporters using a similar pattern
+    OtlpHttpSpanExporter spanExporter =
+        OtlpHttpSpanExporter.builder().setEndpoint(endpoint).setHeaders(supplier).build();
+    OtlpHttpMetricExporter metricExporter =
+        OtlpHttpMetricExporter.builder().setEndpoint(endpoint).setHeaders(supplier).build();
+    OtlpHttpLogRecordExporter logRecordExporter =
+        OtlpHttpLogRecordExporter.builder().setEndpoint(endpoint).setHeaders(supplier).build();
+  }
+
+  private static class AuthHeaderSupplier implements Supplier<Map<String, String>> {
+    private final Supplier<String> tokenRefresher;
+    private final Duration tokenRefreshInterval;
+    private Instant refreshedAt = Instant.ofEpochMilli(0);
+    private String currentTokenValue;
+
+    private AuthHeaderSupplier(Supplier<String> tokenRefresher, Duration tokenRefreshInterval) {
+      this.tokenRefresher = tokenRefresher;
+      this.tokenRefreshInterval = tokenRefreshInterval;
+    }
+
+    @Override
+    public Map<String, String> get() {
+      return Collections.singletonMap("Authorization", "Bearer " + getToken());
+    }
+
+    private synchronized String getToken() {
+      Instant now = Instant.now();
+      if (currentTokenValue == null || now.isAfter(refreshedAt.plus(tokenRefreshInterval))) {
+        currentTokenValue = tokenRefresher.get();
+        refreshedAt = now;
+      }
+      return currentTokenValue;
+    }
+  }
+
+  private static String refreshToken(String username, String password) {
+    // For a production scenario, this would be replaced with an out-of-band request to exchange
+    // username / password for bearer token.
+    return "abc123";
+  }
+}
+```
+<!-- prettier-ignore-end -->
+
 ### Testing
 
 TODO: document tools available for testing the SDK
+
+[JSON file encoding]:
+  /docs/specs/otel/protocol/file-exporter/#json-file-serialization

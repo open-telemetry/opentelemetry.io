@@ -8,7 +8,8 @@ tags:
 license: BSD-2-Clause
 description: Instrumentation for go-redis Redis client.
 authors:
-  - name: go-redis Authors
+  - name: Redis
+    url: https://github.com/redis/
 urls:
   repo: https://github.com/redis/go-redis/tree/master/extra/redisotel
 createdAt: 2021-04-19

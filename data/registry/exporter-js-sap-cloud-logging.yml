@@ -17,10 +17,11 @@ description:
   traces to SAP Cloud Logging.
 authors:
   - name: Christian Dinse
+    url: https://github.com/christiand93
 createdAt: 2024-08-20
 isNative: true
 isFirstParty: false
 package:
   registry: npm
   name: '@sap/opentelemetry-exporter-for-sap-cloud-logging'
-  version: 0.1.1
+  version: 0.3.0

@@ -1,0 +1,20 @@
+# cSpell:ignore: ntpreceiver
+title: NTP Receiver
+registryType: receiver
+language: collector
+tags:
+  - ntp
+  - receiver
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/ntpreceiver
+license: Apache 2.0
+description:
+  This receiver periodically retrieves the clock offset from a NTP server.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-11-18
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/ntpreceiver
+  version: v0.118.0

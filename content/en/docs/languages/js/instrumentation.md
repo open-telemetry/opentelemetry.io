@@ -4,8 +4,8 @@ aliases:
   - /docs/languages/js/api/tracing
   - manual
 weight: 30
-cSpell:ignore: dicelib Millis rolldice
 description: Instrumentation for OpenTelemetry JavaScript
+cSpell:ignore: dicelib Millis rolldice
 ---
 
 {{% docs/languages/instrumentation-intro %}}
@@ -75,7 +75,7 @@ TypeScript) and add the following code to it:
 ```ts
 /*dice.ts*/
 function rollOnce(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min) + min);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 export function rollTheDice(rolls: number, min: number, max: number) {
@@ -92,7 +92,7 @@ export function rollTheDice(rolls: number, min: number, max: number) {
 ```js
 /*dice.js*/
 function rollOnce(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 function rollTheDice(rolls, min, max) {
@@ -115,7 +115,7 @@ add the following code to it:
 
 ```ts
 /*app.ts*/
-import express, { Request, Express } from 'express';
+import express, { Express } from 'express';
 import { rollTheDice } from './dice';
 
 const PORT: number = parseInt(process.env.PORT || '8080');
@@ -336,7 +336,7 @@ above, you have a `TracerProvider` setup for you already. You can continue with
 #### Browser
 
 {{% alert title="Warning" color="warning" %}}
-{{% _param notes.browser-instrumentation %}} {{% /alert %}}
+{{% param notes.browser-instrumentation %}} {{% /alert %}}
 
 First, ensure you've got the right packages:
 
@@ -558,7 +558,7 @@ import { trace } from '@opentelemetry/api';
 const tracer = trace.getTracer('dice-lib');
 
 function rollOnce(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min) + min);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 export function rollTheDice(rolls: number, min: number, max: number) {
@@ -579,7 +579,7 @@ const { trace } = require('@opentelemetry/api');
 const tracer = trace.getTracer('dice-lib');
 
 function rollOnce(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 function rollTheDice(rolls, min, max) {
@@ -707,7 +707,7 @@ nested operation. The following sample creates a nested span that tracks
 ```ts
 function rollOnce(i: number, min: number, max: number) {
   return tracer.startActiveSpan(`rollOnce:${i}`, (span: Span) => {
-    const result = Math.floor(Math.random() * (max - min) + min);
+    const result = Math.floor(Math.random() * (max - min + 1) + min);
     span.end();
     return result;
   });
@@ -732,7 +732,7 @@ export function rollTheDice(rolls: number, min: number, max: number) {
 ```js
 function rollOnce(i, min, max) {
   return tracer.startActiveSpan(`rollOnce:${i}`, (span) => {
-    const result = Math.floor(Math.random() * (max - min) + min);
+    const result = Math.floor(Math.random() * (max - min + 1) + min);
     span.end();
     return result;
   });
@@ -849,7 +849,7 @@ information about the current operation that it's tracking.
 ```ts
 function rollOnce(i: number, min: number, max: number) {
   return tracer.startActiveSpan(`rollOnce:${i}`, (span: Span) => {
-    const result = Math.floor(Math.random() * (max - min) + min);
+    const result = Math.floor(Math.random() * (max - min + 1) + min);
 
     // Add an attribute to the span
     span.setAttribute('dicelib.rolled', result.toString());
@@ -865,7 +865,7 @@ function rollOnce(i: number, min: number, max: number) {
 ```js
 function rollOnce(i, min, max) {
   return tracer.startActiveSpan(`rollOnce:${i}`, (span) => {
-    const result = Math.floor(Math.random() * (max - min) + min);
+    const result = Math.floor(Math.random() * (max - min + 1) + min);
 
     // Add an attribute to the span
     span.setAttribute('dicelib.rolled', result.toString());
@@ -1085,7 +1085,9 @@ import opentelemetry, { SpanStatusCode } from '@opentelemetry/api';
 try {
   doWork();
 } catch (ex) {
-  span.recordException(ex);
+  if (ex instanceof Error) {
+    span.recordException(ex);
+  }
   span.setStatus({ code: SpanStatusCode.ERROR });
 }
 ```
@@ -1100,7 +1102,9 @@ const opentelemetry = require('@opentelemetry/api');
 try {
   doWork();
 } catch (ex) {
-  span.recordException(ex);
+  if (ex instanceof Error) {
+    span.recordException(ex);
+  }
   span.setStatus({ code: opentelemetry.SpanStatusCode.ERROR });
 }
 ```
@@ -1466,7 +1470,7 @@ const tracer = trace.getTracer('dice-lib');
 const meter = metrics.getMeter('dice-lib');
 
 function rollOnce(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min) + min);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 export function rollTheDice(rolls: number, min: number, max: number) {
@@ -1488,7 +1492,7 @@ const tracer = trace.getTracer('dice-lib');
 const meter = metrics.getMeter('dice-lib');
 
 function rollOnce(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 function rollTheDice(rolls, min, max) {
@@ -1523,7 +1527,7 @@ const counter = meter.createCounter('dice-lib.rolls.counter');
 
 function rollOnce(min: number, max: number) {
   counter.add(1);
-  return Math.floor(Math.random() * (max - min) + min);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 ```
 
@@ -1535,7 +1539,7 @@ const counter = meter.createCounter('dice-lib.rolls.counter');
 
 function rollOnce(min, max) {
   counter.add(1);
-  return Math.floor(Math.random() * (max - min) + min);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 ```
 

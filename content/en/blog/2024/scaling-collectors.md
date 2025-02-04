@@ -89,7 +89,7 @@ Create a file named `deploy-opentelemetry.yml` in the same directory as your
   tasks:
     - name: Install OpenTelemetry Collector
       ansible.builtin.include_role:
-        name: opentelemetry_collectorr
+        name: opentelemetry_collector
       vars:
         otel_collector_receivers:
           hostmetrics:

@@ -2,7 +2,7 @@
 title: Docker deployment
 linkTitle: Docker
 aliases: [docker_deployment]
-cSpell:ignore: otelcollector otlphttp spanmetrics tracetest tracetesting
+cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
 ---
 
 <!-- markdownlint-disable code-block-style ol-prefix -->
@@ -71,6 +71,7 @@ Once the images are built and containers are started you can access:
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
 - Tracetest UI: <http://localhost:11633/>, only when using
   `make run-tracetesting`
+- Flagd configurator UI: <http://localhost:8080/feature>
 
 ## Changing the demo's primary port number
 
@@ -108,7 +109,7 @@ configuration from two files:
 - `otelcol-config-extras.yml`
 
 To add your backend, open the file
-[src/otelcollector/otelcol-config-extras.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otelcollector/otelcol-config-extras.yml)
+[src/otel-collector/otelcol-config-extras.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config-extras.yml)
 with an editor.
 
 - Start by adding a new exporter. For example, if your backend supports OTLP
@@ -144,4 +145,4 @@ After updating the `otelcol-config-extras.yml`, start the demo by running
 `make start`. After a while, you should see the traces flowing into your backend
 as well.
 
-[^1]: {{% _param notes.docker-compose-v2 %}}
+[^1]: {{% param notes.docker-compose-v2 %}}

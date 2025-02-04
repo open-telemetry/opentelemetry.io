@@ -1,9 +1,9 @@
 ---
 title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
-# prettier-ignore
-cSpell:ignore: debugexporter diceroller distro loglevel maxlen randint rolldice rollspan venv werkzeug
 weight: 10
+# prettier-ignore
+cSpell:ignore: debugexporter diceroller distro maxlen randint rolldice rollspan venv
 ---
 
 This page will show you how to get started with OpenTelemetry in Python.

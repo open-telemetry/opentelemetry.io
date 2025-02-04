@@ -5,8 +5,8 @@ aliases: [../instrumenting-library]
 weight: 40
 ---
 
-OpenTelemetry provides [instrumentation libraries][] for many libraries, which is
-typically done through library hooks or monkey-patching library code.
+OpenTelemetry provides [instrumentation libraries][] for many libraries, which
+is typically done through library hooks or monkey-patching library code.
 
 Native library instrumentation with OpenTelemetry provides better observability
 and developer experience for users, removing the need for libraries to expose
@@ -22,7 +22,7 @@ and document hooks. Other advantages provided by native instrumentation include:
   various consumption scenarios using a wide variety of well-documented
   OpenTelemetry extensibility points.
 
-![ Native Instrumentation vs instrumentation libraries](/img/libraries-instrumentation.svg)
+![ Native Instrumentation vs instrumentation libraries](../native-vs-libraries.svg)
 
 ## Semantic conventions
 
@@ -115,7 +115,7 @@ to help you decide how to minimize dependency conflicts:
 - While your instrumentation stabilizes, consider shipping it as a separate
   package, so that it never causes issues for users who don't use it. You can
   keep it in your repository, or
-  [add it to OpenTelemetry](https://github.com/open-telemetry/oteps/blob/main/text/0155-external-modules.md#contrib-components),
+  [add it to OpenTelemetry](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0155-external-modules.md#contrib-components),
   so it ships with other instrumentation libraries.
 - Semantic conventions are [stable, but subject to evolution][]: while this does
   not cause any functional issues, you might need to update your instrumentation
@@ -245,8 +245,8 @@ already have OpenTelemetry integration. To find out, see the
 context on all logs, so users can correlate them.
 
 If your language and ecosystem don't have common logging support, use [span
-events][] to share additional app details. Events maybe more convenient if you want
-to add attributes as well.
+events][] to share additional app details. Events maybe more convenient if you
+want to add attributes as well.
 
 As a rule of thumb, use events or logs for verbose data instead of spans. Always
 attach events to the span instance that your instrumentation created. Avoid
@@ -267,8 +267,8 @@ After you create a span, pass new trace context to the application code
 (callback or handler), by making the span active; if possible, do this
 explicitly. The following Java example shows how to add trace context and
 activate a span. See the
-[Context extraction in Java](/docs/languages/java/api-components/#contextpropagators),
-for more examples.
+[Context extraction in Java](/docs/languages/java/api/#contextpropagators), for
+more examples.
 
 ```java
 // extract the context

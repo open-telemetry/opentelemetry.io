@@ -1,0 +1,19 @@
+title: Standalone .NET Aspire dashboard
+registryType: utilities
+language: dotnet
+tags:
+  - dashboard
+  - aspire
+  - viewer
+  - browser-based
+urls:
+  repo: https://github.com/dotnet/aspire/tree/main/src/Aspire.Dashboard
+  docs: https://learn.microsoft.com/en-us/dotnet/aspire/fundamentals/dashboard/standalone?tabs=bash
+license: MIT
+description:
+  The .NET Aspire Dashboard is a browser-based app to view run-time information
+  about your distributed application.
+authors:
+  - name: Microsoft
+    url: https://github.com/microsoft
+createdAt: 2024-12-12

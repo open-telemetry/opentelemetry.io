@@ -4,14 +4,32 @@ aliases:
   - feature_flags
   - services/feature-flag
   - services/featureflagservice
-cSpell:ignore: flagd loadgenerator OLJCESPC7Z
+cSpell:ignore: loadgenerator OLJCESPC7Z
 ---
 
 The demo provides several feature flags that you can use to simulate different
 scenarios. These flags are managed by [`flagd`](https://flagd.dev), a simple
-feature flag service that supports [OpenFeature](https://openfeature.dev). Flag
-values are stored in the `src/flagd/demo.flagd.json` file. To enable a flag,
-change the `defaultVariant` value in the config file for a given flag to "on".
+feature flag service that supports [OpenFeature](https://openfeature.dev).
+
+Flag values can be changed through the user interface provided at
+<http://localhost:8080/feature> when running the demo. Changing the values
+through this user interface will be reflected in the flagd service.
+
+There are two options when it comes to changing the feature flags through the
+user interface:
+
+- **Basic View**: A user friendly view in which default variants (the same
+  options that need to be changed when configuring through the raw file) can be
+  selected and saved for each feature flag. Currently, the basic view does not
+  support fractional targeting.
+
+- **Advanced View**: A view in which the raw configuration JSON file is loaded
+  and can be edited within the browser. The view provides the flexibility that
+  comes with editing a raw JSON file, however it also provides schema checking
+  to ensure that the JSON is valid and that the provided configuration values
+  are correct.
+
+## Implemented feature flags
 
 | Feature Flag                        | Service(s)       | Description                                                                                               |
 | ----------------------------------- | ---------------- | --------------------------------------------------------------------------------------------------------- |

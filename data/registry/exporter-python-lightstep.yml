@@ -8,6 +8,7 @@ license: Apache 2.0
 description: The OpenTelemetry Lightstep Exporter for Python.
 authors:
   - name: Lightstep Authors
+    url: https://github.com/lightstep/
 urls:
   repo: https://github.com/lightstep/opentelemetry-exporter-python
 createdAt: 2020-02-05

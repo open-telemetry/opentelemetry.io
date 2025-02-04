@@ -10,7 +10,13 @@ description:
   OpenTelemetry.
 authors:
   - name: http4k Authors
+    url: https://github.com/http4k/
 urls:
-  repo: https://github.com/http4k/http4k/tree/master/http4k-opentelemetry
+  repo: https://github.com/http4k/http4k/tree/master/core/opentelemetry
+  docs: https://www.http4k.org/ecosystem/http4k/reference/opentelemetry/
 createdAt: 2022-10-27
 isFirstParty: true
+package:
+  registry: maven
+  name: org.http4k/http4k-opentelemetry
+  version: 5.46.0.0

@@ -75,7 +75,7 @@ before things start to escalate. This is where monitoring your Collectors can be
 very useful.
 
 But how does one monitor a Collector? The OTel Collector already emits
-[metrics for the purposes of its own monitoring](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/monitoring.md).
+[metrics for the purposes of its own monitoring](/docs/collector/internal-telemetry/#use-internal-telemetry-to-monitor-the-collector).
 These can then be sent to your Observability backend for monitoring.
 
 ### 3- Not using the right Collector Distribution (or not building your own distribution)

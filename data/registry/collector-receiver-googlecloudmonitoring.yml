@@ -1,0 +1,22 @@
+# cSpell:ignore: googlecloudmonitoring googlecloudmonitoringreceiver
+title: Google Cloud Monitoring Receiver
+registryType: receiver
+language: collector
+tags:
+  - googlecloudmonitoring
+  - receiver
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/googlecloudmonitoringreceiver
+license: Apache 2.0
+description:
+  The primary objective of the Google Cloud Monitoring Receiver is to gather
+  time series metrics data from all Google services and convert this data into a
+  pipeline format that facilitates further use.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-11-18
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/googlecloudmonitoringreceiver
+  version: v0.118.0

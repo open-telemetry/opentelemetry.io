@@ -1,0 +1,21 @@
+# cSpell:ignore coralogix coralogixprocessor
+title: Coralogix Processor
+registryType: processor
+language: collector
+tags:
+  - coralogix
+  - processor
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/coralogixprocessor
+license: Apache 2.0
+description:
+  The Coralogix processor adds attributes to spans that enable features in
+  Coralogix.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-11-18
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/processor/coralogixprocessor
+  version: v0.118.0

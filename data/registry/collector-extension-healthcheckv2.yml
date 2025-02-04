@@ -1,0 +1,21 @@
+# cSpell:ignore: healthcheckv2
+title: Health Check Extension V2
+registryType: extension
+language: collector
+tags:
+  - healthcheckv2
+  - extension
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/healthcheckv2extension
+license: Apache 2.0
+description:
+  This is an experimental extension that is intended to replace the existing
+  health check extension.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-11-18
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/healthcheckv2extension
+  version: v0.118.0

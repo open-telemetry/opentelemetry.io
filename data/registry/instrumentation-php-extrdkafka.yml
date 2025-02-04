@@ -1,0 +1,24 @@
+# cSpell:ignore: rdkafka extrdkafka
+title: OpenTelemetry ext-rdkafka auto-instrumentation
+registryType: instrumentation
+language: php
+tags:
+  - extrdkafka
+  - instrumentation
+  - php
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/ExtRdKafka
+license: Apache 2.0
+description:
+  Auto-instrumentation hooks are registered via composer. There will be a new
+  span created for each message that is consumed. The goal of this
+  instrumentation is to allow distributed traces to happen across Kafka in PHP.
+  This means that the following should happen
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-11-18
+package:
+  registry: packagist
+  name: open-telemetry/opentelemetry-auto-ext-rdkafka
+  version: 0.0.1
+isFirstParty: false

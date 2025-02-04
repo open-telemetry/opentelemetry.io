@@ -9,6 +9,7 @@ license: MIT
 description: OpenTelemetry integration for Actix Web.
 authors:
   - name: Julian Tescher
+    url: https://github.com/jtescher
 urls:
   repo: https://github.com/OutThereLabs/actix-web-opentelemetry
 createdAt: 2020-08-28

@@ -9,7 +9,7 @@ cSpell:ignore: fatalf otelgrpc otelsarama otlpmetricgrpc otlptracegrpc sarama sd
 This service is responsible to process a checkout order from the user. The
 checkout service will call many other services in order to process an order.
 
-[Checkout service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/checkoutservice/)
+[Checkout service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/checkout/)
 
 ## Traces
 

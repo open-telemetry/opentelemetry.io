@@ -54,11 +54,12 @@ support for specific features can be found in the
 Note that, for each of the following sections, the **Collector** status is the
 same as the **Protocol** status.
 
-### [Tracing][]
+### Tracing
 
+- [Specification][tracing]
 - {{% spec_status "API" "otel/trace/api" "Status" %}}
 - {{% spec_status "SDK" "otel/trace/sdk" "Status" %}}
-- {{% spec_status "Protocol" "otlp" "Status" %}}
+- {{% spec_status "Protocol" "otlp" "/document-status.*for.*trace" %}}
 - Notes:
   - The tracing specification is now completely stable, and covered by long term
     support.
@@ -67,11 +68,12 @@ same as the **Protocol** status.
   - OpenTelemetry clients are versioned to v1.0 once their tracing
     implementation is complete.
 
-### [Metrics][]
+### Metrics
 
+- [Specification][metrics]
 - {{% spec_status "API" "otel/metrics/api" "Status" %}}
 - {{% spec_status "SDK" "otel/metrics/sdk" "Status" %}}
-- {{% spec_status "Protocol" "otlp" "Status" %}}
+- {{% spec_status "Protocol" "otlp" "/document-status.*for.*metric" %}}
 - Notes:
   - OpenTelemetry Metrics is currently under active development.
   - The data model is stable and released as part of the OTLP protocol.
@@ -79,8 +81,9 @@ same as the **Protocol** status.
   - Collector support for Prometheus is under development, in collaboration with
     the Prometheus community.
 
-### [Baggage][]
+### Baggage
 
+- [Specification][baggage]
 - {{% spec_status "API" "otel/baggage/api" "Status" %}}
 - **SDK:** stable
 - **Protocol:** N/A
@@ -90,12 +93,12 @@ same as the **Protocol** status.
     keys and values to a transaction, so that downstream services may access
     them. As such, there is no OTLP or Collector component to baggage.
 
-### [Logging][]
+### Logging
 
-- {{% spec_status "Bridge API" "otel/logs/bridge-api" "Status" %}}
+- [Specification][logging]
+- {{% spec_status "Bridge API" "otel/logs/api" "Status" %}}
 - {{% spec_status "SDK" "otel/logs/sdk" "Status" %}}
-- {{% spec_status "Event API" "otel/logs/event-api" "Status" %}}
-- {{% spec_status "Protocol" "otlp" "Status" %}}
+- {{% spec_status "Protocol" "otlp" "/document-status.*for.*log" %}}
 - Notes:
   - The [logs data model][] is released as part of the OpenTelemetry Protocol.
   - Log processing for many data formats has been added to the Collector, thanks
@@ -107,14 +110,18 @@ same as the **Protocol** status.
   - The OpenTelemetry Log SDK is the standard implementation of the Log Bridge
     API. Applications configure the SDK to indicate how logs are processed and
     exported (e.g. using OTLP).
-  - The OpenTelemetry Event API allows log records to be emitted which conform
-    to the [event semantic conventions][]. In contrast to the Log Bridge API,
-    the Event API is intended to be called by end users. The Event API is under
-    active development.
+  - The OpenTelemetry Log Bridge API contains experimental support for emitting
+    log records which conform to the [event semantic conventions][].
+
+### Profiles
+
+- [Specification][profiles]
+- {{% spec_status "Protocol" "otlp" "/document-status.*for.*profiles" %}}
 
 [baggage]: /docs/specs/otel/baggage/
 [event semantic conventions]: /docs/specs/semconv/general/events/
 [logging]: /docs/specs/otel/logs/
 [logs data model]: /docs/specs/otel/logs/data-model/
 [metrics]: /docs/specs/otel/metrics/
+[profiles]: /docs/specs/otel/profiles/
 [tracing]: /docs/specs/otel/trace/

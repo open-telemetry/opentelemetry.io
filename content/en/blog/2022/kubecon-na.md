@@ -8,8 +8,8 @@ cSpell:ignore: Kowall Logz Pothulapati unconference Vineeth
 
 The OpenTelemetry project maintainers, and members of the governance committee
 and technical committee are excited to be at [KubeCon NA][] in a few weeks! Join
-in to meet up in person or virtually for [OpenTelemetry](/) activities in Detroit
-from October 24 - 28, 2022.
+in to meet up in person or virtually for [OpenTelemetry](/) activities in
+Detroit from October 24 - 28, 2022.
 
 There are talks, workshops, an unconference as well as a project booth where you
 are welcome to stop by, say Hi! and tell us about how you are using

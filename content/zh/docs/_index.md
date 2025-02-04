@@ -1,6 +1,11 @@
 ---
 title: 文档
 menu: { main: { weight: 10 } }
+htmltest:
+  IgnoreDirs:
+    # TODO drop next lines after https://github.com/open-telemetry/opentelemetry.io/issues/5555 is fixed for these pages:
+    - ^zh/docs/concepts/signals/baggage/
+    - ^zh/docs/zero-code/php/
 default_lang_commit: 6e35a949
 ---
 

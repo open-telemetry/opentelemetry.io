@@ -44,8 +44,8 @@ We, the OTel Communications SIG, meet every two weeks on Monday at 10:00 PT.
 Check out the [OpenTelemetry community calendar][] for the Zoom link and any
 updates to this schedule.
 
-Meeting notes are available as a public [Google doc][]. If you have trouble accessing
-the doc, get in touch in the `#otel-comms` channel on [Slack][].
+Meeting notes are available as a public [Google doc][]. If you have trouble
+accessing the doc, get in touch in the `#otel-comms` channel on [Slack][].
 
 ## Roles
 
@@ -54,7 +54,6 @@ Here is a list of community roles with current and previous members:
 - Approvers: [@open-telemetry/docs-approvers][]
 
   - [Michael Hausenblas](https://github.com/mhausenblas), Amazon
-  - [Tiffany Hrabusa](https://github.com/tiffany76), Grafana Labs
 
 - Maintainers: [@open-telemetry/docs-maintainers][]
 
@@ -63,6 +62,7 @@ Here is a list of community roles with current and previous members:
   - [Patrice Chalin](https://github.com/chalin), CNCF
   - [Phillip Carter](https://github.com/cartermp), Honeycomb
   - [Severin Neumann](https://github.com/svrnm), Cisco
+  - [Tiffany Hrabusa](https://github.com/tiffany76), Grafana Labs
 
 - Emeritus approvers:
 
@@ -74,8 +74,8 @@ Here is a list of community roles with current and previous members:
   - [Morgan McLean](https://github.com/mtwo)
   - [jparsana](https://github.com/jparsana)
 
-Learn more about roles in the [community repository][]. Thanks to [all who have already
-contributed][contributors]!
+Learn more about roles in the [community repository][]. Thanks to [all who have
+already contributed][contributors]!
 
 ## Licenses
 

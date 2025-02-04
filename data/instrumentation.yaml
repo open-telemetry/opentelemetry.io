@@ -61,8 +61,8 @@ rust:
   name: Rust
   status:
     traces: beta
-    metrics: alpha
-    logs: alpha
+    metrics: beta
+    logs: beta
 swift:
   name: Swift
   status:

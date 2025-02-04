@@ -5,7 +5,7 @@ description:
   editor de código.
 weight: 2
 default_lang_commit: f724c15be360e5059fb89e696d9a5cc8d00496f6
-cSpell:ignore: aplícala vincúlalos solucionándolas
+cSpell:ignore: aplícala solucionándolas vincúlalos
 ---
 
 Para contribuir con nuevas páginas de contenido o mejorar las páginas de
@@ -388,9 +388,9 @@ Para detener la instancia local de Hugo, vuelve a la terminal y escriba
 
 ### Implementaciones del sitio y vistas previas de PR
 
-Si envías una PR, Netlify crea una [Vista Previa de Implementación][] para que puedas
-revisar sus cambios. Una vez que se fusiona su PR, Netlify implementa el sitio actualizado
-en el servidor de producción.
+Si envías una PR, Netlify crea una [Vista Previa de Implementación][] para que
+puedas revisar sus cambios. Una vez que se fusiona su PR, Netlify implementa el
+sitio actualizado en el servidor de producción.
 
 > **Nota**: Las vistas previas de PR incluyen _páginas de borrador_, pero las
 > compilaciones de producción no.

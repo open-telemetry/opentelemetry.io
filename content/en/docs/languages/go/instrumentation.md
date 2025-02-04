@@ -5,7 +5,7 @@ aliases:
   - manual_instrumentation
 weight: 30
 description: Manual instrumentation for OpenTelemetry Go
-cSpell:ignore: fatalf logr logrus otelslog otlplog otlploghttp sdktrace sighup
+cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup
 ---
 
 {{% docs/languages/instrumentation-intro %}}
@@ -185,10 +185,10 @@ span.SetAttributes(myKey.String("a value"))
 #### Semantic Attributes
 
 Semantic Attributes are attributes that are defined by the [OpenTelemetry
-Specification][] in order to provide a shared set of attribute keys across multiple
-languages, frameworks, and runtimes for common concepts like HTTP methods, status
-codes, user agents, and more. These attributes are available in the `go.opentelemetry.io/otel/semconv/v1.26.0`
-package.
+Specification][] in order to provide a shared set of attribute keys across
+multiple languages, frameworks, and runtimes for common concepts like HTTP
+methods, status codes, user agents, and more. These attributes are available in
+the `go.opentelemetry.io/otel/semconv/v1.26.0` package.
 
 For details, see [Trace semantic conventions][].
 
@@ -302,7 +302,7 @@ OpenTelemetry Go currently supports the following instruments:
 - Histogram, a synchronous instrument that supports arbitrary values that are
   statistically meaningful, such as histograms, summaries, or percentile
 - Synchronous Gauge, a synchronous instrument that supports non-additive values,
-  such as room temperature.
+  such as room temperature
 - Asynchronous Gauge, an asynchronous instrument that supports non-additive
   values, such as room temperature
 - UpDownCounter, a synchronous instrument that supports increments and
@@ -1096,7 +1096,7 @@ telemetry backends.
 [instrumentation library]: ../libraries/
 [opentelemetry collector]:
   https://github.com/open-telemetry/opentelemetry-collector
-[logs bridge API]: /docs/specs/otel/logs/bridge-api
+[logs bridge API]: /docs/specs/otel/logs/api/
 [log data model]: /docs/specs/otel/logs/data-model
 [`go.opentelemetry.io/otel`]: https://pkg.go.dev/go.opentelemetry.io/otel
 [`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`]:

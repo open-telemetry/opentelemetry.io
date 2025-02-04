@@ -25,9 +25,9 @@ projects? I don't know about you, but for me, up until last year, the prospect
 of contributing to open source was just plain _scary_!! I mean, when you open up
 a
 [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-(PR), _[you are putting yourself out there]_, to be judged by those little GitHub
-avatars that make up the approvers list for the repository you're contributing to.
-YIKES!
+(PR), _[you are putting yourself out there]_, to be judged by those little
+GitHub avatars that make up the approvers list for the repository you're
+contributing to. YIKES!
 
 But as scary as the thought of opening a PR might be, it's also SO VERY
 SATISFYING to see your contributions merged into a codebase. And most

@@ -4,8 +4,8 @@ title:
   Convention Convergence
 linkTitle: ECS and OTel SemConv Convergence
 date: 2023-04-17
-cSpell:ignore: ECS Reiley SemConv Yang
 author: '[Reiley Yang](https://github.com/reyang)'
+cSpell:ignore: ECS Reiley SemConv Yang
 ---
 
 Today, we're very excited to make a joint announcement with
@@ -47,12 +47,13 @@ and join the discussion on our
 
 - [Announcement from Elastic][]
 - [OpenTelemetry Semantic Conventions][]
-- [OTEP 199: Merge Elastic Common Schema with OpenTelemetry Semantic Conventions][]
-- [OTEP Issue 197: Proposal: Add support for Elastic Common Schema (ECS)
-  in OpenTelemetry][]
+- [OTEP 199: Merge Elastic Common Schema with OpenTelemetry Semantic
+  Conventions][]
+- [OTEP Issue 197: Proposal: Add support for Elastic Common Schema (ECS) in
+  OpenTelemetry][]
 - [OTEP Pull Request 199: Support Elastic Common Schema in OpenTelemetry][]
-- [OTEP Pull Request 222: Support Elastic Common Schema (ECS)
-  in OpenTelemetry][]
+- [OTEP Pull Request 222: Support Elastic Common Schema (ECS) in
+  OpenTelemetry][]
 
 [Announcement from Elastic]:
   https://elastic.co/blog/ecs-elastic-common-schema-otel-opentelemetry-announcement

@@ -3,8 +3,7 @@ title: Python zero-code instrumentation
 linkTitle: Python
 weight: 30
 aliases: [/docs/languages/python/automatic]
-# prettier-ignore
-cSpell:ignore: devel distro mkdir myapp pyproject uninstrumented virtualenv Werkzeug
+cSpell:ignore: devel distro myapp
 ---
 
 Automatic instrumentation with Python uses a Python agent that can be attached
@@ -120,3 +119,35 @@ export GRPC_VERBOSITY=debug
 export GRPC_TRACE=http,call_error,connectivity_state
 opentelemetry-instrument python YOUR_APP.py
 ```
+
+### Bootstrap using uv
+
+When using the [uv](https://docs.astral.sh/uv/) package manager, you might face
+some difficulty when running `opentelemetry-bootstrap -a install`.
+
+Instead, you can generate the requirements dynamically and install them using
+`uv`.
+
+First, install the appropriate packages (or add them to your project file and
+run `uv sync`):
+
+```sh
+uv pip install opentelemetry-distro opentelemetry-exporter-otlp
+```
+
+Now, you can install the auto instrumentation:
+
+```sh
+uv run opentelemetry-bootstrap -a requirements | uv pip install --requirement -
+```
+
+Finally, use `uv run` to start your application (see
+[Configuring the agent](#configuring-the-agent)):
+
+```sh
+uv run opentelemetry-instrument python myapp.py
+```
+
+Please note that you have to reinstall the auto instrumentation every time you
+run `uv sync` or update existing packages. It is therefore recommended to make
+the installation part of your build pipeline.

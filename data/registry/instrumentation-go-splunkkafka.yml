@@ -14,6 +14,7 @@ description:
   `github.com/confluentinc/confluent-kafka-go/kafka/splunkkafka` package.
 authors:
   - name: Splunk Inc.
+    url: https://www.splunk.com/
 urls:
   repo: https://github.com/signalfx/splunk-otel-go/tree/main/instrumentation/github.com/confluentinc/confluent-kafka-go/kafka/splunkkafka
 createdAt: 2022-01-20

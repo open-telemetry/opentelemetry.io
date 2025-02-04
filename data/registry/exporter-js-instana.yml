@@ -9,10 +9,11 @@ license: MIT
 description: The Instana Node.js OpenTelemetry Exporter.
 authors:
   - name: Instana Authors
+    url: https://github.com/instana/
 urls:
   repo: https://github.com/instana/nodejs/tree/main/packages/opentelemetry-exporter
 createdAt: 2022-04-18
 package:
   registry: npm
   name: '@instana/opentelemetry-exporter'
-  version: 4.0.1
+  version: 4.6.1

@@ -4,9 +4,9 @@ description:
   How to fix an existing issue, or report a bug, security risk, or potential
   improvement.
 weight: 10
-cSpell:ignore: prepopulated
 _issues: https://github.com/open-telemetry/opentelemetry.io/issues
 _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A
+cSpell:ignore: prepopulated
 ---
 
 ## Fixing an existing issue

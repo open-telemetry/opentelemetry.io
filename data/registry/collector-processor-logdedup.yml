@@ -1,0 +1,22 @@
+# cSpell:ignore: logdedup logdedupprocessor
+title: Log DeDuplication Processor
+registryType: processor
+language: collector
+tags:
+  - logdedup
+  - processor
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/logdedupprocessor
+license: Apache 2.0
+description:
+  This processor is used to deduplicate logs by detecting identical logs over a
+  range of time and emitting a single log with the count of logs that were
+  deduplicated.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-11-18
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/processor/logdedupprocessor
+  version: v0.118.0

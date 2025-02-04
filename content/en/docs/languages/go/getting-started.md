@@ -135,7 +135,7 @@ application that exports telemetry.
 Create `otel.go` with OpenTelemetry SDK bootstrapping code:
 
 <!-- prettier-ignore-start -->
-<?code-excerpt "otel.go" from="package main"?>
+<!-- code-excerpt "otel.go" from="package main"?-->
 ```go
 package main
 
@@ -273,7 +273,7 @@ Modify `main.go` to include code that sets up OpenTelemetry SDK and instruments
 the HTTP server using the `otelhttp` instrumentation library:
 
 <!-- prettier-ignore-start -->
-<?code-excerpt "main.go" from="package main"?>
+<!--?code-excerpt "main.go" from="package main"?-->
 ```go
 package main
 
@@ -372,7 +372,7 @@ your application. For that you'll need to write some custom
 Modify `rolldice.go` to include custom instrumentation using OpenTelemetry API:
 
 <!-- prettier-ignore-start -->
-<?code-excerpt "rolldice.go" from="package main"?>
+<!--?code-excerpt "rolldice.go" from="package main"?-->
 ```go
 package main
 

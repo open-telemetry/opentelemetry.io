@@ -1,0 +1,22 @@
+# cSpell:ignore githubreceiver
+title: GitHub Receiver
+registryType: receiver
+language: collector
+tags:
+  - github
+  - receiver
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/githubreceiver
+license: Apache 2.0
+description:
+  The GitHub receiver receives data from [GitHub](https://github.com). As a
+  starting point it scrapes metrics from repositories but will be extended to
+  include traces and logs.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-11-18
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/githubreceiver
+  version: v0.118.0

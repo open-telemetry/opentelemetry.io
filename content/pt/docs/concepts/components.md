@@ -2,7 +2,7 @@
 title: Componentes
 description: Os principais componentes que compõem o OpenTelemetry
 weight: 20
-default_lang_commit: 2f34c456ab38b4d3502cd07bc36fa1455d4ef875
+default_lang_commit: f5c228e5d03deaabc00d5920c5757bf7bd23e3f3
 ---
 
 O OpenTelemetry é atualmente composto por vários componentes principais:
@@ -73,9 +73,9 @@ necessárias.
 Para mais informações, consulte
 [Bibliotecas de instrumentação](/docs/concepts/instrumentation/libraries/).
 
-### Exporters
+### Exporters {#exporters}
 
-{{% docs/languages/exporters/intro %}}
+{{% pt/docs/languages/exporters/intro %}}
 
 ### Instrumentação sem código {#zero-code-instrumentation}
 

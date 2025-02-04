@@ -13,6 +13,7 @@ description:
   statements) and reports DBStats metrics.
 authors:
   - name: Vladimir Mihailenco
+    url: https://github.com/vmihailenco
 urls:
   repo: https://github.com/uptrace/opentelemetry-go-extra/tree/main/otelsql
 createdAt: 2021-10-25

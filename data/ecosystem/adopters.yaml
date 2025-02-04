@@ -8,6 +8,7 @@
   url: https://bureau.id/
   components: [Collector, Python, Go, Lambda]
   reference: 'https://tech.bureau.id/connecting-the-dots-with-opentelemetry-part-ii-5ea5f6b06c29'
+  referenceTitle: blog post
   contact: https://github.com/ethicalmohit
 - name: Care.com
   url: https://www.care.com
@@ -19,6 +20,11 @@
   components: [Collector, Python]
   reference: ''
   contact: ''
+- name: Delivery Hero
+  url: https://www.deliveryhero.com/
+  components: [Collector, Go, Java]
+  reference: ''
+  contact: https://github.com/ekovalenk0
 - name: Dropbox DocSend
   url: https://www.docsend.com/
   components: [Ruby]
@@ -26,8 +32,9 @@
   contact: ''
 - name: Dyte
   url: https://dyte.io
-  components: [Go, Javascript]
+  components: [Go, JavaScript]
   reference: 'https://dyte.io/blog/opentelemetry-at-dyte-part-i/'
+  referenceTitle: blog post
   contact: https://github.com/ethicalmohit
 - name: eBay
   url: https://www.ebay.com
@@ -103,7 +110,7 @@
   contact: https://github.com/igorestevanjasinski
 - name: Skyscanner
   url: https://www.skyscanner.net/
-  components: [Collector, Go, Java, Javascript, Python]
+  components: [Collector, Go, Java, JavaScript, Python]
   reference: https://www.infoq.com/presentations/opentelemetry-observability/
   referenceTitle: presentation
   contact: https://github.com/danielgblanco/
@@ -127,6 +134,7 @@
   url: https://www.vtex.com/
   components: [Collector, Go, JavaScript, .NET]
   reference: 'https://colocatedeventseu2023.sched.com/event/1Jo8E/ingesting-65-tb-of-telemetry-data-daily-through-open-telemetry-protocol-and-collectors-gustavo-pantuza-vtex'
+  referenceTitle: presentation
   contact: 'sre-observability@vtex.com'
 - name: Wandera
   url: https://www.wandera.com/
@@ -138,3 +146,9 @@
   components: []
   reference: ''
   contact: ''
+- name: Global Processing
+  url: https://www.globalprocessing.com.ar/
+  components: [Collector, .NET, Python, Java, Go]
+  reference: 'https://www.linkedin.com/posts/santiago-lator_opentelemetry-opentelemetry-observabilidad-activity-7258132675268354050-oP1q'
+  referenceTitle: post
+  contact: 'santiago.lator@globalprocessing.com.ar'

@@ -3,7 +3,8 @@
 ## Custom exporters
 
 Finally, you can also write your own exporter. For more information, see the
-[SpanExporter Interface in the API documentation]({{ $spanExporterInterfaceUrl }}).
+[SpanExporter Interface in the API
+documentation]({{ $spanExporterInterfaceUrl }}).
 
 ## Batching span and log records
 

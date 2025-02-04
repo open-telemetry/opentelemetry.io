@@ -2,7 +2,6 @@
 title: The State of Profiling
 linkTitle: Profiling state
 date: 2024-10-25
-cSpell:ignore: Baeyens Florian Geisendörfer Kalkanis Lehner Mathieu Rühsen
 author: >-
   [Damien Mathieu](https://github.com/dmathieu) (Elastic), [Pablo
   Baeyens](https://github.com/mx-psi) (Datadog), [Felix
@@ -13,6 +12,7 @@ author: >-
   Rühsen](https://github.com/rockdaboot) (Elastic)
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/5477
 sig: Profiling SIG
+cSpell:ignore: Baeyens Florian Geisendörfer Kalkanis Lehner Mathieu Rühsen
 ---
 
 A little over six months ago, OpenTelemetry announced

@@ -9,6 +9,7 @@ license: Artistic-1.0-Perl
 description: An unofficial implementation of the OpenTelemetry SDK in Perl.
 authors:
   - name: jjatria
+    url: https://github.com/jjatria/
 urls:
   repo: https://github.com/jjatria/perl-opentelemetry-sdk
 createdAt: 2023-12-05

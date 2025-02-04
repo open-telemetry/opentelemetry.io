@@ -1,0 +1,26 @@
+# cSpell:ignore Grcevski Nikola Zeitlinger
+title: OpenTelemetry Acceptance Tests (OATs)
+registryType: utilities
+language: go
+tags:
+  - collector
+  - testing
+  - traces
+  - logs
+  - metrics
+  - utilities
+license: Apache 2.0
+description: |
+  OATs is a testing suite for OpenTelemetry applications.
+  Tests are written in YAML and validate traces with TraceQL, logs with LogQL, and metrics with PromQL.
+
+authors:
+  - name: Gregor Zeitlinger
+    url: https://github.com/zeitlinger
+  - name: Matthew Hensley
+    url: https://github.com/matt-hensley
+  - name: Nikola Grcevski
+    url: https://github.com/grcevski
+urls:
+  repo: https://github.com/grafana/oats
+createdAt: 2024-12-18

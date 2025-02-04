@@ -1,0 +1,23 @@
+title: OpenTelemetry curl auto-instrumentation
+registryType: instrumentation
+language: php
+tags:
+  - curl
+  - instrumentation
+  - php
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Curl
+license: Apache 2.0
+description:
+  Auto-instrumentation hooks are registered via composer, and client kind spans
+  will automatically be created when calling `curl_exec` or `curl_multi_exec`
+  functions. Additionally, distributed tracing is supported by setting the
+  `traceparent` header.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-11-18
+package:
+  registry: packagist
+  name: open-telemetry/opentelemetry-auto-curl
+  version: 0.0.2
+isFirstParty: false

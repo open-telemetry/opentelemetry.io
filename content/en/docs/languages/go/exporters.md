@@ -86,7 +86,7 @@ Here's how you can create an exporter with default configuration:
 
 ```go
 import (
-  "context"
+	"context"
 
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp"
 	"go.opentelemetry.io/otel/sdk/trace"
@@ -106,7 +106,7 @@ Here's how you can create an exporter with default configuration:
 
 ```go
 import (
-  "context"
+	"context"
 
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
 	"go.opentelemetry.io/otel/sdk/trace"
@@ -142,7 +142,7 @@ Here's how you can create an exporter with default configuration:
 
 ```go
 import (
-  "context"
+	"context"
 
 	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp"
 	"go.opentelemetry.io/otel/sdk/metric"
@@ -162,7 +162,7 @@ Here's how you can create an exporter with default configuration:
 
 ```go
 import (
-  "context"
+	"context"
 
 	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc"
 	"go.opentelemetry.io/otel/sdk/metric"
@@ -186,7 +186,7 @@ default configuration:
 
 ```go
 import (
-  "context"
+	"context"
 
 	"go.opentelemetry.io/otel/exporters/prometheus"
 	"go.opentelemetry.io/otel/sdk/metric"
@@ -212,7 +212,7 @@ Here's how you can create an exporter with default configuration:
 
 ```go
 import (
-  "context"
+	"context"
 
 	"go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp"
 	"go.opentelemetry.io/otel/sdk/log"

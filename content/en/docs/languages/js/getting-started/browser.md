@@ -6,7 +6,7 @@ weight: 20
 ---
 
 {{% alert title="Warning" color="warning" %}}
-{{% _param notes.browser-instrumentation %}} {{% /alert %}}
+{{% param notes.browser-instrumentation %}} {{% /alert %}}
 
 While this guide uses the example application presented below, the steps to
 instrument your own application should be similar.
@@ -36,8 +36,8 @@ Copy the following file into an empty directory and call it `index.html`.
     <!--
       https://www.w3.org/TR/trace-context/
       Set the `traceparent` in the server's HTML template code. It should be
-      dynamically generated server side to have the server's request trace Id,
-      a parent span Id that was set on the server's request span, and the trace
+      dynamically generated server side to have the server's request trace ID,
+      a parent span ID that was set on the server's request span, and the trace
       flags to indicate the server's sampling decision
       (01 = sampled, 00 = not sampled).
       '{version}-{traceId}-{spanId}-{sampleDecision}'
@@ -166,8 +166,9 @@ import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-docu
 import { ZoneContextManager } from '@opentelemetry/context-zone';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
 
-const provider = new WebTracerProvider();
-provider.addSpanProcessor(new SimpleSpanProcessor(new ConsoleSpanExporter()));
+const provider = new WebTracerProvider({
+  spanProcessors: [new SimpleSpanProcessor(new ConsoleSpanExporter())],
+});
 
 provider.register({
   // Changing default contextManager to use ZoneContextManager - supports asynchronous operations - optional

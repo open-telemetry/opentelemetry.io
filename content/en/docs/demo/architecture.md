@@ -14,11 +14,13 @@ graph TD
 subgraph Service Diagram
 accountingservice(Accounting Service):::dotnet
 adservice(Ad Service):::java
-cache[(Cache<br/>&#40redis&#41)]
+cache[(Cache<br/>&#40Valkey&#41)]
 cartservice(Cart Service):::dotnet
 checkoutservice(Checkout Service):::golang
 currencyservice(Currency Service):::cpp
 emailservice(Email Service):::ruby
+flagd(Flagd):::golang
+flagdui(Flagd-ui):::typescript
 frauddetectionservice(Fraud Detection Service):::kotlin
 frontend(Frontend):::typescript
 frontendproxy(Frontend Proxy <br/>&#40Envoy&#41):::cpp
@@ -29,39 +31,55 @@ productcatalogservice(Product Catalog Service):::golang
 quoteservice(Quote Service):::php
 recommendationservice(Recommendation Service):::python
 shippingservice(Shipping Service):::rust
-queue[(queue<br/>&#40Kafka&#41)]
+queue[(queue<br/>&#40Kafka&#41)]:::java
+react-native-app(React Native App):::typescript
+
+adservice ---->|gRPC| flagd
+
+checkoutservice -->|gRPC| cartservice
+checkoutservice --->|TCP| queue
+cartservice --> cache
+cartservice -->|gRPC| flagd
+
+checkoutservice -->|gRPC| shippingservice
+checkoutservice -->|gRPC| paymentservice
+checkoutservice --->|HTTP| emailservice
+checkoutservice -->|gRPC| currencyservice
+checkoutservice -->|gRPC| productcatalogservice
+
+frauddetectionservice -->|gRPC| flagd
+
+frontend -->|gRPC| adservice
+frontend -->|gRPC| cartservice
+frontend -->|gRPC| checkoutservice
+frontend ---->|gRPC| currencyservice
+frontend ---->|gRPC| recommendationservice
+frontend -->|gRPC| productcatalogservice
+
+frontendproxy -->|gRPC| flagd
+frontendproxy -->|HTTP| frontend
+frontendproxy -->|HTTP| flagdui
+frontendproxy -->|HTTP| imageprovider
 
 Internet -->|HTTP| frontendproxy
-frontendproxy -->|HTTP| frontend
+
 loadgenerator -->|HTTP| frontendproxy
-frontendproxy -->|HTTP| imageprovider
+
+paymentservice -->|gRPC| flagd
 
 queue -->|TCP| accountingservice
 queue -->|TCP| frauddetectionservice
 
-frontend -->|gRPC| cartservice
-frontend -->|gRPC| currencyservice
-
-checkoutservice -->|gRPC| cartservice --> cache
-checkoutservice -->|gRPC| productcatalogservice
-checkoutservice -->|gRPC| currencyservice
-checkoutservice -->|HTTP| emailservice
-checkoutservice -->|gRPC| paymentservice
-checkoutservice -->|gRPC| shippingservice
-checkoutservice -->|TCP| queue
-
-frontend -->|gRPC| adservice
-frontend -->|gRPC| productcatalogservice
-frontend --->|gRPC| checkoutservice
-frontend ---->|gRPC| recommendationservice -->|gRPC| productcatalogservice
+recommendationservice -->|gRPC| productcatalogservice
+recommendationservice -->|gRPC| flagd
 
 shippingservice -->|HTTP| quoteservice
 
+react-native-app -->|HTTP| frontendproxy
 end
 
 classDef dotnet fill:#178600,color:white;
 classDef cpp fill:#f34b7d,color:white;
-classDef erlang fill:#b83998,color:white;
 classDef golang fill:#00add8,color:black;
 classDef java fill:#b07219,color:white;
 classDef javascript fill:#f1e05a,color:black;
@@ -78,7 +96,6 @@ graph TD
 subgraph Service Legend
   dotnetsvc(.NET):::dotnet
   cppsvc(C++):::cpp
-  erlangsvc(Erlang/Elixir):::erlang
   golangsvc(Go):::golang
   javasvc(Java):::java
   javascriptsvc(JavaScript):::javascript
@@ -92,7 +109,6 @@ end
 
 classDef dotnet fill:#178600,color:white;
 classDef cpp fill:#f34b7d,color:white;
-classDef erlang fill:#b83998,color:white;
 classDef golang fill:#00add8,color:black;
 classDef java fill:#b07219,color:white;
 classDef javascript fill:#f1e05a,color:black;
@@ -110,7 +126,7 @@ Follow these links for the current state of
 demo applications.
 
 The collector is configured in
-[otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otelcollector/otelcol-config.yml),
+[otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config.yml),
 alternative exporters can be configured here.
 
 ```mermaid

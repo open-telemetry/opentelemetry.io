@@ -10,10 +10,11 @@ license: MIT
 description: The OpenTelemetry Azure Monitor Exporter for JavaScript (Node.js)
 authors:
   - name: Microsoft Authors
+    url: https://www.microsoft.com
 package:
   name: '@azure/monitor-opentelemetry-exporter'
   registry: npm
-  version: 1.0.0-beta.27
+  version: 1.0.0-beta.28
 urls:
   repo: https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/monitor/monitor-opentelemetry-exporter
 createdAt: 2021-11-01

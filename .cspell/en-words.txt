@@ -26,6 +26,7 @@ checkoutservice
 Chronosphere
 classpath
 cncf
+configurator
 comms
 currencyservice
 daemonset
@@ -40,6 +41,7 @@ EMEA
 erlang
 errorf
 featureflagservice
+flagd
 frauddetectionservice
 frontendproxy
 github
@@ -106,9 +108,9 @@ quantile
 quantiles
 quarkus
 quoteservice
+react-native-app
 recommendationservice
 redis
-relref
 Rexed
 runbook
 runbooks

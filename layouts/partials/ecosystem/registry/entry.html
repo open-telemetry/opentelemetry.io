@@ -1,9 +1,9 @@
 {{ $languageNames := .languageNames -}}
 
 {{ with .value -}}
-    {{ 
+    {{
         $remoteRegistries := dict
-            "npm" (dict 
+            "npm" (dict
                 "urlPattern" "https://npmjs.com/package/%s"
                 "installTemplate" "ecosystem/registry/quickinstall/default.md"
                 "installLine" "npm install %s"
@@ -46,6 +46,10 @@
                 "installLine" "cargo add %s"
                 "installTemplate" "ecosystem/registry/quickinstall/default.md"
                 "icon" "fab fa-rust")
+            "maven" (dict
+                "urlPattern" "https://maven.org/artifact/%s"
+                "installTemplate" "ecosystem/registry/quickinstall/maven.md"
+                "icon" "fa-solid fa-feather")
     -}}
 
     {{ $isNative := and (or (eq .registryType "instrumentation") (eq .registryType "application integration")) (.isNative) }}
@@ -60,7 +64,7 @@
         {{ $package = merge .package (index $remoteRegistries .package.registry) -}}
         {{ $package = merge $package (dict "type" .registryType) -}}
     {{ end -}}
-    {{ $highlightStyle := "" -}}
+    {{ $highlightStyle := "border-default" -}}
     {{ if $isNew -}}
         {{ $highlightStyle = "border-info" -}}
     {{ end -}}
@@ -85,7 +89,23 @@
     {{ errorf "The %q registry entry requires a repo or website URL." .title }}
     {{ end -}}
     {{ $primaryHref := printf "href=%q" $primaryUrl | safeHTMLAttr -}}
-    <li class="card my-3 registry-entry {{ $highlightStyle }}" data-registry-id="{{ ._key }}" data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
+    {{ $flags := slice -}} <!-- Initialize flags slice -->
+    {{ if $isNew -}}  <!-- Check if the entry is new -->
+    {{ $flags = $flags | append "new" -}}
+    {{ end -}}
+    {{ if $isNative -}}
+        {{ $flags = $flags | append "native" -}}
+    {{ end -}}
+    {{ if $isFirstParty -}}
+        {{ $flags = $flags | append "first_party" -}}
+    {{ end -}}
+    {{ if $usedInDemo -}}  <!-- Check if the entry was used in a demo -->
+    {{ $flags = $flags | append "used_in_demo" -}}
+    {{ end -}}
+    {{ if $deprecated -}}
+        {{ $flags = $flags | append "deprecated" -}}
+    {{ end -}}
+    <li class="card my-3 registry-entry {{ $highlightStyle }}" data-registry-id="{{ ._key }}" data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}"   data-registryflags="{{- range $index, $flag := $flags -}}{{ if $index }} {{ end }}{{ $flag }}{{- end }}">
         <div class="card-body container">
         <h4 class="card-title mb-0 d-flex flex-row">
             <a {{ $primaryHref }} target="_blank" rel="noopener" class="me-auto">
@@ -96,16 +116,19 @@
             <span class="badge rounded-pill text-bg-info"><i class="fa-regular fa-star"></i> new</span>
             {{ end -}}
             {{ if $isNative -}}
-            <span class="badge rounded-pill text-bg-success text-white"><i class="fa-solid fa-puzzle-piece"></i> native</span>
+            <a href="/ecosystem/registry?flag=native" class="badge rounded-pill text-bg-success text-white" title="Click to filter by native flag">
+            <i class="fa-solid fa-puzzle-piece"></i> native</a>
             {{ end -}}
             {{ if $isFirstParty -}}
-            <span class="badge rounded-pill text-bg-success text-white"><i class="fa-solid fa-heart"></i> first party integration</span>
+            <a href="/ecosystem/registry?flag=first_party" class="badge rounded-pill text-bg-success text-white" title="Click to filter by first party flag">
+            <i class="fa-solid fa-heart"></i> first party integration</a>
             {{ end -}}
             {{ if $usedInDemo -}}
             <span class="badge rounded-pill text-bg-secondary text-white" title="This package is used in the OpenTelemetry Demo!"><i class="fa-solid fa-shapes"></i> OTel Demo</span>
             {{ end -}}
             {{ if $deprecated -}}
-            <span class="badge rounded-pill text-bg-danger text-white" title=""><i class="fa-solid fa-ban"></i> deprecated</span>
+            <a href="/ecosystem/registry?flag=deprecated" class="badge rounded-pill text-bg-danger text-white" title="Click to filter by deprecated flag">
+            <i class="fa-solid fa-ban"></i> deprecated</a>
             {{ end -}}
             {{ if .cncfProjectLevel -}}
             <span class="badge rounded-pill text-bg-primary text-white" title="CNCF {{ .cncfProjectLevel}} Project">
@@ -116,7 +139,7 @@
         </h4>
         <p class="card-text">
             <small class="text-body-secondary">
-            by 
+            by
             {{ range $index, $author := .authors -}}
                 {{ if $index }}, {{ end }}
                 {{ if eq $author.name "OpenTelemetry Authors" -}}
@@ -141,6 +164,19 @@
                     {{ end -}}
                     {{- .description | markdownify -}}
                 </div>
+
+                <!-- New Tags section -->
+                <div class="tags mb-2">
+                    {{ if .tags }}
+                        <div>
+                            {{ range .tags }}
+                                {{ $tag := . }} <!-- Store the tag in a variable -->
+                                <a href="/ecosystem/registry/?s={{ $tag | urlize }}" class="badge bg-light me-1">{{ $tag }}</a>
+                            {{ end }}
+                        </div>
+                    {{ end }}
+                </div>
+
                 {{ with $package -}}
                     {{ if not (eq .quickInstall false) }}
                     <h6><i class="fa-solid fa-forward"></i> Quick Install</h6>
@@ -158,7 +194,7 @@
                     {{ .package.version }}
                 </div>
                 <small>Version</small>
-                </div>      
+                </div>
             </li>
             {{- end -}}
             {{ with .language -}}
@@ -168,7 +204,7 @@
                     {{ $languageNames.Get . | default (humanize .) }}
                 </div>
                 <small>Language</small>
-                </div>      
+                </div>
             </li>
             {{- end }}
             {{ with .registryType -}}
@@ -178,7 +214,7 @@
                     {{ . | humanize }}
                 </div>
                 <small>Component</small>
-                </div>      
+                </div>
             </li>
             {{- end -}}
             {{ with .license -}}
@@ -188,7 +224,7 @@
                     {{ . }}
                 </div>
                 <small>License</small>
-                </div>      
+                </div>
             </li>
             {{- end -}}
             </div>

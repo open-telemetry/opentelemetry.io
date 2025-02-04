@@ -51,7 +51,7 @@ JavaScript) from the
 [Getting Started](/docs/languages/js/getting-started/nodejs/) like the following
 to export traces and metrics via OTLP (`http/protobuf`) :
 
-{{< tabpane text=true >}} {{% tab Typescript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 /*instrumentation.ts*/
@@ -134,8 +134,8 @@ collector.
 #### Use OTLP exporter with HTTP/JSON or HTTP/protobuf
 
 [OpenTelemetry Collector Exporter with gRPC][] works only with Node.js,
-therefore you are limited to use the [OpenTelemetry Collector Exporter
-with HTTP/JSON][] or [OpenTelemetry Collector Exporter with HTTP/protobuf][].
+therefore you are limited to use the [OpenTelemetry Collector Exporter with
+HTTP/JSON][] or [OpenTelemetry Collector Exporter with HTTP/protobuf][].
 
 Make sure that the receiving end of your exporter (collector or observability
 backend) accepts `http/json` if you are using [OpenTelemetry Collector Exporter
@@ -161,8 +161,9 @@ If your website and collector are hosted at a different origin, your browser
 might block the requests going out to your collector. You need to configure
 special headers for Cross-Origin Resource Sharing (CORS).
 
-The OpenTelemetry Collector provides [a feature][] for http-based receivers to add
-the required headers to allow the receiver to accept traces from a web browser:
+The OpenTelemetry Collector provides [a feature][] for http-based receivers to
+add the required headers to allow the receiver to accept traces from a web
+browser:
 
 ```yaml
 receivers:
@@ -255,7 +256,7 @@ npm install --save @opentelemetry/exporter-prometheus
 Update your OpenTelemetry configuration to use the exporter and to send data to
 your Prometheus backend:
 
-{{< tabpane text=true >}} {{% tab Typescript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 import * as opentelemetry from '@opentelemetry/sdk-node';
@@ -313,7 +314,7 @@ npm install --save @opentelemetry/exporter-zipkin
 Update your OpenTelemetry configuration to use the exporter and to send data to
 your Zipkin backend:
 
-{{< tabpane text=true >}} {{% tab Typescript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 import * as opentelemetry from '@opentelemetry/sdk-node';
@@ -346,7 +347,7 @@ const sdk = new opentelemetry.NodeSDK({
 
 {{% docs/languages/exporters/outro js "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk_trace_base.SpanExporter.html" %}}
 
-{{< tabpane text=true >}} {{% tab Typescript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 /*instrumentation.ts*/

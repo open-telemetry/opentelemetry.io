@@ -14,4 +14,4 @@ createdAt: 2020-02-06
 package:
   registry: npm
   name: '@opentelemetry/exporter-jaeger'
-  version: 1.27.0
+  version: 1.30.1

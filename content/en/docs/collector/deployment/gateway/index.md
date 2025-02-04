@@ -40,9 +40,9 @@ Let's have a look at such a case where we are using the load-balancing exporter:
 
 ### NGINX as an "out-of-the-box" load balancer
 
-Assuming you have two collectors (`collector1` and `collector2`) configured and
-you want to load balance traffic across them using NGINX, you can use the
-following configuration:
+Assuming you have three collectors (`collector1`, `collector2`, and
+`collector3`) configured and you want to load balance traffic across them using
+NGINX, you can use the following configuration:
 
 ```nginx
 server {
@@ -77,11 +77,13 @@ server {
 upstream collector4317 {
     server collector1:4317;
     server collector2:4317;
+    server collector3:4317;
 }
 
 upstream collector4318 {
     server collector1:4318;
     server collector2:4318;
+    server collector3:4318;
 }
 ```
 
@@ -251,3 +253,45 @@ Cons:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor
 [spanmetrics-connector]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector
+
+## Multiple collectors and the single-writer principle
+
+All metric data streams within OTLP must have a
+[single writer](/docs/specs/otel/metrics/data-model/#single-writer). When
+deploying multiple collectors in a gateway configuration, it's important to
+ensure that all metric data streams have a single writer and a globally unique
+identity.
+
+### Potential problems
+
+Concurrent access from multiple applications that modify or report on the same
+data can lead to data loss or degraded data quality. For example, you might see
+inconsistent data from multiple sources on the same resource, where the
+different sources can overwrite each other because the resource is not uniquely
+identified.
+
+There are patterns in the data that may provide some insight into whether this
+is happening or not. For example, upon visual inspection, a series with
+unexplained gaps or jumps in the same series may be a clue that multiple
+collectors are sending the same samples. You might also see errors in your
+backend. For example, with a Prometheus backend:
+
+`Error on ingesting out-of-order samples`
+
+This error could indicate that identical targets exist in two jobs, and the
+order of the timestamps is incorrect. For example:
+
+- Metric `M1` received at `T1` with a timestamp 13:56:04 with value `100`
+- Metric `M1` received at `T2` with a timestamp 13:56:24 with value `120`
+- Metric `M1` received at `T3` with a timestamp 13:56:04 with value `110`
+- Metric `M1` received at time 13:56:24 with value `120`
+- Metric `M1` received at time 13:56:04 with value `110`
+
+### Best practices
+
+- Use the
+  [Kubernetes attributes processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)
+  to add labels to different Kubernetes resources.
+- Use the
+  [resource detector processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md)
+  to detect resource information from the host and collect resource metadata.

@@ -500,8 +500,8 @@ and it requires the following parameters:
   `receiver.Traces` instance and it requires the following parameters:
 - `context.Context`: the reference to the Collector's `context.Context` so your
   trace receiver can properly manage its execution context.
-- `receiver.CreateSettings`: the reference to some of the Collector's settings
-  under which your receiver is created.
+- `receiver.Settings`: the reference to some of the Collector's settings under
+  which your receiver is created.
 - `component.Config`: the reference for the receiver config settings passed by
   the Collector to the factory so it can properly read its settings from the
   Collector config.
@@ -514,7 +514,7 @@ Start by adding the bootstrap code to properly implement the
 code to your `factory.go` file:
 
 ```go
-func createTracesReceiver(_ context.Context, params receiver.CreateSettings, baseCfg component.Config, consumer consumer.Traces) (receiver.Traces, error) {
+func createTracesReceiver(_ context.Context, params receiver.Settings, baseCfg component.Config, consumer consumer.Traces) (receiver.Traces, error) {
 	return nil, nil
 }
 ```
@@ -564,7 +564,7 @@ func createDefaultConfig() component.Config {
 	}
 }
 
-func createTracesReceiver(_ context.Context, params receiver.CreateSettings, baseCfg component.Config, consumer consumer.Traces) (receiver.Traces, error) {
+func createTracesReceiver(_ context.Context, params receiver.Settings, baseCfg component.Config, consumer consumer.Traces) (receiver.Traces, error) {
 	return nil, nil
 }
 
@@ -775,8 +775,7 @@ as part of the `createTracesReceiver()` function parameters that your receiver
 actually requires to work properly like its configuration settings
 (`component.Config`), the next `Consumer` in the pipeline that will consume the
 generated traces (`consumer.Traces`) and the Collector's logger so the
-`tailtracer` receiver can add meaningful events to it
-(`receiver.CreateSettings`).
+`tailtracer` receiver can add meaningful events to it (`receiver.Settings`).
 
 Given that all this information will only be made available to the receiver at
 the moment it's instantiated by the factory, the `tailtracerReceiver` type will
@@ -910,7 +909,7 @@ func createDefaultConfig() component.Config {
 	}
 }
 
-func createTracesReceiver(_ context.Context, params receiver.CreateSettings, baseCfg component.Config, consumer consumer.Traces) (receiver.Traces, error) {
+func createTracesReceiver(_ context.Context, params receiver.Settings, baseCfg component.Config, consumer consumer.Traces) (receiver.Traces, error) {
 
 	logger := params.Logger
 	tailtracerCfg := baseCfg.(*Config)
@@ -937,7 +936,7 @@ func NewFactory() receiver.Factory {
 
 - Added a variable called `logger` and initialized it with the Collector's
   logger that is available as a field named `Logger` within the
-  `receiver.CreateSettings` reference.
+  `receiver.Settings` reference.
 - Added a variable called `tailtracerCfg` and initialized it by casting the
   `component.Config` reference to the `tailtracer` receiver `Config`.
 - Added a variable called `traceRcvr` and initialized it with the

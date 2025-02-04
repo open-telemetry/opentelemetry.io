@@ -1,0 +1,21 @@
+# cSpell:ignore confmap, httpsprovider
+title: Collector HTTPS Provider
+registryType: provider
+language: collector
+tags:
+  - go
+  - confmap
+  - provider
+  - collector
+  - https
+license: Apache 2.0
+description: HTTPS provider for OpenTelemetry Collector configuration maps.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/confmap/provider/httpsprovider
+createdAt: 2024-11-20
+package:
+  registry: go-collector
+  name: go.opentelemetry.io/collector/confmap/provider/httpsprovider
+  version: v1.25.0

@@ -7,10 +7,10 @@ symlink_targets="content-modules/opentelemetry-go/example content-modules/opente
 
 for symlink_target in $symlink_targets; do
   if [[ ! -e $symlink_target ]]; then
-    echo "WARNING: required symlink target does not exist, creating it: $symlink_target"
+    echo "INFO: required symlink target does not exist, creating it: $symlink_target"
     (set -x; mkdir -p "$symlink_target")
   fi
 done
 
 set -x
-exec npm run _check:markdown "$@"
+exec npm run _check:markdown -- "$@"

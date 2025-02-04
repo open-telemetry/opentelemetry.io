@@ -2,14 +2,14 @@
 title: Join us for OpenTelemetry Talks and Activities at KubeCon EU 2023
 linkTitle: KubeCon EU '23
 date: 2023-04-03
+author: '[Severin Neumann](https://github.com/svrnm)'
 # prettier-ignore
 cSpell:ignore: Aiven Benedikt Bongartz Jaglowski Kowall observ Oliveira Pathak Vider Xiaochun
-author: '[Severin Neumann](https://github.com/svrnm)'
 ---
 
 The OpenTelemetry project maintainers, members of the governance committee, and
-technical committee are excited to be at [KubeCon EU][] in Amsterdam from April 18 -
-21, 2023!
+technical committee are excited to be at [KubeCon EU][] in Amsterdam from April
+18 - 21, 2023!
 
 Read on to learn about all the things related OpenTelemetry during KubeCon.
 
@@ -41,14 +41,15 @@ Come network with OpenTelemetry maintainers and core contributors during the
 [OpenTelemetry project meeting](https://sched.co/1JWS7), on Tuesday April 18,
 2023 from 16:00 - 17:00. You can attend with a _standard in-person pass_.
 
-[Observability Day][] _fosters collaboration, discussion, and knowledge sharing of
-cloud-native observability projects_. This event will be held on April 18, 2023 from
-9:00 - 17:00. There will be several sessions on OpenTelemetry as well.
+[Observability Day][] _fosters collaboration, discussion, and knowledge sharing
+of cloud native observability projects_. This event will be held on April 18,
+2023 from 9:00 - 17:00. There will be several sessions on OpenTelemetry as well.
 
 > <i class="far fa-exclamation-triangle"></i> **IMPORTANT access note**: You
 > need an _in-person all-access_ pass for on-site access to **Observability
-> Day**. For details, see [KubeCon registration][]. If you have a virtual ticket,
-> you will be able to follow **Observability Day** through a live stream.
+> Day**. For details, see [KubeCon registration][]. If you have a virtual
+> ticket, you will be able to follow **Observability Day** through a live
+> stream.
 
 ## OpenTelemetry Project Booth
 
@@ -66,9 +67,9 @@ You will find us in the Solutions Showcase in Hall 5, Kiosk Number 20.
 
 You can help us improve the project by sharing your thoughts and feedback about
 your OpenTelemetry adoption, implementation, and usage! We also invite you to
-fill out our [community survey][]. We will create action items from your comments
-as appropriate. Check [#otel-user-research][] in CNCF's Slack instance for survey
-results and action item updates to come after KubeCon EU.
+fill out our [community survey][]. We will create action items from your
+comments as appropriate. Check [#otel-user-research][] in CNCF's Slack instance
+for survey results and action item updates to come after KubeCon EU.
 
 Come join us to listen, learn, and get involved in OpenTelemetry.
 

@@ -2,11 +2,7 @@
 title: Bibliotecas
 description: Aprenda como adicionar instrumentação nativa à sua biblioteca.
 weight: 40
-default_lang_commit: a570a00c7a238ffe26528d7bfb20efdbaf939c39
-htmltest:
-  IgnoreDirs:
-    # TODO drop next line after https://github.com/open-telemetry/opentelemetry.io/issues/5423 is fixed for pt pages:
-    - ^pt/docs/concepts/instrumentation/libraries/
+default_lang_commit: a570a00c7a238ffe26528d7bfb20efdbaf939c39 # + link-fix patch
 ---
 
 O OpenTelemetry fornece [bibliotecas de instrumentação][] para várias
@@ -137,7 +133,7 @@ algumas considerações para ajudar a minimizar problemas com dependências:
 - Enquanto sua instrumentação se estabiliza, considere lançá-la como um pacote
   separado, para que isso não cause problemas para usuários que não a utilizam.
   Você pode mantê-la em seu repositório ou
-  [adicioná-la ao OpenTelemetry](https://github.com/open-telemetry/oteps/blob/main/text/0155-external-modules.md#contrib-components),
+  [adicioná-la ao OpenTelemetry](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0155-external-modules.md#contrib-components),
   para que seja distribuída junto com outras bibliotecas de instrumentação.
 - As Convenções Semânticas são [estáveis, mas sujeitas à evolução][]: embora
   isso não cause problemas funcionais, pode ser necessário atualizar sua
@@ -314,9 +310,8 @@ Aqui estão os
 consulte a documentação do OpenTelemetry no seu idioma.
 
 No caso de um sistema de mensagens, você pode receber mais de uma mensagem de
-uma vez. As mensagens recebidas se tornam
-[_links_](/docs/languages/java/instrumentation/#create-spans-with-links) no
-trecho que você cria. Consulte as
+uma vez. As mensagens recebidas se tornam _links_ no trecho que você cria.
+Consulte as
 [convenções de mensagens](/docs/specs/semconv/messaging/messaging-spans/) para
 mais detalhes (AVISO: as convenções de mensagens estão
 [em construção](https://github.com/open-telemetry/oteps/pull/173) 🚧).

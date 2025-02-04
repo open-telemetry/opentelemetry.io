@@ -2,9 +2,9 @@
 title: Configuration and settings
 linkTitle: Configuration
 aliases: [/docs/languages/net/automatic/config]
+weight: 20
 # prettier-ignore
 cSpell:ignore: AZUREAPPSERVICE Bitness CLSID CORECLR dylib NETFX OPERATINGSYSTEM PROCESSRUNTIME UNHANDLEDEXCEPTION
-weight: 20
 ---
 
 ## Configuration methods
@@ -378,11 +378,8 @@ path of the current user's
 [temporary folder](https://docs.microsoft.com/en-us/dotnet/api/System.IO.Path.GetTempPath?view=net-6.0)
 instead.
 
-| Environment variable                                | Description                                                             | Default value                            | Status                                                    |
-| --------------------------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------- |
-| `OTEL_DOTNET_AUTO_LOG_DIRECTORY`                    | Directory of the .NET Tracer logs.                                      | _See the previous note on default paths_ | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_LOG_LEVEL`                                    | SDK log level. (supported values: `none`,`error`,`warn`,`info`,`debug`) | `info`                                   | [Stable](/docs/specs/otel/versioning-and-stability)       |
-| `OTEL_DOTNET_AUTO_TRACES_CONSOLE_EXPORTER_ENABLED`  | Whether the traces console exporter is enabled or not.                  | `false`                                  | [Deprecated](/docs/specs/otel/versioning-and-stability)   |
-| `OTEL_DOTNET_AUTO_METRICS_CONSOLE_EXPORTER_ENABLED` | Whether the metrics console exporter is enabled or not.                 | `false`                                  | [Deprecated](/docs/specs/otel/versioning-and-stability)   |
-| `OTEL_DOTNET_AUTO_LOGS_CONSOLE_EXPORTER_ENABLED`    | Whether the logs console exporter is enabled or not.                    | `false`                                  | [Deprecated](/docs/specs/otel/versioning-and-stability)   |
-| `OTEL_DOTNET_AUTO_LOGS_INCLUDE_FORMATTED_MESSAGE`   | Whether the log state should be formatted.                              | `false`                                  | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| Environment variable                              | Description                                                             | Default value                            | Status                                                    |
+| ------------------------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------- |
+| `OTEL_DOTNET_AUTO_LOG_DIRECTORY`                  | Directory of the .NET Tracer logs.                                      | _See the previous note on default paths_ | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_LOG_LEVEL`                                  | SDK log level. (supported values: `none`,`error`,`warn`,`info`,`debug`) | `info`                                   | [Stable](/docs/specs/otel/versioning-and-stability)       |
+| `OTEL_DOTNET_AUTO_LOGS_INCLUDE_FORMATTED_MESSAGE` | Whether the log state should be formatted.                              | `false`                                  | [Experimental](/docs/specs/otel/versioning-and-stability) |

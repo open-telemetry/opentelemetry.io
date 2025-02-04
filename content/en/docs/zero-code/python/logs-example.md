@@ -3,8 +3,7 @@ title: Logs Auto-Instrumentation Example
 linkTitle: Logs Example
 weight: 20
 aliases: [/docs/languages/python/automatic/logs-example]
-# prettier-ignore
-cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette uninstrumented virtualenv
+cSpell:ignore: distro mkdir virtualenv
 ---
 
 This page demonstrates how to use Python logs auto-instrumentation in
@@ -24,7 +23,7 @@ auto-instrumentation of logs. The example below is based on the logs example in
 > Metrics API, because it's not used by application developers to create logs.
 > Instead, they would use this bridge API to setup log appenders in the standard
 > language-specific logging libraries. More information can be found
-> [here](/docs/specs/otel/logs/bridge-api).
+> [here](/docs/specs/otel/logs/api/).
 
 Start by creating the examples directory and the example Python file:
 

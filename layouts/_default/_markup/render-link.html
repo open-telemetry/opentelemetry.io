@@ -1,45 +1,77 @@
-{{ $url := .Destination -}}
+{{ $url := .Destination -}} {{/* TODO: rename to $dest */ -}}
+{{ $u := urls.Parse $url -}}
 
 {{/*
 
   Localization link processing
 
-  The following code block will prefix the page language code to an
-  absolute path when:
+  The following code will prefix $url with the language code of this page when:
 
   - This page's localization isn't the default localization (English)
-  - The URL is an absolute path that doesn't start with any of the following:
-    - A language code, such as `ja`
-    - A path segment other than `docs`, since current OTel localizations only
-      offer translations for at most doc pages.
+  - $url is an absolute path -- that is, it starts with /
+  - The $url target page exists in this locale
+
+  Reference to Hugo's default:
+  https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_default/_markup/render-link.html
 
   */ -}}
 
-{{ $defaultLang := "en" -}} {{/* TODO: can we avoid hard coding this value? */ -}}
-{{ $lang := .Page.Language.Lang -}}
-{{ if ne $lang $defaultLang -}}
-  {{ $langPathPrefix := add "/" $lang "/" -}}
-  {{ if and (hasPrefix $url $langPathPrefix) .Page.File -}}
-    {{ warnf "File %s: avoid prefixing the following link path with '%s': %s"
-             .Page.File.Filename $langPathPrefix $url -}}
-  {{ else if and (hasPrefix $url "/")
-            (not (findRE "^/(blog|community|docs/specs|ecosystem|status)/?" $url))
+
+{{ if and
+    (strings.HasPrefix $.PageInner.RelPermalink "/docs/specs")
+    (not $u.IsAbs)
+    (not (strings.HasPrefix $url "#"))
+-}}
+  {{ $path := replaceRE `\bREADME\.md\b` "_index.md" $u.Path -}}
+  {{ $href := $url -}}
+  {{ with or
+    ($.PageInner.GetPage $path)
+    ($.PageInner.Resources.Get $path)
+    (resources.Get $path)
   -}}
-    {{ if and false (not (findRE "^/[a-z][a-z](-[a-zA-Z]{2})?/" $url)) -}}
-      {{ $url = add $langPathPrefix (strings.TrimPrefix "/" $url) -}}
+    {{ $href = .RelPermalink -}}
+    {{ with $u.RawQuery -}}{{ $href = printf "%s?%s" $href . -}}{{ end -}}
+    {{ with $u.Fragment -}}{{ $href = printf "%s#%s" $href . -}}{{ end -}}
+  {{ else -}}
+    {{ warnf "File %s: cannot resolve spec link reference '%s' (%s)" .Page.File.Filename $url $path -}}
+  {{ end -}}
+  {{ $url = $href -}}
+{{ else if hasPrefix $url "/" -}}
+  {{/* Hard-coded default lang since it's what's most efficient and won't change :) */ -}}
+  {{ $defaultLang := "en" -}}
+  {{ $lang := .Page.Language.Lang -}}
+  {{ if ne $lang $defaultLang -}}
+    {{ $langPathPrefix := add "/" $lang "/" -}}
+    {{ if and (hasPrefix $url $langPathPrefix) .Page.File -}}
+      {{ warnf "File %s: drop unnecessary '%s' prefix from %s"
+              .Page.File.Filename $langPathPrefix $url -}}
+    {{ else -}}
+      {{ $localizedPagePath := add $langPathPrefix (strings.TrimPrefix "/" $url) -}}
+      {{/*
+        Look for the page (referenced by $url) in this page's locale's site.
+        Note that .Page.GetPage exclusively looks for the given path in the same locale as .Page.
+      */ -}}
+      {{ with .Page.GetPage $u.Path -}}
+        {{/* warnf "Found url %s -> page %s. -- relRef %s" $localizedPagePath . (.RelRef (dict "path" $url))*/ -}}
+        {{/* Assert (eq $localizedPagePath (.RelRef (dict "path" $url))) */ -}}
+        {{ $url = $localizedPagePath -}}
+      {{ else -}}
+        {{/* Use $url as is, letting the link checker report any issues. */ -}}
+        {{/* warnf "Render-link: locale %s doesn't have the page %s (%s)" $lang $url $localizedPagePath */ -}}
+      {{ end -}}
     {{ end -}}
   {{ end -}}
 {{ end -}}
 
-
 {{/* General link-render processing */ -}}
 
-{{ $url := .Destination -}}
 {{ $isExternal := hasPrefix $url "http" -}}
 {{ if $isExternal -}}
-  {{ if findRE "^https://opentelemetry.io/\\w" $url -}}
-    {{ warnf "%s: use a local path, not an external URL, for the following reference to a site local page: %s"
-        .Page.File.Path $url -}}
+  {{ $matches := findRESubmatch `^https?://(?:www\.)?opentelemetry.io(/?.*)$` $url -}}
+  {{ $otelIoPath := index (index $matches 0) 1 | default "/" -}}
+  {{ if $matches -}}
+    {{ warnf "%s: use a local path '%s' instead of external URL '%s' for reference to site-local page"
+        .Page.File.Path $otelIoPath $url -}}
   {{ else if or
     (findRE "^https://github.com/open-telemetry/opentelemetry-specification/(blob|tree)/main/specification/\\w" $url)
     (findRE "^https://github.com/open-telemetry/opentelemetry-proto/(blob|tree)/main/docs/specification" $url)
@@ -61,4 +93,8 @@
 >
   {{- .Text | safeHTML -}}
 </a>
-{{- /* This comment ensures that all trailing whitespace is trimmed. */ -}}
+
+{{- /*
+  cSpell:ignore warnf
+  This comment ensures that all trailing whitespace is trimmed.
+*/ -}}

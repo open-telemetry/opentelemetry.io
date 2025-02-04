@@ -2,8 +2,8 @@
 title: Node.js
 description: Get telemetry for your app in less than 5 minutes!
 aliases: [/docs/js/getting_started/nodejs]
-cSpell:ignore: autoinstrumentations KHTML rolldice
 weight: 10
+cSpell:ignore: autoinstrumentations KHTML rolldice
 ---
 
 This page will show you how to get started with OpenTelemetry in Node.js.
@@ -80,7 +80,7 @@ const PORT: number = parseInt(process.env.PORT || '8080');
 const app: Express = express();
 
 function getRandomNumber(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min) + min);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 app.get('/rolldice', (req, res) => {
@@ -102,7 +102,7 @@ const PORT = parseInt(process.env.PORT || '8080');
 const app = express();
 
 function getRandomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 app.get('/rolldice', (req, res) => {

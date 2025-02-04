@@ -7,7 +7,7 @@ aliases: [accountingservice]
 This service calculates the total amount of sold products. This is only mocked
 and received orders are printed out.
 
-[Accounting Service](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/accountingservice/)
+[Accounting Service](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/accounting/)
 
 ## Auto-instrumentation
 

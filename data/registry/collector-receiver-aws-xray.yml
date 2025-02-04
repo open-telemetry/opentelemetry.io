@@ -12,11 +12,11 @@ description:
   spans) in the X-Ray Segment format. This enables the collector to receive
   spans emitted by the existing X-Ray SDK.
 authors:
-  - name: Amazon Web Services
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/awsxrayreceiver
 createdAt: 2021-02-26
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awsxrayreceiver
-  version: v0.112.0
+  version: v0.118.0

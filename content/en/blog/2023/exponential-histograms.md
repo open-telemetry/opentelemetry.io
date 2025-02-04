@@ -2,17 +2,18 @@
 title: Exponential Histograms
 date: 2023-05-22
 author: '[Daniel Dyla](https://github.com/dyladan)'
-cSpell:ignore: Ganesh Ruslan subsetting Vernekar Vovalov
 canonical_url: https://dyladan.me/histograms/2023/05/04/exponential-histograms/
+cSpell:ignore: Ganesh Ruslan subsetting Vernekar Vovalov
 ---
 
-Previously, in [Why Histograms?][] and [Histograms vs Summaries][], I went over the
-basics of histograms and summaries, explaining the tradeoffs, benefits, and limitations
-of each. Because they're easy to understand and demonstrate, those posts focused
-on so-called explicit bucket histograms. The exponential bucket histogram, also referred
-to as native histogram in Prometheus, is a low-cost, efficient alternative to explicit
-bucket histograms. In this post, I go through what they are, how they work, and the
-problems they solve that explicit bucket histograms struggle with.
+Previously, in [Why Histograms?][] and [Histograms vs Summaries][], I went over
+the basics of histograms and summaries, explaining the tradeoffs, benefits, and
+limitations of each. Because they're easy to understand and demonstrate, those
+posts focused on so-called explicit bucket histograms. The exponential bucket
+histogram, also referred to as native histogram in Prometheus, is a low-cost,
+efficient alternative to explicit bucket histograms. In this post, I go through
+what they are, how they work, and the problems they solve that explicit bucket
+histograms struggle with.
 
 ## Types of histograms
 
@@ -129,9 +130,8 @@ relative error = (bucketWidth / 2) / bucketMidpoint
                = 4.329%
 ```
 
-For more information regarding histogram errors, see [OTEP 149][] and the [specification
-for
-exponential histogram aggregations][].
+For more information regarding histogram errors, see [OTEP 149][] and the
+[specification for exponential histogram aggregations][].
 
 ## Choosing a scale
 
@@ -190,12 +190,13 @@ OpenTelemetry’s Exponential Histograms in Prometheus][]
 
 _A version of this article was [originally posted][] to the author's blog._
 
-<!-- prettier-ignore-start -->
 [Using OpenTelemetry’s Exponential Histograms in Prometheus]:
   https://www.youtube.com/watch?v=W2_TpDcess8
-[OTEP 149]: https://github.com/open-telemetry/oteps/blob/976c9395e4cbb3ea933d3b51589eba94b87a17bd/text/0149-exponential-histogram.md
-[specification for exponential histogram aggregations]: /docs/specs/otel/metrics/sdk/#base2-exponential-bucket-histogram-aggregation
-[Why Histograms?]: {{% relref "why-histograms" %}}
-[Histograms vs Summaries]: {{% relref "histograms-vs-summaries" %}}
+[OTEP 149]:
+  https://github.com/open-telemetry/oteps/blob/976c9395e4cbb3ea933d3b51589eba94b87a17bd/text/0149-exponential-histogram.md
+[specification for exponential histogram aggregations]:
+  /docs/specs/otel/metrics/sdk/#base2-exponential-bucket-histogram-aggregation
+[Why Histograms?]: ../why-histograms/
+[Histograms vs Summaries]: ../histograms-vs-summaries/
+
 [originally posted]: {{% param canonical_url %}}
-<!-- prettier-ignore-end -->

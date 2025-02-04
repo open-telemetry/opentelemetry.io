@@ -6,10 +6,10 @@ weight: 25
 cSpell:ignore: shortcodes
 ---
 
-The OTel website uses Hugo's [multilingual framework] to support page localizations.
-English is the default language, with US English as the default (implicit) localization.
-A growing number of other localizations are supported, as can be seen from the languages
-dropdown menu in the top nav.
+The OTel website uses Hugo's [multilingual framework] to support page
+localizations. English is the default language, with US English as the default
+(implicit) localization. A growing number of other localizations are supported,
+as can be seen from the languages dropdown menu in the top nav.
 
 ## English language maintainer guidance
 

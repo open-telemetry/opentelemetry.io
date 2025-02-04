@@ -1,3 +1,4 @@
+# cspell:ignore okhttp
 title: okHTTP Instrumentation
 registryType: instrumentation
 language: java
@@ -13,4 +14,8 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/okhttp
 createdAt: 2020-11-05
+package:
+  registry: maven
+  name: io.opentelemetry.instrumentation/opentelemetry-okhttp-3.0
+  version: 2.12.0-alpha
 isFirstParty: false

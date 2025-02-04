@@ -38,19 +38,20 @@ sub extract_htmltest_config {
     return unless @htmltest_config;
 
     if (@htmltest_config == 1) {
-        warn "Warning: Failed to extract htmltest config from front matter in file '$file_path'.\n";
+        warn "WARNING: Failed to extract htmltest config from front matter in file '$file_path'.\n";
         return;
     }
 
-    shift @htmltest_config;
+    do {
+      shift @htmltest_config;
+    } until !@htmltest_config # No more config
+       || $htmltest_config[0] !~ /^\s*#/; # Non-comment line
 
-    if (@htmltest_config >= 1 && $htmltest_config[0] =~ /^IgnoreDirs:/i) {
-      return _extract_ignore_dirs($file_path, @htmltest_config)
-    }
+    return _extract_ignore_dirs($file_path, @htmltest_config) if $htmltest_config[0] =~ /^IgnoreDirs:/i;
 
     # TODO: Add support for `IgnoreURLs`.
 
-    warn "Warning: Unrecognized htmltest config from front matter in file '$file_path'.\n";
+    warn "WARNING: Unrecognized htmltest config from front matter in file '$file_path'.\n";
 }
 
 sub _extract_ignore_dirs {
@@ -66,14 +67,14 @@ sub _extract_ignore_dirs {
       } elsif ($line =~ /^IgnoreDirs:\s*\[\s*(.*?)\s*\]/i || $line =~ /^\s*-\s*(.*?)$/) {
         push @config, (split /\s*,\s*/, $1);
       } else {
-        warn "Warning: Unrecognized htmltest IgnoreDirs config from front matter in file '$file_path': $line\n";
+        warn "WARNING: Unrecognized htmltest IgnoreDirs config from front matter in file '$file_path': $line\n";
       }
     }
     return @config;
 }
 
 sub _extract_htmltest_config {
-    # Returns a list of htmltext config lines with whitespace trimmed away.
+    # Returns a list of htmltest config lines with whitespace trimmed away.
 
     my ($front_matter) = @_;
     my @lines = split /\n/, $front_matter;

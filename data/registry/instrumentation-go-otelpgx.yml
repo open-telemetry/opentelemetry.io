@@ -13,6 +13,7 @@ description:
   Provides OpenTelemetry tracing implementation for the pgx PostgreSQL package.
 authors:
   - name: Exaring AG.
+    url: https://github.com/exaring
 urls:
   repo: https://github.com/exaring/otelpgx
 createdAt: 2022-09-27

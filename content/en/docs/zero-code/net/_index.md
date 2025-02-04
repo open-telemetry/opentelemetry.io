@@ -2,9 +2,9 @@
 title: .NET zero-code instrumentation
 description: Send traces and metrics from .NET applications and services.
 linkTitle: .NET
-cSpell:ignore: coreutils HKLM iisreset myapp
 weight: 30
 redirects: [{ from: /docs/languages/net/automatic/*, to: ':splat' }]
+cSpell:ignore: coreutils HKLM iisreset myapp
 ---
 
 Use the OpenTelemetry .NET Automatic Instrumentation to send traces and metrics
@@ -39,7 +39,7 @@ CI tests run against the following operating systems:
 - [Alpine ARM64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/alpine.dockerfile)
 - [Debian x64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/debian.dockerfile)
 - [Debian ARM64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/debian-arm64.dockerfile)
-- [CentOS 7 x64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/centos-build.dockerfile)
+- [CentOS 7 x64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.9.0/docker/centos-build.dockerfile)
   (.NET 8 is not supported)
 - [macOS Monterey 12 x64](https://github.com/actions/runner-images/blob/main/images/macos/macos-12-Readme.md)
 - [Microsoft Windows Server 2022 x64](https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md)
@@ -281,12 +281,13 @@ libraries. For a complete list, see [Instrumentations](./instrumentations).
 
 ## Troubleshooting
 
-To see the telemetry from your application directly on the standard output, set
-the following environment variables to `true` before launching your application:
+To see the telemetry from your application directly on the standard output, add
+`console` to the following environment variables value before launching your
+application:
 
-- `OTEL_DOTNET_AUTO_LOGS_CONSOLE_EXPORTER_ENABLED`
-- `OTEL_DOTNET_AUTO_METRICS_CONSOLE_EXPORTER_ENABLED`
-- `OTEL_DOTNET_AUTO_TRACES_CONSOLE_EXPORTER_ENABLED`
+- `OTEL_TRACES_EXPORTER`
+- `OTEL_METRICS_EXPORTER`
+- `OTEL_LOGS_EXPORTER`
 
 For general troubleshooting steps and solutions to specific issues, see
 [Troubleshooting](./troubleshooting).

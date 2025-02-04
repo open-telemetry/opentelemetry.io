@@ -1,8 +1,7 @@
 ---
 title: Install the Collector
-# prettier-ignore
-cSpell:ignore: darwin dpkg GOARCH journalctl kubectl otelcorecol pprof tlsv zpages
 weight: 2
+cSpell:ignore: darwin dpkg journalctl kubectl otelcorecol pprof tlsv zpages
 ---
 
 You can deploy the OpenTelemetry Collector on a wide variety of operating
@@ -10,8 +9,8 @@ systems and architectures. The following instructions show how to download and
 install the latest stable version of the Collector.
 
 If you aren't familiar with the deployment models, components, and repositories
-applicable to the OpenTelemetry Collector, first review the [Data Collection][] and
-[Deployment Methods][] page.
+applicable to the OpenTelemetry Collector, first review the [Data Collection][]
+and [Deployment Methods][] page.
 
 ## Docker
 
@@ -84,10 +83,10 @@ The previous example is meant to serve as a starting point, to be extended and
 customized before actual production usage. For production-ready customization
 and installation, see [OpenTelemetry Helm Charts][].
 
-You can also use the [OpenTelemetry Operator][] to provision and maintain an OpenTelemetry
-Collector instance, with features such as automatic upgrade handling, `Service` configuration
-based on the OpenTelemetry configuration, automatic sidecar injection into deployments,
-and more.
+You can also use the [OpenTelemetry Operator][] to provision and maintain an
+OpenTelemetry Collector instance, with features such as automatic upgrade
+handling, `Service` configuration based on the OpenTelemetry configuration,
+automatic sidecar injection into deployments, and more.
 
 For guidance on how to use the Collector with Kubernetes, see
 [Kubernetes Getting Started](/docs/kubernetes/getting-started/).
@@ -113,7 +112,7 @@ To get started on Debian systems run the following commands:
 
 ```sh
 sudo apt-get update
-sudo apt-get -y install wget systemctl
+sudo apt-get -y install wget
 wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_amd64.deb
 sudo dpkg -i otelcol_{{% param vers %}}_linux_amd64.deb
 ```
@@ -122,7 +121,7 @@ sudo dpkg -i otelcol_{{% param vers %}}_linux_amd64.deb
 
 ```sh
 sudo apt-get update
-sudo apt-get -y install wget systemctl
+sudo apt-get -y install wget
 wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_arm64.deb
 sudo dpkg -i otelcol_{{% param vers %}}_linux_arm64.deb
 ```
@@ -131,7 +130,7 @@ sudo dpkg -i otelcol_{{% param vers %}}_linux_arm64.deb
 
 ```sh
 sudo apt-get update
-sudo apt-get -y install wget systemctl
+sudo apt-get -y install wget
 wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_386.deb
 sudo dpkg -i otelcol_{{% param vers %}}_linux_386.deb
 ```

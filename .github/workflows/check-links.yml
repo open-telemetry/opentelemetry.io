@@ -1,8 +1,15 @@
 name: Links
 
+# cSpell:ignore nvmrc opentelemetrybot
 on:
   merge_group:
   pull_request:
+
+env:
+  CHANGED_FILES:
+  PR_NUM: ${{ github.event.pull_request.number }}
+  USER_EMAIL: 107717825+opentelemetrybot@users.noreply.github.com
+  USER_NAME: opentelemetrybot
 
 jobs:
   build-and-check-links:
@@ -31,9 +38,23 @@ jobs:
           cache: npm
           cache-dependency-path: tmp/package-ci.json
 
-      - run: npm install --omit=optional
-      - run: npm run log:check:links
+      - run: |
+          npm install --omit=optional
+          git restore package.json
+
+      - name: Git submodules properly pinned?
+        run: |
+          npm run seq pin:submodule
+          echo "If the diff check below fails, then update .gitmodules by pinning the named git"
+          echo "submodule(s); or undo the submodule update(s) if it happened by mistake."
+          npm run _diff:fail
+
+      - run: |
+          npm run log:check:links
+          CHANGED_FILES=$(git status --porcelain)
+          echo "CHANGED_FILES=$CHANGED_FILES" >> "$GITHUB_ENV"
         continue-on-error: true
+
       - uses: actions/upload-artifact@v4
         with:
           name: build-log-etc
@@ -41,6 +62,36 @@ jobs:
             tmp/build-log.txt
             tmp/package*.json
             static/refcache.json
+
+      - name: Push changes if any, and fail check
+        if: ${{ env.CHANGED_FILES }}
+        run: |
+          echo "Changes detected in the refcache etc:"
+          git status --short
+
+          echo 'cmd: gh pr checkout $PR_NUM -b "pr-check-links-${RANDOM}"'
+        #   git branch -v
+
+        #   git config --local user.email "$USER_EMAIL"
+        #   git config --local user.name "$USER_NAME"
+        #   git add -A
+        #   git commit -m "Updates from build-and-check-links workflow"
+
+        #   echo "\nPushing changes to PR."
+        #   current_branch=$(git rev-parse --abbrev-ref HEAD)
+        #   echo current_branch=$current_branch
+        #   # gh pr checkout sets some git configs that we can use to make sure
+        #   # we push to the right repo & to the right branch
+        #   remote_repo=$(git config --get branch.${current_branch}.remote)
+        #   echo remote_repo=$remote_repo
+        #   remote_branch=$(git config --get branch.${current_branch}.merge)
+        #   echo remote_branch=$remote_branch
+        #   git push ${remote_repo} HEAD:${remote_branch}
+
+        #   echo "Failing workflow so that changes can be reviewed, and checks rerun."
+        #   exit 1
+        # env:
+        #   GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
   check-refcache:
     name: REFCACHE updates?
@@ -53,7 +104,9 @@ jobs:
       - name: Fail when refcache contains entries with HTTP status 4XX
         run: |
           if grep -B 1 -e '"StatusCode": 4' static/refcache.json; then
-            echo "Run 'npx gulp prune' to remove 4xx entries from the refcache"
+            echo "Run 'npm run _refcache:prune' to remove 404 entries from refcache.json,"
+            echo "or run './scripts/double-check-refcache-400s.mjs' locally to address"
+            echo "other 400-status entries."
             exit 1
           fi
       - name: Does the refcache need updating?

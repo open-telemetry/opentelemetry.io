@@ -17,8 +17,13 @@ cSpell:ignore: mbstring opcache
 
 ## Requirements
 
-OpenTelemetry for PHP requires a minimum PHP version of 7.4, and
-auto-instrumentation requires version 8.0+.
+OpenTelemetry SDK for PHP aims to support all officially supported PHP versions
+according to
+[www.php.net/supported-versions](https://www.php.net/supported-versions.php),
+and support will be dropped for PHP versions within 12 months of that version
+going End of Life.
+
+Auto-instrumentation requires PHP version 8.0+.
 
 ### Dependencies
 

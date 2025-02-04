@@ -10,6 +10,7 @@ license: MIT
 description: Go contrib plugin for the gofiber/fiber package.
 authors:
   - name: gofiber authors & contributors
+    url: https://github.com/gofiber/
 urls:
   repo: https://github.com/gofiber/contrib/tree/main/otelfiber
 createdAt: 2022-01-14

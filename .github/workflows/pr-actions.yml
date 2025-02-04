@@ -1,4 +1,5 @@
 name: PR actions
+# cSpell:ignore esac htmltest refcache nvmrc
 
 on:
   issue_comment:
@@ -29,9 +30,9 @@ jobs:
       - name: Extract action name
         id: extract_action_name
         run: |
-          PR_ACTION=$(echo $COMMENT | grep -oP '/fix:\K\w+')
+          PR_ACTION=$(echo $COMMENT | grep -oP '/fix:\K[:-_0-9a-z]+')
           echo "Action is $PR_ACTION"
-          ACTION_NAMES="all|dict|filenames|format|i18n|markdown|refcache|submodules|text"
+          ACTION_NAMES="all|dict|expired|filenames|format|htmltest-config|i18n|markdown|refcache(:refresh)?|submodules?|text"
           if [[ ! "$PR_ACTION" =~ ^($ACTION_NAMES)$ ]]; then
             echo "Invalid action name: $PR_ACTION"
             echo "Action name should be one of: $ACTION_NAMES"
@@ -69,10 +70,10 @@ jobs:
 
       - run: |
           case $PR_ACTION in
-            all|refcache)
+            all|refcache*|text)
               npm install --omit=optional
               ;&
-            dict|filenames|format|markdown|submodules)
+            *)
               npm run fix:$PR_ACTION
               ;;
           esac

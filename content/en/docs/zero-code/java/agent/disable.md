@@ -3,7 +3,7 @@ title: Suppressing specific instrumentation
 linkTitle: Suppressing instrumentation
 weight: 11
 # prettier-ignore
-cSpell:ignore: akka armeria classloaders clickhouse couchbase Customizer datasource dbcp Dotel dropwizard dubbo enduser finatra hikari hikaricp HSET httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jodd kotlinx ktor logback logmanager mojarra mybatis myfaces okhttp oshi pekko rabbitmq ratpack rediscala redisson restlet rocketmq serverlessapis shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
+cSpell:ignore: akka armeria clickhouse couchbase datasource dbcp Dotel dropwizard dubbo finatra hikari hikaricp httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jodd kotlinx ktor logback logmanager mojarra mybatis myfaces okhttp oshi pekko rabbitmq ratpack rediscala redisson restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
 
 ## Disabling the agent entirely
@@ -26,10 +26,11 @@ to have more control of which instrumentation is applied.
 {{% config_option name="otel.instrumentation.[name].enabled" %}} Set to `true`
 to enable each desired instrumentation individually. {{% /config_option %}}
 
-> **Note**: Some instrumentation relies on other instrumentation to function
-> properly. When selectively enabling instrumentation, be sure to enable the
-> transitive dependencies too. Determining this dependency relationship is left
-> as an exercise to the user.
+{{% alert title="Note" color="warning" %}} Some instrumentation relies on other
+instrumentation to function properly. When selectively enabling instrumentation,
+be sure to enable the transitive dependencies too. Determining this dependency
+relationship is left as an exercise to the user. This is considered advanced
+usage and is not recommended for most users. {{% /alert %}}
 
 ## Enable manual instrumentation only
 

@@ -1,8 +1,8 @@
 ---
 title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
-cSpell:ignore: rolldice
 weight: 10
+cSpell:ignore: rolldice
 ---
 
 This page will show you how to get started with OpenTelemetry in Swift.

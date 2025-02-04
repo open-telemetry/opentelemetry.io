@@ -68,7 +68,10 @@ The instrument kind is one of the following:
   continuous changes, but only to the aggregated value (e.g., current queue
   size).
 - **Gauge**: Measures a current value at the time it is read. An example would
-  be the fuel gauge in a vehicle. Gauges are asynchronous.
+  be the fuel gauge in a vehicle. Gauges are synchronous.
+- **Asynchronous Gauge**: Same as the **Gauge**, but is collected once for each
+  export. Could be used if you don't have access to the continuous changes, but
+  only to the aggregated value.
 - **Histogram**: A client-side aggregation of values, such as request latencies.
   A histogram is a good choice if you are interested in value statistics. For
   example: How many requests take fewer than 1s?
@@ -88,10 +91,10 @@ aggregation for each instrument which can be overridden using the Views. The
 OpenTelemetry project aims to provide default aggregations that are supported by
 visualizers and telemetry backends.
 
-Unlike [request tracing](/docs/concepts/signals/traces/), which is intended to
-capture request lifecycles and provide context to the individual pieces of a
-request, metrics are intended to provide statistical information in aggregate.
-Some examples of use cases for metrics include:
+Unlike [request tracing](../traces/), which is intended to capture request
+lifecycles and provide context to the individual pieces of a request, metrics
+are intended to provide statistical information in aggregate. Some examples of
+use cases for metrics include:
 
 - Reporting the total number of bytes read by a service, per protocol type.
 - Reporting the total number of bytes read and the bytes per request.

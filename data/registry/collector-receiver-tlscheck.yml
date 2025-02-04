@@ -1,0 +1,19 @@
+# cSpell:ignore: tlscheck tlscheckreceiver
+title: TLS Check Receiver
+registryType: receiver
+language: collector
+tags:
+  - tlscheck
+  - receiver
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/tlscheckreceiver
+license: Apache 2.0
+description: Emit metrics about x.509 certificates.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-11-18
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/tlscheckreceiver
+  version: v0.118.0

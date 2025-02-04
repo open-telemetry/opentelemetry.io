@@ -1,8 +1,8 @@
 ---
 title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
-cSpell:ignore: ASPNETCORE rolldice
 weight: 5
+cSpell:ignore: ASPNETCORE rolldice
 ---
 
 This page will show you how to get started with OpenTelemetry .NET Automatic
@@ -107,8 +107,8 @@ dotnet run
 ## Instrumentation
 
 Next, you'll use a [OpenTelemetry .NET Automatic Instrumentation](../) to
-instrument the application at launch time. While you can [configure
-.NET Automatic Instrumentation][] in a number of ways, the steps below use Unix-shell
+instrument the application at launch time. While you can [configure .NET
+Automatic Instrumentation][] in a number of ways, the steps below use Unix-shell
 or PowerShell scripts.
 
 > **Note**: PowerShell commands require elevated (administrator) privileges.
@@ -150,20 +150,17 @@ or PowerShell scripts.
 
    {{% /tab %}} {{< /tabpane >}}
 
-3. Set and export variables that specify a [console exporter][], then execute script
-   configuring other necessary environment variables using a notation suitable for
-   your shell/terminal environment &mdash; we illustrate a notation for bash-like
-   shells and PowerShell:
+3. Set and export variables that specify a [console exporter][], then execute
+   script configuring other necessary environment variables using a notation
+   suitable for your shell/terminal environment &mdash; we illustrate a notation
+   for bash-like shells and PowerShell:
 
    {{< tabpane text=true >}} {{% tab Unix-shell %}}
 
    ```sh
-   export OTEL_TRACES_EXPORTER=none \
-     OTEL_METRICS_EXPORTER=none \
-     OTEL_LOGS_EXPORTER=none \
-     OTEL_DOTNET_AUTO_TRACES_CONSOLE_EXPORTER_ENABLED=true \
-     OTEL_DOTNET_AUTO_METRICS_CONSOLE_EXPORTER_ENABLED=true \
-     OTEL_DOTNET_AUTO_LOGS_CONSOLE_EXPORTER_ENABLED=true
+   export OTEL_TRACES_EXPORTER=console \
+     OTEL_METRICS_EXPORTER=console \
+     OTEL_LOGS_EXPORTER=console
      OTEL_SERVICE_NAME=RollDiceService
    . $HOME/.otel-dotnet-auto/instrument.sh
    ```
@@ -171,12 +168,9 @@ or PowerShell scripts.
    {{% /tab %}} {{% tab PowerShell - Windows %}}
 
    ```powershell
-   $env:OTEL_TRACES_EXPORTER="none"
-   $env:OTEL_METRICS_EXPORTER="none"
-   $env:OTEL_LOGS_EXPORTER="none"
-   $env:OTEL_DOTNET_AUTO_TRACES_CONSOLE_EXPORTER_ENABLED="true"
-   $env:OTEL_DOTNET_AUTO_METRICS_CONSOLE_EXPORTER_ENABLED="true"
-   $env:OTEL_DOTNET_AUTO_LOGS_CONSOLE_EXPORTER_ENABLED="true"
+   $env:OTEL_TRACES_EXPORTER="console"
+   $env:OTEL_METRICS_EXPORTER="console"
+   $env:OTEL_LOGS_EXPORTER="console"
    Register-OpenTelemetryForCurrentSession -OTelServiceName "RollDiceService"
    ```
 

@@ -267,10 +267,11 @@ end
 ### Semantic Attributes
 
 Semantic Attributes are attributes that are defined by the [OpenTelemetry
-Specification][] in order to provide a shared set of attribute keys across multiple
-languages, frameworks, and runtimes for common concepts like HTTP methods, status
-codes, user agents, and more. These attribute keys are generated from the specification
-and provided in [opentelemetry_semantic_conventions](https://hex.pm/packages/opentelemetry_semantic_conventions).
+Specification][] in order to provide a shared set of attribute keys across
+multiple languages, frameworks, and runtimes for common concepts like HTTP
+methods, status codes, user agents, and more. These attribute keys are generated
+from the specification and provided in
+[opentelemetry_semantic_conventions](https://hex.pm/packages/opentelemetry_semantic_conventions).
 
 For example, an instrumentation for an HTTP client or server would need to
 include semantic attributes like the scheme of the URL:

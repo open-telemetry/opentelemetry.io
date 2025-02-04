@@ -14,4 +14,8 @@ description:
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2024-07-08
+package:
+  registry: packagist
+  name: open-telemetry/opentelemetry-auto-psr6
+  version: 0.0.3
 isFirstParty: false

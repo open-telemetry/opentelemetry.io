@@ -5,8 +5,8 @@ date: 2024-09-04
 author: >-
   [Reese Lee](https://github.com/reese-lee) (New Relic), [Adriana
   Villela](https://github.com/avillela) (ServiceNow)
-cSpell:ignore: hashmod kubelet sharded targetallocator
 canonical_url: https://newrelic.com/blog/how-to-relic/prometheus-and-opentelemetry-better-together
+cSpell:ignore: hashmod kubelet sharded targetallocator
 ---
 
 ![Image of a Greek god holding a torch with the Prometheus logo, and OTel logo](Prom-and-otel-logos.png)
@@ -220,7 +220,7 @@ Let’s dig into each of these.
 The Target Allocator’s first job is to discover targets to scrape and OTel
 Collectors to allocate targets to. It does so as follows:
 
-1. The Target Allocator finds all of the the metrics targets to scrape
+1. The Target Allocator finds all of the metrics targets to scrape
 2. The Target Allocator finds all of the available Collectors
 3. The Target Allocator determines which Collectors scrape which metrics
 4. The Collectors query the Target Allocator to find out what metrics to scrape

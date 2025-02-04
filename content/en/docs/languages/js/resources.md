@@ -1,8 +1,8 @@
 ---
 title: Resources
 weight: 70
-cSpell:ignore: myhost SIGINT uuidgen WORKDIR
 description: Add details about your applications' environment to your telemetry
+cSpell:ignore: myhost SIGINT uuidgen WORKDIR
 ---
 
 {{% docs/languages/resources-intro %}}
@@ -12,13 +12,13 @@ Node.js SDK.
 
 ## Setup
 
-Follow the instructions in the [Getting Started - Node.js][], so that you have the
-files `package.json`, `app.js` and `tracing.js`.
+Follow the instructions in the [Getting Started - Node.js][], so that you have
+the files `package.json`, `app.js` and `tracing.js`.
 
 ## Process & Environment Resource Detection
 
-Out of the box, the Node.js SDK detects [process and process
-runtime resources][] and takes attributes from the environment variable
+Out of the box, the Node.js SDK detects [process and process runtime
+resources][] and takes attributes from the environment variable
 `OTEL_RESOURCE_ATTRIBUTES`. You can verify what it detects by turning on
 diagnostic logging in `tracing.js`:
 
@@ -184,7 +184,7 @@ $ docker run --rm -p 8080:8080 nodejs-otel-getting-started
 Listening for requests on http://localhost:8080
 DockerCGroupV1Detector found resource. Resource {
   attributes: {
-    'container.id': 'fffbeaf682f32ef86916f306ff9a7f88cc58048ab78f7de464da3c320ldb5c54'
+    'container.id': 'fffbeaf682f32ef86916f306ff9a7f88cc58048ab78f7de464da3c3201db5c54'
   }
 }
 ```

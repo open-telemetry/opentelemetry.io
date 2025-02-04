@@ -14,6 +14,7 @@ authors:
   - name: Ishan Jain
     url: https://github.com/ishanjainn
   - name: Grafana Labs
+    url: https://github.com/grafana/
 urls:
   repo: https://github.com/grafana/grafana-ansible-collection/tree/main/roles/opentelemetry_collector
   docs: https://galaxy.ansible.com/ui/repo/published/grafana/grafana/content/role/opentelemetry_collector

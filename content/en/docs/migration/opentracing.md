@@ -1,8 +1,8 @@
 ---
 title: Migrating from OpenTracing
 linkTitle: OpenTracing
-cSpell:ignore: codebases
 weight: 2
+cSpell:ignore: codebases
 ---
 
 Backward compatibility with [OpenTracing][] has been a priority for the

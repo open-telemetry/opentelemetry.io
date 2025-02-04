@@ -1,13 +1,12 @@
 ---
 title: Development setup and commands to build, serve, and more
 linkTitle: Dev setup and more
-description:
-  Learn how to set up a development environment for the opentelemetry.io site.
+description: Learn how to set up a development environment for this website.
 weight: 60
 ---
 
 The following instructions explain how to set up a development environment for
-the <https://opentelemetry.io/> website.
+this website.
 
 ## Cloud-IDE setup
 
@@ -31,7 +30,8 @@ website files.
 
 ## Local setup
 
-1.  [Fork][] and then [clone][] this repository.
+1.  [Fork][] and then [clone][] the website repository at
+    <{{% param github_repo %}}>.
 2.  Go to the repository directory.
 3.  Install or upgrade to the [**active LTS** release][nodejs-rel] of Node.js.
     We recommend using [nvm][] to manage your Node installation. Under Linux,

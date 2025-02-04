@@ -7,7 +7,7 @@ cSpell:ignore: dockerstatsreceiver
 
 ## Summary
 
-The OpenTelemetry Community Demo application is intended to be a 'showcase' for
+The OpenTelemetry Community Demo application is intended to be a showcase for
 OpenTelemetry API, SDK, and tools in a production-lite cloud native application.
 The overall goal of this application is not only to provide a canonical 'demo'
 of OpenTelemetry components, but also to act as a framework for further
@@ -70,6 +70,8 @@ application written in Swift.
 
 Feature flagging is a crucial part of cloud native application development. The
 demo uses OpenFeature, a CNCF incubating project, to manage feature flags.
+
+Feature flags can be set through the flagd configurator user interface.
 
 ## Orchestration and Deployment
 

@@ -11,11 +11,11 @@ description:
   The SAPM Receiver for the OpenTelemetry Collector receive traces from other
   collectors or the SignalFx Smart Agent.
 authors:
-  - name: Splunk
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/sapmreceiver
 createdAt: 2021-02-26
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/sapmreceiver
-  version: v0.112.0
+  version: v0.118.0

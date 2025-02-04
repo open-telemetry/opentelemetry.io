@@ -7,7 +7,7 @@ cSpell:ignore: sinatra
 
 This service will send a confirmation email to the user when an order is placed.
 
-[Email service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/emailservice/)
+[Email service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/email/)
 
 ## Initializing Tracing
 

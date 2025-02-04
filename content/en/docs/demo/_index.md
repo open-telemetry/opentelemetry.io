@@ -29,7 +29,8 @@ here.
 | C++        |                                                    |                                                                                              | [Currency Service](services/currency/)                                                       |
 | Go         |                                                    | [Checkout Service](services/checkout/), [Product Catalog Service](services/product-catalog/) | [Checkout Service](services/checkout/), [Product Catalog Service](services/product-catalog/) |
 | Java       | [Ad Service](services/ad/)                         |                                                                                              | [Ad Service](services/ad/)                                                                   |
-| JavaScript |                                                    | [Frontend](services/frontend/)                                                               | [Frontend](services/frontend/), [Payment Service](services/payment/)                         |
+| JavaScript |                                                    |                                                                                              | [Payment Service](services/payment/)                                                         |
+| TypeScript |                                                    | [Frontend](services/frontend/), [React Native App](services/react-native-app/)               | [Frontend](services/frontend/)                                                               |
 | Kotlin     |                                                    | [Fraud Detection Service](services/fraud-detection/)                                         |                                                                                              |
 | PHP        |                                                    | [Quote Service](services/quote/)                                                             | [Quote Service](services/quote/)                                                             |
 | Python     | [Recommendation Service](services/recommendation/) |                                                                                              | [Recommendation Service](services/recommendation/)                                           |
@@ -53,7 +54,8 @@ found here:
 - [Quote Service](services/quote/)
 - [Recommendation Service](services/recommendation/)
 - [Shipping Service](services/shipping/)
-- [Image Provider Service](services/imageprovider/)
+- [Image Provider Service](services/image-provider/)
+- [React Native App](services/react-native-app/)
 
 ## Scenarios
 
