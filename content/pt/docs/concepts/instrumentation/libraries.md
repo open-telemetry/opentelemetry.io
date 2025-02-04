@@ -11,7 +11,8 @@ _monkey-patching_ do código da biblioteca.
 
 A instrumentação nativa de bibliotecas com OpenTelemetry oferece melhor
 observabilidade e experiência para desenvolvedores, eliminando a necessidade das
-bibliotecas exporem e documentarem _hooks_. Outros benefícios fornecidos pela instrumentação nativa incluem:
+bibliotecas exporem e documentarem _hooks_. Outros benefícios fornecidos pela
+instrumentação nativa incluem:
 
 - _Hooks_ personalizados de logging podem ser substituídos por APIs
   OpenTelemetry comuns e fáceis de usar, os usuários utilizarão somente o
@@ -29,23 +30,31 @@ bibliotecas exporem e documentarem _hooks_. Outros benefícios fornecidos pela i
 
 ## Convenção semântica {#semantic-conventions}
 
-[Convenções semânticas](/docs/specs/semconv/general/trace/) são a principal fonte de verdade e indicam quais informações devem ser
-incluídas nos trechos produzidos por _frameworks_ web, clientes RPC, bancos de dados, clientes de mensagens, infraestrutura e mais. As convenções tornam a instrumentação consistente:
-usuários que trabalham com telemetria não precisam aprender as especificidades
-de cada biblioteca, e fornecedores de observabilidade podem criar experiências
-para uma ampla variedade de tecnologias, por exemplo, bancos de dados ou
-sistemas de mensagens. Quando as bibliotecas seguem as convenções, muitos
-cenários podem ser habilitados automaticamente, sem necessidade de intervenção
-ou configuração por parte do usuário.
+[Convenções semânticas](/docs/specs/semconv/general/trace/) são a principal
+fonte de verdade e indicam quais informações devem ser incluídas nos trechos
+produzidos por _frameworks_ web, clientes RPC, bancos de dados, clientes de
+mensagens, infraestrutura e mais. As convenções tornam a instrumentação
+consistente: usuários que trabalham com telemetria não precisam aprender as
+especificidades de cada biblioteca, e fornecedores de observabilidade podem
+criar experiências para uma ampla variedade de tecnologias, por exemplo, bancos
+de dados ou sistemas de mensagens. Quando as bibliotecas seguem as convenções,
+muitos cenários podem ser habilitados automaticamente, sem necessidade de
+intervenção ou configuração por parte do usuário.
 
 As convenções semânticas estão em constante evolução, e novas são adicionadas
 regularmente. Se ainda não existirem convenções para a sua biblioteca,
 [considere adicioná-las](https://github.com/open-telemetry/semantic-conventions/issues).
 Preste atenção especial aos nomes dos trechos: procure usar nomes significativos
-e considere a cardinalidade ao defini-los. Também defina o atributo [`schema_url`](/docs/specs/otel/schemas/#schema-url), que pode ser
-utilizado para registrar a versão das convenções semânticas em uso
+e considere a cardinalidade ao defini-los. Também defina o atributo
+[`schema_url`](/docs/specs/otel/schemas/#schema-url), que pode ser utilizado
+para registrar a versão das convenções semânticas em uso
 
-Se tiver algum feedback ou quiser adicionar uma nova convenção, contribua juntando-se ao _[Instrumentation Slack](https://cloud-native.slack.com/archives/C01QZFGMLQ7)_, ou através de uma nova discussão ou _pull request_ no [repositório de Especificações _(Specification)](https://github.com/open-telemetry/opentelemetry-specification) .
+Se tiver algum feedback ou quiser adicionar uma nova convenção, contribua
+juntando-se ao
+_[Instrumentation Slack](https://cloud-native.slack.com/archives/C01QZFGMLQ7)_,
+ou através de uma nova discussão ou _pull request_ no
+[repositório de Especificações \_(Specification)](https://github.com/open-telemetry/opentelemetry-specification)
+.
 
 ### Definindo trechos {#defining-spans}
 
@@ -76,9 +85,12 @@ Siga as convenções semânticas ao definir atributos dos trechos.
 Algumas bibliotecas atuam como camadas finas que encapsulam chamadas de rede. Há
 uma grande chance de que o OpenTelemetry já tenha uma biblioteca de
 instrumentação para o cliente RPC subjacente. Confira o
-_[registro](/ecosystem/registry/)_ para encontrar as bibliotecas existentes. Caso uma biblioteca já exista, pode não ser necessário instrumentar a biblioteca que encapsula essas chamadas.
+_[registro](/ecosystem/registry/)_ para encontrar as bibliotecas existentes.
+Caso uma biblioteca já exista, pode não ser necessário instrumentar a biblioteca
+que encapsula essas chamadas.
 
-Como regra geral, instrumente sua biblioteca apenas em seu próprio nível. Não a instrumente caso todos os casos a seguir se apliquem:
+Como regra geral, instrumente sua biblioteca apenas em seu próprio nível. Não a
+instrumente caso todos os casos a seguir se apliquem:
 
 - Sua biblioteca é um _proxy_ simples em cima de APIs documentadas ou
   autoexplicativas.
@@ -86,10 +98,10 @@ Como regra geral, instrumente sua biblioteca apenas em seu próprio nível. Não
 - Não existem convenções que sua biblioteca deva seguir para enriquecer a
   telemetria.
 
-Em caso de dúvida, não instrumente. Se optar por não instrumentar, ainda pode ser útil fornecer uma maneira de
-configurar manipuladores do OpenTelemetry para a instância interna do cliente RPC.
-Isso é essencial em linguagens que não suportam instrumentação totalmente
-automática e ainda é útil em outras.
+Em caso de dúvida, não instrumente. Se optar por não instrumentar, ainda pode
+ser útil fornecer uma maneira de configurar manipuladores do OpenTelemetry para
+a instância interna do cliente RPC. Isso é essencial em linguagens que não
+suportam instrumentação totalmente automática e ainda é útil em outras.
 
 O restante deste documento fornece orientações sobre o que e como instrumentar,
 caso decida fazê-lo.
@@ -106,20 +118,27 @@ instrumentação não faz nada e não impacta o desempenho da aplicação.
 ### Bibliotecas devem usar apenas a API do OpenTelemetry {#libraries-should-only-use-the-opentelemetry-api}
 
 Caso você esteja com receio de adicionar novas dependências, então aqui estão
-algumas considerações para ajudar a minimizar problemas de conflitos de dependências:
+algumas considerações para ajudar a minimizar problemas de conflitos de
+dependências:
 
-- A API de rastros do OpenTelemetry alcançou estabilidade no início de 2021. Ela segue o [Versionamento Semântico 2.0](/docs/specs/otel/versioning-and-stability/).
-- Utilize a versão mais antiga estável da API do OpenTelemetry (1.0.\*) e evite atualizá-la, a menos que precise usar novas funcionalidades.
+- A API de rastros do OpenTelemetry alcançou estabilidade no início de 2021. Ela
+  segue o
+  [Versionamento Semântico 2.0](/docs/specs/otel/versioning-and-stability/).
+- Utilize a versão mais antiga estável da API do OpenTelemetry (1.0.\*) e evite
+  atualizá-la, a menos que precise usar novas funcionalidades.
 - Enquanto sua instrumentação se estabiliza, considere lançá-la como um pacote
   separado, para que isso não cause problemas para usuários que não a utilizam.
   Você pode mantê-la em seu repositório ou
   [adicioná-la ao OpenTelemetry](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0155-external-modules.md#contrib-components),
   para que seja distribuída junto com outras bibliotecas de instrumentação.
-- As Convenções semânticas são [estáveis, mas sujeitas à evolução][]: embora
+- As convenções semânticas são [estáveis, mas sujeitas à evolução][]: embora
   isso não cause problemas funcionais, pode ser necessário atualizar sua
   instrumentação de tempos em tempos. Ter a instrumentação em um pacote
   experimental ou no repositório _contrib_ do OpenTelemetry pode ajudar a manter
   as convenções atualizadas sem causar mudanças disruptivas para seus usuários.
+
+[estáveis, mas sujeitas à evolução]:
+  /docs/specs/otel/versioning-and-stability/#semantic-conventions-stability
 
 ### Obtendo um rastreador {#getting-a-tracer}
 
@@ -127,8 +146,8 @@ Toda a configuração da aplicação é ocultada da sua biblioteca por meio da A
 Rastreamento. As bibliotecas podem permitir que as aplicações passem instâncias
 de `TracerProvider` para facilitar testes e injeção de dependências, ou podem
 obtê-las a partir do
-[TracerProvider global](/docs/specs/otel/trace/api/#get-a-tracer).
-As implementações do OpenTelemetry em diferentes linguagens podem ter preferências
+[TracerProvider global](/docs/specs/otel/trace/api/#get-a-tracer). As
+implementações do OpenTelemetry em diferentes linguagens podem ter preferências
 distintas para passar instâncias ou acessar o global, dependendo do que é mais
 comum na linguagem.
 
@@ -196,14 +215,15 @@ private Response selectWithTracing(Query query) {
 Siga as convenções para preencher atributos. Se nenhuma delas se aplicar,
 consulte as [convenções gerais](/docs/specs/semconv/general/attributes/).
 
-### Trechos de rede aninhados e outros trechos {#nestex-network-and-other-spans}
+### Trechos de rede aninhados e outros trechos {#nested-network-and-other-spans}
 
-Chamadas de rede são geralmente rastreadas com auto-instrumentações do
+Chamadas de rede são geralmente rastreadas com autoinstrumentações do
 OpenTelemetry através da implementação correspondente do cliente.
 
 ![Trecho de banco de dados e HTTP aninhados na interface do Jaeger](../nested-spans.svg)
 
-Se o OpenTelemetry não suportar o rastreamento do seu cliente de rede, aqui estão algumas considerações para ajudar a decidir o melhor curso de ação:
+Se o OpenTelemetry não suportar o rastreamento do seu cliente de rede, aqui
+estão algumas considerações para ajudar a decidir o melhor curso de ação:
 
 - Rastrear chamadas de rede melhoraria a observabilidade para os usuários ou sua
   capacidade de apoiá-los?
@@ -224,7 +244,8 @@ Se o OpenTelemetry já suportar o rastreamento de suas chamadas de rede, você
 provavelmente não quer duplicá-lo. Pode haver algumas exceções:
 
 - Para suportar usuários sem auto-instrumentação, que pode não funcionar em
-  certos ambientes ou quando os usuários podem ter preocupações com _monkey-patching_.
+  certos ambientes ou quando os usuários podem ter preocupações com
+  _monkey-patching_.
 - Para habilitar protocolos personalizados ou legados de correlação e propagação
   de contexto com o serviço subjacente.
 - Enriquecer trechos de RPC com informações absolutamente essenciais específicas
@@ -236,13 +257,13 @@ Uma solução genérica para evitar duplicação está em construção.
 
 Rastros são um tipo de sinal que seus aplicativos podem emitir. Eventos (ou
 logs) e rastros se complementam, não se duplicam. Sempre que você tiver algo que
-deva ter um certo nível de verbosidade, logs são uma escolha melhor do que rastros.
+deva ter um certo nível de verbosidade, logs são uma escolha melhor do que
+rastros.
 
-Caso a sua aplicação já utilize log ou algum módulo semelhante, é possível que o módulo de logs já tenha integração com o OpenTelemetry. Para descobrir, veja o
+Caso a sua aplicação já utilize log ou algum módulo semelhante, é possível que o
+módulo de logs já tenha integração com o OpenTelemetry. Para descobrir, veja o
 [registro](/ecosystem/registry/). As integrações geralmente adicionam o contexto
 de rastros ativo em todos os logs, para que os usuários possam correlacioná-los.
-
-[//]: # (TODO: Draft PR, resume it from here)
 
 Se sua linguagem e ecossistema não tiverem suporte comum para logs, use [span
 events][] para compartilhar detalhes adicionais do aplicativo. Eventos podem ser
@@ -252,13 +273,13 @@ Como regra geral, use eventos ou logs para dados verbosos em vez de rastros.
 Sempre anexe eventos à instância do trecho que sua instrumentação criou. Evite
 usar o trecho ativo se puder, pois você não controla a que ele se refere.
 
-## Propagação de contexto
+## Propagação de contexto {#context-propagation}
 
-### Extraindo contexto
+### Extraindo contexto {#extracting-context}
 
 Se você trabalha em uma biblioteca ou serviço que recebe chamadas _upstream_,
-como um framework web ou um consumidor de mensagens, você deve extrair o
-contexto da requisição/mensagem recebida. O OpenTelemetry fornece a API
+como um _framework_ web ou um consumidor de mensagens, você deve extrair o
+contexto da requisição ou mensagem recebida. O OpenTelemetry fornece a API
 `Propagator`, que oculta padrões específicos de propagação e lê o `Context` de
 rastreamento do cabeçalho. No caso de uma única resposta, há apenas um contexto
 no cabeçalho, que se torna o pai dos novos trechos criado pela biblioteca.
@@ -287,24 +308,22 @@ try (Scope unused = span.makeCurrent()) {
 }
 ```
 
-Aqui estão os
-[exemplos completos de extração de contexto em Java](/docs/languages/java/instrumentation/#context-propagation),
-consulte a documentação do OpenTelemetry no seu idioma.
-
 No caso de um sistema de mensagens, você pode receber mais de uma mensagem de
 uma vez. As mensagens recebidas se tornam _links_ no trecho que você cria.
 Consulte as
 [convenções de mensagens](/docs/specs/semconv/messaging/messaging-spans/) para
-mais detalhes (AVISO: as convenções de mensagens estão
-[em construção](https://github.com/open-telemetry/oteps/pull/173) 🚧).
+mais detalhes.
 
-### Injetando contexto
+### Injetando contexto {#injecting-context}
 
 Quando você faz uma chamada de saída, geralmente vai querer propagar o contexto
 para o serviço _downstream_. Nesse caso, você deve criar um novo trecho para
 rastrear a chamada de saída e usar a API `Propagator` para injetar o contexto na
 mensagem. Podem haver outros casos em que você queira injetar o contexto, por
-exemplo, ao criar mensagens para processamento assíncrono.
+exemplo, ao criar mensagens para processamento assíncrono. O exemplo aseguir em
+Java mostra como propagar o contexto. Consulte
+[Injeção de contexto em Java](/docs/languages/java/instrumentation/#context-propagation)
+para mais exemplos.
 
 ```java
 Span span = tracer.spanBuilder("send")
@@ -326,44 +345,40 @@ try (Scope unused = span.makeCurrent()) {
 }
 ```
 
-Aqui está o
-[exemplo completo de injeção de contexto em Java](/docs/languages/java/instrumentation/#context-propagation).
+Podem haver algumas exceções onde não é necessário propagar o contexto:
 
-Podem haver algumas exceções:
-
-- O serviço _downstream_ não suporta metadados ou proíbe campos desconhecidos
-- O serviço _downstream_ não define protocolos de correlação. Existe a
-  possibilidade de que uma versão futura do serviço suporte a propagação de
-  contexto compatível? Injete-o!
+- O serviço _downstream_ não suporta metadados ou proíbe campos desconhecidos.
+- O serviço _downstream_ não define protocolos de correlação. Considere
+  adicionar suporte para a propagação de contexto em uma versão futura.
 - O serviço _downstream_ suporta um protocolo de correlação personalizado.
   - Melhor esforço com propagador personalizado: use o contexto de rastreamento
-    do OpenTelemetry, se for compatível.
-  - Ou gere e aplique IDs de correlação personalizados no trecho.
+    do OpenTelemetry, se for compatível, ou gere e insira IDs de correlação
+    personalizados no trecho.
 
-### Em processo
+### Em processo {#in-process}
 
-- **Torne seus trechos ativos** (também conhecidos como atuais): isso permite
-  correlacionar trechos com logs e qualquer auto-instrumentação aninhada.
-- Se a biblioteca tiver uma noção de contexto, suporte a **propagação explícita
-  de contexto de rastreamento opcional** _além_ de trechos ativos
+- Torne seus trechos ativos ou atuais, pois isso permite correlacionar trechos
+  com logs e qualquer autoinstrumentação aninhada.
+- Se a biblioteca tiver uma noção de contexto, ofereça suporte opcional para a
+  propagação explícita de contexto de rastreamento, além dos trechos ativos.
   - Coloque rastros (contexto de rastreamento) criados pela biblioteca no
-    contexto explicitamente, documente como acessá-los
-  - Permita que os usuários passem o contexto de rastreamento em seu contexto
-- Dentro da biblioteca, propague o contexto de rastreamento explicitamente -
-  trechos ativos podem mudar durante _callbacks_!
+    contexto explicitamente, documente como acessá-los.
+  - Permita que os usuários passem o contexto de rastreamento em seu contexto.
+- Dentro da biblioteca, propague o contexto de rastreamento explicitamente.
+  Trechos ativos podem mudar durante _callbacks_!
   - Capture o contexto ativo dos usuários na superfície da API pública assim que
-    puder, use-o como contexto pai para seus trechos
-  - Passe o contexto e aplique atributos, exceções, eventos nas instâncias
-    propagadas explicitamente
-  - Isso é essencial se você iniciar threads explicitamente, fizer processamento
-    em segundo plano ou outras coisas que podem falhar devido a limitações de
-    fluxo de contexto assíncrono em sua linguagem
+    possível e use-o como contexto pai para seus trechos.
+  - Passe o contexto adiante e aplique atributos, exceções, eventos nas
+    instâncias propagadas explicitamente.
+  - Isso é essencial caso você inicie processos explicitamente, realize
+    processamento em segundo plano ou outras operações que podem falhar devido a
+    limitações no fluxo de contexto assíncrono de sua linguagem.
 
-## Miscelânea
+## Considerações adicionais {#additional-considerations}
 
-### Registro de Instrumentação
+### Registro de Instrumentação {#instrumentation-registry}
 
-Por favor, adicione sua biblioteca de instrumentação ao
+Adicione sua biblioteca de instrumentação ao
 [registro do OpenTelemetry](/ecosystem/registry/), para que os usuários possam
 encontrá-la.
 
@@ -373,10 +388,11 @@ A API do OpenTelemetry não executa operações quando não há SDK configurado 
 aplicação. Quando o SDK do OpenTelemetry é configurado, ele
 [consome recursos limitados](/docs/specs/otel/performance/).
 
-Aplicações da vida real, especialmente em grande escala, frequentemente têm
-amostragem baseada em cabeçalho configurada. Techos não amostrados são baratos e
-você pode verificar se o trecho está gravando, para evitar alocações extras e
-cálculos potencialmente caros, enquanto preenche atributos.
+Aplicações reais, especialmente em grande escala, frequentemente têm amostragem
+baseada em cabeçalho configurada. Techos não amostrados são baratos e você pode
+verificar se o trecho está gravando, para evitar alocações extras e cálculos
+potencialmente caros, enquanto preenche atributos. O exemplo a seguir em Java
+mostra como fornecer atributos para amostragem e verificar a gravação do trecho.
 
 ```java
 // alguns atributos são importantes para a amostragem e devem ser fornecidos no momento da criação
@@ -393,26 +409,26 @@ if (span.isRecording()) {
 }
 ```
 
-### Tratamento de Erros
+### Tratamento de Erros {#error-handling}
 
-A API do OpenTelemetry é
-[tolerante em tempo de execução](/docs/specs/otel/error-handling/#basic-error-handling-principles)
-– não falha em argumentos inválidos, nunca lança exceções, e as elimina. Dessa
-forma, problemas de instrumentação não afetam a lógica da aplicação. Teste a
-instrumentação para identificar problemas que o OpenTelemetry pode esconder em
-tempo de execução.
+A API do OpenTelemetry não falha em argumentos inválidos, nunca lança exceções e
+suprime erros, o que significa que é
+[tolerante em tempo de execução](/docs/specs/otel/error-handling/#basic-error-handling-principles).
+Dessa forma, problemas de instrumentação não afetam a lógica da aplicação. Teste
+a instrumentação para identificar problemas que o OpenTelemetry oculta em tempo
+de execução.
 
-### Testes
+### Testes {#testing}
 
-Como o OpenTelemetry oferece uma variedade de auto-instrumentações, é útil
-verificar como a sua instrumentação interage com outras telemetrias:
-solicitações de entrada, solicitações de saída, logs, etc. Use uma aplicação
-típica, com frameworks e bibliotecas populares e com todo o rastreamento ativado
-ao testar sua instrumentação. Verifique como bibliotecas semelhantes à sua são
+Como o OpenTelemetry oferece uma variedade de autoinstrumentações, experimente
+como a sua instrumentação interage com outras telemetrias: requisições de
+entrada, requisições de saída, logs, entre outros. Utilize uma aplicação típica,
+com _frameworks_ e bibliotecas populares e com todo o rastreamento habilitado ao
+testar sua instrumentação. Verifique como bibliotecas semelhantes à sua são
 exibidas.
 
 Para testes unitários, você geralmente pode simular ou criar versões fictícias
-de `SpanProcessor` e `SpanExporter`.
+de `SpanProcessor` e `SpanExporter`, como mostra o exemplo Java a seguir:
 
 ```java
 @Test
@@ -443,5 +459,3 @@ class TestExporter implements SpanExporter {
 [bibliotecas de instrumentação]:
   /docs/specs/otel/overview/#instrumentation-libraries
 [span events]: /docs/specs/otel/trace/api/#add-events
-[estáveis, mas sujeitas à evolução]:
-  /docs/specs/otel/versioning-and-stability/#semantic-conventions-stability
