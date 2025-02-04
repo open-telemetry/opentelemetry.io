@@ -3,8 +3,7 @@ title: Auto-Instrumentation Example
 linkTitle: Example
 weight: 20
 aliases: [/docs/languages/python/automatic/example]
-# prettier-ignore
-cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette uninstrumented venv werkzeug
+cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette venv
 ---
 
 This page demonstrates how to use Python auto-instrumentation in OpenTelemetry.

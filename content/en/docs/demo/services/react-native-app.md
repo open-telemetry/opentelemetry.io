@@ -1,6 +1,5 @@
 ---
 title: React Native App
-cSpell:ignore: typeof
 ---
 
 The React Native app provides a mobile UI for users on Android and iOS devices

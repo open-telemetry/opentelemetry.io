@@ -1,7 +1,7 @@
 ---
 title: Architecture
 weight: 28
-cSpell:ignore: fanoutconsumer probabilisticsampler spanmetrics zpages
+cSpell:ignore: fanoutconsumer probabilisticsampler zpages
 ---
 
 The OpenTelemetry Collector is an executable file that can receive telemetry,

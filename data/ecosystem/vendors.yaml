@@ -55,7 +55,7 @@
 - name: Causely
   distribution: false
   nativeOTLP: true
-  url: https://github.com/Causely/documentation
+  url: https://www.causely.ai/blog/using-opentelemetry-and-the-otel-collector-for-logs-metrics-and-traces
   contact: support@causely.io
   oss: false
   commercial: true
@@ -68,7 +68,7 @@
 - name: Chronosphere
   distribution: false
   nativeOTLP: true
-  url: https://docs.chronosphere.io/ingest/otel/otel-ingest
+  url: https://docs.chronosphere.io/ingest/
   contact: support@chronosphere.io
   oss: false
   commercial: true
@@ -314,7 +314,7 @@
   commercial: true
 - name: Red Hat
   nativeOTLP: true
-  url: https://docs.openshift.com/container-platform/4.14/otel/otel-release-notes.html
+  url: https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/red_hat_build_of_opentelemetry/
   contact: ploffay@redhat.com
   oss: true
   commercial: true
