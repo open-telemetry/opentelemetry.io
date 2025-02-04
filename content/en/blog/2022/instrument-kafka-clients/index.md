@@ -11,7 +11,7 @@ system in a distributed environment. Different services communicate with each
 other by using Apache Kafka as a messaging system but even more as en event or
 data streaming platform.
 
-Taking into account the cloud-native approach for developing microservices,
+Taking into account the cloud native approach for developing microservices,
 quite often [Kubernetes](https://kubernetes.io/) is also used to run the
 workloads. In this scenario, you can also easily deploy and manage an Apache
 Kafka cluster on top of it, by using a project like

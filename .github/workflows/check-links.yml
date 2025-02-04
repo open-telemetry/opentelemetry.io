@@ -104,7 +104,9 @@ jobs:
       - name: Fail when refcache contains entries with HTTP status 4XX
         run: |
           if grep -B 1 -e '"StatusCode": 4' static/refcache.json; then
-            echo "Run 'npx gulp prune' to remove 4xx entries from the refcache"
+            echo "Run 'npm run _refcache:prune' to remove 404 entries from refcache.json,"
+            echo "or run './scripts/double-check-refcache-400s.mjs' locally to address"
+            echo "other 400-status entries."
             exit 1
           fi
       - name: Does the refcache need updating?

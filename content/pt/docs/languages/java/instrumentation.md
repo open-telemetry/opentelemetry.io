@@ -9,7 +9,7 @@ aliases:
 weight: 10
 description: Ecossistema de Instrumentação no OpenTelemetry Java
 default_lang_commit: d65798034935fcfdbdc6599b6e6d3dd942fbe62c
-cSpell:ignore: Logback logback
+cSpell:ignore: logback
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->

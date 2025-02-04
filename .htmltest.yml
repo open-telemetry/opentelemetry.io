@@ -55,11 +55,14 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   # Ignore Docsy-generated GitHub links for now, until
   # https://github.com/google/docsy/issues/1432 is fixed
   - ^https?://github\.com/.*?/.*?/(new|edit|issues/new\?title)/ # view-page, edit-source etc
-  # Here's an approximate regex to avoid the "View page source" links. TODO: fix this in Docsy
-  - ^https?://github\.com/open-telemetry/opentelemetry.io/tree/
-  # FIXME: A patch until we can get Docsy to mark "View page source" links as excluded from link checking,
-  # Actually, it would be better to pin the version of the OTel spec.
-  - ^https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/logs/event-(api|sdk)\.md
+  # Ignore "View page source" links, except for spec pages, i.e., links starting with
+  # https://github.com/open-telemetry/opentelemetry.io/tree/main/content/en/docs/specs
+  - ^https://github\.com/open-telemetry/opentelemetry.io/tree/main/content/[^e]
+  - ^https://github\.com/open-telemetry/opentelemetry.io/tree/main/content/es
+  - ^https://github\.com/open-telemetry/opentelemetry.io/tree/main/content/en/.*?/_index.md$
+  - ^https://github\.com/open-telemetry/opentelemetry.io/tree/main/content/en/[^d]
+  - ^https://github\.com/open-telemetry/opentelemetry.io/tree/main/content/en/docs/[^s]
+  - ^https://github\.com/open-telemetry/opentelemetry.io/tree/main/content/en/docs/security
   # FIXME: same issue as for the OTel spec mentioned above:
   - ^https://github.com/open-telemetry/semantic-conventions/tree/main
 
@@ -67,8 +70,6 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   # e.g.: https://www.microsoft.com/en-ca/sql-server.
   - ^https://www.microsoft.com/sql-server$
 
-  # TODO: drop after fix to https://github.com/rust-lang/crates.io/issues/788
-  - ^https://crates\.io/crates
   # TODO move into content/en/blog/2023/humans-of-otel.md once https://github.com/open-telemetry/opentelemetry.io/issues/3889 is implemented
   - ^https://shorturl.at/osHRX$
   # TODO move into content/en/blog/2023/contributing-to-otel/index.md once https://github.com/open-telemetry/opentelemetry.io/issues/3889 is implemented
