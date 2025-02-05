@@ -112,8 +112,9 @@ that our Kafka installation is working as expected.
 
 The metrics can be exported by any of the supported metric exporters, to a
 backend of your choice. For the full list of exporters and their configuration
-options, see [Configure the SDK](/docs/languages/java/configuration/). For
-instance, you can export the metrics to an OTel collector using the OTLP
+options, see
+[Configure the SDK](/docs/languages/java/configuration/#properties-exporters).
+For instance, you can export the metrics to an OTel collector using the OTLP
 exporter, perform some processing and then consume the metrics on a backend of
 your choice. In this example for the sake of simplicity, we are directly
 exporting the metrics to Prometheus.

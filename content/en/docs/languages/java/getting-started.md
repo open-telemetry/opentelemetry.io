@@ -261,7 +261,7 @@ For more:
 [annotations]: /docs/zero-code/java/agent/annotations/
 [configure the java agent]: /docs/zero-code/java/agent/configuration/
 [console exporter]: /docs/languages/java/configuration/
-[exporter]: /docs/languages/java/configuration/
+[exporter]: /docs/languages/java/configuration/#properties-exporters
 [java-vers]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#language-version-compatibility
 [manual instrumentation]: ../instrumentation
