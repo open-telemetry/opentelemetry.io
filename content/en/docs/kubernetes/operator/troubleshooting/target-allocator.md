@@ -329,7 +329,7 @@ See the full `OpenTelemetryCollector`
 ### Did you configure a ServiceMonitor (or PodMonitor) selector?
 
 If you configured a
-[`ServiceMonitor`](https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/#:~:text=The%20ServiceMonitor%20is%20used%20to,build%20the%20required%20Prometheus%20configuration.)
+[`ServiceMonitor`](https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/)
 selector, it means that the Target Allocator only looks for `ServiceMonitors`
 having a `metadata.label` that matches the value in
 [`serviceMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr-1).

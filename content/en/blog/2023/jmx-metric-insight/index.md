@@ -111,10 +111,9 @@ that our Kafka installation is working as expected.
 ### Export metrics to Prometheus
 
 The metrics can be exported by any of the supported metric exporters, to a
-backend of your choice. The full list of exporters and their configuration
-options can be found
-[here](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#exporters).
-For instance, you can export the metrics to an OTel collector using the OTLP
+backend of your choice. For the full list of exporters and their configuration
+options, see [Configure the SDK](/docs/languages/java/configuration/). For
+instance, you can export the metrics to an OTel collector using the OTLP
 exporter, perform some processing and then consume the metrics on a backend of
 your choice. In this example for the sake of simplicity, we are directly
 exporting the metrics to Prometheus.
