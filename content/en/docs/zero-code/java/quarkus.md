@@ -17,12 +17,13 @@ provides:
 - Out of the box instrumentation
 - OpenTelemetry SDK autoconfiguration, supporting almost all system properties
   defined for the
-  [OpenTelemetry SDK](https://opentelemetry.io/docs/languages/java/configuration/)
+  [OpenTelemetry SDK](/docs/languages/java/configuration/)
 - [Vert.x](https://vertx.io/) based OTLP exporter
-- The same instrumentations can be used with JVM and native image applications, where the OpenTelemetry Java agent doesn't work.
+- The same instrumentations can be used with native image applications,
+  which are not supported by the OpenTelemetry Java agent.
 
-Quarkus can also be instrumented with the
-[OpenTelemetry Java agent](../agent/) but only with a JVM.
+Quarkus can also be instrumented with the [OpenTelemetry Java agent](../agent/)
+if you are not running a native image application.
 
 ## Getting started
 
@@ -59,13 +60,6 @@ OpenTelemetry logging is available after Quarkus 3.16.0.
 
 The remaining configurations are available in the
 [Quarkus OpenTelemetry configuration reference](https://quarkus.io/guides/opentelemetry#configuration-reference).
-
-{{% alert title="Note" color="info" %}}
-
-You can also use the [Java agent](../../agent) to instrument your Quarkus
-application in a JVM.
-
-{{% /alert %}}
 
 ## Additional Documentation
 
