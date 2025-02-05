@@ -3,9 +3,9 @@ title: Observing Lambdas using the OpenTelemetry Collector Extension Layer
 author: '[Dominik Süß](https://github.com/theSuess) (Grafana)'
 linkTitle: Observing Lambdas
 date: 2025-02-05
-cSpell:ignore: Dominik
 sig: FaaS
 issue: 5961
+cSpell:ignore: Dominik
 ---
 
 Getting telemetry data out of modern applications is very straightforward (or at
@@ -78,25 +78,24 @@ need to be configured. As an example, the configuration shown next receives
 traces and logs from the Telemetry API and sends them to another endpoint.
 
 ```yaml
-
 receivers:
- telemetryapi:
+  telemetryapi:
 exporters:
- otlphttp/external:
-   endpoint: "external-collector:4318"
+  otlphttp/external:
+    endpoint: 'external-collector:4318'
 processors:
- batch:
- decouple:
+  batch:
+  decouple:
 service:
- pipelines:
-   traces:
- 	receivers: [telemetryapi]
- 	processors: [batch,decouple]
- 	exporters: [otlphttp/external]
-   logs:
- 	receivers: [telemetryapi]
- 	processors: [batch,decouple]
- 	exporters: [otlphttp/external]
+  pipelines:
+    traces:
+      receivers: [telemetryapi]
+      processors: [batch, decouple]
+      exporters: [otlphttp/external]
+    logs:
+      receivers: [telemetryapi]
+      processors: [batch, decouple]
+      exporters: [otlphttp/external]
 ```
 
 The `decouple` processor is configured by default if omitted. It is explicitly
@@ -116,9 +115,10 @@ function logs appear! You can see this in action in the video below.
 
 Every log line your Lambda produces will be sent to the `external-collector`
 endpoint specified. You don't need to modify the code at all! From there,
-telemetry data flows to your backend as usual. Since the transmission of telemetry
-data might be frozen when the lambda is not active, logs can arrive delayed.
-They'll either arrive during the next execution or during the shutdown interval.
+telemetry data flows to your backend as usual. Since the transmission of
+telemetry data might be frozen when the lambda is not active, logs can arrive
+delayed. They'll either arrive during the next execution or during the shutdown
+interval.
 
 If you want further insight into your applications, also see the
 [language specific auto instrumentation layers](https://github.com/open-telemetry/opentelemetry-lambda/?tab=readme-ov-file#extension-layer-language-support).
