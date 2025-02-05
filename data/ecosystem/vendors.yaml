@@ -30,7 +30,7 @@
   commercial: true
 - name: OpenSearch
   nativeOTLP: true
-  url: https://opensearch-project.github.io
+  url: https://github.com/opensearch-project/OpenSearch
   contact: opensearch@amazon.com
   oss: true
   commercial: false
