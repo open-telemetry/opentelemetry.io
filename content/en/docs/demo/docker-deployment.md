@@ -2,7 +2,7 @@
 title: Docker deployment
 linkTitle: Docker
 aliases: [docker_deployment]
-cSpell:ignore: otelcollector otlphttp spanmetrics tracetest tracetesting
+cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
 ---
 
 <!-- markdownlint-disable code-block-style ol-prefix -->
@@ -109,7 +109,7 @@ configuration from two files:
 - `otelcol-config-extras.yml`
 
 To add your backend, open the file
-[src/otelcollector/otelcol-config-extras.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otelcollector/otelcol-config-extras.yml)
+[src/otel-collector/otelcol-config-extras.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config-extras.yml)
 with an editor.
 
 - Start by adding a new exporter. For example, if your backend supports OTLP

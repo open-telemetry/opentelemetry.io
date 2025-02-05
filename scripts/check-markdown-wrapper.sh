@@ -13,4 +13,4 @@ for symlink_target in $symlink_targets; do
 done
 
 set -x
-exec npm run _check:markdown "$@"
+exec npm run _check:markdown -- "$@"

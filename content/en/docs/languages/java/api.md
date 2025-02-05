@@ -912,8 +912,7 @@ The instrument APIs have share a variety of features:
 - Record values which are `long` or `double`, which is configured via the
   builder.
 
-See
-[metric guidelines](http://localhost:1313/docs/specs/semconv/general/metrics/#general-guidelines)
+See [metric guidelines](/docs/specs/semconv/general/metrics/#general-guidelines)
 for details on metric naming and units.
 
 See

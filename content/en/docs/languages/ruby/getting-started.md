@@ -3,8 +3,7 @@ title: Getting Started
 description: Get telemetry from your app in less than 5 minutes!
 aliases: [getting_started]
 weight: 10
-# prettier-ignore
-cSpell:ignore: darwin rolldice sinatra struct Tracestate tracestate truffleruby
+cSpell:ignore: darwin rolldice sinatra struct tracestate truffleruby
 ---
 
 This page will show you how to get started with OpenTelemetry in Ruby.

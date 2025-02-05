@@ -2,8 +2,8 @@
 title: Observability入門
 description: 重要なオブザーバビリティに関する概念
 weight: 9
-cSpell:ignore: webshop
 default_lang_commit: ebd92bb
+cSpell:ignore: webshop
 ---
 
 ## オブザーバビリティとは何か {#what-is-observability}

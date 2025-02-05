@@ -3,7 +3,7 @@ title: Introducing the new container log parser for OpenTelemetry Collector
 linkTitle: Collector container log parser
 date: 2024-05-22
 author: '[Christos Markou](https://github.com/ChrsMark) (Elastic)'
-cSpell:ignore: Christos containerd Filelog filelog Jaglowski kube Markou
+cSpell:ignore: Christos containerd filelog Jaglowski kube Markou
 ---
 
 [Filelog receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver)

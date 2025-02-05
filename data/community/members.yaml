@@ -955,6 +955,7 @@ maintainers:
       - dotnet-instrumentation-approvers
       - dotnet-instrumentation-maintainers
       - dotnet-instrumentation-triagers
+      - dotnet-maintainers
       - dotnet-triagers
     html_url: https://github.com/rajkumar-rangaraj
     avatar_url: https://avatars.githubusercontent.com/u/9479006?v=4
@@ -1492,6 +1493,11 @@ approvers:
       - specs-trace-approvers
     html_url: https://github.com/iNikem
     avatar_url: https://avatars.githubusercontent.com/u/3010154?v=4
+  - name: jackgopack4
+    teams:
+      - collector-releases-approvers
+    html_url: https://github.com/jackgopack4
+    avatar_url: https://avatars.githubusercontent.com/u/6229304?v=4
   - name: JaredTan95
     teams:
       - collector-contrib-triagers
@@ -1613,6 +1619,11 @@ approvers:
       - php-triagers
     html_url: https://github.com/morrisonlevi
     avatar_url: https://avatars.githubusercontent.com/u/253316?v=4
+  - name: mowies
+    teams:
+      - collector-releases-approvers
+    html_url: https://github.com/mowies
+    avatar_url: https://avatars.githubusercontent.com/u/6901203?v=4
   - name: mtwo
     teams:
       - blog-approvers
@@ -1845,6 +1856,11 @@ approvers:
     html_url: https://github.com/zsistla
     avatar_url: https://avatars.githubusercontent.com/u/43715151?v=4
 triagers:
+  - name: abhee11
+    teams:
+      - javascript-contrib-triagers
+    html_url: https://github.com/abhee11
+    avatar_url: https://avatars.githubusercontent.com/u/6670495?v=4
   - name: anosek-an
     teams:
       - java-contrib-triagers
@@ -1860,6 +1876,11 @@ triagers:
       - java-contrib-triagers
     html_url: https://github.com/cyrille-leclerc
     avatar_url: https://avatars.githubusercontent.com/u/459691?v=4
+  - name: d4nyll
+    teams:
+      - javascript-contrib-triagers
+    html_url: https://github.com/d4nyll
+    avatar_url: https://avatars.githubusercontent.com/u/9997953?v=4
   - name: dehaansa
     teams:
       - java-contrib-triagers
@@ -2278,9 +2299,6 @@ members:
   - name: moonheart
     html_url: https://github.com/moonheart
     avatar_url: https://avatars.githubusercontent.com/u/15916990?v=4
-  - name: mowies
-    html_url: https://github.com/mowies
-    avatar_url: https://avatars.githubusercontent.com/u/6901203?v=4
   - name: mterhar
     html_url: https://github.com/mterhar
     avatar_url: https://avatars.githubusercontent.com/u/938684?v=4
@@ -2332,6 +2350,9 @@ members:
   - name: ppittle
     html_url: https://github.com/ppittle
     avatar_url: https://avatars.githubusercontent.com/u/1190907?v=4
+  - name: raphael-theriault-swi
+    html_url: https://github.com/raphael-theriault-swi
+    avatar_url: https://avatars.githubusercontent.com/u/113933910?v=4
   - name: rauno56
     html_url: https://github.com/rauno56
     avatar_url: https://avatars.githubusercontent.com/u/1334536?v=4
