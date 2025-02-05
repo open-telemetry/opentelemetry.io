@@ -102,7 +102,7 @@ service:
 The `decouple` processor is configured by default if omitted. It is explicitly
 added in this example to illustrate the entire pipeline. For more information,
 see
-[Auto-configuration](https://github.com/open-telemetry/opentelemetry-lambda/tree/main/collector#auto-configuration).
+[Autoconfiguration](https://github.com/open-telemetry/opentelemetry-lambda/tree/main/collector#auto-configuration).
 
 Afterward, set the `OPENTELEMETRY_COLLECTOR_CONFIG_URI` environment variable to
 `/var/task/collector.yaml`. Once the function is redeployed, you’ll see your
