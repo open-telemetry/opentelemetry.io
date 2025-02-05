@@ -999,9 +999,17 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:13:03.593647-05:00"
   },
+  "https://docs.aws.amazon.com/lambda/latest/dg/runtimes-extensions-api.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-24T22:43:02.419614644Z"
+  },
   "https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html": {
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:54:20.250322-05:00"
+  },
+  "https://docs.aws.amazon.com/lambda/latest/dg/telemetry-api.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-24T22:43:04.492478898Z"
   },
   "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html": {
     "StatusCode": 206,
@@ -1810,6 +1818,10 @@
   "https://embrace.io/docs/open-telemetry/integration/#apple": {
     "StatusCode": 206,
     "LastSeen": "2024-11-02T22:02:37.069605183Z"
+  },
+  "https://embrace.io/docs/open-telemetry/integration/#react-native": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-04T15:55:54.537917328Z"
   },
   "https://embrace.io/opentelemetry-for-mobile/": {
     "StatusCode": 206,
@@ -3510,6 +3522,10 @@
   "https://github.com/embrace-io/embrace-apple-sdk": {
     "StatusCode": 200,
     "LastSeen": "2024-11-02T22:02:35.245741377Z"
+  },
+  "https://github.com/embrace-io/embrace-react-native-sdk": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-04T15:55:51.560154052Z"
   },
   "https://github.com/emdneto": {
     "StatusCode": 206,
@@ -8395,9 +8411,25 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:25.504793-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-lambda/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-04T12:41:09.851793718Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-lambda/blob/main/collector/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-24T22:43:01.001644641Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-lambda/releases": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:58:45.265975-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-lambda/releases/tag/layer-collector%2F0.12.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-24T22:43:07.062401954Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-lambda/tree/main/collector#auto-configuration": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-04T12:41:05.846247381Z"
   },
   "https://github.com/open-telemetry/opentelemetry-operator": {
     "StatusCode": 206,
@@ -12114,6 +12146,10 @@
   "https://github.com/thanos-io": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:24:50.885838-05:00"
+  },
+  "https://github.com/theSuess": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-04T12:41:01.062302518Z"
   },
   "https://github.com/theletterf": {
     "StatusCode": 206,
