@@ -10,6 +10,14 @@ configure it to help you
 [monitor](#use-internal-telemetry-to-monitor-the-collector) and
 [troubleshoot](/docs/collector/troubleshooting/) the Collector.
 
+{{% alert title="Important" color="warning" %}}
+The Collector uses the OpenTelemetry SDK [declarative configuration schema](https://github.com/open-telemetry/opentelemetry-configuration) for configuring how to export its internal telemetry.
+
+This schema is not currently stable and may undergo breaking changes in future releases.
+We intend to keep supporting older schemas until a 1.0 schema release is available, and offer a transition period for users to update their configurations before dropping pre-1.0 schemas.
+{{% /alert %}}
+
+
 ## Activate internal telemetry in the Collector
 
 By default, the Collector exposes its own telemetry in two ways:
