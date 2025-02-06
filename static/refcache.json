@@ -375,10 +375,6 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:46:12.856737-04:00"
   },
-  "https://cloud.google.com/apis/design/resource_names#full_resource_name": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-06T01:59:59.999Z"
-  },
   "https://cloud.google.com/appengine/docs/flexible/go/using-websockets-and-session-affinity": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:47:49.544888-04:00"
