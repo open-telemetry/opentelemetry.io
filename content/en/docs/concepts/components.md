@@ -136,4 +136,4 @@ provides pre-built Lambda layers able to auto-instrument your application as
 well as the option of a standalone Collector Lambda layer that can be used when
 instrumenting applications manually or automatically.
 
-For more information, see [Functions as a Service](/docs/faas/).
+For more information, see [Functions as a Service](/docs/platforms/faas/).

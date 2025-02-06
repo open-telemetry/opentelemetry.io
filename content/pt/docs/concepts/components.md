@@ -140,4 +140,4 @@ instrumentação sem código na sua aplicação, bem como a opção de uma camad
 Lambda do Coletor independente, que pode ser usada ao instrumentar aplicações
 manualmente ou automaticamente.
 
-Para mais informações, consulte [Função como Serviço](/docs/faas/).
+Para mais informações, consulte [Função como Serviço](/docs/platforms/faas/).

@@ -82,7 +82,7 @@ OpenTelemetry consta de los siguientes componentes principales:
 - Numerosas herramientas, como el
   [OpenTelemetry Operator para Kubernetes](/docs/kubernetes/operator/),
   [OpenTelemetry Helm Charts](/docs/kubernetes/helm/) y
-  [recursos para la comunidad para FaaS](/docs/faas/).
+  [recursos para la comunidad para FaaS](/docs/platforms/faas/).
 
 OpenTelemetry es utilizado por una amplia variedad de
 [librerías, servicios y aplicaciones](/ecosystem/integrations/) que integran

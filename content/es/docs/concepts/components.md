@@ -143,4 +143,4 @@ auto-instrumentar tu aplicación, así como la opción de una capa Lambda de
 Collector independiente que puede usarse al instrumentar aplicaciones manual o
 automáticamente.
 
-Para más información, consulta [Funciones como Servicio](/docs/faas/).
+Para más información, consulta [Funciones como Servicio](/docs/platforms/faas/).

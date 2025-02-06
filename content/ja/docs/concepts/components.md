@@ -106,4 +106,4 @@ OpenTelemetryオペレーターはKubernetesオペレーターの実装です。
 OpenTelemetryは、さまざまなクラウドベンダーが提供する Function-as-a-Service を監視するさまざまな方法をサポートしています。
 OpenTelemetryコミュニティは、現在、アプリケーションを自動計装できるビルド済みのLambdaレイヤーと、アプリケーションを手動または自動で計装する際に使用できるスタンドアロンのコレクターLambdaレイヤーのオプションを提供しています。
 
-詳細は、[Functions as a Service](/docs/faas/)のページを参照してください。
+詳細は、[Functions as a Service](/docs/platforms/faas/)のページを参照してください。

@@ -55,7 +55,7 @@ OpenTelemetry 包括以下主要组件：
 - 各种其他工具，
   如[用于 Kubernetes 的 OpenTelemetry Operator](/docs/kubernetes/operator/)、
   [OpenTelemetry Helm Charts](/docs/kubernetes/helm/) 和
-  [FaaS 的社区资产](/docs/faas/)
+  [FaaS 的社区资产](/docs/platforms/faas/)
 
 OpenTelemetry 广泛应用于许多已集成 OpenTelemetry
 提供默认可观测性的[库、服务和应用](/ecosystem/integrations/)。
