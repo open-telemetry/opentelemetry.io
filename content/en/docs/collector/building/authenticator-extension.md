@@ -29,21 +29,15 @@ room at the [CNCF Slack workspace](https://slack.cncf.io).
 
 ## Architecture
 
-Authenticators are regular extensions that also satisfy one or more interfaces
-related to the authentication mechanism:
-
-- [go.opentelemetry.io/collector/config/configauth/ServerAuthenticator](https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#ServerAuthenticator)
-- [go.opentelemetry.io/collector/config/configauth/GRPCClientAuthenticator](https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#GRPCClientAuthenticator)
-- [go.opentelemetry.io/collector/config/configauth/HTTPClientAuthenticator](https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#HTTPClientAuthenticator)
-
-Server authenticators are used with receivers, and are able to intercept HTTP
-and gRPC requests, while client authenticators are used with exporters, able to
-add authentication data to HTTP and gRPC requests. It is possible for
-authenticators to implement both interfaces at the same time, allowing a single
-instance of the extension to be used both for the incoming and outgoing
-requests. Note that users might still want to have different authenticators for
-the incoming and outgoing requests, so, don't make your authenticator required
-to be used at both ends.
+[Authenticators] are regular extensions that also satisfy one or more interfaces
+related to the authentication mechanism. Server authenticators are used with
+receivers, and are able to intercept HTTP and gRPC requests, while client
+authenticators are used with exporters, able to add authentication data to HTTP
+and gRPC requests. It is possible for authenticators to implement both
+interfaces at the same time, allowing a single instance of the extension to be
+used both for the incoming and outgoing requests. Note that users might still
+want to have different authenticators for the incoming and outgoing requests,
+so, don't make your authenticator required to be used at both ends.
 
 Once an authenticator extension is available in the collector distribution, it
 can be referenced in the configuration file as a regular extension:
@@ -170,3 +164,6 @@ as part of their own distributions. Fortunately, building a custom distribution
 can be done using the
 [OpenTelemetry Collector Builder](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder)
 utility.
+
+[Authenticators]:
+  https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth

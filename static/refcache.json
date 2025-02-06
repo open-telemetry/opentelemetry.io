@@ -15099,10 +15099,6 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:27:59.999Z"
   },
-  "https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#ServerAuthenticator": {
-    "StatusCode": 200,
-    "LastSeen": "2025-02-06T02:27:59.999Z"
-  },
   "https://pkg.go.dev/go.opentelemetry.io/collector/confmap/provider/envprovider": {
     "StatusCode": 200,
     "LastSeen": "2024-11-19T13:34:41.905691-05:00"
@@ -15495,6 +15491,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:29:12.345Z"
   },
+  "https://prometheus.io/docs/prometheus/2.55/feature_flags/#otlp-receiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-06T14:42:12.345Z"
+  },
   "https://prometheus.io/docs/prometheus/latest/configuration/configuration/": {
     "StatusCode": 206,
     "LastSeen": "2024-08-09T10:46:59.171526-04:00"
@@ -15562,10 +15562,6 @@
   "https://pypi.org/project/opentelemetry-instrumentation-httpx/": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:09:55.714191-05:00"
-  },
-  "https://qryn.metrico.in/#/support": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-06T02:29:59.999Z"
   },
   "https://quarkus.io": {
     "StatusCode": 206,
