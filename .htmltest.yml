@@ -83,3 +83,10 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://docs.docker.com/registry/spec/manifest-v2-2/#example-image-manifest
   - ^https://www.openssl.org/docs/man1.1.1/man3/SSL_get_version.html#RETURN-VALUES
   - ^https://www.erlang.org/doc/man/erl_error.html#format_exception-3
+
+  # Temporary until
+  # https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth@v0.120.0+
+  # is published to include
+  # https://github.com/open-telemetry/opentelemetry-collector/pull/12309
+  - ^https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#client-authenticators
+  - ^https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#server-authenticators
