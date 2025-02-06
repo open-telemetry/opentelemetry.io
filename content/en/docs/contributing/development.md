@@ -10,8 +10,8 @@ this website.
 
 ## Cloud-IDE setup
 
-These instructions are for [Gitpod.io], adjust as needed for your favorite
-cloud IDE:
+These instructions are for [Gitpod.io], adjust as needed for your favorite cloud
+IDE:
 
 1.  Fork this repository. For help, see [Fork a repository][fork].
 2.  From [gitpod.io/workspaces], create a new workspace (do this only once) or
