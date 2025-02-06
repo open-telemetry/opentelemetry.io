@@ -230,7 +230,7 @@ For an example of Docker container instrumentation, see
 on GitHub.
 
 You can also use the
-[OpenTelemetry Operator for Kubernetes](/docs/kubernetes/operator/).
+[OpenTelemetry Operator for Kubernetes](/docs/platforms/kubernetes/operator/).
 
 ## Configuring the agent
 

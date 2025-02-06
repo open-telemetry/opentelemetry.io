@@ -9,7 +9,7 @@ cSpell:ignore: k8sattributes k8sattributesprocessor k8sprocessor KUBE replicaset
 
 {{% alert title="Note" color="info" %}} The most up to date information for how
 to enhance telemetry with Kubernetes metadata can be found in the docs. See
-[Getting Started with Kubernetes](/docs/kubernetes/getting-started/) for more
+[Getting Started with Kubernetes](/docs/platforms/kubernetes/getting-started/) for more
 info. {{% /alert %}}
 
 Attaching Kubernetes resource metadata to OpenTelemetry traces is useful to

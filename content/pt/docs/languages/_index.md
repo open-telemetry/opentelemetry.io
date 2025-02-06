@@ -55,6 +55,6 @@ A lista acima é um alias para [`/api`](/api).
 
 {{% /alert %}}
 
-[implementação automática]: /docs/kubernetes/operator/automatic/
+[implementação automática]: /docs/platforms/kubernetes/operator/automatic/
 [instrumentação]: /docs/concepts/instrumentation/
-[otel-op]: /docs/kubernetes/operator/
+[otel-op]: /docs/platforms/kubernetes/operator/

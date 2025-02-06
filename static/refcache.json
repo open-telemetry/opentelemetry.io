@@ -375,10 +375,6 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:46:12.856737-04:00"
   },
-  "https://cloud.google.com/apis/design/resource_names#full_resource_name": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-06T01:59:59.999Z"
-  },
   "https://cloud.google.com/appengine/docs/flexible/go/using-websockets-and-session-affinity": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:47:49.544888-04:00"
@@ -406,10 +402,6 @@
   "https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.events/report": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T10:58:53.703278-05:00"
-  },
-  "https://cloud.google.com/functions/docs/concepts/exec#function_scope_versus_global_scope": {
-    "StatusCode": 200,
-    "LastSeen": "2025-02-06T02:02:59.999Z"
   },
   "https://cloud.google.com/functions/docs/env-var#runtime_environment_variables_set_automatically": {
     "StatusCode": 200,
@@ -758,10 +750,6 @@
   "https://developer.android.com/training/articles/user-data-ids": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:23:41.892135-05:00"
-  },
-  "https://developer.apple.com/documentation/uikit/uiapplicationdelegate#1656902": {
-    "StatusCode": 200,
-    "LastSeen": "2025-02-06T02:04:59.999Z"
   },
   "https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor": {
     "StatusCode": 200,
@@ -1130,10 +1118,6 @@
   "https://docs.docker.com/engine/containers/run/#container-identification": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:05:12.345Z"
-  },
-  "https://docs.docker.com/registry/spec/manifest-v2-2/#example-image-manifest": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-06T02:05:59.999Z"
   },
   "https://docs.expo.dev/get-started/introduction/": {
     "StatusCode": 206,
