@@ -74,8 +74,6 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://shorturl.at/osHRX$
   # TODO move into content/en/blog/2023/contributing-to-otel/index.md once https://github.com/open-telemetry/opentelemetry.io/issues/3889 is implemented
   - ^https://shorturl.at/vLYZ0$
-  # Vendor-specific links
-  - ^https://qryn.metrico.in/#/support # SPA with query parameters, which htmltest omits from the cache, so we can't check it.
 
   # Temporary until semconv is updated to 1.30.0+
   - ^https://cloud.google.com/apis/design/resource_names#full_resource_name
