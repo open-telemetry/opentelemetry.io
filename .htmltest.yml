@@ -75,9 +75,5 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   # TODO move into content/en/blog/2023/contributing-to-otel/index.md once https://github.com/open-telemetry/opentelemetry.io/issues/3889 is implemented
   - ^https://shorturl.at/vLYZ0$
 
-  # Temporary during IA rework
-  # https://github.com/open-telemetry/opentelemetry.io/issues/6222
-  - ^../../(helm|operator)\b # es/docs/kubernetes/collector/components/index.html
-
   # Temporary until semconv is updated to 1.30.0+
   - ^https://cloud.google.com/apis/design/resource_names#full_resource_name
