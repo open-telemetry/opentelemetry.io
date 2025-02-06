@@ -8423,34 +8423,6 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:15:12.345Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentation": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-06T02:15:59.999Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opampbridge": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-06T02:15:59.999Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-06T02:15:59.999Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector-1": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-06T02:15:59.999Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocator": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-06T02:15:59.999Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-06T02:15:59.999Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr-1": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-06T02:15:59.999Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-operator/issues/1393": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:16.782675-05:00"
