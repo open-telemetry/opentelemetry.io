@@ -170,8 +170,8 @@ This feature is disabled by default. It has the following requirements in order
 to be safely enabled:
 
 - It requires the
-  [Filelog receiver](/docs/platforms/kubernetes/collector/components/#filelog-receiver) be
-  included in the Collector image, such as the
+  [Filelog receiver](/docs/platforms/kubernetes/collector/components/#filelog-receiver)
+  be included in the Collector image, such as the
   [Contrib distribution of the Collector](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib).
 - Although not a strict requirement, it is recommended this preset be used with
   `mode=daemonset`. The `filelogreceiver` will only be able to collect logs on

@@ -3,10 +3,11 @@ title: Auto-instrumentation
 cSpell:ignore: PYTHONPATH
 ---
 
-If you're using the [OpenTelemetry Operator](/docs/platforms/kubernetes/operator)'s
-capability to inject [auto-instrumentation](/docs/platforms/kubernetes/operator/automatic)
-and you're not seeing any traces or metrics, follow these troubleshooting steps
-to understand what’s going on.
+If you're using the
+[OpenTelemetry Operator](/docs/platforms/kubernetes/operator)'s capability to
+inject [auto-instrumentation](/docs/platforms/kubernetes/operator/automatic) and
+you're not seeing any traces or metrics, follow these troubleshooting steps to
+understand what’s going on.
 
 ## Troubleshooting steps
 
