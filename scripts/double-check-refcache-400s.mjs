@@ -91,7 +91,7 @@ async function retry400sAndUpdateCache() {
       console.log(
         `Skipping ${StatusCode}: ${url} (last seen ${lastSeenDate.toLocaleString()}).`,
       );
-      if(parsedUrl.hash) urlWithInvalidFragCount++;
+      if (parsedUrl.hash) urlWithInvalidFragCount++;
       continue;
     }
 
