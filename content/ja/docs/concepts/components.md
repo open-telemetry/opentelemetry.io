@@ -99,7 +99,7 @@ OpenTelemetryの各言語固有の実装は、いくつかの[ヘッドサンプ
 OpenTelemetryオペレーターはKubernetesオペレーターの実装です。
 オペレーターはOpenTelemetryコレクターを管理し、OpenTelemetryを使用してワークロードの自動計装を行います。
 
-詳細は、[K8sオペレーター](/docs/kubernetes/operator/)のページを参照してください。
+詳細は、[K8sオペレーター](/docs/platforms/kubernetes/operator/)のページを参照してください。
 
 ## Function as a Serviceアセット {#function-as-a-service-assets}
 

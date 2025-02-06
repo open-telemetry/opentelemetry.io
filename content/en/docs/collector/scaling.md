@@ -139,7 +139,7 @@ load balancer. Using a Sidecar also makes sense to avoid bringing down a crucial
 component for all pods in a node when one DaemonSet pod fails.
 
 The sidecar pattern consists in adding a container into the workload pod. The
-[OpenTelemetry Operator](/docs/kubernetes/operator/) can automatically add that
+[OpenTelemetry Operator](/docs/platforms/kubernetes/operator/) can automatically add that
 for you. To accomplish that, you’ll need an OpenTelemetry Collector CR and
 you’ll need to annotate your PodSpec or Pod telling the operator to inject a
 sidecar:
@@ -244,7 +244,7 @@ Collector. For instance, each Collector could be responsible for one Kubernetes
 namespace or specific labels on the workloads.
 
 Another way of scaling the Prometheus receiver is to use the
-[Target Allocator](/docs/kubernetes/operator/target-allocator/): it’s an extra
+[Target Allocator](/docs/platforms/kubernetes/operator/target-allocator/): it’s an extra
 binary that can be deployed as part of the OpenTelemetry Operator and will
 distribute Prometheus scrape targets for a given configuration across the
 cluster of Collectors. You can use a Custom Resource (CR) like the following to

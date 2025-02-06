@@ -4,8 +4,8 @@ cSpell:ignore: bleh targetallocator
 ---
 
 If you’ve enabled
-[Target Allocator](/docs/kubernetes/operator/target-allocator/) service
-discovery on the [OpenTelemetry Operator](/docs/kubernetes/operator/), and the
+[Target Allocator](/docs/platforms/kubernetes/operator/target-allocator/) service
+discovery on the [OpenTelemetry Operator](/docs/platforms/kubernetes/operator/), and the
 Target Allocator is failing to discover scrape targets, there are a few
 troubleshooting steps that you can take to help you understand what’s going on
 and restore normal operation.

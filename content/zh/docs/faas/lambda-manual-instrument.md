@@ -11,7 +11,7 @@ default_lang_commit: 06837fe15457a584f6a9e09579be0f0400593d57
 
 ### 添加 OTel Collector Lambda 层的 ARN
 
-参见 [Collector Lambda 层指导](../lambda-collector/)将层添加到你的应用程序并配置
+参见 [Collector Lambda 层指导](../platforms/faas/lambda-collector/?i18n-patch)将层添加到你的应用程序并配置
 Collector。我们建议首先添加此层。
 
 ### 使用 OTel 插桩 Lambda

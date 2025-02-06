@@ -170,7 +170,7 @@ This feature is disabled by default. It has the following requirements in order
 to be safely enabled:
 
 - It requires the
-  [Filelog receiver](/docs/kubernetes/collector/components/#filelog-receiver) be
+  [Filelog receiver](/docs/platforms/kubernetes/collector/components/#filelog-receiver) be
   included in the Collector image, such as the
   [Contrib distribution of the Collector](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib).
 - Although not a strict requirement, it is recommended this preset be used with
@@ -238,7 +238,7 @@ Due to RBAC considerations, this feature is disabled by default. It has the
 following requirements:
 
 - It requires the
-  [Kubernetes Attributes processor](/docs/kubernetes/collector/components/#kubernetes-attributes-processor)
+  [Kubernetes Attributes processor](/docs/platforms/kubernetes/collector/components/#kubernetes-attributes-processor)
   be included in the Collector image, such as the
   [Contrib distribution of the Collector](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib).
 
@@ -263,7 +263,7 @@ container metrics from the API server on a kubelet.
 This feature is disabled by default. It has the following requirements:
 
 - It requires the
-  [Kubeletstats receiver](/docs/kubernetes/collector/components/#kubeletstats-receiver)
+  [Kubeletstats receiver](/docs/platforms/kubernetes/collector/components/#kubeletstats-receiver)
   be included in the Collector image, such as the
   [Contrib distribution of the Collector](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib).
 - Although not a strict requirement, it is recommended this preset be used with
@@ -293,7 +293,7 @@ collected by Kube State Metrics.
 This feature is disabled by default. It has the following requirements:
 
 - It requires the
-  [Kubernetes Cluster receiver](/docs/kubernetes/collector/components/#kubernetes-cluster-receiver)
+  [Kubernetes Cluster receiver](/docs/platforms/kubernetes/collector/components/#kubernetes-cluster-receiver)
   be included in the Collector image, such as the
   [Contrib distribution of the Collector](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib).
 - Although not a strict requirement, it is recommended this preset be used with
@@ -321,7 +321,7 @@ The OpenTelemetry Collector can be configured to collect Kubernetes events.
 This feature is disabled by default. It has the following requirements:
 
 - It requires the
-  [Kubernetes Objects receiver](/docs/kubernetes/collector/components/#kubernetes-objects-receiver)
+  [Kubernetes Objects receiver](/docs/platforms/kubernetes/collector/components/#kubernetes-objects-receiver)
   be included in the Collector image, such as the
   [Contrib distribution of the Collector](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib).
 - Although not a strict requirement, it is recommended this preset be used with
@@ -351,7 +351,7 @@ Kubernetes nodes.
 This feature is disabled by default. It has the following requirements:
 
 - It requires the
-  [Host Metrics receiver](/docs/kubernetes/collector/components/#host-metrics-receiver)
+  [Host Metrics receiver](/docs/platforms/kubernetes/collector/components/#host-metrics-receiver)
   be included in the Collector image, such as the
   [Contrib distribution of the Collector](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib).
 - Although not a strict requirement, it is recommended this preset be used with

@@ -132,7 +132,7 @@ El Operador de OpenTelemetry es una implementación de un Operador de Kubernetes
 El operador gestiona el Collector de OpenTelemetry y la auto-instrumentación de
 las aplicaciones usando OpenTelemetry.
 
-Para más información, consulta el [Operador K8s](/docs/kubernetes/operator/).
+Para más información, consulta el [Operador K8s](/docs/platforms/kubernetes/operator/).
 
 ## Elementos de Función como Servicio
 

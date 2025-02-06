@@ -100,7 +100,7 @@ OpenTelemetry 的特定语言实现提供了从环境变量 `OTEL_RESOURCE_ATTRI
 OpenTelemetry Operator 是 Kubernetes Operator 的一种实现。
 Operator 管理 OpenTelemetry Collector 以及使用 OpenTelemetry 对工作负载进行自动插桩。
 
-更多信息，请参见 [K8s Operator](/docs/kubernetes/operator/)。
+更多信息，请参见 [K8s Operator](/docs/platforms/kubernetes/operator/)。
 
 ## 函数即服务资产 {#function-as-a-service-assets}
 

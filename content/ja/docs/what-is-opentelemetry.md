@@ -48,7 +48,7 @@ OpenTelemetryは以下の主要コンポーネントで構成されています�
 - 共通ライブラリやフレームワークの計装を実装する[ライブラリエコシステム](/ecosystem/registry)
 - コード変更の必要なくテレメトリーデータを生成する自動計装コンポーネント
 - テレメトリーデータの受信、処理、送信のためのプロキシとなる[OpenTelemetryコレクター](/docs/collector)
-- [OpenTelemetry Operator for Kubernetes](/docs/kubernetes/operator/)、[OpenTelemetry Helm Charts](/docs/kubernetes/helm/)、[FaaS向けコミュニティアセット](/docs/platforms/faas/)といったその他さまざまなツール
+- [OpenTelemetry Operator for Kubernetes](/docs/platforms/kubernetes/operator/)、[OpenTelemetry Helm Charts](/docs/platforms/kubernetes/helm/)、[FaaS向けコミュニティアセット](/docs/platforms/faas/)といったその他さまざまなツール
 
 OpenTelemetryは、デフォルトでオブザーバビリティを提供するために、OpenTelemetryが統合されたさまざまな[ライブラリ、サービス、アプリ](/ecosystem/integrations/)によって使用されています。
 

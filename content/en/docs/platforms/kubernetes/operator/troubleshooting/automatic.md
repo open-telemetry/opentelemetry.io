@@ -3,8 +3,8 @@ title: Auto-instrumentation
 cSpell:ignore: PYTHONPATH
 ---
 
-If you're using the [OpenTelemetry Operator](/docs/kubernetes/operator)'s
-capability to inject [auto-instrumentation](/docs/kubernetes/operator/automatic)
+If you're using the [OpenTelemetry Operator](/docs/platforms/kubernetes/operator)'s
+capability to inject [auto-instrumentation](/docs/platforms/kubernetes/operator/automatic)
 and you're not seeing any traces or metrics, follow these troubleshooting steps
 to understand what’s going on.
 
@@ -322,7 +322,7 @@ namespace of your choosing.
 
 Finally, make sure that you are using the right Collector port. Normally, you
 can choose either `4317` (gRPC) or `4318` (HTTP); however, for
-[Python auto-instrumentation, you can only use `4318`](/docs/kubernetes/operator/automatic/#python).
+[Python auto-instrumentation, you can only use `4318`](/docs/platforms/kubernetes/operator/automatic/#python).
 
 ### Check configuration sources
 

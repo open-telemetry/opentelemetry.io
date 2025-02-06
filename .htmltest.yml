@@ -77,8 +77,6 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
 
   # Temporary during IA rework
   # https://github.com/open-telemetry/opentelemetry.io/issues/6222
-  - (^/docs|..)/(kubernetes)\b
-  - ^../lambda-collector/ # zh/docs/faas/lambda-manual-instrument/index.html
   - ^../../(helm|operator)\b # es/docs/kubernetes/collector/components/index.html
 
   # Temporary until semconv is updated to 1.30.0+

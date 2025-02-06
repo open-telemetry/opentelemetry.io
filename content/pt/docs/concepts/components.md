@@ -129,7 +129,7 @@ gerencia o OpenTelemetry Collector e a instrumentação sem código das cargas d
 trabalho que utilizam OpenTelemetry.
 
 Para mais informações, consulte
-[Kubernetes Operator](/docs/kubernetes/operator/).
+[Kubernetes Operator](/docs/platforms/kubernetes/operator/).
 
 ## Função como Serviço {#function-as-a-service-assets}
 

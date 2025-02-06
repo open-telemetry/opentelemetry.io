@@ -16,6 +16,6 @@ OpenTelemetryが役に立ちます！
 - [OpenTelemetryとは](../../what-is-opentelemetry/)
 - [アプリケーションのコードに触れることなく計装する方法](../../concepts/instrumentation/zero-code/)
 - [コレクターの設定方法](../../collector/)
-- [OpenTelemetry Operatorを使ってKubernetes向けの自動化をする方法](../../kubernetes/operator/)
+- [OpenTelemetry Operatorを使ってKubernetes向けの自動化をする方法](../../platforms/kubernetes/operator/)
 
 もしあなたが、試行錯誤のためのアプリケーション一式を探しているなら、公式の[OpenTelemetryデモ](/ecosystem/demo/)が役に立つでしょう。
