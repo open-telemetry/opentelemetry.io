@@ -403,10 +403,6 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-02T10:58:53.703278-05:00"
   },
-  "https://cloud.google.com/functions/docs/concepts/exec#function_scope_versus_global_scope": {
-    "StatusCode": 200,
-    "LastSeen": "2025-02-06T02:02:59.999Z"
-  },
   "https://cloud.google.com/functions/docs/env-var#runtime_environment_variables_set_automatically": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T01:43:12.345Z"
@@ -754,10 +750,6 @@
   "https://developer.android.com/training/articles/user-data-ids": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:23:41.892135-05:00"
-  },
-  "https://developer.apple.com/documentation/uikit/uiapplicationdelegate#1656902": {
-    "StatusCode": 200,
-    "LastSeen": "2025-02-06T02:04:59.999Z"
   },
   "https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor": {
     "StatusCode": 200,
@@ -1126,10 +1118,6 @@
   "https://docs.docker.com/engine/containers/run/#container-identification": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:05:12.345Z"
-  },
-  "https://docs.docker.com/registry/spec/manifest-v2-2/#example-image-manifest": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-06T02:05:59.999Z"
   },
   "https://docs.expo.dev/get-started/introduction/": {
     "StatusCode": 206,
