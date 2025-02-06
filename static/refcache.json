@@ -15503,10 +15503,6 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:29:12.345Z"
   },
-  "https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-06T02:29:59.999Z"
-  },
   "https://prometheus.io/docs/prometheus/latest/federation/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T12:10:59.705964-05:00"
@@ -16859,10 +16855,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:10:54.834545-05:00"
   },
-  "https://www.erlang.org/doc/man/erl_error.html#format_exception-3": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-06T02:31:59.999Z"
-  },
   "https://www.erlang.org/doc/reference_manual/records.html": {
     "StatusCode": 206,
     "LastSeen": "2025-01-15T13:17:32.471781-05:00"
@@ -17746,10 +17738,6 @@
   "https://www.openpolicyagent.org/docs/latest/monitoring/#opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:31:12.345Z"
-  },
-  "https://www.openssl.org/docs/man1.1.1/man3/SSL_get_version.html#RETURN-VALUES": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-06T02:31:59.999Z"
   },
   "https://www.opentext.com/products/core-application-observability": {
     "StatusCode": 200,
