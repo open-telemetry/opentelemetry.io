@@ -6,8 +6,32 @@ import { exit } from 'process';
 
 const CACHE_FILE = 'static/refcache.json';
 const GOOGLE_DOCS_URL = 'https://docs.google.com/';
-let maxFragEntries = 3;
+let checkForFragments = false;
+let maxNumEntriesToUpdate = 3;
 const cratesIoURL = 'https://crates.io/crates/';
+
+// Magic numbers that we use to determine if a URL with a fragment has been
+// checked with this script. Since we can't add new fields to the cache, we
+// encode "magic" values in the LastSeen field.
+const fragSecondsOk = 12;
+const fragMillisecondsOk = 345;
+const fragSecondsInvalid = 59;
+const fragMillisecondsInvalid = 999;
+
+function isHttp2XXForFragments(StatusCode, lastSeenDate) {
+  return (
+    isHttp2XX(StatusCode) &&
+    lastSeenDate.getSeconds() === fragSecondsOk &&
+    lastSeenDate.getMilliseconds() === fragMillisecondsOk
+  );
+}
+
+function is4XXForFragments(StatusCode, lastSeenDate) {
+  return (
+    lastSeenDate.getSeconds() === fragSecondsInvalid &&
+    lastSeenDate.getMilliseconds() === fragMillisecondsInvalid
+  );
+}
 
 async function readRefcache() {
   try {
@@ -21,38 +45,59 @@ async function readRefcache() {
 
 async function writeRefcache(cache) {
   await fs.writeFile(CACHE_FILE, JSON.stringify(cache, null, 2) + '\n', 'utf8');
-  console.log(`Updated ${CACHE_FILE} with fixed links.`);
+  console.log(`Wrote updated ${CACHE_FILE}.`);
 }
 
 // Retry HTTP status check for refcache URLs with non-200s and not 404
 async function retry400sAndUpdateCache() {
   console.log(`Checking ${CACHE_FILE} for 4XX status URLs ...`);
   const cache = await readRefcache();
-  let updated = false;
+  let updatedCount = 0;
   let entriesCount = 0;
   let urlWithFragmentCount = 0;
+  let urlWithInvalidFragCount = 0;
+  let statusCounts = {};
 
   for (const [url, details] of Object.entries(cache)) {
     entriesCount++;
     const parsedUrl = new URL(url);
+    if (parsedUrl.hash) urlWithFragmentCount++;
     const { StatusCode, LastSeen } = details;
+    const lastSeenDate = new Date(LastSeen);
 
-    if (isHttp2XX(StatusCode)) continue;
-    if (isHttp2XX(StatusCode) && (!parsedUrl.hash || StatusCode >= 210))
-      continue;
+    const fragOk =
+      checkForFragments &&
+      parsedUrl.hash &&
+      isHttp2XXForFragments(StatusCode, lastSeenDate);
+    const sc = StatusCode + (fragOk ? ' (frag ok)' : '');
+    statusCounts[sc] = (statusCounts[sc] || 0) + 1;
 
     if (
-      (StatusCode === 404 && !url.startsWith(cratesIoURL)) ||
-      StatusCode === 422
+      checkForFragments && parsedUrl.hash
+        ? isHttp2XXForFragments(StatusCode, lastSeenDate)
+        : isHttp2XX(StatusCode)
     ) {
-      const lastSeenDate = new Date(LastSeen).toLocaleString();
-      console.log(
-        `Skipping ${StatusCode}: ${url} (last seen ${lastSeenDate}).`,
-      );
+      // process.stdout.write('.');
       continue;
     }
+
+    if (
+      (StatusCode === 404 &&
+        // Handles special case of crates.io. For details, see:
+        // https://github.com/rust-lang/crates.io/issues/788
+        !url.startsWith(cratesIoURL)) ||
+      (parsedUrl.hash && is4XXForFragments(StatusCode, lastSeenDate))
+    ) {
+      console.log(
+        `Skipping ${StatusCode}: ${url} (last seen ${lastSeenDate.toLocaleString()}).`,
+      );
+      if(parsedUrl.hash) urlWithInvalidFragCount++;
+      continue;
+    }
+
     if (url.startsWith(GOOGLE_DOCS_URL)) {
       // console.log(`Skipping Google Docs URL (for now): ${url}.`);
+      // process.stdout.write('.');
       continue;
       /*
       URLs are of the form:
@@ -62,12 +107,10 @@ async function retry400sAndUpdateCache() {
       */
     }
 
-    if (
-      parsedUrl.hash &&
-      StatusCode < 210 &&
-      ++urlWithFragmentCount > maxFragEntries
-    )
+    if (maxNumEntriesToUpdate && updatedCount >= maxNumEntriesToUpdate) {
+      console.log(`Updated max of ${maxNumEntriesToUpdate} entries, exiting.`);
       break;
+    }
 
     process.stdout.write(
       `Checking${
@@ -75,26 +118,47 @@ async function retry400sAndUpdateCache() {
       } ${url} (was ${StatusCode}) ... `,
     );
 
-    const verbose = false;
-    let status = await getUrlStatus(url, verbose);
-    if (parsedUrl.hash && isHttp2XX(status)) status += 10;
-
+    let status = await getUrlStatus(url);
     console.log(`${status}.`);
 
-    if (!isHttp2XX(status)) continue;
+    let now = new Date();
+    if (parsedUrl.hash) {
+      if (isHttp2XX(status)) {
+        // Encore that the fragment was checked and is valid.
+        now.setSeconds(fragSecondsOk);
+        now.setMilliseconds(fragMillisecondsOk);
+      } else {
+        status = StatusCode; // Keep the original status, rather than our custom 4XX status.
+        now.setSeconds(fragSecondsInvalid);
+        now.setMilliseconds(fragMillisecondsInvalid);
+        urlWithInvalidFragCount++;
+      }
+    } else if (!isHttp2XX(status)) {
+      continue;
+    }
 
     cache[url] = {
       StatusCode: status,
-      LastSeen: new Date().toISOString(),
+      LastSeen: now.toISOString(),
     };
-
-    updated = true;
+    updatedCount++;
   }
 
-  if (updated) {
+  if (updatedCount) {
     await writeRefcache(cache);
   } else {
     console.log(`No updates needed.`);
+  }
+
+  console.log(
+    `Processed ${entriesCount} URLs${
+      checkForFragments
+        ? ` (${urlWithFragmentCount} with fragments, ${urlWithInvalidFragCount} are invalid)`
+        : ''
+    }`,
+  );
+  for (const [status, count] of Object.entries(statusCounts)) {
+    console.log(`Status ${status}: ${count}`);
   }
 }
 
@@ -107,17 +171,20 @@ function getNumericFlagValue(flagName) {
     : process.argv[process.argv.indexOf(flagName) + 1];
   let value = parseInt(valueArg);
 
-  if (!value) {
+  if (value < 0) {
     console.error(
       `ERROR: invalid value for ${flagName}: ${valueArg}. ` +
-        `Must be a number > 0. Using default ${maxFragEntries}.`,
+        `Must be a number > 0. Using default ${maxNumEntriesToUpdate}.`,
     );
     exit(1);
   }
   return value;
 }
 
-const _maxFragEntriesFlag = getNumericFlagValue('--max-frag-entries');
-if (_maxFragEntriesFlag) maxFragEntries = _maxFragEntriesFlag;
+const _maxNumEntriesToUpdateFlag = getNumericFlagValue('--max-num-to-update');
+if (_maxNumEntriesToUpdateFlag >= 0)
+  maxNumEntriesToUpdate = _maxNumEntriesToUpdateFlag;
+checkForFragments =
+  process.argv.includes('--check-for-fragments') || process.argv.includes('-f');
 
 await retry400sAndUpdateCache();
