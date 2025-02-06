@@ -74,3 +74,9 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://shorturl.at/osHRX$
   # TODO move into content/en/blog/2023/contributing-to-otel/index.md once https://github.com/open-telemetry/opentelemetry.io/issues/3889 is implemented
   - ^https://shorturl.at/vLYZ0$
+
+  # Temporary during IA rework
+  # https://github.com/open-telemetry/opentelemetry.io/issues/6222
+  - (^/docs|..)/(faas|kubernetes)\b
+  - ^../lambda-collector/ # zh/docs/faas/lambda-manual-instrument/index.html
+  - ^../../(helm|operator)\b # es/docs/kubernetes/collector/components/index.html
