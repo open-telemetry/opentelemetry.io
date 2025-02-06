@@ -1,11 +1,15 @@
 #!/usr/bin/env node
 
 import puppeteer from 'puppeteer'; // Consider using puppeteer-core
+import { URL } from 'url';
+
+const DOCS_ORACLE_URL = 'https://docs.oracle.com/';
+const STATUS_OK_BUT_FRAG_NOT_FOUND = 422;
 
 const cratesIoURL = 'https://crates.io/crates/';
 let verbose = false;
 
-function log(...args) {
+export function log(...args) {
   if (!verbose) return;
   const lastArg = args[args.length - 1];
   if (typeof lastArg === 'string' && lastArg.endsWith(' ')) {
@@ -15,11 +19,67 @@ function log(...args) {
   }
 }
 
+// Check for fragment and corresponding anchor ID in page.
+async function checkForFragment(url, page, status) {
+  const parsedUrl = new URL(url);
+  if (parsedUrl.hash) {
+    let fragmentID = parsedUrl.hash.substring(1); // Remove the leading '#'
+    // if (url.startsWith(DOCS_ORACLE_URL)) { // Would also need for GitHub.com
+    fragmentID = decodeURIComponent(fragmentID);
+    // }
+
+    let anchorExists =
+      //
+      // Look for ID attribute in the page.
+      //
+      (await page.evaluate((id) => {
+        return !!document.getElementById(id);
+      }, fragmentID)) ||
+      //
+      // Look for named anchors
+      //
+      (await page.evaluate((name) => {
+        const elt = document.querySelector(`a[name="${name}"]`);
+        return !!elt;
+      }, fragmentID)) ||
+      //
+      // Github.com repo special cases
+      //
+      (url.startsWith('https://github.com/') &&
+        (await anchorExistsInGitHub(page, fragmentID)));
+
+    if (!anchorExists) status = STATUS_OK_BUT_FRAG_NOT_FOUND;
+  }
+  return status;
+}
+
+async function anchorExistsInGitHub(page, fragmentID) {
+  if (/L\d+(-L\d+)?/.test(fragmentID)) {
+    // Handle line references in GitHub repos.
+    return await page.evaluate((name) => {
+      // Look for references to the fragment in the page, possibly with an
+      // `-ov-file` suffix (used as anchors of tabs in repo landing pages).
+      return !!document.querySelector('div.highlighted-line');
+    }, fragmentID);
+  }
+
+  // Handle other fragment references in GitHub repos, link references
+  // to files (such as README), or to headings inside of displayed markdown.
+  return await page.evaluate((name) => {
+    // Look for references to the fragment in the page, possibly with an
+    // `-ov-file` suffix (used as anchors of tabs in repo landing pages).
+    const elt = document.querySelector(
+      `a[href="#${name}"], a[href="#${name}-ov-file"]`,
+    );
+    return !!elt;
+  }, fragmentID);
+}
+
 async function getUrlHeadless(url) {
   // Get the URL, headless, while trying our best to avoid triggering
   // bot-rejection from some servers. Returns the HTTP status code.
 
-  log(`Headless fetch of ${url} ... `);
+  log(`Fetch ${url} headless ... `);
 
   let browser;
   try {
@@ -62,6 +122,7 @@ async function getUrlHeadless(url) {
       if (!crateNameRegex.test(title)) status = 404;
     }
 
+    status = await checkForFragment(url, page, status);
     log(`${status}; page title: '${title}'`);
 
     return status;
@@ -87,8 +148,10 @@ async function getUrlInBrowser(url) {
 
     if (!response) throw new Error('No response from server.');
 
-    const status = response.status();
-    log(`HTTP status code: ${status}`);
+    let status = response.status();
+    const title = await page.title();
+    status = await checkForFragment(url, page, status);
+    log(`${status}; page title: '${title}'`);
 
     return status;
   } catch (error) {
@@ -107,7 +170,8 @@ export async function getUrlStatus(url, _verbose = false) {
   verbose = _verbose;
   let status = await getUrlHeadless(url);
   // If headless fetch fails, try in browser for non-404 statuses
-  if (!isHttp2XX(status) && status !== 404) {
+  if (!isHttp2XX(status) && status !== 404 && status !== 422) {
+    log(`\n\t retrying in browser ... `);
     status = await getUrlInBrowser(url);
   }
   return status;
