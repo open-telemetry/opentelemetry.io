@@ -65,12 +65,7 @@ async function retry400sAndUpdateCache() {
     const { StatusCode, LastSeen } = details;
     const lastSeenDate = new Date(LastSeen);
 
-    const fragOk =
-      checkForFragments &&
-      parsedUrl.hash &&
-      isHttp2XXForFragments(StatusCode, lastSeenDate);
-    const sc = StatusCode + (fragOk ? ' (frag ok)' : '');
-    statusCounts[sc] = (statusCounts[sc] || 0) + 1;
+    countStatuses(StatusCode, parsedUrl, lastSeenDate, statusCounts);
 
     if (
       checkForFragments && parsedUrl.hash
@@ -89,7 +84,9 @@ async function retry400sAndUpdateCache() {
       (parsedUrl.hash && is4XXForFragments(StatusCode, lastSeenDate))
     ) {
       console.log(
-        `Skipping ${StatusCode}: ${url} (last seen ${lastSeenDate.toLocaleString()}).`,
+        `Skipping ${StatusCode}: ${url} (last seen ${lastSeenDate.toLocaleDateString()})${
+          is4XXForFragments(StatusCode, lastSeenDate) ? ' INVALID FRAGMENT' : ''
+        }`,
       );
       if (parsedUrl.hash) urlWithInvalidFragCount++;
       continue;
@@ -160,6 +157,17 @@ async function retry400sAndUpdateCache() {
   for (const [status, count] of Object.entries(statusCounts)) {
     console.log(`Status ${status}: ${count}`);
   }
+}
+
+function countStatuses(StatusCode, parsedUrl, lastSeenDate, statusCounts) {
+  let sc = StatusCode;
+  if (checkForFragments) {
+    sc += parsedUrl.hash
+      ? ' frag ' +
+        (isHttp2XXForFragments(StatusCode, lastSeenDate) ? 'ok' : 'er')
+      : ' no frag';
+  }
+  statusCounts[sc] = (statusCounts[sc] || 0) + 1;
 }
 
 function getNumericFlagValue(flagName) {
