@@ -30,7 +30,7 @@ room at the [CNCF Slack workspace](https://slack.cncf.io).
 ## Architecture
 
 [Authenticators] are regular extensions that also satisfy one or more interfaces
-related to the authentication mechanism. Server authenticators are used with
+related to the authentication mechanism. [Server authenticators] are used with
 receivers, and are able to intercept HTTP and gRPC requests, while client
 authenticators are used with exporters, able to add authentication data to HTTP
 and gRPC requests. It is possible for authenticators to implement both
@@ -123,7 +123,7 @@ service:
 
 ### Server authenticators
 
-A server authenticator is essentially an extension with an `Authenticate`
+A [server authenticator][sa] is essentially an extension with an `Authenticate`
 function, receiving the payload headers as parameter. If the authenticator is
 able to authenticate the incoming connection, it should return a `nil` error, or
 the concrete error if it can't. As an extension, the authenticator should make
@@ -141,11 +141,8 @@ debug specific failures.
 
 ### Client authenticators
 
-A client authenticator is one that implements one or more of the following
-interfaces:
-
-- [go.opentelemetry.io/collector/config/configauth/GRPCClientAuthenticator](https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#GRPCClientAuthenticator)
-- [go.opentelemetry.io/collector/config/configauth/HTTPClientAuthenticator](https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#HTTPClientAuthenticator)
+A _client authenticator_ is one that implements one or more of the interfaces
+defined in [Client authenticators].
 
 Similar to server authenticators, they are essentially extensions with extra
 functions, each receiving an object that gives the authenticator an opportunity
@@ -161,9 +158,13 @@ Custom authenticators have to be part of the same binary as the main collector.
 When building your own authenticator, you'll likely have to build a custom
 distribution as well, or provide means for your users to consume your extension
 as part of their own distributions. Fortunately, building a custom distribution
-can be done using the
-[OpenTelemetry Collector Builder](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder)
-utility.
+can be done using the [OpenTelemetry Collector Builder][builder] utility.
 
-[Authenticators]:
+[authenticators]:
   https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth
+[builder]:
+  https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
+[client authenticators]:
+  https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#client-authenticators
+[sa]:
+  https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#server-authenticators

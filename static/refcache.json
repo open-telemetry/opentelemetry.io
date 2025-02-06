@@ -15091,13 +15091,13 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:32:23.675071-05:00"
   },
-  "https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#GRPCClientAuthenticator": {
+  "https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#client-authenticators": {
     "StatusCode": 200,
-    "LastSeen": "2025-02-06T02:27:59.999Z"
+    "LastSeen": "2025-02-06T22:27:59.999Z"
   },
-  "https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#HTTPClientAuthenticator": {
+  "https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#server-authenticators": {
     "StatusCode": 200,
-    "LastSeen": "2025-02-06T02:27:59.999Z"
+    "LastSeen": "2025-02-06T22:27:59.999Z"
   },
   "https://pkg.go.dev/go.opentelemetry.io/collector/confmap/provider/envprovider": {
     "StatusCode": 200,
