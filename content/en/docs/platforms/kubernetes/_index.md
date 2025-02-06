@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry with Kubernetes
 linkTitle: Kubernetes
-redirects: [{ from: /docs/platforms/kubernetes/*, to: ':splat' }]
+redirects: [{ from: /docs/kubernetes/*, to: ':splat' }]
 ---
 
 [Kubernetes](https://kubernetes.io/) is an open source system for automated
