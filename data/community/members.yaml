@@ -1886,6 +1886,11 @@ triagers:
       - java-contrib-triagers
     html_url: https://github.com/dehaansa
     avatar_url: https://avatars.githubusercontent.com/u/563558?v=4
+  - name: facostaembrace
+    teams:
+      - javascript-contrib-triagers
+    html_url: https://github.com/facostaembrace
+    avatar_url: https://avatars.githubusercontent.com/u/108752213?v=4
   - name: Frapschen
     teams:
       - collector-contrib-triagers
@@ -1921,6 +1926,11 @@ triagers:
       - java-instrumentation-triagers
     html_url: https://github.com/JonasKunz
     avatar_url: https://avatars.githubusercontent.com/u/6066661?v=4
+  - name: jpmunz
+    teams:
+      - javascript-contrib-triagers
+    html_url: https://github.com/jpmunz
+    avatar_url: https://avatars.githubusercontent.com/u/322136?v=4
   - name: kenfinnigan
     teams:
       - java-contrib-triagers
@@ -2134,9 +2144,6 @@ members:
   - name: emreyalvac
     html_url: https://github.com/emreyalvac
     avatar_url: https://avatars.githubusercontent.com/u/25641149?v=4
-  - name: facostaembrace
-    html_url: https://github.com/facostaembrace
-    avatar_url: https://avatars.githubusercontent.com/u/108752213?v=4
   - name: federicobond
     html_url: https://github.com/federicobond
     avatar_url: https://avatars.githubusercontent.com/u/138426?v=4
@@ -2350,6 +2357,9 @@ members:
   - name: ppittle
     html_url: https://github.com/ppittle
     avatar_url: https://avatars.githubusercontent.com/u/1190907?v=4
+  - name: pragmaticivan
+    html_url: https://github.com/pragmaticivan
+    avatar_url: https://avatars.githubusercontent.com/u/301291?v=4
   - name: raphael-theriault-swi
     html_url: https://github.com/raphael-theriault-swi
     avatar_url: https://avatars.githubusercontent.com/u/113933910?v=4
