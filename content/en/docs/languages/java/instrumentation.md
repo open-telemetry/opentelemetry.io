@@ -28,8 +28,8 @@ instrumentation topics:
   complement each other.
 - [Semantic conventions](#semantic-conventions): The semantic conventions define
   how to produce telemetry for standard operations.
-- [Log instrumentation](#log-instrumentation): The semantic conventions define
-  how to produce telemetry for standard operations.
+- [Log instrumentation](#log-instrumentation): Log instrumentation can be used
+  to get logs from an existing Java logging framework into OpenTelemetry.
 
 {{% alert %}} While [instrumentation categories](#instrumentation-categories)
 enumerates several options for instrumenting an application, we recommend users
