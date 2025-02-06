@@ -9927,10 +9927,6 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:19:12.345Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.41.0/specification/logs/api.md#emit-an-event": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-06T02:19:59.999Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.41.0/specification/logs/api.md#logger": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:19:12.345Z"
