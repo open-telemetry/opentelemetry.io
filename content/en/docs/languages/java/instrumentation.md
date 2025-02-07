@@ -23,13 +23,12 @@ instrumentation topics:
 - [Instrumentation categories](#instrumentation-categories): There are a variety
   of categories of instrumentation addressing different use cases and
   installation patterns.
-- [Context propagation](#context-propagation): Provides
-  correlation between traces, metrics, and logs, allowing the signals to
-  complement each other.
-- [Semantic conventions](#semantic-conventions): Define
-  how to produce telemetry for standard operations.
-- [Log instrumentation](#log-instrumentation): Can be used
-  to get logs from an existing Java logging framework into OpenTelemetry.
+- [Context propagation](#context-propagation): Provides correlation between
+  traces, metrics, and logs, allowing the signals to complement each other.
+- [Semantic conventions](#semantic-conventions): Define how to produce telemetry
+  for standard operations.
+- [Log instrumentation](#log-instrumentation): Can be used to get logs from an
+  existing Java logging framework into OpenTelemetry.
 
 {{% alert %}} While [instrumentation categories](#instrumentation-categories)
 enumerates several options for instrumenting an application, we recommend users
