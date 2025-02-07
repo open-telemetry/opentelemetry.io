@@ -13895,10 +13895,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-04T09:14:49.185635-05:00"
   },
-  "https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/#:~:text=The%20ServiceMonitor%20is%20used%20to,build%20the%20required%20Prometheus%20configuration.": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-06T11:46:59.999Z"
-  },
   "https://observiq.com/blog/what-are-connectors-in-opentelemetry/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-15T13:17:28.184646-05:00"
