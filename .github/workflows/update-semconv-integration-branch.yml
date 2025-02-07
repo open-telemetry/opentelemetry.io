@@ -86,7 +86,7 @@ jobs:
 
           sed -i "s/^\tsemconv-pin = .*/\tsemconv-pin = $commit_desc/" .gitmodules
 
-          git add content-modules/semantic-conventions .gitmodules
+          git add -A
 
           if ! git diff-index --quiet --cached HEAD; then
             git commit -am "Update semconv submodule to $commit_desc"
