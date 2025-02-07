@@ -106,7 +106,7 @@ dependency structure:
 ## Dependencies and BOMs
 
 A
-[bill of materials](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms),
+[bill of materials](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Bill_of_Materials_.28BOM.29_POMs),
 or BOM for short, is an artifact that helps keep the versions of related
 dependencies aligned. OpenTelemetry Java publishes several BOMs catering to
 different use cases, listed below in order of increasing scope. We highly

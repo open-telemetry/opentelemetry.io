@@ -2,21 +2,19 @@
 title: Bagagem
 weight: 4
 description: Informações contextuais que são propagadas entre sinais
-default_lang_commit: 896255cae4fea454ffc4c559ea29b08ccebbfcb2
+default_lang_commit: 7c0e4db0b6c39b0ca0e7efb17df5610d1b77b8a3
 ---
 
 No OpenTelemetry, Bagagem é uma informação contextual que acompanha o contexto.
 Bagagem é uma estrutura de armazenamento chave-valor, que te permite
-[propagar](/docs/concepts/context-propagation/#propagation) quaisquer dados
-junto com o [contexto](/docs/concepts/context-propagation/#context).
+[propagar](../../context-propagation/#propagation) quaisquer dados junto com o
+[contexto](../../context-propagation/#context).
 
 A Bagagem permite a transferência de dados entre serviços e processos,
-tornando-os acessíveis para serem adicionados a
-[rastros](/docs/concepts/signals/traces/),
-[métricas](/docs/concepts/signals/metrics/) ou
-[logs](/docs/concepts/signals/logs/) ao longo desses serviços.
+tornando-os acessíveis para serem adicionados a [rastros](../traces/),
+[métricas](../metrics/) ou [logs](../logs/) ao longo desses serviços.
 
-## Exemplo
+## Exemplo {#example}
 
 Bagagem é frequentemente usada em rastreamento para propagar dados adicionais
 entre serviços.
@@ -27,14 +25,14 @@ algumas métricas de outro serviço, e em alguns logs ao longo do caminho. Como 
 rastro pode abranger vários serviços, você precisa de uma maneira de propagar
 esses dados sem copiar o `clientId` em diversos pontos do seu código.
 
-Usando a
-[Propagação de Contexto](/docs/concepts/signals/traces/#context-propagation)
-para passar a bagagem entre esses serviços, o `clientId` estará disponível para
-ser adicionado a quaisquer trechos, métricas ou logs. Além disso, as
-instrumentações automaticamente propagam a Bagagem para você.
+Usando a [Propagação de Contexto](../traces/#context-propagation) para passar a
+bagagem entre esses serviços, o `clientId` estará disponível para ser adicionado
+a quaisquer trechos, métricas ou logs. Além disso, as instrumentações
+automaticamente propagam a Bagagem para você.
+
 ![OTel Baggage](../otel-baggage.svg)
 
-## Para que a Bagagem do OTel deve ser usada?
+## Para que a Bagagem do OTel deve ser usada? {#what-should-otel-baggage-be-used-for}
 
 A Bagagem é mais adequada para incluir informações que normalmente estão
 disponíveis apenas no início de uma requisição e que precisam ser propagadas
@@ -51,7 +49,7 @@ usuário nos dados do log.
 
 ![OTel Baggage](../otel-baggage-2.svg)
 
-## Considerações de segurança da Bagagem
+## Considerações de segurança da Bagagem {#baggage-security-considerations}
 
 Itens sensíveis da Bagagem podem ser compartilhados com recursos não
 intencionais, como APIs de terceiros. Isso ocorre porque a instrumentação
@@ -65,7 +63,7 @@ podem propagar a Bagagem fora da sua rede.
 Além disso, não há verificações de integridade automáticas para garantir que os
 itens de Bagagem sejam legítimos, portanto, tenha cautela ao acessá-los.
 
-## Bagagem não é o mesmo que atributos
+## Bagagem não é o mesmo que atributos {#baggage-is-not-the-same-as-attributes}
 
 É importante destacar que a Bagagem é um armazenamento de chave-valor separado e
 não está ligada aos atributos de trechos, métricas ou logs sem que seja
@@ -76,10 +74,10 @@ explicitamente os dados da Bagagem e adicioná-los como atributos aos seus
 trechos, métricas ou logs.
 
 Como um dos casos de uso comum da Bagagem é adicionar dados aos
-[Atributos de Trecho](/docs/concepts/signals/traces/#attributes) ao longo de
-todo um rastro, várias linguagens possuem Processadores de Trecho de Bagagem que
-adicionam dados da Bagagem como atributos na criação de trechos.
+[Atributos de Trecho](../traces/#attributes) ao longo de todo um rastro, várias
+linguagens possuem Processadores de Trecho de Bagagem que adicionam dados da
+Bagagem como atributos na criação de trechos.
 
-Para mais informações, consulte a [especificação da Bagagem][].
+Para mais informações, consulte a [especificação da Bagagem].
 
 [especificação da Bagagem]: /docs/specs/otel/overview/#baggage-signal

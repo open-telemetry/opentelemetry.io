@@ -57,7 +57,7 @@ an issue.
    you to a GitHub issue page prepopulated with some headers.
 2. Describe the issue or suggestion for improvement. Provide as many details as
    you can.
-3. Click **Submit new issue**.
+3. Click **Create**.
 
 After submitting, check in on your issue occasionally or turn on GitHub
 notifications. It might take a few days until maintainers and approvers respond.

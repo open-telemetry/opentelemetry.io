@@ -54,6 +54,6 @@ The list above is aliased to [`/api`](/api).
 
 {{% /alert %}}
 
-[zero-code]: /docs/kubernetes/operator/automatic/
+[zero-code]: /docs/platforms/kubernetes/operator/automatic/
 [instrumentation]: /docs/concepts/instrumentation/
-[otel-op]: /docs/kubernetes/operator/
+[otel-op]: /docs/platforms/kubernetes/operator/

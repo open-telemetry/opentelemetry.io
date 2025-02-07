@@ -4,7 +4,7 @@ description:
   Aprenda sobre amostragem e explore as diferentes opções disponíveis no
   OpenTelemetry.
 weight: 80
-default_lang_commit: de60a8e2c5098e47eda3e12b006c5490bdb8a94e
+default_lang_commit: 49879d0c00a4a28c963a76998f7213af7b539c77
 ---
 
 Com [rastros](/docs/concepts/signals/traces), você pode observar as requisições
@@ -19,7 +19,7 @@ da amostragem correta.
 
 ![Ilustração mostrando que nem todos os dados precisam ser rastreados, e que uma amostra de dados é suficiente](traces-venn-diagram.png)
 
-## Terminologia
+## Terminologia {#terminology}
 
 É importante usar uma terminologia consistente ao discutir amostragem. Um rastro
 ou trecho é considerado "amostrado" (_sampled_) ou "não amostrado" (_not
@@ -35,7 +35,7 @@ sampled_):
 dizendo que está "amostrando dados" ou que os dados não processados ou
 exportados são considerados "amostrados". Essas afirmações estão incorretas.
 
-## Por que usar amostragem?
+## Por que usar amostragem? {#why-sampling}
 
 A amostragem é uma das formas mais eficazes de reduzir os custos de
 observabilidade sem perder visibilidade. Embora existam outras maneiras de
@@ -53,7 +53,7 @@ ter uma amostra representativa. Para sistemas de alto volume, é muito comum que
 uma taxa de amostragem de 1% ou menos represente com bastante precisão os outros
 99% dos dados.
 
-## Quando usar amostragem
+### Quando usar amostragem {#when-to-sample}
 
 Considere usar amostragem se você atender a qualquer um dos seguintes critérios:
 
@@ -75,7 +75,7 @@ Por fim, considere seu orçamento em geral. Se você tem um orçamento limitado
 para observabilidade, mas pode dedicar tempo para realizar uma amostragem
 eficaz, então a amostragem geralmente vale a pena.
 
-## Quando não usar amostragem
+### Quando não usar amostragem {#when-not-to-sample}
 
 A amostragem pode não servir para você. Você talvez queira evitar a amostragem
 se atender a qualquer um dos seguintes critérios:
@@ -130,7 +130,7 @@ não pode garantir que todos os rastros com um erro sejam amostrados apenas com 
 amostragem pela cabeça. Para essa situação e muitas outras, você precisa da
 amostragem pela cauda.
 
-## Amostragem pela Cauda
+## Amostragem pela Cauda {#tail-sampling}
 
 A amostragem pela cauda (_tail sampling_) é onde a decisão de amostrar um rastro
 acontece considerando todos ou a maioria dos trechos dentro do rastro. A
@@ -188,7 +188,7 @@ tomar decisões de amostragem mais sofisticadas antes de exportar para um
 _backend_. Isso é frequentemente feito com o intuito de proteger o _pipeline_ de
 telemetria contra sobrecarga.
 
-## Suporte
+## Suporte {#support}
 
 ### Collector
 
@@ -197,7 +197,7 @@ O OpenTelemetry Collector inclui os seguintes processadores de amostragem:
 - [Processador de Amostragem Probabilística](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/probabilisticsamplerprocessor)
 - [Processador de Amostragem pela Cauda](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)
 
-### SDKs de Linguagens de programação
+### SDKs de Linguagens de programação {#language-sdks}
 
 Para as implementações específicas de cada linguagem da API e SDK do
 OpenTelemetry, você vai encontrar suporte para amostragem nas respectivas
@@ -205,7 +205,7 @@ páginas de documentação:
 
 {{% sampling-support-list " " %}}
 
-### Fornecedores
+### Fornecedores {#vendors}
 
 Muitos [fornecedores](/ecosystem/vendors) oferecem soluções abrangentes de
 amostragem que incorporam amostragem pela cabeça, amostragem pela cauda e outros

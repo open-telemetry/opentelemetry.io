@@ -189,7 +189,7 @@ a few more features that will allow you gain even deeper insights!
 
 [traces]: /docs/concepts/signals/traces/
 [instrumentations]:
-  https://github.com/open-telemetry/opentelemetry-ruby#instrumentation-libraries
+  https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation
 [config]: ../libraries/#configuring-specific-instrumentation-libraries
 [exporters]: ../exporters/
 [context propagation]: ../instrumentation/#context-propagation

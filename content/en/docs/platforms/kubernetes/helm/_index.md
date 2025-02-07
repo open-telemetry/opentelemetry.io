@@ -10,7 +10,7 @@ linkTitle: Helm Charts
 If you chose to use Helm, you can use
 [OpenTelemetry Helm Charts](https://github.com/open-telemetry/opentelemetry-helm-charts)
 to manage installs of the [OpenTelemetry Collector](/docs/collector),
-[OpenTelemetry Operator](/docs/kubernetes/operator), and
+[OpenTelemetry Operator](/docs/platforms/kubernetes/operator), and
 [OpenTelemetry Demo](/docs/demo).
 
 Add the OpenTelemetry Helm repository with:
