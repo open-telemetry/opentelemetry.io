@@ -397,12 +397,10 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/2471669?v=4
   - name: djaglowski
     teams:
-      - collector-approvers
       - collector-contrib-approvers
       - collector-contrib-maintainers
       - collector-contrib-triagers
       - collector-releases-approvers
-      - collector-triagers
     html_url: https://github.com/djaglowski
     avatar_url: https://avatars.githubusercontent.com/u/5255616?v=4
   - name: dmathieu
@@ -806,6 +804,7 @@ maintainers:
   - name: MSNev
     teams:
       - javascript-approvers
+      - javascript-contrib-triagers
       - javascript-triagers
       - sandbox-web-js-maintainers
       - semconv-event-approvers
@@ -831,6 +830,7 @@ maintainers:
       - collector-contrib-triagers
       - collector-releases-approvers
       - javascript-approvers
+      - javascript-contrib-triagers
       - javascript-triagers
       - ruby-approvers
       - ruby-contrib-approvers
@@ -897,6 +897,7 @@ maintainers:
       - go-maintainers
       - go-triagers
       - proto-go-approvers
+      - semconv-event-approvers
       - specs-logs-approvers
       - specs-triagers
     html_url: https://github.com/pellared
@@ -1764,6 +1765,7 @@ approvers:
   - name: svetlanabrennan
     teams:
       - javascript-approvers
+      - javascript-contrib-triagers
       - javascript-triagers
     html_url: https://github.com/svetlanabrennan
     avatar_url: https://avatars.githubusercontent.com/u/50715937?v=4
