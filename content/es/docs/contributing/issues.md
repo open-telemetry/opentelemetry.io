@@ -7,6 +7,7 @@ weight: 10
 _issues: https://github.com/open-telemetry/opentelemetry.io/issues
 _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A
 cSpell:ignore: prepopulated
+default_lang_commit: 8eb480194ecba4c8b2ce9c16e5cc2947b5b532e2
 ---
 
 ## Solucionando un asunto existente
