@@ -23,4 +23,4 @@ createdAt: 2023-01-31
 package:
   registry: gems
   name: sentry-opentelemetry
-  version: 5.22.3
+  version: 5.22.4
