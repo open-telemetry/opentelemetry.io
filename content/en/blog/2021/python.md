@@ -8,4 +8,4 @@ canonical_url: https://medium.com/opentelemetry/announcing-opentelemetry-python-
 Today, OpenTelemetry Python distributed tracing API/SDK released its 1.0
 version. For all the details, see the [original post][].
 
-[original post]: {{% param canonical_url %}}
+[original post]: <{{% param canonical_url %}}>

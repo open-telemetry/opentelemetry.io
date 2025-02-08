@@ -9,4 +9,4 @@ The OpenTelemetry project is excited to announce the 2021 OpenTelemetry
 Governance Committee (GC) election. For all the details, see the [original
 post][].
 
-[original post]: {{% param canonical_url %}}
+[original post]: <{{% param canonical_url %}}>
