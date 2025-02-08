@@ -26,16 +26,19 @@ jobs:
           suggestions: true
 
   dict-check:
-    name: CSPELL:IGNORE check
+    name: CSPELL page-local word list check
     runs-on: ubuntu-latest
+    env:
+      FIX_CMD: fix:dict
     steps:
       - uses: actions/checkout@v4
-      - run: npm run fix:dict
+      - run: npm run ${{ env.FIX_CMD }}
       - name: Any changed files?
         run: |
           CHANGES=`git status --porcelain`
           if [[ $CHANGES ]]; then
-            echo "Locally run `npm run fix:dict` and commit the changes:"
+            echo "Add comment '/fix:${{ env.FIX_CMD }}' to your PR in GitHub,"
+            echo "or locally run 'npm run ${{ env.FIX_CMD }}' and commit the changes:"
             echo "$CHANGES"
             exit 1
           else

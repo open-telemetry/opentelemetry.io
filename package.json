@@ -6,7 +6,7 @@
   "scripts": {
     "__check:links": "make --keep-going check-links",
     "_build": "npm run _hugo -- -e dev --buildDrafts --buildFuture --baseURL \"${DEPLOY_PRIME_URL:-http://localhost}\"",
-    "__check:format": "npx prettier${PRETTIER_AT_VERS}",
+    "__check:format": "./scripts/npx-helper.sh prettier",
     "_check:format:any": "npm run __check:format -- --check --ignore-path ''",
     "_check:format:ja+zh": "npm run _check:format:nowrap -- content/ja content/zh",
     "_check:format:nowrap": "npm run _check:format:any -- --prose-wrap preserve",
@@ -120,15 +120,15 @@
     "ajv-formats": "^3.0.1",
     "ajv": "^8.17.1",
     "autoprefixer": "^10.4.20",
-    "cspell": "^8.17.2",
+    "cspell": "^8.17.3",
     "gulp": "^5.0.0",
-    "hugo-extended": "0.142.0",
+    "hugo-extended": "0.143.1",
     "js-yaml": "^4.1.0",
     "markdown-link-check": "^3.13.6",
     "markdownlint": "^0.37.4",
     "postcss-cli": "^11.0.0",
     "prettier": "3.4.2",
-    "puppeteer": "^24.1.1",
+    "puppeteer": "^24.2.0",
     "require-dir": "^1.2.0",
     "textlint-filter-rule-allowlist": "^4.0.0",
     "textlint-filter-rule-comments": "^1.2.2",
@@ -151,7 +151,7 @@
     "path": "^0.12.7"
   },
   "optionalDependencies": {
-    "netlify-cli": "^18.0.2",
+    "netlify-cli": "^18.0.3",
     "npm-check-updates": "^17.1.14"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",

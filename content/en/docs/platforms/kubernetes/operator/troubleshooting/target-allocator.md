@@ -4,11 +4,12 @@ cSpell:ignore: bleh targetallocator
 ---
 
 If you’ve enabled
-[Target Allocator](/docs/kubernetes/operator/target-allocator/) service
-discovery on the [OpenTelemetry Operator](/docs/kubernetes/operator/), and the
-Target Allocator is failing to discover scrape targets, there are a few
-troubleshooting steps that you can take to help you understand what’s going on
-and restore normal operation.
+[Target Allocator](/docs/platforms/kubernetes/operator/target-allocator/)
+service discovery on the
+[OpenTelemetry Operator](/docs/platforms/kubernetes/operator/), and the Target
+Allocator is failing to discover scrape targets, there are a few troubleshooting
+steps that you can take to help you understand what’s going on and restore
+normal operation.
 
 ## Troubleshooting steps
 
@@ -329,7 +330,7 @@ See the full `OpenTelemetryCollector`
 ### Did you configure a ServiceMonitor (or PodMonitor) selector?
 
 If you configured a
-[`ServiceMonitor`](https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/#:~:text=The%20ServiceMonitor%20is%20used%20to,build%20the%20required%20Prometheus%20configuration.)
+[`ServiceMonitor`](https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/)
 selector, it means that the Target Allocator only looks for `ServiceMonitors`
 having a `metadata.label` that matches the value in
 [`serviceMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr-1).
