@@ -290,14 +290,14 @@ flowchart LR
 subgraph first[ ]
 direction TB
 1[1\. Go to opentelemetry.io repository] --> 2[2\. Select New Pull Request]
-2 --> 3[\.3 Select compare across forks]
-3 --> 4[\.4 Select your fork from<br>head repository drop-down menu]
+2 --> 3[3\. Select compare across forks]
+3 --> 4[4\. Select your fork from<br>head repository drop-down menu]
 end
 subgraph second [ ]
 direction TB
 5[5\. Select your branch from<br>the compare drop-down menu] --> 6[6\. Select Create Pull Request]
-6 --> 7[\.7 Add a description<br>to your PR]
-7 --> 8[\.8 Select Create pull request]
+6 --> 7[7\. Add a description<br>to your PR]
+7 --> 8[8\. Select Create pull request]
 end
 
 first --> second
