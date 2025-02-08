@@ -7,12 +7,13 @@ weight: 10
 _issues: https://github.com/open-telemetry/opentelemetry.io/issues
 _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A
 cSpell:ignore: prepopulated
-default_lang_commit: 8eb480194ecba4c8b2ce9c16e5cc2947b5b532e2
+default_lang_commit: 95b782b83ea5491bf366237260427b989ac7f6c8
 ---
 
 ## Solucionando un asunto existente
 
-Una de las mejores maneras de contribuir a mejorar la documentación de OpenTelemetry (OTel) es solucionando un problema ya identificado.
+Una de las mejores maneras de contribuir a mejorar la documentación de
+OpenTelemetry (OTel) es solucionando un problema ya identificado.
 
 1. Navegar por la lista de asuntos [issues]({{% param _issues %}}).
 2. Seleccione un asunto en el que le gustaría trabajar, idealmente uno que se
@@ -40,11 +41,12 @@ Una de las mejores maneras de contribuir a mejorar la documentación de OpenTele
    {{% /alert %}}
 
 3. Lea los comentarios del problema, si los hay.
-4. Pregunta a los mantenedores si el asunto sigue siendo
-   relevante y aclara cualquier duda publicando un comentario.
+4. Pregunta a los mantenedores si el asunto sigue siendo relevante y aclara
+   cualquier duda publicando un comentario.
 5. Comparte tu intención de trabajar en el tema agregando un comentario a este
    efecto.
-6. Trabaja para solucionar el problema y notifica a los mantenedores si surge algún inconveniente.
+6. Trabaja para solucionar el problema y notifica a los mantenedores si surge
+   algún inconveniente.
 7. Cuando este listo,
    [envia tu trabajo enviando un pull request](../pull-requests) (PR).
 
@@ -62,15 +64,14 @@ contenido existente, abre un asunto.
 
 Después de enviar el problema, verifique su problema de vez en cuando o active
 las notificaciones de GitHub. Puede que pasen algunos días hasta que los
-mantenedores respondan. Los revisores y otros
-miembros de la comunidad pueden hacer preguntas antes de poder tomar medidas
-sobre su problema.
+mantenedores respondan. Los revisores y otros miembros de la comunidad pueden
+hacer preguntas antes de poder tomar medidas sobre su problema.
 
 ## Sugerir nuevos contenidos o funciones
 
-Si tienes una idea para un nuevo contenido o funcionalidad, pero no estás
-seguro de dónde debería ir, aún puedes presentar un asunto. También puedes
-informar errores y vulnerabilidades de seguridad.
+Si tienes una idea para un nuevo contenido o funcionalidad, pero no estás seguro
+de dónde debería ir, aún puedes presentar un asunto. También puedes informar
+errores y vulnerabilidades de seguridad.
 
 1. Ir a [GitHub](https://github.com/open-telemetry/opentelemetry.io/issues/new/)
    y selecciona **Nuevo asunto** dentro de la pestaña **Asuntos**.
@@ -91,8 +92,9 @@ Tenga en cuenta lo siguiente al presentar un asunto:
 - Limite el alcance de un problema determinado a una unidad de trabajo
   razonable. En el caso de problemas de gran alcance, divídelos en tareas más
   pequeñas. Por ejemplo, "Corregir la documentación de seguridad" es demasiado
-  amplio, pero "Agregar detalles en la sección 'Restringir el acceso a la red'" es lo
-  suficientemente específico como para que se pueda llevar a cabo una acción.
+  amplio, pero "Agregar detalles en la sección 'Restringir el acceso a la red'"
+  es lo suficientemente específico como para que se pueda llevar a cabo una
+  acción.
 - Busque los problemas existentes para ver si hay algo relacionado o similar al
   nuevo problema.
 - Si el nuevo problema se relaciona con otro problema o solicitud de
