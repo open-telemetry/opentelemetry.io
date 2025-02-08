@@ -69,13 +69,13 @@ subgraph tasks[Changes using GitHub]
 direction TB
     0[ ] -.-
     1[1\. Edit this page] --> 2[2\. Use GitHub markdown<br>editor to make changes]
-    2 --> 3[3\. fill in Propose file change]
+    2 --> 3[3\. Fill in Propose file change]
 
 end
 subgraph tasks2[ ]
 direction TB
-4[4\. select Propose file change] --> 5[5\. select Create pull request] --> 6[6\. fill in Open a pull request]
-6 --> 7[7\. select Create pull request]
+4[4\. Select Propose file change] --> 5[5\. Select Create pull request] --> 6[6\. Fill in Open a pull request]
+6 --> 7[7\. Select Create pull request]
 end
 
 id1 --> tasks --> tasks2
