@@ -239,7 +239,7 @@ maintainers:
       - java-instrumentation-approvers
       - java-instrumentation-triagers
       - java-triagers
-      - semconv-event-approvers
+      - semconv-log-approvers
       - semconv-mobile-approvers
     html_url: https://github.com/breedx-splk
     avatar_url: https://avatars.githubusercontent.com/u/75337021?v=4
@@ -545,7 +545,7 @@ maintainers:
       - javascript-contrib-triagers
       - javascript-maintainers
       - javascript-triagers
-      - semconv-event-approvers
+      - semconv-log-approvers
       - sig-contributor-experience-approvers
       - sig-contributor-experience-maintainers
     html_url: https://github.com/JamieDanielson
@@ -756,7 +756,7 @@ maintainers:
       - javascript-contrib-triagers
       - javascript-triagers
       - sandbox-web-js-maintainers
-      - semconv-event-approvers
+      - semconv-log-approvers
     html_url: https://github.com/martinkuba
     avatar_url: https://avatars.githubusercontent.com/u/4933147?v=4
   - name: maryliag
@@ -807,7 +807,7 @@ maintainers:
       - javascript-contrib-triagers
       - javascript-triagers
       - sandbox-web-js-maintainers
-      - semconv-event-approvers
+      - semconv-log-approvers
     html_url: https://github.com/MSNev
     avatar_url: https://avatars.githubusercontent.com/u/54870357?v=4
   - name: musingvirtual
@@ -897,7 +897,7 @@ maintainers:
       - go-maintainers
       - go-triagers
       - proto-go-approvers
-      - semconv-event-approvers
+      - semconv-log-approvers
       - specs-logs-approvers
       - specs-triagers
     html_url: https://github.com/pellared
@@ -1089,7 +1089,7 @@ maintainers:
     teams:
       - docs-approvers
       - sandbox-web-js-maintainers
-      - semconv-event-approvers
+      - semconv-log-approvers
       - sig-developer-experience-approvers
       - sig-developer-experience-maintainers
       - specs-semconv-approvers
@@ -1158,9 +1158,9 @@ maintainers:
       - java-instrumentation-triagers
       - java-triagers
       - semconv-db-approvers
-      - semconv-event-approvers
       - semconv-http-approvers
       - semconv-jvm-approvers
+      - semconv-log-approvers
       - specs-semconv-approvers
       - specs-semconv-maintainers
       - specs-triagers
@@ -1278,7 +1278,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/3532037?v=4
   - name: alexvanboxel
     teams:
-      - semconv-event-approvers
+      - semconv-log-approvers
       - semconv-security-approvers
     html_url: https://github.com/alexvanboxel
     avatar_url: https://avatars.githubusercontent.com/u/639539?v=4
@@ -1722,7 +1722,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/20374164?v=4
   - name: scheler
     teams:
-      - semconv-event-approvers
+      - semconv-log-approvers
     html_url: https://github.com/scheler
     avatar_url: https://avatars.githubusercontent.com/u/2802664?v=4
   - name: seemk
@@ -2425,6 +2425,9 @@ members:
   - name: tydhot
     html_url: https://github.com/tydhot
     avatar_url: https://avatars.githubusercontent.com/u/27889201?v=4
+  - name: VenuEmmadi
+    html_url: https://github.com/VenuEmmadi
+    avatar_url: https://avatars.githubusercontent.com/u/57027311?v=4
   - name: vishweshbankwar
     html_url: https://github.com/vishweshbankwar
     avatar_url: https://avatars.githubusercontent.com/u/17655898?v=4
