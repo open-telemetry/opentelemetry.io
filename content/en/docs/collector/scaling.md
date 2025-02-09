@@ -325,60 +325,132 @@ providing a custom `http_sd_config` per collector instance (pod).
 ### Scaling Stateful Collectors
 
 Certain components might hold data in memory, yielding different results when
-scaled up. It is the case for the tail-sampling processor, which holds spans in
-memory for a given period, evaluating the sampling decision only when the trace
-is considered complete. Scaling a Collector cluster by adding more replicas
-means that different collectors will receive spans for a given trace, causing
-each collector to evaluate whether that trace should be sampled, potentially
-coming to different answers. This behavior results in traces missing spans,
-misrepresenting what happened in that transaction.
+scaled up. It is the case for the
+[tail-sampling](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/tailsamplingprocessor/README.md)
+processor, which holds spans in memory for a given period, evaluating the
+sampling decision only when the trace is considered complete. Scaling a
+Collector cluster by adding more replicas means that different collectors will
+receive spans for a given trace, causing each collector to evaluate whether that
+trace should be sampled, potentially coming to different answers. This behavior
+results in traces missing spans, misrepresenting what happened in that
+transaction.
 
-A similar situation happens when using the span-to-metrics processor to generate
-service metrics. When different collectors receive data related to the same
-service, aggregations based on the service name will be inaccurate.
+A similar situation happens when using the
+[span-to-metrics connector](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/connector/spanmetricsconnector/README.md)
+to generate service metrics. When different collectors receive data related to
+the same service, aggregations based on the service name will be inaccurate due
+to violating the
+[single-writer assumption](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#single-writer).
 
-To overcome this, you can deploy a layer of Collectors containing the
-load-balancing exporter in front of your Collectors doing the tail-sampling or
-the span-to-metrics processing. The load-balancing exporter will hash the trace
-ID or the service name consistently and determine which collector backend should
-receive spans for that trace. You can configure the load-balancing exporter to
-use the list of hosts behind a given DNS A entry, such as a Kubernetes headless
-service. When the deployment backing that service is scaled up or down, the
-load-balancing exporter will eventually see the updated list of hosts.
-Alternatively, you can specify a list of static hosts to be used by the
-load-balancing exporter. You can scale up the layer of Collectors configured
-with the load-balancing exporter by increasing the number of replicas. Note that
-each Collector will potentially run the DNS query at different times, causing a
+To overcome this, the
+[load-balancing exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/loadbalancingexporter/README.md)
+can divide load among your collectors while ensuring the telemetry needed for
+accurate tail-sampling and span-metrics are processed by a single collector. The
+load-balancing exporter will hash the trace ID or the service name consistently
+and determine which collector backend should receive spans for that trace. You
+can configure the load-balancing exporter to use the list of hosts behind a
+given DNS A entry, such as a Kubernetes headless service. When the deployment
+backing that service is scaled up or down, the load-balancing exporter will
+eventually see the updated list of hosts. Alternatively, you can specify a list
+of static hosts to be used by the load-balancing exporter. Note that each
+Collector will potentially run the DNS query at different times, causing a
 difference in the cluster view for a few moments. We recommend lowering the
 interval value so that the cluster view is different only for a short period in
 highly-elastic environments.
 
 Here’s an example configuration using a DNS A record (Kubernetes service otelcol
-on the observability namespace) as the input for the backend information:
+on the observability namespace) as the input for load balancing:
 
 ```yaml
 receivers:
-  otlp:
+  otlp/before_load_balancing:
     protocols:
       grpc:
         endpoint: 0.0.0.0:4317
 
+  otlp/for_tail_sampling:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4417
+
+  otlp/for_span_metrics:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4517
+
 processors:
+  tail_sampling:
+    decision_wait: 10s
+    policies:
+      [
+        {
+          name: keep-all-traces-with-errors,
+          type: status_code,
+          status_code: { status_codes: [ERROR] },
+        },
+        {
+          name: keep-10-percent-of-traces,
+          type: probabilistic,
+          probabilistic: { sampling_percentage: 10 },
+        },
+      ]
+
+connectors:
+  spanmetrics:
+    aggregation_temporality: 'AGGREGATION_TEMPORALITY_CUMULATIVE'
+    resource_metrics_key_attributes:
+      - service.name
 
 exporters:
-  loadbalancing:
+  loadbalancing/tail_sampling:
+    routing_key: 'traceID'
     protocol:
       otlp:
     resolver:
       dns:
         hostname: otelcol.observability.svc.cluster.local
+        port: 4417
+  loadbalancing/span_metrics:
+    routing_key: 'service'
+    protocol:
+      otlp:
+    resolver:
+      dns:
+        hostname: otelcol.observability.svc.cluster.local
+        port: 4517
+
+  otlp/vendor:
+    endpoint: https://some-vendor.com:4317
 
 service:
   pipelines:
     traces:
       receivers:
-        - otlp
+        - otlp/before_load_balancing
       processors: []
       exporters:
-        - loadbalancing
+        - loadbalancing/tail_sampling
+        - loadbalancing/span_metrics
+
+    traces/tail_sampling:
+      receivers:
+        - otlp/for_tail_sampling
+      processors:
+        - tail_sampling
+      exporters:
+        - otlp/vendor
+
+    traces/span_metrics:
+      receivers:
+        - otlp/for_tail_sampling
+      processors: []
+      exporters:
+        - spanmetrics
+
+    metrics/spanmetrics:
+      receivers:
+        - spanmetrics
+      processors: []
+      exporters:
+        - otlp/vendor
 ```
