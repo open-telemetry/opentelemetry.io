@@ -68,14 +68,14 @@ A([fa:fa-user New<br>Contributor]) --- id1[(open-telemetry/opentelemetry.io<br>G
 subgraph tasks[Changes using GitHub]
 direction TB
     0[ ] -.-
-    1[1. Edit this page] --> 2[2. Use GitHub markdown<br>editor to make changes]
-    2 --> 3[3. fill in Propose file change]
+    1[1\. Edit this page] --> 2[2\. Use GitHub markdown<br>editor to make changes]
+    2 --> 3[3\. Fill in Propose file change]
 
 end
 subgraph tasks2[ ]
 direction TB
-4[4. select Propose file change] --> 5[5. select Create pull request] --> 6[6. fill in Open a pull request]
-6 --> 7[7. select Create pull request]
+4[4\. Select Propose file change] --> 5[5\. Select Create pull request] --> 6[6\. Fill in Open a pull request]
+6 --> 7[7\. Select Create pull request]
 end
 
 id1 --> tasks --> tasks2
@@ -289,15 +289,15 @@ Figure 4 shows the steps to open a PR from your fork to
 flowchart LR
 subgraph first[ ]
 direction TB
-1[1. Go to opentelemetry.io repository] --> 2[2. Select New Pull Request]
-2 --> 3[3. Select compare across forks]
-3 --> 4[4. Select your fork from<br>head repository drop-down menu]
+1[1\. Go to opentelemetry.io repository] --> 2[2\. Select New Pull Request]
+2 --> 3[3\. Select compare across forks]
+3 --> 4[4\. Select your fork from<br>head repository drop-down menu]
 end
 subgraph second [ ]
 direction TB
-5[5. Select your branch from<br>the compare drop-down menu] --> 6[6. Select Create Pull Request]
-6 --> 7[7. Add a description<br>to your PR]
-7 --> 8[8. Select Create pull request]
+5[5\. Select your branch from<br>the compare drop-down menu] --> 6[6\. Select Create Pull Request]
+6 --> 7[7\. Add a description<br>to your PR]
+7 --> 8[8\. Select Create pull request]
 end
 
 first --> second

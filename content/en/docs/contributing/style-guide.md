@@ -94,8 +94,8 @@ cSpell:ignore: <word>
 ```
 
 For any other file, add `cSpell:ignore <word>` in a comment line appropriate for
-the file's context. For a [registry](/ecosystem/registry/) entry YAML file file,
-it might look like this:
+the file's context. For a [registry](/ecosystem/registry/) entry YAML file, it
+might look like this:
 
 ```yaml
 # cSpell:ignore <word>
