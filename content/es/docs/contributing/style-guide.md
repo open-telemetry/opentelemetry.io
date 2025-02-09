@@ -4,7 +4,7 @@ description: Terminología y estilo al escribir documentos de OpenTelemetry.
 linkTitle: Estilo de documentación
 weight: 20
 cSpell:ignore: open-telemetry postgre style-guide textlintrc
-default_lang_commit: 8eb480194ecba4c8b2ce9c16e5cc2947b5b532e2
+default_lang_commit: 99f0ae5760038d51f9e9eb376bb428a2caca8167
 ---
 
 Aún no tenemos una guía de estilo oficial, pero el estilo actual de la
