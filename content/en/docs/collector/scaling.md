@@ -340,7 +340,7 @@ A similar situation happens when using the
 to generate service metrics. When different collectors receive data related to
 the same service, aggregations based on the service name will be inaccurate due
 to violating the
-[single-writer assumption](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#single-writer).
+[single-writer assumption](/docs/specs/otel/metrics/data-model/#single-writer).
 
 To overcome this, the
 [load-balancing exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/loadbalancingexporter/README.md)
