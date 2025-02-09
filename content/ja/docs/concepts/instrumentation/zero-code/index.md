@@ -3,7 +3,7 @@ title: ゼロコード
 description: >-
   コードを書かずにアプリケーションにオブザーバビリティを追加する方法を学ぶ
 weight: 10
-default_lang_commit: d8c5612
+default_lang_commit: 35fde3d
 ---
 
 [運用担当者](/docs/getting-started/ops/)として、ソースを編集することなく、1つ以上のアプリケーションにオブザーバビリティを追加したいと思うかもしれません。
