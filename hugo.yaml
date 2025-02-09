@@ -28,8 +28,6 @@ languages:
     languageName: 日本語 (Japanese)
     params:
       description: OpenTelemetryプロジェクト公式サイト
-      allowing_changes_to_a_pull_request_branch_created_from_a_fork: https://docs.github.com/ja/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork
-
   pt: # cSpell:ignore Português Projeto
     languageName: Português
     languageCode: pt-BR
@@ -104,7 +102,6 @@ params:
   github_repo: https://github.com/open-telemetry/opentelemetry.io
   github_branch: main
   gcs_engine_id: 015faf7de29c34606
-  allowing_changes_to_a_pull_request_branch_created_from_a_fork: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork
 
   ## Social media image path, such as Open Graph's og:image
   #

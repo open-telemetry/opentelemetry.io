@@ -405,8 +405,8 @@ we ask that you adhere to the following:
   PR with the upstream repository.
 - **Do not work from the `main`** branch of your fork, but create a PR-specific
   branch.
-- Ensure that maintainers are [allowed to apply changes to your pull
-  request]({{% param allowing_changes_to_a_pull_request_branch_created_from_a_fork %}}).
+- Ensure that maintainers are
+  [allowed to apply changes to your pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork).
 
 ### Changes from reviewers
 

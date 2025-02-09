@@ -364,7 +364,7 @@ PR がマージされる前に、レビューと編集を数回繰り返すこ�
 
 - もしあなたの PR が簡単な修正でない場合は、**フォークから作業**してください。 リポジトリの上部にある [Fork](https://github.com/open-telemetry/opentelemetry.io/fork) ボタンをクリックし、フォークをローカルにクローンしてください。準備ができたら、アップストリームリポジトリに PR を作成してください。
 - あたなたのフォークの **`main` ブランチから作業をせずに**、PR 専用のブランチを作成してください。
-- メンテナーが[あなたのプルリクエストに変更を加えられること]({{% param allowing_changes_to_a_pull_request_branch_created_from_a_fork %}})を確認してください。
+- メンテナーが[あなたのプルリクエストに変更を加えられること](https://docs.github.com/ja/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork)を確認してください。
 
 ### レビュアーからの変更 {#changes-from-reviewers}
 
