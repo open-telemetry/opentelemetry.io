@@ -15,7 +15,7 @@ Embora a instrumentação externa por meio de
 [soluções de instrumentação sem código](/docs/concepts/instrumentation/zero-code)
 e
 [bibliotecas de instrumentação](/docs/specs/otel/overview/#instrumentation-libraries)
-oferecá uma maneira conveniente de tornar sua aplicação observável, acreditamos
+ofereça uma maneira conveniente de tornar sua aplicação observável, acreditamos
 que, no final, todas as aplicações devem integrar diretamente as APIs e SDKs do
 OpenTelemetry para telemetria nativa ou fornecer um plugin nativo que se encaixe
 no ecossistema do software em questão.
