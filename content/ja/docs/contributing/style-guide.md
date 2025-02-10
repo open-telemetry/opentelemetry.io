@@ -27,8 +27,7 @@ cSpell:ignore: open-telemetry postgre style-guide textlintrc
 
 OpenTelemetry 特有の用語や単語の一覧であり、サイト全体で一貫して利用されるべきもの。
 
-- [OpenTelemetry](/docs/concepts/glossary/#opentelemetry) and
-  [OTel](/docs/concepts/glossary/#otel)
+- [OpenTelemetry](/docs/concepts/glossary/#opentelemetry) と [OTel](/docs/concepts/glossary/#otel)
 - [Collector](/docs/concepts/glossary/#collector)
 - [OTEP](/docs/concepts/glossary/#otep)
 - [OpAMP](/docs/concepts/glossary/#opamp)
