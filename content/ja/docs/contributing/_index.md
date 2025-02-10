@@ -13,9 +13,9 @@ OpenTelemetry のドキュメントとWebサイトのコントリビューショ
 
 - タイプミスやその他の簡単な修正を行う場合は、[GitHub を利用したコンテンツの提出](pull-requests/#changes-using-github)を確認してください
 - より重要なコントリビューションを行う場合は、このセクション内の以下のページからお読みください。
-  - [Prerequisites]
-  - [Issues]
-  - [Submitting content]
+  - [前提条件][Prerequisites]
+  - [イシュー][Issues]
+  - [コンテンツの提出][Submitting content]
 
 [Prerequisites]: prerequisites/
 [Issues]: issues/
