@@ -16743,6 +16743,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-24T14:36:52.894684-05:00"
   },
+  "https://www.cncf.io/training/certification/otca/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-10T11:01:19.113808689-08:00"
+  },
   "https://www.cypress.io/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:32:20.719453-05:00"
