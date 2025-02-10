@@ -8,7 +8,7 @@ author: >-
 canonical_url: https://www.cncf.io/blog/2024/11/04/opentelemetry-is-expanding-into-ci-cd-observability/ 
 issue: 5546
 sig: CI/CD Observability 
-cSpell:ignore: andrzej CICD horovits liatrio slsa
+cSpell:ignore: andrzej CICD frittoli helmuth horovits kowalski liatrio sarahan shkuro skyscanner slsa stencel suereth voss
 ---
 
 ## OpenTelemetry Is Expanding Into CI/CD Observability
@@ -106,7 +106,7 @@ And much more!
 
 ## It takes a village to extend OpenTelemetry
 
-Woah, that’s a lot to do! Most certainly this SIG will continue beyond 2024 and through 2025. Standards are hard, but essential. And, we have some amazing folks that are part of the SIG and contributing to these standards! Who you may ask? 
+Whoa, that’s a lot to do! Most certainly this SIG will continue beyond 2024 and through 2025. Standards are hard, but essential. And, we have some amazing folks that are part of the SIG and contributing to these standards! Who you may ask? 
 
 Firstly we’d like to acknowledge key members of OpenTelemetry leadership committees who have heavily enabled the work we’ve done thus far, and will continue to do.
 
