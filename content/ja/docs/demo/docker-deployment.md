@@ -66,12 +66,12 @@ docker compose -f docker-compose-tests.yml run traceBasedTests
 
 イメージがビルドされ、コンテナが開始されると以下にアクセスできるようになります。
 
-- Web store: <http://localhost:8080/>
+- ウェブストア: <http://localhost:8080/>
 - Grafana: <http://localhost:8080/grafana/>
-- Load Generator UI: <http://localhost:8080/loadgen/>
+- 負荷生成 UI: <http://localhost:8080/loadgen/>
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
-- Tracetest UI: <http://localhost:11633/>、`make run-tracetesting` の使用時のみ
-- Flagd configurator UI: <http://localhost:8080/feature>
+- トレーステスト UI: <http://localhost:11633/>、`make run-tracetesting` の使用時のみ
+- Flagd 設定 UI: <http://localhost:8080/feature>
 
 ## デモのプライマリーポート番号の変更 {#changing-the-demos-primary-port-number}
 
