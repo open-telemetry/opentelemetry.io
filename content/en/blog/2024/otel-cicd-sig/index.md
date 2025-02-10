@@ -8,7 +8,7 @@ author: >-
 canonical_url: https://www.cncf.io/blog/2024/11/04/opentelemetry-is-expanding-into-ci-cd-observability/ 
 issue: 5546
 sig: CI/CD Observability 
-cSpell:ignore: andrzej CICD frittoli helmuth horovits kowalski liatrio sarahan shkuro skyscanner slsa stencel suereth voss
+cSpell:ignore: andrzej bäck bäckmark chacin cicd frittoli grassi helmuth horovits jemmic joao kamphaus keptn kowalski liatrio liudmila molkova robb ruech safyan sarahan shkuro skyscanner slsa stencel suereth voss 
 ---
 
 ## OpenTelemetry Is Expanding Into CI/CD Observability
