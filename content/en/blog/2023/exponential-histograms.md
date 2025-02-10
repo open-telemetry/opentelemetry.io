@@ -198,5 +198,4 @@ _A version of this article was [originally posted][] to the author's blog._
   /docs/specs/otel/metrics/sdk/#base2-exponential-bucket-histogram-aggregation
 [Why Histograms?]: ../why-histograms/
 [Histograms vs Summaries]: ../histograms-vs-summaries/
-
-[originally posted]: {{% param canonical_url %}}
+[originally posted]: <{{% param canonical_url %}}>

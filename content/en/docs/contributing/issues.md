@@ -33,9 +33,8 @@ One of the best ways to help make OTel docs better is to fix an existing issue.
    > process.
    {.mt-3}
 
-   <!-- prettier-ignore -->
-   [good first issue]: {{% param _issue %}}%22good+first+issue%22
-   [help wanted]: {{% param _issue %}}%3A%22help+wanted%22
+   [good first issue]: <{{% param _issue %}}%22good+first+issue%22>
+   [help wanted]: <{{% param _issue %}}%3A%22help+wanted%22>
    [org]: https://github.com/open-telemetry
 
    {{% /alert %}}
