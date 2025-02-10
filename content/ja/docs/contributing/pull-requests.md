@@ -174,7 +174,7 @@ _図 3. ローカルのフォークで作業して変更を追加。_
    git remote add upstream https://github.com/open-telemetry/opentelemetry.io.git
    ```
 
-1. `origin` and `upstream` リポジトリの確認。
+1. `origin` と `upstream` リポジトリの確認。
 
    ```shell
    git remote -v
