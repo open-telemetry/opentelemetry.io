@@ -28,11 +28,11 @@ cSpell:ignore: open-telemetry postgre style-guide textlintrc
 OpenTelemetry 特有の用語や単語の一覧であり、サイト全体で一貫して利用されるべきもの。
 
 - [OpenTelemetry](/docs/concepts/glossary/#opentelemetry) と [OTel](/docs/concepts/glossary/#otel)
-- [Collector](/docs/concepts/glossary/#collector)
+- [コレクター](/docs/concepts/glossary/#collector)
 - [OTEP](/docs/concepts/glossary/#otep)
 - [OpAMP](/docs/concepts/glossary/#opamp)
 
-OpenTelemetry の用語と定義の完璧なリストには、[Glossary](/docs/concepts/glossary/) を参照してください。
+OpenTelemetry の用語と定義の完璧なリストには、[用語集](/docs/concepts/glossary/) を参照してください。
 
 ほかの CNCF プロジェクトやサードパーティツールなどの固有名詞は、適切に表記し、元の大文字・小文字の区別を正しく維持してください。
 たとえば、"postgre" のかわりに "PostgreSQL" と表記してください。
