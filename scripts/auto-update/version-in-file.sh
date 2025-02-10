@@ -88,8 +88,8 @@ branch="opentelemetrybot/auto-update-$repo-$latest_version"
 
 echo "Looking for existing PRs with branch '$branch'."
 existing_pr_all=$(gh pr list --state all --head "$branch")
-# `gh pr list` a list of PRs, each line starting with a PR number if there's a
-# match. Otherwise returns "no ... matches". Test for PR number:
+# `gh pr list` is a list of PRs, each line starting with a PR number if there's
+# a match. Otherwise returns "no ... matches". Test for PR number:
 if [[ "$existing_pr_all" =~ ^[0-9] ]]; then
     echo "PR(s) already exist for '$message':"
     echo $existing_pr_all
