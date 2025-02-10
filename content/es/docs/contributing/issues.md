@@ -1,5 +1,5 @@
 ---
-title: Asuntos
+title: Propuestas
 description:
   Cómo solucionar un problema existente o informar un error, un riesgo de
   seguridad o una posible mejora.
@@ -10,38 +10,38 @@ cSpell:ignore: prepopulated
 default_lang_commit: 99f0ae5760038d51f9e9eb376bb428a2caca8167
 ---
 
-## Solucionando un asunto existente
+## Solucionando una propuesta existente
 
 Una de las mejores maneras de contribuir a mejorar la documentación de
 OpenTelemetry (OTel) es solucionando un problema ya identificado.
 
-1. Navegar por la lista de [asuntos] ({{% param _issues %}}).
-2. Seleccione un asunto en el que le gustaría trabajar, idealmente uno que se
-   pueda solucionar en poco tiempo.
+1. Navegar por la lista de [propuestas] ({{% param _issues %}}).
+2. Seleccione una propuesta en el que le gustaría trabajar, idealmente uno que
+   se pueda solucionar en poco tiempo.
 
    <!-- prettier-ignore -->
    <a name="first-issue"></a>
    {{% alert title="Contribuyendo por la primera vez? " %}}
 
-   Seleccione un asunto con las siguientes etiquetas:
+   Seleccione una propuesta con las siguientes etiquetas:
 
-   - [Buen primer asunto]
-   - [Se busca ayuda]
+   - [Good first issue]
+   - [Help wanted]
 
    <!-- prettier-ignore -->
-   > **NOTA**: **_No_ asignamos asuntos** a aquellos que aún no hayan contribuido a la organización [OpenTelemetry
-   > organization][org], aunque sean parte de un proceso de tutoria o incorporación.
+   > **NOTA**: **_No_ asignamos propuestas** a aquellos que aún no hayan contribuido a la organización [OpenTelemetry
+   > organization][org], a menos que sean parte de un proceso de tutoria o onboarding.
    {.mt-3}
 
    <!-- prettier-ignore -->
-   [buen primer asunto]: {{% param _issue %}}%22good+first+issue%22
-   [se busca ayuda]: {{% param _issue %}}%3A%22help+wanted%22
+   [good first issue]: {{% param _issue %}}%22good+first+issue%22
+   [help wanted]: {{% param _issue %}}%3A%22help+wanted%22
    [org]: https://github.com/open-telemetry
 
    {{% /alert %}}
 
 3. Lea los comentarios del problema, si los hay.
-4. Pregunta a los mantenedores si el asunto sigue siendo relevante y aclara
+4. Pregunta a los mantenedores si la propuesta sigue siendo relevante y aclara
    cualquier duda publicando un comentario.
 5. Comparte tu intención de trabajar en el tema agregando un comentario a este
    efecto.
@@ -53,10 +53,10 @@ OpenTelemetry (OTel) es solucionando un problema ya identificado.
 ## Reportar un problema
 
 Si encuentras un error o quieres hacer unas sugerencias para mejorar el
-contenido existente, abre un asunto.
+contenido existente, abre una propuesta.
 
-1. Haz click en el enlace **Crea un asunto para la documentación** de cualquier
-   documento. Eso te va a redireccionar a una pagina del asunto GitHub
+1. Haz click en el enlace **Crea una propuesta para la documentación** de
+   cualquier documento. Eso te va a redireccionar a una pagina del asunto GitHub
    prellenada con algunos encabezados.
 2. Describa el problema o la sugerencia de mejora. Proporcione tantos detalles
    como pueda.
@@ -74,17 +74,17 @@ de dónde debería ir, aún puedes presentar un asunto. También puedes informar
 errores y vulnerabilidades de seguridad.
 
 1. Ir a [GitHub](https://github.com/open-telemetry/opentelemetry.io/issues/new/)
-   y selecciona **Nuevo asunto** dentro de la pestaña **Asuntos**.
+   y selecciona **Nueva propuesta** dentro de la pestaña **Propuestas**.
 
 1. Seleccione el tipo de problema que mejor se aplica a su solicitud o duda.
 
 1. Rellene la plantilla.
 
-1. Envia el asunto.
+1. Envia la propuesta.
 
-### Como presentar buenos asuntos
+### Como crear buenas propuestas
 
-Tenga en cuenta lo siguiente al presentar un asunto:
+Tenga en cuenta lo siguiente al crear una propuesta:
 
 - Proporcione una descripción clara del problema. Describa específicamente qué
   falta, qué está desactualizado, qué está mal o qué necesita mejorarse.
