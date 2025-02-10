@@ -48,7 +48,7 @@ _図 1. 新しいコンテンツにコントリビュートする。_
 
 {{% alert title="Contributor License Agreement (CLA)" color=warning %}}
 
-すべてのコントリビューターは、変更が承認されてマージされる前に、[コントリビューター ライセンス契約 (CLA)][CLA] に署名する必要があります。
+すべてのコントリビューターは、変更が承認されてマージされる前に、[コントリビューターライセンス契約（Contributor License Agreement、CLA）][CLA] に署名する必要があります。
 
 [CLA]: ../prerequisites/#cla
 
