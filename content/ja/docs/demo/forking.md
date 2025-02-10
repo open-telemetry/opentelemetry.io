@@ -22,4 +22,4 @@ default_lang_commit: 99b15da7137cde4a6352576768f4c9203170d569
 
 フォークメンテナーとしての作業をより容易にする方法についての質問や提案がありましたら、イシューを作成してください。
 
-[demo repository]: {{% param repo %}}
+[demo repository]: <{{% param repo %}}>

@@ -415,4 +415,4 @@ find all files ready to use in our GitHub
 
 _A version of this article was [originally posted][] on the Aspecto blog._
 
-[originally posted]: {{% param canonical_url %}}
+[originally posted]: <{{% param canonical_url %}}>

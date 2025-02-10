@@ -77,4 +77,4 @@ feedback!
 _A version of this article was [originally posted][] on
 [medium.com/opentelemetry](https://medium.com/opentelemetry)._
 
-[originally posted]: {{% param canonical_url %}}
+[originally posted]: <{{% param canonical_url %}}>
