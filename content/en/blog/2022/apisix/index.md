@@ -395,4 +395,4 @@ _A version of this article was [originally posted][] on the Apache APISIX blog._
 
 [^1]: {{% param notes.docker-compose-v2 %}}
 
-[originally posted]: {{% param canonical_url %}}
+[originally posted]: <{{% param canonical_url %}}>
