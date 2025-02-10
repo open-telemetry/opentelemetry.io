@@ -2,7 +2,7 @@
 title: Métricas
 weight: 2
 description: Uma medição capturada em tempo de execução.
-default_lang_commit: eb19d1dd5ab2f66343ec76adbfb31f81024da3a1
+default_lang_commit: 7c0e4db0b6c39b0ca0e7efb17df5610d1b77b8a3
 ---
 
 Uma métrica é uma medição de um serviço capturada em tempo de execução. O
@@ -71,7 +71,7 @@ O tipo de instrumento deve ser um dos seguintes:
   tenha acesso às mudanças contínuas, mas apenas ao valor agregado (ex., atual
   tamanho da fila).
 - **Gauge**: Mede o valor atual no momento da leitura. Um exemplo seria um
-  medidor de tanque de combustível de um veículo. Gauges são assíncronos.
+  medidor de tanque de combustível de um veículo. Gauges são síncronos.
 - **Asynchronous Gauge**: Assim como o **Gauge**, porém é coletado uma vez a
   cada exportação. Pode ser usado em casos onde você não tenha acesso às
   mudanças contínuas, mas apenas ao valor agregado.
@@ -94,11 +94,11 @@ para cada instrumento de medição, que podem ser sobrescritas com o uso de
 _Views_. Por padrão, o projeto OpenTelemetry visa fornecer agregações que sejam
 suportadas por diferentes visualizadores e backends de telemetria.
 
-Ao contrário dos [rastros](/docs/concepts/signals/traces/), que são destinados a
-capturar os ciclos de vida das requisições e fornecer o contexto para as partes
-individuais de uma requisição, as métricas são destinadas a fornecer informações
-estatísticas em forma de dados agregados. Alguns exemplos de caso de uso para as
-métricas incluem:
+Ao contrário dos [rastros](../traces/), que são destinados a capturar os ciclos
+de vida das requisições e fornecer o contexto para as partes individuais de uma
+requisição, as métricas são destinadas a fornecer informações estatísticas em
+forma de dados agregados. Alguns exemplos de caso de uso para as métricas
+incluem:
 
 - Reportar o número total de _bytes_ lidos por um serviço, por tipo de
   protocolo.

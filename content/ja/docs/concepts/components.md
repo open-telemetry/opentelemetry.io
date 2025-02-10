@@ -59,7 +59,7 @@ OpenTelemetryの意欲的なゴールは、すべての一般的なライブラ�
 
 ### エクスポーター {#exporters}
 
-{{% docs/languages/exporters/intro %}}
+{{% ja/docs/languages/exporters/intro %}}
 
 ### ゼロコード計装 {#zero-code-instrumentation}
 
@@ -99,11 +99,11 @@ OpenTelemetryの各言語固有の実装は、いくつかの[ヘッドサンプ
 OpenTelemetryオペレーターはKubernetesオペレーターの実装です。
 オペレーターはOpenTelemetryコレクターを管理し、OpenTelemetryを使用してワークロードの自動計装を行います。
 
-詳細は、[K8sオペレーター](/docs/kubernetes/operator/)のページを参照してください。
+詳細は、[K8sオペレーター](/docs/platforms/kubernetes/operator/)のページを参照してください。
 
 ## Function as a Serviceアセット {#function-as-a-service-assets}
 
 OpenTelemetryは、さまざまなクラウドベンダーが提供する Function-as-a-Service を監視するさまざまな方法をサポートしています。
 OpenTelemetryコミュニティは、現在、アプリケーションを自動計装できるビルド済みのLambdaレイヤーと、アプリケーションを手動または自動で計装する際に使用できるスタンドアロンのコレクターLambdaレイヤーのオプションを提供しています。
 
-詳細は、[Functions as a Service](/docs/faas/)のページを参照してください。
+詳細は、[Functions as a Service](/docs/platforms/faas/)のページを参照してください。

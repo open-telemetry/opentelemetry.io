@@ -1,8 +1,7 @@
 ---
 title: Internal telemetry
 weight: 25
-# prettier-ignore
-cSpell:ignore: alloc batchprocessor journalctl kube otecol pprof tracez underperforming zpages
+cSpell:ignore: alloc batchprocessor journalctl
 ---
 
 You can inspect the health of any OpenTelemetry Collector instance by checking
@@ -10,6 +9,18 @@ its own internal telemetry. Read on to learn about this telemetry and how to
 configure it to help you
 [monitor](#use-internal-telemetry-to-monitor-the-collector) and
 [troubleshoot](/docs/collector/troubleshooting/) the Collector.
+
+{{% alert title="Important" color="warning" %}} The Collector uses the
+OpenTelemetry SDK
+[declarative configuration schema](https://github.com/open-telemetry/opentelemetry-configuration)
+for configuring how to export its internal telemetry. This schema is still under
+[development](/docs/specs/otel/document-status/#lifecycle-status) and may
+undergo **breaking changes** in future releases. We intend to keep supporting
+older schemas until a 1.0 schema release is available, and offer a transition
+period for users to update their configurations before dropping pre-1.0 schemas.
+For details and to track progress see
+[issue #10808](https://github.com/open-telemetry/opentelemetry-collector/issues/10808).
+{{% /alert %}}
 
 ## Activate internal telemetry in the Collector
 
@@ -210,7 +221,7 @@ Prometheus exporter, regardless of their origin, are prefixed with `otelcol_`.
 This includes metrics from both Collector components and instrumentation
 libraries. {{% /alert %}}
 
-{{% comment %}}
+{{< comment >}}
 
 To compile this list, configure a Collector instance to emit its own metrics to
 the localhost:8888/metrics endpoint. Select a metric and grep for it in the
@@ -223,7 +234,7 @@ the .go file that contains the list of metrics. In the case of
 Note that the Collector's internal metrics are defined in several different
 files in the repository.
 
-{{% /comment %}}
+{{< /comment >}}
 
 #### `basic`-level metrics
 

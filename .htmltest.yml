@@ -5,6 +5,7 @@ IgnoreAltMissing: true
 IgnoreCanonicalBrokenLinks: false
 IgnoreInternalEmptyHash: true # TODO: remove after resolution of https://github.com/google/docsy/issues/1995
 CheckMailto: false
+# StripQueryString: false # TODO: enable once htmltest is fixed
 TestFilesConcurrently: true
 IgnoreDirs:
   # DO NOT EDIT! IgnoreDirs list is auto-generated from markdown file front matter.
@@ -34,8 +35,11 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
 
   - ^https://deploy-preview-\d+--opentelemetry.netlify.app/
   - ^https://www\.googletagmanager\.com
+  - ^(https:)?//translate.google.com
 
-  - ^https?://localhost\b
+  # Don't ignore `:1313` since it is often a docs link copy-paste error, e.g.:
+  # https://github.com/open-telemetry/opentelemetry.io/pull/6123
+  - ^https?://localhost(:([^1]|16*)|(/.*)?$)
   - ^https?://127\.0\.0\.1\b
   - ^https?://(otel-demo|traefik)\.localhost
 
@@ -43,45 +47,52 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://pdf.sciencedirectassets.com/280203/1-s2.0-S1877050919X0006X/1-s2.0-S1877050919303576/main.pdf\?
 
   # Sites that deny access, always yielding 401, 403 Forbidden, 406, or other:
-  - ^https://(www\.)?linkedin\.com\b # 999 Request Denied
-  - ^https://(www\.)?mvnrepository\.com
-  - ^https://(www\.|eng\.)?uber\.com/(blog|flipr)/ # 406
-  - ^https://kofo.dev
-  - ^https://platform.openai.com
-  - ^https://openai.com
-  - ^https://star-history.com
+  - ^https://platform.openai.com # Really hard to trick into giving a 200 when using a script; manually verify links
+  - ^https://star-history.com # link contain ampersands in URL anchor part, which htmltest escapes, so it's not found
   - ^https://twitter.com
-  - ^https://www.chathamhouse.org
-  - ^https://www.farfetch.com
-  - ^https://www.zocdoc.com
+  - ^https://www.youtube.com/playlist\?list= # htmltest doesn't process query parameters
   - ^https://x.com
-  - ^https://maven.org
-  # OTel Google calendar - curl returns 200, but the link checker gets a 401:
-  - ^https://calendar.google.com/calendar/embed\?src=google.com_b79e3e90j7bbsa2n2p5an5lf60%40group.calendar.google.com
-  # YouTube playlists sometimes give a 404, although they give a 200 when accessed via browser:
-  - ^https://www.youtube.com/playlist\?list=
 
   # Ignore Docsy-generated GitHub links for now, until
   # https://github.com/google/docsy/issues/1432 is fixed
-  - ^https?://github\.com/.*?/.*?/(new|edit|issues/new\?title)/ # view-page, edit-source etc
-  # Here's an approximate regex to avoid the "View page source" links. TODO: fix this in Docsy
-  - ^https?://github\.com/open-telemetry/opentelemetry.io/tree/
-  # FIXME: A patch until we can get Docsy to mark "View page source" links as excluded from link checking,
-  # Actually, it would be better to pin the version of the OTel spec.
-  - ^https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/logs/event-(api|sdk)\.md
+  - ^https?://github\.com/.*?/.*?/(new/|edit/|issues/new\?) # view-page, edit-source etc
+  # Ignore "View page source" links, except for spec pages, i.e., links starting with
+  # https://github.com/open-telemetry/opentelemetry.io/tree/main/content/en/docs/specs
+  - ^https://github\.com/open-telemetry/opentelemetry.io/tree/main/content/[^e]
+  - ^https://github\.com/open-telemetry/opentelemetry.io/tree/main/content/es
+  - ^https://github\.com/open-telemetry/opentelemetry.io/tree/main/content/en/.*?/_index.md$
+  - ^https://github\.com/open-telemetry/opentelemetry.io/tree/main/content/en/[^d]
+  - ^https://github\.com/open-telemetry/opentelemetry.io/tree/main/content/en/docs/[^s]
+  - ^https://github\.com/open-telemetry/opentelemetry.io/tree/main/content/en/docs/security
   # FIXME: same issue as for the OTel spec mentioned above:
   - ^https://github.com/open-telemetry/semantic-conventions/tree/main
-
-  # Ignore some links to GH repo content for now, most 4XX
-  - ^https?://github\.com/open-telemetry/opentelemetry-demo/blob/main/src/(imageprovider|loadgenerator|otelcollector|.*service)
 
   # Too many redirects as the server tries to figure out the country and language,
   # e.g.: https://www.microsoft.com/en-ca/sql-server.
   - ^https://www.microsoft.com/sql-server$
 
-  # TODO: drop after fix to https://github.com/rust-lang/crates.io/issues/788
-  - ^https://crates\.io/crates
   # TODO move into content/en/blog/2023/humans-of-otel.md once https://github.com/open-telemetry/opentelemetry.io/issues/3889 is implemented
   - ^https://shorturl.at/osHRX$
   # TODO move into content/en/blog/2023/contributing-to-otel/index.md once https://github.com/open-telemetry/opentelemetry.io/issues/3889 is implemented
   - ^https://shorturl.at/vLYZ0$
+
+  # Temporary until semconv is updated to 1.30.0+
+  - ^https://cloud.google.com/apis/design/resource_names#full_resource_name
+  - ^https://cloud.google.com/functions/docs/concepts/exec#function_scope_versus_global_scope
+  - ^https://developer.apple.com/documentation/uikit/uiapplicationdelegate#1656902
+  - ^https://docs.docker.com/registry/spec/manifest-v2-2/#example-image-manifest
+  - ^https://www.openssl.org/docs/man1.1.1/man3/SSL_get_version.html#RETURN-VALUES
+  - ^https://www.erlang.org/doc/man/erl_error.html#format_exception-3
+  # Fixed via https://github.com/open-telemetry/semantic-conventions/pull/1814
+  - ^https://github.com/open-telemetry/opentelemetry-specification/tree/v1.41.0/specification/logs/api.md#emit-an-event
+
+  # Temporary until
+  # https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth@v0.120.0+
+  # is published to include
+  # https://github.com/open-telemetry/opentelemetry-collector/pull/12309
+  - ^https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#client-authenticators
+  - ^https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#server-authenticators
+
+  # Temporary until
+  # https://github.com/open-telemetry/opentelemetry.io/issues/6237 is resolved
+  - ^https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#

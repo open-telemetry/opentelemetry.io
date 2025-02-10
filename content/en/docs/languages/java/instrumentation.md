@@ -8,7 +8,7 @@ aliases:
   - libraries
 weight: 10
 description: Instrumentation ecosystem in OpenTelemetry Java
-cSpell:ignore: Logback logback
+cSpell:ignore: logback
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
@@ -20,16 +20,14 @@ instrumentation API calls. This page discusses the OpenTelemetry ecosystem in
 OpenTelemetry Java, including resources for end users and cross-cutting
 instrumentation topics:
 
-- [Instrumentation categories](#instrumentation-categories): There are a variety
-  of categories of instrumentation addressing different use cases and
-  installation patterns.
-- [Context propagation](#context-propagation): Context propagation provides
-  correlation between traces, metrics, and logs, allowing the signals to
-  complement each other.
-- [Semantic conventions](#semantic-conventions): The semantic conventions define
-  how to produce telemetry for standard operations.
-- [Log instrumentation](#log-instrumentation): The semantic conventions define
-  how to produce telemetry for standard operations.
+- [Instrumentation categories](#instrumentation-categories) addressing different
+  use cases and installation patterns.
+- [Context propagation](#context-propagation) provides correlation between
+  traces, metrics, and logs, allowing the signals to complement each other.
+- [Semantic conventions](#semantic-conventions) define how to produce telemetry
+  for standard operations.
+- [Log instrumentation](#log-instrumentation), which is used to get logs from an
+  existing Java logging framework into OpenTelemetry.
 
 {{% alert %}} While [instrumentation categories](#instrumentation-categories)
 enumerates several options for instrumenting an application, we recommend users
@@ -236,3 +234,10 @@ document.
 Log correlation with traces is available by installing a [shim](#shims) to
 bridge OpenTelemetry context into the log framework. See "Bridge OpenTelemetry
 context into Log4j", "Bridge OpenTelemetry context into Logback" entries.
+
+{{% alert title="Note" color="info" %}}
+
+An end-to-end example of log instrumentation using stdout is available in the
+[Java examples repository](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md).
+
+{{% /alert %}}

@@ -7,7 +7,7 @@ author: >
   Markou](https://github.com/ChrsMark) (Elastic)
 sig: Collector
 issue: opentelemetry-collector-contrib#34427
-cSpell:ignore: Dmitrii Anoshin Markou
+cSpell:ignore: Anoshin Dmitrii Markou
 ---
 
 In the world of containers and [Kubernetes](https://kubernetes.io/),
@@ -70,9 +70,10 @@ So, what if, as a Collector user, you could simply enable automatic discovery
 and then let your cluster users tell the Collector how their workloads should be
 monitored by annotating their pods properly? That sounds awesome, and it’s not
 actually something new. OpenTelemetry already supports auto-instrumentation
-through the [Kubernetes operator](/docs/kubernetes/operator/automatic/),
-allowing users to instrument their applications automatically just by annotating
-their pods. In addition, this is a feature that other monitoring agents in the
+through the
+[Kubernetes operator](/docs/platforms/kubernetes/operator/automatic/), allowing
+users to instrument their applications automatically just by annotating their
+pods. In addition, this is a feature that other monitoring agents in the
 observability industry already support, and users are familiar with it.
 
 All this motivation led the OpenTelemetry community

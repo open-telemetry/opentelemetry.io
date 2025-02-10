@@ -11,7 +11,7 @@ authors:
 package:
   registry: gems
   name: opentelemetry-instrumentation-redis
-  version: 0.26.0
+  version: 0.26.1
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/redis
 createdAt: 2020-11-09
