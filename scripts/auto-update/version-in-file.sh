@@ -86,13 +86,17 @@ body="Update $repo version to \`$latest_version\`.
 See https://github.com/open-telemetry/$repo/releases/tag/$latest_version."
 branch="opentelemetrybot/auto-update-$repo-$latest_version"
 
+echo "Looking for existing PRs with branch '$branch'."
 existing_pr_all=$(gh pr list --state all --head "$branch")
-existing_pr_count=$(echo "$existing_pr_all" | wc -l)
-if [ "$existing_pr_count" -gt 0 ]; then
+# `gh pr list` is a list of PRs, each line starting with a PR number if there's
+# a match. Otherwise returns "no ... matches". Test for PR number:
+if [[ "$existing_pr_all" =~ ^[0-9] ]]; then
     echo "PR(s) already exist for '$message':"
     echo $existing_pr_all
     echo "So we won't create another. Exiting."
     exit 0
+else
+  echo "None found."
 fi
 
 if [[ "$repo" == "opentelemetry-specification"
