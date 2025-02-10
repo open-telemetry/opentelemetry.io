@@ -1,9 +1,8 @@
-{{/* cSpell:ignore goog
-<!-- prettier-ignore -->
-*/ -}}
-{{ $pageProseLang := partial "i18n/lang.html" . -}}
+{{/* cSpell:ignore goog */ -}}
+{{ $pageProseLang := (partial "i18n/lang.html" .).Lang -}}
 {{ $siteLang := .Site.Language.Lang -}}
-{{- if ne $siteLang $pageProseLang -}}
+
+{{ if ne $siteLang $pageProseLang -}}
 
 <script type="text/javascript">
   const infoToConsole = false;
