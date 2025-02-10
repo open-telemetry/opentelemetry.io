@@ -189,7 +189,7 @@ _図 3. ローカルのフォークで作業して変更を追加。_
    upstream	https://github.com/open-telemetry/opentelemetry.io.git (push)
    ```
 
-1. フォークの `origin/main` と `open-telemetry/opentelemetry.io`'s `upstream/main` からコミットをフェッチ。
+1. フォークの `origin/main` と `open-telemetry/opentelemetry.io` の `upstream/main` からコミットをフェッチ。
 
    ```shell
    git fetch origin
