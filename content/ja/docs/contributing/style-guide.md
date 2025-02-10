@@ -35,7 +35,7 @@ OpenTelemetry 特有の用語や単語の一覧であり、サイト全体で一
 OpenTelemetry の用語と定義の完璧なリストには、[Glossary](/docs/concepts/glossary/) を参照してください。
 
 ほかの CNCF プロジェクトやサードパーティツールなどの固有名詞は、適切に表記し、元の大文字・小文字の区別を正しく維持してください。
-例えば、"postgre" のかわりに "PostgreSQL" と表記してください。
+たとえば、"postgre" のかわりに "PostgreSQL" と表記してください。
 全てのリストは、[`.textlintrc.yml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.textlintrc.yml) を確認してください。
 
 {{% alert title="Tip" %}}
