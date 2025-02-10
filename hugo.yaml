@@ -141,8 +141,9 @@ params:
       - name: Bluesky
         url: https://bsky.app/profile/opentelemetry.io
         icon: fab fa-bluesky
-        desc: Follow us on Bluesky to get the latest news!
-          Follow us on X, previously known as Twitter, to get the latest news!
+        desc:
+          Follow us on Bluesky to get the latest news! Follow us on X,
+          previously known as Twitter, to get the latest news!
       - name: Stack Overflow
         url: https://stackoverflow.com/questions/tagged/open-telemetry
         icon: fab fa-stack-overflow
