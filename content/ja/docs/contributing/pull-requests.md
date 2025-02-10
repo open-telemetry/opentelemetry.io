@@ -25,7 +25,7 @@ flowchart LR
     subgraph first[コントリビュートする方法]
     direction TB
        T[ ] -.-
-       B[GitHub でフォークする] --- C[マークダウンでドキュメントを作成する<br>Hugo でサイトをビルドする]
+       B[GitHub でフォークする] --- C[Markdownでドキュメントを作成する<br>Hugo でサイトをビルドする]
        C --- D[フォーク先にソースコードを push する]
        D --- E[プルリクエストを公開する]
        E --- F[CNCF CLA に署名する]
@@ -60,7 +60,7 @@ A([fa:fa-user 新しい<br>コントリビューター]) --- id1[(open-telemetry
 subgraph tasks[GitHub を使用した変更]
 direction TB
     0[ ] -.-
-    1[1\. ページを編集] --> 2[2\. GitHub マークダウンエディターを利用して変更を加える]
+    1[1\. ページを編集] --> 2[2\. GitHub Markdownエディターを利用して変更を加える]
     2 --> 3[3\. Propose file change を記入]
 
 end
