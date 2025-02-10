@@ -21,4 +21,4 @@ mas, caso contrário, reservamo-nos o direito de editar e remover entradas e seu
 dados.
 
 [dados da lista]:
-  https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystemy
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem
