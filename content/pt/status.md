@@ -3,6 +3,7 @@ title: Estado
 menu: { main: { weight: 30 } }
 aliases: [/project-status, /releases]
 description: Nível de maturidade dos principais componentes do OpenTelemetry
+default_lang_commit: a6e46dac8b73165a904e9fee4c1ee46305a8b968
 ---
 
 {{% blocks/section color="white" %}}
