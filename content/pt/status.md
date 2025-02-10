@@ -13,7 +13,7 @@ default_lang_commit: a6e46dac8b73165a904e9fee4c1ee46305a8b968
 O OpenTelemetry é composto de
 [diversos componentes](/docs/concepts/components/), alguns específicos de
 linguagem e outros independentes de linguagem. Ao procurar por um
-[estado](/docs/specs/otel/versioning-and-stability/), certifiqque-se de
+[estado](/docs/specs/otel/versioning-and-stability/), certifique-se de
 verificar o estado na página do componente correto. Por exemplo, o estado de um
 sinal na especificação pode não ser o mesmo que o estado do sinal em um SDK de
 uma linguagem especifica.
