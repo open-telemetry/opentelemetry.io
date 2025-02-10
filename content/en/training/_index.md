@@ -8,8 +8,15 @@ description: Training programs, certifications, and support resources for OpenTe
 
 ## {{% param title %}}
 
+This page showcases training and support resources for the OpenTelemetry project. Check back often for updates!
+
+### Certifications
+
 Demonstrate your expertise in OpenTelemetry by becoming an OpenTelemetry Certified Associate.
 
-<a href="https://www.cncf.io/training/certification/otca/"><img src="/lft_badge_opentelemetry_associate1.svg" width="300" height="300">
+<a href="https://www.cncf.io/training/certification/otca/">
+  <img src="/lft_badge_opentelemetry_associate2.svg" style="width: 300px; height: auto;" alt="OTCA Badge">
+</a>
 
 {{% /blocks/section %}}
+
