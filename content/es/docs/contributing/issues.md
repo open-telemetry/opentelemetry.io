@@ -15,12 +15,12 @@ default_lang_commit: 99f0ae5760038d51f9e9eb376bb428a2caca8167
 Una de las mejores maneras de contribuir a mejorar la documentación de
 OpenTelemetry (OTel) es solucionando un problema ya identificado.
 
-1. Navegar por la lista de asuntos [issues]({{% param _issues %}}).
+1. Navegar por la lista de [asuntos] ({{% param _issues %}}).
 2. Seleccione un asunto en el que le gustaría trabajar, idealmente uno que se
    pueda solucionar en poco tiempo.
 
    <!-- prettier-ignore -->
-   <a name="primer-asunto"></a>
+   <a name="first-issue"></a>
    {{% alert title="Contribuyendo por la primera vez? " %}}
 
    Seleccione un asunto con las siguientes etiquetas:
