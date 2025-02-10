@@ -313,7 +313,8 @@ app = Flask(__name__)
 
 @app.route("/rolldice")
 def roll_dice():
-    return str(roll())
+    with tracer.start_as_current_span("/rolldice") as main_span:
+        return str(roll())
 
 def roll():
     # This creates a new span that's the child of the current one
