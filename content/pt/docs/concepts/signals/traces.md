@@ -2,7 +2,7 @@
 title: Rastros
 weight: 1
 description: O caminho de uma solicitação através do seu aplicativo.
-default_lang_commit: 57cd4f78d61cc1642ce56089aeec7ae278544194
+default_lang_commit: 7c0e4db0b6c39b0ca0e7efb17df5610d1b77b8a3
 ---
 
 Os **rastros** nos fornecem uma visão geral do que acontece quando uma
@@ -27,8 +27,8 @@ trecho `olá`:
 {
   "name": "olá",
   "context": {
-    "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-    "span_id": "0x051581bf3cb55c13"
+    "trace_id": "5b8aa5a2d2c872e8321cf37308d69df2",
+    "span_id": "051581bf3cb55c13"
   },
   "parent_id": null,
   "start_time": "2022-04-29T18:52:58.114201Z",
@@ -58,10 +58,10 @@ O trecho `olá-cumprimentos`:
 {
   "name": "olá-cumprimentos",
   "context": {
-    "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
+    "trace_id": "5b8aa5a2d2c872e8321cf37308d69df2",
     "span_id": "0x5fb397be34d26b51"
   },
-  "parent_id": "0x051581bf3cb55c13",
+  "parent_id": "051581bf3cb55c13",
   "start_time": "2022-04-29T18:52:58.114304Z",
   "end_time": "2022-04-29T22:52:58.114561Z",
   "attributes": {
@@ -97,10 +97,10 @@ O trecho `olá-saudações`:
 {
   "name": "olá-saudações",
   "context": {
-    "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-    "span_id": "0x93564f51e1abe1c2"
+    "trace_id": "5b8aa5a2d2c872e8321cf37308d69df2",
+    "span_id": "5fb397be34d26b51"
   },
-  "parent_id": "0x051581bf3cb55c13",
+  "parent_id": "051581bf3cb55c13",
   "start_time": "2022-04-29T18:52:58.114492Z",
   "end_time": "2022-04-29T18:52:58.114631Z",
   "attributes": {
@@ -163,7 +163,7 @@ A propagação de contexto é o conceito central que possibilita o rastreamento
 distribuído. Com a propagação de contexto, trechos podem ser correlacionados
 entre si e montados em um rastro, independentemente de onde os trechos são
 gerados. Para saber mais sobre este tópico, consulte a página de conceitos sobre
-[Propagação de Contexto](/docs/concepts/context-propagation).
+[Propagação de Contexto](../../context-propagation).
 
 ## Trechos {#spans}
 
@@ -234,8 +234,7 @@ O contexto do trecho é um objeto imutável em cada trecho que contém o seguint
   rastro específicos do fornecedor
 
 O contexto do trecho é a parte de um trecho que é serializada e propagada junto
-com a [propagação de contexto](#context-propagation) e
-[baggage](/docs/concepts/signals/baggage).
+com a [Propagação de Contexto](#context-propagation) e [Baggage](../baggage).
 
 Como o contexto do trecho contém o trace ID, o trace ID é usado ao criar
 [links de trechos](#span-links).
@@ -317,6 +316,9 @@ segundo rastro. Agora, eles estão causalmente associados entre si.
 
 Os links são opcionais, mas servem como uma boa maneira de associar trechos de
 rastro uns aos outros.
+
+Para mais informações sobre Links de Trechos, consulte
+[Link](/docs/specs/otel/trace/api/#link).
 
 ### O estado do Trecho {#span-status}
 

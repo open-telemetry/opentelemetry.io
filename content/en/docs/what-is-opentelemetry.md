@@ -77,9 +77,9 @@ OpenTelemetry consists of the following major components:
 - The [OpenTelemetry Collector](/docs/collector), a proxy that receives,
   processes, and exports telemetry data
 - Various other tools, such as the
-  [OpenTelemetry Operator for Kubernetes](/docs/kubernetes/operator/),
-  [OpenTelemetry Helm Charts](/docs/kubernetes/helm/), and
-  [community assets for FaaS](/docs/faas/)
+  [OpenTelemetry Operator for Kubernetes](/docs/platforms/kubernetes/operator/),
+  [OpenTelemetry Helm Charts](/docs/platforms/kubernetes/helm/), and
+  [community assets for FaaS](/docs/platforms/faas/)
 
 OpenTelemetry is used by a wide variety of
 [libraries, services and apps](/ecosystem/integrations/) that have OpenTelemetry
@@ -110,7 +110,7 @@ designed to make it possible at nearly every level.
 
 OpenTelemetry is a
 [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io) project that is
-the result of a merger between two prior projects,
+the result of a [merger] between two prior projects,
 [OpenTracing](https://opentracing.io) and [OpenCensus](https://opencensus.io).
 Both of these projects were created to solve the same problem: the lack of a
 standard for how to instrument code and send telemetry data to an Observability
@@ -120,6 +120,9 @@ single solution.
 
 If you are currently using OpenTracing or OpenCensus, you can learn how to
 migrate to OpenTelemetry in the [Migration guide](/docs/migration/).
+
+[merger]:
+  https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/
 
 ## What next?
 

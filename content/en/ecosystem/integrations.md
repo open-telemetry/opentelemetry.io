@@ -42,7 +42,7 @@ have a CNCF logo beside their name.
 
 {{% ecosystem/integrations-table "application integrations" %}}
 
-## How to add your integration {#how-to-add}
+## Adding your integration {#how-to-add}
 
 To have your library, service, or app listed, [submit a PR] with an entry added
 to the [registry](/ecosystem/registry/adding). The entry should include the
@@ -67,3 +67,5 @@ end users, see [Vendors](/ecosystem/vendors).
 {{% /alert %}}
 
 [submit a PR]: /docs/contributing/pull-requests/
+
+{{% ecosystem/keep-up-to-date integration %}}

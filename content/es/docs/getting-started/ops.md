@@ -17,7 +17,7 @@ las aplicaciones sin tocar su código, te recomendamos aprender lo siguiente:
 - [¿Qué es OpenTelemetry?](../../what-is-opentelemetry/)
 - [¿Cómo puedo instrumentar aplicaciones sin tocar su código?](../../concepts/instrumentation/zero-code/)
 - [¿Cómo puedo configurar un colector?](../../collector/)
-- [¿Cómo puedo automatizar Kubernetes con el OpenTelemetry Operator?](../../kubernetes/operator/)
+- [¿Cómo puedo automatizar Kubernetes con el OpenTelemetry Operator?](../../platforms/kubernetes/operator/)
 
 Si estás buscando un conjunto de aplicaciones para hacer pruebas, encontrarás
 útil nuestra [demo oficial de OpenTelemetry](/ecosystem/demo/).

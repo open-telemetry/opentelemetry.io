@@ -1,9 +1,8 @@
 ---
 title: コレクターのインストール
-# prettier-ignore
-cSpell:ignore: darwin dpkg GOARCH journalctl kubectl otelcorecol pprof tlsv zpages
 weight: 2
 default_lang_commit: a570a00
+cSpell:ignore: darwin dpkg journalctl kubectl otelcorecol pprof tlsv zpages
 ---
 
 OpenTelemetryコレクターはさまざまなオペレーティングシステムやアーキテクチャにデプロイできます。
@@ -81,7 +80,7 @@ kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-
 また、[OpenTelemetry Operator][] を使って、OpenTelemetryコレクターインスタンスのプロビジョニングとメンテナンスを行えます。
 この機能には、自動アップグレード処理、OpenTelemetry コンフィギュレーションに基づいた `Service` コンフィギュレーション、デプロイメントへの自動サイドカーインジェクションなどがあります。
 
-Kubernetesでコレクターを使用する方法については、[Kubernetesで始める](/docs/kubernetes/getting-started/)を参照してください。
+Kubernetesでコレクターを使用する方法については、[Kubernetesで始める](/docs/platforms/kubernetes/getting-started/)を参照してください。
 
 ## Nomad
 
@@ -290,7 +289,7 @@ make otelcorecol
 
 [data collection]: /docs/concepts/components/#collector
 [deployment methods]: ../deployment/
-[opentelemetry helm charts]: /docs/kubernetes/helm/
-[opentelemetry operator]: /docs/kubernetes/operator/
+[opentelemetry helm charts]: /docs/platforms/kubernetes/helm/
+[opentelemetry operator]: /docs/platforms/kubernetes/operator/
 [getting started with opentelemetry on hashicorp nomad]: https://github.com/hashicorp/nomad-open-telemetry-getting-started
 [releases]: https://github.com/open-telemetry/opentelemetry-collector-releases/releases

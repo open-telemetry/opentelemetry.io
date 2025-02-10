@@ -1,7 +1,6 @@
 ---
 title: Annotations
 weight: 50
-cSpell:ignore: proxys
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -50,7 +49,7 @@ public class TracedClass {
 <!-- prettier-ignore-end -->
 
 {{% alert title="Note" color="info" %}} The OpenTelemetry annotations use Spring
-AOP based on proxys.
+AOP based on proxies.
 
 These annotations work only for the methods of the proxy. You can learn more in
 the
@@ -120,3 +119,8 @@ annotation:
 | Name    | Type     | Description    | Default Value         |
 | ------- | -------- | -------------- | --------------------- |
 | `value` | `String` | Attribute name | Method parameter name |
+
+## Next steps
+
+Beyond the use of annotations, the OpenTelemetry API allows you to obtain a
+tracer that can be used [custom instrumentation](../api).

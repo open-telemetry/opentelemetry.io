@@ -113,10 +113,11 @@ rules:
       # https://github.com/sapegin/textlint-rule-terminology/blob/ca36a645c56d21f27cb9d902b5fb9584030c59e3/index.js#L137-L142.
       #
       - ['3rd[- ]party', third-party]
-      - ['auto[- ]c(onfigur)(es?|ations?)', 'autoc$1$2'] # cspell:ignore autoc ations onfigur
+      - ['auto[- ]c(onfigur)(es?|ations?)', 'autoc$1$2'] # cSpell:disable-line
       - ['back[- ]end(s)?', 'backend$1']
       - [bugfix, bug fix]
       - [byte code, bytecode]
+      - ['(cloud)-(native)', '$1 $2']
       - [cpp, C++]
       - # dotnet|.net -> .NET, but NOT for strings like:
         # - File extension: file.net
@@ -146,8 +147,9 @@ rules:
         # - Compound names: go.opentelemetry.io
         # - Paths: medium.com/opentelemetry
         # - Repo names: opentelemetry-cpp or ocaml-opentelemetry
+        # - Repo names: open-telemetry/opentelemetry-cpp
         # - Slack or social media anchors: #opentelemetry or @opentelemetry
-        - '(?<![-#@./])\bopen[- ]?telemetry\b(?![.-])'
+        - '(?<![-#@./])\bopen[- ]?telemetry\b(?![-./])'
         - OpenTelemetry
       - [os x, macOS]
       - [postgres, PostgreSQL]
@@ -159,6 +161,8 @@ rules:
       - ['screen[- ]shot(s)?', screenshot$1]
       - ['time[- ]stamp(s)?', timestamp$1]
       - ["uid['’]?(s)?", UID$1]
+      - ['(walk)-(throughs?)', $1$2] # cSpell:disable-line
+      - ['(work)-(arounds?)', $1$2]
       # Enable the following to find and replace "instrumentation module/package" with "instrumentation library":
       # - ["(auto(matic)?[- ])?instrumentation (module|package)", "instrumentation library"]
       # - ["(auto(matic)?[- ])?instrumentation (modules|packages)", "instrumentation libraries"]

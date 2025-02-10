@@ -29,7 +29,7 @@ async function pruneTask() {
     num: {
       alias: 'n',
       type: 'number',
-      description: 'Maximum number of entries to prune.',
+      description: 'Maximum number of date-based entries to prune.',
       default: n_default,
     },
     before: {
@@ -102,7 +102,7 @@ async function pruneTask() {
           pruneCandidatesByDate__sorted.length
         } entries as prune candidates for before-date ${formattedDate(
           beforeDate,
-        )}.`,
+        )}. Number of date-based entries to delete: ${n}.`,
       );
     }
 
@@ -112,15 +112,16 @@ async function pruneTask() {
     if (list) {
       listEntries(keysToPrune, entries);
       return;
-    } else if (n == 0) {
+    } else if (n == 0 && numEntriesWith4xxStatus == 0) {
       console.log(
-        `WARN: num is ${n} so no entries will be pruned by date. Specify number of entries to prune as --num <n>. For more info use --info`,
+        `WARN: num is ${n} so no date-based entries will be pruned by date. Specify number of entries to prune as --num <n>. For more info use --info`,
       );
-      if (numEntriesWith4xxStatus == 0) return;
     }
 
-    keysToPrune.forEach((key) => delete entries[key]);
-    console.log(`INFO: ${keysToPrune.length} entries pruned.`);
+    if (n > 0) keysToPrune.forEach((key) => delete entries[key]);
+    const deleteCount =
+      Math.min(n, keysToPrune.length) + numEntriesWith4xxStatus;
+    console.log(`INFO: ${deleteCount} entries pruned.`);
     const prettyJson = JSON.stringify(entries, null, 2) + '\n';
     await fs.writeFile(refcacheFile, prettyJson, 'utf8');
   } catch (err) {

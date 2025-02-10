@@ -4,7 +4,7 @@ linkTitle: Configure the SDK
 weight: 13
 aliases: [config]
 # prettier-ignore
-cSpell:ignore: authservice autoconfigured blrp Customizer Dotel ignore LOWMEMORY myservice ottrace PKCS retryable tracepropagators
+cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS retryable
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -144,7 +144,7 @@ Properties for configuring [resource](../sdk/#resource):
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | `otel.service.name`                     | Specify logical service name. Takes precedence over `service.name` defined with `otel.resource.attributes`.                             | `unknown_service:java` |
 | `otel.resource.attributes`              | Specify resource attributes in the following format: `key1=val1,key2=val2,key3=val3`.                                                   |                        |
-| `otel.resource.disabled-keys`           | Specify resource attribute keys to filter.                                                                                              |                        |
+| `otel.resource.disabled.keys`           | Specify resource attribute keys to filter.                                                                                              |                        |
 | `otel.java.enabled.resource.providers`  | Comma-separated list of `ResourceProvider` fully qualified class names to enable. **[1]** If unset, all resource providers are enabled. |                        |
 | `otel.java.disabled.resource.providers` | Comma-separated list of `ResourceProvider` fully qualified class names to disable. **[1]**                                              |                        |
 

@@ -22,11 +22,10 @@ is provided as a convenience for the community. {{% /alert %}}
 
 {{% ecosystem/distributions-table %}}
 
-## How to add your distribution {#how-to-add}
+## Adding your distribution {#how-to-add}
 
 To have your distribution listed, [submit a PR] with an entry added to the
-[distributions list](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/distributions.yaml).
-The entry should include the following:
+[distributions list]. The entry should include the following:
 
 - Link to the main page of your distribution
 - Link to the documentation that explains how to use the distribution
@@ -48,3 +47,8 @@ The entry should include the following:
 {{% /alert %}}
 
 [submit a PR]: /docs/contributing/pull-requests/
+
+{{% ecosystem/keep-up-to-date distribution %}}
+
+[distributions list]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/distributions.yaml

@@ -54,7 +54,7 @@ found here:
 - [Quote Service](services/quote/)
 - [Recommendation Service](services/recommendation/)
 - [Shipping Service](services/shipping/)
-- [Image Provider Service](services/imageprovider/)
+- [Image Provider Service](services/image-provider/)
 - [React Native App](services/react-native-app/)
 
 ## Scenarios

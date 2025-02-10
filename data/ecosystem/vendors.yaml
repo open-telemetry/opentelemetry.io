@@ -28,6 +28,12 @@
   contact:
   oss: false
   commercial: true
+- name: OpenSearch
+  nativeOTLP: true
+  url: https://github.com/opensearch-project/OpenSearch
+  contact: opensearch@amazon.com
+  oss: true
+  commercial: false
 - name: Axiom
   nativeOTLP: true
   url: https://axiom.co/docs/send-data/opentelemetry
@@ -55,7 +61,7 @@
 - name: Causely
   distribution: false
   nativeOTLP: true
-  url: https://github.com/Causely/documentation
+  url: https://www.causely.ai/blog/using-opentelemetry-and-the-otel-collector-for-logs-metrics-and-traces
   contact: support@causely.io
   oss: false
   commercial: true
@@ -68,7 +74,7 @@
 - name: Chronosphere
   distribution: false
   nativeOTLP: true
-  url: https://docs.chronosphere.io/ingest/otel/otel-ingest
+  url: https://docs.chronosphere.io/ingest/
   contact: support@chronosphere.io
   oss: false
   commercial: true
@@ -119,12 +125,6 @@
   url: https://www.elastic.co/guide/en/apm/get-started/current/open-telemetry-elastic.html
   contact:
   oss: true
-  commercial: true
-- name: F5
-  nativeOTLP: true
-  url: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/f5cloudexporter
-  contact:
-  oss: false
   commercial: true
 - name: Google Cloud Platform
   nativeOTLP: true
@@ -182,8 +182,8 @@
   commercial: true
 - name: KloudFuse
   nativeOTLP: true
-  url: https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/753860609/APM#Sending-traces-to-Kloudfuse-data-plane%3A
-  contact:
+  url: https://docs.kloudfuse.com/platform/latest/agent-otel/
+  contact: support@kloudfuse.com
   oss: false
   commercial: true
 - name: KloudMate
@@ -212,7 +212,7 @@
   commercial: true
 - name: Logz.io
   nativeOTLP: false
-  url: https://docs.logz.io/shipping/tracing-sources/opentelemetry.html#overview
+  url: https://docs.logz.io/docs/shipping/other/opentelemetry-data/
   contact:
   oss: false
   commercial: true
@@ -254,8 +254,14 @@
   commercial: true
 - name: Observe, Inc.
   nativeOTLP: true
-  url: https://docs.observeinc.com/en/latest/content/integrations/otel/opentelemetry.html
+  url: https://docs.observeinc.com/en/latest/content/send-data/app-instrumentation/index.html#instrument-with-opentelemetry
   contact:
+  oss: false
+  commercial: true
+- name: Otelic
+  nativeOTLP: true
+  url: https://otelic.com/en/open-telemetry-sample-instrumentation/nodejs-simple
+  contact: support@otelic.com
   oss: false
   commercial: true
 - name: observIQ
@@ -314,7 +320,7 @@
   commercial: true
 - name: Red Hat
   nativeOTLP: true
-  url: https://docs.openshift.com/container-platform/4.14/otel/otel-release-notes.html
+  url: https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/red_hat_build_of_opentelemetry/
   contact: ploffay@redhat.com
   oss: true
   commercial: true
@@ -338,7 +344,7 @@
   commercial: true
 - name: SolarWinds
   nativeOTLP: true
-  url: https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=third-otel-integration
+  url: https://documentation.solarwinds.com/en/success_center/observability/content/intro/otel.htm
   contact:
   oss: false
   commercial: true

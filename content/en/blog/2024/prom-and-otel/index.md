@@ -220,7 +220,7 @@ Let’s dig into each of these.
 The Target Allocator’s first job is to discover targets to scrape and OTel
 Collectors to allocate targets to. It does so as follows:
 
-1. The Target Allocator finds all of the the metrics targets to scrape
+1. The Target Allocator finds all of the metrics targets to scrape
 2. The Target Allocator finds all of the available Collectors
 3. The Target Allocator determines which Collectors scrape which metrics
 4. The Collectors query the Target Allocator to find out what metrics to scrape
@@ -607,7 +607,7 @@ There are a few more Collector components you can implement to monitor
 Kubernetes, including Kubernetes-specific ones as well as general-use
 processors, such as the batch, memory limiter, and resource processors. To learn
 more, see
-[Important Components for Kubernetes](/docs/kubernetes/collector/components/).
+[Important Components for Kubernetes](/docs/platforms/kubernetes/collector/components/).
 
 After you’ve configured the components in your Collector config file, you need
 to enable them within the [pipelines](/docs/collector/configuration/#pipelines)

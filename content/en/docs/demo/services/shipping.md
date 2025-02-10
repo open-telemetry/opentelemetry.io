@@ -19,7 +19,7 @@ The `build.rs` supports development outside docker, given a Rust installation.
 Otherwise, consider building with `docker compose` to edit / assess changes as
 needed.
 
-[Shipping service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/shippingservice/)
+[Shipping service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/shipping/)
 
 ## Traces
 

@@ -2,13 +2,13 @@
 [submodule "themes/docsy"]
 	path = themes/docsy
 	url = https://github.com/google/docsy.git
-	docsy-pin = v0.11.0-22-g2f361b2b
+	docsy-pin = v0.11.0-39-g9e685592
 	docsy-note = "2024-04-01 Switching to google/docsy.git from cncf/docsy.git since we don't have any CNCF customizations."
 	docsy-reminder = "Ensure that any tag referenced by `docsy-pin` is present in the remote repo (url), otherwise add (push) the tags to the repo."
 [submodule "content-modules/opentelemetry-specification"]
 	path = content-modules/opentelemetry-specification
 	url = https://github.com/open-telemetry/opentelemetry-specification.git
-	spec-pin = v1.40.0
+	spec-pin = v1.41.0
 [submodule "content-modules/community"]
 	path = content-modules/community
 	url = https://github.com/open-telemetry/community
@@ -20,7 +20,7 @@
 [submodule "content-modules/semantic-conventions"]
 	path = content-modules/semantic-conventions
 	url = https://github.com/open-telemetry/semantic-conventions
-	semconv-pin = v1.29.0
+	semconv-pin = v1.30.0
 [submodule "content-modules/opamp-spec"]
 	path = content-modules/opamp-spec
 	url = https://github.com/open-telemetry/opamp-spec

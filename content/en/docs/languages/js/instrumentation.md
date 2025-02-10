@@ -336,7 +336,7 @@ above, you have a `TracerProvider` setup for you already. You can continue with
 #### Browser
 
 {{% alert title="Warning" color="warning" %}}
-{{% _param notes.browser-instrumentation %}} {{% /alert %}}
+{{% param notes.browser-instrumentation %}} {{% /alert %}}
 
 First, ensure you've got the right packages:
 
@@ -1085,7 +1085,9 @@ import opentelemetry, { SpanStatusCode } from '@opentelemetry/api';
 try {
   doWork();
 } catch (ex) {
-  span.recordException(ex);
+  if (ex instanceof Error) {
+    span.recordException(ex);
+  }
   span.setStatus({ code: SpanStatusCode.ERROR });
 }
 ```
@@ -1100,7 +1102,9 @@ const opentelemetry = require('@opentelemetry/api');
 try {
   doWork();
 } catch (ex) {
-  span.recordException(ex);
+  if (ex instanceof Error) {
+    span.recordException(ex);
+  }
   span.setStatus({ code: opentelemetry.SpanStatusCode.ERROR });
 }
 ```

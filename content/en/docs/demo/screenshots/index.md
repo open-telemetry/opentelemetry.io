@@ -28,7 +28,7 @@ aliases: [demo_screenshots]
 
 | Prometheus Data Source                        | Jaeger Data Source                    |
 | --------------------------------------------- | ------------------------------------- |
-| ![Grafana-Prometheus](grafana-prometheus.png) | ![Grafana-jaeger](gragana-jaeger.png) |
+| ![Grafana-Prometheus](grafana-prometheus.png) | ![Grafana-jaeger](grafana-jaeger.png) |
 
 ## Load Generator UI
 

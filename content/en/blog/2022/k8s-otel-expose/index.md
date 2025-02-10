@@ -4,7 +4,7 @@ linkTitle: Exposing a Collector
 date: 2022-09-08
 author: '[Benedikt Bongartz](https://github.com/frzifus)'
 # prettier-ignore
-cSpell:ignore: basicauth Benedikt Bongartz dXNlci0xOjEyMzQK frzifus htpasswd k8sattributes K8sattributes k8sattributesprocessor K8sprocessor k8sprocessor Keycloak letsencrypt llczt oidc rolebinding
+cSpell:ignore: basicauth Benedikt Bongartz dXNlci0xOjEyMzQK frzifus htpasswd k8sattributes k8sattributesprocessor Keycloak letsencrypt llczt oidc rolebinding
 ---
 
 Exposing an [OpenTelemetry Collector](/docs/collector/) currently requires a
@@ -106,7 +106,7 @@ in this setup are mentioned in brackets.
   [v1.2.1] installed.
 - A Kubernetes [v1.23.3] edge cluster to create a test cluster. Using
   [Kind](https://kind.sigs.k8s.io/) is recommended.
-- Installed [OpenTelemetry Operator](/docs/kubernetes/operator/) [v0.58.0] on
+- Installed [OpenTelemetry Operator](/docs/platforms/kubernetes/operator/) [v0.58.0] on
   both ends.
 - Installed [Jaeger Operator](https://www.jaegertracing.io/docs/1.37/operator/)
   [v1.37.0] on your public cluster.

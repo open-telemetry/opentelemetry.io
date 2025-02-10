@@ -54,7 +54,6 @@ Here is a list of community roles with current and previous members:
 - Approvers: [@open-telemetry/docs-approvers][]
 
   - [Michael Hausenblas](https://github.com/mhausenblas), Amazon
-  - [Tiffany Hrabusa](https://github.com/tiffany76), Grafana Labs
 
 - Maintainers: [@open-telemetry/docs-maintainers][]
 
@@ -63,6 +62,7 @@ Here is a list of community roles with current and previous members:
   - [Patrice Chalin](https://github.com/chalin), CNCF
   - [Phillip Carter](https://github.com/cartermp), Honeycomb
   - [Severin Neumann](https://github.com/svrnm), Cisco
+  - [Tiffany Hrabusa](https://github.com/tiffany76), Grafana Labs
 
 - Emeritus approvers:
 

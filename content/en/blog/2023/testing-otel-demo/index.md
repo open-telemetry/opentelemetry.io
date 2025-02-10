@@ -4,8 +4,7 @@ linkTitle: Testing the OTel Demo
 date: 2023-07-27
 author: '[Daniel Dias](https://github.com/danielbdias) (Tracetest)'
 body_class: otel-with-contributions-from
-# prettier-ignore
-cSpell:ignore: Adnan apiserver apparmor choren containerd Hamric healthcheck kube kubelet kubetracing nanos oteldemo Rahić tracetest tracetesting
+cSpell:ignore: Adnan Hamric kube nanos oteldemo Rahić tracetest tracetesting
 ---
 
 With contributions from [Adnan Rahić](https://github.com/adnanrahic) and
@@ -211,7 +210,7 @@ screenshot of a trace for this operation:
 In this operation, we can see inner calls to multiple services, like
 [Frontend](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/frontend),
 [CheckoutService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/checkoutservice),
-[CartService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/cartservice),
+[CartService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/cart/),
 [ProductCatalogService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/productcatalogservice),
 [CurrencyService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/currencyservice),
 and others.
@@ -233,7 +232,7 @@ triggered during the checkout:
   [ShippingService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/shippingservice)
   was called and emitted spans correctly;
 - _“The cart was emptied”_, checking if the
-  [CartService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/cartservice)
+  [CartService](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/cart/)
   was called and emitted spans correctly.
 
 The final result was the following test YAML, which triggers the Checkout

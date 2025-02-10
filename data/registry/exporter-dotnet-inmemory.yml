@@ -17,4 +17,4 @@ createdAt: 2022-11-07
 package:
   registry: nuget
   name: OpenTelemetry.Exporter.InMemory
-  version: 1.11.0-rc.1
+  version: 1.11.1
