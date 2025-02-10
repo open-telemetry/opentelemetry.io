@@ -1,4 +1,6 @@
 #!/bin/bash -e
+#
+# cSpell:ignore opentelemetrybot
 
 GH=gh
 GIT=git
@@ -18,11 +20,17 @@ else
 fi
 
 repo=$1; shift;
-latest_version=$(gh api -q .tag_name "repos/open-telemetry/$repo/releases/latest")
-latest_vers_no_v="${latest_version#v}" # Remove leading 'v'
+
+# `latest_version_full` is expected to end with a "vX.Y.Z". Note that it can
+# have a prefix, such as `cmd/builder/v0.119.0`.
+latest_version_full=$(gh api -q .tag_name "repos/open-telemetry/$repo/releases/latest")
+
+# Extract only the semver:
+latest_semver=$(echo "$latest_version_full" | sed -E 's/.*v([0-9]+\.[0-9]+\.[0-9]+.*)$/\1/')
+latest_version="v$latest_semver"
 
 echo "REPO:            $repo"
-echo "LATEST VERSION:  $latest_version"
+echo "LATEST VERSION:  $latest_semver ($latest_version_full)"
 
 function process_file() {
   local name="$1"
@@ -39,7 +47,7 @@ function process_file() {
     vers="$latest_version"
   else
     vers_match_regex="^ *$variable_name:"
-    vers="$latest_vers_no_v"
+    vers="$latest_semver"
   fi
   echo "SEARCHING for:   '$vers_match_regex' in $file_name"
   if ! grep -q "$vers_match_regex" "$file_name"; then
@@ -68,7 +76,7 @@ if git diff --quiet "${file_names[@]}"; then
 else
   echo
   echo "Version update necessary:"
-  git diff "${file_names[@]}"
+  git diff --color "${file_names[@]}" | cat - # to disable pager
   echo
 fi
 
@@ -76,11 +84,13 @@ message="Update $repo version to $latest_version"
 body="Update $repo version to \`$latest_version\`.
 
 See https://github.com/open-telemetry/$repo/releases/tag/$latest_version."
+branch="opentelemetrybot/auto-update-$repo-$latest_version"
 
-existing_pr_count=$(gh pr list --state all --search "in:title $message" | wc -l)
+existing_pr_all=$(gh pr list --state all --head "$branch")
+existing_pr_count=$(echo "$existing_pr_all" | wc -l)
 if [ "$existing_pr_count" -gt 0 ]; then
-    echo "PR(s) already exist for '$message'"
-    gh pr list --state all --search "\"$message\" in:title"
+    echo "PR(s) already exist for '$message':"
+    echo $existing_pr_all
     echo "So we won't create another. Exiting."
     exit 0
 fi
@@ -96,8 +106,6 @@ if [[ "$repo" == "opentelemetry-specification"
     git switch --detach $latest_version
   )
 fi
-
-branch="opentelemetrybot/auto-update-$repo-$latest_version"
 
 $GIT checkout -b "$branch"
 $GIT commit -a -m "$message"
