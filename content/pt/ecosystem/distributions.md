@@ -31,7 +31,7 @@ Para que sua distribuição seja listada, [envie um PR] com uma entrada adiciona
 à [lista de distribuições]. A entrada deve incluir o seguinte:
 
 - Link para a página principal da sua distribuição
-- Link para a documentação que explica como utilizar a distriuição
+- Link para a documentação que explica como utilizar a distribuição
 - Lista dos componentes que sua distribuição contém
 - Usuário do GitHub ou e-mail como ponto de contato, para que possamos entrar em
   contato caso tenhamos dúvidas
