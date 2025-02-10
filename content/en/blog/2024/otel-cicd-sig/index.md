@@ -8,7 +8,7 @@ author: >-
 canonical_url: https://www.cncf.io/blog/2024/11/04/opentelemetry-is-expanding-into-ci-cd-observability/ 
 issue: 5546
 sig: CI/CD Observability 
-cSpell:ignore: horovits liatrio 
+cSpell:ignore: andrzej CICD horovits liatrio slsa
 ---
 
 ## OpenTelemetry Is Expanding Into CI/CD Observability
@@ -20,7 +20,7 @@ This is the result of the hard work of the [CI/CD Observability Special Interest
 
 ## Engineers need observability into their CI/CD pipelines 
 
-[CI/CD observability](https://medium.com/@horovits/fcc6c10c4987) is essential for ensuring that software is released to production efficiently and reliably. Well-functioning CI/CD pipelines directly impact business outcomes by shortening [Lead Time for Changes DORA metrics](https://horovits.medium.com/improving-devops-performance-with-dora-metrics-918b9604f8e2) and enabling fast identification and resolution of broken or flaky processes. By integrating observability into CI/CD workflows, teams can monitor the health and performance of their pipelines in real time, gaining insights into bottlenecks and areas that require improvement. 
+[CI/CD observability](https://medium.com/@horovits/fcc6c10c4987) is essential for ensuring that software is released to production efficiently and reliably. Well-functioning CI/CD pipelines directly impact business outcomes by shortening [Lead Time for Changes DORA metric](https://horovits.medium.com/improving-devops-performance-with-dora-metrics-918b9604f8e2) and enabling fast identification and resolution of broken or flaky processes. By integrating observability into CI/CD workflows, teams can monitor the health and performance of their pipelines in real time, gaining insights into bottlenecks and areas that require improvement. 
 
 Leveraging the same well-established tools used for monitoring production environments, organizations can extend their observability capabilities to include the release cycle, fostering a holistic approach to software delivery. Whether open source or proprietary tools, there’s no need to reinvent the wheel when choosing the observability toolchain for CI/CD pipelines.
 
@@ -34,7 +34,7 @@ The need for standardization is relevant for creating the semantic conventions m
 
 ## OpenTelemetry: the natural home for CI/CD observability specification
 
-This realization drove us to look for the right way to approach creating a specification. OpenTelemetry emerges as the standard for telemetry generation and collection. The OpenTelemetry specification is tasked with exactly this problem: creating a common uniform and vendor-agnostic specification for telemetry. And housed under the Cloud Native Computing Foundation (CNCF) can ensure it remains open and vendor-neutral. As long standing advocates of OpenTelemetry, it only made sense to extend OpenTelemetry to cover this important DevOps use case. 
+This realization drove us to look for the right way to approach creating a specification. OpenTelemetry emerges as the standard for telemetry generation and collection. The OpenTelemetry specification is tasked with exactly this problem: creating a common uniform and vendor-agnostic specification for telemetry. And its support from the Cloud Native Computing Foundation (CNCF) ensures it remains open and vendor-neutral. As long standing advocates of OpenTelemetry, it only made sense to extend OpenTelemetry to cover this important DevOps use case. 
 
 We started with an [OpenTelemetry extension proposal (OTEP #223)](https://github.com/open-telemetry/oteps/pull/223) a couple of years ago, proposing our idea to extend OpenTelemetry to cover the CI/CD observability use case. In parallel, we’ve started a Slack channel on the CNCF Slack to gather fellow enthusiasts behind the idea and start brainstorming what that should look like. The Slack channel grew and we quickly discovered that the problem is common across many organizations.
 
@@ -65,16 +65,16 @@ But what does that actually mean? What value does it provide? Let’s consider r
 
 ### Artifacts for supply chain security, aligned with the SLSA specification
 
-The [artifact attribute namespace](https://opentelemetry.io/docs/specs/semconv/attributes-registry/artifact/) had multiple attributes for its first implementation. One key set of attributes within this namespace cover [attestations](https://slsa.dev/attestation-model) that closely align with the [SLSA](https://slsa.dev/spec/v1.0/about) model. This is really the first time a direct connection is being made between Observability and Software Supply Chain Security. Consider the following [supply chain threat model](https://slsa.dev/spec/v1.0/threats) defined by SLSA:
+The [artifact attribute namespace](https://opentelemetry.io/docs/specs/semconv/attributes-registry/artifact/) had multiple attributes for its first implementation. One key set of attributes within this namespace cover [attestations](https://slsa.dev/attestation-model) that closely align with the [SLSA](https://slsa.dev/spec/v1.0/about) model. This is really the first time a direct connection is being made between observability and software supply chain security. Consider the following [supply chain threat model](https://slsa.dev/spec/v1.0/threats) defined by SLSA:
 {{< figure class="figure" src="SLSA-supply-chain-model.png" attr="SLSA Community Specification License 1.0" attrlink="https://github.com/slsa-framework/slsa?tab=License-1-ov-file" >}}
 
-These new attributes for artifacts and attestations help observe the sequence of events modeled in the above diagram in real time. Really, the conventions that exist today and those that will be added in the future enable interoperability between core software delivery capabilities like security and platform engineering via observability semantics.
+These new attributes for artifacts and attestations help observe the sequence of events modeled in the above diagram in real time. Really, the conventions that exist today and those that will be added in the future enable interoperability between core software delivery capabilities like security and platform engineering using observability semantics.
 
 ## What’s next for CI/CD Observability Working Group
 
-The first major milestone we shared above, was the merge of the OTEP for extending the semantic conventions with the new attributes, which is now part of the OpenTelemetry Semantic Conventions latest release.
+As already mentioned, the first major milestone we reached was the merge of the OTEP for extending the semantic conventions with the new attributes, which is now part of the OpenTelemetry Semantic Conventions latest release.
 
-The other important milestone was [OTEP #258](https://github.com/open-telemetry/oteps/pull/258) for Environment Variable Context Propagation that was just approved and merged. This OTEP sets the ground for writing the specification.
+The second important milestone is [OTEP #258](https://github.com/open-telemetry/oteps/pull/258) for Environment Variable Context Propagation, which was just approved and merged. This OTEP sets the foundation for writing the specification.
 
 Since we’ve made progress on our initial milestones, we’ve updated the [CI/CD Observability SIG milestones for the remainder of 2024](https://github.com/open-telemetry/community/blob/main/projects/ci-cd.md). Our goal is to finish out as many of the defined milestones as possible by the end of the year. Notably, we’re focused on: 
 
