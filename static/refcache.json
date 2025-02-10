@@ -1159,6 +1159,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-10-30T15:12:28.788328409Z"
   },
+  "https://docs.github.com/ja/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-09T09:07:44.563811+09:00"
+  },
   "https://docs.google.com/document/d/1-23Sf7-xZK3OL5Ogv2pK0NP9YotlSa0PKU9bvvtQwp8": {
     "StatusCode": 200,
     "LastSeen": "2024-08-15T15:44:20.868165+02:00"
