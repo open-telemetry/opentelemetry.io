@@ -16,10 +16,10 @@ cSpell:ignore: open-telemetry postgre style-guide textlintrc
 
 {{% alert title="Note" color="primary" %}}
 
-スタイガイドの多くの要件されることは、自動化で強制されています。
+スタイルガイドの多くの要件されることは、自動化で強制されています。
 [pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)(PR) を提出する前に、ローカルで `npm run fix:all` を実行して、変更をコミットしてください。
 
-エラーまたは [failed PR checks](../pr-checks) に遭遇した場合、スタイガイドを読んで特定の一般的な問題を修正するのにできることを学んでください。
+エラーまたは [failed PR checks](../pr-checks) に遭遇した場合、スタイルガイドを読んで特定の一般的な問題を修正するのにできることを学んでください。
 
 {{% /alert %}}
 
