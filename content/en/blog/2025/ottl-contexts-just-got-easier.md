@@ -27,51 +27,8 @@ optimization ensures that data transformations are both accurate and performant.
 
 Starting with version `0.120.0`, the transform processor supports two new
 [context-inferred configuration](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md#context-inferred-configurations)
-styles. The first one closely resembles the existing configuration format, while
-the second offers a simpler and flatter approach.
-
-### Structured configuration
-
-The context-inferred structured configuration style closely resembles the
-existing format. For example, consider the following configuration:
-
-```yaml
-metric_statements:
-  - context: datapoint
-    statements:
-      - set(metric.description, "counter") where attributes["my.attr"] == "some"
-```
-
-It can now be written as:
-
-<!-- prettier-ignore-start -->
-```yaml
-metric_statements:
-  - statements:
-      - set(metric.description, "counter") where datapoint.attributes["my.attr"] == "some"
-```
-<!-- prettier-ignore-end -->
-
-In this example, the `context` value is omitted and is automatically inferred to
-`datapoint`, as it is the only context present in the statements that supports
-parsing both`datapoint` and `metric` data.
-
-To omit the `context` value, all paths in the statements must be prefixed with
-their respective contexts. These prefixes are required for context-inferred
-configurations and serve as hints for selecting the best match. It also makes
-statements unambiguous and portable between components.
-
-If we update the above configuration removing the `where` condition:
-
-```yaml
-metric_statements:
-  - statements:
-      - set(metric.description, "counter")
-```
-
-The context inferrer would select the `metric` context instead, since no data
-points are accessed. Although it would be possible to run the statements using
-the`datapoint` context, `metric` is the most efficient option.
+styles. The first one offers a simpler and flatter approach, while the second
+closely resembles the existing configuration format.
 
 ### Flat configuration
 
@@ -97,7 +54,7 @@ metric_statements:
 ```
 
 With the new flat configuration style, the same logic is expressed more
-concisely:
+concisely as:
 
 ```yaml
 metric_statements:
@@ -108,7 +65,61 @@ metric_statements:
 ```
 
 This streamlined approach enhances readability and makes configuration more
-intuitive.
+intuitive. Please note that all paths in the statements must be prefixed with
+their respective contexts. These prefixes are required for all context-inferred
+configurations and serve as hints for selecting the best match. It also makes
+statements unambiguous and portable between components.
+
+### Structured configuration
+
+The context-inferred structured configuration style closely resembles the
+existing format and allows users to leverage the benefits of context inference
+while providing granular control over statement configurations, such as
+`error_mode` and `conditions`. For example, consider the following
+configuration:
+
+<!-- prettier-ignore-start -->
+```yaml
+metric_statements:
+  - context: datapoint
+    conditions:
+      - resource.attributes["service.name"] == "my.service"
+    statements:
+      - set(metric.description, "counter") where attributes["my.attr"] == "some"
+```
+<!-- prettier-ignore-end -->
+
+It can now be written as:
+
+<!-- prettier-ignore-start -->
+```yaml
+metric_statements:
+  - conditions:
+      - resource.attributes["service.name"] == "my.service"
+    statements:
+      - set(metric.description, "counter") where datapoint.attributes["my.attr"] == "some"
+```
+<!-- prettier-ignore-end -->
+
+In this example, the `context` value is omitted and is automatically inferred to
+`datapoint`, as it is the only context present in the statements that supports
+parsing both `datapoint` and `metric` data.
+
+If we update the above configuration removing the `datapoint` usage:
+
+<!-- prettier-ignore-start -->
+```yaml
+metric_statements:
+  - conditions:
+      - resource.attributes["service.name"] == "my.service"
+    statements:
+      - set(metric.description, "counter")
+```
+<!-- prettier-ignore-end -->
+
+The context inferrer would select the `metric` context instead, since no data
+points are accessed. Although it would be possible to run the statements using
+the `datapoint` context, `metric` is the most efficient option.
 
 ## Try it out
 
