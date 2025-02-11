@@ -1139,6 +1139,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:03.67448-05:00"
   },
+  "https://docs.github.com/en/get-started/using-git/about-git": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-11T08:05:07.564567-05:00"
+  },
   "https://docs.github.com/en/pull-requests": {
     "StatusCode": 206,
     "LastSeen": "2024-09-28T12:02:48.071874-04:00"
