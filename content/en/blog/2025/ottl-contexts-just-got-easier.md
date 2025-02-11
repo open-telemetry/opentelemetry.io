@@ -14,7 +14,7 @@ for experienced users. Choosing the correct context impacts both accuracy and
 efficiency, as using higher-level contexts can avoid unnecessary iterations
 through nested lower-level contexts.
 
-To simplify this process, the OpenTelemetry community is excited to announce the
+To simplify this process, the OpenTelemetry community is excited to announce
 OTTL
 [context inference](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md#context-inference)
 support for the
@@ -23,7 +23,7 @@ This feature removes the need to manually specify contexts, improving statement
 processing efficiency by automatically selecting the most appropriate one. This
 optimization ensures that data transformations are both accurate and performant.
 
-## How it works?
+## How does it work?
 
 Starting with version `0.120.0`, the transform processor supports two new
 [context-inferred configuration](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md#context-inferred-configurations)
@@ -52,11 +52,11 @@ metric_statements:
 ```
 <!-- prettier-ignore-end -->
 
-In this example, the `context` value is suppressed and is automatically inferred
+In this example, the `context` value is omitted and is automatically inferred
 to `datapoint`, as it is the only context present in the statements that
 supports parsing both`datapoint` and `metric` data.
 
-All paths in the statements must be prefixed with their respective contexts.
+To omit the `context` value, all paths in the statements must be prefixed with their respective contexts.
 These prefixes are required for context-inferred configurations and serve as
 hints for selecting the best match. It also makes statements unambiguous and
 portable between components.
@@ -70,12 +70,12 @@ metric_statements:
 ```
 
 The context inferrer would select the `metric` context instead, since
-`datapoint` is no longer required, and although it would be possible to run the
+no data points are accessed. Although it would be possible to run the
 statements using the`datapoint` context, `metric` is the most efficient option.
 
 ### Flat configuration
 
-The flat configuration style simplifies the configuration by allowing users to
+The flat configuration style simplifies configuration by allowing users to
 list all statements together, without worrying about contexts or extra
 configuration structures. This style support statements from multiple contexts
 and does not require grouping them separately.
@@ -96,7 +96,7 @@ metric_statements:
       - limit(attributes, 100, ["host.name"])
 ```
 
-With the new flat style configuration format, the same logic is expressed more
+With the new flat configuration style, the same logic is expressed more
 concisely:
 
 ```yaml
