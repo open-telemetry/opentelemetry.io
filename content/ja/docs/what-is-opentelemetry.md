@@ -70,8 +70,7 @@ OpenTelemetryは、[Cloud Native Computing Foundation (CNCF)](https://www.cncf.i
 
 現在OpenTracingまたはOpenCensusを使っている場合は、[移行ガイド](/docs/migration/)でOpenTelemetryへの移行方法を確認してください。
 
-[統合された]:
-  https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/
+[統合された]: https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/
 
 ## 次のステップ
 
