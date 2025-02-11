@@ -47,7 +47,7 @@ Agora instale Flask:
 pip install flask
 ```
 
-### Crie e inicie um Servidor HTTP {#create-and-laucnh-an-http-server}
+### Crie e inicie um Servidor HTTP {#create-and-launch-an-http-server}
 
 Crie um arquivo `app.py` e adicione o seguinte código a ele:
 
@@ -720,7 +720,7 @@ pip install opentelemetry-exporter-otlp
 O agente `opentelemetry-instrument` detectará o pacote que você acabou de
 instalar e usará a exportação OTLP na próxima vez que for executado.
 
-### Execute o aplicativo {#run-the-applicaiton}
+### Execute o aplicativo {#run-the-application}
 
 Execute o aplicativo como antes, mas não exporte para o console:
 
