@@ -39,7 +39,7 @@ are not added by default. Pass in multiple file paths at the command line as
 follows:
 
 ```shell
-otelcol --cofig=file:/path/to/first/file --config=file:/path/to/second/file
+otelcol --config=file:/path/to/first/file --config=file:/path/to/second/file
 ```
 
 You can also provide configurations using environment variables, HTTP URIs, or
