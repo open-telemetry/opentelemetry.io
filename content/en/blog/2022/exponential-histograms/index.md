@@ -278,8 +278,6 @@ documentation on [instrumentation][] or [github.com/open-telemetry][].
 
 _A version of this article was [originally posted][] on the New Relic blog._
 
-[originally posted]: {{% param canonical_url %}}
-
 [api]: /docs/specs/otel/metrics/api/
 [sdk]: /docs/specs/otel/metrics/sdk/
 [meter provider]: /docs/specs/otel/metrics/api/#meterprovider
@@ -304,3 +302,4 @@ _A version of this article was [originally posted][] on the New Relic blog._
 [environment variable]: /docs/specs/otel/metrics/sdk_exporters/otlp/
 [instrumentation]: /docs/languages
 [github.com/open-telemetry]: https://github.com/open-telemetry
+[originally posted]: <{{% param canonical_url %}}>

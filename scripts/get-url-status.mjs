@@ -20,7 +20,12 @@ export function log(...args) {
 }
 
 // Check for fragment and corresponding anchor ID in page.
-async function checkForFragment(url, page, status) {
+async function checkForFragment(_url, page, status) {
+  // FIXME: htmltest seems to mistakenly double escape '+' in URLs, and
+  // ampersands as `\u0026`. Let's attempt to patch that there. TODO: address
+  // this upstream; at least create an issue.
+  // DISABLING FOR NOW:
+  const url = _url; // .replace(/&#43;/g, '+').replace(/\\u0026/g, '&');
   const parsedUrl = new URL(url);
   if (parsedUrl.hash) {
     let fragmentID = parsedUrl.hash.substring(1); // Remove the leading '#'
