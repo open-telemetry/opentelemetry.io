@@ -15,8 +15,8 @@ default_lang_commit: 99f0ae5760038d51f9e9eb376bb428a2caca8167
 Una de las mejores maneras de contribuir a mejorar la documentación de
 OpenTelemetry (OTel) es solucionando un problema ya identificado.
 
-1. Navegar por la lista de [propuestas] ({{% param _issues %}}).
-2. Seleccione una propuesta en el que le gustaría trabajar, idealmente uno que
+1. Navegar por la lista de [propuestas]({{% param _issues %}}).
+2. Seleccione una propuesta en el que le gustaría trabajar, idealmente una que
    se pueda solucionar en poco tiempo.
 
    <!-- prettier-ignore -->
@@ -47,8 +47,8 @@ OpenTelemetry (OTel) es solucionando un problema ya identificado.
    efecto.
 6. Trabaja para solucionar el problema y notifica a los mantenedores si surge
    algún inconveniente.
-7. Cuando este listo,
-   [envia tu trabajo enviando un pull request](../pull-requests) (PR).
+7. Cuando este listo, [envia tu trabajo con un pull request](../pull-requests)
+   (PR).
 
 ## Reportar un problema
 
@@ -56,8 +56,8 @@ Si encuentras un error o quieres hacer unas sugerencias para mejorar el
 contenido existente, abre una propuesta.
 
 1. Haz click en el enlace **Crea una propuesta para la documentación** de
-   cualquier documento. Eso te va a redireccionar a una pagina del asunto GitHub
-   prellenada con algunos encabezados.
+   cualquier documento. Eso te va a redireccionar a una pagina de la propuesta
+   GitHub prellenada con algunos encabezados.
 2. Describa el problema o la sugerencia de mejora. Proporcione tantos detalles
    como pueda.
 3. Haz click en **Submit new issue**.
@@ -70,10 +70,10 @@ hacer preguntas antes de poder tomar medidas sobre su problema.
 ## Sugerir nuevos contenidos o funciones
 
 Si tienes una idea para un nuevo contenido o funcionalidad, pero no estás seguro
-de dónde debería ir, aún puedes presentar un asunto. También puedes informar
+de dónde debería ir, aún puedes presentar una propuesta. También puedes informar
 errores y vulnerabilidades de seguridad.
 
-1. Ir a [GitHub](https://github.com/open-telemetry/opentelemetry.io/issues/new/)
+1. Ve a [GitHub](https://github.com/open-telemetry/opentelemetry.io/issues/new/)
    y selecciona **Nueva propuesta** dentro de la pestaña **Propuestas**.
 
 1. Seleccione el tipo de problema que mejor se aplica a su solicitud o duda.
