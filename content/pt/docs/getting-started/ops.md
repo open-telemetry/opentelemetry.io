@@ -18,7 +18,7 @@ seguinte:
 - [O que é o OpenTelemetry?](../../what-is-opentelemetry/)
 - [Como instrumentar aplicativos sem alterar seu código?](../../concepts/instrumentation/zero-code/)
 - [Como configurar um Collector?](../../collector/)
-- [Como ter automação no Kubernetes com o OpenTelemetry Operator?](../../kubernetes/operator/)
+- [Como ter automação no Kubernetes com o OpenTelemetry Operator?](../../platforms/kubernetes/operator/)
 
 Se você está procurando um conjunto de aplicativos para experimentar, você
 encontrará nossa [demonstração oficial do OpenTelemetry](/ecosystem/demo/) útil.

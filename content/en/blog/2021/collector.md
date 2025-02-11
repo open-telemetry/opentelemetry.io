@@ -8,4 +8,4 @@ canonical_url: https://medium.com/opentelemetry/opentelemetry-collector-achieves
 The OpenTelemetry Collector has made its first GA release. For all the details,
 see the [original post][].
 
-[original post]: {{% param canonical_url %}}
+[original post]: <{{% param canonical_url %}}>

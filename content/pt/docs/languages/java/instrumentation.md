@@ -8,7 +8,7 @@ aliases:
   - libraries
 weight: 10
 description: Ecossistema de Instrumentação no OpenTelemetry Java
-default_lang_commit: d65798034935fcfdbdc6599b6e6d3dd942fbe62c
+default_lang_commit: 748555c22f43476291ae0c7974ca4a2577da0472
 cSpell:ignore: logback
 ---
 
@@ -240,3 +240,11 @@ escopo deste documento.
 Correlação de Logs com rastros está disponível instalando um [shim](#shims) para
 conectar o contexto do OpenTelemetry no log framework. Veja os items "Bridge
 OpenTelemetry contexto em Log4j", "Bridge OpenTelemetry contexto em Logback".
+
+{{% alert title="Nota" color="info" %}}
+
+Um exemplo completo de instrumentação de logs utilizando stdout está disponível
+no
+[repositório de exemplos em Java](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md).
+
+{{% /alert %}}

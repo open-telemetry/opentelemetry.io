@@ -5,7 +5,7 @@ aliases:
   - manual_instrumentation
 weight: 30
 description: Instrumentação manual para OpenTelemetry Go
-default_lang_commit: a025c25aaf1aef653caa34e49e8714472cbeddbd
+default_lang_commit: 748555c22f43476291ae0c7974ca4a2577da0472
 cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup updown
 ---
 

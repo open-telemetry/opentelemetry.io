@@ -157,7 +157,7 @@ that require the assemblies used to instrument .NET Framework applications, the
 ones under the `netfx` folder of the installation directory, to be also
 installed into the Global Assembly Cache (GAC):
 
-1. [**Monkey patch instrumentation**](https://en.wikipedia.org/wiki/Monkey_patch#:~:text=Monkey%20patching%20is%20a%20technique,Python%2C%20Groovy%2C%20etc.)
+1. [**Monkey patch instrumentation**](https://en.wikipedia.org/wiki/Monkey_patch)
    of assemblies loaded as domain-neutral.
 2. Assembly redirection for strong-named applications if the app also ships
    different versions of some assemblies also shipped in the `netfx` folder.

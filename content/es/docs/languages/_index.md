@@ -55,6 +55,6 @@ Puedes encontrar una lista de referencias de API disponibles en </api-docs>.
 
 {{% /alert %}}
 
-[zero-code]: /docs/kubernetes/operator/automatic/
+[zero-code]: /docs/platforms/kubernetes/operator/automatic/
 [instrumentación]: /docs/concepts/instrumentation/
-[otel-op]: /docs/kubernetes/operator/
+[otel-op]: /docs/platforms/kubernetes/operator/

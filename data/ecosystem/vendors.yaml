@@ -28,6 +28,12 @@
   contact:
   oss: false
   commercial: true
+- name: OpenSearch
+  nativeOTLP: true
+  url: https://github.com/opensearch-project/OpenSearch
+  contact: opensearch@amazon.com
+  oss: true
+  commercial: false
 - name: Axiom
   nativeOTLP: true
   url: https://axiom.co/docs/send-data/opentelemetry
@@ -206,7 +212,7 @@
   commercial: true
 - name: Logz.io
   nativeOTLP: false
-  url: https://docs.logz.io/shipping/tracing-sources/opentelemetry.html#overview
+  url: https://docs.logz.io/docs/shipping/other/opentelemetry-data/
   contact:
   oss: false
   commercial: true
@@ -338,7 +344,7 @@
   commercial: true
 - name: SolarWinds
   nativeOTLP: true
-  url: https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=third-otel-integration
+  url: https://documentation.solarwinds.com/en/success_center/observability/content/intro/otel.htm
   contact:
   oss: false
   commercial: true

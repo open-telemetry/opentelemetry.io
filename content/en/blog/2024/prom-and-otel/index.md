@@ -607,7 +607,7 @@ There are a few more Collector components you can implement to monitor
 Kubernetes, including Kubernetes-specific ones as well as general-use
 processors, such as the batch, memory limiter, and resource processors. To learn
 more, see
-[Important Components for Kubernetes](/docs/kubernetes/collector/components/).
+[Important Components for Kubernetes](/docs/platforms/kubernetes/collector/components/).
 
 After you’ve configured the components in your Collector config file, you need
 to enable them within the [pipelines](/docs/collector/configuration/#pipelines)

@@ -36,7 +36,7 @@ project. For example, if you import the `spring-boot-dependencies` BOM, you have
 to declare it after the OpenTelemetry BOMs.
 
 Gradle selects the
-[latest version](https://docs.gradle.org/current/userguide/dependency_resolution.html#sec:version-conflict)
+[latest version](https://docs.gradle.org/current/userguide/dependency_resolution.html#2_perform_conflict_resolution)
 of a dependency when multiple BOMs, so the order of BOMs is not important.
 
 {{% /alert %}}
@@ -106,7 +106,7 @@ with the `io.spring.dependency-management` plugin.
 Add the dependency given below to enable the OpenTelemetry starter.
 
 The OpenTelemetry starter uses OpenTelemetry Spring Boot
-[autoconfiguration](https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration).
+[autoconfiguration](https://docs.spring.io/spring-boot/reference/using/auto-configuration.html).
 
 {{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 

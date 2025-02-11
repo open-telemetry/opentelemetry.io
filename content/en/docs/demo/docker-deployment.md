@@ -10,8 +10,7 @@ cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
 ## Prerequisites
 
 - Docker
-- [Docker Compose](https://docs.docker.com/compose/install/#install-compose)
-  v2.0.0+
+- [Docker Compose](https://docs.docker.com/compose/install/) v2.0.0+
 - Make (optional)
 - 6 GB of RAM for the application
 

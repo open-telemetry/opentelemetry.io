@@ -10,7 +10,7 @@ If you run your Python service in Kubernetes, you can take advantage of the
 [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator)
 to inject auto-instrumentation without having to modify each of your services
 directly.
-[See the OpenTelemetry Operator Auto-instrumentation docs for more details.](/docs/kubernetes/operator/automatic/)
+[See the OpenTelemetry Operator Auto-instrumentation docs for more details.](/docs/platforms/kubernetes/operator/automatic/)
 
 ### Python-specific topics
 
@@ -29,7 +29,7 @@ Python auto-instrumentation.
 
 Since operator v0.113.0 it is possible to build an image with both glibc and
 musl based auto-instrumentation and
-[configure it at runtime](/docs/kubernetes/operator/automatic/#annotations-python-musl).
+[configure it at runtime](/docs/platforms/kubernetes/operator/automatic/#annotations-python-musl).
 
 #### Django applications
 

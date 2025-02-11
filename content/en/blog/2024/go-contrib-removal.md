@@ -47,7 +47,7 @@ To become a code owner of one of the modules, you need to be a member of the
 OpenTelemetry organization and have a good working knowledge of the code you
 seek to maintain. To become a member of OpenTelemetry in GitHub, see the
 requirements in
-[Community membership](https://github.com/open-telemetry/community/blob/main/community-membership.md#requirements).
+[Community membership](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#requirements).
 
 If you satisfy all requirements,
 [open an issue](https://github.com/open-telemetry/opentelemetry-go-contrib/issues/new?assignees=&labels=&projects=&template=owner.md&title=).
