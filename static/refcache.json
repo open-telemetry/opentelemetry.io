@@ -405,7 +405,7 @@
   },
   "https://cloud.google.com/functions/docs/concepts/execution-environment#scope": {
     "StatusCode": 200,
-    "LastSeen": "2025-02-11T12:45:07.474267-05:00"
+    "LastSeen": "2025-02-11T17:47:12.345Z"
   },
   "https://cloud.google.com/functions/docs/env-var#runtime_environment_variables_set_automatically": {
     "StatusCode": 200,
@@ -1448,8 +1448,8 @@
     "LastSeen": "2025-02-06T02:05:12.345Z"
   },
   "https://docs.openssl.org/1.1.1/man3/SSL_get_version/#return-values": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-11T12:45:11.734709-05:00"
+    "StatusCode": 200,
+    "LastSeen": "2025-02-11T17:47:12.345Z"
   },
   "https://docs.oracle.com/cd/B28359_01/server.111/b28278/toc.htm": {
     "StatusCode": 200,
@@ -11364,8 +11364,8 @@
     "LastSeen": "2025-01-16T14:20:31.233996-05:00"
   },
   "https://github.com/open-telemetry/weaver/blob/main/schemas/semconv-syntax.md#type": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-11T12:45:08.93159-05:00"
+    "StatusCode": 200,
+    "LastSeen": "2025-02-11T17:47:12.345Z"
   },
   "https://github.com/openclarity/apiclarity/tree/master/plugins/otel-collector": {
     "StatusCode": 206,
@@ -11380,8 +11380,8 @@
     "LastSeen": "2025-01-16T11:37:57.154158-05:00"
   },
   "https://github.com/opencontainers/image-spec/blob/main/manifest.md#example-image-manifest": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-11T12:45:18.140824-05:00"
+    "StatusCode": 200,
+    "LastSeen": "2025-02-11T17:47:12.345Z"
   },
   "https://github.com/openfga": {
     "StatusCode": 206,
@@ -12600,8 +12600,8 @@
     "LastSeen": "2025-02-06T02:22:12.345Z"
   },
   "https://google.aip.dev/122#full-resource-names": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-11T12:45:06.844573-05:00"
+    "StatusCode": 200,
+    "LastSeen": "2025-02-11T17:47:12.345Z"
   },
   "https://google.github.io/sqlcommenter": {
     "StatusCode": 206,
@@ -16904,8 +16904,8 @@
     "LastSeen": "2025-02-01T07:10:54.834545-05:00"
   },
   "https://www.erlang.org/doc/apps/stdlib/erl_error.html#format_exception/3": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-11T12:45:12.061942-05:00"
+    "StatusCode": 200,
+    "LastSeen": "2025-02-11T17:47:12.345Z"
   },
   "https://www.erlang.org/doc/reference_manual/records.html": {
     "StatusCode": 206,
