@@ -52,14 +52,14 @@ metric_statements:
 ```
 <!-- prettier-ignore-end -->
 
-In this example, the `context` value is omitted and is automatically inferred
-to `datapoint`, as it is the only context present in the statements that
-supports parsing both`datapoint` and `metric` data.
+In this example, the `context` value is omitted and is automatically inferred to
+`datapoint`, as it is the only context present in the statements that supports
+parsing both`datapoint` and `metric` data.
 
-To omit the `context` value, all paths in the statements must be prefixed with their respective contexts.
-These prefixes are required for context-inferred configurations and serve as
-hints for selecting the best match. It also makes statements unambiguous and
-portable between components.
+To omit the `context` value, all paths in the statements must be prefixed with
+their respective contexts. These prefixes are required for context-inferred
+configurations and serve as hints for selecting the best match. It also makes
+statements unambiguous and portable between components.
 
 If we update the above configuration removing the `where` condition:
 
@@ -69,16 +69,16 @@ metric_statements:
       - set(metric.description, "counter")
 ```
 
-The context inferrer would select the `metric` context instead, since
-no data points are accessed. Although it would be possible to run the
-statements using the`datapoint` context, `metric` is the most efficient option.
+The context inferrer would select the `metric` context instead, since no data
+points are accessed. Although it would be possible to run the statements using
+the`datapoint` context, `metric` is the most efficient option.
 
 ### Flat configuration
 
-The flat configuration style simplifies configuration by allowing users to
-list all statements together, without worrying about contexts or extra
-configuration structures. This style support statements from multiple contexts
-and does not require grouping them separately.
+The flat configuration style simplifies configuration by allowing users to list
+all statements together, without worrying about contexts or extra configuration
+structures. This style support statements from multiple contexts and does not
+require grouping them separately.
 
 To illustrate this, compare the following configuration:
 
