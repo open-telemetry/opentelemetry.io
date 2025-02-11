@@ -93,4 +93,4 @@ avoid these subtle problems if they apply to you.
 
 _A version of this article was [originally posted][] to the author's blog._
 
-[originally posted]: {{% param canonical_url %}}
+[originally posted]: <{{% param canonical_url %}}>

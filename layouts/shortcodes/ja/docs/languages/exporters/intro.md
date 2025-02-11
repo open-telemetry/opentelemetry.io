@@ -24,7 +24,7 @@
 [Jaeger]: /blog/2022/jaeger-native-otlp/
 [OTLP]: /docs/specs/otlp/
 [Prometheus]:
-  https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver
+  https://prometheus.io/docs/prometheus/2.55/feature_flags/#otlp-receiver
 [ベンダー]: /ecosystem/vendors/
 
 [reg]: /ecosystem/registry/?component=exporter&language={{ $lang }}
