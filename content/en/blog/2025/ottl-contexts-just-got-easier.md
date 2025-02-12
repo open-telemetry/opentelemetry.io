@@ -9,9 +9,9 @@ sig: Collector SIG
 cSpell:ignore: OTTL Vamerlatti
 ---
 
-Selecting the right context for running OTTL statements can be challenging, even
-for experienced users. Choosing the correct context impacts both accuracy and
-efficiency, as using higher-level contexts can avoid unnecessary iterations
+Selecting the right OTTL context for running statements can be challenging, even
+for experienced users. Choosing the correct option impacts both accuracy and
+efficiency, as using higher-level OTTL contexts can avoid unnecessary iterations
 through nested lower-level contexts.
 
 To simplify this process, the OpenTelemetry community is excited to announce
@@ -19,11 +19,11 @@ OTTL
 [context inference](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md#context-inference)
 support for the
 [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor).
-This feature removes the need to manually specify contexts, improving statement
-processing efficiency by automatically selecting the most appropriate one. This
-optimization ensures that data transformations are both accurate and performant,
-allowing users to focus solely on their data without needing to understand the
-underlying concept of contexts.
+This feature removes the need to manually specify OTTL contexts, improving
+statement processing efficiency by automatically selecting the most appropriate
+one. This optimization ensures that data transformations are both accurate and
+performant, allowing users to focus solely on their data without needing to
+understand the underlying concept of OTTL contexts.
 
 ## How does it work?
 
@@ -35,9 +35,9 @@ closely resembles the existing configuration format.
 ### Flat configuration
 
 The flat configuration style simplifies configuration by allowing users to list
-all statements together, without worrying about contexts or extra configuration
-structures. This style support statements from multiple contexts and does not
-require grouping them separately.
+all statements together, without worrying about OTTL contexts or extra
+configuration structures. This style support statements from multiple OTTL
+contexts and does not require grouping them separately.
 
 To illustrate this, compare the following configuration:
 
@@ -56,7 +56,7 @@ metric_statements:
 ```
 
 With the new flat configuration style, the same logic is expressed more
-concisely as:
+concisely by simply providing a list of statements:
 
 ```yaml
 metric_statements:
@@ -67,10 +67,11 @@ metric_statements:
 ```
 
 This streamlined approach enhances readability and makes configuration more
-intuitive. Please note that all paths in the statements must be prefixed with
-their respective contexts. These prefixes are required for all context-inferred
-configurations and serve as hints for selecting the best match. It also makes
-statements unambiguous and portable between components.
+intuitive. To use this flat configuration, all paths in the statements must be
+prefixed with their respective OTTL contexts. These prefixes are required for
+all context-inferred configurations and serve as hints for selecting the best
+match. It also makes statements unambiguous and portable between components
+using OTTL.
 
 ### Structured configuration
 
@@ -91,7 +92,7 @@ metric_statements:
 ```
 <!-- prettier-ignore-end -->
 
-It can now be written as:
+The above can now be written as:
 
 <!-- prettier-ignore-start -->
 ```yaml
@@ -104,8 +105,8 @@ metric_statements:
 <!-- prettier-ignore-end -->
 
 In this example, the `context` value is omitted and is automatically inferred to
-`datapoint`, as it is the only context present in the statements that supports
-parsing both `datapoint` and `metric` data.
+`datapoint`, as it is the only OTTL context present in the statements that
+supports parsing both `datapoint` and `metric` data.
 
 If we update the above configuration removing the `datapoint` usage:
 
@@ -119,9 +120,9 @@ metric_statements:
 ```
 <!-- prettier-ignore-end -->
 
-The context inferrer would select the `metric` context instead, since no data
-points are accessed. Although it would be possible to run the statements using
-the `datapoint` context, `metric` is the most efficient option.
+The context inferrer would select the `metric` OTTL context instead, since no
+data points are accessed. Although it would be possible to run the statements
+using the `datapoint` OTTL context, `metric` is the most efficient option.
 
 ## Try it out
 
