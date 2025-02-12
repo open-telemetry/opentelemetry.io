@@ -56,7 +56,7 @@ contenido existente, abre una propuesta.
 
 1. Haz click en el enlace **Crea una propuesta para la documentación** de
    cualquier documento. Eso te va a redireccionar a una pagina de la propuesta
-   GitHub prellenada con algunos encabezados.
+   GitHub prerrellenada con algunos encabezados.
 2. Describa el problema o la sugerencia de mejora. Proporcione tantos detalles
    como pueda.
 3. Haz click en **Submit new issue**.
