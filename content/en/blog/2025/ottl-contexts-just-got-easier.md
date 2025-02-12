@@ -21,7 +21,9 @@ support for the
 [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor).
 This feature removes the need to manually specify contexts, improving statement
 processing efficiency by automatically selecting the most appropriate one. This
-optimization ensures that data transformations are both accurate and performant.
+optimization ensures that data transformations are both accurate and performant,
+allowing users to focus solely on their data without needing to understand the
+underlying concept of contexts.
 
 ## How does it work?
 
