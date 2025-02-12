@@ -1,7 +1,8 @@
 ---
 title: Guía de estilo de documentación
-description: Terminología y estilo al escribir documentos de OpenTelemetry.
-linkTitle: Estilo de documentación
+description:
+  Terminología y estilo al escribir la documentación de OpenTelemetry.
+linkTitle: Guía de estilo de documentación
 weight: 20
 default_lang_commit: 99f0ae5760038d51f9e9eb376bb428a2caca8167
 cSpell:ignore: open-telemetry postgre style-guide textlintrc
@@ -10,26 +11,26 @@ cSpell:ignore: open-telemetry postgre style-guide textlintrc
 Aún no tenemos una guía de estilo oficial, pero el estilo actual de la
 documentación de OpenTelemetry está inspirado en las siguientes guías de estilo:
 
-- [Google Developer Guía de estilo de documentación](https://developers.google.com/style)
-- [Kubernetes Estilo de documentación](https://kubernetes.io/docs/contribute/style/style-guide/)
+- [Guía de estilo de documentación de para desarrolladores Google](https://developers.google.com/style)
+- [Guía de estilo de documentación de Kubernetes](https://kubernetes.io/docs/contribute/style/style-guide/)
 
-Las siguientes secciones contienen orientación específica para el proyecto
+Las siguientes secciones contienen indicaciones específicas para el proyecto
 OpenTelemetry.
 
 {{% alert title="Note" color="primary" %}}
 
-Muchos de los requisitos de nuestra guía de estilo se pueden aplicar mediante la
-ejecución de la automatización: antes de enviar un
+Muchos de los requisitos de nuestra guía de estilo se pueden aplicar
+automaticamente: antes de enviar un
 [pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)
 (PR), ejecute `npm run fix:all` en su máquina local y confirme los cambios.
 
-Si se producen errores o [controles de PR fallidos](../pr-checks), lea nuestra
-guía de estilo y aprenda qué puede hacer para solucionar ciertos asuntos
+Si se producen errores o [fallan las comprobaciones de su PR](../pr-checks), lea
+nuestra guía de estilo y aprenda qué puede hacer para solucionar ciertos asuntos
 comunes.
 
 {{% /alert %}}
 
-## OpenTelemetry.io lista de palabras
+## Lista de palabras de OpenTelemetry.io
 
 Una lista de términos y palabras específicos de OpenTelemetry que se deben usar
 de manera uniforme en todo el sitio:
@@ -73,7 +74,7 @@ estándar.
 Ejecute `npm run fix:markdown` para corregir problemas de formato relacionados
 con Markdown.
 
-## Corrección ortográfica
+## Revisión ortográfica
 
 Utilice [CSpell](https://github.com/streetsidesoftware/cspell) para asegurarse
 de que todo su texto esté escrito correctamente. Para obtener una lista de
