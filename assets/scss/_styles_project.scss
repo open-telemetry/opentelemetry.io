@@ -1,10 +1,11 @@
 /* Docsy-delta full file override: we're not tracking changes to the Docsy file of the same name. */
-// cSpell:ignore cncf docsy
+// cSpell:ignore cncf docsy otca
 
 @import 'registry';
 @import 'tabs';
 @import 'external_link';
 @import 'td/code-dark';
+@import '_page_no_left_sidebar';
 
 .td-home {
   .otel-logo {
@@ -333,5 +334,23 @@ details {
 
   @include media-breakpoint-up(md) {
     padding-left: 0.6rem;
+  }
+}
+
+.ot-training {
+  @extend .td-no-left-sidebar;
+
+  .otca img {
+    border-style: none !important;
+    max-width: 244px;
+    margin: auto;
+  }
+}
+
+// TODO: upstream to Docsy
+
+.hk-no-external-icon {
+  a.external-link:after {
+    display: none !important;
   }
 }
