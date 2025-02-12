@@ -1139,6 +1139,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:03.67448-05:00"
   },
+  "https://docs.github.com/en/get-started/using-git/about-git": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-11T08:05:07.564567-05:00"
+  },
   "https://docs.github.com/en/pull-requests": {
     "StatusCode": 206,
     "LastSeen": "2024-09-28T12:02:48.071874-04:00"
@@ -2886,6 +2890,14 @@
   "https://github.com/avillela/otel-target-allocator-talk/tree/main": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T13:05:48.070495-05:00"
+  },
+  "https://github.com/aws-observability/aws-otel-js": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-03T10:28:17.890526733Z"
+  },
+  "https://github.com/aws-observability/aws-otel-python": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-03T10:28:21.284075121Z"
   },
   "https://github.com/bacherfl": {
     "StatusCode": 200,
@@ -6344,8 +6356,8 @@
     "LastSeen": "2025-02-10T19:31:48.400126029Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.119.0/component/config.go#L50": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-10T19:31:46.199745702Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-02-11T11:40:12.345Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.119.0/pdata/internal/data/protogen/trace/v1/trace.pb.go": {
     "StatusCode": 206,
@@ -6360,8 +6372,8 @@
     "LastSeen": "2025-02-10T19:31:58.756540779Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.119.0/receiver/receiver.go#L58": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-10T19:31:53.421771005Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-02-11T11:40:12.345Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.119.0/semconv/v1.9.0/generated_resource.go": {
     "StatusCode": 206,

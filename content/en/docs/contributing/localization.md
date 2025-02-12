@@ -210,7 +210,7 @@ at `HEAD`, then erase the commit hash value in the front matter, and run the
 {{% /alert %}}
 
 If you have batch updated all of your localization pages that had drifted, you
-can update the commit hash of these files using the `-u` flag followed by a
+can update the commit hash of these files using the `-c` flag followed by a
 commit hash or 'HEAD' to use `main@HEAD`.
 
 ```sh

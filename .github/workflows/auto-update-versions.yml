@@ -9,7 +9,7 @@ on:
 jobs:
   auto-update-versions:
     name: Auto-update versions
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     if: github.repository == 'open-telemetry/opentelemetry.io'
     env:
       DEPTH: --depth 999 # submodule clone depth

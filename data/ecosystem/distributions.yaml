@@ -7,6 +7,14 @@
   url: https://aws.amazon.com/otel/
   docsUrl: https://aws-otel.github.io/docs/getting-started/collector
   components: [Collector]
+- name: AWS AWS Distro for OpenTelemetry - Instrumentation for JavaScript
+  url: https://github.com/aws-observability/aws-otel-js
+  docsUrl: https://github.com/aws-observability/aws-otel-js
+  components: [Node]
+- name: AWS AWS Distro for OpenTelemetry - Instrumentation for Python
+  url: https://github.com/aws-observability/aws-otel-python
+  docsUrl: https://github.com/aws-observability/aws-otel-python
+  components: [Python]
 - name: Grafana Alloy
   url: https://github.com/grafana/alloy
   docsUrl: https://grafana.com/docs/alloy/latest/
