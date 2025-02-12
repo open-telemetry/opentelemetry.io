@@ -28,6 +28,10 @@ languages:
     languageName: 日本語 (Japanese)
     params:
       description: OpenTelemetryプロジェクト公式サイト
+      notes:
+        docker-compose-v2: |
+          `docker-compose` は非推奨です. 詳細は、
+          [Migrate to Compose V2](https://docs.docker.com/compose/migrate/) を確認してください。
   pt: # cSpell:ignore Português Projeto
     languageName: Português
     languageCode: pt-BR
@@ -134,15 +138,14 @@ params:
         url: https://github.com/open-telemetry/community#mailing-lists
         icon: fa fa-envelope
         desc: List of mailing lists that the project uses.
+      - name: Bluesky
+        url: https://bsky.app/profile/opentelemetry.io
+        icon: fab fa-bluesky
+        desc: Follow us on Bluesky to get the latest news!
       - name: Mastodon
         url: https://fosstodon.org/@opentelemetry
         icon: fab fa-mastodon
         desc: Follow us on Mastodon to get the latest news!
-      - name: X
-        url: https://x.com/opentelemetry
-        icon: fab fa-x-twitter
-        desc:
-          Follow us on X, previously known as Twitter, to get the latest news!
       - name: Stack Overflow
         url: https://stackoverflow.com/questions/tagged/open-telemetry
         icon: fab fa-stack-overflow

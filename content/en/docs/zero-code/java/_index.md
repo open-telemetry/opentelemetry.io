@@ -7,7 +7,7 @@ aliases:
 cascade:
   vers:
     instrumentation: 2.12.0
-    otel: 1.46.0
+    otel: 1.47.0
 ---
 
 Zero-code instrumentation with Java uses a Java agent JAR or Spring Boot

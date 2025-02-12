@@ -19,8 +19,8 @@ a set of checks are executed. The PR checks verify that...
 {{% alert title="Note" color="primary" %}}
 
 If any of the PR checks fails, try to
-[fix content issues automatically](../pull-requests/#fix-content-issues-automatically)
-first by running `npm run fix:all` on your machine.
+[fix content issues automatically](../pull-requests/#fix-issues) first by
+running `npm run fix:all` on your machine.
 
 Additionally, you can comment `/fix:all` on your Pull Request. This will make
 the OpenTelemetry Bot run those commands on your behalf and update the PR. Make

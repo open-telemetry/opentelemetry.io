@@ -42,7 +42,7 @@ generate/configure the required TLS certificate.
 
 - The easiest and default method is to install the
   [cert-manager](https://cert-manager.io/docs/) and set
-  `admissionWebhooks.certManager.create` to `true`. In this way, cert-manager
+  `admissionWebhooks.certManager.enabled` to `true`. In this way, cert-manager
   will generate a self-signed certificate. See
   [cert-manager installation](https://cert-manager.io/docs/installation/kubernetes/)
   for more details.
