@@ -3,7 +3,7 @@ title: コンテンツの提出
 description: GitHub UI またはローカルのフォークを利用して、新しいコンテンツまたはコンテンツの変更を提出する方法を学びます
 aliases: [new-content]
 weight: 15
-default_lang_commit: 99f0ae5760038d51f9e9eb376bb428a2caca8167
+default_lang_commit: 99f0ae5760038d51f9e9eb376bb428a2caca8167 # patched
 ---
 
 新しいドキュメントの内容を追加したり、既存のコンテンツの改善をするには、[プルリクエスト][PR] （PR）を提出してください。
@@ -313,7 +313,7 @@ PR を公開した後に、自動テストの実行と [Netlify](https://www.net
 
 他のチェックも同様に失敗している可能性があります。[すべての PR チェック](../pr-checks) を参照してください。
 
-### 内容の問題を自動的に修正する {#fix-content-issues-automatically}
+### 内容の問題を自動的に修正する {#fix-issues}
 
 リポジトリに変更を提出するまえに、以下のコマンドを実行して (i) 報告された問題の対応し、(ii) スクリプトによって変更されたファイルのコミットをしてください。
 
