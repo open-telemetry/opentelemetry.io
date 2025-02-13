@@ -9975,6 +9975,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:19:12.345Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.41.0/oteps/0232-maturity-of-otel.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-13T21:34:46.214059431Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.41.0/spec-compliance-matrix.md#logs": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:19:12.345Z"
