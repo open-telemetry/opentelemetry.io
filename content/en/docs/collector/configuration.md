@@ -31,6 +31,17 @@ example:
 otelcol --config=customconfig.yaml
 ```
 
+You can also provide multiple configurations using multiple files at different
+paths. Each file can be a full or partial configuration, and the files can
+reference components from each other. If the merger of files does not constitute
+a complete configuration, the user receives an error since required components
+are not added by default. Pass in multiple file paths at the command line as
+follows:
+
+```shell
+otelcol --config=file:/path/to/first/file --config=file:/path/to/second/file
+```
+
 You can also provide configurations using environment variables, HTTP URIs, or
 YAML paths. For example:
 

@@ -1,13 +1,12 @@
 ---
 title: Training
 menu: { main: { weight: 45 } }
-description: Training programs and certifications for OpenTelemetry
+description: OpenTelemetry certifications and courses
+type: docs
+body_class: ot-training
+hide_feedback: true
 cSpell:ignore: otca
 ---
-
-{{% blocks/section color="white" %}}
-
-## {{% param title %}}
 
 This page showcases training resources for the OpenTelemetry project. Check back
 often for updates!
@@ -17,12 +16,13 @@ often for updates!
 Demonstrate your expertise in OpenTelemetry by becoming an OpenTelemetry
 Certified Associate.
 
-<a href="https://www.cncf.io/training/certification/otca/">
-  <img src="lft-badge-opentelemetry-associate2.svg" style="width: 250px; height: auto;" alt="OTCA Badge">
-</a>
+<!-- prettier-ignore -->
+[![OTCA badge]][OTCA URL]
+{.otca .hk-no-external-icon}
 
-### Training programs
+[OTCA badge]: lft-badge-opentelemetry-associate2.svg
+[OTCA URL]: https://www.cncf.io/training/certification/otca/
+
+### Courses
 
 Coming soon!
-
-{{% /blocks/section %}}
