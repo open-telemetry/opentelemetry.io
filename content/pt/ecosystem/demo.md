@@ -3,7 +3,7 @@ title: OpenTelemetry Demo
 linkTitle: Demo
 description:
   A Demo do OpenTelemetry é um sistema distribuído baseado em microsserviços,
-  projetado para ilustrar a implementação do OpenTelemetry em um ambiente quase
+  projetada para ilustrar a implementação do OpenTelemetry em um ambiente quase
   real.
 aliases:
   - /community/demo
@@ -20,7 +20,7 @@ A [Demo do OpenTelemetry](/docs/demo/) realiza as seguintes funções:
 - Cria uma base para fornecedores, autores de ferramentas e outros ampliarem e
   demonstrarem suas integrações com o OpenTelemetry.
 - Oferece um exemplo dinâmico para os contribuidores do OpenTelemetry utilizarem
-  no teste de novas versões da API, SDK e outros componentes ou melhorias.
+  nos testes de novas versões da API, SDK e outros componentes ou melhorias.
 
 Caso você se encontre fazendo perguntas como:
 
