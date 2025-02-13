@@ -124,6 +124,25 @@ The context inferrer would select the `metric` OTTL context instead, since no
 data points are accessed. Although it would be possible to run the statements
 using the `datapoint` OTTL context, `metric` is the most efficient option.
 
+### Which configuration style should I choose?
+
+The [flat configuration](#flat-configuration) style is best suited for scenarios
+where simplicity and ease of use are paramount. It is ideal for simple use cases
+where your configuration needs are straightforward and do not require the use of
+additional configurations keys, allowing you to quickly set up your statements
+with minimal effort and without needing to understand the underlying concept of
+OTTL contexts.
+
+The [structured configuration](#structured-configuration) style is more detailed
+and allows the use of additional configuration keys such as `error_mode` and
+`conditions`. It supports statements from multiple OTTL contexts. However,
+unlike the flat configuration style, it may require splitting them into separate
+configuration groups (see
+[context inference](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor#context-inference)).
+In terms of performance, the structured configuration is slightly faster than
+the flat configuration, making it a better choice for complex scenarios or
+configurations with a high number of statements.
+
 ## Try it out
 
 As we wrap up, we encourage users to explore this new functionality and take
