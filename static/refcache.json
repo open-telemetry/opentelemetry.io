@@ -5655,6 +5655,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:34:12.144171-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor#context-inference": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-13T16:50:41.935955+01:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:34:08.529327-05:00"
