@@ -1,5 +1,5 @@
 name: PR actions
-# cSpell:ignore esac htmltest refcache nvmrc
+# cSpell:ignore esac htmltest refcache nvmrc opentelemetrybot
 
 on:
   issue_comment:
@@ -15,7 +15,6 @@ jobs:
   pr-action:
     name: Run PR action
     runs-on: ubuntu-latest
-
     if: |
       github.event.issue.pull_request &&
       startsWith(github.event.comment.body, '/fix:')
@@ -27,6 +26,13 @@ jobs:
       DEPTH: --depth 999 # submodule clone depth
 
     steps:
+      - name: Context info
+        run: |
+          echo $PR_NUM
+          echo $COMMENT
+
+      - uses: actions/checkout@v4
+
       - name: Extract action name
         id: extract_action_name
         run: |
@@ -39,13 +45,6 @@ jobs:
             exit 1
           fi
           echo "PR_ACTION=$PR_ACTION" >> "$GITHUB_ENV"
-
-      - name: Context info
-        run: |
-          echo $PR_NUM
-          echo $COMMENT
-
-      - uses: actions/checkout@v4
 
       - name: Write start comment
         run: |
