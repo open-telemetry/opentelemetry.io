@@ -5,8 +5,7 @@ description: Learn how to add OpenTelemetry to your browser app
 weight: 20
 ---
 
-{{% alert title="Warning" color="warning" %}}
-{{% param notes.browser-instrumentation %}} {{% /alert %}}
+{{% include browser-instrumentation-warning.md %}}
 
 While this guide uses the example application presented below, the steps to
 instrument your own application should be similar.

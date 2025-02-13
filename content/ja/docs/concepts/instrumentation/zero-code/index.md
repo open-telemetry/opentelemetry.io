@@ -3,14 +3,16 @@ title: ゼロコード
 description: >-
   コードを書かずにアプリケーションにオブザーバビリティを追加する方法を学ぶ
 weight: 10
-default_lang_commit: d8c5612
+default_lang_commit: 35fde3d
 ---
 
 [運用担当者](/docs/getting-started/ops/)として、ソースを編集することなく、1つ以上のアプリケーションにオブザーバビリティを追加したいと思うかもしれません。
-OpenTelemetry を使えば、[コードベースの計装](/docs/concepts/instrumentation/code-based) のための OpenTelemetry API & SDK を使わなくても、サービスのオブザーバビリティを素早く得られます。
+OpenTelemetry を使えば、[コードベースの計装](/docs/concepts/instrumentation/code-based) のための OpenTelemetry API や SDK を使わなくても、サービスのオブザーバビリティを素早く得られます。
 
-ゼロコード計装は、OpenTelemetry APIとSDKの機能を使って、通常、エージェントあるいはそれに準ずる機能をアプリケーションに追加します。
-具体的なメカニズムは言語によって異なり、バイトコード操作、モンキーパッチ、あるいはeBPFから、アプリケーションにOpenTelemetry APIとSDKへの呼び出しを注入します。
+![Zero Code](./zero-code.svg)
+
+ゼロコード計装は、OpenTelemetry API と SDKの機能を使って、通常、エージェントあるいはそれに準ずる機能をアプリケーションに追加します。
+具体的なメカニズムは言語によって異なり、バイトコード操作、モンキーパッチ、あるいは eBPF から、アプリケーションにOpenTelemetry APIとSDKへの呼び出しを注入します。
 
 通常、ゼロコード計装は、使用しているライブラリの計装を追加します。
 つまり、リクエストとレスポンス、データベース呼び出し、メッセージキュー呼び出しなどが計装の対象となります。

@@ -2,7 +2,7 @@
 
 Para enviar dados de métricas para o [Prometheus](https://prometheus.io/), você
 pode
-[ativar o OTLP Receiver do Prometheus](https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver)
+[ativar o OTLP Receiver do Prometheus](https://prometheus.io/docs/prometheus/2.55/feature_flags/#otlp-receiver)
 e utilizar o [exportador OTLP](#otlp) ou você pode utilizar o exportador do
 Prometheus, um `MetricReader` que inicia um servidor HTTP e coleta métricas,
 serializando para o formato de texto do Prometheus sob demanda.

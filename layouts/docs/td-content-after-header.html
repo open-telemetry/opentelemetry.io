@@ -1,0 +1,15 @@
+{{ $pageProseLang := partial "i18n/lang.html" . -}}
+{{ $siteLang := .Site.Language -}}
+
+{{ if ne $siteLang $pageProseLang -}}
+
+<div class="pageinfo pageinfo-secondary">
+  <p class="ps-4">
+    <i class="fa-solid fa-circle-info" style="margin-left: -1.5rem"></i>
+    You are viewing the <strong>English version</strong> of this page because it
+    has not yet been translated. Interested in helping out? See
+    <a href="/docs/contributing/">Contributing</a>.
+  </p>
+</div>
+
+{{- end -}}

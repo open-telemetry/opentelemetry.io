@@ -1,7 +1,7 @@
 ---
 title: 運用担当者のための入門
 linkTitle: Ops
-default_lang_commit: e7a6289
+default_lang_commit: d2368c7e90e6abeb4580193aa305dfabd21ed4f7
 ---
 
 あなたが以下のいずれかに当てはまれば、このページはあなたのための[入門](..)ページです。
