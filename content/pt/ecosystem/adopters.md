@@ -16,7 +16,7 @@ OpenTelemetry para [Observabilidade](/docs/concepts/observability-primer/).
 ## Adicionando sua organização como adotante {#how-to-add}
 
 Para que sua organização seja listada, envie um PR com uma entrada adicionada à
-[lista de adotantes]. A entrada deve incluir o seguinte:
+[lista de adotantes]. A entrada deve incluir:
 
 - Link para uma publicação em blog ou outro recurso que descreva como sua
   organização utiliza o OpenTelemetry
