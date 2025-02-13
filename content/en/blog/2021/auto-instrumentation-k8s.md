@@ -9,4 +9,4 @@ This article introduces OpenTelemetry Operator’s new feature that significantl
 simplifies instrumenting workloads deployed on Kubernetes. Read all the details
 from the [original post][].
 
-[original post]: {{% param canonical_url %}}
+[original post]: <{{% param canonical_url %}}>

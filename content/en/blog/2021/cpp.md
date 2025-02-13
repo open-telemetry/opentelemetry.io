@@ -9,4 +9,4 @@ OpenTelemetry C++ released its v1.0 stable version last month, which implements
 the OpenTelemetry distributed tracing specification! For all the details, see
 the [original post][].
 
-[original post]: {{% param canonical_url %}}
+[original post]: <{{% param canonical_url %}}>
