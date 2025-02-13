@@ -3,6 +3,7 @@ title: トレース
 weight: 1
 description: アプリケーションを通過するリクエストの経路
 default_lang_commit: b7e40731390448f604897ded62cff8abd3505430
+cSpell:ignore: Guten
 ---
 
 **トレース** は、リクエストがアプリケーションに投げられたときに何が起こるかの全体像を教えてくれます。
