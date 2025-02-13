@@ -4,7 +4,7 @@ description: 既存イシューの修正方法、またはバグ、セキュリ�
 weight: 10
 _issues: https://github.com/open-telemetry/opentelemetry.io/issues
 _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A
-default_lang_commit: 24146bd1368e4c6082c7d6077efd29dba0d51055
+default_lang_commit: 24146bd1368e4c6082c7d6077efd29dba0d51055 # patched
 ---
 
 ## 既存のイシューの修正 {#fixing-an-existing-issue}
@@ -28,8 +28,8 @@ OTel を改善するための最も良い方法の 1 つは、既存のイシュ
    {.mt-3}
 
    <!-- prettier-ignore -->
-   [good first issue]: {{% param _issue %}}%22good+first+issue%22
-   [help wanted]: {{% param _issue %}}%3A%22help+wanted%22
+   [good first issue]: <{{% param _issue %}}%22good+first+issue%22>
+   [help wanted]: <{{% param _issue %}}%3A%22help+wanted%22>
    [org]: https://github.com/open-telemetry
 
    {{% /alert %}}
