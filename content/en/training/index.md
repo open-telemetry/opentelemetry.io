@@ -30,7 +30,8 @@ Certified Associate (OTCA), available from [Cloud Native Certifications][]
 
 ## Courses
 
-A **FREE** course available from [Cloud Native Training Courses for OpenTelemetry][CNTCOT] offered by the Linux Foundation:
+A **FREE** course available from [Cloud Native Training Courses for
+OpenTelemetry][CNTCOT] offered by the Linux Foundation:
 
 <div class="card p-1 m-auto mt-5 mb-5" style="width: 20rem">
   <img src="LFS148-Course-Badge-300x300.avif"
@@ -56,6 +57,7 @@ A **FREE** course available from [Cloud Native Training Courses for OpenTelemetr
 [CNTCOT]: https://www.cncf.io/training/courses/?_sft_lf-project=opentelemetry
 
 {{% comment %}}
+
 <!-- Alternative design. Keeping for possible use later -->
 
 <div class="card mb-3" style="max-width: 540px; margin: auto">
