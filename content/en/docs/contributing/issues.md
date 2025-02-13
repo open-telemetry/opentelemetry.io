@@ -9,33 +9,47 @@ _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+i
 cSpell:ignore: prepopulated
 ---
 
+<style>
+  /* Force all list to be compact. */
+  li > p {
+    margin-bottom: 0;
+  }
+
+  /* Style "first time" alert */
+  .alert--first-timer {
+    margin: 0.5rem 0 !important;
+
+    > blockquote {
+      margin-top: 1rem;
+      margin-bottom: 0;
+      border-left-color: var(--bs-warning);
+      background-color: var(--bs-danger-bg-subtle);
+      > *:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+</style>
+
 ## Fixing an existing issue
 
 One of the best ways to help make OTel docs better is to fix an existing issue.
 
 1. Browse through the list of [issues]({{% param _issues %}}).
 2. Select an issue that you would like to work on, ideally one that you can fix
-   in a short amount of time.
-
-   <!-- prettier-ignore -->
-   <a name="first-issue"></a>
-   {{% alert title="First time contributing? " %}}
+   in a short amount of time. <a name="first-issue"></a>
+   {{% alert title="First time contributing?" color="primary alert--first-timer" %}}
 
    Select an issue with the following labels:
 
-   - [Good first issue]
-   - [Help wanted]
+   - [Good first issue](<{{% param _issue %}}%22good+first+issue%22>)
+   - [Help wanted](<{{% param _issue %}}%3A%22help+wanted%22>)
 
-   <!-- prettier-ignore -->
-   > **NOTE**: we **_do not_ assign issues** to those who
-   > have not already made contributions to the [OpenTelemetry
-   > organization][org], unless part of a mentorship or onboarding
-   > process.
-   {.mt-3}
-
-   [good first issue]: <{{% param _issue %}}%22good+first+issue%22>
-   [help wanted]: <{{% param _issue %}}%3A%22help+wanted%22>
-   [org]: https://github.com/open-telemetry
+   > **NOTE**: we **_do not_ assign issues** to those who have not already made
+   > contributions to the [OpenTelemetry organization][org], unless part of a
+   > mentorship or onboarding process.
+   >
+   > [org]: https://github.com/open-telemetry
 
    {{% /alert %}}
 
