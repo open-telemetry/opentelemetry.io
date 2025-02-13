@@ -58,3 +58,5 @@ dictionaries:
 words: # Valid words across all locales
   - Docsy
   - htmltest
+  # Hugo
+  - warnf
