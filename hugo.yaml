@@ -380,6 +380,9 @@ module:
       source: content/en/docs
       target: content/docs
       lang: pt
+    - source: content/en/ecosystem
+      target: content/ecosystem
+      lang: pt
 
     ## static
     - source: static

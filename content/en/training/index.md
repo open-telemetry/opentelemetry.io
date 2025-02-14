@@ -22,7 +22,7 @@ Certified Associate (OTCA), available from [Cloud Native Certifications][]:
 
 <!-- prettier-ignore -->
 [![OTCA badge]][OTCA certification]
-{.otca .hk-no-external-icon .mt-4}
+{.badge--otca .card-and-img-position .hk-no-external-icon}
 
 [Cloud Native Certifications]: https://www.cncf.io/training/certification/
 [OTCA badge]: lft-badge-opentelemetry-associate2.svg
@@ -31,26 +31,31 @@ Certified Associate (OTCA), available from [Cloud Native Certifications][]:
 ## Courses
 
 A **FREE** course available from [Cloud Native Training Courses for
-OpenTelemetry][CNTCOT] offered by the Linux Foundation:
+OpenTelemetry][CNTCOT] and offered by the Linux Foundation:
 
-<div class="card p-1 m-auto mt-5 mb-5" style="width: 20rem">
-  <img src="LFS148-Course-Badge-300x300.avif"
-    class="img-initial pt-3 pb-3 w-75 m-auto"
-    alt="LFS148 course badge">
-  <div class="card-body ps-4 pe-4 bg-light-subtle">
-    <div class="h5 card-title">Getting Started with OpenTelemetry</div>
-    <p class="card-text">
-      A course designed for software developers, DevOps engineers, site reliability engineers (SREs), and anyone looking to implement telemetry solutions across apps and environments.
-    </p>
-    <p class="card-text text-body-secondary small">
-      Online, self-paced, 8-10 hrs,
-      <a href="{{% param LFS148 %}}">learn more</a>.
-    </p>
-    <p class="text-center m-0">
-      <a href="{{% param LFS148 %}}" target="_blank" rel="noopener" class="btn btn-primary ">
-        Register
-      </a>
-    </p>
+<div class="card--course-wrapper">
+  <div class="card card--course" style="width: 20rem">
+    <img src="LFS148-Course-Badge-300x300.avif"
+      class="img-initial pt-3 w-75 m-auto"
+      alt="LFS148 course badge">
+    <div class="card-body ps-4 pe-4 bg-light-subtle">
+      <div class="h4 card-title pt-2 pb-2">
+        <span class="badge text-bg-secondary float-end">FREE</span>
+        Getting Started with OpenTelemetry
+      </div>
+      <p class="card-text">
+        A course designed for software developers, DevOps engineers, site reliability engineers (SREs), and anyone looking to implement telemetry solutions across apps and environments.
+      </p>
+      <p class="card-text text-body-secondary small">
+        Online, self-paced, 8-10 hrs,
+        <a href="{{% param LFS148 %}}">learn more</a>.
+      </p>
+      <p class="text-center m-0 pt-1 pb-2">
+        <a href="{{% param LFS148 %}}" target="_blank" rel="noopener" class="btn btn-primary">
+          Register
+        </a>
+      </p>
+    </div>
   </div>
 </div>
 
