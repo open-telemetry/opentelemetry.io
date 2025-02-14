@@ -1,0 +1,24 @@
+# cSpell:ignore # add words unknown to cspell, remove this line if not required
+title: My OpenTelemetry Integration # the name of your project
+registryType: <exporter/core/instrumentation> # the type of integration; is this an exporter, plugin, API package, or something else?
+language: dotnet
+tags:
+  - nservicebus
+  - dotnet
+urls:
+    website: https://github.com/Azure/azure-sdk-for-net # to work on the integrations page as well
+    repo: https://github.com/Particular/NServiceBus
+    docs: https://docs.particular.net/nservicebus/operations/opentelemetry
+license: Apache 2.0 # or whatever your OSS license is (see https://opensource.org/licenses/), proprietary or non-OSI approved may be rejected
+description: A friendly description of your integration/plugin
+authors:
+  - name: Particular Software
+  - url: https://github.com/Particular
+
+createdAt: <date> # Set todays date
+isNative: true # set this to true only if OpenTelemetry is directly integrated into your software (no plugin, no instrumentation library)
+package:
+  name: NServiceBus
+  registry: nuget
+  version: 9.2.6
+isFirstParty: false # set this to true if "isNative" is set to false, but the plugin / instrumentation library is from the same vendor/project as the instrumented software
