@@ -19,11 +19,11 @@ OTTL
 [context inference](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md#context-inference)
 support for the
 [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor).
-This feature removes the need to manually specify OTTL contexts, improving
+This feature removes the need for users to understand the underlying context
+concept of OTTL, allowing them to focus solely on their data. It also improves
 statement processing efficiency by automatically selecting the most appropriate
-one. This optimization ensures that data transformations are both accurate and
-performant, allowing users to focus solely on their data without needing to
-understand the underlying concept of OTTL contexts.
+OTTL context. This optimization ensures that data transformations are both
+accurate and performant.
 
 ## How does it work?
 
