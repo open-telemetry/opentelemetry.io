@@ -6,7 +6,7 @@ description:
 weight: 10
 _issues: https://github.com/open-telemetry/opentelemetry.io/issues
 _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A
-default_lang_commit: 99f0ae5760038d51f9e9eb376bb428a2caca8167
+default_lang_commit: 99f0ae5760038d51f9e9eb376bb428a2caca8167 # patched
 ---
 
 ## Solucionando una propuesta existente
@@ -28,13 +28,14 @@ OpenTelemetry (OTel) es solucionando un problema ya identificado.
    - [Help wanted]
 
    <!-- prettier-ignore -->
-   > **NOTA**: **_No_ asignamos propuestas** a aquellos que aún no hayan contribuido a la organización [OpenTelemetry
-   > organization][org], a menos que sean parte de un proceso de tutoria o onboarding.
+   > **NOTA**: **_No_ asignamos propuestas** a aquellos que aún no hayan
+   > contribuido a la organización [OpenTelemetry organization][org], a menos
+   > que sean parte de un proceso de tutoria o onboarding.
    {.mt-3}
 
    <!-- prettier-ignore -->
-   [good first issue]: {{% param _issue %}}%22good+first+issue%22
-   [help wanted]: {{% param _issue %}}%3A%22help+wanted%22
+   [good first issue]: <{{% param _issue %}}%22good+first+issue%22>
+   [help wanted]: <{{% param _issue %}}%3A%22help+wanted%22>
    [org]: https://github.com/open-telemetry
 
    {{% /alert %}}
