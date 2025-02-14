@@ -18,7 +18,7 @@ often for updates!
 ## Certifications
 
 Demonstrate your expertise in OpenTelemetry by becoming an OpenTelemetry
-Certified Associate (OTCA), available from [Cloud Native Certifications][]
+Certified Associate (OTCA), available from [Cloud Native Certifications][]:
 
 <!-- prettier-ignore -->
 [![OTCA badge]][OTCA certification]
@@ -40,7 +40,7 @@ OpenTelemetry][CNTCOT] offered by the Linux Foundation:
   <div class="card-body ps-4 pe-4 bg-light-subtle">
     <div class="h5 card-title">Getting Started with OpenTelemetry</div>
     <p class="card-text">
-      A course designed for software developers, DevOps engineers, site reliability engineers (SREs), and more looking to implement telemetry solutions across apps and environments.
+      A course designed for software developers, DevOps engineers, site reliability engineers (SREs), and anyone looking to implement telemetry solutions across apps and environments.
     </p>
     <p class="card-text text-body-secondary small">
       Online, self-paced, 8-10 hrs,
