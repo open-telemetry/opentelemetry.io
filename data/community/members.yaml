@@ -1994,6 +1994,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/punya
     avatar_url: https://avatars.githubusercontent.com/u/277514?v=4
+  - name: raphael-theriault-swi
+    teams:
+      - javascript-contrib-triagers
+    html_url: https://github.com/raphael-theriault-swi
+    avatar_url: https://avatars.githubusercontent.com/u/113933910?v=4
   - name: robsunday
     teams:
       - java-contrib-triagers
@@ -2367,9 +2372,6 @@ members:
   - name: ppittle
     html_url: https://github.com/ppittle
     avatar_url: https://avatars.githubusercontent.com/u/1190907?v=4
-  - name: raphael-theriault-swi
-    html_url: https://github.com/raphael-theriault-swi
-    avatar_url: https://avatars.githubusercontent.com/u/113933910?v=4
   - name: rauno56
     html_url: https://github.com/rauno56
     avatar_url: https://avatars.githubusercontent.com/u/1334536?v=4
