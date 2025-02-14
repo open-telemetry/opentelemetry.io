@@ -16367,6 +16367,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:54:34.700688-05:00"
   },
+  "https://training.linuxfoundation.org/training/getting-started-with-opentelemetry-lfs148/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-13T18:03:48.96079-05:00"
+  },
   "https://trino.io/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-24T14:37:24.899284-05:00"
@@ -16759,9 +16763,17 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:10:37.011069-05:00"
   },
+  "https://www.cncf.io/training/certification/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-13T18:03:45.587221-05:00"
+  },
   "https://www.cncf.io/training/certification/otca/": {
     "StatusCode": 200,
     "LastSeen": "2025-02-10T11:01:19.113808689-08:00"
+  },
+  "https://www.cncf.io/training/courses/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-13T18:03:45.853996-05:00"
   },
   "https://www.cockroachlabs.com/": {
     "StatusCode": 200,
