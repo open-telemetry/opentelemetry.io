@@ -12847,6 +12847,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:10:44.524151-05:00"
   },
+  "https://ja.wikipedia.org/wiki/ISO_639-1": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-11T15:40:50.656187+09:00"
+  },
   "https://jaegertracing.io": {
     "StatusCode": 206,
     "LastSeen": "2024-08-09T10:46:31.338763-04:00"

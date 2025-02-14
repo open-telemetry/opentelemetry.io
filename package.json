@@ -18,6 +18,7 @@
     "_check:markdown": "npx gulp lint-md",
     "_check:registry": "npx gulp validate-registry",
     "_check:text": "npx textlint content data `ls *.md`",
+    "_commit:public": "HASH=$(git rev-parse --short main); cd public && git add -A && git commit -m \"Site at $HASH\"",
     "_diff:check": "git diff --name-only --exit-code",
     "_diff:fail": "git diff --name-only --exit-code || exit 1",
     "_fail": "exit 1",
