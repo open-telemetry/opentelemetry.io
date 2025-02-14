@@ -28,8 +28,9 @@ OpenTelemetry (OTel) es solucionando un problema ya identificado.
    - [Help wanted]
 
    <!-- prettier-ignore -->
-   > **NOTA**: **_No_ asignamos propuestas** a aquellos que aún no hayan contribuido a la organización [OpenTelemetry
-   > organization][org], a menos que sean parte de un proceso de tutoria o onboarding.
+   > **NOTA**: **_No_ asignamos propuestas** a aquellos que aún no hayan
+   > contribuido a la organización [OpenTelemetry organization][org], a menos
+   > que sean parte de un proceso de tutoria o onboarding.
    {.mt-3}
 
    <!-- prettier-ignore -->
