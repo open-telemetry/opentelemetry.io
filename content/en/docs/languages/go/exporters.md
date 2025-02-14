@@ -74,6 +74,17 @@ protobuf payloads.
 [`go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc)
 contains an implementation of OTLP metrics exporter using gRPC.
 
+### OTLP logs over HTTP (Experimental)
+
+[`go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp)
+contains an implementation of OTLP logs exporter using HTTP with binary protobuf
+payloads.
+
+### OTLP logs over gRPC (Experimental)
+
+[`go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc)
+contains an implementation of OTLP logs exporter using gRPC.
+
 ## Prometheus (Experimental)
 
 A Prometheus exporter is used to report metrics via Prometheus scrape HTTP
@@ -87,14 +98,3 @@ default configuration:
 
 To learn more on how to use the Prometheus exporter, try the
 [prometheus example](https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/examples/prometheus)
-
-### OTLP logs over HTTP (Experimental)
-
-[`go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp)
-contains an implementation of OTLP logs exporter using HTTP with binary protobuf
-payloads.
-
-### OTLP logs over gRPC (Experimental)
-
-[`go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc)
-contains an implementation of OTLP logs exporter using gRPC.
