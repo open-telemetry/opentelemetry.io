@@ -10,8 +10,8 @@ cSpell:ignore: Baeyens Outreachy
 
 {{% alert-md title="TL;DR" color="secondary" %}}
 
-Take our [OpenTelemetry Contributor Survey][6] and help us **enhance the contributor experience**.
-We appreciate your time and feedback!
+Take our [OpenTelemetry Contributor Survey][6] and help us **enhance the
+contributor experience**. We appreciate your time and feedback!
 
 {{% /alert-md %}}
 
