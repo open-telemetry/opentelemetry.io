@@ -3,6 +3,20 @@ title: Registry
 description: >-
   Find libraries, plugins, integrations, and other useful tools for using and
   extending OpenTelemetry.
+type: default
+layout: registry
+body_class: registry td-content
+weight: 20
+
+# =============================================================================
+# IMPORTANT:
+# IMPORTANT: Non-English locales: DO NOT include the front matter entries below
+# IMPORTANT:
+# =============================================================================
+
+aliases: [/registry/*]
+outputs: [html, json]
+
 # The redirects and aliases implement catch-all rules for old registry entries;
 # we don't publish individual entry pages anymore.
 #
@@ -11,19 +25,13 @@ description: >-
 # redirect rule to avoid the loop, as suggested by Netlify support
 # (email support ID 159489):
 redirects: [{ from: /ecosystem/registry*, to: '/ecosystem/registry?' }]
-aliases: [/registry/*]
-type: default
-layout: registry
-outputs: [html, json]
-body_class: registry td-content
-weight: 20
 ---
 
 {{% blocks/lead color="dark" %}}
 
 <!-- markdownlint-disable single-h1 -->
 
-# {{% param title %}}
+<h1>{{% param title %}}</h1>
 
 {{% param description %}}
 
