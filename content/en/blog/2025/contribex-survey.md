@@ -8,6 +8,8 @@ sig: Contributor Experience
 cSpell:ignore: Baeyens Outreachy
 ---
 
+**TL;DR: Help us improve the contributor experience by taking our [survey][6].**
+
 Since its founding, OpenTelemetry has had [thousands of contributors][3] from
 around the world, including end users, vendors, and students. [Last summer][1]
 some members of the OpenTelemetry project came together to create the
