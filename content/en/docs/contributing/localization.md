@@ -140,7 +140,7 @@ command:
 
 ```console
 $ npm run check:i18n
-1       1       content/en/docs/kubernetes/_index.md - content/zh/docs/kubernetes/_index.md
+1       1       content/en/docs/platforms/kubernetes/_index.md - content/zh/docs/platforms/kubernetes/_index.md
 ...
 ```
 
@@ -158,11 +158,11 @@ of the corresponding English language pages by using the `-d` flag and providing
 the paths to your localized pages, or omit the paths to see all. For example:
 
 ```console
-$ npm run check:i18n -- -d content/zh/docs/kubernetes
-diff --git a/content/en/docs/kubernetes/_index.md b/content/en/docs/kubernetes/_index.md
+$ npm run check:i18n -- -d content/zh/docs/platforms/kubernetes
+diff --git a/content/en/docs/platforms/kubernetes/_index.md b/content/en/docs/platforms/kubernetes/_index.md
 index 3592df5d..c7980653 100644
---- a/content/en/docs/kubernetes/_index.md
-+++ b/content/en/docs/kubernetes/_index.md
+--- a/content/en/docs/platforms/kubernetes/_index.md
++++ b/content/en/docs/platforms/kubernetes/_index.md
 @@ -1,7 +1,7 @@
  ---
  title: OpenTelemetry with Kubernetes
@@ -210,7 +210,7 @@ at `HEAD`, then erase the commit hash value in the front matter, and run the
 {{% /alert %}}
 
 If you have batch updated all of your localization pages that had drifted, you
-can update the commit hash of these files using the `-u` flag followed by a
+can update the commit hash of these files using the `-c` flag followed by a
 commit hash or 'HEAD' to use `main@HEAD`.
 
 ```sh

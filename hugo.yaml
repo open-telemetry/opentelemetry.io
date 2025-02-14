@@ -1,4 +1,4 @@
-# cSpell:ignore docsy goldmark linkify netlify wordmark noopener
+# cSpell:ignore bluesky docsy goldmark linkify netlify wordmark noopener
 baseURL: https://opentelemetry.io
 title: OpenTelemetry
 disableKinds: [taxonomy]
@@ -28,19 +28,15 @@ languages:
     languageName: 日本語 (Japanese)
     params:
       description: OpenTelemetryプロジェクト公式サイト
+      notes:
+        docker-compose-v2: |
+          `docker-compose` は非推奨です. 詳細は、
+          [Migrate to Compose V2](https://docs.docker.com/compose/migrate/) を確認してください。
   pt: # cSpell:ignore Português Projeto
     languageName: Português
     languageCode: pt-BR
     params:
       description: Site do Projeto OpenTelemetry
-      notes:
-        browser-instrumentation: |
-          A instrumentação do cliente para o navegador é **experimental** e,
-          em grande parte, **não está especificada**. Caso possua interesse em
-          auxiliar, entre em contato com o [SIG de Instrumentação do
-          Cliente][sig].
-
-          [sig]: https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w
   zh:
     languageName: 中文 (Chinese)
     languageCode: zh-cn
@@ -134,15 +130,14 @@ params:
         url: https://github.com/open-telemetry/community#mailing-lists
         icon: fa fa-envelope
         desc: List of mailing lists that the project uses.
+      - name: Bluesky
+        url: https://bsky.app/profile/opentelemetry.io
+        icon: fab fa-bluesky
+        desc: Follow us on Bluesky to get the latest news!
       - name: Mastodon
         url: https://fosstodon.org/@opentelemetry
         icon: fab fa-mastodon
         desc: Follow us on Mastodon to get the latest news!
-      - name: X
-        url: https://x.com/opentelemetry
-        icon: fab fa-x-twitter
-        desc:
-          Follow us on X, previously known as Twitter, to get the latest news!
       - name: Stack Overflow
         url: https://stackoverflow.com/questions/tagged/open-telemetry
         icon: fab fa-stack-overflow
@@ -232,12 +227,6 @@ params:
     docker-compose-v2: |
       `docker-compose` is deprecated. For details, see
       [Migrate to Compose V2](https://docs.docker.com/compose/migrate/).
-    browser-instrumentation: |
-      Client instrumentation for the browser is **experimental** and mostly **unspecified**.
-      If you are interested in helping out, get in touch with the
-      [Client Instrumentation SIG][sig].
-
-      [sig]: https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w
 
 security:
   funcs: # cspell:disable-line

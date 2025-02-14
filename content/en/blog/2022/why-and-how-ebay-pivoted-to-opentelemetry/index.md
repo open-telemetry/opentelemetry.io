@@ -21,8 +21,8 @@ ongoing issues in critical workflows that could potentially impact customer
 experience. The Observability landscape is an ever-changing one and recent
 developments in the OpenTelemetry world forced us to rethink our strategy in
 order to pivot to using it. eBay’s observability platform Sherlock.io provides
-developers and Site Reliability Engineers (SREs) with a robust set of
-cloud-native offerings to observe the various applications that power the eBay
+developers and Site Reliability Engineers (SREs) with a robust set of cloud
+native offerings to observe the various applications that power the eBay
 ecosystem. Sherlock.io supports the three pillars of observability — metrics,
 logs and traces. The platform’s metric store is a clustered and sharded
 implementation of the Prometheus storage engine. We use the Metricbeat agent to
@@ -353,4 +353,4 @@ OpenTelemetry Collector community:
 
 _A version of this article was [originally posted][] on the eBay Tech Blog._
 
-[originally posted]: {{% param canonical_url %}}
+[originally posted]: <{{% param canonical_url %}}>

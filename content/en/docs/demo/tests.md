@@ -4,7 +4,7 @@ cSpell:ignore: Tracetest
 ---
 
 Currently, the repository includes E2E tests for both the frontend and backend
-services. For the Frontend we are using [Cypress](https://www.cypress.io/)
+services. For the Frontend we are using [Cypress](https://www.cypress.io/) to
 execute the different flows in the web store. While the backend services use
 [AVA](https://avajs.dev) as the main testing framework for integration tests and
 [Tracetest](https://tracetest.io/) for trace-based tests.
