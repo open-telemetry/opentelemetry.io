@@ -24,7 +24,7 @@ O exemplo a seguir usa um aplicativo básico
 [Flask](https://flask.palletsprojects.com/). Se você não estiver usando Flask,
 tudo bem — você pode usar OpenTelemetry Python com outros frameworks web também,
 como Django e FastAPI. Para uma lista completa de bibliotecas para frameworks
-suportados, veja o
+suportados, consulte o
 [registro](/ecosystem/registry/?component=instrumentation&language=python).
 
 Para exemplos mais elaborados, veja
