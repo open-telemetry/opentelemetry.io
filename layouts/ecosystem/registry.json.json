@@ -13,6 +13,6 @@
   {{ end -}}
   {{ $entry = merge $entry (dict "_key" $key "id" $counter "flags" $flags) -}}
   {{ $entries = $entries | append $entry -}}
-  {{ $counter = add $counter 1 }}
+  {{ $counter = add $counter 1 -}}
 {{ end -}}
 {{ jsonify (dict "indent" "  ") $entries -}}
