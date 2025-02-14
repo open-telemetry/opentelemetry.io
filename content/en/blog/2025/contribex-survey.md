@@ -8,7 +8,12 @@ sig: Contributor Experience
 cSpell:ignore: Baeyens Outreachy
 ---
 
-**TL;DR: Help us improve the contributor experience by taking our [survey][6].**
+{{% alert-md title="TL;DR" color="secondary" %}}
+
+Take our [OpenTelemetry Contributor Survey][6] and help us **enhance the contributor experience**.
+We appreciate your time and feedback!
+
+{{% /alert-md %}}
 
 Since its founding, OpenTelemetry has had [thousands of contributors][3] from
 around the world, including end users, vendors, and students. [Last summer][1]
@@ -32,7 +37,7 @@ the survey results once completed, with a special focus to avoid data
 re-identification.
 
 We invite you to **access the [survey][6]** and share your experience. If you
-have any questions or concerns, please reach out to Pablo Baeyens on the [CNCF
+have any questions or concerns, reach out to Pablo Baeyens on the [CNCF
 Slack][8] or using the email listed on the first page of the survey.
 
 [1]: https://github.com/open-telemetry/community/pull/2162
