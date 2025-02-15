@@ -8,73 +8,92 @@ default_lang_commit: 17c3b8eb53b8abc56213abb736c0f850eab752df
 <!-- markdownlint-disable blanks-around-fences -->
 <?code-excerpt path-base="examples/java/configuration"?>
 
-O SDK é uma referência integrada da implementação da [API](../api/),
-processando e exporando a telemetria produzida pela instrumentação das chamadas de API. Esta página é uma visão geral dos conceitos do SDK, incluíndo descrições, links relevantes para Javadocs, artefatos coordinates, configurações programadas de amostras e mais. Veja **[Configure o SDK](../configuration/)** para detalhes na configuração do SDK, incluíndo
+O SDK é uma referência integrada da implementação da [API](../api/), processando
+e exporando a telemetria produzida pela instrumentação das chamadas de API. Esta
+página é uma visão geral dos conceitos do SDK, incluíndo descrições, links
+relevantes para Javadocs, artefatos coordinates, configurações programadas de
+amostras e mais. Veja **[Configure o SDK](../configuration/)** para detalhes na
+configuração do SDK, incluíndo
 [Autoconfiguração do SDK sem código](../configuration/#zero-code-sdk-autoconfigure).
 
 O SDK consiste nos seguintes componentes de alto nível:
 
 - [SdkTracerProvider](#sdktracerprovider): A implementação do SDK
-  `TracerProvider`, incluíndo ferramentas para amostragem, processamento, e exportação de
-  trechos.
-- [SdkMeterProvider](#sdkmeterprovider): A implementação do SDK
-  `MeterProvider`, incluíndo ferramentas para configuração de fluxo de métricas e lendo /
+  `TracerProvider`, incluíndo ferramentas para amostragem, processamento, e
+  exportação de trechos.
+- [SdkMeterProvider](#sdkmeterprovider): A implementação do SDK `MeterProvider`,
+  incluíndo ferramentas para configuração de fluxo de métricas e lendo /
   exportando métricas.
 - [SdkLoggerProvider](#sdkloggerprovider): A implementação do SDK
-  `LoggerProvider`, incluíndo ferramentas para processamento e exportação de logs.
-- [TextMapPropagator](#textmappropagator): Propaga o contexto através dos limites dos processos.
+  `LoggerProvider`, incluíndo ferramentas para processamento e exportação de
+  logs.
+- [TextMapPropagator](#textmappropagator): Propaga o contexto através dos
+  limites dos processos.
 
-Essa combinação no [OpenTelemetrySdk](#opentelemetrysdk), transporta um objeto que facilita a passagem de [Componentes SDK](#sdk-components) totalmente configurados
-para instrumentação.
+Essa combinação no [OpenTelemetrySdk](#opentelemetrysdk), transporta um objeto
+que facilita a passagem de [Componentes SDK](#sdk-components) totalmente
+configurados para instrumentação.
 
-O SDK é empacotado com uma varidade de componentes integrados que são suficientes para muitos casos de uso, e suporta [plugins de interfaces](#sdk-plugin-extension-interfaces) para extensibilidade.
+O SDK é empacotado com uma varidade de componentes integrados que são
+suficientes para muitos casos de uso, e suporta
+[plugins de interfaces](#sdk-plugin-extension-interfaces) para extensibilidade.
 
 ## SDK interfaces de extensões para plugins
 
-Quando os componentes integrados são suficientes, o SDK pode ser extendido por uma implementação para várias interfaces de extensões para plugins:
+Quando os componentes integrados são suficientes, o SDK pode ser extendido por
+uma implementação para várias interfaces de extensões para plugins:
 
 - [Amostras](#sampler): Configura quais trechos são gravados e amostrados.
-- [SpanProcessor](#spanprocessor): Processa trechos quando eles iniciam e quando eles finalizam.
+- [SpanProcessor](#spanprocessor): Processa trechos quando eles iniciam e quando
+  eles finalizam.
 - [SpanExporter](#spanexporter): Exporta trechos fora dos processos.
 - [MetricReader](#metricreader): Lê métricas agregadas.
 - [MetricExporter](#metricexporter): Exporta métricas fora dos processos.
-- [LogRecordProcessor](#logrecordprocessor): Processa registros de logs quando eles são emitidos.
-- [LogRecordExporter](#logrecordexporter): Exporta registros de logs fora dos processos.
-- [TextMapPropagator](#textmappropagator): Propaga o contexto através dos limites dos processos.
+- [LogRecordProcessor](#logrecordprocessor): Processa registros de logs quando
+  eles são emitidos.
+- [LogRecordExporter](#logrecordexporter): Exporta registros de logs fora dos
+  processos.
+- [TextMapPropagator](#textmappropagator): Propaga o contexto através dos
+  limites dos processos.
 
 ## Componentes do SDK
 
-O artefato `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`
-contém o OpenTelemetry SDK.
+O artefato `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}` contém o
+OpenTelemetry SDK.
 
-A seção a seguir descreve o núcleo _(core)_ componentes do SDK voltados ao usuário. Cada seção do componente incluí:
+A seção a seguir descreve o núcleo _(core)_ dos componentes do SDK voltados ao
+usuário. Cada seção do componente incluí:
 
-- Uma pequena descrição, incluíndo um link para a documentação do Java com um tipo de referência.
+- Uma pequena descrição, incluíndo um link para a documentação do Java com um
+  tipo de referência.
 - Se este componente é
-  [interfaces de extensões para plugins](#sdk-plugin-extension-interfaces), uma tabela de
-  implementações disponíveis do `opentelemetry-java-contrib`.
+  [interfaces de extensões para plugins](#sdk-plugin-extension-interfaces), uma
+  tabela de implementações disponíveis do `opentelemetry-java-contrib`.
 - Uma demonstração simples de
   [Configuração programática ](../configuration/#programmatic-configuration).
 - Se este componente é
-  [interfaces de extensões para plugins](#sdk-plugin-extension-interfaces), uma simples demonstração de uma implementação personalizada.
+  [interfaces de extensões para plugins](#sdk-plugin-extension-interfaces), uma
+  simples demonstração de uma implementação personalizada.
 
 ### OpenTelemetrySdk
 
 [OpenTelemetrySdk](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk/latest/io/opentelemetry/sdk/OpenTelemetrySdk.html)
-é uma implementação do SDK do [OpenTelemetry](../api/#opentelemetry). Ele armazena os componentes de alto nível do SDK,
-o que facilita a passagem de componentes do SDK totalmente configurados para a instrumentação.
+é uma implementação do SDK do [OpenTelemetry](../api/#opentelemetry). Ele
+armazena os componentes de alto nível do SDK, o que facilita a passagem de
+componentes do SDK totalmente configurados para a instrumentação.
 
-`OpenTelemetrySdk` é configurado pelo responsável pela aplicação, e consiste em:
+`OpenTelemetrySdk` é configurado pelo responsável da aplicação, e consiste em:
 
 - [SdkTracerProvider](#sdktracerprovider): A implementação do SDK
   `TracerProvider`.
-- [SdkMeterProvider](#sdkmeterprovider): A implementação do SDK
-  `MeterProvider`.
+- [SdkMeterProvider](#sdkmeterprovider): A implementação do SDK `MeterProvider`.
 - [SdkLoggerProvider](#sdkloggerprovider): A implementação do SDK
   `LoggerProvider`.
-- [ContextPropagators](#textmappropagator): Propaga o contexto através dos limites dos processos.
+- [ContextPropagators](#textmappropagator): Propaga o contexto através dos
+  limites dos processos.
 
-O trecho de código a seguir demonstra a configuração programática do `OpenTelemetrySdk`:
+O trecho de código a seguir demonstra a configuração programática do
+`OpenTelemetrySdk`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/OpenTelemetrySdkConfig.java"?>
@@ -106,9 +125,11 @@ associar o mesmo recurso com o [SdkTracerProvider](#sdktracerprovider),
 [SdkMeterProvider](#sdkmeterprovider), [SdkLoggerProvider](#sdkloggerprovider).
 
 {{% alert color="info" %}}
-[ResourceProviders](../configuration/#resourceprovider) contribui com informação contextual para a
-[auto configuração](../configuration/#zero-code-sdk-autoconfigure) do recurso baseado no ambiente. Veja a lista de documentação disponível `ResourceProvider`s.
-{{% /alert %}}
+[ResourceProviders](../configuration/#resourceprovider) contribui com informação
+contextual para a
+[auto configuração](../configuration/#zero-code-sdk-autoconfigure) do recurso
+baseado no ambiente. Veja a lista de documentação disponível
+`ResourceProvider`s. {{% /alert %}}
 
 O trecho de código a seguir demonstra a configuração programática do `Resource`:
 
@@ -133,18 +154,22 @@ public class ResourceConfig {
 ### SdkTracerProvider
 
 [SdkTracerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/SdkTracerProvider.html)
-é uma implementaçã do SDK do [TracerProvider](../api/#tracerprovider), e é responsável por lidar com a telemetria de trações produzidos pela API.
+é uma implementaçã do SDK do [TracerProvider](../api/#tracerprovider), e é
+responsável por lidar com a telemetria de traços produzidos pela API.
 
-`SdkTracerProvider` é configurado pelo responsável pela aplicação, e consiste em:
+`SdkTracerProvider` é configurado pelo responsável da aplicação, e consiste em:
 
-- [Recursos](#resource): Os recursos de trechos são associados com ele.
+- [Recursos](#resource): Os trechos associados com o traço.
 - [Amostras](#sampler): Configura quais trechos são gravados e amostrados.
-- [SpanProcessors](#spanprocessor): Processa trechos quando eles iniciam e quando eles finalizam.
-- [SpanExporters](#spanexporter): Exporta trechos fora dos processos (junção
-  dos associados com `SpanProcessor`s).
-- [SpanLimits](#spanlimits): Controla o limite de dados associados com os trechos.
+- [SpanProcessors](#spanprocessor): Processa trechos quando eles iniciam e
+  quando eles finalizam.
+- [SpanExporters](#spanexporter): Exporta trechos fora dos processos (junção dos
+  associados com `SpanProcessor`s).
+- [SpanLimits](#spanlimits): Controla o limite de dados associados com os
+  trechos.
 
-O trecho de código a seguir demonstra a configuração programática do `SdkTracerProvider`:
+O trecho de código a seguir demonstra a configuração programática do
+`SdkTracerProvider`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/SdkTracerProviderConfig.java"?>
@@ -173,15 +198,14 @@ public class SdkTracerProviderConfig {
 
 Uma
 [Amostra](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/samplers/Sampler.html)
-é uma [interfaces de extensão para plugins](#sdk-plugin-extension-interfaces) responsável
-por determinas quais trechos são gravados e amostrados.
+é uma [interfaces de extensão para plugins](#sdk-plugin-extension-interfaces)
+responsável por determinar quais trechos são gravados e amostrados.
 
-{{% alert color="info" %}} Por padrão o `SdkTracerProvider` é configurado com a amostra
-`ParentBased(root=AlwaysOn)`. This results in 100% of spans being
-sampled if unless a calling application performs sampling. If this is too noisy
-/ expensive, change the sampler. {{% /alert %}}
+{{% alert color="info" %}} Por padrão o `SdkTracerProvider` é configurado com a
+amostra `ParentBased(root=AlwaysOn)`. Isto resulta em 100% dos spans sendo amostrados, a menos que algum aplicação cliente realize a amostragem. Se essa abordagem ser muito poluída / caro, 
+troque a amostragem. {{% /alert %}}
 
-Amostras são integradas ao SDK e mantidas pela comunidade em
+Amostras integradas ao SDK e mantidas pela comunidade em
 `opentelemetry-java-contrib`:
 
 | Classe                    | Artefato                                                                                      | Descrição                                                                                                                                 |
@@ -240,8 +264,8 @@ public class SamplerConfig {
 ```
 <!-- prettier-ignore-end -->
 
-Implementando a interface da `Amostra` para fornecer sua própria lógica de amostragem personalizada. Por
-exemplo:
+Implementando a interface da `Amostra` para fornecer sua própria lógica de
+amostragem personalizada. Por exemplo:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomSampler.java"?>
@@ -291,12 +315,13 @@ public class CustomSampler implements Sampler {
 
 Um
 [SpanProcessor](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/SpanProcessor.html)
-é uma [interfaces de extensão para plugins](#sdk-plugin-extension-interfaces) com
-funções de retorno invocadas quando um trecho é inicializado e finalizado. Elas são frequentemente combinadas com
-[SpanExporters](#spanexporter) para exportar trechos ao limites dos processos, mas também possui outras
-aplicações, como enriquecimento de dados.
+é uma [interface de extensão para plugins](#sdk-plugin-extension-interfaces)
+com funções de retorno invocadas quando um trecho é inicializado e finalizado.
+Elas são frequentemente combinadas com [SpanExporters](#spanexporter) para
+exportar trechos ao limites dos processos, mas também possui outras aplicações,
+como enriquecimento de dados.
 
-Span processors são integradas ao SDK e mantidas pela comunidade em
+Span processors integrados ao SDK e mantidos pela comunidade em
 `opentelemetry-java-contrib`:
 
 | Classe                    | Artefato                                                                                    | Descrição                                                                 |
@@ -308,8 +333,7 @@ Span processors são integradas ao SDK e mantidas pela comunidade em
 | `StackTraceSpanProcessor` | `io.opentelemetry.contrib:opentelemetry-span-stacktrace:{{% param vers.contrib %}}-alpha`   | Enriches select spans with stack trace data.                              |
 | `InferredSpansProcessor`  | `io.opentelemetry.contrib:opentelemetry-inferred-spans:{{% param vers.contrib %}}-alpha`    | Generates spans from async profiler instead of instrumentation.           |
 
-O  trecho de código a seguir demonstra `SpanProcessor` programmatic
-configuration:
+O trecho de código a seguir demonstra a configuração programática do `SpanProcessor`
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/SpanProcessorConfig.java"?>
@@ -338,8 +362,8 @@ public class SpanProcessorConfig {
 ```
 <!-- prettier-ignore-end -->
 
-Implement the `SpanProcessor` interface to provide your own custom span
-processing logic. For example:
+Implementando a interface do `SpanProcessor` para fornecer seu próprio 
+processamento lógico de trecho. Por exemplo:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomSpanProcessor.java"?>
@@ -395,17 +419,17 @@ public class CustomSpanProcessor implements SpanProcessor {
 
 #### SpanExporter
 
-A
+Um
 [SpanExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/export/SpanExporter.html)
-is a [plugin extension interface](#sdk-plugin-extension-interfaces) responsible
-for exporting spans out of process. Rather than directly registering with
-`SdkTracerProvider`, they are paired with [SpanProcessors](#spanprocessor)
-(typically `BatchSpanProcessor`).
+é uma [interface de extensão para plugins](#sdk-plugin-extension-interfaces) responsável
+por exportar trechos foras dos processos. Ao invés de registrar diretamente com
+`SdkTracerProvider`, eles são associados com [SpanProcessors](#spanprocessor)
+(normalmente `BatchSpanProcessor`).
 
-Span exporters built-in to the SDK and maintained by the community in
+Exportadores de trechos integrados ao SDK e mantidos pela comunidade em
 `opentelemetry-java-contrib`:
 
-| Class                          | Artifact                                                                                 | Description                                                                   |
+| Classe                          | Artefato                                                                                 | Descrição                                                                   |
 | ------------------------------ | ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | `OtlpHttpSpanExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`                   | Exports spans via OTLP `http/protobuf`.                                       |
 | `OtlpGrpcSpanExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`                   | Exports spans via OTLP `grpc`.                                                |
@@ -416,10 +440,9 @@ Span exporters built-in to the SDK and maintained by the community in
 | `InterceptableSpanExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha`     | Passes spans to a flexible interceptor before exporting.                      |
 | `KafkaSpanExporter`            | `io.opentelemetry.contrib:opentelemetry-kafka-exporter:{{% param vers.contrib %}}-alpha` | Exports spans by writing to a Kafka topic.                                    |
 
-**[1]**: See [OTLP exporters](#otlp-exporters) for implementation details.
+**[1]**: Veja [OTLP exporters](#otlp-exporters) para detalhes de implementação.
 
-O  trecho de código a seguir demonstra `SpanExporter` programmatic
-configuration:
+O trecho de código a seguir demonstra configuração programática do `SpanExporter`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/SpanExporterConfig.java"?>
@@ -461,8 +484,8 @@ public class SpanExporterConfig {
 ```
 <!-- prettier-ignore-end -->
 
-Implement the `SpanExporter` interface to provide your own custom span export
-logic. For example:
+Implementando a interface do `SpanExporter` para fornecer sua própria lógica de
+exportação de trechos. Por exemplo: 
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomSpanExporter.java"?>
@@ -509,10 +532,10 @@ public class CustomSpanExporter implements SpanExporter {
 #### SpanLimits
 
 [SpanLimits](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/SpanLimits.html)
-defines constraints for the data captured by spans, including max attribute
-length, max number of attributes, and more.
+define restrições para os dados capturados pelos trechos, incluindo o comprimento máximo
+dos atributos, máximo numero de atributos, entre outros.
 
-O  trecho de código a seguir demonstra `SpanLimits` programmatic configuration:
+O trecho de código a seguir demonstra a configuração programática do `SpanLimits`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/SpanLimitsConfig.java"?>
@@ -539,27 +562,27 @@ public class SpanLimitsConfig {
 ### SdkMeterProvider
 
 [SdkMeterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/SdkMeterProvider.html)
-is the SDK implementation of [MeterProvider](../api/#meterprovider), and is
-responsible for handling metric telemetry produced by the API.
+é a implementação do SDK [MeterProvider](../api/#meterprovider), e é
+responsável por gerenciar a telemetria de métricas produzidas pela API.
 
-`SdkMeterProvider` is configured by the application owner, e consiste em:
+`SdkMeterProvider` é configurado pelo responsável pela aplicação, e consiste em:
 
-- [Resource](#resource): The resource metrics are associated with.
-- [MetricReader](#metricreader): Reads the aggregated state of metrics.
-  - Optionally, with
+- [Resource](#resource): O recurso ao qual as métricas estão associadas.
+- [MetricReader](#metricreader): Lê o estado agregado das métricas.
+  - Opcionalmente, com o
     [CardinalityLimitSelector](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/export/CardinalityLimitSelector.html)
-    for overriding cardinality limit by instrument kind. If unset, each
-    instrument is limited to 2000 unique combinations of attributes per
-    collection cycle. Cardinality limits are also configurable for individual
-    instruments via [views](#views). See
-    [cardinality limits](/docs/specs/otel/metrics/sdk/#cardinality-limits) for
-    more details.
-- [MetricExporter](#metricexporter): Exports metrics out of process (in
-  conjunction with associated `MetricReader`).
-- [Views](#views): Configures metric streams, including dropping unused metrics.
+    para substituir o limite de cardnialidade por tipo de instrumento. Se não configurado, cada
+    é limitado a 2000 combinações únicas de atributos por
+    ciclo de coleta. Limites de cardinalidade também são configuráveis para instrumentos
+    individuais via [views](#views). Consulte
+    [limites de cardinalidade](/docs/specs/otel/metrics/sdk/#cardinality-limits) para
+    mais detalhes.
+- [MetricExporter](#metricexporter): Exporta métricas para fora do processo (em
+  conjunto com o `MetricReader` associado).
+- [Views](#views): Configura fluxos de métricas, incluindo a exclusáo de métricas não utilizadas.
 
-O  trecho de código a seguir demonstra `SdkMeterProvider` programmatic
-configuration:
+O trecho de código a seguir demonstra a configuração programática 
+`SdkMeterProvider`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/SdkMeterProviderConfig.java"?>
@@ -581,7 +604,7 @@ public class SdkMeterProviderConfig {
                 MetricReaderConfig.periodicMetricReader(
                     MetricExporterConfig.otlpHttpMetricExporter(
                         "http://localhost:4318/v1/metrics")));
-    // Uncomment to optionally register metric reader with cardinality limits
+    // Descomente para opcionalmente registrar um leitor de métrica com limites de cardinalidade.
     // builder.registerMetricReader(
     //     MetricReaderConfig.periodicMetricReader(
     //         MetricExporterConfig.otlpHttpMetricExporter("http://localhost:4318/v1/metrics")),
@@ -601,23 +624,22 @@ public class SdkMeterProviderConfig {
 
 #### MetricReader
 
-A
+O
 [MetricReader](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/export/MetricReader.html)
-is a [plugin extension interface](#sdk-plugin-extension-interfaces) which is
-responsible for reading aggregated metrics. They are often paired with
-[MetricExporters](#metricexporter) to export metrics out of process, but may
-also be used to serve the metrics to external scrapers in pull-based protocols.
+é uma [interface de extensão para plugins](#sdk-plugin-extension-interfaces) que é
+responsável por ler as métricas agregadas. Eles são muitas vezes associadas com
+[MetricExporters](#metricexporter) para exportar métricas fora do processo, mas pode
+também ser usada para servir métricas para scrapers externos em protocolos baseados em *pull*.
 
-Metric readers built-in to the SDK and maintained by the community in
+Metric readers integrados ao SDK e mantidos pela comunidade em
 `opentelemetry-java-contrib`:
 
-| Class                  | Artifact                                                                           | Description                                                                             |
+| Classe                  | Artefato                                                                           | Descrição                                                                             |
 | ---------------------- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | `PeriodicMetricReader` | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                       | Reads metrics on a periodic basis and exports them via a configurable `MetricExporter`. |
 | `PrometheusHttpServer` | `io.opentelemetry:opentelemetry-exporter-prometheus:{{% param vers.otel %}}-alpha` | Serves metrics on an HTTP server in various prometheus formats.                         |
 
-O  trecho de código a seguir demonstra `MetricReader` programmatic
-configuration:
+O trecho de código a seguir demonstra a configuração programática do `MetricReader`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/MetricReaderConfig.java"?>
@@ -642,8 +664,8 @@ public class MetricReaderConfig {
 ```
 <!-- prettier-ignore-end -->
 
-Implement the `MetricReader` interface to provide your own custom metric reader
-logic. For example:
+Implementa a interface do `MetricReader` para fornecer sua própria lógica de
+leitura de métricas. Por exemplo:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomMetricReader.java"?>
@@ -731,14 +753,14 @@ public class CustomMetricReader implements MetricReader {
 
 A
 [MetricExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/export/MetricExporter.html)
-is a [plugin extension interface](#sdk-plugin-extension-interfaces) responsible
-for exporting metrics out of process. Rather than directly registering with
-`SdkMeterProvider`, they are paired with [PeriodicMetricReader](#metricreader).
+é uma [interface de extensão para plugins](#sdk-plugin-extension-interfaces) responsável
+por exportar métricas fora do processo. Ao invés de registrar diretamente com
+`SdkMeterProvider`, eles são associados com o [PeriodicMetricReader](#metricreader).
 
-Metric exporters built-in to the SDK and maintained by the community in
+Metric exporters integrados ao SDK e mantidos pela comunidade em
 `opentelemetry-java-contrib`:
 
-| Class                            | Artifact                                                                             | Description                                                                     |
+| Claase                            | Artefato                                                                             | Descrição                                                                     |
 | -------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- |
 | `OtlpHttpMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Exports metrics via OTLP `http/protobuf`.                                       |
 | `OtlpGrpcMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Exports metrics via OTLP `grpc`.                                                |
@@ -747,10 +769,10 @@ Metric exporters built-in to the SDK and maintained by the community in
 | `OtlpStdoutMetricExporter`       | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Logs metrics to `System.out` in the OTLP [JSON file encoding][] (experimental). |
 | `InterceptableMetricExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Passes metrics to a flexible interceptor before exporting.                      |
 
-**[1]**: See [OTLP exporters](#otlp-exporters) for implementation details.
+**[1]**: Veja [OTLP exporters](#otlp-exporters) para detalhes de implementação.
 
-O  trecho de código a seguir demonstra `MetricExporter` programmatic
-configuration:
+O trecho de código a seguir demonstra a configuração programática do
+`MetricExporter`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/MetricExporterConfig.java"?>
@@ -792,8 +814,8 @@ public class MetricExporterConfig {
 ```
 <!-- prettier-ignore-end -->
 
-Implement the `MetricExporter` interface to provide your own custom metric
-export logic. For example:
+Implementa a interface do `MetricExporter` para fornecer sua própria lógica de
+exportação de métricas. Por exemplo:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomMetricExporter.java"?>
@@ -864,21 +886,18 @@ public class CustomMetricExporter implements MetricExporter {
 
 #### Views
 
-[Views](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/View.html)
-allow metric streams to be customized, including changing metric names, metric
-descriptions, metric aggregations (i.e. histogram bucket boundaries), the set of
-attribute keys to retain, cardinality limit, etc.
+[Views](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/View.html) 
+permitem que os fluxos de métricas sejam personalizados, incluindo a alteração de nomes de métricas, descrições de métricas, agregações de métricas (ou seja, limites de intervalos de histograma), o conjunto de chaves de atributos a serem mantidos, limite de cardinalidade, etc.
 
-{{% alert %}} Views have somewhat unintuitive behavior when multiple match a
-particular instrument. If one matching view changes the metric name and another
-changes the metric aggregation, you might expect the name and aggregation are
-changed, but this is not the case. Instead, two metric streams are produced: one
-with the configured metric name and the default aggregation, and another with
-the original metric name and the configured aggregation. In other words,
-matching views _do not merge_. For best results, configure views with narrow
-selection criteria (i.e. select a single specific instrument). {{% /alert %}}
+{{% alert %}} As Views têm um comportamento um tanto não intuitivo quando várias coincidem com
+um instrumento particular. Se uma view correspondente altera o nome da métrica e outra
+altera a agregação da métrica, você pode esperar que o nome e a agregação sejam alterados, 
+mas este não é o caso. Em vez disso, dois fluxos de métricas são produzidos: um
+com o nome da métrica configurado e a agregação padrão, e outro com
+o nome da métrica original e a agregação configurada. Em outras palavras,
+as views correspondentes não são mescladas _do not merge_. For best results, Para melhores resultados, configure as views com critérios de seleção mais restritos (ex. selecione um único instrumento específico). {{% /alert %}}
 
-O  trecho de código a seguir demonstra `View` programmatic configuration:
+O trecho de código a seguir demonstra a configuração programática do `View`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/ViewConfig.java"?>
@@ -929,20 +948,19 @@ public class ViewConfig {
 ### SdkLoggerProvider
 
 [SdkLoggerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/SdkLoggerProvider.html)
-is the SDK implementation of [LoggerProvider](../api/#loggerprovider), and is
-responsible for handling log telemetry produced by the log bridge API.
+é a implementação do SDK do [LoggerProvider](../api/#loggerprovider), e é
+responsável por gerenciar a telemetria dos logs produzidos pela API.
 
-`SdkLoggerProvider` is configured by the application owner, e consiste em:
+`SdkLoggerProvider` é configurado pelo responsável da aplicação, e consiste em:
 
-- [Resource](#resource): The resource logs are associated with.
-- [LogRecordProcessor](#logrecordprocessor): Processes logs when they are
-  emitted.
-- [LogRecordExporter](#logrecordexporter): Exports logs out of process (in
-  conjunction with associated `LogRecordProcessor`).
-- [LogLimits](#loglimits): Controls the limits of data associated with logs.
+- [Resource](#resource): O recurso ao qual os logs estão associados.
+- [LogRecordProcessor](#logrecordprocessor): Processa os logs quando eles são
+  emitidos.
+- [LogRecordExporter](#logrecordexporter): Exporta logs fora do processo (em
+  conjunto com os `LogRecordProcessor` associados).
+- [LogLimits](#loglimits): Controla os limites dos dados associados com os logs.
 
-O  trecho de código a seguir demonstra `SdkLoggerProvider` programmatic
-configuration:
+O trecho de código a seguir demonstra a configuração programática do `SdkLoggerProvider`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/SdkLoggerProviderConfig.java"?>
@@ -970,22 +988,21 @@ public class SdkLoggerProviderConfig {
 
 A
 [LogRecordProcessor](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/LogRecordProcessor.html)
-is a [plugin extension interface](#sdk-plugin-extension-interfaces) with a
-callback invoked when a log is emitted. They are often paired with
-[LogRecordExporters](#logrecordexporter) to export logs out of process, but have
-other applications such as data enrichment.
+é uma [interface de extensão para plugins](#sdk-plugin-extension-interfaces) com um
+callback invocado quando um log é emitido. Eles são frequentemente associados com
+[LogRecordExporters](#logrecordexporter) para exportar logs fora do processo, mas tem
+outras aplicações, como enriquecimento de dados.
 
-Log record processors built-in to the SDK and maintained by the community in
+Os processadores de registros de log integrados ao SDK e mantidos pela comunidade em 
 `opentelemetry-java-contrib`:
 
-| Class                      | Artifact                                                                             | Description                                                                  |
+| Classe                      | Artefato                                                                             | Descrição                                                                  |
 | -------------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
-| `BatchLogRecordProcessor`  | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                         | Batches log records and exports them via a configurable `LogRecordExporter`. |
-| `SimpleLogRecordProcessor` | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                         | Exports each log record a via a configurable `LogRecordExporter`.            |
-| `EventToSpanEventBridge`   | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Records event log records as span events on the current span.                |
+| `BatchLogRecordProcessor`  | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                         | Agrupa os registros de log e os exporta por meio de um `LogRecordExporter` configurável. |
+| `SimpleLogRecordProcessor` | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                         | Exporta cada registro de log a via de um `LogRecordExporter` configurável.            |
+| `EventToSpanEventBridge`   | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Registra os registros de eventos de log como eventos de span no span atual.                |
 
-O  trecho de código a seguir demonstra `LogRecordProcessor` programmatic
-configuration:
+O trecho de código a seguir demonstra a configuração programática do `LogRecordProcessor`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/LogRecordProcessorConfig.java"?>
@@ -1014,8 +1031,8 @@ public class LogRecordProcessorConfig {
 ```
 <!-- prettier-ignore-end -->
 
-Implement the `LogRecordProcessor` interface to provide your own custom log
-processing logic. For example:
+Implementando a interface do `LogRecordProcessor` para fornecer sua própria lógica personalizada
+de processamento de logs. Por exemplo:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomLogRecordProcessor.java"?>
@@ -1054,34 +1071,33 @@ public class CustomLogRecordProcessor implements LogRecordProcessor {
 
 #### LogRecordExporter
 
-A
+Um
 [LogRecordExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/export/LogRecordExporter.html)
-is a [plugin extension interface](#sdk-plugin-extension-interfaces) responsible
-for exporting log records out of process. Rather than directly registering with
-`SdkLoggerProvider`, they are paired with
-[LogRecordProcessors](#logrecordprocessor) (typically
+é uma [interface de extensão para plugins](#sdk-plugin-extension-interfaces) responsável
+por exportar registros de logs fora do processo. Ao invés de registrar diretamente com
+`SdkLoggerProvider`, eles podem ser associados ao
+[LogRecordProcessors](#logrecordprocessor) (tipicamente
 `BatchLogRecordProcessor`).
 
-Span exporters built-in to the SDK and maintained by the community in
+Span exporters integrados ao SDK e mantidos pela comunidade em
 `opentelemetry-java-contrib`:
 
-| Class                                      | Artifact                                                                             | Description                                                                         |
+| Classe                                      | Artefato                                                                             | Descrição                                                                         |
 | ------------------------------------------ | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- |
-| `OtlpHttpLogRecordExporter` **[1]**        | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Exports log records via OTLP `http/protobuf`.                                       |
-| `OtlpGrpcLogRecordExporter` **[1]**        | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Exports log records via OTLP `grpc`.                                                |
-| `SystemOutLogRecordExporter`               | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`            | Logs log records to system out in a debugging format.                               |
-| `OtlpJsonLoggingLogRecordExporter` **[2]** | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Logs log records to JUL in the OTLP JSON encoding.                                  |
-| `OtlpStdoutLogRecordExporter`              | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Logs log records to `System.out` in the OTLP [JSON file encoding][] (experimental). |
-| `InterceptableLogRecordExporter`           | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Passes log records to a flexible interceptor before exporting.                      |
+| `OtlpHttpLogRecordExporter` **[1]**        | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Exporta registros de logs via OTLP `http/protobuf`.                                       |
+| `OtlpGrpcLogRecordExporter` **[1]**        | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Exporta registros de logs via OTLP `grpc`.                                                |
+| `SystemOutLogRecordExporter`               | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`            | Registra registro de logs para system out in a debugging format.                               |
+| `OtlpJsonLoggingLogRecordExporter` **[2]** | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Registra registro de logs para JUL em OTLP JSON encoding.                                  |
+| `OtlpStdoutLogRecordExporter`              | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Registra registro de logs para `System.out` em OTLP [Arquivo JSON Codificado][] (experimental). |
+| `InterceptableLogRecordExporter`           | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Passes registro de logs para um interceptor flexível antes de exportar.                      |
 
-**[1]**: See [OTLP exporters](#otlp-exporters) for implementation details.
+**[1]**: Veja [Exportadores OTLP](#otlp-exporters) para detalhes de implementação.
 
-**[2]**: `OtlpJsonLoggingLogRecordExporter` logs to JUL, and may cause infinite
-loops (i.e. JUL -> SLF4J -> Logback -> OpenTelemetry Appender -> OpenTelemetry
-Log SDK -> JUL) if not carefully configured.
+**[2]**: `OtlpJsonLoggingLogRecordExporter` registra no JUL e pode causar loops
+infinitos (ex. JUL -> SLF4J -> Logback -> OpenTelemetry Appender -> OpenTelemetry
+Log SDK -> JUL) se não for configurado com cuidado.
 
-O  trecho de código a seguir demonstra `LogRecordProcessor` programmatic
-configuration:
+O trecho de código a seguir demonstra a configuração programática do `LogRecordProcessor`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/LogRecordExporterConfig.java"?>
@@ -1123,8 +1139,8 @@ public class LogRecordExporterConfig {
 ```
 <!-- prettier-ignore-end -->
 
-Implement the `LogRecordExporter` interface to provide your own custom log
-record export logic. For example:
+Implementando a interface do `LogRecordExporter` para fornecer sua própria lógica personalizada
+de exportação de registros. Por exemplo:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomLogRecordExporter.java"?>
@@ -1171,11 +1187,10 @@ public class CustomLogRecordExporter implements LogRecordExporter {
 #### LogLimits
 
 [LogLimits](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/LogLimits.html)
-defines constraints for the data captured by log records, including max
-attribute length, and max number of attributes.
+define restrições para os dados capturados pelos registros de logs, incluindo o comprimento 
+máximo dos atributos, e número máximo de atributos.
 
-O  trecho de código a seguir demonstra `LogRecordProcessor` programmatic
-configuration:
+O trecho de código a seguir demonstra a configuração programática do `LogRecordProcessor`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/LogLimitsConfig.java"?>
@@ -1198,13 +1213,13 @@ public class LogLimitsConfig {
 ### TextMapPropagator
 
 [TextMapPropagator](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/propagation/TextMapPropagator.html)
-is a [plugin extension interface](#sdk-plugin-extension-interfaces) responsible
-for propagating context across process boundaries in a text format.
+é uma [interface de extensão para plugins](#sdk-plugin-extension-interfaces) responsável
+por propagar o contexto através dos processos conectados em um formato de texto.
 
-TextMapPropagators built-in to the SDK and maintained by the community in
+TextMapPropagators integrados ao SDK e mantidos pela comunidade em
 `opentelemetry-java-contrib`:
 
-| Class                       | Artifact                                                                                      | Description                                                                             |
+| Classe                       | Artefato                                                                                      | Descrição                                                                             |
 | --------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | `W3CTraceContextPropagator` | `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}`                                  | Propagate trace context using W3C trace context propagation protocol.                   |
 | `W3CBaggagePropagator`      | `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}`                                  | Propagate baggage using W3C baggage propagation protocol.                               |
@@ -1216,8 +1231,7 @@ TextMapPropagators built-in to the SDK and maintained by the community in
 | `AwsXrayPropagator`         | `io.opentelemetry.contrib:opentelemetry-aws-xray-propagator:{{% param vers.contrib %}}-alpha` | Propagate trace context using AWS X-Ray propagation protocol.                           |
 | `AwsXrayLambdaPropagator`   | `io.opentelemetry.contrib:opentelemetry-aws-xray-propagator:{{% param vers.contrib %}}-alpha` | Propagate trace context using environment variables and AWS X-Ray propagation protocol. |
 
-O  trecho de código a seguir demonstra `TextMapPropagator` programmatic
-configuration:
+O trecho de código a seguir demonstra a configuração programática do `TextMapPropagator`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/ContextPropagatorsConfig.java"?>
@@ -1239,8 +1253,8 @@ public class ContextPropagatorsConfig {
 ```
 <!-- prettier-ignore-end -->
 
-Implement the `TextMapPropagator` interface to provide your own custom
-propagator logic. For example:
+Implementando a interface do `TextMapPropagator` para fornecer sua própria lógica de 
+propagação. Por exemplo:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomTextMapPropagator.java"?>
@@ -1277,53 +1291,49 @@ public class CustomTextMapPropagator implements TextMapPropagator {
 ```
 <!-- prettier-ignore-end -->
 
-## Appendix
+## Apêndice
 
-### Internal logging
+### Registro interno
 
-SDK components log a variety of information to
+Os componentes do SDK registram uma variedade de informações no
 [java.util.logging](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html),
-at different log levels and using logger names based on the fully qualified
-class name of the relevant component.
+em diferentes níveis de log e usando nomes de loggers baseados no nome totalmente qualificado da classe _Fully Qualified Class Name - FQCN_ do respectivo componente.
 
-By default, log messages are handled by the root handler in your application. If
-you have not installed a custom root handler for your application, logs of level
-`INFO` or higher are sent to the console by default.
+Por padrão, as mensagens de log são gerenciados pelo manipulador raíz na sua aplicação. Se
+você não tem um manipulador raíz personalizado para sua aplicação, logs de nível
+`INFO` ou superior serão enviados ao console por padrão.
 
-You may want to change the behavior of the logger for OpenTelemetry. For
-example, you can reduce the logging level to output additional information when
-debugging, increase the level for a particular class to ignore errors coming
-from the class, or install a custom handler or filter to run custom code
-whenever OpenTelemetry logs a particular message. No detailed list of logger
-names and log information is maintained. However, all OpenTelemetry API, SDK,
-contrib and instrumentation components share the same `io.opentelemetry.*`
-package prefix. It can be useful to enable finer grain logs for all
-`io.opentelemetry.*`, inspect the output, and narrow down to packages or FQCNs
-of interest.
+Você pode querer mudar o comportamento do logger para OpenTelemetry. Por
+exemplo, você pode reduzir o nível de logging para fornecer informações adicionais quando
+estiver em modo *debugging*, aumentar o nível para uma classe particular para ignorar erros originados
+de uma classe, ou instalar um comportamento personalizado ou filtrar para executar um código personalizado
+sempre que o OpenTelemetry registrar uma mensagem específica. Não há uma lista detalhada de nomes de loggers e informações de log mantida. No entanto, todas as APIs, SDK,
+contribuições e componentes de instrumentação compartilham o mesmo prefixo do pacote `io.opentelemetry.*`. Isso pode ser útil para ativar logs mais detalhados para todos os
+`io.opentelemetry.*`, inspeciaonar a saída, e restringir aos pacores ou FQCNs
+de interesse.
 
-For example:
+Por exemplo:
 
-```properties
-## Turn off all OpenTelemetry logging
+```propriedades
+## Desligar todos os loggins do OpenTelemetry
 io.opentelemetry.level = OFF
 ```
 
-```properties
-## Turn off logging for just the BatchSpanProcessor
+```propriedades
+## Desligar logging somente para o BatchSpanProcessor
 io.opentelemetry.sdk.trace.export.BatchSpanProcessor.level = OFF
 ```
 
-```properties
-## Log "FINE" messages for help in debugging
+```propriedades
+## Registrar mensagens "FINE" para ajudar no *debugging*
 io.opentelemetry.level = FINE
 
-## Sets the default ConsoleHandler's logger's level
-## Note this impacts the logging outside of OpenTelemetry as well
+## Sets o padrão ConsoleHandler's nível de loggers
+## Observe o impacto do logging fora do OpenTelemetry também
 java.util.logging.ConsoleHandler.level = FINE
 ```
 
-For more fine-grained control and special case handling, custom handlers and
-filters can be specified with code.
+Para um controle mais detalhado e tratamento de casos especiais, manipuladores e filtros personalizados podem ser especificados com código.
 
 ```java
 // Custom filter which does not log errors which come from the export
@@ -1335,59 +1345,56 @@ public class IgnoreExportErrorsFilter implements java.util.logging.Filter {
 }
 ```
 
-```properties
-## Registering the custom filter on the BatchSpanProcessor
+```propriedades
+## Registrando o filtro personalizado no BatchSpanProcessor
 io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extension.logging.IgnoreExportErrorsFilter
 ```
 
-### OTLP exporters
+### Exportadores OTLP
 
-The [span exporter](#spanexporter), [metric exporter](#metricexporter), and
-[log exporter](#logrecordexporter) sections describe OTLP exporters of the form:
+As seções [span exporter](#spanexporter), [metric exporter](#metricexporter), e
+[log exporter](#logrecordexporter) descrevem os exportadores OTLP do tipo:
 
-- `OtlpHttp{Signal}Exporter`, which exports data via OTLP `http/protobuf`
-- `OtlpGrpc{Signal}Exporter`, which exports data via OTLP `grpc`
+- `OtlpHttp{Signal}Exporter`,  que exporta dados via OTLP `http/protobuf`
+- `OtlpGrpc{Signal}Exporter`,  que exporta dados via OTLP `grpc`
 
-The exporters for all signals are available via
-`io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`, and have
-significant overlap across `grpc` and `http/protobuf` versions of the OTLP
-protocol, and between signals. The following sections elaborate on these key
-concepts:
+Os exportadores para todos os sinais estão disponíveis via
+`io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`, e possuem
+uma sobreposição significativa entre as versões `grpc` and `http/protobuf` do protocolo 
+OTLP, e entre os sinais. As seções a seguir detalham esses conceitos chave:
 
-- [Senders](#senders): an abstraction for a different HTTP / gRPC client
-  libraries.
-- [Authentication](#authentication) options for OTLP exporters.
+- [Emissores](#senders): Uma abstração para diferentes bibliotecas do lado do cliente HTTP / gRPC.
+- [Autenticação](#authentication) opções para exportadores OTLP.
 
-#### Senders
+#### Emissores
 
-The OTLP exporters depend on various client libraries to execute HTTP and gRPC
-requests. There is no single HTTP / gRPC client library which satisfies all use
-cases in the Java ecosystem:
+Um exportador OTLP depende de várias bibliotecas do lado do cliente para executar requisições
+HTTP e gRPC. Não existe uma única biblioteca de cliente HTTP / gRPC que atenda a todos os casos
+de uso no ecossistema Java:
 
-- Java 11+ brings the built-in `java.net.http.HttpClient`, but
-  `opentelemetry-java` needs to support Java 8+ users, and this can't be used to
-  export via `gRPC` because there is no support for trailer headers.
-- [OkHttp](https://square.github.io/okhttp/) provides a powerful HTTP client
-  with support for trailer headers, but depends on the kotlin standard library.
-- [grpc-java](https://github.com/grpc/grpc-java) provides its own
-  `ManagedChannel` abstraction with various
-  [transport implementations](https://github.com/grpc/grpc-java#transport), but
-  is not suitable for `http/protobuf`.
+- Java 11+ traz o `java.net.http.HttpClient` integrado, mas o
+  `opentelemetry-java` precisa oferecer suporte a usuários com o Java 8+, e esse cliente não pode ser usado para exportação via `gRPC` devido a ausência de suporte para cabeçalhos de trailer.
+- [OkHttp](https://square.github.io/okhttp/) fornece um cliente HTTP poderoso
+  com suporte para cabeçalhos de trailer, mas depende da biblioteca padrão do Kotlin.
+- [grpc-java](https://github.com/grpc/grpc-java) oferece sua própria abstração
+  `ManagedChannel` com várias
+  [implementações de transporte](https://github.com/grpc/grpc-java#transport), mas
+  não é adequado para o protocolo `http/protobuf`.
 
-Para atender diversos casos de uso, `opentelemetry-exporter-otlp` usa uma abstração interna de envio (sender), 
-com uma variedade de implementações para refletir as restrições da aplicação. 
-Para usar outra implementação, exclua a dependência padrão
-`io.opentelemetry:opentelemetry-exporter-sender-okhttp`, e
+Para atender diversos casos de uso, `opentelemetry-exporter-otlp` usa uma
+abstração interna de envio (sender), com uma variedade de implementações para
+refletir as restrições da aplicação. Para usar outra implementação, exclua a
+dependência padrão `io.opentelemetry:opentelemetry-exporter-sender-okhttp`, e
 adicione a dependência alternativa.
 
-| Artefato                                                                                              | Descrição                                               | Protocolos OTLP          | Padrão |
-| ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ----------------------- | ------- |
-| `io.opentelemetry:opentelemetry-exporter-sender-okhttp:{{% param vers.otel %}}`                       | OkHttp based implementation.                              | `grpc`, `http/protobuf` | Yes     |
-| `io.opentelemetry:opentelemetry-exporter-sender-jdk:{{% param vers.otel %}}`                          | Java 11+ `java.net.http.HttpClient` based implementation. | `http/protobuf`         | No      |
-| `io.opentelemetry:opentelemetry-exporter-sender-grpc-managed-channel:{{% param vers.otel %}}` **[1]** | `grpc-java` `ManagedChannel` based implementation.        | `grpc`                  | No      |
+| Artefato                                                                                              | Descrição                                                 | Protocolos OTLP         | Padrão |
+| ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ----------------------- | ------ |
+| `io.opentelemetry:opentelemetry-exporter-sender-okhttp:{{% param vers.otel %}}`                       | OkHttp based implementation.                              | `grpc`, `http/protobuf` | Yes    |
+| `io.opentelemetry:opentelemetry-exporter-sender-jdk:{{% param vers.otel %}}`                          | Java 11+ `java.net.http.HttpClient` based implementation. | `http/protobuf`         | No     |
+| `io.opentelemetry:opentelemetry-exporter-sender-grpc-managed-channel:{{% param vers.otel %}}` **[1]** | `grpc-java` `ManagedChannel` based implementation.        | `grpc`                  | No     |
 
-**[1]**: Para usar `opentelemetry-exporter-sender-grpc-managed-channel`,
-você precisa adicionar uma dependência em
+**[1]**: Para usar `opentelemetry-exporter-sender-grpc-managed-channel`, você
+precisa adicionar uma dependência em
 [Implementação de Transporte gRPC](https://github.com/grpc/grpc-java#transport).
 
 #### Autenticação
@@ -1400,12 +1407,11 @@ Se você usa
 com variáveis de ambientes e propriedades do sistema, veja
 [propriedades relevantes do sistema](../configuration/#properties-exporters):
 
-- `otel.exporter.otlp.headers` for static header-based authentication.
-- `otel.exporter.otlp.client.key`, `otel.exporter.otlp.client.certificate` for
-  mTLS authentication.
+- `otel.exporter.otlp.headers` autenticação baseada em cabeçalho estático.
+- `otel.exporter.otlp.client.key`, `otel.exporter.otlp.client.certificate` para
+  autentição mTLS.
 
-O  trecho de código a seguir demonstra programmatic configuration of static and
-dynamic header-based authentication:
+O trecho de código a seguir demonstra a a configuração programática da autenticação baseada em cabeçalho estático e dinâmico:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/OtlpAuthenticationConfig.java"?>
@@ -1502,6 +1508,7 @@ public class OtlpAuthenticationConfig {
 ```
 <!-- prettier-ignore-end -->
 
-### Testing
+### Testando
 
-[Codificação Arquivo Json]: /docs/specs/otel/protocol/file-exporter/#json-file-serialization
+[Codificação Arquivo Json]:
+  /docs/specs/otel/protocol/file-exporter/#json-file-serialization
