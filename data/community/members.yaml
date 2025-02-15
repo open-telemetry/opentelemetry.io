@@ -1407,6 +1407,13 @@ approvers:
       - cpp-contrib-approvers
     html_url: https://github.com/DebajitDas
     avatar_url: https://avatars.githubusercontent.com/u/85024550?v=4
+  - name: dehaansa
+    teams:
+      - collector-contrib-approvers
+      - collector-contrib-triagers
+      - java-contrib-triagers
+    html_url: https://github.com/dehaansa
+    avatar_url: https://avatars.githubusercontent.com/u/563558?v=4
   - name: dpauls
     teams:
       - semconv-messaging-approvers
@@ -1888,11 +1895,6 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/d4nyll
     avatar_url: https://avatars.githubusercontent.com/u/9997953?v=4
-  - name: dehaansa
-    teams:
-      - java-contrib-triagers
-    html_url: https://github.com/dehaansa
-    avatar_url: https://avatars.githubusercontent.com/u/563558?v=4
   - name: facostaembrace
     teams:
       - javascript-contrib-triagers
