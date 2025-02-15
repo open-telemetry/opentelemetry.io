@@ -1,6 +1,16 @@
 {{ $pageProseLang := partial "i18n/lang.html" . -}}
 {{ $siteLang := .Site.Language -}}
 
+{{/*
+
+The disable_translation_not_found_msg param isn't currently used and I suspect
+that we won't need it, but I'll wait until the following feature is implemented
+before removing the code:
+
+https://github.com/open-telemetry/opentelemetry.io/issues/6340
+
+*/ -}}
+
 {{ if and
     (ne $siteLang $pageProseLang)
     (not (.Param "disable_translation_not_found_msg"))
