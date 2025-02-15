@@ -210,14 +210,14 @@ Amostras integradas ao SDK e mantidas pela comunidade em
 
 | Classe                    | Artefato                                                                                      | Descrição                                                                                                                                 |
 | ------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `ParentBased`             | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Amostra trechos com base no stats de amostragem do trecho pai.                                                                            |
+| `ParentBased`             | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Amostra trechos com base no status de amostragem do trecho pai.                                                                            |
 | `AlwaysOn`                | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Amostra todos os trechos.                                                                                                                 |
 | `AlwaysOff`               | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Excluí todos os trechos.                                                                                                                  |
-| `TraceIdRatioBased`       | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Samples trechos baseados em a configurable ratio.                                                                                         |
-| `JaegerRemoteSampler`     | `io.opentelemetry:opentelemetry-sdk-extension-jaeger-remote-sampler:{{% param vers.otel %}}`  | Samples trechos baseados em configuration from a remote server.                                                                           |
-| `LinksBasedSampler`       | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | Samples trechos baseados em sampling status of the span's links.                                                                          |
-| `RuleBasedRoutingSampler` | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | Samples trechos baseados em configurable rules.                                                                                           |
-| `ConsistentSamplers`      | `io.opentelemetry.contrib:opentelemetry-consistent-sampling:{{% param vers.contrib %}}-alpha` | Various consistent sampler implementations as defined by [probability sampling](/docs/specs/otel/trace/tracestate-probability-sampling/). |
+| `TraceIdRatioBased`       | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Amostra trechos baseados em a razão configurável.                                                                                         |
+| `JaegerRemoteSampler`     | `io.opentelemetry:opentelemetry-sdk-extension-jaeger-remote-sampler:{{% param vers.otel %}}`  | Amostra trechos baseados em uma configuração de um servidor remoto.                                                                           |
+| `LinksBasedSampler`       | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | Amostra trechos baseados no status de amostragem dos links do trecho.                                                                          |
+| `RuleBasedRoutingSampler` | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | Amostra trechos baseados em regras configuráveis.                                                                                           |
+| `ConsistentSamplers`      | `io.opentelemetry.contrib:opentelemetry-consistent-sampling:{{% param vers.contrib %}}-alpha` | Várias implementações consistentes de amostrador, conforme definido por [probability sampling](/docs/specs/otel/trace/tracestate-probability-sampling/). |
 
 O trecho de código a seguir demonstra a configuração programática da `Amostra`:
 
@@ -326,12 +326,12 @@ Span processors integrados ao SDK e mantidos pela comunidade em
 
 | Classe                    | Artefato                                                                                    | Descrição                                                                 |
 | ------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `BatchSpanProcessor`      | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                | Batches sampled spans and exports them via a configurable `SpanExporter`. |
-| `SimpleSpanProcessor`     | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                | Exports each sampled span via a configurable `SpanExporter`.              |
-| `BaggageSpanProcessor`    | `io.opentelemetry.contrib:opentelemetry-baggage-processor:{{% param vers.contrib %}}-alpha` | Enriches spans with baggage.                                              |
-| `JfrSpanProcessor`        | `io.opentelemetry.contrib:opentelemetry-jfr-events:{{% param vers.contrib %}}-alpha`        | Creates JFR events from spans.                                            |
-| `StackTraceSpanProcessor` | `io.opentelemetry.contrib:opentelemetry-span-stacktrace:{{% param vers.contrib %}}-alpha`   | Enriches select spans with stack trace data.                              |
-| `InferredSpansProcessor`  | `io.opentelemetry.contrib:opentelemetry-inferred-spans:{{% param vers.contrib %}}-alpha`    | Generates spans from async profiler instead of instrumentation.           |
+| `BatchSpanProcessor`      | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                | Agrupa trechos amostrados e os exporta por meio de um `SpanExporter` configurável. |
+| `SimpleSpanProcessor`     | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                | Exporta cada amostra de trecho por meio de um `SpanExporter` configurável.              |
+| `BaggageSpanProcessor`    | `io.opentelemetry.contrib:opentelemetry-baggage-processor:{{% param vers.contrib %}}-alpha` | Enriquece os trechos com bagagem.                                              |
+| `JfrSpanProcessor`        | `io.opentelemetry.contrib:opentelemetry-jfr-events:{{% param vers.contrib %}}-alpha`        | Cria eventos JFR a partir de trechos.                                            |
+| `StackTraceSpanProcessor` | `io.opentelemetry.contrib:opentelemetry-span-stacktrace:{{% param vers.contrib %}}-alpha`   | Enriquece trechos selecionados com dados de stack trace.                              |
+| `InferredSpansProcessor`  | `io.opentelemetry.contrib:opentelemetry-inferred-spans:{{% param vers.contrib %}}-alpha`    | Gera trechos a partir do profiler assíncrono em vez de instrumentação.           |
 
 O trecho de código a seguir demonstra a configuração programática do `SpanProcessor`
 
@@ -1089,7 +1089,7 @@ Span exporters integrados ao SDK e mantidos pela comunidade em
 | `SystemOutLogRecordExporter`               | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`            | Registra registro de logs para system out in a debugging format.                               |
 | `OtlpJsonLoggingLogRecordExporter` **[2]** | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Registra registro de logs para JUL em OTLP JSON encoding.                                  |
 | `OtlpStdoutLogRecordExporter`              | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Registra registro de logs para `System.out` em OTLP [Arquivo JSON Codificado][] (experimental). |
-| `InterceptableLogRecordExporter`           | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Passes registro de logs para um interceptor flexível antes de exportar.                      |
+| `InterceptableLogRecordExporter`           | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Passa registro de logs para um interceptor flexível antes de exportar.                      |
 
 **[1]**: Veja [Exportadores OTLP](#otlp-exporters) para detalhes de implementação.
 
