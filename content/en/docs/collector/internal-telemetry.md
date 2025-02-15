@@ -144,7 +144,7 @@ service:
             exporter:
               otlp:
                 protocol: http/protobuf
-                endpoint: https://backend:4317
+                endpoint: https://backend:4318
 ```
 
 ### Configure internal traces
