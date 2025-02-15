@@ -403,6 +403,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-02T10:58:53.703278-05:00"
   },
+  "https://cloud.google.com/functions/docs/concepts/execution-environment#scope": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-11T17:47:12.345Z"
+  },
   "https://cloud.google.com/functions/docs/env-var#runtime_environment_variables_set_automatically": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T01:43:12.345Z"
@@ -750,6 +754,10 @@
   "https://developer.android.com/training/articles/user-data-ids": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:23:41.892135-05:00"
+  },
+  "https://developer.apple.com/documentation/uikit/uiapplicationdelegate": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-11T12:45:19.457932-05:00"
   },
   "https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor": {
     "StatusCode": 200,
@@ -1438,6 +1446,10 @@
   "https://docs.openlit.io/latest/connections/prometheus-jaeger#dashboard": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:05:12.345Z"
+  },
+  "https://docs.openssl.org/1.1.1/man3/SSL_get_version/#return-values": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-11T17:47:12.345Z"
   },
   "https://docs.oracle.com/cd/B28359_01/server.111/b28278/toc.htm": {
     "StatusCode": 200,
@@ -9967,6 +9979,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:19:12.345Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.41.0/oteps/0232-maturity-of-otel.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-13T21:34:46.214059431Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.41.0/spec-compliance-matrix.md#logs": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:19:12.345Z"
@@ -11303,6 +11319,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T17:00:28.710746-05:00"
   },
+  "https://github.com/open-telemetry/semantic-conventions/tree/v1.30.0//model/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-11T12:45:05.311341-05:00"
+  },
   "https://github.com/open-telemetry/sig-end-user": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:10:56.03728-05:00"
@@ -11351,6 +11371,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:20:31.233996-05:00"
   },
+  "https://github.com/open-telemetry/weaver/blob/main/schemas/semconv-syntax.md#type": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-11T17:47:12.345Z"
+  },
   "https://github.com/openclarity/apiclarity/tree/master/plugins/otel-collector": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:45.041259-05:00"
@@ -11362,6 +11386,10 @@
   "https://github.com/opencontainers/image-spec/blob/main/manifest.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:57.154158-05:00"
+  },
+  "https://github.com/opencontainers/image-spec/blob/main/manifest.md#example-image-manifest": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-11T17:47:12.345Z"
   },
   "https://github.com/openfga": {
     "StatusCode": 206,
@@ -12283,6 +12311,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:44:21.513655-05:00"
   },
+  "https://github.com/ua-parser": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-11T12:45:13.675054-05:00"
+  },
   "https://github.com/udhos/opentelemetry-trace-sqs": {
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:55:22.991202-05:00"
@@ -12575,6 +12607,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:22:12.345Z"
   },
+  "https://google.aip.dev/122#full-resource-names": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-11T17:47:12.345Z"
+  },
   "https://google.github.io/sqlcommenter": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:39:09.46067-05:00"
@@ -12806,6 +12842,10 @@
   "https://img.shields.io/badge/-deprecated-red": {
     "StatusCode": 200,
     "LastSeen": "2025-01-30T17:00:10.73597-05:00"
+  },
+  "https://img.shields.io/badge/-development-blue": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-12T12:06:58.22778976Z"
   },
   "https://img.shields.io/badge/-experimental-blue": {
     "StatusCode": 200,
@@ -16891,6 +16931,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:10:54.834545-05:00"
   },
+  "https://www.erlang.org/doc/apps/stdlib/erl_error.html#format_exception/3": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-11T17:47:12.345Z"
+  },
   "https://www.erlang.org/doc/reference_manual/records.html": {
     "StatusCode": 206,
     "LastSeen": "2025-01-15T13:17:32.471781-05:00"
@@ -17326,6 +17370,10 @@
   "https://www.jsonrpc.org/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:32:15.482279-05:00"
+  },
+  "https://www.kaggle.com/whitepaper-agents": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-11T12:45:25.363812-05:00"
   },
   "https://www.kernel.org/doc/Documentation/ABI/testing/procfs-diskstats": {
     "StatusCode": 206,
