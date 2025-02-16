@@ -4,7 +4,7 @@ description: >-
   効果的な観測を可能にする、高品質でユビキタスかつポータブルなテレメトリー
 developer_note: blocks/coverコラム（以下で使用）は、ファイル名に "background" を含む画像ファイルを背景画像として使用します。
 show_banner: true
-default_lang_commit: e89a198
+default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
@@ -23,7 +23,6 @@ default_lang_commit: e89a198
 
 - [より詳しく学ぶ](docs/what-is-opentelemetry/)
 - [デモを試す](docs/demo/)
-- [インテグレーションを探す](/ecosystem/integrations/)
 
 </div>
 
@@ -43,28 +42,34 @@ default_lang_commit: e89a198
 OpenTelemetry は API、SDK、ツールのコレクションです。
 テレメトリーデータ（メトリクス、ログ、トレース）の計装、生成、収集、エクスポートに使用し、ソフトウェアのパフォーマンスや動作の分析に役立てましょう。
 
-> OpenTelemetryは[いくつかの言語](docs/languages/)で **一般的に利用可能** で、使用に適しています。
+> OpenTelemetryは[いくつかの言語](docs/languages/)で[一般的に利用可能](/status/)で、使用に適しています。
 
 {{% /blocks/lead %}}
 
 {{% blocks/section color="dark" type="row" %}}
 
-{{% blocks/feature icon="fas fa-chart-line" title="トレース、メトリクス、ログ"%}}
+{{% blocks/feature icon="fas fa-chart-line" title="トレース、メトリクス、ログ" url="docs/concepts/observability-primer/" %}}
 
-サービスやソフトウェアからテレメトリーデータを作成・収集し、様々な分析ツールに転送します。
+サービスやソフトウェアからテレメトリーを作成・収集し、様々な分析ツールに転送します。
 
 {{% /blocks/feature %}}
 
-{{% blocks/feature icon="fas fa-magic" title="ドロップイン計装" %}}
+{{% blocks/feature icon="fas fa-magic" title="ドロップイン計装&統合" %}}
 
-OpenTelemetryは、[Spring](https://spring.io)、[ASP.NET Core](https://docs.microsoft.com/aspnet/core)、[Express](https://expressjs.com)、[Quarkus](https://quarkus.io)などの一般的なライブラリやフレームワークとインテグレートされています！
-インストールとインテグレーションは、数行のコードで行えるほど簡単です。
+OpenTelemetry は多くの人気のライブラリーとフレームワークに[インテグレート][instrumentation]されています。
+そして、コードベースとゼロコードの[計装][integrates]をサポートしています。
+
+[instrumentation]: /docs/concepts/instrumentation/
+[integrates]: /ecosystem/integrations/
 
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fab fa-github" title="オープンソース、ベンダー非依存" %}}
 
-100％フリーでオープンソースのOpenTelemetryは、オブザーバビリティ分野の[業界リーダー](/ecosystem/vendors/)によって採用され、サポートされています。
+100％フリーでオープンソースのOpenTelemetryは、オブザーバビリティ分野の[業界リーダー][industry leaders]によって[採用][adopted]され、サポートされています。
+
+[adopted]: /ecosystem/adopters/
+[industry leaders]: /ecosystem/vendors/
 
 {{% /blocks/feature %}}
 
