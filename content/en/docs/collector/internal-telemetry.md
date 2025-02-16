@@ -49,7 +49,7 @@ service:
         - periodic:
             exporter:
               otlp:
-                protocol: grpc/protobuf
+                protocol: grpc
                 endpoint: http://localhost:14317
 ```
 
