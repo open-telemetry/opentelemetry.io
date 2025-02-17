@@ -6,7 +6,7 @@ weight: 20
 default_lang_commit: 7cb1bd39726fc03698164ee17fe9087afdac054c
 ---
 
-{{% include browser-instrumentation-warning.md %}}
+{{% include "./_browser-instrumentation-warning.md" %}}
 
 Embora este guia utilize o exemplo de aplicação apresentada abaixo, as etapas
 para instrumentar a sua própria aplicação devem ser similares.
