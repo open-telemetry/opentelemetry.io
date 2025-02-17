@@ -2,6 +2,7 @@
 title: Metrics
 weight: 2
 description: 在运行时捕获的测量值。
+default_lang_commit: 7c0e4db0b6c39b0ca0e7efb17df5610d1b77b8a3
 ---
 
 一个**metric**是在运行时捕获的服务的**测量值**。捕获测量值的时刻称为**metric事件**，它不仅包括测量值本身，还包括捕获它的时间和相关的元数据。
