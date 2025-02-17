@@ -16775,6 +16775,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-04T17:12:03.120768-05:00"
   },
+  "https://www.cncf.io/blog/2025/01/20/opentelemetry-for-generative-ai/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-14T12:23:38.590496-05:00"
+  },
   "https://www.cncf.io/enduser/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-15T13:49:20.913378-05:00"
