@@ -5,10 +5,10 @@ date: 2025-02-17
 author: >
   [Juliano Costa](https://github.com/julianocosta89) (Datadog)
 sig: OpenTelemetry Demo
-cSpell:ignore:
+cSpell:ignore: Abhishek Veeramalla's
 ---
 
-We’re thrilled to announce that OpenTelemetry Demo 2.0 is here!
+We're thrilled to announce that OpenTelemetry Demo 2.0 is here!
 We've been busy behind the scenes, polishing up the demo to make it
 more complete, robust and user-friendly. We believe these exciting
 features and improvements deserve a major release!
@@ -21,7 +21,7 @@ With a total of 140 contributors, the OpenTelemetry Demo has been starred **2048
 October 26, 2022—two days after General Availability—we had the record of 40 stars in a single day.
 If you use the Demo, please consider leaving us a star to help promote the project.
 
-There are a total of 1.8k forks of the Demo. Notably, [Abhishek Veeramalla’s fork][5] stands out
+There are a total of 1.8k forks of the Demo. Notably, [Abhishek Veeramalla's fork][5] stands out
 with 142 stars and has been forked 425 times.
 
 The Demo containers have been pulled over **12 million times** (11,809,995 times from `ghcr.io`
@@ -35,7 +35,7 @@ The OpenTelemetry Demo includes the following CNCF projects:
 - Prometheus;
 - Valkey.
 
-## What’s New in 2.0?
+## What's New in 2.0?
 
 This release is packed with exciting upgrades and changes.
 Below is a quick rundown of the highlights:
@@ -50,8 +50,8 @@ OpenTelemetry via an NGINX proxy using the NGINX Native OpenTelemetry module.
 - **Redis Replaced with Valkey**: Since version 1.11.0, we've replaced the Redis service with
 Valkey, introducing another CNCF project to the OTel Demo.
 - **Build Args Moved to `.env` File**: If you forked the Demo and were using any custom image,
-keeping your fork in sync with upstream was always a hassle. To make things easier, we’ve
-moved most configurations to the `.env` file. We’ve also added a `_DOCKERFILE` environment
+keeping your fork in sync with upstream was always a hassle. To make things easier, we've
+moved most configurations to the `.env` file. We've also added a `_DOCKERFILE` environment
 variable, which allows you to specify the location of your build instructions.
 - **Services Renamed**: If you've been using the OTel Demo since its inception, you're
 probably accustomed to the verbose naming of every service. For 2.0, we've streamlined
@@ -68,7 +68,7 @@ allowing correlation between metrics and spans. Check out the
 - **React Native Example App**: One of the most significant additions to this release is the brand
 new React Native app example. It can be built for Android or iOS (currently executable locally only).
 For instructions on how to run and test it, check out the [React Native App documentation page][3].
-- **Span Links for Messaging Spans**: Following OTel’s recommendation to always link producer and
+- **Span Links for Messaging Spans**: Following OTel's recommendation to always link producer and
 consumer spans ([Messaging spans - Trace structure][4]), the Demo now demonstrates this best practice.
 Consumer spans for `Accounting` and `Fraud-Detection` are linked to the producer span
 (`Checkout/orders publish`).
@@ -79,21 +79,21 @@ configured to keep the Demo up-to-date automatically.
 
 ## Current Challenges
 
-Of course, with great updates come a few growing pains. Here’s what we’re currently tackling:
+Of course, with great updates come a few growing pains. Here's what we're currently tackling:
 
 - **Grafana Dashboards**: As semantic conventions and tools evolve with new releases, ensuring that
-our Grafana dashboards remain fully functional is a challenge. If you’re experienced with Grafana,
-we’d love your help!
-- **Dependabot PR Testing**: While Dependabot helps keep all service dependencies up-to-date, we haven’t
-yet implemented automated tests to ensure that updates don’t cause crashes. This testing is still a
+our Grafana dashboards remain fully functional is a challenge. If you're experienced with Grafana,
+we'd love your help!
+- **Dependabot PR Testing**: While Dependabot helps keep all service dependencies up-to-date, we haven't
+yet implemented automated tests to ensure that updates don't cause crashes. This testing is still a
 manual process.
 - **Demo Scalability**: Balancing the expansion of demo scenarios while keeping the Demo easily runnable
 locally is one of our biggest challenges. With 19 different services and new ideas emerging weekly,
-we’re continuously working to maintain this balance.
+we're continuously working to maintain this balance.
 
-## What’s Next?
+## What's Next?
 
-We're not stopping here! Here are some of the next steps we’re excited about, and we’d love your help:
+We're not stopping here! Here are some of the next steps we're excited about, and we'd love your help:
 
 - **Bring Erlang/Elixir Back**: In March 2024, we removed the initial Feature Flag service written in
 Elixir in favor of OpenFeature and Flagd. Since then, the Demo hasn't included a service in that
@@ -106,8 +106,8 @@ processes—especially for Dependabot PRs—to streamline our development workfl
 
 ## Get Involved!
 
-Your feedback and contributions are what make this project thrive. If you’re interested in helping
-out—whether it’s polishing up the dashboards, automating tests, or bringing Erlang/Elixir back—please
+Your feedback and contributions are what make this project thrive. If you're interested in helping
+out—whether it's polishing up the dashboards, automating tests, or bringing Erlang/Elixir back—please
 jump in and join the discussion on our [GitHub repository][6] / SIG meetings ([calendar-demo][7])
 or hop into the [#otel-community-demo slack channel][8].
 
