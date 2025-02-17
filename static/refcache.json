@@ -14203,18 +14203,6 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-31T13:07:33.766024682Z"
   },
-  "https://opentelemetry.io/docs/specs/semconv/attributes-registry/artifact/": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-10T23:17:16.389019247Z"
-  },
-  "https://opentelemetry.io/docs/specs/semconv/attributes-registry/cicd/": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-10T23:16:29.281973918Z"
-  },
-  "https://opentelemetry.io/docs/specs/semconv/attributes-registry/vcs/": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-10T23:17:11.308354544Z"
-  },
   "https://opentracing.io": {
     "StatusCode": 206,
     "LastSeen": "2024-12-18T06:36:29.862015-05:00"
