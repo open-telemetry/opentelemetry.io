@@ -1207,6 +1207,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-12-17T10:19:55.279945432Z"
   },
+  "https://docs.google.com/forms/d/e/1FAIpQLScoG279ZhRuMu8J_8BebGEVtMOS8BgD9cpQUJ6xSnNIAUtedw/viewform": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-31T13:07:08.936780845Z"
+  },
+  "https://docs.google.com/forms/d/e/1FAIpQLSfpxKvN3_5VN6FQ5dF5-XLfNdOhVYtjreetkxlRCF8qS7AW2w/viewform": {
+    "StatusCode": 200,
+    "LastSeen": "2024-04-16T16:28:02.021217686Z"
+  },
   "https://docs.google.com/presentation/d/1YaJvAWnNcUJd1RNsqvEYCcqvJUoj0TDd": {
     "StatusCode": 200,
     "LastSeen": "2024-11-15T15:28:20.886935-07:00"
@@ -4926,6 +4934,10 @@
   "https://github.com/open-telemetry/community/issues/new": {
     "StatusCode": 206,
     "LastSeen": "2025-01-15T11:26:29.080832-05:00"
+  },
+  "https://github.com/open-telemetry/community/pull/2162": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-31T13:07:41.401419893Z"
   },
   "https://github.com/open-telemetry/community/pull/2427": {
     "StatusCode": 200,
@@ -11303,6 +11315,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T17:00:28.710746-05:00"
   },
+  "https://github.com/open-telemetry/sig-contributor-experience": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-31T13:07:45.260985788Z"
+  },
+  "https://github.com/open-telemetry/sig-contributor-experience/issues/16": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-31T13:07:50.399535513Z"
+  },
   "https://github.com/open-telemetry/sig-end-user": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:10:56.03728-05:00"
@@ -11470,6 +11490,10 @@
   "https://github.com/orgs/open-telemetry/projects/92/views/1": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:10:54.768801-05:00"
+  },
+  "https://github.com/orgs/open-telemetry/teams/sig-contributor-experience-maintainers": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-31T13:07:53.320508201Z"
   },
   "https://github.com/orgs/open-telemetry/teams/technical-committee": {
     "StatusCode": 206,
@@ -14094,6 +14118,10 @@
   "https://opentelemetry.devstats.cncf.io/d/8/dashboards": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:32:22.440332-05:00"
+  },
+  "https://opentelemetry.devstats.cncf.io/d/9/developer-activity-counts-by-repository-group-table": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-31T13:07:33.766024682Z"
   },
   "https://opentracing.io": {
     "StatusCode": 206,
@@ -16746,6 +16774,10 @@
   "https://www.cncf.io/blog/2024/12/20/opentelemetry-io-2024-review/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-04T17:12:03.120768-05:00"
+  },
+  "https://www.cncf.io/blog/2025/01/20/opentelemetry-for-generative-ai/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-14T12:23:38.590496-05:00"
   },
   "https://www.cncf.io/enduser/": {
     "StatusCode": 200,
