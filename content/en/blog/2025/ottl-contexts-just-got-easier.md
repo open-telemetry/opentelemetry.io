@@ -28,16 +28,18 @@ accurate and performant.
 ## How does it work?
 
 Starting with version `0.120.0`, the transform processor supports two new
-[context-inferred configuration](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md#context-inferred-configurations)
-styles. The first one offers a simpler and flatter approach, while the second
-closely resembles the existing configuration format.
+context-inferred configuration styles. The first one offers a simpler and
+flatter approach, while the second closely resembles the existing configuration
+format.
 
-### Flat configuration
+### Basic configuration
 
-The flat configuration style simplifies configuration by allowing users to list
-all statements together, without worrying about OTTL contexts or extra
-configuration structures. This style support statements from multiple OTTL
-contexts and does not require grouping them separately.
+The
+[basic configuration](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md#basic-config)
+style simplifies configuration by allowing users to list all statements
+together, without worrying about OTTL contexts or extra configuration
+structures. This style support statements from multiple OTTL contexts and does
+not require grouping them separately.
 
 To illustrate this, compare the following configuration:
 
@@ -55,7 +57,7 @@ metric_statements:
       - limit(attributes, 100, ["host.name"])
 ```
 
-With the new flat configuration style, the same logic is expressed more
+With the new basic configuration style, the same logic is expressed more
 concisely by simply providing a list of statements:
 
 ```yaml
@@ -67,19 +69,20 @@ metric_statements:
 ```
 
 This streamlined approach enhances readability and makes configuration more
-intuitive. To use this flat configuration, all paths in the statements must be
+intuitive. To use this configuration style, all paths in the statements must be
 prefixed with their respective OTTL contexts. These prefixes are required for
 all context-inferred configurations and serve as hints for selecting the best
 match. It also makes statements unambiguous and portable between components
 using OTTL.
 
-### Structured configuration
+### Advanced configuration
 
-The context-inferred structured configuration style closely resembles the
-existing format and allows users to leverage the benefits of context inference
-while providing granular control over statement configurations, such as
-`error_mode` and `conditions`. For example, consider the following
-configuration:
+The context-inferred
+[advanced configuration](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md#advanced-config)
+style closely resembles the existing format and allows users to leverage the
+benefits of context inference while providing granular control over statement
+configurations, such as `error_mode` and `conditions`. For example, consider the
+following configuration:
 
 <!-- prettier-ignore-start -->
 ```yaml
@@ -126,21 +129,21 @@ using the `datapoint` OTTL context, `metric` is the most efficient option.
 
 ### Which configuration style should I choose?
 
-The [flat configuration](#flat-configuration) style is best suited for scenarios
-where simplicity and ease of use are paramount. It is ideal for simple use cases
-where your configuration needs are straightforward and do not require the use of
-additional configurations keys, allowing you to quickly set up your statements
-with minimal effort and without needing to understand the underlying concept of
-OTTL contexts.
+The [basic configuration](#basic-configuration) style is best suited for
+scenarios where simplicity and ease of use are paramount. It is ideal for simple
+use cases where your configuration needs are straightforward and do not require
+the use of additional configurations keys, allowing you to quickly set up your
+statements with minimal effort and without needing to understand the underlying
+concept of OTTL contexts.
 
-The [structured configuration](#structured-configuration) style is more detailed
-and allows the use of additional configuration keys such as `error_mode` and
+The [advanced configuration](#advanced-configuration) style is more detailed and
+allows the use of additional configuration keys such as `error_mode` and
 `conditions`. It supports statements from multiple OTTL contexts. However,
-unlike the flat configuration style, it may require splitting them into separate
-configuration groups (see
-[context inference](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor#context-inference)).
-In terms of performance, the structured configuration is slightly faster than
-the flat configuration, making it a better choice for complex scenarios or
+unlike the basic configuration style, it may require splitting them into
+separate configuration groups (see
+[advanced config](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor#advanced-config)).
+In terms of performance, the advanced configuration is slightly faster than the
+basic configuration, making it a better choice for complex scenarios or
 configurations with a high number of statements.
 
 ## Try it out
