@@ -23,7 +23,7 @@ the record of 40 stars in a single day. If you use the Demo, please consider
 leaving us a star to help promote the project.
 
 There are a total of 1.8k forks of the Demo. Notably, [Abhishek Veeramalla's
-fork][5] stands out with 142 stars and has been forked 425 times.
+fork][1] stands out with 142 stars and has been forked 425 times.
 
 The Demo containers have been pulled over **12 million times** (11,809,995 times
 from `ghcr.io` plus 433,000 times from `hub.docker`).
@@ -43,7 +43,7 @@ rundown of the highlights:
 
 - **Flagd-ui Introduced**: One of our most missed features since version 1.9.0
   is back! You can now again manage feature flags directly in the Demo. For more
-  details, check out the [Feature Flags][1] page.
+  details, check out the [Feature Flags](/docs/demo/feature-flags/) page.
 - **Image-provider Introduced**: Since release 1.10.0, we've introduced a new
   service called Image Provider, which delivers static product images. This
   service, built on NGINX, returns images for every product and demonstrates how
@@ -69,15 +69,20 @@ rundown of the highlights:
   different way to instrument .NET applications.
 - **Added Exemplars**: `Cart` service now records exemplars for `GetCart` and
   `AddItem` operations, allowing correlation between metrics and spans. Check
-  out the [Exemplars section of the Cart documentation][2] to know more.
+  out the
+  [Exemplars section of the Cart documentation](/docs/demo/services/cart/#exemplars)
+  to know more.
 - **React Native Example App**: One of the most significant additions to this
   release is the brand new React Native app example. It can be built for Android
   or iOS (currently executable locally only). For instructions on how to run and
-  test it, check out the [React Native App documentation page][3].
+  test it, check out the
+  [React Native App documentation page](/docs/demo/services/react-native-app/).
 - **Span Links for Messaging Spans**: Following OTel's recommendation to always
-  link producer and consumer spans ([Messaging spans - Trace structure][4]), the
-  Demo now demonstrates this best practice. Consumer spans for `Accounting` and
-  `Fraud-Detection` are linked to the producer span (`Checkout/orders publish`).
+  link producer and consumer spans
+  ([Messaging spans - Trace structure](/docs/specs/semconv/messaging/messaging-spans/#trace-structure)),
+  the Demo now demonstrates this best practice. Consumer spans for `Accounting`
+  and `Fraud-Detection` are linked to the producer span
+  (`Checkout/orders publish`).
 - **Multi-arch Builds**: To ensure that a variety of users can run the Demo
   locally, we've introduced new `make` targets to support building multiplatform
   images (for both `arm64` and `amd64` architectures).
@@ -120,17 +125,12 @@ and we'd love your help:
 Your feedback and contributions are what make this project thrive. If you're
 interested in helping out—whether it's polishing up the dashboards, automating
 tests, or bringing Erlang/Elixir back—please jump in and join the discussion on
-our [GitHub repository][6] / SIG meetings ([calendar-demo][7]) or hop into the
-[#otel-community-demo slack channel][8].
+our [GitHub repository][2] / SIG meetings ([calendar-demo][3]) or hop into the
+[#otel-community-demo slack channel][4].
 
 Thank you for your continued support, and happy demoing!
 
-[1]: https://opentelemetry.io/docs/demo/feature-flags/
-[2]: https://opentelemetry.io/docs/demo/services/cart/#exemplars
-[3]: https://opentelemetry.io/docs/demo/services/react-native-app/
-[4]:
-  https://opentelemetry.io/docs/specs/semconv/messaging/messaging-spans/#trace-structure
-[5]: https://github.com/iam-veeramalla/ultimate-devops-project-demo
-[6]: https://github.com/open-telemetry/opentelemetry-demo
-[7]: https://groups.google.com/a/opentelemetry.io/g/calendar-demo-app
-[8]: https://cloud-native.slack.com/archives/C03B4CWV4DA
+[1]: https://github.com/iam-veeramalla/ultimate-devops-project-demo
+[2]: https://github.com/open-telemetry/opentelemetry-demo
+[3]: https://groups.google.com/a/opentelemetry.io/g/calendar-demo-app
+[4]: https://cloud-native.slack.com/archives/C03B4CWV4DA
