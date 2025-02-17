@@ -7,7 +7,7 @@ type: default
 layout: registry
 body_class: registry td-content
 weight: 20
-default_lang_commit: f235aa0d4e059bb085ba8040960bb49c8f90a1fe
+default_lang_commit: 1304e92e609273a3638b8a50ba82dca3b47ef609
 ---
 
 {{% blocks/lead color="dark" %}}
@@ -21,6 +21,13 @@ default_lang_commit: f235aa0d4e059bb085ba8040960bb49c8f90a1fe
 {{% /blocks/lead %}}
 
 {{< blocks/section color="white" type="container-lg" >}}
+
+
+{{% alert color="info" %}}
+
+O Registro do OpenTelemetry permite a busca por bibliotecas de instrumentação, compoenntes do Collector, utilitários e outros projetos úteis dentro do ecossistema. Caso você seja mantenedor de um projeto, é possível [adicionar seu projeto ao Registro do OpenTelemetry](adding/).
+
+{{% /alert %}}
 
 {{< ecosystem/registry/search-form >}}
 
