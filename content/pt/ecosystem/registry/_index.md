@@ -1,23 +1,20 @@
 ---
-title: Registry
+title: Registro
 description: >-
   Encontre bibliotecas, plugins, integrações e outras ferramentas úteis para
   usar e expandir o OpenTelemetry.
-redirects: [{ from: /ecosystem/registry*, to: '/ecosystem/registry?' }]
-aliases: [/registry/*]
 type: default
 layout: registry
-outputs: [html, json]
 body_class: registry td-content
 weight: 20
-default_lang_commit: e6aa6923419a45ee9c36208eb74da760e7e9abaa
+default_lang_commit: f235aa0d4e059bb085ba8040960bb49c8f90a1fe
 ---
 
 {{% blocks/lead color="dark" %}}
 
 <!-- markdownlint-disable single-h1 -->
 
-# {{% param title %}}
+<h1>{{% param title %}}</h1>
 
 {{% param description %}}
 
