@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry Is Expanding Into CI/CD Observability
 linkTitle: OpenTelemetry Is Expanding Into CI/CD Observability
-date: 2024-12-01
+date: 2025-02-18
 author: >-
   [Dotan Horovits](https://github.com/horovits/) (CNCF Ambassador), [Adriel
   Perkins](https://github.com/adrielp) (Liatrio)
@@ -19,7 +19,7 @@ observing CI/CD pipelines for years, and finally, we see the first “words” o
 this language entering the “dictionary” of observability—the OpenTelemetry open
 specification. With the recent release of OpenTelemetry’s Semantic Conventions,
 v1.27.0, you can find
-[designated attributes for reporting CI/CD pipelines](https://opentelemetry.io/docs/specs/semconv/attributes-registry/cicd/).
+[designated attributes for reporting CI/CD pipelines](/docs/specs/semconv/attributes-registry/cicd/).
 
 This is the result of the hard work of the
 [CI/CD Observability Special Interest Group (SIG) within OpenTelemetry](https://github.com/open-telemetry/community/blob/main/projects/ci-cd.md).
@@ -142,7 +142,7 @@ real world examples for two of the namespaces.
 
 ### Tracking release revisions from Version Control Systems (VCS)
 
-[Version Control System (VCS) attributes](https://opentelemetry.io/docs/specs/semconv/attributes-registry/vcs/)
+[Version Control System (VCS) attributes](/docs/specs/semconv/attributes-registry/vcs/)
 cover multiple areas common in a VCS like refs and changes (pull/merge
 requests). The `vcs.repository.ref.revision` attribute is a key piece of
 metadata. As Version Control Systems like GitHub and GitLab emit events, they
@@ -157,7 +157,7 @@ calculate Change lead time and Failed deployment recovery time.
 ### Artifacts for supply chain security, aligned with the SLSA specification
 
 The
-[artifact attribute namespace](https://opentelemetry.io/docs/specs/semconv/attributes-registry/artifact/)
+[artifact attribute namespace](/docs/specs/semconv/attributes-registry/artifact/)
 had multiple attributes for its first implementation. One key set of attributes
 within this namespace cover [attestations](https://slsa.dev/attestation-model)
 that closely align with the [SLSA](https://slsa.dev/spec/v1.0/about) model. This
