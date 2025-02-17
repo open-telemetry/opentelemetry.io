@@ -7,6 +7,7 @@ author: >-
   Molkova](https://github.com/lmolkova) (Microsoft)
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/5581
 sig: SIG GenAI Observability
+crosspost_url: https://www.cncf.io/blog/2025/01/20/opentelemetry-for-generative-ai/
 cSpell:ignore: genai liudmila molkova
 ---
 
@@ -227,3 +228,7 @@ and more!
 
 You are welcome to join the community! More information can be found at the
 [Generative AI Observability project page](https://github.com/open-telemetry/community/blob/main/projects/gen-ai.md).
+
+_A version of this article also [appears on the CNCF blog][]._
+
+[appears on the CNCF blog]: <{{% param crosspost_url %}}>

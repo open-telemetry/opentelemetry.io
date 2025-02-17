@@ -678,6 +678,6 @@ Whether or not you choose to implement these solutions in your organization,
 it’s nice to know that there are additional options out there to lead you to
 observability greatness with OTel and Prometheus.
 
-_A version of this article was
-[originally posted](https://newrelic.com/blog/how-to-relic/prometheus-and-opentelemetry-better-together)
-on the New Relic blog._
+_A version of this article was [originally posted][] to the New Relic blog._
+
+[originally posted]: <{{% param canonical_url %}}>
