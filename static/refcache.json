@@ -335,6 +335,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-01T06:58:50.458174-05:00"
   },
+  "https://cloud-native.slack.com/archives/C03B4CWV4DA": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-17T18:05:15.669443+01:00"
+  },
   "https://cloud-native.slack.com/archives/C03J794L0BV": {
     "StatusCode": 200,
     "LastSeen": "2024-10-24T15:10:31.184402+02:00"
@@ -3930,6 +3934,10 @@
   "https://github.com/iNikem": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:13:07.981225-05:00"
+  },
+  "https://github.com/iam-veeramalla/ultimate-devops-project-demo": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-17T18:05:12.578269+01:00"
   },
   "https://github.com/iamebonyhope": {
     "StatusCode": 206,
@@ -12890,6 +12898,10 @@
   "https://groups.google.com/a/opentelemetry.io/g/calendar-comms": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:12:02.550579-05:00"
+  },
+  "https://groups.google.com/a/opentelemetry.io/g/calendar-demo-app": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-17T18:05:13.826512+01:00"
   },
   "https://groups.google.com/a/opentelemetry.io/g/calendar-go": {
     "StatusCode": 200,
