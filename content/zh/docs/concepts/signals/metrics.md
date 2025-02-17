@@ -73,4 +73,4 @@ Metric Exporter 将度量数据发送给消费者。这个消费者可以是开�
 ## 规范
 
 要了解有关 OpenTelemetry 中指标的更多信息，请参见[指标规范](/docs/specs/otel/overview/#metric-signal)。
-```` ▋
+
