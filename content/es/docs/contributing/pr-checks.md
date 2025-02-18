@@ -1,0 +1,118 @@
+---
+title: Comprobaciones para PR
+description:
+  Aprenda cómo hacer que su PR pase con éxito todas las comprobaciones
+weight: 40
+default_lang_commit: 389e023192e051a3a835bfc6a71089c98af3b8a8
+cSpell:ignore: REFCACHE
+---
+
+Cuando creas a un
+[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)
+(PR) con
+[repositorio opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io)
+se ejecutan una serie de comprobaciones. Las comprobaciones PR verifican que...
+
+- … has firmado el [CLA](#easy-cla).
+- …su confirmación se puede implementar a través de
+  [Netlify](#netlify-deployment) exitosamente.
+- … sus cambios cumplen con nuestra [guía de estilo](#style-checks).
+
+{{% alert title="Note" color="primary" %}}
+
+Si alguna de las comprobaciones PR fallan, intenta primeramente
+[solucionar automáticamente problemas de contenido](../pull-requests/#fix-issues)
+ejecutar `npm run fix:all` en tu maquina.
+
+Además, puedes comentar `/fix:all` en tus PRs. Esto hará que el bot
+OpenTelemetry ejecute esos comandos en su nombre y actualice la solicitud de
+incorporación de cambios. Asegúrese de extraer esos cambios localmente.
+
+Solo si los problemas persisten, lea a continuación qué hacen las diferentes
+comprobaciones y cómo puede recuperarse de un estado fallido.
+
+{{% /alert %}}
+
+## Easy CLA
+
+Esta comprobacion falla si no has [firmado el CLA](../prerequisites/#cla).
+
+## Despliegue Netlify
+
+Si la compilación [Netlify](https://www.netlify.com/) falla, selecciona
+**Details** para mas informaciones.
+
+## Comprobaciones de estilo
+
+Para asegurarnos de que las contribuciones sigan nuestra
+[guía de estilo](../style-guide/) hemos implementado un conjunto de
+comprobaciones que verifican las reglas de la guía de estilo y fallan si
+encuentran algún problema.
+
+La siguiente lista describe las comprobaciones actuales y lo que puede hacer
+para corregir errores relacionados:
+
+### Linter de TEXTO
+
+Esta comprobación verifica que
+[los términos y palabras específicos de OpenTelemetry se usan de manera uniforme en todo el sitio](../style-guide/#opentelemetryio-word-list).
+
+Si se encuentran problemas, se agregan anotaciones a sus archivos en la vista
+`archivos modificados` de su PR. Solucione esos problemas para que la marca de
+verificación se vuelva verde. Como alternativa, puede ejecutar
+`npm run check:text -- --fix` localmente para corregir la mayoría de los
+problemas. Ejecute `npm run check:text` nuevamente y corrija manualmente los
+problemas restantes.
+
+### Linter de MARKDOWN
+
+Esta comprobación verifica que
+[se apliquen los estándares y la coherencia para los archivos Markdown](../style-guide/#markdown-standards).
+
+Si se encuentran problemas, ejecute `npm:run format` para corregir la mayoría de
+los problemas. Para problemas más complejos, ejecute `npm run check:markdown` y
+aplique los cambios sugeridos.
+
+### Verificación de ORTOGRAFÍA
+
+Esta verificación comprueba que
+[todas las palabras estén escritas correctamente](../style-guide/#spell-checking).
+
+### Comprobación CSPELL:IGNORE
+
+Esta verificación compruebará que todas las palabras en su lista de ignorados de
+cSpell estén normalizadas.
+
+Si esta verificación falla, ejecute `npm run fix:dict` localmente y envíe los
+cambios en una nueva confirmación.
+
+### Comprobación FILENAME
+
+Esta verificación comprueba que todos
+[los archivos estén formateados por prettier](../style-guide/#file-format).
+
+Si esta verificación falla, ejecute `npm fix:format` localmente y envíe los
+cambios en una nueva confirmación.
+
+### FORMATO DE ARCHIVO
+
+Esta verificación comprueba que todos
+[los nombres de archivo estén en mayúsculas y minúsculas](../style-guide/#file-names).
+
+Si esta comprobación falla, ejecute `npm fix:filenames` localmente y envíe los
+cambios en una nueva confirmación.
+
+### ¿COMPILACIÓN y VERIFICACIÓN DE ENLACES / actualizaciones DE REFCACHE?
+
+Esta comprobación verifica que todos los enlaces que sus confirmaciónes están
+introduciendo sean funcionales.
+
+Ejecute `npm run check:links` para verificarlos localmente. Esto también
+actualiza el caché de referencia, o `REFCACHE`. Envíe cualquier cambio a
+`REFCACHE` en una nueva confirmación.
+
+### ¿ADVERTENCIAS en el registro de compilación?
+
+Si esta comprobación falla, revise el registro de compilación para ver si hay
+otros problemas potenciales. Pida ayuda a los mantenedores si no está seguro de
+cómo recuperarse.
