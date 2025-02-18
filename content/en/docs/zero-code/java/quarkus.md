@@ -3,8 +3,6 @@ title: Quarkus instrumentation
 linkTitle: Quarkus
 ---
 
-## Quarkus OpenTelemetry instrumentation
-
 [Quarkus](https://quarkus.io/) is an open source framework designed to help
 software developers build efficient cloud native applications both with JVM and
 Quarkus native image applications.
@@ -21,9 +19,12 @@ provides:
 - The same instrumentations can be used with native image applications, which
   are not supported by the OpenTelemetry Java agent.
 
-> [!NOTE] Quarkus OpenTelemetry instrumentation is maintained and supported by
-> Quarkus. For details, please check the
-> [Quarkus community support page](https://quarkus.io/support/).
+{{% alert-md title="Note" color="secondary" %}}
+
+Quarkus OpenTelemetry instrumentation is maintained and supported by Quarkus.
+For details, see [Quarkus community support](https://quarkus.io/support/).
+
+{{% /alert-md %}}
 
 Quarkus can also be instrumented with the [OpenTelemetry Java agent](../agent/)
 if you are not running a native image application.
@@ -33,7 +34,7 @@ if you are not running a native image application.
 To enable OpenTelemetry in your Quarkus application, add the
 `quarkus-opentelemetry` extension dependency to your project.
 
-{{< tabpane >}} {{< tab header="Maven (`pom.xml`)" lang=Maven >}}
+{{< tabpane >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
 ```xml
 <dependency>
@@ -50,31 +51,29 @@ implementation("io.quarkus:quarkus-opentelemetry")
 
 {{% /tab %}} {{< /tabpane>}}
 
-Only the **tracing** signal will be enabled by default. To enable **metrics**
-and **logs**, you need to add the following configuration to your
-`application.properties` file:
+Only the **tracing** signal is enabled by default. To enable **metrics** and
+**logs**, add the following configuration to your `application.properties` file:
 
 ```properties
 quarkus.otel.metrics.enabled=true
 quarkus.otel.logs.enabled=true
 ```
 
-OpenTelemetry logging is available after Quarkus 3.16.0.
+OpenTelemetry logging is supported by Quarkus 3.16.0+.
 
-The remaining configurations are available in the
+For details concerning these and other configuration options, see
 [Quarkus OpenTelemetry configuration reference](https://quarkus.io/guides/opentelemetry#configuration-reference).
 
-## Additional Documentation
+## Learn more
 
 The Quarkus documentation provides in-depth information on how to use Quarkus
 with OpenTelemetry.
 
-- [Using OpenTelemetry guide](https://quarkus.io/guides/opentelemetry), the
-  general reference including all
-  **[configurations](https://quarkus.io/guides/opentelemetry#configuration-reference)**.
-- [Using OpenTelemetry Tracing](https://quarkus.io/guides/opentelemetry-tracing),
-  the guide on how to **trace** your Quarkus application.
-- [Using OpenTelemetry Metrics](https://quarkus.io/guides/opentelemetry-metrics),
-  the guide about OpenTelemetry **metrics** on Quarkus applications.
-- [Using OpenTelemetry Logs](https://quarkus.io/guides/opentelemetry-logging),
-  the guide about OpenTelemetry **logs** on Quarkus applications.
+- [Using OpenTelemetry](https://quarkus.io/guides/opentelemetry), a general
+  reference covering all
+  [configuration](https://quarkus.io/guides/opentelemetry#configuration-reference)
+  options
+- Signal-specific guides for
+  - [Tracing](https://quarkus.io/guides/opentelemetry-tracing)
+  - [Metrics](https://quarkus.io/guides/opentelemetry-metrics)
+  - [Logs](https://quarkus.io/guides/opentelemetry-logging)
