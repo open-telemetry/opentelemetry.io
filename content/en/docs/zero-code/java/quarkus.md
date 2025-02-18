@@ -16,11 +16,14 @@ provides:
 
 - Out of the box instrumentation
 - OpenTelemetry SDK autoconfiguration, supporting almost all system properties
-  defined for the
-  [OpenTelemetry SDK](/docs/languages/java/configuration/)
+  defined for the [OpenTelemetry SDK](/docs/languages/java/configuration/)
 - [Vert.x](https://vertx.io/) based OTLP exporter
-- The same instrumentations can be used with native image applications,
-  which are not supported by the OpenTelemetry Java agent.
+- The same instrumentations can be used with native image applications, which
+  are not supported by the OpenTelemetry Java agent.
+
+> [!NOTE] Quarkus OpenTelemetry instrumentation is maintained and supported by
+> Quarkus. For details, please check the
+> [Quarkus community support page](https://quarkus.io/support/).
 
 Quarkus can also be instrumented with the [OpenTelemetry Java agent](../agent/)
 if you are not running a native image application.

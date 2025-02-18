@@ -15811,6 +15811,26 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-06T11:32:19.346196-05:00"
   },
+  "https://quarkus.io/guides/opentelemetry#configuration-reference": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-05T16:11:20.963349Z"
+  },
+  "https://quarkus.io/guides/opentelemetry-logging": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-05T16:11:25.084436Z"
+  },
+  "https://quarkus.io/guides/opentelemetry-metrics": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-05T16:11:23.661159Z"
+  },
+  "https://quarkus.io/guides/opentelemetry-tracing": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-05T16:11:22.258268Z"
+  },
+  "https://quarkus.io/support/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-18T11:15:32.834331Z"
+  },
   "https://raw.githubusercontent.com/elastic/elasticsearch-specification/main/output/schema/schema.json": {
     "StatusCode": 206,
     "LastSeen": "2025-01-30T14:41:18.255078-05:00"
@@ -16690,6 +16710,10 @@
   "https://vcpkg.io": {
     "StatusCode": 206,
     "LastSeen": "2024-11-14T11:48:37.997877+01:00"
+  },
+  "https://vertx.io/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-05T16:11:19.760497Z"
   },
   "https://vote.heliosvoting.org/helios/elections/176e7ca8-647d-11ef-9b9a-2a30e2a223da/view": {
     "StatusCode": 200,
