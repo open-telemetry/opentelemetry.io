@@ -9,7 +9,7 @@ cascade:
     instrumentation: 2.12.0
     otel: 1.47.0
     contrib: 1.43.0
-    semconv: 1.30.0-rc.1
+    semconv: 1.30.0
 weight: 18
 ---
 
