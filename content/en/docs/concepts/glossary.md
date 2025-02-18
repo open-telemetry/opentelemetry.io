@@ -116,7 +116,7 @@ some customizations. See [more][distribution].
 
 ### Event
 
-An Event is a [Log Record](#log-record) with a name and a well-known structure.
+An Event is a [Log Record](#log-record) with an event name and a well-known structure.
 For example, browser events in OpenTelemetry follow a particular naming
 convention and carry particular data in a common structure.
 
