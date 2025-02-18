@@ -35,7 +35,7 @@ comprobaciones y cómo puede recuperarse de un estado fallido.
 
 ## Easy CLA
 
-Esta comprobacion falla si no has [firmado el CLA](../prerequisites/#cla).
+Esta comprobación falla si no has [firmado el CLA](../prerequisites/#cla).
 
 ## Despliegue Netlify
 
@@ -61,7 +61,7 @@ Si se encuentran problemas, se agregan anotaciones a sus archivos en la vista
 `archivos modificados` de su PR. Solucione esos problemas para que la marca de
 verificación se vuelva verde. Como alternativa, puede ejecutar
 `npm run check:text -- --fix` localmente para corregir la mayoría de los
-problemas. Ejecute `npm run check:text` nuevamente y corrija manualmente los
+problemas. Ejecute `npm run check:text` nuevamente y corrige manualmente los
 problemas restantes.
 
 ### Linter de MARKDOWN
