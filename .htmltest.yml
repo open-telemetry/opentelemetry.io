@@ -5,6 +5,7 @@ IgnoreAltMissing: true
 IgnoreCanonicalBrokenLinks: false
 IgnoreInternalEmptyHash: true # TODO: remove after resolution of https://github.com/google/docsy/issues/1995
 CheckMailto: false
+# StripQueryString: false # TODO: enable once htmltest is fixed
 TestFilesConcurrently: true
 IgnoreDirs:
   # DO NOT EDIT! IgnoreDirs list is auto-generated from markdown file front matter.
@@ -24,7 +25,7 @@ IgnoreDirs:
 IgnoreInternalURLs: # list of paths
 IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - /index.xml$ # Ignore rel="alternative" links to RSS feeds
-  - ^/api$
+  - ^/api/?$
   - ^((/..)?/docs/languages/\w+|\.\.)/(api|examples|registry)/$
   - ^(/..)?/docs/collector/registry/$
   - ^(/..)?/docs/languages/net/(metrics-api|traces-api)/
@@ -54,7 +55,7 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
 
   # Ignore Docsy-generated GitHub links for now, until
   # https://github.com/google/docsy/issues/1432 is fixed
-  - ^https?://github\.com/.*?/.*?/(new|edit|issues/new\?title)/ # view-page, edit-source etc
+  - ^https?://github\.com/.*?/.*?/(new/|edit/|issues/new\?) # view-page, edit-source etc
   # Ignore "View page source" links, except for spec pages, i.e., links starting with
   # https://github.com/open-telemetry/opentelemetry.io/tree/main/content/en/docs/specs
   - ^https://github\.com/open-telemetry/opentelemetry.io/tree/main/content/[^e]
@@ -74,3 +75,24 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://shorturl.at/osHRX$
   # TODO move into content/en/blog/2023/contributing-to-otel/index.md once https://github.com/open-telemetry/opentelemetry.io/issues/3889 is implemented
   - ^https://shorturl.at/vLYZ0$
+
+  # Temporary until semconv is updated to 1.30.0+
+  - ^https://cloud.google.com/apis/design/resource_names#full_resource_name
+  - ^https://cloud.google.com/functions/docs/concepts/exec#function_scope_versus_global_scope
+  - ^https://developer.apple.com/documentation/uikit/uiapplicationdelegate#1656902
+  - ^https://docs.docker.com/registry/spec/manifest-v2-2/#example-image-manifest
+  - ^https://www.openssl.org/docs/man1.1.1/man3/SSL_get_version.html#RETURN-VALUES
+  - ^https://www.erlang.org/doc/man/erl_error.html#format_exception-3
+  # Fixed via https://github.com/open-telemetry/semantic-conventions/pull/1814
+  - ^https://github.com/open-telemetry/opentelemetry-specification/tree/v1.41.0/specification/logs/api.md#emit-an-event
+
+  # Temporary until
+  # https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth@v0.120.0+
+  # is published to include
+  # https://github.com/open-telemetry/opentelemetry-collector/pull/12309
+  - ^https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#client-authenticators
+  - ^https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#server-authenticators
+
+  # Temporary until
+  # https://github.com/open-telemetry/opentelemetry.io/issues/6237 is resolved
+  - ^https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#

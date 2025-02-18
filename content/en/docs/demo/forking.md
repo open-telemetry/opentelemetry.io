@@ -30,4 +30,4 @@ Live demos can be added to the demo
 If you have any questions or would like to suggest ways that we can make your
 life easier as a fork maintainer, please open an issue.
 
-[demo repository]: {{% param repo %}}
+[demo repository]: <{{% param repo %}}>

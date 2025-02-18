@@ -129,7 +129,7 @@ gerencia o OpenTelemetry Collector e a instrumentação sem código das cargas d
 trabalho que utilizam OpenTelemetry.
 
 Para mais informações, consulte
-[Kubernetes Operator](/docs/kubernetes/operator/).
+[Kubernetes Operator](/docs/platforms/kubernetes/operator/).
 
 ## Função como Serviço {#function-as-a-service-assets}
 
@@ -140,4 +140,4 @@ instrumentação sem código na sua aplicação, bem como a opção de uma camad
 Lambda do Coletor independente, que pode ser usada ao instrumentar aplicações
 manualmente ou automaticamente.
 
-Para mais informações, consulte [Função como Serviço](/docs/faas/).
+Para mais informações, consulte [Função como Serviço](/docs/platforms/faas/).

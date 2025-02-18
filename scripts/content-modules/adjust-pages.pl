@@ -118,6 +118,7 @@ sub patchSemConv1_30_0() {
   s|(docs/specs/otel/logs/api.md#emit-a)n-event|$1-logrecord|;
   s|\[semantic-convention-groups\]|[group-stability]|;
   s|\Q../../docs/|../|g; # https://github.com/open-telemetry/semantic-conventions/pull/1843
+  s|\Qhttps://wikipedia.org/wiki/Where_(SQL)#IN|https://wikipedia.org/wiki/SQL_syntax#Operators|g;
 }
 
 sub getVersFromSubmodule() {

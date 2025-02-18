@@ -168,17 +168,10 @@ dependencies {
 {{% /tab %}} {{< /tabpane >}}
 
 [opentelemetry-bom]:
-https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/{{% param
-vers.otel %}}/opentelemetry-bom-{{% param vers.otel %}}.pom
+  <https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/{{% param vers.otel %}}/opentelemetry-bom-{{% param vers.otel %}}.pom>
 [opentelemetry-bom-alpha]:
-https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/{{%
-param vers.otel
-%}}-alpha/opentelemetry-bom-alpha-{{% param vers.otel %}}-alpha.pom
+  <https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/{{% param vers.otel %}}-alpha/opentelemetry-bom-alpha-{{% param vers.otel %}}-alpha.pom>
 [opentelemetry-instrumentation-bom]:
-https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/{{%
-param vers.instrumentation
-%}}/opentelemetry-instrumentation-bom-{{% param vers.instrumentation %}}.pom
+  <https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/{{% param vers.instrumentation %}}/opentelemetry-instrumentation-bom-{{% param vers.instrumentation %}}.pom>
 [opentelemetry-instrumentation-alpha-bom]:
-https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/{{%
-param vers.instrumentation
-%}}-alpha/opentelemetry-instrumentation-bom-alpha-{{% param vers.instrumentation %}}-alpha.pom
+  <https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/{{% param vers.instrumentation %}}-alpha/opentelemetry-instrumentation-bom-alpha-{{% param vers.instrumentation %}}-alpha.pom>
