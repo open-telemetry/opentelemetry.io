@@ -329,7 +329,7 @@ dotnet run
 ### Initialize Tracing
 
 {{% alert title="Note" color="info" %}} If you’re instrumenting a library, you
-don't need to initialize a TraceProvider. {{% /alert %}}
+don't need to initialize a TracerProvider. {{% /alert %}}
 
 To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need to
 have an initialized
