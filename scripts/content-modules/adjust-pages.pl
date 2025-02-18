@@ -104,13 +104,13 @@ sub applyPatchOrPrintMsgIf($$$) {
   return 0;
 }
 
-sub patchEventAliases() {
-  return unless $ARGV =~ /^tmp\/otel\/specification\/logs\//
-    && applyPatchOrPrintMsgIf('2025-01-23-event-aliases', 'spec', '1.41.0');
-
-  my $aliases = '^(  - )(event-(api|sdk))$';
-  s|$aliases|$1./$2|;
-}
+# sub patchEventAliases() {
+#   return unless $ARGV =~ /^tmp\/otel\/specification\/logs\//
+#     && applyPatchOrPrintMsgIf('2025-01-23-event-aliases', 'spec', '1.41.0');
+#
+#   my $aliases = '^(  - )(event-(api|sdk))$';
+#   s|$aliases|$1./$2|;
+# }
 
 sub patchSemConv1_30_0() {
   return unless $ARGV =~ /^tmp\/semconv\/docs\//
@@ -164,7 +164,6 @@ while(<>) {
         while(<>) {
           $lineNum++;
           last if /^--->?/;
-          patchEventAliases();
           patchSemConv1_30_0();
           $frontMatterFromFile .= $_;
         }
