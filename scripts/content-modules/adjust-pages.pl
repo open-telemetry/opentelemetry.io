@@ -1,4 +1,6 @@
 #!/usr/bin/perl -w -i
+#
+# cSpell:ignore oteps
 
 $^W = 1;
 
@@ -169,7 +171,7 @@ while(<>) {
         next;
     }
   }
-  if(! $title) {
+  if (! $title) {
     ($title) = /^#\s+(.*)/;
     $linkTitle = '';
     printFrontMatter() if $title;
@@ -180,7 +182,7 @@ while(<>) {
     while(<>) { $lineNum++; last if /<\/details>/; }
     next;
   }
-  if(/<!-- toc -->/) {
+  if (/<!-- toc -->/) {
     my $tocstop = '<!-- tocstop -->';
     while(<>) {
       $lineNum++;
@@ -227,9 +229,13 @@ while(<>) {
   # Rewrite paths that are outside of the spec folders as external links:
   s|\.\.\/README.md|$otelSpecRepoUrl/|g if $ARGV =~ /specification._index/;
   s|\.\.\/README.md|/docs/specs/otel/| if $ARGV =~ /specification\/library-guidelines.md/;
-
-  s|(\.\.\/)+(experimental\/[^)]+)|$otelSpecRepoUrl/tree/v$otelSpecVers/$2|g;
-  s|(\.\.\/)+(supplementary-guidelines\/compatibility\/[^)]+)|$otelSpecRepoUrl/tree/v$otelSpecVers/$2|g;
+  s{
+    (\.\.\/)+
+    (
+      (?:oteps|supplementary-guidelines)\/
+      [^)]+
+    )
+  }{$otelSpecRepoUrl/tree/v$otelSpecVers/$2}gx;
 
   s|\.\./((?:examples/)?README\.md)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /^tmp\/otlp/;
 
