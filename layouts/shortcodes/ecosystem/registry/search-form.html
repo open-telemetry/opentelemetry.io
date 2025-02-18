@@ -9,7 +9,6 @@
 
 {{ $officialLanguages := slice "collector" "cpp" "erlang" "elixir" "dotnet" "go" "java" "js" "php" "python" "ruby" "rust" "swift" -}}
 
-
 {{ $langs := slice -}}
 {{ range $registry -}}
   {{ $language := .language -}}
@@ -66,13 +65,6 @@
   {{ end -}}
 {{ end -}}
 {{ $uniqueFlags := $allFlags | uniq | sort }}
-
-<div class="alert alert-info">
-The OpenTelemetry Registry allows you to search for instrumentation libraries,
-collector components, utilities, and other useful projects in the OpenTelemetry
-ecosystem. If you are a project maintainer, you can
-<a href="{{ $registryUrl }}adding/">add your project to the OpenTelemetry Registry</a>
-</div>
 
 <div class="pb-4">
   <form action="{{ $registryUrl }}" id="searchForm">

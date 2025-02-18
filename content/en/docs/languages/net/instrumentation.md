@@ -6,7 +6,7 @@ description: Instrumentation for OpenTelemetry .NET
 cSpell:ignore: dicelib rolldice
 ---
 
-{{% docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro.md %}}
 
 {{% alert title="Note" color="info" %}}
 
