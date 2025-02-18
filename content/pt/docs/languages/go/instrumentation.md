@@ -9,7 +9,7 @@ default_lang_commit: 748555c22f43476291ae0c7974ca4a2577da0472
 cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup updown
 ---
 
-{{% docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro.md %}}
 
 ## Configuração {#setup}
 

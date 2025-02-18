@@ -1986,6 +1986,11 @@ triagers:
       - java-contrib-triagers
     html_url: https://github.com/oertl
     avatar_url: https://avatars.githubusercontent.com/u/9392465?v=4
+  - name: onurtemizkan
+    teams:
+      - javascript-contrib-triagers
+    html_url: https://github.com/onurtemizkan
+    avatar_url: https://avatars.githubusercontent.com/u/4020638?v=4
   - name: PeterF778
     teams:
       - java-contrib-triagers
