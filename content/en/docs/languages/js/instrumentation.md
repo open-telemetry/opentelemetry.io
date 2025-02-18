@@ -8,7 +8,7 @@ description: Instrumentation for OpenTelemetry JavaScript
 cSpell:ignore: dicelib Millis rolldice
 ---
 
-{{% docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro.md %}}
 
 {{% alert title="Note" color="info" %}}
 
@@ -335,7 +335,7 @@ above, you have a `TracerProvider` setup for you already. You can continue with
 
 #### Browser
 
-{{% include browser-instrumentation-warning.md %}}
+{{% include "./_browser-instrumentation-warning.md" %}}
 
 First, ensure you've got the right packages:
 
