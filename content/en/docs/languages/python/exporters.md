@@ -60,10 +60,10 @@ resource = Resource(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
-traceProvider = TracerProvider(resource=resource)
+tracerProvider = TracerProvider(resource=resource)
 processor = BatchSpanProcessor(OTLPSpanExporter(endpoint="<traces-endpoint>/v1/traces"))
-traceProvider.add_span_processor(processor)
-trace.set_tracer_provider(traceProvider)
+tracerProvider.add_span_processor(processor)
+trace.set_tracer_provider(tracerProvider)
 
 reader = PeriodicExportingMetricReader(
     OTLPMetricExporter(endpoint="<traces-endpoint>/v1/metrics")
@@ -92,10 +92,10 @@ resource = Resource(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
-traceProvider = TracerProvider(resource=resource)
+tracerProvider = TracerProvider(resource=resource)
 processor = BatchSpanProcessor(OTLPSpanExporter(endpoint="your-endpoint-here"))
-traceProvider.add_span_processor(processor)
-trace.set_tracer_provider(traceProvider)
+tracerProvider.add_span_processor(processor)
+trace.set_tracer_provider(tracerProvider)
 
 reader = PeriodicExportingMetricReader(
     OTLPMetricExporter(endpoint="localhost:5555")
@@ -132,10 +132,10 @@ resource = Resource(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
-traceProvider = TracerProvider(resource=resource)
+tracerProvider = TracerProvider(resource=resource)
 processor = BatchSpanProcessor(ConsoleSpanExporter())
-traceProvider.add_span_processor(processor)
-trace.set_tracer_provider(traceProvider)
+tracerProvider.add_span_processor(processor)
+trace.set_tracer_provider(tracerProvider)
 
 reader = PeriodicExportingMetricReader(ConsoleMetricExporter())
 meterProvider = MeterProvider(resource=resource, metric_readers=[reader])
