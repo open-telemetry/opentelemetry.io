@@ -80,7 +80,7 @@ Esta verificación comprueba que
 
 ### Comprobación CSPELL:IGNORE
 
-Esta verificación compruebará que todas las palabras en su lista de ignorados de
+Esta verificación comprobará que todas las palabras en su lista de ignorados de
 cSpell estén normalizadas.
 
 Si esta verificación falla, ejecute `npm run fix:dict` localmente y envíe los
@@ -104,7 +104,7 @@ cambios en una nueva confirmación.
 
 ### ¿COMPILACIÓN y VERIFICACIÓN DE ENLACES / actualizaciones DE REFCACHE?
 
-Esta comprobación verifica que todos los enlaces que sus confirmaciónes están
+Esta comprobación verifica que todos los enlaces que sus confirmaciones están
 introduciendo sean funcionales.
 
 Ejecute `npm run check:links` para verificarlos localmente. Esto también
