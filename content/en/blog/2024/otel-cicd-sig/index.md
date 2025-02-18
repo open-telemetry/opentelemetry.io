@@ -16,14 +16,14 @@ cSpell:ignore: andrzej bäck bäckmark chacin cicd frittoli grassi helmuth horov
 
 We’ve been talking about the need for a common “language” for reporting and
 observing CI/CD pipelines for years, and finally, we see the first “words” of
-this language entering the “dictionary” of observability—the OpenTelemetry open
-specification. With the recent release of OpenTelemetry’s Semantic Conventions,
+this language entering the “dictionary” of observability—the [OpenTelemetry open
+specification](/docs/specs/otel/). With the recent release of OpenTelemetry’s [Semantic Conventions](/docs/specs/semconv/),
 v1.27.0, you can find
 [designated attributes for reporting CI/CD pipelines](/docs/specs/semconv/attributes-registry/cicd/).
 
 This is the result of the hard work of the
 [CI/CD Observability Special Interest Group (SIG) within OpenTelemetry](https://github.com/open-telemetry/community/blob/main/projects/ci-cd.md).
-As we accomplish the core milestone for the first phase, we thought it’d be a
+As we accomplish this core milestone for the first phase, we thought it’d be a
 good time to share it with the world.
 
 ## Engineers need observability into their CI/CD pipelines
