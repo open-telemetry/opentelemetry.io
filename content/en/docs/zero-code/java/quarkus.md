@@ -62,12 +62,9 @@ quarkus.otel.logs.enabled=true
 OpenTelemetry logging is supported by Quarkus 3.16.0+.
 
 For details concerning these and other configuration options, see
-[Quarkus OpenTelemetry configuration reference](https://quarkus.io/guides/opentelemetry#configuration-reference).
+[OpenTelemetry configuration reference](https://quarkus.io/guides/opentelemetry#configuration-reference).
 
 ## Learn more
-
-The Quarkus documentation provides in-depth information on how to use Quarkus
-with OpenTelemetry.
 
 - [Using OpenTelemetry](https://quarkus.io/guides/opentelemetry), a general
   reference covering all
