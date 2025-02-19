@@ -8,7 +8,7 @@ description: Manual instrumentation for OpenTelemetry Go
 cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup
 ---
 
-{{% docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro.md %}}
 
 ## Setup
 
@@ -49,7 +49,7 @@ func newExporter(ctx context.Context)  /* (someExporter.Exporter, error) */ {
 	// Your preferred exporter: console, jaeger, zipkin, OTLP, etc.
 }
 
-func newTraceProvider(exp sdktrace.SpanExporter) *sdktrace.TracerProvider {
+func newTracerProvider(exp sdktrace.SpanExporter) *sdktrace.TracerProvider {
 	// Ensure default SDK resources and the required service name are set.
 	r, err := resource.Merge(
 		resource.Default(),
@@ -78,7 +78,7 @@ func main() {
 	}
 
 	// Create a new tracer provider with a batch span processor and the given exporter.
-	tp := newTraceProvider(exp)
+	tp := newTracerProvider(exp)
 
 	// Handle shutdown properly so nothing leaks.
 	defer func() { _ = tp.Shutdown(ctx) }()

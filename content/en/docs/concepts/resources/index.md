@@ -12,7 +12,7 @@ backend, resource attributes are grouped under the **Process** tab:
 
 ![A screenshot from Jaeger showing an example output of resource attributes associated to a trace](screenshot-jaeger-resources.png)
 
-A resource is added to the `TraceProvider` or `MetricProvider` when they are
+A resource is added to the `TracerProvider` or `MetricProvider` when they are
 created during initialization. This association cannot be changed later. After a
 resource is added, all spans and metrics produced from a `Tracer` or `Meter`
 from the provider will have the resource associated with them.
