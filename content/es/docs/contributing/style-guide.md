@@ -89,7 +89,7 @@ dicha sección, puede agregarla al principio de un archivo Markdown:
 
 ```markdown
 ---
-título: TítuloDeLaPágina
+title: TítuloDeLaPágina
 cSpell:ignore: <word>
 ---
 ```
@@ -100,7 +100,7 @@ entrada [registry](/ecosystem/registry/), podría verse así:
 
 ```yaml
 # cSpell:ignore <word>
-título: TítuloDeEntradaDelRegistro
+title: TítuloDeEntradaDelRegistro
 ```
 
 Las herramientas del sitio web normalizan los diccionarios específicos de la
