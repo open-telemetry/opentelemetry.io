@@ -10,7 +10,7 @@ description: Instrumentation for OpenTelemetry Ruby
 cSpell:ignore: SIGHUP
 ---
 
-{{% docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro.md %}}
 
 ## Setup
 

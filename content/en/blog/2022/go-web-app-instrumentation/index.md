@@ -183,7 +183,7 @@ Here’s what the setup looks like:
        semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
    )
 
-   func JaegerTraceProvider()(*sdktrace.TracerProvider, error) {
+   func JaegerTracerProvider()(*sdktrace.TracerProvider, error) {
        exp, err: = jaeger.New(jaeger.WithCollectorEndpoint(jaeger.WithEndpoint("http://localhost:14268/api/traces")))
        if err != nil {
            return nil, err
@@ -201,11 +201,11 @@ Here’s what the setup looks like:
    ```
 
 4. Go back to the main.go file and modify our code to use the
-   JaegerTraceProvider function we just created
+   JaegerTracerProvider function we just created
 
    ```go
    func main() {
-       tp, tpErr: = tracing.JaegerTraceProvider()
+       tp, tpErr: = tracing.JaegerTracerProvider()
        if tpErr != nil {
            log.Fatal(tpErr)
        }
@@ -322,7 +322,7 @@ Here’s what the setup looks like:
 
    func main() {
        //Export traces to Jaeger
-       tp, tpErr: = tracing.JaegerTraceProvider()
+       tp, tpErr: = tracing.JaegerTracerProvider()
        if tpErr != nil {
            log.Fatal(tpErr)
        }
