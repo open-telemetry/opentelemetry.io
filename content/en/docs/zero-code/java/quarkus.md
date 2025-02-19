@@ -34,7 +34,7 @@ if you are not running a native image application.
 To enable OpenTelemetry in your Quarkus application, add the
 `quarkus-opentelemetry` extension dependency to your project.
 
-{{< tabpane >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
+{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
 ```xml
 <dependency>
