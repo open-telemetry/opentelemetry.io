@@ -30,7 +30,7 @@ comunes.
 
 {{% /alert %}}
 
-## Lista de palabras de OpenTelemetry.io
+## Lista de palabras de OpenTelemetry.io {#opentelemetryio-word-list}
 
 Una lista de términos y palabras específicos de OpenTelemetry que se deben usar
 de manera uniforme en todo el sitio:
@@ -60,7 +60,7 @@ están escritos correctamente.
 
 {{% /alert %}}
 
-## Estándares de Markdown
+## Estándares de Markdown {#markdown-standards}
 
 Para hacer cumplir los estándares y la coherencia de los archivos Markdown,
 todos los archivos deben seguir ciertas reglas, impuestas por
@@ -74,7 +74,7 @@ estándar.
 Ejecute `npm run fix:markdown` para corregir problemas de formato relacionados
 con Markdown.
 
-## Revisión ortográfica
+## Revisión ortográfica {#spell-checking}
 
 Utilice [CSpell](https://github.com/streetsidesoftware/cspell) para asegurarse
 de que todo su texto esté escrito correctamente. Para obtener una lista de
@@ -109,14 +109,14 @@ duplicadas, borrando palabras en la lista de palabras global y ordenando las
 palabras. Para normalizar los diccionarios específicos de la página, ejecute
 `npm run fix:dict`.
 
-## Formato de archivo
+## Formato de archivo {#file-format}
 
 Para hacer cumplir un estándar determinado sobre cómo se estructuran los
 archivos, todos los archivos deben estar formateados por
 [prettier](https://prettier.io). Ejecute `npm run fix:format` antes de enviar un
 PR, o ejecutarlo después y enviar una confirmación adicional.
 
-## Nombres de archivos
+## Nombres de archivos {#file-names}
 
 Todos los nombres de archivo deben estar en
 [kebab case](https://en.wikipedia.org/wiki/Letter_case#Kebab_case). Ejecute
