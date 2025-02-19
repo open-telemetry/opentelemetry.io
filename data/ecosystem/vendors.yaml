@@ -306,6 +306,12 @@
   contact:
   oss: false
   commercial: true
+- name: Parseable
+  nativeOTLP: true
+  url: https://www.parseable.com/docs/server/opentelemetry
+  contact:
+  oss: true
+  commercial: true  
 - name: qryn
   nativeOTLP: true
   url: https://qryn.metrico.in/#/support?id=tempo-api
