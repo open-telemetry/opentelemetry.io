@@ -1,6 +1,6 @@
 ---
 title: Primeiros Passos
-description: Obtenha telemetria para seu aplicativo em menos de 5 minutos!
+description: Obtenha telemetria para sua aplicação em menos de 5 minutos!
 weight: 10
 # prettier-ignore
 cSpell:ignore: debugexporter diceroller distro maxlen randint rolldice rollspan venv
@@ -9,7 +9,7 @@ default_lang_commit: 43e2cb3b4d0dd513b436add73236503a8d592b39
 
 Esta página mostrará como começar a usar o OpenTelemetry em Python.
 
-Você aprenderá como instrumentar automaticamente um aplicativo simples, de forma
+Você aprenderá como instrumentar automaticamente uma aplicação simples, de forma
 que [rastros][], [métricas][], e [logs][] sejam emitidos para o console.
 
 ## Pré-requisitos {#prerequisites}
@@ -20,14 +20,14 @@ Certifique-se de ter o seguinte instalado localmente:
 
 ## Aplicação de Exemplo {#example-application}
 
-O exemplo a seguir usa um aplicativo básico
+O exemplo a seguir usa uma aplicação básica em
 [Flask](https://flask.palletsprojects.com/). Se você não estiver usando Flask,
-tudo bem — você pode usar OpenTelemetry Python com outros frameworks web também,
-como Django e FastAPI. Para uma lista completa de bibliotecas para frameworks
+tudo bem — você pode usar OpenTelemetry Python com outros _frameworks_ web também,
+como Django e FastAPI. Para uma lista completa de bibliotecas para _frameworks_
 suportados, consulte o
 [registro](/ecosystem/registry/?component=instrumentation&language=python).
 
-Para exemplos mais elaborados, veja
+Para exemplos mais elaborados, consulte
 [exemplos](/docs/languages/python/examples/).
 
 ## Instalação {#installation}
@@ -76,7 +76,7 @@ def roll():
     return randint(1, 6)
 ```
 
-Execute o aplicativo com o seguinte comando e acesse
+Execute a aplicação utilizando o comando abaixo e acesse
 <http://localhost:8080/rolldice> no seu navegador para garantir que está
 funcionando.
 
@@ -86,14 +86,13 @@ flask run -p 8080
 
 ## Instrumentação {#instrumentation}
 
-A instrumentação sem código gerará dados de telemetria para você. Existem várias
-opções que você pode seguir, cobertas em mais detalhes em
-[Instrumentação sem Código](/docs/zero-code/python/). Aqui usaremos o agente
+A instrumentação sem código gerará dados de telemetria em seu nome. Existem várias
+opções que você pode seguir, abordadas em mais detalhes em
+[Instrumentação sem código](/docs/zero-code/python/). Aqui usaremos o agente
 `opentelemetry-instrument`.
 
-Instale o pacote `opentelemetry-distro`, que contém a API, SDK do OpenTelemetry
-e também as ferramentas `opentelemetry-bootstrap` e `opentelemetry-instrument`
-que você usará a seguir.
+Instale o pacote `opentelemetry-distro`, que contém a API e SDK do OpenTelemetry, além das ferramentas `opentelemetry-bootstrap` e `opentelemetry-instrument`
+que serão utilizadas a seguir.
 
 ```shell
 pip install opentelemetry-distro
@@ -107,10 +106,10 @@ opentelemetry-bootstrap -a install
 
 Isso instalará a instrumentação do Flask.
 
-## Execute o aplicativo instrumentado {#run-the-instrumented-app}
+## Execute a aplicação instrumentada {#run-the-instrumented-app}
 
-Agora você pode executar seu aplicativo instrumentado com
-`opentelemetry-instrument` e fazer com que ele imprima no console por enquanto:
+Agora, você poderá executar a sua aplicação instrumentada com
+`opentelemetry-instrument` e fazer com que os dados sejam emitidos no console:
 
 ```shell
 export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
@@ -123,7 +122,7 @@ opentelemetry-instrument \
 ```
 
 Acesse <http://localhost:8080/rolldice> no seu navegador e recarregue a página
-algumas vezes. Depois de um tempo, você deverá ver os trechos impressos no
+algumas vezes. Depois de um tempo, você deverá ver os trechos exibidos no
 console, como o seguinte:
 
 <details>
@@ -190,13 +189,13 @@ console, como o seguinte:
 
 </details>
 
-O trecho gerado rastreia a duração de uma solicitação para a rota `/rolldice`.
+O trecho gerado rastreia o tempo de vida de uma requisição para a rota `/rolldice`.
 
 A linha de log emitida durante a solicitação contém o mesmo ID de rastro e ID de
 trecho e é exportada para o console via o exportador de logs.
 
-Envie mais algumas solicitações para o endpoint e em seguida, espere um pouco ou
-termine o aplicativo e você verá métricas na saída do console, como o seguinte:
+Envie mais algumas solicitações para esta rota e em seguida, espere um pouco ou
+pare a execução da aplicação e você verá métricas na saída do console, como o seguinte:
 
 <details>
 <summary>Ver exemplo de saída</summary>
@@ -238,7 +237,7 @@ termine o aplicativo e você verá métricas na saída do console, como o seguin
                 ],
                 "is_monotonic": false
               },
-              "description": "mede o número de solicitações HTTP simultâneas que estão atualmente em andamento",
+              "description": "mede o número de requisições HTTP simultâneas que estão atualmente em andamento",
               "name": "http.server.active_requests",
               "unit": "requests"
             },
@@ -269,7 +268,7 @@ termine o aplicativo e você verá métricas na saída do console, como o seguin
                   }
                 ]
               },
-              "description": "mede a duração da solicitação HTTP recebida",
+              "description": "mede a duração da requisição HTTP recebida",
               "name": "http.server.duration",
               "unit": "ms"
             }
@@ -292,15 +291,15 @@ termine o aplicativo e você verá métricas na saída do console, como o seguin
 ## Adicione instrumentação manual à instrumentação automática {#add-manual-instrumentation-to-automatic-instrumentation}
 
 A instrumentação automática captura telemetria nas bordas dos seus sistemas,
-como solicitações HTTP de entrada e saída, mas não captura o que está
-acontecendo no seu aplicativo. Para isso, você precisará escrever alguma
+como requisições HTTP de entrada e saída, mas não captura o que está
+acontecendo na sua aplicação. Para isso, você precisará escrever alguma
 [instrumentação manual](../instrumentation/). Aqui está como você pode
 facilmente vincular a instrumentação manual com a instrumentação automática.
 
 ### Rastros {#traces}
 
 Primeiro, modifique `app.py` para incluir código que inicializa um rastreador e
-utiliza para criar um rastro que é filho do que é gerado automaticamente:
+o utiliza para criar um rastro que é filho do que é gerado automaticamente:
 
 ```python
 from random import randint
@@ -325,7 +324,7 @@ def roll():
         return res
 ```
 
-Agora execute o aplicativo novamente:
+Agora, execute a aplicação novamente:
 
 ```shell
 export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
@@ -337,7 +336,7 @@ opentelemetry-instrument \
     flask run -p 8080
 ```
 
-Quando você enviar uma solicitação ao servidor, verá dois trechos no rastro
+Quando você enviar uma requisição ao servidor, verá dois trechos no rastro
 emitido para o console, chamado `roll`, que registra o seu pai como o criado
 automaticamente:
 
@@ -430,7 +429,7 @@ para criar um instrumento contador que conta o número de jogadas para cada valo
 de jogada possível:
 
 ```python
-# Há mais imports necessários agora
+# Estas são as declarações de _imports_ necessários 
 from opentelemetry import trace
 from opentelemetry import metrics
 
@@ -472,7 +471,7 @@ def roll():
     return randint(1, 6)
 ```
 
-Agora execute o aplicativo novamente:
+Agora, execute a aplicação novamente:
 
 ```shell
 export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
@@ -484,9 +483,8 @@ opentelemetry-instrument \
     flask run -p 8080
 ```
 
-Quando você enviar uma solicitação para o servidor, verá a métrica do contador
-de jogadas emitida para o console, com contagens separadas para cada valor de
-jogada:
+Quando você enviar uma requisição para o servidor, verá a métrica do contador
+de jogadas emitida para o console, com contagens de valor separadas para cada jogada:
 
 <details>
 <summary>Ver exemplo de saída</summary>
@@ -515,7 +513,7 @@ jogada:
           "metrics": [
             {
               "name": "http.server.active_requests",
-              "description": "mede o número de solicitações HTTP simultâneas que estão atualmente em andamento",
+              "description": "mede o número de requisições HTTP simultâneas que estão atualmente em andamento",
               "unit": "requests",
               "data": {
                 "data_points": [
@@ -538,7 +536,7 @@ jogada:
             },
             {
               "name": "http.server.duration",
-              "description": "mede a duração da solicitação HTTP recebida",
+              "description": "mede a duração da requisição HTTP recebida",
               "unit": "ms",
               "data": {
                 "data_points": [
@@ -643,23 +641,22 @@ jogada:
 
 </details>
 
-## Envie telemetria para um Coletor OpenTelemetry {#send-telemetry-to-an-opentelemetry-collector}
+## Envie telemetria para o OpenTelemetry Collector {#send-telemetry-to-an-opentelemetry-collector}
 
 O [OpenTelemetry Collector](/docs/collector/) é um componente crítico da maioria
-das implantações em produção. Alguns exemplos de quando é benéfico usar um
-coletor:
+das implantações em produção. Alguns exemplos de quando é benéfico utilizar um Collector:
 
-- Um único ponto de telemetria compartilhado por vários serviços, para reduzir a
+- Um único coletor de telemetria compartilhado por vários serviços, para reduzir a
   sobrecarga de troca de exportadores
-- Agregando rastros entre vários serviços, executados em vários hosts
-- Um local central para processar rastros antes de exportá-los para um backend
+- Agregando rastros entre vários serviços, executados em várias instâncias
+- Um local central para processar rastros antes de exportá-los para um _backend_
 
 A menos que você tenha apenas um único serviço ou esteja experimentando, você
-desejará usar um coletor em implantações de produção.
+desejará usar um Collector em implantações de produção.
 
-### Configure e execute um coletor local {#configure-and-run-a-local-collector}
+### Configure e execute um Collector local {#configure-and-run-a-local-collector}
 
-Primeiro, salve o seguinte código de configuração do coletor em um arquivo no
+Primeiro, salve o seguinte código de configuração do Collector em um arquivo no
 diretório `/tmp/`:
 
 ```yaml
@@ -693,7 +690,7 @@ service:
       processors: [batch]
 ```
 
-Em seguida, execute o comando docker para adquirir e executar o coletor com base
+Em seguida, execute o comando docker para adquirir e executar o Collector com base
 nesta configuração:
 
 ```shell
@@ -703,10 +700,10 @@ docker run -p 4317:4317 \
     --config=/etc/otel-collector-config.yaml
 ```
 
-Agora você terá uma instância do coletor em execução localmente, ouvindo na
+Agora, você terá uma instância do Collector em execução localmente, ouvindo na
 porta 4317.
 
-### Modifique o comando para exportar trechos e métricas via OTLP {#modify-the-command-to-export- spans-and-metrics-via-otlp}
+### Modifique o comando para exportar trechos e métricas via OTLP {#modify-the-command-to-export-spans-and-metrics-via-otlp}
 
 O próximo passo é modificar o comando para enviar trechos e métricas para o
 coletor via OTLP em vez do console.
@@ -720,9 +717,9 @@ pip install opentelemetry-exporter-otlp
 O agente `opentelemetry-instrument` detectará o pacote que você acabou de
 instalar e usará a exportação OTLP na próxima vez que for executado.
 
-### Execute o aplicativo {#run-the-application}
+### Execute a aplicação {#run-the-application}
 
-Execute o aplicativo como antes, mas não exporte para o console:
+Execute a aplicação como antes, mas não exporte para o console:
 
 ```shell
 export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
@@ -730,10 +727,10 @@ opentelemetry-instrument --logs_exporter otlp flask run -p 8080
 ```
 
 Por padrão, `opentelemetry-instrument` exporta rastros e métricas via OTLP/gRPC
-e os enviará para `localhost:4317`, que é onde o coletor está ouvindo.
+e os enviará para `localhost:4317`, endereço onde o Collector está ouvindo.
 
 Quando você acessar a rota `/rolldice` agora, verá a saída no processo do
-coletor em vez do processo do flask, que deve ser algo assim:
+Collector em vez do processo do Flask, que deve ser algo assim:
 
 <details>
 <summary>Ver exemplo de saída</summary>
@@ -817,7 +814,7 @@ Value: 1
 ## Próximos passos {#next-steps}
 
 Existem várias opções disponíveis para instrumentação automática em Python. Veja
-[Instrumentação sem Código](/docs/zero-code/python/) para aprender sobre e como
+[Instrumentação sem código](/docs/zero-code/python/) para aprender sobre e como
 configurá-las.
 
 Há muito mais na instrumentação manual do que apenas criar um trecho filho. Para
@@ -826,11 +823,11 @@ partes da API do OpenTelemetry que você pode usar, veja
 [Instrumentação Manual](../instrumentation/).
 
 Existem várias opções para exportar seus dados de telemetria com OpenTelemetry.
-Para aprender como exportar seus dados para um backend preferido, veja
+Para aprender como exportar seus dados para um _backend_ preferido, veja
 [Exporters](../exporters/).
 
-Se você gostaria de explorar um exemplo mais complexo, dê uma olhada no
-[Na demonstração do OpenTelemetry](/docs/demo/), que inclui o
+Se você gostaria de explorar um exemplo mais complexo, dê uma olhada na
+[demonstração do OpenTelemetry](/docs/demo/), que inclui o
 [Serviço de Recomendação](/docs/demo/services/recommendation/) baseado em Python
 e o [Gerador de Carga](/docs/demo/services/load-generator/).
 
