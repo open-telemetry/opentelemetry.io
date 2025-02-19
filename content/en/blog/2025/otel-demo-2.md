@@ -1,7 +1,7 @@
 ---
 title: Announcing the OpenTelemetry Demo 2.0
 linkTitle: OTel Demo 2.0
-date: 2025-02-19
+date: 2025-02-21
 author: >
   [Juliano Costa](https://github.com/julianocosta89) (Datadog)
 sig: OpenTelemetry Demo
