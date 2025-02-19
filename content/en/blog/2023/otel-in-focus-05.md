@@ -11,7 +11,7 @@ the sky is blue, and it's time to run down the latest updates from the
 OpenTelemetry project!
 
 Are you a maintainer with something you’d like featured here? Get in touch with
-me [via email](mailto:austin+otel@ap2.io), or on the
+[Austin Parker via email](mailto:austin+otel@ap2.io), or on the
 [CNCF Slack #otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6)
 channel.
 
