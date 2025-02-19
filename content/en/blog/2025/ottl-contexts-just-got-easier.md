@@ -3,7 +3,6 @@ title: OTTL contexts just got easier with context inference
 linkTitle: OTTL contexts just got easier
 date: 2025-02-20
 author: '[Edmo Vamerlatti Costa](https://github.com/edmocosta) (Elastic)'
-draft: true # TODO: remove this line once your post is ready to be published
 issue: 6289
 sig: Collector SIG
 cSpell:ignore: OTTL Vamerlatti
