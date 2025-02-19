@@ -1407,6 +1407,13 @@ approvers:
       - cpp-contrib-approvers
     html_url: https://github.com/DebajitDas
     avatar_url: https://avatars.githubusercontent.com/u/85024550?v=4
+  - name: dehaansa
+    teams:
+      - collector-contrib-approvers
+      - collector-contrib-triagers
+      - java-contrib-triagers
+    html_url: https://github.com/dehaansa
+    avatar_url: https://avatars.githubusercontent.com/u/563558?v=4
   - name: dpauls
     teams:
       - semconv-messaging-approvers
@@ -1686,6 +1693,11 @@ approvers:
       - helm-triagers
     html_url: https://github.com/povilasv
     avatar_url: https://avatars.githubusercontent.com/u/22289110?v=4
+  - name: pragmaticivan
+    teams:
+      - lambda-extension-approvers
+    html_url: https://github.com/pragmaticivan
+    avatar_url: https://avatars.githubusercontent.com/u/301291?v=4
   - name: RassK
     teams:
       - dotnet-instrumentation-approvers
@@ -1883,11 +1895,6 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/d4nyll
     avatar_url: https://avatars.githubusercontent.com/u/9997953?v=4
-  - name: dehaansa
-    teams:
-      - java-contrib-triagers
-    html_url: https://github.com/dehaansa
-    avatar_url: https://avatars.githubusercontent.com/u/563558?v=4
   - name: facostaembrace
     teams:
       - javascript-contrib-triagers
@@ -1979,6 +1986,11 @@ triagers:
       - java-contrib-triagers
     html_url: https://github.com/oertl
     avatar_url: https://avatars.githubusercontent.com/u/9392465?v=4
+  - name: onurtemizkan
+    teams:
+      - javascript-contrib-triagers
+    html_url: https://github.com/onurtemizkan
+    avatar_url: https://avatars.githubusercontent.com/u/4020638?v=4
   - name: PeterF778
     teams:
       - java-contrib-triagers
@@ -1989,6 +2001,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/punya
     avatar_url: https://avatars.githubusercontent.com/u/277514?v=4
+  - name: raphael-theriault-swi
+    teams:
+      - javascript-contrib-triagers
+    html_url: https://github.com/raphael-theriault-swi
+    avatar_url: https://avatars.githubusercontent.com/u/113933910?v=4
   - name: robsunday
     teams:
       - java-contrib-triagers
@@ -2179,6 +2196,9 @@ members:
   - name: gregkalapos
     html_url: https://github.com/gregkalapos
     avatar_url: https://avatars.githubusercontent.com/u/1091853?v=4
+  - name: gruebel
+    html_url: https://github.com/gruebel
+    avatar_url: https://avatars.githubusercontent.com/u/33207684?v=4
   - name: gyliu513
     html_url: https://github.com/gyliu513
     avatar_url: https://avatars.githubusercontent.com/u/4461983?v=4
@@ -2359,18 +2379,15 @@ members:
   - name: ppittle
     html_url: https://github.com/ppittle
     avatar_url: https://avatars.githubusercontent.com/u/1190907?v=4
-  - name: pragmaticivan
-    html_url: https://github.com/pragmaticivan
-    avatar_url: https://avatars.githubusercontent.com/u/301291?v=4
-  - name: raphael-theriault-swi
-    html_url: https://github.com/raphael-theriault-swi
-    avatar_url: https://avatars.githubusercontent.com/u/113933910?v=4
   - name: rauno56
     html_url: https://github.com/rauno56
     avatar_url: https://avatars.githubusercontent.com/u/1334536?v=4
   - name: RichiH
     html_url: https://github.com/RichiH
     avatar_url: https://avatars.githubusercontent.com/u/754723?v=4
+  - name: rlankfo
+    html_url: https://github.com/rlankfo
+    avatar_url: https://avatars.githubusercontent.com/u/364801?v=4
   - name: rochdev
     html_url: https://github.com/rochdev
     avatar_url: https://avatars.githubusercontent.com/u/1596303?v=4

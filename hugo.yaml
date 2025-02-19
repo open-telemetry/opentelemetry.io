@@ -1,4 +1,4 @@
-# cSpell:ignore docsy goldmark linkify netlify wordmark noopener
+# cSpell:ignore bluesky docsy goldmark linkify netlify wordmark noopener
 baseURL: https://opentelemetry.io
 title: OpenTelemetry
 disableKinds: [taxonomy]
@@ -28,19 +28,15 @@ languages:
     languageName: 日本語 (Japanese)
     params:
       description: OpenTelemetryプロジェクト公式サイト
+      notes:
+        docker-compose-v2: |
+          `docker-compose` は非推奨です. 詳細は、
+          [Migrate to Compose V2](https://docs.docker.com/compose/migrate/) を確認してください。
   pt: # cSpell:ignore Português Projeto
     languageName: Português
     languageCode: pt-BR
     params:
       description: Site do Projeto OpenTelemetry
-      notes:
-        browser-instrumentation: |
-          A instrumentação do cliente para o navegador é **experimental** e,
-          em grande parte, **não está especificada**. Caso possua interesse em
-          auxiliar, entre em contato com o [SIG de Instrumentação do
-          Cliente][sig].
-
-          [sig]: https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w
   zh:
     languageName: 中文 (Chinese)
     languageCode: zh-cn
@@ -231,12 +227,6 @@ params:
     docker-compose-v2: |
       `docker-compose` is deprecated. For details, see
       [Migrate to Compose V2](https://docs.docker.com/compose/migrate/).
-    browser-instrumentation: |
-      Client instrumentation for the browser is **experimental** and mostly **unspecified**.
-      If you are interested in helping out, get in touch with the
-      [Client Instrumentation SIG][sig].
-
-      [sig]: https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w
 
 security:
   funcs: # cspell:disable-line
@@ -331,6 +321,9 @@ module:
       target: content
       lang: es
     # fallback pages
+    - source: content/en/_includes
+      target: content/_includes
+      lang: es
     - source: content/en/announcements
       target: content/announcements
       lang: es
@@ -344,6 +337,9 @@ module:
       target: content
       lang: fr
     # fallback pages
+    - source: content/en/_includes
+      target: content/_includes
+      lang: fr
     - source: content/en/announcements
       target: content/announcements
       lang: fr
@@ -351,12 +347,18 @@ module:
       source: content/en/docs
       target: content/docs
       lang: fr
+    # - source: content/en/ecosystem
+    #   target: content/ecosystem
+    #   lang: fr
 
     ## ja
     - source: content/ja
       target: content
       lang: ja
     # fallback pages
+    - source: content/en/_includes
+      target: content/_includes
+      lang: ja
     - source: content/en/announcements
       target: content/announcements
       lang: ja
@@ -370,6 +372,9 @@ module:
       target: content
       lang: zh
     # fallback pages
+    - source: content/en/_includes
+      target: content/_includes
+      lang: zh
     - source: content/en/announcements
       target: content/announcements
       lang: zh
@@ -383,12 +388,18 @@ module:
       target: content
       lang: pt
     # fallback pages
+    - source: content/en/_includes
+      target: content/_includes
+      lang: pt
     - source: content/en/announcements
       target: content/announcements
       lang: pt
     - excludeFiles: specs/*
       source: content/en/docs
       target: content/docs
+      lang: pt
+    - source: content/en/ecosystem
+      target: content/ecosystem
       lang: pt
 
     ## static
