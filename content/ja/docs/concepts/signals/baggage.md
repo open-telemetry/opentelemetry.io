@@ -2,13 +2,13 @@
 title: バゲッジ
 weight: 4
 description: シグナル間でやり取りされるコンテキスト情報
-default_lang_commit: 9b5e318
+default_lang_commit: 458f7c58d64f19b075332989bcbf5bff1a343b82
 ---
 
 OpenTelemetryでは、バゲッジ（Baggage）はコンテキストの隣にあるコンテキスト情報です。
-バゲッジはキーバリューストアなので、[コンテキスト](/docs/concepts/context-propagation/#context)と一緒に好きなデータを[伝搬](/docs/concepts/context-propagation/#propagation)できます。
+バゲッジはキーバリューストアなので、[コンテキスト](../../context-propagation/#context)と一緒に好きなデータを[伝搬](../../context-propagation/#propagation)できます。
 
-バゲッジは、サービスやプロセス間でデータを受け渡し、それらのサービス内の[トレース](/docs/concepts/signals/traces/)、[メトリクス](/docs/concepts/signals/metrics/)、[ログ](/docs/concepts/signals/logs/)に追加できるようにします。
+バゲッジは、サービスやプロセス間でデータを受け渡し、それらのサービス内の[トレース](../traces/)、[メトリクス](../metrics/)、[ログ](../logs/)に追加できるようにします。
 
 ## 例 {#example}
 
@@ -19,7 +19,7 @@ OpenTelemetryでは、バゲッジ（Baggage）はコンテキストの隣にあ
 トレースは複数のサービスにまたがる可能性があるため、 `clientId` を多くのサービスにコピーすることなくデータを伝播する方法が必要です。
 `clientId` をコードベースのあちこちにコピーすることなく、そのデータを伝播する方法が必要です。
 
-[コンテキスト伝搬](/docs/concepts/signals/traces/#context-propagation)を使用して、これらのサービス間でバゲッジを渡すことで、 `clientId` を追加のスパン、メトリクス、またはログに追加できます。
+[コンテキスト伝搬](../traces/#context-propagation)を使用して、これらのサービス間でバゲッジを渡すことで、 `clientId` を追加のスパン、メトリクス、またはログに追加できます。
 さらに、計装は自動的にバゲッジを伝搬してくれます。
 
 ![OTel Baggage](../otel-baggage.svg)
@@ -50,7 +50,7 @@ OpenTelemetryでは、バゲッジ（Baggage）はコンテキストの隣にあ
 
 バゲッジの要素を各テレメトリーの属性に追加するには、明示的にバゲッジからデータを読み取り、スパン、メトリクス、またはログに属性として追加する必要があります。
 
-バゲッジの一般的な使用例は、トレース全体にわたって[スパン属性](/docs/concepts/signals/traces/#attributes)にデータを追加することなので、いくつかの言語には、スパン作成時にバゲッジからデータを属性として追加するバゲッジスパンプロセッサがあります。
+バゲッジの一般的な使用例は、トレース全体にわたって[スパン属性](../traces/#attributes)にデータを追加することなので、いくつかの言語には、スパン作成時にバゲッジからデータを属性として追加するバゲッジスパンプロセッサがあります。
 
 > 詳細は[バゲッジ仕様][baggage specification]を参照のこと。
 
