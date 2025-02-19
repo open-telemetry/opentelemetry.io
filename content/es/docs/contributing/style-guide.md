@@ -5,7 +5,7 @@ description:
 linkTitle: Guía de estilo de documentación
 weight: 20
 default_lang_commit: 99f0ae5760038d51f9e9eb376bb428a2caca8167
-cSpell:ignore: open-telemetry postgre style-guide textlintrc
+cSpell:ignore: open-telemetry opentelemetryio postgre style-guide textlintrc
 ---
 
 Aún no tenemos una guía de estilo oficial, pero el estilo actual de la
