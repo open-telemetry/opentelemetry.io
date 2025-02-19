@@ -13,21 +13,21 @@ OpenTelemetryコレクターを通じてデータフローを監視すること�
 
 ![OpenTelemetry Collector Data Flow Overview](otelcol-data-flow-overview.png)
 
-## 入力と出力のメトリクス
+## イングレスとエグレスのメトリクス
 
-以下の図に示されているメトリクスは、入力と出力の両方のデータフローを監視するために使用されています。これらのメトリクスはotelcolプロセスによって生成され、ポート8888でエクスポートされ、その後Prometheusによってスクレイピングされます。これらのメトリクスに関連するネームスペースは "otelcol" であり、ジョブ名は `otel` とラベル付けされています。
+以下の図に示されているメトリクスは、イングレスとエグレスの両方のデータフローを監視するために使用されています。これらのメトリクスはotelcolプロセスによって生成され、ポート8888でエクスポートされ、その後Prometheusによってスクレイピングされます。これらのメトリクスに関連するネームスペースは "otelcol" であり、ジョブ名は `otel` とラベル付けされています。
 
 ![OpenTelemetry Collector Ingress and Egress Metrics](otelcol-data-flow-metrics.png)
 
 ラベルは、特定のメトリクスセット（エクスポーター、レシーバー、またはジョブなど）を識別するための有用なツールとして機能し、ネームスペース全体の中からメトリクスセットを区別できるようにします。重要な点として、memory_delimiterプロセッサーで定義されているメモリ制限を超えた場合にのみ、拒否された(refused)メトリクスに遭遇することになります。
 
-### トレースパイプラインの入力に関するメトリクス
+### トレースパイプラインのイングレスに関するメトリクス
 
 - `otelcol_receiver_accepted_spans`
 - `otelcol_receiver_refused_spans`
 - `by (receiver,transport)`
 
-### メトリクスパイプラインの入力に関するメトリクス
+### メトリクスパイプラインのイングレスに関するメトリクス
 
 - `otelcol_receiver_accepted_metric_points`
 - `otelcol_receiver_refused_metric_points`
@@ -39,13 +39,13 @@ OpenTelemetryコレクターを通じてデータフローを監視すること�
 
 - `otelcol_processor_batch_batch_send_size_sum`
 
-### トレースパイプラインの出力に関するメトリクス
+### トレースパイプラインのエグレスに関するメトリクス
 
 - `otelcol_exporter_sent_spans`
 - `otelcol_exporter_send_failed_spans`
 - `by (exporter)`
 
-### メトリクスパイプラインの出力に関するメトリクス
+### メトリクスパイプラインのエグレスに関するメトリクス
 
 - `otelcol_exporter_sent_metric_points`
 - `otelcol_exporter_send_failed_metric_points`
