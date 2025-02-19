@@ -136,7 +136,7 @@
     <span role="status">Loading results…</span>
   </div>
   <ul class="list-unstyled" id="search-results"></ul>
-  <ul class="list-unstyled" id="default-body">
+  <ul class="list-unstyled d-none" id="default-body">
     {{ range $key, $value := $registry -}}
       {{ $value = merge $value (dict "_key" $key) -}}
       {{ partial "ecosystem/registry/entry"
