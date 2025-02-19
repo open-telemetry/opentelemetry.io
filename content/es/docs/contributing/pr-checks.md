@@ -4,7 +4,7 @@ description:
   Aprenda cómo hacer que su PR pase con éxito todas las comprobaciones
 weight: 40
 default_lang_commit: 389e023192e051a3a835bfc6a71089c98af3b8a8
-cSpell:ignore: REFCACHE cspellignore
+cSpell:ignore: REFCACHE
 ---
 
 Cuando creas a un
