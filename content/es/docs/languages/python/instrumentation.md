@@ -9,7 +9,7 @@ cSpell:ignore: millis ottrace textmap
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% es/docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro.md %}}
 
 ## Configuración
 

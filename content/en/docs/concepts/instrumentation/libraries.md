@@ -75,7 +75,7 @@ Follow the semantic conventions when setting span attributes.
 
 Some libraries are thin clients wrapping network calls. Chances are that
 OpenTelemetry has an instrumentation library for the underlying RPC client.
-Check out the [registry](/ecosystem/registry/)) to find existing libraries. If a
+Check out the [registry](/ecosystem/registry/) to find existing libraries. If a
 library exists, instrumenting the wrapper library might not be necessary.
 
 As a general guideline, only instrument your library at its own level. Don't

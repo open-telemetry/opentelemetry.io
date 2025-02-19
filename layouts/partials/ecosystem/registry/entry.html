@@ -1,4 +1,5 @@
 {{ $languageNames := .languageNames -}}
+{{ $registryUrl := .registryUrl -}}
 
 {{ with .value -}}
     {{
@@ -116,18 +117,18 @@
             <span class="badge rounded-pill text-bg-info"><i class="fa-regular fa-star"></i> new</span>
             {{ end -}}
             {{ if $isNative -}}
-            <a href="/ecosystem/registry?flag=native" class="badge rounded-pill text-bg-success text-white" title="Click to filter by native flag">
+            <a href="{{ $registryUrl }}/?flag=native" class="badge rounded-pill text-bg-success text-white" title="Click to filter by native flag">
             <i class="fa-solid fa-puzzle-piece"></i> native</a>
             {{ end -}}
             {{ if $isFirstParty -}}
-            <a href="/ecosystem/registry?flag=first_party" class="badge rounded-pill text-bg-success text-white" title="Click to filter by first party flag">
+            <a href="{{ $registryUrl }}/?flag=first_party" class="badge rounded-pill text-bg-success text-white" title="Click to filter by first party flag">
             <i class="fa-solid fa-heart"></i> first party integration</a>
             {{ end -}}
             {{ if $usedInDemo -}}
             <span class="badge rounded-pill text-bg-secondary text-white" title="This package is used in the OpenTelemetry Demo!"><i class="fa-solid fa-shapes"></i> OTel Demo</span>
             {{ end -}}
             {{ if $deprecated -}}
-            <a href="/ecosystem/registry?flag=deprecated" class="badge rounded-pill text-bg-danger text-white" title="Click to filter by deprecated flag">
+            <a href="{{ $registryUrl }}/?flag=deprecated" class="badge rounded-pill text-bg-danger text-white" title="Click to filter by deprecated flag">
             <i class="fa-solid fa-ban"></i> deprecated</a>
             {{ end -}}
             {{ if .cncfProjectLevel -}}
@@ -171,7 +172,7 @@
                         <div>
                             {{ range .tags }}
                                 {{ $tag := . }} <!-- Store the tag in a variable -->
-                                <a href="/ecosystem/registry/?s={{ $tag | urlize }}" class="badge bg-light me-1">{{ $tag }}</a>
+                                <a href="{{ $registryUrl }}/?s={{ $tag | urlize }}" class="badge bg-light me-1">{{ $tag }}</a>
                             {{ end }}
                         </div>
                     {{ end }}

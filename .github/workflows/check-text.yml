@@ -46,3 +46,4 @@ jobs:
           cache-dependency-path: tmp/package-ci.json
       - run: npm install --ignore-scripts --omit=optional
       - run: npm run check:markdown
+      - run: npm run check:markdown2

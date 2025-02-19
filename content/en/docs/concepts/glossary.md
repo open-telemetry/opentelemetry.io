@@ -116,8 +116,9 @@ some customizations. See [more][distribution].
 
 ### Event
 
-Something that happened where representation depends on the
-[Data source](#data-source). For example, [Spans](#span).
+An Event is a [Log Record](#log-record) with an event name and a well-known
+structure. For example, browser events in OpenTelemetry follow a particular
+naming convention and carry particular data in a common structure.
 
 ### Exporter
 
@@ -180,9 +181,9 @@ qualifiers, for example, `Log record`. See [more][log]
 
 ### Log record
 
-A recording of an [Event](#event). Typically, the record includes a timestamp
-indicating when the [Event](#event) happened as well as other data that
-describes what happened, where it happened, and so on. See [more][log record].
+A recording of data with a timestamp and a severity. May also have a
+[Trace ID](#trace) and [Span ID](#span) when correlated with a trace. See
+[more][log record].
 
 ### Metadata
 

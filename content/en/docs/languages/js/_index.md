@@ -10,8 +10,7 @@ weight: 20
 
 {{% docs/languages/index-intro js /%}}
 
-{{% alert title="Warning" color="warning" %}}
-{{% param notes.browser-instrumentation %}} {{% /alert %}}
+{{% include "./_browser-instrumentation-warning.md" %}}
 
 ## Version Support
 

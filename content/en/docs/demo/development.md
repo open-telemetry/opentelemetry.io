@@ -22,7 +22,7 @@ receive hints from IDEs such as IntelliJ or VS Code. It may be necessary to run
 
 ### .NET
 
-- .NET 6.0+
+- .NET 8.0+
 
 ### C++
 
