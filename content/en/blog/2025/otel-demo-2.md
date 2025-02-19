@@ -1,7 +1,7 @@
 ---
 title: Announcing the OpenTelemetry Demo 2.0
 linkTitle: OTel Demo 2.0
-date: 2025-02-17
+date: 2025-02-19
 author: >
   [Juliano Costa](https://github.com/julianocosta89) (Datadog)
 sig: OpenTelemetry Demo
@@ -31,6 +31,7 @@ from `ghcr.io` plus 433,000 times from `hub.docker`).
 The OpenTelemetry Demo includes the following CNCF projects:
 
 - OpenTelemetry (of course)
+- Envoy
 - OpenFeature/Flagd
 - Jaeger
 - Prometheus
