@@ -23,13 +23,13 @@ que disponibiliza um produto de código aberto para seus clientes.
 ## Adicionando sua organização {#how-to-add}
 
 Para que sua organização seja listada, [envie um PR] com um a entrada adicionada
-à [lista de fornecedores]. A entrada deve incluir o seguinte:
+à [lista de fornecedores]. A entrada deve incluir:
 
 - Link para a documentação que detalha como sua solução consome o OpenTelemetry
   nativamente via [OTLP](/docs/specs/otlp).
 - Link para sua distribuição, se aplicável.
 - Link que comprove que sua solução é de código aberto, se aplicável. Uma
-  distribuição de código aberto na2o qualifica sua solução para ser marcada como
+  distribuição de código aberto não qualifica sua solução para ser marcada como
   "código aberto".
 - Usuário do GitHub ou e-mail como ponto de contato, para que possamos entrar em
   contato caso tenhamos dúvidas.
