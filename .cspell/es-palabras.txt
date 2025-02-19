@@ -16,3 +16,4 @@ monitoreo
 multilenguaje
 redireccionar
 prerrellenada
+cspellignore
