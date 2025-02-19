@@ -33,16 +33,16 @@ comprobaciones y cómo puede recuperarse de un estado fallido.
 
 {{% /alert %}}
 
-## Easy CLA
+## Easy CLA {#easy-cla}
 
 Esta comprobación falla si no has [firmado el CLA](../prerequisites/#cla).
 
-## Despliegue Netlify
+## Despliegue Netlify {#netlify-deployment}
 
 Si la compilación [Netlify](https://www.netlify.com/) falla, selecciona
 **Details** para mas informaciones.
 
-## Comprobaciones de estilo
+## Comprobaciones de estilo {#style-checks}
 
 Para asegurarnos de que las contribuciones sigan nuestra
 [guía de estilo](../style-guide/) hemos implementado un conjunto de
@@ -52,7 +52,7 @@ encuentran algún problema.
 La siguiente lista describe las comprobaciones actuales y lo que puede hacer
 para corregir errores relacionados:
 
-### Linter de TEXTO
+### Linter de TEXTO {#text-linter}
 
 Esta comprobación verifica que
 [los términos y palabras específicos de OpenTelemetry se usan de manera uniforme en todo el sitio](../style-guide/#opentelemetryio-word-list).
@@ -64,7 +64,7 @@ verificación se vuelva verde. Como alternativa, puede ejecutar
 problemas. Ejecute `npm run check:text` nuevamente y corrige manualmente los
 problemas restantes.
 
-### Linter de MARKDOWN
+### Linter de MARKDOWN {#markdown-linter}
 
 Esta comprobación verifica que
 [se apliquen los estándares y la coherencia para los archivos Markdown](../style-guide/#markdown-standards).
@@ -73,12 +73,12 @@ Si se encuentran problemas, ejecute `npm:run format` para corregir la mayoría d
 los problemas. Para problemas más complejos, ejecute `npm run check:markdown` y
 aplique los cambios sugeridos.
 
-### Verificación de ORTOGRAFÍA
+### Verificación de ORTOGRAFÍA {#spelling-check}
 
 Esta verificación comprueba que
 [todas las palabras estén escritas correctamente](../style-guide/#spell-checking).
 
-### Comprobación CSPELL:IGNORE
+### Comprobación CSPELL:IGNORE {#cspellignore-check}
 
 Esta verificación comprobará que todas las palabras en su lista de ignorados de
 cSpell estén normalizadas.
@@ -86,7 +86,7 @@ cSpell estén normalizadas.
 Si esta verificación falla, ejecute `npm run fix:dict` localmente y envíe los
 cambios en una nueva confirmación.
 
-### Comprobación FILENAME
+### Comprobación FILENAME {#filename-check}
 
 Esta verificación comprueba que todos
 [los archivos estén formateados por prettier](../style-guide/#file-format).
@@ -94,7 +94,7 @@ Esta verificación comprueba que todos
 Si esta verificación falla, ejecute `npm fix:format` localmente y envíe los
 cambios en una nueva confirmación.
 
-### FORMATO DE ARCHIVO
+### FORMATO DE ARCHIVO {#file-format}
 
 Esta verificación comprueba que todos
 [los nombres de archivo estén en mayúsculas y minúsculas](../style-guide/#file-names).
@@ -102,7 +102,7 @@ Esta verificación comprueba que todos
 Si esta comprobación falla, ejecute `npm fix:filenames` localmente y envíe los
 cambios en una nueva confirmación.
 
-### ¿COMPILACIÓN y VERIFICACIÓN DE ENLACES / actualizaciones DE REFCACHE?
+### ¿COMPILACIÓN y VERIFICACIÓN DE ENLACES / actualizaciones DE REFCACHE? {#build-and-check-links--refcache-updates}
 
 Esta comprobación verifica que todos los enlaces que sus confirmaciones están
 introduciendo sean funcionales.
@@ -111,7 +111,7 @@ Ejecute `npm run check:links` para verificarlos localmente. Esto también
 actualiza el caché de referencia, o `REFCACHE`. Envíe cualquier cambio a
 `REFCACHE` en una nueva confirmación.
 
-### ¿ADVERTENCIAS en el registro de compilación?
+### ¿ADVERTENCIAS en el registro de compilación? {#warnings-in-build-log}
 
 Si esta comprobación falla, revise el registro de compilación para ver si hay
 otros problemas potenciales. Pida ayuda a los mantenedores si no está seguro de
