@@ -169,7 +169,7 @@ service:
         - batch:
             exporter:
               otlp:
-                protocol: grpc/protobuf
+                protocol: grpc
                 endpoint: https://backend:4317
 ```
 
