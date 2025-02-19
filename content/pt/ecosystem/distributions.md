@@ -16,7 +16,7 @@ obrigatório utilizar distribuições para utilizar os componentes do
 OpenTelemetry, embora elas possam facilitar o uso em determinadas
 circunstâncias, como requisitos específicos de fornecedores.
 
-A lista a seguir contém um exemplo de distribuições do OpenTelemetry e seus
+A lista a seguir contém uma amostra de distribuições do OpenTelemetry e seus
 componentes personalizados.
 
 {{% alert title="Nota" color="warning" %}} O OpenTelemetry **não valida nem
@@ -28,7 +28,7 @@ fornecida como uma conveniência para a comunidade. {{% /alert %}}
 ## Adicionando sua distribuição {#how-to-add}
 
 Para que sua distribuição seja listada, [envie um PR] com uma entrada adicionada
-à [lista de distribuições]. A entrada deve incluir o seguinte:
+à [lista de distribuições]. A entrada deve incluir:
 
 - Link para a página principal da sua distribuição
 - Link para a documentação que explica como utilizar a distribuição
