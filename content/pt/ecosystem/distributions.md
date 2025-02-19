@@ -52,7 +52,7 @@ Para que sua distribuição seja listada, [envie um PR] com uma entrada adiciona
 
 [envie um PR]: /docs/contributing/pull-requests/
 
-{{% ecosystem/keep-up-to-date distribution %}}
+{{% include keep-up-to-date.md distribution %}}
 
 [lista de distribuições]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/distributions.yaml

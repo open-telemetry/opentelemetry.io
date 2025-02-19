@@ -47,7 +47,7 @@ meio do OpenTelemetry, consulte [Integrações](/ecosystem/integrations/).
 
 [envie um PR]: /docs/contributing/pull-requests/
 
-{{% ecosystem/keep-up-to-date vendor %}}
+{{% include keep-up-to-date.md vendor %}}
 
 [lista de fornecedores]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/vendors.yaml
