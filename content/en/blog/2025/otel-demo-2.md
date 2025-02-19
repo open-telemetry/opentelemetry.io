@@ -18,9 +18,9 @@ But before we jump in, let's take a look at some of the project stats.
 ## Statistics
 
 With a total of 140 contributors, the OpenTelemetry Demo has been starred
-**2048** times. On October 26, 2022—two days after General Availability—we had
-a record 40 stars in a single day. If you use the Demo, consider
-leaving us a star to help promote the project.
+**2048** times. On October 26, 2022—two days after General Availability—we had a
+record 40 stars in a single day. If you use the Demo, consider leaving us a star
+to help promote the project.
 
 There are a total of 1.8k forks of the Demo. Notably, [Abhishek Veeramalla's
 fork][1] stands out with 142 stars and has been forked 425 times.
@@ -39,8 +39,8 @@ The OpenTelemetry Demo includes the following CNCF projects:
 
 ## What's new in 2.0?
 
-This release is packed with exciting upgrades and changes. The following list is a quick
-rundown of the highlights:
+This release is packed with exciting upgrades and changes. The following list is
+a quick rundown of the highlights:
 
 - **Flagd-ui introduced**: One of our most missed features since version 1.9.0
   is back! You can again manage feature flags directly in the Demo. For more
