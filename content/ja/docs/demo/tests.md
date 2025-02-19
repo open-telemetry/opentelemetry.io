@@ -1,6 +1,6 @@
 ---
 title: テスト
-default_lang_commit: 99b15da7137cde4a6352576768f4c9203170d569
+default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28
 cSpell:ignore: Tracetest
 ---
 
@@ -19,4 +19,4 @@ cSpell:ignore: Tracetest
 
 詳細な情報については、[Service Testing](https://github.com/open-telemetry/opentelemetry-demo/tree/main/test)を参照してください。
 
-[^1]: `docker-compose` は非推奨です。詳細については、[Compose V2 への移行](https://docs.docker.com/compose/migrate/) を参照してください。
+[^1]: {{% param notes.docker-compose-v2 %}}

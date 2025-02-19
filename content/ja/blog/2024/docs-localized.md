@@ -6,7 +6,7 @@ author: >-
   [Severin Neumann](https://github.com/svrnm) (Cisco)
 issue: 4863
 sig: Comms
-default_lang_commit: 48eac183a4dd74946d5a45fa436cfc6052f30532
+default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28
 ---
 
 OpenTelemetry のウェブサイトが多言語で利用可能になったことをお知らせします！
