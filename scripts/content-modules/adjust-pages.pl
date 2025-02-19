@@ -24,7 +24,7 @@ my $lineNum;
 
 my %versionsRaw = # Keyname must end with colons because the auto-version update script expects one
   qw(
-    spec: 1.41.0
+    spec: 1.42.0
     otlp: 1.5.0
     semconv: 1.30.0
   );
@@ -104,13 +104,13 @@ sub applyPatchOrPrintMsgIf($$$) {
   return 0;
 }
 
-sub patchEventAliases() {
-  return unless $ARGV =~ /^tmp\/otel\/specification\/logs\//
-    && applyPatchOrPrintMsgIf('2025-01-23-event-aliases', 'spec', '1.41.0');
-
-  my $aliases = '^(  - )(event-(api|sdk))$';
-  s|$aliases|$1./$2|;
-}
+# sub patchEventAliases() {
+#   return unless $ARGV =~ /^tmp\/otel\/specification\/logs\//
+#     && applyPatchOrPrintMsgIf('2025-01-23-event-aliases', 'spec', '1.41.0');
+#
+#   my $aliases = '^(  - )(event-(api|sdk))$';
+#   s|$aliases|$1./$2|;
+# }
 
 sub patchSemConv1_30_0() {
   return unless $ARGV =~ /^tmp\/semconv\/docs\//
@@ -164,7 +164,6 @@ while(<>) {
         while(<>) {
           $lineNum++;
           last if /^--->?/;
-          patchEventAliases();
           patchSemConv1_30_0();
           $frontMatterFromFile .= $_;
         }
