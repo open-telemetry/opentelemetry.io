@@ -14,7 +14,7 @@ O OpenTelemetry é composto de
 [diversos componentes](/docs/concepts/components/), alguns específicos e outros
 independentes de linguagem. Ao procurar por um
 _[status](/docs/specs/otel/versioning-and-stability/)_, certifique-se de
-verificar o _status_ na página do componente correto. Por exemplo, o _status_ de
+verificar o _status_ na página correta do componente. Por exemplo, o _status_ de
 um sinal na especificação pode não ser o mesmo que o _status_ do sinal em um SDK
 de uma linguagem especifica.
 
