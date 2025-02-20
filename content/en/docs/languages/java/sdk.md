@@ -1,5 +1,5 @@
 ---
-title: Manage Telemetry with SDK
+title: Gerenciar Telemetria com SDK
 weight: 12
 aliases: [exporters]
 cSpell:ignore: autoconfigured FQCNs Interceptable Logback okhttp
