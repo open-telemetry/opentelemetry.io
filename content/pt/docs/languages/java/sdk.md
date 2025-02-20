@@ -9,7 +9,7 @@ cSpell:ignore: FQCNs Interceptable Logback okhttp
 <?code-excerpt path-base="examples/java/configuration"?>
 
 O SDK é uma referência integrada da implementação da [API](../api/), processando
-e exporando a telemetria produzida pela instrumentação das chamadas de API. Esta
+e exportando a telemetria produzida pela instrumentação das chamadas de API. Esta
 página é uma visão geral dos conceitos do SDK, incluíndo descrições, links
 relevantes para Javadocs, coordenadas dos artefatos, configurações programadas
 de amostras e mais. Veja **[Configure o SDK](../configuration/)** para detalhes
