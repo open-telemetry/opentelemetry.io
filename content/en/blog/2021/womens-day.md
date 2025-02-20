@@ -9,4 +9,4 @@ Happy International Women’s Day! The OpenTelemetry project would like to exten
 our thanks to all our women contributors. For all the details, see the [original
 post][].
 
-[original post]: {{% param canonical_url %}}
+[original post]: <{{% param canonical_url %}}>

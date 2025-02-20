@@ -16,5 +16,5 @@ createdAt: 2021-02-17
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-mongoose'
-  version: 0.46.0
+  version: 0.46.1
 isFirstParty: false

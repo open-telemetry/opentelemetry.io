@@ -8,7 +8,7 @@ cSpell:ignore: guzzlehttp myapp
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro.md %}}
 
 ## Example app preparation {#example-app}
 
@@ -186,7 +186,7 @@ $resource = ResourceInfoFactory::emptyResource()->merge(ResourceInfo::create(Att
     ResourceAttributes::SERVICE_NAMESPACE => 'demo',
     ResourceAttributes::SERVICE_NAME => 'test-application',
     ResourceAttributes::SERVICE_VERSION => '0.1',
-    ResourceAttributes::DEPLOYMENT_ENVIRONMENT => 'development',
+    ResourceAttributes::DEPLOYMENT_ENVIRONMENT_NAME => 'development',
 ])));
 $spanExporter = new SpanExporter(
     (new StreamTransportFactory())->create('php://stdout', 'application/json')

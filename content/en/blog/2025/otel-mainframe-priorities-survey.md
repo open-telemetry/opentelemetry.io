@@ -63,6 +63,5 @@ OpenTelemetry on Mainframe SIG, join the conversation at
 _A version of this article was [originally posted] on the Open Mainframe Project
 blog._
 
-[originally posted]: {{% param canonical_url %}}
-
+[originally posted]: <{{% param canonical_url %}}>
 [survey]: https://www.surveymonkey.com/r/HGTD2KJ

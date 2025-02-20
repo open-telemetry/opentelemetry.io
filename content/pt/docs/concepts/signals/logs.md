@@ -2,7 +2,7 @@
 title: Logs
 description: Um registro de um evento.
 weight: 3
-default_lang_commit: ebc9a3a9f07278110677f4f8f69291a02704746b
+default_lang_commit: 7c0e4db0b6c39b0ca0e7efb17df5610d1b77b8a3
 cSpell:ignore: filelogreceiver semistructured transformprocessor
 ---
 
@@ -18,7 +18,7 @@ O OpenTelemetry não possui uma especificação de API ou SDK própria para gera
 logs. Em vez disso, os logs no OpenTelemetry são os logs que você já possui, que
 foram gerados por um framework de _logging_ ou componente de infraestrutura. Os
 SDKs e a autoinstrumentação do OpenTelemetry utilizam vários componentes para
-correlacionar automaticamente logs com [rastros](/docs/concepts/signals/traces).
+correlacionar automaticamente logs com [rastros](../traces).
 
 O suporte do OpenTelemetry para logs é projetado para ser totalmente compatível
 com o que você já possui, oferecendo a capacidade de adicionar contextos a esses
@@ -27,7 +27,7 @@ comum, abrangendo diversas fontes.
 
 ### Logs do OpenTelemetry no OpenTelemetry Collector {#opentelemetry-logs-in-the-opentelemetry-collector}
 
-O [OpenTelemetry Collector](/docs/collector) fornece várias ferramentas para
+O [OpenTelemetry Collector](/docs/collector/) fornece várias ferramentas para
 trabalhar com logs:
 
 - Vários _receivers_ que analisam logs de fontes específicas e conhecidas de

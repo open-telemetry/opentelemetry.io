@@ -106,7 +106,7 @@ dependency structure:
 ## Dependencies and BOMs
 
 A
-[bill of materials](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms),
+[bill of materials](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Bill_of_Materials_.28BOM.29_POMs),
 or BOM for short, is an artifact that helps keep the versions of related
 dependencies aligned. OpenTelemetry Java publishes several BOMs catering to
 different use cases, listed below in order of increasing scope. We highly
@@ -168,17 +168,10 @@ dependencies {
 {{% /tab %}} {{< /tabpane >}}
 
 [opentelemetry-bom]:
-https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/{{% param
-vers.otel %}}/opentelemetry-bom-{{% param vers.otel %}}.pom
+  <https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/{{% param vers.otel %}}/opentelemetry-bom-{{% param vers.otel %}}.pom>
 [opentelemetry-bom-alpha]:
-https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/{{%
-param vers.otel
-%}}-alpha/opentelemetry-bom-alpha-{{% param vers.otel %}}-alpha.pom
+  <https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/{{% param vers.otel %}}-alpha/opentelemetry-bom-alpha-{{% param vers.otel %}}-alpha.pom>
 [opentelemetry-instrumentation-bom]:
-https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/{{%
-param vers.instrumentation
-%}}/opentelemetry-instrumentation-bom-{{% param vers.instrumentation %}}.pom
+  <https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/{{% param vers.instrumentation %}}/opentelemetry-instrumentation-bom-{{% param vers.instrumentation %}}.pom>
 [opentelemetry-instrumentation-alpha-bom]:
-https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/{{%
-param vers.instrumentation
-%}}-alpha/opentelemetry-instrumentation-bom-alpha-{{% param vers.instrumentation %}}-alpha.pom
+  <https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/{{% param vers.instrumentation %}}-alpha/opentelemetry-instrumentation-bom-alpha-{{% param vers.instrumentation %}}-alpha.pom>

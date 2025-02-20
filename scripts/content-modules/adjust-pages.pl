@@ -1,4 +1,6 @@
 #!/usr/bin/perl -w -i
+#
+# cSpell:ignore oteps
 
 $^W = 1;
 
@@ -22,7 +24,7 @@ my $lineNum;
 
 my %versionsRaw = # Keyname must end with colons because the auto-version update script expects one
   qw(
-    spec: 1.41.0
+    spec: 1.42.0
     otlp: 1.5.0
     semconv: 1.30.0
   );
@@ -102,13 +104,13 @@ sub applyPatchOrPrintMsgIf($$$) {
   return 0;
 }
 
-sub patchEventAliases() {
-  return unless $ARGV =~ /^tmp\/otel\/specification\/logs\//
-    && applyPatchOrPrintMsgIf('2025-01-23-event-aliases', 'spec', '1.41.0');
-
-  my $aliases = '^(  - )(event-(api|sdk))$';
-  s|$aliases|$1./$2|;
-}
+# sub patchEventAliases() {
+#   return unless $ARGV =~ /^tmp\/otel\/specification\/logs\//
+#     && applyPatchOrPrintMsgIf('2025-01-23-event-aliases', 'spec', '1.41.0');
+#
+#   my $aliases = '^(  - )(event-(api|sdk))$';
+#   s|$aliases|$1./$2|;
+# }
 
 sub patchSemConv1_30_0() {
   return unless $ARGV =~ /^tmp\/semconv\/docs\//
@@ -118,6 +120,7 @@ sub patchSemConv1_30_0() {
   s|(docs/specs/otel/logs/api.md#emit-a)n-event|$1-logrecord|;
   s|\[semantic-convention-groups\]|[group-stability]|;
   s|\Q../../docs/|../|g; # https://github.com/open-telemetry/semantic-conventions/pull/1843
+  s|\Qhttps://wikipedia.org/wiki/Where_(SQL)#IN|https://wikipedia.org/wiki/SQL_syntax#Operators|g;
 }
 
 sub getVersFromSubmodule() {
@@ -161,14 +164,13 @@ while(<>) {
         while(<>) {
           $lineNum++;
           last if /^--->?/;
-          patchEventAliases();
           patchSemConv1_30_0();
           $frontMatterFromFile .= $_;
         }
         next;
     }
   }
-  if(! $title) {
+  if (! $title) {
     ($title) = /^#\s+(.*)/;
     $linkTitle = '';
     printFrontMatter() if $title;
@@ -179,7 +181,7 @@ while(<>) {
     while(<>) { $lineNum++; last if /<\/details>/; }
     next;
   }
-  if(/<!-- toc -->/) {
+  if (/<!-- toc -->/) {
     my $tocstop = '<!-- tocstop -->';
     while(<>) {
       $lineNum++;
@@ -226,9 +228,13 @@ while(<>) {
   # Rewrite paths that are outside of the spec folders as external links:
   s|\.\.\/README.md|$otelSpecRepoUrl/|g if $ARGV =~ /specification._index/;
   s|\.\.\/README.md|/docs/specs/otel/| if $ARGV =~ /specification\/library-guidelines.md/;
-
-  s|(\.\.\/)+(experimental\/[^)]+)|$otelSpecRepoUrl/tree/v$otelSpecVers/$2|g;
-  s|(\.\.\/)+(supplementary-guidelines\/compatibility\/[^)]+)|$otelSpecRepoUrl/tree/v$otelSpecVers/$2|g;
+  s{
+    (\.\.\/)+
+    (
+      (?:oteps|supplementary-guidelines)\/
+      [^)]+
+    )
+  }{$otelSpecRepoUrl/tree/v$otelSpecVers/$2}gx;
 
   s|\.\./((?:examples/)?README\.md)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /^tmp\/otlp/;
 

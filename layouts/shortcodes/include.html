@@ -1,0 +1,24 @@
+{{/* Use to include Markdown snippets. Note that the included content can have
+calls to shortcodes. */ -}}
+
+{{ $path := .Get (cond .IsNamedParams "file" 0) -}}
+{{ $args := .Params -}}
+{{ $page := partial "func/find-include.html"  (dict "path" $path "page" .Page) -}}
+{{ with $page -}}
+  {{ $content := .RenderShortcodes -}}
+  {{ range $k, $v := $args -}}
+    {{ $regex := printf "\\{\\{\\s*\\$%s\\s*\\}\\}" (string $k) -}}
+    {{ $content = replaceRE $regex $v $content -}}
+  {{ end -}}
+  {{ $content -}}
+{{ else -}}
+  {{ $msg := printf
+      "Can't include '%s': file not found in page or ancestor contexts of page %s."
+      $path .Page.Path -}}
+  {{ warnf $msg -}}
+
+  <div class="alert alert-warning">
+  <div class="h4 alert-heading">INTERNAL SITE ERROR</div>
+  {{ $msg }}
+  </div>
+{{ end -}}
