@@ -10,22 +10,22 @@ cSpell:ignore: FQCNs Interceptable Logback okhttp
 
 O SDK é uma referência integrada da implementação da [API](../api/), processando
 e exportando a telemetria produzida pela instrumentação das chamadas de API. Esta
-página é uma visão geral dos conceitos do SDK, incluíndo descrições, links
+página é uma visão geral dos conceitos do SDK, incluindo descrições, links
 relevantes para Javadocs, coordenadas dos artefatos, configurações programadas
 de amostras e mais. Veja **[Configure o SDK](../configuration/)** para detalhes
-na configuração do SDK, incluíndo
+na configuração do SDK, incluindo
 [Autoconfiguração do SDK sem código](../configuration/#zero-code-sdk-autoconfigure).
 
 O SDK consiste nos seguintes componentes de alto nível:
 
 - [SdkTracerProvider](#sdktracerprovider): A implementação do SDK
-  `TracerProvider`, incluíndo ferramentas para amostragem, processamento, e
+  `TracerProvider`, incluindo ferramentas para amostragem, processamento, e
   exportação de trechos.
 - [SdkMeterProvider](#sdkmeterprovider): A implementação do SDK `MeterProvider`,
-  incluíndo ferramentas para configuração de fluxo de métricas e lendo /
+  incluindo ferramentas para configuração de fluxo de métricas e lendo /
   exportando métricas.
 - [SdkLoggerProvider](#sdkloggerprovider): A implementação do SDK
-  `LoggerProvider`, incluíndo ferramentas para processamento e exportação de
+  `LoggerProvider`, incluindo ferramentas para processamento e exportação de
   logs.
 - [TextMapPropagator](#textmappropagator): Propaga o contexto através dos
   limites dos processos.
@@ -64,7 +64,7 @@ OpenTelemetry SDK.
 A seção a seguir descreve o núcleo _(core)_ dos componentes do SDK voltados ao
 usuário. Cada seção do componente incluí:
 
-- Uma pequena descrição, incluíndo um link para a documentação do Java com um
+- Uma pequena descrição, incluindo um link para a documentação do Java com um
   tipo de referência.
 - Se este componente é
   [interfaces de extensões para plugins](#sdk-plugin-extension-interfaces), uma
