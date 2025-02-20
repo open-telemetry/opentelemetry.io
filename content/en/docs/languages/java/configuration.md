@@ -193,12 +193,12 @@ artifact coordinates.
 Properties for [batch span processor(s)](../sdk/#spanprocessor) paired with
 exporters specified via `otel.traces.exporter`:
 
-| System property                  | Description                                                      | Default |
-| -------------------------------- |------------------------------------------------------------------| ------- |
-| `otel.bsp.schedule.delay`        | The interval, in milliseconds, between two consecutive exports.  | `5000`  |
-| `otel.bsp.max.queue.size`        | The maximum number of spans that can be queued before batching.  | `2048`  |
-| `otel.bsp.max.export.batch.size` | The maximum number of spans to export in a single batch.         | `512`   |
-| `otel.bsp.export.timeout`        | The maximum allowed time, in milliseconds, to export data.       | `30000` |
+| System property                  | Description                                                     | Default |
+| -------------------------------- | --------------------------------------------------------------- | ------- |
+| `otel.bsp.schedule.delay`        | The interval, in milliseconds, between two consecutive exports. | `5000`  |
+| `otel.bsp.max.queue.size`        | The maximum number of spans that can be queued before batching. | `2048`  |
+| `otel.bsp.max.export.batch.size` | The maximum number of spans to export in a single batch.        | `512`   |
+| `otel.bsp.export.timeout`        | The maximum allowed time, in milliseconds, to export data.      | `30000` |
 
 Properties for [sampler](../sdk/#sampler):
 
