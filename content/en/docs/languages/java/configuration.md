@@ -256,12 +256,12 @@ Properties for cardinality limits:
 Properties for [log record processor(s)](../sdk/#logrecordprocessor) pared with
 exporters via `otel.logs.exporter`:
 
-| System property                   | Description                                                     | Default |
-| --------------------------------- | --------------------------------------------------------------- | ------- |
-| `otel.blrp.schedule.delay`        | The interval, in milliseconds, between two consecutive exports. | `1000`  |
-| `otel.blrp.max.queue.size`        | The maximum queue size.                                         | `2048`  |
-| `otel.blrp.max.export.batch.size` | The maximum batch size.                                         | `512`   |
-| `otel.blrp.export.timeout`        | The maximum allowed time, in milliseconds, to export data.      | `30000` |
+| System property                   | Description                                                           | Default |
+| --------------------------------- | --------------------------------------------------------------------- | ------- |
+| `otel.blrp.schedule.delay`        | The interval, in milliseconds, between two consecutive exports.       | `1000`  |
+| `otel.blrp.max.queue.size`        | The maximum number of log records that can be queued before batching. | `2048`  |
+| `otel.blrp.max.export.batch.size` | The maximum number of log records to export in a single batch.        | `512`   |
+| `otel.blrp.export.timeout`        | The maximum allowed time, in milliseconds, to export data.            | `30000` |
 
 #### Properties: exporters
 
