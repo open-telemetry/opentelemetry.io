@@ -34,7 +34,7 @@ Essa combinação no [OpenTelemetrySdk](#opentelemetrysdk), transporta um objeto
 que facilita a passagem de [Componentes SDK](#sdk-components) totalmente
 configurados para instrumentação.
 
-O SDK é empacotado com uma varidade de componentes integrados que são
+O SDK é empacotado com uma variedade de componentes integrados que são
 suficientes para muitos casos de uso, e suporta
 [plugins de interfaces](#sdk-plugin-extension-interfaces) para extensibilidade.
 
