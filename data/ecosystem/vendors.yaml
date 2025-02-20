@@ -309,7 +309,7 @@
 - name: Parseable
   nativeOTLP: true
   url: https://www.parseable.com/docs/server/opentelemetry
-  contact: 
+  contact: hi@parseable.com
   oss: true
   commercial: true
 - name: qryn
