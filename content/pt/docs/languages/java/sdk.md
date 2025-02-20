@@ -218,7 +218,7 @@ Amostras integradas ao SDK e mantidas pela comunidade em
 | `JaegerRemoteSampler`     | `io.opentelemetry:opentelemetry-sdk-extension-jaeger-remote-sampler:{{% param vers.otel %}}`  | Amostra trechos baseados em uma configuração de um servidor remoto.                                                                                          |
 | `LinksBasedSampler`       | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | Amostra trechos baseados no status de amostragem dos links do trecho.                                                                                        |
 | `RuleBasedRoutingSampler` | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | Amostra trechos baseados em regras configuráveis.                                                                                                            |
-| `ConsistentSamplers`      | `io.opentelemetry.contrib:opentelemetry-consistent-sampling:{{% param vers.contrib %}}-alpha` | Várias implementações consistentes de amostrador, conforme definido por [amostras probabilisticas](/docs/specs/otel/trace/tracestate-probability-sampling/). |
+| `ConsistentSamplers`      | `io.opentelemetry.contrib:opentelemetry-consistent-sampling:{{% param vers.contrib %}}-alpha` | Várias implementações consistentes de amostrador, conforme definido por [amostras probabilísticas](/docs/specs/otel/trace/tracestate-probability-sampling/). |
 
 O trecho de código a seguir demonstra a configuração programática do `Sampler`:
 
