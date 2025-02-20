@@ -11,7 +11,7 @@ default_lang_commit: 17c3b8eb53b8abc56213abb736c0f850eab752df
 O SDK é uma referência integrada da implementação da [API](../api/), processando
 e exporando a telemetria produzida pela instrumentação das chamadas de API. Esta
 página é uma visão geral dos conceitos do SDK, incluíndo descrições, links
-relevantes para Javadocs, artefatos coordinates, configurações programadas de
+relevantes para Javadocs, coordenadas dos artefatos, configurações programadas de
 amostras e mais. Veja **[Configure o SDK](../configuration/)** para detalhes na
 configuração do SDK, incluíndo
 [Autoconfiguração do SDK sem código](../configuration/#zero-code-sdk-autoconfigure).
@@ -217,9 +217,9 @@ Amostras integradas ao SDK e mantidas pela comunidade em
 | `JaegerRemoteSampler`     | `io.opentelemetry:opentelemetry-sdk-extension-jaeger-remote-sampler:{{% param vers.otel %}}`  | Amostra trechos baseados em uma configuração de um servidor remoto.                                                                           |
 | `LinksBasedSampler`       | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | Amostra trechos baseados no status de amostragem dos links do trecho.                                                                          |
 | `RuleBasedRoutingSampler` | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | Amostra trechos baseados em regras configuráveis.                                                                                           |
-| `ConsistentSamplers`      | `io.opentelemetry.contrib:opentelemetry-consistent-sampling:{{% param vers.contrib %}}-alpha` | Várias implementações consistentes de amostrador, conforme definido por [probability sampling](/docs/specs/otel/trace/tracestate-probability-sampling/). |
+| `ConsistentSamplers`      | `io.opentelemetry.contrib:opentelemetry-consistent-sampling:{{% param vers.contrib %}}-alpha` | Várias implementações consistentes de amostrador, conforme definido por [amostras probabilisticas](/docs/specs/otel/trace/tracestate-probability-sampling/). |
 
-O trecho de código a seguir demonstra a configuração programática da `Amostra`:
+O trecho de código a seguir demonstra a configuração programática do `Sampler`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/SamplerConfig.java"?>
@@ -431,14 +431,14 @@ Exportadores de trechos integrados ao SDK e mantidos pela comunidade em
 
 | Classe                          | Artefato                                                                                 | Descrição                                                                   |
 | ------------------------------ | ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `OtlpHttpSpanExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`                   | Exports spans via OTLP `http/protobuf`.                                       |
-| `OtlpGrpcSpanExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`                   | Exports spans via OTLP `grpc`.                                                |
-| `LoggingSpanExporter`          | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`                | Logs spans to JUL in a debugging format.                                      |
-| `OtlpJsonLoggingSpanExporter`  | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`           | Logs spans to JUL in an OTLP JSON encoding.                                   |
-| `OtlpStdoutSpanExporter`       | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`           | Logs spans to `System.out` in the OTLP [JSON file encoding][] (experimental). |
-| `ZipkinSpanExporter`           | `io.opentelemetry:opentelemetry-exporter-zipkin:{{% param vers.otel %}}`                 | Export spans to Zipkin.                                                       |
-| `InterceptableSpanExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha`     | Passes spans to a flexible interceptor before exporting.                      |
-| `KafkaSpanExporter`            | `io.opentelemetry.contrib:opentelemetry-kafka-exporter:{{% param vers.contrib %}}-alpha` | Exports spans by writing to a Kafka topic.                                    |
+| `OtlpHttpSpanExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`                   | Exporta trechos via OTLP `http/protobuf`.                                       |
+| `OtlpGrpcSpanExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`                   | Exporta trechos via OTLP `grpc`.                                                |
+| `LoggingSpanExporter`          | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`                | Registra trechos para JUL em um formato de debugging.                                      |
+| `OtlpJsonLoggingSpanExporter`  | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`           | Registra trechos para JUL em um JSON OTLP codificado.                                   |
+| `OtlpStdoutSpanExporter`       | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`           | Registra trechos para o `System.out` em formato OTLP [Arquivo JSON Codificado][] (experimental). |
+| `ZipkinSpanExporter`           | `io.opentelemetry:opentelemetry-exporter-zipkin:{{% param vers.otel %}}`                 | Exporta trechos para o Zipkin.                                                       |
+| `InterceptableSpanExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha`     | Passes trechos para um interceptador flexível antes da exportação.                      |
+| `KafkaSpanExporter`            | `io.opentelemetry.contrib:opentelemetry-kafka-exporter:{{% param vers.contrib %}}-alpha` | Exporta trechos escrevendo para um tópico do Kafka.                                    |
 
 **[1]**: Veja [OTLP exporters](#otlp-exporters) para detalhes de implementação.
 
@@ -636,8 +636,8 @@ Metric readers integrados ao SDK e mantidos pela comunidade em
 
 | Classe                  | Artefato                                                                           | Descrição                                                                             |
 | ---------------------- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `PeriodicMetricReader` | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                       | Reads metrics on a periodic basis and exports them via a configurable `MetricExporter`. |
-| `PrometheusHttpServer` | `io.opentelemetry:opentelemetry-exporter-prometheus:{{% param vers.otel %}}-alpha` | Serves metrics on an HTTP server in various prometheus formats.                         |
+| `PeriodicMetricReader` | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                       | Lê as métricas em uma base periódica e os exporta por meio de uma configuração do `MetricExporter`. |
+| `PrometheusHttpServer` | `io.opentelemetry:opentelemetry-exporter-prometheus:{{% param vers.otel %}}-alpha` | Disponibiliza métricas em um servidor HTTP em vários formatos Prometheus.                         |
 
 O trecho de código a seguir demonstra a configuração programática do `MetricReader`:
 
@@ -762,12 +762,12 @@ Metric exporters integrados ao SDK e mantidos pela comunidade em
 
 | Claase                            | Artefato                                                                             | Descrição                                                                     |
 | -------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- |
-| `OtlpHttpMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Exports metrics via OTLP `http/protobuf`.                                       |
-| `OtlpGrpcMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Exports metrics via OTLP `grpc`.                                                |
-| `LoggingMetricExporter`          | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`            | Logs metrics to JUL in a debugging format.                                      |
-| `OtlpJsonLoggingMetricExporter`  | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Logs metrics to JUL in the OTLP JSON encoding.                                  |
-| `OtlpStdoutMetricExporter`       | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Logs metrics to `System.out` in the OTLP [JSON file encoding][] (experimental). |
-| `InterceptableMetricExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Passes metrics to a flexible interceptor before exporting.                      |
+| `OtlpHttpMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Exporta métricas via OTLP `http/protobuf`.                                       |
+| `OtlpGrpcMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Exporta métricas via OTLP `grpc`.                                                |
+| `LoggingMetricExporter`          | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`            | Registra métricas para JUL em um formato debugging.                                      |
+| `OtlpJsonLoggingMetricExporter`  | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Registra métricas para JUL em um JSON OTLP codificado.                                  |
+| `OtlpStdoutMetricExporter`       | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Registra métricas para `System.out` em formato OTLP [Arquivo JSON Codificado][] (experimental). |
+| `InterceptableMetricExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Passes métricas para um interceptador flexível antes da exportação.                      |
 
 **[1]**: Veja [OTLP exporters](#otlp-exporters) para detalhes de implementação.
 
@@ -1000,7 +1000,7 @@ Os processadores de registros de log integrados ao SDK e mantidos pela comunidad
 | -------------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
 | `BatchLogRecordProcessor`  | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                         | Agrupa os registros de log e os exporta por meio de um `LogRecordExporter` configurável. |
 | `SimpleLogRecordProcessor` | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                         | Exporta cada registro de log a via de um `LogRecordExporter` configurável.            |
-| `EventToSpanEventBridge`   | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Registra os registros de eventos de log como eventos de span no span atual.                |
+| `EventToSpanEventBridge`   | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Registra os eventos de log como eventos de trecho no trecho atual.                |
 
 O trecho de código a seguir demonstra a configuração programática do `LogRecordProcessor`:
 
@@ -1086,10 +1086,10 @@ Span exporters integrados ao SDK e mantidos pela comunidade em
 | ------------------------------------------ | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- |
 | `OtlpHttpLogRecordExporter` **[1]**        | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Exporta registros de logs via OTLP `http/protobuf`.                                       |
 | `OtlpGrpcLogRecordExporter` **[1]**        | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Exporta registros de logs via OTLP `grpc`.                                                |
-| `SystemOutLogRecordExporter`               | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`            | Registra registro de logs para system out in a debugging format.                               |
-| `OtlpJsonLoggingLogRecordExporter` **[2]** | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Registra registro de logs para JUL em OTLP JSON encoding.                                  |
-| `OtlpStdoutLogRecordExporter`              | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Registra registro de logs para `System.out` em OTLP [Arquivo JSON Codificado][] (experimental). |
-| `InterceptableLogRecordExporter`           | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Passa registro de logs para um interceptor flexível antes de exportar.                      |
+| `SystemOutLogRecordExporter`               | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`            | Grava registros de logs para system out em um formato de debugging.                               |
+| `OtlpJsonLoggingLogRecordExporter` **[2]** | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Grava registros de logs para JUL em um JSON OTLP codificado.                                   |
+| `OtlpStdoutLogRecordExporter`              | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Grava registros de logs para `System.out` em OTLP [Arquivo JSON Codificado][] (experimental). |
+| `InterceptableLogRecordExporter`           | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Passa registros de logs para um interceptador flexível antes de exportar.                      |
 
 **[1]**: Veja [Exportadores OTLP](#otlp-exporters) para detalhes de implementação.
 
@@ -1221,15 +1221,15 @@ TextMapPropagators integrados ao SDK e mantidos pela comunidade em
 
 | Classe                       | Artefato                                                                                      | Descrição                                                                             |
 | --------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `W3CTraceContextPropagator` | `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}`                                  | Propagate trace context using W3C trace context propagation protocol.                   |
-| `W3CBaggagePropagator`      | `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}`                                  | Propagate baggage using W3C baggage propagation protocol.                               |
-| `MultiTextMapPropagator`    | `io.opentelemetry:opentelemetry-context:{{% param vers.otel %}}`                              | Compose multiple propagators.                                                           |
-| `JaegerPropagator`          | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | Propagator trace context using the Jaeger propagation protocol.                         |
-| `B3Propagator`              | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | Propagator trace context using the B3 propagation protocol.                             |
-| `OtTracePropagator`         | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | Propagator trace context using the OpenTracing propagation protocol.                    |
-| `PassThroughPropagator`     | `io.opentelemetry:opentelemetry-api-incubator:{{% param vers.otel %}}-alpha`                  | Propagate a configurable set fields without participating in telemetry.                 |
-| `AwsXrayPropagator`         | `io.opentelemetry.contrib:opentelemetry-aws-xray-propagator:{{% param vers.contrib %}}-alpha` | Propagate trace context using AWS X-Ray propagation protocol.                           |
-| `AwsXrayLambdaPropagator`   | `io.opentelemetry.contrib:opentelemetry-aws-xray-propagator:{{% param vers.contrib %}}-alpha` | Propagate trace context using environment variables and AWS X-Ray propagation protocol. |
+| `W3CTraceContextPropagator` | `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}`                                  | Propaga contextos de rastros usando W3C contextos de rastros protocolo de propagação.                   |
+| `W3CBaggagePropagator`      | `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}`                                  | Propaga baggage usando W3C baggage protocolo de propagação.                               |
+| `MultiTextMapPropagator`    | `io.opentelemetry:opentelemetry-context:{{% param vers.otel %}}`                              | Compor múltiplos propagadores.                                                           |
+| `JaegerPropagator`          | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | Propagador de contextos de rastros usando o protocolo de propagação do Jaeger.                         |
+| `B3Propagator`              | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | Propagador de contextos de rastros usando o protocolo de propagação B3.                             |
+| `OtTracePropagator`         | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | Propagador de contextos de rastros usando o protocolo de propagação do OpenTracing.                    |
+| `PassThroughPropagator`     | `io.opentelemetry:opentelemetry-api-incubator:{{% param vers.otel %}}-alpha`                  | Propaga um conjunto configurável de campos sem participar da telemetria.               |
+| `AwsXrayPropagator`         | `io.opentelemetry.contrib:opentelemetry-aws-xray-propagator:{{% param vers.contrib %}}-alpha` | Propaga contextos de rastros usando o protocolo de propagação do AWS X-Ray.                           |
+| `AwsXrayLambdaPropagator`   | `io.opentelemetry.contrib:opentelemetry-aws-xray-propagator:{{% param vers.contrib %}}-alpha` | Propaga contextos de rastros usando variáveis de ambiente e o protocolo de propagação do AWS X-Ray.  |
 
 O trecho de código a seguir demonstra a configuração programática do `TextMapPropagator`:
 
@@ -1389,9 +1389,9 @@ adicione a dependência alternativa.
 
 | Artefato                                                                                              | Descrição                                                 | Protocolos OTLP         | Padrão |
 | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ----------------------- | ------ |
-| `io.opentelemetry:opentelemetry-exporter-sender-okhttp:{{% param vers.otel %}}`                       | OkHttp based implementation.                              | `grpc`, `http/protobuf` | Yes    |
-| `io.opentelemetry:opentelemetry-exporter-sender-jdk:{{% param vers.otel %}}`                          | Java 11+ `java.net.http.HttpClient` based implementation. | `http/protobuf`         | No     |
-| `io.opentelemetry:opentelemetry-exporter-sender-grpc-managed-channel:{{% param vers.otel %}}` **[1]** | `grpc-java` `ManagedChannel` based implementation.        | `grpc`                  | No     |
+| `io.opentelemetry:opentelemetry-exporter-sender-okhttp:{{% param vers.otel %}}`                       | Implementação baseada em OkHttp.                              | `grpc`, `http/protobuf` | Yes    |
+| `io.opentelemetry:opentelemetry-exporter-sender-jdk:{{% param vers.otel %}}`                          | Implementação baseada em `java.net.http.HttpClient` do Java 11+. | `http/protobuf`         | No     |
+| `io.opentelemetry:opentelemetry-exporter-sender-grpc-managed-channel:{{% param vers.otel %}}` **[1]** | Implementação baseada em `ManagedChannel` do `grpc-java`     | `grpc`                  | No     |
 
 **[1]**: Para usar `opentelemetry-exporter-sender-grpc-managed-channel`, você
 precisa adicionar uma dependência em
