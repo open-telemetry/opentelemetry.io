@@ -39,6 +39,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-01T06:58:41.954339-05:00"
   },
+  "https://ai.pydantic.dev/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-22T07:14:43.97163372-08:00"
+  },
   "https://apicontext.com/": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:12:09.390843-05:00"
@@ -126,6 +130,10 @@
   "https://aws.amazon.com/redshift/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-24T14:36:45.664044-05:00"
+  },
+  "https://aws.amazon.com/what-is/ai-agents/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-20T11:45:05.186129569-08:00"
   },
   "https://axiom.co/docs/send-data/opentelemetry": {
     "StatusCode": 206,
@@ -398,6 +406,10 @@
   "https://cloud.google.com/compute/docs/metadata/querying-metadata#waitforchange": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T01:43:12.345Z"
+  },
+  "https://cloud.google.com/discover/what-are-ai-agents": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-20T11:44:59.577353997-08:00"
   },
   "https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.events/report": {
     "StatusCode": 200,
@@ -730,6 +742,10 @@
   "https://dev.mysql.com/doc/refman/9.2/en/telemetry-trace.html": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T15:38:54.472Z"
+  },
+  "https://devblogs.microsoft.com/semantic-kernel/microsofts-agentic-ai-frameworks-autogen-and-semantic-kernel/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-22T07:14:39.38564227-08:00"
   },
   "https://devcenter.heroku.com/articles/dyno-metadata": {
     "StatusCode": 206,
@@ -2407,6 +2423,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-15T11:26:06.807253-05:00"
   },
+  "https://github.com/IBM/wxflows/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-22T07:14:34.902850806-08:00"
+  },
   "https://github.com/IliaBrahinets": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T15:44:18.281Z"
@@ -2574,6 +2594,10 @@
   "https://github.com/Saber-W": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:27:26.923175-05:00"
+  },
+  "https://github.com/Scale3-Labs/langtrace-python-sdk/tree/main/src/langtrace_python_sdk/instrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-25T13:52:29.373421926-08:00"
   },
   "https://github.com/Seldaek/monolog/blob/3.4.0/doc/01-usage.md#leveraging-channels": {
     "StatusCode": 200,
@@ -3959,6 +3983,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:09:12.345Z"
   },
+  "https://github.com/i-am-bee": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-22T07:14:33.69165071-08:00"
+  },
   "https://github.com/iNikem": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:13:07.981225-05:00"
@@ -4599,6 +4627,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:58:06.263676-05:00"
   },
+  "https://github.com/microsoft/semantic-kernel": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-25T13:45:22.029734813-08:00"
+  },
   "https://github.com/microsoft/vcpkg/tree/master/ports/opentelemetry-cpp": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:40:51.950246-05:00"
@@ -4931,6 +4963,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:23:17.554218-05:00"
   },
+  "https://github.com/open-telemetry/community/blob/main/projects/gen-ai.md#meeting-times": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-20T09:23:56.697436075-08:00"
+  },
   "https://github.com/open-telemetry/community/blob/main/projects/go-compile-instrumentation.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-18T20:45:35.792292Z"
@@ -4986,6 +5022,10 @@
   "https://github.com/open-telemetry/community/issues/2497": {
     "StatusCode": 206,
     "LastSeen": "2025-01-18T20:45:32.577654Z"
+  },
+  "https://github.com/open-telemetry/community/issues/2571": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-25T13:45:25.982457648-08:00"
   },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 206,
@@ -9031,6 +9071,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:50:44.877731-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-vertexai": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-20T09:23:54.377272992-08:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-aio-pika": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:48:55.488594-05:00"
@@ -10863,6 +10907,14 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:20:12.345Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/issues/1530": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-20T09:23:50.9712701-08:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/issues/1732": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-20T09:23:48.368491392-08:00"
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues/new": {
     "StatusCode": 206,
     "LastSeen": "2025-01-15T13:17:31.33164-05:00"
@@ -12411,6 +12463,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-02T15:28:13.585Z"
   },
+  "https://github.com/solsu01": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-20T09:23:45.905648144-08:00"
+  },
   "https://github.com/songy23": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:10:45.8484-05:00"
@@ -12586,6 +12642,10 @@
   "https://github.com/traceloop/jest-opentelemetry": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T12:11:28.537623-05:00"
+  },
+  "https://github.com/traceloop/openllmetry/tree/main/packages": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-25T13:52:28.408592377-08:00"
   },
   "https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-anthropic": {
     "StatusCode": 206,
@@ -13947,6 +14007,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-06T11:23:21.997839-05:00"
   },
+  "https://microsoft.github.io/autogen/dev/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-03T14:01:04.639067548-08:00"
+  },
   "https://mishmash.io": {
     "StatusCode": 200,
     "LastSeen": "2024-10-18T16:50:17.995881058+03:00"
@@ -14006,6 +14070,10 @@
   "https://newrelic.com/solutions/opentelemetry": {
     "StatusCode": 206,
     "LastSeen": "2025-01-06T11:32:41.842274-05:00"
+  },
+  "https://news.microsoft.com/source/features/ai/ai-agents-what-they-are-and-how-theyll-change-the-way-we-work/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-20T11:45:03.526654347-08:00"
   },
   "https://nextjs.org/": {
     "StatusCode": 206,
@@ -14538,6 +14606,14 @@
   "https://opentelemetry.devstats.cncf.io/d/9/developer-activity-counts-by-repository-group-table": {
     "StatusCode": 200,
     "LastSeen": "2025-01-31T13:07:33.766024682Z"
+  },
+  "https://opentelemetry.io/docs/concepts/instrumentation/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-20T09:23:52.447657347-08:00"
+  },
+  "https://opentelemetry.io/ecosystem/registry/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-22T07:14:47.144521257-08:00"
   },
   "https://opentracing.io": {
     "StatusCode": 206,
@@ -17375,6 +17451,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-01T06:58:40.727522-05:00"
   },
+  "https://www.anthropic.com/research/building-effective-agents": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-22T07:14:32.293812929-08:00"
+  },
   "https://www.aspecto.io": {
     "StatusCode": 206,
     "LastSeen": "2025-01-06T11:32:24.180533-05:00"
@@ -17490,6 +17570,10 @@
   "https://www.couchbase.com/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-24T14:36:52.894684-05:00"
+  },
+  "https://www.crewai.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-22T07:14:36.323780936-08:00"
   },
   "https://www.cypress.io/": {
     "StatusCode": 200,
@@ -17706,6 +17790,10 @@
   "https://www.ibm.com/products/netezza": {
     "StatusCode": 206,
     "LastSeen": "2025-01-24T14:37:08.324371-05:00"
+  },
+  "https://www.ibm.com/think/topics/ai-agents": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-20T11:45:01.021256196-08:00"
   },
   "https://www.ietf.org/archive/id/draft-ietf-uuidrev-rfc4122bis-14.html#name-uuid-version-7": {
     "StatusCode": 200,
@@ -18031,6 +18119,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:32:15.482279-05:00"
   },
+  "https://www.kaggle.com/whitepaper-agents": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-20T09:23:49.646374083-08:00"
+  },
   "https://www.kernel.org/doc/Documentation/ABI/testing/procfs-diskstats": {
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:32:06.227955-05:00"
@@ -18054,6 +18146,10 @@
   "https://www.krakend.io/docs/telemetry/opentelemetry/": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T06:58:15.664175-05:00"
+  },
+  "https://www.langchain.com/langgraph": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-22T07:14:41.36884537-08:00"
   },
   "https://www.langtrace.ai/": {
     "StatusCode": 200,
