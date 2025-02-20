@@ -70,7 +70,7 @@ usuário. Cada seção do componente incluí:
   [interfaces de extensões para plugins](#sdk-plugin-extension-interfaces), uma
   tabela de implementações disponíveis do `opentelemetry-java-contrib`.
 - Uma demonstração simples de
-  [Configuração programática ](../configuration/#programmatic-configuration).
+  [Configuração programática](../configuration/#programmatic-configuration).
 - Se este componente é
   [interfaces de extensões para plugins](#sdk-plugin-extension-interfaces), uma
   simples demonstração de uma implementação personalizada.
