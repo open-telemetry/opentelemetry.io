@@ -1543,5 +1543,5 @@ public class OtlpAuthenticationConfig {
 
 ### Testando
 
-[Codificação Arquivo Json]:
+[Arquivo JSON Codificado]:
   /docs/specs/otel/protocol/file-exporter/#json-file-serialization
