@@ -575,7 +575,7 @@ por gerenciar a telemetria de métricas produzidas pela API.
 - [MetricReader](#metricreader): Lê o estado agregado das métricas.
   - Opcionalmente, com o
     [CardinalityLimitSelector](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/export/CardinalityLimitSelector.html)
-    para substituir o limite de cardnialidade por tipo de instrumento. Se não
+    para substituir o limite de cardinalidade por tipo de instrumento. Se não
     configurado, cada é limitado a 2000 combinações únicas de atributos por
     ciclo de coleta. Limites de cardinalidade também são configuráveis para
     instrumentos individuais via [views](#views). Consulte
