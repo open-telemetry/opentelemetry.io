@@ -583,7 +583,7 @@ por gerenciar a telemetria de métricas produzidas pela API.
     para mais detalhes.
 - [MetricExporter](#metricexporter): Exporta métricas para fora do processo (em
   conjunto com o `MetricReader` associado).
-- [Views](#views): Configura fluxos de métricas, incluindo a exclusáo de
+- [Views](#views): Configura fluxos de métricas, incluindo a exclusão de
   métricas não utilizadas.
 
 O trecho de código a seguir demonstra a configuração programática
@@ -768,7 +768,7 @@ diretamente com `SdkMeterProvider`, eles são associados com o
 Metric exporters integrados ao SDK e mantidos pela comunidade em
 `opentelemetry-java-contrib`:
 
-| Claase                           | Artefato                                                                             | Descrição                                                                                       |
+| Classe                           | Artefato                                                                             | Descrição                                                                                       |
 | -------------------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
 | `OtlpHttpMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Exporta métricas via OTLP `http/protobuf`.                                                      |
 | `OtlpGrpcMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Exporta métricas via OTLP `grpc`.                                                               |
@@ -1319,7 +1319,7 @@ public class CustomTextMapPropagator implements TextMapPropagator {
 Os componentes do SDK registram uma variedade de informações no
 [java.util.logging](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html),
 em diferentes níveis de log e usando nomes de loggers baseados no nome
-totalmente qualificado da classe _Fully Qualified Class Name - FQCN_ do
+totalmente qualificado da classe _Fully Qualified Class Name - FQDN_ do
 respectivo componente.
 
 Por padrão, as mensagens de log são gerenciados pelo manipulador raíz na sua
@@ -1335,8 +1335,8 @@ sempre que o OpenTelemetry registrar uma mensagem específica. Não há uma list
 detalhada de nomes de loggers e informações de log mantida. No entanto, todas as
 APIs, SDK, contribuições e componentes de instrumentação compartilham o mesmo
 prefixo do pacote `io.opentelemetry.*`. Isso pode ser útil para ativar logs mais
-detalhados para todos os `io.opentelemetry.*`, inspeciaonar a saída, e
-restringir aos pacores ou FQCNs de interesse.
+detalhados para todos os `io.opentelemetry.*`, inspecionar a saída, e
+restringir aos pacotes ou FQDNs de interesse.
 
 Por exemplo:
 
@@ -1431,8 +1431,7 @@ precisa adicionar uma dependência em
 
 #### Autenticação
 
-O exportador OTLP provê mecânismos for static and dynamic header-based
-authentication, and for mTLS.
+O exportador OTLP provê mecanismos para autenticação baseada em cabeçalho estático e dinâmico, e para mTLS.
 
 Se você usa
 [Autoconfiguração sem código do](../configuration/#zero-code-sdk-autoconfigure)
@@ -1441,7 +1440,7 @@ com variáveis de ambientes e propriedades do sistema, veja
 
 - `otel.exporter.otlp.headers` autenticação baseada em cabeçalho estático.
 - `otel.exporter.otlp.client.key`, `otel.exporter.otlp.client.certificate` para
-  autentição mTLS.
+  autenticação mTLS.
 
 O trecho de código a seguir demonstra a a configuração programática da
 autenticação baseada em cabeçalho estático e dinâmico:
