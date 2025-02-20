@@ -33,6 +33,10 @@ about manual instrumentation.
 You don't have to use the example app: if you want to instrument your own app or
 library, follow the instructions here to adapt the process to your own code.
 
+{{% alert title="Note" color="info" %}}
+Much of OpenTelemetry JS documentation is written assuming the compiled application is run as CommonJS.
+{{% /alert %}}
+
 ### Dependencies {#example-app-dependencies}
 
 Create an empty NPM `package.json` file in a new directory:
