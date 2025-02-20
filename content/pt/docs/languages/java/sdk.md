@@ -9,8 +9,8 @@ cSpell:ignore: Interceptable Logback okhttp
 <?code-excerpt path-base="examples/java/configuration"?>
 
 O SDK é uma referência integrada da implementação da [API](../api/), processando
-e exportando a telemetria produzida pela instrumentação das chamadas de API. Esta
-página é uma visão geral dos conceitos do SDK, incluindo descrições, links
+e exportando a telemetria produzida pela instrumentação das chamadas de API.
+Esta página é uma visão geral dos conceitos do SDK, incluindo descrições, links
 relevantes para Javadocs, coordenadas dos artefatos, configurações programadas
 de amostras e mais. Veja **[Configure o SDK](../configuration/)** para detalhes
 na configuração do SDK, incluindo
@@ -1335,8 +1335,8 @@ sempre que o OpenTelemetry registrar uma mensagem específica. Não há uma list
 detalhada de nomes de loggers e informações de log mantida. No entanto, todas as
 APIs, SDK, contribuições e componentes de instrumentação compartilham o mesmo
 prefixo do pacote `io.opentelemetry.*`. Isso pode ser útil para ativar logs mais
-detalhados para todos os `io.opentelemetry.*`, inspecionar a saída, e
-restringir aos pacotes ou FQDNs de interesse.
+detalhados para todos os `io.opentelemetry.*`, inspecionar a saída, e restringir
+aos pacotes ou FQDNs de interesse.
 
 Por exemplo:
 
@@ -1431,7 +1431,8 @@ precisa adicionar uma dependência em
 
 #### Autenticação
 
-O exportador OTLP provê mecanismos para autenticação baseada em cabeçalho estático e dinâmico, e para mTLS.
+O exportador OTLP provê mecanismos para autenticação baseada em cabeçalho
+estático e dinâmico, e para mTLS.
 
 Se você usa
 [Autoconfiguração sem código do](../configuration/#zero-code-sdk-autoconfigure)
