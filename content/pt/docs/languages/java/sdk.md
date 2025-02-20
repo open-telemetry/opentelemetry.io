@@ -154,7 +154,7 @@ public class ResourceConfig {
 ### SdkTracerProvider
 
 [SdkTracerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/SdkTracerProvider.html)
-é uma implementaçã do SDK do [TracerProvider](../api/#tracerprovider), e é
+é uma implementação do SDK do [TracerProvider](../api/#tracerprovider), e é
 responsável por lidar com a telemetria de traços produzidos pela API.
 
 `SdkTracerProvider` é configurado pelo responsável da aplicação, e consiste em:
