@@ -953,6 +953,9 @@ maintainers:
   - name: rajkumar-rangaraj
     teams:
       - dotnet-approvers
+      - dotnet-contrib-approvers
+      - dotnet-contrib-maintainers
+      - dotnet-contrib-triagers
       - dotnet-instrumentation-approvers
       - dotnet-instrumentation-maintainers
       - dotnet-instrumentation-triagers
@@ -1054,7 +1057,6 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/10536136?v=4
   - name: srikanthccv
     teams:
-      - opamp-go-approvers
       - sqlcommenter-approvers
       - sqlcommenter-maintainers
     html_url: https://github.com/srikanthccv
@@ -1302,6 +1304,11 @@ approvers:
       - sig-end-user-triagers
     html_url: https://github.com/AnaMMedina21
     avatar_url: https://avatars.githubusercontent.com/u/3894791?v=4
+  - name: ArielDemarco
+    teams:
+      - swift-approvers
+    html_url: https://github.com/ArielDemarco
+    avatar_url: https://avatars.githubusercontent.com/u/25651947?v=4
   - name: aryanishan1001
     teams:
       - cpp-contrib-approvers

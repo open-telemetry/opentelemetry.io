@@ -68,4 +68,4 @@ end users, see [Vendors](/ecosystem/vendors).
 
 [submit a PR]: /docs/contributing/pull-requests/
 
-{{% ecosystem/keep-up-to-date integration %}}
+{{% include keep-up-to-date.md integration %}}

@@ -49,7 +49,7 @@ service:
         - periodic:
             exporter:
               otlp:
-                protocol: grpc/protobuf
+                protocol: grpc
                 endpoint: http://localhost:14317
 ```
 
@@ -169,7 +169,7 @@ service:
         - batch:
             exporter:
               otlp:
-                protocol: grpc/protobuf
+                protocol: grpc
                 endpoint: https://backend:4317
 ```
 
