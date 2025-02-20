@@ -1,7 +1,6 @@
 ---
 title: Adopters
 description: Organizations that use OpenTelemetry
-# All spelling entries must be on a single line
 ---
 
 OpenTelemetry's mission is to enable effective observability for all its
@@ -33,7 +32,7 @@ through OpenTelemetry, see [Integrations](/ecosystem/integrations/).
 If your organization provides a solution that consumes OpenTelemetry to offer
 **Observability to end users**, see [Vendors](/ecosystem/vendors).
 
-{{% ecosystem/keep-up-to-date adopter %}}
+{{% include keep-up-to-date.md adopter %}}
 
 [adopters list]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/adopters.yaml

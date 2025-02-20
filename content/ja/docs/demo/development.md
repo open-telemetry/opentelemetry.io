@@ -1,6 +1,6 @@
 ---
 title: 開発環境
-default_lang_commit: a6efef05af7f854d2fcc9ec4b7433cc4ae799a40
+default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28
 cSpell:ignore: grpcio intellij libcurl libprotobuf nlohmann openssl protoc
 ---
 
