@@ -49,8 +49,8 @@ service:
         - periodic:
             exporter:
               otlp:
-                protocol: grpc
-                endpoint: http://localhost:14317
+                protocol: http/protobuf
+                endpoint: https://backend:4318
 ```
 
 Alternatively, you can expose the Prometheus endpoint to one specific or all
@@ -169,8 +169,8 @@ service:
         - batch:
             exporter:
               otlp:
-                protocol: grpc
-                endpoint: https://backend:4317
+                protocol: http/protobuf
+                endpoint: https://backend:4318
 ```
 
 See the [example configuration][kitchen-sink-config] for additional options.
