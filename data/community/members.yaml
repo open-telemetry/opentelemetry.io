@@ -1375,11 +1375,6 @@ approvers:
       - php-triagers
     html_url: https://github.com/ChrisLightfootWild
     avatar_url: https://avatars.githubusercontent.com/u/106102472?v=4
-  - name: christophe-kamphaus-jemmic
-    teams:
-      - semconv-cicd-approvers
-    html_url: https://github.com/christophe-kamphaus-jemmic
-    avatar_url: https://avatars.githubusercontent.com/u/44020965?v=4
   - name: ChrsMark
     teams:
       - collector-contrib-approvers
@@ -1560,6 +1555,11 @@ approvers:
       - semconv-jvm-approvers
     html_url: https://github.com/jonatan-ivanov
     avatar_url: https://avatars.githubusercontent.com/u/3044070?v=4
+  - name: kamphaus
+    teams:
+      - semconv-cicd-approvers
+    html_url: https://github.com/kamphaus
+    avatar_url: https://avatars.githubusercontent.com/u/8219709?v=4
   - name: karthikscale3
     teams:
       - opentelemetry-python-contrib-approvers
