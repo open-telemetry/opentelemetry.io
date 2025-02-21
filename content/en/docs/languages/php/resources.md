@@ -80,7 +80,7 @@ $resource = ResourceInfoFactory::defaultResource()->merge(ResourceInfo::create(A
     ResourceAttributes::SERVICE_NAME => 'bar',
     ResourceAttributes::SERVICE_INSTANCE_ID => 1,
     ResourceAttributes::SERVICE_VERSION => '0.1',
-    ResourceAttributes::DEPLOYMENT_ENVIRONMENT => 'development',
+    ResourceAttributes::DEPLOYMENT_ENVIRONMENT_NAME => 'development',
 ])));
 
 $tracerProvider =  new TracerProvider(

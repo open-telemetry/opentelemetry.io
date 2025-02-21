@@ -4,7 +4,7 @@ linkTitle: デモ
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
-default_lang_commit: 1e69c8f94a605ce5624c6b6657080d98f633ac7b
+default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28
 cSpell:ignore: OLJCESPC
 ---
 
@@ -28,7 +28,7 @@ cSpell:ignore: OLJCESPC
 | C++        |                                                        |                                                                                       | [通貨サービス](services/currency/)                                                    |
 | Go         |                                                        | [決済サービス](services/checkout/), [商品カタログサービス](services/product-catalog/) | [決済サービス](services/checkout/), [商品カタログサービス](services/product-catalog/) |
 | Java       | [広告サービス](services/ad/)                           |                                                                                       | [広告サービス](services/ad/)                                                          |
-| JavaScript |                                                        | [フロントエンド](services/frontend/)                                                  | [フロントエンド](services/frontend/), [支払いサービス](services/payment/)             |
+| JavaScript |                                                        |                                                                                       | [支払いサービス](services/payment/)                                                   |
 | Kotlin     |                                                        | [不正検知サービス](services/fraud-detection/)                                         |                                                                                       |
 | PHP        |                                                        | [見積サービス](services/quote/)                                                       | [見積サービス](services/quote/)                                                       |
 | Python     | [レコメンデーションサービス](services/recommendation/) |                                                                                       | [レコメンデーションサービス](services/recommendation/)                                |
@@ -52,6 +52,7 @@ cSpell:ignore: OLJCESPC
 - [レコメンデーションサービス](services/recommendation/)
 - [配送サービス](services/shipping/)
 - [画像プロバイダーサービス](services/image-provider/?i18n-patch)
+- [React Native アプリケーション](services/react-native-app/)
 
 ## シナリオ {#scenarios}
 
