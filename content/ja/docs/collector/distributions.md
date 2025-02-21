@@ -4,11 +4,11 @@ weight: 25
 default_lang_commit: 8d115a9df96c52dbbb3f96c05a843390d90a9800
 ---
 
-OpenTelemetryプロジェクトは現在、コレクターの[事前構築済みディストリビューション][]を提供しています。
-各[ディストリビューション][]に含まれるコンポーネントは、それぞれのディストリビューションの`manifest.yaml`で確認できます。
+OpenTelemetryプロジェクトは現在、コレクターの[事前ビルド済みディストリビューション][pre-built distributions]を提供しています。
+各[ディストリビューション][distributions]に含まれるコンポーネントは、それぞれのディストリビューションの`manifest.yaml`で確認できます。
 
-[事前構築済みディストリビューション]: https://github.com/open-telemetry/opentelemetry-collector-releases/releases
-[ディストリビューション]: https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions
+[pre-built distributions]: https://github.com/open-telemetry/opentelemetry-collector-releases/releases
+[distributions]: https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions
 
 {{% docs/latest-release collector-releases /%}}
 
