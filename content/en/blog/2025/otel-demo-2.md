@@ -18,19 +18,19 @@ But before we jump in, let's take a look at some of the project stats.
 ## Statistics
 
 With a total of 140 contributors, the OpenTelemetry Demo has been starred
-**2048** times. On October 26, 2022—two days after General Availability—we had a
+**2048** times. On October 26, 2022 &mdash; two days after General Availability &mdash; we had a
 record 40 stars in a single day. If you use the Demo, consider leaving us a star
 to help promote the project.
 
-There are a total of 1.8k forks of the Demo. Notably, [Abhishek Veeramalla's
+There are a total of 1.8K forks of the Demo. Notably, [Abhishek Veeramalla's
 fork][1] stands out with 142 stars and has been forked 425 times.
 
-The Demo containers have been pulled over **12 million times** (11,809,995 times
-from `ghcr.io` plus 433,000 times from `hub.docker`).
+The Demo containers have been pulled over **12 million times** (11.8M times
+from `ghcr.io` plus 433K times from `hub.docker`).
 
 The OpenTelemetry Demo includes the following CNCF projects:
 
-- OpenTelemetry (of course)
+- [OpenTelemetry](/), of course
 - Envoy
 - OpenFeature/Flagd
 - Jaeger
