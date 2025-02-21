@@ -31,11 +31,11 @@ from `ghcr.io` plus 433K times from `hub.docker`).
 The OpenTelemetry Demo includes the following CNCF projects:
 
 - [OpenTelemetry](/), of course
-- Envoy
-- OpenFeature/Flagd
-- Jaeger
-- Prometheus
-- Valkey
+- [Envoy][2]
+- [OpenFeature/Flagd][3]
+- [Jaeger][4]
+- [Prometheus][5]
+- [Valkey][6]
 
 ## What's new in 2.0?
 
@@ -125,12 +125,17 @@ and we'd love your help:
 Your feedback and contributions are what make this project thrive. If you're
 interested in helping out—whether it's polishing up the dashboards, automating
 tests, or bringing Erlang/Elixir back—please jump in and join the discussion on
-our [GitHub repository][2] / SIG meetings ([calendar-demo][3]) or hop into the
-[#otel-community-demo slack channel][4].
+our [GitHub repository][7] / SIG meetings ([calendar-demo][8]) or hop into the
+[#otel-community-demo slack channel][9].
 
 Thank you for your continued support, and happy demoing!
 
 [1]: https://github.com/iam-veeramalla/ultimate-devops-project-demo
-[2]: https://github.com/open-telemetry/opentelemetry-demo
-[3]: https://groups.google.com/a/opentelemetry.io/g/calendar-demo-app
-[4]: https://cloud-native.slack.com/archives/C03B4CWV4DA
+[2]: https://www.envoyproxy.io/
+[3]: https://flagd.dev/
+[4]: https://www.jaegertracing.io/
+[5]: https://prometheus.io/
+[6]: https://valkey.io/
+[7]: https://github.com/open-telemetry/opentelemetry-demo
+[8]: https://groups.google.com/a/opentelemetry.io/g/calendar-demo-app
+[9]: https://cloud-native.slack.com/archives/C03B4CWV4DA
