@@ -1,6 +1,5 @@
 ---
-title: # bogus for markdownlint
-default_lang_commit: 080527543eae90112f01c89342891aabd6258173
+default_lang_commit: 080527543eae90112f01c89342891aabd6258173 # patched
 ---
 
 [Instrumentação](/docs/concepts/instrumentation/) é o ato de adicionar código de

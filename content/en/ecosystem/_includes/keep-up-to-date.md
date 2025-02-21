@@ -1,5 +1,4 @@
 ---
-title: # bogus entry for markdownlint
 ---
 
 ## Keeping {{ $1 }} information current
