@@ -6,14 +6,14 @@ tags:
   - nservicebus
   - dotnet
 urls:
-    website: https://particular.net/ # to work on the integrations page as well
-    repo: https://github.com/Particular/NServiceBus
-    docs: https://docs.particular.net/nservicebus/operations/opentelemetry
+  website: https://particular.net/ # to work on the integrations page as well
+  repo: https://github.com/Particular/NServiceBus
+  docs: https://docs.particular.net/nservicebus/operations/opentelemetry
 license: Apache 2.0 # or whatever your OSS license is (see https://opensource.org/licenses/), proprietary or non-OSI approved may be rejected
 description: A friendly description of your integration/plugin
 authors:
   - name: Particular Software
-  - url: https://github.com/Particular
+  - URL: https://github.com/Particular
 
 createdAt: '2025-02-17' # Set todays date
 isNative: true # set this to true only if OpenTelemetry is directly integrated into your software (no plugin, no instrumentation library)
