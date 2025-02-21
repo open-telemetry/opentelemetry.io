@@ -3,7 +3,7 @@ title: デモのアーキテクチャ
 linkTitle: アーキテクチャ
 aliases: [current_architecture]
 body_class: otel-mermaid-max-width
-default_lang_commit: 1e69c8f94a605ce5624c6b6657080d98f633ac7b
+default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28
 ---
 
 **OpenTelemetryデモ** は、異なるプログラミング言語で書かれた複数のマイクロサービスから構成されており、gRPCとHTTPを使って相互に通信を行います。
@@ -32,6 +32,7 @@ quoteservice(見積サービス):::php
 recommendationservice(レコメンデーションサービス):::python
 shippingservice(配送サービス):::rust
 queue[(キュー<br/>&#40Kafka&#41)]:::java
+react-native-app(React Native<br>アプリケーション):::typescript
 
 adservice ---->|gRPC| flagd
 
@@ -73,6 +74,8 @@ recommendationservice -->|gRPC| productcatalogservice
 recommendationservice -->|gRPC| flagd
 
 shippingservice -->|HTTP| quoteservice
+
+react-native-app -->|HTTP| frontendproxy
 end
 
 classDef dotnet fill:#178600,color:white;
@@ -119,7 +122,7 @@ classDef typescript fill:#e98516,color:black;
 
 デモアプリケーションの[メトリック](/docs/demo/telemetry-features/metric-coverage/) と [トレース](/docs/demo/telemetry-features/trace-coverage/) の計装の現状については、リンクをご確認ください。
 
-コレクターの設定は [otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config.yml?i18n-patch) で行われており、代替のエクスポーターをここで設定することができます。
+コレクターの設定は [otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config.yml) で行われており、代替のエクスポーターをここで設定することができます。
 
 ```mermaid
 graph TB

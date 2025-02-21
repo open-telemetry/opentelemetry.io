@@ -1,7 +1,7 @@
 ---
 title: デモリポジトリをフォークする
 linkTitle: フォーク
-default_lang_commit: 99b15da7137cde4a6352576768f4c9203170d569
+default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28
 ---
 
 [demo repository][]は、OpenTelemetryを使用した実装例を紹介するためのツールとして、フォークして使用できるように設計されています。
