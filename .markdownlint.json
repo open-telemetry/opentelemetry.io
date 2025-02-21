@@ -1,5 +1,6 @@
 {
   "emphasis-style": false,
+  "first-line-h1": false,
   "line-length": false,
   "link-fragments": false,
   "list-marker-space": false,
