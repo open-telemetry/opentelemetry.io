@@ -83,7 +83,6 @@ benefits of context inference while providing granular control over statement
 configurations, such as `error_mode` and `conditions`. For example, consider the
 following configuration:
 
-<!-- prettier-ignore-start -->
 ```yaml
 metric_statements:
   - context: datapoint
@@ -92,11 +91,10 @@ metric_statements:
     statements:
       - set(metric.description, "counter") where attributes["my.attr"] == "some"
 ```
-<!-- prettier-ignore-end -->
 
 The above can now be written as:
 
-<!-- prettier-ignore-start -->
+<!-- prettier-ignore -->
 ```yaml
 metric_statements:
   - conditions:
@@ -104,7 +102,6 @@ metric_statements:
     statements:
       - set(metric.description, "counter") where datapoint.attributes["my.attr"] == "some"
 ```
-<!-- prettier-ignore-end -->
 
 In this example, the `context` value is omitted and is automatically inferred to
 `datapoint`, as it is the only OTTL context present in the statements that
@@ -112,7 +109,6 @@ supports parsing both `datapoint` and `metric` data.
 
 If we update the above configuration removing the `datapoint` usage:
 
-<!-- prettier-ignore-start -->
 ```yaml
 metric_statements:
   - conditions:
@@ -120,7 +116,6 @@ metric_statements:
     statements:
       - set(metric.description, "counter")
 ```
-<!-- prettier-ignore-end -->
 
 The context inferrer would select the `metric` OTTL context instead, since no
 data points are accessed. Although it would be possible to run the statements
