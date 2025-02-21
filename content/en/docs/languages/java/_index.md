@@ -8,7 +8,7 @@ cascade:
   vers:
     instrumentation: 2.13.1
     otel: 1.47.0
-    contrib: 1.43.0
+    contrib: 1.44.0
     semconv: 1.30.0
 weight: 18
 ---
