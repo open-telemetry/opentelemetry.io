@@ -2,7 +2,7 @@
 title: Gerenciar Telemetria com SDK
 weight: 12
 default_lang_commit: 17c3b8eb53b8abc56213abb736c0f850eab752df
-cSpell:ignore: FQCNs Interceptable Logback okhttp
+cSpell:ignore: Interceptable Logback okhttp
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
