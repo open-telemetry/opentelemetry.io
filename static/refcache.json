@@ -139,6 +139,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-24T14:36:45.664044-05:00"
   },
+  "https://aws.amazon.com/what-is/ai-agents/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-20T11:45:05.186129569-08:00"
+  },
   "https://axiom.co/docs/send-data/opentelemetry": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:58:04.066246-05:00"
@@ -402,6 +406,10 @@
   "https://cloud.google.com/compute/docs/metadata/querying-metadata#waitforchange": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T01:43:12.345Z"
+  },
+  "https://cloud.google.com/discover/what-are-ai-agents": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-20T11:44:59.577353997-08:00"
   },
   "https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.events/report": {
     "StatusCode": 200,
@@ -4895,6 +4903,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:23:17.554218-05:00"
   },
+  "https://github.com/open-telemetry/community/blob/main/projects/gen-ai.md#meeting-times": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-20T09:23:56.697436075-08:00"
+  },
   "https://github.com/open-telemetry/community/blob/main/projects/go-compile-instrumentation.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-18T20:45:35.792292Z"
@@ -8963,6 +8975,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:50:44.877731-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-vertexai": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-20T09:23:54.377272992-08:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-aio-pika": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:48:55.488594-05:00"
@@ -10771,6 +10787,14 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:20:12.345Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/issues/1530": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-20T09:23:50.9712701-08:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/issues/1732": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-20T09:23:48.368491392-08:00"
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues/new": {
     "StatusCode": 206,
     "LastSeen": "2025-01-15T13:17:31.33164-05:00"
@@ -12294,6 +12318,10 @@
   "https://github.com/sokoide": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T15:28:13.585Z"
+  },
+  "https://github.com/solsu01": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-20T09:23:45.905648144-08:00"
   },
   "https://github.com/songy23": {
     "StatusCode": 206,
@@ -13867,6 +13895,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-06T11:32:41.842274-05:00"
   },
+  "https://news.microsoft.com/source/features/ai/ai-agents-what-they-are-and-how-theyll-change-the-way-we-work/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-20T11:45:03.526654347-08:00"
+  },
   "https://nextjs.org/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-06T11:32:16.966393-05:00"
@@ -14398,6 +14430,10 @@
   "https://opentelemetry.devstats.cncf.io/d/9/developer-activity-counts-by-repository-group-table": {
     "StatusCode": 200,
     "LastSeen": "2025-01-31T13:07:33.766024682Z"
+  },
+  "https://opentelemetry.io/docs/concepts/instrumentation/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-20T09:23:52.447657347-08:00"
   },
   "https://opentracing.io": {
     "StatusCode": 206,
@@ -17343,6 +17379,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-24T14:37:08.324371-05:00"
   },
+  "https://www.ibm.com/think/topics/ai-agents": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-20T11:45:01.021256196-08:00"
+  },
   "https://www.ietf.org/archive/id/draft-ietf-uuidrev-rfc4122bis-14.html#name-uuid-version-7": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:31:12.345Z"
@@ -17666,6 +17706,10 @@
   "https://www.jsonrpc.org/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:32:15.482279-05:00"
+  },
+  "https://www.kaggle.com/whitepaper-agents": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-20T09:23:49.646374083-08:00"
   },
   "https://www.kernel.org/doc/Documentation/ABI/testing/procfs-diskstats": {
     "StatusCode": 206,
