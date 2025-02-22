@@ -12,7 +12,7 @@ OpenTelemetry.
 
 O que você deseja fazer?
 
-- Corrigir um **erro de digitação ou outras correções rápidas**, veja
+- Para corrigir um **erro de digitação ou outras correções rápidas**, veja
   [Submetendo alterações usando o GitHub](pull-requests/#changes-using-github)
 - Para contribuições mais significativas, leia as páginas desta seção começando
   com:
