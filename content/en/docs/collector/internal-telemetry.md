@@ -159,7 +159,7 @@ the stability of the emitted span names and attributes.
 {{% /alert %}}
 
 The following configuration can be used to emit internal traces from the
-Collector to an OTLP/gRPC backend:
+Collector to an OTLP backend:
 
 ```yaml
 service:
