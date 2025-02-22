@@ -5,6 +5,7 @@ description:
   e ferramentas.
 aliases: [requisitos]
 weight: 1
+default_lang_commit: 1ececa0615b64c5dfd93fd6393f3e4052e0cc496
 ---
 
 Para contribuir com este repositório, você precisa estar familiarizado com as
@@ -26,7 +27,7 @@ Contribuidor (CLA)][CLA] da Linux Foundation.
 Os _pull requests_ de contribuidores que não assinaram o CLA falharão nos testes
 automatizados. O nome e o e-mail que você fornecer devem corresponder aos
 encontrados no seu `git config`, e seu nome e e-mail do Git devem corresponder
-aos usados para o CLA da CNCF.
+aos usados para assinar o CLA da CNCF.
 
 ## Código de Conduta
 
