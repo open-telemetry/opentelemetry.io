@@ -12,8 +12,6 @@ sig: CI/CD Observability
 cSpell:ignore: andrzej bäck bäckmark chacin cicd frittoli grassi helmuth horovits jemmic joao kamphaus keptn kowalski liatrio liudmila molkova robb ruech safyan sarahan shkuro skyscanner slsa stencel suereth tekton voss
 ---
 
-## OpenTelemetry Is Expanding Into CI/CD Observability
-
 We’ve been talking about the need for a common “language” for reporting and
 observing CI/CD pipelines for years, and finally, we see the first “words” of
 this language entering the “dictionary” of observability—the [OpenTelemetry open
@@ -279,6 +277,7 @@ Want to learn more? Want to get involved in shaping CI/CD Observability?
 
 We invite developers and practitioners to participate in the discussions,
 contribute ideas, and help shape the future of CI/CD observability and the
-OpenTelemetry semantic conventions. Discussion takes place in the CNCF Slack
-workspace under the #cicd-o11y channel, and you can chime in on GitHub and join
-the CICD SIG weekly calls every Thursday at 0600 PT.
+OpenTelemetry semantic conventions. Discussion takes place in the [CNCF Slack](https://slack.cncf.io/)
+workspace under the #cicd-o11y channel, and you can chime in on any of the 
+GitHub issues mentioned throughout this article and join
+the CICD SIG [weekly calls](https://calendar.google.com/calendar?cid=Z29vZ2xlLmNvbV9iNzllM2U5MGo3YmJzYTJuMnA1YW41bGY2MEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t) every Thursday at 0600 PT.
