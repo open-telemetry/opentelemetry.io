@@ -49,8 +49,8 @@ service:
         - periodic:
             exporter:
               otlp:
-                protocol: grpc
-                endpoint: http://localhost:14317
+                protocol: http/protobuf
+                endpoint: https://backend:4318
 ```
 
 Alternatively, you can expose the Prometheus endpoint to one specific or all
@@ -159,7 +159,7 @@ the stability of the emitted span names and attributes.
 {{% /alert %}}
 
 The following configuration can be used to emit internal traces from the
-Collector to an OTLP/gRPC backend:
+Collector to an OTLP backend:
 
 ```yaml
 service:
@@ -169,8 +169,8 @@ service:
         - batch:
             exporter:
               otlp:
-                protocol: grpc
-                endpoint: https://backend:4317
+                protocol: http/protobuf
+                endpoint: https://backend:4318
 ```
 
 See the [example configuration][kitchen-sink-config] for additional options.
