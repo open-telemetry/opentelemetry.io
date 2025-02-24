@@ -15,10 +15,11 @@ which is based on [Apache Arrow](https://arrow.apache.org/), a columnar-oriented
 memory format used for developing analytics applications. This integration
 facilitates a reduction in telemetry data traffic by a factor of 10 after
 compression, offering a 40% improvement over the best existing OpenTelemetry
-Protocol (OTLP) configurations with [Zstandard (zstd)](http://www.zstd.net/)
-compression enabled. As a result, this new protocol emerges as an optimal choice
-for transporting telemetry data over the internet. We are also excited to
-announce the release of a new pair of receiver/exporter in the
+Protocol (OTLP) configurations with
+[Zstandard (zstd)](https://facebook.github.io/zstd/) compression enabled. As a
+result, this new protocol emerges as an optimal choice for transporting
+telemetry data over the internet. We are also excited to announce the release of
+a new pair of receiver/exporter in the
 [opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/)
 repository that supports this protocol. This protocol, designed to complement
 the OTLP protocol in situations with substantial telemetry data volumes, has
