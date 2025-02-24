@@ -49,8 +49,8 @@ translating headings:
 
 ### Links {#links}
 
-Do not translate link references, keep them unchanged. This holds true for links
-to website pages and section-local resources such as [images](#images).
+Do **not** translate link references. This holds true for external links, and
+paths to website pages and section-local resources such as [images](#images).
 
 The only exception is for links to external pages (such as
 <https://en.wikipedia.org>) that have a version specific to your local. Often
