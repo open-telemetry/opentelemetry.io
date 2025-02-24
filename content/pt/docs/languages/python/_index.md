@@ -45,10 +45,10 @@ diretórios.
 ## Extensões {#extensions}
 
 Para encontrar projetos relacionados como exporters, bibliotecas de
-instrumentação, implementações de rastros, etc., visite o
+instrumentação, implementações de rastreadores, etc., visite o
 [Registro](/ecosystem/registry/?s=python).
 
-### Instalando Pacotes de Ponta (#installing-cutting-edge-packages)
+### Instalando Pacotes de Ponta {#installing-cutting-edge-packages}
 
 Há algumas funcionalidades que ainda não foram lançadas no PyPI. Nessa situação,
 você pode querer instalar os pacotes diretamente do repositório. Isso pode ser
