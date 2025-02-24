@@ -3,7 +3,7 @@ title: Pré-requisitos
 description:
   Para contribuir, você precisa estar familiarizado com as seguintes tecnologias
   e ferramentas.
-aliases: [requisitos]
+aliases: [requirements]
 weight: 1
 default_lang_commit: 1ececa0615b64c5dfd93fd6393f3e4052e0cc496
 ---
