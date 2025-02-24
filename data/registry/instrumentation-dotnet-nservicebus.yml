@@ -10,7 +10,7 @@ urls:
   repo: https://github.com/Particular/NServiceBus
   docs: https://docs.particular.net/nservicebus/operations/opentelemetry
 license: Apache 2.0 # or whatever your OSS license is (see https://opensource.org/licenses/), proprietary or non-OSI approved may be rejected
-description: A friendly description of your integration/plugin
+description: With NServiceBus OpenTelemetry instrumentation enabled, tracing, metrics, and logging can be individually configured via the OpenTelemetry API itself.
 authors:
   - name: Particular Software
   - URL: https://github.com/Particular
