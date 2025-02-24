@@ -74,4 +74,4 @@ observabilidade aos usuários finais, consulte
 
 [envie um PR]: /docs/contributing/pull-requests/
 
-{{% ecosystem/keep-up-to-date integration %}}
+{{% include keep-up-to-date.md integration %}}

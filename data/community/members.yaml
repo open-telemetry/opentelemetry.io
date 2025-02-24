@@ -953,6 +953,9 @@ maintainers:
   - name: rajkumar-rangaraj
     teams:
       - dotnet-approvers
+      - dotnet-contrib-approvers
+      - dotnet-contrib-maintainers
+      - dotnet-contrib-triagers
       - dotnet-instrumentation-approvers
       - dotnet-instrumentation-maintainers
       - dotnet-instrumentation-triagers
@@ -1054,7 +1057,6 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/10536136?v=4
   - name: srikanthccv
     teams:
-      - opamp-go-approvers
       - sqlcommenter-approvers
       - sqlcommenter-maintainers
     html_url: https://github.com/srikanthccv
@@ -1302,6 +1304,11 @@ approvers:
       - sig-end-user-triagers
     html_url: https://github.com/AnaMMedina21
     avatar_url: https://avatars.githubusercontent.com/u/3894791?v=4
+  - name: ArielDemarco
+    teams:
+      - swift-approvers
+    html_url: https://github.com/ArielDemarco
+    avatar_url: https://avatars.githubusercontent.com/u/25651947?v=4
   - name: aryanishan1001
     teams:
       - cpp-contrib-approvers
@@ -1368,11 +1375,6 @@ approvers:
       - php-triagers
     html_url: https://github.com/ChrisLightfootWild
     avatar_url: https://avatars.githubusercontent.com/u/106102472?v=4
-  - name: christophe-kamphaus-jemmic
-    teams:
-      - semconv-cicd-approvers
-    html_url: https://github.com/christophe-kamphaus-jemmic
-    avatar_url: https://avatars.githubusercontent.com/u/44020965?v=4
   - name: ChrsMark
     teams:
       - collector-contrib-approvers
@@ -1553,6 +1555,11 @@ approvers:
       - semconv-jvm-approvers
     html_url: https://github.com/jonatan-ivanov
     avatar_url: https://avatars.githubusercontent.com/u/3044070?v=4
+  - name: kamphaus
+    teams:
+      - semconv-cicd-approvers
+    html_url: https://github.com/kamphaus
+    avatar_url: https://avatars.githubusercontent.com/u/8219709?v=4
   - name: karthikscale3
     teams:
       - opentelemetry-python-contrib-approvers

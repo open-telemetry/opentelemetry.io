@@ -335,7 +335,7 @@ above, you have a `TracerProvider` setup for you already. You can continue with
 
 #### Browser
 
-{{% include "./_browser-instrumentation-warning.md" %}}
+{{% include browser-instrumentation-warning.md %}}
 
 First, ensure you've got the right packages:
 
