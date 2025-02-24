@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry Is Expanding Into CI/CD Observability
 linkTitle: OpenTelemetry Is Expanding Into CI/CD Observability
-date: 2025-02-18
+date: 2025-02-24
 author: >-
   [Dotan Horovits](https://github.com/horovits/) (CNCF Ambassador), [Adriel
   Perkins](https://github.com/adrielp) (Liatrio)
