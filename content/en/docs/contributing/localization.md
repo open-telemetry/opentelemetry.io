@@ -26,7 +26,7 @@ Do translate:
 Do **NOT**:
 
 - Translate:
-  - **File or directory** names, to resources in this repo
+  - **File or directory** names of resources in this repository
   - [Links](#links), this includes [heading IDs](#headings).[^*]
   - [Front matter][] fields other than those listed in the "Do" section above.
     In particular, do not translate `aliases`. When in doubt, ask maintainers.
@@ -82,7 +82,8 @@ itself[^shared-images].
 
 ### Include files {#includes}
 
-**Do** translate page fragments found under `_includes` directories just as you would translate any other page content.
+**Do** translate page fragments found under `_includes` directories just as you
+would translate any other page content.
 
 ### Shortcodes
 
