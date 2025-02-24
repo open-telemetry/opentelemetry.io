@@ -8,7 +8,7 @@ default_lang_commit: 1ececa0615b64c5dfd93fd6393f3e4052e0cc496
 Obrigado pelo seu interesse em contribuir com o website e documentação do
 OpenTelemetry.
 
-## Vamos lá!
+## Vamos lá! {#jump-right-in}
 
 O que você deseja fazer?
 
@@ -32,7 +32,7 @@ orientações importantes.
 
 {{% /alert %}}
 
-## No que posso contribuir?
+## No que posso contribuir? {#what-can-i-contribute-to}
 
 Contribuidores da documentação OpenTelemetry:
 
