@@ -1855,6 +1855,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:23:51.473219-05:00"
   },
+  "https://en.wikipedia.org": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-24T13:42:37.248355-05:00"
+  },
   "https://en.wikipedia.org/wiki/0.0.0.0": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:12:46.109395-05:00"
@@ -12939,6 +12943,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:15.787072-05:00"
   },
+  "https://gohugo.io/content-management/front-matter/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-24T13:42:35.288155-05:00"
+  },
   "https://gohugo.io/content-management/multilingual/": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:09:55.106757-05:00"
@@ -13890,6 +13898,10 @@
   "https://memcached.org/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-24T14:37:12.587459-05:00"
+  },
+  "https://mermaid.js.org": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-24T13:42:37.730493-05:00"
   },
   "https://metricshub.com": {
     "StatusCode": 200,
