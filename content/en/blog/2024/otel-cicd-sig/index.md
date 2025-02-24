@@ -14,9 +14,10 @@ cSpell:ignore: andrzej bäck bäckmark chacin cicd frittoli grassi helmuth horov
 
 We’ve been talking about the need for a common “language” for reporting and
 observing CI/CD pipelines for years, and finally, we see the first “words” of
-this language entering the “dictionary” of observability—the [OpenTelemetry open
-specification](/docs/specs/otel/). With the recent release of OpenTelemetry’s [Semantic Conventions](/docs/specs/semconv/),
-v1.27.0, you can find
+this language entering the “dictionary” of observability—the
+[OpenTelemetry open specification](/docs/specs/otel/). With the recent release
+of OpenTelemetry’s [Semantic Conventions](/docs/specs/semconv/), v1.27.0, you
+can find
 [designated attributes for reporting CI/CD pipelines](/docs/specs/semconv/attributes-registry/cicd/).
 
 This is the result of the hard work of the
@@ -277,7 +278,9 @@ Want to learn more? Want to get involved in shaping CI/CD Observability?
 
 We invite developers and practitioners to participate in the discussions,
 contribute ideas, and help shape the future of CI/CD observability and the
-OpenTelemetry semantic conventions. Discussion takes place in the [CNCF Slack](https://slack.cncf.io/)
-workspace under the #cicd-o11y channel, and you can chime in on any of the 
-GitHub issues mentioned throughout this article and join
-the CICD SIG [weekly calls](https://calendar.google.com/calendar?cid=Z29vZ2xlLmNvbV9iNzllM2U5MGo3YmJzYTJuMnA1YW41bGY2MEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t) every Thursday at 0600 PT.
+OpenTelemetry semantic conventions. Discussion takes place in the
+[CNCF Slack](https://slack.cncf.io/) workspace under the #cicd-o11y channel, and
+you can chime in on any of the GitHub issues mentioned throughout this article
+and join the CICD SIG
+[weekly calls](https://calendar.google.com/calendar?cid=Z29vZ2xlLmNvbV9iNzllM2U5MGo3YmJzYTJuMnA1YW41bGY2MEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t)
+every Thursday at 0600 PT.
