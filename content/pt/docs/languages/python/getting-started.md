@@ -2,9 +2,9 @@
 title: Primeiros Passos
 description: Obtenha telemetria para sua aplicação em menos de 5 minutos!
 weight: 10
+default_lang_commit: 43e2cb3b4d0dd513b436add73236503a8d592b39
 # prettier-ignore
 cSpell:ignore: debugexporter diceroller distro maxlen randint rolldice rollspan venv
-default_lang_commit: 43e2cb3b4d0dd513b436add73236503a8d592b39
 ---
 
 Esta página mostrará como começar a usar o OpenTelemetry em Python.
@@ -836,6 +836,6 @@ Se você gostaria de explorar um exemplo mais complexo, dê uma olhada na
 [Serviço de Recomendação](/docs/demo/services/recommendation/) baseado em Python
 e o [Gerador de Carga](/docs/demo/services/load-generator/).
 
-[rastros]: pt/docs/concepts/signals/traces/
-[métricas]: pt/docs/concepts/signals/metrics/
-[logs]: pt/docs/concepts/signals/logs/
+[rastros]: docs/concepts/signals/traces/
+[métricas]: docs/concepts/signals/metrics/
+[logs]: docs/concepts/signals/logs/
