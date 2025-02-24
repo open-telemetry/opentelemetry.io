@@ -67,4 +67,5 @@ pip install -e ./opentelemetry-api -e ./opentelemetry-sdk -e ./opentelemetry-sem
 - Repositório Contrib: [opentelemetry-python-contrib][]
 
 [opentelemetry-python]: https://github.com/open-telemetry/opentelemetry-python
-[opentelemetry-python-contrib]: https://github.com/open-telemetry/opentelemetry-python-contrib
+[opentelemetry-python-contrib]:
+  https://github.com/open-telemetry/opentelemetry-python-contrib

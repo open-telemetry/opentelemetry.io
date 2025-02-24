@@ -22,9 +22,9 @@ Certifique-se de ter o seguinte instalado localmente:
 
 O exemplo a seguir usa uma aplicação básica em
 [Flask](https://flask.palletsprojects.com/). Se você não estiver usando Flask,
-tudo bem — você pode usar OpenTelemetry Python com outros _frameworks_ web também,
-como Django e FastAPI. Para uma lista completa de bibliotecas para _frameworks_
-suportados, consulte o
+tudo bem — você pode usar OpenTelemetry Python com outros _frameworks_ web
+também, como Django e FastAPI. Para uma lista completa de bibliotecas para
+_frameworks_ suportados, consulte o
 [registro](/ecosystem/registry/?component=instrumentation&language=python).
 
 Para exemplos mais elaborados, consulte
@@ -86,13 +86,14 @@ flask run -p 8080
 
 ## Instrumentação {#instrumentation}
 
-A instrumentação sem código gerará dados de telemetria em seu nome. Existem várias
-opções que você pode seguir, abordadas em mais detalhes em
+A instrumentação sem código gerará dados de telemetria em seu nome. Existem
+várias opções que você pode seguir, abordadas em mais detalhes em
 [Instrumentação sem código](/docs/zero-code/python/). Aqui usaremos o agente
 `opentelemetry-instrument`.
 
-Instale o pacote `opentelemetry-distro`, que contém a API e SDK do OpenTelemetry, além das ferramentas `opentelemetry-bootstrap` e `opentelemetry-instrument`
-que serão utilizadas a seguir.
+Instale o pacote `opentelemetry-distro`, que contém a API e SDK do
+OpenTelemetry, além das ferramentas `opentelemetry-bootstrap` e
+`opentelemetry-instrument` que serão utilizadas a seguir.
 
 ```shell
 pip install opentelemetry-distro
@@ -189,13 +190,15 @@ console, como o seguinte:
 
 </details>
 
-O trecho gerado rastreia o tempo de vida de uma requisição para a rota `/rolldice`.
+O trecho gerado rastreia o tempo de vida de uma requisição para a rota
+`/rolldice`.
 
 A linha de log emitida durante a solicitação contém o mesmo ID de rastro e ID de
 trecho e é exportada para o console via o exportador de logs.
 
 Envie mais algumas solicitações para esta rota e em seguida, espere um pouco ou
-pare a execução da aplicação e você verá métricas na saída do console, como o seguinte:
+pare a execução da aplicação e você verá métricas na saída do console, como o
+seguinte:
 
 <details>
 <summary>Ver exemplo de saída</summary>
@@ -291,8 +294,8 @@ pare a execução da aplicação e você verá métricas na saída do console, c
 ## Adicione instrumentação manual à instrumentação automática {#add-manual-instrumentation-to-automatic-instrumentation}
 
 A instrumentação automática captura telemetria nas bordas dos seus sistemas,
-como requisições HTTP de entrada e saída, mas não captura o que está
-acontecendo na sua aplicação. Para isso, você precisará escrever alguma
+como requisições HTTP de entrada e saída, mas não captura o que está acontecendo
+na sua aplicação. Para isso, você precisará escrever alguma
 [instrumentação manual](../instrumentation/). Aqui está como você pode
 facilmente vincular a instrumentação manual com a instrumentação automática.
 
@@ -429,7 +432,7 @@ para criar um instrumento contador que conta o número de jogadas para cada valo
 de jogada possível:
 
 ```python
-# Estas são as declarações de _imports_ necessários 
+# Estas são as declarações de _imports_ necessários
 from opentelemetry import trace
 from opentelemetry import metrics
 
@@ -483,8 +486,9 @@ opentelemetry-instrument \
     flask run -p 8080
 ```
 
-Quando você enviar uma requisição para o servidor, verá a métrica do contador
-de jogadas emitida para o console, com contagens de valor separadas para cada jogada:
+Quando você enviar uma requisição para o servidor, verá a métrica do contador de
+jogadas emitida para o console, com contagens de valor separadas para cada
+jogada:
 
 <details>
 <summary>Ver exemplo de saída</summary>
@@ -644,10 +648,11 @@ de jogadas emitida para o console, com contagens de valor separadas para cada jo
 ## Envie telemetria para o OpenTelemetry Collector {#send-telemetry-to-an-opentelemetry-collector}
 
 O [OpenTelemetry Collector](/docs/collector/) é um componente crítico da maioria
-das implantações em produção. Alguns exemplos de quando é benéfico utilizar um Collector:
+das implantações em produção. Alguns exemplos de quando é benéfico utilizar um
+Collector:
 
-- Um único coletor de telemetria compartilhado por vários serviços, para reduzir a
-  sobrecarga de troca de exportadores
+- Um único coletor de telemetria compartilhado por vários serviços, para reduzir
+  a sobrecarga de troca de exportadores
 - Agregando rastros entre vários serviços, executados em várias instâncias
 - Um local central para processar rastros antes de exportá-los para um _backend_
 
@@ -690,8 +695,8 @@ service:
       processors: [batch]
 ```
 
-Em seguida, execute o comando docker para adquirir e executar o Collector com base
-nesta configuração:
+Em seguida, execute o comando docker para adquirir e executar o Collector com
+base nesta configuração:
 
 ```shell
 docker run -p 4317:4317 \
