@@ -29,12 +29,12 @@ automatizados. O nome e o e-mail que você fornecer devem corresponder aos
 encontrados no seu `git config`, e seu nome e e-mail do Git devem corresponder
 aos usados para assinar o CLA da CNCF.
 
-## Código de Conduta
+## Código de Conduta {#code-of-conduct}
 
 Todos os contribuidores do OpenTelemetry estão sujeitos ao [Código de Conduta da
 Comunidade CNCF][CoC].
 
-## Diretrizes da Comunidade
+## Diretrizes da Comunidade {#community-guidelines}
 
 Para diretrizes gerais da comunidade OpenTelemetry, incluindo funções e
 expectativas, consulte o [Guia para Novos Contribuidores do OpenTelemetry][NCG].
