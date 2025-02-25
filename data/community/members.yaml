@@ -582,6 +582,8 @@ maintainers:
     teams:
       - arrow-approvers
       - arrow-maintainers
+      - collector-approvers
+      - collector-triagers
       - specs-triagers
     html_url: https://github.com/jmacd
     avatar_url: https://avatars.githubusercontent.com/u/3629705?v=4
@@ -1508,6 +1510,12 @@ approvers:
       - collector-releases-approvers
     html_url: https://github.com/jackgopack4
     avatar_url: https://avatars.githubusercontent.com/u/6229304?v=4
+  - name: jade-guiton-dd
+    teams:
+      - collector-approvers
+      - collector-triagers
+    html_url: https://github.com/jade-guiton-dd
+    avatar_url: https://avatars.githubusercontent.com/u/179536679?v=4
   - name: JaredTan95
     teams:
       - collector-contrib-triagers
@@ -1744,6 +1752,11 @@ approvers:
       - semconv-log-approvers
     html_url: https://github.com/scheler
     avatar_url: https://avatars.githubusercontent.com/u/2802664?v=4
+  - name: scottgerring
+    teams:
+      - rust-approvers
+    html_url: https://github.com/scottgerring
+    avatar_url: https://avatars.githubusercontent.com/u/474021?v=4
   - name: seemk
     teams:
       - cpp-contrib-approvers
@@ -1917,11 +1930,6 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/JacksonWeber
     avatar_url: https://avatars.githubusercontent.com/u/47067795?v=4
-  - name: jade-guiton-dd
-    teams:
-      - collector-triagers
-    html_url: https://github.com/jade-guiton-dd
-    avatar_url: https://avatars.githubusercontent.com/u/179536679?v=4
   - name: jamesmoessis
     teams:
       - collector-contrib-triagers
@@ -2023,6 +2031,11 @@ triagers:
       - go-triagers
     html_url: https://github.com/scorpionknifes
     avatar_url: https://avatars.githubusercontent.com/u/23299540?v=4
+  - name: sincejune
+    teams:
+      - collector-triagers
+    html_url: https://github.com/sincejune
+    avatar_url: https://avatars.githubusercontent.com/u/19381524?v=4
   - name: SylvainJuge
     teams:
       - java-instrumentation-triagers
