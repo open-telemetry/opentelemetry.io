@@ -836,6 +836,6 @@ Se você gostaria de explorar um exemplo mais complexo, dê uma olhada na
 [Serviço de Recomendação](/docs/demo/services/recommendation/) baseado em Python
 e o [Gerador de Carga](/docs/demo/services/load-generator/).
 
-[rastros]: docs/concepts/signals/traces/
-[métricas]: docs/concepts/signals/metrics/
-[logs]: docs/concepts/signals/logs/
+[rastros]: /pt/docs/concepts/signals/traces/
+[métricas]: /pt/docs/concepts/signals/metrics/
+[logs]: /pt/docs/concepts/signals/logs/
