@@ -1,8 +1,8 @@
 ---
-default_lang_commit: 1ececa0615b64c5dfd93fd6393f3e4052e0cc496
+default_lang_commit: 2f2dbb706175132f9fca17d778ab69e8aba8f632
 ---
 
-## Mantendo as informações de {{ $1 }} atualizadas
+## Mantendo as informações de {{ $1 }} atualizadas {#keeping-up-to-date}
 
 Certifique-se de manter as informações de {{ $1 }} atualizadas; caso contrário,
 podemos atualizá-las ou removê-las do registro ou da [lista do ecossistema].
