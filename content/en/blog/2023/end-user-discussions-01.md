@@ -20,7 +20,7 @@ they use OpenTelemetry in real life. Sessions are held for users in the Americas
 discussions take place using a
 [Lean Coffee format](https://agilecoffee.com/leancoffee/), whereby folks are
 invited to post their topics to the
-[Agile Coffee board like this one](http://agile.coffee/#b3b37364-d40e-4029-847c-8ee059d60855),
+[Agile Coffee board like this one](http://agile.coffee/?disable_http_check#b3b37364-d40e-4029-847c-8ee059d60855),
 and everyone in attendance votes on what they want to talk about.
 
 This is a great way to meet other users in the OpenTelemetry community, and to
