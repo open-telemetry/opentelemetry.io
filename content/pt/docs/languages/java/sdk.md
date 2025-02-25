@@ -36,14 +36,14 @@ configurados para instrumentação.
 
 O SDK é empacotado com uma variedade de componentes integrados que são
 suficientes para muitos casos de uso, e suporta
-[plugins de interfaces](#sdk-plugin-extension-interfaces) para extensibilidade.
+[plugins de interfaces](#SDK-interfaces-de-extensões-para-plugins) para extensibilidade.
 
 ## SDK interfaces de extensões para plugins
 
 Quando os componentes integrados são suficientes, o SDK pode ser extendido por
 uma implementação para várias interfaces de extensões para plugins:
 
-- [Amostras](#sampler): Configura quais trechos são gravados e amostrados.
+- [Amostrador](#amostrador): Configura quais trechos são gravados e amostrados.
 - [SpanProcessor](#spanprocessor): Processa trechos quando eles iniciam e quando
   eles finalizam.
 - [SpanExporter](#spanexporter): Exporta trechos fora dos processos.
@@ -67,12 +67,12 @@ usuário. Cada seção do componente incluí:
 - Uma pequena descrição, incluindo um link para a documentação do Java com um
   tipo de referência.
 - Se este componente é
-  [interfaces de extensões para plugins](#sdk-plugin-extension-interfaces), uma
+  [interfaces de extensões para plugins](#SDK-interfaces-de-extensões-para-plugins), uma
   tabela de implementações disponíveis do `opentelemetry-java-contrib`.
 - Uma demonstração simples de
   [Configuração programática](../configuration/#programmatic-configuration).
 - Se este componente é
-  [interfaces de extensões para plugins](#sdk-plugin-extension-interfaces), uma
+  [interfaces de extensões para plugins](#SDK-interfaces-de-extensões-para-plugins), uma
   simples demonstração de uma implementação personalizada.
 
 ### OpenTelemetrySdk
@@ -160,7 +160,7 @@ responsável por lidar com a telemetria de traços produzidos pela API.
 `SdkTracerProvider` é configurado pelo responsável da aplicação, e consiste em:
 
 - [Recursos](#resource): Os trechos associados com o traço.
-- [Amostras](#sampler): Configura quais trechos são gravados e amostrados.
+- [Amostrador](#amostrador): Configura quais trechos são gravados e amostrados.
 - [SpanProcessors](#spanprocessor): Processa trechos quando eles iniciam e
   quando eles finalizam.
 - [SpanExporters](#spanexporter): Exporta trechos fora dos processos (junção dos
@@ -194,11 +194,11 @@ public class SdkTracerProviderConfig {
 ```
 <!-- prettier-ignore-end -->
 
-#### Amostra
+#### Amostrador
 
 Uma
 [Amostra](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/samplers/Sampler.html)
-é uma [interfaces de extensão para plugins](#sdk-plugin-extension-interfaces)
+é uma [interfaces de extensão para plugins](#SDK-interfaces-de-extensões-para-plugins)
 responsável por determinar quais trechos são gravados e amostrados.
 
 {{% alert color="info" %}} Por padrão o `SdkTracerProvider` é configurado com a
@@ -316,7 +316,7 @@ public class CustomSampler implements Sampler {
 
 Um
 [SpanProcessor](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/SpanProcessor.html)
-é uma [interface de extensão para plugins](#sdk-plugin-extension-interfaces) com
+é uma [interface de extensão para plugins](#SDK-interfaces-de-extensões-para-plugins) com
 funções de retorno invocadas quando um trecho é inicializado e finalizado. Elas
 são frequentemente combinadas com [SpanExporters](#spanexporter) para exportar
 trechos ao limites dos processos, mas também possui outras aplicações, como
@@ -423,7 +423,7 @@ public class CustomSpanProcessor implements SpanProcessor {
 
 Um
 [SpanExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/export/SpanExporter.html)
-é uma [interface de extensão para plugins](#sdk-plugin-extension-interfaces)
+é uma [interface de extensão para plugins](#SDK-interfaces-de-extensões-para-plugins)
 responsável por exportar trechos foras dos processos. Ao invés de registrar
 diretamente com `SdkTracerProvider`, eles são associados com
 [SpanProcessors](#spanprocessor) (normalmente `BatchSpanProcessor`).
@@ -631,7 +631,7 @@ public class SdkMeterProviderConfig {
 
 O
 [MetricReader](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/export/MetricReader.html)
-é uma [interface de extensão para plugins](#sdk-plugin-extension-interfaces) que
+é uma [interface de extensão para plugins](#SDK-interfaces-de-extensões-para-plugins) que
 é responsável por ler as métricas agregadas. Eles são muitas vezes associadas
 com [MetricExporters](#metricexporter) para exportar métricas fora do processo,
 mas pode também ser usada para servir métricas para scrapers externos em
@@ -760,7 +760,7 @@ public class CustomMetricReader implements MetricReader {
 
 A
 [MetricExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/export/MetricExporter.html)
-é uma [interface de extensão para plugins](#sdk-plugin-extension-interfaces)
+é uma [interface de extensão para plugins](#SDK-interfaces-de-extensões-para-plugins)
 responsável por exportar métricas fora do processo. Ao invés de registrar
 diretamente com `SdkMeterProvider`, eles são associados com o
 [PeriodicMetricReader](#metricreader).
@@ -1003,7 +1003,7 @@ public class SdkLoggerProviderConfig {
 
 A
 [LogRecordProcessor](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/LogRecordProcessor.html)
-é uma [interface de extensão para plugins](#sdk-plugin-extension-interfaces) com
+é uma [interface de extensão para plugins](#SDK-interfaces-de-extensões-para-plugins) com
 um callback invocado quando um log é emitido. Eles são frequentemente associados
 com [LogRecordExporters](#logrecordexporter) para exportar logs fora do
 processo, mas tem outras aplicações, como enriquecimento de dados.
@@ -1089,7 +1089,7 @@ public class CustomLogRecordProcessor implements LogRecordProcessor {
 
 Um
 [LogRecordExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/export/LogRecordExporter.html)
-é uma [interface de extensão para plugins](#sdk-plugin-extension-interfaces)
+é uma [interface de extensão para plugins](#SDK-interfaces-de-extensões-para-plugins)
 responsável por exportar registros de logs fora do processo. Ao invés de
 registrar diretamente com `SdkLoggerProvider`, eles podem ser associados ao
 [LogRecordProcessors](#logrecordprocessor) (tipicamente
@@ -1232,7 +1232,7 @@ public class LogLimitsConfig {
 ### TextMapPropagator
 
 [TextMapPropagator](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/propagation/TextMapPropagator.html)
-é uma [interface de extensão para plugins](#sdk-plugin-extension-interfaces)
+é uma [interface de extensão para plugins](#SDK-interfaces-de-extensões-para-plugins)
 responsável por propagar o contexto através dos processos conectados em um
 formato de texto.
 
