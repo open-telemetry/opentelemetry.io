@@ -31,12 +31,12 @@ O SDK consiste nos seguintes componentes de alto nível:
   limites dos processos.
 
 Essa combinação no [OpenTelemetrySdk](#opentelemetrysdk), transporta um objeto
-que facilita a passagem de [Componentes SDK](#sdk-components) totalmente
+que facilita a passagem de [Componentes SDK](#Componentes-do-SDK) totalmente
 configurados para instrumentação.
 
 O SDK é empacotado com uma variedade de componentes integrados que são
 suficientes para muitos casos de uso, e suporta
-[plugins de interfaces](#SDK-interfaces-de-extensões-para-plugins) para
+[plugins de interfaces](#sdk-interfaces-de-extensões-para-plugins) para
 extensibilidade.
 
 ## SDK interfaces de extensões para plugins
@@ -68,12 +68,12 @@ usuário. Cada seção do componente incluí:
 - Uma pequena descrição, incluindo um link para a documentação do Java com um
   tipo de referência.
 - Se este componente é
-  [interfaces de extensões para plugins](#SDK-interfaces-de-extensões-para-plugins),
+  [interfaces de extensões para plugins](#sdk-interfaces-de-extensões-para-plugins),
   uma tabela de implementações disponíveis do `opentelemetry-java-contrib`.
 - Uma demonstração simples de
   [Configuração programática](../configuration/#programmatic-configuration).
 - Se este componente é
-  [interfaces de extensões para plugins](#SDK-interfaces-de-extensões-para-plugins),
+  [interfaces de extensões para plugins](#sdk-interfaces-de-extensões-para-plugins),
   uma simples demonstração de uma implementação personalizada.
 
 ### OpenTelemetrySdk
@@ -160,7 +160,7 @@ responsável por lidar com a telemetria de traços produzidos pela API.
 
 `SdkTracerProvider` é configurado pelo responsável da aplicação, e consiste em:
 
-- [Recursos](#resource): Os trechos associados com o traço.
+- [Recursos](#recursos): Os trechos associados com o traço.
 - [Amostrador](#amostrador): Configura quais trechos são gravados e amostrados.
 - [SpanProcessors](#spanprocessor): Processa trechos quando eles iniciam e
   quando eles finalizam.
@@ -200,7 +200,7 @@ public class SdkTracerProviderConfig {
 Uma
 [Amostra](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/samplers/Sampler.html)
 é uma
-[interfaces de extensão para plugins](#SDK-interfaces-de-extensões-para-plugins)
+[interfaces de extensão para plugins](#sdk-interfaces-de-extensões-para-plugins)
 responsável por determinar quais trechos são gravados e amostrados.
 
 {{% alert color="info" %}} Por padrão o `SdkTracerProvider` é configurado com a
@@ -319,7 +319,7 @@ public class CustomSampler implements Sampler {
 Um
 [SpanProcessor](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/SpanProcessor.html)
 é uma
-[interface de extensão para plugins](#SDK-interfaces-de-extensões-para-plugins)
+[interface de extensão para plugins](#sdk-interfaces-de-extensões-para-plugins)
 com funções de retorno invocadas quando um trecho é inicializado e finalizado.
 Elas são frequentemente combinadas com [SpanExporters](#spanexporter) para
 exportar trechos ao limites dos processos, mas também possui outras aplicações,
@@ -427,7 +427,7 @@ public class CustomSpanProcessor implements SpanProcessor {
 Um
 [SpanExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/export/SpanExporter.html)
 é uma
-[interface de extensão para plugins](#SDK-interfaces-de-extensões-para-plugins)
+[interface de extensão para plugins](#sdk-interfaces-de-extensões-para-plugins)
 responsável por exportar trechos foras dos processos. Ao invés de registrar
 diretamente com `SdkTracerProvider`, eles são associados com
 [SpanProcessors](#spanprocessor) (normalmente `BatchSpanProcessor`).
@@ -446,7 +446,7 @@ Exportadores de trechos integrados ao SDK e mantidos pela comunidade em
 | `InterceptableSpanExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha`     | Passes trechos para um interceptador flexível antes da exportação.                               |
 | `KafkaSpanExporter`            | `io.opentelemetry.contrib:opentelemetry-kafka-exporter:{{% param vers.contrib %}}-alpha` | Exporta trechos escrevendo para um tópico do Kafka.                                              |
 
-**[1]**: Veja [OTLP exporters](#otlp-exporters) para detalhes de implementação.
+**[1]**: Veja [OTLP exporters](#Exportadores-OTLP) para detalhes de implementação.
 
 O trecho de código a seguir demonstra configuração programática do
 `SpanExporter`:
@@ -575,7 +575,7 @@ por gerenciar a telemetria de métricas produzidas pela API.
 
 `SdkMeterProvider` é configurado pelo responsável pela aplicação, e consiste em:
 
-- [Resource](#resource): O recurso ao qual as métricas estão associadas.
+- [Resource](#recursos): O recurso ao qual as métricas estão associadas.
 - [MetricReader](#metricreader): Lê o estado agregado das métricas.
   - Opcionalmente, com o
     [CardinalityLimitSelector](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/export/CardinalityLimitSelector.html)
@@ -636,7 +636,7 @@ public class SdkMeterProviderConfig {
 O
 [MetricReader](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/export/MetricReader.html)
 é uma
-[interface de extensão para plugins](#SDK-interfaces-de-extensões-para-plugins)
+[interface de extensão para plugins](#sdk-interfaces-de-extensões-para-plugins)
 que é responsável por ler as métricas agregadas. Eles são muitas vezes
 associadas com [MetricExporters](#metricexporter) para exportar métricas fora do
 processo, mas pode também ser usada para servir métricas para scrapers externos
@@ -766,7 +766,7 @@ public class CustomMetricReader implements MetricReader {
 A
 [MetricExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/export/MetricExporter.html)
 é uma
-[interface de extensão para plugins](#SDK-interfaces-de-extensões-para-plugins)
+[interface de extensão para plugins](#sdk-interfaces-de-extensões-para-plugins)
 responsável por exportar métricas fora do processo. Ao invés de registrar
 diretamente com `SdkMeterProvider`, eles são associados com o
 [PeriodicMetricReader](#metricreader).
@@ -783,7 +783,7 @@ Metric exporters integrados ao SDK e mantidos pela comunidade em
 | `OtlpStdoutMetricExporter`       | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Registra métricas para `System.out` em formato OTLP [Arquivo JSON Codificado][] (experimental). |
 | `InterceptableMetricExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Passes métricas para um interceptador flexível antes da exportação.                             |
 
-**[1]**: Veja [OTLP exporters](#otlp-exporters) para detalhes de implementação.
+**[1]**: Veja [OTLP exporters](#Exportadores-OTLP) para detalhes de implementação.
 
 O trecho de código a seguir demonstra a configuração programática do
 `MetricExporter`:
@@ -973,7 +973,7 @@ responsável por gerenciar a telemetria dos logs produzidos pela API.
 
 `SdkLoggerProvider` é configurado pelo responsável da aplicação, e consiste em:
 
-- [Resource](#resource): O recurso ao qual os logs estão associados.
+- [Resource](#recursos): O recurso ao qual os logs estão associados.
 - [LogRecordProcessor](#logrecordprocessor): Processa os logs quando eles são
   emitidos.
 - [LogRecordExporter](#logrecordexporter): Exporta logs fora do processo (em
@@ -1010,7 +1010,7 @@ public class SdkLoggerProviderConfig {
 A
 [LogRecordProcessor](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/LogRecordProcessor.html)
 é uma
-[interface de extensão para plugins](#SDK-interfaces-de-extensões-para-plugins)
+[interface de extensão para plugins](#sdk-interfaces-de-extensões-para-plugins)
 com um callback invocado quando um log é emitido. Eles são frequentemente
 associados com [LogRecordExporters](#logrecordexporter) para exportar logs fora
 do processo, mas tem outras aplicações, como enriquecimento de dados.
@@ -1097,7 +1097,7 @@ public class CustomLogRecordProcessor implements LogRecordProcessor {
 Um
 [LogRecordExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/export/LogRecordExporter.html)
 é uma
-[interface de extensão para plugins](#SDK-interfaces-de-extensões-para-plugins)
+[interface de extensão para plugins](#sdk-interfaces-de-extensões-para-plugins)
 responsável por exportar registros de logs fora do processo. Ao invés de
 registrar diretamente com `SdkLoggerProvider`, eles podem ser associados ao
 [LogRecordProcessors](#logrecordprocessor) (tipicamente
@@ -1115,7 +1115,7 @@ Span exporters integrados ao SDK e mantidos pela comunidade em
 | `OtlpStdoutLogRecordExporter`              | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Grava registros de logs para `System.out` em OTLP [Arquivo JSON Codificado][] (experimental). |
 | `InterceptableLogRecordExporter`           | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Passa registros de logs para um interceptador flexível antes de exportar.                     |
 
-**[1]**: Veja [Exportadores OTLP](#otlp-exporters) para detalhes de
+**[1]**: Veja [Exportadores OTLP](#Exportadores-OTLP) para detalhes de
 implementação.
 
 **[2]**: `OtlpJsonLoggingLogRecordExporter` registra no JUL e pode causar loops
@@ -1241,7 +1241,7 @@ public class LogLimitsConfig {
 
 [TextMapPropagator](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/propagation/TextMapPropagator.html)
 é uma
-[interface de extensão para plugins](#SDK-interfaces-de-extensões-para-plugins)
+[interface de extensão para plugins](#sdk-interfaces-de-extensões-para-plugins)
 responsável por propagar o contexto através dos processos conectados em um
 formato de texto.
 
@@ -1400,9 +1400,9 @@ possuem uma sobreposição significativa entre as versões `grpc` and
 `http/protobuf` do protocolo OTLP, e entre os sinais. As seções a seguir
 detalham esses conceitos chave:
 
-- [Emissores](#senders): Uma abstração para diferentes bibliotecas do lado do
+- [Emissores](#emissores): Uma abstração para diferentes bibliotecas do lado do
   cliente HTTP / gRPC.
-- [Autenticação](#authentication) opções para exportadores OTLP.
+- [Autenticação](#autenticação) opções para exportadores OTLP.
 
 #### Emissores
 
