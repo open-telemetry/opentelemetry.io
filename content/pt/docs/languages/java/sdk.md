@@ -446,7 +446,8 @@ Exportadores de trechos integrados ao SDK e mantidos pela comunidade em
 | `InterceptableSpanExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha`     | Passes trechos para um interceptador flexível antes da exportação.                               |
 | `KafkaSpanExporter`            | `io.opentelemetry.contrib:opentelemetry-kafka-exporter:{{% param vers.contrib %}}-alpha` | Exporta trechos escrevendo para um tópico do Kafka.                                              |
 
-**[1]**: Veja [OTLP exporters](#Exportadores-OTLP) para detalhes de implementação.
+**[1]**: Veja [OTLP exporters](#Exportadores-OTLP) para detalhes de
+implementação.
 
 O trecho de código a seguir demonstra configuração programática do
 `SpanExporter`:
@@ -783,7 +784,8 @@ Metric exporters integrados ao SDK e mantidos pela comunidade em
 | `OtlpStdoutMetricExporter`       | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Registra métricas para `System.out` em formato OTLP [Arquivo JSON Codificado][] (experimental). |
 | `InterceptableMetricExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Passes métricas para um interceptador flexível antes da exportação.                             |
 
-**[1]**: Veja [OTLP exporters](#Exportadores-OTLP) para detalhes de implementação.
+**[1]**: Veja [OTLP exporters](#Exportadores-OTLP) para detalhes de
+implementação.
 
 O trecho de código a seguir demonstra a configuração programática do
 `MetricExporter`:
