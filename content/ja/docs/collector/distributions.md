@@ -12,7 +12,7 @@ OpenTelemetryプロジェクトは現在、コレクターの[事前ビルド済
 
 {{% docs/latest-release collector-releases /%}}
 
-## カスタムディストリビューション
+## カスタムディストリビューション {#custom-distributions}
 
 さまざまな理由により、OpenTelemetryプロジェクトが提供する既存のディストリビューションは、あなたのニーズに合わない場合があります。
 より軽量な構成が必要な場合や、[認証拡張機能](../building/authenticator-extension)、[レシーバー](../building/receiver)、プロセッサー、エクスポーターまたは[コネクター](../building/connector)などのカスタム機能を実装する必要がある場合があります。
