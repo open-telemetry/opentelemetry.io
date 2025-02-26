@@ -3767,6 +3767,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-02T15:18:38.381Z"
   },
+  "https://github.com/goyek/x/tree/main/otelgoyek": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-26T10:05:06.188216019Z"
+  },
   "https://github.com/grafana/": {
     "StatusCode": 200,
     "LastSeen": "2024-11-14T11:48:37.162832+01:00"
@@ -14710,6 +14714,10 @@
   "https://pkg.go.dev/github.com/dnwe/otelsarama": {
     "StatusCode": 200,
     "LastSeen": "2025-01-15T11:26:08.584836-05:00"
+  },
+  "https://pkg.go.dev/github.com/goyek/x/otelgoyek": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-26T10:05:09.189511723Z"
   },
   "https://pkg.go.dev/github.com/hertz-contrib/obs-opentelemetry": {
     "StatusCode": 200,
