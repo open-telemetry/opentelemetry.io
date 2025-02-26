@@ -6,7 +6,7 @@ aliases: [/docs/instrumentation]
 default_lang_commit: 1ececa0615b64c5dfd93fd6393f3e4052e0cc496
 ---
 
-OpenTelemetryのコード[計装][instrumentation]は、以下の[ステータスとリリース](#ステータスとリリース)の表に記載されている言語でサポートされています。
+OpenTelemetryのコード[計装][instrumentation]は、以下の[ステータスとリリース](#status-and-releases)の表に記載されている言語でサポートされています。
 [その他の言語](/docs/languages/other)向けの非公式な実装も利用可能です。
 それらは[レジストリ](/ecosystem/registry/)で確認できます。
 
@@ -14,7 +14,7 @@ Go、.NET、PHP、Python、Java、JavaScriptでは、[ゼロコードソリュ�
 
 Kubernetesを使用している場合は、[OpenTelemetry Operator for Kubernetes][otel-op]を利用して、[ゼロコードソリューション][zero-code]をアプリケーションに注入できます。
 
-## ステータスとリリース
+## ステータスとリリース {#status-and-releases}
 
 OpenTelemetryの主要な機能コンポーネントの現在のステータスは以下の通りです。
 
@@ -30,7 +30,7 @@ APIやSDKのステータスに関わらず、使用している計装が[セマ�
 
 {{% telemetry-support-table " " %}}
 
-## APIリファレンス
+## APIリファレンス {#api-references}
 
 特定の言語でOpenTelemetryのAPIおよびSDKを実装するSpecial Interest Groups(SIGs)は、開発者向けにAPIリファレンスも公開しています。
 以下のリファレンスが利用できます。
