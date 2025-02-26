@@ -1,5 +1,4 @@
 ---
-title: # Bogus entry for markdownlint
 default_lang_commit: 8d115a9df96c52dbbb3f96c05a843390d90a9800
 ---
 

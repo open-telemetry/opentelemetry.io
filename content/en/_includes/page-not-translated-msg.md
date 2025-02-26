@@ -1,5 +1,4 @@
 ---
-title: # bogus entry for markdownlint
 ---
 
 <i class="fa-solid fa-circle-info" style="margin-left: -1.5rem"></i> You are

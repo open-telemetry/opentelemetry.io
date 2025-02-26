@@ -180,9 +180,7 @@ the span status to `Ok` when the `http.request.status_code` attribute is 400:
 transform:
   error_mode: ignore
   trace_statements:
-    - context: span
-      statements:
-        - set(status.code, STATUS_CODE_OK) where attributes["http.request.status_code"] == 400
+    - set(span.status.code, STATUS_CODE_OK) where span.attributes["http.request.status_code"] == 400
 ```
 
 <!-- prettier-ignore-end -->
