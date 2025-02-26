@@ -37,40 +37,42 @@ jobs:
             echo $OUTPUT
             DRIFTED_COUNT=$(echo "$OUTPUT" | grep "DRIFTED files:" | sed -E 's/.*DRIFTED files: ([0-9]+) out.*/\1/')
             echo "drifted_count=$DRIFTED_COUNT" >> $GITHUB_OUTPUT
-            echo "drift_output<<EOF" >> $GITHUB_OUTPUT
-            echo "$OUTPUT" >> $GITHUB_OUTPUT
-            echo "EOF" >> $GITHUB_OUTPUT
       - name: Open Issue if drift detected
         if: ${{ fromJson(steps.getdrifted.outputs.drifted_count) >= inputs.drift_threshold }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} #${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
         run: |
-          echo "The drift count is ${{ steps.getdrifted.outputs.drifted_count }}"
+          drift_count=${{ steps.getdrifted.outputs.drifted_count }}
           localization=${{ matrix.localization }}
-
           drift_label="lang:${localization}"
           ci_label="check:i18n"
 
           issues=$(gh issue list --label "$drift_label,$ci_label" --state open --json number,author)
           drift_issue_number=$(echo "$issues" | jq -r '.[] | select(.author.login=="emdneto") | .number' | head -n1)
+          echo $issues
+          OUTPUT=$(scripts/check-i18n.sh -- content/$localization)
+          message=$(cat <<EOF
+            Drift detected for **${localization}** localization.
+            Drifted pages count: ${drift_count}.
 
-          drift_count=${{ steps.getdrifted.outputs.drift_count }}
-          drift_output=${{ steps.getdrifted.outputs.drift_output }}
-          message="Drift detected for localization **${localization}**.
-
-          Drifted pages count: ${drift_count}.
-
-          <details>
+            <details>
             <summary>Please review the i18n drift</summary>
-            ```
-            ${drift_output}
-            ```
-          </details>"
 
+            \`\`\`
+            $OUTPUT
+            \`\`\`
+
+            </details>
+
+            cc: @opentelemetry/docs-${localization}-approvers
+            _This issue was automatically created by the **i18n drift detection cronjob**
+          EOF
+          )
+          echo $message
           if [ -z "$drift_issue_number" ]
           then
             echo "Creating new issue"
-            gh issue create --title "[$localization/i18n] Drifted pages summary" --body "$message" --label "$drift_label,$ci_label"
+            gh issue create --title "[$localization/i18n] Drifted pages report" --body "$message" --label "$drift_label,$ci_label"
           else
             echo "Updating existing issue"
             gh issue comment "$drift_issue_number" --body "$message"
