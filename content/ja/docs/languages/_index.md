@@ -1,5 +1,5 @@
 ---
-title: 言語APIs & SDKs
+title: 言語API & SDK
 description: OpenTelemetryのコード計装は、多くの一般的なプログラミング言語でサポートされています。
 weight: 250
 aliases: [/docs/instrumentation]
