@@ -35,7 +35,7 @@ Caso a sua organização ofereça uma solução que consome o OpenTelemetry para
 fornecer **Observabilidade aos usuários finais**, consulte
 [Fornecedores](/ecosystem/vendors).
 
-{{% include keep-up-to-date.md adopter %}}
+{{% include keep-up-to-date.md adotantes %}}
 
 [lista de adotantes]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/adopters.yaml
