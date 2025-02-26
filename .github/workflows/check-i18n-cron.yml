@@ -27,12 +27,14 @@ jobs:
       - name: Run check-i18n
         id: getdrifted
         run: |
-            OUTPUT=$(scripts/check-i18n.sh -- content/${{ matrix.localization }})
-            echo $OUTPUT
-            DRIFTED_COUNT=$(echo "$OUTPUT" | grep "DRIFTED files:" | sed -E 's/.*DRIFTED files: ([0-9]+) out.*/\1/')
-            echo "drifted_count=$DRIFTED_COUNT" >> $GITHUB_OUTPUT
+          OUTPUT=$(scripts/check-i18n.sh -- content/${{ matrix.localization }})
+          echo $OUTPUT
+          DRIFTED_COUNT=$(echo "$OUTPUT" | grep "DRIFTED files:" | sed -E 's/.*DRIFTED files: ([0-9]+) out.*/\1/')
+          echo "drifted_count=$DRIFTED_COUNT" >> $GITHUB_OUTPUT
       - name: Open Issue if drift detected
-        if: ${{ fromJson(steps.getdrifted.outputs.drifted_count) >= inputs.drift_threshold }}
+        if:
+          ${{ fromJson(steps.getdrifted.outputs.drifted_count) >=
+          inputs.drift_threshold }}
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
         run: |
