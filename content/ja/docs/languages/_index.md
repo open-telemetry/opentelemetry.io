@@ -32,7 +32,7 @@ APIやSDKのステータスに関わらず、使用している計装が[セマ�
 
 ## APIリファレンス {#api-references}
 
-特定の言語でOpenTelemetryのAPIおよびSDKを実装するSpecial Interest Groups(SIGs)は、開発者向けにAPIリファレンスも公開しています。
+特定の言語でOpenTelemetryのAPIおよびSDKを実装するSpecial Interest Group(SIG)は、開発者向けにAPIリファレンスも公開しています。
 以下のリファレンスが利用できます。
 
 {{% apidocs %}}
