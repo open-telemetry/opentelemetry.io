@@ -15,7 +15,7 @@ authors:
   - name: Particular Software
   - URL: https://github.com/Particular
 
-createdAt: '2025-02-17' # Set todays date
+createdAt: 2025-02-25
 isNative: true # set this to true only if OpenTelemetry is directly integrated into your software (no plugin, no instrumentation library)
 package:
   name: NServiceBus
