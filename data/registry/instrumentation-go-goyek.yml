@@ -1,0 +1,19 @@
+# cSpell:ignore gonic
+title: goyek instrumentation
+registryType: instrumentation
+language: go
+tags:
+  - go
+  - instrumentation
+  - goyek
+license: MIT
+description: Package otelgoyek provides OpenTelemetry instrumentation for goyek.
+authors:
+  - name: Robert Pająk
+    url: https://github.com/pellared
+urls:
+  repo: https://github.com/goyek/x/tree/main/otelgoyek
+  docs: https://pkg.go.dev/github.com/goyek/x/otelgoyek
+createdAt: 2025-02-26
+isNative: false
+isFirstParty: true
