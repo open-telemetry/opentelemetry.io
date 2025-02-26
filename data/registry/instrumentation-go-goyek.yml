@@ -1,4 +1,4 @@
-# cSpell:ignore goyek
+# cSpell:ignore goyek, otelgoyek, Pająk
 title: goyek instrumentation
 registryType: instrumentation
 language: go
