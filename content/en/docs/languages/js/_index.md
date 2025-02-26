@@ -10,7 +10,7 @@ weight: 20
 
 {{% docs/languages/index-intro js /%}}
 
-{{% include "./_browser-instrumentation-warning.md" %}}
+{{% include browser-instrumentation-warning.md %}}
 
 ## Version Support
 

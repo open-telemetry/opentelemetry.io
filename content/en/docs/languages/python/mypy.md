@@ -4,7 +4,7 @@ weight: 120
 cSpell:ignore: mypy
 ---
 
-If you're using [mypy](http://mypy-lang.org/), you'll need to turn on
+If you're using [mypy](https://mypy-lang.org/), you'll need to turn on
 [namespace packages](https://mypy.readthedocs.io/en/stable/command_line.html#cmdoption-mypy-namespace-packages),
 otherwise `mypy` won't be able to run correctly.
 

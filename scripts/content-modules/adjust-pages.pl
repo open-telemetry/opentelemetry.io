@@ -104,13 +104,12 @@ sub applyPatchOrPrintMsgIf($$$) {
   return 0;
 }
 
-# sub patchEventAliases() {
-#   return unless $ARGV =~ /^tmp\/otel\/specification\/logs\//
-#     && applyPatchOrPrintMsgIf('2025-01-23-event-aliases', 'spec', '1.41.0');
-#
-#   my $aliases = '^(  - )(event-(api|sdk))$';
-#   s|$aliases|$1./$2|;
-# }
+sub patchMissionHeadingIDs() {
+  return unless $ARGV =~ /^tmp\/otel\/specification\/specification-principles.md/
+    && applyPatchOrPrintMsgIf('2025-02-25-mission-heading-IDs', 'spec', '1.42.0');
+
+  s|(#we-value-)_(.*?)_|$1$2|;
+}
 
 sub patchSemConv1_30_0() {
   return unless $ARGV =~ /^tmp\/semconv\/docs\//
@@ -204,6 +203,8 @@ while(<>) {
   }
 
   # SPECIFICATION custom processing
+
+  patchMissionHeadingIDs();
 
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;
   s|(\]\()/specification/|$1$specBasePath/otel/)|;

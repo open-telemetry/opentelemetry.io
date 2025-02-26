@@ -19,7 +19,7 @@ Americas (AMER), Europe Middle-East & Africa (EMEA), and Asia-Pacific (APAC).
 The discussions take place using a
 [Lean Coffee format](https://agilecoffee.com/leancoffee/), whereby folks are
 invited to post their topics to the
-[Agile Coffee board like this one](http://agile.coffee/#3716060f-183a-4966-8da4-60daab2842c4),
+[Agile Coffee board like this one](http://agile.coffee/?disable_http_check#3716060f-183a-4966-8da4-60daab2842c4),
 and everyone in attendance votes on what they want to talk about.
 
 ## What we talked about
