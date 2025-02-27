@@ -504,6 +504,7 @@ maintainers:
       - collector-contrib-triagers
       - operator-approvers
       - operator-maintainers
+      - operator-triagers
       - semconv-container-approvers
       - semconv-k8s-approvers
       - semconv-system-approvers
@@ -558,6 +559,7 @@ maintainers:
       - operator-approvers
       - operator-maintainers
       - operator-ta-maintainers
+      - operator-triagers
     html_url: https://github.com/jaronoff97
     avatar_url: https://avatars.githubusercontent.com/u/10070047?v=4
   - name: jhalliday
@@ -877,6 +879,7 @@ maintainers:
       - operator-approvers
       - operator-maintainers
       - operator-ta-maintainers
+      - operator-triagers
     html_url: https://github.com/pavolloffay
     avatar_url: https://avatars.githubusercontent.com/u/5618424?v=4
   - name: pdelewski
@@ -1087,6 +1090,7 @@ maintainers:
     teams:
       - operator-approvers
       - operator-maintainers
+      - operator-triagers
     html_url: https://github.com/swiatekm
     avatar_url: https://avatars.githubusercontent.com/u/93588780?v=4
   - name: tedsuo
@@ -1210,6 +1214,7 @@ maintainers:
       - helm-maintainers
       - helm-triagers
       - operator-approvers
+      - operator-triagers
       - semconv-container-approvers
       - semconv-k8s-approvers
     html_url: https://github.com/TylerHelmuth
@@ -1329,6 +1334,7 @@ approvers:
       - collector-releases-approvers
       - collector-triagers
       - network-triagers
+      - operator-triagers
     html_url: https://github.com/atoulme
     avatar_url: https://avatars.githubusercontent.com/u/16758?v=4
   - name: atreat
@@ -1498,6 +1504,7 @@ approvers:
   - name: iblancasa
     teams:
       - operator-approvers
+      - operator-triagers
     html_url: https://github.com/iblancasa
     avatar_url: https://avatars.githubusercontent.com/u/4806311?v=4
   - name: iNikem
@@ -1868,6 +1875,7 @@ approvers:
   - name: yuriolisa
     teams:
       - operator-approvers
+      - operator-triagers
     html_url: https://github.com/yuriolisa
     avatar_url: https://avatars.githubusercontent.com/u/48062171?v=4
   - name: zachdaniel
@@ -2153,6 +2161,9 @@ members:
   - name: chrlic
     html_url: https://github.com/chrlic
     avatar_url: https://avatars.githubusercontent.com/u/6670587?v=4
+  - name: Cirilla-zmh
+    html_url: https://github.com/Cirilla-zmh
+    avatar_url: https://avatars.githubusercontent.com/u/84360903?v=4
   - name: cnnradams
     html_url: https://github.com/cnnradams
     avatar_url: https://avatars.githubusercontent.com/u/10487992?v=4
