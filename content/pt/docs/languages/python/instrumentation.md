@@ -4,6 +4,7 @@ aliases: [manual]
 weight: 20
 description: Instrumentação manual para OpenTelemetry Python
 cSpell:ignore: millis ottrace textmap
+default_lang_commit: c3365f297f394baf10f5dba3473e13621ade4461
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
@@ -49,7 +50,7 @@ tracer = trace.get_tracer("meu.rastreador.nome")
 ### Criando Trechos {#creating-spans}
 
 Para criar um [trecho](/docs/concepts/signals/traces/#spans), geralmente você
-desejará iniciá-lo como o trecho atual.
+pretende iniciá-lo como o trecho atual.
 
 ```python
 def fazer_trabalho():
@@ -88,8 +89,8 @@ Quando você visualizar trechos em uma ferramenta de visualização de rastros,
 
 ### Criando Trechos com Decoradores {#creating-spans-with-decorators}
 
-É comum ter um único [trecho](/docs/concepts/signals/traces/#spans) rastreando
-a execução de uma função inteira. Nesse cenário, há um decorador que você pode
+É comum ter um único [trecho](/docs/concepts/signals/traces/#spans) rastreando a
+execução de uma função inteira. Nesse cenário, há um decorador que você pode
 usar para reduzir o código:
 
 ```python
@@ -102,12 +103,12 @@ O uso do decorador é equivalente a criar o trecho dentro de `fazer_trabalho()` 
 finalizá-lo quando `fazer_trabalho()` for concluído.
 
 Para usar o decorador, você deve ter uma instância de `tracer` disponível
-globalmente para a declaração da sua função.
+globalmente para a declarar sua função.
 
 ### Obter o Trecho Atual {#get-the-current-span}
 
-Às vezes, é útil acessar o [trecho](/docs/concepts/signals/traces/#spans) atual em um ponto no tempo para que você
-possa enriquecê-lo com mais informações.
+Às vezes, é útil acessar o [trecho](/docs/concepts/signals/traces/#spans) atual
+em um ponto no tempo para que você possa enriquecê-lo com mais informações.
 
 ```python
 from opentelemetry import trace
@@ -118,8 +119,9 @@ current_span = trace.get_current_span()
 
 ### Adicionar Atributos em um Trecho {#add-attributes-to-a-span}
 
-[Atributos](/docs/concepts/signals/traces/#attributes) permitem que você anexe
-pares chave/valor em um [trecho](/docs/concepts/signals/traces/#spans) para transportar mais informações sobre a operação atual que está sendo rastreada.
+Os [Atributos](/docs/concepts/signals/traces/#attributes) permitem que você
+anexe pares de chave/valor em um [trecho](/docs/concepts/signals/traces/#spans)
+para transportar mais informações sobre a operação que está sendo rastreada.
 
 ```python
 from opentelemetry import trace
@@ -135,9 +137,8 @@ current_span.set_attribute("outras-coisas.operacao", [1, 2, 3])
 
 Os [Atributos Semânticos](/docs/specs/semconv/general/trace/) são
 [Atributos](/docs/concepts/signals/traces/#attributes) predeterminados, que são
-convenções de nomenclatura bastante conhecidas para tipos comuns de dados. Usar
-Atributos Semânticos permite que você normalize esse tipo de informação em seus
-sistemas.
+nomenclatura bastante conhecidas para tipos comuns de dados. Usar Atributos
+Semânticos permite que você normalize esse tipo de informação em seus sistemas.
 
 Para usar Atributos Semânticos em Python, certifique-se de ter o pacote de
 convenções semânticas:
@@ -262,8 +263,7 @@ separada por vírgulas. Os valores aceitos são:
 - `"ottrace"`: OT Trace (terceiros)
 - `"none"`: Nenhum propagador configurado automaticamente.
 
-A configuração padrão é equivalente a
-`OTEL_PROPAGATORS="tracecontext,baggage"`.
+A configuração padrão é equivalente a `OTEL_PROPAGATORS="tracecontext,baggage"`.
 
 #### Usando APIs do SDK {#using-sdk-apis}
 
@@ -352,10 +352,10 @@ def fazer_trabalho(item_trabalho):
 ### Criando e Usando Instrumentos Assíncronos {#creating-and-using-asynchronous-instruments}
 
 [Instrumentos assíncronos](/docs/specs/otel/metrics/api/#synchronous-and-asynchronous-instruments)
-dão ao usuário uma maneira de registrar funções de _callback_, que são invocadas
-sob demanda para fazer medições. Isso é útil para medir periodicamente um valor
-que não pode ser instrumentado diretamente. Os instrumentos assíncronos são
-criados com zero ou mais callbacks que serão invocados durante a coleta de
+fornece ao usuário uma maneira de registrar funções de _callback_, que são
+invocadas sob demanda para fazer medições. Isso é útil para medir periodicamente
+um valor que não pode ser instrumentado diretamente. Os instrumentos assíncronos
+são criados com zero ou mais callbacks que serão invocados durante a coleta de
 métricas. Cada callback aceita opções do SDK e retorna suas observações.
 
 Este exemplo usa um instrumento
@@ -405,5 +405,5 @@ A API e o SDK de logs estão atualmente em desenvolvimento.
 ## Próximos Passos {#next-steps}
 
 Você também desejará configurar um exportador apropriado para
-[exportar seus dados de telemetria](/docs/languages/python/exporters) para um
-ou mais backends de telemetria.
+[exportar seus dados de telemetria](/docs/languages/python/exporters) para um ou
+mais backends de telemetria.
