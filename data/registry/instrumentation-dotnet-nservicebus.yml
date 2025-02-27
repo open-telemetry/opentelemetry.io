@@ -13,8 +13,7 @@ description: With NServiceBus OpenTelemetry instrumentation enabled, tracing, me
 authors:
   - name: Particular Software
   - URL: https://github.com/Particular
-
-createdAt: 2025-02-25
+createdAt: 2025-02-27
 isNative: true # set this to true only if OpenTelemetry is directly integrated into your software (no plugin, no instrumentation library)
 package:
   name: NServiceBus
