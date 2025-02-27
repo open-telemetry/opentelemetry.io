@@ -13,5 +13,6 @@ license: GNU Lesser General Public License v2.1
 description: CsvPath Framework uses OTLP to monitor delimited data preboarding jobs wherever they run, regardless of platform, namespace, project, or user.
 authors:
   - name: CsvPath Authors
+    email: info@csvpath.org
 createdAt: 2025-02-23
 isNative: true
