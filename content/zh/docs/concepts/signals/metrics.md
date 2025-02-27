@@ -11,19 +11,19 @@ default_lang_commit: 7c0e4db0b6c39b0ca0e7efb17df5610d1b77b8a3
 
 要了解 OpenTelemetry 中的metrics是如何工作的，让我们看看在对代码进行观测时会涉及的一系列组件。
 
-## Meter Provider
+## Meter Provider {#meter-provider}
 
 Meter Provider（有时称为 `MeterProvider`）是 `Meter` 的提供者。在大多数应用程序中，Meter Provider 只初始化一次，其生命周期与应用程序的生命周期匹配。Meter Provider 的初始化还包括资源和导出器（Exporter）的初始化。它通常是使用 OpenTelemetry 进行观测的第一步。在某些语言 SDK 中，已经为您初始化了全局 Meter Provider。
 
-## Meter
+## Meter {#meter}
 
 Meter 创建[metric instruments](#metric-instruments)，在运行时捕获有关服务的测量值。Meter 是由 Meter Provider 创建的。
 
-## Metric Exporter
+## Metric Exporter {#metric-exporter}
 
 Metric Exporter 将度量数据发送给消费者。这个消费者可以是开发期间用于调试的标准输出、OpenTelemetry Collector，或您选择的任何开源或供应商后端。
 
-## Metric Instruments（测量仪器）
+## Metric Instruments（测量仪器）{#metric-instruments}
 
 在 OpenTelemetry 中，测量值是由**metric instruments**捕获的。Metric instruments由以下部分定义：
 
@@ -46,7 +46,7 @@ Metric Exporter 将度量数据发送给消费者。这个消费者可以是开�
 
 有关同步和异步仪器的更多信息，以及哪种类型最适合您的用例，请参见[补充指南](/docs/specs/otel/metrics/supplementary-guidelines/)。
 
-## 聚合
+## 聚合 {#aggregation}
 
 除了度量仪器之外，**聚合**的概念也是一个重要的理解点。聚合是一种技术，通过该技术将大量测量值组合成在一个时间窗口内发生的指标事件的精确或估计统计数据。OTLP 协议传输这些聚合的指标。OpenTelemetry API 为每个仪器提供默认聚合，可以使用视图覆盖。OpenTelemetry 项目旨在提供可视化工具和遥测后端支持的默认聚合。
 
@@ -60,16 +60,16 @@ Metric Exporter 将度量数据发送给消费者。这个消费者可以是开�
 - 报告账户的平均余额值。
 - 报告当前正在处理的活动请求。
 
-## 视图
+## 视图 {#views}
 
 视图为 SDK 用户提供了灵活性，可以自定义 SDK 输出的指标。您可以自定义要处理或忽略的度量仪器。您还可以自定义聚合和您希望在指标上报告的属性。
 
-## 语言支持
+## 语言支持 {#language-support}
 
 指标是 OpenTelemetry 规范中的[稳定性](/docs/specs/otel/versioning-and-stability/#stable)信号。有关 Metrics API 和 SDK 的各个语言特定实现，状态如下：
 
 {{% signal-support-table "metrics" %}}
 
-## 规范
+## 规范 {#specification}
 
 要了解有关 OpenTelemetry 中指标的更多信息，请参见[指标规范](/docs/specs/otel/overview/#metric-signal)。
