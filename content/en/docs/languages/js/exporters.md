@@ -355,7 +355,7 @@ import * as opentelemetry from '@opentelemetry/sdk-node';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 
 const sdk = new NodeSDK({
-  spanProcessor: new SimpleSpanProcessor(exporter),
+  spanProcessors: [new SimpleSpanProcessor(exporter)],
   instrumentations: [getNodeAutoInstrumentations()],
 });
 sdk.start();
@@ -371,7 +371,7 @@ const {
 } = require('@opentelemetry/auto-instrumentations-node');
 
 const sdk = new opentelemetry.NodeSDK({
-  spanProcessor: new SimpleSpanProcessor(exporter)
+  spanProcessors: [new SimpleSpanProcessor(exporter)],
   instrumentations: [getNodeAutoInstrumentations()],
 });
 sdk.start();
