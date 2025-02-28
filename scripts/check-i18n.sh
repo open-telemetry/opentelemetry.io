@@ -57,8 +57,8 @@ Options:
            use as an argument to -c.
 
   -n       List/process only new localization pages, those without a '$I18N_DLC_KEY' key.
-  -q       Quiet mode. Do not list processed files.
-  -v       Enables verbose command progress and status output.
+  -q       Quiet mode. Do not list processed files. Prints summary unless -x is set.
+  -v       Verbose mode. List all processed files and their status.
   -x       Return non-zero exit code if files were listed or hashes are missing.
 EOS
 }
@@ -91,6 +91,7 @@ function process_CLI_args() {
       q)
         FLAG_QUIET=1;;
       v)
+        LIST_KIND="ALL"
         FLAG_VERBOSE=1;;
       x)
         FLAG_FAIL_ON_LIST_OR_MISSING=1;;
@@ -116,6 +117,11 @@ function process_CLI_args() {
   if [[ -n $FLAG_QUIET && $FLAG_DIFF_DETAILS != 0 ]]; then
     echo -e "ERROR: use -d or -q not both. For help use -h.\n"
     exit 1
+  fi
+
+  if [[ $LIST_KIND == "ALL" && -n $FLAG_QUIET ]]; then
+    echo -e "WARNING: -q flag ignored when -a or -v is used. For help use -h.\n"
+    FLAG_QUIET=""
   fi
 
   if [[ $LIST_KIND == "ALL" && -n $COMMIT_HASH_ARG ]]; then
@@ -311,7 +317,9 @@ function main() {
     EN_VERSION=$(echo "$f" | sed "s/$DEFAULT_CONTENT\/.\{2,5\}\//$DEFAULT_CONTENT\/$DEFAULT_LANG\//g")
     if [[ ! -e "$EN_VERSION" ]]; then
       ((FILE_PROCESSED_COUNT++))
-      echo -e "File not found\t$EN_VERSION - $f - $DEFAULT_LANG was removed or renamed"
+      if [[ -z $FLAG_QUIET ]]; then
+        echo -e "File not found:\t$EN_VERSION - $f - $DEFAULT_LANG was removed or renamed"
+      fi
       set_file_drifted_status "$f" "file not found"
       continue
     fi
@@ -323,9 +331,7 @@ function main() {
     if [ $DIFF_STATUS -gt 1 ]; then
       ((FILE_PROCESSED_COUNT++))
       EXIT_STATUS=$DIFF_STATUS
-      # if [[ -z $FLAG_QUIET ]]; then
-        echo -e "HASH\tERROR\t$f: git diff error ($DIFF_STATUS) or invalid hash $LASTCOMMIT. For details, use -v."
-      # fi
+      echo -e "HASH\tERROR\t$f: git diff error ($DIFF_STATUS) or invalid hash $LASTCOMMIT. For details, use -v."
       if [[ -n $FLAG_VERBOSE ]]; then echo "$DIFF"; fi
       continue
     elif [[ -n "$DIFF" ]]; then
@@ -336,7 +342,8 @@ function main() {
       elif [[ -n $COMMIT_HASH_ARG ]]; then
         update_file_i18n_hash "$f" "$COMMIT_HASH_ARG" "$DIFF"
       elif [[ -z $FLAG_QUIET ]]; then
-        echo "$DIFF - $f"
+        echo -n "> Drifted file: $f"
+        if [[ -n $FLAG_VERBOSE ]]; then echo "; diff summary: $DIFF"; else echo; fi
       fi
     elif [[ -z $LASTCOMMIT ]]; then
       ((FILE_PROCESSED_COUNT++))
@@ -353,7 +360,7 @@ function main() {
     set_file_drifted_status "$f" $DRIFTED_STATUS
   done
 
-  if [[ -z $FLAG_QUIET ]]; then
+  if [[ -z $FLAG_QUIET || $FLAG_FAIL_ON_LIST_OR_MISSING == 0 ]]; then
     echo "$LIST_KIND files: $FILE_PROCESSED_COUNT out of $FILE_COUNT"
   fi
 
