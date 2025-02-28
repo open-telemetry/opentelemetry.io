@@ -91,7 +91,7 @@ Crie um arquivo de código vazio chamado `document-load` com a extensão `.ts` o
 escrever sua aplicação. Adicione o seguinte código ao seu HTML, logo antes da
 tag de fechamento `</body>`:
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```html
 <script type="module" src="document-load.ts"></script>
@@ -103,7 +103,7 @@ tag de fechamento `</body>`:
 <script type="module" src="document-load.js"></script>
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 Adicionaremos o código para rastrear os tempos de carregamento do documento e
 relatar esses dados como trechos OpenTelemetry.

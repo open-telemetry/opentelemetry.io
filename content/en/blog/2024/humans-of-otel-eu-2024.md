@@ -36,7 +36,7 @@ Also, special thanks to:
 
 You can watch the full recording here:
 
-{{<youtube bsfMECwmsm0>}}
+{{%youtube bsfMECwmsm0%}}
 
 <br/>Thanks to everyone who has contributed to OpenTelemetry to date, and we
 look forward to your continued contributions in 2024 and beyond! 🎉

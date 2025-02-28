@@ -26,7 +26,7 @@ first.
 
 ### Language Requirements
 
-{{< tabpane text=true >}} {{% tab Java %}}
+{{% tabpane text=true %}} {{% tab Java %}}
 
 The Lambda layer supports the Java 8, 11, and 17 (Corretto) Lambda runtimes. For
 more information about supported Java versions, see the
@@ -88,7 +88,7 @@ about supported OpenTelemetry Ruby SDK and API versions, see the
 [OpenTelemetry Ruby documentation](https://github.com/open-telemetry/opentelemetry-ruby/blob/main/README.md#compatibility)
 and the package on [RubyGem](https://rubygems.org/search?query=opentelemetry).
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ### Configure `AWS_LAMBDA_EXEC_WRAPPER`
 
@@ -123,7 +123,7 @@ there is an embedded Collector with gRPC / HTTP receivers. The environment
 variables do not need to be updated. However, there are varying levels of
 protocol support and default values by language which are documented below.
 
-{{< tabpane text=true >}} {{% tab Java %}}
+{{% tabpane text=true %}} {{% tab Java %}}
 
 `OTEL_EXPORTER_OTLP_PROTOCOL=grpc` supports: `grpc`, `http/protobuf` and
 `http/json` `OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317`
@@ -144,7 +144,7 @@ uses the protocol `http/protobuf`
 `OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf` supports: `http/protobuf`
 `OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318`
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ### Publish your Lambda
 

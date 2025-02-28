@@ -25,7 +25,7 @@ Observability practices, in this panel hosted by the
 centered around their journey with OpenTelemetry and how it has shaped their
 Observability practices. Watch the full recording:
 
-{{<youtube zSeKL2-_sVg>}}
+{{%youtube zSeKL2-_sVg%}}
 
 <br/>For a quick summary, check out some of the key discussion takeaways below.
 

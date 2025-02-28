@@ -20,7 +20,7 @@ detectors use the OS environment variable `OTEL_RESOURCE_ATTRIBUTES` and the
 The detectors to use is a list of module names and can be configured in the
 Application configuration:
 
-{{< tabpane text=true >}} {{% tab Erlang %}}
+{{% tabpane text=true %}} {{% tab Erlang %}}
 
 ```erlang
 %% sys.config
@@ -34,7 +34,7 @@ Application configuration:
 config :opentelemetry, resource_detectors: [:otel_resource_env_var, :otel_resource_app_env]
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 Or through the environment variable `OTEL_RESOURCE_DETECTORS`:
 
@@ -61,11 +61,11 @@ OTEL_RESOURCE_ATTRIBUTES="deployment.environment=development"
 Alternatively, use the `resource` OTP application environment under the
 `opentelemetry` Application configuration of `sys.config` or `runtime.exs`:
 
-{{< tabpane text=true >}} {{% tab Erlang %}}
+{{% tabpane text=true %}} {{% tab Erlang %}}
 
 ```erlang
 %% sys.config
-{opentelemetry, {resource, #{deployment => #{environment => <<"development">>}}}}
+{opentelemetry, {resource, #{deployment => #{environment => <<"development">%}}}}
 ```
 
 {{% /tab %}} {{% tab Elixir %}}
@@ -75,7 +75,7 @@ Alternatively, use the `resource` OTP application environment under the
 config :opentelemetry, resource: %{deployment: %{environment: "development" }}
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 Resource attributes in the `resource` OTP application environment variable are
 flattened and combined with `.`, so

@@ -22,7 +22,7 @@ transport your data:
 Start by installing the respective exporter packages as a dependency for your
 project:
 
-{{< tabpane text=true >}} {{% tab "HTTP/Proto" %}}
+{{% tabpane text=true %}} {{% tab "HTTP/Proto" %}}
 
 ```shell
 pip install opentelemetry-exporter-otlp-proto-http
@@ -34,13 +34,13 @@ pip install opentelemetry-exporter-otlp-proto-http
 pip install opentelemetry-exporter-otlp-proto-grpc
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ### Usage
 
 Next, configure the exporter to point at an OTLP endpoint in your code.
 
-{{< tabpane text=true >}} {{% tab "HTTP/Proto" %}}
+{{% tabpane text=true %}} {{% tab "HTTP/Proto" %}}
 
 ```python
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
@@ -104,7 +104,7 @@ meterProvider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(meterProvider)
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ## Console
 
@@ -245,7 +245,7 @@ between two different protocols to transport your data:
 
 Install the exporter package as a dependency for your application:
 
-{{< tabpane text=true >}} {{% tab "HTTP/Proto" %}}
+{{% tabpane text=true %}} {{% tab "HTTP/Proto" %}}
 
 ```shell
 pip install opentelemetry-exporter-zipkin-proto-http
@@ -257,12 +257,12 @@ pip install opentelemetry-exporter-zipkin-proto-http
 pip install opentelemetry-exporter-zipkin-json
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 Update your OpenTelemetry configuration to use the exporter and to send data to
 your Zipkin backend:
 
-{{< tabpane text=true >}} {{% tab "HTTP/Proto" %}}
+{{% tabpane text=true %}} {{% tab "HTTP/Proto" %}}
 
 ```python
 from opentelemetry import trace
@@ -304,7 +304,7 @@ provider.add_span_processor(processor)
 trace.set_tracer_provider(provider)
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 {{% docs/languages/exporters/outro python `https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.export.html#opentelemetry.sdk.trace.export.SpanExporter` %}}
 

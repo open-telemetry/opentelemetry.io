@@ -353,7 +353,7 @@ telemetry backends.
 
 To get started with this guide, create a new project with `rebar3` or `mix`:
 
-{{< tabpane text=true >}} {{% tab Erlang %}}
+{{% tabpane text=true %}} {{% tab Erlang %}}
 
 ```erlang
 rebar3 new release otel_getting_started
@@ -365,13 +365,13 @@ rebar3 new release otel_getting_started
 mix new --sup otel_getting_started
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 Then, in the project you just created, add both `opentelemetry_api` and
 `opentelemetry` as dependencies. We add both because this is a project we will
 run as a Release and export spans from.
 
-{{< tabpane text=true >}} {{% tab Erlang %}}
+{{% tabpane text=true %}} {{% tab Erlang %}}
 
 ```erlang
 {deps, [{opentelemetry_api, "~> {{% param versions.otelApi %}}"},
@@ -389,13 +389,13 @@ def deps do
 end
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 In the case of Erlang, the API Application will also need to be added to
 `src/otel_getting_started.app.src` and a `relx` section to `rebar.config`. In an
 Elixir project, a `releases` section needs to be added to `mix.exs`:
 
-{{< tabpane text=true >}} {{% tab Erlang %}}
+{{% tabpane text=true %}} {{% tab Erlang %}}
 
 ```erlang
 %% src/otel_getting_started.app.src
@@ -425,7 +425,7 @@ releases: [
 ]
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 The SDK `opentelemetry` should be added as early as possible in the Release boot
 process to ensure it is available before any telemetry is produced. Here it is
@@ -462,7 +462,7 @@ To configure OpenTelemetry to use a particular exporter, in this case
 set the `exporter` for the span processor `otel_batch_processor`, a type of span
 processor that batches up multiple spans over a period of time:
 
-{{< tabpane text=true >}} {{% tab Erlang %}}
+{{% tabpane text=true %}} {{% tab Erlang %}}
 
 ```erlang
 %% config/sys.config.src
@@ -482,14 +482,14 @@ config :opentelemetry,
   traces_exporter: {:otel_exporter_stdout, []}
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ## Working with Spans
 
 Now that the dependencies and configuration are set up, we can create a module
 with a function `hello/0` that starts some spans:
 
-{{< tabpane text=true >}} {{% tab Erlang %}}
+{{% tabpane text=true %}} {{% tab Erlang %}}
 
 ```erlang
 %% apps/otel_getting_started/src/otel_getting_started.erl
@@ -536,7 +536,7 @@ defmodule OtelGettingStarted do
 end
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 In this example, we're using macros that use the process dictionary for context
 propagation and for getting the tracer.
@@ -561,7 +561,7 @@ To test out this project and see the spans created, you can run with
 `rebar3 shell` or `iex -S mix`, each will pick up the corresponding
 configuration for the release, resulting in the tracer and exporter to started.
 
-{{< tabpane text=true >}} {{% tab Erlang %}}
+{{% tabpane text=true %}} {{% tab Erlang %}}
 
 ```console
 $ rebar3 shell
@@ -613,7 +613,7 @@ iex(2)>
       [],undefined,1,false,undefined}
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ## Next Steps
 

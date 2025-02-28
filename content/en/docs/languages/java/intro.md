@@ -130,7 +130,7 @@ The following code snippet demonstrates adding a BOM dependency,
 with`{{bomGroupId}}`, `{{bomArtifactId}}`, and `{{bomVersion}}` referring to the
 "Group ID", "Artifact ID", and "Current Version" table columns, respectively.
 
-{{< tabpane text=true >}} {{% tab "Gradle" %}}
+{{% tabpane text=true %}} {{% tab "Gradle" %}}
 
 ```kotlin
 dependencies {
@@ -165,7 +165,7 @@ dependencies {
 </project>
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 [opentelemetry-bom]:
   <https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/{{% param vers.otel %}}/opentelemetry-bom-{{% param vers.otel %}}.pom>

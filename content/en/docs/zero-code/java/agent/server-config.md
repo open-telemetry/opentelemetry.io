@@ -15,7 +15,7 @@ this differs from server to server.
 You can add the `javaagent` argument at the end of the standalone configuration
 file:
 
-{{< tabpane text=true persist=lang >}}
+{{% tabpane text=true persist=lang %}}
 
 {{% tab header="Linux" lang=Linux %}}
 
@@ -31,7 +31,7 @@ rem Add to standalone.conf.bat
 set "JAVA_OPTS=%JAVA_OPTS% -javaagent:<Drive>:\path\to\opentelemetry-javaagent.jar"
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ## Jetty
 
@@ -63,7 +63,7 @@ argument after the `--exec` option:
 
 Add the path to the Java agent using the `asadmin` tool:
 
-{{< tabpane text=true >}} {{% tab Linux %}}
+{{% tabpane text=true %}} {{% tab Linux %}}
 
 ```sh
 <server_install_dir>/bin/asadmin create-jvm-options "-javaagent\:/path/to/opentelemetry-javaagent.jar"
@@ -75,7 +75,7 @@ Add the path to the Java agent using the `asadmin` tool:
 <server_install_dir>\bin\asadmin.bat create-jvm-options '-javaagent\:<Drive>\:\\path\\to\\opentelemetry-javaagent.jar'
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 You can also add the `-javaagent` argument from the Admin Console. For example:
 
@@ -93,7 +93,7 @@ Make sure that the domain.xml file in your domain directory contains a
 
 Add the path to the Java agent to your startup script:
 
-{{< tabpane text=true persist=lang >}}
+{{% tabpane text=true persist=lang %}}
 
 {{% tab header="Linux" lang=Linux %}}
 
@@ -109,13 +109,13 @@ rem Add to <tomcat_home>\bin\setenv.bat
 set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:"<Drive>:\path\to\opentelemetry-javaagent.jar"
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ## WebLogic
 
 Add the path to the Java agent to your domain startup script:
 
-{{< tabpane text=true persist=lang >}}
+{{% tabpane text=true persist=lang %}}
 
 {{% tab header="Linux" lang=Linux %}}
 
@@ -131,7 +131,7 @@ rem Add to <domain_home>\bin\startWebLogic.cmd
 set JAVA_OPTIONS=%JAVA_OPTIONS% -javaagent:"<Drive>:\path\to\opentelemetry-javaagent.jar"
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 For managed server instances, add the `-javaagent` argument using the admin
 console.

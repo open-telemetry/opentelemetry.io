@@ -11,7 +11,7 @@ To send trace data to a OTLP endpoint (like the [collector](/docs/collector) or
 Jaeger) you'll want to use an exporter package, such as
 `opentelemetry-exporter-otlp`:
 
-{{< tabpane text=true >}} {{% tab bundler %}}
+{{% tabpane text=true %}} {{% tab bundler %}}
 
 ```sh
 bundle add opentelemetry-exporter-otlp
@@ -23,7 +23,7 @@ bundle add opentelemetry-exporter-otlp
 gem install opentelemetry-exporter-otlp
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 Next, configure the exporter to point at an OTLP endpoint. For example you can
 update `config/initializers/opentelemetry.rb` from the
@@ -85,7 +85,7 @@ docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
 
 Install the exporter package as a dependency for your application:
 
-{{< tabpane text=true >}} {{% tab bundle %}}
+{{% tabpane text=true %}} {{% tab bundle %}}
 
 ```sh
 bundle add opentelemetry-exporter-zipkin
@@ -97,7 +97,7 @@ bundle add opentelemetry-exporter-zipkin
 gem install opentelemetry-exporter-zipkin
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 Update your OpenTelemetry configuration to use the exporter and to send data to
 your Zipkin backend:

@@ -36,7 +36,7 @@ export OTEL_EXPORTER_OTLP_ENDPOINT=http://collector.example.com:4318
 The collector serving at `collector.example.com:4318` would then be configured
 like so:
 
-{{< tabpane text=true >}} {{% tab Traces %}}
+{{% tabpane text=true %}} {{% tab Traces %}}
 
 ```yaml
 receivers:
@@ -109,7 +109,7 @@ service:
       exporters: [file]
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 If you want to try it out for yourself, you can have a look at the end-to-end
 [Java][java-otlp-example] or [Python][py-otlp-example] examples.

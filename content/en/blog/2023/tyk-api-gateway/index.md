@@ -6,7 +6,7 @@ author: >-
   [Sonja Chevre](https://github.com/SonjaChevre) (Tyk Technologies)
 ---
 
-{{< blog/integration-badge >}}
+{{% blog/integration-badge %}}
 
 We're excited to announce that
 [Tyk API Gateway](https://github.com/TykTechnologies/tyk) has first-class

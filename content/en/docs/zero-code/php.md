@@ -39,7 +39,7 @@ RPM and APK packages are provided by the following:
   APK (currently in the
   [_testing_ branch](https://wiki.alpinelinux.org/wiki/Repositories#Testing))
 
-{{< tabpane text=true >}} {{% tab "RPM" %}}
+{{% tabpane text=true %}} {{% tab "RPM" %}}
 
 ```sh
 #this example is for CentOS 7. The PHP version can be changed by
@@ -64,14 +64,14 @@ apk add php php81-pecl-opentelemetry@testing
 php --ri opentelemetry
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ### PECL
 
 1. Setup development environment. Installing from source requires proper
    development environment and some dependencies:
 
-   {{< tabpane text=true >}} {{% tab "Linux (apt)" %}}
+   {{% tabpane text=true %}} {{% tab "Linux (apt)" %}}
 
    ```sh
    sudo apt-get install gcc make autoconf
@@ -83,12 +83,12 @@ php --ri opentelemetry
    brew install gcc make autoconf
    ```
 
-   {{% /tab %}} {{< /tabpane >}}
+   {{% /tab %}} {{% /tabpane %}}
 
 2. Build/install the extension. With your environment set up you can install the
    extension:
 
-   {{< tabpane text=true >}} {{% tab pecl %}}
+   {{% tabpane text=true %}} {{% tab pecl %}}
 
    ```sh
    pecl install opentelemetry
@@ -106,7 +106,7 @@ php --ri opentelemetry
    install-php-extensions opentelemetry
    ```
 
-   {{% /tab %}} {{< /tabpane >}}
+   {{% /tab %}} {{% /tabpane %}}
 
 3. Add the extension to your `php.ini` file:
 

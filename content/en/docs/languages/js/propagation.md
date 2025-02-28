@@ -29,7 +29,7 @@ applications written in different languages without any differences.
 Start by creating a new folder called `dice-client` and install the required
 dependencies:
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```sh
 npm init -y
@@ -53,12 +53,12 @@ npm install undici \
   @opentelemetry/sdk-node
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 Next, create a new file called `client.ts` (or client.js) with the following
 content:
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 import { NodeSDK } from '@opentelemetry/sdk-node';
@@ -111,7 +111,7 @@ request('http://localhost:8080/rolldice').then((response) => {
 Make sure that you have the instrumented version of `app.ts` (or `app.js`) from
 the [Getting Started](../getting-started/nodejs) running in one shell:
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```console
 $ npx ts-node --require ./instrumentation.ts app.ts
@@ -125,11 +125,11 @@ $ node --require ./instrumentation.js app.js
 Listening for requests on http://localhost:8080
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 Start a second shell and run the `client.ts` (or `client.js`):
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```shell
 npx ts-node client.ts
@@ -141,7 +141,7 @@ npx ts-node client.ts
 node client.js
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 Both shells should emit span details to the console. The client output looks
 similar to the following:
@@ -219,7 +219,7 @@ manually.
 
 First, on the sending service, you'll need to inject the current `context`:
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```typescript
 // Sending service
@@ -269,12 +269,12 @@ const { traceparent, tracestate } = output;
 // across services.
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 On the receiving service, you'll need to extract `context` (for example, from
 parsed HTTP headers) and then set them as the current trace context.
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```typescript
 // Receiving service
@@ -344,7 +344,7 @@ let span = tracer.startSpan(
 trace.setSpan(activeContext, span);
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 From there, when you have a deserialized active context, you can create spans
 that will be a part of the same trace from the other service.

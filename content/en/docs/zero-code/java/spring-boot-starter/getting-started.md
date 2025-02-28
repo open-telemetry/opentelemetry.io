@@ -108,7 +108,7 @@ Add the dependency given below to enable the OpenTelemetry starter.
 The OpenTelemetry starter uses OpenTelemetry Spring Boot
 [autoconfiguration](https://docs.spring.io/spring-boot/reference/using/auto-configuration.html).
 
-{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
+{{% tabpane text=true %}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
 ```xml
 <dependency>
@@ -123,4 +123,4 @@ The OpenTelemetry starter uses OpenTelemetry Spring Boot
 implementation("io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter")
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{% /tabpane%}}

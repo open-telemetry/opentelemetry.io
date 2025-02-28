@@ -18,7 +18,7 @@ You'll need to add a dependency on the
 `opentelemetry-instrumentation-annotations` library to use the `@WithSpan`
 annotation.
 
-{{< tabpane text=true >}} {{% tab "Maven" %}}
+{{% tabpane text=true %}} {{% tab "Maven" %}}
 
 ```xml
 <dependencies>
@@ -40,7 +40,7 @@ dependencies {
 }
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ## Creating spans around methods with `@WithSpan`
 

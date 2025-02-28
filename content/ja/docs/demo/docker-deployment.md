@@ -32,7 +32,7 @@ cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
 
 3. デモを起動[^1]します。
 
-   {{< tabpane text=true >}} {{% tab Make %}}
+   {{% tabpane text=true %}} {{% tab Make %}}
 
 ```shell
 make start
@@ -44,11 +44,11 @@ make start
 docker compose up --force-recreate --remove-orphans --detach
 ```
 
-    {{% /tab %}} {{< /tabpane >}}
+    {{% /tab %}} {{% /tabpane %}}
 
 4. (オプション) API オブザーバビリティ駆動テストの有効化[^1]します。
 
-   {{< tabpane text=true >}} {{% tab Make %}}
+   {{% tabpane text=true %}} {{% tab Make %}}
 
 ```shell
 make run-tracetesting
@@ -60,7 +60,7 @@ make run-tracetesting
 docker compose -f docker-compose-tests.yml run traceBasedTests
 ```
 
-    {{% /tab %}} {{< /tabpane >}}
+    {{% /tab %}} {{% /tabpane %}}
 
 ## ウェブストアとテレメトリーの確認 {#verify-the-web-store-and-telemetry}
 
@@ -80,7 +80,7 @@ docker compose -f docker-compose-tests.yml run traceBasedTests
 
 - 次の設定は 8081 ポートを利用する場合の例です[^1]。
 
-  {{< tabpane text=true >}} {{% tab Make %}}
+  {{% tabpane text=true %}} {{% tab Make %}}
 
 ```shell
 ENVOY_PORT=8081 make start
@@ -92,7 +92,7 @@ ENVOY_PORT=8081 make start
 ENVOY_PORT=8081 docker compose up --force-recreate --remove-orphans --detach
 ```
 
-    {{% /tab %}} {{< /tabpane >}}
+    {{% /tab %}} {{% /tabpane %}}
 
 ## 独自のバックエンドを導入する {#bring-your-own-backend}
 

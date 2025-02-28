@@ -20,7 +20,7 @@ default_lang_commit: fd873ed11bfa9920c2e8b0726784f482368e85c2
 
 {{% /blocks/lead %}}
 
-{{< blocks/section color="white" type="container-lg" >}}
+{{% blocks/section color="white" type="container-lg" %}}
 
 {{% alert color="info" %}}
 
@@ -31,6 +31,6 @@ ecossistema. Caso você seja mantenedor de um projeto, é possível
 
 {{% /alert %}}
 
-{{< ecosystem/registry/search-form >}}
+{{% ecosystem/registry/search-form %}}
 
-{{< /blocks/section >}}
+{{% /blocks/section %}}

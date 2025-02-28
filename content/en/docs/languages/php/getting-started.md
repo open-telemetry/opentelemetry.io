@@ -94,7 +94,7 @@ Next, you’ll use the OpenTelemetry PHP extension to
 1. Since the extension is built from source, you need to install some build
    tools
 
-   {{< tabpane text=true >}} {{% tab "Linux (apt)" %}}
+   {{% tabpane text=true %}} {{% tab "Linux (apt)" %}}
 
    ```sh
    sudo apt-get install gcc make autoconf
@@ -106,7 +106,7 @@ Next, you’ll use the OpenTelemetry PHP extension to
    brew install gcc make autoconf
    ```
 
-   {{% /tab %}} {{< /tabpane >}}
+   {{% /tab %}} {{% /tabpane %}}
 
 2. Build the extension with `PECL`:
 

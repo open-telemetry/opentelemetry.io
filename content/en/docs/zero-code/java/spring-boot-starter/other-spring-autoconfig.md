@@ -26,7 +26,7 @@ initialized and added to a simple span processor in the active tracer provider.
 Check out the implementation
 [here](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java).
 
-{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
+{{% tabpane text=true %}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
 ```xml
 <dependencies>
@@ -46,7 +46,7 @@ dependencies {
 }
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{% /tabpane%}}
 
 ### Configurations
 

@@ -205,7 +205,7 @@ OTLP/JSON format, with a JSON object per line. The log records are nested in the
 
 ## Configure the Collector to ingest the OTLP/JSON logs
 
-{{< figure class="figure" src="otel-collector-otlpjson-pipeline.png" attr="View OTel Collector pipeline with OTelBin" attrlink=`https://www.otelbin.io/s/69739d790cf279c203fc8efc86ad1a876a2fc01a` >}}
+{{% figure class="figure" src="otel-collector-otlpjson-pipeline.png" attr="View OTel Collector pipeline with OTelBin" attrlink=`https://www.otelbin.io/s/69739d790cf279c203fc8efc86ad1a876a2fc01a` %}}
 
 ```yaml
 # tested with otelcol-contrib v0.112.0

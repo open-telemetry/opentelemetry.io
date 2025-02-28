@@ -15,7 +15,7 @@ OpenTelemetryコレクターに適用可能なデプロイメントモデル、�
 以下のコマンドはDockerイメージをプルし、コレクターをコンテナ内で実行します。
 `{{% param vers %}}` を実行したいコレクターのバージョンに置き換えてください。
 
-{{< tabpane text=true >}} {{% tab DockerHub %}}
+{{% tabpane text=true %}} {{% tab DockerHub %}}
 
 ```sh
 docker pull otel/opentelemetry-collector-contrib:{{% param vers %}}
@@ -29,11 +29,11 @@ docker pull ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetr
 docker run ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:{{% param vers %}}
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 作業ディレクトリからカスタム設定ファイルを読み込むには、そのファイルをボリュームとしてマウントします。
 
-{{< tabpane text=true >}} {{% tab DockerHub %}}
+{{% tabpane text=true %}} {{% tab DockerHub %}}
 
 ```sh
 docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml otel/opentelemetry-collector-contrib:{{% param vers %}}
@@ -45,7 +45,7 @@ docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml otel/opentelem
 docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:{{% param vers %}}
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ## Docker Compose
 
@@ -97,7 +97,7 @@ Kubernetesでコレクターを使用する方法については、[Kubernetes�
 
 Debian系のシステムで使い始めるには、以下のコマンドを実行します。
 
-{{< tabpane text=true >}} {{% tab AMD64 %}}
+{{% tabpane text=true %}} {{% tab AMD64 %}}
 
 ```sh
 sudo apt-get update
@@ -124,13 +124,13 @@ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases
 sudo dpkg -i otelcol_{{% param vers %}}_linux_386.deb
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ### RPMのインストール
 
 Red Hat系のシステムで使い始めるには、以下のコマンドを実行します。
 
-{{< tabpane text=true >}} {{% tab AMD64 %}}
+{{% tabpane text=true %}} {{% tab AMD64 %}}
 
 ```sh
 sudo yum update
@@ -157,14 +157,14 @@ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases
 sudo rpm -ivh otelcol_{{% param vers %}}_linux_386.rpm
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ### 手動でのLinuxへのインストール
 
 Linux向けの[リリース][releases]は、さまざまなアーキテクチャに対応しています。
 バイナリを含むファイルをダウンロードし、あなたのマシンに手動でインストールしてください。
 
-{{< tabpane text=true >}} {{% tab AMD64 %}}
+{{% tabpane text=true %}} {{% tab AMD64 %}}
 
 ```sh
 curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_amd64.tar.gz
@@ -192,7 +192,7 @@ curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelem
 tar -xvf otelcol_{{% param vers %}}_linux_ppc64le.tar.gz
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ### 自動サービスコンフィギュレーション
 
@@ -220,7 +220,7 @@ macOS向けの [リリース][releases] は Intel および ARM システムで�
 リリースはgzip圧縮されたtarball (`.tar.gz`) としてパッケージ化されています。
 解凍するには、以下のコマンドを実行してください。
 
-{{< tabpane text=true >}} {{% tab Intel %}}
+{{% tabpane text=true %}} {{% tab Intel %}}
 
 ```sh
 curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_darwin_amd64.tar.gz
@@ -234,7 +234,7 @@ curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelem
 tar -xvf otelcol_{{% param vers %}}_darwin_arm64.tar.gz
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 すべてのコレクターのリリースには、解凍後に実行できる `otelcol` 実行ファイルが含まれています。
 

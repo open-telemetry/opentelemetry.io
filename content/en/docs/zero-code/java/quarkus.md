@@ -34,7 +34,7 @@ if you are not running a native image application.
 To enable OpenTelemetry in your Quarkus application, add the
 `quarkus-opentelemetry` extension dependency to your project.
 
-{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
+{{% tabpane text=true %}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
 ```xml
 <dependency>
@@ -49,7 +49,7 @@ To enable OpenTelemetry in your Quarkus application, add the
 implementation("io.quarkus:quarkus-opentelemetry")
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{% /tabpane%}}
 
 Only the **tracing** signal is enabled by default. To enable **metrics** and
 **logs**, add the following configuration to your `application.properties` file:

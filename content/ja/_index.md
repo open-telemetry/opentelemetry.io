@@ -9,7 +9,7 @@ default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
 
-{{< blocks/cover image_anchor="top" height="max" color="primary" >}}
+{{% blocks/cover image_anchor="top" height="max" color="primary" %}}
 
 <!-- prettier-ignore -->
 ![OpenTelemetry](/img/logos/opentelemetry-horizontal-color.svg)
@@ -35,7 +35,7 @@ default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28
 - [運用担当者（Ops）](docs/getting-started/ops/)
 
 </div>
-{{< /blocks/cover >}}
+{{% /blocks/cover %}}
 
 {{% blocks/lead color="white" %}}
 

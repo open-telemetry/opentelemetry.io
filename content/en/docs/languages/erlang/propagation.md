@@ -28,7 +28,7 @@ propagators. By default the global propagators used are the W3C
 You can configure global propagators using the OTP application environment
 variable `text_map_propagators`:
 
-{{< tabpane text=true >}} {{% tab Erlang %}}
+{{% tabpane text=true %}} {{% tab Erlang %}}
 
 ```erlang
 %% sys.config
@@ -47,7 +47,7 @@ text_map_propagators: [:baggage, :trace_context],
 ...
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 You can also pass a comma separated list using the environment variable
 `OTEL_PROPAGATORS`. Both forms of configuration accept the values
@@ -59,7 +59,7 @@ and `b3multi`.
 To manually inject or extract context, you can use the
 `otel_propagator_text_map` module:
 
-{{< tabpane text=true >}} {{% tab Erlang %}}
+{{% tabpane text=true %}} {{% tab Erlang %}}
 
 ```erlang
 %% uses the context from the process dictionary to add to an empty list of headers
@@ -79,7 +79,7 @@ headers = :otel_propagator_text_map.inject([])
 :otel_propagator_text_map.extract(headers)
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 `otel_propagator_text_map:inject/1` and `otel_propagator_text_map:extract/1` use
 globally registered propagators. To use a specific propagator

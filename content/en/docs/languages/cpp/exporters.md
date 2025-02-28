@@ -28,7 +28,7 @@ Make sure that you have set the right cmake build variables while
 
 Next, configure the exporter to point at an OTLP endpoint in your code.
 
-{{< tabpane text=true >}} {{% tab "HTTP/Proto" %}}
+{{% tabpane text=true %}} {{% tab "HTTP/Proto" %}}
 
 ```cpp
 #include "opentelemetry/exporters/otlp/otlp_http_exporter_factory.h"
@@ -195,7 +195,7 @@ void InitLogger()
 }
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ### Console
 
@@ -355,7 +355,7 @@ void InitTracer()
 
 {{% docs/languages/exporters/outro python `https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/classopentelemetry_1_1sdk_1_1trace_1_1SpanExporter.html` %}}
 
-{{< tabpane text=true >}} {{% tab Batch %}}
+{{% tabpane text=true %}} {{% tab Batch %}}
 
 ```cpp
 #include "opentelemetry/exporters/otlp/otlp_http_exporter_factory.h"
@@ -382,6 +382,6 @@ auto exporter  = opentelemetry::exporter::otlp::OtlpHttpExporterFactory::Create(
 auto processor = opentelemetry::sdk::trace::SimpleSpanProcessorFactory::Create(std::move(exporter));
 ```
 
-{{< /tab >}} {{< /tabpane>}}
+{{% /tab %}} {{% /tabpane%}}
 
 {{% /docs/languages/exporters/outro %}}

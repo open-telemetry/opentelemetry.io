@@ -44,7 +44,7 @@ npm init -y
 
 Next, install Express dependencies.
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```sh
 npm install typescript \
@@ -63,7 +63,7 @@ npx tsc --init
 npm install express
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ### Create and launch an HTTP Server
 
@@ -119,7 +119,7 @@ app.listen(PORT, () => {
 Run the application with the following command and open
 <http://localhost:8080/rolldice> in your web browser to ensure it is working.
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```console
 $ npx ts-node app.ts
@@ -133,7 +133,7 @@ $ node app.js
 Listening for requests on http://localhost:8080
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ## Instrumentation
 
@@ -172,7 +172,7 @@ application code. One tool commonly used for this task is the
 Create a file named `instrumentation.ts` (or `instrumentation.js` if not using
 TypeScript) , which will contain your instrumentation setup code.
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 /*instrumentation.ts*/
@@ -221,7 +221,7 @@ const sdk = new NodeSDK({
 sdk.start();
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ## Run the instrumented app
 
@@ -231,7 +231,7 @@ sure you don't have other conflicting `--require` flags such as
 `--require @opentelemetry/auto-instrumentations-node/register` on your
 `NODE_OPTIONS` environment variable.
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```console
 $ npx ts-node --require ./instrumentation.ts app.ts
@@ -245,7 +245,7 @@ $ node --require ./instrumentation.js app.js
 Listening for requests on http://localhost:8080
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 Open <http://localhost:8080/rolldice> in your web browser and reload the page a
 few times. After a while you should see the spans printed in the console by the
@@ -488,7 +488,7 @@ If you'd like to explore a more complex example, take a look at the
 Did something go wrong? You can enable diagnostic logging to validate that
 OpenTelemetry is initialized correctly:
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 /*instrumentation.ts*/
@@ -513,7 +513,7 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 // const sdk = new NodeSDK({...
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/

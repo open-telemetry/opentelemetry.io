@@ -4,7 +4,7 @@ linkTitle: Integrations Welcome!
 date: 2023-11-06
 ---
 
-{{< blog/integration-badge >}}
+{{% blog/integration-badge %}}
 
 Embracing OpenTelemetry's [vision], we are committed to enabling high-quality
 telemetry throughout the entire software stack!

@@ -116,7 +116,7 @@ or PowerShell scripts.
 1. Download installation scripts from [Releases][] of the
    `opentelemetry-dotnet-instrumentation` repository:
 
-   {{< tabpane text=true >}} {{% tab Unix-shell %}}
+   {{% tabpane text=true %}} {{% tab Unix-shell %}}
 
    ```sh
    curl -L -O https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/otel-dotnet-auto-install.sh
@@ -130,12 +130,12 @@ or PowerShell scripts.
    Invoke-WebRequest -Uri $module_url -OutFile $download_path -UseBasicParsing
    ```
 
-   {{% /tab %}} {{< /tabpane >}}
+   {{% /tab %}} {{% /tabpane %}}
 
 2. Execute following script to download automatic instrumentation for your
    development environment:
 
-   {{< tabpane text=true >}} {{% tab Unix-shell %}}
+   {{% tabpane text=true %}} {{% tab Unix-shell %}}
 
    ```sh
    ./otel-dotnet-auto-install.sh
@@ -148,14 +148,14 @@ or PowerShell scripts.
    Install-OpenTelemetryCore
    ```
 
-   {{% /tab %}} {{< /tabpane >}}
+   {{% /tab %}} {{% /tabpane %}}
 
 3. Set and export variables that specify a [console exporter][], then execute
    script configuring other necessary environment variables using a notation
    suitable for your shell/terminal environment &mdash; we illustrate a notation
    for bash-like shells and PowerShell:
 
-   {{< tabpane text=true >}} {{% tab Unix-shell %}}
+   {{% tabpane text=true %}} {{% tab Unix-shell %}}
 
    ```sh
    export OTEL_TRACES_EXPORTER=console \
@@ -174,7 +174,7 @@ or PowerShell scripts.
    Register-OpenTelemetryForCurrentSession -OTelServiceName "RollDiceService"
    ```
 
-   {{% /tab %}} {{< /tabpane >}}
+   {{% /tab %}} {{% /tabpane %}}
 
 4. Run your **application** once again:
 

@@ -47,7 +47,7 @@ npm init -y
 
 Em seguida, instale as dependências do Express.
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```sh
 npm install typescript \
@@ -66,7 +66,7 @@ npx tsc --init
 npm install express
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ### Crie e inicie um servidor HTTP {#create-and-launch-an-http-server}
 
@@ -123,7 +123,7 @@ Execute a aplicação utilizando o comando abaixo e acesse
 <http://localhost:8080/rolldice> no seu navegador para garantir que esteja
 funcionando.
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```console
 $ npx ts-node app.ts
@@ -137,7 +137,7 @@ $ node app.js
 Aguardando requisições em http://localhost:8080
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ## Instrumentação {#instrumentation}
 
@@ -179,7 +179,7 @@ Crie um arquivo chamado `instrumentation.ts` (ou `instrumentation.js`, caso não
 esteja utilizando TypeScript), que deverá conter o código de configuração de
 instrumentação.
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 /*instrumentation.ts*/
@@ -228,7 +228,7 @@ const sdk = new NodeSDK({
 sdk.start();
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ## Execute a aplicação instrumentada {#run-the-instrumented-app}
 
@@ -238,7 +238,7 @@ Certifique-se de que não haja conflitos na utilização da _flag_ `--require`,
 como, por exemplo, a variável de ambiente `NODE_OPTIONS` já possuir algo como
 `--require @opentelemetry/auto-instrumentations-node/register`.
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```console
 $ npx ts-node --require ./instrumentation.ts app.ts
@@ -252,7 +252,7 @@ $ node --require ./instrumentation.js app.js
 Aguardando requisições em http://localhost:8080
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 Acesse <http://localhost:8080/rolldice> no seu navegador e recarregue a página
 algumas vezes. Depois de um tempo, você deverá ver os trechos exibidos no
@@ -496,7 +496,7 @@ Caso queira explorar um exemplo mais complexo, dê uma olhada no
 Algo deu errado? Você pode habilitar o _logging_ de diagnóstico para validar se
 o OpenTelemetry está inicializado corretamente:
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 /*instrumentation.ts*/
@@ -521,7 +521,7 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 // const sdk = new NodeSDK({...
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 [rastros]: /docs/concepts/signals/traces/
 [métricas]: /docs/concepts/signals/metrics/

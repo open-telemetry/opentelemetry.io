@@ -37,7 +37,7 @@ redirects: [{ from: /ecosystem/registry*, to: '/ecosystem/registry?' }]
 
 {{% /blocks/lead %}}
 
-{{< blocks/section color="white" type="container-lg" >}}
+{{% blocks/section color="white" type="container-lg" %}}
 
 {{% alert color="info" %}}
 
@@ -48,6 +48,6 @@ ecosystem. If you are a project maintainer, you can
 
 {{% /alert %}}
 
-{{< ecosystem/registry/search-form >}}
+{{% ecosystem/registry/search-form %}}
 
-{{< /blocks/section >}}
+{{% /blocks/section %}}

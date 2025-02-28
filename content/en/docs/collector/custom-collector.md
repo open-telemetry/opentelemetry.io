@@ -31,7 +31,7 @@ Collector [releases with `cmd/builder` tags][tags]. You will find a list of
 assets named based on OS and chipset, so download the one that fits your
 configuration:
 
-{{< tabpane text=true >}}
+{{% tabpane text=true %}}
 
 {{% tab "Linux (AMD 64)" %}}
 
@@ -80,7 +80,7 @@ Invoke-WebRequest -Uri "https://github.com/open-telemetry/opentelemetry-collecto
 Unblock-File -Path "ocb.exe"
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 To make sure the `ocb` is ready to be used, go to your terminal and type
 `./ocb help`, and once you hit enter you should have the output of the `help`

@@ -36,7 +36,7 @@ composer require open-telemetry/transport-grpc
 
 Next, configure an exporter with an OTLP endpoint. For example:
 
-{{< tabpane text=true >}} {{% tab gRPC %}}
+{{% tabpane text=true %}} {{% tab gRPC %}}
 
 ```php
 <?php
@@ -122,7 +122,7 @@ $tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
 $tracer->spanBuilder('example')->startSpan()->end();
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 Then, append the following code to generate a span:
 

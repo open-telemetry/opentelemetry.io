@@ -163,7 +163,7 @@ that closely align with the [SLSA](https://slsa.dev/spec/v1.0/about) model. This
 is really the first time a direct connection is being made between observability
 and software supply chain security. Consider the following
 [supply chain threat model](https://slsa.dev/spec/v1.0/threats) defined by SLSA:
-{{< figure class="figure" src="SLSA-supply-chain-model.png" attr="SLSA Community Specification License 1.0" attrlink=`https://github.com/slsa-framework/slsa?tab=License-1-ov-file` >}}
+{{% figure class="figure" src="SLSA-supply-chain-model.png" attr="SLSA Community Specification License 1.0" attrlink=`https://github.com/slsa-framework/slsa?tab=License-1-ov-file` %}}
 
 These new attributes for artifacts and attestations help observe the sequence of
 events modeled in the above diagram in real time. Really, the conventions that

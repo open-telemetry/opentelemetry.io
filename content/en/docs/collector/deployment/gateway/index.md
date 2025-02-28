@@ -111,7 +111,7 @@ configuration fields:
 The first-tier collector servicing the OTLP endpoint would be configured as
 shown below:
 
-{{< tabpane text=true >}} {{% tab Static %}}
+{{% tabpane text=true %}} {{% tab Static %}}
 
 ```yaml
 receivers:
@@ -194,7 +194,7 @@ service:
       exporters: [loadbalancing]
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 The load-balancing exporter emits metrics including
 `otelcol_loadbalancer_num_backends` and `otelcol_loadbalancer_backend_latency`

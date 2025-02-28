@@ -17,7 +17,7 @@ and [Deployment Methods][] page.
 The following commands pull a Docker image and run the Collector in a container.
 Replace `{{% param vers %}}` with the version of the Collector you want to run.
 
-{{< tabpane text=true >}} {{% tab DockerHub %}}
+{{% tabpane text=true %}} {{% tab DockerHub %}}
 
 ```sh
 docker pull otel/opentelemetry-collector-contrib:{{% param vers %}}
@@ -31,12 +31,12 @@ docker pull ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetr
 docker run ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:{{% param vers %}}
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 To load a custom configuration file from your working directory, mount that file
 as a volume:
 
-{{< tabpane text=true >}} {{% tab DockerHub %}}
+{{% tabpane text=true %}} {{% tab DockerHub %}}
 
 ```sh
 docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml otel/opentelemetry-collector-contrib:{{% param vers %}}
@@ -48,7 +48,7 @@ docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml otel/opentelem
 docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:{{% param vers %}}
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ## Docker Compose
 
@@ -108,7 +108,7 @@ amd64/arm64/i386 systems. You can find the default configuration in
 
 To get started on Debian systems run the following commands:
 
-{{< tabpane text=true >}} {{% tab AMD64 %}}
+{{% tabpane text=true %}} {{% tab AMD64 %}}
 
 ```sh
 sudo apt-get update
@@ -135,13 +135,13 @@ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases
 sudo dpkg -i otelcol_{{% param vers %}}_linux_386.deb
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ### RPM Installation
 
 To get started on Red Hat systems run the following commands:
 
-{{< tabpane text=true >}} {{% tab AMD64 %}}
+{{% tabpane text=true %}} {{% tab AMD64 %}}
 
 ```sh
 sudo yum update
@@ -168,14 +168,14 @@ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases
 sudo rpm -ivh otelcol_{{% param vers %}}_linux_386.rpm
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ### Manual Linux installation
 
 Linux [releases][] are available for various architectures. You can download the
 file containing the binary and install it on your machine manually:
 
-{{< tabpane text=true >}} {{% tab AMD64 %}}
+{{% tabpane text=true %}} {{% tab AMD64 %}}
 
 ```sh
 curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_amd64.tar.gz
@@ -203,7 +203,7 @@ curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelem
 tar -xvf otelcol_{{% param vers %}}_linux_ppc64le.tar.gz
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ### Automatic service configuration
 
@@ -235,7 +235,7 @@ macOS [releases][] are available for Intel and ARM systems. The releases are
 packaged as gzipped tarballs (`.tar.gz`). To unpack them, run the following
 commands:
 
-{{< tabpane text=true >}} {{% tab Intel %}}
+{{% tabpane text=true %}} {{% tab Intel %}}
 
 ```sh
 curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_darwin_amd64.tar.gz
@@ -249,7 +249,7 @@ curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelem
 tar -xvf otelcol_{{% param vers %}}_darwin_arm64.tar.gz
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 Every Collector release includes an `otelcol` executable that you can run after
 unpacking.

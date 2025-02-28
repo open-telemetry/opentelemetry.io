@@ -40,7 +40,7 @@ that bundle all Node.js- or web-based instrumentation libraries into a single
 package. It’s a convenient way to add automatically-generated telemetry for all
 your libraries with minimal effort:
 
-{{< tabpane text=true >}}
+{{% tabpane text=true %}}
 
 {{% tab Node.js %}}
 
@@ -56,7 +56,7 @@ npm install --save @opentelemetry/auto-instrumentations-node
 npm install --save @opentelemetry/auto-instrumentations-web
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 Note, that using those metapackages increases your dependency graph size. Use
 individual instrumentation libraries if you know exactly which ones you need.
@@ -70,7 +70,7 @@ the metapackages. If you followed the instructions
 [to initialize the SDK for manual instrumentation](/docs/languages/js/instrumentation/#initialize-tracing),
 update your `instrumentation.ts` (or `instrumentation.js`) as follows:
 
-{{< tabpane text=true >}}
+{{% tabpane text=true %}}
 
 {{% tab TypeScript %}}
 
@@ -105,12 +105,12 @@ const sdk = new NodeSDK({
 
 {{% /tab %}}
 
-{{< /tabpane >}}
+{{% /tabpane %}}
 
 To disable individual instrumentation libraries you can apply the following
 change:
 
-{{< tabpane text=true >}}
+{{% tabpane text=true %}}
 
 {{% tab TypeScript %}}
 
@@ -157,12 +157,12 @@ const sdk = new NodeSDK({
 
 {{% /tab %}}
 
-{{< /tabpane >}}
+{{% /tabpane %}}
 
 To only load individual instrumentation libraries, replace
 `[getNodeAutoInstrumentations()]` with the list of those you need:
 
-{{< tabpane text=true >}}
+{{% tabpane text=true %}}
 
 {{% tab TypeScript %}}
 
@@ -203,7 +203,7 @@ const sdk = new NodeSDK({
 
 {{% /tab %}}
 
-{{< /tabpane >}}
+{{% /tabpane %}}
 
 ### Configuration
 
@@ -214,7 +214,7 @@ For example,
 offers ways to ignore specified middleware or enrich spans created automatically
 with a request hook:
 
-{{< tabpane text=true >}}
+{{% tabpane text=true %}}
 
 {{% tab TypeScript %}}
 
@@ -267,7 +267,7 @@ const expressInstrumentation = new ExpressInstrumentation({
 
 {{% /tab %}}
 
-{{< /tabpane >}}
+{{% /tabpane %}}
 
 You'll need to refer to each instrumentation library's documentation for
 advanced configuration.

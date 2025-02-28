@@ -43,7 +43,7 @@ npm init -y
 
 Next, install Express dependencies.
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```sh
 npm install typescript \
@@ -59,7 +59,7 @@ npm install typescript \
 npm install express
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ### Create and launch an HTTP Server
 
@@ -70,7 +70,7 @@ imported as a dependency by the _app file_.
 Create the _library file_ named `dice.ts` (or `dice.js` if you are not using
 TypeScript) and add the following code to it:
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 /*dice.ts*/
@@ -106,12 +106,12 @@ function rollTheDice(rolls, min, max) {
 module.exports = { rollTheDice };
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 Create the _app file_ named `app.ts` (or `app.js` if not using TypeScript) and
 add the following code to it:
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 /*app.ts*/
@@ -163,12 +163,12 @@ app.listen(PORT, () => {
 });
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 To ensure that it is working, run the application with the following command and
 open <http://localhost:8080/rolldice?rolls=12> in your web browser.
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```console
 $ npx ts-node app.ts
@@ -182,7 +182,7 @@ $ node app.js
 Listening for requests on http://localhost:8080
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ## Manual instrumentation setup
 
@@ -211,7 +211,7 @@ SDK. If you fail to initialize the SDK or initialize it too late, no-op
 implementations will be provided to any library that acquires a tracer or meter
 from the API.
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 /*instrumentation.ts*/
@@ -271,7 +271,7 @@ const sdk = new NodeSDK({
 sdk.start();
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 For debugging and local development purposes, the following example exports
 telemetry to the console. After you have finished setting up manual
@@ -289,7 +289,7 @@ information, see [Resources](/docs/languages/js/resources/).
 
 To verify your code, run the app by requiring the library:
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```sh
 npx ts-node --require ./instrumentation.ts app.ts
@@ -301,7 +301,7 @@ npx ts-node --require ./instrumentation.ts app.ts
 node --require ./instrumentation.js app.js
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 This basic setup has no effect on your app yet. You need to add code for
 [traces](#traces), [metrics](#metrics), and/or [logs](#logs).
@@ -346,7 +346,7 @@ npm install @opentelemetry/sdk-trace-web
 Next, update `instrumentation.ts` (or `instrumentation.js`) to contain all the
 SDK initialization code in it:
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 import { Resource } from '@opentelemetry/resources';
@@ -411,7 +411,7 @@ const provider = new WebTracerProvider({
 provider.register();
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 You'll need to bundle this file with your web application to be able to use
 tracing throughout the rest of your web application.
@@ -442,7 +442,7 @@ In most cases, stick with `BatchSpanProcessor` over `SimpleSpanProcessor`.
 Anywhere in your application where you write manual tracing code should call
 `getTracer` to acquire a tracer. For example:
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 import opentelemetry from '@opentelemetry/api';
@@ -470,7 +470,7 @@ const tracer = opentelemetry.trace.getTracer(
 // You can now use a 'tracer' to do tracing!
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 The values of `instrumentation-scope-name` and `instrumentation-scope-version`
 should uniquely identify the
@@ -488,7 +488,7 @@ tracer may be acquired with an appropriate Instrumentation Scope:
 
 First, in the _application file_ `app.ts` (or `app.js`):
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 /*app.ts*/
@@ -546,11 +546,11 @@ app.listen(PORT, () => {
 });
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 And second, in the _library file_ `dice.ts` (or `dice.js`):
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 /*dice.ts*/
@@ -594,7 +594,7 @@ function rollTheDice(rolls, min, max) {
 module.exports = { rollTheDice };
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ### Create spans
 
@@ -616,7 +616,7 @@ care of setting the span and its context active.
 
 The code below illustrates how to create an active span.
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 import { trace, Span } from '@opentelemetry/api';
@@ -654,7 +654,7 @@ function rollTheDice(rolls, min, max) {
 }
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 If you followed the instructions using the [example app](#example-app) up to
 this point, you can copy the code above in your library file `dice.ts` (or
@@ -663,7 +663,7 @@ this point, you can copy the code above in your library file `dice.ts` (or
 Start your app as follows, and then send it requests by visiting
 <http://localhost:8080/rolldice?rolls=12> with your browser or `curl`.
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```sh
 ts-node --require ./instrumentation.ts app.ts
@@ -675,7 +675,7 @@ ts-node --require ./instrumentation.ts app.ts
 node --require ./instrumentation.js app.js
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 After a while, you should see the spans printed in the console by the
 `ConsoleSpanExporter`, something like this:
@@ -703,7 +703,7 @@ nested in nature. For example, the `rollOnce()` function below represents a
 nested operation. The following sample creates a nested span that tracks
 `rollOnce()`:
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 function rollOnce(i: number, min: number, max: number) {
@@ -753,7 +753,7 @@ function rollTheDice(rolls, min, max) {
 }
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 This code creates a child span for each _roll_ that has `parentSpan`'s ID as
 their parent ID:
@@ -845,7 +845,7 @@ const span = opentelemetry.trace.getSpan(ctx);
 pairs to a [`Span`](/docs/concepts/signals/traces/#spans) so it carries more
 information about the current operation that it's tracking.
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 function rollOnce(i: number, min: number, max: number) {
@@ -877,7 +877,7 @@ function rollOnce(i, min, max) {
 }
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 You can also add attributes to a span as it's created:
 
@@ -893,7 +893,7 @@ tracer.startActiveSpan(
 );
 ```
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 function rollTheDice(rolls: number, min: number, max: number) {
@@ -921,7 +921,7 @@ function rollTheDice(rolls, min, max) {
 }
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 #### Semantic Attributes
 
@@ -939,7 +939,7 @@ npm install --save @opentelemetry/semantic-conventions
 
 Add the following to the top of your application file:
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 import {
@@ -957,7 +957,7 @@ const {
 } = require('@opentelemetry/semantic-conventions');
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 Finally, you can update your file to include semantic attributes:
 
@@ -1027,7 +1027,7 @@ const someFunction = (spanToLinkFrom) => {
 
 {{% docs/languages/span-status-preamble %}}
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 import opentelemetry, { SpanStatusCode } from '@opentelemetry/api';
@@ -1069,14 +1069,14 @@ tracer.startActiveSpan('app.doWork', (span) => {
 });
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ### Recording exceptions
 
 It can be a good idea to record exceptions when they happen. It's recommended to
 do this in conjunction with setting [span status](#span-status).
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 import opentelemetry, { SpanStatusCode } from '@opentelemetry/api';
@@ -1110,7 +1110,7 @@ try {
 }
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ### Using `sdk-trace-base` and manually propagating span context
 
@@ -1123,7 +1123,7 @@ nested spans.
 
 Initializing tracing is similar to how you'd do it with Node.js or the Web SDK.
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 import opentelemetry from '@opentelemetry/api';
@@ -1187,7 +1187,7 @@ opentelemetry.propagation.setGlobalPropagator(
 const tracer = opentelemetry.trace.getTracer('example-basic-tracer-node');
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 Like the other examples in this document, this exports a tracer you can use
 throughout the app.
@@ -1277,7 +1277,7 @@ If you have not created it for tracing already, create a separate
 `instrumentation.ts` (or `instrumentation.js`) file that has all the SDK
 initialization code in it:
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 import opentelemetry from '@opentelemetry/api';
@@ -1352,11 +1352,11 @@ const myServiceMeterProvider = new MeterProvider({
 opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider);
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 You'll need to `--require` this file when you run your app, such as:
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```sh
 ts-node --require ./instrumentation.ts app.ts
@@ -1368,7 +1368,7 @@ ts-node --require ./instrumentation.ts app.ts
 node --require ./instrumentation.js app.js
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 Now that a `MeterProvider` is configured, you can acquire a `Meter`.
 
@@ -1377,7 +1377,7 @@ Now that a `MeterProvider` is configured, you can acquire a `Meter`.
 Anywhere in your application where you have manually instrumented code you can
 call `getMeter` to acquire a meter. For example:
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 import opentelemetry from '@opentelemetry/api';
@@ -1403,7 +1403,7 @@ const myMeter = opentelemetry.metrics.getMeter(
 // You can now use a 'meter' to create instruments!
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 The values of `instrumentation-scope-name` and `instrumentation-scope-version`
 should uniquely identify the
@@ -1421,7 +1421,7 @@ tracer may be acquired with an appropriate Instrumentation Scope:
 
 First, in the _application file_ `app.ts` (or `app.js`):
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 /*app.ts*/
@@ -1481,11 +1481,11 @@ app.listen(PORT, () => {
 });
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 And second, in the _library file_ `dice.ts` (or `dice.js`):
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 /*dice.ts*/
@@ -1531,7 +1531,7 @@ function rollTheDice(rolls, min, max) {
 module.exports = { rollTheDice };
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 Now that you have [meters](/docs/concepts/signals/metrics/#meter) initialized.
 you can create
@@ -1544,7 +1544,7 @@ Counters can be used to measure a non-negative, increasing value.
 In the case of our [example app](#example-app) we can use this to count how
 often the dice has been rolled:
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 /*dice.ts*/
@@ -1568,7 +1568,7 @@ function rollOnce(min, max) {
 }
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ### Using UpDown Counters
 
@@ -1594,7 +1594,7 @@ Histograms are used to measure a distribution of values over time.
 For example, here's how you report a distribution of response times for an API
 route with Express:
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 import express from 'express';
@@ -1636,7 +1636,7 @@ app.get('/', (_req, _res) => {
 });
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ### Using Observable (Async) Counters
 

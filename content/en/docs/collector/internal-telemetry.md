@@ -118,7 +118,7 @@ are:
 You can also see logs for the Collector on a Linux systemd system using
 `journalctl`:
 
-{{< tabpane text=true >}} {{% tab "All logs" %}}
+{{% tabpane text=true %}} {{% tab "All logs" %}}
 
 ```sh
 journalctl | grep otelcol
@@ -130,7 +130,7 @@ journalctl | grep otelcol
 journalctl | grep otelcol | grep Error
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 The following configuration can be used to emit internal logs from the Collector
 to an OTLP/HTTP backend:
@@ -221,7 +221,7 @@ Prometheus exporter, regardless of their origin, are prefixed with `otelcol_`.
 This includes metrics from both Collector components and instrumentation
 libraries. {{% /alert %}}
 
-{{< comment >}}
+{{% comment %}}
 
 To compile this list, configure a Collector instance to emit its own metrics to
 the localhost:8888/metrics endpoint. Select a metric and grep for it in the
@@ -234,7 +234,7 @@ the .go file that contains the list of metrics. In the case of
 Note that the Collector's internal metrics are defined in several different
 files in the repository.
 
-{{< /comment >}}
+{{% /comment %}}
 
 #### `basic`-level metrics
 

@@ -89,7 +89,7 @@ Zipkin also run by [docker-compose](https://docs.docker.com/compose/).
 To export to the running Collector the `opentelemetry_exporter` package must be
 added to the project's dependencies:
 
-{{< tabpane text=true >}} {{% tab Erlang %}}
+{{% tabpane text=true %}} {{% tab Erlang %}}
 
 ```erlang
 {deps, [{opentelemetry_api, "~> {{% param versions.otelApi %}}"},
@@ -109,7 +109,7 @@ def deps do
 end
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 It should then be added to the configuration of the Release before the SDK
 Application to ensure the exporter's dependencies are started before the SDK
@@ -118,7 +118,7 @@ attempts to initialize and use the exporter.
 Example of Release configuration in `rebar.config` and for
 [mix's Release task](https://hexdocs.pm/mix/Mix.Tasks.Release.html):
 
-{{< tabpane text=true >}} {{% tab Erlang %}}
+{{% tabpane text=true %}} {{% tab Erlang %}}
 
 ```erlang
 %% rebar.config
@@ -147,7 +147,7 @@ def project do
 end
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 Finally, the runtime configuration of the `opentelemetry` and
 `opentelemetry_exporter` Applications are set to export to the Collector. The
@@ -159,7 +159,7 @@ the HTTP protocol with endpoint of `localhost` on port `4318`. Note:
 - If you're using the docker compose file from above, you should replace
   `localhost` with `otel`.
 
-{{< tabpane text=true >}} {{% tab Erlang %}}
+{{% tabpane text=true %}} {{% tab Erlang %}}
 
 ```erlang
 %% config/sys.config.src
@@ -189,7 +189,7 @@ config :opentelemetry_exporter,
   # otlp_endpoint: "http://otel:4318" if using docker compose file
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 You can see your traces by running `docker compose up` in one terminal, then
 `mix phx.server` in another. After sending some requests through the app, go to

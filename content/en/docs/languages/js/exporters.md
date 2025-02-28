@@ -20,7 +20,7 @@ transport your data:
 Start by installing the respective exporter packages as a dependency for your
 project:
 
-{{< tabpane text=true >}} {{% tab "HTTP/Proto" %}}
+{{% tabpane text=true %}} {{% tab "HTTP/Proto" %}}
 
 ```shell
 npm install --save @opentelemetry/exporter-trace-otlp-proto \
@@ -41,7 +41,7 @@ npm install --save @opentelemetry/exporter-trace-otlp-grpc \
   @opentelemetry/exporter-metrics-otlp-grpc
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ### Usage with Node.js
 
@@ -51,7 +51,7 @@ JavaScript) from the
 [Getting Started](/docs/languages/js/getting-started/nodejs/) like the following
 to export traces and metrics via OTLP (`http/protobuf`) :
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 /*instrumentation.ts*/
@@ -114,7 +114,7 @@ const sdk = new opentelemetry.NodeSDK({
 sdk.start();
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 ### Usage in the Browser
 
@@ -256,7 +256,7 @@ npm install --save @opentelemetry/exporter-prometheus
 Update your OpenTelemetry configuration to use the exporter and to send data to
 your Prometheus backend:
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 import * as opentelemetry from '@opentelemetry/sdk-node';
@@ -290,7 +290,7 @@ const sdk = new opentelemetry.NodeSDK({
 sdk.start();
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 With the above you can access your metrics at <http://localhost:9464/metrics>.
 Prometheus or an OpenTelemetry Collector with the Prometheus receiver can scrape
@@ -314,7 +314,7 @@ npm install --save @opentelemetry/exporter-zipkin
 Update your OpenTelemetry configuration to use the exporter and to send data to
 your Zipkin backend:
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 import * as opentelemetry from '@opentelemetry/sdk-node';
@@ -343,11 +343,11 @@ const sdk = new opentelemetry.NodeSDK({
 });
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 {{% docs/languages/exporters/outro js `https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk_trace_base.SpanExporter.html` %}}
 
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 /*instrumentation.ts*/
@@ -377,7 +377,7 @@ const sdk = new opentelemetry.NodeSDK({
 sdk.start();
 ```
 
-{{% /tab %}} {{< /tabpane >}}
+{{% /tab %}} {{% /tabpane %}}
 
 {{% /docs/languages/exporters/outro %}}
 

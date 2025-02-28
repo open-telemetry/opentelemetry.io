@@ -100,7 +100,7 @@ which are not configurable using properties.
 As an example, you can customize the sampler to exclude health check endpoints
 from tracing:
 
-{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
+{{% tabpane text=true %}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
 ```xml
 <dependencies>
@@ -120,7 +120,7 @@ dependencies {
 }
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{% /tabpane%}}
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/FilterPaths.java"?>
@@ -243,7 +243,7 @@ precedence rules, in accordance with the OpenTelemetry
 Use the following snippet in your pom.xml file to generate the
 `build-info.properties` file:
 
-{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
+{{% tabpane text=true %}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
 ```xml
 <build>
@@ -274,4 +274,4 @@ springBoot {
 }
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{% /tabpane%}}

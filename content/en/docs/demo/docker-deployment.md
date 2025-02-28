@@ -30,7 +30,7 @@ cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
 
 3.  Start the demo[^1]:
 
-    {{< tabpane text=true >}} {{% tab Make %}}
+    {{% tabpane text=true %}} {{% tab Make %}}
 
 ```shell
 make start
@@ -42,11 +42,11 @@ make start
 docker compose up --force-recreate --remove-orphans --detach
 ```
 
-    {{% /tab %}} {{< /tabpane >}}
+    {{% /tab %}} {{% /tabpane %}}
 
 4.  (Optional) Enable API observability-driven testing[^1]:
 
-    {{< tabpane text=true >}} {{% tab Make %}}
+    {{% tabpane text=true %}} {{% tab Make %}}
 
 ```shell
 make run-tracetesting
@@ -58,7 +58,7 @@ make run-tracetesting
 docker compose -f docker-compose-tests.yml run traceBasedTests
 ```
 
-    {{% /tab %}} {{< /tabpane >}}
+    {{% /tab %}} {{% /tabpane %}}
 
 ## Verify the web store and Telemetry
 
@@ -80,7 +80,7 @@ variable before starting the demo.
 
 - For example, to use port 8081[^1]:
 
-  {{< tabpane text=true >}} {{% tab Make %}}
+  {{% tabpane text=true %}} {{% tab Make %}}
 
 ```shell
 ENVOY_PORT=8081 make start
@@ -92,7 +92,7 @@ ENVOY_PORT=8081 make start
 ENVOY_PORT=8081 docker compose up --force-recreate --remove-orphans --detach
 ```
 
-    {{% /tab %}} {{< /tabpane >}}
+    {{% /tab %}} {{% /tabpane %}}
 
 ## Bring your own backend
 
