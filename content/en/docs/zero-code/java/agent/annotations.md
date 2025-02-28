@@ -9,7 +9,7 @@ cSpell:ignore: Flowable javac reactivestreams reactivex
 For most users, the out-of-the-box instrumentation is completely sufficient and
 nothing more needs to be done. Sometimes, however, users wish to create
 [spans](/docs/concepts/signals/traces/#spans) for their own custom code without
-having to change much code. The `WithSpan` and `WithAttribute` annotations
+having to change much code. The `WithSpan` and `SpanAttribute` annotations
 support those use cases.
 
 ## Dependencies

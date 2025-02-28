@@ -504,6 +504,7 @@ maintainers:
       - collector-contrib-triagers
       - operator-approvers
       - operator-maintainers
+      - operator-triagers
       - semconv-container-approvers
       - semconv-k8s-approvers
       - semconv-system-approvers
@@ -558,6 +559,7 @@ maintainers:
       - operator-approvers
       - operator-maintainers
       - operator-ta-maintainers
+      - operator-triagers
     html_url: https://github.com/jaronoff97
     avatar_url: https://avatars.githubusercontent.com/u/10070047?v=4
   - name: jhalliday
@@ -582,6 +584,8 @@ maintainers:
     teams:
       - arrow-approvers
       - arrow-maintainers
+      - collector-approvers
+      - collector-triagers
       - specs-triagers
     html_url: https://github.com/jmacd
     avatar_url: https://avatars.githubusercontent.com/u/3629705?v=4
@@ -875,6 +879,7 @@ maintainers:
       - operator-approvers
       - operator-maintainers
       - operator-ta-maintainers
+      - operator-triagers
     html_url: https://github.com/pavolloffay
     avatar_url: https://avatars.githubusercontent.com/u/5618424?v=4
   - name: pdelewski
@@ -1085,6 +1090,7 @@ maintainers:
     teams:
       - operator-approvers
       - operator-maintainers
+      - operator-triagers
     html_url: https://github.com/swiatekm
     avatar_url: https://avatars.githubusercontent.com/u/93588780?v=4
   - name: tedsuo
@@ -1208,6 +1214,7 @@ maintainers:
       - helm-maintainers
       - helm-triagers
       - operator-approvers
+      - operator-triagers
       - semconv-container-approvers
       - semconv-k8s-approvers
     html_url: https://github.com/TylerHelmuth
@@ -1327,6 +1334,7 @@ approvers:
       - collector-releases-approvers
       - collector-triagers
       - network-triagers
+      - operator-triagers
     html_url: https://github.com/atoulme
     avatar_url: https://avatars.githubusercontent.com/u/16758?v=4
   - name: atreat
@@ -1496,6 +1504,7 @@ approvers:
   - name: iblancasa
     teams:
       - operator-approvers
+      - operator-triagers
     html_url: https://github.com/iblancasa
     avatar_url: https://avatars.githubusercontent.com/u/4806311?v=4
   - name: iNikem
@@ -1508,6 +1517,12 @@ approvers:
       - collector-releases-approvers
     html_url: https://github.com/jackgopack4
     avatar_url: https://avatars.githubusercontent.com/u/6229304?v=4
+  - name: jade-guiton-dd
+    teams:
+      - collector-approvers
+      - collector-triagers
+    html_url: https://github.com/jade-guiton-dd
+    avatar_url: https://avatars.githubusercontent.com/u/179536679?v=4
   - name: JaredTan95
     teams:
       - collector-contrib-triagers
@@ -1744,6 +1759,11 @@ approvers:
       - semconv-log-approvers
     html_url: https://github.com/scheler
     avatar_url: https://avatars.githubusercontent.com/u/2802664?v=4
+  - name: scottgerring
+    teams:
+      - rust-approvers
+    html_url: https://github.com/scottgerring
+    avatar_url: https://avatars.githubusercontent.com/u/474021?v=4
   - name: seemk
     teams:
       - cpp-contrib-approvers
@@ -1855,6 +1875,7 @@ approvers:
   - name: yuriolisa
     teams:
       - operator-approvers
+      - operator-triagers
     html_url: https://github.com/yuriolisa
     avatar_url: https://avatars.githubusercontent.com/u/48062171?v=4
   - name: zachdaniel
@@ -1917,11 +1938,6 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/JacksonWeber
     avatar_url: https://avatars.githubusercontent.com/u/47067795?v=4
-  - name: jade-guiton-dd
-    teams:
-      - collector-triagers
-    html_url: https://github.com/jade-guiton-dd
-    avatar_url: https://avatars.githubusercontent.com/u/179536679?v=4
   - name: jamesmoessis
     teams:
       - collector-contrib-triagers
@@ -2023,6 +2039,11 @@ triagers:
       - go-triagers
     html_url: https://github.com/scorpionknifes
     avatar_url: https://avatars.githubusercontent.com/u/23299540?v=4
+  - name: sincejune
+    teams:
+      - collector-triagers
+    html_url: https://github.com/sincejune
+    avatar_url: https://avatars.githubusercontent.com/u/19381524?v=4
   - name: SylvainJuge
     teams:
       - java-instrumentation-triagers
@@ -2140,6 +2161,9 @@ members:
   - name: chrlic
     html_url: https://github.com/chrlic
     avatar_url: https://avatars.githubusercontent.com/u/6670587?v=4
+  - name: Cirilla-zmh
+    html_url: https://github.com/Cirilla-zmh
+    avatar_url: https://avatars.githubusercontent.com/u/84360903?v=4
   - name: cnnradams
     html_url: https://github.com/cnnradams
     avatar_url: https://avatars.githubusercontent.com/u/10487992?v=4
