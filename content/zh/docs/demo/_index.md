@@ -5,6 +5,7 @@ cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
 default_lang_commit: c2cd5b14
+drifted_from_default: true
 cSpell:ignore: OLJCESPC
 ---
 

@@ -4,6 +4,7 @@ description: GitHub UI またはローカルのフォークを利用して、新
 aliases: [new-content]
 weight: 15
 default_lang_commit: 99f0ae5760038d51f9e9eb376bb428a2caca8167 # patched
+drifted_from_default: true
 ---
 
 新しいドキュメントの内容を追加したり、既存のコンテンツの改善をするには、[プルリクエスト][PR] （PR）を提出してください。

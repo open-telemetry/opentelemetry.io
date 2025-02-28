@@ -239,7 +239,7 @@ function set_file_drifted_status() {
   local post_msg="${4:-$I18N_DLD_KEY key}" # Not used atm
 
   if [[ $status == "false" ]]; then
-    perl -i -pe "s/(^$I18N_DLD_KEY):.*$//g" "$f"
+    perl -i -pe "s/(^$I18N_DLD_KEY):.*\n$//g" "$f"
   elif grep -q "^$I18N_DLD_KEY:" "$f"; then
     perl -i -pe "s/(^$I18N_DLD_KEY):.*$/\$1: $status/" "$f"
     post_msg="$post_msg UPDATED"

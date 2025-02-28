@@ -3,6 +3,7 @@ title: Lambda 手动插桩
 weight: 11
 description: 使用 OpenTelemetry 手动插桩 Lambda
 default_lang_commit: 06837fe15457a584f6a9e09579be0f0400593d57 # with links patched
+drifted_from_default: file not found
 ---
 
 对于在 Lambda 自动插桩文档中未涵盖的语言，社区尚未提供独立的插桩器。
