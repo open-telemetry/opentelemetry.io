@@ -1,11 +1,11 @@
 ---
 title: Cart Service
 linkTitle: Cart
-aliases: [cartservice]
+aliases: [cart]
 ---
 
 This service maintains items placed in the shopping cart by users. It interacts
-with a Redis caching service for fast access to shopping cart data.
+with a Valkey caching service for fast access to shopping cart data.
 
 [Cart service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/cart/)
 

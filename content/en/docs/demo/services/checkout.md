@@ -1,7 +1,7 @@
 ---
 title: Checkout Service
 linkTitle: Checkout
-aliases: [checkoutservice]
+aliases: [checkout]
 # prettier-ignore
 cSpell:ignore: fatalf otelgrpc otelsarama otlpmetricgrpc otlptracegrpc sarama sdkmetric sdktrace
 ---

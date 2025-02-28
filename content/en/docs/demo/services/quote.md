@@ -1,7 +1,7 @@
 ---
 title: Quote Service
 linkTitle: Quote
-aliases: [quoteservice]
+aliases: [quote]
 cSpell:ignore: getquote
 ---
 

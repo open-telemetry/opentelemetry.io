@@ -5,7 +5,7 @@ aliases: [manual_span_attributes, ../manual-span-attributes]
 
 This page lists the manual Span Attributes used throughout the demo:
 
-## AdService
+## Ad Service
 
 | Name                        | Type   | Description                           |
 | --------------------------- | ------ | ------------------------------------- |
@@ -16,7 +16,7 @@ This page lists the manual Span Attributes used throughout the demo:
 | `app.ads.ad_request_type`   | string | Either `targeted` or `not_targeted`   |
 | `app.ads.ad_response_type`  | string | Either `targeted` or `random`         |
 
-## CartService
+## Cart Service
 
 | Name                   | Type   | Description                    |
 | ---------------------- | ------ | ------------------------------ |
@@ -25,7 +25,7 @@ This page lists the manual Span Attributes used throughout the demo:
 | `app.product.quantity` | string | Quantity for cart item         |
 | `app.user.id`          | string | User ID                        |
 
-## CheckoutService
+## Checkout Service
 
 | Name                         | Type   | Description                     |
 | ---------------------------- | ------ | ------------------------------- |
@@ -39,14 +39,14 @@ This page lists the manual Span Attributes used throughout the demo:
 | `app.user.currency`          | string | User currency                   |
 | `app.user.id`                | string | User ID                         |
 
-## CurrencyService
+## Currency Service
 
 | Name                           | Type   | Description                   |
 | ------------------------------ | ------ | ----------------------------- |
 | `app.currency.conversion.from` | string | Currency code to convert from |
 | `app.currency.conversion.to`   | string | Currency code to convert to   |
 
-## EmailService
+## Email Service
 
 | Name                  | Type   | Description                       |
 | --------------------- | ------ | --------------------------------- |
@@ -71,13 +71,13 @@ This page lists the manual Span Attributes used throughout the demo:
 | `app.session.id`         | string | Session ID                    |
 | `app.user.id`            | string | User ID                       |
 
-## LoadGenerator
+## Load Generator
 
 | Name     | Type | Description |
 | -------- | ---- | ----------- |
 | None yet |      |             |
 
-## PaymentService
+## Payment Service
 
 | Name                     | Type    | Description                                           |
 | ------------------------ | ------- | ----------------------------------------------------- |
@@ -86,7 +86,7 @@ This page lists the manual Span Attributes used throughout the demo:
 | `app.payment.card_valid` | boolean | Was the card used valid                               |
 | `app.payment.charged`    | boolean | Was the charge successful (false with load generator) |
 
-## ProductCatalogService
+## Product Catalog Service
 
 | Name                        | Type   | Description                           |
 | --------------------------- | ------ | ------------------------------------- |
@@ -95,14 +95,14 @@ This page lists the manual Span Attributes used throughout the demo:
 | `app.products.count`        | number | Number of products in catalog         |
 | `app.products_search.count` | number | Number of products returned in search |
 
-## QuoteService
+## Quote Service
 
 | Name                    | Type   | Description          |
 | ----------------------- | ------ | -------------------- |
 | `app.quote.items.count` | number | Total items to ship  |
 | `app.quote.cost.total`  | number | Total shipping quote |
 
-## RecommendationService
+## Recommendation Service
 
 | Name                             | Type    | Description                             |
 | -------------------------------- | ------- | --------------------------------------- |
@@ -111,7 +111,7 @@ This page lists the manual Span Attributes used throughout the demo:
 | `app.products_recommended.count` | number  | Number of recommended products returned |
 | `app.cache_hit`                  | boolean | If cache was accessed or not            |
 
-## ShippingService
+## Shipping Service
 
 | Name                       | Type   | Description                   |
 | -------------------------- | ------ | ----------------------------- |

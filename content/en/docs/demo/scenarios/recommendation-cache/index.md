@@ -70,11 +70,11 @@ work, and viewing the details allows us to get a better idea of what's going on.
 We can see in our waterfall view that the `app.cache_hit` attribute is set to
 `false`, and that the `app.products.count` value is extremely high.
 
-Returning to the search UI, filter to `recommendationservice` in the Service
-dropdown, and search for `app.cache_hit=true` in the Tags box. Notice that
-requests tend to be faster when the cache is hit. Now search for
-`app.cache_hit=false` and compare the latency. You should notice some changes in
-the visualization at the top of the trace list.
+Returning to the search UI, filter to `recommendation` in the Service dropdown,
+and search for `app.cache_hit=true` in the Tags box. Notice that requests tend
+to be faster when the cache is hit. Now search for `app.cache_hit=false` and
+compare the latency. You should notice some changes in the visualization at the
+top of the trace list.
 
 Now, since this is a contrived scenario, we know where to find the underlying
 bug in our code. However, in a real-world scenario, we may need to perform

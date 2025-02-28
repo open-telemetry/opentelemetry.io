@@ -1,7 +1,7 @@
 ---
 title: Accounting Service
 linkTitle: Accounting
-aliases: [accountingservice]
+aliases: [accounting]
 ---
 
 This service calculates the total amount of sold products. This is only mocked

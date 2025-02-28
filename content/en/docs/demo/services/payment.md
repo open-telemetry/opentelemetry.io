@@ -1,7 +1,7 @@
 ---
 title: Payment Service
 linkTitle: Payment
-aliases: [paymentservice]
+aliases: [payment]
 cSpell:ignore: nanos
 ---
 
@@ -134,7 +134,7 @@ instruments.
 ```javascript
 const { metrics } = require('@opentelemetry/api-metrics');
 
-const meter = metrics.getMeter('paymentservice');
+const meter = metrics.getMeter('payment');
 const transactionsCounter = meter.createCounter('app.payment.transactions');
 ```
 

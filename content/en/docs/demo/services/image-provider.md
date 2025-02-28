@@ -1,7 +1,7 @@
 ---
 title: Image Provider Service
 linkTitle: Image Provider
-aliases: [imageprovider] # cSpell:disable-line
+aliases: [image-provider] # cSpell:disable-line
 ---
 
 This service provides the images which are used in the frontend. The images are

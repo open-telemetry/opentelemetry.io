@@ -1,7 +1,7 @@
 ---
 title: Shipping Service
 linkTitle: Shipping
-aliases: [shippingservice]
+aliases: [shipping]
 cSpell:ignore: itemct oteldemo reqwest sdktrace semcov shiporder tokio
 ---
 
@@ -68,10 +68,10 @@ and inability to move and clone `spans` when replicating from these samples.
 This service receives gRPC requests, which are instrumented in the middleware.
 
 The root span is started and passed down as reference in the same thread to
-another closure where we call `quoteservice`.
+another closure where we call `quote`.
 
 ```rust
-    let tracer = global::tracer("shippingservice");
+    let tracer = global::tracer("shipping");
     let mut span = tracer.span_builder("oteldemo.ShippingService/GetQuote").with_kind(SpanKind::Server).start_with_context(&tracer, &parent_cx);
     span.set_attribute(semcov::trace::RPC_SYSTEM.string(RPC_SYSTEM_GRPC));
 
@@ -116,11 +116,11 @@ will work.
 
 ### Adding HTTP instrumentation
 
-A child _client_ span is also produced for the outgoing HTTP call to
-`quoteservice` via the `reqwest` client. This span pairs up with the
-corresponding `quoteservice` _server_ span. The tracing instrumentation is
-implemented in the client middleware making use of the available
-`reqwest-middleware`, `reqwest-tracing` and `tracing-opentelemetry` libraries:
+A child _client_ span is also produced for the outgoing HTTP call to `quote` via
+the `reqwest` client. This span pairs up with the corresponding `quote` _server_
+span. The tracing instrumentation is implemented in the client middleware making
+use of the available `reqwest-middleware`, `reqwest-tracing` and
+`tracing-opentelemetry` libraries:
 
 ```rust
 let reqwest_client = reqwest::Client::new();
@@ -146,7 +146,7 @@ let parent_cx =
 global::get_text_map_propagator(|prop| prop.extract(&MetadataMap(request.metadata())));
 // in this case, generating a tracking ID is trivial
 // we'll create a span and associated events all in this function.
-let tracer = global::tracer("shippingservice");
+let tracer = global::tracer("shipping");
 let mut span = tracer
     .span_builder("oteldemo.ShippingService/ShipOrder").with_kind(SpanKind::Server).start_with_context(&tracer, &parent_cx);
 ```

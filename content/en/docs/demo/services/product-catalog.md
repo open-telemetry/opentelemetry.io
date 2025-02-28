@@ -1,7 +1,7 @@
 ---
 title: Product Catalog Service
 linkTitle: Product Catalog
-aliases: [productcatalogservice]
+aliases: [product-catalog]
 # prettier-ignore
 cSpell:ignore: fatalf otelcodes otelgrpc otlpmetricgrpc otlptracegrpc sdkmetric sdktrace sprintf
 ---
