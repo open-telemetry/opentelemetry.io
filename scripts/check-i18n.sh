@@ -91,7 +91,6 @@ function process_CLI_args() {
       q)
         FLAG_QUIET=1;;
       v)
-        LIST_KIND="ALL"
         FLAG_VERBOSE=1;;
       x)
         FLAG_FAIL_ON_LIST_OR_MISSING=1;;
@@ -119,9 +118,9 @@ function process_CLI_args() {
     exit 1
   fi
 
-  if [[ $LIST_KIND == "ALL" && -n $FLAG_QUIET ]]; then
-    echo -e "WARNING: -q flag ignored when -a or -v is used. For help use -h.\n"
-    FLAG_QUIET=""
+  if [[ -n $FLAG_QUIET && ($LIST_KIND == "ALL" || -n $FLAG_VERBOSE) ]]; then
+    echo -e "ERROR: -q flag ignored when -a or -v is used. For help use -h.\n"
+    exit 1
   fi
 
   if [[ $LIST_KIND == "ALL" && -n $COMMIT_HASH_ARG ]]; then
