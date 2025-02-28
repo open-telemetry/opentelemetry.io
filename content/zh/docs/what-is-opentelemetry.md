@@ -3,6 +3,7 @@ title: 什么是 OpenTelemetry？
 description: 简短说明 OpenTelemetry 是什么，不是什么。
 weight: 150
 default_lang_commit: d638c386
+drifted_from_default: true
 ---
 
 OpenTelemetry

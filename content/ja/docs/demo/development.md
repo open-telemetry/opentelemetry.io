@@ -1,6 +1,7 @@
 ---
 title: 開発環境
 default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28
+drifted_from_default: true
 cSpell:ignore: grpcio intellij libcurl libprotobuf nlohmann openssl protoc
 ---
 

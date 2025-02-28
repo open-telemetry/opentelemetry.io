@@ -5,6 +5,7 @@ weight: 10
 _issues: https://github.com/open-telemetry/opentelemetry.io/issues
 _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A
 default_lang_commit: 24146bd1368e4c6082c7d6077efd29dba0d51055 # patched
+drifted_from_default: true
 ---
 
 ## 既存のイシューの修正 {#fixing-an-existing-issue}

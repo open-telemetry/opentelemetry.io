@@ -225,6 +225,13 @@ if you want HEAD to correspond to `main` in GitHub.
 
 {{% /alert %}}
 
+### Drift status
+
+Run `npm run fix:i18n:status` to add a front-matter field `drifted_from_default`
+to those target localization pages that have drifted. This field will soon be
+used to display a banner at the top of pages that have drifted relative to their
+English counterparts.
+
 ### Script help
 
 For more details about the script, run `npm run check:i18n -- -h`.
