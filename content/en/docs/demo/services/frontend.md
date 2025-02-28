@@ -178,9 +178,8 @@ const FrontendTracer = async () => {
     resource: new Resource({
       [SEMRESATTRS_SERVICE_NAME]: process.env.NEXT_PUBLIC_OTEL_SERVICE_NAME,
     }),
+    spanProcessors: [new SimpleSpanProcessor(new OTLPTraceExporter())],
   });
-
-  provider.addSpanProcessor(new SimpleSpanProcessor(new OTLPTraceExporter()));
 
   const contextManager = new ZoneContextManager();
 
