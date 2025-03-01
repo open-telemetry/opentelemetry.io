@@ -639,6 +639,21 @@ service:
       exporters: [opencensus, zipkin]
 ```
 
+As with components, use the `type[/name]` syntax to create additional pipelines
+for a given type. Here is an example extending the previous configuration:
+
+```yaml
+service:
+  pipelines:
+    # ...
+    traces:
+      # ...
+    traces/2:
+      receivers: [opencensus]
+      processors: [batch]
+      exporters: [zipkin]
+```
+
 ### Telemetry
 
 The `telemetry` config section is where you can set up observability for the
