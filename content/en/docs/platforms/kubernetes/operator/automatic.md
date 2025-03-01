@@ -44,7 +44,7 @@ component. If you chose not to use a Collector, you can skip to the next
 section.
 
 The Operator provides a
-[Custom Resource Definition (CRD) for the OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector)
+[Custom Resource Definition (CRD) for the OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md)
 which is used to create an instance of the Collector that the Operator manages.
 The following example deploys the Collector as a deployment (the default), but
 there are other
@@ -109,7 +109,7 @@ an endpoint for auto-instrumentation in your pods.
 To be able to manage automatic instrumentation, the Operator needs to be
 configured to know what pods to instrument and which automatic instrumentation
 to use for those pods. This is done via the
-[Instrumentation CRD](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentation).
+[Instrumentation CRD](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/instrumentations.md).
 
 Creating the Instrumentation resource correctly is paramount to getting
 auto-instrumentation working. Making sure all endpoints and env vars are correct
@@ -546,7 +546,7 @@ your deployment.
 ## Add annotations to existing deployments
 
 The final step is to opt in your services to automatic instrumentation. This is
-done by updating your service’s `spec.template.metadata.annotations` to include
+done by updating your service's `spec.template.metadata.annotations` to include
 a language-specific annotation:
 
 - .NET: `instrumentation.opentelemetry.io/inject-dotnet: "true"`
@@ -689,7 +689,7 @@ kubectl logs -l app.kubernetes.io/name=opentelemetry-operator --container manage
 ### Were the resources deployed in the right order?
 
 Order matters! The `Instrumentation` resource needs to be deployed before
-deploying the application, otherwise the auto-instrumentation won’t work.
+deploying the application, otherwise the auto-instrumentation won't work.
 
 Recall the auto-instrumentation annotation:
 
@@ -699,18 +699,18 @@ annotations:
 ```
 
 The annotation above tells the OTel Operator to look for an `Instrumentation`
-object in the pod’s namespace. It also tells the Operator to inject Python
+object in the pod's namespace. It also tells the Operator to inject Python
 auto-instrumentation into the pod.
 
 When the pod starts up, the annotation tells the Operator to look for an
-Instrumentation object in the pod’s namespace, and to inject
+Instrumentation object in the pod's namespace, and to inject
 auto-instrumentation into the pod. It adds an
 [init-container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)
 to the application's pod, called `opentelemetry-auto-instrumentation`, which is
 then used to injects the auto-instrumentation into the app container.
 
-If the `Instrumentation` resource isn’t present by the time the application is
-deployed, however, the init-container can’t be created. Therefore, if the
+If the `Instrumentation` resource isn't present by the time the application is
+deployed, however, the init-container can't be created. Therefore, if the
 application is deployed _before_ deploying the `Instrumentation` resource, the
 auto-instrumentation will fail.
 
@@ -732,11 +732,11 @@ If the output is missing `Created` and/or `Started` entries for
 `opentelemetry-auto-instrumentation`, then it means that there is an issue with
 your auto-instrumentation. This can be the result of any of the following:
 
-- The `Instrumentation` resource wasn’t installed (or wasn’t installed
+- The `Instrumentation` resource wasn't installed (or wasn't installed
   properly).
 - The `Instrumentation` resource was installed _after_ the application was
   deployed.
-- There’s an error in the auto-instrumentation annotation, or the annotation in
+- There's an error in the auto-instrumentation annotation, or the annotation in
   the wrong spot — see #4 below.
 
 Be sure to check the output of `kubectl get events` for any errors, as these
@@ -760,7 +760,7 @@ Here are a few things to check for:
   defining a `Deployment`, annotations can be added in one of two locations:
   `spec.metadata.annotations`, and `spec.template.metadata.annotations`. The
   auto-instrumentation annotation needs to be added to
-  `spec.template.metadata.annotations`, otherwise it won’t work.
+  `spec.template.metadata.annotations`, otherwise it won't work.
 
 ### Was the auto-instrumentation endpoint configured correctly?
 
@@ -787,5 +787,5 @@ Here, the Collector endpoint is set to
 `demo-collector` is the name of the OTel Collector Kubernetes `Service`. In the
 above example, the Collector is running in a different namespace from the
 application, which means that `opentelemetry.svc.cluster.local` must be appended
-to the Collector’s service name, where `opentelemetry` is the namespace in which
+to the Collector's service name, where `opentelemetry` is the namespace in which
 the Collector resides.

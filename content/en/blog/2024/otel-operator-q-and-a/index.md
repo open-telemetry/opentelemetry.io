@@ -36,7 +36,7 @@ easier. It does the following:
 
 I've had a chance to use the Operator in the last year, and learned some pretty
 cool things, so I thought it might be helpful to share some little OTel Operator
-goodies that I’ve picked up along the way, in the form of a Q&A.
+goodies that I've picked up along the way, in the form of a Q&A.
 
 Please note that this post assumes that you have some familiarity with
 OpenTelemetry, the [OpenTelemetry Collector](/docs/collector/), the
@@ -55,7 +55,7 @@ Longer answer: OTel Collector can be fed more than one Collector config YAML
 file. That way, you can keep your base configurations in, say,
 `otelcol-config.yaml`, and overrides or additions to the base configuration can
 go in, for example, `otelcol-config-extras.yaml`. See an example of this in the
-[OTel Demo’s Docker compose file](https://github.com/open-telemetry/opentelemetry-demo/blob/06f020c97f78ae9625d3a4a5d1107c55045c567f/docker-compose.yml#L665-L668).
+[OTel Demo's Docker compose file](https://github.com/open-telemetry/opentelemetry-demo/blob/06f020c97f78ae9625d3a4a5d1107c55045c567f/docker-compose.yml#L665-L668).
 
 Unfortunately, while the OTel Collector supports multiple Collector
 configuration files, the Collector managed by the OTel Operator does not.
@@ -86,18 +86,18 @@ data to a vendor backend.
 When using the OpenTelemetry Operator to manage the OTel Collector, the OTel
 Collector config YAML is defined in the
 [OpenTelemetryCollector](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#getting-started)
-CR. This file should be version-controlled and therefore shouldn’t contain any
+CR. This file should be version-controlled and therefore shouldn't contain any
 sensitive data, including access tokens stored as plain text.
 
 Fortunately, the `OpenTelemetryCollector` CR gives us a way to reference that
-value as a secret. Here’s how you do it:
+value as a secret. Here's how you do it:
 
 1- Create a Kubernetes secret for your access token. Remember to
 [base-64 encode](https://www.base64encode.org/) the secret.
 
 2-
 [Expose the secret as an environment variable](https://kubernetes.io/docs/concepts/configuration/secret/#using-a-secret)
-by adding it to the `OpenTelemetryCollector` CR’s
+by adding it to the `OpenTelemetryCollector` CR's
 [`env` section](https://github.com/avillela/otel-target-allocator-talk/blob/21e9643e28165e39bd79f3beec7f2b1f989d87e9/src/resources/02-otel-collector-ls.yml#L16-L21).
 For example:
 
@@ -201,8 +201,7 @@ to authenticate against that private registry. For more info on how to use
 `imagePullSecrets` for your Collector image, see
 [the instructions](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#using-imagepullsecrets).
 
-For more info, check out the
-[OpenTelemetryCollector CR API docs](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector).
+You can use `imagePullSecrets` for the Collector image. See the [OpenTelemetry Collector CR API documentation](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md) for more details.
 
 ### Q5: Does the Target Allocator work for all deployment types?
 
@@ -218,7 +217,7 @@ For more info, see
 
 Yes, you do. These CRs are bundled with the
 [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator);
-however, they can be installed standalone, which means that you don’t need to
+however, they can be installed standalone, which means that you don't need to
 install the Prometheus Operator just to use these two CRs with the Target
 Allocator.
 
@@ -240,23 +239,23 @@ kubectl --context kind-otel-target-allocator-talk apply -f https://raw.githubuse
 ```
 
 See my
-[example of the OpenTelemetry Operator’s Target Allocator with `ServiceMonitor`](https://github.com/avillela/otel-target-allocator-talk/tree/main?tab=readme-ov-file#3b--kubernetes-deployment-servicenow-cloud-observability-backend).
+[example of the OpenTelemetry Operator's Target Allocator with `ServiceMonitor`](https://github.com/avillela/otel-target-allocator-talk/tree/main?tab=readme-ov-file#3b--kubernetes-deployment-servicenow-cloud-observability-backend).
 
 ### Q7: Do I need to create a service account to use the Target Allocator?
 
-No, but you do need to do a bit of extra work. So, here’s the deal…although you
+No, but you do need to do a bit of extra work. So, here's the deal...although you
 need a
 [service account](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
-to use the Target Allocator, you don’t have to create your own.
+to use the Target Allocator, you don't have to create your own.
 
-If you enable the Target Allocator and don’t create a service account, one is
-automagically created for you. This service account’s default name is a
+If you enable the Target Allocator and don't create a service account, one is
+automagically created for you. This service account's default name is a
 concatenation of the Collector name (`metadata.name` in the
 `OpenTelemetryCollector` CR) and `-collector`. For example, if your Collector is
 called `mycollector`, then your service account would be called
 `mycollector-collector`.
 
-By default, this service account has no defined policy. This means that you’ll
+By default, this service account has no defined policy. This means that you'll
 still need to create your own
 [`ClusterRole`](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole)
 and
@@ -272,6 +271,8 @@ for more on Target Allocator RBAC configuration.
 > [PR](https://github.com/open-telemetry/opentelemetry-operator/pull/2787)), as
 > part of version `0.100.0`.
 
+The Operator automatically creates a service account for the Target Allocator. See the [Target Allocator API documentation](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md) for more details.
+
 ### Q8: Can I override the Target Allocator base image?
 
 Just like you can override the Collector base image in the
@@ -279,9 +280,9 @@ Just like you can override the Collector base image in the
 image.
 
 Please keep in mind that
-[it’s usually best to keep the Target Allocator and OTel operator versions the same](https://cloud-native.slack.com/archives/C033BJ8BASU/p1709128862949249?thread_ts=1709081221.484429&cid=C033BJ8BASU),
+[it's usually best to keep the Target Allocator and OTel operator versions the same](https://cloud-native.slack.com/archives/C033BJ8BASU/p1709128862949249?thread_ts=1709081221.484429&cid=C033BJ8BASU),
 to avoid any compatibility issues. If do you choose to override the Target
-Allocator’s base image, you can do so by adding `spec.targetAllocator.image` in
+Allocator's base image, you can do so by adding `spec.targetAllocator.image` in
 the `OpenTelemetryCollector` CR. You can also specify the number of replicas by
 adding `spec.targetAllocator.replicas`. This is totally independent of whether
 or not you override the TA image.
@@ -308,21 +309,21 @@ Where:
 - `<number_of_replicas>` is the number of pod instances for the underlying
   Target Allocator
 
-### Q9: If it’s not recommended that you override the Target Allocator base image, then why would you want to?
+### Q9: If it's not recommended that you override the Target Allocator base image, then why would you want to?
 
 One use case might be
 [if you need to host a mirror of the Target Allocator image in your own private container registry for security purposes](https://cloud-native.slack.com/archives/C033BJ8BASU/p1713894678225579).
 
 If you do need to reference a Target Allocator image from a private registry,
-you’ll need to use `imagePullSecrets`. For details, see
+you'll need to use `imagePullSecrets`. For details, see
 [the instructions](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#using-imagepullsecrets).
-Note that you don’t need to create a `serviceAccount` for the Target Allocator,
-since once is already created for you automagically if you don’t create one
+Note that you don't need to create a `serviceAccount` for the Target Allocator,
+since once is already created for you automagically if you don't create one
 yourself (see
 [Q7](#q7-do-i-need-to-create-a-service-account-to-use-the-target-allocator)).
 
 For more info, check out the
-[Target Allocator API docs](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocator).
+[Target Allocator API docs](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md).
 
 ### Q10: Is there a version lag between the OTel Operator auto-instrumentation and auto-instrumentation of supported languages?
 
@@ -334,7 +335,7 @@ details, see this
 
 ## Final thoughts
 
-Hopefully this has helped to demystify the OTel Operator a bit more. There’s
+Hopefully this has helped to demystify the OTel Operator a bit more. There's
 definitely a lot going on, and the OTel Operator can certainly be a bit scary at
 first, but understanding some of the basics will get you well on your way to
 mastering this powerful tool.

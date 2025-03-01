@@ -61,13 +61,13 @@ monorepo, but that would have risked a bug being pushed up.
 
 Jacob says, "This is app data which we use for alerting to understand how our
 workloads are functioning in all of our environments, so it's important to not
-take that down since it’d be disastrous. Same story for users, they want to know
-if they move to OTel they won’t lose their alerting capabilities. You want a
+take that down since it'd be disastrous. Same story for users, they want to know
+if they move to OTel they won't lose their alerting capabilities. You want a
 safe and easy migration."
 
 His team did the feature flag-based part of the configuration in Kubernetes. He
 says, "It would disable the sidecar and enable some code that would then swap
-the OTel for metrics and forward it to where it’s supposed to go. So that was
+the OTel for metrics and forward it to where it's supposed to go. So that was
 the path there."
 
 However, along the way, he noticed some "pretty large performance issues" as he
@@ -76,7 +76,7 @@ worked with the OTel team to alleviate some of these concerns, and found that
 one of the big blockers was their heavy use of attributes on metrics.
 
 "It was tedious to go in and figure out which metrics are using them and getting
-rid of them. I had a theory that one codepath was the problem, where we’re doing
+rid of them. I had a theory that one codepath was the problem, where we're doing
 the conversion from our internal tagging implementation to OTel tags, which came
 with a lot of other logic and [is] expensive to do, and it was on almost every
 call," he says. "No better time than now to begin another migration from
@@ -84,7 +84,7 @@ OpenCensus to OTel."
 
 He saw this as another opportunity: "While we wait for the OTel folks on the
 metrics side to push out more performant code and implementations, we could also
-test out the theory of, if we migrate to OTel entirely, we’re going to see more
+test out the theory of, if we migrate to OTel entirely, we're going to see more
 performance benefits." Thus, they paused the metrics work and began on migrating
 their tracing.
 
@@ -111,7 +111,7 @@ code and some dangerous hacks, so that was a really good thing."
 enough for it to be constant," Jacob says. "The reason you want to pick a
 service like this is that if it's too low traffic, like one request every 10
 minutes, you have to worry about sample rates, [and] you may not have a lot of
-data to compare against – that’s the big thing: you need to have some data to
+data to compare against – that's the big thing: you need to have some data to
 compare against."
 
 He had written a script early on for their metrics migration that queried
@@ -131,12 +131,12 @@ different types of instrumentation, so from Envoy to OTel to OpenTracing."
 He explains, "What you want to see is that the trace before has the same
 structure as the trace after. So I made another script that checked that those
 structures were relatively the same and that they all had the same attributes as
-well... That’s the point of the tracing migration – what matters is that all the
+well... That's the point of the tracing migration – what matters is that all the
 attributes stayed the same."
 
 ### When data goes missing
 
-"The ‘why it’s missing’ stories are the really complicated ones," says Jacob.
+"The 'why it's missing' stories are the really complicated ones," says Jacob.
 Sometimes, it's as simple as forgetting "to add something somewhere," but other
 times, there could be an upstream library that doesn't emit what you expected
 for OTel.
@@ -144,10 +144,10 @@ for OTel.
 He tells a story about the time he migrated their gRPC util package (which is
 now in Go contrib) and found an issue with propagation.
 
-"I was trying to understand what’s going wrong here. When I looked at the code –
+"I was trying to understand what's going wrong here. When I looked at the code –
 this tells you how early I was doing this migration – where there was supposed
 to be a propagator, there was just a 'TODO'," he shares. "It just took down our
-entire services’ traces in staging."
+entire services' traces in staging."
 
 He spent some time working on it, but they in turn were waiting on something
 else, and so on and so forth -- Jacob says there are "endless cycles of that
@@ -163,9 +163,9 @@ Views and the use of Views is something we used heavily early in the migration."
 
 "A Metrics View is something that is run inside of your Meter Provider in OTel,"
 Jacob explains. There are many configuration options, such as dropping
-attributes, which is one of the most common use cases. "For example, you’re a
+attributes, which is one of the most common use cases. "For example, you're a
 centralized SRE and you don't want anyone to instrument code with any user ID
-attribute, because that’s a high cardinality thing and it’s going to explode
+attribute, because that's a high cardinality thing and it's going to explode
 your metrics cost. You can make a View that gets added to your instrumentation
 and tell it to not record it, to deny it."
 
@@ -174,19 +174,19 @@ temporality or aggregation of your metrics. Temporality refers to whether a
 metric incorporates the previous measurement or not (cumulative and delta), and
 aggregation refers to how you send off the metrics.
 
-"It’s most useful for [our] histograms," says Jacob. "When you record
+"It's most useful for [our] histograms," says Jacob. "When you record
 histograms, there are a few different kinds – DataDog and Statsd histograms are
-not true histograms because what they’re recording is like aggregation samples.
+not true histograms because what they're recording is like aggregation samples.
 They give you a min, max, count, average, and P95 or something. The problem with
 that is, in distributed computing, if you have multiple applications that are
-reporting a P95, there’s no way you can get a true P95 from that observation
+reporting a P95, there's no way you can get a true P95 from that observation
 with that aggregation," he continues.
 
-"The reason for that is, if you have five P95 observations, there’s not an
+"The reason for that is, if you have five P95 observations, there's not an
 aggregation to say, give me the overall P95 from that. You need to have
 something about the original data to recalculate it. You can get the average of
-the P95s but it’s not a great metric, it doesn't really tell you much. It's not
-really accurate. If you’re going to alert on something and page someone at
+the P95s but it's not a great metric, it doesn't really tell you much. It's not
+really accurate. If you're going to alert on something and page someone at
 night, you should be paging on accurate measurements."
 
 Initially, they did have a few people who relied on the min, max, sum, count
@@ -207,13 +207,13 @@ other components, which was really neat."
 
 When Jacob started the OTel migration, it was still too early for logs. "The
 thing we would change," he says, "is how we collect those logs, potentially; we
-previously did it using Google’s log agent, basically running
+previously did it using Google's log agent, basically running
 [fluentbit](https://fluentbit.io) on every node in a GKE cluster and then they
 send it off to GCP and we tail it there." He notes that there may have been
 recent changes to this that he's not aware of at this time.
 
-"For a long time, we’ve used span events and logs for a lot of things
-internally," he says. "I’m a big fan of them." He is not as big a fan of
+"For a long time, we've used span events and logs for a lot of things
+internally," he says. "I'm a big fan of them." He is not as big a fan of
 logging, sharing that he thinks they are "cumbersome and expensive." He suggests
 that users opt for tracing and trace logs whenever possible, although he does
 like logging for local development, and tracing for distributed development."
@@ -276,11 +276,11 @@ components that you'll need to monitor.
 "In OTel, we tack on this
 [Prometheus receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md)
 to get all this data, but because we want to be more efficient than Prometheus,
-because we don’t need to store the data, we have this component called the
+because we don't need to store the data, we have this component called the
 Target Allocator, which goes to do the service discovery from Prometheus," says
 Jacob. "It says give me all the targets I need to scrape. Then the Target
 Allocator says: with these targets, distribute them evenly among the set of
-collectors that’s running."
+collectors that's running."
 
 That's the main thing this component does, and it also helps with job discovery.
 If you're using Prometheus service monitors, which is part of the
@@ -303,31 +303,29 @@ to run this."
 ### The Collector setup
 
 Jacob's team runs a lot of different types of Collectors over at Lightstep. "We
-run metrics things, tracing things, internal ones, external ones – there’s a lot
+run metrics things, tracing things, internal ones, external ones – there's a lot
 of different collectors that are running at all times", he shares.
 
-"It’s all very in-flux." They're changing things around a lot to run
+"It's all very in-flux." They're changing things around a lot to run
 experiments, since the best way for them to create features for customers and
 end users is to make sure they work internally first.
 
 "We're running in a single path where there could be two collectors in two
 environments that could be running two different images and two different
 versions. It gets really meta and really confusing to talk about," he says. "And
-then, if you’re sending Collector A across an environment to Collector B,
+then, if you're sending Collector A across an environment to Collector B,
 Collector B also emits telemetry about itself, which is then collected by
 Collector C, so it just chains."
 
 In a nutshell, you need to make sure that the collector is actually working.
-"That’s like the problem when we’re debugging this stuff. When there’s a problem
+"That's like the problem when we're debugging this stuff. When there's a problem
 you have to think up where the problem actually is -- is it in how we collect
 the data, is it in how we emit the data, is it in the source of how the data was
 generated? One of a bunch of things."
 
 ### Kubernetes modes on OTel
 
-The OTel Operator supports four
-[deployment modes](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspec)
-for the OTel Collector in Kubernetes:
+The OTel Operator supports [four deployment modes](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md) in Kubernetes.
 
 - [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) -
   see example
@@ -346,19 +344,18 @@ Which ones you should use depends on what you need to do, such as how you like
 to run applications for reliability.
 
 "Sidecar is the one we use the least and is probably used the least across the
-industry if I had to make a bet," Jacob says. "They’re expensive. If you don’t
-really need them, then you shouldn’t use them." An example of something run as a
+industry if I had to make a bet," Jacob says. "They're expensive. If you don't
+really need them, then you shouldn't use them." An example of something run as a
 sidecar is Istio, "which makes a lot of sense to run as a sidecar because it
 does proxy traffic and it hooks into your container network to change how it all
 does its thing."
 
 You will get a cost hit if you sidecar your Collectors for all your services,
-and you also have limited capabilities. He says, "If you’re making Kubernetes
-APIs calls or attribute enrichment, that’s the thing that would get
-exponentially expensive if you’re running as a sidecar." He shares an example:
-"...if you have sidecar [Collector using the
+and you also have limited capabilities. He says, "If you're making Kubernetes
+APIs calls or attribute enrichment, that's the thing that would get
+exponentially expensive if you're running as a sidecar." He shares an example: "...if you have sidecar [Collector using the
 [k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)]
-on 10k pods, then that’s 10k API calls made to the K8s API. That's expensive."
+on 10k pods, then that's 10k API calls made to the K8s API. That's expensive."
 
 On the other hand, if you have five pods deployed on StatefulSets, "that's not
 that expensive." When you run in StatefulSet mode, you get an exact number of
@@ -370,7 +367,7 @@ which is why it's required. Another thing that StatefulSets guarantee is
 something called in-place deployment, which is also available with DaemonSets;
 this is where you take the pod down before you create a new one.
 
-"In a deployment you usually do a 1-up, 1-down, or what’s called a
+"In a deployment you usually do a 1-up, 1-down, or what's called a
 [rolling deployment](https://www.techtarget.com/searchitoperations/definition/rolling-deployment),
 or rolling update," Jacob says. If you were doing this with the Target
 Allocator, you are likely to get much more unreliable scrapes. This is because
@@ -380,30 +377,30 @@ the hashes you've assigned.
 
 Whereas with StatefulSets, this isn't necessary, since you get a consistent ID
 range. "So when you do 1-down 1 up, it keeps the same targets each time. So like
-a placeholder for it – you don’t have to recalculate the ring," he explains.
+a placeholder for it – you don't have to recalculate the ring," he explains.
 
 He notes that this is really only useful as a metrics use case, where you're
 scraping Prometheus. He notes that they'd probably run it as a Deployment for
 anything else, since that mode gives you most everything you would need.
 Collectors are usually stateless, so there is no need for them to hold on to
 anything, and Deployments are leaner as a result. "You can just run and roll out
-and everyone’s happy," he says. "That’s how we run most of our collectors, is
+and everyone's happy," he says. "That's how we run most of our collectors, is
 just as a Deployment."
 
 For per-node scraping, DaemonSets come in handy. "This allows you to scrape the
-kubelet that’s run on every node, it allows you to scrape the node exporter
-that’s also run on every node, which is another Prometheus daemonset that most
+kubelet that's run on every node, it allows you to scrape the node exporter
+that's also run on every node, which is another Prometheus daemonset that most
 people run," he explains.
 
 DaemonSets are useful for scaling out, since they guarantee that you've got pods
 running on every node that matches its selector. "If you have a cluster of 800+
-nodes, it’s more reliable to run a bunch of little collectors that get those
+nodes, it's more reliable to run a bunch of little collectors that get those
 tiny metrics, rather than a few bigger stateful set pods because your blast
 radius is much lower," he says.
 
 "If one pod goes down, you lose just a tiny bit of data, but remember, with all
-this cardinality stuff, that’s a lot of memory. So if you’re doing a
-StatefulSet, scraping all these nodes, that’s a lot of targets, that’s a lot of
+this cardinality stuff, that's a lot of memory. So if you're doing a
+StatefulSet, scraping all these nodes, that's a lot of targets, that's a lot of
 memory, it can go down much more easily and you can lose more data."
 
 If a Collector goes down, it comes back up quickly, since it is usually
@@ -418,10 +415,10 @@ scale on, and you can distribute targets and load-balance.
 
 "Pull-based is like the reason that Prometheus is so ubiquitous... because it
 makes local development really easy, where you can just scrape your local
-endpoint, that’s what most backend development is anyway," he says. "You can hit
+endpoint, that's what most backend development is anyway," he says. "You can hit
 endpoint A and then hit your metrics endpoint. Then hit endpoint A again and
-then metrics endpoint, and check that, so it’s an easy developer loop. It also
-means you don’t have to reach outside of the network so if you have really
+then metrics endpoint, and check that, so it's an easy developer loop. It also
+means you don't have to reach outside of the network so if you have really
 strict proxy requirements to send data, local dev is much easier for that.
 That's why OTel now has a really good Prometheus exporter, so it can do both."
 
@@ -451,8 +448,8 @@ He recommends using Dependabot, which they use in OTel. OTel packages update in
 lockstep, which means you have to update "a fair amount of packages at once, but
 it does do it all for you, which is nice," he says. However, you should be doing
 this with all your dependencies, as "CVEs happen in the industry constantly. If
-you're not staying up to date with vulnerability fixes then you’re opening
-yourself up to security attacks, which you don’t want. 'Do something about it'
+you're not staying up to date with vulnerability fixes then you're opening
+yourself up to security attacks, which you don't want. 'Do something about it'
 is my recommendation."
 
 ## Additional Resources
@@ -469,7 +466,7 @@ is my recommendation."
 
 ## Final Thoughts
 
-OpenTelemetry is all about community, and we wouldn’t be where we are without
+OpenTelemetry is all about community, and we wouldn't be where we are without
 our contributors, maintainers, and users. We value user feedback -- please share
 your experiences and help us improve OpenTelemetry.
 

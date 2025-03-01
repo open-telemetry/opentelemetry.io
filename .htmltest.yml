@@ -93,6 +93,3 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#client-authenticators
   - ^https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#server-authenticators
 
-  # Temporary until
-  # https://github.com/open-telemetry/opentelemetry.io/issues/6237 is resolved
-  - ^https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#
