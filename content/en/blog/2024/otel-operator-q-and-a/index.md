@@ -24,7 +24,7 @@ easier. It does the following:
   [custom resource (CR)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
 - Manages the configuration of a fleet of OpenTelemetry Collectors via
   [OpAMP](/docs/specs/opamp/) integration, supported by the
-  [`OpAMPBridge`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opampbridge)
+  [`OpAMPBridge`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/apis/v1alpha1/opampbridge_types.go)
   custom resource.
 - Provides
   [integration with the Prometheus Operator's `PodMonitor` and `ServiceMonitor` CRs](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator).
@@ -55,7 +55,7 @@ Longer answer: OTel Collector can be fed more than one Collector config YAML
 file. That way, you can keep your base configurations in, say,
 `otelcol-config.yaml`, and overrides or additions to the base configuration can
 go in, for example, `otelcol-config-extras.yaml`. See an example of this in the
-[OTel Demo’s Docker compose file](https://github.com/open-telemetry/opentelemetry-demo/blob/06f020c97f78ae9625d3a4a5d1107c55045c567f/docker-compose.yml#L665-L668).
+[OTel Demo's Docker compose file](https://github.com/open-telemetry/opentelemetry-demo/blob/06f020c97f78ae9625d3a4a5d1107c55045c567f/docker-compose.yml#L665-L668).
 
 Unfortunately, while the OTel Collector supports multiple Collector
 configuration files, the Collector managed by the OTel Operator does not.
@@ -202,7 +202,7 @@ to authenticate against that private registry. For more info on how to use
 [the instructions](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#using-imagepullsecrets).
 
 For more info, check out the
-[OpenTelemetryCollector CR API docs](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector).
+[OpenTelemetryCollector CR API docs](https://github.com/open-telemetry/opentelemetry-operator/blob/main/apis/v1beta1/opentelemetrycollector_types.go).
 
 ### Q5: Does the Target Allocator work for all deployment types?
 
@@ -240,7 +240,7 @@ kubectl --context kind-otel-target-allocator-talk apply -f https://raw.githubuse
 ```
 
 See my
-[example of the OpenTelemetry Operator’s Target Allocator with `ServiceMonitor`](https://github.com/avillela/otel-target-allocator-talk/tree/main?tab=readme-ov-file#3b--kubernetes-deployment-servicenow-cloud-observability-backend).
+[example of the OpenTelemetry Operator's Target Allocator with `ServiceMonitor`](https://github.com/avillela/otel-target-allocator-talk/tree/main?tab=readme-ov-file#3b--kubernetes-deployment-servicenow-cloud-observability-backend).
 
 ### Q7: Do I need to create a service account to use the Target Allocator?
 
@@ -279,7 +279,7 @@ Just like you can override the Collector base image in the
 image.
 
 Please keep in mind that
-[it’s usually best to keep the Target Allocator and OTel operator versions the same](https://cloud-native.slack.com/archives/C033BJ8BASU/p1709128862949249?thread_ts=1709081221.484429&cid=C033BJ8BASU),
+[it's usually best to keep the Target Allocator and OTel operator versions the same](https://cloud-native.slack.com/archives/C033BJ8BASU/p1709128862949249?thread_ts=1709081221.484429&cid=C033BJ8BASU),
 to avoid any compatibility issues. If do you choose to override the Target
 Allocator’s base image, you can do so by adding `spec.targetAllocator.image` in
 the `OpenTelemetryCollector` CR. You can also specify the number of replicas by
@@ -322,7 +322,7 @@ yourself (see
 [Q7](#q7-do-i-need-to-create-a-service-account-to-use-the-target-allocator)).
 
 For more info, check out the
-[Target Allocator API docs](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocator).
+[Target Allocator API docs](https://github.com/open-telemetry/opentelemetry-operator/blob/main/apis/v1beta1/opentelemetrycollector_types.go#L239-L249).
 
 ### Q10: Is there a version lag between the OTel Operator auto-instrumentation and auto-instrumentation of supported languages?
 

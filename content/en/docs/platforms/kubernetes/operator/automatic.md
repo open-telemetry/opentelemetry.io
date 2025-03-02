@@ -44,7 +44,7 @@ component. If you chose not to use a Collector, you can skip to the next
 section.
 
 The Operator provides a
-[Custom Resource Definition (CRD) for the OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector)
+[Custom Resource Definition (CRD) for the OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-operator/blob/main/apis/v1beta1/opentelemetrycollector_types.go)
 which is used to create an instance of the Collector that the Operator manages.
 The following example deploys the Collector as a deployment (the default), but
 there are other
@@ -109,7 +109,7 @@ an endpoint for auto-instrumentation in your pods.
 To be able to manage automatic instrumentation, the Operator needs to be
 configured to know what pods to instrument and which automatic instrumentation
 to use for those pods. This is done via the
-[Instrumentation CRD](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentation).
+[Instrumentation CRD](https://github.com/open-telemetry/opentelemetry-operator/blob/main/apis/v1alpha1/instrumentation_types.go).
 
 Creating the Instrumentation resource correctly is paramount to getting
 auto-instrumentation working. Making sure all endpoints and env vars are correct
