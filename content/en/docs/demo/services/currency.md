@@ -1,7 +1,7 @@
 ---
 title: Currency Service
 linkTitle: Currency
-aliases: [currency]
+aliases: [currencyservice]
 cSpell:ignore: decltype labelkv noexcept nostd
 ---
 

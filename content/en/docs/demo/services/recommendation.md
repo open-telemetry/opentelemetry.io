@@ -1,7 +1,7 @@
 ---
 title: Recommendation Service
 linkTitle: Recommendation
-aliases: [recommendation]
+aliases: [recommendationservice]
 cSpell:ignore: cpython instrumentor NOTSET
 ---
 

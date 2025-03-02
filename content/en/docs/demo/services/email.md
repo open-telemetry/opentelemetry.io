@@ -1,7 +1,7 @@
 ---
 title: Email Service
 linkTitle: Email
-aliases: [email]
+aliases: [emailservice]
 cSpell:ignore: sinatra
 ---
 

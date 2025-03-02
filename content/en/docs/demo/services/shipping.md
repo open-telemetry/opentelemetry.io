@@ -1,7 +1,7 @@
 ---
 title: Shipping Service
 linkTitle: Shipping
-aliases: [shipping]
+aliases: [shippingservice]
 cSpell:ignore: itemct oteldemo reqwest sdktrace semcov shiporder tokio
 ---
 
@@ -116,8 +116,8 @@ will work.
 
 ### Adding HTTP instrumentation
 
-A child _client_ span is also produced for the outgoing HTTP call to `quote` via
-the `reqwest` client. This span pairs up with the corresponding `quote` _server_
+A child _client_ span is also produced for the outgoing HTTP call to quote via
+the `reqwest` client. This span pairs up with the corresponding quote _server_
 span. The tracing instrumentation is implemented in the client middleware making
 use of the available `reqwest-middleware`, `reqwest-tracing` and
 `tracing-opentelemetry` libraries:

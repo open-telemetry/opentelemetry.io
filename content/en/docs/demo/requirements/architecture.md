@@ -45,37 +45,22 @@ logs (as applicable/available).
 
 Each service should be interchangeable with a service that performs the same
 business logic, implementing the same gRPC endpoints, but written in a different
-language/implementation. For the initial implementation of the demo, we should
-focus on adding as many missing languages as possible by swapping out existing
-services with implementations in un-represented languages. For future versions
-we will look to add more distinct language options per service.
+language/implementation.
 
-Each service should communicate with a feature flag service in order to
-enable/disable 'faults' that can be used to illustrate how telemetry helps solve
-problems in distributed applications.
-
-A PHP service should be added to the main application as an 'admin service'. A
-Database should be added to enable CRUD functionality on the Product Catalog.
-
-The 'shipping' service should be reimplemented in Rust.
-
-The 'currency' service should be reimplemented in C++.
-
-The 'email' service should be reimplemented in Ruby.
-
-For future iterations, the 'frontend' service can be extended with a mobile
-application written in Swift.
+Each service should be able to communicate with a feature flag service in order
+to enable/disable faults that can be used to illustrate how telemetry helps
+solve problems in distributed applications.
 
 ## Feature Flag Component
 
 Feature flagging is a crucial part of cloud native application development. The
-demo uses OpenFeature, a CNCF incubating project, to manage feature flags.
+Demo uses OpenFeature, a CNCF incubating project, to manage feature flags.
 
 Feature flags can be set through the flagd configurator user interface.
 
 ## Orchestration and Deployment
 
-All services should run on Kubernetes. The OpenTelemetry Collector should be
+All services run on Kubernetes. The OpenTelemetry Collector should be
 deployed via the OpenTelemetry Operator, and run in a sidecar + gateway mode.
 Telemetry from each pod should be routed from agents to a gateway, and the
 gateway should export telemetry by default to an open source trace + metrics

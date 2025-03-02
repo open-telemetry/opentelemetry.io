@@ -1,7 +1,7 @@
 ---
 title: Payment Service
 linkTitle: Payment
-aliases: [payment]
+aliases: [paymentservice]
 cSpell:ignore: nanos
 ---
 

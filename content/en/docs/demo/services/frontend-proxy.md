@@ -1,7 +1,7 @@
 ---
 title: Frontend Proxy (Envoy)
 linkTitle: Frontend Proxy
-aliases: [frontend-proxy]
+aliases: [frontendproxy]
 cSpell:ignore: upstreams
 ---
 

@@ -68,9 +68,9 @@ work, and viewing the details allows us to get a better idea of what's going on.
 ## Confirming the Diagnosis
 
 We can see in our waterfall view that the `app.cache_hit` attribute is set to
-`false`, and that the `app.products.count` value is extremely high.
+false, and that the `app.products.count` value is extremely high.
 
-Returning to the search UI, filter to `recommendation` in the Service dropdown,
+Returning to the search UI, select `recommendation` in the Service dropdown,
 and search for `app.cache_hit=true` in the Tags box. Notice that requests tend
 to be faster when the cache is hit. Now search for `app.cache_hit=false` and
 compare the latency. You should notice some changes in the visualization at the
