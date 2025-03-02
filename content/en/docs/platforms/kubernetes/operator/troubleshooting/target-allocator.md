@@ -333,10 +333,10 @@ If you configured a
 [`ServiceMonitor`](https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/)
 selector, it means that the Target Allocator only looks for `ServiceMonitors`
 having a `metadata.label` that matches the value in
-[`serviceMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr-1).
+[`serviceMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/apis/v1beta1/opentelemetrycollector_types.go#L102-L105).
 
 Suppose that you configured a
-[`serviceMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr-1)
+[`serviceMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/apis/v1beta1/opentelemetrycollector_types.go#L102-L105)
 for your Target Allocator, like in the following example:
 
 ```yaml
@@ -386,8 +386,8 @@ Allocator will fail to discover scrape targets from that `ServiceMonitor`.
 
 {{% alert title="Tip" %}}
 
-The same applies if you’re using a [PodMonitor]. In that case, you would use a
-[`podMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr)
+The same applies if you're using a [PodMonitor]. In that case, you would use a
+[`podMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/apis/v1beta1/opentelemetrycollector_types.go#L106-L109)
 instead of a `serviceMonitorSelector`.
 
 {{% /alert %}}
@@ -401,7 +401,7 @@ results in the Target Allocator failing to discover scrape targets from your
 `ServiceMonitors` and `PodMonitors`, respectively.
 
 Similarly, in
-[`v1beta1`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector-1)
+[`v1beta1`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/apis/v1beta1/opentelemetrycollector_types.go)
 of the `OpenTelemetryCollector` CR, leaving out this configuration altogether
 also results in the Target Allocator failing to discover scrape targets from
 your `ServiceMonitors` and `PodMonitors`.
