@@ -2,7 +2,6 @@
 title: リソース
 weight: 70
 default_lang_commit: cd90ab77550fb2e92ca37cb3c753ec2d8bb7d8dc
-drifted_from_default: true
 ---
 
 ## はじめに
