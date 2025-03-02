@@ -60,11 +60,10 @@ Feature flags can be set through the flagd configurator user interface.
 
 ## Orchestration and Deployment
 
-All services run on Kubernetes. The OpenTelemetry Collector should be
-deployed via the OpenTelemetry Operator, and run in a sidecar + gateway mode.
-Telemetry from each pod should be routed from agents to a gateway, and the
-gateway should export telemetry by default to an open source trace + metrics
-visualizer.
+All services run on Kubernetes. The OpenTelemetry Collector should be deployed
+via the OpenTelemetry Operator, and run in a sidecar + gateway mode. Telemetry
+from each pod should be routed from agents to a gateway, and the gateway should
+export telemetry by default to an open source trace + metrics visualizer.
 
 For local/non-Kubernetes deployment, the Collector should be deployed via
 compose file and monitor not only traces/metrics from applications, but also the
