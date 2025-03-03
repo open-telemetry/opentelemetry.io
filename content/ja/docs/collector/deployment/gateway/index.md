@@ -5,6 +5,7 @@ description:
 weight: 3
 # prettier-ignore
 cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadbalancing resourcedetectionprocessor
+default_lang_commit: b34ebe22b71962da96b898eb39a666ed57d447fe
 ---
 
 コレクターのゲートウェイデプロイメントパターンは、アプリケーション（または他のコレクター）がテレメトリーシグナルを単一のOTLPエンドポイントに送信し、そのエンドポイントが実行されている1つ以上のコレクターインスタンスによって処理される構成です。
