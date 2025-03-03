@@ -1,7 +1,6 @@
 ---
 title: エージェント
-description:
-  コレクターにシグナルを送信し、そこからバックエンドに送信する理由と方法
+description: コレクターにシグナルを送信し、そこからバックエンドに送信する理由と方法
 weight: 2
 cSpell:ignore: prometheusremotewrite
 default_lang_commit: b34ebe22b71962da96b898eb39a666ed57d447fe
@@ -123,7 +122,5 @@ service:
 [collector]: /docs/collector/
 [instrument-java-metrics]: /docs/languages/java/api/#meterprovider
 [otlp-exporter]: /docs/specs/otel/protocol/exporter/
-[java-otlp-example]:
-  https://github.com/open-telemetry/opentelemetry-java-docs/tree/main/otlp
-[py-otlp-example]:
-  https://opentelemetry-python.readthedocs.io/en/stable/examples/metrics/instruments/README.html
+[java-otlp-example]: https://github.com/open-telemetry/opentelemetry-java-docs/tree/main/otlp
+[py-otlp-example]: https://opentelemetry-python.readthedocs.io/en/stable/examples/metrics/instruments/README.html

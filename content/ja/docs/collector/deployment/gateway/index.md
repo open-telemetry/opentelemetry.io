@@ -1,7 +1,6 @@
 ---
 title: ゲートウェイ
-description:
-  シグナルを単一のOTLPエンドポイントに送信し、そこからバックエンドに送信する理由と方法
+description: シグナルを単一のOTLPエンドポイントに送信し、そこからバックエンドに送信する理由と方法
 weight: 3
 # prettier-ignore
 cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadbalancing resourcedetectionprocessor
@@ -194,7 +193,7 @@ service:
   これらのレシーバーを複数実行すると、データが重複します。
 
 - [`resourcedetectionprocessor`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor)のようなプロセッサーは、ホスト、コレクター、アプリケーションの情報を追加するために使用されます。
-リモートマシン上のコレクター内でこれらを実行すると、不正確なデータが生成されます。
+  リモートマシン上のコレクター内でこれらを実行すると、不正確なデータが生成されます。
 
 ## トレードオフ {#tradeoffs}
 
@@ -209,12 +208,9 @@ service:
 - 階層型コレクターの場合、追加のレイテンシーがかかる
 - 全体的なリソース使用量が増加する（コスト）
 
-[lb-exporter]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter
-[tailsample-processor]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor
-[spanmetrics-connector]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector
+[lb-exporter]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter
+[tailsample-processor]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor
+[spanmetrics-connector]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector
 
 ## 複数のコレクターとシングルライター原則
 

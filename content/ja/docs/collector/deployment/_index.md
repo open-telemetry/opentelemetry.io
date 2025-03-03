@@ -15,6 +15,5 @@ OpenTelemetryコレクターは、さまざまな方法で、さまざまなユ�
 - 講演に付随する[デプロイメントパターン][gh-patterns]
 
 [security]: /docs/security/hosting-best-practices/
-[gh-patterns]:
-  https://github.com/jpkrohling/opentelemetry-collector-deployment-patterns/
+[gh-patterns]: https://github.com/jpkrohling/opentelemetry-collector-deployment-patterns/
 [y-patterns]: https://www.youtube.com/watch?v=WhRrwSHDBFs
