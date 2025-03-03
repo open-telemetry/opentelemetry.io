@@ -9,7 +9,7 @@ cSpell:ignore: prometheusremotewrite
 コレクターのエージェントデプロイメントパターンは、OpenTelemetry SDKを使用して[計装された][instrumentation]アプリケーション（[OpenTelemetryプロトコル（OTLP）][otlp]を使用）や、他のコレクター（OTLPエクスポーターを使用）が、テレメトリーシグナルを[コレクター][]インスタンスに送信する構成です。
 このコレクターインスタンスは、アプリケーションと同じホストまたはアプリケーションの横に配置されたサイドカーやデーモンセットとして動作します。
 
-各クライアント側SDKまたはダウンストリームコレクターは、コレクターの場所を設定します：
+各クライアント側SDKまたはダウンストリームコレクターは、コレクターの場所を設定します。
 
 ![分散型コレクターデプロイメント概念](../../img/otel-agent-sdk.svg)
 
@@ -20,13 +20,13 @@ cSpell:ignore: prometheusremotewrite
 
 コレクターのエージェントデプロイメントパターンの具体例は以下のようになります。
 たとえば、[Javaアプリケーションを計装してメトリクスをエクスポート][instrument-java-metrics]するためにOpenTelemetry Java SDKを使用します。
-アプリケーションのコンテキスト内で、`OTEL_METRICS_EXPORTER`を`otlp`（デフォルト値）に設定し、[OTLPエクスポーター][otlp-exporter]をコレクターのアドレスで設定します。たとえば（Bashまたは`zsh`シェル）：
+アプリケーションのコンテキスト内で、`OTEL_METRICS_EXPORTER`を`otlp`（デフォルト値）に設定し、[OTLPエクスポーター][otlp-exporter]をコレクターのアドレスで設定します。たとえば、Bashまたは`zsh`シェルでは、次のように設定します。
 
 ```shell
 export OTEL_EXPORTER_OTLP_ENDPOINT=http://collector.example.com:4318
 ```
 
-`collector.example.com:4318` で動作するコレクターは次のように設定されます：
+`collector.example.com:4318` で動作するコレクターは次のように設定されます。
 
 {{< tabpane text=true >}} {{% tab Traces %}}
 
