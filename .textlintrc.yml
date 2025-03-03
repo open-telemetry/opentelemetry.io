@@ -19,7 +19,7 @@ filters:
       # src attribute in figure Hugo template:
       - /src=".*?"/
       # Other:
-      - /<https?://.*?>/ # Raw URLs
+      - /<https?:\/\/.*?>/ # Raw URLs
 rules:
   terminology:
     defaultTerms: false
