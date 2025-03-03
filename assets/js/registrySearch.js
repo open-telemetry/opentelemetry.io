@@ -163,12 +163,12 @@ function executeSearch(searchQuery) {
       let results = miniSearch.search(searchQuery);
       document.getElementById('search-loading').style.display = 'none';
 
-      if (results.length > 0) {
-        populateResults(results);
-      } else {
-        document.querySelector('#search-results').innerHTML +=
-          '<p>No matches found</p>';
-      }
+      if (results.length === 0) {
+        document.getElementById('no-search-result').style.display = 'block';
+      } 
+
+      populateResults(results);
+
     }, 0);
   };
 
