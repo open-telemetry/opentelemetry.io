@@ -6,7 +6,7 @@ linkTitle: KubeCon EU '25
 date: 2025-03-03
 author: '[Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)'
 # prettier-ignore
-cSpell:ignore: Adevinta Aftab Arianna Baeyens Bartłomiej Boulineau Celalettin Cgroupv Chauhan codecentric Contribfest Cosmonic Geisendoerfer Guangya Hoeven Horovits Hrabusa Jiří Juraj Kalyanaraman Karemba Karthik Kasper Kathiresan kedify Kimpel Kluwer Kokilavani Kovalenko Kowall Kremser Kruthika Liatrio Mancioppi Marylia Michálek MTTD Nilson Nissen Norimatsu Oberaigner observ Olly OTTL Paessler Pahlke Płotka Prasanna Querel Roubalik SCRM Simha Skyscanner Suereth Tanaka Vamerlatti Vespri Vijay Wolters Zbynek
+cSpell:ignore: Adevinta Aftab Arianna Baeyens Bartłomiej Boulineau Celalettin Cgroupv Chauhan codecentric Contribfest Cosmonic Geisendoerfer Guangya Hoeven Horovits Hrabusa Jiří Juraj Kalyanaraman Karemba Karthik Kasper Kathiresan kedify Keycloak Kimpel Kluwer Kokilavani Kovalenko Kowall Kremser Kruthika Liatrio Mancioppi Marylia Michálek MTTD Nilson Nissen Norimatsu Oberaigner observ Olly OTTL Paessler Pahlke Prasanna Płotka Querel Roubalik SCRM Simha Skyscanner Suereth Tanaka Vamerlatti Vespri Vijay Wolters Zbynek
 ---
 
 The OpenTelemetry governance and technical committees, along with the project's
