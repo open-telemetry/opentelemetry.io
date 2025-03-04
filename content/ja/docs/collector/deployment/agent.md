@@ -2,8 +2,8 @@
 title: エージェント
 description: コレクターにシグナルを送信し、そこからバックエンドに送信する理由と方法
 weight: 2
-cSpell:ignore: prometheusremotewrite
 default_lang_commit: b34ebe22b71962da96b898eb39a666ed57d447fe
+cSpell:ignore: prometheusremotewrite
 ---
 
 コレクターのエージェントデプロイメントパターンは、OpenTelemetry SDKを使用して[計装された][instrumentation]アプリケーション（[OpenTelemetryプロトコル（OTLP）][otlp]を使用）や、他のコレクター（OTLPエクスポーターを使用）が、テレメトリーシグナルを[コレクター][collector]インスタンスに送信する構成です。
