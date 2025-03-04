@@ -9,7 +9,8 @@ weight: -1
 <i class="fas fa-bullhorn"></i> [**{{% param title %}}**][LF],
 **<span class="text-nowrap">April 1 - 4,</span> London England**.
 <span class="d-none d-md-inline"><br></span> Come [collaborate, learn, and
-share][blog]<span class="d-none d-sm-inline"> with the Cloud Native community</span>!
+share][blog]<span class="d-none d-sm-inline"> with the Cloud Native
+community</span>!
 
 [LF]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-EU-2025&utm_content=slim-banner

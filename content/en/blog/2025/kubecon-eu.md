@@ -11,8 +11,8 @@ cSpell:ignore: Adevinta Aftab Arianna Baeyens Bartłomiej Boulineau Celalettin C
 
 The OpenTelemetry governance and technical committees, along with the project's
 maintainers, invite you to join them and other members of the OpenTelemetry
-community at [KubeCon + CloudNativeCon Europe][] ([registration][]) and at the co-located
-[Observability Day] in London from April 1 to 4, 2025.
+community at [KubeCon + CloudNativeCon Europe][] ([registration][]) and at the
+co-located [Observability Day] in London from April 1 to 4, 2025.
 
 This post covers all currently scheduled activities related to OpenTelemetry
 that are happening during KubeCon. Check back for updates before the start of
