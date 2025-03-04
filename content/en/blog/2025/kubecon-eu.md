@@ -115,8 +115,8 @@ well.
 
 {{% alert title="Important access note" color="danger" %}}
 
-You need an _in-person all-access_ pass for access to **Observability Day**. For
-details, see [KubeCon registration].
+You need an _all-access_ pass to attend **Observability Day**. For details, see
+[KubeCon registration].
 
 [kubecon registration]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/
@@ -161,23 +161,28 @@ details, see [KubeCon registration].
   by Antonio Jimenez Martinez, Cisco ThousandEyes<br> Tuesday, April 1 • 17:15 -
   17:25
 
-<!-- ## OpenTelemetry Observatory
+## OpenTelemetry Observatory
 
 Drop by and say _"Hi!"_ at OpenTelemetry Observatory presented by Splunk in the
 Expo Hall. This will be a place for informal chats, meetups, and other
-discussions led by OpenTelemetry community members and maintainers. For the
-activity schedule, see the
-[OTel Observatory Calendar](https://shorturl.at/qEUX1).
+discussions led by OpenTelemetry community members and maintainers.
 
-If you’d like to participate and lead a discussion or short presentation, reach
+<!-- For the activity schedule, see the [OTel Observatory Calendar](https://shorturl.at/qEUX1). -->
+
+Note that the Observatory might show up as "Splunk Activation Booth" on the
+event map.
+
+Activity schedule coming soon. Check back in the coming weeks for updates!
+
+<!-- If you’d like to participate and lead a discussion or short presentation, reach
 out to the
 [OpenTelemetry End User Working Group](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
-to indicate your interest.
+to indicate your interest. -->
 
 You can help us improve the project by sharing your thoughts and feedback about
 your OpenTelemetry adoption, implementation, and usage.
 
-To join a feedback session, book online below. All times in Central European
+<!-- To join a feedback session, book online below. All times in Central European
 Time (CET).
 
 - **March 20th, 11:45-12:45:**
@@ -195,19 +200,17 @@ Time (CET).
 
 A maximum of 5 participants will join one SIG maintainer to provide feedback for
 that SIG. Sessions will be recorded and posted on the
-[OTel YouTube channel](https://youtube.com/@otel-official).
+[OTel YouTube channel](https://youtube.com/@otel-official). -->
 
 We will create action items from your comments as appropriate. Check
-[#otel-user-research] in CNCF's Slack instance for results and action item
+[#otel-sig-end-user] in CNCF's Slack instance for results and action item
 updates to come after KubeCon EU.
 
-Back by popular demand! We'll be recording
+<!-- Back by popular demand! We'll be recording
 [Humans of OTel interviews](/blog/2023/humans-of-otel/) at the OTel Observatory.
 If you'd like to share your experiences as an OpenTelemetry practitioner or
 maintainer,
-[sign up for an interview session](https://calendly.com/otel-euwg/humans-of-otel).
-
-[#otel-user-research]: https://cloud-native.slack.com/archives/C01RT3MSWGZ -->
+[sign up for an interview session](https://calendly.com/otel-euwg/humans-of-otel). -->
 
 Come join us to listen, learn, and get involved in OpenTelemetry. See you in
 London!
@@ -216,3 +219,4 @@ London!
   https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/
 [Observability Day]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/observability-day/
+[#otel-sig-end-user]: https://cloud-native.slack.com/archives/C01RT3MSWGZ
