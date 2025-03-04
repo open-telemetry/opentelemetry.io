@@ -14,11 +14,9 @@ maintainers, invite you to join them and other members of the OpenTelemetry
 community at [KubeCon + CloudNativeCon Europe] and at the co-located
 [Observability Day] in London from April 1 to 4, 2025.
 
-Read on to learn about all the things related to OpenTelemetry happening during
-KubeCon.
-
-We will update this post as we receive notice of other activities. Check back
-for updates before the start of the conference!
+This post covers all currently scheduled activities related to OpenTelemetry
+that are happening during KubeCon. Check back for updates before the start of
+the conference!
 
 ## OpenTelemetry Contribfest
 
