@@ -170,6 +170,18 @@ maintainers:
       - specs-triagers
     html_url: https://github.com/arminru
     avatar_url: https://avatars.githubusercontent.com/u/7052238?v=4
+  - name: atoulme
+    teams:
+      - collector-approvers
+      - collector-contrib-approvers
+      - collector-contrib-maintainers
+      - collector-contrib-triagers
+      - collector-releases-approvers
+      - collector-triagers
+      - network-triagers
+      - operator-triagers
+    html_url: https://github.com/atoulme
+    avatar_url: https://avatars.githubusercontent.com/u/16758?v=4
   - name: austinlparker
     teams:
       - blog-approvers
@@ -1326,17 +1338,6 @@ approvers:
       - ebpf-profiler-approvers
     html_url: https://github.com/athre0z
     avatar_url: https://avatars.githubusercontent.com/u/6553158?v=4
-  - name: atoulme
-    teams:
-      - collector-approvers
-      - collector-contrib-approvers
-      - collector-contrib-triagers
-      - collector-releases-approvers
-      - collector-triagers
-      - network-triagers
-      - operator-triagers
-    html_url: https://github.com/atoulme
-    avatar_url: https://avatars.githubusercontent.com/u/16758?v=4
   - name: atreat
     teams:
       - swift-approvers
@@ -1434,6 +1435,12 @@ approvers:
       - semconv-genai-approvers
     html_url: https://github.com/drewby
     avatar_url: https://avatars.githubusercontent.com/u/192652?v=4
+  - name: edmocosta
+    teams:
+      - collector-contrib-approvers
+      - collector-contrib-triagers
+    html_url: https://github.com/edmocosta
+    avatar_url: https://avatars.githubusercontent.com/u/11836452?v=4
   - name: edsoncelio
     teams:
       - docs-pt-approvers
