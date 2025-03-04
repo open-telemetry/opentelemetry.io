@@ -6,7 +6,7 @@ cSpell:ignore: prometheusremotewrite
 default_lang_commit: b34ebe22b71962da96b898eb39a666ed57d447fe
 ---
 
-コレクターのエージェントデプロイメントパターンは、OpenTelemetry SDKを使用して[計装された][instrumentation]アプリケーション（[OpenTelemetryプロトコル（OTLP）][otlp]を使用）や、他のコレクター（OTLPエクスポーターを使用）が、テレメトリーシグナルを[コレクター][]インスタンスに送信する構成です。
+コレクターのエージェントデプロイメントパターンは、OpenTelemetry SDKを使用して[計装された][instrumentation]アプリケーション（[OpenTelemetryプロトコル（OTLP）][otlp]を使用）や、他のコレクター（OTLPエクスポーターを使用）が、テレメトリーシグナルを[コレクター][collector]インスタンスに送信する構成です。
 このコレクターインスタンスは、アプリケーションと同じホストまたはアプリケーションの横に配置されたサイドカーやデーモンセットとして動作します。
 
 各クライアント側SDKまたはダウンストリームコレクターは、コレクターの場所を設定します。
