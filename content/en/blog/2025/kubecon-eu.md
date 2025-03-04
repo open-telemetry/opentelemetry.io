@@ -116,7 +116,7 @@ well.
 {{% alert title="Important access note" color="danger" %}}
 
 You need an _all-access_ pass to attend **Observability Day**. For details, see
-[KubeCon registration].
+[KubeCon registration][registration].
 
 [registration]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-EU-2025&utm_content=blog
