@@ -3,7 +3,7 @@ title:
   Join us for OpenTelemetry Talks and Activities at KubeCon + CloudNativeCon
   Europe 2025
 linkTitle: KubeCon EU '25
-date: 2025-03-03
+date: 2025-03-04
 author: '[Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)'
 # prettier-ignore
 cSpell:ignore: Adevinta Aftab Arianna Baeyens Bartłomiej Boulineau Celalettin Cgroupv Chauhan codecentric Contribfest Cosmonic Geisendoerfer Guangya Hoeven Horovits Hrabusa Jiří Juraj Kalyanaraman Karemba Karthik Kasper Kathiresan kedify Keycloak Kimpel Kluwer Kokilavani Kovalenko Kowall Kremser Kruthika Liatrio Mancioppi Marylia Michálek MTTD Nilson Nissen Norimatsu Oberaigner observ Olly OTTL Paessler Pahlke Prasanna Płotka Querel Roubalik SCRM Simha Skyscanner Suereth Tanaka Vamerlatti Vespri Vijay Wolters Zbynek
@@ -11,7 +11,7 @@ cSpell:ignore: Adevinta Aftab Arianna Baeyens Bartłomiej Boulineau Celalettin C
 
 The OpenTelemetry governance and technical committees, along with the project's
 maintainers, invite you to join them and other members of the OpenTelemetry
-community at [KubeCon + CloudNativeCon Europe] and at the co-located
+community at [KubeCon + CloudNativeCon Europe][] ([registration][]) and at the co-located
 [Observability Day] in London from April 1 to 4, 2025.
 
 This post covers all currently scheduled activities related to OpenTelemetry
@@ -118,8 +118,8 @@ well.
 You need an _all-access_ pass to attend **Observability Day**. For details, see
 [KubeCon registration].
 
-[kubecon registration]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/
+[registration]:
+  https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-EU-2025&utm_content=blog
 
 {{% /alert %}}
 
@@ -216,7 +216,7 @@ Come join us to listen, learn, and get involved in OpenTelemetry. See you in
 London!
 
 [KubeCon + CloudNativeCon Europe]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/
+  https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-EU-2025&utm_content=blog
 [Observability Day]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/observability-day/
 [#otel-sig-end-user]: https://cloud-native.slack.com/archives/C01RT3MSWGZ
