@@ -12,13 +12,11 @@ the `manifest.yaml` of each distribution.
 [distributions]:
   https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions
 
-{{% docs/latest-release collector-releases /%}}
-
 ## Custom Distributions
 
-For various reasons the existing distributions provided by the OpenTelemetry
-project may not meet your needs. Whether you want a smaller version, or have the
-need to implement custom functionality like
+Existing distributions provided by the OpenTelemetry project may not meet your
+needs. For example, you may want a smaller package, or have the need to
+implement custom functionality like
 [authenticator extensions](../building/authenticator-extension),
 [receivers](../building/receiver), processors, exporters or
 [connectors](../building/connector). The tool used to build distributions
