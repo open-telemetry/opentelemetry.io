@@ -4,6 +4,7 @@ description:
   Lista de distribuições de código aberto do OpenTelemetry mantidas por
   terceiros.
 default_lang_commit: 8a15d0d668c516ccb255cd0a92e0bcd442e83b4d
+drifted_from_default: true
 ---
 
 As [distribuições](/docs/concepts/distributions/) do OpenTelemetry são uma forma
@@ -52,7 +53,7 @@ Para que sua distribuição seja listada, [envie um PR] com uma entrada adiciona
 
 [envie um PR]: /docs/contributing/pull-requests/
 
-{{% include keep-up-to-date.md distribution %}}
+{{% include keep-up-to-date.md distribuições %}}
 
 [lista de distribuições]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/distributions.yaml

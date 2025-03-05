@@ -10,6 +10,7 @@ htmltest:
     #     Non-OK status: 404 --> https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md
     - ^zh/docs/contributing/
 default_lang_commit: 8603bc8
+drifted_from_default: true
 ---
 
 下面的指引描述了如何为 OpenTelemetry 文档做贡献。关于如何为 OpenTelemetry 项目作出贡献，请参阅[OpenTelemetry 贡献者指南](https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md)，其中提供了有关贡献者许可协议和行为准则的详细信息。从某种程度上讲，每种语言实现、收集器和约定 [仓库](https://github.com/open-telemetry/) 都有自己特定的贡献指南。

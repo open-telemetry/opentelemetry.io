@@ -367,12 +367,13 @@ const resource = Resource.default().merge(
   }),
 );
 
-const provider = new WebTracerProvider({
-  resource: resource,
-});
 const exporter = new ConsoleSpanExporter();
 const processor = new BatchSpanProcessor(exporter);
-provider.addSpanProcessor(processor);
+
+const provider = new WebTracerProvider({
+  resource: resource,
+  spanProcessors: [processor],
+});
 
 provider.register();
 ```
@@ -399,12 +400,13 @@ const resource = Resource.default().merge(
   }),
 );
 
-const provider = new WebTracerProvider({
-  resource: resource,
-});
 const exporter = new ConsoleSpanExporter();
 const processor = new BatchSpanProcessor(exporter);
-provider.addSpanProcessor(processor);
+
+const provider = new WebTracerProvider({
+  resource: resource,
+  spanProcessors: [processor],
+});
 
 provider.register();
 ```
@@ -1126,16 +1128,28 @@ Initializing tracing is similar to how you'd do it with Node.js or the Web SDK.
 ```ts
 import opentelemetry from '@opentelemetry/api';
 import {
+  CompositePropagator,
+  W3CTraceContextPropagator,
+  W3CBaggagePropagator,
+} from '@opentelemetry/core';
+import {
   BasicTracerProvider,
   BatchSpanProcessor,
   ConsoleSpanExporter,
 } from '@opentelemetry/sdk-trace-base';
 
-const provider = new BasicTracerProvider();
+opentelemetry.trace.setGlobalTracerProvider(
+  new BasicTracerProvider({
+    // Configure span processor to send spans to the exporter
+    spanProcessors: [new BatchSpanProcessor(new ConsoleSpanExporter())],
+  }),
+);
 
-// Configure span processor to send spans to the exporter
-provider.addSpanProcessor(new BatchSpanProcessor(new ConsoleSpanExporter()));
-provider.register();
+opentelemetry.propagation.setGlobalPropagator(
+  new CompositePropagator({
+    propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
+  }),
+);
 
 // This is what we'll access in all instrumentation code
 const tracer = opentelemetry.trace.getTracer('example-basic-tracer-node');
@@ -1146,16 +1160,28 @@ const tracer = opentelemetry.trace.getTracer('example-basic-tracer-node');
 ```js
 const opentelemetry = require('@opentelemetry/api');
 const {
+  CompositePropagator,
+  W3CTraceContextPropagator,
+  W3CBaggagePropagator,
+} = require('@opentelemetry/core');
+const {
   BasicTracerProvider,
   ConsoleSpanExporter,
   BatchSpanProcessor,
 } = require('@opentelemetry/sdk-trace-base');
 
-const provider = new BasicTracerProvider();
+opentelemetry.trace.setGlobalTracerProvider(
+  new BasicTracerProvider({
+    // Configure span processor to send spans to the exporter
+    spanProcessors: [new BatchSpanProcessor(new ConsoleSpanExporter())],
+  }),
+);
 
-// Configure span processor to send spans to the exporter
-provider.addSpanProcessor(new BatchSpanProcessor(new ConsoleSpanExporter()));
-provider.register();
+opentelemetry.propagation.setGlobalPropagator(
+  new CompositePropagator({
+    propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
+  }),
+);
 
 // This is what we'll access in all instrumentation code
 const tracer = opentelemetry.trace.getTracer('example-basic-tracer-node');

@@ -6,6 +6,7 @@ aliases:
   - /docs/concepts/otel-concepts
 weight: 11
 default_lang_commit: e7c30e9
+drifted_from_default: true
 ---
 
 OpenTelemetry 的目的是收集、处理和导出 **[信号][]** 。

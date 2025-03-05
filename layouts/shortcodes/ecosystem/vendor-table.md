@@ -18,8 +18,8 @@ cSpell:ignore: cial cond
   {{ .name }} |
   {{- cond .oss "Yes" "No" }} |
   {{- cond .commercial "Yes" "No" }} |
-  {{- cond .nativeOTLP "Yes" "No" }} |
-  {{- /* */}} [{{ $shortUrl }}]({{ .url }}) |
+  {{- cond .nativeOTLP "Yes" "No" }} |
+  {{- /* */}} [{{ $shortUrl }}]({{ .url }}) |
 {{- end }}
 
 [^org]: Organizations are grouped as follows based on their OTel support:

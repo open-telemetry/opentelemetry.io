@@ -225,6 +225,13 @@ if you want HEAD to correspond to `main` in GitHub.
 
 {{% /alert %}}
 
+### Drift status
+
+Run `npm run fix:i18n:status` to add a front-matter field `drifted_from_default`
+to those target localization pages that have drifted. This field will soon be
+used to display a banner at the top of pages that have drifted relative to their
+English counterparts.
+
 ### Script help
 
 For more details about the script, run `npm run check:i18n -- -h`.
@@ -239,11 +246,11 @@ least two potential contributors**, ideally three. Include the following task
 list in your issue as well:
 
 ```markdown
-- [ ] Contributors for the new language: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
-- [ ] Localize site homepage to YOUR_LANGUAGE_NAME
-- [ ] Create an issue label for `lang:LANG_ID`
-- [ ] Create org-level group for `LANG_ID` approvers
-- [ ] Update components owners for `content/LANG_ID`
+- [ ] Contributors for the new language: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
+- [ ] Localize site homepage to YOUR_LANGUAGE_NAME
+- [ ] Create an issue label for `lang:LANG_ID`
+- [ ] Create org-level group for `LANG_ID` approvers
+- [ ] Update components owners for `content/LANG_ID`
 - [ ] Set up spell checking, if a cSpell dictionary is available
 ```
 

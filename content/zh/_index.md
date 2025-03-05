@@ -8,6 +8,7 @@ developer_note:
   的图像文件作为背景图。
 show_banner: true
 default_lang_commit: c2cd5b14
+drifted_from_default: true
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>

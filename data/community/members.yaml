@@ -170,6 +170,18 @@ maintainers:
       - specs-triagers
     html_url: https://github.com/arminru
     avatar_url: https://avatars.githubusercontent.com/u/7052238?v=4
+  - name: atoulme
+    teams:
+      - collector-approvers
+      - collector-contrib-approvers
+      - collector-contrib-maintainers
+      - collector-contrib-triagers
+      - collector-releases-approvers
+      - collector-triagers
+      - network-triagers
+      - operator-triagers
+    html_url: https://github.com/atoulme
+    avatar_url: https://avatars.githubusercontent.com/u/16758?v=4
   - name: austinlparker
     teams:
       - blog-approvers
@@ -504,6 +516,7 @@ maintainers:
       - collector-contrib-triagers
       - operator-approvers
       - operator-maintainers
+      - operator-triagers
       - semconv-container-approvers
       - semconv-k8s-approvers
       - semconv-system-approvers
@@ -558,6 +571,7 @@ maintainers:
       - operator-approvers
       - operator-maintainers
       - operator-ta-maintainers
+      - operator-triagers
     html_url: https://github.com/jaronoff97
     avatar_url: https://avatars.githubusercontent.com/u/10070047?v=4
   - name: jhalliday
@@ -877,6 +891,7 @@ maintainers:
       - operator-approvers
       - operator-maintainers
       - operator-ta-maintainers
+      - operator-triagers
     html_url: https://github.com/pavolloffay
     avatar_url: https://avatars.githubusercontent.com/u/5618424?v=4
   - name: pdelewski
@@ -1087,6 +1102,7 @@ maintainers:
     teams:
       - operator-approvers
       - operator-maintainers
+      - operator-triagers
     html_url: https://github.com/swiatekm
     avatar_url: https://avatars.githubusercontent.com/u/93588780?v=4
   - name: tedsuo
@@ -1210,6 +1226,7 @@ maintainers:
       - helm-maintainers
       - helm-triagers
       - operator-approvers
+      - operator-triagers
       - semconv-container-approvers
       - semconv-k8s-approvers
     html_url: https://github.com/TylerHelmuth
@@ -1321,16 +1338,6 @@ approvers:
       - ebpf-profiler-approvers
     html_url: https://github.com/athre0z
     avatar_url: https://avatars.githubusercontent.com/u/6553158?v=4
-  - name: atoulme
-    teams:
-      - collector-approvers
-      - collector-contrib-approvers
-      - collector-contrib-triagers
-      - collector-releases-approvers
-      - collector-triagers
-      - network-triagers
-    html_url: https://github.com/atoulme
-    avatar_url: https://avatars.githubusercontent.com/u/16758?v=4
   - name: atreat
     teams:
       - swift-approvers
@@ -1428,6 +1435,12 @@ approvers:
       - semconv-genai-approvers
     html_url: https://github.com/drewby
     avatar_url: https://avatars.githubusercontent.com/u/192652?v=4
+  - name: edmocosta
+    teams:
+      - collector-contrib-approvers
+      - collector-contrib-triagers
+    html_url: https://github.com/edmocosta
+    avatar_url: https://avatars.githubusercontent.com/u/11836452?v=4
   - name: edsoncelio
     teams:
       - docs-pt-approvers
@@ -1498,6 +1511,7 @@ approvers:
   - name: iblancasa
     teams:
       - operator-approvers
+      - operator-triagers
     html_url: https://github.com/iblancasa
     avatar_url: https://avatars.githubusercontent.com/u/4806311?v=4
   - name: iNikem
@@ -1868,6 +1882,7 @@ approvers:
   - name: yuriolisa
     teams:
       - operator-approvers
+      - operator-triagers
     html_url: https://github.com/yuriolisa
     avatar_url: https://avatars.githubusercontent.com/u/48062171?v=4
   - name: zachdaniel
@@ -2153,6 +2168,9 @@ members:
   - name: chrlic
     html_url: https://github.com/chrlic
     avatar_url: https://avatars.githubusercontent.com/u/6670587?v=4
+  - name: Cirilla-zmh
+    html_url: https://github.com/Cirilla-zmh
+    avatar_url: https://avatars.githubusercontent.com/u/84360903?v=4
   - name: cnnradams
     html_url: https://github.com/cnnradams
     avatar_url: https://avatars.githubusercontent.com/u/10487992?v=4
@@ -2324,6 +2342,9 @@ members:
   - name: luvtechno
     html_url: https://github.com/luvtechno
     avatar_url: https://avatars.githubusercontent.com/u/43811?v=4
+  - name: LZiHaN
+    html_url: https://github.com/LZiHaN
+    avatar_url: https://avatars.githubusercontent.com/u/49515906?v=4
   - name: mackjmr
     html_url: https://github.com/mackjmr
     avatar_url: https://avatars.githubusercontent.com/u/63265430?v=4

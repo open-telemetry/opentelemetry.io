@@ -4,6 +4,7 @@ description: 编写 OpenTelemetry 文档时的术语和风格指南。
 linkTitle: 风格指南
 weight: 20
 default_lang_commit: 2394fa1f1c693e547093e46e83a6819d3c26e9d5
+drifted_from_default: true
 cSpell:ignore: open-telemetry postgre style-guide textlintrc
 ---
 
