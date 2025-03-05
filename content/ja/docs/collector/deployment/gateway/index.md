@@ -28,7 +28,7 @@ cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadba
 
 ## 例 {#examples}
 
-### NGINXを「アウトオブボックス」のロードバランサーとして使用
+### NGINXを「アウトオブボックス」のロードバランサーとして使用 {#nginx-as-an-out-of-the-box-load-balancer}
 
 2つのコレクター（`collector1`と`collector2`）が設定され、NGINXを使用してその間でトラフィックをロードバランシングしたい場合、次の設定を使用できます。
 
@@ -73,7 +73,7 @@ upstream collector4318 {
 }
 ```
 
-### ロードバランシングエクスポーター
+### ロードバランシングエクスポーター {#load-balancing-exporter}
 
 コレクターの中央集権型デプロイメントパターンの具体的な例として、まずロードバランシングエクスポーターについて詳しく見ていきましょう。
 これには2つの主な設定項目があります：
@@ -176,7 +176,7 @@ service:
 
 ロードバランシングエクスポーターは、`otelcol_loadbalancer_num_backends`や`otelcol_loadbalancer_backend_latency`などのメトリクスを出力し、これらを使用してOTLPエンドポイントコレクターのヘルスとパフォーマンスを監視できます。
 
-## エージェントとゲートウェイのコレクターの組み合わせたデプロイメント
+## エージェントとゲートウェイのコレクターの組み合わせたデプロイメント {#combined-deployment-of-collectors-as-agents-and-gateways}
 
 複数のOpenTelemetryコレクターをデプロイする場合、エージェントとしてもゲートウェイとしてもコレクターを実行することがよくあります。
 
@@ -212,12 +212,12 @@ service:
 [tailsample-processor]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor
 [spanmetrics-connector]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector
 
-## 複数のコレクターとシングルライター原則
+## 複数のコレクターとシングルライター原則 {#multiple-collectors-and-the-single-writer-principle}
 
 OTLP内のすべてのメトリクスデータストリームには、[シングルライター](/docs/specs/otel/metrics/data-model/#single-writer)が必要です。
 ゲートウェイ構成で複数のコレクターをデプロイする際は、すべてのメトリクスデータストリームに対してシングルライターとグローバルにユニークなIDを確保することが重要です。
 
-### 潜在的な問題
+### 潜在的な問題 {#potential-problems}
 
 複数のアプリケーションが同じデータを変更または報告する並列アクセスは、データ損失やデータ品質の劣化を引き起こす可能性があります。
 たとえば、リソース上で複数のソースから一貫性のないデータを確認する場合があります。
@@ -239,7 +239,7 @@ OTLP内のすべてのメトリクスデータストリームには、[シング
 - メトリクス`M1`は、13:56:24のタイムスタンプで`120`という値を持って受信された
 - メトリクス`M1`は、13:56:04のタイムスタンプで`110`という値を持って受信された
 
-### ベストプラクティス
+### ベストプラクティス {#best-practices}
 
 - [Kubernetes属性プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)を使用して、異なるKubernetesリソースにラベルを追加します。
 - [リソース検出プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md)を使用して、ホストからリソース情報を検出し、リソースメタデータを収集します。
