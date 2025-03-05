@@ -317,7 +317,7 @@ function main() {
     if [[ ! -e "$EN_VERSION" ]]; then
       ((FILE_PROCESSED_COUNT++))
       if [[ -z $FLAG_QUIET ]]; then
-        echo -e "File not found:\t$EN_VERSION - $f - $DEFAULT_LANG was removed or renamed"
+        echo -e "File not found:\t$f - $DEFAULT_LANG page was removed or renamed"
       fi
       set_file_drifted_status "$f" "file not found"
       continue
