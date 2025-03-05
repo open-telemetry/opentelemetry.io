@@ -149,7 +149,7 @@ You need an _all-access_ pass to attend **Observability Day**. For details, see
 - **[Beyond the Ephemeral: Mastering Serverless Metrics at Scale With Shopify](https://sched.co/1u5kh)**<br>
   by Pedro Tanaka, Shopify<br> Tuesday, April 1 • 16:30 - 16:55
 - **[The State of OpenTelemetry Profiling](https://sched.co/1u5ke)**<br> by
-  Damien Matthieu, Elastic & Felix Geisendoerfer, Datadog<br> Tuesday, April 1 •
+  Damien Mathieu, Elastic & Felix Geisendoerfer, Datadog<br> Tuesday, April 1 •
   16:30 - 16:55
 - **[⚡ Lightning Talk: Unlocking Customer-Centric Observability: A Case Study of OpenTelemetry To Reduce MTTD < 3 Mins](https://sched.co/1u5kn)**<br>
   by Kokilavani Kathiresan, Intuit<br> Tuesday, April 1 • 17:00 - 17:10
