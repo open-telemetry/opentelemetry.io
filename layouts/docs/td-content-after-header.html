@@ -43,7 +43,7 @@
               To see the changes to the English page since this page was last updated: visit
               {{ $compareUrl := printf "%s/compare/%s..%s"
                   .Site.Params.github_repo .Params.default_lang_commit $defaultLangPage.GitInfo.Hash -}}
-              <a href="{{ $compareUrl }}" class="external-link" target="_blank" rel="noopener">
+              <a href="{{ $compareUrl }}" class="external-link" target="_blank" rel="noopener" data-proofer-ignore>
                 GitHub compare
                 {{ substr .Params.default_lang_commit 0 8 }}..{{ $defaultLangPage.GitInfo.AbbreviatedHash -}}
               </a>
