@@ -1286,6 +1286,12 @@ approvers:
       - go-compile-instrumentation-triagers
     html_url: https://github.com/123liuziming
     avatar_url: https://avatars.githubusercontent.com/u/32130965?v=4
+  - name: aalexand
+    teams:
+      - profiling-approvers
+      - profiling-triagers
+    html_url: https://github.com/aalexand
+    avatar_url: https://avatars.githubusercontent.com/u/1519040?v=4
   - name: adrielp
     teams:
       - semconv-cicd-approvers
@@ -1481,6 +1487,8 @@ approvers:
   - name: florianl
     teams:
       - ebpf-profiler-approvers
+      - profiling-approvers
+      - profiling-triagers
     html_url: https://github.com/florianl
     avatar_url: https://avatars.githubusercontent.com/u/1132494?v=4
   - name: grcevski
@@ -2096,9 +2104,6 @@ members:
   - name: a-feld
     html_url: https://github.com/a-feld
     avatar_url: https://avatars.githubusercontent.com/u/6374032?v=4
-  - name: aalexand
-    html_url: https://github.com/aalexand
-    avatar_url: https://avatars.githubusercontent.com/u/1519040?v=4
   - name: aaron-ai
     html_url: https://github.com/aaron-ai
     avatar_url: https://avatars.githubusercontent.com/u/19537356?v=4
