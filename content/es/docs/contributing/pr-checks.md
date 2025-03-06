@@ -7,29 +7,29 @@ default_lang_commit: 389e023192e051a3a835bfc6a71089c98af3b8a8
 cSpell:ignore: REFCACHE
 ---
 
-Cuando creas a un
+Cuando creas un
 [pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)
 (PR) con
 [repositorio opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io)
-se ejecutan una serie de comprobaciones. Las comprobaciones PR verifican que...
+se ejecutan una serie de comprobaciones. Las comprobaciones PR verifican que:
 
-- … has firmado el [CLA](#easy-cla).
-- …su confirmación se puede implementar a través de
+- Has firmado el [CLA](#easy-cla).
+- Su confirmación se puede implementar a través de
   [Netlify](#netlify-deployment) exitosamente.
-- … sus cambios cumplen con nuestra [guía de estilo](#style-checks).
+- Sus cambios cumplen con nuestra [guía de estilo](#style-checks).
 
 {{% alert title="Note" color="primary" %}}
 
-Si alguna de las comprobaciones PR fallan, intenta primeramente
+Si alguna de las comprobaciones del pull request fallan, intenta ante todo
 [solucionar automáticamente problemas de contenido](../pull-requests/#fix-issues)
-ejecutar `npm run fix:all` en tu maquina.
+ejecutando `npm run fix:all` en tu máquina.
 
 Además, puedes comentar `/fix:all` en tus PRs. Esto hará que el bot
 OpenTelemetry ejecute esos comandos en su nombre y actualice la solicitud de
-incorporación de cambios. Asegúrese de extraer esos cambios localmente.
+incorporación de cambios. Asegúrate de extraer esos cambios localmente.
 
-Solo si los problemas persisten, lea a continuación qué hacen las diferentes
-comprobaciones y cómo puede recuperarse de un estado fallido.
+Si los problemas persisten, lee a continuación qué hacen las diferentes
+comprobaciones y cómo puede recuperarse un estado fallido.
 
 {{% /alert %}}
 
@@ -49,7 +49,7 @@ Para asegurarnos de que las contribuciones sigan nuestra
 comprobaciones que verifican las reglas de la guía de estilo y fallan si
 encuentran algún problema.
 
-La siguiente lista describe las comprobaciones actuales y lo que puede hacer
+La siguiente lista describe las comprobaciones actuales y lo que puedes hacer
 para corregir errores relacionados:
 
 ### Linter de TEXTO {#text-linter}
