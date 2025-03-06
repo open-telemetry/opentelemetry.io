@@ -257,10 +257,6 @@ files in the repository.
 | `otelcol_process_runtime_total_`<br>`alloc_bytes`       | Cumulative bytes allocated for heap objects (see 'go doc runtime.MemStats.TotalAlloc'). | Counter   |
 | `otelcol_process_runtime_total_`<br>`sys_memory_bytes`  | Total bytes of memory obtained from the OS (see 'go doc runtime.MemStats.Sys').         | Gauge     |
 | `otelcol_process_uptime`                                | Uptime of the process in seconds.                                                       | Counter   |
-| `otelcol_processor_batch_batch_`<br>`send_size`         | Number of units in the batch that was sent.                                             | Histogram |
-| `otelcol_processor_batch_batch_size_`<br>`trigger_send` | Number of times the batch was sent due to a size trigger.                               | Counter   |
-| `otelcol_processor_batch_metadata_`<br>`cardinality`    | Number of distinct metadata value combinations being processed.                         | Counter   |
-| `otelcol_processor_batch_timeout_`<br>`trigger_send`    | Number of times the batch was sent due to a timeout trigger.                            | Counter   |
 | `otelcol_processor_incoming_items`                      | Number of items passed to the processor.                                                | Counter   |
 | `otelcol_processor_outgoing_items`                      | Number of items emitted from the processor.                                             | Counter   |
 | `otelcol_receiver_accepted_`<br>`log_records`           | Number of logs successfully ingested and pushed into the pipeline.                      | Counter   |
@@ -274,7 +270,20 @@ files in the repository.
 
 #### Additional `normal`-level metrics
 
-There are currently no metrics specific to `normal` verbosity.
+| Metric name                                             | Description                                                                             | Type      |
+| ------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------- |
+| `otelcol_processor_batch_batch_`<br>`send_size`         | Number of units in the batch that was sent.                                             | Histogram |
+| `otelcol_processor_batch_batch_size_`<br>`trigger_send` | Number of times the batch was sent due to a size trigger.                               | Counter   |
+| `otelcol_processor_batch_metadata_`<br>`cardinality`    | Number of distinct metadata value combinations being processed.                         | Counter   |
+| `otelcol_processor_batch_timeout_`<br>`trigger_send`    | Number of times the batch was sent due to a timeout trigger.                            | Counter   |
+
+{{% alert title="Note" color="info" %}}
+Aside from `otelcol_processor_batch_batch_send_size_bytes` which has been
+`detailed` since its introduction, the other batch processor metrics were
+`basic` until they were switched to `normal` in Collector version 0.99.0.
+They were later switched back to `basic` by mistake in versions [0.109.0,
+0.121.0].
+{{% /alert %}}
 
 #### Additional `detailed`-level metrics
 
