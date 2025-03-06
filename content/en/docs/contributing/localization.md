@@ -16,7 +16,7 @@ as can be seen from the languages dropdown menu in the top nav.
 When translating website pages from English, we recommend that you follow the
 guidance offered in this section.
 
-### Summary / TL;DR {#summary}
+### Summary
 
 #### ✅ Do {#do}
 
@@ -25,7 +25,8 @@ guidance offered in this section.
 - **Translate**:
   - Page content, including:
     - Mermaid [diagram](#images) text fields
-  - [Front matter][] fields `title`, `linkTitle`, and `description`
+    - Code comments from code excerpts
+  - [Front matter][] field values for `title`, `linkTitle`, and `description`
   - **All** page content and front matter unless indicated otherwise
 - **Preserve** the _content_, _meaning_, and _style_ of the original text
 - **Ask** [maintainers] if you have any doubts or questions through:
@@ -46,11 +47,12 @@ guidance offered in this section.
   - [Links](#links), this includes [heading IDs](#headings).[^*]
   - [Front matter][] fields other than those listed in [Do](#do). In particular,
     do not translate `aliases`. When in doubt, ask maintainers.
+  - Code
 - Create **copies of images**, unless you [localize text in the images](#images)
 - Add new or change:
   - **Content** that would be different from the originally intended meaning
-  - Presentation **style**, including: _formatting_, _layout_, and _design_ style
-    (typography, letter case, and spacing for example).
+  - Presentation **style**, including: _formatting_, _layout_, and _design_
+    style (typography, letter case, and spacing for example).
 
 [^*]: For a possible exception, see [Links](#links).
 
