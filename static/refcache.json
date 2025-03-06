@@ -11915,6 +11915,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:10:54.768801-05:00"
   },
+  "https://github.com/orgs/open-telemetry/teams/docs-maintainers": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-06T11:21:47.300632-05:00"
+  },
   "https://github.com/orgs/open-telemetry/teams/sig-contributor-experience-maintainers": {
     "StatusCode": 206,
     "LastSeen": "2025-01-31T13:07:53.320508201Z"
