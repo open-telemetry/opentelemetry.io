@@ -8631,6 +8631,30 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:15:12.345Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/apis/v1alpha1/instrumentation_types.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-06T15:34:04.326378423Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/apis/v1alpha1/opampbridge_types.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-06T15:34:35.192075372Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/apis/v1beta1/opentelemetrycollector_types.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-06T15:34:00.341806906Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/apis/v1beta1/opentelemetrycollector_types.go#L102-L105": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-06T15:34:05.96169774Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/apis/v1beta1/opentelemetrycollector_types.go#L106-L109": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-06T15:34:11.714262167Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/apis/v1beta1/opentelemetrycollector_types.go#L239-L249": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-06T15:34:37.522647537Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-operator/blob/main/autoinstrumentation/python/requirements.txt": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:46:05.310811-05:00"
