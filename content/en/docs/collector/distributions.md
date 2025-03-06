@@ -15,7 +15,7 @@ the `manifest.yaml` of each distribution.
 ## Custom Distributions
 
 Existing distributions provided by the OpenTelemetry project may not meet your
-needs. For example, you may want a smaller package or need to implement custom
+needs. For example, you may want a smaller binary or need to implement custom
 functionality like
 [authenticator extensions](../building/authenticator-extension),
 [receivers](../building/receiver), processors, exporters or
