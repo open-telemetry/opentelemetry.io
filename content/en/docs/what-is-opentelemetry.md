@@ -23,6 +23,8 @@ OpenTelemetry is:
   applications or systems, no matter their language, infrastructure, or runtime
   environment. The storage and visualization of telemetry is intentionally left
   to other tools.
+- To gain a deeper understanding of OpenTelemetry and how it works,
+  please refer to this [YouTube video](https://www.youtube.com/watch?v=iEEIabOha8U) for more comprehensive information
 
 ## What is observability?
 
