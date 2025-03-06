@@ -9,9 +9,9 @@ OpenTelemetry is:
 
 - An **[observability] framework and toolkit** designed to facilitate the
 
-  - Generation
+  - [Generation][instr]
   - Export
-  - Collection
+  - [Collection](../concepts/components/#collector)
 
   of [telemetry data][] such as [traces], [metrics], and [logs].
 
@@ -34,10 +34,9 @@ examining its outputs. In the context of software, this means being able to
 understand the internal state of a system by examining its telemetry data, which
 includes traces, metrics, and logs.
 
-To make a system observable, it must be
-[instrumented](../concepts/instrumentation). That is, the code must emit
-[traces], [metrics], or [logs]. The instrumented data must then be sent to an
-observability backend.
+To make a system observable, it must be [instrumented][instr]. That is, the code
+must emit [traces], [metrics], or [logs]. The instrumented data must then be
+sent to an observability backend.
 
 ## Why OpenTelemetry?
 
@@ -126,11 +125,12 @@ migrate to OpenTelemetry in the [Migration guide](../migration/).
 - [Getting started](../getting-started/) &mdash; jump right in!
 - Learn about [OpenTelemetry concepts](../concepts/).
 
+[Cloud Native Computing Foundation]: https://www.cncf.io
+[instr]: ../concepts/instrumentation
+[Jaeger]: https://www.jaegertracing.io/
 [logs]: ../concepts/signals/logs/
 [metrics]: ../concepts/signals/metrics/
 [observability]: ../concepts/observability-primer/#what-is-observability
+[Prometheus]: https://prometheus.io/
 [telemetry data]: ../concepts/signals/
 [traces]: ../concepts/signals/traces/
-[Jaeger]: https://www.jaegertracing.io/
-[Prometheus]: https://prometheus.io/
-[Cloud Native Computing Foundation]: https://www.cncf.io
