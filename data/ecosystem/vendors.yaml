@@ -23,7 +23,7 @@
   oss: false
   commercial: true
 - name: AWS
-  nativeOTLP: false
+  nativeOTLP: true
   url: https://aws-otel.github.io
   contact:
   oss: false
