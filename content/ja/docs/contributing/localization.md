@@ -75,7 +75,7 @@ OTel のウェブサイトは、ページのローカリゼーションをサポ
 {{% alert title="Note" %}}
 
 OTelウェブサイトのリポジトリには、Hugoがドキュメントページを参照する絶対リンクパスを変換するために使用するカスタムの render-link フックがあります。
-**`docs/some-page` 形式のリンク** は、リンクをレンダリングするときに、パスの先頭にページの言語コードを付けることで、 **ロケール固有になります** 。
+**`/docs/some-page` 形式のリンク** は、リンクをレンダリングするときに、パスの先頭にページの言語コードを付けることで、 **ロケール固有になります** 。
 たとえば、先ほどのサンプルのパスは、日本語のページからレンダリングされた場合には `/ja/docs/some-page` となります。
 
 {{% /alert %}}
@@ -259,9 +259,9 @@ PR にローカリゼーションプロジェクトを開始するのに必要�
 
 {{% /alert %}}
 
-## English-language maintainer guidance {#english-language-maintainer-guidance}
+## 英語メンテナーガイド {#english-language-maintainer-guidance}
 
-### When link checking fails for non-English pages {#when-link-checking-fails-for-non-english-pages}
+### 非英語ページのリンクチェックが失敗したとき {#when-link-checking-fails-for-non-english-pages}
 
 英語は OpenTelemetry ウェブサイトのデフォルト言語です。 英語のドキュメントを追加、編集、再構成した後に、非英語ページのリンクチェックが失敗する可能性があります。 そのような場合は、以下を実行してください。
 
