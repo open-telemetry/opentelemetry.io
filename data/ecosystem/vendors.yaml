@@ -25,7 +25,7 @@
 - name: AWS
   nativeOTLP: true
   url: https://aws-otel.github.io
-  contact:
+  contact: opentelemetry@amazon.com
   oss: false
   commercial: true
 - name: OpenSearch
