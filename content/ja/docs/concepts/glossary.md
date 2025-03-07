@@ -3,6 +3,7 @@ title: 用語集
 description: OpenTelemetryプロジェクトで使用されている用語に馴染みがあるものもないものもあるでしょう。
 weight: 200
 default_lang_commit: 21d6bf0
+drifted_from_default: true
 ---
 
 OpenTelemetryプロジェクトは、あなたが馴染みのない用語を使っているかもしれません。

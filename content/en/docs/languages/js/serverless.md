@@ -64,17 +64,15 @@ const {
 
 api.diag.setLogger(new api.DiagConsoleLogger(), api.DiagLogLevel.ALL);
 
-const provider = new NodeTracerProvider();
-const collectorOptions = {
-  url: '<backend_url>',
-};
-
 const spanProcessor = new BatchSpanProcessor(
-  new OTLPTraceExporter(collectorOptions),
+  new OTLPTraceExporter({
+    url: '<backend_url>',
+  }),
 );
 
-provider.addSpanProcessor(spanProcessor);
-provider.register();
+const provider = new NodeTracerProvider({
+  spanProcessors: [spanProcessor],
+});
 
 registerInstrumentations({
   instrumentations: [
@@ -241,24 +239,21 @@ const {
   getNodeAutoInstrumentations,
 } = require('@opentelemetry/auto-instrumentations-node');
 
-const providerConfig = {
-  resource: new Resource({
-    [SEMRESATTRS_SERVICE_NAME]: '<your function name>',
-  }),
-};
-
 api.diag.setLogger(new api.DiagConsoleLogger(), api.DiagLogLevel.ALL);
 
-const provider = new NodeTracerProvider(providerConfig);
 const collectorOptions = {
   url: '<address for your backend>',
 };
 
-const spanProcessor = new BatchSpanProcessor(
-  new OTLPTraceExporter(collectorOptions),
-);
+const provider = new NodeTracerProvider({
+  resource: resourceFromAttributes({
+    [SEMRESATTRS_SERVICE_NAME]: '<your function name>',
+  }),
+  spanProcessors: [
+    new BatchSpanProcessor(new OTLPTraceExporter(collectorOptions)),
+  ],
+});
 
-provider.addSpanProcessor(spanProcessor);
 provider.register();
 
 registerInstrumentations({
@@ -274,15 +269,15 @@ Add the following to your `package.json`:
 {
   "dependencies": {
     "@google-cloud/functions-framework": "^3.0.0",
-    "@opentelemetry/api": "^1.3.0",
-    "@opentelemetry/auto-instrumentations-node": "^0.35.0",
-    "@opentelemetry/exporter-trace-otlp-http": "^0.34.0",
-    "@opentelemetry/instrumentation": "^0.34.0",
-    "@opentelemetry/sdk-node": "^0.34.0",
-    "@opentelemetry/sdk-trace-base": "^1.8.0",
-    "@opentelemetry/sdk-trace-node": "^1.8.0",
-    "@opentelemetry/resources": "^1.8.0",
-    "@opentelemetry/semantic-conventions": "^1.8.0"
+    "@opentelemetry/api": "^1.9.0",
+    "@opentelemetry/auto-instrumentations-node": "^0.56.1",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.57.2",
+    "@opentelemetry/instrumentation": "^0.57.2",
+    "@opentelemetry/sdk-node": "^0.57.2",
+    "@opentelemetry/sdk-trace-base": "^1.30.1",
+    "@opentelemetry/sdk-trace-node": "^1.30.1",
+    "@opentelemetry/resources": "^1.30.1",
+    "@opentelemetry/semantic-conventions": "^1.30.0"
   }
 }
 ```

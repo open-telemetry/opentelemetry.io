@@ -1,6 +1,7 @@
-{{/*
-default_lang_commit: 080527543eae90112f01c89342891aabd6258173
-*/ -}}
+---
+default_lang_commit: 080527543eae90112f01c89342891aabd6258173 # patched
+drifted_from_default: true
+---
 
 [Instrumentação](/docs/concepts/instrumentation/) é o ato de adicionar código de
 observabilidade a uma aplicação por conta própria.

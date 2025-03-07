@@ -1,5 +1,5 @@
 ---
-title: OpenTelemetry Demo Documentation
+title: OpenTelemetry Demo Docs
 linkTitle: Demo
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo

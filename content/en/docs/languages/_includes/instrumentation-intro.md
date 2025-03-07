@@ -1,3 +1,6 @@
+---
+---
+
 [Instrumentation](/docs/concepts/instrumentation/) is the act of adding
 observability code to an app yourself.
 

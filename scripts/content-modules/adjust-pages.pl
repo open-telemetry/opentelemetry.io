@@ -1,4 +1,6 @@
 #!/usr/bin/perl -w -i
+#
+# cSpell:ignore oteps
 
 $^W = 1;
 
@@ -22,7 +24,7 @@ my $lineNum;
 
 my %versionsRaw = # Keyname must end with colons because the auto-version update script expects one
   qw(
-    spec: 1.41.0
+    spec: 1.42.0
     otlp: 1.5.0
     semconv: 1.30.0
   );
@@ -102,12 +104,11 @@ sub applyPatchOrPrintMsgIf($$$) {
   return 0;
 }
 
-sub patchEventAliases() {
-  return unless $ARGV =~ /^tmp\/otel\/specification\/logs\//
-    && applyPatchOrPrintMsgIf('2025-01-23-event-aliases', 'spec', '1.41.0');
+sub patchMissionHeadingIDs() {
+  return unless $ARGV =~ /^tmp\/otel\/specification\/specification-principles.md/
+    && applyPatchOrPrintMsgIf('2025-02-25-mission-heading-IDs', 'spec', '1.42.0');
 
-  my $aliases = '^(  - )(event-(api|sdk))$';
-  s|$aliases|$1./$2|;
+  s|(#we-value-)_(.*?)_|$1$2|;
 }
 
 sub patchSemConv1_30_0() {
@@ -162,14 +163,13 @@ while(<>) {
         while(<>) {
           $lineNum++;
           last if /^--->?/;
-          patchEventAliases();
           patchSemConv1_30_0();
           $frontMatterFromFile .= $_;
         }
         next;
     }
   }
-  if(! $title) {
+  if (! $title) {
     ($title) = /^#\s+(.*)/;
     $linkTitle = '';
     printFrontMatter() if $title;
@@ -180,7 +180,7 @@ while(<>) {
     while(<>) { $lineNum++; last if /<\/details>/; }
     next;
   }
-  if(/<!-- toc -->/) {
+  if (/<!-- toc -->/) {
     my $tocstop = '<!-- tocstop -->';
     while(<>) {
       $lineNum++;
@@ -203,6 +203,8 @@ while(<>) {
   }
 
   # SPECIFICATION custom processing
+
+  patchMissionHeadingIDs();
 
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;
   s|(\]\()/specification/|$1$specBasePath/otel/)|;
@@ -227,9 +229,13 @@ while(<>) {
   # Rewrite paths that are outside of the spec folders as external links:
   s|\.\.\/README.md|$otelSpecRepoUrl/|g if $ARGV =~ /specification._index/;
   s|\.\.\/README.md|/docs/specs/otel/| if $ARGV =~ /specification\/library-guidelines.md/;
-
-  s|(\.\.\/)+(experimental\/[^)]+)|$otelSpecRepoUrl/tree/v$otelSpecVers/$2|g;
-  s|(\.\.\/)+(supplementary-guidelines\/compatibility\/[^)]+)|$otelSpecRepoUrl/tree/v$otelSpecVers/$2|g;
+  s{
+    (\.\.\/)+
+    (
+      (?:oteps|supplementary-guidelines)\/
+      [^)]+
+    )
+  }{$otelSpecRepoUrl/tree/v$otelSpecVers/$2}gx;
 
   s|\.\./((?:examples/)?README\.md)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /^tmp\/otlp/;
 

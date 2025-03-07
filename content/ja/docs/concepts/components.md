@@ -3,7 +3,7 @@ title: コンポーネント
 description: OpenTelemetryを構成する主なコンポーネント
 aliases: [data-collection]
 weight: 20
-default_lang_commit: 313e391
+default_lang_commit: 8d115a9df96c52dbbb3f96c05a843390d90a9800
 ---
 
 OpenTelemetryは現在、いくつかの主要コンポーネントで構成されています。

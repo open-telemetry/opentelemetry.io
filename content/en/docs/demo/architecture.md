@@ -12,70 +12,70 @@ generator which uses [Locust](https://locust.io/) to fake user traffic.
 ```mermaid
 graph TD
 subgraph Service Diagram
-accountingservice(Accounting Service):::dotnet
-adservice(Ad Service):::java
+accounting(Accounting):::dotnet
+ad(Ad):::java
 cache[(Cache<br/>&#40Valkey&#41)]
-cartservice(Cart Service):::dotnet
-checkoutservice(Checkout Service):::golang
-currencyservice(Currency Service):::cpp
-emailservice(Email Service):::ruby
+cart(Cart):::dotnet
+checkout(Checkout):::golang
+currency(Currency):::cpp
+email(Email):::ruby
 flagd(Flagd):::golang
-flagdui(Flagd-ui):::typescript
-frauddetectionservice(Fraud Detection Service):::kotlin
+flagd-ui(Flagd-ui):::typescript
+fraud-detection(Fraud Detection):::kotlin
 frontend(Frontend):::typescript
-frontendproxy(Frontend Proxy <br/>&#40Envoy&#41):::cpp
-imageprovider(Image Provider <br/>&#40nginx&#41):::cpp
-loadgenerator([Load Generator]):::python
-paymentservice(Payment Service):::javascript
-productcatalogservice(Product Catalog Service):::golang
-quoteservice(Quote Service):::php
-recommendationservice(Recommendation Service):::python
-shippingservice(Shipping Service):::rust
+frontend-proxy(Frontend Proxy <br/>&#40Envoy&#41):::cpp
+image-provider(Image Provider <br/>&#40nginx&#41):::cpp
+load-generator([Load Generator]):::python
+payment(Payment):::javascript
+product-catalog(Product Catalog):::golang
+quote(Quote):::php
+recommendation(Recommendation):::python
+shipping(Shipping):::rust
 queue[(queue<br/>&#40Kafka&#41)]:::java
 react-native-app(React Native App):::typescript
 
-adservice ---->|gRPC| flagd
+ad ---->|gRPC| flagd
 
-checkoutservice -->|gRPC| cartservice
-checkoutservice --->|TCP| queue
-cartservice --> cache
-cartservice -->|gRPC| flagd
+checkout -->|gRPC| cart
+checkout --->|TCP| queue
+cart --> cache
+cart -->|gRPC| flagd
 
-checkoutservice -->|gRPC| shippingservice
-checkoutservice -->|gRPC| paymentservice
-checkoutservice --->|HTTP| emailservice
-checkoutservice -->|gRPC| currencyservice
-checkoutservice -->|gRPC| productcatalogservice
+checkout -->|gRPC| shipping
+checkout -->|gRPC| payment
+checkout --->|HTTP| email
+checkout -->|gRPC| currency
+checkout -->|gRPC| product-catalog
 
-frauddetectionservice -->|gRPC| flagd
+fraud-detection -->|gRPC| flagd
 
-frontend -->|gRPC| adservice
-frontend -->|gRPC| cartservice
-frontend -->|gRPC| checkoutservice
-frontend ---->|gRPC| currencyservice
-frontend ---->|gRPC| recommendationservice
-frontend -->|gRPC| productcatalogservice
+frontend -->|gRPC| ad
+frontend -->|gRPC| cart
+frontend -->|gRPC| checkout
+frontend ---->|gRPC| currency
+frontend ---->|gRPC| recommendation
+frontend -->|gRPC| product-catalog
 
-frontendproxy -->|gRPC| flagd
-frontendproxy -->|HTTP| frontend
-frontendproxy -->|HTTP| flagdui
-frontendproxy -->|HTTP| imageprovider
+frontend-proxy -->|gRPC| flagd
+frontend-proxy -->|HTTP| frontend
+frontend-proxy -->|HTTP| flagd-ui
+frontend-proxy -->|HTTP| image-provider
 
-Internet -->|HTTP| frontendproxy
+Internet -->|HTTP| frontend-proxy
 
-loadgenerator -->|HTTP| frontendproxy
+load-generator -->|HTTP| frontend-proxy
 
-paymentservice -->|gRPC| flagd
+payment -->|gRPC| flagd
 
-queue -->|TCP| accountingservice
-queue -->|TCP| frauddetectionservice
+queue -->|TCP| accounting
+queue -->|TCP| fraud-detection
 
-recommendationservice -->|gRPC| productcatalogservice
-recommendationservice -->|gRPC| flagd
+recommendation -->|gRPC| product-catalog
+recommendation -->|gRPC| flagd
 
-shippingservice -->|HTTP| quoteservice
+shipping -->|HTTP| quote
 
-react-native-app -->|HTTP| frontendproxy
+react-native-app -->|HTTP| frontend-proxy
 end
 
 classDef dotnet fill:#178600,color:white;

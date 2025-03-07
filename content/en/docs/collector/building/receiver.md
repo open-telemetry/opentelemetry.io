@@ -350,7 +350,7 @@ touch tailtracer/factory.go
 ```
 
 Now let's follow the convention and add a function named `NewFactory()` that
-will be responsible to instantiate the `tailtracer` factory. Go ahead the add
+will be responsible to instantiate the `tailtracer` factory. Go ahead and add
 the following code to your `factory.go` file:
 
 ```go
@@ -1137,14 +1137,14 @@ of now:
 ├── go.work.sum
 ├── ocb
 ├── otelcol-dev
-│   ├── components.go
-│   ├── components_test.go
-│   ├── go.mod
-│   ├── go.sum
-│   ├── main.go
-│   ├── main_others.go
-│   ├── main_windows.go
-│   └── otelcol-dev
+│   ├── components.go
+│   ├── components_test.go
+│   ├── go.mod
+│   ├── go.sum
+│   ├── main.go
+│   ├── main_others.go
+│   ├── main_windows.go
+│   └── otelcol-dev
 └── tailtracer
     ├── config.go
     ├── factory.go

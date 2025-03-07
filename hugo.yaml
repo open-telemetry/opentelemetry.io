@@ -80,6 +80,10 @@ outputs:
 services:
   rss: { limit: 20 }
 
+cascade:
+  build: { list: never, publishResources: false, render: never }
+  _target: { path: '{,/**}/_includes{,/**}' }
+
 params:
   copyright:
     authors: >-
@@ -321,6 +325,9 @@ module:
       target: content
       lang: es
     # fallback pages
+    - source: content/en/_includes
+      target: content/_includes
+      lang: es
     - source: content/en/announcements
       target: content/announcements
       lang: es
@@ -334,6 +341,9 @@ module:
       target: content
       lang: fr
     # fallback pages
+    - source: content/en/_includes
+      target: content/_includes
+      lang: fr
     - source: content/en/announcements
       target: content/announcements
       lang: fr
@@ -341,12 +351,18 @@ module:
       source: content/en/docs
       target: content/docs
       lang: fr
+    # - source: content/en/ecosystem
+    #   target: content/ecosystem
+    #   lang: fr
 
     ## ja
     - source: content/ja
       target: content
       lang: ja
     # fallback pages
+    - source: content/en/_includes
+      target: content/_includes
+      lang: ja
     - source: content/en/announcements
       target: content/announcements
       lang: ja
@@ -360,6 +376,9 @@ module:
       target: content
       lang: zh
     # fallback pages
+    - source: content/en/_includes
+      target: content/_includes
+      lang: zh
     - source: content/en/announcements
       target: content/announcements
       lang: zh
@@ -373,6 +392,9 @@ module:
       target: content
       lang: pt
     # fallback pages
+    - source: content/en/_includes
+      target: content/_includes
+      lang: pt
     - source: content/en/announcements
       target: content/announcements
       lang: pt

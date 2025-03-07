@@ -8,12 +8,15 @@ DEFAULT_LANG="en"
 DEFAULT_TARGET="$DEFAULT_CONTENT"
 EXIT_STATUS=0
 EXTRA_DIFF_ARGS="--numstat"
-FLAG_DIFF_DETAILS=""
+FLAG_CHANGE_OR_ADD=0
+FLAG_DIFF_DETAILS=0
+FLAG_DRIFTED_STATUS=0
 FLAG_FAIL_ON_LIST_OR_MISSING=0
 FLAG_INFO=""
 FLAG_QUIET=""
 FLAG_VERBOSE=""
 I18N_DLC_KEY="default_lang_commit"
+I18N_DLD_KEY="drifted_from_default" # true, false, file not found
 LIST_KIND="DRIFTED" # or "ALL" or "NEW"
 TARGET_PATHS=""
 
@@ -38,22 +41,24 @@ Options:
 
   -a       List/process all localization page files accessible through target paths.
 
-  -c HASH  Update or add the '$I18N_DLC_KEY' key value to HASH for all selected
+  -c HASH  Change or add the '$I18N_DLC_KEY' key value to HASH for all selected
            localization pages. Use 'HEAD' as a shorthand for the hash of 'main'
-           at HEAD (read locally).
+           at HEAD (read locally). Also sets '$I18N_DLD_KEY' to true for files
+           that have drifted.
 
            TIP: first fetch and pull the upstream 'main' if you want to use the
                 remote HEAD hash.
 
   -d       Output diff details.
+  -D       Update or add the '$I18N_DLD_KEY' key to all target localization pages.
   -h       Help! Output this usage info.
 
   -i       Print commit hashes of the local 'main' branch that might be useful to
-           se as an argument to -c.
+           use as an argument to -c.
 
   -n       List/process only new localization pages, those without a '$I18N_DLC_KEY' key.
-  -q       Quiet mode. Do not list processed files.
-  -v       Enables verbose command progress and status output.
+  -q       Quiet mode. Do not list processed files. Prints summary unless -x is set.
+  -v       Verbose mode. List all processed files and their status.
   -x       Return non-zero exit code if files were listed or hashes are missing.
 EOS
 }
@@ -65,15 +70,18 @@ function usage() {
 }
 
 function process_CLI_args() {
-  while getopts ":ac:dhinqvx" opt; do
+  while getopts ":ac:dDhinqvx" opt; do
     case $opt in
       a)
         LIST_KIND="ALL";;
       c)
+        FLAG_CHANGE_OR_ADD=1;
         COMMIT_HASH_ARG="$OPTARG";;
       d)
         FLAG_DIFF_DETAILS=1
         EXTRA_DIFF_ARGS="";;
+      D)
+        FLAG_DRIFTED_STATUS=1;;
       h)
         usage;;
       i)
@@ -98,16 +106,21 @@ function process_CLI_args() {
   if [[ -n $COMMIT_HASH_ARG ]]; then
     COMMIT_HASH_ARG=$(echo $COMMIT_HASH_ARG | tr '[:upper:]' '[:lower:]')
     validate_hash $COMMIT_HASH_ARG
-
-    if [[ -n $FLAG_DIFF_DETAILS ]]; then
-      echo -e "ERROR: you can't use -c and -d at the same time, specify one or the other.\n"
-      usage 1
-    fi
   fi
 
-  if [[ -n $FLAG_QUIET && -n $FLAG_DIFF_DETAILS ]]; then
-    echo -e "ERROR: you can't use -d and -q at the same time, specify one or the other.\n"
-    usage 1
+  if (( FLAG_CHANGE_OR_ADD + FLAG_DIFF_DETAILS + FLAG_DRIFTED_STATUS > 1 )); then
+    echo -e "ERROR: you can't use -c, -d, and -D at the same time; choose one. For help use -h.\n"
+    exit 1
+  fi
+
+  if [[ -n $FLAG_QUIET && $FLAG_DIFF_DETAILS != 0 ]]; then
+    echo -e "ERROR: use -d or -q not both. For help use -h.\n"
+    exit 1
+  fi
+
+  if [[ -n $FLAG_QUIET && ($LIST_KIND == "ALL" || -n $FLAG_VERBOSE) ]]; then
+    echo -e "ERROR: -q flag ignored when -a or -v is used. For help use -h.\n"
+    exit 1
   fi
 
   if [[ $LIST_KIND == "ALL" && -n $COMMIT_HASH_ARG ]]; then
@@ -209,12 +222,39 @@ function update_file_i18n_hash() {
   #   echo "WARNING: the given hash is not on 'main', using this instead: $HASH" >&2
   # fi
 
-  if ! (git branch --contains $HASH | grep -q "^\s*main\b"); then
-    echo "ERROR: hash is empty or isn't on 'main', aborting: $HASH - $f" >&2
+  if ! (git branch --contains $HASH | grep -qEe "^\S?\s*main$"); then
+    echo "ERROR: hash isn't on the default branch (main), aborting: $HASH - $f" >&2
     exit 1
   fi
 
   set_file_i18n_hash "$f" "$HASH" "$msg" $pre_msg $post_msg
+}
+
+function set_file_drifted_status() {
+  if [[ $FLAG_DRIFTED_STATUS == 0 ]]; then return; fi
+
+  local f="$1"
+  local status="$2"
+  local pre_msg="${3:- \t }"
+  local post_msg="${4:-$I18N_DLD_KEY key}" # Not used atm
+
+  if [[ $status == "false" ]]; then
+    perl -i -pe "s/(^$I18N_DLD_KEY):.*\n$//g" "$f"
+  elif grep -q "^$I18N_DLD_KEY:" "$f"; then
+    perl -i -pe "s/(^$I18N_DLD_KEY):.*$/\$1: $status/" "$f"
+    post_msg="$post_msg UPDATED"
+  elif ! grep -q "^$I18N_DLC_KEY:" "$f"; then
+    echo "ERROR: $I18N_DLC_KEY key is missing. Cannot set $I18N_DLC_KEY in $f" >&2
+    exit 1
+  else
+    # Add drifted status immediately after the i18n hash
+    perl -i -0777 -pe "s/($I18N_DLC_KEY:.*?\n)/\$1$I18N_DLD_KEY: $status\n/sm" "$f"
+    # perl -i -0777 -pe "s/^(---.*?)(\n---\n)/\$1\n$I18N_DLD_KEY: $status\$2/sm" "$f"
+    post_msg="$post_msg ADDED"
+  fi
+  if [[ -n $FLAG_VERBOSE ]]; then
+    echo -e "$pre_msg\t$f $I18N_DLD_KEY key set to $status"
+  fi
 }
 
 function main() {
@@ -276,29 +316,33 @@ function main() {
     EN_VERSION=$(echo "$f" | sed "s/$DEFAULT_CONTENT\/.\{2,5\}\//$DEFAULT_CONTENT\/$DEFAULT_LANG\//g")
     if [[ ! -e "$EN_VERSION" ]]; then
       ((FILE_PROCESSED_COUNT++))
-      echo -e "File not found\t$EN_VERSION - $f - $DEFAULT_LANG was removed or renamed"
+      if [[ -z $FLAG_QUIET ]]; then
+        echo -e "File not found:\t$f - $DEFAULT_LANG page was removed or renamed"
+      fi
+      set_file_drifted_status "$f" "file not found"
       continue
     fi
 
     # Check default-language version for changes
     DIFF=$(git diff --exit-code $EXTRA_DIFF_ARGS $LASTCOMMIT...HEAD "$EN_VERSION" 2>&1)
     DIFF_STATUS=$?
+    DRIFTED_STATUS="false"
     if [ $DIFF_STATUS -gt 1 ]; then
       ((FILE_PROCESSED_COUNT++))
       EXIT_STATUS=$DIFF_STATUS
-      # if [[ -z $FLAG_QUIET ]]; then
-        echo -e "HASH\tERROR\t$f: git diff error ($DIFF_STATUS) or invalid hash $LASTCOMMIT. For details, use -v."
-      # fi
+      echo -e "HASH\tERROR\t$f: git diff error ($DIFF_STATUS) or invalid hash $LASTCOMMIT. For details, use -v."
       if [[ -n $FLAG_VERBOSE ]]; then echo "$DIFF"; fi
       continue
     elif [[ -n "$DIFF" ]]; then
       ((FILE_PROCESSED_COUNT++))
-      if [[ -n $FLAG_DIFF_DETAILS ]]; then
-        echo -n "$DIFF"
+      DRIFTED_STATUS="true"
+      if [[ $FLAG_DIFF_DETAILS != 0 ]]; then
+        echo "$DIFF"
       elif [[ -n $COMMIT_HASH_ARG ]]; then
         update_file_i18n_hash "$f" "$COMMIT_HASH_ARG" "$DIFF"
       elif [[ -z $FLAG_QUIET ]]; then
-        echo "$DIFF - $f"
+        echo -n "> Drifted file: $f"
+        if [[ -n $FLAG_VERBOSE ]]; then echo "; diff summary: $DIFF"; else echo; fi
       fi
     elif [[ -z $LASTCOMMIT ]]; then
       ((FILE_PROCESSED_COUNT++))
@@ -312,9 +356,10 @@ function main() {
       ((FILE_PROCESSED_COUNT++))
       echo -e "File is in sync\t$f - $LASTCOMMIT"
     fi
+    set_file_drifted_status "$f" $DRIFTED_STATUS
   done
 
-  if [[ -z $FLAG_QUIET ]]; then
+  if [[ -z $FLAG_QUIET || $FLAG_FAIL_ON_LIST_OR_MISSING == 0 ]]; then
     echo "$LIST_KIND files: $FILE_PROCESSED_COUNT out of $FILE_COUNT"
   fi
 

@@ -7,7 +7,7 @@ import { getWebAutoInstrumentations } from '@opentelemetry/auto-instrumentations
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
 import { Resource } from '@opentelemetry/resources';
-import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
+import { ATTR_SERVICE_NAME } from '@opentelemetry/semantic-conventions';
 import { ZoneContextManager } from '@opentelemetry/context-zone-peer-dep';
 
 const collectorOptions = {
@@ -16,12 +16,16 @@ const collectorOptions = {
 const exporter = new OTLPTraceExporter(collectorOptions);
 
 const resources = new Resource({
-  [SemanticResourceAttributes.SERVICE_NAME]: 'opentelemetry.io',
+  [ATTR_SERVICE_NAME]: 'opentelemetry.io',
   'browser.language': navigator.language,
 });
 
 const provider = new WebTracerProvider({
   resource: resources,
+  spanProcessors: [
+    new SimpleSpanProcessor(exporter),
+    new SimpleSpanProcessor(new ConsoleSpanExporter()),
+  ],
 });
 
 registerInstrumentations({
@@ -29,8 +33,6 @@ registerInstrumentations({
   tracerProvider: provider,
 });
 
-provider.addSpanProcessor(new SimpleSpanProcessor(exporter));
-provider.addSpanProcessor(new SimpleSpanProcessor(new ConsoleSpanExporter()));
 provider.register({
   contextManger: new ZoneContextManager(),
 });
