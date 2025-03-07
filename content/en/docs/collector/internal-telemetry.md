@@ -280,8 +280,10 @@ files in the repository.
 {{% alert title="Note" color="info" %}} Aside from
 `otelcol_processor_batch_batch_send_size_bytes` which has been `detailed` since
 its introduction, the other batch processor metrics were `basic` until they were
-switched to `normal` in Collector version 0.99. They were later switched back to
-`basic` by mistake in versions [0.109, 0.121]. {{% /alert %}}
+switched to `normal` in Collector
+[v0.99.0](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.99.0).
+They were accidentally switched back to `basic` in v0.109.0, which was fixed in
+v0.122.0. {{% /alert %}}
 
 #### Additional `detailed`-level metrics
 
