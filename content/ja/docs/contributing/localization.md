@@ -33,8 +33,7 @@ OTel のウェブサイトは、ページのローカリゼーションをサポ
   - [Slack] の `#otel-docs-localization` か `#otel-comms` の各チャンネル
   - [Discussion]やイシュー、あるいはPRコメント
 
-[Discussion]:
-  https://github.com/open-telemetry/opentelemetry.io/discussions?discussions_q=is%3Aopen+label%3Ai18n
+[Discussion]: https://github.com/open-telemetry/opentelemetry.io/discussions?discussions_q=is%3Aopen+label%3Ai18n
 
 </div>
 
@@ -86,7 +85,6 @@ OTelウェブサイトのリポジトリには、Hugoがドキュメントペー
 画像そのもの[^shared-images]のテキストをローカライズしない限り、画像ファイルのコピーを **作成しない** でください。
 
 [Mermaid][] ダイアグラム内のテキストは **翻訳して** ください。
-
 
 [^shared-images]:
     Hugoは、サイトのローカライゼーション間で共有される画像ファイルをレンダリングする方法についてスマートです。
