@@ -15,10 +15,10 @@ OpenTelemetry is:
 
   of [telemetry data][] such as [traces], [metrics], and [logs].
 
-- **Open source**, as well as **vendor- and tool-agnostic**, meaning that it can be used
-  with a broad variety of observability backends, including open source tools
-  like [Jaeger] and [Prometheus], as well as commercial offerings. OpenTelemetry
-  is **not** an observability backend itself.
+- **Open source**, as well as **vendor- and tool-agnostic**, meaning that it can
+  be used with a broad variety of observability backends, including open source
+  tools like [Jaeger] and [Prometheus], as well as commercial offerings.
+  OpenTelemetry is **not** an observability backend itself.
 
 A major goal of OpenTelemetry is to enable easy instrumentation of your
 applications and systems, regardless of the programming language,

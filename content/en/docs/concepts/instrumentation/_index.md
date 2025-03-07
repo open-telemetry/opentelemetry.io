@@ -5,8 +5,8 @@ aliases: [instrumenting]
 weight: 15
 ---
 
-For a system to be [observable], it must be **instrumented**: that is, code from the
-system's components must emit [signals], such as [traces], [metrics], and
+For a system to be [observable], it must be **instrumented**: that is, code from
+the system's components must emit [signals], such as [traces], [metrics], and
 [logs].
 
 Using OpenTelemetry, you can instrument your code in two primary ways:
@@ -36,8 +36,8 @@ solutions. The following things are also a part of OpenTelemetry:
 - Libraries can leverage the OpenTelemetry API as a dependency, which will have
   no impact on applications using that library, unless the OpenTelemetry SDK is
   imported.
-- For each of the [signals] you have several methods at your disposal to
-  create, process, and export them.
+- For each of the [signals] you have several methods at your disposal to create,
+  process, and export them.
 - With [context propagation](../context-propagation/) built into the
   implementations, you can correlate signals regardless of where they are
   generated.
