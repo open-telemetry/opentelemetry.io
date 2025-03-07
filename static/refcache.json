@@ -9787,6 +9787,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-22T05:55:29.317655-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.41.0/specification/logs/data-model.md#events": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-07T02:21:26.258361788Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:48.297045-05:00"
