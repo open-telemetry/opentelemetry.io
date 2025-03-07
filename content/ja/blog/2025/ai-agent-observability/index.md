@@ -7,8 +7,8 @@ linkTitle: AI Agent Observability
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/6389
 sig: SIG GenAI Observability
 date: 2025-03-06
-cSpell:ignore: genai Guangya PydanticAI Sujay
 default_lang_commit: f2a520b85d72db706bff91d879f5bb10fd2e7367
+cSpell:ignore: genai Guangya PydanticAI Sujay
 ---
 
 ## 2025年、AIエージェントの年
@@ -134,7 +134,7 @@ OpenTelemetryで計装を公開するには、2つのオプションがありま
   - オブザーバビリティをコアフレームワークから切り離し、肥大化を抑えられます。
   - OpenTelemetryのコミュニティ主導のメンテナンスを活用し、計装のアップデートを行えます。
   - ユーザーは、特定のニーズ（クラウドプロバイダーやLLMベンダーなど）に応じてcontribライブラリを組み合わせて使用できます。
-  -   セマンティック規約やゼロコード計装に関するベストプラクティスを活用する可能性が高いです。
+  - セマンティック規約やゼロコード計装に関するベストプラクティスを活用する可能性が高いです。
 - 短所
   - インストール時と実行時の両方で、互換性のない、あるいは古いコントリビュートパッケージに依存している場合、断片化のリスクがあります。
   - OpenTelemetryのレビューキューにPRが多すぎると、開発速度は遅くなります。
