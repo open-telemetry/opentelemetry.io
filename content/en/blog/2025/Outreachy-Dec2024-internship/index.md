@@ -19,11 +19,11 @@ I still remember the nervous excitement I felt when I received the [email](https
 
 ## Overcoming Fear: Imposter Syndrome Didn’t Win
 
-One of my biggest fears stepping into Outreachy was imposter syndrome. OpenTelemetry is a widely used project, and I worried about keeping up with seasoned contributors. However, I quickly realized that the open-source community thrives on collaboration, mentorship, and shared learning. My mentor and the community members were incredibly supportive, always willing to guide me when I felt stuck. I learned that asking questions and seeking help is not a weakness—it’s how we grow.
+One of my biggest fears stepping into Outreachy was imposter syndrome. OpenTelemetry is a widely used project, and I worried about keeping up with seasoned contributors. However, I quickly realized that the open source community thrives on collaboration, mentorship, and shared learning. My mentor and the community members were incredibly supportive, always willing to guide me when I felt stuck. I learned that asking questions and seeking help is not a weakness—it’s how we grow.
 
 ## A Highlight: Seeing My Work Make an Impact
 
-One of the most fulfilling moments of my internship was when my [first major contribution](https://github.com/open-telemetry/opentelemetry-erlang/pull/825)—a detailed setup guide for OpenTelemetry Erlang contributors—was merged. What seemed like a simple task at first turned into a deep dive into improving developer onboarding, documenting tribal knowledge, and making contributions more accessible. Seeing community members reference my work and use it to get started was an incredibly rewarding feeling. It reminded me why I love open source—it's about creating something that empowers others.
+One of the most fulfilling moments of my internship was when my [first major contribution](https://github.com/open-telemetry/opentelemetry-erlang/pull/825)—a detailed setup guide for OpenTelemetry Erlang contributors was merged. What seemed like a simple task at first turned into a deep dive into improving developer onboarding, documenting tribal knowledge, and making contributions more accessible. Seeing community members reference my work and use it to get started was an incredibly rewarding feeling. It reminded me why I love open source—it's about creating something that empowers others.
 
 ## Growth in Skills and Confidence
 
@@ -51,8 +51,8 @@ My mentor, [Marylia Gutierrez](https://github.com/maryliag), played a crucial ro
 
 ## What’s Next?
 
-As I complete my Outreachy internship with CNCF OpenTelemetry, I’m looking ahead to my next steps. I want to continue working in cloud-native technologies and observability, contributing to open-source projects that improve developer experience and system reliability. I’m actively seeking opportunities where I can apply my skills—whether it’s in open-source advocacy, cloud engineering, or observability solutions.
+As I complete my Outreachy internship with CNCF OpenTelemetry, I’m looking ahead to my next steps. I want to continue working in cloud-native technologies and observability, contributing to open source projects that improve developer experience and system reliability. I’m actively seeking opportunities where I can apply my skills, whether it’s in open-source advocacy, cloud engineering, or observability solutions.
 
 To anyone considering [Outreachy](https://www.outreachy.org/), I say: go for it! This internship has been a gateway to new opportunities, networks, and a deeper belief in my abilities. I’m grateful for the experience and excited for what the future holds.
 
-If you’d like to chat about open-source contributions, cloud-native technology, or potential opportunities, [let’s connect](https://www.linkedin.com/in/richardchukwu1/)!
+If you’d like to chat about open-source contributions, cloud native technology, or potential opportunities, [let’s connect](https://www.linkedin.com/in/richardchukwu1/)!
