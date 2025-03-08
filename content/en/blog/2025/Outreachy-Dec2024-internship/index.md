@@ -39,7 +39,7 @@ On the communication side, I learned how to:
 - Synthesize feedback from multiple contributors and maintainers.
 - Document processes in a way that is both clear and effective for a global audience.
 
-Most importantly, Outreachy gave me the confidence to contribute to open-source projects beyond this internship. I now see myself as part of the broader open-source ecosystem, and I’m excited to continue making meaningful contributions.
+Most importantly, Outreachy gave me the confidence to contribute to open source projects beyond this internship. I now see myself as part of the broader open source ecosystem, and I’m excited to continue making meaningful contributions.
 
 ## Project Contributions and Future Directions
 
@@ -51,8 +51,8 @@ My mentor, [Marylia Gutierrez](https://github.com/maryliag), played a crucial ro
 
 ## What’s Next?
 
-As I complete my Outreachy internship with CNCF OpenTelemetry, I’m looking ahead to my next steps. I want to continue working in cloud-native technologies and observability, contributing to open source projects that improve developer experience and system reliability. I’m actively seeking opportunities where I can apply my skills, whether it’s in open-source advocacy, cloud engineering, or observability solutions.
+As I complete my Outreachy internship with CNCF OpenTelemetry, I’m looking ahead to my next steps. I want to continue working in cloud native technologies and observability, contributing to open source projects that improve developer experience and system reliability. I’m actively seeking opportunities where I can apply my skills, whether it’s in open source advocacy, cloud engineering, or observability solutions.
 
 To anyone considering [Outreachy](https://www.outreachy.org/), I say: go for it! This internship has been a gateway to new opportunities, networks, and a deeper belief in my abilities. I’m grateful for the experience and excited for what the future holds.
 
-If you’d like to chat about open-source contributions, cloud native technology, or potential opportunities, [let’s connect](https://www.linkedin.com/in/richardchukwu1/)!
+If you’d like to chat about open source contributions, cloud native technology, or potential opportunities, [let’s connect](https://www.linkedin.com/in/richardchukwu1/)!
