@@ -155,6 +155,9 @@ while(<>) {
   # printf STDOUT "$ARGV Got:$lineNum: $_" if $gD;
 
   if ($file ne $ARGV) {
+    # Did the previous file not have a title?
+    warn "WARN: $file: no level 1 heading found, so no page will be generated"
+      if $file && $lineNum && ! $title;
     $file = $ARGV;
     $frontMatterFromFile = '';
     $title = '';
