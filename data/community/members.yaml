@@ -1334,6 +1334,12 @@ approvers:
       - swift-approvers
     html_url: https://github.com/ArielDemarco
     avatar_url: https://avatars.githubusercontent.com/u/25651947?v=4
+  - name: ArthurSens
+    teams:
+      - collector-contrib-approvers
+      - collector-contrib-triagers
+    html_url: https://github.com/ArthurSens
+    avatar_url: https://avatars.githubusercontent.com/u/24193764?v=4
   - name: aryanishan1001
     teams:
       - cpp-contrib-approvers
@@ -2134,9 +2140,6 @@ members:
   - name: Arhell
     html_url: https://github.com/Arhell
     avatar_url: https://avatars.githubusercontent.com/u/26163841?v=4
-  - name: ArthurSens
-    html_url: https://github.com/ArthurSens
-    avatar_url: https://avatars.githubusercontent.com/u/24193764?v=4
   - name: asaharn
     html_url: https://github.com/asaharn
     avatar_url: https://avatars.githubusercontent.com/u/102726227?v=4
