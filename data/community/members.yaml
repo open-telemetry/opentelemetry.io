@@ -1072,12 +1072,6 @@ maintainers:
       - collector-triagers
     html_url: https://github.com/songy23
     avatar_url: https://avatars.githubusercontent.com/u/10536136?v=4
-  - name: srikanthccv
-    teams:
-      - sqlcommenter-approvers
-      - sqlcommenter-maintainers
-    html_url: https://github.com/srikanthccv
-    avatar_url: https://avatars.githubusercontent.com/u/22846633?v=4
   - name: svrnm
     teams:
       - blog-approvers
@@ -2473,6 +2467,9 @@ members:
   - name: spirosx
     html_url: https://github.com/spirosx
     avatar_url: https://avatars.githubusercontent.com/u/6893659?v=4
+  - name: srikanthccv
+    html_url: https://github.com/srikanthccv
+    avatar_url: https://avatars.githubusercontent.com/u/22846633?v=4
   - name: sumo-drosiek
     html_url: https://github.com/sumo-drosiek
     avatar_url: https://avatars.githubusercontent.com/u/58699848?v=4
