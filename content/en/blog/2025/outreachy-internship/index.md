@@ -1,6 +1,6 @@
 ---
 title: Reflecting on my Outreachy Journey
-linkTitle: "Outreachy Internship Reflection"
+linkTitle: Outreachy-internship
 date: 2025-03-07
 author: [Richard Chukwu](https://github.com/richardchukwu)
 issue: 6488
