@@ -3,12 +3,9 @@ title: Reflecting on My Outreachy Journey: Growth, Challenges, and New Beginning
 linkTitle: Outreachy Internship Reflection
 date: 2025-03-07
 author: >- [Richard Chukwu](https://github.com/richardchukwu)
-draft: true # TODO: remove this line once your post is ready to be published
-# canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the canonical URL here.
-body_class: otel-with-contributions-from # TODO: remove this line if there are no secondary contributing authors
 issue: 6488
 sig: Contributor Experience
-cSpell:ignore: # TODO: add words here that are correct but the spelling checker doesn't recognize
+cSpell:ignore: Outreachy Chukwu Marylia # TODO: add words here that are correct but the spelling checker doesn't recognize
 ---
 
 
