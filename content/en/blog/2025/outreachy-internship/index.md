@@ -5,7 +5,7 @@ date: 2025-03-07
 author: >- [Richard Chukwu](https://github.com/richardchukwu)
 issue: 6488
 sig: Contributor Experience
-cSpell:ignore: Outreachy Chukwu Marylia # TODO: add words here that are correct but the spelling checker doesn't recognize
+cSpell:ignore: # are but Chukwu here Marylia Outreachy that the
 ---
 
 ## Introduction
