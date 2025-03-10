@@ -8,6 +8,7 @@ draft: true # TODO: remove this line once your post is ready to be published
 body_class: otel-with-contributions-from # TODO: remove this line if there are no secondary contributing authors
 issue: 6488
 sig: Contributor Experience
+cSpell:ignore: # TODO: add words here that are correct but the spelling checker doesn't recognize
 ---
 
 
