@@ -1,5 +1,5 @@
 ---
-title: Reflecting on My Outreachy Journey: Growth, Challenges, and New Beginnings
+title: Reflecting on my Outreachy Journey
 linkTitle: Outreachy Internship Reflection
 date: 2025-03-07
 author: >- [Richard Chukwu](https://github.com/richardchukwu)
