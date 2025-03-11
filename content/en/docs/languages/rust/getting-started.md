@@ -28,74 +28,88 @@ For more elaborate examples, see [examples](/docs/languages/rust/examples/).
 
 ### Dependencies
 
-To begin, create a file `Cargo.toml` in a new directory and add the following
-content:
+To begin, create an executable using `cargo new dice_server` in a new directory and add the following
+content to the `Cargo.toml` file:
 
 ```toml
 [package]
 name = "dice_server"
 version = "0.1.0"
 edition = "2021"
-publish = false
-
-[[bin]]
-name = "dice_server"
-path = "dice_server.rs"
-doc = false
 
 [dependencies]
-hyper = { version = "0.14", features = ["full"] }
-tokio = { version = "1.29", features = ["full"] }
-rand = { version = "0.8" }
+hyper = { version = "1", features = ["full"] }
+tokio = { version = "1", features = ["full"] }
+http-body-util = "0.1"
+hyper-util = { version = "0.1", features = ["full"] }
+rand = "0.9.0"
 ```
 
 ### Create and launch an HTTP Server
 
-In that same folder, create a file called `dice_server.rs` and add the following
-code to the file:
+Modify `main.rs` to the following:
 
 ```rust
-use hyper::service::{make_service_fn, service_fn};
-use hyper::{Body, Request, Response, Server, Method, StatusCode};
+use std::convert::Infallible;
+use std::net::SocketAddr;
+
+use http_body_util::Full;
+use hyper::body::Bytes;
+use hyper::server::conn::http1;
+use hyper::service::service_fn;
+use hyper::Method;
+use hyper::{Request, Response};
+use hyper_util::rt::TokioIo;
 use rand::Rng;
-use std::{convert::Infallible, net::SocketAddr};
+use tokio::net::TcpListener;
 
-async fn handle(req: Request<Body>) -> Result<Response<Body>, Infallible> {
-    let mut response = Response::new(Body::empty());
+async fn roll_dice(_: Request<hyper::body::Incoming>) -> Result<Response<Full<Bytes>>, Infallible> {
+    let random_number = rand::rng().random_range(1..=6);
+    Ok(Response::new(Full::new(Bytes::from(
+        random_number.to_string(),
+    ))))
+}
 
+async fn handle(req: Request<hyper::body::Incoming>) -> Result<Response<Full<Bytes>>, Infallible> {
     match (req.method(), req.uri().path()) {
-        (&Method::GET, "/rolldice") => {
-            let random_number = rand::thread_rng().gen_range(1..7);
-            *response.body_mut() = Body::from(random_number.to_string());
-        }
-        _ => {
-            *response.status_mut() = StatusCode::NOT_FOUND;
-        }
-    };
-
-    Ok(response)
+        (&Method::GET, "/rolldice") => roll_dice(req).await,
+        _ => Ok(Response::builder()
+            .status(404)
+            .body(Full::new(Bytes::from("Not Found")))
+            .unwrap()),
+    }
 }
 
 #[tokio::main]
-async fn main() {
+async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
 
-    let make_svc = make_service_fn(|_conn| async { Ok::<_, Infallible>(service_fn(handle)) });
 
-    let server = Server::bind(&addr).serve(make_svc);
+    let listener = TcpListener::bind(addr).await?;
 
-    println!("Listening on {addr}");
-    if let Err(e) = server.await {
-        eprintln!("server error: {e}");
+    loop {
+        let (stream, _) = listener.accept().await?;
+
+        let io = TokioIo::new(stream);
+
+        tokio::task::spawn(async move {
+            if let Err(err) = http1::Builder::new()
+                .serve_connection(io, service_fn(handle))
+                .await
+            {
+                eprintln!("Error serving connection: {:?}", err);
+            }
+        });
     }
 }
+
 ```
 
 Build and run the application with the following command, then open
 <http://localhost:8080/rolldice> in your web browser to ensure it is working.
 
 ```console
-$ cargo run --bin dice_server
+$ cargo run
 ...
 Listening on 127.0.0.1:8080
 ```
@@ -114,67 +128,85 @@ opentelemetry_sdk = "{{% version-from-registry otel-rust-sdk %}}"
 opentelemetry-stdout = { version = "{{% version-from-registry exporter-rust-stdout %}}", features = ["trace"] }
 ```
 
-Update the `dice_server.rs` file with code to initialize a tracer and to emit
+Update the `main.rs` file with code to initialize a tracer and to emit
 spans when the `handle` function is called:
 
 ```rust
-use hyper::service::{make_service_fn, service_fn};
-use hyper::{Body, Method, Request, Response, Server, StatusCode};
-use rand::Rng;
-use std::{convert::Infallible, net::SocketAddr};
-use opentelemetry::global::ObjectSafeSpan;
-use opentelemetry::trace::{SpanKind, Status};
-use opentelemetry::{global, trace::Tracer};
-use opentelemetry_sdk::propagation::TraceContextPropagator;
-use opentelemetry_sdk::trace::TracerProvider;
+use std::convert::Infallible;
+use std::net::SocketAddr;
+use std::sync::OnceLock;
+
+use http_body_util::Full;
+use hyper::body::Bytes;
+use hyper::server::conn::http1;
+use hyper::service::service_fn;
+use hyper::Method;
+use hyper::{Request, Response};
+use hyper_util::rt::TokioIo;
+use opentelemetry::global::{self, BoxedTracer};
+use opentelemetry::trace::{Span, SpanKind, Status, Tracer};
+use opentelemetry_sdk::trace::SdkTracerProvider;
 use opentelemetry_stdout::SpanExporter;
+use rand::Rng;
+use tokio::net::TcpListener;
 
-async fn handle(req: Request<Body>) -> Result<Response<Body>, Infallible> {
-    let mut response = Response::new(Body::empty());
+async fn roll_dice(_: Request<hyper::body::Incoming>) -> Result<Response<Full<Bytes>>, Infallible> {
+    let random_number = rand::rng().random_range(1..=6);
+    Ok(Response::new(Full::new(Bytes::from(
+        random_number.to_string(),
+    ))))
+}
 
-    let tracer = global::tracer("dice_server");
+async fn handle(req: Request<hyper::body::Incoming>) -> Result<Response<Full<Bytes>>, Infallible> {
+    let tracer = get_tracer();
 
     let mut span = tracer
         .span_builder(format!("{} {}", req.method(), req.uri().path()))
         .with_kind(SpanKind::Server)
-        .start(&tracer);
+        .start(tracer);
 
     match (req.method(), req.uri().path()) {
-        (&Method::GET, "/rolldice") => {
-            let random_number = rand::thread_rng().gen_range(1..7);
-            *response.body_mut() = Body::from(random_number.to_string());
-            span.set_status(Status::Ok);
-        }
+        (&Method::GET, "/rolldice") => roll_dice(req).await,
         _ => {
-            *response.status_mut() = StatusCode::NOT_FOUND;
-            span.set_status(Status::error("Not Found"));
+            span.set_status(Status::Ok);
+            Ok(Response::builder()
+                .status(404)
+                .body(Full::new(Bytes::from("Not Found")))
+                .unwrap())
         }
-    };
-
-    Ok(response)
+    }
 }
 
-fn init_tracer() {
-    global::set_text_map_propagator(TraceContextPropagator::new());
-    let provider = TracerProvider::builder()
+fn get_tracer() -> &'static BoxedTracer {
+    static TRACER: OnceLock<BoxedTracer> = OnceLock::new();
+    TRACER.get_or_init(|| global::tracer("dice_server"))
+}
+
+fn init_tracer_provider() {
+    let provider = SdkTracerProvider::builder()
         .with_simple_exporter(SpanExporter::default())
         .build();
     global::set_tracer_provider(provider);
 }
 
 #[tokio::main]
-async fn main() {
-    init_tracer();
+async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
 
-    let make_svc = make_service_fn(|_conn| async { Ok::<_, Infallible>(service_fn(handle)) });
+    let listener = TcpListener::bind(addr).await?;
+    init_tracer_provider();
 
-    let server =
-        Server::bind(&addr).serve(make_svc);
-
-    println!("Listening on {addr}");
-    if let Err(e) = server.await {
-        eprintln!("server error: {e}");
+    loop {
+        let (stream, _) = listener.accept().await?;
+        let io = TokioIo::new(stream);
+        tokio::task::spawn(async move {
+            if let Err(err) = http1::Builder::new()
+                .serve_connection(io, service_fn(handle))
+                .await
+            {
+                eprintln!("Error serving connection: {:?}", err);
+            }
+        });
     }
 }
 ```
@@ -182,57 +214,34 @@ async fn main() {
 Start your server again:
 
 ```sh
-$ cargo run --bin dice_server
+$ cargo run
 ...
 Listening on 127.0.0.1:8080
 ```
 
 When you send a request to the server at <http://localhost:8080/rolldice>,
-you'll see a span being emitted to the console (output is pretty printed for
-convenience):
+you'll see a span being emitted to the console:
 
-```json
-{
-  "resourceSpans": [
-    {
-      "resource": {
-        "attributes": [
-          {
-            "key": "service.name",
-            "value": {
-              "stringValue": "unknown_service"
-            }
-          }
-        ]
-      },
-      "scopeSpans": [
-        {
-          "scope": {
-            "name": "dice_server"
-          },
-          "spans": [
-            {
-              "attributes": [],
-              "droppedAttributesCount": 0,
-              "droppedEventsCount": 0,
-              "droppedLinksCount": 0,
-              "endTimeUnixNano": 1691076354768034000,
-              "kind": 2,
-              "name": "GET /rolldice",
-              "parentSpanId": "",
-              "spanId": "27e1d7d8e44a63c5",
-              "startTimeUnixNano": 1691076354768025000,
-              "status": {
-                "code": 2
-              },
-              "traceId": "adfe9d364ee19610adde517d722167ca"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
+```txt
+Spans
+Resource
+         ->  telemetry.sdk.version=String(Static("0.28.0"))
+         ->  service.name=String(Static("unknown_service"))
+         ->  telemetry.sdk.language=String(Static("rust"))
+         ->  telemetry.sdk.name=String(Static("opentelemetry"))
+Span #0
+        Instrumentation Scope
+                Name         : "dice_server"
+
+        Name        : GET /rolldice
+        TraceId     : 9f03de7cf14780bd54b95d7095332107
+        SpanId      : 9faed88b3f9ed699
+        TraceFlags  : TraceFlags(1)
+        ParentSpanId: 0000000000000000
+        Kind        : Server
+        Start time: 2025-03-11 00:47:26.687497
+        End time: 2025-03-11 00:47:26.687653
+        Status: Unset
 ```
 
 ## What next?
