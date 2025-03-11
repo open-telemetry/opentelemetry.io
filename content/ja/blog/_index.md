@@ -2,7 +2,6 @@
 title: ブログ
 menu: { main: { weight: 50 } }
 outputs: [HTML, RSS]
-htmltest:
 description: OpenTelemetry ブログ
 default_lang_commit: 94d77ab8cbfe5552a7cd68bf677be86c574a613a
 ---
