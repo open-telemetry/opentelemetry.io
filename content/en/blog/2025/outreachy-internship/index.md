@@ -8,7 +8,6 @@ sig: Contributor Experience
 cSpell:ignore: # are but Chukwu here Marylia Outreachy that the
 ---
 
-## Introduction
 
 Hello world! I’m Richard Chukwu, a Computer Engineering graduate from the
 [University of Benin](https://www.uniben.edu/), Nigeria. My journey into tech
