@@ -43,8 +43,8 @@ more information.
 ## Style checks
 
 To make sure that contributions follow our [style guide](../style-guide/) we
-have implemented a set of checks that verify style guide rules and fail l if
-they find any issues.
+have implemented a set of checks that verify style guide rules and fail if they
+find any issues.
 
 The following list describes current checks and what you can do to fix related
 errors:
