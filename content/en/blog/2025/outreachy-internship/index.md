@@ -1,8 +1,8 @@
 ---
 title: Reflecting on my Outreachy Journey
 linkTitle: Outreachy Internship
-date: 2025-03-07
-author: [Richard Chukwu](https://github.com/richardchukwu)
+date: 2025-03-11
+author: '[Richard Chukwu](https://github.com/richardchukwu)'
 issue: 6488
 sig: Contributor Experience
 cSpell:ignore: # are but Chukwu here Marylia Outreachy that the
