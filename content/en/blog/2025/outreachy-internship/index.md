@@ -11,7 +11,7 @@ cSpell:ignore: # are but Chukwu here Marylia Outreachy that the
 ## Introduction
 
 Hello world! I’m Richard Chukwu, a Computer Engineering graduate from the
-University of Benin in Nigeria. My journey into tech has been fueled by a blend
+[University of Benin](https://www.uniben.edu/), Nigeria. My journey into tech has been fueled by a blend
 of curiosity and an unwavering commitment to growth. These are the pillars that
 not only uphold my personal values but also form the foundation of my
 professional aspirations.
