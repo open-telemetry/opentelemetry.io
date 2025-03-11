@@ -1259,6 +1259,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:05:12.345Z"
   },
+  "https://docs.greptime.com/user-guide/ingest-data/for-observability/opentelemetry/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-03-11T15:00:43.727668424Z"
+  },
   "https://docs.greptime.com/user-guide/ingest-data/for-observerbility/opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2024-10-29T16:21:59.273877+08:00"
