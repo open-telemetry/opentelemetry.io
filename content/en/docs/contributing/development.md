@@ -108,7 +108,7 @@ The website is built from the following content:
 
 If you change any content inside of a [content-modules][] submodule, then you
 need to first submit a PR (containing the submodule changes) to the submodule's
-repository. Only after the submodule PR has been accepted, can you update the
+repository. Only after the submodule PR has been accepted, you can update the
 submodule and have the changes appear in this website.
 
 It's easiest to manage your `content-modules` changes by working with the
