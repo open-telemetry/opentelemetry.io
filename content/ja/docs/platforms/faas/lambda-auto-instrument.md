@@ -40,8 +40,7 @@ Lambdaレイヤーは、Java 8, 11, 17 (Corretto) Lambdaランタイムをサポ
 - `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED`: falseに設定すると、レイヤーの自動計装を無効にし、各計装を個別に有効にする必要があります。
 - `OTEL_INSTRUMENTATION_<NAME>_ENABLED`: 特定のライブラリやフレームワークの自動計装を有効にするには true を設定します。`<NAME>`の部分を有効にしたい計装で置き換えます。利用可能な計装のリストについては、[特定のエージェントの計装を抑制する][1] を参照してください。
 
-  [1]:
-    /docs/zero-code/java/agent/disable/#suppressing-specific-agent-instrumentation
+  [1]: /docs/zero-code/java/agent/disable/#suppressing-specific-agent-instrumentation
 
 たとえば、LambdaとAWS SDKの自動計装だけを有効にするには、以下の環境変数を設定します。
 
@@ -113,4 +112,3 @@ gRPC/HTTPレシーバーを持つコレクターが組み込まれている場�
 ### あなたのLambdaを公開する
 
 Lambdaの新しいバージョンを公開して、新しい変更と計装をデプロイします。
-
