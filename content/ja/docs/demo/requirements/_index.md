@@ -11,7 +11,7 @@ default_lang_commit: f9cb26fb4a288f536ab20ab3f472060dd465ef56
 2. [OpenTelemetry要件](opentelemetry/)
 3. [システム要件](system/)
 
-## 対象読者
+## 対象読者 {#target-personas}
 
 私たちは以下の対象読者を想定してデモアプリケーションを作成しています。
 
