@@ -1918,6 +1918,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/abhee11
     avatar_url: https://avatars.githubusercontent.com/u/6670495?v=4
+  - name: akats7
+    teams:
+      - go-triagers
+    html_url: https://github.com/akats7
+    avatar_url: https://avatars.githubusercontent.com/u/56042997?v=4
   - name: anosek-an
     teams:
       - java-contrib-triagers
