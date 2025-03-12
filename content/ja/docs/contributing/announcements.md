@@ -44,7 +44,7 @@ hugo new --kind announcement content/YOUR-LOCALE/announcements/announcement-file
 
 このリポジトリの内容にバグや問題を発見した場合、または改善をリクエストしたい場合は、[ドキュメントのイシューを作成][new-issue] してください。
 
-セキュリティ上の問題を発見した場合は、イシューを作成する前に[セキュリティポリシー](https://github.com/open-telemetry/opentelemetry.io/security/policy) をお読みください。
+セキュリティ上の問題を発見した場合は、イシューを作成する前に[セキュリティポリシー](https://github.com/open-telemetry/opentelemetry.io/security/policy) を確認してください。
 
 新しいイシューを報告する前に、[イシューのリスト](https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)を検索することで、既に報告されているか修正されていないかを確認してください。
 
