@@ -64,7 +64,7 @@ issues. Run `npm run check:text` again and manually fix the remaining issues.
 This check verifies that
 [standards and consistency for Markdown files are enforced](../style-guide/#markdown-standards).
 
-If any issues are found, run `npm:run format` to fix most issues. For more
+If any issues are found, run `npm run:format` to fix most issues. For more
 complex issues, run `npm run check:markdown` and apply the suggested changes.
 
 ### SPELLING check
