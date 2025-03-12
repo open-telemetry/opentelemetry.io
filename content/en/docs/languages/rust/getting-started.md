@@ -28,8 +28,8 @@ For more elaborate examples, see [examples](/docs/languages/rust/examples/).
 
 ### Dependencies
 
-To begin, create an executable using `cargo new dice_server` in a new directory and add the following
-content to the `Cargo.toml` file:
+To begin, create an executable using `cargo new dice_server` in a new directory
+and add the following content to the `Cargo.toml` file:
 
 ```toml
 [package]
@@ -102,7 +102,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
         });
     }
 }
-
 ```
 
 Build and run the application with the following command, then open
@@ -128,8 +127,8 @@ opentelemetry_sdk = "{{% version-from-registry otel-rust-sdk %}}"
 opentelemetry-stdout = { version = "{{% version-from-registry exporter-rust-stdout %}}", features = ["trace"] }
 ```
 
-Update the `main.rs` file with code to initialize a tracer and to emit
-spans when the `handle` function is called:
+Update the `main.rs` file with code to initialize a tracer and to emit spans
+when the `handle` function is called:
 
 ```rust
 use std::convert::Infallible;
