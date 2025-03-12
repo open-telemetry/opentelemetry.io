@@ -2,8 +2,8 @@
 title: Lambda 自動計装
 weight: 11
 description: あなたのLambdaをOpenTelemetryで自動的に計装する
-cSpell:ignore: Corretto regionalized
 default_lang_commit: 9ba98f4fded66ec78bfafa189ab2d15d66df2309
+cSpell:ignore: Corretto
 ---
 
 OpenTelemetryコミュニティは、以下の言語用のスタンドアロン計装Lambdaレイヤーを提供しています。

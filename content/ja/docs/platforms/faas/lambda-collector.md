@@ -3,8 +3,8 @@ title: Lambdaコレクター設定
 linkTitle: Lambdaコレクター設定
 weight: 11
 description: コレクターLambdaレイヤーをあなたのLambdaに追加して設定する
-cSpell:ignore: ADOT awsxray configmap confmap regionalized
 default_lang_commit: 9ba98f4fded66ec78bfafa189ab2d15d66df2309
+cSpell:ignore: ADOT awsxray configmap confmap
 ---
 
 OpenTelemetry コミュニティは、ユーザーに最大限の柔軟性を与えるために、コレクターを計装レイヤーとは別のLambdaレイヤーで提供しています。
