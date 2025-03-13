@@ -80,6 +80,25 @@ types listed below, then the span will not be ended until the future completes.
 - [io.reactivex.Flowable](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Flowable.html)
 - [io.reactivex.parallel.ParallelFlowable](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/parallel/ParallelFlowable.html)
 
+### Parameters
+
+The `@WithSpan` attribute supports two optional parameters to allow
+customization of spans:
+
+| name             | type              | default    | description                                                                                                                                  |
+|------------------|-------------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| `kind`           | `SpanKind` (enum) | `INTERNAL` | The [kind of span](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#spankind).             |
+| `inheritContext` | `boolean`         | `true`     | Since 2.14.0. Controls whether or not the new span will be parented in the existing (current) context. If `false`, a new context is created. |
+
+Example parameter usage:
+
+```java
+@WithSpan(kind = SpanKind.CLIENT, inheritContext = false)
+public void myMethod() {
+    <...>
+}
+```
+
 ## Adding attributes to the span with `@SpanAttribute`
 
 When a [span](/docs/concepts/signals/traces/#spans) is created for an annotated
