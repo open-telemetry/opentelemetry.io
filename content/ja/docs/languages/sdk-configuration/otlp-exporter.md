@@ -83,7 +83,7 @@ OTLP/HTTP を使う場合は、通常 `v1/logs` で終わります。
 - HTTP:
   `export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT="http://my-api-endpoint/v1/logs"`
 
-## ヘッダーの設定
+## ヘッダーの設定 {#header-configuration}
 
 以下の環境変数を使用すると、gRPC または HTTP リクエストの発信時に追加するヘッダーを、キーと値のペアのリストとして設定できます。
 
@@ -123,7 +123,7 @@ OTLP/HTTP を使う場合は、通常 `v1/logs` で終わります。
 **例:**
 `export OTEL_EXPORTER_OTLP_LOGS_HEADERS="api-key=key,other-config-value=value"`
 
-## タイムアウトの設定
+## タイムアウトの設定 {#timeout-configuration}
 
 以下の環境変数は、OTLPエクスポーターがデータのネットバッチを送信する前に待つ最大時間（ミリ秒単位）を設定します。
 
@@ -159,7 +159,7 @@ OTLP/HTTP を使う場合は、通常 `v1/logs` で終わります。
 
 **例:** `export OTEL_EXPORTER_OTLP_LOGS_TIMEOUT=500`
 
-## プロトコルの設定
+## プロトコルの設定 {#protocol-configuration}
 
 以下の環境変数は、OTLPエクスポーターが使用するOTLPトランスポートプロトコルを設定します。
 
