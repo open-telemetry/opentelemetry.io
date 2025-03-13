@@ -5,7 +5,7 @@ aliases: [otlp-exporter-configuration]
 default_lang_commit: 9ba98f4fded66ec78bfafa189ab2d15d66df2309
 ---
 
-## エンドポイントの設定
+## エンドポイントの設定 {#endpoint-configuration}
 
 以下の環境変数により、トレース、メトリクス、およびログのためのOTLP/gRPCまたはOTLP/HTTPエンドポイントを構成できます。
 
