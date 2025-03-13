@@ -9739,6 +9739,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-06T02:17:59.999Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#spankind": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-13T17:21:15.569829279Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.14.0/specification/sdk-environment-variables.md#general-sdk-configuration": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:17:12.345Z"
