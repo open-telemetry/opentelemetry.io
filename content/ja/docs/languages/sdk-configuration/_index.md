@@ -2,7 +2,6 @@
 title: SDKの設定
 linkTitle: SDKの設定
 aliases: [/docs/concepts/sdk-configuration]
-redirects: [{ from: /docs/concepts/sdk-configuration/*, to: ':splat' }]
 weight: 1
 default_lang_commit: 9ba98f4fded66ec78bfafa189ab2d15d66df2309
 ---
