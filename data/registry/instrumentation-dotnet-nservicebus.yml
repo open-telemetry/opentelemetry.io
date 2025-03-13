@@ -12,7 +12,7 @@ license: Reciprocal Public License 1.5
 description: With NServiceBus OpenTelemetry instrumentation enabled, tracing, metrics, and logging can be individually configured via the OpenTelemetry API itself.
 authors:
   - name: Particular Software
-  - URL: https://github.com/Particular
+    url: https://github.com/Particular
 createdAt: 2025-02-27
 isNative: true # set this to true only if OpenTelemetry is directly integrated into your software (no plugin, no instrumentation library)
 package:
