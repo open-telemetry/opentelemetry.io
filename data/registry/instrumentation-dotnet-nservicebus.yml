@@ -9,7 +9,9 @@ urls:
   repo: https://github.com/Particular/NServiceBus
   docs: https://docs.particular.net/nservicebus/operations/opentelemetry
 license: Reciprocal Public License 1.5
-description: With NServiceBus OpenTelemetry instrumentation enabled, tracing, metrics, and logging can be individually configured via the OpenTelemetry API itself.
+description:
+  With NServiceBus OpenTelemetry instrumentation enabled, tracing, metrics, and
+  logging can be individually configured via the OpenTelemetry API itself.
 authors:
   - name: Particular Software
     url: https://github.com/Particular
