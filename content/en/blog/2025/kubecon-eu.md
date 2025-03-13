@@ -167,17 +167,16 @@ Drop by and say _"Hi!"_ at OpenTelemetry Observatory presented by Splunk in the
 Expo Hall. This will be a place for informal chats, meetups, and other
 discussions led by OpenTelemetry community members and maintainers.
 
-<!-- For the activity schedule, see the [OTel Observatory Calendar](https://shorturl.at/qEUX1). -->
+For the activity schedule, see the
+[OTel Observatory Calendar](https://calendar.google.com/calendar/u/0/embed?src=c_6b6b343737cc9bbf0393ba40c101d6b017514751e66951c9890d089eedd78a37@group.calendar.google.com).
 
 Note that the Observatory might show up as "Splunk Activation Booth" on the
 event map.
 
-Activity schedule coming soon. Check back in the coming weeks for updates!
-
-<!-- If you’d like to participate and lead a discussion or short presentation, reach
+If you’d like to participate and lead a discussion or short presentation, reach
 out to the
 [OpenTelemetry End User Working Group](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
-to indicate your interest. -->
+to indicate your interest.
 
 You can help us improve the project by sharing your thoughts and feedback about
 your OpenTelemetry adoption, implementation, and usage.
