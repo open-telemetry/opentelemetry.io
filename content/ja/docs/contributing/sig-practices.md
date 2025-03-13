@@ -17,7 +17,7 @@ cSpell:ignore: chalin docsy
 - `#otel-comms`、`#otel-maintainers`、およびチーム内のプライベート Slack チャンネルに追加されます
 - [SIG Comm ミーティング](https://groups.google.com/a/opentelemetry.io/g/calendar-comms)と[メンテナーミーティング](https://groups.google.com/a/opentelemetry.io/g/calendar-maintainer-meeting)のカレンダー招待への登録を求められます
 - SIG Comm の現在のミーティング時間が適しているかを確認し、適さない場合は既存の承認者およびメンテナーと調整して、全員に適した時間を決定します
-- コントリビュータ向けのさまざまなリソースを確認します。
+- コントリビュータ向けのさまざまなリソースを確認します
   - [コミュニティリソース](https://github.com/open-telemetry/community/)。
     特に、[コミュニティメンバーシップ](https://github.com/open-telemetry/community/blob/main/community-membership.md) と
     [ソーシャルメディアガイド](https://github.com/open-telemetry/community/blob/main/social-media-guide.md) に関するドキュメント
@@ -29,7 +29,7 @@ cSpell:ignore: chalin docsy
 - [Docsy ドキュメント](https://www.docsy.dev/docs/)
 - [マーケティングガイドライン](/community/marketing-guidelines/)。これは、Linux Foundation のブランドおよび
   [商標使用ガイドライン](https://www.linuxfoundation.org/legal/trademark-usage) 含みます。
-  これらは、レジストリ、インテグレーション、ベンダー、導入事例、ディストリビューションのエントリーをレビューする際に特に重要です。
+  これらは、レジストリ、インテグレーション、ベンダー、導入事例、ディストリビューションのエントリーをレビューする際に特に重要です
 
 ## コラボレーション {#collaboration}
 
@@ -38,7 +38,7 @@ cSpell:ignore: chalin docsy
 - 承認者またはメンテナーが長期間（数日または1週間以上）不在となる場合は、
   [#otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6) チャンネルでの通知や GitHub ステータスの更新を行います。
 - 承認者およびメンテナーは、[OTel 行動規範](https://github.com/open-telemetry/community/?tab=coc-ov-file#opentelemetry-community-code-of-conduct) と[コミュニティの価値観](/community/mission/#community-values)に従います。
-  彼らはコントリビュータに対して親切かつ協力的であり、何らかの対立や誤解、不快になるような状況が承認者またはメンテナーに生じた場合は、会話、イシューまたは PR から一歩引いて別の承認者やメンテナーに対応を依頼できます。
+  彼らはコントリビュータに対して親切かつ協力的であり、何らかの対立や誤解、不快になるような状況が承認者またはメンテナーに生じた場合は、会話、イシューまたは PR から一歩引いて別の承認者やメンテナーに対応を依頼できます
 
 ## コードレビュー {#code-reviews}
 
@@ -46,34 +46,34 @@ cSpell:ignore: chalin docsy
 
 - PR のブランチが `base ブランチと同期していない` 場合、継続的に更新する必要はありません。
   各更新ごとに CI チェックが再実行されます！
-  マージ前に更新すれば十分です。
+  マージ前に更新すれば十分です
 - 非メンテナーによる PR で git サブモジュールを**決して**更新しないでください。
   これは時々誤って起こります。
   PR 作成者にその必要はないことを伝えてください。
-  マージ前にこれを修正しますが、将来的には最新のフォークから作業する必要があります。
+  マージ前にこれを修正しますが、将来的には最新のフォークから作業する必要があります
 - コントリビューターが CLA に署名できない場合、またはコミットの 1 つで誤って間違ったメールアドレスを使用した場合は、問題を修正するか、プルリクエストをリベースするように依頼してください。
-  最悪の場合、PR を閉じて再度開き、新しい CLA チェックをトリガーします。
+  最悪の場合、PR を閉じて再度開き、新しい CLA チェックをトリガーします
 - `cspell` に未知の単語は、PR 作成者によってページごとに `cspell` の ignore リストに追加される必要があります。
-  承認者とメンテナーのみが、よく使用される用語をグローバルリストに追加します。
+  承認者とメンテナーのみが、よく使用される用語をグローバルリストに追加します
 
 ### 共同所有 PR {#co-owned-prs}
 
 SIG が共同所有するドキュメント（コレクター、デモ、言語固有など）を変更する PR は、ドキュメント承認者による承認と SIG 承認者による承認の 2 つの承認を目指す必要があります。
 
-- ドキュメント承認者は PR に `sig:<name>` ラベルを付与し、SIG `-approvers` グループのタグ付与します。
+- ドキュメント承認者は PR に `sig:<name>` ラベルを付与し、SIG `-approvers` グループのタグ付与します
 - ドキュメント承認者が PR を承認した後、[`sig-approval-missing`](https://github.com/open-telemetry/opentelemetry.io/labels/sig-approval-missing) ラベルを追加します。
-  これにより SIG に対応を促します。
-- SIG の承認が一定期間（通常 2 週間、緊急の場合は短縮可能）内に得られない場合、ドキュメントメンテナーの判断でマージできます。
+  これにより SIG に対応を促します
+- SIG の承認が一定期間（通常 2 週間、緊急の場合は短縮可能）内に得られない場合、ドキュメントメンテナーの判断でマージできます
 
 ### ボットによる PR {#prs-from-bots}
 
 ボットが作成した PR は以下の方法でマージできます。
 
-- レジストリのバージョンを自動更新する PR は、即座に修正、承認、マージ可能です。
-- SDK、ゼロコード計装、またはコレクターのバージョンを自動更新する PR は、対応する SIG がマージを延期する必要があることを通知しない限り、承認およびマージできます。
+- レジストリのバージョンを自動更新する PR は、即座に修正、承認、マージ可能です
+- SDK、ゼロコード計装、またはコレクターのバージョンを自動更新する PR は、対応する SIG がマージを延期する必要があることを通知しない限り、承認およびマージできます
 - 仕様のバージョンを自動更新する PR では、CI チェックに合格するためにスクリプトの更新が必要になることがよくあります。
   その場合は [@chalin](https://github.com/chalin/) が対応します。
-  それ以外の場合は、対応する SIG がマージを延期する必要があることを通知しない限り、それらの PR は承認され、マージされる可能性があります。
+  それ以外の場合は、対応する SIG がマージを延期する必要があることを通知しない限り、それらの PR は承認され、マージされる可能性があります
 
 ### 翻訳 PR {#translation-prs}
 
