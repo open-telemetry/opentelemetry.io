@@ -255,5 +255,5 @@ transparent and effective AI ecosystem.
 
 Don’t miss this opportunity to help shape the future of industry standards for
 GenAI Observability! Join us on the [CNCF Slack](https://slack.cncf.io)
-`#otel-genai-instrumentation-wg` channel, or by attending a
+`#otel-genai-instrumentation` channel, or by attending a
 [GenAI SIG meeting](https://github.com/open-telemetry/community/blob/main/projects/gen-ai.md#meeting-times).

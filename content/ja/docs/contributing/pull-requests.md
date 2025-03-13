@@ -1,16 +1,24 @@
 ---
 title: コンテンツの提出
-description: GitHub UI またはローカルのフォークを利用して、新しいコンテンツまたはコンテンツの変更を提出する方法を学びます
+description: GitHub UI 利用して、またはローカルのフォークから、新しいコンテンツまたはコンテンツの変更を提出する方法を学びます
 aliases: [new-content]
 weight: 15
-default_lang_commit: 99f0ae5760038d51f9e9eb376bb428a2caca8167 # patched
-drifted_from_default: true
+default_lang_commit: 94d77ab8cbfe5552a7cd68bf677be86c574a613a
 ---
 
-新しいドキュメントの内容を追加したり、既存のコンテンツの改善をするには、[プルリクエスト][PR] （PR）を提出してください。
+新しいドキュメントの内容を追加や改善するには、[プルリクエスト][PR] （PR）を提出してください。
 
-- もし変更が小さかったり、自身が Git に慣れていなかったら、[GitHub を使用した変更](#changes-using-github)を参照しページの編集方法を学んでください。
-- もし変更が大きければ、[ローカルのフォークから作業する](#fork-the-repo)を参照し、ローカルのコンピュータから変更を行う方法を学んでください。
+- もし変更が小さかったり、自身が [Git] に慣れていなかったら、[GitHub を使用](#changes-using-github)を参照しページの編集方法を学んでください。
+- もしくは、[ローカルのフォークから作業する](#fork-the-repo)を参照し、ローカルのコンピュータから変更を行う方法を学んでください。
+
+{{% alert title="Contributor License Agreement (CLA)" color=warning %}}
+
+All contributors are required to [sign a Contributor License Agreement
+(CLA)][CLA] before changes can be reviewed and merged.
+
+[CLA]: ../prerequisites/#cla
+
+{{% /alert %}}
 
 {{% alert title="ヒント: Draft ステータス" %}}
 
@@ -42,18 +50,12 @@ class first,second white
 
 _図 1. 新しいコンテンツにコントリビュートする。_
 
-## GitHub を使用した変更 {#changes-using-github}
+## GitHub を使用 {#changes-using-github}
+
+### ブラウザから修正し変更を提出する {#page-edit-from-browser}
 
 もし、Git のワークフローをあまり慣れていなければ、プルリクエストを作成して提出するより簡単な方法があります。
 図 2 は手順の概要を示しており、詳細はこの後に続きます。
-
-{{% alert title="Contributor License Agreement (CLA)" color=warning %}}
-
-すべてのコントリビューターは、変更が承認されてマージされる前に、[コントリビューターライセンス契約（Contributor License Agreement、CLA）][CLA] に署名する必要があります。
-
-[CLA]: ../prerequisites/#cla
-
-{{% /alert %}}
 
 ```mermaid
 flowchart LR
@@ -112,17 +114,45 @@ _図 2. GitHub を利用した PR の公開手順。_
 
 レビューが完了したら、レビュアーは PR をマージして変更が数分後に反映されます。
 
-{{% alert title="Tip" %}}
+### Fixing PR check failures {#fixing-prs-in-github}
 
-プルリクエストに `/fix:format` とコメントすると、フォーマットの問題を自動的にチェックするトリガーが起動します。
+PR を提出した後に、GitHub はいくつかのビルドチェックを実行します。
+フォーマットの問題といった、特定のチェックの失敗は自動的に修正できます。
+
+以下のコメントを PR に追加してください。
+
+```text
+/fix:all
+```
+
+これは、OpenTelemetry bot がビルドの問題を修正しようとします。
+もしくは、特定の失敗に対処するために、次の修正コマンドの 1 つを実行できます。
+
+```text
+fix:dict
+fix:expired
+fix:filenames
+fix:format
+fix:htmltest-config
+fix:i18n
+fix:markdown
+fix:refcache
+fix:submodule
+fix:text
+```
+
+{{% alert title="Pro Tip" %}}
+
+`fix` コマンドをローカルで実行できます。
+修正コマンドの全リストは、`npm run -s '_list:fix:*'` を実行してください。
 
 {{% /alert %}}
 
-## ローカルのフォークから作業する {#fork-the-repo}
+## ローカルで作業する {#fork-the-repo}
 
 Git に慣れている場合もしくは、変更が数行以上の場合は、ローカルのフォークから作業してください。
 
-[git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) がパソコンにインストール済みであることを確認してください。
+パソコンに [git がインストール済み][`git` installed]であることを確認してください。
 Git のユーザーインターフェースも利用できます。
 
 図 3 は、ローカルのフォークから作業するときに従う手順を示しています。詳細はそれぞれの手順に従ってください。
@@ -154,12 +184,12 @@ class changes,changes2 white
 
 _図 3. ローカルのフォークで作業して変更を追加。_
 
-### opentelemetry.io リポジトリをフォークする {#fork-the-opentelemetryio-repository}
+### リポジトリをフォークする {#fork-the-repository}
 
 1. [`opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io/) リポジトリに移動してください。
 1. **フォーク**を選択してください。
 
-### ローカルのクローンを作成し、アップストリームを設定してください {#create-a-local-clone-and-set-the-upstream}
+### クローンし、アップストリームを設定 {#clone-and-set-upstream}
 
 1. ターミナルウィンドウで、フォークをクローンし、必要なものをインストールしてください。
 
@@ -259,7 +289,7 @@ _図 3. ローカルのフォークで作業して変更を追加。_
 
 1. 変更がプッシュされると、GitHub が PR を作成できることを知らせます。
 
-### フォークからプルリクエストを公開する {#open-a-pr}
+### 新しいプルリクエストを公開する {#open-a-pr}
 
 図 4 はフォークから [opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io) への PR を開く手順を示しています。
 
@@ -314,7 +344,7 @@ PR を公開した後に、自動テストの実行と [Netlify](https://www.net
 
 他のチェックも同様に失敗している可能性があります。[すべての PR チェック](../pr-checks) を参照してください。
 
-### 内容の問題を自動的に修正する {#fix-issues}
+### 問題を修正する {#fix-issues}
 
 リポジトリに変更を提出するまえに、以下のコマンドを実行して (i) 報告された問題の対応し、(ii) スクリプトによって変更されたファイルのコミットをしてください。
 
@@ -332,7 +362,7 @@ npm run fix:all # ファイルを更新する場合があります。
 利用可能な NPM スクリプトのリストを表示するには、`npm run` を実行してください。
 プルリクエストのチェックとエラーの自動修正の詳細は、[PR checks](../pr-checks) を参照してください。
 
-### 変更をローカルでプレビューする {#preview-locally}
+### 変更をプレビューする {#preview-locally}
 
 変更のプッシュまたはプルリクエストの公開の前に、ローカルでプレビューしてください。
 プレビューはビルドエラーとマークダウンのフォーマットの問題を検出できます。
@@ -343,7 +373,7 @@ Hugo をローカルでビルドと提供するには、以下のコマンドを
 npm run serve
 ```
 
-Web ブラウザで `http://localhost:1313` に移動してローカルプレビューを確認してください。
+Web ブラウザで <http://localhost:1313> に移動してローカルプレビューを確認してください。
 Hugo は変更を監視し、必要に応じてサイトをリビルドします。
 
 ローカルの Hugo インスタンスを停止するには、ターミナルにもどって `Ctrl+C` を入力するか、ターミナルを閉じてください。
@@ -465,4 +495,6 @@ PR がマージされる前に、レビューと編集を数回繰り返すこ�
 
 [dashboard]: https://app.netlify.com/sites/opentelemetry/overview
 [deploy preview]: https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/
+[Git]: https://docs.github.com/en/get-started/using-git/about-git
+[`git` installed]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 [PR]: https://docs.github.com/en/pull-requests
