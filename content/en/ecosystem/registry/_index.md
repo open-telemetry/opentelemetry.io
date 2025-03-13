@@ -50,4 +50,6 @@ ecosystem. If you are a project maintainer, you can
 
 {{< ecosystem/registry/search-form >}}
 
+{{< ecosystem/registry/categories>}}
+
 {{< /blocks/section >}}
