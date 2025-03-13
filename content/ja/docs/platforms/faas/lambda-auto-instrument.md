@@ -16,12 +16,12 @@ OpenTelemetryコミュニティは、以下の言語用のスタンドアロン�
 これらのレイヤーは、AWSポータルを使用してLambdaに追加し、アプリケーションを自動的に計装できます。
 これらのレイヤーにはコレクターは含まれておらず、外部コレクターインスタンスを構成してデータを送信しない限り、追加する必要があります。
 
-### OTel Collector LambdaレイヤーのARNを追加する
+### OTel Collector LambdaレイヤーのARNを追加する {#add-the-arn-of-the-otel-collector-lambda-layer}
 
 [Collector Lambdaレイヤーのガイダンス](../lambda-collector/)を参照して、アプリケーションにレイヤーを追加し、Collectorを設定してください。
 これを最初に追加することをおすすめします。
 
-### 言語要件
+### 言語要件 {#language-requirements}
 
 {{< tabpane text=true >}} {{% tab Java %}}
 
@@ -67,12 +67,12 @@ Lambda レイヤーは、Ruby 3.2 と 3.3 の Lambda ランタイムをサポー
 
 {{% /tab %}} {{< /tabpane >}}
 
-### `AWS_LAMBDA_EXEC_WRAPPER` を設定する
+### `AWS_LAMBDA_EXEC_WRAPPER` を設定する {#configure-aws_lambda_exec_wrapper}
 
 Node.js、Java、Rubyの場合は `AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler` 、Pythonの場合は`AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-instrument` を設定して、アプリケーションのエントリーポイントを変更します。
 これらのラッパースクリプトは、自動計装を適用したLambdaアプリケーションを起動します。
 
-### 計装LambdaレイヤーのARNを追加する
+### 計装LambdaレイヤーのARNを追加する {#add-the-arn-of-instrumentation-lambda-layer}
 
 Lambda関数でOTelの自動計装を有効にするには、計装レイヤーとコレクターレイヤーを追加して設定し、トレースを有効にする必要があります。
 
@@ -85,7 +85,7 @@ Lambda関数でOTelの自動計装を有効にするには、計装レイヤー�
 
 注意: ラムダレイヤーはリージョンで分かれたリソースで、公開されているリージョンでのみ使用できます。Lambda関数と同じリージョンでレイヤーを使用するようにしてください。コミュニティは、利用可能なすべてのリージョンでレイヤーを公開しています。
 
-### SDKのエクスポーターの設定
+### SDKのエクスポーターの設定 {#configure-your-sdk-exporters}
 
 gRPC/HTTPレシーバーを持つコレクターが組み込まれている場合、Lambdaレイヤーで使用されるデフォルトのエクスポーターは変更なしで動作します。
 環境変数を更新する必要はありません。
@@ -109,6 +109,6 @@ gRPC/HTTPレシーバーを持つコレクターが組み込まれている場�
 
 {{% /tab %}} {{< /tabpane >}}
 
-### あなたのLambdaを公開する
+### Lambdaを公開する {#publish-your-lambda}
 
 Lambdaの新しいバージョンを公開して、新しい変更と計装をデプロイします。

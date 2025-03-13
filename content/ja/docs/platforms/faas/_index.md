@@ -13,7 +13,7 @@ Functions as a Service（FaaS）は、[クラウドネイティブアプリ][clo
 FaaSドキュメントの最初のベンダー範囲は、Microsoft Azure、Google Cloud Platform（GCP）、Amazon Web Services（AWS）です。
 AWSのファンクション（関数）はLambdaとしても知られています。
 
-### コミュニティアセット
+### コミュニティアセット {#community-assets}
 
 現在、OpenTelemetry コミュニティは、アプリケーションを自動計装することができるビルド済みの Lambda レイヤーと、アプリケーションを手動または自動で計装する際に使用できるスタンドアロンの Collector Lambda レイヤーを提供しています。
 
