@@ -11,13 +11,13 @@ cSpell:ignore: chalin docsy
 
 ## オンボーディング {#onboarding}
 
-コントリビュータがドキュメントに対する責任の大きい役割（承認者、メンテナー）を引き受ける場合、既存の承認者およびメンテナーによってオンボーディングが行われます。
+コントリビューターがドキュメントに対する責任の大きい役割（承認者、メンテナー）を引き受ける場合、既存の承認者およびメンテナーによってオンボーディングが行われます。
 
 - `docs-approvers`（または `docs-maintainers`）グループに追加されます
 - `#otel-comms`、`#otel-maintainers`、およびチーム内のプライベート Slack チャンネルに追加されます
 - [SIG Comm ミーティング](https://groups.google.com/a/opentelemetry.io/g/calendar-comms)と[メンテナーミーティング](https://groups.google.com/a/opentelemetry.io/g/calendar-maintainer-meeting)のカレンダー招待への登録を求められます
 - SIG Comm の現在のミーティング時間が適しているかを確認し、適さない場合は既存の承認者およびメンテナーと調整して、全員に適した時間を決定します
-- コントリビュータ向けのさまざまなリソースを確認します
+- コントリビューター向けのさまざまなリソースを確認します
   - [コミュニティリソース](https://github.com/open-telemetry/community/)。
     特に、[コミュニティメンバーシップ](https://github.com/open-telemetry/community/blob/main/community-membership.md) と
     [ソーシャルメディアガイド](https://github.com/open-telemetry/community/blob/main/social-media-guide.md) に関するドキュメント
@@ -38,7 +38,7 @@ cSpell:ignore: chalin docsy
 - 承認者またはメンテナーが長期間（数日または1週間以上）不在となる場合は、
   [#otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6) チャンネルでの通知や GitHub ステータスの更新を行います。
 - 承認者およびメンテナーは、[OTel 行動規範](https://github.com/open-telemetry/community/?tab=coc-ov-file#opentelemetry-community-code-of-conduct) と[コミュニティの価値観](/community/mission/#community-values)に従います。
-  彼らはコントリビュータに対して親切かつ協力的であり、何らかの対立や誤解、不快になるような状況が承認者またはメンテナーに生じた場合は、会話、イシューまたは PR から一歩引いて別の承認者やメンテナーに対応を依頼できます
+  彼らはコントリビューターに対して親切かつ協力的であり、何らかの対立や誤解、不快になるような状況が承認者またはメンテナーに生じた場合は、会話、イシューまたは PR から一歩引いて別の承認者やメンテナーに対応を依頼できます
 
 ## コードレビュー {#code-reviews}
 
