@@ -1,7 +1,7 @@
 ---
 title: Exporters
 weight: 50
-cSpell:ignore: chrono millis ostream rebar relx
+cSpell:ignore: rebar relx
 ---
 
 {{% docs/languages/exporters/intro erlang %}}

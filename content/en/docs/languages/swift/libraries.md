@@ -35,7 +35,7 @@ Use `DefaultResource.get()` to generate an all-in-one resource object. This
 resource can be added to a `TracerProvider` or `MetricProvider`.
 
 ```swift
-OpenTelemetry.registerTracerProvider(traceProvider: TracerProviderBuilder()
+OpenTelemetry.registerTracerProvider(tracerProvider: TracerProviderBuilder()
             .with(resource: DefaultResource.get())
             .build())
 ```

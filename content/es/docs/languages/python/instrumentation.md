@@ -4,12 +4,13 @@ aliases: [manual]
 weight: 20
 description: Instrumentación manual para OpenTelemetry Python
 default_lang_commit: 9b53527853049b249f60f12a000c0d85b9e5f5dc
+drifted_from_default: true
 cSpell:ignore: millis ottrace textmap
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro.md %}}
 
 ## Configuración
 

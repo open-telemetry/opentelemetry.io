@@ -19,8 +19,8 @@ a set of checks are executed. The PR checks verify that...
 {{% alert title="Note" color="primary" %}}
 
 If any of the PR checks fails, try to
-[fix content issues automatically](../pull-requests/#fix-content-issues-automatically)
-first by running `npm run fix:all` on your machine.
+[fix content issues automatically](../pull-requests/#fix-issues) first by
+running `npm run fix:all` on your machine.
 
 Additionally, you can comment `/fix:all` on your Pull Request. This will make
 the OpenTelemetry Bot run those commands on your behalf and update the PR. Make
@@ -43,8 +43,8 @@ more information.
 ## Style checks
 
 To make sure that contributions follow our [style guide](../style-guide/) we
-have implemented a set of checks that verify style guide rules and fail l if
-they find any issues.
+have implemented a set of checks that verify style guide rules and fail if they
+find any issues.
 
 The following list describes current checks and what you can do to fix related
 errors:
@@ -64,7 +64,7 @@ issues. Run `npm run check:text` again and manually fix the remaining issues.
 This check verifies that
 [standards and consistency for Markdown files are enforced](../style-guide/#markdown-standards).
 
-If any issues are found, run `npm:run format` to fix most issues. For more
+If any issues are found, run `npm run:format` to fix most issues. For more
 complex issues, run `npm run check:markdown` and apply the suggested changes.
 
 ### SPELLING check

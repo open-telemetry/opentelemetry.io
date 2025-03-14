@@ -2,7 +2,8 @@
 title: Exporters
 aliases: [exporting_data]
 weight: 50
-default_lang_commit: 5e2a0b43c1f9f42824a024206e797cf7041ed9db
+default_lang_commit: 07431d6e22a33faa6775f2c1f40aa122990dc214
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: otlplog otlploggrpc otlploghttp otlpmetric otlpmetricgrpc otlpmetrichttp otlptrace otlptracegrpc otlptracehttp promhttp stdoutlog stdouttrace
 ---
@@ -92,7 +93,7 @@ padrão:
 
 ```go
 import (
-  "context"
+	"context"
 
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp"
 	"go.opentelemetry.io/otel/sdk/trace"
@@ -115,7 +116,7 @@ padrão:
 
 ```go
 import (
-  "context"
+ 	"context"
 
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
 	"go.opentelemetry.io/otel/sdk/trace"
@@ -153,7 +154,7 @@ padrão:
 
 ```go
 import (
-  "context"
+ 	"context"
 
 	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp"
 	"go.opentelemetry.io/otel/sdk/metric"
@@ -176,7 +177,7 @@ padrão:
 
 ```go
 import (
-  "context"
+ 	"context"
 
 	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc"
 	"go.opentelemetry.io/otel/sdk/metric"
@@ -201,7 +202,7 @@ de métricas) com as configurações padrão:
 
 ```go
 import (
-  "context"
+ 	"context"
 
 	"go.opentelemetry.io/otel/exporters/prometheus"
 	"go.opentelemetry.io/otel/sdk/metric"
@@ -229,7 +230,7 @@ padrão:
 
 ```go
 import (
-  "context"
+ 	"context"
 
 	"go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp"
 	"go.opentelemetry.io/otel/sdk/log"

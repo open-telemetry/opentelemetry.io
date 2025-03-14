@@ -10,14 +10,14 @@ this website.
 
 ## Cloud-IDE setup
 
-These instructions are for [Gitpod.io][], adjust as needed for your favorite
-cloud IDE:
+These instructions are for [Gitpod.io], adjust as needed for your favorite cloud
+IDE:
 
 1.  Fork this repository. For help, see [Fork a repository][fork].
-2.  From [gitpod.io/workspaces][], create a new workspace (do this only once) or
+2.  From [gitpod.io/workspaces], create a new workspace (do this only once) or
     open an existing workspace over your fork. You can also visit a link of the
     form:
-    <https://gitpod.io#https://github.com/YOUR_GITHUB_ID/opentelemetry.io>.
+    `https://gitpod.io#https://github.com/YOUR_GITHUB_ID/opentelemetry.io`.
 
     > **Note**: If you have the necessary permissions to work from this
     > repository, or just want to look around, open
@@ -31,7 +31,7 @@ website files.
 ## Local setup
 
 1.  [Fork][] and then [clone][] the website repository at
-    <{{% _param github_repo %}}>.
+    <{{% param github_repo %}}>.
 2.  Go to the repository directory.
 3.  Install or upgrade to the [**active LTS** release][nodejs-rel] of Node.js.
     We recommend using [nvm][] to manage your Node installation. Under Linux,

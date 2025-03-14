@@ -7,6 +7,7 @@ author: >-
   Chalin](https://github.com/chalin/) (CNCF), [Tiffany
   Hrabusa](https://github.com/tiffany76) (Grafana Labs)
 sig: Comms
+crosspost_url: https://www.cncf.io/blog/2024/12/20/opentelemetry-io-2024-review/
 cSpell:ignore: Chalin Hrabusa opentelemetrybot
 ---
 
@@ -217,6 +218,9 @@ You can also join us:
 
 Together, we can make 2025 another amazing year for [opentelemetry.io](/)!
 
+_A version of this article also [appears on the CNCF blog][]._
+
+[appears on the CNCF blog]: <{{% param crosspost_url %}}>
 [Comms meetings]:
   https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY
 [discussions]: https://github.com/open-telemetry/opentelemetry.io/discussions

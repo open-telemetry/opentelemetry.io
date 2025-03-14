@@ -75,7 +75,7 @@ Follow the semantic conventions when setting span attributes.
 
 Some libraries are thin clients wrapping network calls. Chances are that
 OpenTelemetry has an instrumentation library for the underlying RPC client.
-Check out the [registry](/ecosystem/registry/)) to find existing libraries. If a
+Check out the [registry](/ecosystem/registry/) to find existing libraries. If a
 library exists, instrumenting the wrapper library might not be necessary.
 
 As a general guideline, only instrument your library at its own level. Don't
@@ -115,7 +115,7 @@ to help you decide how to minimize dependency conflicts:
 - While your instrumentation stabilizes, consider shipping it as a separate
   package, so that it never causes issues for users who don't use it. You can
   keep it in your repository, or
-  [add it to OpenTelemetry](https://github.com/open-telemetry/oteps/blob/main/text/0155-external-modules.md#contrib-components),
+  [add it to OpenTelemetry](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0155-external-modules.md#contrib-components),
   so it ships with other instrumentation libraries.
 - Semantic conventions are [stable, but subject to evolution][]: while this does
   not cause any functional issues, you might need to update your instrumentation

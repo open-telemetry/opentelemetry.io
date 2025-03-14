@@ -6,6 +6,7 @@ aliases:
   - /docs/concepts/otel-concepts
 weight: 11
 default_lang_commit: e7c30e9
+drifted_from_default: true
 ---
 
 OpenTelemetry 的目的是收集、处理和导出 **[信号][]** 。
@@ -22,6 +23,6 @@ OpenTelemetry 的目的是收集、处理和导出 **[信号][]** 。
 - [行李 (Baggage)](/docs/concepts/signals/baggage)
 
 **事件**是一种特定类型的日志，而
-[**profiles** 正在由 Profiling 工作组开发](https://github.com/open-telemetry/oteps/blob/main/text/profiles/0212-profiling-vision.md)。
+[**profiles** 正在由 Profiling 工作组开发](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/0212-profiling-vision.md)。
 
 [信号]: /docs/specs/otel/glossary/#signals

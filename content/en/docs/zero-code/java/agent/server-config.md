@@ -3,7 +3,7 @@ title: Application server configuration
 linkTitle: App server config
 description: Learn how to define agent paths for Java application servers
 weight: 215
-cSpell:ignore: asadmin binsetenv binstart Glassfish Payara setenv
+cSpell:ignore: asadmin Glassfish Payara setenv
 ---
 
 When instrumenting an app that runs on a Java application server with a Java

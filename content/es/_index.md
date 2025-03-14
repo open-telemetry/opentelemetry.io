@@ -2,13 +2,12 @@
 title: OpenTelemetry
 description: >-
   Telemetría portable, ubicua, y de alta calidad para una observabilidad eficaz
-outputs:
-  - HTML
 developer_note:
   La macro para los bloques/portada usa como imagen de fondo cualquier archivo
   de imagen que contenga la palabra "background" en su nombre.
 show_banner: true
 default_lang_commit: 7ac35d6b429165bbe6c28bdd91feeae83fd35142
+drifted_from_default: true
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>

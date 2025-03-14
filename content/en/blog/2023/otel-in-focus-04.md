@@ -81,7 +81,7 @@ There's much more -- be sure to check out the release notes!
 
 ## Project Updates
 
-KubeCon EU saw over ten thousand cloud-native developers gather in Amsterdam,
+KubeCon EU saw over ten thousand cloud native developers gather in Amsterdam,
 and a lot of you stopped by the OpenTelemetry booth to say hi! Hopefully some of
 you got your hands on our limited-edition KubeCon stickers... if not, well,
 there'll be more limited edition stickers. Just not for KubeCon, because it's

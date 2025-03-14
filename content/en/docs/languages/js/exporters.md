@@ -51,7 +51,7 @@ JavaScript) from the
 [Getting Started](/docs/languages/js/getting-started/nodejs/) like the following
 to export traces and metrics via OTLP (`http/protobuf`) :
 
-{{< tabpane text=true >}} {{% tab Typescript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 /*instrumentation.ts*/
@@ -256,7 +256,7 @@ npm install --save @opentelemetry/exporter-prometheus
 Update your OpenTelemetry configuration to use the exporter and to send data to
 your Prometheus backend:
 
-{{< tabpane text=true >}} {{% tab Typescript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 import * as opentelemetry from '@opentelemetry/sdk-node';
@@ -314,7 +314,7 @@ npm install --save @opentelemetry/exporter-zipkin
 Update your OpenTelemetry configuration to use the exporter and to send data to
 your Zipkin backend:
 
-{{< tabpane text=true >}} {{% tab Typescript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 import * as opentelemetry from '@opentelemetry/sdk-node';
@@ -345,9 +345,9 @@ const sdk = new opentelemetry.NodeSDK({
 
 {{% /tab %}} {{< /tabpane >}}
 
-{{% docs/languages/exporters/outro js "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk_trace_base.SpanExporter.html" %}}
+{{% docs/languages/exporters/outro js `https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk_trace_base.SpanExporter.html` %}}
 
-{{< tabpane text=true >}} {{% tab Typescript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 /*instrumentation.ts*/
@@ -355,7 +355,7 @@ import * as opentelemetry from '@opentelemetry/sdk-node';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 
 const sdk = new NodeSDK({
-  spanProcessor: new SimpleSpanProcessor(exporter),
+  spanProcessors: [new SimpleSpanProcessor(exporter)],
   instrumentations: [getNodeAutoInstrumentations()],
 });
 sdk.start();
@@ -371,7 +371,7 @@ const {
 } = require('@opentelemetry/auto-instrumentations-node');
 
 const sdk = new opentelemetry.NodeSDK({
-  spanProcessor: new SimpleSpanProcessor(exporter)
+  spanProcessors: [new SimpleSpanProcessor(exporter)],
   instrumentations: [getNodeAutoInstrumentations()],
 });
 sdk.start();

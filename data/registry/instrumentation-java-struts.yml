@@ -10,6 +10,6 @@ description: This package provides an instrumentation library for Struts
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/struts-2.3
+  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/struts/
 createdAt: 2020-11-05
 isFirstParty: false

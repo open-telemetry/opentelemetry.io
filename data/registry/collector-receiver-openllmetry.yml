@@ -1,4 +1,4 @@
-# cSpell:ignore openllmetry Instana
+# cSpell:ignore Instana
 title: OTel based Data Collector for LLM
 registryType: receiver
 language: java

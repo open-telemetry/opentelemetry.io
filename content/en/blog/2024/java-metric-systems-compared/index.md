@@ -285,7 +285,7 @@ The result is a configurable option unique to OpenTelemetry Java called
 what their memory mode is based on whether they read metric state concurrently
 or not. Right now you opt into the optimized memory behavior (which we call
 `MemoryMode.reusable_data`) via an
-[environment variable](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure#exporters).
+[environment variable](/docs/languages/java/configuration/#properties-exporters).
 In the future, the optimized memory mode will be enabled by default, since only
 exceptional cases need concurrent access to the metric state. It turns out that
 the objects holding the metric state (`MetricData` in OpenTelemetry Java terms)

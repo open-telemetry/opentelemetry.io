@@ -5,7 +5,7 @@ date: 2023-07-24
 author: '[Reese Lee](https://github.com/reese-lee) (New Relic)'
 body_class: otel-with-contributions-from
 # prettier-ignore
-cSpell:ignore: Aronoff autoscaler Boten codepath fluentbit k8sattributesprocessor kubelet spanmetrics
+cSpell:ignore: Aronoff autoscaler codepath fluentbit k8sattributesprocessor kubelet spanmetrics
 ---
 
 With contributions from [Adriana Villela](https://github.com/avillela)

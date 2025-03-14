@@ -1,12 +1,12 @@
 ---
 title: Site do OpenTelemetry com suporte a múltiplos idiomas!
 linkTitle: Site multilíngue
-date: 2024-08-10
+date: 2024-08-20
 author: >-
   [Severin Neumann](https://github.com/svrnm) (Cisco)
 issue: 4863
 sig: Comms
-default_lang_commit: 48eac183a4dd74946d5a45fa436cfc6052f30532
+default_lang_commit: bce1b5250953a60a763db1ae2a6f64d80894b8f7
 ---
 
 É com grande prazer que anunciamos que o site do OpenTelemetry está disponível

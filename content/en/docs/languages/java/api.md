@@ -468,8 +468,8 @@ is a bundle of key value pairs representing the
 See [semantic attributes](#semantic-attributes) for attribute constants
 generated from the semantic conventions.
 
-See [attribute naming](/docs/specs/semconv/general/attribute-naming/) for
-guidance on attribute naming.
+See [attribute naming](/docs/specs/semconv/general/naming/) for guidance on
+attribute naming.
 
 The following code snippet explores `Attributes` API usage:
 
@@ -560,6 +560,14 @@ public class AttributesUsage {
 
 ### OpenTelemetry
 
+{{% alert title="Spring Boot Starter" %}} The Spring Boot starter is a special
+case where `OpenTelemetry` is available as a Spring bean. Simply inject
+`OpenTelemetry` into your Spring components.
+
+Read more about
+[extending the Spring Boot starter with custom manual instrumentation](/docs/zero-code/java/spring-boot-starter/api/).
+{{% /alert %}}
+
 [OpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/OpenTelemetry.html)
 is a holder for top-level API components which is convenient to pass to
 instrumentation.
@@ -601,6 +609,14 @@ public class OpenTelemetryUsage {
 <!-- prettier-ignore-end -->
 
 ### GlobalOpenTelemetry
+
+{{% alert title="Java agent" %}} The Java agent is a special case where
+`GlobalOpenTelemetry` is set by the agent. Simply call
+`GlobalOpenTelemetry.get()` to access the `OpenTelemetry` instance.
+
+Read more about
+[extending the Java agent with custom manual instrumentation](/docs/zero-code/java/agent/api/).
+{{% /alert %}}
 
 [GlobalOpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/GlobalOpenTelemetry.html)
 holds a global singleton [OpenTelemetry](#opentelemetry) instance.
@@ -896,8 +912,7 @@ The instrument APIs have share a variety of features:
 - Record values which are `long` or `double`, which is configured via the
   builder.
 
-See
-[metric guidelines](http://localhost:1313/docs/specs/semconv/general/metrics/#general-guidelines)
+See [metric guidelines](/docs/specs/semconv/general/metrics/#general-guidelines)
 for details on metric naming and units.
 
 See
@@ -963,7 +978,7 @@ public class CounterUsage {
 
 #### Async Counter
 
-[ObservableLongCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableLongCounter.htmll)
+[ObservableLongCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableLongCounter.html)
 and
 [ObservableDoubleCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableDoubleCounter.html)
 are used to observe monotonic (positive) sums.

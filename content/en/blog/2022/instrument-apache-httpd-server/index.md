@@ -254,7 +254,7 @@ writing this blog, support for other architectures is not provided.
 - Now, restart the Apache HTTP Server and OpenTelemetry module should be
   instrumented.
 
-[^1]: {{% _param notes.docker-compose-v2 %}}
+[^1]: {{% param notes.docker-compose-v2 %}}
 
 [docker-compose.yml]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/blob/main/instrumentation/otel-webserver-module/docker-compose.yml

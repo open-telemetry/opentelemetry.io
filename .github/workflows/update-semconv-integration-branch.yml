@@ -1,0 +1,106 @@
+name: Update semconv integration branch
+
+on:
+  schedule:
+    # daily at 10:24 UTC
+    - cron: '24 10 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-semconv-integration-branch:
+    runs-on: ubuntu-latest
+    if: github.repository == 'open-telemetry/opentelemetry.io'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # this is needed in order to do the rebase below
+          fetch-depth: 0
+          # this is needed in order to trigger workflows when pushing new commits to the PR
+          token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+
+      - name: Set environment variables
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          branch_prefix="opentelemetrybot/semconv-integration"
+
+          version=$(git branch -r \
+                        | grep "^ *origin/$branch_prefix-v[0-9]+\.[0-9]+\..*-dev" \
+                        | sed "s|^ *origin/$branch_prefix-||" \
+                        | sed "s|-dev$||")
+
+          if [[ -z "$versions" ]]; then
+            latest_version=$(gh release view \
+                          --repo open-telemetry/semantic-conventions \
+                          --json tagName \
+                          --jq .tagName)
+            if [[ $latest_version =~ ^v([0-9]+)\.([0-9]+)\. ]]; then
+              major="${BASH_REMATCH[1]}"
+              minor="${BASH_REMATCH[2]}"
+              version="v$major.$((minor + 1)).0"
+            else
+              echo "unexpected version: $latest_version"
+              exit 1
+            fi
+          fi
+
+          echo "VERSION=$version" >> $GITHUB_ENV
+          echo "BRANCH=$branch_prefix-$version-dev" >> $GITHUB_ENV
+
+      - name: Checkout or create branch
+        run: |
+          if ! git ls-remote --exit-code --heads origin $BRANCH; then
+            git checkout -b $BRANCH origin/main
+            git push -u origin $BRANCH
+          else
+            git checkout $BRANCH
+          fi
+
+      - name: Use CLA approved github bot
+        run: |
+          git config user.name opentelemetrybot
+          git config user.email 107717825+opentelemetrybot@users.noreply.github.com
+
+      - name: Merge from main
+        run: |
+          previous=$(git rev-parse HEAD)
+          git fetch origin
+          git merge origin/main
+          if [ "$(git rev-parse HEAD)" != "$previous" ]; then
+            git push
+          fi
+
+      - name: Update submodule
+        run: |
+          git submodule update --init content-modules/semantic-conventions
+          cd content-modules/semantic-conventions
+
+          if git ls-remote --exit-code --tags origin $VERSION; then
+            git reset --hard $VERSION
+          else
+            git reset --hard origin/main
+          fi
+
+          commit_desc=$(git describe --tags)
+          cd ../..
+
+          sed -i "s/^\tsemconv-pin = .*/\tsemconv-pin = $commit_desc/" .gitmodules
+
+          git add -A
+
+          if ! git diff-index --quiet --cached HEAD; then
+            git commit -am "Update semconv submodule to $commit_desc"
+            git push
+          fi
+
+      - name: Create pull request if needed
+        env:
+          # not using secrets.GITHUB_TOKEN since pull requests from that token do not run workflows
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+        run: |
+          prs=$(gh pr list --state open --head $BRANCH)
+          if [ -z "$prs" ]; then
+            gh pr create --title "Update semantic conventions to $VERSION-dev" \
+                         --body "This PR updates the semantic conventions to $VERSION-dev." \
+                         --draft
+          fi

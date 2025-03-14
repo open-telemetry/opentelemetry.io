@@ -6,13 +6,11 @@ description: >-
   JavaScript (for Node.js & the browser).
 aliases: [/js, /js/metrics, /js/tracing]
 weight: 20
-cSpell:ignore: Roadmap
 ---
 
 {{% docs/languages/index-intro js /%}}
 
-{{% alert title="Warning" color="warning" %}}
-{{% _param notes.browser-instrumentation %}} {{% /alert %}}
+{{% include browser-instrumentation-warning.md %}}
 
 ## Version Support
 

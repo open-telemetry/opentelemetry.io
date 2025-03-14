@@ -20,7 +20,7 @@ they use OpenTelemetry in real life. Sessions are held for users in the Americas
 discussions take place using a
 [Lean Coffee format](https://agilecoffee.com/leancoffee/), whereby folks are
 invited to post their topics to the
-[Agile Coffee board like this one](http://agile.coffee/#b3b37364-d40e-4029-847c-8ee059d60855),
+[Agile Coffee board like this one](http://agile.coffee/?disable_http_check#b3b37364-d40e-4029-847c-8ee059d60855),
 and everyone in attendance votes on what they want to talk about.
 
 This is a great way to meet other users in the OpenTelemetry community, and to
@@ -196,7 +196,7 @@ Please also check out
 **A:** Implementing correlation takes time and is a work in progress.
 Correlation work is more mature for some languages (e.g. Java, Go) than for
 others. The best approach is to raise this issue in one of the language-specific
-repositories that pertains to your situation. A possible work-around is to start
+repositories that pertains to your situation. A possible workaround is to start
 traces at the log level, whereby every log will have its own associated trace.
 
 #### 3- Profiling
