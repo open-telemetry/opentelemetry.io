@@ -168,7 +168,7 @@ Expo Hall. This will be a place for informal chats, meetups, and other
 discussions led by OpenTelemetry community members and maintainers.
 
 For the activity schedule, see the
-[OTel Observatory Calendar](https://calendar.google.com/calendar/u/0/embed?src=c_6b6b343737cc9bbf0393ba40c101d6b017514751e66951c9890d089eedd78a37@group.calendar.google.com&mode=WEEK&dates=20250331/20250406).
+[OTel Observatory Calendar](https://calendar.google.com/calendar/embed?src=c_6b6b343737cc9bbf0393ba40c101d6b017514751e66951c9890d089eedd78a37@group.calendar.google.com&mode=WEEK&dates=20250331/20250406).
 
 Note that the Observatory might show up as "Splunk Activation Booth" on the
 event map.
