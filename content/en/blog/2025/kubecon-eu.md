@@ -169,7 +169,7 @@ meetups, and other discussions led by OpenTelemetry community members and
 maintainers.
 
 [^1]:
-    The Observatory booth may show up as a "Splunk activation zoon" in the event
+    The Observatory booth may show up as a "Splunk activation zone" in the event
     map.
 
 For the **activity schedule**, see the [OTel Observatory Calendar][]. If you’d
