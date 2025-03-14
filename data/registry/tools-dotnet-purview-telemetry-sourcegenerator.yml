@@ -31,15 +31,18 @@ tags:
   - purview
 license: MIT
 description:
-  "Generates [ActivitySource](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.activitysource),
+  'Generates
+  [ActivitySource](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.activitysource),
   [ILogger](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger),
-  and [Metrics](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.metrics) based telemetry 
-  from methods you define on an interface.<br />
-  <br />
-  This approach allows for:<br />
-  - Faster iteration cycles - simply create the method on your interface and the implementation will be automatically generated<br />
-  - Easy mocking/ substitution for testing - a full sample project, including tests can be found [here](https://github.com/purview-dev/purview-telemetry-sourcegenerator/tree/main/samples/SampleApp)<br />
-  - Built-in dependency injection helper generation"
+  and
+  [Metrics](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.metrics)
+  based telemetry from methods you define on an interface.<br /> <br /> This
+  approach allows for:<br /> - Faster iteration cycles - simply create the
+  method on your interface and the implementation will be automatically
+  generated<br /> - Easy mocking/ substitution for testing - a full sample
+  project, including tests can be found
+  [here](https://github.com/purview-dev/purview-telemetry-sourcegenerator/tree/main/samples/SampleApp)<br
+  /> - Built-in dependency injection helper generation'
 authors:
   - name: Kieron Lanning
     url: https://github.com/kieronlanning
