@@ -3,6 +3,7 @@ title: 迁移
 description: 如何迁移到 OpenTelemetry
 weight: 950
 default_lang_commit: 4b1f5e382758278e1e56e7b197bd349c17fdf9cb
+drifted_from_default: true
 ---
 
 ## OpenTracing 和 OpenCensus

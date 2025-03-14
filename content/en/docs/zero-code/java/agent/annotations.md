@@ -9,7 +9,7 @@ cSpell:ignore: Flowable javac reactivestreams reactivex
 For most users, the out-of-the-box instrumentation is completely sufficient and
 nothing more needs to be done. Sometimes, however, users wish to create
 [spans](/docs/concepts/signals/traces/#spans) for their own custom code without
-having to change much code. The `WithSpan` and `WithAttribute` annotations
+having to change much code. The `WithSpan` and `SpanAttribute` annotations
 support those use cases.
 
 ## Dependencies
@@ -79,6 +79,25 @@ types listed below, then the span will not be ended until the future completes.
 - [io.reactivex.Observable](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Observable.html)
 - [io.reactivex.Flowable](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Flowable.html)
 - [io.reactivex.parallel.ParallelFlowable](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/parallel/ParallelFlowable.html)
+
+### Parameters
+
+The `@WithSpan` attribute supports the following optional parameters to allow
+customization of spans:
+
+| name             | type              | default    | description                                                                                                                                  |
+| ---------------- | ----------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `kind`           | `SpanKind` (enum) | `INTERNAL` | The [kind of span](/docs/specs/otel/trace/api/#spankind).                                                                                    |
+| `inheritContext` | `boolean`         | `true`     | Since 2.14.0. Controls whether or not the new span will be parented in the existing (current) context. If `false`, a new context is created. |
+
+Example parameter usage:
+
+```java
+@WithSpan(kind = SpanKind.CLIENT, inheritContext = false)
+public void myMethod() {
+    <...>
+}
+```
 
 ## Adding attributes to the span with `@SpanAttribute`
 

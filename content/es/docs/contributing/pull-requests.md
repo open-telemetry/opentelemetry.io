@@ -5,6 +5,7 @@ description:
   editor de código.
 weight: 2
 default_lang_commit: f724c15be360e5059fb89e696d9a5cc8d00496f6 # patched
+drifted_from_default: true
 cSpell:ignore: aplícala solucionándolas vincúlalos
 ---
 

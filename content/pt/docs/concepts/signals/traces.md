@@ -344,7 +344,7 @@ explicitamente definido por um usuário. Isso é útil em qualquer situação em
 um desenvolvedor deseje que não haja outra interpretação de um trecho além de
 "bem-sucedido".
 
-Para reiterar: `Unset` representa um trecho que foi concluído sem erro. `OK`
+Para reiterar: `Unset` representa um trecho que foi concluído sem erro. `OK`
 representa quando um desenvolvedor marca explicitamente um trecho como
 bem-sucedido. Na maioria dos casos, não é necessário marcar explicitamente um
 trecho como OK.

@@ -3,6 +3,7 @@ title: Fornecedores
 description: Fornecedores que oferecem suporte nativo ao OpenTelemetry
 aliases: [/vendors]
 default_lang_commit: 8a15d0d668c516ccb255cd0a92e0bcd442e83b4d
+drifted_from_default: true
 ---
 
 Uma lista não exaustiva de organizações que oferecem soluções que consomem o
@@ -47,7 +48,7 @@ meio do OpenTelemetry, consulte [Integrações](/ecosystem/integrations/).
 
 [envie um PR]: /docs/contributing/pull-requests/
 
-{{% include keep-up-to-date.md vendor %}}
+{{% include keep-up-to-date.md fornecedores %}}
 
 [lista de fornecedores]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/vendors.yaml

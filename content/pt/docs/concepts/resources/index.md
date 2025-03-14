@@ -2,6 +2,7 @@
 title: Recursos
 weight: 70
 default_lang_commit: 17c3b8eb53b8abc56213abb736c0f850eab752df
+drifted_from_default: true
 ---
 
 ## Introdução {#introduction}

@@ -2,6 +2,7 @@
 title: Adotantes
 description: Organizações que usam OpenTelemetry
 default_lang_commit: 748555c22f43476291ae0c7974ca4a2577da0472
+drifted_from_default: true
 ---
 
 A missão do OpenTelemetry é possibilitar uma observabilidade eficaz para todos
@@ -35,7 +36,7 @@ Caso a sua organização ofereça uma solução que consome o OpenTelemetry para
 fornecer **Observabilidade aos usuários finais**, consulte
 [Fornecedores](/ecosystem/vendors).
 
-{{% include keep-up-to-date.md adopter %}}
+{{% include keep-up-to-date.md adotantes %}}
 
 [lista de adotantes]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/adopters.yaml

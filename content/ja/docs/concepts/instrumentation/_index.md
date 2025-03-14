@@ -2,16 +2,16 @@
 title: 計装
 description: OpenTelemetryはどのように計装を促進するか
 weight: 15
-default_lang_commit: d8c5612
+default_lang_commit: 94d77ab8cbfe5552a7cd68bf677be86c574a613a
 ---
 
-システムを観測可能にするためには、システムが **計装** されなければなりません。
-つまり、システムコンポーネントのコードが[トレース](/docs/concepts/signals/traces/)、[メトリクス](/docs/concepts/signals/metrics/)、[ログ](/docs/concepts/signals/logs/)といったテレメトリーシグナルを送出しなければなりません。
+システムを[観測可能][observable]にするため、システムが **計装** されなければなりません。
+つまり、システムコンポーネントのコードが[トレース][traces]、[メトリクス][metrics]、[ログ][logs]といった[シグナル][signals]を送出しなければなりません。
 
 OpenTelemetry を使えば、主に2つの方法でコードを計装できます。
 
-1. 公式の[各言語向けのAPIとSDK](/docs/languages/)を使った[コードベースソリューション](/docs/concepts/instrumentation/code-based)
-2. [ゼロコードソリューション](/docs/concepts/instrumentation/zero-code/)
+1. 公式の[各言語向けのAPIとSDK](/docs/languages/)を使った[コードベースソリューション](code-based/)
+2. [ゼロコードソリューション](zero-code/)
 
 **コードベース** ソリューションは、より深い洞察とリッチなテレメトリーをアプリケーション自身から得ることを可能にします。
 OpenTelemetry APIを使ってアプリケーションからテレメトリーを生成でき、ゼロコードソリューションによって生成されたテレメトリーを補完する重要な役割を果たします。
@@ -28,8 +28,14 @@ OpenTelemetryが提供するのは、ゼロコードやコードベースのテ�
 以下のものもOpenTelemetryの一部です。
 
 - ライブラリは依存関係として OpenTelemetry API を活用することができ、OpenTelemetry SDK がインポートされない限り、そのライブラリを使用するアプリケーションに影響はありません。
-- それぞれの[シグナル](/docs/concepts/signals)(トレース、メトリクス、ログ)に対して、それらを作成、処理、エクスポートするためのいくつかの方法が用意されています。
-- [コンテキスト伝播](/docs/concepts/context-propagation)が実装に組み込まれているので、シグナルがどこで生成されたかに関係なく、シグナルを相関させられます。
-- [リソース](/docs/concepts/resources)と[計装スコープ](/docs/concepts/instrumentation-scope)は、[ホスト](/docs/specs/semconv/resource/host/)、[オペレーティングシステム](/docs/specs/semconv/resource/os/)、[Kubernetesクラスター](/docs/specs/semconv/resource/k8s/#cluster)のように、異なるエンティティごとにシグナルをグループ化できます。
+- それぞれの[シグナル][signals](トレース、メトリクス、ログ)に対して、それらを作成、処理、エクスポートするためのいくつかの方法が用意されています。
+- [コンテキスト伝播](../context-propagation/)が実装に組み込まれているので、シグナルがどこで生成されたかに関係なく、シグナルを相関させられます。
+- [リソース](../resources/)と[計装スコープ](/docs/concepts/instrumentation-scope)は、[ホスト](/docs/specs/semconv/resource/host/)、[オペレーティングシステム](/docs/specs/semconv/resource/os/)、[Kubernetesクラスター](/docs/specs/semconv/resource/k8s/#cluster)のように、異なるエンティティごとにシグナルをグループ化できます。
 - APIとSDKの各言語固有の実装は、[OpenTelemetry仕様](/docs/specs/otel/)の要件と期待に従います。
-- [セマンティック規約](/docs/concepts/semantic-conventions)は、コードベースやプラットフォーム間で標準化のために使用できる共通の命名スキーマを提供します。
+- [セマンティック規約](../semantic-conventions/)は、コードベースやプラットフォーム間で標準化のために使用できる共通の命名スキーマを提供します。
+
+[logs]: ../signals/traces/
+[metrics]: ../signals/traces/
+[observable]: ../observability-primer/#what-is-observability
+[signals]: ../signals/
+[traces]: ../signals/traces/

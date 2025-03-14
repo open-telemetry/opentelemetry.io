@@ -23,9 +23,9 @@
   oss: false
   commercial: true
 - name: AWS
-  nativeOTLP: false
+  nativeOTLP: true
   url: https://aws-otel.github.io
-  contact:
+  contact: opentelemetry@amazon.com
   oss: false
   commercial: true
 - name: OpenSearch
@@ -410,7 +410,7 @@
   commercial: true
 - name: GreptimeDB
   nativeOTLP: true
-  url: https://docs.greptime.com/user-guide/ingest-data/for-observerbility/opentelemetry
+  url: https://docs.greptime.com/user-guide/ingest-data/for-observability/opentelemetry/
   contact: info@greptime.com
   oss: true
   commercial: true

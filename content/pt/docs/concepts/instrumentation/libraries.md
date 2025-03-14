@@ -3,6 +3,7 @@ title: Bibliotecas
 description: Aprenda como adicionar instrumentação nativa à sua biblioteca.
 weight: 40
 default_lang_commit: e09adae2c06b71a08cafb2b1c42e3e7b9e48997b
+drifted_from_default: true
 ---
 
 O OpenTelemetry fornece [bibliotecas de instrumentação][] para várias
