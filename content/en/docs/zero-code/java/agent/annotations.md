@@ -87,7 +87,7 @@ customization of spans:
 
 | name             | type              | default    | description                                                                                                                                  |
 | ---------------- | ----------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `kind`           | `SpanKind` (enum) | `INTERNAL` | The [kind of span](/docs/specs/otel/trace/api/#spankind).             |
+| `kind`           | `SpanKind` (enum) | `INTERNAL` | The [kind of span](/docs/specs/otel/trace/api/#spankind).                                                                                    |
 | `inheritContext` | `boolean`         | `true`     | Since 2.14.0. Controls whether or not the new span will be parented in the existing (current) context. If `false`, a new context is created. |
 
 Example parameter usage:
