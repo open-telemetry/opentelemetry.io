@@ -69,7 +69,7 @@ source ecosystem, and I’m excited to continue making meaningful contributions.
 ## Project Contributions and Future Directions
 
 During my tenure, I completed the creation of the
-[setup guide for the development of OpenTelemetry](https://github.com/open-telemetry/sig-contributor-experience/issues/31)
+[setup guide for contributions on OpenTelemetry](https://github.com/open-telemetry/sig-contributor-experience/issues/31)
 and contributed to refining existing documentation. Moving forward, I aim to
 continue my involvement with the OpenTelemetry community, focusing on expanding
 resources that facilitate contributor engagement.
