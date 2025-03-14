@@ -2,7 +2,7 @@
 title: OpenTelemetryとは
 description: OpenTelemetryが何であり、何でないかについての簡潔な説明。
 weight: 150
-default_lang_commit: e1209f387a604c493e8b41923a3b2ceacd7437a0
+default_lang_commit: 918511661af010726c8847d7fe41a46231fa59cc
 ---
 
 OpenTelemetry とは、次のようなものです。
@@ -18,6 +18,12 @@ OpenTelemetry とは、次のようなものです。
 OpenTelemetryの主な目的は、あなたのアプリケーションやシステムを、その言語、インフラ、ランタイム環境に関係なく、簡単に計装できるようにすることです。
 
 テレメトリーデータのバックエンド（保存）とフロントエンド（可視化）は意図的に他のツールに任せています。
+
+<div class="td-max-width-on-larger-screens">
+{{< youtube iEEIabOha8U >}}
+</div>
+
+より多くの、このシリーズのビデオや追加のリソースについては、[次のステップ](#what-next)を参照してください。
 
 ## オブザーバビリティとはなにか {#what-is-observability}
 
@@ -85,6 +91,8 @@ OpenTelemetryは、[Cloud Native Computing Foundation][](CNCF)プロジェクト
 
 - [Getting started](../getting-started/) &mdash; 早速始めてみましょう！
 - [OpenTelemetryの概念](../concepts/)について学ぶ
+- [Watch videos][] from the [OTel for beginners][] or other [playlists].
+- Sign up for [training](/training), including the **free course** [Getting started with OpenTelemetry](/training/#courses).
 
 [Cloud Native Computing Foundation]: https://www.cncf.io
 [instr]: ../concepts/instrumentation
@@ -92,6 +100,9 @@ OpenTelemetryは、[Cloud Native Computing Foundation][](CNCF)プロジェクト
 [logs]: ../concepts/signals/logs/
 [metrics]: ../concepts/signals/metrics/
 [observability]: ../concepts/observability-primer/#what-is-observability
+[OTel for beginners]: https://www.youtube.com/playlist?list=PLVYDBkQ1TdyyWjeWJSjXYUaJFVhplRtvN
+[playlists]: https://www.youtube.com/@otel-official/playlists
 [Prometheus]: https://prometheus.io/
 [telemetry data]: ../concepts/signals/
 [traces]: ../concepts/signals/traces/
+[Watch videos]: https://www.youtube.com/@otel-official
