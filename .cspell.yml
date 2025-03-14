@@ -10,11 +10,11 @@ import:
 caseSensitive: true
 ignorePaths:
   - '*.svg'
-  - content/ja
-  - content/zh
+  - content/{ja,zh}
   - data/community/members.yaml
+  - data/ecosystem/vendors.yaml
+  - public/_redirects
   - static/refcache.json
-  - vendors.yaml
 patterns:
   - name: CodeBlock
     pattern: |
@@ -22,7 +22,7 @@ patterns:
           ^(\s*[~`]{3,})   # code-block start
           .*               # all languages and options, e.g. shell {hl_lines=[12]}
           [\s\S]*?         # content
-          \1               # code-block end
+          \1               # code-block end - cSpell:disable-next-line
       /igmx
 languageSettings:
   - languageId: markdown
@@ -58,6 +58,6 @@ dictionaries:
 words: # Valid words across all locales
   - Docsy
   - htmltest
-  # Hugo
   - jsonify
+  - opentelemetrybot
   - warnf
