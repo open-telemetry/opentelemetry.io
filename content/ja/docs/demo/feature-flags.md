@@ -4,7 +4,8 @@ aliases:
   - feature_flags
   - services/feature-flag
   - services/featureflagservice
-default_lang_commit: ea3b23ce16243364ae03d368d49af870454f686f
+default_lang_commit: 24146bd1368e4c6082c7d6077efd29dba0d51055
+drifted_from_default: true
 cSpell:ignore: OLJCESPC7Z
 ---
 
