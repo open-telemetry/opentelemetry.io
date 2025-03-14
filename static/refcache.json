@@ -19115,6 +19115,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-01T06:59:07.840496-05:00"
   },
+  "https://www.youtube.com/@otel-official/playlists": {
+    "StatusCode": 200,
+    "LastSeen": "2025-03-14T11:42:49.100481-04:00"
+  },
   "https://www.youtube.com/embed/TIMgKXCeiyQ": {
     "StatusCode": 200,
     "LastSeen": "2024-12-17T15:37:39.559999-05:00"
@@ -19122,6 +19126,10 @@
   "https://www.youtube.com/embed/bsfMECwmsm0": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:10:38.092527-05:00"
+  },
+  "https://www.youtube.com/embed/iEEIabOha8U": {
+    "StatusCode": 200,
+    "LastSeen": "2025-03-14T11:42:48.773761-04:00"
   },
   "https://www.youtube.com/watch": {
     "StatusCode": 200,

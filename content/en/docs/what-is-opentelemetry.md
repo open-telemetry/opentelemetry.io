@@ -3,6 +3,7 @@ title: What is OpenTelemetry?
 description: A brief explanation of what OpenTelemetry is and isn't.
 aliases: [/about, /docs/concepts/what-is-opentelemetry, /otel]
 weight: 150
+cSpell:ignore: youtube
 ---
 
 OpenTelemetry is:
@@ -26,6 +27,13 @@ infrastructure, and runtime environments used.
 
 The backend (storage) and the frontend (visualization) of telemetry data are
 intentionally left to other tools.
+
+<div class="td-max-width-on-larger-screens">
+{{< youtube iEEIabOha8U >}}
+</div>
+
+For more videos in this series and additional resources, see
+[What next?](#what-next)
 
 ## What is observability?
 
@@ -124,6 +132,9 @@ migrate to OpenTelemetry in the [Migration guide](../migration/).
 
 - [Getting started](../getting-started/) &mdash; jump right in!
 - Learn about [OpenTelemetry concepts](../concepts/).
+- [Watch videos][] from the [OTel for beginners][] or other [playlists].
+- Sign up for [training](/training), including the **free course**
+  [Getting started with OpenTelemetry](/training/#courses).
 
 [Cloud Native Computing Foundation]: https://www.cncf.io
 [instr]: ../concepts/instrumentation
@@ -131,6 +142,10 @@ migrate to OpenTelemetry in the [Migration guide](../migration/).
 [logs]: ../concepts/signals/logs/
 [metrics]: ../concepts/signals/metrics/
 [observability]: ../concepts/observability-primer/#what-is-observability
+[OTel for beginners]:
+  https://www.youtube.com/playlist?list=PLVYDBkQ1TdyyWjeWJSjXYUaJFVhplRtvN
+[playlists]: https://www.youtube.com/@otel-official/playlists
 [Prometheus]: https://prometheus.io/
 [telemetry data]: ../concepts/signals/
 [traces]: ../concepts/signals/traces/
+[Watch videos]: https://www.youtube.com/@otel-official
