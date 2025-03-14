@@ -43,7 +43,7 @@ seemed like a simple task at first turned into a deep dive into improving
 developer onboarding, documenting tribal knowledge, and making contributions
 more accessible. Seeing community members reference my work and use it to get
 started was an incredibly rewarding feeling. It reminded me why I love open
-source—it's about creating something that empowers others.
+source — it's about creating something that empowers others.
 
 ## Growth in Skills and Confidence
 
