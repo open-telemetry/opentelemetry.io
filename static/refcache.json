@@ -9739,6 +9739,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-06T02:17:59.999Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#spankind": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-13T17:21:15.569829279Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.14.0/specification/sdk-environment-variables.md#general-sdk-configuration": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:17:12.345Z"
@@ -12247,6 +12251,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:40:52.473775-05:00"
   },
+  "https://github.com/purview-dev/purview-telemetry-sourcegenerator/tree/main/samples/SampleApp": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-14T10:04:55.39722679Z"
+  },
+  "https://github.com/purview-dev/purview-telemetry-sourcegenerator/wiki": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-14T10:04:55.71535952Z"
+  },
   "https://github.com/pyohannes": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:41:25.960943-05:00"
@@ -13894,6 +13906,18 @@
   "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:58:04.411013-05:00"
+  },
+  "https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-14T10:04:54.552538273Z"
+  },
+  "https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.activitysource": {
+    "StatusCode": 200,
+    "LastSeen": "2025-03-14T10:04:53.921752353Z"
+  },
+  "https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.metrics": {
+    "StatusCode": 200,
+    "LastSeen": "2025-03-14T10:04:54.95919053Z"
   },
   "https://learn.microsoft.com/en-us/dotnet/api/system.reflection.assembly.getentryassembly": {
     "StatusCode": 200,

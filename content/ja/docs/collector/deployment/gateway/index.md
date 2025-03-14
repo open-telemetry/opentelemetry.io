@@ -3,6 +3,7 @@ title: ゲートウェイ
 description: シグナルを単一のOTLPエンドポイントに送信し、そこからバックエンドに送信する理由と方法
 weight: 3
 default_lang_commit: b34ebe22b71962da96b898eb39a666ed57d447fe
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadbalancing resourcedetectionprocessor
 ---
