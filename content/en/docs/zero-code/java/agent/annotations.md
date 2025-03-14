@@ -86,7 +86,7 @@ The `@WithSpan` attribute supports two optional parameters to allow
 customization of spans:
 
 | name             | type              | default    | description                                                                                                                                  |
-|------------------|-------------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| ---------------- | ----------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | `kind`           | `SpanKind` (enum) | `INTERNAL` | The [kind of span](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#spankind).             |
 | `inheritContext` | `boolean`         | `true`     | Since 2.14.0. Controls whether or not the new span will be parented in the existing (current) context. If `false`, a new context is created. |
 
