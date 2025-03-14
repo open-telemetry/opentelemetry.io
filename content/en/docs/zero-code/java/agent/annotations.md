@@ -82,7 +82,7 @@ types listed below, then the span will not be ended until the future completes.
 
 ### Parameters
 
-The `@WithSpan` attribute supports two optional parameters to allow
+The `@WithSpan` attribute supports the following optional parameters to allow
 customization of spans:
 
 | name             | type              | default    | description                                                                                                                                  |
