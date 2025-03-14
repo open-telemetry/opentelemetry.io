@@ -3,6 +3,7 @@ title: エージェント
 description: コレクターにシグナルを送信し、そこからバックエンドに送信する理由と方法
 weight: 2
 default_lang_commit: b34ebe22b71962da96b898eb39a666ed57d447fe
+drifted_from_default: true
 cSpell:ignore: prometheusremotewrite
 ---
 
