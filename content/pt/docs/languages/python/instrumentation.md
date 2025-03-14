@@ -321,10 +321,11 @@ meter = metrics.get_meter("meu.medidor.nome")
 
 ### Criando e Usando Instrumentos Síncronos
 
-Os instrumentos são usados para fazer medições do seu aplicativo.
-[Instrumentos síncronos](/docs/specs/otel/metrics/api/#synchronous-and-asynchronous-instruments)
-são usados em linha com a lógica de processamento de aplicativos/negócios, como
-ao lidar com uma solicitação ou chamar outro serviço.
+Os
+[instrumentos síncronos](/docs/specs/otel/metrics/api/#synchronous-and-asynchronous-instruments)
+são usados para fazer medições do seu aplicativo e são usados em linha com a
+lógica de processamento de aplicativos/negócios, como ao lidar com uma
+solicitação ou chamar outro serviço.
 
 Primeiro, crie seu instrumento. Os instrumentos geralmente são criados uma vez
 no nível do módulo ou da classe e depois usados em linha com a lógica de
