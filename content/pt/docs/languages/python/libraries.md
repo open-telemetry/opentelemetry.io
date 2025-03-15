@@ -2,8 +2,8 @@
 title: Usando bibliotecas de instrumentação
 linkTitle: Bibliotecas
 weight: 40
-cSpell:ignore: httpx instrumentor uninstrument
 default_lang_commit: 918511661af010726c8847d7fe41a46231fa59cc
+cSpell:ignore: httpx instrumentor uninstrument
 ---
 
 {{% docs/languages/libraries-intro "python" %}}
