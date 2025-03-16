@@ -8,7 +8,7 @@ cSpell:ignore: fatalf otelcodes otelgrpc otlpmetricgrpc otlptracegrpc sdkmetric 
 
 Цей сервіс відповідає за повернення інформації про продукти. Сервіс може бути використаний для отримання всіх продуктів, пошуку конкретних продуктів або повернення деталей про будь-який окремий продукт.
 
-[Сирці сервісу каталогу продуктів](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/productcatalogservice/)
+[Сирці сервісу каталогу продуктів](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/product-catalog/)
 
 ## Трейси {#traces}
 

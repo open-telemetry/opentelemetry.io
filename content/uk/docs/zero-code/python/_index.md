@@ -4,7 +4,7 @@ linkTitle: Python
 weight: 30
 aliases: [/docs/languages/python/automatic]
 # prettier-ignore
-cSpell:ignore: devel distro mkdir myapp pyproject uninstrumented virtualenv Werkzeug
+cSpell:ignore: devel distro myapp
 ---
 
 Автоматичне інструментування з Python використовує агент Python, який можна підʼєднати до будь-якого застосунку Python. Цей агент в основному використовує [monkey patching](https://en.wikipedia.org/wiki/Monkey_patch), щоб змінювати функції бібліотек під час виконання, дозволяючи захоплювати телеметричні дані з багатьох популярних бібліотек та фреймворків.

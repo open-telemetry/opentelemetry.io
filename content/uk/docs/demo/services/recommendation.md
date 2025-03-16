@@ -7,7 +7,7 @@ cSpell:ignore: cpython instrumentor NOTSET
 
 Цей сервіс відповідає за отримання списку рекомендованих продуктів для користувача на основі наявних ідентифікаторів продуктів, які переглядає користувач.
 
-[Сирці сервісу рекомендацій](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/recommendationservice/)
+[Сирці сервісу рекомендацій](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/recommendation/)
 
 ## Автоінструментування {#auto-instrumentation}
 
@@ -24,7 +24,7 @@ ENTRYPOINT [ "opentelemetry-instrument", "python", "recommendation_server.py" ]
 SDK OpenTelemetry ініціалізується в блоці коду `__main__`. Цей код створить провайдера трасування та встановить процесор відрізків для використання. Експортні точки доступу, атрибути ресурсів та імʼя сервісу автоматично встановлюються автоінструментатором OpenTelemetry на основі змінних середовища.
 
 ```python
-tracer = trace.get_tracer_provider().get_tracer("recommendationservice")
+tracer = trace.get_tracer_provider().get_tracer("recommendation")
 ```
 
 ### Додавання атрибутів до автоінструментованих відрізків {#adding-attributes-to-auto-instrumented-spans}
@@ -56,7 +56,7 @@ with tracer.start_as_current_span("get_product_list") as span:
 SDK OpenTelemetry ініціалізується в блоці коду `__main__`. Цей код створить провайдера метрик. Експортні точки доступу, атрибути ресурсів та імʼя сервісу автоматично встановлюються автоінструментатором OpenTelemetry на основі змінних середовища.
 
 ```python
-meter = metrics.get_meter_provider().get_meter("recommendationservice")
+meter = metrics.get_meter_provider().get_meter("recommendation")
 ```
 
 ### Власні метрики {#custom-metrics}
@@ -68,7 +68,7 @@ meter = metrics.get_meter_provider().get_meter("recommendationservice")
 
 ### Автоінструментовані метрики {#auto-instrumented-metrics}
 
-Наступні метрики доступні через автоінструментування, завдяки `opentelemetry-instrumentation-system-metrics`, який встановлюється як частина `opentelemetry-bootstrap` при побудові Docker-образу recommendationservice:
+Наступні метрики доступні через автоінструментування, завдяки `opentelemetry-instrumentation-system-metrics`, який встановлюється як частина `opentelemetry-bootstrap` при побудові Docker-образу сервісу recommendation:
 
 - `runtime.cpython.cpu_time`
 - `runtime.cpython.memory`

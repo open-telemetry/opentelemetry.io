@@ -43,7 +43,7 @@ npm install --save @opentelemetry/exporter-trace-otlp-grpc \
 
 Далі, налаштуйте експортер для вказівки на точку доступу OTLP. Наприклад, ви можете оновити файл `instrumentation.ts` (або `instrumentation.js`, якщо ви використовуєте JavaScript) з [Початка роботи](/docs/languages/js/getting-started/nodejs/) наступним чином для експорту трас і метрик через OTLP (`http/protobuf`):
 
-{{< tabpane text=true >}} {{% tab Typescript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 /*instrumentation.ts*/
@@ -214,7 +214,7 @@ npm install --save @opentelemetry/exporter-prometheus
 
 Оновіть вашу конфігурацію OpenTelemetry для використання експортера та надсилання даних до вашого Prometheus бекенду:
 
-{{< tabpane text=true >}} {{% tab Typescript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 import * as opentelemetry from '@opentelemetry/sdk-node';
@@ -268,7 +268,7 @@ npm install --save @opentelemetry/exporter-zipkin
 
 Оновіть вашу конфігурацію OpenTelemetry для використання експортера та надсилання даних до вашого Zipkin бекенду:
 
-{{< tabpane text=true >}} {{% tab Typescript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 import * as opentelemetry from '@opentelemetry/sdk-node';
@@ -299,9 +299,9 @@ const sdk = new opentelemetry.NodeSDK({
 
 {{% /tab %}} {{< /tabpane >}}
 
-{{% uk/docs/languages/exporters/outro js "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk_trace_base.SpanExporter.html" %}}
+{{% uk/docs/languages/exporters/outro js `https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk_trace_base.SpanExporter.html` %}}
 
-{{< tabpane text=true >}} {{% tab Typescript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 /*instrumentation.ts*/
@@ -309,7 +309,7 @@ import * as opentelemetry from '@opentelemetry/sdk-node';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 
 const sdk = new NodeSDK({
-  spanProcessor: new SimpleSpanProcessor(exporter),
+  spanProcessors: new SimpleSpanProcessor(exporter),
   instrumentations: [getNodeAutoInstrumentations()],
 });
 sdk.start();
@@ -325,7 +325,7 @@ const {
 } = require('@opentelemetry/auto-instrumentations-node');
 
 const sdk = new opentelemetry.NodeSDK({
-  spanProcessor: new SimpleSpanProcessor(exporter)
+  spanProcessors: new SimpleSpanProcessor(exporter)
   instrumentations: [getNodeAutoInstrumentations()],
 });
 sdk.start();

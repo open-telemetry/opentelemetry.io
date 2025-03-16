@@ -43,7 +43,7 @@ https://github.com/open-telemetry/opentelemetry-collector-releases/releases/down
 chmod +x ocb
 ```
 
-{{% /tab %}} {{% tab "MacOS (AMD 64)" %}}
+{{% /tab %}} {{% tab "macOS (AMD 64)" %}}
 
 ```sh
 curl --proto '=https' --tlsv1.2 -fL -o ocb \
@@ -51,7 +51,7 @@ https://github.com/open-telemetry/opentelemetry-collector-releases/releases/down
 chmod +x ocb
 ```
 
-{{% /tab %}} {{% tab "MacOS (ARM 64)" %}}
+{{% /tab %}} {{% tab "macOS (ARM 64)" %}}
 
 ```sh
 curl --proto '=https' --tlsv1.2 -fL -o ocb \
@@ -78,15 +78,14 @@ Unblock-File -Path "ocb.exe"
 
 Ось теґи для мапи `dist`:
 
-| Теґ              | Опис                                                                                               | Необовʼязковий | Стандартне значення                                                                  |
-| ---------------- | -------------------------------------------------------------------------------------------------- | -------------- | ------------------------------------------------------------------------------------ |
-| module:          | Імʼя модуля для нового дистрибутиву, відповідно до домовленостей Go mod. Необовʼязковий, але рекомендований. | Так           | `go.opentelemetry.io/collector/cmd/builder`                                          |
-| name:            | Імʼя бінарного файлу для вашого дистрибутиву                                                       | Так           | `otelcol-custom`                                                                     |
-| description:     | Довге імʼя застосунку.                                                                             | Так           | `Custom OpenTelemetry Collector distribution`                                        |
-| otelcol_version: | Версія OpenTelemetry Collector, яку слід використовувати як основу для дистрибутиву.               | Так           | `{{% version-from-registry collector-builder noPrefix %}}`                           |
-| output_path:     | Шлях для запису вихідних даних (вихідні коди та бінарний файл).                                    | Так           | `/var/folders/86/s7l1czb16g124tng0d7wyrtw0000gn/T/otelcol-distribution3618633831`    |
-| version:         | Версія вашого власного OpenTelemetry Collector.                                                    | Так           | `1.0.0`                                                                              |
-| go:              | Який бінарний файл Go використовувати для компіляції згенерованих вихідних кодів.                  | Так           | go з PATH                                                                            |
+| Теґ          | Опис                                                                                               | Необовʼязковий | Стандартне значення                                                                 |
+| ------------ | -------------------------------------------------------------------------------------------------- | -------------- | ----------------------------------------------------------------------------------- |
+| module:      | Імʼя модуля для нового дистрибутиву, відповідно до домовленостей Go mod. Необовʼязковий, але рекомендований. | Так           | `go.opentelemetry.io/collector/cmd/builder`                                |
+| name:        | Імʼя бінарного файлу для вашого дистрибутиву                                                       | Так           | `otelcol-custom`                                                                     |
+| description: | Довге імʼя застосунку.                                                                             | Так           | `Custom OpenTelemetry Collector distribution`                                        |
+| output_path: | Шлях для запису вихідних даних (вихідні коди та бінарний файл).                                    | Так           | `/var/folders/86/s7l1czb16g124tng0d7wyrtw0000gn/T/otelcol-distribution3618633831`    |
+| version:     | Версія вашого власного OpenTelemetry Collector.                                                    | Так           | `1.0.0`                                                                              |
+| go:          | Який бінарний файл Go використовувати для компіляції згенерованих вихідних кодів.                  | Так           | go з PATH                                                                            |
 
 Як ви бачите в таблиці вище, всі теги `dist` є необовʼязковими, тому ви будете додавати власні значення для них залежно від того, чи маєте намір зробити ваш власний дистрибутив Колектора доступним для використання іншими користувачами, чи просто використовуєте `ocb` для створення середовища розробки та тестування ваших компонентів.
 
@@ -117,7 +116,6 @@ dist:
   name: otelcol-dev
   description: Basic OTel Collector distribution for Developers
   output_path: ./otelcol-dev
-  otelcol_version: {{% version-from-registry collector-builder noPrefix %}}
 
 exporters:
   - gomod:

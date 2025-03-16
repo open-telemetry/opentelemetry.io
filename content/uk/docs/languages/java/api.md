@@ -398,7 +398,7 @@ public class ProvidersAndScopes {
 
 Дивіться [семантичні атрибути](#semantic-attributes) для констант атрибутів, згенерованих з семантичних домовленостей.
 
-Дивіться [іменування атрибутів](/docs/specs/semconv/general/attribute-naming/) для керівництва з іменування атрибутів.
+Дивіться [іменування атрибутів](/docs/specs/semconv/general/naming/) для керівництва з іменування атрибутів.
 
 Наступний фрагмент коду досліджує використання API `Attributes`:
 
@@ -489,6 +489,11 @@ public class AttributesUsage {
 
 ### OpenTelemetry
 
+{{% alert title="Spring Boot Starter" %}} Spring Boot-стартер — це особливий випадок, коли `OpenTelemetry` доступний як Spring-bean. Просто додайте `OpenTelemetry` до ваших компонентів Spring.
+
+Дізнайтеся більше про [розширення Spring Boot-стартера за допомогою власного ручного інструментарію](/docs/zero-code/java/spring-boot-starter/api/).
+{{% /alert %}}
+
 [OpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/OpenTelemetry.html) є тримачем для основних компонентів API, який зручно передавати для інструментування.
 
 `OpenTelemetry` складається з:
@@ -527,6 +532,11 @@ public class OpenTelemetryUsage {
 <!-- prettier-ignore-end -->
 
 ### GlobalOpenTelemetry
+
+{{% alert title="Java-агент" %}} Java-агент є особливим випадком, коли `GlobalOpenTelemetry` встановлюється агентом. Просто викличте `GlobalOpenTelemetry.get()`, щоб отримати доступ до екземпляру `OpenTelemetry`.
+
+Дізнайтеся більше про [розширення Java-агента за допомогою власного ручного інструментарію](/docs/zero-code/java/agent/api/).
+{{% /alert %}}
 
 [GlobalOpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/GlobalOpenTelemetry.html) містить глобальний синглтон екземпляра [OpenTelemetry](#opentelemetry) .
 
@@ -760,7 +770,7 @@ API інструментів мають спільні різноманітні 
 - Необовʼязкова одиниця та опис.
 - Запис значень, які є `long` або `double`, що налаштовується за допомогою будівельника.
 
-Дивіться [керівництво з метрик](http://localhost:1313/docs/specs/semconv/general/metrics/#general-guidelines) для деталей про іменування метрик та одиниць.
+Дивіться [керівництво з метрик](/docs/specs/semconv/general/metrics/#general-guidelines) для деталей про іменування метрик та одиниць.
 
 Дивіться [керівництво для авторів бібліотек інструментування](/docs/specs/otel/metrics/supplementary-guidelines/#guidelines-for-instrumentation-library-authors) для додаткових рекомендацій щодо вибору інструментів.
 
@@ -820,7 +830,7 @@ public class CounterUsage {
 
 #### Async Counter
 
-[ObservableLongCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableLongCounter.htmll) та [ObservableDoubleCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableDoubleCounter.html) використовуються для спостереження монотонних (позитивних) сум.
+[ObservableLongCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableLongCounter.html) та [ObservableDoubleCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableDoubleCounter.html) використовуються для спостереження монотонних (позитивних) сум.
 
 Наступний фрагмент коду досліджує використання API async counter:
 

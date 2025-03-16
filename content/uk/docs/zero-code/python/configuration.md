@@ -6,7 +6,7 @@ aliases:
   - /docs/languages/python/automatic/configuration
   - /docs/languages/python/automatic/agent-config
 # prettier-ignore
-cSpell:ignore: distro healthcheck instrumentor mkdir myapp pyproject Starlette uninstrumented urllib virtualenv
+cSpell:ignore: healthcheck instrumentor myapp pyproject Starlette urllib
 ---
 
 Агент має широкі можливості для налаштування, або через:

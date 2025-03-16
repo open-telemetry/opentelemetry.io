@@ -1,6 +1,7 @@
 ---
 title: Керування телеметрією за допомогою SDK
 weight: 12
+aliases: [exporters]
 cSpell:ignore: autoconfigured FQCNs Interceptable Logback okhttp
 ---
 
@@ -364,7 +365,7 @@ public class CustomSpanProcessor implements SpanProcessor {
 | `InterceptableSpanExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha`     | Передає відрізки до гнучкого перехоплювача перед експортом.                      |
 | `KafkaSpanExporter`            | `io.opentelemetry.contrib:opentelemetry-kafka-exporter:{{% param vers.contrib %}}-alpha` | Експортує відрізки, записуючи їх до теми Kafka.                                    |
 
-**[1]**: Дивіться [OTLP exporter sender](#otlp-exporter-senders) для деталей реалізації.
+**[1]**: Дивіться [OTLP exporters](#otlp-exporters) для деталей реалізації.
 
 Наступний фрагмент коду демонструє програмну конфігурацію `SpanExporter`:
 
@@ -667,7 +668,7 @@ public class CustomMetricReader implements MetricReader {
 | `OtlpStdoutMetricExporter`       | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Логує метрики до `System.out` у OTLP [JSON file encoding][] (експериментально). |
 | `InterceptableMetricExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Передає метрики до гнучкого перехоплювача перед експортом.                      |
 
-**[1]**: Дивіться [OTLP exporter sender](#otlp-exporter-senders) для деталей реалізації.
+**[1]**: Дивіться [OTLP exporters](#otlp-exporters) для деталей реалізації.
 
 Наступний фрагмент коду демонструє програмну конфігурацію `MetricExporter`:
 
@@ -962,7 +963,7 @@ public class CustomLogRecordProcessor implements LogRecordProcessor {
 | `OtlpStdoutLogRecordExporter`              | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Логує логи до `System.out` у OTLP [JSON file encoding][] (експериментально). |
 | `InterceptableLogRecordExporter`           | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Передає логи до гнучкого перехоплювача перед експортом.                      |
 
-**[1]**: Дивіться [OTLP exporter sender](#otlp-exporter-senders) для деталей реалізації.
+**[1]**: Дивіться [OTLP exporters](#otlp-exporters) для деталей реалізації.
 
 **[2]**: `OtlpJsonLoggingLogRecordExporter` логує до JUL і може викликати нескінченні цикли (тобто JUL -> SLF4J -> Logback -> OpenTelemetry Appender -> OpenTelemetry Log SDK -> JUL), якщо не налаштований обережно.
 
@@ -1200,16 +1201,21 @@ public class IgnoreExportErrorsFilter implements java.util.logging.Filter {
 io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extension.logging.IgnoreExportErrorsFilter
 ```
 
-### Відправники OTLP експортерів {#otlp-exporter-senders}
+### Відправники OTLP експортерів {#otlp-exporters}
 
-[експортер відрізків](#spanexporter), [експортер метрик](#metricexporter) та [експортер логів](#logrecordexporter) описують OTLP експортери у формі:
+Розділи: [експортер відрізків](#spanexporter), [експортер метрик](#metricexporter) та [експортер логів](#logrecordexporter) описують OTLP експортери у формі:
 
 - `OtlpHttp{Signal}Exporter` експортує дані через OTLP `http/protobuf`.
 - `OtlpGrpc{Signal}Exporter` експортує дані через OTLP `grpc`.
 
-Експортери для всіх сигналів доступні через `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`.
+Експортери для всіх сигналів доступні через `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`  і мають значний збіг між версіями `grpc` та `http/protobuf` протоколу OTLP протоколу OTLP, а також між сигналами. У наступних розділах детально розглянуто ці ключові поняття:
 
-Внутрішньо ці експортери залежать від різних клієнтських бібліотек для виконання HTTP та gRPC запитів. Немає єдиної клієнтської бібліотеки HTTP / gRPC, яка задовольняє всі випадки використання в екосистемі Java:
+- [Відправники](#senders): абстракція для різних клієнтських бібліотек HTTP / gRPC.
+- [Автентифікація](#authentication): опції для експортерів OTLP.
+
+#### Відправники {#senders}
+
+Експортери залежать від різних клієнтських бібліотек для виконання HTTP та gRPC запитів. Немає єдиної клієнтської бібліотеки HTTP / gRPC, яка задовольняє всі випадки використання в екосистемі Java:
 
 - Java 11+ приносить вбудований `java.net.http.HttpClient`, але `opentelemetry-java` потрібно підтримувати користувачів Java 8+, і це не можна використовувати для експорту через `gRPC`, оскільки немає підтримки  trailer header.
 - [OkHttp](https://square.github.io/okhttp/) надає потужний HTTP клієнт з підтримкою  trailer header, але залежить від стандартної бібліотеки kotlin.
@@ -1224,6 +1230,112 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 | `io.opentelemetry:opentelemetry-exporter-sender-grpc-managed-channel:{{% param vers.otel %}}` **[1]** | Реалізація на основі `ManagedChannel` `grpc-java`.        | `grpc`                  | Ні      |
 
 **[1]**: Щоб використовувати `opentelemetry-exporter-sender-grpc-managed-channel`, ви також повинні додати залежність від [реалізацій транспорту gRPC](https://github.com/grpc/grpc-java#transport).
+
+#### Автентифікація {#authentication}
+
+Експортери OTLP надають механізми для статичної та динамічної автентифікації на основі заголовків, а також для mTLS.
+
+Якщо ви використовуєте [zero-code SDK autoconfigure](../configuration/#zero-code-sdk-autoconfigure) зі змінними середовища та системними властивостями, див. [відповідні системні властивості](../configuration/#properties-exporters):
+
+- `otel.exporter.otlp.headers` для статичної автентифікації на основі заголовків.
+- `otel.exporter.otlp.client.key`, `otel.exporter.otlp.client.certificate` для mTLS-автентифікації.
+
+Наступний фрагмент коду демонструє програмне налаштування статичної та динамічної автентифікації на основі заголовків:
+
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/OtlpAuthenticationConfig.java"?>
+```java
+package otel;
+
+import io.opentelemetry.exporter.otlp.http.logs.OtlpHttpLogRecordExporter;
+import io.opentelemetry.exporter.otlp.http.metrics.OtlpHttpMetricExporter;
+import io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporter;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Collections;
+import java.util.Map;
+import java.util.function.Supplier;
+
+public class OtlpAuthenticationConfig {
+  public static void staticAuthenticationHeader(String endpoint) {
+    // Якщо адресат OTLP приймає статичний, довгоживучий заголовок автентифікації, наприклад, ключ API,
+    // встановіть його як заголовок.
+    // Це зчитує ключ API зі змінної env var OTLP_API_KEY, щоб уникнути жорсткого кодування секрету у
+    // вихідному коді.
+    String apiKeyHeaderName = "api-key";
+    String apiKeyHeaderValue = System.getenv("OTLP_API_KEY");
+
+    // Ініціалізуйте експортери OTLP Span, Metric та LogRecord за аналогічним шаблоном
+    OtlpHttpSpanExporter spanExporter =
+        OtlpHttpSpanExporter.builder()
+            .setEndpoint(endpoint)
+            .addHeader(apiKeyHeaderName, apiKeyHeaderValue)
+            .build();
+    OtlpHttpMetricExporter metricExporter =
+        OtlpHttpMetricExporter.builder()
+            .setEndpoint(endpoint)
+            .addHeader(apiKeyHeaderName, apiKeyHeaderValue)
+            .build();
+    OtlpHttpLogRecordExporter logRecordExporter =
+        OtlpHttpLogRecordExporter.builder()
+            .setEndpoint(endpoint)
+            .addHeader(apiKeyHeaderName, apiKeyHeaderValue)
+            .build();
+  }
+
+  public static void dynamicAuthenticationHeader(String endpoint) {
+    // Якщо адресат OTLP вимагає динамічного заголовка автентифікації, наприклад, JWT, який потрібно
+    // періодично оновлюватися, скористайтеся постачальником заголовків.
+    // Тут ми реалізуємо простий постачальник, який додає заголовок виду "Authorization: Bearer
+    // <token", де <token> зчитується з refreshBearerToken кожні 10 хвилин.
+    String username = System.getenv("OTLP_USERNAME");
+    String password = System.getenv("OTLP_PASSWORD");
+    Supplier<Map<String, String>> supplier =
+        new AuthHeaderSupplier(() -> refreshToken(username, password), Duration.ofMinutes(10));
+
+    // Ініціалізуйте експортери OTLP Span, Metric та LogRecord за аналогічним шаблоном
+    OtlpHttpSpanExporter spanExporter =
+        OtlpHttpSpanExporter.builder().setEndpoint(endpoint).setHeaders(supplier).build();
+    OtlpHttpMetricExporter metricExporter =
+        OtlpHttpMetricExporter.builder().setEndpoint(endpoint).setHeaders(supplier).build();
+    OtlpHttpLogRecordExporter logRecordExporter =
+        OtlpHttpLogRecordExporter.builder().setEndpoint(endpoint).setHeaders(supplier).build();
+  }
+
+  private static class AuthHeaderSupplier implements Supplier<Map<String, String>> {
+    private final Supplier<String> tokenRefresher;
+    private final Duration tokenRefreshInterval;
+    private Instant refreshedAt = Instant.ofEpochMilli(0);
+    private String currentTokenValue;
+
+    private AuthHeaderSupplier(Supplier<String> tokenRefresher, Duration tokenRefreshInterval) {
+      this.tokenRefresher = tokenRefresher;
+      this.tokenRefreshInterval = tokenRefreshInterval;
+    }
+
+    @Override
+    public Map<String, String> get() {
+      return Collections.singletonMap("Authorization", "Bearer " + getToken());
+    }
+
+    private synchronized String getToken() {
+      Instant now = Instant.now();
+      if (currentTokenValue == null || now.isAfter(refreshedAt.plus(tokenRefreshInterval))) {
+        currentTokenValue = tokenRefresher.get();
+        refreshedAt = now;
+      }
+      return currentTokenValue;
+    }
+  }
+
+  private static String refreshToken(String username, String password) {
+    // Для сценарію промислового використання це буде замінено на позасмуговий запит на обмін
+    // імʼя користувача / пароль для токена на предʼявника.
+    return "abc123";
+  }
+}
+```
+<!-- prettier-ignore-end -->
 
 ### Тестування {#testing}
 

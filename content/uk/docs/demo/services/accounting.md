@@ -6,7 +6,7 @@ aliases: [accountingservice]
 
 Цей сервіс обчислює загальну суму проданих продуктів. Це лише імітація, і отримані замовлення виводяться на екран.
 
-[Сервіс Бухгалтерії](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/accountingservice/)
+[Сервіс Бухгалтерії](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/accounting/)
 
 ## Авто-інструментування {#auto-instrumentation}
 

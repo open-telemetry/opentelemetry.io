@@ -13,7 +13,7 @@ cSpell:ignore: itemct oteldemo reqwest sdktrace semcov shiporder tokio
 
 `build.rs` підтримує розробку поза Docker, за наявності встановленого Rust. В іншому випадку, розгляньте можливість збірки з використанням `docker compose` для редагування/оцінки змін за потреби.
 
-[Сирці сервісу доставки](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/shippingservice/)
+[Сирці сервісу доставки](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/shipping/)
 
 ## Трейси {#traces}
 
@@ -56,10 +56,10 @@ fn init_tracer() -> Result<sdktrace::Tracer, TraceError> {
 
 Цей сервіс отримує gRPC запити, які інструментуються в проміжному програмному забезпеченні.
 
-Кореневий відрізок запускається і передається як посилання в тому ж потоці до іншого замикання, де ми викликаємо `quoteservice`.
+Кореневий відрізок запускається і передається як посилання в тому ж потоці до іншого замикання, де ми викликаємо `quote`.
 
 ```rust
-    let tracer = global::tracer("shippingservice");
+    let tracer = global::tracer("shipping");
     let mut span = tracer.span_builder("oteldemo.ShippingService/GetQuote").with_kind(SpanKind::Server).start_with_context(&tracer, &parent_cx);
     span.set_attribute(semcov::trace::RPC_SYSTEM.string(RPC_SYSTEM_GRPC));
 
@@ -98,7 +98,7 @@ fn init_tracer() -> Result<sdktrace::Tracer, TraceError> {
 
 ### Додавання HTTP інструментування {#adding-http-instrumentation}
 
-Дочірній _клієнтський_ відрізок також створюється для вихідного HTTP виклику до `quoteservice` через клієнта `reqwest`. Цей відрізок поєднується з відповідним _серверним_ відрізком `quoteservice`. Інструментування трейсингу реалізовано в проміжному програмному забезпеченні клієнта з використанням доступних бібліотек `reqwest-middleware`, `reqwest-tracing` та `tracing-opentelemetry`:
+Дочірній _клієнтський_ відрізок також створюється для вихідного HTTP виклику до `quote` через клієнта `reqwest`. Цей відрізок поєднується з відповідним _серверним_ відрізком `quote`. Інструментування трейсингу реалізовано в проміжному програмному забезпеченні клієнта з використанням доступних бібліотек `reqwest-middleware`, `reqwest-tracing` та `tracing-opentelemetry`:
 
 ```rust
 let reqwest_client = reqwest::Client::new();
@@ -118,7 +118,7 @@ let parent_cx =
 global::get_text_map_propagator(|prop| prop.extract(&MetadataMap(request.metadata())));
 // у цьому випадку, створення ідентифікатора відстеження є тривіальним
 // ми створимо відрізок та повʼязані події все в цій функції.
-let tracer = global::tracer("shippingservice");
+let tracer = global::tracer("shipping");
 let mut span = tracer
     .span_builder("oteldemo.ShippingService/ShipOrder").with_kind(SpanKind::Server).start_with_context(&tracer, &parent_cx);
 ```

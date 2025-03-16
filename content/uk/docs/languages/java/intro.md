@@ -55,7 +55,7 @@ SDK — це вбудована референсна реалізація API, 
 
 ## Залежності та BOMs {#dependencies-and-boms}
 
-[Bill of materials](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms), або BOM скорочено, це артефакт, який допомагає підтримувати версії повʼязаних залежностей узгодженими. OpenTelemetry Java публікує кілька BOMs, що відповідають різним випадкам використання, перелічених нижче в порядку зростання обсягу. Ми наполегливо рекомендуємо використовувати BOM.
+[Bill of materials](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Bill_of_Materials_.28BOM.29_POMs), або BOM скорочено, це артефакт, який допомагає підтримувати версії повʼязаних залежностей узгодженими. OpenTelemetry Java публікує кілька BOMs, що відповідають різним випадкам використання, перелічених нижче в порядку зростання обсягу. Ми наполегливо рекомендуємо використовувати BOM.
 
 {{% alert %}} Оскільки BOMs є ієрархічними, додавання залежностей до кількох BOMs не рекомендується, оскільки це є надлишковим і може призвести до неінтуїтивного вирішення версій залежностей. {{% /alert %}}
 
@@ -108,17 +108,10 @@ dependencies {
 {{% /tab %}} {{< /tabpane >}}
 
 [opentelemetry-bom]:
-https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/{{% param
-vers.otel %}}/opentelemetry-bom-{{% param vers.otel %}}.pom
+  <https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/{{% param vers.otel %}}/opentelemetry-bom-{{% param vers.otel %}}.pom>
 [opentelemetry-bom-alpha]:
-https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/{{%
-param vers.otel
-%}}-alpha/opentelemetry-bom-alpha-{{% param vers.otel %}}-alpha.pom
+  <https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/{{% param vers.otel %}}-alpha/opentelemetry-bom-alpha-{{% param vers.otel %}}-alpha.pom>
 [opentelemetry-instrumentation-bom]:
-https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/{{%
-param vers.instrumentation
-%}}/opentelemetry-instrumentation-bom-{{% param vers.instrumentation %}}.pom
+  <https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/{{% param vers.instrumentation %}}/opentelemetry-instrumentation-bom-{{% param vers.instrumentation %}}.pom>
 [opentelemetry-instrumentation-alpha-bom]:
-https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/{{%
-param vers.instrumentation
-%}}-alpha/opentelemetry-instrumentation-bom-alpha-{{% param vers.instrumentation %}}-alpha.pom
+  <https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/{{% param vers.instrumentation %}}-alpha/opentelemetry-instrumentation-bom-alpha-{{% param vers.instrumentation %}}-alpha.pom>

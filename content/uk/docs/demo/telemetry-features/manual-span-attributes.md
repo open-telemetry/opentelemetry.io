@@ -1,12 +1,11 @@
 ---
 title: Атрибути відрізків, створених вручну
 aliases: [manual_span_attributes, ../manual-span-attributes]
-cSpell:ignore: featureflag
 ---
 
 Ця сторінка містить перелік атрибутів відрізків, створених вручну, що використовуються в демонстрації:
 
-## AdService
+## Ad
 
 | Назва                       | Тип    | Опис                                  |
 | --------------------------- | ------ | ------------------------------------- |
@@ -17,7 +16,7 @@ cSpell:ignore: featureflag
 | `app.ads.ad_request_type`   | string | Або `targeted`, або `not_targeted`    |
 | `app.ads.ad_response_type`  | string | Або `targeted`, або `random`          |
 
-## CartService
+## Cart
 
 | Назва                  | Тип    | Опис                             |
 | ---------------------- | ------ | ------------------------------ |
@@ -26,7 +25,7 @@ cSpell:ignore: featureflag
 | `app.product.quantity` | string | Кількість предметів у кошику    |
 | `app.user.id`          | string | Ідентифікатор користувача       |
 
-## CheckoutService
+## Checkout
 
 | Назва                        | Тип    | Опис                             |
 | ---------------------------- | ------ | ------------------------------- |
@@ -40,14 +39,14 @@ cSpell:ignore: featureflag
 | `app.user.currency`          | string | Валюта користувача              |
 | `app.user.id`                | string | Ідентифікатор користувача       |
 
-## CurrencyService
+## Currency
 
 | Назва                            | Тип    | Опис                             |
 | ------------------------------ | ------ | ----------------------------- |
 | `app.currency.conversion.from` | string | Код валюти для конвертації з   |
 | `app.currency.conversion.to`   | string | Код валюти для конвертації в   |
 
-## EmailService
+## Email
 
 | Назва                 | Тип    | Опис                                  |
 | --------------------- | ------ | --------------------------------- |
@@ -72,13 +71,13 @@ cSpell:ignore: featureflag
 | `app.session.id`         | string | Ідентифікатор сесії            |
 | `app.user.id`            | string | Ідентифікатор користувача      |
 
-## LoadGenerator
+## Load Generator
 
 | Назва    | Тип | Опис       |
 | -------- | ---- | ----------- |
 | Поки що немає |      |             |
 
-## PaymentService
+## Payment
 
 | Назва                    | Тип     | Опис                                           |
 | ------------------------ | ------- | ----------------------------------------------------- |
@@ -87,7 +86,7 @@ cSpell:ignore: featureflag
 | `app.payment.card_valid` | boolean | Чи була використана картка дійсною                               |
 | `app.payment.charged`    | boolean | Чи був платіж успішним (false з генератором навантаження) |
 
-## ProductCatalogService
+## Product Catalog
 
 | Назва                       | Тип    | Опис                                  |
 | --------------------------- | ------ | ------------------------------------- |
@@ -96,14 +95,14 @@ cSpell:ignore: featureflag
 | `app.products.count`        | number | Кількість продуктів у каталозі        |
 | `app.products_search.count` | number | Кількість продуктів, повернених у пошуку |
 
-## QuoteService
+## Quote
 
 | Назва                   | Тип    | Опис                             |
 | ----------------------- | ------ | -------------------- |
 | `app.quote.items.count` | number | Загальна кількість предметів для доставки  |
 | `app.quote.cost.total`  | number | Загальна вартість доставки |
 
-## RecommendationService
+## Recommendation
 
 | Назва                            | Тип     | Опис                                  |
 | -------------------------------- | ------- | --------------------------------------- |
@@ -112,7 +111,7 @@ cSpell:ignore: featureflag
 | `app.products_recommended.count` | number  | Кількість повернених рекомендованих продуктів |
 | `app.cache_hit`                  | boolean | Чи був доступ до кешу            |
 
-## ShippingService
+## Shipping
 
 | Назва                      | Тип    | Опис                             |
 | -------------------------- | ------ | ----------------------------- |

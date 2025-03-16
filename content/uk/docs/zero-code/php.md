@@ -3,7 +3,7 @@ title: Інструментування PHP без коду
 linkTitle: PHP
 weight: 30
 aliases: [/docs/languages/php/automatic]
-cSpell:ignore: centos democlass epel myapp pecl phar remi unindented userland
+cSpell:ignore: centos democlass epel myapp pecl phar remi
 ---
 
 ## Вимоги {#requirements}
@@ -17,10 +17,9 @@ cSpell:ignore: centos democlass epel myapp pecl phar remi unindented userland
 - Одна або більше [бібліотек інструментування](/ecosystem/registry/?component=instrumentation&language=php)
 - [Конфігурація](#configuration)
 
-{{% alert title="Важливо" color="warning" %}}Встановлення розширення OpenTelemetry
-само по собі не генерує трасування. {{% /alert %}}
-
 ## Встановлення розширення OpenTelemetry {#installation-the-opentelemetry-extension}
+
+{{% alert title="Важливо" color="warning" %}}Встановлення розширення OpenTelemetry само по собі не генерує трасування. {{% /alert %}}
 
 Розширення можна встановити через pecl, [pickle](https://github.com/FriendsOfPHP/pickle) або [php-extension-installer](https://github.com/mlocati/docker-php-extension-installer) (специфічно для docker). Також є пакетовані версії розширення, доступні для деяких менеджерів пакетів Linux.
 
@@ -117,11 +116,14 @@ php --ri opentelemetry
 
 Автоматичне інструментування доступне для багатьох популярних бібліотек PHP. Для повного списку дивіться [бібліотеки інструментування на packagist](https://packagist.org/search/?query=open-telemetry&tags=instrumentation).
 
-Припустимо, що ваш додаток використовує Slim Framework та PSR-18 HTTP клієнт. Тоді ви встановите SDK та відповідні пакети автоінструментування для них:
+Припустимо, що ваш застосунок використовує Slim Framework і HTTP-клієнт PSR-18, і що ми будемо експортувати трейси за допомогою протоколу OTLP.
+
+Після цього вам потрібно буде встановити SDK, експортер та пакунки для автоматичного інструментування для Slim Framework і PSR-18:
 
 ```shell
 composer require \
     open-telemetry/sdk \
+    open-telemetry/exporter-otlp \
     open-telemetry/opentelemetry-auto-slim \
     open-telemetry/opentelemetry-auto-psr18
 ```
@@ -136,8 +138,8 @@ composer require \
 OTEL_PHP_AUTOLOAD_ENABLED=true \
 OTEL_SERVICE_NAME=your-service-name \
 OTEL_TRACES_EXPORTER=otlp \
-OTEL_EXPORTER_OTLP_PROTOCOL=grpc \
-OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317 \
+OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf \
+OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4318 \
 OTEL_PROPAGATORS=baggage,tracecontext \
 php myapp.php
 ```
@@ -147,11 +149,11 @@ php myapp.php
 Додайте наступне до `php.ini`, або іншого `ini` файлу, який буде оброблений PHP:
 
 ```ini
-OTEL_PHP_AUTOLOAD_ENABLED=true
+OTEL_PHP_AUTOLOAD_ENABLED="true"
 OTEL_SERVICE_NAME=your-service-name
 OTEL_TRACES_EXPORTER=otlp
-OTEL_EXPORTER_OTLP_PROTOCOL=grpc
-OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
+OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
+OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4318
 OTEL_PROPAGATORS=baggage,tracecontext
 ```
 
@@ -178,7 +180,7 @@ OTEL_PROPAGATORS=baggage,tracecontext
 ```php
 <?php
 
-use OpenTelemetry\API\Common\Instrumentation\CachedInstrumentation;
+use OpenTelemetry\API\Instrumentation\CachedInstrumentation;
 use OpenTelemetry\API\Trace\Span;
 use OpenTelemetry\API\Trace\StatusCode;
 use OpenTelemetry\Context\Context;

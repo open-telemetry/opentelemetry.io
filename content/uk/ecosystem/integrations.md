@@ -43,3 +43,5 @@ aliases: [/integrations]
 {{% /alert %}}
 
 [надішліть PR]: /docs/contributing/pull-requests/
+
+{{% include keep-up-to-date.md інтеграцію %}}

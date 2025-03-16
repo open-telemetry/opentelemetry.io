@@ -94,7 +94,7 @@ export OTEL_RESOURCE_ATTRIBUTES_DEPLOYMENT_ENVIRONMENT="prod"
 </dependencies>
 ```
 
-{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
+{{% /tab %}} {{% tab header="Gradle (`build.gradle`)" lang=Gradle %}}
 
 ```kotlin
 dependencies {
@@ -237,7 +237,7 @@ FQN: `io.opentelemetry.instrumentation.spring.autoconfigure.resources.SpringReso
 </build>
 ```
 
-{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
+{{% /tab %}} {{% tab header="Gradle (`build.gradle`)" lang=Gradle %}}
 
 ```kotlin
 springBoot {

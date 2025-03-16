@@ -12,62 +12,61 @@ cSpell:ignore: typeof
 Рекомендується використовувати модулі Node, що вимагається, при запуску вашого застосунку Node.js для ініціалізації SDK та автоінструментування. При ініціалізації OpenTelemetry Node.js SDK ви можете опціонально вказати, які бібліотеки автоінструментування використовувати, або скористатися функцією `getNodeAutoInstrumentations()`, яка включає більшість популярних фреймворків. Файл `utils/telemetry/Instrumentation.js` містить весь код, необхідний для ініціалізації SDK та автоінструментування на основі стандартних [змінних середовища OpenTelemetry](/docs/specs/otel/configuration/sdk-environment-variables/) для експорту OTLP, атрибутів ресурсу та назви сервісу.
 
 ```javascript
-const opentelemetry = require('@opentelemetry/sdk-node');
-const {
-  getNodeAutoInstrumentations,
-} = require('@opentelemetry/auto-instrumentations-node');
-const {
-  OTLPTraceExporter,
-} = require('@opentelemetry/exporter-trace-otlp-grpc');
-const {
-  OTLPMetricExporter,
-} = require('@opentelemetry/exporter-metrics-otlp-grpc');
-const { PeriodicExportingMetricReader } = require('@opentelemetry/sdk-metrics');
-const {
-  alibabaCloudEcsDetector,
-} = require('@opentelemetry/resource-detector-alibaba-cloud');
-const {
-  awsEc2Detector,
-  awsEksDetector,
-} = require('@opentelemetry/resource-detector-aws');
-const {
-  containerDetector,
-} = require('@opentelemetry/resource-detector-container');
-const { gcpDetector } = require('@opentelemetry/resource-detector-gcp');
-const {
-  envDetector,
-  hostDetector,
-  osDetector,
-  processDetector,
-} = require('@opentelemetry/resources');
+const FrontendTracer = async () => {
+  const { ZoneContextManager } = await import('@opentelemetry/context-zone');
 
-const sdk = new opentelemetry.NodeSDK({
-  traceExporter: new OTLPTraceExporter(),
-  instrumentations: [
-    getNodeAutoInstrumentations({
-      // інструментувати fs тільки якщо це частина іншого трасування
-      '@opentelemetry/instrumentation-fs': {
-        requireParentSpan: true,
-      },
+  let resource = new Resource({
+    [SEMRESATTRS_SERVICE_NAME]: NEXT_PUBLIC_OTEL_SERVICE_NAME,
+  });
+  const detectedResources = detectResourcesSync({
+    detectors: [browserDetector],
+  });
+  resource = resource.merge(detectedResources);
+
+  const provider = new WebTracerProvider({
+    resource,
+    spanProcessors: [
+      new SessionIdProcessor(),
+      new BatchSpanProcessor(
+        new OTLPTraceExporter({
+          url:
+            NEXT_PUBLIC_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT ||
+            'http://localhost:4318/v1/traces',
+        }),
+        {
+          scheduledDelayMillis: 500,
+        },
+      ),
+    ],
+  });
+
+  const contextManager = new ZoneContextManager();
+
+  provider.register({
+    contextManager,
+    propagator: new CompositePropagator({
+      propagators: [
+        new W3CBaggagePropagator(),
+        new W3CTraceContextPropagator(),
+      ],
     }),
-  ],
-  metricReader: new PeriodicExportingMetricReader({
-    exporter: new OTLPMetricExporter(),
-  }),
-  resourceDetectors: [
-    containerDetector,
-    envDetector,
-    hostDetector,
-    osDetector,
-    processDetector,
-    alibabaCloudEcsDetector,
-    awsEksDetector,
-    awsEc2Detector,
-    gcpDetector,
-  ],
-});
+  });
 
-sdk.start();
+  registerInstrumentations({
+    tracerProvider: provider,
+    instrumentations: [
+      getWebAutoInstrumentations({
+        '@opentelemetry/instrumentation-fetch': {
+          propagateTraceHeaderCorsUrls: /.*/,
+          clearTimingResources: true,
+          applyCustomAttributesOnSpan(span) {
+            span.setAttribute('app.synthetic_request', IS_SYNTHETIC_REQUEST);
+          },
+        },
+      }),
+    ],
+  });
+};
 ```
 
 Модулі Node, що вимагаються, завантажуються за допомогою аргументу командного рядка `--require`. Це можна зробити в розділі `scripts.start` файлу `package.json` і запустити застосунок за допомогою `npm start`.
@@ -149,9 +148,8 @@ const FrontendTracer = async () => {
     resource: new Resource({
       [SEMRESATTRS_SERVICE_NAME]: process.env.NEXT_PUBLIC_OTEL_SERVICE_NAME,
     }),
+    spanProcessors: [new SimpleSpanProcessor(new OTLPTraceExporter())],
   });
-
-  provider.addSpanProcessor(new SimpleSpanProcessor(new OTLPTraceExporter()));
 
   const contextManager = new ZoneContextManager();
 

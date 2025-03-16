@@ -1,5 +1,5 @@
 {{/*
-cSpell:ignore: bution cial cond distri
+cSpell:ignore: cial cond
 */ -}}
 {{ $data := sort (sort (sort $.Site.Data.ecosystem.vendors "name") "oss" "desc") "commercial" -}}
 
@@ -18,8 +18,8 @@ cSpell:ignore: bution cial cond distri
   {{ .name }} |
   {{- cond .oss "Yes" "No" }} |
   {{- cond .commercial "Yes" "No" }} |
-  {{- cond .nativeOTLP "Yes" "No" }} |
-  {{- /* */}} [{{ $shortUrl }}]({{ .url }}) |
+  {{- cond .nativeOTLP "Yes" "No" }} |
+  {{- /* */}} [{{ $shortUrl }}]({{ .url }}) |
 {{- end }}
 
 [^org]: Організації згруповані наступним чином на основі їхньої підтримки OTel:

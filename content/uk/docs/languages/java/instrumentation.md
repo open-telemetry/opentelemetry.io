@@ -1,5 +1,5 @@
 ---
-title: Instrumentation ecosystem
+title: Екосистема інструментування
 aliases:
   - /docs/java/getting_started
   - /docs/java/manual_instrumentation
@@ -7,232 +7,138 @@ aliases:
   - manual_instrumentation
   - libraries
 weight: 10
-description: Instrumentation ecosystem in OpenTelemetry Java
-cSpell:ignore: Logback logback
+description: Екосистема інструментування в OpenTelemetry Java
+cSpell:ignore: logback
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-Instrumentation records telemetry using the [API](../api/). The [SDK](../sdk/)
-is the built-in reference implementation of the API, and is
-[configured](../configuration/) to process and export the telemetry produced by
-instrumentation API calls. This page discusses the OpenTelemetry ecosystem in
-OpenTelemetry Java, including resources for end users and cross-cutting
-instrumentation topics:
+Інструментування записує телеметрію за допомогою [API](../api/). [SDK](../sdk/) є вбудованою еталонною реалізацією API і [налаштовується](../configuration/) для обробки та експорту телеметрії, створеної викликами API інструментування. Ця сторінка розглядає екосистему OpenTelemetry в OpenTelemetry Java, включаючи ресурси для кінцевих користувачів та наскрізні теми інструментування:
 
-- [Instrumentation categories](#instrumentation-categories): There are a variety
-  of categories of instrumentation addressing different use cases and
-  installation patterns.
-- [Context propagation](#context-propagation): Context propagation provides
-  correlation between traces, metrics, and logs, allowing the signals to
-  complement each other.
-- [Semantic conventions](#semantic-conventions): The semantic conventions define
-  how to produce telemetry for standard operations.
-- [Log instrumentation](#log-instrumentation): The semantic conventions define
-  how to produce telemetry for standard operations.
+- [Категорії інструментування](#instrumentation-categories), що охоплюють різні випадки використання та шаблони встановлення.
+- [Поширення контексту](#context-propagation) забезпечує кореляцію між трейсами, метриками та журналами, дозволяючи сигналам доповнювати один одного.
+- [Семантичні домовленості](#semantic-conventions) визначають, як створювати телеметрію для стандартних операцій.
+- [Інструментування журналів](#log-instrumentation), яке використовується для отримання журналів з наявної системи логів Java в OpenTelemetry.
 
-{{% alert %}} While [instrumentation categories](#instrumentation-categories)
-enumerates several options for instrumenting an application, we recommend users
-start with the [Java agent](#zero-code-java-agent). The Java agent has a simple
-installation process, and automatically detects and installs instrumentation
-from a large library. {{% /alert %}}
+{{% alert %}} Хоча [категорії інструментування](#instrumentation-categories) перераховують кілька варіантів інструментування застосунку, ми рекомендуємо користувачам почати з [Java-агента](#zero-code-java-agent). Java агент має простий процес встановлення й автоматично виявляє та встановлює інструментування з великої бібліотеки. {{% /alert %}}
 
-## Instrumentation categories
+## Категорії інструментування {#instrumentation-categories}
 
-There are several categories of instrumentation:
+Є кілька категорій інструментування:
 
-- [Zero-code: Java agent](#zero-code-java-agent) is a form of zero-code
-  instrumentation **[1]** that dynamically manipulates application bytecode.
-- [Zero-code: Spring Boot starter](#zero-code-spring-boot-starter) is a form of
-  zero-code instrumentation **[1]** that leverages spring autoconfigure to
-  install [library instrumentation](#library-instrumentation).
-- [Library instrumentation](#library-instrumentation) wraps or uses extension
-  points to instrument a library, requiring users to install and/or adapt
-  library usage.
-- [Native instrumentation](#native-instrumentation) is built directly into
-  libraries and frameworks.
-- [Manual instrumentation](#manual-instrumentation) is written by application
-  authors, and typically specific to the application domain.
-- [Shims](#shims) bridge data from one observability library to another,
-  typically _from_ some library into OpenTelemetry.
+- [Без програмування: Java-агент](#zero-code-java-agent) є формою інструментування без програмування **[1]**, яке динамічно маніпулює байт-кодом застосунку.
+- [Без програмування: Spring Boot стартер](#zero-code-spring-boot-starter) є формою інструментування без програмування **[1]**, яке використовує spring autoconfigure для
+  встановлення [бібліотечного інструментування](#library-instrumentation).
+- [Бібліотечне інструментування](#library-instrumentation) обгортає або використовує точки розширення для інструментування бібліотеки, вимагаючи від користувачів встановлення та/або адаптації використання бібліотеки.
+- [Нативне інструментування](#native-instrumentation) вбудоване безпосередньо в бібліотеки та фреймворки.
+- [Ручне інструментування](#manual-instrumentation) написане авторами застосунків і зазвичай специфічне для сфери використання застосунку.
+- [Шими](#shims) переносять дані з однієї бібліотеки спостережуваності в іншу, зазвичай _з_ якоїсь бібліотеки в OpenTelemetry.
 
-**[1]**: Zero-code instrumentation is installed automatically based on detected
-libraries / frameworks.
+**[1]**: Інструментування без програмування встановлюється автоматично на основі виявлених бібліотек / фреймворків.
 
-The
-[opentelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
-project contains the source code for Java agent, Spring Boot starter, and
-Library instrumentation.
+Проєкт [opentelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation) містить вихідний код для Java-агента, Spring Boot стартера та Бібліотечного інструментування.
 
-### Zero-code: Java agent
+### Без програмування: Java-агент {#zero-code-java-agent}
 
-The Java agent is a form of zero-code
-[automatic instrumentation](/docs/specs/otel/glossary/#automatic-instrumentation)
-that dynamically manipulates application bytecode.
+Java-агент є формою [автоматичного інструментування](/docs/specs/otel/glossary/#automatic-instrumentation) без програмування яке динамічно маніпулює байт-кодом застосунку.
 
-For a list of libraries instrumented by the Java agent, see the
-"Auto-instrumented versions" column on
-[supported libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md).
+Для списку бібліотек, інструментованих Java-агентом, дивіться колонку "Автоматично інструментовані версії" у [підтримуваних бібліотеках](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md).
 
-See [Java agent](/docs/zero-code/java/agent/) for more details.
+Дивіться [Java-агент](/docs/zero-code/java/agent/) для отримання додаткової інформації.
 
-### Zero-code: Spring Boot starter
+### Без програмування: Spring Boot стартер {#zero-code-spring-boot-starter}
 
-The Spring Boot starter is a form of zero-code
-[automatic instrumentation](/docs/specs/otel/glossary/#automatic-instrumentation)
-that leverages spring autoconfigure to install
-[library instrumentation](#library-instrumentation).
+Spring Boot стартер є формою [автоматичного інструментування](/docs/specs/otel/glossary/#automatic-instrumentation) без програмування яке використовує spring autoconfigure для встановлення [бібліотечного інструментування](#library-instrumentation).
 
-See [Spring Boot starter](/docs/zero-code/java/spring-boot-starter/) for
-details.
+Дивіться [Spring Boot стартер](/docs/zero-code/java/spring-boot-starter/) для отримання додаткової інформації.
 
-### Library instrumentation
+### Бібліотечне інструментування {#library-instrumentation}
 
-[Library instrumentation](/docs/specs/otel/glossary/#instrumentation-library)
-wraps or uses extension points to instrument a library, requiring users to
-install and/or adapt library usage.
+[Бібліотечне інструментування](/docs/specs/otel/glossary/#instrumentation-library) обгортає або використовує точки розширення для інструментування бібліотеки, вимагаючи від користувачів встановлення та/або адаптації використання бібліотеки.
 
-For a list of instrumentation libraries, see the "Standalone Library
-Instrumentation" column on
-[supported libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md).
+Для списку бібліотек інструментування, дивіться колонку "Самостійні бібліотеки інструментування" у [підтримуваних бібліотеках](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md).
 
-### Native instrumentation
+### Нативне інструментування {#native-instrumentation}
 
-[Native instrumentation](/docs/specs/otel/glossary/#natively-instrumented) is
-built directly into libraries or frameworks. OpenTelemetry encourages library
-authors to add native instrumentation using the [API](../api/). In the long
-term, we hope the native instrumentation becomes the norm, and view the
-instrumentation maintained by OpenTelemetry in
-[opentelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
-as a temporary means of filling the gap.
+[Нативне інструментування](/docs/specs/otel/glossary/#natively-instrumented) вбудоване безпосередньо в бібліотеки або фреймворки. OpenTelemetry заохочує авторів бібліотек додавати нативне інструментування за допомогою [API](../api/). У довгостроковій перспективі ми сподіваємося, що нативне інструментування стане нормою, і вигляд інструментування, яке підтримується OpenTelemetry в [opentelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation) буде тимчасовим засобом заповнення прогалин.
 
-{{% docs/languages/native-libraries "java" %}}
+{{% uk/docs/languages/native-libraries "java" %}}
 
-### Manual instrumentation
+### Ручне інструментування {#manual-instrumentation}
 
-[Manual instrumentation](/docs/specs/otel/glossary/#manual-instrumentation) is
-written by application authors, and typically specific to the application
-domain.
+[Ручне інструментування](/docs/specs/otel/glossary/#manual-instrumentation) написане авторами застосунків і зазвичай є специфічним для сфери використання застосунку.
 
-### Shims
+### Шими {#shims}
 
-A shim is instrumentation that bridges data from one observability library to
-another, typically _from_ some library into OpenTelemetry.
+Шим — це вид інструментування, який переносить дані з однієї бібліотеки спостережуваності в іншу, зазвичай _з_ якоїсь бібліотеки в OpenTelemetry.
 
-Shims maintained in the OpenTelemetry Java ecosystem:
+Шими, які підтримуються в екосистемі OpenTelemetry Java:
 
-| Description                                                                                                   | Documentation                                                                                                                                                                   | Signal(s)       | Artifact                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| Bridge [OpenTracing](https://opentracing.io/) into OpenTelemetry                                              | [README](https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim)                                                                                       | Traces          | `io.opentelemetry:opentelemetry-opentracing-shim:{{% param vers.otel %}}`                                                       |
-| Bridge [Opencensus](https://opencensus.io/) into OpenTelemetry                                                | [README](https://github.com/open-telemetry/opentelemetry-java/tree/main/opencensus-shim)                                                                                        | Traces, Metrics | `io.opentelemetry:opentelemetry-opencensus-shim:{{% param vers.otel %}}-alpha`                                                  |
-| Bridge [Micrometer](https://micrometer.io/) into OpenTelemetry                                                | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/micrometer/micrometer-1.5/library)                                      | Metrics         | `io.opentelemetry.instrumentation:opentelemetry-micrometer-1.5:{{% param vers.instrumentation %}}-alpha`                        |
-| Bridge [JMX](https://docs.oracle.com/javase/7/docs/technotes/guides/management/agent.html) into OpenTelemetry | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/README.md)                                        | Metrics         | `io.opentelemetry.instrumentation:opentelemetry-jmx-metrics:{{% param vers.instrumentation %}}-alpha`                           |
-| Bridge OpenTelemetry into [Prometheus Java client](https://github.com/prometheus/client_java)                 | [README](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/prometheus-client-bridge)                                                                       | Metrics         | `io.opentelemetry.contrib:opentelemetry-prometheus-client-bridge:{{% param vers.contrib %}}-alpha`                              |
-| Bridge OpenTelemetry into [Micrometer](https://micrometer.io/)                                                | [README](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/micrometer-meter-provider)                                                                      | Metrics         | `io.opentelemetry.contrib:opentelemetry-micrometer-meter-provider:{{% param vers.contrib %}}-alpha`                             |
-| Bridge [Log4j](https://logging.apache.org/log4j/2.x/index.html) into OpenTelemetry                            | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-appender-2.17/library)                                      | Logs            | `io.opentelemetry.instrumentation:opentelemetry-log4j-appender-2.17:{{% param vers.instrumentation %}}-alpha`                   |
-| Bridge [Logback](https://logback.qos.ch/) into OpenTelemetry                                                  | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-appender-1.0/library)                                   | Logs            | `io.opentelemetry.instrumentation:opentelemetry-logback-appender-1.0:{{% param vers.instrumentation %}}-alpha`                  |
-| Bridge OpenTelemetry context into [Log4j](https://logging.apache.org/log4j/2.x/index.html)                    | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-context-data/log4j-context-data-2.17/library-autoconfigure) | Context         | `io.opentelemetry.instrumentation:opentelemetry-log4j-context-data-2.17-autoconfigure:{{% param vers.instrumentation %}}-alpha` |
-| Bridge OpenTelemetry context into [Logback](https://logback.qos.ch/)                                          | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-mdc-1.0/library)                                        | Context         | `io.opentelemetry.instrumentation:opentelemetry-logback-mdc-1.0:{{% param vers.instrumentation %}}-alpha`                       |
+| Опис                                                                                                   | Документація                                                                                                                                                                   | Сигнал(и)       | Артефакт                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Міст [OpenTracing](https://opentracing.io/) в OpenTelemetry                                           | [README](https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim)                                                                                     | Трейси           | `io.opentelemetry:opentelemetry-opentracing-shim:{{% param vers.otel %}}`                                                       |
+| Міст [Opencensus](https://opencensus.io/) в OpenTelemetry                                             | [README](https://github.com/open-telemetry/opentelemetry-java/tree/main/opencensus-shim)                                                                                      | Трейси, Метрики  | `io.opentelemetry:opentelemetry-opencensus-shim:{{% param vers.otel %}}-alpha`                                                  |
+| Міст [Micrometer](https://micrometer.io/) в OpenTelemetry                                             | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/micrometer/micrometer-1.5/library)                                    | Метрики         | `io.opentelemetry.instrumentation:opentelemetry-micrometer-1.5:{{% param vers.instrumentation %}}-alpha`                        |
+| Міст [JMX](https://docs.oracle.com/javase/7/docs/technotes/guides/management/agent.html) в OpenTelemetry | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/README.md)                                      | Метрики         | `io.opentelemetry.instrumentation:opentelemetry-jmx-metrics:{{% param vers.instrumentation %}}-alpha`                           |
+| Міст OpenTelemetry в [Prometheus Java client](https://github.com/prometheus/client_java)              | [README](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/prometheus-client-bridge)                                                                     | Метрики         | `io.opentelemetry.contrib:opentelemetry-prometheus-client-bridge:{{% param vers.contrib %}}-alpha`                              |
+| Міст OpenTelemetry в [Micrometer](https://micrometer.io/)                                             | [README](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/micrometer-meter-provider)                                                                    | Метрики         | `io.opentelemetry.contrib:opentelemetry-micrometer-meter-provider:{{% param vers.contrib %}}-alpha`                             |
+| Міст [Log4j](https://logging.apache.org/log4j/2.x/index.html) в OpenTelemetry                         | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-appender-2.17/library)                                    | Журнали         | `io.opentelemetry.instrumentation:opentelemetry-log4j-appender-2.17:{{% param vers.instrumentation %}}-alpha`                   |
+| Міст [Logback](https://logback.qos.ch/) в OpenTelemetry                                               | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-appender-1.0/library)                                 | Журнали         | `io.opentelemetry.instrumentation:opentelemetry-logback-appender-1.0:{{% param vers.instrumentation %}}-alpha`                  |
+| Міст OpenTelemetry контексту в [Log4j](https://logging.apache.org/log4j/2.x/index.html)               | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-context-data/log4j-context-data-2.17/library-autoconfigure) | Контекст        | `io.opentelemetry.instrumentation:opentelemetry-log4j-context-data-2.17-autoconfigure:{{% param vers.instrumentation %}}-alpha` |
+| Міст OpenTelemetry контексту в [Logback](https://logback.qos.ch/)                                     | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-mdc-1.0/library)                                      | Контекст        | `io.opentelemetry.instrumentation:opentelemetry-logback-mdc-1.0:{{% param vers.instrumentation %}}-alpha`                       |
 
-## Context propagation
+## Поширення контексту {#context-propagation}
 
-The OpenTelemetry APIs are designed to be complementary, with the whole greater
-than the sum of the parts. Each signal has its own strengths, and collectively
-stitch together a compelling observability story.
+API OpenTelemetry розроблені таким чином, щоб доповнювати один одного, створюючи ціле, яке є більшим ніж сума частин. Кожен сигнал має свої сильні сторони, і разом вони створюють переконливу історію спостережуваності.
 
-Importantly, the data from the various signals are linked together through trace
-context:
+Важливо, що дані з різних сигналів повʼязані між собою через контекст трасування:
 
-- Spans are related to other spans through span parent and links, which each
-  record trace context of related spans.
-- Metrics are related to spans through
-  [exemplars](/docs/specs/otel/metrics/data-model/#exemplars), which record
-  trace context of a particular measurement.
-- Logs are related to spans by recording trace context on log records.
+- Відрізки повʼязані з іншими відрізками через батьківський відрізок і посилання, кожен з яких записує контекст трасування повʼязаних відрізків.
+- Метрики повʼязані з відрізками через [екземпляри](/docs/specs/otel/metrics/data-model/#exemplars), які записують контекст трасування конкретного вимірювання.
+- Журнали повʼязані з відрізками шляхом запису контексту трасування в записи журналу.
 
-For this correlation to work, trace context must be propagated throughout an
-application (across function calls and threads), and across application
-boundaries. The [context API](../api/#context-api) facilitates this.
-Instrumentation needs to be written in a manner which is context aware:
+Для того, щоб ця кореляція працювала, контекст трасування повинен поширюватися по всьому застосунку (через виклики функцій і потоки) і за межі застосунків. [API контексту](../api/#context-api) сприяє цьому. Інструментування повинно бути написане таким чином, щоб враховувати контекст:
 
-- Libraries that represent the entry point to an application (i.e. HTTP servers,
-  message consumers, etc.) should [extract context](../api/#contextpropagators)
-  from incoming messages.
-- Libraries that represent an exit point from an application (i.e. HTTP clients,
-  message producers, etc.) should [inject context](../api/#contextpropagators)
-  into outgoing messages.
-- Libraries should implicitly or explicitly pass [Context](../api/#context)
-  through the callstack and across any threads.
+- Бібліотеки, які представляють точку входу в застосунок (тобто HTTP сервери, споживачі повідомлень тощо) повинні [видобувати контекст](../api/#contextpropagators) з вхідних повідомлень.
+- Бібліотеки, які представляють точку виходу із застосунку (тобто HTTP клієнти, створювачі повідомлень тощо) повинні [вставляти контекст](../api/#contextpropagators) у вихідні повідомлення.
+- Бібліотеки повинні неявно або явно передавати [Контекст](../api/#context) через стек викликів і через будь-які потоки.
 
-## Semantic conventions
+## Семантичні домовленості {#semantic-conventions}
 
-The [semantic conventions](/docs/specs/semconv/) define how to produce telemetry
-for standard operations. Among other things, the semantic conventions specify
-span names, span kinds, metric instruments, metric units, metric types, and
-attribute key, value, and requirement levels.
+[Семантичні домовленості](/docs/specs/semconv/) визначають, як створювати телеметрію для стандартних операцій. Серед іншого, семантичні домовленості визначають імена відрізків, типи відрізків, інструменти метрик, одиниці вимірювання метрик, типи метрик та ключі атрибутів, значення та рівні вимог.
 
-When writing instrumentation, consult the semantic conventions and conform to
-any which are applicable to the domain.
+При написанні інструментування звертайтеся до семантичних конвенцій і дотримуйтесь будь-яких конвенцій, які застосовуються до домену.
 
-OpenTelemetry Java [publishes artifacts](../api/#semantic-attributes) to assist
-in conforming to the semantic conventions, including generated constants for
-attribute keys and values.
+OpenTelemetry Java [публікує артефакти](../api/#semantic-attributes) для допомоги у дотриманні семантичних конвенцій, включаючи згенеровані константи для ключів і значень атрибутів.
 
-TODO: discuss instrumentation API and how it helps conform to semantic
-conventions
+TODO: описати API інструментування та як воно допомагає дотримуватися семантичних конвенцій
 
-## Log instrumentation
+## Інструментування журналів {#log-instrumentation}
 
-While the [LoggerProvider](../api/#loggerprovider) / [Logger](../api/#logger)
-APIs are structurally similar to the equivalent [trace](../api/#tracerprovider)
-and [metric](../api/#meterprovider) APIs, they serve a different use case. As of
-now, `LoggerProvider` / `Logger` and associated classes represent the
-[Log Bridge API](/docs/specs/otel/logs/api/), which exists to write log
-appenders to bridge logs recorded through other log APIs / frameworks into
-OpenTelemetry. They are not intended for end user use as a replacement for Log4j
-/ SLF4J / Logback / etc.
+Хоча [LoggerProvider](../api/#loggerprovider) / [Logger](../api/#logger) API структурно схожі на еквівалентні [trace](../api/#tracerprovider) та [metric](../api/#meterprovider) API, вони служать іншій меті. Зараз `LoggerProvider` / `Logger` та повʼязані класи представляють [Log Bridge API](/docs/specs/otel/logs/api/), яке існує для написання доповнювачів логів для перенесення журналів, записаних через інші API логування / фреймворки в OpenTelemetry. Вони не призначені для кінцевих користувачів для використання як заміни для Log4j / SLF4J / Logback / тощо.
 
-There are two typical workflows for consuming log instrumentation in
-OpenTelemetry catering to different application requirements:
+Існує два типових робочих процеси для споживання інструментування журналів в OpenTelemetry, що відповідають різним вимогам застосунків:
 
-### Direct to collector
+### Безпосередньо в колектор {#direct-to-collector}
 
-In the direct to collector workflow, logs are emitted directly from an
-application to a collector using a network protocol (e.g. OTLP). This workflow
-is simple to set up as it doesn't require any additional log forwarding
-components, and allows an application to easily emit structured logs that
-conform to the [log data model](/docs/specs/otel/logs/data-model/). However, the
-overhead required for applications to queue and export logs to a network
-location may not be suitable for all applications.
+У робочому процесі журнали передаються безпосередньо із застосунку до колектора за допомогою мережевого протоколу (наприклад, OTLP). Цей робочий процес простий у налаштуванні, оскільки не вимагає додаткових компонентів для пересилання журналів, і дозволяє застосунку легко передавати структуровані журнали, які відповідають [моделі даних журналів](/docs/specs/otel/logs/data-model/). Однак, накладні витрати,
+необхідні для застосунків для черги та експорту журналів до місця в мережі, можуть бути неприйнятними для всіх застосунків.
 
-To use this workflow:
+Щоб використовувати цей робочий процес:
 
-- Install appropriate log appender. **[1]**
-- Configure the OpenTelemetry [Log SDK](../sdk/#sdkloggerprovider) to export log
-  records to desired target destination (the
-  [collector](https://github.com/open-telemetry/opentelemetry-collector) or
-  other).
+- Встановіть відповідний доповнювач логів. **[1]**
+- Налаштуйте OpenTelemetry [Log SDK](../sdk/#sdkloggerprovider) для експорту записів журналів до бажаного цільового місця призначення ([колектора](https://github.com/open-telemetry/opentelemetry-collector) або іншого).
 
-**[1]**: Log appenders are a type of [shim](#shims) which bridges logs from a
-log framework into the OpenTelemetry log SDK. See "Bridge Log4j into
-OpenTelemetry", "Bridge Logback into OpenTelemetry" entries. See
-[Log Appender example](https://github.com/open-telemetry/opentelemetry-java-docs/tree/main/log-appender)
-for demonstration of a variety of scenarios.
+**[1]**: Доповнювачі логів є типом [шима](#shims), який переносить журнали з системи логування в OpenTelemetry log SDK. Дивіться "Міст Log4j в OpenTelemetry", "Міст Logback в OpenTelemetry" записи. Дивіться [Приклад доповнювача логів](https://github.com/open-telemetry/opentelemetry-java-docs/tree/main/log-appender) для демонстрації різних сценаріїв.
 
-### Via file or stdout
+### Через файл або stdout {#via-file-or-stdout}
 
-In the file or stdout workflow, logs are written to files or standout output.
-Another component (e.g. FluentBit) is responsible for reading / tailing the
-logs, parsing them to more structured format, and forwarding them a target, such
-as the collector. This workflow may be preferable in situations where
-application requirements do not permit additional overhead from
-[direct to collector](#direct-to-collector). However, it requires that all log
-fields required down stream are encoded into the logs, and that the component
-reading the logs parse the data into the
-[log data model](/docs/specs/otel/logs/data-model). The installation and
-configuration of log forwarding components is outside the scope of this
-document.
+У робочому процесі журнали записуються у файли або стандартний вивід. Інший компонент (наприклад, FluentBit) відповідає за читання / відстеження журналів, їх розбір до більш структурованого формату та пересилання їх до місця призначення, такого як колектор. Цей робочий процес може бути кращим у ситуаціях, коли вимоги застосунку не дозволяють йому накладні витрати процесу [безпосередньої передачі в колектор](#direct-to-collector). Однак, він вимагає, щоб усі поля журналу, необхідні для подальшої обробки, були закодовані в журналах, і щоб компонент, який читає журнали, розбирав дані в [модель даних журналів](/docs/specs/otel/logs/data-model). Встановлення та налаштування компонентів для пересилання журналів виходить за рамки цього документа.
 
-Log correlation with traces is available by installing a [shim](#shims) to
-bridge OpenTelemetry context into the log framework. See "Bridge OpenTelemetry
-context into Log4j", "Bridge OpenTelemetry context into Logback" entries.
+Кореляція журналів з трейсами доступна шляхом встановлення [шима](#shims) для перенесення контексту OpenTelemetry в систему логування. Дивіться "Міст OpenTelemetry контексту в Log4j", "Міст OpenTelemetry контексту в Logback".
+
+{{% alert title="Примітка" color="info" %}}
+
+Приклад наскрізного інструментування журналів за допомогою stdout доступний у [репозиторії прикладів Java](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md).
+
+{{% /alert %}}

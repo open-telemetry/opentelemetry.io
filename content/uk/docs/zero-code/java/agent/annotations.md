@@ -6,13 +6,13 @@ weight: 20
 cSpell:ignore: Flowable javac reactivestreams reactivex
 ---
 
-Для більшості користувачів достатньо інструментування з коробки, і нічого більше робити не потрібно. Однак іноді користувачі бажають створювати [відрізки](/docs/concepts/signals/traces/#spans) для свого власного коду без значних змін у коді.
+Для більшості користувачів достатньо інструментування з коробки, і нічого більше робити не потрібно. Однак іноді користувачі бажають створювати [відрізки](/docs/concepts/signals/traces/#spans) для свого власного коду без значних змін у коді. Анотації `WithSpan` та `SpanAttribute` підтримують ці варіанти використання.
 
 ## Залежності {#dependencies}
 
 Щоб використовувати анотацію `@WithSpan`, вам потрібно додати залежність від бібліотеки `opentelemetry-instrumentation-annotations`.
 
-### Maven
+{{< tabpane text=true >}} {{% tab "Maven" %}}
 
 ```xml
 <dependencies>
@@ -24,7 +24,7 @@ cSpell:ignore: Flowable javac reactivestreams reactivex
 </dependencies>
 ```
 
-### Gradle
+{{% /tab %}} {{% tab "Gradle" %}}
 
 ```groovy
 dependencies {
@@ -32,9 +32,11 @@ dependencies {
 }
 ```
 
+{{% /tab %}} {{< /tabpane >}}
+
 ## Створення відрізків навколо методів з `@WithSpan` {#creating-spans-around-methods-with-withspan}
 
-Щоб створити [відрізок](/docs/concepts/signals/traces/#spans), що відповідає одному з ваших методів, анотуйте метод за допомогою `@WithSpan`.
+Щоб створити [відрізок](/docs/concepts/signals/traces/#spans), що інструментує певний метод, анотуйте метод за допомогою `@WithSpan`.
 
 ```java
 import io.opentelemetry.instrumentation.annotations.WithSpan;
@@ -64,9 +66,27 @@ public class MyClass {
 - [io.reactivex.Flowable](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Flowable.html)
 - [io.reactivex.parallel.ParallelFlowable](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/parallel/ParallelFlowable.html)
 
+### Параметри {#parameters}
+
+Атрибут `@WithSpan` підтримує наступні необовʼязкові параметри для налаштування відрізків:
+
+| назва            | тип               | типове значення | опис                                                                                                                                                     |
+| ---------------- | ----------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `kind`           | `SpanKind` (enum) | `INTERNAL`      | [Вид відрізку](/docs/specs/otel/trace/api/#spankind).                                                                                                    |
+| `inheritContext` | `boolean`         | `true`          | Починаючи з версії 2.14.0. Контролює, чи буде новий відрізок батьківським для існуючого (поточного) контексту. Якщо `false`, створюється новий контекст. |
+
+Приклад використання параметрів:
+
+```java
+@WithSpan(kind = SpanKind.CLIENT, inheritContext = false)
+public void myMethod() {
+    <...>
+}
+```
+
 ## Додавання атрибутів до відрізку за допомогою `@SpanAttribute` {#adding-attributes-to-the-span-with-spanattribute}
 
-Коли створюється [відрізок](/docs/concepts/signals/traces/#spans) для анотованого методу, значення аргументів до виклику методу можуть автоматично додаватися як [атрибути](/docs/concepts/signals/traces/#attributes) до створеного відрізка, анотуючи параметри методу за допомогою анотації `@SpanAttribute`.
+Коли створюється [відрізок](/docs/concepts/signals/traces/#spans) для анотованого методу, значення аргументів до виклику методу можуть автоматично додаватися як [атрибути](/docs/concepts/signals/traces/#attributes) до створеного відрізка. Просто додайте до параметрів методу анотацію `@SpanAttribute`:
 
 ```java
 import io.opentelemetry.instrumentation.annotations.SpanAttribute;
@@ -102,4 +122,4 @@ public class MyClass {
 
 ## Наступні кроки {#next-steps}
 
-Крім використання анотацій, API OpenTelemetry дозволяє отримати трасувальник, який можна використовувати для [ручного інструментування](/docs/languages/java/instrumentation/) і виконувати код у межах цього відрізка.
+Крім використання анотацій, API OpenTelemetry дозволяє отримати трасувальник, який можна використовувати для [ручного інструментування](../api).

@@ -2,7 +2,7 @@
 title: Використання бібліотек інструментування
 linkTitle: Бібліотеки
 weight: 40
-cSpell:ignore: HTTPX httpx instrumentor uninstrument
+cSpell:ignore: httpx httpx instrumentor uninstrument
 ---
 
 {{% uk/docs/languages/libraries-intro "python" %}}

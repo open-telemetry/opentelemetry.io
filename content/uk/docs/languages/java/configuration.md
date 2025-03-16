@@ -4,7 +4,7 @@ linkTitle: Налаштування SDK
 weight: 13
 aliases: [config]
 # prettier-ignore
-cSpell:ignore: authservice autoconfigured blrp Customizer Dotel ignore LOWMEMORY myservice ottrace PKCS retryable tracepropagators
+cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS retryable
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -80,19 +80,6 @@ public class AutoConfiguredSdk {
 
 **[1]**: Якщо відключено, `AutoConfiguredOpenTelemetrySdk#getOpenTelemetrySdk()` повертає мінімально налаштований екземпляр (наприклад, `OpenTelemetrySdk.builder().build()`).
 
-Властивості для налаштування [ресурсу](../sdk/#resource):
-
-| Системна властивість                         | Опис                                                                                                                             | Стандартно              |
-| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
-| `otel.service.name`                          | Вкажіть логічне імʼя сервісу. Має пріоритет над `service.name`, визначеним за допомогою `otel.resource.attributes`.              | `unknown_service:java`  |
-| `otel.resource.attributes`                   | Вкажіть атрибути ресурсу у наступному форматі: `key1=val1,key2=val2,key3=val3`.                                                  |                         |
-| `otel.resource.disabled-keys`                | Вкажіть ключі атрибутів ресурсу для фільтрації.                                                                                  |                         |
-| `otel.java.enabled.resource.providers`       | Список класів `ResourceProvider` через кому, які потрібно увімкнути. **[1]** Якщо не встановлено, увімкнено всі провайдери ресурсів. |                         |
-| `otel.java.disabled.resource.providers`      | Список класів `ResourceProvider` через кому, які потрібно відключити. **[1]**                                                    |                         |
-
-**[1]**: Наприклад, щоб відключити [провайдера ресурсу ОС](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/resources/library/src/main/java/io/opentelemetry/instrumentation/resources/OsResourceProvider.java),
-встановіть `-Dotel.java.disabled.resource.providers=io.opentelemetry.instrumentation.resources.OsResourceProvider`. Дивіться [ResourceProvider](#resourceprovider) для координат артефакту провайдера ресурсів.
-
 Властивості для обмежень атрибутів (див. [обмеження відрізків](../sdk/#spanlimits), [обмеження логів](../sdk/#loglimits)):
 
 | Системна властивість                     | Опис                                                                                                                                                   | Стандартно       |
@@ -116,16 +103,33 @@ public class AutoConfiguredSdk {
 - `xray` налаштовує `AwsXrayPropagator`.
 - `xray-lambda` налаштовує `AwsXrayLambdaPropagator`.
 
+#### Властивості: ресурс {#properties-resource}
+
+Властивості для налаштування [ресурсу](../sdk/#resource):
+
+| Системна властивість                         | Опис                                                                                                                             | Стандартно              |
+| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
+| `otel.service.name`                          | Вкажіть логічне імʼя сервісу. Має пріоритет над `service.name`, визначеним за допомогою `otel.resource.attributes`.              | `unknown_service:java`  |
+| `otel.resource.attributes`                   | Вкажіть атрибути ресурсу у наступному форматі: `key1=val1,key2=val2,key3=val3`.                                                  |                         |
+| `otel.resource.disabled-keys`                | Вкажіть ключі атрибутів ресурсу для фільтрації.                                                                                  |                         |
+| `otel.java.enabled.resource.providers`       | Список класів `ResourceProvider` через кому, які потрібно увімкнути. **[1]** Якщо не встановлено, увімкнено всі провайдери ресурсів. |                         |
+| `otel.java.disabled.resource.providers`      | Список класів `ResourceProvider` через кому, які потрібно відключити. **[1]**                                                    |                         |
+
+**[1]**: Наприклад, щоб відключити [провайдера ресурсу ОС](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/resources/library/src/main/java/io/opentelemetry/instrumentation/resources/OsResourceProvider.java),
+встановіть `-Dotel.java.disabled.resource.providers=io.opentelemetry.instrumentation.resources.OsResourceProvider`. Дивіться [ResourceProvider](#resourceprovider) для координат артефакту провайдера ресурсів.
+
+**ПРИМІТКА**: Системні властивості/змінні оточення `otel.service.name` та `otel.resource.attributes` інтерпретуються у постачальнику ресурсів `io.opentelemetry.sdk.autoconfigure.EnvironmentResourceProvider`. Якщо ви вирішили вказати постачальників ресурсів за допомогою `otel.java.enabled.resource-providers`, ви, ймовірно, захочете включити цей параметр, щоб уникнути несподіванок. Координати артефакту постачальника ресурсів наведено у [ResourceProvider](#resourceprovider).
+
 #### Властивості: трейсинг {#properties-tracing}
 
 Властивості для [пакетного процесора відрізків](../sdk/#spanprocessor), повʼязаного з експортерами, зазначеними через `otel.traces.exporter`:
 
-| Системна властивість                  | Опис                                                     | Стандартно       |
-| ------------------------------------- | -------------------------------------------------------- | ---------------- |
-| `otel.bsp.schedule.delay`             | Інтервал, у мілісекундах, між двома послідовними експортами. | `5000`           |
-| `otel.bsp.max.queue.size`             | Максимальний розмір черги.                               | `2048`           |
-| `otel.bsp.max.export.batch.size`      | Максимальний розмір пакету.                              | `512`            |
-| `otel.bsp.export.timeout`             | Максимальний дозволений час, у мілісекундах, для експорту даних. | `30000`          |
+| Системна властивість                  | Опис                                                                                    | Стандартно  |
+| ------------------------------------- | --------------------------------------------------------------------------------------- | ----------- |
+| `otel.bsp.schedule.delay`             | Інтервал, у мілісекундах, між двома послідовними експортами.                            | `5000`      |
+| `otel.bsp.max.queue.size`             | Максимальна кількість відрізків, які можна поставити в чергу перед надсиланням пакетів. | `2048`      |
+| `otel.bsp.max.export.batch.size`      | Максимальна кількість відрізків для експорту в одній партії.                            | `512`       |
+| `otel.bsp.export.timeout`             | Максимальний дозволений час, у мілісекундах, для експорту даних.                        | `30000`     |
 
 Властивості для [семплера](../sdk/#sampler):
 
@@ -178,12 +182,12 @@ public class AutoConfiguredSdk {
 
 Властивості для [процесора записів логів](../sdk/#logrecordprocessor), повʼязаного з експортерами через `otel.logs.exporter`:
 
-| Системна властивість                   | Опис                                                     | Стандартно       |
-| -------------------------------------- | -------------------------------------------------------- | ---------------- |
-| `otel.blrp.schedule.delay`             | Інтервал, у мілісекундах, між двома послідовними експортами. | `1000`           |
-| `otel.blrp.max.queue.size`             | Максимальний розмір черги.                               | `2048`           |
-| `otel.blrp.max.export.batch.size`      | Максимальний розмір пакету.                              | `512`            |
-| `otel.blrp.export.timeout`             | Максимальний дозволений час, у мілісекундах, для експорту даних. | `30000`          |
+| Системна властивість              | Опис                                                                                      | Стандартно  |
+| --------------------------------- | ----------------------------------------------------------------------------------------- | ----------- |
+| `otel.blrp.schedule.delay`        | Інтервал, у мілісекундах, між двома послідовними експортами.                              | `1000`      |
+| `otel.blrp.max.queue.size`        | Максимальна кількість записів журналу, яка може бути поставлена в чергу перед відправкою. | `2048`      |
+| `otel.blrp.max.export.batch.size` | Максимальна кількість записів журналу для експорту в одному пакеті.                       | `512`       |
+| `otel.blrp.export.timeout`        | Максимальний дозволений час, у мілісекундах, для експорту даних.                          | `30000`     |
 
 #### Властивості: експортери {#properties-exporters}
 
@@ -323,21 +327,22 @@ public class CustomizedAutoConfiguredSdk {
 
 `ResourceProvider`, вбудовані в SDK та підтримувані спільнотою в `opentelemetry-java-contrib`:
 
-| Клас                                                                   | Артефакт                                                                                            | Опис                                                     |
-| ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| `io.opentelemetry.instrumentation.resources.ContainerResourceProvider` | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Надає атрибути ресурсу контейнера.                         |
-| `io.opentelemetry.instrumentation.resources.HostResourceProvider`      | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Надає атрибути ресурсу хоста.                              |
-| `io.opentelemetry.instrumentation.resources.HostIdResourceProvider`    | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Надає атрибут ідентифікатора хоста.                            |
-| `io.opentelemetry.instrumentation.resources.ManifestResourceProvider`  | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Надає атрибути ресурсу сервісу на основі маніфесту jar.     |
-| `io.opentelemetry.instrumentation.resources.OsResourceProvider`        | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Надає атрибути ресурсу ОС.                                |
-| `io.opentelemetry.instrumentation.resources.ProcessResourceProvider`   | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Надає атрибути ресурсу процесу.                           |
-| `io.opentelemetry.instrumentation.resources.ProcessRuntimeProvider`    | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Надає атрибути ресурсу середовища виконання процесу.                   |
-| `io.opentelemetry.contrib.gcp.resource.GCPResourceProvider`            | `io.opentelemetry.contrib:opentelemetry-gcp-resources:{{% param vers.contrib %}}-alpha`             | Надає атрибути ресурсу середовища виконання GCP.           |
-| `io.opentelemetry.contrib.aws.resource.BeanstalkResourceProvider`      | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Надає атрибути ресурсу середовища виконання AWS beanstalk. |
-| `io.opentelemetry.contrib.aws.resource.Ec2ResourceProvider`            | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Надає атрибути ресурсу середовища виконання AWS ec2.       |
-| `io.opentelemetry.contrib.aws.resource.EcsResourceProvider`            | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Надає атрибути ресурсу середовища виконання AWS ecs.       |
-| `io.opentelemetry.contrib.aws.resource.EksResourceProvider`            | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Надає атрибути ресурсу середовища виконання AWS eks.       |
-| `io.opentelemetry.contrib.aws.resource.LambdaResourceProvider`         | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Надає атрибути ресурсу середовища виконання AWS lambda.    |
+| Клас                                                                      | Артефакт                                                                                            | Опис                                                                                            |
+| ------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `io.opentelemetry.sdk.autoconfigure.internal.EnvironmentResourceProvider` | `io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param vers.otel %}}`                | Надає атрибути ресурсу на основі змінних `OTEL_SERVICE_NAME` та `OTEL_RESOURCE_ATTRIBUTES` env. |
+| `io.opentelemetry.instrumentation.resources.ContainerResourceProvider`    | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Надає атрибути ресурсу контейнера.                                                              |
+| `io.opentelemetry.instrumentation.resources.HostResourceProvider`         | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Надає атрибути ресурсу хоста.                                                                   |
+| `io.opentelemetry.instrumentation.resources.HostIdResourceProvider`       | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Надає атрибут ідентифікатора хоста.                                                             |
+| `io.opentelemetry.instrumentation.resources.ManifestResourceProvider`     | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Надає атрибути ресурсу сервісу на основі маніфесту jar.                                         |
+| `io.opentelemetry.instrumentation.resources.OsResourceProvider`           | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Надає атрибути ресурсу ОС.                                                                      |
+| `io.opentelemetry.instrumentation.resources.ProcessResourceProvider`      | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Надає атрибути ресурсу процесу.                                                                 |
+| `io.opentelemetry.instrumentation.resources.ProcessRuntimeProvider`       | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Надає атрибути ресурсу середовища виконання процесу.                                            |
+| `io.opentelemetry.contrib.gcp.resource.GCPResourceProvider`               | `io.opentelemetry.contrib:opentelemetry-gcp-resources:{{% param vers.contrib %}}-alpha`             | Надає атрибути ресурсу середовища виконання GCP.                                                |
+| `io.opentelemetry.contrib.aws.resource.BeanstalkResourceProvider`         | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Надає атрибути ресурсу середовища виконання AWS beanstalk.                                      |
+| `io.opentelemetry.contrib.aws.resource.Ec2ResourceProvider`               | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Надає атрибути ресурсу середовища виконання AWS ec2.                                            |
+| `io.opentelemetry.contrib.aws.resource.EcsResourceProvider`               | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Надає атрибути ресурсу середовища виконання AWS ecs.                                            |
+| `io.opentelemetry.contrib.aws.resource.EksResourceProvider`               | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Надає атрибути ресурсу середовища виконання AWS eks.                                            |
+| `io.opentelemetry.contrib.aws.resource.LambdaResourceProvider`            | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Надає атрибути ресурсу середовища виконання AWS lambda.                                         |
 
 Реалізуйте інтерфейс `ResourceProvider`, щоб брати участь у автоконфігурації ресурсів. Наприклад:
 

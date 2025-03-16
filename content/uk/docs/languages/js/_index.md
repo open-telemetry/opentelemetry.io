@@ -5,13 +5,11 @@ description: >-
   alt="JavaScript"> Специфічна для мови реалізація OpenTelemetry на JavaScript (для Node.js та вебоглядачів).
 aliases: [/js, /js/metrics, /js/tracing]
 weight: 20
-cSpell:ignore: Roadmap
 ---
 
 {{% uk/docs/languages/index-intro js /%}}
 
-{{% alert title="Попередження" color="warning" %}}
-{{% _param notes.browser-instrumentation %}} {{% /alert %}}
+{{% include browser-instrumentation-warning %}}
 
 ## Підтримка версій {#version-support}
 

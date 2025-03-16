@@ -8,7 +8,7 @@ description: Інструментування для OpenTelemetry JavaScript
 cSpell:ignore: dicelib Millis rolldice
 ---
 
-{{% uk/docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro %}}
 
 {{% alert title="Примітка" color="info" %}}
 
@@ -296,8 +296,7 @@ node --require ./instrumentation.js app.js
 
 #### Оглядач {#browser}
 
-{{% alert title="Попередження" color="warning" %}}
-{{% _param notes.browser-instrumentation %}} {{% /alert %}}
+{{% include browser-instrumentation-warning %}}
 
 Спочатку переконайтеся, що у вас є правильні пакунки:
 
@@ -328,12 +327,13 @@ const resource = Resource.default().merge(
   }),
 );
 
-const provider = new WebTracerProvider({
-  resource: resource,
-});
 const exporter = new ConsoleSpanExporter();
 const processor = new BatchSpanProcessor(exporter);
-provider.addSpanProcessor(processor);
+
+const provider = new WebTracerProvider({
+  resource: resource,
+  spanProcessors: [processor],
+});
 
 provider.register();
 ```
@@ -360,12 +360,13 @@ const resource = Resource.default().merge(
   }),
 );
 
-const provider = new WebTracerProvider({
-  resource: resource,
-});
 const exporter = new ConsoleSpanExporter();
 const processor = new BatchSpanProcessor(exporter);
-provider.addSpanProcessor(processor);
+
+const provider = new WebTracerProvider({
+  resource: resource,
+  spanProcessors: [processor],
+});
 
 provider.register();
 ```
@@ -987,7 +988,9 @@ import opentelemetry, { SpanStatusCode } from '@opentelemetry/api';
 try {
   doWork();
 } catch (ex) {
-  span.recordException(ex);
+  if (ex instanceof Error) {
+    span.recordException(ex);
+  }
   span.setStatus({ code: SpanStatusCode.ERROR });
 }
 ```
@@ -1002,7 +1005,9 @@ const opentelemetry = require('@opentelemetry/api');
 try {
   doWork();
 } catch (ex) {
-  span.recordException(ex);
+  if (ex instanceof Error) {
+    span.recordException(ex);
+  }
   span.setStatus({ code: opentelemetry.SpanStatusCode.ERROR });
 }
 ```
@@ -1022,18 +1027,30 @@ try {
 ```ts
 import opentelemetry from '@opentelemetry/api';
 import {
+  CompositePropagator,
+  W3CTraceContextPropagator,
+  W3CBaggagePropagator,
+} from '@opentelemetry/core';
+import {
   BasicTracerProvider,
   BatchSpanProcessor,
   ConsoleSpanExporter,
 } from '@opentelemetry/sdk-trace-base';
 
-const provider = new BasicTracerProvider();
+opentelemetry.trace.setGlobalTracerProvider(
+  new BasicTracerProvider({
+    // Налаштуйте обробник відрізків для надсилання відрізків експортеру
+    spanProcessors: [new BatchSpanProcessor(new ConsoleSpanExporter())],
+  }),
+);
 
-// Налаштуйте процесор відрізків для відправки відрізків до експортера
-provider.addSpanProcessor(new BatchSpanProcessor(new ConsoleSpanExporter()));
-provider.register();
+opentelemetry.propagation.setGlobalPropagator(
+  new CompositePropagator({
+    propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
+  }),
+);
 
-// Це те, що ми будемо використовувати у всьому коді інструментування
+// Це те, до чого ми матимемо доступ у всьому коді інструментування
 const tracer = opentelemetry.trace.getTracer('example-basic-tracer-node');
 ```
 
@@ -1042,18 +1059,30 @@ const tracer = opentelemetry.trace.getTracer('example-basic-tracer-node');
 ```js
 const opentelemetry = require('@opentelemetry/api');
 const {
+  CompositePropagator,
+  W3CTraceContextPropagator,
+  W3CBaggagePropagator,
+} = require('@opentelemetry/core');
+const {
   BasicTracerProvider,
   ConsoleSpanExporter,
   BatchSpanProcessor,
 } = require('@opentelemetry/sdk-trace-base');
 
-const provider = new BasicTracerProvider();
+opentelemetry.trace.setGlobalTracerProvider(
+  new BasicTracerProvider({
+    // Налаштуйте обробник відрізків надсилання відрізків до експортера
+    spanProcessors: [new BatchSpanProcessor(new ConsoleSpanExporter())],
+  }),
+);
 
-// Налаштуйте процесор відрізків для відправки відрізків до експортера
-provider.addSpanProcessor(new BatchSpanProcessor(new ConsoleSpanExporter()));
-provider.register();
+opentelemetry.propagation.setGlobalPropagator(
+  new CompositePropagator({
+    propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
+  }),
+);
 
-// Це те, що ми будемо використовувати у всьому коді інструментування
+// Це те, до чого ми матимемо доступ у всьому коді інструментування
 const tracer = opentelemetry.trace.getTracer('example-basic-tracer-node');
 ```
 

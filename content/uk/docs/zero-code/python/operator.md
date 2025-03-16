@@ -4,11 +4,11 @@ linkTitle: Оператор
 aliases: [/docs/languages/python/automatic/operator]
 weight: 30
 # prettier-ignore
-cSpell:ignore: distro grpcio mkdir myapp psutil PYTHONPATH uninstrumented virtualenv
+cSpell:ignore: grpcio myapp psutil PYTHONPATH
 ---
 
 Якщо ви запускаєте свій Python сервіс у Kubernetes, ви можете скористатися [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator) для впровадження автоматичної інструментації без необхідності змінювати кожен з ваших сервісів
-безпосередньо. [Дивіться документацію OpenTelemetry Operator Auto-instrumentation для отримання додаткової інформації.](/docs/kubernetes/operator/automatic/)
+безпосередньо. [Дивіться документацію OpenTelemetry Operator Auto-instrumentation для отримання додаткової інформації.](/docs/platforms/kubernetes/operator/automatic/)
 
 ### Теми, специфічні для Python {#python-specific-topics}
 
@@ -18,7 +18,7 @@ cSpell:ignore: distro grpcio mkdir myapp psutil PYTHONPATH uninstrumented virtua
 
 Бінарний код привʼязаний до конкретної версії C бібліотеки (glibc або musl) та до конкретної версії Python. [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator) надає образи для однієї версії Python на основі бібліотеки glibc C. Якщо ви хочете використовувати його, можливо, вам доведеться створити власний образ оператора Docker для автоматичної інструментації Python.
 
-З версії оператора v0.113.0 можливо створити образ з автоматичною інструментацією на основі як glibc, так і musl та [налаштувати його під час виконання](/docs/kubernetes/operator/automatic/#annotations-python-musl).
+З версії оператора v0.113.0 можливо створити образ з автоматичною інструментацією на основі як glibc, так і musl та [налаштувати його під час виконання](/docs/platforms/kubernetes/operator/automatic/#annotations-python-musl).
 
 #### Django застосунки {#django-applications}
 

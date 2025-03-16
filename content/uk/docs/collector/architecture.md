@@ -34,21 +34,18 @@ OpenTelemetry Collector — це виконуваний файл, який мо
 title: Конвеєр
 ---
 flowchart LR
-    R1(Приймач 1) --> P1[Процесор 1]
-    R2(Приймач 2) --> P1
-    RM(...) ~~~ P1
-    RN(Приймач N) --> P1
-    P1 --> P2[Процесор 2]
-    P2 --> PM[...]
-    PM --> PN[Процесор N]
-    PN --> FO((fan-out))
-    FO --> E1[[Експортер 1]]
-    FO --> E2[[Експортер 2]]
-    FO ~~~ EM[[...]]
-    FO --> EN[[Експортер N]]
-
-    %% Колір обведення відповідає заголовку вебсайту.
-    classDef default fill:#e3e8fc,stroke:#4f62ad
+  R1(Приймач 1) --> P1[Процесор 1]
+  R2(Приймач 2) --> P1
+  RM(...) ~~~ P1
+  RN(Приймач N) --> P1
+  P1 --> P2[Процесор 2]
+  P2 --> PM[...]
+  PM --> PN[Процесор N]
+  PN --> FO((fan-out))
+  FO --> E1[[Експортер 1]]
+  FO --> E2[[Експортер 2]]
+  FO ~~~ EM[[...]]
+  FO --> EN[[Експортер N]]
 ```
 
 Конвеєри можуть мати один або кілька приймачів. Дані від усіх приймачів надходять до першого процесора, який обробляє дані, а потім передає їх наступному процесору. Процесор також може відкинути дані, якщо він виконує вибірку або фільтрацію. Це продовжується до тих пір, поки останній процесор у конвеєрі не передасть дані експортерам. Кожен експортер отримує копію кожного елемента даних. Останній процесор використовує `fanoutconsumer`, щоб надіслати дані кільком експортерам.
@@ -66,7 +63,7 @@ service:
       exporters: [otlp, zipkin]
 ```
 
-Попередній приклад визначає конвеєр для типу телеметричних даних трасування, з трьома приймачами, двома процесорами та трьома експортерами.
+Попередній приклад визначає конвеєр для типу телеметричних даних трасування, з двома приймачами, двома процесорами та двома експортерами.
 
 ### Приймачі {#receivers}
 
@@ -99,13 +96,11 @@ service:
 
 ```mermaid
 flowchart LR
-    R1("`#quot;opentelemetry-collector#quot; Приймач`") --> FO((fan-out))
-    FO -->|Конвеєр 'traces'| P1["`#quot;memory_limiter#quot; Процесор`"]
-    FO -->|Конвеєр 'traces/2'| P2["`#quot;transform#quot; Процесор`"]
-    P1 ~~~ M1[...]
-    P2 ~~~ M2[...]
-
-    classDef default fill:#e3e8fc,stroke:#4f62ad;
+  R1("`#quot;opentelemetry-collector#quot; Приймач`") --> FO((fan-out))
+  FO -->|Конвеєр 'traces'| P1["`#quot;memory_limiter#quot; Процесор`"]
+  FO -->|Конвеєр 'traces/2'| P2["`#quot;transform#quot; Процесор`"]
+  P1 ~~~ M1[...]
+  P2 ~~~ M2[...]
 ```
 
 {{% alert title="Важливо" color="warning" %}}
@@ -153,12 +148,10 @@ service:
 
 ```mermaid
 flowchart LR
-    M1[...] ~~~ P1["`#quot;memory_limiter#quot; Процесор`"]
-    M2[...] ~~~ P2["`#quot;transform#quot; Процесор`"]
-    P1 -->|Конвеєр 'traces'|E1[["`#quot;otlp#quot; Експортер`"]]
-    P2 -->|Конвеєр 'traces/2'|E1
-
-    classDef default fill:#e3e8fc,stroke:#4f62ad;
+  M1[...] ~~~ P1["`#quot;memory_limiter#quot; Процесор`"]
+  M2[...] ~~~ P2["`#quot;transform#quot; Процесор`"]
+  P1 -->|Конвеєр 'traces'|E1[["`#quot;otlp#quot; Експортер`"]]
+  P2 -->|Конвеєр 'traces/2'|E1
 ```
 
 ### Процесори {#processors}
@@ -194,10 +187,8 @@ service:
 title: Конвеєр "traces"
 ---
 flowchart LR
-    R1("`zipkin Приймач`") --> P1["`#quot;batch#quot; Процесор`"]
-    P1 --> E1[["`#quot;otlp#quot; Експортер`"]]
-
-    classDef default fill:#e3e8fc,stroke:#4f62ad;
+  R1("`zipkin Приймач`") --> P1["`#quot;batch#quot; Процесор`"]
+  P1 --> E1[["`#quot;otlp#quot; Експортер`"]]
 ```
 
 ```mermaid
@@ -205,10 +196,8 @@ flowchart LR
 title: Конвеєр "traces/2"
 ---
 flowchart LR
-    R1("`otlp Приймач`") --> P1["`#quot;batch#quot; Процесор`"]
-    P1 --> E1[["`#quot;otlp#quot; Експортер`"]]
-
-    classDef default fill:#e3e8fc,stroke:#4f62ad;
+  R1("`otlp Приймач`") --> P1["`#quot;batch#quot; Процесор`"]
+  P1 --> E1[["`#quot;otlp#quot; Експортер`"]]
 ```
 
 Зверніть увагу, що кожен процесор `batch` є незалежним екземпляром, хоча вони налаштовані однаково з `send_batch_size` `10000`.
@@ -228,10 +217,8 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    subgraph S1 ["#nbsp;"]
-        subgraph S2 ["#nbsp;"]
-        end
-        subgraph S3 ["#nbsp;"]
+  subgraph S1 ["#nbsp;"]
+      subgraph S2 ["#nbsp;"]
         subgraph VM [ВМ]
             PR["Процес [Бібліотека]"] -->|Надсилання вибіркових трасувань, метрик| AB[Бінарний Файл Агента]
             AB -->|Надсилання конфігурацій| PR
@@ -257,21 +244,22 @@ flowchart LR
             APP4 --> AD
             APP6 --> AD
         end
-        end
-        subgraph Backends ["#nbsp;"]
-            AB --> BE[Бекенд]
-            AS --> PRM[Бекенд Prometheus]
-            AS --> JA[Бекенд Jaeger]
-            AD --> JA
-        end
-    end
+      end
+      subgraph Backends ["#nbsp;"]
+          AB --> BE[Бекенд]
+          AS --> PRM[Бекенд Prometheus]
+          AS --> JA[Бекенд Jaeger]
+          AD --> JA
+      end
+  end
 
-class S1,S2,S3 noLines;
+
+class S2 noLines;
 class VM,K8s-pod,K8s-node,Pod1,Pod2,Pod3,Backends withLines;
 class PR,AB,AC,AS,APP1,APP2,APP3,APP4,APP5,APP6,AD,BE,PRM,JA nodeStyle
-classDef noLines fill:#fff,stroke:#fff,stroke-width:4px;
-classDef withLines fill:#fff,stroke:#4f62ad
-classDef nodeStyle fill:#e3e8fc,stroke:#4f62ad;
+classDef noLines stroke:#fff,stroke-width:4px,color:#000000;
+classDef withLines fill:#fff,stroke:#4f62ad,color:#000000;
+classDef nodeStyle fill:#e3e8fc,stroke:#4f62ad,color:#000000;
 ```
 
 > Для розробників та підтримувачів інших бібліотек: Додавши конкретні приймачі, ви можете налаштувати агент для приймання трасувань, метрик та логів від інших бібліотек трасування/моніторингу, таких як Zipkin, Prometheus тощо. Дивіться [Приймачі](#receivers) для деталей.
@@ -282,32 +270,32 @@ OpenTelemetry Collector може працювати як екземпляр шл
 
 ```mermaid
 flowchart LR
-    subgraph S1 ["#nbsp;"]
-        subgraph S2 ["#nbsp;"]
+  subgraph S1 ["#nbsp;"]
+      subgraph S2 ["#nbsp;"]
         subgraph S3 ["#nbsp;"]
-        subgraph VM [ВМ]
-            PR["Процес [Бібліотека]"]
-        end
-        subgraph K8s-pod [Pod K8s]
-            AC["`Контейнер Застосунку [Бібліотека]`"]
-        end
-        subgraph K8s-node [Вузол K8s]
-            subgraph Pod1 [Підсистема]
-                APP1[Застосунок] ~~~ APP2[Застосунок]
-            end
-            subgraph Pod2 [Підсистема]
-                APP3[Застосунок] ~~~ APP4[Застосунок]
-            end
-            subgraph Pod3 [Підсистема]
-                APP5[Застосунок] ~~~ APP6[Застосунок]
-            end
-            subgraph AD [Агентний Демонсет]
-            end
-            APP1 --> AD
-            APP2 --> AD
-            APP4 --> AD
-            APP6 --> AD
-        end
+          subgraph VM [ВМ]
+              PR["Процес [Бібліотека]"]
+          end
+          subgraph K8s-pod [Pod K8s]
+              AC["`Контейнер Застосунку [Бібліотека]`"]
+          end
+          subgraph K8s-node [Вузол K8s]
+              subgraph Pod1 [Підсистема]
+                  APP1[Застосунок] ~~~ APP2[Застосунок]
+              end
+              subgraph Pod2 [Підсистема]
+                  APP3[Застосунок] ~~~ APP4[Застосунок]
+              end
+              subgraph Pod3 [Підсистема]
+                  APP5[Застосунок] ~~~ APP6[Застосунок]
+              end
+              subgraph AD [Агентний Демонсет]
+              end
+              APP1 --> AD
+              APP2 --> AD
+              APP4 --> AD
+              APP6 --> AD
+          end
         end
         subgraph S4 ["#nbsp;"]
             PR --> OTEL["`Сервіс OpenTelemetry Collector`"]
@@ -315,28 +303,28 @@ flowchart LR
             AD --> OTEL
             OTEL ---> BE[Бекенд X]
         end
-        end
-        subgraph S5 ["#nbsp;"]
+      end
+      subgraph S5 ["#nbsp;"]
         subgraph S6 ["#nbsp;"]
             JA[Бекенд Jaeger]
         end
         subgraph S7 ["#nbsp;"]
             PRM[Бекенд Prometheus]
         end
-        end
-        JA ~~~ PRM
-        OTEL --> JA
-        OTEL --> PRM
-    end
+      end
+      JA ~~~ PRM
+      OTEL --> JA
+      OTEL --> PRM
+  end
 
 class S1,S3,S4,S5,S6,S7,S8 noLines;
 class VM,K8s-pod,K8s-node,Pod1,Pod2,Pod3 withLines;
 class S2 lightLines
 class PR,AC,APP1,APP2,APP3,APP4,APP5,APP6,AD,OTEL,BE,JA,PRM nodeStyle
-classDef noLines fill:#fff,stroke:#fff,stroke-width:4px;
-classDef withLines fill:#fff,stroke:#4f62ad
-classDef lightLines fill:#fff,stroke:#acaeb0
-classDef nodeStyle fill:#e3e8fc,stroke:#4f62ad;
+classDef noLines stroke-width:0px,color:#000000;
+classDef withLines fill:#fff,stroke:#4f62ad,color:#000000;
+classDef lightLines stroke:#acaeb0,color:#000000;
+classDef nodeStyle fill:#e3e8fc,stroke:#4f62ad,color:#000000;
 ```
 
 OpenTelemetry Collector також може бути розгорнутий в інших конфігураціях, таких як отримання даних від інших агентів або клієнтів у одному з форматів, підтримуваних його приймачами.

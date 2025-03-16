@@ -169,7 +169,7 @@ func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, er
 	otel.SetTextMapPropagator(prop)
 
 	// Налаштування провайдера трасування.
-	tracerProvider, err := newTraceProvider()
+	tracerProvider, err := newTracerProvider()
 	if err != nil {
 		handleErr(err)
 		return
@@ -205,19 +205,19 @@ func newPropagator() propagation.TextMapPropagator {
 	)
 }
 
-func newTraceProvider() (*trace.TracerProvider, error) {
+func newTracerProvider() (*trace.TracerProvider, error) {
 	traceExporter, err := stdouttrace.New(
 		stdouttrace.WithPrettyPrint())
 	if err != nil {
 		return nil, err
 	}
 
-	traceProvider := trace.NewTracerProvider(
+	tracerProvider := trace.NewTracerProvider(
 		trace.WithBatcher(traceExporter,
 			// Стандартно 5s. Встановлено на 1s для демонстраційних цілей.
 			trace.WithBatchTimeout(time.Second)),
 	)
-	return traceProvider, nil
+	return tracerProvider, nil
 }
 
 func newMeterProvider() (*metric.MeterProvider, error) {

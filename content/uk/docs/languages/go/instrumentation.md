@@ -5,10 +5,10 @@ aliases:
   - manual_instrumentation
 weight: 30
 description: Ручне інструментування для OpenTelemetry в Go
-cSpell:ignore: fatalf logr logrus otelslog otlplog otlploghttp sdktrace sighup
+cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup
 ---
 
-{{% uk/docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro %}}
 
 ## Налаштування {#setup}
 
@@ -49,7 +49,7 @@ func newExporter(ctx context.Context)  /* (someExporter.Exporter, error) */ {
 	// Ваш улюблений експортер: console, jaeger, zipkin, OTLP тощо.
 }
 
-func newTraceProvider(exp sdktrace.SpanExporter) *sdktrace.TracerProvider {
+func newTracerProvider(exp sdktrace.SpanExporter) *sdktrace.TracerProvider {
 	// Переконайтеся, що встановлені стандартні ресурси SDK і необхідне імʼя сервісу.
 	r, err := resource.Merge(
 		resource.Default(),
@@ -78,7 +78,7 @@ func main() {
 	}
 
 	// Створіть нового провайдера tracer з процесором пакетних відрізків і вказаним експортером.
-	tp := newTraceProvider(exp)
+	tp := newTracerProvider(exp)
 
 	// Правильно обробляйте завершення роботи, щоб нічого не витікало.
 	defer func() { _ = tp.Shutdown(ctx) }()
@@ -200,7 +200,7 @@ span.AddEvent("Скасовано очікування через зовнішн
 
 ### Встановлення статусу відрізка {#setting-span-status}
 
-{{% docs/languages/span-status-preamble %}}
+{{% uk/docs/languages/span-status-preamble %}}
 
 ```go
 import (

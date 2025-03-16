@@ -5,7 +5,7 @@ weight: 30
 description: Інструментування для OpenTelemetry Erlang/Elixir
 ---
 
-{{% uk/docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro %}}
 
 ## Налаштування {#setup}
 
