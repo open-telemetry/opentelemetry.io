@@ -62,13 +62,13 @@ name="otel.instrumentation.messaging.experimental.receive-telemetry.enabled"
 default=false
 %}} Увімкнення телеметрії отримання повідомлень споживачем. {{% /config_option %}}
 
-Зверніть увагу, що це призведе до того, що на стороні споживача розпочнеться новий трейс, з лише посиланням на відрізок, що зʼєднує його з трейсом продьюсера.
+Зверніть увагу, що це призведе до того, що на стороні споживача розпочнеться новий трейс, з лише посиланням на відрізок, що зʼєднує його з трейсом продюсера.
 
 > **Примітка**: Імена властивостей/змінних середовища, зазначені в таблиці, все ще є експериментальними, і тому можуть змінюватися.
 
 ## Захоплення атрибутів кінцевого користувача {#capturing-enduser-attributes}
 
-Ви можете налаштувати агент для захоплення [загальних атрибутів ідентичності](/docs/specs/semconv/general/attributes/#general-identit-attributes) (`enduser.id`, `enduser.role`, `enduser.scope`) з бібліотек інструментування таких як [JavaEE/JakartaEE Servlet](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/servlet) та [Spring Security](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-security-config-6.0).
+Ви можете налаштувати агент для захоплення [загальних атрибути ідентифікації](/docs/specs/semconv/attributes-registry/enduser/) (`enduser.id`, `enduser.role`, `enduser.scope`) з бібліотек інструментування таких як [JavaEE/JakartaEE Servlet](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/servlet) та [Spring Security](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-security-config-6.0).
 
 > **Примітка**: З огляду на чутливий характер даних, ця функція стандартно вимкнена, дозволяючи вибіркову активацію для конкретних атрибутів. Ви повинні ретельно оцінити наслідки для конфіденційності кожного атрибуту перед увімкненням збору даних.
 

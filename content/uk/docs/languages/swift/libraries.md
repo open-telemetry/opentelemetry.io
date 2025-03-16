@@ -28,7 +28,7 @@ OpenTelemetry-Swift надає кілька [бібліотек інструме
 Використовуйте `DefaultResource.get()`, щоб створити обʼєкт ресурсу "все в одному". Цей ресурс можна додати до `TracerProvider` або `MetricProvider`.
 
 ```swift
-OpenTelemetry.registerTracerProvider(traceProvider: TracerProviderBuilder()
+OpenTelemetry.registerTracerProvider(tracerProvider: TracerProviderBuilder()
             .with(resource: DefaultResource.get())
             .build())
 ```

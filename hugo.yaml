@@ -544,6 +544,34 @@ module:
       target: content/ecosystem
       lang: pt
 
+    ## uk
+    - source: content/uk
+      target: content
+      lang: uk
+    # fallback pages
+    - source: content/en/_includes
+      target: content/_includes
+      lang: uk
+    - source: content/en/announcements
+      target: content/announcements
+      lang: uk
+    - source: content/en/ecosystem
+      target: content/ecosystem
+      lang: uk
+    # Specs, currently en only
+    - source: tmp/otel/specification
+      target: content/docs/specs/otel
+      lang: uk
+    - source: tmp/opamp
+      target: content/docs/specs/opamp
+      lang: uk
+    - source: tmp/otlp/docs/specification.md
+      target: content/docs/specs/otlp/_index.md
+      lang: uk
+    - source: tmp/otlp/docs/img
+      target: content/docs/specs/otlp/img
+      lang: uk
+
     ## static
     - source: static
       target: static

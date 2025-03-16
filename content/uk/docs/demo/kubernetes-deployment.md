@@ -5,7 +5,7 @@ aliases: [kubernetes_deployment]
 cSpell:ignore: loadgen otlphttp spanmetrics
 ---
 
-Ми надаємо [Helm-чарт OpenTelemetry Demo](/docs/kubernetes/helm/demo/), щоб допомогти розгорнути демо на наявному кластері Kubernetes.
+Ми надаємо [Helm-чарт OpenTelemetry Demo](/docs/platforms/kubernetes/helm/demo/), щоб допомогти розгорнути демо на наявному кластері Kubernetes.
 
 Для використання чартів необхідно встановити [Helm](https://helm.sh/uk/). Будь ласка, зверніться до [документації Helm](https://helm.sh/uk/docs/), щоб почати.
 
@@ -67,10 +67,10 @@ kubectl apply --namespace otel-demo -f https://raw.githubusercontent.com/open-te
 
 ### Експонування сервісів за допомогою kubectl port-forward {#expose-services-using-kubectl-port-forward}
 
-Щоб відкрити сервіс frontendproxy, використовуйте наступну команду (замініть `my-otel-demo` на відповідну назву релізу Helm-чарту):
+Щоб відкрити сервіс frontend-proxy, використовуйте наступну команду (замініть `my-otel-demo` на відповідну назву релізу Helm-чарту):
 
 ```shell
-kubectl port-forward svc/my-otel-demo-frontendproxy 8080:8080
+kubectl port-forward svc/my-otel-demo-frontend-proxy 8080:8080
 ```
 
 {{% alert title="Примітка" color="info" %}}
@@ -79,7 +79,7 @@ kubectl port-forward svc/my-otel-demo-frontendproxy 8080:8080
 
 {{% /alert %}}
 
-З налаштованим port-forward для frontendproxy ви можете отримати доступ до:
+З налаштованим port-forward для frontend-proxy ви можете отримати доступ до:
 
 - Вебмагазин: <http://localhost:8080/>
 - Grafana: <http://localhost:8080/grafana/>
@@ -99,13 +99,13 @@ kubectl port-forward svc/my-otel-demo-frontendproxy 8080:8080
 
 {{% /alert %}}
 
-Кожен компонент демо (наприклад, frontendproxy) пропонує спосіб налаштування типу сервісу Kubernetes. Стандартно вони не будуть створені, але ви можете увімкнути та налаштувати їх через властивість `ingress` кожного компонента.
+Кожен компонент демо (наприклад, frontend-proxy) пропонує спосіб налаштування типу сервісу Kubernetes. Стандартно вони не будуть створені, але ви можете увімкнути та налаштувати їх через властивість `ingress` кожного компонента.
 
-Щоб налаштувати компонент frontendproxy для використання ресурсу ingress, ви повинні вказати наступне у вашому файлі значень:
+Щоб налаштувати компонент frontend-proxy для використання ресурсу ingress, ви повинні вказати наступне у вашому файлі значень:
 
 ```yaml
 components:
-  frontendProxy:
+  frontend-proxy:
     ingress:
       enabled: true
       annotations: {}
@@ -121,20 +121,20 @@ components:
 
 #### Налаштування типів сервісів {#configure-service-types}
 
-Кожен компонент демо (наприклад, frontendproxy) пропонує спосіб налаштування типу сервісу Kubernetes. Стандартно вони будуть `ClusterIP`, але ви можете змінити кожен з них за допомогою властивості `service.type` кожного компонента.
+Кожен компонент демо (наприклад, frontend-proxy) пропонує спосіб налаштування типу сервісу Kubernetes. Стандартно вони будуть `ClusterIP`, але ви можете змінити кожен з них за допомогою властивості `service.type` кожного компонента.
 
-Щоб налаштувати компонент frontendproxy для використання типу сервісу LoadBalancer, ви повинні вказати наступне у вашому файлі значень:
+Щоб налаштувати компонент frontend-proxy для використання типу сервісу LoadBalancer, ви повинні вказати наступне у вашому файлі значень:
 
 ```yaml
 components:
-  frontendProxy:
+  frontend-proxy:
     service:
       type: LoadBalancer
 ```
 
 #### Налаштування телеметрії оглядача {#configure-browser-telemetry}
 
-Для правильного збору відрізків з оглядача вам також потрібно вказати місце, де буде розташований OpenTelemetry Collector. Компонент frontendproxy визначає маршрут для колектора з префіксом шляху `/otlp-http`. Ви можете налаштувати точку доступу колектора, встановивши наступну змінну середовища на компоненті frontend:
+Для правильного збору відрізків з оглядача вам також потрібно вказати місце, де буде розташований OpenTelemetry Collector. Компонент frontend-proxy визначає маршрут для колектора з префіксом шляху `/otlp-http`. Ви можете налаштувати точку доступу колектора, встановивши наступну змінну середовища на компоненті frontend:
 
 ```yaml
 components:

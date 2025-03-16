@@ -1,7 +1,6 @@
 ---
 title: Анотації
 weight: 50
-cSpell:ignore: proxys
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -83,7 +82,7 @@ public class MyControllerManagedBySpring {
 </dependencies>
 ```
 
-{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
+{{% /tab %}} {{% tab header="Gradle (`build.gradle`)" lang=Gradle %}}
 
 ```kotlin
 dependencies {
@@ -109,3 +108,7 @@ dependencies {
 | Назва   | Тип     | Опис            | Стандартне значення |
 | ------- | -------- | -------------- | ------------------------- |
 | `value` | `String` | Назва атрибута  | Назва параметра методу    |
+
+## Наступні кроки {#next-steps}
+
+Окрім використання анотацій, OpenTelemetry API дозволяє отримати трасувальник, який може бути використаний [вашим власним інструментарієм](../api).

@@ -2,12 +2,12 @@
 title: Сервіс Валют
 linkTitle: Валюта
 aliases: [currencyservice]
-cSpell:ignore: chrono decltype labelkv millis noexcept nostd
+cSpell:ignore: decltype labelkv noexcept nostd
 ---
 
 Цей сервіс надає функціональність для конвертації сум між різними валютами.
 
-[Сирці сервісу Валют](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/currencyservice/)
+[Сирці сервісу Валют](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/currency/)
 
 ## Трейси {#traces}
 
@@ -44,13 +44,13 @@ void initTracer()
 ```cpp
 std::string span_name = "CurrencyService/Convert";
 auto span =
-    get_tracer("currencyservice")->StartSpan(span_name,
+    get_tracer("currency")->StartSpan(span_name,
                                   {{SemanticConventions::kRpcSystem, "grpc"},
                                    {SemanticConventions::kRpcService, "oteldemo.CurrencyService"},
                                    {SemanticConventions::kRpcMethod, "Convert"},
                                    {SemanticConventions::kRpcGrpcStatusCode, 0}},
                                   options);
-auto scope = get_tracer("currencyservice")->WithActiveSpan(span);
+auto scope = get_tracer("currency")->WithActiveSpan(span);
 ```
 
 ### Додавання атрибутів до відрізків {#add-attributes-to-spans}

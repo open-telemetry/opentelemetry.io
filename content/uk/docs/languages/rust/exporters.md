@@ -1,7 +1,6 @@
 ---
 title: Експортери
 weight: 50
-cSpell:ignore: chrono millis ostream
 ---
 
 {{% uk/docs/languages/exporters/intro rust %}}

@@ -24,7 +24,7 @@
 [Jaeger]: /blog/2022/jaeger-native-otlp/
 [OTLP]: /docs/specs/otlp/
 [Prometheus]:
-  https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver
+  https://prometheus.io/docs/prometheus/2.55/feature_flags/#otlp-receiver
 [vendors]: /ecosystem/vendors/
 
 [reg]: /ecosystem/registry/?component=exporter&language={{ $lang }}
@@ -40,7 +40,7 @@
 
 <div class="alert alert-info" role="alert"><h4 class="alert-heading">Примітка</h4>
 
-Якщо ви використовуєте [нульовий код інструментування](/docs/zero-code/{{ $l }}), ви можете дізнатися як налаштувати експортери, дотримуючись [Посібника з налаштування](/docs/zero-code/{{ $l }}/configuration/).
+Якщо ви використовуєте [інструментування без коду](/docs/zero-code/{{ $l }}), ви можете дізнатися як налаштувати експортери, дотримуючись [Посібника з налаштування](/docs/zero-code/{{ $l }}/configuration/).
 
 </div>
 

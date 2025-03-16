@@ -11,7 +11,7 @@ cSpell:ignore: getquote
 
 Інструментування PHP може відрізнятися при використанні іншого фреймворку.
 
-[Джерело сервісу котирувань](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/quoteservice/)
+[Джерело сервісу котирувань](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/quote/)
 
 ## Трейси {#traces}
 

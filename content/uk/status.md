@@ -3,11 +3,9 @@ title: Стан
 menu: { main: { weight: 30 } }
 aliases: [/project-status, /releases]
 description: Рівень зрілості основних компонентів OpenTelemetry
+type: docs
+body_class: td-no-left-sidebar
 ---
-
-{{% blocks/section color="white" %}}
-
-## {{% param title %}}
 
 OpenTelemetry складається з [декількох компонентів](/docs/concepts/components/), деякі з яких є мовно-специфічними, а інші — мовно-агностичними. Переглядаючи [статус](/docs/specs/otel/versioning-and-stability/), переконайтеся, що ви шукаєте статус на сторінці відповідного компонента. Наприклад, статус сигналу у специфікації може не збігатися зі статусом сигналу у конкретному мовному SDK.
 
@@ -35,4 +33,3 @@ OpenTelemetry складається з [декількох компоненті
 
 Про стан розробки або рівень зрілості [специфікації](/docs/specs/otel/) див. нижче: [Зведений опис стану специфікації](/docs/specs/status/).
 
-{{% /blocks/section %}}

@@ -1,12 +1,12 @@
 ---
 title: Генератор навантаження
 aliases: [loadgenerator]
-cSpell:ignore: instrumentor instrumentors loadgenerator locustfile urllib
+cSpell:ignore: instrumentor instrumentors locustfile urllib
 ---
 
 Генератор навантаження базується на фреймворку для тестування навантаження [Locust](https://locust.io). Стандартно він буде імітувати користувачів, які запитують різні маршрути з фронтенду.
 
-[Сирці генератора навантаження](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/loadgenerator/)
+[Сирці генератора навантаження](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/load-generator/)
 
 ## Трейси {#traces}
 

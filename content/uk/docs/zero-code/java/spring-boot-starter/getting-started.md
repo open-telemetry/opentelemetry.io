@@ -24,7 +24,7 @@ Bill of Material ([BOM](https://maven.apache.org/guides/introduction/introductio
 
 При використанні Maven, імпортуйте BOM OpenTelemetry перед будь-якими іншими BOM у вашому проєкті. Наприклад, якщо ви імпортуєте BOM `spring-boot-dependencies`, ви повинні оголосити його після BOM OpenTelemetry.
 
-Gradle вибирає [останні версії](https://docs.gradle.org/current/userguide/dependency_resolution.html#sec:version-conflict) залежностей при використанні декількох BOM, тому порядок BOM не важливий.
+Gradle вибирає [останні версії](https://docs.gradle.org/current/userguide/dependency_resolution.html#2_perform_conflict_resolution) залежностей при використанні декількох BOM, тому порядок BOM не важливий.
 
 {{% /alert %}}
 
@@ -88,7 +88,7 @@ dependencyManagement {
 
 Додайте залежність, наведену нижче, щоб увімкнути OpenTelemetry стартер.
 
-OpenTelemetry стартер використовує OpenTelemetry Spring Boot [автоконфігурацію](https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration).
+OpenTelemetry стартер використовує OpenTelemetry Spring Boot [автоконфігурацію](https://docs.spring.io/spring-boot/reference/using/auto-configuration.html).
 
 {{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
@@ -99,7 +99,7 @@ OpenTelemetry стартер використовує OpenTelemetry Spring Boot 
 </dependency>
 ```
 
-{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
+{{% /tab %}} {{% tab header="Gradle (`build.gradle`)" lang=Gradle %}}
 
 ```kotlin
 implementation("io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter")

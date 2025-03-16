@@ -12,7 +12,6 @@ cSpell:ignore: mbstring opcache
 ## Додатково {#further-reading}
 
 - [OpenTelemetry для PHP на GitHub](https://github.com/open-telemetry/opentelemetry-php)
-- [Встановлення](https://github.com/open-telemetry/opentelemetry-php#installation)
 - [Приклади](https://github.com/open-telemetry/opentelemetry-php/tree/main/examples)
 
 ## Вимоги {#requirements}

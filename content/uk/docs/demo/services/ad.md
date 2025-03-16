@@ -6,7 +6,7 @@ aliases: [adservice]
 
 Цей сервіс визначає відповідну рекламу для показу користувачам на основі ключів контексту. Реклама буде для продуктів, доступних у магазині.
 
-[Сирці сервісу реклами](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/adservice/)
+[Сирці сервісу реклами](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/ad/)
 
 ## Автоматична інструменталізація {#auto-instrumentation}
 
@@ -55,7 +55,7 @@ span.setStatus(StatusCode.ERROR);
 
 ```java
 // створити та запустити новий відрізок вручну
-Tracer tracer = GlobalOpenTelemetry.getTracer("adservice");
+Tracer tracer = GlobalOpenTelemetry.getTracer("ad");
 Span span = tracer.spanBuilder("getRandomAds").startSpan();
 
 // помістити відрізок у контекст, щоб якщо будь-який дочірній відрізок буде запущений, батьківський відрізок буде встановлений правильно
@@ -76,7 +76,7 @@ try (Scope ignored = span.makeCurrent()) {
 
 ### Ініціалізація метрик {#initializing-metrics}
 
-Подібно до створення відрізків, першим кроком у створенні метрик є ініціалізація екземпляра `Meter`, наприклад, `GlobalOpenTelemetry.getMeter("adservice")`. Звідти, використовуйте різні методи побудови, доступні на екземплярі `Meter`, щоб створити бажаний інструмент метрики, наприклад:
+Подібно до створення відрізків, першим кроком у створенні метрик є ініціалізація екземпляра `Meter`, наприклад, `GlobalOpenTelemetry.getMeter("ad")`. Звідти, використовуйте різні методи побудови, доступні на екземплярі `Meter`, щоб створити бажаний інструмент метрики, наприклад:
 
 ```java
 meter

@@ -27,13 +27,11 @@ OpenTelemetry .NET Automatic Instrumentation має працювати з усі
 
 CI тести виконуються на наступних операційних системах:
 
-- [Alpine x64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/alpine.dockerfile)
 - [Alpine ARM64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/alpine.dockerfile)
 - [Debian x64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/debian.dockerfile)
 - [Debian ARM64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/debian-arm64.dockerfile)
-- [CentOS 7 x64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/centos-build.dockerfile)
-  (.NET 8 не підтримується)
-- [macOS Monterey 12 x64](https://github.com/actions/runner-images/blob/main/images/macos/macos-12-Readme.md)
+- [CentOS Stream 9 x64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/centos-stream9.dockerfile)
+- [macOS Ventura 13 x64](https://github.com/actions/runner-images/blob/main/images/macos/macos-13-Readme.md)
 - [Microsoft Windows Server 2022 x64](https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md)
 - [Ubuntu 20.04 LTS x64](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2004-Readme.md)
 - Ubuntu 22.04 LTS ARM64
@@ -193,7 +191,7 @@ Register-OpenTelemetryForIIS
 
 Для прикладу інструментування Docker контейнера, дивіться [приклад](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/tree/main/examples/demo) на GitHub.
 
-Ви також можете використовувати [OpenTelemetry Operator для Kubernetes](/docs/kubernetes/operator/).
+Ви також можете використовувати [OpenTelemetry Operator для Kubernetes](/docs/platforms/kubernetes/operator/).
 
 ## Налаштування агента {#configuring-the-agent}
 

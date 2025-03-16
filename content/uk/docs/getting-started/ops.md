@@ -14,6 +14,6 @@ OpenTelemetry може вам допомогти! Щоб досягти вашо
 - [Що таке OpenTelemetry?](../../what-is-opentelemetry/)
 - [Як я можу інструментувати застосунки, не торкаючись їх коду?](../../concepts/instrumentation/zero-code/)
 - [Як я можу налаштувати колектор?](../../collector/)
-- [Як я можу автоматизувати Kubernetes за допомогою OpenTelemetry Operator?](../../kubernetes/operator/)
+- [Як я можу автоматизувати Kubernetes за допомогою OpenTelemetry Operator?](../../platforms/kubernetes/operator/)
 
 Якщо ви шукаєте набір застосунків для випробувань, вам буде корисна наша офіційна [демонстрація OpenTelemetry](/ecosystem/demo/).

@@ -6,7 +6,7 @@ description: Інструментування для OpenTelemetry .NET
 cSpell:ignore: dicelib rolldice
 ---
 
-{{% uk/docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro %}}
 
 {{% alert title="Примітка" color="info" %}}
 
@@ -292,7 +292,7 @@ dotnet run
 
 ### Ініціалізація трасування {#initialize-tracing}
 
-{{% alert title="Примітка" color="info" %}} Якщо ви інструментуєте бібліотеку, вам не потрібно ініціалізувати TraceProvider. {{% /alert %}}
+{{% alert title="Примітка" color="info" %}} Якщо ви інструментуєте бібліотеку, вам не потрібно ініціалізувати TracerProvider. {{% /alert %}}
 
 Щоб увімкнути [трасування](/docs/concepts/signals/traces/) у вашому застосунку, вам потрібно мати ініціалізований [`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider), який дозволить вам створювати [`Tracer`](/docs/concepts/signals/traces/#tracer).
 
@@ -562,7 +562,7 @@ var activity = MyActivitySource.StartActivity(
 
 ### Встановлення статусу Activity {#set-activity-status}
 
-{{% docs/languages/span-status-preamble %}}
+{{% uk/docs/languages/span-status-preamble %}}
 
 Статус може бути встановлений у будь-який час до завершення відрізка.
 

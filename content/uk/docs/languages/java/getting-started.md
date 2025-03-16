@@ -226,7 +226,7 @@ value=8192, exemplars=[]}], monotonic=false, aggregationTemporality=CUMULATIVE}}
 Щоб отримати більше:
 
 - Запустіть цей приклад з іншим [експортером][експортер] для телеметричних даних.
-- Спробуйте [інструментування без коду](/docs/zero-code/java/agent/) на одному з ваших власних застосункі.
+- Спробуйте [інструментування без коду](/docs/zero-code/java/agent/) на одному з ваших власних застосунків.
 - Для легкого налаштування телеметрії спробуйте [анотації][].
 - Дізнайтеся про [ручне інструментування][] і спробуйте більше [прикладів](../examples/).
 - Подивіться на [OpenTelemetry Demo](/docs/demo/), який включає оснований на Java [Ad Service](/docs/demo/services/ad/) та оснований на Kotlin [Fraud Detection Service](/docs/demo/services/fraud-detection/)
@@ -236,10 +236,8 @@ value=8192, exemplars=[]}], monotonic=false, aggregationTemporality=CUMULATIVE}}
 [логи]: /docs/concepts/signals/logs/
 [анотації]: /docs/zero-code/java/agent/annotations/
 [налаштувати Java агент]: /docs/zero-code/java/agent/configuration/
-[консольний експортер]:
-  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#logging-exporter
-[експортер]:
-  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#exporters
+[консольний експортер]: /docs/languages/java/configuration/#properties-exporters
+[експортер]: /docs/languages/java/configuration/#properties-exporters
 [java-vers]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#language-version-compatibility
 [ручне інструментування]: ../instrumentation

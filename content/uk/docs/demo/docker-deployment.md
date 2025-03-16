@@ -2,7 +2,7 @@
 title: Розгортання Docker
 linkTitle: Docker
 aliases: [docker_deployment]
-cSpell:ignore: otelcollector otlphttp spanmetrics tracetest tracetesting
+cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
 ---
 
 <!-- markdownlint-disable code-block-style ol-prefix -->
@@ -10,7 +10,7 @@ cSpell:ignore: otelcollector otlphttp spanmetrics tracetest tracetesting
 ## Попередні вимоги {#prerequisites}
 
 - Docker
-- [Docker Compose](https://docs.docker.com/compose/install/#install-compose)
+- [Docker Compose](https://docs.docker.com/compose/install/)
   v2.0.0+
 - Make (опціонально)
 - 6 ГБ оперативної памʼяті для застосунку
@@ -102,7 +102,7 @@ OpenTelemetry Collector можна використовувати для екс�
 - `otelcol-config.yml`
 - `otelcol-config-extras.yml`
 
-Щоб додати свій бекенд, відкрийте файл [src/otelcollector/otelcol-config-extras.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otelcollector/otelcol-config-extras.yml) за допомогою редактора.
+Щоб додати свій бекенд, відкрийте файл [src/otelcollector/otelcol-config-extras.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config-extras.yml) за допомогою редактора.
 
 - Почніть з додавання нового експортера. Наприклад, якщо ваш бекенд підтримує OTLP через HTTP, додайте наступне:
 
@@ -127,4 +127,4 @@ OpenTelemetry Collector можна використовувати для екс�
 
 Після оновлення `otelcol-config-extras.yml`, запустіть демо, виконавши `make start`. Через деякий час ви повинні побачити, як трасування надходять до вашого бекенду.
 
-[^1]: {{% _param notes.docker-compose-v2 %}}
+[^1]: {{% param notes.docker-compose-v2 %}}
