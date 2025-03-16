@@ -396,7 +396,6 @@ func (c *connectorImp) ConsumeTraces(ctx context.Context, td ptrace.Traces) erro
         name: otelcol-dev-bin
         description: Basic OpenTelemetry collector distribution for Developers
         output_path: ./otelcol-dev
-        otelcol_version: 0.86.0
 
 
     exporters:

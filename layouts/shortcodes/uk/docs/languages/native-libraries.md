@@ -1,1 +1,1 @@
-{{ partial "docs/native-libraries.md" . }}
+{{ partial "uk/docs/native-libraries.md" . }}

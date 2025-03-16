@@ -4,7 +4,7 @@ linkTitle: Приклад
 weight: 20
 aliases: [/docs/languages/python/automatic/example]
 # prettier-ignore
-cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette uninstrumented venv werkzeug
+cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette venv
 ---
 
 Ця сторінка демонструє, як використовувати автоматичне інструментування Python в OpenTelemetry. Приклад базується на [прикладі OpenTracing][opentracing example]. Ви можете завантажити або переглянути [файли сирців][source files], використані на цій сторінці, з репозиторію `opentelemetry-python`.

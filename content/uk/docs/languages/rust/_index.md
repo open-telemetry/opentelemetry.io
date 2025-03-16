@@ -30,4 +30,4 @@ OpenTelemetry для Rust публікує наступні crates:
 
 ## Додатково {#further-reading}
 
-- [Екосистема](https://github.com/open-telemetry/opentelemetry-rust#ecosystem)
+- [Overview of crates](https://github.com/open-telemetry/opentelemetry-rust#overview-of-crates)

@@ -10,67 +10,71 @@ body_class: otel-mermaid-max-width
 ```mermaid
 graph TD
 subgraph Service Diagram
-accountingservice(Cервіс бухгалтерії):::dotnet
-adservice(Сервіс реклами):::java
+accounting(Бухгалтерія):::dotnet
+ad(Реклама):::java
 cache[(Кеш<br/>&#40Valkey&#41)]
-cartservice(Сервіс кошика):::dotnet
-checkoutservice(Сервіс оформлення замовлення):::golang
-currencyservice(Валютний сервіс):::cpp
-emailservice(Сервіс електронної пошти):::ruby
+cart(Кошик):::dotnet
+checkout(Оформлення замовлення):::golang
+currency(Валюта):::cpp
+email(Електронна пошта):::ruby
 flagd(Flagd):::golang
-flagdui(Flagd-ui):::typescript
-frauddetectionservice(Сервіс виявлення шахрайства):::kotlin
+flagd-ui(Flagd-ui):::typescript
+fraud-detection(Виявлення шахрайства):::kotlin
 frontend(Фронтенд):::typescript
-frontendproxy(Фронтенд проксі <br/>&#40Envoy&#41):::cpp
-imageprovider(Постачальник зображень <br/>&#40nginx&#41):::cpp
-loadgenerator([Генератор навантаження]):::python
-paymentservice(Платіжний сервіс):::javascript
-productcatalogservice(Сервіс каталогу продуктів):::golang
-quoteservice(Сервіс котирувань):::php
-recommendationservice(Сервіс рекомендацій):::python
-shippingservice(Сервіс доставки):::rust
+frontend-proxy(Фронтенд проксі <br/>&#40Envoy&#41):::cpp
+image-provider(Постачальник зображень <br/>&#40nginx&#41):::cpp
+load-generator([Генератор навантаження]):::python
+payment(Платежі):::javascript
+product-catalog(Каталог продуктів):::golang
+quote(Котирування):::php
+recommendation(Рекомендації):::python
+shipping(Доставка):::rust
 queue[(черга<br/>&#40Kafka&#41)]:::java
 
-adservice ---->|gRPC| flagd
+react-native-app(Застосунок React Native):::typescript
 
-checkoutservice -->|gRPC| cartservice
-checkoutservice --->|TCP| queue
-cartservice --> cache
-cartservice -->|gRPC| flagd
+ad ---->|gRPC| flagd
 
-checkoutservice -->|gRPC| shippingservice
-checkoutservice -->|gRPC| paymentservice
-checkoutservice --->|HTTP| emailservice
-checkoutservice -->|gRPC| currencyservice
-checkoutservice -->|gRPC| productcatalogservice
+checkout -->|gRPC| cart
+checkout --->|TCP| queue
+cart --> cache
+cart -->|gRPC| flagd
 
-frauddetectionservice -->|gRPC| flagd
+checkout -->|gRPC| shipping
+checkout -->|gRPC| payment
+checkout --->|HTTP| email
+checkout -->|gRPC| currency
+checkout -->|gRPC| product-catalog
 
-frontend -->|gRPC| adservice
-frontend -->|gRPC| cartservice
-frontend -->|gRPC| checkoutservice
-frontend ---->|gRPC| currencyservice
-frontend ---->|gRPC| recommendationservice
-frontend -->|gRPC| productcatalogservice
+fraud-detection -->|gRPC| flagd
 
-frontendproxy -->|gRPC| flagd
-frontendproxy -->|HTTP| frontend
-frontendproxy -->|HTTP| flagdui
-frontendproxy -->|HTTP| imageprovider
+frontend -->|gRPC| ad
+frontend -->|gRPC| cart
+frontend -->|gRPC| checkout
+frontend ---->|gRPC| currency
+frontend ---->|gRPC| recommendation
+frontend -->|gRPC| product-catalog
 
-Internet -->|HTTP| frontendproxy
+frontend-proxy -->|gRPC| flagd
+frontend-proxy -->|HTTP| frontend
+frontend-proxy -->|HTTP| flagd-ui
+frontend-proxy -->|HTTP| image-provider
 
-loadgenerator -->|HTTP| frontendproxy
+Internet -->|HTTP| frontend-proxy
 
-paymentservice -->|gRPC| flagd
+load-generator -->|HTTP| frontend-proxy
 
-queue -->|TCP| accountingservice
-queue -->|TCP| frauddetectionservice
+payment -->|gRPC| flagd
 
-recommendationservice -->|gRPC| productcatalogservice
-recommendationservice -->|gRPC| flagd
+queue -->|TCP| accounting
+queue -->|TCP| fraud-detection
 
-shippingservice -->|HTTP| quoteservice
+recommendation -->|gRPC| product-catalog
+recommendation -->|gRPC| flagd
+
+shipping -->|HTTP| quote
+
+react-native-app -->|HTTP| frontend-proxy
 end
 
 classDef dotnet fill:#178600,color:white;
@@ -117,7 +121,7 @@ classDef typescript fill:#e98516,color:black;
 
 Перейдіть за цими посиланнями, щоб дізнатися про поточний стан [метрик](/docs/demo/telemetry-features/metric-coverage/) та [трасування](/docs/demo/telemetry-features/trace-coverage/) інструментування демонстраційних застосунків.
 
-Колектор налаштований в [otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otelcollector/otelcol-config.yml),  альтернативні експортери можна налаштувати тут.
+Колектор налаштований в [otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config.yml), альтернативні експортери можна налаштувати тут.
 
 ```mermaid
 graph TB

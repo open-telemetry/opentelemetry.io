@@ -8,7 +8,7 @@ cSpell:ignore: guzzlehttp myapp
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% uk/docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro %}}
 
 ## Підготовка демонстраційного застосунку {#example-app}
 
@@ -173,7 +173,7 @@ $resource = ResourceInfoFactory::emptyResource()->merge(ResourceInfo::create(Att
     ResourceAttributes::SERVICE_NAMESPACE => 'demo',
     ResourceAttributes::SERVICE_NAME => 'test-application',
     ResourceAttributes::SERVICE_VERSION => '0.1',
-    ResourceAttributes::DEPLOYMENT_ENVIRONMENT => 'development',
+    ResourceAttributes::DEPLOYMENT_ENVIRONMENT_NAME => 'development',
 ])));
 $spanExporter = new SpanExporter(
     (new StreamTransportFactory())->create('php://stdout', 'application/json')
@@ -241,7 +241,7 @@ require('instrumentation.php');
 
 Приклад також налаштовує обовʼязковий стандартний атрибут SDK `service.name`, який містить логічну назву сервісу, та необовʼязковий, але дуже рекомендований атрибут `service.version`, який містить версію API або реалізації сервісу.
 
-Існують альтернативні методи налаштування атрибутів ресурсу. Для більш детальної інформації дивіться [Ресурси](/docs/languages/js/resources/).
+Існують альтернативні методи налаштування атрибутів ресурсу. Для більш детальної інформації дивіться [Ресурси](/docs/languages/php/resources/).
 
 #### Глобальні провайдери {#global-providers}
 
@@ -280,7 +280,7 @@ $loggerProvider = \OpenTelemetry\API\Globals::loggerProvider();
 
 ### Отримання трейсера {#acquiring-a-tracer}
 
-Будь-де у вашому застосунку, де ви пишете код ручного трасування, слід викликати `getTracer`, щоб отримати трасер. Наприклад:
+Будь-де у вашому застосунку, де ви пишете код ручного трасування, слід викликати `getTracer`, щоб отримати трейсер. Наприклад:
 
 ```php
 $tracerProvider = Globals::tracerProvider();
@@ -296,7 +296,7 @@ $tracer = $tracerProvider->getTracer(
 
 Зазвичай рекомендується викликати `getTracer` у вашому застосунку, коли це потрібно, а не експортувати екземпляр `tracer` до решти вашого застосунку. Це допомагає уникнути складніших проблем із завантаженням застосунку, коли залучені інші необхідні залежності.
 
-У випадку [демонстраційного застосунку](#example-app), є два місця, де можна отримати трасер з відповідною Областю Інструментування:
+У випадку [демонстраційного застосунку](#example-app), є два місця, де можна отримати трейсер з відповідною Областю Інструментування:
 
 По-перше, у _файлі застосунку_ `index.php`:
 

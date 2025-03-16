@@ -27,7 +27,7 @@ cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadba
 
 ### NGINX як "готовий" балансувальник навантаження {#nginx-as-an-out-of-the-box-load-balancer}
 
-Припустимо, у вас є два колектори (`collector1` і `collector2`), налаштовані, і ви хочете балансувати трафік між ними за допомогою NGINX, ви можете використовувати наступну конфігурацію:
+Припустимо, у вас є три колектори (`collector1`, `collector2` та `collector2`), налаштовані, і ви хочете балансувати трафік між ними за допомогою NGINX, ви можете використовувати наступну конфігурацію:
 
 ```nginx
 server {
@@ -62,11 +62,13 @@ server {
 upstream collector4317 {
     server collector1:4317;
     server collector2:4317;
+    server collector3:4317;
 }
 
 upstream collector4318 {
     server collector1:4318;
     server collector2:4318;
+    server collector3:4318;
 }
 ```
 
@@ -202,3 +204,29 @@ service:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor
 [spanmetrics-connector]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector
+
+## Кілька колекторів та принцип єдиного записувача {#multiple-collectors-and-the-single-writer-principle}
+
+Всі потоки даних метрик в OTLP повинні мати [єдиного записувача](/docs/specs/otel/metrics/data-model/#single-writer). При розгортанні декількох колекторів у конфігурації шлюзу важливо переконатися, що всі потоки метрик мають єдиного записувача і глобальний унікальний
+ідентифікатор.
+
+### Потенційні проблеми {#potential-problems}
+
+Одночасний доступ з декількох застосунків, які змінюють або звітують про ті самі дані, може призвести до втрати даних або погіршення їх якості. Наприклад, ви можете побачити неузгоджені дані з декількох джерел на одному ресурсі, де різні джерела можуть перезаписати один одного, оскільки ресурс не має однозначної ідентифікації.
+
+Існують закономірності в даних, які можуть дати певне уявлення про те, чи відбувається це чи ні. Наприклад, при візуальному огляді серія з незрозумілими прогалинами або стрибками в одній серії може свідчити про те, що кілька колекторів надсилають одну й ту ж вибірку. Ви також можете побачити помилки у вашому бекенді. Наприклад, у бекенді Prometheus:
+
+`Error on ingesting out-of-order samples`
+
+Ця помилка може вказувати на те, що в двох завданнях існують однакові цілі, а порядок міток часу неправильний. Наприклад:
+
+- Метрика `M1` отримана в `T1` з міткою часу 13:56:04 зі значенням `100`.
+- Метрика `M1` отримана о `T2` з міткою часу 13:56:24 зі значенням `120`
+- Метрика `M1` отримана о `T3` з часовою міткою 13:56:04 зі значенням `110`
+- Метрика `M1` отримана о 13:56:24 зі значенням `120
+- Метрика `M1`, отримана о 13:56:04 зі значенням `110
+
+### Найкращі практики {#best-practices}
+
+- Використовуйте [обробник атрибутів Kubernetes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor) для додавання міток до різних ресурсів Kubernetes.
+- Використовуйте [процесор виявлення ресурсів](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md) для виявлення інформації про ресурси на хості та збору метаданих про ресурси.

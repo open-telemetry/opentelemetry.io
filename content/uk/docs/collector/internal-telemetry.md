@@ -1,34 +1,26 @@
 ---
-title: Internal telemetry
+title: Внурішня телеметрія
 weight: 25
-# prettier-ignore
-cSpell:ignore: alloc batchprocessor journalctl kube otecol pprof tracez underperforming zpages
+cSpell:ignore: alloc batchprocessor journalctl
 ---
 
-You can inspect the health of any OpenTelemetry Collector instance by checking
-its own internal telemetry. Read on to learn about this telemetry and how to
-configure it to help you
-[monitor](#use-internal-telemetry-to-monitor-the-collector) and
-[troubleshoot](/docs/collector/troubleshooting/) the Collector.
+Ви можете перевірити стан будь-якого екземпляра OpenTelemetry Collector за допомогою його внутрішньої телеметрії. Читайте далі, щоб дізнатися про цю телеметрію та як її налаштувати, щоб допомогти вам [моніторити](#use-internal-telemetry-to-monitor-the-collector) та [усувати несправності](/docs/collector/troubleshooting/) Колектора.
 
-## Activate internal telemetry in the Collector
+{{% alert title="Важливо" color="warning" %}} Колектор використовує [декларативну схему конфігурації](https://github.com/open-telemetry/opentelemetry-configuration) OpenTelemetry SDK для налаштування експорту внутрішньої телеметрії. Ця схема все ще перебуває на стадії [розробки](/docs/specs/otel/document-status/#lifecycle-status) і може зазнати **суттєвих змін** у майбутніх випусках. Ми маємо намір продовжувати підтримувати старі схеми до випуску схеми 1.0 і пропонуємо перехідний період для користувачів, щоб оновити свої конфігурації перед тим, як відмовитися від схем pre-1.0. Для отримання детальної інформації та відстеження прогресу див. [Issue #10808](https://github.com/open-telemetry/opentelemetry-collector/issues/10808).
+{{% /alert %}}
 
-By default, the Collector exposes its own telemetry in two ways:
+## Активація внутрішньої телеметрії у колекторі {#activate-internal-telemetry-in-the-collector}
 
-- Internal [metrics](#configure-internal-metrics) are exposed using a Prometheus
-  interface which defaults to port `8888`.
-- [Logs](#configure-internal-logs) are emitted to `stderr` by default.
+Стандартно колектор показує власну телеметрію двома способами:
 
-### Configure internal metrics
+- Внутрішні [метрики](#configure-internal-metrics) експонуються за допомогою інтерфейсу Prometheus, який стандартно налаштовано на порт `8888`.
+- [Журнали](#configure-internal-logs) стандартно виводяться на `stderr`.
 
-You can configure how internal metrics are generated and exposed by the
-Collector. By default, the Collector generates basic metrics about itself and
-exposes them using the OpenTelemetry Go
-[Prometheus exporter](https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/prometheus)
-for scraping at `http://127.0.0.1:8888/metrics`.
+### Налаштування внутрішніх метрик {#configure-internal-metrics}
 
-The Collector can push its internal metrics to an OTLP backend via the following
-configuration:
+Ви можете налаштувати, як колектор генерує та експонує внутрішні метрики. Стандартно, Колектор генерує основні метрики про себе і експонує їх за допомогою OpenTelemetry Go [Prometheus exporter](https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/prometheus) для отримання даних за адресою `http://127.0.0.1:8888/metrics`.
+
+Колектор може передавати свої внутрішні метрики до бекенду OTLP за допомогою наступної конфігурації:
 
 ```yaml
 service:
@@ -38,15 +30,13 @@ service:
         - periodic:
             exporter:
               otlp:
-                protocol: grpc/protobuf
-                endpoint: http://localhost:14317
+                protocol: http/protobuf
+                endpoint: https://backend:4318
 ```
 
-Alternatively, you can expose the Prometheus endpoint to one specific or all
-network interfaces when needed. For containerized environments, you might want
-to expose this port on a public interface.
+Крім того, ви можете відкрити точку доступу Prometheus для одного певного або всіх мережевих інтерфейсів, коли це необхідно. У контейнерних середовищах ви можете відкрити цей порт на загальнодоступному інтерфейсі.
 
-Set the Prometheus config under `service::telemetry::metrics`:
+Налаштуйте конфігурацію Prometheus у розділі `service::telemetry::metrics`:
 
 ```yaml
 service:
@@ -60,20 +50,16 @@ service:
                 port: 8888
 ```
 
-You can adjust the verbosity of the Collector metrics output by setting the
-`level` field to one of the following values:
+Ви можете налаштувати докладність виведення метрик колектора, встановивши в полі `level` одне з наступних значень:
 
-- `none`: no telemetry is collected.
-- `basic`: essential service telemetry.
-- `normal`: the default level, adds standard indicators on top of basic.
-- `detailed`: the most verbose level, includes dimensions and views.
+- `none`: телеметрія не збирається.
+- `basic`: телеметрія основних сервісів.
+- `normal`: стандартний рівень, додає стандартні показники на додаток до базових.
+- `detailed`: найбільш докладний рівень, включає виміри та подання.
 
-Each verbosity level represents a threshold at which certain metrics are
-emitted. For the complete list of metrics, with a breakdown by level, see
-[Lists of internal metrics](#lists-of-internal-metrics).
+Кожен рівень деталізації являє собою поріг, при якому певні метрики будуть видаватися. Повний список метрик з розбивкою за рівнями наведено у [Списку внутрішніх метрик](#lists-of-internal-metrics).
 
-The default level for metrics output is `normal`. To use another level, set
-`service::telemetry::metrics::level`:
+Стандартний рівень виведення метрик — `normal`. Щоб використовувати інший рівень, задайте `service::telemetry::metrics::level`:
 
 ```yaml
 service:
@@ -82,30 +68,26 @@ service:
       level: detailed
 ```
 
-### Configure internal logs
+### Налаштування внутрішніх журналів {#configure-internal-logs}
 
-Log output is found in `stderr`. You can configure logs in the config
-`service::telemetry::logs`. The
-[configuration options](https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/telemetry/config.go)
-are:
+Вивід логів знаходиться у файлі `stderr`. Налаштувати логи можна у конфігураційному файлі `service::telemetry::logs`. Ось [параметри конфігурації](https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/telemetry/config.go):
 
-| Field name             | Default value | Description                                                                                                                                                                                                                                                                                       |
-| ---------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `level`                | `INFO`        | Sets the minimum enabled logging level. Other possible values are `DEBUG`, `WARN`, and `ERROR`.                                                                                                                                                                                                   |
-| `development`          | `false`       | Puts the logger in development mode.                                                                                                                                                                                                                                                              |
-| `encoding`             | `console`     | Sets the logger's encoding. The other possible value is `json`.                                                                                                                                                                                                                                   |
-| `disable_caller`       | `false`       | Stops annotating logs with the calling function's file name and line number. By default, all logs are annotated.                                                                                                                                                                                  |
-| `disable_stacktrace`   | `false`       | Disables automatic stacktrace capturing. Stacktraces are captured for logs at `WARN` level and above in development and at `ERROR` level and above in production.                                                                                                                                 |
-| `sampling::enabled`    | `true`        | Sets a sampling policy.                                                                                                                                                                                                                                                                           |
-| `sampling::tick`       | `10s`         | The interval in seconds that the logger applies to each sampling.                                                                                                                                                                                                                                 |
-| `sampling::initial`    | `10`          | The number of messages logged at the start of each `sampling::tick`.                                                                                                                                                                                                                              |
-| `sampling::thereafter` | `100`         | Sets the sampling policy for subsequent messages after `sampling::initial` messages are logged. When `sampling::thereafter` is set to `N`, every `Nth` message is logged and all others are dropped. If `N` is zero, the logger drops all messages after `sampling::initial` messages are logged. |
-| `output_paths`         | `["stderr"]`  | A list of URLs or file paths to write logging output to.                                                                                                                                                                                                                                          |
-| `error_output_paths`   | `["stderr"]`  | A list of URLs or file paths to write logger errors to.                                                                                                                                                                                                                                           |
-| `initial_fields`       |               | A collection of static key-value pairs added to all log entries to enrich logging context. By default, there is no initial field.                                                                                                                                                                 |
+| Назва поля             | Станадртне значення | Опис |
+| ---------------------- | ------------- | ---------- |
+| `level`                | `INFO`        | Задає мінімальний дозволений рівень ведення журналу. Інші можливі значення: `DEBUG`, `WARN` та `ERROR`. |
+| `development`          | `false`       | Переводить логер у режим розробки. |
+| `encoding`             | `console`     | Задає кодування журналу. Іншим можливим значенням є `json`. |
+| `disable_caller`       | `false`       | Зупиняє анотування журналів із зазначенням імені файлу та номера рядка функції, що його викликала. Типово, всі логи анотовано. |
+| `disable_stacktrace`   | `false`       | Вимикає автоматичне захоплення stacktrace. Stacktraces записуються для журналів з рівнем `WARN` і вище у розробці та з рівнем `ERROR` і вище у промисловій експлуатації. |
+| `sampling::enabled`    | `true`        | Встановлює політику вибірки. |
+| `sampling::tick`       | `10s`         | Інтервал у секундах, який логгер застосовує до кожної вибірки. |
+| `sampling::initial`    | `10`          | Кількість повідомлень, що реєструються на початку кожного `sampling::tick`. |
+| `sampling::thereafter` | `100`         | Задає політику вибірки для наступних повідомлень після того, як до журналу буде записано повідомлення `sampling::initial`. Якщо `sampling::thereafter` встановлено у `N`, кожне `N`-е повідомлення буде записано до журналу, а всі інші буде пропущено. Якщо `N` дорівнює нулю, логгер пропускає усі повідомлення після того, як буде записано повідомлення `sampling::initial`. |
+| `output_paths`         | `["stderr"]`  | Список URL-адрес або шляхів до файлів для запису виводу журналу. |
+| `error_output_paths`   | `["stderr"]`  | Список URL-адрес або шляхів до файлів, куди слід записувати помилки журналу. |
+| `initial_fields`       |               | Набір статичних пар ключ-значення, що додаються до всіх записів журналу для збагачення контексту журналу. Типово, початкове поле відсутнє. |
 
-You can also see logs for the Collector on a Linux systemd system using
-`journalctl`:
+Ви також можете переглянути журнали колектора у системі Linux systemd за допомогою `journalctl`:
 
 {{< tabpane text=true >}} {{% tab "All logs" %}}
 
@@ -121,8 +103,7 @@ journalctl | grep otelcol | grep Error
 
 {{% /tab %}} {{< /tabpane >}}
 
-The following configuration can be used to emit internal logs from the Collector
-to an OTLP/HTTP backend:
+Наступна конфігурація може бути використана для надсилання внутрішніх журналів з Колектора до OTLP/HTTP бекенда:
 
 ```yaml
 service:
@@ -133,22 +114,20 @@ service:
             exporter:
               otlp:
                 protocol: http/protobuf
-                endpoint: https://backend:4317
+                endpoint: https://backend:4318
 ```
 
-### Configure internal traces
+### Налаштування внутрішніх трейсів {#configure-internal-traces}
 
-The Collector does not expose traces by default, but it can be configured to.
+Стандартно колектор не показує трасування, але його можна налаштувати.
 
-{{% alert title="Caution" color="warning" %}}
+{{% alert title="Застереження" color="warning" %}}
 
-Internal tracing is an experimental feature, and no guarantees are made as to
-the stability of the emitted span names and attributes.
+Внутрішнє трасування є експериментальною функцією, і немає жодних гарантій щодо стабільності назв та атрибутів відрізків, що генеруються.
 
 {{% /alert %}}
 
-The following configuration can be used to emit internal traces from the
-Collector to an OTLP/gRPC backend:
+Наступна конфігурація може бути використана для надсилання внутрішніх трейсів з Колектора до бекенду OTLP:
 
 ```yaml
 service:
@@ -158,282 +137,216 @@ service:
         - batch:
             exporter:
               otlp:
-                protocol: grpc/protobuf
-                endpoint: https://backend:4317
+                protocol: http/protobuf
+                endpoint: https://backend:4318
 ```
 
-See the [example configuration][kitchen-sink-config] for additional options.
-Note that the `tracer_provider` section there corresponds to `traces` here.
+Додаткові параметри наведено у [example configuration][kitchen-sink-config]. Зверніть увагу, що розділ `tracer_provider` там відповідає `traces` тут.
 
 [kitchen-sink-config]:
   https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml
 
-## Types of internal telemetry
+## Типи внутрішньої телеметрії {#types-of-internal-telemetry}
 
-The OpenTelemetry Collector aims to be a model of observable service by clearly
-exposing its own operational metrics. Additionally, it collects host resource
-metrics that can help you understand if problems are caused by a different
-process on the same host. Specific components of the Collector can also emit
-their own custom telemetry. In this section, you will learn about the different
-types of observability emitted by the Collector itself.
+OpenTelemetry Collector прагне бути зразком спостережуваного сервісу, чітко показуючи свої власні операційні метрики. Крім того, він збирає метрики ресурсів хоста, які можуть допомогти вам зрозуміти, чи проблеми спричинені іншим процесом на тому ж хості. Окремі компоненти Колектора також можуть створювати власні телеметричні дані. У цьому розділі ви дізнаєтеся про різні типи спостережуваності, які генерує сам Колектор.
 
-### Summary of values observable with internal metrics
+### Підсумок значень, спостережуваних за допомогою внутрішніх метрик {#summary-of-values-observable-with-internal-metrics}
 
-The Collector emits internal metrics for at least the following values:
+Колектор генерує внутрішні метрики щонайменше для таких значень:
 
-- Process uptime and CPU time since start.
-- Process memory and heap usage.
-- For receivers: Items accepted and refused, per data type.
-- For processors: Incoming and outgoing items.
-- For exporters: Items the exporter sent, failed to enqueue, and failed to send,
-  per data type.
-- For exporters: Queue size and capacity.
-- Count, duration, and size of HTTP/gRPC requests and responses.
+- Час роботи процесу та час роботи CPU з моменту запуску.
+- Використання памʼяті процесу та купи.
+- Для приймачів: Прийняті та відхилені елементи для кожного типу даних.
+- Для процесорів: Вхідні та вихідні елементи.
+- Для експортерів: Елементи, які експортер надіслав, не поставив у чергу і не надіслав, за кожним типом даних.
+- Для експортерів: Розмір і ємність черги.
+- Кількість, тривалість і розмір HTTP/gRPC запитів і відповідей.
 
-A more detailed list is available in the following sections.
+Більш детальний список доступний у наступних розділах.
 
-### Lists of internal metrics
+### Списки внутрішніх метрик {#lists-of-internal-metrics}
 
-The following tables group each internal metric by level of verbosity: `basic`,
-`normal`, and `detailed`. Each metric is identified by name and description and
-categorized by instrumentation type.
+У наступних таблицях кожна внутрішня метрика згрупована за рівнем деталізації: `basic`, `normal` та `detailed`. Кожна метрика ідентифікується за назвою та описом і класифікується за типом інструментарію.
 
-{{% alert title="Note" color="info" %}} As of Collector v0.106.1, internal
-metric names are handled differently based on their source:
+{{% alert title="Примітка" color="info" %}} Починаючи з Collector v0.106.1, внутрішні назви метрик обробляються по-різному залежно від їхнього джерела:
 
-- Metrics generated from Collector components are prefixed with `otelcol_`.
-- Metrics generated from instrumentation libraries do not use the `otelcol_`
-  prefix by default, unless their metric names are explicitly prefixed.
+- Метрики, створені з компонентів Колектора, мають префікс `otelcol_`.
+- Метрики, створені з інструментальних бібліотек, стандартно не використовують префікс `otelcol_`, якщо тільки в їхніх назвах явно не вказано префікс.
 
-For Collector versions prior to v0.106.1, all internal metrics emitted using the
-Prometheus exporter, regardless of their origin, are prefixed with `otelcol_`.
-This includes metrics from both Collector components and instrumentation
-libraries. {{% /alert %}}
+У версіях Колектора до v0.106.1 всі внутрішні метрики, створені за допомогою експортера Prometheus, незалежно від їхнього походження, мають префікс `otelcol_`. Це включає метрики як з компонентів Колектора, так і з інструментальних бібліотек. {{% /alert %}}
 
-{{% comment %}}
+{{< comment >}}
 
-To compile this list, configure a Collector instance to emit its own metrics to
-the localhost:8888/metrics endpoint. Select a metric and grep for it in the
-Collector core repository. For example, the `otelcol_process_memory_rss` can be
-found using:`grep -Hrn "memory_rss" .` Make sure to eliminate from your search
-string any words that might be prefixes. Look through the results until you find
-the .go file that contains the list of metrics. In the case of
-`otelcol_process_memory_rss`, it and other process metrics can be found in
-<https://github.com/open-telemetry/opentelemetry-collector/blob/31528ce81d44e9265e1a3bbbd27dc86d09ba1354/service/internal/proctelemetry/process_telemetry.go#L92>.
-Note that the Collector's internal metrics are defined in several different
-files in the repository.
+Щоб скласти цей список, налаштуйте екземпляр колектора на надсилання власних метрик на точку доступу localhost:8888/metrics. Виберіть метрику і виконайте grep для неї у основному репозиторії колектора. Наприклад, `otelcol_process_memory_rss` можна знайти за допомогою:`grep -Hrn "memory_rss" .` Переконайтеся, що вилучили з пошукового рядка всі слова, які можуть бути префіксами. Переглядайте результати, поки не знайдете .go-файл, який містить список метрик. У випадку з `otelcol_process_memory_rss`, його та інші метрики процесу можна знайти за адресою <https://github.com/open-telemetry/opentelemetry-collector/blob/31528ce81d44e9265e1a3bbbd27dc86d09ba1354/service/internal/proctelemetry/process_telemetry.go#L92>. Зауважте, що внутрішні метрики колектора визначено у кількох різних файлах у репозиторії.
 
-{{% /comment %}}
+{{< /comment >}}
 
-#### `basic`-level metrics
+#### Метрики рівня `basic` {#basic-level-metrics}
 
-| Metric name                                             | Description                                                                             | Type      |
-| ------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------- |
-| `otelcol_exporter_enqueue_failed_`<br>`log_records`     | Number of logs that exporter(s) failed to enqueue.                                      | Counter   |
-| `otelcol_exporter_enqueue_failed_`<br>`metric_points`   | Number of metric points that exporter(s) failed to enqueue.                             | Counter   |
-| `otelcol_exporter_enqueue_failed_`<br>`spans`           | Number of spans that exporter(s) failed to enqueue.                                     | Counter   |
-| `otelcol_exporter_queue_capacity`                       | Fixed capacity of the sending queue, in batches.                                        | Gauge     |
-| `otelcol_exporter_queue_size`                           | Current size of the sending queue, in batches.                                          | Gauge     |
-| `otelcol_exporter_send_failed_`<br>`log_records`        | Number of logs that exporter(s) failed to send to destination.                          | Counter   |
-| `otelcol_exporter_send_failed_`<br>`metric_points`      | Number of metric points that exporter(s) failed to send to destination.                 | Counter   |
-| `otelcol_exporter_send_failed_`<br>`spans`              | Number of spans that exporter(s) failed to send to destination.                         | Counter   |
-| `otelcol_exporter_sent_log_records`                     | Number of logs successfully sent to destination.                                        | Counter   |
-| `otelcol_exporter_sent_metric_points`                   | Number of metric points successfully sent to destination.                               | Counter   |
-| `otelcol_exporter_sent_spans`                           | Number of spans successfully sent to destination.                                       | Counter   |
-| `otelcol_process_cpu_seconds`                           | Total CPU user and system time in seconds.                                              | Counter   |
-| `otelcol_process_memory_rss`                            | Total physical memory (resident set size) in bytes.                                     | Gauge     |
-| `otelcol_process_runtime_heap_`<br>`alloc_bytes`        | Bytes of allocated heap objects (see 'go doc runtime.MemStats.HeapAlloc').              | Gauge     |
-| `otelcol_process_runtime_total_`<br>`alloc_bytes`       | Cumulative bytes allocated for heap objects (see 'go doc runtime.MemStats.TotalAlloc'). | Counter   |
-| `otelcol_process_runtime_total_`<br>`sys_memory_bytes`  | Total bytes of memory obtained from the OS (see 'go doc runtime.MemStats.Sys').         | Gauge     |
-| `otelcol_process_uptime`                                | Uptime of the process in seconds.                                                       | Counter   |
-| `otelcol_processor_batch_batch_`<br>`send_size`         | Number of units in the batch that was sent.                                             | Histogram |
-| `otelcol_processor_batch_batch_size_`<br>`trigger_send` | Number of times the batch was sent due to a size trigger.                               | Counter   |
-| `otelcol_processor_batch_metadata_`<br>`cardinality`    | Number of distinct metadata value combinations being processed.                         | Counter   |
-| `otelcol_processor_batch_timeout_`<br>`trigger_send`    | Number of times the batch was sent due to a timeout trigger.                            | Counter   |
-| `otelcol_processor_incoming_items`                      | Number of items passed to the processor.                                                | Counter   |
-| `otelcol_processor_outgoing_items`                      | Number of items emitted from the processor.                                             | Counter   |
-| `otelcol_receiver_accepted_`<br>`log_records`           | Number of logs successfully ingested and pushed into the pipeline.                      | Counter   |
-| `otelcol_receiver_accepted_`<br>`metric_points`         | Number of metric points successfully ingested and pushed into the pipeline.             | Counter   |
-| `otelcol_receiver_accepted_spans`                       | Number of spans successfully ingested and pushed into the pipeline.                     | Counter   |
-| `otelcol_receiver_refused_`<br>`log_records`            | Number of logs that could not be pushed into the pipeline.                              | Counter   |
-| `otelcol_receiver_refused_`<br>`metric_points`          | Number of metric points that could not be pushed into the pipeline.                     | Counter   |
-| `otelcol_receiver_refused_spans`                        | Number of spans that could not be pushed into the pipeline.                             | Counter   |
-| `otelcol_scraper_errored_`<br>`metric_points`           | Number of metric points the Collector failed to scrape.                                 | Counter   |
-| `otelcol_scraper_scraped_`<br>`metric_points`           | Number of metric points scraped by the Collector.                                       | Counter   |
+| Назва метрики | Опис | Тип |
+| ------------- | ---- | --- |
+| `otelcol_exporter_enqueue_failed_`<br>`log_records` | Кількість журналів, які експортер(и) не зміг(ли) поставити в чергу. | Counter |
+| `otelcol_exporter_enqueue_failed_`<br>`metric_points` | Кількість пунктів метрики, які експортер(и) не зміг(ли) подати на розгляд. | Counter |
+| `otelcol_exporter_enqueue_failed_`<br>`spans` | Кількість відрізків, на які експортер(и) не зміг подати заявку. | Counter |
+| `otelcol_exporter_queue_capacity` | Фіксована ємність черги надсилання, в партіях. | Gauge |
+| `otelcol_exporter_queue_size` | Поточний розмір черги на надсилання, в партіях. | Gauge |
+| `otelcol_exporter_send_failed_`<br>`log_records` | Кількість журналів, які експортер(и) не зміг(ли) надіслати до місця призначення. | Counter |
+| `otelcol_exporter_send_failed_`<br>`metric_points` | Кількість пунктів метрики, які експортер(и) не зміг(ли) відправити до місця призначення. | Counter |
+| `otelcol_exporter_send_failed_`<br>`spans` | Кількість відрізків, які експортер(и) не зміг(ли) надіслати до місця призначення. | Counter |
+| `otelcol_exporter_sent_log_records` | Кількість журналів, успішно надісланих до місця призначення. | Counter |
+| `otelcol_exporter_sent_metric_points` | Кількість пунктів метрики, успішно надісланих до місця призначення. | Counter |
+| `otelcol_exporter_sent_spans` | Кількість успішно надісланих до місця призначення відрізків. | Counter |
+| `otelcol_process_cpu_seconds` | Загальний час роботи CPU в просторі користувача та системи в секундах. | Counter |
+| `otelcol_process_memory_rss` | Загальна фізична памʼять (розмір резидентного набору) в байтах. | Gauge |
+| `otelcol_process_runtime_heap_`<br>`alloc_bytes` | Байти виділених обʼєктів купи (див. 'go doc runtime.MemStats.HeapAlloc'). | Gauge |
+| `otelcol_process_runtime_total_`<br>`alloc_bytes` | Кумулятивні байти, виділені для обʼєктів купи (див. 'go doc runtime.MemStats.TotalAlloc'). | Counter |
+| `otelcol_process_runtime_total_`<br>`sys_memory_bytes` | Загальна кількість байтів памʼяті, отриманих від ОС (див. 'go doc runtime.MemStats.Sys'). | Gauge |
+| `otelcol_process_uptime` | Час безвідмовної роботи процесу в секундах. | Counter |
+| `otelcol_processor_batch_batch_`<br>`send_size` | Кількість одиниць у надісланій партії. | Histogram |
+| `otelcol_processor_batch_batch_size_`<br>`trigger_send` | Кількість разів, коли партія була надіслана через спрацювання тригера розміру. | Counter |
+| `otelcol_processor_batch_metadata_`<br>`cardinality` | Кількість різних комбінацій значень метаданих, що обробляються. | Counter |
+| `otelcol_processor_batch_timeout_`<br>`trigger_send` | Кількість разів, коли пакет було надіслано через спрацювання тайм-ауту. | Counter |
+| `otelcol_processor_incoming_items` | Кількість елементів, переданих процесору. | Counter |
+| `otelcol_processor_outgoing_items` | Кількість елементів, переданих з процесора. | Counter |
+| `otelcol_receiver_accepted_`<br>`log_records` | Кількість логів, які успішно потрапили в конвеєр і були проштовхнуті в нього. | Counter |
+| `otelcol_receiver_accepted_`<br>`metric_points` | Кількість точок метрики, які були успішно отримані та проштовхнуті в конвеєр. | Counter |
+| `otelcol_receiver_accepted_spans` | Кількість відрізків, які були успішно отримані та проштовхнуті в конвеєр. | Counter |
+| `otelcol_receiver_refused_`<br>`log_records` | Кількість логів, які не вдалося проштовхнути в конвеєр. | Counter |
+| `otelcol_receiver_refused_`<br>`metric_points` | Кількість точок метрик, які не вдалося проштовхнути в конвеєр. | Counter |
+| `otelcol_receiver_refused_spans` | Кількість відрізків, які не вдалося проштовхнути в конвеєр. | Counter |
+| `otelcol_scraper_errored_`<br>`metric_points` | Кількість точок метрик, які не вдалося отримати колектору. | Counter |
+| `otelcol_scraper_scraped_`<br>`metric_points` | Кількість точок метрики, отриманих колектором. | Counter |
 
-#### Additional `normal`-level metrics
+#### Додаткові метрики рівня `normal` {#additional-normal-level-metrics}
 
-There are currently no metrics specific to `normal` verbosity.
+Наразі не існує метрик, специфічних для рівня `normal`.
 
-#### Additional `detailed`-level metrics
+#### Додаткові метрики рівня `detailed` {#additional-detailed-level-metrics}
 
-| Metric name                                           | Description                                                                               | Type      |
-| ----------------------------------------------------- | ----------------------------------------------------------------------------------------- | --------- |
-| `http_client_active_requests`                         | Number of active HTTP client requests.                                                    | Counter   |
-| `http_client_connection_duration`                     | Measures the duration of the successfully established outbound HTTP connections.          | Histogram |
-| `http_client_open_connections`                        | Number of outbound HTTP connections that are active or idle on the client.                | Counter   |
-| `http_client_request_size`                            | Measures the size of HTTP client request bodies.                                          | Counter   |
-| `http_client_duration`                                | Measures the duration of HTTP client requests.                                            | Histogram |
-| `http_client_response_size`                           | Measures the size of HTTP client response bodies.                                         | Counter   |
-| `http_server_active_requests`                         | Number of active HTTP server requests.                                                    | Counter   |
-| `http_server_request_size`                            | Measures the size of HTTP server request bodies.                                          | Counter   |
-| `http_server_duration`                                | Measures the duration of HTTP server requests.                                            | Histogram |
-| `http_server_response_size`                           | Measures the size of HTTP server response bodies.                                         | Counter   |
-| `otelcol_processor_batch_batch_`<br>`send_size_bytes` | Number of bytes in the batch that was sent.                                               | Histogram |
-| `rpc_client_duration`                                 | Measures the duration of outbound RPC.                                                    | Histogram |
-| `rpc_client_request_size`                             | Measures the size of RPC request messages (uncompressed).                                 | Histogram |
-| `rpc_client_requests_per_rpc`                         | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram |
-| `rpc_client_response_size`                            | Measures the size of RPC response messages (uncompressed).                                | Histogram |
-| `rpc_client_responses_per_rpc`                        | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram |
-| `rpc_server_duration`                                 | Measures the duration of inbound RPC.                                                     | Histogram |
-| `rpc_server_request_size`                             | Measures the size of RPC request messages (uncompressed).                                 | Histogram |
-| `rpc_server_requests_per_rpc`                         | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram |
-| `rpc_server_response_size`                            | Measures the size of RPC response messages (uncompressed).                                | Histogram |
-| `rpc_server_responses_per_rpc`                        | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram |
+| Назва метрики | Опис | Тип |
+| ------------- | ---- | --- |
+| `http_client_active_requests` | Кількість активних запитів HTTP-клієнтів. | Counter |
+| `http_client_connection_duration` | Вимірює тривалість успішно встановлених вихідних HTTP-зʼєднань. | Histogram |
+| `http_client_open_connections` | Кількість вихідних HTTP-зʼєднань, активних або неактивних на клієнті. | Counter |
+| `http_client_request_size` | Вимірює розмір тіла HTTP-запиту клієнта. | Counter |
+| `http_client_duration` | Вимірює тривалість клієнтських HTTP-запитів. | Histogram |
+| `http_client_response_size` | Вимірює розмір тіл відповідей HTTP-клієнтів. | Counter |
+| `http_server_active_requests` | Кількість активних запитів до HTTP-сервера. | Counter |
+| `http_server_request_size` | Вимірює розмір тіла запиту HTTP-сервера. | Counter |
+| `http_server_duration` | Вимірює тривалість запитів до HTTP-сервера. | Histogram |
+| `http_server_response_size` | Вимірює розмір тіла відповіді HTTP-сервера. | Counter |
+| `otelcol_processor_batch_batch_`<br>`send_size_bytes` | Кількість байт у пакеті, який було надіслано. | Histogram |
+| `rpc_client_duration` | Вимірює тривалість вихідного RPC. | Histogram |
+| `rpc_client_request_size` | Вимірює розмір повідомлень RPC-запитів (без стиснення). | Histogram |
+| `rpc_client_requests_per_rpc` | Вимірює кількість повідомлень, отриманих на один RPC. Має дорівнювати 1 для всіх не потокових RPC. | Histogram |
+| `rpc_client_response_size` | Вимірює розмір повідомлень-відповідей RPC (без стиснення). | Histogram |
+| `rpc_client_responses_per_rpc` | Вимірює кількість повідомлень, надісланих за один RPC. Має дорівнювати 1 для всіх не потокових RPC. | Histogram |
+| `rpc_server_duration` | Вимірює тривалість вхідного RPC. | Histogram |
+| `rpc_server_request_size` | Вимірює розмір повідомлень RPC-запитів (без стиснення). | Histogram |
+| `rpc_server_requests_per_rpc` | Вимірює кількість повідомлень, отриманих на один RPC. Має дорівнювати 1 для всіх не потокових RPC. | Histogram |
+| `rpc_server_response_size` | Вимірює розмір повідомлень-відповідей RPC (без стиснення). | Histogram |
+| `rpc_server_responses_per_rpc` | Вимірює кількість повідомлень, надісланих за один RPC. Має дорівнювати 1 для всіх не потокових RPC. | Histogram |
 
-{{% alert title="Note" color="info" %}} The `http_` and `rpc_` metrics come from
-instrumentation libraries. Their original names use dots (`.`), but when
-exposing internal metrics with Prometheus, they are translated to use
-underscores (`_`) to match Prometheus' naming constraints.
+{{% alert title="Примітка" color="info" %}} Метрики `http_` та `rpc_` походять з інструментальних бібліотек. В їх оригінальних назвах використовуються крапки (`.`), але при розкритті внутрішніх метрик за допомогою Prometheus вони перекладаються з використанням символів підкреслення (`_`), щоб відповідати вимогам Prometheus до іменування. Ці метрики не підпадають під наведені нижче рівні зрілості, оскільки вони не перебувають під контролем Collector SIG.
 
-The `otelcol_processor_batch_` metrics are unique to the `batchprocessor`.
+Метрики `otelcol_processor_batch_` є унікальними для `batchprocessor`.
 
-The `otelcol_receiver_`, `otelcol_scraper_`, `otelcol_processor_`, and
-`otelcol_exporter_` metrics come from their respective `helper` packages. As
-such, some components not using those packages may not emit them. {{% /alert %}}
+Метрики `otelcol_receiver_`, `otelcol_scraper_`, `otelcol_processor_` і `otelcol_exporter_` походять з відповідних пакетів `helper`. Таким чином, деякі компоненти, які не використовують ці пакунки, можуть не виводити їх. {{% /alert %}}
 
-### Events observable with internal logs
+### Події, які можна спостерігати у внутрішніх журналах {#events-observable-with-internal-logs}
 
-The Collector logs the following internal events:
+Колектор реєструє такі внутрішні події:
 
-- A Collector instance starts or stops.
-- Data dropping begins due to throttling for a specified reason, such as local
-  saturation, downstream saturation, downstream unavailable, etc.
-- Data dropping due to throttling stops.
-- Data dropping begins due to invalid data. A sample of the invalid data is
-  included.
-- Data dropping due to invalid data stops.
-- A crash is detected, differentiated from a clean stop. Crash data is included
-  if available.
+- Запуск або зупинка екземпляра колектора.
+- Починається втрата даних через тротлінг з певної причини, наприклад, локальне насичення, низхідне насичення, низхідна недоступність  тощо.
+- Втрата даних через зупинку тротлінгу.
+- Починається втрата даних через недопустимі дані. Приклад невірних даних додається.
+- Припиняється втрата даних через недопустимі дані.
+- Виявлено аварію, що відрізняється від чистої зупинки. Дані про аварію включено, якщо вони доступні.
 
-## Telemetry maturity levels
+## Рівні зрілості телеметрії {#telemetry-maturity-levels}
 
-### Traces
+Рівні зрілості телеметрії Колектора застосовуються до всієї сторонньої телеметрії, створеної Колектором. Бібліотеки сторонніх розробників, у тому числі OpenTelemetry Go, не охоплюються цими рівнями зрілості.
 
-Tracing instrumentation is still under active development, and changes might be
-made to span names, attached attributes, instrumented endpoints, or other
-aspects of the telemetry. Until this feature graduates to stable, there are no
-guarantees of backwards compatibility for tracing instrumentation.
+### Трасування {#traces}
 
-### Metrics
+Інструментування трасування все ще перебуває у стадії активної розробки, тому можуть бути внесені зміни до назв відрізків, доданих атрибутів, інструментованих точок доступу або інших аспектів телеметрії. Доки ця функція не стане стабільною, немає жодних гарантій зворотної сумісності для інструментування трасування.
 
-The Collector's metrics follow a four-stage lifecycle:
+### Метрики {#metrics}
 
-> Alpha metric → Stable metric → Deprecated metric → Deleted metric
+Сторонні метрики Колектора мають чотириступеневий життєвий цикл:
 
-#### Alpha
+> Альфа-метрика → Стабільна метрика → Застаріла метрика → Видалена метрика
 
-Alpha metrics have no stability guarantees. These metrics can be modified or
-deleted at any time.
+Сторонні метрики, включаючи ті, що генеруються інструментальними бібліотеками OpenTelemetry Go, не охоплюються цими рівнями зрілості.
 
-#### Stable
+#### Альфа-метрика {#alpha}
 
-Stable metrics are guaranteed to not change. This means:
+Альфа-метрики не мають гарантій стабільності. Ці метрики можуть бути змінені або видалені в будь-який час.
 
-- A stable metric without a deprecated signature will not be deleted or renamed.
-- A stable metric's type and attributes will not be modified.
+#### Стабільна метрика {#stable}
 
-#### Deprecated
+Стабільні метрики гарантовано не змінюватимуться. Це означає:
 
-Deprecated metrics are slated for deletion but are still available for use. The
-description of these metrics include an annotation about the version in which
-they became deprecated. For example:
+- Стабільна метрика без статусу застарілої не буде видалена або перейменована.
+- Тип та атрибути стабільної метрики не будуть змінені.
 
-Before deprecation:
+#### Застаріла метрика {#deprecated}
+
+Застарілі метрики планується видалити, але вони все ще доступні для використання. Опис цих метрик включає анотацію про версію, в якій вони стали застарілими. Наприклад:
+
+Перед застаріванням:
 
 ```sh
-# HELP otelcol_exporter_queue_size this counts things
-# TYPE otelcol_exporter_queue_size counter
+# HELP otelcol_exporter_queue_size це рахує щось
+# TYPE otelcol_exporter_queue_size лічильник
 otelcol_exporter_queue_size 0
 ```
 
-After deprecation:
+Після застарівання:
 
 ```sh
-# HELP otelcol_exporter_queue_size (Deprecated since 1.15.0) this counts things
-# TYPE otelcol_exporter_queue_size counter
+# HELP otelcol_exporter_queue_size (Застаріла з 1.15.0) це рахує щось
+# TYPE otelcol_exporter_queue_size лічильник
 otelcol_exporter_queue_size 0
 ```
 
-#### Deleted
+#### Видалена метрика {#deleted}
 
-Deleted metrics are no longer published and cannot be used.
+Видалені метрики більше не публікуються і не можуть бути використані.
 
-### Logs
+### Журнали {#logs}
 
-Individual log entries and their formatting might change from one release to the
-next. There are no stability guarantees at this time.
+Окремі записи журналу та їх форматування можуть змінюватися від випуску до випуску. Наразі немає жодних гарантій стабільності.
 
-## Use internal telemetry to monitor the Collector
+## Використання внутрішньої телеметрії для моніторингу колектора {#use-internal-telemetry-to-monitor-the-collector}
 
-This section recommends best practices for monitoring the Collector using its
-own telemetry.
+У цьому розділі наведено найкращі практики моніторингу колектора за допомогою його власної телеметрії.
 
-### Critical monitoring
+### Моніторинг {#monitoring}
 
-#### Data loss
+#### Довжина черги {#queue-length}
 
-Use the rate of `otelcol_processor_dropped_log_records > 0`,
-`otelcol_processor_dropped_spans > 0`, and
-`otelcol_processor_dropped_metric_points > 0` to detect data loss. Depending on
-your project's requirements, select a narrow time window before alerting begins
-to avoid notifications for small losses that are within the desired reliability
-range and not considered outages.
+Більшість експортерів надають [механізм черги та/або повторної спроби](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/exporterhelper/README.md), який рекомендується використовувати у будь-якому промисловому розгортанні Колектора.
 
-### Secondary monitoring
+Метрика `otelcol_exporter_queue_capacity` вказує ємність черги надсилання у пакетах. Метрика `otelcol_exporter_queue_size` показує поточний розмір черги надсилання. Використовуйте ці дві метрики, щоб перевірити, чи може ємність черги витримати ваше робоче навантаження.
 
-#### Queue length
+За допомогою наступних трьох метрик ви можете визначити кількість відрізків, точок метрики і записів журналу, які не потрапили до черги надсилання:
 
-Most exporters provide a
-[queue and/or retry mechanism](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/exporterhelper/README.md)
-that is recommended for use in any production deployment of the Collector.
+- `otelcol_exporter_enqueue_failed_spans
+- `otelcol_exporter_enqueue_failed_metric_points
+- `otelcol_exporter_enqueue_failed_log_records
 
-The `otelcol_exporter_queue_capacity` metric indicates the capacity, in batches,
-of the sending queue. The `otelcol_exporter_queue_size` metric indicates the
-current size of the sending queue. Use these two metrics to check if the queue
-capacity can support your workload.
+Ці помилки можуть бути спричинені переповненням черги невстановленими елементами. Можливо, вам слід зменшити швидкість надсилання або горизонтально масштабувати колектори.
 
-Using the following three metrics, you can identify the number of spans, metric
-points, and log records that failed to reach the sending queue:
+Механізм черги або повторної спроби також підтримує ведення журналу для моніторингу. Перевірте журнали на наявність таких повідомлень, як `Dropping data because sending_queue is full`.
 
-- `otelcol_exporter_enqueue_failed_spans`
-- `otelcol_exporter_enqueue_failed_metric_points`
-- `otelcol_exporter_enqueue_failed_log_records`
+#### Помилки отримання {#receive-failures}
 
-These failures could be caused by a queue filled with unsettled elements. You
-might need to decrease your sending rate or horizontally scale Collectors.
+Сталі значення `otelcol_receiver_refused_log_records`, `otelcol_receiver_refused_spans` і `otelcol_receiver_refused_metric_points` вказують на те, що клієнтам було повернуто занадто багато помилок. Залежно від розгортання та відмовостійкості клієнтів, це може свідчити про втрату даних клієнтами.
 
-The queue or retry mechanism also supports logging for monitoring. Check the
-logs for messages such as `Dropping data because sending_queue is full`.
+Сталі показники `otelcol_exporter_send_failed_log_records`, `otelcol_exporter_send_failed_spans` і `otelcol_exporter_send_failed_metric_points` вказують на те, що колектор не може експортувати дані належним чином. Ці метрики за своєю суттю не означають втрату даних, оскільки можуть бути повторні спроби. Але висока кількість невдалих спроб може вказувати на проблеми з мережею або бекендом, який отримує дані.
 
-#### Receive failures
+#### Потік даних {#data-flow}
 
-Sustained rates of `otelcol_receiver_refused_log_records`,
-`otelcol_receiver_refused_spans`, and `otelcol_receiver_refused_metric_points`
-indicate that too many errors were returned to clients. Depending on the
-deployment and the clients' resilience, this might indicate clients' data loss.
-
-Sustained rates of `otelcol_exporter_send_failed_log_records`,
-`otelcol_exporter_send_failed_spans`, and
-`otelcol_exporter_send_failed_metric_points` indicate that the Collector is not
-able to export data as expected. These metrics do not inherently imply data loss
-since there could be retries. But a high rate of failures could indicate issues
-with the network or backend receiving the data.
-
-#### Data flow
-
-You can monitor data ingress with the `otelcol_receiver_accepted_log_records`,
-`otelcol_receiver_accepted_spans`, and `otelcol_receiver_accepted_metric_points`
-metrics and data egress with the `otelcol_exporter_sent_log_records`,
-`otelcol_exporter_sent_spans`, and `otelcol_exporter_sent_metric_points`
-metrics.
+Ви можете відстежувати надходження даних за допомогою метрик `otelcol_receiver_accepted_log_records`, `otelcol_receiver_accepted_spans` і `otelcol_receiver_accepted_metric_points` та вихід даних за допомогою метрик `otelcol_exporter_sent_log_records`, `otelcol_exporter_sent_spans` і `otelcol_exporter_sent_metric_points`.

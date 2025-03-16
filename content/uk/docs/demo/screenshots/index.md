@@ -28,7 +28,7 @@ aliases: [demo_screenshots]
 
 | Джерело даних Prometheus             | Джерело даних Jaeger                |
 | ------------------------------------ | ----------------------------------- |
-| ![Grafana-Prometheus](grafana-prometheus.png) | ![Grafana-jaeger](gragana-jaeger.png) |
+| ![Grafana-Prometheus](grafana-prometheus.png) | ![Grafana-jaeger](grafana-jaeger.png) |
 
 ## Інтерфейс генератора навантаження {#load-generator-ui}
 

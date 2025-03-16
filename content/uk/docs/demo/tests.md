@@ -16,4 +16,4 @@ cSpell:ignore: Tracetest
 
 Щоб дізнатися більше про ці тести, дивіться [Тестування сервісів](https://github.com/open-telemetry/opentelemetry-demo/tree/main/test).
 
-[^1]: {{% _param notes.docker-compose-v2 %}}
+[^1]: {{% param notes.docker-compose-v2 %}}

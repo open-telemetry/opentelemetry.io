@@ -1,8 +1,7 @@
 ---
 title: Встановлення Колектора
 weight: 2
-# prettier-ignore
-cSpell:ignore: darwin dpkg GOARCH journalctl kubectl otelcorecol pprof tlsv zpages
+cSpell:ignore: darwin dpkg journalctl kubectl otelcorecol pprof tlsv zpages
 ---
 
 Ви можете розгорнути OpenTelemetry Collector в різних операційних системах та архітектурах. Наступні інструкції показують, як завантажити та встановити останню стабільну версію Колектора.
@@ -76,7 +75,7 @@ kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-
 
 Ви також можете використовувати [OpenTelemetry Operator][] для забезпечення та підтримки екземпляра OpenTelemetry Collector з такими функціями, як автоматичне оновлення, налаштування `Service` на основі конфігурації OpenTelemetry, автоматичне впровадження sidecar у розгортання та інше.
 
-Для отримання інструкцій щодо використання Колектора з Kubernetes дивіться [Kubernetes Getting Started](/docs/kubernetes/getting-started/).
+Для отримання інструкцій щодо використання Колектора з Kubernetes дивіться [Kubernetes Getting Started](/docs/platforms/kubernetes/getting-started/).
 
 ## Nomad
 
@@ -245,8 +244,8 @@ make otelcorecol
 
 [збір даних]: /docs/concepts/components/#collector
 [методи розгортання]: ../deployment/
-[opentelemetry helm charts]: /docs/kubernetes/helm/
-[opentelemetry operator]: /docs/kubernetes/operator/
+[opentelemetry helm charts]: /docs/platforms/kubernetes/helm/
+[opentelemetry operator]: /docs/platforms/kubernetes/operator/
 [getting started with opentelemetry on hashicorp nomad]:
   https://github.com/hashicorp/nomad-open-telemetry-getting-started
 [випуски]:

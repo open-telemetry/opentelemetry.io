@@ -3,7 +3,7 @@ title: Конфігурація
 weight: 20
 description: Дізнайтеся, як налаштувати Collector відповідно до ваших потреб
 # prettier-ignore
-cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca loglevel OIDC oidc otlphttp pprof prodevent prometheusremotewrite servicegraph spanevents spanmetrics struct upsert zpages
+cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents upsert zpages
 ---
 
 <!-- markdownlint-disable link-fragments -->
@@ -23,6 +23,12 @@ cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca l
 
 ```shell
 otelcol --config=customconfig.yaml
+```
+
+Ви також можете створити кілька конфігурацій, використовуючи кілька файлів за різними шляхами. Кожен файл може бути повною або частковою конфігурацією, і файли можуть посилатися на компоненти один одного. Якщо обʼєднання файлів не є повною конфігурацією, користувач отримає помилку, оскільки стандартно не буде додано необхідних компонентів. У командному рядку можна вказати декілька шляхів до файлів наступним чином:
+
+```shell
+otelcol --config=file:/path/to/first/file --config=file:/path/to/second/file
 ```
 
 Ви також можете надати конфігурації за допомогою змінних середовища, HTTP URI або шляхів YAML. Наприклад:
@@ -261,6 +267,9 @@ receivers:
     protocols:
       grpc:
         endpoint: 0.0.0.0:4317
+        tls:
+          cert_file: cert.pem
+          key_file: cert-key.pem
       http:
         endpoint: 0.0.0.0:4318
 
@@ -537,6 +546,20 @@ service:
       receivers: [opencensus, jaeger]
       processors: [batch, memory_limiter]
       exporters: [opencensus, zipkin]
+```
+
+Як і у випадку з компонентами, використовуйте синтаксис `type[/name]` для створення додаткових конвеєрів для заданого типу. Ось приклад розширення попередньої конфігурації:
+
+```yaml
+service:
+  pipelines:
+    # ...
+    traces:
+      # ...
+    traces/2:
+      receivers: [opencensus]
+      processors: [batch]
+      exporters: [zipkin]
 ```
 
 ### Телеметрія {#telemetry}

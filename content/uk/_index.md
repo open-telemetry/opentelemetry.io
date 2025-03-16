@@ -4,10 +4,11 @@ description: >-
   Високоякісна, повсюдна і переносна телеметрія для забезпечення ефективного спостереження
 outputs:
   - HTML
-  - REDIRECTS # Include this `content/en` ONLY
+  # Include the following for `content/en` ONLY
+  - REDIRECTS
+  - RSS
 developer_note:
-  The blocks/cover shortcode (used below) will use as a background image any
-  image file containing "background" in its name.
+  The blocks/cover shortcode (used below) will use as a background image any image file containing "background" in its name.
 show_banner: true
 ---
 

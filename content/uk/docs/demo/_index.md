@@ -26,7 +26,8 @@ cSpell:ignore: OLJCESPC
 | C++        |                                                    |                                                                                              | [Сервіс валюти](services/currency/)                                                          |
 | Go         |                                                    | [Сервіс оформлення замовлення](services/checkout/), [Сервіс каталогу продуктів](services/product-catalog/) | [Сервіс оформлення замовлення](services/checkout/), [Сервіс каталогу продуктів](services/product-catalog/) |
 | Java       | [Сервіс реклами](services/ad/)                     |                                                                                              | [Сервіс реклами](services/ad/)                                                               |
-| JavaScript |                                                    | [Фронтенд](services/frontend/)                                                               | [Фронтенд](services/frontend/), [Сервіс платежів](services/payment/)                         |
+| JavaScript |                                                    |                                                                                              | [Сервіс платежів](services/payment/)                                                         |
+| TypeScript |                                                    | [Фронтенд](services/frontend/), [Застосунок React Native App](services/react-native-app/)    | [Фронтенд](services/frontend/)                                                               |
 | Kotlin     |                                                    | [Сервіс виявлення шахрайства](services/fraud-detection/)                                     |                                                                                              |
 | PHP        |                                                    | [Сервіс котирувань](services/quote/)                                                         | [Сервіс котирувань](services/quote/)                                                         |
 | Python     | [Сервіс рекомендацій](services/recommendation/)    |                                                                                              | [Сервіс рекомендацій](services/recommendation/)                                              |
@@ -50,7 +51,8 @@ cSpell:ignore: OLJCESPC
 - [Сервіс котирувань](services/quote/)
 - [Сервіс рекомендацій](services/recommendation/)
 - [Сервіс доставки](services/shipping/)
-- [Сервіс постачальника зображень](services/imageprovider/)
+- [Сервіс постачальника зображень](services/image-provider/)
+- [Застосунок React Native](services/react-native-app/)
 
 ## Сценарії {#scenarios}
 

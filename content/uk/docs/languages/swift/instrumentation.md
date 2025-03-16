@@ -5,7 +5,7 @@ aliases: [manual]
 description: Інструментування для OpenTelemetry Swift
 ---
 
-{{% uk/docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro %}}
 
 ## Налаштування
 
@@ -143,7 +143,7 @@ span.addEvent(name: "computation complete", attributes: attributes)
 
 ### Встановлення статусу відрізка {#setting-span-status}
 
-{{% docs/languages/span-status-preamble %}}
+{{% uk/docs/languages/span-status-preamble %}}
 
 ```swift
 func myFunction() {

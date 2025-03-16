@@ -2,7 +2,7 @@
 title: Управління
 description: Як керувати розгортанням OpenTelemetry Collector у масштабі
 weight: 23
-cSpell:ignore: AFVGQT backpressure distro GRRKNBJE hostmetrics loglevel
+cSpell:ignore: AFVGQT backpressure distro GRRKNBJE hostmetrics
 ---
 
 Цей документ описує, як ви можете керувати розгортанням OpenTelemetry Collector у масштабі.
@@ -10,13 +10,13 @@ cSpell:ignore: AFVGQT backpressure distro GRRKNBJE hostmetrics loglevel
 Щоб отримати максимальну користь з цієї сторінки, ви повинні знати, як встановити та налаштувати колектор. Ці теми розглядаються в інших місцях:
 
 - [Швидкий старт](/docs/collector/quick-start/), щоб зрозуміти, як встановити OpenTelemetry Collector.
-- [Конфігурація][otel-collector-configuration] для налаштування OpenTelemetry Collector, налаштування конвеєрів телеметрії.
+- [Конфігурація][configuration] для налаштування OpenTelemetry Collector, налаштування конвеєрів телеметрії.
 
 ## Основи {#basics}
 
 Збір телеметрії у масштабі вимагає структурованого підходу до управління агентами. Типові завдання управління агентами включають:
 
-1. Запит інформації та конфігурації агента. Інформація про агента може включати його версію, інформацію, повʼязану з операційною системою, або можливості. Конфігурація агента стосується його налаштування збору телеметрії, наприклад, [конфігурації][otel-collector-configuration] OpenTelemetry Collector.
+1. Запит інформації та конфігурації агента. Інформація про агента може включати його версію, інформацію, повʼязану з операційною системою, або можливості. Конфігурація агента стосується його налаштування збору телеметрії, наприклад, [конфігурації][configuration] OpenTelemetry Collector.
 2. Оновлення/пониження версій агентів та управління пакетами, специфічними для агентів, включаючи базову функціональність агента та втулки.
 3. Застосування нових конфігурацій до агентів. Це може бути необхідно через зміни в середовищі або через зміни в політиці.
 4. Моніторинг справності та продуктивності агентів, зазвичай використання ЦП та памʼяті, а також специфічні для агентів метрики, наприклад, швидкість обробки або інформація, повʼязана зі зворотним тиском.
@@ -26,9 +26,9 @@ cSpell:ignore: AFVGQT backpressure distro GRRKNBJE hostmetrics loglevel
 
 ## OpAMP
 
-Постачальники рішень для спостережуваності та хмарні провайдери пропонують власні рішення для управління агентами. У просторі відкритого коду для спостережуваності існує новий стандарт, який ви можете використовувати для управління агентами: Відкритий протокол управління агентами (Open Agent Management Protocol, OpAMP).
+Постачальники рішень для спостережуваності та хмарні провайдери пропонують власні рішення для управління агентами. У просторі відкритого коду для спостережуваності існує новий стандарт, який ви можете використовувати для управління агентами: Відкритий протокол управління агентами ([Open Agent Management Protocol], OpAMP).
 
-[Специфікація OpAMP][opamp-spec] визначає, як керувати флотом агентів збору телеметричних даних. Ці агенти можуть бути [OpenTelemetry collectors][otel-collector], Fluent Bit або іншими агентами в будь-якій довільній комбінації.
+[Специфікація OpAMP][OpAMP specification] визначає, як керувати флотом агентів збору телеметричних даних. Ці агенти можуть бути [OpenTelemetry collectors](/docs/collector/), Fluent Bit або іншими агентами в будь-якій довільній комбінації.
 
 > **Примітка** Термін "агент" тут використовується як загальний термін для компонентів OpenTelemetry, які відповідають OpAMP, це може бути колектор, але також і компоненти SDK.
 
@@ -161,9 +161,9 @@ otelcol_receiver_refused_metric_points{receiver="prometheus/own_metrics",service
   - [Коротка доповідь: Управління OpenTelemetry через протокол OpAMP][opamp-lt]
   - [Що таке OpAMP і що таке BindPlane][opamp-bindplane]
 
-[otel-collector]: /docs/collector/
-[otel-collector-configuration]: /docs/collector/configuration/
-[opamp-spec]:
+[configuration]: /docs/collector/configuration/
+[Open Agent Management Protocol]: https://github.com/open-telemetry/opamp-spec/
+[OpAMP specification]:
   https://github.com/open-telemetry/opamp-spec/blob/main/specification.md
 [opamp-in-otel-collector]:
   https://docs.google.com/document/d/1KtH5atZQUs9Achbce6LiOaJxLbksNJenvgvyKLsJrkc/edit#heading=h.ioikt02qpy5f

@@ -4,9 +4,9 @@ linkTitle: Кошик
 aliases: [cartservice]
 ---
 
-Цей сервіс підтримує товари, додані користувачами до кошика. Він взаємодіє з сервісом кешування Redis для швидкого доступу до даних кошика.
+Цей сервіс підтримує товари, додані користувачами до кошика. Він взаємодіє з сервісом кешування Valkey для швидкого доступу до даних кошика.
 
-[Сирці сервісу Кошика](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/cartservice/)
+[Сирці сервісу Кошика](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/cart/)
 
 > **Примітка** OpenTelemetry для .NET використовує бібліотеку `System.Diagnostic.DiagnosticSource` як свій API замість стандартного API OpenTelemetry для Трейсів та Метрик. Бібліотека `Microsoft.Extensions.Logging.Abstractions` використовується для Логів.
 

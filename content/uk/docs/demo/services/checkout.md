@@ -8,7 +8,7 @@ cSpell:ignore: fatalf otelgrpc otelsarama otlpmetricgrpc otlptracegrpc sarama sd
 
 Цей сервіс відповідає за обробку замовлення користувача. Сервіс оформлення замовлення викликає багато інших сервісів для обробки замовлення.
 
-[Сирці сервісу оформлення замовлення](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/checkoutservice/)
+[Сирці сервісу оформлення замовлення](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/checkout/)
 
 ## Трейси {#traces}
 

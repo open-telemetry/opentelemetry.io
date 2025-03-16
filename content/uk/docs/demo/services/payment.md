@@ -7,7 +7,7 @@ cSpell:ignore: nanos
 
 Цей сервіс відповідає за обробку платежів кредитними картками для замовлень. Він поверне помилку, якщо кредитна картка недійсна або платіж не може бути оброблений.
 
-[Сирці сервісу оплати](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/paymentservice/)
+[Сирці сервісу оплати](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/payment/)
 
 ## Ініціалізація OpenTelemetry {#initializing-opentelemetry}
 
@@ -114,7 +114,7 @@ span.setStatus({ code: opentelemetry.SpanStatusCode.ERROR });
 ```javascript
 const { metrics } = require('@opentelemetry/api-metrics');
 
-const meter = metrics.getMeter('paymentservice');
+const meter = metrics.getMeter('payment');
 const transactionsCounter = meter.createCounter('app.payment.transactions');
 ```
 

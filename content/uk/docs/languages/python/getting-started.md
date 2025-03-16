@@ -3,7 +3,7 @@ title: Початок роботи
 description: Отримайте телеметрію для вашого застосунку менш ніж за 5 хвилин!
 weight: 10
 # prettier-ignore
-cSpell:ignore: debugexporter diceroller distro loglevel maxlen randint rolldice rollspan venv werkzeug
+cSpell:ignore: debugexporter diceroller distro maxlen randint rolldice rollspan venv
 ---
 
 Ця сторінка покаже вам, як почати роботу з OpenTelemetry у Python.

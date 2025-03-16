@@ -7,7 +7,7 @@ cSpell:ignore: sinatra
 
 Цей сервіс надсилатиме підтвердження електронною поштою користувачу, коли замовлення буде розміщено.
 
-[Сирці сервісу електронної пошти](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/emailservice/)
+[Сирці сервісу електронної пошти](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/email/)
 
 ## Ініціалізація трасування {#initializing-tracing}
 
@@ -56,7 +56,7 @@ span.set_attribute("app.email.recipient", data.email)
 Нові відрізки можна створити та помістити в активний контекст за допомогою `in_span` з обʼєкта OpenTelemetry Tracer. Коли використовується разом з блоком `do..end`, відрізок автоматично завершиться, коли блок завершить виконання.
 
 ```ruby
-tracer = OpenTelemetry.tracer_provider.tracer('emailservice')
+tracer = OpenTelemetry.tracer_provider.tracer('email')
 tracer.in_span("send_email") do |span|
   # логіка в контексті спану тут
 end

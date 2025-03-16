@@ -3,7 +3,7 @@ title: Придушення конкретної інструментації
 linkTitle: Придушення інструментації
 weight: 11
 # prettier-ignore
-cSpell:ignore: akka armeria classloaders clickhouse couchbase Customizer datasource dbcp Dotel dropwizard dubbo enduser finatra hikari hikaricp HSET httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jodd kotlinx ktor logback logmanager mojarra mybatis myfaces okhttp oshi pekko rabbitmq ratpack rediscala redisson restlet rocketmq serverlessapis shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
+cSpell:ignore: akka armeria clickhouse couchbase datasource dbcp Dotel dropwizard dubbo finatra hikari hikaricp httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jodd kotlinx ktor logback logmanager mojarra mybatis myfaces okhttp oshi pekko rabbitmq ratpack rediscala redisson restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
 
 ## Вимкнення агента повністю {#disabling-agent-enitrely}
@@ -22,7 +22,7 @@ cSpell:ignore: akka armeria classloaders clickhouse couchbase Customizer datasou
 
 {{% config_option name="otel.instrumentation.[name].enabled" %}} Встановіть значення `true`, щоб увімкнути кожну бажану інструментацію окремо. {{% /config_option %}}
 
-> **Примітка**: Деяка інструментація залежить від іншої інструментації для правильного функціонування. При вибірковому увімкненні інструментації переконайтеся, що також увімкнено транзитивні залежності. Визначення цієї залежності залишено на розсуд користувача.
+{{% alert title="Примітка" color="warning" %}} Деяка інструментація залежить від іншої інструментації для правильного функціонування. При вибірковому увімкненні інструментації переконайтеся, що також увімкнено транзитивні залежності. Визначення цієї залежності залишено на розсуд користувача. Це вважається розширеним використанням і не рекомендується для більшості користувачів. {{% /alert %}}
 
 ## Увімкнення лише ручної інструментації {#enabling-manual-instrumentation-only}
 

@@ -1,36 +1,25 @@
 ---
-title: Troubleshooting
-description: Recommendations for troubleshooting the Collector
+title: Усунення несправностей
+description: Рекомендації щодо усунення несправностей в роботі Колектора
 weight: 25
 cSpell:ignore: confmap pprof tracez zpages
 ---
 
-On this page, you can learn how to troubleshoot the health and performance of
-the OpenTelemetry Collector.
+Тут ви дізнаєтеся, як усувати проблеми, пов’язані зі станом і продуктивністю OpenTelemetry Collector.
 
-## Troubleshooting tools
+## Інструменти усунення несправностей {#troubleshooting-tools}
 
-The Collector provides a variety of metrics, logs, and extensions for debugging
-issues.
+Колектор надає різноманітні метрики, журнали та розширення для діагностики проблем.
 
-### Internal telemetry
+### Внутрішня телеметрія {#internal-telemetry}
 
-You can configure and use the Collector's own
-[internal telemetry](/docs/collector/internal-telemetry/) to monitor its
-performance.
+Ви можете налаштувати та використовувати [внутрішню телеметрію](/docs/collector/internal-telemetry/) Колектора для моніторингу його продуктивності.
 
-### Local exporters
+### Локальні експортери {#local-exporters}
 
-For certain types of issues, such as configuration verification and network
-debugging, you can send a small amount of test data to a Collector configured to
-output to local logs. Using a
-[local exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter#general-information),
-you can inspect the data being processed by the Collector.
+Для певних типів проблем, таких як перевірка конфігурації та налагодження мережі, ви можете надіслати невеликий обсяг тестових даних до Колектора, налаштованого на вивід у локальні журнали. Використовуючи [локальний експортер](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter#general-information), можна перевірити, як Колектор обробляє дані.
 
-For live troubleshooting, consider using the
-[`debug` exporter](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/debugexporter/README.md),
-which can confirm that the Collector is receiving, processing, and exporting
-data. For example:
+Для оперативного усунення несправностей варто використовувати [`debug` експортер](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/debugexporter/README.md), який підтверджує отримання, обробку та експорт даних Колектором. Наприклад:
 
 ```yaml
 receivers:
@@ -45,8 +34,7 @@ service:
       exporters: [debug]
 ```
 
-To begin testing, generate a Zipkin payload. For example, you can create a file
-called `trace.json` that contains:
+Щоб почати тестування, створіть корисне навантаження Zipkin. Наприклад, ви можете створити файл з назвою `trace.json`, який містить
 
 ```json
 [
@@ -71,19 +59,19 @@ called `trace.json` that contains:
 ]
 ```
 
-With the Collector running, send this payload to the Collector:
+Запустивши колектор, надішліть це корисне навантаження до колектора:
 
 ```shell
 curl -X POST localhost:9411/api/v2/spans -H'Content-Type: application/json' -d @trace.json
 ```
 
-You should see a log entry like the following:
+Ви повинні побачити запис у журналі, подібний до наведеного нижче:
 
 ```shell
 2023-09-07T09:57:43.468-0700    info    TracesExporter  {"kind": "exporter", "data_type": "traces", "name": "debug", "resource spans": 1, "spans": 2}
 ```
 
-You can also configure the `debug` exporter so the entire payload is printed:
+Ви також можете налаштувати експортер `debug` таким чином, щоб виводилося все корисне навантаження:
 
 ```yaml
 exporters:
@@ -91,8 +79,7 @@ exporters:
     verbosity: detailed
 ```
 
-If you re-run the previous test with the modified configuration, the log output
-looks like this:
+Якщо ви повторно запустите попередній тест зі зміненою конфігурацією, вивід журналу матиме такий вигляд:
 
 ```shell
 2023-09-07T09:57:12.820-0700    info    TracesExporter  {"kind": "exporter", "data_type": "traces", "name": "debug", "resource spans": 1, "spans": 2}
@@ -119,17 +106,15 @@ Attributes:
      -> peer.service: Str(telemetrygen)
 ```
 
-### Check Collector components
+### Перевірка компонентів Колектора {#check-collector-components}
 
-Use the following sub-command to list the available components in a Collector
-distribution, including their stability levels. Please note that the output
-format might change across versions.
+Використовуйте наступну команду, щоб отримати список доступних компонентів у дистрибутиві Колектора, включно з їх рівнями стабільності. Зверніть увагу, що формат виводу може змінюватися між версіями.
 
 ```shell
 otelcol components
 ```
 
-Sample output:
+Зразок вихідних даних:
 
 ```yaml
 buildinfo:
@@ -215,38 +200,27 @@ extensions:
       extension: Beta
 ```
 
-### Extensions
+### Розширення {#extensions}
 
-Here is a list of extensions you can enable for debugging the Collector.
+Нижче наведено список розширень, які можна увімкнути для налагодження Колектора.
 
-#### Performance Profiler (pprof)
+#### Профілювальник продуктивності (pprof) {#performance-profiler-pprof}
 
-The
-[pprof extension](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/pprofextension/README.md),
-which is available locally on port `1777`, allows you to profile the Collector
-as it runs. This is an advanced use-case that should not be needed in most
-circumstances.
+[Розширення pprof](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/pprofextension/README.md), доступне локально на порту `1777`, дозволяє профілювати роботу Колектора в реальному часі. Це складний сценарій використання, який зазвичай не є необхідним.
 
-#### zPages
+#### zPages {#zpages}
 
-The
-[zPages extension](https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/zpagesextension/README.md),
-which is exposed locally on port `55679`, can be used to inspect live data from
-the Collector's receivers and exporters.
+[Розширення zPages](https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/zpagesextension/README.md), доступне локально на порту `55679`, можна використовувати для перегляду живих даних з отримувачів і експортерів Колектора.
 
-The TraceZ page, exposed at `/debug/tracez`, is useful for debugging trace
-operations, such as:
+Сторінка TraceZ, доступна за `/debug/tracez`, корисна для налагодження операцій трасування, таких як:
 
-- Latency issues. Find the slow parts of an application.
-- Deadlocks and instrumentation problems. Identify running spans that don't end.
-- Errors. Determine what types of errors are occurring and where they happen.
+- Проблеми з затримкою — виявлення повільних частин застосунку.
+- Безвихідні ситуації та проблеми з інструментуванням — визначення запущених відрізків, які не завершуються.
+- Помилки — аналіз типів помилок та місці їх виникнення.
 
-Note that `zpages` might contain error logs that the Collector does not emit
-itself.
+Зверніть увагу, що `zpages` може містити журнали помилок, які Колектор сам не генерує.
 
-For containerized environments, you might want to expose this port on a public
-interface instead of just locally. The `endpoint` can be configured using the
-`extensions` configuration section:
+Для контейнеризованих середовищ може знадобитися відкриття цього порту у загальнодоступному інтерфейсі, а не тільки локально. Конфігурація `endpoint` здійснюється в розділі `extensions`:
 
 ```yaml
 extensions:
@@ -254,123 +228,91 @@ extensions:
     endpoint: 0.0.0.0:55679
 ```
 
-## Checklist for debugging complex pipelines
+## Контрольний список для налагодження складних конвеєрів {#checklist-for-debugging-complex-pipelines}
 
-It can be difficult to isolate problems when telemetry flows through multiple
-Collectors and networks. For each "hop" of telemetry through a Collector or
-other component in your pipeline, it’s important to verify the following:
+Якщо телеметрія проходить через кілька Колекторів та мереж, може бути складно ізолювати проблему. Для кожного "кроку" телеметрії через Колектор або інший компонент у вашому конвеєрі важливо перевірити:
 
-- Are there error messages in the logs of the Collector?
-- How is the telemetry being ingested into this component?
-- How is the telemetry being modified (for example, sampling or redacting) by
-  this component?
-- How is the telemetry being exported from this component?
-- What format is the telemetry in?
-- How is the next hop configured?
-- Are there any network policies that prevent data from getting in or out?
+- Чи є повідомлення про помилки в журналах Колектора?
+- Як телеметрія надходить у цей компонент?
+- Як телеметрія змінюється (наприклад, чи застосовується семплювання або редагування)?
+- Як телеметрія експортується з цього компонента?
+- У якому форматі представлена телеметрія?
+- Як налаштований наступний етап маршрутизації?
+- Чи існують мережеві політики, що блокують або обмежують передавання даних?
 
-## Common Collector issues
+## Поширені проблеми Колектора {#common-collector-issues}
 
-This section covers how to resolve common Collector issues.
+У цьому розділі пояснюється, як розвʼязувати типові проблеми Колектора.
 
-### Collector is experiencing data issues
+### Колектор має проблеми з даними {#collector-is-experiencing-data-issues}
 
-The Collector and its components might experience data issues.
+Колектор та його компоненти можуть стикатися з проблемами під час обробки даних.
 
-#### Collector is dropping data
+#### Колектор втрачає дані {#collector-is-dropping-data}
 
-The Collector might drop data for a variety of reasons, but the most common are:
+Колектор може втрачати дані з різних причин, найпоширеніші з них:
 
-- The Collector is improperly sized, resulting in an inability to process and
-  export the data as fast as it is received.
-- The exporter destination is unavailable or accepting the data too slowly.
+- Колектор неправильно налаштований, через що не може обробляти та експортувати дані так швидко, як отримує їх.
+- Пункт призначення експортера недоступний або приймає дані надто повільно.
 
-To mitigate drops, configure the
-[`batch` processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md).
-In addition, it might be necessary to configure the
-[queued retry options](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/exporterhelper#configuration)
-on enabled exporters.
+Щоб зменшити втрати, налаштуйте [`batch` процесор](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md). Також може знадобитися налаштування [параметрів повторних спроб у черзі](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/exporterhelper#configuration) для активних експортерів.
 
-#### Collector is not receiving data
+#### Колектор не отримує дані {#collector-is-not-receiving-data}
 
-The Collector might not receive data for the following reasons:
+Колектор може не отримувати дані з таких причин:
 
-- A network configuration issue.
-- An incorrect receiver configuration.
-- An incorrect client configuration.
-- The receiver is defined in the `receivers` section but not enabled in any
-  `pipelines`.
+- Проблеми з мережею.
+- Неправильна конфігурація отримувача.
+- Неправильна конфігурація клієнта.
+- Отримувач визначений у розділі `receivers`, але не увімкнений у жодному `pipelines`.
 
-Check the Collector's
-[logs](/docs/collector/internal-telemetry/#configure-internal-logs) as well as
-[zPages](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/zpagesextension/README.md)
-for potential issues.
+Перевірте [журнали Колектора](/docs/collector/internal-telemetry/#configure-internal-logs) і [zPages](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/zpagesextension/README.md) для виявлення можливих проблем.
 
-#### Collector is not processing data
+#### Колектор не обробляє дані {#collector-is-not-processing-data}
 
-Most processing issues result from of a misunderstanding of how the processor
-works or a misconfiguration of the processor. For example:
+Більшість проблем з обробкою даних виникають через неправильну конфігурацію або нерозуміння роботи процесора. Наприклад:
 
-- The attributes processor works only for "tags" on spans. The span name is
-  handled by the span processor.
-- Processors for trace data (except tail sampling) work only on individual
-  spans.
+- Процесор атрибутів  працює тільки з "теґами" відрізків. Назва відрізка обробляється окремо через процесор відрізків.
+- Процесори для трасувальних даних (окрім tail sampling) працюють лише на рівні окремих відрізків.
 
-#### Collector is not exporting data
+#### Колектор не експортує дані {#collector-is-not-exporting-data}
 
-The Collector might not export data for the following reasons:
+Можливі причини:
 
-- A network configuration issue.
-- An incorrect exporter configuration.
-- The destination is unavailable.
+- Проблеми з мережею.
+- Неправильна конфігурація експортера.
+- Пункт призначення недоступний.
 
-Check the Collector's
-[logs](/docs/collector/internal-telemetry/#configure-internal-logs) as well as
-[zPages](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/zpagesextension/README.md)
-for potential issues.
+Перевірте [журнали Колектора](/docs/collector/internal-telemetry/#configure-internal-logs) і [zPages](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/zpagesextension/README.md) на наявність помилок.
 
-Exporting data often does not work because of a network configuration issue,
-such as a firewall, DNS, or proxy issue. Note that the Collector does have
-[proxy support](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter#proxy-support).
+Часто проблеми з експортом даних пов’язані з мережею, наприклад, через налаштування брандмауера, DNS або проксі. Колектор підтримує [роботу через проксі](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter#proxy-support).
 
-### Collector is experiencing control issues
+### Колектор має проблеми з керуванням {#collector-is-experiencing-control-issues}
 
-The Collector might experience failed startups or unexpected exits or restarts.
+Колектор може несподівано завершувати роботу, перезапускатися або не запускатися взагалі.
 
-#### Collector exits or restarts
+#### Колектор виходить або перезапускається {#collector-exits-or-restarts}
 
-The Collector might exit or restart due to:
+Можливі причини:
 
-- Memory pressure from a missing or misconfigured
-  [`memory_limiter` processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/memorylimiterprocessor/README.md).
-- Improper sizing for load.
-- Improper configuration. For example, a queue size configured higher than
-  available memory.
-- Infrastructure resource limits. For example, Kubernetes.
+- Перевантаження пам’яті через відсутній або неправильно налаштований [процесор `memory_limiter`](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/memorylimiterprocessor/README.md).
+- Неправильний розмір Колектора під навантаження.
+- Некоректна конфігурація (наприклад, черга перевищує доступну пам’ять).
+- Обмеження ресурсів інфраструктури (наприклад, у Kubernetes).
 
-#### Collector fails to start in Windows Docker containers
+#### Колектор не запускається у Windows Docker-контейнерах {#collector-fails-to-start-in-windows-docker-containers}
 
-With v0.90.1 and earlier, the Collector might fail to start in a Windows Docker
-container, producing the error message
-`The service process could not connect to the service controller`. In this case,
-the `NO_WINDOWS_SERVICE=1` environment variable must be set to force the
-Collector to start as if it were running in an interactive terminal, without
-attempting to run as a Windows service.
+У версіях до 0.90.1 Колектор може не запускатися у Windows Docker-контейнері, видаючи помилку `The service process could not connect to the service controller`. Щоб виправити це, потрібно встановити змінну середовища `NO_WINDOWS_SERVICE=1`, щоб запустити Колектор у режимі інтерактивного термінала без спроби запуститися як Windows-служба.
 
-### Collector is experiencing configuration issues
+### Колектор має проблеми з конфігурацією {#collector-is-experiencing-configuration-issues}
 
-The Collector might experience problems due to configuration issues.
+Неправильна конфігурація може спричиняти різні проблеми.
 
-#### Null maps
+#### Null мапи {#null-maps}
 
-During configuration resolution of multiple configs, values in earlier configs
-are removed in favor of later configs, even if the later value is null. You can
-fix this issue by
+При об’єднанні кількох конфігурацій значення з попередніх можуть заміщуватися на `null`. Щоб уникнути цього:
 
-- Using `{}` to represent an empty map, such as `processors: {}` instead of
-  `processors:`.
-- Omitting empty configurations such as `processors:` from the configuration.
+- Використовуйте `{}` для позначення порожніх мап, наприклад: `processors: {}`.
+- Уникайте пустих конфігурацій, таких як `processors:` без вказаних процесорів.
 
-See
-[confmap troubleshooting](https://github.com/open-telemetry/opentelemetry-collector/blob/main/confmap/README.md#null-maps)
-for more information.
+Докладніше про це у [документації confmap](https://github.com/open-telemetry/opentelemetry-collector/blob/main/confmap/README.md#null-maps).

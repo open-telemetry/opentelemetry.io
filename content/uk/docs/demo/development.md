@@ -1,7 +1,6 @@
 ---
 title: Розробка
-# prettier-ignore
-cSpell:ignore: grpcio intellij libcurl libprotobuf nlohmann openssl protoc rebar
+cSpell:ignore: grpcio intellij libcurl libprotobuf nlohmann openssl protoc
 ---
 
 [Репозиторій GitHub OpenTelemetry Demo](https://github.com/open-telemetry/opentelemetry-demo)
@@ -16,7 +15,7 @@ cSpell:ignore: grpcio intellij libcurl libprotobuf nlohmann openssl protoc rebar
 
 ### .NET
 
-- .NET 6.0+
+- .NET 8.0+
 
 ### C++
 

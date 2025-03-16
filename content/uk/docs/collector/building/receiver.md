@@ -223,7 +223,7 @@ type Config struct {
 
 {{% /alert %}}
 
-Тепер, коли у вас є доступ до налаштувань, ви можете надати будь-який вид перевірки для цих значень, реалізувавши метод `Validate` відповідно до необовʼязкового інтерфейсу [ConfigValidator](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/component/config.go#L50).
+Тепер, коли у вас є доступ до налаштувань, ви можете надати будь-який вид перевірки для цих значень, реалізувавши метод `Validate` відповідно до необовʼязкового інтерфейсу [ConfigValidator](<https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/component/config.go#L50>).
 
 У цьому випадку значення `interval` буде необовʼязковим (ми розглянемо стандартну генерацію значень пізніше), але коли воно визначено, повинно бути не менше 1 хвилини (1m), а значення `number_of_traces` буде обовʼязковим. Ось як виглядає файл config.go після реалізації методу `Validate`.
 
@@ -264,11 +264,11 @@ func (cfg *Config) Validate() error {
 
 {{% /alert %}}
 
-Якщо ви хочете детальніше ознайомитися зі структурами та інтерфейсами, що беруть участь у конфігураційних аспектах компонента, перегляньте файл [component/config.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/component/config.go) всередині проєкту Collector на GitHub.
+Якщо ви хочете детальніше ознайомитися зі структурами та інтерфейсами, що беруть участь у конфігураційних аспектах компонента, перегляньте файл [component/config.go](<https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/component/config.go>)всередині проєкту Collector на GitHub.
 
 ## Реалізація інтерфейсу receiver.Factory {#implementing-the-receiverfactory-interface}
 
-Приймач `tailtracer` повинен надати реалізацію `receiver.Factory`, і хоча ви знайдете інтерфейс `receiver.Factory` (ви можете знайти його визначення у файлі [receiver/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/receiver/receiver.go#L58) всередині проєкту Collector), правильний спосіб надати реалізацію — це використання функцій, доступних у пакеті `go.opentelemetry.io/collector/receiver`.
+Приймач `tailtracer` повинен надати реалізацію `receiver.Factory`, і хоча ви знайдете інтерфейс `receiver.Factory` (ви можете знайти його визначення у файлі [receiver/receiver.go](<https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/receiver/receiver.go#L58>) всередині проєкту Collector), правильний спосіб надати реалізацію — це використання функцій, доступних у пакеті `go.opentelemetry.io/collector/receiver`.
 
 Створіть файл з назвою `factory.go`:
 
@@ -471,7 +471,7 @@ func NewFactory() receiver.Factory {
 
 ## Реалізація компонента receiver {#implementing-the-receiver-component}
 
-Наразі всі API приймача оголошено у файлі [receiver/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/receiver/receiver.go) у проєкті колектора, відкрийте цей файл і витратьте хвилину на перегляд усіх інтерфейсів.
+Наразі всі API приймача оголошено у файлі [receiver/receiver.go](<https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/receiver/receiver.go>) у проєкті колектора, відкрийте цей файл і витратьте хвилину на перегляд усіх інтерфейсів.
 
 Зверніть увагу, що `receiver.Traces` (і його родичі `receiver.Metrics` і `receiver.Logs`) на даний момент не описує жодних специфічних методів, окрім тих, які він "успадкував" від `component.Component`.
 
@@ -917,14 +917,14 @@ go run ./otelcol-dev --config config.yaml
 ├── go.work.sum
 ├── ocb
 ├── otelcol-dev
-│   ├── components.go
-│   ├── components_test.go
-│   ├── go.mod
-│   ├── go.sum
-│   ├── main.go
-│   ├── main_others.go
-│   ├── main_windows.go
-│   └── otelcol-dev
+│   ├── components.go
+│   ├── components_test.go
+│   ├── go.mod
+│   ├── go.sum
+│   ├── main.go
+│   ├── main_others.go
+│   ├── main_windows.go
+│   └── otelcol-dev
 └── tailtracer
     ├── config.go
     ├── factory.go
@@ -1124,7 +1124,7 @@ func generateTraces(numberOfTraces int) ptrace.Traces{
 
 На даний момент ви вже достатньо почули і прочитали про те, як трейси складаються з відрізків (Spans). Можливо, ви також написали деякий інструментальний код, використовуючи функції та типи SDK для їх створення, але ви, мабуть, не знали, що у API колектора існують інші типи “span", які беруть участь у створенні трейсів.
 
-Ви почнете з типу з назвою `ptrace.ResourceSpans`, який представляє ресурс і всі операції, які він створив або отримав під час участі у трасуванні. Його визначення можна знайти у [/pdata/internal/data/protogen/trace/v1/trace.pb.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/pdata/internal/data/protogen/trace/v1/trace.pb.go).
+Ви почнете з типу з назвою `ptrace.ResourceSpans`, який представляє ресурс і всі операції, які він створив або отримав під час участі у трасуванні. Його визначення можна знайти у [/pdata/internal/data/protogen/trace/v1/trace.pb.go](<https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/pdata/internal/data/protogen/trace/v1/trace.pb.go>).
 
 Клас `ptrace.Traces` має метод `ResourceSpans()`, який повертає екземпляр допоміжного типу `ptrace.ResourceSpansSlice`. Тип `ptrace.ResourceSpansSlice` має методи для обробки масиву `ptrace.ResourceSpans`, який міститиме стільки елементів, скільки сутностей `Resource` беруть участь у запиті, представленому трейсом.
 
@@ -1169,7 +1169,7 @@ API колектора надає пакет з назвою `pcommon` (вкла
 
 У світі колектора `Resource` описується атрибутами у форматі пари ключ/значення, представленими типом `pcommon.Map`.
 
-Ви можете ознайомитися з визначенням типу `pcommon.Map` та відповідними допоміжними функціями для створення значень атрибутів у підтримуваних форматах у файлі [/pdata/pcommon/map.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/pdata/pcommon/map.go) у GitHub-проєкті Колекціонера.
+Ви можете ознайомитися з визначенням типу `pcommon.Map` та відповідними допоміжними функціями для створення значень атрибутів у підтримуваних форматах у файлі [/pdata/pcommon/map.go](<https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/pdata/pcommon/map.go>) у GitHub-проєкті Колекціонера.
 
 Пари ключ/значення надають велику гнучкість для моделювання даних `Resource`, тому специфікація OTel містить деякі рекомендації, які допомагають організувати та мінімізувати конфлікти між усіма різними типами обʼєктів генерації телеметрії, які можуть знадобитися для представлення.
 
@@ -1204,7 +1204,7 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm){
 
 Отже, коли ви подивитеся на сутність `BackendSystem`, вона має поля, що представляють інформацію, повʼязану з [Операційною системою](/docs/specs/semconv/resource/os/) та [Хмарою](/docs/specs/semconv/resource/cloud/), і ми будемо використовувати імена та значення атрибутів, визначені семантичною угодою про ресурси, для представлення цієї інформації на її `Resource`.
 
-Усі імена атрибутів семантичної конвенції ресурсів та добре відомі значення зберігаються у файлі [/semconv/v1.9.0/generated_resource.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/semconv/v1.9.0/generated_resource.go) у GitHub-проекті Collector'а.
+Усі імена атрибутів семантичної конвенції ресурсів та добре відомі значення зберігаються у файлі [/semconv/v1.9.0/generated_resource.go](<https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/semconv/v1.9.0/generated_resource.go>) у GitHub-проекті Collector'а.
 
 Створимо функцію для зчитування значень полів з екземпляра `BackendSystem` і запису їх як атрибутів в екземпляр `pcommon.Resource`. Відкрийте файл `tailtracer/model.go` і додайте наступну функцію:
 
