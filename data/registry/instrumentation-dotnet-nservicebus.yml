@@ -5,7 +5,7 @@ tags:
   - nservicebus
   - dotnet
 urls:
-  website: https://particular.net/ # to work on the integrations page as well
+  website: https://particular.net/
   repo: https://github.com/Particular/NServiceBus
   docs: https://docs.particular.net/nservicebus/operations/opentelemetry
 license: Reciprocal Public License 1.5
@@ -16,9 +16,9 @@ authors:
   - name: Particular Software
     url: https://github.com/Particular
 createdAt: 2025-02-27
-isNative: true # set this to true only if OpenTelemetry is directly integrated into your software (no plugin, no instrumentation library)
+isNative: true 
 package:
   name: NServiceBus
   registry: nuget
   version: 9.2.6
-isFirstParty: false # set this to true if "isNative" is set to false, but the plugin / instrumentation library is from the same vendor/project as the instrumented software
+isFirstParty: false
