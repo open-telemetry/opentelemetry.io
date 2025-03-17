@@ -3,7 +3,7 @@ title: Collector
 description: Vendor-agnostic way to receive, process and export telemetry data.
 aliases: [./about]
 cascade:
-  vers: 0.120.0
+  vers: 0.121.0
 weight: 270
 ---
 
@@ -57,7 +57,7 @@ you launch a collector it will automatically start receiving telemetry.
 Follow best practices to make sure your collectors are [hosted] and [configured]
 securely.
 
-## Status and releases
+## Status
 
 The **Collector** status is: [mixed][], since core Collector components
 currently have mixed [stability levels][].
@@ -72,11 +72,16 @@ fixes for critical bugs and security issues. See the
 [support policies](https://github.com/open-telemetry/opentelemetry-collector/blob/main/VERSIONING.md)
 for more details.
 
-{{% docs/latest-release collector-releases /%}}
+## Distributions and releases {#releases}
 
-[registry]: /ecosystem/registry/?language=collector
-[hosted]: /docs/security/hosting-best-practices/
+For information about Collector distributions and releases, including the
+[latest release][], see [Distributions](distributions/).
+
 [configured]: /docs/security/config-best-practices/
+[hosted]: /docs/security/hosting-best-practices/
+[latest release]:
+  https://github.com/open-telemetry/opentelemetry-collector-releases/releases/latest
 [mixed]: /docs/specs/otel/document-status/#mixed
+[registry]: /ecosystem/registry/?language=collector
 [stability levels]:
   https://github.com/open-telemetry/opentelemetry-collector#stability-levels

@@ -170,6 +170,18 @@ maintainers:
       - specs-triagers
     html_url: https://github.com/arminru
     avatar_url: https://avatars.githubusercontent.com/u/7052238?v=4
+  - name: atoulme
+    teams:
+      - collector-approvers
+      - collector-contrib-approvers
+      - collector-contrib-maintainers
+      - collector-contrib-triagers
+      - collector-releases-approvers
+      - collector-triagers
+      - network-triagers
+      - operator-triagers
+    html_url: https://github.com/atoulme
+    avatar_url: https://avatars.githubusercontent.com/u/16758?v=4
   - name: austinlparker
     teams:
       - blog-approvers
@@ -1060,12 +1072,6 @@ maintainers:
       - collector-triagers
     html_url: https://github.com/songy23
     avatar_url: https://avatars.githubusercontent.com/u/10536136?v=4
-  - name: srikanthccv
-    teams:
-      - sqlcommenter-approvers
-      - sqlcommenter-maintainers
-    html_url: https://github.com/srikanthccv
-    avatar_url: https://avatars.githubusercontent.com/u/22846633?v=4
   - name: svrnm
     teams:
       - blog-approvers
@@ -1274,6 +1280,12 @@ approvers:
       - go-compile-instrumentation-triagers
     html_url: https://github.com/123liuziming
     avatar_url: https://avatars.githubusercontent.com/u/32130965?v=4
+  - name: aalexand
+    teams:
+      - profiling-approvers
+      - profiling-triagers
+    html_url: https://github.com/aalexand
+    avatar_url: https://avatars.githubusercontent.com/u/1519040?v=4
   - name: adrielp
     teams:
       - semconv-cicd-approvers
@@ -1316,6 +1328,12 @@ approvers:
       - swift-approvers
     html_url: https://github.com/ArielDemarco
     avatar_url: https://avatars.githubusercontent.com/u/25651947?v=4
+  - name: ArthurSens
+    teams:
+      - collector-contrib-approvers
+      - collector-contrib-triagers
+    html_url: https://github.com/ArthurSens
+    avatar_url: https://avatars.githubusercontent.com/u/24193764?v=4
   - name: aryanishan1001
     teams:
       - cpp-contrib-approvers
@@ -1326,17 +1344,6 @@ approvers:
       - ebpf-profiler-approvers
     html_url: https://github.com/athre0z
     avatar_url: https://avatars.githubusercontent.com/u/6553158?v=4
-  - name: atoulme
-    teams:
-      - collector-approvers
-      - collector-contrib-approvers
-      - collector-contrib-triagers
-      - collector-releases-approvers
-      - collector-triagers
-      - network-triagers
-      - operator-triagers
-    html_url: https://github.com/atoulme
-    avatar_url: https://avatars.githubusercontent.com/u/16758?v=4
   - name: atreat
     teams:
       - swift-approvers
@@ -1434,6 +1441,12 @@ approvers:
       - semconv-genai-approvers
     html_url: https://github.com/drewby
     avatar_url: https://avatars.githubusercontent.com/u/192652?v=4
+  - name: edmocosta
+    teams:
+      - collector-contrib-approvers
+      - collector-contrib-triagers
+    html_url: https://github.com/edmocosta
+    avatar_url: https://avatars.githubusercontent.com/u/11836452?v=4
   - name: edsoncelio
     teams:
       - docs-pt-approvers
@@ -1474,6 +1487,8 @@ approvers:
   - name: florianl
     teams:
       - ebpf-profiler-approvers
+      - profiling-approvers
+      - profiling-triagers
     html_url: https://github.com/florianl
     avatar_url: https://avatars.githubusercontent.com/u/1132494?v=4
   - name: grcevski
@@ -1903,6 +1918,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/abhee11
     avatar_url: https://avatars.githubusercontent.com/u/6670495?v=4
+  - name: akats7
+    teams:
+      - go-triagers
+    html_url: https://github.com/akats7
+    avatar_url: https://avatars.githubusercontent.com/u/56042997?v=4
   - name: anosek-an
     teams:
       - java-contrib-triagers
@@ -2089,9 +2109,6 @@ members:
   - name: a-feld
     html_url: https://github.com/a-feld
     avatar_url: https://avatars.githubusercontent.com/u/6374032?v=4
-  - name: aalexand
-    html_url: https://github.com/aalexand
-    avatar_url: https://avatars.githubusercontent.com/u/1519040?v=4
   - name: aaron-ai
     html_url: https://github.com/aaron-ai
     avatar_url: https://avatars.githubusercontent.com/u/19537356?v=4
@@ -2122,9 +2139,6 @@ members:
   - name: Arhell
     html_url: https://github.com/Arhell
     avatar_url: https://avatars.githubusercontent.com/u/26163841?v=4
-  - name: ArthurSens
-    html_url: https://github.com/ArthurSens
-    avatar_url: https://avatars.githubusercontent.com/u/24193764?v=4
   - name: asaharn
     html_url: https://github.com/asaharn
     avatar_url: https://avatars.githubusercontent.com/u/102726227?v=4
@@ -2215,6 +2229,9 @@ members:
   - name: fstab
     html_url: https://github.com/fstab
     avatar_url: https://avatars.githubusercontent.com/u/330535?v=4
+  - name: garysassano
+    html_url: https://github.com/garysassano
+    avatar_url: https://avatars.githubusercontent.com/u/10464497?v=4
   - name: gbbr
     html_url: https://github.com/gbbr
     avatar_url: https://avatars.githubusercontent.com/u/6686356?v=4
@@ -2335,6 +2352,9 @@ members:
   - name: luvtechno
     html_url: https://github.com/luvtechno
     avatar_url: https://avatars.githubusercontent.com/u/43811?v=4
+  - name: LZiHaN
+    html_url: https://github.com/LZiHaN
+    avatar_url: https://avatars.githubusercontent.com/u/49515906?v=4
   - name: mackjmr
     html_url: https://github.com/mackjmr
     avatar_url: https://avatars.githubusercontent.com/u/63265430?v=4
@@ -2416,6 +2436,9 @@ members:
   - name: RichiH
     html_url: https://github.com/RichiH
     avatar_url: https://avatars.githubusercontent.com/u/754723?v=4
+  - name: ridwanmsharif
+    html_url: https://github.com/ridwanmsharif
+    avatar_url: https://avatars.githubusercontent.com/u/18472685?v=4
   - name: rlankfo
     html_url: https://github.com/rlankfo
     avatar_url: https://avatars.githubusercontent.com/u/364801?v=4
@@ -2449,6 +2472,9 @@ members:
   - name: spirosx
     html_url: https://github.com/spirosx
     avatar_url: https://avatars.githubusercontent.com/u/6893659?v=4
+  - name: srikanthccv
+    html_url: https://github.com/srikanthccv
+    avatar_url: https://avatars.githubusercontent.com/u/22846633?v=4
   - name: sumo-drosiek
     html_url: https://github.com/sumo-drosiek
     avatar_url: https://avatars.githubusercontent.com/u/58699848?v=4
