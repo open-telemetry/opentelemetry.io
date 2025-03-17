@@ -16,7 +16,7 @@ authors:
   - name: Particular Software
     url: https://github.com/Particular
 createdAt: 2025-02-27
-isNative: true 
+isNative: true
 package:
   name: NServiceBus
   registry: nuget
