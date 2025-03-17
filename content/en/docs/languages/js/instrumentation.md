@@ -221,14 +221,14 @@ import {
   PeriodicExportingMetricReader,
   ConsoleMetricExporter,
 } from '@opentelemetry/sdk-metrics';
-import { Resource } from '@opentelemetry/resources';
+import { resourceFromAttributes } from '@opentelemetry/resources';
 import {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
 } from '@opentelemetry/semantic-conventions';
 
 const sdk = new NodeSDK({
-  resource: new Resource({
+  resource: resourceFromAttributes({
     [ATTR_SERVICE_NAME]: 'yourServiceName',
     [ATTR_SERVICE_VERSION]: '1.0',
   }),
@@ -251,14 +251,14 @@ const {
   PeriodicExportingMetricReader,
   ConsoleMetricExporter,
 } = require('@opentelemetry/sdk-metrics');
-const { Resource } = require('@opentelemetry/resources');
+const { resourceFromAttributes } = require('@opentelemetry/resources');
 const {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
 } = require('@opentelemetry/semantic-conventions');
 
 const sdk = new NodeSDK({
-  resource: new Resource({
+  resource: resourceFromAttributes({
     [ATTR_SERVICE_NAME]: 'dice-server',
     [ATTR_SERVICE_VERSION]: '0.1.0',
   }),
@@ -349,7 +349,10 @@ SDK initialization code in it:
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
-import { Resource } from '@opentelemetry/resources';
+import {
+  defaultResource,
+  resourceFromAttributes,
+} from '@opentelemetry/resources';
 import {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
@@ -360,8 +363,8 @@ import {
   ConsoleSpanExporter,
 } from '@opentelemetry/sdk-trace-base';
 
-const resource = Resource.default().merge(
-  new Resource({
+const resource = defaultResource().merge(
+  resourceFromAttributes({
     [ATTR_SERVICE_NAME]: 'service-name-here',
     [ATTR_SERVICE_VERSION]: '0.1.0',
   }),
@@ -382,7 +385,10 @@ provider.register();
 
 ```js
 const opentelemetry = require('@opentelemetry/api');
-const { Resource } = require('@opentelemetry/resources');
+const {
+  defaultResource,
+  resourceFromAttributes,
+} = require('@opentelemetry/resources');
 const {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
@@ -393,8 +399,8 @@ const {
   BatchSpanProcessor,
 } = require('@opentelemetry/sdk-trace-base');
 
-const resource = Resource.default().merge(
-  new Resource({
+const resource = defaultResource().merge(
+  resourceFromAttributes({
     [ATTR_SERVICE_NAME]: 'service-name-here',
     [ATTR_SERVICE_VERSION]: '0.1.0',
   }),
@@ -1286,14 +1292,17 @@ import {
   MeterProvider,
   PeriodicExportingMetricReader,
 } from '@opentelemetry/sdk-metrics';
-import { Resource } from '@opentelemetry/resources';
+import {
+  defaultResource,
+  resourceFromAttributes,
+} from '@opentelemetry/resources';
 import {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
 } from '@opentelemetry/semantic-conventions';
 
-const resource = Resource.default().merge(
-  new Resource({
+const resource = defaultResource().merge(
+  resourceFromAttributes({
     [ATTR_SERVICE_NAME]: 'dice-server',
     [ATTR_SERVICE_VERSION]: '0.1.0',
   }),
@@ -1323,14 +1332,17 @@ const {
   PeriodicExportingMetricReader,
   ConsoleMetricExporter,
 } = require('@opentelemetry/sdk-metrics');
-const { Resource } = require('@opentelemetry/resources');
+const {
+  defaultResource,
+  resourceFromAttributes,
+} = require('@opentelemetry/resources');
 const {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
 } = require('@opentelemetry/semantic-conventions');
 
-const resource = Resource.default().merge(
-  new Resource({
+const resource = defaultResource().merge(
+  resourceFromAttributes({
     [ATTR_SERVICE_NAME]: 'service-name-here',
     [ATTR_SERVICE_VERSION]: '0.1.0',
   }),
@@ -1761,33 +1773,34 @@ with `http` by using `http*`.
 Filter attributes on all metric types:
 
 ```js
-const limitAttributesView = new View({
+const limitAttributesView = {
   // only export the attribute 'environment'
   attributeKeys: ['environment'],
   // apply the view to all instruments
   instrumentName: '*',
-});
+};
 ```
 
 Drop all instruments with the meter name `pubsub`:
 
 ```js
-const dropView = new View({
-  aggregation: new DropAggregation(),
+const dropView = {
+  aggregation: { type: AggrgationType.DROP },
   meterName: 'pubsub',
-});
+};
 ```
 
 Define explicit bucket sizes for the Histogram named `http.server.duration`:
 
 ```js
-const histogramView = new View({
-  aggregation: new ExplicitBucketHistogramAggregation([
-    0, 1, 5, 10, 15, 20, 25, 30,
-  ]),
+const histogramView = {
+  aggregation: {
+    type: AggregationType.EXPLICIT_BUCKET_HISTOGRAM,
+    options: { boundaries: [0, 1, 5, 10, 15, 20, 25, 30] },
+  },
   instrumentName: 'http.server.duration',
   instrumentType: InstrumentType.HISTOGRAM,
-});
+};
 ```
 
 #### Attach to meter provider
