@@ -188,7 +188,7 @@ de ambiente são:
 
 Definir `OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE` para qualquer valor
 diferente de `CUMULATIVE`, `DELTA` ou `LOWMEMORY` registrará um aviso e definirá
-esta variável de ambiente para `CUMULATIVE`.
+esta variável de ambiente como `CUMULATIVE`.
 
 {{% /alert %}}
 
@@ -225,15 +225,15 @@ resource = Resource(attributes={
 # Iniciar cliente Prometheus
 start_http_server(port=9464, addr="localhost")
 # Inicializar PrometheusMetricReader que puxa métricas do SDK
-# sob demanda para responder a solicitações de raspagem
+# sob demanda para responder a solicitações de extração
 reader = PrometheusMetricReader()
 provider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(provider)
 ```
 
-Com o acima, você pode acessar suas métricas em <http://localhost:9464/metrics>.
+Com o código acima, você pode acessar suas métricas em <http://localhost:9464/metrics>.
 O Prometheus ou um OpenTelemetry Collector com o receptor Prometheus pode
-coletar as métricas deste endpoint.
+extrair as métricas deste endpoint.
 
 {{% docs/languages/exporters/zipkin-setup %}}
 
