@@ -40,17 +40,17 @@ provider = TracerProvider()
 processor = BatchSpanProcessor(ConsoleSpanExporter())
 provider.add_span_processor(processor)
 
-# Define o provedor de rastreador global padrão
+# Define o provedor global padrão de rastreador
 trace.set_tracer_provider(provider)
 
-# Cria um rastreador a partir do provedor de rastreador global
+# Cria um rastreador a partir do provedor global de rastreador
 tracer = trace.get_tracer("meu.rastreador.nome")
 ```
 
 ### Criando Trechos {#creating-spans}
 
-Para criar um [trecho](/docs/concepts/signals/traces/#spans), geralmente você
-pretende iniciá-lo como o trecho atual.
+Para criar um [trecho](/docs/concepts/signals/traces/#spans), normalmente você
+vai querer que seja iniciado como o trecho atual.
 
 ```python
 def fazer_trabalho():
@@ -75,7 +75,7 @@ def fazer_trabalho():
     with tracer.start_as_current_span("pai") as parent:
         # faça algum trabalho que 'pai' rastreia
         print("fazendo algum trabalho...")
-        # Crie um trecho aninhado para rastrear trabalho aninhado
+        # Crie um trecho aninhado para rastrear o trabalho aninhado
         with tracer.start_as_current_span("filho") as child:
             # faça algum trabalho que 'filho' rastreia
             print("fazendo algum trabalho aninhado...")
@@ -103,7 +103,7 @@ O uso do decorador é equivalente a criar o trecho dentro de `fazer_trabalho()` 
 finalizá-lo quando `fazer_trabalho()` for concluído.
 
 Para usar o decorador, você deve ter uma instância de `tracer` disponível
-globalmente para a declarar sua função.
+globalmente para a declaração da sua função.
 
 ### Obter o Trecho Atual {#get-the-current-span}
 
@@ -128,16 +128,16 @@ from opentelemetry import trace
 
 current_span = trace.get_current_span()
 
-current_span.set_attribute("valor.operacao", 1)
-current_span.set_attribute("nome.operacao", "Dizendo olá!")
-current_span.set_attribute("outras-coisas.operacao", [1, 2, 3])
+current_span.set_attribute("operacao.valor", 1)
+current_span.set_attribute("operacao.nome", "Dizendo olá!")
+current_span.set_attribute("operacao.outras-coisas", [1, 2, 3])
 ```
 
 ### Adicionar Atributos Semânticos {#add-semantic-attributes}
 
 Os [Atributos Semânticos](/docs/specs/semconv/general/trace/) são
 [Atributos](/docs/concepts/signals/traces/#attributes) predeterminados, que são
-nomenclatura bastante conhecidas para tipos comuns de dados. Usar Atributos
+nomenclaturas bastante conhecidas para tipos comuns de dados. Usar Atributos
 Semânticos permite que você normalize esse tipo de informação em seus sistemas.
 
 Para usar Atributos Semânticos em Python, certifique-se de ter o pacote de
@@ -182,7 +182,7 @@ current_span.add_event("Consegui!")
 ### Adicionando Links {#adding-links}
 
 Um [trecho](/docs/concepts/signals/traces/#spans) pode ser criado com zero ou
-mais [links de trecho](/docs/concepts/signals/traces/#span-links) que o ligam
+mais [links de trecho](/docs/concepts/signals/traces/#span-links) que o vinculam
 causalmente a outro trecho. Um link precisa de um contexto de trecho para ser
 criado.
 
@@ -249,7 +249,7 @@ Por padrão, o OpenTelemetry Python usará os seguintes formatos de propagação
 Se você precisar alterar os padrões, pode fazê-lo por meio de variáveis de
 ambiente ou no código:
 
-#### Usando Variáveis de Ambiente
+#### Usando Variáveis de Ambiente {#using-environment-variables}
 
 Você pode definir a variável de ambiente `OTEL_PROPAGATORS` com uma lista
 separada por vírgulas. Os valores aceitos são:
@@ -312,14 +312,14 @@ from opentelemetry.sdk.metrics.export import (
 metric_reader = PeriodicExportingMetricReader(ConsoleMetricExporter())
 provider = MeterProvider(metric_readers=[metric_reader])
 
-# Define o provedor de medidor global padrão
+# Define o provedor global padrão de medidor
 metrics.set_meter_provider(provider)
 
-# Cria um medidor a partir do provedor de medidor global
+# Cria um medidor a partir do provedor global de medidor
 meter = metrics.get_meter("meu.medidor.nome")
 ```
 
-### Criando e Usando Instrumentos Síncronos
+### Criando e Usando Instrumentos Síncronos {#creating-and-using-synchronous-instruments}
 
 Os
 [instrumentos síncronos](/docs/specs/otel/metrics/api/#synchronous-and-asynchronous-instruments)
@@ -346,14 +346,14 @@ como um atributo.
 ```python
 def fazer_trabalho(item_trabalho):
     # conta o trabalho sendo feito
-    work_counter.add(1, {"tipo.trabalho": item_trabalho.tipo_trabalho})
+    work_counter.add(1, {"trabalho.tipo": item_trabalho.tipo_trabalho})
     print("fazendo algum trabalho...")
 ```
 
 ### Criando e Usando Instrumentos Assíncronos {#creating-and-using-asynchronous-instruments}
 
 [Instrumentos assíncronos](/docs/specs/otel/metrics/api/#synchronous-and-asynchronous-instruments)
-fornece ao usuário uma maneira de registrar funções de _callback_, que são
+fornecem ao usuário uma maneira de registrar funções de _callback_, que são
 invocadas sob demanda para fazer medições. Isso é útil para medir periodicamente
 um valor que não pode ser instrumentado diretamente. Os instrumentos assíncronos
 são criados com zero ou mais callbacks que serão invocados durante a coleta de
@@ -362,7 +362,7 @@ métricas. Cada callback aceita opções do SDK e retorna suas observações.
 Este exemplo usa um instrumento
 [Gauge Assíncrono](/docs/specs/otel/metrics/api/#asynchronous-gauge) para
 relatar a versão de configuração atual fornecida por um servidor de
-configuração, raspando um endpoint HTTP. Primeiro, escreva um callback para
+configuração, por meio da extração de um endpoint HTTP. Primeiro, escreva um callback para
 fazer observações:
 
 ```python
@@ -382,7 +382,7 @@ def raspar_versoes_configuracao(options: CallbackOptions) -> Iterable[Observatio
 
 Observe que o OpenTelemetry passará opções para seu callback contendo um
 timeout. Os callbacks devem respeitar esse timeout para evitar bloqueios
-indefinidos. Finalmente, crie o instrumento com o callback para registrá-lo:
+indefinidamente. Por fim, crie o instrumento com o callback para registrá-lo:
 
 ```python
 meter.create_observable_gauge(
