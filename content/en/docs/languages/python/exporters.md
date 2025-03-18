@@ -237,7 +237,7 @@ the metrics from this endpoint.
 
 ### Dependencies {#zipkin-dependencies}
 
-To send your trace data to [Zipkin](https://zipkin.io/), , you can choose
+To send your trace data to [Zipkin](https://zipkin.io/), you can choose
 between two different protocols to transport your data:
 
 - [HTTP/protobuf](https://pypi.org/project/opentelemetry-exporter-zipkin-proto-http/)
