@@ -362,8 +362,8 @@ métricas. Cada callback aceita opções do SDK e retorna suas observações.
 Este exemplo usa um instrumento
 [Gauge Assíncrono](/docs/specs/otel/metrics/api/#asynchronous-gauge) para
 relatar a versão de configuração atual fornecida por um servidor de
-configuração, por meio da extração de um endpoint HTTP. Primeiro, escreva um callback para
-fazer observações:
+configuração, por meio da extração de um endpoint HTTP. Primeiro, escreva um
+callback para fazer observações:
 
 ```python
 from typing import Iterable
