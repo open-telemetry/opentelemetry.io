@@ -231,9 +231,9 @@ provider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(provider)
 ```
 
-Com o código acima, você pode acessar suas métricas em <http://localhost:9464/metrics>.
-O Prometheus ou um OpenTelemetry Collector com o receptor Prometheus pode
-extrair as métricas deste endpoint.
+Com o código acima, você pode acessar suas métricas em
+<http://localhost:9464/metrics>. O Prometheus ou um OpenTelemetry Collector com
+o receptor Prometheus pode extrair as métricas deste endpoint.
 
 {{% docs/languages/exporters/zipkin-setup %}}
 
