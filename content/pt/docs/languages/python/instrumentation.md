@@ -335,7 +335,7 @@ de trabalho concluídos:
 
 ```python
 work_counter = meter.create_counter(
-    "contador.trabalho", unit="1", description="Conta a quantidade de trabalho feito"
+    "trabalho.contador", unit="1", description="Conta a quantidade de trabalho feito"
 )
 ```
 
