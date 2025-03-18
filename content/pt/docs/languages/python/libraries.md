@@ -3,7 +3,7 @@ title: Usando bibliotecas de instrumentação
 linkTitle: Bibliotecas
 weight: 40
 default_lang_commit: 918511661af010726c8847d7fe41a46231fa59cc
-cSpell:ignore: httpx instrumentor uninstrument
+cSpell:ignore: httpx instrumentor uninstrument desinstrumentar
 ---
 
 {{% docs/languages/libraries-intro "python" %}}
@@ -71,8 +71,8 @@ async with httpx.AsyncClient() as client:
 
 ### Desativar instrumentações {#turn-off-instrumentations}
 
-Se necessário, você pode desinstrumentar clientes específicos ou
-todos os clientes usando o método `uninstrument_client`. Por exemplo:
+Se necessário, você pode desinstrumentar clientes específicos ou todos os
+clientes usando o método `uninstrument_client`. Por exemplo:
 
 ```python
 import httpx
