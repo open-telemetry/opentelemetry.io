@@ -8,7 +8,7 @@ cSpell:ignore: httpx instrumentor uninstrument
 
 {{% docs/languages/libraries-intro "python" %}}
 
-## Usar bibliotecas de instrumentação {#use-instrumentation-libraries}
+## Use bibliotecas de instrumentação {#use-instrumentation-libraries}
 
 Se uma biblioteca não oferece suporte nativo ao OpenTelemetry, você pode usar
 [bibliotecas de instrumentação](/docs/specs/otel/glossary/#instrumentation-library)
@@ -71,7 +71,7 @@ async with httpx.AsyncClient() as client:
 
 ### Desativar instrumentações {#turn-off-instrumentations}
 
-Se necessário, você pode desinstalar a instrumentação clientes específicas ou
+Se necessário, você pode desinstrumentar clientes específicos ou
 todos os clientes usando o método `uninstrument_client`. Por exemplo:
 
 ```python
@@ -90,7 +90,7 @@ HTTPXClientInstrumentor().uninstrument()
 
 ## Bibliotecas de instrumentação disponíveis {#available-instrumentation-libraries}
 
-Uma lista completa de bibliotecas de instrumentação elaboradas pelo
+Uma lista completa de bibliotecas de instrumentação produzidas pelo
 OpenTelemetry está disponível no repositório [opentelemetry-python-contrib][].
 
 Você também pode encontrar mais instrumentações disponíveis em
