@@ -2,7 +2,7 @@
 title: 链路（Trace）
 weight: 1
 description: 请求通过应用程序的路径。
-default_lang_commit: f6af710a28eb8e4cd4306f0a807ac6c6220bbc76
+default_lang_commit: 98b5e065e3bb47fd36bf4d3cdb465f8cb2e4f8c6
 ---
 
 **Traces** 为我们提供了向应用程序发出请求时会发生什么的总览图。无论您的应用程序是具有单个数据库的整体式应用程序还是复杂的服务网格，trace 对于了解请求在应用程序中的完整“路径”至关重要。
@@ -181,7 +181,7 @@ Span 样例:
     }
   ]
 }
-```              
+```
 
 Span 可以嵌套，这由父 Span ID 的存在来标识：子 Span 表示子操作。这允许 Span 更准确地捕获应用程序中完成的工作。
 
@@ -268,7 +268,6 @@ Span Event 最适合用于跟踪第二种情况，因为它表示有意义的单
 ### Span 类型
 
 创建 Span 时，它是 `Client`、`Server`、`Internal`、`Producer` 或 `Consumer` 之一。这种 Span 类型为跟踪后端提供了有关如何组装 trace 的提示。根据 OpenTelemetry 规范，服务器 Span 的父级通常是远程客户端 Span，而 client Span 的子级通常是服务器 Span。同样，使用者 Span 的父级始终是生产者，而生产者 Span 的子级始终是使用者。如果未提供，则假定 Span 类型为 internal。
-
 
 有关 SpanKind 的更多信息，请参阅[SpanKind](/docs/specs/otel/trace/api/#spankind)。
 
