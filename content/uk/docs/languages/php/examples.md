@@ -1,0 +1,7 @@
+---
+title: Приклади
+redirect: https://github.com/open-telemetry/opentelemetry-php/tree/main/examples
+manualLinkTarget: _blank
+_build: { render: link }
+weight: 220
+---
