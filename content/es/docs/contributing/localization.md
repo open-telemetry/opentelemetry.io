@@ -1,0 +1,359 @@
+---
+---
+
+title: Localización del sitio description: Creación y mantenimiento de páginas
+del sitio en localizaciones que no están en inglés. linkTitle: Localización
+weight: 25 cSpell:ignore: shortcodes default_lang_commit:
+f2a520b85d72db706bff91d879f5bb10fd2e7367
+
+---
+
+El sitio web de OTel utiliza el
+[framework multilingüe](https://gohugo.io/content-management/multilingual/) de
+Hugo para soportar la localización de páginas. El inglés es el idioma
+predeterminado, con inglés estadounidense como la localización predeterminada
+(implícita). Se admite un número creciente de otras localizaciones, como se
+puede ver en el menú desplegable de idiomas en la barra de navegación superior.
+
+### Resumen
+
+#### ✅ Hacer {#do}
+
+<div class="border-start border-success bg-success-subtle">
+
+- **Traducir**:
+  - El contenido de la página, incluyendo:
+    - Campos de texto en diagramas [Mermaid](#images)
+    - Comentarios de código extraídos de extractos de código
+  - Los valores de los campos de [Front matter][] para `title`, `linkTitle` y
+    `description`
+  - **Todo** el contenido de la página y el front matter, a menos que se indique
+    lo contrario
+- **Preservar** el _contenido_, _significado_ y _estilo_ del texto original
+- **Consultar** a los [maintainers] si tienes dudas o preguntas a través de:
+  - Canales de [Slack] `#otel-docs-localization` o `#otel-comms`
+  - [Discusión], issue o comentario en un PR
+
+[Discusión]:
+  https://github.com/open-telemetry/opentelemetry.io/discussions?discussions_q=is%3Aopen+label%3Ai18n
+
+</div>
+
+#### ❌ No traducir {#do-not}
+
+<div class="border-start border-warning bg-warning-subtle">
+
+- **No traducir**:
+  - **Nombres de archivos o directorios** de recursos en este repositorio
+  - [Enlaces](#links), esto incluye los [IDs de encabezados](#headings).[^*]
+  - Campos de [Front matter][] distintos a los mencionados en [Hacer](#do). En
+    particular, no traduzcas `aliases`. Si tienes dudas, consulta a los
+    maintainers.
+  - Código
+- Crear **copias de imágenes**, a menos que
+  [localices el texto dentro de las imágenes](#images)
+- Añadir o modificar:
+  - **Contenido** que altere el significado original
+  - Estilo de **presentación**, incluyendo: _formato_, _diseño_ y estilo de
+    _diseño_ (por ejemplo, tipografía, uso de mayúsculas y espaciado).
+
+[^*]: Para una posible excepción, consulta [Enlaces](#links).
+
+</div>
+
+### IDs de encabezados {#headings}
+
+Para garantizar que los anclajes de los encabezados sean uniformes en todas las
+localizaciones, al traducir encabezados:
+
+- Conserva el ID explícito del encabezado si lo tiene. La [sintaxis del ID de
+  encabezado][] se escribe después del texto del encabezado usando la sintaxis
+  `{ #un-id }`.
+- De lo contrario, declara explícitamente un ID de encabezado que corresponda al
+  ID autogenerado del encabezado original en inglés.
+
+[Sintaxis del ID de encabezado]:
+  https://github.com/yuin/goldmark/blob/master/README.md#headings
+
+### Enlaces {#links}
+
+**No** traduzcas las referencias de enlaces. Esto aplica tanto para enlaces
+externos como para rutas a páginas del sitio web y recursos locales de la
+sección, como [imágenes](#images).
+
+La única excepción son los enlaces a páginas externas (como
+<https://en.wikipedia.org>) que tengan una versión específica para tu idioma. A
+menudo, esto significa reemplazar el `en` en la URL por el código de idioma de
+tu localización.
+
+{{% alert title="Nota" %}}
+
+El repositorio del sitio web de OTel tiene un hook personalizado de renderizado
+de enlaces que Hugo utiliza para convertir rutas absolutas de enlaces que
+refieren a páginas de documentación. **Los enlaces con la forma
+`/docs/una-pagina` se hacen específicos para la localización** al anteponer el
+código de idioma al renderizar el enlace. Por ejemplo, la ruta del ejemplo
+anterior se convierte en `/ja/docs/una-pagina` cuando se renderiza desde una
+página en japonés.
+
+{{% /alert %}}
+
+### Images and diagrams {#images}
+
+Do **not** make copies of image files unless you localize text in the image
+itself[^shared-images].
+
+**Do** translate text in [Mermaid][] diagrams.
+
+[^shared-images]:
+    Hugo is smart about the way that it renders image files that are shared
+    across site localizations. That is, Hugo will output a _single_ image file
+    and share it across locales.
+
+[Mermaid]: https://mermaid.js.org
+
+### Include files {#includes}
+
+**Do** translate page fragments found under `_includes` directories just as you
+would translate any other page content.
+
+### Shortcodes
+
+{{% alert title="Note" %}}
+
+As of February 2025, we are in the process of migrating from shortcodes to
+[include files](#includes) as a means of supporting shared-page content.
+
+{{% /alert %}}
+
+Some of the base shortcodes contain English text that you might need to localize
+-- this is particularly true of those contained in [layouts/shortcodes/docs].
+
+If you need to create a localized version of a shortcode, place it under
+`layouts/shortcodes/xx`, where `xx` is your localization's language code. From
+there, use the same relative path as the original base shortcode.
+
+[layouts/shortcodes/docs]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/shortcodes/docs
+
+## Keeping track of localized-page drift {#track-changes}
+
+One of the main challenges of maintaining localized pages, is identifying when
+the corresponding English language pages have been updated. This section
+explains how we handle this.
+
+### The `default_lang_commit` front-matter field
+
+When a localized page is written, such as `content/zh/<some-path>/page.md`, this
+translation is based on a specific [`main` branch commit][main] of the
+corresponding English language version of the page at
+`content/en/<some-path>/page.md`. In this repository, every localized page
+identifies the English page commit in the localized page's front matter as
+follows:
+
+```markdown
+---
+title: Your localized page title
+# ...
+default_lang_commit: <most-recent-commit-hash-of-default-language-page>
+---
+```
+
+The front matter above would be in `content/zh/<some-path>/page.md`. The commit
+hash would correspond to the latest commit of `content/en/<some-path>/page.md`
+from the `main` branch.
+
+### Tracking changes to English pages
+
+As updates are made to English language pages, you can keep track of the
+corresponding localized pages that need updating by running the following
+command:
+
+```console
+$ npm run check:i18n
+1       1       content/en/docs/platforms/kubernetes/_index.md - content/zh/docs/platforms/kubernetes/_index.md
+...
+```
+
+You can restrict the target pages to one or more localizations by providing
+path(s) like this:
+
+```sh
+npm run check:i18n -- content/zh
+```
+
+### Viewing change details
+
+For any given localized pages that need updating, you can see the diff details
+of the corresponding English language pages by using the `-d` flag and providing
+the paths to your localized pages, or omit the paths to see all. For example:
+
+```console
+$ npm run check:i18n -- -d content/zh/docs/platforms/kubernetes
+diff --git a/content/en/docs/platforms/kubernetes/_index.md b/content/en/docs/platforms/kubernetes/_index.md
+index 3592df5d..c7980653 100644
+--- a/content/en/docs/platforms/kubernetes/_index.md
++++ b/content/en/docs/platforms/kubernetes/_index.md
+@@ -1,7 +1,7 @@
+ ---
+ title: OpenTelemetry with Kubernetes
+ linkTitle: Kubernetes
+-weight: 11
++weight: 350
+ description: Using OpenTelemetry with Kubernetes
+ ---
+```
+
+### Adding `default_lang_commit` to new pages
+
+As you create pages for your localization, remember to add `default_lang_commit`
+to the page front matter along with an appropriate commit hash from `main`.
+
+If your page translation is based on an English page in `main` at `<hash>`, then
+run the following command to automatically add `default_lang_commit` to your
+page file's front matter using the commit `<hash>`. You can specify `HEAD` as an
+argument if your pages are now synced with `main` at `HEAD`. For example:
+
+```sh
+npm run check:i18n -- -n -c 1ca30b4d content/ja
+npm run check:i18n -- -n -c HEAD content/zh/docs/concepts
+```
+
+To list localization page files with missing hash keys, run:
+
+```sh
+npm run check:i18n -- -n
+```
+
+### Updating `default_lang_commit` for existing pages
+
+As you update your localized pages to match changes made to the corresponding
+English language page, ensure that you also update the `default_lang_commit`
+commit hash.
+
+{{% alert title="Tip" %}}
+
+If your localized page now corresponds to the English language version in `main`
+at `HEAD`, then erase the commit hash value in the front matter, and run the
+**add** command given in the previous section to automatically refresh the
+`default_lang_commit` field value.
+
+{{% /alert %}}
+
+If you have batch updated all of your localization pages that had drifted, you
+can update the commit hash of these files using the `-c` flag followed by a
+commit hash or 'HEAD' to use `main@HEAD`.
+
+```sh
+npm run check:i18n -- -c <hash> <PATH-TO-YOUR-NEW-FILES>
+npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
+```
+
+{{% alert title="Important" %}}
+
+When you use `HEAD` as a hash specifier, the script will use the hash of `main`
+at HEAD in your **local environment**. Make sure that you fetch and pull `main`,
+if you want HEAD to correspond to `main` in GitHub.
+
+{{% /alert %}}
+
+### Drift status
+
+Run `npm run fix:i18n:status` to add a front-matter field `drifted_from_default`
+to those target localization pages that have drifted. This field will soon be
+used to display a banner at the top of pages that have drifted relative to their
+English counterparts.
+
+### Script help
+
+For more details about the script, run `npm run check:i18n -- -h`.
+
+## New localizations
+
+To start a new localization for the OpenTelemetry website,
+[raise an issue](https://github.com/open-telemetry/opentelemetry.io/issues/) to
+share your interest to contribute. Tag all other individuals that are willing to
+write and review translations in the language you want to add. **You need at
+least two potential contributors**, ideally three. Include the following task
+list in your issue as well:
+
+```markdown
+- [ ] Contributors for the new language: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
+- [ ] Localize site homepage to YOUR_LANGUAGE_NAME
+- [ ] Create an issue label for `lang:LANG_ID`
+- [ ] Create org-level group for `LANG_ID` approvers
+- [ ] Update components owners for `content/LANG_ID`
+- [ ] Set up spell checking, if a cSpell dictionary is available
+```
+
+Notes:
+
+- For `LANG_ID`, use an official
+  [ISO 639-1 code](https://en.wikipedia.org/wiki/ISO_639-1) for the language you
+  want to add.
+- Look for
+  [cSpell dictionaries](https://github.com/streetsidesoftware/cspell-dicts)
+  available as NPM packages
+  [@cspell/dict-LANG_ID](https://www.npmjs.com/search?q=%40cspell%2Fdict). If a
+  dictionary isn't available for your dialect or region, choose the closest
+  region. For an example of how to set this up, see [PR #5386].
+
+After you created that issue and have the required amount of contributors,
+maintainers will ask you to provide a pull request with a translation of the
+[index page](https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md).
+Make sure that maintainers are allowed to edit your PR, since they will add
+additional changes to your PR that are required to get your localization project
+started.
+
+With your first PR merged maintainers will take care of setting up the issue
+label, the org-level group and the component owners.
+
+{{% alert title="Important" color="warning" %}}
+
+You don't have to be an existing contributor to the OpenTelemetry project, to
+start a new localization. However you will not be added as a member of the
+[OpenTelemetry GitHub organization](https://github.com/open-telemetry/) or as a
+member of the approvers group for your localization. You will need to satisfy
+the requirements for becoming an established member and approver as outlined in
+the
+[membership guidelines](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md).
+
+When starting the localization project, maintainers will treat your reviews as
+if you are an approver already.
+
+{{% /alert %}}
+
+## English-language maintainer guidance
+
+### When link checking fails for non-English pages
+
+English is the default language of the OpenTelemetry website. After you add,
+edit, or reorganized English language documentation, link checking may fail for
+non-English pages. When this happens:
+
+<!-- markdownlint-disable blanks-around-fences -->
+
+- Do **not** fix the broken links. Each non-English page is associated with a
+  specific commit of the corresponding English page, as identified by the git
+  commit hash value of the `default_lang_commit` front matter key.
+- Configure the link checker to ignore the non-English pages by adding the
+  following to the page's front matter, or to the closest common ancestor file,
+  when more than one page has link errors:
+  ```yaml
+  htmltest:
+    # TODO: remove the IgnoreDirs once broken links are fixed
+    IgnoreDirs:
+      - path-regex/to/non-en/directory/contain/files/to/ignore
+      - path-2-etc
+  ```
+- Run `npm run check:links` and include any updates to the `.htmltest.yml`
+  config file with your PR.
+
+<!-- markdownlint-enable blanks-around-fences -->
+
+[front matter]: https://gohugo.io/content-management/front-matter/
+[main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
+[maintainers]: https://github.com/orgs/open-telemetry/teams/docs-maintainers
+[multilingual framework]: https://gohugo.io/content-management/multilingual/
+[PR #5386]: https://github.com/open-telemetry/opentelemetry.io/pull/5386/files
+[slack]: https://slack.cncf.io/
