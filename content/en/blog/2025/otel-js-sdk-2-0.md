@@ -5,6 +5,7 @@ date: 2025-02-21
 author: >
   [Jamie Danielson](https://github.com/JamieDanielson) (Honeycomb)
 sig: OpenTelemetry JS
+cSpell:ignore: Danielson
 ---
 
 Exciting news!
