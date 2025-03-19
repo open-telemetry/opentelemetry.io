@@ -115,7 +115,7 @@ default_lang_commit: 98b5e065e3bb47fd36bf4d3cdb465f8cb2e4f8c6
 
 为了了解 OpenTelemetry 中的 trace 是如何工作的，让我们看看将在检测代码中发挥作用的组件列表。
 
-## Tracer 提供者
+## Tracer 提供者 {#tracer-provider}
 
 Tracer Provider（有时称为 `TracerProvider`）是 `Trace` 的生产工厂。在大多数应用程序中，Tracer Provider 初始化一次，其生命周期与应用程序的生命周期相匹配。Tracer Provider 初始化还包括 Resource 和 Exporter 初始化。这通常是使用 OpenTelemetry 进行跟踪的第一步。在某些语言 SDK 中，已为您初始化了全局 Tracer Provider。
 
@@ -127,7 +127,7 @@ Tracer 创建的 Span 包含有关给定操作（例如服务中的请求）所�
 
 Trace Exporter 将 traces 发送给使用者。此使用者可以是调试和开发时的标准输出、OpenTelemetry Collector 或您选择的任何开源或供应商后端。
 
-## 上下文传播
+## 上下文传播 {#context-propagation}
 
 Context Propagation 是实现 Distributed Tracing 的核心概念。使用上下文传播，Span 可以相互关联并组合成一个trace，而不管 Span 是在何处生成的。要了解有关此主题的更多信息，请参阅有关 [Context Propagation](../../context-propagation) 的概念页面。
 
@@ -185,7 +185,7 @@ Span 样例:
 
 Span 可以嵌套，这由父 Span ID 的存在来标识：子 Span 表示子操作。这允许 Span 更准确地捕获应用程序中完成的工作。
 
-### Span 上下文
+### Span 上下文 {#span-context}
 
 Span context 是每个 Span 上的不可变对象，其中包含以下内容：
 
@@ -198,7 +198,7 @@ Span 上下文是 Span 的一部分，它与 Span 一起序列化和传播[分�
 
 由于 Span Context 包含 trace ID，因此在创建 [Span 链接](#span-links)。
 
-### 属性
+### 属性 {#attributes}
 
 属性是包含元数据的键值对，您可以使用这些元数据对 Span 进行注释，以携带有关它正在跟踪的操作的信息。
 
@@ -213,7 +213,7 @@ Span 上下文是 Span 的一部分，它与 Span 一起序列化和传播[分�
 
 此外，还有[语义属性](/docs/specs/semconv/general/trace/)，这是常见操作中通常存在的元数据的已知命名约定。尽可能使用语义属性命名会很有帮助，这样就可以跨系统标准化常见类型的元数据
 
-### Span 事件
+### Span 事件 {#span-events}
 
 可以将 Span 事件视为 Span 上的结构化日志消息（或注释），通常用于表示 Span 持续时间内有意义的单个时间点。
 
@@ -235,7 +235,7 @@ Span Event 最适合用于跟踪第二种情况，因为它表示有意义的单
 - 如果操作完成的时间戳有意义或相关，请将数据附加到 Span 事件。
 - 如果时间戳没有意义，请将数据附加为 Span 属性。
 
-### Span 链接
+### Span 链接 {#span-links}
 
 链接的存在以便您可以将一个 Span 与一个或多个 Span 相关联，从而暗示因果关系。例如，假设我们有一个分布式系统，其中某些操作由 trace 跟踪。
 
@@ -249,7 +249,7 @@ Span Event 最适合用于跟踪第二种情况，因为它表示有意义的单
 
 有关 Span 链接的更多信息，请参阅[链接](/docs/specs/otel/trace/api/#link)。
 
-### Span 状态
+### Span 状态 {#span-status}
 
 每个 Span 都有一个状态。三个可能的值是：
 
