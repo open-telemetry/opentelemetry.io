@@ -24,9 +24,9 @@ my $lineNum;
 
 my %versionsRaw = # Keyname must end with colons because the auto-version update script expects one
   qw(
-    spec: 1.42.0
+    spec: 1.43.0
     otlp: 1.5.0
-    semconv: 1.30.0
+    semconv: 1.31.0
   );
 # Versions map without the colon in the keys
 my %versions = map { s/://r => $versionsRaw{$_} } keys %versionsRaw;
@@ -155,6 +155,9 @@ while(<>) {
   # printf STDOUT "$ARGV Got:$lineNum: $_" if $gD;
 
   if ($file ne $ARGV) {
+    # Did the previous file not have a title?
+    warn "WARN: $file: no level 1 heading found, so no page will be generated"
+      if $file && $lineNum && ! $title;
     $file = $ARGV;
     $frontMatterFromFile = '';
     $title = '';

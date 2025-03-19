@@ -17,4 +17,4 @@ createdAt: 2022-12-07
 package:
   registry: npm
   name: '@opentelemetry/resource-detector-instana'
-  version: 0.18.1
+  version: 0.19.0

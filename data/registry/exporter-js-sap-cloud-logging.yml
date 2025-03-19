@@ -24,4 +24,4 @@ isFirstParty: false
 package:
   registry: npm
   name: '@sap/opentelemetry-exporter-for-sap-cloud-logging'
-  version: 0.3.0
+  version: 0.4.0

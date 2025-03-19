@@ -6,32 +6,48 @@ tags:
   - c#
   - .net
   - dotnet
-  - source-generator
-  - activities
-  - logging
+  - aspnet
   - logs
-  - events
-  - metrics
-  - spans
-  - attributes
-  - tags
-  - baggage
-  - telemetry
+  - log
+  - logger
+  - logging
+  - source-generator
   - high-performance-logging
+  - otel
+  - open-telemetry
+  - telemetry
+  - traces
   - tracing
+  - metric
+  - metrics
+  - meter
+  - meters
+  - instrumentation
+  - instruments
+  - events
+  - distributed-traces
   - distributed-tracing
-  - dependency-injection
+  - melt
   - purview
-  - nuget
 license: MIT
 description:
-  Generates ActivitySource, Activity, ActivityEvent, High-performance logging
-  (ILogger) and Metrics based on methods on an interface, enabling fast
-  iteration cycles and substitutes for testing through dependency injection.
+  'Generates
+  [ActivitySource](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.activitysource),
+  [ILogger](https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger),
+  and
+  [Metrics](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.metrics)
+  based telemetry from methods you define on an interface.<br /> <br /> This
+  approach allows for:<br /> - Faster iteration cycles - simply create the
+  method on your interface and the implementation will be automatically
+  generated<br /> - Easy mocking/ substitution for testing - a full sample
+  project, including tests can be found
+  [here](https://github.com/purview-dev/purview-telemetry-sourcegenerator/tree/main/samples/SampleApp)<br
+  /> - Built-in dependency injection helper generation'
 authors:
   - name: Kieron Lanning
     url: https://github.com/kieronlanning
 urls:
+  website: https://github.com/purview-dev/purview-telemetry-sourcegenerator/wiki
   repo: https://github.com/purview-dev/purview-telemetry-sourcegenerator/
   docs: https://github.com/purview-dev/purview-telemetry-sourcegenerator/blob/main/README.md
 createdAt: 2024-04-26

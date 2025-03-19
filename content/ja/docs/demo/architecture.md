@@ -3,7 +3,7 @@ title: デモのアーキテクチャ
 linkTitle: アーキテクチャ
 aliases: [current_architecture]
 body_class: otel-mermaid-max-width
-default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28
+default_lang_commit: acdc9eeb0e1c756af25aaf6614027972b0909c78
 ---
 
 **OpenTelemetryデモ** は、異なるプログラミング言語で書かれた複数のマイクロサービスから構成されており、gRPCとHTTPを使って相互に通信を行います。
@@ -12,70 +12,70 @@ default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28
 ```mermaid
 graph TD
 subgraph サービス図
-accountingservice(会計サービス):::dotnet
-adservice(広告サービス):::java
+accounting(会計):::dotnet
+ad(広告):::java
 cache[(キャッシュ<br/>&#40Valkey&#41)]
-cartservice(カートサービス):::dotnet
-checkoutservice(決済サービス):::golang
-currencyservice(通貨サービス):::cpp
-emailservice(メールサービス):::ruby
+cart(カート):::dotnet
+checkout(決済):::golang
+currency(通貨):::cpp
+email(メール):::ruby
 flagd(Flagd):::golang
-flagdui(Flagd-ui):::typescript
-frauddetectionservice(不正検知サービス):::kotlin
+flagd-ui(Flagd-ui):::typescript
+fraud-detection(不正検知):::kotlin
 frontend(フロントエンド):::typescript
-frontendproxy(フロントエンドプロキシ <br/>&#40Envoy&#41):::cpp
-imageprovider(画像プロバイダー <br/>&#40nginx&#41):::cpp
-loadgenerator([負荷生成ツール]):::python
-paymentservice(支払いサービス):::javascript
-productcatalogservice(商品カタログサービス):::golang
+frontend-proxy(フロントエンドプロキシ <br/>&#40Envoy&#41):::cpp
+image-provider(画像プロバイダー <br/>&#40nginx&#41):::cpp
+load-generator([負荷生成ツール]):::python
+payment(支払い):::javascript
+product-catalog(商品カタログ):::golang
 quoteservice(見積サービス):::php
-recommendationservice(レコメンデーションサービス):::python
-shippingservice(配送サービス):::rust
+recommendation(レコメンデーション):::python
+shipping(配送):::rust
 queue[(キュー<br/>&#40Kafka&#41)]:::java
 react-native-app(React Native<br>アプリケーション):::typescript
 
-adservice ---->|gRPC| flagd
+ad ---->|gRPC| flagd
 
-checkoutservice -->|gRPC| cartservice
-checkoutservice --->|TCP| queue
-cartservice --> cache
-cartservice -->|gRPC| flagd
+checkout -->|gRPC| cart
+checkout --->|TCP| queue
+cart --> cache
+cart -->|gRPC| flagd
 
-checkoutservice -->|gRPC| shippingservice
-checkoutservice -->|gRPC| paymentservice
-checkoutservice --->|HTTP| emailservice
-checkoutservice -->|gRPC| currencyservice
-checkoutservice -->|gRPC| productcatalogservice
+checkout -->|gRPC| shipping
+checkout -->|gRPC| payment
+checkout --->|HTTP| email
+checkout -->|gRPC| currency
+checkout -->|gRPC| product-catalog
 
-frauddetectionservice -->|gRPC| flagd
+fraud-detection -->|gRPC| flagd
 
-frontend -->|gRPC| adservice
-frontend -->|gRPC| cartservice
-frontend -->|gRPC| checkoutservice
-frontend ---->|gRPC| currencyservice
-frontend ---->|gRPC| recommendationservice
-frontend -->|gRPC| productcatalogservice
+frontend -->|gRPC| ad
+frontend -->|gRPC| cart
+frontend -->|gRPC| checkout
+frontend ---->|gRPC| currency
+frontend ---->|gRPC| recommendation
+frontend -->|gRPC| product-catalog
 
-frontendproxy -->|gRPC| flagd
-frontendproxy -->|HTTP| frontend
-frontendproxy -->|HTTP| flagdui
-frontendproxy -->|HTTP| imageprovider
+frontend-proxy -->|gRPC| flagd
+frontend-proxy -->|HTTP| frontend
+frontend-proxy -->|HTTP| flagd-ui
+frontend-proxy -->|HTTP| image-provider
 
-Internet -->|HTTP| frontendproxy
+Internet -->|HTTP| frontend-proxy
 
-loadgenerator -->|HTTP| frontendproxy
+load-generator -->|HTTP| frontend-proxy
 
-paymentservice -->|gRPC| flagd
+payment -->|gRPC| flagd
 
-queue -->|TCP| accountingservice
-queue -->|TCP| frauddetectionservice
+queue -->|TCP| accounting
+queue -->|TCP| fraud-detection
 
-recommendationservice -->|gRPC| productcatalogservice
-recommendationservice -->|gRPC| flagd
+recommendation -->|gRPC| product-catalog
+recommendation -->|gRPC| flagd
 
-shippingservice -->|HTTP| quoteservice
+shipping -->|HTTP| quote
 
-react-native-app -->|HTTP| frontendproxy
+react-native-app -->|HTTP| frontend-proxy
 end
 
 classDef dotnet fill:#178600,color:white;
