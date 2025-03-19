@@ -15,8 +15,8 @@ has released
 
 There is a
 [migration guide](https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md)
-in the repository detailing breaking changes and steps for users to take to upgrade to
-the latest versions.
+in the repository detailing breaking changes and steps for users to take to
+upgrade to the latest versions.
 
 ## What is JS SDK 2.x?
 
