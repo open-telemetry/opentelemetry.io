@@ -551,6 +551,8 @@ import (
 
 var fanSpeedSubscription chan int64
 
+var speedGauge metric.Int64Gauge
+
 func init() {
 	speedGauge, err := meter.Int64Gauge(
 		"cpu.fan.speed",
