@@ -512,8 +512,7 @@ import (
 var itemsCounter metric.Int64UpDownCounter
 
 func init() {
-	var err error
-	itemsCounter, err = meter.Int64UpDownCounter(
+	itemsCounter, err := meter.Int64UpDownCounter(
 		"items.counter",
 		metric.WithDescription("Number of items."),
 		metric.WithUnit("{item}"),
@@ -549,9 +548,10 @@ import (
 	"go.opentelemetry.io/otel/metric"
 )
 
-var fanSpeedSubscription chan int64
-
-var speedGauge metric.Int64Gauge
+var (
+  fanSpeedSubscription chan int64
+  speedGauge metric.Int64Gauge
+)
 
 func init() {
 	speedGauge, err := meter.Int64Gauge(
