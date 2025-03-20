@@ -149,42 +149,51 @@ jobs:
 
       - name: Rerun PR checks
         run: |
-          # Get the PR head SHA
+          # Get the PR head SHA and branch name
           PR_HEAD_SHA=$(gh pr view $PR_NUM --json headRefOid -q .headRefOid)
-          echo "PR head SHA: $PR_HEAD_SHA"
+          PR_BRANCH=$(gh pr view $PR_NUM --json headRefName -q .headRefName)
+          
+          echo "PR #$PR_NUM"
+          echo "Head SHA: $PR_HEAD_SHA"
+          echo "Branch: $PR_BRANCH"
           
           # Find workflow runs for this PR that need to be re-run
           echo "Finding workflow runs for PR #$PR_NUM..."
           
-          # Get the names of all the workflows that ran on the PR
-          WORKFLOW_RUNS=$(gh run list --limit 30 --json name,headSha,event,databaseId,conclusion,status --jq '.[] | select(.headSha=="'$PR_HEAD_SHA'" and .event=="pull_request") | "\(.databaseId)|\(.name)|\(.conclusion)|\(.status)"')
+          # First try to get runs for the exact SHA
+          echo "Looking for runs with exact SHA: $PR_HEAD_SHA"
+          WORKFLOW_RUNS=$(gh run list --limit 30 --json name,headSha,event,databaseId,conclusion,status \
+            --jq '.[] | select(.headSha=="'$PR_HEAD_SHA'" and .event=="pull_request") | "\(.databaseId)|\(.name)|\(.conclusion)|\(.status)"')
           
+          # If no runs found with exact SHA, try by branch name
           if [ -z "$WORKFLOW_RUNS" ]; then
-            echo "No workflow runs found for PR head SHA: $PR_HEAD_SHA"
-            
-            # Try to find the most recent workflow runs for this PR regardless of SHA
-            PR_BRANCH=$(gh pr view $PR_NUM --json headRefName -q .headRefName)
-            echo "Trying with PR branch: $PR_BRANCH"
-            
-            WORKFLOW_RUNS=$(gh run list --branch $PR_BRANCH --limit 30 --json name,databaseId,conclusion,status --jq '.[] | "\(.databaseId)|\(.name)|\(.conclusion)|\(.status)"')
+            echo "No workflow runs found for SHA $PR_HEAD_SHA, trying branch: $PR_BRANCH"
+            WORKFLOW_RUNS=$(gh run list --branch $PR_BRANCH --limit 30 --json name,databaseId,conclusion,status \
+              --jq '.[] | "\(.databaseId)|\(.name)|\(.conclusion)|\(.status)"')
           fi
           
+          # Check if we found any workflows
           if [ -z "$WORKFLOW_RUNS" ]; then
             echo "No workflow runs found for this PR"
             exit 1
           fi
           
-          # Rerun each workflow that's completed (whether it succeeded or failed)
+          # Print the workflows we found
+          echo "Found the following workflow runs:"
           echo "$WORKFLOW_RUNS" | while IFS="|" read -r RUN_ID NAME CONCLUSION STATUS; do
-            echo "Workflow $NAME (ID: $RUN_ID) - Status: $STATUS, Conclusion: $CONCLUSION"
-            
-            # Only rerun completed workflows
+            echo "- $NAME (ID: $RUN_ID): Status=$STATUS, Conclusion=$CONCLUSION"
+          done
+          
+          # Rerun each completed workflow
+          echo ""
+          echo "Re-running workflows:"
+          echo "$WORKFLOW_RUNS" | while IFS="|" read -r RUN_ID NAME CONCLUSION STATUS; do
             if [ "$STATUS" = "completed" ]; then
               echo "Re-running workflow: $NAME (ID: $RUN_ID)"
-              gh run rerun $RUN_ID
-              echo "Successfully triggered rerun of workflow $NAME (ID: $RUN_ID)"
+              RERUN_RESULT=$(gh run rerun $RUN_ID)
+              echo "Result: $RERUN_RESULT"
             elif [ "$STATUS" = "in_progress" ]; then
-              echo "Workflow $NAME (ID: $RUN_ID) is already in progress, skipping"
+              echo "Workflow $NAME (ID: $RUN_ID) is already running, skipping"
             else
               echo "Cannot rerun workflow $NAME (ID: $RUN_ID) with status: $STATUS"
             fi
