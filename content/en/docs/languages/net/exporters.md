@@ -3,7 +3,7 @@ title: Exporters
 weight: 50
 ---
 
-{{% docs/languages/exporters/intro dotnet %}}
+{{% docs/languages/exporters/intro-new dotnet %}}
 
 ### Dependencies {#otlp-dependencies}
 

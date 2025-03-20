@@ -3,7 +3,7 @@ title: 组件
 description: 构成 OpenTelemetry 的主要组件
 aliases: [data-collection]
 weight: 20
-default_lang_commit: 1ca30b4d
+default_lang_commit: 1ca30b4d # patched
 drifted_from_default: true
 ---
 
@@ -59,7 +59,7 @@ OpenTelemetry 支持通过大量组件来为所支持的语言根据流行的库
 
 ### 导出器 {#exporters}
 
-{{% docs/languages/exporters/intro %}}
+{{% docs/languages/exporters/intro-new %}}
 
 ### 零代码插桩 {#zero-code-instrumentation}
 
