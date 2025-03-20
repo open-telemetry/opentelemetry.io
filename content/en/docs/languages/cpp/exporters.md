@@ -353,7 +353,7 @@ void InitTracer()
 }
 ```
 
-{{% docs/languages/exporters/outro python `https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/classopentelemetry_1_1sdk_1_1trace_1_1SpanExporter.html` %}}
+{{% include outro `https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/classopentelemetry_1_1sdk_1_1trace_1_1SpanExporter.html` %}}
 
 {{< tabpane text=true >}} {{% tab Batch %}}
 
@@ -383,5 +383,3 @@ auto processor = opentelemetry::sdk::trace::SimpleSpanProcessorFactory::Create(s
 ```
 
 {{< /tab >}} {{< /tabpane>}}
-
-{{% /docs/languages/exporters/outro %}}
