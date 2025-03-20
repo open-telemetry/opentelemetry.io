@@ -292,7 +292,7 @@ app.UseOpenTelemetryPrometheusScrapingEndpoint();
 Further details on configuring the Prometheus exporter can be found
 [here](https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Exporter.Prometheus.AspNetCore/README.md).
 
-{{% docs/languages/exporters/zipkin-setup %}}
+{{% include zipkin-setup.md %}}
 
 ### Dependencies {#zipkin-dependencies}
 

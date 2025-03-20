@@ -296,7 +296,7 @@ With the above you can access your metrics at <http://localhost:9464/metrics>.
 Prometheus or an OpenTelemetry Collector with the Prometheus receiver can scrape
 the metrics from this endpoint.
 
-{{% docs/languages/exporters/zipkin-setup %}}
+{{% include zipkin-setup.md %}}
 
 ### Dependencies {#zipkin-dependencies}
 

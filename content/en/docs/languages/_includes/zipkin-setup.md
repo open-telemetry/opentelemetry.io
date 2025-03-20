@@ -2,13 +2,13 @@
 
 ### Backend Setup {#zipkin-setup}
 
-<div class="alert alert-info" role="alert"><h4 class="alert-heading">Note</h4>
+{{% alert-md title=Note color=info %}}
 
 If you have Zipkin or a Zipkin-compatible backend already set up, you can skip
 this section and setup the [Zipkin exporter dependencies](#zipkin-dependencies)
 for your application.
 
-</div>
+{{% /alert-md %}}
 
 You can run [Zipkin](https://zipkin.io/) on in a Docker container by executing
 the following command:
