@@ -1,0 +1,24 @@
+title: NServiceBus OpenTelemetry Integration
+registryType: instrumentation
+language: dotnet
+tags:
+  - nservicebus
+  - dotnet
+urls:
+  website: https://particular.net/
+  repo: https://github.com/Particular/NServiceBus
+  docs: https://docs.particular.net/nservicebus/operations/opentelemetry
+license: Reciprocal Public License 1.5
+description:
+  With NServiceBus OpenTelemetry instrumentation enabled, tracing, metrics, and
+  logging can be individually configured via the OpenTelemetry API itself.
+authors:
+  - name: Particular Software
+    url: https://github.com/Particular
+createdAt: 2025-02-27
+isNative: true
+package:
+  name: NServiceBus
+  registry: nuget
+  version: 9.2.6
+isFirstParty: false
