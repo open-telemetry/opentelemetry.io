@@ -118,3 +118,61 @@ jobs:
           gh pr comment $PR_NUM -b "fix:${PR_ACTION} failed or was cancelled. For details, see $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID."
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+
+  nudge-action:
+    name: Rerun PR checks
+    runs-on: ubuntu-latest
+
+    if: |
+      github.event.issue.pull_request &&
+      github.event.comment.body == '/nudge'
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Context info
+        run: |
+          echo $PR_NUM
+          echo $COMMENT
+        env:
+          PR_NUM: ${{ github.event.issue.number }}
+          COMMENT: ${{ github.event.comment.body }}
+
+      - name: Write start comment
+        run: |
+          gh pr comment $PR_NUM -b "You triggered /nudge action run at $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+        env:
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          PR_NUM: ${{ github.event.issue.number }}
+
+      - name: Rerun PR checks
+        run: |
+          # Get the latest check run to re-run all checks
+          gh pr checks $PR_NUM --repo $GITHUB_REPOSITORY --watch
+          # This doesn't actually re-run them, but shows the status
+          # Now re-run them
+          gh run rerun $(gh run list --branch $(gh pr view $PR_NUM --json headRefName -q .headRefName) --limit 1 --json databaseId -q '.[0].databaseId')
+        env:
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          PR_NUM: ${{ github.event.issue.number }}
+
+      - name: Report success
+        if: ${{ !failure() && !cancelled() }}
+        run: |
+          gh pr comment $PR_NUM --body "$(cat <<EOF
+          \`/nudge\` check re-run was [triggered]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID).
+          You can check the status of your PR checks in the PR's Checks tab.
+          EOF
+          )"
+        env:
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          PR_NUM: ${{ github.event.issue.number }}
+
+      - name: Report an error in the case of failure
+        if: ${{ failure() || cancelled() }}
+        run: |
+          gh pr comment $PR_NUM -b "/nudge failed or was cancelled. For details, see $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID."
+        env:
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          PR_NUM: ${{ github.event.issue.number }}
