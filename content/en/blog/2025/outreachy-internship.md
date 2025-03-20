@@ -33,7 +33,7 @@ and the community members were incredibly supportive, always willing to guide me
 when I felt stuck. I learned that asking questions and seeking help is not a
 weakness — it’s how we grow.
 
-## A Highlight: Seeing My Work Make an Impact
+## A highlight: Seeing my work make an impact
 
 One of the most fulfilling moments of my internship was when my
 [first major contribution](https://github.com/open-telemetry/opentelemetry-erlang/pull/825) — a
