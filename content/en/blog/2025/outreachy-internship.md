@@ -82,7 +82,7 @@ environment where I felt comfortable experimenting, failing, and learning from
 my mistakes. Her patience and willingness to share knowledge made a lasting
 impact on me.
 
-## What’s Next?
+## What’s next?
 
 As I complete my Outreachy internship with the OpenTelemetry project, I’m looking ahead
 to my next steps. I want to continue working in cloud native technologies and
