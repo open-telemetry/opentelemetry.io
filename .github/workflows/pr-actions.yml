@@ -152,40 +152,76 @@ jobs:
           # Get the PR head SHA and branch name
           PR_HEAD_SHA=$(gh pr view $PR_NUM --json headRefOid -q .headRefOid)
           PR_BRANCH=$(gh pr view $PR_NUM --json headRefName -q .headRefName)
-          
+          PR_REPO=$(gh pr view $PR_NUM --json headRepositoryName -q .headRepositoryName)
+          PR_OWNER=$(gh pr view $PR_NUM --json headRepositoryOwner -q .headRepositoryOwner.login)
+
           echo "PR #$PR_NUM"
           echo "Head SHA: $PR_HEAD_SHA"
           echo "Branch: $PR_BRANCH"
-          
-          # Find workflow runs for this PR that need to be re-run
-          echo "Finding workflow runs for PR #$PR_NUM..."
-          
-          # First try to get runs for the exact SHA
-          echo "Looking for runs with exact SHA: $PR_HEAD_SHA"
-          WORKFLOW_RUNS=$(gh run list --limit 30 --json name,headSha,event,databaseId,conclusion,status \
-            --jq '.[] | select(.headSha=="'$PR_HEAD_SHA'" and .event=="pull_request") | "\(.databaseId)|\(.name)|\(.conclusion)|\(.status)"')
-          
-          # If no runs found with exact SHA, try by branch name
-          if [ -z "$WORKFLOW_RUNS" ]; then
-            echo "No workflow runs found for SHA $PR_HEAD_SHA, trying branch: $PR_BRANCH"
-            WORKFLOW_RUNS=$(gh run list --branch $PR_BRANCH --limit 30 --json name,databaseId,conclusion,status \
-              --jq '.[] | "\(.databaseId)|\(.name)|\(.conclusion)|\(.status)"')
+          echo "Repo: $PR_OWNER/$PR_REPO"
+
+          # Method 1: Try to trigger workflows by making an empty commit on the PR branch
+          # This will only work if we have write access to the PR's branch
+          if gh pr checkout $PR_NUM; then
+            echo "Checked out PR #$PR_NUM branch: $PR_BRANCH"
+            
+            # Try to push an empty commit to trigger the checks
+            git config --local user.email "$USER_EMAIL"
+            git config --local user.name "$USER_NAME"
+            
+            if git commit --allow-empty -m "Trigger PR checks via /nudge command"; then
+              echo "Created empty commit to trigger checks"
+              git push
+              echo "Pushed commit, checks should now be triggered on the PR"
+              exit 0
+            else
+              echo "Failed to create empty commit, trying alternative method"
+            fi
+          else
+            echo "Could not checkout PR branch, likely due to permissions. Trying alternative method."
           fi
-          
-          # Check if we found any workflows
+
+          # Method 2: Find workflow files and try to manually dispatch them if possible
+          echo "Finding workflow runs for PR #$PR_NUM..."
+
+          # Try to trigger workflow_dispatch events for workflows that support it
+          echo "Attempting to trigger workflow_dispatch events..."
+
+          # List all workflows in the repo
+          WORKFLOWS=$(gh workflow list --all --json id,name,state --jq '.[] | "\(.id)|\(.name)|\(.state)"')
+
+          echo "Available workflows:"
+          echo "$WORKFLOWS" | while IFS="|" read -r WF_ID WF_NAME WF_STATE; do
+            echo "- $WF_NAME (ID: $WF_ID): State=$WF_STATE"
+            
+            if [ "$WF_STATE" = "active" ]; then
+              # Try to dispatch this workflow with the PR branch as ref
+              echo "Attempting to dispatch workflow: $WF_NAME (ID: $WF_ID) for branch: $PR_BRANCH"
+              if gh workflow run $WF_ID --ref $PR_BRANCH; then
+                echo "Successfully dispatched workflow: $WF_NAME"
+              else
+                echo "Could not dispatch workflow: $WF_NAME - It may not support workflow_dispatch event"
+              fi
+            fi
+          done
+
+          # Method 3: As a fallback, just rerun existing workflow runs as we did before
+          echo "Falling back to rerunning existing workflow runs..."
+
+          WORKFLOW_RUNS=$(gh run list --limit 30 --branch $PR_BRANCH --json name,databaseId,conclusion,status \
+            --jq '.[] | "\(.databaseId)|\(.name)|\(.conclusion)|\(.status)"')
+
           if [ -z "$WORKFLOW_RUNS" ]; then
-            echo "No workflow runs found for this PR"
+            echo "No workflow runs found for this PR branch: $PR_BRANCH"
+            echo "Unable to rerun checks for PR #$PR_NUM"
             exit 1
           fi
-          
-          # Print the workflows we found
+
           echo "Found the following workflow runs:"
           echo "$WORKFLOW_RUNS" | while IFS="|" read -r RUN_ID NAME CONCLUSION STATUS; do
             echo "- $NAME (ID: $RUN_ID): Status=$STATUS, Conclusion=$CONCLUSION"
           done
-          
-          # Rerun each completed workflow
-          echo ""
+
           echo "Re-running workflows:"
           echo "$WORKFLOW_RUNS" | while IFS="|" read -r RUN_ID NAME CONCLUSION STATUS; do
             if [ "$STATUS" = "completed" ]; then
@@ -201,6 +237,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
           PR_NUM: ${{ github.event.issue.number }}
+          USER_EMAIL: 107717825+opentelemetrybot@users.noreply.github.com
+          USER_NAME: opentelemetrybot
 
       - name: Report success
         if: ${{ !failure() && !cancelled() }}
