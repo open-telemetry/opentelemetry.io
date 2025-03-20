@@ -512,7 +512,8 @@ import (
 var itemsCounter metric.Int64UpDownCounter
 
 func init() {
-	itemsCounter, err := meter.Int64UpDownCounter(
+	var err error
+	itemsCounter, err = meter.Int64UpDownCounter(
 		"items.counter",
 		metric.WithDescription("Number of items."),
 		metric.WithUnit("{item}"),
@@ -554,7 +555,8 @@ var (
 )
 
 func init() {
-	speedGauge, err := meter.Int64Gauge(
+	var err error
+	speedGauge, err = meter.Int64Gauge(
 		"cpu.fan.speed",
 		metric.WithDescription("Speed of CPU fan"),
 		metric.WithUnit("RPM"),
