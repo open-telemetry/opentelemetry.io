@@ -36,8 +36,8 @@ weakness — it’s how we grow.
 ## A highlight: Seeing my work make an impact
 
 One of the most fulfilling moments of my internship was when my
-[first major contribution](https://github.com/open-telemetry/opentelemetry-erlang/pull/825) — a
-detailed setup guide for OpenTelemetry Erlang contributors was merged. What
+[first major contribution](https://github.com/open-telemetry/opentelemetry-erlang/pull/825)&mdash;a
+detailed setup guide for OpenTelemetry Erlang contributors&mdash;was merged. What
 seemed like a simple task at first turned into a deep dive into improving
 developer onboarding, documenting tribal knowledge, and making contributions
 more accessible. Seeing community members reference my work and use it to get
