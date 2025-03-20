@@ -23,7 +23,7 @@ to a project as vast and complex as OpenTelemetry? Now, as I wrap up this
 incredible journey, I can say with confidence that the experience has been
 transformative in ways I never imagined.
 
-## Overcoming Fear: Imposter Syndrome Didn’t Win
+## Overcoming fear: Imposter syndrome didn’t win
 
 One of my biggest fears stepping into Outreachy was imposter syndrome.
 OpenTelemetry is a widely used project, and I worried about keeping up with
