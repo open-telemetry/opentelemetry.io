@@ -2,7 +2,7 @@
 title: Exporters
 weight: 50
 description: Processar e exportar seus dados de telemetria
-default_lang_commit: 546f3e88ca3673de8aad69358d416256d1fe6411
+default_lang_commit: 546f3e88ca3673de8aad69358d416256d1fe6411 # patched
 cSpell:ignore: LOWMEMORY
 ---
 
@@ -192,9 +192,9 @@ esta variável de ambiente como `CUMULATIVE`.
 
 {{% /alert %}}
 
-{{% docs/languages/exporters/jaeger %}}
+{{% include "exporters/jaeger.md" %}}
 
-{{% docs/languages/exporters/prometheus-setup %}}
+{{% include "exporters/prometheus-setup.md" %}}
 
 ### Dependências {#prometheus-dependencies}
 
@@ -235,7 +235,7 @@ Com o código acima, você pode acessar suas métricas em
 <http://localhost:9464/metrics>. O Prometheus ou um OpenTelemetry Collector com
 o receptor Prometheus pode extrair as métricas deste endpoint.
 
-{{% docs/languages/exporters/zipkin-setup %}}
+{{% include "exporters/zipkin-setup.md" %}}
 
 ### Dependências {#zipkin-dependencies}
 
@@ -308,7 +308,7 @@ trace.set_tracer_provider(provider)
 
 {{% /tab %}} {{< /tabpane >}}
 
-{{% docs/languages/exporters/outro python `https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.export.html#opentelemetry.sdk.trace.export.SpanExporter` %}}
+{{% include "exporters/outro.md" `https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.export.html#opentelemetry.sdk.trace.export.SpanExporter` %}}
 
 ```python
 from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
@@ -316,5 +316,3 @@ from opentelemetry.sdk.trace.export import SimpleSpanProcessor
 
 processor = SimpleSpanProcessor(OTLPSpanExporter(endpoint="seu-endpoint-aqui"))
 ```
-
-{{% /docs/languages/exporters/outro %}}
