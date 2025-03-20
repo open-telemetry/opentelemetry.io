@@ -1,6 +1,6 @@
 {{/*
 
-IMPORTANT NOTE TO LOCALIZATION TEAMS. ALL LOCALISATIONS SHOULD USE THIS
+IMPORTANT NOTE TO LOCALIZATION TEAMS. ALL LOCALIZATIONS SHOULD USE THIS
 SHORTCODE. DO NOT WRITE YOUR OWN VERSION. INSTEAD, LOCALIZE THE INCLUDE FILE
 named by the "_path" field below.
 
@@ -46,7 +46,7 @@ it up from the language section index file.
 
 {{/*
 
-  NOTE: the language list used by supportsOTLP will grow until all all languages
+  NOTE: the language list used by supportsOTLP will grow until all languages
   are updated to a consistent structure.
 
   FIXME: move the knowledge of OTLP support into the language's section landing page front matter params
