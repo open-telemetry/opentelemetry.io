@@ -78,7 +78,7 @@ Para más información, consulta
 
 ### Exportadores {#exporters}
 
-{{% docs/languages/exporters/intro-new %}}
+{{% docs/languages/exporters/intro %}}
 
 ### Instrumentación sin código
 

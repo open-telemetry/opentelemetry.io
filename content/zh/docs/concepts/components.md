@@ -59,7 +59,7 @@ OpenTelemetry 支持通过大量组件来为所支持的语言根据流行的库
 
 ### 导出器 {#exporters}
 
-{{% docs/languages/exporters/intro-new %}}
+{{% docs/languages/exporters/intro %}}
 
 ### 零代码插桩 {#zero-code-instrumentation}
 

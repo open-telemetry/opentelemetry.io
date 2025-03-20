@@ -4,7 +4,7 @@ weight: 50
 description: Process and export your telemetry data
 ---
 
-{{% docs/languages/exporters/intro-new js %}}
+{{% docs/languages/exporters/intro js %}}
 
 ### Dependencies {#otlp-dependencies}
 

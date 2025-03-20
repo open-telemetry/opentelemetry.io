@@ -3,7 +3,7 @@ title: Exporters
 weight: 50
 ---
 
-{{% docs/languages/exporters/intro-new rust %}}
+{{% docs/languages/exporters/intro rust %}}
 
 ## OTLP endpoint
 

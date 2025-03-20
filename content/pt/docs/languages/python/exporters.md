@@ -8,7 +8,7 @@ default_lang_commit: 546f3e88ca3673de8aad69358d416256d1fe6411 # patched
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% docs/languages/exporters/intro-new python %}}
+{{% docs/languages/exporters/intro python %}}
 
 ### Dependências {#otlp-dependencies}
 

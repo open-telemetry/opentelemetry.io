@@ -7,7 +7,7 @@ cSpell:ignore: LOWMEMORY
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% docs/languages/exporters/intro-new python %}}
+{{% docs/languages/exporters/intro python %}}
 
 ### Dependencies {#otlp-dependencies}
 
