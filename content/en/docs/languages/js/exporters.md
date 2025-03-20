@@ -239,7 +239,7 @@ package and the `ConsoleMetricExporter` is included in the
 [`@opentelemetry/sdk-metrics`](https://www.npmjs.com/package/@opentelemetry/sdk-metrics)
 package:
 
-{{% docs/languages/exporters/jaeger %}}
+{{% include jaeger.md %}}
 
 {{% include prometheus-setup.md %}}
 

@@ -198,7 +198,7 @@ var loggerFactory = LoggerFactory.Create(builder =>
 });
 ```
 
-{{% docs/languages/exporters/jaeger %}}
+{{% include jaeger.md %}}
 
 {{% include prometheus-setup.md %}}
 

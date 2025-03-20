@@ -190,7 +190,7 @@ variable to `CUMULATIVE`.
 
 {{% /alert %}}
 
-{{% docs/languages/exporters/jaeger %}}
+{{% include jaeger.md %}}
 
 {{% include prometheus-setup.md %}}
 

@@ -265,7 +265,7 @@ void InitLogger()
 }
 ```
 
-{{% docs/languages/exporters/jaeger %}}
+{{% include jaeger.md %}}
 
 {{% include prometheus-setup.md %}}
 
