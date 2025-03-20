@@ -190,9 +190,9 @@ variable to `CUMULATIVE`.
 
 {{% /alert %}}
 
-{{% include jaeger.md %}}
+{{% include "exporters/jaeger.md" %}}
 
-{{% include prometheus-setup.md %}}
+{{% include "exporters/prometheus-setup.md" %}}
 
 ### Dependencies {#prometheus-dependencies}
 
@@ -233,7 +233,7 @@ With the above you can access your metrics at <http://localhost:9464/metrics>.
 Prometheus or an OpenTelemetry Collector with the Prometheus receiver can scrape
 the metrics from this endpoint.
 
-{{% include zipkin-setup.md %}}
+{{% include "exporters/zipkin-setup.md" %}}
 
 ### Dependencies {#zipkin-dependencies}
 
@@ -306,7 +306,7 @@ trace.set_tracer_provider(provider)
 
 {{% /tab %}} {{< /tabpane >}}
 
-{{% include outro.md `https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.export.html#opentelemetry.sdk.trace.export.SpanExporter` %}}
+{{% include "exporters/outro.md" `https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.export.html#opentelemetry.sdk.trace.export.SpanExporter` %}}
 
 ```python
 from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter

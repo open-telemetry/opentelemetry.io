@@ -265,9 +265,9 @@ void InitLogger()
 }
 ```
 
-{{% include jaeger.md %}}
+{{% include "exporters/jaeger.md" %}}
 
-{{% include prometheus-setup.md %}}
+{{% include "exporters/prometheus-setup.md" %}}
 
 ### Dependencies {#prometheus-dependencies}
 
@@ -310,7 +310,7 @@ With the above you can access your metrics at <http://localhost:9464/metrics>.
 Prometheus or an OpenTelemetry Collector with the Prometheus receiver can scrape
 the metrics from this endpoint.
 
-{{% include zipkin-setup.md %}}
+{{% include "exporters/zipkin-setup.md" %}}
 
 ### Dependencies {#zipkin-dependencies}
 
@@ -353,7 +353,7 @@ void InitTracer()
 }
 ```
 
-{{% include outro.md `https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/classopentelemetry_1_1sdk_1_1trace_1_1SpanExporter.html` %}}
+{{% include "exporters/outro.md" `https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/classopentelemetry_1_1sdk_1_1trace_1_1SpanExporter.html` %}}
 
 {{< tabpane text=true >}} {{% tab Batch %}}
 
