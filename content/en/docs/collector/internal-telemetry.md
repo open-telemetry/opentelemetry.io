@@ -277,13 +277,18 @@ files in the repository.
 | `otelcol_processor_batch_metadata_`<br>`cardinality`    | Number of distinct metadata value combinations being processed. | Counter   |
 | `otelcol_processor_batch_timeout_`<br>`trigger_send`    | Number of times the batch was sent due to a timeout trigger.    | Counter   |
 
-{{% alert title="Note" color="info" %}} Aside from
-`otelcol_processor_batch_batch_send_size_bytes` which has been `detailed` since
-its introduction, the other batch processor metrics were `basic` until they were
-switched to `normal` in Collector
-[v0.99.0](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.99.0).
-They were accidentally switched back to `basic` in v0.109.0, which was fixed in
-v0.122.0. {{% /alert %}}
+{{% alert title="Batch processor metrics level changes" color="info" %}}
+
+In Collector [v0.99.0], all batch processor metrics were upgraded from `basic`
+to `normal` (current level), except for
+`otelcol_processor_batch_batch_send_size_bytes`, which has been `detailed` since
+its introduction. Note however that these metrics were inadvertently reverted to
+`basic` from v0.109.0 to v0.121.0.
+
+[v0.99.0]:
+  https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.99.0
+
+{{% /alert %}}
 
 #### Additional `detailed`-level metrics
 
