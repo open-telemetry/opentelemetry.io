@@ -73,7 +73,7 @@ and contributed to refining existing documentation. Moving forward, I aim to
 continue my involvement with the OpenTelemetry community, focusing on expanding
 resources that facilitate contributor engagement.
 
-## The Role of My Mentor
+## The role of my mentor
 
 My mentor, [Marylia Gutierrez](https://github.com/maryliag), played a crucial
 role in my journey. She not only provided guidance on technical issues but also
