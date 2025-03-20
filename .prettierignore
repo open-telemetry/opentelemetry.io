@@ -4,16 +4,11 @@
 /themes
 
 /layouts/*
-!/layouts/shortcodes
-/layouts/shortcodes/*
-!/layouts/shortcodes/docs
-!/layouts/shortcodes/es
-!/layouts/shortcodes/pt
 
 /content/en/blog/2019
 /content/en/blog/202[23]
-# TEMPORARY:
-/content/en/docs/languages/_includes/exporters/intro.md
+# TEMPORARY until the PR introducing this file is merged:
+/content/en/docs/_includes/exporters/intro.md
 
 /content/ja
 /content/zh

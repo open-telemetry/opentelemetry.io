@@ -3,7 +3,7 @@ title: 组件
 description: 构成 OpenTelemetry 的主要组件
 aliases: [data-collection]
 weight: 20
-default_lang_commit: 1ca30b4d # patched
+default_lang_commit: 1ca30b4d
 drifted_from_default: true
 ---
 

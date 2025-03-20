@@ -6,14 +6,14 @@ visualize your telemetry, export it to a backend such as
 [Prometheus](https://prometheus.io/), or a
 [vendor-specific](/ecosystem/vendors/) backend.
 
-{{ if $lang }}
+{{ if $name }}
 
 ## Available exporters
 
 The registry contains a [list of exporters for {{ $name }}][reg].
 
 {{ end }}
-{{ if not $lang }}
+{{ if not $name }}
 
 The registry contains the [list of language specific exporters][reg].
 
@@ -30,11 +30,10 @@ Specification][OTLP].
 [OTLP]: /docs/specs/otlp/
 [Prometheus]:
   https://prometheus.io/docs/prometheus/2.55/feature_flags/#otlp-receiver
+[reg]: </ecosystem/registry/?component=exporter&language={{ $lang }}>
 [vendors]: /ecosystem/vendors/
 
-[reg]: /ecosystem/registry/?component=exporter&language={{ $lang }}
-
-{{ if $lang }}
+{{ if $name }}
 
 This page covers the main OpenTelemetry {{ $name }} exporters and how to set
 them up.
