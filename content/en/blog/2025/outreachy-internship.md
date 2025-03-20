@@ -44,7 +44,7 @@ more accessible. Seeing community members reference my work and use it to get
 started was an incredibly rewarding feeling. It reminded me why I love open
 source&mdash;it's about creating something that empowers others.
 
-## Growth in Skills and Confidence
+## Growth in skills and confidence
 
 This internship stretched my technical and communication skills in ways I hadn’t
 expected. On the technical side, I gained a deeper understanding of:
