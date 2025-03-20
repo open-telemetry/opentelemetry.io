@@ -2,6 +2,7 @@
 title: Announcing the OpenTelemetry JavaScript SDK 2.0
 linkTitle: OTel JS SDK 2.0
 date: 2025-02-21
+draft: true
 author: >
   [Jamie Danielson](https://github.com/JamieDanielson) (Honeycomb)
 sig: OpenTelemetry JS
