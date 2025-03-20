@@ -8,10 +8,11 @@ sig: Contributor Experience
 cSpell:ignore: # Chukwu Marylia Outreachy
 ---
 
-Hello world! I’m Richard Chukwu, a Computer Engineering graduate from the University of Benin, Nigeria. My journey into tech has
-been fueled by a blend of curiosity and an unwavering commitment to growth.
-These are the pillars that not only uphold my personal values but also form the
-foundation of my professional aspirations.
+Hello world! I’m Richard Chukwu, a Computer Engineering graduate from the
+University of Benin, Nigeria. My journey into tech has been fueled by a blend of
+curiosity and an unwavering commitment to growth. These are the pillars that not
+only uphold my personal values but also form the foundation of my professional
+aspirations.
 
 I still remember the nervous excitement I felt when I received the
 [email](https://x.com/RichardChukwu_/status/1862390957217333461) confirming my
@@ -37,8 +38,8 @@ weakness&mdash;it’s how we grow.
 
 One of the most fulfilling moments of my internship was when my
 [first major contribution](https://github.com/open-telemetry/opentelemetry-erlang/pull/825)&mdash;a
-detailed setup guide for OpenTelemetry Erlang contributors&mdash;was merged. What
-seemed like a simple task at first turned into a deep dive into improving
+detailed setup guide for OpenTelemetry Erlang contributors&mdash;was merged.
+What seemed like a simple task at first turned into a deep dive into improving
 developer onboarding, documenting tribal knowledge, and making contributions
 more accessible. Seeing community members reference my work and use it to get
 started was an incredibly rewarding feeling. It reminded me why I love open
@@ -82,12 +83,12 @@ impact on me.
 
 ## What’s next?
 
-As I complete my Outreachy internship with the OpenTelemetry project, I’m looking ahead
-to my next steps. I want to continue working in cloud native technologies and
-observability, contributing to open source projects that improve developer
-experience and system reliability. I’m actively seeking opportunities where I
-can apply my skills, whether it’s in open source advocacy, cloud engineering, or
-observability solutions.
+As I complete my Outreachy internship with the OpenTelemetry project, I’m
+looking ahead to my next steps. I want to continue working in cloud native
+technologies and observability, contributing to open source projects that
+improve developer experience and system reliability. I’m actively seeking
+opportunities where I can apply my skills, whether it’s in open source advocacy,
+cloud engineering, or observability solutions.
 
 To anyone considering [Outreachy](https://www.outreachy.org/), I say: go for it!
 This internship has been a gateway to new opportunities, networks, and a deeper
