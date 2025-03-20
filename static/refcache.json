@@ -10663,6 +10663,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-03-18T14:59:46.220380874Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.43.0/oteps/0232-maturity-of-otel.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-20T10:47:41.167783919Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.43.0/oteps/0232-maturity-of-otel.md#explanation": {
     "StatusCode": 200,
     "LastSeen": "2025-03-21T21:18:12.345Z"
@@ -10758,6 +10762,14 @@
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.43.0/oteps/trace/0235-sampling-threshold-in-trace-state.md": {
     "StatusCode": 206,
     "LastSeen": "2025-03-18T14:59:55.264770798Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.43.0/spec-compliance-matrix.md#logs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-20T10:47:41.612709078Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.43.0/specification/logs/api.md#logger": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-20T10:47:42.21192845Z"
   },
   "https://github.com/open-telemetry/opentelemetry-swift": {
     "StatusCode": 206,
