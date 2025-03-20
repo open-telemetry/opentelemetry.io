@@ -31,7 +31,7 @@ seasoned contributors. However, I quickly realized that the open source
 community thrives on collaboration, mentorship, and shared learning. My mentor
 and the community members were incredibly supportive, always willing to guide me
 when I felt stuck. I learned that asking questions and seeking help is not a
-weakness — it’s how we grow.
+weakness&mdash;it’s how we grow.
 
 ## A highlight: Seeing my work make an impact
 
