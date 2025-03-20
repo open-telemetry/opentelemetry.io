@@ -345,7 +345,7 @@ const sdk = new opentelemetry.NodeSDK({
 
 {{% /tab %}} {{< /tabpane >}}
 
-{{% include outro `https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk_trace_base.SpanExporter.html` %}}
+{{% include outro.md `https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk_trace_base.SpanExporter.html` %}}
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
