@@ -84,7 +84,7 @@ impact on me.
 
 ## What’s Next?
 
-As I complete my Outreachy internship with CNCF OpenTelemetry, I’m looking ahead
+As I complete my Outreachy internship with the OpenTelemetry project, I’m looking ahead
 to my next steps. I want to continue working in cloud native technologies and
 observability, contributing to open source projects that improve developer
 experience and system reliability. I’m actively seeking opportunities where I
