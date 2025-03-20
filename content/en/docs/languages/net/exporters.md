@@ -200,7 +200,7 @@ var loggerFactory = LoggerFactory.Create(builder =>
 
 {{% docs/languages/exporters/jaeger %}}
 
-{{% docs/languages/exporters/prometheus-setup %}}
+{{% include prometheus-setup.md %}}
 
 ### Dependencies {#prometheus-dependencies}
 
