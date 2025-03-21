@@ -48,74 +48,185 @@ jobs:
 
       - name: Write start comment
         run: |
-          gh pr comment $PR_NUM -b "You triggered fix:${PR_ACTION} action run at $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          gh pr comment $PR_NUM -b "You triggered /nudge action run at $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          PR_NUM: ${{ github.event.issue.number }}
 
-      - run: gh pr checkout $PR_NUM -b "pr-action-${RANDOM}"
-        env:
-          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
-
-      - name: Create NPM cache-hash input file
+      - name: Rerun PR checks
+        id: rerun_checks
         run: |
-          mkdir -p tmp
-          jq '{devDependencies, dependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: .nvmrc
-          cache: npm
-          cache-dependency-path: tmp/package-ci.json
-
-      - run: |
-          case $PR_ACTION in
-            all|refcache*|text)
-              npm install --omit=optional
-              ;&
-            *)
-              npm run fix:$PR_ACTION
-              ;;
-          esac
-          git status
-          git branch -v
-
-      - name: Commit and push changes, if any
-        run: |
-          git config --local user.email "$USER_EMAIL"
-          git config --local user.name "$USER_NAME"
-          if [[ $(git status --porcelain) ]]; then
-            git add -A
-            current_branch=$(git rev-parse --abbrev-ref HEAD)
-            echo current_branch=$current_branch
-            # gh pr checkout sets some git configs that we can use to make sure
-            # we push to the right repo & to the right branch
-            remote_repo=$(git config --get branch.${current_branch}.remote)
-            echo remote_repo=$remote_repo
-            remote_branch=$(git config --get branch.${current_branch}.merge)
-            echo remote_branch=$remote_branch
-            git commit -m "Results from /fix:${PR_ACTION}"
-            git push ${remote_repo} HEAD:${remote_branch}
+          # Get the PR head SHA and branch name
+          PR_HEAD_SHA=$(gh pr view $PR_NUM --json headRefOid -q .headRefOid)
+          PR_BRANCH=$(gh pr view $PR_NUM --json headRefName -q .headRefName)
+          PR_REPO=$(gh pr view $PR_NUM --json headRepositoryName -q .headRepositoryName)
+          PR_OWNER=$(gh pr view $PR_NUM --json headRepositoryOwner -q .headRepositoryOwner.login)
+          
+          echo "PR #$PR_NUM"
+          echo "Head SHA: $PR_HEAD_SHA"
+          echo "Branch: $PR_BRANCH"
+          echo "Repo: $PR_OWNER/$PR_REPO"
+          
+          # Set default status values
+          EMPTY_COMMIT_SUCCEEDED="false"
+          WORKFLOW_DISPATCH_SUCCEEDED="false"
+          RERUN_SUCCEEDED="false"
+          STATUS_MESSAGE=""
+          
+          # Method 1: Try to trigger workflows by making an empty commit on the PR branch
+          # This will only work if we have write access to the PR's branch
+          if gh pr checkout $PR_NUM; then
+            echo "Checked out PR #$PR_NUM branch: $PR_BRANCH"
+            
+            # Update PR comment
+            gh pr comment $PR_NUM -b "📡 /nudge: Attempting to trigger checks by creating an empty commit on the PR branch..."
+            
+            # Try to push an empty commit to trigger the checks
+            git config --local user.email "$USER_EMAIL"
+            git config --local user.name "$USER_NAME"
+            
+            if git commit --allow-empty -m "Trigger PR checks via /nudge command"; then
+              echo "Created empty commit to trigger checks"
+              if git push; then
+                echo "Pushed commit, checks should now be triggered on the PR"
+                EMPTY_COMMIT_SUCCEEDED="true"
+                STATUS_MESSAGE="✅ Successfully triggered checks by creating an empty commit on the PR branch."
+                gh pr comment $PR_NUM -b "$STATUS_MESSAGE"
+                echo "empty_commit_succeeded=true" >> $GITHUB_OUTPUT
+                exit 0
+              else
+                echo "Failed to push commit"
+                gh pr comment $PR_NUM -b "⚠️ Created empty commit but failed to push to PR branch. Trying alternative methods..."
+              fi
+            else
+              echo "Failed to create empty commit, trying alternative method"
+              gh pr comment $PR_NUM -b "⚠️ Failed to create empty commit on PR branch. Trying alternative methods..."
+            fi
           else
-            echo "No changes to commit"
+            echo "Could not checkout PR branch, likely due to permissions. Trying alternative method."
+            gh pr comment $PR_NUM -b "⚠️ Could not checkout PR branch (likely due to permissions). Trying alternative methods..."
+          fi
+          
+          # Method 2: Find workflow files and try to manually dispatch them if possible
+          echo "Finding workflow runs for PR #$PR_NUM..."
+          gh pr comment $PR_NUM -b "📡 /nudge: Attempting to trigger workflow_dispatch events for workflows that support it..."
+          
+          # Try to trigger workflow_dispatch events for workflows that support it
+          echo "Attempting to trigger workflow_dispatch events..."
+          
+          # List all workflows in the repo
+          WORKFLOWS=$(gh workflow list --all --json id,name,state --jq '.[] | "\(.id)|\(.name)|\(.state)"')
+          DISPATCH_COUNT=0
+          
+          echo "Available workflows:"
+          echo "$WORKFLOWS" | while IFS="|" read -r WF_ID WF_NAME WF_STATE; do
+            echo "- $WF_NAME (ID: $WF_ID): State=$WF_STATE"
+            
+            if [ "$WF_STATE" = "active" ]; then
+              # Try to dispatch this workflow with the PR branch as ref
+              echo "Attempting to dispatch workflow: $WF_NAME (ID: $WF_ID) for branch: $PR_BRANCH"
+              if gh workflow run $WF_ID --ref $PR_BRANCH; then
+                echo "Successfully dispatched workflow: $WF_NAME"
+                DISPATCH_COUNT=$((DISPATCH_COUNT+1))
+              else
+                echo "Could not dispatch workflow: $WF_NAME - It may not support workflow_dispatch event"
+              fi
+            fi
+          done
+          
+          if [ $DISPATCH_COUNT -gt 0 ]; then
+            WORKFLOW_DISPATCH_SUCCEEDED="true"
+            STATUS_MESSAGE="✅ Successfully triggered $DISPATCH_COUNT workflows via workflow_dispatch."
+            gh pr comment $PR_NUM -b "$STATUS_MESSAGE"
+            echo "workflow_dispatch_succeeded=true" >> $GITHUB_OUTPUT
+            exit 0
+          else
+            gh pr comment $PR_NUM -b "⚠️ Could not trigger any workflows via workflow_dispatch. Trying fallback method..."
+          fi
+          
+          # Method 3: As a fallback, just rerun existing workflow runs as we did before
+          echo "Falling back to rerunning existing workflow runs..."
+          gh pr comment $PR_NUM -b "📡 /nudge: Falling back to rerunning existing workflow runs..."
+          
+          WORKFLOW_RUNS=$(gh run list --limit 30 --branch $PR_BRANCH --json name,databaseId,conclusion,status \
+            --jq '.[] | "\(.databaseId)|\(.name)|\(.conclusion)|\(.status)"')
+          
+          if [ -z "$WORKFLOW_RUNS" ]; then
+            echo "No workflow runs found for this PR branch: $PR_BRANCH"
+            echo "Unable to rerun checks for PR #$PR_NUM"
+            gh pr comment $PR_NUM -b "❌ No workflow runs found for branch: $PR_BRANCH. Unable to rerun checks."
+            exit 1
+          fi
+          
+          echo "Found the following workflow runs:"
+          RERUN_COUNT=0
+          
+          echo "$WORKFLOW_RUNS" | while IFS="|" read -r RUN_ID NAME CONCLUSION STATUS; do
+            echo "- $NAME (ID: $RUN_ID): Status=$STATUS, Conclusion=$CONCLUSION"
+          done
+          
+          echo "Re-running workflows:"
+          echo "$WORKFLOW_RUNS" | while IFS="|" read -r RUN_ID NAME CONCLUSION STATUS; do
+            if [ "$STATUS" = "completed" ]; then
+              echo "Re-running workflow: $NAME (ID: $RUN_ID)"
+              RERUN_RESULT=$(gh run rerun $RUN_ID)
+              echo "Result: $RERUN_RESULT"
+              if [[ "$RERUN_RESULT" == *"Requested rerun of run"* ]]; then
+                RERUN_COUNT=$((RERUN_COUNT+1))
+              fi
+            elif [ "$STATUS" = "in_progress" ]; then
+              echo "Workflow $NAME (ID: $RUN_ID) is already running, skipping"
+            else
+              echo "Cannot rerun workflow $NAME (ID: $RUN_ID) with status: $STATUS"
+            fi
+          done
+          
+          if [ $RERUN_COUNT -gt 0 ]; then
+            RERUN_SUCCEEDED="true"
+            STATUS_MESSAGE="✅ Successfully requested rerun of $RERUN_COUNT workflows."
+            gh pr comment $PR_NUM -b "$STATUS_MESSAGE"
+            echo "rerun_succeeded=true" >> $GITHUB_OUTPUT
+          else
+            gh pr comment $PR_NUM -b "❌ Could not rerun any workflows. Please check the action run for details."
+            echo "All methods failed to rerun checks for PR #$PR_NUM"
+            exit 1
           fi
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          PR_NUM: ${{ github.event.issue.number }}
+          USER_EMAIL: 107717825+opentelemetrybot@users.noreply.github.com
+          USER_NAME: opentelemetrybot
 
-      - name: Report success and ask to run full checks
+      - name: Report final status
         if: ${{ !failure() && !cancelled() }}
         run: |
+          STATUS="⚠️ The /nudge action completed, but check statuses may not appear directly on the PR."
+          
+          if [[ "${{ steps.rerun_checks.outputs.empty_commit_succeeded }}" == "true" ]]; then
+            STATUS="✅ Successfully triggered PR checks with an empty commit. Check results will appear on the PR automatically."
+          elif [[ "${{ steps.rerun_checks.outputs.workflow_dispatch_succeeded }}" == "true" ]]; then
+            STATUS="✅ Successfully triggered workflows via workflow_dispatch. Check the Actions tab for results."
+          elif [[ "${{ steps.rerun_checks.outputs.rerun_succeeded }}" == "true" ]]; then
+            STATUS="⚠️ Rerun requested for existing workflow runs, but results may not appear directly on the PR."
+          fi
+          
           gh pr comment $PR_NUM --body "$(cat <<EOF
-          \`fix:${PR_ACTION}\` was [successful]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID).
-          ### IMPORTANT: (RE-)RUN \`/fix:all\` to ensure that there are no remaining check issues.
+          # /nudge action completed
+
+          $STATUS
+
+          You can view the action run details here: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+          Check the status of your PR here: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/pull/$PR_NUM/checks
           EOF
           )"
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          PR_NUM: ${{ github.event.issue.number }}
 
       - name: Report an error in the case of failure
         if: ${{ failure() || cancelled() }}
         run: |
-          gh pr comment $PR_NUM -b "fix:${PR_ACTION} failed or was cancelled. For details, see $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID."
+          gh pr comment $PR_NUM -b "❌ /nudge failed or was cancelled. For details, see $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID."
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
