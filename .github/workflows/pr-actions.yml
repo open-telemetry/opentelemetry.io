@@ -156,14 +156,14 @@ jobs:
           echo "Creating an empty commit to trigger CI checks"
           git config --local user.email "$USER_EMAIL"
           git config --local user.name "$USER_NAME"
-          
+
           current_branch=$(git rev-parse --abbrev-ref HEAD)
           echo "current_branch=$current_branch"
           remote_repo=$(git config --get branch.${current_branch}.remote)
           echo "remote_repo=$remote_repo"
           remote_branch=$(git config --get branch.${current_branch}.merge)
           echo "remote_branch=$remote_branch"
-          
+
           git commit --allow-empty -m "Empty commit to trigger CI checks (via /nudge)"
           git push ${remote_repo} HEAD:${remote_branch}
         env:
