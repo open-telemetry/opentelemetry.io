@@ -8,25 +8,30 @@ sig: OpenTelemetry JS
 cSpell:ignore: Danielson
 ---
 
-Exciting news!
-[OpenTelemetry JavaScript](https://github.com/open-telemetry/opentelemetry-js)
+Exciting news:
+[OpenTelemetry JavaScript](/docs/languages/js/)
 has released
-[SDK 2.0](https://github.com/open-telemetry/opentelemetry-js/releases)!
+[SDK 2.0](https://github.com/open-telemetry/opentelemetry-js/releases/tag/v2.0.0)!
 
-There is a
-[migration guide](https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md)
-in the repository detailing breaking changes and steps for users to take to
-upgrade to the latest versions.
+{{% alert-md title="Migration guide" color="info" %}}
+
+For a detailed description of breaking changes, see the **migration guide**
+[Upgrade to OpenTelemetry JS SDK 2.x][migration guide].
+
+[migration guide]:
+  https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md
+
+{{% /alert-md %}}
 
 ## What is JS SDK 2.x?
 
-"JS SDK 2.x" encompasses new releases of the `@opentelemetry/*` JavaScript
+JS SDK 2.x encompasses new releases of the `@opentelemetry/*` JavaScript
 packages published from the
 [`opentelemetry-js` repository](https://github.com/open-telemetry/opentelemetry-js),
 except the API and semantic-conventions packages. The package versions for this
 new major will be `>=2.0.0` for the stable and `>=0.200.0` for the unstable
 packages. Details on the full list of packages can be found in the
-[migration guide](https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#what-is-js-sdk-2x).
+[migration guide][].
 
 ## What has changed?
 
