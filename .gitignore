@@ -6,6 +6,7 @@
 # npm assets
 node_modules/
 package-lock.json
+pnpm-lock.yaml
 
 # Link checker
 tmp/
