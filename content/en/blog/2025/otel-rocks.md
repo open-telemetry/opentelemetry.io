@@ -21,7 +21,7 @@ All interviewees agreed that there is a learning curve associated with OTel, esp
 
 ## Why OTel Rocks
 
-Despite the challenges, our interviewees also acknowledged OTel's significant benefits. 
+Despite the challenges, our interviewees also acknowledged OTel's significant benefits.
 
 For instance, Alexandre from Pismo emphasized the importance of vendor neutrality. OTel allows them to consolidate all their data and switch to any vendor they want, without being locked into a specific ecosystem.
 
@@ -46,4 +46,3 @@ Our interviews revealed a complex relationship with OTel. It's not a perfect sol
 Ultimately, OTel's value lies in its flexibility, vendor neutrality, and the deep insights it provides into complex systems. While there are growing pains and areas for improvement, OTel is undoubtedly a powerful tool for observability.
 
 We'd like to thank Elena Kovalenko, James Moessis, Adriel Perkins, and Alexandre Magno for sharing their honest and insightful experiences with OpenTelemetry. Their stories provide valuable perspectives for anyone considering or currently using OTel.
-
