@@ -14,7 +14,6 @@ jobs:
   pr-action:
     name: Run PR action
     runs-on: ubuntu-latest
-
     if: |
       github.event.issue.pull_request &&
       startsWith(github.event.comment.body, '/fix:')
@@ -26,25 +25,25 @@ jobs:
       DEPTH: --depth 999 # submodule clone depth
 
     steps:
-      - name: Extract action name
-        id: extract_action_name
-        run: |
-          PR_ACTION=$(echo $COMMENT | grep -oP '/fix:\K[-_0-9a-z]+')
-          echo "Action is $PR_ACTION"
-          ACTION_NAMES="all|dict|filenames|format|htmltest-config|i18n|markdown|refcache|submodules?|text"
-          if [[ ! "$PR_ACTION" =~ ^($ACTION_NAMES)$ ]]; then
-            echo "Invalid action name: $PR_ACTION"
-            echo "Action name should be one of: $ACTION_NAMES"
-            exit 1
-          fi
-          echo "PR_ACTION=$PR_ACTION" >> "$GITHUB_ENV"
-
       - name: Context info
         run: |
           echo $PR_NUM
           echo $COMMENT
 
       - uses: actions/checkout@v4
+
+      - name: Extract action name
+        id: extract_action_name
+        run: |
+          PR_ACTION=$(echo $COMMENT | grep -oP '/fix:\K[:-_0-9a-z]+')
+          echo "Action is $PR_ACTION"
+          ACTION_NAMES="all|dict|expired|filenames|format|htmltest-config|i18n|markdown|refcache(:refresh)?|submodules?|text"
+          if [[ ! "$PR_ACTION" =~ ^($ACTION_NAMES)$ ]]; then
+            echo "Invalid action name: $PR_ACTION"
+            echo "Action name should be one of: $ACTION_NAMES"
+            exit 1
+          fi
+          echo "PR_ACTION=$PR_ACTION" >> "$GITHUB_ENV"
 
       - name: Write start comment
         run: |
@@ -69,10 +68,10 @@ jobs:
 
       - run: |
           case $PR_ACTION in
-            all|refcache)
+            all|refcache*|text)
               npm install --omit=optional
               ;&
-            dict|filenames|format|htmltest-config|markdown|submodule*)
+            *)
               npm run fix:$PR_ACTION
               ;;
           esac
