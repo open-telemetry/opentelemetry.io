@@ -1,7 +1,7 @@
 ---
 title: Reflecting on my Outreachy Journey
 linkTitle: Outreachy Internship
-date: 2025-03-11
+date: 2025-03-24
 author: '[Richard Chukwu](https://github.com/richardchukwu)'
 issue: 6488
 sig: Contributor Experience
@@ -63,7 +63,7 @@ Most importantly, Outreachy gave me the confidence to contribute to open source
 projects beyond this internship. I now see myself as part of the broader open
 source ecosystem, and I’m excited to continue making meaningful contributions.
 
-## Project Contributions and Future Directions
+## Project contributions and future directions
 
 During my tenure, I completed the creation of the
 [setup guide for contributions on OpenTelemetry](https://github.com/open-telemetry/sig-contributor-experience/issues/31)
