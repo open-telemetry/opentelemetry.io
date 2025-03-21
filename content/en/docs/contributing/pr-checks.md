@@ -2,7 +2,6 @@
 title: Pull request checks
 description: Learn how to make your pull request successfully pass all checks
 weight: 40
-cSpell:ignore: REFCACHE
 ---
 
 When you raise a
@@ -31,7 +30,7 @@ can recover from a failed state.
 
 {{% /alert %}}
 
-## Easy CLA
+## `Easy CLA` {.notranslate lang=en}
 
 This check fails if you haven't [signed the CLA](../prerequisites/#cla).
 
@@ -49,7 +48,7 @@ find any issues.
 The following list describes current checks and what you can do to fix related
 errors:
 
-### TEXT linter
+### `TEXT linter` {.notranslate lang=en}
 
 This check verifies that
 [OpenTelemetry-specific terms and words are used consistently across the site](../style-guide/#opentelemetryio-word-list).
@@ -59,7 +58,7 @@ If any issues are found, annotations are added to your files in the
 alternative, you can run `npm run check:text -- --fix` locally to fix most
 issues. Run `npm run check:text` again and manually fix the remaining issues.
 
-### MARKDOWN linter
+### `MARKDOWN linter` {.notranslate lang=en}
 
 This check verifies that
 [standards and consistency for Markdown files are enforced](../style-guide/#markdown-standards).
@@ -67,19 +66,19 @@ This check verifies that
 If any issues are found, run `npm run:format` to fix most issues. For more
 complex issues, run `npm run check:markdown` and apply the suggested changes.
 
-### SPELLING check
+### `SPELLING check` {.notranslate lang=en}
 
 This check verifies that
 [all words are spelled correctly](../style-guide/#spell-checking).
 
-### CSPELL:IGNORE check
+### `CSPELL` check {.notranslate lang=en}
 
 This check will verify that all words in your cSpell ignore list are normalized.
 
 If this check fails, run `npm run fix:dict` locally and push the changes in a
 new commit.
 
-### FILENAME check
+### `FILENAME check` {.notranslate lang=en}
 
 This check verifies that all
 [files are formatted by prettier](../style-guide/#file-format).
@@ -87,7 +86,7 @@ This check verifies that all
 If this check fails, run `npm fix:format` locally and push the changes in a new
 commit.
 
-### FILE FORMAT
+### `FILE FORMAT` {.notranslate lang=en}
 
 This check verifies that all
 [file names are in kebab-case](../style-guide/#file-names).
@@ -95,15 +94,15 @@ This check verifies that all
 If this check fails, run `npm fix:filenames` locally and push the changes in a
 new commit.
 
-### BUILD and CHECK LINKS / REFCACHE updates?
+### `BUILD and CHECK LINKS` {.notranslate lang=en}
 
-This check verifies that all links that your commits are introducing are
-functional.
+This check builds the website and verifies that all links are valid.
 
-Run `npm run check:links` to check them locally. This also updates the reference
-cache, or `REFCACHE`. Push any changes to the `REFCACHE` in a new commit.
+To check links locally, run `npm run check:links`. This command also updates the
+reference cache. Push any changes to the refcache in a new commit.
 
-### WARNINGS in build log?
+### `WARNINGS in build log?` {.notranslate lang=en}
 
-If this check fails, review the build log for any other potential issues. Ask
-maintainers for help, if you are unsure how to recover.
+If this check fails, review the `BUILD and CHECK LINKS` log, under the
+`npm run log:check:links` step, for any other potential issues. Ask maintainers
+for help, if you are unsure how to recover.
