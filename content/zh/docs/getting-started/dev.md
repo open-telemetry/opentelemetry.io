@@ -23,7 +23,7 @@ API 手动为你自己的代码添加插桩——我们建议你先学习以下�
 接下来，你可以深入了解一些你会用到的[编程语言](../../languages/)文档：
 
 - [C++](../../languages/cpp/)
-- [.NET](../../languages/net/)
+- [.NET](../../languages/dotnet/)
 - [Erlang / Elixir](../../languages/erlang/)
 - [Go](../../languages/go/)
 - [Java](../../languages/java/)

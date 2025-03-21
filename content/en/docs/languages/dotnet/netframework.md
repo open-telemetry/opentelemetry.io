@@ -146,13 +146,13 @@ exception on the `Activity` itself as an `ActivityEvent`.
 
 After you have observability generated automatically with instrumentation
 libraries, you may want to add
-[manual instrumentation](/docs/languages/net/instrumentation) to collect custom
+[manual instrumentation](/docs/languages/dotnet/instrumentation) to collect custom
 telemetry data.
 
 You'll also want to configure an appropriate exporter to
-[export your telemetry data](/docs/languages/net/exporters) to one or more
+[export your telemetry data](/docs/languages/dotnet/exporters) to one or more
 telemetry backends.
 
 You can also check the
-[automatic instrumentation for .NET](/docs/zero-code/net), which is currently in
+[automatic instrumentation for .NET](/docs/zero-code/dotnet), which is currently in
 beta.
