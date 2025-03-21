@@ -20,5 +20,5 @@ isNative: true
 package:
   name: NServiceBus
   registry: nuget
-  version: 9.2.6
+  version: 3.3.0-unstable71
 isFirstParty: false
