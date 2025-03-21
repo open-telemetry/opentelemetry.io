@@ -7491,6 +7491,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:19:54.615789-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-erlang/pull/825": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T13:46:30.158376597-07:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-erlang/releases": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:30.836562-05:00"
@@ -12063,6 +12067,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-03-11T09:21:49.973686-04:00"
   },
+  "https://github.com/open-telemetry/sig-contributor-experience/issues/31": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T13:46:31.597120135-07:00"
+  },
   "https://github.com/open-telemetry/sig-end-user": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:10:56.03728-05:00"
@@ -12574,6 +12582,10 @@
   "https://github.com/riandyrn/otelchi": {
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:32:29.804441-05:00"
+  },
+  "https://github.com/richardchukwu": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T13:46:27.90685785-07:00"
   },
   "https://github.com/ridwanmsharif": {
     "StatusCode": 206,
@@ -18603,6 +18615,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-30T22:47:29.617Z"
   },
+  "https://www.linkedin.com/in/richardchukwu1/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-03-21T21:31:48.793Z"
+  },
   "https://www.linkedin.com/posts/santiago-lator_opentelemetry-opentelemetry-observabilidad-activity-7258132675268354050-oP1q": {
     "StatusCode": 200,
     "LastSeen": "2025-01-30T17:44:52.308579-05:00"
@@ -19038,6 +19054,10 @@
   "https://www.outreachy.org/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-13T11:43:58.450234-05:00"
+  },
+  "https://www.outreachy.org/alums/2024-12/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-03-21T13:46:28.904753706-07:00"
   },
   "https://www.parseable.com/docs/server/opentelemetry": {
     "StatusCode": 200,
