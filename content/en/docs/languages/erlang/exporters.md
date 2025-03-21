@@ -4,7 +4,7 @@ weight: 50
 cSpell:ignore: rebar relx
 ---
 
-{{% docs/languages/exporters/intro erlang %}}
+{{% docs/languages/exporters/intro %}}
 
 ## Exporting to the OpenTelemetry Collector
 
