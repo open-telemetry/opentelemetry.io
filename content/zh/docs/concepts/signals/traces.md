@@ -2,7 +2,7 @@
 title: 链路（Trace）
 weight: 1
 description: 请求通过应用程序的路径。
-default_lang_commit: 85be4e684f909f5f39544b2b0d23905616f1a283
+default_lang_commit: 7c0e4db0b6c39b0ca0e7efb17df5610d1b77b8a3
 ---
 
 **Traces** 为我们提供了向应用程序发出请求时会发生什么的总览图。无论您的应用程序是具有单个数据库的整体式应用程序还是复杂的服务网格，trace 对于了解请求在应用程序中的完整“路径”至关重要。
