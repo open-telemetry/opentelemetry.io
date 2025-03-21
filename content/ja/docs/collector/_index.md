@@ -5,6 +5,7 @@ cascade:
   vers: 0.121.0
 weight: 270
 default_lang_commit: e1209f387a604c493e8b41923a3b2ceacd7437a0
+drifted_from_default: true
 ---
 
 ![Jaeger、OTLP、Prometheusを統合したOpenTelemetryコレクターのダイアグラム](img/otel-collector.svg)
