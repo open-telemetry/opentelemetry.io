@@ -12,7 +12,7 @@ a set of checks are executed. The PR checks verify that:
 
 - You have signed the [CLA](#easy-cla)
 - Your PR successfully [deploys through Netlify](#netlify-deployment)
-- Your changes are compliant with our [style guide](#style-checks)
+- Your changes are compliant with our [style guide](#checks)
 
 {{% alert title="Note" color="primary" %}}
 
@@ -38,7 +38,7 @@ This check fails if you haven't [signed the CLA](../prerequisites/#cla).
 If the [Netlify](https://www.netlify.com/) build fails, select **Details** for
 more information.
 
-## Style checks
+## GitHub PR checks {#checks}
 
 To make sure that contributions follow our [style guide](../style-guide/) we
 have implemented a set of checks that verify style guide rules and fail if they
@@ -99,6 +99,36 @@ This check builds the website and verifies that all links are valid.
 
 To check links locally, run `npm run check:links`. This command also updates the
 reference cache. Push any changes to the refcache in a new commit.
+
+#### Fix 404s
+
+You need to fix the URLs reported as **invalid** (HTTP status **404**), by the
+link checker.
+
+#### Handling valid external links
+
+The link checker will sometimes get an HTTP status other than 200 (success) by
+servers that block checkers. Such servers will often return an HTTP status in
+the 400 range other than 404, such as 401, 403, or 406, which are the most
+common. Some servers, link LinkedIn, report 999.
+
+If you have manually validated an external link that the checker isn't getting a
+success status for, you can add the following query parameter to your URL to
+have the link checker ignore it: `?no-link-check`. For example,
+<https:/some-example.org?no-link-check> will be ignored by the link checker.
+
+{{% alert-md title="Maintainers tip" color=info %}}
+
+Maintainers can run the following script immediately after having run the link
+checker to have Puppeteer attempt to validate links with non-success statuses
+
+```sh
+./scripts/double-check-refcache-400s.mjs -f --max-num-to-update 99
+```
+
+This script also validates URL fragments, which the link checker doesn't do.
+
+{{% /alert-md %}}
 
 ### `WARNINGS in build log?` {.notranslate lang=en}
 
