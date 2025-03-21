@@ -8,9 +8,7 @@ sig: OpenTelemetry JS
 cSpell:ignore: Danielson
 ---
 
-Exciting news:
-[OpenTelemetry JavaScript](/docs/languages/js/)
-has released
+Exciting news: [OpenTelemetry JavaScript](/docs/languages/js/) has released
 [SDK 2.0](https://github.com/open-telemetry/opentelemetry-js/releases/tag/v2.0.0)!
 
 {{% alert-md title="Migration guide" color="info" %}}
@@ -30,8 +28,8 @@ packages published from the
 [`opentelemetry-js` repository](https://github.com/open-telemetry/opentelemetry-js),
 except the API and semantic-conventions packages. The package versions for this
 new major will be `>=2.0.0` for the stable and `>=0.200.0` for the unstable
-packages. Details on the full list of packages can be found in the
-[migration guide][].
+packages. Details on the full list of packages can be found in the [migration
+guide][].
 
 ## What has changed?
 
