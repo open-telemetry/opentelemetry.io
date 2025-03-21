@@ -3,7 +3,7 @@ title: 'OTel Sucks (But Also Rocks!)'
 linkTitle: OTel Sucks (But Also Rocks!)
 date: 2025-04-03
 author: '[Juraci Paixão Kröhling](https://github.com/jpkrohling) (OllyGarden)'
-cSpell:ignore: Olly Pismo Liatrio Moessis Kovalenko
+cSpell:ignore: Kovalenko Liatrio Moessis Olly Pismo
 ---
 
 OpenTelemetry (OTel) is often touted as the future of observability, promising
