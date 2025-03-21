@@ -16,13 +16,12 @@ aspirations.
 
 I still remember the nervous excitement I felt when I received the
 [email](https://x.com/RichardChukwu_/status/1862390957217333461) confirming my
-selection for
-[Outreachy](https://www.outreachy.org/alums/2024-12/).
-It was a moment of validation, but also one filled with uncertainty. Could I
-truly make an impact in open source? Would I be able to contribute meaningfully
-to a project as vast and complex as OpenTelemetry? Now, as I wrap up this
-incredible journey, I can say with confidence that the experience has been
-transformative in ways I never imagined.
+selection for [Outreachy](https://www.outreachy.org/alums/2024-12/). It was a
+moment of validation, but also one filled with uncertainty. Could I truly make
+an impact in open source? Would I be able to contribute meaningfully to a
+project as vast and complex as OpenTelemetry? Now, as I wrap up this incredible
+journey, I can say with confidence that the experience has been transformative
+in ways I never imagined.
 
 ## Overcoming fear: Imposter syndrome didn’t win
 
