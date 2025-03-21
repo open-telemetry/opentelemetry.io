@@ -21,8 +21,8 @@ If any of the PR checks fails, try to
 `npm run fix:all` locally.
 
 You can also add the comment `/fix:all` to your PR. This will trigger the
-OpenTelemetry Bot run that command on your behalf and update the PR. Make sure
-that you pull those changes locally.
+OpenTelemetry Bot to run that command on your behalf and update the PR. Make
+sure that you pull those changes locally.
 
 Only if your issues persist, read below what the different checks do and how you
 can recover from a failed state.
@@ -62,7 +62,7 @@ issues. Run `npm run check:text` again and manually fix the remaining issues.
 This check verifies that
 [standards and consistency for Markdown files are enforced](../style-guide/#markdown-standards).
 
-If any issues are found, run `npm run:format` to fix most issues. For more
+If any issues are found, run `npm run fix:format` to fix most issues. For more
 complex issues, run `npm run check:markdown` and apply the suggested changes.
 
 ### `SPELLING check` {.notranslate lang=en}
@@ -82,16 +82,16 @@ new commit.
 This check verifies that all
 [files are formatted by prettier](../style-guide/#file-format).
 
-If this check fails, run `npm fix:format` locally and push the changes in a new
-commit.
+If this check fails, run `npm run fix:format` locally and push the changes in a
+new commit.
 
 ### `FILE FORMAT` {.notranslate lang=en}
 
 This check verifies that all
 [file names are in kebab-case](../style-guide/#file-names).
 
-If this check fails, run `npm fix:filenames` locally and push the changes in a
-new commit.
+If this check fails, run `npm run fix:filenames` locally and push the changes in
+a new commit.
 
 ### `BUILD and CHECK LINKS` {.notranslate lang=en}
 
