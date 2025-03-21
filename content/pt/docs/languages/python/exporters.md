@@ -1,7 +1,8 @@
 ---
 title: Exporters
 weight: 50
-description: Process and export your telemetry data
+description: Processar e exportar seus dados de telemetria
+default_lang_commit: 546f3e88ca3673de8aad69358d416256d1fe6411 # patched
 cSpell:ignore: LOWMEMORY
 ---
 
@@ -9,18 +10,18 @@ cSpell:ignore: LOWMEMORY
 
 {{% docs/languages/exporters/intro python %}}
 
-### Dependencies {#otlp-dependencies}
+### Dependências {#otlp-dependencies}
 
-If you want to send telemetry data to an OTLP endpoint (like the
-[OpenTelemetry Collector](#collector-setup), [Jaeger](#jaeger) or
-[Prometheus](#prometheus)), you can choose between two different protocols to
-transport your data:
+Se você deseja enviar dados de telemetria para um endpoint OTLP (como o
+[OpenTelemetry Collector](#collector-setup), [Jaeger](#jaeger) ou
+[Prometheus](#prometheus)), você pode escolher entre dois protocolos diferentes
+para transportar seus dados:
 
 - [HTTP/protobuf](https://pypi.org/project/opentelemetry-exporter-otlp-proto-http/)
 - [gRPC](https://pypi.org/project/opentelemetry-exporter-otlp-proto-grpc/)
 
-Start by installing the respective exporter packages as a dependency for your
-project:
+Comece instalando os pacotes do exporter necessários como dependências do seu
+projeto antes de prosseguir.
 
 {{< tabpane text=true >}} {{% tab "HTTP/Proto" %}}
 
@@ -36,9 +37,10 @@ pip install opentelemetry-exporter-otlp-proto-grpc
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Usage
+### Uso {#usage}
 
-Next, configure the exporter to point at an OTLP endpoint in your code.
+Em seguida, configure o exporter para apontar para um endpoint OTLP no seu
+código.
 
 {{< tabpane text=true >}} {{% tab "HTTP/Proto" %}}
 
@@ -55,9 +57,9 @@ from opentelemetry.exporter.otlp.proto.http.metric_exporter import OTLPMetricExp
 from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 
-# Service name is required for most backends
+# Nome do serviço é necessário para a maioria dos backends
 resource = Resource(attributes={
-    SERVICE_NAME: "your-service-name"
+    SERVICE_NAME: "nome-do-seu-serviço"
 })
 
 tracerProvider = TracerProvider(resource=resource)
@@ -87,13 +89,13 @@ from opentelemetry.exporter.otlp.proto.grpc.metric_exporter import OTLPMetricExp
 from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 
-# Service name is required for most backends
+# Nome do serviço é necessário para a maioria dos backends
 resource = Resource(attributes={
-    SERVICE_NAME: "your-service-name"
+    SERVICE_NAME: "nome-do-seu-serviço"
 })
 
 tracerProvider = TracerProvider(resource=resource)
-processor = BatchSpanProcessor(OTLPSpanExporter(endpoint="your-endpoint-here"))
+processor = BatchSpanProcessor(OTLPSpanExporter(endpoint="seu-endpoint-aqui"))
 tracerProvider.add_span_processor(processor)
 trace.set_tracer_provider(tracerProvider)
 
@@ -106,13 +108,13 @@ metrics.set_meter_provider(meterProvider)
 
 {{% /tab %}} {{< /tabpane >}}
 
-## Console
+## Console {#console}
 
-To debug your instrumentation or see the values locally in development, you can
-use exporters writing telemetry data to the console (stdout).
+Para depurar sua instrumentação ou ver os valores localmente em desenvolvimento,
+você pode usar exporters que escrevem dados de telemetria no console (_stdout_).
 
-The `ConsoleSpanExporter` and `ConsoleMetricExporter` are included in the
-`opentelemetry-sdk` package.
+O `ConsoleSpanExporter` e o `ConsoleMetricExporter` estão inclusos no pacote
+`opentelemetry-sdk`.
 
 ```python
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
@@ -125,11 +127,11 @@ from opentelemetry import metrics
 from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader, ConsoleMetricExporter
 
-# Service name is required for most backends,
-# and although it's not necessary for console export,
-# it's good to set service name anyways.
+# Nome do serviço é necessário para a maioria dos backends,
+# e embora não seja necessário para exportação no console,
+# é bom definir o nome do serviço de qualquer maneira.
 resource = Resource(attributes={
-    SERVICE_NAME: "your-service-name"
+    SERVICE_NAME: "nome-do-seu-serviço"
 })
 
 tracerProvider = TracerProvider(resource=resource)
@@ -142,21 +144,21 @@ meterProvider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(meterProvider)
 ```
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Nota" color="info" %}}
 
-There are temporality presets for each instrumentation kind. These presets can
-be set with the environment variable
-`OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE`, for example:
+Existem predefinições de temporalidade para cada tipo de instrumentação. Essas
+predefinições podem ser definidas com a variável de ambiente
+`OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE`, por exemplo:
 
 ```sh
 export OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE="DELTA"
 ```
 
-The default value for `OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE` is
+O valor padrão para `OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE` é
 `"CUMULATIVE"`.
 
-The available values and their corresponding settings for this environment
-variable are:
+Os valores disponíveis e suas configurações correspondentes para esta variável
+de ambiente são:
 
 - `CUMULATIVE`
 
@@ -184,9 +186,9 @@ variable are:
   - `ObservableUpDownCounter`: `CUMULATIVE`
   - `ObservableGauge`: `CUMULATIVE`
 
-Setting `OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE` to any other value than
-`CUMULATIVE`, `DELTA` or `LOWMEMORY` will log a warning and set this environment
-variable to `CUMULATIVE`.
+Definir `OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE` para qualquer valor
+diferente de `CUMULATIVE`, `DELTA` ou `LOWMEMORY` registrará um aviso e definirá
+esta variável de ambiente como `CUMULATIVE`.
 
 {{% /alert %}}
 
@@ -194,18 +196,18 @@ variable to `CUMULATIVE`.
 
 {{% include "exporters/prometheus-setup.md" %}}
 
-### Dependencies {#prometheus-dependencies}
+### Dependências {#prometheus-dependencies}
 
-Install the
-[exporter package](https://pypi.org/project/opentelemetry-exporter-prometheus/)
-as a dependency for your application:
+Instale o
+[pacote de exporter](https://pypi.org/project/opentelemetry-exporter-prometheus/)
+como uma dependência para sua aplicação:
 
 ```sh
 pip install opentelemetry-exporter-prometheus
 ```
 
-Update your OpenTelemetry configuration to use the exporter and to send data to
-your Prometheus backend:
+Atualize sua configuração do OpenTelemetry para usar o exporter e enviar dados
+para seu backend Prometheus:
 
 ```python
 from prometheus_client import start_http_server
@@ -215,35 +217,35 @@ from opentelemetry.exporter.prometheus import PrometheusMetricReader
 from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
-# Service name is required for most backends
+# Nome do serviço é necessário para a maioria dos backends
 resource = Resource(attributes={
-    SERVICE_NAME: "your-service-name"
+    SERVICE_NAME: "nome-do-seu-serviço"
 })
 
-# Start Prometheus client
+# Iniciar cliente Prometheus
 start_http_server(port=9464, addr="localhost")
-# Initialize PrometheusMetricReader which pulls metrics from the SDK
-# on-demand to respond to scrape requests
+# Inicializar PrometheusMetricReader que puxa métricas do SDK
+# sob demanda para responder a solicitações de extração
 reader = PrometheusMetricReader()
 provider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(provider)
 ```
 
-With the above you can access your metrics at <http://localhost:9464/metrics>.
-Prometheus or an OpenTelemetry Collector with the Prometheus receiver can scrape
-the metrics from this endpoint.
+Com o código acima, você pode acessar suas métricas em
+<http://localhost:9464/metrics>. O Prometheus ou um OpenTelemetry Collector com
+o receptor Prometheus pode extrair as métricas deste endpoint.
 
 {{% include "exporters/zipkin-setup.md" %}}
 
-### Dependencies {#zipkin-dependencies}
+### Dependências {#zipkin-dependencies}
 
-To send your trace data to [Zipkin](https://zipkin.io/), you can choose between
-two different protocols to transport your data:
+Para enviar seus dados de rastro para o [Zipkin](https://zipkin.io/), você pode
+escolher entre dois protocolos diferentes para transportar seus dados:
 
 - [HTTP/protobuf](https://pypi.org/project/opentelemetry-exporter-zipkin-proto-http/)
 - [Thrift](https://pypi.org/project/opentelemetry-exporter-zipkin-json/)
 
-Install the exporter package as a dependency for your application:
+Instale o pacote de exporter como uma dependência para sua aplicação:
 
 {{< tabpane text=true >}} {{% tab "HTTP/Proto" %}}
 
@@ -259,8 +261,8 @@ pip install opentelemetry-exporter-zipkin-json
 
 {{% /tab %}} {{< /tabpane >}}
 
-Update your OpenTelemetry configuration to use the exporter and to send data to
-your Zipkin backend:
+Atualize sua configuração do OpenTelemetry para usar o exporter e enviar dados
+para seu backend Zipkin:
 
 {{< tabpane text=true >}} {{% tab "HTTP/Proto" %}}
 
@@ -272,7 +274,7 @@ from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
 resource = Resource(attributes={
-    SERVICE_NAME: "your-service-name"
+    SERVICE_NAME: "nome-do-seu-serviço"
 })
 
 zipkin_exporter = ZipkinExporter(endpoint="http://localhost:9411/api/v2/spans")
@@ -293,7 +295,7 @@ from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
 resource = Resource(attributes={
-    SERVICE_NAME: "your-service-name"
+    SERVICE_NAME: "nome-do-seu-serviço"
 })
 
 zipkin_exporter = ZipkinExporter(endpoint="http://localhost:9411/api/v2/spans")
@@ -312,5 +314,5 @@ trace.set_tracer_provider(provider)
 from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
 from opentelemetry.sdk.trace.export import SimpleSpanProcessor
 
-processor = SimpleSpanProcessor(OTLPSpanExporter(endpoint="your-endpoint-here"))
+processor = SimpleSpanProcessor(OTLPSpanExporter(endpoint="seu-endpoint-aqui"))
 ```

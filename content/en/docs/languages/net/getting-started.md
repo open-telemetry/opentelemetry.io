@@ -17,7 +17,7 @@ that [traces][], [metrics][] and [logs][] are emitted to the console.
 
 Ensure that you have the following installed locally:
 
-- [.NET SDK](https://dotnet.microsoft.com/download/dotnet) 6+
+- [.NET SDK](https://dotnet.microsoft.com/download/dotnet) 8+
 
 ## Example Application
 
