@@ -12,7 +12,7 @@ drifted_from_default: true
 
 ## Solucionando una propuesta existente
 
-Una de las mejores maneras de contribuir a mejorar la documentación de
+Una de las mejores manerads de contribuir a mejorar la documentación de
 OpenTelemetry (OTel) es solucionando un problema ya identificado.
 
 1. Navegar por la lista de [propuestas]({{% param _issues %}}).
