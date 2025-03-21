@@ -296,5 +296,5 @@ For general troubleshooting steps and solutions to specific issues, see
 
 After you have automatic instrumentation configured for your app or service, you
 might want to [send custom traces and metrics](./custom) or add
-[manual instrumentation](/docs/languages/dotnet/instrumentation) to collect custom
-telemetry data.
+[manual instrumentation](/docs/languages/dotnet/instrumentation) to collect
+custom telemetry data.

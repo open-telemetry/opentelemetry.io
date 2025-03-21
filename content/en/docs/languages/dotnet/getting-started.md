@@ -264,7 +264,8 @@ Value: Sum: 1330.4766000000002 Count: 5 Min: 50.0333 Max: 465.7936
 For more:
 
 - Run this example with another [exporter][] for telemetry data.
-- Try [automatic instrumentation](/docs/zero-code/dotnet/) on one of your own apps.
+- Try [automatic instrumentation](/docs/zero-code/dotnet/) on one of your own
+  apps.
 - Learn about [manual instrumentation][] and try out more
   [examples](/docs/languages/dotnet/examples/).
 - Take a look at the [OpenTelemetry Demo](/docs/demo/), which includes .NET

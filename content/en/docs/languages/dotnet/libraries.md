@@ -116,8 +116,8 @@ You can also find more instrumentations available in the
 ## Next steps
 
 After you have set up instrumentation libraries, you may want to add your own
-[instrumentation](/docs/languages/dotnet/instrumentation) to your code, to collect
-custom telemetry data.
+[instrumentation](/docs/languages/dotnet/instrumentation) to your code, to
+collect custom telemetry data.
 
 If you are using .NET Framework 4.x instead of modern .NET, refer to the
 [.NET Framework docs](/docs/languages/dotnet/netframework) to configure
@@ -128,7 +128,7 @@ You'll also want to configure an appropriate exporter to
 telemetry backends.
 
 You can also check the
-[automatic instrumentation for .NET](/docs/zero-code/dotnet), which is currently in
-beta.
+[automatic instrumentation for .NET](/docs/zero-code/dotnet), which is currently
+in beta.
 
 [opentelemetry-dotnet]: https://github.com/open-telemetry/opentelemetry-dotnet

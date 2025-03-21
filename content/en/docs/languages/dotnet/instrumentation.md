@@ -39,8 +39,8 @@ you can refer to the [OpenTelemetry API Shim docs for tracing](../shim).
 ## Example app preparation {#example-app}
 
 This page uses a modified version of the example app from
-[Getting Started](/docs/languages/dotnet/getting-started/) to help you learn about
-manual instrumentation.
+[Getting Started](/docs/languages/dotnet/getting-started/) to help you learn
+about manual instrumentation.
 
 You don't have to use the example app: if you want to instrument your own app or
 library, follow the instructions here to adapt the process to your own code.
@@ -307,8 +307,8 @@ loggerFactory.Dispose();
 For debugging and local development purposes, the example exports telemetry to
 the console. After you have finished setting up manual instrumentation, you need
 to configure an appropriate exporter to
-[export the app's telemetry data](/docs/languages/dotnet/exporters/) to one or more
-telemetry backends.
+[export the app's telemetry data](/docs/languages/dotnet/exporters/) to one or
+more telemetry backends.
 
 The example also sets up the mandatory SDK default attribute `service.name`,
 which holds the logical name of the service, and the optional, but highly
@@ -689,5 +689,5 @@ You'll also want to configure an appropriate exporter to
 [export your telemetry data](../exporters/) to one or more telemetry backends.
 
 You can also check the
-[automatic instrumentation for .NET](/docs/zero-code/dotnet/), which is currently
-in beta.
+[automatic instrumentation for .NET](/docs/zero-code/dotnet/), which is
+currently in beta.
