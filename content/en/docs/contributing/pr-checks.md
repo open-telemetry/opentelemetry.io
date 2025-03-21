@@ -8,22 +8,21 @@ When you raise a
 [pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)
 (PR) with the
 [opentelemetry.io repository](https://github.com/open-telemetry/opentelemetry.io)
-a set of checks are executed. The PR checks verify that...
+a set of checks are executed. The PR checks verify that:
 
-- … you have signed the [CLA](#easy-cla).
-- …your commit can be deployed through [Netlify](#netlify-deployment)
-  successfully.
-- … your changes are compliant with our [style guide](#style-checks).
+- You have signed the [CLA](#easy-cla)
+- Your PR successfully [deploys through Netlify](#netlify-deployment)
+- Your changes are compliant with our [style guide](#style-checks)
 
 {{% alert title="Note" color="primary" %}}
 
 If any of the PR checks fails, try to
-[fix content issues automatically](../pull-requests/#fix-issues) first by
-running `npm run fix:all` on your machine.
+[fix content issues](../pull-requests/#fix-issues) first by running
+`npm run fix:all` locally.
 
-Additionally, you can comment `/fix:all` on your Pull Request. This will make
-the OpenTelemetry Bot run those commands on your behalf and update the PR. Make
-sure that you pull those changes locally.
+You can also add the comment `/fix:all` to your PR. This will trigger the
+OpenTelemetry Bot run that command on your behalf and update the PR. Make sure
+that you pull those changes locally.
 
 Only if your issues persist, read below what the different checks do and how you
 can recover from a failed state.
