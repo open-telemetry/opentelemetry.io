@@ -346,7 +346,7 @@
   nativeOTLP: true
   url: https://signoz.io
   contact:
-  oss: true
+  oss: false
   commercial: true
 - name: SolarWinds
   nativeOTLP: true
