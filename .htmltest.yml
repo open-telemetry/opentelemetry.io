@@ -28,7 +28,7 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^/api/?$
   - ^((/..)?/docs/languages/\w+|\.\.)/(api|examples|registry)/$
   - ^(/..)?/docs/collector/registry/$
-  - ^(/..)?/docs/languages/net/(metrics-api|traces-api)/
+  - ^(/..)?/docs/languages/dotnet/(metrics-api|traces-api)/
   - ^((/..)?/docs/migration/)?opencensus/$
   - ^(/community/end-user/)?feedback-survey/$
   - ^/../docs/specs/?$ # non-default locale spec redirect
