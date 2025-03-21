@@ -3,7 +3,7 @@ title: 承認者およびメンテナーのための SIG のプラクティス
 linkTitle: SIG のプラクティス
 description: 承認者およびメンテナーがどのようにイシューやコントリビューションを管理するかを学びます。
 weight: 999
-default_lang_commit: 722beb5b9ecf8a603b2f5ae6128e3c3509f52fcf
+default_lang_commit: 0cdf20f0dcbf7305541f8eab3001c95ce805fbc0
 cSpell:ignore: chalin docsy
 ---
 
@@ -44,7 +44,7 @@ cSpell:ignore: chalin docsy
 
 ### 一般 {#general}
 
-- PR のブランチが `base ブランチと同期していない` 場合、継続的に更新する必要はありません。
+- PR のブランチが `out-of-date with the base branch`（ベースブランチと同期していない）場合、継続的に更新する必要はありません。
   各更新ごとに CI チェックが再実行されます！
   マージ前に更新すれば十分です
 - 非メンテナーによる PR で git サブモジュールを**決して**更新しないでください。
