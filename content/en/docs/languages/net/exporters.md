@@ -198,9 +198,9 @@ var loggerFactory = LoggerFactory.Create(builder =>
 });
 ```
 
-{{% docs/languages/exporters/jaeger %}}
+{{% include "exporters/jaeger.md" %}}
 
-{{% docs/languages/exporters/prometheus-setup %}}
+{{% include "exporters/prometheus-setup.md" %}}
 
 ### Dependencies {#prometheus-dependencies}
 
@@ -292,7 +292,7 @@ app.UseOpenTelemetryPrometheusScrapingEndpoint();
 Further details on configuring the Prometheus exporter can be found
 [here](https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Exporter.Prometheus.AspNetCore/README.md).
 
-{{% docs/languages/exporters/zipkin-setup %}}
+{{% include "exporters/zipkin-setup.md" %}}
 
 ### Dependencies {#zipkin-dependencies}
 
