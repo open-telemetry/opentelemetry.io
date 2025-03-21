@@ -3,6 +3,7 @@ title: 'OTel Sucks (But Also Rocks!)'
 linkTitle: OTel Sucks (But Also Rocks!)
 date: 2025-04-03
 author: '[Juraci Paixão Kröhling](https://github.com/jpkrohling) (OllyGarden)'
+cSpell:ignore: Olly Pismo Liatrio Moessis Kovalenko
 ---
 
 OpenTelemetry (OTel) is often touted as the future of observability, promising
@@ -85,7 +86,7 @@ source, largely due to the enjoyable interactions with the people. He highlights
 the presence of many bright, kind, and helpful individuals who are always
 willing to offer guidance. The community members are also noted for their
 experience, which Adriel believes has personally helped him develop as an
-engineer. Furthermore, the community is characterised by being super helpful,
+engineer. Furthermore, the community is characterized by being super helpful,
 passionate, and excited about the future of the project. While members may be
 direct at times, they are generally cordial and kind.
 
