@@ -5,7 +5,7 @@ date: 2025-03-11
 author: '[Richard Chukwu](https://github.com/richardchukwu)'
 issue: 6488
 sig: Contributor Experience
-cSpell:ignore: # Chukwu Marylia Outreachy
+cSpell:ignore: Chukwu Marylia Outreachy
 ---
 
 Hello world! I’m Richard Chukwu, a Computer Engineering graduate from the
