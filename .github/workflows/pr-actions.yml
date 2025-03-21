@@ -1,4 +1,5 @@
 name: PR actions
+# cSpell:ignore esac htmltest refcache nvmrc opentelemetrybot
 
 on:
   issue_comment:
