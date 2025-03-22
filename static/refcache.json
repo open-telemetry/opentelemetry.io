@@ -391,6 +391,22 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:46:12.856737-04:00"
   },
+  "https://cloud.google.com/app-hub/docs/overview": {
+    "StatusCode": 200,
+    "LastSeen": "2025-03-22T17:59:40.923888747Z"
+  },
+  "https://cloud.google.com/app-hub/docs/reference/rest/v1/Attributes#type": {
+    "StatusCode": 200,
+    "LastSeen": "2025-03-22T17:59:43.149636478Z"
+  },
+  "https://cloud.google.com/app-hub/docs/reference/rest/v1/Attributes#type_1": {
+    "StatusCode": 200,
+    "LastSeen": "2025-03-22T17:59:46.072347614Z"
+  },
+  "https://cloud.google.com/app-hub/docs/supported-resources": {
+    "StatusCode": 200,
+    "LastSeen": "2025-03-22T17:59:57.596263452Z"
+  },
   "https://cloud.google.com/appengine/docs/flexible/go/using-websockets-and-session-affinity": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:47:49.544888-04:00"
