@@ -118,3 +118,71 @@ jobs:
           gh pr comment $PR_NUM -b "fix:${PR_ACTION} failed or was cancelled. For details, see $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID."
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+
+  nudge-action:
+    name: Nudge PR workflows
+    runs-on: ubuntu-latest
+
+    if: |
+      github.event.issue.pull_request &&
+      startsWith(github.event.comment.body, '/nudge')
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+
+    steps:
+      - name: Context info
+        run: |
+          echo "PR Number: $PR_NUM"
+          echo "Comment: $COMMENT"
+
+      - name: Write start comment
+        run: |
+          gh pr comment $PR_NUM -b "You triggered /nudge action to restart PR workflows at $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+        env:
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+
+      - uses: actions/checkout@v4
+
+      - name: Checkout PR
+        run: gh pr checkout $PR_NUM -b "nudge-action-${RANDOM}"
+        env:
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+
+      - name: Trigger workflow reruns
+        run: |
+          # Create an empty commit to trigger all PR workflows
+          echo "Creating an empty commit to trigger CI checks"
+          git config --local user.email "$USER_EMAIL"
+          git config --local user.name "$USER_NAME"
+
+          current_branch=$(git rev-parse --abbrev-ref HEAD)
+          echo "current_branch=$current_branch"
+          remote_repo=$(git config --get branch.${current_branch}.remote)
+          echo "remote_repo=$remote_repo"
+          remote_branch=$(git config --get branch.${current_branch}.merge)
+          echo "remote_branch=$remote_branch"
+
+          git commit --allow-empty -m "Empty commit to trigger CI checks (via /nudge)"
+          git push ${remote_repo} HEAD:${remote_branch}
+        env:
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+
+      - name: Report success
+        if: ${{ !failure() && !cancelled() }}
+        run: |
+          gh pr comment $PR_NUM --body "$(cat <<EOF
+          \`/nudge\` action was [successful]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID).
+          Workflows should restart shortly.
+          EOF
+          )"
+        env:
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+
+      - name: Report an error in the case of failure
+        if: ${{ failure() || cancelled() }}
+        run: |
+          gh pr comment $PR_NUM -b "/nudge action failed or was cancelled. For details, see $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID."
+        env:
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
