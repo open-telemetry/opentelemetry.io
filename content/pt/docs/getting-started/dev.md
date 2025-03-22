@@ -28,7 +28,7 @@ Em seguida, você pode se aprofundar na documentação da
 [linguagem](../../languages/) que você está usando:
 
 - [C++](../../languages/cpp/)
-- [.NET](../../languages/net/)
+- [.NET](../../languages/dotnet/)
 - [Erlang / Elixir](../../languages/erlang/)
 - [Go](../../languages/go/)
 - [Java](../../languages/java/)

@@ -3,7 +3,7 @@
 Language | Traces | Metrics | Logs |
 | --- | --- | --- | --- |
 | [C++](/docs/languages/cpp/) | {{ $data.cpp.status.traces | humanize }} | {{ $data.cpp.status.metrics | humanize }} | {{ $data.cpp.status.logs | humanize }} |
-| [C#/.NET](/docs/languages/net/) | {{ $data.dotnet.status.traces | humanize }} | {{ $data.dotnet.status.metrics | humanize }} | {{ $data.dotnet.status.logs | humanize }} |
+| [C#/.NET](/docs/languages/dotnet/) | {{ $data.dotnet.status.traces | humanize }} | {{ $data.dotnet.status.metrics | humanize }} | {{ $data.dotnet.status.logs | humanize }} |
 | [Erlang/Elixir](/docs/languages/erlang/) | {{ $data.erlang.status.traces | humanize }} | {{ $data.erlang.status.metrics | humanize }} | {{ $data.erlang.status.logs | humanize }} |
 | [Go](/docs/languages/go/) | {{ $data.go.status.traces | humanize }} | {{ $data.go.status.metrics | humanize }} | {{ $data.go.status.logs | humanize }} |
 | [Java](/docs/languages/java/) | {{ $data.java.status.traces | humanize }} | {{ $data.java.status.metrics | humanize }} | {{ $data.java.status.logs | humanize }} |

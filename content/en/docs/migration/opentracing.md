@@ -181,7 +181,7 @@ For details on how each OpenTracing shim works, see the appropriate
 language-specific documentation. For details on the design of the OpenTracing
 shim, see [OpenTracing Compatibility][ot_spec].
 
-[.net]: /docs/languages/net/shim/
+[.net]: /docs/languages/dotnet/shim/
 [go]: https://pkg.go.dev/go.opentelemetry.io/otel/bridge/opentracing
 [java]:
   https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim

@@ -19,8 +19,18 @@ include functionality:
   {{ range $_k, $v := $args -}}
     {{ $k := string $_k -}}
     {{ if not (hasPrefix $k "_") -}}
-      {{ $regex := printf "\\{\\{\\s*\\$%s\\s*\\}\\}" $k -}}
+      {{ $regex := printf `\{\{\s*\$%s\s*\}\}` $k -}}
       {{ $content = replaceRE $regex $v $content -}}
+      {{ $_regex := `(?ms)^\{\{\s*if%s\s+\$%s\s*\}\}(.+?)^\{\{\s*end\s*\}\}` -}}
+      {{ $regexIf    := printf $_regex "" $k -}}
+      {{ $regexIfNot := printf $_regex " not" $k -}}
+      {{ if $v -}}
+        {{ $content = replaceRE $regexIf    "$1" $content -}}
+        {{ $content = replaceRE $regexIfNot ""   $content -}}
+      {{ else -}}
+        {{ $content = replaceRE $regexIf    ""   $content -}}
+        {{ $content = replaceRE $regexIfNot "$1" $content -}}
+      {{ end -}}
     {{ end -}}
   {{ end -}}
   {{ $content -}}

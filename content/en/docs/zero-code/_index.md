@@ -1,5 +1,6 @@
 ---
 title: Zero-code Instrumentation
+redirects: [{ from: 'net/*', to: 'dotnet/:splat' }]
 weight: 260
 ---
 

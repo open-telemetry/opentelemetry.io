@@ -33,7 +33,7 @@ OpenTelemetry を使えば、[コードベースの計装](/docs/concepts/instru
 
 ゼロコード計装は以下の言語に対応しています。
 
-- [.NET](/docs/zero-code/net/)
+- [.NET](/docs/zero-code/dotnet/)
 - [Go](/docs/zero-code/go)
 - [Java](/docs/zero-code/java/)
 - [JavaScript](/docs/zero-code/js/)

@@ -119,7 +119,7 @@ fixes several bugs in tracing and metrics. Experimental builds include several
 bug fixes and enhancements to the logging exporter, the deprecation of direct
 Jaeger export, and more.
 
-#### [.NET](/docs/languages/net/)
+#### [.NET](/docs/languages/dotnet/)
 
 [Version 1.7.0-alpha](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.7.0-alpha.1)
 includes many bug fixes and updates, including some breaking changes.

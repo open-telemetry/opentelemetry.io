@@ -413,10 +413,10 @@ This will capture things like the current stack trace as attributes in the span.
 ## Next steps
 
 After you've setup manual instrumentation, you may want to use
-[instrumentation libraries](/docs/languages/net/libraries). Instrumentation
+[instrumentation libraries](/docs/languages/dotnet/libraries). Instrumentation
 libraries will instrument relevant libraries you're using and generate data for
 things like inbound and outbound HTTP requests and more.
 
 You'll also want to configure an appropriate exporter to
-[export your telemetry data](/docs/languages/net/exporters) to one or more
+[export your telemetry data](/docs/languages/dotnet/exporters) to one or more
 telemetry backends.
