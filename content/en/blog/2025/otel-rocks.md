@@ -1,6 +1,5 @@
 ---
-title: 'OTel Sucks (But Also Rocks!)'
-linkTitle: OTel Sucks (But Also Rocks!)
+title: OTel Sucks (But Also Rocks!)
 date: 2025-04-03
 author: '[Juraci Paixão Kröhling](https://github.com/jpkrohling) (OllyGarden)'
 cSpell:ignore: Kovalenko Liatrio Moessis Olly Pismo
@@ -13,7 +12,7 @@ unfiltered thoughts on OTel. The result? A candid conversation about the good,
 the bad, and the sometimes frustrating aspects of working with OTel.
 
 In preparation for the KubeCon talk
-"[OTel Sucks (But Also Rocks!)](https://sched.co/1txHm)", Juraci spoke with
+[OTel Sucks (But Also Rocks!)](https://sched.co/1txHm), Juraci spoke with
 community members and gathered a wealth of valuable insights. Due to time
 constraints, not all the material could be included in the presentation, so this
 is an attempt to do justice to the community's contributions.
