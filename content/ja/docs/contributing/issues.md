@@ -4,9 +4,30 @@ description: 既存イシューの修正方法、またはバグ、セキュリ�
 weight: 10
 _issues: https://github.com/open-telemetry/opentelemetry.io/issues
 _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A
-default_lang_commit: 24146bd1368e4c6082c7d6077efd29dba0d51055 # patched
-drifted_from_default: true
+default_lang_commit: 94d77ab8cbfe5552a7cd68bf677be86c574a613a
 ---
+
+<style>
+  /* Force all list to be compact. */
+  li > p {
+    margin-bottom: 0;
+  }
+
+  /* Style "first time" alert */
+  .alert--first-timer {
+    margin: 0.5rem 0 !important;
+
+    > blockquote {
+      margin-top: 1rem;
+      margin-bottom: 0;
+      border-left-color: var(--bs-warning);
+      background-color: var(--bs-danger-bg-subtle);
+      > *:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+</style>
 
 ## 既存のイシューの修正 {#fixing-an-existing-issue}
 
@@ -15,23 +36,17 @@ OTel を改善するための最も良い方法の 1 つは、既存のイシュ
 1. [issues]({{% param _issues %}}) のリストを参照してください。
 2. 作業したいイシューを選択してください。短時間で修正できるものが理想です。
 
-   <!-- prettier-ignore -->
    <a name="first-issue"></a>
    {{% alert title="最初のコントリビュートですか？" %}}
 
    以下のラベルのイシューを選択してください。
 
-   - [Good first issue]
-   - [Help wanted]
+   - [Good first issue](<{{% param _issue %}}%22good+first+issue%22>)
+   - [Help wanted](<{{% param _issue %}}%3A%22help+wanted%22>)
 
-   <!-- prettier-ignore -->
    > **NOTE**: メンターシップやオンボーディングプロセスの一部でない限り、私たちは、[OpenTelemetry organization][org] にまだコントリビュートしたことがない人に**イシューをアサインしません**。
-   {.mt-3}
-
-   <!-- prettier-ignore -->
-   [good first issue]: <{{% param _issue %}}%22good+first+issue%22>
-   [help wanted]: <{{% param _issue %}}%3A%22help+wanted%22>
-   [org]: https://github.com/open-telemetry
+   >
+   > [org]: https://github.com/open-telemetry
 
    {{% /alert %}}
 

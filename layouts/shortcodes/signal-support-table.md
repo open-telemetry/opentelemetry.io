@@ -4,7 +4,7 @@
 Language | {{ humanize $signal }} |
 | --- | --- |
 | [C++](/docs/languages/cpp/) | {{ index $data.cpp.status $signal | humanize }} |
-| [C#/.NET](/docs/languages/net/) | {{ index $data.dotnet.status $signal | humanize }} |
+| [C#/.NET](/docs/languages/dotnet/) | {{ index $data.dotnet.status $signal | humanize }} |
 | [Erlang/Elixir](/docs/languages/erlang/) | {{ index $data.erlang.status $signal | humanize }} |
 | [Go](/docs/languages/go/) | {{ index $data.go.status $signal | humanize }} |
 | [Java](/docs/languages/java/) | {{ index $data.java.status $signal | humanize }} |

@@ -16,23 +16,50 @@ as can be seen from the languages dropdown menu in the top nav.
 When translating website pages from English, we recommend that you follow the
 guidance offered in this section.
 
-### Summary / TL;DR {#summary}
+### Summary
 
-Do translate:
+#### ✅ Do {#do}
 
-- [Front matter][] fields `title`, `linkTitle`, and `description`
-- Page content, including the text fields in Mermaid [diagrams](#images)
+<div class="border-start border-success bg-success-subtle">
 
-Do **NOT**:
+- **Translate**:
+  - Page content, including:
+    - Mermaid [diagram](#images) text fields
+    - Code comments from code excerpts (optional)
+  - [Front matter][] field values for `title`, `linkTitle`, and `description`
+  - **All** page content and front matter unless indicated otherwise
+- **Preserve** the _content_, _meaning_, and _style_ of the original text
+- **Ask** [maintainers] if you have any doubts or questions through:
+  - [Slack] `#otel-docs-localization` or `#otel-comms` channels
+  - [Discussion], issue, or PR comment
 
-- Translate:
+[Discussion]:
+  https://github.com/open-telemetry/opentelemetry.io/discussions?discussions_q=is%3Aopen+label%3Ai18n
+
+</div>
+
+#### ❌ Do NOT {#do-not}
+
+<div class="border-start border-warning bg-warning-subtle">
+
+- **Translate**:
   - **File or directory** names of resources in this repository
   - [Links](#links), this includes [heading IDs](#headings).[^*]
-  - [Front matter][] fields other than those listed in the "Do" section above.
-    In particular, do not translate `aliases`. When in doubt, ask maintainers.
+  - Inline code-spans like these: `inline code example`
+  - Markdown elements marked as `notranslate` (usually as a CSS class), in
+    particular for [headings](#headings)
+  - [Front matter][] fields other than those listed in [Do](#do). In particular,
+    do not translate `aliases`. When in doubt, ask maintainers.
+  - Code
 - Create **copies of images**, unless you [localize text in the images](#images)
+- Add new or change:
+  - **Content** that would be different from the originally intended meaning
+  - Presentation **style**, including: _formatting_, _layout_, and _design_
+    style (typography, letter case, and spacing for example).
 
 [^*]: For a possible exception, see [Links](#links).
+
+</div>
 
 ### Heading IDs {#headings}
 
@@ -246,11 +273,11 @@ least two potential contributors**, ideally three. Include the following task
 list in your issue as well:
 
 ```markdown
-- [ ] Contributors for the new language: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
-- [ ] Localize site homepage to YOUR_LANGUAGE_NAME
-- [ ] Create an issue label for `lang:LANG_ID`
-- [ ] Create org-level group for `LANG_ID` approvers
-- [ ] Update components owners for `content/LANG_ID`
+- [ ] Contributors for the new language: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
+- [ ] Localize site homepage to YOUR_LANGUAGE_NAME
+- [ ] Create an issue label for `lang:LANG_ID`
+- [ ] Create org-level group for `LANG_ID` approvers
+- [ ] Update components owners for `content/LANG_ID`
 - [ ] Set up spell checking, if a cSpell dictionary is available
 ```
 
@@ -321,5 +348,7 @@ non-English pages. When this happens:
 
 [front matter]: https://gohugo.io/content-management/front-matter/
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
+[maintainers]: https://github.com/orgs/open-telemetry/teams/docs-maintainers
 [multilingual framework]: https://gohugo.io/content-management/multilingual/
 [PR #5386]: https://github.com/open-telemetry/opentelemetry.io/pull/5386/files
+[slack]: https://slack.cncf.io/

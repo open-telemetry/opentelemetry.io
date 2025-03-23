@@ -1137,14 +1137,14 @@ of now:
 ├── go.work.sum
 ├── ocb
 ├── otelcol-dev
-│   ├── components.go
-│   ├── components_test.go
-│   ├── go.mod
-│   ├── go.sum
-│   ├── main.go
-│   ├── main_others.go
-│   ├── main_windows.go
-│   └── otelcol-dev
+│   ├── components.go
+│   ├── components_test.go
+│   ├── go.mod
+│   ├── go.sum
+│   ├── main.go
+│   ├── main_others.go
+│   ├── main_windows.go
+│   └── otelcol-dev
 └── tailtracer
     ├── config.go
     ├── factory.go

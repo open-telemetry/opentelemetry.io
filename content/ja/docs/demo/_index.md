@@ -1,11 +1,10 @@
 ---
-title: OpenTelemetryデモ ドキュメンテーション
+title: OpenTelemetryデモ ドキュメント
 linkTitle: デモ
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
-default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28
-drifted_from_default: true
+default_lang_commit: cd90ab77550fb2e92ca37cb3c753ec2d8bb7d8dc
 cSpell:ignore: OLJCESPC
 ---
 
