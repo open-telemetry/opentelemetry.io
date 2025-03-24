@@ -3,7 +3,7 @@ title: Comprobaciones para PR
 description:
   Aprenda cómo hacer que su PR pase con éxito todas las comprobaciones
 weight: 40
-default_lang_commit: 389e023192e051a3a835bfc6a71089c98af3b8a8
+default_lang_commit: 565307515b288bf5e8bee88d73ff4fac1fd93d5e
 cSpell:ignore: REFCACHE
 ---
 
@@ -37,10 +37,10 @@ comprobaciones y cómo puede recuperarse un estado fallido.
 
 Esta comprobación falla si no has [firmado el CLA](../prerequisites/#cla).
 
-## Despliegue Netlify {#netlify-deployment}
+## Despliega Netlify {#netlify-deployment}
 
 Si la compilación [Netlify](https://www.netlify.com/) falla, selecciona
-**Details** para mas informacion.
+**Details** para mas información.
 
 ## Comprobaciones de estilo {#style-checks}
 
@@ -52,7 +52,7 @@ encuentran algún problema.
 La siguiente lista describe las comprobaciones actuales y lo que puedes hacer
 para corregir errores relacionados:
 
-### Linter TEXT {#text-linter}
+### `TEXT linter` {.notranslate lang=en}
 
 Esta comprobación verifica que
 [los términos y palabras específicos de OpenTelemetry se usan de manera uniforme en todo el sitio](../style-guide/#opentelemetryio-word-list).
@@ -64,7 +64,7 @@ verificación se vuelva verde. Como alternativa, puede ejecutar
 problemas. Ejecute `npm run check:text` nuevamente y corrige manualmente los
 problemas restantes.
 
-### Linter MARKDOWN {#markdown-linter}
+### `MARKDOWN linter` {.notranslate lang=en}
 
 Esta comprobación verifica que
 [se apliquen los estándares y la coherencia para los archivos Markdown](../style-guide/#markdown-standards).
@@ -73,12 +73,12 @@ Si se encuentran problemas, ejecuta `npm:run format` para corregir la mayoría d
 los problemas. Para problemas más complejos, ejecuta `npm run check:markdown` y
 aplique los cambios sugeridos.
 
-### Verificación ORTOGRAFÍA {#spelling-check}
+### `SPELLING check` {.notranslate lang=en}
 
 Esta verificación comprueba que
 [todas las palabras estén escritas correctamente](../style-guide/#spell-checking).
 
-### Comprobación CSPELL:IGNORE {#cspellignore-check}
+### `CSPELL check` {.notranslate lang=en}
 
 Esta verificación comprobará que todas las palabras en su lista de ignorados de
 cSpell estén normalizadas.
@@ -86,7 +86,7 @@ cSpell estén normalizadas.
 Si esta verificación falla, ejecuta `npm run fix:dict` localmente y envíe los
 cambios en una nueva confirmación.
 
-### Comprobación FILENAME {#filename-check}
+### `FILENAME check` {.notranslate lang=en}
 
 Esta verificación comprueba que todos
 [los archivos estén formateados por prettier](../style-guide/#file-format).
@@ -94,7 +94,7 @@ Esta verificación comprueba que todos
 Si esta verificación falla, ejecuta `npm fix:format` localmente y envía los
 cambios en una nueva confirmación.
 
-### FORMATO DE ARCHIVO {#file-format}
+### `FILE FORMAT` {.notranslate lang=en}
 
 Esta verificación comprueba que todos
 [los nombres de archivo estén en mayúsculas y minúsculas](../style-guide/#file-names).
@@ -102,16 +102,47 @@ Esta verificación comprueba que todos
 Si esta comprobación falla, ejecute `npm fix:filenames` localmente y envíe los
 cambios en una nueva confirmación.
 
-### COMPILACIÓN y VERIFICACIÓN DE ENLACES / actualizaciones de REFCACHE {#build-and-check-links--refcache-updates}
+### `BUILD and CHECK LINKS` {.notranslate lang=en}
 
 Esta comprobación verifica que todos los enlaces que sus confirmaciones están
 introduciendo sean funcionales.
 
 Ejecuta `npm run check:links` para verificarlos localmente. Esto también
-actualiza el caché de referencia, o `REFCACHE`. Envía cualquier cambio a
-`REFCACHE` en una nueva confirmación.
+actualiza el caché de referencia, o refcache. Envía cualquier cambio a la refcache
+en un nuevo commit.
 
-### ADVERTENCIAS en el registro de compilación {#warnings-in-build-log}
+#### Arreglar 404s
+
+Has de arreglar las URLs reportadas como **no válidas** (estado HTTP **404**), por
+el comprobador de enlaces.
+
+#### Tratamiento de enlaces externos válidos
+
+El comprobador de enlaces obtiene a veces un estado HTTP diferente a 200 (éxito)
+debido a servidores que bloquean comprobadores. Estos servidores devuelven a menudo
+estados HTTP en el rango 400 que no son 404, como 401, 403, o 406, que son los más
+comunes. Algunos servidores, como LinkedIn, devuelven un 999.
+
+Si has comprobado manualmente un enlace externo que el comprobador de enlaces no
+consigue validar con estado exitoso, añade el siguiente parámetro query a la URL
+que quieres que el comprobador de enlaces ignore: `?no-link-check`. Por ejemplo,
+<https:/some-example.org?no-link-check> es ignorado por el comprobador de enlaces.
+
+{{% alert-md title="Maintainers tip" color=info %}}
+
+Los mantenedores pueden ejecutar el siguiente script justo después de haber
+ejecutado el comprobador de enlaces para que Puppeteer intente validar enlaces
+con estados no exitosos.
+
+```sh
+./scripts/double-check-refcache-400s.mjs -f --max-num-to-update 99
+```
+
+Este script también valida fragmentos de URL que el comprobador de enlaces ignora.
+
+{{% /alert-md %}}
+
+### `WARNINGS in build log?` {.notranslate lang=en}
 
 Si esta comprobación falla, revisa el registro de compilación para ver si hay
 otros problemas potenciales. Pide ayuda a los mantenedores si no estás seguro de
