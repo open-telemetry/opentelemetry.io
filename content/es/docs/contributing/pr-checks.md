@@ -139,8 +139,8 @@ con estados no exitosos.
 ./scripts/double-check-refcache-400s.mjs -f --max-num-to-update 99
 ```
 
-Este script también valida fragmentos de URL que el comprobador de enlaces
-no chequea.
+Este script también valida fragmentos de URL que el comprobador de enlaces no
+chequea.
 
 {{% /alert-md %}}
 
