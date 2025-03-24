@@ -8,13 +8,33 @@
   docsUrl: https://aws-otel.github.io/docs/getting-started/collector
   components: [Collector]
 - name: AWS Distro for OpenTelemetry - Instrumentation for JavaScript
-  url: https://github.com/aws-observability/aws-otel-js
-  docsUrl: https://github.com/aws-observability/aws-otel-js
+  url: https://github.com/aws-observability/aws-otel-js-instrumentation/
+  docsUrl: https://aws-otel.github.io/docs/getting-started/javascript-sdk
   components: [Node]
 - name: AWS Distro for OpenTelemetry - Instrumentation for Python
-  url: https://github.com/aws-observability/aws-otel-python
-  docsUrl: https://github.com/aws-observability/aws-otel-python
+  url: https://github.com/aws-observability/aws-otel-python-instrumentation
+  docsUrl: https://aws-otel.github.io/docs/getting-started/python-sdk
   components: [Python]
+- name: AWS Distro for OpenTelemetry - Instrumentation for .NET
+  url: https://github.com/aws-observability/aws-otel-dotnet-instrumentation
+  docsUrl: https://aws-otel.github.io/docs/getting-started/dotnet-sdk
+  components: [.NET]
+- name: AWS Distro for OpenTelemetry - Instrumentation for Java
+  url: https://github.com/aws-observability/aws-otel-java-instrumentation
+  docsUrl: https://aws-otel.github.io/docs/getting-started/java-sdk
+  components: [Java]
+- name: AWS Distro for OpenTelemetry - Instrumentation for Go
+  url: https://github.com/aws-observability/aws-otel-go
+  docsUrl: https://aws-otel.github.io/docs/getting-started/go-sdk
+  components: [Go]
+- name: AWS Distro for OpenTelemetry - Instrumentation for Ruby
+  url: https://github.com/aws-observability/aws-otel-ruby
+  docsUrl: https://aws-otel.github.io/docs/getting-started/ruby-sdk
+  components: [Ruby]
+- name: AWS Distro for OpenTelemetry - Instrumentation for PHP
+  url: https://github.com/aws-observability/aws-otel-php
+  docsUrl: https://aws-otel.github.io/docs/getting-started/php-sdk
+  components: [PHP]
 - name: Grafana Alloy
   url: https://github.com/grafana/alloy
   docsUrl: https://grafana.com/docs/alloy/latest/
