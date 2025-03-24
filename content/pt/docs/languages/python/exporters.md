@@ -3,12 +3,13 @@ title: Exporters
 weight: 50
 description: Processar e exportar seus dados de telemetria
 default_lang_commit: 546f3e88ca3673de8aad69358d416256d1fe6411 # patched
+drifted_from_default: true
 cSpell:ignore: LOWMEMORY
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% docs/languages/exporters/intro python %}}
+{{% docs/languages/exporters/intro %}}
 
 ### Dependências {#otlp-dependencies}
 
