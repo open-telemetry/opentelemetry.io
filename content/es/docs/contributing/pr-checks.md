@@ -108,25 +108,26 @@ Esta comprobación verifica que todos los enlaces que sus confirmaciones están
 introduciendo sean funcionales.
 
 Ejecuta `npm run check:links` para verificarlos localmente. Esto también
-actualiza el caché de referencia, o refcache. Envía cualquier cambio a la refcache
-en un nuevo commit.
+actualiza el caché de referencia, o refcache. Envía cualquier cambio a la
+refcache en un nuevo commit.
 
 #### Arreglar 404s
 
-Has de arreglar las URLs reportadas como **no válidas** (estado HTTP **404**), por
-el comprobador de enlaces.
+Has de arreglar las URLs reportadas como **no válidas** (estado HTTP **404**),
+por el comprobador de enlaces.
 
 #### Tratamiento de enlaces externos válidos
 
 El comprobador de enlaces obtiene a veces un estado HTTP diferente a 200 (éxito)
-debido a servidores que bloquean comprobadores. Estos servidores devuelven a menudo
-estados HTTP en el rango 400 que no son 404, como 401, 403, o 406, que son los más
-comunes. Algunos servidores, como LinkedIn, devuelven un 999.
+debido a servidores que bloquean comprobadores. Estos servidores devuelven a
+menudo estados HTTP en el rango 400 que no son 404, como 401, 403, o 406, que
+son los más comunes. Algunos servidores, como LinkedIn, devuelven un 999.
 
 Si has comprobado manualmente un enlace externo que el comprobador de enlaces no
 consigue validar con estado exitoso, añade el siguiente parámetro query a la URL
 que quieres que el comprobador de enlaces ignore: `?no-link-check`. Por ejemplo,
-<https:/some-example.org?no-link-check> es ignorado por el comprobador de enlaces.
+<https:/some-example.org?no-link-check> es ignorado por el comprobador de
+enlaces.
 
 {{% alert-md title="Maintainers tip" color=info %}}
 
@@ -138,7 +139,8 @@ con estados no exitosos.
 ./scripts/double-check-refcache-400s.mjs -f --max-num-to-update 99
 ```
 
-Este script también valida fragmentos de URL que el comprobador de enlaces ignora.
+Este script también valida fragmentos de URL que el comprobador de enlaces
+ignora.
 
 {{% /alert-md %}}
 
