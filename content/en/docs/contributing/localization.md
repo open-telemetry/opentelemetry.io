@@ -25,7 +25,7 @@ guidance offered in this section.
 - **Translate**:
   - Page content, including:
     - Mermaid [diagram](#images) text fields
-    - Code comments from code excerpts
+    - Code comments from code excerpts (optional)
   - [Front matter][] field values for `title`, `linkTitle`, and `description`
   - **All** page content and front matter unless indicated otherwise
 - **Preserve** the _content_, _meaning_, and _style_ of the original text
@@ -45,6 +45,9 @@ guidance offered in this section.
 - **Translate**:
   - **File or directory** names of resources in this repository
   - [Links](#links), this includes [heading IDs](#headings).[^*]
+  - Inline code-spans like these: `inline code example`
+  - Markdown elements marked as `notranslate` (usually as a CSS class), in
+    particular for [headings](#headings)
   - [Front matter][] fields other than those listed in [Do](#do). In particular,
     do not translate `aliases`. When in doubt, ask maintainers.
   - Code

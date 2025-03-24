@@ -48,7 +48,7 @@ Outras opções de configuração estão disponíveis, incluindo:
 
 A instrumentação automática está disponível para as seguintes linguagens:
 
-- [.NET](/docs/zero-code/net/)
+- [.NET](/docs/zero-code/dotnet/)
 - [Go](/docs/zero-code/go)
 - [Java](/docs/zero-code/java/)
 - [JavaScript](/docs/zero-code/js/)

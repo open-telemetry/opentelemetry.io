@@ -9,7 +9,7 @@ This page will show you how to get started with OpenTelemetry .NET Automatic
 Instrumentation.
 
 If you are looking for a way to manually instrument your application, check out
-[this guide](/docs/languages/net/getting-started).
+[this guide](/docs/languages/dotnet/getting-started).
 
 You will learn how you can instrument a simple .NET application automatically,
 in such a way that [traces][], [metrics][] and [logs][] are emitted to the
@@ -28,7 +28,7 @@ The following example uses a basic
 application. If you are not using ASP.NET Core, that's OK — you can still use
 OpenTelemetry .NET Automatic Instrumentation.
 
-For more elaborate examples, see [examples](/docs/languages/net/examples/).
+For more elaborate examples, see [examples](/docs/languages/dotnet/examples/).
 
 ### Create and launch an HTTP Server
 

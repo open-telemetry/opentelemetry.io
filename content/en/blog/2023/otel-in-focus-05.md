@@ -86,7 +86,7 @@ exporting, and suppressing instrumentation.
   `opentelemetry.sdk.metrics.view`
 - Fix headers types mismatch for OTLP Exporters
 
-#### [.NET](/docs/languages/net/)
+#### [.NET](/docs/languages/dotnet/)
 
 [Version 1.5.0-rc1](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.5.0-rc.1)
 includes many bugfixes across a variety of packages.

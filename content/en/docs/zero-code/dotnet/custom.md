@@ -87,4 +87,4 @@ To create your custom metrics manually, follow these steps:
 
 ## Further reading
 
-- [OpenTelemetry.io documentation for .NET Manual Instrumentation](/docs/languages/net/instrumentation#setting-up-an-activitysource)
+- [OpenTelemetry.io documentation for .NET Manual Instrumentation](/docs/languages/dotnet/instrumentation#setting-up-an-activitysource)
