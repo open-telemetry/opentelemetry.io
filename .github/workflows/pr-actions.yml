@@ -128,12 +128,13 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      actions: write    # We need this permission to re-run workflows
 
     steps:
       - name: Context info
         run: |
-          echo $PR_NUM
-          echo $COMMENT
+          echo "PR Number: $PR_NUM"
+          echo "Comment: $COMMENT"
 
       - uses: actions/checkout@v4
 
@@ -142,28 +143,22 @@ jobs:
           gh pr comment $PR_NUM -b "You triggered /nudge action to restart PR workflows at $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
-      
-      - name: Checkout PR
-        run: gh pr checkout $PR_NUM -b "nudge-action-${RANDOM}"
-        env:
-          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
-      - name: Trigger workflow reruns
+      - name: Rerun failed workflows
         run: |
-          # Create an empty commit to trigger all PR workflows
-          echo "Creating an empty commit to trigger CI checks"
-          git config --local user.email "$USER_EMAIL"
-          git config --local user.name "$USER_NAME"
-
-          current_branch=$(git rev-parse --abbrev-ref HEAD)
-          echo "current_branch=$current_branch"
-          remote_repo=$(git config --get branch.${current_branch}.remote)
-          echo "remote_repo=$remote_repo"
-          remote_branch=$(git config --get branch.${current_branch}.merge)
-          echo "remote_branch=$remote_branch"
-
-          git commit --allow-empty -m "Empty commit to trigger CI checks (via /nudge)"
-          git push ${remote_repo} HEAD:${remote_branch}
+          # Get the PR's latest commit SHA
+          SHA=$(gh pr view $PR_NUM --json headRefOid -q .headRefOid)
+          echo "Latest commit SHA: $SHA"
+          
+          # List and rerun all workflows for this PR
+          gh run list --branch $(gh pr view $PR_NUM --json headRefName -q .headRefName) \
+            --limit 20 \
+            --json status,databaseId,name \
+            --jq '.[] | select(.status != "completed" or .status == "completed") | .databaseId' | \
+          while read -r run_id; do
+            echo "Re-running workflow run ID: $run_id"
+            gh run rerun $run_id
+          done
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
@@ -172,7 +167,7 @@ jobs:
         run: |
           gh pr comment $PR_NUM --body "$(cat <<EOF
           \`/nudge\` action was [successful]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID).
-          Workflows should restart shortly.
+          Workflows are being restarted.
           EOF
           )"
         env:
