@@ -137,14 +137,14 @@ jobs:
           echo "PR Number: $PR_NUM"
           echo "Comment: $COMMENT"
 
+      - uses: actions/checkout@v4
+        
       - name: Write start comment
         run: |
           gh pr comment $PR_NUM -b "You triggered /nudge action to restart PR workflows at $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
-
-      - uses: actions/checkout@v4
-
+      
       - name: Checkout PR
         run: gh pr checkout $PR_NUM -b "nudge-action-${RANDOM}"
         env:
