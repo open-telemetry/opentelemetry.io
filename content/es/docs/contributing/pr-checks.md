@@ -140,7 +140,7 @@ con estados no exitosos.
 ```
 
 Este script también valida fragmentos de URL que el comprobador de enlaces
-ignora.
+no chequea.
 
 {{% /alert-md %}}
 
