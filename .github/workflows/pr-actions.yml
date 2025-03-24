@@ -122,23 +122,21 @@ jobs:
   nudge-action:
     name: Nudge PR workflows
     runs-on: ubuntu-latest
-
     if: |
       github.event.issue.pull_request &&
       startsWith(github.event.comment.body, '/nudge')
     permissions:
       contents: write
       pull-requests: write
-      actions: write
 
     steps:
       - name: Context info
         run: |
-          echo "PR Number: $PR_NUM"
-          echo "Comment: $COMMENT"
+          echo $PR_NUM
+          echo $COMMENT
 
       - uses: actions/checkout@v4
-        
+
       - name: Write start comment
         run: |
           gh pr comment $PR_NUM -b "You triggered /nudge action to restart PR workflows at $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
