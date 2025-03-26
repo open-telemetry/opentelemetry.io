@@ -59,8 +59,6 @@ Details:
 
 ## Why was this done?
 
-Some of the details for why this 2.0 was done can be found
-[in this issue](https://github.com/open-telemetry/opentelemetry-js/issues/4083).
 We knew we would gain the greatest benefit by allowing breaking changes to
 improve things related to:
 
@@ -72,6 +70,10 @@ improve things related to:
   feature and maintenance work.
 
 This also begins our goal of releasing a new major release every year.
+
+For a more detailed explanation of why 2.0, see issue [#4083].
+
+[#4083]: https://github.com/open-telemetry/opentelemetry-js/issues/4083
 
 ## How can I get involved?
 
