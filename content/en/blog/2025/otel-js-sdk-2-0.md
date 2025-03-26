@@ -33,7 +33,7 @@ guide][].
 
 ## What has changed?
 
-### Summary
+In summary:
 
 - The **minimum supported Node.js has been raised to `^18.19.0 || >=20.6.0`**.
   This means that support for Node.js 14 and 16 has been dropped.
@@ -44,7 +44,7 @@ guide][].
   - for notes on migrating to 2.x / 0.200.x see
     [the upgrade guide](https://github.com/open-telemetry/opentelemetry-js/tree/main/doc/upgrade-to-2.x.md)
 
-### Details
+Details:
 
 - [Node.js supported versions](https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#-nodejs-supported-versions)
 - [TypeScript supported versions](https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#-typescript-supported-versions)
