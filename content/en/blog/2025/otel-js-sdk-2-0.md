@@ -71,7 +71,7 @@ improve things related to:
 - Velocity: reducing code complexity and removing deprecated fields for faster
   feature and maintenance work.
 
-This also begins our goal of releasing a new major release every year.
+This also begins our goal of releasing a new SDK major release every year.
 
 For a more detailed explanation of why 2.0, see issue [#4083].
 
