@@ -8,8 +8,10 @@ sig: OpenTelemetry JS
 cSpell:ignore: Danielson
 ---
 
-Exciting news: [OpenTelemetry JavaScript](/docs/languages/js/) has released
-[SDK 2.0](https://github.com/open-telemetry/opentelemetry-js/releases/tag/v2.0.0)!
+Exciting news: [OpenTelemetry JavaScript](/docs/languages/js/) has released [SDK
+2.0][v2.0.0]!
+
+[v2.0.0]: https://github.com/open-telemetry/opentelemetry-js/releases/tag/v2.0.0
 
 {{% alert-md title="Migration guide" color="info" %}}
 
@@ -77,11 +79,10 @@ For a more detailed explanation of why 2.0, see issue [#4083].
 
 ## How can I get involved?
 
-- Try out the
-  [v2.0.0](https://github.com/open-telemetry/opentelemetry-js/releases/tag/v2.0.0)
-  and
-  [v0.200.0](https://github.com/open-telemetry/opentelemetry-js/releases/tag/experimental%2Fv0.200.0)
-  releases and provide feedback
+[v0.200.0]:
+  https://github.com/open-telemetry/opentelemetry-js/releases/tag/experimental%2Fv0.200.0
+
+- Try out the [v2.0.0] and [v0.200.0] releases and provide feedback
 - Review our
   [contributing guide](https://github.com/open-telemetry/opentelemetry-js/blob/main/CONTRIBUTING.md)
   for details on contributing
