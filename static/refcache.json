@@ -303,6 +303,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-02T10:59:14.907548-05:00"
   },
+  "https://cloud-native.slack.com/archives/C01NL1GRPQR": {
+    "StatusCode": 200,
+    "LastSeen": "2025-03-20T10:14:45.444428061Z"
+  },
   "https://cloud-native.slack.com/archives/C01NP3BV26R": {
     "StatusCode": 200,
     "LastSeen": "2024-12-18T05:52:49.606187-05:00"
@@ -8687,9 +8691,61 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:42.172729-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-20T10:13:41.886468706Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#-drop-windowotel_-support-in-browsers": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-20T10:14:05.826276468Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#-es2022-compilation-target": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-20T10:14:01.473606522Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#-nodejs-supported-versions": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-20T10:13:54.514932507Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#-opentelemetrycore-api-changes": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-20T10:14:11.949279247Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#-opentelemetryresources-api-changes": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-20T10:14:09.243229009Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#-opentelemetryresources-changes-for-implementors-of-resource-detectors": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-20T10:14:23.176428015Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#-opentelemetrysdk-metrics-api-changes": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-20T10:14:19.596391096Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#-other-changes": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-20T10:14:25.673601051Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#-tracing-sdk-api-changes": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-20T10:14:16.442116351Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#-typescript-supported-versions": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-20T10:13:58.466804234Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#what-is-js-sdk-2x": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-20T10:13:44.541686095Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-js/discussions": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T12:10:34.858443-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/issues/4083": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-20T10:14:29.294035439Z"
   },
   "https://github.com/open-telemetry/opentelemetry-js/issues/4551": {
     "StatusCode": 206,
@@ -8706,6 +8762,18 @@
   "https://github.com/open-telemetry/opentelemetry-js/releases/latest": {
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:31:44.055855-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/releases/tag/experimental%2Fv0.200.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-20T10:14:38.07150847Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/releases/tag/v2.0.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-20T10:14:33.420944891Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/tree/main/doc/upgrade-to-2.x.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-20T10:13:48.375113273Z"
   },
   "https://github.com/open-telemetry/opentelemetry-js/tree/main/examples/opentelemetry-web": {
     "StatusCode": 206,
@@ -13486,6 +13554,10 @@
   "https://groups.google.com/a/opentelemetry.io/g/calendar-go": {
     "StatusCode": 200,
     "LastSeen": "2025-01-17T12:58:38.699931Z"
+  },
+  "https://groups.google.com/a/opentelemetry.io/g/calendar-js": {
+    "StatusCode": 200,
+    "LastSeen": "2025-03-20T10:14:41.765468714Z"
   },
   "https://groups.google.com/a/opentelemetry.io/g/calendar-maintainer-meeting": {
     "StatusCode": 200,
