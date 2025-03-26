@@ -15,7 +15,7 @@ Exciting news: [OpenTelemetry JavaScript](/docs/languages/js/) has released [SDK
 
 {{% alert-md title="Migration guide" color="info" %}}
 
-For a detailed description of breaking changes, see the **migration guide**
+For a detailed description of breaking changes, see the **migration guide**:
 [Upgrade to OpenTelemetry JS SDK 2.x][migration guide].
 
 [migration guide]:
@@ -42,9 +42,9 @@ In summary:
 - The **minimum supported TypeScript version has been raised to 5.0.4**.
 - The **compilation target for transpiled TypeScript has been raised to ES2022**
   (from ES2017).
-- The **public interface has changed**
-  - for notes on migrating to 2.x / 0.200.x see
-    [the upgrade guide](https://github.com/open-telemetry/opentelemetry-js/tree/main/doc/upgrade-to-2.x.md)
+- The **public interface has changed**.
+  - For notes on migrating to 2.x / 0.200.x, see
+    [the upgrade guide](https://github.com/open-telemetry/opentelemetry-js/tree/main/doc/upgrade-to-2.x.md).
 
 Details:
 
@@ -66,7 +66,7 @@ improve things related to:
 
 - Optimization: removing classes and namespaces to allow better minification and
   tree-shaking.
-- Better Tooling and Support: dropping old runtimes and tool versions to take
+- Better tooling and support: dropping old runtimes and tool versions to take
   advantage of enhanced ESM support and simplify documentation.
 - Velocity: reducing code complexity and removing deprecated fields for faster
   feature and maintenance work.
@@ -82,10 +82,10 @@ For a more detailed explanation of why 2.0, see issue [#4083].
 [v0.200.0]:
   https://github.com/open-telemetry/opentelemetry-js/releases/tag/experimental%2Fv0.200.0
 
-- Try out the [v2.0.0] and [v0.200.0] releases and provide feedback
+- Try out the [v2.0.0] and [v0.200.0] releases and provide feedback.
 - Review our
   [contributing guide](https://github.com/open-telemetry/opentelemetry-js/blob/main/CONTRIBUTING.md)
-  for details on contributing
+  for details on contributing.
 - Attend our
-  [SIG meetings](https://groups.google.com/a/opentelemetry.io/g/calendar-js)
-- Collaborate on [Slack](https://cloud-native.slack.com/archives/C01NL1GRPQR)
+  [SIG meetings](https://groups.google.com/a/opentelemetry.io/g/calendar-js).
+- Collaborate on [Slack](https://cloud-native.slack.com/archives/C01NL1GRPQR).
