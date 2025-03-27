@@ -15,7 +15,7 @@ sig: Developer Experience
 The OpenTelemetry Developer Experience SIG recently surveyed the community to
 better understand where the SIG could have the most impact on improving the
 developer experience. We received 218 responses, which we will use to guide our
-prioritization of work within the SIG. This post summarises our findings and
+prioritization of work within the SIG. This post summarizes our findings and
 where we will focus in the near term.
 
 Thank you to all those who participated in the survey\! If you are interested in
