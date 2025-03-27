@@ -1737,6 +1737,11 @@ approvers:
       - lambda-extension-approvers
     html_url: https://github.com/pragmaticivan
     avatar_url: https://avatars.githubusercontent.com/u/301291?v=4
+  - name: psx95
+    teams:
+      - cpp-approvers
+    html_url: https://github.com/psx95
+    avatar_url: https://avatars.githubusercontent.com/u/22191775?v=4
   - name: RassK
     teams:
       - dotnet-instrumentation-approvers
