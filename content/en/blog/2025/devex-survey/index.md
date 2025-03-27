@@ -84,7 +84,7 @@ getting started with OpenTelemetry from the website and GitHub repositories for
 languages, 75.1% and 43.8%, while 25.1% were starting from their vendor’s
 documentation. However, unclear documentation took the top spot in the three
 questions related to getting started with manual instrumentation, auto
-instrumentation and setting up the SDK. In the collector's case, it took second
+instrumentation and setting up the SDK. In the Collector's case, it took second
 place to “configuring the processors”.
 
 More details on the user experience with documentation can be found in the
