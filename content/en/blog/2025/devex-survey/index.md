@@ -8,6 +8,7 @@ author: >
   Gordon](https://github.com/stevejgordon) (Elastic), [Damien
   Mathieu](https://github.com/dmathieu) (Elastic)
 sig: Developer Experience
+cSpell:ignore: Sloughter OTTL
 ---
 
 # Insights from the OpenTelemetry Developer Experience Survey
