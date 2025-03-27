@@ -1,7 +1,7 @@
 ---
 title: Insights from the OpenTelemetry Developer Experience Survey
 linkTitle: Insights from the Developer Experience Survey
-date: 2025-03-26
+date: 2025-03-27
 author: >
   [Tristan Sloughter](https://github.com/tsloughter) (MyDecisiveAI), [Juliano
   Costa](https://github.com/julianocosta89) (Datadog), [Steve
@@ -146,3 +146,11 @@ The results from those who responded are invaluable resources as we work to
 improve the OpenTelemetry developer experience. We will now direct some of this
 feedback to the respective SIGs, work on prototyping some solutions and follow
 up with the other teams.
+
+
+Thank you again to all those who participated in the survey\! Even though the
+survey is now over, we do still welcome feedback. Feel free to reach out to us
+on [Slack, or during our weekly
+meetings](https://github.com/open-telemetry/community/?tab=readme-ov-file#cross-cutting-sigs)
+if you want to provide additional informations, or want to join us.
+
