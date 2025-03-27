@@ -60,13 +60,17 @@ deploying OpenTelemetry in Production. Below are the main areas of concern:
 The survey responses came from users, of whom the majority use OpenTelemetry in
 production (83%) and do not work for a vendor (77.4%). 82% consider their
 organization to be at an intermediate or advanced phase of their journey with
-observability. The platforms used leaned towards Kubernetes (68.2%) and AWS
+observability.
+
+The platforms used leaned towards Kubernetes (68.2%) and AWS
 (34.6%), with bare metal still making up a respectable percentage (12%).
+
 Programming language usage was split between the usual suspects of Go, Java,
 JavaScript, Python and .NET, but had a wide spread and even languages without
-official API/SDK implementations, as shown in the second graph below. While
-those working on backends or operations were the majority of respondents, mobile
-and browser were represented as well, see the third graph:
+official API/SDK implementations, as shown in the second graph below.
+
+While those working on backends or operations were the majority of respondents,
+mobile and browser were represented as well, see the third graph:
 
 ![Forms response chart. Question title: Where in your Observability journey is
 your organization?. Number of responses: 217 responses.](image1.png)
