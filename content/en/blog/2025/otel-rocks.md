@@ -17,7 +17,7 @@ community members and gathered a wealth of valuable insights. Due to time
 constraints, not all the material could be included in the presentation, so this
 is an attempt to do justice to the community's contributions.
 
-## Where OTel Falls Short
+## Where OTel falls short
 
 In their unfiltered thoughts on OTel, engineers and SREs shared common
 challenges they faced. Elena from Delivery Hero highlighted the "absence of a
@@ -44,7 +44,7 @@ semantic conventions. Adriel noted that "it took me a lot of conceptual overhead
 to understand it." Alexandre also mentioned that the documentation, while
 improving, could still benefit from more examples.
 
-## Why OTel Rocks
+## Why OTel rocks
 
 Despite the challenges, our interviewees also acknowledged OTel's significant
 benefits.
@@ -77,7 +77,7 @@ libraries and internal collectors, leading to inconsistencies and broken traces.
 OTel provided a "single library, a single standard" that significantly improved
 data quality.
 
-### It’s about the Community!
+### It’s about the community!
 
 The OpenTelemetry community is highly regarded by its members, with Adriel
 Perkins describing it as his first experience of being actively involved in open
@@ -96,7 +96,7 @@ indicates the community's commitment to understanding and improving the
 contributor experience. Overall, the community fosters a supportive and
 collaborative environment where members can learn and grow.
 
-## The Verdict
+## The verdict
 
 Our interviews revealed a complex relationship with OTel. It's not a perfect
 solution, and it comes with its fair share of challenges. However, for those
