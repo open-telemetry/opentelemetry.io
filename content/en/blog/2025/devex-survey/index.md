@@ -96,8 +96,8 @@ End User SIG.
 Getting started with the Collector was shown to lean towards the fairly easy,
 though based on results for the question asking for problems with operating the
 Collector and the overall experience question, it seems clear there is a gap between
-getting started and operating with more complex pipelines or in larger deployments,
-more on this in the Future Plans section.
+getting started and operating with more complex pipelines or in larger deployments.
+More on this in the Future Plans section.
 
 Interestingly, _collector-contrib_ had a large percentage of the responses to
 the question, “Which collector do you use?”. Sadly, it is unclear if this is due
