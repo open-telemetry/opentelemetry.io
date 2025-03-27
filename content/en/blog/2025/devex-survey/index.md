@@ -19,7 +19,7 @@ developer experience. We received 218 responses, which we will use to guide our
 prioritization of work within the SIG. This post summarizes our findings and
 where we will focus in the near term.
 
-Thank you to all those who participated in the survey\! If you are interested in
+Thank you to all those who participated in the survey! If you are interested in
 joining us in these efforts or providing additional insights on where you think
 the developer experience of OpenTelemetry can be improved, please don’t hesitate
 to reach out. Contact information for the SIG can be found in the Community
@@ -149,7 +149,7 @@ feedback to the respective SIGs, work on prototyping some solutions and follow
 up with the other teams.
 
 
-Thank you again to all those who participated in the survey\! Even though the
+Thank you again to all those who participated in the survey! Even though the
 survey is now over, we do still welcome feedback. Feel free to reach out to us
 on [Slack, or during our weekly
 meetings](https://github.com/open-telemetry/community/?tab=readme-ov-file#cross-cutting-sigs)
