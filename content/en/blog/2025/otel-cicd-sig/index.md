@@ -279,7 +279,7 @@ Want to learn more? Want to get involved in shaping CI/CD Observability?
 We invite developers and practitioners to participate in the discussions,
 contribute ideas, and help shape the future of CI/CD observability and the
 OpenTelemetry semantic conventions. Discussion takes place in the
-[CNCF Slack](https://slack.cncf.io/) workspace under the `#cicd-o11y` channel,
+[CNCF Slack](https://slack.cncf.io/) workspace under the `#otel-cicd` channel,
 and you can chime in on any of the GitHub issues mentioned throughout this
 article and join the CICD SIG
 [weekly calls](https://calendar.google.com/calendar?cid=Z29vZ2xlLmNvbV9iNzllM2U5MGo3YmJzYTJuMnA1YW41bGY2MEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t)
