@@ -87,7 +87,7 @@
 
       <button class="btn btn-outline-secondary dropdown-toggle" id="languageDropdown" type="button"
         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
-      <div class="dropdown-menu" id="languageFilter">
+      <div class="dropdown-menu language-dropdown" id="languageFilter">
         <li><a value="all" class="dropdown-item">Any Language</a></li>
         <li><hr class="dropdown-divider"></li>
         {{ range (where $langs "isOfficial" true) -}}
@@ -136,14 +136,14 @@
     <span role="status">Loading results…</span>
   </div>
 
-  <!-- When search hs no result -->
-      <div style="display: none; padding:20px; text-align: center;" id="no-search-result">
-        <div style="margin-left: auto; margin-right: auto; width: fit-content;">
+  <!-- When search has no result -->
+      <div class="search-not-found" id="no-search-result">
+        <div class="search-not-found-body">
           {{ with resources.Get "icons/homepage-hero-as-background_hu89650641306215219.jpg" }}
-            <img style="border: none; margin-left: 40px;" src="{{ .RelPermalink }}" width="400" alt="no result found">
+            <img src="{{ .RelPermalink }}" alt="no result found">
           {{ end }}
         </div>
-          <p style="color: #4f62ad; font-size: 28px; margin-bottom: 0;">Oops no results found</p>
+          <p class="search-not-found-text">Oops no results found</p>
           <p>No results match the filter criteria. Remove filter or clear all filters to show results</p>
           <button type="button" class="btn btn-outline-danger"
           onclick="document.getElementById('input-s').value = ''; document.getElementById('input-language').value = 'all';document.getElementById('input-component').value = 'all';document.getElementById('searchForm').submit();">Reset filters</button>
