@@ -1,8 +1,8 @@
 ---
 title: Feedback Survey
-redirect: https://forms.gle/xLdJCtRpBaWuDBbs8
+redirect: https://forms.gle/TomwH6tFGecZCUNy9
 manualLinkTarget: _blank
-_build: { render: link }
+build: { render: link }
 weight: 60
 aliases: [/community-feedback]
 ---

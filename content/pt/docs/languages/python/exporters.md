@@ -2,8 +2,7 @@
 title: Exporters
 weight: 50
 description: Processar e exportar seus dados de telemetria
-default_lang_commit: 546f3e88ca3673de8aad69358d416256d1fe6411 # patched
-drifted_from_default: true
+default_lang_commit: dc20c29a4c79ad0424c0fcc3271216af7e035d9b
 cSpell:ignore: LOWMEMORY
 ---
 
@@ -59,7 +58,7 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 
 # Nome do serviço é necessário para a maioria dos backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 
@@ -91,7 +90,7 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 
 # Nome do serviço é necessário para a maioria dos backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 
@@ -131,7 +130,7 @@ from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader, Cons
 # Nome do serviço é necessário para a maioria dos backends,
 # e embora não seja necessário para exportação no console,
 # é bom definir o nome do serviço de qualquer maneira.
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 
@@ -145,7 +144,7 @@ meterProvider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(meterProvider)
 ```
 
-{{% alert title="Nota" color="info" %}}
+{{% alert title="Nota" %}}
 
 Existem predefinições de temporalidade para cada tipo de instrumentação. Essas
 predefinições podem ser definidas com a variável de ambiente
@@ -162,7 +161,6 @@ Os valores disponíveis e suas configurações correspondentes para esta variáv
 de ambiente são:
 
 - `CUMULATIVE`
-
   - `Counter`: `CUMULATIVE`
   - `UpDownCounter`: `CUMULATIVE`
   - `Histogram`: `CUMULATIVE`
@@ -171,7 +169,6 @@ de ambiente são:
   - `ObservableGauge`: `CUMULATIVE`
 
 - `DELTA`
-
   - `Counter`: `DELTA`
   - `UpDownCounter`: `CUMULATIVE`
   - `Histogram`: `DELTA`
@@ -219,7 +216,7 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
 # Nome do serviço é necessário para a maioria dos backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 
@@ -274,7 +271,7 @@ from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 
@@ -295,7 +292,7 @@ from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 

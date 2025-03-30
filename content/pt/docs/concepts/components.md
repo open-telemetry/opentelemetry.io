@@ -2,8 +2,7 @@
 title: Componentes
 description: Os principais componentes que compõem o OpenTelemetry
 weight: 20
-default_lang_commit: f5c228e5d03deaabc00d5920c5757bf7bd23e3f3
-drifted_from_default: true
+default_lang_commit: 99a39c5e4e51daba968bfbb3eb078be4a14ad363
 ---
 
 O OpenTelemetry é atualmente composto por vários componentes principais:
@@ -39,14 +38,14 @@ seguinte:
 
 Para mais informações, consulte [especificação](/docs/specs/).
 
-## Collector
+## Collector {#collector}
 
-O Collector é um proxy para qualquer sistema de telemetria que pode receber...,
-processar e exportar dados de telemetria. Ele suporta o recebimento de dados de
-telemetria em vários formatos. (Por exemplo, OTLP, Jaeger, Prometheus, bem como
-muitas outras ferramentas ) .e enviar dados para um ou mais sistema de
-telemetria. Ele também suporta o processamento e a filtragem de dados de
-telemetria antes de serem exportados.
+O Collector é um proxy para qualquer sistema de telemetria que pode receber,
+processar e exportar dados de telemetria. O Collector suporta o recebimento de
+dados de telemetria em vários formatos (por exemplo, OTLP, Jaeger, Prometheus,
+bem como muitas outras ferramentas comerciais/proprietárias) e enviar dados para
+um ou mais sistema de telemetria. E também suporta o processamento e a filtragem
+de dados de telemetria antes de serem exportados.
 
 Para mais informações, consulte [Coletor](/docs/collector/).
 
@@ -76,7 +75,7 @@ Para mais informações, consulte
 
 ### Exporters {#exporters}
 
-{{% pt/docs/languages/exporters/intro %}}
+{{% docs/languages/exporters/intro %}}
 
 ### Instrumentação sem código {#zero-code-instrumentation}
 

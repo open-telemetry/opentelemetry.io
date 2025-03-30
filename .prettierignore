@@ -7,16 +7,11 @@
 
 /content/en/blog/2019
 /content/en/blog/202[23]
-# TEMPORARY until the PR introducing this file is merged:
-/content/en/docs/_includes/exporters/intro.md
 
+/content/bn
 /content/ja
 /content/zh
 
-# Ignore content-modules except for published Community pages
+# Ignore content-modules
 
 /content-modules/*
-!/content-modules/community
-/content-modules/community/*
-!/content-modules/community/mission-vision-values.md
-!/content-modules/community/roadmap.md

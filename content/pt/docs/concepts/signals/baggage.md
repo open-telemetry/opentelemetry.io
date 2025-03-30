@@ -78,6 +78,7 @@ Como um dos casos de uso comum da Bagagem é adicionar dados aos
 linguagens possuem Processadores de Trecho de Bagagem que adicionam dados da
 Bagagem como atributos na criação de trechos.
 
-Para mais informações, consulte a [especificação da Bagagem].
+Para mais informações, consulte a [especificação da
+Bagagem][baggage specification].
 
-[especificação da Bagagem]: /docs/specs/otel/overview/#baggage-signal
+[baggage specification]: /docs/specs/otel/overview/#baggage-signal

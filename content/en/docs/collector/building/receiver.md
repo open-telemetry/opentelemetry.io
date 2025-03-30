@@ -9,8 +9,8 @@ cSpell:ignore: backendsystem crand debugexporter loggingexporter mapstructure pc
 <!-- markdownlint-disable heading-increment no-duplicate-heading -->
 
 If you are reading this tutorial, you probably already have an idea of the
-OpenTelemetry concepts behind distributed tracing, but if you don't you can
-quickly read through it [here](/docs/concepts/signals/traces/).
+OpenTelemetry concepts behind
+[distributed tracing](/docs/concepts/signals/traces/).
 
 Here is the definition of those concepts according to OpenTelemetry:
 
@@ -198,8 +198,8 @@ go mod init github.com/open-telemetry/opentelemetry-tutorials/trace-receiver/tai
 >
 > 1. The module path above is a mock path, which can be your desired private or
 >    public path.
-> 2. The initial code is hosted
->    [here](https://github.com/rquedas/otel4devs/tree/main/collector/receiver/trace-receiver).
+> 2. See the
+>    [initial trace-receiver code](https://github.com/rquedas/otel4devs/tree/main/collector/receiver/trace-receiver).
 
 It's recommended to enable Go
 [Workspaces](https://go.dev/doc/tutorial/workspaces) since we're going to manage
@@ -269,7 +269,7 @@ type Config struct {
 }
 ```
 
-{{% alert title="Check your work" color="primary" %}}
+{{% alert title="Check your work" %}}
 
 - Added the `Interval` and the `NumberOfTraces` fields to properly have access
   to their values from the config.yaml.
@@ -279,7 +279,7 @@ type Config struct {
 Now that you have access to the settings, you can provide any kind of validation
 needed for those values by implementing the `Validate` method according to the
 optional
-[ConfigValidator](<https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/component/config.go#L50>)
+[ConfigValidator](https://github.com/open-telemetry/opentelemetry-collector/blob/677b87e3ab5c615bc3f93b8f99bb1fa5be951751/component/config.go#L28)
 interface.
 
 In this case, the `interval` value will be optional (we will look at generating
@@ -317,7 +317,7 @@ func (cfg *Config) Validate() error {
 }
 ```
 
-{{% alert title="Check your work" color="primary" %}}
+{{% alert title="Check your work" %}}
 
 - Imported the `fmt` package to properly format print error messages.
 - Added the `Validate` method to the Config struct to check if the `interval`
@@ -456,7 +456,7 @@ func NewFactory() receiver.Factory {
 }
 ```
 
-{{% alert title="Check your work" color="primary" %}}
+{{% alert title="Check your work" %}}
 
 - Importing the `time` package in order to support the time.Duration type for
   the defaultInterval.
@@ -577,7 +577,7 @@ func NewFactory() receiver.Factory {
 }
 ```
 
-{{% alert title="Check your work" color="primary" %}}
+{{% alert title="Check your work" %}}
 
 - Importing the `context` package in order to support the `context.Context` type
   referenced in the `createTracesReceiver` function.
@@ -676,7 +676,7 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 }
 ```
 
-{{% alert title="Check your work" color="primary" %}}
+{{% alert title="Check your work" %}}
 
 - Importing the `context` package which is where the `Context` type and
   functions are declared.
@@ -736,8 +736,8 @@ type tailtracerReceiver struct {
 }
 
 func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host component.Host) error {
-    tailtracerRcvr.host = host
-    ctx = context.Background()
+	tailtracerRcvr.host = host
+	ctx = context.Background()
 	ctx, tailtracerRcvr.cancel = context.WithCancel(ctx)
 
 	return nil
@@ -751,7 +751,7 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 }
 ```
 
-{{% alert title="Check your work" color="primary" %}}
+{{% alert title="Check your work" %}}
 
 - Updated the `Start()` method by adding the initialization to the `host` field
   with the `component.Host` reference passed by the Collector and the `cancel`
@@ -837,7 +837,7 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 }
 ```
 
-{{% alert title="Check your work" color="primary" %}}
+{{% alert title="Check your work" %}}
 
 - Importing the `go.opentelemetry.io/collector/consumer` which is where the
   pipeline's consumer types and interfaces are declared.
@@ -932,7 +932,7 @@ func NewFactory() receiver.Factory {
 }
 ```
 
-{{% alert title="Check your work" color="primary" %}}
+{{% alert title="Check your work" %}}
 
 - Added a variable called `logger` and initialized it with the Collector's
   logger that is available as a field named `Logger` within the
@@ -984,13 +984,13 @@ func components() (otelcol.Factories, error) {
 	var err error
 	factories := otelcol.Factories{}
 
-	factories.Extensions, err = extension.MakeFactoryMap(
+	factories.Extensions, err = otelcol.MakeFactoryMap[extension.Factory](
 	)
 	if err != nil {
 		return otelcol.Factories{}, err
 	}
 
-	factories.Receivers, err = receiver.MakeFactoryMap(
+	factories.Receivers, err = otelcol.MakeFactoryMap[receiver.Factory](
 		otlpreceiver.NewFactory(),
 		tailtracer.NewFactory(), // newly added line
 	)
@@ -998,7 +998,7 @@ func components() (otelcol.Factories, error) {
 		return otelcol.Factories{}, err
 	}
 
-	factories.Exporters, err = exporter.MakeFactoryMap(
+	factories.Exporters, err = otelcol.MakeFactoryMap[exporter.Factory](
 		debugexporter.NewFactory(),
 		otlpexporter.NewFactory(),
 	)
@@ -1006,7 +1006,7 @@ func components() (otelcol.Factories, error) {
 		return otelcol.Factories{}, err
 	}
 
-	factories.Processors, err = processor.MakeFactoryMap(
+	factories.Processors, err = otelcol.MakeFactoryMap[processor.Factory](
 		batchprocessor.NewFactory(),
 	)
 	if err != nil {
@@ -1017,13 +1017,13 @@ func components() (otelcol.Factories, error) {
 }
 ```
 
-{{% alert title="Check your work" color="primary" %}}
+{{% alert title="Check your work" %}}
 
 - Importing the receiver module
   `github.com/open-telemetry/opentelemetry-tutorials/trace-receiver/tailtracer`
   module which is where the receiver types and function are.
 - Added a call to `tailtracer.NewFactory()` as a parameter of the
-  `receiver.MakeFactoryMap()` call so your `tailtracer` receiver factory is
+  `otelcol.MakeFactoryMap()` call so your `tailtracer` receiver factory is
   properly added to the `factories` map.
 
 {{% /alert %}}
@@ -1336,7 +1336,7 @@ func getRandomNumber(min int, max int) int {
 }
 ```
 
-{{% alert title="Check your work" color="primary" %}}
+{{% alert title="Check your work" %}}
 
 - Imported the `math/rand` and `time` packages to support the implementation of
   the `generateRandomNumber` function.
@@ -1433,7 +1433,7 @@ func generateTraces(numberOfTraces int) ptrace.Traces{
 }
 ```
 
-{{% alert title="Check your work" color="primary" %}}
+{{% alert title="Check your work" %}}
 
 - Added the `resourceSpan` variable and initialized it with the `ResourceSpan`
   reference returned by the `traces.ResourceSpans().AppendEmpty()` call.
@@ -1491,7 +1491,7 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm){
 }
 ```
 
-{{% alert title="Check your work" color="primary" %}}
+{{% alert title="Check your work" %}}
 
 - Declared a variable called `atmAttrs` and initialized it with the
   `pcommon.Map` reference returned by the `resource.Attributes()` call.
@@ -1723,7 +1723,7 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 }
 ```
 
-{{% alert title="Check your work" color="primary" %}}
+{{% alert title="Check your work" %}}
 
 - Imported the `go.opentelemetry.io/collector/semconv/v1.9.0` package as
   `conventions`, in order to have access to all resource semantic conventions
@@ -1925,7 +1925,7 @@ func NewSpanID() pcommon.SpanID {
 }
 ```
 
-{{% alert title="Check your work" color="primary" %}}
+{{% alert title="Check your work" %}}
 
 - Imported `crypto/rand` as `crand` (to avoid conflicts with `math/rand`).
 - Added new functions `NewTraceID()` and `NewSpanID()` to generate trace ID and
@@ -1962,7 +1962,7 @@ func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpa
 }
 ```
 
-{{% alert title="Check your work" color="primary" %}}
+{{% alert title="Check your work" %}}
 
 - Added `traceId` and `backendSpanId` variables to respectively represent the
   trace and the span ID and initialized them with the helper functions created
@@ -2260,7 +2260,7 @@ func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host compon
 }
 ```
 
-{{% alert title="Check your work" color="primary" %}}
+{{% alert title="Check your work" %}}
 
 - Added a line under the `case <=ticker.C` condition calling the
   `tailtracerRcvr.nextConsumer.ConsumeTraces()` method passing the new context

@@ -8,7 +8,7 @@ cSpell:ignore: dicelib rolldice
 
 {{% include instrumentation-intro.md %}}
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 On this page you will learn how you can add traces, metrics and logs to your
 code manually. You are not limited to using one kind of instrumentation: you can
@@ -213,8 +213,8 @@ dotnet add package OpenTelemetry.Instrumentation.AspNetCore
 
 ### Initialize the SDK
 
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library, you
-don't need to initialize the SDK. {{% /alert %}}
+{{% alert title="Note" %}} If you’re instrumenting a library, you don't need to
+initialize the SDK. {{% /alert %}}
 
 It is important to configure an instance of the OpenTelemetry SDK as early as
 possible in your application.
@@ -328,8 +328,8 @@ dotnet run
 
 ### Initialize Tracing
 
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library, you
-don't need to initialize a TracerProvider. {{% /alert %}}
+{{% alert title="Note" %}} If you’re instrumenting a library, you don't need to
+initialize a TracerProvider. {{% /alert %}}
 
 To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need to
 have an initialized
@@ -634,9 +634,7 @@ var activity = MyActivitySource.StartActivity(
 
 ### Set Activity status
 
-{{% docs/languages/span-status-preamble %}}
-
-The status can be set at any time before the span is finished.
+{{% include "span-status-preamble.md" %}}
 
 It can be a good idea to record exceptions when they happen. It's recommended to
 do this in conjunction with
@@ -657,7 +655,7 @@ private int rollOnce()
         catch (Exception ex)
         {
             childActivity?.SetStatus(ActivityStatusCode.Error, "Something bad happened!");
-            childActivity?.RecordException(ex);
+            childActivity?.AddException(ex);
             throw;
         }
 

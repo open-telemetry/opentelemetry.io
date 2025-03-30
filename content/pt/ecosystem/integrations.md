@@ -3,8 +3,7 @@ title: Integrações
 description:
   Bibliotecas, serviços e aplicações com suporte nativo para o OpenTelemetry.
 aliases: [/integrations]
-default_lang_commit: 8a15d0d668c516ccb255cd0a92e0bcd442e83b4d
-drifted_from_default: true
+default_lang_commit: b6ddba1118d07bc3c8d1d07b293f227686d0290e
 ---
 
 A missão do OpenTelemetry é
@@ -57,7 +56,7 @@ incluir o seguinte:
 - Link para a documentação que explica como habilitar a observabilidade
   utilizando o OpenTelemetry
 
-{{% alert title="Nota" color="info" %}}
+{{% alert title="Nota" %}}
 
 Caso você forneça integração externa do OpenTelemetry para qualquer tipo de
 biblioteca, serviço ou aplicação,

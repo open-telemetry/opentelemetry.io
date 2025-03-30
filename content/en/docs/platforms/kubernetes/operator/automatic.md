@@ -44,7 +44,7 @@ component. If you chose not to use a Collector, you can skip to the next
 section.
 
 The Operator provides a
-[Custom Resource Definition (CRD) for the OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector)
+[Custom Resource Definition (CRD) for the OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md)
 which is used to create an instance of the Collector that the Operator manages.
 The following example deploys the Collector as a deployment (the default), but
 there are other
@@ -58,12 +58,12 @@ example that will be `demo-collector`.
 
 ```bash
 kubectl apply -f - <<EOF
-apiVersion: opentelemetry.io/v1alpha1
+apiVersion: opentelemetry.io/v1beta1
 kind: OpenTelemetryCollector
 metadata:
   name: demo
 spec:
-  config: |
+  config:
     receivers:
       otlp:
         protocols:
@@ -79,10 +79,9 @@ spec:
       batch:
         send_batch_size: 10000
         timeout: 10s
-
     exporters:
-      # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
       debug:
+        verbosity: basic
 
     service:
       pipelines:
@@ -109,7 +108,7 @@ an endpoint for auto-instrumentation in your pods.
 To be able to manage automatic instrumentation, the Operator needs to be
 configured to know what pods to instrument and which automatic instrumentation
 to use for those pods. This is done via the
-[Instrumentation CRD](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentation).
+[Instrumentation CRD](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/instrumentations.md).
 
 Creating the Instrumentation resource correctly is paramount to getting
 auto-instrumentation working. Making sure all endpoints and env vars are correct
@@ -218,7 +217,7 @@ endpoint must be able to receive OTLP over `http/proto`. Therefore, the example
 uses `http://demo-collector:4318`, which connects to the `http/proto` port of
 the `otlpreceiver` of the Collector created in the previous step.
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 [Deno's OpenTelemetry integration][deno-docs] is not yet stable. As a result all
 workloads that want to be instrumented with Deno must have the `--unstable-otel`
@@ -416,7 +415,7 @@ spec:
         value: fs,grpc # comma-separated list of the instrumentation package names without the `@opentelemetry/instrumentation-` prefix.
 ```
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 If both environment variables are set, `OTEL_NODE_ENABLED_INSTRUMENTATIONS` is
 applied first, and then `OTEL_NODE_DISABLED_INSTRUMENTATIONS` is applied to that

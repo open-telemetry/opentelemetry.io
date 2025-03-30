@@ -33,7 +33,7 @@ command:
 helm install my-otel-demo open-telemetry/opentelemetry-demo
 ```
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 The OpenTelemetry Demo Helm chart does not support being upgraded from one
 version to another. If you need to upgrade the chart, you must first delete the
@@ -41,7 +41,7 @@ existing release and then install the new version.
 
 {{% /alert %}}
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 The OpenTelemetry Demo Helm chart version 0.11.0 or greater is required to
 perform all usage methods mentioned below.
@@ -54,10 +54,10 @@ The following command will install the demo application to your Kubernetes
 cluster.
 
 ```shell
-kubectl apply --namespace otel-demo -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-demo/main/kubernetes/opentelemetry-demo.yaml
+kubectl create --namespace otel-demo -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-demo/main/kubernetes/opentelemetry-demo.yaml
 ```
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 The OpenTelemetry Demo Kubernetes manifests do not support being upgraded from
 one version to another. If you need to upgrade the demo, you must first delete
@@ -65,7 +65,7 @@ the existing resources and then install the new version.
 
 {{% /alert %}}
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 These manifests are generated from the Helm chart and are provided for
 convenience. It is recommended to use the Helm chart for installation.
@@ -82,13 +82,13 @@ LoadBalancer) with optionally deployed ingress resources.
 ### Expose services using kubectl port-forward
 
 To expose the frontend-proxy service use the following command (replace
-`my-otel-demo` with your Helm chart release name accordingly):
+`default` with your Helm chart release namespace accordingly):
 
 ```shell
-kubectl port-forward svc/my-otel-demo-frontend-proxy 8080:8080
+kubectl --namespace default port-forward svc/frontend-proxy 8080:8080
 ```
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 `kubectl port-forward` proxies the port until the process terminates. You might
 need to create separate terminal sessions for each use of
@@ -107,13 +107,13 @@ With the frontend-proxy port-forward set up, you can access:
 
 ### Expose Demo components using service or ingress configurations
 
-{{% alert title="Note" color="info" %}} We recommend that you use a values file
-when installing the Helm chart in order to specify additional configuration
-options. {{% /alert %}}
+{{% alert title="Note" %}} We recommend that you use a values file when
+installing the Helm chart in order to specify additional configuration options.
+{{% /alert %}}
 
 #### Configure ingress resources
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 Kubernetes clusters might not have the proper infrastructure components to
 enable LoadBalancer service types or ingress resources. Verify your cluster has
@@ -200,10 +200,10 @@ opentelemetry-collector:
           exporters: [spanmetrics, otlphttp/example]
 ```
 
-{{% alert title="Note" color="info" %}} When merging YAML values with Helm,
-objects are merged and arrays are replaced. The `spanmetrics` exporter must be
-included in the array of exporters for the `traces` pipeline if overridden. Not
-including this exporter will result in an error. {{% /alert %}}
+{{% alert title="Note" %}} When merging YAML values with Helm, objects are
+merged and arrays are replaced. The `spanmetrics` exporter must be included in
+the array of exporters for the `traces` pipeline if overridden. Not including
+this exporter will result in an error. {{% /alert %}}
 
 Vendor backends might require you to add additional parameters for
 authentication, please check their documentation. Some backends require

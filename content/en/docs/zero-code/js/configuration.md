@@ -17,8 +17,8 @@ and more.
 
 ## SDK and exporter configuration
 
-SDK and exporter configuration can be set using environment variables. More
-information can be found [here](/docs/languages/sdk-configuration/).
+[SDK and exporter configuration](/docs/languages/sdk-configuration/) can be set
+using environment variables.
 
 ## SDK resource detector configuration
 
@@ -86,7 +86,7 @@ instrumentations:
 OTEL_NODE_DISABLED_INSTRUMENTATIONS="fs,grpc"
 ```
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 If both environment variables are set, `OTEL_NODE_ENABLED_INSTRUMENTATIONS` is
 applied first, and then `OTEL_NODE_DISABLED_INSTRUMENTATIONS` is applied to that

@@ -140,10 +140,10 @@ DataFusion. Such resources can expedite the introduction of innovative features,
 aligning OpenTelemetry more closely with modern data pipelines that are
 increasingly pivoting towards Apache Arrow.
 
-A specification for this protocol (OTEP 0156) can be found
-[here](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0156-columnar-encoding.md).
-A reference implementation of the encoding/decoding function can be accessed
-[here](https://github.com/open-telemetry/otel-arrow).
+See the specification for this protocol
+[OTEP 0156](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0156-columnar-encoding.md).
+A reference implementation of the encoding/decoding function can be seen in
+[open-telemetry/otel-arrow](https://github.com/open-telemetry/otel-arrow).
 
 ## How can I leverage the OpenTelemetry Protocol with Apache Arrow in my deployment?
 
@@ -274,6 +274,6 @@ invaluable assistance.
 - OpenTelemetry Protocol with Apache Arrow (encoder/decoder)
   [repository](https://github.com/open-telemetry/otel-arrow).
 - Receiver
-  [documentation](https://github.com/open-telemetry/otel-arrow/blob/main/collector/receiver/otelarrowreceiver/README.md).
+  [documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/otelarrowreceiver/README.md).
 - Exporter
-  [documentation](https://github.com/open-telemetry/otel-arrow/blob/main/collector/exporter/otelarrowexporter/README.md).
+  [documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/otelarrowexporter/README.md).

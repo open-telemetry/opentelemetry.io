@@ -15,5 +15,5 @@ createdAt: 2020-11-09
 package:
   registry: gems
   name: opentelemetry-instrumentation-faraday
-  version: 0.26.0
+  version: 0.27.0
 isFirstParty: false

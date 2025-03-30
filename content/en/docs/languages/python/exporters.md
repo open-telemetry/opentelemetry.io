@@ -56,7 +56,7 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 
 # Service name is required for most backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
@@ -88,7 +88,7 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 
 # Service name is required for most backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
@@ -128,7 +128,7 @@ from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader, Cons
 # Service name is required for most backends,
 # and although it's not necessary for console export,
 # it's good to set service name anyways.
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
@@ -142,7 +142,7 @@ meterProvider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(meterProvider)
 ```
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 There are temporality presets for each instrumentation kind. These presets can
 be set with the environment variable
@@ -159,7 +159,6 @@ The available values and their corresponding settings for this environment
 variable are:
 
 - `CUMULATIVE`
-
   - `Counter`: `CUMULATIVE`
   - `UpDownCounter`: `CUMULATIVE`
   - `Histogram`: `CUMULATIVE`
@@ -168,7 +167,6 @@ variable are:
   - `ObservableGauge`: `CUMULATIVE`
 
 - `DELTA`
-
   - `Counter`: `DELTA`
   - `UpDownCounter`: `CUMULATIVE`
   - `Histogram`: `DELTA`
@@ -216,7 +214,7 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
 # Service name is required for most backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
@@ -271,7 +269,7 @@ from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
@@ -292,7 +290,7 @@ from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 

@@ -13,9 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # this is needed in order to do the rebase below
+          # this is needed to do the rebase below
           fetch-depth: 0
-          # this is needed in order to trigger workflows when pushing new commits to the PR
+          # this is needed to trigger workflows when pushing new commits to the PR
           token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
       - name: Set environment variables
@@ -25,11 +25,11 @@ jobs:
           branch_prefix="opentelemetrybot/semconv-integration"
 
           version=$(git branch -r \
-                        | grep "^ *origin/$branch_prefix-v[0-9]+\.[0-9]+\..*-dev" \
+                        | grep -E "^ *origin/$branch_prefix-v[0-9]+\.[0-9]+\..*-dev" \
                         | sed "s|^ *origin/$branch_prefix-||" \
                         | sed "s|-dev$||")
 
-          if [[ -z "$versions" ]]; then
+          if [[ -z "$version" ]]; then
             latest_version=$(gh release view \
                           --repo open-telemetry/semantic-conventions \
                           --json tagName \
@@ -77,6 +77,7 @@ jobs:
 
           if git ls-remote --exit-code --tags origin $VERSION; then
             git reset --hard $VERSION
+            tag_exists=true
           else
             git reset --hard origin/main
           fi
@@ -86,10 +87,30 @@ jobs:
 
           sed -i "s/^\tsemconv-pin = .*/\tsemconv-pin = $commit_desc/" .gitmodules
 
+          if [ "$tag_exists" == "true" ]; then
+            sed -i "s/^\(\s *\)semconv: .*/\1semconv: ${commit_desc#v}/" scripts/content-modules/adjust-pages.pl
+          fi
+
           git add -A
 
           if ! git diff-index --quiet --cached HEAD; then
             git commit -am "Update semconv submodule to $commit_desc"
+            git push
+          fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Fix refcache
+        run: |
+          npm install --omit=optional
+          npm run fix:refcache
+
+          git add -A
+
+          if ! git diff-index --quiet --cached HEAD; then
+            git commit -am "Fix refcache"
             git push
           fi
 
@@ -100,7 +121,7 @@ jobs:
         run: |
           prs=$(gh pr list --state open --head $BRANCH)
           if [ -z "$prs" ]; then
-            gh pr create --title "Update semantic conventions to $VERSION-dev" \
-                         --body "This PR updates the semantic conventions to $VERSION-dev." \
+            gh pr create --title "DRAFT Update semantic conventions to unreleased $VERSION-dev" \
+                         --body "This is a draft PR used for identifying issues integrating the latest (unreleased) semantic conventions." \
                          --draft
           fi

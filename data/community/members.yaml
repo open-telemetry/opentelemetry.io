@@ -94,10 +94,14 @@ technical-committee:
   - name: tigrannajaryan
     html_url: https://github.com/tigrannajaryan
     avatar_url: https://avatars.githubusercontent.com/u/4194920?v=4
-  - name: yurishkuro
-    html_url: https://github.com/yurishkuro
-    avatar_url: https://avatars.githubusercontent.com/u/3523016?v=4
 maintainers:
+  - name: 123liuziming
+    teams:
+      - go-compile-instrumentation-approvers
+      - go-compile-instrumentation-maintainers
+      - go-compile-instrumentation-triagers
+    html_url: https://github.com/123liuziming
+    avatar_url: https://avatars.githubusercontent.com/u/32130965?v=4
   - name: aabmass
     teams:
       - javascript-contrib-triagers
@@ -105,6 +109,7 @@ maintainers:
       - opentelemetry-python-contrib-maintainers
       - python-approvers
       - python-maintainers
+      - semconv-genai-approvers
       - sqlcommenter-approvers
       - sqlcommenter-maintainers
     html_url: https://github.com/aabmass
@@ -129,7 +134,7 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/3676547?v=4
   - name: AlexanderWert
     teams:
-      - semconv-feature-flag-approvers
+      - semconv-sdk-health-approvers
       - specs-semconv-approvers
       - specs-semconv-maintainers
     html_url: https://github.com/AlexanderWert
@@ -178,6 +183,8 @@ maintainers:
       - collector-contrib-triagers
       - collector-releases-approvers
       - collector-triagers
+      - injector-approvers
+      - injector-maintainers
       - network-triagers
       - operator-triagers
     html_url: https://github.com/atoulme
@@ -185,8 +192,9 @@ maintainers:
   - name: austinlparker
     teams:
       - blog-approvers
-      - demo-approvers
       - docs-approvers
+      - docs-bn-approvers
+      - docs-bn-maintainers
       - docs-es-approvers
       - docs-es-maintainers
       - docs-fr-approvers
@@ -194,8 +202,12 @@ maintainers:
       - docs-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
+      - docs-triagers
       - sig-developer-experience-approvers
       - sig-developer-experience-maintainers
+      - sig-project-infra-approvers
+      - sig-project-infra-maintainers
+      - social-media-approvers
       - specs-triagers
     html_url: https://github.com/austinlparker
     avatar_url: https://avatars.githubusercontent.com/u/4140740?v=4
@@ -204,6 +216,7 @@ maintainers:
       - sig-end-user-approvers
       - sig-end-user-maintainers
       - sig-end-user-triagers
+      - social-media-approvers
     html_url: https://github.com/avillela
     avatar_url: https://avatars.githubusercontent.com/u/50256412?v=4
   - name: bjandras
@@ -251,6 +264,8 @@ maintainers:
       - java-instrumentation-approvers
       - java-instrumentation-triagers
       - java-triagers
+      - semconv-android-approvers
+      - semconv-client-approvers
       - semconv-log-approvers
       - semconv-mobile-approvers
     html_url: https://github.com/breedx-splk
@@ -273,6 +288,8 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/5731285?v=4
   - name: bryce-b
     teams:
+      - semconv-client-approvers
+      - semconv-ios-approvers
       - semconv-mobile-approvers
       - swift-approvers
       - swift-maintainers
@@ -283,6 +300,8 @@ maintainers:
     teams:
       - blog-approvers
       - docs-approvers
+      - docs-bn-approvers
+      - docs-bn-maintainers
       - docs-es-approvers
       - docs-es-maintainers
       - docs-fr-approvers
@@ -292,13 +311,17 @@ maintainers:
       - docs-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
+      - docs-triagers
       - docs-zh-approvers
       - docs-zh-maintainers
+      - social-media-approvers
     html_url: https://github.com/cartermp
     avatar_url: https://avatars.githubusercontent.com/u/6309070?v=4
   - name: chalin
     teams:
       - docs-approvers
+      - docs-bn-approvers
+      - docs-bn-maintainers
       - docs-es-approvers
       - docs-es-maintainers
       - docs-fr-approvers
@@ -308,8 +331,10 @@ maintainers:
       - docs-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
+      - docs-triagers
       - docs-zh-approvers
       - docs-zh-maintainers
+      - social-media-approvers
     html_url: https://github.com/chalin
     avatar_url: https://avatars.githubusercontent.com/u/4140793?v=4
   - name: christos68k
@@ -331,19 +356,8 @@ maintainers:
       - specs-triagers
     html_url: https://github.com/cijothomas
     avatar_url: https://avatars.githubusercontent.com/u/5232798?v=4
-  - name: CodeBlanch
-    teams:
-      - dotnet-approvers
-      - dotnet-contrib-approvers
-      - dotnet-contrib-maintainers
-      - dotnet-contrib-triagers
-      - dotnet-maintainers
-      - dotnet-triagers
-    html_url: https://github.com/CodeBlanch
-    avatar_url: https://avatars.githubusercontent.com/u/28367120?v=4
   - name: codeboten
     teams:
-      - arrow-approvers
       - collector-approvers
       - collector-contrib-approvers
       - collector-contrib-maintainers
@@ -360,6 +374,8 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/223565?v=4
   - name: damemi
     teams:
+      - ebpf-instrumentation-approvers
+      - ebpf-instrumentation-maintainers
       - go-instrumentation-approvers
       - go-instrumentation-maintainers
       - go-instrumentation-triagers
@@ -370,6 +386,7 @@ maintainers:
       - sig-end-user-approvers
       - sig-end-user-maintainers
       - sig-end-user-triagers
+      - social-media-approvers
       - specs-triagers
     html_url: https://github.com/danielgblanco
     avatar_url: https://avatars.githubusercontent.com/u/4158734?v=4
@@ -407,14 +424,6 @@ maintainers:
       - go-compile-instrumentation-triagers
     html_url: https://github.com/dineshg13
     avatar_url: https://avatars.githubusercontent.com/u/2471669?v=4
-  - name: djaglowski
-    teams:
-      - collector-contrib-approvers
-      - collector-contrib-maintainers
-      - collector-contrib-triagers
-      - collector-releases-approvers
-    html_url: https://github.com/djaglowski
-    avatar_url: https://avatars.githubusercontent.com/u/5255616?v=4
   - name: dmathieu
     teams:
       - collector-triagers
@@ -441,8 +450,16 @@ maintainers:
       - semconv-container-approvers
       - semconv-k8s-approvers
       - semconv-system-approvers
+      - specs-entities-approvers
     html_url: https://github.com/dmitryax
     avatar_url: https://avatars.githubusercontent.com/u/6628631?v=4
+  - name: drewrelmas
+    teams:
+      - arrow-approvers
+      - arrow-maintainers
+      - arrow-triagers
+    html_url: https://github.com/drewrelmas
+    avatar_url: https://avatars.githubusercontent.com/u/13971805?v=4
   - name: dyladan
     teams:
       - assign-reviewers-action-maintainers
@@ -452,6 +469,7 @@ maintainers:
       - javascript-triagers
       - sandbox-web-js-maintainers
       - semconv-feature-flag-approvers
+      - specs-entities-approvers
       - specs-semconv-approvers
       - specs-triagers
     html_url: https://github.com/dyladan
@@ -523,6 +541,14 @@ maintainers:
       - semconv-system-approvers
     html_url: https://github.com/frzifus
     avatar_url: https://avatars.githubusercontent.com/u/10403402?v=4
+  - name: grcevski
+    teams:
+      - ebpf-instrumentation-approvers
+      - ebpf-instrumentation-maintainers
+      - go-instrumentation-approvers
+      - go-instrumentation-triagers
+    html_url: https://github.com/grcevski
+    avatar_url: https://avatars.githubusercontent.com/u/6207777?v=4
   - name: hauleth
     teams:
       - erlang-approvers
@@ -569,10 +595,13 @@ maintainers:
       - helm-approvers
       - helm-maintainers
       - helm-triagers
+      - injector-approvers
+      - injector-maintainers
       - operator-approvers
       - operator-maintainers
       - operator-ta-maintainers
       - operator-triagers
+      - sig-project-infra-approvers
     html_url: https://github.com/jaronoff97
     avatar_url: https://avatars.githubusercontent.com/u/10070047?v=4
   - name: jerbly
@@ -603,6 +632,7 @@ maintainers:
     teams:
       - arrow-approvers
       - arrow-maintainers
+      - arrow-triagers
       - collector-approvers
       - collector-triagers
       - specs-triagers
@@ -625,11 +655,6 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/5938087?v=4
   - name: jpkrohling
     teams:
-      - collector-approvers
-      - collector-contrib-approvers
-      - collector-contrib-maintainers
-      - collector-contrib-triagers
-      - collector-releases-approvers
       - collector-triagers
       - docs-pt-approvers
       - docs-pt-maintainers
@@ -647,6 +672,7 @@ maintainers:
       - java-triagers
       - semconv-cicd-approvers
       - semconv-security-approvers
+      - specs-entities-approvers
       - specs-semconv-approvers
       - specs-semconv-maintainers
       - specs-triagers
@@ -655,18 +681,19 @@ maintainers:
       - weaver-maintainers
     html_url: https://github.com/jsuereth
     avatar_url: https://avatars.githubusercontent.com/u/29006?v=4
-  - name: jtescher
-    teams:
-      - rust-approvers
-      - rust-maintainers
-    html_url: https://github.com/jtescher
-    avatar_url: https://avatars.githubusercontent.com/u/175237?v=4
   - name: julianocosta89
     teams:
       - demo-approvers
       - demo-maintainers
     html_url: https://github.com/julianocosta89
     avatar_url: https://avatars.githubusercontent.com/u/15364991?v=4
+  - name: kakkoyun
+    teams:
+      - go-compile-instrumentation-approvers
+      - go-compile-instrumentation-maintainers
+      - go-compile-instrumentation-triagers
+    html_url: https://github.com/kakkoyun
+    avatar_url: https://avatars.githubusercontent.com/u/536449?v=4
   - name: kaylareopelle
     teams:
       - ruby-approvers
@@ -727,6 +754,8 @@ maintainers:
     teams:
       - android-approvers
       - android-maintainers
+      - semconv-android-approvers
+      - semconv-client-approvers
       - semconv-mobile-approvers
     html_url: https://github.com/LikeTheSalad
     avatar_url: https://avatars.githubusercontent.com/u/56847527?v=4
@@ -747,6 +776,7 @@ maintainers:
     teams:
       - arrow-approvers
       - arrow-maintainers
+      - arrow-triagers
       - weaver-approvers
       - weaver-maintainers
     html_url: https://github.com/lquerel
@@ -757,6 +787,7 @@ maintainers:
       - opentelemetry-python-contrib-maintainers
       - python-approvers
       - python-maintainers
+      - semconv-sdk-health-approvers
       - specs-metrics-approvers
       - specs-triagers
     html_url: https://github.com/lzchen
@@ -773,18 +804,27 @@ maintainers:
       - specs-triagers
     html_url: https://github.com/marcalff
     avatar_url: https://avatars.githubusercontent.com/u/17238896?v=4
+  - name: mariomac
+    teams:
+      - ebpf-instrumentation-approvers
+      - ebpf-instrumentation-maintainers
+    html_url: https://github.com/mariomac
+    avatar_url: https://avatars.githubusercontent.com/u/939550?v=4
   - name: martinkuba
     teams:
       - javascript-approvers
       - javascript-contrib-triagers
       - javascript-triagers
       - sandbox-web-js-maintainers
+      - semconv-browser-approvers
+      - semconv-client-approvers
       - semconv-log-approvers
     html_url: https://github.com/martinkuba
     avatar_url: https://avatars.githubusercontent.com/u/4933147?v=4
   - name: maryliag
     teams:
       - docs-pt-approvers
+      - docs-triagers
       - javascript-approvers
       - javascript-contrib-triagers
       - javascript-triagers
@@ -800,6 +840,12 @@ maintainers:
       - proto-go-maintainers
     html_url: https://github.com/MikeGoldsmith
     avatar_url: https://avatars.githubusercontent.com/u/3481731?v=4
+  - name: mmanciop
+    teams:
+      - injector-approvers
+      - injector-maintainers
+    html_url: https://github.com/mmanciop
+    avatar_url: https://avatars.githubusercontent.com/u/14020598?v=4
   - name: MovieStoreGuy
     teams:
       - collector-contrib-approvers
@@ -812,6 +858,8 @@ maintainers:
     teams:
       - configuration-approvers
       - configuration-maintainers
+      - ebpf-instrumentation-approvers
+      - ebpf-instrumentation-maintainers
       - go-approvers
       - go-instrumentation-approvers
       - go-instrumentation-maintainers
@@ -824,12 +872,20 @@ maintainers:
       - specs-triagers
     html_url: https://github.com/MrAlias
     avatar_url: https://avatars.githubusercontent.com/u/5543599?v=4
+  - name: ms-jcorley
+    teams:
+      - sig-security-approvers
+      - sig-security-maintainers
+    html_url: https://github.com/ms-jcorley
+    avatar_url: https://avatars.githubusercontent.com/u/55004047?v=4
   - name: MSNev
     teams:
       - javascript-approvers
       - javascript-contrib-triagers
       - javascript-triagers
       - sandbox-web-js-maintainers
+      - semconv-browser-approvers
+      - semconv-client-approvers
       - semconv-log-approvers
     html_url: https://github.com/MSNev
     avatar_url: https://avatars.githubusercontent.com/u/54870357?v=4
@@ -837,8 +893,6 @@ maintainers:
     teams:
       - sig-contributor-experience-approvers
       - sig-contributor-experience-maintainers
-      - sig-end-user-approvers
-      - sig-end-user-triagers
     html_url: https://github.com/musingvirtual
     avatar_url: https://avatars.githubusercontent.com/u/1666060?v=4
   - name: mviitane
@@ -880,6 +934,8 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/5502710?v=4
   - name: nachoBonafonte
     teams:
+      - semconv-client-approvers
+      - semconv-ios-approvers
       - semconv-mobile-approvers
       - swift-approvers
       - swift-maintainers
@@ -906,7 +962,6 @@ maintainers:
       - go-compile-instrumentation-approvers
       - go-compile-instrumentation-maintainers
       - go-compile-instrumentation-triagers
-      - php-approvers
       - php-triagers
     html_url: https://github.com/pdelewski
     avatar_url: https://avatars.githubusercontent.com/u/102958445?v=4
@@ -921,6 +976,7 @@ maintainers:
       - go-maintainers
       - go-triagers
       - proto-go-approvers
+      - semconv-code-attribute-approvers
       - semconv-log-approvers
       - specs-logs-approvers
       - specs-triagers
@@ -994,24 +1050,19 @@ maintainers:
       - go-compile-instrumentation-triagers
     html_url: https://github.com/ralf0131
     avatar_url: https://avatars.githubusercontent.com/u/4397305?v=4
-  - name: rapphil
-    teams:
-      - lambda-extension-approvers
-      - lambda-extension-maintainers
-    html_url: https://github.com/rapphil
-    avatar_url: https://avatars.githubusercontent.com/u/5030304?v=4
   - name: reese-lee
     teams:
       - sig-end-user-approvers
       - sig-end-user-maintainers
       - sig-end-user-triagers
+      - social-media-approvers
     html_url: https://github.com/reese-lee
     avatar_url: https://avatars.githubusercontent.com/u/48657837?v=4
   - name: reyang
     teams:
-      - demo-approvers
       - docs-zh-approvers
       - semconv-security-approvers
+      - sig-security-approvers
       - sig-security-maintainers
       - specs-triagers
     html_url: https://github.com/reyang
@@ -1031,6 +1082,20 @@ maintainers:
       - ruby-maintainers
     html_url: https://github.com/robertlaurin
     avatar_url: https://avatars.githubusercontent.com/u/23463253?v=4
+  - name: rogercoll
+    teams:
+      - demo-approvers
+      - demo-maintainers
+      - semconv-system-approvers
+    html_url: https://github.com/rogercoll
+    avatar_url: https://avatars.githubusercontent.com/u/33873530?v=4
+  - name: RomainMuller
+    teams:
+      - go-compile-instrumentation-approvers
+      - go-compile-instrumentation-maintainers
+      - go-compile-instrumentation-triagers
+    html_url: https://github.com/RomainMuller
+    avatar_url: https://avatars.githubusercontent.com/u/411689?v=4
   - name: RonFed
     teams:
       - go-instrumentation-approvers
@@ -1083,6 +1148,8 @@ maintainers:
     teams:
       - blog-approvers
       - docs-approvers
+      - docs-bn-approvers
+      - docs-bn-maintainers
       - docs-es-approvers
       - docs-es-maintainers
       - docs-fr-approvers
@@ -1092,10 +1159,12 @@ maintainers:
       - docs-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
+      - docs-triagers
       - docs-zh-approvers
       - docs-zh-maintainers
       - sig-contributor-experience-approvers
       - sig-contributor-experience-maintainers
+      - social-media-approvers
       - specs-triagers
     html_url: https://github.com/svrnm
     avatar_url: https://avatars.githubusercontent.com/u/1519757?v=4
@@ -1109,10 +1178,14 @@ maintainers:
   - name: tedsuo
     teams:
       - docs-approvers
+      - docs-triagers
       - sandbox-web-js-maintainers
+      - semconv-browser-approvers
+      - semconv-client-approvers
       - semconv-log-approvers
       - sig-developer-experience-approvers
       - sig-developer-experience-maintainers
+      - specs-entities-approvers
       - specs-semconv-approvers
       - specs-trace-approvers
       - specs-triagers
@@ -1121,6 +1194,8 @@ maintainers:
   - name: theletterf
     teams:
       - docs-approvers
+      - docs-bn-approvers
+      - docs-bn-maintainers
       - docs-es-approvers
       - docs-es-maintainers
       - docs-fr-approvers
@@ -1128,8 +1203,10 @@ maintainers:
       - docs-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
+      - docs-triagers
       - sig-contributor-experience-approvers
       - sig-contributor-experience-maintainers
+      - social-media-approvers
     html_url: https://github.com/theletterf
     avatar_url: https://avatars.githubusercontent.com/u/1773616?v=4
   - name: ThomsonTan
@@ -1143,7 +1220,11 @@ maintainers:
   - name: tiffany76
     teams:
       - docs-approvers
+      - docs-bn-approvers
+      - docs-bn-maintainers
       - docs-maintainers
+      - docs-triagers
+      - social-media-approvers
     html_url: https://github.com/tiffany76
     avatar_url: https://avatars.githubusercontent.com/u/30397949?v=4
   - name: tigrannajaryan
@@ -1158,6 +1239,7 @@ maintainers:
       - opamp-spec-maintainers
       - profiling-approvers
       - profiling-triagers
+      - specs-entities-approvers
       - specs-triagers
     html_url: https://github.com/tigrannajaryan
     avatar_url: https://avatars.githubusercontent.com/u/4194920?v=4
@@ -1182,6 +1264,8 @@ maintainers:
       - semconv-http-approvers
       - semconv-jvm-approvers
       - semconv-log-approvers
+      - sig-project-infra-approvers
+      - sig-project-infra-maintainers
       - specs-semconv-approvers
       - specs-semconv-maintainers
       - specs-triagers
@@ -1281,12 +1365,6 @@ maintainers:
     html_url: https://github.com/zacharycmontoya
     avatar_url: https://avatars.githubusercontent.com/u/13769665?v=4
 approvers:
-  - name: 123liuziming
-    teams:
-      - go-compile-instrumentation-approvers
-      - go-compile-instrumentation-triagers
-    html_url: https://github.com/123liuziming
-    avatar_url: https://avatars.githubusercontent.com/u/32130965?v=4
   - name: aalexand
     teams:
       - profiling-approvers
@@ -1296,6 +1374,8 @@ approvers:
   - name: adrielp
     teams:
       - semconv-cicd-approvers
+      - sig-project-infra-approvers
+      - sig-security-approvers
     html_url: https://github.com/adrielp
     avatar_url: https://avatars.githubusercontent.com/u/25961386?v=4
   - name: agoallikmaa
@@ -1304,6 +1384,12 @@ approvers:
       - php-triagers
     html_url: https://github.com/agoallikmaa
     avatar_url: https://avatars.githubusercontent.com/u/3532037?v=4
+  - name: albertlockett
+    teams:
+      - arrow-approvers
+      - arrow-triagers
+    html_url: https://github.com/albertlockett
+    avatar_url: https://avatars.githubusercontent.com/u/5846846?v=4
   - name: alexvanboxel
     teams:
       - semconv-log-approvers
@@ -1324,12 +1410,6 @@ approvers:
       - swift-triagers
     html_url: https://github.com/alolita
     avatar_url: https://avatars.githubusercontent.com/u/1942529?v=4
-  - name: AnaMMedina21
-    teams:
-      - sig-end-user-approvers
-      - sig-end-user-triagers
-    html_url: https://github.com/AnaMMedina21
-    avatar_url: https://avatars.githubusercontent.com/u/3894791?v=4
   - name: ArielDemarco
     teams:
       - swift-approvers
@@ -1346,6 +1426,11 @@ approvers:
       - cpp-contrib-approvers
     html_url: https://github.com/aryanishan1001
     avatar_url: https://avatars.githubusercontent.com/u/54237311?v=4
+  - name: askpt
+    teams:
+      - semconv-feature-flag-approvers
+    html_url: https://github.com/askpt
+    avatar_url: https://avatars.githubusercontent.com/u/2493377?v=4
   - name: athre0z
     teams:
       - ebpf-profiler-approvers
@@ -1357,12 +1442,16 @@ approvers:
       - swift-triagers
     html_url: https://github.com/atreat
     avatar_url: https://avatars.githubusercontent.com/u/1031555?v=4
-  - name: beniamin
+  - name: bantonsson
     teams:
-      - php-approvers
-      - php-triagers
-    html_url: https://github.com/beniamin
-    avatar_url: https://avatars.githubusercontent.com/u/811812?v=4
+      - rust-approvers
+    html_url: https://github.com/bantonsson
+    avatar_url: https://avatars.githubusercontent.com/u/805830?v=4
+  - name: beeme1mr
+    teams:
+      - semconv-feature-flag-approvers
+    html_url: https://github.com/beeme1mr
+    avatar_url: https://avatars.githubusercontent.com/u/682996?v=4
   - name: bertysentry
     teams:
       - docs-fr-approvers
@@ -1371,10 +1460,13 @@ approvers:
   - name: bidetofevil
     teams:
       - android-approvers
+      - semconv-android-approvers
+      - semconv-client-approvers
     html_url: https://github.com/bidetofevil
     avatar_url: https://avatars.githubusercontent.com/u/860519?v=4
   - name: braydonk
     teams:
+      - collector-contrib-approvers
       - collector-contrib-triagers
       - semconv-system-approvers
     html_url: https://github.com/braydonk
@@ -1389,6 +1481,8 @@ approvers:
   - name: cedricziel
     teams:
       - demo-approvers
+      - php-approvers
+      - php-triagers
     html_url: https://github.com/cedricziel
     avatar_url: https://avatars.githubusercontent.com/u/418970?v=4
   - name: ChrisLightfootWild
@@ -1407,6 +1501,14 @@ approvers:
       - semconv-system-approvers
     html_url: https://github.com/ChrsMark
     avatar_url: https://avatars.githubusercontent.com/u/11754898?v=4
+  - name: CodeBlanch
+    teams:
+      - dotnet-approvers
+      - dotnet-contrib-approvers
+      - dotnet-contrib-triagers
+      - dotnet-triagers
+    html_url: https://github.com/CodeBlanch
+    avatar_url: https://avatars.githubusercontent.com/u/28367120?v=4
   - name: codefromthecrypt
     teams:
       - opentelemetry-python-contrib-approvers
@@ -1426,6 +1528,11 @@ approvers:
       - javascript-triagers
     html_url: https://github.com/david-luna
     avatar_url: https://avatars.githubusercontent.com/u/999029?v=4
+  - name: dbarker
+    teams:
+      - cpp-approvers
+    html_url: https://github.com/dbarker
+    avatar_url: https://avatars.githubusercontent.com/u/3782873?v=4
   - name: DebajitDas
     teams:
       - cpp-contrib-approvers
@@ -1435,6 +1542,7 @@ approvers:
     teams:
       - collector-contrib-approvers
       - collector-contrib-triagers
+      - collector-releases-approvers
       - java-contrib-triagers
     html_url: https://github.com/dehaansa
     avatar_url: https://avatars.githubusercontent.com/u/563558?v=4
@@ -1454,14 +1562,10 @@ approvers:
       - collector-contrib-triagers
     html_url: https://github.com/edmocosta
     avatar_url: https://avatars.githubusercontent.com/u/11836452?v=4
-  - name: edsoncelio
-    teams:
-      - docs-pt-approvers
-    html_url: https://github.com/edsoncelio
-    avatar_url: https://avatars.githubusercontent.com/u/5833278?v=4
   - name: emdneto
     teams:
       - docs-pt-approvers
+      - docs-triagers
       - opentelemetry-python-contrib-approvers
       - python-approvers
     html_url: https://github.com/emdneto
@@ -1469,20 +1573,14 @@ approvers:
   - name: EzzioMoreira
     teams:
       - docs-pt-approvers
+      - docs-triagers
     html_url: https://github.com/EzzioMoreira
     avatar_url: https://avatars.githubusercontent.com/u/18507157?v=4
-  - name: Fahmy-Mohammed
-    teams:
-      - php-approvers
-      - php-triagers
-    html_url: https://github.com/Fahmy-Mohammed
-    avatar_url: https://avatars.githubusercontent.com/u/28364881?v=4
   - name: fatsheep9146
     teams:
       - collector-contrib-approvers
       - collector-contrib-triagers
       - collector-releases-approvers
-      - demo-approvers
     html_url: https://github.com/fatsheep9146
     avatar_url: https://avatars.githubusercontent.com/u/11855957?v=4
   - name: ferd
@@ -1498,18 +1596,22 @@ approvers:
       - profiling-triagers
     html_url: https://github.com/florianl
     avatar_url: https://avatars.githubusercontent.com/u/1132494?v=4
-  - name: grcevski
-    teams:
-      - go-instrumentation-approvers
-      - go-instrumentation-triagers
-    html_url: https://github.com/grcevski
-    avatar_url: https://avatars.githubusercontent.com/u/6207777?v=4
   - name: GregMefford
     teams:
       - erlang-approvers
       - erlang-contrib-approvers
     html_url: https://github.com/GregMefford
     avatar_url: https://avatars.githubusercontent.com/u/69467?v=4
+  - name: gruebel
+    teams:
+      - rust-approvers
+    html_url: https://github.com/gruebel
+    avatar_url: https://avatars.githubusercontent.com/u/33207684?v=4
+  - name: gyliu513
+    teams:
+      - semconv-genai-approvers
+    html_url: https://github.com/gyliu513
+    avatar_url: https://avatars.githubusercontent.com/u/4461983?v=4
   - name: hectorhdzg
     teams:
       - javascript-approvers
@@ -1517,14 +1619,9 @@ approvers:
       - javascript-triagers
     html_url: https://github.com/hectorhdzg
     avatar_url: https://avatars.githubusercontent.com/u/39923391?v=4
-  - name: IAMebonyhope
-    teams:
-      - sig-end-user-approvers
-      - sig-end-user-triagers
-    html_url: https://github.com/IAMebonyhope
-    avatar_url: https://avatars.githubusercontent.com/u/18560936?v=4
   - name: iblancasa
     teams:
+      - collector-contrib-triagers
       - operator-approvers
       - operator-triagers
     html_url: https://github.com/iblancasa
@@ -1582,11 +1679,24 @@ approvers:
       - semconv-k8s-approvers
     html_url: https://github.com/jinja2
     avatar_url: https://avatars.githubusercontent.com/u/22205748?v=4
+  - name: JonasKunz
+    teams:
+      - java-instrumentation-approvers
+      - java-instrumentation-triagers
+      - semconv-sdk-health-approvers
+    html_url: https://github.com/JonasKunz
+    avatar_url: https://avatars.githubusercontent.com/u/6066661?v=4
   - name: jonatan-ivanov
     teams:
       - semconv-jvm-approvers
     html_url: https://github.com/jonatan-ivanov
     avatar_url: https://avatars.githubusercontent.com/u/3044070?v=4
+  - name: jvoravong
+    teams:
+      - helm-approvers
+      - helm-triagers
+    html_url: https://github.com/jvoravong
+    avatar_url: https://avatars.githubusercontent.com/u/47871238?v=4
   - name: kamphaus
     teams:
       - semconv-cicd-approvers
@@ -1603,12 +1713,11 @@ approvers:
       - docs-ja-approvers
     html_url: https://github.com/katzchang
     avatar_url: https://avatars.githubusercontent.com/u/70050?v=4
-  - name: kishannsangani
+  - name: kinyoklion
     teams:
-      - php-approvers
-      - php-triagers
-    html_url: https://github.com/kishannsangani
-    avatar_url: https://avatars.githubusercontent.com/u/93989268?v=4
+      - semconv-feature-flag-approvers
+    html_url: https://github.com/kinyoklion
+    avatar_url: https://avatars.githubusercontent.com/u/4955475?v=4
   - name: kpratyus
     teams:
       - cpp-contrib-approvers
@@ -1630,16 +1739,23 @@ approvers:
       - dotnet-instrumentation-triagers
     html_url: https://github.com/lachmatt
     avatar_url: https://avatars.githubusercontent.com/u/92367255?v=4
+  - name: lukas-reining
+    teams:
+      - semconv-feature-flag-approvers
+    html_url: https://github.com/lukas-reining
+    avatar_url: https://avatars.githubusercontent.com/u/68054864?v=4
   - name: marandaneto
     teams:
       - android-approvers
+      - semconv-android-approvers
+      - semconv-client-approvers
     html_url: https://github.com/marandaneto
     avatar_url: https://avatars.githubusercontent.com/u/5731772?v=4
-  - name: mateuszrzeszutek
+  - name: marctc
     teams:
-      - semconv-jvm-approvers
-    html_url: https://github.com/mateuszrzeszutek
-    avatar_url: https://avatars.githubusercontent.com/u/69198463?v=4
+      - ebpf-instrumentation-approvers
+    html_url: https://github.com/marctc
+    avatar_url: https://avatars.githubusercontent.com/u/280193?v=4
   - name: maxgolov
     teams:
       - cpp-contrib-approvers
@@ -1648,6 +1764,7 @@ approvers:
   - name: mhausenblas
     teams:
       - docs-approvers
+      - docs-triagers
     html_url: https://github.com/mhausenblas
     avatar_url: https://avatars.githubusercontent.com/u/52594?v=4
   - name: mjwolf
@@ -1655,22 +1772,16 @@ approvers:
       - semconv-security-approvers
     html_url: https://github.com/mjwolf
     avatar_url: https://avatars.githubusercontent.com/u/2590169?v=4
-  - name: moh-osman3
-    teams:
-      - arrow-approvers
-    html_url: https://github.com/moh-osman3
-    avatar_url: https://avatars.githubusercontent.com/u/59479562?v=4
-  - name: morrisonlevi
-    teams:
-      - php-approvers
-      - php-triagers
-    html_url: https://github.com/morrisonlevi
-    avatar_url: https://avatars.githubusercontent.com/u/253316?v=4
   - name: mowies
     teams:
       - collector-releases-approvers
     html_url: https://github.com/mowies
     avatar_url: https://avatars.githubusercontent.com/u/6901203?v=4
+  - name: Msksgm
+    teams:
+      - docs-ja-approvers
+    html_url: https://github.com/Msksgm
+    avatar_url: https://avatars.githubusercontent.com/u/49427230?v=4
   - name: mtwo
     teams:
       - blog-approvers
@@ -1682,13 +1793,12 @@ approvers:
       - docs-zh-approvers
     html_url: https://github.com/my-git9
     avatar_url: https://avatars.githubusercontent.com/u/76980726?v=4
-  - name: naseemkullah
+  - name: NameHaibinZhang
     teams:
-      - javascript-approvers
-      - javascript-contrib-triagers
-      - javascript-triagers
-    html_url: https://github.com/naseemkullah
-    avatar_url: https://avatars.githubusercontent.com/u/24660299?v=4
+      - go-compile-instrumentation-approvers
+      - go-compile-instrumentation-triagers
+    html_url: https://github.com/NameHaibinZhang
+    avatar_url: https://avatars.githubusercontent.com/u/30917104?v=4
   - name: nirga
     teams:
       - opentelemetry-python-contrib-approvers
@@ -1718,6 +1828,8 @@ approvers:
       - javascript-approvers
       - javascript-contrib-triagers
       - javascript-triagers
+      - semconv-browser-approvers
+      - semconv-client-approvers
     html_url: https://github.com/pkanal
     avatar_url: https://avatars.githubusercontent.com/u/8810222?v=4
   - name: pmcollins
@@ -1742,6 +1854,11 @@ approvers:
       - cpp-approvers
     html_url: https://github.com/psx95
     avatar_url: https://avatars.githubusercontent.com/u/22191775?v=4
+  - name: rafaelroquetto
+    teams:
+      - ebpf-instrumentation-approvers
+    html_url: https://github.com/rafaelroquetto
+    avatar_url: https://avatars.githubusercontent.com/u/1713?v=4
   - name: RassK
     teams:
       - dotnet-instrumentation-approvers
@@ -1753,18 +1870,6 @@ approvers:
       - ebpf-profiler-approvers
     html_url: https://github.com/rockdaboot
     avatar_url: https://avatars.githubusercontent.com/u/2087964?v=4
-  - name: rogercoll
-    teams:
-      - demo-approvers
-      - semconv-system-approvers
-    html_url: https://github.com/rogercoll
-    avatar_url: https://avatars.githubusercontent.com/u/33873530?v=4
-  - name: RomainMuller
-    teams:
-      - go-compile-instrumentation-approvers
-      - go-compile-instrumentation-triagers
-    html_url: https://github.com/RomainMuller
-    avatar_url: https://avatars.githubusercontent.com/u/411689?v=4
   - name: samiura
     teams:
       - network-approvers
@@ -1807,6 +1912,11 @@ approvers:
       - ruby-contrib-approvers
     html_url: https://github.com/simi
     avatar_url: https://avatars.githubusercontent.com/u/193936?v=4
+  - name: smith
+    teams:
+      - specs-entities-approvers
+    html_url: https://github.com/smith
+    avatar_url: https://avatars.githubusercontent.com/u/9912?v=4
   - name: sourabh1007
     teams:
       - semconv-db-approvers
@@ -1830,18 +1940,27 @@ approvers:
       - javascript-triagers
     html_url: https://github.com/svetlanabrennan
     avatar_url: https://avatars.githubusercontent.com/u/50715937?v=4
+  - name: SylvainJuge
+    teams:
+      - java-instrumentation-approvers
+      - java-instrumentation-triagers
+      - semconv-code-attribute-approvers
+      - semconv-jvm-approvers
+    html_url: https://github.com/SylvainJuge
+    avatar_url: https://avatars.githubusercontent.com/u/763082?v=4
   - name: tammy-baylis-swi
     teams:
       - opentelemetry-python-contrib-approvers
       - python-approvers
     html_url: https://github.com/tammy-baylis-swi
     avatar_url: https://avatars.githubusercontent.com/u/96076570?v=4
-  - name: tidal
+  - name: TimothyMothra
     teams:
-      - php-approvers
-      - php-triagers
-    html_url: https://github.com/tidal
-    avatar_url: https://avatars.githubusercontent.com/u/57825?v=4
+      - dotnet-contrib-approvers
+      - dotnet-contrib-triagers
+      - dotnet-triagers
+    html_url: https://github.com/TimothyMothra
+    avatar_url: https://avatars.githubusercontent.com/u/28785781?v=4
   - name: tobiasstadler
     teams:
       - cpp-contrib-approvers
@@ -1858,6 +1977,18 @@ approvers:
       - specs-semconv-approvers
     html_url: https://github.com/trisch-me
     avatar_url: https://avatars.githubusercontent.com/u/10500694?v=4
+  - name: v0y4g3r
+    teams:
+      - arrow-approvers
+      - arrow-triagers
+    html_url: https://github.com/v0y4g3r
+    avatar_url: https://avatars.githubusercontent.com/u/6406592?v=4
+  - name: vitorvasc
+    teams:
+      - docs-pt-approvers
+      - docs-triagers
+    html_url: https://github.com/vitorvasc
+    avatar_url: https://avatars.githubusercontent.com/u/12118857?v=4
   - name: vvydier
     teams:
       - swift-approvers
@@ -1879,11 +2010,11 @@ approvers:
       - docs-zh-approvers
     html_url: https://github.com/windsonsea
     avatar_url: https://avatars.githubusercontent.com/u/79828097?v=4
-  - name: wph95
+  - name: wpessers
     teams:
-      - demo-approvers
-    html_url: https://github.com/wph95
-    avatar_url: https://avatars.githubusercontent.com/u/2732352?v=4
+      - lambda-extension-approvers
+    html_url: https://github.com/wpessers
+    avatar_url: https://avatars.githubusercontent.com/u/45464718?v=4
   - name: xuan-cao-swi
     teams:
       - ruby-contrib-approvers
@@ -1892,6 +2023,7 @@ approvers:
   - name: ymotongpoo
     teams:
       - docs-ja-approvers
+      - docs-triagers
     html_url: https://github.com/ymotongpoo
     avatar_url: https://avatars.githubusercontent.com/u/145104?v=4
   - name: yuriolisa
@@ -1913,12 +2045,6 @@ approvers:
       - java-triagers
     html_url: https://github.com/zeitlinger
     avatar_url: https://avatars.githubusercontent.com/u/2832627?v=4
-  - name: zsistla
-    teams:
-      - php-approvers
-      - php-triagers
-    html_url: https://github.com/zsistla
-    avatar_url: https://avatars.githubusercontent.com/u/43715151?v=4
 triagers:
   - name: abhee11
     teams:
@@ -1930,16 +2056,31 @@ triagers:
       - go-triagers
     html_url: https://github.com/akats7
     avatar_url: https://avatars.githubusercontent.com/u/56042997?v=4
+  - name: AndrejKiri
+    teams:
+      - sig-end-user-triagers
+    html_url: https://github.com/AndrejKiri
+    avatar_url: https://avatars.githubusercontent.com/u/4126171?v=4
   - name: anosek-an
     teams:
       - java-contrib-triagers
     html_url: https://github.com/anosek-an
     avatar_url: https://avatars.githubusercontent.com/u/58341384?v=4
+  - name: axw
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/axw
+    avatar_url: https://avatars.githubusercontent.com/u/843579?v=4
   - name: bacherfl
     teams:
       - collector-contrib-triagers
     html_url: https://github.com/bacherfl
     avatar_url: https://avatars.githubusercontent.com/u/2143586?v=4
+  - name: beniamin
+    teams:
+      - php-triagers
+    html_url: https://github.com/beniamin
+    avatar_url: https://avatars.githubusercontent.com/u/811812?v=4
   - name: cyrille-leclerc
     teams:
       - java-contrib-triagers
@@ -1955,6 +2096,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/facostaembrace
     avatar_url: https://avatars.githubusercontent.com/u/108752213?v=4
+  - name: Fahmy-Mohammed
+    teams:
+      - php-triagers
+    html_url: https://github.com/Fahmy-Mohammed
+    avatar_url: https://avatars.githubusercontent.com/u/28364881?v=4
   - name: Frapschen
     teams:
       - collector-contrib-triagers
@@ -1963,6 +2109,7 @@ triagers:
   - name: JacksonWeber
     teams:
       - javascript-contrib-triagers
+      - javascript-triagers
     html_url: https://github.com/JacksonWeber
     avatar_url: https://avatars.githubusercontent.com/u/47067795?v=4
   - name: jamesmoessis
@@ -1980,11 +2127,6 @@ triagers:
       - php-triagers
     html_url: https://github.com/jodeev
     avatar_url: https://avatars.githubusercontent.com/u/48965776?v=4
-  - name: JonasKunz
-    teams:
-      - java-instrumentation-triagers
-    html_url: https://github.com/JonasKunz
-    avatar_url: https://avatars.githubusercontent.com/u/6066661?v=4
   - name: jpmunz
     teams:
       - javascript-contrib-triagers
@@ -2000,6 +2142,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/kirrg001
     avatar_url: https://avatars.githubusercontent.com/u/1160712?v=4
+  - name: kishannsangani
+    teams:
+      - php-triagers
+    html_url: https://github.com/kishannsangani
+    avatar_url: https://avatars.githubusercontent.com/u/93989268?v=4
   - name: kittylyst
     teams:
       - java-contrib-triagers
@@ -2016,6 +2163,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/mhennoch
     avatar_url: https://avatars.githubusercontent.com/u/72463136?v=4
+  - name: morrisonlevi
+    teams:
+      - php-triagers
+    html_url: https://github.com/morrisonlevi
+    avatar_url: https://avatars.githubusercontent.com/u/253316?v=4
   - name: mottibec
     teams:
       - javascript-contrib-triagers
@@ -2026,11 +2178,22 @@ triagers:
       - java-contrib-triagers
     html_url: https://github.com/Mrod1598
     avatar_url: https://avatars.githubusercontent.com/u/14144136?v=4
+  - name: naseemkullah
+    teams:
+      - javascript-contrib-triagers
+      - javascript-triagers
+    html_url: https://github.com/naseemkullah
+    avatar_url: https://avatars.githubusercontent.com/u/24660299?v=4
   - name: obecny
     teams:
       - javascript-contrib-triagers
     html_url: https://github.com/obecny
     avatar_url: https://avatars.githubusercontent.com/u/1250998?v=4
+  - name: odubajDT
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/odubajDT
+    avatar_url: https://avatars.githubusercontent.com/u/93584209?v=4
   - name: oertl
     teams:
       - java-contrib-triagers
@@ -2071,22 +2234,16 @@ triagers:
       - collector-triagers
     html_url: https://github.com/sincejune
     avatar_url: https://avatars.githubusercontent.com/u/19381524?v=4
-  - name: SylvainJuge
-    teams:
-      - java-instrumentation-triagers
-    html_url: https://github.com/SylvainJuge
-    avatar_url: https://avatars.githubusercontent.com/u/763082?v=4
   - name: t2t2
     teams:
       - javascript-contrib-triagers
     html_url: https://github.com/t2t2
     avatar_url: https://avatars.githubusercontent.com/u/1122555?v=4
-  - name: TimothyMothra
+  - name: tidal
     teams:
-      - dotnet-contrib-triagers
-      - dotnet-triagers
-    html_url: https://github.com/TimothyMothra
-    avatar_url: https://avatars.githubusercontent.com/u/28785781?v=4
+      - php-triagers
+    html_url: https://github.com/tidal
+    avatar_url: https://avatars.githubusercontent.com/u/57825?v=4
   - name: trivikr
     teams:
       - javascript-contrib-triagers
@@ -2107,11 +2264,16 @@ triagers:
       - java-contrib-triagers
     html_url: https://github.com/willarmiros
     avatar_url: https://avatars.githubusercontent.com/u/54150514?v=4
-  - name: yurishkuro
+  - name: yiyuan-he
     teams:
-      - specs-triagers
-    html_url: https://github.com/yurishkuro
-    avatar_url: https://avatars.githubusercontent.com/u/3523016?v=4
+      - javascript-contrib-triagers
+    html_url: https://github.com/yiyuan-he
+    avatar_url: https://avatars.githubusercontent.com/u/53622546?v=4
+  - name: zsistla
+    teams:
+      - php-triagers
+    html_url: https://github.com/zsistla
+    avatar_url: https://avatars.githubusercontent.com/u/43715151?v=4
 members:
   - name: a-feld
     html_url: https://github.com/a-feld
@@ -2137,6 +2299,9 @@ members:
   - name: alxbl
     html_url: https://github.com/alxbl
     avatar_url: https://avatars.githubusercontent.com/u/860411?v=4
+  - name: AnaMMedina21
+    html_url: https://github.com/AnaMMedina21
+    avatar_url: https://avatars.githubusercontent.com/u/3894791?v=4
   - name: andrewhsu
     html_url: https://github.com/andrewhsu
     avatar_url: https://avatars.githubusercontent.com/u/57640?v=4
@@ -2179,6 +2344,9 @@ members:
   - name: camdencheek
     html_url: https://github.com/camdencheek
     avatar_url: https://avatars.githubusercontent.com/u/12631702?v=4
+  - name: celian-garcia
+    html_url: https://github.com/celian-garcia
+    avatar_url: https://avatars.githubusercontent.com/u/10258608?v=4
   - name: chrlic
     html_url: https://github.com/chrlic
     avatar_url: https://avatars.githubusercontent.com/u/6670587?v=4
@@ -2194,6 +2362,9 @@ members:
   - name: congim
     html_url: https://github.com/congim
     avatar_url: https://avatars.githubusercontent.com/u/10218415?v=4
+  - name: crossoverJie
+    html_url: https://github.com/crossoverJie
+    avatar_url: https://avatars.githubusercontent.com/u/15684156?v=4
   - name: dao-jun
     html_url: https://github.com/dao-jun
     avatar_url: https://avatars.githubusercontent.com/u/21362791?v=4
@@ -2206,9 +2377,18 @@ members:
   - name: discostu105
     html_url: https://github.com/discostu105
     avatar_url: https://avatars.githubusercontent.com/u/10918780?v=4
+  - name: djaglowski
+    html_url: https://github.com/djaglowski
+    avatar_url: https://avatars.githubusercontent.com/u/5255616?v=4
   - name: DotSpy
     html_url: https://github.com/DotSpy
     avatar_url: https://avatars.githubusercontent.com/u/11577813?v=4
+  - name: douglascamata
+    html_url: https://github.com/douglascamata
+    avatar_url: https://avatars.githubusercontent.com/u/159076?v=4
+  - name: edsoncelio
+    html_url: https://github.com/edsoncelio
+    avatar_url: https://avatars.githubusercontent.com/u/5833278?v=4
   - name: elskwid
     html_url: https://github.com/elskwid
     avatar_url: https://avatars.githubusercontent.com/u/9002?v=4
@@ -2251,12 +2431,6 @@ members:
   - name: gregkalapos
     html_url: https://github.com/gregkalapos
     avatar_url: https://avatars.githubusercontent.com/u/1091853?v=4
-  - name: gruebel
-    html_url: https://github.com/gruebel
-    avatar_url: https://avatars.githubusercontent.com/u/33207684?v=4
-  - name: gyliu513
-    html_url: https://github.com/gyliu513
-    avatar_url: https://avatars.githubusercontent.com/u/4461983?v=4
   - name: haddasbronfman
     html_url: https://github.com/haddasbronfman
     avatar_url: https://avatars.githubusercontent.com/u/85441461?v=4
@@ -2272,9 +2446,6 @@ members:
   - name: hekike
     html_url: https://github.com/hekike
     avatar_url: https://avatars.githubusercontent.com/u/1764512?v=4
-  - name: hgaol
-    html_url: https://github.com/hgaol
-    avatar_url: https://avatars.githubusercontent.com/u/11908658?v=4
   - name: HudsonHumphries
     html_url: https://github.com/HudsonHumphries
     avatar_url: https://avatars.githubusercontent.com/u/23504959?v=4
@@ -2302,6 +2473,9 @@ members:
   - name: iredelmeier
     html_url: https://github.com/iredelmeier
     avatar_url: https://avatars.githubusercontent.com/u/3298606?v=4
+  - name: ishleenk17
+    html_url: https://github.com/ishleenk17
+    avatar_url: https://avatars.githubusercontent.com/u/102962586?v=4
   - name: james-bebbington
     html_url: https://github.com/james-bebbington
     avatar_url: https://avatars.githubusercontent.com/u/568630?v=4
@@ -2311,6 +2485,9 @@ members:
   - name: jiekun
     html_url: https://github.com/jiekun
     avatar_url: https://avatars.githubusercontent.com/u/30280396?v=4
+  - name: johannaojeling
+    html_url: https://github.com/johannaojeling
+    avatar_url: https://avatars.githubusercontent.com/u/51084516?v=4
   - name: johnbley
     html_url: https://github.com/johnbley
     avatar_url: https://avatars.githubusercontent.com/u/5139839?v=4
@@ -2320,6 +2497,9 @@ members:
   - name: jsirianni
     html_url: https://github.com/jsirianni
     avatar_url: https://avatars.githubusercontent.com/u/23043836?v=4
+  - name: jtescher
+    html_url: https://github.com/jtescher
+    avatar_url: https://avatars.githubusercontent.com/u/175237?v=4
   - name: justinfoote
     html_url: https://github.com/justinfoote
     avatar_url: https://avatars.githubusercontent.com/u/3170392?v=4
@@ -2341,6 +2521,9 @@ members:
   - name: kovrus
     html_url: https://github.com/kovrus
     avatar_url: https://avatars.githubusercontent.com/u/7442373?v=4
+  - name: krajorama
+    html_url: https://github.com/krajorama
+    avatar_url: https://avatars.githubusercontent.com/u/13435893?v=4
   - name: krnowak
     html_url: https://github.com/krnowak
     avatar_url: https://avatars.githubusercontent.com/u/96081?v=4
@@ -2368,9 +2551,18 @@ members:
   - name: markwolff
     html_url: https://github.com/markwolff
     avatar_url: https://avatars.githubusercontent.com/u/5515583?v=4
+  - name: martincostello
+    html_url: https://github.com/martincostello
+    avatar_url: https://avatars.githubusercontent.com/u/1439341?v=4
+  - name: mateuszrzeszutek
+    html_url: https://github.com/mateuszrzeszutek
+    avatar_url: https://avatars.githubusercontent.com/u/69198463?v=4
   - name: mauriciovasquezbernal
     html_url: https://github.com/mauriciovasquezbernal
     avatar_url: https://avatars.githubusercontent.com/u/13031921?v=4
+  - name: maxday
+    html_url: https://github.com/maxday
+    avatar_url: https://avatars.githubusercontent.com/u/864493?v=4
   - name: maynk
     html_url: https://github.com/maynk
     avatar_url: https://avatars.githubusercontent.com/u/9286568?v=4
@@ -2437,6 +2629,9 @@ members:
   - name: ppittle
     html_url: https://github.com/ppittle
     avatar_url: https://avatars.githubusercontent.com/u/1190907?v=4
+  - name: prestonvasquez
+    html_url: https://github.com/prestonvasquez
+    avatar_url: https://avatars.githubusercontent.com/u/24281431?v=4
   - name: rauno56
     html_url: https://github.com/rauno56
     avatar_url: https://avatars.githubusercontent.com/u/1334536?v=4
@@ -2512,18 +2707,21 @@ members:
   - name: vishweshbankwar
     html_url: https://github.com/vishweshbankwar
     avatar_url: https://avatars.githubusercontent.com/u/17655898?v=4
-  - name: vitorvasc
-    html_url: https://github.com/vitorvasc
-    avatar_url: https://avatars.githubusercontent.com/u/12118857?v=4
   - name: vmarchaud
     html_url: https://github.com/vmarchaud
     avatar_url: https://avatars.githubusercontent.com/u/2820968?v=4
   - name: wgliang
     html_url: https://github.com/wgliang
     avatar_url: https://avatars.githubusercontent.com/u/8739301?v=4
+  - name: wph95
+    html_url: https://github.com/wph95
+    avatar_url: https://avatars.githubusercontent.com/u/2732352?v=4
   - name: xsoheilalizadeh
     html_url: https://github.com/xsoheilalizadeh
     avatar_url: https://avatars.githubusercontent.com/u/22220356?v=4
   - name: YanivD
     html_url: https://github.com/YanivD
     avatar_url: https://avatars.githubusercontent.com/u/5182244?v=4
+  - name: yurishkuro
+    html_url: https://github.com/yurishkuro
+    avatar_url: https://avatars.githubusercontent.com/u/3523016?v=4

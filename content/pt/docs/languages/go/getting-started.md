@@ -1,8 +1,7 @@
 ---
 title: Primeiros Passos
 weight: 10
-default_lang_commit: a025c25aaf1aef653caa34e49e8714472cbeddbd
-drifted_from_default: true
+default_lang_commit: dc20c29a4c79ad0424c0fcc3271216af7e035d9b
 # prettier-ignore
 cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace strconv
 ---
@@ -189,7 +188,7 @@ func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, er
 	otel.SetTextMapPropagator(prop)
 
 	// Inicializa o Trace Provider.
-	tracerProvider, err := newTraceProvider()
+	tracerProvider, err := newTracerProvider()
 	if err != nil {
 		handleErr(err)
 		return
@@ -225,19 +224,19 @@ func newPropagator() propagation.TextMapPropagator {
 	)
 }
 
-func newTraceProvider() (*trace.TracerProvider, error) {
+func newTracerProvider() (*trace.TracerProvider, error) {
 	traceExporter, err := stdouttrace.New(
 		stdouttrace.WithPrettyPrint())
 	if err != nil {
 		return nil, err
 	}
 
-	traceProvider := trace.NewTracerProvider(
+	tracerProvider := trace.NewTracerProvider(
 		trace.WithBatcher(traceExporter,
 			// O valor padrão é 5s. Definimos em 1s para propósito de demonstração.
 			trace.WithBatchTimeout(time.Second)),
 	)
-	return traceProvider, nil
+	return tracerProvider, nil
 }
 
 func newMeterProvider() (*metric.MeterProvider, error) {
