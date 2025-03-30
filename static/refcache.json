@@ -167,6 +167,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T01:39:12.345Z"
   },
+  "https://bitbucket.org": {
+    "StatusCode": 200,
+    "LastSeen": "2025-03-30T20:54:05.344003225Z"
+  },
   "https://blog.logrocket.com/understanding-schema-stitching-graphql/": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:46:28.075977-04:00"
@@ -795,9 +799,17 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:04:12.345Z"
   },
+  "https://developer.android.com/identity/app-set-id": {
+    "StatusCode": 200,
+    "LastSeen": "2025-03-30T20:54:00.392744354Z"
+  },
   "https://developer.android.com/reference/android/os/Build#MANUFACTURER": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:04:12.345Z"
+  },
+  "https://developer.android.com/reference/android/provider/Settings.Secure#ANDROID_ID": {
+    "StatusCode": 200,
+    "LastSeen": "2025-03-30T20:54:02.964558792Z"
   },
   "https://developer.android.com/training/articles/user-data-ids": {
     "StatusCode": 200,
@@ -810,6 +822,10 @@
   "https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:23:38.683032-05:00"
+  },
+  "https://developer.apple.com/documentation/uikit/uidevice/identifierforvendor": {
+    "StatusCode": 200,
+    "LastSeen": "2025-03-30T20:53:55.137426704Z"
   },
   "https://developer.cisco.com/docs/nso/observability-exporter/": {
     "StatusCode": 206,
@@ -1695,6 +1711,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:07:12.345Z"
   },
+  "https://docs.python.org/3/library/gc.html#gc.get_stats": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-30T20:54:16.172963474Z"
+  },
   "https://docs.python.org/3/library/sys.html#sys.implementation": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:07:12.345Z"
@@ -2083,6 +2103,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-30T17:00:38.881533-05:00"
   },
+  "https://firebase.google.com/docs/projects/manage-installations": {
+    "StatusCode": 200,
+    "LastSeen": "2025-03-30T20:53:57.572199022Z"
+  },
   "https://flagd.dev": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:38:24.985523-05:00"
@@ -2174,6 +2198,10 @@
   "https://git-scm.com/docs/gitglossary#def_ref": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:07:12.345Z"
+  },
+  "https://gitea.io": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-30T20:54:19.70074356Z"
   },
   "https://github.blog/2021-05-26-why-and-how-github-is-adopting-opentelemetry/": {
     "StatusCode": 200,
@@ -11339,6 +11367,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-20T09:23:48.368491392-08:00"
   },
+  "https://github.com/open-telemetry/semantic-conventions/issues/1870": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-30T20:54:08.718061694Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues/new": {
     "StatusCode": 206,
     "LastSeen": "2025-01-15T13:17:31.33164-05:00"
@@ -13414,6 +13446,10 @@
   "https://github.com/zstone12": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:41:27.736136-05:00"
+  },
+  "https://gitlab.com": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-30T20:54:12.347427105Z"
   },
   "https://gitpod.io": {
     "StatusCode": 206,
