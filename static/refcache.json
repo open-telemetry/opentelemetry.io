@@ -16727,6 +16727,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-06T11:32:34.775836-05:00"
   },
+  "https://redis.io/docs/latest/commands/evalsha/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-31T14:51:15.694603818Z"
+  },
+  "https://redis.io/docs/latest/commands/fcall/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-31T14:51:11.492511627Z"
+  },
   "https://redis.io/docs/latest/commands/hmset": {
     "StatusCode": 206,
     "LastSeen": "2025-01-24T14:36:52.741741-05:00"
