@@ -655,12 +655,6 @@ maintainers:
       - weaver-maintainers
     html_url: https://github.com/jsuereth
     avatar_url: https://avatars.githubusercontent.com/u/29006?v=4
-  - name: jtescher
-    teams:
-      - rust-approvers
-      - rust-maintainers
-    html_url: https://github.com/jtescher
-    avatar_url: https://avatars.githubusercontent.com/u/175237?v=4
   - name: julianocosta89
     teams:
       - demo-approvers
@@ -1426,6 +1420,11 @@ approvers:
       - javascript-triagers
     html_url: https://github.com/david-luna
     avatar_url: https://avatars.githubusercontent.com/u/999029?v=4
+  - name: dbarker
+    teams:
+      - cpp-approvers
+    html_url: https://github.com/dbarker
+    avatar_url: https://avatars.githubusercontent.com/u/3782873?v=4
   - name: DebajitDas
     teams:
       - cpp-contrib-approvers
@@ -1510,6 +1509,11 @@ approvers:
       - erlang-contrib-approvers
     html_url: https://github.com/GregMefford
     avatar_url: https://avatars.githubusercontent.com/u/69467?v=4
+  - name: gruebel
+    teams:
+      - rust-approvers
+    html_url: https://github.com/gruebel
+    avatar_url: https://avatars.githubusercontent.com/u/33207684?v=4
   - name: hectorhdzg
     teams:
       - javascript-approvers
@@ -2251,9 +2255,6 @@ members:
   - name: gregkalapos
     html_url: https://github.com/gregkalapos
     avatar_url: https://avatars.githubusercontent.com/u/1091853?v=4
-  - name: gruebel
-    html_url: https://github.com/gruebel
-    avatar_url: https://avatars.githubusercontent.com/u/33207684?v=4
   - name: gyliu513
     html_url: https://github.com/gyliu513
     avatar_url: https://avatars.githubusercontent.com/u/4461983?v=4
@@ -2320,6 +2321,9 @@ members:
   - name: jsirianni
     html_url: https://github.com/jsirianni
     avatar_url: https://avatars.githubusercontent.com/u/23043836?v=4
+  - name: jtescher
+    html_url: https://github.com/jtescher
+    avatar_url: https://avatars.githubusercontent.com/u/175237?v=4
   - name: justinfoote
     html_url: https://github.com/justinfoote
     avatar_url: https://avatars.githubusercontent.com/u/3170392?v=4
