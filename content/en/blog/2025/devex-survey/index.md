@@ -73,13 +73,12 @@ While those working on backends or operations were the majority of respondents,
 mobile and browser were represented as well, see the third graph:
 
 ![Forms response chart. Question title: Where in your Observability journey is
-your organization?. Number of responses: 217 responses.](image1.png)
+your organization?](image3.png)
 
-![](image2.png)
+![Forms response chart. Question title: What programming languages are you using with OpenTelemtery?](image7.png)
 
 ![Forms response chart. Question title: What kind of service do you regularly
-work on? (select all that apply). Number of responses: 217
-responses.](image3.png)
+work on?](image9.png)
 
 ### Documentation
 
@@ -110,11 +109,14 @@ to being unaware of OCB
 for building custom images, disinterest in using it or a lack of adequate
 documentation around its use.
 
-![Forms response chart. Question title: How complex was it to get started operating the OpenTelemetry Collector?. Number of responses: 199 responses.](image4.png)
+![Forms response chart. Question title: How complex was it to get started
+operating the OpenTelemetry Collector?](image10.png)
 
-![Forms response chart. Question title: What environments are you using the OpenTelemetry collector? (select all that apply). Number of responses: 217 responses.](image5.png)
+![Forms response chart. Question title: What environments are you using the
+OpenTelemetry collector?](image6.png)
 
-![](image6.png)
+![Forms response chart. Question title: Which collector distribution do you
+use?](image4.png)
 
 ### SDK and Instrumentation
 
@@ -125,16 +127,15 @@ auto-instrumentation being relatively straightforward, the results showed that
 enriching that telemetry was more difficult.
 
 ![Forms response chart. Question title: Do you use OpenTelemetry SDK directly or
-via vendor SDK of the languages you use?. Number of responses: 217
-responses.](image7.png)
+via vendor SDK of the languages you use?](image1.png)
 
 ![Forms response chart. Question title: How complex was it to manually
-instrument your application with OpenTelemetry?. Number of responses: 217
-responses.](image8.png)
+instrument your application with OpenTelemetry?](image8.png)
 
-![Forms response chart. Question title: How complex was it to get started with OpenTelemetry SDK? (skip if you don't use). Number of responses: 217 responses.](image9.png)
+![Forms response chart. Question title: How complex was it to get started with
+OpenTelemetry SDK?](image2.png)
 
-![Forms response chart. Question title: How complex was it to get started with auto-instrumentation? (skip if you don't use). Number of responses: 161 responses.](image10.png)
+![Forms response chart. Question title: How complex was it to get started with auto-instrumentation?](image5.png)
 
 ### Debugging
 
