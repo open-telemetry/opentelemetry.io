@@ -12071,6 +12071,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-03-21T13:46:31.597120135-07:00"
   },
+  "https://github.com/open-telemetry/sig-developer-experience": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-02T15:06:58.750831554Z"
+  },
   "https://github.com/open-telemetry/sig-end-user": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:10:56.03728-05:00"
@@ -12870,6 +12874,10 @@
   "https://github.com/steffan-westcott/clj-otel": {
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:33:08.867508-05:00"
+  },
+  "https://github.com/stevejgordon": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-02T15:06:54.87107868Z"
   },
   "https://github.com/steverao": {
     "StatusCode": 206,
