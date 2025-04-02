@@ -818,6 +818,11 @@ maintainers:
       - specs-triagers
     html_url: https://github.com/MrAlias
     avatar_url: https://avatars.githubusercontent.com/u/5543599?v=4
+  - name: ms-jcorley
+    teams:
+      - sig-security-maintainers
+    html_url: https://github.com/ms-jcorley
+    avatar_url: https://avatars.githubusercontent.com/u/55004047?v=4
   - name: MSNev
     teams:
       - javascript-approvers
@@ -1434,6 +1439,7 @@ approvers:
     teams:
       - collector-contrib-approvers
       - collector-contrib-triagers
+      - collector-releases-approvers
       - java-contrib-triagers
     html_url: https://github.com/dehaansa
     avatar_url: https://avatars.githubusercontent.com/u/563558?v=4
