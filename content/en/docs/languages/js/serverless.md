@@ -74,6 +74,8 @@ const provider = new NodeTracerProvider({
   spanProcessors: [spanProcessor],
 });
 
+provider.register();
+
 registerInstrumentations({
   instrumentations: [
     getNodeAutoInstrumentations({
