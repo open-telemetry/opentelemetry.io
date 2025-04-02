@@ -11,7 +11,6 @@ sig: Developer Experience
 cSpell:ignore: Sloughter OTTL
 ---
 
-# Insights from the OpenTelemetry Developer Experience Survey
 
 The OpenTelemetry Developer Experience SIG recently surveyed the community to
 better understand where the SIG could have the most impact on improving the
