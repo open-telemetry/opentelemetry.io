@@ -1,7 +1,7 @@
 ---
 title: Insights from the OpenTelemetry Developer Experience Survey
 linkTitle: Insights from the Developer Experience Survey
-date: 2025-03-27
+date: 2025-04-02
 author: >
   [Tristan Sloughter](https://github.com/tsloughter) (MyDecisiveAI), [Juliano
   Costa](https://github.com/julianocosta89) (Datadog), [Steve
