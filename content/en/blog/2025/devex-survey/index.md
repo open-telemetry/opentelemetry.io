@@ -74,6 +74,9 @@ mobile and browser were represented as well, see the third graph:
 ![Forms response chart. Question title: Where in your Observability journey is
 your organization?](image3.png)
 
+![Forms response chart. Question title: Which platforms are you running
+OpenTelemetry on?](image11.png)
+
 ![Forms response chart. Question title: What programming languages are you using with OpenTelemetry?](image7.png)
 
 ![Forms response chart. Question title: What kind of service do you regularly
