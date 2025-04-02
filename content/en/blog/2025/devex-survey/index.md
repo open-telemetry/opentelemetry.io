@@ -8,9 +8,8 @@ author: >
   Gordon](https://github.com/stevejgordon) (Elastic), [Damien
   Mathieu](https://github.com/dmathieu) (Elastic)
 sig: Developer Experience
-cSpell:ignore: Sloughter OTTL
+cSpell:ignore: OTTL Sloughter
 ---
-
 
 The OpenTelemetry Developer Experience SIG recently surveyed the community to
 better understand where the SIG could have the most impact on improving the
@@ -61,8 +60,8 @@ production (83%) and do not work for a vendor (77.4%). 82% consider their
 organization to be at an intermediate or advanced phase of their journey with
 observability.
 
-The platforms used leaned towards Kubernetes (68.2%) and AWS
-(34.6%), with bare metal still making up a respectable percentage (12%).
+The platforms used leaned towards Kubernetes (68.2%) and AWS (34.6%), with bare
+metal still making up a respectable percentage (12%).
 
 Programming language usage was split between the usual suspects of Go, Java,
 JavaScript, Python and .NET, but had a wide spread and even languages without
@@ -100,9 +99,9 @@ End User SIG.
 
 Getting started with the Collector was shown to lean towards the fairly easy,
 though based on results for the question asking for problems with operating the
-Collector and the overall experience question, it seems clear there is a gap between
-getting started and operating with more complex pipelines or in larger deployments.
-More on this in the Future Plans section.
+Collector and the overall experience question, it seems clear there is a gap
+between getting started and operating with more complex pipelines or in larger
+deployments. More on this in the Future Plans section.
 
 Interestingly, _collector-contrib_ had a large percentage of the responses to
 the question, “Which collector do you use?”. Sadly, it is unclear if this is due
@@ -155,10 +154,8 @@ improve the OpenTelemetry developer experience. We will now direct some of this
 feedback to the respective SIGs, work on prototyping some solutions and follow
 up with the other teams.
 
-
 Thank you again to all those who participated in the survey! Even though the
 survey is now over, we do still welcome feedback. Feel free to reach out to us
-on [Slack, or during our weekly
-meetings](https://github.com/open-telemetry/community/?tab=readme-ov-file#cross-cutting-sigs)
+on
+[Slack, or during our weekly meetings](https://github.com/open-telemetry/community/?tab=readme-ov-file#cross-cutting-sigs)
 if you want to provide additional informations, or want to join us.
-
