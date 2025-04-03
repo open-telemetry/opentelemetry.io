@@ -20,7 +20,7 @@
     "_check:text": "npx textlint content data `ls *.md`",
     "_commit:public": "HASH=$(git rev-parse --short main); cd public && git add -A && git commit -m \"Site at $HASH\"",
     "_diff:check": "git diff --name-only --exit-code",
-    "_diff:fail": "git diff --name-only --exit-code || exit 1",
+    "_diff:fail": "./scripts/diff_fail.sh",
     "_fail": "exit 1",
     "_filename-error": "echo 'ERROR: the following files violate naming conventions; fix using: `npm run fix:filenames`'; echo; npm run -s _ls-bad-filenames; exit 1",
     "_fix:trailing-spaces": "find content -name '*.md' -exec perl -i -pe 's/[ \t]+$//g' {} +",
