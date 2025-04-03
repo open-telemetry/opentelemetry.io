@@ -87,7 +87,7 @@ customization of spans:
 
 | name             | type              | default    | description                                                                                                                                  |
 | ---------------- | ----------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `value`          | `String`          | `""`       | The span name, when empty (default) `<className>.<methodName>` will be used.                                                                 |
+| `value`          | `String`          | `""`       | The span name. If not specified, the default `<className>.<methodName>` is used.                                                                 |
 | `kind`           | `SpanKind` (enum) | `INTERNAL` | The [kind of span](/docs/specs/otel/trace/api/#spankind).                                                                                    |
 | `inheritContext` | `boolean`         | `true`     | Since 2.14.0. Controls whether or not the new span will be parented in the existing (current) context. If `false`, a new context is created. |
 
