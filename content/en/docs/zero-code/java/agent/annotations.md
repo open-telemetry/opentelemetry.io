@@ -94,8 +94,13 @@ customization of spans:
 Example parameter usage:
 
 ```java
-@WithSpan(kind = SpanKind.CLIENT, inheritContext = false)
+@WithSpan(kind = SpanKind.CLIENT, inheritContext = false, value = "my span name")
 public void myMethod() {
+    <...>
+}
+
+@WithSpan("my span name")
+public void myOtherMethod() {
     <...>
 }
 ```
