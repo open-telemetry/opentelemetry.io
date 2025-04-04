@@ -94,9 +94,9 @@ instrumentations, see
 
 {{% alert title="Note" color="info" %}}
 
-Experimental features of the Java agent might increase agent overhead due to
-the experimental focus on functionality over performance. Stable features are
-safer in terms of agent overhead.
+Experimental features of the Java agent might increase agent overhead due to the
+experimental focus on functionality over performance. Stable features are safer
+in terms of agent overhead.
 
 {{% /alert %}}
 
