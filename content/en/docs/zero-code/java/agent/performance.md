@@ -92,9 +92,10 @@ increase agent overhead. For more information on how to turn off unnecessary
 instrumentations, see
 [Turn off specific instrumentations](#turn-off-specific-instrumentations).
 
-> [!NOTE] Experimental features of the Java agent might increase agent overhead
-> due to the experimental focus on functionality over performance. Stable
-> features are safer in terms of agent overhead.
+{{% alert title="Note" color="info" %}}Experimental features of the Java
+agent might increase agent overhead due to the experimental focus on
+functionality over performance. Stable features are safer in terms of agent
+overhead.{{% /alert %}}
 
 ## Troubleshooting agent overhead issues
 
