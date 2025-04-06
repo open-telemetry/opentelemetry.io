@@ -44,7 +44,7 @@ component. If you chose not to use a Collector, you can skip to the next
 section.
 
 The Operator provides a
-[Custom Resource Definition (CRD) for the OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector)
+[Custom Resource Definition (CRD) for the OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md)
 which is used to create an instance of the Collector that the Operator manages.
 The following example deploys the Collector as a deployment (the default), but
 there are other
@@ -178,7 +178,7 @@ spec:
 
 #### Learn more {#dotnet-learn-more}
 
-For more details, see [.NET Auto Instrumentation docs](/docs/zero-code/net/).
+For more details, see [.NET Auto Instrumentation docs](/docs/zero-code/dotnet/).
 
 ### Deno
 

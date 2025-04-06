@@ -55,7 +55,7 @@ The demo’s stack includes multiple microservices in different languages,
 covering each of the following OTel-supported languages:
 
 - [C++](/docs/languages/cpp/)
-- [.NET](/docs/languages/net/)
+- [.NET](/docs/languages/dotnet/)
 - [Erlang/Elixir](/docs/languages/erlang/)
 - [Go](/docs/languages/go/)
 - [Node.js](/docs/languages/js/)

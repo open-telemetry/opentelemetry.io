@@ -188,7 +188,7 @@ fixes an unintentional breaking change in previous releases.
 There have been several important changes in the experimental packages,
 including deprecation of legacy configuration APIs.
 
-#### [.NET](/docs/languages/net/)
+#### [.NET](/docs/languages/dotnet/)
 
 [Version 1.6.0](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.6.0)
 includes minor updates to metrics.

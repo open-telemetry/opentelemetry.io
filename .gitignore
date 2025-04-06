@@ -6,6 +6,7 @@
 # npm assets
 node_modules/
 package-lock.json
+pnpm-lock.yaml
 
 # Link checker
 tmp/
@@ -24,8 +25,10 @@ assets/jsconfig.json
 # VS Code
 /.vscode/**
 
-# Webstorm
+# WebStorm
 /.idea/**
 
 .dart_tool
 pubspec.lock
+
+# cSpell:ignore pubspec

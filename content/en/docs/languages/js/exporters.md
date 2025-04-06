@@ -4,7 +4,7 @@ weight: 50
 description: Process and export your telemetry data
 ---
 
-{{% docs/languages/exporters/intro js %}}
+{{% docs/languages/exporters/intro %}}
 
 ### Dependencies {#otlp-dependencies}
 
@@ -239,9 +239,9 @@ package and the `ConsoleMetricExporter` is included in the
 [`@opentelemetry/sdk-metrics`](https://www.npmjs.com/package/@opentelemetry/sdk-metrics)
 package:
 
-{{% docs/languages/exporters/jaeger %}}
+{{% include "exporters/jaeger.md" %}}
 
-{{% docs/languages/exporters/prometheus-setup %}}
+{{% include "exporters/prometheus-setup.md" %}}
 
 ### Dependencies {#prometheus-dependencies}
 
@@ -296,7 +296,7 @@ With the above you can access your metrics at <http://localhost:9464/metrics>.
 Prometheus or an OpenTelemetry Collector with the Prometheus receiver can scrape
 the metrics from this endpoint.
 
-{{% docs/languages/exporters/zipkin-setup %}}
+{{% include "exporters/zipkin-setup.md" %}}
 
 ### Dependencies {#zipkin-dependencies}
 
@@ -345,7 +345,7 @@ const sdk = new opentelemetry.NodeSDK({
 
 {{% /tab %}} {{< /tabpane >}}
 
-{{% docs/languages/exporters/outro js `https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk_trace_base.SpanExporter.html` %}}
+{{% include "exporters/outro.md" `https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk_trace_base.SpanExporter.html` %}}
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -378,8 +378,6 @@ sdk.start();
 ```
 
 {{% /tab %}} {{< /tabpane >}}
-
-{{% /docs/languages/exporters/outro %}}
 
 [content security policies]:
   https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/

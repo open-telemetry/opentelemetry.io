@@ -52,8 +52,8 @@ solutions. The following things are also a part of OpenTelemetry:
 - [Semantic Conventions](../semantic-conventions/) provide a common naming
   schema that can be used for standardization across code bases and platforms.
 
-[logs]: ../signals/traces/
-[metrics]: ../signals/traces/
+[logs]: ../signals/logs/
+[metrics]: ../signals/metrics/
 [observable]: ../observability-primer/#what-is-observability
 [signals]: ../signals/
 [traces]: ../signals/traces/
