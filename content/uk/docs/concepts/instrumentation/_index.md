@@ -29,8 +29,8 @@ OpenTelemetry надає більше, ніж просто рішення для
 - Кожна мовно-специфічна реалізація API та SDK відповідає вимогам та очікуванням [специфікації OpenTelemetry](/docs/specs/otel/).
 - [Семантичні домовленості](../semantic-conventions/) надають загальну схему найменування, яка може бути використана для стандартизації в різних кодових базах та платформах.
 
-[logs]: ../signals/traces/
-[metrics]: ../signals/traces/
+[logs]: ../signals/logs/
+[metrics]: ../signals/metrics/
 [observable]: ../observability-primer/#what-is-observability
 [signals]: ../signals/
 [traces]: ../signals/traces/

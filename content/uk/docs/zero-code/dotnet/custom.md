@@ -76,4 +76,4 @@ cSpell:ignore: meterprovider tracerprovider
 
 ## Додаткові матеріали {#further-reading}
 
-- [Документація OpenTelemetry.io для ручної інструменталізації .NET](/docs/languages/net/instrumentation#setting-up-an-activitysource)
+- [Документація OpenTelemetry.io для ручної інструменталізації .NET](/docs/languages/dotnet/instrumentation#setting-up-an-activitysource)

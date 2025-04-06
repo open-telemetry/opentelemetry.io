@@ -3,7 +3,7 @@ title: .NET
 description: >
   <img width="35" class="img-initial" src="/img/logos/32x32/dotnet.svg"
   alt=".NET"> Специфічна для мови реалізація OpenTelemetry в .NET.
-aliases: [/csharp, /csharp/metrics, /csharp/tracing]
+aliases: [net, /csharp, /csharp/metrics, /csharp/tracing]
 weight: 12
 ---
 

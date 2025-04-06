@@ -69,6 +69,8 @@ const provider = new NodeTracerProvider({
   spanProcessors: [spanProcessor],
 });
 
+provider.register();
+
 registerInstrumentations({
   instrumentations: [
     getNodeAutoInstrumentations({
@@ -198,7 +200,7 @@ serverless deploy
 ```javascript
 /* otelwrapper.js */
 
-const { Resource } = require('@opentelemetry/resources');
+const { resourceFromAttributes } = require('@opentelemetry/resources');
 const {
   SEMRESATTRS_SERVICE_NAME,
 } = require('@opentelemetry/semantic-conventions');
@@ -245,13 +247,12 @@ registerInstrumentations({
     "@google-cloud/functions-framework": "^3.0.0",
     "@opentelemetry/api": "^1.9.0",
     "@opentelemetry/auto-instrumentations-node": "^0.56.1",
-    "@opentelemetry/exporter-trace-otlp-http": "^0.57.2",
-    "@opentelemetry/instrumentation": "^0.57.2",
-    "@opentelemetry/sdk-node": "^0.57.2",
-    "@opentelemetry/sdk-trace-base": "^1.30.1",
-    "@opentelemetry/sdk-trace-node": "^1.30.1",
-    "@opentelemetry/resources": "^1.30.1",
-    "@opentelemetry/semantic-conventions": "^1.30.0"
+    "@opentelemetry/exporter-trace-otlp-http": "^0.200.0",
+    "@opentelemetry/instrumentation": "^0.200.0",
+    "@opentelemetry/sdk-trace-base": "^2.0.0",
+    "@opentelemetry/sdk-trace-node": "^2.0.0",
+    "@opentelemetry/resources": "^2.0.0",
+    "@opentelemetry/semantic-conventions": "^2.0.0"
   }
 }
 ```

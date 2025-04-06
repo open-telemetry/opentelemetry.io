@@ -123,7 +123,7 @@ Resource associated with Activity:
 
 Є більше детекторів ресурсів, які ви можете додати до вашої конфігурації, наприклад, щоб отримати деталі про ваше [Cloud] середовище або [Deployment][].
 
-[початок роботи]: /docs/languages/net/getting-started/
+[початок роботи]: /docs/languages/dotnet/getting-started/
 [host]: /docs/specs/semconv/resource/host/
 [cloud]: /docs/specs/semconv/resource/cloud/
 [deployment]: /docs/specs/semconv/resource/deployment-environment/

@@ -3,7 +3,7 @@ title: Експортери
 weight: 50
 ---
 
-{{% uk/docs/languages/exporters/intro dotnet %}}
+{{% docs/languages/exporters/intro %}}
 
 ### Залежності {#otlp-dependencies}
 
@@ -183,9 +183,9 @@ var loggerFactory = LoggerFactory.Create(builder =>
 });
 ```
 
-{{% uk/docs/languages/exporters/jaeger %}}
+{{% include "exporters/jaeger.md" %}}
 
-{{% uk/docs/languages/exporters/prometheus-setup %}}
+{{% include "exporters/prometheus-setup.md" %}}
 
 ### Залежності {#prometheus-dependencies}
 
@@ -262,7 +262,7 @@ app.UseOpenTelemetryPrometheusScrapingEndpoint();
 
 Детальнішу інформацію про налаштування експортера Prometheus можна знайти [тут](https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Exporter.Prometheus.AspNetCore/README.md).
 
-{{% uk/docs/languages/exporters/zipkin-setup %}}
+{{% include "exporters/zipkin-setup.md" %}}
 
 ### Залежності {#zipkin-dependencies}
 

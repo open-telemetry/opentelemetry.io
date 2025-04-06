@@ -2,11 +2,11 @@
 
 ### Налаштування бекенду {#zipkin-setup}
 
-<div class="alert alert-info" role="alert"><h4 class="alert-heading">Примітка</h4>
+{{% alert-md title=Примітка color=info %}}
 
 Якщо у вас вже налаштований Zipkin або сумісний з Zipkin бекенд, ви можете пропустити цей розділ і налаштувати [залежності експортера Zipkin](#zipkin-dependencies) для вашого застосунку.
 
-</div>
+{{% /alert-md %}}
 
 Ви можете запустити [Zipkin](https://zipkin.io/) у Docker контейнері, виконавши наступну команду:
 
