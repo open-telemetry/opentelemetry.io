@@ -5,11 +5,10 @@ aliases: [agent-config]
 cSpell:ignore: classloaders customizer logback
 ---
 
-{{% alert title="For more information" %}}
-This page describes the various ways in which configuration can be supplied to the java agent.
-For information on the configuration options themselves,
-see [Configure the SDK](/docs/languages/java/configuration).
-{{% /alert %}}
+{{% alert title="For more information" %}} This page describes the various ways
+in which configuration can be supplied to the java agent. For information on the
+configuration options themselves, see
+[Configure the SDK](/docs/languages/java/configuration). {{% /alert %}}
 
 ## Agent Configuration
 
