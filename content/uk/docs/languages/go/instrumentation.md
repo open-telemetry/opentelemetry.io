@@ -483,10 +483,13 @@ import (
 	"go.opentelemetry.io/otel/metric"
 )
 
-var fanSpeedSubscription chan int64
+var (
+  fanSpeedSubscription chan int64
+  speedGauge metric.Int64Gauge
+)
 
 func init() {
-	speedGauge, err := meter.Int64Gauge(
+	speedGauge, err = meter.Int64Gauge(
 		"cpu.fan.speed",
 		metric.WithDescription("Швидкість вентилятора ЦП"),
 		metric.WithUnit("RPM"),

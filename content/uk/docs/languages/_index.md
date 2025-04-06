@@ -5,7 +5,9 @@ description:
   програмування
 weight: 250
 aliases: [/docs/instrumentation]
-redirects: [{ from: /docs/instrumentation/*, to: ':splat' }] # Тільки для `en`
+redirects:
+  - { from: /docs/instrumentation/*, to: ':splat' } # Only for `en`
+  - { from: 'net/*', to: 'dotnet/:splat' }
 ---
 
 [Інструментування][instrumentation] коду OpenTelemetry підтримується для мов, зазначених у таблиці [Статуси та випуски](#status-and-releases) нижче. Неофіційні реалізації для [інших мов](/docs/languages/other) також доступні. Ви можете знайти їх у [реєстрі](/ecosystem/registry/).

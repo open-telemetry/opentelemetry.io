@@ -4,7 +4,7 @@ weight: 50
 cSpell:ignore: fastcgi pecl
 ---
 
-{{% uk/docs/languages/exporters/intro php %}}
+{{% docs/languages/exporters/intro %}}
 
 {{% alert title="Примітка" color="info" %}}
 

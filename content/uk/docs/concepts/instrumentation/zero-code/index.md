@@ -27,7 +27,7 @@ aliases: [automatic]
 
 Автоматичне інструментування доступне для наступних мов:
 
-- [.NET](/docs/zero-code/net/)
+- [.NET](/docs/zero-code/dotnet/)
 - [Go](/docs/zero-code/go)
 - [Java](/docs/zero-code/java/)
 - [JavaScript](/docs/zero-code/js/)

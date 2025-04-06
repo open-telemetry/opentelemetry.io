@@ -7,7 +7,7 @@ cSpell:ignore: LOWMEMORY
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% uk/docs/languages/exporters/intro python %}}
+{{% docs/languages/exporters/intro %}}
 
 ### Залежності {#otlp-dependencies}
 
@@ -178,9 +178,9 @@ export OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE="DELTA"
 
 {{% /alert %}}
 
-{{% uk/docs/languages/exporters/jaeger %}}
+{{% include "exporters/jaeger.md" %}}
 
-{{% uk/docs/languages/exporters/prometheus-setup %}}
+{{% include "exporters/prometheus-setup.md" %}}
 
 ### Залежності {#prometheus-dependencies}
 
@@ -216,7 +216,7 @@ metrics.set_meter_provider(provider)
 
 З вищенаведеним ви можете отримати доступ до ваших метрик за адресою <http://localhost:9464/metrics>. Prometheus або OpenTelemetry Collector з приймачем Prometheus можуть збирати метрики з цієї точки доступу.
 
-{{% uk/docs/languages/exporters/zipkin-setup %}}
+{{% include "exporters/zipkin-setup.md" %}}
 
 ### Залежності {#zipkin-dependencies}
 
@@ -287,7 +287,7 @@ trace.set_tracer_provider(provider)
 
 {{% /tab %}} {{< /tabpane >}}
 
-{{% uk/docs/languages/exporters/outro python `https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.export.html#opentelemetry.sdk.trace.export.SpanExporter` %}}
+{{% include "exporters/outro.md" `https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.export.html#opentelemetry.sdk.trace.export.SpanExporter` %}}
 
 ```python
 from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
@@ -295,5 +295,3 @@ from opentelemetry.sdk.trace.export import SimpleSpanProcessor
 
 processor = SimpleSpanProcessor(OTLPSpanExporter(endpoint="your-endpoint-here"))
 ```
-
-{{%/ uk/docs/languages/exporters/outro %}}
