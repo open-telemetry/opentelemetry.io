@@ -17,7 +17,7 @@ OpenTelemetry 是 OpenTracing 和 OpenCensus 的合并版本。
 
 ## Jaeger 客户端
 
-[Jaeger 社区](https://www.jaegertracing.io/)弃用了他们的[客户端库](https://www.jaegertracing.io/docs/latest/client-libraries/)并建议使用
+[Jaeger 社区](https://www.jaegertracing.io/)弃用了他们的[客户端库](https://www.jaegertracing.io/docs/1.17/client-libraries/)并建议使用
 OpenTelemetry 的 API、SDK 和插桩器。
 
 自 v1.35 起，Jaeger 后端可以通过 OpenTelemetry 协议（OTLP）接收链路数据。
