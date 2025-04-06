@@ -239,6 +239,15 @@ env:
         fieldPath: status.hostIP
 ```
 
+However when sending OTLP data to `hostPort` this way, the default configuration of 
+[`k8sattributes` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor) 
+prevents enriching pod OTLP data with k8s metadata (i.e. will not attach k8s.pod.name, 
+k8s.namespace.name, etc.). If Pod association rules are not configured for `k8sattributes`
+processor, resources are associated with metadata only by connection's IP Address. 
+Unfortunatelly sending via `hostPort` means that the Collector sees this connection
+as coming from the node and is unable to associate the pod with incoming OTLP data
+in its default configuration.
+
 ### Scrub sensitive data
 
 [Processors](/docs/collector/configuration/#processors) are the Collector
