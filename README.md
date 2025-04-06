@@ -17,6 +17,51 @@ perfect position to help us get better: the website and documentation is the
 entry point for newcomers like you, so if something is unclear or something is
 missing [let us know][].
 
+## Local Development Setup
+
+To build and preview the site locally, follow the steps below.
+
+### Prerequisites
+
+Make sure the following tools are installed:
+
+- [Hugo][] – Static site generator
+- [Node.js & npm][] – JavaScript runtime and package manager
+
+### Install dependencies
+
+After cloning the repository, install the required npm packages:
+
+```bash
+npm install
+```
+
+### Serve the website
+
+Run the Hugo development server using the following command:
+
+```bash
+npm run serve
+```
+
+This will build and serve the website locally at [http://localhost:1313](http://localhost:1313) by default.
+
+### Troubleshooting: Bash script error on Unix systems
+
+If you encounter an error similar to:
+
+```bash
+/usr/bin/env: ‘bash\r’: No such file or directory
+```
+
+It is likely due to Windows-style line endings (CRLF) in shell scripts. To fix this, convert the script to Unix-style line endings (LF):
+
+```bash
+dos2unix scripts/content-modules/cp-pages.sh
+```
+
+This should resolve the issue and allow the script to run properly on Unix-like systems.
+
 ### Submit a blog post
 
 For guidance on how to write and submit a blog post, see
@@ -105,3 +150,4 @@ already contributed][contributors]!
 [netlify]: https://netlify.com
 [available here]:
   https://lookerstudio.google.com/reporting/34c2a65a-39e8-44aa-afa0-094975fee55d/page/4VDGB
+[Node.js & npm]: https://nodejs.org/
