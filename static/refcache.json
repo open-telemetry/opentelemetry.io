@@ -8963,6 +8963,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:15:12.345Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-06T04:35:11.407913032Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-operator/issues/1393": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:16.782675-05:00"
