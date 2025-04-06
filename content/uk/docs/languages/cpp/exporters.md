@@ -6,7 +6,7 @@ cSpell:ignore: DWITH
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% uk/docs/languages/exporters/intro cpp %}}
+{{% docs/languages/exporters/intro %}}
 
 ### Залежності {#otlp-dependencies}
 
@@ -258,9 +258,9 @@ void InitLogger()
 }
 ```
 
-{{% uk/docs/languages/exporters/jaeger %}}
+{{% include "exporters/jaeger.md" %}}
 
-{{% uk/docs/languages/exporters/prometheus-setup %}}
+{{% include "exporters/prometheus-setup.md" %}}
 
 ### Залежності {#prometheus-dependencies}
 
@@ -299,7 +299,7 @@ void InitMetrics()
 З вищенаведеним ви можете отримати доступ до ваших метрик за адресою <http://localhost:9464/metrics>. Prometheus або OpenTelemetry Collector з Prometheus приймачем можуть збирати
 метрики з цієї кінцевої точки.
 
-{{% uk/docs/languages/exporters/zipkin-setup %}}
+{{% include "exporters/zipkin-setup.md" %}}
 
 ### Залежності {#zipkin-dependencies}
 
@@ -338,7 +338,7 @@ void InitTracer()
 }
 ```
 
-{{% uk/docs/languages/exporters/outro python `https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/classopentelemetry_1_1sdk_1_1trace_1_1SpanExporter.html` %}}
+{{% include "exporters/outro.md" `https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/classopentelemetry_1_1sdk_1_1trace_1_1SpanExporter.html` %}}
 
 {{< tabpane text=true >}} {{% tab Batch %}}
 
@@ -368,5 +368,3 @@ auto processor = opentelemetry::sdk::trace::SimpleSpanProcessorFactory::Create(s
 ```
 
 {{< /tab >}} {{< /tabpane>}}
-
-{{%/ uk/docs/languages/exporters/outro %}}

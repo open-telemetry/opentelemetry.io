@@ -7,7 +7,7 @@ cSpell:ignore: ASPNETCORE rolldice
 
 Ця сторінка покаже вам, як почати роботу з OpenTelemetry у .NET.
 
-Якщо ви шукаєте спосіб автоматично інструментувати ваш застосунок, перегляньте [цей посібник](/docs/zero-code/net/getting-started/).
+Якщо ви шукаєте спосіб автоматично інструментувати ваш застосунок, перегляньте [цей посібник](/docs/zero-code/dotnet/getting-started/).
 
 Ви дізнаєтеся, як інструментувати простий .NET застосунок таким чином, щоб [трейси][], [метрики][] та [логи][] виводилися в консоль.
 
@@ -15,13 +15,13 @@ cSpell:ignore: ASPNETCORE rolldice
 
 Переконайтеся, що у вас встановлено наступне:
 
-- [.NET SDK](https://dotnet.microsoft.com/download/dotnet) 6+
+- [.NET SDK](https://dotnet.microsoft.com/download/dotnet) 8+
 
 ## Приклад застосунку {#example-application}
 
 Наступний приклад використовує базовий [Мінімальний API з ASP.NET Core](https://learn.microsoft.com/aspnet/core/tutorials/min-web-api) застосунок. Якщо ви не використовуєте мінімальний API з ASP.NET Core, це не проблема — ви можете використовувати OpenTelemetry .NET з іншими фреймворками. Для повного списку бібліотек для підтримуваних фреймворків дивіться [реєстр](/ecosystem/registry/?component=instrumentation&language=dotnet).
 
-Для складніших прикладів дивіться [приклади](/docs/languages/net/examples/).
+Для складніших прикладів дивіться [приклади](/docs/languages/dotnet/examples/).
 
 ### Створення та запуск HTTP сервера {#create-and-launch-an-http-server}
 
@@ -249,8 +249,8 @@ Value: Sum: 1330.4766000000002 Count: 5 Min: 50.0333 Max: 465.7936
 Для більшого:
 
 - Запустіть цей приклад з іншим [експортером][експортер] для даних телеметрії.
-- Спробуйте [автоматичне інструментування](/docs/zero-code/net/) на одному з ваших застосунків.
-- Дізнайтеся про [ручне інструментування][] та спробуйте більше [прикладів](/docs/languages/net/examples/).
+- Спробуйте [автоматичне інструментування](/docs/zero-code/dotnet/) на одному з ваших застосунків.
+- Дізнайтеся про [ручне інструментування][] та спробуйте більше [прикладів](/docs/languages/dotnet/examples/).
 - Ознайомтеся з [демо OpenTelemetry](/docs/demo/), яке включає основний на .NET [Cart Service](/docs/demo/services/cart/).
 
 [трейси]: /docs/concepts/signals/traces/

@@ -4,7 +4,7 @@ weight: 50
 description: Обробка та експорт ваших телеметричних даних
 ---
 
-{{% uk/docs/languages/exporters/intro js %}}
+{{% docs/languages/exporters/intro %}}
 
 ### Залежності {#otlp-dependencies}
 
@@ -200,9 +200,9 @@ server {
 
 `ConsoleSpanExporter` включений в пакунок [`@opentelemetry/sdk-trace-node`](https://www.npmjs.com/package/@opentelemetry/sdk-trace-node), а `ConsoleMetricExporter` включений в пакунок [`@opentelemetry/sdk-metrics`](https://www.npmjs.com/package/@opentelemetry/sdk-metrics):
 
-{{% uk/docs/languages/exporters/jaeger %}}
+{{% include "exporters/jaeger.md" %}}
 
-{{% uk/docs/languages/exporters/prometheus-setup %}}
+{{% include "exporters/prometheus-setup.md" %}}
 
 ### Залежності {#prometheus-dependencies}
 
@@ -252,7 +252,7 @@ sdk.start();
 
 З вищенаведеним ви можете отримати доступ до ваших метрик за адресою <http://localhost:9464/metrics>. Prometheus або OpenTelemetry Collector з приймачем Prometheus можуть зчитувати метрики з цієї точки доступу.
 
-{{% uk/docs/languages/exporters/zipkin-setup %}}
+{{% include "exporters/zipkin-setup.md" %}}
 
 ### Залежності {#zipkin-dependencies}
 
@@ -299,7 +299,7 @@ const sdk = new opentelemetry.NodeSDK({
 
 {{% /tab %}} {{< /tabpane >}}
 
-{{% uk/docs/languages/exporters/outro js `https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk_trace_base.SpanExporter.html` %}}
+{{% include "exporters/outro.md" `https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk_trace_base.SpanExporter.html` %}}
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -332,8 +332,6 @@ sdk.start();
 ```
 
 {{% /tab %}} {{< /tabpane >}}
-
-{{%/ uk/docs/languages/exporters/outro %}}
 
 [політики безпеки вмісту]:
   https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/

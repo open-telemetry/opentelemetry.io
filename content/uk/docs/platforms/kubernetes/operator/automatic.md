@@ -24,7 +24,7 @@ OpenTelemetry Operator підтримує інʼєкцію та налаштув
 
 Найкраще надсилати телеметрію з контейнерів до [OpenTelemetry Collector](../../collector/) замість безпосередньо до бекенду. Collector допомагає спростити управління секретами, розділяє проблеми експорту даних (наприклад, необхідність повторних спроб) від ваших застосунків, і дозволяє додавати додаткові дані до вашої телеметрії, наприклад, за допомогою [k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor) компонента. Якщо ви вирішили не використовувати Collector, ви можете перейти до наступного розділу.
 
-Operator надає [Custom Resource Definition (CRD) для OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector) який використовується для створення екземпляра Collector, яким керує Operator. Наступний приклад розгортає Collector як Deployment (стандартно), але є інші [режими розгортання](https://github.com/open-telemetry/opentelemetry-operator#deployment-modes) які можна використовувати.
+Operator надає [Custom Resource Definition (CRD) для OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md) який використовується для створення екземпляра Collector, яким керує Operator. Наступний приклад розгортає Collector як Deployment (стандартно), але є інші [режими розгортання](https://github.com/open-telemetry/opentelemetry-operator#deployment-modes) які можна використовувати.
 
 При використанні режиму `Deployment` оператор також створить Сервіс, який можна використовувати для взаємодії з Collector. Назва сервісу — це назва ресурсу `OpenTelemetryCollector` з префіксом `-collector`. Для нашого прикладу це буде `demo-collector`.
 
@@ -133,7 +133,7 @@ spec:
 
 #### Дізнатися більше {#dotnet-learn-more}
 
-Для отримання додаткової інформації дивіться [документацію автоінструментування .NET](/docs/zero-code/net/).
+Для отримання додаткової інформації дивіться [документацію автоінструментування .NET](/docs/zero-code/dotnet/).
 
 ### Deno
 

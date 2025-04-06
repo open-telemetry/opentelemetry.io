@@ -7,7 +7,7 @@ aliases:
 cascade:
   vers:
     instrumentation: 2.14.0
-    otel: 1.48.0
+    otel: 1.49.0
 ---
 
 Найпоширенішими варіантами для інструментування без програмування за допомогою Java є Java-агент JAR, Spring Boot Starter та розширення Quarkus OpenTelemetry. Щоб дізнатися, як вручну інструментувати ваш сервіс або код застосунку, дивіться [Ручне інструментування](/docs/languages/java/instrumentation/).

@@ -3,7 +3,7 @@ title: Експортери
 weight: 50
 ---
 
-{{% uk/docs/languages/exporters/intro ruby %}}
+{{% docs/languages/exporters/intro %}}
 
 ## Точка доступу OTLP {#otlp-endpoint}
 

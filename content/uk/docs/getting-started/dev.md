@@ -21,7 +21,7 @@ OpenTelemetry може вам допомогти! Щоб досягти ваши
 Далі ви можете детально ознайомитися з документацією для [мови](../../languages/), яку ви використовуєте:
 
 - [C++](../../languages/cpp/)
-- [.NET](../../languages/net/)
+- [.NET](../../languages/dotnet/)
 - [Erlang / Elixir](../../languages/erlang/)
 - [Go](../../languages/go/)
 - [Java](../../languages/java/)

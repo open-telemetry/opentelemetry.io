@@ -101,7 +101,7 @@ cSpell:ignore: codebases
 
 Для отримання деталей про те, як працює кожен OpenTracing shim, дивіться відповідну документацію для конкретної мови. Для деталей про дизайн OpenTracing shim, дивіться [OpenTracing Compatibility][ot_spec].
 
-[.net]: /docs/languages/net/shim/
+[.net]: /docs/languages/dotnet/shim/
 [go]: https://pkg.go.dev/go.opentelemetry.io/otel/bridge/opentracing
 [java]:
   https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim

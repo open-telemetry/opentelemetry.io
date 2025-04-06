@@ -3,11 +3,11 @@ title: Експортери
 weight: 50
 ---
 
-{{% uk/docs/languages/exporters/intro rust %}}
+{{% docs/languages/exporters/intro %}}
 
 ## Точка доступу OTLP {#otlp-endpoint}
 
-Щоб відправити дані трасування до точки доступу OTLP (наприклад, до [collector](/docs/collector) або Jaeger), вам потрібно використовувати crate exporter, такий як
+Щоб надіслати дані трасування до точки доступу OTLP (наприклад, до [collector](/docs/collector) або Jaeger), вам потрібно використовувати crate exporter, такий як
 [opentelemetry-otlp](https://crates.io/crates/opentelemetry-otlp):
 
 ```toml

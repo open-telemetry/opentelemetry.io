@@ -1,5 +1,6 @@
 ---
 title: Інструментування без коду
+redirects: [{ from: 'net/*', to: 'dotnet/:splat' }]
 weight: 260
 ---
 
