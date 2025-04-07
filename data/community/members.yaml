@@ -1388,6 +1388,8 @@ approvers:
   - name: cedricziel
     teams:
       - demo-approvers
+      - php-approvers
+      - php-triagers
     html_url: https://github.com/cedricziel
     avatar_url: https://avatars.githubusercontent.com/u/418970?v=4
   - name: ChrisLightfootWild
@@ -1453,6 +1455,11 @@ approvers:
       - semconv-genai-approvers
     html_url: https://github.com/drewby
     avatar_url: https://avatars.githubusercontent.com/u/192652?v=4
+  - name: drewrelmas
+    teams:
+      - arrow-approvers
+    html_url: https://github.com/drewrelmas
+    avatar_url: https://avatars.githubusercontent.com/u/13971805?v=4
   - name: edmocosta
     teams:
       - collector-contrib-approvers
@@ -2204,6 +2211,9 @@ members:
   - name: congim
     html_url: https://github.com/congim
     avatar_url: https://avatars.githubusercontent.com/u/10218415?v=4
+  - name: crossoverJie
+    html_url: https://github.com/crossoverJie
+    avatar_url: https://avatars.githubusercontent.com/u/15684156?v=4
   - name: dao-jun
     html_url: https://github.com/dao-jun
     avatar_url: https://avatars.githubusercontent.com/u/21362791?v=4
@@ -2447,6 +2457,9 @@ members:
   - name: ppittle
     html_url: https://github.com/ppittle
     avatar_url: https://avatars.githubusercontent.com/u/1190907?v=4
+  - name: prestonvasquez
+    html_url: https://github.com/prestonvasquez
+    avatar_url: https://avatars.githubusercontent.com/u/24281431?v=4
   - name: rauno56
     html_url: https://github.com/rauno56
     avatar_url: https://avatars.githubusercontent.com/u/1334536?v=4
