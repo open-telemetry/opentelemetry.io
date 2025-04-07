@@ -114,5 +114,12 @@ default=false
 [GCP Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources).
 {{% /config_option %}}
 
+{{% config_option
+name="otel.resource.providers.azure.enabled"
+default=false
+%}} Enables the
+[Azure Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/azure-resources).
+{{% /config_option %}}
+
 [extensions]:
   https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/examples/extension#readme
