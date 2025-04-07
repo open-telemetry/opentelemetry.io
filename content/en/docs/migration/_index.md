@@ -17,9 +17,10 @@ both [OpenTracing](opentracing/) and [OpenCensus](opencensus/)
 
 ## Jaeger Client
 
-The [Jaeger community](https://www.jaegertracing.io/) deprecated their
-client libraries and recommends [migrating](https://www.jaegertracing.io/docs/latest/migration/)
-to the OpenTelemetry APIs, SDKs and instrumentations.
+The [Jaeger community](https://www.jaegertracing.io/) deprecated their client
+libraries and recommends
+[migrating](https://www.jaegertracing.io/docs/latest/migration/) to the
+OpenTelemetry APIs, SDKs and instrumentations.
 
 The Jaeger backend can receive trace data via the OpenTelemetry Protocol (OTLP)
 since v1.35. Therefore you can migrate your OpenTelemetry SDKs and collectors
