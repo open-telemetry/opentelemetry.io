@@ -26,7 +26,7 @@ A Bill of Material
 ensures that versions of dependencies (including transitive ones) are aligned.
 
 To ensure version alignment across all OpenTelemetry dependencies, you must
-import the `opentelemetry-instrumentation-bom` BOM when using the OpenTelemetry
+import the `opentelemetry-instrumentation-bom-alpha` BOM when using the OpenTelemetry
 starter.
 
 {{% alert title="Note" color="info" %}}
@@ -48,7 +48,7 @@ The following example shows how to import the OpenTelemetry BOMs using Maven:
     <dependencies>
         <dependency>
             <groupId>io.opentelemetry.instrumentation</groupId>
-            <artifactId>opentelemetry-instrumentation-bom</artifactId>
+            <artifactId>opentelemetry-instrumentation-bom-alpha</artifactId>
             <version>{{% param vers.instrumentation %}}</version>
             <type>pom</type>
             <scope>import</scope>
@@ -71,7 +71,7 @@ plugins {
 
 dependencies {
   implementation(platform(SpringBootPlugin.BOM_COORDINATES))
-  implementation(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom:{{% param vers.instrumentation %}}"))
+  implementation(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:{{% param vers.instrumentation %}}"))
 }
 ```
 
@@ -87,7 +87,7 @@ plugins {
 
 dependencyManagement {
   imports {
-    mavenBom("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom:{{% param vers.instrumentation %}}")
+    mavenBom("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:{{% param vers.instrumentation %}}")
   }
 }
 ```
@@ -96,7 +96,7 @@ dependencyManagement {
 
 Be careful not to mix up the different ways of configuring things with Gradle.
 For example, don't use
-`implementation(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom:{{% param vers.instrumentation %}}"))`
+`implementation(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:{{% param vers.instrumentation %}}"))`
 with the `io.spring.dependency-management` plugin.
 
 {{% /alert %}}
