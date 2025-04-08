@@ -204,9 +204,9 @@
   contact: https://github.com/cartersocha
   oss: false
   commercial: true
-- name: Last9 Levitate
+- name: Last9
   nativeOTLP: true
-  url: https://docs.last9.io/docs/levitate-integrations-opentelemetry
+  url: https://last9.io/docs/integrations-opentelemetry/
   contact: hi@last9.io
   oss: false
   commercial: true
