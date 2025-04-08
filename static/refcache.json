@@ -18303,6 +18303,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-24T14:36:50.470824-05:00"
   },
+  "https://www.controltheory.com/use-case/otel-collector-management/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-04-08T16:23:33.721746456-07:00"
+  },
   "https://www.couchbase.com/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-24T14:36:52.894684-05:00"

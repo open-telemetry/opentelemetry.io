@@ -89,7 +89,7 @@
   url: https://www.controltheory.com/use-case/otel-collector-management/
   contact: support@controltheory.com
   oss: false
-  commercial: true  
+  commercial: true
 - name: Coralogix
   nativeOTLP: true
   url: https://coralogix.com/docs/opentelemetry/
