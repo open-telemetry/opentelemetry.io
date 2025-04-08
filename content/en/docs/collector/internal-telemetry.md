@@ -71,6 +71,23 @@ service:
                 port: 8888
 ```
 
+{{% alert title="Internal Telemetry Configuration changes" color="info" %}}
+
+As of Collector version [v0.123.0], the `service::telemetry::metrics::address` setting is ignored.
+In earlier versions, it could be configured with:
+
+```yaml
+service:
+  telemetry:
+    metrics:
+      address: 0.0.0.0:8888
+```
+
+[v0.123.0]:
+  https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.123.0
+
+{{% /alert %}}
+
 You can adjust the verbosity of the Collector metrics output by setting the
 `level` field to one of the following values:
 
