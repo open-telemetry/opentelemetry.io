@@ -26,8 +26,8 @@ A Bill of Material
 ensures that versions of dependencies (including transitive ones) are aligned.
 
 To ensure version alignment across all OpenTelemetry dependencies, you must
-import the `opentelemetry-instrumentation-bom-alpha` BOM when using the OpenTelemetry
-starter.
+import the `opentelemetry-instrumentation-bom-alpha` BOM when using the
+OpenTelemetry starter.
 
 {{% alert title="Note" color="info" %}}
 
@@ -49,7 +49,7 @@ The following example shows how to import the OpenTelemetry BOMs using Maven:
         <dependency>
             <groupId>io.opentelemetry.instrumentation</groupId>
             <artifactId>opentelemetry-instrumentation-bom-alpha</artifactId>
-            <version>{{% param vers.instrumentation %}}</version>
+            <version>{{% param vers.instrumentation %}}-alpha</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>
@@ -71,7 +71,7 @@ plugins {
 
 dependencies {
   implementation(platform(SpringBootPlugin.BOM_COORDINATES))
-  implementation(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:{{% param vers.instrumentation %}}"))
+  implementation(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:{{% param vers.instrumentation %}}-alpha"))
 }
 ```
 
@@ -87,7 +87,7 @@ plugins {
 
 dependencyManagement {
   imports {
-    mavenBom("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:{{% param vers.instrumentation %}}")
+    mavenBom("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:{{% param vers.instrumentation %}}-alpha")
   }
 }
 ```
