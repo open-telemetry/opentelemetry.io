@@ -20,4 +20,4 @@ isNative: true
 package:
   registry: gems
   name: elasticsearch
-  version: 8.17.1
+  version: 8.17.2
