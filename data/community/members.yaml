@@ -655,12 +655,6 @@ maintainers:
       - weaver-maintainers
     html_url: https://github.com/jsuereth
     avatar_url: https://avatars.githubusercontent.com/u/29006?v=4
-  - name: jtescher
-    teams:
-      - rust-approvers
-      - rust-maintainers
-    html_url: https://github.com/jtescher
-    avatar_url: https://avatars.githubusercontent.com/u/175237?v=4
   - name: julianocosta89
     teams:
       - demo-approvers
@@ -824,6 +818,11 @@ maintainers:
       - specs-triagers
     html_url: https://github.com/MrAlias
     avatar_url: https://avatars.githubusercontent.com/u/5543599?v=4
+  - name: ms-jcorley
+    teams:
+      - sig-security-maintainers
+    html_url: https://github.com/ms-jcorley
+    avatar_url: https://avatars.githubusercontent.com/u/55004047?v=4
   - name: MSNev
     teams:
       - javascript-approvers
@@ -1389,6 +1388,8 @@ approvers:
   - name: cedricziel
     teams:
       - demo-approvers
+      - php-approvers
+      - php-triagers
     html_url: https://github.com/cedricziel
     avatar_url: https://avatars.githubusercontent.com/u/418970?v=4
   - name: ChrisLightfootWild
@@ -1426,6 +1427,11 @@ approvers:
       - javascript-triagers
     html_url: https://github.com/david-luna
     avatar_url: https://avatars.githubusercontent.com/u/999029?v=4
+  - name: dbarker
+    teams:
+      - cpp-approvers
+    html_url: https://github.com/dbarker
+    avatar_url: https://avatars.githubusercontent.com/u/3782873?v=4
   - name: DebajitDas
     teams:
       - cpp-contrib-approvers
@@ -1435,6 +1441,7 @@ approvers:
     teams:
       - collector-contrib-approvers
       - collector-contrib-triagers
+      - collector-releases-approvers
       - java-contrib-triagers
     html_url: https://github.com/dehaansa
     avatar_url: https://avatars.githubusercontent.com/u/563558?v=4
@@ -1448,6 +1455,11 @@ approvers:
       - semconv-genai-approvers
     html_url: https://github.com/drewby
     avatar_url: https://avatars.githubusercontent.com/u/192652?v=4
+  - name: drewrelmas
+    teams:
+      - arrow-approvers
+    html_url: https://github.com/drewrelmas
+    avatar_url: https://avatars.githubusercontent.com/u/13971805?v=4
   - name: edmocosta
     teams:
       - collector-contrib-approvers
@@ -1510,6 +1522,11 @@ approvers:
       - erlang-contrib-approvers
     html_url: https://github.com/GregMefford
     avatar_url: https://avatars.githubusercontent.com/u/69467?v=4
+  - name: gruebel
+    teams:
+      - rust-approvers
+    html_url: https://github.com/gruebel
+    avatar_url: https://avatars.githubusercontent.com/u/33207684?v=4
   - name: hectorhdzg
     teams:
       - javascript-approvers
@@ -1737,6 +1754,11 @@ approvers:
       - lambda-extension-approvers
     html_url: https://github.com/pragmaticivan
     avatar_url: https://avatars.githubusercontent.com/u/301291?v=4
+  - name: psx95
+    teams:
+      - cpp-approvers
+    html_url: https://github.com/psx95
+    avatar_url: https://avatars.githubusercontent.com/u/22191775?v=4
   - name: RassK
     teams:
       - dotnet-instrumentation-approvers
@@ -2189,6 +2211,9 @@ members:
   - name: congim
     html_url: https://github.com/congim
     avatar_url: https://avatars.githubusercontent.com/u/10218415?v=4
+  - name: crossoverJie
+    html_url: https://github.com/crossoverJie
+    avatar_url: https://avatars.githubusercontent.com/u/15684156?v=4
   - name: dao-jun
     html_url: https://github.com/dao-jun
     avatar_url: https://avatars.githubusercontent.com/u/21362791?v=4
@@ -2246,9 +2271,6 @@ members:
   - name: gregkalapos
     html_url: https://github.com/gregkalapos
     avatar_url: https://avatars.githubusercontent.com/u/1091853?v=4
-  - name: gruebel
-    html_url: https://github.com/gruebel
-    avatar_url: https://avatars.githubusercontent.com/u/33207684?v=4
   - name: gyliu513
     html_url: https://github.com/gyliu513
     avatar_url: https://avatars.githubusercontent.com/u/4461983?v=4
@@ -2315,6 +2337,9 @@ members:
   - name: jsirianni
     html_url: https://github.com/jsirianni
     avatar_url: https://avatars.githubusercontent.com/u/23043836?v=4
+  - name: jtescher
+    html_url: https://github.com/jtescher
+    avatar_url: https://avatars.githubusercontent.com/u/175237?v=4
   - name: justinfoote
     html_url: https://github.com/justinfoote
     avatar_url: https://avatars.githubusercontent.com/u/3170392?v=4
@@ -2432,6 +2457,9 @@ members:
   - name: ppittle
     html_url: https://github.com/ppittle
     avatar_url: https://avatars.githubusercontent.com/u/1190907?v=4
+  - name: prestonvasquez
+    html_url: https://github.com/prestonvasquez
+    avatar_url: https://avatars.githubusercontent.com/u/24281431?v=4
   - name: rauno56
     html_url: https://github.com/rauno56
     avatar_url: https://avatars.githubusercontent.com/u/1334536?v=4
