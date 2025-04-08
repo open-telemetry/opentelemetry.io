@@ -118,3 +118,12 @@ jobs:
           gh pr comment $PR_NUM -b "fix:${PR_ACTION} failed or was cancelled. For details, see $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID."
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+
+  rerun_pr_tests:
+    name: rerun_pr_tests
+    if: ${{ github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: estroz/rerun-actions@v0.3.0 with:
+          repo_token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          comment_id: ${{ github.event.comment.id }}
