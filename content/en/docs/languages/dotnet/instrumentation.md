@@ -655,7 +655,7 @@ private int rollOnce()
         catch (Exception ex)
         {
             childActivity?.SetStatus(ActivityStatusCode.Error, "Something bad happened!");
-            childActivity?.RecordException(ex);
+            childActivity?.AddException(ex);
             throw;
         }
 
