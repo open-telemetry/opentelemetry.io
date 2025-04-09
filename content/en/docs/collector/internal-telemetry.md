@@ -71,9 +71,9 @@ service:
                 port: 8888
 ```
 
-{{% alert title="Internal Telemetry Configuration changes" color="info" %}}
+{{% alert title="Internal telemetry configuration changes" color="info" %}}
 
-As of Collector version [v0.123.0], the `service::telemetry::metrics::address` setting is ignored.
+As of Collector [v0.123.0], the `service::telemetry::metrics::address` setting is ignored.
 In earlier versions, it could be configured with:
 
 ```yaml
