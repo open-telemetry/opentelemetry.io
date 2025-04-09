@@ -1,0 +1,26 @@
+# Community
+[community_introduce]
+other = "{{ .Site.Title }} це проєкт з відкритим вихідним кодом, який кожен член спільноти може використовувати, вдосконалювати та насолоджуватися ним. Ми будемо раді, якщо ви приєднаєтеся до нас!"
+[community_contribute]
+other = """
+Щоб дізнатися, як зробити внесок до документації {{ .Site.Title }},
+див. [Внесок](/docs/contributing/). Інші корисні посилання:
+"""
+[community_how_to]
+other = "Наш посібник зі стилю документації та багато іншого можна знайти тут"
+[community_guideline]
+other = "Участь"
+[feedback_title]
+other = "Відгук"
+[feedback_question]
+other = "Чи це було корисним?"
+[feedback_positive]
+other = "Так"
+[feedback_negative]
+other = "Ні"
+[post_create_issue]
+other = "Запропонувати зміни в документацію"
+[post_edit_this]
+other = "Змінити сторінку"
+[post_view_this]
+other = "Переглянути код сторінки"
