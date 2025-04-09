@@ -233,6 +233,7 @@ Further reading:
 - [Building a Connector](/docs/collector/building/connector)
 - [Official release Docker image](https://hub.docker.com/r/otel/opentelemetry-collector-builder)
 
+
 [ocb]:
   https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
 [tags]: https://github.com/open-telemetry/opentelemetry-collector-releases/tags
