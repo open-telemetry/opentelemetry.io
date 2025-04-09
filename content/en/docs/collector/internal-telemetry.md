@@ -73,8 +73,8 @@ service:
 
 {{% alert title="Internal telemetry configuration changes" color="info" %}}
 
-As of Collector [v0.123.0], the `service::telemetry::metrics::address` setting is ignored.
-In earlier versions, it could be configured with:
+As of Collector [v0.123.0], the `service::telemetry::metrics::address` setting
+is ignored. In earlier versions, it could be configured with:
 
 ```yaml
 service:
