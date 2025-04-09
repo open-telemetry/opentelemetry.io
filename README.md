@@ -29,7 +29,10 @@ to the registry][].
 
 ## Contributing
 
-See the [Contributing](https://opentelemetry.io/docs/contributing) page in our docs to learn how you can contribute and the [Development Setup](https://opentelemetry.io/docs/contributing/development) page to learn how to build the website locally.
+See the [Contributing](https://opentelemetry.io/docs/contributing) page in our
+docs to learn how you can contribute and the
+[Development Setup](https://opentelemetry.io/docs/contributing/development) page
+to learn how to build the website locally.
 
 ## Found a security issue?
 
