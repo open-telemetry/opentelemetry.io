@@ -636,8 +636,6 @@ var activity = MyActivitySource.StartActivity(
 
 {{% docs/languages/span-status-preamble %}}
 
-The status can be set at any time before the span is finished.
-
 It can be a good idea to record exceptions when they happen. It's recommended to
 do this in conjunction with
 [setting span status](/docs/specs/otel/trace/api/#set-status).
