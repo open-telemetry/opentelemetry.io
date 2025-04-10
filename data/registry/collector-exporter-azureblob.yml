@@ -3,7 +3,7 @@ title: Apache Blob Exporter
 registryType: exporter
 language: collector
 tags:
-  - doris
+  - go
   - exporter
   - collector
 urls:
