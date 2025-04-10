@@ -1911,6 +1911,38 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-10T23:16:58.37678377Z"
   },
+  "https://ela.st/edot-android": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:25.720741+02:00"
+  },
+  "https://ela.st/edot-collector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:26.827965+02:00"
+  },
+  "https://ela.st/edot-dotnet": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:23.068832+02:00"
+  },
+  "https://ela.st/edot-ios": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:36.560049+02:00"
+  },
+  "https://ela.st/edot-java": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:28.129004+02:00"
+  },
+  "https://ela.st/edot-nodejs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:29.06034+02:00"
+  },
+  "https://ela.st/edot-php": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:31.803609+02:00"
+  },
+  "https://ela.st/edot-python": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:32.763236+02:00"
+  },
   "https://elixir-broadway.org/": {
     "StatusCode": 206,
     "LastSeen": "2024-11-18T16:20:41.311419+01:00"
@@ -3643,6 +3675,18 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-02T15:44:49.824Z"
   },
+  "https://github.com/elastic/apm-agent-android": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:24.698186+02:00"
+  },
+  "https://github.com/elastic/apm-agent-ios": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:34.367946+02:00"
+  },
+  "https://github.com/elastic/elastic-agent/tree/main/internal/pkg/otel": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:26.360426+02:00"
+  },
   "https://github.com/elastic/elastic-otel-dotnet": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:01.949054-05:00"
@@ -3654,6 +3698,10 @@
   "https://github.com/elastic/elastic-otel-node": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:03.472934-05:00"
+  },
+  "https://github.com/elastic/elastic-otel-php": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:31.312557+02:00"
   },
   "https://github.com/elastic/elastic-otel-python": {
     "StatusCode": 206,
