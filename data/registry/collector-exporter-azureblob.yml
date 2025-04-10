@@ -1,4 +1,4 @@
-# cSpell:ignore doris dorisexporter
+# cSpell:ignore azureblob azureblobexporter
 title: Apache Blob Exporter
 registryType: exporter
 language: collector
