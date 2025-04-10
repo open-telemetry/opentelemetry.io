@@ -1,0 +1,21 @@
+# cSpell:ignore doris dorisexporter
+title: Apache Blob Exporter
+registryType: exporter
+language: collector
+tags:
+  - doris
+  - exporter
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azureblobexporter
+license: Apache 2.0
+description:
+  This exporter supports sending traces, metrics, and logs data to [Azure Blob storage]
+  (https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-overview).
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-04-11
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/azureblobexporter
+  version: v0.123.0
