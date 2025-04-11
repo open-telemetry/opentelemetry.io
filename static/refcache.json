@@ -9035,6 +9035,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-04-06T04:35:11.407913032Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscrservicemonitorselector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-11T09:38:08.31996108-07:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-operator/issues/1393": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:16.782675-05:00"
