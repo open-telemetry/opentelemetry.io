@@ -626,7 +626,6 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/5938087?v=4
   - name: jpkrohling
     teams:
-      - collector-approvers
       - collector-contrib-approvers
       - collector-contrib-maintainers
       - collector-contrib-triagers
@@ -840,8 +839,6 @@ maintainers:
     teams:
       - sig-contributor-experience-approvers
       - sig-contributor-experience-maintainers
-      - sig-end-user-approvers
-      - sig-end-user-triagers
     html_url: https://github.com/musingvirtual
     avatar_url: https://avatars.githubusercontent.com/u/1666060?v=4
   - name: mviitane
@@ -1328,12 +1325,6 @@ approvers:
       - swift-triagers
     html_url: https://github.com/alolita
     avatar_url: https://avatars.githubusercontent.com/u/1942529?v=4
-  - name: AnaMMedina21
-    teams:
-      - sig-end-user-approvers
-      - sig-end-user-triagers
-    html_url: https://github.com/AnaMMedina21
-    avatar_url: https://avatars.githubusercontent.com/u/3894791?v=4
   - name: ArielDemarco
     teams:
       - swift-approvers
@@ -1540,12 +1531,6 @@ approvers:
       - javascript-triagers
     html_url: https://github.com/hectorhdzg
     avatar_url: https://avatars.githubusercontent.com/u/39923391?v=4
-  - name: IAMebonyhope
-    teams:
-      - sig-end-user-approvers
-      - sig-end-user-triagers
-    html_url: https://github.com/IAMebonyhope
-    avatar_url: https://avatars.githubusercontent.com/u/18560936?v=4
   - name: iblancasa
     teams:
       - operator-approvers
@@ -2164,6 +2149,9 @@ members:
   - name: alxbl
     html_url: https://github.com/alxbl
     avatar_url: https://avatars.githubusercontent.com/u/860411?v=4
+  - name: AnaMMedina21
+    html_url: https://github.com/AnaMMedina21
+    avatar_url: https://avatars.githubusercontent.com/u/3894791?v=4
   - name: andrewhsu
     html_url: https://github.com/andrewhsu
     avatar_url: https://avatars.githubusercontent.com/u/57640?v=4
