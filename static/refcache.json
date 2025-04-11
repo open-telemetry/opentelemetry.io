@@ -5591,6 +5591,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:34:10.058165-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azureblobexporter": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-11T08:39:39.702551+08:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:34:23.037818-05:00"
@@ -15598,6 +15602,10 @@
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/exporter/awsxrayexporter": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T10:58:56.444899-05:00"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/exporter/azureblobexporter": {
+    "StatusCode": 200,
+    "LastSeen": "2025-04-11T08:39:40.652614+08:00"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/exporter/azuredataexplorerexporter": {
     "StatusCode": 200,
