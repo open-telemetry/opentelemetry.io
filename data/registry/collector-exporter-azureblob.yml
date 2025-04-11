@@ -10,7 +10,8 @@ urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azureblobexporter
 license: Apache 2.0
 description:
-  This exporter supports sending traces, metrics, and logs data to [Azure Blob storage]
+  This exporter supports sending traces, metrics, and logs data to [Azure Blob
+  storage]
   (https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-overview).
 authors:
   - name: OpenTelemetry Authors
