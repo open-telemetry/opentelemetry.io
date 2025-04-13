@@ -28,7 +28,7 @@ cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace 
 ## アプリケーション例 {#example-application}
 
 次の例では、基本的な[`net/http`](https://pkg.go.dev/net/http)アプリケーションを使用しています。
-もし`net/http`を使用していなくても問題ありません — GinやEchoなど、他のWebフレームワークでもOpenTelemetry Goを利用できます。
+もし`net/http`を使用していなくても問題ありません。GinやEchoなど、他のWebフレームワークでもOpenTelemetry Goを利用できます。
 対応しているフレームワーク用ライブラリの一覧については、[レジストリ](/ecosystem/registry/?component=instrumentation&language=go)をご覧ください。
 
 より詳しい例については、[こちら](/docs/languages/go/examples/)をご覧ください。
