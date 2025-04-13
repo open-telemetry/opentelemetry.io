@@ -23,7 +23,7 @@ cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace 
 
 以下がローカルにインストールされていることを確認してください。
 
-- [Go](https://go.dev/)バージョン1.22以上
+- [Go](https://go.dev/)1.22以上
 
 ## アプリケーション例 {#example-application}
 
