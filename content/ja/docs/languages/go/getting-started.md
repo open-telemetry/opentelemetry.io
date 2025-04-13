@@ -1134,7 +1134,7 @@ go run .
 
 ## 次のステップ {#next-steps}
 
-コードに計装を追加する方法について詳しくは、[手動計装](/docs/languages/go/instrumentation/)のドキュメントを参照してください。
+コードに計装を追加する方法について、詳しくは[手動計装](/docs/languages/go/instrumentation/)のドキュメントを参照してください。
 
 1つ以上のテレメトリーバックエンドに[テレメトリーデータをエクスポートする](/docs/languages/go/exporters/)ために、適切なエクスポーターを設定することも必要です。
 
