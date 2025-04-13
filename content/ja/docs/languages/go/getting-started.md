@@ -93,7 +93,7 @@ go run .
 
 ## OpenTelemetryの計装を追加する {#add-opentelemetry-instrumentation}
 
-サンプルアプリケーションに OpenTelemetry のインストゥルメンテーションを追加する方法を紹介します。
+サンプルアプリケーションにOpenTelemetryの計装を追加する方法を紹介します。
 自身のアプリケーションを使用している場合でも、同様の手順で進めることができますが、コードが多少異なる場合がある点にご注意ください。
 
 ### 依存関係を追加する {#add-dependencies}
