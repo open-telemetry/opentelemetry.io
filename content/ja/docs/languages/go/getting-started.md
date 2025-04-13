@@ -358,7 +358,7 @@ func newHTTPHandler() http.Handler {
 計装ライブラリは、システムの境界（たとえばHTTPリクエストの受信および送信）でテレメトリーを収集しますが、アプリケーション内部で何が起きているかまでは捕捉しません。
 そのためには、カスタムの[手動計装](../instrumentation/)を記述する必要があります。
 
-OpenTelemetryのAPIを使ってカスタム計装を追加するために、`rolldice.go`を修正してください。
+`rolldice.go`を修正して、OpenTelemetryのAPIを使ってカスタム計装を追加しましょう。
 
 <!-- prettier-ignore-start -->
 <!--?code-excerpt "rolldice.go" from="package main"?-->
