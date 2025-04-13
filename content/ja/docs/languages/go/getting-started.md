@@ -154,7 +154,7 @@ func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, er
 	var shutdownFuncs []func(context.Context) error
 
 	// shutdown は、shutdownFuncsを通じて登録されたクリーンアップ関数を呼び出します。
-	// 各クリーンアップ関数の呼び出しで発生したエラーは結合されます。
+	// 各クリーンアップ関数の呼び出しで発生したエラーはjoinされます。
 	// 登録された各クリーンアップ関数は一度だけ実行されます。
 	shutdown = func(ctx context.Context) error {
 		var err error
