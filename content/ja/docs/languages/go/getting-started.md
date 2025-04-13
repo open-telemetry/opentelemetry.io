@@ -153,9 +153,9 @@ import (
 func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, err error) {
 	var shutdownFuncs []func(context.Context) error
 
-  // shutdown は、shutdownFuncsを通じて登録されたクリーンアップ関数を呼び出します。
-  // 各クリーンアップ関数の呼び出しで発生したエラーは結合されます。
-  // 登録された各クリーンアップ関数は一度だけ実行されます。
+	// shutdown は、shutdownFuncsを通じて登録されたクリーンアップ関数を呼び出します。
+	// 各クリーンアップ関数の呼び出しで発生したエラーは結合されます。
+	// 登録された各クリーンアップ関数は一度だけ実行されます。
 	shutdown = func(ctx context.Context) error {
 		var err error
 		for _, fn := range shutdownFuncs {
@@ -165,16 +165,16 @@ func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, er
 		return err
 	}
 
-  // handleErrはクリーンアップのためにshutdownを呼び出し、すべてのエラーが確実に返されるようにします。
+	// handleErrはクリーンアップのためにshutdownを呼び出し、すべてのエラーが確実に返されるようにします。
 	handleErr := func(inErr error) {
 		err = errors.Join(inErr, shutdown(ctx))
 	}
 
-  // プロパゲーターのセットアップ。
+	// プロパゲーターのセットアップ。
 	prop := newPropagator()
 	otel.SetTextMapPropagator(prop)
 
-  // トレースプロバイダーのセットアップ。
+	// トレースプロバイダーのセットアップ。
 	tracerProvider, err := newTracerProvider()
 	if err != nil {
 		handleErr(err)
@@ -183,7 +183,7 @@ func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, er
 	shutdownFuncs = append(shutdownFuncs, tracerProvider.Shutdown)
 	otel.SetTracerProvider(tracerProvider)
 
-  // メータープロバイダーのセットアップ。
+	// メータープロバイダーのセットアップ。
 	meterProvider, err := newMeterProvider()
 	if err != nil {
 		handleErr(err)
@@ -192,7 +192,7 @@ func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, er
 	shutdownFuncs = append(shutdownFuncs, meterProvider.Shutdown)
 	otel.SetMeterProvider(meterProvider)
 
-  // ロガープロバイダーのセットアップ。
+	// ロガープロバイダーのセットアップ。
 	loggerProvider, err := newLoggerProvider()
 	if err != nil {
 		handleErr(err)
@@ -220,7 +220,7 @@ func newTracerProvider() (*trace.TracerProvider, error) {
 
 	tracerProvider := trace.NewTracerProvider(
 		trace.WithBatcher(traceExporter,
-      // デフォルトは5秒です。デモ用に1秒に設定しています。
+			// デフォルトは5秒です。デモ用に1秒に設定しています。
 			trace.WithBatchTimeout(time.Second)),
 	)
 	return tracerProvider, nil
@@ -234,7 +234,7 @@ func newMeterProvider() (*metric.MeterProvider, error) {
 
 	meterProvider := metric.NewMeterProvider(
 		metric.WithReader(metric.NewPeriodicReader(metricExporter,
-      // デフォルトは1分です。デモ用に3秒に設定しています。
+			// デフォルトは1分です。デモ用に3秒に設定しています。
 			metric.WithInterval(3*time.Second))),
 	)
 	return meterProvider, nil
@@ -287,21 +287,21 @@ func main() {
 }
 
 func run() (err error) {
-  // SIGINT（CTRL+C）を適切に処理するようにします。
+	// SIGINT（CTRL+C）を適切に処理するようにします。
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer stop()
 
-  // OpenTelemetryのセットアップ。
+	// OpenTelemetryのセットアップ。
 	otelShutdown, err := setupOTelSDK(ctx)
 	if err != nil {
 		return
 	}
-  // リークが発生しないよう、適切にシャットダウン処理を行います。
+	// リークが発生しないよう、適切にシャットダウン処理を行います。
 	defer func() {
 		err = errors.Join(err, otelShutdown(context.Background()))
 	}()
 
-  // HTTPサーバーを起動。
+	// HTTPサーバーを起動。
 	srv := &http.Server{
 		Addr:         ":8080",
 		BaseContext:  func(_ net.Listener) context.Context { return ctx },
@@ -318,15 +318,15 @@ func run() (err error) {
 	select {
 	case err = <-srvErr:
 		// Error when starting HTTP server.
-    // HTTPサーバーの起動中のエラー。
+		// HTTPサーバーの起動中のエラー。
 		return
 	case <-ctx.Done():
-    // 最初の CTRL+C を待機します。
-    // 可能な限り早くシグナル通知の受信を停止します。
+		// 最初の CTRL+C を待機します。
+		// 可能な限り早くシグナル通知の受信を停止します。
 		stop()
 	}
 
-  // Shutdownが呼び出されると、ListenAndServeは即座にErrServerClosedを返します。
+	// Shutdownが呼び出されると、ListenAndServeは即座にErrServerClosedを返します。
 	err = srv.Shutdown(context.Background())
 	return
 }
@@ -334,19 +334,19 @@ func run() (err error) {
 func newHTTPHandler() http.Handler {
 	mux := http.NewServeMux()
 
-  // handleFuncはmux.HandleFuncの代替であり、
-  // ハンドラーのHTTP計装において、パターンをhttp.routeとして付加します。
+	// handleFuncはmux.HandleFuncの代替であり、
+	// ハンドラーのHTTP計装において、パターンをhttp.routeとして付加します。
 	handleFunc := func(pattern string, handlerFunc func(http.ResponseWriter, *http.Request)) {
 		// Configure the "http.route" for the HTTP instrumentation.
 		handler := otelhttp.WithRouteTag(pattern, http.HandlerFunc(handlerFunc))
 		mux.Handle(pattern, handler)
 	}
 
-  // ハンドラーの登録。
+	// ハンドラーの登録。
 	handleFunc("/rolldice/", rolldice)
 	handleFunc("/rolldice/{player}", rolldice)
 
-  // サーバー全体に対してHTTP計装を追加します。
+	// サーバー全体に対してHTTP計装を追加します。
 	handler := otelhttp.NewHandler(mux, "/")
 	return handler
 }
