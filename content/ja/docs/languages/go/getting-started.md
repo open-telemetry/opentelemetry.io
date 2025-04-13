@@ -260,7 +260,7 @@ func newLoggerProvider() (*log.LoggerProvider, error) {
 
 OpenTelemetry SDKの初期化が完了したので、HTTPサーバーの計装ができます。
 
-`main.go`を修正して、OpenTelemetry SDKのセットアップと、`otelhttp`計装ライブラリを使った HTTPサーバーの計装を行うコードを追加してください。
+`main.go`を修正して、OpenTelemetry SDKのセットアップと、`otelhttp`計装ライブラリを使ったHTTPサーバーの計装を行うコードを追加してください。
 
 <!-- prettier-ignore-start -->
 <!--?code-excerpt "main.go" from="package main"?-->
