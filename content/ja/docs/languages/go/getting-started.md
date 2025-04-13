@@ -1,9 +1,9 @@
 ---
 title: Getting Started（入門）
 weight: 10
+default_lang_commit: dc174c212e81fadbf8382bb54c54cff294954b1b
 # prettier-ignore
 cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace strconv
-default_lang_commit: dc174c212e81fadbf8382bb54c54cff294954b1b
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
