@@ -125,7 +125,7 @@ go get "go.opentelemetry.io/otel" \
 まず、OpenTelemetry SDKを初期化します。
 これはテレメトリーデータをエクスポートするすべてのアプリケーションに必須の手順です。
 
-OpenTelemetry SDKの初期化コードを含む`otel.go`を作成してください。
+`otel.go`を作成し、OpenTelemetry SDKの初期化コードを追加します。
 
 <!-- prettier-ignore-start -->
 <!-- code-excerpt "otel.go" from="package main"?-->
