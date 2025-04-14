@@ -1911,6 +1911,38 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-10T23:16:58.37678377Z"
   },
+  "https://ela.st/edot-android": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:25.720741+02:00"
+  },
+  "https://ela.st/edot-collector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:26.827965+02:00"
+  },
+  "https://ela.st/edot-dotnet": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:23.068832+02:00"
+  },
+  "https://ela.st/edot-ios": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:36.560049+02:00"
+  },
+  "https://ela.st/edot-java": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:28.129004+02:00"
+  },
+  "https://ela.st/edot-nodejs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:29.06034+02:00"
+  },
+  "https://ela.st/edot-php": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:31.803609+02:00"
+  },
+  "https://ela.st/edot-python": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:32.763236+02:00"
+  },
   "https://elixir-broadway.org/": {
     "StatusCode": 206,
     "LastSeen": "2024-11-18T16:20:41.311419+01:00"
@@ -3643,6 +3675,18 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-02T15:44:49.824Z"
   },
+  "https://github.com/elastic/apm-agent-android": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:24.698186+02:00"
+  },
+  "https://github.com/elastic/apm-agent-ios": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:34.367946+02:00"
+  },
+  "https://github.com/elastic/elastic-agent/tree/main/internal/pkg/otel": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:26.360426+02:00"
+  },
   "https://github.com/elastic/elastic-otel-dotnet": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:01.949054-05:00"
@@ -3654,6 +3698,10 @@
   "https://github.com/elastic/elastic-otel-node": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:03.472934-05:00"
+  },
+  "https://github.com/elastic/elastic-otel-php": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-10T17:12:31.312557+02:00"
   },
   "https://github.com/elastic/elastic-otel-python": {
     "StatusCode": 206,
@@ -5543,6 +5591,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:34:10.058165-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azureblobexporter": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-11T08:39:39.702551+08:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:34:23.037818-05:00"
@@ -6850,6 +6902,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.112.0": {
     "StatusCode": 200,
     "LastSeen": "2024-10-24T15:10:25.832305+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.123.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-09T08:56:58.415145733-07:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.99.0": {
     "StatusCode": 206,
@@ -8982,6 +9038,10 @@
   "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md": {
     "StatusCode": 206,
     "LastSeen": "2025-04-06T04:35:11.407913032Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscrservicemonitorselector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-11T09:38:08.31996108-07:00"
   },
   "https://github.com/open-telemetry/opentelemetry-operator/issues/1393": {
     "StatusCode": 206,
@@ -15551,6 +15611,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-02T10:58:56.444899-05:00"
   },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/exporter/azureblobexporter": {
+    "StatusCode": 200,
+    "LastSeen": "2025-04-11T08:39:40.652614+08:00"
+  },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/exporter/azuredataexplorerexporter": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:46:39.478245-04:00"
@@ -16911,6 +16975,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-03-14T11:18:49.240831716Z"
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.15.0-alpha/opentelemetry-instrumentation-bom-alpha-2.15.0-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-11T08:28:47.812984827-07:00"
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.7.0-alpha/opentelemetry-instrumentation-bom-alpha-2.7.0-alpha.pom": {
     "StatusCode": 206,
     "LastSeen": "2024-10-23T20:20:08.34491-05:00"
@@ -16946,6 +17014,10 @@
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.14.0/opentelemetry-instrumentation-bom-2.14.0.pom": {
     "StatusCode": 206,
     "LastSeen": "2025-03-14T11:18:48.069661166Z"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.15.0/opentelemetry-instrumentation-bom-2.15.0.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-11T08:28:47.731244373-07:00"
   },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.7.0/opentelemetry-instrumentation-bom-2.7.0.pom": {
     "StatusCode": 206,
@@ -18307,6 +18379,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-24T14:36:50.470824-05:00"
   },
+  "https://www.controltheory.com/use-case/otel-collector-management/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-04-08T16:23:33.721746456-07:00"
+  },
   "https://www.couchbase.com/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-24T14:36:52.894684-05:00"
@@ -18622,6 +18698,10 @@
   "https://www.jaegertracing.io/docs/latest/getting-started/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-06T11:32:17.738973-05:00"
+  },
+  "https://www.jaegertracing.io/docs/latest/migration/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-07T20:10:35.391082566Z"
   },
   "https://www.jaegertracing.io/sdk-migration/#propagation-format": {
     "StatusCode": 200,
