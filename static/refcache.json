@@ -7899,6 +7899,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:38.952312-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/azure-resources": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-08T07:20:52.864031848Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-auth-extension": {
     "StatusCode": 206,
     "LastSeen": "2025-03-18T17:25:06.959055345Z"
