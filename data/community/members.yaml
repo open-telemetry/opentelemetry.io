@@ -130,6 +130,7 @@ maintainers:
   - name: AlexanderWert
     teams:
       - semconv-feature-flag-approvers
+      - semconv-sdk-health-approvers
       - specs-semconv-approvers
       - specs-semconv-maintainers
     html_url: https://github.com/AlexanderWert
@@ -912,6 +913,7 @@ maintainers:
       - go-maintainers
       - go-triagers
       - proto-go-approvers
+      - semconv-code-attribute-approvers
       - semconv-log-approvers
       - specs-logs-approvers
       - specs-triagers
@@ -1462,11 +1464,6 @@ approvers:
       - collector-contrib-triagers
     html_url: https://github.com/edmocosta
     avatar_url: https://avatars.githubusercontent.com/u/11836452?v=4
-  - name: edsoncelio
-    teams:
-      - docs-pt-approvers
-    html_url: https://github.com/edsoncelio
-    avatar_url: https://avatars.githubusercontent.com/u/5833278?v=4
   - name: emdneto
     teams:
       - docs-pt-approvers
@@ -1850,6 +1847,7 @@ approvers:
     teams:
       - java-instrumentation-approvers
       - java-instrumentation-triagers
+      - semconv-code-attribute-approvers
     html_url: https://github.com/SylvainJuge
     avatar_url: https://avatars.githubusercontent.com/u/763082?v=4
   - name: tammy-baylis-swi
@@ -2228,6 +2226,9 @@ members:
   - name: DotSpy
     html_url: https://github.com/DotSpy
     avatar_url: https://avatars.githubusercontent.com/u/11577813?v=4
+  - name: edsoncelio
+    html_url: https://github.com/edsoncelio
+    avatar_url: https://avatars.githubusercontent.com/u/5833278?v=4
   - name: elskwid
     html_url: https://github.com/elskwid
     avatar_url: https://avatars.githubusercontent.com/u/9002?v=4
