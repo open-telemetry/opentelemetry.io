@@ -4,7 +4,7 @@ menu: { main: { weight: 30 } }
 aliases: [/project-status, /releases]
 description: Nível de maturidade dos principais componentes do OpenTelemetry
 type: docs
-body_class: td-no-left-sidebar 
+body_class: td-no-left-sidebar
 default_lang_commit: 1f83b9ffa3ecdd5e2b507379cc259e5678596c7f
 drifted_from_default: true
 ---
