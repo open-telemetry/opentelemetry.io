@@ -11,14 +11,16 @@ To send trace data to a OTLP endpoint (like the [collector](/docs/collector) or
 Jaeger) you'll want to use an exporter crate, such as
 [opentelemetry-otlp](https://crates.io/crates/opentelemetry-otlp):
 
-For example, you can update the [Getting Started](../getting-started/) dice server by adding the new dependency:
+For example, you can update the [Getting Started](../getting-started/) dice
+server by adding the new dependency:
 
 ```toml
 [dependencies]
 opentelemetry-otlp = { version = "{{% version-from-registry exporter-rust-otlp %}}", features = ["grpc-tonic"] }
 ```
 
-Next, update `init_tracer_provider` in `dice_server.rs` to configure the exporter to point at an OTLP endpoint:
+Next, update `init_tracer_provider` in `dice_server.rs` to configure the
+exporter to point at an OTLP endpoint:
 
 ```rust
 use std::convert::Infallible;
@@ -71,4 +73,6 @@ docker run -d --name jaeger \
   jaegertracing/all-in-one:latest
 ```
 
-Make requests on [http://localhost:8080/rolldice](http://localhost:8080/rolldice) and check the traces on Jaeger on [http://localhost:16686](http://localhost:16686)
+Make requests on
+[http://localhost:8080/rolldice](http://localhost:8080/rolldice) and check the
+traces on Jaeger on [http://localhost:16686](http://localhost:16686)
