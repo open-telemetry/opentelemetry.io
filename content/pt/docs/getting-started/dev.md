@@ -24,7 +24,7 @@ fornecer telemetria nativamente:
 
 - [Como adicionar instrumentação nativa à minha biblioteca?](../../concepts/instrumentation/libraries/)
 
-Se você está procurando um conjunto de aplicações para testar coisas, a nossa
+Se você está procurando um conjunto de aplicações para realizar testes, a nossa
 [demonstração oficial do OpenTelemetry](/ecosystem/demo/) poderá ser útil.
 
 Em seguida, você pode se aprofundar na documentação da
