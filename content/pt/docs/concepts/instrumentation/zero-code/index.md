@@ -4,7 +4,7 @@ description: >-
   Aprenda como adicionar observabilidade a uma aplicação sem precisar escrever
   código
 weight: 10
-default_lang_commit: 2127d75cef0be2f2554f5b47520a108ba381b790
+default_lang_commit: d1ef521ee4a777881fb99c3ec2b506e068cdec4c
 ---
 
 Como [operações](/docs/getting-started/ops/), você pode querer adicionar

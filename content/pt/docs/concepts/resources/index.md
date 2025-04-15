@@ -1,7 +1,7 @@
 ---
 title: Recursos
 weight: 70
-default_lang_commit: 17c3b8eb53b8abc56213abb736c0f850eab752df
+default_lang_commit: 86d2fbde246b9e56665146db78d4fc1d34d00ddf
 drifted_from_default: true
 ---
 
@@ -14,7 +14,7 @@ observabilidade, os atributos do recurso são agrupados na guia **Process**:
 
 ![Uma captura de tela do Jaeger mostrando um exemplo de saída de atributos do recurso associados a um rastro.](screenshot-jaeger-resources.png)
 
-Um recurso é adicionado ao `TraceProvider` ou `MetricProvider` quando eles são
+Um recurso é adicionado ao `TracerProvider` ou `MetricProvider` quando eles são
 criados durante a inicialização. Esta associação não pode ser alterada
 posteriormente. Após um recurso ser adicionado, todos os trechos e métricas
 produzidos a partir de um `Tracer` ou `Meter` do _provider_ terão o recurso
