@@ -153,7 +153,7 @@
     "path": "^0.12.7"
   },
   "optionalDependencies": {
-    "netlify-cli": "^19.0.0",
+    "netlify-cli": "^20.0.0",
     "npm-check-updates": "^17.1.15"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
