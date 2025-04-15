@@ -149,7 +149,7 @@ linguagens. Consulte [mais informações][specification].
 ### Evento {#event}
 
 Um Evento é um [Registro de Log](#log-record) com um nome de evento e uma
-estrutura bem definida. Por exemplo, eventos de navegador no OpenTelemetry
+estrutura bem conhecida. Por exemplo, eventos de navegador no OpenTelemetry
 seguem uma convenção de nomenclatura particular e carregam dados específicos em
 uma estrutura comum.
 
