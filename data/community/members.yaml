@@ -197,6 +197,8 @@ maintainers:
       - docs-pt-maintainers
       - sig-developer-experience-approvers
       - sig-developer-experience-maintainers
+      - sig-project-infra-approvers
+      - sig-project-infra-maintainers
       - specs-triagers
     html_url: https://github.com/austinlparker
     avatar_url: https://avatars.githubusercontent.com/u/4140740?v=4
@@ -565,6 +567,7 @@ maintainers:
       - operator-maintainers
       - operator-ta-maintainers
       - operator-triagers
+      - sig-project-infra-approvers
     html_url: https://github.com/jaronoff97
     avatar_url: https://avatars.githubusercontent.com/u/10070047?v=4
   - name: jerbly
@@ -1176,6 +1179,8 @@ maintainers:
       - semconv-http-approvers
       - semconv-jvm-approvers
       - semconv-log-approvers
+      - sig-project-infra-approvers
+      - sig-project-infra-maintainers
       - specs-semconv-approvers
       - specs-semconv-maintainers
       - specs-triagers
@@ -1290,6 +1295,7 @@ approvers:
   - name: adrielp
     teams:
       - semconv-cicd-approvers
+      - sig-project-infra-approvers
     html_url: https://github.com/adrielp
     avatar_url: https://avatars.githubusercontent.com/u/25961386?v=4
   - name: agoallikmaa
