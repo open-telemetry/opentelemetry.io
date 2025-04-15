@@ -36,14 +36,12 @@ código. Os seguintes recursos também fazem parte do OpenTelemetry:
 - Bibliotecas podem utilizar a API OpenTelemetry como dependência, sem impactar
   as aplicações que usam essa biblioteca, a menos que o SDK do OpenTelemetry
   seja importado.
-- Para cada um dos sinais [sinais], você tem à disposição diversos métodos para
+- Para cada um dos [sinais], você tem à disposição diversos métodos para
   criá-los, processá-los e exportá-los.
 - Com a [propagação de contexto](../context-propagation/) integrada nas
   implementações, você pode correlacionar sinais independentemente de onde eles
   são gerados.
 - [Recursos](../resources/) e
-  [Escopo de instrumentação](/docs/concepts/instrumentation-scope) permitem
-  agrupar sinais por diferentes entidades, como
   [Escopo de instrumentação](../instrumentation-scope/) permitem agrupar sinais
   por diferentes entidades, como [host](/docs/specs/semconv/resource/host/),
   [sistema operacional](/docs/specs/semconv/resource/os/) ou
