@@ -14711,10 +14711,6 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-24T14:37:11.036164-05:00"
   },
-  "https://marketplace.visualstudio.com/items": {
-    "StatusCode": 404,
-    "LastSeen": "2025-04-16T19:58:22.765740822Z"
-  },
   "https://masstransit.io/documentation/configuration/observability": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T06:58:09.358-05:00"
