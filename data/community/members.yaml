@@ -197,6 +197,8 @@ maintainers:
       - docs-pt-maintainers
       - sig-developer-experience-approvers
       - sig-developer-experience-maintainers
+      - sig-project-infra-approvers
+      - sig-project-infra-maintainers
       - specs-triagers
     html_url: https://github.com/austinlparker
     avatar_url: https://avatars.githubusercontent.com/u/4140740?v=4
@@ -565,6 +567,7 @@ maintainers:
       - operator-maintainers
       - operator-ta-maintainers
       - operator-triagers
+      - sig-project-infra-approvers
     html_url: https://github.com/jaronoff97
     avatar_url: https://avatars.githubusercontent.com/u/10070047?v=4
   - name: jerbly
@@ -1176,6 +1179,8 @@ maintainers:
       - semconv-http-approvers
       - semconv-jvm-approvers
       - semconv-log-approvers
+      - sig-project-infra-approvers
+      - sig-project-infra-maintainers
       - specs-semconv-approvers
       - specs-semconv-maintainers
       - specs-triagers
@@ -1290,6 +1295,7 @@ approvers:
   - name: adrielp
     teams:
       - semconv-cicd-approvers
+      - sig-project-infra-approvers
     html_url: https://github.com/adrielp
     avatar_url: https://avatars.githubusercontent.com/u/25961386?v=4
   - name: agoallikmaa
@@ -1520,6 +1526,11 @@ approvers:
       - rust-approvers
     html_url: https://github.com/gruebel
     avatar_url: https://avatars.githubusercontent.com/u/33207684?v=4
+  - name: gyliu513
+    teams:
+      - semconv-genai-approvers
+    html_url: https://github.com/gyliu513
+    avatar_url: https://avatars.githubusercontent.com/u/4461983?v=4
   - name: hectorhdzg
     teams:
       - javascript-approvers
@@ -1529,6 +1540,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/39923391?v=4
   - name: iblancasa
     teams:
+      - collector-contrib-triagers
       - operator-approvers
       - operator-triagers
     html_url: https://github.com/iblancasa
@@ -2053,6 +2065,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/obecny
     avatar_url: https://avatars.githubusercontent.com/u/1250998?v=4
+  - name: odubajDT
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/odubajDT
+    avatar_url: https://avatars.githubusercontent.com/u/93584209?v=4
   - name: oertl
     teams:
       - java-contrib-triagers
@@ -2271,9 +2288,6 @@ members:
   - name: gregkalapos
     html_url: https://github.com/gregkalapos
     avatar_url: https://avatars.githubusercontent.com/u/1091853?v=4
-  - name: gyliu513
-    html_url: https://github.com/gyliu513
-    avatar_url: https://avatars.githubusercontent.com/u/4461983?v=4
   - name: haddasbronfman
     html_url: https://github.com/haddasbronfman
     avatar_url: https://avatars.githubusercontent.com/u/85441461?v=4
