@@ -26,6 +26,14 @@ get started.
 
 ## Step 1 - Install the builder
 
+{{% alert color="primary" title="NOTE" %}}
+
+The `ocb` tool requires Go to build the Collector distribution. Please
+[install Go](https://go.dev/doc/install) on your machine, if you haven't done so
+already.
+
+{{% /alert %}}
+
 The `ocb` binary is available as a downloadable asset from OpenTelemetry
 Collector [releases with `cmd/builder` tags][tags]. You will find a list of
 assets named based on OS and chipset, so download the one that fits your
@@ -180,10 +188,19 @@ registry entries provide the full name and version you need to add to your
 
 {{% /alert %}}
 
-## Step 3 - Generating the Code and Building your Collector's distribution
+## Step 3a - Generate the Code and Build your Collector's distribution
 
-All you need now is to let the `ocb` do it's job, so go to your terminal and
-type the following command:
+{{% alert color="primary" title="NOTE" %}}
+
+This step is used to build your custom collector distribution using the `ocb`
+binary. If you would like to build and deploy your custom collector distribution
+to a container orchestrator (e.g. Kubernetes), skip this step and go to
+[Step 3b](#step-3b---containerizing-your-collectors-distribution).
+
+{{% /alert %}}
+
+All you need now is to let the `ocb` do its job, so go to your terminal and type
+the following command:
 
 ```cmd
 ./ocb --config builder-config.yaml
@@ -227,7 +244,115 @@ You can now use the generated code to bootstrap your component development
 projects and easily build and distribute your own collector distribution with
 your components.
 
-Further reading:
+## Step 3b - Containerizing your Collector's distribution
+
+{{% alert color="primary" title="NOTE" %}}
+
+This step will build your collector distribution in-place inside a `Dockerfile`.
+Follow this step if you need to deploy your collector distribution to a
+container orchestrator (e.g. Kubernetes). If you would like to _only_ build your
+collector distribution without containerization, go to
+[Step 3a](#step-3a---generate-the-code-and-build-your-collectors-distribution).
+
+{{% /alert %}}
+
+You will need to add two new files to your project:
+
+- `Dockerfile` - Container image definition of your collector distribution
+- `collector-config.yaml` - Minimalist collector configuration YAML for testing
+  your distribution
+
+Your file structure will look like this:
+
+```console
+.
+├── builder-config.yaml
+├── collector-config.yaml
+└── Dockerfile
+```
+
+The `Dockerfile` below will build you collector distribution in-place, ensuring
+that the resulting collector distribution binary matches the target container
+architecture (e.g. `linux/arm64`, `linux/amd64`):
+
+<!-- prettier-ignore-start -->
+```yaml
+FROM alpine:3.19 AS certs
+RUN apk --update add ca-certificates
+
+FROM golang:1.23.6 AS build-stage
+WORKDIR /usr/bin/otelcol
+
+COPY ./builder-config.yaml builder-config.yaml
+COPY ./otelcol-config.yaml config.yaml
+
+RUN --mount=type=cache,target=/root/.cache/go-build GO111MODULE=on go install go.opentelemetry.io/collector/cmd/builder@{{% version-from-registry collector-builder %}}
+RUN mkdir -p ./otelcol-dev && chmod +x ./otelcol-dev
+RUN --mount=type=cache,target=/root/.cache/go-build builder --config builder-config.yaml
+
+FROM gcr.io/distroless/base:latest
+
+ARG USER_UID=10001
+USER ${USER_UID}
+
+COPY --from=build-stage /usr/bin/otelcol/config.yaml /etc/otelcol-contrib/config.yaml
+COPY --from=certs /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+COPY --chmod=755 --from=build-stage /usr/bin/otelcol/otelcol-dev /otelcol
+
+ENTRYPOINT ["/otelcol/otelcol-dev"]
+CMD ["--config", "/etc/otelcol-contrib/config.yaml"]
+
+EXPOSE 4317 4318 12001 55680 55679
+```
+<!-- prettier-ignore-end -->
+
+Below is the minimalist `collector-config.yaml` definition:
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      grpc: {}
+      http: {}
+
+processors:
+  batch: {}
+
+exporters:
+  debug:
+    verbosity: detailed
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [debug]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [debug]
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [debug]
+```
+
+Use the commands below to build a multi-architecture Docker image of the OCB
+using `linux/amd64` and `linux/arm64` as the target build architectures. Learn
+more about multi-architecture builds
+[here](https://blog.jaimyn.dev/how-to-build-multi-architecture-docker-images-on-an-m1-mac/).
+
+```bash
+# Enable Docker multi-arch builds
+docker run --rm --privileged tonistiigi/binfmt --install all
+docker buildx create --name mybuilder --use
+
+# Build the Docker image (loads the build result to docker images)
+docker buildx build --load -t <collector_distribution_image_name>:<version> --platform=linux/amd64,linux/arm64 .
+```
+
+## Further reading:
 
 - [Building a Trace Receiver](/docs/collector/building/receiver)
 - [Building a Connector](/docs/collector/building/connector)
