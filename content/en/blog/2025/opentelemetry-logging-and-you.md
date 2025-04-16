@@ -34,7 +34,7 @@ to other telemetry.
 
 With that said, what’s the distinction between a log and an event? It is rather
 straightforward – events are logs that
-[OpenTelemetry can make guarantees about](docs/specs/otel/logs/data-model.md#events).
+[OpenTelemetry can make guarantees about](/docs/specs/otel/logs/data-model/#events).
 An Event has a mandatory name and a structure that is defined via a schema,
 similar to how semantic conventions are defined today. Some people may refer to,
 or think of, these as ‘structured logs’ and it wouldn’t be wrong. We are using
