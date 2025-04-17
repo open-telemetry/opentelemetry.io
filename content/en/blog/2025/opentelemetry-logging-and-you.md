@@ -1,11 +1,10 @@
 ---
-title: Opentelemetry Logging and You
+title: OpenTelemetry Logging and You
 linkTitle: OTel Logging # Mandatory, make sure that your short title.
 date: 2025-04-16 # Put the current date, we will keep the date updated until your PR is merged
 author:
   >- # If you have only one author, then add the single name on this line in quotes.
-  [Austin Parker](https://github.com/austinlparker) (OpenTelemetry)
-issue: the issue ID for this blog post # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details
+  [Austin Parker](https://github.com/austinlparker) (honeycomb.io)
 sig: Logs
 ---
 
@@ -18,11 +17,11 @@ current design direction of logging in OpenTelemetry.
 
 Let’s get started with a basic definition of how OpenTelemetry thinks about
 logs. Broadly, logs are any telemetry that is emitted through a LoggerProvider,
-and are created by calling the Logging API. There are two ways we intend for
+and are created by calling the Logs API. There are two ways we intend for
 users to do this –
 
-- Use the logging API as a sink for existing loggers (sending existing logs to
-  the OpenTelemetry SDK)
+- Use the Logs API as a sink for existing loggers (sending existing logs to
+  OpenTelemetry)
 - Use the logging API to emit events, our vision of a structured logging format
 
 Regardless of the type of log, there is one thing they all have in common – logs
@@ -41,8 +40,7 @@ or think of, these as ‘structured logs’ and it wouldn’t be wrong. We are u
 the word event because it most clearly describes what an event is – something
 that happens, without a duration, and can be named.
 
-**We believe that all logs should be events**, or at least the overwhelming
-majority of them.
+**We believe that most log records should be events.**
 
 ## How is this different from other signals?
 
@@ -81,7 +79,7 @@ out in this post.
 special type of logs. Not all logs are events, but all events are logs.**
 
 Semantic convention and instrumentation authors should use events. Logs should
-be limited to legacy migrations of existing telemetry systems to OpenTelemetry,
+be limited to bridging existing logging libraries to OpenTelemetry,
 or when no other possible signal can be applied.
 
 ## Comments?
