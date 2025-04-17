@@ -1,42 +1,43 @@
 ---
 title: OpenTelemetry Logging and You
-linkTitle: OTel Logging # Mandatory, make sure that your short title.
-date: 2025-04-16 # Put the current date, we will keep the date updated until your PR is merged
-author:
-  >- # If you have only one author, then add the single name on this line in quotes.
+linkTitle: OTel Logging
+date: 2025-04-16
+author: >-
   [Austin Parker](https://github.com/austinlparker) (honeycomb.io)
 sig: Logs
 ---
 
 If you’ve been following OpenTelemetry for a while, you’ve probably heard a lot
-about logs. Logging bridges, Logging APIs, Events, you name it, we’ve talked
-about it. This blog post is intended to be a discussion of the rationale and
-current design direction of logging in OpenTelemetry.
+about logs. [Log bridges](/docs/specs/otel/glossary/#log-appender--bridge),
+[Logs API](/docs/specs/otel/logs/api), [Events](/docs/concepts/glossary/#event),
+you name it, we’ve talked about it. This blog post is intended to be a
+discussion of the rationale and current design direction of logging in
+OpenTelemetry.
 
 ## Definitions
 
 Let’s get started with a basic definition of how OpenTelemetry thinks about
 logs. Broadly, logs are any telemetry that is emitted through a LoggerProvider,
-and are created by calling the Logs API. There are two ways we intend for
-users to do this –
+and are created by calling the Logs API. There are two ways we intend for users
+to do this –
 
 - Use the Logs API as a sink for existing loggers (sending existing logs to
   OpenTelemetry)
-- Use the logging API to emit events, our vision of a structured logging format
+- Use the Logs API to emit [Events](/docs/concepts/glossary/#event) or log
+  records.
 
-Regardless of the type of log, there is one thing they all have in common – logs
-are part of the OpenTelemetry Context. This means that logs will have a
-reference to the context of the transaction or request that they were emitted
-under, irrespective of type or source. This is a fundamental part of the
-OpenTelemetry data model – all of your telemetry must be linked, contextually,
-to other telemetry.
+Regardless of the source, all logs emitted through the Logs API are able to
+participate in the OpenTelemetry Context. Log records share the same transaction
+or thread context as a metric or span. This is a fundamental part of
+OpenTelemetry's design -- all of your telemetry signals can be correlated
+through context.
 
 With that said, what’s the distinction between a log and an event? It is rather
 straightforward – events are logs that
 [OpenTelemetry can make guarantees about](/docs/specs/otel/logs/data-model/#events).
 An Event has a mandatory name and a structure that is defined via a schema,
-similar to how semantic conventions are defined today. Some people may refer to,
-or think of, these as ‘structured logs’ and it wouldn’t be wrong. We are using
+similar to how semantic conventions are defined today. While all log records in
+OpenTelemetry are structured, only Events have this defined schema. We are using
 the word event because it most clearly describes what an event is – something
 that happens, without a duration, and can be named.
 
@@ -62,9 +63,11 @@ Fundamentally, OpenTelemetry is built on the concept that all signals are
 interpreted together, rather than separately. Events can be considered to be a
 part of the span that they were emitted under, and can be used to represent
 everything from an exception, to security data, to an access log, to timing
-information, and much more. Events are not only useful in the presence of a
-span, but if they’re emitted with a span context, they can reasonably be
-interpreted as contained within the span.
+information, and much more. This doesn't mean that Events aren't useful on their
+own -- for example, a front-end developer may wish to emit interaction events
+for each click or tap on a screen that aren't part of a span -- but it does mean
+that if an event takes place _during_ a span, it can be thought of as 'part of'
+the span.
 
 ## How will we refer to these?
 
@@ -79,8 +82,9 @@ out in this post.
 special type of logs. Not all logs are events, but all events are logs.**
 
 Semantic convention and instrumentation authors should use events. Logs should
-be limited to bridging existing logging libraries to OpenTelemetry,
-or when no other possible signal can be applied.
+be limited to bridging existing logging libraries to OpenTelemetry, or when no
+other possible signal can be applied. For more, please refer to the
+[Logs Specification](/docs/spec/otel/logs).
 
 ## Comments?
 
