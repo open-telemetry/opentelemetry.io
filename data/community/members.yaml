@@ -1526,6 +1526,11 @@ approvers:
       - rust-approvers
     html_url: https://github.com/gruebel
     avatar_url: https://avatars.githubusercontent.com/u/33207684?v=4
+  - name: gyliu513
+    teams:
+      - semconv-genai-approvers
+    html_url: https://github.com/gyliu513
+    avatar_url: https://avatars.githubusercontent.com/u/4461983?v=4
   - name: hectorhdzg
     teams:
       - javascript-approvers
@@ -1535,6 +1540,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/39923391?v=4
   - name: iblancasa
     teams:
+      - collector-contrib-triagers
       - operator-approvers
       - operator-triagers
     html_url: https://github.com/iblancasa
@@ -2059,6 +2065,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/obecny
     avatar_url: https://avatars.githubusercontent.com/u/1250998?v=4
+  - name: odubajDT
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/odubajDT
+    avatar_url: https://avatars.githubusercontent.com/u/93584209?v=4
   - name: oertl
     teams:
       - java-contrib-triagers
@@ -2277,9 +2288,6 @@ members:
   - name: gregkalapos
     html_url: https://github.com/gregkalapos
     avatar_url: https://avatars.githubusercontent.com/u/1091853?v=4
-  - name: gyliu513
-    html_url: https://github.com/gyliu513
-    avatar_url: https://avatars.githubusercontent.com/u/4461983?v=4
   - name: haddasbronfman
     html_url: https://github.com/haddasbronfman
     avatar_url: https://avatars.githubusercontent.com/u/85441461?v=4

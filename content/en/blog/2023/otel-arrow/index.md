@@ -274,6 +274,6 @@ invaluable assistance.
 - OpenTelemetry Protocol with Apache Arrow (encoder/decoder)
   [repository](https://github.com/open-telemetry/otel-arrow).
 - Receiver
-  [documentation](https://github.com/open-telemetry/otel-arrow/blob/main/collector/receiver/otelarrowreceiver/README.md).
+  [documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/otelarrowreceiver/README.md).
 - Exporter
-  [documentation](https://github.com/open-telemetry/otel-arrow/blob/main/collector/exporter/otelarrowexporter/README.md).
+  [documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/otelarrowexporter/README.md).
