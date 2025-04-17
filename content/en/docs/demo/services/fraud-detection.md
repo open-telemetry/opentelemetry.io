@@ -7,6 +7,9 @@ aliases: [frauddetectionservice]
 This service analyses incoming orders and detects malicious customers. This is
 only mocked and received orders are printed out.
 
+[Fraud Detection service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/fraud-detection/)
+
+
 ## Auto-instrumentation
 
 This service relies on the OpenTelemetry Java agent to automatically instrument

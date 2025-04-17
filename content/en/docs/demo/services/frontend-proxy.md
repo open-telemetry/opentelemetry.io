@@ -8,6 +8,8 @@ cSpell:ignore: upstreams
 The frontend proxy is used as a reverse proxy for user-facing web interfaces
 such as the frontend, Jaeger, Grafana, load generator, and feature flag service.
 
+[Frontend proxy configuration source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/fraud-detection/)
+
 ## Enabling OpenTelemetry
 
 **NOTE: Only non-synthetic requests will trigger the envoy tracing.**
