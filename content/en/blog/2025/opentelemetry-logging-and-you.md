@@ -84,7 +84,7 @@ special type of logs. Not all logs are events, but all events are logs.**
 Semantic convention and instrumentation authors should use events. Logs should
 be limited to bridging existing logging libraries to OpenTelemetry, or when no
 other possible signal can be applied. For more, please refer to the
-[Logs Specification](/docs/spec/otel/logs).
+[Logs Specification](/docs/specs/otel/logs).
 
 ## Comments?
 
