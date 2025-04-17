@@ -354,6 +354,8 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/223565?v=4
   - name: damemi
     teams:
+      - ebpf-instrumentation-approvers
+      - ebpf-instrumentation-maintainers
       - go-instrumentation-approvers
       - go-instrumentation-maintainers
       - go-instrumentation-triagers
@@ -517,6 +519,14 @@ maintainers:
       - semconv-system-approvers
     html_url: https://github.com/frzifus
     avatar_url: https://avatars.githubusercontent.com/u/10403402?v=4
+  - name: grcevski
+    teams:
+      - ebpf-instrumentation-approvers
+      - ebpf-instrumentation-maintainers
+      - go-instrumentation-approvers
+      - go-instrumentation-triagers
+    html_url: https://github.com/grcevski
+    avatar_url: https://avatars.githubusercontent.com/u/6207777?v=4
   - name: hauleth
     teams:
       - erlang-approvers
@@ -763,6 +773,12 @@ maintainers:
       - specs-triagers
     html_url: https://github.com/marcalff
     avatar_url: https://avatars.githubusercontent.com/u/17238896?v=4
+  - name: marctc
+    teams:
+      - ebpf-instrumentation-approvers
+      - ebpf-instrumentation-maintainers
+    html_url: https://github.com/marctc
+    avatar_url: https://avatars.githubusercontent.com/u/280193?v=4
   - name: martinkuba
     teams:
       - javascript-approvers
@@ -803,6 +819,8 @@ maintainers:
     teams:
       - configuration-approvers
       - configuration-maintainers
+      - ebpf-instrumentation-approvers
+      - ebpf-instrumentation-maintainers
       - go-approvers
       - go-instrumentation-approvers
       - go-instrumentation-maintainers
@@ -1509,12 +1527,6 @@ approvers:
       - profiling-triagers
     html_url: https://github.com/florianl
     avatar_url: https://avatars.githubusercontent.com/u/1132494?v=4
-  - name: grcevski
-    teams:
-      - go-instrumentation-approvers
-      - go-instrumentation-triagers
-    html_url: https://github.com/grcevski
-    avatar_url: https://avatars.githubusercontent.com/u/6207777?v=4
   - name: GregMefford
     teams:
       - erlang-approvers
