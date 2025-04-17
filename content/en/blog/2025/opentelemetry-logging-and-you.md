@@ -6,7 +6,7 @@ author:
   >- # If you have only one author, then add the single name on this line in quotes.
   [Austin Parker](https://github.com/austinlparker) (OpenTelemetry)
 issue: the issue ID for this blog post # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details
-sig: Logging # TODO: add the name of the SIG that sponsors this blog post
+sig: Logs
 ---
 
 If you’ve been following OpenTelemetry for a while, you’ve probably heard a lot
