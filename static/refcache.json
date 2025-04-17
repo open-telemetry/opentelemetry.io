@@ -7179,6 +7179,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T18:15:57.569765671Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/fraud-detection/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-17T05:21:01.749919499-07:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/frontend-proxy/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-17T05:21:02.471416614-07:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/frontend/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:53:00.941653-05:00"
