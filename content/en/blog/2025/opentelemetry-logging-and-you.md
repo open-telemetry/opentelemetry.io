@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry Logging and You
 linkTitle: OTel Logging
-date: 2025-04-16
+date: 2025-04-18
 author: >-
   [Austin Parker](https://github.com/austinlparker) (honeycomb.io)
 sig: Logs
@@ -9,7 +9,7 @@ sig: Logs
 
 If you’ve been following OpenTelemetry for a while, you’ve probably heard a lot
 about logs. [Log bridges](/docs/specs/otel/glossary/#log-appender--bridge),
-[Logs API](/docs/specs/otel/logs/api), [Events](/docs/concepts/glossary/#event),
+[Logs API](/docs/specs/otel/logs/api), [events](/docs/concepts/glossary/#event),
 you name it, we’ve talked about it. This blog post is intended to be a
 discussion of the rationale and current design direction of logging in
 OpenTelemetry.
@@ -23,7 +23,7 @@ to do this –
 
 - Use the Logs API as a sink for existing loggers (sending existing logs to
   OpenTelemetry)
-- Use the Logs API to emit [Events](/docs/concepts/glossary/#event) or log
+- Use the Logs API to emit [events](/docs/concepts/glossary/#event) or log
   records.
 
 Regardless of the source, all logs emitted through the Logs API are able to
@@ -35,9 +35,9 @@ through context.
 With that said, what’s the distinction between a log and an event? It is rather
 straightforward – events are logs that
 [OpenTelemetry can make guarantees about](/docs/specs/otel/logs/data-model/#events).
-An Event has a mandatory name and a structure that is defined via a schema,
+An event has a mandatory name and a structure that is defined by a schema,
 similar to how semantic conventions are defined today. While all log records in
-OpenTelemetry are structured, only Events have this defined schema. We are using
+OpenTelemetry are structured, only events have this defined schema. We are using
 the word event because it most clearly describes what an event is – something
 that happens, without a duration, and can be named.
 
@@ -45,17 +45,17 @@ that happens, without a duration, and can be named.
 
 ## How is this different from other signals?
 
-Logs and Spans are often thought of as being conceptual twins, especially when
+Logs and spans are often thought of as being conceptual twins, especially when
 you start talking about events. What is a span other than an event with a
 particularly detailed schema, after all? A key distinction between them is that
 **spans have durations**. Events make no guarantees or claims about duration or
-time; They could represent a truly instantaneous occurrence, or the result of
+time; they could represent a truly instantaneous occurrence or the result of
 minutes or hours of computation. The other big difference is that **spans have
 an explicit hierarchy**. A span is part of a trace that contains many spans. A
 span with no children is, in and of itself, a complete trace. Events do not have
 this guarantee.
 
-Logs and Metrics differ in more clearly conceptual ways – a metric is a
+Logs and metrics differ in more clearly conceptual ways – a metric is a
 numerical series of values across time. While it’s possible to convert logs into
 metrics, this is downstream of the definition of the telemetry itself.
 
@@ -63,7 +63,7 @@ Fundamentally, OpenTelemetry is built on the concept that all signals are
 interpreted together, rather than separately. Events can be considered to be a
 part of the span that they were emitted under, and can be used to represent
 everything from an exception, to security data, to an access log, to timing
-information, and much more. This doesn't mean that Events aren't useful on their
+information, and much more. This doesn't mean that events aren't useful on their
 own -- for example, a front-end developer may wish to emit interaction events
 for each click or tap on a screen that aren't part of a span -- but it does mean
 that if an event takes place _during_ a span, it can be thought of as 'part of'
@@ -90,4 +90,4 @@ other possible signal can be applied. For more, please refer to the
 
 We’ve opened a
 [GitHub issue to discuss this post](https://github.com/open-telemetry/community/issues/2679),
-we’d love your feedback.
+and we’d love your feedback.
