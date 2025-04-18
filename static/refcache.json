@@ -9071,6 +9071,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-04-06T04:35:11.407913032Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md#opentelemetryiov1beta1": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-18T02:32:11.190129164-07:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscr": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-18T02:32:09.461205407-07:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscrservicemonitorselector": {
     "StatusCode": 206,
     "LastSeen": "2025-04-11T09:38:08.31996108-07:00"
