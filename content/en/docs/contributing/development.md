@@ -28,6 +28,39 @@ Gitpod automatically installs the repo-specific packages for you.
 You're now ready to [build](#build), [serve](#serve) or make updates to the
 website files.
 
+## Local development container setup
+
+These instructions are for running a
+[development (dev) container](https://containers.dev/) locally using
+[VSCode](https://code.visualstudio.com).
+
+You will first need to install the
+[VSCode dev containers extension](https://code.visualstudio.com/docs/devcontainers/containers#_installation).
+You will only need to do this once. To install the extension:
+
+```bash
+code --install-extension ms-vscode-remote.remote-containers
+```
+
+Once the extension is installed:
+
+1.  [Fork][] and then [clone][] the website repository at
+    <{{% param github_repo %}}>.
+2.  Open up the project in VSCode:
+
+    ```bash
+    code opentelemetry.io
+    ```
+
+3.  Access the VSCode command palette using `ctrl + shift + p` (or
+    `command + shift + p` for Mac users), and navigate to
+    `Dev Containers: Rebuild and Reopen in Container`. This will open up a new
+    VSCode window and will build the dev container for the first time. For
+    subsequent times, you can select `Dev Containers: Reopen in Container`.
+
+You're now ready to [build](#build), [serve](#serve) or make updates to the
+website files.
+
 ## Local setup
 
 1.  [Fork][] and then [clone][] the website repository at
