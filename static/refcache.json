@@ -4707,6 +4707,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:10:36.939755-05:00"
   },
+  "https://github.com/marctc": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-17T05:02:13.45799789-07:00"
+  },
+  "https://github.com/mariomac": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-18T02:27:19.047733207-07:00"
+  },
   "https://github.com/marketplace/actions/continuous-benchmark": {
     "StatusCode": 206,
     "LastSeen": "2025-01-15T13:17:26.822162-05:00"
@@ -4994,6 +5002,10 @@
   "https://github.com/odeke-em": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:27:23.20584-05:00"
+  },
+  "https://github.com/odubajDT": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-16T05:21:38.768508867-07:00"
   },
   "https://github.com/oertl": {
     "StatusCode": 206,
@@ -7179,6 +7191,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T18:15:57.569765671Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/fraud-detection/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-17T05:21:01.749919499-07:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/frontend-proxy/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-17T05:21:02.471416614-07:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/frontend/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:53:00.941653-05:00"
@@ -9070,6 +9090,14 @@
   "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md": {
     "StatusCode": 206,
     "LastSeen": "2025-04-06T04:35:11.407913032Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md#opentelemetryiov1beta1": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-18T02:32:11.190129164-07:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscr": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-18T02:32:09.461205407-07:00"
   },
   "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscrservicemonitorselector": {
     "StatusCode": 206,
@@ -12886,6 +12914,10 @@
   "https://github.com/r0mdau/fluentforwardexporter": {
     "StatusCode": 206,
     "LastSeen": "2025-01-19T02:27:12.257107855Z"
+  },
+  "https://github.com/rafaelroquetto": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-18T02:27:20.112933854-07:00"
   },
   "https://github.com/raito-io/neo4j-tracing": {
     "StatusCode": 206,
