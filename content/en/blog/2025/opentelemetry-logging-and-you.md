@@ -17,7 +17,7 @@ OpenTelemetry.
 ## Definitions
 
 Let’s get started with a basic definition of how OpenTelemetry thinks about
-logs. Broadly, logs are any telemetry that is emitted through a LoggerProvider,
+logs. Broadly, logs are any telemetry that is emitted through a log pipeline,
 and are created by calling the Logs API. There are two ways we intend for users
 to do this –
 
@@ -51,9 +51,9 @@ particularly detailed schema, after all? A key distinction between them is that
 **spans have durations**. Events make no guarantees or claims about duration or
 time; they could represent a truly instantaneous occurrence or the result of
 minutes or hours of computation. The other big difference is that **spans have
-an explicit hierarchy**. A span is part of a trace that contains many spans. A
-span with no children is, in and of itself, a complete trace. Events do not have
-this guarantee.
+an explicit hierarchy**. Spans have connections to other spans, and a span with
+no connections is still a complete trace. Events do not have this property --
+you can't tell from looking at one how it relates to others.
 
 Logs and metrics differ in more clearly conceptual ways – a metric is a
 numerical series of values across time. While it’s possible to convert logs into
