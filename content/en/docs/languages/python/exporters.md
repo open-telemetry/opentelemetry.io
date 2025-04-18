@@ -56,7 +56,7 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 
 # Service name is required for most backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
@@ -88,7 +88,7 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 
 # Service name is required for most backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
@@ -128,7 +128,7 @@ from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader, Cons
 # Service name is required for most backends,
 # and although it's not necessary for console export,
 # it's good to set service name anyways.
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
@@ -216,7 +216,7 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
 # Service name is required for most backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
@@ -271,7 +271,7 @@ from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
@@ -292,7 +292,7 @@ from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
