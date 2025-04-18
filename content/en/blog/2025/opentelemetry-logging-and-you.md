@@ -48,10 +48,10 @@ that happens, without a duration, and can be named.
 Logs and spans are often thought of as being conceptual twins, especially when
 you start talking about events. What is a span other than an event with a
 particularly detailed schema, after all? A key distinction between them is that
-**spans have durations**. Events make no guarantees or claims about duration or
-time; they could represent a truly instantaneous occurrence or the result of
-minutes or hours of computation. The other big difference is that **spans have
-an explicit hierarchy**. Spans have connections to other spans, and a span with
+**spans have durations**. Events do not have an explicit duration; they could
+represent a truly instantaneous occurrence or the result of minutes, hours, or
+days of work. The other big difference is that **spans have an explicit
+hierarchy**. Spans have connections to other spans, and a span with
 no connections is still a complete trace. Events do not have this property --
 you can't tell from looking at one how it relates to others.
 
