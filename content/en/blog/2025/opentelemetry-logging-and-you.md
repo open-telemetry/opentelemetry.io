@@ -51,9 +51,9 @@ particularly detailed schema, after all? A key distinction between them is that
 **spans have durations**. Events do not have an explicit duration; they could
 represent a truly instantaneous occurrence or the result of minutes, hours, or
 days of work. The other big difference is that **spans have an explicit
-hierarchy**. Spans have connections to other spans, and a span with
-no connections is still a complete trace. Events do not have this property --
-you can't tell from looking at one how it relates to others.
+hierarchy**. Spans have connections to other spans, and a span with no
+connections is still a complete trace. Events do not have this property -- you
+can't tell from looking at one how it relates to others.
 
 Logs and metrics differ in more clearly conceptual ways – a metric is a
 numerical series of values across time. While it’s possible to convert logs into
