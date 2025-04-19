@@ -1636,6 +1636,12 @@ approvers:
       - semconv-jvm-approvers
     html_url: https://github.com/jonatan-ivanov
     avatar_url: https://avatars.githubusercontent.com/u/3044070?v=4
+  - name: jvoravong
+    teams:
+      - helm-approvers
+      - helm-triagers
+    html_url: https://github.com/jvoravong
+    avatar_url: https://avatars.githubusercontent.com/u/47871238?v=4
   - name: kamphaus
     teams:
       - semconv-cicd-approvers
@@ -1691,11 +1697,6 @@ approvers:
       - ebpf-instrumentation-approvers
     html_url: https://github.com/marctc
     avatar_url: https://avatars.githubusercontent.com/u/280193?v=4
-  - name: mateuszrzeszutek
-    teams:
-      - semconv-jvm-approvers
-    html_url: https://github.com/mateuszrzeszutek
-    avatar_url: https://avatars.githubusercontent.com/u/69198463?v=4
   - name: maxgolov
     teams:
       - cpp-contrib-approvers
@@ -2441,6 +2442,9 @@ members:
   - name: markwolff
     html_url: https://github.com/markwolff
     avatar_url: https://avatars.githubusercontent.com/u/5515583?v=4
+  - name: mateuszrzeszutek
+    html_url: https://github.com/mateuszrzeszutek
+    avatar_url: https://avatars.githubusercontent.com/u/69198463?v=4
   - name: mauriciovasquezbernal
     html_url: https://github.com/mauriciovasquezbernal
     avatar_url: https://avatars.githubusercontent.com/u/13031921?v=4
