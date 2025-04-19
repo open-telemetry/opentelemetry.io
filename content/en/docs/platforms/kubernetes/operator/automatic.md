@@ -58,12 +58,12 @@ example that will be `demo-collector`.
 
 ```bash
 kubectl apply -f - <<EOF
-apiVersion: opentelemetry.io/v1alpha1
+apiVersion: opentelemetry.io/v1beta1
 kind: OpenTelemetryCollector
 metadata:
   name: demo
 spec:
-  config: |
+  config:
     receivers:
       otlp:
         protocols:
@@ -79,10 +79,9 @@ spec:
       batch:
         send_batch_size: 10000
         timeout: 10s
-
     exporters:
-      # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
       debug:
+        verbosity: basic
 
     service:
       pipelines:
