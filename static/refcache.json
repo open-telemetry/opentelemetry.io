@@ -91,6 +91,34 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-15T11:25:36.134264-05:00"
   },
+  "https://aws-otel.github.io/docs/getting-started/dotnet-sdk": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:44.671896257+01:00"
+  },
+  "https://aws-otel.github.io/docs/getting-started/go-sdk": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:46.857593708+01:00"
+  },
+  "https://aws-otel.github.io/docs/getting-started/java-sdk": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:50.067738549+01:00"
+  },
+  "https://aws-otel.github.io/docs/getting-started/javascript-sdk": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:52.362722328+01:00"
+  },
+  "https://aws-otel.github.io/docs/getting-started/php-sdk": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:53.897025857+01:00"
+  },
+  "https://aws-otel.github.io/docs/getting-started/python-sdk": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:53.433604954+01:00"
+  },
+  "https://aws-otel.github.io/docs/getting-started/ruby-sdk": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:54.465733353+01:00"
+  },
   "https://aws.amazon.com/": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T10:59:04.684874-05:00"
@@ -3095,13 +3123,33 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T13:05:48.070495-05:00"
   },
-  "https://github.com/aws-observability/aws-otel-js": {
+  "https://github.com/aws-observability/aws-otel-dotnet-instrumentation": {
     "StatusCode": 206,
-    "LastSeen": "2025-02-03T10:28:17.890526733Z"
+    "LastSeen": "2025-03-21T06:45:44.088757793+01:00"
   },
-  "https://github.com/aws-observability/aws-otel-python": {
+  "https://github.com/aws-observability/aws-otel-go": {
     "StatusCode": 206,
-    "LastSeen": "2025-02-03T10:28:21.284075121Z"
+    "LastSeen": "2025-03-21T06:45:46.360368598+01:00"
+  },
+  "https://github.com/aws-observability/aws-otel-java-instrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:48.14176815+01:00"
+  },
+  "https://github.com/aws-observability/aws-otel-js-instrumentation/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:51.211850439+01:00"
+  },
+  "https://github.com/aws-observability/aws-otel-php": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:53.628317002+01:00"
+  },
+  "https://github.com/aws-observability/aws-otel-python-instrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:53.11471223+01:00"
+  },
+  "https://github.com/aws-observability/aws-otel-ruby": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:54.165946866+01:00"
   },
   "https://github.com/bacherfl": {
     "StatusCode": 200,
