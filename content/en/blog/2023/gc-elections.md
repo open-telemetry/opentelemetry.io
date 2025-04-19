@@ -32,8 +32,8 @@ October 2023 23:59 UTC on
 [Helios Voting](https://vote.heliosvoting.org/helios/elections/1ee70ee4-11ce-11ee-aaf8-0a8c9aac83f9/view);
 voters will need to sign in with their GitHub account.
 
-To learn more about the election process, read about all of the details
-[here](https://github.com/open-telemetry/community/blob/main/elections/2023/governance-committee-election.md).
+For more information, see the
+[OpenTelemetry 2023 Governance Committee election](https://github.com/open-telemetry/community/blob/main/elections/2023/governance-committee-election.md).
 
 ## Interested in joining the Governance Committee?
 
