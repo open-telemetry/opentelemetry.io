@@ -12,12 +12,12 @@ cSpell:ignore: dicelib rolldice
 
 On this page you will learn how you can add traces, metrics and logs to your
 code manually. You are not limited to using one kind of instrumentation: you can
-also use [automatic instrumentation](/docs/zero-code/net/) to get started and
+also use [automatic instrumentation](/docs/zero-code/dotnet/) to get started and
 then enrich your code with manual instrumentation as needed.
 
 Also, for libraries your code depends on, you don't have to write
 instrumentation code yourself, since they might be already instrumented or there
-are [instrumentation libraries](/docs/languages/net/libraries/) for them.
+are [instrumentation libraries](/docs/languages/dotnet/libraries/) for them.
 
 {{% /alert %}}
 
@@ -39,8 +39,8 @@ you can refer to the [OpenTelemetry API Shim docs for tracing](../shim).
 ## Example app preparation {#example-app}
 
 This page uses a modified version of the example app from
-[Getting Started](/docs/languages/net/getting-started/) to help you learn about
-manual instrumentation.
+[Getting Started](/docs/languages/dotnet/getting-started/) to help you learn
+about manual instrumentation.
 
 You don't have to use the example app: if you want to instrument your own app or
 library, follow the instructions here to adapt the process to your own code.
@@ -307,15 +307,15 @@ loggerFactory.Dispose();
 For debugging and local development purposes, the example exports telemetry to
 the console. After you have finished setting up manual instrumentation, you need
 to configure an appropriate exporter to
-[export the app's telemetry data](/docs/languages/net/exporters/) to one or more
-telemetry backends.
+[export the app's telemetry data](/docs/languages/dotnet/exporters/) to one or
+more telemetry backends.
 
 The example also sets up the mandatory SDK default attribute `service.name`,
 which holds the logical name of the service, and the optional, but highly
 encouraged, attribute `service.version`, which holds the version of the service
 API or implementation. Alternative methods exist for setting up resource
 attributes. For more information, see
-[Resources](/docs/languages/net/resources/).
+[Resources](/docs/languages/dotnet/resources/).
 
 To verify your code, build and run the app:
 
@@ -636,8 +636,6 @@ var activity = MyActivitySource.StartActivity(
 
 {{% docs/languages/span-status-preamble %}}
 
-The status can be set at any time before the span is finished.
-
 It can be a good idea to record exceptions when they happen. It's recommended to
 do this in conjunction with
 [setting span status](/docs/specs/otel/trace/api/#set-status).
@@ -657,7 +655,7 @@ private int rollOnce()
         catch (Exception ex)
         {
             childActivity?.SetStatus(ActivityStatusCode.Error, "Something bad happened!");
-            childActivity?.RecordException(ex);
+            childActivity?.AddException(ex);
             throw;
         }
 
@@ -670,13 +668,13 @@ private int rollOnce()
 
 The documentation for the metrics API & SDK is missing, you can help make it
 available by
-[editing this page](https://github.com/open-telemetry/opentelemetry.io/edit/main/content/en/docs/languages/net/instrumentation.md).
+[editing this page](https://github.com/open-telemetry/opentelemetry.io/edit/main/content/en/docs/languages/dotnet/instrumentation.md).
 
 ## Logs
 
 The documentation for the logs API and SDK is missing. You can help make it
 available by
-[editing this page](https://github.com/open-telemetry/opentelemetry.io/edit/main/content/en/docs/languages/net/instrumentation.md).
+[editing this page](https://github.com/open-telemetry/opentelemetry.io/edit/main/content/en/docs/languages/dotnet/instrumentation.md).
 
 ## Next steps
 
@@ -689,5 +687,5 @@ You'll also want to configure an appropriate exporter to
 [export your telemetry data](../exporters/) to one or more telemetry backends.
 
 You can also check the
-[automatic instrumentation for .NET](/docs/zero-code/net/), which is currently
-in beta.
+[automatic instrumentation for .NET](/docs/zero-code/dotnet/), which is
+currently in beta.

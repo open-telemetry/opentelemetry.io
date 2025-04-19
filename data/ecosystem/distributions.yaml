@@ -1,4 +1,4 @@
-# cSpell:ignore Splunk AWS ADOT Grafana observIQ BindPlane RHOSDT RedHat Sumo Liatrio Lumigo Distro
+# cSpell:ignore Splunk AWS ADOT Grafana observIQ BindPlane RHOSDT RedHat Sumo Liatrio Lumigo Distro Dynatrace
 - name: Splunk Distribution of OpenTelemetry Collector
   url: https://github.com/signalfx/splunk-otel-collector
   docsUrl: https://docs.splunk.com/observability/en/gdi/opentelemetry/opentelemetry.html
@@ -115,22 +115,38 @@
   url: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/monitor/azure-monitor-opentelemetry
   docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable?tabs=python
   components: [Python]
-- name: Elastic Distribution for OpenTelemetry Java
-  url: https://github.com/elastic/elastic-otel-java
-  docsUrl: https://github.com/elastic/elastic-otel-java
+- name: Elastic Distribution of OpenTelemetry Collector
+  url: https://github.com/elastic/elastic-agent/tree/main/internal/pkg/otel
+  docsUrl: https://ela.st/edot-collector
   components: [Java]
-- name: Elastic Distribution for OpenTelemetry .NET
+- name: Elastic Distribution of OpenTelemetry .NET
   url: https://github.com/elastic/elastic-otel-dotnet
-  docsUrl: https://github.com/elastic/elastic-otel-dotnet
+  docsUrl: https://ela.st/edot-dotnet
   components: [.NET]
-- name: Elastic Distribution for OpenTelemetry Node.js
+- name: Elastic Distribution of OpenTelemetry Java
+  url: https://github.com/elastic/elastic-otel-java
+  docsUrl: https://ela.st/edot-java
+  components: [Java]
+- name: Elastic Distribution of OpenTelemetry Node.js
   url: https://github.com/elastic/elastic-otel-node
-  docsUrl: https://github.com/elastic/elastic-otel-node
+  docsUrl: https://ela.st/edot-nodejs
   components: [Node]
-- name: Elastic Distribution for OpenTelemetry Python
+- name: Elastic Distribution of OpenTelemetry PHP
+  url: https://github.com/elastic/elastic-otel-php
+  docsUrl: https://ela.st/edot-php
+  components: [PHP]
+- name: Elastic Distribution of OpenTelemetry Python
   url: https://github.com/elastic/elastic-otel-python
-  docsUrl: https://github.com/elastic/elastic-otel-python
+  docsUrl: https://ela.st/edot-python
   components: [Python]
+- name: Elastic Distribution of OpenTelemetry Android
+  url: https://github.com/elastic/apm-agent-android
+  docsUrl: https://ela.st/edot-android
+  components: [Android]
+- name: Elastic Distribution of OpenTelemetry Swift / iOS
+  url: https://github.com/elastic/apm-agent-ios
+  docsUrl: https://ela.st/edot-ios
+  components: [Swift]
 - name: Embrace Android Distribution for OpenTelemetry
   url: https://github.com/embrace-io/embrace-android-sdk
   docsUrl: https://embrace.io/docs/open-telemetry/integration/?android-language=java
@@ -143,3 +159,7 @@
   url: https://github.com/embrace-io/embrace-react-native-sdk
   docsUrl: https://embrace.io/docs/open-telemetry/integration/#react-native
   components: [React Native, Javascript]
+- name: Dynatrace Distribution of the OpenTelemetry Collector
+  url: https://github.com/Dynatrace/dynatrace-otel-collector
+  docsUrl: https://docs.dynatrace.com/docs/shortlink/opentelemetry-collector
+  components: [Collector]

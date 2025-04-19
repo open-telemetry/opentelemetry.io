@@ -10,7 +10,7 @@ cSpell:ignore: ECS Reiley SemConv Yang
 
 Today, we're very excited to make a joint announcement with
 [Elastic](https://www.elastic.co/) about the future of
-[Elastic Common Schema](https://www.elastic.co/guide/en/ecs/master/ecs-reference.html)
+[Elastic Common Schema](https://www.elastic.co/guide/en/ecs/current/ecs-reference.html)
 (ECS) and the [OpenTelemetry Semantic Conventions][].
 
 The goal is to achieve convergence of ECS and OTel Semantic Conventions into a

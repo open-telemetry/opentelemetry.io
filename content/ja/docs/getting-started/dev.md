@@ -23,7 +23,7 @@ OpenTelemetryが役に立ちます！
 次に、あなたが使っている[言語](../../languages/)のドキュメントを読んでください。
 
 - [C++](../../languages/cpp/)
-- [.NET](../../languages/net/)
+- [.NET](../../languages/dotnet/)
 - [Erlang / Elixir](../../languages/erlang/)
 - [Go](../../languages/go/)
 - [Java](../../languages/java/)
