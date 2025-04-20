@@ -610,9 +610,9 @@ you can create [spans](/docs/concepts/signals/traces/#spans).
 The API of OpenTelemetry JavaScript exposes two methods that allow you to create
 spans:
 
-- [`tracer.startSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api.Tracer.html#startSpan):
+- [`tracer.startSpan`](https://open-telemetry.github.io/opentelemetry-js/classes/_opentelemetry_api._opentelemetry_api.Tracer.html#startspan):
   Starts a new span without setting it on context.
-- [`tracer.startActiveSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api.Tracer.html#startActiveSpan):
+- [`tracer.startActiveSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api._opentelemetry_api.Tracer.html#startactivespan):
   Starts a new span and calls the given callback function passing it the created
   span as first argument. The new span gets set in context and this context is
   activated for the duration of the function call.
