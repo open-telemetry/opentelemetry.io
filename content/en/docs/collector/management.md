@@ -1,6 +1,6 @@
 ---
 title: Management
-description: How to manage your OpenTelemetry collector deployment at scale
+description: How to manage your OpenTelemetry Collector deployment at scale
 weight: 23
 cSpell:ignore: backpressure distro hostmetrics opampsupervisor
 ---
@@ -88,7 +88,7 @@ implementation in Go][opamp-go]. For the following walkthrough you will need to
 have Go in version 1.22 or above available.
 
 We will set up a simple OpAMP control plane consisting of an example OpAMP
-server and let an OpenTelemetry Collector connect to it via the [OpAMP
+server and let an OpenTelemetry Collector connect to it using the [OpAMP
 Supervisor][opamp-supervisor].
 
 #### Step 1 - Start the OpAMP server
@@ -111,8 +111,8 @@ $ go run .
 
 We need an OpenTelemetry Collector binary that the OpAMP Supervisor can manage.
 For that, install the [OpenTelemetry Collector Contrib][otelcolcontrib] distro.
-The path to the collector binary (where you installed it into) is referred to as
-`$OTEL_COLLECTOR_BINARY` in the following.
+The path where you installed the Collector binary is referred to as
+`$OTEL_COLLECTOR_BINARY` in the following configuration.
 
 #### Step 3 - Install the OpAMP Supervisor
 
@@ -198,15 +198,19 @@ storage:
   directory: ./storage
 ```
 
-> **Note** Make sure to replace `$OTEL_COLLECTOR_BINARY` with the actual file
-> path. For example, in Linux or macOS, if you installed the collector in
-> `/usr/local/bin/` then you would replace `$OTEL_COLLECTOR_BINARY` with
-> `/usr/local/bin/otelcol`.
+{{% alert color="primary" title="NOTE" %}}
+
+Make sure to replace `$OTEL_COLLECTOR_BINARY` with the actual file
+path. For example, in Linux or macOS, if you installed the Collector in
+`/usr/local/bin/`, then you would replace `$OTEL_COLLECTOR_BINARY` with
+`/usr/local/bin/otelcol`.
+
+{{% /alert %}}
 
 #### Step 5 - Run the OpAMP Supervisor
 
-Now it's time to launch the supervisor (which in turn will launch your
-OpenTelemetry Collector):
+Now it's time to launch the supervisor, which in turn launches your
+OpenTelemetry Collector:
 
 ```console
 $ ./opampsupervisor --config=./supervisor.yaml
@@ -214,15 +218,15 @@ $ ./opampsupervisor --config=./supervisor.yaml
 {"level":"info","ts":1745154644.74608,"logger":"supervisor","caller":"supervisor/supervisor.go:1086","msg":"No last received remote config found"}
 ```
 
-If everything worked out you should now be able to go to
-[http://localhost:4321/](http://localhost:4321/) and access the OpAMP server UI
-where you should see your collector listed, managed by the supervisor:
+If everything worked out, you should now be able to go to
+[http://localhost:4321/](http://localhost:4321/) and access the OpAMP server UI.
+You should see your Collector listed among the agents managed by the Supervisor:
 
 ![OpAMP example setup](../img/opamp-server-ui.png)
 
 #### Step 6 - Configure the OpenTelemetry Collector remotely
 
-Click on the collector in the server UI and paste the following content to the
+Click on the Collector in the server UI and paste the following content to the
 `Additional Configuration` box:
 
 ```yaml
@@ -250,7 +254,7 @@ Reload the page and verify that the Agent status shows `Up: true`:
 
 ![OpAMP agent](../img/opamp-server-agent.png)
 
-You can query the collector for the metrics exported (note the label values):
+You can query the Collector for the metrics exported (note the label values):
 
 ```console
 $ curl localhost:8888/metrics
@@ -266,7 +270,7 @@ otelcol_process_cpu_seconds{service_instance_id="01965352-9958-72da-905c-e40329c
 ...
 ```
 
-You can also inspect the collector's logs:
+You can also inspect the Collector's logs:
 
 ```console
 $ cat ./storage/agent.log
