@@ -539,9 +539,17 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:58:05.02751-05:00"
   },
+  "https://code.visualstudio.com": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-22T19:19:29.392140654Z"
+  },
   "https://code.visualstudio.com/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:59:55.593014-05:00"
+  },
+  "https://code.visualstudio.com/docs/devcontainers/containers#_installation": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-22T19:19:32.045577138Z"
   },
   "https://collectd.org/wiki/index.php/Binary_protocol": {
     "StatusCode": 206,
@@ -582,6 +590,10 @@
   "https://containerd.io/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-15T13:17:28.36005-05:00"
+  },
+  "https://containers.dev/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-22T19:19:25.586763282Z"
   },
   "https://contribute.cncf.io/resources/project-services/audits/": {
     "StatusCode": 206,
