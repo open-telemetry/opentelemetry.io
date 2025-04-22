@@ -1900,6 +1900,7 @@ approvers:
       - java-instrumentation-approvers
       - java-instrumentation-triagers
       - semconv-code-attribute-approvers
+      - semconv-jvm-approvers
     html_url: https://github.com/SylvainJuge
     avatar_url: https://avatars.githubusercontent.com/u/763082?v=4
   - name: tammy-baylis-swi
@@ -2250,6 +2251,9 @@ members:
   - name: camdencheek
     html_url: https://github.com/camdencheek
     avatar_url: https://avatars.githubusercontent.com/u/12631702?v=4
+  - name: celian-garcia
+    html_url: https://github.com/celian-garcia
+    avatar_url: https://avatars.githubusercontent.com/u/10258608?v=4
   - name: chrlic
     html_url: https://github.com/chrlic
     avatar_url: https://avatars.githubusercontent.com/u/6670587?v=4
