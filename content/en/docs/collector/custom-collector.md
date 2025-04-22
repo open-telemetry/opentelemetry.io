@@ -195,7 +195,7 @@ registry entries provide the full name and version you need to add to your
 This step is used to build your custom collector distribution using the `ocb`
 binary. If you would like to build and deploy your custom Collector distribution
 to a container orchestrator (for example, Kubernetes), skip this step and go to
-[Step 3b](#step-3b---containerizing-your-collectors-distribution).
+[Step 3b](#step-3b---containerize-your-collectors-distribution).
 
 {{% /alert %}}
 
