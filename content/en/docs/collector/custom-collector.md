@@ -28,8 +28,7 @@ get started.
 
 {{% alert color="primary" title="NOTE" %}}
 
-The `ocb` tool requires Go to build the Collector distribution. Please
-[install Go](https://go.dev/doc/install) on your machine, if you haven't done so
+The `ocb` tool requires Go to build the Collector distribution. [Install Go](https://go.dev/doc/install) on your machine, if you haven't done so
 already.
 
 {{% /alert %}}
@@ -188,13 +187,13 @@ registry entries provide the full name and version you need to add to your
 
 {{% /alert %}}
 
-## Step 3a - Generate the Code and Build your Collector's distribution
+## Step 3a - Generate the code and build your Collector's distribution
 
 {{% alert color="primary" title="NOTE" %}}
 
 This step is used to build your custom collector distribution using the `ocb`
-binary. If you would like to build and deploy your custom collector distribution
-to a container orchestrator (e.g. Kubernetes), skip this step and go to
+binary. If you would like to build and deploy your custom Collector distribution
+to a container orchestrator (for example, Kubernetes), skip this step and go to
 [Step 3b](#step-3b---containerizing-your-collectors-distribution).
 
 {{% /alert %}}
@@ -244,25 +243,25 @@ You can now use the generated code to bootstrap your component development
 projects and easily build and distribute your own collector distribution with
 your components.
 
-## Step 3b - Containerizing your Collector's distribution
+## Step 3b - Containerize your Collector's distribution
 
 {{% alert color="primary" title="NOTE" %}}
 
 This step will build your collector distribution in-place inside a `Dockerfile`.
-Follow this step if you need to deploy your collector distribution to a
-container orchestrator (e.g. Kubernetes). If you would like to _only_ build your
+Follow this step if you need to deploy your Collector distribution to a
+container orchestrator (for example, Kubernetes). If you would like to _only_ build your
 collector distribution without containerization, go to
 [Step 3a](#step-3a---generate-the-code-and-build-your-collectors-distribution).
 
 {{% /alert %}}
 
-You will need to add two new files to your project:
+You need to add two new files to your project:
 
-- `Dockerfile` - Container image definition of your collector distribution
-- `collector-config.yaml` - Minimalist collector configuration YAML for testing
+- `Dockerfile` - Container image definition of your Collector distribution
+- `collector-config.yaml` - Minimalist Collector configuration YAML for testing
   your distribution
 
-Your file structure will look like this:
+After adding these files, your file structure looks like this:
 
 ```console
 .
@@ -271,9 +270,9 @@ Your file structure will look like this:
 └── Dockerfile
 ```
 
-The `Dockerfile` below will build you collector distribution in-place, ensuring
-that the resulting collector distribution binary matches the target container
-architecture (e.g. `linux/arm64`, `linux/amd64`):
+The following `Dockerfile` builds your Collector distribution in-place, ensuring
+that the resulting Collector distribution binary matches the target container
+architecture (for example, `linux/arm64`, `linux/amd64`):
 
 <!-- prettier-ignore-start -->
 ```yaml
@@ -306,7 +305,7 @@ EXPOSE 4317 4318 12001 55680 55679
 ```
 <!-- prettier-ignore-end -->
 
-Below is the minimalist `collector-config.yaml` definition:
+The following is the minimalist `collector-config.yaml` definition:
 
 ```yaml
 receivers:
@@ -338,10 +337,9 @@ service:
       exporters: [debug]
 ```
 
-Use the commands below to build a multi-architecture Docker image of the OCB
-using `linux/amd64` and `linux/arm64` as the target build architectures. Learn
-more about multi-architecture builds
-[here](https://blog.jaimyn.dev/how-to-build-multi-architecture-docker-images-on-an-m1-mac/).
+Use the following commands to build a multi-architecture Docker image of the OCB
+using `linux/amd64` and `linux/arm64` as the target build architectures. To learn more, 
+see this [blog post](https://blog.jaimyn.dev/how-to-build-multi-architecture-docker-images-on-an-m1-mac/) about multi-architecture builds.
 
 ```bash
 # Enable Docker multi-arch builds
