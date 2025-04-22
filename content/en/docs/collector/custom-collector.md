@@ -28,7 +28,8 @@ get started.
 
 {{% alert color="primary" title="NOTE" %}}
 
-The `ocb` tool requires Go to build the Collector distribution. [Install Go](https://go.dev/doc/install) on your machine, if you haven't done so
+The `ocb` tool requires Go to build the Collector distribution.
+[Install Go](https://go.dev/doc/install) on your machine, if you haven't done so
 already.
 
 {{% /alert %}}
@@ -247,9 +248,9 @@ your components.
 
 {{% alert color="primary" title="NOTE" %}}
 
-This step will build your collector distribution in-place inside a `Dockerfile`.
-Follow this step if you need to deploy your Collector distribution to a
-container orchestrator (for example, Kubernetes). If you would like to _only_ build your
+This step will build your collector distribution inside a `Dockerfile`. Follow
+this step if you need to deploy your Collector distribution to a container
+orchestrator (for example, Kubernetes). If you would like to _only_ build your
 collector distribution without containerization, go to
 [Step 3a](#step-3a---generate-the-code-and-build-your-collectors-distribution).
 
@@ -283,7 +284,6 @@ FROM golang:1.23.6 AS build-stage
 WORKDIR /usr/bin/otelcol
 
 COPY ./builder-config.yaml builder-config.yaml
-COPY ./otelcol-config.yaml config.yaml
 
 RUN --mount=type=cache,target=/root/.cache/go-build GO111MODULE=on go install go.opentelemetry.io/collector/cmd/builder@{{% version-from-registry collector-builder %}}
 RUN mkdir -p ./otelcol-dev && chmod +x ./otelcol-dev
@@ -294,14 +294,14 @@ FROM gcr.io/distroless/base:latest
 ARG USER_UID=10001
 USER ${USER_UID}
 
-COPY --from=build-stage /usr/bin/otelcol/config.yaml /etc/otelcol-contrib/config.yaml
+COPY ./otelcol-config.yaml /etc/otelcol-contrib/otelcol-config.yaml
 COPY --from=certs /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 COPY --chmod=755 --from=build-stage /usr/bin/otelcol/otelcol-dev /otelcol
 
 ENTRYPOINT ["/otelcol/otelcol-dev"]
-CMD ["--config", "/etc/otelcol-contrib/config.yaml"]
+CMD ["--config", "/etc/otelcol-contrib/otelcol-config.yaml"]
 
-EXPOSE 4317 4318 12001 55680 55679
+EXPOSE 4317 4318 12001
 ```
 <!-- prettier-ignore-end -->
 
@@ -338,16 +338,25 @@ service:
 ```
 
 Use the following commands to build a multi-architecture Docker image of the OCB
-using `linux/amd64` and `linux/arm64` as the target build architectures. To learn more, 
-see this [blog post](https://blog.jaimyn.dev/how-to-build-multi-architecture-docker-images-on-an-m1-mac/) about multi-architecture builds.
+using `linux/amd64` and `linux/arm64` as the target build architectures. To
+learn more, see this
+[blog post](https://blog.jaimyn.dev/how-to-build-multi-architecture-docker-images-on-an-m1-mac/)
+about multi-architecture builds.
 
 ```bash
 # Enable Docker multi-arch builds
 docker run --rm --privileged tonistiigi/binfmt --install all
 docker buildx create --name mybuilder --use
 
-# Build the Docker image (loads the build result to docker images)
-docker buildx build --load -t <collector_distribution_image_name>:<version> --platform=linux/amd64,linux/arm64 .
+# Build the Docker image as Linux AMD and ARM,
+# and loads the build result to "docker images"
+docker buildx build --load \
+  -t <collector_distribution_image_name>:<version> \
+  --platform=linux/amd64,linux/arm64 .
+
+# Test the newly-built image
+docker run -it --rm -p 4317:4317 -p 4318:4318 \
+    --name otelcol <collector_distribution_image_name>:<version>
 ```
 
 ## Further reading:

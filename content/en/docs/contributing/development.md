@@ -54,8 +54,8 @@ Once the extension is installed:
 
 3.  Access the VSCode command palette using `ctrl + shift + p` (or
     `command + shift + p` for Mac users), and navigate to
-    `Dev Containers: Rebuild and Reopen in Container`. This command opens up a new
-    VSCode window and builds the dev container for the first time. For
+    `Dev Containers: Rebuild and Reopen in Container`. This command opens up a
+    new VSCode window and builds the dev container for the first time. For
     subsequent builds, you can select `Dev Containers: Reopen in Container`.
 
 You're now ready to [build](#build), [serve](#serve) or make updates to the
