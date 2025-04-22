@@ -5623,6 +5623,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-23T00:42:06.061499598Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-22T16:02:37.121872+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/telemetrygen": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:34:01.580787-05:00"
@@ -15714,6 +15718,10 @@
   "https://pkg.go.dev/github.com/mitchellh/mapstructure": {
     "StatusCode": 200,
     "LastSeen": "2025-01-30T14:41:05.186296-05:00"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/cmd/opampsupervisor": {
+    "StatusCode": 200,
+    "LastSeen": "2025-04-22T16:02:45.796954+02:00"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/exporter/alertmanagerexporter": {
     "StatusCode": 200,

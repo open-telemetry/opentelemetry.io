@@ -200,10 +200,9 @@ storage:
 
 {{% alert color="primary" title="NOTE" %}}
 
-Make sure to replace `$OTEL_COLLECTOR_BINARY` with the actual file
-path. For example, in Linux or macOS, if you installed the Collector in
-`/usr/local/bin/`, then you would replace `$OTEL_COLLECTOR_BINARY` with
-`/usr/local/bin/otelcol`.
+Make sure to replace `$OTEL_COLLECTOR_BINARY` with the actual file path. For
+example, in Linux or macOS, if you installed the Collector in `/usr/local/bin/`,
+then you would replace `$OTEL_COLLECTOR_BINARY` with `/usr/local/bin/otelcol`.
 
 {{% /alert %}}
 
