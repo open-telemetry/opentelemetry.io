@@ -1,4 +1,4 @@
-# cSpell:ignore Dyte Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Sicredi Skyscanner VTEX
+# cSpell:ignore Dyte Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Sicredi Skyscanner Tranzzo VTEX
 - name: AppDirect
   url: https://www.appdirect.com/
   components: [Collector]
@@ -124,6 +124,11 @@
   components: []
   reference: ''
   contact: ''
+- name: Tranzzo
+  url: https://tranzzo.com/
+  components: [Collector, Java]
+  reference: ''
+  contact: https://github.com/illenko
 - name: Uplight
   url: https://uplight.com/
   components: [Collector, Ruby, Java, Python, .NET]
