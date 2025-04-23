@@ -2010,6 +2010,11 @@ triagers:
       - go-triagers
     html_url: https://github.com/akats7
     avatar_url: https://avatars.githubusercontent.com/u/56042997?v=4
+  - name: AndrejKiri
+    teams:
+      - sig-end-user-triagers
+    html_url: https://github.com/AndrejKiri
+    avatar_url: https://avatars.githubusercontent.com/u/4126171?v=4
   - name: anosek-an
     teams:
       - java-contrib-triagers
@@ -2590,6 +2595,9 @@ members:
   - name: tydhot
     html_url: https://github.com/tydhot
     avatar_url: https://avatars.githubusercontent.com/u/27889201?v=4
+  - name: v0y4g3r
+    html_url: https://github.com/v0y4g3r
+    avatar_url: https://avatars.githubusercontent.com/u/6406592?v=4
   - name: VenuEmmadi
     html_url: https://github.com/VenuEmmadi
     avatar_url: https://avatars.githubusercontent.com/u/57027311?v=4
