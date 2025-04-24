@@ -9,18 +9,6 @@ CheckMailto: false
 TestFilesConcurrently: true
 IgnoreDirs:
   # DO NOT EDIT! IgnoreDirs list is auto-generated from markdown file front matter.
-  # Ignore blog index pages for all locales and in all blog sections (top-level and years)
-  - ^(../)?blog/(\d+/)?page/\d+
-  # Ignore old blog posts
-  - ^(../)?blog/20(19|21|22|23)/
-  # TODO drop next lines after https://github.com/open-telemetry/opentelemetry.io/issues/5555 is fixed for these pages:
-  - ^zh/docs/concepts/signals/baggage/
-  - ^zh/docs/zero-code/php/
-  # TODO drop the following config once this page is updated to reflect the corresponding `en`
-  # page and the link 404 (detailed below) are resolved:
-  #   zh/docs/contributing/index.html
-  #     Non-OK status: 404 --> https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md
-  - ^zh/docs/contributing/
   # DO NOT EDIT! IgnoreDirs list is auto-generated from markdown file front matter.
 IgnoreInternalURLs: # list of paths
 IgnoreURLs: # list of regexs of paths or URLs to be ignored
