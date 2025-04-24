@@ -84,8 +84,8 @@ Let's have a look at a concrete setup:
 ### Try it out
 
 You can try out a simple OpAMP setup yourself by using the [OpAMP protocol
-implementation in Go][opamp-go]. For the following walkthrough you will need
-Go 1.22+.
+implementation in Go][opamp-go]. For the following walkthrough you will need Go
+1.22+.
 
 We will set up a simple OpAMP control plane consisting of an example OpAMP
 server and let an OpenTelemetry Collector connect to it using the [OpAMP
