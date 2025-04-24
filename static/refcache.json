@@ -1423,6 +1423,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:05.346585-05:00"
   },
+  "https://docs.micrometer.io/tracing/reference/api.html#_micrometer_tracing_opentelemetry_setup": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-24T05:50:04.173252398-07:00"
+  },
   "https://docs.microsoft.com/aspnet/core": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T10:58:41.536648-05:00"
@@ -4858,6 +4862,10 @@
   "https://github.com/micrometer-metrics": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T15:45:53.024Z"
+  },
+  "https://github.com/micrometer-metrics/tracing/tree/main/micrometer-tracing-bridges/micrometer-tracing-bridge-otel": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-24T05:50:03.356710098-07:00"
   },
   "https://github.com/microsft": {
     "StatusCode": 206,
@@ -18550,6 +18558,10 @@
   "https://www.elastic.co/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T12:10:40.954551-05:00"
+  },
+  "https://www.elastic.co/docs/reference/elasticsearch/clients/java/setup/opentelemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-24T05:49:17.499365942-07:00"
   },
   "https://www.elastic.co/elasticsearch": {
     "StatusCode": 206,
