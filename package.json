@@ -123,7 +123,7 @@
     "autoprefixer": "^10.4.21",
     "cspell": "^8.19.2",
     "gulp": "^5.0.0",
-    "hugo-extended": "0.145.0",
+    "hugo-extended": "0.146.7",
     "js-yaml": "^4.1.0",
     "markdown-link-check": "^3.13.7",
     "markdownlint": "^0.37.4",
