@@ -1,14 +1,6 @@
-{{ $prettier_ignore := `
-
-<!-- prettier-ignore -->
-` -}}
-{{ $lang := .Get 0 -}}
-{{ $data := index $.Site.Data.instrumentation $lang }}
-{{ $name := $data.name -}}
-
-{{ $tracesStatus := partial "docs/get-signal-status.html" (dict "lang" $lang "signal" "traces") -}}
-{{ $metricsStatus := partial "docs/get-signal-status.html" (dict "lang" $lang "signal" "metrics") -}}
-{{ $logsStatus := partial "docs/get-signal-status.html" (dict "lang" $lang "signal" "logs") -}}
+---
+default_lang_commit: 3c38c3392fc74f8f071a7a0179fbd141faa7dc40
+---
 
 これはOpenTelemetry{{ $name }}のドキュメントです。
 OpenTelemetryはオブザーバビリティのためのフレームワークであり、メトリクス、ログ、トレースといったアプリケーションのテレメトリーデータの生成および収集を支援するように設計された API、SDK、およびツール群で構成されています。
@@ -18,8 +10,12 @@ OpenTelemetryはオブザーバビリティのためのフレームワークで�
 
 OpenTelemetry {{ $name }}の主要な機能コンポーネントの現在のステータスは以下の通りです。
 
-| トレース              | メトリクス              | ログ              |
+| トレース            | メトリクス           | ログ              |
 | ------------------- | -------------------- | ----------------- |
 | {{ $tracesStatus }} | {{ $metricsStatus }} | {{ $logsStatus }} |
 
-{{ partial "ja/docs/latest-release.md" (dict "lang" $lang "Inner" .Inner) -}}
+[最新のリリース][latest release]を含むリリース情報については、[リリース][Releases]をご覧ください。
+{{ $.Inner }}
+
+[latest release]: <https://github.com/open-telemetry/opentelemetry-{{ $lang }}/releases/latest>
+[Releases]: <https://github.com/open-telemetry/opentelemetry-{{ $lang }}/releases>
