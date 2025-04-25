@@ -499,3 +499,9 @@
   contact: contact@yottabyte.cn
   oss: false
   commercial: true
+- name: HPE OpsRamp Software
+  nativeOTLP: true
+  url: https://docs.opsramp.com/integrations/a2r/3rd-party/opentelemetry-integration/
+  oss: false
+  commercial: true
+  contact: support@OpsRamp.com
