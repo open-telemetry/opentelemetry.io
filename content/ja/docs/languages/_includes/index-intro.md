@@ -10,14 +10,12 @@ OpenTelemetryはオブザーバビリティのためのフレームワークで�
 
 OpenTelemetry {{ $name }}の主要な機能コンポーネントの現在のステータスは以下の通りです。
 
-| トレース              | メトリクス              | ログ              |
+| トレース            | メトリクス           | ログ              |
 | ------------------- | -------------------- | ----------------- |
 | {{ $tracesStatus }} | {{ $metricsStatus }} | {{ $logsStatus }} |
 
 [最新のリリース][latest release]を含むリリース情報については、[リリース][Releases]をご覧ください。
 {{ $.Inner }}
 
-[latest release]:
-  <https://github.com/open-telemetry/opentelemetry-{{ $lang }}/releases/latest>
-[Releases]:
-  <https://github.com/open-telemetry/opentelemetry-{{ $lang }}/releases>
+[latest release]: <https://github.com/open-telemetry/opentelemetry-{{ $lang }}/releases/latest>
+[Releases]: <https://github.com/open-telemetry/opentelemetry-{{ $lang }}/releases>
