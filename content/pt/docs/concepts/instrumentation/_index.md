@@ -3,7 +3,6 @@ title: Instrumentação
 description: Como o OpenTelemetry facilita a instrumentação
 weight: 15
 default_lang_commit: efeda2d8ded2471211697c3993f6d475a3a8b06e
-drifted_from_default: true
 ---
 
 Para que um sistema seja [observável], ele deve ser **instrumentado**: ou seja,
