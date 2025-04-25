@@ -2,7 +2,6 @@
 title: Primeiros passos para Operações
 linkTitle: Ops
 default_lang_commit: 99a39c5e4e51daba968bfbb3eb078be4a14ad363
-drifted_from_default: true
 ---
 
 A página [primeiros-passos](..) é para você se:
