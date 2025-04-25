@@ -8,7 +8,7 @@ weight: 16
 default_lang_commit: dc174c212e81fadbf8382bb54c54cff294954b1b
 ---
 
-{{% ja/docs/languages/index-intro go /%}}
+{{% docs/languages/index-intro go /%}}
 
 ## 関連情報 {#more}
 
