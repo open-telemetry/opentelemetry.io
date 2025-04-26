@@ -1,16 +1,6 @@
-{{/*
-default_lang_commit: 2e21274a01a24a62c67595591d8f4255bef640fc
-*/ -}} {{ $prettier_ignore := `
-
-<!-- prettier-ignore -->
-` -}}
-{{ $lang := .Get 0 -}}
-{{ $data := index $.Site.Data.instrumentation $lang }}
-{{ $name := $data.name -}}
-
-{{ $tracesStatus := partial "docs/get-signal-status.html" (dict "lang" $lang "signal" "traces") -}}
-{{ $metricsStatus := partial "docs/get-signal-status.html" (dict "lang" $lang "signal" "metrics") -}}
-{{ $logsStatus := partial "docs/get-signal-status.html" (dict "lang" $lang "signal" "logs") -}}
+---
+default_lang_commit: 3c38c3392fc74f8f071a7a0179fbd141faa7dc40
+---
 
 Esta é a documentação do OpenTelemetry para a linguagem {{ $name }}. O
 OpenTelemetry é um framework de observabilidade -- API, SDKs, e ferramentas que
@@ -27,4 +17,10 @@ O estado atual dos principais componentes funcionais do OpenTelemetry para
 | ------------------- | -------------------- | ----------------- |
 | {{ $tracesStatus }} | {{ $metricsStatus }} | {{ $logsStatus }} |
 
-{{ partial "pt/docs/latest-release.md" (dict "lang" $lang "Inner" .Inner) -}}
+Para lançamentos, incluindo a [última versão][latest release], consulte a página
+de [Lançamentos][Releases]. {{ $.Inner }}
+
+[latest release]:
+  <https://github.com/open-telemetry/opentelemetry-{{ $lang }}/releases/latest>
+[Releases]:
+  <https://github.com/open-telemetry/opentelemetry-{{ $lang }}/releases>

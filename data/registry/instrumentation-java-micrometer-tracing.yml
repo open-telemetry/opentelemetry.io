@@ -11,6 +11,7 @@ authors:
     url: https://github.com/micrometer-metrics
 urls:
   website: https://micrometer.io/
-  docs: https://docs.micrometer.io/micrometer/reference/implementations/otlp.html
+  docs: https://docs.micrometer.io/tracing/reference/api.html#_micrometer_tracing_opentelemetry_setup
+  repo: https://github.com/micrometer-metrics/tracing/tree/main/micrometer-tracing-bridges/micrometer-tracing-bridge-otel
 createdAt: 2024-08-06
-isNative: true
+isNative: false
