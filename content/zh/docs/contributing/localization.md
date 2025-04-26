@@ -13,8 +13,6 @@ OTel网站使用Hugo的 [multilingual framework] 来支持页面的本地化。
 
 ## 翻译指南 {#translation-guidance}
 
-When translating website pages from English, we recommend that you follow the
-guidance offered in this section.
 当翻译英文网站页面时，我们建议您遵循本部分中提供的指南。
 
 ### 概要 {#summary}
@@ -27,15 +25,13 @@ guidance offered in this section.
   - 页面内容, 包括:
     - Mermaid [diagram](#images) 文本字段
     - 代码片段内的注释（可选）
-  - [Front matter][] 中的 `title`, `linkTitle`, 和 `description` 的字段值
+  - [前端元数据][front matter] 中的 `title`, `linkTitle`, 和 `description` 的字段值
   - **所有页面**内容和前置元数据，除非另有说明。  
 - 保留原文的_内容_、_含义_以及_风格_ 。
-- **Ask** [maintainers] if you have any doubts or questions through:
-  - [Slack] `#otel-docs-localization` or `#otel-comms` channels
-  - [Discussion], issue, or PR comment
 - 如果您有任何疑问或问题，请通过以下方式向[maintainers] **咨询**:
   - [Slack] 上的`#otel-docs-localization` 或 `#otel-comms` 频道
   - [Discussion], issue, 或者 PR 评论
+
 [Discussion]:
   https://github.com/open-telemetry/opentelemetry.io/discussions?discussions_q=is%3Aopen+label%3Ai18n
 
@@ -50,10 +46,9 @@ guidance offered in this section.
   - [标题heading IDs](#headings) 包含的[链接](#links) [^*]
   - 像这样的行内代码片段：`inline code example`
   - 标记为 `notranslate`（通常是CSS类）的Markdown元素，尤其是针对[标题heading IDs](#headings)
-  - 除了[应做事项](#do)中列出的那些[Front matter][] 字段之外的其他字段。特别要注意的是，不要翻译 aliases（别名）字段。
+  - 除了[应做事项](#do)中列出的那些[前端元数据][front matter] 字段之外的其他字段。特别要注意的是，不要翻译 aliases（别名）字段。
   如有疑问，请向维护人员咨询。
   - 源代码
-- Create **copies of images**, unless you [localize text in the images](#images)
 - 创建**图像的副本**，除非你要[对图像中的文本进行本地化处理](#images)。
 - 新增新的和修改:
   - **内容** 与原来想表达的意思不相同
@@ -125,7 +120,7 @@ OTel网站的仓库中有一个自定义的 render-link 钩子，Hugo 会用它�
 
 维护本地化页面的主要挑战之一，是识别对应的英文页面何时进行了更新。本节将解释我们是如何处理这个问题的。
 
-### `default_lang_commit` 前端元数据字段 {#the-default_lang_commit-front-matter-field}
+### 前端元数据字段`default_lang_commit`  {#the-default_lang_commit-front-matter-field}
 
 当编写一个本地化页面时，例如 `content/zh/<some-path>/page.md`，这个翻译版本是基于`content/en/<some-path>/page.md`
 对应英文页面在特定的[`main` 分支commit][main]  版本。在这个代码仓库中，每个本地化页面都会在其前端元数据里
@@ -216,7 +211,7 @@ npm run check:i18n -- -c <hash> <PATH-TO-YOUR-NEW-FILES>
 npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
 ```
 
-{{% alert title="Important" %}}
+{{% alert title="重要" %}}
 
 当你使用`HEAD`作为哈希指定符时，脚本将使用你本地环境中`main`分支在 HEAD 位置的哈希值。
 如果你希望 HEAD 对应于 GitHub 上的`main`分支，要确保你已经获取并拉取了 main 分支的最新内容。
@@ -234,12 +229,6 @@ npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
 
 ## 新的本地化内容 {#new-localizations}
 
-To start a new localization for the OpenTelemetry website,
-[raise an issue](https://github.com/open-telemetry/opentelemetry.io/issues/) to
-share your interest to contribute. Tag all other individuals that are willing to
-write and review translations in the language you want to add. **You need at
-least two potential contributors**, ideally three. Include the following task
-list in your issue as well:
 要为 OpenTelemetry 网站开启一项新的本地化工作，你可以[创建一个issue](https://github.com/open-telemetry/opentelemetry.io/issues/) 
 来表明你参与贡献的意愿。同时，标记出所有愿意撰写和审核你想添加语言的翻译内容的人员。
 你至少需要两名潜在贡献者，理想情况下是三名。此外，在你的议题中还需包含以下任务列表：
@@ -259,19 +248,13 @@ list in your issue as well:
 - 请查找[cSpell 词典](https://github.com/streetsidesoftware/cspell-dicts)，并确认以 NPM 包形式提供的 [@cspell/dict-LANG_ID](https://www.npmjs.com/search?q=%40cspell%2Fdict)
   是否可用。如果没有适合您所指的方言或地区的词典，请选择最接近该地区的词典。有关设置方法的示例，请参考 [PR #5386] 。
 
-After you created that issue and have the required amount of contributors,
-maintainers will ask you to provide a pull request with a translation of the
-[index page](https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md).
-Make sure that maintainers are allowed to edit your PR, since they will add
-additional changes to your PR that are required to get your localization project
-started.
 当你创建了那个issue并且聚集了所需数量的贡献者后，维护人员会要求你创建一个包含[索引页面](https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md)
 翻译内容的拉取请求。请确保维护人员能够编辑该PR，以便为该PR添加启动本地化项目所需的额外修改内容。
 
 
 在你的第一个PR被合并后，维护人员会负责设置issue标签、组织级别的群组以及组件负责人。
 
-{{% alert title="Important" color="warning" %}}
+{{% alert title="重要" color="warning" %}}
 
 即便你并非 OpenTelemetry 项目的现有贡献者，也能开启新的本地化工作。
 不过，你不会被添加为[OpenTelemetry GitHub组织](https://github.com/open-telemetry/)的成员，
@@ -286,9 +269,6 @@ started.
 
 ### 当非英语页面的链接检查失败时 {#when-link-checking-fails-for-non-english-pages}
 
-English is the default language of the OpenTelemetry website. After you add,
-edit, or reorganized English language documentation, link checking may fail for
-non-English pages. When this happens:
 英语是 OpenTelemetry 网站的默认语言。在添加、编辑或重构英语文档之后，非英语页面的链接检查可能会失败。
 如果出现这种情况，请执行以下操作：
 
