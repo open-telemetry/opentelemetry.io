@@ -3,6 +3,7 @@ title: プルリクエストのチェック
 description: プルリクエストがすべてのチェックをパスする方法学ぶ
 weight: 40
 default_lang_commit: 9ba98f4fded66ec78bfafa189ab2d15d66df2309
+drifted_from_default: true
 cSpell:ignore: REFCACHE
 ---
 

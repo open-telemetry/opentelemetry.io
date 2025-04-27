@@ -1636,6 +1636,12 @@ approvers:
       - semconv-jvm-approvers
     html_url: https://github.com/jonatan-ivanov
     avatar_url: https://avatars.githubusercontent.com/u/3044070?v=4
+  - name: jvoravong
+    teams:
+      - helm-approvers
+      - helm-triagers
+    html_url: https://github.com/jvoravong
+    avatar_url: https://avatars.githubusercontent.com/u/47871238?v=4
   - name: kamphaus
     teams:
       - semconv-cicd-approvers
@@ -1691,11 +1697,6 @@ approvers:
       - ebpf-instrumentation-approvers
     html_url: https://github.com/marctc
     avatar_url: https://avatars.githubusercontent.com/u/280193?v=4
-  - name: mateuszrzeszutek
-    teams:
-      - semconv-jvm-approvers
-    html_url: https://github.com/mateuszrzeszutek
-    avatar_url: https://avatars.githubusercontent.com/u/69198463?v=4
   - name: maxgolov
     teams:
       - cpp-contrib-approvers
@@ -1899,6 +1900,7 @@ approvers:
       - java-instrumentation-approvers
       - java-instrumentation-triagers
       - semconv-code-attribute-approvers
+      - semconv-jvm-approvers
     html_url: https://github.com/SylvainJuge
     avatar_url: https://avatars.githubusercontent.com/u/763082?v=4
   - name: tammy-baylis-swi
@@ -2008,6 +2010,11 @@ triagers:
       - go-triagers
     html_url: https://github.com/akats7
     avatar_url: https://avatars.githubusercontent.com/u/56042997?v=4
+  - name: AndrejKiri
+    teams:
+      - sig-end-user-triagers
+    html_url: https://github.com/AndrejKiri
+    avatar_url: https://avatars.githubusercontent.com/u/4126171?v=4
   - name: anosek-an
     teams:
       - java-contrib-triagers
@@ -2249,6 +2256,9 @@ members:
   - name: camdencheek
     html_url: https://github.com/camdencheek
     avatar_url: https://avatars.githubusercontent.com/u/12631702?v=4
+  - name: celian-garcia
+    html_url: https://github.com/celian-garcia
+    avatar_url: https://avatars.githubusercontent.com/u/10258608?v=4
   - name: chrlic
     html_url: https://github.com/chrlic
     avatar_url: https://avatars.githubusercontent.com/u/6670587?v=4
@@ -2441,6 +2451,9 @@ members:
   - name: markwolff
     html_url: https://github.com/markwolff
     avatar_url: https://avatars.githubusercontent.com/u/5515583?v=4
+  - name: mateuszrzeszutek
+    html_url: https://github.com/mateuszrzeszutek
+    avatar_url: https://avatars.githubusercontent.com/u/69198463?v=4
   - name: mauriciovasquezbernal
     html_url: https://github.com/mauriciovasquezbernal
     avatar_url: https://avatars.githubusercontent.com/u/13031921?v=4
@@ -2582,6 +2595,9 @@ members:
   - name: tydhot
     html_url: https://github.com/tydhot
     avatar_url: https://avatars.githubusercontent.com/u/27889201?v=4
+  - name: v0y4g3r
+    html_url: https://github.com/v0y4g3r
+    avatar_url: https://avatars.githubusercontent.com/u/6406592?v=4
   - name: VenuEmmadi
     html_url: https://github.com/VenuEmmadi
     avatar_url: https://avatars.githubusercontent.com/u/57027311?v=4

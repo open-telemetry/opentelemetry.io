@@ -2,6 +2,7 @@
 title: 開発者のための入門
 linkTitle: Dev
 default_lang_commit: e7a6289
+drifted_from_default: true
 ---
 
 あなたが以下のいずれかに当てはまれば、このページはあなたのための[入門](..)ページです。

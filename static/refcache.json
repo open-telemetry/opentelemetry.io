@@ -91,6 +91,34 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-15T11:25:36.134264-05:00"
   },
+  "https://aws-otel.github.io/docs/getting-started/dotnet-sdk": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:44.671896257+01:00"
+  },
+  "https://aws-otel.github.io/docs/getting-started/go-sdk": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:46.857593708+01:00"
+  },
+  "https://aws-otel.github.io/docs/getting-started/java-sdk": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:50.067738549+01:00"
+  },
+  "https://aws-otel.github.io/docs/getting-started/javascript-sdk": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:52.362722328+01:00"
+  },
+  "https://aws-otel.github.io/docs/getting-started/php-sdk": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:53.897025857+01:00"
+  },
+  "https://aws-otel.github.io/docs/getting-started/python-sdk": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:53.433604954+01:00"
+  },
+  "https://aws-otel.github.io/docs/getting-started/ruby-sdk": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:54.465733353+01:00"
+  },
   "https://aws.amazon.com/": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T10:59:04.684874-05:00"
@@ -1395,6 +1423,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:05.346585-05:00"
   },
+  "https://docs.micrometer.io/tracing/reference/api.html#_micrometer_tracing_opentelemetry_setup": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-24T05:50:04.173252398-07:00"
+  },
   "https://docs.microsoft.com/aspnet/core": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T10:58:41.536648-05:00"
@@ -2287,6 +2319,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:34.522401-05:00"
   },
+  "https://github.com/AndrejKiri": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-23T04:47:13.451273726-07:00"
+  },
   "https://github.com/Aneurysm9": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T12:42:15.78559-05:00"
@@ -3095,13 +3131,33 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T13:05:48.070495-05:00"
   },
-  "https://github.com/aws-observability/aws-otel-js": {
+  "https://github.com/aws-observability/aws-otel-dotnet-instrumentation": {
     "StatusCode": 206,
-    "LastSeen": "2025-02-03T10:28:17.890526733Z"
+    "LastSeen": "2025-03-21T06:45:44.088757793+01:00"
   },
-  "https://github.com/aws-observability/aws-otel-python": {
+  "https://github.com/aws-observability/aws-otel-go": {
     "StatusCode": 206,
-    "LastSeen": "2025-02-03T10:28:21.284075121Z"
+    "LastSeen": "2025-03-21T06:45:46.360368598+01:00"
+  },
+  "https://github.com/aws-observability/aws-otel-java-instrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:48.14176815+01:00"
+  },
+  "https://github.com/aws-observability/aws-otel-js-instrumentation/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:51.211850439+01:00"
+  },
+  "https://github.com/aws-observability/aws-otel-php": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:53.628317002+01:00"
+  },
+  "https://github.com/aws-observability/aws-otel-python-instrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:53.11471223+01:00"
+  },
+  "https://github.com/aws-observability/aws-otel-ruby": {
+    "StatusCode": 206,
+    "LastSeen": "2025-03-21T06:45:54.165946866+01:00"
   },
   "https://github.com/bacherfl": {
     "StatusCode": 200,
@@ -3218,6 +3274,10 @@
   "https://github.com/cedricziel": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:13:06.288201-05:00"
+  },
+  "https://github.com/celian-garcia": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-22T04:42:40.913246632-07:00"
   },
   "https://github.com/census-ecosystem/opencensus-go-exporter-prometheus/blob/v0.4.1/prometheus.go#L227": {
     "StatusCode": 200,
@@ -4475,6 +4535,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:27:20.847337-05:00"
   },
+  "https://github.com/jvoravong": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-19T04:42:33.648860127-07:00"
+  },
   "https://github.com/kamphaus": {
     "StatusCode": 206,
     "LastSeen": "2025-02-21T14:47:49.820203164Z"
@@ -4798,6 +4862,10 @@
   "https://github.com/micrometer-metrics": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T15:45:53.024Z"
+  },
+  "https://github.com/micrometer-metrics/tracing/tree/main/micrometer-tracing-bridges/micrometer-tracing-bridge-otel": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-24T05:50:03.356710098-07:00"
   },
   "https://github.com/microsft": {
     "StatusCode": 206,
@@ -5562,6 +5630,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/34427": {
     "StatusCode": 206,
     "LastSeen": "2025-01-23T00:42:06.061499598Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-22T16:02:37.121872+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/telemetrygen": {
     "StatusCode": 206,
@@ -13547,6 +13619,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:10:47.016311-05:00"
   },
+  "https://github.com/v0y4g3r": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-23T04:47:14.733083698-07:00"
+  },
   "https://github.com/vercel": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:56.338275-05:00"
@@ -15650,6 +15726,10 @@
   "https://pkg.go.dev/github.com/mitchellh/mapstructure": {
     "StatusCode": 200,
     "LastSeen": "2025-01-30T14:41:05.186296-05:00"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/cmd/opampsupervisor": {
+    "StatusCode": 200,
+    "LastSeen": "2025-04-22T16:02:45.796954+02:00"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/exporter/alertmanagerexporter": {
     "StatusCode": 200,
@@ -18486,6 +18566,10 @@
   "https://www.elastic.co/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T12:10:40.954551-05:00"
+  },
+  "https://www.elastic.co/docs/reference/elasticsearch/clients/java/setup/opentelemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-24T05:49:17.499365942-07:00"
   },
   "https://www.elastic.co/elasticsearch": {
     "StatusCode": 206,
