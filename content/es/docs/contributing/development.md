@@ -1,5 +1,5 @@
 ---
-title: Configuración de desarrollo y comandos para construir, servir y más
+title: Configuración de desarrollo y comandos para construir, visualizar en el entorno local y más
 linkTitle: Configuración del entorno y más
 description: Aprende como configurar el entorno de desarrollo para este sitio web.
 weight: 60
@@ -21,7 +21,7 @@ Estas instrucciones están pensadas para [Gitpod.io], adáptalas si prefieres ot
 
 Gitpod instalará automáticamente los paquetes necesarios por ti durante la inicialización del entorno.
 
-Aún no estás listo para [construir](#construir), [servir en el entorno local](#servir-en-el-entorno-local) o hacer actualizaciones en los ficheros del sitio web.
+Aún no estás listo para [construir](#construir), [visualizar en el entorno local](#visualizar-en-el-entorno-local) o hacer actualizaciones en los ficheros del sitio web.
 
 ## Configuración local
 
@@ -48,7 +48,7 @@ Aún no estás listo para [construir](#construir), [servir en el entorno local](
     npm install
     ```
 
-Aún no estás listo para [construir](#construir), [servir en el entorno local](#servir-en-el-entorno-local) o hacer actualizaciones en los ficheros del sitio web.
+Aún no estás listo para [construir](#construir), [visualizar en el entorno local](#visualizar-en-el-entorno-local) o hacer actualizaciones en los ficheros del sitio web.
 
 ### Construir
 
@@ -60,9 +60,9 @@ npm run build
 
 Los ficheros se generan bajo la carpeta `public`.
 
-### Servir en el entorno local
+### Visualizar en el entorno local
 
-Para servir en el entorno local, ejecuta el comando:
+Para visualizar en el entorno local, ejecuta el comando:
 
 ```sh
 npm run serve
@@ -99,7 +99,7 @@ Solo después de que la PR del submódulo haya sido aceptada, será posible actu
 
 Es más sencillo gestionar tus cambios en `content-modules` realizando los cambios en el repositorio al que corresponda el submódulo en lugar de dentro del mismo submódulo.
 
-Los colaboradores más expertos pueden trabajar directamente en el submódulo, siendo capaces de construir y servir localmente directamente los cambios en el submódulo. Por defecto, los scripts de CI obtienen los submódulos en cada invocación. Para prevenir este comportamiento mientras trabajas dentro del submódulo, puedes configurar la variable de entorno `GET=no`. También necesitarías ejecutar `git fetch --unshallow` en el submódulo antes de crear la PR. De manera alternativa, puedes configurar `DEPTH=100` para volver a clonar los submódulos.
+Los colaboradores más expertos pueden trabajar directamente en el submódulo, siendo capaces de construir y servir localmente directamente los cambios. Por defecto, los scripts de CI obtienen los submódulos en cada invocación. Para prevenir este comportamiento mientras trabajas dentro del submódulo, puedes configurar la variable de entorno `GET=no`. También necesitarías ejecutar `git fetch --unshallow` en el submódulo antes de crear la PR. De manera alternativa, puedes configurar `DEPTH=100` para volver a clonar los submódulos.
 
 [clone]:
 https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
