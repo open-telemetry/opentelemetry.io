@@ -21,14 +21,14 @@ Estas instrucciones están pensadas para [Gitpod.io], adáptalas si prefieres ot
 
 Gitpod instalará automáticamente los paquetes necesarios por ti durante la inicialización del entorno.
 
-Aún no estás listo para [construir](#construir), [visualizar en el entorno local](#visualizar-en-el-entorno-local) o hacer actualizaciones en los ficheros del sitio web.
+Aún no estás listo para [construir](#build), [visualizar en el entorno local](#serve) o hacer actualizaciones en los ficheros del sitio web.
 
 ## Configuración local
 
 1.  [Crea un fork][fork] y [clona][clone] el repositorio del sitio web desde
     <{{% param github_repo %}}>.
 2.  Navega hasta el directorio del repositorio clonado.
-3.  Instala o actualiza a [**una versión LTS**][nodejs-rel] de Node.js.
+3.  Instala o actualiza a [**una versión LTS**][nodejs-rel] de Node.js.~~~~
     Recomendamos el uso de [nvm][] para manejar la instalación de Node. En Linux,
     ejecuta el siguiente comando, el cual instalará y actualizará a la versión especificada en el fichero .nvmrc:
 
@@ -48,9 +48,9 @@ Aún no estás listo para [construir](#construir), [visualizar en el entorno loc
     npm install
     ```
 
-Aún no estás listo para [construir](#construir), [visualizar en el entorno local](#visualizar-en-el-entorno-local) o hacer actualizaciones en los ficheros del sitio web.
+Aún no estás listo para [construir](#build), [visualizar en el entorno local](#serve) o hacer actualizaciones en los ficheros del sitio web.
 
-### Construir
+### Construir {#build}
 
 Para construir este sitio web:
 
@@ -60,7 +60,7 @@ npm run build
 
 Los ficheros se generan bajo la carpeta `public`.
 
-### Visualizar en el entorno local
+### Visualizar en el entorno local {#serve}
 
 Para visualizar en el entorno local, ejecuta el comando:
 
