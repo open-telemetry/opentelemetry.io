@@ -14243,6 +14243,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:59:12.014503-05:00"
   },
+  "https://kccncna2024.sched.com/event/1hovy/opentelemetry-project-update-alolita-sharma-apple-juraci-paixao-krohling-grafana-labs-ted-young-servicenow-morgan-mclean-splunk-daniel-dyla-dynatrace": {
+    "StatusCode": 200,
+    "LastSeen": "2025-04-28T14:10:13.393405-04:00"
+  },
   "https://keda.sh/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:54:17.823326-05:00"
@@ -15494,6 +15498,10 @@
   "https://opentelemetry.devstats.cncf.io/d/9/developer-activity-counts-by-repository-group-table": {
     "StatusCode": 200,
     "LastSeen": "2025-01-31T13:07:33.766024682Z"
+  },
+  "https://opentelemetry.io/community/roadmap/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-28T14:10:14.243417-04:00"
   },
   "https://opentelemetry.io/docs/concepts/instrumentation/": {
     "StatusCode": 206,
@@ -18234,6 +18242,10 @@
   "https://wicg.github.io/ua-client-hints/#sec-ch-ua-platform": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:30:12.345Z"
+  },
+  "https://widget.kapa.ai/kapa-widget.bundle.js": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-28T14:09:38.056257-04:00"
   },
   "https://wiki.alpinelinux.org/wiki/Repositories#Testing": {
     "StatusCode": 200,
