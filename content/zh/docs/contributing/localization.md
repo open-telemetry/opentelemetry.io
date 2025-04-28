@@ -29,7 +29,7 @@ OTel 网站使用 Hugo 的 [multilingual framework] 来支持页面的本地化�
   - **所有页面**内容和前置元数据，除非另有说明。
 - 保留原文的*内容*、*含义*以及*风格* 。
 - 如果您有任何疑问或问题，请通过以下方式向[maintainers] **咨询**:
-  - [Slack] 上的`#otel-docs-localization` 或 `#otel-comms` 频道
+  - [Slack] 上的 `#otel-docs-localization` 或 `#otel-comms` 频道
   - [Discussion]、Issue 或者 PR 评论
 
 [Discussion]: https://github.com/open-telemetry/opentelemetry.io/discussions?discussions_q=is%3Aopen+label%3Ai18n
@@ -51,7 +51,7 @@ OTel 网站使用 Hugo 的 [multilingual framework] 来支持页面的本地化�
 - 创建**图像的副本**，除非你要[对图像中的文本进行本地化处理](#images)。
 - 新增新的和修改:
   - **内容** 与原来想表达的意思不相同
-  - 展示**风格**，包括：_排版_、*布局*以及*设计*风格（例如排版样式、字母大小写以及间距等方面）。
+  - 展示**风格**，包括：*排版*、*布局*以及*设计*风格（例如排版样式、字母大小写以及间距等方面）。
 
 [^*]: 关于一种可能的例外情况，请参阅[链接](#links)。
 
@@ -62,7 +62,7 @@ OTel 网站使用 Hugo 的 [multilingual framework] 来支持页面的本地化�
 为确保标题的锚点目标在各种本地化版本中保持一致，在翻译标题时:
 
 - 如果标题有显式的 ID，那么请保留该标题的显式 ID。 [标题 Heading ID 语法][Heading ID syntax]
-  是使用类似 `{ #some-id }`这样的语法，写在标题文本之后。
+  是使用类似 `{ #some-id }` 这样的语法，写在标题文本之后。
 - 否则，需明确声明一个与原始英文标题的自动生成 ID 相对应的标题 ID。
 
 [Heading ID syntax]: https://github.com/yuin/goldmark/blob/master/README.md#headings
@@ -108,8 +108,8 @@ OTel网站的仓库中有一个自定义的 render-link 钩子，Hugo 会用它�
 
 一些基础短代码包含你可能需要进行本地化处理的英文文本
 -- 尤其是那些包含在 [layouts/shortcodes/docs] 中的短代码，这种情况更为明显。
-如果你需要创建某个短代码的本地化版本，可将其放置在`layouts/shortcodes/xx`目录下，
-其中`xx`是你所在地区的语言代码。之后，使用与原始基础短代码相同的相对路径。
+如果你需要创建某个短代码的本地化版本，可将其放置在 `layouts/shortcodes/xx` 目录下，
+其中 `xx` 是你所在地区的语言代码。之后，使用与原始基础短代码相同的相对路径。
 
 [layouts/shortcodes/docs]: https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/shortcodes/docs
 
@@ -117,10 +117,10 @@ OTel网站的仓库中有一个自定义的 render-link 钩子，Hugo 会用它�
 
 维护本地化页面的主要挑战之一，是识别对应的英文页面何时进行了更新。本节将解释我们是如何处理这个问题的。
 
-### 前端元数据字段`default_lang_commit` {#the-default_lang_commit-front-matter-field}
+### 前端元数据字段 `default_lang_commit` {#the-default_lang_commit-front-matter-field}
 
-当编写一个本地化页面时，例如 `content/zh/<some-path>/page.md`，这个翻译版本是基于`content/en/<some-path>/page.md`
-对应英文页面在特定的[`main` 分支commit][main] 版本。在这个代码仓库中，每个本地化页面都会在其前端元数据里
+当编写一个本地化页面时，例如 `content/zh/<some-path>/page.md`，这个翻译版本是基于 `content/en/<some-path>/page.md`
+对应英文页面在特定的[`main` 分支 commit][main] 版本。在这个代码仓库中，每个本地化页面都会在其前端元数据里
 按以下方式标识出对应的英文页面的提交信息：
 
 ```markdown
@@ -131,8 +131,8 @@ default_lang_commit: <most-recent-commit-hash-of-default-language-page>
 ---
 ```
 
-上述前端元数据会位于`content/zh/<some-path>/page.md`文件中。
-提交哈希值将与`content/en/<some-path>/page.md`文件在 main 分支上的最新提交相对应。
+上述前端元数据会位于 `content/zh/<some-path>/page.md` 文件中。
+提交哈希值将与 `content/en/<some-path>/page.md` 文件在 main 分支上的最新提交相对应。
 
 ### 跟踪英文页面的变更情况 {#tracking-changes-to-english-pages}
 
@@ -152,7 +152,7 @@ npm run check:i18n -- content/zh
 
 ### 查看变更详情 {#viewing-change-details}
 
-对于任何需要更新的本地化页面，你可以通过使用`-d`标志并提供本地化页面的路径，来查看对应英文页面的差异详情；
+对于任何需要更新的本地化页面，你可以通过使用 `-d` 标志并提供本地化页面的路径，来查看对应英文页面的差异详情；
 若省略路径，则会查看所有页面的差异详情。例如：
 
 ```console
@@ -171,14 +171,14 @@ index 3592df5d..c7980653 100644
  ---
 ```
 
-### 为新页面添加`default_lang_commit` {#adding-default_lang_commit-to-new-pages}
+### 为新页面添加 `default_lang_commit` {#adding-default_lang_commit-to-new-pages}
 
-在为你的本地化版本创建页面时，请记住在页面的前端元数据中添加`default_lang_commit`，
+在为你的本地化版本创建页面时，请记住在页面的前端元数据中添加 `default_lang_commit`，
 并附上 main 分支上合适的提交哈希值。
 
-如果你的页面翻译是基于`main` 分支中哈希值为 `<hash>`的英文页面，那么运行以下命令，
-使用该提交哈希值`<hash>`自动将`default_lang_commit`添加到你的页面文件的前端元数据中。
-如果你的页面现在与`main`分支的`HEAD`版本同步，你可以指定`HEAD`作为参数。例如：
+如果你的页面翻译是基于 `main` 分支中哈希值为 `<hash>` 的英文页面，那么运行以下命令，
+使用该提交哈希值 `<hash>` 自动将 `default_lang_commit` 添加到你的页面文件的前端元数据中。
+如果你的页面现在与 `main` 分支的 `HEAD` 版本同步，你可以指定 `HEAD` 作为参数。例如：
 
 ```sh
 npm run check:i18n -- -n -c 1ca30b4d content/ja
@@ -191,9 +191,9 @@ npm run check:i18n -- -n -c HEAD content/zh/docs/concepts
 npm run check:i18n -- -n
 ```
 
-### 更新现有页面的`default_lang_commit` {#updating-default_lang_commit-for-existing-pages}
+### 更新现有页面的 `default_lang_commit` {#updating-default_lang_commit-for-existing-pages}
 
-当你更新本地化页面以匹配对应英文页面所做的更改时，要确保同时更新`default_lang_commit`提交哈希值。
+当你更新本地化页面以匹配对应英文页面所做的更改时，要确保同时更新 `default_lang_commit` 提交哈希值。
 
 {{% alert title="Tip" %}}
 
@@ -202,7 +202,7 @@ npm run check:i18n -- -n
 
 {{% /alert %}}
 
-如果你已批量更新了所有存在差异的本地化页面，你可以使用`-c`标志，后面跟上一个commit hash
+如果你已批量更新了所有存在差异的本地化页面，你可以使用 `-c` 标志，后面跟上一个commit hash
 或者'HEAD'（表示使用`main@HEAD`）来更新这些文件的提交哈希值。
 
 ```sh
@@ -212,14 +212,14 @@ npm run check:i18n -- -c HEAD <新文件的路径>
 
 {{% alert title="重要" %}}
 
-当你使用`HEAD`作为哈希指定符时，脚本将使用你本地环境中`main`分支在 HEAD 位置的哈希值。
-如果你希望 HEAD 对应于 GitHub 上的`main`分支，要确保你已经获取并拉取了 main 分支的最新内容。
+当你使用 `HEAD` 作为哈希指定符时，脚本将使用你本地环境中 `main` 分支在 HEAD 位置的哈希值。
+如果你希望 HEAD 对应于 GitHub 上的 `main` 分支，要确保你已经获取并拉取了 main 分支的最新内容。
 
 {{% /alert %}}
 
 ### 不一致状态 {#drift-status}
 
-运行`npm run fix:i18n:status`命令，为那些与默认版本有差异的目标本地化页面添加前端元数据字段`drifted_from_default`。
+运行 `npm run fix:i18n:status` 命令，为那些与默认版本有差异的目标本地化页面添加前端元数据字段 `drifted_from_default`。
 该字段很快会用于在相对于其英文对应页面存在差异的页面顶部显示一个banner。
 
 ### 脚本帮助 {#script-help}
@@ -243,7 +243,7 @@ npm run check:i18n -- -c HEAD <新文件的路径>
 
 注意:
 
-- 对于想要添加的语言的`LANG_ID`，请使用官方的[ISO 639-1 编码](https://en.wikipedia.org/wiki/ISO_639-1)
+- 对于想要添加的语言的 `LANG_ID`，请使用官方的[ISO 639-1 编码](https://en.wikipedia.org/wiki/ISO_639-1)
 - 请查找[cSpell 词典](https://github.com/streetsidesoftware/cspell-dicts)，并确认以 NPM 包形式提供的 [@cspell/dict-LANG_ID](https://www.npmjs.com/search?q=%40cspell%2Fdict)
   是否可用。如果没有适合您所指的方言或地区的词典，请选择最接近该地区的词典。有关设置方法的示例，请参考 [PR #5386] 。
 
@@ -273,7 +273,7 @@ npm run check:i18n -- -c HEAD <新文件的路径>
 <!-- markdownlint-disable blanks-around-fences -->
 
 - 请不要修复这些链接。每个非英语页面都与对应的英语页面的特定提交相关联，
-  该提交由`default_lang_commit`前端元数据键的 git 提交哈希值来标识。
+  该提交由 `default_lang_commit` 前端元数据键的 git 提交哈希值来标识。
 - 通过将以下内容添加到页面的前端元数据中，来配置链接检查器以忽略非英语页面。
   如果有多个页面存在链接错误，则将其添加到最近的公共父级文件中：
   ```yaml
