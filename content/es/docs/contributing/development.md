@@ -6,6 +6,7 @@ linkTitle: Configuración del entorno y más
 description:
   Aprende como configurar el entorno de desarrollo para este sitio web.
 weight: 60
+default_lang_commit: 14fdef3f10e0a3214e6413c83426257f6ca1801f
 ---
 
 Las siguientes instrucciones detallan como configurar el entorno de desarrollo
