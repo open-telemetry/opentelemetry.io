@@ -207,8 +207,8 @@ npm run check:i18n -- -n
 或者'HEAD'（表示使用`main@HEAD`）来更新这些文件的提交哈希值。
 
 ```sh
-npm run check:i18n -- -c <hash> <PATH-TO-YOUR-NEW-FILES>
-npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
+npm run check:i18n -- -c <hash> <新文件的路径>
+npm run check:i18n -- -c HEAD <新文件的路径>
 ```
 
 {{% alert title="重要" %}}
