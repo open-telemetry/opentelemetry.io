@@ -499,3 +499,9 @@
   contact: contact@yottabyte.cn
   oss: false
   commercial: true
+- name: DX Operational Observability(O2) by Broadcom
+  nativeOTLP: true
+  url: 'https://techdocs.broadcom.com/us/en/ca-enterprise-software/it-operations-management/dx-operational-observability/saas/monitoring/opentelemetry.html'
+  contact: 
+  oss: false
+  commercial: true
