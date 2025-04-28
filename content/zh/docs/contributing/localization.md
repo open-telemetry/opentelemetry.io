@@ -231,7 +231,7 @@ npm run check:i18n -- -c HEAD <新文件的路径>
 
 ## 新的本地化内容 {#new-localizations}
 
-要为 OpenTelemetry 网站开启一项新的本地化工作，你可以[创建一个issue](https://github.com/open-telemetry/opentelemetry.io/issues/) 
+要为 OpenTelemetry 网站开启一项新的本地化工作，你可以[创建一个issue](https://github.com/open-telemetry/opentelemetry.io/issues/)
 来表明你参与贡献的意愿。同时，标记出所有愿意撰写和审核你想添加语言的翻译内容的人员。
 你至少需要两名潜在贡献者，理想情况下是三名。此外，在你的议题中还需包含以下任务列表：
 
@@ -246,7 +246,7 @@ npm run check:i18n -- -c HEAD <新文件的路径>
 
 注意:
 
-- 对于想要添加的语言的`LANG_ID`，请使用官方的[ISO 639-1 编码](https://en.wikipedia.org/wiki/ISO_639-1) 
+- 对于想要添加的语言的`LANG_ID`，请使用官方的[ISO 639-1 编码](https://en.wikipedia.org/wiki/ISO_639-1)
 - 请查找[cSpell 词典](https://github.com/streetsidesoftware/cspell-dicts)，并确认以 NPM 包形式提供的 [@cspell/dict-LANG_ID](https://www.npmjs.com/search?q=%40cspell%2Fdict)
   是否可用。如果没有适合您所指的方言或地区的词典，请选择最接近该地区的词典。有关设置方法的示例，请参考 [PR #5386] 。
 
