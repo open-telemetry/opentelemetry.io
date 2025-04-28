@@ -1,21 +1,2 @@
 // Kapa AI integration styles
-.td-navbar .d-flex.align-items-center {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-}
-
-.td-navbar #kapa-ai-trigger.nav-link {
-  margin-left: 1rem !important;
-  white-space: nowrap !important;
-  color: rgba(255, 255, 255, 0.8) !important;
-  font-weight: normal !important;
-  padding: 0.75rem 0 !important;
-  font-size: 1rem !important;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
-  
-  &:hover {
-    color: #fff !important;
-    text-decoration: none !important;
-  }
-}
+// Using built-in nav-link and navbar styles, no custom CSS needed.
