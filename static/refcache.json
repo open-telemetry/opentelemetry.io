@@ -4627,6 +4627,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-13T12:11:31.256866-05:00"
   },
+  "https://github.com/krajorama": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-28T10:00:42.499011-07:00"
+  },
   "https://github.com/krakend": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:24:48.19541-05:00"
@@ -13714,6 +13718,10 @@
   "https://github.com/yangxikun/opentelemetry-lua": {
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:33:14.995619-05:00"
+  },
+  "https://github.com/yiyuan-he": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-28T10:00:41.776615954-07:00"
   },
   "https://github.com/ymotongpoo": {
     "StatusCode": 200,
