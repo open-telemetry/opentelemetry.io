@@ -43,7 +43,7 @@ OTel 网站使用 Hugo 的 [multilingual framework] 来支持页面的本地化�
 
 - **翻译**:
   - 本仓库内资源的**文件或目录**名称
-  - [标题heading IDs](#headings) 包含的[链接](#links) [^*]
+  - [标题 ID](#headings) 包含的[链接](#links) [^*]
   - 像这样的行内代码片段：`inline code example`
   - 标记为 `notranslate`（通常是CSS类）的Markdown元素，尤其是针对[标题heading IDs](#headings)
   - 除了[应做事项](#do)中列出的那些[前端元数据][front matter] 字段之外的其他字段。特别要注意的是，不要翻译 aliases（别名）字段。
