@@ -7,7 +7,7 @@ default_lang_commit: adf1731535b21711a7fba3cf46bd6bf4e7b923ee
 cSpell:ignore: shortcodes
 ---
 
-OTel网站使用Hugo的 [multilingual framework] 来支持页面的本地化。
+OTel 网站使用 Hugo 的 [multilingual framework] 来支持页面的本地化。
 英语是默认语言，而美式英语是默认状态下的不用特别说明的本地化语言形式。
 随着其他语言的本地化的增加，您可以从顶部导航栏中的语言下拉菜单中看到这些语言。
 
@@ -25,12 +25,12 @@ OTel网站使用Hugo的 [multilingual framework] 来支持页面的本地化。
   - 页面内容, 包括:
     - Mermaid [diagram](#images) 文本字段
     - 代码片段内的注释（可选）
-  - [前端元数据][front matter] 中的 `title`, `linkTitle`, 和 `description` 的字段值
+  - [前端元数据][front matter] 中的 `title`、`linkTitle` 和 `description` 的字段值
   - **所有页面**内容和前置元数据，除非另有说明。  
 - 保留原文的_内容_、_含义_以及_风格_ 。
 - 如果您有任何疑问或问题，请通过以下方式向[maintainers] **咨询**:
   - [Slack] 上的`#otel-docs-localization` 或 `#otel-comms` 频道
-  - [Discussion], issue, 或者 PR 评论
+  - [Discussion]、Issue 或者 PR 评论
 
 [Discussion]:
   https://github.com/open-telemetry/opentelemetry.io/discussions?discussions_q=is%3Aopen+label%3Ai18n
@@ -43,7 +43,7 @@ OTel网站使用Hugo的 [multilingual framework] 来支持页面的本地化。
 
 - **翻译**:
   - 本仓库内资源的**文件或目录**名称
-  - [标题heading IDs](#headings) 包含的[链接](#links) [^*]
+  - [标题 ID](#headings) 包含的[链接](#links) [^*]
   - 像这样的行内代码片段：`inline code example`
   - 标记为 `notranslate`（通常是CSS类）的Markdown元素，尤其是针对[标题heading IDs](#headings)
   - 除了[应做事项](#do)中列出的那些[前端元数据][front matter] 字段之外的其他字段。特别要注意的是，不要翻译 aliases（别名）字段。
@@ -198,8 +198,8 @@ npm run check:i18n -- -n
 
 {{% alert title="Tip" %}}
 
-如果你的本地化页面现在对应于`main`分支上`HEAD`位置的英文版本，那么请删除前端元数据中的提交哈希值，
-然后运行上一节中给出的**add**命令，以自动刷新`default_lang_commit`字段的值。
+如果你的本地化页面现在对应于 `main` 分支上 `HEAD` 位置的英文版本，那么请删除前端元数据中的提交哈希值，
+然后运行上一节中给出的 **add** 命令，以自动刷新 `default_lang_commit` 字段的值。
 
 {{% /alert %}}
 
@@ -207,8 +207,8 @@ npm run check:i18n -- -n
 或者'HEAD'（表示使用`main@HEAD`）来更新这些文件的提交哈希值。
 
 ```sh
-npm run check:i18n -- -c <hash> <PATH-TO-YOUR-NEW-FILES>
-npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
+npm run check:i18n -- -c <hash> <新文件的路径>
+npm run check:i18n -- -c HEAD <新文件的路径>
 ```
 
 {{% alert title="重要" %}}
@@ -285,7 +285,7 @@ npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
       - path-regex/to/non-en/directory/contain/files/to/ignore
       - path-2-etc
   ```
-- 运行`npm run check:links`命令，并在你的PR中包含对`.htmltest.yml`配置文件所做的任何更新内容。
+- 运行 `npm run check:links` 命令，并在你的 PR 中包含对 `.htmltest.yml` 配置文件所做的任何更新内容。
 
 <!-- markdownlint-enable blanks-around-fences -->
 
