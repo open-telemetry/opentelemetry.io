@@ -7,7 +7,7 @@ default_lang_commit: adf1731535b21711a7fba3cf46bd6bf4e7b923ee
 cSpell:ignore: shortcodes
 ---
 
-OTel网站使用Hugo的 [multilingual framework] 来支持页面的本地化。
+OTel 网站使用 Hugo 的 [multilingual framework] 来支持页面的本地化。
 英语是默认语言，而美式英语是默认状态下的不用特别说明的本地化语言形式。
 随着其他语言的本地化的增加，您可以从顶部导航栏中的语言下拉菜单中看到这些语言。
 
