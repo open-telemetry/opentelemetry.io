@@ -281,12 +281,11 @@ FROM alpine:3.19 AS certs
 RUN apk --update add ca-certificates
 
 FROM golang:1.23.6 AS build-stage
-WORKDIR /usr/bin/otelcol
+WORKDIR /build
 
 COPY ./builder-config.yaml builder-config.yaml
 
-RUN --mount=type=cache,target=/root/.cache/go-build GO111MODULE=on go install go.opentelemetry.io/collector/cmd/builder@{{% version-from-registry collector-builder %}}
-RUN mkdir -p ./otelcol-dev && chmod +x ./otelcol-dev
+RUN --mount=type=cache,target=/root/.cache/go-build GO111MODULE=on go install go.opentelemetry.io/collector/cmd/builder@v0.124.0
 RUN --mount=type=cache,target=/root/.cache/go-build builder --config builder-config.yaml
 
 FROM gcr.io/distroless/base:latest
@@ -294,12 +293,12 @@ FROM gcr.io/distroless/base:latest
 ARG USER_UID=10001
 USER ${USER_UID}
 
-COPY ./otelcol-config.yaml /etc/otelcol-contrib/otelcol-config.yaml
+COPY ./collector-config.yaml /otelcol/collector-config.yaml
 COPY --from=certs /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
-COPY --chmod=755 --from=build-stage /usr/bin/otelcol/otelcol-dev /otelcol
+COPY --chmod=755 --from=build-stage /build/otelcol-dev /otelcol
 
 ENTRYPOINT ["/otelcol/otelcol-dev"]
-CMD ["--config", "/etc/otelcol-contrib/otelcol-config.yaml"]
+CMD ["--config", "/otelcol/collector-config.yaml"]
 
 EXPOSE 4317 4318 12001
 ```
@@ -311,11 +310,12 @@ The following is the minimalist `collector-config.yaml` definition:
 receivers:
   otlp:
     protocols:
-      grpc: {}
-      http: {}
-
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
 processors:
-  batch: {}
+  batch:
 
 exporters:
   debug:
