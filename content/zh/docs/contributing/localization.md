@@ -285,7 +285,7 @@ npm run check:i18n -- -c HEAD <新文件的路径>
       - path-regex/to/non-en/directory/contain/files/to/ignore
       - path-2-etc
   ```
-- 运行`npm run check:links`命令，并在你的PR中包含对`.htmltest.yml`配置文件所做的任何更新内容。
+- 运行 `npm run check:links` 命令，并在你的 PR 中包含对 `.htmltest.yml` 配置文件所做的任何更新内容。
 
 <!-- markdownlint-enable blanks-around-fences -->
 
