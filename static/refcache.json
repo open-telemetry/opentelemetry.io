@@ -17991,6 +17991,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-01T06:38:14.524568-05:00"
   },
+  "https://techdocs.broadcom.com/us/en/ca-enterprise-software/it-operations-management/dx-operational-observability/saas/monitoring/opentelemetry.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-28T10:06:02.734984744-07:00"
+  },
   "https://thanos.io/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:54:28.139976-05:00"
