@@ -30,7 +30,7 @@ OTel 网站使用 Hugo 的 [multilingual framework] 来支持页面的本地化�
 - 保留原文的_内容_、_含义_以及_风格_ 。
 - 如果您有任何疑问或问题，请通过以下方式向[maintainers] **咨询**:
   - [Slack] 上的`#otel-docs-localization` 或 `#otel-comms` 频道
-  - [Discussion], issue, 或者 PR 评论
+  - [Discussion]、Issue 或者 PR 评论
 
 [Discussion]:
   https://github.com/open-telemetry/opentelemetry.io/discussions?discussions_q=is%3Aopen+label%3Ai18n
