@@ -26,7 +26,7 @@ OTel 网站使用 Hugo 的 [multilingual framework] 来支持页面的本地化�
     - Mermaid [diagram](#images) 文本字段
     - 代码片段内的注释（可选）
   - [前端元数据][front matter] 中的 `title`、`linkTitle` 和 `description` 的字段值
-  - **所有页面**内容和前置元数据，除非另有说明。  
+  - **所有页面**内容和前置元数据，除非另有说明。
 - 保留原文的_内容_、_含义_以及_风格_ 。
 - 如果您有任何疑问或问题，请通过以下方式向[maintainers] **咨询**:
   - [Slack] 上的`#otel-docs-localization` 或 `#otel-comms` 频道
@@ -62,7 +62,7 @@ OTel 网站使用 Hugo 的 [multilingual framework] 来支持页面的本地化�
 
 为确保标题的锚点目标在各种本地化版本中保持一致，在翻译标题时:
 
-- 如果标题有显式的 ID，那么请保留该标题的显式 ID。 [标题 Heading ID 语法][Heading ID syntax] 
+- 如果标题有显式的 ID，那么请保留该标题的显式 ID。 [标题 Heading ID 语法][Heading ID syntax]
 是使用类似 `{ #some-id }`这样的语法，写在标题文本之后。
 - 否则，需明确声明一个与原始英文标题的自动生成 ID 相对应的标题 ID。
 
@@ -73,7 +73,7 @@ OTel 网站使用 Hugo 的 [multilingual framework] 来支持页面的本地化�
 
 请勿翻译链接引用。这同样适用于外部链接、网站页面的路径以及诸如[图片](#images)之类的局部资源路径。
 唯一的例外是指向外部页面的链接 (像这样的链接
-<https://en.wikipedia.org>) 即那些拥有针对你所在地区的特定版本的外部页面的链接。 
+<https://en.wikipedia.org>) 即那些拥有针对你所在地区的特定版本的外部页面的链接。
 通常情况下，这意味着要将 URL 中的 `en` 替换为你所在地区的语言代码。
 
 {{% alert title="Note" %}}
@@ -125,6 +125,7 @@ OTel网站的仓库中有一个自定义的 render-link 钩子，Hugo 会用它�
 当编写一个本地化页面时，例如 `content/zh/<some-path>/page.md`，这个翻译版本是基于`content/en/<some-path>/page.md`
 对应英文页面在特定的[`main` 分支commit][main]  版本。在这个代码仓库中，每个本地化页面都会在其前端元数据里
 按以下方式标识出对应的英文页面的提交信息：
+
 ```markdown
 ---
 title: Your localized page title
@@ -181,6 +182,7 @@ index 3592df5d..c7980653 100644
 如果你的页面翻译是基于`main` 分支中哈希值为 `<hash>`的英文页面，那么运行以下命令，
 使用该提交哈希值`<hash>`自动将`default_lang_commit`添加到你的页面文件的前端元数据中。
 如果你的页面现在与`main`分支的`HEAD`版本同步，你可以指定`HEAD`作为参数。例如：
+
 ```sh
 npm run check:i18n -- -n -c 1ca30b4d content/ja
 npm run check:i18n -- -n -c HEAD content/zh/docs/concepts
@@ -250,7 +252,6 @@ npm run check:i18n -- -c HEAD <新文件的路径>
 
 当你创建了那个issue并且聚集了所需数量的贡献者后，维护人员会要求你创建一个包含[索引页面](https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md)
 翻译内容的拉取请求。请确保维护人员能够编辑该PR，以便为该PR添加启动本地化项目所需的额外修改内容。
-
 
 在你的第一个PR被合并后，维护人员会负责设置issue标签、组织级别的群组以及组件负责人。
 
