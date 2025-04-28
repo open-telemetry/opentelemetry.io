@@ -1,0 +1,17 @@
+// Kapa AI integration styles
+.td-navbar .search-and-ai-wrapper {
+  display: flex;
+  align-items: center;
+
+  #kapa-ai-trigger {
+    margin-left: 1rem;
+    white-space: nowrap;
+    color: #fff;
+    font-weight: normal;
+    
+    &:hover {
+      color: #f5a800;
+      text-decoration: none;
+    }
+  }
+}
