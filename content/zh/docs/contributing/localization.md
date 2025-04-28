@@ -25,7 +25,7 @@ OTel 网站使用 Hugo 的 [multilingual framework] 来支持页面的本地化�
   - 页面内容, 包括:
     - Mermaid [diagram](#images) 文本字段
     - 代码片段内的注释（可选）
-  - [前端元数据][front matter] 中的 `title`, `linkTitle`, 和 `description` 的字段值
+  - [前端元数据][front matter] 中的 `title`、`linkTitle` 和 `description` 的字段值
   - **所有页面**内容和前置元数据，除非另有说明。  
 - 保留原文的_内容_、_含义_以及_风格_ 。
 - 如果您有任何疑问或问题，请通过以下方式向[maintainers] **咨询**:
