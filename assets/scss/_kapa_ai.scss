@@ -2,16 +2,18 @@
 .td-navbar .search-and-ai-wrapper {
   display: flex;
   align-items: center;
+}
 
-  #kapa-ai-trigger {
-    margin-left: 1rem;
-    white-space: nowrap;
+.td-navbar #kapa-ai-trigger {
+  margin-left: 1rem;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: normal;
+  padding: 0.75rem 0;
+  font-size: 1rem;
+  
+  &:hover {
     color: #fff;
-    font-weight: normal;
-
-    &:hover {
-      color: #f5a800;
-      text-decoration: none;
-    }
+    text-decoration: none;
   }
 }
