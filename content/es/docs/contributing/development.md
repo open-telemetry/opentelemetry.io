@@ -1,27 +1,38 @@
 ---
-title: Configuración de desarrollo y comandos para construir, visualizar en el entorno local y más
+title:
+  Configuración de desarrollo y comandos para construir, visualizar en el
+  entorno local y más
 linkTitle: Configuración del entorno y más
-description: Aprende como configurar el entorno de desarrollo para este sitio web.
+description:
+  Aprende como configurar el entorno de desarrollo para este sitio web.
 weight: 60
 ---
 
-Las siguientes instrucciones detallan como configurar el entorno de desarrollo para este sitio web.
+Las siguientes instrucciones detallan como configurar el entorno de desarrollo
+para este sitio web.
 
 ## Configuración IDE en la nube
 
-Estas instrucciones están pensadas para [Gitpod.io], adáptalas si prefieres otro entorno de desarrollo en la nube:
+Estas instrucciones están pensadas para [Gitpod.io], adáptalas si prefieres otro
+entorno de desarrollo en la nube:
 
-1.  Bifurcar este repositorio. Si necesitas ayuda, mira en [Bifurcar un repositorio][fork].
-2.  En [gitpod.io/workspaces], crea un nuevo espacio de trabajo (haz esto solo una vez) o abre un espacio de trabajo existente de tu fork. También puedes visitar el link con el formato:
+1.  Bifurcar este repositorio. Si necesitas ayuda, mira en [Bifurcar un
+    repositorio][fork].
+2.  En [gitpod.io/workspaces], crea un nuevo espacio de trabajo (haz esto solo
+    una vez) o abre un espacio de trabajo existente de tu fork. También puedes
+    visitar el link con el formato:
     `https://gitpod.io#https://github.com/YOUR_GITHUB_ID/opentelemetry.io`.
 
-    > **Nota**: Si tienes los permisos necesarios para trabajar directamente en este repositorio,
-    > o simplemente quieres explorar, abre
+    > **Nota**: Si tienes los permisos necesarios para trabajar directamente en
+    > este repositorio, o simplemente quieres explorar, abre
     > <https://gitpod.io/#https://github.com/open-telemetry/opentelemetry.io>.
 
-Gitpod instalará automáticamente los paquetes necesarios por ti durante la inicialización del entorno.
+Gitpod instalará automáticamente los paquetes necesarios por ti durante la
+inicialización del entorno.
 
-Aún no estás listo para [construir](#build), [visualizar en el entorno local](#serve) o hacer actualizaciones en los ficheros del sitio web.
+Aún no estás listo para [construir](#build),
+[visualizar en el entorno local](#serve) o hacer actualizaciones en los ficheros
+del sitio web.
 
 ## Configuración local
 
@@ -29,8 +40,9 @@ Aún no estás listo para [construir](#build), [visualizar en el entorno local](
     <{{% param github_repo %}}>.
 2.  Navega hasta el directorio del repositorio clonado.
 3.  Instala o actualiza a [**una versión LTS**][nodejs-rel] de Node.js.~~~~
-    Recomendamos el uso de [nvm][] para manejar la instalación de Node. En Linux,
-    ejecuta el siguiente comando, el cual instalará y actualizará a la versión especificada en el fichero .nvmrc:
+    Recomendamos el uso de [nvm][] para manejar la instalación de Node. En
+    Linux, ejecuta el siguiente comando, el cual instalará y actualizará a la
+    versión especificada en el fichero .nvmrc:
 
     ```sh
     nvm install
@@ -48,7 +60,9 @@ Aún no estás listo para [construir](#build), [visualizar en el entorno local](
     npm install
     ```
 
-Aún no estás listo para [construir](#build), [visualizar en el entorno local](#serve) o hacer actualizaciones en los ficheros del sitio web.
+Aún no estás listo para [construir](#build),
+[visualizar en el entorno local](#serve) o hacer actualizaciones en los ficheros
+del sitio web.
 
 ### Construir {#build}
 
@@ -70,39 +84,57 @@ npm run serve
 
 La web estará publicada en [localhost:1313][].
 
-Si necesitas probar la redirección de [Netlify], usa el siguiente comando y accede a través de [localhost:8888][]:
+Si necesitas probar la redirección de [Netlify], usa el siguiente comando y
+accede a través de [localhost:8888][]:
 
 ```sh
 npm run serve:netlify
 ```
 
-El comando serve publica el sitio web utilizando archivos en memoria, no desde el disco.
+El comando serve publica el sitio web utilizando archivos en memoria, no desde
+el disco.
 
-Si ves un error como `too many open files` o `pipe failed` en macOS, puede que necesites aumentar el límite de ficheros abiertos. Mira en [Hugo issue #6109](https://github.com/gohugoio/hugo/issues/6109).
+Si ves un error como `too many open files` o `pipe failed` en macOS, puede que
+necesites aumentar el límite de ficheros abiertos. Mira en
+[Hugo issue #6109](https://github.com/gohugoio/hugo/issues/6109).
 
 ### Contenido y submódulos
 
 Este sitio web se genera a partir del siguiente contenido:
 
 - Los ficheros bajo `content/`, `static/`, etc. Por defecto en [Hugo][].
-- Los hugo mounts, definidos en [hugo.yaml][] bajo la carpeta `mounts`. Los Hugo mounts también provienen directamente de los submódulos de Git, presentes en [content-modules][], o contenido preprocesado desde `content-modules` (situado bajo `tmp/`).
+- Los hugo mounts, definidos en [hugo.yaml][] bajo la carpeta `mounts`. Los Hugo
+  mounts también provienen directamente de los submódulos de Git, presentes en
+  [content-modules][], o contenido preprocesado desde `content-modules` (situado
+  bajo `tmp/`).
 
 [hugo.yaml]:
-https://github.com/open-telemetry/opentelemetry.io/blob/main/hugo.yaml
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/hugo.yaml
 [content-modules]:
-https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
 
 ### Cambios en los submódulos
 
-Si realizas un cambio dentro del contenido en los [content-modules][], primero necesitarás crear una PR (que contenga los cambios en el submódulo) al repositorio de submódulos.
-Solo después de que la PR del submódulo haya sido aceptada, será posible actualizar el submódulo y hacer que los cambios aparezcan en este sitio web.
+Si realizas un cambio dentro del contenido en los [content-modules][], primero
+necesitarás crear una PR (que contenga los cambios en el submódulo) al
+repositorio de submódulos. Solo después de que la PR del submódulo haya sido
+aceptada, será posible actualizar el submódulo y hacer que los cambios aparezcan
+en este sitio web.
 
-Es más sencillo gestionar tus cambios en `content-modules` realizando los cambios en el repositorio al que corresponda el submódulo en lugar de dentro del mismo submódulo.
+Es más sencillo gestionar tus cambios en `content-modules` realizando los
+cambios en el repositorio al que corresponda el submódulo en lugar de dentro del
+mismo submódulo.
 
-Los colaboradores más expertos pueden trabajar directamente en el submódulo, siendo capaces de construir y servir localmente directamente los cambios. Por defecto, los scripts de CI obtienen los submódulos en cada invocación. Para prevenir este comportamiento mientras trabajas dentro del submódulo, puedes configurar la variable de entorno `GET=no`. También necesitarías ejecutar `git fetch --unshallow` en el submódulo antes de crear la PR. De manera alternativa, puedes configurar `DEPTH=100` para volver a clonar los submódulos.
+Los colaboradores más expertos pueden trabajar directamente en el submódulo,
+siendo capaces de construir y servir localmente directamente los cambios. Por
+defecto, los scripts de CI obtienen los submódulos en cada invocación. Para
+prevenir este comportamiento mientras trabajas dentro del submódulo, puedes
+configurar la variable de entorno `GET=no`. También necesitarías ejecutar
+`git fetch --unshallow` en el submódulo antes de crear la PR. De manera
+alternativa, puedes configurar `DEPTH=100` para volver a clonar los submódulos.
 
 [clone]:
-https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
+  https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 [fork]: https://docs.github.com/es/get-started/quickstart/fork-a-repo
 [gitpod.io]: https://gitpod.io
 [gitpod.io/workspaces]: https://gitpod.io/workspaces
@@ -112,7 +144,7 @@ https://docs.github.com/en/repositories/creating-and-managing-repositories/cloni
 [netlify]: https://netlify.com
 [nodejs-rel]: https://nodejs.org/es/about/previous-releases
 [nodejs-win]:
-https://docs.microsoft.com/es-es/windows/dev-environment/javascript/nodejs-on-windows
+  https://docs.microsoft.com/es-es/windows/dev-environment/javascript/nodejs-on-windows
 [nvm]:
-https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
+  https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
 [nvm-windows]: https://github.com/coreybutler/nvm-windows
