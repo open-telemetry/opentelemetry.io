@@ -18351,6 +18351,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:30:12.345Z"
   },
+  "https://widget.kapa.ai/kapa-widget.bundle.js": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-28T15:38:42.795943-04:00"
+  },
   "https://wiki.alpinelinux.org/wiki/Repositories#Testing": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:30:12.345Z"
