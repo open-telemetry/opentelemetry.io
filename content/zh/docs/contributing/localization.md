@@ -198,8 +198,8 @@ npm run check:i18n -- -n
 
 {{% alert title="Tip" %}}
 
-如果你的本地化页面现在对应于`main`分支上`HEAD`位置的英文版本，那么请删除前端元数据中的提交哈希值，
-然后运行上一节中给出的**add**命令，以自动刷新`default_lang_commit`字段的值。
+如果你的本地化页面现在对应于 `main` 分支上 `HEAD` 位置的英文版本，那么请删除前端元数据中的提交哈希值，
+然后运行上一节中给出的 **add** 命令，以自动刷新 `default_lang_commit` 字段的值。
 
 {{% /alert %}}
 
