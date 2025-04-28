@@ -1,19 +1,21 @@
 // Kapa AI integration styles
-.td-navbar .search-and-ai-wrapper {
-  display: flex;
-  align-items: center;
+.td-navbar .d-flex.align-items-center {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
 }
 
-.td-navbar #kapa-ai-trigger {
-  margin-left: 1rem;
-  white-space: nowrap;
-  color: rgba(255, 255, 255, 0.8);
-  font-weight: normal;
-  padding: 0.75rem 0;
-  font-size: 1rem;
-
+.td-navbar #kapa-ai-trigger.nav-link {
+  margin-left: 1rem !important;
+  white-space: nowrap !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-weight: normal !important;
+  padding: 0.75rem 0 !important;
+  font-size: 1rem !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  
   &:hover {
-    color: #fff;
-    text-decoration: none;
+    color: #fff !important;
+    text-decoration: none !important;
   }
 }

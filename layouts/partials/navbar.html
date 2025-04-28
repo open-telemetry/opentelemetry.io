@@ -64,11 +64,13 @@
       {{ end -}}
     </ul>
   </div>
-  <div class="d-none d-lg-block search-and-ai-wrapper">
-    {{ partial "search-input.html" . }}
-    <a id="kapa-ai-trigger" href="#" aria-label="Ask AI">
-      <span>✨ Ask AI</span>
-    </a>
+  <div class="d-none d-lg-block">
+    <div class="d-flex align-items-center">
+      {{ partial "search-input.html" . }}
+      <a id="kapa-ai-trigger" class="nav-link" href="#" aria-label="Ask AI">
+        <span>✨ Ask AI</span>
+      </a>
+    </div>
   </div>
 </div>
 </nav>
