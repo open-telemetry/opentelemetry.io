@@ -70,6 +70,7 @@ EOF
 ```
 
 {{% alert color="primary" title="NOTE" %}}
+
 By default the opentelemetry-operator uses the
 [opentelemetry-collector](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector)
 image. If the operator is installed using
@@ -77,8 +78,11 @@ image. If the operator is installed using
 the default image is
 [opentelemetry-collector-k8s](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s).
 If you need a component not found in those releases, it's recommended to build
-your own collector. See [Building a custom collector](https://opentelemetry.io/docs/collector/custom-collector/).
+your own collector. See
+[Building a custom collector](/docs/collector/custom-collector/).
+
 {{% /alert %}}
+
 For more configuration options and for setting up the injection of
 auto-instrumentation of the workloads using OpenTelemetry instrumentation
 libraries, continue reading
