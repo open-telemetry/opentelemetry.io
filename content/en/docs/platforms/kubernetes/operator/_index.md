@@ -69,8 +69,15 @@ spec:
 EOF
 ```
 
-> [!NOTE]
-> By default the opentelemetry-operator uses the [opentelemetry-collector](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector) image. If the operator is installed via [the helm-chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator), the default image is [opentelemetry-collector-k8s](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s). If you need a component not found in those releases, it's recommended to build your own collector, instructions [here](https://opentelemetry.io/docs/collector/custom-collector/).
+> [!NOTE] By default the opentelemetry-operator uses the
+> [opentelemetry-collector](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector)
+> image. If the operator is installed via
+> [the helm-chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator),
+> the default image is
+> [opentelemetry-collector-k8s](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s).
+> If you need a component not found in those releases, it's recommended to build
+> your own collector, instructions
+> [here](https://opentelemetry.io/docs/collector/custom-collector/).
 
 For more configuration options and for setting up the injection of
 auto-instrumentation of the workloads using OpenTelemetry instrumentation
