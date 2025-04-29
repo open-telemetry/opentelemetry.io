@@ -13,10 +13,10 @@ sig: OTel-Arrow
 ## OTel-Arrow project announcement
 
 We are excited to announce the next phase of the OpenTelemetry Protocol with
-Apache Arrow project (OTel-Arrow). We began this project several years ago with the goal of
-bridging between OpenTelemetry data and the Apache Arrow ecosystem. Apache Arrow
-is a framework designed for zero-copy exchange of structured data between column-oriented
-data producers and consumers.
+Apache Arrow project (OTel-Arrow). We began this project several years ago with
+the goal of bridging between OpenTelemetry data and the Apache Arrow ecosystem.
+Apache Arrow is a framework designed for zero-copy exchange of structured data
+between column-oriented data producers and consumers.
 
 We believe that having OpenTelemetry data accessible to external systems through
 Apache Arrow will lead to powerful integrations, with the potential for new
@@ -56,12 +56,11 @@ will continue this commitment. We will ensure that OTAP pipelines can be
 executed from the OpenTelemetry Collector. We want to give OTAP pipelines
 written in Rust access to Golang Collector components, too.
 
-To kick the project off, [Laurent Quérel](https://github.com/lquerel)
-at F5 has contributed the work behind his original OTel-Arrow
-prototype, a Rust-based pipeline framework modeled on the
-OpenTelemetry Collector. [Lei Huang](https://github.com/v0y4g3r) at
-Greptime has contributed a Rust implementation for converting the
-metrics signal from OTAP to OTLP (link).
+To kick the project off, [Laurent Quérel](https://github.com/lquerel) at F5 has
+contributed the work behind his original OTel-Arrow prototype, a Rust-based
+pipeline framework modeled on the OpenTelemetry Collector.
+[Lei Huang](https://github.com/v0y4g3r) at Greptime has contributed a Rust
+implementation for converting the metrics signal from OTAP to OTLP (link).
 
 The newly formed OTel-Arrow SIG has a meeting slot on the OpenTelemetry
 calendar, see you there!
