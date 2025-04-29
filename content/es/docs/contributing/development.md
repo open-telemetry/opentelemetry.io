@@ -9,7 +9,7 @@ weight: 60
 default_lang_commit: 14fdef3f10e0a3214e6413c83426257f6ca1801f
 ---
 
-Las siguientes instrucciones detallan como configurar el entorno de desarrollo
+Las siguientes instrucciones detallan cómo configurar el entorno de desarrollo
 para este sitio web.
 
 ## Configuración IDE en la nube
@@ -21,7 +21,7 @@ entorno de desarrollo en la nube:
     repositorio][fork].
 2.  En [gitpod.io/workspaces], crea un nuevo espacio de trabajo (haz esto solo
     una vez) o abre un espacio de trabajo existente de tu fork. También puedes
-    visitar el link con el formato:
+    visitar el enlace con el formato:
     `https://gitpod.io#https://github.com/YOUR_GITHUB_ID/opentelemetry.io`.
 
     > **Nota**: Si tienes los permisos necesarios para trabajar directamente en
@@ -96,7 +96,7 @@ El comando serve publica el sitio web utilizando archivos en memoria, no desde
 el disco.
 
 Si ves un error como `too many open files` o `pipe failed` en macOS, puede que
-necesites aumentar el límite de ficheros abiertos. Mira en
+necesites aumentar el límite de ficheros abiertos. Consulta
 [Hugo issue #6109](https://github.com/gohugoio/hugo/issues/6109).
 
 ### Contenido y submódulos
