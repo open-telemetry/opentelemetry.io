@@ -71,10 +71,10 @@ Se você quiser saber mais, dê uma olhada na
 
 O OpenTelemetry consiste dos seguintes componentes:
 
-- Uma [especificação](../specs/otel) para todos os componentes
-- Um [protocolo](../specs/otlp/) padrão que define o formato dos dados de
+- Uma [especificação](/docs/specs/otel) para todos os componentes
+- Um [protocolo](/docs/specs/otlp/) padrão que define o formato dos dados de
   telemetria
-- [Convenções semânticas](../specs/semconv/) que estabelecem um padrão de
+- [Convenções semânticas](/docs/specs/semconv/) que estabelecem um padrão de
   nomenclatura para tipos comuns de dados de telemetria
 - APIs que definem como gerar dados de telemetria
 - [SDKs para linguagens de programação](../languages) que implementam a
