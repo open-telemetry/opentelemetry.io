@@ -7,7 +7,7 @@ description:
   Aprende cómo configurar el entorno de desarrollo para este sitio web.
 weight: 60
 default_lang_commit: 14fdef3f10e0a3214e6413c83426257f6ca1801f
-cSpell:ignore: adáptalas prerequisitos redirección preprocesado
+cSpell:ignore: adáptalas preprocesado prerequisitos redirección
 ---
 
 Las siguientes instrucciones detallan cómo configurar el entorno de desarrollo
