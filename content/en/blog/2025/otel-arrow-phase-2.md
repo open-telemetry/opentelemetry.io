@@ -13,21 +13,21 @@ sig: OTel-Arrow
 ## OTel-Arrow project announcement
 
 We are excited to announce the next phase of the OpenTelemetry Protocol with
-Apache Arrow project. We began this project several years ago with the goal of
+Apache Arrow project (OTel-Arrow). We began this project several years ago with the goal of
 bridging between OpenTelemetry data and the Apache Arrow ecosystem. Apache Arrow
-is a framework for zero-copy exchange of structured data between column-oriented
+is a framework designed for zero-copy exchange of structured data between column-oriented
 data producers and consumers.
 
 We believe that having OpenTelemetry data accessible to external systems through
 Apache Arrow will lead to powerful integrations, with the potential for new
 telemetry systems and applications to emerge. For large streams of telemetry, we
 know that column-oriented data handling is substantially more efficient, with
-improved data compression performance.
+improved data compression and performance.
 
 We are choosing to investigate this phase of the project in Rust. With the help
 of the governance committee, we've defined a project scope that entails studying
 the potential for Rust-based OpenTelemtry pipelines without "being" a Collector.
-We will investigate the both the performance of Rust pipeline as well as how to
+We will investigate both the performance of Rust pipeline as well as how to
 successfully integrate our work with the OpenTelemetry Collector's Golang-based
 ecosystem.
 
