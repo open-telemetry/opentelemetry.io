@@ -9539,6 +9539,38 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:47:28.391998-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.6.0/README.md#maturity-level": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-29T09:16:25.572473-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.6.0/examples/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-29T09:16:30.63842-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.6.0/opentelemetry/proto": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-29T09:16:24.164941-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.6.0/opentelemetry/proto/collector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-29T09:16:20.617027-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.6.0/opentelemetry/proto/collector/logs/v1/logs_service.proto": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-29T09:16:12.838299-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.6.0/opentelemetry/proto/collector/metrics/v1/metrics_service.proto": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-29T09:16:14.153166-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.6.0/opentelemetry/proto/collector/profiles/v1development/profiles_service.proto": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-29T09:16:17.773581-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.6.0/opentelemetry/proto/collector/trace/v1/trace_service.proto": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-29T09:16:16.334448-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-python": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:30.347841-05:00"
