@@ -104,7 +104,7 @@ necesites aumentar el límite de ficheros abiertos. Mira en
 Este sitio web se genera a partir del siguiente contenido:
 
 - Los ficheros bajo `content/`, `static/`, etc. Por defecto en [Hugo][].
-- Los hugo mounts, definidos en [hugo.yaml][] bajo la carpeta `mounts`. Los Hugo
+- Los Hugo mounts, definidos en [hugo.yaml][] bajo la carpeta `mounts`. Los Hugo
   mounts también provienen directamente de los submódulos de Git, presentes en
   [content-modules][], o contenido preprocesado desde `content-modules` (situado
   bajo `tmp/`).
