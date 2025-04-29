@@ -4627,6 +4627,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-13T12:11:31.256866-05:00"
   },
+  "https://github.com/krajorama": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-28T10:00:42.499011-07:00"
+  },
   "https://github.com/krakend": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:24:48.19541-05:00"
@@ -13715,6 +13719,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:33:14.995619-05:00"
   },
+  "https://github.com/yiyuan-he": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-28T10:00:41.776615954-07:00"
+  },
   "https://github.com/ymotongpoo": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T15:46:35.946Z"
@@ -17990,6 +17998,10 @@
   "https://tech.bureau.id/connecting-the-dots-with-opentelemetry-part-ii-5ea5f6b06c29": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T06:38:14.524568-05:00"
+  },
+  "https://techdocs.broadcom.com/us/en/ca-enterprise-software/it-operations-management/dx-operational-observability/saas/monitoring/opentelemetry.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-28T10:06:02.734984744-07:00"
   },
   "https://thanos.io/": {
     "StatusCode": 206,

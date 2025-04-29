@@ -2181,6 +2181,11 @@ triagers:
       - java-contrib-triagers
     html_url: https://github.com/willarmiros
     avatar_url: https://avatars.githubusercontent.com/u/54150514?v=4
+  - name: yiyuan-he
+    teams:
+      - javascript-contrib-triagers
+    html_url: https://github.com/yiyuan-he
+    avatar_url: https://avatars.githubusercontent.com/u/53622546?v=4
   - name: yurishkuro
     teams:
       - specs-triagers
@@ -2424,6 +2429,9 @@ members:
   - name: kovrus
     html_url: https://github.com/kovrus
     avatar_url: https://avatars.githubusercontent.com/u/7442373?v=4
+  - name: krajorama
+    html_url: https://github.com/krajorama
+    avatar_url: https://avatars.githubusercontent.com/u/13435893?v=4
   - name: krnowak
     html_url: https://github.com/krnowak
     avatar_url: https://avatars.githubusercontent.com/u/96081?v=4
