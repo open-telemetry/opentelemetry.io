@@ -25,7 +25,7 @@ my $lineNum;
 my %versionsRaw = # Keyname must end with colons because the auto-version update script expects one
   qw(
     spec: 1.43.0
-    otlp: 1.5.0
+    otlp: 1.6.0
     semconv: 1.32.0
   );
 # Versions map without the colon in the keys
