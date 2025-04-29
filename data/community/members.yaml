@@ -1381,6 +1381,11 @@ approvers:
       - swift-triagers
     html_url: https://github.com/atreat
     avatar_url: https://avatars.githubusercontent.com/u/1031555?v=4
+  - name: bantonsson
+    teams:
+      - rust-approvers
+    html_url: https://github.com/bantonsson
+    avatar_url: https://avatars.githubusercontent.com/u/805830?v=4
   - name: beniamin
     teams:
       - php-approvers
