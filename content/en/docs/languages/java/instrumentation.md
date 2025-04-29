@@ -176,9 +176,6 @@ OpenTelemetry Java [publishes artifacts](../api/#semantic-attributes) to assist
 in conforming to the semantic conventions, including generated constants for
 attribute keys and values.
 
-TODO: discuss instrumentation API and how it helps conform to semantic
-conventions
-
 ## Log instrumentation
 
 While the [LoggerProvider](../api/#loggerprovider) / [Logger](../api/#logger)
