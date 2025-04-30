@@ -28,6 +28,30 @@ Gitpod automatically installs the repo-specific packages for you.
 You're now ready to [build](#build), [serve](#serve) or make updates to the
 website files.
 
+## Development container setup
+
+{{% alert title="Note" %}}
+
+[Development (dev) containers](https://containers.dev/) are a standard. You can
+therefore you run the dev container for this repository using any tool
+supporting this standard, such as:
+
+- [GitHub Codespaces](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers)
+- [DevPod](https://devpod.sh/docs/developing-in-workspaces/devcontainer-json)
+- [VSCode](https://code.visualstudio.com/docs/devcontainers/containers#_installation)
+
+{{% /alert %}}
+
+1.  [Fork][] and then [clone][] the website repository at
+    <{{% param github_repo %}}>.
+
+2.  Go to the repository directory.
+
+3.  Open up the project in your favorite Dev Container tool.
+
+You're now ready to [build](#build), [serve](#serve) or make updates to the
+website files.
+
 ## Local setup
 
 1.  [Fork][] and then [clone][] the website repository at
