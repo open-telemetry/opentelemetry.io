@@ -93,8 +93,5 @@ endpoint.
 [`go.opentelemetry.io/otel/exporters/prometheus`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/prometheus)
 contains an implementation of Prometheus metrics exporter.
 
-Here's how you can create an exporter (which is also a metric reader) with
-default configuration:
-
 To learn more on how to use the Prometheus exporter, try the
 [prometheus example](https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/examples/prometheus)
