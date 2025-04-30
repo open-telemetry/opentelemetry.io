@@ -121,16 +121,16 @@
     "ajv-errors": "^3.0.0",
     "ajv-formats": "^3.0.1",
     "autoprefixer": "^10.4.21",
-    "cspell": "^8.19.2",
+    "cspell": "^8.19.3",
     "gulp": "^5.0.0",
-    "hugo-extended": "0.145.0",
+    "hugo-extended": "0.147.0",
     "js-yaml": "^4.1.0",
     "markdown-link-check": "^3.13.7",
     "markdownlint": "^0.37.4",
     "markdownlint-cli2": "^0.17.2",
     "postcss-cli": "^11.0.1",
     "prettier": "3.5.3",
-    "puppeteer": "^24.7.1",
+    "puppeteer": "^24.7.2",
     "require-dir": "^1.2.0",
     "textlint": "^14.6.0",
     "textlint-filter-rule-allowlist": "^4.0.0",
@@ -153,8 +153,8 @@
     "path": "^0.12.7"
   },
   "optionalDependencies": {
-    "netlify-cli": "^20.0.3",
-    "npm-check-updates": "^18.0.0"
+    "netlify-cli": "^20.1.1",
+    "npm-check-updates": "^18.0.1"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "engines": {
