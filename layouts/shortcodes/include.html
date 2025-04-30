@@ -31,4 +31,4 @@ beginning of a line.
 {{ range $i, $v := .Params -}}
   {{ $args = merge $args (dict (string $i) $v) -}}
 {{ end -}}
-{{ partial "include.md" $args -}}
+{{ partial "include" $args -}}
