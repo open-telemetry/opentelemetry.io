@@ -28,36 +28,26 @@ Gitpod automatically installs the repo-specific packages for you.
 You're now ready to [build](#build), [serve](#serve) or make updates to the
 website files.
 
-## Local setup for DevContainers + VSCode
+## Development container setup
 
-These instructions are for running a
-[development (dev) container](https://containers.dev/) locally using
-[VSCode](https://code.visualstudio.com).
+{{% alert title="Note" %}}
 
-You first need to install the
-[VSCode dev containers extension](https://code.visualstudio.com/docs/devcontainers/containers#_installation).
-You only need to do this once. To install the extension, run the following
-command from a new terminal window:
+[Development (dev) containers](https://containers.dev/) are a standard. You can
+therefore you run the dev container for this repository using any tool
+supporting this standard, such as:
 
-```bash
-code --install-extension ms-vscode-remote.remote-containers
-```
+- [GitHub Codespaces](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers)
+- [DevPod](https://devpod.sh/docs/developing-in-workspaces/devcontainer-json)
+- [VSCode](https://code.visualstudio.com/docs/devcontainers/containers#_installation)
 
-Once the extension is installed:
+{{% /alert %}}
 
 1.  [Fork][] and then [clone][] the website repository at
     <{{% param github_repo %}}>.
-2.  Open up the project in VSCode:
 
-    ```bash
-    code opentelemetry.io
-    ```
+2.  Go to the repository directory.
 
-3.  Access the VSCode command palette using `ctrl + shift + p` (or
-    `command + shift + p` for Mac users), and navigate to
-    `Dev Containers: Rebuild and Reopen in Container`. This command opens up a
-    new VSCode window and builds the dev container for the first time. For
-    subsequent builds, you can select `Dev Containers: Reopen in Container`.
+3.  Open up the project in your favorite Dev Container tool.
 
 You're now ready to [build](#build), [serve](#serve) or make updates to the
 website files.
