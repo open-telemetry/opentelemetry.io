@@ -21,4 +21,4 @@
     ".Inner" .Inner
 -}}
 
-{{ partial "include.md" $args -}}
+{{ partial "include" $args -}}
