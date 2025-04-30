@@ -1267,6 +1267,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:07.71442-05:00"
   },
+  "https://docs.github.com/es/get-started/quickstart/fork-a-repo": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-29T20:43:11.740087+02:00"
+  },
   "https://docs.github.com/es/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork": {
     "StatusCode": 206,
     "LastSeen": "2024-10-30T15:12:28.788328409Z"
@@ -1502,6 +1506,10 @@
   "https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:12:11.559665-05:00"
+  },
+  "https://docs.microsoft.com/es-es/windows/dev-environment/javascript/nodejs-on-windows": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-29T20:43:15.99694+02:00"
   },
   "https://docs.microsoft.com/rest/api/resources/resources/get-by-id": {
     "StatusCode": 200,
@@ -15090,6 +15098,10 @@
   "https://nodejs.org/en/download/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-06T11:32:23.284074-05:00"
+  },
+  "https://nodejs.org/es/about/previous-releases": {
+    "StatusCode": 200,
+    "LastSeen": "2025-04-29T20:43:13.253709+02:00"
   },
   "https://npmjs.com/package/@arizeai/openinference-instrumentation-langchain": {
     "StatusCode": 200,
