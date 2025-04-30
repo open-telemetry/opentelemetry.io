@@ -28,7 +28,7 @@ Gitpod automatically installs the repo-specific packages for you.
 You're now ready to [build](#build), [serve](#serve) or make updates to the
 website files.
 
-## Local development container setup
+## Local setup for DevContainers + VSCode
 
 These instructions are for running a
 [development (dev) container](https://containers.dev/) locally using
