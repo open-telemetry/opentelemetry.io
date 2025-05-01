@@ -47,7 +47,9 @@ user interface:
 
 ## Guided Debugging Scenario
 
-The `recommendationServiceCacheFailure` scenario has a [dedicated walkthrough document](recommendation-cache/index.md) to help understand how you can debug memory leaks with OpenTelemetry.
+The `recommendationServiceCacheFailure` scenario has a
+[dedicated walkthrough document](recommendation-cache/index.md) to help
+understand how you can debug memory leaks with OpenTelemetry.
 
 ## Feature Flag Architecture
 

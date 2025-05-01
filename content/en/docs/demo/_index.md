@@ -4,7 +4,6 @@ linkTitle: Demo
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
-cSpell:ignore: OLJCESPC
 ---
 
 Welcome to the [OpenTelemetry Demo](/ecosystem/demo/) documentation, which
@@ -59,8 +58,9 @@ found here:
 
 ## Feature Flag Scenarios
 
-How can you solve problems with OpenTelemetry? These [feature flag enabled scenarios](feature-flags/) walk you through
-some pre-configured problems and show you how to interpret OpenTelemetry data to
+How can you solve problems with OpenTelemetry? These
+[feature flag enabled scenarios](feature-flags/) walk you through some
+pre-configured problems and show you how to interpret OpenTelemetry data to
 solve them.
 
 We'll be adding more scenarios over time.
