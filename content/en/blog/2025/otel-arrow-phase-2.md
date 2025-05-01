@@ -61,7 +61,7 @@ To kick the project off, [Laurent Quérel](https://github.com/lquerel) at F5 has
 contributed the work behind his original OTel-Arrow prototype, a Rust-based
 pipeline framework modeled on the OpenTelemetry Collector.
 [Lei Huang](https://github.com/v0y4g3r) at Greptime has contributed a Rust
-implementation for converting the metrics signal from OTAP to OTLP (link).
+implementation for converting the metrics signal from OTAP to OTLP.
 
 The newly formed OTel-Arrow SIG has a meeting slot on the OpenTelemetry
 calendar, see you there!
