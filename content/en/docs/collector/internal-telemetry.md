@@ -220,6 +220,25 @@ The Collector emits internal metrics for at least the following values:
 
 A more detailed list is available in the following sections.
 
+### Metrics naming
+
+Metrics names may be altered slightly with a suffix appended or by replacing a dot (`.`) with an underscore (`_`) .
+
+####Suffix appended
+
+By default and unique to Prometheus, the Prometheus exporter adds a `_total` suffix to some metrics to follow Prometheus naming conventions. For example,  `otelcol_exporter_send_failed_spans_total`. 
+However in the list of internal metrics within this document, this is listed as `otelcol_exporter_send_failed_spans`. 
+
+This behavior can be disabled by setting without_type_suffix: false in the exporter's configuration. Any internal metrics exported through OTLP will not have this behavior.
+If you leave out service::telemetry::metrics::readers in the Collector config, the default Prometheus exporter set up by the Collector already has that option set. However, if you customize the readers and add a Prometheus exporter manually, you must set that option to return to the "raw" metric name.
+
+For more information, refer to [Collector v1.25.0/v0.119.0 release notes](https://github.com/codeboten/opentelemetry-collector/blob/313167505b44e5dc9a29c0b9242cc4547db11ec3/CHANGELOG.md#v1250v01190).
+
+####Dot replaced with underscore
+
+`http_` and `rpc_` metrics come from instrumentation libraries. While the original metric name uses dots (`.`), when
+exposing internal metrics with Prometheus, the dots change to underscores (`_`) to match Prometheus' naming constraints.
+
 ### Lists of internal metrics
 
 The following tables group each internal metric by level of verbosity: `basic`,
