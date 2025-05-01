@@ -64,4 +64,4 @@ it up from the language section index file.
     "zeroConfigPageExists" (.Page.GetPage (print "/docs/zero-code/" $langIdAsPath "/configuration" ))
 -}}
 
-{{ partial "include.md" $args -}}
+{{ partial "include" $args -}}

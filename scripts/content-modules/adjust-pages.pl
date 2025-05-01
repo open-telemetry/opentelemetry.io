@@ -61,15 +61,6 @@ sub printFrontMatter() {
   #     applyPatchOrPrintMsgIf('2024-12-01-bridge-api', 'spec', '1.39.0');
   # }
 
-  if ($ARGV =~ m{^tmp/semconv/docs.*/(README|_index)\.md$}
-    && applyPatchOrPrintMsgIf('2025-01-29-path-base', 'semconv', '1.30.0-19-g')
-    && $frontMatterFromFile =~ /^path_base_for_github_subdir:/m
-  ) {
-    $frontMatterFromFile =~ s/\npath_base_for_github_subdir:.*?\n/\n/;
-    $frontMatterFromFile =~ s|\n  from: tmp/semconv/docs/.*?\n|\n|;
-    $frontMatterFromFile =~ s/\n  to: .*README.md($|\n)/$1/;
-  }
-
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
   if ($title =~ /^OpenTelemetry (Protocol )?(.*)/) {
@@ -104,23 +95,12 @@ sub applyPatchOrPrintMsgIf($$$) {
   return 0;
 }
 
-sub patchMissionHeadingIDs() {
-  return unless $ARGV =~ /^tmp\/otel\/specification\/specification-principles.md/
-    && applyPatchOrPrintMsgIf('2025-02-25-mission-heading-IDs', 'spec', '1.42.0');
+# sub patchSemConv1_30_0() {
+#   return unless $ARGV =~ /^tmp\/semconv\/docs\//
+#     && applyPatchOrPrintMsgIf('2025-01-24-emit-an-event-etc', 'semconv', '1.30.0-18-g');
 
-  s|(#we-value-)_(.*?)_|$1$2|;
-}
-
-sub patchSemConv1_30_0() {
-  return unless $ARGV =~ /^tmp\/semconv\/docs\//
-    && applyPatchOrPrintMsgIf('2025-01-24-emit-an-event-etc', 'semconv', '1.30.0-18-g');
-
-  s|Emit Event API|Log API|;
-  s|(docs/specs/otel/logs/api.md#emit-a)n-event|$1-logrecord|;
-  s|\[semantic-convention-groups\]|[group-stability]|;
-  s|\Q../../docs/|../|g; # https://github.com/open-telemetry/semantic-conventions/pull/1843
-  s|\Qhttps://wikipedia.org/wiki/Where_(SQL)#IN|https://wikipedia.org/wiki/SQL_syntax#Operators|g;
-}
+#   s|Emit Event API|Log API|;
+# }
 
 sub getVersFromSubmodule() {
   my %repoNames = qw(
@@ -166,7 +146,6 @@ while(<>) {
         while(<>) {
           $lineNum++;
           last if /^--->?/;
-          patchSemConv1_30_0();
           $frontMatterFromFile .= $_;
         }
         next;
@@ -206,8 +185,6 @@ while(<>) {
   }
 
   # SPECIFICATION custom processing
-
-  patchMissionHeadingIDs();
 
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;
   s|(\]\()/specification/|$1$specBasePath/otel/)|;
@@ -251,8 +228,6 @@ while(<>) {
   ## OpAMP
 
   s|\]\((proto/opamp.proto)\)|]($opAmpSpecRepoUrl/blob/main/$1)|;
-
-  patchSemConv1_30_0();
 
   print;
 }
