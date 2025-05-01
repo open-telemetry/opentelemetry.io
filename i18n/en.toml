@@ -10,3 +10,13 @@ see [Contributing](/docs/contributing/). Other useful links:
 other = "For our documentation style guide and more, see"
 [community_guideline]
 other = "Contributing"
+
+[ui_search_ai_title]
+other = "Ask AI"
+[ui_search_ai_disclaimer]
+other = """
+This **experimental feature** uses AI to answer questions based on the site's documentation,
+OpenTelemetry GitHub, StackOverflow, and other resources.
+The AI may not always provide accurate or relevant information.
+To offer feedback, add a comment to [GitHub issue 6658](https://github.com/open-telemetry/opentelemetry.io/issues/6658).
+"""
