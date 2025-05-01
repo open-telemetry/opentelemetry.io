@@ -11,7 +11,7 @@ weight: 60
 
 {{% alert-md title="Supported build environments" color=warning %}}
 
-Builds are officially supported on Linux-based environments, including macOS.
+Builds are officially supported on Linux-based environments and macOS.
 Other environments, such as [DevContainers](#devcontainers), are supported on a
 best-effort basis.
 
@@ -148,8 +148,8 @@ This repository is configured for use in [Development
 Containers][devcontainers], which are supported by various cloud and local IDEs
 such as (in alphabetical order):
 
-- [DevPod](https://devpod.sh/docs/developing-in-workspaces/devcontainer-json)
 - [Codespaces](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers)
+- [DevPod](https://devpod.sh/docs/developing-in-workspaces/devcontainer-json)
 - [Gitpod][gitpod.io]
 - [VSCode](https://code.visualstudio.com/docs/devcontainers/containers#_installation)
 
