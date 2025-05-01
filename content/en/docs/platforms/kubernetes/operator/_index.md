@@ -69,17 +69,14 @@ spec:
 EOF
 ```
 
-{{% alert color="primary" title="NOTE" %}}
+{{% alert color="primary" title="Note" %}}
 
-By default the opentelemetry-operator uses the
-[opentelemetry-collector](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector)
-image. If the operator is installed using
-[the Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator),
-the default image is
-[opentelemetry-collector-k8s](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s).
-If you need a component not found in those releases, it's recommended to build
-your own collector. See
-[Building a custom collector](/docs/collector/custom-collector/).
+By default, `opentelemetry-operator` uses the
+[`opentelemetry-collector` image](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector). When the operator is installed using
+[Helm charts](../heml/),
+the [`opentelemetry-collector-k8s` image](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s) is used.
+If you need a component not found in these releases, you may need to
+[build your own collector](/docs/collector/custom-collector/).
 
 {{% /alert %}}
 
