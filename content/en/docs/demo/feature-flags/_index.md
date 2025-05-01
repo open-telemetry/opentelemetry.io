@@ -45,6 +45,10 @@ user interface:
 | `kafkaQueueProblems`                | Kafka           | Overloads Kafka queue while simultaneously introducing a consumer side delay leading to a lag spike.      |
 | `imageSlowLoad`                     | Frontend        | Utilizes envoy fault injection, produces a delay in loading of product images in the frontend.            |
 
+## Guided Debugging Scenario
+
+The `recommendationServiceCacheFailure` scenario has a [dedicated walkthrough document](recommendation-cache/index.md) to help understand how you can debug memory leaks with OpenTelemetry.
+
 ## Feature Flag Architecture
 
 Please see the [flagd documentation](https://flagd.dev) for more information on
