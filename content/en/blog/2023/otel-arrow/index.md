@@ -7,7 +7,7 @@ date: 2023-11-14
 author: >-
   [Laurent Quérel](https://github.com/lquerel) (F5), [Joshua
   MacDonald](https://github.com/jmacd) (ServiceNow)
-cSpell:ignore: SIMD Zstandard zstd
+cSpell:ignore: Quérel SIMD Zstandard zstd
 ---
 
 We are thrilled to unveil the **OpenTelemetry Protocol with Apache Arrow**,

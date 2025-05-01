@@ -47,7 +47,6 @@ frontendproxy
 github
 gitpod
 grafana
-Greptime
 Hausenblas
 hugo
 initializers
@@ -85,7 +84,6 @@ opentelemetry
 opentracing
 openzipkin
 OSTIF
-OTAP
 otel
 otel-comms
 otel-endusers
@@ -109,7 +107,6 @@ protobuf
 quantile
 quantiles
 quarkus
-Quérel
 quoteservice
 react-native-app
 recommendationservice
