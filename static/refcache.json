@@ -6611,9 +6611,17 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:39.844187-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-29T14:41:51.326440853-07:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib": {
     "StatusCode": 206,
     "LastSeen": "2025-01-15T13:17:29.153387-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s": {
+    "StatusCode": 206,
+    "LastSeen": "2025-04-29T14:41:52.126831147-07:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-releases/releases": {
     "StatusCode": 206,
