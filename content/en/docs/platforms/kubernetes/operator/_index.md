@@ -72,10 +72,10 @@ EOF
 {{% alert color="primary" title="Note" %}}
 
 By default, `opentelemetry-operator` uses the
-[`opentelemetry-collector` image](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector). When the operator is installed using
-[Helm charts](../heml/),
-the [`opentelemetry-collector-k8s` image](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s) is used.
-If you need a component not found in these releases, you may need to
+[`opentelemetry-collector` image](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector).
+When the operator is installed using [Helm charts](../helm/), the
+[`opentelemetry-collector-k8s` image](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s)
+is used. If you need a component not found in these releases, you may need to
 [build your own collector](/docs/collector/custom-collector/).
 
 {{% /alert %}}
