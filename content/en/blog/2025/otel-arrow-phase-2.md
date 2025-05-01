@@ -8,6 +8,7 @@ author: >-
 draft: true
 issue: 6410
 sig: OTel-Arrow
+cSpell:ignore: Quérel OTAP Greptime
 ---
 
 ## OTel-Arrow project announcement
