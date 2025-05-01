@@ -11,8 +11,8 @@ weight: 60
 
 {{% alert-md title="Supported build environments" color=warning %}}
 
-Builds are officially supported on Linux-based environments and macOS.
-Other environments, such as [DevContainers](#devcontainers), are supported on a
+Builds are officially supported on Linux-based environments and macOS. Other
+environments, such as [DevContainers](#devcontainers), are supported on a
 best-effort basis.
 
 {{% /alert-md %}}
@@ -148,13 +148,16 @@ This repository is configured for use in [Development
 Containers][devcontainers], which are supported by various cloud and local IDEs
 such as (in alphabetical order):
 
-- [Codespaces](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers)
+- [Codespaces][cs-devc]
 - [DevPod](https://devpod.sh/docs/developing-in-workspaces/devcontainer-json)
-- [Gitpod][gitpod.io]
+- [Gitpod](https://www.gitpod.io/docs/flex/configuration/devcontainer/overview)
 - [VSCode](https://code.visualstudio.com/docs/devcontainers/containers#_installation)
 
 [clone]:
   https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
+[codespaces]: https://docs.github.com/en/codespaces
+[cs-devc]:
+  https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers
 [devcontainers]: https://containers.dev/
 [fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [gitpod.io]: https://gitpod.io
