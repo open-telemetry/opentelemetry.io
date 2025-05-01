@@ -66,7 +66,7 @@ Your development environment will be initialized via the
     To [install under Windows][nodejs-win], use [nvm-windows]:
 
     ```cmd
-    > nvm install lts && nvm use lts
+    nvm install lts && nvm use lts
     ```
 
 4.  Get npm packages and other prerequisites:
