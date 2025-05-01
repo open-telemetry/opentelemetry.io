@@ -7,8 +7,13 @@ disableAliases: true # We do redirects via Netlify's _redirects file
 enableGitInfo: true
 
 # Language settings
-enableMissingTranslationPlaceholders: true
 defaultContentLanguage: en
+#
+# TODO: Disabling the following for the duration of the Ask AI trial. If we
+# decide to keep Ask AI, then locales should provide Ask-AI i18n key entries
+# and the following should be re-enabled / uncommented.
+#
+# enableMissingTranslationPlaceholders: true
 
 languages:
   en:
