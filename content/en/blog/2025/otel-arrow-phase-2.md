@@ -8,7 +8,7 @@ author: >-
 draft: true
 issue: 6410
 sig: OTel-Arrow
-cSpell:ignore: Quérel OTAP Greptime
+cSpell:ignore: Greptime OTAP Quérel
 ---
 
 We are excited to announce the next phase of the OpenTelemetry Protocol with
