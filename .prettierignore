@@ -13,10 +13,6 @@
 /content/ja
 /content/zh
 
-# Ignore content-modules except for published Community pages
+# Ignore content-modules
 
 /content-modules/*
-!/content-modules/community
-/content-modules/community/*
-!/content-modules/community/mission-vision-values.md
-!/content-modules/community/roadmap.md
