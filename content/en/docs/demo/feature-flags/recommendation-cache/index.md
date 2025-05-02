@@ -2,7 +2,7 @@
 title: Using Metrics and Traces to diagnose a memory leak
 linkTitle: Diagnosing memory leaks
 aliases:
-  - ../scenarios/recommendation-cache/ to
+  - ../scenarios/recommendation-cache/
 ---
 
 Application telemetry, such as the kind that OpenTelemetry can provide, is very
