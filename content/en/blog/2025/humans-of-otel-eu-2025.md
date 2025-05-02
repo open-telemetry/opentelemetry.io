@@ -8,7 +8,7 @@ draft: true
 issue: the issue ID for this blog post # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details
 sig: End User SIG
 # prettier-ignore
-cSpell:ignore: adriel alolita aronoff damien eZ3OrhxUAmU gutierrez hanson ho jacob liatrio marylia mathieu mikko perkins sharma viitanen youtube
+cSpell:ignore: adriel alolita aronoff damien eZ3OrhxUAmU gutierrez hanson ho jacob liatrio marylia mathieu mikko perkins sharma viitanen youtube danielson omlet horovitz aiml sdlc
 ---
 
 We're back with our fourth edition of
@@ -65,7 +65,7 @@ I work on instrumentation libraries and OpenTelemetry.
 **MIKKO VIITANEN:** I’m Mikko Viitanen. I work as a product manager for
 Dynatrace. Then I'm also a maintainer in the OTel Demo App.
 
-**DAMIEN MATHIEU:** I am Damien Matheiu, and I do many things at OpenTelemetry.
+**DAMIEN MATHIEU:** I am Damien Mathieu, and I do many things at OpenTelemetry.
 I am a maintainer for OpenTelemetry Go. I'm also a code owner for everything
 profiling on the Collector. And I'm an approver, for the eBPF profiler.
 
@@ -333,7 +333,7 @@ metrics as my favorite because they were the thing that I looked at first when
 it came to the SDLC. But as I've gotten more into traces and tracing pipelines
 and all that stuff, I just realized how powerful it was. And then I can just
 derive, like any of the signals from those, those traces, and I can embed them
-directly in there. So I think I have to say right now, tracing is my favourite.
+directly in there. So I think I have to say right now, tracing is my favorite.
 
 **HANSON HO:** Well, traces really is the most powerful. So I would now pick
 that because you can. Yeah. Let's go spans. Yeah let’s go spans.. Love spans.
@@ -362,9 +362,9 @@ are very important. But profiling is more like for, whatever you don't,
 everything works fine. And you want to improve things. And tracing is for,
 things are broken, and you need to figure out why. And, that's kind of how I
 came into OpenTelemetry. And that's kind of my own work experience. So that's
-why my favourite signal is tracing.
+why my favorite signal is tracing.
 
-**JACOB ARONOFF:** My favourite telemetry signal by far is tracing. Tracing is,
+**JACOB ARONOFF:** My favorite telemetry signal by far is tracing. Tracing is,
 you know, the best of every world, in my opinion. You can derive metrics, you
 can derive logs, you can do lots of really important visualizations that help
 you understand both, you know, the high level observability goals that you might
