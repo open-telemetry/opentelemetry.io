@@ -63,8 +63,6 @@ How can you solve problems with OpenTelemetry? These
 pre-configured problems and show you how to interpret OpenTelemetry data to
 solve them.
 
-We'll be adding more scenarios over time.
-
 ## Reference
 
 Project reference documentation, like requirements and feature matrices.

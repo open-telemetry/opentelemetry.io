@@ -2,6 +2,7 @@
 title: Feature Flags
 aliases:
   - feature_flags
+  - scenarios
   - services/feature-flag
   - services/featureflagservice
 cSpell:ignore: OLJCESPC7Z
@@ -48,8 +49,8 @@ user interface:
 ## Guided Debugging Scenario
 
 The `recommendationServiceCacheFailure` scenario has a
-[dedicated walkthrough document](recommendation-cache/) to help
-understand how you can debug memory leaks with OpenTelemetry.
+[dedicated walkthrough document](recommendation-cache/) to help understand how
+you can debug memory leaks with OpenTelemetry.
 
 ## Feature Flag Architecture
 
