@@ -234,7 +234,7 @@ If you leave out service::telemetry::metrics::readers in the Collector config, t
 
 For more information, refer to [Collector v1.25.0/v0.119.0 release notes](https://github.com/codeboten/opentelemetry-collector/blob/313167505b44e5dc9a29c0b9242cc4547db11ec3/CHANGELOG.md#v1250v01190).
 
-####Dot replaced with underscore
+#### Dot replaced with underscore
 
 `http_` and `rpc_` metrics come from instrumentation libraries. While the original metric name uses dots (`.`), when
 exposing internal metrics with Prometheus, the dots change to underscores (`_`) to match Prometheus' naming constraints.
