@@ -8,7 +8,7 @@ draft: true
 issue: the issue ID for this blog post # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details
 sig: End User SIG
 # prettier-ignore
-cSpell:ignore: adriel alolita aronoff damien eZ3OrhxUAmU gutierrez hanson ho jacob liatrio marylia mathieu mikko perkins sharma viitanen youtube danielson omlet horovitz aiml sdlc
+cSpell:ignore: adriel alolita aronoff damien eZ3OrhxUAmU gutierrez hanson ho jacob liatrio marylia mathieu mikko perkins sharma viitanen youtube danielson omlet horovitz aiml sdlc horvitz telecom 
 ---
 
 We're back with our fourth edition of
@@ -292,7 +292,7 @@ field. Back to that car analogy. You know, you don't learn how to drive a Nissan
 or a Volvo. You learn how to drive a car. Right. And so in the same way that
 when you're learning how to engineer, it's important for there to be standards
 so that you don't have to relearn everything. Every time you go to a different
-company. And to me that is what OpenTelmetry means.
+company. And to me that is what OpenTelemetry means.
 
 **ALOLITA SHARMA:** So OpenTelemetry, has almost 80 repositories today on the
 project. And, as many of you may know, OpenTelemetry is a very large project. It
