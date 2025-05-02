@@ -14787,6 +14787,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-10-09T10:19:31.970458+02:00"
   },
+  "https://learn.microsoft.com/dotnet/api/microsoft.data.sqlclient.sqlcommand.commandtype": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-02T09:18:36.415863-04:00"
+  },
   "https://learn.microsoft.com/dotnet/api/system.appdomain.firstchanceexception": {
     "StatusCode": 200,
     "LastSeen": "2024-10-09T10:20:15.350214+02:00"
