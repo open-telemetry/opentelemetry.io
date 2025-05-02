@@ -8,7 +8,7 @@ draft: true
 issue: the issue ID for this blog post # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details
 sig: End User SIG
 # prettier-ignore
-cSpell:ignore: adriel alolita aronoff damien eZ3OrhxUAmU gutierrez hanson ho jacob liatrio marylia mathieu mikko perkins sharma viitanen youtube danielson omlet horovitz aiml sdlc horvitz telecom 
+cSpell:ignore: adriel aiml alolita aronoff damien danielson eZ3OrhxUAmU gutierrez hanson ho horvitz jacob liatrio marylia mathieu mikko omlet perkins sdlc sharma telecom viitanen youtube
 ---
 
 We're back with our fourth edition of
