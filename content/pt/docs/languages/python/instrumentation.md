@@ -205,7 +205,7 @@ with tracer.start_as_current_span("trecho-2", links=[link_from_span_1]):
 
 ### Definir Status do Trecho {#set-span-status}
 
-{{% docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble.md" %}}
 
 ```python
 from opentelemetry import trace
