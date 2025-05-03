@@ -634,7 +634,7 @@ var activity = MyActivitySource.StartActivity(
 
 ### Set Activity status
 
-{{% docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble.md" %}}
 
 It can be a good idea to record exceptions when they happen. It's recommended to
 do this in conjunction with
