@@ -1406,6 +1406,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/860519?v=4
   - name: braydonk
     teams:
+      - collector-contrib-approvers
       - collector-contrib-triagers
       - semconv-system-approvers
     html_url: https://github.com/braydonk
