@@ -82,10 +82,10 @@ LoadBalancer) with optionally deployed ingress resources.
 ### Expose services using kubectl port-forward
 
 To expose the frontend-proxy service use the following command (replace
-`my-otel-demo` with your Helm chart release name accordingly):
+`default` with your Helm chart release namespace accordingly):
 
 ```shell
-kubectl port-forward svc/my-otel-demo-frontend-proxy 8080:8080
+kubectl --namespace default port-forward svc/frontend-proxy 8080:8080
 ```
 
 {{% alert title="Note" color="info" %}}
