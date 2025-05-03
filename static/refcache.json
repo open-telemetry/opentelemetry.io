@@ -6903,6 +6903,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-03-04T16:42:33.627960963Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.121.0/component/config.go#L50": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-03T12:28:59.999Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.121.0/pdata/internal/data/protogen/trace/v1/trace.pb.go": {
     "StatusCode": 206,
     "LastSeen": "2025-03-04T16:42:48.019582158Z"
@@ -7022,6 +7026,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.125.0/component/config.go": {
     "StatusCode": 206,
     "LastSeen": "2025-04-29T08:26:06.413480423-07:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.125.0/component/config.go#L50": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-03T12:28:59.999Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.125.0/pdata/internal/data/protogen/trace/v1/trace.pb.go": {
     "StatusCode": 206,
