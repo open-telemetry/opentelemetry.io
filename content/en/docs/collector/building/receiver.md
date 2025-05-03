@@ -279,7 +279,7 @@ type Config struct {
 Now that you have access to the settings, you can provide any kind of validation
 needed for those values by implementing the `Validate` method according to the
 optional
-[ConfigValidator](<https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/component/config.go#L50>)
+[ConfigValidator](<https://github.com/open-telemetry/opentelemetry-collector/blob/677b87e3ab5c615bc3f93b8f99bb1fa5be951751/component/config.go#L28>)
 interface.
 
 In this case, the `interval` value will be optional (we will look at generating
