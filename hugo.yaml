@@ -1,4 +1,4 @@
-# cSpell:ignore bluesky docsy goldmark linkify netlify wordmark noopener
+# cSpell:ignore bluesky cicd docsy goldmark linkify netlify wordmark noopener
 baseURL: https://opentelemetry.io
 title: OpenTelemetry
 disableKinds: [taxonomy]
@@ -277,6 +277,8 @@ module:
       target: content/docs/specs/semconv/cloud-providers/_index.md
     - source: tmp/semconv/docs/cloudevents/README.md
       target: content/docs/specs/semconv/cloudevents/_index.md
+    - source: tmp/semconv/docs/cicd/README.md
+      target: content/docs/specs/semconv/cicd/_index.md
     - source: tmp/semconv/docs/code/README.md
       target: content/docs/specs/semconv/code/_index.md
     - source: tmp/semconv/docs/database/README.md
