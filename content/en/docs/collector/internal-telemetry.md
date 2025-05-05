@@ -220,7 +220,7 @@ The Collector emits internal metrics for at least the following values:
 
 A more detailed list is available in the following sections.
 
-### Metrics naming
+### Metric names
 
 Metrics names may be altered slightly with a suffix appended or by replacing a dot (`.`) with an underscore (`_`) .
 
