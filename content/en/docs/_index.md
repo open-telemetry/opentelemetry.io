@@ -3,6 +3,9 @@ title: Documentation
 linkTitle: Docs
 menu: { main: { weight: 10 } }
 aliases: [/docs/workshop/*]
+cascade:
+  params:
+    resource_intro_default_rsrc: a process # LOCALES can translate this value
 ---
 
 OpenTelemetry, also known as OTel, is a vendor-neutral open source
