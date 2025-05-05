@@ -1,19 +1,20 @@
-{{ $aResource := .Get 0 |
-  default .Page.Params.resource_intro_default_rsrc |
-  default (site.Sites.Default.GetPage "docs").Params.resource_intro_default_rsrc
--}}
+{{ $resourceConceptsPagePath := "/docs/concepts/resources/" -}}
+{{ $aResource := .Get 0 -}}
 {{ if not $aResource -}}
-  {{ errorf "%s: shortcode %q param 'resource_intro_default_rsrc' isn't defined" .Position .Name -}}
-{{ end -}}
-{{ $resourceHRef := "/docs/concepts/resources/" -}}
-{{ if eq .Page.RelPermalink $resourceHRef -}}
-  {{ $resourceHRef = "/docs/specs/otel/resource/sdk/" -}}
+  {{ with .Page.GetPage $resourceConceptsPagePath -}}
+    {{ $aResource = .Params.resource_intro_default_rsrc |
+        default (index (where .Translations "Lang" "en") 0).Params.resource_intro_default_rsrc -}}
+  {{ else -}}
+    {{ errorf "%s: shortcode %q param 'resource_intro_default_rsrc' isn't defined" .Position .Name -}}
+  {{ end -}}
 {{ end -}}
 
 {{ $args := dict
   "_dot" .
   "_path" "resources-intro.md"
   "aResource" $aResource
-  "resourceHRef" $resourceHRef
+  "resourceHRef" (cond (eq .Page.RelPermalink $resourceConceptsPagePath)
+      "/docs/specs/otel/resource/sdk/"
+      $resourceConceptsPagePath)
 -}}
 {{ partial "include" $args -}}

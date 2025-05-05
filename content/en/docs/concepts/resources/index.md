@@ -1,5 +1,7 @@
 ---
 title: Resources
+params:
+  resource_intro_default_rsrc: a process # LOCALES can translate this value
 weight: 70
 ---
 
