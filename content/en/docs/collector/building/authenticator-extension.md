@@ -10,13 +10,11 @@ authenticators, providing a way to both authenticate incoming connections at the
 receiver's side, as well as adding authentication data to outgoing requests at
 the exporter's side.
 
-This mechanism is implemented on top of the
-[`extensions`](https://pkg.go.dev/go.opentelemetry.io/collector/component#Extension)
-framework and this document will guide you on implementing your own
-authenticators. If you are looking for documentation on how to use an existing
-authenticator, refer to the Getting Started page and to your authenticator's
-documentation. You can find a list of existing authenticators in this website's
-registry.
+This mechanism is implemented using [extensions] and this document will guide
+you on implementing your own authenticators. If you are looking for
+documentation on how to use an existing authenticator, refer to the Getting
+Started page and to your authenticator's documentation. You can find a list of
+existing authenticators in this website's registry.
 
 Use this guide for general directions on how to build a custom authenticator and
 refer to the up-to-date
@@ -166,5 +164,6 @@ can be done using the [OpenTelemetry Collector Builder][builder] utility.
   https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
 [client authenticators]:
   https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#client-authenticators
+[extensions]: ../../configuration/#extensions
 [sa]:
   https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#server-authenticators
