@@ -11295,10 +11295,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:54:06.064738-05:00"
   },
-  "https://github.com/open-telemetry/opentelemetry.io#adding-a-project-to-the-opentelemetry-registry": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-06T02:19:59.999Z"
-  },
   "https://github.com/open-telemetry/opentelemetry.io/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:59:53.944832-05:00"
