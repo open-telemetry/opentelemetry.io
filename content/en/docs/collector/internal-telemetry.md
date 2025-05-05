@@ -234,8 +234,7 @@ If you leave out `service::telemetry::metrics::readers` in the Collector config,
 
 #### Prometheus escaped characters
 
-`http_` and `rpc_` metrics come from instrumentation libraries. While the original metric name uses dots (`.`), when
-exposing internal metrics with Prometheus, the dots change to underscores (`_`) to match Prometheus' naming constraints.
+`http_` and `rpc_` metrics come from instrumentation libraries. Prior to Collector v0.120.0, internal metrics exposed with Prometheus changed dots (`.`) to underscores (`_`) to match Prometheus naming constraints. Versions 0.120.0 and later of the Collector use Prometheus 3.0 scrapers, so the original 'http_` and `rpc_` metric names with dots are preserved. For more information, see the [Collector v0.120.0 release notes](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/CHANGELOG.md#v01200).
 
 ### Lists of internal metrics
 
