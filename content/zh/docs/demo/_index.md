@@ -4,7 +4,7 @@ linkTitle: 演示
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
-default_lang_commit: c2cd5b14
+default_lang_commit: c2cd5b14 # patched
 drifted_from_default: true
 cSpell:ignore: OLJCESPC
 ---
@@ -61,7 +61,7 @@ cSpell:ignore: OLJCESPC
 随着时间的推移，我们将添加更多场景：
 
 - 使用功能标志服务为产品 ID 为 `OLJCESPC7Z` 的 `GetProduct` 请求生成[产品目录错误](feature-flags)
-- 发现内存泄漏并使用指标和追踪对其进行诊断，[阅读更多](scenarios/recommendation-cache/)
+- 发现内存泄漏并使用指标和追踪对其进行诊断，[阅读更多](feature-flags/recommendation-cache/)
 
 ## 参考
 
