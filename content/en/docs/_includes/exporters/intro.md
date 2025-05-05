@@ -1,7 +1,6 @@
-Send telemetry to the
-[OpenTelemetry Collector](/docs/collector/) to make sure it's exported
-correctly. Using the Collector in production environments is a best practice. To
-visualize your telemetry, export it to a backend such as
+Send telemetry to the [OpenTelemetry Collector](/docs/collector/) to make sure
+it's exported correctly. Using the Collector in production environments is a
+best practice. To visualize your telemetry, export it to a backend such as
 [Jaeger](https://jaegertracing.io/), [Zipkin](https://zipkin.io/),
 [Prometheus](https://prometheus.io/), or a
 [vendor-specific](/ecosystem/vendors/) backend.
@@ -13,6 +12,7 @@ visualize your telemetry, export it to a backend such as
 The registry contains a [list of exporters for {{ $name }}][reg].
 
 {{ end }}
+
 {{ if not $name }}
 
 The registry contains the [list of language specific exporters][reg].
@@ -44,9 +44,9 @@ them up.
 
 <div class="alert alert-info" role="alert"><h4 class="alert-heading">Note</h4>
 
-If you use [zero-code instrumentation](</docs/zero-code/{{ $langIdAsPath }}>), you can learn
-how to set up exporters by following the [Configuration
-Guide](</docs/zero-code/{{ $langIdAsPath }}/configuration/>).
+If you use [zero-code instrumentation](</docs/zero-code/{{ $langIdAsPath }}>),
+you can learn how to set up exporters by following the
+[Configuration Guide](</docs/zero-code/{{ $langIdAsPath }}/configuration/>).
 
 </div>
 
