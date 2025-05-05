@@ -1,7 +1,3 @@
-{{ $prettier_ignore := `
-
-<!-- prettier-ignore -->
-` -}}
 {{ $lang := .Get 0 -}}
 {{ $data := index $.Site.Data.instrumentation $lang }}
 {{ $name := $data.name -}}

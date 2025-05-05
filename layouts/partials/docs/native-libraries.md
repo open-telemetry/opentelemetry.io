@@ -1,4 +1,3 @@
-<!-- prettier-ignore -->
 {{ $howMany := .Get 1 | default 10 -}}
 {{ $langIndex := .Get 0 }}
 {{ $lang := index $.Site.Data.instrumentation $langIndex -}}
@@ -8,9 +7,7 @@
 {{ if and (and (eq $entry.language $langIndex) (eq $entry.isNative true)) (eq $entry.registryType "instrumentation") }}
 {{ $integrations = $integrations | append $entry }} {{ end }} {{ end }}
 
-{{ range first $howMany (sort $integrations "name") -}}
-
-<!-- prettier-ignore -->
+{{ range first $howMany (sort $integrations "name") }}
 - [{{ .title }}]({{ .urls.docs }})
 {{- end }}
 
