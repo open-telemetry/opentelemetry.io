@@ -224,7 +224,7 @@ A more detailed list is available in the following sections.
 
 Metrics names may be altered slightly with a suffix appended or by replacing a dot (`.`) with an underscore (`_`) .
 
-#### Suffix appended
+#### `_total` suffix appended
 
 By default and unique to Prometheus, the Prometheus exporter adds a `_total` suffix to some metrics to follow Prometheus naming conventions. For example,  `otelcol_exporter_send_failed_spans_total`. 
 However in the list of internal metrics within this document, this is listed as `otelcol_exporter_send_failed_spans`. 
