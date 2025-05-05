@@ -1,11 +1,9 @@
 ---
-title: The Humans OpenTelemetry - KubeCon EU 2024
-linkTitle: Humans of OTel EU 2024
+title: The Humans OpenTelemetry - KubeCon EU 2025
+linkTitle: Humans of OTel EU 2025
 date: 2025-05-02
 author: >-
-  [Adriana Villela](https://github.com/avillela) (Dynatrace),
-draft: true
-issue: the issue ID for this blog post # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details
+  [Adriana Villela](https://github.com/avillela) (Dynatrace)
 sig: End User SIG
 # prettier-ignore
 cSpell:ignore: adriel aiml alolita aronoff damien danielson eZ3OrhxUAmU gutierrez hanson ho horvitz jacob liatrio marylia mathieu mikko omlet perkins sdlc sharma telecom viitanen youtube
