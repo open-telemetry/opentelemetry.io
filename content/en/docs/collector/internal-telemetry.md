@@ -227,7 +227,7 @@ Metrics names may be altered slightly with a suffix appended or by replacing a d
 #### `_total` suffix appended
 
 By default and unique to Prometheus, the Prometheus exporter adds a `_total` suffix to summation metrics to follow Prometheus naming conventions. For example,  `otelcol_exporter_send_failed_spans_total`. 
-However in the list of internal metrics within this document, this is listed as `otelcol_exporter_send_failed_spans`. 
+However in the list of internal metrics within this document, metrics are listed in OTLP format, such as `otelcol_exporter_send_failed_spans`. 
 
 This behavior can be disabled by setting without_type_suffix: false in the exporter's configuration. Any internal metrics exported through OTLP will not have this behavior.
 If you leave out service::telemetry::metrics::readers in the Collector config, the default Prometheus exporter set up by the Collector already has that option set. However, if you customize the readers and add a Prometheus exporter manually, you must set that option to return to the "raw" metric name.
