@@ -1,14 +1,14 @@
 ---
 default_lang_commit: 02efe39c47d3dbb1a6be680420af7491568a2de3
---- 
+---
 
-Envie dados de telemetria para o
-[OpenTelemetry Collector](/docs/collector/) para garantir que estes dados sejam
-exportados corretamente. A utilização de um Collector em ambientes de produção é
-a melhor prática. Para visualizar os dados de telemetria que foram gerados,
-exporte-os para um _backend_ como [Jaeger](https://jaegertracing.io/),
-[Zipkin](https://zipkin.io/), [Prometheus](https://prometheus.io/), ou um
-_backend_ [específico de um fornecedor](/ecosystem/vendors/).
+Envie dados de telemetria para o [OpenTelemetry Collector](/docs/collector/)
+para garantir que estes dados sejam exportados corretamente. A utilização de um
+Collector em ambientes de produção é a melhor prática. Para visualizar os dados
+de telemetria que foram gerados, exporte-os para um _backend_ como
+[Jaeger](https://jaegertracing.io/), [Zipkin](https://zipkin.io/),
+[Prometheus](https://prometheus.io/), ou um _backend_
+[específico de um fornecedor](/ecosystem/vendors/).
 
 {{ if $name }}
 
@@ -27,10 +27,10 @@ O registro oferece uma [lista de exportadores específicos de linguagem][reg].
 Entre os exportadores, os exportadores do [OpenTelemetry Protocol (OTLP)][OTLP]
 são projetados tendo em mente o modelo de dados do OpenTelemetry, emitindo dados
 OTel sem qualquer perda de informação. Além disso, muitas ferramentas que operam
-com dados de telemetria suportam o formato OTLP (como [Prometheus],
-[Jaeger] e a maioria dos [fornecedores]), proporcionando um
-alto grau de flexibilidade quando necessário. Para saber mais sobre o OTLP,
-consulte a [Especificação do OTLP][OTLP].
+com dados de telemetria suportam o formato OTLP (como [Prometheus], [Jaeger] e a
+maioria dos [fornecedores]), proporcionando um alto grau de flexibilidade quando
+necessário. Para saber mais sobre o OTLP, consulte a [Especificação do
+OTLP][OTLP].
 
 [Jaeger]: /blog/2022/jaeger-native-otlp/
 [OTLP]: /docs/specs/otlp/
@@ -50,10 +50,10 @@ Esta página reúne informações sobre os principais exportadores do OpenTeleme
 
 <div class="alert alert-info" role="alert"><h4 class="alert-heading">Nota</h4>
 
-Caso você esteja utilizando [instrumentação sem
-código](</docs/zero-code/{{ $langIdAsPath }}>), você poderá aprender a configurar os
-exporters através do [Guia de
-Configurações](</docs/zero-code/{{ $langIdAsPath }}/configuration/>).
+Caso você esteja utilizando
+[instrumentação sem código](</docs/zero-code/{{ $langIdAsPath }}>), você poderá
+aprender a configurar os exporters através do
+[Guia de Configurações](</docs/zero-code/{{ $langIdAsPath }}/configuration/>).
 
 </div>
 
