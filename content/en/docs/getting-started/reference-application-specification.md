@@ -22,7 +22,7 @@ toc_hide: true
 
 ## Service requirements
 
-- The application must listent at port 8080 for HTTP requests by default. The
+- The application must listen at port 8080 for HTTP requests by default. The
   port should be configurable via the environment variable APPLICATION_PORT.
 - For handling the HTTP requests a library should be used for which an
   instrumentation library is available. The application must provide the
