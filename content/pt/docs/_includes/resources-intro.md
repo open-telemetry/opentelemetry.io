@@ -1,17 +1,11 @@
-{{/*
-default_lang_commit: a1740fd934e595f1396f2eb82a58a80824369b09 # patched
-*/ -}}
-
-{{ $processWord := .Get 0 | default "processo"  -}}
-{{ $resourceHRef := "/docs/concepts/resources/" -}}
-{{ if eq .Page.RelPermalink $resourceHRef -}}
-  {{ $resourceHRef = "/docs/specs/otel/resource/sdk/" -}}
-{{ end -}}
+---
+default_lang_commit: 3a9247feb3e8cdfe675cc8d03d808715794d3375 
+---
 
 Um [recurso]({{ $resourceHRef }}) representa a entidade que está gerando
-telemetria como atributos do recurso. Por exemplo, um {{ $processWord }} que
+telemetria como atributos do recurso. Por exemplo, um {{ $aResource }} que
 está gerando telemetria e que está sendo executado em um _container_ no
-Kubernetes tem o nome de um {{ $processWord }}, um nome de _pod_, um _namespace_
+Kubernetes tem o nome de um {{ $aResource }}, um nome de _pod_, um _namespace_
 e possivelmente um nome de _deployment_. Todos esses quatro atributos podem ser
 incluídos em um recurso.
 
