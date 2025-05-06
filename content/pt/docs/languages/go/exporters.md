@@ -8,7 +8,7 @@ drifted_from_default: true
 cSpell:ignore: otlplog otlploggrpc otlploghttp otlpmetric otlpmetricgrpc otlpmetrichttp otlptrace otlptracegrpc otlptracehttp stdoutlog stdouttrace
 ---
 
-{{% pt/docs/languages/exporters/intro %}}
+{{% docs/languages/exporters/intro %}}
 
 ## Console
 
