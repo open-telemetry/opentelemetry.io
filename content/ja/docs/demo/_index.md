@@ -4,7 +4,7 @@ linkTitle: デモ
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
-default_lang_commit: cd90ab77550fb2e92ca37cb3c753ec2d8bb7d8dc
+default_lang_commit: cd90ab77550fb2e92ca37cb3c753ec2d8bb7d8dc # patched
 cSpell:ignore: OLJCESPC
 ---
 
@@ -63,7 +63,7 @@ OpenTelemetryを使用してどのように問題を解決できるでしょう�
 
 - フィーチャーフラグサービスを使用して、商品ID：`OLJCESPC7Z`の`GetProduct`リクエストに対する[商品カタログエラー](feature-flags)を生成
 - メモリリークを発見し、メトリクスとトレースを使用して診断。
-  [詳細](scenarios/recommendation-cache/)
+  [詳細](feature-flags/recommendation-cache/)
 
 ## リファレンス {#reference}
 

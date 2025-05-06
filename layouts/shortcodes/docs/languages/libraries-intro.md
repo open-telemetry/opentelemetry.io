@@ -1,12 +1,14 @@
-<!-- prettier-ignore -->
 {{ $howMany := .Get 1 | default 10 -}}
-{{ $langIndex := .Get 0 }}
+{{ $langIndex := .Get 0 -}}
 {{ $lang := index $.Site.Data.instrumentation $langIndex -}}
 {{ $integrations := where (slice ) ".language" $langIndex -}}
 
-{{ $integrations := slice }} {{ range $entry := $.Site.Data.registry }}
-{{ if and (and (eq $entry.language $langIndex) (eq $entry.isNative true)) (eq $entry.registryType "instrumentation") }}
-{{ $integrations = $integrations | append $entry }} {{ end }} {{ end }}
+{{ $integrations := slice -}}
+{{ range $entry := $.Site.Data.registry -}}
+  {{ if and (and (eq $entry.language $langIndex) (eq $entry.isNative true)) (eq $entry.registryType "instrumentation") -}}
+    {{ $integrations = $integrations | append $entry -}}
+  {{ end }}
+{{ end }}
 
 When you develop an app, you might use third-party libraries and frameworks to
 accelerate your work. If you then instrument your app using OpenTelemetry, you
