@@ -1,4 +1,6 @@
 ---
+params:
+  aResource: a process
 ---
 
 A [resource]({{ $resourceHRef }}) represents the entity producing telemetry as
