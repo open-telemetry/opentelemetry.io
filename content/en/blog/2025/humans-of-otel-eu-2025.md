@@ -1,5 +1,5 @@
 ---
-title: The Humans OpenTelemetry - KubeCon EU 2025
+title: The Humans of OpenTelemetry - KubeCon EU 2025
 linkTitle: Humans of OTel EU 2025
 date: 2025-05-02
 author: >-
@@ -34,13 +34,12 @@ You can watch the full recording here:
 
 {{<youtube eZ3OrhxUAmU>}}
 
-<br/>Thanks to everyone who has contributed to OpenTelemetry to date, and we
+<br/>Thanks to everyone who has contributed to OpenTelemetry to date. We
 look forward to your continued contributions in 2025 and beyond! 🎉
 
 ## Transcript
 
-If reading is more your thing, check out the transcript of our conversations
-below.
+If reading is more your thing, check out the following transcript of our conversations.
 
 ### 1- Meet the Humans of OTel
 
