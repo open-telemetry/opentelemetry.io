@@ -2054,6 +2054,7 @@ triagers:
   - name: JacksonWeber
     teams:
       - javascript-contrib-triagers
+      - javascript-triagers
     html_url: https://github.com/JacksonWeber
     avatar_url: https://avatars.githubusercontent.com/u/47067795?v=4
   - name: jamesmoessis

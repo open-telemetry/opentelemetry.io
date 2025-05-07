@@ -16,7 +16,8 @@ include functionality:
 
 {{ $path := ._path -}}
 {{ $args := . -}}
-{{ $page := partial "func/find-include.html"  (dict "path" $path "page" ._dot.Page) -}}
+{{ $page := ._page |
+    default (partial "func/find-include.html"  (dict "path" $path "page" ._dot.Page)) -}}
 {{ with $page -}}
   {{ $content := .RenderShortcodes -}}
   {{ range $_k, $v := $args -}}
