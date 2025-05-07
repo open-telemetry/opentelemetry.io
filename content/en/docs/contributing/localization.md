@@ -96,8 +96,8 @@ path would become `/ja/docs/some-page` when rendered from a Japanese page.
 
 ### Link definition labels {#link-labels}
 
-Do **not** translate [labels] of markdown [link definitions][]. Instead, rewrite
-the label as translated link text. For example, consider the following markdown:
+Do **not** translate [labels] of Markdown [link definitions][]. Instead, rewrite
+the label as translated link text. For example, consider the following Markdown:
 
 ```markdown
 [Hello], world! Welcome to the [OTel website][].

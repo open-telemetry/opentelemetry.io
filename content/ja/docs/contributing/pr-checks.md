@@ -2,7 +2,7 @@
 title: プルリクエストのチェック
 description: プルリクエストがすべてのチェックをパスする方法学ぶ
 weight: 40
-default_lang_commit: 9ba98f4fded66ec78bfafa189ab2d15d66df2309
+default_lang_commit: 9ba98f4fded66ec78bfafa189ab2d15d66df2309 # patched
 drifted_from_default: true
 cSpell:ignore: REFCACHE
 ---
@@ -48,7 +48,7 @@ OpenTelemetry ボットが代わりにこれらのコマンドを実行して、
 また、`npm run check:text -- --fix` をローカルで実行すると、ほとんどの問題を修正できます。
 `npm run check:text` を再度実行し、残りの問題を手動で修正してください。
 
-### MARKDOWN linter {#markdown-linter}
+### `MARKDOWN linter` {#markdown-linter}
 
 このチェックは、[Markdown ファイルの標準と一貫性が強制されていること](../style-guide/#markdown-standards)を検証します。
 
