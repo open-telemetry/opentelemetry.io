@@ -44,7 +44,8 @@ guidance offered in this section.
 
 - **Translate**:
   - **File or directory** names of resources in this repository
-  - [Links](#links), this includes [heading IDs](#headings).[^*]
+  - [Links](#links), this includes [heading IDs](#headings) [^*]
+  - Markdown [link definition labels](#link-labels)
   - Inline code-spans like these: `inline code example`
   - Markdown elements marked as `notranslate` (usually as a CSS class), in
     particular for [headings](#headings)
@@ -92,6 +93,31 @@ page language code when rendering the link. For example, the previous sample
 path would become `/ja/docs/some-page` when rendered from a Japanese page.
 
 {{% /alert %}}
+
+### Link definition labels {#link-labels}
+
+Do **not** translate [labels] of markdown [link definitions][]. Instead, rewrite
+the label as translated link text. For example, consider the following markdown:
+
+```markdown
+[Hello], world! Welcome to the [OTel website][].
+
+[hello]: https://code.org/helloworld
+[OTel website]: https://opentelementry.io
+```
+
+This would be translated in French as:
+
+```markdown
+[Bonjour][hello], le monde! Bienvenue sur le [site OTel][OTel website].
+
+[hello]: https://code.org/helloworld
+[OTel website]: https://opentelementry.io
+```
+
+[labels]: https://spec.commonmark.org/0.31.2/#link-label
+[link definitions]:
+  https://spec.commonmark.org/0.31.2/#link-reference-definitions
 
 ### Images and diagrams {#images}
 
@@ -320,31 +346,25 @@ if you are an approver already.
 
 ## English-language maintainer guidance
 
-### When link checking fails for non-English pages
+### Avoid PRs with doc changes across locales {#prs-should-not-span-locales}
 
-English is the default language of the OpenTelemetry website. After you add,
-edit, or reorganized English language documentation, link checking may fail for
-non-English pages. When this happens:
+Contributors should avoid submitting PRs that make doc changes spanning locales.
+The only exception is documented in the next section.
 
-<!-- markdownlint-disable blanks-around-fences -->
+### When link checking fails for non-English pages {#patch-locale-links}
 
-- Do **not** fix the broken links. Each non-English page is associated with a
-  specific commit of the corresponding English page, as identified by the git
-  commit hash value of the `default_lang_commit` front matter key.
-- Configure the link checker to ignore the non-English pages by adding the
-  following to the page's front matter, or to the closest common ancestor file,
-  when more than one page has link errors:
-  ```yaml
-  htmltest:
-    # TODO: remove the IgnoreDirs once broken links are fixed
-    IgnoreDirs:
-      - path-regex/to/non-en/directory/contain/files/to/ignore
-      - path-2-etc
-  ```
-- Run `npm run check:links` and include any updates to the `.htmltest.yml`
-  config file with your PR.
+Sometimes changes to English language documentation can result in link-check
+failures for non-English locales. This happens when documentation pages are
+moved or deleted.
 
-<!-- markdownlint-enable blanks-around-fences -->
+In such situations, make the following updates to each non-English page that has
+a path that fails link checking:
+
+- Update the link reference to the new page path.
+- Add the `# patched` YAML comment at the end of the line for the
+  `default_lang_commit` front matter line.
+- Make no other changes to the file.
+- Rerun `npm run check:links` and ensure that no link failures remain.
 
 [front matter]: https://gohugo.io/content-management/front-matter/
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
