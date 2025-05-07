@@ -1,8 +1,7 @@
 {{/*
-default_lang_commit: 1f992fb2
+default_lang_commit: 1f992fb2 # patched
 */ -}}
 
-<!-- prettier-ignore -->
 {{ $processWord := .Get 0 | default "プロセス"  -}}
 {{ $resourceHRef := "/docs/concepts/resources/" -}}
 {{ if eq .Page.RelPermalink $resourceHRef -}}

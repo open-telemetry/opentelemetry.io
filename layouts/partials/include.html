@@ -1,7 +1,10 @@
 {{/*
 
-This partial implements the core functionality of the 'include.html' shortcode,
-allowing reuse across other shortcodes and partials.
+This partial implements the core functionality of the `include` shortcode,
+allowing reuse across other partials and shortcodes. You can use it to include
+markdown snippets or other content files. The included content can contain
+shortcodes, and you can pass arguments to replace placeholders in the included
+content.
 
 This partial expects the following arguments -- beyond those used for the
 include functionality:
@@ -13,7 +16,8 @@ include functionality:
 
 {{ $path := ._path -}}
 {{ $args := . -}}
-{{ $page := partial "func/find-include.html"  (dict "path" $path "page" ._dot.Page) -}}
+{{ $page := ._page |
+    default (partial "func/find-include.html"  (dict "path" $path "page" ._dot.Page)) -}}
 {{ with $page -}}
   {{ $content := .RenderShortcodes -}}
   {{ range $_k, $v := $args -}}
@@ -33,7 +37,8 @@ include functionality:
       {{ end -}}
     {{ end -}}
   {{ end -}}
-  {{ $content -}}
+  {{/* `safeHTML` is needed to prevent escaping of HTML entities in markdown. */ -}}
+  {{ $content | safeHTML -}}
 {{ else -}}
   {{ $msg := printf
       "Can't include '%s': file not found in page or ancestor contexts of page %s."
