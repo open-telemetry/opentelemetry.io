@@ -531,6 +531,9 @@ Pull requests are merged when they comply with the following criteria:
 - Approved by at least one approver.
 - No failing PR checks.
 - PR branch is up-to-date with the base branch.
+- Doc page changes [do not span locales][].
+
+[do not span locales]: ../localization/#prs-should-not-span-locales
 
 > **Important**
 >

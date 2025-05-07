@@ -346,31 +346,25 @@ if you are an approver already.
 
 ## English-language maintainer guidance
 
-### When link checking fails for non-English pages
+### Avoid PRs with doc changes across locales {#prs-should-not-span-locales}
 
-English is the default language of the OpenTelemetry website. After you add,
-edit, or reorganized English language documentation, link checking may fail for
-non-English pages. When this happens:
+Contributors should avoid submitting PRs that make doc changes spanning locales.
+The only exception is documented in the next section.
 
-<!-- markdownlint-disable blanks-around-fences -->
+### When link checking fails for non-English pages {#patch-locale-links}
 
-- Do **not** fix the broken links. Each non-English page is associated with a
-  specific commit of the corresponding English page, as identified by the git
-  commit hash value of the `default_lang_commit` front matter key.
-- Configure the link checker to ignore the non-English pages by adding the
-  following to the page's front matter, or to the closest common ancestor file,
-  when more than one page has link errors:
-  ```yaml
-  htmltest:
-    # TODO: remove the IgnoreDirs once broken links are fixed
-    IgnoreDirs:
-      - path-regex/to/non-en/directory/contain/files/to/ignore
-      - path-2-etc
-  ```
-- Run `npm run check:links` and include any updates to the `.htmltest.yml`
-  config file with your PR.
+Sometimes changes to English language documentation can result in link-check
+failures for non-English locales. This happens when documentation pages are
+moved or deleted.
 
-<!-- markdownlint-enable blanks-around-fences -->
+In such situations, make the following updates to each non-English page that has
+a path that fails link checking:
+
+- Update the link reference to the new page path.
+- Add the `# patched` YAML comment at the end of the line for the
+  `default_lang_commit` front matter line.
+- Make no other changes to the file.
+- Rerun `npm run check:links` and ensure that no link failures remain.
 
 [front matter]: https://gohugo.io/content-management/front-matter/
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
