@@ -9,7 +9,7 @@ htmltest:
     #   zh/docs/contributing/index.html
     #     Non-OK status: 404 --> https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md
     - ^zh/docs/contributing/
-default_lang_commit: 8603bc8
+default_lang_commit: 8603bc8 # patched
 drifted_from_default: true
 ---
 
@@ -346,7 +346,7 @@ npm run fix:all # 可能更新文件
 
 #### 在本地预览你的更改 {#preview-locally}
 
-在推送更改内容或发起拉取请求之前，请在本地预览你的更改。预览可以让你捕获构建错误或 markdown 格式问题。
+在推送更改内容或发起拉取请求之前，请在本地预览你的更改。预览可以让你捕获构建错误或 Markdown 格式问题。
 
 要使用 Hugo 在本地构建和运行站点，请使用以下命令：
 
@@ -510,7 +510,7 @@ npm run serve
 
 ### 创建公告
 
-要添加新公告，请使用以下命令在本地化的 `announcements` 文件夹下创建公告 markdown 文件：
+要添加新公告，请使用以下命令在本地化的 `announcements` 文件夹下创建公告 Markdown 文件：
 
 ```sh
 hugo new --kind announcement content/YOUR-LOCALE/announcements/announcement-file-name.md
