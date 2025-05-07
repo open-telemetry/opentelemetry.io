@@ -44,7 +44,8 @@ guidance offered in this section.
 
 - **Translate**:
   - **File or directory** names of resources in this repository
-  - [Links](#links), this includes [heading IDs](#headings).[^*]
+  - [Links](#links), this includes [heading IDs](#headings) [^*]
+  - Markdown [link definition labels](#link-labels)
   - Inline code-spans like these: `inline code example`
   - Markdown elements marked as `notranslate` (usually as a CSS class), in
     particular for [headings](#headings)
@@ -92,6 +93,31 @@ page language code when rendering the link. For example, the previous sample
 path would become `/ja/docs/some-page` when rendered from a Japanese page.
 
 {{% /alert %}}
+
+### Link definition labels {#link-labels}
+
+Do **not** translate [labels] of markdown [link definitions][]. Instead, rewrite
+the label as translated link text. For example, consider the following markdown:
+
+```markdown
+[Hello], world! Welcome to the [OTel website][].
+
+[hello]: https://code.org/helloworld
+[OTel website]: https://opentelementry.io
+```
+
+This would be translated in French as:
+
+```markdown
+
+[Bonjour][hello], le monde! Bienvenue sur le [site OTel][OTel website].
+
+[hello]: https://code.org/helloworld
+[OTel website]: https://opentelementry.io
+```
+
+[labels]: https://spec.commonmark.org/0.31.2/#link-label
+[link definitions]: https://spec.commonmark.org/0.31.2/#link-reference-definitions
 
 ### Images and diagrams {#images}
 
