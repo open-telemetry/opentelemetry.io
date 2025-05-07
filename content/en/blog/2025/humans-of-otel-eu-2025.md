@@ -34,12 +34,13 @@ You can watch the full recording here:
 
 {{<youtube eZ3OrhxUAmU>}}
 
-<br/>Thanks to everyone who has contributed to OpenTelemetry to date. We
-look forward to your continued contributions in 2025 and beyond! 🎉
+<br/>Thanks to everyone who has contributed to OpenTelemetry to date. We look
+forward to your continued contributions in 2025 and beyond! 🎉
 
 ## Transcript
 
-If reading is more your thing, check out the following transcript of our conversations.
+If reading is more your thing, check out the following transcript of our
+conversations.
 
 ### 1- Meet the Humans of OTel
 
