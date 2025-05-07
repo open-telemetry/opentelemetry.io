@@ -4,6 +4,7 @@ aliases: [manual]
 weight: 20
 description: Instrumentação manual para OpenTelemetry Python
 default_lang_commit: c3365f297f394baf10f5dba3473e13621ade4461
+drifted_from_default: true
 cSpell:ignore: millis ottrace textmap
 ---
 
