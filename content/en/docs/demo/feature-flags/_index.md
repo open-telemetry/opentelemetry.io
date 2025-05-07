@@ -2,6 +2,7 @@
 title: Feature Flags
 aliases:
   - feature_flags
+  - scenarios
   - services/feature-flag
   - services/featureflagservice
 cSpell:ignore: OLJCESPC7Z
@@ -44,6 +45,12 @@ user interface:
 | `loadgeneratorFloodHomepage`        | Load Generator  | Start flooding the homepage with a huge amount of requests, configurable by changing flagd JSON on state. |
 | `kafkaQueueProblems`                | Kafka           | Overloads Kafka queue while simultaneously introducing a consumer side delay leading to a lag spike.      |
 | `imageSlowLoad`                     | Frontend        | Utilizes envoy fault injection, produces a delay in loading of product images in the frontend.            |
+
+## Guided Debugging Scenario
+
+The `recommendationServiceCacheFailure` scenario has a
+[dedicated walkthrough document](recommendation-cache/) to help understand how
+you can debug memory leaks with OpenTelemetry.
 
 ## Feature Flag Architecture
 

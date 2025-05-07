@@ -1,0 +1,21 @@
+# cSpell:ignore OTTL, ottl
+title: OTTL Playground
+registryType: utilities
+language: collector
+tags:
+  - otel
+  - collector
+  - ottl
+  - ottl-validation
+  - validation
+license: Apache 2.0
+description:
+  Powerful and user-friendly tool designed to allow users to experiment with
+  OTTL effortlessly.
+authors:
+  - name: OTTL Playground Authors
+    url: https://github.com/elastic/ottl-playground
+urls:
+  repo: https://github.com/elastic/ottl-playground
+  website: https://ottl.run
+createdAt: 2025-05-07

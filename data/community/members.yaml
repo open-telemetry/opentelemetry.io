@@ -843,6 +843,7 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/5543599?v=4
   - name: ms-jcorley
     teams:
+      - sig-security-approvers
       - sig-security-maintainers
     html_url: https://github.com/ms-jcorley
     avatar_url: https://avatars.githubusercontent.com/u/55004047?v=4
@@ -1037,6 +1038,7 @@ maintainers:
       - demo-approvers
       - docs-zh-approvers
       - semconv-security-approvers
+      - sig-security-approvers
       - sig-security-maintainers
       - specs-triagers
     html_url: https://github.com/reyang
@@ -1406,6 +1408,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/860519?v=4
   - name: braydonk
     teams:
+      - collector-contrib-approvers
       - collector-contrib-triagers
       - semconv-system-approvers
     html_url: https://github.com/braydonk
@@ -2053,6 +2056,7 @@ triagers:
   - name: JacksonWeber
     teams:
       - javascript-contrib-triagers
+      - javascript-triagers
     html_url: https://github.com/JacksonWeber
     avatar_url: https://avatars.githubusercontent.com/u/47067795?v=4
   - name: jamesmoessis

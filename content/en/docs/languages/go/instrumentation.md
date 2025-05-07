@@ -221,7 +221,7 @@ span.AddEvent("Cancelled wait due to external signal", trace.WithAttributes(attr
 
 ### Set span status
 
-{{% docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble.md" %}}
 
 ```go
 import (

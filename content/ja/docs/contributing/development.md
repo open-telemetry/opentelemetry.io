@@ -4,6 +4,7 @@ linkTitle: 開発環境セットアップなど
 description: この Web サイトの開発環境をセットアップする方法を学びます。
 weight: 60
 default_lang_commit: 9ba98f4fded66ec78bfafa189ab2d15d66df2309
+drifted_from_default: true
 ---
 
 以下の手順では、この Web サイトの開発環境をセットアップする方法を説明します。

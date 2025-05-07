@@ -1,6 +1,7 @@
-{{/*
+---
 default_lang_commit: 06837fe15457a584f6a9e09579be0f0400593d57
-*/ -}}
+drifted_from_default: true
+---
 
 Um [estado](/docs/concepts/signals/traces/#span-status) pode ser definido em um
 [Trecho](/docs/concepts/signals/traces/#spans), sendo tipicamente utilizado para
