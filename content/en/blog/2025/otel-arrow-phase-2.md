@@ -60,6 +60,16 @@ Rust-based pipeline framework modeled on the OpenTelemetry Collector.
 [Lei Huang](https://github.com/v0y4g3r) at Greptime has contributed a Rust
 implementation for converting the metrics signal from OTAP to OTLP.
 
+## Learn more
+
+Here is the [pull
+request](https://github.com/open-telemetry/otel-arrow/pull/293) with
+the pipeline framework contributed by F5.
+
+Here is the [pull
+request](https://github.com/open-telemetry/otel-arrow/pull/303) with
+the Rust OTAP receiver for metrics contributed by Greptime.
+
 The newly formed OTel-Arrow SIG has a
 [meeting slot](https://github.com/open-telemetry/community/?tab=readme-ov-file#implementation-sigs)
 on the OpenTelemetry calendar. See you there!
