@@ -109,7 +109,6 @@ the label as translated link text. For example, consider the following markdown:
 This would be translated in French as:
 
 ```markdown
-
 [Bonjour][hello], le monde! Bienvenue sur le [site OTel][OTel website].
 
 [hello]: https://code.org/helloworld
@@ -117,7 +116,8 @@ This would be translated in French as:
 ```
 
 [labels]: https://spec.commonmark.org/0.31.2/#link-label
-[link definitions]: https://spec.commonmark.org/0.31.2/#link-reference-definitions
+[link definitions]:
+  https://spec.commonmark.org/0.31.2/#link-reference-definitions
 
 ### Images and diagrams {#images}
 
