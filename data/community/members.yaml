@@ -443,6 +443,13 @@ maintainers:
       - semconv-system-approvers
     html_url: https://github.com/dmitryax
     avatar_url: https://avatars.githubusercontent.com/u/6628631?v=4
+  - name: drewrelmas
+    teams:
+      - arrow-approvers
+      - arrow-maintainers
+      - arrow-triagers
+    html_url: https://github.com/drewrelmas
+    avatar_url: https://avatars.githubusercontent.com/u/13971805?v=4
   - name: dyladan
     teams:
       - assign-reviewers-action-maintainers
@@ -1328,6 +1335,7 @@ approvers:
     teams:
       - semconv-cicd-approvers
       - sig-project-infra-approvers
+      - sig-security-approvers
     html_url: https://github.com/adrielp
     avatar_url: https://avatars.githubusercontent.com/u/25961386?v=4
   - name: agoallikmaa
@@ -1498,12 +1506,6 @@ approvers:
       - semconv-genai-approvers
     html_url: https://github.com/drewby
     avatar_url: https://avatars.githubusercontent.com/u/192652?v=4
-  - name: drewrelmas
-    teams:
-      - arrow-approvers
-      - arrow-triagers
-    html_url: https://github.com/drewrelmas
-    avatar_url: https://avatars.githubusercontent.com/u/13971805?v=4
   - name: edmocosta
     teams:
       - collector-contrib-approvers
