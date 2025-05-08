@@ -18,7 +18,7 @@ serializando para o formato de texto do Prometheus sob demanda.
 Caso já possua o Prometheus ou um _backend_ compatível com Prometheus
 configurado, poderá pular esta seção e configurar as dependências do exportador
 [Prometheus](#prometheus-dependencies) ou [OTLP](#otlp-dependencies) para a
-suaaplicação.
+sua aplicação.
 
 {{% /alert-md %}}
 
