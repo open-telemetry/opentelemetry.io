@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry Protocol with Apache Arrow - Phase 2 Announcement
 linkTitle: OTel-Arrow Phase 2
-date: 2025-04-29
+date: 2025-05-12
 author: >-
   [Joshua MacDonald](https://github.com/jmacd) (Microsoft), [Laurent
   Quérel](https://github.com/lquerel) (F5)
@@ -55,20 +55,12 @@ executed from the OpenTelemetry Collector. We want to give OTAP pipelines
 written in Rust access to Golang Collector components, too.
 
 To kick off phase 2 of the project, [Laurent Quérel](https://github.com/lquerel)
-at F5 has contributed the work behind his original OTel-Arrow prototype, a
-Rust-based pipeline framework modeled on the OpenTelemetry Collector.
-[Lei Huang](https://github.com/v0y4g3r) at Greptime has contributed a Rust
-implementation for converting the metrics signal from OTAP to OTLP.
+at F5 has contributed the work behind his original OTel-Arrow prototype, [a
+Rust-based pipeline framework](https://github.com/open-telemetry/otel-arrow/pull/293) modeled on the OpenTelemetry Collector.
+[Lei Huang](https://github.com/v0y4g3r) at Greptime has contributed [a Rust
+implementation for converting the metrics signal](https://github.com/open-telemetry/otel-arrow/pull/303) from OTAP to OTLP.
 
 ## Learn more
-
-Here is the [pull
-request](https://github.com/open-telemetry/otel-arrow/pull/293) with
-the pipeline framework contributed by F5.
-
-Here is the [pull
-request](https://github.com/open-telemetry/otel-arrow/pull/303) with
-the Rust OTAP receiver for metrics contributed by Greptime.
 
 The newly formed OTel-Arrow SIG has a
 [meeting slot](https://github.com/open-telemetry/community/?tab=readme-ov-file#implementation-sigs)
