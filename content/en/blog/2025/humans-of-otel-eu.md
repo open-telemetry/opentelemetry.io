@@ -1,7 +1,7 @@
 ---
 title: The Humans of OpenTelemetry - KubeCon EU 2025
 linkTitle: Humans of OTel EU 2025
-date: 2025-05-02
+date: 2025-05-08
 author: >-
   [Adriana Villela](https://github.com/avillela) (Dynatrace)
 sig: End User SIG
