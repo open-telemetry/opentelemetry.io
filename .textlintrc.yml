@@ -1,4 +1,4 @@
-# cspell:ignore ebpf postgres
+# cspell:ignore ebpf matic postgres
 plugins:
   '@textlint/markdown':
     extensions: [.yml]
@@ -63,6 +63,7 @@ rules:
       - Laravel
       - MacBook
       - macOS
+      - Markdown
       - MongoDB
       - MySQL
       - NDJSON
