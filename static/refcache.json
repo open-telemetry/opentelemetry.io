@@ -11455,6 +11455,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-30T17:00:10.089894-05:00"
   },
+  "https://github.com/open-telemetry/otel-arrow/pull/293": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-08T10:42:08.425766455-07:00"
+  },
+  "https://github.com/open-telemetry/otel-arrow/pull/303": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-08T10:42:09.658751132-07:00"
+  },
   "https://github.com/open-telemetry/oteps/blob/main/text/0035-opentelemetry-protocol.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:59:03.242177-05:00"
