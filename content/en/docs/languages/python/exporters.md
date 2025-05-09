@@ -7,7 +7,7 @@ cSpell:ignore: LOWMEMORY
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% docs/languages/exporters/intro python %}}
+{{% docs/languages/exporters/intro %}}
 
 ### Dependencies {#otlp-dependencies}
 
@@ -56,7 +56,7 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 
 # Service name is required for most backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
@@ -88,7 +88,7 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 
 # Service name is required for most backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
@@ -128,7 +128,7 @@ from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader, Cons
 # Service name is required for most backends,
 # and although it's not necessary for console export,
 # it's good to set service name anyways.
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
@@ -190,9 +190,9 @@ variable to `CUMULATIVE`.
 
 {{% /alert %}}
 
-{{% docs/languages/exporters/jaeger %}}
+{{% include "exporters/jaeger.md" %}}
 
-{{% docs/languages/exporters/prometheus-setup %}}
+{{% include "exporters/prometheus-setup.md" %}}
 
 ### Dependencies {#prometheus-dependencies}
 
@@ -216,7 +216,7 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
 # Service name is required for most backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
@@ -233,12 +233,12 @@ With the above you can access your metrics at <http://localhost:9464/metrics>.
 Prometheus or an OpenTelemetry Collector with the Prometheus receiver can scrape
 the metrics from this endpoint.
 
-{{% docs/languages/exporters/zipkin-setup %}}
+{{% include "exporters/zipkin-setup.md" %}}
 
 ### Dependencies {#zipkin-dependencies}
 
-To send your trace data to [Zipkin](https://zipkin.io/), , you can choose
-between two different protocols to transport your data:
+To send your trace data to [Zipkin](https://zipkin.io/), you can choose between
+two different protocols to transport your data:
 
 - [HTTP/protobuf](https://pypi.org/project/opentelemetry-exporter-zipkin-proto-http/)
 - [Thrift](https://pypi.org/project/opentelemetry-exporter-zipkin-json/)
@@ -271,7 +271,7 @@ from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
@@ -292,7 +292,7 @@ from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
@@ -306,7 +306,7 @@ trace.set_tracer_provider(provider)
 
 {{% /tab %}} {{< /tabpane >}}
 
-{{% docs/languages/exporters/outro python `https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.export.html#opentelemetry.sdk.trace.export.SpanExporter` %}}
+{{% include "exporters/outro.md" `https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.export.html#opentelemetry.sdk.trace.export.SpanExporter` %}}
 
 ```python
 from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
@@ -314,5 +314,3 @@ from opentelemetry.sdk.trace.export import SimpleSpanProcessor
 
 processor = SimpleSpanProcessor(OTLPSpanExporter(endpoint="your-endpoint-here"))
 ```
-
-{{% /docs/languages/exporters/outro %}}

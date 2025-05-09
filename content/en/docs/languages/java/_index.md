@@ -6,10 +6,10 @@ description: >-
 aliases: [/java, /java/metrics, /java/tracing]
 cascade:
   vers:
-    instrumentation: 2.13.2
-    otel: 1.47.0
-    contrib: 1.44.0
-    semconv: 1.30.0
+    instrumentation: 2.15.0
+    otel: 1.49.0
+    contrib: 1.46.0
+    semconv: 1.32.0
 weight: 18
 ---
 

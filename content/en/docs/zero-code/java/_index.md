@@ -6,8 +6,8 @@ aliases:
   - /docs/languages/java/automatic_instrumentation
 cascade:
   vers:
-    instrumentation: 2.13.2
-    otel: 1.47.0
+    instrumentation: 2.15.0
+    otel: 1.49.0
 ---
 
 Common options for zero-code instrumentation with Java are the Java agent JAR,

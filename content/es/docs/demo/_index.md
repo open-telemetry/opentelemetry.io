@@ -4,7 +4,8 @@ linkTitle: Demo
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
-default_lang_commit: 9b5e318036fb92e4a1896259cc3bbdad2843e1de
+default_lang_commit: 9b5e318036fb92e4a1896259cc3bbdad2843e1de # patched
+drifted_from_default: true
 cSpell:ignore: diagnostícala OLJCESPC preconfigurados
 ---
 
@@ -68,7 +69,7 @@ Agregaremos más escenarios con el tiempo.
   `GetProduct` con ID de producto: `OLJCESPC7Z` utilizando el servicio Feature
   Flag.
 - Descubre una fuga de memoria y diagnostícala mediante métricas y seguimientos.
-  [Leer más](scenarios/recommendation-cache/)
+  [Leer más](feature-flags/recommendation-cache/)
 
 ## Referencia
 

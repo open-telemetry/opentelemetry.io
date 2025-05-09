@@ -81,11 +81,11 @@ LoadBalancer) with optionally deployed ingress resources.
 
 ### Expose services using kubectl port-forward
 
-To expose the frontendproxy service use the following command (replace
-`my-otel-demo` with your Helm chart release name accordingly):
+To expose the frontend-proxy service use the following command (replace
+`default` with your Helm chart release namespace accordingly):
 
 ```shell
-kubectl port-forward svc/my-otel-demo-frontendproxy 8080:8080
+kubectl --namespace default port-forward svc/frontend-proxy 8080:8080
 ```
 
 {{% alert title="Note" color="info" %}}
@@ -97,7 +97,7 @@ done.
 
 {{% /alert %}}
 
-With the frontendproxy port-forward set up, you can access:
+With the frontend-proxy port-forward set up, you can access:
 
 - Web store: <http://localhost:8080/>
 - Grafana: <http://localhost:8080/grafana/>
@@ -121,16 +121,16 @@ the proper support before using these configuration options.
 
 {{% /alert %}}
 
-Each demo component (ie: frontendproxy) offers a way to have its Kubernetes
+Each demo component (ie: frontend-proxy) offers a way to have its Kubernetes
 service type configured. By default, these will not be created, but you can
 enable and configure them through the `ingress` property of each component.
 
-To configure the frontendproxy component to use an ingress resource you would
+To configure the frontend-proxy component to use an ingress resource you would
 specify the following in your values file:
 
 ```yaml
 components:
-  frontendProxy:
+  frontend-proxy:
     ingress:
       enabled: true
       annotations: {}
@@ -147,16 +147,16 @@ the documentation from your ingress controller for more information.
 
 #### Configure service types
 
-Each demo component (ie: frontendproxy) offers a way to have its Kubernetes
+Each demo component (ie: frontend-proxy) offers a way to have its Kubernetes
 service type configured. By default, these will be `ClusterIP` but you can
 change each one using the `service.type` property of each component.
 
-To configure the frontendproxy component to use a LoadBalancer service type you
+To configure the frontend-proxy component to use a LoadBalancer service type you
 would specify the following in your values file:
 
 ```yaml
 components:
-  frontendProxy:
+  frontend-proxy:
     service:
       type: LoadBalancer
 ```
@@ -165,7 +165,7 @@ components:
 
 In order for spans from the browser to be properly collected, you will also need
 to specify the location where the OpenTelemetry Collector is exposed. The
-frontendproxy defines a route for the collector with a path prefix of
+frontend-proxy defines a route for the collector with a path prefix of
 `/otlp-http`. You can configure the collector endpoint by setting the following
 environment variable on the frontend component:
 

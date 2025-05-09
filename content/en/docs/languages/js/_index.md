@@ -21,6 +21,10 @@ OpenTelemetry.
 OpenTelemetry JavaScript has no official supported list of browsers. It is aimed
 to work on currently supported versions of major browsers.
 
+OpenTelemetry JavaScript follows DefinitelyType's support policy for TypeScript
+which sets a support window of 2 years. Support for TypeScript versions older
+than 2 years will be dropped in minor releases of OpenTelemetry JavaScript.
+
 For more details on runtime support see
 [this overview](https://github.com/open-telemetry/opentelemetry-js#supported-runtimes).
 

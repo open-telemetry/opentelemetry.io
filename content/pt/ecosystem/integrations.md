@@ -3,7 +3,7 @@ title: Integrações
 description:
   Bibliotecas, serviços e aplicações com suporte nativo para o OpenTelemetry.
 aliases: [/integrations]
-default_lang_commit: 8a15d0d668c516ccb255cd0a92e0bcd442e83b4d
+default_lang_commit: b6ddba1118d07bc3c8d1d07b293f227686d0290e
 ---
 
 A missão do OpenTelemetry é

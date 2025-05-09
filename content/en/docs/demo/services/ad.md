@@ -69,7 +69,7 @@ a new span, set it into context, perform an operation, and finally end the span.
 
 ```java
 // create and start a new span manually
-Tracer tracer = GlobalOpenTelemetry.getTracer("adservice");
+Tracer tracer = GlobalOpenTelemetry.getTracer("ad");
 Span span = tracer.spanBuilder("getRandomAds").startSpan();
 
 // put the span into context, so if any child span is started the parent will be set properly
@@ -91,9 +91,9 @@ try (Scope ignored = span.makeCurrent()) {
 ### Initializing Metrics
 
 Similar to creating spans, the first step in creating metrics is initializing a
-`Meter` instance, e.g. `GlobalOpenTelemetry.getMeter("adservice")`. From there,
-use the various builder methods available on the `Meter` instance to create the
-desired metric instrument, e.g.:
+`Meter` instance, e.g. `GlobalOpenTelemetry.getMeter("ad")`. From there, use the
+various builder methods available on the `Meter` instance to create the desired
+metric instrument, e.g.:
 
 ```java
 meter

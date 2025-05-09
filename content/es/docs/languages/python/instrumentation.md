@@ -4,6 +4,7 @@ aliases: [manual]
 weight: 20
 description: Instrumentación manual para OpenTelemetry Python
 default_lang_commit: 9b53527853049b249f60f12a000c0d85b9e5f5dc
+drifted_from_default: true
 cSpell:ignore: millis ottrace textmap
 ---
 
@@ -203,7 +204,7 @@ with tracer.start_as_current_span("span-2", links=[link_from_span_1]):
 
 ### Establecer el estado del span
 
-{{% docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble.md" %}}
 
 ```python
 from opentelemetry import trace

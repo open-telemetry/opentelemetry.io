@@ -1,4 +1,4 @@
-# cspell:ignore ebpf postgres
+# cspell:ignore ebpf matic postgres
 plugins:
   '@textlint/markdown':
     extensions: [.yml]
@@ -19,7 +19,7 @@ filters:
       # src attribute in figure Hugo template:
       - /src=".*?"/
       # Other:
-      - /<https?://.*?>/ # Raw URLs
+      - /<https?:\/\/.*?>/ # Raw URLs
 rules:
   terminology:
     defaultTerms: false
@@ -63,6 +63,7 @@ rules:
       - Laravel
       - MacBook
       - macOS
+      - Markdown
       - MongoDB
       - MySQL
       - NDJSON
