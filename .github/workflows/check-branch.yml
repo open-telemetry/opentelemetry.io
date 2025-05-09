@@ -1,0 +1,19 @@
+name: Enforce PR Branch Naming
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  check-branch-name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if PR is from 'main' branch
+        run: |
+          if [[ "${{ github.head_ref }}" == "main" ]]; then
+            echo "❌ Pull requests must not be created from the 'main' branch."
+            echo "❗ Please create a new branch and submit your PR again."
+            exit 1
+          else
+            echo "✅ Branch name is valid."
+          fi
