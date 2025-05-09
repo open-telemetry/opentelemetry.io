@@ -2,6 +2,7 @@
 title: OpenTelemetry Collector y Kubernetes
 linkTitle: Colector
 default_lang_commit: f7cb8b65a478450d80d703b34c8473c579702108
+drifted_from_default: file not found
 ---
 
 El [OpenTelemetry Collector](/docs/collector/) es una forma de recibir, procesar

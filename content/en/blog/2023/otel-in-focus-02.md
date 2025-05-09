@@ -76,7 +76,7 @@ planning a release of new documentation for PHP soon.
 has been released with deprecations to Jaeger exporters, several performance
 improvements and bugfixes, and changes to Prometheus export.
 
-##### [.NET](/docs/languages/net/)
+##### [.NET](/docs/languages/dotnet/)
 
 [v1.4](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.4.0)
 removes several deprecated extension methods.

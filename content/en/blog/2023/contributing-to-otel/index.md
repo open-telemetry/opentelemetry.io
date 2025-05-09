@@ -146,11 +146,11 @@ Feeling a little more adventurous? Then why not join one of the other OTel
 (SIGs)? By joining a SIG, you can contribute to things like (but not limited to)
 SDK development, auto-instrumentation of libraries, the
 [OTel Collector](/docs/collector/), and the
-[OTel Operator](/docs/kubernetes/operator/). You don't even need to be a regular
-contributor. Sometimes, contributions come out of necessity. Like maybe you
-found a bug in the Collector. Why not take a stab at fixing it? Or maybe there's
-a feature that you and your team desperately need. Again, why not take a stab at
-implementing it?
+[OTel Operator](/docs/platforms/kubernetes/operator/). You don't even need to be
+a regular contributor. Sometimes, contributions come out of necessity. Like
+maybe you found a bug in the Collector. Why not take a stab at fixing it? Or
+maybe there's a feature that you and your team desperately need. Again, why not
+take a stab at implementing it?
 
 Now, before you go off writing code, you should make sure that you:
 

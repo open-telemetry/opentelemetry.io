@@ -2,7 +2,7 @@
 title: Componentes
 description: Os principais componentes que compõem o OpenTelemetry
 weight: 20
-default_lang_commit: 2f34c456ab38b4d3502cd07bc36fa1455d4ef875
+default_lang_commit: 99a39c5e4e51daba968bfbb3eb078be4a14ad363
 ---
 
 O OpenTelemetry é atualmente composto por vários componentes principais:
@@ -75,7 +75,7 @@ Para mais informações, consulte
 
 ### Exporters {#exporters}
 
-{{% pt/docs/languages/exporters/intro %}}
+{{% docs/languages/exporters/intro %}}
 
 ### Instrumentação sem código {#zero-code-instrumentation}
 
@@ -129,7 +129,7 @@ gerencia o OpenTelemetry Collector e a instrumentação sem código das cargas d
 trabalho que utilizam OpenTelemetry.
 
 Para mais informações, consulte
-[Kubernetes Operator](/docs/kubernetes/operator/).
+[Kubernetes Operator](/docs/platforms/kubernetes/operator/).
 
 ## Função como Serviço {#function-as-a-service-assets}
 
@@ -140,4 +140,4 @@ instrumentação sem código na sua aplicação, bem como a opção de uma camad
 Lambda do Coletor independente, que pode ser usada ao instrumentar aplicações
 manualmente ou automaticamente.
 
-Para mais informações, consulte [Função como Serviço](/docs/faas/).
+Para mais informações, consulte [Função como Serviço](/docs/platforms/faas/).

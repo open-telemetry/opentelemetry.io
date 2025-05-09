@@ -279,8 +279,8 @@ type Config struct {
 Now that you have access to the settings, you can provide any kind of validation
 needed for those values by implementing the `Validate` method according to the
 optional
-[ConfigValidator](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
-param vers %}}/component/config.go#L50) interface.
+[ConfigValidator](https://github.com/open-telemetry/opentelemetry-collector/blob/677b87e3ab5c615bc3f93b8f99bb1fa5be951751/component/config.go#L28)
+interface.
 
 In this case, the `interval` value will be optional (we will look at generating
 default values later) but when defined should be at least 1 minute (1m) and the
@@ -330,18 +330,18 @@ func (cfg *Config) Validate() error {
 
 If you want to take a closer look at the structs and interfaces involved in the
 configuration aspects of a component, take a look at the
-[component/config.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
-param vers %}}/component/config.go) file inside the Collector's GitHub project.
+[component/config.go](<https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/component/config.go>)
+file inside the Collector's GitHub project.
 
 ## Implementing the receiver.Factory interface
 
 The `tailtracer` receiver has to provide a `receiver.Factory` implementation,
 and although you will find a `receiver.Factory` interface (you can find its
 definition in the
-[receiver/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
-param vers %}}/receiver/receiver.go#L58) file within the Collector's project),
-the right way to provide the implementation is by using the functions available
-within the `go.opentelemetry.io/collector/receiver` package.
+[receiver/receiver.go](<https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/receiver/receiver.go#L58>)
+file within the Collector's project), the right way to provide the
+implementation is by using the functions available within the
+`go.opentelemetry.io/collector/receiver` package.
 
 Create a file named `factory.go`:
 
@@ -350,7 +350,7 @@ touch tailtracer/factory.go
 ```
 
 Now let's follow the convention and add a function named `NewFactory()` that
-will be responsible to instantiate the `tailtracer` factory. Go ahead the add
+will be responsible to instantiate the `tailtracer` factory. Go ahead and add
 the following code to your `factory.go` file:
 
 ```go
@@ -595,9 +595,9 @@ func NewFactory() receiver.Factory {
 ## Implementing the receiver component
 
 All the receiver APIs are currently declared in the
-[receiver/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
-param vers %}}/receiver/receiver.go) file within the Collector's project, open
-the file and take a minute to browse through all the interfaces.
+[receiver/receiver.go](<https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/receiver/receiver.go>)
+file within the Collector's project, open the file and take a minute to browse
+through all the interfaces.
 
 Notice that `receiver.Traces` (and its siblings `receiver.Metrics` and
 `receiver.Logs`) at this point in time, doesn't describe any specific methods
@@ -1137,14 +1137,14 @@ of now:
 ├── go.work.sum
 ├── ocb
 ├── otelcol-dev
-│   ├── components.go
-│   ├── components_test.go
-│   ├── go.mod
-│   ├── go.sum
-│   ├── main.go
-│   ├── main_others.go
-│   ├── main_windows.go
-│   └── otelcol-dev
+│   ├── components.go
+│   ├── components_test.go
+│   ├── go.mod
+│   ├── go.sum
+│   ├── main.go
+│   ├── main_others.go
+│   ├── main_windows.go
+│   └── otelcol-dev
 └── tailtracer
     ├── config.go
     ├── factory.go
@@ -1393,8 +1393,7 @@ creating a trace.
 You will start with a type called `ptrace.ResourceSpans` which represents the
 resource and all the operations that it either originated or received while
 participating in a trace. You can find its definition within the
-[/pdata/internal/data/protogen/trace/v1/trace.pb.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
-param vers %}}/pdata/internal/data/protogen/trace/v1/trace.pb.go).
+[/pdata/internal/data/protogen/trace/v1/trace.pb.go](<https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/pdata/internal/data/protogen/trace/v1/trace.pb.go>).
 
 `ptrace.Traces` has a method named `ResourceSpans()` which returns an instance
 of a helper type called `ptrace.ResourceSpansSlice`. The
@@ -1454,8 +1453,8 @@ pair format represented by the `pcommon.Map` type.
 
 You can check the definition of the `pcommon.Map` type and the related helper
 functions to create attribute values using the supported formats in the
-[/pdata/pcommon/map.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
-param vers %}}/pdata/pcommon/map.go) file within the Collector's GitHub project.
+[/pdata/pcommon/map.go](<https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/pdata/pcommon/map.go>)
+file within the Collector's GitHub project.
 
 Key/value pairs provide a lot of flexibility to help model your `Resource` data,
 so the OTel specification has some guidelines in place to help organize and
@@ -1517,9 +1516,8 @@ convention to represent that information on its `Resource`.
 
 All the resource semantic convention attribute names and well known-values are
 kept within the
-[/semconv/v1.9.0/generated_resource.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
-param vers %}}/semconv/v1.9.0/generated_resource.go) file within the Collector's
-GitHub project.
+[/semconv/v1.9.0/generated_resource.go](<https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/semconv/v1.9.0/generated_resource.go>)
+file within the Collector's GitHub project.
 
 Let's create a function to read the field values from an `BackendSystem`
 instance and write them as attributes into a `pcommon.Resource` instance. Open

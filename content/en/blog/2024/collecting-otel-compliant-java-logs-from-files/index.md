@@ -8,7 +8,7 @@ author: >
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/5606
 sig: Java, Specification
 # prettier-ignore
-cSpell:ignore: Clerc cust Cyrille Dotel Gregor Logback logback otlphttp otlpjson resourcedetection SLF4J stdout Zeitlinger
+cSpell:ignore: Clerc cust Cyrille Dotel Gregor logback otlphttp otlpjson resourcedetection SLF4J stdout Zeitlinger
 ---
 
 If you want to get logs from your Java application ingested into an
@@ -53,7 +53,7 @@ This blog post shows how to set up this solution step by step.
 {{% alert title="Note" color="info" %}}
 
 Blog post instructions can easily get outdated. In case of issues, check this
-[sample application deployed on Kubernetes](https://github.com/grafana/docker-otel-lgtm/tree/main/examples/java/json-logging-otlp),
+[sample application deployed on Kubernetes](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md),
 which is continuously updated and tested against the latest versions.
 
 {{% /alert %}}
@@ -205,7 +205,7 @@ OTLP/JSON format, with a JSON object per line. The log records are nested in the
 
 ## Configure the Collector to ingest the OTLP/JSON logs
 
-{{< figure class="figure" src="otel-collector-otlpjson-pipeline.png" attr="View OTel Collector pipeline with OTelBin" attrlink="https://www.otelbin.io/s/69739d790cf279c203fc8efc86ad1a876a2fc01a" >}}
+{{< figure class="figure" src="otel-collector-otlpjson-pipeline.png" attr="View OTel Collector pipeline with OTelBin" attrlink=`https://www.otelbin.io/s/69739d790cf279c203fc8efc86ad1a876a2fc01a` >}}
 
 ```yaml
 # tested with otelcol-contrib v0.112.0
@@ -371,7 +371,7 @@ balance by providing highly contextualized logs that can be correlated with
 traces and metrics.
 
 If any of the steps are unclear or you encounter issues, check this
-[sample application deployed on Kubernetes](https://github.com/grafana/docker-otel-lgtm/tree/main/examples/java/json-logging-otlp),
+[sample application deployed on Kubernetes](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md),
 which is continuously updated and tested against the latest versions.
 
 Any feedback or questions? Reach out on
