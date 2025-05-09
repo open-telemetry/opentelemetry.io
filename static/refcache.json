@@ -3583,6 +3583,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-04-06T04:41:30.404934069Z"
   },
+  "https://github.com/csvpath/csvpath": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-09T09:59:33.516355+02:00"
+  },
   "https://github.com/cyrille-leclerc": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:14:41.728174-05:00"
@@ -18798,6 +18802,14 @@
   "https://www.crewai.com/": {
     "StatusCode": 200,
     "LastSeen": "2025-02-22T07:14:36.323780936-08:00"
+  },
+  "https://www.csvpath.org": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-09T09:59:31.751029+02:00"
+  },
+  "https://www.csvpath.org/getting-started/dataops-integrations/getting-started-with-csvpath-+-opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-09T09:59:31.869446+02:00"
   },
   "https://www.cypress.io/": {
     "StatusCode": 200,
