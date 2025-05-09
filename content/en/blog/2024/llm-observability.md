@@ -5,7 +5,7 @@ title:
 linkTitle: LLM Observability
 date: 2024-06-04
 author: '[Ishan Jain](https://github.com/ishanjainn) (Grafana)'
-cSpell:ignore: associated chatbots Ishan ishan_jainn ishanjainn Jain llm
+cSpell:ignore: chatbots Ishan ishan_jainn ishanjainn Jain llm
 ---
 
 Large Language Models (LLMs) are really popular right now, especially

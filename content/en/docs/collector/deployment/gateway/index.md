@@ -40,9 +40,9 @@ Let's have a look at such a case where we are using the load-balancing exporter:
 
 ### NGINX as an "out-of-the-box" load balancer
 
-Assuming you have two collectors (`collector1` and `collector2`) configured and
-you want to load balance traffic across them using NGINX, you can use the
-following configuration:
+Assuming you have three collectors (`collector1`, `collector2`, and
+`collector3`) configured and you want to load balance traffic across them using
+NGINX, you can use the following configuration:
 
 ```nginx
 server {
@@ -77,11 +77,13 @@ server {
 upstream collector4317 {
     server collector1:4317;
     server collector2:4317;
+    server collector3:4317;
 }
 
 upstream collector4318 {
     server collector1:4318;
     server collector2:4318;
+    server collector3:4318;
 }
 ```
 

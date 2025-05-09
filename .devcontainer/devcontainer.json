@@ -1,0 +1,18 @@
+{
+  "name": "default",
+  "image": "mcr.microsoft.com/devcontainers/base:dev-bullseye",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {}
+  },
+  "overrideFeatureInstallOrder": [],
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "16gb",
+    "storage": "16gb"
+  },
+  "remoteEnv": {
+    "PODMAN_USERNS": "keep-id"
+  },
+  "containerUser": "vscode",
+  "postStartCommand": ".devcontainer/post-start.sh"
+}

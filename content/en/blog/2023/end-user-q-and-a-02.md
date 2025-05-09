@@ -274,7 +274,7 @@ him in the
 channel!
 
 Also, be sure to check out more of Doug's OTel adventures at this month's
-[OTel in Practice series, on March 27th, 09:00 PT/11:00 ET](http://surl.li/fqdox).
+[OTel in Practice series, on March 27th, 09:00 PT/11:00 ET](https://surl.li/fqdox).
 
 ## Final Thoughts
 
@@ -304,4 +304,4 @@ Be sure to follow OpenTelemetry on
 [Twitter](https://twitter.com/opentelemetry), and share your stories using the
 **#OpenTelemetry** hashtag!
 
-[^1]: {{% _param notes.docker-compose-v2 %}}
+[^1]: {{% param notes.docker-compose-v2 %}}

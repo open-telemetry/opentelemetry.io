@@ -16,6 +16,6 @@ authors:
     url: https://www.cisco.com/
 urls:
   website: https://www.cisco.com/c/en/us/products/cloud-systems-management/network-services-orchestrator/index.html
-  docs: https://developer.cisco.com/docs/nso/#!observability-exporter/
+  docs: https://developer.cisco.com/docs/nso/observability-exporter/
 createdAt: '2024-08-06'
 isFirstParty: true

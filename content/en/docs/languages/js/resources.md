@@ -91,12 +91,12 @@ configuration option, where you can set them. For example you can update the
 
 ```javascript
 ...
-const { Resource } = require('@opentelemetry/resources');
+const { resourceFromAttributes } = require('@opentelemetry/resources');
 const { SEMRESATTRS_SERVICE_NAME, SEMRESATTRS_SERVICE_NAMESPACE, SEMRESATTRS_SERVICE_VERSION, SEMRESATTRS_SERVICE_INSTANCE_ID } = require('@opentelemetry/semantic-conventions');
 ...
 const sdk = new opentelemetry.NodeSDK({
   ...
-  resource: new Resource({
+  resource: resourceFromAttributes({
     [ SEMRESATTRS_SERVICE_NAME ]: "yourServiceName",
     [ SEMRESATTRS_SERVICE_NAMESPACE ]: "yourNameSpace",
     [ SEMRESATTRS_SERVICE_VERSION ]: "1.0",
@@ -184,7 +184,7 @@ $ docker run --rm -p 8080:8080 nodejs-otel-getting-started
 Listening for requests on http://localhost:8080
 DockerCGroupV1Detector found resource. Resource {
   attributes: {
-    'container.id': 'fffbeaf682f32ef86916f306ff9a7f88cc58048ab78f7de464da3c320ldb5c54'
+    'container.id': 'fffbeaf682f32ef86916f306ff9a7f88cc58048ab78f7de464da3c3201db5c54'
   }
 }
 ```

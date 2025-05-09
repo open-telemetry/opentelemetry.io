@@ -5,7 +5,7 @@ aliases: [manual]
 description: Instrumentation for OpenTelemetry Swift
 ---
 
-{{% docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro.md %}}
 
 ## Setup
 
@@ -168,7 +168,7 @@ span.addEvent(name: "computation complete", attributes: attributes)
 
 ### Setting Span Status
 
-{{% docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble.md" %}}
 
 ```swift
 func myFunction() {

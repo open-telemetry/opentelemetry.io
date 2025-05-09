@@ -8,7 +8,7 @@ description: Instrumentation for OpenTelemetry JavaScript
 cSpell:ignore: dicelib Millis rolldice
 ---
 
-{{% docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro.md %}}
 
 {{% alert title="Note" color="info" %}}
 
@@ -221,14 +221,14 @@ import {
   PeriodicExportingMetricReader,
   ConsoleMetricExporter,
 } from '@opentelemetry/sdk-metrics';
-import { Resource } from '@opentelemetry/resources';
+import { resourceFromAttributes } from '@opentelemetry/resources';
 import {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
 } from '@opentelemetry/semantic-conventions';
 
 const sdk = new NodeSDK({
-  resource: new Resource({
+  resource: resourceFromAttributes({
     [ATTR_SERVICE_NAME]: 'yourServiceName',
     [ATTR_SERVICE_VERSION]: '1.0',
   }),
@@ -251,14 +251,14 @@ const {
   PeriodicExportingMetricReader,
   ConsoleMetricExporter,
 } = require('@opentelemetry/sdk-metrics');
-const { Resource } = require('@opentelemetry/resources');
+const { resourceFromAttributes } = require('@opentelemetry/resources');
 const {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
 } = require('@opentelemetry/semantic-conventions');
 
 const sdk = new NodeSDK({
-  resource: new Resource({
+  resource: resourceFromAttributes({
     [ATTR_SERVICE_NAME]: 'dice-server',
     [ATTR_SERVICE_VERSION]: '0.1.0',
   }),
@@ -335,8 +335,7 @@ above, you have a `TracerProvider` setup for you already. You can continue with
 
 #### Browser
 
-{{% alert title="Warning" color="warning" %}}
-{{% _param notes.browser-instrumentation %}} {{% /alert %}}
+{{% include browser-instrumentation-warning.md %}}
 
 First, ensure you've got the right packages:
 
@@ -350,7 +349,10 @@ SDK initialization code in it:
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
-import { Resource } from '@opentelemetry/resources';
+import {
+  defaultResource,
+  resourceFromAttributes,
+} from '@opentelemetry/resources';
 import {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
@@ -361,19 +363,20 @@ import {
   ConsoleSpanExporter,
 } from '@opentelemetry/sdk-trace-base';
 
-const resource = Resource.default().merge(
-  new Resource({
+const resource = defaultResource().merge(
+  resourceFromAttributes({
     [ATTR_SERVICE_NAME]: 'service-name-here',
     [ATTR_SERVICE_VERSION]: '0.1.0',
   }),
 );
 
-const provider = new WebTracerProvider({
-  resource: resource,
-});
 const exporter = new ConsoleSpanExporter();
 const processor = new BatchSpanProcessor(exporter);
-provider.addSpanProcessor(processor);
+
+const provider = new WebTracerProvider({
+  resource: resource,
+  spanProcessors: [processor],
+});
 
 provider.register();
 ```
@@ -382,7 +385,10 @@ provider.register();
 
 ```js
 const opentelemetry = require('@opentelemetry/api');
-const { Resource } = require('@opentelemetry/resources');
+const {
+  defaultResource,
+  resourceFromAttributes,
+} = require('@opentelemetry/resources');
 const {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
@@ -393,19 +399,20 @@ const {
   BatchSpanProcessor,
 } = require('@opentelemetry/sdk-trace-base');
 
-const resource = Resource.default().merge(
-  new Resource({
+const resource = defaultResource().merge(
+  resourceFromAttributes({
     [ATTR_SERVICE_NAME]: 'service-name-here',
     [ATTR_SERVICE_VERSION]: '0.1.0',
   }),
 );
 
-const provider = new WebTracerProvider({
-  resource: resource,
-});
 const exporter = new ConsoleSpanExporter();
 const processor = new BatchSpanProcessor(exporter);
-provider.addSpanProcessor(processor);
+
+const provider = new WebTracerProvider({
+  resource: resource,
+  spanProcessors: [processor],
+});
 
 provider.register();
 ```
@@ -1024,7 +1031,7 @@ const someFunction = (spanToLinkFrom) => {
 
 ### Span Status
 
-{{% docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble.md" %}}
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -1127,16 +1134,28 @@ Initializing tracing is similar to how you'd do it with Node.js or the Web SDK.
 ```ts
 import opentelemetry from '@opentelemetry/api';
 import {
+  CompositePropagator,
+  W3CTraceContextPropagator,
+  W3CBaggagePropagator,
+} from '@opentelemetry/core';
+import {
   BasicTracerProvider,
   BatchSpanProcessor,
   ConsoleSpanExporter,
 } from '@opentelemetry/sdk-trace-base';
 
-const provider = new BasicTracerProvider();
+opentelemetry.trace.setGlobalTracerProvider(
+  new BasicTracerProvider({
+    // Configure span processor to send spans to the exporter
+    spanProcessors: [new BatchSpanProcessor(new ConsoleSpanExporter())],
+  }),
+);
 
-// Configure span processor to send spans to the exporter
-provider.addSpanProcessor(new BatchSpanProcessor(new ConsoleSpanExporter()));
-provider.register();
+opentelemetry.propagation.setGlobalPropagator(
+  new CompositePropagator({
+    propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
+  }),
+);
 
 // This is what we'll access in all instrumentation code
 const tracer = opentelemetry.trace.getTracer('example-basic-tracer-node');
@@ -1147,16 +1166,28 @@ const tracer = opentelemetry.trace.getTracer('example-basic-tracer-node');
 ```js
 const opentelemetry = require('@opentelemetry/api');
 const {
+  CompositePropagator,
+  W3CTraceContextPropagator,
+  W3CBaggagePropagator,
+} = require('@opentelemetry/core');
+const {
   BasicTracerProvider,
   ConsoleSpanExporter,
   BatchSpanProcessor,
 } = require('@opentelemetry/sdk-trace-base');
 
-const provider = new BasicTracerProvider();
+opentelemetry.trace.setGlobalTracerProvider(
+  new BasicTracerProvider({
+    // Configure span processor to send spans to the exporter
+    spanProcessors: [new BatchSpanProcessor(new ConsoleSpanExporter())],
+  }),
+);
 
-// Configure span processor to send spans to the exporter
-provider.addSpanProcessor(new BatchSpanProcessor(new ConsoleSpanExporter()));
-provider.register();
+opentelemetry.propagation.setGlobalPropagator(
+  new CompositePropagator({
+    propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
+  }),
+);
 
 // This is what we'll access in all instrumentation code
 const tracer = opentelemetry.trace.getTracer('example-basic-tracer-node');
@@ -1261,14 +1292,17 @@ import {
   MeterProvider,
   PeriodicExportingMetricReader,
 } from '@opentelemetry/sdk-metrics';
-import { Resource } from '@opentelemetry/resources';
+import {
+  defaultResource,
+  resourceFromAttributes,
+} from '@opentelemetry/resources';
 import {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
 } from '@opentelemetry/semantic-conventions';
 
-const resource = Resource.default().merge(
-  new Resource({
+const resource = defaultResource().merge(
+  resourceFromAttributes({
     [ATTR_SERVICE_NAME]: 'dice-server',
     [ATTR_SERVICE_VERSION]: '0.1.0',
   }),
@@ -1298,14 +1332,17 @@ const {
   PeriodicExportingMetricReader,
   ConsoleMetricExporter,
 } = require('@opentelemetry/sdk-metrics');
-const { Resource } = require('@opentelemetry/resources');
+const {
+  defaultResource,
+  resourceFromAttributes,
+} = require('@opentelemetry/resources');
 const {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
 } = require('@opentelemetry/semantic-conventions');
 
-const resource = Resource.default().merge(
-  new Resource({
+const resource = defaultResource().merge(
+  resourceFromAttributes({
     [ATTR_SERVICE_NAME]: 'service-name-here',
     [ATTR_SERVICE_VERSION]: '0.1.0',
   }),
@@ -1736,33 +1773,34 @@ with `http` by using `http*`.
 Filter attributes on all metric types:
 
 ```js
-const limitAttributesView = new View({
+const limitAttributesView = {
   // only export the attribute 'environment'
   attributeKeys: ['environment'],
   // apply the view to all instruments
   instrumentName: '*',
-});
+};
 ```
 
 Drop all instruments with the meter name `pubsub`:
 
 ```js
-const dropView = new View({
-  aggregation: new DropAggregation(),
+const dropView = {
+  aggregation: { type: AggrgationType.DROP },
   meterName: 'pubsub',
-});
+};
 ```
 
 Define explicit bucket sizes for the Histogram named `http.server.duration`:
 
 ```js
-const histogramView = new View({
-  aggregation: new ExplicitBucketHistogramAggregation([
-    0, 1, 5, 10, 15, 20, 25, 30,
-  ]),
+const histogramView = {
+  aggregation: {
+    type: AggregationType.EXPLICIT_BUCKET_HISTOGRAM,
+    options: { boundaries: [0, 1, 5, 10, 15, 20, 25, 30] },
+  },
   instrumentName: 'http.server.duration',
   instrumentType: InstrumentType.HISTOGRAM,
-});
+};
 ```
 
 #### Attach to meter provider

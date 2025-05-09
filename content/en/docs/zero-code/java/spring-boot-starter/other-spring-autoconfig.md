@@ -18,9 +18,7 @@ OpenTelemetry Zipkin Exporter Starter is a starter package that includes the
 and spring framework starters required to setup distributed tracing. It also
 provides the
 [opentelemetry-exporters-zipkin](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/zipkin)
-artifact and corresponding exporter autoconfiguration. Check out
-[opentelemetry-spring-boot-autoconfigure](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features)
-for the list of supported libraries and features.
+artifact and corresponding exporter autoconfiguration.
 
 If an exporter is present in the classpath during runtime and a spring bean of
 the exporter is missing from the spring application context, an exporter bean is

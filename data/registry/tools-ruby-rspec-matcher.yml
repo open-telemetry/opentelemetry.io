@@ -18,4 +18,4 @@ createdAt: 2024-02-13
 package:
   registry: gems
   name: rspec-otel
-  version: 0.0.5
+  version: 0.0.6

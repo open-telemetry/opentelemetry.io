@@ -23,11 +23,17 @@
   oss: false
   commercial: true
 - name: AWS
-  nativeOTLP: false
+  nativeOTLP: true
   url: https://aws-otel.github.io
-  contact:
+  contact: opentelemetry@amazon.com
   oss: false
   commercial: true
+- name: OpenSearch
+  nativeOTLP: true
+  url: https://github.com/opensearch-project/OpenSearch
+  contact: opensearch@amazon.com
+  oss: true
+  commercial: false
 - name: Axiom
   nativeOTLP: true
   url: https://axiom.co/docs/send-data/opentelemetry
@@ -55,7 +61,7 @@
 - name: Causely
   distribution: false
   nativeOTLP: true
-  url: https://github.com/Causely/documentation
+  url: https://www.causely.ai/blog/using-opentelemetry-and-the-otel-collector-for-logs-metrics-and-traces
   contact: support@causely.io
   oss: false
   commercial: true
@@ -68,7 +74,7 @@
 - name: Chronosphere
   distribution: false
   nativeOTLP: true
-  url: https://docs.chronosphere.io/ingest/otel/otel-ingest
+  url: https://docs.chronosphere.io/ingest/
   contact: support@chronosphere.io
   oss: false
   commercial: true
@@ -76,6 +82,12 @@
   nativeOTLP: true
   url: https://docs.controlplane.com/reference/org#tracing
   contact: support@controlplane.com
+  oss: false
+  commercial: true
+- name: ControlTheory
+  nativeOTLP: true
+  url: https://www.controltheory.com/use-case/otel-collector-management/
+  contact: support@controltheory.com
   oss: false
   commercial: true
 - name: Coralogix
@@ -176,8 +188,8 @@
   commercial: true
 - name: KloudFuse
   nativeOTLP: true
-  url: https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/753860609/APM#Sending-traces-to-Kloudfuse-data-plane%3A
-  contact:
+  url: https://docs.kloudfuse.com/platform/latest/agent-otel/
+  contact: support@kloudfuse.com
   oss: false
   commercial: true
 - name: KloudMate
@@ -192,9 +204,9 @@
   contact: https://github.com/cartersocha
   oss: false
   commercial: true
-- name: Last9 Levitate
+- name: Last9
   nativeOTLP: true
-  url: https://docs.last9.io/docs/levitate-integrations-opentelemetry
+  url: https://last9.io/docs/integrations-opentelemetry/
   contact: hi@last9.io
   oss: false
   commercial: true
@@ -206,7 +218,7 @@
   commercial: true
 - name: Logz.io
   nativeOTLP: false
-  url: https://docs.logz.io/shipping/tracing-sources/opentelemetry.html#overview
+  url: https://docs.logz.io/docs/shipping/other/opentelemetry-data/
   contact:
   oss: false
   commercial: true
@@ -252,6 +264,12 @@
   contact:
   oss: false
   commercial: true
+- name: Otelic
+  nativeOTLP: true
+  url: https://otelic.com/en/open-telemetry-sample-instrumentation/nodejs-simple
+  contact: support@otelic.com
+  oss: false
+  commercial: true
 - name: observIQ
   nativeOTLP: true
   url: https://docs.bindplane.observiq.com
@@ -294,6 +312,12 @@
   contact:
   oss: false
   commercial: true
+- name: Parseable
+  nativeOTLP: true
+  url: https://www.parseable.com/docs/server/opentelemetry
+  contact: hi@parseable.com
+  oss: true
+  commercial: true
 - name: qryn
   nativeOTLP: true
   url: https://qryn.metrico.in/#/support?id=tempo-api
@@ -308,7 +332,7 @@
   commercial: true
 - name: Red Hat
   nativeOTLP: true
-  url: https://docs.openshift.com/container-platform/4.14/otel/otel-release-notes.html
+  url: https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/red_hat_build_of_opentelemetry/
   contact: ploffay@redhat.com
   oss: true
   commercial: true
@@ -328,11 +352,11 @@
   nativeOTLP: true
   url: https://signoz.io
   contact:
-  oss: true
+  oss: false
   commercial: true
 - name: SolarWinds
   nativeOTLP: true
-  url: https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=third-otel-integration
+  url: https://documentation.solarwinds.com/en/success_center/observability/content/intro/otel.htm
   contact:
   oss: false
   commercial: true
@@ -392,7 +416,7 @@
   commercial: true
 - name: GreptimeDB
   nativeOTLP: true
-  url: https://docs.greptime.com/user-guide/ingest-data/for-observerbility/opentelemetry
+  url: https://docs.greptime.com/user-guide/ingest-data/for-observability/opentelemetry/
   contact: info@greptime.com
   oss: true
   commercial: true
@@ -473,5 +497,11 @@
   nativeOTLP: true
   url: https://logease.cn/en-logease-observability-platform/
   contact: contact@yottabyte.cn
+  oss: false
+  commercial: true
+- name: DX O2 by Broadcom
+  nativeOTLP: true
+  url: 'https://techdocs.broadcom.com/us/en/ca-enterprise-software/it-operations-management/dx-operational-observability/saas/monitoring/opentelemetry.html'
+  contact: https://support.broadcom.com/web/ecx/software-contact-support
   oss: false
   commercial: true

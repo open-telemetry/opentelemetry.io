@@ -2,7 +2,6 @@
 title: コードベース
 description: コードベース計装のセットアップに不可欠なステップを学ぶ
 weight: 20
-cSpell:ignore: proxying
 default_lang_commit: d8c5612
 ---
 

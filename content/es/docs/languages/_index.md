@@ -5,6 +5,7 @@ description:
   lenguajes de programación populares.
 weight: 250
 default_lang_commit: 3815d1481fe753df10ea3dc26cbe64dba0230579
+drifted_from_default: true
 ---
 
 La [instrumentación][] de código de OpenTelemetry es compatible con los
@@ -55,6 +56,6 @@ Puedes encontrar una lista de referencias de API disponibles en </api-docs>.
 
 {{% /alert %}}
 
-[zero-code]: /docs/kubernetes/operator/automatic/
+[zero-code]: /docs/platforms/kubernetes/operator/automatic/
 [instrumentación]: /docs/concepts/instrumentation/
-[otel-op]: /docs/kubernetes/operator/
+[otel-op]: /docs/platforms/kubernetes/operator/

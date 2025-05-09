@@ -10,13 +10,11 @@ authenticators, providing a way to both authenticate incoming connections at the
 receiver's side, as well as adding authentication data to outgoing requests at
 the exporter's side.
 
-This mechanism is implemented on top of the
-[`extensions`](https://pkg.go.dev/go.opentelemetry.io/collector/component#Extension)
-framework and this document will guide you on implementing your own
-authenticators. If you are looking for documentation on how to use an existing
-authenticator, refer to the Getting Started page and to your authenticator's
-documentation. You can find a list of existing authenticators in this website's
-registry.
+This mechanism is implemented using [extensions] and this document will guide
+you on implementing your own authenticators. If you are looking for
+documentation on how to use an existing authenticator, refer to the Getting
+Started page and to your authenticator's documentation. You can find a list of
+existing authenticators in this website's registry.
 
 Use this guide for general directions on how to build a custom authenticator and
 refer to the up-to-date
@@ -29,21 +27,15 @@ room at the [CNCF Slack workspace](https://slack.cncf.io).
 
 ## Architecture
 
-Authenticators are regular extensions that also satisfy one or more interfaces
-related to the authentication mechanism:
-
-- [go.opentelemetry.io/collector/config/configauth/ServerAuthenticator](https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#ServerAuthenticator)
-- [go.opentelemetry.io/collector/config/configauth/GRPCClientAuthenticator](https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#GRPCClientAuthenticator)
-- [go.opentelemetry.io/collector/config/configauth/HTTPClientAuthenticator](https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#HTTPClientAuthenticator)
-
-Server authenticators are used with receivers, and are able to intercept HTTP
-and gRPC requests, while client authenticators are used with exporters, able to
-add authentication data to HTTP and gRPC requests. It is possible for
-authenticators to implement both interfaces at the same time, allowing a single
-instance of the extension to be used both for the incoming and outgoing
-requests. Note that users might still want to have different authenticators for
-the incoming and outgoing requests, so, don't make your authenticator required
-to be used at both ends.
+[Authenticators] are regular extensions that also satisfy one or more interfaces
+related to the authentication mechanism. [Server authenticators] are used with
+receivers, and are able to intercept HTTP and gRPC requests, while client
+authenticators are used with exporters, able to add authentication data to HTTP
+and gRPC requests. It is possible for authenticators to implement both
+interfaces at the same time, allowing a single instance of the extension to be
+used both for the incoming and outgoing requests. Note that users might still
+want to have different authenticators for the incoming and outgoing requests,
+so, don't make your authenticator required to be used at both ends.
 
 Once an authenticator extension is available in the collector distribution, it
 can be referenced in the configuration file as a regular extension:
@@ -129,7 +121,7 @@ service:
 
 ### Server authenticators
 
-A server authenticator is essentially an extension with an `Authenticate`
+A [server authenticator][sa] is essentially an extension with an `Authenticate`
 function, receiving the payload headers as parameter. If the authenticator is
 able to authenticate the incoming connection, it should return a `nil` error, or
 the concrete error if it can't. As an extension, the authenticator should make
@@ -147,11 +139,8 @@ debug specific failures.
 
 ### Client authenticators
 
-A client authenticator is one that implements one or more of the following
-interfaces:
-
-- [go.opentelemetry.io/collector/config/configauth/GRPCClientAuthenticator](https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#GRPCClientAuthenticator)
-- [go.opentelemetry.io/collector/config/configauth/HTTPClientAuthenticator](https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#HTTPClientAuthenticator)
+A _client authenticator_ is one that implements one or more of the interfaces
+defined in [Client authenticators].
 
 Similar to server authenticators, they are essentially extensions with extra
 functions, each receiving an object that gives the authenticator an opportunity
@@ -167,6 +156,14 @@ Custom authenticators have to be part of the same binary as the main collector.
 When building your own authenticator, you'll likely have to build a custom
 distribution as well, or provide means for your users to consume your extension
 as part of their own distributions. Fortunately, building a custom distribution
-can be done using the
-[OpenTelemetry Collector Builder](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder)
-utility.
+can be done using the [OpenTelemetry Collector Builder][builder] utility.
+
+[authenticators]:
+  https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth
+[builder]:
+  https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
+[client authenticators]:
+  https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#client-authenticators
+[extensions]: ../../configuration/#extensions
+[sa]:
+  https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#server-authenticators

@@ -3,8 +3,7 @@ title: Auto-Instrumentation Example
 linkTitle: Example
 weight: 20
 aliases: [/docs/languages/python/automatic/example]
-# prettier-ignore
-cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette uninstrumented venv werkzeug
+cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette venv
 ---
 
 This page demonstrates how to use Python auto-instrumentation in OpenTelemetry.
@@ -191,7 +190,7 @@ Stop the execution of `server_manual.py` by pressing <kbd>Control+C</kbd> and
 run the following command instead:
 
 ```sh
-opentelemetry-instrument --traces_exporter console --metrics_exporter none python server_automatic.py
+opentelemetry-instrument --traces_exporter console --metrics_exporter none --logs_exporter none python server_automatic.py
 ```
 
 In the console where you previously executed `client.py`, run the following
@@ -324,7 +323,7 @@ of HTTP header names via the environment variables
 ```sh
 export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_REQUEST="Accept-Encoding,User-Agent,Referer"
 export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_RESPONSE="Last-Modified,Content-Type"
-opentelemetry-instrument --traces_exporter console --metrics_exporter none python app.py
+opentelemetry-instrument --traces_exporter console --metrics_exporter none --logs_exporter none python app.py
 ```
 
 These configuration options are supported by the following HTTP

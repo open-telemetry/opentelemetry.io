@@ -1,7 +1,7 @@
 ---
 title: Architecture
 weight: 28
-cSpell:ignore: fanoutconsumer probabilisticsampler spanmetrics zpages
+cSpell:ignore: fanoutconsumer probabilisticsampler zpages
 ---
 
 The OpenTelemetry Collector is an executable file that can receive telemetry,
@@ -44,21 +44,18 @@ The following diagram represents a typical pipeline:
 title: Pipeline
 ---
 flowchart LR
-    R1(Receiver 1) --> P1[Processor 1]
-    R2(Receiver 2) --> P1
-    RM(...) ~~~ P1
-    RN(Receiver N) --> P1
-    P1 --> P2[Processor 2]
-    P2 --> PM[...]
-    PM --> PN[Processor N]
-    PN --> FO((fan-out))
-    FO --> E1[[Exporter 1]]
-    FO --> E2[[Exporter 2]]
-    FO ~~~ EM[[...]]
-    FO --> EN[[Exporter N]]
-
-    %% The stroke color matches the website header.
-    classDef default fill:#e3e8fc,stroke:#4f62ad
+  R1(Receiver 1) --> P1[Processor 1]
+  R2(Receiver 2) --> P1
+  RM(...) ~~~ P1
+  RN(Receiver N) --> P1
+  P1 --> P2[Processor 2]
+  P2 --> PM[...]
+  PM --> PN[Processor N]
+  PN --> FO((fan-out))
+  FO --> E1[[Exporter 1]]
+  FO --> E2[[Exporter 2]]
+  FO ~~~ EM[[...]]
+  FO --> EN[[Exporter N]]
 ```
 
 Pipelines can have one or more receivers. Data from all receivers is pushed to
@@ -123,13 +120,11 @@ of processors and exporters are omitted for brevity):
 
 ```mermaid
 flowchart LR
-    R1("`#quot;opentelemetry-collector#quot; Receiver`") --> FO((fan-out))
-    FO -->|Pipeline 'traces'| P1["`#quot;memory_limiter#quot; Processor`"]
-    FO -->|Pipeline 'traces/2'| P2["`#quot;transform#quot; Processor`"]
-    P1 ~~~ M1[...]
-    P2 ~~~ M2[...]
-
-    classDef default fill:#e3e8fc,stroke:#4f62ad;
+  R1("`#quot;opentelemetry-collector#quot; Receiver`") --> FO((fan-out))
+  FO -->|Pipeline 'traces'| P1["`#quot;memory_limiter#quot; Processor`"]
+  FO -->|Pipeline 'traces/2'| P2["`#quot;transform#quot; Processor`"]
+  P1 ~~~ M1[...]
+  P2 ~~~ M2[...]
 ```
 
 {{% alert title="Important" color="warning" %}}
@@ -191,12 +186,10 @@ this diagram (part of processors and receivers are omitted for brevity):
 
 ```mermaid
 flowchart LR
-    M1[...] ~~~ P1["`#quot;memory_limiter#quot; Processor`"]
-    M2[...] ~~~ P2["`#quot;transform#quot; Processor`"]
-    P1 -->|Pipeline 'traces'|E1[["`#quot;otlp#quot; Exporter`"]]
-    P2 -->|Pipeline 'traces/2'|E1
-
-    classDef default fill:#e3e8fc,stroke:#4f62ad;
+  M1[...] ~~~ P1["`#quot;memory_limiter#quot; Processor`"]
+  M2[...] ~~~ P2["`#quot;transform#quot; Processor`"]
+  P1 -->|Pipeline 'traces'|E1[["`#quot;otlp#quot; Exporter`"]]
+  P2 -->|Pipeline 'traces/2'|E1
 ```
 
 ### Processors
@@ -247,10 +240,8 @@ When the Collector loads this config, the result looks like this diagram:
 title: Pipeline "traces"
 ---
 flowchart LR
-    R1("`zipkin Receiver`") --> P1["`#quot;batch#quot; Processor`"]
-    P1 --> E1[["`#quot;otlp#quot; Exporter`"]]
-
-    classDef default fill:#e3e8fc,stroke:#4f62ad;
+  R1("`zipkin Receiver`") --> P1["`#quot;batch#quot; Processor`"]
+  P1 --> E1[["`#quot;otlp#quot; Exporter`"]]
 ```
 
 ```mermaid
@@ -258,10 +249,8 @@ flowchart LR
 title: Pipeline "traces/2"
 ---
 flowchart LR
-    R1("`otlp Receiver`") --> P1["`#quot;batch#quot; Processor`"]
-    P1 --> E1[["`#quot;otlp#quot; Exporter`"]]
-
-    classDef default fill:#e3e8fc,stroke:#4f62ad;
+  R1("`otlp Receiver`") --> P1["`#quot;batch#quot; Processor`"]
+  P1 --> E1[["`#quot;otlp#quot; Exporter`"]]
 ```
 
 Note that each `batch` processor is an independent instance, although they are
@@ -270,7 +259,7 @@ configured the same way with a `send_batch_size` of `10000`.
 > The same name of the processor must not be referenced multiple times in the
 > `processors` key of a single pipeline.
 
-## <a name="opentelemetry-agent"></a>Running as an agent
+## Running as an agent
 
 On a typical VM/container, user applications are running in some processes/pods
 with an OpenTelemetry library. Previously, the library did all the recording,
@@ -303,10 +292,8 @@ aggregation.
 
 ```mermaid
 flowchart LR
-    subgraph S1 ["#nbsp;"]
-        subgraph S2 ["#nbsp;"]
-        end
-        subgraph S3 ["#nbsp;"]
+  subgraph S1 ["#nbsp;"]
+      subgraph S2 ["#nbsp;"]
         subgraph VM [VM]
             PR["Process [Library]"] -->|Push sample spans, metrics| AB[Agent Binary]
             AB -->|Push configs| PR
@@ -332,21 +319,21 @@ flowchart LR
             APP4 --> AD
             APP6 --> AD
         end
-        end
-        subgraph Backends ["#nbsp;"]
-            AB --> BE[Backend]
-            AS --> PRM[Prometheus Backend]
-            AS --> JA[Jaeger Backend]
-            AD --> JA
-        end
-    end
+      end
+      subgraph Backends ["#nbsp;"]
+          AB --> BE[Backend]
+          AS --> PRM[Prometheus Backend]
+          AS --> JA[Jaeger Backend]
+          AD --> JA
+      end
+  end
 
-class S1,S2,S3 noLines;
+class S2 noLines;
 class VM,K8s-pod,K8s-node,Pod1,Pod2,Pod3,Backends withLines;
 class PR,AB,AC,AS,APP1,APP2,APP3,APP4,APP5,APP6,AD,BE,PRM,JA nodeStyle
-classDef noLines fill:#fff,stroke:#fff,stroke-width:4px;
-classDef withLines fill:#fff,stroke:#4f62ad
-classDef nodeStyle fill:#e3e8fc,stroke:#4f62ad;
+classDef noLines stroke:#fff,stroke-width:4px,color:#000000;
+classDef withLines fill:#fff,stroke:#4f62ad,color:#000000;
+classDef nodeStyle fill:#e3e8fc,stroke:#4f62ad,color:#000000;
 ```
 
 > For developers and maintainers of other libraries: By adding specific
@@ -354,7 +341,7 @@ classDef nodeStyle fill:#e3e8fc,stroke:#4f62ad;
 > other tracing/monitoring libraries, such as Zipkin, Prometheus, etc. See
 > [Receivers](#receivers) for details.
 
-## <a name="opentelemetry-collector"></a>Running as a gateway
+## Running as a gateway
 
 The OpenTelemetry Collector can run as a gateway instance and receive spans and
 metrics exported by one or more agents or libraries or by tasks/agents that emit
@@ -364,32 +351,32 @@ architecture:
 
 ```mermaid
 flowchart LR
-    subgraph S1 ["#nbsp;"]
-        subgraph S2 ["#nbsp;"]
+  subgraph S1 ["#nbsp;"]
+      subgraph S2 ["#nbsp;"]
         subgraph S3 ["#nbsp;"]
-        subgraph VM [VM]
-            PR["Process [Library]"]
-        end
-        subgraph K8s-pod [K8s Pod]
-            AC["`App Container [Library]`"]
-        end
-        subgraph K8s-node [K8s Node]
-            subgraph Pod1 [Pod]
-                APP1[App] ~~~ APP2[App]
-            end
-            subgraph Pod2 [Pod]
-                APP3[App] ~~~ APP4[App]
-            end
-            subgraph Pod3 [Pod]
-                APP5[App] ~~~ APP6[App]
-            end
-            subgraph AD [Agent Daemonset]
-            end
-            APP1 --> AD
-            APP2 --> AD
-            APP4 --> AD
-            APP6 --> AD
-        end
+          subgraph VM [VM]
+              PR["Process [Library]"]
+          end
+          subgraph K8s-pod [K8s Pod]
+              AC["`App Container [Library]`"]
+          end
+          subgraph K8s-node [K8s Node]
+              subgraph Pod1 [Pod]
+                  APP1[App] ~~~ APP2[App]
+              end
+              subgraph Pod2 [Pod]
+                  APP3[App] ~~~ APP4[App]
+              end
+              subgraph Pod3 [Pod]
+                  APP5[App] ~~~ APP6[App]
+              end
+              subgraph AD [Agent Daemonset]
+              end
+              APP1 --> AD
+              APP2 --> AD
+              APP4 --> AD
+              APP6 --> AD
+          end
         end
         subgraph S4 ["#nbsp;"]
             PR --> OTEL["`OpenTelemetry Collector Service`"]
@@ -397,28 +384,28 @@ flowchart LR
             AD --> OTEL
             OTEL ---> BE[Backend X]
         end
-        end
-        subgraph S5 ["#nbsp;"]
+      end
+      subgraph S5 ["#nbsp;"]
         subgraph S6 ["#nbsp;"]
             JA[Jaeger Backend]
         end
         subgraph S7 ["#nbsp;"]
             PRM[Prometheus Backend]
         end
-        end
-        JA ~~~ PRM
-        OTEL --> JA
-        OTEL --> PRM
-    end
+      end
+      JA ~~~ PRM
+      OTEL --> JA
+      OTEL --> PRM
+  end
 
 class S1,S3,S4,S5,S6,S7,S8 noLines;
 class VM,K8s-pod,K8s-node,Pod1,Pod2,Pod3 withLines;
 class S2 lightLines
 class PR,AC,APP1,APP2,APP3,APP4,APP5,APP6,AD,OTEL,BE,JA,PRM nodeStyle
-classDef noLines fill:#fff,stroke:#fff,stroke-width:4px;
-classDef withLines fill:#fff,stroke:#4f62ad
-classDef lightLines fill:#fff,stroke:#acaeb0
-classDef nodeStyle fill:#e3e8fc,stroke:#4f62ad;
+classDef noLines stroke-width:0px,color:#000000;
+classDef withLines fill:#fff,stroke:#4f62ad,color:#000000;
+classDef lightLines stroke:#acaeb0,color:#000000;
+classDef nodeStyle fill:#e3e8fc,stroke:#4f62ad,color:#000000;
 ```
 
 The OpenTelemetry Collector can also be deployed in other configurations, such

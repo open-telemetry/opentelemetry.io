@@ -78,7 +78,7 @@ rm -Rf $DEST
 mkdir -p $DEST
 cp -R $SRC/* $DEST/
 
-find $DEST/ -name "README.md" -exec sh -c 'f="{}"; mv -- "$f" "${f%README.md}_index.md"' \;
+# find $DEST/ -name "README.md" -exec sh -c 'f="{}"; mv -- "$f" "${f%README.md}_index.md"' \;
 
 # To exclude a file use, e.g.: -not -path '*/specification/_index.md'
 FILES=$(find $DEST -name "*.md")

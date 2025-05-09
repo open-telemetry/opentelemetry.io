@@ -3,8 +3,7 @@ title: Getting Started
 description: Get telemetry from your app in less than 5 minutes!
 aliases: [getting_started]
 weight: 10
-# prettier-ignore
-cSpell:ignore: darwin rolldice sinatra struct Tracestate tracestate truffleruby
+cSpell:ignore: darwin rolldice sinatra struct tracestate truffleruby
 ---
 
 This page will show you how to get started with OpenTelemetry in Ruby.
@@ -16,7 +15,7 @@ You will learn how you can instrument a simple application, in such a way that
 
 Ensure that you have the following installed locally:
 
-- MRI Ruby >= `3.0`, jruby >= `9.3.2.0`, or truffleruby >= 22.1
+- CRuby >= `3.0`, JRuby >= `9.3.2.0`, or TruffleRuby >= `22.1`
 - [Bundler](https://bundler.io/)
 
 {{% alert  title="Warning" color="warning" %}} While tested, support for `jruby`
@@ -190,7 +189,7 @@ a few more features that will allow you gain even deeper insights!
 
 [traces]: /docs/concepts/signals/traces/
 [instrumentations]:
-  https://github.com/open-telemetry/opentelemetry-ruby#instrumentation-libraries
+  https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation
 [config]: ../libraries/#configuring-specific-instrumentation-libraries
 [exporters]: ../exporters/
 [context propagation]: ../instrumentation/#context-propagation

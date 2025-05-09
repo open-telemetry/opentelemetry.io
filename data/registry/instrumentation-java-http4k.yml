@@ -19,4 +19,4 @@ isFirstParty: true
 package:
   registry: maven
   name: org.http4k/http4k-opentelemetry
-  version: 5.45.2.0
+  version: 4.48.2.0

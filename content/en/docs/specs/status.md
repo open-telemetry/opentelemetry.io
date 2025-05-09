@@ -59,7 +59,7 @@ same as the **Protocol** status.
 - [Specification][tracing]
 - {{% spec_status "API" "otel/trace/api" "Status" %}}
 - {{% spec_status "SDK" "otel/trace/sdk" "Status" %}}
-- {{% spec_status "Protocol" "otlp" "/document-status/.*for.*trace" %}}
+- {{% spec_status "Protocol" "otlp" "/document-status.*for.*trace" %}}
 - Notes:
   - The tracing specification is now completely stable, and covered by long term
     support.
@@ -73,7 +73,7 @@ same as the **Protocol** status.
 - [Specification][metrics]
 - {{% spec_status "API" "otel/metrics/api" "Status" %}}
 - {{% spec_status "SDK" "otel/metrics/sdk" "Status" %}}
-- {{% spec_status "Protocol" "otlp" "/document-status/.*for.*metric" %}}
+- {{% spec_status "Protocol" "otlp" "/document-status.*for.*metric" %}}
 - Notes:
   - OpenTelemetry Metrics is currently under active development.
   - The data model is stable and released as part of the OTLP protocol.
@@ -98,7 +98,7 @@ same as the **Protocol** status.
 - [Specification][logging]
 - {{% spec_status "Bridge API" "otel/logs/api" "Status" %}}
 - {{% spec_status "SDK" "otel/logs/sdk" "Status" %}}
-- {{% spec_status "Protocol" "otlp" "/document-status/.*for.*log" %}}
+- {{% spec_status "Protocol" "otlp" "/document-status.*for.*log" %}}
 - Notes:
   - The [logs data model][] is released as part of the OpenTelemetry Protocol.
   - Log processing for many data formats has been added to the Collector, thanks
@@ -116,7 +116,7 @@ same as the **Protocol** status.
 ### Profiles
 
 - [Specification][profiles]
-- {{% spec_status "Protocol" "otlp" "/document-status/.*for.*profiles" %}}
+- {{% spec_status "Protocol" "otlp" "/document-status.*for.*profiles" %}}
 
 [baggage]: /docs/specs/otel/baggage/
 [event semantic conventions]: /docs/specs/semconv/general/events/

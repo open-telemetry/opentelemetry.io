@@ -227,4 +227,4 @@ for more information.
 
 _A version of this article was [originally posted][] on the New Relic blog._
 
-[originally posted]: {{% param canonical_url %}}
+[originally posted]: <{{% param canonical_url %}}>

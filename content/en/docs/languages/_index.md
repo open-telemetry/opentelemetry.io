@@ -5,7 +5,9 @@ description:
   languages
 weight: 250
 aliases: [/docs/instrumentation]
-redirects: [{ from: /docs/instrumentation/*, to: ':splat' }] # Only for `en`
+redirects:
+  - { from: /docs/instrumentation/*, to: ':splat' } # Only for `en`
+  - { from: 'net/*', to: 'dotnet/:splat' }
 ---
 
 OpenTelemetry code [instrumentation][] is supported for the languages listed in
@@ -54,6 +56,6 @@ The list above is aliased to [`/api`](/api).
 
 {{% /alert %}}
 
-[zero-code]: /docs/kubernetes/operator/automatic/
+[zero-code]: /docs/platforms/kubernetes/operator/automatic/
 [instrumentation]: /docs/concepts/instrumentation/
-[otel-op]: /docs/kubernetes/operator/
+[otel-op]: /docs/platforms/kubernetes/operator/

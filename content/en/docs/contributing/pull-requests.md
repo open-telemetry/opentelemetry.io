@@ -1,19 +1,28 @@
 ---
 title: Submitting content
 description:
-  Learn how to submit new or changed content using the GitHub UI or a local
+  Learn how to submit new or changed content using the GitHub UI or from a local
   fork.
 aliases: [new-content]
 weight: 15
 ---
 
-To contribute new or improve existing documentation content, submit a [pull
-request][PR] (PR):
+To contribute new or improve existing documentation, submit a [pull request][PR]
+(PR):
 
-- If your change is small, or you're unfamiliar with Git, see
-  [Changes using GitHub](#changes-using-github) to learn how to edit a page.
-- If your changes are large, see [Work from a local fork](#fork-the-repo) to
-  learn how to make changes locally on your computer.
+- If your change is small, or you're unfamiliar with [Git], see
+  [Using GitHub](#changes-using-github) to learn how to edit a page.
+- Otherwise, see [Work from a local fork](#fork-the-repo) to learn how to make
+  changes in your own local development environment.
+
+{{% alert title="Contributor License Agreement (CLA)" color=warning %}}
+
+All contributors are required to [sign a Contributor License Agreement
+(CLA)][CLA] before changes can be reviewed and merged.
+
+[CLA]: ../prerequisites/#cla
+
+{{% /alert %}}
 
 {{% alert title="Tip: Draft status" %}}
 
@@ -47,20 +56,13 @@ class first,second white
 
 _Figure 1. Contributing new content._
 
-## Changes using GitHub {#changes-using-github}
+## Using GitHub {#changes-using-github}
+
+### Edit and submit changes from your browser {#page-edit-from-browser}
 
 If you're less experienced with Git workflows, here's an easier method of
-creating and submitting a pull request. Figure 2 outlines the steps and the
-details follow.
-
-{{% alert title="Contributor License Agreement (CLA)" color=warning %}}
-
-All contributors are required to [sign a Contributor License Agreement
-(CLA)][CLA] before changes can be approved and merged.
-
-[CLA]: ../prerequisites/#cla
-
-{{% /alert %}}
+preparing and opening a new pull request (PR). Figure 2 outlines the steps and
+the details follow.
 
 ```mermaid
 flowchart LR
@@ -68,14 +70,14 @@ A([fa:fa-user New<br>Contributor]) --- id1[(open-telemetry/opentelemetry.io<br>G
 subgraph tasks[Changes using GitHub]
 direction TB
     0[ ] -.-
-    1[1. Edit this page] --> 2[2. Use GitHub markdown<br>editor to make changes]
-    2 --> 3[3. fill in Propose file change]
+    1[1\. Edit this page] --> 2[2\. Use GitHub markdown<br>editor to make changes]
+    2 --> 3[3\. Fill in Propose file change]
 
 end
 subgraph tasks2[ ]
 direction TB
-4[4. select Propose file change] --> 5[5. select Create pull request] --> 6[6. fill in Open a pull request]
-6 --> 7[7. select Create pull request]
+4[4\. Select Propose file change] --> 5[5\. Select Create pull request] --> 6[6\. Fill in Open a pull request]
+6 --> 7[7\. Select Create pull request]
 end
 
 id1 --> tasks --> tasks2
@@ -124,21 +126,47 @@ If a reviewer asks you to make changes:
 When your review is complete, a reviewer merges your PR and your changes goes
 live a few minutes later.
 
-{{% alert title="Tip" %}}
+### Fixing PR check failures {#fixing-prs-in-github}
 
-Comment `/fix:format` on your pull request to trigger an automated check for
-formatting issues.
+After you've submitted a PR, GitHub runs some build checks. Certain check
+failures, like formatting issues, can be fixed automatically.
+
+Add the following comment to your PR:
+
+```text
+/fix:all
+```
+
+This will trigger the OpenTelemetry bot to try to fix build issues. Or you can
+issue one of the following fix commands to address a specific failure:
+
+```text
+fix:dict
+fix:expired
+fix:filenames
+fix:format
+fix:htmltest-config
+fix:i18n
+fix:markdown
+fix:refcache
+fix:submodule
+fix:text
+```
+
+{{% alert title="Pro tip" %}}
+
+You can also run the `fix` commands locally. For the complete list of fix
+commands, run `npm run -s '_list:fix:*'`.
 
 {{% /alert %}}
 
-## Work from a local fork {#fork-the-repo}
+## Working locally {#fork-the-repo}
 
 If you're more experienced with Git, or if your changes are larger than a few
 lines, work from a local fork.
 
-Make sure you have
-[git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed
-on your computer. You can also use a user interface for Git.
+Make sure you have [`git` installed] on your computer. You can also use a user
+interface for Git.
 
 Figure 3 shows the steps to follow when you work from a local fork. The details
 for each step follow.
@@ -170,14 +198,14 @@ class changes,changes2 white
 
 _Figure 3. Working from a local fork to make your changes._
 
-### Fork the opentelemetry.io repository
+### Fork the repository
 
 1. Navigate to the
    [`opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io/)
    repository.
 1. Select **Fork**.
 
-### Create a local clone and set the upstream
+### Clone and set upstream
 
 1. In a terminal window, clone your fork and install the requirements:
 
@@ -280,7 +308,7 @@ When you are ready to submit a pull request, commit your changes.
 
 1. Once the changes are pushed, GitHub lets you know that you can create a PR.
 
-### Open a pull request from your fork {#open-a-pr}
+### Open a new PR {#open-a-pr}
 
 Figure 4 shows the steps to open a PR from your fork to
 [opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io).
@@ -289,15 +317,15 @@ Figure 4 shows the steps to open a PR from your fork to
 flowchart LR
 subgraph first[ ]
 direction TB
-1[1. Go to opentelemetry.io repository] --> 2[2. Select New Pull Request]
-2 --> 3[3. Select compare across forks]
-3 --> 4[4. Select your fork from<br>head repository drop-down menu]
+1[1\. Go to opentelemetry.io repository] --> 2[2\. Select New Pull Request]
+2 --> 3[3\. Select compare across forks]
+3 --> 4[4\. Select your fork from<br>head repository drop-down menu]
 end
 subgraph second [ ]
 direction TB
-5[5. Select your branch from<br>the compare drop-down menu] --> 6[6. Select Create Pull Request]
-6 --> 7[7. Add a description<br>to your PR]
-7 --> 8[8. Select Create pull request]
+5[5\. Select your branch from<br>the compare drop-down menu] --> 6[6\. Select Create Pull Request]
+6 --> 7[7\. Add a description<br>to your PR]
+7 --> 8[8\. Select Create pull request]
 end
 
 first --> second
@@ -346,7 +374,7 @@ using [Netlify](https://www.netlify.com/).
 
 Other checks might also fail. See the [list of all PR checks](../pr-checks).
 
-### Fix content issues automatically
+### Fix issues {#fix-issues}
 
 Before submitting a change to the repository, run the following command and (i)
 address any reported issues, (ii) commit any files changed by the script:
@@ -365,10 +393,10 @@ npm run fix:all # May update files
 To list available NPM scripts, run `npm run`. See [PR checks](../pr-checks) for
 more information on pull request checks and how to fix errors automatically.
 
-### Preview your changes locally {#preview-locally}
+### Preview your changes {#preview-locally}
 
 Preview your changes locally before pushing them or opening a pull request. A
-preview lets you catch build errors or markdown formatting problems.
+preview lets you catch build errors or Markdown formatting problems.
 
 To build and serve the site locally with Hugo, run the following command:
 
@@ -376,7 +404,7 @@ To build and serve the site locally with Hugo, run the following command:
 npm run serve
 ```
 
-Navigate to `http://localhost:1313` in your web browser to see the local
+Navigate to <http://localhost:1313> in your web browser to see the local
 preview. Hugo watches for changes and rebuilds the site as needed.
 
 To stop the local Hugo instance, go back to the terminal and type `Ctrl+C`, or
@@ -503,6 +531,9 @@ Pull requests are merged when they comply with the following criteria:
 - Approved by at least one approver.
 - No failing PR checks.
 - PR branch is up-to-date with the base branch.
+- Doc page changes [do not span locales][].
+
+[do not span locales]: ../localization/#prs-should-not-span-locales
 
 > **Important**
 >
@@ -513,4 +544,6 @@ Pull requests are merged when they comply with the following criteria:
 [dashboard]: https://app.netlify.com/sites/opentelemetry/overview
 [deploy preview]:
   https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/
+[Git]: https://docs.github.com/en/get-started/using-git/about-git
+[`git` installed]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 [PR]: https://docs.github.com/en/pull-requests
