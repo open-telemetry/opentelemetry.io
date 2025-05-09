@@ -45,8 +45,6 @@ docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090
 
 {{% alert-md title=Nota color=info %}}
 
-<div class="alert alert-info" role="alert"><h4 class="alert-heading">Nota</h4>
-
 Ao utilizar o OTLP Receiver do Prometheus, certifique-se de definir o endpoint
 OTLP das métricas em sua aplicação para `http://localhost:9090/api/v1/otlp`.
 
