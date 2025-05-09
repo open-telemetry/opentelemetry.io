@@ -31,8 +31,8 @@ UTC on
 [Helios Voting](https://vote.heliosvoting.org/helios/elections/176e7ca8-647d-11ef-9b9a-2a30e2a223da/view);
 voters will need to sign in with their GitHub account.
 
-To learn more about the election process, read about all the details
-[here](https://github.com/open-telemetry/community/blob/main/elections/2024/governance-committee-election.md).
+For more information, see the
+[OpenTelemetry 2024 Governance Committee election](https://github.com/open-telemetry/community/blob/main/elections/2024/governance-committee-election.md).
 
 ## Interested in joining the Governance Committee?
 
