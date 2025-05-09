@@ -1,0 +1,124 @@
+---
+title: Handling Sensitive Data
+description:
+  Best practices and guidance for handling sensitive data in OpenTelemetry
+weight: 100
+cSpell:ignore: anonymization
+---
+
+When implementing OpenTelemetry, it's crucial to be mindful of sensitive data
+handling. The collection of telemetry data always carries the risk of
+inadvertently capturing sensitive or personal information that may be subject to
+various privacy regulations and compliance requirements.
+
+## Your Responsibility
+
+OpenTelemetry enables you to collect telemetry data, but it cannot determine
+what data is sensitive in your specific context. As the implementer, you are
+responsible for:
+
+- Ensuring compliance with applicable privacy laws and regulations
+- Protecting sensitive information in your telemetry data
+- Obtaining necessary consents for data collection
+- Implementing appropriate data handling and storage practices
+
+Additionally, you are responsible for understanding and reviewing the telemetry
+data emitted by any instrumentation libraries you use, as these libraries may
+collect and expose sensitive information as well.
+
+## Sensitive Data Considerations
+
+What data is sensitive varies from situation to situation. Be particularly
+careful with:
+
+- Personal Identifiable Information (PII)
+- Authentication credentials
+- Session tokens
+- Financial information
+- Health-related data
+- User behavior data
+
+## Data Minimization
+
+When collecting telemetry potentially sensitive data, follow the principle of
+[data minimization](https://en.wikipedia.org/wiki/Data_minimization). This
+means:
+
+- Only collect data that serves an observability purpose.
+- Avoid collecting personal information unless absolutely necessary.
+- Consider whether aggregated or anonymized data could serve the same purpose.
+- Regularly review collected attributes to ensure they remain necessary.
+
+## Protecting Sensitive Data
+
+As outlined above, the best thing you can do is not collecting data, that is
+sensitive or potentially sensitive. However you mean want to collect this data
+under certain circumstances, or you have no full control over the data being
+collected, and need ways to scrape the data in post processing. The following
+suggestions can help you with that.
+
+The [OpenTelemetry Collector](/docs/collector) provides several processors that
+can help manage sensitive data:
+
+- [`attribute` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor):
+  Remove or modify specific attributes
+- [`filter` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor):
+  Filter out entire spans or metrics containing sensitive data
+- [`redaction` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor):
+  Deletes span, log, and metric datapoint attributes that don’t match a list of
+  allowed attributes.
+- [`transform` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor):
+  Transform data using regular expressions
+
+For example the following configuration for the `attribute` processor is
+deleting and redacting sensitive
+[`user`](/docs/specs/semconv/attributes-registry/user/#user-hash) information:
+
+```yaml
+processors:
+  attributes/example:
+    actions:
+      - key: user.email
+        action: hash
+      - key: user.full_name
+        action: delete
+```
+
+Similarly, the following configuration for the `transform` processor can be used
+remove the `user.id` and replace it with a `user.hash`:
+
+```yaml
+transform:
+  trace_statements:
+    - context: span
+      statements:
+        - set(attributes["user.hash"], SHA256(attributes["user.id"]))
+        - delete_key(attributes, "user.id")
+```
+
+{{% alert title="Risk and Limitations of hashing for anonymization" color="warning" %}}
+
+Hashing the ID or name of a user may not provide the level of anonymization you
+need, since hashes are reversible in practice if the input space is small and
+predictable (e.g. numeric user IDs).
+
+{{% /alert %}}
+
+As an alternative to hashing you can truncate data, or group it by a common
+prefix or suffix. This for example applies to dates (keep only the year, or the
+year + month), email addresses (keep domain, drop local-part) or IP addresses
+(drop the last octet of IPv4). For example, the following configuration for the
+`transform` processor drops the last octet of a `client.address` attribute:
+
+```yaml
+transform:
+  trace_statements:
+    - context: span
+      statements:
+        - replace_pattern(attributes["my.span.attr"], "\\.\\d+$", ".0")
+```
+
+Finally, an example for the `redaction` processor to delete certain attributes,
+can be found in the section
+["Scrub sensitive data"](/docs/security/config-best-practices/#scrub-sensitive-data)
+in the collector configuration page.

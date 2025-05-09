@@ -2083,6 +2083,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:23:53.281475-05:00"
   },
+  "https://en.wikipedia.org/wiki/Data_minimization": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-08T16:17:06.643424+02:00"
+  },
   "https://en.wikipedia.org/wiki/Directed_acyclic_graph": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:23:27.732895-05:00"
