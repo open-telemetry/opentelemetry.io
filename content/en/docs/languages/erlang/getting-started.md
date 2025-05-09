@@ -32,7 +32,8 @@ it with OpenTelemetry. For reference, a complete example of the code you will
 build can be found here:
 [opentelemetry-erlang-contrib/examples/roll_dice](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples/roll_dice).
 
-Additional examples can be found [here](/docs/languages/erlang/examples/).
+Additional examples can be found in
+[opentelemetry-erlang-contrib examples](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples).
 
 ### Initial Setup
 
