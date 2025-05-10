@@ -1,5 +1,6 @@
 ---
 title: Securely Exposing Your  OTEL Collector in Kubernetes with Gateway API and mTLS
+linkTitle: tbd
 date: 2025-04-6
 author: >
   [Vipin Vijaykumar](https://github.com/vipinvkmenon)
@@ -8,16 +9,14 @@ cSpell:ignore: Danielson
 ---
 
 # Securely Exposing Your  OTEL Collector in Kubernetes with Gateway API and mTLS
-**Goal:** 
-
-Exposing an OpenTelemetry (OTEL) Collector running inside Kubernetes to the outside world securely, using the Kubernetes Gateway API and mutual TLS (mTLS) for authentication and encryption. 
+The goal of this blog post is to demonstrate, how you can expose an OpenTelemetry (OTel) Collector running inside Kubernetes to the outside world securely, using the Kubernetes Gateway API and mutual TLS (mTLS) for authentication and encryption. 
 
 As observability becomes increasingly critical in modern distributed systems, centralizing telemetry data via an OTEL Collector is common practice. Often, services or agents running *outside* your Kubernetes cluster need to send data *to* this collector. Exposing internal services requires careful consideration of security and standardization. This is where the Kubernetes Gateway API and mTLS shine.
 
-Typicall this kind of a setup is useful when you have applications/ workloads that are external to the cluster and you need to collect the telemetry data. Some examples:
+Typically this kind of a setup is useful when you have applications/ workloads that are external to the cluster and you need to collect the telemetry data. Some examples:
 
 - **Hybrid Cloud/On-Premise Environments:** Applications or servers running in a traditional data center, or a different cloud or external to your Kubernetes cluster need to forward their metrics, traces, or logs to your central observability solution.
--  **Multi-Cluster Telemetry Aggregation:** In a setup with multiple Kubernetes clusters, you might designate one cluster to host the primary OTEL collector. Collectors in other "spoke" clusters would act as clients, exporting data to this central collector via its external endpoint.
+- **Multi-Cluster Telemetry Aggregation:** In a setup with multiple Kubernetes clusters, you might designate one cluster to host the primary OTEL collector. Collectors in other "spoke" clusters would act as clients, exporting data to this central collector via its external endpoint.
 -  **Edge Computing / IoT:** Devices deployed at the edge often need to send operational data back to a central platform.
 -  **Serverless Functions / PaaS:** Applications running on serverless platforms (like AWS Lambda, Google Cloud Functions) or Platform-as-a-Service offerings outside your cluster may need to export OTLP data.
 -  **External Monitoring Agents:** Third-party agents or locally running development instances needing to connect to a shared collector within the cluster.
@@ -32,14 +31,15 @@ Before we start, ensure you have the following:
 4.  **A Gateway API Implementation:** We'll use **Istio** in this example. Other implementations like Contour, Nginx Gateway Fabric,   etc., would also work with potentially minor configuration adjustments.
 5.  **`openssl`:** For generating certificates.
 
-*A note on Gateway/Service Mesh implementation: Since certain parts of the Gateway API are still in alpha/beta phase the support for certain aspects may vary or may not be enabled by default. Please refer to the documentation of the Gateway that you are using. For e.g:
-As of this writing (Apr 2025) If you are using istio ensure that `PILOT_ENABLE_ALPHA_GATEWAY_API` is enabled duing the install. This can change over time*
+{{% alert %}}
+
+Since certain parts of the Gateway API are still in alpha/beta phase the support for certain aspects may vary or may not be enabled by default. Please refer to the documentation of the Gateway that you are using. For example as of this writing (Mid-2025), if you are using istio ensure that `PILOT_ENABLE_ALPHA_GATEWAY_API` is enabled during the install.
+
+{{% /alert %}}
 
 ## What is the Kubernetes Gateway API?
 
-The [Kubernetes Gateway API](https://gateway-api.sigs.k8s.io/) is an evolution of the older Ingress API. It provides a more expressive, role-oriented, and flexible way to manage inbound traffic to your cluster. The [GAMMA initiative](https://gateway-api.sigs.k8s.io/mesh/gamma/) defines the Gateway API implementation.
-
-**Why was it introduced?**
+The [Kubernetes Gateway API](https://gateway-api.sigs.k8s.io/) is an evolution of the older Ingress API. It provides a more expressive, role-oriented, and flexible way to manage inbound traffic to your cluster. The [GAMMA initiative](https://gateway-api.sigs.k8s.io/mesh/gamma/) defines the Gateway API implementation. It was introduced for the following reasons:
 
 - **Limitations of Ingress:** The Ingress API, while useful, became limiting. It lacked standardization across implementations and also limited routing capabilities that varied widely across different implementations.
 - **Role Separation:** Gateway API separates concerns:
@@ -123,8 +123,11 @@ openssl req -newkey rsa:4096 -nodes -keyout client.key -out client.csr -subj "${
 openssl x509 -req -in client.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out client.pem -days 365 -sha256
 ```
 
-**Production Note:** For production, never use self-signed certificates for external-facing endpoints accessible from the public internet. Use certificates issued by a trusted public CA (e.g., Let's Encrypt through cert-manager) or a managed internal PKI system. The process of obtaining certs would differ, but the concepts of using them in Kubernetes remain similar. Ensure the server certificate's Common Name (CN) or Subject Alternative Name (SAN) matches the hostname clients use to connect.
+{{% alert %}}
 
+For production, never use self-signed certificates for external-facing endpoints accessible from the public internet. Use certificates issued by a trusted public CA (e.g., Let's Encrypt through cert-manager) or a managed internal PKI system. The process of obtaining certs would differ, but the concepts of using them in Kubernetes remain similar. Ensure the server certificate's Common Name (CN) or Subject Alternative Name (SAN) matches the hostname clients use to connect.
+
+{{% /alert %}}
 ## Step 3: Create `otel-collector` namespace
 
 We will deploy our otel-collector setup in the given namespace.
