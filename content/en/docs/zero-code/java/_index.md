@@ -7,7 +7,7 @@ aliases:
 cascade:
   vers:
     instrumentation: 2.15.0
-    otel: 1.49.0
+    otel: 1.50.0
 ---
 
 Common options for zero-code instrumentation with Java are the Java agent JAR,
