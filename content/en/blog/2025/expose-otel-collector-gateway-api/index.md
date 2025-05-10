@@ -1,89 +1,148 @@
 ---
-title: Securely Exposing Your  OTEL Collector in Kubernetes with Gateway API and mTLS
-linkTitle: tbd
-date: 2025-04-6
+title: Exposing OTel Collector in Kubernetes with Gateway API & mTLS
+linkTitle: OTel with gateway and mtls
+date: 2025-04-06
 author: >
   [Vipin Vijaykumar](https://github.com/vipinvkmenon)
-sig: OpenTelemetry JS
-cSpell:ignore: Danielson
+sig: End-User SIG
+cSpell:ignore: ingressgateway otlpgrpc Vijaykumar Vipin
 ---
 
-# Securely Exposing Your  OTEL Collector in Kubernetes with Gateway API and mTLS
-The goal of this blog post is to demonstrate, how you can expose an OpenTelemetry (OTel) Collector running inside Kubernetes to the outside world securely, using the Kubernetes Gateway API and mutual TLS (mTLS) for authentication and encryption. 
+The goal of this blog post is to demonstrate, how you can expose an
+OpenTelemetry (OTel) Collector running inside Kubernetes to the outside world
+securely, using the Kubernetes Gateway API and mutual TLS (mTLS) for
+authentication and encryption.
 
-As observability becomes increasingly critical in modern distributed systems, centralizing telemetry data via an OTEL Collector is common practice. Often, services or agents running *outside* your Kubernetes cluster need to send data *to* this collector. Exposing internal services requires careful consideration of security and standardization. This is where the Kubernetes Gateway API and mTLS shine.
+As observability becomes increasingly critical in modern distributed systems,
+centralizing telemetry data via an OTel Collector is common practice. Often,
+services or agents running _outside_ your Kubernetes cluster need to send data
+_to_ this collector. Exposing internal services requires careful consideration
+of security and standardization. This is where the Kubernetes Gateway API and
+mTLS shine.
 
-Typically this kind of a setup is useful when you have applications/ workloads that are external to the cluster and you need to collect the telemetry data. Some examples:
+Typically this kind of a setup is useful when you have applications/ workloads
+that are external to the cluster and you need to collect the telemetry data.
+Some examples:
 
-- **Hybrid Cloud/On-Premise Environments:** Applications or servers running in a traditional data center, or a different cloud or external to your Kubernetes cluster need to forward their metrics, traces, or logs to your central observability solution.
-- **Multi-Cluster Telemetry Aggregation:** In a setup with multiple Kubernetes clusters, you might designate one cluster to host the primary OTEL collector. Collectors in other "spoke" clusters would act as clients, exporting data to this central collector via its external endpoint.
--  **Edge Computing / IoT:** Devices deployed at the edge often need to send operational data back to a central platform.
--  **Serverless Functions / PaaS:** Applications running on serverless platforms (like AWS Lambda, Google Cloud Functions) or Platform-as-a-Service offerings outside your cluster may need to export OTLP data.
--  **External Monitoring Agents:** Third-party agents or locally running development instances needing to connect to a shared collector within the cluster.
+- **Hybrid Cloud/On-Premise Environments:** Applications or servers running in a
+  traditional data center, or a different cloud or external to your Kubernetes
+  cluster need to forward their metrics, traces, or logs to your central
+  observability solution.
+- **Multi-Cluster Telemetry Aggregation:** In a setup with multiple Kubernetes
+  clusters, you might designate one cluster to host the primary OTel collector.
+  Collectors in other "spoke" clusters would act as clients, exporting data to
+  this central collector via its external endpoint.
+- **Edge Computing / IoT:** Devices deployed at the edge often need to send
+  operational data back to a central platform.
+- **Serverless Functions / PaaS:** Applications running on serverless platforms
+  (like AWS Lambda, Google Cloud Functions) or Platform-as-a-Service offerings
+  outside your cluster may need to export OTLP data.
+- **External Monitoring Agents:** Third-party agents or locally running
+  development instances needing to connect to a shared collector within the
+  cluster.
 
 ## Prerequisites
 
 Before we start, ensure you have the following:
 
-1.  **A Kubernetes Cluster:** Minikube, Kind, Docker Desktop, Gardener or a cloud provider's managed Kubernetes service will work. 
-2.  **`kubectl`:** Configured to interact with your cluster.
-3.  **`helm`:**  Configured to install helm charts.
-4.  **A Gateway API Implementation:** We'll use **Istio** in this example. Other implementations like Contour, Nginx Gateway Fabric,   etc., would also work with potentially minor configuration adjustments.
-5.  **`openssl`:** For generating certificates.
+1.  **A Kubernetes Cluster:** Minikube, Kind, Docker Desktop, Gardener or a
+    cloud provider's managed Kubernetes service will work.
+2.  **`kubectl`:** [Configure](https://kubernetes.io/docs/reference/kubectl/) to
+    interact with your cluster.
+3.  **`helm`:** [Configure](https://helm.sh/) to install helm charts.
+4.  **A Gateway API Implementation:** We'll use
+    [Istio](https://istio.io/latest/docs/overview/what-is-istio/) in this
+    example. Other implementations like Contour, NGINX Gateway Fabric, etc.,
+    would also work with potentially minor configuration adjustments.
+5.  **`openssl`:** The openssl
+    [cli](https://github.com/openssl/openssl/wiki/Binaries) for generating
+    certificates.
 
 {{% alert %}}
 
-Since certain parts of the Gateway API are still in alpha/beta phase the support for certain aspects may vary or may not be enabled by default. Please refer to the documentation of the Gateway that you are using. For example as of this writing (Mid-2025), if you are using istio ensure that `PILOT_ENABLE_ALPHA_GATEWAY_API` is enabled during the install.
+Since certain parts of the Gateway API are still in alpha/beta phase the support
+for certain aspects may vary or may not be enabled by default. Please refer to
+the documentation of the Gateway that you are using. For example as of this
+writing (Mid-2025), if you are using istio ensure that
+`PILOT_ENABLE_ALPHA_GATEWAY_API` is enabled during the install.
 
 {{% /alert %}}
 
 ## What is the Kubernetes Gateway API?
 
-The [Kubernetes Gateway API](https://gateway-api.sigs.k8s.io/) is an evolution of the older Ingress API. It provides a more expressive, role-oriented, and flexible way to manage inbound traffic to your cluster. The [GAMMA initiative](https://gateway-api.sigs.k8s.io/mesh/gamma/) defines the Gateway API implementation. It was introduced for the following reasons:
+The [Kubernetes Gateway API](https://gateway-api.sigs.k8s.io/) is an evolution
+of the older Ingress API. It provides a more expressive, role-oriented, and
+flexible way to manage inbound traffic to your cluster. The
+[GAMMA initiative](https://gateway-api.sigs.k8s.io/mesh/gamma/) defines the
+Gateway API implementation. It was introduced for the following reasons:
 
-- **Limitations of Ingress:** The Ingress API, while useful, became limiting. It lacked standardization across implementations and also limited routing capabilities that varied widely across different implementations.
+- **Limitations of Ingress:** The Ingress API, while useful, became limiting. It
+  lacked standardization across implementations and also limited routing
+  capabilities that varied widely across different implementations.
 - **Role Separation:** Gateway API separates concerns:
-  - `GatewayClass`: Defines a *type* of load balancer (e.g., Istio, GKE LB). Managed by Infrastructure Admins.
-  - `Gateway`: Represents an instance of a load balancer requesting a specific `GatewayClass`. Defines listeners (ports, protocols, TLS). Managed by Cluster Operators. They can be shared across namespaces as well.
-  - `HTTPRoute`, `GRPCRoute`, `TCPRoute`, `TLSRoute`, etc.: Define application-level routing rules, attaching to a `Gateway`. Managed by Application Developers/Owners.
-- **Portability:** Standardized API definition aims for greater portability across different underlying gateway/service mesh implementations.
-- **Expressiveness:** Natively supports advanced features like header manipulation, traffic splitting, mTLS configuration, gRPC routing, and more.
+  - `GatewayClass`: Defines a _type_ of load balancer (e.g., Istio, GKE LB).
+    Managed by Infrastructure Admins.
+  - `Gateway`: Represents an instance of a load balancer requesting a specific
+    `GatewayClass`. Defines listeners (ports, protocols, TLS). Managed by
+    Cluster Operators. They can be shared across namespaces as well.
+  - `HTTPRoute`, `GRPCRoute`, `TCPRoute`, `TLSRoute`, etc.: Define
+    application-level routing rules, attaching to a `Gateway`. Managed by
+    Application Developers/Owners.
+- **Portability:** Standardized API definition aims for greater portability
+  across different underlying gateway/service mesh implementations.
+- **Expressiveness:** Natively supports advanced features like header
+  manipulation, traffic splitting, mTLS configuration, gRPC routing, and more.
 
-In essence, Gateway API offers a more robust and standardized model for managing north-south traffic compared to the traditional Ingress API.
+In essence, Gateway API offers a more robust and standardized model for managing
+north-south traffic compared to the traditional Ingress API.
 
-## mTLS -  A brief introduction
-Mutual TLS (mTLS) extends standard TLS by requiring *both* the client and server to present and validate certificates for mutual authentication.
+## mTLS - A brief introduction
 
-Standard TLS (like HTTPS on websites) verifies the *server's* identity to the *client*. Mutual TLS (mTLS) goes a step further:
+Mutual TLS (mTLS) extends standard TLS by requiring _both_ the client and server
+to present and validate certificates for mutual authentication.
+
+Standard TLS (like HTTPS on websites) verifies the _server's_ identity to the
+_client_. Mutual TLS (mTLS) goes a step further:
 
 - The client verifies the server's identity (using the server's certificate).
-- The server *also* verifies the client's identity (using the client's certificate).
+- The server _also_ verifies the client's identity (using the client's
+  certificate).
 
-**Importance:**
+Mutual TLS is important because it provides strong authentication, ensures
+end-to-end encryption, and aligns with Zero Trust security principles:
 
-- **Strong Authentication:** Ensures *only* trusted clients (those possessing a valid certificate signed by trusted CA) can connect to your exposed service.
+- Ensures _only_ trusted clients (those possessing a valid certificate signed by
+  trusted CA) can connect to your exposed service.
 
-- **End-to-End Encryption:** All communication between the authenticated client and the server (in our case, the Gateway) is encrypted.
+- All communication between the authenticated client and the server (such as a
+  Gateway) is encrypted.
 
-- **Zero Trust:** Aligns with Zero Trust security principles, where trust is never assumed, and verification is always required.
-
+- It supports a Zero Trust model by requiring verification from both parties,
+  never assuming trust by default.
 
 ## The Scenario
 
-1.  Deploy an OTEL Collector inside Kubernetes configured with a simple OTLP gRPC receiver.
-2.  Generate a self-signed Root CA, a server certificate (for the Gateway), and a client certificate (for the external client).
-3.  Configure a Kubernetes `Gateway` resource to listen on a specific port, terminate TLS, and require client certificates (mTLS).
-4.  Configure a `GRPCRoute` to route incoming gRPC traffic from the `Gateway` to the internal OTEL Collector service.
-5.  Configure an external client (another OTEL Collector) to export data via OTLP gRPC, using the client certificate and trusting the Root CA.
+1.  Deploy an OTel Collector inside Kubernetes configured with a simple OTLP
+    gRPC receiver.
+2.  Generate a self-signed Root CA, a server certificate (for the Gateway), and
+    a client certificate (for the external client).
+3.  Configure a Kubernetes `Gateway` resource to listen on a specific port,
+    terminate TLS, and require client certificates (mTLS).
+4.  Configure a `GRPCRoute` to route incoming gRPC traffic from the `Gateway` to
+    the internal OTel Collector service.
+5.  Configure an external client (another OTel Collector) to export data via
+    OTLP gRPC, using the client certificate and trusting the Root CA.
 
 ![Scenario Diagram](ScenarioFlow.png)
-
 
 ## Setup
 
 ### Step 1: Install Gateway API CRD.
 
-By default, the Gateway APIs do not come installed in the Kubernetes Cluster. As of writing this blog, latest is [v1.2](https://gateway-api.sigs.k8s.io/implementations/v1.2/). Install the Gateway API CRDs if not present:
+By default, the Gateway APIs do not come installed in the Kubernetes Cluster. As
+of writing this blog, latest is
+[v1.2](https://gateway-api.sigs.k8s.io/implementations/v1.2/). Install the
+Gateway API CRDs if not present:
 
 ```bash
 kubectl get crd gateways.gateway.networking.k8s.io &> /dev/null || \
@@ -93,10 +152,13 @@ kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/downloa
 kubectl kustomize "github.com/kubernetes-sigs/gateway-api/config/crd/experimental?ref=v1.2.0" | kubectl apply -f -
 ```
 
-### Step 2: Generate Serlf Signed Certificates
+### Step 2: Generate Self Signed Certificates
 
-In order to setup mTLS between the client and the server, we need a set of certificates. For this demo scenario, we'll be using self-signed certificate. We will be using the same CA for signing both clients and server in this demo.
-We'll use `openssl` to create our certificates. Please refer `openssl` documentation for configuration details.
+In order to setup mTLS between the client and the server, we need a set of
+certificates. For this demo scenario, we'll be using self-signed certificate. We
+will be using the same CA for signing both clients and server in this demo.
+We'll use `openssl` to create our certificates. Please refer `openssl`
+documentation for configuration details.
 
 ```bash
 # Variables (adjust domain/names as needed)
@@ -125,16 +187,25 @@ openssl x509 -req -in client.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateseria
 
 {{% alert %}}
 
-For production, never use self-signed certificates for external-facing endpoints accessible from the public internet. Use certificates issued by a trusted public CA (e.g., Let's Encrypt through cert-manager) or a managed internal PKI system. The process of obtaining certs would differ, but the concepts of using them in Kubernetes remain similar. Ensure the server certificate's Common Name (CN) or Subject Alternative Name (SAN) matches the hostname clients use to connect.
+For production, never use self-signed certificates for external-facing endpoints
+accessible from the public internet. Use certificates issued by a trusted public
+CA (e.g., Let's Encrypt through cert-manager) or a managed internal PKI system.
+The process of obtaining certs would differ, but the concepts of using them in
+Kubernetes remain similar. Ensure the server certificate's Common Name (CN) or
+Subject Alternative Name (SAN) matches the hostname clients use to connect.
 
 {{% /alert %}}
+
 ## Step 3: Create `otel-collector` namespace
 
-We will deploy our otel-collector setup in the given namespace.
-Further on, depending on the Gateway/service-mesh implementation you use, you may configure the namespace acordingly.
-For e.g: with istio, we need to label the namespace for `istio-injection:enabled` inorder for istio to work with the deployed workloads in the namespace
+We will deploy our otel-collector setup in the given namespace. Further on,
+depending on the Gateway/service-mesh implementation you use, you may configure
+the namespace accordingly. For e.g: with istio, we need to label the namespace
+for `istio-injection:enabled` inorder for istio to work with the deployed
+workloads in the namespace
 
 `namespace.yaml`:
+
 ```yaml
 # OpenTelemetry Collector Namespace
 ---
@@ -143,14 +214,17 @@ kind: Namespace
 metadata:
   name: otel-collector
   labels:
-      istio-injection: enabled #Relavent only if you are using istio. 
+    istio-injection: enabled #Relavent only if you are using istio.
 ```
 
-## Step 4: Deploying the OTEL Collector (Server)
+## Step 4: Deploying the OTel Collector (Server)
 
-Let's create a simple OTEL Collector deployment and service. In the given configuration, the OTEL collector will print the incoming telemetry data. This configuration will change according to your use cases.
+Let's create a simple OTel Collector deployment and service. In the given
+configuration, the OTel collector will print the incoming telemetry data. This
+configuration will change according to your use cases.
 
 `otel-collector-server.yaml`:
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -204,44 +278,47 @@ spec:
         app: otel-collector-server
     spec:
       containers:
-      - name: otel-collector
-        # Use a specific, recent version tag in production
-        image: otel/opentelemetry-collector-contrib:0.119.0
-        command: ["/otelcol-contrib", "--config=/conf/otel-collector-config.yaml"]
-        ports:
-        - containerPort: 4317 # OTLP gRPC
-          name: otlp-grpc
-        volumeMounts:
-        - name: otel-collector-config-vol
-          mountPath: /conf
+        - name: otel-collector
+          # Use a specific, recent version tag in production
+          image: otel/opentelemetry-collector-contrib:0.119.0
+          command:
+            ['/otelcol-contrib', '--config=/conf/otel-collector-config.yaml']
+          ports:
+            - containerPort: 4317 # OTLP gRPC
+              name: otlp-grpc
+          volumeMounts:
+            - name: otel-collector-config-vol
+              mountPath: /conf
       volumes:
-      - name: otel-collector-config-vol
-        configMap:
-          name: otel-collector-conf
+        - name: otel-collector-config-vol
+          configMap:
+            name: otel-collector-conf
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: otel-collector-server-svc
-  namespace: otel-collector 
+  namespace: otel-collector
 spec:
   selector:
     app: otel-collector-server
   ports:
-  - name: grpc
-    protocol: TCP
-    port: 4317
-    targetPort: 4317
+    - name: grpc
+      protocol: TCP
+      port: 4317
+      targetPort: 4317
 ```
 
 Apply this configuration:
+
 ```bash
 kubectl apply -f otel-collector-server.yaml
 ```
 
 ## Step 5: Storing Certificates as Kubernetes Secrets
 
-The Gateway needs access to the server certificate/key and the CA certificate to validate clients.
+The Gateway needs access to the server certificate/key and the CA certificate to
+validate clients.
 
 ```bash
 # Create a secret with the server certificate, key. We will also store the ca certificate used to sign clients
@@ -254,6 +331,7 @@ k create secret generic otel-gateway-server-cert --from-file=tls.crt=server.pem 
 We need two resources: `Gateway` and `GRPCRoute`.
 
 `otel-gateway.yaml`:
+
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
@@ -264,24 +342,24 @@ spec:
   # Corresponds to the GatewayClass installed in your cluster (e.g., istio)
   gatewayClassName: istio
   #infrastructure: #Use to configure infrastructure annotations for your sepcific cluster. For e.g DNS
-    #annotations:
-      #specific-anotations:value
+  #annotations:
+  #specific-anotations:value
   listeners:
-  - name: otlp-grpc-mtls
-    port: 4317
-    protocol: HTTPS
-    hostname: "otel-gateway.example.com"
-    tls:
-      mode: Terminate
-      certificateRefs: 
-      - group: "" # Core API group for Secrets
-        kind: Secret
-        name: otel-gateway-server-cert # The certificates that were uploaded as secrets in the provious step.
-      options:
-         # This structure might vary  depending on the implementation of your Gateway/Service Mesh
-         # Please refer  documentation of the implementation installed.
-         # For Istio, we set tls termination mode here
-         gateway.istio.io/tls-terminate-mode: MUTUAL
+    - name: otlp-grpc-mtls
+      port: 4317
+      protocol: HTTPS
+      hostname: 'otel-gateway.example.com'
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - group: '' # Core API group for Secrets
+            kind: Secret
+            name: otel-gateway-server-cert # The certificates that were uploaded as secrets in the provious step.
+        options:
+          # This structure might vary  depending on the implementation of your Gateway/Service Mesh
+          # Please refer  documentation of the implementation installed.
+          # For Istio, we set tls termination mode here
+          gateway.istio.io/tls-terminate-mode: MUTUAL
 ---
 # GRPCRoute is generally preferred for OTLP/gRPC
 # Ensure GRPCRoute CRD (v1alpha2 or v1) is installed
@@ -294,28 +372,43 @@ metadata:
 spec:
   # Link this route to our Gateway in the istio-system namespace
   parentRefs:
-  - name: otel-gateway
-    namespace: default # Namespace of the Gateway resource
-    sectionName: otlp-grpc-mtls # Attach to the specific listener by name
+    - name: otel-gateway
+      namespace: default # Namespace of the Gateway resource
+      sectionName: otlp-grpc-mtls # Attach to the specific listener by name
   # Define routing rules for gRPC traffic
   rules:
-  - backendRefs:
-    - name: otel-collector-server-svc # Name of your internal OTEL service
-      namespace: otel-collector # Namespace of the backend service
-      port: 4317 # Target port on the service
+    - backendRefs:
+        - name: otel-collector-server-svc # Name of your internal OTel service
+          namespace: otel-collector # Namespace of the backend service
+          port: 4317 # Target port on the service
 ```
-- In the `Gateway` CRD, we configure the `gatewayclass` and `listeners`. In this case we configure one `listener` with the necessary `port` and `hostname`. We also configure `tls` which gets terminated here. We use the certificates uploaded as secrets. The `options` block is used to configure `implementation speicific` parameters if any.
 
-- In the `GRPCRoute`, we choose a gateway and the specific `listener`. We also configure the backend to which the route forwards the requests. In this case, to the `otel-collector-server-svc`.
+- In the `Gateway` CRD, we configure the `gatewayclass` and `listeners`. In this
+  case we configure one `listener` with the necessary `port` and `hostname`. We
+  also configure `tls` which gets terminated here. We use the certificates
+  uploaded as secrets. The `options` block is used to configure
+  `implementation specific` parameters if any.
 
-*P.S: We make use of `options` in the gateway for implementation specific configuration of `MTLS`. Currently the gateway API does not explicitely have `Mutual TLS` [mode](https://gateway-api.sigs.k8s.io/reference/spec/#tlsmodetype). Please refer latest documentation of Gateway API for updates*
+- In the `GRPCRoute`, we choose a gateway and the specific `listener`. We also
+  configure the backend to which the route forwards the requests. In this case,
+  to the `otel-collector-server-svc`.
+
+_P.S: We make use of `options` in the gateway for implementation specific
+configuration of `MTLS`. Currently the gateway API does not explicitly have
+`Mutual TLS`
+[mode](https://gateway-api.sigs.k8s.io/reference/spec/#tlsmodetype). Please
+refer latest documentation of Gateway API for updates_
 
 Apply the Gateway configuration:
+
 ```bash
 kubectl apply -f otel-gateway.yaml
 ```
 
-At this point, the Istio (or other) Gateway should be configured to listen on port 4317 (usually exposed via a LoadBalancer Service), require mTLS using the specified server certificate and client CA, and route valid gRPC traffic to the `otel-collector-server-svc`.
+At this point, the Istio (or other) Gateway should be configured to listen on
+port 4317 (usually exposed via a LoadBalancer Service), require mTLS using the
+specified server certificate and client CA, and route valid gRPC traffic to the
+`otel-collector-server-svc`.
 
 To get details of the Gateway, you can run the following:
 
@@ -326,20 +419,26 @@ kubectl get gateway otel-gateway -o jsonpath='{.status.addresses[0].value}'
 # To get the port
 kubectl get gtw otel-gateway -o jsonpath='{.spec.listeners[?(@.name=="otel")].port}'
 ```
-You can also see the Kubernetes service created for your `Gateway`. Since the Gateway is created in the default namespace in this exercise:
+
+You can also see the Kubernetes service created for your `Gateway`. Since the
+Gateway is created in the default namespace in this exercise:
+
 ```bash
-kubectl get svc 
+kubectl get svc
 ```
 
-## Step 7: Configuring the External OTEL Collector (Client)
+## Step 7: Configuring the External OTel Collector (Client)
 
-To test the setup, configure an OTEL Collector *outside* the cluster  to send data to the Gateway's external endpoint using mTLS. 
+To test the setup, configure an OTel Collector _outside_ the cluster to send
+data to the Gateway's external endpoint using mTLS.
 
 For this demo, the client (otel-collector) is run locally with docker.
 
-A simple configuration for scraping cpu & memory metrics and sending it to the server.
+A simple configuration for scraping cpu & memory metrics and sending it to the
+server.
 
 Example `otel-client-config.yaml`:
+
 ```yaml
 receivers:
   # Example: Receiver generating some data, e.g., host metrics
@@ -386,13 +485,20 @@ service:
 
 **To run the client:**
 
-1.  Replace `<GATEWAY_EXTERNAL_IP_OR_HOSTNAME>` with the actual external IP address or DNS name of your Istio Gateway LoadBalancer service. If using the hostname (`otel-gateway.example.com`), ensure your client machine can resolve this hostname to the correct IP (e.g., via `/etc/hosts` for testing, or actual DNS). 
+1.  Replace `<GATEWAY_EXTERNAL_IP_OR_HOSTNAME>` with the actual external IP
+    address or DNS name of your Istio Gateway LoadBalancer service. If using the
+    hostname (`otel-gateway.example.com`), ensure your client machine can
+    resolve this hostname to the correct IP (e.g., via `/etc/hosts` for testing,
+    or actual DNS).
 
-2. Use the `server_name_override` if the `endpoint` is different from the SAN/CN values in the server certificate.
+2.  Use the `server_name_override` if the `endpoint` is different from the
+    SAN/CN values in the server certificate.
 
-3.  Place the generated `rootCA.crt`, `client.crt`, and `client.key` files in a directory accessible to the client collector.
+3.  Place the generated `rootCA.crt`, `client.crt`, and `client.key` files in a
+    directory accessible to the client collector.
 
 4.  Run the client collector (adjust paths and image tag as needed):
+
     ```bash
     # Running command assuming certificates and config are in the current directory.
 
@@ -401,48 +507,95 @@ service:
                otel/opentelemetry-collector-contrib:0.119.0
     ```
 
-We are running a container of `otel-collector-contrib` by mounting the `config` and the `certs`
+We are running a container of `otel-collector-contrib` by mounting the `config`
+and the `certs`
 
 ## Step 6: Testing the Connection
 
-1.  **Check Server Logs:** Look at the logs of the `otel-collector-server` pod inside Kubernetes. If the `debug` exporter is configured, you should see entries indicating it's receiving data batches.
+1.  **Check Server Logs:** Look at the logs of the `otel-collector-server` pod
+    inside Kubernetes. If the `debug` exporter is configured, you should see
+    entries indicating it's receiving data batches.
+
     ```bash
     kubectl logs -n otel-collector -l app=otel-collector-server -f
     ```
-2.  **Check Client Logs:** Look at the logs of the external client collector (e.g., the Docker container output). It should show successful connections `("StateChange: CONNECTING -> READY")` and data exports `("Exporting batches...")` to the gateway endpoint. Any TLS handshake errors (e.g., `"certificate signed by unknown authority"`, `"bad certificate"`) or `connection refused` errors indicate a problem. Check:
+
+2.  **Check Client Logs:** Look at the logs of the external client collector
+    (e.g., the Docker container output). It should show successful connections
+    `("StateChange: CONNECTING -> READY")` and data exports
+    `("Exporting batches...")` to the gateway endpoint. Any TLS handshake errors
+    (e.g., `"certificate signed by unknown authority"`, `"bad certificate"`) or
+    `connection refused` errors indicate a problem. Check:
     - Gateway IP/hostname reachability.
     - Firewall rules.
-    - Correct certificates (`ca_file`, `cert_file`, `key_file`) used by the client.
+    - Correct certificates (`ca_file`, `cert_file`, `key_file`) used by the
+      client.
     - Correct `server_name_override` matching the server certificate SAN/CN.
-    - Correct mTLS configuration on the Gateway (including client CA validation).
-    - Gateway controller logs (For e.g `istio-ingressgateway` pod logs in `istio-system`) for TLS errors.
+    - Correct mTLS configuration on the Gateway (including client CA
+      validation).
+    - Gateway controller logs (For e.g `istio-ingressgateway` pod logs in
+      `istio-system`) for TLS errors.
 3.  **Test Failure Case:**
-    - Try running the client *without* the `tls:` section in its `otlpgrpc` exporter configuration. The connection should be rejected by the Gateway (likely a TLS handshake failure or connection reset).
-    - Try commenting out the `ca_file`, `cert_file`, or `key_file` in the client config. The connection should fail.
-    - If you have another certificate signed by a *different* CA, try using that as the client certificate. The Gateway should reject it during the mTLS handshake because it's not signed by the trusted CA.
+    - Try running the client _without_ the `tls:` section in its `otlpgrpc`
+      exporter configuration. The connection should be rejected by the Gateway
+      (likely a TLS handshake failure or connection reset).
+    - Try commenting out the `ca_file`, `cert_file`, or `key_file` in the client
+      config. The connection should fail.
+    - If you have another certificate signed by a _different_ CA, try using that
+      as the client certificate. The Gateway should reject it during the mTLS
+      handshake because it's not signed by the trusted CA.
 
 ## Caveats:
 
-In this walkthrough, certain steps were done in a specific way to make it easy to run and understand the configuration and scenario. These must be taken care of when configuring this setup during production:
+In this walkthrough, certain steps were done in a specific way to make it easy
+to run and understand the configuration and scenario. These must be taken care
+of when configuring this setup during production:
 
-- `Self-signed` certificates should **not** be used in production. Also, `CA` certificates used for clients are also generally different than the one used for signing the server certificates.
-- The Kubernetes Gateway API is constantly evolving with more and more features coming into the spec. Many of these features are now in alpha/beta and will soon become generally available. For e.g `GRPCRoute`. Please refer the latest Kubernetes documentation of the Gateway API.
-- The Kubernetes Gateway API aim to make the configuration protable and implementation agnostic as much as possible. Ideally this would be the case onces the spec is matured and evolved. Till then, certain aspects of the configuration will have minor changes between implementations. For e.g, The way `MTLS` is configured in the Gateway now.
-- When running in production, you may want to use the `infrastructure` block of the `spec` to configure infrastructure-provider specific parameters. For e.g `DNS`.
-- Productive setups would have end-2-end encrypted communication. For e.g, when using istio, all components running within namespaces managed by istio in a cluster can be forced to communicate with each other. This is achieved with [PeerAuthentication](https://istio.io/latest/docs/reference/config/security/peer_authentication/). Similar conecepts would be available for other service mesh implementations as well.
+- `Self-signed` certificates should **not** be used in production. Also, `CA`
+  certificates used for clients are also generally different than the one used
+  for signing the server certificates.
+- The Kubernetes Gateway API is constantly evolving with more and more features
+  coming into the spec. Many of these features are now in alpha/beta and will
+  soon become generally available. For e.g `GRPCRoute`. Please refer the latest
+  Kubernetes documentation of the Gateway API.
+- The Kubernetes Gateway API aim to make the configuration protable and
+  implementation agnostic as much as possible. Ideally this would be the case
+  onces the spec is matured and evolved. Till then, certain aspects of the
+  configuration will have minor changes between implementations. For e.g, The
+  way `MTLS` is configured in the Gateway now.
+- When running in production, you may want to use the `infrastructure` block of
+  the `spec` to configure infrastructure-provider specific parameters. For e.g
+  `DNS`.
+- Productive setups would have end-2-end encrypted communication. For e.g, when
+  using istio, all components running within namespaces managed by istio in a
+  cluster can be forced to communicate with each other. This is achieved with
+  [PeerAuthentication](https://istio.io/latest/docs/reference/config/security/peer_authentication/).
+  Similar concepts would be available for other service mesh implementations as
+  well.
 
 ## Alternative Gateway Implementations
 
-While we used Istio (`gatewayClassName: istio`), the core benefits of the Gateway API is its potential for standardization. If you were using Contour, Nginx Gateway Fabric, HAPROXY, etc., the `Gateway` and `GRPCRoute` resource definitions would ideally look very similar. The main differences might be:
+While we used Istio (`gatewayClassName: istio`), the core benefits of the
+Gateway API is its potential for standardization. If you were using Contour,
+NGINX Gateway Fabric, HAPROXY, etc., the `Gateway` and `GRPCRoute` resource
+definitions would ideally look very similar. The main differences might be:
 
 - The specific value for `gatewayClassName`.
-- Minor variations in how implementation-specific features or options are configured (e.g., the exact syntax for specifying the client configuration in the `options` structure).
-- How the underlying Gateway controller/proxy is deployed, managed, and exposed (e.g., the name and namespace of the LoadBalancer service).
+- Minor variations in how implementation-specific features or options are
+  configured (e.g., the exact syntax for specifying the client configuration in
+  the `options` structure).
+- How the underlying Gateway controller/proxy is deployed, managed, and exposed
+  (e.g., the name and namespace of the LoadBalancer service).
 
-Always consult the documentation for your specific chosen Gateway API implementation, particularly regarding mTLS configuration details.
+Always consult the documentation for your specific chosen Gateway API
+implementation, particularly regarding mTLS configuration details.
 
 ## Conclusion
 
-The Kubernetes Gateway API offers a significant improvement over the legacy Ingress API, providing a more powerful, portable, standardized approach. It is more flexible, and role-oriented way to manage ingress traffic. 
+The Kubernetes Gateway API offers a significant improvement over the legacy
+Ingress API, providing a more powerful, portable, standardized approach. It is
+more flexible, and role-oriented way to manage ingress traffic.
 
-By combining the Gateway API with mutual TLS (mTLS), you can securely expose internal services like an OpenTelemetry Collector, ensuring robust client authentication and encrypted communication.
+By combining the Gateway API with mutual TLS (mTLS), you can securely expose
+internal services like an OpenTelemetry Collector, ensuring robust client
+authentication and encrypted communication.
