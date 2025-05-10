@@ -309,7 +309,7 @@ $ cat ./storage/agent.log
 [Open Agent Management Protocol]: https://github.com/open-telemetry/opamp-spec
 [OpAMP specification]: /docs/specs/opamp/
 [opamp-in-otel-collector]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor/specification#collectors-opamp-extension
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/cmd/opampsupervisor/specification/README.md
 [opamp-go]: https://github.com/open-telemetry/opamp-go
 [opamp-supervisor]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor
