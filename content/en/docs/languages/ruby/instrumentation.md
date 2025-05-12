@@ -345,11 +345,48 @@ gem 'opentelemetry-propagator-b3'
 
 ## Metrics
 
-The metrics API & SDK are currently under development.
+Experimental support for the Metrics API and Metrics SDK are available. These
+libraries are still under development and are not fully spec-compliant.
+
+You can install the Metrics SDK and OTLP exporter using: 
+```ruby
+gem 'opentelemetry-metrics-sdk'
+gem 'opentelemetry-exporter-otlp-metrics'
+```
+
+With these libraries installed, metrics will be configured automatically using:
+
+```ruby
+OpenTelemetry::SDK.configure
+```
+
+This defaults to an OTLP exporter using a PeriodicMetricReader with a five-second 
+interval.
+
+We do not have Metrics instrumentation at this time. You must manually
+create your metrics if you want to emit them.
 
 ## Logs
 
-The logs API & SDK are currently under development.
+Experimental support for the Logs API and Logs SDK are available.
+These libraries are still under development and are not fully spec-compliant.
+
+You can install the Logs SDK and OTLP exporter using:
+```ruby
+gem 'opentelemetry-logs-sdk'
+gem 'opentelemetry-exporter-otlp-logs'
+```
+
+With these libraries installed, logs will be configured automatially using:
+```ruby
+OpenTelemetry::SDK.configure
+```
+
+This defaults to creating an OTLP exporter for your log events that use a
+BatchLogRecordProcessor.
+
+We do not have Logs instrumentation at this time. You must manually register
+your logger with OpenTelemetry. 
 
 ## Next Steps
 
