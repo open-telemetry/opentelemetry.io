@@ -3,8 +3,6 @@ title: Resiliency
 description: How to configure a resilient OTel Collector pipeline
 ---
 
-# OpenTelemetry Collector Data Loss Model
-
 The OpenTelemetry Collector is designed with components and configurations to
 minimize data loss during telemetry processing and exporting. However,
 understanding the potential scenarios where data loss can occur and how to
@@ -42,6 +40,7 @@ The most basic form of resilience built into the Collector's exporters is the
     stop retrying for the oldest data in the queue and drop it.
 - **Configuration:** You can configure the queue size and retry behavior within
   the exporter settings:
+
   ```yaml
   exporters:
     otlp:
@@ -54,6 +53,7 @@ The most basic form of resilience built into the Collector's exporters is the
         max_interval: 30s
         max_elapsed_time: 10m # Increase max retry time (default 300s)
   ```
+
 - **Recommendation:** Enable sending queues for any exporter sending data over a
   network. Adjust `queue_size` and `max_elapsed_time` based on expected data
   volume, available Collector memory, and acceptable downtime for the endpoint.
