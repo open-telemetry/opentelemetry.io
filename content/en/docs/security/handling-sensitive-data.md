@@ -1,5 +1,5 @@
 ---
-title: Handling Sensitive Data
+title: Handling sensitive data
 description:
   Best practices and guidance for handling sensitive data in OpenTelemetry
 weight: 100
@@ -13,14 +13,14 @@ various privacy regulations and compliance requirements.
 
 ## Your Responsibility
 
-OpenTelemetry enables you to collect telemetry data, but it cannot determine
-what data is sensitive in your specific context. As the implementer, you are
-responsible for:
+OpenTelemetry collects telemetry data, but it can't determine what data
+is sensitive in your specific context on its own. As the implementer, you
+are responsible for:
 
-- Ensuring compliance with applicable privacy laws and regulations
-- Protecting sensitive information in your telemetry data
-- Obtaining necessary consents for data collection
-- Implementing appropriate data handling and storage practices
+- Ensuring compliance with applicable privacy laws and regulations.
+- Protecting sensitive information in your telemetry data.
+- Obtaining necessary consents for data collection.
+- Implementing appropriate data handling and storage practices.
 
 Additionally, you are responsible for understanding and reviewing the telemetry
 data emitted by any instrumentation libraries you use, as these libraries may
@@ -28,8 +28,7 @@ collect and expose sensitive information as well.
 
 ## Sensitive Data Considerations
 
-What data is sensitive varies from situation to situation. Be particularly
-careful with:
+What data is sensitive varies from situation to situation. Examples include:
 
 - Personal Identifiable Information (PII)
 - Authentication credentials
@@ -40,7 +39,7 @@ careful with:
 
 ## Data Minimization
 
-When collecting telemetry potentially sensitive data, follow the principle of
+When collecting potentially sensitive data through telemetry, follow the principle of
 [data minimization](https://en.wikipedia.org/wiki/Data_minimization). This
 means:
 
@@ -51,27 +50,27 @@ means:
 
 ## Protecting Sensitive Data
 
-As outlined above, the best thing you can do is not collecting data, that is
-sensitive or potentially sensitive. However you mean want to collect this data
-under certain circumstances, or you have no full control over the data being
-collected, and need ways to scrape the data in post processing. The following
-suggestions can help you with that.
+As outlined in the previous section, the best way to prevent the collection of 
+sensitive data is not to collect data that might be sensitive. However, you might
+want to collect this data under certain circumstances, or perhaps have no full
+control over the data being collected, and need ways to scrape the data in post
+processing. The following suggestions can help you with that.
 
 The [OpenTelemetry Collector](/docs/collector) provides several processors that
 can help manage sensitive data:
 
 - [`attribute` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor):
-  Remove or modify specific attributes
+  Remove or modify specific attributes.
 - [`filter` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor):
-  Filter out entire spans or metrics containing sensitive data
+  Filter out entire spans or metrics containing sensitive data.
 - [`redaction` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor):
   Deletes span, log, and metric datapoint attributes that don’t match a list of
   allowed attributes.
 - [`transform` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor):
-  Transform data using regular expressions
+  Transform data using regular expressions.
 
-For example the following configuration for the `attribute` processor is
-deleting and redacting sensitive
+For example the following configuration for the `attribute` processor
+deletes and redacts sensitive
 [`user`](/docs/specs/semconv/attributes-registry/user/#user-hash) information:
 
 ```yaml
@@ -84,8 +83,8 @@ processors:
         action: delete
 ```
 
-Similarly, the following configuration for the `transform` processor can be used
-remove the `user.id` and replace it with a `user.hash`:
+Similarly, you can use the following configuration for the `transform` processor
+to remove the `user.id` and replace it with a `user.hash`:
 
 ```yaml
 transform:
