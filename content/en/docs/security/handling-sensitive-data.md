@@ -64,7 +64,7 @@ can help manage sensitive data:
 - [`filter` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor):
   Filter out entire spans or metrics containing sensitive data.
 - [`redaction` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor):
-  Deletes span, log, and metric datapoint attributes that don’t match a list of
+  Delete span, log, and metric datapoint attributes that don’t match a list of
   allowed attributes.
 - [`transform` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor):
   Transform data using regular expressions.
@@ -95,7 +95,7 @@ transform:
         - delete_key(attributes, "user.id")
 ```
 
-{{% alert title="Risk and Limitations of hashing for anonymization" color="warning" %}}
+{{% alert title="Risk and limitations of hashing for anonymization" color="warning" %}}
 
 Hashing the ID or name of a user may not provide the level of anonymization you
 need, since hashes are reversible in practice if the input space is small and
@@ -117,7 +117,7 @@ transform:
         - replace_pattern(attributes["my.span.attr"], "\\.\\d+$", ".0")
 ```
 
-Finally, an example for the `redaction` processor to delete certain attributes,
-can be found in the section
+You can find an example for the `redaction` processor to delete certain attributes,
+in the section
 ["Scrub sensitive data"](/docs/security/config-best-practices/#scrub-sensitive-data)
-in the collector configuration page.
+of the security best practices page for Collector configurations.
