@@ -121,7 +121,7 @@
     "ajv-errors": "^3.0.0",
     "ajv-formats": "^3.0.1",
     "autoprefixer": "^10.4.21",
-    "cspell": "^8.19.3",
+    "cspell": "^9.0.1",
     "gulp": "^5.0.0",
     "hugo-extended": "0.147.0",
     "js-yaml": "^4.1.0",
