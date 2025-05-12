@@ -5411,6 +5411,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:24.09422-05:00"
   },
+  "https://github.com/open-telemetry/opamp-spec": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-01T12:54:48.484239+02:00"
+  },
   "https://github.com/open-telemetry/opamp-spec/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-24T10:00:32.770402-05:00"
@@ -5458,6 +5462,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/README.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:33:59.421324-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/cmd/opampsupervisor/specification/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-12T10:09:03.596342+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/datadogexporter/README.md": {
     "StatusCode": 206,
