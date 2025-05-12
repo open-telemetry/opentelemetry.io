@@ -11,11 +11,11 @@ handling. The collection of telemetry data always carries the risk of
 inadvertently capturing sensitive or personal information that may be subject to
 various privacy regulations and compliance requirements.
 
-## Your Responsibility
+## Your responsibility
 
-OpenTelemetry collects telemetry data, but it can't determine what data
-is sensitive in your specific context on its own. As the implementer, you
-are responsible for:
+OpenTelemetry collects telemetry data, but it can't determine what data is
+sensitive in your specific context on its own. As the implementer, you are
+responsible for:
 
 - Ensuring compliance with applicable privacy laws and regulations.
 - Protecting sensitive information in your telemetry data.
@@ -26,7 +26,7 @@ Additionally, you are responsible for understanding and reviewing the telemetry
 data emitted by any instrumentation libraries you use, as these libraries may
 collect and expose sensitive information as well.
 
-## Sensitive Data Considerations
+## Sensitive data considerations
 
 What data is sensitive varies from situation to situation. Examples include:
 
@@ -37,9 +37,10 @@ What data is sensitive varies from situation to situation. Examples include:
 - Health-related data
 - User behavior data
 
-## Data Minimization
+## Data minimization
 
-When collecting potentially sensitive data through telemetry, follow the principle of
+When collecting potentially sensitive data through telemetry, follow the
+principle of
 [data minimization](https://en.wikipedia.org/wiki/Data_minimization). This
 means:
 
@@ -48,13 +49,13 @@ means:
 - Consider whether aggregated or anonymized data could serve the same purpose.
 - Regularly review collected attributes to ensure they remain necessary.
 
-## Protecting Sensitive Data
+## Protecting sensitive data
 
-As outlined in the previous section, the best way to prevent the collection of 
-sensitive data is not to collect data that might be sensitive. However, you might
-want to collect this data under certain circumstances, or perhaps have no full
-control over the data being collected, and need ways to scrape the data in post
-processing. The following suggestions can help you with that.
+As outlined in the previous section, the best way to prevent the collection of
+sensitive data is not to collect data that might be sensitive. However, you
+might want to collect this data under certain circumstances, or perhaps have no
+full control over the data being collected, and need ways to scrape the data in
+post processing. The following suggestions can help you with that.
 
 The [OpenTelemetry Collector](/docs/collector) provides several processors that
 can help manage sensitive data:
@@ -69,8 +70,10 @@ can help manage sensitive data:
 - [`transform` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor):
   Transform data using regular expressions.
 
-For example the following configuration for the `attribute` processor
-deletes and redacts sensitive
+### Deleting and hashing user information
+
+The following configuration for the `attribute` processor is hashing the
+`user.email` and deleting `user.full_name` from sensitive
 [`user`](/docs/specs/semconv/attributes-registry/user/#user-hash) information:
 
 ```yaml
@@ -83,8 +86,10 @@ processors:
         action: delete
 ```
 
-Similarly, you can use the following configuration for the `transform` processor
-to remove the `user.id` and replace it with a `user.hash`:
+### Replacing `user.id` with `user.hash`
+
+The following configuration for the `transform` processor can be used remove the
+`user.id` and replace it with a `user.hash`:
 
 ```yaml
 transform:
@@ -103,21 +108,31 @@ predictable (e.g. numeric user IDs).
 
 {{% /alert %}}
 
+### Truncating IP addresses
+
 As an alternative to hashing you can truncate data, or group it by a common
-prefix or suffix. This for example applies to dates (keep only the year, or the
-year + month), email addresses (keep domain, drop local-part) or IP addresses
-(drop the last octet of IPv4). For example, the following configuration for the
-`transform` processor drops the last octet of a `client.address` attribute:
+prefix or suffix. This for example applies to
+
+- dates, where you keep only the year or the year and the month, but drop the
+  day.
+- email addresses, where you drop the local part and only keep the domain.
+- IP addresses, where you drop drop the last octet of IPv4 or the last 80 bits
+  of IPv6.
+
+The following configuration for the `transform` processor drops the last octet
+of a `client.address` attribute:
 
 ```yaml
 transform:
   trace_statements:
     - context: span
       statements:
-        - replace_pattern(attributes["my.span.attr"], "\\.\\d+$", ".0")
+        - replace_pattern(attributes["client.address"], "\\.\\d+$", ".0")
 ```
 
-You can find an example for the `redaction` processor to delete certain attributes,
-in the section
+### Delete attributes with redaction processor
+
+Finally, an example for the `redaction` processor to delete certain attributes,
+can be found in the section
 ["Scrub sensitive data"](/docs/security/config-best-practices/#scrub-sensitive-data)
 of the security best practices page for Collector configurations.
