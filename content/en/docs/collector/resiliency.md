@@ -174,12 +174,12 @@ backend, you can introduce a dedicated message queue like Kafka.
           exporters: [otlp]
     ```
 
-{{% alert title="Tip: Use WALs for selected Collectors" %}} Use a message queue
-for critical data paths requiring high durability, especially across network
-boundaries (e.g., between data centers, availability zones, or to a cloud
-vendor). This approach leverages the robust, built-in resilience of systems like
-Kafka but adds operational complexity and requires expertise in managing the
-message queue system. {{% /alert %}}
+{{% alert title="Tip: Use message queues for critical hops" %}} Use a message
+queue for critical data paths requiring high durability, especially across
+network boundaries (e.g., between data centers, availability zones, or to a
+cloud vendor). This approach leverages the robust, built-in resilience of
+systems like Kafka but adds operational complexity and requires expertise in
+managing the message queue system. {{% /alert %}}
 
 ## Circumstances of data loss
 
