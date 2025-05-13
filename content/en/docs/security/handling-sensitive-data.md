@@ -88,7 +88,7 @@ processors:
 
 ### Replacing `user.id` with `user.hash`
 
-The following configuration for the `transform` processor can be used remove the
+The following configuration for the `transform` processor can be used to remove the
 `user.id` and replace it with a `user.hash`:
 
 ```yaml
@@ -132,7 +132,7 @@ transform:
 
 ### Delete attributes with redaction processor
 
-Finally, an example for the `redaction` processor to delete certain attributes,
+Finally, an example for the `redaction` processor to delete certain attributes
 can be found in the section
 ["Scrub sensitive data"](/docs/security/config-best-practices/#scrub-sensitive-data)
 of the security best practices page for Collector configurations.
