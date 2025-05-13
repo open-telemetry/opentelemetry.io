@@ -3587,6 +3587,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-04-06T04:41:30.404934069Z"
   },
+  "https://github.com/csvpath/csvpath": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-09T09:59:33.516355+02:00"
+  },
   "https://github.com/cyrille-leclerc": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:14:41.728174-05:00"
@@ -5411,6 +5415,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:24.09422-05:00"
   },
+  "https://github.com/open-telemetry/opamp-spec": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-01T12:54:48.484239+02:00"
+  },
   "https://github.com/open-telemetry/opamp-spec/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-24T10:00:32.770402-05:00"
@@ -5458,6 +5466,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/README.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:33:59.421324-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/cmd/opampsupervisor/specification/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-12T10:09:03.596342+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/datadogexporter/README.md": {
     "StatusCode": 206,
@@ -11459,6 +11471,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-30T17:00:10.089894-05:00"
   },
+  "https://github.com/open-telemetry/otel-arrow/pull/293": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-08T10:42:08.425766455-07:00"
+  },
+  "https://github.com/open-telemetry/otel-arrow/pull/303": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-08T10:42:09.658751132-07:00"
+  },
   "https://github.com/open-telemetry/oteps/blob/main/text/0035-opentelemetry-protocol.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:59:03.242177-05:00"
@@ -17431,6 +17451,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-04-06T04:24:06.65469916Z"
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.50.0-alpha/opentelemetry-bom-alpha-1.50.0-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-10T08:41:18.353351068-07:00"
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.42.1/opentelemetry-bom-1.42.1.pom": {
     "StatusCode": 206,
     "LastSeen": "2024-10-23T20:20:05.242921-05:00"
@@ -17466,6 +17490,10 @@
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.49.0/opentelemetry-bom-1.49.0.pom": {
     "StatusCode": 206,
     "LastSeen": "2025-04-06T04:24:04.915975068Z"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.50.0/opentelemetry-bom-1.50.0.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-10T08:41:18.242169839-07:00"
   },
   "https://research.facebook.com/file/877841159827226/holistic-configuration-management-at-facebook.pdf": {
     "StatusCode": 206,
@@ -18794,6 +18822,14 @@
   "https://www.crewai.com/": {
     "StatusCode": 200,
     "LastSeen": "2025-02-22T07:14:36.323780936-08:00"
+  },
+  "https://www.csvpath.org": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-09T09:59:31.751029+02:00"
+  },
+  "https://www.csvpath.org/getting-started/dataops-integrations/getting-started-with-csvpath-+-opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-09T09:59:31.869446+02:00"
   },
   "https://www.cypress.io/": {
     "StatusCode": 200,

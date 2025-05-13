@@ -291,25 +291,34 @@ $ cat ./storage/agent.log
 
 ## Other information
 
-- Blog post [Using OpenTelemetry OpAMP to modify service telemetry on the
-  go][blog-opamp-service-telemetry]
+- Blog posts:
+  - [Open Agent Management Protocol (OpAMP) State of the Nation
+    2023][blog-opamp-status]
+  - [Using OpenTelemetry OpAMP to modify service telemetry on the
+    go][blog-opamp-service-telemetry]
 - YouTube videos:
+  - [Smooth Scaling With the OpAMP Supervisor: Managing Thousands of
+    OpenTelemetry Collectors][video-opamp-smooth-scaling]
+  - [Remote Control for Observability Using the Open Agent Management
+    Protocol][video-opamp-remote-control]
+  - [What is OpAMP & What is BindPlane][video-opamp-bindplane]
   - [Lightning Talk: Managing OpenTelemetry Through the OpAMP
-    Protocol][opamp-lt]
-  - [What is OpAMP & What is BindPlane][opamp-bindplane]
+    Protocol][video-opamp-lt]
 
 [configuration]: /docs/collector/configuration/
-[Open Agent Management Protocol]: https://github.com/open-telemetry/opamp-spec/
-[OpAMP specification]:
-  https://github.com/open-telemetry/opamp-spec/blob/main/specification.md
+[Open Agent Management Protocol]: https://github.com/open-telemetry/opamp-spec
+[OpAMP specification]: /docs/specs/opamp/
 [opamp-in-otel-collector]:
-  https://docs.google.com/document/d/1KtH5atZQUs9Achbce6LiOaJxLbksNJenvgvyKLsJrkc/edit#heading=h.ioikt02qpy5f
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/cmd/opampsupervisor/specification/README.md
 [opamp-go]: https://github.com/open-telemetry/opamp-go
 [opamp-supervisor]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor
 [otelcolcontrib]:
   https://github.com/open-telemetry/opentelemetry-collector-releases/releases
 [tags]: https://github.com/open-telemetry/opentelemetry-collector-releases/tags
+[blog-opamp-status]: /blog/2023/opamp-status/
 [blog-opamp-service-telemetry]: /blog/2022/opamp/
-[opamp-lt]: https://www.youtube.com/watch?v=LUsfZFRM4yo
-[opamp-bindplane]: https://www.youtube.com/watch?v=N18z2dOJSd8
+[video-opamp-smooth-scaling]: https://www.youtube.com/watch?v=g8rtqqNTL9Q
+[video-opamp-remote-control]: https://www.youtube.com/watch?v=t550FzDi054
+[video-opamp-bindplane]: https://www.youtube.com/watch?v=N18z2dOJSd8
+[video-opamp-lt]: https://www.youtube.com/watch?v=LUsfZFRM4yo
