@@ -9,7 +9,7 @@ default_lang_commit: dc20c29a4c79ad0424c0fcc3271216af7e035d9b
 cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup updown
 ---
 
-{{% docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro.md %}}
 
 ## Configuração {#setup}
 
@@ -229,7 +229,7 @@ span.AddEvent("Espera cancelada devido a um sinal externo", trace.WithAttributes
 
 ### Definir status do trecho {#set-span-status}
 
-{{% docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble.md" %}}
 
 ```go
 import (
