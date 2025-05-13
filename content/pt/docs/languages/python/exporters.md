@@ -316,5 +316,3 @@ from opentelemetry.sdk.trace.export import SimpleSpanProcessor
 
 processor = SimpleSpanProcessor(OTLPSpanExporter(endpoint="seu-endpoint-aqui"))
 ```
-
-{{% docs/languages/exporters/outro %}}
