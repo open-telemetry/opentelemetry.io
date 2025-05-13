@@ -25,7 +25,7 @@ usuários finais e tópicos relacionados à instrumentação:
 - [Categorias de instrumentação](#instrumentation-categories) abordando diferentes casos de uso e padrões de instalação.
 - [Propagação de Contexto](#context-propagation) fornece correlação entre rastros, métricas e logs, permitindo que os sinais se complementem.
 - [Convenções semânticas](#semantic-conventions) definem como produzir telemetria para operações padrão.
-- [Instrumentação de Log](#log-instrumentation), que é utilizada para obter logs de um _framework_ de logging existente no Java para o OpenTelemetry.
+- [Instrumentação de Log](#log-instrumentation), que é utilizada para obter logs de um _framework_ de _logging_ existente no Java para o OpenTelemetry.
 
 {{% alert %}} Embora as
 [categorias de instrumentação](#instrumentation-categories) enumerem diversas
