@@ -1739,6 +1739,11 @@ approvers:
       - collector-releases-approvers
     html_url: https://github.com/mowies
     avatar_url: https://avatars.githubusercontent.com/u/6901203?v=4
+  - name: Msksgm
+    teams:
+      - docs-ja-approvers
+    html_url: https://github.com/Msksgm
+    avatar_url: https://avatars.githubusercontent.com/u/49427230?v=4
   - name: mtwo
     teams:
       - blog-approvers
@@ -1948,6 +1953,11 @@ approvers:
       - specs-semconv-approvers
     html_url: https://github.com/trisch-me
     avatar_url: https://avatars.githubusercontent.com/u/10500694?v=4
+  - name: vitorvasc
+    teams:
+      - docs-pt-approvers
+    html_url: https://github.com/vitorvasc
+    avatar_url: https://avatars.githubusercontent.com/u/12118857?v=4
   - name: vvydier
     teams:
       - swift-approvers
@@ -2623,9 +2633,6 @@ members:
   - name: vishweshbankwar
     html_url: https://github.com/vishweshbankwar
     avatar_url: https://avatars.githubusercontent.com/u/17655898?v=4
-  - name: vitorvasc
-    html_url: https://github.com/vitorvasc
-    avatar_url: https://avatars.githubusercontent.com/u/12118857?v=4
   - name: vmarchaud
     html_url: https://github.com/vmarchaud
     avatar_url: https://avatars.githubusercontent.com/u/2820968?v=4
