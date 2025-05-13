@@ -2,14 +2,13 @@
 title: Exporters
 weight: 50
 description: Processar e exportar seus dados de telemetria
-default_lang_commit: 546f3e88ca3673de8aad69358d416256d1fe6411 # patched
-drifted_from_default: true
+default_lang_commit: dc20c29a4c79ad0424c0fcc3271216af7e035d9b
 cSpell:ignore: LOWMEMORY
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% docs/languages/exporters/intro %}}
+{{% docs/languages/exporters/intro python %}}
 
 ### Dependências {#otlp-dependencies}
 
@@ -59,7 +58,7 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 
 # Nome do serviço é necessário para a maioria dos backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 
@@ -91,7 +90,7 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 
 # Nome do serviço é necessário para a maioria dos backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 
@@ -131,7 +130,7 @@ from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader, Cons
 # Nome do serviço é necessário para a maioria dos backends,
 # e embora não seja necessário para exportação no console,
 # é bom definir o nome do serviço de qualquer maneira.
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 
@@ -193,9 +192,9 @@ esta variável de ambiente como `CUMULATIVE`.
 
 {{% /alert %}}
 
-{{% include "exporters/jaeger.md" %}}
+{{% docs/languages/exporters/jaeger %}}
 
-{{% include "exporters/prometheus-setup.md" %}}
+{{% docs/languages/exporters/prometheus-setup %}}
 
 ### Dependências {#prometheus-dependencies}
 
@@ -219,7 +218,7 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
 # Nome do serviço é necessário para a maioria dos backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 
@@ -236,7 +235,7 @@ Com o código acima, você pode acessar suas métricas em
 <http://localhost:9464/metrics>. O Prometheus ou um OpenTelemetry Collector com
 o receptor Prometheus pode extrair as métricas deste endpoint.
 
-{{% include "exporters/zipkin-setup.md" %}}
+{{% docs/languages/exporters/zipkin-setup %}}
 
 ### Dependências {#zipkin-dependencies}
 
@@ -274,7 +273,7 @@ from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 
@@ -295,7 +294,7 @@ from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 
@@ -309,7 +308,7 @@ trace.set_tracer_provider(provider)
 
 {{% /tab %}} {{< /tabpane >}}
 
-{{% include "exporters/outro.md" `https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.export.html#opentelemetry.sdk.trace.export.SpanExporter` %}}
+{{% docs/languages/exporters/outro python `https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.export.html#opentelemetry.sdk.trace.export.SpanExporter` %}}
 
 ```python
 from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
@@ -317,3 +316,5 @@ from opentelemetry.sdk.trace.export import SimpleSpanProcessor
 
 processor = SimpleSpanProcessor(OTLPSpanExporter(endpoint="seu-endpoint-aqui"))
 ```
+
+{{% docs/languages/exporters/outro %}}
