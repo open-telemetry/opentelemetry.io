@@ -88,8 +88,8 @@ processors:
 
 ### Replacing `user.id` with `user.hash`
 
-The following configuration for the `transform` processor can be used to remove the
-`user.id` and replace it with a `user.hash`:
+The following configuration for the `transform` processor can be used to remove
+the `user.id` and replace it with a `user.hash`:
 
 ```yaml
 transform:
