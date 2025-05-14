@@ -7071,6 +7071,30 @@
     "StatusCode": 206,
     "LastSeen": "2025-04-29T08:26:13.809334931-07:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.126.0/component/config.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-13T15:37:11.30762975-07:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.126.0/pdata/internal/data/protogen/trace/v1/trace.pb.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-13T15:37:15.433331245-07:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.126.0/pdata/pcommon/map.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-13T15:37:17.085229179-07:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.126.0/receiver/receiver.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-13T15:37:14.337514269-07:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.126.0/receiver/receiver.go#L58": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-13T22:39:12.345Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.126.0/semconv/v1.9.0/generated_resource.go": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-13T22:40:00.139Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/issues/10469": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:41.436253-05:00"
@@ -18184,12 +18208,12 @@
     "LastSeen": "2025-02-10T23:17:25.614898483Z"
   },
   "https://spec.commonmark.org/0.31.2/#link-label": {
-    "StatusCode": 206,
-    "LastSeen": "2025-05-07T10:20:22.152156-04:00"
+    "StatusCode": 200,
+    "LastSeen": "2025-05-13T22:40:12.345Z"
   },
   "https://spec.commonmark.org/0.31.2/#link-reference-definitions": {
-    "StatusCode": 206,
-    "LastSeen": "2025-05-07T10:20:24.108059-04:00"
+    "StatusCode": 200,
+    "LastSeen": "2025-05-13T22:40:12.345Z"
   },
   "https://spring.io": {
     "StatusCode": 200,
