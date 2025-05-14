@@ -340,8 +340,6 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/5232798?v=4
   - name: codeboten
     teams:
-      - arrow-approvers
-      - arrow-triagers
       - collector-approvers
       - collector-contrib-approvers
       - collector-contrib-maintainers
@@ -1722,12 +1720,6 @@ approvers:
       - semconv-security-approvers
     html_url: https://github.com/mjwolf
     avatar_url: https://avatars.githubusercontent.com/u/2590169?v=4
-  - name: moh-osman3
-    teams:
-      - arrow-approvers
-      - arrow-triagers
-    html_url: https://github.com/moh-osman3
-    avatar_url: https://avatars.githubusercontent.com/u/59479562?v=4
   - name: morrisonlevi
     teams:
       - php-approvers
@@ -1953,6 +1945,12 @@ approvers:
       - specs-semconv-approvers
     html_url: https://github.com/trisch-me
     avatar_url: https://avatars.githubusercontent.com/u/10500694?v=4
+  - name: v0y4g3r
+    teams:
+      - arrow-approvers
+      - arrow-triagers
+    html_url: https://github.com/v0y4g3r
+    avatar_url: https://avatars.githubusercontent.com/u/6406592?v=4
   - name: vitorvasc
     teams:
       - docs-pt-approvers
@@ -2624,9 +2622,6 @@ members:
   - name: tydhot
     html_url: https://github.com/tydhot
     avatar_url: https://avatars.githubusercontent.com/u/27889201?v=4
-  - name: v0y4g3r
-    html_url: https://github.com/v0y4g3r
-    avatar_url: https://avatars.githubusercontent.com/u/6406592?v=4
   - name: VenuEmmadi
     html_url: https://github.com/VenuEmmadi
     avatar_url: https://avatars.githubusercontent.com/u/57027311?v=4
