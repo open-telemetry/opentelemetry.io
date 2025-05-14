@@ -5,7 +5,8 @@ date: 2025-04-06
 author: >
   [Vipin Vijaykumar](https://github.com/vipinvkmenon)
 sig: End-User SIG
-cSpell:ignore: ingressgateway otlpgrpc Vijaykumar Vipin
+# prettier-ignore
+cSpell:ignore: gateway gatewayclass ingress ingressgateway otlpgrpc Vijaykumar Vipin
 ---
 
 The goal of this blog post is to demonstrate, how you can expose an
@@ -545,7 +546,7 @@ and the `certs`
       as the client certificate. The Gateway should reject it during the mTLS
       handshake because it's not signed by the trusted CA.
 
-## Caveats:
+## Caveats
 
 In this walkthrough, certain steps were done in a specific way to make it easy
 to run and understand the configuration and scenario. These must be taken care
