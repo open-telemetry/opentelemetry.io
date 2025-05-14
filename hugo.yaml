@@ -335,17 +335,7 @@ module:
     - source: content/bn
       target: content
       lang: bn
-    # fallback pages
-    - source: content/en/_includes
-      target: content/_includes
-      lang: bn
-    - source: content/en/announcements
-      target: content/announcements
-      lang: bn
-    - excludeFiles: specs/*
-      source: content/en/docs
-      target: content/docs
-      lang: bn
+    # TODO: add fallback pages once there is enough bn content
 
     ## es
     - source: content/es
