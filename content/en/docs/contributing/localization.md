@@ -295,8 +295,8 @@ For more details about the script, run `npm run check:i18n -- -h`.
 
 To start a new localization for the OpenTelemetry website you need:
 
-1. A localization mentor that is familiar with your language, such as an [active
-   approver][] of the [CNCF Glossary][], or the [Kubernetes website][].
+1. A **localization mentor** who is familiar with your language, such as an
+   [active approver][] of the [CNCF Glossary][], or the [Kubernetes website][].
 2. At least two potential contributors.
 
 [active approver]: https://github.com/cncf/glossary/blob/main/CODEOWNERS
@@ -305,42 +305,47 @@ To start a new localization for the OpenTelemetry website you need:
 
 Once you are ready:
 
-- Create a [new issue][] to share your interest to contribute.
-- Add the GitHub handles of the mentor and potential contributors.
-- Look up the official [ISO 639-1 code][] for the language you want to add.
-  We'll refer to this language code as `LANG_ID` in the remainder of this
-  section.
-- Add the following task list to your issue's opening comment:
-  ```markdown
-  - [ ] Language info:
-    - ISO 639-1 language code: `LANG_ID`
-    - Language name: ADD_NAME_HERE
-  - [ ] Locale team info:
-    - [ ] Locale mentor: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
-    - [ ] Contributors: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
-  - [ ] Read through
-        [Localization](https://opentelemetry.io/docs/contributing/localization/)
-        and all other pages in the Contributing section
-  - [ ] Localize site homepage to YOUR_LANGUAGE_NAME
-  - [ ] OTel maintainers:
-    - [ ] Update `hugo.yaml`
-    - [ ] Configure cSpell and other tooling support
-    - [ ] Create an issue label for `lang:LANG_ID`
-    - [ ] Create org-level group for `LANG_ID` approvers
-    - [ ] Update components owners for `content/LANG_ID`
-  ```
+1. Create a [new issue][] to share your interest to contribute.
+
+2. Add the GitHub handles of the mentor and potential contributors.
+
+3. Look up the official [ISO 639-1 code][] for the language you want to add.
+   We'll refer to this language code as `LANG_ID` in the remainder of this
+   section.
+
+4. Add the following task list to your issue's opening comment:
+
+   ```markdown
+   - [ ] Language info:
+     - ISO 639-1 language code: `LANG_ID`
+     - Language name: ADD_NAME_HERE
+   - [ ] Locale team info:
+     - [ ] Locale mentor: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
+     - [ ] Contributors: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
+   - [ ] Read through
+         [Localization](https://opentelemetry.io/docs/contributing/localization/)
+         and all other pages in the Contributing section
+   - [ ] Localize site homepage to YOUR_LANGUAGE_NAME
+   - [ ] OTel maintainers:
+     - [ ] Update `hugo.yaml`
+     - [ ] Configure cSpell and other tooling support
+     - [ ] Create an issue label for `lang:LANG_ID`
+     - [ ] Create org-level group for `LANG_ID` approvers
+     - [ ] Update components owners for `content/LANG_ID`
+   ```
+
+5. [Submit a pull request](pull-requests/) with a translation of the website
+   [home page][], and _nothing else_, in the file `content/LANG_ID/_index.md`.
+   Ensure that maintainers have the necessary permissions to edit your PR, since
+   they will add additional changes to your PR that are required to get your
+   localization project started.
 
 [ISO 639-1 code]: https://en.wikipedia.org/wiki/ISO_639-1
+[index page]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md
 
-After you created that issue and have the required amount of contributors,
-maintainers will ask you to provide a pull request with a translation of the
-[index page](https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md).
-Make sure that maintainers are allowed to edit your PR, since they will add
-additional changes to your PR that are required to get your localization project
-started.
-
-With your first PR merged maintainers will take care of setting up the issue
-label, the org-level group and the component owners.
+After your first PR is merged, maintainers will set up the issue label, the
+org-level group and the component owners.
 
 {{% alert title="Note" %}}
 
