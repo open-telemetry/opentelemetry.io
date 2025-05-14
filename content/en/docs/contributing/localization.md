@@ -334,14 +334,14 @@ Once you are ready:
      - [ ] Update components owners for `content/LANG_ID`
    ```
 
-5. [Submit a pull request](pull-requests/) with a translation of the website
-   [home page][], and _nothing else_, in the file `content/LANG_ID/_index.md`.
+5. [Submit a pull request](../pull-requests/) with a translation of the website
+   [homepage], and _nothing else_, in the file `content/LANG_ID/_index.md`.
    Ensure that maintainers have the necessary permissions to edit your PR, since
    they will add additional changes to your PR that are required to get your
    localization project started.
 
 [ISO 639-1 code]: https://en.wikipedia.org/wiki/ISO_639-1
-[index page]:
+[homepage]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md
 
 After your first PR is merged, maintainers will set up the issue label, the
