@@ -3503,6 +3503,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:38.183934-05:00"
   },
+  "https://github.com/cncf/glossary/blob/main/CODEOWNERS": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-14T07:13:11.272094-04:00"
+  },
   "https://github.com/cncf/tag-observability/blob/whitepaper-v1.0.0/whitepaper.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:38.098959-05:00"
@@ -4746,6 +4750,10 @@
   "https://github.com/kubernetes/cri-api/blob/c75ef5b473bbe2d0a4fc92f82235efd665ea8e9f/pkg/apis/runtime/v1/api.proto#L1237-L1238": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:10:12.345Z"
+  },
+  "https://github.com/kubernetes/website": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-14T07:13:15.63962-04:00"
   },
   "https://github.com/kubewarden": {
     "StatusCode": 206,
@@ -14042,6 +14050,10 @@
   "https://gitpod.io/workspaces": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:05.193348-05:00"
+  },
+  "https://glossary.cncf.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-14T07:13:12.806372-04:00"
   },
   "https://glossary.cncf.io/cloud-native-apps/": {
     "StatusCode": 206,
