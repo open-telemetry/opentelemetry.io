@@ -296,9 +296,9 @@ spec:
 
 ### Ви налаштували селектор ServiceMonitor (або PodMonitor)? {#did-you-configure-a-servicemonitor-or-podmonitor-selector}
 
-Якщо ви налаштували [`ServiceMonitor`](https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/) селектор, це означає, що Розподільник цілей шукає лише `ServiceMonitor`и з `metadata.label`, що відповідає значенню в [`serviceMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr-1).
+Якщо ви налаштували [`ServiceMonitor`](https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/) селектор, це означає, що Розподільник цілей шукає лише `ServiceMonitor`и з `metadata.label`, що відповідає значенню в [`serviceMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscrservicemonitorselector).
 
-Припустимо, ви налаштували [`serviceMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr-1) для вашого Розподільника цілей, як у наступному прикладі:
+Припустимо, ви налаштували [`serviceMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscrservicemonitorselector) для вашого Розподільника цілей, як у наступному прикладі:
 
 ```yaml
 apiVersion: opentelemetry.io/v1beta1
@@ -339,7 +339,7 @@ spec:
 
 {{% alert title="Порада" %}}
 
-Те ж саме стосується, якщо ви використовуєте [PodMonitor]. У цьому випадку ви б використовували [`podMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr) замість `serviceMonitorSelector`.
+Те ж саме стосується, якщо ви використовуєте [PodMonitor]. У цьому випадку ви б використовували [`podMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscr) замість `serviceMonitorSelector`.
 
 {{% /alert %}}
 
@@ -347,7 +347,7 @@ spec:
 
 Як зазначено в ["Ви налаштували селектор ServiceMonitor або PodMonitor"](#did-you-configure-a-servicemonitor-or-podmonitor-selector), встановлення невідповідних значень для `serviceMonitorSelector` та `podMonitorSelector` призводить до того, що Розподільник цілей не може виявити цілі для збору метрик з ваших `ServiceMonitor`ів та `PodMonitor`ів відповідно.
 
-Аналогічно, у [`v1beta1`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector-1) `OpenTelemetryCollector` CR, відсутність цієї конфігурації взагалі також призводить до того, що Розподільник цілей не може виявити цілі для збору метрик з ваших `ServiceMonitor`ів та `PodMonitor`ів.
+Аналогічно, у [`v1beta1`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md#opentelemetryiov1beta1) `OpenTelemetryCollector` CR, відсутність цієї конфігурації взагалі також призводить до того, що Розподільник цілей не може виявити цілі для збору метрик з ваших `ServiceMonitor`ів та `PodMonitor`ів.
 
 У версії `v1beta1` `OpenTelemetryOperator`, `serviceMonitorSelector` та `podMonitorSelector` повинні бути включені, навіть якщо ви не маєте наміру їх використовувати, як це:
 

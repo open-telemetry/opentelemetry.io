@@ -21,4 +21,4 @@ aliases: [service_table, service-table]
 | [quote](quote/)                       | PHP           | Розраховує вартість доставки залежно від кількості товарів для відправлення.                                                                        |
 | [recommendation](recommendation/)     | Python        | Рекомендує інші продукти на основі вмісту кошика.                                                                                                   |
 | [shipping](shipping/)                 | Rust          | Надає оцінки вартості доставки на основі кошика. Доставляє товари за вказаною адресою (макет/).                                                     |
-| [react-native-app](react-native-app/) | TypeScript    | React Native мобільний застосунок, який надає користувацький інтерфейс на додаток до сервісів для шопінгу.                                          |
+| [react-native-app](react-native-app/) | TypeScript    | React Native мобільний застосунок, який надає користувацький інтерфейс на додачу до сервісів для шопінгу.                                          |

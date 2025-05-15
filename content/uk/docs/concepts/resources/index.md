@@ -5,7 +5,7 @@ weight: 70
 
 ## Вступ {#introduction}
 
-{{% uk/docs/languages/resources-intro %}}
+{{% docs/languages/resources-intro %}}
 
 Якщо ви використовуєте [Jaeger](https://www.jaegertracing.io/) як вашу систему спостереження, атрибути ресурсів групуються у вкладці **Process**:
 

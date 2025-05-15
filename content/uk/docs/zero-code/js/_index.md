@@ -41,12 +41,6 @@ export NODE_OPTIONS="--require @opentelemetry/auto-instrumentations-node/registe
 node app.js
 ```
 
-{{% alert title="Примітка" color="info" %}}
-
-Зараз, лише Трейси підтримуються для налаштування змінних середовища. Дивіться відкриті питання для [Метрик](https://github.com/open-telemetry/opentelemetry-js/issues/4551) та [Логів](https://github.com/open-telemetry/opentelemetry-js/issues/4552), щоб дізнатися більше.
-
-{{% /alert %}}
-
 Стандартно використовуються всі [детектори ресурсів](/docs/languages/js/resources/) SDK. Ви можете використовувати змінну середовища `OTEL_NODE_RESOURCE_DETECTORS` для включення лише певних детекторів або для повного їх відключення.
 
 Щоб побачити повний спектр налаштувань, дивіться [Налаштування модуля](configuration).

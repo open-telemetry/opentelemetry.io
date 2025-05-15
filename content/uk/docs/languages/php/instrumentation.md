@@ -574,7 +574,7 @@ $span = $tracer->spanBuilder("span-with-links")
 
 ### Встановлення статусу відрізка та запис помилок {#set-span-status-and-record-exceptions}
 
-{{% uk/docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble" %}}
 
 Може бути гарною ідеєю записувати помилки, коли вони трапляються. Рекомендується робити це разом з [встановленням статусу відрізка](/docs/specs/otel/trace/api/#set-status).
 

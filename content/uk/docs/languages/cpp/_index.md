@@ -6,7 +6,7 @@ description: >
   alt="C++"> Специфічна для мови реалізація OpenTelemetry на C++.
 ---
 
-{{% uk/docs/languages/index-intro cpp /%}}
+{{% docs/languages/index-intro cpp /%}}
 
 ## Репозиторії {#repositories}
 

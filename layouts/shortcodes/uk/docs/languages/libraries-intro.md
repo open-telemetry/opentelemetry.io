@@ -1,12 +1,14 @@
-<!-- prettier-ignore -->
 {{ $howMany := .Get 1 | default 10 -}}
-{{ $langIndex := .Get 0 }}
+{{ $langIndex := .Get 0 -}}
 {{ $lang := index $.Site.Data.instrumentation $langIndex -}}
-{{ $integrations := where (slice ) ".language" $langIndex -}}
+{{ $integrations := where (slice) ".language" $langIndex -}}
 
-{{ $integrations := slice }} {{ range $entry := $.Site.Data.registry }}
-{{ if and (and (eq $entry.language $langIndex) (eq $entry.isNative true)) (eq $entry.registryType "instrumentation") }}
-{{ $integrations = $integrations | append $entry }} {{ end }} {{ end }}
+{{ $integrations := slice -}}
+{{ range $entry := $.Site.Data.registry -}}
+  {{ if and (and (eq $entry.language $langIndex) (eq $entry.isNative true)) (eq $entry.registryType "instrumentation") -}}
+    {{ $integrations = $integrations | append $entry -}}
+  {{ end }}
+{{ end }}
 
 Коли ви розробляєте застосунок, ви можете використовувати сторонні бібліотеки та фреймворки, щоб прискорити свою роботу. Якщо ви потім інструментуєте свій застосунок за допомогою OpenTelemetry, ви можете уникнути додаткового часу на ручне додавання трасувань, логів та метрик до сторонніх бібліотек та фреймворків, які ви використовуєте.
 

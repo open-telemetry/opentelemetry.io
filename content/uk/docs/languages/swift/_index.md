@@ -6,7 +6,7 @@ description: >-
 weight: 28
 ---
 
-{{% uk/docs/languages/index-intro swift /%}}
+{{% docs/languages/index-intro swift /%}}
 
 ## Додатково {#further-reading}
 

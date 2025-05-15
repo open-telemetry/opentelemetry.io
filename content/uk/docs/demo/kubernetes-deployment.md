@@ -67,10 +67,10 @@ kubectl apply --namespace otel-demo -f https://raw.githubusercontent.com/open-te
 
 ### Експонування сервісів за допомогою kubectl port-forward {#expose-services-using-kubectl-port-forward}
 
-Щоб відкрити сервіс frontend-proxy, використовуйте наступну команду (замініть `my-otel-demo` на відповідну назву релізу Helm-чарту):
+Щоб експонувати сервіс frontend-proxy, використовуйте наступну команду (замініть `default` на відповідний простір назв релізу Helm-чарту):
 
 ```shell
-kubectl port-forward svc/my-otel-demo-frontend-proxy 8080:8080
+kubectl --namespace default port-forward svc/frontend-proxy 8080:8080
 ```
 
 {{% alert title="Примітка" color="info" %}}

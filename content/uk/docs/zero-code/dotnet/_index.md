@@ -58,7 +58,7 @@ chmod +x $HOME/.otel-dotnet-auto/instrument.sh
 # Налаштуйте інструментування для поточної shell сесії
 . $HOME/.otel-dotnet-auto/instrument.sh
 
-# Запустіть ваш додаток з інструментуванням
+# Запустіть ваш застосунок з інструментуванням
 OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging,service.version=1.0.0 ./MyNetApp
 ```
 

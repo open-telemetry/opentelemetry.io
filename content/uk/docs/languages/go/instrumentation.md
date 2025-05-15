@@ -200,7 +200,7 @@ span.AddEvent("Скасовано очікування через зовнішн
 
 ### Встановлення статусу відрізка {#setting-span-status}
 
-{{% uk/docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble" %}}
 
 ```go
 import (

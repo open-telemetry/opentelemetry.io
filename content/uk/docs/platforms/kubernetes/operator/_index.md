@@ -62,4 +62,11 @@ spec:
 EOF
 ```
 
+{{% alert color="primary" title="Примітка" %}}
+
+Стандартно, `opentelemetry-operator` використовує
+[образ `opentelemetry-collector`](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector). Якщо оператор встановлено за допомогою [чартів Helm](../helm/), використовується образ [`opentelemetry-collector-k8s`](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s). Якщо вам потрібен компонент, якого немає у цих випусках, вам може знадобитися [зібрати власний колектор](/docs/collector/custom-collector/).
+
+{{% /alert %}}
+
 Для отримання додаткових параметрів конфігурації та налаштування інʼєкції автоматичного інструментування робочих навантажень за допомогою бібліотек інструментування OpenTelemetry, продовжуйте читати [тут](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md).

@@ -934,7 +934,7 @@ const someFunction = (spanToLinkFrom) => {
 
 ### Статус відрізка {#span-status}
 
-{{% uk/docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble" %}}
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 

@@ -237,7 +237,7 @@ filelog:
 
 Для деталей конфігурації приймача filelog дивіться [Приймач filelog](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver).
 
-На додаток до конфігурації приймача filelog, ваша установка OpenTelemetry Collector в Kubernetes потребуватиме доступу до журналів, які вона хоче збирати. Зазвичай це означає додавання деяких томів та volumeMounts до вашого маніфесту колектора:
+На додачу до конфігурації приймача filelog, ваша установка OpenTelemetry Collector в Kubernetes потребуватиме доступу до журналів, які вона хоче збирати. Зазвичай це означає додавання деяких томів та volumeMounts до вашого маніфесту колектора:
 
 ```yaml
 ---

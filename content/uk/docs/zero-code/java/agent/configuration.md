@@ -82,5 +82,11 @@ default=false
 %}} Увімкнення [Постачальника ресурсів GCP](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources).
 {{% /config_option %}}
 
+{{% config_option
+name="otel.resource.providers.azure.enabled"
+default=false
+%}} Увімкнення [Постачальника ресурсів Azure](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/azure-resources).
+{{% /config_option %}}
+
 [розширення]:
   https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/examples/extension#readme

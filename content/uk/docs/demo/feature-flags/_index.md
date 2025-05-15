@@ -2,6 +2,7 @@
 title: Прапорці функцій
 aliases:
   - feature_flags
+  - scenarios
   - services/feature-flag
   - services/featureflagservice
 cSpell:ignore: OLJCESPC7Z
@@ -32,6 +33,10 @@ cSpell:ignore: OLJCESPC7Z
 | `loadgeneratorFloodHomepage`        | Load Generator   | Почати затоплення головної сторінки великою кількістю запитів, налаштовується шляхом зміни JSON flagd на стані. |
 | `kafkaQueueProblems`                | Kafka            | Перевантажує чергу Kafka, одночасно вводячи затримку на стороні споживача, що призводить до сплеску затримки. |
 | `imageSlowLoad`                     | Frontend         | Використовує впорскування помилок envoy, викликає затримку у завантаженні зображень продуктів на фронтенді. |
+
+## Guided Debugging Scenario {#guided-debugging-scenario}
+
+Сценарій `recommendationServiceCacheFailure` має [спеціальний посібник](recommendation-cache/), щоб допомогти зрозуміти, як ви можете усунути витоки памʼяті за допомогою OpenTelemetry.
 
 ## Архітектура прапорців функцій {#feature-flags-architecture}
 

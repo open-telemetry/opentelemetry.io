@@ -1,4 +1,3 @@
-<!-- prettier-ignore -->
 {{ $lang := .Get 0 -}}
 {{ $Lang := $lang | humanize -}}
 {{ $howMany := .Get 1 | default 10 -}}
@@ -8,9 +7,7 @@
 
 OpenTelemetry {{ $Lang }} використовується багатьма організаціями, включаючи:
 
-{{ range first $howMany (sort $adopters "name") -}}
-
-<!-- prettier-ignore -->
+{{ range first $howMany (sort $adopters "name") }}
 - [{{ .name }}]({{ .url }})
 {{- end }}
 

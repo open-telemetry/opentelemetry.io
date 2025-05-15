@@ -3,7 +3,7 @@ title: Ресурси
 weight: 70
 ---
 
-{{% uk/docs/languages/resources-intro %}}
+{{% docs/languages/resources-intro %}}
 
 ## Виявлення ресурсів {#resource-detection}
 
