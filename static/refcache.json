@@ -3043,6 +3043,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:20:44.733417-05:00"
   },
+  "https://github.com/albertlockett": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-15T15:54:39.689899262-07:00"
+  },
   "https://github.com/alexandriastech": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:23.610016-05:00"
@@ -3130,6 +3134,10 @@
   "https://github.com/ashu658": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:15:18.40959-05:00"
+  },
+  "https://github.com/askpt": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-15T15:54:41.139654788-07:00"
   },
   "https://github.com/aspecto-io/opentelemetry-ext-js/tree/master/packages/instrumentation-elasticsearch": {
     "StatusCode": 206,
@@ -4838,6 +4846,10 @@
   "https://github.com/lquerel": {
     "StatusCode": 206,
     "LastSeen": "2025-01-30T17:00:39.403541-05:00"
+  },
+  "https://github.com/lukas-reining": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-15T15:54:43.218157572-07:00"
   },
   "https://github.com/lumigo-io/opentelemetry-java-distro": {
     "StatusCode": 206,
