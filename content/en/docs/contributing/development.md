@@ -60,7 +60,7 @@ Your development environment will be initialized via the
     specified in the .nvmrc file:
 
     ```sh
-    nvm install
+    nvm install --lts
     ```
 
     To [install under Windows][nodejs-win], use [nvm-windows]:
