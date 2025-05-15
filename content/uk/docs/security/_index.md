@@ -1,7 +1,7 @@
 ---
 title: Безпека
 cascade:
-  collector_vers: 0.123.0
+  collector_vers: 0.126.0
 weight: 970
 ---
 

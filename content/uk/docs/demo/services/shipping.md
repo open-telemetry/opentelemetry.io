@@ -50,7 +50,7 @@ fn init_tracer() -> Result<sdktrace::Tracer, TraceError> {
 }
 ```
 
-Відрізки та інші метрики створюються в цьому прикладі протягом асинхронних середовищ виконання `tokio`, знайдених у функціях сервера [`tonic`](https://github.com/hyperium/tonic/blob/master/examples/helloworld-tutorial.md#writing-our-server). Будьте уважні до асинхронного середовища виконання, [охоронців контексту](https://docs.rs/opentelemetry/latest/opentelemetry/struct.ContextGuard.html), та неможливості переміщення та клонування `spans` при відтворенні з цих зразків.
+Відрізки та інші метрики створюються в цьому прикладі протягом асинхронних середовищ виконання `tokio`, знайдених у функціях сервера [`tonic`](https://github.com/hyperium/tonic/blob/master/examples/helloworld-tutorial.md#writing-our-server). Будьте уважні до асинхронного середовища виконання, [охоронців контексту](https://docs.rs/opentelemetry/latest/opentelemetry/context/struct.ContextGuard.html), та неможливості переміщення та клонування `spans` при відтворенні з цих зразків.
 
 ### Додавання gRPC інструментування {#adding-grpc-instrumentation}
 

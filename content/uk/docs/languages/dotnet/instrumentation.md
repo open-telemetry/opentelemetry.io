@@ -562,7 +562,7 @@ var activity = MyActivitySource.StartActivity(
 
 ### Встановлення статусу Activity {#set-activity-status}
 
-{{% uk/docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble" %}}
 
 Статус може бути встановлений у будь-який час до завершення відрізка.
 
@@ -583,7 +583,7 @@ private int rollOnce()
         catch (Exception ex)
         {
             childActivity?.SetStatus(ActivityStatusCode.Error, "Щось пішло не так!");
-            childActivity?.RecordException(ex);
+            childActivity?.AddException(ex);
             throw;
         }
 

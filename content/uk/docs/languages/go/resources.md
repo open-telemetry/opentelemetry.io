@@ -4,7 +4,7 @@ weight: 70
 cSpell:ignore: sdktrace thirdparty
 ---
 
-{{% uk/docs/languages/resources-intro %}}
+{{% docs/languages/resources-intro %}}
 
 Ресурси повинні бути призначені трасувальнику, вимірювачу та постачальнику логів під час їх ініціалізації, і створюються вони так само як атрибути:
 

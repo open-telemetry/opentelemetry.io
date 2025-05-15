@@ -231,7 +231,7 @@ link = OpenTelemetry::Trace::Link.new(span_to_link_from.context, attributes: { "
 
 ### Встановлення статусу відрізка {#set-span-status}
 
-{{% uk/docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble" %}}
 
 ```ruby
 require "opentelemetry/sdk"

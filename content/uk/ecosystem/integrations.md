@@ -1,7 +1,7 @@
 ---
 title: Інтеграції
 description:
-  Бібліотеки, сервіси та додатки з підтримкою OpenTelemetry.
+  Бібліотеки, сервіси та застосунки з підтримкою OpenTelemetry.
 aliases: [/integrations]
 ---
 

@@ -49,7 +49,7 @@ public class MyClass {
 }
 ```
 
-Кожного разу, коли застосунок викликає анотований метод, створюється відрізок, який позначає його тривалість і надає будь-які помилки, що зʼявляються. Стандартно імʼя відрізка буде `<className>.<methodName>`, якщо імʼя не вказано як аргумент до анотації.
+Кожного разу, коли застосунок викликає анотований метод, створюється відрізок, який позначає його тривалість і надає будь-які помилки, що зʼявляються. Стандартно імʼя відрізка буде `<className>.<methodName>`, якщо імʼя не вказано як аргумент параметра `value` до анотації.
 
 Якщо тип повернення методу, анотованого `@WithSpan`, є одним із типів, схожих на [future або promise](https://en.wikipedia.org/wiki/Futures_and_promises), зазначених нижче, то відрізок не буде завершено, доки future не завершиться.
 
@@ -72,19 +72,25 @@ public class MyClass {
 
 | назва            | тип               | типове значення | опис                                                                                                                                                     |
 | ---------------- | ----------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `kind`           | `SpanKind` (enum) | `INTERNAL`      | [Вид відрізку](/docs/specs/otel/trace/api/#spankind).                                                                                                    |
+| `value`          | `String`          | `""`            | Імʼя відрізка. Якщо не вказано, стандартно використовується `<className>.<methodName>`.                                                                  |
+| `kind`           | `SpanKind` (enum) | `INTERNAL`      | [Вид відрізка](/docs/specs/otel/trace/api/#spankind).                                                                                                    |
 | `inheritContext` | `boolean`         | `true`          | Починаючи з версії 2.14.0. Контролює, чи буде новий відрізок батьківським для існуючого (поточного) контексту. Якщо `false`, створюється новий контекст. |
 
 Приклад використання параметрів:
 
 ```java
-@WithSpan(kind = SpanKind.CLIENT, inheritContext = false)
+@WithSpan(kind = SpanKind.CLIENT, inheritContext = false, value = "my span name")
 public void myMethod() {
+    <...>
+}
+
+@WithSpan("my span name")
+public void myOtherMethod() {
     <...>
 }
 ```
 
-## Додавання атрибутів до відрізку за допомогою `@SpanAttribute` {#adding-attributes-to-the-span-with-spanattribute}
+## Додавання атрибутів до відрізка за допомогою `@SpanAttribute` {#adding-attributes-to-the-span-with-spanattribute}
 
 Коли створюється [відрізок](/docs/concepts/signals/traces/#spans) для анотованого методу, значення аргументів до виклику методу можуть автоматично додаватися як [атрибути](/docs/concepts/signals/traces/#attributes) до створеного відрізка. Просто додайте до параметрів методу анотацію `@SpanAttribute`:
 

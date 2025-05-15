@@ -15,6 +15,12 @@ cSpell:ignore: batchprocessor chipset darwin debugexporter gomod loggingexporter
 
 ## Крок 1. Встановлення збирача {#step-1---install-the-builder}
 
+{{% alert color="primary" title="Примітка" %}}
+
+Для збирання дистрибутиву колектора інструменту `ocb` потрібен Go. [Встановіть Go](https://go.dev/doc/install) на вашому компʼютері, якщо ви цього ще не зробили.
+
+{{% /alert %}}
+
 Бінарний файл `ocb` доступний як завантажуваний актив з [релізів OpenTelemetry Collector з теґами `cmd/builder`][tags]. Ви знайдете список активів, названих відповідно до ОС та чипсету, тому завантажте той, який підходить для вашої конфігурації:
 
 {{< tabpane text=true >}}
@@ -146,7 +152,13 @@ providers:
 
 {{% /alert %}}
 
-## Крок 3. Генерація коду та створення дистрибутиву вашого Колектора {#step-3---generating-the-code-and-building-your-collectors-distribution}
+## Крок 3a. Створення коду та збірка дистрибутиву колектора {#step-3a---generate-the-code-and-build-your-collectors-distribution}
+
+{{% alert color="primary" title="Примітка" %}}
+
+На цьому кроці буде зібрано ваш власний дистрибутив колектора за допомогою двійкового файлу `ocb`. Якщо ви бажаєте зібрати і розгорнути ваш власний дистрибутив колекторів у середовищі оркестрування контейнерів (наприклад, Kubernetes), пропустіть цей крок і перейдіть до [Кроку 3b](#step-3b---containerize-your-collectors-distribution).
+
+{{% /alert %}}
 
 Все, що вам потрібно зараз, це дозволити `ocb` виконати свою роботу, тому перейдіть до вашого термінала та введіть наступну команду:
 
@@ -187,7 +199,111 @@ providers:
 
 Тепер ви можете використовувати згенерований код для створення проєктів розробки компонентів та легко створювати та розповсюджувати власний дистрибутив колектора з вашими компонентами.
 
-Для подальшого ознайомлення:
+## Крок 3b. Контейнеризуйте дистрибутив вашого колектора {#step-3b---containerize-your-collectors-distribution}
+
+{{% alert color="primary" title="Примітка" %}}
+
+На цьому кроці дистрибутив колектора буде створено у `Docker-файлі`. Виконайте цей крок, якщо вам потрібно розгорнути дистрибутив колектора до оркестрування контейнерів (наприклад, Kubernetes). Якщо ви бажаєте лише зібрати дистрибутив колекторів без контейнеризації, перейдіть до [Кроку 3a](#step-3a---generate-the-code-and-build-your-collectors-distribution).
+
+{{% /alert %}}
+
+Вам потрібно додати два нових файли до вашого проєкту:
+
+- `Dockerfile` — визначення образу контейнера вашого дистрибутива Collector
+- `collector-config.yaml` — Мінімалістична конфігурація колектора YAML для тестування нашого дистрибутива
+
+Після додавання цих файлів ваша файлова структура матиме такий вигляд:
+
+```console
+.
+├── builder-config.yaml
+├── collector-config.yaml
+└── Dockerfile
+```
+
+Наступний `Dockerfile` збирає ваш дистрибутив Collector на місці, гарантуючи, що отриманий двійковий дистрибутив Collector відповідає цільовій архітектурі контейнера (наприклад, `linux/arm64`, `linux/amd64`):
+
+<!-- prettier-ignore-start -->
+```yaml
+FROM alpine:3.19 AS certs
+RUN apk --update add ca-certificates
+
+FROM golang:1.23.6 AS build-stage
+WORKDIR /build
+
+COPY ./builder-config.yaml builder-config.yaml
+
+RUN --mount=type=cache,target=/root/.cache/go-build GO111MODULE=on go install go.opentelemetry.io/collector/cmd/builder@{{% version-from-registry collector-builder %}}
+RUN --mount=type=cache,target=/root/.cache/go-build builder --config builder-config.yaml
+
+FROM gcr.io/distroless/base:latest
+
+ARG USER_UID=10001
+USER ${USER_UID}
+
+COPY ./collector-config.yaml /otelcol/collector-config.yaml
+COPY --from=certs /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+COPY --chmod=755 --from=build-stage /build/otelcol-dev /otelcol
+
+ENTRYPOINT ["/otelcol/otelcol-dev"]
+CMD ["--config", "/otelcol/collector-config.yaml"]
+
+EXPOSE 4317 4318 12001
+```
+<!-- prettier-ignore-end -->
+
+Нижче наведено мінімалістичне визначення `collector-config.yaml`:
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+processors:
+  batch:
+
+exporters:
+  debug:
+    verbosity: detailed
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [debug]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [debug]
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [debug]
+```
+
+Скористайтеся наведеними нижче командами для створення багатоархітектурного Docker-образу OCB з використанням `linux/amd64` і `linux/arm64` як цільових архітектур збірки. Щоб дізнатися більше, перегляньте цей [допис у блозі](https://blog.jaimyn.dev/how-to-build-multi-architecture-docker-images-on-an-m1-mac/) про багатоархітектурні збірки.
+
+```bash
+# Увімкнення багатоархітектурних збірок Docker
+docker run --rm --privileged tonistiigi/binfmt --install all
+docker buildx create --name mybuilder --use
+
+# Зібрка Docker-образу як Linux AMD та ARM,
+# і завантажує результат збірки до "docker images".
+docker buildx build --load \
+  -t <collector_distribution_image_name>:<version> \
+  --platform=linux/amd64,linux/arm64 .
+
+# Тестування створеного образу
+docker run -it --rm -p 4317:4317 -p 4318:4318 \
+    --name otelcol <collector_distribution_image_name>:<version>
+```
+
+## Для подальшого ознайомлення {#further-reading}
 
 - [Створення приймача трасування](/docs/collector/building/receiver)
 - [Створення конектора](/docs/collector/building/connector)
