@@ -68,7 +68,7 @@ Run:
 - `npm run check:markdown` to ensure that all files follow our standards
 - `npm run fix:markdown` to fix Markdown-related formatting issues
 
-We also enforce markdown [file format](#file-format) and strip files of trailing
+We also enforce Markdown [file format](#file-format) and strip files of trailing
 whitespace. This precludes the [line break syntax] of 2+ spaces; use `<br>`
 instead or reformat your text.
 

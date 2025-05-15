@@ -3,13 +3,10 @@ title: Status
 menu: { main: { weight: 30 } }
 aliases: [/project-status, /releases]
 description: Nível de maturidade dos principais componentes do OpenTelemetry
-default_lang_commit: a6e46dac8b73165a904e9fee4c1ee46305a8b968
-drifted_from_default: true
+type: docs
+body_class: td-no-left-sidebar
+default_lang_commit: 1f83b9ffa3ecdd5e2b507379cc259e5678596c7f
 ---
-
-{{% blocks/section color="white" %}}
-
-## {{% param title %}}
 
 O OpenTelemetry é composto de
 [diversos componentes](/docs/concepts/components/), alguns específicos e outros
@@ -58,5 +55,3 @@ O Operator em si está em um _status_
 Para o _status_ de desenvolvimento ou nível de maturidade da
 [especificação](/docs/specs/otel/), consulte o seguinte:
 [Resumo do _Status_ da Especificação](/docs/specs/status/).
-
-{{% /blocks/section %}}

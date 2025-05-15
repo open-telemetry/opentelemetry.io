@@ -60,7 +60,7 @@ Spans and other metrics are created in this example throughout `tokio` async
 runtimes found within
 [`tonic` server functions](https://github.com/hyperium/tonic/blob/master/examples/helloworld-tutorial.md#writing-our-server).
 Be mindful of async runtime,
-[context guards](https://docs.rs/opentelemetry/latest/opentelemetry/struct.ContextGuard.html),
+[context guards](https://docs.rs/opentelemetry/latest/opentelemetry/context/struct.ContextGuard.html),
 and inability to move and clone `spans` when replicating from these samples.
 
 ### Adding gRPC instrumentation

@@ -396,7 +396,7 @@ more information on pull request checks and how to fix errors automatically.
 ### Preview your changes {#preview-locally}
 
 Preview your changes locally before pushing them or opening a pull request. A
-preview lets you catch build errors or markdown formatting problems.
+preview lets you catch build errors or Markdown formatting problems.
 
 To build and serve the site locally with Hugo, run the following command:
 
@@ -531,6 +531,9 @@ Pull requests are merged when they comply with the following criteria:
 - Approved by at least one approver.
 - No failing PR checks.
 - PR branch is up-to-date with the base branch.
+- Doc page changes [do not span locales][].
+
+[do not span locales]: ../localization/#prs-should-not-span-locales
 
 > **Important**
 >

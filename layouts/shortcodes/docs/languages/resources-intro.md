@@ -1,17 +1,27 @@
-<!-- prettier-ignore -->
-{{ $processWord := .Get 0 | default "a process"  -}}
-{{ $resourceHRef := "/docs/concepts/resources/" -}}
-{{ if eq .Page.RelPermalink $resourceHRef -}}
+{{ $aResource := "" -}}
+{{ $path := "resources-intro.md" -}}
+{{ $includePage := partial "func/find-include.html"  (dict "path" $path "page" .Page) -}}
+{{ if $includePage }}
+  {{ $aResource = .Get 0 | default $includePage.Params.aResource -}}
+{{ else -}}
+  {{ errorf "%s: include file '%s' not found" .Position $path -}}
+{{ end -}}
+
+{{ if not $aResource -}}
+  {{ errorf "%s: shortcode %q param 'resource_intro_default_rsrc' isn't defined" .Position .Name -}}
+{{ end -}}
+
+{{ $resourceConceptsPagePath := "/docs/concepts/resources/" -}}
+{{ $resourceHRef := $resourceConceptsPagePath -}}
+{{ if eq .Page.RelPermalink $resourceConceptsPagePath -}}
   {{ $resourceHRef = "/docs/specs/otel/resource/sdk/" -}}
 {{ end -}}
 
-A [resource]({{ $resourceHRef }}) represents the entity producing telemetry as
-resource attributes. For example, {{ $processWord }} producing telemetry that is
-running in a container on Kubernetes has {{ $processWord }} name, a pod name, a
-namespace, and possibly a deployment name. All four of these attributes can be
-included in the resource.
-
-In your observability backend, you can use resource information to better
-investigate interesting behavior. For example, if your trace or metrics data
-indicate latency in your system, you can narrow it down to a specific container,
-pod, or Kubernetes deployment.
+{{ $args := dict
+  "_dot" .
+  "_path" "resources-intro.md"
+  "_page" $includePage
+  "aResource" $aResource
+  "resourceHRef" $resourceHRef
+-}}
+{{ partial "include" $args -}}

@@ -634,9 +634,7 @@ var activity = MyActivitySource.StartActivity(
 
 ### Set Activity status
 
-{{% docs/languages/span-status-preamble %}}
-
-The status can be set at any time before the span is finished.
+{{% include "span-status-preamble.md" %}}
 
 It can be a good idea to record exceptions when they happen. It's recommended to
 do this in conjunction with
@@ -657,7 +655,7 @@ private int rollOnce()
         catch (Exception ex)
         {
             childActivity?.SetStatus(ActivityStatusCode.Error, "Something bad happened!");
-            childActivity?.RecordException(ex);
+            childActivity?.AddException(ex);
             throw;
         }
 

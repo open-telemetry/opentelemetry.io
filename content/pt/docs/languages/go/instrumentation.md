@@ -230,7 +230,7 @@ span.AddEvent("Espera cancelada devido a um sinal externo", trace.WithAttributes
 
 ### Definir status do trecho {#set-span-status}
 
-{{% pt/docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble.md" %}}
 
 ```go
 import (

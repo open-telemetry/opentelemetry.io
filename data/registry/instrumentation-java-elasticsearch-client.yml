@@ -15,6 +15,6 @@ authors:
     url: https://github.com/elastic
 urls:
   website: https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/index.html
-  docs: https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/opentelemetry.html
+  docs: https://www.elastic.co/docs/reference/elasticsearch/clients/java/setup/opentelemetry
 createdAt: '2024-08-06'
 isNative: true

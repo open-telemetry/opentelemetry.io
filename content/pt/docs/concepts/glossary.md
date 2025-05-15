@@ -4,8 +4,7 @@ description: >-
   Definições e convenções para termos de telemetria conforme usados no
   OpenTelemetry.
 weight: 200
-default_lang_commit: f37118d8489a60d73dd881645f317d866b53b418
-drifted_from_default: true
+default_lang_commit: 389e023192e051a3a835bfc6a71089c98af3b8a8
 ---
 
 Esse glossário define termos e [conceitos](/docs/concepts/) que são novos no
@@ -148,8 +147,10 @@ linguagens. Consulte [mais informações][specification].
 
 ### Evento {#event}
 
-Algo que aconteceu cuja representação depende da [Fonte de dados](#data-source).
-Por exemplo, [Trecho](#span).
+Um Evento é um [Registro de Log](#log-record) com um nome de evento e uma
+estrutura bem conhecida. Por exemplo, eventos de navegador no OpenTelemetry
+seguem uma convenção de nomenclatura particular e carregam dados específicos em
+uma estrutura comum.
 
 ### Exporter
 
@@ -325,10 +326,9 @@ atributos podem ser incluídos no `Recurso`.
 
 ### Registro de log {#log-record}
 
-Uma gravação de um [Evento](#event). Normalmente, o registro inclui um carimbo
-de data/hora indicando quando o [Evento](#event) ocorreu, além de outros dados
-que descrevem o que aconteceu, onde aconteceu, e assim por diante. Consulte
-[mais informações][log record].
+Uma gravação de dados com o carimbo de data/hora e uma severidade. Também pode
+possuir um [ID de Rastro](#trace) e um [ID de Trecho](#span), quando
+correlacionado com um rastro. Consulte [mais informações][log record].
 
 ### REST
 

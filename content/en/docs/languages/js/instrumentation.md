@@ -1031,7 +1031,7 @@ const someFunction = (spanToLinkFrom) => {
 
 ### Span Status
 
-{{% docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble.md" %}}
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 

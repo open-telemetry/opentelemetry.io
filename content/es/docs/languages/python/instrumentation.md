@@ -204,7 +204,7 @@ with tracer.start_as_current_span("span-2", links=[link_from_span_1]):
 
 ### Establecer el estado del span
 
-{{% docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble.md" %}}
 
 ```python
 from opentelemetry import trace
