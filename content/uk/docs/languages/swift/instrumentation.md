@@ -143,7 +143,7 @@ span.addEvent(name: "computation complete", attributes: attributes)
 
 ### Встановлення статусу відрізка {#setting-span-status}
 
-{{% uk/docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble" %}}
 
 ```swift
 func myFunction() {

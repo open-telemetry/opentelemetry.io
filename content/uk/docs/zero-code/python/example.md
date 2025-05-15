@@ -157,7 +157,7 @@ python client.py testing
 Зупиніть виконання `server_manual.py`, натиснувши <kbd>Control+C</kbd> і виконайте наступну команду:
 
 ```sh
-opentelemetry-instrument --traces_exporter console --metrics_exporter none python server_automatic.py
+opentelemetry-instrument --traces_exporter console --metrics_exporter none --logs_exporter none python server_automatic.py
 ```
 
 У консолі, де ви раніше виконували `client.py`, знову виконайте наступну команду:
@@ -212,7 +212,7 @@ python client.py testing
 
 ### Виконання програмно інструментованого сервера {#execute-the-programmatically-instrumented-server}
 
-Також можливо використовувати бібліотеки інструментування (такі як `opentelemetry-instrumentation-flask`) самостійно, що може мати перевагу кастомізації опцій. Однак, вибираючи це, ви відмовляєтеся від використання автоматичного інструментування, запускаючи ваш додаток з `opentelemetry-instrument`, оскільки це взаємозаперечним.
+Також можливо використовувати бібліотеки інструментування (такі як `opentelemetry-instrumentation-flask`) самостійно, що може мати перевагу кастомізації опцій. Однак, вибираючи це, ви відмовляєтеся від використання автоматичного інструментування, запускаючи ваш застосунок з `opentelemetry-instrument`, оскільки це взаємозаперечним.
 
 Виконайте сервер так само як ви б робили для ручного інструментування, у двох окремих консолях, одну для запуску кожного з скриптів, що складають цей приклад:
 
@@ -270,7 +270,7 @@ if __name__ == "__main__":
 ```sh
 export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_REQUEST="Accept-Encoding,User-Agent,Referer"
 export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_RESPONSE="Last-Modified,Content-Type"
-opentelemetry-instrument --traces_exporter console --metrics_exporter none python app.py
+opentelemetry-instrument --traces_exporter console --metrics_exporter none --logs_exporter none python app.py
 ```
 
 Ці опції налаштування підтримуються наступними інструментами HTTP:

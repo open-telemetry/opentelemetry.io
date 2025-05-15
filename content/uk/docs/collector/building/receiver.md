@@ -223,7 +223,7 @@ type Config struct {
 
 {{% /alert %}}
 
-Тепер, коли у вас є доступ до налаштувань, ви можете надати будь-який вид перевірки для цих значень, реалізувавши метод `Validate` відповідно до необовʼязкового інтерфейсу [ConfigValidator](<https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/component/config.go#L50>).
+Тепер, коли у вас є доступ до налаштувань, ви можете надати будь-який вид перевірки для цих значень, реалізувавши метод `Validate` відповідно до необовʼязкового інтерфейсу [ConfigValidator](https://github.com/open-telemetry/opentelemetry-collector/blob/677b87e3ab5c615bc3f93b8f99bb1fa5be951751/component/config.go#L28).
 
 У цьому випадку значення `interval` буде необовʼязковим (ми розглянемо стандартну генерацію значень пізніше), але коли воно визначено, повинно бути не менше 1 хвилини (1m), а значення `number_of_traces` буде обовʼязковим. Ось як виглядає файл config.go після реалізації методу `Validate`.
 

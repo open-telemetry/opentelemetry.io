@@ -13,7 +13,7 @@ OpenTelemetry було створено як злиття OpenTracing та OpenC
 
 ## Jaeger Клієнт {#jaeger-client}
 
-[Спільнота Jaeger](https://www.jaegertracing.io/) припинила підтримку своїх [Клієнтських бібліотек](https://www.jaegertracing.io/docs/latest/client-libraries/) та рекомендує використовувати OpenTelemetry API, SDK та інструменти.
+[Спільнота Jaeger](https://www.jaegertracing.io/) припинила підтримку своїх клієнтських бібліотек та рекомендує [мігрувати](https://www.jaegertracing.io/docs/latest/migration/) на OpenTelemetry API, SDK та інструментування.
 
 Бекенд Jaeger може отримувати дані трасування через протокол OpenTelemetry (OTLP) з версії v1.35. Тому ви можете мігрувати свої OpenTelemetry SDK та колектори з використанням експортера Jaeger на експортер OTLP.
 

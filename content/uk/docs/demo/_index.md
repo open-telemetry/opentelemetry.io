@@ -4,7 +4,6 @@ linkTitle: Демо
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
-cSpell:ignore: OLJCESPC
 ---
 
 Ласкаво просимо до [документації OpenTelemetry Demo](/ecosystem/demo/), яка охоплює встановлення та запуск демонстрації, а також деякі сценарії, які ви можете використовувати для перегляду OpenTelemetry в дії.
@@ -54,14 +53,9 @@ cSpell:ignore: OLJCESPC
 - [Сервіс постачальника зображень](services/image-provider/)
 - [Застосунок React Native](services/react-native-app/)
 
-## Сценарії {#scenarios}
+## Сценарії з використанням прапорців функцій{#feature-flag-scenarios}
 
-Як можна розвʼязати проблеми за допомогою OpenTelemetry? Ці сценарії проведуть вас через деякі попередньо налаштовані проблеми та покажуть, як інтерпретувати дані OpenTelemetry для їх вирішення.
-
-Ми будемо додавати більше сценаріїв з часом.
-
-- Згенеруйте [помилку каталогу продуктів](feature-flags) для запитів `GetProduct` з ідентифікатором продукту: `OLJCESPC7Z` за допомогою сервісу Feature Flag
-- Виявлення витоку памʼяті та його діагностика за допомогою метрик та трасувань. [Детальніше](scenarios/recommendation-cache/)
+Як можна розвʼязати проблеми за допомогою OpenTelemetry? Ці [сценарії з використанням прапорців функцій](feature-flags/) проведуть вас через деякі попередньо налаштовані проблеми та покажуть, як інтерпретувати дані OpenTelemetry для їх вирішення.
 
 ## Довідка {#reference}
 

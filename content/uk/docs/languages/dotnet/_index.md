@@ -7,7 +7,7 @@ aliases: [net, /csharp, /csharp/metrics, /csharp/tracing]
 weight: 12
 ---
 
-{{% uk/docs/languages/index-intro dotnet /%}}
+{{% docs/languages/index-intro dotnet /%}}
 
 ## Підтримка версій {#version-support}
 

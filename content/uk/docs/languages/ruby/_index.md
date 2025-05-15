@@ -7,7 +7,7 @@ aliases: [/ruby, /ruby/metrics, /ruby/tracing]
 weight: 24
 ---
 
-{{% uk/docs/languages/index-intro ruby /%}}
+{{% docs/languages/index-intro ruby /%}}
 
 {{% uk/docs/languages/index-adopters ruby %}}
 

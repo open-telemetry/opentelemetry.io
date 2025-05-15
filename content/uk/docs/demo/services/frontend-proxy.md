@@ -7,6 +7,8 @@ cSpell:ignore: upstreams
 
 Проксі-сервер фронтенда використовується як зворотний проксі для вебінтерфейсів, що орієнтовані на користувача, таких як фронтенд, Jaeger, Grafana, генератор навантаження та сервіс прапорців функцій.
 
+[Код налащтування Frontend proxy](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/frontend-proxy/)
+
 ## Увімкнення OpenTelemetry {#enabling-opentelemetry}
 
 **ПРИМІТКА: Тільки не синтетичні запити будуть викликати трасування envoy.**

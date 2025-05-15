@@ -30,12 +30,12 @@ Operator надає [Custom Resource Definition (CRD) для OpenTelemetry Colle
 
 ```bash
 kubectl apply -f - <<EOF
-apiVersion: opentelemetry.io/v1alpha1
+apiVersion: opentelemetry.io/v1beta1
 kind: OpenTelemetryCollector
 metadata:
   name: demo
 spec:
-  config: |
+  config:
     receivers:
       otlp:
         protocols:
@@ -53,8 +53,8 @@ spec:
         timeout: 10s
 
     exporters:
-      # ПРИМІТКА: До v0.86.0 використовуйте `logging` замість `debug`.
       debug:
+        verbosity: basic
 
     service:
       pipelines:
@@ -554,7 +554,7 @@ annotations:
 
 Коли pod запускається, анотація вказує оператору шукати обʼєкт Instrumentation у просторі імен podʼа і впровадити автоінструментування у pod. Вона додає [init-container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) до podʼа застосунку, з назвою `opentelemetry-auto-instrumentation`, який потім використовується для впровадження автоінструментування у контейнер застосунку.
 
-Якщо ресурс `Instrumentation` не присутній до моменту розгортання застосунку, однак, init-container не може бути створений. Тому, якщо додаток розгорнуто _перед_ розгортанням ресурсу `Instrumentation`, автоінструментування не вдасться.
+Якщо ресурс `Instrumentation` не присутній до моменту розгортання застосунку, однак, init-container не може бути створений. Тому, якщо застосунок розгорнуто _перед_ розгортанням ресурсу `Instrumentation`, автоінструментування не вдасться.
 
 Щоб переконатися, що init-container `opentelemetry-auto-instrumentation` запустився правильно (або взагалі запустився), виконайте наступну команду:
 

@@ -4,7 +4,7 @@ weight: 70
 cSpell:ignore: myhost pcarter uuidgen
 ---
 
-{{% uk/docs/languages/resources-intro %}}
+{{% docs/languages/resources-intro %}}
 
 ## Налаштування {#setup}
 

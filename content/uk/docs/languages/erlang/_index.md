@@ -16,7 +16,7 @@ cascade:
 cSpell:ignore: ecto
 ---
 
-{{% uk/docs/languages/index-intro erlang /%}}
+{{% docs/languages/index-intro erlang /%}}
 
 Пакунки API, SDK та OTLP експортера публікуються на [`hex.pm`](https://hex.pm) як [`opentelemetry_api`](https://hex.pm/packages/opentelemetry_api), [`opentelemetry`](https://hex.pm/packages/opentelemetry) та [`opentelemetry_exporter`](https://hex.pm/packages/opentelemetry_exporter).
 
