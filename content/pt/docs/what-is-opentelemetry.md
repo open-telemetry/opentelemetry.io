@@ -2,8 +2,7 @@
 title: O que é o OpenTelemetry?
 description: Uma breve explicação sobre o que o OpenTelemetry é e não é.
 weight: 150
-default_lang_commit: 44d2ea2545c36610dc64be455cef7e7b8491cfe5
-drifted_from_default: true
+default_lang_commit: fb38bda3b4b9ae69c99b8d70543d0df37872aeac
 cSpell:ignore: youtube
 ---
 
@@ -15,7 +14,8 @@ O OpenTelemetry é:
   - Exportação
   - [Coleta](../concepts/components/#collector)
 
-  de [dados de telemetria][] como [rastros], [métricas] e [logs].
+  de [dados de telemetria][telemetry data] como [rastros][traces],
+  [métricas][metrics] e [logs].
 
 - **Código aberto**, além de **agnóstico em relação a fornecedores e
   ferramentas**, o que possibilita ser utilizado com uma grande variedade de
@@ -39,20 +39,20 @@ Para mais vídeos nesta série e mais recursos, consulte
 
 ## O que é observabilidade? {#what-is-observability}
 
-[Observabilidade] é a capacidade de entender o estado interno de um sistema ao
-examinar os dados que ele emite. No contexto de software, isso significa ser
-capaz de entender o estado interno do sistema analisando seus dados de
-telemetria, que incluem rastros, métricas e logs.
+[Observabilidade][observability] é a capacidade de entender o estado interno de
+um sistema ao examinar os dados que ele emite. No contexto de software, isso
+significa ser capaz de entender o estado interno do sistema analisando seus
+dados de telemetria, que incluem rastros, métricas e logs.
 
 Para tornar um sistema observável, ele deve ser [instrumentado][instr]. Ou seja,
-o código deve emitir [rastros], [métricas] ou [logs]. Os dados instrumentados
-devem então ser enviados para um backend de observabilidade.
+o código deve emitir [rastros][traces], [métricas][metrics] ou [logs]. Os dados
+instrumentados devem então ser enviados para um backend de observabilidade.
 
 ## Por que OpenTelemetry? {#why-opentelemetry}
 
 Com a ascensão da computação em nuvem, arquiteturas de microsserviços e
 requisitos de negócios cada vez mais complexos, a necessidade de
-[observabilidade] de software e infraestrutura é cada vez maior.
+[observabilidade][observability] de software e infraestrutura é cada vez maior.
 
 O OpenTelemetry atende à necessidade de observabilidade seguindo dois
 princípios-chave:
@@ -119,7 +119,7 @@ projeto é projetado para tornar isso possível em quase todos os níveis.
 ## História {#history}
 
 O OpenTelemetry é um projeto da [Cloud Native Computing Foundation][] (CNCF) que
-é resultado da [fusão] entre dois projetos anteriores,
+é resultado da [fusão][merger] entre dois projetos anteriores,
 [OpenTracing](https://opentracing.io) e [OpenCensus](https://opencensus.io).
 Ambos os projetos foram criados para resolver o mesmo problema: a falta de um
 padrão de como instrumentar o código e enviar dados de telemetria para um
@@ -130,15 +130,15 @@ OpenTelemetry e combinar seus esforços para oferecer uma solução única.
 Se você está atualmente utilizando OpenTracing ou OpenCensus, pode aprender como
 migrar para o OpenTelemetry no [guia de migração](../migration/).
 
-[fusão]:
+[merger]:
   https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/
 
 ## Próximos passos {#what-next}
 
 - [Começando](../getting-started/) &mdash; mergulhe de cabeça!
 - Aprenda sobre os [conceitos do OpenTelemetry](../concepts/).
-- [Assista vídeos][] da série [OTel para iniciantes][] ou outras [listas de
-  reprodução].
+- [Assista vídeos][Watch videos] da série [OTel para
+  iniciantes][OTel for beginners] ou outras [listas de reprodução][playlists].
 - Registre-se nos [treinamentos](/training), incluindo o **treinamento
   gratuito** _[Getting started with OpenTelemetry](/training/#courses)_.
 
@@ -146,12 +146,12 @@ migrar para o OpenTelemetry no [guia de migração](../migration/).
 [instr]: ../concepts/instrumentation
 [Jaeger]: https://www.jaegertracing.io/
 [logs]: ../concepts/signals/logs/
-[métricas]: ../concepts/signals/metrics/
-[observabilidade]: ../concepts/observability-primer/#what-is-observability
-[OTel para iniciantes]:
+[metrics]: ../concepts/signals/metrics/
+[observability]: ../concepts/observability-primer/#what-is-observability
+[OTel for beginners]:
   https://www.youtube.com/playlist?list=PLVYDBkQ1TdyyWjeWJSjXYUaJFVhplRtvN
-[listas de reprodução]: https://www.youtube.com/@otel-official/playlists
+[playlists]: https://www.youtube.com/@otel-official/playlists
 [Prometheus]: https://prometheus.io/
-[dados de telemetria]: ../concepts/signals/
-[rastros]: ../concepts/signals/traces/
-[Assista vídeos]: https://www.youtube.com/@otel-official
+[telemetry data]: ../concepts/signals/
+[traces]: ../concepts/signals/traces/
+[Watch videos]: https://www.youtube.com/@otel-official
