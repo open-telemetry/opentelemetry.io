@@ -67,7 +67,7 @@ the Collector export more data, which might not necessarily be what you want
 (see [When NOT to scale](#when-not-to-scale)). The general guidance is to
 monitor queue size and consider scaling up when it reaches 60-70% of capacity,
 and scaling down if it's consistently low, while maintaining a minimum number of
-replicas (e.g., three) for resilience.
+replicas, for example three, for resilience.
 
 It’s also worth getting familiar with the components that you intend to use, as
 different components might produce other metrics. For instance, the
@@ -124,43 +124,41 @@ Components like the tail sampling processor cannot be easily scaled, as they
 keep some relevant state in memory for their business. Those components require
 some careful consideration before being scaled up.
 
-### Scaling Stateless Collectors and Using Load Balancers
+### Scaling stateless collectors and using load balancers
 
 The good news is that most of the time, scaling the Collector is easy, as it’s
 just a matter of adding new replicas and distributing traffic among them using a
 load balancer.
 
-When to Use a Load Balancer: A load balancer is essential when you need to:
+A load balancer is essential when you need to:
 
 - Distribute incoming telemetry traffic across multiple instances of stateless
-  Collectors to prevent any single instance from being overwhelmed.
+  collectors to prevent any single instance from being overwhelmed.
 - Improve the availability and fault tolerance of your collection pipeline. If
   one Collector instance fails, the load balancer can redirect traffic to
   healthy instances.
 - Horizontally scale your Collector tier based on demand.
 
-Recommendations for Load Balancing: When operating in Kubernetes environments,
-it's generally recommended to leverage robust, off-the-shelf load balancing and
-rate-limiting solutions provided by service meshes (e.g., Istio, Linkerd) or
-cloud provider load balancers. These systems offer mature features for traffic
-management, resilience, and observability that often go beyond basic load
-distribution.
+When operating in Kubernetes environments, leverage robust, off-the-shelf load
+balancing and rate-limiting solutions provided by service meshes, such as Istio
+or Linkerd, or cloud provider load balancers. These systems offer mature
+features for traffic management, resilience, and observability that often go
+beyond basic load distribution.
 
-When gRPC is used to receive the data (a common scenario with OTLP), we
-recommend using a load balancer that understands gRPC (L7 load balancer).
-Standard L4 load balancers might establish a persistent connection to a single
-backend Collector instance, negating the benefits of scaling, as clients will
-always hit the same backing Collector.
-
-You should still consider splitting your collection pipeline with reliability in
-mind. For instance, when your workloads run on Kubernetes, you might want to use
-DaemonSets to have a Collector on the same physical node as your workloads and a
-remote central Collector responsible for pre-processing the data before sending
-the data to the storage. When the number of nodes is low and the number of pods
-is high, Sidecars might make more sense, as you’ll get a better load balancing
-for the gRPC connections among Collector layers without needing a gRPC-specific
-load balancer. Using a Sidecar also makes sense to avoid bringing down a crucial
-component for all pods in a node when one DaemonSet pod fails.
+When gRPC is used to receive the data, a common scenario with OTLP, use a load
+balancer that understands gRPC (L7 load balancer). Standard L4 load balancers
+might establish a persistent connection to a single backend Collector instance,
+negating the benefits of scaling, as clients will always hit the same backing
+Collector. You should still consider splitting your collection pipeline with
+reliability in mind. For instance, when your workloads run on Kubernetes, you
+might want to use DaemonSets to have a Collector on the same physical node as
+your workloads and a remote central Collector responsible for pre-processing the
+data before sending the data to the storage. When the number of nodes is low and
+the number of pods is high, Sidecars might make more sense, as you’ll get a
+better load balancing for the gRPC connections among Collector layers without
+needing a gRPC-specific load balancer. Using a Sidecar also makes sense to avoid
+bringing down a crucial component for all pods in a node when one DaemonSet pod
+fails.
 
 The sidecar pattern consists in adding a container into the workload pod. The
 [OpenTelemetry Operator](/docs/platforms/kubernetes/operator/) can automatically
