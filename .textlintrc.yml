@@ -49,6 +49,7 @@ rules:
       - HTTPS
       - ID
       - iOS
+      - Istio
       - Jaeger
       - JavaScript
       - JBoss
