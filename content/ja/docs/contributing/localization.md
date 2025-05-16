@@ -84,7 +84,7 @@ OTelウェブサイトのリポジトリには、Hugoがドキュメントペー
 
 ### リンク定義ラベル {#link-labels}
 
-Markdown の[リンク定義][link definitions]の[ラベル][labels]は**翻訳しないでください**。代わりに、翻訳されたリンクテキストとしてラベルを書き直してください。例えば、次の Markdown を考えてみます。
+Markdown の[リンク定義][link definitions]の[ラベル][labels]は**翻訳しないでください**。代わりに、翻訳されたリンクテキストとしてラベルを書き直してください。たとえば、次の Markdown を考えてみます。
 
 ```markdown
 [Hello], world! Welcome to the [OTel website][].
@@ -254,7 +254,7 @@ npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
 
 OpenTelemetry ウェブサイトの新しい言語のローカリゼーションを始めるには、以下が必要です。
 
-1. あなたの言語に精通した**ローカリゼーションメンター**。例えば、[CNCF Glossary][]の[アクティブな承認者][active approver]や[Kubernetes ウェブサイト][Kubernetes website]などです。
+1. あなたの言語に精通した**ローカリゼーションメンター**。たとえば、[CNCF Glossary][]の[アクティブな承認者][active approver]や[Kubernetes ウェブサイト][Kubernetes website]などです。
 2. 少なくとも2名の潜在的なコントリビューター。
 
 [active approver]: https://github.com/cncf/glossary/blob/main/CODEOWNERS
