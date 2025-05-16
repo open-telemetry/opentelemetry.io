@@ -3271,6 +3271,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-11-18T16:20:44.467803+01:00"
   },
+  "https://github.com/beeme1mr": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-16T07:58:05.176072+02:00"
+  },
   "https://github.com/beniamin": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:13:05.752056-05:00"
@@ -4698,6 +4702,10 @@
   "https://github.com/kieronlanning": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:59:13.625194-05:00"
+  },
+  "https://github.com/kinyoklion": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-16T07:58:05.759692+02:00"
   },
   "https://github.com/kirbyquerby": {
     "StatusCode": 200,
