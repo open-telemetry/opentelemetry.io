@@ -1,4 +1,4 @@
-# cspell:ignore ebpf matic postgres
+# cspell:ignore ebpf matic postgres protable
 plugins:
   '@textlint/markdown':
     extensions: [.yml]
@@ -155,6 +155,7 @@ rules:
         - '(?<![-#@./])\bopen[- ]?telemetry\b(?![-./])'
         - OpenTelemetry
       - [os x, macOS]
+      - [protable, portable]
       - [postgres, PostgreSQL]
       - ['psr[ -]?([0-9]+)', PSR-$1]
       - ['react[ .]js', React]
