@@ -66,6 +66,7 @@ rules:
       - macOS
       - Markdown
       - MongoDB
+      - mTLS
       - MySQL
       - NDJSON
       - Netlify
