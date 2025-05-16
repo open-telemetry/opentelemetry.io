@@ -4,6 +4,7 @@
 version: '0.2'
 language: en-US
 import:
+  - '@cspell/dict-bn/cspell-ext.json'
   - '@cspell/dict-es-es/cspell-ext.json'
   - '@cspell/dict-fr-fr/cspell-ext.json'
   - '@cspell/dict-pt-br/cspell-ext.json'
@@ -31,6 +32,8 @@ languageSettings:
 dictionaryDefinitions:
   - name: en-words
     path: .cspell/en-words.txt
+  - name: bn-words
+    path: .cspell/bn-words.txt
   - name: es-palabras
     path: .cspell/es-palabras.txt
   - name: fr-mots
@@ -39,10 +42,12 @@ dictionaryDefinitions:
     path: .cspell/pt-palavras.txt
 dictionaries:
   # Natural languages
+  - bn
   - es-es
   - pt-br
   - fr-fr
   # Local word lists
+  - bn-words
   - en-words
   - es-palabras
   - fr-mots
