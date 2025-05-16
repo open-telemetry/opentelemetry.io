@@ -6,7 +6,7 @@ aliases:
   - /docs/languages/java/automatic_instrumentation
 cascade:
   vers:
-    instrumentation: 2.15.0
+    instrumentation: 2.16.0
     otel: 1.50.0
 ---
 
