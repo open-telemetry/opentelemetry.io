@@ -114,6 +114,7 @@
     "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 999} && git submodule foreach 'git fetch $(git remote | tail -1) --tags'"
   },
   "devDependencies": {
+    "@cspell/dict-bn": "^1.0.1",
     "@cspell/dict-es-es": "^3.0.3",
     "@cspell/dict-fr-fr": "^2.3.0",
     "@cspell/dict-pt-br": "^2.4.0",
