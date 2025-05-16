@@ -2,7 +2,7 @@
 title: Scaling the Collector
 weight: 26
 # prettier-ignore
-cSpell:ignore: fluentd hostmetrics Istio Linkerd loadbalancer loadbalancing sharded statefulset
+cSpell:ignore: fluentd hostmetrics Linkerd loadbalancer loadbalancing sharded statefulset
 ---
 
 When planning your observability pipeline with the OpenTelemetry Collector, you
