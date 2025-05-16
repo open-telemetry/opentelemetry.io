@@ -31,7 +31,7 @@ O SDK consiste nos seguintes componentes de alto nível:
   limites dos processos.
 
 Essa combinação no [OpenTelemetrySdk](#opentelemetrysdk), transporta um objeto
-que facilita a passagem de [Componentes SDK](#Componentes-do-SDK) totalmente
+que facilita a passagem de [Componentes SDK](#componentes-do-sdk) totalmente
 configurados para instrumentação.
 
 O SDK é empacotado com uma variedade de componentes integrados que são
@@ -446,7 +446,7 @@ Exportadores de trechos integrados ao SDK e mantidos pela comunidade em
 | `InterceptableSpanExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha`     | Passes trechos para um interceptador flexível antes da exportação.                               |
 | `KafkaSpanExporter`            | `io.opentelemetry.contrib:opentelemetry-kafka-exporter:{{% param vers.contrib %}}-alpha` | Exporta trechos escrevendo para um tópico do Kafka.                                              |
 
-**[1]**: Veja [OTLP exporters](#Exportadores-OTLP) para detalhes de
+**[1]**: Veja [OTLP exporters](#exportadores-otlp) para detalhes de
 implementação.
 
 O trecho de código a seguir demonstra configuração programática do
@@ -784,7 +784,7 @@ Metric exporters integrados ao SDK e mantidos pela comunidade em
 | `OtlpStdoutMetricExporter`       | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Registra métricas para `System.out` em formato OTLP [Arquivo JSON Codificado][] (experimental). |
 | `InterceptableMetricExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Passes métricas para um interceptador flexível antes da exportação.                             |
 
-**[1]**: Veja [OTLP exporters](#Exportadores-OTLP) para detalhes de
+**[1]**: Veja [OTLP exporters](#exportadores-otlp) para detalhes de
 implementação.
 
 O trecho de código a seguir demonstra a configuração programática do
@@ -1117,7 +1117,7 @@ Span exporters integrados ao SDK e mantidos pela comunidade em
 | `OtlpStdoutLogRecordExporter`              | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Grava registros de logs para `System.out` em OTLP [Arquivo JSON Codificado][] (experimental). |
 | `InterceptableLogRecordExporter`           | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Passa registros de logs para um interceptador flexível antes de exportar.                     |
 
-**[1]**: Veja [Exportadores OTLP](#Exportadores-OTLP) para detalhes de
+**[1]**: Veja [Exportadores OTLP](#exportadores-otlp) para detalhes de
 implementação.
 
 **[2]**: `OtlpJsonLoggingLogRecordExporter` registra no JUL e pode causar loops
