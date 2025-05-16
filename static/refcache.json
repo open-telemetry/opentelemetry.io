@@ -571,6 +571,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:59:54.034804-05:00"
   },
+  "https://community.cncf.io/events/details/cncf-cloud-native-community-japan-presents-japan-community-day-at-kubecon-cloudnativecon-japan-2025/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-16T10:23:42.024759425-07:00"
+  },
   "https://communityinviter.com/apps/cloud-native/cncf": {
     "StatusCode": 200,
     "LastSeen": "2024-12-18T05:52:44.610968-05:00"
@@ -2210,6 +2214,14 @@
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-15T13:17:55.721664-05:00"
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-japan//": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-16T10:23:39.628213497-07:00"
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-16T10:23:40.487844876-07:00"
   },
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/": {
     "StatusCode": 200,
@@ -18330,6 +18342,30 @@
   "https://sched.co/1ue2s": {
     "StatusCode": 200,
     "LastSeen": "2025-03-03T15:11:14.904291942-08:00"
+  },
+  "https://sched.co/1x71L": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-16T10:23:44.775092394-07:00"
+  },
+  "https://sched.co/1x71U": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-16T10:23:45.219017694-07:00"
+  },
+  "https://sched.co/1x71a": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-16T10:23:43.119954034-07:00"
+  },
+  "https://sched.co/1x71d": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-16T10:23:43.514679927-07:00"
+  },
+  "https://sched.co/1x71m": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-16T10:23:43.895198563-07:00"
+  },
+  "https://sched.co/1yFEh": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-16T10:23:42.688359806-07:00"
   },
   "https://semver.org/": {
     "StatusCode": 206,
