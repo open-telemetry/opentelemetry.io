@@ -1,6 +1,6 @@
 ---
 title: Exposing OTel Collector in Kubernetes with Gateway API & mTLS
-linkTitle: OTel with gateway and mtls
+linkTitle: Collector with Gateway API and mTLS
 date: 2025-04-06
 author: >
   [Vipin Vijaykumar](https://github.com/vipinvkmenon)
