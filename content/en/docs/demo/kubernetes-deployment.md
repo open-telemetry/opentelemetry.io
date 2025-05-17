@@ -54,7 +54,7 @@ The following command will install the demo application to your Kubernetes
 cluster.
 
 ```shell
-kubectl apply --namespace otel-demo -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-demo/main/kubernetes/opentelemetry-demo.yaml
+kubectl create --namespace otel-demo -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-demo/main/kubernetes/opentelemetry-demo.yaml
 ```
 
 {{% alert title="Note" color="info" %}}
