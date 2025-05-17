@@ -17,5 +17,5 @@ createdAt: 2020-11-05
 package:
   registry: maven
   name: io.opentelemetry.instrumentation/opentelemetry-okhttp-3.0
-  version: 2.15.0-alpha
+  version: 2.16.0-alpha
 isFirstParty: false
