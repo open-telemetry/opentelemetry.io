@@ -16259,6 +16259,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-20T09:23:52.447657347-08:00"
   },
+  "https://opentelemetry.io/docs/languages/js/getting-started/browser/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-17T14:29:18.902267+05:30"
+  },
   "https://opentelemetry.io/ecosystem/registry/": {
     "StatusCode": 206,
     "LastSeen": "2025-02-22T07:14:47.144521257-08:00"
@@ -19298,6 +19302,10 @@
   "https://www.britannica.com/dictionary/pipeline": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:19:55.860873-05:00"
+  },
+  "https://www.buoyant.io/mtls-guide": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-17T14:29:17.514367+05:30"
   },
   "https://www.causely.ai/blog/using-opentelemetry-and-the-otel-collector-for-logs-metrics-and-traces": {
     "StatusCode": 200,
