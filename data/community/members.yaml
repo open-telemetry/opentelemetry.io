@@ -1021,12 +1021,6 @@ maintainers:
       - go-compile-instrumentation-triagers
     html_url: https://github.com/ralf0131
     avatar_url: https://avatars.githubusercontent.com/u/4397305?v=4
-  - name: rapphil
-    teams:
-      - lambda-extension-approvers
-      - lambda-extension-maintainers
-    html_url: https://github.com/rapphil
-    avatar_url: https://avatars.githubusercontent.com/u/5030304?v=4
   - name: reese-lee
     teams:
       - sig-end-user-approvers
@@ -1830,6 +1824,11 @@ approvers:
       - ebpf-instrumentation-approvers
     html_url: https://github.com/rafaelroquetto
     avatar_url: https://avatars.githubusercontent.com/u/1713?v=4
+  - name: rapphil
+    teams:
+      - lambda-extension-approvers
+    html_url: https://github.com/rapphil
+    avatar_url: https://avatars.githubusercontent.com/u/5030304?v=4
   - name: RassK
     teams:
       - dotnet-instrumentation-approvers
