@@ -128,7 +128,7 @@
     "js-yaml": "^4.1.0",
     "markdown-link-check": "^3.13.7",
     "markdownlint": "^0.37.4",
-    "markdownlint-cli2": "^0.17.2",
+    "markdownlint-cli2": "^0.18.1",
     "postcss-cli": "^11.0.1",
     "prettier": "3.5.3",
     "puppeteer": "^24.8.2",
