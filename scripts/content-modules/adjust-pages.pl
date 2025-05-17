@@ -95,12 +95,12 @@ sub applyPatchOrPrintMsgIf($$$) {
   return 0;
 }
 
-# sub patchSemConv1_30_0() {
-#   return unless $ARGV =~ /^tmp\/semconv\/docs\//
-#     && applyPatchOrPrintMsgIf('2025-01-24-emit-an-event-etc', 'semconv', '1.30.0-18-g');
+sub patchSpec_because_of_SemConv_AttrRegRefactoring() {
+  return unless $ARGV =~ /^tmp\/otel\/specification\//
+    && applyPatchOrPrintMsgIf('2025-05-13-attribute-registry-refactoring', 'semconv', '1.33.0-28--g');
 
-#   s|Emit Event API|Log API|;
-# }
+  s|/attributes-registry/|/registry/attributes/|g;
+}
 
 sub getVersFromSubmodule() {
   my %repoNames = qw(
@@ -189,6 +189,8 @@ while(<>) {
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;
   s|(\]\()/specification/|$1$specBasePath/otel/)|;
   s|\.\./specification/(.*?\))|../otel/$1|g if $ARGV =~ /otel\/specification/;
+
+  patchSpec_because_of_SemConv_AttrRegRefactoring();
 
   # Match markdown inline links or link definitions to OTel spec pages: "[...](URL)" or "[...]: URL"
   s|(\]:\s+\|\()https://github.com/open-telemetry/opentelemetry-specification/\w+/(main\|v$otelSpecVers)/specification(.*?\)?)|$1$specBasePath/otel$3|;
