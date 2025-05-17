@@ -9,20 +9,20 @@ sig: End-User SIG
 cSpell:ignore: gateway gatewayclass ingress ingressgateway otlpgrpc Vijaykumar Vipin
 ---
 
-The goal of this blog post is to demonstrate, how you can expose an
+The goal of this blog post is to demonstrate how you can expose an
 OpenTelemetry (OTel) Collector running inside Kubernetes to the outside world
 securely, using the Kubernetes Gateway API and mutual TLS (mTLS) for
 authentication and encryption.
 
 As observability becomes increasingly critical in modern distributed systems,
-centralizing telemetry data via an OTel Collector is common practice. Often,
+centralizing telemetry data via OTel Collectors deployed in one or many Kubernetes clusters is common practice. Often,
 services or agents running _outside_ your Kubernetes cluster need to send data
-_to_ this collector. Exposing internal services requires careful consideration
+_to_ these Collectors. Exposing internal services requires careful consideration
 of security and standardization. This is where the Kubernetes Gateway API and
 mTLS shine.
 
-Typically this kind of a setup is useful when you have applications/ workloads
-that are external to the cluster and you need to collect the telemetry data.
+Typically this kind of a setup is useful when you have applications or workloads
+that are external to the cluster, and you need to collect their telemetry data.
 Some examples:
 
 - **Hybrid Cloud/On-Premise Environments:** Applications or servers running in a
@@ -30,7 +30,7 @@ Some examples:
   cluster need to forward their metrics, traces, or logs to your central
   observability solution.
 - **Multi-Cluster Telemetry Aggregation:** In a setup with multiple Kubernetes
-  clusters, you might designate one cluster to host the primary OTel collector.
+  clusters, you might designate one cluster to host the primary OTel Collector deployment.
   Collectors in other "spoke" clusters would act as clients, exporting data to
   this central collector via its external endpoint.
 - **Edge Computing / IoT:** Devices deployed at the edge often need to send
@@ -48,23 +48,23 @@ Before we start, ensure you have the following:
 
 1.  **A Kubernetes Cluster:** Minikube, Kind, Docker Desktop, Gardener or a
     cloud provider's managed Kubernetes service will work.
-2.  **`kubectl`:** [Configure](https://kubernetes.io/docs/reference/kubectl/) to
+2.  **`kubectl`:** [Configured](https://kubernetes.io/docs/reference/kubectl/) to
     interact with your cluster.
-3.  **`helm`:** [Configure](https://helm.sh/) to install helm charts.
+3.  **`helm`:** [Configured](https://helm.sh/) to install Helm charts.
 4.  **A Gateway API Implementation:** We'll use
     [Istio](https://istio.io/latest/docs/overview/what-is-istio/) in this
-    example. Other implementations like Contour, NGINX Gateway Fabric, etc.,
+    example. Other implementations like Contour, NGINX Gateway Fabric, etc.
     would also work with potentially minor configuration adjustments.
-5.  **`openssl`:** The openssl
-    [cli](https://github.com/openssl/openssl/wiki/Binaries) for generating
+5.  **`openssl`:** The OpenSSL
+    [CLI](https://github.com/openssl/openssl/wiki/Binaries) for generating
     certificates.
 
 {{% alert %}}
 
 Since certain parts of the Gateway API are still in alpha/beta phase the support
-for certain aspects may vary or may not be enabled by default. Please refer to
-the documentation of the Gateway that you are using. For example as of this
-writing (Mid-2025), if you are using istio ensure that
+for specific aspects may vary or may not be enabled by default. Please refer to
+the documentation of the Gateway implementation that you are using. For example, at the
+time of writing, if you are using Istio, ensure that
 `PILOT_ENABLE_ALPHA_GATEWAY_API` is enabled during the install.
 
 {{% /alert %}}
@@ -158,7 +158,7 @@ kubectl kustomize "github.com/kubernetes-sigs/gateway-api/config/crd/experimenta
 In order to setup mTLS between the client and the server, we need a set of
 certificates. For this demo scenario, we'll be using self-signed certificate. We
 will be using the same CA for signing both clients and server in this demo.
-We'll use `openssl` to create our certificates. Please refer `openssl`
+We'll use `openssl` to create our certificates. Please refer to the `openssl`
 documentation for configuration details.
 
 ```bash
@@ -199,11 +199,11 @@ Subject Alternative Name (SAN) matches the hostname clients use to connect.
 
 ## Step 3: Create `otel-collector` namespace
 
-We will deploy our otel-collector setup in the given namespace. Further on,
-depending on the Gateway/service-mesh implementation you use, you may configure
-the namespace accordingly. For e.g: with istio, we need to label the namespace
-for `istio-injection:enabled` inorder for istio to work with the deployed
-workloads in the namespace
+We will deploy our OTel Collector setup in the given namespace. Further on,
+depending on the Gateway/service mesh implementation you use, you may configure
+the namespace accordingly. For e.g: with Istio, we need to label the namespace
+with `istio-injection:enabled` in order for Istio to work with the deployed
+workloads in the namespace.
 
 `namespace.yaml`:
 
@@ -215,7 +215,7 @@ kind: Namespace
 metadata:
   name: otel-collector
   labels:
-    istio-injection: enabled #Relavent only if you are using istio.
+    istio-injection: enabled #Relavent only if you are using Istio.
 ```
 
 ## Step 4: Deploying the OTel Collector (Server)
@@ -394,8 +394,8 @@ spec:
   configure the backend to which the route forwards the requests. In this case,
   to the `otel-collector-server-svc`.
 
-_P.S: We make use of `options` in the gateway for implementation specific
-configuration of `MTLS`. Currently the gateway API does not explicitly have
+_Note: We make use of `options` in the gateway for implementation specific
+configuration of mTLS. Currently the gateway API does not explicitly have
 `Mutual TLS`
 [mode](https://gateway-api.sigs.k8s.io/reference/spec/#tlsmodetype). Please
 refer latest documentation of Gateway API for updates_
@@ -433,9 +433,9 @@ kubectl get svc
 To test the setup, configure an OTel Collector _outside_ the cluster to send
 data to the Gateway's external endpoint using mTLS.
 
-For this demo, the client (otel-collector) is run locally with docker.
+For this demo, the client (OTel Collector) is run locally with Docker.
 
-A simple configuration for scraping cpu & memory metrics and sending it to the
+A simple configuration for scraping CPU & memory metrics and sending it to the
 server.
 
 Example `otel-client-config.yaml`:
@@ -559,16 +559,16 @@ of when configuring this setup during production:
   coming into the spec. Many of these features are now in alpha/beta and will
   soon become generally available. For e.g `GRPCRoute`. Please refer the latest
   Kubernetes documentation of the Gateway API.
-- The Kubernetes Gateway API aim to make the configuration protable and
+- The Kubernetes Gateway API aims to make the configuration portable and
   implementation agnostic as much as possible. Ideally this would be the case
-  onces the spec is matured and evolved. Till then, certain aspects of the
-  configuration will have minor changes between implementations. For e.g, The
-  way `MTLS` is configured in the Gateway now.
+  once the spec is matured and evolved. Till then, certain aspects of the
+  configuration will have minor changes between implementations. For example, the
+  way mTLS is configured in the Gateway now.
 - When running in production, you may want to use the `infrastructure` block of
   the `spec` to configure infrastructure-provider specific parameters. For e.g
   `DNS`.
-- Productive setups would have end-2-end encrypted communication. For e.g, when
-  using istio, all components running within namespaces managed by istio in a
+- Productive setups would have end-to-end encrypted communication. For example, when
+  using Istio, all components running within namespaces managed by Istio in a
   cluster can be forced to communicate with each other. This is achieved with
   [PeerAuthentication](https://istio.io/latest/docs/reference/config/security/peer_authentication/).
   Similar concepts would be available for other service mesh implementations as
