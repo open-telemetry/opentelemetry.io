@@ -1,7 +1,7 @@
 ---
 title: KubeCon + CloudNativeCon Japan 2025
 linkTitle: KubeCon Japan 2025
-date: 2025-05-16
+date: 2025-05-20
 expiryDate: 2025-06-17
 ---
 
