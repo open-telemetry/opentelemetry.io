@@ -1,12 +1,4 @@
-# cSpell:ignore Splunk AWS ADOT Grafana observIQ BindPlane RHOSDT RedHat Sumo Liatrio Lumigo Distro Dynatrace
-- name: Splunk Distribution of OpenTelemetry Collector
-  url: https://github.com/signalfx/splunk-otel-collector
-  docsUrl: https://docs.splunk.com/observability/en/gdi/opentelemetry/opentelemetry.html
-  components: [Collector]
-- name: AWS Distro for OpenTelemetry (ADOT)
-  url: https://aws.amazon.com/otel/
-  docsUrl: https://aws-otel.github.io/docs/getting-started/collector
-  components: [Collector]
+# cSpell:ignore Splunk AWS Grafana Lumigo Distro
 - name: AWS Distro for OpenTelemetry - Instrumentation for JavaScript
   url: https://github.com/aws-observability/aws-otel-js-instrumentation/
   docsUrl: https://aws-otel.github.io/docs/getting-started/javascript-sdk
@@ -35,10 +27,6 @@
   url: https://github.com/aws-observability/aws-otel-php
   docsUrl: https://aws-otel.github.io/docs/getting-started/php-sdk
   components: [PHP]
-- name: Grafana Alloy
-  url: https://github.com/grafana/alloy
-  docsUrl: https://grafana.com/docs/alloy/latest/
-  components: [Collector]
 - name: Grafana Distribution of OpenTelemetry for .NET
   url: https://github.com/grafana/grafana-opentelemetry-dotnet
   docsUrl: https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/setup/instrument/dotnet/
@@ -47,22 +35,6 @@
   url: https://github.com/grafana/grafana-opentelemetry-java
   docsUrl: https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/setup/instrument/java/
   components: [Java]
-- name: observIQ BindPlane Agent
-  url: https://github.com/observIQ/observiq-otel-collector
-  docsUrl: https://github.com/observIQ/bindplane-agent/tree/main/docs
-  components: [Collector]
-- name: RedHat RHOSDT OpenTelemetry Collector Distribution
-  url: https://github.com/os-observability/redhat-opentelemetry-collector
-  docsUrl: https://github.com/os-observability/redhat-opentelemetry-collector
-  components: [Collector]
-- name: Sumo Logic Distribution for OpenTelemetry Collector
-  url: https://github.com/SumoLogic/sumologic-otel-collector
-  docsUrl: https://help.sumologic.com/docs/send-data/opentelemetry-collector/sumo-logic-opentelemetry-vs-opentelemetry-upstream-relationship/
-  components: [Collector]
-- name: Liatrio Distribution of the OpenTelemetry Collector
-  url: https://github.com/liatrio/liatrio-otel-collector
-  docsUrl: https://github.com/liatrio/liatrio-otel-collector
-  components: [Collector]
 - name: Lumigo OpenTelemetry Distribution for Java
   url: https://github.com/lumigo-io/opentelemetry-java-distro
   docsUrl: https://github.com/lumigo-io/opentelemetry-java-distro
@@ -115,10 +87,6 @@
   url: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/monitor/azure-monitor-opentelemetry
   docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable?tabs=python
   components: [Python]
-- name: Elastic Distribution of OpenTelemetry Collector
-  url: https://github.com/elastic/elastic-agent/tree/main/internal/pkg/otel
-  docsUrl: https://ela.st/edot-collector
-  components: [Java]
 - name: Elastic Distribution of OpenTelemetry .NET
   url: https://github.com/elastic/elastic-otel-dotnet
   docsUrl: https://ela.st/edot-dotnet
@@ -159,7 +127,3 @@
   url: https://github.com/embrace-io/embrace-react-native-sdk
   docsUrl: https://embrace.io/docs/open-telemetry/integration/#react-native
   components: [React Native, Javascript]
-- name: Dynatrace Distribution of the OpenTelemetry Collector
-  url: https://github.com/Dynatrace/dynatrace-otel-collector
-  docsUrl: https://docs.dynatrace.com/docs/shortlink/opentelemetry-collector
-  components: [Collector]
