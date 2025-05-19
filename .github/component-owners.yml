@@ -83,3 +83,6 @@ components:
   content/fr:
     - open-telemetry/docs-maintainers
     - open-telemetry/docs-fr-approvers
+  content/bn:
+    - open-telemetry/docs-maintainers
+    - open-telemetry/docs-bn-approvers
