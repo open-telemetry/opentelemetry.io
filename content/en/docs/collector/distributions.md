@@ -27,8 +27,9 @@ build your own distributions.
 
 ## Vendor Distributions
 
-Some organizations provide a Collector distribution with additional capabilities or for
-improved ease of use. Below is a list of Collector distributions maintained by third parties.
+Some organizations provide a Collector distribution with additional capabilities
+or for improved ease of use. What follows is a list of Collector distributions
+maintained by third parties.
 
 {{% alert title="Note" color="warning" %}} OpenTelemetry **does not validate or
 endorse** the third-party distributions listed in the following table. The list
@@ -38,8 +39,8 @@ is provided as a convenience for the community. {{% /alert %}}
 
 ## Adding your Collector distribution {#how-to-add}
 
-To have your Collector distribution listed, [submit a PR] with an entry added to the
-[distributions list]. The entry should include the following:
+To have your Collector distribution listed, [submit a PR] with an entry added to
+the [distributions list]. The entry should include the following:
 
 - Link to the main page of your distribution
 - Link to the documentation that explains how to use the distribution
@@ -47,6 +48,5 @@ To have your Collector distribution listed, [submit a PR] with an entry added to
   in case we have questions
 
 [submit a PR]: /docs/contributing/pull-requests/
-
 [distributions list]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/collector-distros.yaml
