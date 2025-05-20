@@ -2199,6 +2199,14 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:07:12.345Z"
   },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-china/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-20T16:34:07.716464164-07:00"
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-china/reg/register/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-20T16:34:07.777120481-07:00"
+  },
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-15T11:26:04.94478-05:00"
@@ -18330,6 +18338,22 @@
   "https://sched.co/1ue2s": {
     "StatusCode": 200,
     "LastSeen": "2025-03-03T15:11:14.904291942-08:00"
+  },
+  "https://sched.co/1x5hN": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-20T16:34:10.576918669-07:00"
+  },
+  "https://sched.co/1x5i3": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-20T16:34:09.531198265-07:00"
+  },
+  "https://sched.co/1x5iC": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-20T16:34:10.148352774-07:00"
+  },
+  "https://sched.co/1x5jY": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-20T16:34:11.095873984-07:00"
   },
   "https://semver.org/": {
     "StatusCode": 206,
