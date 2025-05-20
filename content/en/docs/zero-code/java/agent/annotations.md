@@ -60,8 +60,8 @@ public class MyClass {
 
 Each time the application invokes the annotated method, it creates a span that
 denotes its duration and provides any thrown exceptions. By default, the span
-name will be `<className>.<methodName>`, unless a name is provided as an
-argument to the annotation.
+name will be `<className>.<methodName>`, unless a name is provided through the
+`value` annotation parameter.
 
 If the return type of the method annotated by `@WithSpan` is one of the
 [future- or promise-like](https://en.wikipedia.org/wiki/Futures_and_promises)
@@ -79,6 +79,31 @@ types listed below, then the span will not be ended until the future completes.
 - [io.reactivex.Observable](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Observable.html)
 - [io.reactivex.Flowable](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Flowable.html)
 - [io.reactivex.parallel.ParallelFlowable](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/parallel/ParallelFlowable.html)
+
+### Parameters
+
+The `@WithSpan` attribute supports the following optional parameters to allow
+customization of spans:
+
+| name             | type              | default    | description                                                                                                                                  |
+| ---------------- | ----------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `value`          | `String`          | `""`       | The span name. If not specified, the default `<className>.<methodName>` is used.                                                             |
+| `kind`           | `SpanKind` (enum) | `INTERNAL` | The [kind of span](/docs/specs/otel/trace/api/#spankind).                                                                                    |
+| `inheritContext` | `boolean`         | `true`     | Since 2.14.0. Controls whether or not the new span will be parented in the existing (current) context. If `false`, a new context is created. |
+
+Example parameter usage:
+
+```java
+@WithSpan(kind = SpanKind.CLIENT, inheritContext = false, value = "my span name")
+public void myMethod() {
+    <...>
+}
+
+@WithSpan("my span name")
+public void myOtherMethod() {
+    <...>
+}
+```
 
 ## Adding attributes to the span with `@SpanAttribute`
 

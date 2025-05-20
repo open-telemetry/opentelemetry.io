@@ -84,6 +84,12 @@
   contact: support@controlplane.com
   oss: false
   commercial: true
+- name: ControlTheory
+  nativeOTLP: true
+  url: https://www.controltheory.com/use-case/otel-collector-management/
+  contact: support@controltheory.com
+  oss: false
+  commercial: true
 - name: Coralogix
   nativeOTLP: true
   url: https://coralogix.com/docs/opentelemetry/
@@ -198,9 +204,9 @@
   contact: https://github.com/cartersocha
   oss: false
   commercial: true
-- name: Last9 Levitate
+- name: Last9
   nativeOTLP: true
-  url: https://docs.last9.io/docs/levitate-integrations-opentelemetry
+  url: https://last9.io/docs/integrations-opentelemetry/
   contact: hi@last9.io
   oss: false
   commercial: true
@@ -346,7 +352,7 @@
   nativeOTLP: true
   url: https://signoz.io
   contact:
-  oss: true
+  oss: false
   commercial: true
 - name: SolarWinds
   nativeOTLP: true
@@ -410,7 +416,7 @@
   commercial: true
 - name: GreptimeDB
   nativeOTLP: true
-  url: https://docs.greptime.com/user-guide/ingest-data/for-observerbility/opentelemetry
+  url: https://docs.greptime.com/user-guide/ingest-data/for-observability/opentelemetry/
   contact: info@greptime.com
   oss: true
   commercial: true
@@ -491,5 +497,11 @@
   nativeOTLP: true
   url: https://logease.cn/en-logease-observability-platform/
   contact: contact@yottabyte.cn
+  oss: false
+  commercial: true
+- name: DX O2 by Broadcom
+  nativeOTLP: true
+  url: 'https://techdocs.broadcom.com/us/en/ca-enterprise-software/it-operations-management/dx-operational-observability/saas/monitoring/opentelemetry.html'
+  contact: https://support.broadcom.com/web/ecx/software-contact-support
   oss: false
   commercial: true

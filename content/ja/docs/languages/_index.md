@@ -4,6 +4,7 @@ description: OpenTelemetryのコード計装は、多くの一般的なプログ
 weight: 250
 aliases: [/docs/instrumentation]
 default_lang_commit: 1ececa0615b64c5dfd93fd6393f3e4052e0cc496
+drifted_from_default: true
 ---
 
 OpenTelemetryのコード[計装][instrumentation]は、以下の[ステータスとリリース](#status-and-releases)の表に記載されている言語でサポートされています。

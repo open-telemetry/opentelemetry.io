@@ -271,9 +271,9 @@ flowchart RL
   oc1 --> ta
   oc2 --> ta
   oc3 --> ta
-  sm ~~~|"1. Discover Prometheus Operator CRs"| sm
-  ta ~~~|"2. Add job to TA scrape configuration"| ta
-  oc3 ~~~|"3. Add job to OTel Collector scrape configuration"| oc3
+  sm ~~~|1\. Discover Prometheus Operator CRs| sm
+  ta ~~~|2\. Add job to TA scrape configuration| ta
+  oc3 ~~~|3\. Add job to OTel Collector scrape configuration| oc3
 ```
 
 Even though Prometheus is not required to be installed in your Kubernetes

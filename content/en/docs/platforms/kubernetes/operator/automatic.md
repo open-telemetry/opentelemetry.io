@@ -44,7 +44,7 @@ component. If you chose not to use a Collector, you can skip to the next
 section.
 
 The Operator provides a
-[Custom Resource Definition (CRD) for the OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector)
+[Custom Resource Definition (CRD) for the OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md)
 which is used to create an instance of the Collector that the Operator manages.
 The following example deploys the Collector as a deployment (the default), but
 there are other
@@ -58,12 +58,12 @@ example that will be `demo-collector`.
 
 ```bash
 kubectl apply -f - <<EOF
-apiVersion: opentelemetry.io/v1alpha1
+apiVersion: opentelemetry.io/v1beta1
 kind: OpenTelemetryCollector
 metadata:
   name: demo
 spec:
-  config: |
+  config:
     receivers:
       otlp:
         protocols:
@@ -79,10 +79,9 @@ spec:
       batch:
         send_batch_size: 10000
         timeout: 10s
-
     exporters:
-      # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
       debug:
+        verbosity: basic
 
     service:
       pipelines:
@@ -178,7 +177,7 @@ spec:
 
 #### Learn more {#dotnet-learn-more}
 
-For more details, see [.NET Auto Instrumentation docs](/docs/zero-code/net/).
+For more details, see [.NET Auto Instrumentation docs](/docs/zero-code/dotnet/).
 
 ### Deno
 

@@ -2,13 +2,13 @@
 title: Bibliotecas
 description: Aprenda como adicionar instrumentação nativa à sua biblioteca.
 weight: 40
-default_lang_commit: e09adae2c06b71a08cafb2b1c42e3e7b9e48997b
-drifted_from_default: true
+default_lang_commit: d8e58463c6e7c324b01115ab4f88d1f2bcf802c2
 ---
 
-O OpenTelemetry fornece [bibliotecas de instrumentação][] para várias
-bibliotecas, geralmente feitas por meio de _hooks_ de biblioteca ou
-_monkey-patching_ do código da biblioteca.
+O OpenTelemetry fornece [bibliotecas de
+instrumentação][instrumentation libraries] para várias bibliotecas, geralmente
+feitas por meio de _hooks_ de biblioteca ou _monkey-patching_ do código da
+biblioteca.
 
 A instrumentação nativa de bibliotecas com OpenTelemetry oferece melhor
 observabilidade e experiência para desenvolvedores, eliminando a necessidade das
@@ -457,6 +457,6 @@ class TestExporter implements SpanExporter {
 }
 ```
 
-[bibliotecas de instrumentação]:
+[instrumentation libraries]:
   /docs/specs/otel/overview/#instrumentation-libraries
 [span events]: /docs/specs/otel/trace/api/#add-events

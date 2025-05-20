@@ -29,8 +29,10 @@ to the registry][].
 
 ## Contributing
 
-See the [Contributing](https://opentelemetry.io/docs/contributing) page on our
-docs.
+See the [Contributing](https://opentelemetry.io/docs/contributing) page in our
+docs to learn how you can contribute and the
+[Development Setup](https://opentelemetry.io/docs/contributing/development) page
+to learn how to build the website locally.
 
 ## Found a security issue?
 
@@ -58,7 +60,7 @@ Here is a list of community roles with current and previous members:
 - Maintainers: [@open-telemetry/docs-maintainers][]
 
   - [Austin Parker](https://github.com/austinlparker), Honeycomb
-  - [Fabrizio Ferri-Benedetti](https://github.com/theletterf)
+  - [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Elastic
   - [Patrice Chalin](https://github.com/chalin), CNCF
   - [Phillip Carter](https://github.com/cartermp), Honeycomb
   - [Severin Neumann](https://github.com/svrnm)

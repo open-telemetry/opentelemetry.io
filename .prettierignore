@@ -4,22 +4,14 @@
 /themes
 
 /layouts/*
-!/layouts/shortcodes
-/layouts/shortcodes/*
-!/layouts/shortcodes/docs
-!/layouts/shortcodes/es
-!/layouts/shortcodes/pt
 
 /content/en/blog/2019
 /content/en/blog/202[23]
 
+/content/bn
 /content/ja
 /content/zh
 
-# Ignore content-modules except for published Community pages
+# Ignore content-modules
 
 /content-modules/*
-!/content-modules/community
-/content-modules/community/*
-!/content-modules/community/mission-vision-values.md
-!/content-modules/community/roadmap.md

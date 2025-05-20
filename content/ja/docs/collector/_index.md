@@ -2,9 +2,9 @@
 title: コレクター
 description: テレメトリーデータを受信、処理、エクスポートするためのベンダー非依存な方法
 cascade:
-  vers: 0.120.0
+  vers: 0.121.0
 weight: 270
-default_lang_commit: cd90ab77550fb2e92ca37cb3c753ec2d8bb7d8dc
+default_lang_commit: e1209f387a604c493e8b41923a3b2ceacd7437a0
 drifted_from_default: true
 ---
 
@@ -40,11 +40,11 @@ OpenTelemetryを試したり始めたりするには、バックエンドに直�
 [コレクターのセットアップ](quick-start)も、思っているより簡単です。
 各言語のデフォルトのOTLPエクスポーターは、ローカルコレクターのエンドポイントを想定しているので、コレクターを起動すると、自動的にテレメトリーの受信を開始します。
 
-## Collector security {#collector-security}
+## コレクターのセキュリティ {#collector-security}
 
 ベストプラクティスに従い、コレクターが安全に[ホスト][hosted]と[設定][configured]されていることを確認してください。
 
-## ステータスとリリース {#status-and-releases}
+## ステータス {#status}
 
 **コレクター**のステータスは、コレクターのコアコンポーネントが現在、[安定性レベル][stability levels]がまちまちであるため、 [混合状態（mixed）][mixed] となっています。
 
@@ -52,10 +52,17 @@ OpenTelemetryを試したり始めたりするには、バックエンドに直�
 各コンポーネントの安定性は `README.md` で明記されています。
 利用可能なコレクターコンポーネントの一覧は、[レジストリ][registry] にあります。
 
-{{% docs/latest-release collector-releases /%}}
+コレクターのソフトウェアのアーティファクトは、対象となる利用者に応じた一定の期間、サポートが保証されます。
+このサポートには、最低限、重大なバグやセキュリティ問題の修正が含まれます。
+詳細については、[サポートポリシー](https://github.com/open-telemetry/opentelemetry-collector/blob/main/VERSIONING.md) を参照してください。
 
-[registry]: /ecosystem/registry/?language=collector
-[hosted]: /docs/security/hosting-best-practices/
+## ディストリビューションとリリース {#releases}
+
+[最新のリリース][latest release] を含むコレクターの配布とリリースについての情報は、[ディストリビューション](distributions/) を確認してください。
+
 [configured]: /docs/security/config-best-practices/
+[hosted]: /docs/security/hosting-best-practices/
+[latest release]: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/latest
 [mixed]: /docs/specs/otel/document-status/#mixed
+[registry]: /ecosystem/registry/?language=collector
 [stability levels]: https://github.com/open-telemetry/opentelemetry-collector#stability-levels
