@@ -54,13 +54,18 @@ Your development environment will be initialized via the
 1.  [Fork] and then [clone] the website repository at
     <{{% param github_repo %}}>.
 2.  Go to the repository directory.
+
+    ```sh
+    cd opentelemetry.io
+    ```
+
 3.  Install or upgrade to the [**active LTS** release][nodejs-rel] of Node.js.
     We recommend using [nvm] to manage your Node installation. Under Linux, run
     the following command, which will install and upgrade to the version
     specified in the .nvmrc file:
 
     ```sh
-    nvm install --lts
+    nvm install
     ```
 
     To [install under Windows][nodejs-win], use [nvm-windows]:
