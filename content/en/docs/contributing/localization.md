@@ -291,48 +291,66 @@ For more details about the script, run `npm run check:i18n -- -h`.
 
 ## New localizations
 
-To start a new localization for the OpenTelemetry website,
-[raise an issue](https://github.com/open-telemetry/opentelemetry.io/issues/) to
-share your interest to contribute. Tag all other individuals that are willing to
-write and review translations in the language you want to add. **You need at
-least two potential contributors**, ideally three. Include the following task
-list in your issue as well:
+### New localization team
 
-```markdown
-- [ ] Contributors for the new language: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
-- [ ] Localize site homepage to YOUR_LANGUAGE_NAME
-- [ ] Create an issue label for `lang:LANG_ID`
-- [ ] Create org-level group for `LANG_ID` approvers
-- [ ] Update components owners for `content/LANG_ID`
-- [ ] Set up spell checking, if a cSpell dictionary is available
-```
+To start a new localization for the OpenTelemetry website you need:
 
-Notes:
+1. A **localization mentor** who is familiar with your language, such as an
+   [active approver][] of the [CNCF Glossary][], or the [Kubernetes website][].
+2. At least two potential contributors.
 
-- For `LANG_ID`, use an official
-  [ISO 639-1 code](https://en.wikipedia.org/wiki/ISO_639-1) for the language you
-  want to add.
-- Look for
-  [cSpell dictionaries](https://github.com/streetsidesoftware/cspell-dicts)
-  available as NPM packages
-  [@cspell/dict-LANG_ID](https://www.npmjs.com/search?q=%40cspell%2Fdict). If a
-  dictionary isn't available for your dialect or region, choose the closest
-  region. For an example of how to set this up, see [PR #5386].
+[active approver]: https://github.com/cncf/glossary/blob/main/CODEOWNERS
+[CNCF Glossary]: https://glossary.cncf.io/
+[Kubernetes website]: https://github.com/kubernetes/website
 
-After you created that issue and have the required amount of contributors,
-maintainers will ask you to provide a pull request with a translation of the
-[index page](https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md).
-Make sure that maintainers are allowed to edit your PR, since they will add
-additional changes to your PR that are required to get your localization project
-started.
+Once you are ready:
 
-With your first PR merged maintainers will take care of setting up the issue
-label, the org-level group and the component owners.
+1. Create a [new issue][] to share your interest to contribute.
 
-{{% alert title="Important" color="warning" %}}
+2. Add the GitHub handles of the mentor and potential contributors.
+
+3. Look up the official [ISO 639-1 code][] for the language you want to add.
+   We'll refer to this language code as `LANG_ID` in the remainder of this
+   section.
+
+4. Add the following task list to your issue's opening comment:
+
+   ```markdown
+   - [ ] Language info:
+     - ISO 639-1 language code: `LANG_ID`
+     - Language name: ADD_NAME_HERE
+   - [ ] Locale team info:
+     - [ ] Locale mentor: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
+     - [ ] Contributors: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
+   - [ ] Read through
+         [Localization](https://opentelemetry.io/docs/contributing/localization/)
+         and all other pages in the Contributing section
+   - [ ] Localize site homepage to YOUR_LANGUAGE_NAME
+   - [ ] OTel maintainers:
+     - [ ] Update `hugo.yaml`
+     - [ ] Configure cSpell and other tooling support
+     - [ ] Create an issue label for `lang:LANG_ID`
+     - [ ] Create org-level group for `LANG_ID` approvers
+     - [ ] Update components owners for `content/LANG_ID`
+   ```
+
+5. [Submit a pull request](../pull-requests/) with a translation of the website
+   [homepage], and _nothing else_, in the file `content/LANG_ID/_index.md`.
+   Ensure that maintainers have the necessary permissions to edit your PR, since
+   they will add additional changes to your PR that are required to get your
+   localization project started.
+
+[ISO 639-1 code]: https://en.wikipedia.org/wiki/ISO_639-1
+[homepage]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md
+
+After your first PR is merged, maintainers will set up the issue label, the
+org-level group and the component owners.
+
+{{% alert title="Note" %}}
 
 You don't have to be an existing contributor to the OpenTelemetry project, to
-start a new localization. However you will not be added as a member of the
+start a new localization. However, you will not be added as a member of the
 [OpenTelemetry GitHub organization](https://github.com/open-telemetry/) or as a
 member of the approvers group for your localization. You will need to satisfy
 the requirements for becoming an established member and approver as outlined in
@@ -343,6 +361,43 @@ When starting the localization project, maintainers will treat your reviews as
 if you are an approver already.
 
 {{% /alert %}}
+
+### OTel maintainer checklist
+
+#### Hugo
+
+Update `hugo.yaml`. Add appropriate entries for `LANG_ID` under:
+
+- `languages`
+- `module.mounts`. At a minimum, add a single `source`-`target` entry for
+  `content`. Consider adding entries for `en` fallback pages only once the
+  locale has enough content.
+
+#### Spelling
+
+Look for [cSpell dictionaries][] available as NPM packages
+[@cspell/dict-LANG_ID][]. If a dictionary isn't available for your dialect or
+region, choose the closest region.
+
+If no dictionary is available, then skip the rest of this subsection. Otherwise:
+
+- Add the NPM package as a dev dependency, for example:
+  `npm install --save-dev @cspell/dict-bn`.
+- Create `.cspell/LANG_ID-words.txt` as the site-local dictionary words for
+  `LANG_ID`.
+- In `.cspell.yml`, add entries for:
+  - `import`
+  - `dictionaryDefinitions`
+  - `dictionaries`: add two entries here, one for `LANG_ID` and one for
+    `LANG_ID-words.txt`
+
+[cSpell dictionaries]: https://github.com/streetsidesoftware/cspell-dicts
+[@cspell/dict-LANG_ID]: https://www.npmjs.com/search?q=%40cspell%2Fdict
+
+#### Other tooling support
+
+- Prettier support: if `LANG_ID` isn't well supported by Prettier, add ignore
+  rules to `.prettierignore`
 
 ## English-language maintainer guidance
 
@@ -370,5 +425,5 @@ a path that fails link checking:
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
 [maintainers]: https://github.com/orgs/open-telemetry/teams/docs-maintainers
 [multilingual framework]: https://gohugo.io/content-management/multilingual/
-[PR #5386]: https://github.com/open-telemetry/opentelemetry.io/pull/5386/files
+[new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new
 [slack]: https://slack.cncf.io/
