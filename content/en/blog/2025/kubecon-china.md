@@ -5,7 +5,6 @@ title:
 linkTitle: KubeCon China '25
 date: 2025-05-20
 author: '[Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)'
-# prettier-ignore
 cSpell:ignore: Delewski Hrabusa Przemek Purnesh Quesma Zihao Ziming
 ---
 
@@ -27,7 +26,7 @@ the conference!
 - **[OpenTelemetry Project Update](https://sched.co/1x5hN)**<br> by Zihao Rao,
   Alibaba Cloud; Hui Wang, VictoriaMetrics; Jared Tan, DaoCloud<br> Tuesday,
   June 10 • 16:15 -16:45
-- **[Unified Observability in GRPC: Metrics and Tracing Using OpenTelemetry Plugin](https://sched.co/1x5jY)**<br>
+- **[Unified Observability in gRPC: Metrics and Tracing Using OpenTelemetry Plugin](https://sched.co/1x5jY)**<br>
   by Purnesh Dixit, Google <br> Wednesday, June 11 • 11:00 - 11:30
 
 ## Join us
