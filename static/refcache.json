@@ -11979,10 +11979,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-02T12:10:58.803368-05:00"
   },
-  "https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/collector-distros.yaml": {
-    "StatusCode": 404,
-    "LastSeen": "2025-05-19T15:49:36.143385+02:00"
-  },
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/distributions.yaml": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T12:11:03.290407-05:00"
