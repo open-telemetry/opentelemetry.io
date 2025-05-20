@@ -5779,6 +5779,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:34:01.580787-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/confmap/provider/googlesecretmanagerprovider": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-20T15:03:21.581604937-07:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/otlpjsonconnector": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:34:34.16915-05:00"
@@ -16182,6 +16186,10 @@
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/cmd/opampsupervisor": {
     "StatusCode": 200,
     "LastSeen": "2025-04-22T16:02:45.796954+02:00"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/confmap/provider/googlesecretmanagerprovider": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-20T15:03:22.08238357-07:00"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/exporter/alertmanagerexporter": {
     "StatusCode": 200,
