@@ -97,7 +97,7 @@ sub applyPatchOrPrintMsgIf($$$) {
 
 sub patchSpec_because_of_SemConv_AttrRegRefactoring() {
   return unless $ARGV =~ /^tmp\/otel\/specification\//
-    && applyPatchOrPrintMsgIf('2025-05-13-attribute-registry-refactoring', 'semconv', '1.33.0-28--g');
+    && applyPatchOrPrintMsgIf('2025-05-13-attribute-registry-refactoring', 'spec', '1.45.0-dev');
 
   s|/attributes-registry/|/registry/attributes/|g;
 }
