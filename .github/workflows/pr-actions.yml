@@ -34,7 +34,6 @@ jobs:
 
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          ref: refs/pull/${{ github.event.issue.number }}/head
           fetch-depth: 999
 
       - name: Extract action name
@@ -43,23 +42,19 @@ jobs:
           PR_ACTION=$(echo "$COMMENT" | grep -oP '/fix:\K[:-_0-9a-z]+')
           echo "action_name=$PR_ACTION" >> "$GITHUB_OUTPUT"
 
+      - run: gh pr checkout $PR_NUM -b "pr-action-${RANDOM}"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
       - name: Setup Node
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version-file: .nvmrc
-          cache: npm
 
       - name: Install deps & run fixer
         run: |
-          npm ci
-          case ${{ steps.extract.outputs.action_name }} in
-            all|refcache*|text)
-              npm install --omit=optional
-              ;&
-            *)
-              npm run fix:${{ steps.extract.outputs.action_name }}
-              ;;
-          esac
+          npm install --omit=optional
+          npm run fix:${{ steps.extract.outputs.action_name }}
 
       - name: Generate and validate patch
         id: check_patch
@@ -104,29 +99,42 @@ jobs:
 
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          ref: refs/pull/${{ github.event.issue.number }}/head
           fetch-depth: 999
+
+      - run: gh pr checkout $PR_NUM -b "pr-action-${RANDOM}"
+        env:
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
       - name: Download patch
         uses: actions/download-artifact@v4
         with:
           name: ${{ needs.generate-patch.outputs.patch_name }}
 
-      - name: Apply patch and push
+      - name: Apply patch
         run: |
           git apply --check pr-fix.patch && git apply pr-fix.patch || {
             echo "Patch failed to apply"
             exit 1
           }
 
-          git config user.name "$USER_NAME"
-          git config user.email "$USER_EMAIL"
-
-          if git diff --quiet; then
-            echo "No changes to commit"
+      - name: Commit and push changes, if any
+        run: |
+          git config --local user.email "$USER_EMAIL"
+          git config --local user.name "$USER_NAME"
+          if [[ $(git status --porcelain) ]]; then
+            git add -A
+            current_branch=$(git rev-parse --abbrev-ref HEAD)
+            echo current_branch=$current_branch
+            # gh pr checkout sets some git configs that we can use to make sure
+            # we push to the right repo & to the right branch
+            remote_repo=$(git config --get branch.${current_branch}.remote)
+            echo remote_repo=$remote_repo
+            remote_branch=$(git config --get branch.${current_branch}.merge)
+            echo remote_branch=$remote_branch
+            git commit -m "Results from /fix:${PR_ACTION}"
+            git push ${remote_repo} HEAD:${remote_branch}
           else
-            git commit -am "Results from /fix:${{ needs.generate-patch.outputs.action_name }}"
-            git push
+            echo "No changes to commit"
           fi
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
