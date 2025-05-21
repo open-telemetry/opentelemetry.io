@@ -40,7 +40,7 @@ is provided as a convenience for the community. {{% /alert %}}
 ## Adding your Collector distribution {#how-to-add}
 
 To have your Collector distribution listed, [submit a PR] with an entry added to
-the [distributions list]. The entry should include the following:
+the distributions list. The entry should include the following:
 
 - Link to the main page of your distribution
 - Link to the documentation that explains how to use the distribution
@@ -48,5 +48,3 @@ the [distributions list]. The entry should include the following:
   in case we have questions
 
 [submit a PR]: /docs/contributing/pull-requests/
-[distributions list]:
-  https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/collector-distros.yaml
