@@ -2199,6 +2199,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:07:12.345Z"
   },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-china/reg/register/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-20T15:52:00.266656976-07:00"
+  },
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-15T11:26:04.94478-05:00"
