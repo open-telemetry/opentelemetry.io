@@ -184,6 +184,8 @@ maintainers:
       - blog-approvers
       - demo-approvers
       - docs-approvers
+      - docs-bn-approvers
+      - docs-bn-maintainers
       - docs-es-approvers
       - docs-es-maintainers
       - docs-fr-approvers
@@ -286,6 +288,8 @@ maintainers:
     teams:
       - blog-approvers
       - docs-approvers
+      - docs-bn-approvers
+      - docs-bn-maintainers
       - docs-es-approvers
       - docs-es-maintainers
       - docs-fr-approvers
@@ -302,6 +306,8 @@ maintainers:
   - name: chalin
     teams:
       - docs-approvers
+      - docs-bn-approvers
+      - docs-bn-maintainers
       - docs-es-approvers
       - docs-es-maintainers
       - docs-fr-approvers
@@ -1105,6 +1111,8 @@ maintainers:
     teams:
       - blog-approvers
       - docs-approvers
+      - docs-bn-approvers
+      - docs-bn-maintainers
       - docs-es-approvers
       - docs-es-maintainers
       - docs-fr-approvers
@@ -1145,6 +1153,8 @@ maintainers:
   - name: theletterf
     teams:
       - docs-approvers
+      - docs-bn-approvers
+      - docs-bn-maintainers
       - docs-es-approvers
       - docs-es-maintainers
       - docs-fr-approvers
@@ -1167,6 +1177,8 @@ maintainers:
   - name: tiffany76
     teams:
       - docs-approvers
+      - docs-bn-approvers
+      - docs-bn-maintainers
       - docs-maintainers
     html_url: https://github.com/tiffany76
     avatar_url: https://avatars.githubusercontent.com/u/30397949?v=4
