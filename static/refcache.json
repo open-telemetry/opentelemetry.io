@@ -5287,6 +5287,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:10:12.345Z"
   },
+  "https://github.com/open-telemetry/build-tools/blob/v0.25.0/semantic-conventions/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:32.311011-04:00"
+  },
   "https://github.com/open-telemetry/build-tools/tree/main/semantic-conventions#code-generator": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:10:12.345Z"
@@ -12135,6 +12139,58 @@
     "StatusCode": 200,
     "LastSeen": "2025-05-03T12:20:12.345Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:32.491774-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-metrics.md#metric-dbclientconnectioncount": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:40.460248-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-metrics.md#metric-dbclientconnectioncreate_time": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:48.435667-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-metrics.md#metric-dbclientconnectionidlemax": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:42.813867-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-metrics.md#metric-dbclientconnectionidlemin": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:43.421094-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-metrics.md#metric-dbclientconnectionmax": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:44.242253-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-metrics.md#metric-dbclientconnectionpending_requests": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:46.720736-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-metrics.md#metric-dbclientconnectiontimeouts": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:47.134525-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-metrics.md#metric-dbclientconnectionuse_time": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:49.665802-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-metrics.md#metric-dbclientconnectionwait_time": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:49.030871-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-metrics.md#metric-dbclientoperationduration": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:39.233062-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-spans.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:35.902826-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-spans.md#name": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:38.131852-04:00"
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues": {
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:54:10.34153-05:00"
@@ -13018,6 +13074,10 @@
   "https://github.com/open-telemetry/semantic-conventions/tree/v1.33.0//model/README.md": {
     "StatusCode": 206,
     "LastSeen": "2025-05-03T07:51:18.308728-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/v1.34.0//model/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:28.317486-04:00"
   },
   "https://github.com/open-telemetry/sig-contributor-experience": {
     "StatusCode": 206,
