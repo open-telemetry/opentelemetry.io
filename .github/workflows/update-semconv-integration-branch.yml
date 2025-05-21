@@ -13,9 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # this is needed in order to do the rebase below
+          # this is needed to do the rebase below
           fetch-depth: 0
-          # this is needed in order to trigger workflows when pushing new commits to the PR
+          # this is needed to trigger workflows when pushing new commits to the PR
           token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
       - name: Set environment variables
@@ -100,7 +100,7 @@ jobs:
         run: |
           prs=$(gh pr list --state open --head $BRANCH)
           if [ -z "$prs" ]; then
-            gh pr create --title "Update semantic conventions to $VERSION-dev" \
-                         --body "This PR updates the semantic conventions to $VERSION-dev." \
+            gh pr create --title "DRAFT Update semantic conventions to unreleased $VERSION-dev" \
+                         --body "This is a draft PR used for identifying issues integrating the latest (unreleased) semantic conventions." \
                          --draft
           fi
