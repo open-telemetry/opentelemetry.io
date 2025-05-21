@@ -135,6 +135,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:46:22.467349-04:00"
   },
+  "https://aws.amazon.com/bedrock/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-13T13:34:35.263245-04:00"
+  },
   "https://aws.amazon.com/cli/": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T10:58:51.279173-05:00"
@@ -983,6 +987,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-11-21T10:24:48.633652602+01:00"
   },
+  "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-eventsourcemapping.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-13T13:34:27.169641-04:00"
+  },
   "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-system-attributes": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:04:12.345Z"
@@ -1022,6 +1030,22 @@
   "https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:05:12.345Z"
+  },
+  "https://docs.aws.amazon.com/bedrock/latest/userguide/agents-session-state.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-13T13:34:30.278879-04:00"
+  },
+  "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-13T13:34:32.03137-04:00"
+  },
+  "https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-13T13:34:32.593912-04:00"
+  },
+  "https://docs.aws.amazon.com/cli/latest/reference/kinesis/describe-stream.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-13T13:34:34.517102-04:00"
   },
   "https://docs.aws.amazon.com/cli/latest/reference/s3api/abort-multipart-upload.html": {
     "StatusCode": 206,
@@ -1087,6 +1111,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:58:57.299057-05:00"
   },
+  "https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html#available-regions": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-14T08:40:21.832076-04:00"
+  },
   "https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:59:00.379633-05:00"
@@ -1122,6 +1150,14 @@
   "https://docs.aws.amazon.com/lambda/latest/dg/telemetry-api.html": {
     "StatusCode": 206,
     "LastSeen": "2025-01-24T22:43:04.492478898Z"
+  },
+  "https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-13T13:34:33.861987-04:00"
+  },
+  "https://docs.aws.amazon.com/streams/latest/dev/introduction.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-13T13:34:34.015705-04:00"
   },
   "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html": {
     "StatusCode": 206,
@@ -1442,6 +1478,10 @@
   "https://docs.linuxfoundation.org/lfx/easycla/contributors": {
     "StatusCode": 200,
     "LastSeen": "2025-01-30T16:59:56.597153-05:00"
+  },
+  "https://docs.llamaindex.ai/en/stable/module_guides/storing/chat_stores/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-13T13:34:29.870114-04:00"
   },
   "https://docs.locust.io/en/stable/writing-a-locustfile.html": {
     "StatusCode": 200,
@@ -5246,6 +5286,10 @@
   "https://github.com/open-telemetry/build-tools/blob/main/semantic-conventions/README.md#code-generator": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:10:12.345Z"
+  },
+  "https://github.com/open-telemetry/build-tools/blob/v0.25.0/semantic-conventions/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:32.311011-04:00"
   },
   "https://github.com/open-telemetry/build-tools/tree/main/semantic-conventions#code-generator": {
     "StatusCode": 200,
@@ -11431,6 +11475,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-05-14T12:26:47.112374-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/oteps/0232-maturity-of-otel.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T16:22:23.191179445Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/oteps/0232-maturity-of-otel.md#explanation": {
     "StatusCode": 200,
     "LastSeen": "2025-05-14T16:28:12.345Z"
@@ -11522,6 +11570,14 @@
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/oteps/profiles/0239-profiles-data-model.md#message-mapping": {
     "StatusCode": 200,
     "LastSeen": "2025-05-14T16:28:12.345Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/spec-compliance-matrix.md#logs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T16:22:22.01658109Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/specification/logs/api.md#logger": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T16:22:22.513499807Z"
   },
   "https://github.com/open-telemetry/opentelemetry-swift": {
     "StatusCode": 206,
@@ -12082,6 +12138,58 @@
   "https://github.com/open-telemetry/semantic-conventions/blob/v1.31.0/docs/database/database-spans.md#name": {
     "StatusCode": 200,
     "LastSeen": "2025-05-03T12:20:12.345Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:32.491774-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-metrics.md#metric-dbclientconnectioncount": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:40.460248-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-metrics.md#metric-dbclientconnectioncreate_time": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:48.435667-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-metrics.md#metric-dbclientconnectionidlemax": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:42.813867-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-metrics.md#metric-dbclientconnectionidlemin": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:43.421094-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-metrics.md#metric-dbclientconnectionmax": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:44.242253-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-metrics.md#metric-dbclientconnectionpending_requests": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:46.720736-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-metrics.md#metric-dbclientconnectiontimeouts": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:47.134525-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-metrics.md#metric-dbclientconnectionuse_time": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:49.665802-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-metrics.md#metric-dbclientconnectionwait_time": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:49.030871-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-metrics.md#metric-dbclientoperationduration": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:39.233062-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-spans.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:35.902826-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.33.0/docs/database/database-spans.md#name": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:38.131852-04:00"
   },
   "https://github.com/open-telemetry/semantic-conventions/issues": {
     "StatusCode": 206,
@@ -12966,6 +13074,10 @@
   "https://github.com/open-telemetry/semantic-conventions/tree/v1.33.0//model/README.md": {
     "StatusCode": 206,
     "LastSeen": "2025-05-03T07:51:18.308728-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/v1.34.0//model/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-21T15:12:28.317486-04:00"
   },
   "https://github.com/open-telemetry/sig-contributor-experience": {
     "StatusCode": 206,
