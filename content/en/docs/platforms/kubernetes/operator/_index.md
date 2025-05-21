@@ -29,8 +29,8 @@ The operator manages:
 
 ## Getting started
 
-To install the operator in an existing cluster, make sure you have cert-manager
-installed and run:
+To install the operator in an existing cluster, make sure you have
+[`cert-manager`](https://cert-manager.io/docs/installation/) installed and run:
 
 ```bash
 kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/latest/download/opentelemetry-operator.yaml
@@ -41,12 +41,12 @@ Collector (otelcol) instance, like:
 
 ```console
 $ kubectl apply -f - <<EOF
-apiVersion: opentelemetry.io/v1alpha1
+apiVersion: opentelemetry.io/v1beta1
 kind: OpenTelemetryCollector
 metadata:
   name: simplest
 spec:
-  config: |
+  config:
     receivers:
       otlp:
         protocols:
@@ -55,16 +55,23 @@ spec:
           http:
             endpoint: 0.0.0.0:4318
     processors:
+      memory_limiter:
+        check_interval: 1s
+        limit_percentage: 75
+        spike_limit_percentage: 15
+      batch:
+        send_batch_size: 10000
+        timeout: 10s
 
     exporters:
       # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
-      debug:
+      debug: {}
 
     service:
       pipelines:
         traces:
           receivers: [otlp]
-          processors: []
+          processors: [memory_limiter, batch]
           exporters: [debug]
 EOF
 ```
