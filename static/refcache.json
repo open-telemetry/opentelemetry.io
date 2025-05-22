@@ -1919,6 +1919,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:07:12.345Z"
   },
+  "https://docs.ruby-lang.org/en/3.4/Exception.html#method-i-full_message": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-22T12:57:07.117354962Z"
+  },
   "https://docs.sentry.io/platforms/java/performance/instrumentation/opentelemetry/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T12:11:26.28911-05:00"
