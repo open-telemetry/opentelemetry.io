@@ -35,6 +35,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-01T06:58:39.712244-05:00"
   },
+  "https://adri-v.medium.com/lets-learn-about-the-otel-operator-s-target-allocator-47a2b1f07562": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-21T12:24:18.472460168Z"
+  },
   "https://adri-v.medium.com/prometheus-opentelemetry-better-together-41dc637f2292": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T06:58:41.954339-05:00"
@@ -3239,6 +3243,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-13T12:11:02.685168-05:00"
   },
+  "https://github.com/avillela/hashiqube/commits": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-21T12:24:19.718458532Z"
+  },
   "https://github.com/avillela/otel-errors-talk": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:58:41.038986-05:00"
@@ -5346,6 +5354,10 @@
   "https://github.com/open-telemetry/community/blob/main/elections/2024/governance-committee-election.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:23:15.075273-05:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/elections/2024/governance-committee-election.md#nominations": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-21T14:30:53.283875975Z"
   },
   "https://github.com/open-telemetry/community/blob/main/elections/2024/governance-committee-election.md#voter-eligibility": {
     "StatusCode": 200,
@@ -7922,6 +7934,10 @@
   "https://github.com/open-telemetry/opentelemetry-erlang-contrib": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:31.702442-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples": {
+    "StatusCode": 206,
+    "LastSeen": "2025-01-21T14:28:34.626770908Z"
   },
   "https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples/roll_dice": {
     "StatusCode": 206,
@@ -16646,6 +16662,10 @@
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor#hdr-RBAC": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:27:59.999Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor#readme-role-based-access-control": {
+    "StatusCode": 200,
+    "LastSeen": "2025-01-21T12:21:51.779082249Z"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sprocessor": {
     "StatusCode": 200,
