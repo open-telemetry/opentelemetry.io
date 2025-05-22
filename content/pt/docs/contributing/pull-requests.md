@@ -14,9 +14,8 @@ submeta um [pull request][PR] (PR):
 - Se sua alteração for pequena ou você não estiver familiarizado com o [Git],
   veja [Usando o GitHub](#changes-using-github) para aprender como editar uma
   página.
-- Caso contrário, consulte [Trabalhando localmente](#fork-the-repo)
-  para aprender como fazer alterações no seu próprio ambiente de
-  desenvolvimento.
+- Caso contrário, consulte [Trabalhando localmente](#fork-the-repo) para
+  aprender como fazer alterações no seu próprio ambiente de desenvolvimento.
 
 {{% alert title="Contrato de Licença de Contribuidor (CLA)" color=warning %}}
 
