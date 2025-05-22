@@ -1,0 +1,22 @@
+title: OpenTelemetry Instrumentation for Oracle Database
+registryType: instrumentation
+language: js
+tags:
+  - Node.js
+  - js
+  - instrumentation
+  - oracledb
+  - database
+license: Apache 2.0
+description: Instrumentation library for Oracle Database.
+authors:
+  - name: Sudarshan Soma
+    email: sudarshan12s@gmail.com
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-oracledb
+createdAt: 2025-05-22
+package:
+  registry: npm
+  name: '@opentelemetry/instrumentation-oracledb'
+  version: 0.27.0
+isFirstParty: false
