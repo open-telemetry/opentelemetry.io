@@ -3,7 +3,7 @@ title: Exporters
 weight: 50
 ---
 
-{{% docs/languages/exporters/intro ruby %}}
+{{% docs/languages/exporters/intro %}}
 
 ## OTLP endpoint
 

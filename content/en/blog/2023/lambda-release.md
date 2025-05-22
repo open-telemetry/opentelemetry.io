@@ -9,8 +9,8 @@ cSpell:ignore: adot otel-faas socha
 The
 [Functions-as-a-Service (FaaS) SIG](https://docs.google.com/document/d/187XYoQcXQ9JxS_5v2wvZ0NEysaJ02xoOYNXj08pT0zc)
 is incredibly excited to announce that the release of OpenTelemetry Lambda
-layers, and associated [documentation](/docs/faas/) on how to monitor Amazon Web
-Services (AWS) Lambdas.
+layers, and associated [documentation](/docs/platforms/faas/) on how to monitor
+Amazon Web Services (AWS) Lambdas.
 
 ## OTel FaaS repackaged
 
@@ -42,7 +42,7 @@ The FaaS SIG has addressed the above-mentioned shortcomings:
   Collector alongside auto-instrumentation layers for JavaScript, Java, and
   Python.
 - Added official community Lambda documentation to the OTel website under the
-  new [FaaS section](/docs/faas/).
+  new [FaaS section](/docs/platforms/faas/).
 
 ## What next
 

@@ -16,7 +16,7 @@ community by establishing processes. Let me explain.
 ![Watering can](watering-can.jpeg)
 
 The main objective of the OpenTelemetry project is to make robust, portable
-telemetry a built-in feature of cloud-native software. The most effective way to
+telemetry a built-in feature of cloud native software. The most effective way to
 do it is to build a community of passionate people, from existing ecosystem with
 the diverse expertise and experience. This community will build a project that
 is attractive to users, who will use it to instrument their software, as well as
@@ -76,4 +76,4 @@ feedback!
 _A version of this article was [originally posted][] on
 [medium.com/opentelemetry](https://medium.com/opentelemetry)._
 
-[originally posted]: {{% param canonical_url %}}
+[originally posted]: <{{% param canonical_url %}}>

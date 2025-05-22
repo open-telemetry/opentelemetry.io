@@ -3,7 +3,7 @@ title: コンポーネント
 description: OpenTelemetryを構成する主なコンポーネント
 aliases: [data-collection]
 weight: 20
-default_lang_commit: 313e391
+default_lang_commit: 8d115a9df96c52dbbb3f96c05a843390d90a9800
 ---
 
 OpenTelemetryは現在、いくつかの主要コンポーネントで構成されています。
@@ -99,11 +99,11 @@ OpenTelemetryの各言語固有の実装は、いくつかの[ヘッドサンプ
 OpenTelemetryオペレーターはKubernetesオペレーターの実装です。
 オペレーターはOpenTelemetryコレクターを管理し、OpenTelemetryを使用してワークロードの自動計装を行います。
 
-詳細は、[K8sオペレーター](/docs/kubernetes/operator/)のページを参照してください。
+詳細は、[K8sオペレーター](/docs/platforms/kubernetes/operator/)のページを参照してください。
 
 ## Function as a Serviceアセット {#function-as-a-service-assets}
 
 OpenTelemetryは、さまざまなクラウドベンダーが提供する Function-as-a-Service を監視するさまざまな方法をサポートしています。
 OpenTelemetryコミュニティは、現在、アプリケーションを自動計装できるビルド済みのLambdaレイヤーと、アプリケーションを手動または自動で計装する際に使用できるスタンドアロンのコレクターLambdaレイヤーのオプションを提供しています。
 
-詳細は、[Functions as a Service](/docs/faas/)のページを参照してください。
+詳細は、[Functions as a Service](/docs/platforms/faas/)のページを参照してください。

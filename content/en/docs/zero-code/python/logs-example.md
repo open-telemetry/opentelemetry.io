@@ -3,8 +3,7 @@ title: Logs Auto-Instrumentation Example
 linkTitle: Logs Example
 weight: 20
 aliases: [/docs/languages/python/automatic/logs-example]
-# prettier-ignore
-cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette uninstrumented virtualenv
+cSpell:ignore: distro mkdir virtualenv
 ---
 
 This page demonstrates how to use Python logs auto-instrumentation in

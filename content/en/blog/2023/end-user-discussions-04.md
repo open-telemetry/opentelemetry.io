@@ -13,7 +13,7 @@ regions again in May.
 The discussions take place using a
 [Lean Coffee format](https://agilecoffee.com/leancoffee/), whereby folks are
 invited to post their topics to the
-[Agile Coffee board like this one](http://agile.coffee/#2f83c1c1-918c-4c78-8671-194b2e9d8e54),
+[Agile Coffee board like this one](http://agile.coffee/?disable_http_check#2f83c1c1-918c-4c78-8671-194b2e9d8e54),
 and everyone in attendance votes on what they want to talk about.
 
 ## What we talked about

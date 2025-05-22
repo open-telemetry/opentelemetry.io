@@ -1,7 +1,6 @@
 #!/usr/bin/perl -w -i
 #
 # DRAFT script used to normalize semconv doc-page tiles and add Hugo front matter
-#
 
 $^W = 1;
 
@@ -20,138 +19,205 @@ my $opAmpSpecRepoUrl = 'https://github.com/open-telemetry/opamp-spec';
 my $semconvSpecRepoUrl = 'https://github.com/open-telemetry/semantic-conventions';
 my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
 my $specBasePath = '/docs/specs';
-my $path_base_for_github_subdir = "content/en$specBasePath";
 my %versions = qw(
   spec: 1.22.0
   otlp: 1.0.0
 );
 my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
+my $seenFirstNonBlankLineBeforeTitle;
+my $beforeTitle = '';
 
-# TODO: remove once OpAMP spec has been updated
-my $opampFrontMatter = << "EOS";
-title: Open Agent Management Protocol
-linkTitle: OpAMP
-body_class: otel-docs-spec
-github_repo: &repo $opAmpSpecRepoUrl
-github_project_repo: *repo
-path_base_for_github_subdir:
-  from: content/en/docs/specs/opamp/index.md
-  to: specification.md
-EOS
-
-# TODO: remove once Semconv spec has been updated
-my $semconvFrontMatter = << "EOS";
-linkTitle: Semantic Conventions
-# no_list: true
-cascade:
-  body_class: otel-docs-spec
-  github_repo: &repo $semconvSpecRepoUrl
-  github_subdir: docs
-  path_base_for_github_subdir: content/en/docs/specs/semconv/
-  github_project_repo: *repo
-EOS
-
-# Adjust semconv title capitalization
 sub toTitleCase($) {
-    my $str = shift;
-    my @specialCaseWords = qw(
-        CloudEvents
-        CouchDB
-        DynamoDB
-        FaaS
-        GraphQL
-        gRPC
-        HBase
-        MongoDB
-        OpenTelemetry
-        RabbitMQ
-        RocketMQ
-    );
-    my %specialCases = map { lc($_) => $_ } @specialCaseWords;
-    while ($str =~ /(\b[A-Z]+\b)/g) {
-        $specialCases{lc $1} = $1;
-    }
-    $str =~ s/(\w+)/\u\L$1/g;
-    while (my ($key, $value) = each %specialCases) {
-        $str =~ s/\b\u\L$key\b/$value/g;
-    }
-    $str =~ s/\b(A|And|As|For|In|On)\b/\L$1/g;
+    my ($str) = @_;
+
+    # Capitalize non-mixedcase words
+    $str =~ s/(^|\s)([a-zA-Z])([a-z][a-z0-9]*)\b/$1\u$2$3/g;
+
+    # Revert / lowercase articles etc.
+    $str =~ s/\b(A|And|As|By|For|In|On)\b/\L$1/g;
+
     return $str;
 }
 
-sub printTitleAndFrontMatter() {
+my $properNames = <<'EON';
+  .NET Core
+  AI Inference
+  AWS Lambda
+  Azure
+  Cassandra
+  Cloud Run
+  Common Language Runtime
+  Compute Engine
+  Connect RPC
+  Cosmos
+  Elasticsearch
+  Go
+  Google
+  Google Cloud
+  Kafka
+  Kestrel
+  Kubernetes
+  Microsoft
+  Node.js
+  Pub/Sub
+  Redis
+EON
+
+my @properNames =
+  grep { /\S/ } # drop blank lines
+    map { s/^\s+|\s+$//gr } # trim whitespace
+      split(/\n/, $properNames);
+
+sub toSentenceCase($) {
+    my ($str) = @_;
+
+    # Lowercase non-mixedcase words
+    $str =~ s/\b([A-Z]?[a-z][a-z0-9]*)\b/\l$1/g;
+
+    # Capitalize the first word unless it is mixed case
+    $str =~ s/^([a-z][a-z0-9]*)\b/\u$1/;
+
+    # Handle exceptions
+    for my $name (@properNames) {
+        $str =~ s/\b\Q$name\E\b/$name/gi;
+    }
+    $str =~ s/Function(.)as.a.Service/Function$1as$1a$1Service/i;
+
+    return $str;
+}
+
+sub computeTitleAndFrontMatter() {
   my $frontMatter = '';
-  my $originalTitle = $title;
   if ($frontMatterFromFile) {
     # printf STDOUT "> $file has front matter:\n$frontMatterFromFile\n"; # if $gD;
-    $frontMatterFromFile = '' unless $ARGV =~ /\/system\/[^R]/;
+    $frontMatterFromFile = '' unless $frontMatterFromFile =~ /auto_gen|aliases/i;
     # printf STDOUT "> $file\n" if $ARGV =~ /\/system\b/;
   }
-  if ($title eq 'OpenTelemetry Semantic Conventions') {
-    $frontMatterFromFile = $semconvFrontMatter unless $frontMatterFromFile;
-  } elsif ($ARGV =~ /json-rpc/) {
-    $title = 'Semantic Conventions for JSON-RPC';
-  }
-  $title = toTitleCase($title);
-  my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
-  # $frontMatter .= "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
+  $linkTitle = $title;
+
   if ($title =~ /^OpenTelemetry (Protocol )?(.*)/) {
     $linkTitle = $2;
   } elsif ($title =~ /^(.*?) Semantic Conventions?$/i) {
-    $linkTitle = toTitleCase($1);
-  } elsif ($title =~ /^Semantic Conventions? for (.*)$/i) {
-    $linkTitle = toTitleCase($1);
+    $linkTitle = $1; # toTitleCase($1);
+  } elsif ($title =~ /^.*? for (.*)$/i) {
+    $linkTitle = $1; # toTitleCase($1);
   }
   if ($linkTitle =~ /^Function.as.a.Service$/i) {
     $linkTitle = 'FaaS';
   }
   $linkTitle = 'Database' if $title =~ /Database Calls and Systems$/i;
-  if ($linkTitle =~ /^Database (.*)$/i) {
-    $linkTitle = "$1";
-  } elsif ($linkTitle =~ /^FaaS (.*)$/i) {
-    $linkTitle = "$1";
-  } elsif ($linkTitle =~ /^HTTP (.*)$/i) {
-    $linkTitle = "$1";
-  } elsif ($linkTitle =~ /^Microsoft (.*)$/i) {
-    $linkTitle = "$1";
+  if ($linkTitle =~ /^(?:FaaS|HTTP) (.*)$/i && $ARGV !~ /dotnet|migration/) {
+    $linkTitle = $1;
+  } elsif ($linkTitle =~ /^Microsoft (?:Azure)? (.*)$/i) {
+    $linkTitle = $1;
   } elsif ($linkTitle =~ /^RPC (.*)$/i) {
-    $linkTitle = "$1";
+    $linkTitle = $1;
   } elsif ($linkTitle =~ /^(Exceptions|Feature Flags) .. (.*)$/i) {
-    $linkTitle = "$2";
-  }
-  if ($linkTitle =~ /^(.*) Attributes$/i && $title ne 'General Attributes') {
-    $linkTitle = "$1";
-  }
-  $linkTitle = 'Attributes' if $title eq 'General Attributes';
-  $linkTitle = 'Events' if $linkTitle eq 'Event';
-  $linkTitle = 'Logs' if $title =~ /Logs Attributes$/;
-  $linkTitle = 'Connect' if $title =~ /Connect RPC$/;
-  $linkTitle = 'SQL' if $title =~ /SQL Databases$/;
-  $title = 'Semantic Conventions for Function-as-a-Service' if $title eq 'Semantic Conventions for FaaS';
-  $linkTitle = 'Tracing Compatibility' if $linkTitle eq 'Tracing Compatibility Components';
-  if ($title =~ /Semantic Convention\b/) {
-    $title =~ s/Semantic Convention\b/$&s/g;
-    printf STDOUT "> $title -> $linkTitle\n";
+    $linkTitle = $2;
   }
 
-  $frontMatter .= "linkTitle: $linkTitle\n" if $linkTitle and $frontMatterFromFile !~ /linkTitle: /;
-  $frontMatter .= $frontMatterFromFile if $frontMatterFromFile;
-  if ($ARGV =~ /docs\/(.*?)(README|_index).md$/) {
-    $frontMatter .= "path_base_for_github_subdir:\n";
-    $frontMatter .= "  from: $path_base_for_github_subdir/semconv/$1_index.md\n";
-    $frontMatter .= "  to: $1README.md\n";
+  $linkTitle = 'Events' if $linkTitle =~ /Mobile Events/i;
+  $linkTitle = 'Connect' if $title =~ /Connect RPC$/i;
+  $linkTitle = 'HTTP' if $linkTitle =~ /^HTTP Client and Server/i;
+  $linkTitle = 'SQL' if $title =~ /SQL Databases$/i;
+  $linkTitle = 'System use cases' if $title =~ /System .*?General Use Cases/i;
+  $linkTitle = $1 if $title =~ /Gen(?:erative) ?AI (\w+)$/i && $title !~ /Systems$/i;
+  $linkTitle = $1 if $title =~ /(OpenAI) \w+$/i;
+
+  # Missing an `s` in "Semantic convention"?
+  if ($title =~ /^Semantic convention\b/i and $title !~ /Groups$/i) {
+    $title =~ s/Semantic convention\b/$&s/ig;
+    printf STDOUT "> $title -> $linkTitle - added 's' to 'Conventions'\n";
   }
-  $frontMatter .= "weight: -1\n" if $title eq 'General Semantic Conventions';
+  $linkTitle =~ s/^(Database|Messaging) Client //i;
+  if ($ARGV =~ /docs\/azure/) {
+    $linkTitle =~ s/ Resource Logs?//i;
+    $linkTitle =~ s/Azure //i;
+  } elsif ($ARGV =~ /docs\/messaging\/[^R]/) {
+    $linkTitle =~ s/( messaging|messaging )//i;
+  }
+
+  $linkTitle =~ s/^General //i; # if $ARGV =~ /docs\/general/
+  $linkTitle =~ s/( (runtime|(web )?server))? metrics( emitted by .*)?$//i
+    unless $ARGV =~ /gen-ai-metrics/;
+  $linkTitle =~ s/ (components|guide|queries|supplementary information|systems|platform)$//i;
+  $linkTitle =~ s/ \(command line interface\)//i;
+  $linkTitle =~ s/ (attributes|resources)$//i;
+  $linkTitle =~ s/(Process) and process runtime$/$1/i;
+
+  $linkTitle = '.NET' if $linkTitle =~ /.net common language runtime/i;
+  $linkTitle = 'CLI' if $linkTitle =~ /\(command line interface\) programs/i;
+
+  if ($ARGV =~ /non-normative/) {
+    $linkTitle =~ s/Semantic Conventions? Stability //i;
+  }
+
+  $frontMatter .= $frontMatterFromFile if $frontMatterFromFile;
+
+  $linkTitle = toSentenceCase($linkTitle);
+  if ($linkTitle) {
+    if ($frontMatter !~ /linkTitle: / && $linkTitle ne $title) {
+      $frontMatter .= "linkTitle: $linkTitle\n";
+    } elsif ($frontMatter !~ /^auto_gen:/m) {
+      $frontMatter =~ s/^(linkTitle: ).*$/$1$linkTitle/m;
+    }
+  }
+
+  # if ($ARGV =~ /docs\/(.*?)(README|_index).md$/) {
+  #   $frontMatter .= "path_base_for_github_subdir:\n";
+  #   $frontMatter .= "  from: tmp/semconv/docs/$1_index.md\n";
+  #   $frontMatter .= "  to: $1README.md\n";
+  # }
+
+  return $frontMatter;
+}
+
+sub printTitleAndFrontMatter() {
+  my $frontMatter = computeTitleAndFrontMatter();
+
   if ($frontMatter) {
     $frontMatter = "<!--- Hugo front matter used to generate the website version of this page:\n" . $frontMatter;
     $frontMatter .= "--->\n";
     print "$frontMatter\n";
   }
+
+  print $beforeTitle if $beforeTitle;
+  $title = toSentenceCase($title);
   print "# $title\n"
 }
 
+sub gatherFrontMatter() {
+  my $autoGenValues = 'false|below';
+  my $autoGenDirective = '';
+  my $autoGenSkip = 0;
+
+  while(<>) {
+    last if /^--->/;
+    next if $autoGenSkip;
+
+    my ($keyWord, $autoGenDirective) = /^(auto.?gen): ([^\#]+)/;
+    if ($keyWord) {
+      # print STDOUT ">> $ARGV:\n$frontMatterFromFile";
+      if ($keyWord ne 'auto_gen') {
+        warn "$ARGV: WARN: misspelled keyword, should be 'auto_gen' not '$keyWord'\n";
+      } elsif (!$autoGenDirective or $autoGenDirective !~ /^($autoGenValues)/) {
+        warn "$ARGV: WARN: missing or unrecognized 'auto_gen' value, should match '$autoGenValues', not $autoGenDirective\n";
+      } elsif ($autoGenDirective =~ /^below/) {
+        $autoGenSkip = 1;
+        # print STDOUT ">>>> skipping\n";
+      } else {
+        # print STDOUT ">> wa?\n";
+      }
+    }
+
+    $frontMatterFromFile .= $_;
+  }
+}
+
 # main
+
+my $titleRegexStr = '^#\s+(.*)';
 
 while(<>) {
   # printf STDOUT "$ARGV Got: $_" if $gD;
@@ -159,22 +225,25 @@ while(<>) {
   if ($file ne $ARGV) {
     $file = $ARGV;
     # printf STDOUT "> $file\n"; # if $gD;
+    $seenFirstNonBlankLineBeforeTitle = 0;
     $frontMatterFromFile = '';
     $title = '';
-    if (/^<!---? Hugo/) {
-        while(<>) {
-          last if /^-?-->/;
-          $frontMatterFromFile .= $_;
-        }
+    $beforeTitle = '';
+    $linkTitle = '';
+    if (/^<!--- Hugo/) {
+        gatherFrontMatter();
         next;
     }
   }
-  if(! $title) {
-    ($title) = /^#\s+(.*)/;
-    $linkTitle = '';
-    printTitleAndFrontMatter() if $title;
-    next;
-  }
 
-  print;
+  if ($title) {
+    print;
+  } elsif (/^\s*$/ && !$seenFirstNonBlankLineBeforeTitle) {
+    next; # Drop blank lines until we see a title
+  } elsif (($title) = /$titleRegexStr/) {
+    printTitleAndFrontMatter();
+  } else {
+    $seenFirstNonBlankLineBeforeTitle = 1;
+    $beforeTitle .= $_;
+  }
 }

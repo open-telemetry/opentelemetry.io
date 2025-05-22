@@ -8,7 +8,7 @@ sig: OpenTelemetry Specification
 cSpell:ignore: bookinfo Grassi istioctl Joao productpage
 ---
 
-In the dynamic world of cloud-native and distributed applications, managing
+In the dynamic world of cloud native and distributed applications, managing
 microservices effectively is critical. [Kubernetes](https://kubernetes.io/) has
 become the de facto standard for container orchestration, enabling seamless
 deployment, scaling, and management of containerized applications.

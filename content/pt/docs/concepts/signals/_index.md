@@ -3,10 +3,11 @@ title: Sinais
 description:
   Aprenda sobre as categorias de telemetria suportadas pelo OpenTelemetry
 weight: 11
-default_lang_commit: 08e13eb62f2869300301670675969be705db59ae
+aliases: [data-sources, otel-concepts]
+default_lang_commit: c370886c9926e6cab3738ababbf6ff5692899bbd
 ---
 
-O propósito do OpenTelemetry é coletar, processar e exportar **[sinais][]**.
+O propósito do OpenTelemetry é coletar, processar e exportar [sinais][signals].
 Sinais são dados emitidos que descrevem a atividade subjacente do sistema
 operacional e das aplicações que estão sendo executadas em uma plataforma. Um
 sinal pode ser algo que você deseja medir em um momento específico, como a
@@ -15,11 +16,22 @@ sistema distribuído e que você gostaria de rastrear. Você pode agrupar
 diferentes sinais para observar o funcionamento interno de uma mesma tecnologia
 sob diferentes ângulos.
 
-O OpenTelemetry atualmente suporta [rastros](/docs/concepts/signals/traces),
-[métricas](/docs/concepts/signals/metrics), [logs](/docs/concepts/signals/logs)
-e [bagagem](/docs/concepts/signals/baggage). Eventos são um tipo específico de
-log, e o
-[perfilamento está sendo trabalhado](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/0212-profiling-vision.md)
-pelo Grupo de Trabalho de Perfilamento _(Profiling Working Group)_.
+O OpenTelemetry atualmente suporta:
 
-[sinais]: /docs/specs/otel/glossary/#signals
+- [Rastros](traces)
+- [Métricas](metrics)
+- [Logs](logs)
+- [Bagagem](baggage)
+
+Também em desenvolvimento ou na fase de [proposta][proposal]:
+
+- [Eventos][Events], um tipo específico de [log](logs)
+- [Perfilamento][Profiles] está sendo trabalhado pelo Grupo de Trabalho de
+  Perfilamento _(Profiling Working Group)_.
+
+[Events]: /docs/specs/otel/logs/data-model/#events
+[Profiles]:
+  https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/0212-profiling-vision.md
+[proposal]:
+  https://github.com/open-telemetry/opentelemetry-specification/tree/main/oteps/#readme
+[signals]: /docs/specs/otel/glossary/#signals

@@ -2,7 +2,7 @@
 title: Docker deployment
 linkTitle: Docker
 aliases: [docker_deployment]
-cSpell:ignore: otelcollector otlphttp spanmetrics tracetest tracetesting
+cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
 ---
 
 <!-- markdownlint-disable code-block-style ol-prefix -->
@@ -10,8 +10,7 @@ cSpell:ignore: otelcollector otlphttp spanmetrics tracetest tracetesting
 ## Prerequisites
 
 - Docker
-- [Docker Compose](https://docs.docker.com/compose/install/#install-compose)
-  v2.0.0+
+- [Docker Compose](https://docs.docker.com/compose/install/) v2.0.0+
 - Make (optional)
 - 6 GB of RAM for the application
 
@@ -109,7 +108,7 @@ configuration from two files:
 - `otelcol-config-extras.yml`
 
 To add your backend, open the file
-[src/otelcollector/otelcol-config-extras.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otelcollector/otelcol-config-extras.yml)
+[src/otel-collector/otelcol-config-extras.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config-extras.yml)
 with an editor.
 
 - Start by adding a new exporter. For example, if your backend supports OTLP
@@ -145,4 +144,4 @@ After updating the `otelcol-config-extras.yml`, start the demo by running
 `make start`. After a while, you should see the traces flowing into your backend
 as well.
 
-[^1]: {{% _param notes.docker-compose-v2 %}}
+[^1]: {{% param notes.docker-compose-v2 %}}

@@ -1,9 +1,8 @@
 ---
 title: コレクターのインストール
-# prettier-ignore
-cSpell:ignore: darwin dpkg GOARCH journalctl kubectl otelcorecol pprof tlsv zpages
 weight: 2
-default_lang_commit: a570a00
+default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28
+cSpell:ignore: darwin dpkg journalctl kubectl otelcorecol pprof tlsv zpages
 ---
 
 OpenTelemetryコレクターはさまざまなオペレーティングシステムやアーキテクチャにデプロイできます。
@@ -81,7 +80,7 @@ kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-
 また、[OpenTelemetry Operator][] を使って、OpenTelemetryコレクターインスタンスのプロビジョニングとメンテナンスを行えます。
 この機能には、自動アップグレード処理、OpenTelemetry コンフィギュレーションに基づいた `Service` コンフィギュレーション、デプロイメントへの自動サイドカーインジェクションなどがあります。
 
-Kubernetesでコレクターを使用する方法については、[Kubernetesで始める](/docs/kubernetes/getting-started/)を参照してください。
+Kubernetesでコレクターを使用する方法については、[Kubernetesで始める](/docs/platforms/kubernetes/getting-started/)を参照してください。
 
 ## Nomad
 
@@ -94,39 +93,6 @@ Kubernetesでコレクターを使用する方法については、[Kubernetes�
 
 > Note: サービスの自動設定には `systemd` が必要です。
 
-### APKのインストール
-
-Alpine系のシステムを使い始めるには、以下のコマンドを実行します。
-
-{{< tabpane text=true >}} {{% tab AMD64 %}}
-
-```sh
-apk update
-apk add wget shadow
-wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_amd64.apk
-apk add --allow-untrusted otelcol_{{% param vers %}}_linux_amd64.apk
-```
-
-{{% /tab %}} {{% tab ARM64 %}}
-
-```sh
-apk update
-apk add wget shadow
-wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_arm64.apk
-apk add --allow-untrusted otelcol_{{% param vers %}}_linux_arm64.apk
-```
-
-{{% /tab %}} {{% tab i386 %}}
-
-```sh
-apk update
-apk add wget shadow
-wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_386.apk
-apk add --allow-untrusted otelcol_{{% param vers %}}_linux_386.apk
-```
-
-{{% /tab %}} {{< /tabpane >}}
-
 ### DEBのインストール
 
 Debian系のシステムで使い始めるには、以下のコマンドを実行します。
@@ -135,7 +101,7 @@ Debian系のシステムで使い始めるには、以下のコマンドを実�
 
 ```sh
 sudo apt-get update
-sudo apt-get -y install wget systemctl
+sudo apt-get -y install wget
 wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_amd64.deb
 sudo dpkg -i otelcol_{{% param vers %}}_linux_amd64.deb
 ```
@@ -144,7 +110,7 @@ sudo dpkg -i otelcol_{{% param vers %}}_linux_amd64.deb
 
 ```sh
 sudo apt-get update
-sudo apt-get -y install wget systemctl
+sudo apt-get -y install wget
 wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_arm64.deb
 sudo dpkg -i otelcol_{{% param vers %}}_linux_arm64.deb
 ```
@@ -290,7 +256,7 @@ make otelcorecol
 
 [data collection]: /docs/concepts/components/#collector
 [deployment methods]: ../deployment/
-[opentelemetry helm charts]: /docs/kubernetes/helm/
-[opentelemetry operator]: /docs/kubernetes/operator/
+[opentelemetry helm charts]: /docs/platforms/kubernetes/helm/
+[opentelemetry operator]: /docs/platforms/kubernetes/operator/
 [getting started with opentelemetry on hashicorp nomad]: https://github.com/hashicorp/nomad-open-telemetry-getting-started
 [releases]: https://github.com/open-telemetry/opentelemetry-collector-releases/releases

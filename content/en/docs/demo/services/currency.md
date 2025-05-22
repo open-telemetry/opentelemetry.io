@@ -2,7 +2,7 @@
 title: Currency Service
 linkTitle: Currency
 aliases: [currencyservice]
-cSpell:ignore: chrono decltype labelkv millis noexcept nostd
+cSpell:ignore: decltype labelkv noexcept nostd
 ---
 
 This service provides functionality to convert amounts between different
@@ -50,13 +50,13 @@ function.
 ```cpp
 std::string span_name = "CurrencyService/Convert";
 auto span =
-    get_tracer("currencyservice")->StartSpan(span_name,
+    get_tracer("currency")->StartSpan(span_name,
                                   {{SemanticConventions::kRpcSystem, "grpc"},
                                    {SemanticConventions::kRpcService, "oteldemo.CurrencyService"},
                                    {SemanticConventions::kRpcMethod, "Convert"},
                                    {SemanticConventions::kRpcGrpcStatusCode, 0}},
                                   options);
-auto scope = get_tracer("currencyservice")->WithActiveSpan(span);
+auto scope = get_tracer("currency")->WithActiveSpan(span);
 ```
 
 ### Adding attributes to spans

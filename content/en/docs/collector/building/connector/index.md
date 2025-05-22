@@ -43,9 +43,9 @@ data, it is necessary to convert the trace data from the processor in the traces
 pipeline and send it to the metrics pipeline. Historically, some processors
 transmitted data by making use of a workaround that follows a bad practice where
 a processor directly exports data after processing. The connector component
-solves the need for this work-around and the processors that used the work
-around have been deprecated. On the same line, above mentioned processors are
-also now deprecated in recent releases and are replaced by the connectors.
+solves the need for this workaround and the processors that used the workaround
+have been deprecated. On the same line, above mentioned processors are also now
+deprecated in recent releases and are replaced by the connectors.
 
 Additional details about the connector's full capabilities can be found at the
 following links:
@@ -497,7 +497,6 @@ your own OpenTelemetry Collector binary. You can add or remove components
         name: otelcol-dev-bin
         description: Basic OpenTelemetry collector distribution for Developers
         output_path: ./otelcol-dev
-        otelcol_version: 0.86.0
 
 
     exporters:

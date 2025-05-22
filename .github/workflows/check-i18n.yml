@@ -13,7 +13,12 @@ jobs:
         with:
           fetch-depth: 0 # all
       - name: Any files missing hash key?
-        run: scripts/check-i18n.sh -n -x -v
+        run: |
+          scripts/check-i18n.sh -n -x -v
+          .github/workflows/scripts/check-i18n-helper.sh
       - name: Any files with invalid hash keys?
         run: scripts/check-i18n.sh -v
-      - run: .github/workflows/scripts/check-i18n-helper.sh
+      - name: Drifted status needs updating?
+        run: |
+          scripts/check-i18n.sh -D
+        # npm run _diff:fail

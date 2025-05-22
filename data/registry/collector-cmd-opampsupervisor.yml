@@ -1,0 +1,18 @@
+# cSpell:ignore opampsupervisor
+title: OpAMP Supervisor
+registryType: utilities
+language: collector
+tags:
+  - collector
+  - opamp
+license: Apache 2.0
+description: Collector Supervisor for OpAMP
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor
+createdAt: 2025-04-20
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/cmd/opampsupervisor
+  version: v0.126.0

@@ -5,12 +5,11 @@ aliases:
   - manual_instrumentation
 weight: 30
 description: Instrumentação manual para OpenTelemetry Go
-default_lang_commit: 1c6697de9c4d67fb72231354d5d9c6cdcfdfa64b
-# prettier-ignore
-cSpell:ignore: fatalf logr logrus otelslog otlplog otlploghttp sdktrace sighup updown
+default_lang_commit: dc20c29a4c79ad0424c0fcc3271216af7e035d9b
+cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup updown
 ---
 
-{{% docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro.md %}}
 
 ## Configuração {#setup}
 
@@ -52,7 +51,7 @@ func newExporter(ctx context.Context)  /* (someExporter.Exporter, error) */ {
 	// Seu Exporter de preferência: console, jaeger, zipkin, OTLP, etc.
 }
 
-func newTraceProvider(exp sdktrace.SpanExporter) *sdktrace.TracerProvider {
+func newTracerProvider(exp sdktrace.SpanExporter) *sdktrace.TracerProvider {
 	// Certifique-se de que os recursos padrão do SDK e o nome do serviço estão definidos.
 	r, err := resource.Merge(
 		resource.Default(),
@@ -81,7 +80,7 @@ func main() {
 	}
 
 	// Crie um novo TracerProvider com o Processor de Trechos e o Exporter criado.
-	tp := newTraceProvider(exp)
+	tp := newTracerProvider(exp)
 
 	// Lidamos com a finalização corretamente, evitando leaks.
 	defer func() { _ = tp.Shutdown(ctx) }()
@@ -230,7 +229,7 @@ span.AddEvent("Espera cancelada devido a um sinal externo", trace.WithAttributes
 
 ### Definir status do trecho {#set-span-status}
 
-{{% pt/docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble.md" %}}
 
 ```go
 import (
@@ -1127,7 +1126,7 @@ mais backends de telemetria.
 [instrumentation library]: ../libraries/
 [opentelemetry collector]:
   https://github.com/open-telemetry/opentelemetry-collector
-[logs bridge API]: /docs/specs/otel/logs/api
+[logs bridge API]: /docs/specs/otel/logs/api/
 [log data model]: /docs/specs/otel/logs/data-model
 [`go.opentelemetry.io/otel`]: https://pkg.go.dev/go.opentelemetry.io/otel
 [`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`]:
