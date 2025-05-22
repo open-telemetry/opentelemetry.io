@@ -43,7 +43,7 @@ flowchart LR
     subgraph first[Como contribuir]
     direction TB
        T[ ] -.-
-       B[Fazer cópia (_fork_) do repositório no GitHub] --- C[Escrever documentação em markdown<br>e construir o site com Hugo]
+       B[Fazer cópia _fork_ do repositório no GitHub] --- C[Escrever documentação em markdown<br>e construir o site com Hugo]
        C --- D[Enviar o código-fonte para o fork]
        D --- E[Abrir um pull request]
        E --- F[Assinar o CNCF CLA]
@@ -57,7 +57,7 @@ class S,T spacewhite
 class first,second white
 ```
 
-_Figure 1. Contributing new content._
+_Figura 1. Contribuindo com novo conteúdo._
 
 ## Usando o GitHub {#changes-using-github}
 
