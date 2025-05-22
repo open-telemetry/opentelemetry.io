@@ -91,8 +91,8 @@ to add the following entries to `/etc/hosts` on your host machine:
 
 #### 2- Provision a Local Hashi Environment with HashiQube
 
-Start HashiQube by following the detailed instructions
-[here](https://github.com/avillela/hashiqube#quickstart).
+Start HashiQube by following the detailed
+[Quickstart instructions](https://github.com/avillela/hashiqube#quickstart).
 
 > **NOTE:** Be sure to check out the
 > [Gotchas](https://github.com/avillela/hashiqube#gotchas) section, if you get
