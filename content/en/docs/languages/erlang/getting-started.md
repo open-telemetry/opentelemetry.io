@@ -135,11 +135,11 @@ If everything went well, you should be able to visit
 lines that look like this in your terminal.
 
 (Don't worry if the format looks a little unfamiliar. Spans are recorded in the
-Erlang `record` data structure. You can find more information about records
-[here](https://www.erlang.org/doc/reference_manual/records.html), and
-[this](https://github.com/open-telemetry/opentelemetry-erlang/blob/main/apps/opentelemetry/include/otel_span.hrl#L19)
-file describes the `span` record structure, and explains what the different
-fields are.)
+[Erlang `record` data structure](https://www.erlang.org/doc/reference_manual/records.html),
+and
+[`otel_span.hrl`](https://github.com/open-telemetry/opentelemetry-erlang/blob/main/apps/opentelemetry/include/otel_span.hrl#L19)
+describes the `span` record structure, and explains what the different fields
+are.)
 
 ```shell
 *SPANS FOR DEBUG*
