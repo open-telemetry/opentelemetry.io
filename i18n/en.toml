@@ -1,3 +1,8 @@
+# Docsy overrides
+
+[ui_search]
+other = "Ask AI or search…"
+
 # Community
 [community_introduce]
 other = "{{ .Site.Title }} is an open source project that anyone in the community can use, improve, and enjoy. We'd love you to join us!"
@@ -10,3 +15,15 @@ see [Contributing](/docs/contributing/). Other useful links:
 other = "For our documentation style guide and more, see"
 [community_guideline]
 other = "Contributing"
+
+[ui_search_ai_modal_title]
+other = "OpenTelemetry's AI Assistant"
+[ui_search_ai_modal_disclaimer]
+other = """
+This **experimental feature** uses AI to answer questions based on the site's documentation,
+OpenTelemetry GitHub, Stack Overflow, and other resources.
+The AI may not always provide accurate or relevant information.
+Share your thoughts by providing [feedback](https://github.com/open-telemetry/opentelemetry.io/discussions/6802).
+"""
+[ui_search_ai_popover_content]
+other = "<a id='ask-ai-trigger' href='#'>Ask AI</a> (&#x2318;-K)"

@@ -1,4 +1,5 @@
 {{ $registry := .Site.Data.registry -}}
+{{ $registryUrl := .Page.RelPermalink -}}
 
 {{ $languageNames := newScratch -}}
 {{ $languageNames.Set "cpp" "C++" -}}
@@ -8,14 +9,13 @@
 
 {{ $officialLanguages := slice "collector" "cpp" "erlang" "elixir" "dotnet" "go" "java" "js" "php" "python" "ruby" "rust" "swift" -}}
 
-
 {{ $langs := slice -}}
 {{ range $registry -}}
   {{ $language := .language -}}
   {{- $val := (dict
     "name" .language
     "isOfficial" (in $officialLanguages .language)
-    ) 
+    )
   -}}
   {{ $langs = $langs | append $val -}}
   {{ if ne $language (lower $language) -}}
@@ -66,14 +66,8 @@
 {{ end -}}
 {{ $uniqueFlags := $allFlags | uniq | sort }}
 
-<div class="alert alert-info">
-The OpenTelemetry Registry allows you to search for instrumentation libraries,
-collector components, utilities, and other useful projects in the OpenTelemetry
-ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry/adding/">add your project to the OpenTelemetry Registry</a>
-</div>
-
 <div class="pb-4">
-  <form action="/ecosystem/registry" id="searchForm">
+  <form action="{{ $registryUrl }}" id="searchForm">
     <div class="input-group">
       <span class="input-group-text" id="basic-addon1" title="{{ len $registry }} entries">Search {{ len $registry }} entries</span>
       <input class="form-control w-auto" list="search-suggestions" id="input-s" type="text" name="s" placeholder="Type to search…"
@@ -123,7 +117,7 @@ ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry
       </div>
 
       <!-- Flags Filter Dropdown -->
-    <button class="btn btn-outline-secondary dropdown-toggle" id="flagsDropdown" type="button" 
+    <button class="btn btn-outline-secondary dropdown-toggle" id="flagsDropdown" type="button"
     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Flags</button>
     <div class="dropdown-menu" id="flagsFilter">
     <a value="all" class="dropdown-item">Any Flag</a>
@@ -145,7 +139,12 @@ ecosystem. If you are a project maintainer, you can <a href="/ecosystem/registry
   <ul class="list-unstyled" id="default-body">
     {{ range $key, $value := $registry -}}
       {{ $value = merge $value (dict "_key" $key) -}}
-      {{ partial "ecosystem/registry/entry" (dict "value" $value "languageNames" $languageNames) }}
+      {{ partial "ecosystem/registry/entry"
+          (dict
+            "registryUrl" $registryUrl
+            "value" $value
+            "languageNames" $languageNames
+          ) -}}
     {{ end -}}
   </ul>
 </div>

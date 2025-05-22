@@ -89,7 +89,7 @@ the OTLP exporter.
 [Version 1.15.2](https://github.com/open-telemetry/opentelemetry-js/releases/tag/v1.15.1)
 fixes several bugs.
 
-#### [.NET](/docs/languages/net/)
+#### [.NET](/docs/languages/dotnet/)
 
 [Version 1.6.0-rc.1](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.6.0-rc.1)
 has been released, bringing small changes to metrics, export, and an

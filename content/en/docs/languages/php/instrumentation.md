@@ -8,7 +8,7 @@ cSpell:ignore: guzzlehttp myapp
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro.md %}}
 
 ## Example app preparation {#example-app}
 
@@ -186,7 +186,7 @@ $resource = ResourceInfoFactory::emptyResource()->merge(ResourceInfo::create(Att
     ResourceAttributes::SERVICE_NAMESPACE => 'demo',
     ResourceAttributes::SERVICE_NAME => 'test-application',
     ResourceAttributes::SERVICE_VERSION => '0.1',
-    ResourceAttributes::DEPLOYMENT_ENVIRONMENT => 'development',
+    ResourceAttributes::DEPLOYMENT_ENVIRONMENT_NAME => 'development',
 ])));
 $spanExporter = new SpanExporter(
     (new StreamTransportFactory())->create('php://stdout', 'application/json')
@@ -262,7 +262,7 @@ encouraged, attribute `service.version`, which holds the version of the service
 API or implementation.
 
 Alternative methods exist for setting up resource attributes. For more
-information, see [Resources](/docs/languages/js/resources/).
+information, see [Resources](/docs/languages/php/resources/).
 
 #### Global Providers
 
@@ -637,7 +637,7 @@ For more details how to read context from remote processes, see
 
 ### Set span status and record exceptions
 
-{{% docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble.md" %}}
 
 It can be a good idea to record exceptions when they happen. It's recommended to
 do this in conjunction with

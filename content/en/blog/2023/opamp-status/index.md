@@ -105,8 +105,8 @@ with a backlog of issues created to guide further development.
 ## OpAMP in Kubernetes
 
 In OTel we have dedicated support for Kubernetes as a compute platform via the
-[OpenTelemetry Operator for Kubernetes](/docs/kubernetes/operator/). In this
-context, we're also working on OpAMP support in Kubernetes which will be
+[OpenTelemetry Operator for Kubernetes](/docs/platforms/kubernetes/operator/).
+In this context, we're also working on OpAMP support in Kubernetes which will be
 available through a
 [bridge component](https://docs.google.com/document/d/1M8VLNe_sv1MIfu5bUR5OV_vrMBnAI7IJN-7-IAr37JY/)
 to be deployed by the OpenTelemetry Operator:

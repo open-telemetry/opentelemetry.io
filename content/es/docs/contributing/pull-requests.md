@@ -4,7 +4,8 @@ description:
   Aprende a agregar contenido nuevo utilizando la interfaz de GitHub o desde tu
   editor de código.
 weight: 2
-default_lang_commit: f724c15be360e5059fb89e696d9a5cc8d00496f6
+default_lang_commit: f724c15be360e5059fb89e696d9a5cc8d00496f6 # patched
+drifted_from_default: true
 cSpell:ignore: aplícala solucionándolas vincúlalos
 ---
 
@@ -345,7 +346,7 @@ implementar una vista previa usando [Netlify](https://www.netlify.com/).
 También pueden fallar otras comprobaciones. Consulta la
 [lista de todas las comprobaciones de PR](/docs/contributing/pr-checks).
 
-### Soluciona problemas de contenido automáticamente {#fix-content-issues-automatically}
+### Soluciona problemas de contenido automáticamente {#fix-issues}
 
 Antes de enviar un cambio al repositorio, ejecuta el siguiente comando y (i)
 aborda los problemas informados, (ii) confirma los archivos modificados por el

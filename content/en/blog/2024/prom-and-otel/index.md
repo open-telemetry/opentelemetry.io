@@ -220,7 +220,7 @@ Let’s dig into each of these.
 The Target Allocator’s first job is to discover targets to scrape and OTel
 Collectors to allocate targets to. It does so as follows:
 
-1. The Target Allocator finds all of the the metrics targets to scrape
+1. The Target Allocator finds all of the metrics targets to scrape
 2. The Target Allocator finds all of the available Collectors
 3. The Target Allocator determines which Collectors scrape which metrics
 4. The Collectors query the Target Allocator to find out what metrics to scrape
@@ -271,9 +271,9 @@ flowchart RL
   oc1 --> ta
   oc2 --> ta
   oc3 --> ta
-  sm ~~~|"1. Discover Prometheus Operator CRs"| sm
-  ta ~~~|"2. Add job to TA scrape configuration"| ta
-  oc3 ~~~|"3. Add job to OTel Collector scrape configuration"| oc3
+  sm ~~~|1\. Discover Prometheus Operator CRs| sm
+  ta ~~~|2\. Add job to TA scrape configuration| ta
+  oc3 ~~~|3\. Add job to OTel Collector scrape configuration| oc3
 ```
 
 Even though Prometheus is not required to be installed in your Kubernetes
@@ -607,7 +607,7 @@ There are a few more Collector components you can implement to monitor
 Kubernetes, including Kubernetes-specific ones as well as general-use
 processors, such as the batch, memory limiter, and resource processors. To learn
 more, see
-[Important Components for Kubernetes](/docs/kubernetes/collector/components/).
+[Important Components for Kubernetes](/docs/platforms/kubernetes/collector/components/).
 
 After you’ve configured the components in your Collector config file, you need
 to enable them within the [pipelines](/docs/collector/configuration/#pipelines)
@@ -678,6 +678,6 @@ Whether or not you choose to implement these solutions in your organization,
 it’s nice to know that there are additional options out there to lead you to
 observability greatness with OTel and Prometheus.
 
-_A version of this article was
-[originally posted](https://newrelic.com/blog/how-to-relic/prometheus-and-opentelemetry-better-together)
-on the New Relic blog._
+_A version of this article was [originally posted][] to the New Relic blog._
+
+[originally posted]: <{{% param canonical_url %}}>

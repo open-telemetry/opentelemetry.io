@@ -10,7 +10,7 @@ description: Instrumentation for OpenTelemetry Ruby
 cSpell:ignore: SIGHUP
 ---
 
-{{% docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro.md %}}
 
 ## Setup
 
@@ -269,7 +269,7 @@ link = OpenTelemetry::Trace::Link.new(span_to_link_from.context, attributes: { "
 
 ### Set span status
 
-{{% docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble.md" %}}
 
 ```ruby
 require "opentelemetry/sdk"

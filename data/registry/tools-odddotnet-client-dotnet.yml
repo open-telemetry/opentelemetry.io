@@ -26,4 +26,4 @@ createdAt: '2024-11-08'
 package:
   name: OddDotNet.Client
   registry: nuget
-  version: 0.4.0
+  version: 0.4.1

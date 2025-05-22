@@ -3,6 +3,7 @@ title: ディストリビューション
 description: フォークと混同されがちですが、ディストリビューションは、OpenTelemetryコンポーネントのカスタマイズバージョンです。
 weight: 190
 default_lang_commit: 21d6bf0
+drifted_from_default: true
 ---
 
 OpenTelemetryプロジェクトは、複数の[シグナル](../signals)をサポートする複数の[コンポーネント](../components)から構成されています。

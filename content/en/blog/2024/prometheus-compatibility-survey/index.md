@@ -25,7 +25,7 @@ and
 It has been used to implement Prometheus
 [(pull) exporters for OpenTelemetry SDKs](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/prometheus),
 [OTLP export from Prometheus libraries](https://prometheus.github.io/client_java/otel/otlp/),
-[OTLP ingestion for the Prometheus server](https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver),
+[OTLP ingestion for the Prometheus server](https://prometheus.io/docs/prometheus/2.55/feature_flags/#otlp-receiver),
 and the OpenTelemetry Collector's
 [Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver),
 [Prometheus Remote Write exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusremotewriteexporter),
@@ -88,9 +88,9 @@ of their opinions on units or delimiters.
 
 ## Dots and Underscores
 
-OpenTelemetry [specifies](/docs/specs/semconv/general/attribute-naming/) that
-conventions should use dots as the namespace delimiter, and underscores as the
-delimiter between "multi-word-dot-delimited components" (for example,
+OpenTelemetry [specifies](/docs/specs/semconv/general/naming/) that conventions
+should use dots as the namespace delimiter, and underscores as the delimiter
+between "multi-word-dot-delimited components" (for example,
 `http.response.status_code`). On the other hand, Prometheus
 [uses underscores](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels)
 as its delimiter.

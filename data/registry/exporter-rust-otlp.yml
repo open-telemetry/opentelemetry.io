@@ -17,4 +17,4 @@ createdAt: 2020-08-28
 package:
   registry: crates
   name: opentelemetry-otlp
-  version: 0.14.0
+  version: 0.28.0

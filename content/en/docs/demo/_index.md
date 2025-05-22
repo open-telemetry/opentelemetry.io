@@ -1,10 +1,9 @@
 ---
-title: OpenTelemetry Demo Documentation
+title: OpenTelemetry Demo Docs
 linkTitle: Demo
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
-cSpell:ignore: OLJCESPC
 ---
 
 Welcome to the [OpenTelemetry Demo](/ecosystem/demo/) documentation, which
@@ -54,21 +53,15 @@ found here:
 - [Quote Service](services/quote/)
 - [Recommendation Service](services/recommendation/)
 - [Shipping Service](services/shipping/)
-- [Image Provider Service](services/imageprovider/)
+- [Image Provider Service](services/image-provider/)
 - [React Native App](services/react-native-app/)
 
-## Scenarios
+## Feature Flag Scenarios
 
-How can you solve problems with OpenTelemetry? These scenarios walk you through
-some pre-configured problems and show you how to interpret OpenTelemetry data to
+How can you solve problems with OpenTelemetry? These
+[feature flag enabled scenarios](feature-flags/) walk you through some
+pre-configured problems and show you how to interpret OpenTelemetry data to
 solve them.
-
-We'll be adding more scenarios over time.
-
-- Generate a [Product Catalog error](feature-flags) for `GetProduct` requests
-  with product ID: `OLJCESPC7Z` using the Feature Flag service
-- Discover a memory leak and diagnose it using metrics and traces.
-  [Read more](scenarios/recommendation-cache/)
 
 ## Reference
 

@@ -72,7 +72,7 @@ includes updates to OTLP and log support.
 includes metric bug fixes for histograms and exponential histograms. In
 addition, OTLP support has been updated.
 
-#### [.NET](/docs/languages/net/)
+#### [.NET](/docs/languages/dotnet/)
 
 [Version 1.6.0-alpha.1](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.6.0-alpha.1)
 has been released. 1.6 re-introduces support for exemplars, as well as

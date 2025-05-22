@@ -5,10 +5,10 @@ description: >-
   alt="Python"> Uma implementação específica de linguagem do OpenTelemetry em
   Python.
 weight: 22
-default_lang_commit: 3fd0bb513e5d3fa6f178a73584322bcc469f15e0
+default_lang_commit: 3fd0bb513e5d3fa6f178a73584322bcc469f15e0 # patched
 ---
 
-{{% pt/docs/languages/index-intro python /%}}
+{{% docs/languages/index-intro python /%}}
 
 ## Suporte de Versão {#status-and-releases}
 
@@ -45,10 +45,10 @@ diretórios.
 ## Extensões {#extensions}
 
 Para encontrar projetos relacionados como exporters, bibliotecas de
-instrumentação, implementações de rastros, etc., visite o
+instrumentação, implementações de rastreadores, etc., visite o
 [Registro](/ecosystem/registry/?s=python).
 
-### Instalando Pacotes de Ponta (#installing-cutting-edge-packages)
+### Instalando Pacotes de Ponta {#installing-cutting-edge-packages}
 
 Há algumas funcionalidades que ainda não foram lançadas no PyPI. Nessa situação,
 você pode querer instalar os pacotes diretamente do repositório. Isso pode ser

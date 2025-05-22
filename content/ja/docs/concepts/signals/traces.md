@@ -1,9 +1,9 @@
 ---
 title: トレース
 weight: 1
-cSpell:ignore: Guten
 description: アプリケーションを通過するリクエストの経路
-default_lang_commit: 9b5e318
+default_lang_commit: b7e40731390448f604897ded62cff8abd3505430
+cSpell:ignore: Guten
 ---
 
 **トレース** は、リクエストがアプリケーションに投げられたときに何が起こるかの全体像を教えてくれます。
@@ -23,8 +23,8 @@ default_lang_commit: 9b5e318
 {
   "name": "hello",
   "context": {
-    "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-    "span_id": "0x051581bf3cb55c13"
+    "trace_id": "5b8aa5a2d2c872e8321cf37308d69df2",
+    "span_id": "051581bf3cb55c13"
   },
   "parent_id": null,
   "start_time": "2022-04-29T18:52:58.114201Z",
@@ -54,10 +54,10 @@ default_lang_commit: 9b5e318
 {
   "name": "hello-greetings",
   "context": {
-    "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-    "span_id": "0x5fb397be34d26b51"
+    "trace_id": "5b8aa5a2d2c872e8321cf37308d69df2",
+    "span_id": "5fb397be34d26b51"
   },
-  "parent_id": "0x051581bf3cb55c13",
+  "parent_id": "051581bf3cb55c13",
   "start_time": "2022-04-29T18:52:58.114304Z",
   "end_time": "2022-04-29T22:52:58.114561Z",
   "attributes": {
@@ -92,10 +92,10 @@ default_lang_commit: 9b5e318
 {
   "name": "hello-salutations",
   "context": {
-    "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-    "span_id": "0x93564f51e1abe1c2"
+    "trace_id": "5b8aa5a2d2c872e8321cf37308d69df2",
+    "span_id": "93564f51e1abe1c2"
   },
-  "parent_id": "0x051581bf3cb55c13",
+  "parent_id": "051581bf3cb55c13",
   "start_time": "2022-04-29T18:52:58.114492Z",
   "end_time": "2022-04-29T18:52:58.114631Z",
   "attributes": {
@@ -148,7 +148,7 @@ OpenTelemetryでのトレースがどのように機能するかを理解する�
 
 コンテキスト伝搬（プロパゲーション）は、分散トレースを可能にする中心となる概念です。
 コンテキスト伝搬を使用すると、スパンがどこで生成されたかに関係なく、スパンを相互に関連付け、トレースとして組み立てられます。
-このトピックについては、[コンテキスト伝搬](/docs/concepts/context-propagation)の概要を参照してください。
+このトピックについては、[コンテキスト伝搬](../../context-propagation)の概要を参照してください。
 
 ## スパン {#spans}
 
@@ -216,7 +216,7 @@ OpenTelemetryでは、以下の情報を含みます。
 - トレースフラグ。これはトレースに関する情報を含むバイナリエンコーディングです。
 - ベンダ固有のトレース情報を保持するキーと値のペアのリスト
 
-スパンコンテキストは、[分散コンテキスト](#context-propagation)や[バゲッジ](/docs/concepts/signals/baggage)と共にシリアライズされ、伝搬されるスパンの一部です。
+スパンコンテキストは、[分散コンテキスト](#context-propagation)や[バゲッジ](../baggage)と共にシリアライズされ、伝搬されるスパンの一部です。
 
 スパンコンテキストにはトレースIDが含まれているため、[スパンリンク](#span-links)を作成する際に使用されます。
 
@@ -276,6 +276,8 @@ SDKでのサンプリングで属性を利用できるようにするには、�
 これで、これらのスパンは互いに因果関係があることになります。
 
 リンクは必須ではありませんが、トレーススパン同士を関連付ける良い方法として役立ちます。
+
+スパンリンクの詳細は、[リンク](/docs/specs/otel/trace/api/#link) を参照してください。
 
 ### スパンステータス {#span-status}
 

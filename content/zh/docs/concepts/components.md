@@ -4,6 +4,7 @@ description: 构成 OpenTelemetry 的主要组件
 aliases: [data-collection]
 weight: 20
 default_lang_commit: 1ca30b4d
+drifted_from_default: true
 ---
 
 OpenTelemetry 项目目前由以下几个主要部分构成：
@@ -100,7 +101,7 @@ OpenTelemetry 的特定语言实现提供了从环境变量 `OTEL_RESOURCE_ATTRI
 OpenTelemetry Operator 是 Kubernetes Operator 的一种实现。
 Operator 管理 OpenTelemetry Collector 以及使用 OpenTelemetry 对工作负载进行自动插桩。
 
-更多信息，请参见 [K8s Operator](/docs/kubernetes/operator/)。
+更多信息，请参见 [K8s Operator](/docs/platforms/kubernetes/operator/)。
 
 ## 函数即服务资产 {#function-as-a-service-assets}
 
@@ -108,4 +109,4 @@ OpenTelemetry 支持多种由不同云服务商提供的函数即服务的监控
 OpenTelemetry 社区目前提供预构建的 Lambda 层，能够自动对你的应用进行插桩，
 另外在手动或自动对应用进行插桩时可以使用的独立 Collector Lambda 层选项。
 
-更多信息，请参见[函数即服务](/docs/faas/)。
+更多信息，请参见[函数即服务](/docs/platforms/faas/)。

@@ -4,16 +4,18 @@
 version: '0.2'
 language: en-US
 import:
+  - '@cspell/dict-bn/cspell-ext.json'
   - '@cspell/dict-es-es/cspell-ext.json'
   - '@cspell/dict-fr-fr/cspell-ext.json'
   - '@cspell/dict-pt-br/cspell-ext.json'
 caseSensitive: true
 ignorePaths:
   - '*.svg'
+  - content/{ja,zh}
   - data/community/members.yaml
-  - vendors.yaml
-  - content/ja
-  - content/zh
+  - data/ecosystem/vendors.yaml
+  - public/_redirects
+  - static/refcache.json
 patterns:
   - name: CodeBlock
     pattern: |
@@ -21,7 +23,7 @@ patterns:
           ^(\s*[~`]{3,})   # code-block start
           .*               # all languages and options, e.g. shell {hl_lines=[12]}
           [\s\S]*?         # content
-          \1               # code-block end
+          \1               # code-block end - cSpell:disable-next-line
       /igmx
 languageSettings:
   - languageId: markdown
@@ -30,6 +32,8 @@ languageSettings:
 dictionaryDefinitions:
   - name: en-words
     path: .cspell/en-words.txt
+  - name: bn-words
+    path: .cspell/bn-words.txt
   - name: es-palabras
     path: .cspell/es-palabras.txt
   - name: fr-mots
@@ -38,10 +42,12 @@ dictionaryDefinitions:
     path: .cspell/pt-palavras.txt
 dictionaries:
   # Natural languages
+  - bn
   - es-es
   - pt-br
   - fr-fr
   # Local word lists
+  - bn-words
   - en-words
   - es-palabras
   - fr-mots
@@ -57,3 +63,6 @@ dictionaries:
 words: # Valid words across all locales
   - Docsy
   - htmltest
+  - jsonify
+  - opentelemetrybot
+  - warnf

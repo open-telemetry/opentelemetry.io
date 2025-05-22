@@ -18,9 +18,9 @@
 
 
 {{ if and
-    (strings.HasPrefix $.PageInner.RelPermalink "/docs/specs")
+    (hasPrefix $.PageInner.RelPermalink "/docs/specs")
     (not $u.IsAbs)
-    (not (strings.HasPrefix $url "#"))
+    (not (hasPrefix $url "#"))
 -}}
   {{ $path := replaceRE `\bREADME\.md\b` "_index.md" $u.Path -}}
   {{ $href := $url -}}
@@ -33,7 +33,7 @@
     {{ with $u.RawQuery -}}{{ $href = printf "%s?%s" $href . -}}{{ end -}}
     {{ with $u.Fragment -}}{{ $href = printf "%s#%s" $href . -}}{{ end -}}
   {{ else -}}
-    {{ warnf "File %s: cannot resolve spec link reference '%s'" .Page.File.Filename $url -}}
+    {{ warnf "File %s: cannot resolve spec link reference '%s' (%s)" .Page.File.Filename $url $path -}}
   {{ end -}}
   {{ $url = $href -}}
 {{ else if hasPrefix $url "/" -}}
@@ -61,15 +61,31 @@
       {{ end -}}
     {{ end -}}
   {{ end -}}
+{{ else if and $u.IsAbs (eq $u.Scheme "http")
+    (not ($u.Query.Has "disable_http_check"))
+    (not (findRE `\blocalhost\b|^127\.0` $u.Host))
+-}}
+  {{/*
+    TODO: drop the temporary allowance of various hosts such as publicsuffix.org once
+    https://github.com/open-telemetry/opentelemetry.io/issues/6409
+    is fully resolved.
+  */ -}}
+  {{ if findRE `^(publicsuffix.org|docs.oasis|unitsofmeasure|connect.build)` $u.Host -}}
+    {{/* Do nothing until semconv fixes land. */ -}}
+  {{ else -}}
+    {{ warnf "%s: use 'https' for external URL '%s', or add query parameter '?disable_http_check'" .Page.File.Path $url -}}
+  {{ end -}}
 {{ end -}}
 
 {{/* General link-render processing */ -}}
 
 {{ $isExternal := hasPrefix $url "http" -}}
 {{ if $isExternal -}}
-  {{ if findRE "^https://opentelemetry.io/\\w" $url -}}
-    {{ warnf "%s: use a local path, not an external URL, for the following reference to a site local page: %s"
-        .Page.File.Path $url -}}
+  {{ $matches := findRESubmatch `^https?://(?:www\.)?opentelemetry.io(/?.*)$` $url -}}
+  {{ $otelIoPath := index (index $matches 0) 1 | default "/" -}}
+  {{ if $matches -}}
+    {{ warnf "%s: use a local path '%s' instead of external URL '%s' for reference to site-local page"
+        .Page.File.Path $otelIoPath $url -}}
   {{ else if or
     (findRE "^https://github.com/open-telemetry/opentelemetry-specification/(blob|tree)/main/specification/\\w" $url)
     (findRE "^https://github.com/open-telemetry/opentelemetry-proto/(blob|tree)/main/docs/specification" $url)
@@ -92,7 +108,4 @@
   {{- .Text | safeHTML -}}
 </a>
 
-{{- /*
-  cSpell:ignore warnf
-  This comment ensures that all trailing whitespace is trimmed.
-*/ -}}
+{{- /* Trim trailing whitespace */ -}}

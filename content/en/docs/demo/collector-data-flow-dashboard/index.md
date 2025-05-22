@@ -110,4 +110,4 @@ example, you might observe more than one instance of otelcol running on the
 system during restarts or similar. This can be useful for understanding spikes
 on dataflow.
 
-![OpenTelemetry Collector Process Metrics](otelcol-dashbord-process-metrics.png)
+![OpenTelemetry Collector Process Metrics](otelcol-dashboard-process-metrics.png)

@@ -1,8 +1,7 @@
 ---
 title: Install the Collector
 weight: 2
-# prettier-ignore
-cSpell:ignore: darwin dpkg GOARCH journalctl kubectl otelcorecol pprof tlsv zpages
+cSpell:ignore: darwin dpkg journalctl kubectl otelcorecol pprof tlsv zpages
 ---
 
 You can deploy the OpenTelemetry Collector on a wide variety of operating
@@ -90,7 +89,7 @@ handling, `Service` configuration based on the OpenTelemetry configuration,
 automatic sidecar injection into deployments, and more.
 
 For guidance on how to use the Collector with Kubernetes, see
-[Kubernetes Getting Started](/docs/kubernetes/getting-started/).
+[Kubernetes Getting Started](/docs/platforms/kubernetes/getting-started/).
 
 ## Nomad
 
@@ -275,8 +274,8 @@ make otelcorecol
 
 [data collection]: /docs/concepts/components/#collector
 [deployment methods]: ../deployment/
-[opentelemetry helm charts]: /docs/kubernetes/helm/
-[opentelemetry operator]: /docs/kubernetes/operator/
+[opentelemetry helm charts]: /docs/platforms/kubernetes/helm/
+[opentelemetry operator]: /docs/platforms/kubernetes/operator/
 [getting started with opentelemetry on hashicorp nomad]:
   https://github.com/hashicorp/nomad-open-telemetry-getting-started
 [releases]:

@@ -20,4 +20,4 @@ isFirstParty: false
 package:
   registry: nuget
   name: OpenTelemetry.Instrumentation.EntityFrameworkCore
-  version: 1.10.0-beta.1
+  version: 1.12.0-beta.1

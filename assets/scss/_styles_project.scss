@@ -1,10 +1,11 @@
 /* Docsy-delta full file override: we're not tracking changes to the Docsy file of the same name. */
-// cSpell:ignore cncf docsy
+// cSpell:ignore cncf docsy otca
 
 @import 'registry';
 @import 'tabs';
 @import 'external_link';
 @import 'td/code-dark';
+@import '_page_no_left_sidebar';
 
 .td-home {
   .otel-logo {
@@ -321,5 +322,66 @@ details {
   > .click-to-copy,
   > code {
     overflow-y: auto;
+  }
+}
+
+// Google translate select / dropdown
+
+.goog-te-gadget {
+  // cSpell:ignore goog
+  padding-top: 1rem;
+  margin-bottom: -0.5rem;
+
+  @include media-breakpoint-up(md) {
+    padding-left: 0.6rem;
+  }
+}
+
+.ot-training {
+  @extend .td-no-left-sidebar;
+  $card-padding: 2rem;
+
+  .badge--otca {
+    margin-top: map-get($spacers, 4) !important;
+    img {
+      border-style: none !important;
+      display: initial;
+      max-width: 244px;
+    }
+    @include media-breakpoint-up(md) {
+      padding-left: $card-padding;
+    }
+
+    @include media-breakpoint-down(md) {
+      text-align: center;
+    }
+  }
+
+  .card--course-wrapper {
+    @include media-breakpoint-up(md) {
+      padding-left: $card-padding;
+    }
+  }
+
+  .card--course {
+    margin-top: map-get($spacers, 5) !important;
+    margin-bottom: map-get($spacers, 5) !important;
+
+    @include media-breakpoint-down(md) {
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    img {
+      padding-bottom: 2.6rem;
+    }
+  }
+}
+
+// TODO: upstream to Docsy
+
+.hk-no-external-icon {
+  a.external-link:after {
+    display: none !important;
   }
 }

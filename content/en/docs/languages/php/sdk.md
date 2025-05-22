@@ -98,14 +98,6 @@ $meter = OpenTelemetry\API\Globals::meterProvider()->getMeter('name', 'version',
 
 SDK autoloading happens as part of the composer autoloader.
 
-### Configuration from php.ini
-
-When providing configuration through `php.ini`, be sure to protect boolean
-values by double-quoting them, eg `"true"`, `"false"` so that PHP doesn't
-convert them to numbers.
-
-`php.ini`:
-
 ### Excluded URLs
 
 You can disable SDK autoloading if the request URL matches a regular expression.

@@ -1,7 +1,7 @@
 ---
 title: リソース
 weight: 70
-default_lang_commit: 825b6e2
+default_lang_commit: cd90ab77550fb2e92ca37cb3c753ec2d8bb7d8dc
 ---
 
 ## はじめに
@@ -12,7 +12,7 @@ default_lang_commit: 825b6e2
 
 ![トレースに関連するリソース属性の出力例を示すJaegerのスクリーンショット](screenshot-jaeger-resources.png)
 
-リソースは `TraceProvider` または `MetricProvider` の初期化時に追加されます。
+リソースは `TracerProvider` または `MetricProvider` の初期化時に追加されます。
 この関連付けは後で変更することはできません。
 リソースが追加されると、そのプロバイダーに紐づいた `Tracer` または `Meter` から生成されるすべてのスパンとメトリクスに、そのリソースが関連付けられます。
 
