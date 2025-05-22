@@ -138,23 +138,6 @@ Properties for disabling the [SDK](../sdk/#opentelemetrysdk):
 returns a minimally configured instance (for example,
 `OpenTelemetrySdk.builder().build()`).
 
-Properties for configuring [resource](../sdk/#resource):
-
-| System property                         | Description                                                                                                                             | Default                |
-| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| `otel.service.name`                     | Specify logical service name. Takes precedence over `service.name` defined with `otel.resource.attributes`.                             | `unknown_service:java` |
-| `otel.resource.attributes`              | Specify resource attributes in the following format: `key1=val1,key2=val2,key3=val3`.                                                   |                        |
-| `otel.resource.disabled.keys`           | Specify resource attribute keys to filter.                                                                                              |                        |
-| `otel.java.enabled.resource.providers`  | Comma-separated list of `ResourceProvider` fully qualified class names to enable. **[1]** If unset, all resource providers are enabled. |                        |
-| `otel.java.disabled.resource.providers` | Comma-separated list of `ResourceProvider` fully qualified class names to disable. **[1]**                                              |                        |
-
-**[1]**: For example, to disable the
-[OS resource provider](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/resources/library/src/main/java/io/opentelemetry/instrumentation/resources/OsResourceProvider.java),
-set
-`-Dotel.java.disabled.resource.providers=io.opentelemetry.instrumentation.resources.OsResourceProvider`.
-See [ResourceProvider](#resourceprovider) for resource provider artifact
-coordinates.
-
 Properties for attribute limits (see [span limits](../sdk/#spanlimits),
 [log limits](../sdk/#loglimits)):
 
@@ -180,6 +163,31 @@ Properties for [context propagation](../sdk/#textmappropagator):
 - `xray` configures `AwsXrayPropagator`.
 - `xray-lambda` configures `AwsXrayLambdaPropagator`.
 
+#### Properties: resource
+
+Properties for configuring [resource](../sdk/#resource):
+
+| System property                         | Description                                                                                                                             | Default                |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| `otel.service.name`                     | Specify logical service name. Takes precedence over `service.name` defined with `otel.resource.attributes`.                             | `unknown_service:java` |
+| `otel.resource.attributes`              | Specify resource attributes in the following format: `key1=val1,key2=val2,key3=val3`.                                                   |                        |
+| `otel.resource.disabled.keys`           | Specify resource attribute keys to filter.                                                                                              |                        |
+| `otel.java.enabled.resource.providers`  | Comma-separated list of `ResourceProvider` fully qualified class names to enable. **[1]** If unset, all resource providers are enabled. |                        |
+| `otel.java.disabled.resource.providers` | Comma-separated list of `ResourceProvider` fully qualified class names to disable. **[1]**                                              |                        |
+
+**[1]**: For example, to disable the
+[OS resource provider](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/resources/library/src/main/java/io/opentelemetry/instrumentation/resources/OsResourceProvider.java),
+set
+`-Dotel.java.disabled.resource.providers=io.opentelemetry.instrumentation.resources.OsResourceProvider`.
+
+**NOTE**: The `otel.service.name` and `otel.resource.attributes` system
+properties / environment variables are interpreted in the
+`io.opentelemetry.sdk.autoconfigure.EnvironmentResourceProvider` resource
+provider. If opting in to specify resource providers via
+`otel.java.enabled.resource-providers`, you'll likely want to include it to
+avoid surprises. See [ResourceProvider](#resourceprovider) for resource provider
+artifact coordinates.
+
 #### Properties: traces
 
 Properties for [batch span processor(s)](../sdk/#spanprocessor) paired with
@@ -188,8 +196,8 @@ exporters specified via `otel.traces.exporter`:
 | System property                  | Description                                                     | Default |
 | -------------------------------- | --------------------------------------------------------------- | ------- |
 | `otel.bsp.schedule.delay`        | The interval, in milliseconds, between two consecutive exports. | `5000`  |
-| `otel.bsp.max.queue.size`        | The maximum queue size.                                         | `2048`  |
-| `otel.bsp.max.export.batch.size` | The maximum batch size.                                         | `512`   |
+| `otel.bsp.max.queue.size`        | The maximum number of spans that can be queued before batching. | `2048`  |
+| `otel.bsp.max.export.batch.size` | The maximum number of spans to export in a single batch.        | `512`   |
 | `otel.bsp.export.timeout`        | The maximum allowed time, in milliseconds, to export data.      | `30000` |
 
 Properties for [sampler](../sdk/#sampler):
@@ -248,12 +256,12 @@ Properties for cardinality limits:
 Properties for [log record processor(s)](../sdk/#logrecordprocessor) pared with
 exporters via `otel.logs.exporter`:
 
-| System property                   | Description                                                     | Default |
-| --------------------------------- | --------------------------------------------------------------- | ------- |
-| `otel.blrp.schedule.delay`        | The interval, in milliseconds, between two consecutive exports. | `1000`  |
-| `otel.blrp.max.queue.size`        | The maximum queue size.                                         | `2048`  |
-| `otel.blrp.max.export.batch.size` | The maximum batch size.                                         | `512`   |
-| `otel.blrp.export.timeout`        | The maximum allowed time, in milliseconds, to export data.      | `30000` |
+| System property                   | Description                                                           | Default |
+| --------------------------------- | --------------------------------------------------------------------- | ------- |
+| `otel.blrp.schedule.delay`        | The interval, in milliseconds, between two consecutive exports.       | `1000`  |
+| `otel.blrp.max.queue.size`        | The maximum number of log records that can be queued before batching. | `2048`  |
+| `otel.blrp.max.export.batch.size` | The maximum number of log records to export in a single batch.        | `512`   |
+| `otel.blrp.export.timeout`        | The maximum allowed time, in milliseconds, to export data.            | `30000` |
 
 #### Properties: exporters
 
@@ -307,7 +315,7 @@ Properties for `otlp` span, metric, and log exporters:
 | `otel.exporter.otlp.{signal}.timeout`                      | The maximum waiting time, in milliseconds, allowed to send each OTLP {signal} batch.                                                                                                                                                                                                                                                                                                                                                 | `10000`                                                                                                                    |
 | `otel.exporter.otlp.metrics.temporality.preference`        | The preferred output aggregation temporality. Options include `DELTA`, `LOWMEMORY`, and `CUMULATIVE`. If `CUMULATIVE`, all instruments will have cumulative temporality. If `DELTA`, counter (sync and async) and histograms will be delta, up down counters (sync and async) will be cumulative. If `LOWMEMORY`, sync counter and histograms will be delta, async counter and up down counters (sync and async) will be cumulative. | `CUMULATIVE`                                                                                                               |
 | `otel.exporter.otlp.metrics.default.histogram.aggregation` | The preferred default histogram aggregation. Options include `BASE2_EXPONENTIAL_BUCKET_HISTOGRAM` and `EXPLICIT_BUCKET_HISTOGRAM`.                                                                                                                                                                                                                                                                                                   | `EXPLICIT_BUCKET_HISTOGRAM`                                                                                                |
-| `otel.java.exporter.otlp.retry.enabled`                    | If `true`, retry on when transient errors occur. **[2]**                                                                                                                                                                                                                                                                                                                                                                             | `true`                                                                                                                     |
+| `otel.java.exporter.otlp.retry.disabled`                   | If `false`, retry on when transient errors occur. **[2]**                                                                                                                                                                                                                                                                                                                                                                            | `false`                                                                                                                    |
 
 **NOTE:** The text placeholder `{signal}` refers to the supported
 [OpenTelemetry Signal](/docs/concepts/signals/). Valid values include `traces`,
@@ -418,21 +426,22 @@ contribute to the autoconfigured [resource](../sdk/#resource).
 `ResourceProvider`s built-in to the SDK and maintained by the community in
 `opentelemetry-java-contrib`:
 
-| Class                                                                  | Artifact                                                                                            | Description                                                     |
-| ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| `io.opentelemetry.instrumentation.resources.ContainerResourceProvider` | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Provides container resource attributes.                         |
-| `io.opentelemetry.instrumentation.resources.HostResourceProvider`      | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Provides host resource attributes.                              |
-| `io.opentelemetry.instrumentation.resources.HostIdResourceProvider`    | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Provides host ID resource attribute.                            |
-| `io.opentelemetry.instrumentation.resources.ManifestResourceProvider`  | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Provides service resource attributes based on jar manifest.     |
-| `io.opentelemetry.instrumentation.resources.OsResourceProvider`        | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Provides OS resource attributes.                                |
-| `io.opentelemetry.instrumentation.resources.ProcessResourceProvider`   | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Provides process resource attributes.                           |
-| `io.opentelemetry.instrumentation.resources.ProcessRuntimeProvider`    | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Provides process runtime resource attributes.                   |
-| `io.opentelemetry.contrib.gcp.resource.GCPResourceProvider`            | `io.opentelemetry.contrib:opentelemetry-gcp-resources:{{% param vers.contrib %}}-alpha`             | Provides GCP runtime environment resource attributes.           |
-| `io.opentelemetry.contrib.aws.resource.BeanstalkResourceProvider`      | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Provides AWS beanstalk runtime environment resource attributes. |
-| `io.opentelemetry.contrib.aws.resource.Ec2ResourceProvider`            | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Provides AWS ec2 runtime environment resource attributes.       |
-| `io.opentelemetry.contrib.aws.resource.EcsResourceProvider`            | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Provides AWS ecs runtime environment resource attributes.       |
-| `io.opentelemetry.contrib.aws.resource.EksResourceProvider`            | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Provides AWS eks runtime environment resource attributes.       |
-| `io.opentelemetry.contrib.aws.resource.LambdaResourceProvider`         | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Provides AWS lambda runtime environment resource attributes.    |
+| Class                                                                     | Artifact                                                                                            | Description                                                                                        |
+| ------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `io.opentelemetry.sdk.autoconfigure.internal.EnvironmentResourceProvider` | `io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param vers.otel %}}`                | Provides resource attributes based on `OTEL_SERVICE_NAME` and `OTEL_RESOURCE_ATTRIBUTES` env vars. |
+| `io.opentelemetry.instrumentation.resources.ContainerResourceProvider`    | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Provides container resource attributes.                                                            |
+| `io.opentelemetry.instrumentation.resources.HostResourceProvider`         | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Provides host resource attributes.                                                                 |
+| `io.opentelemetry.instrumentation.resources.HostIdResourceProvider`       | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Provides host ID resource attribute.                                                               |
+| `io.opentelemetry.instrumentation.resources.ManifestResourceProvider`     | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Provides service resource attributes based on jar manifest.                                        |
+| `io.opentelemetry.instrumentation.resources.OsResourceProvider`           | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Provides OS resource attributes.                                                                   |
+| `io.opentelemetry.instrumentation.resources.ProcessResourceProvider`      | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Provides process resource attributes.                                                              |
+| `io.opentelemetry.instrumentation.resources.ProcessRuntimeProvider`       | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Provides process runtime resource attributes.                                                      |
+| `io.opentelemetry.contrib.gcp.resource.GCPResourceProvider`               | `io.opentelemetry.contrib:opentelemetry-gcp-resources:{{% param vers.contrib %}}-alpha`             | Provides GCP runtime environment resource attributes.                                              |
+| `io.opentelemetry.contrib.aws.resource.BeanstalkResourceProvider`         | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Provides AWS beanstalk runtime environment resource attributes.                                    |
+| `io.opentelemetry.contrib.aws.resource.Ec2ResourceProvider`               | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Provides AWS ec2 runtime environment resource attributes.                                          |
+| `io.opentelemetry.contrib.aws.resource.EcsResourceProvider`               | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Provides AWS ecs runtime environment resource attributes.                                          |
+| `io.opentelemetry.contrib.aws.resource.EksResourceProvider`               | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Provides AWS eks runtime environment resource attributes.                                          |
+| `io.opentelemetry.contrib.aws.resource.LambdaResourceProvider`            | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Provides AWS lambda runtime environment resource attributes.                                       |
 
 Implement the `ResourceProvider` interface to participate in resource
 autoconfiguration. For example:

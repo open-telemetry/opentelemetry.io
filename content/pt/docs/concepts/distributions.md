@@ -4,7 +4,7 @@ description: >-
   Uma distribuição, que não deve ser confundida com um fork, é uma versão
   customizada de um componente do OpenTelemetry.
 weight: 190
-default_lang_commit: 2f34c456ab38b4d3502cd07bc36fa1455d4ef875
+default_lang_commit: 55f9c9d07ba35c241048ffc0d756d67843d68805
 ---
 
 Os projetos do OpenTelemetry consistem de múltiplos [componentes](../components)
@@ -100,7 +100,7 @@ instrumentação:
 Ao utilizar materiais relacionados ao projeto do OpenTelemetry para
 distribuição, como logotipo e nome, certifique-se de estar alinhado com as
 [Diretrizes de Marketing do OpenTelemetry para Organizações
-Contribuintes][diretrizes].
+Contribuintes][guidelines].
 
 O projeto do OpenTelemetry não certifica distribuições neste momento. No futuro,
 o OpenTelemetry poderá certificar distribuições e parceiros de maneira
@@ -111,5 +111,5 @@ assegure-se de que seu uso não irá resultar em uma dependência de fornecedor
 > Qualquer suporte para uma distribuição deve ser fornecido diretamente por quem
 > a criou e não pelas pessoas envolvidas no projeto do OpenTelemetry.
 
-[diretrizes]:
+[guidelines]:
   https://github.com/open-telemetry/community/blob/main/marketing-guidelines.md

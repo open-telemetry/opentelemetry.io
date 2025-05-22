@@ -8,4 +8,4 @@ canonical_url: https://medium.com/opentelemetry/opentelemetry-swift-1-0-beta-8f7
 Today, OpenTelemetry Swift distributed tracing API/SDK has released its 1.0
 version. For all the details, see the [original post][].
 
-[original post]: {{% param canonical_url %}}
+[original post]: <{{% param canonical_url %}}>

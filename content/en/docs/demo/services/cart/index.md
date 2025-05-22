@@ -5,9 +5,9 @@ aliases: [cartservice]
 ---
 
 This service maintains items placed in the shopping cart by users. It interacts
-with a Redis caching service for fast access to shopping cart data.
+with a Valkey caching service for fast access to shopping cart data.
 
-[Cart service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/cartservice/)
+[Cart service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/cart/)
 
 > **Note** OpenTelemetry for .NET uses the `System.Diagnostic.DiagnosticSource`
 > library as its API instead of the standard OpenTelemetry API for Traces and

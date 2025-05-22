@@ -3,7 +3,7 @@ title: Configuration
 weight: 20
 description: Learn how to configure the Collector to suit your needs
 # prettier-ignore
-cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca OIDC oidc otlphttp pprof prodevent prometheusremotewrite spanevents upsert zpages
+cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents upsert zpages
 ---
 
 <!-- markdownlint-disable link-fragments -->
@@ -29,6 +29,17 @@ example:
 
 ```shell
 otelcol --config=customconfig.yaml
+```
+
+You can also provide multiple configurations using multiple files at different
+paths. Each file can be a full or partial configuration, and the files can
+reference components from each other. If the merger of files does not constitute
+a complete configuration, the user receives an error since required components
+are not added by default. Pass in multiple file paths at the command line as
+follows:
+
+```shell
+otelcol --config=file:/path/to/first/file --config=file:/path/to/second/file
 ```
 
 You can also provide configurations using environment variables, HTTP URIs, or
@@ -626,6 +637,21 @@ service:
       receivers: [opencensus, jaeger]
       processors: [batch, memory_limiter]
       exporters: [opencensus, zipkin]
+```
+
+As with components, use the `type[/name]` syntax to create additional pipelines
+for a given type. Here is an example extending the previous configuration:
+
+```yaml
+service:
+  pipelines:
+    # ...
+    traces:
+      # ...
+    traces/2:
+      receivers: [opencensus]
+      processors: [batch]
+      exporters: [zipkin]
 ```
 
 ### Telemetry

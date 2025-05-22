@@ -7,11 +7,6 @@ on:
         description: Regex of submodule paths to update to HEAD before building.
         default: content-modules
         type: string
-  workflow_call:
-    inputs:
-      submodule_path_regex:
-        type: string
-        required: true
 
 jobs:
   build-and-test:

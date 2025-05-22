@@ -4,8 +4,9 @@ linkTitle: 演示
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
+default_lang_commit: c2cd5b14 # patched
+drifted_from_default: true
 cSpell:ignore: OLJCESPC
-default_lang_commit: c2cd5b14
 ---
 
 欢迎使用 [OpenTelemetry 演示](/ecosystem/demo/)文档，
@@ -50,7 +51,7 @@ default_lang_commit: c2cd5b14
 - [报价服务](services/quote/)
 - [推荐服务](services/recommendation/)
 - [发货服务](services/shipping/)
-- [图片提供商服务](services/imageprovider/)
+- [图片提供商服务](services/image-provider/?i18n-patch)
 
 ## 应用场景
 
@@ -60,7 +61,7 @@ default_lang_commit: c2cd5b14
 随着时间的推移，我们将添加更多场景：
 
 - 使用功能标志服务为产品 ID 为 `OLJCESPC7Z` 的 `GetProduct` 请求生成[产品目录错误](feature-flags)
-- 发现内存泄漏并使用指标和追踪对其进行诊断，[阅读更多](scenarios/recommendation-cache/)
+- 发现内存泄漏并使用指标和追踪对其进行诊断，[阅读更多](feature-flags/recommendation-cache/)
 
 ## 参考
 

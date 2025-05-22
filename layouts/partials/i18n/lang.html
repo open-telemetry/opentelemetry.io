@@ -1,6 +1,9 @@
+{{/* Returns the language object of this page, taking fallback pages into
+consideration. */ -}}
+
 {{ $fallbackPage := partial "i18n/fallback-page.html" . -}}
-{{ $lang := .Site.Language.Lang -}}
+{{ $lang := .Site.Language -}}
 {{ with $fallbackPage -}}
-  {{ $lang = .Language.Lang -}}
+  {{ $lang = .Language -}}
 {{ end -}}
 {{ return $lang -}}

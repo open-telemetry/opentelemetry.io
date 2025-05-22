@@ -1,8 +1,7 @@
 ---
 title: 開発環境
-# prettier-ignore
-cSpell:ignore: grpcio intellij libcurl libprotobuf nlohmann openssl protoc rebar
-default_lang_commit: a6efef05af7f854d2fcc9ec4b7433cc4ae799a40
+default_lang_commit: cd90ab77550fb2e92ca37cb3c753ec2d8bb7d8dc
+cSpell:ignore: grpcio intellij libcurl libprotobuf nlohmann openssl protoc
 ---
 
 [OpenTelemetry デモ GitHub リポジトリ](https://github.com/open-telemetry/opentelemetry-demo)
@@ -21,7 +20,7 @@ OpenTelemetryデモチームは、可能な限り依存関係やツールを最�
 
 ### .NET
 
-- .NET 6.0+
+- .NET 8.0+
 
 ### C++
 

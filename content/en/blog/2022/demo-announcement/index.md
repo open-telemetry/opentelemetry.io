@@ -126,7 +126,7 @@ ourselves to just the items listed here.
 - Demonstrations of the ability to add
   [Baggage](https://github.com/open-telemetry/opentelemetry-demo/issues/100) and
   other custom tags
-- Continue to build on other cloud-native technologies like:
+- Continue to build on other cloud native technologies like:
   - Kubernetes
   - gRPC
   - [OpenFeature](https://github.com/open-feature)
@@ -155,4 +155,4 @@ from there.
 - [Demo Requirements](/docs/demo/requirements/)
 - [Get Involved](https://github.com/open-telemetry/opentelemetry-demo#contributing)
 
-[^1]: {{% _param notes.docker-compose-v2 %}}
+[^1]: {{% param notes.docker-compose-v2 %}}

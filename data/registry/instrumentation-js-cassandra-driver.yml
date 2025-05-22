@@ -16,5 +16,5 @@ createdAt: 2021-07-08
 package:
   name: '@opentelemetry/instrumentation-cassandra-driver'
   registry: npm
-  version: 0.45.0
+  version: 0.47.0
 isFirstParty: false

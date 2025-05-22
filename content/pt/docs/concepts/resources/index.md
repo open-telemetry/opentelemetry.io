@@ -1,25 +1,25 @@
 ---
 title: Recursos
 weight: 70
-default_lang_commit: a1740fd934e595f1396f2eb82a58a80824369b09
+default_lang_commit: 86d2fbde246b9e56665146db78d4fc1d34d00ddf
 ---
 
-## Introdução
+## Introdução {#introduction}
 
-{{% pt/docs/languages/resources-intro %}}
+{{% docs/languages/resources-intro %}}
 
 Se você usar [Jaeger](https://www.jaegertracing.io/) como seu _backend_ de
 observabilidade, os atributos do recurso são agrupados na guia **Process**:
 
 ![Uma captura de tela do Jaeger mostrando um exemplo de saída de atributos do recurso associados a um rastro.](screenshot-jaeger-resources.png)
 
-Um recurso é adicionado ao `TraceProvider` ou `MetricProvider` quando eles são
+Um recurso é adicionado ao `TracerProvider` ou `MetricProvider` quando eles são
 criados durante a inicialização. Esta associação não pode ser alterada
 posteriormente. Após um recurso ser adicionado, todos os trechos e métricas
 produzidos a partir de um `Tracer` ou `Meter` do _provider_ terão o recurso
 associado a eles.
 
-## Atributos semânticos com valores padrões fornecidos pelo SDK
+## Atributos semânticos com valores padrões fornecidos pelo SDK {#semantic-attributes-with-sdk-provided-default-value}
 
 Existem atributos fornecidos pelo SDK do OpenTelemetry. Um deles é o
 `service.name`, que representa o nome lógico do serviço. Por padrão, os SDKs
@@ -31,7 +31,7 @@ Além disso, o SDK também fornecerá os seguintes atributos do recurso para se
 autoidentificar: `telemetry.sdk.name`, `telemetry.sdk.language` e
 `telemetry.sdk.version`.
 
-## Detectores de recursos
+## Detectores de recursos {#resource-detectors}
 
 A maioria dos SDKs específicos de linguagem fornece um conjunto de detectores de
 recursos que podem ser usados para detectar automaticamente informações de
@@ -45,7 +45,7 @@ recursos do ambiente. Os detectores de recursos mais comuns incluem:
 - [Atributos específicos do provedor de nuvem](/docs/specs/semconv/resource/#cloud-provider-specific-attributes)
 - [e mais](/docs/specs/semconv/resource/)
 
-## Recursos personalizados
+## Recursos personalizados {#custom-resources}
 
 Você também pode fornecer seus próprios atributos do recurso. Você pode
 fornecê-los em código ou definindo um valor para a variável de ambiente

@@ -1,11 +1,12 @@
 ---
-title: OpenTelemetryデモ ドキュメンテーション
+title: OpenTelemetryデモ ドキュメント
 linkTitle: デモ
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
+default_lang_commit: cd90ab77550fb2e92ca37cb3c753ec2d8bb7d8dc # patched
+drifted_from_default: true
 cSpell:ignore: OLJCESPC
-default_lang_commit: 1e69c8f94a605ce5624c6b6657080d98f633ac7b
 ---
 
 [OpenTelemetryデモ](/ecosystem/demo/)のドキュメンテーションへようこそ。
@@ -28,7 +29,7 @@ default_lang_commit: 1e69c8f94a605ce5624c6b6657080d98f633ac7b
 | C++        |                                                        |                                                                                       | [通貨サービス](services/currency/)                                                    |
 | Go         |                                                        | [決済サービス](services/checkout/), [商品カタログサービス](services/product-catalog/) | [決済サービス](services/checkout/), [商品カタログサービス](services/product-catalog/) |
 | Java       | [広告サービス](services/ad/)                           |                                                                                       | [広告サービス](services/ad/)                                                          |
-| JavaScript |                                                        | [フロントエンド](services/frontend/)                                                  | [フロントエンド](services/frontend/), [支払いサービス](services/payment/)             |
+| JavaScript |                                                        |                                                                                       | [支払いサービス](services/payment/)                                                   |
 | Kotlin     |                                                        | [不正検知サービス](services/fraud-detection/)                                         |                                                                                       |
 | PHP        |                                                        | [見積サービス](services/quote/)                                                       | [見積サービス](services/quote/)                                                       |
 | Python     | [レコメンデーションサービス](services/recommendation/) |                                                                                       | [レコメンデーションサービス](services/recommendation/)                                |
@@ -51,7 +52,8 @@ default_lang_commit: 1e69c8f94a605ce5624c6b6657080d98f633ac7b
 - [見積サービス](services/quote/)
 - [レコメンデーションサービス](services/recommendation/)
 - [配送サービス](services/shipping/)
-- [画像プロバイダーサービス](services/imageprovider/)
+- [画像プロバイダーサービス](services/image-provider/?i18n-patch)
+- [React Native アプリケーション](services/react-native-app/)
 
 ## シナリオ {#scenarios}
 
@@ -62,7 +64,7 @@ OpenTelemetryを使用してどのように問題を解決できるでしょう�
 
 - フィーチャーフラグサービスを使用して、商品ID：`OLJCESPC7Z`の`GetProduct`リクエストに対する[商品カタログエラー](feature-flags)を生成
 - メモリリークを発見し、メトリクスとトレースを使用して診断。
-  [詳細](scenarios/recommendation-cache/)
+  [詳細](feature-flags/recommendation-cache/)
 
 ## リファレンス {#reference}
 

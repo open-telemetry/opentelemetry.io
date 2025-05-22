@@ -1,0 +1,22 @@
+# cSpell:ignore k4ji Kajiwara tracesimulationreceiver
+title: Trace Simulation Receiver
+registryType: receiver
+language: collector
+tags:
+  - go
+  - receiver
+  - synthetic
+  - trace
+  - simulation
+license: Apache 2.0
+description:
+  A receiver that generates synthetic traces based on a declarative blueprint
+  for testing and demonstration purposes.
+authors:
+  - name: Takuya Kajiwara
+    url: https://github.com/k4ji
+urls:
+  repo: https://github.com/k4ji/tracesimulationreceiver
+createdAt: 2025-05-01
+isNative: false
+isFirstParty: false

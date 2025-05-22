@@ -79,7 +79,7 @@ OpenTelemetry maintainers in making OpenTelemetry better for everyone during the
 ## Co-located Events
 
 [Observability Day][] _fosters collaboration, discussion, and knowledge sharing
-of cloud-native observability projects_. This event will be held on November 6,
+of cloud native observability projects_. This event will be held on November 6,
 2023 from 9am - 5pm. There will be several sessions on OpenTelemetry as well.
 
 > <i class="far fa-exclamation-triangle"></i> **IMPORTANT access note**: You

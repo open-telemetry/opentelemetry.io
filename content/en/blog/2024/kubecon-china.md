@@ -26,7 +26,7 @@ conference begins.
 
 - **[Adaptive Tracing Propagation with OpenTelemetry: Navigating Protocol Diversity in the Cloud | Project Lightning Talk](https://sched.co/1f4zX)**<br>
   Wednesday, August 21 • 12:03 - 12:08
-- **[Telemetry API and OpenTelemetry: the answer of istio monitoring? | Project Lightning Talk](https://sched.co/1f4zz)**<br>
+- **[Telemetry API and OpenTelemetry: the answer of Istio monitoring? | Project Lightning Talk](https://sched.co/1f4zz)**<br>
   Wednesday, August 21 • 12:24 - 12:29
 
 ## KubeCon talks

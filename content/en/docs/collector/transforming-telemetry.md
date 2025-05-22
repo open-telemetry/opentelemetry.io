@@ -156,9 +156,8 @@ processors:
 
 Similarly, the K8s processor enriches telemetry with relevant Kubernetes
 metadata like pod name, node name, or workload name. The collector pod must be
-configured to have read access to certain Kubernetes RBAC APIs, which is
-documented
-[here](https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor#hdr-RBAC).
+configured to have
+[read access to certain Kubernetes RBAC APIs](https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor#readme-role-based-access-control).
 To use the default options, it can be configured with an empty block:
 
 ```yaml
@@ -180,9 +179,7 @@ the span status to `Ok` when the `http.request.status_code` attribute is 400:
 transform:
   error_mode: ignore
   trace_statements:
-    - context: span
-      statements:
-        - set(status.code, STATUS_CODE_OK) where attributes["http.request.status_code"] == 400
+    - set(span.status.code, STATUS_CODE_OK) where span.attributes["http.request.status_code"] == 400
 ```
 
 <!-- prettier-ignore-end -->

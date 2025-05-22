@@ -18,5 +18,5 @@ createdAt: 2021-07-08
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-mysql2'
-  version: 0.45.0
+  version: 0.47.0
 isFirstParty: false

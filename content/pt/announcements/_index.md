@@ -2,5 +2,7 @@
 title: Anúncios
 cascade:
   type: docs
-default_lang_commit: 48eac183a4dd74946d5a45fa436cfc6052f30532
+  params:
+    hide_feedback: true
+default_lang_commit: 2291fd884421f8a0bb47c72327c0681fdf116225
 ---

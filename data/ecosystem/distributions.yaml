@@ -1,4 +1,4 @@
-# cSpell:ignore Splunk AWS ADOT Grafana observIQ BindPlane RHOSDT RedHat Sumo Liatrio Lumigo Distro
+# cSpell:ignore Splunk AWS ADOT Grafana observIQ BindPlane RHOSDT RedHat Sumo Liatrio Lumigo Distro Dynatrace
 - name: Splunk Distribution of OpenTelemetry Collector
   url: https://github.com/signalfx/splunk-otel-collector
   docsUrl: https://docs.splunk.com/observability/en/gdi/opentelemetry/opentelemetry.html
@@ -7,6 +7,34 @@
   url: https://aws.amazon.com/otel/
   docsUrl: https://aws-otel.github.io/docs/getting-started/collector
   components: [Collector]
+- name: AWS Distro for OpenTelemetry - Instrumentation for JavaScript
+  url: https://github.com/aws-observability/aws-otel-js-instrumentation/
+  docsUrl: https://aws-otel.github.io/docs/getting-started/javascript-sdk
+  components: [Node]
+- name: AWS Distro for OpenTelemetry - Instrumentation for Python
+  url: https://github.com/aws-observability/aws-otel-python-instrumentation
+  docsUrl: https://aws-otel.github.io/docs/getting-started/python-sdk
+  components: [Python]
+- name: AWS Distro for OpenTelemetry - Instrumentation for .NET
+  url: https://github.com/aws-observability/aws-otel-dotnet-instrumentation
+  docsUrl: https://aws-otel.github.io/docs/getting-started/dotnet-sdk
+  components: [.NET]
+- name: AWS Distro for OpenTelemetry - Instrumentation for Java
+  url: https://github.com/aws-observability/aws-otel-java-instrumentation
+  docsUrl: https://aws-otel.github.io/docs/getting-started/java-sdk
+  components: [Java]
+- name: AWS Distro for OpenTelemetry - Instrumentation for Go
+  url: https://github.com/aws-observability/aws-otel-go
+  docsUrl: https://aws-otel.github.io/docs/getting-started/go-sdk
+  components: [Go]
+- name: AWS Distro for OpenTelemetry - Instrumentation for Ruby
+  url: https://github.com/aws-observability/aws-otel-ruby
+  docsUrl: https://aws-otel.github.io/docs/getting-started/ruby-sdk
+  components: [Ruby]
+- name: AWS Distro for OpenTelemetry - Instrumentation for PHP
+  url: https://github.com/aws-observability/aws-otel-php
+  docsUrl: https://aws-otel.github.io/docs/getting-started/php-sdk
+  components: [PHP]
 - name: Grafana Alloy
   url: https://github.com/grafana/alloy
   docsUrl: https://grafana.com/docs/alloy/latest/
@@ -87,31 +115,51 @@
   url: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/monitor/azure-monitor-opentelemetry
   docsUrl: https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable?tabs=python
   components: [Python]
-- name: Elastic Distribution for OpenTelemetry Java
-  url: https://github.com/elastic/elastic-otel-java
-  docsUrl: https://github.com/elastic/elastic-otel-java
+- name: Elastic Distribution of OpenTelemetry Collector
+  url: https://github.com/elastic/elastic-agent/tree/main/internal/pkg/otel
+  docsUrl: https://ela.st/edot-collector
   components: [Java]
-- name: Elastic Distribution for OpenTelemetry .NET
+- name: Elastic Distribution of OpenTelemetry .NET
   url: https://github.com/elastic/elastic-otel-dotnet
-  docsUrl: https://github.com/elastic/elastic-otel-dotnet
+  docsUrl: https://ela.st/edot-dotnet
   components: [.NET]
-- name: Elastic Distribution for OpenTelemetry Node.js
-  url: https://github.com/elastic/elastic-otel-node
-  docsUrl: https://github.com/elastic/elastic-otel-node
-  components: [Node]
-- name: Elastic Distribution for OpenTelemetry Python
-  url: https://github.com/elastic/elastic-otel-python
-  docsUrl: https://github.com/elastic/elastic-otel-python
-  components: [Python]
-- name: Embrace Android Distribution for OpenTelemetry
-  url: https://github.com/embrace-io/embrace-android-sdk
-  docsUrl: https://embrace.io/docs/open-telemetry/integration/?android-language=java
-  components: [Android]
-- name: Embrace Android Distribution for OpenTelemetry
-  url: https://github.com/embrace-io/embrace-android-sdk
-  docsUrl: https://embrace.io/docs/open-telemetry/integration/?android-language=java
+- name: Elastic Distribution of OpenTelemetry Java
+  url: https://github.com/elastic/elastic-otel-java
+  docsUrl: https://ela.st/edot-java
   components: [Java]
+- name: Elastic Distribution of OpenTelemetry Node.js
+  url: https://github.com/elastic/elastic-otel-node
+  docsUrl: https://ela.st/edot-nodejs
+  components: [Node]
+- name: Elastic Distribution of OpenTelemetry PHP
+  url: https://github.com/elastic/elastic-otel-php
+  docsUrl: https://ela.st/edot-php
+  components: [PHP]
+- name: Elastic Distribution of OpenTelemetry Python
+  url: https://github.com/elastic/elastic-otel-python
+  docsUrl: https://ela.st/edot-python
+  components: [Python]
+- name: Elastic Distribution of OpenTelemetry Android
+  url: https://github.com/elastic/apm-agent-android
+  docsUrl: https://ela.st/edot-android
+  components: [Android]
+- name: Elastic Distribution of OpenTelemetry Swift / iOS
+  url: https://github.com/elastic/apm-agent-ios
+  docsUrl: https://ela.st/edot-ios
+  components: [Swift]
+- name: Embrace Android Distribution for OpenTelemetry
+  url: https://github.com/embrace-io/embrace-android-sdk
+  docsUrl: https://embrace.io/docs/open-telemetry/integration/?android-language=java
+  components: [Android, Java]
 - name: Embrace Apple Distribution for OpenTelemetry
   url: https://github.com/embrace-io/embrace-apple-sdk
   docsUrl: https://embrace.io/docs/open-telemetry/integration/#apple
   components: [Swift]
+- name: Embrace React Native Distribution for OpenTelemetry
+  url: https://github.com/embrace-io/embrace-react-native-sdk
+  docsUrl: https://embrace.io/docs/open-telemetry/integration/#react-native
+  components: [React Native, Javascript]
+- name: Dynatrace Distribution of the OpenTelemetry Collector
+  url: https://github.com/Dynatrace/dynatrace-otel-collector
+  docsUrl: https://docs.dynatrace.com/docs/shortlink/opentelemetry-collector
+  components: [Collector]
