@@ -14,7 +14,7 @@ submeta um [pull request][PR] (PR):
 - Se sua alteração for pequena ou você não estiver familiarizado com o [Git],
   veja [Usando o GitHub](#changes-using-github) para aprender como editar uma
   página.
-- Caso contrário, veja [Trabalhar a partir de um fork local](#fork-the-repo)
+- Caso contrário, consulte [Trabalhando localmente](#fork-the-repo)
   para aprender como fazer alterações no seu próprio ambiente de
   desenvolvimento.
 
@@ -207,14 +207,13 @@ _Figura 3. Trabalhando a partir de um fork local para fazer suas alterações._
 
 ### Fazer fork do repositório
 
-1. Navegue até o
-   [`opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io/)
-   repositório.
+1. Navegue até o repositório
+   [`opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io/).
 1. Selecione **Fork**.
 
 ### Clonar e definir o repositório de origem (_upstream_)
 
-1. Em uma janela de terminal, clone seu fork e instale os requisitos:
+1. Em uma janela de terminal, clone seu fork e instale as dependências:
 
    ```shell
    git clone git@github.com:<seu_nome_de_usuario_no_github>/opentelemetry.io.git
