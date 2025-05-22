@@ -41,5 +41,4 @@ expectativas, consulte o [Guia para Novos Contribuidores do OpenTelemetry][NCG].
 
 [CLA]: https://docs.linuxfoundation.org/lfx/easycla/contributors
 [CoC]: https://github.com/cncf/foundation/blob/main/code-of-conduct.md
-[NCG]:
-  https://github.com/open-telemetry/community/blob/main/guides/contributor/README.md
+[NCG]: https://github.com/open-telemetry/community/blob/main/guides/contributor/README.md

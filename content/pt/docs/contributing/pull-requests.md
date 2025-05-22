@@ -551,7 +551,7 @@ Os pull requests são mesclados quando cumprem os seguintes critérios:
 - Aprovado por pelo menos um aprovador.
 - Sem falhas nas verificações de PR.
 - A branch do PR está atualizada com a branch base.
-- As alterações na página do doc [não abrangem locais][].
+- As alterações na página do doc [do not span locales][].
 
 [do not span locales]: ../localization/#prs-should-not-span-locales
 

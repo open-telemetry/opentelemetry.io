@@ -49,6 +49,5 @@ consulte o [Guia para novos contribuidores do OpenTelemetry] da comunidade. Cada
 [repositório OTel][org] para implementações de linguagem, o Collector e
 convenções possui seu próprio guia de contribuição específico.
 
-[Guia para novos contribuidores do OpenTelemetry]:
-  https://github.com/open-telemetry/community/blob/main/guides/contributor
+[Guia para novos contribuidores do OpenTelemetry]: https://github.com/open-telemetry/community/blob/main/guides/contributor
 [org]: https://github.com/open-telemetry
