@@ -48,9 +48,9 @@ refer to the
 [charter document](https://github.com/open-telemetry/community/blob/main/governance-charter.md).
 You may nominate yourself (or others!) by submitting a Pull Request against the
 [list of candidates](https://github.com/open-telemetry/community/blob/main/elections/2022/governance-committee-candidates.md)
-by 7 October 2022 23:59 UTC — more detailed requirements about the nomination
-and ratification process can be found
-[here](https://github.com/open-telemetry/community/blob/main/elections/2022/governance-committee-election.md).
+by 7 October 2022 23:59 UTC — see the detailed requirements under
+[nominations](https://github.com/open-telemetry/community/blob/main/elections/2022/governance-committee-election.md#nominations)
+for the Governance Committee election.
 
 We would like to thank the GC members who have helped grow OpenTelemetry, and
 invite them to run for re-election if they so choose: Alolita Sharma, Daniel
