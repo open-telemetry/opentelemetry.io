@@ -407,14 +407,6 @@ maintainers:
       - go-compile-instrumentation-triagers
     html_url: https://github.com/dineshg13
     avatar_url: https://avatars.githubusercontent.com/u/2471669?v=4
-  - name: djaglowski
-    teams:
-      - collector-contrib-approvers
-      - collector-contrib-maintainers
-      - collector-contrib-triagers
-      - collector-releases-approvers
-    html_url: https://github.com/djaglowski
-    avatar_url: https://avatars.githubusercontent.com/u/5255616?v=4
   - name: dmathieu
     teams:
       - collector-triagers
@@ -2338,6 +2330,9 @@ members:
   - name: discostu105
     html_url: https://github.com/discostu105
     avatar_url: https://avatars.githubusercontent.com/u/10918780?v=4
+  - name: djaglowski
+    html_url: https://github.com/djaglowski
+    avatar_url: https://avatars.githubusercontent.com/u/5255616?v=4
   - name: DotSpy
     html_url: https://github.com/DotSpy
     avatar_url: https://avatars.githubusercontent.com/u/11577813?v=4
@@ -2440,6 +2435,9 @@ members:
   - name: jiekun
     html_url: https://github.com/jiekun
     avatar_url: https://avatars.githubusercontent.com/u/30280396?v=4
+  - name: johannaojeling
+    html_url: https://github.com/johannaojeling
+    avatar_url: https://avatars.githubusercontent.com/u/51084516?v=4
   - name: johnbley
     html_url: https://github.com/johnbley
     avatar_url: https://avatars.githubusercontent.com/u/5139839?v=4

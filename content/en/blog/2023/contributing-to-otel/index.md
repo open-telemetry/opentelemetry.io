@@ -53,19 +53,21 @@ don't. This usually means that I have to do a bit more digging beyond the docs,
 by seeking out external blog posts, bugging techie friends, etc. Once I'm able
 to fill that knowledge gap, I do two things:
 
-1. I blog about it. See examples [here](https://shorturl.at/vLYZ0),
-   [here](https://shorturl.at/hlqtE), and [here](https://shorturl.at/czHST).
+1. I blog about it. See examples
+   [OTel Python Logging Auto-Instrumentation with the OTel Operator](https://medium.com/cloud-native-daily/lets-learn-about-otel-python-logging-auto-instrumentation-with-the-otel-operator-663247666570)
+   and
+   [Let’s Learn About the OTel Operator’s Target Allocator!](https://adri-v.medium.com/lets-learn-about-the-otel-operator-s-target-allocator-47a2b1f07562).
 2. I contribute to the OTel docs. See examples
-   [here](https://github.com/open-telemetry/opentelemetry.io/pull/3195),
-   [here](https://github.com/open-telemetry/opentelemetry.io/pull/3098), and
-   [here](https://github.com/open-telemetry/opentelemetry.io/pull/2130).
+   [Include docs about Python logs auto-instrumentation](https://github.com/open-telemetry/opentelemetry.io/pull/3195),
+   [Add troubleshooting guidance to OTel Operator auto-instrumentation docs](https://github.com/open-telemetry/opentelemetry.io/pull/3098),
+   and
+   [Update Python auto-instrumentation docs](https://github.com/open-telemetry/opentelemetry.io/pull/2130).
 
 > ✨ **NOTE:** ✨ Number two is _especially_ important, because the best way for
 > the OTel docs to be the Source of Truth for All Things OTel<sup>TM</sup> is to
 > have folks like us contributing to the docs whenever we see a gap.
 
-Learn more about contributing to the OTel docs
-[here](https://github.com/open-telemetry/opentelemetry.io/blob/main/CONTRIBUTING.md).
+Learn more about [contributing to the OTel docs](/docs/contributing/).
 
 > ✨ **NOTE:** ✨ If you find the contribution guidelines for the OTel Docs to
 > be confusing or have a mistake, improving them is a great way to contribute!
@@ -81,11 +83,10 @@ community at large. As long as your work isn't promoting a product you're
 selling or requires readers to make a purchase in order to replicate your work,
 your blog post is most welcome!
 
-You can check out an example of one of my previous blog posts
-[here](/blog/2022/otel-demo-app-nomad/).
+You can check out an example of one of my previous blog posts:
+[Running the OpenTelemetry Demo App on HashiCorp Nomad](/blog/2022/otel-demo-app-nomad/).
 
-Learn more about submitting a post to the OTel blog
-[here](https://github.com/open-telemetry/opentelemetry.io#submitting-a-blog-post).
+Learn more about [submitting a post to the OTel blog](/docs/contributing/blog/).
 
 ### Join the OTel End User Working Group
 
@@ -105,7 +106,7 @@ OpenTelemetry practitioners who come together a few times a month to:
 
 As an added bonus, I'm one of the co-chairs. Just sayin'… 😉
 
-Learn more about the OTel EUWG [here](/community/end-user/).
+Learn more about the [OTel EUWG](/community/end-user/).
 
 ### Contribute to the OpenTelemetry Demo
 
@@ -133,10 +134,10 @@ greatest versions of things like the [OTel Collector](/docs/collector/) and
 language-specific instrumentation. In short, there's always work to be done!
 
 You can check out an example of one of my contributions
-[here](https://github.com/open-telemetry/opentelemetry-demo/pull/432).
+[Integrate with existing metrics code](https://github.com/open-telemetry/opentelemetry-demo/pull/432).
 
-Learn more about how to contribute to the OTel Demo
-[here](https://github.com/open-telemetry/opentelemetry-demo/blob/main/CONTRIBUTING.md).
+Learn more about how to
+[contribute to the OTel Demo](https://github.com/open-telemetry/opentelemetry-demo/blob/main/CONTRIBUTING.md).
 
 ### Join a Special Interest Group
 
@@ -168,9 +169,9 @@ community member to implement these types of code changes. I've found folks
 within OTel to be nothing but helpful and welcoming.
 
 You can check out an example of one of my contributions
-[here](https://github.com/open-telemetry/opentelemetry-helm-charts/pull/531).
+[Specify gRPC endpoint in otlp receiver config](https://github.com/open-telemetry/opentelemetry-helm-charts/pull/531).
 
-Learn more about the OTel SIGs [here](/community/#special-interest-groups).
+Learn more about the [OTel SIGs](/community/#special-interest-groups).
 
 ### Final thoughts
 

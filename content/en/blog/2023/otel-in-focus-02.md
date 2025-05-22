@@ -12,7 +12,7 @@ Read on for an overview of new releases, announcements, and other important
 updates.
 
 Are you a maintainer with something you’d like featured here? Get in touch with
-me [via email](mailto:austin@lightstep.com), or on the
+[Austin Parker via email](mailto:austin@lightstep.com), or on the
 [CNCF Slack #otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6)
 channel.
 
