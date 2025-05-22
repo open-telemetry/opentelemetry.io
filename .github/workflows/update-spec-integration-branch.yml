@@ -93,6 +93,22 @@ jobs:
             git push
           fi
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Fix refcache
+        run: |
+          npm install --omit=optional
+          npm run fix:refcache
+
+          git add -A
+
+          if ! git diff-index --quiet --cached HEAD; then
+            git commit -am "Fix refcache"
+            git push
+          fi
+
       - name: Create pull request if needed
         env:
           # not using secrets.GITHUB_TOKEN since pull requests from that token do not run workflows
