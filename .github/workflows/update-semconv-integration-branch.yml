@@ -90,6 +90,7 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
+          cache-dependency-path: tmp/package-ci.json
 
       - name: Fix refcache
         run: |
