@@ -86,6 +86,8 @@ jobs:
 
           sed -i "s/^\tsemconv-pin = .*/\tsemconv-pin = $commit_desc/" .gitmodules
 
+          npm run fix:refcache
+
           git add -A
 
           if ! git diff-index --quiet --cached HEAD; then
