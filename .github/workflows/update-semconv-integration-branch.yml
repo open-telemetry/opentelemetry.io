@@ -89,8 +89,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-          cache: npm
-          cache-dependency-path: tmp/package-ci.json
 
       - name: Fix refcache
         run: |
