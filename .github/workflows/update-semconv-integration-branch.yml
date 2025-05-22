@@ -86,8 +86,18 @@ jobs:
 
           sed -i "s/^\tsemconv-pin = .*/\tsemconv-pin = $commit_desc/" .gitmodules
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Fix refcache
+        run: |
+          npm install --omit=optional
           npm run fix:refcache
 
+      - name: Commit changes
+        run: |
           git add -A
 
           if ! git diff-index --quiet --cached HEAD; then
