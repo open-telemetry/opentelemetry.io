@@ -9179,6 +9179,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:39:48.079304-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-oracledb": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-22T13:12:13.410404+05:30"
+  },
   "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-pg": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:39:50.193601-05:00"
@@ -15818,6 +15822,10 @@
   "https://npmjs.com/package/@opentelemetry/instrumentation-net": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:07:52.613505-04:00"
+  },
+  "https://npmjs.com/package/@opentelemetry/instrumentation-oracledb": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-22T13:12:27.838725+05:30"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-pg": {
     "StatusCode": 200,
