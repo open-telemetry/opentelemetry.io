@@ -3,7 +3,7 @@ title:
   Join us for OpenTelemetry Talks and Activities at KubeCon + CloudNativeCon
   China 2025
 linkTitle: KubeCon China '25
-date: 2025-05-20
+date: 2025-05-22
 author: '[Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)'
 cSpell:ignore: Delewski Hrabusa Przemek Purnesh Quesma Zihao Ziming
 ---
