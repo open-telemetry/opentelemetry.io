@@ -58,7 +58,7 @@ class S,T spacewhite
 class first,second white
 ```
 
-_Figura 1. Contribuindo com novo conteúdo._
+_Figure 1. Contributing new content._
 
 ## Usando o GitHub {#changes-using-github}
 
@@ -554,7 +554,7 @@ Os pull requests são mesclados quando cumprem os seguintes critérios:
 - A branch do PR está atualizada com a branch base.
 - As alterações na página do doc [não abrangem locais][].
 
-[não abrangem locais]: ../localization/#prs-should-not-span-locales
+[do not span locales]: ../localization/#prs-should-not-span-locales
 
 > **Importante**
 >
