@@ -19,7 +19,7 @@ HTTP headers.
 
 Auto-instrumentation exists for some of the most popular frameworks, libraries,
 and PHP extensions. Many of them perform incoming and/or outgoing context
-propagation, and can be discovered via the
+propagation, and can be discovered through the
 [Registry](/ecosystem/registry/?language=php&component=instrumentation) or
 [Packagist](https://packagist.org/packages/open-telemetry/).
 
