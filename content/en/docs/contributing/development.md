@@ -53,7 +53,7 @@ Your development environment will be initialized via the
 
 1.  [Fork] and then [clone] the website repository at
     <{{% param github_repo %}}>.
-2.  Go to the repository directory.
+2.  Go to the repository directory:
 
     ```sh
     cd opentelemetry.io
