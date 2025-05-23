@@ -12,7 +12,7 @@ busy month as we prepare for KubeCon North America in Chicago. We've got a lot
 to talk about once we're there, and we're excited to see you all in person!
 
 Are you a maintainer with something you’d like featured here? Get in touch with
-me [via email](mailto:austin+otel@ap2.io), or on the
+[Austin Parker via email](mailto:austin+otel@ap2.io), or on the
 [CNCF Slack #otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6)
 channel.
 
@@ -27,8 +27,8 @@ Here are the latest updates from some of our core repositories.
 Version 1.26.0 of the OpenTelemetry Specification has been released. This
 release includes several small changes, along with a new section that explains
 how OpenTelemetry handles upgrading and version management for components. For
-full details, please visit the full changelog
-[here](https://github.com/open-telemetry/opentelemetry-specification/compare/v1.25.0...v1.26.0)
+full details, see the
+[changes between v1.25.0 and v1.26.0](https://github.com/open-telemetry/opentelemetry-specification/compare/v1.25.0...v1.26.0)
 
 Semantic Conventions v1.22.0 introduces critical changes to the JVM, HTTP,
 System, and Messaging namespaces.
