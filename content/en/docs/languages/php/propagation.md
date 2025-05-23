@@ -17,9 +17,9 @@ HTTP headers.
 
 ## Automatic context propagation
 
-Auto-instrumentation exists for many popular frameworks, libraries, and PHP
-extensions. Many of them perform incoming and/or outgoing context propagation,
-and can be discovered via the
+Auto-instrumentation exists for some of the most popular frameworks, libraries,
+and PHP extensions. Many of them perform incoming and/or outgoing context
+propagation, and can be discovered via the
 [Registry](/ecosystem/registry/?language=php&component=instrumentation) or
 [Packagist](https://packagist.org/packages/open-telemetry/).
 
