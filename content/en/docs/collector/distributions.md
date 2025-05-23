@@ -12,7 +12,7 @@ the `manifest.yaml` of each distribution.
 [distributions]:
   https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions
 
-{{% ecosystem/distributions-table source="oss-collector-distros" %}}
+{{% ecosystem/distributions-table filter="oss-collector" %}}
 
 ## Custom Distributions
 
@@ -35,12 +35,12 @@ maintained by third parties.
 endorse** the third-party distributions listed in the following table. The list
 is provided as a convenience for the community. {{% /alert %}}
 
-{{% ecosystem/distributions-table source="collector-distros" %}}
+{{% ecosystem/distributions-table filter="vendor-collector" %}}
 
 ## Adding your Collector distribution {#how-to-add}
 
 To have your Collector distribution listed, [submit a PR] with an entry added to
-the distributions list. The entry should include the following:
+the [distributions list]. The entry should include the following:
 
 - Link to the main page of your distribution
 - Link to the documentation that explains how to use the distribution
@@ -48,3 +48,5 @@ the distributions list. The entry should include the following:
   in case we have questions
 
 [submit a PR]: /docs/contributing/pull-requests/
+[distributions list]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/distributions.yaml
