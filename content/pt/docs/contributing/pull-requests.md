@@ -29,7 +29,7 @@ mescladas.
 
 {{% alert title="Dica: Status de rascunho" %}}
 
-Defina o status do seu pull request como **Rascunho** (_Draft_) para informar
+Defina o status do seu _pull request_ como **Rascunho** (_Draft_) para informar
 aos mantenedores que o conteúdo ainda não está pronto para revisão. Os
 mantenedores ainda podem comentar ou fazer revisões de alto nível, mas não
 revisarão o conteúdo completamente até que você remova o status de rascunho.
