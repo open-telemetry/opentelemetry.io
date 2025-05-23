@@ -109,21 +109,21 @@ _Figura 2. Etapas para abrir um PR usando o GitHub._
 
 1. Selecione **Propor alteração de arquivo**.
 
-1. Selecione **Criar pull request**.
+1. Selecione **Criar _pull request_**.
 
-1. A tela **Abrir um pull request** aparece. Sua descrição ajuda os revisores a
+1. A tela **Abrir um _pull request_** aparece. Sua descrição ajuda os revisores a
    entenderem sua alteração.
 
-1. Selecione **Criar pull request**.
+1. Selecione **Criar _pull request_**.
 
-Antes de mesclar um pull request, os membros da comunidade OpenTelemetry revisam
+Antes de mesclar um _pull request_, os membros da comunidade OpenTelemetry revisam
 e aprovam.
 
 Se um revisor pedir para você fazer alterações:
 
 1. Vá para a aba **Arquivos alterados**.
-1. Selecione o ícone de lápis (editar) em qualquer arquivo alterado pelo pull
-   request.
+1. Selecione o ícone de lápis (editar) em qualquer arquivo alterado pelo _pull
+   request_.
 1. Faça as alterações solicitadas. Se houver uma sugestão de código, aplique-a.
 1. Confirme as alterações.
 
@@ -169,12 +169,12 @@ comandos de correção, execute `npm run -s '_list:fix:*'`.
 ## Trabalhando localmente {#fork-the-repo}
 
 Se você tem mais experiência com Git, ou se suas alterações são maiores do que
-algumas linhas, trabalhe a partir de um fork local.
+algumas linhas, trabalhe a partir de um _fork_ local.
 
-Certifique-se de que você tenha [`git` instalado] no seu computador. Você também
+Certifique-se de que você tenha [`git` instalado][`git` installed] no seu computador. Você também
 pode usar uma interface de usuário para o Git.
 
-A Figura 3 mostra os passos a seguir quando você trabalha a partir de um fork
+A Figura 3 mostra os passos a seguir quando você trabalha a partir de um _fork_
 local. Os detalhes de cada etapa seguem abaixo.
 
 ```mermaid
@@ -202,7 +202,7 @@ class S,T spacewhite
 class changes,changes2 white
 ```
 
-_Figura 3. Trabalhando a partir de um fork local para fazer suas alterações._
+_Figura 3. Trabalhando a partir de um _fork_ local para fazer suas alterações._
 
 ### Fazer fork do repositório
 
@@ -429,7 +429,7 @@ feche a janela do terminal.
 
 ### Implantações de site e prévias de PR
 
-Se você enviar um PR, o Netlify criará uma [prévia de implantação][] para que
+Se você enviar um PR, o Netlify criará uma [prévia de implantação][deploy preview] para que
 você possa revisar suas alterações. Assim que seu PR for mesclado, o Netlify
 implanta o site atualizado no servidor de produção.
 
@@ -562,8 +562,8 @@ Os pull requests são mesclados quando cumprem os seguintes critérios:
 > corrigi-las ou corrigindo-as em seu nome.
 
 [dashboard]: https://app.netlify.com/sites/opentelemetry/overview
-[prévia de implantação]:
+[deploy preview]:
   https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/
 [Git]: https://docs.github.com/en/get-started/using-git/about-git
-[`git` instalado]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+[`git` installed]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 [PR]: https://docs.github.com/en/pull-requests
