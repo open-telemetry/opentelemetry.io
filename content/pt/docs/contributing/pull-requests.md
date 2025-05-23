@@ -202,7 +202,7 @@ class S,T spacewhite
 class changes,changes2 white
 ```
 
-_Figura 3. Trabalhando a partir de um _fork_ local para fazer suas alterações._
+_Figura 3. Trabalhando a partir de um \_fork_ local para fazer suas alterações.\_
 
 ### Fazer fork do repositório
 
