@@ -19,7 +19,6 @@ cSpell:ignore: alertmanagers filelog horizontalpodautoscalers hostfs hostmetrics
 - [Prometheusレシーバー](#prometheus-receiver): [Prometheus](https://prometheus.io/)フォーマットのメトリクスを受信します。
 - [ホストメトリクスレシーバー](#host-metrics-receiver): Kubernetesノードからホストメトリクスをスクレイピングします。
 
-
 アプリケーションのトレース、メトリクス、またはログの場合は、[OTLPレシーバー](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver) をおすすめしますが、データに合ったレシーバーであれば何でも構いません。
 
 ## Kubernetes属性プロセッサー (Kubernetes Attributes Processor) {#kubernetes-attributes-processor}
@@ -505,7 +504,6 @@ volumeattachments                              storage.k8s.io/v1                
 サービスアカウントが唯一の認証オプションなので、サービスアカウントに適切なアクセス権を与える必要があります。
 収集したいオブジェクトについては、その名前がクラスターロールに追加されていることを確認する必要があります。
 たとえば、ポッドを収集したい場合、クラスターロールは次のようになります。
-
 
 ```yaml
 ---
