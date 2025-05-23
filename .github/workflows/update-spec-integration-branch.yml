@@ -1,4 +1,4 @@
-name: Update semconv integration branch
+name: Update specification integration branch
 
 on:
   schedule:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  update-semconv-integration-branch:
+  update-spec-integration-branch:
     runs-on: ubuntu-latest
     if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
@@ -22,7 +22,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          branch_prefix="opentelemetrybot/semconv-integration"
+          branch_prefix="opentelemetrybot/spec-integration"
 
           version=$(git branch -r \
                         | grep "^ *origin/$branch_prefix-v[0-9]+\.[0-9]+\..*-dev" \
@@ -31,7 +31,7 @@ jobs:
 
           if [[ -z "$versions" ]]; then
             latest_version=$(gh release view \
-                          --repo open-telemetry/semantic-conventions \
+                          --repo open-telemetry/opentelemetry-specification \
                           --json tagName \
                           --jq .tagName)
             if [[ $latest_version =~ ^v([0-9]+)\.([0-9]+)\. ]]; then
@@ -72,8 +72,8 @@ jobs:
 
       - name: Update submodule
         run: |
-          git submodule update --init content-modules/semantic-conventions
-          cd content-modules/semantic-conventions
+          git submodule update --init content-modules/opentelemetry-specification
+          cd content-modules/opentelemetry-specification
 
           if git ls-remote --exit-code --tags origin $VERSION; then
             git reset --hard $VERSION
@@ -84,12 +84,12 @@ jobs:
           commit_desc=$(git describe --tags)
           cd ../..
 
-          sed -i "s/^\tsemconv-pin = .*/\tsemconv-pin = $commit_desc/" .gitmodules
+          sed -i "s/^\tspec-pin = .*/\tspec-pin = $commit_desc/" .gitmodules
 
           git add -A
 
           if ! git diff-index --quiet --cached HEAD; then
-            git commit -am "Update semconv submodule to $commit_desc"
+            git commit -am "Update spec submodule to $commit_desc"
             git push
           fi
 
@@ -116,7 +116,7 @@ jobs:
         run: |
           prs=$(gh pr list --state open --head $BRANCH)
           if [ -z "$prs" ]; then
-            gh pr create --title "DRAFT Update semantic conventions to unreleased $VERSION-dev" \
-                         --body "This is a draft PR used for identifying issues integrating the latest (unreleased) semantic conventions." \
+            gh pr create --title "DRAFT Update specification to unreleased $VERSION-dev" \
+                         --body "This is a draft PR used for identifying issues integrating the latest (unreleased) specification." \
                          --draft
           fi

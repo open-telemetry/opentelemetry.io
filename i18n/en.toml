@@ -1,3 +1,8 @@
+# Docsy overrides
+
+[ui_search]
+other = "Ask AI or search…"
+
 # Community
 [community_introduce]
 other = "{{ .Site.Title }} is an open source project that anyone in the community can use, improve, and enjoy. We'd love you to join us!"
