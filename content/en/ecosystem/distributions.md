@@ -20,7 +20,7 @@ component they customize.
 endorse** the third-party distributions listed in the following table. The list
 is provided as a convenience for the community. {{% /alert %}}
 
-{{% ecosystem/distributions-table %}}
+{{% ecosystem/distributions-table filter="non-collector" %}}
 
 ## Adding your distribution {#how-to-add}
 
