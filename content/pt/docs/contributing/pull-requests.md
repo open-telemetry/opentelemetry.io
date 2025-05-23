@@ -562,8 +562,7 @@ Os pull requests são mesclados quando cumprem os seguintes critérios:
 > corrigi-las ou corrigindo-as em seu nome.
 
 [dashboard]: https://app.netlify.com/sites/opentelemetry/overview
-[deploy preview]:
-  https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/
+[deploy preview]: https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/
 [Git]: https://docs.github.com/en/get-started/using-git/about-git
 [`git` installed]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 [PR]: https://docs.github.com/en/pull-requests
