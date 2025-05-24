@@ -20,5 +20,5 @@ createdAt: 2024-11-18
 package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-ext-rdkafka
-  version: 0.0.2
+  version: 0.0.3
 isFirstParty: false

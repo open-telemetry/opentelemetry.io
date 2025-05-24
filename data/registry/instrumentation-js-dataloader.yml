@@ -17,5 +17,5 @@ createdAt: 2022-10-27
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-dataloader'
-  version: 0.17.0
+  version: 0.18.0
 isFirstParty: false

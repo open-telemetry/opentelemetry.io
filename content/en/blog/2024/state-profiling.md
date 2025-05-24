@@ -97,7 +97,7 @@ this effort, you can
 ## Semantic Conventions and Specification
 
 To improve interoperability, the Profiling SIG worked also on
-[OpenTelemetry Semantic Conventions for profiling](/docs/specs/semconv/attributes-registry/profile/).
+[OpenTelemetry Semantic Conventions for profiling](/docs/specs/semconv/registry/attributes/profile/).
 There is also ongoing work to introduce a
 [profiling OpenTelemetry specification](https://github.com/open-telemetry/opentelemetry-specification/pull/4197).
 This work will continue and should enable wide adoption across different

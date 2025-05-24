@@ -1534,7 +1534,7 @@ public class NoopUsage {
 
 The [semantic conventions](/docs/specs/semconv/) describe how to collect
 telemetry in a standardized way for common operations. This includes an
-[attribute registry](/docs/specs/semconv/attributes-registry/), which enumerates
+[attribute registry](/docs/specs/semconv/registry/attributes/), which enumerates
 definitions for all attributes referenced in the conventions, organized by
 domain. The
 [semantic-conventions-java](https://github.com/open-telemetry/semantic-conventions-java)
