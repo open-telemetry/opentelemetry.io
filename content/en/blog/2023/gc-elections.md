@@ -32,8 +32,8 @@ October 2023 23:59 UTC on
 [Helios Voting](https://vote.heliosvoting.org/helios/elections/1ee70ee4-11ce-11ee-aaf8-0a8c9aac83f9/view);
 voters will need to sign in with their GitHub account.
 
-To learn more about the election process, read about all of the details
-[here](https://github.com/open-telemetry/community/blob/main/elections/2023/governance-committee-election.md).
+For more information, see the
+[OpenTelemetry 2023 Governance Committee election](https://github.com/open-telemetry/community/blob/main/elections/2023/governance-committee-election.md).
 
 ## Interested in joining the Governance Committee?
 
@@ -46,9 +46,9 @@ refer to the
 [charter document](https://github.com/open-telemetry/community/blob/master/governance-charter.md).
 You may nominate yourself (or others!) by submitting a Pull Request against the
 [list of candidates](https://github.com/open-telemetry/community/blob/main/elections/2023/governance-committee-candidates.md)
-by 13 October 2023 23:59 UTC — more detailed requirements about the nomination
-and ratification process can be found
-[here](https://github.com/open-telemetry/community/blob/main/elections/2023/governance-committee-election.md).
+by 13 October 2023 23:59 UTC — see the detailed requirements under
+[nominations](https://github.com/open-telemetry/community/blob/main/elections/2023/governance-committee-election.md#nominations)
+for the Governance Committee election.
 
 We would like to thank the GC members who have helped grow OpenTelemetry, and
 invite them to run for re-election if they so choose: Ben Sigelman, Bogdan

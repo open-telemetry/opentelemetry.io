@@ -2,10 +2,10 @@
 title: フィーチャーフラグ
 aliases:
   - feature_flags
+  - scenarios
   - services/feature-flag
   - services/featureflagservice
-default_lang_commit: ea3b23ce16243364ae03d368d49af870454f686f
-drifted_from_default: file not found
+default_lang_commit: d7a61cc489f25935348229d0743fba9b8828dbc1
 cSpell:ignore: OLJCESPC7Z
 ---
 
@@ -35,6 +35,10 @@ cSpell:ignore: OLJCESPC7Z
 | `loadgeneratorFloodHomepage`        | 負荷生成ツール     | 大量のリクエストでホームページにフラッディングを開始します。 これは状態である flagd JSON の変更で設定可能です                        |
 | `kafkaQueueProblems`                | キュー             | Kafka キューに過負荷がかかり、同時にコンシューマー側の遅延も発生し、ラグの急増を引き起こします                                       |
 | `imageSlowLoad`                     | フロントエンド     | Envoy フォールトインジェクションを利用し、フロントエンドでの製品画像の読み込みに遅延を発生させます                                   |
+
+## ガイド付きデバッグシナリオ {#guided-debugging-scenario}
+
+`recommendationServiceCacheFailure` シナリオには、OpenTelemetry を使用してメモリリークをデバッグする方法を理解するのに役立つ[専用のウォークスルードキュメント](recommendation-cache/)があります。
 
 ## フューチャーフラグアーキテクチャ {#feature-flag-architecture}
 

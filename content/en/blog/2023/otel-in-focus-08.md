@@ -11,7 +11,7 @@ Welcome back to **OpenTelemetry in Focus** for August, 2023! It's been a busy
 summer, so let's get into the updates without further ado.
 
 Are you a maintainer with something you’d like featured here? Get in touch with
-me [via email](mailto:austin+otel@ap2.io), or on the
+[Austin Parker via email](mailto:austin+otel@ap2.io), or on the
 [CNCF Slack #otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6)
 channel.
 
