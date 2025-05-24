@@ -90,7 +90,7 @@ export OTEL_PYTHON_TORNADO_TRACED_REQUEST_ATTRS='uri,query'
 - `OTEL_PYTHON_LOG_CORRELATION`: для увімкнення впровадження контексту трасування у логи (true, false)
 - `OTEL_PYTHON_LOG_FORMAT`: для вказівки інструменту використовувати спеціальний формат логування
 - `OTEL_PYTHON_LOG_LEVEL`: для встановлення спеціального рівня логування (info, error, debug, warning)
-- `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED`: для увімкнення автоматичного інструментування логів. Приєднує OTLP обробник до кореневого логера Python. Дивіться приклад [тут](/docs/zero-code/python/logs-example)
+- `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED`: для увімкнення автоматичного інструментування логів. Приєднує OTLP обробник до кореневого логера Python. Дивіться приклад [автоінструментування логів](/docs/zero-code/python/logs-example)
 
 Приклади:
 

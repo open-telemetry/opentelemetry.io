@@ -21,7 +21,7 @@ cSpell:ignore: centos democlass epel myapp pecl phar remi
 
 {{% alert title="Важливо" color="warning" %}}Встановлення розширення OpenTelemetry само по собі не генерує трасування. {{% /alert %}}
 
-Розширення можна встановити через pecl, [pickle](https://github.com/FriendsOfPHP/pickle) або [php-extension-installer](https://github.com/mlocati/docker-php-extension-installer) (специфічно для docker). Також є пакетовані версії розширення, доступні для деяких менеджерів пакетів Linux.
+Розширення можна встановити через pecl, [pickle](https://github.com/FriendsOfPHP/pickle), [PIE](https://github.com/php/pie) або [php-extension-installer](https://github.com/mlocati/docker-php-extension-installer) (специфічно для docker). Також є пакетовані версії розширення, доступні для деяких менеджерів пакетів Linux.
 
 ### Пакунки Linux {#linux-packages}
 

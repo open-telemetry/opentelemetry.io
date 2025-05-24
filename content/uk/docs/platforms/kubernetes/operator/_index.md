@@ -24,7 +24,7 @@ redirects:
 
 ## Початок роботи {#getting-started}
 
-Щоб встановити оператор у наявний кластер, переконайтеся, що у вас встановлений cert-manager, і виконайте:
+Щоб встановити оператор у наявний кластер, переконайтеся, що у вас встановлений [`cert-manager`](https://cert-manager.io/docs/installation/), і виконайте:
 
 ```bash
 kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/latest/download/opentelemetry-operator.yaml
@@ -34,12 +34,12 @@ kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releas
 
 ```console
 $ kubectl apply -f - <<EOF
-apiVersion: opentelemetry.io/v1alpha1
+apiVersion: opentelemetry.io/v1beta1
 kind: OpenTelemetryCollector
 metadata:
   name: simplest
 spec:
-  config: |
+  config:
     receivers:
       otlp:
         protocols:
@@ -48,16 +48,23 @@ spec:
           http:
             endpoint: 0.0.0.0:4318
     processors:
+      memory_limiter:
+        check_interval: 1s
+        limit_percentage: 75
+        spike_limit_percentage: 15
+      batch:
+        send_batch_size: 10000
+        timeout: 10s
 
     exporters:
       # ПРИМІТКА: До v0.86.0 використовуйте `logging` замість `debug`.
-      debug:
+      debug: {}
 
     service:
       pipelines:
         traces:
           receivers: [otlp]
-          processors: []
+          processors: [memory_limiter, batch]
           exporters: [debug]
 EOF
 ```
@@ -69,4 +76,4 @@ EOF
 
 {{% /alert %}}
 
-Для отримання додаткових параметрів конфігурації та налаштування інʼєкції автоматичного інструментування робочих навантажень за допомогою бібліотек інструментування OpenTelemetry, продовжуйте читати [тут](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md).
+Для отримання додаткових параметрів конфігурації та налаштування інʼєкції автоматичного інструментування робочих навантажень за допомогою бібліотек інструментування OpenTelemetry, дивіться [OpenTelemetry Operator for Kubernetes](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md).

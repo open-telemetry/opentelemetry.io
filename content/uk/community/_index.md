@@ -13,7 +13,7 @@ cascade:
 
 ## Спеціальні робочі групи {#special-interest-groups}
 
-Ми організовували спільноту у Спеціальні Робочі Групи (Special Interest Groups, SIGs), щоб покращити нашу робочий процес та легше керувати проєктом. [Дізнайтеся більше](https://github.com/open-telemetry/community#special-interest-groups) у нашому [репозиторії спільноти](https://github.com/open-telemetry/community).
+Ми організовували спільноту у [Спеціальні Робочі Групи (Special Interest Groups, SIGs)](https://github.com/open-telemetry/community#special-interest-groups), щоб покращити нашу робочий процес та легше керувати проєктом. Дізнайтеся більше у нашому [репозиторії спільноти](https://github.com/open-telemetry/community).
 
 ## Екосистема {#ecosystem}
 

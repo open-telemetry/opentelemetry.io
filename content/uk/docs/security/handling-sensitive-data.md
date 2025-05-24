@@ -52,7 +52,7 @@ OpenTelemetry збирає телеметричні дані, але не мож
 
 ### Deleting and hashing user information {#deleting-and-hashing-user-information}
 
-Наступна конфігурація для процесора `attribute` хешує `user.email` і видаляє `user.full_name` з конфіденційної інформації [`user`](/docs/specs/semconv/attributes-registry/user/#user-hash):
+Наступна конфігурація для процесора `attribute` хешує `user.email` і видаляє `user.full_name` з конфіденційної інформації [`user`](/docs/specs/semconv/registry/attributes/user/#user-hash):
 
 ```yaml
 processors:

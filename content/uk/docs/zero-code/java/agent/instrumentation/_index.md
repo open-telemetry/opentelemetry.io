@@ -68,7 +68,7 @@ default=false
 
 ## Захоплення атрибутів кінцевого користувача {#capturing-enduser-attributes}
 
-Ви можете налаштувати агент для захоплення [загальних атрибути ідентифікації](/docs/specs/semconv/attributes-registry/enduser/) (`enduser.id`, `enduser.role`, `enduser.scope`) з бібліотек інструментування таких як [JavaEE/JakartaEE Servlet](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/servlet) та [Spring Security](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-security-config-6.0).
+Ви можете налаштувати агент для захоплення [загальних атрибутів ідентифікації](/docs/specs/semconv/registry/attributes/enduser/) (`enduser.id`, `enduser.role`, `enduser.scope`) з бібліотек інструментування таких як [JavaEE/JakartaEE Servlet](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/servlet) та [Spring Security](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-security-config-6.0).
 
 > **Примітка**: З огляду на чутливий характер даних, ця функція стандартно вимкнена, дозволяючи вибіркову активацію для конкретних атрибутів. Ви повинні ретельно оцінити наслідки для конфіденційності кожного атрибуту перед увімкненням збору даних.
 
