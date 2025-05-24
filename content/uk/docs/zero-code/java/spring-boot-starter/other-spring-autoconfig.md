@@ -13,7 +13,8 @@ cSpell:ignore: autoconfigurations
 
 OpenTelemetry Zipkin Exporter Starter — це стартовий пакунок, який включає `opentelemetry-api`, `opentelemetry-sdk`, `opentelemetry-extension-annotations`, `opentelemetry-logging-exporter`, `opentelemetry-spring-boot-autoconfigurations` та стартери фреймворку spring, необхідні для налаштування розподіленого трасування. Він також надає артефакт [opentelemetry-exporters-zipkin](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/zipkin) та відповідну автоконфігурацію експортера.
 
-Якщо експортер присутній у classpath під час виконання і spring bean експортера відсутній у контексті застосунку spring, bean експортера ініціалізується та додається до простого процесора span в активному провайдері трасування. Перегляньте реалізацію [тут](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java).
+Якщо експортер присутній у classpath під час виконання і spring bean експортера відсутній у контексті застосунку spring, bean експортера ініціалізується та додається до простого процесора span в активному провайдері трасування. Для більш детальної інформації дивіться
+[реалізацію (OpenTelemetryAutoConfiguration.java)](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java).
 
 {{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 

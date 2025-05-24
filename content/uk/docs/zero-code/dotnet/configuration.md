@@ -298,7 +298,7 @@ CORECLR_PROFILER_PATH_64
 
 ## Внутрішні логи {#internal-logs}
 
-Типові шляхи до каталогів внутрішніх логів:
+Типові шляхи до тек внутрішніх логів:
 
 - Windows: `%ProgramData%\OpenTelemetry .NET AutoInstrumentation\logs`
 - Linux: `/var/log/opentelemetry/dotnet`

@@ -12,7 +12,7 @@ OpenTelemetry надає текстовий підхід для поширенн
 
 ## Автоматичне поширення контексту {#automatic-context-propagation}
 
-Автоінструментування існує для деяких популярних PHP фреймворків, таких як Symfony, Laravel або Slim. HTTP бібліотеки пропагують контекст для вхідних та вихідних HTTP запитів.
+Автоінструментування існує для деяких найпопулярніших фреймворків, бібліотек та розширень PHP. Багато з них виконують поширення вхідного та/або вихідного контексту, і їх можна знайти за допомогою [Registry](/ecosystem/registry/?language=php&component=instrumentation) або [Packagist](https://packagist.org/packages/open-telemetry/).
 
 {{% alert title="Примітка" %}}
 
@@ -22,19 +22,15 @@ OpenTelemetry надає текстовий підхід для поширенн
 
 ### Вхідні запити {#incoming-requests}
 
-Автоінструментування для фреймворків, які реалізують [PSR-15](https://www.php-fig.org/psr/psr-15/) `RequestHandlerInterface`, автоматично витягує заголовки W3C tracecontext, створює кореневий відрізок та встановлює віддаленого батька для кореневого відрізка.
+Розповсюдження контексту може автоматично оброблятися кількома способами:
 
-```shell
-composer require open-telemetry/opentelemetry-auto-psr15
-```
+- за допомогою підтримуваного PHP-фреймворку (наприклад: Laravel, Symfony, Slim) разом з відповідним пакетом автоінструментування
+- реалізацією [PSR-15](https://www.php-fig.org/psr/psr-15/) `RequestHandlerInterface` у вашому коді, разом з відповідним пакетом автоінструментування
+- за допомогою експериментальної можливості [auto root span](../sdk/#configuration)
 
 ### Вихідні запити {#outgoing-requests}
 
-Автоінструментування [PSR-18](https://www.php-fig.org/psr/psr-18/) автоматично застосовує заголовки W3C tracecontext до вихідних HTTP запитів для будь-якої бібліотеки, яка реалізує інтерфейс PSR-18.
-
-```shell
-open-telemetry/opentelemetry-auto-psr18
-```
+Пакунки автоінструментування для HTTP-клієнтів та інтерфейсів автоматично додають заголовки W3C tracecontext до вихідних HTTP-запитів.
 
 ## Ручне поширення контексту {#manual-context-propagation}
 

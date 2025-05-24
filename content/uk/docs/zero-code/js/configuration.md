@@ -13,7 +13,7 @@ cSpell:ignore: serviceinstance
 
 ## Конфігурація SDK та експортера {#sdk-and-exporter-configuration}
 
-Конфігурацію SDK та експортера можна налаштувати за допомогою змінних середовища. Більше інформації можна знайти [тут](/docs/languages/sdk-configuration/).
+[Конфігурацію SDK](/docs/languages/sdk-configuration/) та експортера можна налаштувати за допомогою змінних середовища.
 
 ## Конфігурація детектора ресурсів SDK {#sdk-resource-detector-configuration}
 

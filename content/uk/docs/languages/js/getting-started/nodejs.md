@@ -10,7 +10,7 @@ cSpell:ignore: autoinstrumentations KHTML rolldice
 
 Ви дізнаєтеся, як інструментувати як [трейси][], так і [метрики][] та як логувати їх у консоль.
 
-{{% alert title="Примітка" color="info" %}} Бібліотека логування для OpenTelemetry для Node.js все ще знаходиться в розробці, тому приклад для неї не надається нижче. Дивіться [тут](/docs/languages/js) для отримання додаткової інформації про статус OpenTelemetry у JavaScript. {{% /alert %}}
+{{% alert title="Примітка" color="info" %}} Бібліотека логування OpenTelemetry для Node.js все ще знаходиться в розробці, тому приклад для неї не надається нижче. Докладні відомості про статус див. у розділі [Статус і релізи](/docs/languages/js/#status-and-releases).{{% /alert %}}
 
 ## Попередні вимоги {#prerequisites}
 

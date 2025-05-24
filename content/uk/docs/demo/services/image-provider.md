@@ -1,6 +1,6 @@
 ---
 title: Сервіс постачальника зображень
-linkTitle: Image Provider
+linkTitle: Зображення
 aliases: [imageprovider] # cSpell:disable-line
 ---
 

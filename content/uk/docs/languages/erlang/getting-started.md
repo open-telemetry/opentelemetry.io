@@ -20,9 +20,9 @@ cSpell:ignore: bogons defmodule defp ecto elixirc erts Eshell hipe KHTML postgre
 
 ### Приклад застосунку {#example-application}
 
-Наступний приклад проведе вас через створення базового вебзастосунку [Phoenix](https://www.phoenixframework.org/) та його інструментування за допомогою OpenTelemetry. Для довідки, повний приклад коду, який ви створите, можна знайти тут: [opentelemetry-erlang-contrib/examples/roll_dice](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples/roll_dice).
+Наступний приклад проведе вас через створення базового вебзастосунка [Phoenix](https://www.phoenixframework.org/) та його інструментування за допомогою OpenTelemetry. Для довідки, повний приклад коду, який ви створите, можна знайти тут: [opentelemetry-erlang-contrib/examples/roll_dice](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples/roll_dice).
 
-Додаткові приклади можна знайти [тут](/docs/languages/erlang/examples/).
+Додаткові приклади можна знайти в [opentelemetry-erlang-contrib examples](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples).
 
 ### Початкове налаштування {#initial-setup}
 
@@ -101,7 +101,7 @@ end
 config :opentelemetry, traces_exporter: {:otel_exporter_stdout, []}
 ```
 
-Тепер ми можемо використовувати нову команду `mix setup`, щоб встановити залежності, зібрати активи та створити і мігрувати базу даних.
+Тепер ми можемо використовувати нову команду `mix setup`, щоб встановити залежності, зібрати активи та створити та мігрувати базу даних.
 
 ### Спробуйте {#try-it-out}
 
@@ -109,7 +109,7 @@ config :opentelemetry, traces_exporter: {:otel_exporter_stdout, []}
 
 Якщо все пройшло добре, ви повинні побачити кілька рядків, схожих на ці, у вашому терміналі, коли відвідаєте [localhost:4000](http://localhost:4000) у вашому оглядачі.
 
-(Не хвилюйтеся, якщо формат виглядає трохи незнайомим. Відрізки записуються у структурі даних Erlang `record`. Ви можете знайти більше інформації про записи [тут](https://www.erlang.org/doc/reference_manual/records.html), а [цей](https://github.com/open-telemetry/opentelemetry-erlang/blob/main/apps/opentelemetry/include/otel_span.hrl#L19) файл описує структуру запису `span` і пояснює, що означають різні поля.)
+(Не хвилюйтеся, якщо формат виглядає трохи незвично. Відрізки записуються в [структурі даних Erlang `record`](https://www.erlang.org/doc/reference_manual/records.html), а [`otel_span.hrl`](https://github.com/open-telemetry/opentelemetry-erlang/blob/main/apps/opentelemetry/include/otel_span.hrl#L19) описує структуру запису `span` і пояснює, що таке різні поля.)
 
 ```shell
 *SPANS FOR DEBUG*
