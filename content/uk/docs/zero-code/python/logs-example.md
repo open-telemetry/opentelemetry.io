@@ -13,9 +13,9 @@ cSpell:ignore: distro mkdir virtualenv
 
 Інший спосіб досягти цього — через підтримку автоматичної інструменталізації логів у Python. Приклад нижче базується на прикладі логів у [репозиторії OpenTelemetry Python][репозиторій OpenTelemetry Python].
 
-> Існує API мосту логів; однак, він відрізняється від API трасування та метрик, оскільки його не використовують розробники застосунків для створення логів. Натомість вони використовували б цей API мосту для налаштування доповнювачів логів у стандартних бібліотеках логування для конкретної мови. Більше інформації можна знайти [тут](/docs/specs/otel/logs/api/).
+> Існує API мосту логів; однак, він відрізняється від API трасування та метрик, оскільки його не використовують розробники застосунків для створення логів. Натомість вони використовували б цей API мосту для налаштування доповнювачів логів у стандартних бібліотеках логування для конкретної мови. Більше інформації можна знайти в [Logs API](/docs/specs/otel/logs/api/).
 
-Почніть зі створення каталогу прикладів та файлу прикладу Python:
+Почніть зі створення теки прикладів та файлу прикладу Python:
 
 ```sh
 mkdir python-logs-example
@@ -40,7 +40,7 @@ with tracer.start_as_current_span("foo"):
     logging.getLogger().error("Це повідомлення лога")
 ```
 
-Отримайте копію конфігурації OTel Collector [звідси](https://github.com/open-telemetry/opentelemetry-python/blob/main/docs/examples/logs/otel-collector-config.yaml), і збережіть її у `python-logs-example/otel-collector-config.yaml`
+Відкрийте та скопіюйте приклад [otel-collector-config.yaml](https://github.com/open-telemetry/opentelemetry-python/blob/main/docs/examples/logs/otel-collector-config.yaml) і збережіть його у файлі `python-logs-example/otel-collector-config.yaml`.
 
 ## Підготовка {#prepare}
 

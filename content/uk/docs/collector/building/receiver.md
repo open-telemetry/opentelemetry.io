@@ -8,7 +8,7 @@ cSpell:ignore: backendsystem crand debugexporter loggingexporter mapstructure pc
 
 <!-- markdownlint-disable heading-increment no-duplicate-heading -->
 
-Якщо ви читаєте цей підручник, ви, ймовірно, вже маєте уявлення про концепції OpenTelemetry, повʼязані з розподіленим трасуванням, але якщо ні, ви можете швидко ознайомитися з ними [тут](/docs/concepts/signals/traces/).
+Якщо ви читаєте цей підручник, ви, ймовірно, вже маєте уявлення про концепції OpenTelemetry, повʼязані з [розподіленим трасуванням](/docs/concepts/signals/traces/).
 
 Ось визначення цих концепцій згідно з OpenTelemetry:
 
@@ -156,7 +156,7 @@ go mod init github.com/open-telemetry/opentelemetry-tutorials/trace-receiver/tai
 > Примітка:
 >
 > 1. Шлях модуля вище є макетом, який може бути вашим бажаним приватним або публічним шляхом.
-> 2. Початковий код розміщено [тут](https://github.com/rquedas/otel4devs/tree/main/collector/receiver/trace-receiver).
+> 2. Ознайомтесь з [кодом trace-receiver](https://github.com/rquedas/otel4devs/tree/main/collector/receiver/trace-receiver).
 
 Рекомендується увімкнути [Workspaces](https://go.dev/doc/tutorial/workspaces) у Go, оскільки ми будемо керувати кількома модулями Go: `otelcol-dev` і `tailtracer`, а можливо, і більше компонентів з часом.
 

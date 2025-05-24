@@ -39,7 +39,7 @@ import (
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/sdk/resource"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.32.0"
 	"go.opentelemetry.io/otel/trace"
 )
 
@@ -173,7 +173,7 @@ span.SetAttributes(myKey.String("a value"))
 
 #### Семантичні атрибути {#semantic-attributes}
 
-Семантичні атрибути — це атрибути, визначені [Специфікацією OpenTelemetry][специфікація opentelemetry], щоб забезпечити спільний набір ключів атрибутів для кількох мов, фреймворків та середовищ виконання для загальних концепцій, таких як HTTP методи, коди стану, агенти користувача тощо. Ці атрибути доступні в пакунку `go.opentelemetry.io/otel/semconv/v1.26.0`.
+Семантичні атрибути — це атрибути, визначені [Специфікацією OpenTelemetry][специфікація opentelemetry], щоб забезпечити спільний набір ключів атрибутів для кількох мов, фреймворків та середовищ виконання для загальних концепцій, таких як HTTP методи, коди стану, агенти користувача тощо. Ці атрибути доступні в пакунку `go.opentelemetry.io/otel/semconv/v1.32.0`.
 
 Для деталей дивіться [Семантичні конвенції трейсів][].
 
@@ -316,7 +316,7 @@ import (
 	"go.opentelemetry.io/otel/exporters/stdout/stdoutmetric"
 	"go.opentelemetry.io/otel/sdk/metric"
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.32.0"
 )
 
 func main() {
@@ -684,7 +684,7 @@ import (
 	"net/http"
 
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.32.0"
 )
 
 func init() {
@@ -885,7 +885,7 @@ import (
 	"go.opentelemetry.io/otel/log/global"
 	"go.opentelemetry.io/otel/sdk/log"
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.32.0"
 )
 
 func main() {

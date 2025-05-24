@@ -2,7 +2,7 @@
 title: Усунення несправностей автоматичного інструментування .NET
 linkTitle: Усунення несправностей
 weight: 50
-cSpell:ignore: corehost netfx TRACEFILE
+cSpell:ignore: corehost netfx pjanotti's TRACEFILE
 ---
 
 ## Загальні кроки {#general-steps}
@@ -116,7 +116,7 @@ File name: 'Microsoft.Extensions.DependencyInjection.Abstractions, Version=7.0.0
 
 Якщо у вас виникають проблеми в одному з наведених вище сценаріїв, знову запустіть команду `Install-OpenTelemetryCore` з модуля встановлення PowerShell, щоб переконатися, що необхідні установки GAC оновлені.
 
-Для отримання додаткової інформації про використання GAC автоматичним інструментуванням дивіться [тут](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/1906#issuecomment-1376292814).
+Для отримання додаткової інформації про використання GAC автоматичним інструментуванням дивіться [коментар pjanotti](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/1906#issuecomment-1376292814).
 
 Дивіться [#2269](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2269) та [#2296](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2296) для отримання додаткової інформації.
 

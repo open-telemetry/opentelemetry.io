@@ -226,7 +226,7 @@ DockerCGroupV1Detector found resource. Resource {
 
 ## Наступні кроки {#next-steps}
 
-Існує більше детекторів ресурсів, які ви можете додати до своєї конфігурації, наприклад, щоб отримати деталі про ваше [Хмарне][хмара] середовище або [Розгортання][]. Ви знайдете список [тут](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node).
+До конфігурації можна додати більше детекторів ресурсів, наприклад, щоб отримати деталі про ваше [Хмарне][хмара] середовище або [Розгортання][]. Для отримання додаткової інформації дивіться [перелік детекторів](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node).
 
 [початок роботи - node.js]: /docs/languages/js/getting-started/nodejs/
 [ресурси процесу та середовища процесу]: /docs/specs/semconv/resource/process/

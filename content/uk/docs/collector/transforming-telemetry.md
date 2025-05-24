@@ -1,34 +1,23 @@
 ---
-title: Transforming telemetry
+title: Перетворення телеметрії
 weight: 26
 # prettier-ignore
 cSpell:ignore: accountid clustername k8sattributes metricstransform OTTL resourcedetection
 ---
 
-The OpenTelemetry Collector is a convenient place to transform data before
-sending it to a vendor or other systems. This is frequently done for data
-quality, governance, cost, and security reasons.
+OpenTelemetry Collector — це зручне місце для перетворення даних перед надсиланням їх постачальнику або іншим системам. Це часто робиться з міркувань якості даних, управління, вартості та безпеки.
 
-Processors available from the
-[Collector Contrib repository](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor)
-support dozens of different transformations on metric, span and log data. The
-following sections provide some basic examples on getting started with a few
-frequently-used processors.
+Обробники, доступні в [Collector Contrib репозиторії](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor), підтримують десятки різних перетворень метрик, відрізків та даних логів. У наступних розділах наведено кілька базових прикладів для початку роботи з деякими часто використовуваними процесорами.
 
-The configuration of processors, particularly advanced transformations, may have
-a significant impact on collector performance.
+Конфігурація процесорів, особливо розширені перетворення, може мати значний вплив на продуктивність колектора.
 
-## Basic filtering
+## Базова фільтрація {#basic-filtering}
 
-**Processor**:
-[filter processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor)
+**Процесор**: [filter processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor)
 
-The filter processor allows users to filter telemetry using
-[OTTL](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/README.md).
-Telemetry that matches any condition is dropped.
+Процесор фільтрації дозволяє користувачам фільтрувати телеметрію за допомогою [OTTL](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/README.md). Телеметрія, яка відповідає будь-якій умові, відкидається.
 
-For example, to _only_ allow span data from services app1, app2, and app3 and
-drop data from all other services:
+Наприклад, дозволити _лише_ дані з сервісів app1, app2 та app3 і відкинути дані з усіх інших сервісів:
 
 ```yaml
 processors:
@@ -42,8 +31,7 @@ processors:
         resource.attributes["service.name"] != "app3"
 ```
 
-To only drop spans from a service called `service1` while keeping all other
-spans:
+Для того, щоб відкинути лише відрізки з сервісу з назвою `service1`, зберігаючи всі інші відрізки:
 
 ```yaml
 processors:
@@ -54,20 +42,13 @@ processors:
         - resource.attributes["service.name"] == "service1"
 ```
 
-The
-[filter processor docs](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor)
-have more examples, including filtering on logs and metrics.
+Документація [filter processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor) містить більше прикладів, включаючи фільтрацію за логами та метриками.
 
-## Adding or Deleting Attributes
+## Додавання або видалення атрибутів {#adding-or-deleting-attributes}
 
-**Processor**:
-[attributes processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor)
-or
-[resource processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourceprocessor)
+**Процесор**: [attributes processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor) або [resource processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourceprocessor)
 
-The attributes processor can be used to update, insert, delete, or replace
-existing attributes on metrics or traces. For example, here’s a configuration
-that adds an attribute called account_id to all spans:
+Процесор атрибутів можна використовувати для оновлення, вставки, видалення або заміни наявних атрибутів у метриках або відрізках. Наприклад, ось конфігурація, яка додає атрибут з назвою account_id до всіх відрізків:
 
 ```yaml
 processors:
@@ -78,10 +59,7 @@ processors:
         action: insert
 ```
 
-The resource processor has an identical configuration, but applies only to
-[resource attributes](/docs/specs/semconv/resource/). Use the resource processor
-to modify infrastructure metadata related to telemetry. For example, this
-inserts the Kubernetes cluster name:
+Процесор ресурсів має ідентичну конфігурацію, але застосовується лише до [атрибутів ресурсів](/docs/specs/semconv/resource/). Використовуйте процесор ресурсів для зміни метаданих інфраструктури, повʼязаних з телеметрією. Наприклад, це додає назву кластера Kubernetes:
 
 ```yaml
 processors:
@@ -92,16 +70,11 @@ processors:
         action: insert
 ```
 
-## Renaming Metrics or Metric Labels
+## Перейменування метрик або міток метрик{#renaming-metrics-or-metric-labels}
 
-**Processor:**
-[metrics transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor)
+**Процесор:** [metrics transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor)
 
-The
-[metrics transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor)
-shares some functionality with the
-[attributes processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor),
-but also supports renaming and other metric-specific functionality.
+[metrics transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor) має деяку функціональність, спільну з [attributes processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor), але також підтримує перейменування та іншу специфічну для метрик функціональність.
 
 ```yaml
 processors:
@@ -112,11 +85,7 @@ processors:
         new_name: system.cpu.usage_time
 ```
 
-The
-[metrics transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor)
-also supports regular expressions to apply transform rules to multiple metric
-names or metric labels at the same time. This example renames cluster_name to
-cluster-name for all metrics:
+Процесор [metrics transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor) також підтримує регулярні вирази для застосування правил перетворення до кількох назв метрик або міток метрик одночасно. Цей приклад перейменовує cluster_name на cluster-name для всіх метрик:
 
 ```yaml
 processors:
@@ -131,48 +100,36 @@ processors:
             new_label: cluster-name
 ```
 
-## Enriching Telemetry with Resource Attributes
+## Збагачення телеметрії атрибутами ресурсів {#enriching-telemetry-with-resource-attributes}
 
-**Processor**:
-[resource detection processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor)
-and
-[k8sattributes processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)
+**Процесор**:
+[resource detection processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor) та [k8sattributes processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)
 
-These processors can be used for enriching telemetry with relevant
-infrastructure metadata to help teams quickly identify when underlying
-infrastructure is impacting service health or performance.
+Ці процесори можна використовувати для збагачення телеметрії відповідними метаданими інфраструктури, щоб допомогти командам швидко визначити, коли підрядна інфраструктура впливає на справність або продуктивність служби.
 
-The resource detection processor adds relevant cloud or host-level information
-to telemetry:
+Процесор виявлення ресурсів додає відповідну інформацію про хмару або рівень хоста до телеметрії:
 
 ```yaml
 processors:
   resourcedetection/system:
-    # Modify the list of detectors to match the cloud environment
+    # Змініть список детекторів відповідно до хмарного середовища
     detectors: [env, system, gcp, ec2, azure]
     timeout: 2s
     override: false
 ```
 
-Similarly, the K8s processor enriches telemetry with relevant Kubernetes
-metadata like pod name, node name, or workload name. The collector pod must be
-configured to have read access to certain Kubernetes RBAC APIs, which is
-documented
-[here](https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor#hdr-RBAC).
-To use the default options, it can be configured with an empty block:
+Аналогічно, процесор K8s збагачує телеметрію відповідними метаданими Kubernetes, такими як назва пода, назва вузла або назва робочого навантаження. Под колектора повинен бути налаштований на надання [доступу для читання до певних API Kubernetes RBAC](https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor#readme-role-based-access-control). Щоб використовувати стандартні параметри, його можна налаштувати з порожнім блоком:
 
 ```yaml
 processors:
   k8sattributes/default:
 ```
 
-## Setting a span status
+## Встановлення статусу відрізка {#setting-a-span-status}
 
-**Processor**:
-[transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor)
+**Процесор**: [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor)
 
-Use the transform processor to set a span's status. The following example sets
-the span status to `Ok` when the `http.request.status_code` attribute is 400:
+Використовуйте процесор перетворення, щоб встановити статус відрізка. Наступний приклад встановлює статус відрізка на `Ok`, коли атрибут `http.request.status_code` дорівнює 400:
 
 <!-- prettier-ignore-start -->
 
@@ -185,16 +142,8 @@ transform:
 
 <!-- prettier-ignore-end -->
 
-You can also use the transform processor to modify the span name based on its
-attributes or extract span attributes from the span name. For examples, see an
-example
-[config file](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9b28f76c02c18f7479d10e4b6a95a21467fd85d6/processor/transformprocessor/testdata/config.yaml)
-file for the transform processor.
+Ви також можете використовувати процесор перетворення, щоб змінити назву відрізка на основі його атрибутів або витягнути атрибути відрізка з назви відрізка. Дивіться приклад [файлу конфігурації](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9b28f76c02c18f7479d10e4b6a95a21467fd85d6/processor/transformprocessor/testdata/config.yaml) для процесора перетворення.
 
-## Advanced Transformations
+## Розширені перетворення {#advanced-transformations}
 
-More advanced attribute transformations are also available in the
-[transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor).
-The transform processor allows end-users to specify transformations on metrics,
-logs, and traces using the
-[OpenTelemetry Transformation Language](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl).
+Складніші перетворення атрибутів також доступні в [процесорі перетворення](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor). Процесор перетворення дозволяє кінцевим користувачам вказувати перетворення для метрик, логів і трейсів за допомогою [OpenTelemetry Transformation Language](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl).
