@@ -15991,6 +15991,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:27:12.345Z"
   },
+  "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk-trace-base.SpanExporter.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-24T01:58:06.932001554Z"
+  },
   "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk_trace_base.SpanExporter.html": {
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:54:28.713498-05:00"
