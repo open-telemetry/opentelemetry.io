@@ -41,7 +41,7 @@ de forma consistente em todo o site:
 - [OpAMP](/docs/concepts/glossary/#opamp)
 
 Para uma lista completa de termos do OpenTelemetry e suas definições, consulte o
-[Glossário](/docs/concepts/glossary/).
+[Glossary](/docs/concepts/glossary/).
 
 Certifique-se de que nomes próprios, como outros projetos da CNCF ou ferramentas
 de terceiros, sejam escritos corretamente e utilizem a capitalização original.
@@ -72,9 +72,9 @@ Execute:
 - `npm run fix:markdown` para corrigir problemas de formatação relacionados ao
   Markdown
 
-Também aplicamos o [formato de arquivo](#file-format) do Markdown e removemos
-espaços em branco no final das linhas. Isso exclui a [sintaxe de quebra de
-linha] de 2+ espaços; use `<br>` em vez disso ou reformate seu texto.
+Também aplicamos o [file format](#file-format) do Markdown e removemos espaços
+em branco no final das linhas. Isso exclui a [line break syntax] de 2+ espaços;
+use `<br>` em vez disso ou reformate seu texto.
 
 ## Verificação ortográfica
 
@@ -98,7 +98,7 @@ cSpell:ignore: <palavra>
 
 Para qualquer outro arquivo, adicione `cSpell:ignore <palavra>` em uma linha de
 comentário apropriada para o contexto do arquivo. Para um arquivo YAML de
-entrada de [registro](/ecosystem/registry/), pode ser assim:
+entrada de [registry](/ecosystem/registry/), pode ser assim:
 
 ```yaml
 # cSpell:ignore <palavra>
@@ -123,7 +123,6 @@ Todos os nomes de arquivos devem estar em
 
 [.markdownlint.json]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.json
-[sintaxe de quebra de linha]:
-  https://www.markdownguide.org/basic-syntax/#line-breaks
+[line break syntax]: https://www.markdownguide.org/basic-syntax/#line-breaks
 [markdownlint]: https://github.com/DavidAnson/markdownlint
 [Prettier]: https://prettier.io
