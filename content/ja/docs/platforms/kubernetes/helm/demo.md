@@ -37,13 +37,13 @@ kubectl port-forward svc/my-otel-demo-frontendproxy 8080:8080
 
 プロキシが公開されたら、以下のパスにアクセスすることもできます。
 
-| コンポーネント       | パス                              |
-| ----------------- | --------------------------------- |
-| ウェブストア        | <http://localhost:8080>           |
-| Grafana           | <http://localhost:8080/grafana>   |
-| 機能フラグUI        | <http://localhost:8080/feature>   |
-| 負荷生成UI         | <http://localhost:8080/loadgen>   |
-| Jaeger UI         | <http://localhost:8080/jaeger/ui> |
+| コンポーネント | パス                              |
+| -------------- | --------------------------------- |
+| ウェブストア   | <http://localhost:8080>           |
+| Grafana        | <http://localhost:8080/grafana>   |
+| 機能フラグUI   | <http://localhost:8080/feature>   |
+| 負荷生成UI     | <http://localhost:8080/loadgen>   |
+| Jaeger UI      | <http://localhost:8080/jaeger/ui> |
 
 ウェブストアからのスパンを収集するには、OpenTelemetryコレクターOTLP/HTTPレシーバーを公開する必要があります。
 
