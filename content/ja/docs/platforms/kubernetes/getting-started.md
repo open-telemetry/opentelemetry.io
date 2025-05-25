@@ -3,7 +3,7 @@ title: はじめに
 weight: 1
 default_lang_commit: 0cdf20f0dcbf7305541f8eab3001c95ce805fbc0
 # prettier-ignore
-cSpell:ignore: filelog filelogreceiver kubelet kubeletstats kubeletstatsreceiver loggingexporter otlpexporter sattributes sattributesprocessor sclusterreceiver sobjectsreceiver
+cSpell:ignore: filelog kubelet kubeletstats kubeletstatsreceiver loggingexporter otlpexporter sattributes sattributesprocessor sclusterreceiver sobjectsreceiver
 ---
 
 このページでは、OpenTelemetry を使って Kubernetes クラスターの監視を始める最速の方法を説明します。
@@ -210,7 +210,6 @@ presets:
 ```
 
 この `values.yaml` をチャートで使用するには、ファイルを好きな場所に保存してから、以下のコマンドを実行してチャートをインストールしてください。
-
 
 ```sh
 helm install otel-collector-cluster open-telemetry/opentelemetry-collector --values <チャートを保存した場所へのパス>
