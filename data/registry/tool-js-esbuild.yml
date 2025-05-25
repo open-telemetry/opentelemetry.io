@@ -3,6 +3,7 @@ title: OpenTelemetry Esbuild Plugin
 registryType: plugin
 language: js
 tags:
+  - Node.js
   - esbuild
   - bundler
 urls:
