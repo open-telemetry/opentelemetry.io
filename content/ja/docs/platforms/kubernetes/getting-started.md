@@ -64,68 +64,45 @@ Kubernetesのテレメトリーを収集する最初のステップは、ノー�
 
 これらを1つひとつ見ていきましょう。
 
-### OTLP Receiver
+### OTLPレシーバー {#otlp-receiver}
 
-The
-[OTLP Receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
-is the best solution for collecting traces, metrics, and logs in the
-[OTLP format](/docs/specs/otel/protocol/). If you are emitting application
-telemetry in another format, there is a good chance that
-[the Collector has a receiver for it](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver),
-but for this tutorial we'll assume the telemetry is formatted in OTLP.
+[OTLP レシーバー](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver) は、[OTLP フォーマット](/docs/specs/otel/protocol/) でトレース、メトリクス、ログを収集するための最良のソリューションです。
+他のフォーマットでアプリケーションのテレメトリーを発信している場合、[コレクターがそのためのレシーバーを持っている](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver)可能性が高いですが、このチュートリアルでは、テレメトリーが OTLP でフォーマットされていると仮定します。
 
-Although not a requirement, it is a common practice for applications running on
-a node to emit their traces, metrics, and logs to a collector running on the
-same node. This keeps network interactions simple and allows easy correlation of
-Kubernetes metadata using the `k8sattributes` processor.
+要件ではないですが、ノード上で実行されているアプリケーションが、そのトレース、メトリクス、ログを同じノード上で実行されているコレクターに送信することは一般的なプラクティスです。
+これにより、ネットワークの相互作用がシンプルに保たれ、`k8sattributes` プロセッサーを使用してKubernetesのメタデータを簡単に相関させることができます。
 
-### Kubernetes Attributes Processor
+### Kubernetes属性プロセッサー (Kubernetes Atributes Processor) {#kubernetes-attributes-processor}
 
-The
-[Kubernetes Attributes Processor](../collector/components/#kubernetes-attributes-processor)
-is a highly recommended component in any collector receive telemetry from
-Kubernetes pods. This processor automatically discovers Kubernetes pods,
-extracts their metadata such as pod name or node name, and adds the extracted
-metadata to spans, metrics, and logs as resource attributes. Because it adds
-Kubernetes context to your telemetry, the Kubernetes Attributes Processor lets
-you correlate your application's traces, metrics, and logs signals with your
-Kubernetes telemetry, such as pod metrics and traces.
+[Kubernetes属性プロセッサー](../collector/components/#kubernetes-attributes-processor)は、Kubernetesポッドからテレメトリーを受信するコレクターで強く推奨されるコンポーネントです。
+このプロセッサーは、Kubernetesポッドを自動的に検出し、ポッド名やノード名などのメタデータを抽出し、抽出したメタデータをリソース属性としてスパン、メトリクス、ログに追加します。
+テレメトリーにKubernetesコンテキストを追加するため、Kubernetes属性プロセッサーを使用すると、アプリケーションのトレース、メトリクス、ログのシグナルを、ポッドのメトリクスやトレースなどのKubernetesテレメトリーと関連付けられます。
 
-### Kubeletstats Receiver
+### Kubeletstatsレシーバー (Kubeletstats Receiver) {#kubeletstats-receiver}
 
-The [Kubeletstats Receiver](../collector/components/#kubeletstats-receiver) is
-the receiver that gathers metrics about the node. It will gather metrics like
-container memory usage, pod cpu usage, and node network errors. All of the
-telemetry includes Kubernetes metadata like pod name or node name. Since we're
-using the Kubernetes Attributes Processor, we'll be able to correlate our
-application traces, metrics, and logs with the metrics produced by the
-Kubeletstats Receiver.
+[Kubeletstatsレシーバー](../collector/components/#kubeletstats-receiver) は、ノードに関するメトリクスを収集するレシーバーです。
+コンテナのメモリ使用量、ポッドのCPU使用量、ノードのネットワークエラーなどのメトリクスを収集します。
+すべてのテレメトリーには、ポッド名やノード名などのKubernetesメタデータが含まれます。
+ここではKubernetes属性プロセッサーを使用しているため、アプリケーションのトレース、メトリクス、ログをKubeletstatsレシーバーが生成したメトリクスと関連付けることができます。
 
-### Filelog Receiver
+### ファイルログレシーバー (Filelog Receiver) {#filelog-receiver}
 
-The [Filelog Receiver](../collector/components/#filelog-receiver) will collect
-logs written to stdout/stderr by tailing the logs Kubernetes writes to
-`/var/log/pods/*/*/*.log`. Like most log tailers, the filelog receiver provides
-a robust set of actions that allow you to parse the file however you need.
+[ファイルログレシーバー](../collector/components/#filelog-receiver)は、Kubernetesが `/var/log/pods/*/*.log` に書き込むログをテイルすることで、標準出力/標準エラーに書き込まれたログを収集します。
+ほとんどのログテイルツールと同様に、ファイルログレシーバーは、必要な方法でファイルをパースできるように、堅牢なアクションセットを提供します。
 
-Someday you may need to configure a Filelog Receiver on your own, but for this
-walkthrough the OpenTelemetry Helm Chart will handle all the complex
-configuration for you. In addition, it will extract useful Kubernetes metadata
-based on the file name. Since we're using the Kubernetes Attributes Processor,
-we'll be able to correlate the application traces, metrics, and logs with the
-logs produced by the Filelog Receiver.
+いつか自分でファイルログレシーバーを設定する必要が出てくるかもしれませんが、このウォークスルーでは、OpenTelemetry Helmチャートが複雑な設定をすべて処理してくれます。
+さらに、ファイル名に基づいて有用なKubernetesメタデータを抽出してくれます。
+ここではKubernetes属性プロセッサーを使用しているので、アプリケーションのトレース、メトリクス、ログをファイルログレシーバーが生成したログと相関できるでしょう。
 
 ---
 
-The OpenTelemetry Collector Helm chart makes configuring all of these components
-in a daemonset installation of the collector easy. It will also take care of all
-of the Kubernetes-specific details, such as RBAC, mounts and host ports.
+OpenTelemetryコレクターHelmチャートは、コレクターのDeamonSetでのインストールにおいて、これらすべてのコンポーネントの設定を簡単にします。
+また、RBAC、マウント、ホストポートなど、Kubernetes特有の詳細もすべて引き受けてくれます。
 
-One caveat - the chart doesn't send the data to any backend by default. If you
-want to actually use your data in your favorite backend you'll need to configure
-an exporter yourself.
+1つ注意事項があります。チャートはデフォルトではどのバックエンドにもデータを送信しません。
+お気に入りのバックエンドで実際にデータを使いたい場合は、自分でエクスポーターを設定する必要があります。
 
-The following `values.yaml` is what we'll use
+このウォークスルーの例では、以下の`values.yaml`を使用します。
 
 ```yaml
 mode: daemonset
@@ -134,18 +111,17 @@ image:
   repository: otel/opentelemetry-collector-k8s
 
 presets:
-  # enables the k8sattributesprocessor and adds it to the traces, metrics, and logs pipelines
+  # k8sattributesprocessorを有効にし、トレース、メトリクス、ログのパイプラインに追加します
   kubernetesAttributes:
     enabled: true
-  # enables the kubeletstatsreceiver and adds it to the metrics pipelines
+  # kubeletstatsreceiverを有効にし、メトリクスパイプラインに追加します
   kubeletMetrics:
     enabled: true
-  # Enables the filelogreceiver and adds it to the logs pipelines
+  # ファイルログレシーバーを有効にし、ログパイプラインに追加します
   logsCollection:
     enabled: true
-## The chart only includes the loggingexporter by default
-## If you want to send your data somewhere you need to
-## configure an exporter, such as the otlpexporter
+## チャートにはデフォルトでloggingexporterしか含まれていません
+## データをどこかに送りたい場合は、otlpexporterのようなエクスポーターを設定する必要があります
 # config:
 #   exporters:
 #     otlp:
@@ -160,59 +136,46 @@ presets:
 #         exporters: [ otlp ]
 ```
 
-To use this `values.yaml` with the chart, save it to your preferred file
-location and then run the following command to install the chart
+この `values.yaml` をチャートと一緒に使うには、ファイルを好きな場所に保存してから、以下のコマンドを実行してチャートをインストールします。
 
 ```sh
-helm install otel-collector open-telemetry/opentelemetry-collector --values <path where you saved the chart>
+helm install otel-collector open-telemetry/opentelemetry-collector --values <チャートを保存した場所へのパス>
 ```
 
-You should now have a daemonset installation of the OpenTelemetry Collector
-running in your cluster collecting telemetry from each node!
+これで、OpenTelemetry コレクターのDaemonSetのインストールがクラスタ内で実行され、各ノードからテレメトリーが収集されるはずです！
 
-## Deployment Collector
+## デプロイメントコレクター {#deployment-collector}
 
-The next step to collecting Kubernetes telemetry is to deploy a deployment
-instance of the Collector to gather telemetry related to the cluster as a whole.
-A deployment with exactly one replica ensures that we don't produce duplicate
-data.
+Kubernetesのテレメトリーを収集する次のステップは、クラスタ全体に関連するテレメトリーを収集するためにコレクターのデプロイメントインスタンスをデプロイすることです。
+正確に1つのレプリカを持つデプロイは、重複したデータを生成しないことを保証します。
 
-This instance of the Collector will use the following components:
+コレクターのこのインスタンスは、以下のコンポーネントを使用します。
 
-- [Kubernetes Cluster Receiver](../collector/components/#kubernetes-cluster-receiver):
-  to collect cluster-level metrics and entity events.
-- [Kubernetes Objects Receiver](../collector/components/#kubernetes-objects-receiver):
-  to collect objects, such as events, from the Kubernetes API server.
+- [Kubernetesクラスターレシーバー](../collector/components/#kubernetes-cluster-receiver): クラスターレベルのメトリクスとエンティティイベントを収集します。
+- [Kubernetesオブジェクトレシーバー](../collector/components/#kubernetes-objects-receiver): Kubernetes APIサーバーからイベントなどのオブジェクトを収集します。
 
-Let's break these down.
+これらを1つずつ見ていきましょう。
 
-### Kubernetes Cluster Receiver
+### Kubernetesクラスターレシーバー (Kubernetes Cluster Receiver) {#kubernetes-cluster-receiver}
 
-The
-[Kubernetes Cluster Receiver](../collector/components/#kubernetes-cluster-receiver)
-is the Collector's solution for collecting metrics about the state of the
-cluster as a whole. This receiver can gather metrics about node conditions, pod
-phases, container restarts, available and desired deployments, and more.
+[Kubernetesクラスターレシーバー](../collector/components/#kubernetes-cluster-receiver)は、クラスター全体の状態に関するメトリクスを収集するためのコレクターのソリューションです。
+このレシーバーは、ノードの状態、ポッドのフェーズ、コンテナの再起動、利用可能なデプロイメントと希望するデプロイメントなどに関するメトリクスを収集できます。
 
-### Kubernetes Objects Receiver
+### Kubernetesオブジェクトレシーバー (Kubernetes Objects Receiver) {#kubernetes-objects-receiver}
 
-The
-[Kubernetes Objects Receiver](../collector/components/#kubernetes-objects-receiver)
-is the Collector's solution for collecting Kubernetes objects as logs. Although
-any object can be collected, a common and important use case is to collect
-Kubernetes events.
+[Kubernetesオブジェクトレシーバー](../collector/components/#kubernetes-objects-receiver) は、Kubernetesオブジェクトをログとして収集するためのコレクターのソリューションです。
+どんなオブジェクトでも収集できますが、一般的で重要なユースケースはKubernetesイベントを収集することです。
 
 ---
 
-The OpenTelemetry Collector Helm chart streamlines the configuration for all of
-these components in a deployment installation of the Collector. It will also
-take care of all of the Kubernetes-specific details, such as RBAC and mounts.
+OpenTelemetryコレクターHelmチャートは、コレクターのデプロイメントインストールにおけるこれらすべてのコンポーネントの設定を効率化します。
+また、RBAC やマウントといった Kubernetes 固有の詳細もすべて引き受けてくれます。
 
-One caveat - the chart doesn't send the data to any backend by default. If you
-want to actually use your data in your preferred backend, you'll need to
-configure an exporter yourself.
+1つ注意事項があります。
+チャートはデフォルトではどのバックエンドにもデータを送信しません。
+もし実際にあなたの好みのバックエンドでデータを使いたい場合は、自分でエクスポーターを設定する必要があります。
 
-The following `values.yaml` is what we'll use:
+このウォークスルーの例では、以下の`values.yaml`を使用します。
 
 ```yaml
 mode: deployment
@@ -220,19 +183,18 @@ mode: deployment
 image:
   repository: otel/opentelemetry-collector-k8s
 
-# We only want one of these collectors - any more and we'd produce duplicate data
+# これらのコレクターは1つだけ必要で、それ以上は重複したデータを生成することになります
 replicaCount: 1
 
 presets:
-  # enables the k8sclusterreceiver and adds it to the metrics pipelines
+  # k8sclusterreceiverを有効にし、メトリクスパイプラインに追加します
   clusterMetrics:
     enabled: true
-  # enables the k8sobjectsreceiver to collect events only and adds it to the logs pipelines
+  # k8sobjectsreceiverがイベントのみを収集するようにし、ログパイプラインに追加します
   kubernetesEvents:
     enabled: true
-## The chart only includes the loggingexporter by default
-## If you want to send your data somewhere you need to
-## configure an exporter, such as the otlpexporter
+## チャートにはデフォルトでloggingexporterしか含まれていません
+## データをどこかに送りたい場合は、otlpexporterのようなエクスポーターを設定する必要があります
 # config:
 # exporters:
 #   otlp:
@@ -247,12 +209,11 @@ presets:
 #       exporters: [ otlp ]
 ```
 
-To use this `values.yaml` with the chart, save it to your preferred file
-location and then run the following command to install the chart:
+この `values.yaml` をチャートで使用するには、ファイルを好きな場所に保存してから、以下のコマンドを実行してチャートをインストールしてください。
+
 
 ```sh
-helm install otel-collector-cluster open-telemetry/opentelemetry-collector --values <path where you saved the chart>
+helm install otel-collector-cluster open-telemetry/opentelemetry-collector --values <チャートを保存した場所へのパス>
 ```
 
-You should now have a deployment installation of the collector running in your
-cluster that collects cluster metrics and events!
+これで、クラスタメトリクスとイベントを収集するコレクターのデプロイメントインストールがクラスタで実行されるはずです！
