@@ -5,8 +5,7 @@ date: 2025-04-06
 author: >
   [Vipin Vijaykumar](https://github.com/vipinvkmenon)
 sig: End-User SIG
-# prettier-ignore
-cSpell:ignore: gateway gatewayclass ingress ingressgateway otlpgrpc Vijaykumar Vipin
+cSpell:ignore: gateway gatewayclass ingress ingressgateway Vijaykumar Vipin
 ---
 
 The goal of this blog post is to demonstrate how you can expose an OpenTelemetry
@@ -34,13 +33,12 @@ Some examples:
   Kubernetes clusters, you might designate one cluster to host the primary OTel
   Collector deployment. Collectors in other "spoke" clusters would act as
   clients, exporting data to this central collector via its external endpoint.
-  An interesting use to mention here is when workloads running in multi-cluster
-  service mesh setup want to do tail-sampling on the collector. In this case a
-  central collector is needed to aggregate all the spans. The
+  For example, in a multi-cluster service mesh setup, workloads may require tail
+  sampling to be performed centrally. In this case, a central collector
+  configured with the
   [tail sampling processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)
-  can be configured in this central collector sitting behind the Gateway. This
-  setup can further be scaled and optimized with the
-  [load balancing exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter).
+  and exposed via a Gateway aggregates spans from all clusters to make sampling
+  decisions.
 - **Edge Computing / IoT:** Devices deployed at the edge often need to send
   operational data back to a central platform.
 - **Serverless Functions / PaaS:** Applications running on serverless platforms
@@ -233,6 +231,12 @@ metadata:
     istio-injection: enabled #Relavent only if you are using Istio.
 ```
 
+Apply this configuration:
+
+```bash
+kubectl apply -f namespace.yaml
+```
+
 ## Step 4: Deploying the OTel Collector (Server)
 
 Let's create a simple OTel Collector deployment and service. In the given
@@ -336,24 +340,24 @@ validate clients.
 
 ```bash
 # Create a secret with the server certificate, key. We will also store the ca certificate used to sign clients
-# In this demo, for ease, we place it in the default namespace
-k create secret generic otel-gateway-server-cert --from-file=tls.crt=server.crt --from-file=tls.key=server.key --from-file=ca.crt=rootCA.crt
+# In this demo, for ease, we place it in the otel-collector namespace
+kubectl create -n otel-collector secret generic otel-gateway-server-cert --from-file=tls.crt=server.crt --from-file=tls.key=server.key --from-file=ca.crt=rootCA.crt
 ```
 
 ## Step 6: Configuring the Kubernetes Gateway API Resources
 
-We need two resources: `Gateway` and `GRPCRoute`. Again for ease, we deploy them
-in the `Default` namespace. For better management and your , it makes sense to
-move them to more logically named namespaces depending on deployment setup.
+We need two resources: `Gateway` and `GRPCRoute`. For simplicity, we keep the
+resources in the same `otel-collector` namespace in this demo. This would change
+depending on your deployment setup.
 
-`otel-gateway.yaml`:
+`otel-gateway-resources.yaml`:
 
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: otel-gateway
-  namespace: default
+  namespace: otel-collector
 spec:
   gatewayClassName: istio
   listeners:
@@ -375,17 +379,17 @@ spec:
 ---
 # GRPCRoute is generally preferred for OTLP/gRPC
 # Ensure GRPCRoute CRD (v1alpha2 or v1) is installed
-apiVersion: gateway.networking.k8s.io/v1alpha2
+apiVersion: gateway.networking.k8s.io/v1
 kind: GRPCRoute
 metadata:
   name: otel-collector-grpcroute
   # Namespace where the backend service resides
-  namespace: default
+  namespace: otel-collector
 spec:
   # Link this route to our Gateway in the istio-system namespace
   parentRefs:
     - name: otel-gateway
-      namespace: default # Namespace of the Gateway resource
+      namespace: otel-collector # Namespace of the Gateway resource
       sectionName: otlp-grpc-mtls # Attach to the specific listener by name
   # Define routing rules for gRPC traffic
   rules:
@@ -426,17 +430,16 @@ To get details of the Gateway, you can run the following:
 
 ```bash
 # To get the Gateway hostname/IP
-kubectl get gateway otel-gateway -o jsonpath='{.status.addresses[0].value}'
+kubectl -n otel-collector get gateway otel-gateway -o jsonpath='{.status.addresses[0].value}'
 
 # To get the port
-kubectl get gtw otel-gateway -o jsonpath='{.spec.listeners[?(@.name=="otel")].port}'
+kubectl -n otel-collector get gtw otel-gateway -o jsonpath='{.spec.listeners[?(@.name=="otlp-grpc-mtls")].port}'
 ```
 
-You can also see the Kubernetes service created for your `Gateway`. Since the
-Gateway is created in the default namespace in this exercise:
+You can also see the Kubernetes service created for your `Gateway`.
 
 ```bash
-kubectl get svc
+kubectl -n otel-collector get svc
 ```
 
 ## Step 7: Configuring the External OTel Collector (Client)
@@ -465,7 +468,7 @@ processors:
   batch:
 
 exporters:
-  otlpgrpc:
+  otlp/grpc:
     # IMPORTANT: Point to the Gateway's external IP/hostname and port
     # Replace <GATEWAY_EXTERNAL_IP_OR_HOSTNAME> with the actual address
     # It should match the hostname/SAN in the server certificate if using hostname
@@ -491,7 +494,7 @@ service:
     metrics:
       receivers: [hostmetrics]
       processors: [batch]
-      exporters: [otlpgrpc]
+      exporters: [otlp/grpc]
     # Add additional traces/logs pipelines if the client generates them
 ```
 
@@ -507,7 +510,8 @@ service:
     SAN/CN values in the server certificate.
 
 3.  Place the generated `rootCA.crt`, `client.crt`, and `client.key` files in a
-    directory accessible to the client collector.
+    directory accessible to the client collector. In this demo, we keep it in
+    `certs` folder.
 
 4.  Run the client collector (adjust paths and image tag as needed):
 
@@ -515,12 +519,12 @@ service:
     # Running command assuming certificates and config are in the current directory.
 
     docker run --rm -v $(pwd)/certs:/etc/cert/ \
-               -v $(pwd)/otel-client-config.yaml:/etc/otelcol/config.yaml \
-               otel/opentelemetry-collector:latest
+               -v $(pwd)/otel-client-config.yaml:/etc/otelcol-contrib/config.yaml \
+               otel/opentelemetry-collector-contrib:0.119.0
     ```
 
-We are running a container of `otel-collector` by mounting the `config` and the
-`certs`
+We are running a container of `opentelemetry-collector-contrib` by mounting the
+`otel-client-config.yaml` and the `certs` folder that contains the certificates.
 
 ## Step 6: Testing the Connection
 
@@ -533,11 +537,11 @@ We are running a container of `otel-collector` by mounting the `config` and the
     ```
 
 2.  **Check Client Logs:** Look at the logs of the external client collector
-    (e.g., the Docker container output). It should show successful connections
-    `("StateChange: CONNECTING -> READY")` and data exports
-    `("Exporting batches...")` to the gateway endpoint. Any TLS handshake errors
-    (e.g., `"certificate signed by unknown authority"`, `"bad certificate"`) or
-    `connection refused` errors indicate a problem. Check:
+    (e.g., the Docker container output). You should see messages like
+    `Everything is ready. Begin running and processing data.` Any connection
+    error message (e.g., `"certificate signed by unknown authority"`,
+    `"bad certificate"`) or `connection refused` errors indicate a problem.
+    Check:
     - Gateway IP/hostname reachability.
     - Firewall rules.
     - Correct certificates (`ca_file`, `cert_file`, `key_file`) used by the
@@ -548,7 +552,7 @@ We are running a container of `otel-collector` by mounting the `config` and the
     - Gateway controller logs (For e.g `istio-ingressgateway` pod logs in
       `istio-system`) for TLS errors.
 3.  **Test Failure Case:**
-    - Try running the client _without_ the `tls:` section in its `otlpgrpc`
+    - Try running the client _without_ the `tls:` section in its `otlp/grpc`
       exporter configuration. The connection should be rejected by the Gateway
       (likely a TLS handshake failure or connection reset).
     - Try commenting out the `ca_file`, `cert_file`, or `key_file` in the client
@@ -584,6 +588,10 @@ of when configuring this setup during production:
   [PeerAuthentication](https://istio.io/latest/docs/reference/config/security/peer_authentication/).
   Similar concepts would be available for other service mesh implementations as
   well.
+- When working with routes and gateways in multiple namespaces, you may need
+  references of resources such as backend `services`, and other configurations
+  from other namespaces. For this please refer to Gateway
+  [ReferenceGrant](https://gateway-api.sigs.k8s.io/api-types/referencegrant/).
 
 ## Alternative Gateway Implementations
 

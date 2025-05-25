@@ -2371,6 +2371,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-05-14T18:52:12.288242+05:30"
   },
+  "https://gateway-api.sigs.k8s.io/api-types/referencegrant/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-25T22:06:35.960119+05:30"
+  },
   "https://gateway-api.sigs.k8s.io/implementations/v1.2/": {
     "StatusCode": 206,
     "LastSeen": "2025-05-14T18:52:17.046344+05:30"
