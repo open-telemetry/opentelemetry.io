@@ -40,7 +40,7 @@ derived from the Kubernetes Kubelet’s
 [`UsageNanoCores`](https://github.com/kubernetes/kubernetes/blob/8adc0f041b8e7ad1d30e29cc59c6ae7a15e19828/staging/src/k8s.io/kubelet/pkg/apis/stats/v1alpha1/types.go#L230-L233)
 field, which is an absolute measure of CPU usage (in units of nanocores).
 
-The term **"utilization"** generally implies a relative metric—a ratio or
+The term *utilization* generally implies a relative metric—a ratio or
 percentage of used CPU against total CPU capacity or limits. Using
 `.cpu.utilization` for absolute usage values violates
 [Semantic Conventions](/docs/general/metrics.md#instrument-naming), potentially
