@@ -984,13 +984,13 @@ func components() (otelcol.Factories, error) {
 	var err error
 	factories := otelcol.Factories{}
 
-	factories.Extensions, err = extension.MakeFactoryMap(
+	factories.Extensions, err = otelcol.MakeFactoryMap[extension.Factory](
 	)
 	if err != nil {
 		return otelcol.Factories{}, err
 	}
 
-	factories.Receivers, err = receiver.MakeFactoryMap(
+	factories.Receivers, err = otelcol.MakeFactoryMap[receiver.Factory](
 		otlpreceiver.NewFactory(),
 		tailtracer.NewFactory(), // newly added line
 	)
@@ -998,7 +998,7 @@ func components() (otelcol.Factories, error) {
 		return otelcol.Factories{}, err
 	}
 
-	factories.Exporters, err = exporter.MakeFactoryMap(
+	factories.Exporters, err = otelcol.MakeFactoryMap[exporter.Factory](
 		debugexporter.NewFactory(),
 		otlpexporter.NewFactory(),
 	)
@@ -1006,7 +1006,7 @@ func components() (otelcol.Factories, error) {
 		return otelcol.Factories{}, err
 	}
 
-	factories.Processors, err = processor.MakeFactoryMap(
+	factories.Processors, err = otelcol.MakeFactoryMap[processor.Factory](
 		batchprocessor.NewFactory(),
 	)
 	if err != nil {
@@ -1023,7 +1023,7 @@ func components() (otelcol.Factories, error) {
   `github.com/open-telemetry/opentelemetry-tutorials/trace-receiver/tailtracer`
   module which is where the receiver types and function are.
 - Added a call to `tailtracer.NewFactory()` as a parameter of the
-  `receiver.MakeFactoryMap()` call so your `tailtracer` receiver factory is
+  `otelcol.MakeFactoryMap()` call so your `tailtracer` receiver factory is
   properly added to the `factories` map.
 
 {{% /alert %}}
