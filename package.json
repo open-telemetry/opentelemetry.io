@@ -119,6 +119,7 @@
     "@cspell/dict-es-es": "^3.0.3",
     "@cspell/dict-fr-fr": "^2.3.0",
     "@cspell/dict-pt-br": "^2.4.0",
+    "@cspell/dict-uk-ua": "^4.0.4",
     "ajv": "^8.17.1",
     "ajv-errors": "^3.0.0",
     "ajv-formats": "^3.0.1",
