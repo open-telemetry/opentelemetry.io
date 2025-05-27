@@ -318,7 +318,7 @@ Os links são opcionais, mas servem como uma boa maneira de associar trechos de
 rastro uns aos outros.
 
 Para mais informações sobre Links de Trechos, consulte
-[Link](/docs/specs/otel/trace/api/#link).
+[Links de Trechos](/docs/specs/otel/trace/api/#link).
 
 ### O estado do Trecho {#span-status}
 
