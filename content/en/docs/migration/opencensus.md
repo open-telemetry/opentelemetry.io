@@ -2,7 +2,7 @@
 title: Migrating from OpenCensus
 linkTitle: OpenCensus
 redirect: /blog/2023/sunsetting-opencensus/#how-to-migrate-to-opentelemetry
-_build: { render: link }
+build: { render: link }
 weight: 3
 cSpell:ignore: sunsetting
 ---
