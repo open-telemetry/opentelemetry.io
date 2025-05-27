@@ -5907,6 +5907,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-05-26T16:48:10.897737+03:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-27T10:36:21.951477+03:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.95.0/processor/spanmetricsprocessor/README.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T15:48:51.581459-05:00"
