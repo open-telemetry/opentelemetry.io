@@ -1,0 +1,20 @@
+# cSpell:ignore # add words unknown to cspell, remove this line if not required
+title: OpenTelemetry Rollup Plugin
+registryType: plugin
+language: js
+tags:
+  - rollup
+  - bundler
+urls:
+  repo: https://github.com/DrewCorlin/opentelemetry-node-bundler-plugins
+  docs: https://github.com/DrewCorlin/opentelemetry-node-bundler-plugins/tree/main/packages/opentelemetry-rollup-plugin-node
+license: MIT
+description:
+  Rollup plugin which bundles OpenTelemetry node core and contrib
+  instrumentations into your code
+authors:
+  - name: Drew Corlin
+    url: https://github.com/DrewCorlin
+createdAt: 2025-01-03
+isNative: false
+isFirstParty: false
