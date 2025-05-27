@@ -14,9 +14,10 @@ cSpell:ignore: Anoshin Dmitrii Helmuth Kubelet kubeletstats Kubelet’s Markou
 
 ## Kubernetes CPU Metrics in the `kubeletstats` Receiver: Transition from `.cpu.utilization` to `.cpu.usage`
 
-The OpenTelemetry Collector’s `kubeletstats` receiver is a crucial component for
-collecting Kubernetes node, pod and container metrics. To improve metric
-accuracy and adhere to
+The OpenTelemetry Collector’s
+[`kubeletstats`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/README.md)
+receiver is a crucial component for collecting Kubernetes node, pod and
+container metrics. To improve metric accuracy and adhere to
 [OpenTelemetry semantic conventions](/docs/specs/semconv/general/naming/#instrument-naming),
 we are updating how CPU metrics are named and emitted.
 
