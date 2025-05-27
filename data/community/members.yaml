@@ -95,6 +95,13 @@ technical-committee:
     html_url: https://github.com/tigrannajaryan
     avatar_url: https://avatars.githubusercontent.com/u/4194920?v=4
 maintainers:
+  - name: 123liuziming
+    teams:
+      - go-compile-instrumentation-approvers
+      - go-compile-instrumentation-maintainers
+      - go-compile-instrumentation-triagers
+    html_url: https://github.com/123liuziming
+    avatar_url: https://avatars.githubusercontent.com/u/32130965?v=4
   - name: aabmass
     teams:
       - javascript-contrib-triagers
@@ -669,6 +676,13 @@ maintainers:
       - demo-maintainers
     html_url: https://github.com/julianocosta89
     avatar_url: https://avatars.githubusercontent.com/u/15364991?v=4
+  - name: kakkoyun
+    teams:
+      - go-compile-instrumentation-approvers
+      - go-compile-instrumentation-maintainers
+      - go-compile-instrumentation-triagers
+    html_url: https://github.com/kakkoyun
+    avatar_url: https://avatars.githubusercontent.com/u/536449?v=4
   - name: kaylareopelle
     teams:
       - ruby-approvers
@@ -1311,12 +1325,6 @@ maintainers:
     html_url: https://github.com/zacharycmontoya
     avatar_url: https://avatars.githubusercontent.com/u/13769665?v=4
 approvers:
-  - name: 123liuziming
-    teams:
-      - go-compile-instrumentation-approvers
-      - go-compile-instrumentation-triagers
-    html_url: https://github.com/123liuziming
-    avatar_url: https://avatars.githubusercontent.com/u/32130965?v=4
   - name: aalexand
     teams:
       - profiling-approvers
@@ -1996,6 +2004,11 @@ approvers:
       - docs-zh-approvers
     html_url: https://github.com/windsonsea
     avatar_url: https://avatars.githubusercontent.com/u/79828097?v=4
+  - name: wpessers
+    teams:
+      - lambda-extension-approvers
+    html_url: https://github.com/wpessers
+    avatar_url: https://avatars.githubusercontent.com/u/45464718?v=4
   - name: wph95
     teams:
       - demo-approvers
@@ -2501,6 +2514,9 @@ members:
   - name: markwolff
     html_url: https://github.com/markwolff
     avatar_url: https://avatars.githubusercontent.com/u/5515583?v=4
+  - name: martincostello
+    html_url: https://github.com/martincostello
+    avatar_url: https://avatars.githubusercontent.com/u/1439341?v=4
   - name: mateuszrzeszutek
     html_url: https://github.com/mateuszrzeszutek
     avatar_url: https://avatars.githubusercontent.com/u/69198463?v=4
