@@ -41,9 +41,9 @@ derived from the Kubernetes Kubelet’s
 [`UsageNanoCores`](https://github.com/kubernetes/kubernetes/blob/8adc0f041b8e7ad1d30e29cc59c6ae7a15e19828/staging/src/k8s.io/kubelet/pkg/apis/stats/v1alpha1/types.go#L230-L233)
 field, which is an absolute measure of CPU usage (in units of nanocores).
 
-The term _utilization_ generally implies a relative metric—a ratio or percentage
-of used CPU against total CPU capacity or limits. Using `.cpu.utilization` for
-absolute usage values violates
+The term _utilization_ generally refers to a relative metric, typically
+expressed as a ratio or percentage of used CPU against total CPU capacity or
+limits. Using `.cpu.utilization` for absolute usage values violates
 [Semantic Conventions](/docs/specs/semconv/general/naming/#instrument-naming),
 potentially confusing users and tooling expecting utilization metrics to be
 relative.
@@ -76,10 +76,11 @@ manage the transition smoothly, a **feature gate** named
   ([v0.125.0](https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.125.0)):**
   The feature gate
   [was promoted to beta](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/39488)
-  and **enabled by default**. In this state: - The `.cpu.usage` metrics are
-  emitted by default. - Attempts to enable `.cpu.utilization` metrics will
-  fail. - Users can **explicitly disable the feature gate** to temporarily
-  restore the deprecated `.cpu.utilization` metrics if needed.
+  and **enabled by default**. In this state:
+  - The `.cpu.usage` metrics are emitted by default. - Attempts to enable
+    `.cpu.utilization` metrics will fail.
+  - Users can **explicitly disable the feature gate** to temporarily restore the
+    deprecated `.cpu.utilization` metrics if needed.
 - **Stable (Upcoming):** The feature gate will remain in beta for several
   releases to allow the community ample time to adapt. The plan and discussion
   for moving it to stable is tracked in
