@@ -1,4 +1,4 @@
-# cSpell:ignore corlin, rollup
+# cSpell:ignore corlin, rollup, rolldown
 title: OpenTelemetry Rollup Plugin
 registryType: utilities
 language: js
