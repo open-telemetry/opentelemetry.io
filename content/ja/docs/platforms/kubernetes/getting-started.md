@@ -15,7 +15,7 @@ Kubernetes で OpenTelemetry が動いているところを見たいのであれ
 
 PrometheusからOpenTelemetryへの移行を始めようとしている場合、あるいはOpenTelemetryコレクターを使ってPrometheusメトリクスを収集することに興味がある場合は、[Prometheusレシーバーa](../collector/components/#prometheus-receiver) を参照してください。
 
-## 概要
+## 概要 {#overview}
 
 Kubernetesは多くの重要なテレメトリーをさまざまな方法で公開しています。
 ログ、イベント、多くの異なるオブジェクトのメトリクス、そしてワークロードによって生成されたデータがあります。
@@ -33,7 +33,7 @@ Helm には、コレクターを簡単に設定するためのいくつかの設
 Helm に慣れていない場合は、[Helm プロジェクトサイト](https://helm.sh/) を確認してください。
 Kubernetes オペレーターを使うことに興味があるなら、[OpenTelemetry Operator](../operator/) を参照してほしいですが、このガイドでは Helm チャートにフォーカスします。
 
-## 準備
+## 準備 {#preparation}
 
 このガイドでは、[Kindクラスター](https://kind.sigs.k8s.io/)を使用することを前提に説明しますが、適切と思われるKubernetesクラスターを自由に使用することができます。
 
@@ -49,7 +49,7 @@ kind create cluster
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
 ```
 
-## デーモンセットコレクター
+## デーモンセットコレクター {#daemonset-collector}
 
 Kubernetesのテレメトリーを収集する最初のステップは、ノードとそのノード上で実行されているワークロードに関連するテレメトリーを収集するために、OpenTelemetry Collectorのデーモンセットインスタンスをデプロイすることです。
 デーモンセットは、コレクターのこのインスタンスがすべてのノードにインストールされていることを保証するために使用されます。
