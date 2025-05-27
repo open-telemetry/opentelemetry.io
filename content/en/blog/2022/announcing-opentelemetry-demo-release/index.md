@@ -45,8 +45,8 @@ Another goal of this demo is to streamline the ability of vendors and commercial
 implementers of OpenTelemetry to have a standardized target for building demos
 around. We’ve already seen quite a bit of adoption, with five companies
 including Datadog, Dynatrace, Honeycomb, Lightstep, and New Relic integrating
-the community demo application into their product demos (you can find a list
-[here](https://github.com/open-telemetry/opentelemetry-demo#demos-featuring-the-astronomy-shop)).
+the community demo application into their
+[product demos](https://github.com/open-telemetry/opentelemetry-demo#demos-featuring-the-astronomy-shop).
 We hope to encourage further contributions and collaboration along these lines.
 
 However, just because we reached 1.0, that doesn’t mean we’re stopping -- this
