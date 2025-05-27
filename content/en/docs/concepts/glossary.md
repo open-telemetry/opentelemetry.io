@@ -370,25 +370,25 @@ on web pages when requested. See [zPages].
 [baggage]: /docs/specs/otel/baggage/api/
 [context propagation]: /docs/specs/otel/overview#context-propagation
 [dag]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
-[distributed tracing]: /docs/concepts/signals/traces/
-[distributions]: /docs/concepts/distributions/
+[distributed tracing]: ../signals/traces/
+[distributions]: ../distributions/
 [field]: /docs/specs/otel/logs/data-model#field-kinds
 [http]: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
 [instrumented library]: /docs/specs/otel/glossary/#instrumented-library
 [json]: https://en.wikipedia.org/wiki/JSON
 [log record]: /docs/specs/otel/glossary#log-record
 [log]: /docs/specs/otel/glossary#log
-[metric]: /docs/concepts/signals/metrics/
+[metric]: ../signals/metrics/
 [opentelemetry-proto]: https://github.com/open-telemetry/opentelemetry-proto
 [propagators]: /docs/languages/go/instrumentation/#propagators-and-context
 [receiver]: /docs/collector/configuration/#receivers
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [rpc]: https://en.wikipedia.org/wiki/Remote_procedure_call
 [sampling]: /docs/specs/otel/trace/sdk#sampling
-[signals]: /docs/concepts/signals/
+[signals]: ../signals/
 [span]: /docs/specs/otel/trace/api#span
 [spec-instrumentation-lib]: /docs/specs/otel/glossary/#instrumentation-library
-[specification]: /docs/concepts/components/#specification
+[specification]: ../components/#specification
 [status]: /docs/specs/otel/trace/api#set-status
 [tracer]: /docs/specs/otel/trace/api#tracer
 [traces]: /docs/specs/otel/overview#traces
