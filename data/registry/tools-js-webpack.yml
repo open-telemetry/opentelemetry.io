@@ -1,6 +1,6 @@
-# cSpell:ignore # add words unknown to cspell, remove this line if not required
+# cSpell:ignore corlin
 title: OpenTelemetry Webpack Plugin
-registryType: plugin
+registryType: utilities
 language: js
 tags:
   - webpack
