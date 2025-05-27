@@ -1,9 +1,11 @@
-# cSpell:ignore # add words unknown to cspell, remove this line if not required
+# cSpell:ignore corlin, rollup
 title: OpenTelemetry Rollup Plugin
-registryType: plugin
+registryType: utilities
 language: js
 tags:
   - rollup
+  - vite
+  - rolldown
   - bundler
 urls:
   repo: https://github.com/DrewCorlin/opentelemetry-node-bundler-plugins
