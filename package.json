@@ -124,7 +124,7 @@
     "autoprefixer": "^10.4.21",
     "cspell": "^9.0.2",
     "gulp": "^5.0.0",
-    "hugo-extended": "0.147.5",
+    "hugo-extended": "0.147.6",
     "js-yaml": "^4.1.0",
     "markdown-link-check": "^3.13.7",
     "markdownlint": "^0.37.4",
@@ -138,7 +138,7 @@
     "textlint-filter-rule-comments": "^1.2.2",
     "textlint-rule-terminology": "^5.2.12",
     "through2": "^4.0.2",
-    "yargs": "^17.7.2"
+    "yargs": "^18.0.0"
   },
   "dependencies": {
     "@opentelemetry/api": "^1.9.0",
