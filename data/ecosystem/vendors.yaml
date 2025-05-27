@@ -348,6 +348,12 @@
   contact:
   oss: false
   commercial: true
+- name: Scout
+  nativeOTLP: true
+  url: https://docs.base14.io/category/opentelemetry-collector-setup
+  contact: support@base14.io
+  oss: false
+  commercial: true
 - name: SigNoz
   nativeOTLP: true
   url: https://signoz.io
