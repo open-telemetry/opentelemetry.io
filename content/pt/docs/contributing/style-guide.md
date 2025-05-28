@@ -19,8 +19,8 @@ As seções a seguir contêm orientações específicas para o projeto OpenTelem
 
 Muitos requisitos do nosso manual de estilo podem ser aplicados automaticamente:
 antes de enviar uma
-[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)
-(PR), execute `npm run fix:all` na sua máquina local e faça o commit das
+[_pull request_](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)
+(PR), execute `npm run fix:all` na sua máquina local e faça o _commit_ das
 alterações.
 
 Se você encontrar erros ou [falhas nas verificações de PR](../pr-checks), leia
@@ -98,7 +98,7 @@ cSpell:ignore: <palavra>
 
 Para qualquer outro arquivo, adicione `cSpell:ignore <palavra>` em uma linha de
 comentário apropriada para o contexto do arquivo. Para um arquivo YAML de
-entrada de [registry](/ecosystem/registry/), pode ser assim:
+entrada de [registro](/ecosystem/registry/), pode ser assim:
 
 ```yaml
 # cSpell:ignore <palavra>
