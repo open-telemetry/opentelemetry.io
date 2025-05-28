@@ -109,6 +109,7 @@ maintainers:
       - opentelemetry-python-contrib-maintainers
       - python-approvers
       - python-maintainers
+      - semconv-genai-approvers
       - sqlcommenter-approvers
       - sqlcommenter-maintainers
     html_url: https://github.com/aabmass
