@@ -47,9 +47,9 @@ Some examples:
 - **External Monitoring Agents:** Third-party agents or locally running
   development instances needing to connect to a shared collector within the
   cluster.
-- **Client-Side Monitoring** Telemetry coming in from external clients like
-  browsers and mobile applications. While mTLS may not be used in for
-  [sending metrics from the Browsers](/docs/languages/js/getting-started/browser/),
+- **Client-Side Monitoring:** Telemetry coming in from external clients like
+  browsers and mobile applications. While mTLS may not be used for
+  [exporting telemetry from browsers](/docs/languages/js/getting-started/browser/),
   the collectors must ultimately be made available.
 
 ## Prerequisites
