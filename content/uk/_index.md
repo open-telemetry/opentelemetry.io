@@ -32,7 +32,7 @@ default_lang_commit: c0a5eea5d720b0e075efa87f99dcf58c89106268
 </div>
 
 <div class="h3 mt-4">
-<a class="text-secondary" href="docs/getting-started/">Розпочніть</a> в залежності від вашрої ролі
+<a class="text-secondary" href="docs/getting-started/">Розпочніть</a> в залежності від вашої ролі
 </div>
 <div class="l-get-started-buttons">
 
