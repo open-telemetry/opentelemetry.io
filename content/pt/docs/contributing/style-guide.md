@@ -41,7 +41,7 @@ de forma consistente em todo o site:
 - [OpAMP](/docs/concepts/glossary/#opamp)
 
 Para uma lista completa de termos do OpenTelemetry e suas definições, consulte o
-[Glossary](/docs/concepts/glossary/).
+[Glossário](/docs/concepts/glossary/).
 
 Certifique-se de que nomes próprios, como outros projetos da CNCF ou ferramentas
 de terceiros, sejam escritos corretamente e utilizem a capitalização original.
@@ -59,7 +59,7 @@ estão escritos corretamente.
 
 {{% /alert %}}
 
-## Padrões de Markdown
+## Padrões de Markdown {#markdown-standards}
 
 Para garantir padrões e consistência nos arquivos Markdown, todos os arquivos
 devem seguir certas regras, aplicadas pelo [markdownlint]. Para uma lista
@@ -76,7 +76,7 @@ Também aplicamos o [file format](#file-format) do Markdown e removemos espaços
 em branco no final das linhas. Isso exclui a [line break syntax] de 2+ espaços;
 use `<br>` em vez disso ou reformate seu texto.
 
-## Verificação ortográfica
+## Verificação ortográfica {#spell-checking}
 
 Use [CSpell](https://github.com/streetsidesoftware/cspell) para garantir que
 todo o texto esteja escrito corretamente. Para uma lista de palavras específicas
@@ -110,12 +110,12 @@ as listas de palavras `cSpell:ignore`), removendo palavras duplicadas, excluindo
 palavras na lista global e ordenando as palavras. Para normalizar os dicionários
 específicos de página, execute `npm run fix:dict`.
 
-## Formato de arquivo
+## Formato de arquivo {#file-format}
 
 Aplicamos formatação de arquivos usando o [Prettier]. Execute-o com
 `npm run fix:format`.
 
-## Nomes de arquivos
+## Nomes de arquivos {#file-names}
 
 Todos os nomes de arquivos devem estar em
 [kebab case](https://en.wikipedia.org/wiki/Letter_case#Kebab_case). Execute
