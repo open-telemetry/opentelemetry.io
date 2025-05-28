@@ -1,21 +1,19 @@
-# cSpell:ignore # add words unknown to cspell, remove this line if not required
 title: Argo Workflows
 registryType: application integration
 language: go
 tags:
   - go
   - argo
-  - graduated
 urls:
   repo: https://github.com/argoproj/argo-workflows
   docs: https://argo-workflows.readthedocs.io/en/latest/metrics/
 license: Apache 2.0
 description:
-  Argo Workflows provides native opentelemetry metrics to provide information
+  Argo Workflows provides native OpenTelemetry metrics to provide information
   from the workflow controller.
 authors:
   - name: Argo Workflows Authors
     url: https://argoproj.github.io/workflows/
 createdAt: '2025-04-02'
 isNative: true
-isFirstParty: false
+cncfProjectLevel: graduated
