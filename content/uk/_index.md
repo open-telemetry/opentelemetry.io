@@ -4,9 +4,6 @@ description: >-
   Високоякісна, повсюдна і переносна телеметрія для забезпечення ефективного спостереження
 outputs:
   - HTML
-  # Include the following for `content/en` ONLY
-  - REDIRECTS
-  - RSS
 developer_note:
   The blocks/cover shortcode (used below) will use as a background image any image file containing "background" in its name.
 show_banner: true
@@ -32,7 +29,7 @@ show_banner: true
 </div>
 
 <div class="h3 mt-4">
-<a class="text-secondary" href="docs/getting-started/">Розпочніть</a> в залежності від вашрої ролі
+<a class="text-secondary" href="docs/getting-started/">Розпочніть</a> в залежності від вашої ролі
 </div>
 <div class="l-get-started-buttons">
 
