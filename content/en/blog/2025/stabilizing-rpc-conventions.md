@@ -2,7 +2,7 @@
 title: >-
   Announcing the RPC Semantic Conventions stabilization project
 linkTitle: Stabilizing RPC Semantic Conventions
-date: 2025-05-TODO
+date: 2025-05-28
 author: >-
   [Liudmila Molkova](https://github.com/lmolkova) (Microsoft), [Trask Stalnaker](https://github.com/trask) (Microsoft)
 sig: Semantic Conventions
