@@ -116,6 +116,7 @@ jobs:
             echo "Patch failed to apply"
             exit 1
           }
+          rm pr-fix.patch
 
       - name: Commit and push changes, if any
         run: |
