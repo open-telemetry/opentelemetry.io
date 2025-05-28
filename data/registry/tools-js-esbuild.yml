@@ -1,0 +1,20 @@
+# cSpell:ignore corlin, esbuild
+title: OpenTelemetry Esbuild Plugin
+registryType: utilities
+language: js
+tags:
+  - esbuild
+  - bundler
+urls:
+  repo: https://github.com/DrewCorlin/opentelemetry-node-bundler-plugins
+  docs: https://github.com/DrewCorlin/opentelemetry-node-bundler-plugins/tree/main/packages/opentelemetry-esbuild-plugin-node
+license: MIT
+description:
+  Esbuild plugin which bundles OpenTelemetry node core and contrib
+  instrumentations into your code
+authors:
+  - name: Drew Corlin
+    url: https://github.com/DrewCorlin
+createdAt: 2025-01-03
+isNative: false
+isFirstParty: false
