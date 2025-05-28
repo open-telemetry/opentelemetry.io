@@ -200,7 +200,7 @@ config:
           - otlphttp
 ```
 
-#### Kubernetes属性プリセット {/#kubernetes-attributes-preset}
+#### Kubernetes属性プリセット {#kubernetes-attributes-preset}
 
 OpenTelemetryコレクター は `k8s.pod.name`、`k8s.namespace.name`、`k8s.node.name` などの Kubernetes メタデータをログ、メトリクス、トレースに追加するように設定できます。
 プリセットを使用するか、手動で `k8sattributesprocessor` を有効にすることを強く推奨します。
