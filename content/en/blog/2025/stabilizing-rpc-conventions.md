@@ -6,7 +6,7 @@ date: 2025-05-TODO
 author: >-
   [Liudmila Molkova](https://github.com/lmolkova) (Microsoft), [Trask Stalnaker](https://github.com/trask) (Microsoft)
 sig: Semantic Conventions
-cSpell:ignore:
+cSpell:ignore: Liudmila Molkova Dubbo
 ---
 
 The Semantic Conventions SIG is excited to kick off the RPC stabilization effort!
@@ -45,7 +45,7 @@ We aim for conventions that are useful, usable, and extensible.
 
 For RPC, we're focusing on the following major areas:
 
-* Essential signals
+- Essential signals
 
   We aim to define a core set of telemetry signals—such as client/server spans and call duration
   histograms - that can be recorded consistently across frameworks. These support common debugging
@@ -53,22 +53,22 @@ For RPC, we're focusing on the following major areas:
   We'll review existing conventions, identify core attributes, and document both their generic definitions
   and framework-specific applications.
 
-* Framework-specific telemetry
+- Framework-specific telemetry
 
   We encourage frameworks to extend the generic conventions with additional attributes, spans, or metrics
   that reflect their specific features.
   We'll review these extensions, including community-maintained ones like [gRPC metrics](https://grpc.io/docs/guides/opentelemetry-metrics/).
 
-* Scope
+- Scope
 
   Bi-directional streaming inherently comes with limited observability. We’ll evaluate which useful signals can
   realistically be captured.
 
-* Consistency and guidelines
+- Consistency and guidelines
   Over the years, we’ve developed better practices for naming, and recording peer details or errors.
   RPC conventions will be updated to align with these latest guidelines.
 
-* Prototyping
+- Prototyping
 
   A key requirement for stabilization is having real-world instrumentations and prototypes that follow
   the conventions. These implementations provide critical feedback on clarity, feasibility, and practical
@@ -77,5 +77,4 @@ For RPC, we're focusing on the following major areas:
 ## How to get involved?
 
 We're looking for contributors with experience in any popular RPC frameworks, as well as anyone interested in building instrumentation prototypes.
-If you'd like to participate, please join us by commenting on https://github.com/open-telemetry/community/issues/1859
-
+If you'd like to participate, please join us by commenting on [RPC stabilization project proposal](https://github.com/open-telemetry/community/issues/1859).
