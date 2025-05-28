@@ -10763,6 +10763,14 @@
     "StatusCode": 200,
     "LastSeen": "2025-03-21T21:16:12.345Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.44.0/specification/common/README.md#attribute": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-28T10:37:14.805648828Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.45.0/specification/logs/data-model.md#type-any": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-28T10:37:18.667294374Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:48.297045-05:00"
