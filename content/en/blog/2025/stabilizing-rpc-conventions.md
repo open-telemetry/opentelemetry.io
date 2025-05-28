@@ -7,7 +7,6 @@ author: >-
   [Liudmila Molkova](https://github.com/lmolkova) (Microsoft), [Trask
   Stalnaker](https://github.com/trask) (Microsoft)
 sig: Semantic Conventions
-cSpell:ignore: Liudmila Molkova Dubbo
 ---
 
 The Semantic Conventions SIG is excited to kick off the RPC stabilization
