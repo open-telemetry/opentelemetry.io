@@ -202,7 +202,7 @@ class S,T spacewhite
 class changes,changes2 white
 ```
 
-_Figura 3. Trabalhando a partir de um \_fork_ local para fazer suas
+_Figura 3. Trabalhando a partir de um fork local para fazer suas
 alterações.\_
 
 ### Fazer fork do repositório
@@ -213,7 +213,7 @@ alterações.\_
 
 ### Clonar e definir o repositório de origem (_upstream_)
 
-1. Em uma janela de terminal, clone seu fork e instale as dependências:
+1. Em uma janela de terminal, clone seu _fork_ e instale as dependências:
 
    ```shell
    git clone git@github.com:<seu_nome_de_usuario_no_github>/opentelemetry.io.git
@@ -243,7 +243,7 @@ alterações.\_
    upstream	https://github.com/open-telemetry/opentelemetry.io.git (push)
    ```
 
-1. Busque commits do `origin/main` do seu fork e `upstream/main` do repositório
+1. Busque commits do `origin/main` do seu _fork_ e `upstream/main` do repositório
    `open-telemetry/opentelemetry.io`:
 
    ```shell
@@ -252,12 +252,12 @@ alterações.\_
    ```
 
    Isso garante que seu repositório local esteja atualizado antes de você
-   começar a fazer alterações. Envie alterações do upstream para o origin
-   regularmente para manter seu fork sincronizado com o upstream.
+   começar a fazer alterações. Envie alterações do _upstream_ para o _origin_
+   regularmente para manter seu _fork_ sincronizado com o _upstream_.
 
 ### Criar uma ramificação (_branch_)
 
-1. Crie uma nova branch. Este exemplo assume que a branch base é
+1. Crie uma nova _branch_. Este exemplo assume que a _branch_ base é
    `upstream/main`:
 
    ```shell
@@ -271,7 +271,7 @@ alterou.
 
 ### Confirmar suas alterações
 
-Quando você estiver pronto para enviar um pull request, confirme suas
+Quando você estiver pronto para enviar um _pull request_, confirme suas
 alterações.
 
 1. No seu repositório local, verifique quais arquivos você precisa confirmar:
@@ -295,8 +295,8 @@ alterações.
    no changes added to commit (use "git add" and/or "git commit -a")
    ```
 
-1. Adicione os arquivos listados em **Alterações não preparadas para commit**
-   (_Changes not staged for commit_) ao commit:
+1. Adicione os arquivos listados em **Alterações não preparadas para _commit_**
+   (_Changes not staged for commit_) ao _commit_:
 
    ```shell
    git add <nome_do_seu_arquivo>
@@ -304,13 +304,13 @@ alterações.
 
    Repita isso para cada arquivo.
 
-1. Depois de adicionar todos os arquivos, crie um commit:
+1. Depois de adicionar todos os arquivos, crie um _commit_:
 
    ```shell
    git commit -m "Sua mensagem de commit"
    ```
 
-1. Envie sua branch local e seu novo commit para seu fork remoto:
+1. Envie sua _branch_ local e seu novo _commit_ para seu _fork_ remoto:
 
    ```shell
    git push origin <minha_nova_branch>
@@ -321,7 +321,7 @@ alterações.
 
 ### Abrir um novo PR {#open-a-pr}
 
-A Figura 4 mostra os passos para abrir um PR do seu fork para
+A Figura 4 mostra os passos para abrir um PR do seu _fork_ para
 [opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io).
 
 ```mermaid
@@ -350,30 +350,29 @@ class first,second white
 _Figura 4. Etapas para abrir um PR do seu fork para_
 [opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io).
 
-1. Em um navegador da web, vá para o
-   [`opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io)
-   repositório.
-1. Selecione **Novo Pull Request**.
-1. Selecione **comparar entre forks**.
-1. No menu suspenso **repositório de origem**, selecione seu fork.
-1. No menu suspenso **comparar**, selecione sua branch.
-1. Selecione **Criar Pull Request**.
-1. Adicione uma descrição para o seu pull request:
+1. Em um navegador da web, vá para o repositório
+   [`opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io).
+1. Selecione **Novo _Pull Request_**.
+1. Selecione **comparar entre _forks_**.
+1. No menu suspenso **repositório de origem**, selecione seu _fork_.
+1. No menu suspenso **comparar**, selecione sua _branch_.
+1. Selecione **Criar _Pull Request_**.
+1. Adicione uma descrição para o seu _pull request_:
 
    - **Título** (50 caracteres ou menos): Resuma a intenção da alteração.
    - **Descrição**: Descreva a alteração em mais detalhes.
 
-     - Se houver um problema relacionado no GitHub, inclua `Fixes #12345` ou
-       `Closes #12345` na descrição para que a automação do GitHub feche o
-       problema mencionado após a mesclagem do PR. Se houver outros PRs
+     - Se houver uma _issue_ relacionada no GitHub, inclua `Fixes #12345` ou
+       `Closes #12345` na descrição para que a automação do GitHub feche a
+       _issue_ mencionada após o _merge_ do PR. Se houver outros PRs
        relacionados, vincule-os também.
-     - Se você quiser aconselhamento sobre algo específico, inclua quaisquer
-       perguntas que você gostaria que os revisores pensassem na sua descrição.
+     - Se você quiser aconselhamento sobre algo específico, inclua na descrição
+       quaisquer perguntas que você gostaria que os revisores levassem em conta durante a revisão.
 
-1. Selecione o botão **Criar pull request**.
+1. Selecione o botão **Criar _pull request_**.
 
-Seu pull request está disponível em
-[Pull requests](https://github.com/open-telemetry/opentelemetry.io/pulls).
+Seu _pull request_ está disponível em
+[_Pull requests_](https://github.com/open-telemetry/opentelemetry.io/pulls).
 
 Após a abertura de um PR, o GitHub executa testes automatizados e tenta
 implantar uma prévia usando [Netlify](https://www.netlify.com/).
@@ -407,12 +406,12 @@ npm run fix:all # Pode atualizar arquivos
 
 Para listar os scripts NPM disponíveis, execute `npm run`. Veja
 [verificações de PR](../pr-checks) para mais informações sobre verificações de
-pull request e como corrigir erros automaticamente.
+_pull request_ e como corrigir erros automaticamente.
 
 ### Visualizar suas alterações {#preview-locally}
 
-Visualize suas alterações localmente antes de enviá-las ou abrir um pull
-request. Uma prévia permite que você detecte erros de compilação ou problemas de
+Visualize suas alterações localmente antes de enviá-las ou abrir um _pull
+request_. Uma prévia permite que você detecte erros de compilação ou problemas de
 formatação do Markdown.
 
 Para construir e servir o site localmente com o Hugo, execute o seguinte
@@ -432,7 +431,7 @@ feche a janela do terminal.
 
 Se você enviar um PR, o Netlify criará uma [prévia de
 implantação][deploy preview] para que você possa revisar suas alterações. Assim
-que seu PR for mesclado, o Netlify implanta o site atualizado no servidor de
+que ocorrer o _merge_ do seu PR, o Netlify implanta o site atualizado no servidor de
 produção.
 
 > **Nota**: As prévias de PR incluem _páginas de rascunho_, mas as compilações
@@ -447,64 +446,64 @@ Antes que um PR seja mesclado, às vezes são necessárias algumas iterações d
 revisão e edição. Para nos ajudar e a si mesmo a tornar esse processo o mais
 fácil possível, pedimos que você adira ao seguinte:
 
-- Se o seu PR não for uma correção rápida, **trabalhe a partir de um fork**:
+- Se o seu PR não for uma correção rápida, **trabalhe a partir de um _fork_**:
   Clique no botão
-  [Fork](https://github.com/open-telemetry/opentelemetry.io/fork) na parte
-  superior do repositório e clone o fork localmente. Quando estiver pronto,
+  [_Fork_](https://github.com/open-telemetry/opentelemetry.io/fork) na parte
+  superior do repositório e clone o _fork_ localmente. Quando estiver pronto,
   envie um PR para o repositório upstream.
-- **Não trabalhe a partir da branch `main`** do seu fork, mas crie uma branch
+- **Não trabalhe a partir da branch `main`** do seu _fork_, mas crie uma _branch_
   específica para o PR.
 - Certifique-se de que os mantenedores estão
-  [autorizados a aplicar alterações ao seu pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork).
+  [autorizados a aplicar alterações ao seu _pull request_](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork).
 
 ### Alterações dos revisores
 
-Às vezes, os revisores fazem commits no seu pull request. Antes de fazer
-qualquer outra alteração, busque esses commits.
+Às vezes, os revisores fazem _commits_ no seu _pull request_. Antes de fazer
+qualquer outra alteração, busque esses _commits_.
 
-1. Busque commits do seu fork remoto e rebase sua branch de trabalho:
+1. Busque _commits_ do seu _fork_ remoto e faça o _rebase_ em sua _branch_ de trabalho:
 
    ```shell
    git fetch origin
    git rebase origin/<seu-nome-da-branch>
    ```
 
-1. Após o rebase, force-push as novas alterações para seu fork:
+1. Após o _rebase_, execute um _force-push_ contendo as novas alterações para seu _fork_:
 
    ```shell
    git push --force-with-lease origin <seu-nome-da-branch>
    ```
 
-Você também pode resolver conflitos de mesclagem pela interface do GitHub.
+Você também pode resolver conflitos de _merge_ pela interface do GitHub.
 
-### Conflitos de mesclagem e rebase
+### Conflitos de merge e rebase
 
 Se outro colaborador fizer alterações no mesmo arquivo em outro PR, isso pode
-criar um conflito de mesclagem. Você deve resolver todos os conflitos de
-mesclagem em seu PR.
+criar um conflito de _merge_. Você deve resolver todos os conflitos de
+_merge_ em seu PR.
 
-1. Atualize seu fork e rebase sua branch local:
+1. Atualize seu _fork_ e faça _rebase_ em sua branch local:
 
    ```shell
    git fetch origin
    git rebase origin/<seu-nome-da-branch>
    ```
 
-   Em seguida, force-push as alterações para seu fork:
+   Em seguida, execute um _force-push_ contendo as alterações para seu _fork_:
 
    ```shell
    git push --force-with-lease origin <seu-nome-da-branch>
    ```
 
 1. Busque alterações do `upstream/main` do repositório
-   `open-telemetry/opentelemetry.io` e rebase sua branch:
+   `open-telemetry/opentelemetry.io` e faça _rebase_ de sua _branch_:
 
    ```shell
    git fetch upstream
    git rebase upstream/main
    ```
 
-1. Inspecione os resultados do rebase:
+1. Inspecione os resultados do _rebase_:
 
    ```shell
    git status
@@ -524,7 +523,7 @@ mesclagem em seu PR.
    git add <nome_do_arquivo>
    ```
 
-1. Continue o rebase:
+1. Continue o _rebase_:
 
    ```shell
    git rebase --continue
@@ -532,27 +531,27 @@ mesclagem em seu PR.
 
 1. Repita as etapas 2 a 5 conforme necessário.
 
-   Após aplicar todos os commits, o comando `git status` mostra que o rebase
+   Após aplicar todos os _commits_, o comando `git status` mostra que o _rebase_
    está completo.
 
-1. Force-push a branch para seu fork:
+1. Execute um _force-push_ da _branch_ para seu _fork_:
 
    ```shell
    git push --force-with-lease origin <seu-nome-da-branch>
    ```
 
-   O pull request não mostra mais conflitos.
+   O _pull request_ não mostra mais conflitos.
 
 ### Requisitos de mesclagem (_merge_)
 
-Os pull requests são mesclados quando cumprem os seguintes critérios:
+O _merge_ dos _pull requests_ ocorrem quando são cumpridos os seguintes critérios:
 
 - Todas as revisões por aprovadores, mantenedores, membros do comitê técnico ou
   especialistas no assunto têm o status "Aprovado".
 - Nenhuma conversa não resolvida.
 - Aprovado por pelo menos um aprovador.
 - Sem falhas nas verificações de PR.
-- A branch do PR está atualizada com a branch base.
+- A _branch_ do PR está atualizada com a _branch_ base.
 - As alterações na página do doc [do not span locales][].
 
 [do not span locales]: ../localization/#prs-should-not-span-locales
