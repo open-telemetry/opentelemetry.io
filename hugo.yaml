@@ -50,7 +50,7 @@ languages:
     languageName: Українська (Ukrainian)
     languageCode: uk-UA
     params:
-      description: Сайт проекту OpenTelemetry
+      description: Сайт проєкту OpenTelemetry
   zh:
     languageName: 中文 (Chinese)
     languageCode: zh-cn
