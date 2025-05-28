@@ -75,6 +75,18 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:46:55.829922-04:00"
   },
+  "https://argo-workflows.readthedocs.io/en/latest/metrics/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-28T17:11:27.830487+02:00"
+  },
+  "https://argoproj.github.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-28T17:11:26.260735+02:00"
+  },
+  "https://argoproj.github.io/workflows/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-28T17:11:28.74158+02:00"
+  },
   "https://arrow.apache.org/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-15T13:17:56.82378-05:00"
@@ -3182,6 +3194,10 @@
   "https://github.com/apache/dubbo": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:39:10.537918-05:00"
+  },
+  "https://github.com/argoproj/argo-workflows": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-28T17:11:27.577941+02:00"
   },
   "https://github.com/arielvalentin": {
     "StatusCode": 206,
