@@ -29,7 +29,7 @@ problemas comuns.
 
 {{% /alert %}}
 
-## Lista de palavras do OpenTelemetry.io
+## Lista de palavras do OpenTelemetry.io {#opentelemetryio-word-list}
 
 Uma lista de termos e palavras específicas do OpenTelemetry que devem ser usadas
 de forma consistente em todo o site:
