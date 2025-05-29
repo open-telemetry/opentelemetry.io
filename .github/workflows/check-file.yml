@@ -27,8 +27,9 @@ jobs:
       - uses: actions/checkout@v4
       - run: npm run check:format
 
-  check-branch-is-not-main:
-    name: PR-BRANCH-IS-NOT-MAIN check
+  check-branch-name:
+    name: BRANCH NAME check
     runs-on: ubuntu-latest
     steps:
-      - uses: jaegertracing/jaeger/.github/actions/block-pr-from-main-branch@main
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/fail-if-branch-is-main
