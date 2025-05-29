@@ -1,0 +1,20 @@
+title: Argo Workflows
+registryType: application integration
+language: go
+tags:
+  - go
+  - argo
+urls:
+  repo: https://github.com/argoproj/argo-workflows
+  docs: https://argo-workflows.readthedocs.io/en/latest/metrics/
+  website: https://argoproj.github.io/
+license: Apache 2.0
+description:
+  Argo Workflows provides native OpenTelemetry metrics to provide information
+  from the workflow controller.
+authors:
+  - name: Argo Workflows Authors
+    url: https://argoproj.github.io/workflows/
+createdAt: '2025-04-02'
+isNative: true
+cncfProjectLevel: graduated
