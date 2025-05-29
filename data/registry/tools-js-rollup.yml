@@ -1,0 +1,22 @@
+# cSpell:ignore corlin, rollup, rolldown
+title: OpenTelemetry Rollup Plugin
+registryType: utilities
+language: js
+tags:
+  - rollup
+  - vite
+  - rolldown
+  - bundler
+urls:
+  repo: https://github.com/DrewCorlin/opentelemetry-node-bundler-plugins
+  docs: https://github.com/DrewCorlin/opentelemetry-node-bundler-plugins/tree/main/packages/opentelemetry-rollup-plugin-node
+license: MIT
+description:
+  Rollup plugin which bundles OpenTelemetry node core and contrib
+  instrumentations into your code
+authors:
+  - name: Drew Corlin
+    url: https://github.com/DrewCorlin
+createdAt: 2025-05-26
+isNative: false
+isFirstParty: false

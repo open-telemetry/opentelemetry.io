@@ -93,7 +93,7 @@ span link connecting it to the producer trace.
 ## Capturing enduser attributes
 
 You can configure the agent to capture
-[general identity attributes](/docs/specs/semconv/attributes-registry/enduser/)
+[general identity attributes](/docs/specs/semconv/registry/attributes/enduser/)
 (`enduser.id`, `enduser.role`, `enduser.scope`) from instrumentation libraries
 like
 [JavaEE/JakartaEE Servlet](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/servlet)
