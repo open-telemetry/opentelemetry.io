@@ -48,5 +48,5 @@ OpenTelemetryの話を聞いて、学び、そして参加しましょう。
 東京でお会いしましょう！
 
 [KubeCon + CloudNativeCon Japan]: https://events.linuxfoundation.org/kubecon-cloudnativecon-japan//?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-Japan-2025&utm_content=blog
-[register]: https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/
+[registration]: https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/
 [Community Day]: https://community.cncf.io/events/details/cncf-cloud-native-community-japan-presents-japan-community-day-at-kubecon-cloudnativecon-japan-2025/
