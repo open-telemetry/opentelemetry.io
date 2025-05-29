@@ -9,7 +9,7 @@ default_lang_commit: a770dd9ad30d08571d02184b339441061f35e464
 cSpell:ignore: Baazi Chauhan Hrabusa Kang Kasper Mostafa Nissen Radwan Shivay Siddharth Vijay
 ---
 
-OpenTelemetryプロジェクトは、[KubeCon + CloudNativeCon Japan][]（[参加登録][]）
+OpenTelemetryプロジェクトは、[KubeCon + CloudNativeCon Japan][]（[参加登録][registration]）
 および東京で同時開催される[Community Day][]（2025年6月15日〜17日）で、OpenTelemetryコミュニティのメンバーと一緒に過ごすことを皆さんにご案内します。
 
 この記事では、KubeCon期間中に予定されているOpenTelemetry関連のすべてのアクティビティを紹介しています。カンファレンス開始前に、随時更新情報をチェックしてください！
