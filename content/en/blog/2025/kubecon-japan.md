@@ -3,7 +3,7 @@ title:
   Join us for OpenTelemetry Talks and Activities at KubeCon + CloudNativeCon
   Japan 2025
 linkTitle: KubeCon Japan '25
-date: 2025-05-16
+date: 2025-05-29
 author: '[Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)'
 # prettier-ignore
 cSpell:ignore: Baazi Chauhan Hrabusa Kang Kasper Mostafa Nissen Radwan Shivay Siddharth Vijay
