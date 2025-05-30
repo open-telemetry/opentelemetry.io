@@ -27,9 +27,9 @@ experiences. When signal and attribute names stay consistent, everyone can spend
 their time building alerts, dashboards, and visualizations - not firefighting
 breaking changes.
 
-Existing experimental conventions have been in use for quite a while, and
-we understand that introducing any breaking changes in the corresponding instrumentations will be
-disruptive.
+Existing experimental conventions have been in use for quite a while, and we
+understand that introducing any breaking changes in the corresponding
+instrumentations will be disruptive.
 
 We firmly believe that these changes are essential in the long run to deliver
 high-quality instrumentation that produces actionable, useful telemetry.
