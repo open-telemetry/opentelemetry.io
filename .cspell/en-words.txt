@@ -35,7 +35,6 @@ daemonset
 datadog
 discoverability
 dotnet
-Dubbo
 Dyla
 dynatrace
 ebpf
@@ -72,11 +71,9 @@ kubernetes
 laravel
 lifecycles
 lightstep
-Liudmila
 Loffay
 Mancuso
 microservices
-Molkova
 mongodb
 ndjson
 Neumann
