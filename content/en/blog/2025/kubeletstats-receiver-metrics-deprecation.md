@@ -26,15 +26,15 @@ on migrating.
 ## Why This Change?
 
 Historically, the
-[`kubeletstats`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.126.0/receiver/kubeletstatsreceiver/README.md)
+[`kubeletstats`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/README.md)
 receiver emitted CPU metrics labeled with `.cpu.utilization`, such as:
 
-- [`k8s.node.cpu.utilization`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.126.0/receiver/kubeletstatsreceiver/documentation.md#k8snodecpuutilization)
-- [`k8s.pod.cpu.utilization`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.126.0/receiver/kubeletstatsreceiver/documentation.md#k8spodcpuutilization)
-- [`container.cpu.utilization`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.126.0/receiver/kubeletstatsreceiver/documentation.md#containercpuutilization)
+- [`k8s.node.cpu.utilization`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/documentation.md#k8snodecpuutilization)
+- [`k8s.pod.cpu.utilization`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/documentation.md#k8spodcpuutilization)
+- [`container.cpu.utilization`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/documentation.md#containercpuutilization)
 
 These metrics actually represent
-[**raw CPU usage in cores**](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.126.0/receiver/kubeletstatsreceiver/internal/kubelet/cpu.go#L25-L26),
+[**raw CPU usage in cores**](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/internal/kubelet/cpu.go#L25-L26),
 derived from the Kubernetes Kubelet’s
 [`UsageNanoCores`](https://github.com/kubernetes/kubernetes/blob/8adc0f041b8e7ad1d30e29cc59c6ae7a15e19828/staging/src/k8s.io/kubelet/pkg/apis/stats/v1alpha1/types.go#L230-L233)
 field, which is an absolute measure of CPU usage (in units of nanocores).
@@ -51,12 +51,12 @@ relative.
 To address this semantic mismatch, we introduced new `.cpu.usage` metrics that
 correctly represent raw CPU usage values:
 
-- [`k8s.node.cpu.usage`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.126.0/receiver/kubeletstatsreceiver/documentation.md#k8snodecpuusage)
-- [`k8s.pod.cpu.usage`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.126.0/receiver/kubeletstatsreceiver/documentation.md#k8spodcpuusage)
-- [`container.cpu.usage`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.126.0/receiver/kubeletstatsreceiver/documentation.md#containercpuusage)
+- [`k8s.node.cpu.usage`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/documentation.md#k8snodecpuusage)
+- [`k8s.pod.cpu.usage`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/documentation.md#k8spodcpuusage)
+- [`container.cpu.usage`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/documentation.md#containercpuusage)
 
 At the same time, the legacy `.cpu.utilization` metrics have been
-[**marked for deprecation**](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.126.0/receiver/kubeletstatsreceiver/README.md#metrics-deprecation).
+[**marked for deprecation**](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/README.md#metrics-deprecation).
 
 ## Feature Gate: `receiver.kubeletstats.enableCPUUsageMetrics`
 
