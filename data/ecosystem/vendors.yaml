@@ -336,6 +336,12 @@
   contact: ploffay@redhat.com
   oss: true
   commercial: true
+- name: Randoli
+  nativeOTLP: true
+  url: https://docs.insights.randoli.io/troubleshooting-observability/config/open-telemetry/
+  contact: rajith@randoli.ca
+  oss: false
+  commercial: true
 - name: Sentry Software
   nativeOTLP: true
   url: https://www.sentrysoftware.com/products/hardware-sentry-opentelemetry-collector.html
