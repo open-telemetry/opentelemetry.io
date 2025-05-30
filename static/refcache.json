@@ -2623,6 +2623,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-11-14T11:47:31.843322+01:00"
   },
+  "https://github.com/DataDog/datadog-agent/tree/main/comp/otelcol": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-30T11:16:18.337986+02:00"
+  },
   "https://github.com/DataDog/datadog-agent/tree/main/comp/otelcol/collector-contrib/impl": {
     "StatusCode": 206,
     "LastSeen": "2025-05-19T15:44:13.98324+02:00"
