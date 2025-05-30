@@ -55,7 +55,7 @@ We aim for conventions that are useful, usable, and extensible.
 
 For RPC, we're focusing on the following major areas:
 
-- **Essential signals**: 
+- **Essential signals**:
   We aim to define a core set of telemetry signals, such as client/server spans
   and call duration histograms, that can be recorded consistently across
   frameworks. These support common debugging workflows and RED (rate, errors,
@@ -63,26 +63,22 @@ For RPC, we're focusing on the following major areas:
   attributes, and document both their generic definitions and framework-specific
   applications.
 
-- Framework-specific telemetry
-
+- **Framework-specific telemetry**:
   We encourage frameworks to extend the generic conventions with additional
   attributes, spans, or metrics that reflect their specific features. We'll
   review these extensions, including community-maintained ones like
   [gRPC metrics](https://grpc.io/docs/guides/opentelemetry-metrics/).
 
-- Scope
-
+- **Scope**:
   Bi-directional streaming inherently comes with limited observability. We’ll
   evaluate which useful signals can realistically be captured.
 
-- Consistency and guidelines
-
+- **Consistency and guidelines**:
   Over the years, we’ve developed better practices for naming, and recording
   peer details or errors. RPC conventions will be updated to align with these
   latest guidelines.
 
-- Prototyping
-
+- **Prototyping**:
   A key requirement for stabilization is having real-world instrumentations and
   prototypes that follow the conventions. These implementations provide critical
   feedback on clarity, feasibility, and practical value, and help validate that
