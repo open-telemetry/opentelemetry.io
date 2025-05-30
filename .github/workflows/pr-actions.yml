@@ -112,10 +112,11 @@ jobs:
 
       - name: Apply patch
         run: |
-          git apply --check pr-fix.patch && git apply pr-fix.patch || {
-            echo "Patch failed to apply"
+          if ! git apply --verbose pr-fix.patch; then
+            echo "Patch failed to apply. For details, see output above. To debug this locally,"
+            echo "get the patch file from the workflow summary artifact section."
             exit 1
-          }
+          fi
           rm pr-fix.patch
 
       - name: Commit and push changes, if any
