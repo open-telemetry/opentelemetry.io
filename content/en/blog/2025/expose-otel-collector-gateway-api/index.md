@@ -3,7 +3,7 @@ title: Exposing OTel Collector in Kubernetes with Gateway API & mTLS
 linkTitle: Collector with Gateway API and mTLS
 date: 2025-04-06
 author: >
-  [Vipin Vijaykumar](https://github.com/vipinvkmenon)
+  [Vipin Vijaykumar](https://github.com/vipinvkmenon) (SAP SE)
 sig: End-User SIG
 cSpell:ignore: gateway gatewayclass ingress ingressgateway Vijaykumar Vipin
 ---
@@ -36,7 +36,7 @@ Some examples:
   For example, in a multi-cluster service mesh setup, workloads may require tail
   sampling to be performed centrally. In this case, a central collector
   configured with the
-  [tail sampling processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)
+  [tail sampling processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.127.0/processor/tailsamplingprocessor)
   and exposed via a Gateway aggregates spans from all clusters to make sampling
   decisions.
 - **Edge Computing / IoT:** Devices deployed at the edge often need to send
@@ -147,7 +147,7 @@ the cluster.
 - Configure an external client (another OTel Collector) to export data via
   OTLP/gRPC, using the client certificate and trusting the Root CA.
 
-![Scenario Diagram](ScenarioFlow.png)
+![Scenario Diagram](scenario-flow.png)
 
 ## Setup
 
@@ -338,9 +338,11 @@ kubectl apply -f otel-collector-server.yaml
 The Gateway needs access to the server certificate/key and the CA certificate to
 validate clients.
 
+Create a secret with the server certificate, key. We will also store the ca
+certificate used to sign clients In this demo, for ease, we place it in the
+otel-collector namespace
+
 ```bash
-# Create a secret with the server certificate, key. We will also store the ca certificate used to sign clients
-# In this demo, for ease, we place it in the otel-collector namespace
 kubectl create -n otel-collector secret generic otel-gateway-server-cert --from-file=tls.crt=server.crt --from-file=tls.key=server.key --from-file=ca.crt=rootCA.crt
 ```
 

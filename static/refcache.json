@@ -6843,6 +6843,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-23T00:42:04.28940445Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.127.0/processor/tailsamplingprocessor": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-30T23:23:05.467218+05:30"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.61.0/exporter/prometheusexporter": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:34:03.854505-05:00"
