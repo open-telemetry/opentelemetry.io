@@ -25,7 +25,7 @@ Typically this kind of a setup is useful when you have applications or workloads
 that are external to the cluster, and you need to collect their telemetry data.
 Some examples:
 
-- **Hybrid Cloud/On-Premise Environments:** Applications or servers running in a
+- **Hybrid Cloud/On-Premises Environments:** Applications or servers running in a
   traditional data center, or a different cloud or external to your Kubernetes
   cluster need to forward their metrics, traces, or logs to your central
   observability solution.
@@ -71,7 +71,7 @@ Before we start, ensure you have the following:
 
 {{% alert %}}
 
-Since certain parts of the Gateway API are still in alpha/beta phase the support
+Since certain parts of the Gateway API are still in alpha/beta phase, the support
 for specific aspects may vary or may not be enabled by default. Please refer to
 the documentation of the Gateway implementation that you are using. For example,
 at the time of writing, if you are using Istio, ensure that
@@ -123,7 +123,7 @@ Mutual TLS is important because it provides strong authentication, ensures
 end-to-end encryption, and aligns with Zero Trust security principles:
 
 - Ensures _only_ trusted clients (those possessing a valid certificate signed by
-  trusted CA) can connect to your exposed service.
+  trusted Certificate Authority (CA)) can connect to your exposed service.
 
 - All communication between the authenticated client and the server (such as a
   Gateway) is encrypted.
@@ -214,7 +214,7 @@ Subject Alternative Name (SAN) matches the hostname clients use to connect.
 
 We will deploy our OTel Collector setup in the given namespace. Further on,
 depending on the Gateway/service mesh implementation you use, you may configure
-the namespace accordingly. For e.g: with Istio, we can the namespace with
+the namespace accordingly. For example, with Istio, we can create the namespace with
 `istio-injection:enabled` in order for Istio to automatically work with the
 deployed workloads in the namespace.
 
@@ -409,11 +409,13 @@ spec:
   configure the backend to which the route forwards the requests. In this case,
   to the `otel-collector-server-svc`.
 
-_Note: We make use of `options` in the gateway for implementation specific
-configuration of mTLS. Currently the gateway API does not explicitly have
+{{% alert title="Note" %}}
+We make use of `options` in the gateway for implementation-specific
+configuration of mTLS. Currently, the gateway API does not explicitly have
 `Mutual TLS`
-[mode](https://gateway-api.sigs.k8s.io/reference/spec/#tlsmodetype). Please
-refer latest documentation of Gateway API for updates_
+[mode](https://gateway-api.sigs.k8s.io/reference/spec/#tlsmodetype). Refer 
+to the latest documentation of Gateway API for updates.
+{{% /alert %}}
 
 Apply the Gateway configuration:
 
@@ -449,10 +451,7 @@ data to the Gateway's external endpoint using mTLS.
 
 For this demo, the client (OTel Collector) is run locally with Docker.
 
-A simple configuration for scraping CPU & memory metrics and sending it to the
-server.
-
-Example `otel-client-config.yaml`:
+The following example `otel-client-config.yaml` is a simple configuration for scraping CPU and memory metrics and sending them to the server:
 
 ```yaml
 receivers:
@@ -526,7 +525,7 @@ service:
 We are running a container of `opentelemetry-collector-contrib` by mounting the
 `otel-client-config.yaml` and the `certs` folder that contains the certificates.
 
-## Step 6: Testing the Connection
+## Step 8: Testing the Connection
 
 1.  **Check Server Logs:** Look at the logs of the `otel-collector-server` pod
     inside Kubernetes. If the `debug` exporter is configured, you should see
@@ -572,7 +571,7 @@ of when configuring this setup during production:
   for signing the server certificates.
 - The Kubernetes Gateway API is constantly evolving with more and more features
   coming into the spec. Many of these features are now in alpha/beta and will
-  soon become generally available. For e.g `GRPCRoute`. Please refer the latest
+  soon become generally available, for example, `GRPCRoute`. Refer to the latest
   Kubernetes documentation of the Gateway API.
 - The Kubernetes Gateway API aims to make the configuration portable and
   implementation agnostic as much as possible. Ideally this would be the case
@@ -580,7 +579,7 @@ of when configuring this setup during production:
   configuration will have minor changes between implementations. For example,
   the way mTLS is configured in the Gateway now.
 - When running in production, you may want to use the `infrastructure` block of
-  the `spec` to configure infrastructure-provider specific parameters. For e.g
+  the `spec` to configure infrastructure-provider specific parameters, for example,
   `DNS`.
 - Productive setups would have end-to-end encrypted communication. For example,
   when using Istio, all components running within namespaces managed by Istio in
@@ -590,12 +589,12 @@ of when configuring this setup during production:
   well.
 - When working with routes and gateways in multiple namespaces, you may need
   references of resources such as backend `services`, and other configurations
-  from other namespaces. For this please refer to Gateway
+  from other namespaces. For details, refer to Gateway
   [ReferenceGrant](https://gateway-api.sigs.k8s.io/api-types/referencegrant/).
 
 ## Alternative Gateway Implementations
 
-While we used Istio (`gatewayClassName: istio`), the core benefits of the
+While we used Istio (`gatewayClassName: istio`), the core benefit of the
 Gateway API is its potential for standardization. If you were using Contour,
 NGINX Gateway Fabric, HAPROXY, etc., the `Gateway` and `GRPCRoute` resource
 definitions would ideally look very similar. The main differences might be:
