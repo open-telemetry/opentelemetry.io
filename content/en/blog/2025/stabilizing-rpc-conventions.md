@@ -28,13 +28,13 @@ their time building alerts, dashboards, and visualizations - not firefighting
 breaking changes.
 
 Existing experimental conventions have been in use for quite a while, and
-introducing breaking changes in the corresponding instrumentations would be
+we understand that introducing any breaking changes in the corresponding instrumentations will be
 disruptive.
 
 We firmly believe that these changes are essential in the long run to deliver
 high-quality instrumentation that produces actionable, useful telemetry.
 
-To ensure a smooth transition, we are following a
+To ensure a smooth transition, we are planning to follow a
 [graceful migration plan](https://github.com/open-telemetry/semantic-conventions/blob/v1.34.0/docs/rpc/rpc-spans.md?plain=1#L26-L50).
 Instrumentation libraries will:
 
