@@ -12,7 +12,6 @@ issue: https://github.com/open-telemetry/opentelemetry.io/issues/6847
 cSpell:ignore: Anoshin Dmitrii Helmuth Kubelet kubeletstats Kubelet’s Markou
 ---
 
-## Kubernetes CPU Metrics in the `kubeletstats` Receiver: Transition from `.cpu.utilization` to `.cpu.usage`
 
 The OpenTelemetry Collector’s
 [`kubeletstats`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/README.md)
