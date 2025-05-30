@@ -83,7 +83,7 @@ weight: 200
 
 ### Дистрибутив {#distribution}
 
-Дистрибутив — це обгортка навколо репозиторію OpenTelemetry з деякими налаштуваннями. Див. [більше][distribution].
+Дистрибутив — це обгортка навколо репозиторію OpenTelemetry з деякими налаштуваннями. Див. [Дистрибутиви][Distributions].
 
 ### Подія {#event}
 
@@ -99,7 +99,7 @@ weight: 200
 
 ### gRPC
 
-Високопродуктивний, відкритий універсальний [RPC](#rpc) фреймворк. Більше про gRPC [тут](https://grpc.io).
+Високопродуктивний, відкритий універсальний [RPC](#rpc) фреймворк. Див. [gRPC](https://grpc.io).
 
 ### HTTP
 
@@ -107,7 +107,7 @@ weight: 200
 
 ### Інструментована бібліотека {#instrumented-library}
 
-Визначає [Бібліотеку](#library), для якої збираються телеметричні сигнали ([Трейси](#trace), [Метрики](#metric), [Журнали](#log)). Див. [більше][spec-instrumented-lib].
+Визначає [Бібліотеку](#library), для якої збираються телеметричні сигнали ([Трейси](#trace), [Метрики](#metric), [Журнали](#log)). Див. [Instrumented library][].
 
 ### Бібліотека інструменталізації {#instrumentation-library}
 
@@ -131,11 +131,11 @@ weight: 200
 
 ### Журнал {#log}
 
-Іноді використовується для позначення колекції [Записів журналу](#log-record). Може бути неоднозначним, оскільки люди іноді також використовують [Журнал](#log) для позначення одного [Запису журналу](#log-record). Де можлива неоднозначність, використовуйте додаткові кваліфікатори, наприклад, `Запис журналу`. Див. [більше][log]
+Іноді використовується для позначення колекції [Записів журналу](#log-record). Може бути неоднозначним, оскільки люди іноді також використовують [Журнал](#log) для позначення одного [Запису журналу](#log-record). Де можлива неоднозначність, використовуйте додаткові кваліфікатори, наприклад, `Запис журналу`. Див. [Логи][log]
 
 ### Запис журналу {#log-record}
 
-Запис даних з міткою часу та ступенем важливості. Може також мати [Trace ID](#trace) та [Span ID](#span), коли співвідноситься з трасуванням. Див. [більше][log record].
+Запис даних з міткою часу та ступенем важливості. Може також мати [Trace ID](#trace) та [Span ID](#span), коли співвідноситься з трасуванням. Див. [Записи журналу][log record].
 
 ### Метадані {#metadata}
 
@@ -143,7 +143,7 @@ weight: 200
 
 ### Метрика {#metric}
 
-Записує точку даних, або сирі вимірювання, або попередньо визначену агрегацію, як часові ряди з [Метаданими](#metadata). Див. [більше][metric].
+Записує точку даних, або сирі вимірювання, або попередньо визначену агрегацію, як часові ряди з [Метаданими](#metadata). Див. [Метрики][Metric].
 
 ### OC
 
@@ -200,15 +200,15 @@ weight: 200
 
 ### Поширювачі {#propagators}
 
-Використовуються для серіалізації та десеріалізації конкретних частин телеметричних даних, таких як контекст відрізка та [Baggage](#baggage) у [Відрізках](#span). Див. [більше][propagators].
+Використовуються для серіалізації та десеріалізації конкретних частин телеметричних даних, таких як контекст відрізка та [Baggage](#baggage) у [Відрізках](#span). Див. [Поширювачі][propagators].
 
 ### Proto
 
-Мовонезалежні типи інтерфейсів. Див. [більше][proto].
+Мовонезалежні типи інтерфейсів. Див. [opentelemetry-proto][].
 
 ### Приймач {#receiver}
 
-Термін, що використовується [Колектором](/docs/collector/configuration/#receivers) для визначення того, як отримуються телеметричні дані. Приймачі можуть бути на основі дій push або pull. Див. [більше][receiver].
+Термін, що використовується [Колектором](/docs/collector/configuration/#receivers) для визначення того, як отримуються телеметричні дані. Приймачі можуть бути на основі дій push або pull. Див. [Приймач][Receiver].
 
 ### Запит {#request}
 
@@ -228,7 +228,7 @@ weight: 200
 
 ### Вибірка {#sampling}
 
-Механізм для контролю кількості даних, що експортуються. Найчастіше використовується з [Трасуванням](#trace) [Джерелом даних](#data-source). Див. [більше][sampling].
+Механізм для контролю кількості даних, що експортуються. Найчастіше використовується з [Трасуванням](#trace) [Джерелом даних](#data-source). Див. [Sampling][].
 
 ### SDK
 
@@ -244,11 +244,11 @@ weight: 200
 
 ### Сигнал {#signal}
 
-Один з [Трейсів](#trace), [Метрик](#metric) або [Журналів](#log). Більше про Сигнали [тут][signals].
+Один з [Трейсів](#trace), [Метрик](#metric) або [Журналів](#log). Дивись [Сигнали][Signals].
 
 ### Відрізок {#span}
 
-Представляє одну операцію в межах [Трейсів](#trace). Див. [більше][span].
+Представляє одну операцію в межах [Трейсів](#trace). Див. [Span][].
 
 ### Посилання на відрізок {#span-link}
 
@@ -256,11 +256,11 @@ weight: 200
 
 ### Специфікація {#specification}
 
-Описує міжмовні вимоги та очікування для всіх реалізацій. Див. [більше][specification].
+Описує міжмовні вимоги та очікування для всіх реалізацій. Див. [Специфікація][Specification].
 
 ### Статус {#status}
 
-Результат операції. Зазвичай використовується для вказівки, чи сталася помилка. Див. [більше][status].
+Результат операції. Зазвичай використовується для вказівки, чи сталася помилка. Див. [Status][].
 
 ### Теґ {#tag}
 
@@ -268,11 +268,11 @@ weight: 200
 
 ### Трейс {#trace}
 
-[Орієнтований ациклічний граф](#dag) [Відрізків](#span), де ребра між [Відрізками](#span) визначаються як відношення батько-дитина. Див. [більше][trace].
+[Орієнтований ациклічний граф](#dag) [Відрізків](#span), де ребра між [Відрізками](#span) визначаються як відношення батько-дитина. Див. [Traces][].
 
 ### Трейсер {#tracer}
 
-Відповідальний за створення [Відрізків](#span). Див. [більше][tracer].
+Відповідальний за створення [Відрізків](#span). Див. [Tracer][].
 
 ### Транзакція {#transaction}
 
@@ -280,33 +280,33 @@ weight: 200
 
 ### zPages
 
-Альтернатива зовнішнім експортерам в процесі. Коли вони включені, вони збирають та агрегують інформацію про трасування та метрики у фоновому режимі; ці дані відображаються на вебсторінках за запитом. Див. [більше][zpages].
+Альтернатива зовнішнім експортерам в процесі. Коли вони включені, вони збирають та агрегують інформацію про трасування та метрики у фоновому режимі; ці дані відображаються на вебсторінках за запитом. Див. [zPages][].
 
-[baggage]: /docs/specs/otel/baggage/api/
 [attribute]: /docs/specs/otel/common/#attributes
+[baggage]: /docs/specs/otel/baggage/api/
 [context propagation]: /docs/specs/otel/overview#context-propagation
 [dag]: https://uk.wikipedia.org/wiki/Спрямований_ациклічний_граф
-[distributed tracing]: /docs/concepts/signals/traces/
-[distribution]: /docs/concepts/distributions/
+[distributed tracing]: ../signals/traces/
+[distributions]: ../distributions/
 [field]: /docs/specs/otel/logs/data-model#field-kinds
 [http]: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
+[instrumented library]: /docs/specs/otel/glossary/#instrumented-library
 [json]: https://en.wikipedia.org/wiki/JSON
-[log]: /docs/specs/otel/glossary#log
 [log record]: /docs/specs/otel/glossary#log-record
-[metric]: /docs/concepts/signals/metrics/
+[log]: /docs/specs/otel/glossary#log
+[metric]: ../signals/metrics/
+[opentelemetry-proto]: https://github.com/open-telemetry/opentelemetry-proto
 [propagators]: /docs/languages/go/instrumentation/#propagators-and-context
-[proto]: https://github.com/open-telemetry/opentelemetry-proto
 [receiver]: /docs/collector/configuration/#receivers
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [rpc]: https://en.wikipedia.org/wiki/Remote_procedure_call
 [sampling]: /docs/specs/otel/trace/sdk#sampling
-[signals]: /docs/concepts/signals/
+[signals]: ../signals/
 [span]: /docs/specs/otel/trace/api#span
 [spec-instrumentation-lib]: /docs/specs/otel/glossary/#instrumentation-library
-[spec-instrumented-lib]: /docs/specs/otel/glossary/#instrumented-library
-[specification]: /docs/concepts/components/#specification
+[specification]: ../components/#specification
 [status]: /docs/specs/otel/trace/api#set-status
-[trace]: /docs/specs/otel/overview#traces
 [tracer]: /docs/specs/otel/trace/api#tracer
+[traces]: /docs/specs/otel/overview#traces
 [zpages]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/main/development/trace/zpages.md
