@@ -12459,6 +12459,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-03-31T17:26:32.658279325Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/issues/2074": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-30T10:35:42.316967686Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/issues/2197": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-30T10:35:47.450514995Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues/new": {
     "StatusCode": 206,
     "LastSeen": "2025-01-15T13:17:31.33164-05:00"
@@ -12494,6 +12502,10 @@
   "https://github.com/open-telemetry/semantic-conventions/pull/1668": {
     "StatusCode": 206,
     "LastSeen": "2025-01-24T14:37:09.499396-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2178": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-30T10:35:37.232036805Z"
   },
   "https://github.com/open-telemetry/semantic-conventions/pull/981": {
     "StatusCode": 206,
@@ -15182,6 +15194,22 @@
   "https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:13:02.720356-05:00"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#containerstate-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-30T10:35:33.365209468Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#containerstateterminated-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-30T10:35:28.535929251Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#containerstatewaiting-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-30T10:35:25.314651759Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#containerstatus-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-30T10:35:41.799274384Z"
   },
   "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#cronjobstatus-v1-batch": {
     "StatusCode": 200,
