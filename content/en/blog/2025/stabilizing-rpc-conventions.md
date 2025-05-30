@@ -1,8 +1,7 @@
 ---
-title: >-
-  Announcing the RPC Semantic Conventions stabilization project
+title: Announcing the RPC Semantic Conventions stabilization project
 linkTitle: Stabilizing RPC Semantic Conventions
-date: 2025-05-28
+date: 2025-06-02
 author: >-
   [Liudmila Molkova](https://github.com/lmolkova) (Microsoft), [Trask
   Stalnaker](https://github.com/trask) (Microsoft)
@@ -56,8 +55,7 @@ We aim for conventions that are useful, usable, and extensible.
 
 For RPC, we're focusing on the following major areas:
 
-- Essential signals
-
+- **Essential signals**: 
   We aim to define a core set of telemetry signals, such as client/server spans
   and call duration histograms, that can be recorded consistently across
   frameworks. These support common debugging workflows and RED (rate, errors,
