@@ -22,7 +22,7 @@ OpenTelemetryプロジェクトは、[KubeCon + CloudNativeCon Japan][]（[参�
 このイベントは、クラウドネイティブ開発やコミュニティ参加のさまざまな側面を対象とする複数のテーマ・トラックに分かれて構成されています。
 今すぐ登録しましょう！
 
-## KubeConトーク一覧
+## KubeConトーク一覧 {#kubecon-talks}
 
 - **[⚡ Lightning Talk: OTel 2025: The Latest Milestones and What’s Next](https://sched.co/1yFEh)**（OTel 2025：最新の進展と今後の展望）<br>
   Steve Flanders（Contributor）<br> 6月17日（火）• 11:51 - 11:56
@@ -42,7 +42,7 @@ OpenTelemetryプロジェクトは、[KubeCon + CloudNativeCon Japan][]（[参�
 - **[The Future of Prometheus Exposition Format](https://sched.co/1x71U)**（Prometheusのエクスポートフォーマットの未来）<br>
   Arthur Sens（Grafana Labs）<br> 6月17日（火）• 15:50 - 16:20
 
-## ご参加をお待ちしています
+## ご参加をお待ちしています {#join-us}
 
 OpenTelemetryの話を聞いて、学び、そして参加しましょう。
 東京でお会いしましょう！
