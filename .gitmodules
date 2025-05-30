@@ -28,7 +28,7 @@
 [submodule "content-modules/opentelemetry-go"]
 	path = content-modules/opentelemetry-go
 	url = https://github.com/open-telemetry/opentelemetry-go
-	go-pin = v1.27.0
+	go-pin = v1.36.0
 [submodule "content-modules/opentelemetry-java-examples"]
 	path = content-modules/opentelemetry-java-examples
 	url = https://github.com/open-telemetry/opentelemetry-java-examples.git
