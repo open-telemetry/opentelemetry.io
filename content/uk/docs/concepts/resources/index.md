@@ -33,8 +33,8 @@ weight: 70
 
 ## Власні ресурси {#custom-resources}
 
-Ви також можете надати власні атрибути ресурсів. Ви можете надати їх або в коді, або через заповнення змінної середовища `OTEL_RESOURCE_ATTRIBUTES`. Якщо це можливо, використовуйте [семантичні домовленості для ваших атрибутів ресурсів](/docs/specs/semconv/resource). Наприклад, ви можете надати назву вашого [середовища розгортання](/docs/specs/semconv/resource/deployment-environment/) використовуючи `deployment.environment`:
+Ви також можете надати власні атрибути ресурсів. Ви можете надати їх або в коді, або через заповнення змінної середовища `OTEL_RESOURCE_ATTRIBUTES`. Якщо це можливо, використовуйте [семантичні домовленості для ваших атрибутів ресурсів](/docs/specs/semconv/resource). Наприклад, ви можете надати назву вашого [середовища розгортання](/docs/specs/semconv/resource/deployment-environment/) використовуючи `deployment.environment.name`:
 
 ```shell
-env OTEL_RESOURCE_ATTRIBUTES=deployment.environment=production yourApp
+env OTEL_RESOURCE_ATTRIBUTES=deployment.environment.name=production yourApp
 ```

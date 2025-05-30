@@ -3,6 +3,6 @@ title: Довідка API
 linkTitle: API
 redirect: https://hexdocs.pm/opentelemetry_api/OpenTelemetry.html
 manualLinkTarget: _blank
-_build: { render: link }
+build: { render: link }
 weight: 210
 ---

@@ -779,13 +779,13 @@ func components() (otelcol.Factories, error) {
 	var err error
 	factories := otelcol.Factories{}
 
-	factories.Extensions, err = extension.MakeFactoryMap(
+	factories.Extensions, err = otelcol.MakeFactoryMap[extension.Factory](
 	)
 	if err != nil {
 		return otelcol.Factories{}, err
 	}
 
-	factories.Receivers, err = receiver.MakeFactoryMap(
+	factories.Receivers, err = otelcol.MakeFactoryMap[receiver.Factory](
 		otlpreceiver.NewFactory(),
 		tailtracer.NewFactory(), // новий доданий рядок
 	)
@@ -793,7 +793,7 @@ func components() (otelcol.Factories, error) {
 		return otelcol.Factories{}, err
 	}
 
-	factories.Exporters, err = exporter.MakeFactoryMap(
+	factories.Exporters, err = otelcol.MakeFactoryMap[exporter.Factory](
 		debugexporter.NewFactory(),
 		otlpexporter.NewFactory(),
 	)
@@ -801,7 +801,7 @@ func components() (otelcol.Factories, error) {
 		return otelcol.Factories{}, err
 	}
 
-	factories.Processors, err = processor.MakeFactoryMap(
+	factories.Processors, err = otelcol.MakeFactoryMap[processor.Factory](
 		batchprocessor.NewFactory(),
 	)
 	if err != nil {
@@ -815,7 +815,7 @@ func components() (otelcol.Factories, error) {
 {{% alert title="Перевірте свою роботу" color="primary" %}}
 
 - Імпорт модуля приймача `github.com/open-telemetry/opentelemetry-tutorials/trace-receiver/tailtracer`, в якому знаходяться типи приймачів та їх функції.
-- Додано виклик `tailtracer.NewFactory()` як параметр виклику `receiver.MakeFactoryMap()`, щоб ваша фабрика приймача `tailtracer` була належним чином додана до map `factories`.
+- Додано виклик `tailtracer.NewFactory()` як параметр виклику `otelcol.MakeFactoryMap()`, щоб ваша фабрика приймача `tailtracer` була належним чином додана до map `factories`.
 
 {{% /alert %}}
 
