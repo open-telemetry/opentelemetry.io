@@ -1,0 +1,15 @@
+diff --git a/static/refcache.json b/static/refcache.json
+index c966442..eca4431 100644
+--- a/static/refcache.json
++++ b/static/refcache.json
+@@ -1175,6 +1175,10 @@
+     "StatusCode": 206,
+     "LastSeen": "2025-02-02T10:58:46.767045-05:00"
+   },
++  "https://docs.base14.io/category/opentelemetry-collector-setup": {
++    "StatusCode": 206,
++    "LastSeen": "2025-05-26T13:20:12.221382053Z"
++  },
+   "https://docs.bindplane.observiq.com": {
+     "StatusCode": 206,
+     "LastSeen": "2025-02-02T10:58:39.710291-05:00"
