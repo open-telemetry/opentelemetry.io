@@ -77,11 +77,11 @@ For RPC, we're focusing on the following major areas:
   Bi-directional streaming inherently comes with limited observability. We’ll
   evaluate which useful signals can realistically be captured.
 
-- Consistency and guidelines 
+- Consistency and guidelines
 
-  Over the years, we’ve developed better practices
-  for naming, and recording peer details or errors. RPC conventions will be
-  updated to align with these latest guidelines.
+  Over the years, we’ve developed better practices for naming, and recording
+  peer details or errors. RPC conventions will be updated to align with these
+  latest guidelines.
 
 - Prototyping
 
