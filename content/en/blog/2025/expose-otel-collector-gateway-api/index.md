@@ -69,7 +69,7 @@ Before we start, ensure you have the following:
     [CLI](https://github.com/openssl/openssl/wiki/Binaries) for generating
     certificates.
 
-{{% alert %}}
+{{% alert title="API stability note" color=warning %}}
 
 Since certain parts of the Gateway API are still in alpha/beta phase, the
 support for specific aspects may vary or may not be enabled by default. Please
@@ -199,7 +199,7 @@ openssl req -newkey rsa:4096 -nodes -keyout client.key -out client.csr -subj "${
 openssl x509 -req -in client.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out client.crt -days 365 -sha256
 ```
 
-{{% alert %}}
+{{% alert title="Warning" color=warning %}}
 
 For production, never use self-signed certificates for external-facing endpoints
 accessible from the public internet. Use certificates issued by a trusted public
@@ -496,7 +496,7 @@ service:
     # Add additional traces/logs pipelines if the client generates them
 ```
 
-**To run the client:**
+To run the client:
 
 1.  Replace `<GATEWAY_EXTERNAL_IP_OR_HOSTNAME>` with the actual external IP
     address or DNS name of your Istio Gateway LoadBalancer service. If using the
