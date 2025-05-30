@@ -2,7 +2,7 @@
 title: KubeCon + CloudNativeCon Japan 2025
 linkTitle: KubeCon Japan 2025
 date: 2025-05-20
-expiryDate: 2025-06-17
+expiryDate: 2025-06-17 # keep
 ---
 
 <i class="fas fa-bullhorn"></i> [**{{% param title %}}**][LF],
