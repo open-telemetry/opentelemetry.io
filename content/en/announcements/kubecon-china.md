@@ -11,6 +11,6 @@ expiryDate: 2025-06-11
 share][blog]<span class="d-none d-sm-inline"> with the Cloud Native
 community</span>!
 
-[blog]: blog/2025/kubecon-china/
+[blog]: /blog/2025/kubecon-china/
 [LF]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-china/reg/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-China-2025&utm_content=slim-banner

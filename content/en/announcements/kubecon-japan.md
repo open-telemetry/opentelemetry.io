@@ -11,6 +11,6 @@ expiryDate: 2025-06-17
 share][blog]<span class="d-none d-sm-inline"> with the Cloud Native
 community</span>!
 
-[blog]: blog/2025/kubecon-japan/
+[blog]: /blog/2025/kubecon-japan/
 [LF]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-Japan-2025&utm_content=slim-banner
