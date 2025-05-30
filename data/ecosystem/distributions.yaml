@@ -164,7 +164,7 @@
   docsUrl: https://docs.dynatrace.com/docs/shortlink/opentelemetry-collector
   components: [Collector]
 - name: Datadog Distribution of OpenTelemetry Collector (DDOT)
-  url: https://github.com/DataDog/datadog-agent/tree/main/comp/otelcol/collector-contrib/impl
+  url: https://github.com/DataDog/datadog-agent/tree/main/comp/otelcol
   docsUrl: https://docs.datadoghq.com/opentelemetry/setup/ddot_collector
   components: [Collector]
 
