@@ -19,10 +19,10 @@ other = "Участь"
 other = "ШІ Асистент OpenTelemetry"
 [ui_search_ai_modal_disclaimer]
 other = """
-Ця **експериментальна функція** використовує ШІ для відповідей на питання на основі документації сайту,
+Ця **експериментальна функція** використовує ШІ для відповіді на питання на основі документації сайту,
 OpenTelemetry GitHub, Stack Overflow та інших ресурсів.
 ШІ може не завжди надавати точну або релевантну інформацію.
-Поділіться своїми думками, залишивши [відгук] (https://github.com/open-telemetry/opentelemetry.io/discussions/6802).
+Поділіться своїми думками, залишивши [відгук](https://github.com/open-telemetry/opentelemetry.io/discussions/6802).
 """
 [ui_search_ai_popover_content]
 other = "<a id='ask-ai-trigger' href='#'>Спитати ШІ</a> (&#x2318;-K)"

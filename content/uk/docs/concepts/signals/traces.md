@@ -247,7 +247,7 @@ cSpell:ignore: Guten
 
 Посилання є необовʼязковими, але служать хорошим способом асоціювати трейси відрізків один з одним.
 
-Для отримання додаткової інформації про Span Links див. [Link](/docs/specs/otel/trace/api/#link).
+Для отримання додаткової інформації див [Span Links](/docs/specs/otel/trace/api/#link).
 
 ### Статус відрізка {#span-status}
 

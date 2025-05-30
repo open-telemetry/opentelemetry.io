@@ -338,7 +338,7 @@ void InitTracer()
 }
 ```
 
-{{% include "exporters/outro.md" `https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/classopentelemetry_1_1sdk_1_1trace_1_1SpanExporter.html` %}}
+{{% include "exporters/outro.md" `https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk-trace-base.SpanExporter.html` %}}
 
 {{< tabpane text=true >}} {{% tab Batch %}}
 

@@ -3,6 +3,6 @@ title: Довідка API
 linkTitle: API
 redirect: https://opentelemetry-cpp.readthedocs.io/en/latest/
 manualLinkTarget: _blank
-_build: { render: link }
+build: { render: link }
 weight: 210
 ---
