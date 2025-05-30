@@ -7,11 +7,10 @@ author: >
   [Christos Markou](https://github.com/ChrsMark) (Elastic), [Tyler
   Helmuth](https://github.com/TylerHelmuth) (Honeycomb), [Dmitrii
   Anoshin](https://github.com/dmitryax) (Cisco/Splunk)
-date: 2025-05-26
+date: 2025-05-30
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/6847
 cSpell:ignore: Anoshin Dmitrii Helmuth Kubelet kubeletstats Kubelet’s Markou
 ---
-
 
 The OpenTelemetry Collector’s
 [`kubeletstats`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/README.md)
