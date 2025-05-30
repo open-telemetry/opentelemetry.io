@@ -133,7 +133,7 @@ jobs:
             echo remote_repo=$remote_repo
             remote_branch=$(git config --get branch.${current_branch}.merge)
             echo remote_branch=$remote_branch
-            git commit -m "Results from /fix:${PR_ACTION}"
+            git commit -m "Results from /fix directive"
             git push ${remote_repo} HEAD:${remote_branch}
           else
             echo "No changes to commit"
