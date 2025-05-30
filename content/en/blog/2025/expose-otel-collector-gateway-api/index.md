@@ -25,8 +25,8 @@ Typically this kind of a setup is useful when you have applications or workloads
 that are external to the cluster, and you need to collect their telemetry data.
 Some examples:
 
-- **Hybrid Cloud/On-Premises Environments:** Applications or servers running in a
-  traditional data center, or a different cloud or external to your Kubernetes
+- **Hybrid Cloud/On-Premises Environments:** Applications or servers running in
+  a traditional data center, or a different cloud or external to your Kubernetes
   cluster need to forward their metrics, traces, or logs to your central
   observability solution.
 - **Multi-Cluster Telemetry Aggregation:** In a setup that might run on multiple
@@ -71,10 +71,10 @@ Before we start, ensure you have the following:
 
 {{% alert %}}
 
-Since certain parts of the Gateway API are still in alpha/beta phase, the support
-for specific aspects may vary or may not be enabled by default. Please refer to
-the documentation of the Gateway implementation that you are using. For example,
-at the time of writing, if you are using Istio, ensure that
+Since certain parts of the Gateway API are still in alpha/beta phase, the
+support for specific aspects may vary or may not be enabled by default. Please
+refer to the documentation of the Gateway implementation that you are using. For
+example, at the time of writing, if you are using Istio, ensure that
 `PILOT_ENABLE_ALPHA_GATEWAY_API` is enabled during the install.
 
 {{% /alert %}}
@@ -136,16 +136,16 @@ end-to-end encryption, and aligns with Zero Trust security principles:
 Here are the steps we'll follow to expose an OTel Collector deployment outside
 the cluster.
 
-1.  Deploy an OTel Collector inside Kubernetes configured with a simple
-    OTLP/gRPC receiver.
-2.  Generate a self-signed Root CA, a server certificate (for the Gateway), and
-    a client certificate (for the external client).
-3.  Configure a Kubernetes `Gateway` resource to listen on a specific port,
-    terminate TLS, and require client certificates (mTLS).
-4.  Configure a `GRPCRoute` to route incoming gRPC traffic from the `Gateway` to
-    the internal OTel Collector service.
-5.  Configure an external client (another OTel Collector) to export data via
-    OTLP/gRPC, using the client certificate and trusting the Root CA.
+- Deploy an OTel Collector inside Kubernetes configured with a simple OTLP/gRPC
+  receiver.
+- Generate a self-signed Root CA, a server certificate (for the Gateway), and a
+  client certificate (for the external client).
+- Configure a Kubernetes `Gateway` resource to listen on a specific port,
+  terminate TLS, and require client certificates (mTLS).
+- Configure a `GRPCRoute` to route incoming gRPC traffic from the `Gateway` to
+  the internal OTel Collector service.
+- Configure an external client (another OTel Collector) to export data via
+  OTLP/gRPC, using the client certificate and trusting the Root CA.
 
 ![Scenario Diagram](ScenarioFlow.png)
 
@@ -210,12 +210,12 @@ Subject Alternative Name (SAN) matches the hostname clients use to connect.
 
 {{% /alert %}}
 
-## Step 3: Create `otel-collector` namespace
+### Step 3: Create `otel-collector` namespace
 
 We will deploy our OTel Collector setup in the given namespace. Further on,
 depending on the Gateway/service mesh implementation you use, you may configure
-the namespace accordingly. For example, with Istio, we can create the namespace with
-`istio-injection:enabled` in order for Istio to automatically work with the
+the namespace accordingly. For example, with Istio, we can create the namespace
+with `istio-injection:enabled` in order for Istio to automatically work with the
 deployed workloads in the namespace.
 
 `namespace.yaml`:
@@ -237,7 +237,7 @@ Apply this configuration:
 kubectl apply -f namespace.yaml
 ```
 
-## Step 4: Deploying the OTel Collector (Server)
+### Step 4: Deploying the OTel Collector (Server)
 
 Let's create a simple OTel Collector deployment and service. In the given
 configuration, the OTel collector will print the incoming telemetry data. This
@@ -333,7 +333,7 @@ Apply this configuration:
 kubectl apply -f otel-collector-server.yaml
 ```
 
-## Step 5: Storing Certificates as Kubernetes Secrets
+### Step 5: Storing Certificates as Kubernetes Secrets
 
 The Gateway needs access to the server certificate/key and the CA certificate to
 validate clients.
@@ -344,7 +344,7 @@ validate clients.
 kubectl create -n otel-collector secret generic otel-gateway-server-cert --from-file=tls.crt=server.crt --from-file=tls.key=server.key --from-file=ca.crt=rootCA.crt
 ```
 
-## Step 6: Configuring the Kubernetes Gateway API Resources
+### Step 6: Configuring the Kubernetes Gateway API Resources
 
 We need two resources: `Gateway` and `GRPCRoute`. For simplicity, we keep the
 resources in the same `otel-collector` namespace in this demo. This would change
@@ -409,13 +409,11 @@ spec:
   configure the backend to which the route forwards the requests. In this case,
   to the `otel-collector-server-svc`.
 
-{{% alert title="Note" %}}
-We make use of `options` in the gateway for implementation-specific
-configuration of mTLS. Currently, the gateway API does not explicitly have
-`Mutual TLS`
-[mode](https://gateway-api.sigs.k8s.io/reference/spec/#tlsmodetype). Refer 
-to the latest documentation of Gateway API for updates.
-{{% /alert %}}
+{{% alert title="Note" %}} We make use of `options` in the gateway for
+implementation-specific configuration of mTLS. Currently, the gateway API does
+not explicitly have `Mutual TLS`
+[mode](https://gateway-api.sigs.k8s.io/reference/spec/#tlsmodetype). Refer to
+the latest documentation of Gateway API for updates. {{% /alert %}}
 
 Apply the Gateway configuration:
 
@@ -444,14 +442,15 @@ You can also see the Kubernetes service created for your `Gateway`.
 kubectl -n otel-collector get svc
 ```
 
-## Step 7: Configuring the External OTel Collector (Client)
+### Step 7: Configuring the External OTel Collector (Client)
 
 To test the setup, configure an OTel Collector _outside_ the cluster to send
 data to the Gateway's external endpoint using mTLS.
 
 For this demo, the client (OTel Collector) is run locally with Docker.
 
-The following example `otel-client-config.yaml` is a simple configuration for scraping CPU and memory metrics and sending them to the server:
+The following example `otel-client-config.yaml` is a simple configuration for
+scraping CPU and memory metrics and sending them to the server:
 
 ```yaml
 receivers:
@@ -525,7 +524,7 @@ service:
 We are running a container of `opentelemetry-collector-contrib` by mounting the
 `otel-client-config.yaml` and the `certs` folder that contains the certificates.
 
-## Step 8: Testing the Connection
+### Step 8: Testing the Connection
 
 1.  **Check Server Logs:** Look at the logs of the `otel-collector-server` pod
     inside Kubernetes. If the `debug` exporter is configured, you should see
@@ -579,8 +578,8 @@ of when configuring this setup during production:
   configuration will have minor changes between implementations. For example,
   the way mTLS is configured in the Gateway now.
 - When running in production, you may want to use the `infrastructure` block of
-  the `spec` to configure infrastructure-provider specific parameters, for example,
-  `DNS`.
+  the `spec` to configure infrastructure-provider specific parameters, for
+  example, `DNS`.
 - Productive setups would have end-to-end encrypted communication. For example,
   when using Istio, all components running within namespaces managed by Istio in
   a cluster can be forced to communicate with each other. This is achieved with
@@ -594,9 +593,9 @@ of when configuring this setup during production:
 
 ## Alternative Gateway Implementations
 
-While we used Istio (`gatewayClassName: istio`), the core benefit of the
-Gateway API is its potential for standardization. If you were using Contour,
-NGINX Gateway Fabric, HAPROXY, etc., the `Gateway` and `GRPCRoute` resource
+While we used Istio (`gatewayClassName: istio`), the core benefit of the Gateway
+API is its potential for standardization. If you were using Contour, NGINX
+Gateway Fabric, HAPROXY, etc., the `Gateway` and `GRPCRoute` resource
 definitions would ideally look very similar. The main differences might be:
 
 - The specific value for `gatewayClassName`.
