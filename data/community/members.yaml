@@ -183,6 +183,8 @@ maintainers:
       - collector-contrib-triagers
       - collector-releases-approvers
       - collector-triagers
+      - injector-approvers
+      - injector-maintainers
       - network-triagers
       - operator-triagers
     html_url: https://github.com/atoulme
@@ -584,6 +586,8 @@ maintainers:
       - helm-approvers
       - helm-maintainers
       - helm-triagers
+      - injector-approvers
+      - injector-maintainers
       - operator-approvers
       - operator-maintainers
       - operator-ta-maintainers
@@ -1345,6 +1349,12 @@ approvers:
       - php-triagers
     html_url: https://github.com/agoallikmaa
     avatar_url: https://avatars.githubusercontent.com/u/3532037?v=4
+  - name: albertlockett
+    teams:
+      - arrow-approvers
+      - arrow-triagers
+    html_url: https://github.com/albertlockett
+    avatar_url: https://avatars.githubusercontent.com/u/5846846?v=4
   - name: alexvanboxel
     teams:
       - semconv-log-approvers
@@ -2257,9 +2267,6 @@ members:
   - name: addname
     html_url: https://github.com/addname
     avatar_url: https://avatars.githubusercontent.com/u/3360883?v=4
-  - name: albertlockett
-    html_url: https://github.com/albertlockett
-    avatar_url: https://avatars.githubusercontent.com/u/5846846?v=4
   - name: AlchemyDing
     html_url: https://github.com/AlchemyDing
     avatar_url: https://avatars.githubusercontent.com/u/88769332?v=4
