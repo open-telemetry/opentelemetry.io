@@ -1,7 +1,7 @@
 ---
-title:
-  'Kubernetes CPU Metrics in the kubeletstats Receiver: Transition from
-  .cpu.utilization to .cpu.usage'
+title: >
+  Kubernetes CPU Metrics in the kubeletstats Receiver: Transition from
+  .cpu.utilization to .cpu.usage
 linkTitle: kubeletstats Receiver metrics update
 author: >
   [Christos Markou](https://github.com/ChrsMark) (Elastic), [Tyler
