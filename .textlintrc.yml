@@ -146,13 +146,16 @@ rules:
       - [nd-?json, NDJSON]
       - [node\.?js, Node.js]
       - [open-source, open source]
-      - # OpenTelemetry, exclude occurrences like:
+      - # OpenTelemetry
+        # Catch typos like: OpenTelemtry, opentelementry
+        # Exclude occurrences like:
         # - Compound names: go.opentelemetry.io
         # - Paths: medium.com/opentelemetry
         # - Repo names: opentelemetry-cpp or ocaml-opentelemetry
         # - Repo names: open-telemetry/opentelemetry-cpp
         # - Slack or social media anchors: #opentelemetry or @opentelemetry
-        - '(?<![-#@./])\bopen[- ]?telemetry\b(?![-./])'
+        # cSpell:ignore teleme
+        - '(?<![-#@./])\bopen[- ]?teleme?n?try\b(?![-./])'
         - OpenTelemetry
       - [os x, macOS]
       - [protable, portable]
