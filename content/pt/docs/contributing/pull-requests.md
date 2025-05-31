@@ -202,8 +202,7 @@ class S,T spacewhite
 class changes,changes2 white
 ```
 
-_Figura 3. Trabalhando a partir de um fork local para fazer suas
-alterações.\_
+\_Figura 3. Trabalhando a partir de um fork local para fazer suas alterações.\_
 
 ### Fazer fork do repositório
 
@@ -243,8 +242,8 @@ alterações.\_
    upstream	https://github.com/open-telemetry/opentelemetry.io.git (push)
    ```
 
-1. Busque commits do `origin/main` do seu _fork_ e `upstream/main` do repositório
-   `open-telemetry/opentelemetry.io`:
+1. Busque commits do `origin/main` do seu _fork_ e `upstream/main` do
+   repositório `open-telemetry/opentelemetry.io`:
 
    ```shell
    git fetch origin
@@ -367,7 +366,8 @@ _Figura 4. Etapas para abrir um PR do seu fork para_
        _issue_ mencionada após o _merge_ do PR. Se houver outros PRs
        relacionados, vincule-os também.
      - Se você quiser aconselhamento sobre algo específico, inclua na descrição
-       quaisquer perguntas que você gostaria que os revisores levassem em conta durante a revisão.
+       quaisquer perguntas que você gostaria que os revisores levassem em conta
+       durante a revisão.
 
 1. Selecione o botão **Criar _pull request_**.
 
@@ -411,8 +411,8 @@ _pull request_ e como corrigir erros automaticamente.
 ### Visualizar suas alterações {#preview-locally}
 
 Visualize suas alterações localmente antes de enviá-las ou abrir um _pull
-request_. Uma prévia permite que você detecte erros de compilação ou problemas de
-formatação do Markdown.
+request_. Uma prévia permite que você detecte erros de compilação ou problemas
+de formatação do Markdown.
 
 Para construir e servir o site localmente com o Hugo, execute o seguinte
 comando:
@@ -431,8 +431,8 @@ feche a janela do terminal.
 
 Se você enviar um PR, o Netlify criará uma [prévia de
 implantação][deploy preview] para que você possa revisar suas alterações. Assim
-que ocorrer o _merge_ do seu PR, o Netlify implanta o site atualizado no servidor de
-produção.
+que ocorrer o _merge_ do seu PR, o Netlify implanta o site atualizado no
+servidor de produção.
 
 > **Nota**: As prévias de PR incluem _páginas de rascunho_, mas as compilações
 > de produção não.
@@ -451,8 +451,8 @@ fácil possível, pedimos que você adira ao seguinte:
   [_Fork_](https://github.com/open-telemetry/opentelemetry.io/fork) na parte
   superior do repositório e clone o _fork_ localmente. Quando estiver pronto,
   envie um PR para o repositório upstream.
-- **Não trabalhe a partir da branch `main`** do seu _fork_, mas crie uma _branch_
-  específica para o PR.
+- **Não trabalhe a partir da branch `main`** do seu _fork_, mas crie uma
+  _branch_ específica para o PR.
 - Certifique-se de que os mantenedores estão
   [autorizados a aplicar alterações ao seu _pull request_](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork).
 
@@ -461,14 +461,16 @@ fácil possível, pedimos que você adira ao seguinte:
 Às vezes, os revisores fazem _commits_ no seu _pull request_. Antes de fazer
 qualquer outra alteração, busque esses _commits_.
 
-1. Busque _commits_ do seu _fork_ remoto e faça o _rebase_ em sua _branch_ de trabalho:
+1. Busque _commits_ do seu _fork_ remoto e faça o _rebase_ em sua _branch_ de
+   trabalho:
 
    ```shell
    git fetch origin
    git rebase origin/<seu-nome-da-branch>
    ```
 
-1. Após o _rebase_, execute um _force-push_ contendo as novas alterações para seu _fork_:
+1. Após o _rebase_, execute um _force-push_ contendo as novas alterações para
+   seu _fork_:
 
    ```shell
    git push --force-with-lease origin <seu-nome-da-branch>
@@ -479,8 +481,8 @@ Você também pode resolver conflitos de _merge_ pela interface do GitHub.
 ### Conflitos de merge e rebase
 
 Se outro colaborador fizer alterações no mesmo arquivo em outro PR, isso pode
-criar um conflito de _merge_. Você deve resolver todos os conflitos de
-_merge_ em seu PR.
+criar um conflito de _merge_. Você deve resolver todos os conflitos de _merge_
+em seu PR.
 
 1. Atualize seu _fork_ e faça _rebase_ em sua branch local:
 
@@ -544,7 +546,8 @@ _merge_ em seu PR.
 
 ### Requisitos de mesclagem (_merge_)
 
-O _merge_ dos _pull requests_ ocorrem quando são cumpridos os seguintes critérios:
+O _merge_ dos _pull requests_ ocorrem quando são cumpridos os seguintes
+critérios:
 
 - Todas as revisões por aprovadores, mantenedores, membros do comitê técnico ou
   especialistas no assunto têm o status "Aprovado".
