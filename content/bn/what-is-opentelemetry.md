@@ -6,9 +6,9 @@ weight: 150
 cSpell:ignore: youtube
 ---
 
-OpenTelemetry কী?
+OpenTelemetry হলো:
 
-- এটি একটি **[অবজার্ভেবিলিটি][observability] ফ্রেমওয়ার্ক ও টুলকিট**, যা [টেলিমেট্রি ডেটা][telemetry data] — যেমন [ট্রেস][traces], [মেট্রিক্স][metrics], ও [লগের][logs] :
+- একটি **[অবজার্ভেবিলিটি][observability] ফ্রেমওয়ার্ক ও টুলকিট**, যা [টেলিমেট্রি ডেটা][telemetry data] — যেমন [ট্রেস][traces], [মেট্রিক্স][metrics], ও [লগের][logs] :
   - [জেনারেশন][instr]
   - এক্সপোর্ট
   - [কালেকশন](../concepts/components/#collector) 
