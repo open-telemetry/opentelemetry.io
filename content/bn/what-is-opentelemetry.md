@@ -4,6 +4,7 @@ description: সহজ ভাষায় Opentelemetry-এর কার্যা�
 aliases: [/about, /docs/concepts/what-is-opentelemetry, /otel]
 weight: 150
 cSpell:ignore: youtube
+default_lang_commit: fb38bda3b4b9ae69c99b8d70543d0df37872aeac
 ---
 
 OpenTelemetry হলো:
