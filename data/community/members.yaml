@@ -833,6 +833,12 @@ maintainers:
       - proto-go-maintainers
     html_url: https://github.com/MikeGoldsmith
     avatar_url: https://avatars.githubusercontent.com/u/3481731?v=4
+  - name: mmanciop
+    teams:
+      - injector-approvers
+      - injector-maintainers
+    html_url: https://github.com/mmanciop
+    avatar_url: https://avatars.githubusercontent.com/u/14020598?v=4
   - name: MovieStoreGuy
     teams:
       - collector-contrib-approvers
@@ -2081,6 +2087,11 @@ triagers:
       - java-contrib-triagers
     html_url: https://github.com/anosek-an
     avatar_url: https://avatars.githubusercontent.com/u/58341384?v=4
+  - name: axw
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/axw
+    avatar_url: https://avatars.githubusercontent.com/u/843579?v=4
   - name: bacherfl
     teams:
       - collector-contrib-triagers
