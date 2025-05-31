@@ -1,0 +1,8 @@
+---
+title: Міграція з OpenCensus
+linkTitle: OpenCensus
+redirect: /uk/blog/2023/sunsetting-opencensus/#how-to-migrate-to-opentelemetry
+build: { render: link }
+weight: 3
+cSpell:ignore: sunsetting
+---
