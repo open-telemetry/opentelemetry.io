@@ -3355,6 +3355,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-03-21T06:45:54.165946866+01:00"
   },
+  "https://github.com/axw": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-31T13:04:19.146506926Z"
+  },
   "https://github.com/bacherfl": {
     "StatusCode": 200,
     "LastSeen": "2024-11-18T23:18:23.510566336Z"
@@ -5170,6 +5174,10 @@
   "https://github.com/mlunadia": {
     "StatusCode": 200,
     "LastSeen": "2024-12-17T15:37:29.852904-05:00"
+  },
+  "https://github.com/mmanciop": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-31T13:04:12.056686507Z"
   },
   "https://github.com/mnadeem/opentelemetry-instrumentation-mssql": {
     "StatusCode": 206,
