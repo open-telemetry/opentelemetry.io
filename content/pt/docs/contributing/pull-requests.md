@@ -179,7 +179,7 @@ local. Os detalhes de cada etapa seguem abaixo.
 
 ```mermaid
 flowchart LR
-1[Fork the open-telemetry/opentelemetry<br>repository] --> 2[Create local clone<br>and set upstream]
+1[Faça o _fork_ do repositório<br>open-telemetry/opentelemetry] --> 2[Criar um clone<br>e configurar a branch remota]
 subgraph changes[Suas alterações]
 direction TB
 S[ ] -.-
