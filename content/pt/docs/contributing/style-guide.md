@@ -72,9 +72,10 @@ Execute:
 - `npm run fix:markdown` para corrigir problemas de formatação relacionados ao
   Markdown
 
-Também aplicamos o padrão [file format](#file-format) ao Markdown, que remove espaços
-em branco no final das linhas. Isso exclui a [line break syntax] com dois ou mais espaços.
-Para forçar a quebra de linha, use `<br>` em vez disso ou reformate seu texto.
+Também aplicamos o padrão [file format](#file-format) ao Markdown, que remove
+espaços em branco no final das linhas. Isso exclui a [line break syntax] com
+dois ou mais espaços. Para forçar a quebra de linha, use `<br>` em vez disso ou
+reformate seu texto.
 
 ## Verificação ortográfica {#spell-checking}
 
