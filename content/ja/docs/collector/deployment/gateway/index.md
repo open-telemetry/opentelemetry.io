@@ -2,8 +2,7 @@
 title: ゲートウェイ
 description: シグナルを単一のOTLPエンドポイントに送信し、そこからバックエンドに送信する理由と方法
 weight: 3
-default_lang_commit: b34ebe22b71962da96b898eb39a666ed57d447fe
-drifted_from_default: true
+default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
 # prettier-ignore
 cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadbalancing resourcedetectionprocessor
 ---
@@ -198,16 +197,16 @@ service:
 
 ## トレードオフ {#tradeoffs}
 
-長所：
+長所。
 
 - 中央で管理された認証情報などの関心事を分離できる
 - 中央集権型でポリシー（たとえば、特定のログのフィルタリングやサンプリング）を管理できる
 
-短所：
+短所。
 
-- 管理し、失敗する可能性があるものがさらに一つ増える（複雑さ）
-- 階層型コレクターの場合、追加のレイテンシーがかかる
-- 全体的なリソース使用量が増加する（コスト）
+- 維持管理と障害の可能性がある追加のコンポーネント（複雑性）
+- カスケードされたコレクターの場合のレイテンシーの増加
+- 全体的なリソース使用量の増加（コスト）
 
 [lb-exporter]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter
 [tailsample-processor]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor
