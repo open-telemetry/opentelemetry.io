@@ -338,7 +338,7 @@
   commercial: true
 - name: Randoli
   nativeOTLP: true
-  url: https://docs.insights.randoli.io/troubleshooting-observability/config/open-telemetry/
+  url: https://docs.randoli.io/troubleshooting-observability/config/open-telemetry/
   contact: rajith@randoli.ca
   oss: false
   commercial: true
