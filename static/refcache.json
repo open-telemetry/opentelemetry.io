@@ -203,6 +203,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:46:15.036422-04:00"
   },
+  "https://azure.microsoft.com/en-us/products/kubernetes-service": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-02T17:41:00.69252323Z"
+  },
   "https://azure.microsoft.com/global-infrastructure/geographies/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-30T17:00:21.851654-05:00"
@@ -514,6 +518,10 @@
   "https://cloud.google.com/iam/docs/full-resource-names": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:46:12.293016-04:00"
+  },
+  "https://cloud.google.com/kubernetes-engine": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-02T17:40:54.667539308Z"
   },
   "https://cloud.google.com/monitoring/api/metrics_gcp#gcp-cloudfunctions": {
     "StatusCode": 200,
@@ -4894,6 +4902,10 @@
   "https://github.com/kubernetes": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:24:48.5821-05:00"
+  },
+  "https://github.com/kubernetes-sigs/metrics-server": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-02T17:40:53.15685126Z"
   },
   "https://github.com/kubernetes/cri-api/blob/c75ef5b473bbe2d0a4fc92f82235efd665ea8e9f/pkg/apis/runtime/v1/api.proto#L1237-L1238": {
     "StatusCode": 200,
@@ -15019,6 +15031,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-03-18T14:59:54.513242724Z"
   },
+  "https://k0sproject.io": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-02T17:41:04.897635971Z"
+  },
   "https://kafka.apache.org/": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:59:12.014503-05:00"
@@ -15686,6 +15702,10 @@
   "https://microsoft.github.io/autogen/dev/": {
     "StatusCode": 206,
     "LastSeen": "2025-03-03T14:01:04.639067548-08:00"
+  },
+  "https://minikube.sigs.k8s.io/docs/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-02T17:41:04.558982626Z"
   },
   "https://mishmash.io": {
     "StatusCode": 200,
@@ -18087,6 +18107,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-30T17:00:29.776464-05:00"
   },
+  "https://resources.realtheory.io/docs/how-to-verify-the-metrics-server-is-installed-in-the-cluster": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-02T17:41:03.539339472Z"
+  },
   "https://roadrunner.dev/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-30T14:41:07.289108-05:00"
@@ -18806,6 +18830,10 @@
   "https://slsa.dev/spec/v1.0/threats": {
     "StatusCode": 206,
     "LastSeen": "2025-02-10T23:17:25.614898483Z"
+  },
+  "https://spacelift.io/blog/kubernetes-hpa-horizontal-pod-autoscaler": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-02T17:40:49.644050147Z"
   },
   "https://spec.commonmark.org/0.31.2/#link-label": {
     "StatusCode": 200,
