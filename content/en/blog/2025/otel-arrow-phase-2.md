@@ -24,7 +24,7 @@ improved data compression and performance.
 
 We are choosing to investigate this phase of the project in Rust. With the help
 of the OpenTelemetry Governance Committee, we've defined a project scope that
-entails studying the potential for Rust-based OpenTelemtry pipelines without
+entails studying the potential for Rust-based OpenTelemetry pipelines without
 "being" a Collector. We will investigate both the performance of Rust pipelines
 as well as how to successfully integrate our work with the OpenTelemetry
 Collector's Golang-based ecosystem.

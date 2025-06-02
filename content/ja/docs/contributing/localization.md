@@ -91,7 +91,7 @@ Markdown の[リンク定義][link definitions]の[ラベル][labels]は**翻訳
 [Hello], world! Welcome to the [OTel website][].
 
 [hello]: https://code.org/helloworld
-[OTel website]: https://opentelementry.io
+[OTel website]: https://opentelemetry.io
 ```
 
 これをフランス語に翻訳すると次のようになります。
@@ -100,7 +100,7 @@ Markdown の[リンク定義][link definitions]の[ラベル][labels]は**翻訳
 [Bonjour][hello], le monde! Bienvenue sur le [site OTel][OTel website].
 
 [hello]: https://code.org/helloworld
-[OTel website]: https://opentelementry.io
+[OTel website]: https://opentelemetry.io
 ```
 
 [labels]: https://spec.commonmark.org/0.31.2/#link-label

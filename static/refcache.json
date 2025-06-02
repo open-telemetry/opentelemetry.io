@@ -3355,6 +3355,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-03-21T06:45:54.165946866+01:00"
   },
+  "https://github.com/axw": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-01T10:23:38.221727799Z"
+  },
   "https://github.com/bacherfl": {
     "StatusCode": 200,
     "LastSeen": "2024-11-18T23:18:23.510566336Z"
@@ -4895,6 +4899,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:10:12.345Z"
   },
+  "https://github.com/kubernetes/kubernetes/blob/8adc0f041b8e7ad1d30e29cc59c6ae7a15e19828/staging/src/k8s.io/kubelet/pkg/apis/stats/v1alpha1/types.go#L230-L233": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-26T16:48:11.86773+03:00"
+  },
   "https://github.com/kubernetes/website": {
     "StatusCode": 206,
     "LastSeen": "2025-05-14T07:13:15.63962-04:00"
@@ -5166,6 +5174,10 @@
   "https://github.com/mlunadia": {
     "StatusCode": 200,
     "LastSeen": "2024-12-17T15:37:29.852904-05:00"
+  },
+  "https://github.com/mmanciop": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-01T10:23:23.072852163Z"
   },
   "https://github.com/mnadeem/opentelemetry-instrumentation-mssql": {
     "StatusCode": 206,
@@ -5871,6 +5883,42 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:10:12.345Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-27T10:36:21.951477+03:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/README.md#metrics-deprecation": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-30T21:54:47.994148+03:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/documentation.md#containercpuusage": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-30T21:54:46.162389+03:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/documentation.md#containercpuutilization": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-30T21:54:42.23691+03:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/documentation.md#k8snodecpuusage": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-30T21:54:44.373943+03:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/documentation.md#k8snodecpuutilization": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-30T21:54:39.64803+03:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/documentation.md#k8spodcpuusage": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-30T21:54:45.838712+03:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/documentation.md#k8spodcpuutilization": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-30T21:54:40.778921+03:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/internal/kubelet/cpu.go#L25-L26": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-30T21:54:43.608046+03:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.95.0/processor/spanmetricsprocessor/README.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T15:48:51.581459-05:00"
@@ -5891,6 +5939,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:10:29.72683-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/27885": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-26T16:48:25.832018+03:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/30479": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:13:03.475447-05:00"
@@ -5906,6 +5958,26 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/34427": {
     "StatusCode": 206,
     "LastSeen": "2025-01-23T00:42:06.061499598Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/39650": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-26T16:48:24.146722+03:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/35139": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-26T16:48:16.681772+03:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/39488": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-26T16:48:22.387952+03:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.111.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-26T16:48:19.730804+03:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.125.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-26T16:48:20.737483+03:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor": {
     "StatusCode": 206,
@@ -12059,6 +12131,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:38:26.391953-05:00"
   },
+  "https://github.com/open-telemetry/semantic-conventions/blob/main/docs/general/metrics.md#instrument-naming": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-26T16:48:07.30351+03:00"
+  },
   "https://github.com/open-telemetry/semantic-conventions/blob/v1.21.0/docs/general/general-attributes.md#server-and-client-attributes": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:19:12.345Z"
@@ -16231,6 +16307,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-20T09:23:52.447657347-08:00"
   },
+  "https://opentelemetry.io/docs/reference/specification/metrics/semantic_conventions/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-26T16:48:26.73412+03:00"
+  },
   "https://opentelemetry.io/ecosystem/registry/": {
     "StatusCode": 206,
     "LastSeen": "2025-02-22T07:14:47.144521257-08:00"
@@ -17542,6 +17622,10 @@
   "https://pkg.go.dev/k8s.io/api@v0.31.3/core/v1#NamespacePhase": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:28:12.345Z"
+  },
+  "https://pkg.go.dev/k8s.io/kubernetes@v1.19.16/pkg/kubelet/apis/stats/v1alpha1": {
+    "StatusCode": 200,
+    "LastSeen": "2025-05-26T16:48:28.218593+03:00"
   },
   "https://pkg.go.dev/net/http": {
     "StatusCode": 200,

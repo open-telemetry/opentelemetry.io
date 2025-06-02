@@ -4,9 +4,7 @@ linkTitle: デモ
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
-default_lang_commit: cd90ab77550fb2e92ca37cb3c753ec2d8bb7d8dc # patched
-drifted_from_default: true
-cSpell:ignore: OLJCESPC
+default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
 ---
 
 [OpenTelemetryデモ](/ecosystem/demo/)のドキュメンテーションへようこそ。
@@ -55,16 +53,10 @@ cSpell:ignore: OLJCESPC
 - [画像プロバイダーサービス](services/image-provider/?i18n-patch)
 - [React Native アプリケーション](services/react-native-app/)
 
-## シナリオ {#scenarios}
+## フィーチャーフラグシナリオ {#feature-flag-scenarios}
 
 OpenTelemetryを使用してどのように問題を解決できるでしょうか？
-これらのシナリオでは、事前に設定された問題を紹介し、それらを解決するためにOpenTelemetryのデータをどのように解釈するかを説明します。
-
-今後、さらに多くのシナリオを追加していく予定です。
-
-- フィーチャーフラグサービスを使用して、商品ID：`OLJCESPC7Z`の`GetProduct`リクエストに対する[商品カタログエラー](feature-flags)を生成
-- メモリリークを発見し、メトリクスとトレースを使用して診断。
-  [詳細](feature-flags/recommendation-cache/)
+これらの[フィーチャーフラグ有効化シナリオ](feature-flags/)では、事前に設定された問題を紹介し、それらを解決するためにOpenTelemetryのデータをどのように解釈するかを説明します。
 
 ## リファレンス {#reference}
 

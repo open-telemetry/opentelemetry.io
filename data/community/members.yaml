@@ -183,6 +183,8 @@ maintainers:
       - collector-contrib-triagers
       - collector-releases-approvers
       - collector-triagers
+      - injector-approvers
+      - injector-maintainers
       - network-triagers
       - operator-triagers
     html_url: https://github.com/atoulme
@@ -584,6 +586,8 @@ maintainers:
       - helm-approvers
       - helm-maintainers
       - helm-triagers
+      - injector-approvers
+      - injector-maintainers
       - operator-approvers
       - operator-maintainers
       - operator-ta-maintainers
@@ -829,6 +833,12 @@ maintainers:
       - proto-go-maintainers
     html_url: https://github.com/MikeGoldsmith
     avatar_url: https://avatars.githubusercontent.com/u/3481731?v=4
+  - name: mmanciop
+    teams:
+      - injector-approvers
+      - injector-maintainers
+    html_url: https://github.com/mmanciop
+    avatar_url: https://avatars.githubusercontent.com/u/14020598?v=4
   - name: MovieStoreGuy
     teams:
       - collector-contrib-approvers
@@ -1345,6 +1355,12 @@ approvers:
       - php-triagers
     html_url: https://github.com/agoallikmaa
     avatar_url: https://avatars.githubusercontent.com/u/3532037?v=4
+  - name: albertlockett
+    teams:
+      - arrow-approvers
+      - arrow-triagers
+    html_url: https://github.com/albertlockett
+    avatar_url: https://avatars.githubusercontent.com/u/5846846?v=4
   - name: alexvanboxel
     teams:
       - semconv-log-approvers
@@ -2071,6 +2087,11 @@ triagers:
       - java-contrib-triagers
     html_url: https://github.com/anosek-an
     avatar_url: https://avatars.githubusercontent.com/u/58341384?v=4
+  - name: axw
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/axw
+    avatar_url: https://avatars.githubusercontent.com/u/843579?v=4
   - name: bacherfl
     teams:
       - collector-contrib-triagers
@@ -2257,9 +2278,6 @@ members:
   - name: addname
     html_url: https://github.com/addname
     avatar_url: https://avatars.githubusercontent.com/u/3360883?v=4
-  - name: albertlockett
-    html_url: https://github.com/albertlockett
-    avatar_url: https://avatars.githubusercontent.com/u/5846846?v=4
   - name: AlchemyDing
     html_url: https://github.com/AlchemyDing
     avatar_url: https://avatars.githubusercontent.com/u/88769332?v=4
