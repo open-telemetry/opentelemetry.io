@@ -103,7 +103,7 @@ the label as translated link text. For example, consider the following Markdown:
 [Hello], world! Welcome to the [OTel website][].
 
 [hello]: https://code.org/helloworld
-[OTel website]: https://opentelementry.io
+[OTel website]: https://opentelemetry.io
 ```
 
 This would be translated in French as:
@@ -112,7 +112,7 @@ This would be translated in French as:
 [Bonjour][hello], le monde! Bienvenue sur le [site OTel][OTel website].
 
 [hello]: https://code.org/helloworld
-[OTel website]: https://opentelementry.io
+[OTel website]: https://opentelemetry.io
 ```
 
 [labels]: https://spec.commonmark.org/0.31.2/#link-label
