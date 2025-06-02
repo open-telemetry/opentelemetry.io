@@ -19,7 +19,7 @@ all available resource detectors:
 ## Disabling resource detection
 
 By default, all SDK resource detectors are used, but you can use the environment
-variable `OTEL_PHP_RESOURCE_DETECTORS` to enable only certain detectors, or
+variable `OTEL_PHP_DETECTORS` to enable only certain detectors, or
 completely disable them:
 
 - `env`
@@ -35,7 +35,7 @@ completely disable them:
 For example, to enable only the `env`, `host` and `sdk` detectors:
 
 ```shell
-env OTEL_PHP_RESOURCE_DETECTORS=env,host,sdk \
+env OTEL_PHP_DETECTORS=env,host,sdk \
 php example.php
 ```
 
