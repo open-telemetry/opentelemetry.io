@@ -135,8 +135,7 @@ Web サイトは以下のコンテンツを基に構築されます。
 
 ## DevContainer サポート {#devcontainers}
 
-このリポジトリは [Development Containers][devcontainers] での使用に設定されており、
-以下のようなさまざまなクラウドおよびローカル IDE でサポートされています（アルファベット順）。
+このリポジトリは [Development Containers][devcontainers] での使用に設定されています。DevContainerは以下のようなさまざまなクラウドおよびローカル IDE でサポートされています（アルファベット順）。
 
 - [Codespaces][cs-devc]
 - [DevPod](https://devpod.sh/docs/developing-in-workspaces/devcontainer-json)
