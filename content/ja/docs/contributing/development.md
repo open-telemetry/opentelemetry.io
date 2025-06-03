@@ -112,9 +112,7 @@ macOS で `too many open files` や `pipe failed` というエラーが発生す
 Web サイトは以下のコンテンツを基に構築されます。
 
 - `content/`、`static/` などの [Hugo] のデフォルトディレクトリ
-- [hugo.yaml] の `mounts` で定義されたマウントポイント。マウントは [content-modules] の
-  Git サブモジュールから直接取得される場合や、`content-modules` から前処理された
-  コンテンツ（`tmp/` に配置）の場合があり、それ以外の場所からは取得されません。
+- [hugo.yaml] の `mounts` で定義されたマウントポイント。マウントは [content-modules] の Git サブモジュールから直接取得される場合や、`content-modules` から前処理されたコンテンツ（`tmp/` に配置）の場合があり、それ以外の場所からは取得されません。
 
 [hugo.yaml]: https://github.com/open-telemetry/opentelemetry.io/blob/main/hugo.yaml
 [content-modules]: https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
