@@ -1135,6 +1135,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-13T12:10:54.088082-05:00"
   },
+  "https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-03T14:24:50.825839712Z"
+  },
   "https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:58:57.299057-05:00"
@@ -15254,6 +15258,10 @@
   "https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:59:01.584739-05:00"
+  },
+  "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-03T14:24:50.356269055Z"
   },
   "https://kubewarden.io/": {
     "StatusCode": 206,

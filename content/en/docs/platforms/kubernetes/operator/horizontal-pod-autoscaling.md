@@ -15,9 +15,8 @@ Having the OpenTelemetry Operator manage HPA functionality for the Collector
 means that you don’t have to create a separate Kubernetes
 `HorizontalPodAutoscaler` resource for autoscaling your Collector.
 
-Since HPA only applies to `StatefulSets` and `Deployments` in Kubernetes,
-make sure that your Collector’s `spec.mode` is either `deployment` or
-`statefulset`.
+Since HPA only applies to `StatefulSets` and `Deployments` in Kubernetes, make
+sure that your Collector’s `spec.mode` is either `deployment` or `statefulset`.
 
 {{% alert title="Note" color="info" %}} HPA requires a
 [Metrics Server](https://github.com/kubernetes-sigs/metrics-server) running on
@@ -28,8 +27,8 @@ your Kubernetes cluster.
   [AKS (Microsoft Azure)](https://azure.microsoft.com/en-us/products/kubernetes-service)
   install a Metrics Server automagically as part of cluster provisioning.
 - [EKS (AWS) doesn’t come installed with a Metrics Server by default](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html).
-- Non-managed Kubernetes clusters and local desktop Kubernetes clusters (for example, 
-  [MiniKube](https://minikube.sigs.k8s.io/docs/),
+- Non-managed Kubernetes clusters and local desktop Kubernetes clusters (for
+  example, [MiniKube](https://minikube.sigs.k8s.io/docs/),
   [KinD](https://kind.sigs.k8s.io/), [k0s](https://k0sproject.io)) require
   manual Metrics Server installation.
 
@@ -54,12 +53,12 @@ resources:
 {{% /alert %}}
 
 The `limits` configuration specifies the maximum memory and CPU values. In this
-case, those limits are 100 millicores (0.1 core) of CPU, and 128Mi (mebibytes, where 1 mebibyte
-== 1024 kilobytes) of RAM.
+case, those limits are 100 millicores (0.1 core) of CPU, and 128Mi (mebibytes,
+where 1 mebibyte == 1024 kilobytes) of RAM.
 
 The `requests` configuration specifies the minimum guaranteed amount of
-resources allocated for the container. In this case, the minimum allocation is 100 millicores of CPU and
-64 mebibytes of RAM.
+resources allocated for the container. In this case, the minimum allocation is
+100 millicores of CPU and 64 mebibytes of RAM.
 
 Next, you configure the autoscaling rules by adding an `spec.autoscaler`
 configuration to the `OpenTelemetryCollector` YAML:
@@ -105,13 +104,13 @@ spec:
 ```
 
 Once the `OpenTelemetryCollector` is deployed to Kubernetes with HPA enabled,
-the Operator creates a `HorizontalPodAutoscaler` resource for your Collector
-in Kubernetes. You can check this by running
+the Operator creates a `HorizontalPodAutoscaler` resource for your Collector in
+Kubernetes. You can check this by running
 
 `kubectl get hpa -n <your_namespace>`
 
-If everything worked as expected, here is what the output of the command should look
-like:
+If everything worked as expected, here is what the output of the command should
+look like:
 
 ```nocode
 NAME                REFERENCE                        TARGETS                         MINPODS   MAXPODS   REPLICAS   AGE
@@ -122,8 +121,8 @@ To get more detailed information, you can describe your HPA resource by running
 
 `kubectl describe hpa <your_collector_name> -n <your_namespace>`
 
-If everything worked as expected, here is what the output of the command should look
-like:
+If everything worked as expected, here is what the output of the command should
+look like:
 
 ```nocode
 Name:                                                     otelcol-collector
