@@ -6,7 +6,7 @@ expiryDate: 2025-06-17
 default_lang_commit: 6d798b20803204f4a23ee454422fa79827948cef
 ---
 
-<i class="fas fa-bullhorn"></i> [**{{% param title %}}**][LF]が **6月16・17日に東京で開催**。
+<i class="fas fa-bullhorn"></i> [**{{% param title %}}**][LF]が **6月16・17日に東京で開催**
 <span class="d-none d-md-inline"><br></span>
 <span class="d-none d-sm-inline"> Cloud Nativeコミュニティと一緒に</span>、[協力し、学び、共有しましょう][blog]！
 
