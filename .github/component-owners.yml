@@ -25,7 +25,7 @@ components:
   content/en/docs/demo:
     - open-telemetry/demo-approvers
   content/en/docs/platform/kubernetes/collector:
-    - open-telemetry/helm-approvers
+    - open-telemetry/collector-approvers
   content/en/docs/platform/kubernetes/helm:
     - open-telemetry/helm-approvers
   content/en/docs/platform/kubernetes/operator:
