@@ -4,7 +4,7 @@ title: KubeCon + CloudNativeCon Japan 2025で、
 linkTitle: KubeCon Japan '25
 date: 2025-05-29
 author: '[Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)'
-default_lang_commit: a770dd9ad30d08571d02184b339441061f35e464
+default_lang_commit: 6d798b20803204f4a23ee454422fa79827948cef
 # prettier-ignore
 cSpell:ignore: Baazi Chauhan Hrabusa Kang Kasper Mostafa Nissen Radwan Shivay Siddharth Vijay
 ---
@@ -48,5 +48,5 @@ OpenTelemetryの話を聞いて、学び、そして参加しましょう。
 東京でお会いしましょう！
 
 [KubeCon + CloudNativeCon Japan]: https://events.linuxfoundation.org/kubecon-cloudnativecon-japan//?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-Japan-2025&utm_content=blog
-[registration]: https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/
+[registration]: https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-Japan-2025
 [Community Day]: https://community.cncf.io/events/details/cncf-cloud-native-community-japan-presents-japan-community-day-at-kubecon-cloudnativecon-japan-2025/
