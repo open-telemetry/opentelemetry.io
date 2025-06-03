@@ -3,7 +3,7 @@ title: Python zero-code instrumentation
 linkTitle: Python
 weight: 30
 aliases: [/docs/languages/python/automatic]
-cSpell:ignore: devel distro myapp
+cSpell:ignore: distro myapp
 ---
 
 Automatic instrumentation with Python uses a Python agent that can be attached
@@ -44,6 +44,8 @@ will use monkey patching to modify functions in these libraries at runtime.
 Running `opentelemetry-bootstrap` without arguments lists the recommended
 instrumentation libraries to be installed. For more information, see
 [`opentelemetry-bootstrap`](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation#opentelemetry-bootstrap).
+
+{#configuring-the-agent}
 
 ## Configuring the agent
 
