@@ -6,7 +6,7 @@ cSpell:ignore: autoscaler mebibyte mebibytes statefulset
 ---
 
 Collectors managed by the OpenTelemetry Operator have built-in support for
-[horizontal pod autoscaling (HPA)](https://spacelift.io/blog/kubernetes-hpa-horizontal-pod-autoscaler).
+[horizontal pod autoscaling (HPA)](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 HPA increases or decreases the number of replicas (copies) of your Kubernetes
 pods, based on a set of metrics. These metrics are typically CPU and/or memory
 consumption.
@@ -15,7 +15,7 @@ Having the OpenTelemetry Operator manage HPA functionality for the Collector
 means that you don’t have to create a separate Kubernetes
 `HorizontalPodAutoscaler` resource for autoscaling your Collector.
 
-Since HPA only applies to `StatefulSets` and `Deployments` in Kubernetes, please
+Since HPA only applies to `StatefulSets` and `Deployments` in Kubernetes,
 make sure that your Collector’s `spec.mode` is either `deployment` or
 `statefulset`.
 
@@ -26,9 +26,9 @@ your Kubernetes cluster.
 - Managed Kubernetes clusters like
   [GKE (Google)](https://cloud.google.com/kubernetes-engine?hl=en) and
   [AKS (Microsoft Azure)](https://azure.microsoft.com/en-us/products/kubernetes-service)
-  will install one automagically as part of cluster provisioning.
-- [EKS (AWS) doesn’t come installed with a Metrics Server by default](https://resources.realtheory.io/docs/how-to-verify-the-metrics-server-is-installed-in-the-cluster).
-- Non-managed Kubernetes clusters and local desktop Kubernetes clusters (e.g.
+  install a Metrics Server automagically as part of cluster provisioning.
+- [EKS (AWS) doesn’t come installed with a Metrics Server by default](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html).
+- Non-managed Kubernetes clusters and local desktop Kubernetes clusters (for example, 
   [MiniKube](https://minikube.sigs.k8s.io/docs/),
   [KinD](https://kind.sigs.k8s.io/), [k0s](https://k0sproject.io)) require
   manual Metrics Server installation.
@@ -50,15 +50,15 @@ resources:
     memory: 64Mi
 ```
 
-{{% alert title="Note" color="info" %}} Your own values will vary.
+{{% alert title="Note" color="info" %}} Your own values might vary.
 {{% /alert %}}
 
 The `limits` configuration specifies the maximum memory and CPU values. In this
-case, 100 millicores (0.1 core) of CPU, and 128Mi (mebibytes, where 1 mebibyte
+case, those limits are 100 millicores (0.1 core) of CPU, and 128Mi (mebibytes, where 1 mebibyte
 == 1024 kilobytes) of RAM.
 
 The `requests` configuration specifies the minimum guaranteed amount of
-resources allocated for the container. In this case, 100 millicores of CPU and
+resources allocated for the container. In this case, the minimum allocation is 100 millicores of CPU and
 64 mebibytes of RAM.
 
 Next, you configure the autoscaling rules by adding an `spec.autoscaler`
@@ -72,7 +72,7 @@ autoscaler:
   targetMemoryUtilization: 60
 ```
 
-{{% alert title="Note" color="info" %}} Your own values will vary.
+{{% alert title="Note" color="info" %}} Your own values might vary.
 {{% /alert %}}
 
 Putting it all together, the start of the `OpenTelemetryCollector` YAML should
@@ -105,12 +105,12 @@ spec:
 ```
 
 Once the `OpenTelemetryCollector` is deployed to Kubernetes with HPA enabled,
-the Operator will create a `HorizontalPodAutoscaler` resource for your Collector
+the Operator creates a `HorizontalPodAutoscaler` resource for your Collector
 in Kubernetes. You can check this by running
 
 `kubectl get hpa -n <your_namespace>`
 
-If everything went well, here is what the output of the command should look
+If everything worked as expected, here is what the output of the command should look
 like:
 
 ```nocode
@@ -122,7 +122,7 @@ To get more detailed information, you can describe your HPA resource by running
 
 `kubectl describe hpa <your_collector_name> -n <your_namespace>`
 
-If everything went well, here is what the output of the command should look
+If everything worked as expected, here is what the output of the command should look
 like:
 
 ```nocode
