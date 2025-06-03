@@ -24,52 +24,120 @@ For details and to track progress see
 
 ## Activate internal telemetry in the Collector
 
-By default, the Collector exposes its own telemetry in two ways:
+By default, the Collector exposes its own telemetry in three ways:
 
-- Internal [metrics](#configure-internal-metrics) are exposed using a Prometheus
-  interface which defaults to port `8888`.
-- [Logs](#configure-internal-logs) are emitted to `stderr` by default.
+- [Metrics](#configure-internal-metrics)
+- [Logs](#configure-internal-logs)
+- [Traces](#configure-internal-traces)
+
+{{% alert title="Who monitors the monitor?" color="info" %}} Internal Collector
+metrics can be exported directly to a backend for analysis, or to the Collector
+itself, where the telemetry goes through the Collector's own pipeline.
+
+As a matter of best practice, the subject being monitored shouldn't also be the
+monitor.
+
+When a Collector is responsible for handling its own telemetry through a traces,
+metrics, or logs pipeline and encounters an issue (e.g. memory limiter blocking
+data), its internal telemetry won't be sent to its intended destination. This
+makes it difficult to detect problems with the Collector itself. Likewise, if
+the Collector generates additional telemetry related to the above issue, such
+error logs, and those logs are sent into the same collector, it can create a
+feedback loop where more error logs lead to increased ingestion, which in turn
+produces even more error logs. {{% /alert %}}
 
 ### Configure internal metrics
 
 You can configure how internal metrics are generated and exposed by the
-Collector. By default, the Collector generates basic metrics about itself and
-exposes them using the OpenTelemetry Go
-[Prometheus exporter](https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/prometheus)
-for scraping at `http://127.0.0.1:8888/metrics`.
+Collector. There are three ways to export internal Collector metrics.
 
-The Collector can push its internal metrics to an OTLP backend via the following
-configuration:
+1. Self-ingesting, exporting internal metrics via the
+   [Prometheus exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusexporter).
 
-```yaml
-service:
-  telemetry:
-    metrics:
-      readers:
-        - periodic:
-            exporter:
-              otlp:
-                protocol: http/protobuf
-                endpoint: https://backend:4318
-```
+   By default, the Collector generates basic metrics about itself and exposes
+   them using the OpenTelemetry Go
+   [Prometheus exporter](https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/prometheus)
+   for scraping at `http://127.0.0.1:8888/metrics`.
 
-Alternatively, you can expose the Prometheus endpoint to one specific or all
-network interfaces when needed. For containerized environments, you might want
-to expose this port on a public interface.
+   You can expose the Prometheus endpoint to one specific or all network
+   interfaces when needed. For containerized environments, you might want to
+   expose this port on a public interface.
 
-Set the Prometheus config under `service::telemetry::metrics`:
+   Set the Prometheus export configuration under `service::telemetry::metrics`:
 
-```yaml
-service:
-  telemetry:
-    metrics:
-      readers:
-        - pull:
-            exporter:
-              prometheus:
-                host: '0.0.0.0'
-                port: 8888
-```
+   ```yaml
+   service:
+     telemetry:
+       metrics:
+         readers:
+           - pull:
+               exporter:
+                 prometheus:
+                   host: '0.0.0.0'
+                   port: 8888
+   ```
+
+2. Self-ingesting and exporting, scraping metrics via the Collector's own
+   [Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver).
+
+   First, configure your Collector’s Prometheus Receiver to scrape itself under
+   `receivers::prometheus`:
+
+   ```yaml
+   prometheus:
+     config:
+       scrape_configs: []
+         # Collector metrics
+         - job_name: 'otel-collector'
+           scrape_interval: 10s
+           static_configs:
+           - targets: [ '0.0.0.0:8888' ]
+   ```
+
+   And then configure your Collector’s internal metrics exporter by adding
+   `service::telemetry::metrics`:
+
+   ```yaml
+   service:
+     telemetry:
+       metrics:
+         level: detailed
+         readers:
+           - periodic:
+               exporter:
+                 otlp:
+                   endpoint: http://0.0.0.0:4318
+                   protocol: http/protobuf
+   ```
+
+   {{% alert title="Note" color="info" %}} Sending the Collector’s metrics to
+   itself for export results in a self-monitoring loop, which, among other
+   things, can degrade performance, since it’s sending additional telemetry to
+   itself for processing. {{% /alert %}}
+
+3. Direct to OTLP backend
+
+   The Collector can push its internal metrics to an OTLP backend via the
+   following configuration:
+
+   ```yaml
+   service:
+     telemetry:
+       metrics:
+         readers:
+           - periodic:
+               exporter:
+                 otlp:
+                   protocol: http/protobuf
+                   endpoint: https://${OTLP_ENDPOINT}
+                   headers:
+                     - name: Authorization
+                       value: 'Api-Token ${TOKEN}'
+   ```
+
+   Alternatively, you can expose the Prometheus endpoint to one specific or all
+   network interfaces when needed. For containerized environments, you might
+   want to expose this port on a public interface.
 
 {{% alert title="Internal telemetry configuration changes" color="info" %}}
 
@@ -161,7 +229,10 @@ service:
             exporter:
               otlp:
                 protocol: http/protobuf
-                endpoint: https://backend:4318
+                endpoint: https://${OTLP_ENDPOINT}
+                headers:
+                  - name: Authorization
+                    value: 'Api-Token ${TOKEN}'
 ```
 
 ### Configure internal traces
@@ -187,7 +258,10 @@ service:
             exporter:
               otlp:
                 protocol: http/protobuf
-                endpoint: https://backend:4318
+                endpoint: https://${OTLP_ENDPOINT}
+                headers:
+                  - name: Authorization
+                    value: 'Api-Token ${TOKEN}'
 ```
 
 See the [example configuration][kitchen-sink-config] for additional options.
