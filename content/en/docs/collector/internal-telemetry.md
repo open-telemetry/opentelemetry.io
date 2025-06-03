@@ -49,15 +49,15 @@ produces even more error logs. {{% /alert %}}
 ### Configure internal metrics
 
 You can configure how internal metrics are generated and exposed by the
-Collector. There are three ways to export internal Collector metrics.
+Collector. By default, the Collector generates basic metrics about itself and
+exposes them using the OpenTelemetry Go
+[Prometheus exporter](https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/prometheus)
+for scraping at `http://127.0.0.1:8888/metrics`.
+
+There are three ways to export internal Collector metrics.
 
 1. Self-ingesting, exporting internal metrics via the
    [Prometheus exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusexporter).
-
-   By default, the Collector generates basic metrics about itself and exposes
-   them using the OpenTelemetry Go
-   [Prometheus exporter](https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/prometheus)
-   for scraping at `http://127.0.0.1:8888/metrics`.
 
    You can expose the Prometheus endpoint to one specific or all network
    interfaces when needed. For containerized environments, you might want to
@@ -94,8 +94,7 @@ Collector. There are three ways to export internal Collector metrics.
            - targets: [ '0.0.0.0:8888' ]
    ```
 
-   And then configure your Collector’s internal metrics exporter by adding
-   `service::telemetry::metrics`:
+   And then set the export configuration under `service::telemetry::metrics`:
 
    ```yaml
    service:
@@ -110,12 +109,7 @@ Collector. There are three ways to export internal Collector metrics.
                    protocol: http/protobuf
    ```
 
-   {{% alert title="Note" color="info" %}} Sending the Collector’s metrics to
-   itself for export results in a self-monitoring loop, which, among other
-   things, can degrade performance, since it’s sending additional telemetry to
-   itself for processing. {{% /alert %}}
-
-3. Direct to OTLP backend
+3. Direct to an OTLP backend
 
    The Collector can push its internal metrics to an OTLP backend via the
    following configuration:
@@ -131,13 +125,9 @@ Collector. There are three ways to export internal Collector metrics.
                    protocol: http/protobuf
                    endpoint: https://${OTLP_ENDPOINT}
                    headers:
-                     - name: Authorization
-                       value: 'Api-Token ${TOKEN}'
+                     - name: ${HEADER}
+                       value: '${API_TOKEN}'
    ```
-
-   Alternatively, you can expose the Prometheus endpoint to one specific or all
-   network interfaces when needed. For containerized environments, you might
-   want to expose this port on a public interface.
 
 {{% alert title="Internal telemetry configuration changes" color="info" %}}
 
@@ -231,8 +221,8 @@ service:
                 protocol: http/protobuf
                 endpoint: https://${OTLP_ENDPOINT}
                 headers:
-                  - name: Authorization
-                    value: 'Api-Token ${TOKEN}'
+                  - name: ${HEADER}
+                    value: '${API_TOKEN}'
 ```
 
 ### Configure internal traces
@@ -260,8 +250,8 @@ service:
                 protocol: http/protobuf
                 endpoint: https://${OTLP_ENDPOINT}
                 headers:
-                  - name: Authorization
-                    value: 'Api-Token ${TOKEN}'
+                  - name: ${HEADER}
+                    value: '${API_TOKEN}'
 ```
 
 See the [example configuration][kitchen-sink-config] for additional options.
