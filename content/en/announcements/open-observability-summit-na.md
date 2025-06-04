@@ -10,7 +10,7 @@ weight: 20250624
 ready][CNCF-blog] for the inaugural</span> [**{{% param title %}}**][oss] and
 <span class="d-none d-md-inline"><br></span>
 <span class="d-none d-sm-inline">co-located </span>[**OTel Community
-Day**][ocd], **Seattle WA, <span class="text-nowrap">June 24-26</span>**
+Day**][ocd], **Denver CO, <span class="text-nowrap">June 24-26</span>**
 
 [CNCF-blog]:
   https://www.cncf.io/announcements/2025/05/21/cncf-shares-schedule-for-open-observability-summit-north-america-gears-up-for-inaugural-event/
