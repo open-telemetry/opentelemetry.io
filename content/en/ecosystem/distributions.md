@@ -10,9 +10,7 @@ OpenTelemetry [distributions] are a way of customizing OpenTelemetry
 observability backends.
 
 Any third-party can customize OpenTelemetry components with backend, [vendor],
-or end-user specific changes. You don't have to use a distributions in order to
-use OpenTelemetry components, though distributions might facilitate usage under
-certain circumstances, such as specific vendor requirements.
+or end-user specific changes. You can use OpenTelemetry components without a distribution, but a distribution might make things easier in some cases, like when a vendor has specific requirements.
 
 The following list contains a sample of OpenTelemetry distributions and the
 component they customize.
