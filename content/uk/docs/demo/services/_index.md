@@ -1,6 +1,7 @@
 ---
 title: Сервіси
 aliases: [service_table, service-table]
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Щоб візуалізувати потоки запитів, дивіться [Діаграму сервісів](../architecture/).

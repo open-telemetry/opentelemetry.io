@@ -6,6 +6,7 @@ aliases: [net]
 redirects: [{ from: /docs/languages/net/automatic/*, to: ':splat' }]
 weight: 30
 cSpell:ignore: coreutils HKLM iisreset myapp
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Використовуйте OpenTelemetry .NET Automatic Instrumentation для надсилання трасування та метрик з .NET застосунків та сервісів до систем спостереження без необхідності змінювати їх вихідний код.
@@ -126,7 +127,7 @@ Register-OpenTelemetryForWindowsService -WindowsServiceName "WindowsServiceName"
 
 {{% alert title="Примітка" color="warning" %}} Не забудьте перезапустити Windows Service після внесення змін до налаштувань. Ви можете зробити це, виконавши `Restart-Service -Name $WindowsServiceName -Force` у PowerShell. {{% /alert %}}
 
-Для .NET Framework застосунків ви можете налаштувати найбільш поширені `OTEL_` парамтери (наприклад, `OTEL_RESOURCE_ATTRIBUTES`) через `appSettings` у `App.config`.
+Для .NET Framework застосунків ви можете налаштувати найбільш поширені `OTEL_` параметри (наприклад, `OTEL_RESOURCE_ATTRIBUTES`) через `appSettings` у `App.config`.
 
 Альтернативою є встановлення змінних середовища для Windows Service у реєстрі Windows.
 

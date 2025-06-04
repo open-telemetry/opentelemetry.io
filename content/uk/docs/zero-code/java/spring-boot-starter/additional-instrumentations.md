@@ -1,6 +1,7 @@
 ---
 title: Додаткова інструменталізація
 weight: 60
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Стартер OpenTelemetry Spring Boot надає [інструменталізацію з коробки](../out-of-the-box-instrumentation), яку ви можете доповнити додатковими інструментами.

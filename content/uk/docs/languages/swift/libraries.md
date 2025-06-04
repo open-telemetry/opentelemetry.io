@@ -2,7 +2,8 @@
 title: Бібліотеки інструментів
 linkTitle: Бібліотеки
 weight: 40
-cSpell:ignore: darwin inout iphone NSURL wifi
+cSpell:ignore: darwin inout iphone NSURL wifi профілюючому urlsession
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
@@ -117,7 +118,7 @@ let sessionInstrumentation = URLSessionInstrumentation(configuration: URLSession
 
 | Атрибут                     | Приклад значення                 | Опис                                                                                 |
 | --------------------------- | -------------------------------- | ------------------------------------------------------------------------------------ |
-| `net.host.connection.type`  | `wifi`, `cell`, `unavailable`    | Тип зʼєднання, який  икористовував пристрій на момент запиту.                        |
+| `net.host.connection.type`  | `wifi`, `cell`, `unavailable`    | Тип зʼєднання, який використовував пристрій на момент запиту.                        |
 | `net.host.connection.subtype`| `EDGE` `LTE`, тощо               | Тип стільникового зʼєднання. Заповнюється лише якщо тип зʼєднання `cell`.            | | `net.host.carrier.name`     | `T-Mobile`, `Verizon`, тощо      | Назва стільникового оператора. Заповнюється лише для типів стільникового зʼєднання.  | | `net.host.carrier.icc`      | `DE`                             | Двосимвольний код країни ISO 3166-1 alpha-2, повʼязаний з мобільною мережею оператора.|
 | `net.host.carrier.mcc`      | `310`                            | Мобільний код країни                                                                 |
 | `net.host.carrier.mnc`      | `001`                            | Мобільний мережевий код                                                              |

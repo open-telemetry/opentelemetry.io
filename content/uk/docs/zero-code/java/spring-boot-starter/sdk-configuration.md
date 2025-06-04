@@ -2,12 +2,13 @@
 title: Налаштування SDK
 weight: 30
 cSpell:ignore: customizer distro
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
 <?code-excerpt path-base="examples/java/spring-starter"?>
 
-Цей стартер Spring підтримує [метадані конфігурації](https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html), що означає, що ви можете бачити та автозаповнювати всі доступні властивості у вашому IDE.
+Цей стартер Spring підтримує [метадані конфігурації](https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html), що означає, що ви можете бачити та автоматично заповнювати всі доступні властивості у вашому IDE.
 
 ## Загальна конфігурація {#general-configuration}
 

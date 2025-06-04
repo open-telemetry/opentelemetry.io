@@ -4,11 +4,12 @@ description: Коротке пояснення, чим є та чим не є Op
 aliases: [/about, /docs/concepts/what-is-opentelemetry, /otel]
 weight: 150
 cSpell:ignore: youtube
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 OpenTelemetry це:
 
-- **Фреймворк та інструменти [спостережуванності][observability]** створені для допомоги у
+- **Фреймворк та інструменти [спостережуваності][observability]** створені для допомоги у
 
   - [Генерації][instr]
   - Експорті

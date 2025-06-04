@@ -4,6 +4,7 @@ linkTitle: Бібліотеки
 aliases: [configuring_automatic_instrumentation, automatic]
 weight: 30
 cSpell:ignore: faraday metapackage sinatra
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 {{% uk/docs/languages/libraries-intro ruby %}}
@@ -12,7 +13,7 @@ cSpell:ignore: faraday metapackage sinatra
 
 Якщо бібліотека не підтримує OpenTelemetry з коробки, ви можете використовувати [бібліотеки інструментування](/docs/specs/otel/glossary/#instrumentation-library) для генерації телеметричних даних для бібліотеки або фреймворку.
 
-Наприклад, якщо ви використовуєте Rails і увімкнете [`opentelemetry-instrumentation-rails`](https://rubygems.org/gems/opentelemetry-instrumentation-rails/), ваш працюючий застосунок Rails автоматично генеруватиме телеметричні дані для вхідних запитів до ваших контролерів.
+Наприклад, якщо ви використовуєте Rails і увімкнете [`opentelemetry-instrumentation-rails`](https://rubygems.org/gems/opentelemetry-instrumentation-rails/), ва застосунок Rails, який вже працює, автоматично генеруватиме телеметричні дані для вхідних запитів до ваших контролерів.
 
 ### Налаштування всіх бібліотек інструментування {#configuring-all-instrumentation-libraries}
 

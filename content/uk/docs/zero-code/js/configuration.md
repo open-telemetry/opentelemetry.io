@@ -7,6 +7,7 @@ aliases:
   - /docs/languages/js/automatic/module-config
 weight: 10
 cSpell:ignore: serviceinstance
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Модуль має широкі можливості конфігурації за допомогою [змінних середовища](/docs/specs/otel/configuration/sdk-environment-variables/). Багато аспектів поведінки автоматичного інструментування можна налаштувати відповідно до ваших потреб, таких як детектори ресурсів, експортери, заголовки поширення контексту трасування та інше.

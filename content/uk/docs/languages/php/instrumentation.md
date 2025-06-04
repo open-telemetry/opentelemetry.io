@@ -3,7 +3,8 @@ title: Інструментування
 weight: 20
 aliases: [manual]
 description: Ручне інструментування для OpenTelemetry PHP
-cSpell:ignore: guzzlehttp myapp
+cSpell:ignore: guzzlehttp myapp ініціюючими
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
@@ -559,7 +560,7 @@ $span->addEvent("End Computation", $eventAttributes);
 
 ### Створення відрізків з посиланнями {#create-spans-with-links}
 
-[Відрізок](/docs/concepts/signals/traces/#spans) може бути повʼязаний з нуль або більше іншими відрізками, які є причинно повʼязаними через [Посилання відрізка](/docs/concepts/signals/traces/#span-links). Посилання можуть бути використані для представлення пакетних операцій, де Відрізок був ініційований кількома ініціюючими Відрізками, кожен з яких представляє один вхідний елемент, що обробляється в пакеті.
+[Відрізок](/docs/concepts/signals/traces/#spans) може бути повʼязаний з нуль або більше іншими відрізками, які є повʼязаними через [Посилання відрізка](/docs/concepts/signals/traces/#span-links). Посилання можуть бути використані для представлення пакетних операцій, де Відрізок був ініційований кількома ініціюючими Відрізками, кожен з яких представляє один вхідний елемент, що обробляється в пакеті.
 
 ```php
 $span = $tracer->spanBuilder("span-with-links")

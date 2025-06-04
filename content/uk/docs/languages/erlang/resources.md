@@ -4,6 +4,7 @@ weight: 70
 # For the writing of behaviour, see
 # https://www.erlang.org/doc/reference_manual/modules.html#behaviour-module-attribute
 cSpell:ignore: behaviour
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
@@ -42,7 +43,7 @@ OTEL_RESOURCE_DETECTORS=otel_resource_env_var,otel_resource_app_env
 
 Усі детектори ресурсів захищені тайм-аутом, у мілісекундах, після якого вони повертають порожнє значення. Це дозволяє детекторам ресурсів робити такі речі, як доступ до мережі, без потенційного зависання всієї програми. Типово це 5000 мілісекунд і може бути встановлено за допомогою змінної середовища `OTEL_RESOURCE_DETECTOR_TIMEOUT` або змінної застосунку `otel_resource_detector_timeout`.
 
-## Додавання ресурсів за допомогою змінних середовища ОС та застосунку OTP {#adding-resources-with-os-and-otp-enviroment-variables}
+## Додавання ресурсів за допомогою змінних середовища ОС та застосунку OTP {#adding-resources-with-os-and-otp-environment-variables}
 
 З двома увімкненими стандартними детекторами ресурсів ви можете встановити атрибути ресурсів за допомогою змінної середовища ОС `OTEL_RESOURCE_ATTRIBUTES`:
 

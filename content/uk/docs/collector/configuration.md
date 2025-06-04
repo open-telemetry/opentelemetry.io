@@ -4,6 +4,7 @@ weight: 20
 description: Дізнайтеся, як налаштувати Collector відповідно до ваших потреб
 # prettier-ignore
 cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents upsert zpages
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 <!-- markdownlint-disable link-fragments -->
@@ -616,7 +617,7 @@ exporters:
 2. Додайте посилання на автентифікатор до `.services.extensions`, щоб його завантажив Collector.
 3. Додайте посилання на автентифікатор у `.receivers.<your-receiver>.<http-or-grpc-config>.auth`.
 
-Наступний приклад використовує автентифікатор OIDC на стороні приймача, роблячи це підходящим для віддаленого Collector, який отримує дані від OpenTelemetry Collector, що діє як агент:
+Наступний приклад використовує автентифікатор OIDC на стороні приймача, роблячи це пригідним для віддаленого Collector, який отримує дані від OpenTelemetry Collector, що діє як агент:
 
 ```yaml
 extensions:

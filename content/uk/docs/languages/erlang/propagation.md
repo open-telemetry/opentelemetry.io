@@ -2,6 +2,7 @@
 title: Поширення
 weight: 60
 cSpell:ignore: elli
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 {{% uk/docs/languages/propagation erlang %}}
@@ -11,7 +12,7 @@ cSpell:ignore: elli
 Розподілені трасування виходять за межі одного сервісу, що означає, що деякий контекст повинен бути переданий між сервісами для створення відносин пращур-нащадок між Відрізками. Це вимагає міжсервісного [_поширення контексту_](/docs/specs/otel/overview/#context-propagation), механізму, за допомогою якого ідентифікатори для Трасування надсилаються до віддалених процесів.
 
 Бібліотеки інструментування для HTTP фреймворків та серверів, таких як  [Phoenix](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_phoenix),
-[Cowboy](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_cowboy), [Elli](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_elli) та клієнтів, таких як [Tesla](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_tesla) автоматично впроваджують або витягують контекст, використовуючи глобально зареєстровані поширювачі. Стандартно використовуються глобальні поширбвачі W3C [Trace Context](https://w3c.github.io/trace-context/) та [Baggage](https://www.w3.org/TR/baggage/) формати.
+[Cowboy](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_cowboy), [Elli](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_elli) та клієнтів, таких як [Tesla](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_tesla) автоматично впроваджують або витягують контекст, використовуючи глобально зареєстровані поширювачі. Стандартно використовуються глобальні поширювачі W3C [Trace Context](https://w3c.github.io/trace-context/) та [Baggage](https://www.w3.org/TR/baggage/) формати.
 
 Ви можете налаштувати глобальні поширювачі, використовуючи змінну середовища OTP `text_map_propagators`:
 

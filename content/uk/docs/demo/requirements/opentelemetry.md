@@ -2,6 +2,7 @@
 title: Вимоги до OpenTelemetry
 linkTitle: Вимоги OTel
 aliases: [opentelemetry_requirements]
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Наступні вимоги були визначені для того, щоб визначити, які сигнали OpenTelemetry (OTel) буде генерувати застосунок і коли слід додавати підтримку майбутніх SDK:

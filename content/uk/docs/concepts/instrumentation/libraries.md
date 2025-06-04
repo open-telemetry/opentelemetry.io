@@ -3,6 +3,7 @@ title: Бібліотеки
 description: Дізнайтеся, як додати нативну інструментування до вашої бібліотеки.
 aliases: [../instrumenting-library]
 weight: 40
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 OpenTelemetry надає [бібліотеки інструментування][instrumentation libraries] для багатьох бібліотек, що зазвичай здійснюється через хуки бібліотек або monkey-патчинг коду бібліотек.

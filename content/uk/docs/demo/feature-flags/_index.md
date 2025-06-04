@@ -6,6 +6,7 @@ aliases:
   - services/feature-flag
   - services/featureflagservice
 cSpell:ignore: OLJCESPC7Z
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Демо надає кілька прапорців функцій, які ви можете використовувати для імітації різних сценаріїв. Ці прапорці керуються за допомогою [`flagd`](https://flagd.dev), простого сервісу прапорців функцій, який підтримує [OpenFeature](https://openfeature.dev).
@@ -27,7 +28,7 @@ cSpell:ignore: OLJCESPC7Z
 | `adServiceHighCpu`                  | Ad               | Викликати високе навантаження на процесор у сервісі оголошень. Якщо ви хочете продемонструвати обмеження процесора, встановіть обмеження ресурсів процесора |
 | `cartServiceFailure`                | Cart             | Генерувати помилку кожного разу, коли викликається `EmptyCart`                                            |
 | `productCatalogFailure`             | Product Catalog  | Генерувати помилку для запитів `GetProduct` з ідентифікатором продукту: `OLJCESPC7Z`                      |
-| `recommendationServiceCacheFailure` | Recommendation   | Створити витік памʼяті через експоненційно зростаючий кеш. Зростання 1.4x, 50% запитів викликають зростання. |
+| `recommendationServiceCacheFailure` | Recommendation   | Створити витік памʼяті через кеш, що зростає експоненційно. Зростання 1.4x, 50% запитів викликають зростання. |
 | `paymentServiceFailure`             | Payment          | Генерувати помилку при виклику методу `charge`.                                                           |
 | `paymentServiceUnreachable`         | Checkout         | Використовувати неправильну адресу при виклику PaymentService, щоб зробити вигляд, що PaymentService недоступний. |
 | `loadgeneratorFloodHomepage`        | Load Generator   | Почати затоплення головної сторінки великою кількістю запитів, налаштовується шляхом зміни JSON flagd на стані. |

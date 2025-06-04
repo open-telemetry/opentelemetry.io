@@ -5,6 +5,7 @@ aliases: [getting_started]
 weight: 10
 # prettier-ignore
 cSpell:ignore: darwin rolldice sinatra struct tracestate truffleruby
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Ця сторінка покаже вам, як почати роботу з OpenTelemetry у Ruby.

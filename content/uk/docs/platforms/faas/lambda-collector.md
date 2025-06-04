@@ -4,6 +4,7 @@ linkTitle: Конфігурація Lambda Collector
 weight: 11
 description: Додайте та налаштуйте Collector Lambda layer до вашої Lambda
 cSpell:ignore: ADOT awsxray configmap confmap regionalized
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Спільнота OpenTelemetry пропонує Collector в окремому Lambda шарі від інструментальних шарів, щоб надати користувачам максимальну гнучкість. Це відрізняється від поточної реалізації AWS Distribution of OpenTelemetry (ADOT), яка обʼєднує інструментування та Collector разом.
@@ -20,12 +21,11 @@ cSpell:ignore: ADOT awsxray configmap confmap regionalized
 
 Конфігурація OTel Collector Lambda layer відповідає стандарту OpenTelemetry.
 
-Cnfylfhnyj, OTel Collector Lambda layer використовує config.yaml.
+Стандартно, OTel Collector Lambda layer використовує config.yaml.
 
 #### Встановіть змінну середовища для вашого обраного бекенду {#set-the-environment-variable-for-your-preferred-backend}
 
-У налаштуваннях змінних середовища Lambda створіть нову змінну, яка містить
-ваш авторизаційний токен.
+У налаштуваннях змінних середовища Lambda створіть нову змінну, яка містить ваш токен авторизації.
 
 #### Оновіть стандартного експортера {#update-the-default-exporter}
 

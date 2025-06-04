@@ -5,6 +5,7 @@ aliases: [manual]
 weight: 30
 description: Інструментування для OpenTelemetry C++
 cSpell:ignore: decltype labelkv nostd nullptr
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
@@ -112,7 +113,7 @@ std::unique_ptr<opentelemetry::sdk::metrics::MetricReader> reader{
     new opentelemetry::sdk::metrics::PeriodicExportingMetricReader(std::move(exporter), options)};
 ```
 
-### Ініціалізація постачальника метрик {#initialize-a-metrer-provider}
+### Ініціалізація постачальника метрик {#initialize-a-meter-provider}
 
 Ініціалізуйте MeterProvider та додайте читача. Використовуйте це для отримання обʼєктів Meter у майбутньому.
 

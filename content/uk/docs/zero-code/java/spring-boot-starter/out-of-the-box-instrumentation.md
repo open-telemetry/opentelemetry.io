@@ -1,7 +1,8 @@
 ---
 title: Інструментування з коробки
 weight: 40
-cSpell:ignore: autoconfigurations autoconfigures logback webflux webmvc
+cSpell:ignore: autoconfigurations autoconfigures logback webflux webmvc бінів
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -179,7 +180,7 @@ public class RestClientController {
 
 ## Автоконфігурація Spring Web MVC {#spring-web-mvc-autoconfiguration}
 
-Ця функція автоконфігурує інструментування для контролерів Spring WebMVC, додаючи [фільтр, що створює телеметрію](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-webmvc/spring-webmvc-5.3/library/src/main/java/io/opentelemetry/instrumentation/spring/webmvc/v5_3/WebMvcTelemetryProducingFilter.java) бін до контексту застосунку. Фільтр декорує виконання запиту серверним спаном, передаючи вхідний контекст трасування, якщо він отриманий у HTTP запиті. Щоб дізнатися більше про інструментування Spring WebMVC OpenTelemetry, дивіться [бібліотеку інструментування opentelemetry-spring-webmvc-5.3](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webmvc/spring-webmvc-5.3/library).
+Ця функція автоматично конфігурує інструментування для контролерів Spring WebMVC, додаючи [фільтр, що створює телеметрію](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-webmvc/spring-webmvc-5.3/library/src/main/java/io/opentelemetry/instrumentation/spring/webmvc/v5_3/WebMvcTelemetryProducingFilter.java) бін до контексту застосунку. Фільтр декорує виконання запиту відрізком сервера, передаючи вхідний контекст трасування, якщо він отриманий у HTTP запиті. Щоб дізнатися більше про інструментування Spring WebMVC OpenTelemetry, дивіться [бібліотеку інструментування opentelemetry-spring-webmvc-5.3](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webmvc/spring-webmvc-5.3/library).
 
 Як і у випадку з Java агентом, ви можете налаштувати захоплення наступних сутностей:
 
@@ -238,7 +239,7 @@ public class WebClientController {
 
 | Системна властивість                                           | Тип    | Стандартне значення | Опис                                          |
 | -------------------------------------------------------------- | -------| ------------------------- | --------------------------------------------- |
-| `otel.instrumentation.kafka.experimental-span-attributes`      | Boolean| false                     | Увімкнення захоплення експериментальних атрибутів спанів. |
+| `otel.instrumentation.kafka.experimental-span-attributes`      | Boolean| false                     | Увімкнення захоплення експериментальних атрибутів відрізків. |
 
 ## Інструментування Micrometer {#micrometer-instrumentation}
 

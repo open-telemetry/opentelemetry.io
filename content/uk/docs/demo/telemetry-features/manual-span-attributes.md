@@ -1,6 +1,7 @@
 ---
 title: Атрибути відрізків, створених вручну
 aliases: [manual_span_attributes, ../manual-span-attributes]
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Ця сторінка містить перелік атрибутів відрізків, створених вручну, що використовуються в демонстрації:

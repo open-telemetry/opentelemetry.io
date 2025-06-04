@@ -1,5 +1,6 @@
 ---
 title: Застосунок React Native
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Застосунок React Native надає мобільний інтерфейс для користувачів на пристроях Android та iOS для взаємодії з демонстраційними сервісами. Він створений за допомогою [Expo](https://docs.expo.dev/get-started/introduction/) і використовує файлову маршрутизацію Expo для компонування екранів застосунку.

@@ -2,6 +2,7 @@
 title: Інструментування без коду
 redirects: [{ from: 'net/*', to: 'dotnet/:splat' }]
 weight: 260
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 OpenTelemetry [інструментування без коду][] підтримується для мов, перелічених нижче в індексі розділу.

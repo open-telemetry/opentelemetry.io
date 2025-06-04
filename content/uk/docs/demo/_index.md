@@ -4,6 +4,7 @@ linkTitle: Демо
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Ласкаво просимо до [документації OpenTelemetry Demo](/ecosystem/demo/), яка охоплює встановлення та запуск демонстрації, а також деякі сценарії, які ви можете використовувати для перегляду OpenTelemetry в дії.

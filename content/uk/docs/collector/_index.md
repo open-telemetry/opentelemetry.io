@@ -5,6 +5,7 @@ aliases: [./about]
 cascade:
   vers: 0.127.0
 weight: 270
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 ![Схема OpenTelemetry Collector з інтеграцією Jaeger, OTLP та Prometheus](img/otel-collector.svg)

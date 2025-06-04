@@ -4,6 +4,7 @@ aliases: [manual]
 weight: 20
 description: Ручне інструментування для OpenTelemetry Python
 cSpell:ignore: millis ottrace textmap
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
@@ -60,7 +61,7 @@ def do_work():
 
 ### Створення вкладених відрізків {#create-nested-spans}
 
-Якщо у вас є окрема підоперація, яку ви хочете відстежити як частину іншої, ви можете створити [відрізки](/docs/concepts/signals/traces/#spans) для представлення відносин:
+Якщо у вас є окрема під-операція, яку ви хочете відстежити як частину іншої, ви можете створити [відрізки](/docs/concepts/signals/traces/#spans) для представлення відносин:
 
 ```python
 def do_work():
@@ -160,7 +161,7 @@ current_span.add_event("Did it!")
 
 ### Додавання посилань {#adding-links}
 
-[Відрізок](/docs/concepts/signals/traces/#spans) може бути створений з нульовою або більшою кількістю посилань [відрізків](/docs/concepts/signals/traces/#span-links), які причинно повʼязують його з іншим відрізком. Для створення посилання потрібен контекст відрізка.
+[Відрізок](/docs/concepts/signals/traces/#spans) може бути створений з нульовою або більшою кількістю посилань [відрізків](/docs/concepts/signals/traces/#span-links), які повʼязують його з іншим відрізком. Для створення посилання потрібен контекст відрізка.
 
 ```python
 from opentelemetry import trace

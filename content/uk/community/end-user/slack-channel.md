@@ -4,6 +4,7 @@ linkTitle: Slack
 description: >-
   Приєднуйтесь до каналу Slack, щоб обговорити OpenTelemetry з іншими користувачами.
 weight: 40
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Приєднуйтесь до нашого каналу Slack, щоб спілкуватися з іншими користувачами OpenTelemetry!

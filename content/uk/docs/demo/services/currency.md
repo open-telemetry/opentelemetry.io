@@ -2,7 +2,8 @@
 title: Сервіс Валют
 linkTitle: Валюта
 aliases: [currencyservice]
-cSpell:ignore: decltype labelkv noexcept nostd
+cSpell:ignore: decltype labelkv noexcept nostd loggerprovider
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Цей сервіс надає функціональність для конвертації сум між різними валютами.

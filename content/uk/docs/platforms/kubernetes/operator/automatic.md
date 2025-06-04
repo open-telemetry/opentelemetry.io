@@ -6,6 +6,7 @@ description:
   Реалізація автоінструментування за допомогою OpenTelemetry Operator.
 # prettier-ignore
 cSpell:ignore: GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver REDISCALA
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 OpenTelemetry Operator підтримує інʼєкцію та налаштування бібліотек автоінструментування для .NET, Java, Node.js, Python та Go сервісів.
@@ -77,7 +78,7 @@ EOF
 
 ## Налаштування автоматичного інструментування {#configure-automatic-instrumentation}
 
-Щоб мати можливість керувати автоматичним інструментуванням, оператор повинен знати, які podʼм інструментувати і яке автоматичне інструментування використовувати для цих podʼів. Це робиться через [Instrumentation CRD](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentation).
+Щоб мати можливість керувати автоматичним інструментуванням, оператор повинен знати, які podʼом інструментувати і яке автоматичне інструментування використовувати для цих podʼів. Це робиться через [Instrumentation CRD](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentation).
 
 Створення ресурсу Instrumentation правильно є ключовим для отримання автоінструментування. Переконання, що всі точки доступу та змінні середовища правильні є необхідним для правильного функціонування автоінструментування.
 
@@ -419,7 +420,7 @@ spec:
 
 Тепер, коли ваш обʼєкт Instrumentation створений, ваш кластер має можливість автоінструментувати сервіси та надсилати дані до точки доступу. Однак, автоінструментування з OpenTelemetry Operator слідує моделі opt-in. Щоб активувати автоматичне інструментування, вам потрібно додати анотацію до вашого deployment.
 
-## Додавання анотацій до наявних deplymentʼів {#add-annotations-to-existing-deployments}
+## Додавання анотацій до наявних deploymentʼів {#add-annotations-to-existing-deployments}
 
 Останній крок — це підключення ваших сервісів до автоматичного інструментування. Це робиться шляхом оновлення `spec.template.metadata.annotations` вашого сервісу, щоб включити мовно-специфічну анотацію:
 
@@ -433,7 +434,7 @@ spec:
 
 - `"true"` — для впровадження ресурсу `Instrumentation` зі стандартним іменем з поточного простору імен.
 - `"my-instrumentation"` — для впровадження екземпляра `Instrumentation` CR з іменем `"my-instrumentation"` у поточному просторі імен.
-- `"my-other-namespace/my-instrumentation"` — для впровадження екземпляра `Instrumentation` CR з менем `"my-instrumentation"` з іншого простору імен `"my-other-namespace"`.
+- `"my-other-namespace/my-instrumentation"` — для впровадження екземпляра `Instrumentation` CR з іменем `"my-instrumentation"` з іншого простору імен `"my-other-namespace"`.
 - `"false"` — не виконувати інʼєкцію
 
 Альтернативно, анотацію можна додати до простору імен, що призведе до додавання всіх сервісів у цьому просторі імен до автоматичного інструментування. Дивіться [документацію з автоінструментування операторів](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#opentelemetry-auto-instrumentation-injection) для отримання додаткової інформації.

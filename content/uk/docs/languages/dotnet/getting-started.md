@@ -3,6 +3,7 @@ title: Початок роботи
 description: Отримайте телеметрію для вашого застосунку менш ніж за 5 хвилин!
 weight: 10
 cSpell:ignore: ASPNETCORE rolldice
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Ця сторінка покаже вам, як почати роботу з OpenTelemetry у .NET.
