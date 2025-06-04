@@ -1076,6 +1076,13 @@ maintainers:
       - ruby-maintainers
     html_url: https://github.com/robertlaurin
     avatar_url: https://avatars.githubusercontent.com/u/23463253?v=4
+  - name: RomainMuller
+    teams:
+      - go-compile-instrumentation-approvers
+      - go-compile-instrumentation-maintainers
+      - go-compile-instrumentation-triagers
+    html_url: https://github.com/RomainMuller
+    avatar_url: https://avatars.githubusercontent.com/u/411689?v=4
   - name: RonFed
     teams:
       - go-instrumentation-approvers
@@ -1786,6 +1793,12 @@ approvers:
       - docs-zh-approvers
     html_url: https://github.com/my-git9
     avatar_url: https://avatars.githubusercontent.com/u/76980726?v=4
+  - name: NameHaibinZhang
+    teams:
+      - go-compile-instrumentation-approvers
+      - go-compile-instrumentation-triagers
+    html_url: https://github.com/NameHaibinZhang
+    avatar_url: https://avatars.githubusercontent.com/u/30917104?v=4
   - name: nirga
     teams:
       - opentelemetry-python-contrib-approvers
@@ -1868,12 +1881,6 @@ approvers:
       - semconv-system-approvers
     html_url: https://github.com/rogercoll
     avatar_url: https://avatars.githubusercontent.com/u/33873530?v=4
-  - name: RomainMuller
-    teams:
-      - go-compile-instrumentation-approvers
-      - go-compile-instrumentation-triagers
-    html_url: https://github.com/RomainMuller
-    avatar_url: https://avatars.githubusercontent.com/u/411689?v=4
   - name: samiura
     teams:
       - network-approvers
@@ -2367,6 +2374,9 @@ members:
   - name: DotSpy
     html_url: https://github.com/DotSpy
     avatar_url: https://avatars.githubusercontent.com/u/11577813?v=4
+  - name: douglascamata
+    html_url: https://github.com/douglascamata
+    avatar_url: https://avatars.githubusercontent.com/u/159076?v=4
   - name: edsoncelio
     html_url: https://github.com/edsoncelio
     avatar_url: https://avatars.githubusercontent.com/u/5833278?v=4
