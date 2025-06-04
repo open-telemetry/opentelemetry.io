@@ -15271,6 +15271,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:25:12.345Z"
   },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-04T10:36:10.94505674Z"
+  },
   "https://kubernetes.io/docs/reference/labels-annotations-taints/": {
     "StatusCode": 206,
     "LastSeen": "2025-03-11T12:45:19.043389743Z"
