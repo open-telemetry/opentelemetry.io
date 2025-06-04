@@ -21,6 +21,10 @@ component they customize.
 endorse** the third-party distributions listed below. This list is provided as a
 convenience for the community. {{% /alert %}}
 
+{{% alert title="Note" color="info" %}}For a list of both first-party and
+third-party OpenTelemetry Collector distributions, see the
+[Collector distributions page](/docs/collector/distributions/).{{% /alert %}}
+
 {{% ecosystem/distributions-table filter="non-collector" %}}
 
 ## Adding your distribution {#how-to-add}

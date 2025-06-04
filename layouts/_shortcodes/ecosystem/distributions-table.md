@@ -2,7 +2,7 @@
 {{/* Common variables */ -}}
 {{ $data := sort (sort $.Site.Data.ecosystem.distributions "components") "name" "asc" -}}
 {{ $filter := .Get "filter" -}}
-{{ $ossRepoUrl := "github.com/open-telemetry/opentelemetry-collector-releases" -}}
+{{ $otelRepoUrl := "github.com/open-telemetry/opentelemetry-collector-releases" -}}
 
 {{/* Apply filters based on context */ -}}
 {{ if eq $filter "non-collector" -}}
@@ -14,22 +14,22 @@
     {{ end -}}
   {{ end -}}
   {{ $data = $filtered -}}
-{{ else if eq $filter "oss-collector" -}}
+{{ else if eq $filter "first-party-collector" -}}
   {{/* Show only OSS collector items */ -}}
   {{ $data = where $data "components" "intersect" (slice "Collector") -}}
   {{ $filtered := slice -}}
   {{ range $data -}}
-    {{ if strings.Contains .url $ossRepoUrl -}}
+    {{ if strings.Contains .url $otelRepoUrl -}}
       {{ $filtered = $filtered | append . -}}
     {{ end -}}
   {{ end -}}
   {{ $data = $filtered -}}
 {{ else -}}
-  {{/* Show only vendor collector items */ -}}
+  {{/* Show only third-party collector items */ -}}
   {{ $data = where $data "components" "intersect" (slice "Collector") -}}
   {{ $filtered := slice -}}
   {{ range $data -}}
-    {{ if not (strings.Contains .url $ossRepoUrl) -}}
+    {{ if not (strings.Contains .url $otelRepoUrl) -}}
       {{ $filtered = $filtered | append . -}}
     {{ end -}}
   {{ end -}}

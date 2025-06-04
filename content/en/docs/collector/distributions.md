@@ -4,7 +4,7 @@ weight: 25
 ---
 
 The OpenTelemetry project currently offers [pre-built distributions][] of the
-collector. The components included in the [distributions][] can be found by in
+Collector. The components included in the [distributions][] can be found by in
 the `manifest.yaml` of each distribution.
 
 [pre-built distributions]:
@@ -12,7 +12,7 @@ the `manifest.yaml` of each distribution.
 [distributions]:
   https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions
 
-{{% ecosystem/distributions-table filter="oss-collector" %}}
+{{% ecosystem/distributions-table filter="first-party-collector" %}}
 
 ## Custom Distributions
 
@@ -25,7 +25,7 @@ functionality like
 [ocb](../custom-collector) (OpenTelemetry Collector Builder) is available to
 build your own distributions.
 
-## Vendor Distributions
+## Third-party Distributions
 
 Some organizations provide a Collector distribution with additional capabilities
 or for improved ease of use. What follows is a list of Collector distributions
@@ -35,7 +35,7 @@ maintained by third parties.
 endorse** the third-party distributions listed in the following table. The list
 is provided as a convenience for the community. {{% /alert %}}
 
-{{% ecosystem/distributions-table filter="vendor-collector" %}}
+{{% ecosystem/distributions-table filter="third-party-collector" %}}
 
 ## Adding your Collector distribution {#how-to-add}
 
