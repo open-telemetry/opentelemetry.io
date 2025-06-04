@@ -1263,6 +1263,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:58:16.158154-05:00"
   },
+  "https://docs.datadoghq.com/opentelemetry/setup/ddot_collector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-19T15:44:14.8206+02:00"
+  },
   "https://docs.datadoghq.com/tracing/connect_logs_and_traces/java/": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:59:08.050666-05:00"
@@ -2630,6 +2634,14 @@
   "https://github.com/DataDog/": {
     "StatusCode": 200,
     "LastSeen": "2024-11-14T11:47:31.843322+01:00"
+  },
+  "https://github.com/DataDog/datadog-agent/tree/main/comp/otelcol": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-30T11:16:18.337986+02:00"
+  },
+  "https://github.com/DataDog/datadog-agent/tree/main/comp/otelcol/collector-contrib/impl": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-19T15:44:13.98324+02:00"
   },
   "https://github.com/DataDog/dd-opentelemetry-exporter-ruby": {
     "StatusCode": 206,
@@ -6923,6 +6935,22 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:48:21.165537-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol-contrib/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-19T15:43:58.929879+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol-k8s/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-19T15:44:08.592928+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol-otlp/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-19T15:44:12.683735+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-19T15:44:02.04387+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-releases/issues/586": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:39.844187-05:00"
@@ -6967,9 +6995,29 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:39.785648-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-19T15:43:59.949025+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-contrib": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-19T15:43:58.037271+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-ebpf-profiler": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-19T15:44:04.278592+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-ebpf-profiler/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-19T15:44:07.377062+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-k8s": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:38:09.824638-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-otlp": {
+    "StatusCode": 206,
+    "LastSeen": "2025-05-19T15:44:10.155313+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/": {
     "StatusCode": 206,
