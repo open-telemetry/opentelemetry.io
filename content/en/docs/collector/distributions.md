@@ -3,12 +3,10 @@ title: Distributions
 weight: 25
 ---
 
-The OpenTelemetry project currently offers [pre-built distributions][] of the
-Collector. The components included in the [distributions][] can be found by in
-the `manifest.yaml` of each distribution.
+The OpenTelemetry project currently offers pre-built [distributions][] of the
+Collector. The components included in the distributions can be found by in the
+`manifest.yaml` of each distribution.
 
-[pre-built distributions]:
-  https://github.com/open-telemetry/opentelemetry-collector-releases/releases
 [distributions]:
   https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions
 
