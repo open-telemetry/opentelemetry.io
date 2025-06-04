@@ -2315,6 +2315,14 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:12:36.995713-05:00"
   },
+  "https://events.linuxfoundation.org/open-observability-summit-otel-community-day/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-04T14:44:14.235372-04:00"
+  },
+  "https://events.linuxfoundation.org/open-source-summit-north-america/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-04T14:44:12.088873-04:00"
+  },
   "https://expressjs.com": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T10:58:54.283681-05:00"
@@ -19439,6 +19447,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:09:56.439513-05:00"
   },
+  "https://www.cncf.io/announcements/2025/05/21/cncf-shares-schedule-for-open-observability-summit-north-america-gears-up-for-inaugural-event/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-04T14:44:14.433082-04:00"
+  },
   "https://www.cncf.io/blog/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-04T17:12:06.182152-05:00"
@@ -19470,6 +19482,10 @@
   "https://www.cncf.io/enduser/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-15T13:49:20.913378-05:00"
+  },
+  "https://www.cncf.io/kubecon-cloudnativecon-events": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-04T14:44:11.337015-04:00"
   },
   "https://www.cncf.io/projects/": {
     "StatusCode": 206,
