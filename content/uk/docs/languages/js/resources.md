@@ -3,6 +3,7 @@ title: Ресурси
 weight: 70
 description: Додайте деталі про середовище вашого застосунку до вашої телеметрії
 cSpell:ignore: myhost SIGINT uuidgen WORKDIR
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 {{% docs/languages/resources-intro %}}
@@ -13,7 +14,7 @@ cSpell:ignore: myhost SIGINT uuidgen WORKDIR
 
 Дотримуйтесь інструкцій з [Початок роботи - Node.js][], щоб у вас були файли `package.json`, `app.js` та `tracing.js`.
 
-## Виявлення ресурсів процесу та середовища {#process--enviroment-resources-detection}
+## Виявлення ресурсів процесу та середовища {#process--environment-resource-detection}
 
 З коробки, Node.js SDK виявляє [ресурси процесу та середовища процесу][] і бере атрибути зі змінної середовища `OTEL_RESOURCE_ATTRIBUTES`. Ви можете перевірити, що він виявляє, увімкнувши діагностичне логування у `tracing.js`:
 

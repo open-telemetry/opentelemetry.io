@@ -5,6 +5,7 @@ description: >-
   alt="Python"> Реалізація OpenTelemetry для Python.
 aliases: [/python, /python/metrics, /python/tracing]
 weight: 22
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 {{% docs/languages/index-intro python /%}}

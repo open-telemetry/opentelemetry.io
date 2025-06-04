@@ -24,6 +24,7 @@ outputs: [html, json]
 # redirect rule to avoid the loop, as suggested by Netlify support
 # (email support ID 159489):
 redirects: [{ from: /ecosystem/registry*, to: '/ecosystem/registry?' }]
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 {{% blocks/lead color="dark" %}}

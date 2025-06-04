@@ -3,6 +3,7 @@ title: OpenTelemetry Distro
 linkTitle: Distro
 weight: 110
 cSpell:ignore: distro distros
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Для того, щоб зробити використання OpenTelemetry та автоматичну інструментацію якомога швидшою без втрати гнучкості, дистрибутиви OpenTelemetry надають механізм для автоматичної конфігурації деяких з найбільш поширених опцій для користувачів. Використовуючи їхню потужність, користувачі OpenTelemetry можуть налаштовувати компоненти відповідно до своїх потреб. Пакунок `opentelemetry-distro` надає деякі стандартні налаштування для користувачів, які хочуть розпочати роботу, він налаштовує:
@@ -70,7 +71,7 @@ with trace.get_tracer("my.tracer").start_as_current_span("foo"):
 opentelemetry-instrument python no_configuration.py
 ```
 
-Результуючий відрізок зʼявиться у виводі з collector і виглядатиме приблизно так:
+Отриманий відрізок зʼявиться у виводі з collector і виглядатиме приблизно так:
 
 ```nocode
 Resource labels:

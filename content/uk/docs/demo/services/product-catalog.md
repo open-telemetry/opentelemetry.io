@@ -4,6 +4,7 @@ linkTitle: Каталог продуктів
 aliases: [productcatalogservice]
 # prettier-ignore
 cSpell:ignore: fatalf otelcodes otelgrpc otlpmetricgrpc otlptracegrpc sdkmetric sdktrace sprintf
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Цей сервіс відповідає за повернення інформації про продукти. Сервіс може бути використаний для отримання всіх продуктів, пошуку конкретних продуктів або повернення деталей про будь-який окремий продукт.

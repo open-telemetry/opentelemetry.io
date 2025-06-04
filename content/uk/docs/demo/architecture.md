@@ -3,6 +3,7 @@ title: Архітектура Demo
 linkTitle: Архітектура
 aliases: [current_architecture]
 body_class: otel-mermaid-max-width
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 **OpenTelemetry Demo** складається з мікросервісів, написаних різними мовами програмування, які взаємодіють між собою через gRPC та HTTP; і генератора навантаження, який використовує [Locust](https://locust.io/) для імітації користувацького трафіку.

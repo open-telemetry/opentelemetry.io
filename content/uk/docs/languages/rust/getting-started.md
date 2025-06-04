@@ -2,6 +2,7 @@
 title: Початок роботи
 weight: 10
 cSpell:ignore: eprintln println rolldice tokio
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Ця сторінка покаже вам, як почати роботу з OpenTelemetry в Rust.

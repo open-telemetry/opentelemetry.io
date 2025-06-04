@@ -2,7 +2,8 @@
 title: Початок роботи
 weight: 10
 # prettier-ignore
-cSpell:ignore: bogons defmodule defp ecto elixirc erts Eshell hipe KHTML postgres rebar relx rolldice stdlib
+cSpell:ignore: bogons defmodule defp ecto elixirc erts Eshell hipe KHTML postgres rebar relx rolldice stdlib mixrebar
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
@@ -20,7 +21,7 @@ cSpell:ignore: bogons defmodule defp ecto elixirc erts Eshell hipe KHTML postgre
 
 ### Приклад застосунку {#example-application}
 
-Наступний приклад проведе вас через створення базового вебзастосунка [Phoenix](https://www.phoenixframework.org/) та його інструментування за допомогою OpenTelemetry. Для довідки, повний приклад коду, який ви створите, можна знайти тут: [opentelemetry-erlang-contrib/examples/roll_dice](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples/roll_dice).
+Наступний приклад проведе вас через створення базового вебзастосунку [Phoenix](https://www.phoenixframework.org/) та його інструментування за допомогою OpenTelemetry. Для довідки, повний приклад коду, який ви створите, можна знайти тут: [opentelemetry-erlang-contrib/examples/roll_dice](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples/roll_dice).
 
 Додаткові приклади можна знайти в [opentelemetry-erlang-contrib examples](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples).
 
@@ -360,7 +361,7 @@ releases: [
 
 {{% /tab %}} {{< /tabpane >}}
 
-SDK `opentelemetry` слід додати якомога раніше у процес завантаження Release, щоб забезпечити його доступність до того, як буде створена будь-яка телеметрія. Тут він також встановлений як `temporary`, виходячи з припущення, що ми віддаємо перевагу працюючому Release, який не створює телеметрію, ніж аварійному завершенню всього Release.
+SDK `opentelemetry` слід додати якомога раніше у процес завантаження Release, щоб забезпечити його доступність до того, як буде створена будь-яка телеметрія. Тут він також встановлений як `temporary`, виходячи з припущення, що ми віддаємо перевагу робочому Release, який не створює телеметрію, ніж аварійному завершенню всього Release.
 
 Крім API та SDK, потрібен експортер для виведення даних. SDK постачається з експортером для налагодження, який виводить дані на stdout, і є окремі пакунки для експорту через [OpenTelemetry Protocol (OTLP)](https://hex.pm/packages/opentelemetry_exporter) та [Zipkin protocol](https://hex.pm/packages/opentelemetry_zipkin).
 

@@ -2,6 +2,8 @@
 title: Експортери
 weight: 50
 description: Обробка та експорт ваших телеметричних даних
+cSpell:ignore: csps
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 {{% docs/languages/exporters/intro %}}
@@ -123,7 +125,7 @@ sdk.start();
 
 [OpenTelemetry Collector Exporter з gRPC][] працює тільки з Node.js, тому ви обмежені використанням [OpenTelemetry Collector Exporter з HTTP/JSON][] або [OpenTelemetry Collector Exporter з HTTP/protobuf][].
 
-Переконайтеся, що приймаюча сторона вашого експортера (колектор або бекенд спостереження) приймає `http/json`, якщо ви використовуєте [OpenTelemetry Collector Exporter з HTTP/JSON][], і що ви експортуєте ваші дані на правильну точку доступу з вашим портом, встановленим на 4318.
+Переконайтеся, що отримувач вашого експортера (колектор або бекенд спостереження) приймає `http/json`, якщо ви використовуєте [OpenTelemetry Collector Exporter з HTTP/JSON][], і що ви експортуєте ваші дані на правильну точку доступу з вашим портом, встановленим на 4318.
 
 #### Налаштування CSPs {#configure-csps}
 

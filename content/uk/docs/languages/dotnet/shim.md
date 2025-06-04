@@ -1,7 +1,9 @@
 ---
 title: OpenTelemetry shim трасування
 linkTitle: Shim трасування
+CSpell:ignore: tracerprovider
 weight: 110
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 .NET відрізняється від інших мов/середовищ виконання, які підтримують OpenTelemetry. Трасування реалізовано за допомогою [System.Diagnostics](https://docs.microsoft.com/dotnet/api/system.diagnostics) API, перепрофілюючи старі конструкції, такі як `ActivitySource` та `Activity`, щоб вони відповідали OpenTelemetry під капотом.
@@ -89,7 +91,7 @@ builder.Services.AddOpenTelemetry().WithTracing(tcb =>
 });
 ```
 
-У наведеному вище прикладі [`Tracer`](/docs/concepts/signals/traces/#tracer) відповідний до сервісу впроваджується під час налаштування. Це дозволяє отримати доступ до екземпляра у вашому мапінгу  точок доступу (або контролерах, якщо ви використовуєте старішу версію .NET).
+У наведеному вище прикладі [`Tracer`](/docs/concepts/signals/traces/#tracer) відповідний до сервісу впроваджується під час налаштування. Це дозволяє отримати доступ до екземпляра у вашому зіставленні точок доступу (або контролерах, якщо ви використовуєте старішу версію .NET).
 
 Не обовʼязково робити інʼєкцію трасувальника на рівні сервісу, і це також не покращує продуктивність. Вам потрібно вирішити, де ви хочете, щоб ваш екземпляр трасувальника існував.
 
@@ -160,7 +162,7 @@ using var span = MyTracer.StartActiveSpan("SayHello");
 
 ## Створення вкладених Відрізків {#creating-nested-spans}
 
-Якщо у вас є окрема підоперація, яку ви хочете відстежувати як частину іншої, ви можете створити відрізки, щоб представити це відношення.
+Якщо у вас є окрема під-операція, яку ви хочете відстежувати як частину іншої, ви можете створити відрізки, щоб представити це відношення.
 
 ```csharp
 public static void ParentOperation(Tracer tracer)
@@ -303,7 +305,7 @@ span.AddEvent("asdf", DateTimeOffset.Now, new(attributeData));
 
 ## Додавання посилань {#adding-links}
 
-`TelemetrySpan` може бути створений з нульовою або більше [`Link`ʼів](/docs/concepts/signals/traces/#span-links), які є причинно повʼязаними.
+`TelemetrySpan` може бути створений з нульовою або більше [`Link`ʼів](/docs/concepts/signals/traces/#span-links), які є повʼязаними.
 
 ```csharp
 // Отримайте контекст звідкись, можливо, він передається як параметр

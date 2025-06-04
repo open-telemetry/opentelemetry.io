@@ -3,6 +3,7 @@ title: Міграція з OpenTracing
 linkTitle: OpenTracing
 weight: 2
 cSpell:ignore: codebases
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Зворотна сумісність з [OpenTracing][] була пріоритетом для проєкту OpenTelemetry з самого початку. Щоб полегшити міграцію, OpenTelemetry підтримує використання як API OpenTelemetry, так і OpenTracing в одному коді. Це дозволяє записувати інструментування OpenTracing за допомогою SDK OpenTelemetry.

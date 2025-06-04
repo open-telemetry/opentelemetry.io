@@ -2,6 +2,7 @@
 title: Експортери
 weight: 50
 cSpell:ignore: rebar relx
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 {{% docs/languages/exporters/intro %}}
@@ -168,7 +169,7 @@ config :opentelemetry_exporter,
 
 {{% /tab %}} {{< /tabpane >}}
 
-Ви можете побачити свої трасування, запустивши `docker compose up` в одному терміналі, потім `mix phx.server` в іншому. Після надсилання кількох запитів через застосунок, перейдіть до `http://localhost:16686` і виберіть `roll_dice_app` з випадаючого списку Service, потім натисніть "Find Traces".
+Ви можете побачити свої трасування, запустивши `docker compose up` в одному терміналі, потім `mix phx.server` в іншому. Після надсилання кількох запитів через застосунок, перейдіть до `http://localhost:16686` і виберіть `roll_dice_app` зі списку Service, потім натисніть "Find Traces".
 
 ## Підводні камені {#gotchas}
 

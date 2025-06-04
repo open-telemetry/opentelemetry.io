@@ -4,6 +4,7 @@ linkTitle: Бібліотеки
 weight: 40
 description: Як інструментувати бібліотеки, від яких залежить застосунок
 cSpell:ignore: metapackage metapackages
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 {{% uk/docs/languages/libraries-intro "js" %}}
@@ -46,7 +47,7 @@ npm install --save @opentelemetry/auto-instrumentations-web
 
 ### Реєстрація {#registration}
 
-Після встановлення необхідних бібліотек інструментування зареєструйте їх в OpenTelemetry SDK для Node.js. Якщо ви слідували [Початоку роботи](/docs/languages/js/getting-started/nodejs/), ви вже використовуєте метапакунки. Якщо ви слідували інструкціям [для ініціалізації SDK для ручного інструментування](/docs/languages/js/instrumentation/#initialize-tracing), оновіть ваш `instrumentation.ts` (або `instrumentation.js`) наступним чином:
+Після встановлення необхідних бібліотек інструментування зареєструйте їх в OpenTelemetry SDK для Node.js. Якщо ви слідували [Початку роботи](/docs/languages/js/getting-started/nodejs/), ви вже використовуєте метапакунки. Якщо ви слідували інструкціям [для ініціалізації SDK для ручного інструментування](/docs/languages/js/instrumentation/#initialize-tracing), оновіть ваш `instrumentation.ts` (або `instrumentation.js`) наступним чином:
 
 {{< tabpane text=true >}}
 

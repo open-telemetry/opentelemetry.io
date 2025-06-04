@@ -10,6 +10,7 @@ hide_feedback: true
 params:
   LFS148: https://training.linuxfoundation.org/training/getting-started-with-opentelemetry-lfs148/
 cSpell:ignore: otca
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Ця сторінка демонструє навчальні ресурси для OpenTelemetry. Частіше перевіряйте оновлення!

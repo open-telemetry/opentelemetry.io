@@ -2,7 +2,8 @@
 title: Усунення несправностей автоматичного інструментування .NET
 linkTitle: Усунення несправностей
 weight: 50
-cSpell:ignore: corehost netfx pjanotti's TRACEFILE
+cSpell:ignore: corehost netfx pjanotti's TRACEFILE additionaldeps pjanotti патчинг openTelemetryautoInstrumentationruntimenative
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 ## Загальні кроки {#general-steps}
@@ -34,13 +35,13 @@ COREHOST_TRACEFILE=corehost_verbose_tracing.log
 
 ### Не створюється телеметрія {#no-telemetry-is-produced}
 
-Телеметрія не створюється. У [місцs](../configuration#internal-logs) для внутрішніх журналів OpenTelemetry .NET Automatic Instrumentation немає логів.
+Телеметрія не створюється. У [місці](../configuration#internal-logs) для внутрішніх журналів OpenTelemetry .NET Automatic Instrumentation немає логів.
 
 Можливо, що .NET Profiler не може приєднатися, і тому журнали не будуть створені.
 
 Найпоширенішою причиною є те, що інструментованому застосунку не вистачає дозволів для завантаження збірок OpenTelemetry .NET Automatic Instrumentation.
 
-### Не вдалося встановити пакунок 'OpenTelemetry.AutoInstrumentation.Runtime.Native' {#сould-not-install-package-openTelemetryautoInstrumentationruntimenative}
+### Не вдалося встановити пакунок 'OpenTelemetry.AutoInstrumentation.Runtime.Native' {#could-not-install-package-openTelemetryautoInstrumentationruntimenative}
 
 При додаванні пакунків NuGet до вашого проєкту ви отримуєте повідомлення про помилку, подібне до:
 
@@ -94,7 +95,7 @@ File name: 'Microsoft.Extensions.DependencyInjection.Abstractions, Version=7.0.0
 
 Простий спосіб забезпечити відсутність таких конфліктів — додати пакунок `OpenTelemetry.AutoInstrumentation` до вашого застосунку. Для інструкцій про те, як додати його до вашого застосунку, дивіться [Використання пакунків NuGet OpenTelemetry.AutoInstrumentation](../nuget-packages).
 
-Альтернативно додайте лише конфліктуючі пакунки до вашого проєкту. Наступні залежності використовуються OpenTelemetry .NET Automatic Instrumentation:
+Альтернативно додайте лише пакунки, що конфліктують, до вашого проєкту. Наступні залежності використовуються OpenTelemetry .NET Automatic Instrumentation:
 
 - [OpenTelemetry.AutoInstrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/src/OpenTelemetry.AutoInstrumentation/OpenTelemetry.AutoInstrumentation.csproj)
 - [OpenTelemetry.AutoInstrumentation.AdditionalDeps](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/src/OpenTelemetry.AutoInstrumentation.AdditionalDeps/Directory.Build.props)

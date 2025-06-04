@@ -3,6 +3,7 @@ title: Оглядач
 aliases: [/docs/js/getting_started/browser]
 description: Дізнайтеся, як додати OpenTelemetry до вашого застосунку в оглядачі.
 weight: 20
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 {{% include browser-instrumentation-warning %}}
@@ -76,7 +77,7 @@ tsc --init
 npm install --save-dev parcel
 ```
 
-Створіть порожній файл коду з назвою `document-load` з розширенням `.ts` або `.js`, якщо це доречно, залежно від мови, яку ви обрали для написання вашого застосунку. Додайте наступний код до вашого HTML безпосередньо перед закриваючим теґом `</body>`:
+Створіть порожній файл коду з назвою `document-load` з розширенням `.ts` або `.js`, якщо це доречно, залежно від мови, яку ви обрали для написання вашого застосунку. Додайте наступний код до вашого HTML безпосередньо перед закривальним теґом `</body>`:
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 

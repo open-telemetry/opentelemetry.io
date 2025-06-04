@@ -1,6 +1,7 @@
 ---
 title: Інструментування Quarkus
 linkTitle: Quarkus
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 [Quarkus](https://quarkus.io/) — це фреймворк з відкритим кодом, розроблений для допомоги розробникам програмного забезпечення у створенні ефективних хмарних застосунків як для JVM, так і для Quarkus native image застосунків.

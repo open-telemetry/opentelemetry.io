@@ -2,9 +2,10 @@
 title: Семплювання
 weight: 80
 description: Зменшення кількості створюваних телеметричних даних
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
-[Семплювання](/docs/concepts/sampling/) — це процес, який обмежує кількість nhtqcsd, що генеруються системою. JavaScript SDK пропонує кілька [головних семплерів](/docs/concepts/sampling#head-sampling).
+[Семплювання](/docs/concepts/sampling/) — це процес, який обмежує кількість трейсів, що генеруються системою. JavaScript SDK пропонує кілька [головних семплерів](/docs/concepts/sampling#head-sampling).
 
 ## Стандартна поведінка {#default-behavior}
 

@@ -3,7 +3,8 @@ title: Завершення підтримки OpenCensus
 linkTitle: Завершення підтримки OpenCensus
 date: 2023-05-01
 author: '[Aaron Abbott](https://github.com/aabmass) (Google)'
-cSpell:ignore: sunsetting
+cSpell:ignore: sunsetting, july
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 У 2019 році ми оголосили, що OpenTracing та OpenCensus обʼєднаються, щоб створити проєкт OpenTelemetry. З самого початку ми вважали OpenTelemetry [наступною основною версією як OpenTracing, так і OpenCensus](https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/).

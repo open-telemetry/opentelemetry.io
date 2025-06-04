@@ -1,9 +1,10 @@
 ---
 title: Загальні вразливості та експлойти (CVE)
 weight: 100
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
-Це список зареєстрованих Загальних вразливостей та екслойтів (CVE) у всіх репозиторіях організації [OpenTelemetry на GitHub](https://github.com/open-telemetry/). Сирі дані зберігаються в репозиторії [sig-security](https://github.com/open-telemetry/sig-security) та оновлюються щодня.
+Це список зареєстрованих Загальних вразливостей та експлойтів (CVE) у всіх репозиторіях організації [OpenTelemetry на GitHub](https://github.com/open-telemetry/). Сирі дані зберігаються в репозиторії [sig-security](https://github.com/open-telemetry/sig-security) та оновлюються щодня.
 
 <table id="cve-table">
   <thead>

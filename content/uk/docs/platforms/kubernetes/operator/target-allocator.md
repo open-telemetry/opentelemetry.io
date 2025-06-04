@@ -4,6 +4,7 @@ description:
   Інструмент для розподілу цілей PrometheusReceiver на всі розгорнуті екземпляри Колектора
 cSpell:ignore: labeldrop labelmap statefulset
 weight: 20
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Оператор OpenTelemetry постачається з додатковим компонентом, [Розподільник Цілей](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator) (Target Allocator, TA). Коротко кажучи, TA є механізмом для розʼєднання функцій виявлення сервісів та збору метрик Prometheus таким чином, щоб їх можна було масштабувати незалежно. Колектор керує метриками Prometheus без необхідності встановлювати Prometheus. TA керує конфігурацією Prometheus Receiver Колектора.

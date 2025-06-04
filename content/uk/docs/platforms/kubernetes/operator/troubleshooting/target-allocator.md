@@ -2,6 +2,8 @@
 title: Розподільник цілей
 cSpell:ignore: bleh targetallocator
 weight: 30
+cSpell:ignore: podmonitor podmonitorselector
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Якщо ви ввімкнули [Розподільник цілей](/docs/platforms/kubernetes/operator/target-allocator/) для виявлення сервісів у [OpenTelemetry Operator](/docs/platforms/kubernetes/operator), і Розподільник цілей не може виявити цілі для збору метрик, є кілька кроків для усунення несправностей, які ви можете виконати, щоб зрозуміти, що відбувається, і відновити нормальну роботу.

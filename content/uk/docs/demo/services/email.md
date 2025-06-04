@@ -3,6 +3,7 @@ title: Сервіс електронної пошти
 linkTitle: Електронна пошта
 aliases: [emailservice]
 cSpell:ignore: sinatra
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Цей сервіс надсилатиме підтвердження електронною поштою користувачу, коли замовлення буде розміщено.

@@ -3,6 +3,7 @@ title: Загальна конфігурація SDK
 linkTitle: Загальна
 aliases: [general-sdk-configuration]
 cSpell:ignore: ottrace
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 {{% alert title="Примітка" color="info" %}}
@@ -92,7 +93,7 @@ export OTEL_TRACES_SAMPLER_ARG="0.5"
 
 `export OTEL_PROPAGATORS="b3"`
 
-Прийняті значення для `OTЕЛ_PROPAGATORS`:
+Прийняті значення для `OTEL_PROPAGATORS`:
 
 - `"tracecontext"`: [W3C Trace Context](https://www.w3.org/TR/trace-context/)
 - `"baggage"`: [W3C Baggage](https://www.w3.org/TR/baggage/)

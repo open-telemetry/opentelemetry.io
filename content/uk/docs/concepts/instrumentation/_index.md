@@ -3,6 +3,7 @@ title: Інструментування
 description: Як OpenTelemetry сприяє інструментуванню
 aliases: [instrumenting]
 weight: 15
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Для того, щоб система була [спостережуваною][observable], її необхідно **інструментувати**: тобто код компонентів системи повинен генерувати [сигнали][signals], [трейси][traces], [метрики][metrics] та [логи][logs].

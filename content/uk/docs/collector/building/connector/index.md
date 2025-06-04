@@ -3,7 +3,8 @@ title: Створення Конектора
 aliases: [/docs/collector/build-connector/]
 weight: 30
 # prettier-ignore
-cSpell:ignore: batchprocessor debugexporter Errorf exampleconnector gomod gord Jaglowski loggingexporter mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber
+cSpell:ignore: batchprocessor debugexporter Errorf exampleconnector gomod gord Jaglowski loggingexporter mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber configgo
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 ## Конектори в OpenTelemetry {#connectors-in-opentelemetry}
@@ -84,7 +85,7 @@ service:
 
     Це створить файли `go.mod` і `go.sum`.
 
-4.  Створіть наступні файли в папці
+4.  Створіть наступні файли в теці
     - `config.go` - файл для визначення налаштувань конектора
     - `factory.go` - файл для створення екземплярів конектора
 
@@ -141,7 +142,7 @@ func (c *Config) Validate() error {
     }
     ```
 
-3.  Визначте тип конектора, з яким ви будете працювати. Це буде передано як опція фабрики. Конектор може зʼєднувати конвеєри різних або подібних типів. Ми повинні визначити тип експортованого кінця конектора і приймаючого кінця конектора. Конектор, який експортує трейси і приймає метрики, є лише однією окремою конфігурацією компонента конектора, і порядок визначення має значення. Конектор, який експортує трейси і приймає метрики, не є тим самим, що і конектор, який може експортувати метрики і приймати трейси.
+3.  Визначте тип конектора, з яким ви будете працювати. Це буде передано як опція фабрики. Конектор може зʼєднувати конвеєри різних або подібних типів. Ми повинні визначити тип експортованого кінця конектора і приймального кінця конектора. Конектор, який експортує трейси і приймає метрики, є лише однією окремою конфігурацією компонента конектора, і порядок визначення має значення. Конектор, який експортує трейси і приймає метрики, не є тим самим, що і конектор, який може експортувати метрики і приймати трейси.
 
     ```go
     // createTracesToMetricsConnector визначає тип споживача конектора
