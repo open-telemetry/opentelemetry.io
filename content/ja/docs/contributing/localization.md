@@ -3,7 +3,7 @@ title: サイトのローカリゼーション
 description: 非英語ローカリゼーションのサイトページの作成と管理
 linkTitle: ローカリゼーション
 weight: 25
-default_lang_commit: 72f768054ed4e3aaa13144ff2b256e10786faaa8
+default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
 cSpell:ignore: shortcodes
 ---
 
@@ -91,7 +91,7 @@ Markdown の[リンク定義][link definitions]の[ラベル][labels]は**翻訳
 [Hello], world! Welcome to the [OTel website][].
 
 [hello]: https://code.org/helloworld
-[OTel website]: https://opentelementry.io
+[OTel website]: https://opentelemetry.io
 ```
 
 これをフランス語に翻訳すると次のようになります。
@@ -100,7 +100,7 @@ Markdown の[リンク定義][link definitions]の[ラベル][labels]は**翻訳
 [Bonjour][hello], le monde! Bienvenue sur le [site OTel][OTel website].
 
 [hello]: https://code.org/helloworld
-[OTel website]: https://opentelementry.io
+[OTel website]: https://opentelemetry.io
 ```
 
 [labels]: https://spec.commonmark.org/0.31.2/#link-label
