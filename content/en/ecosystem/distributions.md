@@ -14,16 +14,14 @@ or end-user specific changes. You can use OpenTelemetry components without a
 distribution, but a distribution might make things easier in some cases, like
 when a vendor has specific requirements.
 
-The following list contains a sample of OpenTelemetry distributions and the
-component they customize.
+The following list contains a sample of non-collector OpenTelemetry
+distributions and the component they customize. For
+[OpenTelemetry Collector](/docs/collector/) distributions, see
+[Collector distributions](/docs/collector/distributions/).
 
 {{% alert title="Note" color="warning" %}} OpenTelemetry **does not validate or
 endorse** the third-party distributions listed below. This list is provided as a
 convenience for the community. {{% /alert %}}
-
-{{% alert title="Note" color="info" %}}For a list of both first-party and
-third-party OpenTelemetry Collector distributions, see the
-[Collector distributions page](/docs/collector/distributions/).{{% /alert %}}
 
 {{% ecosystem/distributions-table filter="non-collector" %}}
 
