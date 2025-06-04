@@ -37,8 +37,8 @@ is provided as a convenience for the community. {{% /alert %}}
 
 ## Adding your Collector distribution {#how-to-add}
 
-To have your Collector distribution listed, [submit a PR][] with an entry added to
-the [distributions list][]. The entry should include the following:
+To have your Collector distribution listed, [submit a PR][] with an entry added
+to the [distributions list][]. The entry should include the following:
 
 - Link to the main page of your distribution
 - Link to the documentation that explains how to use the distribution
