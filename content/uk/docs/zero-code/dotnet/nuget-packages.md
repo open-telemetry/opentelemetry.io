@@ -3,6 +3,7 @@ title: Використання пакунків NuGet OpenTelemetry.AutoInstrum
 linkTitle: Пакунки NuGet
 weight: 40
 cSpell:ignore: buildtasks
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Використовуйте пакунки NuGet у наступних випадках:
@@ -18,7 +19,7 @@ cSpell:ignore: buildtasks
 
 1. Ви не можете додати пакунок до проєкту застосунку. Наприклад, застосунок є стороннім і не може додати пакунок.
 1. Зменшення використання дискового простору або розміру віртуальної машини, коли кілька застосунків, які потрібно інструментувати, встановлені на одній машині. У цьому випадку ви можете використовувати одне розгортання для всіх .NET застосунків, що працюють на машині.
-1. Старий застосунко, який не можна мігрувати до [проєкту у стилі SDK](https://learn.microsoft.com/en-us/nuget/resources/check-project-format#check-the-project-format).
+1. Старий застосунок, який не можна мігрувати до [проєкту у стилі SDK](https://learn.microsoft.com/en-us/nuget/resources/check-project-format#check-the-project-format).
 
 ## Використання пакунків NuGet {#using-the-nuget-packages}
 

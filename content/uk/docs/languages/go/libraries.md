@@ -5,6 +5,7 @@ aliases:
   - /docs/languages/go/using_instrumentation_libraries
   - /docs/languages/go/automatic_instrumentation
 weight: 40
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 {{% uk/docs/languages/libraries-intro "go" %}}
@@ -13,7 +14,7 @@ weight: 40
 
 Якщо бібліотека не підтримує OpenTelemetry з коробки, ви можете використовувати [бібліотеки інструментування](/docs/specs/otel/glossary/#instrumentation-library) для генерації телеметричних даних для бібліотеки або фреймворку.
 
-Наприклад, [бібліотека інструментування для `net/http`](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp) автоматично створює [спани](/docs/concepts/signals/traces/#spans) та [метрики](/docs/concepts/signals/metrics/) на основі HTTP-запитів.
+Наприклад, [бібліотека інструментування для `net/http`](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp) автоматично створює [відрізки](/docs/concepts/signals/traces/#spans) та [метрики](/docs/concepts/signals/metrics/) на основі HTTP-запитів.
 
 ## Налаштування {#setup}
 

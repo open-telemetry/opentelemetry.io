@@ -2,6 +2,7 @@
 title: Автоінструментування
 cSpell:ignore: PYTHONPATH
 weight: 10
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Якщо ви використовуєте можливість [OpenTelemetry Operator](/docs/platforms/kubernetes/operator) робити інʼєкцію [автоінструментування](/docs/platforms/kubernetes/operator/automatic) і не бачите жодних трейсів або метрик, дотримуйтесь цих кроків з усунення несправностей, щоб зрозуміти, що відбувається.
@@ -94,7 +95,7 @@ annotations:
 kubectl describe pod <your_pod_name> -n <namespace>
 ```
 
-Де `<namespace>` — це простір імен, в якому розгорнуто ваш pod. Результуючий вивід повинен виглядати як наступний приклад, який показує, як може виглядати специфікація podʼа після інʼєкції автоінструментування:
+Де `<namespace>` — це простір імен, в якому розгорнуто ваш pod. Вивід повинен виглядати як наступний приклад, який показує, як може виглядати специфікація podʼа після інʼєкції автоінструментування:
 
 ```text
 Name:             py-otel-server-f89fdbc4f-mtsps
@@ -213,7 +214,7 @@ Events:
 kubectl get events -n <namespace>
 ```
 
-Де `<namespace>` — це простір імен, в якому розгорнуто ваш pod. Результуючий вивід повинен виглядати як наступний приклад:
+Де `<namespace>` — це простір імен, в якому розгорнуто ваш pod. Вивід повинен виглядати як наступний приклад:
 
 ```text
 53s         Normal   Created             pod/py-otel-server-7f54bf4cbc-p8wmj    Created container opentelemetry-auto-instrumentation

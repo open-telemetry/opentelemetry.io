@@ -3,7 +3,8 @@ title: Анотації
 description: Використання анотацій інструментування з Java агентом.
 aliases: [/docs/instrumentation/java/annotations]
 weight: 20
-cSpell:ignore: Flowable javac reactivestreams reactivex
+cSpell:ignore: Flowable javac reactivestreams reactivex otelinstrumentationmethodsinclude spanattribute
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Для більшості користувачів достатньо інструментування з коробки, і нічого більше робити не потрібно. Однак іноді користувачі бажають створювати [відрізки](/docs/concepts/signals/traces/#spans) для свого власного коду без значних змін у коді. Анотації `WithSpan` та `SpanAttribute` підтримують ці варіанти використання.
@@ -74,7 +75,7 @@ public class MyClass {
 | ---------------- | ----------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `value`          | `String`          | `""`            | Імʼя відрізка. Якщо не вказано, стандартно використовується `<className>.<methodName>`.                                                                  |
 | `kind`           | `SpanKind` (enum) | `INTERNAL`      | [Вид відрізка](/docs/specs/otel/trace/api/#spankind).                                                                                                    |
-| `inheritContext` | `boolean`         | `true`          | Починаючи з версії 2.14.0. Контролює, чи буде новий відрізок батьківським для існуючого (поточного) контексту. Якщо `false`, створюється новий контекст. |
+| `inheritContext` | `boolean`         | `true`          | Починаючи з версії 2.14.0. Контролює, чи буде новий відрізок батьківським для наявного (поточного) контексту. Якщо `false`, створюється новий контекст. |
 
 Приклад використання параметрів:
 

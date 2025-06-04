@@ -1,6 +1,7 @@
 ---
 title: Форк репозиторію демо
 linkTitle: Форк
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 [Демо репозиторій][demo repository] призначений для форку та використання як інструмент для демонстрації того, що ви робите з OpenTelemetry.

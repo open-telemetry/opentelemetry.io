@@ -7,7 +7,8 @@ aliases:
   - /docs/languages/ruby/context-propagation
 weight: 20
 description: Інструментування для OpenTelemetry Ruby
-cSpell:ignore: SIGHUP
+cSpell:ignore: SIGHUP потокобезпечними
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 {{% include instrumentation-intro %}}
@@ -81,7 +82,7 @@ end
 
 ### Створення вкладених відрізків {#creating-nested-spans}
 
-Якщо у вас є окрема підоперація, яку ви хочете відстежувати як частину іншої, ви можете створити вкладені [відрізки](/docs/concepts/signals/traces#spans), щоб представити це відношення:
+Якщо у вас є окрема під-операція, яку ви хочете відстежувати як частину іншої, ви можете створити вкладені [відрізки](/docs/concepts/signals/traces#spans), щоб представити це відношення:
 
 ```ruby
 require "opentelemetry/sdk"
@@ -204,7 +205,7 @@ span.add_event("Cancelled wait due to external signal", attributes: {
 
 ### Додавання посилань на відрізки {#add-span-links}
 
-[Відрізок](/docs/concepts/signals/traces#spans) може бути створений з нулем або більшою кількістю [посилань на відрізки](/docs/concepts/signals/traces#span-links), які причинно повʼязують його з іншим відрізком. Для створення посилання потрібен [контекст відрізка](/docs/concepts/signals/traces#span-context).
+[Відрізок](/docs/concepts/signals/traces#spans) може бути створений з нулем або більшою кількістю [посилань на відрізки](/docs/concepts/signals/traces#span-links), які повʼязують його з іншим відрізком. Для створення посилання потрібен [контекст відрізка](/docs/concepts/signals/traces#span-context).
 
 ```ruby
 require "opentelemetry/sdk"

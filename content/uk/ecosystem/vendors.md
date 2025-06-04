@@ -2,6 +2,8 @@
 title: Постачальники
 description: Постачальники, які нативно підтримують OpenTelemetry
 aliases: [/vendors]
+cSpell:ignore: хостять
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Невичерпний список організацій, що пропонують рішення, які нативно використовують OpenTelemetry через [OTLP](/docs/specs/otlp/), такі як бекенди для спостереження та конвеєри для спостереження.

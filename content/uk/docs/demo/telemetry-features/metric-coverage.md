@@ -2,6 +2,7 @@
 title: Покриття Метрик за Сервісами
 linkTitle: Покриття Метрик
 aliases: [metric_service_features, metric-features, ../metric-features]
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 | Сервіс          | Мова       | Бібліотеки Інструментів   | Ручна Інструменталізація | Кілька Інструментів | Види  | Користувацькі Атрибути | Виявлення Ресурсів | Екземпляри |

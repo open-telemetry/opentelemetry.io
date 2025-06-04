@@ -3,6 +3,7 @@ title: Усунення несправностей
 description: Рекомендації щодо усунення несправностей в роботі Колектора
 weight: 25
 cSpell:ignore: confmap pprof tracez zpages
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Тут ви дізнаєтеся, як усувати проблеми, пов’язані зі станом і продуктивністю OpenTelemetry Collector.

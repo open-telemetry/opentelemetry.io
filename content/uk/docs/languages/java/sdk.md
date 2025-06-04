@@ -3,6 +3,7 @@ title: Керування телеметрією за допомогою SDK
 weight: 12
 aliases: [exporters]
 cSpell:ignore: autoconfigured FQCNs Interceptable Logback okhttp
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -118,7 +119,7 @@ public class ResourceConfig {
 - [Sampler](#sampler): Налаштовує, які відрізки записуються та семплюються.
 - [SpanProcessors](#spanprocessor): Обробляє відрізки, коли вони починаються та закінчуються.
 - [SpanExporters](#spanexporter): Експортує відрізки за межі процесу (у поєднанні з відповідними `SpanProcessor`).
-- [SpanLimits](#spanlimits): Контролює обмеження даних, повʼязаних зі спанами.
+- [SpanLimits](#spanlimits): Контролює обмеження даних, повʼязаних з відрізками.
 
 Наступний фрагмент коду демонструє програмну конфігурацію `SdkTracerProvider`:
 
@@ -149,13 +150,13 @@ public class SdkTracerProviderConfig {
 
 [Sampler](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/samplers/Sampler.html) є [інтерфейсом розширення плагінів](#sdk-plugin-extension-interfaces), відповідальним за визначення, які відрізки записуються та семплюються.
 
-{{% alert color="info" %}} Стандартно `SdkTracerProvider` налаштований з семплером `ParentBased(root=AlwaysOn)`. Це призводить до того, що 100% спанів семплюються, якщо викликаючий застосунок не виконує семплінг. Якщо це занадто шумно/дорого, змініть семплер. {{% /alert %}}
+{{% alert color="info" %}} Стандартно `SdkTracerProvider` налаштований з семплером `ParentBased(root=AlwaysOn)`. Це призводить до того, що 100% відрізків семплюються, якщо застосунок, що викликає, не виконує семплінг. Якщо це занадто шумно/дорого, змініть семплер. {{% /alert %}}
 
 Семплери, вбудовані в SDK та підтримувані спільнотою в `opentelemetry-java-contrib`:
 
 | Клас                     | Артефакт                                                                                      | Опис                                                                                                                               |
 | ------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `ParentBased`             | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Семплює відрізки на основі статусу семплінгу батьківського спану.                                                                              |
+| `ParentBased`             | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Семплює відрізки на основі статусу семплінгу батьківського відрізка.                                                                              |
 | `AlwaysOn`                | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Семплює всі відрізки.                                                                                                                        |
 | `AlwaysOff`               | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Відкидає всі відрізки.                                                                                                                          |
 | `TraceIdRatioBased`       | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Семплює відрізки на основі конфігурованого співвідношення.                                                                                              |
@@ -259,7 +260,7 @@ public class CustomSampler implements Sampler {
 | Клас                     | Артефакт                                                                                    | Опис                                                               |
 | ------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `BatchSpanProcessor`      | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                | Пакує семпльовані відрізки та експортує їх через конфігурований `SpanExporter`. |
-| `SimpleSpanProcessor`     | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                | Експортує кожен семпльований спан через конфігурований `SpanExporter`.              |
+| `SimpleSpanProcessor`     | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                | Експортує кожен семпльований відрізок через конфігурований `SpanExporter`.              |
 | `BaggageSpanProcessor`    | `io.opentelemetry.contrib:opentelemetry-baggage-processor:{{% param vers.contrib %}}-alpha` | Збагачує відрізки багажем.                                              |
 | `JfrSpanProcessor`        | `io.opentelemetry.contrib:opentelemetry-jfr-events:{{% param vers.contrib %}}-alpha`        | Створює події JFR зі відрізків.                                            |
 | `StackTraceSpanProcessor` | `io.opentelemetry.contrib:opentelemetry-span-stacktrace:{{% param vers.contrib %}}-alpha`   | Збагачує вибрані відрізки даними стеку викликів.                              |
@@ -880,7 +881,7 @@ public class SdkLoggerProviderConfig {
 | -------------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
 | `BatchLogRecordProcessor`  | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                         | Пакує логи та експортує їх через конфігурований `LogRecordExporter`. |
 | `SimpleLogRecordProcessor` | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                         | Експортує кожен лог через конфігурований `LogRecordExporter`.            |
-| `EventToSpanEventBridge`   | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Записує події логів як події спанів на поточному спані.                |
+| `EventToSpanEventBridge`   | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Записує події логів як події відрізків на поточному відрізку.                |
 
 Наступний фрагмент коду демонструє програмну конфігурацію `LogRecordProcessor`:
 

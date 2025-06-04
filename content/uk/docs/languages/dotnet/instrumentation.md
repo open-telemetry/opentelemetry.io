@@ -3,7 +3,8 @@ title: Інструментування
 weight: 20
 aliases: [manual]
 description: Інструментування для OpenTelemetry .NET
-cSpell:ignore: dicelib rolldice
+cSpell:ignore: dicelib rolldice activitysource
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 {{% include instrumentation-intro %}}
@@ -544,7 +545,7 @@ activity?.AddEvent(new("End Computation", DateTimeOffset.Now, eventTags));
 
 ### Створення Activities з посиланнями {#create-activities-with-links}
 
-[Відрізок](/docs/concepts/signals/traces/#spans) може бути повʼязаний з нулем або більше інших Відрізків, які є причинно повʼязаними через [Span Link](/docs/concepts/signals/traces/#span-links). Посилання можуть використовуватися для представлення пакетних операцій, де Відрізок був ініційований кількома ініціюючими Відрізками, кожен з яких представляє один вхідний елемент, що обробляється в пакеті.
+[Відрізок](/docs/concepts/signals/traces/#spans) може бути повʼязаний з нулем або більше інших Відрізків, які є повʼязаними через [Span Link](/docs/concepts/signals/traces/#span-links). Посилання можуть використовуватися для представлення пакетних операцій, де Відрізок був ініційований кількома ініціюючими Відрізками, кожен з яких представляє один вхідний елемент, що обробляється в пакеті.
 
 ```csharp
 var links = new List<ActivityLink>

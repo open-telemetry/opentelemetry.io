@@ -2,6 +2,7 @@
 title: Найкращі практики хостингу Collector
 linkTitle: Хостинг Collector
 weight: 115
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Під час налаштування хостингу для OpenTelemetry (OTel) Collector враховуйте ці найкращі практики для кращого захисту вашого хостинг-екземпляра.

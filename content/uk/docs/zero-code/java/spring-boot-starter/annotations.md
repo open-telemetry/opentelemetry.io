@@ -1,6 +1,7 @@
 ---
 title: Анотації
 weight: 50
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -100,8 +101,8 @@ dependencies {
 
 | Назва   | Тип        | Опис                | Стандартне значення |
 | ------- | ---------- | ------------------- | ------------------------- |
-| `value` | `String`   | Назва спану         | ClassName.Method          |
-| `kind`  | `SpanKind` | Тип спану           | `SpanKind.INTERNAL`       |
+| `value` | `String`   | Назва відрізку      | ClassName.Method          |
+| `kind`  | `SpanKind` | Тип відрізку        | `SpanKind.INTERNAL`       |
 
 Ви можете встановити назву атрибута за допомогою елемента `value` анотації `SpanAttribute`:
 

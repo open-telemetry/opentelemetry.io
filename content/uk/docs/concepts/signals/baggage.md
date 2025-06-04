@@ -2,6 +2,7 @@
 title: Baggage
 weight: 4
 description: Контекстна інформація, яка передається між сигналами.
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 В OpenTelemetry Baggage — це контекстна інформація, яка знаходиться поруч з контекстом. Baggage — це сховище ключ-значення, що дозволяє [поширювати](../../context-propagation/#propagation) будь-які дані, які вам подобаються, поряд з [контекстом](../../context-propagation/#context).

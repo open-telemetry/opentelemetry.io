@@ -3,6 +3,7 @@ title: Початок роботи
 weight: 10
 # prettier-ignore
 cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace strconv
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -117,7 +118,7 @@ go get "go.opentelemetry.io/otel" \
 
 ### Ініціалізація SDK OpenTelemetry {#initialize-the-opentelemetry-sdk}
 
-Спочатку ми ініціалізуємо SDK OpenTelemetry. Це _обов'язково_ для будь-якого застосуунку, який експортує телеметрію.
+Спочатку ми ініціалізуємо SDK OpenTelemetry. Це _обов'язково_ для будь-якого застосунку, який експортує телеметрію.
 
 Створіть `otel.go` з кодом для завантаження SDK OpenTelemetry:
 
@@ -428,7 +429,7 @@ export OTEL_RESOURCE_ATTRIBUTES="service.name=dice,service.version=0.1.0"
 go run .
 ```
 
-Відкрийте <http://localhost:8080/rolldice/Alice> у вашому вебоглядачі. Коли ви надішлете запит до сервера, ви побачите два відрізки у трейсі, що виводяться в консоль. Відрізок, створений бібліотекою інструментів, відстежує тривалість запиту до маршруту `/rolldice/{player}`. Відрізок з назвою `roll` створюється вручну і є дочірнім до попередньо згаданого відірзка.
+Відкрийте <http://localhost:8080/rolldice/Alice> у вашому вебоглядачі. Коли ви надішлете запит до сервера, ви побачите два відрізки у трейсі, що виводяться в консоль. Відрізок, створений бібліотекою інструментів, відстежує тривалість запиту до маршруту `/rolldice/{player}`. Відрізок з назвою `roll` створюється вручну і є дочірнім до попередньо згаданого відрізка.
 
 <details>
 <summary>Переглянути приклад виводу</summary>

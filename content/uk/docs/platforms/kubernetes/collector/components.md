@@ -3,6 +3,7 @@ title: Важливі для Kubernetes компоненти
 linkTitle: Компоненти
 # prettier-ignore
 cSpell:ignore: alertmanagers filelog horizontalpodautoscalers hostfs hostmetrics k8sattributes kubelet kubeletstats replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 [OpenTelemetry Collector](/docs/collector/) підтримує багато різних приймачів та процесорів для полегшення моніторингу Kubernetes. У цьому розділі розглядаються компоненти, які є найважливішими для збору даних Kubernetes та їх покращення.
@@ -544,7 +545,7 @@ Prometheus є загальним форматом метрик як для Kuber
 | Deployment (шлюз)    | Так, але буде збирати метрики лише з вузла, на якому він розгорнутий     |
 | Sidecar              | Ні                                                                       |
 
-Приймач метрик хосту збирає метрики з хосту, використовуючи різні скрепери. Існує деякий перетин з [Приймачем kubeletstats](#kubeletstats-receiver), тому якщо ви вирішите використовувати обидва, можливо, варто відключити ці дублюючі метрики.
+Приймач метрик хосту збирає метрики з хосту, використовуючи різні скрепери. Існує деякий перетин з [Приймачем kubeletstats](#kubeletstats-receiver), тому якщо ви вирішите використовувати обидва, можливо, варто відключити ці метрики, що дублюють одна одну.
 
 У Kubernetes приймач потребує доступу до тому `hostfs` для коректної роботи. Якщо ви використовуєте [Helm чарт OpenTelemetry Collector](../../helm/collector/), ви можете використовувати [пресет `hostMetrics`](../../helm/collector/#host-metrics-preset) для початку роботи.
 

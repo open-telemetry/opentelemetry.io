@@ -1,6 +1,7 @@
 ---
 title: Чарт OpenTelemetry Demo
 linkTitle: Чарт Demo
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 [Demo OpenTelemetry](/docs/demo/) — це розподілена система на основі мікросервісів, призначена для ілюстрації впровадження OpenTelemetry в умовах, близьких до реальних. В рамках цього проєкту спільнота OpenTelemetry створила [Helm чарт OpenTelemetry Demo](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-demo), для легкого встановлення в Kubernetes.

@@ -2,6 +2,7 @@
 title: Інші автоконфігурації Spring
 weight: 70
 cSpell:ignore: autoconfigurations
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->

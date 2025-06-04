@@ -5,6 +5,7 @@ description: >
   alt=".NET"> Специфічна для мови реалізація OpenTelemetry в .NET.
 aliases: [net, /csharp, /csharp/metrics, /csharp/tracing]
 weight: 12
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 {{% docs/languages/index-intro dotnet /%}}

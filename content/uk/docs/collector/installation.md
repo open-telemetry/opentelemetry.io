@@ -2,6 +2,7 @@
 title: Встановлення Колектора
 weight: 2
 cSpell:ignore: darwin dpkg journalctl kubectl otelcorecol pprof tlsv zpages
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Ви можете розгорнути OpenTelemetry Collector в різних операційних системах та архітектурах. Наступні інструкції показують, як завантажити та встановити останню стабільну версію Колектора.

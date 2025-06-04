@@ -4,9 +4,10 @@ linkTitle: Придушення інструментації
 weight: 11
 # prettier-ignore
 cSpell:ignore: akka armeria clickhouse couchbase datasource dbcp Dotel dropwizard dubbo finatra hikari hikaricp httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jodd kotlinx ktor logback logmanager mojarra mybatis myfaces okhttp oshi pekko rabbitmq ratpack rediscala redisson restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
-## Вимкнення агента повністю {#disabling-agent-enitrely}
+## Вимкнення агента повністю {#disabling-agent-entirely}
 
 {{% config_option name="otel.javaagent.enabled" %}}
 
@@ -225,7 +226,7 @@ Java агент запобігає цим ситуаціям, виявляючи
 
 Інструментації як Reactor Netty, так і Netty будуть придушені, оскільки вони також створюють `CLIENT` відрізки.
 
-Нарешті, використання стратегії придушення `none` призведе до 3 спанів:
+Нарешті, використання стратегії придушення `none` призведе до 3 відрізків:
 
 - `CLIENT` відрізок з семантичними атрибутами клієнта бази даних, створений інструментацією клієнта бази даних;
 - `CLIENT` відрізок з семантичними атрибутами клієнта HTTP, створений інструментацією Reactor Netty;

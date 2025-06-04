@@ -3,6 +3,7 @@ title: Інструментування
 weight: 30
 aliases: [manual]
 description: Інструментування для OpenTelemetry Swift
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 {{% include instrumentation-intro %}}

@@ -1,6 +1,8 @@
 ---
 title: Семплювання
 weight: 80
+cSpell:ignore: traceidratiobased
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 [Семплювання](/docs/concepts/sampling/) — це процес, який обмежує кількість трейсів, що генеруються системою. Ruby SDK пропонує кілька [головних семплерів](/docs/concepts/sampling#head-sampling).
