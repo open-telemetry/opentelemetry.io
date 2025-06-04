@@ -69,7 +69,8 @@ Lambda レイヤーは、Ruby 3.2 と 3.3 の Lambda ランタイムをサポー
 
 ### `AWS_LAMBDA_EXEC_WRAPPER` を設定する {#configure-aws_lambda_exec_wrapper}
 
-Node.js、Java、Ruby、Pythonの場合は `AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler` 、アプリケーションのエントリーポイントを変更します。
+Node.js、Java、Ruby、Pythonの場合は `AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler`、
+アプリケーションのエントリーポイントを変更します
 これらのラッパースクリプトは、自動計装を適用したLambdaアプリケーションを起動します。
 
 ### 計装LambdaレイヤーのARNを追加する {#add-the-arn-of-instrumentation-lambda-layer}
