@@ -15,4 +15,4 @@ createdAt: 2022-12-07
 package:
   registry: npm
   name: '@opentelemetry/resource-detector-aws'
-  version: 2.0.0
+  version: 2.2.0

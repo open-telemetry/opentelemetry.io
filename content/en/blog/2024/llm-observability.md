@@ -118,8 +118,7 @@ Before we begin, make sure you have the following running in your environment:
 
 ### Setting Up the OpenTelemetry Collector
 
-First, install the OpenTelemetry Collector. You can find how to do this in the
-installation guide [here](/docs/collector/installation/).
+First, [install the OpenTelemetry Collector](/docs/collector/installation/).
 
 ### Configuring the Collector
 
@@ -229,9 +228,8 @@ any tool of your choice to visualize this data:
 
 #### Add the dashboard
 
-To make things easy, you can use the dashboard the OpenLIT team made. Just grab
-the JSON from
-[here](https://docs.openlit.io/latest/connections/prometheus-jaeger#dashboard).
+To make things easy, you can use
+[the OpenLIT's dashboard](https://docs.openlit.io/latest/connections/prometheus-jaeger#dashboard).
 
 This guide showed you how to use OpenTelemetry, Prometheus, Jaeger, and Grafana
 to monitor your LLM Applications.

@@ -247,6 +247,6 @@ Para mais detalhes sobre registros de log e campos de log, consulte
 ### Especificação {#specification}
 
 Para saber mais sobre logs no OpenTelemetry, consulte a [especificação de
-logs][].
+logs][logs specification].
 
-[especificação de logs]: /docs/specs/otel/overview/#log-signal
+[logs specification]: /docs/specs/otel/overview/#log-signal

@@ -22,8 +22,8 @@ auto-instrumentation of logs. The example below is based on the logs example in
 > There is a logs bridge API; however, it is different from the Traces and
 > Metrics API, because it's not used by application developers to create logs.
 > Instead, they would use this bridge API to setup log appenders in the standard
-> language-specific logging libraries. More information can be found
-> [here](/docs/specs/otel/logs/api/).
+> language-specific logging libraries. For more information, see
+> [Logs API](/docs/specs/otel/logs/api/).
 
 Start by creating the examples directory and the example Python file:
 
@@ -50,9 +50,9 @@ with tracer.start_as_current_span("foo"):
     logging.getLogger().error("This is a log message")
 ```
 
-Grab a copy of the OTel Collector configuration from
-[here](https://github.com/open-telemetry/opentelemetry-python/blob/main/docs/examples/logs/otel-collector-config.yaml),
-and save it to `python-logs-example/otel-collector-config.yaml`
+Open and copy the
+[otel-collector-config.yaml](https://github.com/open-telemetry/opentelemetry-python/blob/main/docs/examples/logs/otel-collector-config.yaml)
+example, and save it to `python-logs-example/otel-collector-config.yaml`
 
 ## Prepare
 

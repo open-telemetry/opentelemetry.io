@@ -1,26 +1,25 @@
 ---
-title: Distributions
+title: Third-party distributions
+linkTitle: Distributions
 description:
   List of open source OpenTelemetry distributions maintained by third parties.
 ---
 
-OpenTelemetry [distributions](/docs/concepts/distributions/) are a way of
-customizing OpenTelemetry components so that they're easier to deploy and use
-with specific observability backends.
+OpenTelemetry [distributions] are a way of customizing OpenTelemetry
+[components] so that they're easier to deploy and use with specific
+observability backends.
 
-Any third-party can customize OpenTelemetry components with backend, vendor, or
-end-user specific changes. You don't have to use a distributions in order to use
-OpenTelemetry components, though distributions might facilitate usage under
-certain circumstances, such as specific vendor requirements.
+Any third-party can customize OpenTelemetry components with backend, [vendor],
+or end-user specific changes. You can use OpenTelemetry components without a
+distribution, but a distribution might make things easier in some cases, like
+when a vendor has specific requirements.
 
-The following list contains a sample of OpenTelemetry distributions and the
-component they customize.
+The following list contains a sample of non-collector OpenTelemetry
+distributions and the component they customize. For
+[OpenTelemetry Collector](/docs/collector/) distributions, see
+[Collector distributions](/docs/collector/distributions/).
 
-{{% alert title="Note" color="warning" %}} OpenTelemetry **does not validate or
-endorse** the third-party distributions listed in the following table. The list
-is provided as a convenience for the community. {{% /alert %}}
-
-{{% ecosystem/distributions-table %}}
+{{% ecosystem/distributions-table filter="non-collector" %}}
 
 ## Adding your distribution {#how-to-add}
 
@@ -50,5 +49,8 @@ To have your distribution listed, [submit a PR] with an entry added to the
 
 {{% include keep-up-to-date.md distribution %}}
 
+[components]: /docs/concepts/components/
+[distributions]: /docs/concepts/distributions/
 [distributions list]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/distributions.yaml
+[vendor]: ../vendors/

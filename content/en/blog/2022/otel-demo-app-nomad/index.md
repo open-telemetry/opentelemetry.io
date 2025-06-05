@@ -48,8 +48,8 @@ Below are the repositories that we’ll be using for today’s tutorial:
 
 - My modified [HashiQube Repository](https://github.com/avillela/hashiqube)
   (fork of [servian/hashiqube](https://github.com/servian/hashiqube)). If you’re
-  curious, you can see what modifications I’ve made
-  [here](https://github.com/avillela/hashiqube).
+  curious, you can see
+  [the modifications I’ve made to hashiqube](https://github.com/avillela/hashiqube/commits).
 - My [Nomad Conversions](https://github.com/avillela/nomad-conversions)
   repository
 
@@ -91,8 +91,8 @@ to add the following entries to `/etc/hosts` on your host machine:
 
 #### 2- Provision a Local Hashi Environment with HashiQube
 
-Start HashiQube by following the detailed instructions
-[here](https://github.com/avillela/hashiqube#quickstart).
+Start HashiQube by following the detailed
+[Quickstart instructions](https://github.com/avillela/hashiqube#quickstart).
 
 > **NOTE:** Be sure to check out the
 > [Gotchas](https://github.com/avillela/hashiqube#gotchas) section, if you get

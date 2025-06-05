@@ -2,8 +2,7 @@
 title: Exporters
 weight: 50
 description: Processar e exportar seus dados de telemetria
-default_lang_commit: 546f3e88ca3673de8aad69358d416256d1fe6411 # patched
-drifted_from_default: true
+default_lang_commit: dc20c29a4c79ad0424c0fcc3271216af7e035d9b
 cSpell:ignore: LOWMEMORY
 ---
 
@@ -59,7 +58,7 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 
 # Nome do serviço é necessário para a maioria dos backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 
@@ -91,7 +90,7 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 
 # Nome do serviço é necessário para a maioria dos backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 
@@ -131,7 +130,7 @@ from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader, Cons
 # Nome do serviço é necessário para a maioria dos backends,
 # e embora não seja necessário para exportação no console,
 # é bom definir o nome do serviço de qualquer maneira.
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 
@@ -219,7 +218,7 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
 # Nome do serviço é necessário para a maioria dos backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 
@@ -274,7 +273,7 @@ from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 
@@ -295,7 +294,7 @@ from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 

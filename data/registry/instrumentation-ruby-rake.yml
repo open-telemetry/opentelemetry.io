@@ -17,5 +17,5 @@ createdAt: 2022-10-27
 package:
   registry: gems
   name: opentelemetry-instrumentation-rake
-  version: 0.3.0
+  version: 0.3.1
 isFirstParty: false

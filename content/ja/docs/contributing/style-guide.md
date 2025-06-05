@@ -3,7 +3,7 @@ title: ドキュメントスタイルガイド
 description: OpenTelemetry のドキュメントを書く際の用語とスタイル。
 linkTitle: スタイルガイド
 weight: 20
-default_lang_commit: 35fde3d29a49ddea001ef99ffcbbe702a003e70f
+default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
 cSpell:ignore: open-telemetry postgre style-guide textlintrc
 ---
 

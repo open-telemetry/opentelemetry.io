@@ -18,7 +18,7 @@ this language entering the “dictionary” of observability—the
 [OpenTelemetry open specification](/docs/specs/otel/). With the recent release
 of OpenTelemetry’s [Semantic Conventions](/docs/specs/semconv/), v1.27.0, you
 can find
-[designated attributes for reporting CI/CD pipelines](/docs/specs/semconv/attributes-registry/cicd/).
+[designated attributes for reporting CI/CD pipelines](/docs/specs/semconv/registry/attributes/cicd/).
 
 This is the result of the hard work of the
 [CI/CD Observability Special Interest Group (SIG) within OpenTelemetry](https://github.com/open-telemetry/community/blob/main/projects/ci-cd.md).
@@ -141,7 +141,7 @@ real world examples for two of the namespaces.
 
 ### Tracking release revisions from Version Control Systems (VCS)
 
-[Version Control System (VCS) attributes](/docs/specs/semconv/attributes-registry/vcs/)
+[Version Control System (VCS) attributes](/docs/specs/semconv/registry/attributes/vcs/)
 cover multiple areas common in a VCS like refs and changes (pull/merge
 requests). The `vcs.repository.ref.revision` attribute is a key piece of
 metadata. As Version Control Systems like GitHub and GitLab emit events, they
@@ -156,7 +156,7 @@ calculate Change lead time and Failed deployment recovery time.
 ### Artifacts for supply chain security, aligned with the SLSA specification
 
 The
-[artifact attribute namespace](/docs/specs/semconv/attributes-registry/artifact/)
+[artifact attribute namespace](/docs/specs/semconv/registry/attributes/artifact/)
 had multiple attributes for its first implementation. One key set of attributes
 within this namespace cover [attestations](https://slsa.dev/attestation-model)
 that closely align with the [SLSA](https://slsa.dev/spec/v1.0/about) model. This
