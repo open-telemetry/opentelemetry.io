@@ -119,4 +119,4 @@ For the full list, see the
 ## Troubleshooting
 
 For general troubleshooting steps and solutions to specific issues, see
-[Troubleshooting](./troubleshooting).
+[Troubleshooting](./troubleshooting/).
