@@ -220,6 +220,22 @@ The Collector emits internal metrics for at least the following values:
 
 A more detailed list is available in the following sections.
 
+### Metric names
+
+Metrics names may be altered slightly with a suffix appended or by replacing a dot (`.`) with an underscore (`_`) .
+
+#### `_total` suffix appended
+
+By default and unique to Prometheus, the Prometheus exporter adds a `_total` suffix to summation metrics to follow Prometheus naming conventions. For example,  `otelcol_exporter_send_failed_spans_total`. 
+However in the list of internal metrics within this document, metrics are listed in OTLP format, such as `otelcol_exporter_send_failed_spans`. 
+
+This behavior can be disabled by setting `without_type_suffix: false` in the exporter's configuration. Any internal metrics exported through OTLP do not have this behavior.
+If you leave out `service::telemetry::metrics::readers` in the Collector config, the default Prometheus exporter set up by the Collector already has `without_type_suffix` set to `false`. However, if you customize the readers and add a Prometheus exporter manually, you must set that option to return to the "raw" metric name. For more information, see the [Collector v1.25.0/v0.119.0 release notes](https://github.com/codeboten/opentelemetry-collector/blob/313167505b44e5dc9a29c0b9242cc4547db11ec3/CHANGELOG.md#v1250v01190).
+
+#### Prometheus escaped characters
+
+`http_` and `rpc_` metrics come from instrumentation libraries. Prior to Collector v0.120.0, internal metrics exposed with Prometheus changed dots (`.`) to underscores (`_`) to match Prometheus naming constraints. Versions 0.120.0 and later of the Collector use Prometheus 3.0 scrapers, so the original 'http_` and `rpc_` metric names with dots are preserved. For more information, see the [Collector v0.120.0 release notes](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/CHANGELOG.md#v01200).
+
 ### Lists of internal metrics
 
 The following tables group each internal metric by level of verbosity: `basic`,
