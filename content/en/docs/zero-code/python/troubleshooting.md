@@ -2,7 +2,6 @@
 title: Troubleshooting Python automatic instrumentation issues
 linkTitle: Troubleshooting
 weight: 40
-aliases: [/docs/languages/python/automatic/troubleshooting]
 ---
 
 ## Installation issues
