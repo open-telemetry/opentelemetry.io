@@ -833,6 +833,12 @@ maintainers:
       - proto-go-maintainers
     html_url: https://github.com/MikeGoldsmith
     avatar_url: https://avatars.githubusercontent.com/u/3481731?v=4
+  - name: mmanciop
+    teams:
+      - injector-approvers
+      - injector-maintainers
+    html_url: https://github.com/mmanciop
+    avatar_url: https://avatars.githubusercontent.com/u/14020598?v=4
   - name: MovieStoreGuy
     teams:
       - collector-contrib-approvers
@@ -1070,6 +1076,13 @@ maintainers:
       - ruby-maintainers
     html_url: https://github.com/robertlaurin
     avatar_url: https://avatars.githubusercontent.com/u/23463253?v=4
+  - name: RomainMuller
+    teams:
+      - go-compile-instrumentation-approvers
+      - go-compile-instrumentation-maintainers
+      - go-compile-instrumentation-triagers
+    html_url: https://github.com/RomainMuller
+    avatar_url: https://avatars.githubusercontent.com/u/411689?v=4
   - name: RonFed
     teams:
       - go-instrumentation-approvers
@@ -1780,13 +1793,12 @@ approvers:
       - docs-zh-approvers
     html_url: https://github.com/my-git9
     avatar_url: https://avatars.githubusercontent.com/u/76980726?v=4
-  - name: naseemkullah
+  - name: NameHaibinZhang
     teams:
-      - javascript-approvers
-      - javascript-contrib-triagers
-      - javascript-triagers
-    html_url: https://github.com/naseemkullah
-    avatar_url: https://avatars.githubusercontent.com/u/24660299?v=4
+      - go-compile-instrumentation-approvers
+      - go-compile-instrumentation-triagers
+    html_url: https://github.com/NameHaibinZhang
+    avatar_url: https://avatars.githubusercontent.com/u/30917104?v=4
   - name: nirga
     teams:
       - opentelemetry-python-contrib-approvers
@@ -1869,12 +1881,6 @@ approvers:
       - semconv-system-approvers
     html_url: https://github.com/rogercoll
     avatar_url: https://avatars.githubusercontent.com/u/33873530?v=4
-  - name: RomainMuller
-    teams:
-      - go-compile-instrumentation-approvers
-      - go-compile-instrumentation-triagers
-    html_url: https://github.com/RomainMuller
-    avatar_url: https://avatars.githubusercontent.com/u/411689?v=4
   - name: samiura
     teams:
       - network-approvers
@@ -2081,6 +2087,11 @@ triagers:
       - java-contrib-triagers
     html_url: https://github.com/anosek-an
     avatar_url: https://avatars.githubusercontent.com/u/58341384?v=4
+  - name: axw
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/axw
+    avatar_url: https://avatars.githubusercontent.com/u/843579?v=4
   - name: bacherfl
     teams:
       - collector-contrib-triagers
@@ -2168,6 +2179,12 @@ triagers:
       - java-contrib-triagers
     html_url: https://github.com/Mrod1598
     avatar_url: https://avatars.githubusercontent.com/u/14144136?v=4
+  - name: naseemkullah
+    teams:
+      - javascript-contrib-triagers
+      - javascript-triagers
+    html_url: https://github.com/naseemkullah
+    avatar_url: https://avatars.githubusercontent.com/u/24660299?v=4
   - name: obecny
     teams:
       - javascript-contrib-triagers
@@ -2357,6 +2374,9 @@ members:
   - name: DotSpy
     html_url: https://github.com/DotSpy
     avatar_url: https://avatars.githubusercontent.com/u/11577813?v=4
+  - name: douglascamata
+    html_url: https://github.com/douglascamata
+    avatar_url: https://avatars.githubusercontent.com/u/159076?v=4
   - name: edsoncelio
     html_url: https://github.com/edsoncelio
     avatar_url: https://avatars.githubusercontent.com/u/5833278?v=4
