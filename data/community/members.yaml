@@ -203,6 +203,7 @@ maintainers:
       - docs-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
+      - docs-triagers
       - sig-developer-experience-approvers
       - sig-developer-experience-maintainers
       - sig-project-infra-approvers
@@ -309,6 +310,7 @@ maintainers:
       - docs-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
+      - docs-triagers
       - docs-zh-approvers
       - docs-zh-maintainers
     html_url: https://github.com/cartermp
@@ -327,6 +329,7 @@ maintainers:
       - docs-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
+      - docs-triagers
       - docs-zh-approvers
       - docs-zh-maintainers
     html_url: https://github.com/chalin
@@ -818,6 +821,7 @@ maintainers:
   - name: maryliag
     teams:
       - docs-pt-approvers
+      - docs-triagers
       - javascript-approvers
       - javascript-contrib-triagers
       - javascript-triagers
@@ -1146,6 +1150,7 @@ maintainers:
       - docs-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
+      - docs-triagers
       - docs-zh-approvers
       - docs-zh-maintainers
       - sig-contributor-experience-approvers
@@ -1163,6 +1168,7 @@ maintainers:
   - name: tedsuo
     teams:
       - docs-approvers
+      - docs-triagers
       - sandbox-web-js-maintainers
       - semconv-browser-approvers
       - semconv-client-approvers
@@ -1186,6 +1192,7 @@ maintainers:
       - docs-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
+      - docs-triagers
       - sig-contributor-experience-approvers
       - sig-contributor-experience-maintainers
     html_url: https://github.com/theletterf
@@ -1204,6 +1211,7 @@ maintainers:
       - docs-bn-approvers
       - docs-bn-maintainers
       - docs-maintainers
+      - docs-triagers
     html_url: https://github.com/tiffany76
     avatar_url: https://avatars.githubusercontent.com/u/30397949?v=4
   - name: tigrannajaryan
@@ -1549,6 +1557,7 @@ approvers:
   - name: emdneto
     teams:
       - docs-pt-approvers
+      - docs-triagers
       - opentelemetry-python-contrib-approvers
       - python-approvers
     html_url: https://github.com/emdneto
@@ -1556,6 +1565,7 @@ approvers:
   - name: EzzioMoreira
     teams:
       - docs-pt-approvers
+      - docs-triagers
     html_url: https://github.com/EzzioMoreira
     avatar_url: https://avatars.githubusercontent.com/u/18507157?v=4
   - name: Fahmy-Mohammed
@@ -1759,6 +1769,7 @@ approvers:
   - name: mhausenblas
     teams:
       - docs-approvers
+      - docs-triagers
     html_url: https://github.com/mhausenblas
     avatar_url: https://avatars.githubusercontent.com/u/52594?v=4
   - name: mjwolf
@@ -1998,6 +2009,7 @@ approvers:
   - name: vitorvasc
     teams:
       - docs-pt-approvers
+      - docs-triagers
     html_url: https://github.com/vitorvasc
     avatar_url: https://avatars.githubusercontent.com/u/12118857?v=4
   - name: vvydier
@@ -2039,6 +2051,7 @@ approvers:
   - name: ymotongpoo
     teams:
       - docs-ja-approvers
+      - docs-triagers
     html_url: https://github.com/ymotongpoo
     avatar_url: https://avatars.githubusercontent.com/u/145104?v=4
   - name: yuriolisa
@@ -2551,6 +2564,9 @@ members:
   - name: mauriciovasquezbernal
     html_url: https://github.com/mauriciovasquezbernal
     avatar_url: https://avatars.githubusercontent.com/u/13031921?v=4
+  - name: maxday
+    html_url: https://github.com/maxday
+    avatar_url: https://avatars.githubusercontent.com/u/864493?v=4
   - name: maynk
     html_url: https://github.com/maynk
     avatar_url: https://avatars.githubusercontent.com/u/9286568?v=4
