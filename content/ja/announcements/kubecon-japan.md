@@ -1,9 +1,10 @@
 ---
 title: KubeCon + CloudNativeCon Japan 2025
 linkTitle: KubeCon Japan 2025
-date: 2025-05-20
+date: 2025-06-11 # Show once combined banner is hidden
 expiryDate: 2025-06-17 # keep
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+weight: 20250616
+default_lang_commit: dcd079d98e749febcefd4d7bb1da361770ec8ed3
 ---
 
 <i class="fas fa-bullhorn"></i> [**{{% param title %}}**][LF]が **6月16・17日に東京で開催**
