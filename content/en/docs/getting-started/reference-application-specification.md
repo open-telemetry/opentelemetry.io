@@ -10,21 +10,21 @@ toc_hide: true
 # General requirements
 
 - Implementations of the Reference App are owned by language SIGs implementing
-  the OpenTelemetry APIs & SDKs
-- There must be an uninstrumented and instrumented version of the application
-- There must be a language specific CI action, that verifies that the
-  application builds and runs in both versions
-- The application must be runnable from a commandline interface
+  the OpenTelemetry APIs and SDKs.
+- There must be an uninstrumented and instrumented version of the application.
+- There must be a language-specific CI action that verifies the
+  application builds and runs in both versions.
+- The application must be runnable from a command line interface.
 - There must be a Dockerfile to run the application within a containerized
-  environment
-- The application must run stand alone, i.e. it can not take hard dependencies
-  on any other content of the repository enclosing it
+  environment.
+- The application must run standing alone. In other words, it cannot take hard dependencies
+  on any other content of the repository enclosing it.
 
 ## Service requirements
 
 - The application must listen at port 8080 for HTTP requests by default. The
   port should be configurable via the environment variable APPLICATION_PORT.
-- For handling the HTTP requests a library should be used for which an
+- For handling the HTTP requests, a library should be used for which an
   instrumentation library is available. The application must provide the
   endpoint `/rolldice?rolls=<n>` via `GET` (and optionally `POST`) and return
   the following HTTP status codes and JSON results: - if `rolls` is not set or
@@ -34,9 +34,9 @@ toc_hide: true
   to an invalid input (not a number): status code `400` and
   `{"status": "error", "message": "Parameter rolls must be a positive integer"}` -
   if `rolls` is set to a negative integer: status code `500` and no JSON output.
-- The application must output the following log lines using a language specific
+- The application must output the following log lines using a language-specific
   common logging framework:
-  - a INFO-level message for each HTTP request with a status code <400
+  - an INFO-level message for each HTTP request with a status code <400
   - a WARN-level message for each HTTP request with a status code between 400
     and 400, including the message which will be sent in the JSON result
   - a ERROR-level message for each HTTP request with a status code above 499
@@ -47,14 +47,14 @@ toc_hide: true
 
 ## Instrumentation requirements
 
-- If possible the initialization for the OpenTelemetry SDK should be contained
-  in a separate file and imported within the "app" file. Otherwise it should be
+- If possible, the initialization for the OpenTelemetry SDK should be contained
+  in a separate file and imported within the "app" file. Otherwise, it should be
   part of the "app" file.
-- The "lib" file must only depend on the OpenTelemetry API.
+- The "lib" file must depend only on the OpenTelemetry API.
 - The `service.*` attributes should be added via environment variables
   (`OTEL_SERVICE_NAME`, `OTEL_RESOURCE_ATTRIBUTES`).
 - The exporters for all signals should be set via environment variables. At a
-  minimum a console output and OTLP export have to be supported that way.
+  minimum, a console output and OTLP export must be supported that way.
 - There should be an option to enable diagnostic logging for the OpenTelemetry
   components, ideally via `OTEL_LOG_LEVEL`.
 - There should be a way to add the instrumentation library for the used HTTP
