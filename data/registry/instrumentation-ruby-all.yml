@@ -14,5 +14,5 @@ createdAt: 2020-11-09
 package:
   registry: gems
   name: opentelemetry-instrumentation-all
-  version: 0.76.0
+  version: 0.77.0
 isFirstParty: false
