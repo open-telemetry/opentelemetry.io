@@ -2,6 +2,7 @@
 title: Configure o SDK
 linkTitle: Configure o SDK
 weight: 13
+default_lang_commit: 
 aliases: [config]
 # prettier-ignore
 cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS retryable
@@ -16,7 +17,7 @@ de instrumentação. Configurar o SDK para processar e exportar apropriadamente 
 passo essencial para integrar o OpenTelemetry na sua aplicação.
 
 Todos os componentes do SDK possuem
-[APIs de configurações via código (configuração programática)](#programmatic-configuration). É o caminho mais
+[APIs de configurações via código (configuração programática)](#Configuração-programática). É o caminho mais
 flexível e expressivo para configurar o SDK. No entanto, alterar as configurações
 requer ajustes no código e recompilar a aplicação, e não possui
 interoperabilidade na linguagem desde que a API seja escrita em Java.
@@ -37,9 +38,9 @@ automaticamente o SDK usando o módulo de [auto configuração sem código](#Aut
 instrumentação com ele. Todo o conteúdo de autoconfiguração é aplicação ao Java Agent
 e aos usuários de Spring starter. {{% /alert %}}
 
-## Configurações programáticas
+## Configuração programática
 
-A interface de configurações via código (configuração programática) é um conjunto de APIs para construir
+A interface de configuração via código (configuração programática) é um conjunto de APIs para construir
 componentes do [SDK](../sdk/). Todos os componentes do SDK possuem APIs de configurações via código, e todos os outros mecanismos de configurações são implementados no inicio da API. Por
 exemplo, a interface de configuração [auto configuração de variáveis de ambiente e propriedades do sistema](#Variáveis-de-ambiente-e-propriedades-do-sistema) interpreta as variáveis de ambiente e propriedades do sistema
 conhecidas em uma série de chamadas para a API.
@@ -57,20 +58,20 @@ código para uma referência completa da API.
 
 O módulo de auto configuração (artifact
 `io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param vers.otel %}}`)
-is a configuration interface built on top of the
-[programmatic configuration interface](#programmatic-configuration), which
-configures [SDK components](../sdk/#sdk-components) with zero code. There are
-two distinct autoconfigure workflows:
+é uma interface de configuração construída sobre a,
+[interface de configuração via código](#Configuração-programática), que
+configura os [componentes do SDK](../sdk/#Componentes-do-SDK) sem código. Eles possuem
+dois fluxos de auto configuração distintos:
 
 - [Variáveis de ambiente e propriedades do sistema](#Variáveis-de-ambiente-e-propriedades-do-sistema)
   interpreta variáveis de ambiente e propriedades do sistema para criar componentes do SDK,
   incluindo diversos pontos de customizações para sobrescrever configurações
   via código (configuração programática).
-- [Configurações declarativas](#Configurações-declarativas) (**currently under
-  development**) interpreta a configuration model to create SDK components,
-  which is typically encoded in a YAML configuration file.
+- [Configurações declarativas](#Configurações-declarativas) (**atualmente está
+  em desenvolvimento**) interpreta um modelo de configuração para criar os componentes do SDK,
+  que normalmente é codificado em um arquivo de configuração YAML.
 
-Automatically configure SDK components using with autoconfigure as follows:
+Automaticamente configura os componentes do SDK usando auto configurações descritas abaixo:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/AutoConfiguredSdk.java"?>
@@ -88,25 +89,25 @@ public class AutoConfiguredSdk {
 ```
 <!-- prettier-ignore-end -->
 
-{{% alert %}} The [Java agent](/docs/zero-code/java/agent/) and
-[Spring starter](/docs/zero-code/java/spring-boot-starter/) automatically
-configure the SDK using the auto configuração sem código module, and install
-instrumentation with it. All autoconfigure content is applicable to Java agent
-and Spring starter users. {{% /alert %}}
+{{% alert %}} O [Java agent](/docs/zero-code/java/agent/) e o
+[Spring starter](/docs/zero-code/java/spring-boot-starter/) automaticamente
+configuram o SDK usando o módulo de auto configuração sem código, e instala
+a instrumentação com eles. Todo o conteúdo de auto configuração é aplicado ao Java agent
+e aos usuários de Spring starter. {{% /alert %}}
 
-{{% alert color="info" %}} The autoconfigure module registers Java shutdown
-hooks to shut down the SDK when appropriate. Because OpenTelemetry Java
-[uses `java.util.logging` for internal logging](../sdk/#internal-logging), some
-logging might be suppressed during shutdown hooks. This is a bug in the JDK
-itself, and not something under the control of OpenTelemetry Java. If you
-require logging during shutdown hooks, consider using `System.out` rather than a
-logging framework which might shut itself down in a shutdown hook, thus
-suppressing your log messages. For more details, see this
-[JDK bug](https://bugs.openjdk.java.net/browse/JDK-8161253). {{% /alert %}}
+{{% alert color="info" %}} O módulo de auto configuração registra hooks de desligamento do Java
+para encerrar o SDK quando apropriado. Como o OpenTelemetry Java
+[usa `java.util.logging` para registros internos](../sdk/#Registro-interno), alguns
+registros podem ser suprimidos durante os hooks de desligamento. Esse é um bug do próprio SDK,
+e não algo sob controle do OpenTelemetry Java. Se você
+precisar de registros durante os hooks de dsligamento, considere usar `System.out` em vez de um framework de
+registros que pode ser encerrado durante o hook e, assim
+suprimir suas mensagens de registros. Para mais detalhes, veja este
+[bug do JDK](https://bugs.openjdk.java.net/browse/JDK-8161253). {{% /alert %}}
 
 ### Variáveis de ambiente e propriedades do sistema
 
-The autoconfigure module supports properties listed in the
+O módulo de auto configuração supports properties listed in the
 [environment variable configuration specification](/docs/specs/otel/configuration/sdk-environment-variables/),
 with occasional experimental and Java-specific additions.
 
