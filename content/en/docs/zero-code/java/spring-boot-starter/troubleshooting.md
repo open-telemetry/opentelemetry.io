@@ -11,7 +11,8 @@ Error:
 org.springframework.core.convert.ConverterNotFoundException: No converter found capable of converting from type [java.lang.String] to type [java.util.Map<java.lang.String, java.lang.String>]
 ```
 
-This error is caused when the application replaces the default converter registry. For example:
+This error is caused when the application replaces the default converter
+registry. For example:
 
 ```java
 @Bean
