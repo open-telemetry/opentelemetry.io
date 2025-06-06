@@ -56,7 +56,7 @@ configurações necessárias. Quando uma capacidade especifica não é suportada
 mecanismos de configuração de alto nível, pode ser necessário recorrer à
 configuração via código.
 
-As seções de [componentes do SDK](./sdk.md/#Componentes-do-SDK) demonstram
+As seções de [componentes do SDK](./sdk.md/#componentes-do-SDK) demonstram
 exemplos simples de configuração via código para as principais áreas do SDK
 voltadas ao usuário. Consulte o código para uma referência completa da API.
 
@@ -66,14 +66,14 @@ O módulo de auto configuração (artifact
 `io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param vers.otel %}}`)
 é uma interface de configuração construída sobre a,
 [interface de configuração via código](#configuração-programática), que
-configura os [componentes do SDK](../sdk/#Componentes-do-SDK) sem código. Eles
+configura os [componentes do SDK](../sdk/#componentes-do-SDK) sem código. Eles
 possuem dois fluxos de auto configuração distintos:
 
 - [Variáveis de ambiente e propriedades do sistema](#variáveis-de-ambiente-e-propriedades-do-sistema)
   interpreta variáveis de ambiente e propriedades do sistema para criar
   componentes do SDK, incluindo diversos pontos de customizações para
   sobrescrever configurações via código (configuração programática).
-- [Configurações declarativas](#Configurações-declarativas) (**atualmente está
+- [Configurações declarativas](#configurações-declarativas) (**atualmente está
   em desenvolvimento**) interpreta um modelo de configuração para criar os
   componentes do SDK, que normalmente é codificado em um arquivo de configuração
   YAML.
@@ -106,7 +106,7 @@ agent e aos usuários de Spring starter. {{% /alert %}}
 {{% alert color="info" %}} O módulo de auto configuração registra hooks de
 desligamento do Java para encerrar o SDK quando apropriado. Como o OpenTelemetry
 Java
-[usa `java.util.logging` para registros internos](../sdk/#Registro-interno),
+[usa `java.util.logging` para registros internos](../sdk/#registro-interno),
 alguns registros podem ser suprimidos durante os hooks de desligamento. Esse é
 um bug do próprio SDK, e não algo sob controle do OpenTelemetry Java. Se você
 precisar de registros durante os hooks de desligamento, considere usar
@@ -152,7 +152,7 @@ Propriedades para limites de atributos (Observe
 | Propriedades do sistema             | Descrição                                                                                                                                                            | Padrão   |
 | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | `otel.attribute.value.length.limit` | O comprimento máximo dos valores de atributos.Aplica-se a spans e logs. Sobrescrito por `otel.span.attribute.value.length.limit`, `otel.span.attribute.count.limit`. | No limit |
-| `otel.attribute.count.limit`        | The maximum number of attributes.Aplica-se a spans, span events, span links, and logs.                                                                               | `128`    |
+| `otel.attribute.count.limit`        | O número máximo de atributos. Aplica-se a spans, span events, span links, e logs.                                                                               | `128`    |
 
 Propriedades para [propagação de contexto](../sdk/#textmappropagator):
 
@@ -177,83 +177,82 @@ Propriedades para configurar [recursos](../sdk/#recursos):
 
 | Propriedades do sistema                 | Descrição                                                                                                                               | Padrão                 |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| `otel.service.name`                     | Specify logical service name. Takes precedence over `service.name` defined with `otel.resource.attributes`.                             | `unknown_service:java` |
-| `otel.resource.attributes`              | Specify resource attributes in the following format: `key1=val1,key2=val2,key3=val3`.                                                   |                        |
-| `otel.resource.disabled.keys`           | Specify resource attribute keys to filter.                                                                                              |                        |
-| `otel.java.enabled.resource.providers`  | Comma-separated list of `ResourceProvider` fully qualified class names to enable. **[1]** If unset, all resource providers are enabled. |                        |
-| `otel.java.disabled.resource.providers` | Comma-separated list of `ResourceProvider` fully qualified class names to disable. **[1]**                                              |                        |
+| `otel.service.name`                     | Especifica logical service name. Takes precedence over `service.name` definido com `otel.resource.attributes`.                             | `unknown_service:java` |
+| `otel.resource.attributes`              | Especifica resource attributes in the following format: `key1=val1,key2=val2,key3=val3`.                                                   |                        |
+| `otel.resource.disabled.keys`           | Especifica resource attribute keys to filter.                                                                                              |                        |
+| `otel.java.enabled.resource.providers`  | Lista separa por vírgulas de `ResourceProvider` fully qualified class names to enable. **[1]** If unset, all resource providers are enabled. |                        |
+| `otel.java.disabled.resource.providers` | Lista separa por vírgulas de `ResourceProvider` fully qualified class names to disable. **[1]**                                              |                        |
 
-**[1]**: For example, to disable the
+**[1]**: Por exemplo, para desabilitar o
 [OS resource provider](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/resources/library/src/main/java/io/opentelemetry/instrumentation/resources/OsResourceProvider.java),
-set
+defina
 `-Dotel.java.disabled.resource.providers=io.opentelemetry.instrumentation.resources.OsResourceProvider`.
 
-**NOTE**: The `otel.service.name` and `otel.resource.attributes` system
-properties / environment variables are interpreted in the
-`io.opentelemetry.sdk.autoconfigure.EnvironmentResourceProvider` resource
-provider. If opting in to specify resource providers via
-`otel.java.enabled.resource-providers`, you'll likely want to include it to
-avoid surprises. See [ResourceProvider](#resourceprovider) for resource provider
-artifact coordinates.
+**NOTE**: As propriedades do sistema / variáveis de ambiente `otel.service.name` e `otel.resource.attributes`
+pelo provedor de recurso `io.opentelemetry.sdk.autoconfigure.EnvironmentResourceProvider`.
+Se optar por especificar o provedor de recursos via
+`otel.java.enabled.resource-providers`, provavelmente você vai querer incluí-lo para
+evitar surpresas. Veja [Provedor de Recursos](#provedor-de-recursos)para coordenadas de artefato
+do provedor de recurso.
 
-#### Propriedades: traces
+#### Propriedades: traços
 
-Properties for [batch span processor(s)](../sdk/#spanprocessor) paired with
+Propriedades para [batch span processor(s)](../sdk/#spanprocessor) paired with
 exporters specified via `otel.traces.exporter`:
 
 | Propriedades do sistema          | Descrição                                                       | Padrão  |
 | -------------------------------- | --------------------------------------------------------------- | ------- |
-| `otel.bsp.schedule.delay`        | The interval, in milliseconds, between two consecutive exports. | `5000`  |
-| `otel.bsp.max.queue.size`        | The maximum number of spans that can be queued before batching. | `2048`  |
-| `otel.bsp.max.export.batch.size` | The maximum number of spans to export in a single batch.        | `512`   |
-| `otel.bsp.export.timeout`        | The maximum allowed time, in milliseconds, to export data.      | `30000` |
+| `otel.bsp.schedule.delay`        | O intervalo, em milissegundos, between two consecutive exports. | `5000`  |
+| `otel.bsp.max.queue.size`        | O número máximo de spans that can be queued before batching. | `2048`  |
+| `otel.bsp.max.export.batch.size` | O número máximo de spans to export in a single batch.        | `512`   |
+| `otel.bsp.export.timeout`        | O tempo máximo pertimido, em milissegundos, para exportar os dados.      | `30000` |
 
-Properties for [sampler](../sdk/#sampler):
+Propriedades para [Amostras](../sdk/#amostrador):
 
 | Propriedades do sistema   | Descrição                                                                                                                                                                                   | Padrão                  |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
-| `otel.traces.sampler`     | The sampler to use. Known values include `always_on`, `always_off`, `traceidratio`, `parentbased_always_on`, `parentbased_always_off`, `parentbased_traceidratio`, `jaeger_remote`. **[1]** | `parentbased_always_on` |
-| `otel.traces.sampler.arg` | An argument to the configured tracer if supported, for example a ratio.                                                                                                                     |                         |
+| `otel.traces.sampler`     | The sampler to use. Valores conhecidos incluídos `always_on`, `always_off`, `traceidratio`, `parentbased_always_on`, `parentbased_always_off`, `parentbased_traceidratio`, `jaeger_remote`. **[1]** | `parentbased_always_on` |
+| `otel.traces.sampler.arg` | Um argumento para configurar o traço se suportados, Por exemplo a ratio.                                                                                                                     |                         |
 
 **[1]**: Known samplers and artifacts (see [sampler](../sdk/#sampler) for
 artifact coordinates):
 
-- `always_on` configures `AlwaysOnSampler`.
-- `always_off` configures `AlwaysOffSampler`.
-- `traceidratio` configures `TraceIdRatioBased`. `otel.traces.sampler.arg` sets
+- `always_on` configura `AlwaysOnSampler`.
+- `always_off` configura `AlwaysOffSampler`.
+- `traceidratio` configura `TraceIdRatioBased`. `otel.traces.sampler.arg` sets
   the ratio.
-- `parentbased_always_on` configures `ParentBased(root=AlwaysOnSampler)`.
-- `parentbased_always_off` configures `ParentBased(root=AlwaysOffSampler)`.
-- `parentbased_traceidratio` configures `ParentBased(root=TraceIdRatioBased)`.
+- `parentbased_always_on` configura `ParentBased(root=AlwaysOnSampler)`.
+- `parentbased_always_off` configura `ParentBased(root=AlwaysOffSampler)`.
+- `parentbased_traceidratio` configura `ParentBased(root=TraceIdRatioBased)`.
   `otel.traces.sampler.arg` sets the ratio.
-- `jaeger_remote` configures `JaegerRemoteSampler`. `otel.traces.sampler.arg` is
-  a comma-separated list of args as described in the
-  [specification](/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration).
+- `jaeger_remote` configura `JaegerRemoteSampler`. `otel.traces.sampler.arg` é
+  uma lista separada por vírgulas de argumentos como os descritos em
+  [especificações](/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration).
 
-Properties for [span limits](../sdk/#spanlimits):
+Propriedades para [span limits](../sdk/#spanlimits):
 
 | Propriedades do sistema                  | Descrição                                                                                               | Padrão   |
 | ---------------------------------------- | ------------------------------------------------------------------------------------------------------- | -------- |
 | `otel.span.attribute.value.length.limit` | The maximum length of span attribute values. Takes precedence over `otel.attribute.value.length.limit`. | No limit |
-| `otel.span.attribute.count.limit`        | The maximum number of attributes per span. Takes precedence over `otel.attribute.count.limit`.          | `128`    |
-| `otel.span.event.count.limit`            | The maximum number of events per span.                                                                  | `128`    |
-| `otel.span.link.count.limit`             | The maximum number of links per span.                                                                   | `128`    |
+| `otel.span.attribute.count.limit`        | O número máximo de attributes per span. Takes precedence over `otel.attribute.count.limit`.          | `128`    |
+| `otel.span.event.count.limit`            | O número máximo de events per span.                                                                  | `128`    |
+| `otel.span.link.count.limit`             | O número máximo de links per span.                                                                   | `128`    |
 
-#### Propriedades: metrics
+#### Propriedades: métricas
 
-Properties for [periodic metric reader](../sdk/#metricreader):
+Propriedades para [periodic metric reader](../sdk/#metricreader):
 
 | Propriedades do sistema       | Descrição                                                                | Padrão  |
 | ----------------------------- | ------------------------------------------------------------------------ | ------- |
-| `otel.metric.export.interval` | The interval, in milliseconds, between the start of two export attempts. | `60000` |
+| `otel.metric.export.interval` | O intervalo, em milissegundos, between the start of two export attempts. | `60000` |
 
-Properties for exemplars:
+Propriedades para exemplars:
 
 | Propriedades do sistema        | Descrição                                                                            | Padrão        |
 | ------------------------------ | ------------------------------------------------------------------------------------ | ------------- |
 | `otel.metrics.exemplar.filter` | The filter for exemplar sampling. Can be `ALWAYS_OFF`, `ALWAYS_ON` or `TRACE_BASED`. | `TRACE_BASED` |
 
-Properties for cardinality limits:
+Propriedades para cardinality limits:
 
 | Propriedades do sistema                       | Descrição                                                                                                                                                               | Padrão |
 | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
@@ -261,25 +260,25 @@ Properties for cardinality limits:
 
 #### Propriedades: logs
 
-Properties for [log record processor(s)](../sdk/#logrecordprocessor) pared with
+Propriedades para [log record processor(s)](../sdk/#logrecordprocessor) pared with
 exporters via `otel.logs.exporter`:
 
 | Propriedades do sistema           | Descrição                                                             | Padrão  |
 | --------------------------------- | --------------------------------------------------------------------- | ------- |
-| `otel.blrp.schedule.delay`        | The interval, in milliseconds, between two consecutive exports.       | `1000`  |
-| `otel.blrp.max.queue.size`        | The maximum number of log records that can be queued before batching. | `2048`  |
-| `otel.blrp.max.export.batch.size` | The maximum number of log records to export in a single batch.        | `512`   |
+| `otel.blrp.schedule.delay`        | O intervalo, em milissegundos, between two consecutive exports.       | `1000`  |
+| `otel.blrp.max.queue.size`        | O número máximo de log records that can be queued before batching. | `2048`  |
+| `otel.blrp.max.export.batch.size` | O número máximo de log records to export in a single batch.        | `512`   |
 | `otel.blrp.export.timeout`        | The maximum allowed time, in milliseconds, to export data.            | `30000` |
 
 #### Propriedades: exporters
 
-Properties for setting exporters:
+Propriedades para setting exporters:
 
 | Propriedades do sistema          | Purpose                                                                                                                                                                | Padrão          |
 | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| `otel.traces.exporter`           | Comma-separated list of span exporters. Known values include `otlp`, `zipkin`, `console`, `logging-otlp`, `none`. **[1]**                                              | `otlp`          |
-| `otel.metrics.exporter`          | Comma-separated list of metric exporters. Known values include `otlp`, `prometheus`, `none`. **[1]**                                                                   | `otlp`          |
-| `otel.logs.exporter`             | Comma-separated list of log record exporters. Known values include `otlp`, `console`, `logging-otlp`, `none`. **[1]**                                                  | `otlp`          |
+| `otel.traces.exporter`           | Lista separa por vírgulas de span exporters. Known values include `otlp`, `zipkin`, `console`, `logging-otlp`, `none`. **[1]**                                              | `otlp`          |
+| `otel.metrics.exporter`          | Lista separa por vírgulas de metric exporters. Known values include `otlp`, `prometheus`, `none`. **[1]**                                                                   | `otlp`          |
+| `otel.logs.exporter`             | Lista separa por vírgulas de log record exporters. Known values include `otlp`, `console`, `logging-otlp`, `none`. **[1]**                                                  | `otlp`          |
 | `otel.java.exporter.memory_mode` | If `reusable_data`, enable reusable memory mode (on exporters which support it) to reduce allocations. Known values include `reusable_data`, `immutable_data`. **[2]** | `reusable_data` |
 
 **[1]**: Known exporters and artifacts (see
@@ -300,71 +299,71 @@ Properties for setting exporters:
 `OtlpHttp{Signal}Exporter`, `OtlpStdout{Signal}Exporter`, and
 `PrometheusHttpServer`.
 
-Properties for `otlp` span, metric, and log exporters:
+Propriedades para `otlp` span, métrica, e registros exporters:
 
 | Propriedades do sistema                                    | Descrição                                                                                                                                                                                                                                                                                                                                                                                                                            | Padrão                                                                                                                     |
 | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
 | `otel.{signal}.exporter=otlp`                              | Select the OpenTelemetry exporter for {signal}.                                                                                                                                                                                                                                                                                                                                                                                      |                                                                                                                            |
-| `otel.exporter.otlp.protocol`                              | The transport protocol to use on OTLP trace, metric, and log requests. Options include `grpc` and `http/protobuf`.                                                                                                                                                                                                                                                                                                                   | `grpc` **[1]**                                                                                                             |
+| `otel.exporter.otlp.protocol`                              | The transport protocol to use on OTLP trace, métrica, e registros requests. Options include `grpc` and `http/protobuf`.                                                                                                                                                                                                                                                                                                                   | `grpc` **[1]**                                                                                                             |
 | `otel.exporter.otlp.{signal}.protocol`                     | The transport protocol to use on OTLP {signal} requests. Options include `grpc` and `http/protobuf`.                                                                                                                                                                                                                                                                                                                                 | `grpc` **[1]**                                                                                                             |
-| `otel.exporter.otlp.endpoint`                              | The endpoint to send all OTLP traces, metrics, and logs to. Often the address of an OpenTelemetry Collector. Must be a URL with a scheme of either `http` or `https` based on the use of TLS.                                                                                                                                                                                                                                        | `http://localhost:4317` when protocol is `grpc`, and `http://localhost:4318` when protocol is `http/protobuf`.             |
+| `otel.exporter.otlp.endpoint`                              | The endpoint to send all OTLP traces, métricas, e registross to. Often the address of an OpenTelemetry Collector. Must be a URL with a scheme of either `http` or `https` based on the use of TLS.                                                                                                                                                                                                                                        | `http://localhost:4317` when protocol is `grpc`, and `http://localhost:4318` when protocol is `http/protobuf`.             |
 | `otel.exporter.otlp.{signal}.endpoint`                     | The endpoint to send OTLP {signal} to. Often the address of an OpenTelemetry Collector. Must be a URL with a scheme of either `http` or `https` based on the use of TLS. If protocol is `http/protobuf` the version and signal must be appended to the path (e.g. `v1/traces`, `v1/metrics`, or `v1/logs`)                                                                                                                           | `http://localhost:4317` when protocol is `grpc`, and `http://localhost:4318/v1/{signal}` when protocol is `http/protobuf`. |
-| `otel.exporter.otlp.certificate`                           | The path to the file containing trusted certificates to use when verifying an OTLP trace, metric, or log server's TLS credentials. The file should contain one or more X.509 certificates in PEM format.                                                                                                                                                                                                                             | The host platform's trusted root certificates are used.                                                                    |
+| `otel.exporter.otlp.certificate`                           | The path to the file containing trusted certificates to use when verifying an OTLP trace, métrica, or log server's TLS credentials. The file should contain one or more X.509 certificates in PEM format.                                                                                                                                                                                                                             | The host platform's trusted root certificates are used.                                                                    |
 | `otel.exporter.otlp.{signal}.certificate`                  | The path to the file containing trusted certificates to use when verifying an OTLP {signal} server's TLS credentials. The file should contain one or more X.509 certificates in PEM format.                                                                                                                                                                                                                                          | The host platform's trusted root certificates are used                                                                     |
-| `otel.exporter.otlp.client.key`                            | The path to the file containing private client key to use when verifying an OTLP trace, metric, or log client's TLS credentials. The file should contain one private key PKCS8 PEM format.                                                                                                                                                                                                                                           | No client key file is used.                                                                                                |
+| `otel.exporter.otlp.client.key`                            | The path to the file containing private client key to use when verifying an OTLP trace, métrica, or log client's TLS credentials. The file should contain one private key PKCS8 PEM format.                                                                                                                                                                                                                                           | No client key file is used.                                                                                                |
 | `otel.exporter.otlp.{signal}.client.key`                   | The path to the file containing private client key to use when verifying an OTLP {signal} client's TLS credentials. The file should contain one private key PKCS8 PEM format.                                                                                                                                                                                                                                                        | No client key file is used.                                                                                                |
-| `otel.exporter.otlp.client.certificate`                    | The path to the file containing trusted certificates to use when verifying an OTLP trace, metric, or log client's TLS credentials. The file should contain one or more X.509 certificates in PEM format.                                                                                                                                                                                                                             | No chain file is used.                                                                                                     |
+| `otel.exporter.otlp.client.certificate`                    | The path to the file containing trusted certificates to use when verifying an OTLP trace, métrica, or log client's TLS credentials. The file should contain one or more X.509 certificates in PEM format.                                                                                                                                                                                                                             | No chain file is used.                                                                                                     |
 | `otel.exporter.otlp.{signal}.client.certificate`           | The path to the file containing trusted certificates to use when verifying an OTLP {signal} server's TLS credentials. The file should contain one or more X.509 certificates in PEM format.                                                                                                                                                                                                                                          | No chain file is used.                                                                                                     |
-| `otel.exporter.otlp.headers`                               | Key-value pairs separated by commas to pass as request headers on OTLP trace, metric, and log requests.                                                                                                                                                                                                                                                                                                                              |                                                                                                                            |
+| `otel.exporter.otlp.headers`                               | Key-value pairs separated by commas to pass as request headers on OTLP trace, métrica, e registros requests.                                                                                                                                                                                                                                                                                                                              |                                                                                                                            |
 | `otel.exporter.otlp.{signal}.headers`                      | Key-value pairs separated by commas to pass as request headers on OTLP {signal} requests.                                                                                                                                                                                                                                                                                                                                            |                                                                                                                            |
-| `otel.exporter.otlp.compression`                           | The compression type to use on OTLP trace, metric, and log requests. Options include `gzip`.                                                                                                                                                                                                                                                                                                                                         | No compression will be used.                                                                                               |
-| `otel.exporter.otlp.{signal}.compression`                  | The compression type to use on OTLP {signal} requests. Options include `gzip`.                                                                                                                                                                                                                                                                                                                                                       | No compression will be used.                                                                                               |
-| `otel.exporter.otlp.timeout`                               | The maximum waiting time, in milliseconds, allowed to send each OTLP trace, metric, and log batch.                                                                                                                                                                                                                                                                                                                                   | `10000`                                                                                                                    |
-| `otel.exporter.otlp.{signal}.timeout`                      | The maximum waiting time, in milliseconds, allowed to send each OTLP {signal} batch.                                                                                                                                                                                                                                                                                                                                                 | `10000`                                                                                                                    |
-| `otel.exporter.otlp.metrics.temporality.preference`        | The preferred output aggregation temporality. Options include `DELTA`, `LOWMEMORY`, and `CUMULATIVE`. If `CUMULATIVE`, all instruments will have cumulative temporality. If `DELTA`, counter (sync and async) and histograms will be delta, up down counters (sync and async) will be cumulative. If `LOWMEMORY`, sync counter and histograms will be delta, async counter and up down counters (sync and async) will be cumulative. | `CUMULATIVE`                                                                                                               |
-| `otel.exporter.otlp.metrics.default.histogram.aggregation` | The preferred default histogram aggregation. Options include `BASE2_EXPONENTIAL_BUCKET_HISTOGRAM` and `EXPLICIT_BUCKET_HISTOGRAM`.                                                                                                                                                                                                                                                                                                   | `EXPLICIT_BUCKET_HISTOGRAM`                                                                                                |
-| `otel.java.exporter.otlp.retry.enabled`                    | If `true`, retry on when transient errors occur. **[2]**                                                                                                                                                                                                                                                                                                                                                                             | `true`                                                                                                                     |
+| `otel.exporter.otlp.compression`                           | O tipo de comprensão para ser usado em um traço OTLP, métrica, e requisições de registros. Opções incluem `gzip`.                                                                                                                                                                                                                                                                                                                                         | Nenhuma comprensão será utilizada.                                                                                               |
+| `otel.exporter.otlp.{signal}.compression`                  | O tipo de comprensão para ser usado em um requisição de {signal} OTLP. Opções incluem `gzip`.                                                                                                                                                                                                                                                                                                                                                       | Nenhuma comprensão será utilizada.                                                                                               |
+| `otel.exporter.otlp.timeout`                               | O tempo máximo de espera, em milissegundos, permitidos para enviar cada traço OTLP, métrica, e registros batch.                                                                                                                                                                                                                                                                                                                                   | `10000`                                                                                                                    |
+| `otel.exporter.otlp.{signal}.timeout`                      | O tempo máximo de espera, em milissegundos, permitidos para enviar cada lote OTLP de {signal}.                                                                                                                                                                                                                                                                                                                                                 | `10000`                                                                                                                    |
+| `otel.exporter.otlp.metrics.temporality.preference`        | The preferred output aggregation temporality. Opções incluem `DELTA`, `LOWMEMORY`, and `CUMULATIVE`. If `CUMULATIVE`, all instruments will have cumulative temporality. If `DELTA`, counter (sync and async) and histograms will be delta, up down counters (sync and async) will be cumulative. If `LOWMEMORY`, sync counter and histograms will be delta, async counter and up down counters (sync and async) will be cumulative. | `CUMULATIVE`                                                                                                               |
+| `otel.exporter.otlp.metrics.default.histogram.aggregation` | The preferred default histogram aggregation. Opções incluem `BASE2_EXPONENTIAL_BUCKET_HISTOGRAM` and `EXPLICIT_BUCKET_HISTOGRAM`.                                                                                                                                                                                                                                                                                                   | `EXPLICIT_BUCKET_HISTOGRAM`                                                                                                |
+| `otel.java.exporter.otlp.retry.enabled`                    | Se `true`, retentativas quando erros transientes errors ocorrem. **[2]**                                                                                                                                                                                                                                                                                                                                                                             | `true`                                                                                                                     |
 
 **NOTE:** The text placeholder `{signal}` refers to the supported
 [OpenTelemetry Signal](/docs/concepts/signals/). Valid values include `traces`,
 `metrics`, and `logs`. Signal specific configurations take priority over the
-generic versions. For example, if you set both `otel.exporter.otlp.endpoint` and
+generic versions. Por exemplo, if you set both `otel.exporter.otlp.endpoint` and
 `otel.exporter.otlp.traces.endpoint`, the latter will take precedence.
 
 **[1]**: OpenTelemetry Java agent 2.x and the OpenTelemetry Spring Boot starter
 use `http/protobuf` by default.
 
-**[2]**: [OTLP](/docs/specs/otlp/#otlpgrpc-response) requires
-[transient](/docs/specs/otel/protocol/exporter/#retry) errors to be handled with
-a retry strategy. When retry is enabled, retryable gRPC status codes are retried
-using an exponential backoff with jitter algorithm. The specific options of
-`RetryPolicy` can only be customized via
-[programmatic customization](#programmatic-customization).
+**[2]**: [OTLP](/docs/specs/otlp/#otlpgrpc-response) requer que
+erros [transientes](/docs/specs/otel/protocol/exporter/#retry) sejam tratados com
+uma estratégia de retentativa. Quando a retentativa está habilitada, códigos de status gRPC que podem ser retentados
+são novamente tentados usando um algoritmo de backoff exponencial com jitter. Essa opção específica do
+`RetryPolicy` só pode ser customizada via
+[customizações programáticas](#customizações-programáticas).
 
-Properties for `zipkin` span exporter:
+Propriedades para `zipkin` span exporter:
 
 | Propriedades do sistema         | Descrição                                                  | Padrão                               |
 | ------------------------------- | ---------------------------------------------------------- | ------------------------------------ |
 | `otel.traces.exporter=zipkin`   | Select the Zipkin exporter                                 |                                      |
 | `otel.exporter.zipkin.endpoint` | The Zipkin endpoint to connect to. Only HTTP is supported. | `http://localhost:9411/api/v2/spans` |
 
-Properties for `prometheus` metric exporter.
+Propriedades para `prometheus` metric exporter.
 
 | Propriedades do sistema            | Descrição                                                    | Padrão    |
 | ---------------------------------- | ------------------------------------------------------------ | --------- |
-| `otel.metrics.exporter=prometheus` | Select the Prometheus exporter                               |           |
-| `otel.exporter.prometheus.port`    | The local port used to bind the prometheus metric server.    | `9464`    |
-| `otel.exporter.prometheus.host`    | The local address used to bind the prometheus metric server. | `0.0.0.0` |
+| `otel.metrics.exporter=prometheus` | Seleciona o exportador do Prometheus                               |           |
+| `otel.exporter.prometheus.port`    | A porta local usada para ligar o servidor de métricas do Prometheus.    | `9464`    |
+| `otel.exporter.prometheus.host`    | O endereço local usado para ligar o servidor de métricas do Prometheus. | `0.0.0.0` |
 
-#### Programmatic customization
+#### Customizações programáticas
 
-Programmatic customization provides hooks to supplement the
-[supported properties](#variáveis-de-ambiente-e-propriedades-do-sistema) with
-[programmatic configuration](#programmatic-configuration).
+Customizações programáticas provê hooks para suplementar as
+[propriedades suportadas](#variáveis-de-ambiente-e-propriedades-do-sistema) com
+[configurações programática]((#configuração-programática)).
 
-If using the [Spring starter](/docs/zero-code/java/spring-boot-starter/), see
-also
-[spring starter programmatic configuration](/docs/zero-code/java/spring-boot-starter/sdk-configuration/#programmatic-configuration).
+Se estiver usando [Spring starter](/docs/zero-code/java/spring-boot-starter/), veja
+também
+[spring starter configuração programática](/docs/zero-code/java/spring-boot-starter/sdk-configuration/#programmatic-configuration).
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomizedAutoConfiguredSdk.java"?>
@@ -415,21 +414,20 @@ public class CustomizedAutoConfiguredSdk {
 
 #### SPI (Service provider interface)
 
-[SPIs](https://docs.oracle.com/javase/tutorial/sound/SPI-intro.html) (artifact
+[SPIs](https://docs.oracle.com/javase/tutorial/sound/SPI-intro.html) (artefato
 `io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi:{{% param vers.otel %}}`)
-extend SDK autoconfiguration beyond the components built-in to the SDK.
+estendem a autoconfiguração do SDK além dos componentes já incluídos no SDK.
 
-The following sections describe the available SPIs. Each SPI section includes:
+As seções a seguir descrevem os SPIs disponíveis. Cada seção de SPI inclui:
 
-- A brief description, including link to Javadoc type reference.
-- A table of available built-in and `opentelemetry-java-contrib`
-  implementations.
-- A simple demonstration of a custom implementation.
+- Uma breve descrição, incluindo link para a referência do tipo Javadoc.
+- Uma tabela com as implementações já incluídas e as do `opentelemetry-java-contrib`.
+- Uma demonstração simples de uma implementação personalizada.
 
-##### ResourceProvider
+##### Provedor de Recursos
 
 [ResourceProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/ResourceProvider.html)s
-contribute to the autoconfigured [resource](../sdk/#resource).
+contribute to the autoconfigured [resource](../sdk/#recursos).
 
 `ResourceProvider`s built-in to the SDK and maintained by the community in
 `opentelemetry-java-contrib`:
@@ -452,7 +450,7 @@ contribute to the autoconfigured [resource](../sdk/#resource).
 | `io.opentelemetry.contrib.aws.resource.LambdaResourceProvider`            | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Provides AWS lambda runtime environment resource attributes.                                       |
 
 Implement the `ResourceProvider` interface to participate in resource
-autoconfiguration. For example:
+autoconfiguration. Por exemplo:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomResourceProvider.java"?>
@@ -484,7 +482,7 @@ public class CustomResourceProvider implements ResourceProvider {
 
 Implement the
 [AutoConfigurationCustomizerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/AutoConfigurationCustomizerProvider.html)
-interface to customize a variety of autoconfigured SDK components. For example:
+interface to customize a variety of autoconfigured SDK components. Por exemplo:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomizerProvider.java"?>
@@ -543,7 +541,7 @@ public class CustomizerProvider implements AutoConfigurationCustomizerProvider {
 Implement the
 [ConfigurableSpanExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/traces/ConfigurableSpanExporterProvider.html)
 interface to allow a custom span exporter to participate in autoconfiguration.
-For example:
+Por exemplo:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomSpanExporterProvider.java"?>
@@ -575,7 +573,7 @@ public class CustomSpanExporterProvider implements ConfigurableSpanExporterProvi
 Implement the
 [ConfigurableMetricExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/metrics/ConfigurableMetricExporterProvider.html)
 interface to allow a custom metric exporter to participate in autoconfiguration.
-For example:
+Por exemplo:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomMetricExporterProvider.java"?>
@@ -607,7 +605,7 @@ public class CustomMetricExporterProvider implements ConfigurableMetricExporterP
 Implement the
 [ConfigurableLogRecordExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/logs/ConfigurableLogRecordExporterProvider.html)
 interface to allow a custom log record exporter to participate in
-autoconfiguration. For example:
+autoconfiguration. Por exemplo:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomLogRecordExporterProvider.java"?>
@@ -703,7 +701,7 @@ Configurações declarativas estão em desenvolvimento atualmente. Elas permitem
 configuração baseada em arquivos YAML, conforme descrito em
 [configuração do OpenTelemetry](https://github.com/open-telemetry/opentelemetry-configuration)
 e
-[Configurações declarativas](/docs/specs/otel/configuration/#Configurações-declarativas).
+[Configurações declarativas](/docs/specs/otel/configuration/#configurações-declarativas).
 
 Para usar, inclua
 `io.opentelemetry:opentelemetry-sdk-extension-incubator:{{% param vers.otel %}}-alpha`
