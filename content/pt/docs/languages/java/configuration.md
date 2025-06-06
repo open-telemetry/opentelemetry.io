@@ -699,9 +699,9 @@ Para usar, inclua
 `io.opentelemetry:opentelemetry-sdk-extension-incubator:{{% param vers.otel %}}-alpha`
 e especifique o caminho para o arquivo de configuração descrito na tabela abaixo.
 
-| Propriedades do Sistema                 | Função                                 | Padrão |
-| ------------------------------- | --------------------------------------- | ------- |
-| `otel.experimental.config.file` | The path to the SDK configuration file. | Unset   |
+| Propriedades do Sistema         | Função                                  | Padrão |
+| ------------------------------- | --------------------------------------- | ------ |
+| `otel.experimental.config.file` | The path to the SDK configuration file. | Unset  |
 
 {{% alert title="Note" color="warning" %}} Quando um arquivo de configuração é especificado,
 [variáveis de ambiente e propriedades do sistema](#Variáveis-de-ambiente-e-propriedades-do-sistema)
