@@ -13,9 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # this is needed in order to do the rebase below
+          # this is needed to do the rebase below
           fetch-depth: 0
-          # this is needed in order to trigger workflows when pushing new commits to the PR
+          # this is needed to trigger workflows when pushing new commits to the PR
           token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
       - name: Set environment variables
@@ -93,6 +93,22 @@ jobs:
             git push
           fi
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Fix refcache
+        run: |
+          npm install --omit=optional
+          npm run fix:refcache
+
+          git add -A
+
+          if ! git diff-index --quiet --cached HEAD; then
+            git commit -am "Fix refcache"
+            git push
+          fi
+
       - name: Create pull request if needed
         env:
           # not using secrets.GITHUB_TOKEN since pull requests from that token do not run workflows
@@ -100,7 +116,7 @@ jobs:
         run: |
           prs=$(gh pr list --state open --head $BRANCH)
           if [ -z "$prs" ]; then
-            gh pr create --title "Update semantic conventions to $VERSION-dev" \
-                         --body "This PR updates the semantic conventions to $VERSION-dev." \
+            gh pr create --title "DRAFT Update semantic conventions to unreleased $VERSION-dev" \
+                         --body "This is a draft PR used for identifying issues integrating the latest (unreleased) semantic conventions." \
                          --draft
           fi

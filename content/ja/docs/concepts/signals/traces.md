@@ -2,7 +2,7 @@
 title: トレース
 weight: 1
 description: アプリケーションを通過するリクエストの経路
-default_lang_commit: b7e40731390448f604897ded62cff8abd3505430
+default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
 cSpell:ignore: Guten
 ---
 
@@ -277,7 +277,7 @@ SDKでのサンプリングで属性を利用できるようにするには、�
 
 リンクは必須ではありませんが、トレーススパン同士を関連付ける良い方法として役立ちます。
 
-スパンリンクの詳細は、[リンク](/docs/specs/otel/trace/api/#link) を参照してください。
+詳細は[スパンリンク](/docs/specs/otel/trace/api/#link)を参照してください。
 
 ### スパンステータス {#span-status}
 

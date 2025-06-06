@@ -1,4 +1,4 @@
-# cSpell:ignore Splunk AWS ADOT Grafana observIQ BindPlane RHOSDT RedHat Sumo Liatrio Lumigo Distro Dynatrace
+# cSpell:ignore Splunk AWS ADOT Grafana observIQ BindPlane RHOSDT RedHat Sumo Liatrio Lumigo Distro Dynatrace Datadog Contrib DDOT eBPF
 - name: Splunk Distribution of OpenTelemetry Collector
   url: https://github.com/signalfx/splunk-otel-collector
   docsUrl: https://docs.splunk.com/observability/en/gdi/opentelemetry/opentelemetry.html
@@ -118,7 +118,7 @@
 - name: Elastic Distribution of OpenTelemetry Collector
   url: https://github.com/elastic/elastic-agent/tree/main/internal/pkg/otel
   docsUrl: https://ela.st/edot-collector
-  components: [Java]
+  components: [Collector]
 - name: Elastic Distribution of OpenTelemetry .NET
   url: https://github.com/elastic/elastic-otel-dotnet
   docsUrl: https://ela.st/edot-dotnet
@@ -162,4 +162,30 @@
 - name: Dynatrace Distribution of the OpenTelemetry Collector
   url: https://github.com/Dynatrace/dynatrace-otel-collector
   docsUrl: https://docs.dynatrace.com/docs/shortlink/opentelemetry-collector
+  components: [Collector]
+- name: Datadog Distribution of OpenTelemetry Collector (DDOT)
+  url: https://github.com/DataDog/datadog-agent/tree/main/comp/otelcol
+  docsUrl: https://docs.datadoghq.com/opentelemetry/setup/ddot_collector
+  components: [Collector]
+
+# OSS Collector Distros
+- name: OpenTelemetry Collector Core Distro
+  url: https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol
+  docsUrl: https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol/README.md
+  components: [Collector]
+- name: OpenTelemetry Collector Contrib Distro
+  url: https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-contrib
+  docsUrl: https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol-contrib/README.md
+  components: [Collector]
+- name: OpenTelemetry Collector OTLP Distro
+  url: https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-otlp
+  docsUrl: https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol-otlp/README.md
+  components: [Collector]
+- name: OpenTelemetry Collector Kubernetes Distro
+  url: https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-k8s
+  docsUrl: https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol-k8s/README.md
+  components: [Collector]
+- name: OpenTelemetry Collector eBPF Profiling Distribution
+  url: https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-ebpf-profiler
+  docsUrl: https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-ebpf-profiler/README.md
   components: [Collector]
