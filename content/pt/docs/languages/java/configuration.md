@@ -115,7 +115,7 @@ As propriedades a seguir são listadas como propriedades do sistema, mas também
 usando variáveis de ambiente. Aplique os passos a seguir para converter propriedades
 do sistema em variáveis de ambiente:
 
-- Converta os nomes para maiusculo.
+- Converta os nomes para maiúsculo.
 - Substitua todos os `.` e `-` com `_`.
 
 Por exemplo, a propriedade do sistema `otel.sdk.enabled` é equivalente à
