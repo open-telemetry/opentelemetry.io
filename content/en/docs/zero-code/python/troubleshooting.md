@@ -29,6 +29,41 @@ install if you’re running a slim version of Linux, such as CentOS.
   apk add build-base
   ```
 
+{#bootstrap-using-uv}
+
+### Bootstrap using uv
+
+Running `opentelemetry-bootstrap -a install` when using the
+[uv](https://docs.astral.sh/uv/) package manager may result in errored or
+unexpected dependency setups.
+
+Instead, you can generate OpenTelemetry requirements dynamically and install
+them using `uv`.
+
+First, install the appropriate packages (or add them to your project file and
+run `uv sync`):
+
+```sh
+uv pip install opentelemetry-distro opentelemetry-exporter-otlp
+```
+
+Now, you can install the auto instrumentation:
+
+```sh
+uv run opentelemetry-bootstrap -a requirements | uv pip install --requirement -
+```
+
+Finally, use `uv run` to start your application (see
+[Configuring the agent](/docs/zero-code/python/#configuring-the-agent)):
+
+```sh
+uv run opentelemetry-instrument python myapp.py
+```
+
+Please note that you have to reinstall the auto instrumentation every time you
+run `uv sync` or update existing packages. It is therefore recommended to make
+the installation part of your build pipeline.
+
 ## Instrumentation issues
 
 ### Flask debug mode with reloader breaks instrumentation
