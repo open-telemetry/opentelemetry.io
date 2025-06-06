@@ -215,7 +215,7 @@ Propriedades para [Amostras](../sdk/#amostrador):
 | `otel.traces.sampler`     | Uma amostra para usar. Valores conhecidos incluídos `always_on`, `always_off`, `traceidratio`, `parentbased_always_on`, `parentbased_always_off`, `parentbased_traceidratio`, `jaeger_remote`. **[1]** | `parentbased_always_on` |
 | `otel.traces.sampler.arg` | Um argumento para configurar o traço se suportados, Por exemplo a proporção de amostragem.                                                                                                             |                         |
 
-**[1]**: Amostragens conhecidas e artetatos (veja [sampler](../sdk/#sampler)
+**[1]**: Amostragens conhecidas e artefatos (veja [sampler](../sdk/#sampler)
 para artifact coordinates):
 
 - `always_on` configura `AlwaysOnSampler`.
