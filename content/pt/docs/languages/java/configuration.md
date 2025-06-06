@@ -11,48 +11,54 @@ cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKC
 <!-- markdownlint-disable blanks-around-fences -->
 <?code-excerpt path-base="examples/java/configuration"?>
 
-O [SDK](../sdk/) é a implementação de referência integrada da
-[API](../api/), processando e exportando telemetrias produzidas pelas chamadas
-de instrumentação. Configurar o SDK para processar e exportar apropriadamente é um
+O [SDK](../sdk/) é a implementação de referência integrada da [API](../api/),
+processando e exportando telemetrias produzidas pelas chamadas de
+instrumentação. Configurar o SDK para processar e exportar apropriadamente é um
 passo essencial para integrar o OpenTelemetry na sua aplicação.
 
 Todos os componentes do SDK possuem
-[APIs de configurações via código (configuração programática)](#configuração-programática). É o caminho mais
-flexível e expressivo para configurar o SDK. No entanto, alterar as configurações
-requer ajustes no código e recompilar a aplicação, e não possui
-interoperabilidade na linguagem desde que a API seja escrita em Java.
+[APIs de configurações via código (configuração programática)](#configuração-programática).
+É o caminho mais flexível e expressivo para configurar o SDK. No entanto,
+alterar as configurações requer ajustes no código e recompilar a aplicação, e
+não possui interoperabilidade na linguagem desde que a API seja escrita em Java.
 
 O módulo de [auto configuração sem código](#auto-configuração-sem-código)
-configura os componentes do SDK através de propriedades do sistema ou variáveis de ambiente,
-com vários pontos de extensão para instâncias onde as propriedades são
-insuficientes.
+configura os componentes do SDK através de propriedades do sistema ou variáveis
+de ambiente, com vários pontos de extensão para instâncias onde as propriedades
+são insuficientes.
 
 {{% alert %}} Nós recomendamos usar o módulo de
-[auto configuração sem código](#auto-configuração-sem-código) pois ele
-reduz o código repetitivo, permite reconfigurar sem reescrever códigos ou
-recompilar a aplicação, e evita a interoperabilidade na linguagem. {{% /alert %}}
+[auto configuração sem código](#auto-configuração-sem-código) pois ele reduz o
+código repetitivo, permite reconfigurar sem reescrever códigos ou recompilar a
+aplicação, e evita a interoperabilidade na linguagem. {{% /alert %}}
 
 {{% alert %}} O [Java agent](/docs/zero-code/java/agent/) e
 [Spring starter](/docs/zero-code/java/spring-boot-starter/) configuram
-automaticamente o SDK usando o módulo de [auto configuração sem código](#auto-configuração-sem-código), e instala
-instrumentação com ele. Todo o conteúdo de autoconfiguração é aplicação ao Java agent
-e aos usuários de Spring starter. {{% /alert %}}
+automaticamente o SDK usando o módulo de
+[auto configuração sem código](#auto-configuração-sem-código), e instala
+instrumentação com ele. Todo o conteúdo de autoconfiguração é aplicação ao Java
+agent e aos usuários de Spring starter. {{% /alert %}}
 
 ## configuração programática
 
-A interface de configuração via código (configuração programática) é um conjunto de APIs para construir
-componentes do [SDK](../sdk/). Todos os componentes do SDK possuem APIs de configurações via código, e todos os outros mecanismos de configurações são implementados no inicio da API. Por
-exemplo, a interface de configuração [auto configuração de variáveis de ambiente e propriedades do sistema](#variáveis-de-ambiente-e-propriedades-do-sistema) interpreta as variáveis de ambiente e propriedades do sistema
-conhecidas em uma série de chamadas para a API.
+A interface de configuração via código (configuração programática) é um conjunto
+de APIs para construir componentes do [SDK](../sdk/). Todos os componentes do
+SDK possuem APIs de configurações via código, e todos os outros mecanismos de
+configurações são implementados no inicio da API. Por exemplo, a interface de
+configuração
+[auto configuração de variáveis de ambiente e propriedades do sistema](#variáveis-de-ambiente-e-propriedades-do-sistema)
+interpreta as variáveis de ambiente e propriedades do sistema conhecidas em uma
+série de chamadas para a API.
 
-Enquanto outros mecânicos de configurações oferecem mais conveniência, nenhum oferece a
-flexibilidade de escrever código que expresse com precisão as configurações necessárias. Quando
-uma capacidade especifica não é suportada por mecanismos de configuração de alto nível,
-pode ser necessário recorrer à configuração via código.
+Enquanto outros mecânicos de configurações oferecem mais conveniência, nenhum
+oferece a flexibilidade de escrever código que expresse com precisão as
+configurações necessárias. Quando uma capacidade especifica não é suportada por
+mecanismos de configuração de alto nível, pode ser necessário recorrer à
+configuração via código.
 
-As seções de [componentes do SDK](./sdk.md/#Componentes-do-SDK) demonstram exemplos simples de
-configuração via código para as principais áreas do SDK voltadas ao usuário. Consulte o
-código para uma referência completa da API.
+As seções de [componentes do SDK](./sdk.md/#Componentes-do-SDK) demonstram
+exemplos simples de configuração via código para as principais áreas do SDK
+voltadas ao usuário. Consulte o código para uma referência completa da API.
 
 ## auto configuração sem código
 
@@ -60,18 +66,20 @@ O módulo de auto configuração (artifact
 `io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param vers.otel %}}`)
 é uma interface de configuração construída sobre a,
 [interface de configuração via código](#configuração-programática), que
-configura os [componentes do SDK](../sdk/#Componentes-do-SDK) sem código. Eles possuem
-dois fluxos de auto configuração distintos:
+configura os [componentes do SDK](../sdk/#Componentes-do-SDK) sem código. Eles
+possuem dois fluxos de auto configuração distintos:
 
 - [Variáveis de ambiente e propriedades do sistema](#variáveis-de-ambiente-e-propriedades-do-sistema)
-  interpreta variáveis de ambiente e propriedades do sistema para criar componentes do SDK,
-  incluindo diversos pontos de customizações para sobrescrever configurações
-  via código (configuração programática).
+  interpreta variáveis de ambiente e propriedades do sistema para criar
+  componentes do SDK, incluindo diversos pontos de customizações para
+  sobrescrever configurações via código (configuração programática).
 - [Configurações declarativas](#Configurações-declarativas) (**atualmente está
-  em desenvolvimento**) interpreta um modelo de configuração para criar os componentes do SDK,
-  que normalmente é codificado em um arquivo de configuração YAML.
+  em desenvolvimento**) interpreta um modelo de configuração para criar os
+  componentes do SDK, que normalmente é codificado em um arquivo de configuração
+  YAML.
 
-Automaticamente configura os componentes do SDK usando auto configurações descritas abaixo:
+Automaticamente configura os componentes do SDK usando auto configurações
+descritas abaixo:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/AutoConfiguredSdk.java"?>
@@ -91,19 +99,21 @@ public class AutoConfiguredSdk {
 
 {{% alert %}} O [Java agent](/docs/zero-code/java/agent/) e o
 [Spring starter](/docs/zero-code/java/spring-boot-starter/) automaticamente
-configuram o SDK usando o módulo de auto configuração sem código, e instala
-a instrumentação com eles. Todo o conteúdo de auto configuração é aplicado ao Java agent
-e aos usuários de Spring starter. {{% /alert %}}
+configuram o SDK usando o módulo de auto configuração sem código, e instala a
+instrumentação com eles. Todo o conteúdo de auto configuração é aplicado ao Java
+agent e aos usuários de Spring starter. {{% /alert %}}
 
-{{% alert color="info" %}} O módulo de auto configuração registra hooks de desligamento do Java
-para encerrar o SDK quando apropriado. Como o OpenTelemetry Java
-[usa `java.util.logging` para registros internos](../sdk/#Registro-interno), alguns
-registros podem ser suprimidos durante os hooks de desligamento. Esse é um bug do próprio SDK,
-e não algo sob controle do OpenTelemetry Java. Se você
-precisar de registros durante os hooks de desligamento, considere usar `System.out` em vez de um framework de
-registros que pode ser encerrado durante o hook e, assim
-suprimir suas mensagens de registros. Para mais detalhes, veja este
-[bug do JDK](https://bugs.openjdk.java.net/browse/JDK-8161253). {{% /alert %}}
+{{% alert color="info" %}} O módulo de auto configuração registra hooks de
+desligamento do Java para encerrar o SDK quando apropriado. Como o OpenTelemetry
+Java
+[usa `java.util.logging` para registros internos](../sdk/#Registro-interno),
+alguns registros podem ser suprimidos durante os hooks de desligamento. Esse é
+um bug do próprio SDK, e não algo sob controle do OpenTelemetry Java. Se você
+precisar de registros durante os hooks de desligamento, considere usar
+`System.out` em vez de um framework de registros que pode ser encerrado durante
+o hook e, assim suprimir suas mensagens de registros. Para mais detalhes, veja
+este [bug do JDK](https://bugs.openjdk.java.net/browse/JDK-8161253).
+{{% /alert %}}
 
 ### variáveis de ambiente e propriedades do sistema
 
@@ -111,9 +121,9 @@ O módulo de auto configuração suporta propriedades listadas em
 [especificação de configuração por variável de ambiente](/docs/specs/otel/configuration/sdk-environment-variables/),
 com algumas adições experimentais e específicas para Java.
 
-As propriedades a seguir são listadas como propriedades do sistema, mas também podem ser definidas
-usando variáveis de ambiente. Aplique os passos a seguir para converter propriedades
-do sistema em variáveis de ambiente:
+As propriedades a seguir são listadas como propriedades do sistema, mas também
+podem ser definidas usando variáveis de ambiente. Aplique os passos a seguir
+para converter propriedades do sistema em variáveis de ambiente:
 
 - Converta os nomes para maiúsculo.
 - Substitua todos os `.` e `-` com `_`.
@@ -121,8 +131,8 @@ do sistema em variáveis de ambiente:
 Por exemplo, a propriedade do sistema `otel.sdk.enabled` é equivalente à
 variável de ambiente `OTEL_SDK_ENABLED`.
 
-Se a propriedade é definida como uma propriedade do sistema e variável de ambiente, a
-propriedade do sistema irá ser prioritaria.
+Se a propriedade é definida como uma propriedade do sistema e variável de
+ambiente, a propriedade do sistema irá ser prioritaria.
 
 #### Propriedades: geral
 
@@ -136,8 +146,8 @@ Propriedades para desativar o [SDK](../sdk/#opentelemetrysdk):
 retorna uma configuração minima da instancia (por exemplo,
 `OpenTelemetrySdk.builder().build()`).
 
-Propriedades para limites de atributos (Observe [span limits](../sdk/#spanlimits),
-[log limits](../sdk/#loglimits)):
+Propriedades para limites de atributos (Observe
+[span limits](../sdk/#spanlimits), [log limits](../sdk/#loglimits)):
 
 | Propriedades do sistema             | Descrição                                                                                                                                                            | Padrão   |
 | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
@@ -689,25 +699,27 @@ public class CustomTextMapPropagatorProvider implements ConfigurablePropagatorPr
 
 ### Configurações declarativas
 
-Configurações declarativas estão em desenvolvimento atualmente. Elas permitem a configuração
-baseada em arquivos YAML, conforme descrito em
+Configurações declarativas estão em desenvolvimento atualmente. Elas permitem a
+configuração baseada em arquivos YAML, conforme descrito em
 [configuração do OpenTelemetry](https://github.com/open-telemetry/opentelemetry-configuration)
 e
 [Configurações declarativas](/docs/specs/otel/configuration/#Configurações-declarativas).
 
 Para usar, inclua
 `io.opentelemetry:opentelemetry-sdk-extension-incubator:{{% param vers.otel %}}-alpha`
-e especifique o caminho para o arquivo de configuração descrito na tabela abaixo.
+e especifique o caminho para o arquivo de configuração descrito na tabela
+abaixo.
 
 | Propriedades do Sistema         | Função                                  | Padrão |
 | ------------------------------- | --------------------------------------- | ------ |
 | `otel.experimental.config.file` | The path to the SDK configuration file. | Unset  |
 
-{{% alert title="Note" color="warning" %}} Quando um arquivo de configuração é especificado,
+{{% alert title="Note" color="warning" %}} Quando um arquivo de configuração é
+especificado,
 [variáveis de ambiente e propriedades do sistema](#variáveis-de-ambiente-e-propriedades-do-sistema)
 são ignorados, [customização programáticas](#programmatic-customization) e
-[SPIs](#spi-service-provider-interface) são ignoradas. E o conteúdo deste arquivo
-sozinho determina a configuração do SDK. {{% /alert %}}
+[SPIs](#spi-service-provider-interface) são ignoradas. E o conteúdo deste
+arquivo sozinho determina a configuração do SDK. {{% /alert %}}
 
 Para detalhes adicionais, consulte os links abaixo:
 
