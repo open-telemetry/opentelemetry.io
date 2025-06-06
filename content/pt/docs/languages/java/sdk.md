@@ -1446,7 +1446,7 @@ O exportador OTLP provê mecanismos para autenticação baseada em cabeçalho
 estático e dinâmico, e para mTLS.
 
 Se você usa
-[Autoconfiguração sem código do](../configuration/#zero-code-sdk-autoconfigure)
+[Autoconfiguração sem código](../configuration/#Auto-configuração-sem-código)
 com variáveis de ambientes e propriedades do sistema, veja
 [propriedades relevantes do sistema](../configuration/#properties-exporters):
 
