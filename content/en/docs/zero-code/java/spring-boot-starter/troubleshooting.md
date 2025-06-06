@@ -20,7 +20,7 @@ public ConversionService conversionService() {
 }
 ```
 
-To fix the issue, change it to:
+To fix the issue, change the converter registry to:
 
 ```java
 @Bean
