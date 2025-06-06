@@ -203,6 +203,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:46:15.036422-04:00"
   },
+  "https://azure.microsoft.com/en-us/products/kubernetes-service": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-02T17:41:00.69252323Z"
+  },
   "https://azure.microsoft.com/global-infrastructure/geographies/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-30T17:00:21.851654-05:00"
@@ -514,6 +518,10 @@
   "https://cloud.google.com/iam/docs/full-resource-names": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:46:12.293016-04:00"
+  },
+  "https://cloud.google.com/kubernetes-engine": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-02T17:40:54.667539308Z"
   },
   "https://cloud.google.com/monitoring/api/metrics_gcp#gcp-cloudfunctions": {
     "StatusCode": 200,
@@ -1126,6 +1134,10 @@
   "https://docs.aws.amazon.com/cli/latest/reference/s3api/upload-part.html": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T12:10:54.088082-05:00"
+  },
+  "https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-03T14:24:50.825839712Z"
   },
   "https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html": {
     "StatusCode": 206,
@@ -4942,6 +4954,10 @@
   "https://github.com/kubernetes": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:24:48.5821-05:00"
+  },
+  "https://github.com/kubernetes-sigs/metrics-server": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-02T17:40:53.15685126Z"
   },
   "https://github.com/kubernetes/cri-api/blob/c75ef5b473bbe2d0a4fc92f82235efd665ea8e9f/pkg/apis/runtime/v1/api.proto#L1237-L1238": {
     "StatusCode": 200,
@@ -15135,6 +15151,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-03-18T14:59:54.513242724Z"
   },
+  "https://k0sproject.io": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-02T17:41:04.897635971Z"
+  },
   "https://kafka.apache.org/": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:59:12.014503-05:00"
@@ -15358,6 +15378,10 @@
   "https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:59:01.584739-05:00"
+  },
+  "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-03T14:24:50.356269055Z"
   },
   "https://kubewarden.io/": {
     "StatusCode": 206,
@@ -15806,6 +15830,10 @@
   "https://microsoft.github.io/autogen/dev/": {
     "StatusCode": 206,
     "LastSeen": "2025-03-03T14:01:04.639067548-08:00"
+  },
+  "https://minikube.sigs.k8s.io/docs/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-02T17:41:04.558982626Z"
   },
   "https://mishmash.io": {
     "StatusCode": 200,
@@ -18163,6 +18191,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-05-10T08:41:18.353351068-07:00"
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.51.0-alpha/opentelemetry-bom-alpha-1.51.0-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-06T20:20:40.263717361Z"
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.42.1/opentelemetry-bom-1.42.1.pom": {
     "StatusCode": 206,
     "LastSeen": "2024-10-23T20:20:05.242921-05:00"
@@ -18203,9 +18235,17 @@
     "StatusCode": 206,
     "LastSeen": "2025-05-10T08:41:18.242169839-07:00"
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.51.0/opentelemetry-bom-1.51.0.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-06T20:20:38.969599677Z"
+  },
   "https://research.facebook.com/file/877841159827226/holistic-configuration-management-at-facebook.pdf": {
     "StatusCode": 206,
     "LastSeen": "2025-01-30T17:00:29.776464-05:00"
+  },
+  "https://resources.realtheory.io/docs/how-to-verify-the-metrics-server-is-installed-in-the-cluster": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-02T17:41:03.539339472Z"
   },
   "https://roadrunner.dev/": {
     "StatusCode": 200,
@@ -18926,6 +18966,10 @@
   "https://slsa.dev/spec/v1.0/threats": {
     "StatusCode": 206,
     "LastSeen": "2025-02-10T23:17:25.614898483Z"
+  },
+  "https://spacelift.io/blog/kubernetes-hpa-horizontal-pod-autoscaler": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-02T17:40:49.644050147Z"
   },
   "https://spec.commonmark.org/0.31.2/#link-label": {
     "StatusCode": 200,
