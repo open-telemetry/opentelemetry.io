@@ -5,7 +5,7 @@ weight: 13
 default_lang_commit: 8fc5481a1acd7f9d7712256b065c1609ef328539
 aliases: [config]
 # prettier-ignore
-cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS retryable
+cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
