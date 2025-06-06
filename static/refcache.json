@@ -695,10 +695,6 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-02T17:58:04.819Z"
   },
-  "https://crates.io/crates/opentelemetry-instrumentation-actix-web": {
-    "StatusCode": 404,
-    "LastSeen": "2025-06-06T13:35:48.683264+02:00"
-  },
   "https://crates.io/crates/opentelemetry-jaeger": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T17:58:07.016Z"
