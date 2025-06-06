@@ -100,7 +100,7 @@ para encerrar o SDK quando apropriado. Como o OpenTelemetry Java
 [usa `java.util.logging` para registros internos](../sdk/#Registro-interno), alguns
 registros podem ser suprimidos durante os hooks de desligamento. Esse é um bug do próprio SDK,
 e não algo sob controle do OpenTelemetry Java. Se você
-precisar de registros durante os hooks de dsligamento, considere usar `System.out` em vez de um framework de
+precisar de registros durante os hooks de desligamento, considere usar `System.out` em vez de um framework de
 registros que pode ser encerrado durante o hook e, assim
 suprimir suas mensagens de registros. Para mais detalhes, veja este
 [bug do JDK](https://bugs.openjdk.java.net/browse/JDK-8161253). {{% /alert %}}
