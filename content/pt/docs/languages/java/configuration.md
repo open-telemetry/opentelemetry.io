@@ -210,13 +210,13 @@ exporters specified via `otel.traces.exporter`:
 
 Propriedades para [Amostras](../sdk/#amostrador):
 
-| Propriedades do sistema   | Descrição                                                                                                                                                                                           | Padrão                  |
-| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
-| `otel.traces.sampler`     | The sampler to use. Valores conhecidos incluídos `always_on`, `always_off`, `traceidratio`, `parentbased_always_on`, `parentbased_always_off`, `parentbased_traceidratio`, `jaeger_remote`. **[1]** | `parentbased_always_on` |
-| `otel.traces.sampler.arg` | Um argumento para configurar o traço se suportados, Por exemplo a ratio.                                                                                                                            |                         |
+| Propriedades do sistema   | Descrição                                                                                                                                                                                              | Padrão                  |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------- |
+| `otel.traces.sampler`     | Uma amostra para usar. Valores conhecidos incluídos `always_on`, `always_off`, `traceidratio`, `parentbased_always_on`, `parentbased_always_off`, `parentbased_traceidratio`, `jaeger_remote`. **[1]** | `parentbased_always_on` |
+| `otel.traces.sampler.arg` | Um argumento para configurar o traço se suportados, Por exemplo a proporção de amostragem.                                                                                                             |                         |
 
-**[1]**: Known samplers and artifacts (see [sampler](../sdk/#sampler) for
-artifact coordinates):
+**[1]**: Amonstragens conhecidas e arfetatos (veja [sampler](../sdk/#sampler)
+para artifact coordinates):
 
 - `always_on` configura `AlwaysOnSampler`.
 - `always_off` configura `AlwaysOffSampler`.
@@ -232,12 +232,12 @@ artifact coordinates):
 
 Propriedades para [span limits](../sdk/#spanlimits):
 
-| Propriedades do sistema                  | Descrição                                                                                               | Padrão   |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------------------- | -------- |
-| `otel.span.attribute.value.length.limit` | The maximum length of span attribute values. Takes precedence over `otel.attribute.value.length.limit`. | No limit |
-| `otel.span.attribute.count.limit`        | O número máximo de attributes per span. Takes precedence over `otel.attribute.count.limit`.             | `128`    |
-| `otel.span.event.count.limit`            | O número máximo de events per span.                                                                     | `128`    |
-| `otel.span.link.count.limit`             | O número máximo de links per span.                                                                      | `128`    |
+| Propriedades do sistema                  | Descrição                                                                                                             | Padrão     |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | ---------- |
+| `otel.span.attribute.value.length.limit` | O comprimento máximo dos valores dos atributos de trechos. Tem precedência sobre `otel.attribute.value.length.limit`. | Sem limite |
+| `otel.span.attribute.count.limit`        | O número máximo de atributos por trechos. Tem precedência sobre `otel.attribute.count.limit`.                         | `128`      |
+| `otel.span.event.count.limit`            | O número máximo de eventos por trechos.                                                                               | `128`      |
+| `otel.span.link.count.limit`             | O número máximo de links por trechos.                                                                                 | `128`      |
 
 #### Propriedades: métricas
 
@@ -249,58 +249,59 @@ Propriedades para [periodic metric reader](../sdk/#metricreader):
 
 Propriedades para exemplars:
 
-| Propriedades do sistema        | Descrição                                                                            | Padrão        |
-| ------------------------------ | ------------------------------------------------------------------------------------ | ------------- |
-| `otel.metrics.exemplar.filter` | The filter for exemplar sampling. Can be `ALWAYS_OFF`, `ALWAYS_ON` or `TRACE_BASED`. | `TRACE_BASED` |
+| Propriedades do sistema        | Descrição                                                                                 | Padrão        |
+| ------------------------------ | ----------------------------------------------------------------------------------------- | ------------- |
+| `otel.metrics.exemplar.filter` | O filtro para um exemplo de amostra. Pode ser `ALWAYS_OFF`, `ALWAYS_ON` ou `TRACE_BASED`. | `TRACE_BASED` |
 
-Propriedades para cardinality limits:
+Propriedades para limites de cardinalidade:
 
-| Propriedades do sistema                       | Descrição                                                                                                                                                               | Padrão |
-| --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
-| `otel.experimental.metrics.cardinality.limit` | If set, configure cardinality limit. The value dictates the maximum number of distinct points per metric. This option is experimental and subject to change or removal. | `2000` |
+| Propriedades do sistema                       | Descrição                                                                                                                                                                              | Padrão |
+| --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| `otel.experimental.metrics.cardinality.limit` | Se definido, configura o limite de cardinalidade. O valor define o número máximo de pontos distintos por métrica. Essa opção é experimental e está sujeita a ser alterada ou removida. | `2000` |
 
 #### Propriedades: logs
 
 Propriedades para [log record processor(s)](../sdk/#logrecordprocessor) pared
 with exporters via `otel.logs.exporter`:
 
-| Propriedades do sistema           | Descrição                                                          | Padrão  |
-| --------------------------------- | ------------------------------------------------------------------ | ------- |
-| `otel.blrp.schedule.delay`        | O intervalo, em milissegundos, between two consecutive exports.    | `1000`  |
-| `otel.blrp.max.queue.size`        | O número máximo de log records that can be queued before batching. | `2048`  |
-| `otel.blrp.max.export.batch.size` | O número máximo de log records to export in a single batch.        | `512`   |
-| `otel.blrp.export.timeout`        | The maximum allowed time, in milliseconds, to export data.         | `30000` |
+| Propriedades do sistema           | Descrição                                                                                     | Padrão  |
+| --------------------------------- | --------------------------------------------------------------------------------------------- | ------- |
+| `otel.blrp.schedule.delay`        | O intervalo, em milissegundos, entre duas exportações consecutivas.                           | `1000`  |
+| `otel.blrp.max.queue.size`        | O número máximo de registros de logs que podem ser enfileiradas antes do agrupamento em lote. | `2048`  |
+| `otel.blrp.max.export.batch.size` | O número máximo de registros de logs para exportar em um lote único.                          | `512`   |
+| `otel.blrp.export.timeout`        | O tempo máximo pertimido, em milissegundos, para exportar os dados.                           | `30000` |
 
-#### Propriedades: exporters
+#### Propriedades: exportadores
 
-Propriedades para setting exporters:
+Propriedades para configurar exportadores:
 
-| Propriedades do sistema          | Purpose                                                                                                                                                                | Padrão          |
-| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| `otel.traces.exporter`           | Lista separa por vírgulas de span exporters. Known values include `otlp`, `zipkin`, `console`, `logging-otlp`, `none`. **[1]**                                         | `otlp`          |
-| `otel.metrics.exporter`          | Lista separa por vírgulas de metric exporters. Known values include `otlp`, `prometheus`, `none`. **[1]**                                                              | `otlp`          |
-| `otel.logs.exporter`             | Lista separa por vírgulas de log record exporters. Known values include `otlp`, `console`, `logging-otlp`, `none`. **[1]**                                             | `otlp`          |
-| `otel.java.exporter.memory_mode` | If `reusable_data`, enable reusable memory mode (on exporters which support it) to reduce allocations. Known values include `reusable_data`, `immutable_data`. **[2]** | `reusable_data` |
+| Propriedades do sistema          | Purpose                                                                                                                                                                       | Padrão          |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| `otel.traces.exporter`           | Lista separada por vírgulas de exportadores de trechos. Valores conhecidos incluem `otlp`, `zipkin`, `console`, `logging-otlp`, `none`. **[1]**                               | `otlp`          |
+| `otel.metrics.exporter`          | Lista separada por vírgulas de exportadores de métricas. Valores conhecidos incluem `otlp`, `prometheus`, `none`. **[1]**                                                     | `otlp`          |
+| `otel.logs.exporter`             | Lista separada por vírgulas de exportadores de registros de logs. Valores conhecidos incluem `otlp`, `console`, `logging-otlp`, `none`. **[1]**                               | `otlp`          |
+| `otel.java.exporter.memory_mode` | If `reusable_data`, enable reusable memory mode (on exporters which support it) para reduzir alocações. Valores conhecidos incluem `reusable_data`, `immutable_data`. **[2]** | `reusable_data` |
 
-**[1]**: Known exporters and artifacts (see
-[span exporter](../sdk/#spanexporter),
-[metric exporter](../sdk/#metricexporter),
-[log exporter](../sdk/#logrecordexporter) for exporter artifact coordinates):
+**[1]**: Known exporters and artifacts (veja
+[exportadores de trechos](../sdk/#spanexporter),
+[exportadores de métricas](../sdk/#metricexporter),
+[exportadores de registros](../sdk/#logrecordexporter) for exporter artifact
+coordinates):
 
-- `otlp` configures `OtlpHttp{Signal}Exporter` / `OtlpGrpc{Signal}Exporter`.
-- `zipkin` configures `ZipkinSpanExporter`.
-- `console` configures `LoggingSpanExporter`, `LoggingMetricExporter`,
+- `otlp` configura `OtlpHttp{Signal}Exporter` / `OtlpGrpc{Signal}Exporter`.
+- `zipkin` configura `ZipkinSpanExporter`.
+- `console` configura `LoggingSpanExporter`, `LoggingMetricExporter`,
   `SystemOutLogRecordExporter`.
-- `logging-otlp` configures `OtlpJsonLogging{Signal}Exporter`.
-- `experimental-otlp/stdout` configures `OtlpStdout{Signal}Exporter` (this
-  option is experimental and subject to change or removal).
+- `logging-otlp` configura `OtlpJsonLogging{Signal}Exporter`.
+- `experimental-otlp/stdout` configura `OtlpStdout{Signal}Exporter` (essa opção
+  é experimental e está sujeita a ser alterada ou removida).
 
-**[2]**: Exporters which adhere to
-`otel.java.exporter.memory_mode=reusable_data` are `OtlpGrpc{Signal}Exporter`,
-`OtlpHttp{Signal}Exporter`, `OtlpStdout{Signal}Exporter`, and
+**[2]**: exportadores que estão em conformidade com
+`otel.java.exporter.memory_mode=reusable_data` são `OtlpGrpc{Signal}Exporter`,
+`OtlpHttp{Signal}Exporter`, `OtlpStdout{Signal}Exporter`, e
 `PrometheusHttpServer`.
 
-Propriedades para `otlp` span, métrica, e registros exporters:
+Propriedades para `otlp` trecho, métrica, e exportadores de registros:
 
 | Propriedades do sistema                                    | Descrição                                                                                                                                                                                                                                                                                                                                                                                                                           | Padrão                                                                                                                     |
 | ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -342,14 +343,14 @@ tentados usando um algoritmo de backoff exponencial com jitter. Essa opção
 específica do `RetryPolicy` só pode ser customizada via
 [customizações programáticas](#customizações-programáticas).
 
-Propriedades para `zipkin` span exporter:
+Propriedades para `zipkin` exportadores de trechos:
 
 | Propriedades do sistema         | Descrição                                                  | Padrão                               |
 | ------------------------------- | ---------------------------------------------------------- | ------------------------------------ |
 | `otel.traces.exporter=zipkin`   | Select the Zipkin exporter                                 |                                      |
 | `otel.exporter.zipkin.endpoint` | The Zipkin endpoint to connect to. Only HTTP is supported. | `http://localhost:9411/api/v2/spans` |
 
-Propriedades para `prometheus` metric exporter.
+Propriedades para `prometheus` exportadores de métricas.
 
 | Propriedades do sistema            | Descrição                                                               | Padrão    |
 | ---------------------------------- | ----------------------------------------------------------------------- | --------- |
@@ -543,8 +544,8 @@ public class CustomizerProvider implements AutoConfigurationCustomizerProvider {
 
 Implement the
 [ConfigurableSpanExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/traces/ConfigurableSpanExporterProvider.html)
-interface to allow a custom span exporter to participate in autoconfiguration.
-Por exemplo:
+interface to allow a custom exportadores de trechos to participate in
+autoconfiguration. Por exemplo:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomSpanExporterProvider.java"?>
@@ -575,8 +576,8 @@ public class CustomSpanExporterProvider implements ConfigurableSpanExporterProvi
 
 Implement the
 [ConfigurableMetricExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/metrics/ConfigurableMetricExporterProvider.html)
-interface to allow a custom metric exporter to participate in autoconfiguration.
-Por exemplo:
+interface to allow a custom exportadores de métricas to participate in
+autoconfiguration. Por exemplo:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomMetricExporterProvider.java"?>

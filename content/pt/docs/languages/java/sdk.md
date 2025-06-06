@@ -14,7 +14,7 @@ Esta página é uma visão geral dos conceitos do SDK, incluindo descrições, l
 relevantes para Javadocs, coordenadas dos artefatos, configurações programadas
 de amostras e mais. Veja **[Configure o SDK](../configuration/)** para detalhes
 na configuração do SDK, incluindo
-[Autoconfiguração do SDK sem código](../configuration/#zero-code-sdk-autoconfigure).
+[Autoconfiguração do SDK sem código](../configuration/#auto-configuração-sem-código).
 
 O SDK consiste nos seguintes componentes de alto nível:
 
@@ -71,7 +71,7 @@ usuário. Cada seção do componente incluí:
   [interfaces de extensões para plugins](#sdk-interfaces-de-extensões-para-plugins),
   uma tabela de implementações disponíveis do `opentelemetry-java-contrib`.
 - Uma demonstração simples de
-  [Configuração programática](../configuration/#programmatic-configuration).
+  [Configuração programática](../configuration/#configuração-programática).
 - Se este componente é
   [interfaces de extensões para plugins](#sdk-interfaces-de-extensões-para-plugins),
   uma simples demonstração de uma implementação personalizada.
@@ -126,9 +126,9 @@ associar o mesmo recurso com o [SdkTracerProvider](#sdktracerprovider),
 [SdkMeterProvider](#sdkmeterprovider), [SdkLoggerProvider](#sdkloggerprovider).
 
 {{% alert color="info" %}}
-[ResourceProviders](../configuration/#resourceprovider) contribui com informação
-contextual para a
-[auto configuração](../configuration/#zero-code-sdk-autoconfigure) do recurso
+[ResourceProviders](../configuration/#provedor-de-recursos) contribui com
+informação contextual para a
+[auto configuração](../configuration/#auto-configuração-sem-código) do recurso
 baseado no ambiente. Veja a lista de documentação disponível
 `ResourceProvider`s. {{% /alert %}}
 
@@ -1446,7 +1446,7 @@ O exportador OTLP provê mecanismos para autenticação baseada em cabeçalho
 estático e dinâmico, e para mTLS.
 
 Se você usa
-[Autoconfiguração sem código](../configuration/#Auto-configuração-sem-código)
+[Autoconfiguração sem código](../configuration/#auto-configuração-sem-código)
 com variáveis de ambientes e propriedades do sistema, veja
 [propriedades relevantes do sistema](../configuration/#properties-exporters):
 
