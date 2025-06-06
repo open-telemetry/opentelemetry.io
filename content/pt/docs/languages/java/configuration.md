@@ -141,8 +141,8 @@ Propriedades para limites de atributos (Observe [span limits](../sdk/#spanlimits
 
 | Propriedades do sistema                     | Descrição                                                                                                                                                   | Padrão  |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `otel.attribute.value.length.limit` | The maximum length of attribute values. Applies to spans and logs. Overridden by `otel.span.attribute.value.length.limit`, `otel.span.attribute.count.limit`. | No limit |
-| `otel.attribute.count.limit`        | The maximum number of attributes. Applies to spans, span events, span links, and logs.                                                                        | `128`    |
+| `otel.attribute.value.length.limit` | O comprimento máximo dos valores de atributos.Aplica-se a spans e logs. Sobrescrito por `otel.span.attribute.value.length.limit`, `otel.span.attribute.count.limit`. | No limit |
+| `otel.attribute.count.limit`        | The maximum number of attributes.Aplica-se a spans, span events, span links, and logs.                                                                        | `128`    |
 
 Propriedades para [propagação de contexto](../sdk/#textmappropagator):
 
@@ -153,17 +153,17 @@ Propriedades para [propagação de contexto](../sdk/#textmappropagator):
 **[1]**: Known propagators and artifacts (Observer
 [text map propagator](../sdk/#textmappropagator) para artifact coordinates):
 
-- `tracecontext` configures `W3CTraceContextPropagator`.
-- `baggage` configures `W3CBaggagePropagator`.
-- `b3`, `b3multi` configures `B3Propagator`.
-- `jaeger` configures `JaegerPropagator`.
-- `ottrace` configures `OtTracePropagator`.
-- `xray` configures `AwsXrayPropagator`.
-- `xray-lambda` configures `AwsXrayLambdaPropagator`.
+- `tracecontext` configura `W3CTraceContextPropagator`.
+- `baggage` configura `W3CBaggagePropagator`.
+- `b3`, `b3multi` configura `B3Propagator`.
+- `jaeger` configura `JaegerPropagator`.
+- `ottrace` configura `OtTracePropagator`.
+- `xray` configura `AwsXrayPropagator`.
+- `xray-lambda` configura `AwsXrayLambdaPropagator`.
 
-#### Properties: resource
+#### Propriedades: recursos
 
-Properties for configuring [resource](../sdk/#resource):
+Propriedades para configurar [recursos](../sdk/#recursos):
 
 | Propriedades do sistema                         | Descrição                                                                                                                             | Padrão                |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
@@ -186,7 +186,7 @@ provider. If opting in to specify resource providers via
 avoid surprises. See [ResourceProvider](#resourceprovider) for resource provider
 artifact coordinates.
 
-#### Properties: traces
+#### Propriedades: traces
 
 Properties for [batch span processor(s)](../sdk/#spanprocessor) paired with
 exporters specified via `otel.traces.exporter`:
@@ -229,7 +229,7 @@ Properties for [span limits](../sdk/#spanlimits):
 | `otel.span.event.count.limit`            | The maximum number of events per span.                                                                  | `128`    |
 | `otel.span.link.count.limit`             | The maximum number of links per span.                                                                   | `128`    |
 
-#### Properties: metrics
+#### Propriedades: metrics
 
 Properties for [periodic metric reader](../sdk/#metricreader):
 
@@ -249,7 +249,7 @@ Properties for cardinality limits:
 | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
 | `otel.experimental.metrics.cardinality.limit` | If set, configure cardinality limit. The value dictates the maximum number of distinct points per metric. This option is experimental and subject to change or removal. | `2000`  |
 
-#### Properties: logs
+#### Propriedades: logs
 
 Properties for [log record processor(s)](../sdk/#logrecordprocessor) pared with
 exporters via `otel.logs.exporter`:
@@ -261,7 +261,7 @@ exporters via `otel.logs.exporter`:
 | `otel.blrp.max.export.batch.size` | The maximum number of log records to export in a single batch.        | `512`   |
 | `otel.blrp.export.timeout`        | The maximum allowed time, in milliseconds, to export data.            | `30000` |
 
-#### Properties: exporters
+#### Propriedades: exporters
 
 Properties for setting exporters:
 
