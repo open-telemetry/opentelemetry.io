@@ -1911,6 +1911,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:07:12.345Z"
   },
+  "https://docs.randoli.io/troubleshooting-observability/config/open-telemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-03T00:18:33.606841313Z"
+  },
   "https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/red_hat_build_of_opentelemetry/": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T06:53:50.335499-05:00"
