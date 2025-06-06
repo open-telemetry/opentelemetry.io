@@ -35,7 +35,7 @@ recompilar a aplicação, e evita a interoperabilidade na linguagem. {{% /alert 
 {{% alert %}} O [Java agent](/docs/zero-code/java/agent/) e
 [Spring starter](/docs/zero-code/java/spring-boot-starter/) configuram
 automaticamente o SDK usando o módulo de [auto configuração sem código](#Auto-configuração-sem-código), e instala
-instrumentação com ele. Todo o conteúdo de autoconfiguração é aplicação ao Java Agent
+instrumentação com ele. Todo o conteúdo de autoconfiguração é aplicação ao Java agent
 e aos usuários de Spring starter. {{% /alert %}}
 
 ## Configuração programática
