@@ -204,7 +204,7 @@ conjunto com exportadores especificados via `otel.traces.exporter`:
 
 | Propriedades do sistema          | Descrição                                                                                 | Padrão  |
 | -------------------------------- | ----------------------------------------------------------------------------------------- | ------- |
-| `otel.bsp.schedule.delay`        | O intervalo, em milissegundos, entre duas exportações consecutivas.                        | `5000`  |
+| `otel.bsp.schedule.delay`        | O intervalo, em milissegundos, entre duas exportações consecutivas.                       | `5000`  |
 | `otel.bsp.max.queue.size`        | O número máximo de trechos que podem ser enfileirados antes de serem processados em lote. | `2048`  |
 | `otel.bsp.max.export.batch.size` | O número máximo de trechos para exportar em um lote único.                                | `512`   |
 | `otel.bsp.export.timeout`        | O tempo máximo permitido, em milissegundos, para exportar os dados.                       | `30000` |
