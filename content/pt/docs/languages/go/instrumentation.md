@@ -5,8 +5,7 @@ aliases:
   - manual_instrumentation
 weight: 30
 description: Instrumentação manual para OpenTelemetry Go
-default_lang_commit: 748555c22f43476291ae0c7974ca4a2577da0472
-drifted_from_default: true
+default_lang_commit: dc20c29a4c79ad0424c0fcc3271216af7e035d9b
 cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup updown
 ---
 
@@ -52,7 +51,7 @@ func newExporter(ctx context.Context)  /* (someExporter.Exporter, error) */ {
 	// Seu Exporter de preferência: console, jaeger, zipkin, OTLP, etc.
 }
 
-func newTraceProvider(exp sdktrace.SpanExporter) *sdktrace.TracerProvider {
+func newTracerProvider(exp sdktrace.SpanExporter) *sdktrace.TracerProvider {
 	// Certifique-se de que os recursos padrão do SDK e o nome do serviço estão definidos.
 	r, err := resource.Merge(
 		resource.Default(),
@@ -81,7 +80,7 @@ func main() {
 	}
 
 	// Crie um novo TracerProvider com o Processor de Trechos e o Exporter criado.
-	tp := newTraceProvider(exp)
+	tp := newTracerProvider(exp)
 
 	// Lidamos com a finalização corretamente, evitando leaks.
 	defer func() { _ = tp.Shutdown(ctx) }()

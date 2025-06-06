@@ -9,8 +9,8 @@ cSpell:ignore: backendsystem crand debugexporter loggingexporter mapstructure pc
 <!-- markdownlint-disable heading-increment no-duplicate-heading -->
 
 If you are reading this tutorial, you probably already have an idea of the
-OpenTelemetry concepts behind distributed tracing, but if you don't you can
-quickly read through it [here](/docs/concepts/signals/traces/).
+OpenTelemetry concepts behind
+[distributed tracing](/docs/concepts/signals/traces/).
 
 Here is the definition of those concepts according to OpenTelemetry:
 
@@ -198,8 +198,8 @@ go mod init github.com/open-telemetry/opentelemetry-tutorials/trace-receiver/tai
 >
 > 1. The module path above is a mock path, which can be your desired private or
 >    public path.
-> 2. The initial code is hosted
->    [here](https://github.com/rquedas/otel4devs/tree/main/collector/receiver/trace-receiver).
+> 2. See the
+>    [initial trace-receiver code](https://github.com/rquedas/otel4devs/tree/main/collector/receiver/trace-receiver).
 
 It's recommended to enable Go
 [Workspaces](https://go.dev/doc/tutorial/workspaces) since we're going to manage
@@ -984,13 +984,13 @@ func components() (otelcol.Factories, error) {
 	var err error
 	factories := otelcol.Factories{}
 
-	factories.Extensions, err = extension.MakeFactoryMap(
+	factories.Extensions, err = otelcol.MakeFactoryMap[extension.Factory](
 	)
 	if err != nil {
 		return otelcol.Factories{}, err
 	}
 
-	factories.Receivers, err = receiver.MakeFactoryMap(
+	factories.Receivers, err = otelcol.MakeFactoryMap[receiver.Factory](
 		otlpreceiver.NewFactory(),
 		tailtracer.NewFactory(), // newly added line
 	)
@@ -998,7 +998,7 @@ func components() (otelcol.Factories, error) {
 		return otelcol.Factories{}, err
 	}
 
-	factories.Exporters, err = exporter.MakeFactoryMap(
+	factories.Exporters, err = otelcol.MakeFactoryMap[exporter.Factory](
 		debugexporter.NewFactory(),
 		otlpexporter.NewFactory(),
 	)
@@ -1006,7 +1006,7 @@ func components() (otelcol.Factories, error) {
 		return otelcol.Factories{}, err
 	}
 
-	factories.Processors, err = processor.MakeFactoryMap(
+	factories.Processors, err = otelcol.MakeFactoryMap[processor.Factory](
 		batchprocessor.NewFactory(),
 	)
 	if err != nil {
@@ -1023,7 +1023,7 @@ func components() (otelcol.Factories, error) {
   `github.com/open-telemetry/opentelemetry-tutorials/trace-receiver/tailtracer`
   module which is where the receiver types and function are.
 - Added a call to `tailtracer.NewFactory()` as a parameter of the
-  `receiver.MakeFactoryMap()` call so your `tailtracer` receiver factory is
+  `otelcol.MakeFactoryMap()` call so your `tailtracer` receiver factory is
   properly added to the `factories` map.
 
 {{% /alert %}}

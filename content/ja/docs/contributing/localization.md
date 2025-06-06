@@ -3,8 +3,7 @@ title: サイトのローカリゼーション
 description: 非英語ローカリゼーションのサイトページの作成と管理
 linkTitle: ローカリゼーション
 weight: 25
-default_lang_commit: f2a520b85d72db706bff91d879f5bb10fd2e7367
-drifted_from_default: true
+default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
 cSpell:ignore: shortcodes
 ---
 
@@ -25,7 +24,7 @@ OTel のウェブサイトは、ページのローカリゼーションをサポ
 - **翻訳**
   - 以下を含むページの内容
     - Mermaid [diagram](#images)のテキストフィールド
-    - コードスニペット内のコメント
+    - コードスニペット内のコメント（オプション）
   - [フロントマター][front matter] 内の `title`、 `linkTitle`、 `description` のフィールド値
   - 特別な指示がない場合、ページ内の **すべての** コンテンツとフロントマターの内容
 - 原文の _内容_、 _意味_、 _スタイル_ を **変更しないこと**
@@ -44,6 +43,9 @@ OTel のウェブサイトは、ページのローカリゼーションをサポ
 - **翻訳**
   - このレポジトリ内のリソースの **ファイルやディレクトリ** の名前
   - [見出しID](#headings) を含む [リンク](#links) [^*]
+  - Markdown の[リンク定義ラベル](#link-labels)
+  - `inline code-spans` のようなインラインコードスパン
+  - `notranslate`（CSSクラスとして）でマークされたMarkdown の要素、特に[見出し](#headings)に対して
   - [すべきこと](#do) で指示されていない [フロントマター][front matter] のフィールド。特に、`aliases` は翻訳しないこと。よくわからない場合はメンテナーに質問すること。
   - ソースコード
 - [画像内のテキストを翻訳する](#images) 場合以外で **画像ファイルのコピー** をすること。
@@ -79,6 +81,30 @@ OTelウェブサイトのリポジトリには、Hugoがドキュメントペー
 たとえば、先ほどのサンプルのパスは、日本語のページからレンダリングされた場合には `/ja/docs/some-page` となります。
 
 {{% /alert %}}
+
+### リンク定義ラベル {#link-labels}
+
+Markdown の[リンク定義][link definitions]の[ラベル][labels]は**翻訳しないでください**。
+かわりに、翻訳されたリンクテキストとしてラベルを書き直してください。たとえば、次の Markdown を考えてみます。
+
+```markdown
+[Hello], world! Welcome to the [OTel website][].
+
+[hello]: https://code.org/helloworld
+[OTel website]: https://opentelemetry.io
+```
+
+これをフランス語に翻訳すると次のようになります。
+
+```markdown
+[Bonjour][hello], le monde! Bienvenue sur le [site OTel][OTel website].
+
+[hello]: https://code.org/helloworld
+[OTel website]: https://opentelemetry.io
+```
+
+[labels]: https://spec.commonmark.org/0.31.2/#link-label
+[link definitions]: https://spec.commonmark.org/0.31.2/#link-reference-definitions
 
 ### 画像とダイアグラム {#images}
 
@@ -225,64 +251,115 @@ npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
 
 ## 新しいローカリゼーション {#new-localizations}
 
-OpenTelemetry ウェブサイトの新しい言語のローカリゼーションを始めるには、コントリビュートの興味を共有するために[イシューを起票して](https://github.com/open-telemetry/opentelemetry.io/issues/)ください。
-追加したい言語において翻訳の執筆とレビューをしたい他のメンバー全員をタグ付けしてください。
-**最低でも 2 名の潜在的なコントリビューター**（理想的には 3 名）が必要です。
-また、イシューに以下のタスクリストも含めてください。
+### 新しいローカリゼーションチーム {#new-localization-team}
 
-```markdown
-- [ ] Contributors for the new language: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
-- [ ] Localize site homepage to YOUR_LANGUAGE_NAME
-- [ ] Create an issue label for `lang:LANG_ID`
-- [ ] Create org-level group for `LANG_ID` approvers
-- [ ] Update components owners for `content/LANG_ID`
-- [ ] Set up spell checking, if a cSpell dictionary is available
-```
+OpenTelemetry ウェブサイトの新しい言語のローカリゼーションを始めるには、以下が必要です。
 
-注意。
+1. あなたの言語に精通した**ローカリゼーションメンター**。たとえば、[CNCF Glossary][]の[アクティブな承認者][active approver]や[Kubernetes ウェブサイト][Kubernetes website]などです。
+2. 少なくとも2名の潜在的なコントリビューター。
 
-- 追加したい言語の `LANG_ID` には公式の [ISO 639-1 コード](https://ja.wikipedia.org/wiki/ISO_639-1) を使用してください。
-- [cSpell 辞書](https://github.com/streetsidesoftware/cspell-dicts) を探し、NPM パッケージとして利用可能な [@cspell/dict-LANG_ID](https://www.npmjs.com/search?q=%40cspell%2Fdict) を確認してください。 もし指標する方言や地域に適した辞書がない場合は、最も近い地域のものを選んでください。 設定方法の例については、[PR #5386] を参照してください。
+[active approver]: https://github.com/cncf/glossary/blob/main/CODEOWNERS
+[CNCF Glossary]: https://glossary.cncf.io/
+[Kubernetes website]: https://github.com/kubernetes/website
 
-そのイシューを作成し、必要な人数のコントリビューターが集まったら、メンテナーが[インデックスページ](https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md)の翻訳を含むプルリクエストを作成するように依頼します。
-PR にローカリゼーションプロジェクトを開始するのに必要な追加変更を加えるために、メンテナーが PR を編集できることを確認してください。
+準備ができたら、以下を実施してください。
 
-最初の PR がマージされると、メンテナーがイシューラベル、組織レベルのグループ、およびコンポーネント所有者の設定を行います。
+1. コントリビュートの興味を共有するために[新しいイシュー][new issue]を作成してください。
 
-{{% alert title="重要" color="warning" %}}
+2. メンターと潜在的なコントリビューターのGitHubハンドルを追加してください。
+
+3. 追加したい言語の公式[ISO 639-1 コード][ISO 639-1 code]を調べてください。このセクションの残りの部分では、この言語コードを`LANG_ID`と呼びます。
+
+4. イシューの冒頭コメントに以下のタスクリストを追加してください。
+
+   ```markdown
+   - [ ] Language info:
+     - ISO 639-1 language code: `LANG_ID`
+     - Language name: ADD_NAME_HERE
+   - [ ] Locale team info:
+     - [ ] Locale mentor: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
+     - [ ] Contributors: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
+   - [ ] Read through
+         [Localization](https://opentelemetry.io/docs/contributing/localization/)
+         and all other pages in the Contributing section
+   - [ ] Localize site homepage to YOUR_LANGUAGE_NAME
+   - [ ] OTel maintainers:
+     - [ ] Update `hugo.yaml`
+     - [ ] Configure cSpell and other tooling support
+     - [ ] Create an issue label for `lang:LANG_ID`
+     - [ ] Create org-level group for `LANG_ID` approvers
+     - [ ] Update components owners for `content/LANG_ID`
+   ```
+
+5. ウェブサイトの[ホームページ][homepage]の翻訳を含む[プルリクエストを送信](../pull-requests/)してください。翻訳するのは`content/LANG_ID/_index.md`ファイルだけにしてください。メンテナーがPRを編集するために必要な権限があることを確認してください。彼らはローカリゼーションプロジェクトを開始するために必要な追加変更をPRに加えます。
+
+[ISO 639-1 code]: https://en.wikipedia.org/wiki/ISO_639-1
+[homepage]: https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md
+
+最初のPRがマージされた後、メンテナーはイシューラベル、組織レベルのグループ、およびコンポーネント所有者を設定します。
+
+{{% alert title="Note" %}}
 
 新しいローカリゼーションを始めるのに、OpenTelemetry プロジェクトの既存のコントリビューターである必要はありません。
-しかし、[OpenTelemetry GitHub 組織](https://github.com/open-telemetry/) のメンバーまたはローカリゼーションの承認者グループに追加されることはありません。
-確立されたメンバーまたは承認者になるには、[メンバーシップガイドライン](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md) に記載されている要件を満たす必要があります。
-
-ローカリゼーションプロジェクトを始める時には、メンテナーはあなたのレビューをすでに承認者であるかのように扱います。
+しかし、[OpenTelemetry GitHub 組織](https://github.com/open-telemetry/)のメンバーまたはローカリゼーションの承認者グループのメンバーとして追加されることはありません。
+確立されたメンバーおよび承認者になるための要件を満たす必要があります。これは[メンバーシップガイドライン](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md)に概説されています。
+ローカリゼーションプロジェクトを開始する際、メンテナーはあなたがすでに承認者であるかのようにあなたのレビューを扱います。
 
 {{% /alert %}}
 
+### OTelメンテナーチェックリスト {#otel-maintainer-checklist}
+
+#### Hugo {#hugo}
+
+`hugo.yaml`を更新します。`LANG_ID`の適切なエントリを以下に追加します。
+
+- `languages`
+- `module.mounts`。最低限、`content`用の単一の`source`-`target`エントリを追加します。ロケールに十分なコンテンツがある場合にのみ、`en`フォールバックページのエントリの追加を検討してください。
+
+#### スペルチェック {#spelling}
+
+NPMパッケージ[@cspell/dict-LANG_ID][]として利用可能な[cSpell辞書][cSpell dictionaries]を探します。
+方言や地域に辞書がない場合は、最も近い地域のものを選んでください。
+
+辞書が利用できない場合は、このサブセクションの残りをスキップします。
+それ以外の場合は以下を実施してください。
+
+- 開発依存関係としてNPMパッケージを追加します。例：`npm install --save-dev @cspell/dict-bn`
+- `.cspell/LANG_ID-words.txt`を作成して、`LANG_ID`用のサイトローカル辞書単語を保存します。
+- `.cspell.yml`に以下のエントリを追加します。
+  - `import`
+  - `dictionaryDefinitions`
+  - `dictionaries`：ここに2つのエントリを追加します。1つは`LANG_ID`、もう1つは`LANG_ID-words.txt`です
+
+[cSpell dictionaries]: https://github.com/streetsidesoftware/cspell-dicts
+[@cspell/dict-LANG_ID]: https://www.npmjs.com/search?q=%40cspell%2Fdict
+
+#### その他のツールサポート {#other-tooling-support}
+
+- Prettierサポート：`LANG_ID`がPrettierで十分にサポートされていない場合は、`.prettierignore`に無視ルールを追加します
+
 ## 英語メンテナーガイド {#english-language-maintainer-guidance}
 
-### 非英語ページのリンクチェックが失敗したとき {#when-link-checking-fails-for-non-english-pages}
+### ロケールをまたぐドキュメント変更のPRを避ける {#prs-should-not-span-locales}
 
-英語は OpenTelemetry ウェブサイトのデフォルト言語です。 英語のドキュメントを追加、編集、再構成した後に、非英語ページのリンクチェックが失敗する可能性があります。 そのような場合は、以下を実行してください。
+コントリビューターは、ロケールをまたぐドキュメント変更のPRを提出することを避けるべきです。
+唯一の例外は次のセクションで説明されています。
 
-<!-- markdownlint-disable blanks-around-fences -->
+### 非英語ページのリンクチェックが失敗したとき {#patch-locale-links}
 
-- リンクを**修正しないでください**。それぞれの非英語ページは対応する英語のページの特定のコミット（フロントマターキーである `default_lang_commit` の Git コミットハッシュ）に関連づけられています。
-- 以下のフロントマター、1 つの以上のページがリンクエラーが発生している場合は最も近い祖先のファイルに非英語ページを無視するようにリンクチェッカーを設定してください。
-  ```yaml
-  htmltest:
-    # TODO: remove the IgnoreDirs once broken links are fixed
-    IgnoreDirs:
-      - path-regex/to/non-en/directory/contain/files/to/ignore
-      - path-2-etc
-  ```
-- `npm run check:links` を実行して、設定ファイル `.htmltest.yml` への変更を PR に含めてください。
+英語のドキュメントへの変更により、非英語のロケールでリンクチェックの失敗が発生することがあります。
+これはドキュメントページが移動または削除された場合に発生します。
 
-<!-- markdownlint-enable blanks-around-fences -->
+このような状況では、リンクチェックに失敗するパスを持つ各非英語ページに対して以下の更新を行います。
+
+- 新しいページパスへのリンク参照を更新します。
+- `default_lang_commit`フロントマター行の末尾に`# patched`というYAMLコメントを追加します。
+- ファイルに他の変更を加えないでください。
+- `npm run check:links`を再実行して、リンクの失敗が残っていないことを確認します。
 
 [front matter]: https://gohugo.io/content-management/front-matter/
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
 [maintainers]: https://github.com/orgs/open-telemetry/teams/docs-maintainers
 [multilingual framework]: https://gohugo.io/content-management/multilingual/
-[PR #5386]: https://github.com/open-telemetry/opentelemetry.io/pull/5386/files
+[new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new
 [slack]: https://slack.cncf.io/
