@@ -121,37 +121,37 @@ property to an environment variable:
 For example, the `otel.sdk.enabled` system property is equivalent to the
 `OTEL_SDK_ENABLED` environment variable.
 
-If a property is defined as both a system property and environment variable, the
+Se a property is defined as both a system property and environment variable, the
 system property takes priority.
 
 #### Propriedades: geral
 
 Propriedades para desativar o [SDK](../sdk/#opentelemetrysdk):
 
-| Propriedades do sistema     | Description                                       | Default |
+| Propriedades do sistema     | Descrição                                       | Padrão |
 | ------------------- | ------------------------------------------------- | ------- |
-| `otel.sdk.disabled` | If `true`, disable the OpenTelemetry SDK. **[1]** | `false` |
+| `otel.sdk.disabled` | Se `true`, desativa o SDK do OpenTelemetry. **[1]** | `false` |
 
-**[1]**: If disabled, `AutoConfiguredOpenTelemetrySdk#getOpenTelemetrySdk()`
-returns a minimally configured instance (for example,
+**[1]**: Se desativado, `AutoConfiguredOpenTelemetrySdk#getOpenTelemetrySdk()`
+retorna uma configuração minima da instancia (por exemplo,
 `OpenTelemetrySdk.builder().build()`).
 
-Properties for attribute limits (see [span limits](../sdk/#spanlimits),
+Propriedades para limites de atributos (Observe [span limits](../sdk/#spanlimits),
 [log limits](../sdk/#loglimits)):
 
-| Propriedades do sistema                     | Description                                                                                                                                                   | Default  |
+| Propriedades do sistema                     | Descrição                                                                                                                                                   | Padrão  |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | `otel.attribute.value.length.limit` | The maximum length of attribute values. Applies to spans and logs. Overridden by `otel.span.attribute.value.length.limit`, `otel.span.attribute.count.limit`. | No limit |
 | `otel.attribute.count.limit`        | The maximum number of attributes. Applies to spans, span events, span links, and logs.                                                                        | `128`    |
 
-Properties for [context propagation](../sdk/#textmappropagator):
+Propriedades para [propagação de contexto](../sdk/#textmappropagator):
 
-| Propriedades do sistema    | Description                                                                                                                                               | Default                      |
+| Propriedades do sistema    | Descrição                                                                                                                                               | Padrão                      |
 | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| `otel.propagators` | Comma-separated list of propagators. Known values include `tracecontext`, `baggage`, `b3`, `b3multi`, `jaeger`, `ottrace`, `xray`, `xray-lambda`. **[1]** | `tracecontext,baggage` (W3C) |
+| `otel.propagators` | Lista de propagators separados por vírgulas. Valores conhecidos incluem `tracecontext`, `baggage`, `b3`, `b3multi`, `jaeger`, `ottrace`, `xray`, `xray-lambda`. **[1]** | `tracecontext,baggage` (W3C) |
 
-**[1]**: Known propagators and artifacts (see
-[text map propagator](../sdk/#textmappropagator) for artifact coordinates):
+**[1]**: Known propagators and artifacts (Observer
+[text map propagator](../sdk/#textmappropagator) para artifact coordinates):
 
 - `tracecontext` configures `W3CTraceContextPropagator`.
 - `baggage` configures `W3CBaggagePropagator`.
@@ -165,7 +165,7 @@ Properties for [context propagation](../sdk/#textmappropagator):
 
 Properties for configuring [resource](../sdk/#resource):
 
-| Propriedades do sistema                         | Description                                                                                                                             | Default                |
+| Propriedades do sistema                         | Descrição                                                                                                                             | Padrão                |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | `otel.service.name`                     | Specify logical service name. Takes precedence over `service.name` defined with `otel.resource.attributes`.                             | `unknown_service:java` |
 | `otel.resource.attributes`              | Specify resource attributes in the following format: `key1=val1,key2=val2,key3=val3`.                                                   |                        |
@@ -191,7 +191,7 @@ artifact coordinates.
 Properties for [batch span processor(s)](../sdk/#spanprocessor) paired with
 exporters specified via `otel.traces.exporter`:
 
-| Propriedades do sistema                  | Description                                                     | Default |
+| Propriedades do sistema                  | Descrição                                                     | Padrão |
 | -------------------------------- | --------------------------------------------------------------- | ------- |
 | `otel.bsp.schedule.delay`        | The interval, in milliseconds, between two consecutive exports. | `5000`  |
 | `otel.bsp.max.queue.size`        | The maximum number of spans that can be queued before batching. | `2048`  |
@@ -200,7 +200,7 @@ exporters specified via `otel.traces.exporter`:
 
 Properties for [sampler](../sdk/#sampler):
 
-| Propriedades do sistema           | Description                                                                                                                                                                                 | Default                 |
+| Propriedades do sistema           | Descrição                                                                                                                                                                                 | Padrão                 |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
 | `otel.traces.sampler`     | The sampler to use. Known values include `always_on`, `always_off`, `traceidratio`, `parentbased_always_on`, `parentbased_always_off`, `parentbased_traceidratio`, `jaeger_remote`. **[1]** | `parentbased_always_on` |
 | `otel.traces.sampler.arg` | An argument to the configured tracer if supported, for example a ratio.                                                                                                                     |                         |
@@ -222,7 +222,7 @@ artifact coordinates):
 
 Properties for [span limits](../sdk/#spanlimits):
 
-| Propriedades do sistema                          | Description                                                                                             | Default  |
+| Propriedades do sistema                          | Descrição                                                                                             | Padrão  |
 | ---------------------------------------- | ------------------------------------------------------------------------------------------------------- | -------- |
 | `otel.span.attribute.value.length.limit` | The maximum length of span attribute values. Takes precedence over `otel.attribute.value.length.limit`. | No limit |
 | `otel.span.attribute.count.limit`        | The maximum number of attributes per span. Takes precedence over `otel.attribute.count.limit`.          | `128`    |
@@ -233,19 +233,19 @@ Properties for [span limits](../sdk/#spanlimits):
 
 Properties for [periodic metric reader](../sdk/#metricreader):
 
-| Propriedades do sistema               | Description                                                              | Default |
+| Propriedades do sistema               | Descrição                                                              | Padrão |
 | ----------------------------- | ------------------------------------------------------------------------ | ------- |
 | `otel.metric.export.interval` | The interval, in milliseconds, between the start of two export attempts. | `60000` |
 
 Properties for exemplars:
 
-| Propriedades do sistema                | Description                                                                          | Default       |
+| Propriedades do sistema                | Descrição                                                                          | Padrão       |
 | ------------------------------ | ------------------------------------------------------------------------------------ | ------------- |
 | `otel.metrics.exemplar.filter` | The filter for exemplar sampling. Can be `ALWAYS_OFF`, `ALWAYS_ON` or `TRACE_BASED`. | `TRACE_BASED` |
 
 Properties for cardinality limits:
 
-| Propriedades do sistema                               | Description                                                                                                                                                             | Default |
+| Propriedades do sistema                               | Descrição                                                                                                                                                             | Padrão |
 | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
 | `otel.experimental.metrics.cardinality.limit` | If set, configure cardinality limit. The value dictates the maximum number of distinct points per metric. This option is experimental and subject to change or removal. | `2000`  |
 
@@ -254,7 +254,7 @@ Properties for cardinality limits:
 Properties for [log record processor(s)](../sdk/#logrecordprocessor) pared with
 exporters via `otel.logs.exporter`:
 
-| Propriedades do sistema                   | Description                                                           | Default |
+| Propriedades do sistema                   | Descrição                                                           | Padrão |
 | --------------------------------- | --------------------------------------------------------------------- | ------- |
 | `otel.blrp.schedule.delay`        | The interval, in milliseconds, between two consecutive exports.       | `1000`  |
 | `otel.blrp.max.queue.size`        | The maximum number of log records that can be queued before batching. | `2048`  |
@@ -265,7 +265,7 @@ exporters via `otel.logs.exporter`:
 
 Properties for setting exporters:
 
-| Propriedades do sistema                  | Purpose                                                                                                                                                                | Default         |
+| Propriedades do sistema                  | Purpose                                                                                                                                                                | Padrão         |
 | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
 | `otel.traces.exporter`           | Comma-separated list of span exporters. Known values include `otlp`, `zipkin`, `console`, `logging-otlp`, `none`. **[1]**                                              | `otlp`          |
 | `otel.metrics.exporter`          | Comma-separated list of metric exporters. Known values include `otlp`, `prometheus`, `none`. **[1]**                                                                   | `otlp`          |
@@ -292,7 +292,7 @@ Properties for setting exporters:
 
 Properties for `otlp` span, metric, and log exporters:
 
-| Propriedades do sistema                                            | Description                                                                                                                                                                                                                                                                                                                                                                                                                          | Default                                                                                                                    |
+| Propriedades do sistema                                            | Descrição                                                                                                                                                                                                                                                                                                                                                                                                                          | Padrão                                                                                                                    |
 | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
 | `otel.{signal}.exporter=otlp`                              | Select the OpenTelemetry exporter for {signal}.                                                                                                                                                                                                                                                                                                                                                                                      |                                                                                                                            |
 | `otel.exporter.otlp.protocol`                              | The transport protocol to use on OTLP trace, metric, and log requests. Options include `grpc` and `http/protobuf`.                                                                                                                                                                                                                                                                                                                   | `grpc` **[1]**                                                                                                             |
@@ -333,14 +333,14 @@ using an exponential backoff with jitter algorithm. The specific options of
 
 Properties for `zipkin` span exporter:
 
-| Propriedades do sistema                 | Description                                                | Default                              |
+| Propriedades do sistema                 | Descrição                                                | Padrão                              |
 | ------------------------------- | ---------------------------------------------------------- | ------------------------------------ |
 | `otel.traces.exporter=zipkin`   | Select the Zipkin exporter                                 |                                      |
 | `otel.exporter.zipkin.endpoint` | The Zipkin endpoint to connect to. Only HTTP is supported. | `http://localhost:9411/api/v2/spans` |
 
 Properties for `prometheus` metric exporter.
 
-| Propriedades do sistema                    | Description                                                  | Default   |
+| Propriedades do sistema                    | Descrição                                                  | Padrão   |
 | ---------------------------------- | ------------------------------------------------------------ | --------- |
 | `otel.metrics.exporter=prometheus` | Select the Prometheus exporter                               |           |
 | `otel.exporter.prometheus.port`    | The local port used to bind the prometheus metric server.    | `9464`    |
@@ -424,7 +424,7 @@ contribute to the autoconfigured [resource](../sdk/#resource).
 `ResourceProvider`s built-in to the SDK and maintained by the community in
 `opentelemetry-java-contrib`:
 
-| Class                                                                     | Artifact                                                                                            | Description                                                                                        |
+| Class                                                                     | Artifact                                                                                            | Descrição                                                                                        |
 | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `io.opentelemetry.sdk.autoconfigure.internal.EnvironmentResourceProvider` | `io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param vers.otel %}}`                | Provides resource attributes based on `OTEL_SERVICE_NAME` and `OTEL_RESOURCE_ATTRIBUTES` env vars. |
 | `io.opentelemetry.instrumentation.resources.ContainerResourceProvider`    | `io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.instrumentation %}}-alpha` | Provides container resource attributes.                                                            |
@@ -691,7 +691,7 @@ public class CustomTextMapPropagatorProvider implements ConfigurablePropagatorPr
 
 Configurações declarativas estão em desenvolvimento atualmente. Elas permitem a configuração
 baseada em arquivos YAML, conforme descrito em
-[configuração do opentelemetry](https://github.com/open-telemetry/opentelemetry-configuration)
+[configuração do OpenTelemetry](https://github.com/open-telemetry/opentelemetry-configuration)
 e
 [Configurações declarativas](/docs/specs/otel/configuration/#Configurações-declarativas).
 
