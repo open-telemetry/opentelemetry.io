@@ -56,7 +56,7 @@ configurações necessárias. Quando uma capacidade especifica não é suportada
 mecanismos de configuração de alto nível, pode ser necessário recorrer à
 configuração via código.
 
-As seções de [componentes do SDK](./sdk.md/#componentes-do-SDK) demonstram
+As seções de [componentes do SDK](./sdk.md/#componentes-do-sdk) demonstram
 exemplos simples de configuração via código para as principais áreas do SDK
 voltadas ao usuário. Consulte o código para uma referência completa da API.
 
@@ -66,7 +66,7 @@ O módulo de auto configuração (artifact
 `io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param vers.otel %}}`)
 é uma interface de configuração construída sobre a,
 [interface de configuração via código](#configuração-programática), que
-configura os [componentes do SDK](../sdk/#componentes-do-SDK) sem código. Eles
+configura os [componentes do SDK](../sdk/#componentes-do-sdk) sem código. Eles
 possuem dois fluxos de auto configuração distintos:
 
 - [Variáveis de ambiente e propriedades do sistema](#variáveis-de-ambiente-e-propriedades-do-sistema)
@@ -216,17 +216,17 @@ Propriedades para [Amostras](../sdk/#amostrador):
 | `otel.traces.sampler`     | Uma amostra para usar. Valores conhecidos incluídos `always_on`, `always_off`, `traceidratio`, `parentbased_always_on`, `parentbased_always_off`, `parentbased_traceidratio`, `jaeger_remote`. **[1]** | `parentbased_always_on` |
 | `otel.traces.sampler.arg` | Um argumento para configurar o traço se suportados, Por exemplo a proporção de amostragem.                                                                                                             |                         |
 
-**[1]**: Amostragens conhecidas e artefatos (veja [sampler](../sdk/#sampler)
+**[1]**: Amostragens conhecidas e artefatos (veja [sampler](../sdk/#amostrador)
 para artifact coordinates):
 
 - `always_on` configura `AlwaysOnSampler`.
 - `always_off` configura `AlwaysOffSampler`.
-- `traceidratio` configura `TraceIdRatioBased`. `otel.traces.sampler.arg` sets
-  the ratio.
+- `traceidratio` configura `TraceIdRatioBased`. `otel.traces.sampler.arg` define
+  a taxa.
 - `parentbased_always_on` configura `ParentBased(root=AlwaysOnSampler)`.
 - `parentbased_always_off` configura `ParentBased(root=AlwaysOffSampler)`.
 - `parentbased_traceidratio` configura `ParentBased(root=TraceIdRatioBased)`.
-  `otel.traces.sampler.arg` sets the ratio.
+  `otel.traces.sampler.arg` define a taxa.
 - `jaeger_remote` configura `JaegerRemoteSampler`. `otel.traces.sampler.arg` é
   uma lista separada por vírgulas de argumentos como os descritos em
   [especificações](/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration).
@@ -363,7 +363,7 @@ Propriedades para `prometheus` exportadores de métricas.
 
 Customizações programáticas provê hooks para suplementar as
 [propriedades suportadas](#variáveis-de-ambiente-e-propriedades-do-sistema) com
-[configurações programática](<(#configuração-programática)>).
+[configurações programática](#configuração-programática).
 
 Se estiver usando [Spring starter](/docs/zero-code/java/spring-boot-starter/),
 veja também
@@ -721,7 +721,7 @@ abaixo.
 {{% alert title="Note" color="warning" %}} Quando um arquivo de configuração é
 especificado,
 [variáveis de ambiente e propriedades do sistema](#variáveis-de-ambiente-e-propriedades-do-sistema)
-são ignorados, [customização programáticas](#programmatic-customization) e
+são ignorados, [customização programáticas](#customizações-programáticas) e
 [SPIs](#spi-service-provider-interface) são ignoradas. E o conteúdo deste
 arquivo sozinho determina a configuração do SDK. {{% /alert %}}
 
