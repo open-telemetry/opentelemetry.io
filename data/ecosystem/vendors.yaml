@@ -1,3 +1,9 @@
+- name: Digitate (ignio)
+  nativeOTLP: true
+  url: https://docs.digitate.com/docs/ignio-integrations/open-telemetry-and-ignio/
+  contact: 
+  oss: false
+  commercial: true
 - name: AppDynamics (Cisco)
   nativeOTLP: true
   url: https://docs.appdynamics.com/latest/en/application-monitoring/cisco-appdynamics-for-opentelemetry
