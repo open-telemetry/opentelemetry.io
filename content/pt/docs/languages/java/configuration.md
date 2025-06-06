@@ -215,7 +215,7 @@ Propriedades para [Amostras](../sdk/#amostrador):
 | `otel.traces.sampler`     | Uma amostra para usar. Valores conhecidos incluídos `always_on`, `always_off`, `traceidratio`, `parentbased_always_on`, `parentbased_always_off`, `parentbased_traceidratio`, `jaeger_remote`. **[1]** | `parentbased_always_on` |
 | `otel.traces.sampler.arg` | Um argumento para configurar o traço se suportados, Por exemplo a proporção de amostragem.                                                                                                             |                         |
 
-**[1]**: Amonstragens conhecidas e arfetatos (veja [sampler](../sdk/#sampler)
+**[1]**: Amostragens conhecidas e artetatos (veja [sampler](../sdk/#sampler)
 para artifact coordinates):
 
 - `always_on` configura `AlwaysOnSampler`.
@@ -269,7 +269,7 @@ with exporters via `otel.logs.exporter`:
 | `otel.blrp.schedule.delay`        | O intervalo, em milissegundos, entre duas exportações consecutivas.                           | `1000`  |
 | `otel.blrp.max.queue.size`        | O número máximo de registros de logs que podem ser enfileiradas antes do agrupamento em lote. | `2048`  |
 | `otel.blrp.max.export.batch.size` | O número máximo de registros de logs para exportar em um lote único.                          | `512`   |
-| `otel.blrp.export.timeout`        | O tempo máximo pertimido, em milissegundos, para exportar os dados.                           | `30000` |
+| `otel.blrp.export.timeout`        | O tempo máximo permitido, em milissegundos, para exportar os dados.                           | `30000` |
 
 #### Propriedades: exportadores
 
