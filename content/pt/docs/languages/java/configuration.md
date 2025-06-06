@@ -34,19 +34,19 @@ recompilar a aplicação, e evita a interoperabilidade na linguagem. {{% /alert 
 {{% alert %}} O [Java agent](/docs/zero-code/java/agent/) e
 [Spring starter](/docs/zero-code/java/spring-boot-starter/) configuram
 automaticamente o SDK usando o módulo de [auto configuração sem código](#Auto-configuração-sem-código), e instala
-instrumentação com ele. Todo o conteúdo de autoconfiguração é aplicadao ao Java Agent
+instrumentação com ele. Todo o conteúdo de autoconfiguração é aplicação ao Java Agent
 e aos usuários de Spring starter. {{% /alert %}}
 
 ## Configurações programáticas
 
 A interface de configurações via código (configuração programática) é um conjunto de APIs para construir
-componentes do [SDK](../sdk/). Todos os componentens do SDK possuem APIs de configurações via código, e todos os outros mecânismos de configurações são implementados no inicio da API. Por
+componentes do [SDK](../sdk/). Todos os componentes do SDK possuem APIs de configurações via código, e todos os outros mecanismos de configurações são implementados no inicio da API. Por
 exemplo, a interface de configuração [auto configuração de variáveis de ambiente e propriedades do sistema](#Variáveis-de-ambiente-e-propriedades-do-sistema) interpreta as variáveis de ambiente e propriedades do sistema
 conhecidas em uma série de chamadas para a API.
 
 Enquanto outros mecânicos de configurações oferecem mais conveniência, nenhum oferece a
 flexibilidade de escrever código que expresse com precisão as configurações necessárias. Quando
-uma capacidade especifica não é suportada por mecânismos de configuração de alto nível,
+uma capacidade especifica não é suportada por mecanismos de configuração de alto nível,
 pode ser necessário recorrer à configuração via código.
 
 As seções de [componentes do SDK](./sdk.md/#Componentes-do-SDK) demonstram exemplos simples de
@@ -64,7 +64,7 @@ two distinct autoconfigure workflows:
 
 - [Variáveis de ambiente e propriedades do sistema](#Variáveis-de-ambiente-e-propriedades-do-sistema)
   interpreta variáveis de ambiente e propriedades do sistema para criar componentes do SDK,
-  incluíndo diversos pontos de customizações para sobreescrever configurações
+  incluindo diversos pontos de customizações para sobrescrever configurações
   via código (configuração programática).
 - [Configurações declarativas](#Configurações-declarativas) (**currently under
   development**) interpreta a configuration model to create SDK components,
@@ -702,7 +702,7 @@ e especifique o caminho para o arquivo de configuração descrito na tabela abai
 | ------------------------------- | --------------------------------------- | ------- |
 | `otel.experimental.config.file` | The path to the SDK configuration file. | Unset   |
 
-{{% alert title="Note" color="warning" %}} Quando um arquivo de configuração é específicado,
+{{% alert title="Note" color="warning" %}} Quando um arquivo de configuração é especificado,
 [variáveis de ambiente e propriedades do sistema](#Variáveis-de-ambiente-e-propriedades-do-sistema)
 são ignorados, [customização programáticas](#programmatic-customization) e
 [SPIs](#spi-service-provider-interface) são ignoradas. E o conteúdo deste arquivo
@@ -712,4 +712,4 @@ Para detalhes adicionais, consulte os links abaixo:
 
 - [Uso da Documentação](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/incubator#declarative-configuration)
 - [Exemplo com Java agent](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent#declarative-configuration)
-- [Examplo sem Java agent](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/declarative-configuration)
+- [Exemplo sem Java agent](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/declarative-configuration)
