@@ -1,6 +1,7 @@
 ---
 title: Registrar telemetria com a API
 weight: 11
+default_lang_commit: 5b82e8f9c057d4d4961d41091a4bc75fc9b5b37c
 aliases:
   - /docs/languages/java/api-components/
 logBridgeWarning: >
