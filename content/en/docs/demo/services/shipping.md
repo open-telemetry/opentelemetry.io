@@ -118,8 +118,8 @@ pub fn init_otel() -> Result<()> {
 }
 ```
 
-This function calls all initializers and returns `OK(())` if
-everything starts properly.
+This function calls all initializers and returns `OK(())` if everything starts
+properly.
 
 The `init_otel()` function is then called on `main`:
 
@@ -142,11 +142,14 @@ async fn main() -> std::io::Result<()> {
 
 ### Instrumentation Configuration
 
-With the providers now configured and initialized, Shipping uses the [`opentelemetry-instrumentation-actix-web` crate](https://crates.io/crates/opentelemetry-instrumentation-actix-web) to instrument the application during server-side and client-side configuration.
+With the providers now configured and initialized, Shipping uses the
+[`opentelemetry-instrumentation-actix-web` crate](https://crates.io/crates/opentelemetry-instrumentation-actix-web)
+to instrument the application during server-side and client-side configuration.
 
 #### Server side
 
-The server is wrapped with `RequestTracing` and `RequestMetrics` to automatically create Traces and Metrics when receiving requests:
+The server is wrapped with `RequestTracing` and `RequestMetrics` to
+automatically create Traces and Metrics when receiving requests:
 
 ```rust
 HttpServer::new(|| {
@@ -160,7 +163,8 @@ HttpServer::new(|| {
 
 #### Client side
 
-When making a request to another service, `trace_request()` is added to the call:
+When making a request to another service, `trace_request()` is added to the
+call:
 
 ```rust
 let mut response = client
@@ -174,8 +178,7 @@ let mut response = client
 ### Manual instrumentation
 
 The `opentelemetry-instrumentation-actix-web` crate allows us to instrument
-server and client side by adding the commands mentioned in the previous
-section.
+server and client side by adding the commands mentioned in the previous section.
 
 In the Demo we also demonstrate how to manually enhance automatically created
 spans and how to create manual metrics on the application.
@@ -210,9 +213,9 @@ counter.add(count as u64, &[]);
 
 ### Logs
 
-Because the Shipping service is using Tracing as a log interface, it uses
-the `opentelemetry-appender-tracing` crate to bridge Tracing logs into
-OpenTelemetry logs.
+Because the Shipping service is using Tracing as a log interface, it uses the
+`opentelemetry-appender-tracing` crate to bridge Tracing logs into OpenTelemetry
+logs.
 
 The appender was already configured during the
 [initialization of the logger provider](#initializing-logger-provider), with the
