@@ -18,14 +18,14 @@ cSpell:ignore: Dotel kotlint Logback updowncounter
 <!-- markdownlint-disable blanks-around-fences -->
 <?code-excerpt path-base="examples/java/api"?>
 
-A Api é um conjunto de classes e interfaces para registar telemetria através dos
+A API é um conjunto de classes e interfaces para registar telemetria através dos
 sinais chaves de observabilidade. O [SDK](../sdk/) é uma referência integrada da
 implementação da API, [configuração](../configuration/) para processar e
 exportar telemetria. Essa página é uma visão geral de conceitos da API,
 incluindo descrições, links para documentações relevantes (Javadocs),
 coordenadas de artefato, e exemplos de uso da API.
 
-A Api consiste nos seguintes componentes principais:
+A API consiste nos seguintes componentes principais:
 
 - [Contexto](#contexto-da-api): Um padrão de API para propagação de contexto
   através de uma aplicação e entre limites de aplicações, incluindo contexto de
@@ -37,7 +37,7 @@ A Api consiste nos seguintes componentes principais:
   API (ou seja, `TracerProvider`, `MeterProvider`, `LoggerProvider`,
   `ContextPropagators`) que é conveniente passar para a instrumentação.
 
-A Api é desenvolvida para suportar múltiplos ambientes. Duas implementações são
+A API é desenvolvida para suportar múltiplos ambientes. Duas implementações são
 providenciadas pelo OpenTelemetry:
 
 - [SDK](../sdk/) é uma referência integrada de implementação da API. É a escolha
@@ -46,7 +46,7 @@ providenciadas pelo OpenTelemetry:
   dependências para instrumentações usarem por padrão quando o usuário não
   instala uma instância.
 
-A Api é desenvolvida ser adotado como dependência direta por bibliotecas,
+A API é desenvolvida ser adotado como dependência direta por bibliotecas,
 frameworks, e responsáveis pela aplicação. Isto inicializa com
 [fortes garantias de compatibilidade retroativa](https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#compatibility-requirements),
 sem dependências transitivas, e

@@ -269,7 +269,7 @@ Para mais:
 [registros]: /docs/concepts/signals/logs/
 [annotations]: /docs/zero-code/java/agent/annotations/
 <!-- TODO: Ajustar esses links.
-[configuração do Java Agent]: /docs/zero-code/java/agent/configuration/#configuração-do-java-agent
+[configuração do Java agent]: /docs/zero-code/java/agent/configuration/#configuração-do-java-agent
 [exportadores de console]: /docs/languages/java/configuration/#propriedades-exportadores
 [exportadores]: /docs/languages/java/configuration/#propriedades-exportadores -->
 [java-vers]: https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#language-version-compatibility

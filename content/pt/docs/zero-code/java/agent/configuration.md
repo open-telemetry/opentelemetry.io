@@ -11,7 +11,7 @@ in which configuration can be supplied to the Java agent. For information on the
 configuration options themselves, see
 [Configure the SDK](/docs/languages/java/configuration). {{% /alert %}}
 
-## Configuração do Java Agent
+## Configuração do Java agent
 
 The agent can consume configuration from one or more of the following sources
 (ordered from highest to lowest priority):
