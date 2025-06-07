@@ -22,13 +22,13 @@ A Api é um conjunto de classes e interfaces para registar telemetria através d
 sinais chaves de observabilidade. O [SDK](../sdk/) é uma referência integrada da
 implementação da API, [configuração](../configuration/) para processar e
 exportar telemetria. Essa página é uma visão geral de conceitos da API,
-incluíndo descrições, links para doumentações relevantes (Javadocs), coordeadas
+incluindo descrições, links para documentações relevantes (Javadocs), coordenadas
 de artefato, e exemplos de uso da API.
 
 A Api consiste nos seguintes componentes principais:
 
 - [Contexto](#contexto-da-api): Um padrão de API para propagação de contexto
-  através de uma aplicação e entre limites de aplicações, incluíndo contexto de
+  através de uma aplicação e entre limites de aplicações, incluindo contexto de
   rastros e bagagem.
 - [TracerProvider](#tracerprovider): O ponto de entrada para a API de traços.
 - [MeterProvider](#meterprovider): O ponto de entrada para a API de métricas.
@@ -81,7 +81,7 @@ Isso consiste em:
 
 - [Contexto](#contexto): é um conjunto imutável de pares chave-valor, com
   utilitários para propagação implícita ou explícita através da aplicação.
-- [Armazenamento de Contexto](#armazenamento-de-contexto): Um mecânismo para
+- [Armazenamento de Contexto](#armazenamento-de-contexto): Um mecanismo para
   armazenar e receber o contexto atual, assumindo por padrão o contexto local da
   thread.
 - [ContextPropagators](#contexto): Uma estrutura com os propagadores registrados
@@ -96,7 +96,7 @@ e concorrentes (coroutines).
 
 [Contexto](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/Context.html)
 é um conjunto imutável de pares chave-valor, com utilitários para propagação
-implícita tdentro de uma aplicação e entre limites da aplicação (threads).
+implícita dentro de uma aplicação e entre limites da aplicação (threads).
 Propagação implícita significa que o contexto pode ser acessado sem precisar
 passá-lo explicitamente como um argumento. Contexto é um conceito recorrente na
 API do OpenTelemetry:
@@ -376,7 +376,7 @@ public class ExtractContextUsage {
 ## OpenTelemetry API
 
 O artefato `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}` contém a
-API do OpenTelemetry, incluíndo traços, métricas, registros, implementação noop,
+API do OpenTelemetry, incluindo traços, métricas, registros, implementação noop,
 bagagem, implementação da chave `TextMapPropagator`, e uma dependência do
 [Contexto da API](#contexto-da-api).
 
@@ -384,7 +384,7 @@ bagagem, implementação da chave `TextMapPropagator`, e uma dependência do
 
 Provedores e escopos são conceitos recorrentes na API do OpenTelemetry. Um
 escopo é uma unidade lógica dentro da aplicação que contém telemetrias
-associadas. Um provedor provê componentens para gravação de telemetria relativo
+associadas. Um provedor provê componentes para gravação de telemetria relativo
 a um escopo particular:
 
 - [TracerProvider](#tracerprovider) fornece escopo para [Traços](#traços) para
@@ -1543,21 +1543,21 @@ public class NoopUsage {
 
 A [convenção semântica](/docs/specs/semconv/) descreve como coletar telemetria
 em uma forma padronizada de operações comuns. Isso inclui um
-[registor de atributos](/docs/specs/semconv/registry/attributes/), com
+[registro de atributos](/docs/specs/semconv/registry/attributes/), com
 definições enumeradas para todos os atributos referenciados nas convenções,
 organizado pelo domínio. O projeto de
 [convenção semântica do Java](https://github.com/open-telemetry/semantic-conventions-java)
-gera constantes de convensão semântica, onde podem ser utilizadas para ajudar a
-instrumntação conforme:
+gera constantes de convenção semântica, onde podem ser utilizadas para ajudar a
+instrumentação conforme:
 
 | Descrição                                           | Artefato                                                                                     |
 | --------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | Código gerado para convenções semânticas estáveis   | `io.opentelemetry.semconv:opentelemetry-semconv:{{% param vers.semconv %}}-alpha`            |
-| Código gerado para convenções semânticas incumbadas | `io.opentelemetry.semconv:opentelemetry-semconv-incubating:{{% param vers.semconv %}}-alpha` |
+| Código gerado para convenções semânticas incubadas | `io.opentelemetry.semconv:opentelemetry-semconv-incubating:{{% param vers.semconv %}}-alpha` |
 
 {{% alert %}} Enquanto `opentelemetry-semconv` e
 `opentelemetry-semconv-incubating` incluem o sufixo `-alpha` e estão sujeitos a
-mudanças incompatíves, a intenção é estabilizar a `opentelemetry-semconv` e
+mudanças incompatíveis, a intenção é estabilizar a `opentelemetry-semconv` e
 remover o sufixo `-alpha` em `opentelemetry-semconv-incubating` permanentemente.
 Bibliotecas podem utilizar `opentelemetry-semconv-incubating` para testes, but
 should not include it as a dependency: since attributes may come and go from
@@ -1709,7 +1709,7 @@ public class BaggageUsage {
 O Artefato
 `io.opentelemetry:opentelemetry-api-incubator:{{% param vers.otel %}}-alpha`
 contém traços, métricas, registros e contextos de APIs experimentais. APIs em
-incubação estão sujeitos a mudanças imcompátiveis em versões menores.
+incubação estão sujeitos a mudanças incompatíveis em versões menores.
 Frequentemente, essas APIs representam funcionalidades experimentais de
 especificação ou designs de API que queremos avaliar com o feedback dos usuários
 antes de nos comprometer com elas. Encorajamos os usuários a testarem essas APIs

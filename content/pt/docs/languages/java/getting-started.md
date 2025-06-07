@@ -11,7 +11,7 @@ default_lang_commit: 3f5742fb4c0da03eb774d8fce5186bfb9bbe021e
 Está página vai mostrar para você como iniciar com OpenTelemetry em Java.
 
 Você aprenderá como você pode instrumentar uma aplicação simples em Java
-automaticamente, de forma que os [traços][], [mẽtricas][], e [registros][] sejam
+automaticamente, de forma que os [traços][], [métricas][], e [registros][] sejam
 emitidos para o console.
 
 ## Pré requisitos
@@ -151,7 +151,7 @@ variáveis de ambiente.
 
 2. Defina e exporte variáveis que especifiquem o JAR do agente Java e o
    [exportador de console](/docs/languages/java/configuration/#propriedades-exportadores),
-   usando a notaçâo adequada para o seu ambiente de shell/terminal &mdash; nós
+   usando a notação adequada para o seu ambiente de shell/terminal &mdash; nós
    demonstramos uma notação para shells do tipo bash:
 
    ```sh
@@ -164,7 +164,7 @@ variáveis de ambiente.
 
    {{% alert title="Important" color="warning" %}}
 
-   - Substitua `PATH/TO` acimda, com o caminho para o arquivo JAR.
+   - Substitua `PATH/TO` acima, com o caminho para o arquivo JAR.
    - Defina `OTEL_METRIC_EXPORT_INTERVAL` para um valor bem abaixo do padrão,
      como nós demonstramos acima, **somente durante os testes** para ajudar você
      mais rapidamente na confirmação de que as métricas estão sendo geradas
@@ -214,7 +214,7 @@ io.opentelemetry.tomcat-10.0:1.25.0-alpha] AttributesMap{
 ```
 
 No passo 5, quando parar o servidor, você deve observar uma saída com todas as
-mẽtricas coletadas (a saída das métricas foi quebrada em linhas para facilitar a
+métricas coletadas (a saída das métricas foi quebrada em linhas para facilitar a
 visualização):
 
 ```sh
