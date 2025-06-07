@@ -135,7 +135,7 @@ java -jar ./build/libs/java-simple.jar
 
 Próximo, vamos utilizar o [Java agent](/docs/zero-code/java/agent/) para
 instrumentar automaticamente a aplicação em tempo de execução. Enquanto você
-pode [configurar o Java agent][] de várias formas, os passos abaixo utilizam
+pode configurar o Java agent de várias formas, os passos abaixo utilizam
 variáveis de ambiente.
 
 1. Baixe [opentelemetry-javaagent.jar][] de [Releases][] no repositório
@@ -268,15 +268,12 @@ Para mais:
 [métricas]: /docs/concepts/signals/metrics/
 [registros]: /docs/concepts/signals/logs/
 [annotations]: /docs/zero-code/java/agent/annotations/
-[configure o agente java]: /docs/zero-code/java/agent/configuration/
-[exportadores de console]:
-  /docs/languages/java/configuration/#propriedades-exportadores
-[exportadores]: /docs/languages/java/configuration/#propriedades-exportadores
-[java-vers]:
-  https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#language-version-compatibility
+<!-- TODO: Ajustar esses links.
+[configuração do Java Agent]: /docs/zero-code/java/agent/configuration/#configuração-do-java-agent
+[exportadores de console]: /docs/languages/java/configuration/#propriedades-exportadores
+[exportadores]: /docs/languages/java/configuration/#propriedades-exportadores -->
+[java-vers]: https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#language-version-compatibility
 [instrumentação manual]: ../instrumentation
-[opentelemetry-javaagent.jar]:
-  https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
-[releases]:
-  https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases
+[opentelemetry-javaagent.jar]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
+[releases]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases
 [Spring Boot]: https://spring.io/guides/gs/spring-boot/
