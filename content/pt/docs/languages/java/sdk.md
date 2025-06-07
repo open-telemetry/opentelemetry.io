@@ -1448,7 +1448,7 @@ estático e dinâmico, e para mTLS.
 Se você usa
 [Autoconfiguração sem código](../configuration/#auto-configuração-sem-código)
 com variáveis de ambientes e propriedades do sistema, veja
-[propriedades relevantes do sistema](../configuration/#properties-exporters):
+[propriedades relevantes do sistema](../configuration/#propriedades-exportadores):
 
 - `otel.exporter.otlp.headers` autenticação baseada em cabeçalho estático.
 - `otel.exporter.otlp.client.key`, `otel.exporter.otlp.client.certificate` para
