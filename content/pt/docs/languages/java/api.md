@@ -183,26 +183,26 @@ public class ContextUsage {
     context.wrapSupplier(ContextUsage::supplier).get();
   }
 
-  /** Example {@link java.util.concurrent.Callable}. */
+  /** Exemplo {@link java.util.concurrent.Callable}. */
   private static Object callable() {
     return new Object();
   }
 
-  /** Example {@link Runnable}. */
+  /** Exemplo {@link Runnable}. */
   private static void runnable() {}
 
-  /** Example {@link java.util.function.Consumer}. */
+  /** Exemplo {@link java.util.function.Consumer}. */
   private static void consumer(Object object) {}
 
-  /** Example {@link java.util.function.BiConsumer}. */
+  /** Exemplo {@link java.util.function.BiConsumer}. */
   private static void biConsumer(Object object1, Object object2) {}
 
-  /** Example {@link java.util.function.Function}. */
+  /** Exemplo {@link java.util.function.Function}. */
   private static Object function(Object object) {
     return object;
   }
 
-  /** Example {@link java.util.function.Supplier}. */
+  /** Exemplo {@link java.util.function.Supplier}. */
   private static Object supplier() {
     return new Object();
   }
@@ -217,18 +217,18 @@ is a mechanism for storing and retrieving the current `Context`.
 
 The default `ContextStorage` implementation stores `Context` in thread local.
 
-### ContextPropagators
+### Propagação de Contexto
 
-[ContextPropagators](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/propagation/ContextPropagators.html)
-is a container of registered propagators for propagating `Context` across
-application boundaries. Context is injected into a carrier when leaving an
-application (ou seja, an outbound HTTP request), and extracted from a carrier
-when entering an application (ou seja, serving an HTTP request).
+[Propagação de contexto](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/propagation/ContextPropagators.html)
+é uma estrutura de propagadores registrados para propagar `Context` através dos
+limites da aplicação. O contexto é injetado em um portador _carrier_ ao sair da
+aplicação (ou seja, em uma requisição HTTP de saída), e extraído de um portador
+_carrier_ ao entrar em uma aplicação (ou seja, ao atender uma requisição HTTP).
 
-See [SDK TextMapPropagators](../sdk/#textmappropagator) for propagator
-implementations.
+Veja [SDK TextMapPropagators](../sdk/#textmappropagator) para implementação de
+propagadores.
 
-O trecho de código a seguir explora o uso da API `ContextPropagators` injection:
+O trecho de código a seguir explora a injeção da API `ContextPropagators`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/InjectContextUsage.java"?>
@@ -282,8 +282,8 @@ public class InjectContextUsage {
 ```
 <!-- prettier-ignore-end -->
 
-O trecho de código a seguir explora o uso da API `ContextPropagators`
-extraction:
+O trecho de código a seguir explora o uso da extração da API
+`ContextPropagators`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/ExtractContextUsage.java"?>
@@ -437,19 +437,19 @@ public class ProvidersAndScopes {
     Tracer tracer =
         tracerProvider
             .tracerBuilder(SCOPE_NAME)
-            .setInstrumentationVersion(SCOPE_VERSION)
+            .setInstrumentoationVersion(SCOPE_VERSION)
             .setSchemaUrl(SCOPE_SCHEMA_URL)
             .build();
     Meter meter =
         meterProvider
             .meterBuilder(SCOPE_NAME)
-            .setInstrumentationVersion(SCOPE_VERSION)
+            .setInstrumentoationVersion(SCOPE_VERSION)
             .setSchemaUrl(SCOPE_SCHEMA_URL)
             .build();
     Logger logger =
         loggerProvider
             .loggerBuilder(SCOPE_NAME)
-            .setInstrumentationVersion(SCOPE_VERSION)
+            .setInstrumentoationVersion(SCOPE_VERSION)
             .setSchemaUrl(SCOPE_SCHEMA_URL)
             .build();
 
@@ -474,7 +474,7 @@ is a bundle of key value pairs representing the
 - The measurements recorded to [metric instruments](#meter) have attributes.
 - [LogRecords](#logrecordbuilder) have attributes.
 
-Veja [atributos de semântica](#semantic-attributes) for attribute constants
+Veja [atributos de semântica](#atributos-de-semântica) for attribute constants
 generated from the semantic conventions.
 
 Veja [attribute naming](/docs/specs/semconv/general/naming/) for guidance on
@@ -586,8 +586,8 @@ instrumentation.
 - [TracerProvider](#tracerprovider): O ponto de entrada para a API de traces.
 - [MeterProvider](#meterprovider): O ponto de entrada para a API de métricas.
 - [LoggerProvider](#loggerprovider): O ponto de entrada para a API de logs.
-- [ContextPropagators](#contextopropagators): O ponto de entrada para a API de
-  context propagation.
+- [Propagação de Contexto](#propagação-de-contexto): O ponto de entrada para a
+  API de context propagation.
 
 O trecho de código a seguir explora o uso da API do `OpenTelemetry`:
 
@@ -630,7 +630,7 @@ Read more about
 [GlobalOpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/GlobalOpenTelemetry.html)
 holds a global singleton [OpenTelemetry](#opentelemetry) instance.
 
-Instrumentation should avoid using `GlobalOpenTelemetry`. Instead, accept
+Instrumentoation should avoid using `GlobalOpenTelemetry`. Instead, accept
 `OpenTelemetry` as an initialization argument and default to the
 [Noop implementation](#noop-implementation) if not set. There is an exception to
 this rule: the `OpenTelemetry` instance installed by the
@@ -684,14 +684,14 @@ public class GlobalOpenTelemetryUsage {
 
 [TracerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/TracerProvider.html)
 is the API entry point for traces and provides [Traços](#traços). See
-[providers and scopes](#providers-and-scopes) for information on providers and
+[provedores e escopos](#provedores-e-escopos) para informação on providers and
 scopes.
 
 #### Traços
 
 [Traços](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/Tracer.html)
 is used to [registros de trechos](#trechos) for an instrumentation scope. See
-[providers and scopes](#providers-and-scopes) for information on providers and
+[provedores e escopos](#provedores-e-escopos) para informação on providers and
 scopes.
 
 #### Trechos
@@ -704,7 +704,7 @@ are used to construct and record data to spans.
 `SpanBuilder` is used to add data to a span before starting it by calling
 `Span startSpan()`. Data can be added / updated after starting by calling
 various `Span` update methods. The data provided to `SpanBuilder` before
-starting is provided as an input to [Samplers](../sdk/#sampler).
+starting is provided as an input to [Samplers](../sdk/#amostrador).
 
 O trecho de código a seguir explora o uso da API `SpanBuilder`:
 
@@ -877,21 +877,21 @@ public class SpanAndContextUsage {
 ### MeterProvider
 
 [MeterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/MeterProvider.html)
-is the API entry point for metrics and provides [Meters](#meter). See
-[providers and scopes](#providers-and-scopes) for information on providers and
-scopes.
+é um ponto de entrada da API para métricas e provedores [Medidores](#Medidor).
+Veja [provedores e escopos](#provedores-e-escopos) para informação de provedores
+e escopos.
 
-#### Meter
+#### Medidor
 
-[Meter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/Meter.html)
-is used to obtain instruments for a particular
-[instrumentation scope](#providers-and-scopes). See
-[providers and scopes](#providers-and-scopes) for information on providers and
-scopes. There are a variety of instruments, each with different semantics and
-default behavior in the SDK. It's important to choose the right instrument for
-each particular use case:
+[Medidor](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/Meter.html)
+é usado para obter instrumentação de um
+[escopo de instrumentação](#provedores-e-escopos) particular. Veja
+[provedores e escopos](#provedores-e-escopos) para informação de provedores e
+escopos. Existem uma variedade de instrumentações, cada uma com uma semântica
+diferente e com comportamentes padrões no SDK. É importante escolher a
+instrumentação correta para cada particular caso de Uso:
 
-| Instrument                                  | Sync or Async | Descrição                                                                          | Example                                                 | Default SDK Aggregation                                                                        |
+| Instrumento                                 | Sync or Async | Descrição                                                                          | Exemplo                                                 | Default SDK Aggregation                                                                        |
 | ------------------------------------------- | ------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | [Contador](#contador)                       | sync          | Record monotonic (positive) values.                                                | Record user logins                                      | [sum (monotonic=true)](/docs/specs/otel/metrics/sdk/#sum-aggregation)                          |
 | [Contador Assíncrono](#contador-assíncrono) | async         | Observe monotonic sums.                                                            | Observe number of classes loaded in the JVM             | [sum (monotonic=true)](/docs/specs/otel/metrics/sdk/#sum-aggregation)                          |
@@ -899,7 +899,7 @@ each particular use case:
 | [Async UpDownCounter](#async-updowncounter) | async         | Observe non-monotonic (positive and negative) sums.                                | Observe JVM memory pool usage                           | [sum (monotonic=false)](/docs/specs/otel/metrics/sdk/#sum-aggregation)                         |
 | [Histograma](#histograma)                   | sync          | Record monotonic (positive) values where the distribution is important.            | Record duration of HTTP requests processed by server    | [ExplicitBucketHistogram](/docs/specs/otel/metrics/sdk/#explicit-bucket-histogram-aggregation) |
 | [Medidor](#medidor)                         | sync          | Record the latest value where spatial re-aggregation does not make sense **[1]**.  | Record temperature                                      | [LastValue](/docs/specs/otel/metrics/sdk/#last-value-aggregation)                              |
-| [Medidor Assíncrono](#medidor-assíncrono)   | async         | Observe the latest value where spatial re-aggregation does not make sense **[1]**. | Observe CPU utilization                                 | [LastValue](/docs/specs/otel/metrics/sdk/#last-value-aggregation)                              |
+| [Medidor Assíncrono](#contador-assíncrono)  | async         | Observe the latest value where spatial re-aggregation does not make sense **[1]**. | Observe CPU utilization                                 | [LastValue](/docs/specs/otel/metrics/sdk/#last-value-aggregation)                              |
 
 **[1]**: Spatial re-aggregation is the process of merging attribute streams by
 dropping attributes which are not needed. For example, given series with
@@ -921,8 +921,9 @@ The instrument APIs have share a variety of features:
 - Record values which are `long` or `double`, which is configured via the
   builder.
 
-See [metric guidelines](/docs/specs/semconv/general/metrics/#general-guidelines)
-for details on metric naming and units.
+Veja
+[metric guidelines](/docs/specs/semconv/general/metrics/#general-guidelines) for
+details on metric naming and units.
 
 See
 [guidelines for instrumentation library authors](/docs/specs/otel/metrics/supplementary-guidelines/#guidelines-for-instrumentation-library-authors)
@@ -1171,7 +1172,7 @@ public class AsyncUpDownCounterUsage {
 ```
 <!-- prettier-ignore-end -->
 
-#### Histogram
+#### Histograma
 
 [DoubleHistogram](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/DoubleHistogram.html)
 and
@@ -1358,7 +1359,7 @@ public class AsyncGaugeUsage {
 
 [LoggerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/logs/LoggerProvider.html)
 is the API entry point for logs and provides [Loggers](#logger). See
-[providers and scopes](#providers-and-scopes) for information on providers and
+[provedores e escopos](#provedores-e-escopos) para informação on providers and
 scopes.
 
 {{% alert %}} {{% param logBridgeWarning %}} {{% /alert %}}
@@ -1368,7 +1369,7 @@ scopes.
 [Logger](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/logs/Logger.html)
 is used to [emit log records](#logrecordbuilder) for an
 [instrumentation scope](#providers-and-scopes). See
-[providers and scopes](#providers-and-scopes) for information on providers and
+[provedores e escopos](#provedores-e-escopos) para informação on providers and
 scopes.
 
 #### LogRecordBuilder
@@ -1452,7 +1453,7 @@ public class LogRecordUsage {
 The `OpenTelemetry#noop()` method provides access to a noop implementation of
 [OpenTelemetry](#opentelemetry) and all API components it provides access to. As
 the name suggests, the noop implementation does nothing and is designed to have
-no impact on performance. Instrumentation may see impact on performance even
+no impact on performance. Instrumentoation may see impact on performance even
 when the noop is used if it is computing / allocating attribute values and other
 data required to record the telemetry. The noop is a useful default instance of
 `OpenTelemetry` when a user has not configured and installed a concrete

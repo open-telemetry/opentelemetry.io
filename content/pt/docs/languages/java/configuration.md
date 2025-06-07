@@ -706,8 +706,7 @@ public class CustomTextMapPropagatorProvider implements ConfigurablePropagatorPr
 Configurações declarativas estão em desenvolvimento atualmente. Elas permitem a
 configuração baseada em arquivos YAML, conforme descrito em
 [configuração do OpenTelemetry](https://github.com/open-telemetry/opentelemetry-configuration)
-e
-[Configurações declarativas](/docs/specs/otel/configuration/#configurações-declarativas).
+e [Configurações declarativas](#configurações-declarativas).
 
 Para usar, inclua
 `io.opentelemetry:opentelemetry-sdk-extension-incubator:{{% param vers.otel %}}-alpha`

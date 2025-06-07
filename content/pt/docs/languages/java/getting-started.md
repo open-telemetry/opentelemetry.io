@@ -268,12 +268,17 @@ Para mais:
 [métricas]: /docs/concepts/signals/metrics/
 [registros]: /docs/concepts/signals/logs/
 [annotations]: /docs/zero-code/java/agent/annotations/
+
 <!-- TODO: Ajustar esses links.
 [configuração do Java agent]: /docs/zero-code/java/agent/configuration/#configuração-do-java-agent
 [exportadores de console]: /docs/languages/java/configuration/#propriedades-exportadores
 [exportadores]: /docs/languages/java/configuration/#propriedades-exportadores -->
-[java-vers]: https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#language-version-compatibility
+
+[java-vers]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#language-version-compatibility
 [instrumentação manual]: ../instrumentation
-[opentelemetry-javaagent.jar]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
-[releases]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases
+[opentelemetry-javaagent.jar]:
+  https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
+[releases]:
+  https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases
 [Spring Boot]: https://spring.io/guides/gs/spring-boot/
