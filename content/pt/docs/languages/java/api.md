@@ -1453,9 +1453,9 @@ public class LogRecordUsage {
 The `OpenTelemetry#noop()` method provides access to a noop implementation of
 [OpenTelemetry](#opentelemetry) and all API components it provides access to. As
 the name suggests, the noop implementation does nothing and is designed to have
-no impact on performance. Instrumentação may see impact on performance even
-when the noop is used if it is computing / allocating attribute values and other
-data required to record the telemetry. The noop is a useful default instance of
+no impact on performance. Instrumentação may see impact on performance even when
+the noop is used if it is computing / allocating attribute values and other data
+required to record the telemetry. The noop is a useful default instance of
 `OpenTelemetry` when a user has not configured and installed a concrete
 implementation such as the [SDK](../sdk/).
 
