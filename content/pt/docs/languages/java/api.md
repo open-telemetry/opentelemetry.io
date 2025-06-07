@@ -22,8 +22,8 @@ A Api é um conjunto de classes e interfaces para registar telemetria através d
 sinais chaves de observabilidade. O [SDK](../sdk/) é uma referência integrada da
 implementação da API, [configuração](../configuration/) para processar e
 exportar telemetria. Essa página é uma visão geral de conceitos da API,
-incluindo descrições, links para documentações relevantes (Javadocs), coordenadas
-de artefato, e exemplos de uso da API.
+incluindo descrições, links para documentações relevantes (Javadocs),
+coordenadas de artefato, e exemplos de uso da API.
 
 A Api consiste nos seguintes componentes principais:
 
@@ -33,8 +33,8 @@ A Api consiste nos seguintes componentes principais:
 - [TracerProvider](#tracerprovider): O ponto de entrada para a API de traços.
 - [MeterProvider](#meterprovider): O ponto de entrada para a API de métricas.
 - [LoggerProvider](#loggerprovider): O ponto de entrada para a API de logs.
-- [OpenTelemetry](#opentelemetry): Uma estrutura para componentes principais da API (ou
-  seja, `TracerProvider`, `MeterProvider`, `LoggerProvider`,
+- [OpenTelemetry](#opentelemetry): Uma estrutura para componentes principais da
+  API (ou seja, `TracerProvider`, `MeterProvider`, `LoggerProvider`,
   `ContextPropagators`) que é conveniente passar para a instrumentação.
 
 A Api é desenvolvida para suportar múltiplos ambientes. Duas implementações são
@@ -384,8 +384,8 @@ bagagem, implementação da chave `TextMapPropagator`, e uma dependência do
 
 Provedores e escopos são conceitos recorrentes na API do OpenTelemetry. Um
 escopo é uma unidade lógica dentro da aplicação que contém telemetrias
-associadas. Um provedor provê componentes para gravação de telemetria relativo
-a um escopo particular:
+associadas. Um provedor provê componentes para gravação de telemetria relativo a
+um escopo particular:
 
 - [TracerProvider](#tracerprovider) fornece escopo para [Traços](#traços) para
   registrar trechos.
@@ -1550,9 +1550,9 @@ organizado pelo domínio. O projeto de
 gera constantes de convenção semântica, onde podem ser utilizadas para ajudar a
 instrumentação conforme:
 
-| Descrição                                           | Artefato                                                                                     |
-| --------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| Código gerado para convenções semânticas estáveis   | `io.opentelemetry.semconv:opentelemetry-semconv:{{% param vers.semconv %}}-alpha`            |
+| Descrição                                          | Artefato                                                                                     |
+| -------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Código gerado para convenções semânticas estáveis  | `io.opentelemetry.semconv:opentelemetry-semconv:{{% param vers.semconv %}}-alpha`            |
 | Código gerado para convenções semânticas incubadas | `io.opentelemetry.semconv:opentelemetry-semconv-incubating:{{% param vers.semconv %}}-alpha` |
 
 {{% alert %}} Enquanto `opentelemetry-semconv` e
