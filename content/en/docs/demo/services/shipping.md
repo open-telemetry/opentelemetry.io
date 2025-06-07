@@ -37,7 +37,7 @@ fn get_resource() -> Resource {
 ```
 
 With `get_resource()` in place, the function can be called multiple times across
-all providers initialization.
+all provider initializations.
 
 ### Initializing Tracer Provider
 
@@ -81,7 +81,7 @@ fn init_meter_provider() -> opentelemetry_sdk::metrics::SdkMeterProvider {
 
 ### Initializing Logger Provider
 
-For logs, as the Shipping service uses Tracing, the `OpenTelemetryTracingBridge`
+For logs, the Shipping service uses Tracing, so the `OpenTelemetryTracingBridge`
 is used to bridge logs from the tracing crate to OpenTelemetry.
 
 ```rust
@@ -107,7 +107,7 @@ fn init_logger_provider() {
 ### Instrumentation Initialization
 
 After defining the functions to initialize the providers for Traces, Metrics and
-Logs, a public function `init_otel()` is create:
+Logs, a public function `init_otel()` is created:
 
 ```rust
 pub fn init_otel() -> Result<()> {
@@ -118,7 +118,7 @@ pub fn init_otel() -> Result<()> {
 }
 ```
 
-This function basically calls all initializers and returns `OK(())` if
+This function calls all initializers and returns `OK(())` if
 everything starts properly.
 
 The `init_otel()` function is then called on `main`:
@@ -142,15 +142,11 @@ async fn main() -> std::io::Result<()> {
 
 ### Instrumentation Configuration
 
-Now that the providers are configured and initialized, when configuring server
-side and client side, Shipping takes advantage of the
-[`opentelemetry-instrumentation-actix-web` crate](https://crates.io/crates/opentelemetry-instrumentation-actix-web)
-to instrument the application.
+With the providers now configured and initialized, Shipping uses the [`opentelemetry-instrumentation-actix-web` crate](https://crates.io/crates/opentelemetry-instrumentation-actix-web) to instrument the application during server-side and client-side configuration.
 
-#### Server Side
+#### Server side
 
-To have Traces and Metrics automatically created when receiving requests, it is
-only required to wrap the server with `RequestTracing` and `RequestMetrics`:
+The server is wrapped with `RequestTracing` and `RequestMetrics` to automatically create Traces and Metrics when receiving requests:
 
 ```rust
 HttpServer::new(|| {
@@ -162,10 +158,9 @@ HttpServer::new(|| {
 })
 ```
 
-#### Client Side
+#### Client side
 
-When making a request to another service, it is only required to add
-`trace_request()` to the call:
+When making a request to another service, `trace_request()` is added to the call:
 
 ```rust
 let mut response = client
@@ -176,16 +171,16 @@ let mut response = client
     .map_err(|err| anyhow::anyhow!("Failed to call quote service: {err}"))?;
 ```
 
-### Manual Instrumentation
+### Manual instrumentation
 
 The `opentelemetry-instrumentation-actix-web` crate allows us to instrument
-server and client side by simply adding the commands mentioned in the previous
+server and client side by adding the commands mentioned in the previous
 section.
 
 In the Demo we also demonstrate how to manually enhance automatically created
-spans and, hot to create manual metrics on the application.
+spans and how to create manual metrics on the application.
 
-#### Manual Spans
+#### Manual spans
 
 In the following snippet, the current active span is enhanced with a span event
 and a span attribute:
@@ -202,7 +197,7 @@ Ok(get_active_span(|span| {
 }))
 ```
 
-#### Manual Metrics
+#### Manual metrics
 
 A custom metric counter is created to count how many items are in the shipping
 request:
@@ -215,7 +210,7 @@ counter.add(count as u64, &[]);
 
 ### Logs
 
-As the Shipping service is using Tracing as log interface it takes advantage of
+Because the Shipping service is using Tracing as a log interface, it uses
 the `opentelemetry-appender-tracing` crate to bridge Tracing logs into
 OpenTelemetry logs.
 
@@ -228,7 +223,7 @@ let otel_layer = OpenTelemetryTracingBridge::new(&logger_provider);
 tracing_subscriber::registry().with(otel_layer).init();
 ```
 
-With that in place, we can simply use Tracing as we would normally, eg:
+With that in place, we can use Tracing as we would normally, for example:
 
 ```rust
 info!(
