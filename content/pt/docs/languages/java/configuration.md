@@ -56,7 +56,7 @@ configurações necessárias. Quando uma capacidade especifica não é suportada
 mecanismos de configuração de alto nível, pode ser necessário recorrer à
 configuração via código.
 
-As seções de [componentes do SDK](./sdk.md/#componentes-do-sdk) demonstram
+As seções de [componentes do SDK](../sdk/#componentes-do-sdk) demonstram
 exemplos simples de configuração via código para as principais áreas do SDK
 voltadas ao usuário. Consulte o código para uma referência completa da API.
 
