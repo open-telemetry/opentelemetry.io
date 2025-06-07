@@ -154,16 +154,16 @@ contexto de rastreamento:
 
 Para essa correlação funcionar, o contexto de rastreamento precisa ser propagado
 através da aplicação (entre chamada de funções e processos), e entre limites da
-aplicação. A [API de contexto](../api/#context-api) facilita isso.
+aplicação. A [API de contexto](../api/#contexto-da-api) facilita isso.
 
 A instrumentação deve ser escrita de uma maneira que seja ciente do contexto:
 
 - Bibliotecas que representam um ponto de entrada da aplicação (i.e. servidores
   HTTP, consumidores de mensagens, etc.) devem
-  [extrair o contexto](../api/#contextpropagators) de mensagens recebidas.
+  [extrair o contexto](../api/#propagação-de-contexto) de mensagens recebidas.
 - Bibliotecas que representam um ponto de saída de uma aplicação (ex. clientes
   HTTP, produtores de mensagens, etc.) devem
-  [injetar o contexto](../api/#contextpropagators) em mensagens de saída.
+  [injetar o contexto](../api/#propagação-de-contexto) em mensagens de saída.
 - Bibliotecas devem passar implicitamente ou explicitamente o
   [contexto](../api/#context) através da pilha de chamadas e entre qualquer
   processo.
@@ -178,7 +178,7 @@ métricas, tipos de métricas, e atributos chave, valor, e níveis de requisitos
 Ao escrever instrumentação, consulte a convenção semântica e confirme que
 quaisquer convenções aplicáveis ao domínio estejam sendo seguidas.
 
-O OpenTelemetry Java [publica artefatos](../api/#semantic-attributes) para
+O OpenTelemetry Java [publica artefatos](../api/#atributos-de-semântica) para
 auxiliar a conformidade com a convenção semântica, incluindo constantes geradas
 para chaves e valores de atributos.
 

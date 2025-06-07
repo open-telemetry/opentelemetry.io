@@ -31,7 +31,7 @@ A API consiste nos seguintes componentes principais:
   através de uma aplicação e entre limites de aplicações, incluindo contexto de
   rastros e bagagem.
 - [TracerProvider](#tracerprovider): O ponto de entrada para a API de traços.
-- [MeterProvider](#meterprovider): O ponto de entrada para a API de métricas.
+- [MeterProvider](#medidorprovider): O ponto de entrada para a API de métricas.
 - [LoggerProvider](#loggerprovider): O ponto de entrada para a API de logs.
 - [OpenTelemetry](#opentelemetry): Uma estrutura para componentes principais da
   API (ou seja, `TracerProvider`, `MeterProvider`, `LoggerProvider`,
@@ -103,7 +103,7 @@ API do OpenTelemetry:
 
 - Os [trechos](#trechos) ativos atualmente são armazenados no contexto, e por
   padrão um trecho pai é atribuído para qualquer trecho ativo no contexto atual.
-- As medições registradas em [instrumentos de métricas](#meter) aceitam um
+- As medições registradas em [instrumentos de métricas](#medidor) aceitam um
   argumento de contexto, usado para vincular as medições a trechos por meio de
   [exemplos](/docs/specs/otel/metrics/data-model/#exemplars) e por padrão
   utilizam o trecho que estiver ativo no contexto atual.
@@ -389,7 +389,7 @@ um escopo particular:
 
 - [TracerProvider](#tracerprovider) fornece escopo para [Traços](#traços) para
   registrar trechos.
-- [MeterProvider](#meterprovider) fornece escopo para [Meters](#meter) para
+- [MeterProvider](#medidorprovider) fornece escopo para [Meters](#medidor) para
   registrar métricas.
 - [LoggerProvider](#loggerprovider) fornece escopo para [Loggers](#logger) para
   registrar logs.
@@ -471,7 +471,7 @@ is a bundle of key value pairs representing the
 `Attributes` are a recurring concept in the OpenTelemetry API:
 
 - [Spans](#trechos), span events, and span links have attributes.
-- The measurements recorded to [metric instruments](#meter) have attributes.
+- The measurements recorded to [metric instruments](#medidor) have attributes.
 - [LogRecords](#logrecordbuilder) have attributes.
 
 Veja [atributos de semântica](#atributos-de-semântica) for attribute constants
@@ -584,7 +584,7 @@ instrumentation.
 `OpenTelemetry` consiste em:
 
 - [TracerProvider](#tracerprovider): O ponto de entrada para a API de traces.
-- [MeterProvider](#meterprovider): O ponto de entrada para a API de métricas.
+- [MeterProvider](#medidorprovider): O ponto de entrada para a API de métricas.
 - [LoggerProvider](#loggerprovider): O ponto de entrada para a API de logs.
 - [Propagação de Contexto](#propagação-de-contexto): O ponto de entrada para a
   API de context propagation.
@@ -648,7 +648,7 @@ instrumentation. This guarantee surfaces initialization ordering issues: calling
 `GlobalOpenTelemetry.set()` too late (ou seja, after instrumentation has called
 `GlobalOpenTelemetry.get()`) triggers an exception rather than silently failing.
 
-If [autoconfigure](../configuration/#zero-code-sdk-autoconfigure) is present,
+If [autoconfigure](../configuration/#auto-configuração-sem-código) is present,
 `GlobalOpenTelemetry` can be automatically initialized by setting
 `-Dotel.java.global-autoconfigure.enabled=true` (or via env var
 `export OTEL_JAVA_GLOBAL_AUTOCONFIGURE_ENABLED=true`). When enabled, the first
@@ -877,7 +877,7 @@ public class SpanAndContextUsage {
 ### MeterProvider
 
 [MeterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/MeterProvider.html)
-é um ponto de entrada da API para métricas e provedores [Medidores](#Medidor).
+é um ponto de entrada da API para métricas e provedores [Medidores](#medidor).
 Veja [provedores e escopos](#provedores-e-escopos) para informação de provedores
 e escopos.
 
@@ -1367,15 +1367,15 @@ scopes.
 #### Logger
 
 [Logger](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/logs/Logger.html)
-is used to [emit log records](#logrecordbuilder) for an
-[instrumentation scope](#providers-and-scopes). See
+é usado para [emit log records](#logrecordbuilder) for an
+[instrumentation scope](#provedores-e-escopos). Veja
 [provedores e escopos](#provedores-e-escopos) para informação on providers and
 scopes.
 
 #### LogRecordBuilder
 
 [LogRecordBuilder](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/logs/LogRecordBuilder.html)
-is used to construct and emit log records.
+é usado para construct and emit log records.
 
 O trecho de código a seguir explora o uso da API `LogRecordBuilder`:
 
