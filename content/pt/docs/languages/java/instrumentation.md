@@ -165,7 +165,7 @@ A instrumentação deve ser escrita de uma maneira que seja ciente do contexto:
   HTTP, produtores de mensagens, etc.) devem
   [injetar o contexto](../api/#propagação-de-contexto) em mensagens de saída.
 - Bibliotecas devem passar implicitamente ou explicitamente o
-  [contexto](../api/#context) através da pilha de chamadas e entre qualquer
+  [contexto](../api/#contexto) através da pilha de chamadas e entre qualquer
   processo.
 
 ## Convenção semântica {#semantic-conventions}

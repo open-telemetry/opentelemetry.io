@@ -31,7 +31,7 @@ A API consiste nos seguintes componentes principais:
   através de uma aplicação e entre limites de aplicações, incluindo contexto de
   rastros e bagagem.
 - [TracerProvider](#tracerprovider): O ponto de entrada para a API de traços.
-- [MeterProvider](#medidorprovider): O ponto de entrada para a API de métricas.
+- [MeterProvider](#meterprovider): O ponto de entrada para a API de métricas.
 - [LoggerProvider](#loggerprovider): O ponto de entrada para a API de logs.
 - [OpenTelemetry](#opentelemetry): Uma estrutura para componentes principais da
   API (ou seja, `TracerProvider`, `MeterProvider`, `LoggerProvider`,
@@ -389,7 +389,7 @@ um escopo particular:
 
 - [TracerProvider](#tracerprovider) fornece escopo para [Traços](#traços) para
   registrar trechos.
-- [MeterProvider](#medidorprovider) fornece escopo para [Meters](#medidor) para
+- [MeterProvider](#meterprovider) fornece escopo para [Meters](#medidor) para
   registrar métricas.
 - [LoggerProvider](#loggerprovider) fornece escopo para [Loggers](#logger) para
   registrar logs.
@@ -584,7 +584,7 @@ instrumentation.
 `OpenTelemetry` consiste em:
 
 - [TracerProvider](#tracerprovider): O ponto de entrada para a API de traces.
-- [MeterProvider](#medidorprovider): O ponto de entrada para a API de métricas.
+- [MeterProvider](#meterprovider): O ponto de entrada para a API de métricas.
 - [LoggerProvider](#loggerprovider): O ponto de entrada para a API de logs.
 - [Propagação de Contexto](#propagação-de-contexto): O ponto de entrada para a
   API de context propagation.
