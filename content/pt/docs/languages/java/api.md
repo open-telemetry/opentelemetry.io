@@ -32,9 +32,9 @@ A Api consiste nos seguintes componentes principais:
 - [TracerProvider](#tracerprovider): O ponto de entrada para a API de traços.
 - [MeterProvider](#meterprovider): O ponto de entrada para a API de métricas.
 - [LoggerProvider](#loggerprovider): O ponto de entrada para a API de logs.
-- [OpenTelemetry](#opentelemetry): A holder para top-level API components (ou
+- [OpenTelemetry](#opentelemetry): Uma estrutura para componentes principais da API (ou
   seja, `TracerProvider`, `MeterProvider`, `LoggerProvider`,
-  `ContextPropagators`) which is convenient to pass to instrumentation.
+  `ContextPropagators`) que é conveniente passar para a instrumentação.
 
 A Api é desenvolvida para suportar múltiplos ambientes. Duas implementações são
 providenciadas pelo OpenTelemetry:
