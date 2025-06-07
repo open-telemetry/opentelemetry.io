@@ -437,19 +437,19 @@ public class ProvidersAndScopes {
     Tracer tracer =
         tracerProvider
             .tracerBuilder(SCOPE_NAME)
-            .setInstrumentoationVersion(SCOPE_VERSION)
+            .setInstrumentaçãoVersion(SCOPE_VERSION)
             .setSchemaUrl(SCOPE_SCHEMA_URL)
             .build();
     Meter meter =
         meterProvider
             .meterBuilder(SCOPE_NAME)
-            .setInstrumentoationVersion(SCOPE_VERSION)
+            .setInstrumentaçãoVersion(SCOPE_VERSION)
             .setSchemaUrl(SCOPE_SCHEMA_URL)
             .build();
     Logger logger =
         loggerProvider
             .loggerBuilder(SCOPE_NAME)
-            .setInstrumentoationVersion(SCOPE_VERSION)
+            .setInstrumentaçãoVersion(SCOPE_VERSION)
             .setSchemaUrl(SCOPE_SCHEMA_URL)
             .build();
 
@@ -630,7 +630,7 @@ Read more about
 [GlobalOpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/GlobalOpenTelemetry.html)
 holds a global singleton [OpenTelemetry](#opentelemetry) instance.
 
-Instrumentoation should avoid using `GlobalOpenTelemetry`. Instead, accept
+Instrumentação should avoid using `GlobalOpenTelemetry`. Instead, accept
 `OpenTelemetry` as an initialization argument and default to the
 [Noop implementation](#noop-implementation) if not set. There is an exception to
 this rule: the `OpenTelemetry` instance installed by the
@@ -888,7 +888,7 @@ e escopos.
 [escopo de instrumentação](#provedores-e-escopos) particular. Veja
 [provedores e escopos](#provedores-e-escopos) para informação de provedores e
 escopos. Existem uma variedade de instrumentações, cada uma com uma semântica
-diferente e com comportamentes padrões no SDK. É importante escolher a
+diferente e com comportamentos padrões no SDK. É importante escolher a
 instrumentação correta para cada particular caso de Uso:
 
 | Instrumento                                 | Sync or Async | Descrição                                                                          | Exemplo                                                 | Default SDK Aggregation                                                                        |
@@ -1453,13 +1453,13 @@ public class LogRecordUsage {
 The `OpenTelemetry#noop()` method provides access to a noop implementation of
 [OpenTelemetry](#opentelemetry) and all API components it provides access to. As
 the name suggests, the noop implementation does nothing and is designed to have
-no impact on performance. Instrumentoation may see impact on performance even
+no impact on performance. Instrumentação may see impact on performance even
 when the noop is used if it is computing / allocating attribute values and other
 data required to record the telemetry. The noop is a useful default instance of
 `OpenTelemetry` when a user has not configured and installed a concrete
 implementation such as the [SDK](../sdk/).
 
-O trecho de código a seguir explora o uso da API `OpenTelemetry# API usage:
+O trecho de código a seguir explora o uso da API `OpenTelemetry#noop()`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/NoopUsage.java"?>
