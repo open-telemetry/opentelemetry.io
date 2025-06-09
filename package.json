@@ -143,7 +143,7 @@
   },
   "dependencies": {
     "@opentelemetry/api": "^1.9.0",
-    "@opentelemetry/auto-instrumentations-web": "^0.47.0",
+    "@opentelemetry/auto-instrumentations-web": "^0.48.0",
     "@opentelemetry/context-zone": "^2.0.1",
     "@opentelemetry/core": "^2.0.1",
     "@opentelemetry/exporter-trace-otlp-http": "^0.201.1",
