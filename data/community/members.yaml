@@ -446,6 +446,7 @@ maintainers:
       - semconv-container-approvers
       - semconv-k8s-approvers
       - semconv-system-approvers
+      - specs-entities-approvers
     html_url: https://github.com/dmitryax
     avatar_url: https://avatars.githubusercontent.com/u/6628631?v=4
   - name: drewrelmas
@@ -464,6 +465,7 @@ maintainers:
       - javascript-triagers
       - sandbox-web-js-maintainers
       - semconv-feature-flag-approvers
+      - specs-entities-approvers
       - specs-semconv-approvers
       - specs-triagers
     html_url: https://github.com/dyladan
@@ -670,6 +672,7 @@ maintainers:
       - java-triagers
       - semconv-cicd-approvers
       - semconv-security-approvers
+      - specs-entities-approvers
       - specs-semconv-approvers
       - specs-semconv-maintainers
       - specs-triagers
@@ -1175,6 +1178,7 @@ maintainers:
       - semconv-log-approvers
       - sig-developer-experience-approvers
       - sig-developer-experience-maintainers
+      - specs-entities-approvers
       - specs-semconv-approvers
       - specs-trace-approvers
       - specs-triagers
@@ -1226,6 +1230,7 @@ maintainers:
       - opamp-spec-maintainers
       - profiling-approvers
       - profiling-triagers
+      - specs-entities-approvers
       - specs-triagers
     html_url: https://github.com/tigrannajaryan
     avatar_url: https://avatars.githubusercontent.com/u/4194920?v=4
@@ -1934,6 +1939,11 @@ approvers:
       - ruby-contrib-approvers
     html_url: https://github.com/simi
     avatar_url: https://avatars.githubusercontent.com/u/193936?v=4
+  - name: smith
+    teams:
+      - specs-entities-approvers
+    html_url: https://github.com/smith
+    avatar_url: https://avatars.githubusercontent.com/u/9912?v=4
   - name: sourabh1007
     teams:
       - semconv-db-approvers
