@@ -14171,6 +14171,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-10T23:17:29.914581514Z"
   },
+  "https://github.com/smith": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-08T22:46:32.118682512Z"
+  },
   "https://github.com/sokoide": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T15:28:13.585Z"
