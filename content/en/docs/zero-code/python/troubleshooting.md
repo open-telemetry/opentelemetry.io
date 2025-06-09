@@ -13,21 +13,28 @@ install if you’re running a slim version of Linux, such as CentOS.
 
 <!-- markdownlint-disable blanks-around-fences -->
 
-- CentOS
-  ```sh
-  yum -y install python3-devel
-  yum -y install gcc-c++
-  ```
-- Debian/Ubuntu
-  ```sh
-  apt install -y python3-dev
-  apt install -y build-essential
-  ```
-- Alpine
-  ```sh
-  apk add python3-dev
-  apk add build-base
-  ```
+{{< tabpane text=true >}} {{% tab "CentOS" %}}
+
+```sh
+yum -y install python3-devel
+yum -y install gcc-c++
+```
+
+{{% /tab %}} {{% tab "Debian/Ubuntu" %}}
+
+```sh
+apt install -y python3-dev
+apt install -y build-essential
+```
+
+{{% /tab %}} {{% tab "Alpine" %}}
+
+```sh
+apk add python3-dev
+apk add build-base
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 {#bootstrap-using-uv}
 
