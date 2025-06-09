@@ -47,8 +47,8 @@ instrumentation libraries to be installed. For more information, see
 
 {{% alert title="Using `uv`?" color="warning" %}} If you are using the
 [uv](https://docs.astral.sh/uv/) package manager, you might face some difficulty
-when running `opentelemetry-bootstrap -a install`. See troubleshooting for
-[Bootstrap using uv](./troubleshooting#bootstrap-using-uv). {{% /alert %}}
+when running `opentelemetry-bootstrap -a install`. For details, see
+[Bootstrap using uv](troubleshooting/#bootstrap-using-uv). {{% /alert %}}
 
 {#configuring-the-agent}
 
