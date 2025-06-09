@@ -45,10 +45,12 @@ Running `opentelemetry-bootstrap` without arguments lists the recommended
 instrumentation libraries to be installed. For more information, see
 [`opentelemetry-bootstrap`](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation#opentelemetry-bootstrap).
 
-Note: if you are using the [uv](https://docs.astral.sh/uv/) package manager, you
+{{% alert title="Note" color="info" %}}
+If you are using the [uv](https://docs.astral.sh/uv/) package manager, you
 might face some difficulty when running `opentelemetry-bootstrap -a install`.
 See troubleshooting for
 [Bootstrap using uv](./troubleshooting#bootstrap-using-uv).
+{{% /alert %}}
 
 {#configuring-the-agent}
 
