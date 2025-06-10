@@ -36,23 +36,25 @@ react-native-app(React Native App):::typescript
 
 ad ---->|gRPC| flagd
 
+checkout -->|gRPC| currency
 checkout -->|gRPC| cart
-checkout --->|TCP| queue
+checkout -->|TCP| queue
+
 cart --> cache
 cart -->|gRPC| flagd
 
-checkout -->|gRPC| shipping
 checkout -->|gRPC| payment
 checkout --->|HTTP| email
-checkout -->|gRPC| currency
 checkout -->|gRPC| product-catalog
+checkout -->|HTTP| shipping
 
 fraud-detection -->|gRPC| flagd
 
 frontend -->|gRPC| ad
+frontend -->|gRPC| currency
 frontend -->|gRPC| cart
 frontend -->|gRPC| checkout
-frontend ---->|gRPC| currency
+frontend -->|HTTP| shipping
 frontend ---->|gRPC| recommendation
 frontend -->|gRPC| product-catalog
 
@@ -61,20 +63,18 @@ frontend-proxy -->|HTTP| frontend
 frontend-proxy -->|HTTP| flagd-ui
 frontend-proxy -->|HTTP| image-provider
 
-Internet -->|HTTP| frontend-proxy
-
-load-generator -->|HTTP| frontend-proxy
-
 payment -->|gRPC| flagd
 
 queue -->|TCP| accounting
 queue -->|TCP| fraud-detection
 
-recommendation -->|gRPC| product-catalog
 recommendation -->|gRPC| flagd
+recommendation -->|gRPC| product-catalog
 
 shipping -->|HTTP| quote
 
+Internet -->|HTTP| frontend-proxy
+load-generator -->|HTTP| frontend-proxy
 react-native-app -->|HTTP| frontend-proxy
 end
 

@@ -19,4 +19,4 @@ createdAt: 2024-11-20
 package:
   registry: go-collector
   name: go.opentelemetry.io/collector/confmap/provider/envprovider
-  version: v1.33.0
+  version: v1.34.0
