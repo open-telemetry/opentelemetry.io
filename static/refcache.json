@@ -27,6 +27,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:46:17.075695-04:00"
   },
+  "https://actix.rs/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-06T13:35:48.490118+02:00"
+  },
   "https://adalogics.com/": {
     "StatusCode": 200,
     "LastSeen": "2024-12-20T14:53:22.847313555Z"
@@ -698,6 +702,10 @@
   "https://crates.io/crates/opentelemetry-http": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T17:58:04.819Z"
+  },
+  "https://crates.io/crates/opentelemetry-instrumentation-actix-web": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-06T16:29:27.887003+02:00"
   },
   "https://crates.io/crates/opentelemetry-jaeger": {
     "StatusCode": 200,
@@ -19178,6 +19186,10 @@
   "https://tracetest.io/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-30T14:41:03.626469-05:00"
+  },
+  "https://tracing.rs/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-06T13:34:39.700999+02:00"
   },
   "https://traefik.io/traefik-hub/": {
     "StatusCode": 206,
