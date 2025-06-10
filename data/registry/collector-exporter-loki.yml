@@ -16,4 +16,4 @@ createdAt: 2020-10-22
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/lokiexporter
-  version: v0.127.0
+  version: v0.128.0

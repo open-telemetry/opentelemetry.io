@@ -18,4 +18,4 @@ createdAt: 2022-10-26
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/processor/logstransformprocessor
-  version: v0.127.0
+  version: v0.128.0
