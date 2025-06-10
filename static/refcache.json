@@ -431,6 +431,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-29T09:52:40.815112084Z"
   },
+  "https://cloud-native.slack.com/archives/C06TMJ2R0SK": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-09T18:16:57.899049077-07:00"
+  },
   "https://cloud-native.slack.com/archives/C076RUAGP37": {
     "StatusCode": 200,
     "LastSeen": "2024-08-20T08:40:41.563366481Z"
@@ -3242,6 +3246,10 @@
   "https://github.com/alxbl": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:15:17.843665-05:00"
+  },
+  "https://github.com/andrejkiri": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-09T15:43:31.222235663-07:00"
   },
   "https://github.com/andrewhsu": {
     "StatusCode": 206,
@@ -13450,6 +13458,10 @@
   "https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/otel-prom-interoperability/otel-prom-interoperability-survey.csv": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T17:02:02.426651-05:00"
+  },
+  "https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys/contributor-experience": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-09T15:43:31.81908286-07:00"
   },
   "https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys/getting-started": {
     "StatusCode": 206,
