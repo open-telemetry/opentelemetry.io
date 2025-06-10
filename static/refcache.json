@@ -15438,9 +15438,6 @@
   "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/": {
     "StatusCode": 206,
     "LastSeen": "2025-06-04T10:36:10.94505674Z"
-  "https://kubernetes.io/docs/reference/kubectl/": {
-    "StatusCode": 206,
-    "LastSeen": "2025-05-31T10:26:21.502766+05:30"
   },
   "https://kubernetes.io/docs/reference/labels-annotations-taints/": {
     "StatusCode": 206,
