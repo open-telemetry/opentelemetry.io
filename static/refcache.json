@@ -10963,6 +10963,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:52:08.286978-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/common/instrumentation-scope.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-09T21:09:21.297528-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/common/mapping-to-non-otlp.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:52:12.200641-05:00"
