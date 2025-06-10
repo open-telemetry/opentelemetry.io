@@ -15447,6 +15447,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-06-04T10:36:10.94505674Z"
   },
+  "https://kubernetes.io/docs/reference/kubectl/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-10T10:37:52.267350634Z"
+  },
   "https://kubernetes.io/docs/reference/labels-annotations-taints/": {
     "StatusCode": 206,
     "LastSeen": "2025-03-11T12:45:19.043389743Z"
