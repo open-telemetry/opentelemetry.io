@@ -144,7 +144,7 @@ meterProvider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(meterProvider)
 ```
 
-{{% alert title="Nota" color="info" %}}
+{{% alert title="Nota" %}}
 
 Existem predefinições de temporalidade para cada tipo de instrumentação. Essas
 predefinições podem ser definidas com a variável de ambiente

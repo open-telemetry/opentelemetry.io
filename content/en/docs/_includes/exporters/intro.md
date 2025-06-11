@@ -42,7 +42,7 @@ them up.
 
 {{ if $zeroConfigPageExists }}
 
-{{% alert title=Note color=info %}}
+{{% alert title=Note %}}
 
 If you use [zero-code instrumentation](</docs/zero-code/{{ $langIdAsPath }}>),
 you can learn how to set up exporters by following the
@@ -58,7 +58,7 @@ you can learn how to set up exporters by following the
 
 ### Collector Setup
 
-{{% alert title=Note color=info %}}
+{{% alert title=Note %}}
 
 If you have a OTLP collector or backend already set up, you can skip this
 section and [setup the OTLP exporter dependencies](#otlp-dependencies) for your

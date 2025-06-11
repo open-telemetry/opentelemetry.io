@@ -50,7 +50,7 @@ references are available:
 
 {{% apidocs %}}
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 The list above is aliased to [`/api`](/api).
 

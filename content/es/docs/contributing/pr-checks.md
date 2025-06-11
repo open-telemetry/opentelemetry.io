@@ -129,7 +129,7 @@ que quieres que el comprobador de enlaces ignore: `?no-link-check`. Por ejemplo,
 <https:/some-example.org?no-link-check> es ignorado por el comprobador de
 enlaces.
 
-{{% alert title="Maintainers tip" color=info %}}
+{{% alert title="Maintainers tip" %}}
 
 Los mantenedores pueden ejecutar el siguiente script justo después de haber
 ejecutado el comprobador de enlaces para que Puppeteer intente validar enlaces

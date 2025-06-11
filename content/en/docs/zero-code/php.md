@@ -196,7 +196,7 @@ to outgoing HTTP requests.
 
 ## How it works
 
-{{% alert title="Optional" color="info" %}} You can skip over this section if
+{{% alert title="Optional" %}} You can skip over this section if
 you just want to get up and running quickly, and there are suitable
 instrumentation libraries for your application. {{% /alert %}}
 

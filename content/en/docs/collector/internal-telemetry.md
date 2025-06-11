@@ -71,7 +71,7 @@ service:
                 port: 8888
 ```
 
-{{% alert title="Internal telemetry configuration changes" color="info" %}}
+{{% alert title="Internal telemetry configuration changes" %}}
 
 As of Collector [v0.123.0], the `service::telemetry::metrics::address` setting
 is ignored. In earlier versions, it could be configured with:
@@ -226,7 +226,7 @@ The following tables group each internal metric by level of verbosity: `basic`,
 `normal`, and `detailed`. Each metric is identified by name and description and
 categorized by instrumentation type.
 
-{{% alert title="Note" color="info" %}} As of Collector v0.106.1, internal
+{{% alert title="Note" %}} As of Collector v0.106.1, internal
 metric names are handled differently based on their source:
 
 - Metrics generated from Collector components are prefixed with `otelcol_`.
@@ -294,7 +294,7 @@ files in the repository.
 | `otelcol_processor_batch_metadata_`<br>`cardinality`    | Number of distinct metadata value combinations being processed. | Counter   |
 | `otelcol_processor_batch_timeout_`<br>`trigger_send`    | Number of times the batch was sent due to a timeout trigger.    | Counter   |
 
-{{% alert title="Batch processor metrics level changes" color="info" %}}
+{{% alert title="Batch processor metrics level changes" %}}
 
 In Collector [v0.99.0], all batch processor metrics were upgraded from `basic`
 to `normal` (current level), except for
@@ -333,7 +333,7 @@ its introduction. Note however that these metrics were inadvertently reverted to
 | `rpc_server_response_size`                            | Measures the size of RPC response messages (uncompressed).                                | Histogram |
 | `rpc_server_responses_per_rpc`                        | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram |
 
-{{% alert title="Note" color="info" %}} The `http_` and `rpc_` metrics come from
+{{% alert title="Note" %}} The `http_` and `rpc_` metrics come from
 instrumentation libraries. Their original names use dots (`.`), but when
 exposing internal metrics with Prometheus, they are translated to use
 underscores (`_`) to match Prometheus' naming constraints. These metrics are not

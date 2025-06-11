@@ -2,7 +2,7 @@
 
 ### Backend Setup {#zipkin-setup}
 
-{{% alert title=Note color=info %}}
+{{% alert title=Note %}}
 
 If you have Zipkin or a Zipkin-compatible backend already set up, you can skip
 this section and setup the [Zipkin exporter dependencies](#zipkin-dependencies)

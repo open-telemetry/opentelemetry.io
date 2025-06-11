@@ -13,7 +13,7 @@ Exciting news: [OpenTelemetry JavaScript](/docs/languages/js/) has released [SDK
 
 [v2.0.0]: https://github.com/open-telemetry/opentelemetry-js/releases/tag/v2.0.0
 
-{{% alert title="Migration guide" color="info" %}}
+{{% alert title="Migration guide" %}}
 
 For a detailed description of breaking changes, see the **migration guide**:
 [Upgrade to OpenTelemetry JS SDK 2.x][migration guide].

@@ -8,7 +8,7 @@ Prometheus text format on request.
 
 ### Backend Setup {#prometheus-setup}
 
-{{% alert title=Note color=info %}}
+{{% alert title=Note %}}
 
 If you have Prometheus or a Prometheus-compatible backend already set up, you
 can skip this section and setup the [Prometheus](#prometheus-dependencies) or
@@ -35,7 +35,7 @@ Run Prometheus in a docker container with the UI accessible on port `9090`:
 docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090 prom/prometheus --enable-feature=otlp-write-receive
 ```
 
-{{% alert title=Note color=info %}}
+{{% alert title=Note %}}
 
 When using Prometheus' OTLP Receiver, make sure that you set the OTLP endpoint
 for metrics in your application to `http://localhost:9090/api/v1/otlp`.

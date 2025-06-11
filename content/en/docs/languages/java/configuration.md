@@ -97,7 +97,7 @@ configure the SDK using the zero-code SDK autoconfigure module, and install
 instrumentation with it. All autoconfigure content is applicable to Java agent
 and Spring starter users. {{% /alert %}}
 
-{{% alert color="info" %}} The autoconfigure module registers Java shutdown
+{{% alert %}} The autoconfigure module registers Java shutdown
 hooks to shut down the SDK when appropriate. Because OpenTelemetry Java
 [uses `java.util.logging` for internal logging](../sdk/#internal-logging), some
 logging might be suppressed during shutdown hooks. This is a bug in the JDK

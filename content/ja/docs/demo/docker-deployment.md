@@ -123,7 +123,7 @@ OpenTelemetry コレクターはテレメトリーデータを複数のバック
         exporters: [spanmetrics, otlphttp/example]
   ```
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 YAML の値をコレクターとマージすると、オブジェクトはマージされて、配列は置き換えられます。
 `spanmetrics` エクスポーターを上書きする場合は、`traces` パイプラインのエクスポーターの配列に含める必要があります。
 このエクスポーターを含めないとエラーが発生します。

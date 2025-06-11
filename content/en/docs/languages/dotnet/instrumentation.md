@@ -8,7 +8,7 @@ cSpell:ignore: dicelib rolldice
 
 {{% include instrumentation-intro.md %}}
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 On this page you will learn how you can add traces, metrics and logs to your
 code manually. You are not limited to using one kind of instrumentation: you can
@@ -213,7 +213,7 @@ dotnet add package OpenTelemetry.Instrumentation.AspNetCore
 
 ### Initialize the SDK
 
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library, you
+{{% alert title="Note" %}} If you’re instrumenting a library, you
 don't need to initialize the SDK. {{% /alert %}}
 
 It is important to configure an instance of the OpenTelemetry SDK as early as
@@ -328,7 +328,7 @@ dotnet run
 
 ### Initialize Tracing
 
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library, you
+{{% alert title="Note" %}} If you’re instrumenting a library, you
 don't need to initialize a TracerProvider. {{% /alert %}}
 
 To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need to

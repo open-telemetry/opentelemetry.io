@@ -13,7 +13,7 @@ serializando para o formato de texto do Prometheus sob demanda.
 
 ### Configuração do Backend {#prometheus-setup}
 
-{{% alert title=Nota color=info %}}
+{{% alert title=Nota %}}
 
 Caso já possua o Prometheus ou um _backend_ compatível com Prometheus
 configurado, poderá pular esta seção e configurar as dependências do exportador
@@ -43,7 +43,7 @@ porta `9090` através do seguinte comando:
 docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090 prom/prometheus --enable-feature=otlp-write-receive
 ```
 
-{{% alert title=Nota color=info %}}
+{{% alert title=Nota %}}
 
 Ao utilizar o OTLP Receiver do Prometheus, certifique-se de definir o endpoint
 OTLP das métricas em sua aplicação para `http://localhost:9090/api/v1/otlp`.

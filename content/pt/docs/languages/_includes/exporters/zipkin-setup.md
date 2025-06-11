@@ -6,7 +6,7 @@ default_lang_commit: 7d0c3f247ee77671d1135b0af535a2aca05fe359 # patched
 
 ### Configuração do Backend {#zipkin-setup}
 
-{{% alert title=Nota color=info %}}
+{{% alert title=Nota %}}
 
 Caso já possua o Zipkin ou um _backend_ compatível com Zipkin configurado,
 poderá pular esta seção e configurar as

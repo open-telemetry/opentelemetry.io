@@ -325,7 +325,7 @@ Here you can find more detailed package documentation for:
 
 ### Initialize Metrics
 
-{{% alert color="info" %}} If you’re instrumenting a library, skip this step.
+{{% alert %}} If you’re instrumenting a library, skip this step.
 {{% /alert %}}
 
 To enable [metrics](/docs/concepts/signals/metrics/) in your app, you'll need to

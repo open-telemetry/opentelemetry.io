@@ -142,7 +142,7 @@ agent][] in a number of ways, the steps below use environment variables.
    curl -L -O https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
    ```
 
-   {{% alert color="info" %}}
+   {{% alert %}}
 
    <i class="fas fa-edit"></i> Take note of the path to the JAR file.
 

@@ -18,7 +18,7 @@ means that you don’t have to create a separate Kubernetes
 Since HPA only applies to `StatefulSets` and `Deployments` in Kubernetes, make
 sure that your Collector’s `spec.mode` is either `deployment` or `statefulset`.
 
-{{% alert title="Note" color="info" %}} HPA requires a
+{{% alert title="Note" %}} HPA requires a
 [Metrics Server](https://github.com/kubernetes-sigs/metrics-server) running on
 your Kubernetes cluster.
 
@@ -49,7 +49,7 @@ resources:
     memory: 64Mi
 ```
 
-{{% alert title="Note" color="info" %}} Your own values might vary.
+{{% alert title="Note" %}} Your own values might vary.
 {{% /alert %}}
 
 The `limits` configuration specifies the maximum memory and CPU values. In this
@@ -71,7 +71,7 @@ autoscaler:
   targetMemoryUtilization: 60
 ```
 
-{{% alert title="Note" color="info" %}} Your own values might vary.
+{{% alert title="Note" %}} Your own values might vary.
 {{% /alert %}}
 
 Putting it all together, the start of the `OpenTelemetryCollector` YAML should

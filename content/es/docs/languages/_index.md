@@ -50,7 +50,7 @@ desarrolladores. Las siguientes referencias están disponibles:
 
 {{% apidocs %}}
 
-{{% alert title="Consejo" color="info" %}}
+{{% alert title="Consejo" %}}
 
 Puedes encontrar una lista de referencias de API disponibles en </api-docs>.
 

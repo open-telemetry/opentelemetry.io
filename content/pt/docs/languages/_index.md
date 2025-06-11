@@ -49,7 +49,7 @@ API para desenvolvedores. As referências a seguir estão disponíveis:
 
 {{% apidocs %}}
 
-{{% alert title="Nota" color="info" %}}
+{{% alert title="Nota" %}}
 
 A lista acima é um alias para [`/api`](/api).
 

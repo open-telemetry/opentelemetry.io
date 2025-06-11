@@ -338,7 +338,7 @@ A seguir, você poderá encontrar uma documentação mais detalhada para os paco
 
 ### Inicializar Métricas {#initialize-metrics}
 
-{{% alert color="info" %}} Caso você esteja instrumentando uma biblioteca, pule
+{{% alert %}} Caso você esteja instrumentando uma biblioteca, pule
 esta etapa. {{% /alert %}}
 
 Para habilitar [métricas](/docs/concepts/signals/metrics/) em sua aplicação,

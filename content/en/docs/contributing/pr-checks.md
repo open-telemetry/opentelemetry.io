@@ -117,7 +117,7 @@ success status for, you can add the following query parameter to your URL to
 have the link checker ignore it: `?no-link-check`. For example,
 <https:/some-example.org?no-link-check> will be ignored by the link checker.
 
-{{% alert title="Maintainers tip" color=info %}}
+{{% alert title="Maintainers tip" %}}
 
 Maintainers can run the following script immediately after having run the link
 checker to have Puppeteer attempt to validate links with non-success statuses
