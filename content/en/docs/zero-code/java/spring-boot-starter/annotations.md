@@ -48,8 +48,8 @@ public class TracedClass {
 ```
 <!-- prettier-ignore-end -->
 
-{{% alert title="Note" %}} The OpenTelemetry annotations use Spring
-AOP based on proxies.
+{{% alert title="Note" %}} The OpenTelemetry annotations use Spring AOP based on
+proxies.
 
 These annotations work only for the methods of the proxy. You can learn more in
 the

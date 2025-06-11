@@ -213,8 +213,8 @@ dotnet add package OpenTelemetry.Instrumentation.AspNetCore
 
 ### Initialize the SDK
 
-{{% alert title="Note" %}} If you’re instrumenting a library, you
-don't need to initialize the SDK. {{% /alert %}}
+{{% alert title="Note" %}} If you’re instrumenting a library, you don't need to
+initialize the SDK. {{% /alert %}}
 
 It is important to configure an instance of the OpenTelemetry SDK as early as
 possible in your application.
@@ -328,8 +328,8 @@ dotnet run
 
 ### Initialize Tracing
 
-{{% alert title="Note" %}} If you’re instrumenting a library, you
-don't need to initialize a TracerProvider. {{% /alert %}}
+{{% alert title="Note" %}} If you’re instrumenting a library, you don't need to
+initialize a TracerProvider. {{% /alert %}}
 
 To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need to
 have an initialized

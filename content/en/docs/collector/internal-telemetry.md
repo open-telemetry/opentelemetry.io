@@ -226,8 +226,8 @@ The following tables group each internal metric by level of verbosity: `basic`,
 `normal`, and `detailed`. Each metric is identified by name and description and
 categorized by instrumentation type.
 
-{{% alert title="Note" %}} As of Collector v0.106.1, internal
-metric names are handled differently based on their source:
+{{% alert title="Note" %}} As of Collector v0.106.1, internal metric names are
+handled differently based on their source:
 
 - Metrics generated from Collector components are prefixed with `otelcol_`.
 - Metrics generated from instrumentation libraries do not use the `otelcol_`

@@ -121,9 +121,8 @@ is a set of attributes defining the telemetry source. An application should
 associate the same resource with [SdkTracerProvider](#sdktracerprovider),
 [SdkMeterProvider](#sdkmeterprovider), [SdkLoggerProvider](#sdkloggerprovider).
 
-{{% alert %}}
-[ResourceProviders](../configuration/#resourceprovider) contribute contextual
-information to the
+{{% alert %}} [ResourceProviders](../configuration/#resourceprovider) contribute
+contextual information to the
 [autoconfigured](../configuration/#zero-code-sdk-autoconfigure) resource based
 on the environment. See documentation for list of available `ResourceProvider`s.
 {{% /alert %}}

@@ -49,8 +49,7 @@ resources:
     memory: 64Mi
 ```
 
-{{% alert title="Note" %}} Your own values might vary.
-{{% /alert %}}
+{{% alert title="Note" %}} Your own values might vary. {{% /alert %}}
 
 The `limits` configuration specifies the maximum memory and CPU values. In this
 case, those limits are 100 millicores (0.1 core) of CPU, and 128Mi (mebibytes,
@@ -71,8 +70,7 @@ autoscaler:
   targetMemoryUtilization: 60
 ```
 
-{{% alert title="Note" %}} Your own values might vary.
-{{% /alert %}}
+{{% alert title="Note" %}} Your own values might vary. {{% /alert %}}
 
 Putting it all together, the start of the `OpenTelemetryCollector` YAML should
 look something like this:

@@ -196,8 +196,8 @@ npm install @opentelemetry/api @opentelemetry/resources @opentelemetry/semantic-
 
 ### Initialize the SDK
 
-{{% alert title="Note" %}} If you’re instrumenting a library,
-**skip this step**. {{% /alert %}}
+{{% alert title="Note" %}} If you’re instrumenting a library, **skip this
+step**. {{% /alert %}}
 
 If you instrument a Node.js application install the
 [OpenTelemetry SDK for Node.js](https://www.npmjs.com/package/@opentelemetry/sdk-node):
@@ -314,8 +314,8 @@ information, see [Libraries](/docs/languages/js/libraries/).
 
 ### Initialize Tracing
 
-{{% alert title="Note" %}} If you’re instrumenting a library,
-**skip this step**. {{% /alert %}}
+{{% alert title="Note" %}} If you’re instrumenting a library, **skip this
+step**. {{% /alert %}}
 
 To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need to
 have an initialized
@@ -1248,8 +1248,7 @@ spans by helping to identify trends and providing application runtime telemetry.
 
 ### Initialize Metrics
 
-{{% alert %}} If you’re instrumenting a library, skip this step.
-{{% /alert %}}
+{{% alert %}} If you’re instrumenting a library, skip this step. {{% /alert %}}
 
 To enable [metrics](/docs/concepts/signals/metrics/) in your app, you'll need to
 have an initialized
