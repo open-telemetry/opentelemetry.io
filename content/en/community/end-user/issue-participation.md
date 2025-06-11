@@ -28,8 +28,10 @@ You can help OpenTelemetry in two simple ways:
 
 While we highly value your input and encourage you to use reactions and comments
 on GitHub issues to show your interest, it's important to understand that
-OpenTelemetry's Special Interest Groups (SIGs) need to balance multiple
-priorities to align with the project's overall direction.
+OpenTelemetry's
+[Special Interest Groups (SIGs)](https://github.com/open-telemetry/community#special-interest-groups)
+need to balance multiple priorities to align with the project's overall
+direction.
 
 While maintainers do consider reaction counts and comments when prioritizing
 issues, popularity isn't the sole factor.
