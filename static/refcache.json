@@ -1291,6 +1291,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-20T15:58:07.635811334+01:00"
   },
+  "https://docs.digitate.com/docs/ignio-integrations/open-telemetry-and-ignio/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-11T12:40:37.833460668Z"
+  },
   "https://docs.docker.com": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:58:42.745795-05:00"
