@@ -2203,6 +2203,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:23:53.047186-05:00"
   },
+  "https://en.wikipedia.org/wiki/Europe,_the_Middle_East_and_Africa": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-11T15:15:15.897415455-07:00"
+  },
   "https://en.wikipedia.org/wiki/Futures_and_promises": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:23:20.366927-05:00"
@@ -19662,6 +19666,10 @@
   "https://www.cncf.io/kubecon-cloudnativecon-events": {
     "StatusCode": 206,
     "LastSeen": "2025-06-04T14:44:11.337015-04:00"
+  },
+  "https://www.cncf.io/kubecon-cloudnativecon-events/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-11T15:15:16.028821646-07:00"
   },
   "https://www.cncf.io/projects/": {
     "StatusCode": 206,

@@ -10,14 +10,16 @@ sig: Contributor Experience
 cSpell:ignore: Andrej Baeyens Contribfest gatekeeping Hrabusa Kiripolský
 ---
 
-The OpenTelemetry Contributor Experience SIG [recently surveyed](../contribex-survey/) the community to
-learn what it's like to contribute to the project and what we can do to improve
-the contributor experience. The Contributor Experience Survey asked contributors
-for their thoughts about the project's organization, SIG contributions,
-leadership committee interactions, and event attendance. We received 120
-[responses](https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys/contributor-experience) and heard from all 47 Special Interest Groups (SIGs). We'll use this
-feedback to make contributing to OpenTelemetry easier and more rewarding. A big
-thank you to everyone who participated in the survey! Let's review the results.
+The OpenTelemetry Contributor Experience SIG
+[recently surveyed](../contribex-survey/) the community to learn what it's like
+to contribute to the project and what we can do to improve the contributor
+experience. The Contributor Experience Survey asked contributors for their
+thoughts about the project's organization, SIG contributions, leadership
+committee interactions, and event attendance. We received 120
+[responses](https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys/contributor-experience)
+and heard from all 47 Special Interest Groups (SIGs). We'll use this feedback to
+make contributing to OpenTelemetry easier and more rewarding. A big thank you to
+everyone who participated in the survey! Let's review the results.
 
 ## Key takeaways
 
@@ -65,8 +67,10 @@ contributor from each SIG. Here's more about our respondents:
 
 - 63% work for an observability vendor.
 - 20% have been contributing for less than six months.
-- 86% live in North America (45%) or [EMEA](https://en.wikipedia.org/wiki/Europe,_the_Middle_East_and_Africa) (41%). These numbers roughly match our
-  calculations of 39% and 43% respectively, after classifying the
+- 86% live in North America (45%) or
+  [EMEA](https://en.wikipedia.org/wiki/Europe,_the_Middle_East_and_Africa)
+  (41%). These numbers roughly match our calculations of 39% and 43%
+  respectively, after classifying the
   [devstats country statistics](https://opentelemetry.devstats.cncf.io/d/50/countries-statistics-in-repository-groups?orgId=1)
   into regions.
 - 43% contribute on their own time.
@@ -133,10 +137,13 @@ newer contributors v. 65% of experienced contributors.
 
 We received
 [many thoughtful responses](https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/contributor-experience/otel-contributor-experience-survey-free-form-questions.csv)
-to our open-ended questions "Do you have any additional comments regarding
-project organization or your experience contributing? Is there anything you'd
-like to see added to or changed about the OTel contributor experience?" The
-answers fell loosely into four categories: tooling, communication and
+to our open-ended questions:
+
+> "Do you have any additional comments regarding project organization or your
+> experience contributing? Is there anything you'd like to see added to or
+> changed about the OTel contributor experience?"
+
+The answers fell loosely into four categories: tooling, communication and
 documentation, meetings, and workflows.
 
 #### Tooling
@@ -223,11 +230,12 @@ multiple categories.
 
 ![A bar chart showing the number of responses that fell into each type of event category](chart-9-event-categories.png)
 
-We also asked contributors about their past and future attendance at [KubeCon +
-CloudNativeCon](https://www.cncf.io/kubecon-cloudnativecon-events/), the flagship conference for cloud native technologies. With the
-inaugural [KubeCon Japan](../kubecon-japan/) being held in June 2025, there are now 5 KubeCon
-conferences: China, Europe, India, Japan, and North America. Here's what we
-learned about the attendance of OpenTelemetry contributors at KubeCon events.
+We also asked contributors about their past and future attendance at
+[KubeCon + CloudNativeCon](https://www.cncf.io/kubecon-cloudnativecon-events/),
+the flagship conference for cloud native technologies. With the inaugural
+[KubeCon Japan](../kubecon-japan/) being held in June 2025, there are now 5
+KubeCon conferences: China, Europe, India, Japan, and North America. Here's what
+we learned about the attendance of OpenTelemetry contributors at KubeCon events.
 
 More than half of respondents in each region of the world have attended KubeCon
 in the past or plan to in the future.
