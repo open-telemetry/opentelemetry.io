@@ -3,7 +3,7 @@ title: KubeCon + CloudNativeCon Asia 2025
 linkTitle: KubeCon Asia 2025
 date: 2025-05-20
 # Expire after China event so we can fall back to single Japan event banner
-expiryDate: 2025-06-11 # keep
+expiryDate: 2025-06-12 # keep
 weight: 20250610
 ---
 
