@@ -2,9 +2,10 @@
 title: Vote and Comment
 linkTitle: Vote and Comment on GitHub Issues
 description: >-
-  Help us prioritize work in OpenTelemetry by contributing to GitHub issues
-  with your votes and comments.
+  Help us prioritize work in OpenTelemetry by contributing to GitHub issues with
+  your votes and comments.
 weight: 5
+cSpell:ignore: triagers
 ---
 
 At OpenTelemetry, we're always looking for ways to make it easier for our end
@@ -14,14 +15,14 @@ your input is crucial to shaping the project's direction.
 
 You can help OpenTelemetry in two simple ways:
 
-1. Leave a 👍 **reaction** on issues that you would like us to prioritize.
-  This avoids the need for comments like _"me too"_ or _"+1"_, which can
-  sometimes create noise. It also allows maintainers to identify the most
-  popular issues across their repositories in a standard way.
+1. Leave a 👍 **reaction** on issues that you would like us to prioritize. This
+   avoids the need for comments like _"me too"_ or _"+1"_, which can sometimes
+   create noise. It also allows maintainers to identify the most popular issues
+   across their repositories in a standard way.
 2. Comment on issues to **provide additional context** that can help triagers
-  and maintainers understand the impact. You can tell us how a particular bug,
-  or feature, is affecting your environment, or your ability to use
-  OpenTelemetry.
+   and maintainers understand the impact. You can tell us how a particular bug,
+   or feature, is affecting your environment, or your ability to use
+   OpenTelemetry.
 
 ### Popularity Doesn't Guarantee Priority
 
@@ -35,11 +36,11 @@ issues, popularity isn't the sole factor.
 
 Here are some reasons why a popular issue might not be prioritized immediately:
 
-* High-Priority SIG Work: This includes critical tasks like security
+- High-Priority SIG Work: This includes critical tasks like security
   enhancements or ensuring compliance with specifications.
-* Dependencies: Some issues require other foundational work to be completed
+- Dependencies: Some issues require other foundational work to be completed
   before they can be addressed.
-* Project Alignment: Requests or proposals that don't align with the project's
+- Project Alignment: Requests or proposals that don't align with the project's
   strategic direction may not be prioritized.
 
 Your reactions provide valuable insight into community interest, and we

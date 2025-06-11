@@ -13,7 +13,7 @@ right place!
 
 - To provide feedback and help prioritize work:
   - [Vote and comment on GitHub issues](issue-participation/), it only takes one
-  click!
+    click!
   - Participate in a [direct interview/feedback session](interviews-feedback/)
   - Take our [most recent survey](feedback-survey/)
 - To learn about OpenTelemetry, check out:
