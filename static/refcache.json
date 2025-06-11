@@ -13451,6 +13451,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:10:56.03728-05:00"
   },
+  "https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/contributor-experience/otel-contributor-experience-survey-free-form-questions.csv": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-11T13:40:07.095362412-07:00"
+  },
   "https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/otel-collector/otel-collector-survey.csv": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T17:02:03.773893-05:00"
@@ -16494,6 +16498,10 @@
   "https://opentelemetry-python.readthedocs.io/en/stable/shim/opentracing_shim/opentracing_shim.html": {
     "StatusCode": 200,
     "LastSeen": "2025-01-07T10:31:48.307078-05:00"
+  },
+  "https://opentelemetry.devstats.cncf.io/d/50/countries-statistics-in-repository-groups": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-11T13:40:06.53325869-07:00"
   },
   "https://opentelemetry.devstats.cncf.io/d/8/dashboards": {
     "StatusCode": 200,

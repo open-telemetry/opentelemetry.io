@@ -14,10 +14,10 @@ The OpenTelemetry Contributor Experience SIG recently surveyed the community to
 learn what it's like to contribute to the project and what we can do to improve
 the contributor experience. The Contributor Experience Survey asked contributors
 for their thoughts about the project's organization, SIG contributions,
-leadership committees interactions, and event attendance. We received 120
-responses, which we'll use to make contributing to OpenTelemetry easier and more
-rewarding. A big thank you to everyone who participated in the survey! Let's
-review the results.
+leadership committee interactions, and event attendance. We received 120
+responses and heard from all 47 Special Interest Groups (SIGs). We'll use this
+feedback to make contributing to OpenTelemetry easier and more rewarding. A big
+thank you to everyone who participated in the survey! Let's review the results.
 
 ## Key takeaways
 
@@ -50,6 +50,14 @@ In some categories, the sample size is quite small and therefore the margin of
 error is high. We have included the number of responses in parentheses wherever
 possible.
 
+For our analysis, we treated self-reported data as true and combined “agree”
+with “strongly agree” responses, as well as “disagree” with “strongly disagree.”
+So when we say, for example, “contributors who attend SIG meetings are far more
+likely to know how to begin contributing in any SIG,” what we mean is that
+contributors who _agreed or strongly agreed_ that they regularly attend SIG
+meetings are more likely to _agree or strongly agree_ that they know how to get
+started contributing.
+
 ### About the respondents
 
 We heard from 120 contributors, including 45 maintainers and at least one
@@ -57,8 +65,10 @@ contributor from each SIG. Here's more about our respondents:
 
 - 63% work for an observability vendor.
 - 20% have been contributing for less than six months.
-- 86% live in North America (45%) or EMEA (41%). This roughly matches the data
-  from devstats [TODO: add link], where we see 39% and 43% respectively.
+- 86% live in North America (45%) or EMEA (41%). These numbers roughly match our
+  calculations of 39% and 43% respectively, after classifying the
+  [devstats country statistics](https://opentelemetry.devstats.cncf.io/d/50/countries-statistics-in-repository-groups?orgId=1)
+  into regions.
 - 43% contribute on their own time.
 - 71% are members of the OpenTelemetry organization.
 
@@ -71,24 +81,22 @@ started? Can they solve problems on their own? Are SIG meetings useful?
 Knowing how to get started in a large open source project like OpenTelemetry is
 challenging. We focused on our newest contributors, those who've participated in
 the project for less than two years, to see how the project's onboarding
-processes stand up. Of the 56 respondents in this category, just over half agree
-or strongly agree that they know how to get started in any OpenTelemetry SIG.
-But that leaves 48% of newer contributors who are neutral or disagree that they
-know how to get started. Work is underway to
+processes stand up. Of the 56 respondents in this category, just over half know
+how to get started in any OpenTelemetry SIG. But that leaves 48% of newer
+contributors who do not confidently know how to get started. Work is underway to
 [improve contributing guidelines](https://github.com/open-telemetry/sig-contributor-experience/issues/31)
 across the project, but there is clearly room to improve the OpenTelemetry
-onboarding experience.
+contributor onboarding experience.
 
 ![A 100% stacked row chart showing the percentage of newer contributors who know how to get started](chart-1-get-started.png)
 
 One way we can potentially improve the onboarding experience is to encourage new
 contributors to attend SIG meetings. Of respondents who answered the question,
-**82% agree or strongly agree that SIG meetings are useful**. Further survey
-analysis confirmed the usefulness of meetings.
+**82% find SIG meetings useful**. Further survey analysis confirmed the
+usefulness of meetings.
 
-For example, we found that contributors who agreed or strongly agreed that they
-regularly attend SIG meetings are far more likely to agree or strongly agree
-they know how to begin contributing in any SIG.
+For example, we found that contributors who regularly attend SIG meetings are
+far more likely to know how to begin contributing in any SIG.
 
 ![A stacked bar chart showing the percentage of meeting attendees who know how to get started](chart-2-meeting-attendance-get-started.png)
 
@@ -104,29 +112,32 @@ Contributing to open source projects like OpenTelemetry takes time: both from
 the contributor and the reviewer. To assess how the project is doing in its
 effort to provide timely feedback, we asked survey respondents about their
 experience. Less than half of those who answered (48 of 98 responses or 49%)
-agree or strongly agree that they receive timely feedback. When we compare those
-answers to how contributors feel about the thoroughness of the project's
-decision making, we get the following heat map. We can loosely conclude that
-when contributors get timely feedback, they are more likely to find decisions
-thorough enough.
+receive timely feedback. When we compare those answers to how contributors feel
+about the thoroughness of the project's decision making, we get the following
+heat map. We can loosely conclude that when contributors get timely feedback,
+they are more likely to find decisions thorough enough. But analyzing this data
+raises an important point: we don't know what a reasonable baseline is for
+timely feedback in open source projects. We encourage other open source projects
+to run contributor surveys so we can compare their contributors' experience with
+that of OpenTelemetry contributors.
 
 ![A heat map table comparing the responses to the question of receiving timely feedback with those of the thoroughness of the decision-making process](chart-4-timely-feedback.png)
 
 The survey asked contributors whether they were ultimately able to solve
 problems for themselves and their users. We compared those answers to the tenure
 of the contributors. The results show that a greater percentage of newer
-contributors, those whose tenure is under 2 years, agree or strongly agree they
-can solve problems: 77% of newer contributors v. 65% of experienced
-contributors.
+contributors, those whose tenure is under 2 years, can resolve problems: 77% of
+newer contributors v. 65% of experienced contributors.
 
-![A stacked bar chart showing the percentage of newer contributors and experienced contributors who agree they can solve problems](chart-5-solve-problems.png)
+![A stacked bar chart showing the percentage of newer contributors and experienced contributors who can solve problems](chart-5-solve-problems.png)
 
-We received many thoughtful responses to our open-ended questions "Do you have
-any additional comments regarding project organization or your experience
-contributing? Is there anything you'd like to see added to or changed about the
-OTel contributor experience?" The answers fell loosely into four categories:
-Tooling, Communication & Docs, Meetings, and Workflows. These responses will
-help the Contributor Experience SIG select and prioritize project improvements.
+We received
+[many thoughtful responses](https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/contributor-experience/otel-contributor-experience-survey-free-form-questions.csv)
+to our open-ended questions "Do you have any additional comments regarding
+project organization or your experience contributing? Is there anything you'd
+like to see added to or changed about the OTel contributor experience?" The
+answers fell loosely into four categories: tooling, communication and
+documentation, meetings, and workflows.
 
 #### Tooling
 
@@ -137,7 +148,7 @@ help the Contributor Experience SIG select and prioritize project improvements.
 - A single source of truth is needed for tracking code changes instead of
   combing through release notes.
 
-#### Communication & Docs
+#### Communication and documentation
 
 - All SIGs should align with SIG Comms to make the official docs the go-to spot
   for all reference and instructional material.
@@ -169,7 +180,7 @@ help the Contributor Experience SIG select and prioritize project improvements.
 - Reviews and discussions are painfully slow and perhaps too thorough.
 - Gatekeeping by a few SIG leaders makes progress slow.
 
-### Maintainers, Technical Committee and Governance Committee
+### Maintainers, Technical Committee, and Governance Committee
 
 OpenTelemetry maintainers made up 37.5% of our total survey respondents. We
 asked them to report on their experiences contributing in a leadership role. How
@@ -191,8 +202,8 @@ compliant. Nearly 50% say their projects are mostly compliant.
 ![A bar chart showing the number of maintainers who claimed their project is far from compliant, mostly compliant or fully compliant with the project's specification](chart-7-spec-compliance.png)
 
 Two-thirds of maintainer respondents (29 of 44) have interacted with the
-Technical Committee or Governance Committee, but fewer than half of them agree
-or strongly agree they know the leadership committees' priorities.
+Technical Committee or Governance Committee, but fewer than half of them know
+the leadership committees' priorities.
 
 ![A stacked row chart showing the percentage of each response to the question of whether maintainers know leadership priorities](chart-8-leadership-priorities.png)
 
@@ -240,11 +251,10 @@ traveling from other regions.
 
 Among those respondents who have attended a KubeCon event or plan to in the
 future, there is overwhelming interest in a separate, dedicated OpenTelemetry
-contributors-only event in their region: 63 of 73 or 86% agree or strongly agree
-they would attend such an event. By contrast, those respondents who haven't and
-don't plan to attend KubeCon have marginally less interest in attending a
-dedicated contributor event in their region: 34 of 46 or 74% agree or strongly
-agree they'd attend.
+contributors-only event in their region: 63 of 73 or 86% would attend such an
+event. By contrast, those respondents who haven't and don't plan to attend
+KubeCon have marginally less interest in attending a dedicated contributor event
+in their region: 34 of 46 or 74% say they'd attend.
 
 We analyzed one final event question: If you have attended KubeCon +
 CloudNativeCon, have you participated in OpenTelemetry activities, including the
