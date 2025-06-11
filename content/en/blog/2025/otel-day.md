@@ -3,7 +3,6 @@ title: "OTel Community Day + Open Observability Summit: One Big Day for Open Sou
 linkTitle: "OTelCommunityDay-OSSSummit"
 date: 2025-06-10
 author: "[Isabella Langan](https://github.com/isabella-rose-l) (Causely)"
-cSpell:ignore
 ---
 
 On **June 26, 2025**, [OTel Community Day and Open Observability Summit](https://events.linuxfoundation.org/open-observability-summit-otel-community-day/) are joining forces at [Open Source Summit North America](https://events.linuxfoundation.org/open-source-summit-north-america/). The OpenTelemetry governance and technical committees, along with project maintainers, are excited to present two community-led tracks, one co-located event, and a shared goal: bring the observability community together to collaborate, learn, and shape the future of open source observability.
