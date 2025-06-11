@@ -15,7 +15,7 @@ documentation style is inspired by the following style guides:
 The following sections contain guidance that is specific to the OpenTelemetry
 project.
 
-{{% alert title="Note" color="primary" %}}
+{{% alert title="Note" %}}
 
 Many requirements of our style guide can be enforced by running automation:
 before submitting a

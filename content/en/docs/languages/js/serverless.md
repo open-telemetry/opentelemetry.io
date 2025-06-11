@@ -10,7 +10,7 @@ OpenTelemetry instrumentation libraries.
 
 ## AWS Lambda
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 You can also automatically instrument your AWS Lambda functions by using the
 [community provided Lambda layers](/docs/platforms/faas/lambda-auto-instrument/).

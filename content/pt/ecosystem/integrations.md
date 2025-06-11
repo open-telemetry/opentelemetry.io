@@ -56,7 +56,7 @@ incluir o seguinte:
 - Link para a documentação que explica como habilitar a observabilidade
   utilizando o OpenTelemetry
 
-{{% alert title="Nota" color="info" %}}
+{{% alert title="Nota" %}}
 
 Caso você forneça integração externa do OpenTelemetry para qualquer tipo de
 biblioteca, serviço ou aplicação,
