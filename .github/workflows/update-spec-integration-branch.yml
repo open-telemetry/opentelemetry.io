@@ -25,7 +25,7 @@ jobs:
           branch_prefix="opentelemetrybot/spec-integration"
 
           version=$(git branch -r \
-                        | grep "^ *origin/$branch_prefix-v[0-9]+\.[0-9]+\..*-dev" \
+                        | grep -E "^ *origin/$branch_prefix-v[0-9]+\.[0-9]+\..*-dev" \
                         | sed "s|^ *origin/$branch_prefix-||" \
                         | sed "s|-dev$||")
 
