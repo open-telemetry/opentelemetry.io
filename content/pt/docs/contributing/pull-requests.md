@@ -125,7 +125,7 @@ Se um revisor pedir para você fazer alterações:
 1. Selecione o ícone de lápis (editar) em qualquer arquivo alterado pelo _pull
    request_.
 1. Faça as alterações solicitadas. Se houver uma sugestão de código, aplique-a.
-1. Confirme as alterações.
+1. _Commit_ as alterações.
 
 Quando sua revisão estiver completa, um revisor mescla seu PR e suas alterações
 ficam disponíveis alguns minutos depois.
@@ -185,10 +185,10 @@ direction TB
 S[ ] -.-
 3[Crie uma branch<br>exemplo: minha_nova_branch] --> 3a[Faça alterações usando<br>um editor de texto] --> 4["Visualize suas alterações<br>localmente usando Hugo<br>(localhost:1313)"]
 end
-subgraph changes2[Commit / Push]
+subgraph changes2[_Commit_ / Push]
 direction TB
 T[ ] -.-
-5[Confirme suas alterações] --> 6[Envie o commit para<br>origin/minha_nova_branch]
+5[_Commit_ suas alterações] --> 6[Envie o _commit_ para<br>origin/minha_nova_branch]
 end
 
 2 --> changes --> changes2
@@ -268,7 +268,7 @@ class changes,changes2 white
 A qualquer momento, use o comando `git status` para ver quais arquivos você
 alterou.
 
-### Confirmar suas alterações
+### _Commit_ suas alterações
 
 Quando você estiver pronto para enviar um _pull request_, confirme suas
 alterações.
@@ -285,13 +285,13 @@ alterações.
    On branch <minha_nova_branch>
    Your branch is up to date with 'origin/<minha_nova_branch>'.
 
-   Changes not staged for commit:
-   (use "git add <file>..." to update what will be committed)
+   Changes not staged for _commit_:
+   (use "git add <file>..." to update what will be _committed_)
    (use "git checkout -- <file>..." to discard changes in working directory)
 
    modified:   content/en/docs/file-you-are-editing.md
 
-   no changes added to commit (use "git add" and/or "git commit -a")
+   no changes added to _commit_ (use "git add" and/or "git commit -a")
    ```
 
 1. Adicione os arquivos listados em **Alterações não preparadas para _commit_**
@@ -306,7 +306,7 @@ alterações.
 1. Depois de adicionar todos os arquivos, crie um _commit_:
 
    ```shell
-   git commit -m "Sua mensagem de commit"
+   git commit -m "Sua mensagem de _commit_"
    ```
 
 1. Envie sua _branch_ local e seu novo _commit_ para seu _fork_ remoto:
@@ -389,7 +389,7 @@ Outras verificações também podem falhar. Veja a
 ### Corrija problemas {#fix-issues}
 
 Antes de enviar uma alteração para o repositório, execute o seguinte comando e
-(i) resolva quaisquer problemas relatados, (ii) confirme quaisquer arquivos
+(i) resolva quaisquer problemas relatados, (ii) _commit_ quaisquer arquivos
 alterados pelo script:
 
 ```sh
@@ -476,11 +476,12 @@ qualquer outra alteração, obtenha esses _commits_.
    git push --force-with-lease origin <seu-nome-da-branch>
    ```
 
-Você também pode resolver conflitos de _merge_ pela interface do GitHub.
+Você também pode resolver conflitos de _merge_ (mesclar) pela interface do
+GitHub.
 
-### Conflitos de _merge_ e _rebase_ 
+### Conflitos de merge e rebase
 
-Se outro colaborador fizer alterações no mesmo arquivo em outro PR, isso pode
+Se outro colaborador fizer _commits_ no mesmo arquivo em outro PR, isso pode
 criar um conflito de _merge_. Você deve resolver todos os conflitos de _merge_
 em seu PR.
 
@@ -544,7 +545,7 @@ em seu PR.
 
    O _pull request_ não mostra mais conflitos.
 
-### Requisitos de mesclagem (_merge_)
+### Requisitos de _merge_ {#merge-requirements}
 
 O _merge_ dos _pull requests_ ocorrem quando são cumpridos os seguintes
 critérios:
