@@ -5,7 +5,7 @@ description: >-
   Help us prioritize work in OpenTelemetry by contributing to GitHub issues with
   your votes and comments.
 weight: 5
-cSpell:ignore: triagers
+cSpell:ignore: triagers upvote
 ---
 
 At OpenTelemetry, we're always looking for ways to make it easier for our end
