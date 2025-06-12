@@ -85,6 +85,7 @@ jobs:
           cd ../..
 
           sed -i "s/^\tspec-pin = .*/\tspec-pin = $commit_desc/" .gitmodules
+          sed -i "s/^\(\s *\)spec: .*/\1spec: $commit_desc/" scripts/content-modules/adjust-pages.pl
 
           git add -A
 

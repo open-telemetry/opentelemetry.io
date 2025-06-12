@@ -85,6 +85,7 @@ jobs:
           cd ../..
 
           sed -i "s/^\tsemconv-pin = .*/\tsemconv-pin = $commit_desc/" .gitmodules
+          sed -i "s/^\(\s *\)semconv: .*/\1semconv: $commit_desc/" scripts/content-modules/adjust-pages.pl
 
           git add -A
 
