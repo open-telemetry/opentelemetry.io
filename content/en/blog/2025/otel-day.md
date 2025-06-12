@@ -6,7 +6,7 @@ linkTitle: OTel Community Day
 date: 2025-06-13
 author: '[Isabella Langan](https://github.com/isabella-rose-l) (Causely)'
 # prettier-ignore
-cspell:ignore: Langan Causely Horovits Alok Bhide Radlein Kuncham Canuel Danielson OllyGarden Vashistha Kumar Baylis Roshore Budhaditya Bhattacharya Ravindra Bhargava Distrogen Braydon Kains Mansi Agrawal Todea Aircall Liudmila Molkova Cijo Jernigan Spec-tacular Helmuth Krietz Prasad Mujumdar Okahu Vijay Heffner Huxing Zhang Minghui
+cSpell:ignore: Agrawal Aircall Alok Baylis Bhargava Bhattacharya Bhide Braydon Budhaditya Canuel Causely Cijo Danielson Distrogen Heffner Helmuth Horovits Huxing Jernigan Kains Krietz Kumar Kuncham Langan Liudmila Mansi Minghui Molkova Mujumdar Okahu OllyGarden Prasad Radlein Ravindra Roshore Spec-tacular Todea Vashistha Vijay Zhang
 ---
 
 On **June 26, 2025**,
