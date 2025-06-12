@@ -4607,6 +4607,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-02T15:19:05.148Z"
   },
+  "https://github.com/isabella-rose-l": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T14:07:47.429802+02:00"
+  },
   "https://github.com/ishanjainn": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:58:39.288258-05:00"
@@ -16515,6 +16519,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-31T13:07:33.766024682Z"
   },
+  "https://opentelemetry.io/blog/2025/contribex-survey-results/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T14:07:51.914716+02:00"
+  },
   "https://opentelemetry.io/docs/concepts/instrumentation/": {
     "StatusCode": 206,
     "LastSeen": "2025-02-20T09:23:52.447657347-08:00"
@@ -16550,6 +16558,142 @@
   "https://otelic.com/en/open-telemetry-sample-instrumentation/nodejs-simple": {
     "StatusCode": 200,
     "LastSeen": "2025-01-24T18:24:36.30580416Z"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223A3/the-life-of-a-span-yuri-oliveira-ollygarden-jamie-danielson-honeycomb": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:11.004797+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223A6/scaling-opentelemetry-for-modern-workloads-from-mobile-to-mainframe-vashistha-kumar-singh-martin-tali-broadcom": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:15.354275+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223A9/the-signal-in-the-storm-practical-strategies-for-managing-telemetry-overload-endre-sara-causely-inc": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:18.75024+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AC/cl-lightning-talk-beyond-good-enough-why-we-want-a-kotlin-api-and-sdk-hanson-ho-embrace": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:21.831506+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AF/tricked-out-traces-henrik-rexed-dynatrace": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:37.62462+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AI/building-resilient-telemetry-pipelines-mastering-the-opentelemetry-collectors-persistent-queue-denton-krietz-bindplane": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:49.72449+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AL/cl-lightning-talk-from-genai-applications-to-ai-models-unraveling-end-to-end-ai-observability-with-opentelemetry-huxing-zhang-minghui-zhang-alibaba-cloud": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:09:00.371086+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AO/introducing-a-lightweight-rust-opentelemetry-collector-mike-heffner-ray-jenkins-streamfold": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:56.14802+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AR/cl-lightning-talk-introducing-distrogen-a-tool-for-generating-opentelemetry-collector-distributions-braydon-kains-google": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:28.764409+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AU/cl-lightning-talk-avoiding-chaotic-dysfunction-the-dont-do-this-guide-to-opentelemetry-budhaditya-bhattacharya-tyk": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:25.513381+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AX/panel-the-spec-tacular-game-show-liudmila-molkova-microsoft-ted-young-servicenow-tyler-helmuth-jamie-danielson-alex-boten-honeycomb": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:44.842072+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223Aa/beyond-otlp-unlocking-the-potential-of-os-native-tracing-cijo-thomas-chris-gray-microsoft-corporation": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:41.334545+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223Ad/cl-lightning-talk-from-zero-to-developer-my-one-year-serendipity-journey-with-opentelemetry-diana-todea-aircall": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:33.504903+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223Or/welcome-+-opening-remarks-austin-parker-honeycomb": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:07:53.539305+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/228KZ/sponsored-keynote-foundation-led-innovation-opensearchs-impact-on-modern-data-insights-dotan-horovits-aws-opensearch": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:07:57.481805+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24Jot": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:09.693219+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24Jow": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:13.052288+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24Joz/correlating-application-and-database-performance-using-opentelemetry-lin-lin-tammy-baylis-solarwinds": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:16.709067+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24Jp2/cl-lightning-talk-faster-insights-and-improved-accuracy-spotifys-prometheus-upgrade-lauren-roshore-spotify": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:20.084927+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24Jp5/cl-lightning-talk-weaving-legacy-and-opentelemetry-a-schema-strategy-with-weaver-andrew-wang-comcast": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:23.226832+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24Jp8/cl-lightning-talk-observability-first-devsecops-building-resilient-multi-cloud-pipelines-with-opentelemetry-and-gitops-ravindra-bhargava-ups": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:26.874953+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpB/cl-lightning-talk-observability-at-scale-building-cloud-native-pipelines-for-ai-infrastructure-mansi-agrawal-linkedin": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:30.053154+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpE/telemetry-pipelines-never-gonna-let-you-down-yuri-oliveira-ollygarden-alex-boten-honeycomb": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:35.610526+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpH/no-dependencies-no-plugins-just-native-opentelemetry-liudmila-molkova-microsoft": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:38.938327+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpK/lets-generate-art-and-traces-tiffany-jernigan-grafana-labs": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:42.659811+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpN/how-to-think-about-instrumentation-overhead-jason-plumb-splunk": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:48.116717+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpQ/monitoring-genai-applications-prasad-mujumdar-okahu-ai": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:51.608941+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpT/innovating-on-top-of-open-source-observability-pushing-the-boundaries-of-innovation-vijay-samuel-wei-tang-ebay": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:54.331248+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpW/cl-lightning-talk-taming-metric-cardinality-practical-cost-reduction-with-the-opentelemetry-collector-jon-reeve-eric-anderson-controltheory": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:58.679744+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24QRq/keynote-opentelemetry-and-the-future-of-open-source-observability-austin-parker-honeycomb": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:00.105262+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24R7L/sponsored-keynote-manage-logging-costs-while-preserving-value-alok-bhide-chronosphere": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:04.961238+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24R7t/sponsored-keynote-why-semantic-conventions-are-opentelemetrys-most-important-contribution-gordon-radlein-datadog": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:06.481421+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24dNu/keynote-hybrid-cloud-architecture-making-big-bets-on-open-standards-margaret-dawson-chronosphere": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:07:54.385987+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/25Uhx/keynote-supercharging-observability-with-llms-alolita-sharma-apple": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T14:08:08.189104+02:00"
   },
   "https://ottl.run": {
     "StatusCode": 200,
