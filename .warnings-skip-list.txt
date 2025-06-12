@@ -1,2 +1,4 @@
 _filename-error
 The following package was not found and will be installed
+# Temporary until the spec is updated to v1.147+:
+specification/profiles/mappings.md: cannot resolve spec link reference '/docs/specs/semconv/attributes-registry/process/#process-attributes'
