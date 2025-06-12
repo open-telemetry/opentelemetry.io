@@ -15,7 +15,8 @@ submeta um [pull request][PR] (PR):
   veja [Usando o GitHub](#changes-using-github) para aprender como editar uma
   página.
 - Caso contrário, consulte [Trabalhando localmente](#fork-the-repo) para
-  aprender como fazer alterações no seu próprio ambiente de desenvolvimento local.
+  aprender como fazer alterações no seu próprio ambiente de desenvolvimento
+  local.
 
 {{% alert title="Contrato de Licença de Contribuidor (CLA)" color=warning %}}
 
@@ -64,8 +65,8 @@ _Figura 1. Contribuindo com novo conteúdo._
 ### Editar e enviar alterações pelo navegador {#page-edit-from-browser}
 
 Se você tem menos experiência com fluxos de trabalho do Git, aqui está um método
-mais fácil de preparar e abrir um novo _pull request_ (PR). A Figura 2 descreve os
-passos, e os detalhes seguem abaixo.
+mais fácil de preparar e abrir um novo _pull request_ (PR). A Figura 2 descreve
+os passos, e os detalhes seguem abaixo.
 
 ```mermaid
 flowchart LR
@@ -100,8 +101,8 @@ _Figura 2. Etapas para abrir um PR usando o GitHub._
 1. Na página onde você vê o problema, selecione a opção **Editar esta página**
    no painel de navegação à direita.
 
-1. Se você não for membro do projeto, o GitHub oferece a opção de criar um _fork_
-   do repositório. Selecione **Fazer _fork_ deste repositório**.
+1. Se você não for membro do projeto, o GitHub oferece a opção de criar um
+   _fork_ do repositório. Selecione **Fazer _fork_ deste repositório**.
 
 1. Faça suas alterações no editor do GitHub.
 
@@ -380,8 +381,8 @@ implantar uma prévia usando [Netlify](https://www.netlify.com/).
 - Se a compilação do Netlify falhar, selecione **Detalhes** (_Details_) para
   mais informações.
 - Se a compilação do Netlify for bem-sucedida, selecione **Detalhes** para abrir
-  uma versão do site OpenTelemetry com suas alterações aplicadas. É
-  assim que os revisores verificam suas alterações.
+  uma versão do site OpenTelemetry com suas alterações aplicadas. É assim que os
+  revisores verificam suas alterações.
 
 Outras verificações também podem falhar. Veja a
 [lista de todas as verificações de PR](../pr-checks).
@@ -556,7 +557,8 @@ critérios:
 - Aprovado por pelo menos um aprovador.
 - Sem falhas nas verificações de PR.
 - A _branch_ do PR está atualizada com a _branch_ base.
-- As alterações na página do doc [não abrangem localidades][do not span locales].
+- As alterações na página do doc [não abrangem
+  localidades][do not span locales].
 
 [do not span locales]: ../localization/#prs-should-not-span-locales
 
