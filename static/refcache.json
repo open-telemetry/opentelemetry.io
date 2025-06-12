@@ -2327,6 +2327,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-15T13:17:55.721664-05:00"
   },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-india/register/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T12:42:59.514980977Z"
+  },
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-japan//": {
     "StatusCode": 200,
     "LastSeen": "2025-05-16T10:23:39.628213497-07:00"
@@ -19638,6 +19642,10 @@
   "https://www.cncf.io/": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:09:56.439513-05:00"
+  },
+  "https://www.cncf.io/announcements/2025/05/07/cncf-announces-speakers-and-sessions-for-kubecon-cloudnativecon-india/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T12:43:03.865109449Z"
   },
   "https://www.cncf.io/announcements/2025/05/21/cncf-shares-schedule-for-open-observability-summit-north-america-gears-up-for-inaugural-event/": {
     "StatusCode": 206,
