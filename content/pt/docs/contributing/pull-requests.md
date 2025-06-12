@@ -2,7 +2,7 @@
 title: Enviando conteúdo
 description:
   Aprenda como enviar novos conteúdos ou alterar conteúdos existentes usando a
-  interface do GitHub ou a partir de um fork local.
+  interface do GitHub ou a partir de um _fork_ local.
 aliases: [new-content]
 weight: 15
 default_lang_commit: bc14fe46c2f358c8c0b6dc7f394535787bd4fff3
@@ -15,7 +15,7 @@ submeta um [pull request][PR] (PR):
   veja [Usando o GitHub](#changes-using-github) para aprender como editar uma
   página.
 - Caso contrário, consulte [Trabalhando localmente](#fork-the-repo) para
-  aprender como fazer alterações no seu próprio ambiente de desenvolvimento.
+  aprender como fazer alterações no seu próprio ambiente de desenvolvimento local.
 
 {{% alert title="Contrato de Licença de Contribuidor (CLA)" color=warning %}}
 
@@ -44,8 +44,8 @@ flowchart LR
     direction TB
        T[ ] -.-
        B[Fazer cópia _fork_ do repositório no GitHub] --- C[Escrever documentação em markdown<br>e construir o site com Hugo]
-       C --- D[Enviar o código-fonte para o fork]
-       D --- E[Abrir um pull request]
+       C --- D[Enviar o código-fonte para o _fork_]
+       D --- E[Abrir um _pull request_]
        E --- F[Assinar o CNCF CLA]
     end
 
@@ -64,7 +64,7 @@ _Figura 1. Contribuindo com novo conteúdo._
 ### Editar e enviar alterações pelo navegador {#page-edit-from-browser}
 
 Se você tem menos experiência com fluxos de trabalho do Git, aqui está um método
-mais fácil de preparar e abrir um novo pull request (PR). A Figura 2 descreve os
+mais fácil de preparar e abrir um novo _pull request_ (PR). A Figura 2 descreve os
 passos, e os detalhes seguem abaixo.
 
 ```mermaid
@@ -100,8 +100,8 @@ _Figura 2. Etapas para abrir um PR usando o GitHub._
 1. Na página onde você vê o problema, selecione a opção **Editar esta página**
    no painel de navegação à direita.
 
-1. Se você não for membro do projeto, o GitHub oferece a opção de criar um fork
-   do repositório. Selecione **Fazer fork deste repositório**.
+1. Se você não for membro do projeto, o GitHub oferece a opção de criar um _fork_
+   do repositório. Selecione **Fazer _fork_ deste repositório**.
 
 1. Faça suas alterações no editor do GitHub.
 
@@ -159,7 +159,7 @@ fix:submodule
 fix:text
 ```
 
-{{% alert title="Pro tip" %}}
+{{% alert title="Dica" %}}
 
 Você também pode executar os comandos `fix` localmente. Para a lista completa de
 comandos de correção, execute `npm run -s '_list:fix:*'`.
@@ -179,7 +179,7 @@ local. Os detalhes de cada etapa seguem abaixo.
 
 ```mermaid
 flowchart LR
-1[Faça o _fork_ do repositório<br>open-telemetry/opentelemetry] --> 2[Criar um clone<br>e configurar a branch remota]
+1[Faça o _fork_ do repositório<br>open-telemetry/opentelemetry] --> 2[Crie um clone<br>e configure a branch remota]
 subgraph changes[Suas alterações]
 direction TB
 S[ ] -.-
@@ -204,13 +204,13 @@ class changes,changes2 white
 
 \_Figura 3. Trabalhando a partir de um fork local para fazer suas alterações.\_
 
-### Fazer fork do repositório
+### Faça o _fork_ do repositório
 
 1. Navegue até o repositório
    [`opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io/).
 1. Selecione **Fork**.
 
-### Clonar e definir o repositório de origem (_upstream_)
+### Clone e defina o repositório de origem (_upstream_)
 
 1. Em uma janela de terminal, clone seu _fork_ e instale as dependências:
 
@@ -242,7 +242,7 @@ class changes,changes2 white
    upstream	https://github.com/open-telemetry/opentelemetry.io.git (push)
    ```
 
-1. Busque commits do `origin/main` do seu _fork_ e `upstream/main` do
+1. Obtenha commits do `origin/main` do seu _fork_ e `upstream/main` do
    repositório `open-telemetry/opentelemetry.io`:
 
    ```shell
@@ -254,7 +254,7 @@ class changes,changes2 white
    começar a fazer alterações. Envie alterações do _upstream_ para o _origin_
    regularmente para manter seu _fork_ sincronizado com o _upstream_.
 
-### Criar uma ramificação (_branch_)
+### Crie uma _branch_ (ramificação)
 
 1. Crie uma nova _branch_. Este exemplo assume que a _branch_ base é
    `upstream/main`:
@@ -318,7 +318,7 @@ alterações.
 1. Assim que as alterações forem enviadas, o GitHub avisará que você pode criar
    um PR.
 
-### Abrir um novo PR {#open-a-pr}
+### Abre um novo PR {#open-a-pr}
 
 A Figura 4 mostra os passos para abrir um PR do seu _fork_ para
 [opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io).
@@ -327,15 +327,15 @@ A Figura 4 mostra os passos para abrir um PR do seu _fork_ para
 flowchart LR
 subgraph first[ ]
 direction TB
-1[1\. Ir para o repositório opentelemetry.io] --> 2[2\. Selecionar Novo Pull Request]
-2 --> 3[3\. Selecionar comparar entre forks]
-3 --> 4[4\. Selecionar seu fork no<br>menu suspenso do repositório de origem]
+1[1\. Vá para o repositório opentelemetry.io] --> 2[2\. Selecione Novo Pull Request]
+2 --> 3[3\. Selecione comparar entre _forks_]
+3 --> 4[4\. Selecione seu _fork_ no<br>menu suspenso do repositório de origem]
 end
 subgraph second [ ]
 direction TB
-5[5\. Selecionar sua branch no<br>menu suspenso de comparação] --> 6[6\. Selecionar Criar Pull Request]
-6 --> 7[7\. Adicionar uma descrição<br>ao seu PR]
-7 --> 8[8\. Selecionar Criar pull request]
+5[5\. Selecione sua branch no<br>menu suspenso de comparação] --> 6[6\. Selecione Criar Pull Request]
+6 --> 7[7\. Adicione uma descrição<br>ao seu PR]
+7 --> 8[8\. Selecione Criar pull request]
 end
 
 first --> second
@@ -380,13 +380,13 @@ implantar uma prévia usando [Netlify](https://www.netlify.com/).
 - Se a compilação do Netlify falhar, selecione **Detalhes** (_Details_) para
   mais informações.
 - Se a compilação do Netlify for bem-sucedida, selecione **Detalhes** para abrir
-  uma versão em estágio do site OpenTelemetry com suas alterações aplicadas. É
+  uma versão do site OpenTelemetry com suas alterações aplicadas. É
   assim que os revisores verificam suas alterações.
 
 Outras verificações também podem falhar. Veja a
 [lista de todas as verificações de PR](../pr-checks).
 
-### Corrigir problemas {#fix-issues}
+### Corrija problemas {#fix-issues}
 
 Antes de enviar uma alteração para o repositório, execute o seguinte comando e
 (i) resolva quaisquer problemas relatados, (ii) confirme quaisquer arquivos
@@ -408,13 +408,13 @@ Para listar os scripts NPM disponíveis, execute `npm run`. Veja
 [verificações de PR](../pr-checks) para mais informações sobre verificações de
 _pull request_ e como corrigir erros automaticamente.
 
-### Visualizar suas alterações {#preview-locally}
+### Visualize suas alterações {#preview-locally}
 
 Visualize suas alterações localmente antes de enviá-las ou abrir um _pull
 request_. Uma prévia permite que você detecte erros de compilação ou problemas
 de formatação do Markdown.
 
-Para construir e servir o site localmente com o Hugo, execute o seguinte
+Para construir e disponibilizar o site localmente com o Hugo, execute o seguinte
 comando:
 
 ```shell
@@ -459,9 +459,9 @@ fácil possível, pedimos que você adira ao seguinte:
 ### Alterações dos revisores
 
 Às vezes, os revisores fazem _commits_ no seu _pull request_. Antes de fazer
-qualquer outra alteração, busque esses _commits_.
+qualquer outra alteração, obtenha esses _commits_.
 
-1. Busque _commits_ do seu _fork_ remoto e faça o _rebase_ em sua _branch_ de
+1. Obtenha _commits_ do seu _fork_ remoto e faça o _rebase_ em sua _branch_ de
    trabalho:
 
    ```shell
@@ -478,7 +478,7 @@ qualquer outra alteração, busque esses _commits_.
 
 Você também pode resolver conflitos de _merge_ pela interface do GitHub.
 
-### Conflitos de merge e rebase
+### Conflitos de _merge_ e _rebase_ 
 
 Se outro colaborador fizer alterações no mesmo arquivo em outro PR, isso pode
 criar um conflito de _merge_. Você deve resolver todos os conflitos de _merge_
@@ -497,7 +497,7 @@ em seu PR.
    git push --force-with-lease origin <seu-nome-da-branch>
    ```
 
-1. Busque alterações do `upstream/main` do repositório
+1. Obtenha alterações do `upstream/main` do repositório
    `open-telemetry/opentelemetry.io` e faça _rebase_ de sua _branch_:
 
    ```shell
