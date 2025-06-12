@@ -159,7 +159,7 @@
                 <div class="mb-3">
                     {{ if $deprecated -}}
                         <div class="alert alert-danger" role="alert">
-                            <h4 class="alert-heading">Deprecated</h4>
+                            <div class="h4 alert-heading">Deprecated</div>
                             {{ .deprecated.reason | markdownify }}
                         </div>
                     {{ end -}}

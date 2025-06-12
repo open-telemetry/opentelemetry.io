@@ -126,8 +126,8 @@ composer require open-telemetry/api open-telemetry/sem-conv
 
 ### Initialize the SDK
 
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library,
-**skip this step**. {{% /alert %}}
+{{% alert title="Note" %}} If you’re instrumenting a library, **skip this
+step**. {{% /alert %}}
 
 To use the OpenTelemetry SDK for PHP you need packages that satisfy the
 dependencies for `psr/http-client-implementation` and
@@ -294,8 +294,8 @@ function as part of PHP's shutdown process:
 
 ### Initialize Tracing
 
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library,
-**skip this step**. {{% /alert %}}
+{{% alert title="Note" %}} If you’re instrumenting a library, **skip this
+step**. {{% /alert %}}
 
 To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need to
 have an initialized
