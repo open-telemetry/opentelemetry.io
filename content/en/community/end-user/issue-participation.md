@@ -24,7 +24,7 @@ You can help OpenTelemetry in two simple ways:
    or feature, is affecting your environment, or your ability to use
    OpenTelemetry.
 
-### Popularity Doesn't Guarantee Priority
+## Popularity Doesn't Guarantee Priority
 
 While we highly value your input and encourage you to use reactions and comments
 on GitHub issues to show your interest, it's important to understand that
