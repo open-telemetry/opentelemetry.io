@@ -2,7 +2,7 @@
 title:
   'OTel Community Day + Open Observability Summit: One Big Day for Open Source
   Observability'
-linkTitle: 'OTel Community Day'
+linkTitle: OTel Community Day
 date: 2025-06-13
 author: '[Isabella Langan](https://github.com/isabella-rose-l) (Causely)'
 # prettier-ignore
@@ -25,7 +25,7 @@ hands-on learning, practical talks, and open dialogue.
 
 **OTel Community Day** is a space for the OpenTelemetry community to celebrate
 wins, share knowledge, and connect over where observability is headed. Our
-[contributor experience survey results](https://opentelemetry.io/blog/2025/contribex-survey-results/)
+[contributor experience survey results](../contribex-survey-results/)
 show that OTel contributors are excited to collaborate in person, where they can
 not only learn from each other and but also help end users with practical
 insights and real-world examples. Whether you're building OTel or building with
@@ -33,17 +33,11 @@ it, you'll find your people here.
 
 ## Schedule
 
-The see the most up-to-date schedule and to build your own schedule, follow
-[this link](https://events.linuxfoundation.org/open-observability-summit-otel-community-day/program/schedule/).
-
-The schedule is subject to change and session seating is available on a
-first-come, first-served basis.
-
-Below you can find a snapshot of the sessions you can expect through out the
-events. Open the list to search for the topics you are most interested in.
+For convenience, a snapshot of the schedule is included below. Open it to search
+for the topics of interest.
 
 <details>
-<summary>Show Schedule</summary>
+<summary class="mb-3">View schedule</summary>
 
 ### Welcome + Keynotes
 
@@ -191,6 +185,11 @@ events. Open the list to search for the topics you are most interested in.
   Bluebird Ballroom 2A (Level 1 - Terrace Level)
 
 </details>
+> <i class="fa-solid fa-circle-info"></i> **Schedule is subject to change**. For
+> the most up-to-date information or to _build your own schedule_, see the
+> event's
+> [Schedule](https://events.linuxfoundation.org/open-observability-summit-otel-community-day/program/schedule/)
+> page.
 
 ## Join us!
 
