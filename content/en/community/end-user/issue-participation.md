@@ -15,10 +15,12 @@ your input is crucial to shaping the project's direction.
 
 You can help OpenTelemetry in two simple ways:
 
-1. Leave a 👍 **reaction** on issues that you would like us to prioritize. This
-   avoids the need for comments like _"me too"_ or _"+1"_, which can sometimes
-   create noise. It also allows maintainers to identify the most popular issues
-   across their repositories in a standard way.
+1. Leave a 👍
+   **[reaction](https://github.blog/news-insights/product-news/add-reactions-to-pull-requests-issues-and-comments/)**
+   on issues that you would like us to prioritize. This avoids the need for
+   comments like _"me too"_ or _"+1"_, which can sometimes create noise. It also
+   allows maintainers to identify the most popular issues across their
+   repositories in a standard way.
 2. Comment on issues to **provide additional context** that can help triagers
    and maintainers understand the impact. You can tell us how a particular bug,
    or feature, is affecting your environment, or your ability to use

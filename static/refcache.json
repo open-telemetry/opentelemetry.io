@@ -2483,6 +2483,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-15T13:17:29.987067-05:00"
   },
+  "https://github.blog/news-insights/product-news/add-reactions-to-pull-requests-issues-and-comments/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:42:14.14607+01:00"
+  },
   "https://github.cm/open-telemetry/open-telemetry-collector": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T06:58:53.221672-05:00"
