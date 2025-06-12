@@ -17,8 +17,9 @@ You can help OpenTelemetry in two simple ways:
 
 1. Leave a 👍
    **[reaction](https://github.blog/news-insights/product-news/add-reactions-to-pull-requests-issues-and-comments/)**
-   on issues that you would like us to prioritize. This avoids the need for
-   comments like _"me too"_ or _"+1"_, which can sometimes create noise. It also
+   on the issue description to upvote issues that you would like us to
+   prioritize. This avoids the need for comments like _"me too"_, _"+1"_, or
+   comments with a single emoji, which can sometimes create noise. It also
    allows maintainers to identify the most popular issues across their
    repositories in a standard way.
 2. Comment on issues to **provide additional context** that can help triagers
