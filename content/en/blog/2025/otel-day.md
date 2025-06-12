@@ -152,6 +152,7 @@ for the topics of interest.
   by Huxing Zhang & Minghui Zhang, Alibaba Cloud<br> 5:30pm – 5:45pm MDT
 
 </details>
+
 > <i class="fa-solid fa-circle-info"></i> **Schedule is subject to change**. For
 > the most up-to-date information or to _build your own schedule_, see the
 > event's
