@@ -1,8 +1,8 @@
 ---
 title: KubeCon + CloudNativeCon Japan 2025
 linkTitle: KubeCon Japan 2025
-date: 2025-06-11 # Show once combined banner is hidden
-expiryDate: 2025-06-17 # keep
+date: 2025-06-12 # Show once combined banner is hidden
+expiryDate: 2025-06-18 # keep
 weight: 20250616
 default_lang_commit: dcd079d98e749febcefd4d7bb1da361770ec8ed3
 ---
