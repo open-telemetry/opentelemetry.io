@@ -9,7 +9,7 @@ On **June 26, 2025**, [OTel Community Day and Open Observability Summit](https:/
 
 **Open Observability Summit** is for developers, operators, and technical leaders who rely on open source to gain deeper insight into their systems. Every session is grounded in real-world experience and shaped by the community. Expect hands-on learning, practical talks, and open dialogue.
 
-**OTel Community Day** is a space for the OpenTelemetry community—maintainers, contributors, and users—to celebrate wins, share knowledge, and connect over where observability is headed. Whether you’re building OTel or building with it, you’ll find your people here.
+**OTel Community Day** is a space for the OpenTelemetry community to celebrate wins, share knowledge, and connect over where observability is headed. Our [contributor experience survey results](https://opentelemetry.io/blog/2025/contribex-survey-results/) show that OTel contributors are excited to collaborate in person, where they can not only learn from each other and but also help end users with practical insights and real-world examples. Whether you’re building OTel or building with it, you’ll find your people here. 
 
  ---
 
