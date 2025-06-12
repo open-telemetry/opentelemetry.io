@@ -555,7 +555,7 @@ critérios:
 - Aprovado por pelo menos um aprovador.
 - Sem falhas nas verificações de PR.
 - A _branch_ do PR está atualizada com a _branch_ base.
-- As alterações na página do doc [do not span locales][].
+- As alterações na página do doc [não abrangem localidades][do not span locales].
 
 [do not span locales]: ../localization/#prs-should-not-span-locales
 
