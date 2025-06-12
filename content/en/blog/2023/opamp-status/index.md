@@ -53,7 +53,7 @@ want to use OpAMP both as an collector extension, with limited functionality, as
 well as as an (collector-external) supervisor that implements a broader set of
 OpAMP capabilities.
 
-{{% alert title="Note" color="info" %}} For a deeper dive, see
+{{% alert title="Note" %}} For a deeper dive, see
 [OpAMP for OpenTelemetry Collector document](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor/specification),
 which describes how to implement both options while minimizing code duplication.
 {{% /alert %}}
@@ -113,7 +113,7 @@ to be deployed by the OpenTelemetry Operator:
 
 ![OpAMP bridge in the OTel Operator](opamp-kubernetes-bridge.png)
 
-{{% alert title="Note" color="info" %}} Currently, we don't have support for
+{{% alert title="Note" %}} Currently, we don't have support for
 deployment via Helm chart, however, if you'd like to contribute to this, you're
 welcome to contribute.{{% /alert %}}
 

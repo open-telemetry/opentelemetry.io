@@ -2,7 +2,7 @@
 title: プルリクエストのチェック
 description: プルリクエストがすべてのチェックをパスする方法学ぶ
 weight: 40
-default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
+default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f # patched
 drifted_from_default: true
 ---
 
@@ -13,7 +13,7 @@ PR のチェックは次のことを検証します。
 - PR が[Netlify を通じてデプロイ](#netlify-deployment)に成功しているか
 - [スタイルガイド](#checks)に変更が従っているか
 
-{{% alert title="Note" color="primary" %}}
+{{% alert title="Note" %}}
 
 もし何らかの PR チェックが失敗していれば、最初にローカルで `npm run fix:all` を実行することで[内容の問題を修正](../pull-requests/#fix-issues)してください。
 
@@ -97,7 +97,7 @@ LinkedIn などの一部のサーバーは 999 を報告します。
 チェッカーが成功ステータスを取得できない外部リンクを手動で検証した場合は、URL にクエリパラメーター`?no-link-check`を追加して、リンクチェッカーに無視させることができます。
 たとえば、<https:/some-example.org?no-link-check> はリンクチェッカーによって無視されます。
 
-{{% alert-md title="メンテナーのヒント" color=info %}}
+{{% alert title="メンテナーのヒント" %}}
 
 メンテナーは、リンクチェッカーを実行した直後に次のスクリプトを実行して、Puppeteer に成功ステータスでないリンクの検証を試みさせることができます。
 
@@ -107,7 +107,7 @@ LinkedIn などの一部のサーバーは 999 を報告します。
 
 このスクリプトは、リンクチェッカーが実行しない URL フラグメントも検証します。
 
-{{% /alert-md %}}
+{{% /alert %}}
 
 ### `WARNINGS in build log?` {#warnings-in-build-log .notranslate lang=en}
 

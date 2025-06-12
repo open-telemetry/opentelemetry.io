@@ -431,6 +431,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-29T09:52:40.815112084Z"
   },
+  "https://cloud-native.slack.com/archives/C06TMJ2R0SK": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-09T18:16:57.899049077-07:00"
+  },
   "https://cloud-native.slack.com/archives/C076RUAGP37": {
     "StatusCode": 200,
     "LastSeen": "2024-08-20T08:40:41.563366481Z"
@@ -1290,6 +1294,10 @@
   "https://docs.deno.com/runtime/fundamentals/open_telemetry/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-20T15:58:07.635811334+01:00"
+  },
+  "https://docs.digitate.com/docs/ignio-integrations/open-telemetry-and-ignio/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-11T12:40:37.833460668Z"
   },
   "https://docs.docker.com": {
     "StatusCode": 206,
@@ -2195,6 +2203,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:23:53.047186-05:00"
   },
+  "https://en.wikipedia.org/wiki/Europe,_the_Middle_East_and_Africa": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-11T15:15:15.897415455-07:00"
+  },
   "https://en.wikipedia.org/wiki/Futures_and_promises": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:23:20.366927-05:00"
@@ -2314,6 +2326,10 @@
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-15T13:17:55.721664-05:00"
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-india/register/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T12:42:59.514980977Z"
   },
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-japan//": {
     "StatusCode": 200,
@@ -3242,6 +3258,10 @@
   "https://github.com/alxbl": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:15:17.843665-05:00"
+  },
+  "https://github.com/andrejkiri": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-09T15:43:31.222235663-07:00"
   },
   "https://github.com/andrewhsu": {
     "StatusCode": 206,
@@ -10967,6 +10987,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:52:08.286978-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/common/instrumentation-scope.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-09T21:09:21.297528-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/common/mapping-to-non-otlp.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:52:12.200641-05:00"
@@ -13443,6 +13467,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:10:56.03728-05:00"
   },
+  "https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/contributor-experience/otel-contributor-experience-survey-free-form-questions.csv": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-11T13:40:07.095362412-07:00"
+  },
   "https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/otel-collector/otel-collector-survey.csv": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T17:02:03.773893-05:00"
@@ -13450,6 +13478,10 @@
   "https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/otel-prom-interoperability/otel-prom-interoperability-survey.csv": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T17:02:02.426651-05:00"
+  },
+  "https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys/contributor-experience": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-09T15:43:31.81908286-07:00"
   },
   "https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys/getting-started": {
     "StatusCode": 206,
@@ -13846,6 +13878,14 @@
   "https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md#text-based-format": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:21:12.345Z"
+  },
+  "https://github.com/prometheus/docs/blob/main/docs/instrumenting/exposition_formats.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-05T10:38:34.828266434Z"
+  },
+  "https://github.com/prometheus/docs/blob/main/docs/instrumenting/exposition_formats.md#text-based-format": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-05T10:38:38.399428492Z"
   },
   "https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md": {
     "StatusCode": 206,
@@ -16482,6 +16522,10 @@
   "https://opentelemetry-python.readthedocs.io/en/stable/shim/opentracing_shim/opentracing_shim.html": {
     "StatusCode": 200,
     "LastSeen": "2025-01-07T10:31:48.307078-05:00"
+  },
+  "https://opentelemetry.devstats.cncf.io/d/50/countries-statistics-in-repository-groups": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-11T13:40:06.53325869-07:00"
   },
   "https://opentelemetry.devstats.cncf.io/d/8/dashboards": {
     "StatusCode": 200,
@@ -19603,6 +19647,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:09:56.439513-05:00"
   },
+  "https://www.cncf.io/announcements/2025/05/07/cncf-announces-speakers-and-sessions-for-kubecon-cloudnativecon-india/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T12:43:03.865109449Z"
+  },
   "https://www.cncf.io/announcements/2025/05/21/cncf-shares-schedule-for-open-observability-summit-north-america-gears-up-for-inaugural-event/": {
     "StatusCode": 206,
     "LastSeen": "2025-06-04T14:44:14.433082-04:00"
@@ -19642,6 +19690,10 @@
   "https://www.cncf.io/kubecon-cloudnativecon-events": {
     "StatusCode": 206,
     "LastSeen": "2025-06-04T14:44:11.337015-04:00"
+  },
+  "https://www.cncf.io/kubecon-cloudnativecon-events/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-11T15:15:16.028821646-07:00"
   },
   "https://www.cncf.io/projects/": {
     "StatusCode": 206,

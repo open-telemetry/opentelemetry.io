@@ -25,11 +25,11 @@ jobs:
           branch_prefix="opentelemetrybot/semconv-integration"
 
           version=$(git branch -r \
-                        | grep "^ *origin/$branch_prefix-v[0-9]+\.[0-9]+\..*-dev" \
+                        | grep -E "^ *origin/$branch_prefix-v[0-9]+\.[0-9]+\..*-dev" \
                         | sed "s|^ *origin/$branch_prefix-||" \
                         | sed "s|-dev$||")
 
-          if [[ -z "$versions" ]]; then
+          if [[ -z "$version" ]]; then
             latest_version=$(gh release view \
                           --repo open-telemetry/semantic-conventions \
                           --json tagName \
