@@ -4,12 +4,12 @@ linkTitle: Práticas do SIG
 description:
   Saiba como aprovadores e mantenedores gerenciam issues e contribuições.
 weight: 999
-cSpell:ignore: chalin Comms docsy onboarded
+cSpell:ignore: chalin Comms docsy onboarded mergeados branch
 ---
 
 Esta página inclui diretrizes e algumas práticas comuns utilizadas por aprovadores e mantenedores.
 
-## Integração (Onboarding)
+## Integração (Onboarding) {#onboarding}  <!-- ADDED ANCHOR HERE -->
 
 Quando um colaborador assume um papel com mais responsabilidade na documentação (como aprovador ou mantenedor), ele será integrado pelos aprovadores e mantenedores existentes:
 
@@ -49,9 +49,13 @@ Outros recursos valiosos para revisão:
 
 ### Geral
 
-- Se o branch da PR estiver "desatualizado com o branch base", não é necessário atualizá-lo continuamente: toda atualização dispara novamente os testes de CI! Geralmente, é suficiente atualizar antes de fazer o merge.
+<!-- UPDATED FOR GENDER AGREEMENT -->
+- Se a branch do PR estiver desatualizada com a branch base, não é necessário atualizá-la continuamente: toda atualização dispara novamente os testes de CI! Geralmente, é suficiente atualizar antes de fazer o merge.
 - PRs de pessoas que não são mantenedoras **nunca** devem atualizar submódulos git. Isso pode acontecer por engano. Informe ao autor que não há problema, será corrigido antes do merge, mas que no futuro deve usar um fork atualizado.
-- Se o contribuidor estiver com problemas para assinar o CLA ou usou o email errado em algum commit, solicite a correção ou o rebase da PR. No pior dos casos, feche e reabra a PR para disparar nova verificação do CLA.
+
+<!-- UPDATED FOR GENDER AGREEMENT -->
+- Se o contribuidor estiver com problemas para assinar o CLA ou usou o email errado em algum commit, solicite a correção ou o rebase do PR. No pior dos casos, feche e reabra o PR para disparar nova verificação do CLA.
+
 - Palavras desconhecidas para o cspell devem ser adicionadas à lista local de ignore da página por quem abrir a PR. Apenas aprovadores e mantenedores adicionam termos globais.
 
 ### PRs co-gerenciadas
@@ -66,9 +70,8 @@ PRs que modificam documentação co-gerenciada por algum SIG (collector, demo, l
 
 ### PRs de bots
 
-PRs criadas por bots seguem estas práticas:
-
-- PRs que atualizam versões no registro podem ser corrigidas, aprovadas e mescladas imediatamente.
+<!-- UPDATED FOR MASCULINE AGREEMENT -->
+- PRs que atualizam versões no registro podem ser corrigidos, aprovados e mergeados imediatamente.
 - PRs que atualizam versões de SDKs, instrumentações zero-code ou o collector podem ser aprovadas e mescladas, a menos que o SIG correspondente solicite adiamento.
 - PRs que atualizam versões de especificações frequentemente exigem atualizações em scripts para que os testes de CI passem. Nesse caso,
   [@chalin](https://github.com/chalin/)
@@ -83,7 +86,7 @@ PRs com mudanças em traduções devem ter duas aprovações: uma de aprovador d
 Mantenedores podem seguir este fluxo para mesclar PRs:
 
 - Verifique se a PR tem todas as aprovações e todos os testes de CI passaram.
-- Se o branch estiver desatualizado, atualize via UI do GitHub.
+- Se a branch estiver desatualizada, atualize via UI do GitHub.
 - Isso disparará novamente os testes de CI. Aguarde os resultados ou use o seguinte comando para rodar e mesclar em segundo plano:
 
   ```shell
