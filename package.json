@@ -84,6 +84,7 @@
     "fix": "npm run all -- $(npm -s run _list:fix:*)",
     "format": "npm run _check:format -- --write && npm run _check:format:ja+zh -- --write",
     "get:submodule": "npm run _get:${GET:-submodule} --",
+    "log:build": "npm run build 2>&1 | tee tmp/build-log.txt",
     "log:check:links": "npm run check:links 2>&1 | tee tmp/build-log.txt",
     "log:test-and-fix": "npm run test-and-fix 2>&1 | tee tmp/build-log.txt",
     "make:public": "make public ls-public",
