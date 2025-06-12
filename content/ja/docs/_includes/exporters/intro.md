@@ -1,5 +1,5 @@
 ---
-default_lang_commit: ba402271eeb1bd5e83c37f2fadc3b50e89aca66b
+default_lang_commit: d0a90db560d4f15934bdb43d994eabcfd91c515a
 ---
 
 [OpenTelemetryコレクター](/docs/collector/)にテレメトリーを送信し、正しくエクスポートされることを確認してください。
@@ -39,9 +39,11 @@ OTLPについて詳細に学習したい場合は、[OTLP仕様][OTLP]を参照�
 
 {{ if $zeroConfigPageExists }}
 
-<div class="alert alert-info" role="alert"><h4 class="alert-heading">注意</h4>
+{{% alert title=Note %}}
+
 [ゼロコード計装](/docs/zero-code/{{ $l }})を使用している場合は、[設定ガイド](/docs/zero-code/{{ $l }}/configuration/)に従ってエクスポーターの設定方法を学ぶことができます。
-</div>
+
+{{% /alert %}}
 
 {{ end }}
 
@@ -51,11 +53,11 @@ OTLPについて詳細に学習したい場合は、[OTLP仕様][OTLP]を参照�
 
 ### コレクターのセットアップ {#collector-setup}
 
-<div class="alert alert-info" role="alert"><h4 class="alert-heading">注意</h4>
+{{% alert title=Note %}}
 
 OTLPコレクターまたはバックエンドがすでにセットアップされている場合は、このセクションをスキップして、アプリケーション用の[OTLPエクスポーター依存関係のセットアップ](#otlp-dependencies)に進むことができます。
 
-</div>
+{{% /alert %}}
 
 OTLPエクスポーターを試し、検証するために、テレメトリーを直接コンソールに書き込むDockerコンテナでコレクターを実行できます。
 空のディレクトリで、以下の内容で`collector-config.yaml`というファイルを作成します。
