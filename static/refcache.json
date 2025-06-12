@@ -2355,6 +2355,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-06-04T14:44:14.235372-04:00"
   },
+  "https://events.linuxfoundation.org/open-observability-summit-otel-community-day/program/schedule/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T12:23:11.085990017Z"
+  },
   "https://events.linuxfoundation.org/open-source-summit-north-america/": {
     "StatusCode": 200,
     "LastSeen": "2025-06-04T14:44:12.088873-04:00"
