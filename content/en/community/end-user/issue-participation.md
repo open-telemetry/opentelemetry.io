@@ -1,6 +1,6 @@
 ---
-title: Vote and Comment
-linkTitle: Vote and Comment on GitHub Issues
+title: Vote and Comment on GitHub Issues
+linkTitle: Issue participation
 description: >-
   Help us prioritize work in OpenTelemetry by contributing to GitHub issues with
   your votes and comments.
@@ -12,6 +12,8 @@ At OpenTelemetry, we're always looking for ways to make it easier for our end
 users and community members to have their voices heard. We know that not
 everyone can join SIG meetings or participate in every Slack discussion, but
 your input is crucial to shaping the project's direction.
+
+## How you can help
 
 You can help OpenTelemetry in two simple ways:
 
