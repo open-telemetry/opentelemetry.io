@@ -29,7 +29,7 @@ jobs:
                         | sed "s|^ *origin/$branch_prefix-||" \
                         | sed "s|-dev$||")
 
-          if [[ -z "$versions" ]]; then
+          if [[ -z "$version" ]]; then
             latest_version=$(gh release view \
                           --repo open-telemetry/opentelemetry-specification \
                           --json tagName \
@@ -85,6 +85,7 @@ jobs:
           cd ../..
 
           sed -i "s/^\tspec-pin = .*/\tspec-pin = $commit_desc/" .gitmodules
+          sed -i "s/^\(\s *\)spec: .*/\1spec: $commit_desc/" scripts/content-modules/adjust-pages.pl
 
           git add -A
 
