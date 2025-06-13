@@ -6,6 +6,9 @@
 - name: AWS Distro for OpenTelemetry (ADOT)
   url: https://aws.amazon.com/otel/
   docsUrl: https://aws-otel.github.io/docs/getting-started/collector
+- name: Instana Distribution of OpenTelemetry Collector (IDOT)
+  url: https://github.com/instana/instana-otel-collector
+  docsUrl: https://www.ibm.com/docs/en/instana-observability/current?topic=collectors-instana-distribution-opentelemetry-collector
   components: [Collector]
 - name: AWS Distro for OpenTelemetry - Instrumentation for JavaScript
   url: https://github.com/aws-observability/aws-otel-js-instrumentation/
