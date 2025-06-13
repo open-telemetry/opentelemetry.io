@@ -17,6 +17,7 @@ First, ensure you have the API and SDK packages:
 ```shell
 pip install opentelemetry-api
 pip install opentelemetry-sdk
+pip install opentelemetry-sdk-logging
 ```
 
 ## Traces
@@ -396,7 +397,37 @@ meter.create_observable_gauge(
 
 ## Logs
 
-The logs API & SDK are currently under development.
+To start collecting logs, you need to initialize a
+[`LoggerProvider`](/docs/specs/otel/logs/api/#loggerprovider) and optionally set it as the global default. 
+Then use Python's built-in logging module to create log records that OpenTelemetry can process.
+
+```python
+import logging
+from opentelemetry.sdk._logs import LoggerProvider, LoggingHandler
+from opentelemetry.sdk._logs.export import BatchLogRecordProcessor, ConsoleLogExporter
+from opentelemetry._logs import set_logger_provider, get_logger
+
+provider = LoggerProvider()
+processor = BatchLogRecordProcessor(ConsoleLogExporter())
+provider.add_log_record_processor(processor)
+# Sets the global default logger provider
+set_logger_provider(provider)
+
+logger = get_logger(__name__)
+
+handler = LoggingHandler(level=logging.INFO, logger=logger)
+logging.basicConfig(handlers=[handler], level=logging.INFO)
+
+logging.info("This is an OpenTelemetry log record!")
+```
+
+
+### Further Reading
+
+- [Logs Concepts](/docs/concepts/signals/logs/)
+- [Logs Specification](/docs/specs/otel/logs/)
+- [Python Logs API Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/_logs.html)
+- [Python Logs SDK Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/_logs.html)
 
 ## Next Steps
 
