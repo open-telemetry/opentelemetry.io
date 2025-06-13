@@ -111,7 +111,7 @@ API do OpenTelemetry:
   vincular registros de log a trechos, e por padrão, utilizam qualquer trecho
   ativo no contexto atual.
 
-O trecho de código a seguir explora o uso da API `Context`:
+O trecho de código a seguir explora o uso da API `Contexto`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/ContextUsage.java"?>
@@ -213,14 +213,14 @@ public class ContextUsage {
 ### Armazenamento de contexto
 
 [ContextStorage](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/ContextStorage.html)
-is a mechanism for storing and retrieving the current `Context`.
+é um mecânismo para armazenar and retrieving o `Contexto` atual.
 
-The default `ContextStorage` implementation stores `Context` in thread local.
+A implementação padrão `ContextStorage` armazena `Contexto` em uma thread local.
 
 ### Propagação de Contexto
 
 [Propagação de contexto](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/propagation/ContextPropagators.html)
-é uma estrutura de propagadores registrados para propagar `Context` através dos
+é uma estrutura de propagadores registrados para propagar o `Contexto` através dos
 limites da aplicação. O contexto é injetado em um portador _carrier_ ao sair da
 aplicação (ou seja, em uma requisição HTTP de saída), e extraído de um portador
 _carrier_ ao entrar em uma aplicação (ou seja, ao atender uma requisição HTTP).
@@ -402,7 +402,7 @@ definir o nome do escopo como o nome do pacote ou o nome completo da classe, e
 definir a versão do escopo como a versão da biblioteca. Se estiver emitindo
 telemetria para múltiplos sinais (ou seja, métricas e traços), o mesmo escopo
 deve ser usado. Veja
-[instrumentation scope](/docs/concepts/instrumentation-scope/) para detalhes.
+[escopo de instrumentação](/docs/concepts/instrumentation-scope/) para detalhes.
 
 O trecho de código a seguir explora o uso da API `provider and scope`:
 
@@ -467,15 +467,15 @@ public class ProvidersAndScopes {
 
 [Atributos](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/common/Attributes.html)
 is a bundle of key value pairs representing the
-[standard attribute definition](/docs/specs/otel/common/#standard-attribute).
-`Attributes` are a recurring concept in the OpenTelemetry API:
+[padrões de definição dos atributos](/docs/specs/otel/common/#standard-attribute).
+`Attributes` são um conceito recorrente na API do OpenTelemetry:
 
-- [Spans](#trechos), span events, and span links have attributes.
-- The measurements recorded to [metric instruments](#medidor) have attributes.
-- [LogRecords](#logrecordbuilder) have attributes.
+- [Spans](#trechos), span events, and span links possuem atributos.
+- The measurements recorded to [metric instruments](#medidor) possuem atributos.
+- [LogRecords](#logrecordbuilder) possuem atributos.
 
 Veja [atributos de semântica](#atributos-de-semântica) for attribute constants
-generated from the semantic conventions.
+gerados pela convenção semântica.
 
 Veja [attribute naming](/docs/specs/semconv/general/naming/) for guidance on
 attribute naming.
@@ -569,11 +569,11 @@ public class AttributesUsage {
 
 ### OpenTelemetry
 
-{{% alert title="Spring Boot Starter" %}} The Spring Boot starter is a special
-case where `OpenTelemetry` is available as a Spring bean. Simply inject
-`OpenTelemetry` into your Spring components.
+{{% alert title="Spring Boot Starter" %}} The Spring Boot starter é um caso
+especial onde o `OpenTelemetry` é disponibilizado como Spring bean. Simply inject
+`OpenTelemetry` nos componentes Spring.
 
-Read more about
+Leia mais sobre
 [extending the Spring Boot starter with custom manual instrumentation](/docs/zero-code/java/spring-boot-starter/api/).
 {{% /alert %}}
 
@@ -916,25 +916,25 @@ good answer besides flipping a coin and selecting a random value.
 The instrument APIs have share a variety of features:
 
 - Created using the builder pattern.
-- Required instrument name.
-- Optional unit and description.
+- Nome de instrumentação obrigatório.
+- Unidade e descrição opcional.
 - Record values which are `long` or `double`, which is configured via the
   builder.
 
 Veja
-[metric guidelines](/docs/specs/semconv/general/metrics/#general-guidelines) for
-details on metric naming and units.
+[metric guidelines](/docs/specs/semconv/general/metrics/#general-guidelines) para
+detalhes on metric naming and units.
 
-See
-[guidelines for instrumentation library authors](/docs/specs/otel/metrics/supplementary-guidelines/#guidelines-for-instrumentation-library-authors)
-for additional guidance on instrument selection.
+Veja
+[guidelines para instrumentação library authors](/docs/specs/otel/metrics/supplementary-guidelines/#guidelines-for-instrumentation-library-authors)
+para adicionais guidance on instrument selection.
 
 #### Contador
 
 [LongCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/LongCounter.html)
 and
 [DoubleCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/DoubleCounter.html)
-are used to record monotonic (positive) values.
+são usados para record monotonic (positive) values.
 
 O trecho de código a seguir explora o uso da API `counter`:
 
@@ -989,9 +989,9 @@ public class CounterUsage {
 #### Contador assíncrono
 
 [ObservableLongCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableLongCounter.html)
-and
+e
 [ObservableDoubleCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableDoubleCounter.html)
-are used to observe monotonic (positive) sums.
+são usados para observe monotonic (positive) sums.
 
 O trecho de código a seguir explora o uso da API `async counter`:
 
@@ -1054,11 +1054,11 @@ public class AsyncCounterUsage {
 #### UpDownCounter
 
 [LongUpDownCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/LongUpDownCounter.html)
-and
+e
 [DoubleUpDownCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/DoubleUpDownCounter.html)
-are used to record non-monotonic (positive and negative) values.
+são usados para record non-monotonic (positive and negative) values.
 
-O trecho de código a seguir explora o uso da API updowncounter :
+O trecho de código a seguir explora o uso da API `updowncounter`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/UpDownCounterUsage.java"?>
@@ -1111,11 +1111,11 @@ public class UpDownCounterUsage {
 #### Async UpDownCounter
 
 [ObservableLongUpDownCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableLongUpDownCounter.html)
-and
+e
 [ObservableDoubleUpDownCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableDoubleUpDownCounter.html)
-are used to observe non-monotonic (positive and negative) sums.
+são usados para observe non-monotonic (positive and negative) sums.
 
-O trecho de código a seguir explora o uso da API async usage:
+O trecho de código a seguir explora o uso da API `async updowncounter`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/AsyncUpDownCounterUsage.java"?>
@@ -1175,12 +1175,12 @@ public class AsyncUpDownCounterUsage {
 #### Histograma
 
 [DoubleHistogram](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/DoubleHistogram.html)
-and
+e
 [LongHistogram](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/LongHistogram.html)
-are used to record monotonic (positive) values where the distribution is
+são usados para record monotonic (positive) values where the distribution is
 important.
 
-O trecho de código a seguir explora o uso da API histogram :
+O trecho de código a seguir explora o uso da API `histogram`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/HistogramUsage.java"?>
@@ -1236,10 +1236,10 @@ public class HistogramUsage {
 [DoubleGauge](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/DoubleGauge.html)
 and
 [LongGauge](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/LongGauge.html)
-are used to record the latest value where spatial re-aggregation does not make
+são usados para record the latest value where spatial re-aggregation does not make
 sense.
 
-O trecho de código a seguir explora o uso da API gauge :
+O trecho de código a seguir explora o uso da API `gauge`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/GaugeUsage.java"?>
@@ -1293,12 +1293,12 @@ public class GaugeUsage {
 #### Async Gauge
 
 [ObservableDoubleGauge](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableDoubleGauge.html)
-and
+e
 [ObservableLongGauge](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableLongGauge.html)
-are used to observe the latest value where spatial re-aggregation does not make
+são usados para observe the latest value where spatial re-aggregation does not make
 sense.
 
-O trecho de código a seguir explora o uso da API async usage:
+O trecho de código a seguir explora o uso da API `async gauge`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/AsyncGaugeUsage.java"?>
@@ -1358,24 +1358,22 @@ public class AsyncGaugeUsage {
 ### LoggerProvider
 
 [LoggerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/logs/LoggerProvider.html)
-is the API entry point for logs and provides [Loggers](#logger). See
-[provedores e escopos](#provedores-e-escopos) para informação on providers and
-scopes.
+é o ponto de entrada da API para logs e provê [Loggers](#logger). Veja
+[provedores e escopos](#provedores-e-escopos) para informação sobre provedores e escopos.
 
 {{% alert %}} {{% param logBridgeWarning %}} {{% /alert %}}
 
 #### Logger
 
 [Logger](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/logs/Logger.html)
-é usado para [emit log records](#logrecordbuilder) for an
-[instrumentation scope](#provedores-e-escopos). Veja
-[provedores e escopos](#provedores-e-escopos) para informação on providers and
-scopes.
+é usado para [emitir registros de logs](#logrecordbuilder) para um
+[escopo de instrumentação](#provedores-e-escopos). Veja
+[provedores e escopos](#provedores-e-escopos) para informação sobre provedores e escopos.
 
 #### LogRecordBuilder
 
 [LogRecordBuilder](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/logs/LogRecordBuilder.html)
-é usado para construct and emit log records.
+é usado para construir e emitir registros de logs.
 
 O trecho de código a seguir explora o uso da API `LogRecordBuilder`:
 
@@ -1450,9 +1448,9 @@ public class LogRecordUsage {
 
 ### Noop implementation
 
-The `OpenTelemetry#noop()` method provides access to a noop implementation of
-[OpenTelemetry](#opentelemetry) and all API components it provides access to. As
-the name suggests, the noop implementation does nothing and is designed to have
+O método `OpenTelemetry#noop()` provê acesso à implementação Noop do
+[OpenTelemetry](#opentelemetry) e para todos os componentes da API. Como
+o nome sugere, a implementação noop does nothing and is designed to have
 no impact on performance. Instrumentação may see impact on performance even when
 the noop is used if it is computing / allocating attribute values and other data
 required to record the telemetry. The noop is a useful default instance of
@@ -1721,4 +1719,4 @@ transitivos.
 
 Veja
 [incubator README](https://github.com/open-telemetry/opentelemetry-java/tree/main/api/incubator)
-Para APIs disponíveis e exemplos de uso.
+para APIs disponíveis e exemplos de uso.
