@@ -2363,6 +2363,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-06-04T14:44:14.235372-04:00"
   },
+  "https://events.linuxfoundation.org/open-observability-summit-otel-community-day/program/schedule/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T12:23:11.085990017Z"
+  },
   "https://events.linuxfoundation.org/open-source-summit-north-america/": {
     "StatusCode": 200,
     "LastSeen": "2025-06-04T14:44:12.088873-04:00"
@@ -2502,6 +2506,10 @@
   "https://github.blog/2021-05-26-why-and-how-github-is-adopting-opentelemetry/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-15T13:17:29.987067-05:00"
+  },
+  "https://github.blog/news-insights/product-news/add-reactions-to-pull-requests-issues-and-comments/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:42:14.14607+01:00"
   },
   "https://github.cm/open-telemetry/open-telemetry-collector": {
     "StatusCode": 200,
@@ -4614,6 +4622,10 @@
   "https://github.com/iredelmeier": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T15:19:05.148Z"
+  },
+  "https://github.com/isabella-rose-l": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T14:07:47.429802+02:00"
   },
   "https://github.com/ishanjainn": {
     "StatusCode": 206,
@@ -16775,6 +16787,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-31T13:07:33.766024682Z"
   },
+  "https://opentelemetry.io/blog/2025/contribex-survey-results/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T14:07:51.914716+02:00"
+  },
   "https://opentelemetry.io/docs/concepts/instrumentation/": {
     "StatusCode": 206,
     "LastSeen": "2025-02-20T09:23:52.447657347-08:00"
@@ -16810,6 +16826,142 @@
   "https://otelic.com/en/open-telemetry-sample-instrumentation/nodejs-simple": {
     "StatusCode": 200,
     "LastSeen": "2025-01-24T18:24:36.30580416Z"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223A3": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:26.190947+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223A6": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:27.717247+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223A9": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:31.709849+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AC": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:37.951873+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AF": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:49.761535+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AI": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:52.73788+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AL": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:55.192601+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AO": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:54.219716+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AR": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:46.849352+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AU": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:45.819485+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AX": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:51.730411+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223Aa": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:50.737053+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223Ad": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:48.756435+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223Or": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:09.161517+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/228KZ": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:15.713351+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24Jot": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:23.850926+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24Jow": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:26.889563+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24Joz": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:29.943416+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24Jp2": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:33.089733+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24Jp5": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:44.720273+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24Jp8": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:46.327532+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpB": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:47.586998+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpE": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:49.263597+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpH": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:50.249458+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpK": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:51.227147+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpN": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:52.23341+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpQ": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:53.22469+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpT": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:53.709571+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpW": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:54.7007+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24QRq": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:17.114174+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24R7L": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:19.231613+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24R7t": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:21.770493+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24dNu": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:12.948121+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/25Uhx": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:22.692526+02:00"
   },
   "https://ottl.run": {
     "StatusCode": 200,
