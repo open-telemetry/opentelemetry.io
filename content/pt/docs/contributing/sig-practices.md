@@ -5,22 +5,23 @@ description:
   Saiba como aprovadores e mantenedores gerenciam issues e contribuições.
 weight: 999
 cSpell:ignore: chalin Comms docsy onboarded mergeados branch
+default_lang_commit: 
 ---
 
 Esta página inclui diretrizes e algumas práticas comuns utilizadas por aprovadores e mantenedores.
 
-## Integração (Onboarding) {#onboarding}  <!-- ADDED ANCHOR HERE -->
+## Integração (Onboarding) {#onboarding}
 
-Quando um colaborador assume um papel com mais responsabilidade na documentação (como aprovador ou mantenedor), ele será integrado pelos aprovadores e mantenedores existentes:
+Quando uma pessoa colaboradora assume um papel com mais responsabilidade na documentação (como aprovador ou mantenedor), será integrada pelos aprovadores e mantenedores existentes:
 
-- Ele será adicionado ao grupo `docs-approvers` (ou `docs-maintainers`).
-- Será adicionado aos canais de Slack `#otel-comms`, `#otel-maintainers` e canais internos privados.
-- Será solicitado a se inscrever nos convites de calendário para as reuniões do
+- Será adicionada ao grupo `docs-approvers` (ou `docs-maintainers`).
+- Será adicionada aos canais de Slack `#otel-comms`, `#otel-maintainers` e canais internos privados.
+- Será solicitada a se inscrever nos convites de calendário para as reuniões do
   [SIG Comms](https://groups.google.com/a/opentelemetry.io/g/calendar-comms)
   e
   [Maintainers Meeting](https://groups.google.com/a/opentelemetry.io/g/calendar-maintainer-meeting).
-- Será solicitado a verificar se o horário atual da reunião do SIG Comms funciona para ele. Caso contrário, deverá colaborar com os demais aprovadores e mantenedores para encontrar um horário viável para todos.
-- Será solicitado a revisar os diferentes recursos disponíveis para contribuidores:
+- Será solicitada a verificar se o horário atual da reunião do SIG Comms funciona para ela. Caso contrário, deverá colaborar com os demais aprovadores e mantenedores para encontrar um horário viável para todos.
+- Será solicitada a revisar os diferentes recursos disponíveis para contribuidores:
   - [Recursos da Comunidade](https://github.com/open-telemetry/community/), especialmente o documento sobre
     [Níveis de Participação na Comunidade](https://github.com/open-telemetry/community/blob/main/community-membership.md)
     e o
@@ -35,9 +36,9 @@ Outros recursos valiosos para revisão:
   [uso de marcas registradas da Linux Foundation](https://www.linuxfoundation.org/legal/trademark-usage).
   Esses recursos são especialmente importantes ao revisar entradas para o registro, integrações, fornecedores, adotantes ou distribuições.
 
-## Colaboração
+## Colaboração {#collaboration}
 
-- Aprovadores e mantenedores têm agendas e realidades diferentes. Por isso, toda comunicação é considerada assíncrona. Eles não devem se sentir obrigados a responder fora de seu horário normal.
+- Aprovadores e mantenedores têm horários e circunstâncias diferentes. Por isso, toda comunicação é considerada assíncrona. Eles não devem se sentir obrigados a responder fora de seu horário normal.
 - Quando um aprovador ou mantenedor não puder contribuir por um período prolongado (mais de alguns dias ou uma semana), deve comunicar isso pelo canal
   [#otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6)
   e atualizar seu status no GitHub.
@@ -45,49 +46,46 @@ Outros recursos valiosos para revisão:
   [Código de Conduta da OTel](https://github.com/open-telemetry/community/?tab=coc-ov-file#opentelemetry-community-code-of-conduct)
   e os [Valores da Comunidade](/community/mission/#community-values). Eles devem ser amigáveis e prestativos com os contribuidores. Em caso de conflito, mal-entendido ou qualquer situação desconfortável, o aprovador ou mantenedor pode se afastar da conversa, issue ou PR e pedir que outra pessoa assuma.
 
-## Revisão de Código (Code Reviews)
+## Revisão de Código (Code Reviews) {#code-reviews}
 
-### Geral
+### Geral {#general}
 
-<!-- UPDATED FOR GENDER AGREEMENT -->
-- Se a branch do PR estiver desatualizada com a branch base, não é necessário atualizá-la continuamente: toda atualização dispara novamente os testes de CI! Geralmente, é suficiente atualizar antes de fazer o merge.
-- PRs de pessoas que não são mantenedoras **nunca** devem atualizar submódulos git. Isso pode acontecer por engano. Informe ao autor que não há problema, será corrigido antes do merge, mas que no futuro deve usar um fork atualizado.
+- Se _a branch_ do PR estiver "desatualizada com _a branch_ base" (_out-of-date with the base branch_), não é necessário atualizá-la continuamente: toda atualização dispara novamente os testes de CI! Geralmente, é suficiente atualizar antes de fazer o _merge_.
+- PRs de pessoas que não são mantenedoras **nunca** devem atualizar _submódulos_ git. Isso pode acontecer por engano. Informe ao autor que não há problema, será corrigido antes do _merge_, mas que no futuro deve usar um _fork_ atualizado.
+- Se o contribuidor estiver com problemas para assinar o CLA ou usou o e-mail errado em algum _commit_, solicite a correção ou o _rebase_ do PR. No pior dos casos, feche e reabra o PR para disparar nova verificação do CLA.
+- Palavras desconhecidas para o cspell devem ser adicionadas à lista local de _ignore_ da página por quem abrir a PR. Apenas aprovadores e mantenedores adicionam termos globais.
 
-<!-- UPDATED FOR GENDER AGREEMENT -->
-- Se o contribuidor estiver com problemas para assinar o CLA ou usou o email errado em algum commit, solicite a correção ou o rebase do PR. No pior dos casos, feche e reabra o PR para disparar nova verificação do CLA.
+### PRs co-gerenciadas {#co-owned-prs}
 
-- Palavras desconhecidas para o cspell devem ser adicionadas à lista local de ignore da página por quem abrir a PR. Apenas aprovadores e mantenedores adicionam termos globais.
+PRs que modificam documentação co-gerenciada por algum SIG (_collector_, _demo_, linguagem específica etc.) devem buscar duas aprovações: uma de aprovador de _docs_ e outra de aprovador do SIG:
 
-### PRs co-gerenciadas
-
-PRs que modificam documentação co-gerenciada por algum SIG (collector, demo, linguagem específica etc.) devem buscar duas aprovações: uma de aprovador de docs e outra de aprovador do SIG:
-
-- O aprovador de docs deve marcar a PR com `sig:<nome>` e mencionar o grupo `-approvers` do SIG.
-- Após revisar e aprovar, o aprovador de docs pode adicionar o label
+- O aprovador de _docs_ deve marcar a PR com `sig:<nome>` e mencionar o grupo `-approvers` do SIG.
+- Após revisar e aprovar, o aprovador de _docs_ pode adicionar o _label_
   [`sig-approval-missing`](https://github.com/open-telemetry/opentelemetry.io/labels/sig-approval-missing),
   sinalizando ao SIG que ele deve revisar a PR.
-- Se não houver aprovação do SIG dentro de um prazo razoável (geralmente duas semanas, podendo ser menor em casos urgentes), o mantenedor de docs pode usar seu julgamento para fazer o merge.
+- Se não houver aprovação do SIG dentro de um prazo razoável (geralmente duas semanas, podendo ser menor em casos urgentes), o mantenedor de _docs_ pode usar seu julgamento para fazer o _merge_.
 
-### PRs de bots
+### PRs de bots {#bot-prs}
 
-<!-- UPDATED FOR MASCULINE AGREEMENT -->
-- PRs que atualizam versões no registro podem ser corrigidos, aprovados e mergeados imediatamente.
-- PRs que atualizam versões de SDKs, instrumentações zero-code ou o collector podem ser aprovadas e mescladas, a menos que o SIG correspondente solicite adiamento.
+PRs criadas por _bots_ seguem estas práticas:
+
+- PRs que atualizam versões no registro podem ser corrigidos, aprovados e _mergeados_ imediatamente.
+- PRs que atualizam versões de SDKs, _instrumentações zero-code_ ou o _collector_ podem ser aprovadas e _mergeadas_, a menos que o SIG correspondente solicite adiamento.
 - PRs que atualizam versões de especificações frequentemente exigem atualizações em scripts para que os testes de CI passem. Nesse caso,
   [@chalin](https://github.com/chalin/)
-  cuidará da PR. Caso contrário, também podem ser aprovadas e mescladas, salvo orientação do SIG.
+  cuidará da PR. Caso contrário, também podem ser aprovadas e _mergeadas_, salvo orientação do SIG.
 
-### PRs de tradução
+### PRs de tradução {#translation-prs}
 
-PRs com mudanças em traduções devem ter duas aprovações: uma de aprovador de docs e outra de aprovador de tradução. As mesmas práticas sugeridas para PRs co-gerenciadas se aplicam aqui.
+PRs com mudanças em traduções devem ter duas aprovações: uma de aprovador de _docs_ e outra de aprovador de tradução. As mesmas práticas sugeridas para PRs co-gerenciadas se aplicam aqui.
 
-### Fazendo merge das PRs
+### Fazendo merge das PRs {#merging-prs}
 
 Mantenedores podem seguir este fluxo para mesclar PRs:
 
-- Verifique se a PR tem todas as aprovações e todos os testes de CI passaram.
-- Se a branch estiver desatualizada, atualize via UI do GitHub.
+- Verifique se o PR tem todas as aprovações e todos os testes de CI passaram.
+- Se _a branch_ estiver desatualizada, atualize via UI do GitHub.
 - Isso disparará novamente os testes de CI. Aguarde os resultados ou use o seguinte comando para rodar e mesclar em segundo plano:
 
   ```shell
-  export PR=<ID DA PR>; gh pr checks ${PR} --watch && gh pr merge ${PR} --squash
+  export PR=<ID DO PR>; gh pr checks ${PR} --watch && gh pr merge ${PR} --squash
