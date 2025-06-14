@@ -369,8 +369,8 @@
 - name: SigNoz
   nativeOTLP: true
   url: https://signoz.io
-  contact:
-  oss: false
+  contact: support@signoz.io
+  oss: true
   commercial: true
 - name: SolarWinds
   nativeOTLP: true
