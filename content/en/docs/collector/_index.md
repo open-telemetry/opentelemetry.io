@@ -31,7 +31,7 @@ Fluent Bit, etc.) sending to one or more open source or commercial backends.
 ## When to use a collector
 
 For most language specific instrumentation libraries you have exporters for
-popular backends and OTLP. You might wonder,
+popular backends and the OpenTelemetry Protocol (OTLP). You might wonder,
 
 > under what circumstances does one use a collector to send data, as opposed to
 > having each service send directly to the backend?
