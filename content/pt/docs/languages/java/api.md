@@ -637,7 +637,7 @@ mantém uma instância singleton de [OpenTelemetry](#opentelemetry).
 A instrumentação deve evitar usar `GlobalOpenTelemetry`. Em vez disso, aceita
 `OpenTelemetry` como argumento de inicialização e utilizar a
 [implementação Noop](#implementação-noop) como padrão caso nenhuma instância
-seja fornecedida. H'uma exceção a essa regra: a instância do `OpenTelemetry`
+seja fornecida. Há uma exceção a essa regra: a instância do `OpenTelemetry`
 instalado pelo [Java agent](/docs/zero-code/java/agent/) está disponível por
 meio do `GlobalOpenTelemetry`. Usuários com instrumentações manuais adicionais
 são incentivados a acessá-las por `GlobalOpenTelemetry.get()`.
@@ -690,7 +690,7 @@ public class GlobalOpenTelemetryUsage {
 ### TracerProvider
 
 [TracerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/TracerProvider.html)
-é um ponto de entrada da API para traçõs e provedores de [Traços](#traços). Veja
+é um ponto de entrada da API para traços e provedores de [Traços](#traços). Veja
 [provedores e escopos](#provedores-e-escopos) para informação sobre provedores e
 escopos.
 
@@ -812,7 +812,7 @@ Trechos pai são um importante aspecto dos traços. Cada trecho tem um pai
 opcional. Ao coletar todos os trechos de um traço e seguir o pai de cada um, nós
 conseguimos construir uma hierarquia. As APIs de trechos são construídas sobre o
 [contexto](#contexto), que permite que o contexto de um trecho seja passado de
-forma implicita por toda a aplicaão e através das threads. Quando um trecho é
+forma implícita por toda a aplicação e através das threads. Quando um trecho é
 criado, o trecho pai é definido com o trecho presente em `Context.current()` a
 menos que não tenha um trecho ou o contexto seja sobrescrito explicitamente.
 
