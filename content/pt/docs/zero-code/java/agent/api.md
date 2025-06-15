@@ -5,6 +5,7 @@ description:
   Use the OpenTelemetry API in combination with the Java agent to extend the
   automatically generated telemetry with custom spans and metrics
 weight: 21
+default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
 ---
 
 ## Introdução
