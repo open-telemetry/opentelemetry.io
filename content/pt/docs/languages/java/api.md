@@ -12,7 +12,7 @@ logBridgeWarning: >
   existe para criar anexadores de registros que conectam registros / frameworks
   no OpenTelemetry. Elas não são destinadas ao uso final como substitutas do
   Log4j / SLF4J / Logback / etc.
-cSpell:ignore: Dotel kotlint Logback updowncounter Reagregação
+cSpell:ignore: Dotel kotlint Logback Reagregação updowncounter
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -1462,11 +1462,11 @@ public class LogRecordUsage {
 O método `OpenTelemetry#noop()` fornece acesso à implementação Noop do
 [OpenTelemetry](#opentelemetry) e de todos os componentes da API. Como o nome
 sugere, a implementação noop não faz nada e foi projetada para não ter nenhum
-impacto de performance. A Instrumentação pode ver um impacto na performance mesmo quando noop é
-usada se ela estiver calculando / alocando valores de atributos e outros dados necessários para
-registrar a telemetria. O noop é uma instância padrão útil do `OpenTelemetry`
-quando o usuário não configurou ou instalou uma implementação concreta como
-o [SDK](../sdk/).
+impacto de performance. A Instrumentação pode ver um impacto na performance
+mesmo quando noop é usada se ela estiver calculando / alocando valores de
+atributos e outros dados necessários para registrar a telemetria. O noop é uma
+instância padrão útil do `OpenTelemetry` quando o usuário não configurou ou
+instalou uma implementação concreta como o [SDK](../sdk/).
 
 O trecho de código a seguir explora o uso da API `OpenTelemetry#noop()`:
 
@@ -1570,13 +1570,14 @@ instrumentação conforme:
 mudanças incompatíveis, a intenção é estabilizar a `opentelemetry-semconv` e
 remover o sufixo `-alpha` em `opentelemetry-semconv-incubating` permanentemente.
 Bibliotecas podem utilizar `opentelemetry-semconv-incubating` para testes, mas
-não devem incluí-lo como uma dependência: como os atributos podem ser adicionados ou removidos
-de uma versão para outra, incluí-lo como dependência pode expor os usuários a erros em
-tempo de execução quando ocorrerem conflitos de versão transitivos. {{% /alert %}}
+não devem incluí-lo como uma dependência: como os atributos podem ser
+adicionados ou removidos de uma versão para outra, incluí-lo como dependência
+pode expor os usuários a erros em tempo de execução quando ocorrerem conflitos
+de versão transitivos. {{% /alert %}}
 
 Os atributos constantes gerados pela convenção semântica são instâncias de
-`AttributeKey<T>`, e podem ser utilizados em qualquer lugar da API do OpenTelemetry que aceite
-atributos.
+`AttributeKey<T>`, e podem ser utilizados em qualquer lugar da API do
+OpenTelemetry que aceite atributos.
 
 O trecho de código a seguir explora o uso da API de
 `atributos de convenção semântica`:
@@ -1619,14 +1620,15 @@ public class SemanticAttributesUsage {
 ### Bagagem
 
 [Bagagem](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/baggage/Baggage.html)
-é um conjunto de pares chave-valor definidos pela aplicação, associadas a uma requisição
-distribuída ou a execução de um fluxo de trabalho. As chaves e valores da bagagem são strings, e os valores
-possuem metadados opcionais. A telemetria pode ser enriquecida com dados da bagagem
-ao configurar o [SDK](../sdk/) para adicionar essas entradas como atributos dos trechos,
+é um conjunto de pares chave-valor definidos pela aplicação, associadas a uma
+requisição distribuída ou a execução de um fluxo de trabalho. As chaves e
+valores da bagagem são strings, e os valores possuem metadados opcionais. A
+telemetria pode ser enriquecida com dados da bagagem ao configurar o
+[SDK](../sdk/) para adicionar essas entradas como atributos dos trechos,
 métricas, e registros de logs. A API de bagagem é construída sobre o
-[contexto](#contexto), que permite que o contexto do trecho seja passado implicitamente
-dentro da aplicação e através dos limites das threads. A maioria das diretrizes de uso da API de contexto
-também se aplicam a bagagem.
+[contexto](#contexto), que permite que o contexto do trecho seja passado
+implicitamente dentro da aplicação e através dos limites das threads. A maioria
+das diretrizes de uso da API de contexto também se aplicam a bagagem.
 
 A bagagem é propagada através dos limites da aplicação com o
 [W3CBaggagePropagator](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/baggage/propagation/W3CBaggagePropagator.html)
