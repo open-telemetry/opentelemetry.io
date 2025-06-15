@@ -1,0 +1,18 @@
+title: WSO2 API Manager
+registryType: application integration
+language: Java
+tags:
+  - WSO2
+  - API Manager
+  - Java
+  - Opentelemetry
+license: Apache-2.0
+description: 'Integration of OpenTelemetry with WSO2 API Manager enhances observability by providing insights into API metrics, traces, and logs, facilitating better performance monitoring and troubleshooting.'
+authors:
+  - name: WSO2
+    url: https://github.com/wso2
+urls:
+  website: https://wso2.com/api-management/
+  docs: https://apim.docs.wso2.com/en/latest/observe/api-manager/traces/monitoring-with-opentelemetry/
+createdAt: '2025-05-08'
+isFirstParty: true

@@ -1,0 +1,18 @@
+title: WSO2 Micro Integrator
+registryType: application integration
+language: Java
+tags:
+  - WSO2
+  - Micro Integrator
+  - Java
+  - Opentelemetry
+license: Apache-2.0
+description: 'Integration of OpenTelemetry with WSO2 Micro Integrator enhances observability by providing insights into metrics, traces, and logs, facilitating better performance monitoring and troubleshooting.'
+authors:
+  - name: WSO2
+    url: https://github.com/wso2
+urls:
+  website: https://wso2.com/integration/
+  docs: https://mi.docs.wso2.com/en/latest/observe-and-manage/classic-observability-traces/monitoring-with-opentelemetry-mi/
+createdAt: '2025-05-08'
+isFirstParty: true
