@@ -12,7 +12,7 @@ logBridgeWarning: >
   existe para criar anexadores de registros que conectam registros / frameworks
   no OpenTelemetry. Elas não são destinadas ao uso final como substitutas do
   Log4j / SLF4J / Logback / etc.
-cSpell:ignore: Dotel kotlint Logback updowncounter
+cSpell:ignore: Dotel kotlint Logback updowncounter Reagregação
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -1574,12 +1574,12 @@ não devem incluí-lo como uma dependência: como os atributos podem ser adicion
 de uma versão para outra, incluí-lo como dependência pode expor os usuários a erros em
 tempo de execução quando ocorrerem conflitos de versão transitivos. {{% /alert %}}
 
-Os atributos constantes gerados pela convensão semântica são instâncias de
+Os atributos constantes gerados pela convenção semântica são instâncias de
 `AttributeKey<T>`, e podem ser utilizados em qualquer lugar da API do OpenTelemetry que aceite
 atributos.
 
 O trecho de código a seguir explora o uso da API de
-`atributos de convensão semântica`:
+`atributos de convenção semântica`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/SemanticAttributesUsage.java"?>
