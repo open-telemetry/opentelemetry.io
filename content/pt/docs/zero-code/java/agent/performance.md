@@ -4,8 +4,8 @@ description: Performance reference for the OpenTelemetry Java agent
 weight: 400
 aliases:
   - /docs/languages/java/performance/
-cSpell:ignore: Dotel
 default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
+cSpell:ignore: Dotel
 ---
 
 The OpenTelemetry Java agent instruments your application by running inside the
