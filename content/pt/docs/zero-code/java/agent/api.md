@@ -9,11 +9,11 @@ weight: 21
 
 ## Introdução
 
-In addition to the out-of-the-box instrumentation, você pode estender o Java agent
-com instrumentações manuais personalizadas usando a API do OpenTelemetry. Isso permite que você
-crie [trechos](/docs/concepts/signals/traces/#spans) e
-[métricas](/docs/concepts/signals/metrics) para o seu próprio código sem precisar fazer
-muitas alterações de código.
+In addition to the out-of-the-box instrumentation, você pode estender o Java
+agent com instrumentações manuais personalizadas usando a API do OpenTelemetry.
+Isso permite que você crie [trechos](/docs/concepts/signals/traces/#spans) e
+[métricas](/docs/concepts/signals/metrics) para o seu próprio código sem
+precisar fazer muitas alterações de código.
 
 ## Dependências
 
@@ -42,15 +42,15 @@ dependencies {
 ## OpenTelemetry
 
 O Java agent é um caso especial onde `GlobalOpenTelemetry` é definido pelo
-agente. Uma simples chamada `GlobalOpenTelemetry.get()` para acessar a instância 
+agente. Uma simples chamada `GlobalOpenTelemetry.get()` para acessar a instância
 `OpenTelemetry`.
 
 ## Trecho
 
 {{% alert title="Note" %}}
 
-Para os casos de uso mais comum, use a notação `@WithSpan` ao invés da instrumentação
-manual. Veja [notações](../annotations) para mais informações.
+Para os casos de uso mais comum, use a notação `@WithSpan` ao invés da
+instrumentação manual. Veja [notações](../annotations) para mais informações.
 
 {{% /alert %}}
 
@@ -61,8 +61,8 @@ import io.opentelemetry.api.trace.Tracer;
 Tracer tracer = GlobalOpenTelemetry.getTracer("application");
 ```
 
-Use o `Tracer` para criar um trecho como explicado na
-seção de [trechos](/docs/languages/java/api/#trechos).
+Use o `Tracer` para criar um trecho como explicado na seção de
+[trechos](/docs/languages/java/api/#trechos).
 
 Um exemplo completo pode ser encontrado no [repositório de exemplos].
 
