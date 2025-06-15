@@ -1,3 +1,9 @@
+- name: Digitate (ignio)
+  nativeOTLP: true
+  url: https://docs.digitate.com/docs/ignio-integrations/open-telemetry-and-ignio/
+  contact:
+  oss: false
+  commercial: true
 - name: AppDynamics (Cisco)
   nativeOTLP: true
   url: https://docs.appdynamics.com/latest/en/application-monitoring/cisco-appdynamics-for-opentelemetry
@@ -515,5 +521,11 @@
   nativeOTLP: true
   url: 'https://techdocs.broadcom.com/us/en/ca-enterprise-software/it-operations-management/dx-operational-observability/saas/monitoring/opentelemetry.html'
   contact: https://support.broadcom.com/web/ecx/software-contact-support
+  oss: false
+  commercial: true
+- name: vFunction
+  nativeOTLP: true
+  url: https://kb.vfunction.com/installations/install/dist-agent/
+  contact: support@vfunction.com
   oss: false
   commercial: true

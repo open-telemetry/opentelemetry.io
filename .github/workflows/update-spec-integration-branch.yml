@@ -25,11 +25,11 @@ jobs:
           branch_prefix="opentelemetrybot/spec-integration"
 
           version=$(git branch -r \
-                        | grep "^ *origin/$branch_prefix-v[0-9]+\.[0-9]+\..*-dev" \
+                        | grep -E "^ *origin/$branch_prefix-v[0-9]+\.[0-9]+\..*-dev" \
                         | sed "s|^ *origin/$branch_prefix-||" \
                         | sed "s|-dev$||")
 
-          if [[ -z "$versions" ]]; then
+          if [[ -z "$version" ]]; then
             latest_version=$(gh release view \
                           --repo open-telemetry/opentelemetry-specification \
                           --json tagName \
@@ -85,6 +85,7 @@ jobs:
           cd ../..
 
           sed -i "s/^\tspec-pin = .*/\tspec-pin = $commit_desc/" .gitmodules
+          sed -i "s/^\(\s *\)spec: .*/\1spec: $commit_desc/" scripts/content-modules/adjust-pages.pl
 
           git add -A
 

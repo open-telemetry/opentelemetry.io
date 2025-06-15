@@ -27,6 +27,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:46:17.075695-04:00"
   },
+  "https://actix.rs/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-06T13:35:48.490118+02:00"
+  },
   "https://adalogics.com/": {
     "StatusCode": 200,
     "LastSeen": "2024-12-20T14:53:22.847313555Z"
@@ -427,6 +431,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-29T09:52:40.815112084Z"
   },
+  "https://cloud-native.slack.com/archives/C06TMJ2R0SK": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-09T18:16:57.899049077-07:00"
+  },
   "https://cloud-native.slack.com/archives/C076RUAGP37": {
     "StatusCode": 200,
     "LastSeen": "2024-08-20T08:40:41.563366481Z"
@@ -698,6 +706,10 @@
   "https://crates.io/crates/opentelemetry-http": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T17:58:04.819Z"
+  },
+  "https://crates.io/crates/opentelemetry-instrumentation-actix-web": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-06T16:29:27.887003+02:00"
   },
   "https://crates.io/crates/opentelemetry-jaeger": {
     "StatusCode": 200,
@@ -1282,6 +1294,10 @@
   "https://docs.deno.com/runtime/fundamentals/open_telemetry/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-20T15:58:07.635811334+01:00"
+  },
+  "https://docs.digitate.com/docs/ignio-integrations/open-telemetry-and-ignio/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-11T12:40:37.833460668Z"
   },
   "https://docs.docker.com": {
     "StatusCode": 206,
@@ -2187,6 +2203,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:23:53.047186-05:00"
   },
+  "https://en.wikipedia.org/wiki/Europe,_the_Middle_East_and_Africa": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-11T15:15:15.897415455-07:00"
+  },
   "https://en.wikipedia.org/wiki/Futures_and_promises": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:23:20.366927-05:00"
@@ -2307,6 +2327,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-15T13:17:55.721664-05:00"
   },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-india/register/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T12:42:59.514980977Z"
+  },
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-japan//": {
     "StatusCode": 200,
     "LastSeen": "2025-05-16T10:23:39.628213497-07:00"
@@ -2334,6 +2358,10 @@
   "https://events.linuxfoundation.org/open-observability-summit-otel-community-day/": {
     "StatusCode": 200,
     "LastSeen": "2025-06-04T14:44:14.235372-04:00"
+  },
+  "https://events.linuxfoundation.org/open-observability-summit-otel-community-day/program/schedule/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T12:23:11.085990017Z"
   },
   "https://events.linuxfoundation.org/open-source-summit-north-america/": {
     "StatusCode": 200,
@@ -2474,6 +2502,10 @@
   "https://github.blog/2021-05-26-why-and-how-github-is-adopting-opentelemetry/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-15T13:17:29.987067-05:00"
+  },
+  "https://github.blog/news-insights/product-news/add-reactions-to-pull-requests-issues-and-comments/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:42:14.14607+01:00"
   },
   "https://github.cm/open-telemetry/open-telemetry-collector": {
     "StatusCode": 200,
@@ -3230,6 +3262,10 @@
   "https://github.com/alxbl": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:15:17.843665-05:00"
+  },
+  "https://github.com/andrejkiri": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-09T15:43:31.222235663-07:00"
   },
   "https://github.com/andrewhsu": {
     "StatusCode": 206,
@@ -4582,6 +4618,10 @@
   "https://github.com/iredelmeier": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T15:19:05.148Z"
+  },
+  "https://github.com/isabella-rose-l": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T14:07:47.429802+02:00"
   },
   "https://github.com/ishanjainn": {
     "StatusCode": 206,
@@ -7482,6 +7522,30 @@
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.127.0/semconv/v1.9.0/generated_resource.go": {
     "StatusCode": 206,
     "LastSeen": "2025-05-27T08:58:55.789897207-07:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.128.0/component/config.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-09T21:30:23.132306375Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.128.0/pdata/internal/data/protogen/trace/v1/trace.pb.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-09T21:30:30.150535515Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.128.0/pdata/pcommon/map.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-09T21:30:32.963418599Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.128.0/receiver/receiver.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-09T21:30:27.043271673Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.128.0/receiver/receiver.go#L58": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-09T21:30:24.948887181Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.128.0/semconv/v1.9.0/generated_resource.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-09T21:30:37.610440029Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/issues/10469": {
     "StatusCode": 206,
@@ -10931,6 +10995,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:52:08.286978-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/common/instrumentation-scope.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-09T21:09:21.297528-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/common/mapping-to-non-otlp.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:52:12.200641-05:00"
@@ -11875,9 +11943,177 @@
     "StatusCode": 206,
     "LastSeen": "2025-05-21T16:22:22.01658109Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/specification/common#attribute": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:45.029117528Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/specification/compatibility/prometheus_and_openmetrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:40.652656122Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/specification/configuration/sdk-environment-variables.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:35.039170073Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/specification/context/api-propagators.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:31.114891408Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/specification/document-status.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:40.245876713Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/specification/logs/api.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:40.988722085Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/specification/logs/api.md#emit-a-logrecord": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:46.370669928Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/specification/logs/api.md#logger": {
     "StatusCode": 206,
     "LastSeen": "2025-05-21T16:22:22.513499807Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/specification/logs/data-model.md#events": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:43.140231944Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/specification/logs/data-model.md#field-eventname": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:43.91997733Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/specification/logs/data-model.md#log-and-event-record-definition": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:21:14.382691842Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/specification/metrics/api.md#instrument-advisory-parameters": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:32.232372083Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/specification/resource/sdk.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:32.034408607Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/specification/resource/sdk.md#sdk-provided-resource-attributes": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:39.282611561Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/specification/trace/api.md#set-status": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:45.404822813Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/specification/trace/api.md#span": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:57.15965326Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/specification/trace/api.md#spankind": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:21:15.217037432Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/specification/trace/sdk.md#span-processor": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:21:12.996889861Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/0035-opentelemetry-protocol.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:22.088870495Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/0152-telemetry-schemas.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:29.780458239Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/0232-maturity-of-otel.md#explanation": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:20.413977823Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/logs/0091-logs-vocabulary.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:14.532928311Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/logs/0092-logs-vision.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:17.048501852Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/logs/0097-log-data-model.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:23.630533098Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/logs/0097-log-data-model.md#appendix-a-example-mappings": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:19.314315245Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/logs/0150-logging-library-sdk.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:17.56657599Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/metrics/0003-measure-metric-type.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:21.335719219Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/metrics/0008-metric-observer.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:22.858752511Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/metrics/0009-metric-handles.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:25.143698787Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/metrics/0010-cumulative-to-counter.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:30.012598841Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/metrics/0049-metric-label-set.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:10.839423936Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/metrics/0070-metric-bound-instrument.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:32.881721368Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/metrics/0072-metric-observer.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:35.99407716Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/metrics/0080-remove-metric-gauge.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:41.963503884Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/metrics/0088-metric-instrument-optional-refinements.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:46.176722151Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/metrics/0090-remove-labelset-from-metrics-api.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:46.892783072Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/metrics/0098-metric-instruments-explained.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:51.457239264Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/metrics/0108-naming-guidelines.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:56.170871777Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/metrics/0113-exemplars.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:15.679677359Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/metrics/0126-Configurable-Metric-Aggregations.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:19.575695509Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/metrics/0131-otlp-export-behavior.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:18.673010356Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/metrics/0146-metrics-prototype-scenarios.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:20.564650234Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/profiles/0239-profiles-data-model.md#message-mapping": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T21:20:20.098071258Z"
   },
   "https://github.com/open-telemetry/opentelemetry-swift": {
     "StatusCode": 206,
@@ -13407,6 +13643,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:10:56.03728-05:00"
   },
+  "https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/contributor-experience/otel-contributor-experience-survey-free-form-questions.csv": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-11T13:40:07.095362412-07:00"
+  },
   "https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/otel-collector/otel-collector-survey.csv": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T17:02:03.773893-05:00"
@@ -13414,6 +13654,10 @@
   "https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/otel-prom-interoperability/otel-prom-interoperability-survey.csv": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T17:02:02.426651-05:00"
+  },
+  "https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys/contributor-experience": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-09T15:43:31.81908286-07:00"
   },
   "https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys/getting-started": {
     "StatusCode": 206,
@@ -13811,6 +14055,14 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:21:12.345Z"
   },
+  "https://github.com/prometheus/docs/blob/main/docs/instrumenting/exposition_formats.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-05T10:38:34.828266434Z"
+  },
+  "https://github.com/prometheus/docs/blob/main/docs/instrumenting/exposition_formats.md#text-based-format": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-05T10:38:38.399428492Z"
+  },
   "https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T13:35:16.035724-05:00"
@@ -14170,6 +14422,10 @@
   "https://github.com/slsa-framework/slsa": {
     "StatusCode": 206,
     "LastSeen": "2025-02-10T23:17:29.914581514Z"
+  },
+  "https://github.com/smith": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-08T22:46:32.118682512Z"
   },
   "https://github.com/sokoide": {
     "StatusCode": 200,
@@ -15162,6 +15418,10 @@
   "https://kafka.apache.org/": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:59:12.014503-05:00"
+  },
+  "https://kb.vfunction.com/installations/install/dist-agent/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-09T18:00:15.818142772Z"
   },
   "https://keda.sh/": {
     "StatusCode": 206,
@@ -16439,6 +16699,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-07T10:31:48.307078-05:00"
   },
+  "https://opentelemetry.devstats.cncf.io/d/50/countries-statistics-in-repository-groups": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-11T13:40:06.53325869-07:00"
+  },
   "https://opentelemetry.devstats.cncf.io/d/8/dashboards": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:32:22.440332-05:00"
@@ -16446,6 +16710,10 @@
   "https://opentelemetry.devstats.cncf.io/d/9/developer-activity-counts-by-repository-group-table": {
     "StatusCode": 200,
     "LastSeen": "2025-01-31T13:07:33.766024682Z"
+  },
+  "https://opentelemetry.io/blog/2025/contribex-survey-results/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T14:07:51.914716+02:00"
   },
   "https://opentelemetry.io/docs/concepts/instrumentation/": {
     "StatusCode": 206,
@@ -16482,6 +16750,142 @@
   "https://otelic.com/en/open-telemetry-sample-instrumentation/nodejs-simple": {
     "StatusCode": 200,
     "LastSeen": "2025-01-24T18:24:36.30580416Z"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223A3": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:26.190947+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223A6": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:27.717247+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223A9": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:31.709849+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AC": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:37.951873+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AF": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:49.761535+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AI": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:52.73788+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AL": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:55.192601+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AO": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:54.219716+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AR": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:46.849352+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AU": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:45.819485+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223AX": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:51.730411+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223Aa": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:50.737053+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223Ad": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:48.756435+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/223Or": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:09.161517+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/228KZ": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:15.713351+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24Jot": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:23.850926+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24Jow": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:26.889563+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24Joz": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:29.943416+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24Jp2": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:33.089733+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24Jp5": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:44.720273+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24Jp8": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:46.327532+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpB": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:47.586998+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpE": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:49.263597+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpH": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:50.249458+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpK": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:51.227147+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpN": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:52.23341+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpQ": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:53.22469+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpT": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:53.709571+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24JpW": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:54.7007+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24QRq": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:17.114174+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24R7L": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:19.231613+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24R7t": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:21.770493+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/24dNu": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:12.948121+02:00"
+  },
+  "https://otelopenobservabilityna25.sched.com/event/25Uhx": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-12T17:18:22.692526+02:00"
   },
   "https://ottl.run": {
     "StatusCode": 200,
@@ -19147,6 +19551,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-30T14:41:03.626469-05:00"
   },
+  "https://tracing.rs/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-06T13:34:39.700999+02:00"
+  },
   "https://traefik.io/traefik-hub/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:54:34.700688-05:00"
@@ -19555,6 +19963,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:09:56.439513-05:00"
   },
+  "https://www.cncf.io/announcements/2025/05/07/cncf-announces-speakers-and-sessions-for-kubecon-cloudnativecon-india/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-12T12:43:03.865109449Z"
+  },
   "https://www.cncf.io/announcements/2025/05/21/cncf-shares-schedule-for-open-observability-summit-north-america-gears-up-for-inaugural-event/": {
     "StatusCode": 206,
     "LastSeen": "2025-06-04T14:44:14.433082-04:00"
@@ -19594,6 +20006,10 @@
   "https://www.cncf.io/kubecon-cloudnativecon-events": {
     "StatusCode": 206,
     "LastSeen": "2025-06-04T14:44:11.337015-04:00"
+  },
+  "https://www.cncf.io/kubecon-cloudnativecon-events/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-11T15:15:16.028821646-07:00"
   },
   "https://www.cncf.io/projects/": {
     "StatusCode": 206,

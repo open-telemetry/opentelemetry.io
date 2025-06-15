@@ -1,5 +1,5 @@
 ---
-default_lang_commit: 7d0c3f247ee77671d1135b0af535a2aca05fe359
+default_lang_commit: 7d0c3f247ee77671d1135b0af535a2aca05fe359 # patched
 ---
 
 ## Prometheus
@@ -13,14 +13,14 @@ serializando para o formato de texto do Prometheus sob demanda.
 
 ### Configuração do Backend {#prometheus-setup}
 
-{{% alert-md title=Nota color=info %}}
+{{% alert title=Nota %}}
 
 Caso já possua o Prometheus ou um _backend_ compatível com Prometheus
 configurado, poderá pular esta seção e configurar as dependências do exportador
 [Prometheus](#prometheus-dependencies) ou [OTLP](#otlp-dependencies) para a sua
 aplicação.
 
-{{% /alert-md %}}
+{{% /alert %}}
 
 É possível executar o [Prometheus](https://prometheus.io) em um contêiner Docker
 acessível na porta `9090` através das seguintes instruções:
@@ -43,7 +43,7 @@ porta `9090` através do seguinte comando:
 docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090 prom/prometheus --enable-feature=otlp-write-receive
 ```
 
-{{% alert-md title=Nota color=info %}}
+{{% alert title=Nota %}}
 
 Ao utilizar o OTLP Receiver do Prometheus, certifique-se de definir o endpoint
 OTLP das métricas em sua aplicação para `http://localhost:9090/api/v1/otlp`.
@@ -52,4 +52,4 @@ Nem todos os ambientes Docker suportam `host.docker.internal`. Em alguns casos,
 será necessário alterar o valor `host.docker.internal` para `localhost` ou o
 endereço de IP de sua máquina.
 
-{{% /alert-md %}}
+{{% /alert %}}

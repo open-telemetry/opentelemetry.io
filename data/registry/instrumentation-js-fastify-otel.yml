@@ -16,5 +16,5 @@ createdAt: 2025-01-27
 package:
   registry: npm
   name: '@fastify/otel'
-  version: 0.9.0
+  version: 0.9.1
 isFirstParty: true
