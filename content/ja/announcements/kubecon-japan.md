@@ -3,6 +3,7 @@ title: KubeCon + CloudNativeCon Japan 2025
 linkTitle: KubeCon Japan 2025
 date: 2025-06-12 # Show once combined banner is hidden
 expiryDate: 2025-06-18 # keep
+build: { list: never, render: never } # Hide in favor of new Asia banner
 weight: 20250616
 default_lang_commit: 9bc3c40e6e637b3d776281eb946a60ebf79a4cd5
 ---
