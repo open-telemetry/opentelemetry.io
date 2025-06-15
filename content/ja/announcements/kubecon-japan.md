@@ -4,7 +4,7 @@ linkTitle: KubeCon Japan 2025
 date: 2025-06-12 # Show once combined banner is hidden
 expiryDate: 2025-06-18 # keep
 weight: 20250616
-default_lang_commit: dcd079d98e749febcefd4d7bb1da361770ec8ed3
+default_lang_commit: 9bc3c40e6e637b3d776281eb946a60ebf79a4cd5
 ---
 
 <i class="fas fa-bullhorn"></i> [**{{% param title %}}**][LF]が **6月16・17日に東京で開催**
