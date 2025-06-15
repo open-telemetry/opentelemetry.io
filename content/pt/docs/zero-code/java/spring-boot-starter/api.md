@@ -51,7 +51,7 @@ Use o `Tracer` para criar um trecho explicado na seção
 
 Um exemplo completo pode ser encontrado no [repositório de exemplos].
 
-repositório de exemploser
+## Meter
 
 ```java
 import io.opentelemetry.api.OpenTelemetry;
