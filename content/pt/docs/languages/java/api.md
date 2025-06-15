@@ -12,7 +12,7 @@ logBridgeWarning: >
   existe para criar anexadores de registros que conectam registros / frameworks
   no OpenTelemetry. Elas não são destinadas ao uso final como substitutas do
   Log4j / SLF4J / Logback / etc.
-cSpell:ignore: Dotel kotlint Logback Reagregação updowncounter
+cSpell:ignore: Dotel kotlint Logback reagregação updowncounter
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
