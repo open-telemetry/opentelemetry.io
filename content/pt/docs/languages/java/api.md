@@ -909,40 +909,41 @@ instrumentação correta para cada particular caso de Uso:
 | [Medidor](#medidor)                         | sync          | Registra the latest value where spatial re-aggregation does not make sense **[1]**. | Registra temperatura                                           | [LastValue](/docs/specs/otel/metrics/sdk/#last-value-aggregation)                              |
 | [Medidor Assíncrono](#contador-assíncrono)  | async         | Observa the latest value where spatial re-aggregation does not make sense **[1]**.  | Observa utilização de CPU                                      | [LastValue](/docs/specs/otel/metrics/sdk/#last-value-aggregation)                              |
 
-**[1]**: Spatial re-aggregation is the process of merging attribute streams by
-dropping attributes which are not needed. For example, given series with
-attributes `{"color": "red", "shape": "square"}`,
-`{"color": "blue", "shape": "square"}`, you can perform spatial re-aggregation
-by dropping the `color` attribute, and merging the series where the attributes
-are equal after dropping `color`. Most aggregations have a useful spatial
-aggregation merge function (ou seja, sums are summed together), but gauges
-aggregated by the `LastValue` aggregation are the exception. For example,
-suppose the series mentioned previously are tracking the temperature of widgets.
-How do you merge the series when you drop the `color` attribute? There is no
-good answer besides flipping a coin and selecting a random value.
+**[1]**: Reagregação espacial é o processo de mesclar fluxos de atributos
+descartando atributos que não são necessários. Por exemplo, dadas as séries com
+atributos `{"color": "red", "shape": "square"}`,
+`{"color": "blue", "shape": "square"}`, você pode realizar a reagregação
+espacial descartando o atributo `color`, e mesclando as séries cujos atributos
+restantes sejam iguais depois de descartar o atributo `color`. A maioria das
+agregações possuem uma função de mesclagem útil para reagregação espacial (ou
+seja, somas são somadas juntos), mas os indicadores agregam pelo `LastValue` são
+uma exceção. Por exemplo, suponhas que as séries mencionadas anteriormente
+estejam acompanhando a temperatura de certos objetos. Como você combina as
+séries depois de remover o atributo `color`? Não há uma boa resposta, exceto
+jogar uma moeda e escolher um valor aleatório.
 
 As APIs de instrumentação possuem uma variedade de recursos:
 
-- Criação usando padrões de construtores.
-- Nome de instrumentação obrigatório.
+- Criação baseada em padrões de construtores.
+- Nome da instrumentação obrigatório.
 - Unidade e descrição opcional.
-- Record values which are `long` ou `double`, which is configured via the
+- Registro de valores que podem ser `long` ou `double`, o que é configurado via
   construtor.
 
 Veja
-[metric guidelines](/docs/specs/semconv/general/metrics/#general-guidelines)
-para detalhes em nomenclatura de métricas e unidades.
+[as diretrizes de métricas](/docs/specs/semconv/general/metrics/#general-guidelines)
+para detalhes sobre nomenclatura de métricas e unidades.
 
 Veja
-[guidelines para instrumentação library authors](/docs/specs/otel/metrics/supplementary-guidelines/#guidelines-for-instrumentation-library-authors)
-para adicionais guidance on instrument selection.
+[diretrizes para autores de bibliotecas de instrumentação](/docs/specs/otel/metrics/supplementary-guidelines/#guidelines-for-instrumentation-library-authors)
+para orientações adicionais sobre a escolha de instrumentos.
 
 #### Contador
 
 [LongCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/LongCounter.html)
 e
 [DoubleCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/DoubleCounter.html)
-são usados para record monotonic (positive) values.
+são usados para registrar valores monótonos (positivos).
 
 O trecho de código a seguir explora o uso da API `counter`:
 
@@ -999,7 +1000,7 @@ public class CounterUsage {
 [ObservableLongCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableLongCounter.html)
 e
 [ObservableDoubleCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableDoubleCounter.html)
-são usados para observe monotonic (positive) sums.
+são usados para observar somas monótonas (positivas).
 
 O trecho de código a seguir explora o uso da API `async counter`:
 
@@ -1064,7 +1065,7 @@ public class AsyncCounterUsage {
 [LongUpDownCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/LongUpDownCounter.html)
 e
 [DoubleUpDownCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/DoubleUpDownCounter.html)
-são usados para record non-monotonic (positive and negative) values.
+são usados para registrar valores não-monótono (positivos e negativos).
 
 O trecho de código a seguir explora o uso da API `updowncounter`:
 
@@ -1185,8 +1186,8 @@ public class AsyncUpDownCounterUsage {
 [DoubleHistogram](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/DoubleHistogram.html)
 e
 [LongHistogram](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/LongHistogram.html)
-são usados para record monotonic (positive) values where the distribution is
-important.
+são usados para registra valores monótonos (positivos) onde a distribuição é
+importante.
 
 O trecho de código a seguir explora o uso da API `histogram`:
 
@@ -1244,8 +1245,8 @@ public class HistogramUsage {
 [DoubleGauge](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/DoubleGauge.html)
 and
 [LongGauge](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/LongGauge.html)
-são usados para record the latest value where spatial re-aggregation does not
-make sense.
+são usados para registram o último valor onde a reagregação espacial não faz
+sentido.
 
 O trecho de código a seguir explora o uso da API `gauge`:
 
@@ -1303,8 +1304,8 @@ public class GaugeUsage {
 [ObservableDoubleGauge](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableDoubleGauge.html)
 e
 [ObservableLongGauge](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableLongGauge.html)
-são usados para observar o último valor quando spatial re-aggregation does not
-make sense.
+são usados para observar o último valor quando reagregação especial não faz
+sentido.
 
 O trecho de código a seguir explora o uso da API `async gauge`:
 
@@ -1458,14 +1459,14 @@ public class LogRecordUsage {
 
 ### Implementação Noop
 
-O método `OpenTelemetry#noop()` provê acesso à implementação Noop do
-[OpenTelemetry](#opentelemetry) e para todos os componentes da API. Como o nome
-sugere, a implementação noop does nothing and is designed to have no impact on
-performance. Instrumentação may see impact on performance even when the noop is
-used if it is computing / allocating attribute values and other data required to
-record the telemetry. The noop is a useful default instance of `OpenTelemetry`
-when a user has not configured and installed a concrete implementation such as
-the [SDK](../sdk/).
+O método `OpenTelemetry#noop()` fornece acesso à implementação Noop do
+[OpenTelemetry](#opentelemetry) e de todos os componentes da API. Como o nome
+sugere, a implementação noop não faz nada e foi projetada para não ter nenhum
+impacto de performance. A Instrumentação pode ver um impacto na performance mesmo quando noop é
+usada se ela estiver calculando / alocando valores de atributos e outros dados necessários para
+registrar a telemetria. O noop é uma instância padrão útil do `OpenTelemetry`
+quando o usuário não configurou ou instalou uma implementação concreta como
+o [SDK](../sdk/).
 
 O trecho de código a seguir explora o uso da API `OpenTelemetry#noop()`:
 
@@ -1568,17 +1569,17 @@ instrumentação conforme:
 `opentelemetry-semconv-incubating` incluem o sufixo `-alpha` e estão sujeitos a
 mudanças incompatíveis, a intenção é estabilizar a `opentelemetry-semconv` e
 remover o sufixo `-alpha` em `opentelemetry-semconv-incubating` permanentemente.
-Bibliotecas podem utilizar `opentelemetry-semconv-incubating` para testes, but
-should not include it as a dependency: since attributes may come and go from
-version to version, including it as a dependency may expose end users to runtime
-errors when transitive version conflicts occur. {{% /alert %}}
+Bibliotecas podem utilizar `opentelemetry-semconv-incubating` para testes, mas
+não devem incluí-lo como uma dependência: como os atributos podem ser adicionados ou removidos
+de uma versão para outra, incluí-lo como dependência pode expor os usuários a erros em
+tempo de execução quando ocorrerem conflitos de versão transitivos. {{% /alert %}}
 
-The attribute constants generated from semantic conventions are instances of
-`AttributeKey<T>`, and can be used anywhere the OpenTelemetry API accepts
-attributes.
+Os atributos constantes gerados pela convensão semântica são instâncias de
+`AttributeKey<T>`, e podem ser utilizados em qualquer lugar da API do OpenTelemetry que aceite
+atributos.
 
 O trecho de código a seguir explora o uso da API de
-`semantic convention attribute`:
+`atributos de convensão semântica`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/SemanticAttributesUsage.java"?>
@@ -1618,16 +1619,16 @@ public class SemanticAttributesUsage {
 ### Bagagem
 
 [Bagagem](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/baggage/Baggage.html)
-is a bundle of application defined key-value pairs associated with a distributed
-request or workflow execution. Bagagem keys and values are strings, and values
-have optional string metadata. Telemetry can be enriched with data from baggage
-by configuring the [SDK](../sdk/) to add entries as attributes to spans,
-metrics, and log records. The baggage API is built on top of
-[context](#contexto), which allows span context to be implicitly passed around
-an application and across threads. Most of the context API usage guidance
-applies to baggage.
+é um conjunto de pares chave-valor definidos pela aplicação, associadas a uma requisição
+distribuída ou a execução de um fluxo de trabalho. As chaves e valores da bagagem são strings, e os valores
+possuem metadados opcionais. A telemetria pode ser enriquecida com dados da bagagem
+ao configurar o [SDK](../sdk/) para adicionar essas entradas como atributos dos trechos,
+métricas, e registros de logs. A API de bagagem é construída sobre o
+[contexto](#contexto), que permite que o contexto do trecho seja passado implicitamente
+dentro da aplicação e através dos limites das threads. A maioria das diretrizes de uso da API de contexto
+também se aplicam a bagagem.
 
-Bagagem é propagada através dos limites da aplicação com o
+A bagagem é propagada através dos limites da aplicação com o
 [W3CBaggagePropagator](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/baggage/propagation/W3CBaggagePropagator.html)
 (veja [TextMapPropagator](../sdk/#textmappropagator) para detalhes).
 
