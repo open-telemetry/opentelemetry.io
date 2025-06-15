@@ -42,7 +42,7 @@ providenciadas pelo OpenTelemetry:
 
 - [SDK](../sdk/) é uma referência integrada de implementação da API. É a escolha
   correta para a maioria dos usuários.
-- [Noop](#noop-implementation) implementação. Uma implementação minimalista, sem
+- [Implementação Noop](#implementação-noop). Uma implementação minimalista, sem
   dependências para instrumentações usarem por padrão quando o usuário não
   instala uma instância.
 
@@ -213,17 +213,18 @@ public class ContextUsage {
 ### Armazenamento de contexto
 
 [ContextStorage](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/ContextStorage.html)
-é um mecânismo para armazenar and retrieving o `Contexto` atual.
+é um mecanismo para armazenar and retrieving o `Contexto` atual.
 
 A implementação padrão `ContextStorage` armazena `Contexto` em uma thread local.
 
 ### Propagação de Contexto
 
 [Propagação de contexto](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/propagation/ContextPropagators.html)
-é uma estrutura de propagadores registrados para propagar o `Contexto` através dos
-limites da aplicação. O contexto é injetado em um portador _carrier_ ao sair da
-aplicação (ou seja, em uma requisição HTTP de saída), e extraído de um portador
-_carrier_ ao entrar em uma aplicação (ou seja, ao atender uma requisição HTTP).
+é uma estrutura de propagadores registrados para propagar o `Contexto` através
+dos limites da aplicação. O contexto é injetado em um portador _carrier_ ao sair
+da aplicação (ou seja, em uma requisição HTTP de saída), e extraído de um
+portador _carrier_ ao entrar em uma aplicação (ou seja, ao atender uma
+requisição HTTP).
 
 Veja [SDK TextMapPropagators](../sdk/#textmappropagator) para implementação de
 propagadores.
@@ -466,19 +467,20 @@ public class ProvidersAndScopes {
 ### Atributos
 
 [Atributos](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/common/Attributes.html)
-is a bundle of key value pairs representing the
+é um conjunto de pares chave-valor que representa os
 [padrões de definição dos atributos](/docs/specs/otel/common/#standard-attribute).
-`Attributes` são um conceito recorrente na API do OpenTelemetry:
+`Attributes` é um conceito recorrente na API do OpenTelemetry:
 
-- [Spans](#trechos), span events, and span links possuem atributos.
-- The measurements recorded to [metric instruments](#medidor) possuem atributos.
+- [Trechos](#trechos), eventos de trechos, e links de trechos possuem atributos.
+- As medições registradas em [instrumentações de métricas](#medidor) possuem
+  atributos.
 - [LogRecords](#logrecordbuilder) possuem atributos.
 
-Veja [atributos de semântica](#atributos-de-semântica) for attribute constants
-gerados pela convenção semântica.
+Veja [atributos de semântica](#atributos-de-semântica) para constantes de
+atributos geradas pela convenção semântica.
 
-Veja [attribute naming](/docs/specs/semconv/general/naming/) for guidance on
-attribute naming.
+Veja [nomenclatura de atributos](/docs/specs/semconv/general/naming/) para
+orientações sobre nomenclatura de atributos.
 
 O trecho de código a seguir explora o uso da API `Attributes`:
 
@@ -569,25 +571,27 @@ public class AttributesUsage {
 
 ### OpenTelemetry
 
-{{% alert title="Spring Boot Starter" %}} The Spring Boot starter é um caso
-especial onde o `OpenTelemetry` é disponibilizado como Spring bean. Simply inject
-`OpenTelemetry` nos componentes Spring.
+{{% alert title="Spring Boot Starter" %}} O Spring Boot starter é um caso
+especial onde o `OpenTelemetry` é disponibilizado como Spring bean. Basta
+injetar `OpenTelemetry` nos componentes Spring.
 
 Leia mais sobre
-[extending the Spring Boot starter with custom manual instrumentation](/docs/zero-code/java/spring-boot-starter/api/).
+[como estender o Spring Boot Starter com instrumentação manual personalizada](/docs/zero-code/java/spring-boot-starter/api/).
 {{% /alert %}}
 
 [OpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/OpenTelemetry.html)
-is a holder for top-level API components which is convenient to pass to
-instrumentation.
+é um recipiente para os principais componentes da API, sendo conveniente para
+ser passado para a instrumentação.
 
-`OpenTelemetry` consiste em:
+`OpenTelemetry` é composto por:
 
-- [TracerProvider](#tracerprovider): O ponto de entrada para a API de traces.
+- [TracerProvider](#tracerprovider): O ponto de entrada para a API de traços
+  (rastreamento).
 - [MeterProvider](#meterprovider): O ponto de entrada para a API de métricas.
-- [LoggerProvider](#loggerprovider): O ponto de entrada para a API de logs.
+- [LoggerProvider](#loggerprovider): O ponto de entrada para a API de registros
+  (logs).
 - [Propagação de Contexto](#propagação-de-contexto): O ponto de entrada para a
-  API de context propagation.
+  API de propagação de contexto.
 
 O trecho de código a seguir explora o uso da API do `OpenTelemetry`:
 
@@ -619,41 +623,44 @@ public class OpenTelemetryUsage {
 
 ### GlobalOpenTelemetry
 
-{{% alert title="Java agent" %}} The Java agent is a special case where
-`GlobalOpenTelemetry` is set by the agent. Simply call
-`GlobalOpenTelemetry.get()` to access the `OpenTelemetry` instance.
+{{% alert title="Java agent" %}} O Java agent é um caso especial onde
+`GlobalOpenTelemetry` é definido pelo agente. Basta fazer uma chamada simples ao
+`GlobalOpenTelemetry.get()` para acessar a instância do `OpenTelemetry`.
 
-Read more about
-[extending the Java agent with custom manual instrumentation](/docs/zero-code/java/agent/api/).
+Leia mais sobre
+[como estender o Java agent com instrumentação manual personalizada](/docs/zero-code/java/agent/api/).
 {{% /alert %}}
 
 [GlobalOpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/GlobalOpenTelemetry.html)
-holds a global singleton [OpenTelemetry](#opentelemetry) instance.
+mantém uma instância singleton de [OpenTelemetry](#opentelemetry).
 
-Instrumentação should avoid using `GlobalOpenTelemetry`. Instead, accept
-`OpenTelemetry` as an initialization argument and default to the
-[Noop implementation](#noop-implementation) if not set. There is an exception to
-this rule: the `OpenTelemetry` instance installed by the
-[Java agent](/docs/zero-code/java/agent/) is available via
-`GlobalOpenTelemetry`. Users with additional manual instrumentation are
-encouraged to access it via `GlobalOpenTelemetry.get()`.
+A instrumentação deve evitar usar `GlobalOpenTelemetry`. Em vez disso, aceita
+`OpenTelemetry` como argumento de inicialização e utilizar a
+[implementação Noop](#implementação-noop) como padrão caso nenhuma instância
+seja fornecedida. H'uma exceção a essa regra: a instância do `OpenTelemetry`
+instalado pelo [Java agent](/docs/zero-code/java/agent/) está disponível por
+meio do `GlobalOpenTelemetry`. Usuários com instrumentações manuais adicionais
+são incentivados a acessá-las por `GlobalOpenTelemetry.get()`.
 
-`GlobalOpenTelemetry.get()` is guaranteed to always return the same result. If
-`GlobalOpenTelemetry.get()` is called before `GlobalOpenTelemetry.set(..)`,
-`GlobalOpenTelemetry` is set to the noop implementation and future calls to
-`GlobalOpenTelemetry.set(..)` throw an exception. Therefore, it's critical to
-call `GlobalOpenTelemetry.set(..)` as early in the application lifecycle as
-possible, and before `GlobalOpenTelemetry.get()` is called by any
-instrumentation. This guarantee surfaces initialization ordering issues: calling
-`GlobalOpenTelemetry.set()` too late (ou seja, after instrumentation has called
-`GlobalOpenTelemetry.get()`) triggers an exception rather than silently failing.
+`GlobalOpenTelemetry.get()` é garantido para sempre retornar o mesmo resultado.
+Se `GlobalOpenTelemetry.get()` for chamado antes de
+`GlobalOpenTelemetry.set(..)`, `GlobalOpenTelemetry` será configurado com a
+implementação noop e chamadas futuras para `GlobalOpenTelemetry.set(..)` vão
+lançar uma exceção. Por isso, é crítico chamar `GlobalOpenTelemetry.set(..)` o
+mais cedo possível no ciclo de vida da aplicação, e antes de qualquer
+instrumentação chamar `GlobalOpenTelemetry.get()`. Isso ajuda a identificar
+problemas de ordem de inicialização: chamar `GlobalOpenTelemetry.set()` tarde
+demais (ou seja, depois que a instrumentação `GlobalOpenTelemetry.get()` ser
+chamada) gera uma exceção ao invés de falhar silenciosamente.
 
-If [autoconfigure](../configuration/#auto-configuração-sem-código) is present,
-`GlobalOpenTelemetry` can be automatically initialized by setting
-`-Dotel.java.global-autoconfigure.enabled=true` (or via env var
-`export OTEL_JAVA_GLOBAL_AUTOCONFIGURE_ENABLED=true`). When enabled, the first
-call to `GlobalOpenTelemetry.get()` triggers autoconfiguration and calls
-`GlobalOpenTelemetry.set(..)` with the resulting `OpenTelemetry` instance.
+Se
+[autoinstrumentação sem código](../configuration/#auto-configuração-sem-código)
+estiver presente, `GlobalOpenTelemetry` pode ser inicializado automaticamente
+definindo `-Dotel.java.global-autoconfigure.enabled=true` (ou via variável de
+ambiente `export OTEL_JAVA_GLOBAL_AUTOCONFIGURE_ENABLED=true`). Quando ativado,
+a primeira chamada para `GlobalOpenTelemetry.get()` aciona a autoconfiguração e
+chama `GlobalOpenTelemetry.set(..)` com o resultado da instância
+`OpenTelemetry`.
 
 O trecho de código a seguir explora o uso da propagação da API
 `GlobalOpenTelemetry`:
@@ -683,28 +690,29 @@ public class GlobalOpenTelemetryUsage {
 ### TracerProvider
 
 [TracerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/TracerProvider.html)
-is the API entry point for traces and provides [Traços](#traços). See
-[provedores e escopos](#provedores-e-escopos) para informação on providers and
-scopes.
+é um ponto de entrada da API para traçõs e provedores de [Traços](#traços). Veja
+[provedores e escopos](#provedores-e-escopos) para informação sobre provedores e
+escopos.
 
 #### Traços
 
 [Traços](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/Tracer.html)
-is used to [registros de trechos](#trechos) for an instrumentation scope. See
-[provedores e escopos](#provedores-e-escopos) para informação on providers and
-scopes.
+é usado para [registros de trechos](#trechos) dentro de um escopo de
+instrumentação. See [provedores e escopos](#provedores-e-escopos) para
+informação sobre provedores e escopos.
 
 #### Trechos
 
-[SpanBuilder](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/SpanBuilder.html)
-and
+[Construtores de trechos](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/SpanBuilder.html)
+e
 [Trechos](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/Span.html)
-are used to construct and record data to spans.
+são usados para construir e gravar dados para trechos.
 
-`SpanBuilder` is used to add data to a span before starting it by calling
-`Span startSpan()`. Data can be added / updated after starting by calling
-various `Span` update methods. The data provided to `SpanBuilder` before
-starting is provided as an input to [Samplers](../sdk/#amostrador).
+`SpanBuilder` é usado para adicionar dados para um trecho antes de inicializar
+uma chamada `Span startSpan()`. Dados podem ser adicionados / atualizados depois
+de inicializar uma chamada através de vários métodos de atualização de `Trecho`.
+Os dados providos por `SpanBuilder` antes da inicialização, fornecido como uma
+entrada para [Amostradores](../sdk/#amostrador).
 
 O trecho de código a seguir explora o uso da API `SpanBuilder`:
 
@@ -800,18 +808,18 @@ public class SpanUsage {
 ```
 <!-- prettier-ignore-end -->
 
-Span parenting is an important aspect of tracing. Each span has an optional
-parent. By collecting all the spans in a trace and following each span's parent,
-we can construct a hierarchy. The span APIs are built on top of
-[context](#contexto), which allows span context to be implicitly passed around
-an application and across threads. When a span is created, its parent is set to
-the whatever span is present in `Context.current()` unless there is no span or
-the context is explicitly overridden.
+Trechos pai são um importante aspecto dos traços. Cada trecho tem um pai
+opcional. Ao coletar todos os trechos de um traço e seguir o pai de cada um, nós
+conseguimos construir uma hierarquia. As APIs de trechos são construídas sobre o
+[contexto](#contexto), que permite que o contexto de um trecho seja passado de
+forma implicita por toda a aplicaão e através das threads. Quando um trecho é
+criado, o trecho pai é definido com o trecho presente em `Context.current()` a
+menos que não tenha um trecho ou o contexto seja sobrescrito explicitamente.
 
-Most of the context API usage guidance applies to spans. Span context is
-propagated across application boundaries with the
+A maior parte das boas práticas de uso do contexto da API se aplica aos trechos.
+O contexto de um trecho é propagado através dos limites da aplicação com o
 [W3CTraceContextPropagator](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/propagation/W3CTraceContextPropagator.html)
-and other [TextMapPropagators](../sdk/#textmappropagator).
+e outros [TextMapPropagators](../sdk/#textmappropagator).
 
 O trecho de código a seguir explora o uso da propagação da API `Span`:
 
@@ -891,15 +899,15 @@ escopos. Existem uma variedade de instrumentações, cada uma com uma semântica
 diferente e com comportamentos padrões no SDK. É importante escolher a
 instrumentação correta para cada particular caso de Uso:
 
-| Instrumento                                 | Sync or Async | Descrição                                                                          | Exemplo                                                 | Default SDK Aggregation                                                                        |
-| ------------------------------------------- | ------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| [Contador](#contador)                       | sync          | Record monotonic (positive) values.                                                | Record user logins                                      | [sum (monotonic=true)](/docs/specs/otel/metrics/sdk/#sum-aggregation)                          |
-| [Contador Assíncrono](#contador-assíncrono) | async         | Observe monotonic sums.                                                            | Observe number of classes loaded in the JVM             | [sum (monotonic=true)](/docs/specs/otel/metrics/sdk/#sum-aggregation)                          |
-| [UpDownCounter](#updowncounter)             | sync          | Record non-monotonic (positive and negative) values.                               | Record when items are added to and removed from a queue | [sum (monotonic=false)](/docs/specs/otel/metrics/sdk/#sum-aggregation)                         |
-| [Async UpDownCounter](#async-updowncounter) | async         | Observe non-monotonic (positive and negative) sums.                                | Observe JVM memory pool usage                           | [sum (monotonic=false)](/docs/specs/otel/metrics/sdk/#sum-aggregation)                         |
-| [Histograma](#histograma)                   | sync          | Record monotonic (positive) values where the distribution is important.            | Record duration of HTTP requests processed by server    | [ExplicitBucketHistogram](/docs/specs/otel/metrics/sdk/#explicit-bucket-histogram-aggregation) |
-| [Medidor](#medidor)                         | sync          | Record the latest value where spatial re-aggregation does not make sense **[1]**.  | Record temperature                                      | [LastValue](/docs/specs/otel/metrics/sdk/#last-value-aggregation)                              |
-| [Medidor Assíncrono](#contador-assíncrono)  | async         | Observe the latest value where spatial re-aggregation does not make sense **[1]**. | Observe CPU utilization                                 | [LastValue](/docs/specs/otel/metrics/sdk/#last-value-aggregation)                              |
+| Instrumento                                 | Sync or Async | Descrição                                                                           | Exemplo                                                        | Agregação padrão do SDK                                                                        |
+| ------------------------------------------- | ------------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| [Contador](#contador)                       | sync          | Record monotonic (positive) valores.                                                | Registra logins de usuário                                     | [sum (monotonic=true)](/docs/specs/otel/metrics/sdk/#sum-aggregation)                          |
+| [Contador Assíncrono](#contador-assíncrono) | async         | Observe monotonic sums.                                                             | Observa o número de classes carregadas no JVM                  | [sum (monotonic=true)](/docs/specs/otel/metrics/sdk/#sum-aggregation)                          |
+| [UpDownCounter](#updowncounter)             | sync          | Registra non-monotonic (positive and negative) valores.                             | Registra quando itens são adicionados e removidos da fila      | [sum (monotonic=false)](/docs/specs/otel/metrics/sdk/#sum-aggregation)                         |
+| [Async UpDownCounter](#async-updowncounter) | async         | Observa non-monotonic (positive and negative) sums.                                 | Observa o uso de memória do pool JVM                           | [sum (monotonic=false)](/docs/specs/otel/metrics/sdk/#sum-aggregation)                         |
+| [Histograma](#histograma)                   | sync          | Registra monotonic (positive) valores where the distribution is important.          | Registra duração de requisições HTTP processadas pelo servidor | [ExplicitBucketHistogram](/docs/specs/otel/metrics/sdk/#explicit-bucket-histogram-aggregation) |
+| [Medidor](#medidor)                         | sync          | Registra the latest value where spatial re-aggregation does not make sense **[1]**. | Registra temperatura                                           | [LastValue](/docs/specs/otel/metrics/sdk/#last-value-aggregation)                              |
+| [Medidor Assíncrono](#contador-assíncrono)  | async         | Observa the latest value where spatial re-aggregation does not make sense **[1]**.  | Observa utilização de CPU                                      | [LastValue](/docs/specs/otel/metrics/sdk/#last-value-aggregation)                              |
 
 **[1]**: Spatial re-aggregation is the process of merging attribute streams by
 dropping attributes which are not needed. For example, given series with
@@ -913,17 +921,17 @@ suppose the series mentioned previously are tracking the temperature of widgets.
 How do you merge the series when you drop the `color` attribute? There is no
 good answer besides flipping a coin and selecting a random value.
 
-The instrument APIs have share a variety of features:
+As APIs de instrumentação possuem uma variedade de recursos:
 
-- Created using the builder pattern.
+- Criação usando padrões de construtores.
 - Nome de instrumentação obrigatório.
 - Unidade e descrição opcional.
-- Record values which are `long` or `double`, which is configured via the
-  builder.
+- Record values which are `long` ou `double`, which is configured via the
+  construtor.
 
 Veja
-[metric guidelines](/docs/specs/semconv/general/metrics/#general-guidelines) para
-detalhes on metric naming and units.
+[metric guidelines](/docs/specs/semconv/general/metrics/#general-guidelines)
+para detalhes em nomenclatura de métricas e unidades.
 
 Veja
 [guidelines para instrumentação library authors](/docs/specs/otel/metrics/supplementary-guidelines/#guidelines-for-instrumentation-library-authors)
@@ -932,7 +940,7 @@ para adicionais guidance on instrument selection.
 #### Contador
 
 [LongCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/LongCounter.html)
-and
+e
 [DoubleCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/DoubleCounter.html)
 são usados para record monotonic (positive) values.
 
@@ -1236,8 +1244,8 @@ public class HistogramUsage {
 [DoubleGauge](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/DoubleGauge.html)
 and
 [LongGauge](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/LongGauge.html)
-são usados para record the latest value where spatial re-aggregation does not make
-sense.
+são usados para record the latest value where spatial re-aggregation does not
+make sense.
 
 O trecho de código a seguir explora o uso da API `gauge`:
 
@@ -1295,8 +1303,8 @@ public class GaugeUsage {
 [ObservableDoubleGauge](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableDoubleGauge.html)
 e
 [ObservableLongGauge](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableLongGauge.html)
-são usados para observe the latest value where spatial re-aggregation does not make
-sense.
+são usados para observar o último valor quando spatial re-aggregation does not
+make sense.
 
 O trecho de código a seguir explora o uso da API `async gauge`:
 
@@ -1359,7 +1367,8 @@ public class AsyncGaugeUsage {
 
 [LoggerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/logs/LoggerProvider.html)
 é o ponto de entrada da API para logs e provê [Loggers](#logger). Veja
-[provedores e escopos](#provedores-e-escopos) para informação sobre provedores e escopos.
+[provedores e escopos](#provedores-e-escopos) para informação sobre provedores e
+escopos.
 
 {{% alert %}} {{% param logBridgeWarning %}} {{% /alert %}}
 
@@ -1368,7 +1377,8 @@ public class AsyncGaugeUsage {
 [Logger](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/logs/Logger.html)
 é usado para [emitir registros de logs](#logrecordbuilder) para um
 [escopo de instrumentação](#provedores-e-escopos). Veja
-[provedores e escopos](#provedores-e-escopos) para informação sobre provedores e escopos.
+[provedores e escopos](#provedores-e-escopos) para informação sobre provedores e
+escopos.
 
 #### LogRecordBuilder
 
@@ -1446,16 +1456,16 @@ public class LogRecordUsage {
 ```
 <!-- prettier-ignore-end -->
 
-### Noop implementation
+### Implementação Noop
 
 O método `OpenTelemetry#noop()` provê acesso à implementação Noop do
-[OpenTelemetry](#opentelemetry) e para todos os componentes da API. Como
-o nome sugere, a implementação noop does nothing and is designed to have
-no impact on performance. Instrumentação may see impact on performance even when
-the noop is used if it is computing / allocating attribute values and other data
-required to record the telemetry. The noop is a useful default instance of
-`OpenTelemetry` when a user has not configured and installed a concrete
-implementation such as the [SDK](../sdk/).
+[OpenTelemetry](#opentelemetry) e para todos os componentes da API. Como o nome
+sugere, a implementação noop does nothing and is designed to have no impact on
+performance. Instrumentação may see impact on performance even when the noop is
+used if it is computing / allocating attribute values and other data required to
+record the telemetry. The noop is a useful default instance of `OpenTelemetry`
+when a user has not configured and installed a concrete implementation such as
+the [SDK](../sdk/).
 
 O trecho de código a seguir explora o uso da API `OpenTelemetry#noop()`:
 
