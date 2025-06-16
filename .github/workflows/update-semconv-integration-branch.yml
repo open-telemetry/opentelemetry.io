@@ -88,7 +88,7 @@ jobs:
           sed -i "s/^\tsemconv-pin = .*/\tsemconv-pin = $commit_desc/" .gitmodules
 
           if [ "$tag_exists" == "true" ]; then
-            sed -i "s/^\(\s *\)semconv: .*/\1semconv: $commit_desc/" scripts/content-modules/adjust-pages.pl
+            sed -i "s/^\(\s *\)semconv: .*/\1semconv: ${commit_desc#v}/" scripts/content-modules/adjust-pages.pl
           fi
 
           git add -A
