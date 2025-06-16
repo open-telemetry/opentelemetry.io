@@ -10,6 +10,6 @@ OpenTelemetry, like all open source projects, only exists thanks to the tireless
 
 Happy Pride!
 
-![A contact sheet showing all of the pride logo variants.](./contact_crop.png)
+![A contact sheet showing all of the pride logo variants.](./contact-crop.png)
 
 You can [download the files here.](./pride-logo-pack.zip)
