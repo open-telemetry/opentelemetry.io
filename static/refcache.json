@@ -16667,6 +16667,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:27:12.345Z"
   },
+  "https://opentelemetry-python.readthedocs.io/en/latest/api/_logs.html": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-16T20:16:28.63456652Z"
+  },
   "https://opentelemetry-python.readthedocs.io/en/latest/api/metrics.html": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:32:29.47095-05:00"
@@ -16678,6 +16682,10 @@
   "https://opentelemetry-python.readthedocs.io/en/latest/index.html": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:32:17.880753-05:00"
+  },
+  "https://opentelemetry-python.readthedocs.io/en/latest/sdk/_logs.html": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-16T20:16:31.575115452Z"
   },
   "https://opentelemetry-python.readthedocs.io/en/latest/sdk/metrics.html": {
     "StatusCode": 200,
