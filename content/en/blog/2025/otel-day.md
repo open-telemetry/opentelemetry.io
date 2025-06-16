@@ -5,8 +5,7 @@ title:
 linkTitle: OTel Community Day
 date: 2025-06-13
 author: '[Isabella Langan](https://github.com/isabella-rose-l) (Causely)'
-# prettier-ignore
-cSpell:ignore: Agrawal Aircall Alok Baylis Bhargava Bhattacharya Bhide Braydon Budhaditya Canuel Causely Cijo Danielson Distrogen Heffner Helmuth Horovits Huxing Jernigan Kains Krietz Kumar Kuncham Langan Liudmila Mansi Minghui Molkova Mujumdar Okahu OllyGarden Prasad Radlein Ravindra Roshore Spec-tacular Todea Vashistha Vijay Zhang
+cSpell:ignore: Causely Langan
 ---
 
 On **June 26, 2025**,
@@ -38,6 +37,8 @@ for the topics of interest.
 
 <details>
 <summary class="mb-3">View schedule</summary>
+
+{{< comment >}} cSpell:disable {{< /comment >}}
 
 ### Welcome + Keynotes
 
@@ -150,6 +151,8 @@ for the topics of interest.
 
 - **[From GenAI Applications to AI Models: Unraveling End to End AI Observability With OpenTelemetry](https://otelopenobservabilityna25.sched.com/event/223AL)**<br>
   by Huxing Zhang & Minghui Zhang, Alibaba Cloud<br> 5:30pm – 5:45pm MDT
+
+{{< comment >}} cSpell:enable {{< /comment >}}
 
 </details>
 
