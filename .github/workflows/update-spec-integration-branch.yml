@@ -77,6 +77,7 @@ jobs:
 
           if git ls-remote --exit-code --tags origin $VERSION; then
             git reset --hard $VERSION
+            tag_exists=true
           else
             git reset --hard origin/main
           fi
@@ -85,7 +86,10 @@ jobs:
           cd ../..
 
           sed -i "s/^\tspec-pin = .*/\tspec-pin = $commit_desc/" .gitmodules
-          sed -i "s/^\(\s *\)spec: .*/\1spec: $commit_desc/" scripts/content-modules/adjust-pages.pl
+
+          if [ "$tag_exists" == "true" ]; then
+            sed -i "s/^\(\s *\)spec: .*/\1spec: $commit_desc/" scripts/content-modules/adjust-pages.pl
+          fi
 
           git add -A
 
