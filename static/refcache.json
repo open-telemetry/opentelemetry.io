@@ -5999,6 +5999,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:10:12.345Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/k8sclusterreceiver/documentation.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-16T10:36:18.90863102Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/README.md": {
     "StatusCode": 206,
     "LastSeen": "2025-05-27T10:36:21.951477+03:00"
@@ -13674,6 +13678,10 @@
   "https://github.com/open-telemetry/semantic-conventions/tree/vv1.34.0-26-g8fc9768d//model/README.md": {
     "StatusCode": 206,
     "LastSeen": "2025-06-13T10:35:39.900634688Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/vv1.34.0-27-g204c9674//model/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-16T10:36:19.655689803Z"
   },
   "https://github.com/open-telemetry/sig-contributor-experience": {
     "StatusCode": 206,
