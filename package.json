@@ -111,7 +111,7 @@
     "test-and-fix": "npm run seq -- fix:submodule $(npm -s run _list:fix:for-test-and-fix) $(npm -s run _list:check:for-test-and-fix)",
     "test": "npm run check",
     "update:pkg:hugo": "npm install --save-dev --save-exact hugo-extended@latest",
-    "update:pkgs": "npx npm-check-updates -u",
+    "update:pkgs": "npx npm-check-updates --dep 'prod,dev,optional,peer' -u",
     "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 999} && git submodule foreach 'git fetch $(git remote | tail -1) --tags'"
   },
   "devDependencies": {

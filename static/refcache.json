@@ -2275,6 +2275,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:07:12.345Z"
   },
+  "https://en.wikipedia.org/wiki/Pride_Month": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-16T19:39:40.107240014Z"
+  },
   "https://en.wikipedia.org/wiki/Remote_procedure_call": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:23:33.58541-05:00"
@@ -4606,6 +4610,10 @@
   "https://github.com/instana/go-otel-exporter": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:32:46.912502-05:00"
+  },
+  "https://github.com/instana/instana-otel-collector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T16:12:38.183916751Z"
   },
   "https://github.com/instana/nodejs/tree/main/packages/opentelemetry-exporter": {
     "StatusCode": 206,
@@ -20282,6 +20290,10 @@
   "https://www.ibm.com/docs/db2-for-zos/12": {
     "StatusCode": 206,
     "LastSeen": "2024-10-09T10:19:38.749703+02:00"
+  },
+  "https://www.ibm.com/docs/en/instana-observability/current": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T16:12:39.207756653Z"
   },
   "https://www.ibm.com/docs/en/obi/current": {
     "StatusCode": 206,
