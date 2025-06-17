@@ -9,7 +9,10 @@ author: >-
 Yesterday the Cloud Native Computing Foundation (CNCF)
 [announced](https://www.cncf.io/blog/2025/06/16/cncf-slack-workspace-changes-coming-on-friday-june-20/)
 that CNCF Slack workspace will be converted from an enterprise plan to a free
-plan on Friday, June 20, 2025.
+plan on Friday, June 20, 2025. This will have implications for how Slack works
+for the OpenTelemetry community, including a few limitations that we will need
+to be aware of; however, we don’t anticipate this change to radically impact our
+collaboration.
 
 Although there will be no disruption to OpenTelemetry's access to the Slack
 workspace, all users and project contributors should consider taking the
