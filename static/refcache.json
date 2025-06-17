@@ -443,6 +443,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-17T12:58:36.720595Z"
   },
+  "https://cloud-native.slack.com/archives/C091NUGP5KN": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-17T15:26:30.536617059-07:00"
+  },
   "https://cloud-native.slack.com/archives/CJFCJHG4Q": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T10:58:45.786902-05:00"
@@ -3738,6 +3742,10 @@
   "https://github.com/cncf/foundation/blob/main/code-of-conduct.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:38.183934-05:00"
+  },
+  "https://github.com/cncf/foundation/blob/main/policies-guidance/slack-backup.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T15:26:29.588240192-07:00"
   },
   "https://github.com/cncf/glossary/blob/main/CODEOWNERS": {
     "StatusCode": 206,
@@ -20006,6 +20014,10 @@
   "https://www.cncf.io/blog/2025/01/20/opentelemetry-for-generative-ai/": {
     "StatusCode": 200,
     "LastSeen": "2025-02-14T12:23:38.590496-05:00"
+  },
+  "https://www.cncf.io/blog/2025/06/16/cncf-slack-workspace-changes-coming-on-friday-june-20/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-17T15:26:29.150378304-07:00"
   },
   "https://www.cncf.io/enduser/": {
     "StatusCode": 200,
