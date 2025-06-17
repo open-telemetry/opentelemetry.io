@@ -2,8 +2,7 @@
 title: Action Required - Slack Workspace Changes are Coming Friday, June 20
 linkTitle: Slack Workspace Changes
 date: 2025-06-17
-author: >-
-  OpenTelemetry Authors
+author: OpenTelemetry maintainers
 ---
 
 Yesterday the Cloud Native Computing Foundation (CNCF)
