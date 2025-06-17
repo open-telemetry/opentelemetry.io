@@ -14,24 +14,24 @@ redirects:
 default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
 ---
 
-## はじめに
+## はじめに {#introduction}
 
 [OpenTelemetryオペレーター](https://github.com/open-telemetry/opentelemetry-operator)は、[Kubernetesオペレーター](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)の実装のひとつです。
 
-Operatorは以下を管理します:
+Operatorは以下を管理します。
 
 - [OpenTelemetryコレクター](https://github.com/open-telemetry/opentelemetry-collector)
 - [OpenTelemetryの計装ライブラリを使用したワークロードの自動計装](https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection)
 
-## Getting started
+## Getting started {#getting-started}
 
-既存のクラスターにオペレーターをインストールするには、まず [`cert-manager`](https://cert-manager.io/docs/installation/) がインストールされていることを確認し、以下のコマンドを実行します:
+既存のクラスターにオペレーターをインストールするには、まず [`cert-manager`](https://cert-manager.io/docs/installation/) がインストールされていることを確認し、以下のコマンドを実行します。
 
 ```bash
 kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/latest/download/opentelemetry-operator.yaml
 ```
 
-`opentelemetry-operator` のDeploymentが準備できたら、OpenTelemetryコレクター (otelcol) インスタンスを以下のように作成します:
+`opentelemetry-operator` のDeploymentが準備できたら、OpenTelemetryコレクター (otelcol) インスタンスを以下のように作成します。
 
 ```console
 $ kubectl apply -f - <<EOF
