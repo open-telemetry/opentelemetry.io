@@ -17,7 +17,6 @@ First, ensure you have the API and SDK packages:
 ```shell
 pip install opentelemetry-api
 pip install opentelemetry-sdk
-pip install opentelemetry-sdk-logging
 ```
 
 ## Traces
