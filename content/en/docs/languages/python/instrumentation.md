@@ -396,7 +396,7 @@ meter.create_observable_gauge(
 
 ## Logs
 
-To start collecting logs, you need to initialize a
+The logs API & SDK are currently under development. To start collecting logs, you need to initialize a
 [`LoggerProvider`](/docs/specs/otel/logs/api/#loggerprovider) and optionally set
 it as the global default. Then use Python's built-in logging module to create
 log records that OpenTelemetry can process.
