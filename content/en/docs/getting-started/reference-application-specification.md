@@ -42,17 +42,16 @@ SDK exists.
     `{"status": "error", "message": "Parameter rolls must be a positive integer"}`
   - if `rolls` is set to a `0` or a negative integer: status code `500` and no
     JSON output.
-
-- There may be an optional attribute `player=name` to the `/rolldice` endpoint,
-  where
-
-- The application must output the following log lines using a language-specific
-  common logging framework:
+- There may be an optional attribute `player=name` to the `/rolldice` endpoint.
+- The application must output the following log lines:
   - an INFO-level message for each HTTP request with a status code `<400`
   - a WARN-level message for each HTTP request with a status code between `400`
     and `499`, including the message which will be sent in the JSON result
   - a ERROR-level message for each HTTP request with a status code above `499`
-  - a DEBUG-level message for each dice roll containing the rolled number
+  - if the optional `player` attribute is set, a DEBUG-level message that outputs
+    the value of `player` and the rolled number
+  - if the optional `player` attribute is not set, a DEBUG-level message that outputs
+    the static value `anonymous player` and the rolled number.
 - The code of the application must be split into two files:
   - an `app` file that contains the handling of the HTTP requests
   - a `lib` file that contains the implementation of the roll dice function.
@@ -82,6 +81,7 @@ SDK exists.
 - The "lib" file must depend only on the OpenTelemetry API.
 - The `service.*` attributes should be added via environment variables
   (`OTEL_SERVICE_NAME`, `OTEL_RESOURCE_ATTRIBUTES`).
+- Other `resource detectors` should be added to the initialization of the SDK.
 - For exporting telemetry the application should use an exporter for
   `stdout`/`console` and `otlp`.
 - There should be an option to enable diagnostic logging for the OpenTelemetry
