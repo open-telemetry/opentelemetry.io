@@ -85,7 +85,8 @@ brew install coreutils
 ### Windows (PowerShell)
 
 {{% alert title="Note" color="warning" %}}
-PowerShell v6.0+ (pwsh) is not supported in install .NET zero-code instrumentation - the built-in version of Windows PowerShell must be used.
+PowerShell v6.0+ (pwsh) is not supported in install .NET zero-code instrumentation.
+The built-in version of Windows PowerShell must be used.
 {{% /alert %}}
 
 On Windows, use the PowerShell module as an Administrator:
