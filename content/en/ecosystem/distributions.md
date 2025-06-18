@@ -32,7 +32,7 @@ To have your distribution listed, [submit a PR] with an entry added to the
 - GitHub handle or email address as a point of contact so that we can reach out
   in case we have questions
 
-{{% alert title="Notes" color="info" %}}
+{{% alert title="Notes" %}}
 
 - If you provide external integration of OpenTelemetry for any kind of library,
   service, or app, then consider

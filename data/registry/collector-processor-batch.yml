@@ -18,4 +18,4 @@ createdAt: 2021-02-24
 package:
   registry: go-collector
   name: go.opentelemetry.io/collector/processor/batchprocessor
-  version: v0.127.0
+  version: v0.128.0

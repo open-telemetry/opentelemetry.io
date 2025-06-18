@@ -76,7 +76,7 @@ spec:
 EOF
 ```
 
-{{% alert color="primary" title="Note" %}}
+{{% alert title="Note" %}}
 
 By default, `opentelemetry-operator` uses the
 [`opentelemetry-collector` image](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector).

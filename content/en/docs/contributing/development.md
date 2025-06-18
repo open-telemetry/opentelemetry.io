@@ -9,13 +9,13 @@ what-next: >
 weight: 60
 ---
 
-{{% alert-md title="Supported build environments" color=warning %}}
+{{% alert title="Supported build environments" color=warning %}}
 
 Builds are officially supported on Linux-based environments and macOS. Other
 environments, such as [DevContainers](#devcontainers), are supported on a
 best-effort basis.
 
-{{% /alert-md %}}
+{{% /alert %}}
 
 The following instructions explain how to set up a development environment for
 this website.

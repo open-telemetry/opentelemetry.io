@@ -1,7 +1,7 @@
 ---
 title: ディストリビューション
 weight: 25
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: dcd079d98e749febcefd4d7bb1da361770ec8ed3
 ---
 
 OpenTelemetryプロジェクトは現在、コレクターの事前ビルド済み[ディストリビューション][distributions]を提供しています。
@@ -21,11 +21,6 @@ OpenTelemetryプロジェクトが提供する既存のディストリビュー�
 
 一部の組織は、追加機能を持つコレクターディストリビューションや、使いやすさを向上させたコレクターディストリビューションを提供しています。
 以下は、サードパーティが保守するコレクターディストリビューションのリストです。
-
-{{% alert title="注意" color="warning" %}}
-OpenTelemetryは、以下の表に記載されているサードパーティディストリビューションを**検証または承認していません**。
-このリストはコミュニティの便宜のために提供されています。
-{{% /alert %}}
 
 {{% ecosystem/distributions-table filter="third-party-collector" %}}
 

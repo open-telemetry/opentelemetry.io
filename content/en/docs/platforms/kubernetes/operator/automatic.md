@@ -217,7 +217,7 @@ endpoint must be able to receive OTLP over `http/proto`. Therefore, the example
 uses `http://demo-collector:4318`, which connects to the `http/proto` port of
 the `otlpreceiver` of the Collector created in the previous step.
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 [Deno's OpenTelemetry integration][deno-docs] is not yet stable. As a result all
 workloads that want to be instrumented with Deno must have the `--unstable-otel`
@@ -415,7 +415,7 @@ spec:
         value: fs,grpc # comma-separated list of the instrumentation package names without the `@opentelemetry/instrumentation-` prefix.
 ```
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 If both environment variables are set, `OTEL_NODE_ENABLED_INSTRUMENTATIONS` is
 applied first, and then `OTEL_NODE_DISABLED_INSTRUMENTATIONS` is applied to that

@@ -19,4 +19,4 @@ createdAt: 2023-02-01
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/purefbreceiver
-  version: v0.127.0
+  version: v0.128.0

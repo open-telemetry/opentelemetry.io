@@ -39,7 +39,7 @@ APIやSDKのステータスに関わらず、使用している計装が[セマ�
 
 {{% apidocs %}}
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 上記のリストは[`/api`](/api)へのエイリアスです。
 

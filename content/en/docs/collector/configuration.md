@@ -50,7 +50,7 @@ otelcol --config=env:MY_CONFIG_IN_AN_ENVVAR --config=https://server/config.yaml
 otelcol --config="yaml:exporters::debug::verbosity: normal"
 ```
 
-{{% alert title="Tip" color="primary" %}}
+{{% alert title="Tip" %}}
 
 When referring to nested keys in YAML paths, make sure to use double colons (::)
 to avoid confusion with namespaces that contain dots. For example:

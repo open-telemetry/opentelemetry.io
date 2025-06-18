@@ -1,10 +1,10 @@
 ---
 title: 計装スコープ
 weight: 80
-default_lang_commit: 825b6e2
+default_lang_commit: 825b6e2 # patched
 ---
 
-[計装スコープ](/docs/specs/otel/glossary/#instrumentation-scope)は、送出されたテレメトリーを関連付けられるアプリケーションコード内の論理ユニットを表します。
+[計装スコープ](/docs/specs/otel/common/instrumentation-scope/)は、送出されたテレメトリーを関連付けられるアプリケーションコード内の論理ユニットを表します。
 
 開発者は、妥当な計装スコープを決定できます。
 たとえば、モジュール、パッケージ、クラスを計装スコープとして選択できます。

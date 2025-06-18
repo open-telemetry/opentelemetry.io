@@ -15,4 +15,4 @@ createdAt: 2025-04-20
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/cmd/opampsupervisor
-  version: v0.127.0
+  version: v0.128.0

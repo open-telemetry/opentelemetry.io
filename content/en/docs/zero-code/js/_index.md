@@ -73,7 +73,7 @@ to one of the following:
 
 The default level is `info`.
 
-{{% alert title="Notes" color="info" %}}
+{{% alert title="Notes" %}}
 
 - In a production environment, it is recommended to set `OTEL_LOG_LEVEL` to
   `info`.

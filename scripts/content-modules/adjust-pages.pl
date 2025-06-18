@@ -24,7 +24,7 @@ my $lineNum;
 
 my %versionsRaw = # Keyname must end with colons because the auto-version update script expects one
   qw(
-    spec: 1.45.0
+    spec: 1.46.0
     otlp: 1.7.0
     semconv: 1.34.0
   );
@@ -95,12 +95,12 @@ sub applyPatchOrPrintMsgIf($$$) {
   return 0;
 }
 
-sub patchSpec_because_of_SemConv_AttrRegRefactoring() {
-  return unless $ARGV =~ /^tmp\/otel\/specification\//
-    && applyPatchOrPrintMsgIf('2025-05-13-attribute-registry-refactoring', 'spec', '1.45.0-dev');
+# sub patchSpec_because_of_SemConv_AttrRegRefactoring() {
+#   return unless $ARGV =~ /^tmp\/otel\/specification\//
+#     && applyPatchOrPrintMsgIf('2025-05-13-attribute-registry-refactoring', 'spec', '1.45.0-dev');
 
-  s|/attributes-registry/|/registry/attributes/|g;
-}
+#   s|/attributes-registry/|/registry/attributes/|g;
+# }
 
 sub getVersFromSubmodule() {
   my %repoNames = qw(
@@ -189,8 +189,6 @@ while(<>) {
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;
   s|(\]\()/specification/|$1$specBasePath/otel/)|;
   s|\.\./specification/(.*?\))|../otel/$1|g if $ARGV =~ /otel\/specification/;
-
-  patchSpec_because_of_SemConv_AttrRegRefactoring();
 
   # Match markdown inline links or link definitions to OTel spec pages: "[...](URL)" or "[...]: URL"
   s|(\]:\s+\|\()https://github.com/open-telemetry/opentelemetry-specification/\w+/(main\|v$otelSpecVers)/specification(.*?\)?)|$1$specBasePath/otel$3|;
