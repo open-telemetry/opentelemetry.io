@@ -225,7 +225,7 @@ value=8192, exemplars=[]}], monotonic=false, aggregationTemporality=CUMULATIVE}}
 ...
 ```
 
-## 次のステップ
+## 次のステップ {#what-next}
 
 詳細については。
 
