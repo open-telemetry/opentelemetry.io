@@ -1,8 +1,7 @@
 ---
 title: Kubernetes用のOpenTelemetryオペレーター
 linkTitle: Kubernetesオペレーター
-description:
-  OpenTelemetryの計装ライブラリを使用して、コレクターとワークロードの自動計装を管理するKubernetesオペレーターの実装。
+description: OpenTelemetryの計装ライブラリを使用して、コレクターとワークロードの自動計装を管理するKubernetesオペレーターの実装。
 aliases:
   - /docs/operator
   - /docs/k8s-operator
