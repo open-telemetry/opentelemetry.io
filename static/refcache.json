@@ -9775,6 +9775,14 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:15:12.345Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/instrumentations.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-18T18:26:06.843991+05:30"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opampbridges.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-18T18:27:29.702111+05:30"
+  },
   "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md": {
     "StatusCode": 206,
     "LastSeen": "2025-04-06T04:35:11.407913032Z"
@@ -9782,6 +9790,10 @@
   "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md#opentelemetryiov1beta1": {
     "StatusCode": 206,
     "LastSeen": "2025-05-03T12:00:59.999Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-18T18:27:34.253691+05:30"
   },
   "https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscr": {
     "StatusCode": 200,

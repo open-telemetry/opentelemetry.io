@@ -326,7 +326,7 @@ generated? One of a bunch of things."
 ### Kubernetes modes on OTel
 
 The OTel Operator supports four
-[deployment modes](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspec)
+[deployment modes](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md)
 for the OTel Collector in Kubernetes:
 
 - [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) -
