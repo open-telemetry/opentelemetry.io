@@ -222,10 +222,12 @@ A more detailed list is available in the following sections.
 
 ### Metric names
 
-Metrics names may be altered slightly with a suffix appended or by replacing a dot (`.`) with an underscore (`_`) .
+This section explains special naming conventions applied to some internal
+metrics.
 
-#### `_total` suffix appended
+#### `otelcol_` prefix
 
+<<<<<<< Updated upstream
 By default and unique to Prometheus, the Prometheus exporter adds a `_total` suffix to summation metrics to follow Prometheus naming conventions. For example,  `otelcol_exporter_send_failed_spans_total`. 
 However in the list of internal metrics within this document, metrics are listed in OTLP format, such as `otelcol_exporter_send_failed_spans`. 
 
@@ -244,6 +246,10 @@ categorized by instrumentation type.
 
 {{% alert title="Note" %}} As of Collector v0.106.1, internal metric names are
 handled differently based on their source:
+=======
+As of Collector v0.106.1, internal metric names are handled differently based on
+their source:
+>>>>>>> Stashed changes
 
 - Metrics generated from Collector components are prefixed with `otelcol_`.
 - Metrics generated from instrumentation libraries do not use the `otelcol_`
@@ -252,7 +258,45 @@ handled differently based on their source:
 For Collector versions prior to v0.106.1, all internal metrics emitted using the
 Prometheus exporter, regardless of their origin, are prefixed with `otelcol_`.
 This includes metrics from both Collector components and instrumentation
-libraries. {{% /alert %}}
+libraries.
+
+#### `_total` suffix
+
+By default and unique to Prometheus, the Prometheus exporter adds a `_total`
+suffix to summation metrics to follow Prometheus naming conventions, such as
+`otelcol_exporter_send_failed_spans_total`. This behavior can be disabled by
+setting `without_type_suffix: false` in the Prometheus exporter's configuration.
+
+If you leave out `service::telemetry::metrics::readers` in the Collector
+configuration, the default Prometheus exporter set up by the Collector already
+has `without_type_suffix` set to `false`. However, if you customize the readers
+and add a Prometheus exporter manually, you must set that option to return to
+the "raw" metric name. For more information, see the
+[Collector v1.25.0/v0.119.0 release notes](https://github.com/codeboten/opentelemetry-collector/blob/313167505b44e5dc9a29c0b9242cc4547db11ec3/CHANGELOG.md#v1250v01190).
+
+Internal metrics exported through OTLP do not have this behavior. The
+[internal metrics](#lists-of-internal-metrics) on this page are listed in OTLP
+format, such as `otelcol_exporter_send_failed_spans`.
+
+#### Dots (`.`) v. underscores (`_`)
+
+`http*` and `rpc*` metrics come from instrumentation libraries. Their original
+names used dots (`.`). Prior to Collector v0.120.0, internal metrics exposed
+with Prometheus changed dots (`.`) to underscores (`_`) to match Prometheus
+naming conventions, resulting in metric names that looked like
+`rpc_server_duration`.
+
+Versions 0.120.0 and later of the Collector use Prometheus 3.0 scrapers, so the
+original `http*` and `rpc*` metric names with dots are preserved. The
+[internal metrics](#lists-of-internal-metrics) on this page are listed in their
+original form, such as`rpc.server.duration`. For more information, see the
+[Collector v0.120.0 release notes](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/CHANGELOG.md#v01200).
+
+### Lists of internal metrics
+
+The following tables group each internal metric by level of verbosity: `basic`,
+`normal`, and `detailed`. Each metric is identified by name and description and
+categorized by instrumentation type.
 
 {{< comment >}}
 
@@ -349,10 +393,14 @@ its introduction. Note however that these metrics were inadvertently reverted to
 | `rpc_server_response_size`                            | Measures the size of RPC response messages (uncompressed).                                | Histogram |
 | `rpc_server_responses_per_rpc`                        | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram |
 
+<<<<<<< Updated upstream
 {{% alert title="Note" %}} The `http_` and `rpc_` metrics come from
 instrumentation libraries. Their original names use dots (`.`), but when
 exposing internal metrics with Prometheus, they are translated to use
 underscores (`_`) to match Prometheus' naming constraints. These metrics are not
+=======
+{{% alert title="Note" color="info" %}} The `http*` and `rpc*` metrics are not
+>>>>>>> Stashed changes
 covered by the maturity levels below since they are not under the Collector SIG
 control.
 

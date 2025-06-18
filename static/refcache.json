@@ -3763,6 +3763,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-30T14:41:51.138475-05:00"
   },
+  "https://github.com/codeboten/opentelemetry-collector/blob/313167505b44e5dc9a29c0b9242cc4547db11ec3/CHANGELOG.md#v1250v01190": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-18T16:37:37.617753182-07:00"
+  },
   "https://github.com/codefromthecrypt": {
     "StatusCode": 200,
     "LastSeen": "2024-11-18T23:18:18.05798173Z"
@@ -5778,6 +5782,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9b28f76c02c18f7479d10e4b6a95a21467fd85d6/processor/transformprocessor/testdata/config.yaml": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:34:12.970839-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/CHANGELOG.md#v01200": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-18T16:37:40.740047715-07:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/README.md": {
     "StatusCode": 206,
