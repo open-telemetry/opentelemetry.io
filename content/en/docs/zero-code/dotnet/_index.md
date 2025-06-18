@@ -84,10 +84,16 @@ brew install coreutils
 
 ### Windows (PowerShell)
 
+{{% alert title="Note" color="warning" %}}
+PowerShell v6.0+ (pwsh) is not supported in install .NET zero-code instrumentation - the built-in version of Windows PowerShell must be used.
+{{% /alert %}}
+
 On Windows, use the PowerShell module as an Administrator:
 
 ```powershell
-# PowerShell 5.1 or higher is required
+# PowerShell 5.1 is required
+#Requires -PSEdition Desktop
+
 # Download the module
 $module_url = "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/OpenTelemetry.DotNet.Auto.psm1"
 $download_path = Join-Path $env:temp "OpenTelemetry.DotNet.Auto.psm1"
