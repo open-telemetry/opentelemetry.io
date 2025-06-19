@@ -27,8 +27,8 @@ OTel 网站使用 Hugo 的 [multilingual framework] 来支持页面的本地化�
     - 代码片段内的注释（可选）
   - [前端元数据][front matter] 中的 `title`、`linkTitle` 和 `description` 的字段值
   - **所有页面**内容和前置元数据，除非另有说明。
-- 保留原文的*内容*、*含义*以及*风格* 。
-- 如果您有任何疑问或问题，请通过以下方式**咨询** [Maintainers]：
+- 保留原文的**内容**、**含义**以及**风格**。
+- 如果您有任何疑问或问题，请通过以下方式**咨询**[维护人员][Maintainers]：
   - [Slack] 上的 `#otel-docs-localization` 或 `#otel-comms` 频道
   - [Discussion]、Issue 或者 PR 评论
 

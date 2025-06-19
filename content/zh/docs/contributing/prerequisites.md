@@ -13,7 +13,7 @@ default_lang_commit: adc4264c2926e3d767b6a56affb19fb4ae3f2a22
 - Markdown（[CommonMark](https://commonmark.org/)）
 - YAML
 
-有关文档如何在本地构建和测试的技术细节，请参阅[开发指南](https://opentelemetry.io/docs/contributing/development/)。
+有关文档如何在本地构建和测试的技术细节，请参阅开发指南。
 
 ## 签署 CNCF CLA {#cla}
 
