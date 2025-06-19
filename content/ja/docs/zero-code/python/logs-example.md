@@ -48,7 +48,6 @@ with tracer.start_as_current_span("foo"):
 
 [otel-collector-config.yaml](https://github.com/open-telemetry/opentelemetry-python/blob/main/docs/examples/logs/otel-collector-config.yaml)のサンプルを開いてコピーし、`python-logs-example/otel-collector-config.yaml`に保存します。
 
-
 ## 準備 {#prepare}
 
 以下の例を実行します。
@@ -159,4 +158,3 @@ Span イベントとログの両方が同じ SpanID（`f318281c4654edc5`）を�
 
 [api reference]: https://opentelemetry-python.readthedocs.io/en/latest/index.html
 [OpenTelemetry Python repository]: https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/logs
-
