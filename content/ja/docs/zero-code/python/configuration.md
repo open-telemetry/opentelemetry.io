@@ -9,7 +9,6 @@ cSpell: ignore: healthcheck instrumentor myapp pyproject Starlette urllib
 default_lang_commit: 3d737b777f7bfa070f7f14835570add916d4dcb0
 ---
 
-
 エージェントは次のいずれかの方法で高度に設定可能です。
 
 - CLIから設定プロパティを渡す
@@ -44,7 +43,6 @@ opentelemetry-instrument \
   省略した場合は、デフォルトの [コレクター](/docs/collector/) のエンドポイントが使用され、gRPC の場合は `0.0.0.0:4317`、HTTP の場合は `0.0.0.0:4318` となります。
 - `exporter_otlp_headers`は、選択したオブザーバビリティバックエンドに応じて必要となります。
   OTLPエクスポーターヘッダーの詳細については、[OTEL_EXPORTER_OTLP_HEADERS](/docs/languages/sdk-configuration/otlp-exporter/#otel_exporter_otlp_headers)を参照してください。
-
 
 ## 環境変数 {#environment-variables}
 
@@ -146,4 +144,3 @@ export OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS=true
 
 たとえば、Python プログラムが `redis`、`kafka-python`、`grpc` パッケージを使用している場合、デフォルトではエージェントは `opentelemetry-instrumentation-redis`、`opentelemetry-instrumentation-kafka-python`、`opentelemetry-instrumentation-grpc` パッケージを使用して計装を行います。
 これを無効にするには、`OTEL_PYTHON_DISABLED_INSTRUMENTATIONS=redis,kafka,grpc_client` を設定します。
-

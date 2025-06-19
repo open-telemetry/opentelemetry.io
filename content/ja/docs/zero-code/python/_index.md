@@ -75,4 +75,3 @@ opentelemetry-instrument \
 ## トラブルシューティング {#troubleshooting}
 
 一般的なトラブルシューティングの手順と特定の問題に対する解決策については、[トラブルシューティング](./troubleshooting/) を参照してください。
-
