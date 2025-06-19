@@ -2,7 +2,6 @@
 title: Pythonゼロコード・計装
 linkTitle: Python
 weight: 30
-aliases: [/docs/languages/python/automatic]
 cSpell: ignore: distro myapp
 default_lang_commit: 3d737b777f7bfa070f7f14835570add916d4dcb0
 ---

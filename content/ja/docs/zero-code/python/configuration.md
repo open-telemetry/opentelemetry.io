@@ -2,9 +2,6 @@
 title: エージェント設定
 linkTitle: Configuration
 weight: 10
-aliases:
-- /docs/languages/python/automatic/configuration
-- /docs/languages/python/automatic/agent-config
 cSpell: ignore: healthcheck instrumentor myapp pyproject Starlette urllib
 default_lang_commit: 3d737b777f7bfa070f7f14835570add916d4dcb0
 ---
