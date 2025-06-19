@@ -171,6 +171,10 @@
   url: https://github.com/DataDog/datadog-agent/tree/main/comp/otelcol
   docsUrl: https://docs.datadoghq.com/opentelemetry/setup/ddot_collector
   components: [Collector]
+- name: New Relic Distribution of the OpenTelemetry Collector (NRDOT)
+  url: https://github.com/newrelic/nrdot-collector-releases
+  docsUrl: https://docs.newrelic.com/docs/opentelemetry/nrdot/nrdot-collector/
+  components: [Collector]
 
 # OSS Collector Distros
 - name: OpenTelemetry Collector Core Distro
