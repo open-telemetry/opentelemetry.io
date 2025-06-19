@@ -1683,6 +1683,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:38:32.230398-05:00"
   },
+  "https://docs.newrelic.com/docs/opentelemetry/nrdot/nrdot-collector/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-19T11:34:02.818605+01:00"
+  },
   "https://docs.nxlog.co/agent/current/im/otel.html": {
     "StatusCode": 200,
     "LastSeen": "2024-12-04T08:47:08.501353757Z"
@@ -5402,6 +5406,10 @@
   "https://github.com/nemoshlag": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T12:11:32.489901-05:00"
+  },
+  "https://github.com/newrelic/nrdot-collector-releases": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-19T11:34:31.186395+01:00"
   },
   "https://github.com/nginxinc": {
     "StatusCode": 206,
