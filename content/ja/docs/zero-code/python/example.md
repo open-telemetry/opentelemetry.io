@@ -2,7 +2,6 @@
 title: 自動計装の例
 linkTitle: Example
 weight: 20
-cSpell: ignore: distro instrumentor mkdir MSIE Referer Starlette venv
 default_lang_commit: 3d737b777f7bfa070f7f14835570add916d4dcb0
 ---
 

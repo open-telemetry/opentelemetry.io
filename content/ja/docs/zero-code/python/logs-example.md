@@ -2,7 +2,6 @@
 title: ログ自動計装の例
 linkTitle: Logs Example
 weight: 20
-cSpell: ignore: distro mkdir virtualenv
 default_lang_commit: 3d737b777f7bfa070f7f14835570add916d4dcb0
 ---
 
