@@ -2,10 +2,8 @@
 title: OpenTelemetryオペレーターを使用して自動計装を注入する
 linkTitle: Operator
 weight: 30
-cSpell:ignore: grpcio myapp psutil PYTHONPATH
 default_lang_commit: 3d737b777f7bfa070f7f14835570add916d4dcb0
 ---
-
 
 KubernetesでPythonサービスを実行する場合、[OpenTelemetryオペレーター](https://github.com/open-telemetry/opentelemetry-operator)を活用することで、各サービスを直接修正することなく自動計装を注入できます。
 [詳細はOpenTelemetryオペレーターによる自動計装のドキュメントを参照してください](/docs/platforms/kubernetes/operator/automatic/)
@@ -30,4 +28,3 @@ Django のように独自の実行ファイルから実行されるアプリケ�
 
 - `PYTHONPATH` には Django アプリケーションのルートディレクトリへのパスを指定します（例: "/app"）。
 - `DJANGO_SETTINGS_MODULE` に Django 設定モジュールの名前を指定します（例: "myapp.settings"）。
-
