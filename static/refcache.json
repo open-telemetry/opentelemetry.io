@@ -12903,6 +12903,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-24T14:37:09.499396-05:00"
   },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2113": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-19T10:36:07.545111432Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/pull/2178": {
     "StatusCode": 206,
     "LastSeen": "2025-06-17T10:36:00.738575402Z"
@@ -15579,6 +15583,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:59:03.943212-05:00"
   },
+  "https://kubernetes.io/docs/concepts/policy/resource-quotas/#object-count-quota": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-19T10:36:16.214888849Z"
+  },
   "https://kubernetes.io/docs/concepts/security/rbac-good-practices/": {
     "StatusCode": 206,
     "LastSeen": "2024-10-28T23:48:13.923440181Z"
@@ -15714,6 +15722,14 @@
   "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#statefulsetstatus-v1-apps": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:25:12.345Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#storageclass-v1-storage-k8s-io": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-19T10:36:12.39368006Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.32/#resourcequotastatus-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-19T10:36:34.524445182Z"
   },
   "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/": {
     "StatusCode": 206,
