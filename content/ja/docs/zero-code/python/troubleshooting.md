@@ -77,8 +77,6 @@ if __name__ == "__main__":
 デバッグモードはリローダを有効にするため、計装を中断させることがあります。
 デバッグモードが有効なときに計装を実行するには、 `use_reloader` オプションを `False` に設定します。
 
-The debug mode can break instrumentation from happening because it enables a reloader. To run instrumentation while the debug mode is enabled, set the `use_reloader` option to `False`:
-
 ```python
 if __name__ == "__main__":
     app.run(port=8082, debug=True, use_reloader=False)

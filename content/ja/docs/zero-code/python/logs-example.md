@@ -71,8 +71,6 @@ pip install opentelemetry-exporter-otlp
 この後の例では、計装結果をコンソールに送信します。
 コレクターのような他の送信先にテレメトリーを送信するための [OpenTelemetry Distro](/docs/languages/python/distro) のインストールと設定については、ドキュメントを参照してください。
 
-The examples that follow send instrumentation results to the console. Learn more about installing and configuring the [OpenTelemetry Distro](/docs/languages/python/distro) to send telemetry to other destinations, like an OpenTelemetry Collector.
-
 > **注**: `opentelemetry-instrument`による自動計装を使用するには、
 > 環境変数またはコマンドラインで設定する必要があります。
 > エージェントはテレメトリーパイプラインを作成するので、これらの手段以外では変更できません。

@@ -18,7 +18,6 @@ KubernetesでPythonサービスを実行する場合、[OpenTelemetryオペレ�
 バイナリコードは、特定のCライブラリのバージョン（glibcまたはmusl）と特定のPythonのバージョンに関連付けられています。
 [OpenTelemetryオペレーター](https://github.com/open-telemetry/opentelemetry-operator)は、glibc Cライブラリに基づいた単一のPythonバージョン用のイメージを提供します。
 もしこれを使いたいのであれば、Python自動計装用のオペレーターDockerイメージを自分で構築する必要があるかもしれません。
-you might need to build your own image operator Docker image for Python auto-instrumentation.
 
 オペレーター v0.113.0以降、glibcとmuslベースの自動計装の両方を持つイメージをビルドし、[実行時に設定する](/docs/platforms/kubernetes/operator/automatic/#annotations-python-musl)ことが可能です。
 
