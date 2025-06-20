@@ -8295,9 +8295,17 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:38:27.610217-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-20T14:26:05.958026+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-profiler": {
     "StatusCode": 200,
     "LastSeen": "2024-10-24T15:10:22.597683+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-profiler/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-20T14:26:06.43524+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-erlang": {
     "StatusCode": 200,
@@ -8626,6 +8634,10 @@
   "https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator#opentelemetry-operator-helm-chart": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:14:12.345Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-injector/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-20T14:26:10.257165+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-java": {
     "StatusCode": 200,

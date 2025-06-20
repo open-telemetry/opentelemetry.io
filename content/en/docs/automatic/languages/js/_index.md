@@ -1,12 +1,12 @@
 ---
-title: JavaScript zero-code instrumentation
+title: JavaScript automatic instrumentation
 linkTitle: JavaScript
 description:
   Capture telemetry from your application with zero source code modifications
 aliases: [/docs/languages/js/automatic]
 ---
 
-Zero-code instrumentation for JavaScript provides a way to instrument any
+Automatic instrumentation for JavaScript provides a way to instrument any
 Node.js application and capture telemetry data from many popular libraries and
 frameworks without any code changes.
 

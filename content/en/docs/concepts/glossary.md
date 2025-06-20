@@ -360,6 +360,10 @@ Responsible for creating [Spans](#span). See [Tracer].
 
 See [Distributed Tracing](#distributed-tracing).
 
+### Zero-Code Instrumentation
+
+See [Automatic Instrumentation](#automatic-instrumentation).
+
 ### zPages
 
 An in-process alternative to external exporters. When included, they collect and
