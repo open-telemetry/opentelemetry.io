@@ -2,7 +2,7 @@
 title: サンプルによる入門
 description: 5分以内にアプリのテレメトリーを取得しましょう！
 weight: 10
-default_lang_commit: beb85b4f56de76aa8a8d6e96cd7528396476f95a
+default_lang_commit: 4a1ba639556beb117b556bf5825bb859e2361869
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -129,11 +129,15 @@ java -jar ./build/libs/java-simple.jar
 
 1. `opentelemetry-java-instrumentation`リポジトリの[リリース][releases]から[opentelemetry-javaagent.jar][]をダウンロードします。JARファイルには、エージェントとすべての自動計装パッケージが含まれています。
 
-   ```console
+   ```sh
    curl -L -O https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
    ```
 
-   {{% alert color="info" %}}<i class="fas fa-edit"></i> JARファイルへのパスをメモしてください。{{% /alert %}}
+   {{% alert %}}
+
+   <i class="fas fa-edit"></i> JARファイルへのパスをメモしてください。
+
+   {{% /alert %}}
 
 2. JavaエージェントJARと[コンソールエクスポーター][console exporter]を指定する変数を設定してエクスポートします。シェル/ターミナル環境に適した記法を使用してください。ここではbashライクなシェルの記法を示します。
 
