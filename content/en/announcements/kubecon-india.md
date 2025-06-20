@@ -1,7 +1,7 @@
 ---
 title: KubeCon + CloudNativeCon India 2025
 linkTitle: KubeCon India 2025
-date: 2025-06-18
+date: 2025-06-21
 expiryDate: 2025-08-08
 weight: 20250806
 ---

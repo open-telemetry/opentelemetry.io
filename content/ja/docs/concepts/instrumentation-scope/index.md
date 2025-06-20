@@ -1,7 +1,7 @@
 ---
 title: 計装スコープ
 weight: 80
-default_lang_commit: 825b6e2 # patched
+default_lang_commit: adc4264c2926e3d767b6a56affb19fb4ae3f2a22
 ---
 
 [計装スコープ](/docs/specs/otel/common/instrumentation-scope/)は、送出されたテレメトリーを関連付けられるアプリケーションコード内の論理ユニットを表します。
