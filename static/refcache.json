@@ -6219,6 +6219,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:34:30.806697-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/faroexporter": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-19T10:10:58.701250216Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/fileexporter": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:34:31.623458-05:00"
@@ -6678,6 +6682,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/expvarreceiver": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:35:27.261154-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/faroreceiver": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-19T10:11:18.238891535Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver": {
     "StatusCode": 206,
@@ -17307,6 +17315,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:47:18.18299-04:00"
   },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/exporter/faroexporter": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-19T10:11:01.147293909Z"
+  },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/exporter/fileexporter": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:47:23.770703-04:00"
@@ -17710,6 +17722,10 @@
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/expvarreceiver": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:55:07.309438-04:00"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/faroreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-19T10:11:18.360124961Z"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/filelogreceiver": {
     "StatusCode": 200,
