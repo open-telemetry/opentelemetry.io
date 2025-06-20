@@ -2303,6 +2303,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:23:57.439457-05:00"
   },
+  "https://en.wikipedia.org/wiki/Server_Name_Indication": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-20T10:36:02.896066024Z"
+  },
   "https://en.wikipedia.org/wiki/Snake_case": {
     "StatusCode": 200,
     "LastSeen": "2025-05-14T12:26:42.192989-04:00"
@@ -15931,13 +15935,29 @@
     "StatusCode": 200,
     "LastSeen": "2024-10-09T10:19:38.949924+02:00"
   },
+  "https://learn.microsoft.com/dotnet/api/system.net.dns": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-20T10:35:50.823888339Z"
+  },
   "https://learn.microsoft.com/dotnet/api/system.net.endpoint": {
     "StatusCode": 200,
     "LastSeen": "2025-01-30T16:54:22.196411-05:00"
   },
+  "https://learn.microsoft.com/dotnet/api/system.net.http.httpclienthandler": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-20T10:35:41.842357483Z"
+  },
   "https://learn.microsoft.com/dotnet/api/system.net.http.httprequesterror": {
     "StatusCode": 200,
     "LastSeen": "2025-01-30T16:54:19.766003-05:00"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.net.http.socketshttphandler": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-20T10:35:45.801465809Z"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.net.security.sslstream": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-20T10:35:59.792196059Z"
   },
   "https://learn.microsoft.com/dotnet/api/system.net.sockets.socketerror": {
     "StatusCode": 200,
@@ -16042,6 +16062,10 @@
   "https://learn.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors": {
     "StatusCode": 200,
     "LastSeen": "2024-10-09T10:19:29.705755+02:00"
+  },
+  "https://learn.microsoft.com/windows/win32/api/winsock2/nf-winsock2-connect#return-value": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-20T10:35:55.443676482Z"
   },
   "https://learn.microsoft.com/windows/win32/api/ws2tcpip/nf-ws2tcpip-getaddrinfo": {
     "StatusCode": 200,
