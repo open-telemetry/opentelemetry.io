@@ -287,7 +287,7 @@ if __name__ == "__main__":
 
 どのHTTPヘッダーをキャプチャしたいかを定義するには、HTTPヘッダー名のカンマ区切りのリストを環境変数 `OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_REQUEST` と `OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_RESPONSE` で指定します。
 
-例えば次のように行います。
+たとえば次のように行います。
 
 ```sh
 export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_REQUEST="Accept-Encoding,User-Agent,Referer"
