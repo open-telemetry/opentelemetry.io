@@ -5,7 +5,7 @@ linkTitle: .NET
 aliases: [net]
 redirects: [{ from: /docs/languages/net/automatic/*, to: ':splat' }]
 weight: 30
-cSpell:ignore: coreutils HKLM iisreset myapp pwsh
+cSpell:ignore: coreutils HKLM iisreset myapp
 ---
 
 Use the OpenTelemetry .NET Automatic Instrumentation to send traces and metrics
